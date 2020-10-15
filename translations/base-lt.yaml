@@ -1,9 +1,8 @@
 steamPage:
-    shortText: shapez.io is a game about building factories to automate the creation
-        and combination of increasingly complex shapes within an infinite map.
-    discordLinkShort: Official Discord
+    shortText: shapez.io yra žaidimas apie gamyklų statima, kad automazuoti statinį, kad jis statytu ir gamintu sunias dalis nesibaigenčiam pasaulyja.
+    discordLinkShort: Officialus Discordas
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
+        Shapez.io yra relaxacyjos žaidimas kur jųs turit statyti gamyklas automatinei produkcyjai geometryjos  build factories for the
         automated production of geometric shapes.
 
         As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
@@ -12,43 +11,43 @@ steamPage:
 
         While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        Nusipirkdami šį žaidima ant Steam gaunat galimybė prie pilno žaidimo, bet tu dar gali žaisti demo versyja ant shapez.io pirmiau ir paskiau nusprest ar jus norit pilnos versyjos!
+    title_advantages: Standalone versyjos pranašumai 
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>12 Naujų lygių</b> Išvis yra 26 lygiai 
+        - <b>18 Nauju pastatų</b> pilnai automatinei gamyklai!
+        - <b>20 Atnaujinimų </b> daug linksmų valandų
+        - <b>Laidų atnaujinimas</b> tai visai kita dymencyja!
         - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - Nesibaigentis užsaugojymai
+        - Nesibaigentis 
+        - Paremkit mane ❤️
+    title_future: Planuoti priedai
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
+        - Brežinių galeryja (Standalone Ešskirtinis)
+        - Steam Pasiekimai
+        - Puzlės režimas
         - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Modai/Papildiniai
+        - Kurimo režimas
+        - ... ir dar dauk kitų!
+    title_open_source: Šito žaidimo atidarytas šaltinis!
+    title_links: Nuarodos
     links:
-        discord: Official Discord
+        discord: Officialus Discordas
         roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        subreddit: Subredditas
+        source_code: Pagrindinis/šaltinio Kodas (GitHub)
+        translate: Padėkit išverst
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Betkas gali prisijungt, aš lavai aktyvei dalyvauju bendruomenei ir
+        bandau peržiurėti visus pasiūlimus ir atsižvelgti ir pranešti
+        kur įmanoma.
 
-        Be sure to check out my trello board for the full roadmap!
+        Beto Peržiurėkit mano trello lenta, kad pamatytumet visus suplanuotus ir jau padarytus darbus!
 global:
-    loading: Loading
-    error: Error
+    loading: Kraunama
+    error: Klaida
     thousandsDivider: ","
     decimalSeparator: .
     suffix:
@@ -58,14 +57,14 @@ global:
         trillions: T
     infinite: inf
     time:
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: prieš vieną sekunę
+        xSecondsAgo: prieš <x> sekundžių
+        oneMinuteAgo: prieš vieną minutę
+        xMinutesAgo: prieš <x> sekundžių
+        oneHourAgo: prieš vieną valandą
+        xHoursAgo: prieš <x> valandas
+        oneDayAgo: prieš vieną dieną
+        xDaysAgo: prieš <x> dienas
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
@@ -78,63 +77,63 @@ global:
         shift: SHIFT
         space: SPACE
 demoBanners:
-    title: Demo Version
-    intro: Get the standalone to unlock all features!
+    title: Demo Versyja
+    intro: Gaukyte standalone versyja, kad atrakintumet pilnas funkcyjas!
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
-    browserWarning: Sorry, but the game is known to run slow on your browser! Get
-        the standalone version or download chrome for the full experience.
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
-    continue: Continue
-    newGame: New Game
-    madeBy: Made by <author-link>
+    play: Žaisti
+    changelog: Pakeitimai
+    importSavegame: Įkelti
+    openSourceHint: Šito žaidimo atidarytas šaltinis!
+    discordLink: Officialus Discord Serveris
+    helpTranslate: Padėkite išverst!
+    browserWarning: Atleiskit, bet žinoma, kad šis žaidymas letai bėga and jūsų naršyklės! Gaukite
+         standalone versyja arba atsisiuskite chrome kad žaidimas begtu greičiau.
+    savegameLevel: Lygis <x>
+    savegameLevelUnknown: Nežinomas lygisel
+    continue: Pratesti
+    newGame: Naujas žaidimas
+    madeBy: Kurėjas <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Be pavadinimo
 dialogs:
     buttons:
-        ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I do
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
+        ok: Gerai
+        delete: Ištrinti
+        cancel: Atšaukti
+        later: Veliau
+        restart: Išnaujo
+        reset: Perkraut
+        getStandalone: Nusipirk Standalone versyja
+        deleteGame: Aš žinau ką darau
+        viewUpdate: Paroditi atnaujinimus
+        showUpgrades: Paroditi pagerinimus
+        showKeybindings: Paroditi sparčiuosius migtukus
     importSavegameError:
-        title: Import Error
-        text: "Failed to import your savegame:"
+        title: Ikelimo Problema
+        text: "ivyko klaida ikelimo metu:"
     importSavegameSuccess:
-        title: Savegame Imported
-        text: Your savegame has been successfully imported.
+        title: Užsaugojimas Įkeltas
+        text: Jūsų užsaugojimas buvo sekmingai įkeltas
     gameLoadFailure:
-        title: Game is broken
-        text: "Failed to load your savegame:"
+        title: Žaidimas sukedo
+        text: "Klaida :"
     confirmSavegameDelete:
-        title: Confirm deletion
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        title: Patvirtinkite ištrinima
+        text: Ar jus tikri jus norit ištrint ši žaidima?<br><br>
+            '<savegameName>' lygis <savegameLevel><br><br> Tai negali but
+            sugražinta!
     savegameDeletionError:
-        title: Failed to delete
-        text: "Failed to delete the savegame:"
+        title: Nepavyko ištrinti
+        text: "Nepavyko ištrinti ušsaugojimo:"
     restartRequired:
-        title: Restart required
-        text: You need to restart the game to apply the settings.
+        title: Žaidima rei perkrauti
+        text: Reikia perkrauti žaidima, kad nustatimai išsisaugotu.
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: Pakeičiamas spartusis migtukas
+        desc: Paspauskit migtuka į kurį bus pakeistas šis migtukas, arba spasukite ESC, kas atšaukti.
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: Perstatiti sparčiuosius migtukus
+        desc: Tai nustatys sparčiuosius migtukus į jų pradinius nustatymus. Prašau patvirtinti.
     keybindingsResetOk:
         title: Keybindings reset
         desc: The keybindings have been reset to their respective defaults!
@@ -143,7 +142,7 @@ dialogs:
         desc: You tried to access a feature (<feature>) which is not available in the
             demo. Consider to get the standalone for the full experience!
     oneSavegameLimit:
-        title: Limited savegames
+        title: Limituoti užsaugojimai
         desc: You can only have one savegame at a time in the demo version. Please
             remove the existing one or get the standalone!
     updateSummary:
@@ -994,8 +993,8 @@ changelog:
 demo:
     features:
         restoringGames: Restoring savegames
-        importingGames: Importing savegames
-        oneGameLimit: Limited to one savegame
+        importingGames: Įkelemi užsaugojymai
+        oneGameLimit: Limitas tik vienas užsaugojimas
         customizeKeybindings: Customizing Keybindings
         exportingBase: Exporting whole Base as Image
     settingNotAvailable: Not available in the demo.
@@ -1057,6 +1056,6 @@ tips:
     - This game has a lot of settings, be sure to check them out!
     - The marker to your hub has a small compass to indicate its direction!
     - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Paspauskit F4, kad parodit jūsų FPS ir Tick Rate.
+    - Paspauskit F4 twice to show the tile of your mouse and camera.
+    - Jus galit paspausti kairės ant pažymėtos on the left side to unpin it.
