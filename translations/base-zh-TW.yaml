@@ -70,7 +70,7 @@ global:
         shift: SHIFT
         space: 空格
 demoBanners:
-    title: 演示版
+    title: 試玩版
     intro: 獲取單機版以解鎖所有功能！
 mainMenu:
     play: 開始遊戲
@@ -78,8 +78,8 @@ mainMenu:
     importSavegame: 導入
     openSourceHint: 本遊戲已開源！
     discordLink: 官方 Discord 伺服器
-    helpTranslate: 幫助我們翻譯！
-    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取單機版以得到更好的體驗。
+    helpTranslate: 協助我們翻譯！
+    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用 chrome 或者獲取單機版以得到更好的體驗。
     savegameLevel: <x>級
     savegameLevelUnknown: 未知關卡
     continue: 繼續
@@ -111,7 +111,7 @@ dialogs:
         text: 存檔載入失敗：
     confirmSavegameDelete:
         title: 確認刪除
-        text: 你確定要刪除這個存檔？<br><br> '<savegameName>' 在第 <savegameLevel><br><br> 級 不能反悔喔！
+        text: 你確定要刪除這個存檔？<br><br> '<savegameName>' 在第<savegameLevel>級 <br><br> 不能反悔喔！
     savegameDeletionError:
         title: 刪除錯誤
         text: 存檔刪除失敗
@@ -120,7 +120,7 @@ dialogs:
         text: 你需要重啟遊戲以套用變更的設置。
     editKeybinding:
         title: 更改按鍵設置
-        desc: 請按下你想要使用的按鍵，或者按下ESC鍵來取消設置。
+        desc: 請按下你想要使用的按鍵，或者按下 ESC 鍵來取消設置。
     resetKeybindingsConfirmation:
         title: 重置所有按鍵
         desc: 這將會重置所有按鍵，請確認。
@@ -128,11 +128,11 @@ dialogs:
         title: 重置了所有按鍵
         desc: 成功重置了所有按鍵！
     featureRestriction:
-        title: 演示版
-        desc: 你嘗試使用了 <feature> 功能。該功能在演示版中不可用。請考慮購買單機版以獲得更好的體驗。
+        title: 試玩版
+        desc: 你嘗試使用了 <feature> 功能。該功能在試玩版中不可用。請考慮購買單機版以獲得更好的體驗。
     oneSavegameLimit:
         title: 存檔數量限制
-        desc: 演示版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
+        desc: 試玩版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
     updateSummary:
         title: 更新了！
         desc: "以下為自上次遊戲以來更新的內容:"
@@ -157,7 +157,7 @@ dialogs:
             生成短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
-        desc: 在演示版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
+        desc: 在試玩版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
     massCutConfirm:
         title: 確認剪下
         desc: 你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
@@ -175,10 +175,10 @@ dialogs:
         title: 重新命名存檔
         desc: 你可以在這裡重新命名存檔
     tutorialVideoAvailable:
-        title: 有教學
+        title: 有教程
         desc: 這個等級有教學影片!你想觀看嗎?
     tutorialVideoAvailableForeignLanguage:
-        title: 有教學
+        title: 有教程
         desc: 這個等級目前只有英文版教學影片，你想觀看嗎?
 ingame:
     keybindingsOverlay:
@@ -291,17 +291,17 @@ ingame:
         cyan: 青
         white: 白
         uncolored: 無顏色
-        black: Black
+        black: 黑
     shapeViewer:
         title: 層
         empty: 空
-        copyKey: Copy Key
+        copyKey: 複製鍵
     connectedMiners:
         one_miner: 1 個開採機
         n_miners: <amount> 個開採機
         limited_items: 上限 <max_throughput>
     watermark:
-        title: Demo version
+        title: 試玩版
         desc: 按這裡看 Steam 版的優勢！
         get_on_steam: 在 Steam 上取得
     standaloneAdvantages:
@@ -776,7 +776,7 @@ settings:
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按鍵設置
-    hint: 提示：使用CTRL、SHIFT、ALT! 這些建在放置建築時有不同的效果。
+    hint: 提示：使用 CTRL、SHIFT、ALT ! 這些建在放置建築時有不同的效果。
     resetKeybindings: 重置按鍵設置
     categoryLabels:
         general: 通用
@@ -868,7 +868,7 @@ demo:
         oneGameLimit: 最多一個存檔
         customizeKeybindings: 按鍵設置
         exportingBase: 匯出工廠截圖
-    settingNotAvailable: 在演示版中不可用。
+    settingNotAvailable: 在試玩版中不可用。
 tips:
     - 基地接受任何輸入，不只是當前要求的圖形!
     - 盡量讓工廠模組化，會有回報的!
