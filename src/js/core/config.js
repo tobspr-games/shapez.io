@@ -1,5 +1,3 @@
-import { queryParamOptions } from "./query_parameters";
-
 export const IS_DEBUG =
     G_IS_DEV &&
     typeof window !== "undefined" &&
@@ -7,12 +5,9 @@ export const IS_DEBUG =
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
 
-export const IS_DEMO = queryParamOptions.fullVersion
-    ? false
-    : (!G_IS_DEV && !G_IS_STANDALONE) ||
-      (typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0);
-
 export const SUPPORT_TOUCH = false;
+
+export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0;
 
 const smoothCanvas = true;
 
@@ -20,9 +15,18 @@ export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
+    shapeViewer: "https://viewer.shapez.io",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
+
+    levelTutorialVideos: {
+        21: "https://www.youtube.com/watch?v=0nUfRLMCcgo&",
+        25: "https://www.youtube.com/watch?v=7OCV1g40Iew&",
+        26: "https://www.youtube.com/watch?v=gfm6dS1dCoY",
+    },
 };
+
+export const A_B_TESTING_LINK_TYPE = Math.random() > 0.5 ? "steam_1_pr" : "steam_2_npr";
 
 export const globalConfig = {
     // Size of a single tile in Pixels.
@@ -32,7 +36,7 @@ export const globalConfig = {
 
     // Which dpi the assets have
     assetsDpi: 192 / 32,
-    assetsSharpness: 1.2,
+    assetsSharpness: 1.5,
     shapesSharpness: 1.4,
 
     // Production analytics
@@ -45,34 +49,35 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
-    mapChunkPrerenderMinZoom: -1,
-    mapChunkOverviewMinZoom: 0.7,
+    mapChunkOverviewMinZoom: 0.9,
+    mapChunkWorldSize: null, // COMPUTED
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
     beltSpeedItemsPerSecond: 2,
     minerSpeedItemsPerSecond: 0, // COMPUTED
 
-    beltItemSpacingByLayer: {
-        regular: 0.63,
-        wires: 0.4,
-    },
+    defaultItemDiameter: 20,
+
+    itemSpacingOnBelts: 0.63,
 
     wiresSpeedItemsPerSecond: 6,
 
-    undergroundBeltMaxTilesByTier: [5, 8],
+    undergroundBeltMaxTilesByTier: [5, 9],
+
+    readerAnalyzeIntervalSeconds: 10,
 
     buildingSpeeds: {
         cutter: 1 / 4,
         cutterQuad: 1 / 4,
         rotater: 1 / 1,
         rotaterCCW: 1 / 1,
+        rotater180: 1 / 1,
         painter: 1 / 6,
         painterDouble: 1 / 8,
-        painterQuad: 1 / 8,
+        painterQuad: 1 / 2,
         mixer: 1 / 5,
-        stacker: 1 / 6,
-        advancedProcessor: 1 / 3,
+        stacker: 1 / 8,
     },
 
     // Zooming
@@ -83,8 +88,8 @@ export const globalConfig = {
     // Global game speed
     gameSpeed: 1,
 
-    warmupTimeSecondsFast: 0.1,
-    warmupTimeSecondsRegular: 1,
+    warmupTimeSecondsFast: 0.5,
+    warmupTimeSecondsRegular: 3,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,
@@ -112,17 +117,17 @@ export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 // Automatic calculations
 globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;
 
+globalConfig.mapChunkWorldSize = globalConfig.mapChunkSize * globalConfig.tileSize;
+
 // Dynamic calculations
 if (globalConfig.debug.disableMapOverview) {
     globalConfig.mapChunkOverviewMinZoom = 0;
-    globalConfig.mapChunkPrerenderMinZoom = 0;
 }
 
 // Stuff for making the trailer
 if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
     globalConfig.debug.framePausesBetweenTicks = 32;
     // globalConfig.mapChunkOverviewMinZoom = 0.0;
-    // globalConfig.mapChunkPrerenderMinZoom = globalConfig.mapChunkOverviewMinZoom;
     // globalConfig.debug.instantBelts = true;
     // globalConfig.debug.instantProcessors = true;
     // globalConfig.debug.instantMiners = true;
@@ -131,5 +136,10 @@ if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
 }
 
 if (globalConfig.debug.fastGameEnter) {
-    globalConfig.debug.noArtificalDelays = true;
+    globalConfig.debug.noArtificialDelays = true;
+}
+
+if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
+    globalConfig.warmupTimeSecondsFast = 0;
+    globalConfig.warmupTimeSecondsRegular = 0;
 }

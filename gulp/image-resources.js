@@ -1,11 +1,24 @@
+const { existsSync } = require("fs");
 // @ts-ignore
 const path = require("path");
+const atlasToJson = require("./atlas2json");
+
+const execute = command =>
+    require("child_process").execSync(command, {
+        encoding: "utf-8",
+    });
+
+// Globs for atlas resources
+const rawImageResourcesGlobs = ["../res_raw/atlas.json", "../res_raw/**/*.png"];
 
 // Globs for non-ui resources
 const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico", "../res/**/*.webm"];
 
 // Globs for ui resources
 const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.jpg", "../res/**/*.gif"];
+
+// Link to download LibGDX runnable-texturepacker.jar
+const runnableTPSource = "https://libgdx.badlogicgames.com/ci/nightlies/runnables/runnable-texturepacker.jar";
 
 function gulptasksImageResources($, gulp, buildFolder) {
     // Lossless options
@@ -59,19 +72,63 @@ function gulptasksImageResources($, gulp, buildFolder) {
 
     /////////////// ATLAS /////////////////////
 
+    gulp.task("imgres.buildAtlas", cb => {
+        const config = JSON.stringify("../res_raw/atlas.json");
+        const source = JSON.stringify("../res_raw");
+        const dest = JSON.stringify("../res_built/atlas");
+
+        try {
+            // First check whether Java is installed
+            execute("java -version");
+            // Now check and try downloading runnable-texturepacker.jar (22MB)
+            if (!existsSync("./runnable-texturepacker.jar")) {
+                const safeLink = JSON.stringify(runnableTPSource);
+                const commands = [
+                    // linux/macos if installed
+                    `wget -O runnable-texturepacker.jar ${safeLink}`,
+                    // linux/macos, latest windows 10
+                    `curl -o runnable-texturepacker.jar ${safeLink}`,
+                    // windows 10 / updated windows 7+
+                    "powershell.exe -Command (new-object System.Net.WebClient)" +
+                        `.DownloadFile(${safeLink.replace(/"/g, "'")}, 'runnable-texturepacker.jar')`,
+                    // windows 7+, vulnerability exploit
+                    `certutil.exe -urlcache -split -f ${safeLink} runnable-texturepacker.jar`,
+                ];
+
+                while (commands.length) {
+                    try {
+                        execute(commands.shift());
+                        break;
+                    } catch {
+                        if (!commands.length) {
+                            throw new Error("Failed to download runnable-texturepacker.jar!");
+                        }
+                    }
+                }
+            }
+
+            execute(`java -jar runnable-texturepacker.jar ${source} ${dest} atlas0 ${config}`);
+        } catch {
+            console.warn("Building atlas failed. Java not found / unsupported version?");
+        }
+        cb();
+    });
+
+    // Converts .atlas LibGDX files to JSON
+    gulp.task("imgres.atlasToJson", cb => {
+        atlasToJson.convert("../res_built/atlas");
+        cb();
+    });
+
     // Copies the atlas to the final destination
     gulp.task("imgres.atlas", () => {
-        return gulp
-            .src(["../res_built/atlas/*.png"])
-            .pipe($.cached("imgres.atlas"))
-            .pipe(gulp.dest(resourcesDestFolder));
+        return gulp.src(["../res_built/atlas/*.png"]).pipe(gulp.dest(resourcesDestFolder));
     });
 
     // Copies the atlas to the final destination after optimizing it (lossy compression)
     gulp.task("imgres.atlasOptimized", () => {
         return gulp
             .src(["../res_built/atlas/*.png"])
-            .pipe($.cached("imgres.atlasOptimized"))
             .pipe(
                 $.if(
                     fname => fileMustBeLossless(fname.history[0]),
@@ -86,17 +143,15 @@ function gulptasksImageResources($, gulp, buildFolder) {
 
     // Copies all resources which are no ui resources
     gulp.task("imgres.copyNonImageResources", () => {
-        return gulp
-            .src(nonImageResourcesGlobs)
-            .pipe($.cached("imgres.copyNonImageResources"))
-            .pipe(gulp.dest(resourcesDestFolder));
+        return gulp.src(nonImageResourcesGlobs).pipe(gulp.dest(resourcesDestFolder));
     });
 
     // Copies all ui resources
     gulp.task("imgres.copyImageResources", () => {
         return gulp
             .src(imageResourcesGlobs)
-            .pipe($.cached("copyImageResources"))
+
+            .pipe($.cached("imgres.copyImageResources"))
             .pipe(gulp.dest(path.join(resourcesDestFolder)));
     });
 
@@ -104,7 +159,6 @@ function gulptasksImageResources($, gulp, buildFolder) {
     gulp.task("imgres.copyImageResourcesOptimized", () => {
         return gulp
             .src(imageResourcesGlobs)
-            .pipe($.cached("imgres.copyImageResourcesOptimized"))
             .pipe(
                 $.if(
                     fname => fileMustBeLossless(fname.history[0]),
@@ -119,6 +173,8 @@ function gulptasksImageResources($, gulp, buildFolder) {
     gulp.task(
         "imgres.allOptimized",
         gulp.parallel(
+            "imgres.buildAtlas",
+            "imgres.atlasToJson",
             "imgres.atlasOptimized",
             "imgres.copyNonImageResources",
             "imgres.copyImageResourcesOptimized"
@@ -142,6 +198,7 @@ function gulptasksImageResources($, gulp, buildFolder) {
 }
 
 module.exports = {
+    rawImageResourcesGlobs,
     nonImageResourcesGlobs,
     imageResourcesGlobs,
     gulptasksImageResources,

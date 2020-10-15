@@ -1,10 +1,11 @@
 import { DrawParameters } from "./draw_parameters";
 import { Rectangle } from "./rectangle";
-import { epsilonCompare, round3Digits } from "./utils";
+import { round3Digits } from "./utils";
 
-const floorSpriteCoordinates = false;
+export const ORIGINAL_SPRITE_SCALE = "0.75";
+export const FULL_CLIP_RECT = new Rectangle(0, 0, 1, 1);
 
-const ORIGINAL_SCALE = "1";
+const EXTRUDE = 0.1;
 
 export class BaseSprite {
     /**
@@ -63,10 +64,9 @@ export class SpriteAtlasLink {
 export class AtlasSprite extends BaseSprite {
     /**
      *
-     * @param {object} param0
-     * @param {string} param0.spriteName
+     * @param {string} spriteName
      */
-    constructor({ spriteName = "sprite" }) {
+    constructor(spriteName = "sprite") {
         super();
         /** @type {Object.<string, SpriteAtlasLink>} */
         this.linksByResolution = {};
@@ -74,7 +74,7 @@ export class AtlasSprite extends BaseSprite {
     }
 
     getRawTexture() {
-        return this.linksByResolution[ORIGINAL_SCALE].atlas;
+        return this.linksByResolution[ORIGINAL_SPRITE_SCALE].atlas;
     }
 
     /**
@@ -86,11 +86,15 @@ export class AtlasSprite extends BaseSprite {
             assert(context instanceof CanvasRenderingContext2D, "Not a valid context");
         }
 
-        const link = this.linksByResolution[ORIGINAL_SCALE];
+        const link = this.linksByResolution[ORIGINAL_SPRITE_SCALE];
 
         assert(
             link,
-            "Link not known: " + ORIGINAL_SCALE + " (having " + Object.keys(this.linksByResolution) + ")"
+            "Link not known: " +
+                ORIGINAL_SPRITE_SCALE +
+                " (having " +
+                Object.keys(this.linksByResolution) +
+                ")"
         );
 
         const width = w || link.w;
@@ -158,7 +162,9 @@ export class AtlasSprite extends BaseSprite {
         const scale = parameters.desiredAtlasScale;
         const link = this.linksByResolution[scale];
 
-        assert(link, "Link not known: " + scale + " (having " + Object.keys(this.linksByResolution) + ")");
+        if (!link) {
+            assert(false, `Link not known: ${scale} (having ${Object.keys(this.linksByResolution)})`);
+        }
 
         const scaleW = w / link.w;
         const scaleH = h / link.h;
@@ -195,47 +201,79 @@ export class AtlasSprite extends BaseSprite {
             destH = intersection.h;
         }
 
-        // assert(epsilonCompare(scaleW, scaleH), "Sprite should be square for cached rendering");
+        parameters.context.drawImage(
+            link.atlas,
 
-        if (floorSpriteCoordinates) {
-            parameters.context.drawImage(
-                link.atlas,
+            // atlas src pos
+            srcX,
+            srcY,
 
-                // atlas src pos
-                Math.floor(srcX),
-                Math.floor(srcY),
+            // atlas src size
+            srcW,
+            srcH,
 
-                // atlas src size
-                Math.floor(srcW),
-                Math.floor(srcH),
+            // dest pos and size
+            destX - EXTRUDE,
+            destY - EXTRUDE,
+            destW + 2 * EXTRUDE,
+            destH + 2 * EXTRUDE
+        );
+    }
 
-                // dest pos
-                Math.floor(destX),
-                Math.floor(destY),
-
-                // dest size
-                Math.floor(destW),
-                Math.floor(destH)
-            );
-        } else {
-            parameters.context.drawImage(
-                link.atlas,
-
-                // atlas src pos
-                srcX,
-                srcY,
-
-                // atlas src siize
-                srcW,
-                srcH,
-
-                // dest pos and size
-                destX,
-                destY,
-                destW,
-                destH
-            );
+    /**
+     * Draws a subset of the sprite. Does NO culling
+     * @param {DrawParameters} parameters
+     * @param {number} x
+     * @param {number} y
+     * @param {number} w
+     * @param {number} h
+     * @param {Rectangle=} clipRect The rectangle in local space (0 ... 1) to draw of the image
+     */
+    drawCachedWithClipRect(parameters, x, y, w = null, h = null, clipRect = FULL_CLIP_RECT) {
+        if (G_IS_DEV) {
+            assert(parameters instanceof DrawParameters, "Not a valid context");
+            assert(!!w && w > 0, "Not a valid width:" + w);
+            assert(!!h && h > 0, "Not a valid height:" + h);
+            assert(clipRect, "No clip rect given!");
         }
+
+        const scale = parameters.desiredAtlasScale;
+        const link = this.linksByResolution[scale];
+
+        if (!link) {
+            assert(false, `Link not known: ${scale} (having ${Object.keys(this.linksByResolution)})`);
+        }
+
+        const scaleW = w / link.w;
+        const scaleH = h / link.h;
+
+        let destX = x + link.packOffsetX * scaleW + clipRect.x * w;
+        let destY = y + link.packOffsetY * scaleH + clipRect.y * h;
+        let destW = link.packedW * scaleW * clipRect.w;
+        let destH = link.packedH * scaleH * clipRect.h;
+
+        let srcX = link.packedX + clipRect.x * link.packedW;
+        let srcY = link.packedY + clipRect.y * link.packedH;
+        let srcW = link.packedW * clipRect.w;
+        let srcH = link.packedH * clipRect.h;
+
+        parameters.context.drawImage(
+            link.atlas,
+
+            // atlas src pos
+            srcX,
+            srcY,
+
+            // atlas src siize
+            srcW,
+            srcH,
+
+            // dest pos and size
+            destX - EXTRUDE,
+            destY - EXTRUDE,
+            destW + 2 * EXTRUDE,
+            destH + 2 * EXTRUDE
+        );
     }
 
     /**

@@ -11,6 +11,7 @@ module.exports = {
         );
         return commitHash.replace(/^\s+|\s+$/g, "");
     },
+
     getAllResourceImages() {
         return glob
             .sync("res/**/*.@(png|svg|jpg)", { cwd: ".." })
@@ -24,16 +25,12 @@ module.exports = {
             });
     },
 
-    getAllAtlasImages() {
-        return glob
-            .sync("res_built/atlas/*.png", { cwd: ".." })
-            .map(s => s.replace("res_built/atlas/", "res/"));
-    },
-
-    getAllSounds() {
-        return glob
-            .sync("res_built/sounds/**/*.mp3", { cwd: ".." })
-            .map(s => s.replace("res_built/sounds/", "res/sounds/"));
+    getTag() {
+        try {
+            return execSync("git describe --tag --exact-match").toString("ascii");
+        } catch (e) {
+            throw new Error('Current git HEAD is not a version tag');
+        }
     },
 
     getVersion() {

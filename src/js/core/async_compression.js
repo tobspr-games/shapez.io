@@ -1,7 +1,9 @@
 // @ts-ignore
 import CompressionWorker from "../webworkers/compression.worker";
+
 import { createLogger } from "./logging";
-import { compressX64 } from "./lzstring";
+import { round2Digits } from "./utils";
+
 const logger = createLogger("async_compression");
 
 export let compressionPrefix = String.fromCodePoint(1);
@@ -35,7 +37,6 @@ if (!checkCryptPrefix(compressionPrefix)) {
 
 class AsynCompression {
     constructor() {
-        /** @type {Worker} */
         this.worker = new CompressionWorker();
 
         this.currentJobId = 1000;
@@ -52,7 +53,15 @@ class AsynCompression {
             }
 
             const duration = performance.now() - jobData.startTime;
-            // log(this, "Got response from worker within", duration.toFixed(2), "ms");
+            logger.log(
+                "Got job",
+                jobId,
+                "response within",
+                round2Digits(duration),
+                "ms: ",
+                result.length,
+                "bytes"
+            );
             const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
             resolver(result);
@@ -72,12 +81,13 @@ class AsynCompression {
     }
 
     /**
-     * Compresses file
-     * @param {string} text
+     * Compresses any object
+     * @param {any} obj
      */
-    compressFileAsync(text) {
-        return this.internalQueueJob("compressFile", {
-            text,
+    compressObjectAsync(obj) {
+        logger.log("Compressing object async (optimized)");
+        return this.internalQueueJob("compressObject", {
+            obj,
             compressionPrefix,
         });
     }
@@ -100,6 +110,8 @@ class AsynCompression {
                 resolver: resolve,
                 startTime: performance.now(),
             };
+
+            logger.log("Posting job", job, "/", jobId);
             this.worker.postMessage({ jobId, job, data });
         });
     }

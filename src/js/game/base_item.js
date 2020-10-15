@@ -1,26 +1,9 @@
+import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject } from "../savegame/serialization";
-import { enumLayer } from "./root";
 
-/** @enum {string} */
-export const enumItemType = {
-    shape: "shape",
-    color: "color",
-    positiveEnergy: "positiveEnergy",
-    negativeEnergy: "negativeEnergy",
-
-    // Can be used for filters
-    genericEnergy: "genericEnergy",
-};
-
-/** @enum {enumLayer} */
-export const enumItemTypeToLayer = {
-    [enumItemType.shape]: enumLayer.regular,
-    [enumItemType.color]: enumLayer.regular,
-    [enumItemType.positiveEnergy]: enumLayer.wires,
-    [enumItemType.negativeEnergy]: enumLayer.wires,
-    [enumItemType.genericEnergy]: enumLayer.wires,
-};
+/** @type {ItemType[]} **/
+export const itemTypes = ["shape", "color", "boolean"];
 
 /**
  * Class for items on belts etc. Not an entity for performance reasons
@@ -39,10 +22,51 @@ export class BaseItem extends BasicSerializableObject {
         return {};
     }
 
-    /** @returns {enumItemType} */
+    /** @returns {ItemType} **/
     getItemType() {
         abstract;
+        return "shape";
+    }
+
+    /**
+     * Returns a string id of the item
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        abstract;
         return "";
+    }
+
+    /**
+     * Returns if the item equals the other itme
+     * @param {BaseItem} other
+     * @returns {boolean}
+     */
+    equals(other) {
+        if (this.getItemType() !== other.getItemType()) {
+            return false;
+        }
+        return this.equalsImpl(other);
+    }
+
+    /**
+     * Override for custom comparison
+     * @abstract
+     * @param {BaseItem} other
+     * @returns {boolean}
+     */
+    equalsImpl(other) {
+        abstract;
+        return false;
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        abstract;
     }
 
     /**
@@ -50,9 +74,24 @@ export class BaseItem extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
-     * @param {number=} size
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size) {}
+    drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        if (parameters.visibleRect.containsCircle(x, y, diameter / 2)) {
+            this.drawItemCenteredImpl(x, y, parameters, diameter);
+        }
+    }
+
+    /**
+     * INTERNAL
+     * @param {number} x
+     * @param {number} y
+     * @param {DrawParameters} parameters
+     * @param {number=} diameter
+     */
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        abstract;
+    }
 
     getBackgroundColorAsResource() {
         abstract;

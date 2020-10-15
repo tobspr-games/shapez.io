@@ -21,8 +21,6 @@ export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {}
 
     initialize() {
-        this.deletionMarker = Loader.getSprite("sprites/misc/deletion_marker.png");
-
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
         this.selectedUids = new Set();
@@ -50,6 +48,9 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {Entity} entity
      */
     onEntityDestroyed(entity) {
+        if (this.root.bulkOperationRunning) {
+            return;
+        }
         this.selectedUids.delete(entity.uid);
     }
 
@@ -92,14 +93,30 @@ export class HUDMassSelector extends BaseHUDPart {
 
     doDelete() {
         const entityUids = Array.from(this.selectedUids);
-        for (let i = 0; i < entityUids.length; ++i) {
-            const uid = entityUids[i];
-            const entity = this.root.entityMgr.findByUid(uid);
-            if (!this.root.logic.tryDeleteBuilding(entity)) {
-                logger.error("Error in mass delete, could not remove building");
-                this.selectedUids.delete(uid);
+
+        // Build mapping from uid to entity
+        /**
+         * @type {Map<number, Entity>}
+         */
+        const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
+
+        this.root.logic.performBulkOperation(() => {
+            for (let i = 0; i < entityUids.length; ++i) {
+                const uid = entityUids[i];
+                const entity = mapUidToEntity.get(uid);
+                if (!entity) {
+                    logger.error("Entity not found by uid:", uid);
+                    continue;
+                }
+
+                if (!this.root.logic.tryDeleteBuilding(entity)) {
+                    logger.error("Error in mass delete, could not remove building");
+                }
             }
-        }
+        });
+
+        // Clear uids later
+        this.selectedUids = new Set();
     }
 
     startCopy() {
@@ -278,10 +295,19 @@ export class HUDMassSelector extends BaseHUDPart {
 
             parameters.context.fillStyle = THEME.map.selectionOverlay;
 
+            const renderedUids = new Set();
+
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
+                        // Prevent rendering the overlay twice
+                        const uid = contents.uid;
+                        if (renderedUids.has(uid)) {
+                            continue;
+                        }
+                        renderedUids.add(uid);
+
                         const staticComp = contents.components.StaticMapEntity;
                         const bounds = staticComp.getTileSpaceBounds();
                         parameters.context.beginRoundedRect(

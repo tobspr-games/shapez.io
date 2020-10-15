@@ -21,7 +21,7 @@
         }
     }
 
-    $darkModeDialogBg: darken($darkModeGameBackground, 10);
+    $darkModeDialogBg: darken($darkModeGameBackground, 5);
 
     @include DarkThemeOverride {
         background: rgba($darkModeDialogBg, 0.9);
@@ -37,10 +37,10 @@
 
         > .dialogInner.optionChooserDialog .optionParent {
             .option {
-                background: #3d3f42;
+                background: $darkModeControlsBackground;
 
                 &:hover {
-                    background-color: #424348;
+                    background-color: lighten($darkModeControlsBackground, 5);
                 }
 
                 &.active {
@@ -55,6 +55,7 @@
         .dialogInner {
             opacity: 1;
         }
+        backdrop-filter: blur(D(3px));
     }
 
     .dialogInner {
@@ -78,7 +79,7 @@
         pointer-events: all;
 
         @include DarkThemeOverride {
-            background: #333438;
+            background: darken($darkModeControlsBackground, 5);
         }
 
         &.optionChooserDialog {
@@ -90,7 +91,9 @@
                     pointer-events: all;
                     cursor: pointer;
                     @include S(padding, 10px);
+
                     background: #eee;
+
                     transition: background-color 0.12s ease-in-out;
 
                     &:hover {
@@ -119,12 +122,15 @@
                 opacity: 0.7;
                 @include S(width, 20px);
                 @include S(height, 20px);
-                background: uiResource("icons/close.png") center center / 80% no-repeat;
                 cursor: pointer;
                 pointer-events: all;
                 transition: opacity 0.2s ease-in-out;
                 &:hover {
                     opacity: 0.4;
+                }
+                & {
+                    /* @load-async */
+                    background: uiResource("icons/close.png") center center / 80% no-repeat;
                 }
             }
         }
@@ -172,6 +178,29 @@
                     display: list-item;
                 }
             }
+
+            .ingameItemChooser {
+                @include S(margin, 10px, 0);
+                display: grid;
+                @include S(grid-column-gap, 3px);
+                @include S(grid-row-gap, 5px);
+                grid-template-columns: repeat(10, 1fr);
+                align-items: center;
+                justify-items: center;
+
+                canvas {
+                    pointer-events: all;
+                    @include S(width, 25px);
+                    @include S(height, 25px);
+                    position: relative;
+                    cursor: pointer;
+                    @include IncreasedClickArea(3px);
+
+                    &:hover {
+                        opacity: 0.9;
+                    }
+                }
+            }
         }
 
         > .buttons {
@@ -214,7 +243,7 @@
                         content: " ";
                         display: inline-block;
                         background: rgba(#fff, 0.6);
-                        @include InlineAnimation(5s linear) {
+                        @include InlineAnimation(3s linear) {
                             0% {
                                 width: 100%;
                             }

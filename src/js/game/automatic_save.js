@@ -1,6 +1,6 @@
-import { GameRoot } from "./root";
-import { globalConfig, IS_DEBUG } from "../core/config";
+import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
+import { GameRoot } from "./root";
 
 // How important it is that a savegame is created
 /**
@@ -12,9 +12,6 @@ export const enumSavePriority = {
 };
 
 const logger = createLogger("autosave");
-
-// Internals
-let MIN_INTERVAL_SECS = 60;
 
 export class AutomaticSave {
     constructor(root) {

@@ -1,13 +1,13 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { KEYMAPPINGS } from "../../key_action_mapper";
-import { IS_DEMO, globalConfig } from "../../../core/config";
-import { T } from "../../../translations";
-import { createLogger } from "../../../core/logging";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { Vector } from "../../../core/vector";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
+import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
+import { Vector } from "../../../core/vector";
+import { T } from "../../../translations";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { KEYMAPPINGS } from "../../key_action_mapper";
+import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -19,7 +19,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
     }
 
     startExport() {
-        if (IS_DEMO) {
+        if (!this.root.app.restrictionMgr.getIsExportingScreenshotsPossible()) {
             this.root.hud.parts.dialogs.showFeatureRestrictionInfo(T.demo.features.exportingBase);
             return;
         }
@@ -63,7 +63,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         }
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
-        const chunkScale = chunkSizePixels / (globalConfig.mapChunkSize * globalConfig.tileSize);
+        const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
         logger.log("Scale:", chunkScale);
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
@@ -79,15 +79,15 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         logger.log("Got buffer, rendering now ...");
 
         const visibleRect = new Rectangle(
-            minChunk.x * globalConfig.mapChunkSize * globalConfig.tileSize,
-            minChunk.y * globalConfig.mapChunkSize * globalConfig.tileSize,
-            dimensions.x * globalConfig.mapChunkSize * globalConfig.tileSize,
-            dimensions.y * globalConfig.mapChunkSize * globalConfig.tileSize
+            minChunk.x * globalConfig.mapChunkWorldSize,
+            minChunk.y * globalConfig.mapChunkWorldSize,
+            dimensions.x * globalConfig.mapChunkWorldSize,
+            dimensions.y * globalConfig.mapChunkWorldSize
         );
         const parameters = new DrawParameters({
             context,
             visibleRect,
-            desiredAtlasScale: "1",
+            desiredAtlasScale: 0.25,
             root: this.root,
             zoomLevel: chunkScale,
         });

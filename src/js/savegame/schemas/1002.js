@@ -29,7 +29,9 @@ export class SavegameInterface_V1002 extends SavegameInterface_V1001 {
             const entity = entities[i];
             const beltComp = entity.components.Belt;
             const ejectorComp = entity.components.ItemEjector;
+
             if (beltComp && ejectorComp) {
+                // @ts-ignore
                 ejectorComp.instantEject = true;
             }
         }

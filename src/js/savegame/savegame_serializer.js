@@ -1,18 +1,20 @@
-/* typehints:start */
-import { Component } from "../game/component";
-import { GameRoot } from "../game/root";
-/* typehints:end */
-
 import { ExplainedResult } from "../core/explained_result";
 import { createLogger } from "../core/logging";
-// import { BuildingComponent } from "../components/impl/building";
 import { gComponentRegistry } from "../core/global_registries";
 import { SerializerInternal } from "./serializer_internal";
+
+/**
+ * @typedef {import("../game/component").Component} Component
+ * @typedef {import("../game/component").StaticComponent} StaticComponent
+ * @typedef {import("../game/entity").Entity} Entity
+ * @typedef {import("../game/root").GameRoot} GameRoot
+ * @typedef {import("../savegame/savegame_typedefs").SerializedGame} SerializedGame
+ */
 
 const logger = createLogger("savegame_serializer");
 
 /**
- * Allows to serialize a savegame
+ * Serializes a savegame
  */
 export class SavegameSerializer {
     constructor() {
@@ -26,7 +28,7 @@ export class SavegameSerializer {
      * @returns {object}
      */
     generateDumpFromGameRoot(root, sanityChecks = true) {
-        // Now store generic savegame payload
+        /** @type {SerializedGame} */
         const data = {
             camera: root.camera.serialize(),
             time: root.time.serialize(),
@@ -35,12 +37,11 @@ export class SavegameSerializer {
             hubGoals: root.hubGoals.serialize(),
             pinnedShapes: root.hud.parts.pinnedShapes.serialize(),
             waypoints: root.hud.parts.waypoints.serialize(),
+            entities: this.internal.serializeEntityArray(root.entityMgr.entities),
             beltPaths: root.systemMgr.systems.belt.serializePaths(),
         };
 
-        data.entities = this.internal.serializeEntityArray(root.entityMgr.entities);
-
-        if (!G_IS_RELEASE) {
+        if (G_IS_DEV) {
             if (sanityChecks) {
                 // Sanity check
                 const sanity = this.verifyLogicalErrors(data);
@@ -55,7 +56,7 @@ export class SavegameSerializer {
 
     /**
      * Verifies if there are logical errors in the savegame
-     * @param {object} savegame
+     * @param {SerializedGame} savegame
      * @returns {ExplainedResult}
      */
     verifyLogicalErrors(savegame) {
@@ -63,50 +64,47 @@ export class SavegameSerializer {
             return ExplainedResult.bad("Savegame has no entities");
         }
 
-        const seenUids = [];
+        const seenUids = new Set();
 
         // Check for duplicate UIDS
-        for (const entityListId in savegame.entities) {
-            for (let i = 0; i < savegame.entities[entityListId].length; ++i) {
-                const list = savegame.entities[entityListId][i];
-                for (let k = 0; k < list.length; ++k) {
-                    const entity = list[k];
-                    const uid = entity.uid;
-                    if (!Number.isInteger(uid)) {
-                        return ExplainedResult.bad("Entity has invalid uid: " + uid);
-                    }
-                    if (seenUids.indexOf(uid) >= 0) {
-                        return ExplainedResult.bad("Duplicate uid " + uid);
-                    }
-                    seenUids.push(uid);
+        for (let i = 0; i < savegame.entities.length; ++i) {
+            /** @type {Entity} */
+            const entity = savegame.entities[i];
 
-                    // Verify components
-                    if (!entity.components) {
-                        return ExplainedResult.bad(
-                            "Entity is missing key 'components': " + JSON.stringify(entity)
-                        );
-                    }
-                    const components = entity.components;
-                    for (const componentId in components) {
-                        // Verify component data
-                        const componentData = components[componentId];
-                        const componentClass = gComponentRegistry.findById(componentId);
+            const uid = entity.uid;
+            if (!Number.isInteger(uid)) {
+                return ExplainedResult.bad("Entity has invalid uid: " + uid);
+            }
+            if (seenUids.has(uid)) {
+                return ExplainedResult.bad("Duplicate uid " + uid);
+            }
+            seenUids.add(uid);
 
-                        // Check component id is known
-                        if (!componentClass) {
-                            return ExplainedResult.bad("Unknown component id: " + componentId);
-                        }
+            // Verify components
+            if (!entity.components) {
+                return ExplainedResult.bad("Entity is missing key 'components': " + JSON.stringify(entity));
+            }
 
-                        // Check component data is ok
-                        const componentVerifyError = /** @type {typeof Component} */ (componentClass).verify(
-                            componentData
-                        );
-                        if (componentVerifyError) {
-                            return ExplainedResult.bad(
-                                "Component " + componentId + " has invalid data: " + componentVerifyError
-                            );
-                        }
-                    }
+            const components = entity.components;
+            for (const componentId in components) {
+                const componentClass = gComponentRegistry.findById(componentId);
+
+                // Check component id is known
+                if (!componentClass) {
+                    return ExplainedResult.bad("Unknown component id: " + componentId);
+                }
+
+                // Verify component data
+                const componentData = components[componentId];
+                const componentVerifyError = /** @type {StaticComponent} */ (componentClass).verify(
+                    componentData
+                );
+
+                // Check component data is ok
+                if (componentVerifyError) {
+                    return ExplainedResult.bad(
+                        "Component " + componentId + " has invalid data: " + componentVerifyError
+                    );
                 }
             }
         }
@@ -116,7 +114,7 @@ export class SavegameSerializer {
 
     /**
      * Tries to load the savegame from a given dump
-     * @param {import("./savegame_typedefs").SerializedGame} savegame
+     * @param {SerializedGame} savegame
      * @param {GameRoot} root
      * @returns {ExplainedResult}
      */
@@ -132,7 +130,7 @@ export class SavegameSerializer {
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
         errorReason = errorReason || root.map.deserialize(savegame.map);
-        errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals);
+        errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals, root);
         errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
         errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
         errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);

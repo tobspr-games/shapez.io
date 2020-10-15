@@ -13,7 +13,7 @@ import { round1Digit } from "./utils";
 
 const logger = createLogger("buffers");
 
-const bufferGcDurationSeconds = 10;
+const bufferGcDurationSeconds = 0.5;
 
 export class BufferMaintainer {
     /**
@@ -27,6 +27,31 @@ export class BufferMaintainer {
 
         this.iterationIndex = 1;
         this.lastIteration = 0;
+
+        this.root.signals.gameFrameStarted.add(this.update, this);
+    }
+
+    /**
+     * Returns the buffer stats
+     */
+    getStats() {
+        let stats = {
+            rootKeys: 0,
+            subKeys: 0,
+            vramBytes: 0,
+        };
+        this.cache.forEach((subCache, key) => {
+            ++stats.rootKeys;
+
+            subCache.forEach((cacheEntry, subKey) => {
+                ++stats.subKeys;
+
+                const canvas = cacheEntry.canvas;
+                stats.vramBytes += canvas.width * canvas.height * 4;
+            });
+        });
+
+        return stats;
     }
 
     /**
@@ -61,27 +86,29 @@ export class BufferMaintainer {
         // Make sure our backlog never gets too big
         clearBufferBacklog();
 
-        const bufferStats = getBufferStats();
-        const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
-        logger.log(
-            "GC: Remove",
-            (deletedKeys + "").padStart(4),
-            ", Remain",
-            (totalKeys + "").padStart(4),
-            "(",
-            (bufferStats.bufferCount + "").padStart(4),
-            "total",
-            ")",
+        // if (G_IS_DEV) {
+        //     const bufferStats = getBufferStats();
+        //     const mbUsed = round1Digit(bufferStats.vramUsage / (1024 * 1024));
+        //     logger.log(
+        //         "GC: Remove",
+        //         (deletedKeys + "").padStart(4),
+        //         ", Remain",
+        //         (totalKeys + "").padStart(4),
+        //         "(",
+        //         (bufferStats.bufferCount + "").padStart(4),
+        //         "total",
+        //         ")",
 
-            "(",
-            (bufferStats.backlog + "").padStart(4),
-            "backlog",
-            ")",
+        //         "(",
+        //         (bufferStats.backlogSize + "").padStart(4),
+        //         "backlog",
+        //         ")",
 
-            "VRAM:",
-            mbUsed,
-            "MB"
-        );
+        //         "VRAM:",
+        //         mbUsed,
+        //         "MB"
+        //     );
+        // }
 
         ++this.iterationIndex;
     }
@@ -95,15 +122,18 @@ export class BufferMaintainer {
     }
 
     /**
-     *
-     * @param {string} key
-     * @param {string} subKey
-     * @param {function(HTMLCanvasElement, CanvasRenderingContext2D, number, number, number, object?) : void} redrawMethod
-     * @param {object=} additionalParams
+     * @param {object} param0
+     * @param {string} param0.key
+     * @param {string} param0.subKey
+     * @param {number} param0.w
+     * @param {number} param0.h
+     * @param {number} param0.dpi
+     * @param {function(HTMLCanvasElement, CanvasRenderingContext2D, number, number, number, object?) : void} param0.redrawMethod
+     * @param {object=} param0.additionalParams
      * @returns {HTMLCanvasElement}
      *
      */
-    getForKey(key, subKey, w, h, dpi, redrawMethod, additionalParams) {
+    getForKey({ key, subKey, w, h, dpi, redrawMethod, additionalParams }) {
         // First, create parent key
         let parent = this.cache.get(key);
         if (!parent) {

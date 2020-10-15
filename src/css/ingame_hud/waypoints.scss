@@ -34,6 +34,20 @@
     flex-direction: column;
     @include DarkThemeInvert();
 
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: all;
+    @include S(padding-right, 5px);
+    @include S(padding-bottom, 5px);
+    @include S(padding-top, 5px);
+
+    // Scrollbar
+    &::-webkit-scrollbar {
+        @include S(width, 2px);
+        @include S(height, 6px);
+    }
+
     .waypoint {
         @include SuperSmallText;
         pointer-events: all;
@@ -43,7 +57,10 @@
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        background: uiResource("icons/waypoint.png") left 50% / #{D(8px)} no-repeat;
+        & {
+            /* @load-async */
+            background: uiResource("icons/waypoint.png") left 50% / #{D(8px)} no-repeat;
+        }
         opacity: 0.7;
         @include S(margin-bottom, 1px);
         font-weight: bold;
@@ -56,7 +73,10 @@
             @include S(width, 10px);
             @include S(height, 10px);
             @include S(margin-left, 4px);
-            background: uiResource("icons/edit_key.png") center center / 70% no-repeat;
+            & {
+                /* @load-async */
+                background: uiResource("icons/edit_key.png") center center / 70% no-repeat;
+            }
             pointer-events: all;
             cursor: pointer;
             position: relative;

@@ -12,7 +12,8 @@ import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
 import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { enumLayer } from "../../root";
+import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
+import { MetaHubBuilding } from "../../buildings/hub";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -120,6 +121,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.storyGoalCompleted.add(() => this.currentMetaBuilding.set(null));
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
@@ -131,12 +133,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
     /**
      * Called when the edit mode got changed
-     * @param {enumLayer} editMode
+     * @param {Layer} layer
      */
-    onEditModeChanged(editMode) {
+    onEditModeChanged(layer) {
         const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding) {
-            if (metaBuilding.getLayer() !== editMode) {
+            if (metaBuilding.getLayer() !== layer) {
                 // This layer doesn't fit the edit mode anymore
                 this.currentMetaBuilding.set(null);
             }
@@ -252,6 +254,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @see BaseHUDPart.update
      */
     update() {
+        // Abort placement if a dialog was shown in the meantime
+        if (this.root.hud.hasBlockingOverlayOpen()) {
+            this.abortPlacement();
+            return;
+        }
+
         // Always update since the camera might have moved
         const mousePos = this.root.app.mousePosition;
         if (mousePos) {
@@ -288,7 +296,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
-            return;
+            return false;
         }
 
         const worldPos = this.root.camera.screenToWorld(mousePosition);
@@ -297,8 +305,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
+                return true;
             }
         }
+        return false;
     }
 
     /**
@@ -324,10 +334,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
 
             // Check if there's a shape or color item below, if so select the miner
-            if (tileBelow) {
+            if (
+                tileBelow &&
+                this.root.app.settings.getAllSettings().pickMinerOnPatch &&
+                this.root.currentLayer === "regular"
+            ) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
-                // Select chained miner if available, since thats always desired once unlocked
+                // Select chained miner if available, since that's always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
                     this.currentVariant.set(enumMinerVariants.chainable);
                 }
@@ -338,101 +352,33 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         }
 
         // Try to extract the building
-        const extracted = this.hack_reconstructMetaBuildingAndVariantFromBuilding(contents);
+        const buildingCode = contents.components.StaticMapEntity.code;
+        const extracted = getBuildingDataFromCode(buildingCode);
+
+        // Disable pipetting the hub
+        if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
+            this.currentMetaBuilding.set(null);
+            return;
+        }
 
         // If the building we are picking is the same as the one we have, clear the cursor.
         if (
-            !extracted ||
-            (extracted.metaBuilding === this.currentMetaBuilding.get() &&
-                extracted.variant === this.currentVariant.get())
+            this.currentMetaBuilding.get() &&
+            extracted.metaInstance.getId() === this.currentMetaBuilding.get().getId() &&
+            extracted.variant === this.currentVariant.get()
         ) {
             this.currentMetaBuilding.set(null);
             return;
         }
 
-        this.currentMetaBuilding.set(extracted.metaBuilding);
+        this.currentMetaBuilding.set(extracted.metaInstance);
         this.currentVariant.set(extracted.variant);
         this.currentBaseRotation = contents.components.StaticMapEntity.rotation;
     }
 
     /**
-     * HACK!
-     *
-     * This attempts to reconstruct the meta building and its variant from a given entity
-     * @param {Entity} entity
-     * @returns {{ metaBuilding: MetaBuilding, variant: string }}
+     * Switches the side for the direction lock manually
      */
-    hack_reconstructMetaBuildingAndVariantFromBuilding(entity) {
-        if (entity.components.Hub) {
-            // Hub is not copyable
-            return null;
-        }
-
-        const matches = [];
-        const metaBuildings = gMetaBuildingRegistry.entries;
-        for (let i = 0; i < metaBuildings.length; ++i) {
-            const metaBuilding = metaBuildings[i];
-            const availableVariants = metaBuilding.getAvailableVariants(this.root);
-            checkVariant: for (let k = 0; k < availableVariants.length; ++k) {
-                const variant = availableVariants[k];
-                let unplaced = metaBuilding.createEntity({
-                    root: this.root,
-                    variant,
-                    origin: new Vector(0, 0),
-                    rotation: 0,
-                    originalRotation: 0,
-                    rotationVariant: 0,
-                });
-
-                // Compare if both entities share the same components
-                for (let component in entity.components) {
-                    if ((entity.components[component] == null) !== (unplaced.components[component] == null)) {
-                        continue checkVariant;
-                    }
-                }
-
-                // Check for same item processor
-                if (
-                    entity.components.ItemProcessor &&
-                    entity.components.ItemProcessor.type != unplaced.components.ItemProcessor.type
-                ) {
-                    continue checkVariant;
-                }
-
-                // Check for underground belt
-                if (
-                    entity.components.UndergroundBelt &&
-                    entity.components.UndergroundBelt.tier != unplaced.components.UndergroundBelt.tier
-                ) {
-                    continue checkVariant;
-                }
-
-                // Check for same sprite key - except for underground belts
-                // since the sprite may vary here
-                if (
-                    !entity.components.UndergroundBelt &&
-                    entity.components.StaticMapEntity.spriteKey !=
-                        unplaced.components.StaticMapEntity.spriteKey
-                ) {
-                    continue checkVariant;
-                }
-                matches.push({ metaBuilding, variant });
-            }
-        }
-
-        if (matches.length == 1) {
-            const staticEntity = entity.components.StaticMapEntity;
-            const key = staticEntity.spriteKey || staticEntity.blueprintSpriteKey;
-            assert(
-                key &&
-                    key.includes(matches[0].metaBuilding.id) &&
-                    (matches[0].variant === defaultBuildingVariant || key.includes(matches[0].variant))
-            );
-            return matches[0];
-        }
-        return null;
-    }
-
     switchDirectionLockSide() {
         this.currentDirectionLockSide = 1 - this.currentDirectionLockSide;
     }
@@ -516,11 +462,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentVariant.set(defaultBuildingVariant);
         } else {
             const availableVariants = metaBuilding.getAvailableVariants(this.root);
-            const index = availableVariants.indexOf(this.currentVariant.get());
-            assert(
-                index >= 0,
-                "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
-            );
+            let index = availableVariants.indexOf(this.currentVariant.get());
+            if (index < 0) {
+                index = 0;
+                console.warn("Invalid variant selected:", this.currentVariant.get());
+            }
             const newIndex = (index + 1) % availableVariants.length;
             const newVariant = availableVariants[newIndex];
             this.setVariant(newVariant);
@@ -654,7 +600,17 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            const preferredVariant = this.preferredVariants[metaBuilding.getId()];
+
+            // Choose last stored variant if possible, otherwise the default one
+            let variant;
+            if (!preferredVariant || !availableVariants.includes(preferredVariant)) {
+                variant = availableVariants[0];
+            } else {
+                variant = preferredVariant;
+            }
+
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);
@@ -665,7 +621,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     origin: new Vector(0, 0),
                     rotation: 0,
                     tileSize: metaBuilding.getDimensions(this.currentVariant.get()).copy(),
-                    blueprintSpriteKey: "",
+                    code: getCodeFromBuildingData(metaBuilding, variant, 0),
                 })
             );
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
@@ -708,13 +664,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // Deletion
         if (
             button === enumMouseButton.right &&
-            (!metaBuilding || this.root.app.settings.getSetting("canDeleteWhileBuilding"))
+            (!metaBuilding || !this.root.app.settings.getAllSettings().clearCursorOnDeleteWhilePlacing)
         ) {
             this.currentlyDragging = true;
             this.currentlyDeleting = true;
             this.lastDragTile = this.root.camera.screenToWorld(pos).toTileSpace();
-            this.deleteBelowCursor();
-            return STOP_PROPAGATION;
+            if (this.deleteBelowCursor()) {
+                return STOP_PROPAGATION;
+            }
         }
 
         // Cancel placement

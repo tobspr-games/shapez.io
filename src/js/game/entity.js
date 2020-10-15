@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { Component } from "./component";
 /* typehints:end */
 
-import { GameRoot, enumLayer } from "./root";
+import { GameRoot } from "./root";
 import { globalConfig } from "../core/config";
 import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -11,6 +11,7 @@ import { EntityComponentStorage } from "./entity_components";
 import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { gComponentRegistry } from "../core/global_registries";
+import { getBuildingDataFromCode } from "./building_codes";
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -36,8 +37,9 @@ export class Entity extends BasicSerializableObject {
 
         /**
          * On which layer this entity is
+         * @type {Layer}
          */
-        this.layer = enumLayer.regular;
+        this.layer = "regular";
 
         /**
          * Internal entity unique id, set by the @see EntityManager
@@ -76,29 +78,31 @@ export class Entity extends BasicSerializableObject {
     static getSchema() {
         return {
             uid: types.uint,
-            components: types.keyValueMap(types.objData(gComponentRegistry)),
-            layer: types.enum(enumLayer),
+            components: types.keyValueMap(types.objData(gComponentRegistry), false),
         };
     }
 
     /**
-     * Returns a clone of this entity without contents
+     * Returns a clone of this entity
      */
-    duplicateWithoutContents() {
-        const clone = new Entity(this.root);
-        for (const key in this.components) {
-            clone.components[key] = this.components[key].duplicateWithoutContents();
-        }
-        clone.layer = this.layer;
-        return clone;
-    }
+    clone() {
+        const staticComp = this.components.StaticMapEntity;
+        const buildingData = getBuildingDataFromCode(staticComp.code);
 
-    /**
-     * Internal destroy callback
-     */
-    internalDestroyCallback() {
-        assert(!this.destroyed, "Can not destroy entity twice");
-        this.destroyed = true;
+        const clone = buildingData.metaInstance.createEntity({
+            root: this.root,
+            origin: staticComp.origin,
+            originalRotation: staticComp.originalRotation,
+            rotation: staticComp.rotation,
+            rotationVariant: buildingData.rotationVariant,
+            variant: buildingData.variant,
+        });
+
+        for (const key in this.components) {
+            /** @type {Component} */ (this.components[key]).copyAdditionalStateTo(clone.components[key]);
+        }
+
+        return clone;
     }
 
     /**
@@ -162,6 +166,7 @@ export class Entity extends BasicSerializableObject {
                 context.stroke();
             }
         }
+
         if (G_IS_DEV && staticComp && globalConfig.debug.showAcceptorEjectors) {
             const ejectorComp = this.components.ItemEjector;
 
@@ -169,9 +174,6 @@ export class Entity extends BasicSerializableObject {
                 const ejectorSprite = Loader.getSprite("sprites/debug/ejector_slot.png");
                 for (let i = 0; i < ejectorComp.slots.length; ++i) {
                     const slot = ejectorComp.slots[i];
-                    if (slot.layer !== this.root.currentLayer) {
-                        continue;
-                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     const direction = staticComp.localDirectionToWorld(slot.direction);
                     const directionVector = enumDirectionToVector[direction];
@@ -191,12 +193,9 @@ export class Entity extends BasicSerializableObject {
             const acceptorComp = this.components.ItemAcceptor;
 
             if (acceptorComp) {
-                const acceptorSprite = Loader.getSprite("sprites/debug/acceptor_slot.png");
+                const acceptorSprite = Loader.getSprite("sprites/misc/acceptor_slot.png");
                 for (let i = 0; i < acceptorComp.slots.length; ++i) {
                     const slot = acceptorComp.slots[i];
-                    if (slot.layer !== this.root.currentLayer) {
-                        continue;
-                    }
                     const slotTile = staticComp.localTileToWorld(slot.pos);
                     for (let k = 0; k < slot.directions.length; ++k) {
                         const direction = staticComp.localDirectionToWorld(slot.directions[k]);

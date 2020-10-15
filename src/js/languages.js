@@ -81,6 +81,13 @@ export const LANGUAGES = {
         region: "",
     },
 
+    "tr": {
+        name: "Türkçe",
+        data: require("./built-temp/base-tr.json"),
+        code: "tr",
+        region: "",
+    },
+
     "zh-CN": {
         // simplified
         name: "中文简体",
@@ -101,6 +108,13 @@ export const LANGUAGES = {
         name: "Svenska",
         data: require("./built-temp/base-sv.json"),
         code: "sv",
+        region: "",
+    },
+
+    "da": {
+        name: "Dansk",
+        data: require("./built-temp/base-da.json"),
+        code: "da",
         region: "",
     },
 };

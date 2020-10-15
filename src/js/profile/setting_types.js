@@ -7,19 +7,30 @@ import { T } from "../translations";
 
 const logger = createLogger("setting_types");
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 export class BaseSetting {
     /**
      *
      * @param {string} id
      * @param {string} categoryId
      * @param {function(Application, any):void} changeCb
-     * @param {boolean} enabled
+     * @param {function(Application) : boolean=} enabledCb
      */
-    constructor(id, categoryId, changeCb, enabled) {
+    constructor(id, categoryId, changeCb, enabledCb = null) {
         this.id = id;
         this.categoryId = categoryId;
         this.changeCb = changeCb;
-        this.enabled = enabled;
+        this.enabledCb = enabledCb;
 
         /** @type {Application} */
         this.app = null;
@@ -39,8 +50,9 @@ export class BaseSetting {
     }
 
     /**
+     * Binds all parameters
      * @param {Application} app
-     * @param {Element} element
+     * @param {HTMLElement} element
      * @param {any} dialogs
      */
     bind(app, element, dialogs) {
@@ -49,19 +61,37 @@ export class BaseSetting {
         this.dialogs = dialogs;
     }
 
-    getHtml() {
+    /**
+     * Returns the HTML for this setting
+     * @param {Application} app
+     */
+    getHtml(app) {
         abstract;
         return "";
+    }
+
+    /**
+     * Returns whether this setting is enabled and available
+     * @param {Application} app
+     */
+    getIsAvailable(app) {
+        return this.enabledCb ? this.enabledCb(app) : true;
     }
 
     syncValueToElement() {
         abstract;
     }
 
+    /**
+     * Attempts to modify the setting
+     */
     modify() {
         abstract;
     }
 
+    /**
+     * Shows the dialog that a restart is required
+     */
     showRestartRequiredDialog() {
         const { restart } = this.dialogs.showInfo(
             T.dialogs.restartRequired.title,
@@ -74,6 +104,7 @@ export class BaseSetting {
     }
 
     /**
+     * Validates the set value
      * @param {any} value
      * @returns {boolean}
      */
@@ -96,10 +127,10 @@ export class EnumSetting extends BaseSetting {
             iconPrefix = null,
             changeCb = null,
             magicValue = null,
-            enabled = true,
+            enabledCb = null,
         }
     ) {
-        super(id, category, changeCb, enabled);
+        super(id, category, changeCb, enabledCb);
 
         this.options = options;
         this.valueGetter = valueGetter;
@@ -110,10 +141,14 @@ export class EnumSetting extends BaseSetting {
         this.magicValue = magicValue;
     }
 
-    getHtml() {
+    /**
+     * @param {Application} app
+     */
+    getHtml(app) {
+        const available = this.getIsAvailable(app);
         return `
-            <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
-                ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
+            <div class="setting cardbox ${available ? "enabled" : "disabled"}">
+                ${available ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
                 <div class="row">
                     <label>${T.settings.labels[this.id].title}</label>
                     <div class="value enum" data-setting="${this.id}"></div>
@@ -180,15 +215,19 @@ export class EnumSetting extends BaseSetting {
 }
 
 export class BoolSetting extends BaseSetting {
-    constructor(id, category, changeCb = null, enabled = true) {
-        super(id, category, changeCb, enabled);
+    constructor(id, category, changeCb = null, enabledCb = null) {
+        super(id, category, changeCb, enabledCb);
     }
 
-    getHtml() {
+    /**
+     * @param {Application} app
+     */
+    getHtml(app) {
+        const available = this.getIsAvailable(app);
         return `
-        <div class="setting cardbox ${this.enabled ? "enabled" : "disabled"}">
-            ${this.enabled ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
-                
+        <div class="setting cardbox ${available ? "enabled" : "disabled"}">
+            ${available ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
+
             <div class="row">
                 <label>${T.settings.labels[this.id].title}</label>
                 <div class="value checkbox checked" data-setting="${this.id}">
@@ -218,5 +257,109 @@ export class BoolSetting extends BaseSetting {
 
     validate(value) {
         return typeof value === "boolean";
+    }
+}
+
+export class RangeSetting extends BaseSetting {
+    constructor(
+        id,
+        category,
+        changeCb = null,
+        defaultValue = 1.0,
+        minValue = 0,
+        maxValue = 1.0,
+        stepSize = 0.0001,
+        enabledCb = null
+    ) {
+        super(id, category, changeCb, enabledCb);
+
+        this.defaultValue = defaultValue;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.stepSize = stepSize;
+    }
+
+    /**
+     * @param {Application} app
+     */
+    getHtml(app) {
+        const available = this.getIsAvailable(app);
+        return `
+        <div class="setting cardbox ${available ? "enabled" : "disabled"}">
+            ${available ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
+
+            <div class="row">
+                <label>${T.settings.labels[this.id].title}</label>
+                <div class="value rangeInputContainer noPressEffect" data-setting="${this.id}">
+                    <label>${this.defaultValue}</label>
+                    <input class="rangeInput" type="range" value="${this.defaultValue}" min="${
+            this.minValue
+        }" max="${this.maxValue}" step="${this.stepSize}">
+                </div>
+            </div>
+            <div class="desc">
+                ${T.settings.labels[this.id].description}
+            </div>
+        </div>`;
+    }
+
+    bind(app, element, dialogs) {
+        this.app = app;
+        this.element = element;
+        this.dialogs = dialogs;
+
+        this.getRangeInputElement().addEventListener("input", () => {
+            this.updateLabels();
+        });
+
+        this.getRangeInputElement().addEventListener("change", () => {
+            this.modify();
+        });
+    }
+
+    syncValueToElement() {
+        const value = this.app.settings.getSetting(this.id);
+        this.setElementValue(value);
+    }
+
+    /**
+     * Sets the elements value to the given value
+     * @param {number} value
+     */
+    setElementValue(value) {
+        const rangeInput = this.getRangeInputElement();
+        const rangeLabel = this.element.querySelector("label");
+        rangeInput.value = String(value);
+        rangeLabel.innerHTML = T.settings.rangeSliderPercentage.replace(
+            "<amount>",
+            String(Math.round(value * 100.0))
+        );
+    }
+
+    updateLabels() {
+        const value = Number(this.getRangeInputElement().value);
+        this.setElementValue(value);
+    }
+
+    /**
+     * @returns {HTMLInputElement}
+     */
+    getRangeInputElement() {
+        return this.element.querySelector("input.rangeInput");
+    }
+
+    modify() {
+        const rangeInput = this.getRangeInputElement();
+        const newValue = Math.round(Number(rangeInput.value) * 100.0) / 100.0;
+        this.app.settings.updateSetting(this.id, newValue);
+        this.syncValueToElement();
+        console.log("SET", newValue);
+        if (this.changeCb) {
+            this.changeCb(this.app, newValue);
+        }
+    }
+
+    validate(value) {
+        return typeof value === "number" && value >= this.minValue && value <= this.maxValue;
     }
 }

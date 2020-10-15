@@ -1,4 +1,4 @@
-import { formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
@@ -8,10 +8,15 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { enumItemType } from "../base_item";
 
 /** @enum {string} */
-export const enumRotaterVariants = { ccw: "ccw" };
+export const enumRotaterVariants = { ccw: "ccw", rotate180: "rotate180" };
+
+const overlayMatrices = {
+    [defaultBuildingVariant]: generateMatrixRotations([0, 1, 1, 1, 1, 0, 0, 1, 1]),
+    [enumRotaterVariants.ccw]: generateMatrixRotations([1, 1, 0, 0, 1, 1, 1, 1, 0]),
+    [enumRotaterVariants.rotate180]: generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
+};
 
 export class MetaRotaterBuilding extends MetaBuilding {
     constructor() {
@@ -23,17 +28,40 @@ export class MetaRotaterBuilding extends MetaBuilding {
     }
 
     /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        const matrix = overlayMatrices[variant];
+        if (matrix) {
+            return matrix[rotation];
+        }
+        return null;
+    }
+
+    /**
      * @param {GameRoot} root
      * @param {string} variant
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
-        const speed = root.hubGoals.getProcessorBaseSpeed(
-            variant === enumRotaterVariants.ccw
-                ? enumItemProcessorTypes.rotaterCCW
-                : enumItemProcessorTypes.rotater
-        );
-        return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+        switch (variant) {
+            case defaultBuildingVariant: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+            case enumRotaterVariants.ccw: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+            case enumRotaterVariants.rotate180: {
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180);
+                return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
+            }
+        }
     }
 
     /**
@@ -41,10 +69,14 @@ export class MetaRotaterBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
+        let variants = [defaultBuildingVariant];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw)) {
-            return [defaultBuildingVariant, enumRotaterVariants.ccw];
+            variants.push(enumRotaterVariants.ccw);
         }
-        return super.getAvailableVariants(root);
+        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_180)) {
+            variants.push(enumRotaterVariants.rotate180);
+        }
+        return variants;
     }
 
     /**
@@ -77,7 +109,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                 ],
             })
@@ -98,6 +130,10 @@ export class MetaRotaterBuilding extends MetaBuilding {
             }
             case enumRotaterVariants.ccw: {
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+                break;
+            }
+            case enumRotaterVariants.rotate180: {
+                entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater180;
                 break;
             }
             default:

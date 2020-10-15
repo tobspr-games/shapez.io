@@ -1,13 +1,11 @@
 import { BaseHUDPart } from "../base_hud_part";
-import { makeDiv, formatSeconds, formatBigNumberFull } from "../../../core/utils";
+import { makeDiv, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { InputReceiver } from "../../../core/input_receiver";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { ItemProcessorComponent } from "../../components/item_processor";
 import { BeltComponent } from "../../components/belt";
-import { IS_DEMO } from "../../../core/config";
 
 export class HUDSettingsMenu extends BaseHUDPart {
     createElements(parent) {
@@ -23,7 +21,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
             <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
             <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
             <strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>
-            
+
             `
         );
 
@@ -31,42 +29,37 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         const buttons = [
             {
-                title: T.ingame.settingsMenu.buttons.continue,
+                id: "continue",
                 action: () => this.close(),
             },
             {
-                title: T.ingame.settingsMenu.buttons.settings,
+                id: "settings",
                 action: () => this.goToSettings(),
             },
             {
-                title: T.ingame.settingsMenu.buttons.menu,
+                id: "menu",
                 action: () => this.returnToMenu(),
             },
         ];
 
         for (let i = 0; i < buttons.length; ++i) {
-            const { title, action } = buttons[i];
+            const { action, id } = buttons[i];
 
             const element = document.createElement("button");
             element.classList.add("styledButton");
-            element.innerText = title;
+            element.classList.add(id);
             this.buttonContainer.appendChild(element);
 
             this.trackClicks(element, action);
         }
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     returnToMenu() {
-        // if (IS_DEMO) {
-        //     const { cancel, deleteGame } = this.root.hud.parts.dialogs.showWarning(
-        //         T.dialogs.leaveNotPossibleInDemo.title,
-        //         T.dialogs.leaveNotPossibleInDemo.desc,
-        //         ["cancel:good", "deleteGame:bad"]
-        //     );
-        //     deleteGame.add(() => this.root.gameState.goBackToMenu());
-        // } else {
         this.root.gameState.goBackToMenu();
-        // }
     }
 
     goToSettings() {
@@ -95,34 +88,33 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.close();
     }
 
-    cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
-    }
-
     show() {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
-        // this.background.classList.add("visible");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
         const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
-        this.statsElement.querySelector(".playtime").innerText = T.global.time.xMinutes.replace(
-            "<x>",
-            "" + totalMinutesPlayed
-        );
 
-        this.statsElement.querySelector(".buildingsPlaced").innerText = formatBigNumberFull(
+        /** @type {HTMLElement} */
+        const playtimeElement = this.statsElement.querySelector(".playtime");
+        /** @type {HTMLElement} */
+        const buildingsPlacedElement = this.statsElement.querySelector(".buildingsPlaced");
+        /** @type {HTMLElement} */
+        const beltsPlacedElement = this.statsElement.querySelector(".beltsPlaced");
+
+        playtimeElement.innerText = T.global.time.xMinutes.replace("<x>", `${totalMinutesPlayed}`);
+
+        buildingsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
                 this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
-        this.statsElement.querySelector(".beltsPlaced").innerText = formatBigNumberFull(
+
+        beltsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
     }
 
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }

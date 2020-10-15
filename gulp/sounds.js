@@ -16,6 +16,12 @@ function gulptasksSounds($, gulp, buildFolder) {
         cacheDirName: "shapezio-precompiled-sounds",
     });
 
+    function getFileCacheValue(file) {
+        const { _isVinyl, base, cwd, contents, history, stat, path } = file;
+        const encodedContents = Buffer.from(contents).toString("base64");
+        return { _isVinyl, base, cwd, contents: encodedContents, history, stat, path };
+    }
+
     // Encodes the game music
     gulp.task("sounds.music", () => {
         return gulp
@@ -34,6 +40,7 @@ function gulptasksSounds($, gulp, buildFolder) {
                     {
                         name: "music",
                         fileCache,
+                        value: getFileCacheValue,
                     }
                 )
             )
@@ -58,6 +65,7 @@ function gulptasksSounds($, gulp, buildFolder) {
                     {
                         name: "music-high-quality",
                         fileCache,
+                        value: getFileCacheValue,
                     }
                 )
             )
@@ -110,7 +118,6 @@ function gulptasksSounds($, gulp, buildFolder) {
         return gulp
             .src(path.join(builtSoundsDir, "**", "*.mp3"))
             .pipe($.plumber())
-            .pipe($.cached("sounds.copy"))
             .pipe(gulp.dest(path.join(buildFolder, "res", "sounds")));
     });
 

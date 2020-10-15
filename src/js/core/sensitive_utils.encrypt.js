@@ -1,19 +1,23 @@
-import { globalConfig } from "./config";
-import { decompressX64, compressX64 } from "./lzstring";
-
-const Rusha = require("rusha");
-
-const encryptKey = globalConfig.info.sgSalt;
-
-export function decodeHashedString(s) {
-    return decompressX64(s);
-}
+import { createHash } from "rusha";
+import crc32 from "crc/crc32";
+import { decompressX64 } from "./lzstring";
 
 export function sha1(str) {
-    return Rusha.createHash().update(str).digest("hex");
+    return createHash().update(str).digest("hex");
 }
 
 // Window.location.host
 export function getNameOfProvider() {
-    return window[decodeHashedString("DYewxghgLgliB2Q")][decodeHashedString("BYewzgLgdghgtgUyA")];
+    return window[decompressX64("DYewxghgLgliB2Q")][decompressX64("BYewzgLgdghgtgUyA")];
+}
+
+// Distinguish legacy crc prefixes
+export const CRC_PREFIX = "crc32".padEnd(32, "-");
+
+/**
+ * Computes the crc for a given string
+ * @param {string} str
+ */
+export function computeCrc(str) {
+    return CRC_PREFIX + crc32(str).toString(16).padStart(8, "0");
 }

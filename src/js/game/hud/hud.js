@@ -8,7 +8,6 @@ import { TrailerMaker } from "./trailer_maker";
 
 import { Signal } from "../../core/signal";
 import { DrawParameters } from "../../core/draw_parameters";
-import { HUDProcessingOverlay } from "./parts/processing_overlay";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
@@ -16,7 +15,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
+import { IS_MOBILE, globalConfig } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -41,6 +40,14 @@ import { HUDChangesDebugger } from "./parts/debug_changes";
 import { queryParamOptions } from "../../core/query_parameters";
 import { HUDSandboxController } from "./parts/sandbox_controller";
 import { HUDWiresToolbar } from "./parts/wires_toolbar";
+import { HUDWireInfo } from "./parts/wire_info";
+import { HUDLeverToggle } from "./parts/lever_toggle";
+import { HUDLayerPreview } from "./parts/layer_preview";
+import { HUDMinerHighlight } from "./parts/miner_highlight";
+import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
+import { HUDCatMemes } from "./parts/cat_memes";
+import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
 
 export class GameHUD {
     /**
@@ -54,8 +61,19 @@ export class GameHUD {
      * Initializes the hud parts
      */
     initialize() {
+        this.signals = {
+            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
+            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
+            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
+            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
+            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            unlockNotificationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
+        };
+
         this.parts = {
-            processingOverlay: new HUDProcessingOverlay(this.root),
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             wiresToolbar: new HUDWiresToolbar(this.root),
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
@@ -66,35 +84,29 @@ export class GameHUD {
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
             waypoints: new HUDWaypoints(this.root),
+            wireInfo: new HUDWireInfo(this.root),
+            leverToggle: new HUDLeverToggle(this.root),
 
             // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),
             notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
-            // betaOverlay: new HUDBetaOverlay(this.root),
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
             screenshotExporter: new HUDScreenshotExporter(this.root),
             shapeViewer: new HUDShapeViewer(this.root),
 
             wiresOverlay: new HUDWiresOverlay(this.root),
+            layerPreview: new HUDLayerPreview(this.root),
+
+            minerHighlight: new HUDMinerHighlight(this.root),
+            tutorialVideoOffer: new HUDTutorialVideoOffer(this.root),
 
             // Typing hints
             /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
             /* typehints:end */
-        };
-
-        this.signals = {
-            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
-            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
-            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
-            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
-            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
-            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
@@ -105,8 +117,10 @@ export class GameHUD {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
-        if (IS_DEMO) {
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
             this.parts.watermark = new HUDWatermark(this.root);
+            this.parts.standaloneAdvantages = new HUDStandaloneAdvantages(this.root);
+            this.parts.catMemes = new HUDCatMemes(this.root);
         }
 
         if (G_IS_DEV && globalConfig.debug.renderChanges) {
@@ -128,6 +142,10 @@ export class GameHUD {
 
         if (queryParamOptions.sandboxMode || G_IS_DEV) {
             this.parts.sandboxController = new HUDSandboxController(this.root);
+        }
+
+        if (!G_IS_RELEASE && !G_IS_DEV) {
+            this.parts.betaOverlay = new HUDBetaOverlay(this.root);
         }
 
         const frag = document.createDocumentFragment();
@@ -187,9 +205,6 @@ export class GameHUD {
      * Returns true if the rendering can be paused
      */
     hasBlockingOverlayOpen() {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return true;
-        }
         for (const key in this.parts) {
             if (this.parts[key].isBlockingOverlay()) {
                 return true;
@@ -230,12 +245,12 @@ export class GameHUD {
      */
     draw(parameters) {
         const partsOrder = [
-            "waypoints",
             "massSelector",
             "buildingPlacer",
             "blueprintPlacer",
             "colorBlindHelper",
             "changesDebugger",
+            "minerHighlight",
         ];
 
         for (let i = 0; i < partsOrder.length; ++i) {
@@ -250,7 +265,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = ["watermark"];
+        const partsOrder = ["waypoints", "watermark", "wireInfo"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

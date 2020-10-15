@@ -1,10 +1,10 @@
-import { globalConfig } from "../../core/config";
 import { types } from "../../savegame/serialization";
-import { Component } from "../component";
 import { BaseItem } from "../base_item";
-import { gItemRegistry } from "../../core/global_registries";
+import { Component } from "../component";
+import { Entity } from "../entity";
+import { typeItemSingleton } from "../item_resolver";
 
-const chainBufferSize = 3;
+const chainBufferSize = 6;
 
 export class MinerComponent extends Component {
     static getId() {
@@ -15,15 +15,8 @@ export class MinerComponent extends Component {
         // cachedMinedItem is not serialized.
         return {
             lastMiningTime: types.ufloat,
-            chainable: types.bool,
-            itemChainBuffer: types.array(types.obj(gItemRegistry)),
+            itemChainBuffer: types.array(typeItemSingleton),
         };
-    }
-
-    duplicateWithoutContents() {
-        return new MinerComponent({
-            chainable: this.chainable,
-        });
     }
 
     constructor({ chainable = false }) {
@@ -42,6 +35,13 @@ export class MinerComponent extends Component {
          * @type {BaseItem}
          */
         this.cachedMinedItem = null;
+
+        /**
+         * Which miner this miner ejects to, in case its a chainable one.
+         * If the value is false, it means there is no entity, and we don't have to re-check
+         * @type {Entity|null|false}
+         */
+        this.cachedChainedMiner = null;
     }
 
     /**

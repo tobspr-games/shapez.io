@@ -1,22 +1,30 @@
-import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { globalConfig, IS_DEBUG, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
+import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
+import { GameState } from "../core/game_state";
+import { DialogWithForm } from "../core/modal_dialog_elements";
+import { FormElementInput } from "../core/modal_dialog_forms";
+import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
-    makeDiv,
-    makeButtonElement,
     formatSecondsToTimeAgo,
     generateFileDownload,
-    waitNextFrame,
     isSupportedBrowser,
     makeButton,
+    makeButtonElement,
+    makeDiv,
     removeAllChildren,
+    startFileChoose,
+    waitNextFrame,
 } from "../core/utils";
-import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
-import { T } from "../translations";
-import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
-import { EnumSetting } from "../profile/setting_types";
+import { T } from "../translations";
+
+const trim = require("trim");
+
+/**
+ * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
+ * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
+ */
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -26,18 +34,16 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
-
             <p>${T.demoBanners.intro}</p>
-
-            <a href="#" class="steamLink" target="_blank">Get the shapez.io standalone!</a>
+            <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
         `;
 
-        return `
+        const showDemoBadges = this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
+        return `
             <div class="topButtons">
                 <button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
                 <button class="settingsButton"></button>
-
             ${
                 G_IS_STANDALONE || G_IS_DEV
                     ? `
@@ -46,22 +52,19 @@ export class MainMenuState extends GameState {
                     : ""
             }
             </div>
-            
+
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
             </video>
-
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
                 <span class="updateLabel">Wires update!</span>
             </div>
 
-
-            <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-
+            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
                 <div class="sideContainer">
-                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
+                    ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
@@ -72,12 +75,9 @@ export class MainMenuState extends GameState {
                     }
                     <div class="buttons"></div>
                 </div>
-
-
             </div>
 
             <div class="footer">
-
                 <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
@@ -92,43 +92,39 @@ export class MainMenuState extends GameState {
                     <a class="redditLink">${T.mainMenu.subreddit}</a>
 
                     <a class="changelog">${T.changelog.title}</a>
-                
+
                     <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
                 </div>
-            
+
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
-
             </div>
         `;
     }
 
+    /**
+     * Asks the user to import a savegame
+     */
     requestImportSavegame() {
         if (
-            IS_DEMO &&
             this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
-            !this.app.platformWrapper.getHasUnlimitedSavegames()
+            !this.app.restrictionMgr.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("importgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 
-        var input = document.createElement("input");
-        input.type = "file";
-        input.accept = ".bin";
-
-        input.onchange = e => {
-            const file = input.files[0];
+        // Create a 'fake' file-input to accept savegames
+        startFileChoose(".bin").then(file => {
             if (file) {
+                const closeLoader = this.dialogs.showLoadingDialog();
                 waitNextFrame().then(() => {
                     this.app.analytics.trackUiClick("import_savegame");
-                    const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
-                        // @ts-ignore
                         const contents = event.target.result;
                         let realContent;
 
@@ -172,8 +168,7 @@ export class MainMenuState extends GameState {
                     reader.readAsText(file, "utf-8");
                 });
             }
-        };
-        input.click();
+        });
     }
 
     onBackButton() {
@@ -217,11 +212,6 @@ export class MainMenuState extends GameState {
         this.trackClicks(qs(".redditLink"), this.onRedditClicked);
         this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
         this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
-
-        const contestButton = qs(".participateContest");
-        if (contestButton) {
-            this.trackClicks(contestButton, this.onContestClicked);
-        }
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -294,8 +284,11 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("main_menu_steam_link_2");
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage);
+        this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
+        );
+
         return false;
     }
 
@@ -310,15 +303,6 @@ export class MainMenuState extends GameState {
     onRedditClicked() {
         this.app.analytics.trackUiClick("main_menu_reddit_link");
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
-    }
-
-    onContestClicked() {
-        this.app.analytics.trackUiClick("contest_click");
-
-        this.dialogs.showInfo(
-            T.mainMenu.contests.contest_01_03062020.title,
-            T.mainMenu.contests.contest_01_03062020.longDesc
-        );
     }
 
     onLanguageChooseClicked() {
@@ -336,20 +320,23 @@ export class MainMenuState extends GameState {
         });
 
         optionSelected.add(value => {
-            this.app.settings.updateLanguage(value);
-            if (setting.restartRequired) {
-                if (this.app.platformWrapper.getSupportsRestart()) {
-                    this.app.platformWrapper.performRestart();
-                } else {
-                    this.dialogs.showInfo(T.dialogs.restartRequired.title, T.dialogs.restartRequired.text, [
-                        "ok:good",
-                    ]);
+            this.app.settings.updateLanguage(value).then(() => {
+                if (setting.restartRequired) {
+                    if (this.app.platformWrapper.getSupportsRestart()) {
+                        this.app.platformWrapper.performRestart();
+                    } else {
+                        this.dialogs.showInfo(
+                            T.dialogs.restartRequired.title,
+                            T.dialogs.restartRequired.text,
+                            ["ok:good"]
+                        );
+                    }
                 }
-            }
 
-            if (setting.changeCb) {
-                setting.changeCb(this.app, value);
-            }
+                if (setting.changeCb) {
+                    setting.changeCb(this.app, value);
+                }
+            });
 
             // Update current icon
             this.htmlElement.querySelector("button.languageChoose").setAttribute("data-languageIcon", value);
@@ -388,6 +375,13 @@ export class MainMenuState extends GameState {
                         : T.mainMenu.savegameLevelUnknown
                 );
 
+                const name = makeDiv(
+                    elem,
+                    null,
+                    ["name"],
+                    "<span>" + (games[i].name ? games[i].name : T.mainMenu.savegameUnnamed) + "</span>"
+                );
+
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("styledButton", "deleteGame");
                 elem.appendChild(deleteButton);
@@ -396,6 +390,10 @@ export class MainMenuState extends GameState {
                 downloadButton.classList.add("styledButton", "downloadGame");
                 elem.appendChild(downloadButton);
 
+                const renameButton = document.createElement("button");
+                renameButton.classList.add("styledButton", "renameGame");
+                name.appendChild(renameButton);
+
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
                 elem.appendChild(resumeButton);
@@ -403,12 +401,43 @@ export class MainMenuState extends GameState {
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
+                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
             }
         }
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
+     */
+    requestRenameSavegame(game) {
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
+
+        const nameInput = new FormElementInput({
+            id: "nameInput",
+            label: null,
+            placeholder: "",
+            defaultValue: game.name || "",
+            validator: val => val.match(regex) && trim(val).length > 0,
+        });
+        const dialog = new DialogWithForm({
+            app: this.app,
+            title: T.dialogs.renameSavegame.title,
+            desc: T.dialogs.renameSavegame.desc,
+            formElements: [nameInput],
+            buttons: ["cancel:bad:escape", "ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        // When confirmed, save the name
+        dialog.buttonSignals.ok.add(() => {
+            game.name = trim(nameInput.getValue());
+            this.app.savegameMgr.writeAsync();
+            this.renderSavegames();
+        });
+    }
+
+    /**
+     * @param {SavegameMetadata} game
      */
     resumeGame(game) {
         this.app.analytics.trackUiClick("resume_game");
@@ -433,15 +462,17 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     deleteGame(game) {
         this.app.analytics.trackUiClick("delete_game");
 
         const signals = this.dialogs.showWarning(
             T.dialogs.confirmSavegameDelete.title,
-            T.dialogs.confirmSavegameDelete.text,
-            ["delete:bad", "cancel:good"]
+            T.dialogs.confirmSavegameDelete.text
+                .replace("<savegameName>", game.name || T.mainMenu.savegameUnnamed)
+                .replace("<savegameLevel>", String(game.level)),
+            ["cancel:good", "delete:bad:timeout"]
         );
 
         signals.delete.add(() => {
@@ -461,7 +492,7 @@ export class MainMenuState extends GameState {
     }
 
     /**
-     * @param {object} game
+     * @param {SavegameMetadata} game
      */
     downloadGame(game) {
         this.app.analytics.trackUiClick("download_game");
@@ -469,7 +500,23 @@ export class MainMenuState extends GameState {
         const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
         savegame.readAsync().then(() => {
             const data = ReadWriteProxy.serializeObject(savegame.currentData);
-            generateFileDownload(savegame.filename, data);
+            const filename = (game.name || "unnamed") + ".bin";
+            generateFileDownload(filename, data);
+        });
+    }
+
+    /**
+     * Shows a hint that the slot limit has been reached
+     */
+    showSavegameSlotLimit() {
+        const { getStandalone } = this.dialogs.showWarning(
+            T.dialogs.oneSavegameLimit.title,
+            T.dialogs.oneSavegameLimit.desc,
+            ["cancel:bad", "getStandalone:good"]
+        );
+        getStandalone.add(() => {
+            this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
+            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?reF=ssll");
         });
     }
 
@@ -486,12 +533,11 @@ export class MainMenuState extends GameState {
 
     onPlayButtonClicked() {
         if (
-            IS_DEMO &&
             this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
-            !this.app.platformWrapper.getHasUnlimitedSavegames()
+            !this.app.restrictionMgr.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("startgame_slot_limit_show");
-            this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc);
+            this.showSavegameSlotLimit();
             return;
         }
 

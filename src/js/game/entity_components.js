@@ -1,18 +1,24 @@
 /* typehints:start */
-import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { BeltComponent } from "./components/belt";
-import { ItemEjectorComponent } from "./components/item_ejector";
-import { ItemAcceptorComponent } from "./components/item_acceptor";
-import { MinerComponent } from "./components/miner";
-import { ItemProcessorComponent } from "./components/item_processor";
-import { ReplaceableMapEntityComponent } from "./components/replaceable_map_entity";
-import { UndergroundBeltComponent } from "./components/underground_belt";
-import { UnremovableComponent } from "./components/unremovable";
+import { BeltUnderlaysComponent } from "./components/belt_underlays";
 import { HubComponent } from "./components/hub";
+import { ItemAcceptorComponent } from "./components/item_acceptor";
+import { ItemEjectorComponent } from "./components/item_ejector";
+import { ItemProcessorComponent } from "./components/item_processor";
+import { MinerComponent } from "./components/miner";
+import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { StorageComponent } from "./components/storage";
-import { EnergyGeneratorComponent } from "./components/energy_generator";
+import { UndergroundBeltComponent } from "./components/underground_belt";
 import { WiredPinsComponent } from "./components/wired_pins";
-import { EnergyConsumerComponent } from "./components/energy_consumer";
+import { WireComponent } from "./components/wire";
+import { ConstantSignalComponent } from "./components/constant_signal";
+import { LogicGateComponent } from "./components/logic_gate";
+import { LeverComponent } from "./components/lever";
+import { WireTunnelComponent } from "./components/wire_tunnel";
+import { DisplayComponent } from "./components/display";
+import { BeltReaderComponent } from "./components/belt_reader";
+import { FilterComponent } from "./components/filter";
+import { ItemProducerComponent } from "./components/item_producer";
 /* typehints:end */
 
 /**
@@ -41,14 +47,8 @@ export class EntityComponentStorage {
         /** @type {ItemProcessorComponent} */
         this.ItemProcessor;
 
-        /** @type {ReplaceableMapEntityComponent} */
-        this.ReplaceableMapEntity;
-
         /** @type {UndergroundBeltComponent} */
         this.UndergroundBelt;
-
-        /** @type {UnremovableComponent} */
-        this.Unremovable;
 
         /** @type {HubComponent} */
         this.Hub;
@@ -56,14 +56,38 @@ export class EntityComponentStorage {
         /** @type {StorageComponent} */
         this.Storage;
 
-        /** @type {EnergyGeneratorComponent} */
-        this.EnergyGenerator;
-
         /** @type {WiredPinsComponent} */
         this.WiredPins;
 
-        /** @type {EnergyConsumerComponent} */
-        this.EnergyConsumer;
+        /** @type {BeltUnderlaysComponent} */
+        this.BeltUnderlays;
+
+        /** @type {WireComponent} */
+        this.Wire;
+
+        /** @type {ConstantSignalComponent} */
+        this.ConstantSignal;
+
+        /** @type {LogicGateComponent} */
+        this.LogicGate;
+
+        /** @type {LeverComponent} */
+        this.Lever;
+
+        /** @type {WireTunnelComponent} */
+        this.WireTunnel;
+
+        /** @type {DisplayComponent} */
+        this.Display;
+
+        /** @type {BeltReaderComponent} */
+        this.BeltReader;
+
+        /** @type {FilterComponent} */
+        this.Filter;
+
+        /** @type {ItemProducerComponent} */
+        this.ItemProducer;
 
         /* typehints:end */
     }

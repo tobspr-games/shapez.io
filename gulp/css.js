@@ -58,42 +58,78 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
             .pipe($.sassLint.failOnError());
     });
 
-    // Builds the css in dev mode
-    gulp.task("css.dev", () => {
+    function resourcesTask({ cachebust, isProd }) {
         return gulp
-            .src(["../src/css/main.scss"])
+            .src("../src/css/main.scss", { cwd: __dirname })
             .pipe($.plumber())
             .pipe($.sass.sync().on("error", $.sass.logError))
-            .pipe($.postcss(postcssPlugins(false, {})))
+            .pipe(
+                $.postcss([
+                    $.postcssCriticalSplit({
+                        blockTag: "@load-async",
+                    }),
+                ])
+            )
+            .pipe($.rename("async-resources.css"))
+            .pipe($.postcss(postcssPlugins(isProd, { cachebust })))
             .pipe(gulp.dest(buildFolder))
             .pipe(browserSync.stream());
+    }
+
+    // Builds the css resources
+    gulp.task("css.resources.dev", () => {
+        return resourcesTask({ cachebust: false, isProd: false });
     });
 
-    // Builds the css in production mode (=minified)
-    gulp.task("css.prod", () => {
-        return (
-            gulp
-                .src("../src/css/main.scss", { cwd: __dirname })
-                .pipe($.plumber())
-                .pipe($.sass.sync({ outputStyle: "compressed" }).on("error", $.sass.logError))
-                .pipe($.postcss(postcssPlugins(true, { cachebust: true })))
-                // .pipe($.cssbeautify())
-                .pipe(gulp.dest(buildFolder))
-        );
+    // Builds the css resources in prod (=minified)
+    gulp.task("css.resources.prod", () => {
+        return resourcesTask({ cachebust: true, isProd: true });
     });
 
-    // Builds the css in production mode (=minified), without cachebusting
-    gulp.task("css.prod-standalone", () => {
-        return (
-            gulp
-                .src("../src/css/main.scss", { cwd: __dirname })
-                .pipe($.plumber())
-                .pipe($.sass.sync({ outputStyle: "compressed" }).on("error", $.sass.logError))
-                .pipe($.postcss(postcssPlugins(true, { cachebust: false })))
-                // .pipe($.cssbeautify())
-                .pipe(gulp.dest(buildFolder))
-        );
+    // Builds the css resources in prod (=minified), without cachebusting
+    gulp.task("css.resources.prod-standalone", () => {
+        return resourcesTask({ cachebust: false, isProd: true });
     });
+
+    function mainTask({ cachebust, isProd }) {
+        return gulp
+            .src("../src/css/main.scss", { cwd: __dirname })
+            .pipe($.plumber())
+            .pipe($.sass.sync().on("error", $.sass.logError))
+            .pipe(
+                $.postcss([
+                    $.postcssCriticalSplit({
+                        blockTag: "@load-async",
+                        output: "rest",
+                    }),
+                ])
+            )
+            .pipe($.postcss(postcssPlugins(isProd, { cachebust })))
+            .pipe(gulp.dest(buildFolder))
+            .pipe(browserSync.stream());
+    }
+
+    // Builds the css main
+    gulp.task("css.main.dev", () => {
+        return mainTask({ cachebust: false, isProd: false });
+    });
+
+    // Builds the css main in prod (=minified)
+    gulp.task("css.main.prod", () => {
+        return mainTask({ cachebust: true, isProd: true });
+    });
+
+    // Builds the css main in prod (=minified), without cachebusting
+    gulp.task("css.main.prod-standalone", () => {
+        return mainTask({ cachebust: false, isProd: true });
+    });
+
+    gulp.task("css.dev", gulp.parallel("css.main.dev", "css.resources.dev"));
+    gulp.task("css.prod", gulp.parallel("css.main.prod", "css.resources.prod"));
+    gulp.task(
+        "css.prod-standalone",
+        gulp.parallel("css.main.prod-standalone", "css.resources.prod-standalone")
+    );
 }
 
 module.exports = {

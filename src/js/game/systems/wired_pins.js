@@ -1,27 +1,28 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { drawRotatedSprite } from "../../core/draw_utils";
 import { Loader } from "../../core/loader";
-import { Vector } from "../../core/vector";
+import { STOP_PROPAGATION } from "../../core/signal";
+import { enumDirectionToAngle, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { enumLayer } from "../root";
-import { STOP_PROPAGATION } from "../../core/signal";
-import { drawRotatedSprite } from "../../core/draw_utils";
+import { MapChunkView } from "../map_chunk_view";
+
+/** @type {Object<ItemType, number>} */
+const enumTypeToSize = {
+    boolean: 9,
+    shape: 9,
+    color: 14,
+};
 
 export class WiredPinsSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WiredPinsComponent]);
 
         this.pinSprites = {
-            [enumPinSlotType.positiveEnergyEjector]: Loader.getSprite("sprites/wires/pin_positive_eject.png"),
-            [enumPinSlotType.positiveEnergyAcceptor]: Loader.getSprite(
-                "sprites/wires/pin_positive_accept.png"
-            ),
-            [enumPinSlotType.negativeEnergyEjector]: Loader.getSprite("sprites/wires/pin_negative_eject.png"),
-            [enumPinSlotType.negativeEnergyAcceptor]: Loader.getSprite(
-                "sprites/wires/pin_negative_accept.png"
-            ),
+            [enumPinSlotType.logicalEjector]: Loader.getSprite("sprites/wires/logical_ejector.png"),
+            [enumPinSlotType.logicalAcceptor]: Loader.getSprite("sprites/wires/logical_acceptor.png"),
         };
 
         this.root.signals.prePlacementCheck.add(this.prePlacementCheck, this);
@@ -43,7 +44,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
         // If this entity is placed on the wires layer, make sure we don't
         // place it above a pin
-        if (entity.layer === enumLayer.wires) {
+        if (entity.layer === "wires") {
             for (let x = rect.x; x < rect.x + rect.w; ++x) {
                 for (let y = rect.y; y < rect.y + rect.h; ++y) {
                     // Find which entities are in same tiles of both layers
@@ -58,7 +59,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                             continue;
                         }
 
-                        if (otherEntity.components.ReplaceableMapEntity) {
+                        if (staticComp.getMetaBuilding().getIsReplaceable()) {
                             // Don't mind here, even if there would be a collision we
                             // could replace it
                             continue;
@@ -108,11 +109,13 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             }
 
             // Check if there is any entity on that tile (Wired pins are always on the wires layer)
-            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
 
             // If there's an entity, and it can't get removed -> That's a collision
-            if (collidingEntity && !collidingEntity.components.ReplaceableMapEntity) {
-                return true;
+            if (collidingEntity) {
+                if (!collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable()) {
+                    return true;
+                }
             }
         }
         return false;
@@ -133,10 +136,10 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         for (let i = 0; i < pinsComp.slots.length; ++i) {
             const slot = pinsComp.slots[i];
             const worldPos = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
-            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, enumLayer.wires);
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
             if (collidingEntity) {
                 assertAlways(
-                    collidingEntity.components.ReplaceableMapEntity,
+                    collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(),
                     "Tried to replace non-repleaceable entity for pins"
                 );
                 if (!this.root.logic.tryDeleteBuilding(collidingEntity)) {
@@ -146,43 +149,86 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         }
     }
 
-    update() {
-        // TODO
-    }
-
-    /**
-     * Draws the pins
-     * @param {DrawParameters} parameters
-     */
-    draw(parameters) {
-        this.forEachMatchingEntityOnScreen(parameters, this.drawSingleEntity.bind(this));
-    }
-
     /**
      * Draws a given entity
      * @param {DrawParameters} parameters
-     * @param {Entity} entity
+     * @param {MapChunkView} chunk
      */
-    drawSingleEntity(parameters, entity) {
-        const staticComp = entity.components.StaticMapEntity;
-        const slots = entity.components.WiredPins.slots;
+    drawChunk(parameters, chunk) {
+        const contents = chunk.containedEntities;
 
-        for (let i = 0; i < slots.length; ++i) {
-            const slot = slots[i];
-            const tile = staticComp.localTileToWorld(slot.pos);
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const pinsComp = entity.components.WiredPins;
+            if (!pinsComp) {
+                continue;
+            }
 
-            const worldPos = tile.toWorldSpaceCenterOfTile();
+            const staticComp = entity.components.StaticMapEntity;
+            const slots = pinsComp.slots;
 
-            drawRotatedSprite({
-                parameters,
-                sprite: this.pinSprites[slot.type],
-                x: worldPos.x,
-                y: worldPos.y,
-                angle: Math.radians(staticComp.rotation),
-                size: globalConfig.tileSize,
-                offsetX: 0,
-                offsetY: 0,
-            });
+            for (let j = 0; j < slots.length; ++j) {
+                const slot = slots[j];
+                const tile = staticComp.localTileToWorld(slot.pos);
+
+                if (!chunk.tileSpaceRectangle.containsPoint(tile.x, tile.y)) {
+                    // Doesn't belong to this chunk
+                    continue;
+                }
+                const worldPos = tile.toWorldSpaceCenterOfTile();
+
+                // Culling
+                if (
+                    !parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, globalConfig.halfTileSize)
+                ) {
+                    continue;
+                }
+
+                const effectiveRotation = Math.radians(
+                    staticComp.rotation + enumDirectionToAngle[slot.direction]
+                );
+
+                if (staticComp.getMetaBuilding().getRenderPins()) {
+                    drawRotatedSprite({
+                        parameters,
+                        sprite: this.pinSprites[slot.type],
+                        x: worldPos.x,
+                        y: worldPos.y,
+                        angle: effectiveRotation,
+                        size: globalConfig.tileSize + 2,
+                        offsetX: 0,
+                        offsetY: 0,
+                    });
+                }
+
+                // Draw contained item to visualize whats emitted
+                const value = slot.value;
+                if (value) {
+                    const offset = new Vector(0, -9.1).rotated(effectiveRotation);
+
+                    value.drawItemCenteredClipped(
+                        worldPos.x + offset.x,
+                        worldPos.y + offset.y,
+                        parameters,
+                        enumTypeToSize[value.getItemType()]
+                    );
+                }
+
+                // Debug view
+                if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
+                    const offset = new Vector(0, -10).rotated(effectiveRotation);
+                    const network = slot.linkedNetwork;
+                    parameters.context.fillStyle = "blue";
+                    parameters.context.font = "5px Tahoma";
+                    parameters.context.textAlign = "center";
+                    parameters.context.fillText(
+                        network ? "S" + network.uid : "???",
+                        (tile.x + 0.5) * globalConfig.tileSize + offset.x,
+                        (tile.y + 0.5) * globalConfig.tileSize + offset.y
+                    );
+                    parameters.context.textAlign = "left";
+                }
+            }
         }
     }
 }

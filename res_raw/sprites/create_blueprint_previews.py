@@ -8,11 +8,11 @@ import math
 from os import listdir
 from os.path import isdir, isfile
 
-roberts_cross_v = np.array([[0, 0, 0],
+generate_blueprint_sprite_v = np.array([[0, 0, 0],
                             [0, 1, 0],
                             [0, 0, -1]])
 
-roberts_cross_h = np.array([[0, 0, 0],
+generate_blueprint_sprite_h = np.array([[0, 0, 0],
                             [0, 0, 1],
                             [0, -1, 0]])
 
@@ -20,10 +20,7 @@ roberts_cross_h = np.array([[0, 0, 0],
 def rgb2gray(rgb):
     return np.dot(rgb[..., :3], [0.2989, 0.5870, 0.1140])
 
-
-
-
-def save_image(data, outfilename, src_image):
+def process_image(data, outfilename, src_image):
     img = Image.fromarray(np.asarray(
         np.clip(data, 0, 255), dtype="uint8"), "L")
     dest = Image.new("RGBA", (img.width, img.height))
@@ -34,8 +31,8 @@ def save_image(data, outfilename, src_image):
     mask = src_image.filter(ImageFilter.GaussianBlur(10)).load()
     orig = src_image.load()
 
-
-    isWire = "wire" in outfilename
+    # isWire = "wire" in outfilename
+    isWire = False
 
     targetR = 104
     targetG = 200
@@ -72,34 +69,17 @@ def save_image(data, outfilename, src_image):
     dest.save(outfilename)
 
 
-def roberts_cross(infilename, outfilename):
+def generate_blueprint_sprite(infilename, outfilename):
     print("Processing", infilename)
     img = Image.open(infilename)
     img.load()
     img = img.filter(ImageFilter.GaussianBlur(0.5))
 
     image = rgb2gray(np.asarray(img, dtype="int32"))
-    vertical = ndimage.convolve(image, roberts_cross_v)
-    horizontal = ndimage.convolve(image, roberts_cross_h)
+    vertical = ndimage.convolve(image, generate_blueprint_sprite_v)
+    horizontal = ndimage.convolve(image, generate_blueprint_sprite_h)
     output_image = np.sqrt(np.square(horizontal) + np.square(vertical))
-    save_image(output_image, outfilename, img)
-
-
-def generateUiPreview(srcPath, buildingId):
-    print(srcPath, buildingId)
-    img = Image.open(srcPath)
-    img.load()
-    img.thumbnail((110, 110), Image.ANTIALIAS)
-    img.save("../res/ui/hud/building_previews/" + buildingId + ".png")
-
-    img = img.convert("LA")
-
-    data = img.load()
-    for x in range(img.width):
-        for y in range(img.height):
-            data[x, y] = (data[x, y][0], int(data[x, y][1] * 0.5))
-
-    img.save("../res/ui/hud/building_previews/" + buildingId + "_disabled.png")
+    process_image(output_image, outfilename, img)
 
 
 buildings = listdir("buildings")
@@ -107,4 +87,6 @@ buildings = listdir("buildings")
 for buildingId in buildings:
     if "hub" in buildingId:
         continue
-    roberts_cross("buildings/" + buildingId + "", "blueprints/" + buildingId + "")
+    if "wire-" in buildingId:
+        continue
+    generate_blueprint_sprite("buildings/" + buildingId + "", "blueprints/" + buildingId + "")

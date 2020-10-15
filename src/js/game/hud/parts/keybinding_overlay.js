@@ -7,6 +7,7 @@ import {
     KEYCODE_RMB,
     KEYMAPPINGS,
 } from "../../key_action_mapper";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
@@ -28,8 +29,6 @@ const ADDER_TOKEN = "+";
  */
 
 export class HUDKeybindingOverlay extends BaseHUDPart {
-    initialize() {}
-
     /**
      * HELPER / Returns if there is a building selected for placement
      * @returns {boolean}
@@ -165,13 +164,6 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             },
 
             {
-                // Pipette
-                label: T.ingame.keybindingsOverlay.pipette,
-                keys: [k.placement.pipette],
-                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
-            },
-
-            {
                 // Cancel placement
                 label: T.ingame.keybindingsOverlay.stopPlacement,
                 keys: [KEYCODE_RMB],
@@ -184,6 +176,13 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 keys: [KEYCODE_RMB],
                 condition: () =>
                     !this.anyPlacementActive && !this.mapOverviewActive && !this.anythingSelectedOnMap,
+            },
+
+            {
+                // Pipette
+                label: T.ingame.keybindingsOverlay.pipette,
+                keys: [k.placement.pipette],
+                condition: () => !this.mapOverviewActive && !this.blueprintPlacementActive,
             },
 
             {
@@ -259,7 +258,8 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 // Switch layers
                 label: T.ingame.keybindingsOverlay.switchLayers,
                 keys: [k.ingame.switchLayers],
-                condition: () => true,
+                condition: () =>
+                    this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
             },
         ];
 
@@ -310,6 +310,12 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
         }
     }
 
+    initialize() {
+        this.domAttach = new DynamicDomAttach(this.root, this.element, {
+            trackHover: true,
+        });
+    }
+
     update() {
         for (let i = 0; i < this.keybindings.length; ++i) {
             const handle = this.keybindings[i];
@@ -319,5 +325,8 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                 handle.cachedElement.classList.toggle("visible", visibility);
             }
         }
+
+        // Required for hover
+        this.domAttach.update(true);
     }
 }

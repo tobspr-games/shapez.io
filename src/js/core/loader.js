@@ -1,12 +1,12 @@
-/* typehints:start */
-import { Application } from "../application";
-/* typehints:end */
-
-import { AtlasDefinition } from "./atlas_definitions";
 import { makeOffscreenBuffer } from "./buffer_utils";
 import { AtlasSprite, BaseSprite, RegularSprite, SpriteAtlasLink } from "./sprites";
 import { cachebust } from "./cachebust";
 import { createLogger } from "./logging";
+
+/**
+ * @typedef {import("../application").Application} Application
+ * @typedef {import("./atlas_definitions").AtlasDefinition} AtlasDefinition;
+ */
 
 const logger = createLogger("loader");
 
@@ -14,7 +14,6 @@ const missingSpriteIds = {};
 
 class LoaderImpl {
     constructor() {
-        /** @type {Application} */
         this.app = null;
 
         /** @type {Map<string, BaseSprite>} */
@@ -23,6 +22,9 @@ class LoaderImpl {
         this.rawImages = [];
     }
 
+    /**
+     * @param {Application} app
+     */
     linkAppAfterBoot(app) {
         this.app = app;
         this.makeSpriteNotFoundCanvas();
@@ -58,7 +60,7 @@ class LoaderImpl {
     }
 
     /**
-     * Retursn a regular sprite from the cache
+     * Returns a regular sprite from the cache
      * @param {string} key
      * @returns {RegularSprite}
      */
@@ -155,42 +157,32 @@ class LoaderImpl {
      * @param {AtlasDefinition} atlas
      * @param {HTMLImageElement} loadedImage
      */
-    internalParseAtlas(atlas, loadedImage) {
+    internalParseAtlas({ meta: { scale }, sourceData }, loadedImage) {
         this.rawImages.push(loadedImage);
 
-        for (const spriteKey in atlas.sourceData) {
-            const spriteData = atlas.sourceData[spriteKey];
+        for (const spriteName in sourceData) {
+            const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
 
-            let sprite = /** @type {AtlasSprite} */ (this.sprites.get(spriteKey));
+            let sprite = /** @type {AtlasSprite} */ (this.sprites.get(spriteName));
 
             if (!sprite) {
-                sprite = new AtlasSprite({
-                    spriteName: spriteKey,
-                });
-                this.sprites.set(spriteKey, sprite);
+                sprite = new AtlasSprite(spriteName);
+                this.sprites.set(spriteName, sprite);
             }
 
             const link = new SpriteAtlasLink({
-                packedX: spriteData.frame.x,
-                packedY: spriteData.frame.y,
-                packedW: spriteData.frame.w,
-                packedH: spriteData.frame.h,
-                packOffsetX: spriteData.spriteSourceSize.x,
-                packOffsetY: spriteData.spriteSourceSize.y,
+                packedX: frame.x,
+                packedY: frame.y,
+                packedW: frame.w,
+                packedH: frame.h,
+                packOffsetX: spriteSourceSize.x,
+                packOffsetY: spriteSourceSize.y,
                 atlas: loadedImage,
-                w: spriteData.sourceSize.w,
-                h: spriteData.sourceSize.h,
+                w: sourceSize.w,
+                h: sourceSize.h,
             });
-            sprite.linksByResolution[atlas.meta.scale] = link;
+            sprite.linksByResolution[scale] = link;
         }
-    }
-
-    /**
-     * Creates the links for the sprites after the atlas has been loaded. Used so we
-     * don't have to store duplicate sprites.
-     */
-    createAtlasLinks() {
-        // NOT USED
     }
 
     /**
@@ -216,14 +208,9 @@ class LoaderImpl {
         // @ts-ignore
         canvas.src = "not-found";
 
-        const resolutions = ["0.1", "0.25", "0.5", "0.75", "1"];
-        const sprite = new AtlasSprite({
-            spriteName: "not-found",
-        });
-
-        for (let i = 0; i < resolutions.length; ++i) {
-            const res = resolutions[i];
-            const link = new SpriteAtlasLink({
+        const sprite = new AtlasSprite("not-found");
+        ["0.1", "0.25", "0.5", "0.75", "1"].forEach(resolution => {
+            sprite.linksByResolution[resolution] = new SpriteAtlasLink({
                 packedX: 0,
                 packedY: 0,
                 w: dims,
@@ -234,8 +221,8 @@ class LoaderImpl {
                 packedH: dims,
                 atlas: canvas,
             });
-            sprite.linksByResolution[res] = link;
-        }
+        });
+
         this.spriteNotFoundSprite = sprite;
     }
 }

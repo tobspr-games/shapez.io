@@ -13,6 +13,16 @@ export const enumDisplayMode = {
 };
 
 /**
+ * Stores how many seconds one unit is
+ * @type {Object<string, number>}
+ */
+export const statisticsUnitsSeconds = {
+    second: 1,
+    minute: 60,
+    hour: 3600,
+};
+
+/**
  * Simple wrapper for a shape definition within the shape statistics
  */
 export class HUDShapeStatisticsHandle {
@@ -64,15 +74,21 @@ export class HUDShapeStatisticsHandle {
      *
      * @param {enumDisplayMode} displayMode
      * @param {enumAnalyticsDataSource} dataSource
+     * @param {string} unit
      * @param {boolean=} forced
      */
-    update(displayMode, dataSource, forced = false) {
+    update(displayMode, dataSource, unit, forced = false) {
         if (!this.element) {
             return;
         }
         if (!this.visible && !forced) {
             return;
         }
+
+        this.element.classList.toggle(
+            "pinned",
+            this.root.hud.parts.pinnedShapes.isShapePinned(this.definition.getHash())
+        );
 
         switch (dataSource) {
             case enumAnalyticsDataSource.stored: {
@@ -84,18 +100,13 @@ export class HUDShapeStatisticsHandle {
             case enumAnalyticsDataSource.delivered:
             case enumAnalyticsDataSource.produced: {
                 let rate =
-                    (this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
-                        globalConfig.analyticsSliceDurationSeconds) *
-                    60;
-                this.counter.innerText = T.ingame.statistics.shapesPerMinute.replace(
+                    this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
+                    globalConfig.analyticsSliceDurationSeconds;
+
+                this.counter.innerText = T.ingame.statistics.shapesDisplayUnits[unit].replace(
                     "<shapes>",
-                    formatBigNumber(rate)
+                    formatBigNumber(rate * statisticsUnitsSeconds[unit])
                 );
-
-                if (G_IS_DEV && globalConfig.debug.detailedStatistics) {
-                    this.counter.innerText = "" + round2Digits(rate / 60) + " /s";
-                }
-
                 break;
             }
         }

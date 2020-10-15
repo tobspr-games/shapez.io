@@ -1,32 +1,18 @@
 export const CHANGELOG = [
     {
-        version: "1.2.0",
+        version: "1.2.1",
         date: "unreleased",
         entries: [
-            "WIRES",
-            "Allow holding ALT in belt planner to reverse direction (by jakobhellermann)",
-            "Clear cursor when trying to pipette the same building twice (by hexy)",
-            "Allow binding TAB (by swtw7466)",
-            "Added keybinding to close menus (by isaisstillalive / Sandwichs-del)",
-            "Fix rare crash regarding the buildings toolbar (by isaisstillalive)",
-            "Fixed some phrases (by EnderDoom77)",
-            "Zoom towards mouse cursor (by Dimava)",
-            "Updated the soundtrack again, it is now 20 minutes in total!",
-            "Updated and added new translations (Thanks to all contributors!)",
-            "Allow editing waypoints (by isaisstillalive)",
-            "Show confirmation when cutting area which is too expensive to get pasted again (by isaisstillalive)",
-            "Show mouse and camera tile on debug overlay (F4) (by dengr)",
-            "Fix tunnels entrances connecting to exits sometimes when they shouldn't",
-            "The initial belt planner direction is now based on the cursor movement (by MizardX)",
-            "Fix preferred variant not getting saved when clicking on the hud (by Danacus)",
+            "Fixed stacking bug for level 26 which required restarting the game",
+            "Fix reward notification being too long sometimes (by LeopoldTal)",
+            "Updated translations",
         ],
     },
     {
-        version: "1.1.19",
-        date: "02.07.2020",
+        version: "1.2.0",
+        date: "09.10.2020",
         entries: [
-            "There are now notifications every 15 minutes in the demo version to buy the full version (For further details and the reason, check the #surveys channel in the discord)",
-            "I'm still working on the wires update, I hope to release it mid july!",
+            "⚠️⚠️This update is HUGE, view the full changelog <a href='https://shapez.io/wires/' target='_blank'>here</a>! ⚠️⚠️",
         ],
     },
     {
@@ -95,7 +81,7 @@ export const CHANGELOG = [
         date: "17.06.2020",
         entries: [
             "You can now place straight belts (and tunnels) by holding SHIFT! (For you, @giantwaffle ❤️)",
-            "Added continue button to main menu and add seperate 'New game' button (by jaysc)",
+            "Added continue button to main menu and add separate 'New game' button (by jaysc)",
             "Added setting to disable smart tunnel placement introduced with the last update",
             "Added setting to disable vignette",
             "Update translations",
@@ -152,7 +138,7 @@ export const CHANGELOG = [
         version: "1.1.10",
         date: "12.06.2020",
         entries: [
-            "There are now linux builds on steam! Please report any issues in the discord!",
+            "There are now linux builds on steam! Please report any issues in the Discord!",
             "Steam cloud saves are now available!",
             "Added and update more translations (Big thank you to all translators!)",
             "Prevent invalid connection if existing underground tunnel entrance exists (by jaysc)",
@@ -222,7 +208,7 @@ export const CHANGELOG = [
         entries: [
             "The official trailer is now ready! Check it out <a href='https://www.youtube.com/watch?v=KyorY1uIqiQ' target='_blank'>here</a>!",
             "The <a href='https://steam.shapez.io' target='_blank'>steam page</a> is now live!",
-            "Experimental linux builds are now available! Please give me feedback on them in the discord",
+            "Experimental linux builds are now available! Please give me feedback on them in the Discord",
             "Allow hovering pinned shapes to enlarge them",
             "Allow deselecting blueprints with right click and 'Q'",
             "Move default key for deleting from 'X' to 'DEL'",

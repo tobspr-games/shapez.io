@@ -1,13 +1,12 @@
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { queryParamOptions } from "../../core/query_parameters";
+import { BeltComponent } from "../../game/components/belt";
+import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 import { GameRoot } from "../../game/root";
 import { InGameState } from "../../states/ingame";
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
-import { blueprintShape, UPGRADES } from "../../game/upgrades";
-import { tutorialGoals } from "../../game/tutorial_goals";
-import { BeltComponent } from "../../game/components/belt";
-import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 
 const logger = createLogger("game_analytics");
 
@@ -24,6 +23,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
 
         if (G_IS_STANDALONE) {
+            if (queryParamOptions.sandboxMode) {
+                return "steam-sandbox";
+            }
             return "steam";
         }
 
@@ -31,7 +33,17 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             return "prod";
         }
 
-        return "beta";
+        if (window.location.host.indexOf("alpha") >= 0) {
+            if (queryParamOptions.sandboxMode) {
+                return "alpha-sandbox";
+            }
+            return "alpha";
+        } else {
+            if (queryParamOptions.sandboxMode) {
+                return "beta-sandbox";
+            }
+            return "beta";
+        }
     }
 
     /**
@@ -85,10 +97,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @returns {Promise<any>}
      */
     sendToApi(endpoint, data) {
-        return Promise.race([
-            new Promise((resolve, reject) => {
-                setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
-            }),
+        return new Promise((resolve, reject) => {
+            const timeout = setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
+
             fetch(analyticsUrl + endpoint, {
                 method: "POST",
                 mode: "cors",
@@ -103,13 +114,19 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 body: JSON.stringify(data),
             })
                 .then(res => {
+                    clearTimeout(timeout);
                     if (!res.ok || res.status !== 200) {
-                        throw new Error("Fetch error: Bad status " + res.status);
+                        reject("Fetch error: Bad status " + res.status);
+                    } else {
+                        return res.json();
                     }
-                    return res;
                 })
-                .then(res => res.json()),
-        ]);
+                .then(resolve)
+                .catch(reason => {
+                    clearTimeout(timeout);
+                    reject(reason);
+                });
+        });
     }
 
     /**
@@ -171,26 +188,28 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
     /**
      * Returns true if the shape is interesting
+     * @param {GameRoot} root
      * @param {string} key
      */
-    isInterestingShape(key) {
-        if (key === blueprintShape) {
+    isInterestingShape(root, key) {
+        if (key === root.gameMode.getBlueprintShapeKey()) {
             return true;
         }
 
         // Check if its a story goal
-        for (let i = 0; i < tutorialGoals.length; ++i) {
-            if (key === tutorialGoals[i].shape) {
+        const levels = root.gameMode.getLevelDefinitions();
+        for (let i = 0; i < levels.length; ++i) {
+            if (key === levels[i].shape) {
                 return true;
             }
         }
 
         // Check if its required to unlock an upgrade
-        for (const upgradeKey in UPGRADES) {
-            const handle = UPGRADES[upgradeKey];
-            const tiers = handle.tiers;
-            for (let i = 0; i < tiers.length; ++i) {
-                const tier = tiers[i];
+        const upgrades = root.gameMode.getUpgrades();
+        for (const upgradeKey in upgrades) {
+            const upgradeTiers = upgrades[upgradeKey];
+            for (let i = 0; i < upgradeTiers.length; ++i) {
+                const tier = upgradeTiers[i];
                 const required = tier.required;
                 for (let k = 0; k < required.length; ++k) {
                     if (required[k].shape === key) {
@@ -208,7 +227,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @param {GameRoot} root
      */
     generateGameDump(root) {
-        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(this.isInterestingShape.bind(this));
+        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(key =>
+            this.isInterestingShape(root, key)
+        );
         let shapes = {};
         for (let i = 0; i < shapeIds.length; ++i) {
             shapes[shapeIds[i]] = root.hubGoals.storedShapes[shapeIds[i]];

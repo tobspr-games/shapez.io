@@ -6,10 +6,15 @@ import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
-import { round1Digit, round2Digits, formatItemsPerSecond } from "../../core/utils";
+import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 
 /** @enum {string} */
 export const enumMinerVariants = { chainable: "chainable" };
+
+const overlayMatrix = {
+    [defaultBuildingVariant]: generateMatrixRotations([1, 1, 1, 1, 0, 1, 1, 1, 1]),
+    [enumMinerVariants.chainable]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
+};
 
 export class MetaMinerBuilding extends MetaBuilding {
     constructor() {
@@ -36,9 +41,19 @@ export class MetaMinerBuilding extends MetaBuilding {
      */
     getAvailableVariants(root) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-            return [defaultBuildingVariant, enumMinerVariants.chainable];
+            return [enumMinerVariants.chainable];
         }
         return super.getAvailableVariants(root);
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return overlayMatrix[variant][rotation];
     }
 
     /**

@@ -1,0 +1,10 @@
+image: 
+  file: .gitpod.Dockerfile
+tasks:
+  - init: yarn && gp sync-done boot
+  - before: cd gulp
+    init: gp sync-await boot && yarn
+    command: yarn gulp 
+ports: 
+  - port: 3005
+    onOpen: open-preview

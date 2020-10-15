@@ -13,6 +13,17 @@ import { getStringForKeyCode } from "../game/key_action_mapper";
 import { createLogger } from "./logging";
 import { T } from "../translations";
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 const kbEnter = 13;
 const kbCancel = 27;
 
@@ -30,10 +41,10 @@ export class Dialog {
      * @param {string} param0.title Title of the dialog
      * @param {string} param0.contentHTML Inner dialog html
      * @param {Array<string>} param0.buttons
-     *  Button list, each button contains of up to 3 parts seperated by ':'.
+     *  Button list, each button contains of up to 3 parts separated by ':'.
      *  Part 0: The id, one of the one defined in dialog_buttons.yaml
      *  Part 1: The style, either good, bad or misc
-     *  Part 2 (optional): Additional parameters seperated by '/', available are:
+     *  Part 2 (optional): Additional parameters separated by '/', available are:
      *    timeout: This button is only available after some waiting time
      *    kb_enter: This button is triggered by the enter key
      *    kb_escape This button is triggered by the escape key
@@ -59,6 +70,8 @@ export class Dialog {
             const buttonId = this.buttonIds[i].split(":")[0];
             this.buttonSignals[buttonId] = new Signal();
         }
+
+        this.valueChosen = new Signal();
 
         this.timeouts = [];
         this.clickDetectors = [];
@@ -164,7 +177,7 @@ export class Dialog {
                     const timeout = setTimeout(() => {
                         button.classList.remove("timedButton");
                         arrayDeleteValue(this.timeouts, timeout);
-                    }, 5000);
+                    }, 3000);
                     this.timeouts.push(timeout);
                 }
                 if (isEnter || isEscape) {
@@ -277,7 +290,6 @@ export class DialogLoading extends Dialog {
         const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
         loader.classList.add("loadingIndicator");
-        loader.innerText = T.global.loading;
         elem.appendChild(loader);
 
         this.app.inputMgr.pushReciever(this.inputReciever);
@@ -368,9 +380,18 @@ export class DialogWithForm extends Dialog {
      * @param {array=} param0.buttons
      * @param {string=} param0.confirmButtonId
      * @param {string=} param0.extraButton
+     * @param {boolean=} param0.closeButton
      * @param {Array<FormElement>} param0.formElements
      */
-    constructor({ app, title, desc, formElements, buttons = ["cancel", "ok:good"], confirmButtonId = "ok" }) {
+    constructor({
+        app,
+        title,
+        desc,
+        formElements,
+        buttons = ["cancel", "ok:good"],
+        confirmButtonId = "ok",
+        closeButton = true,
+    }) {
         let html = "";
         html += desc + "<br>";
         for (let i = 0; i < formElements.length; ++i) {
@@ -383,7 +404,7 @@ export class DialogWithForm extends Dialog {
             contentHTML: html,
             buttons: buttons,
             type: "info",
-            closeButton: true,
+            closeButton,
         });
         this.confirmButtonId = confirmButtonId;
         this.formElements = formElements;
@@ -423,10 +444,12 @@ export class DialogWithForm extends Dialog {
         for (let i = 0; i < this.formElements.length; ++i) {
             const elem = this.formElements[i];
             elem.bindEvents(div, this.clickDetectors);
+            elem.valueChosen.add(this.closeRequested.dispatch, this.closeRequested);
+            elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
         }
 
         waitNextFrame().then(() => {
-            this.formElements[0].focus();
+            this.formElements[this.formElements.length - 1].focus();
         });
 
         return div;

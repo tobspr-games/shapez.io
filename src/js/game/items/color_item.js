@@ -1,9 +1,9 @@
 import { globalConfig } from "../../core/config";
-import { smoothenDpi } from "../../core/dpi_manager";
 import { DrawParameters } from "../../core/draw_parameters";
+import { Loader } from "../../core/loader";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
-import { enumColors, enumColorsToHexCode } from "../colors";
+import { BaseItem } from "../base_item";
+import { enumColors } from "../colors";
 import { THEME } from "../theme";
 
 export class ColorItem extends BaseItem {
@@ -23,8 +23,23 @@ export class ColorItem extends BaseItem {
         this.color = data;
     }
 
+    /** @returns {"color"} **/
     getItemType() {
-        return enumItemType.color;
+        return "color";
+    }
+
+    /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.color;
+    }
+
+    /**
+     * @param {BaseItem} other
+     */
+    equalsImpl(other) {
+        return this.color === /** @type {ColorItem} */ (other).color;
     }
 
     /**
@@ -33,7 +48,6 @@ export class ColorItem extends BaseItem {
     constructor(color) {
         super();
         this.color = color;
-        this.bufferGenerator = null;
     }
 
     getBackgroundColorAsResource() {
@@ -41,53 +55,38 @@ export class ColorItem extends BaseItem {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        if (!this.cachedSprite) {
+            this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
+        }
+        this.cachedSprite.drawCentered(context, size / 2, size / 2, size);
+    }
+
+    /**
      * @param {number} x
      * @param {number} y
-     * @param {number} size
+     * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    draw(x, y, parameters, size = 12) {
-        if (!this.bufferGenerator) {
-            this.bufferGenerator = this.internalGenerateColorBuffer.bind(this);
+    drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        const realDiameter = diameter * 0.6;
+        if (!this.cachedSprite) {
+            this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
         }
-
-        const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
-
-        const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
-            key,
-            this.color,
-            size,
-            size,
-            dpi,
-            this.bufferGenerator
-        );
-        parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
+        this.cachedSprite.drawCachedCentered(parameters, x, y, realDiameter);
     }
-    /**
-     *
-     * @param {HTMLCanvasElement} canvas
-     * @param {CanvasRenderingContext2D} context
-     * @param {number} w
-     * @param {number} h
-     * @param {number} dpi
-     */
-    internalGenerateColorBuffer(canvas, context, w, h, dpi) {
-        context.translate((w * dpi) / 2, (h * dpi) / 2);
-        context.scale((dpi * w) / 12, (dpi * h) / 12);
+}
 
-        context.fillStyle = enumColorsToHexCode[this.color];
-        context.strokeStyle = THEME.items.outline;
-        context.lineWidth = 2 * THEME.items.outlineWidth;
-        context.beginCircle(2, -1, 3);
-        context.stroke();
-        context.fill();
-        context.beginCircle(-2, -1, 3);
-        context.stroke();
-        context.fill();
-        context.beginCircle(0, 2, 3);
-        context.closePath();
-        context.stroke();
-        context.fill();
-    }
+/**
+ * Singleton instances
+ * @type {Object<enumColors, ColorItem>}
+ */
+export const COLOR_ITEM_SINGLETONS = {};
+
+for (const color in enumColors) {
+    COLOR_ITEM_SINGLETONS[color] = new ColorItem(color);
 }

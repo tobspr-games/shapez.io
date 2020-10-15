@@ -8,7 +8,6 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { enumItemType } from "../base_item";
 
 /** @enum {string} */
 export const enumCutterVariants = { quad: "quad" };
@@ -29,7 +28,7 @@ export class MetaCutterBuilding extends MetaBuilding {
             case enumCutterVariants.quad:
                 return new Vector(4, 1);
             default:
-                assertAlways(false, "Unknown splitter variant: " + variant);
+                assertAlways(false, "Unknown cutter variant: " + variant);
         }
     }
 
@@ -82,7 +81,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
-                        filter: enumItemType.shape,
+                        filter: "shape",
                     },
                 ],
             })

@@ -1,12 +1,13 @@
+import { CHANGELOG } from "../changelog";
+import { cachebust } from "../core/cachebust";
+import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
-import { findNiceValue, waitNextFrame } from "../core/utils";
-import { cachebust } from "../core/cachebust";
-import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
-import { T, autoDetectLanguageId, updateApplicationLanguage } from "../translations";
+import { findNiceValue } from "../core/utils";
+import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
-import { CHANGELOG } from "../changelog";
-import { globalConfig } from "../core/config";
+import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
+import { autoDetectLanguageId, T, updateApplicationLanguage } from "../translations";
 
 const logger = createLogger("state/preload");
 
@@ -20,12 +21,9 @@ export class PreloadState extends GameState {
             <div class="loadingImage"></div>
             <div class="loadingStatus">
                 <span class="desc">Booting</span>
-                <span class="bar">
-                    <span class="inner" style="width: 0%"></span>
-                    <span class="status">0%</span>
-                </span>
+                </div>
             </div>
-            </div>
+            <span class="prefab_GameHint"></span>
         `;
     }
 
@@ -37,7 +35,7 @@ export class PreloadState extends GameState {
         return false;
     }
 
-    onEnter(payload) {
+    onEnter() {
         this.htmlElement.classList.add("prefab_LoadingState");
 
         const elementsToRemove = ["#loadingPreload", "#fontPreload"];
@@ -52,11 +50,15 @@ export class PreloadState extends GameState {
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
-        this.statusBar = this.htmlElement.querySelector(".loadingStatus > .bar > .inner");
-        this.statusBarText = this.htmlElement.querySelector(".loadingStatus > .bar > .status");
+
+        /** @type {HTMLElement} */
+        this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
+        this.lastHintShown = -1000;
+        this.nextHintDuration = 0;
+
         this.currentStatus = "booting";
-        this.currentIndex = 0;
 
         this.startLoading();
     }
@@ -132,6 +134,11 @@ export class PreloadState extends GameState {
 
             .then(() => {
                 this.app.backgroundResourceLoader.startLoading();
+            })
+
+            .then(() => this.setStatus("Initializing restrictions"))
+            .then(() => {
+                return this.app.restrictionMgr.initialize();
             })
 
             .then(() => this.setStatus("Initializing savegame"))
@@ -212,23 +219,40 @@ export class PreloadState extends GameState {
             );
     }
 
+    update() {
+        const now = performance.now();
+        if (now - this.lastHintShown > this.nextHintDuration) {
+            this.lastHintShown = now;
+            const hintText = getRandomHint();
+
+            this.hintsText.innerHTML = hintText;
+
+            /**
+             * Compute how long the user will need to read the hint.
+             * We calculate with 130 words per minute, with an average of 5 chars
+             * that is 650 characters / minute
+             */
+            this.nextHintDuration = Math.max(2500, (hintText.length / 650) * 60 * 1000);
+        }
+    }
+
+    onRender() {
+        this.update();
+    }
+
+    onBackgroundTick() {
+        this.update();
+    }
+
+    /**
+     *
+     * @param {string} text
+     */
     setStatus(text) {
         logger.log("✅ " + text);
-        this.currentIndex += 1;
         this.currentStatus = text;
         this.statusText.innerText = text;
-
-        const numSteps = 10; // FIXME
-
-        const percentage = (this.currentIndex / numSteps) * 100.0;
-        this.statusBar.style.width = percentage + "%";
-        this.statusBarText.innerText = findNiceValue(percentage) + "%";
-
-        if (G_IS_DEV) {
-            return Promise.resolve();
-        }
         return Promise.resolve();
-        // return waitNextFrame();
     }
 
     showFailMessage(text) {
@@ -251,12 +275,12 @@ export class PreloadState extends GameState {
                         ${this.currentStatus} failed:<br/>
                         ${text}
                     </div>
-                    
+
                     <div class="supportHelp">
                     Please send me an email with steps to reproduce and what you did before this happened:
                         <br /><a class="email" href="mailto:${email}?subject=App%20does%20not%20launch">${email}</a>
                     </div>
-                        
+
                     <div class="lower">
                         <button class="resetApp styledButton">Reset App</button>
                         <i>Build ${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>
@@ -269,17 +293,14 @@ export class PreloadState extends GameState {
 
         const resetBtn = subElement.querySelector("button.resetApp");
         this.trackClicks(resetBtn, this.showResetConfirm);
+
+        this.hintsText.remove();
     }
 
     showResetConfirm() {
-        if (confirm("Are you sure you want to reset the app? This will delete all your savegames")) {
+        if (confirm("Are you sure you want to reset the app? This will delete all your savegames!")) {
             this.resetApp();
         }
-        // const signals = this.dialogs.showWarning(T.preload.reset_app_warning.title, T.preload.reset_app_warning.desc, [
-        //     "delete:bad:timeout",
-        //     "cancel:good",
-        // ]);
-        // signals.delete.add(this.resetApp, this);
     }
 
     resetApp() {

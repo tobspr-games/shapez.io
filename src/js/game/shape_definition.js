@@ -2,21 +2,10 @@ import { makeOffscreenBuffer } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
 import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
-import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
-import {
-    enumColors,
-    enumColorsToHexCode,
-    enumColorToShortcode,
-    enumShortcodeToColor,
-    enumInvertedColors,
-} from "./colors";
+import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
-
-const rusha = require("rusha");
-
-const logger = createLogger("shape_definition");
 
 /**
  * @typedef {{
@@ -96,7 +85,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             return errorCode;
         }
         const definition = ShapeDefinition.fromShortKey(data);
-        this.layers = definition.layers;
+        this.layers = /** @type {Array<ShapeLayer>} */ (definition.layers);
     }
 
     serialize() {
@@ -113,7 +102,8 @@ export class ShapeDefinition extends BasicSerializableObject {
 
         /**
          * The layers from bottom to top
-         * @type {Array<ShapeLayer>} */
+         * @type {Array<ShapeLayer>}
+         */
         this.layers = layers;
 
         /** @type {string} */
@@ -286,24 +276,34 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size = 20) {
+    drawCentered(x, y, parameters, diameter = 20) {
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
 
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
 
-        const key = size + "/" + dpi;
-        const canvas = parameters.root.buffers.getForKey(
-            key,
-            this.cachedHash,
-            size,
-            size,
+        const key = diameter + "/" + dpi + "/" + this.cachedHash;
+        const canvas = parameters.root.buffers.getForKey({
+            key: "shapedef",
+            subKey: key,
+            w: diameter,
+            h: diameter,
             dpi,
-            this.bufferGenerator
-        );
-        parameters.context.drawImage(canvas, x - size / 2, y - size / 2, size, size);
+            redrawMethod: this.bufferGenerator,
+        });
+        parameters.context.drawImage(canvas, x - diameter / 2, y - diameter / 2, diameter, diameter);
+    }
+
+    /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        this.internalGenerateShapeBuffer(null, context, size, size, 1);
     }
 
     /**
@@ -496,61 +496,87 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
+     * Returns a definition which was rotated 180 degrees
+     * @returns {ShapeDefinition}
+     */
+    cloneRotate180() {
+        const newLayers = this.internalCloneLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            quadrants.push(quadrants.shift(), quadrants.shift());
+        }
+        return new ShapeDefinition({ layers: newLayers });
+    }
+
+    /**
      * Stacks the given shape definition on top.
      * @param {ShapeDefinition} definition
      */
     cloneAndStackWith(definition) {
-        const newLayers = this.internalCloneLayers();
-
         if (this.isEntirelyEmpty() || definition.isEntirelyEmpty()) {
             assert(false, "Can not stack entirely empty definition");
         }
 
-        // Put layer for layer on top
-        for (let i = 0; i < definition.layers.length; ++i) {
-            const layerToAdd = definition.layers[i];
+        const bottomShapeLayers = this.layers;
+        const bottomShapeHighestLayerByQuad = [-1, -1, -1, -1];
 
-            // On which layer we can merge this upper layer
-            let mergeOnLayerIndex = null;
-
-            // Go from top to bottom and check if there is anything intercepting it
-            for (let k = newLayers.length - 1; k >= 0; --k) {
-                const lowerLayer = newLayers[k];
-
-                let canMerge = true;
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    const upperItem = layerToAdd[quadrantIndex];
-                    const lowerItem = lowerLayer[quadrantIndex];
-
-                    if (upperItem && lowerItem) {
-                        // so, we can't merge it because two items conflict
-                        canMerge = false;
-                        break;
-                    }
+        for (let layer = bottomShapeLayers.length - 1; layer >= 0; --layer) {
+            const shapeLayer = bottomShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
+                if (shapeQuad !== null && bottomShapeHighestLayerByQuad[quad] < layer) {
+                    bottomShapeHighestLayerByQuad[quad] = layer;
                 }
-
-                // If we can merge it, store it - since we go from top to bottom
-                // we can simply override it
-                if (canMerge) {
-                    mergeOnLayerIndex = k;
-                }
-            }
-
-            if (mergeOnLayerIndex !== null) {
-                // Simply merge using an OR mask
-                for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                    newLayers[mergeOnLayerIndex][quadrantIndex] =
-                        newLayers[mergeOnLayerIndex][quadrantIndex] || layerToAdd[quadrantIndex];
-                }
-            } else {
-                // Add new layer
-                newLayers.push(layerToAdd);
             }
         }
 
-        newLayers.splice(4);
+        const topShapeLayers = definition.layers;
+        const topShapeLowestLayerByQuad = [4, 4, 4, 4];
 
-        return new ShapeDefinition({ layers: newLayers });
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const shapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
+                if (shapeQuad !== null && topShapeLowestLayerByQuad[quad] > layer) {
+                    topShapeLowestLayerByQuad[quad] = layer;
+                }
+            }
+        }
+
+        /**
+         * We want to find the number `layerToMergeAt` such that when the top shape is placed at that
+         * layer, the smallest gap between shapes is only 1. Instead of doing a guess-and-check method to
+         * find the appropriate layer, we just calculate all the gaps assuming a merge at layer 0, even
+         * though they go negative, and calculating the number to add to it so the minimum gap is 1 (ends
+         * up being 1 - minimum).
+         */
+        const gapsBetweenShapes = [];
+        for (let quad = 0; quad < 4; ++quad) {
+            gapsBetweenShapes.push(topShapeLowestLayerByQuad[quad] - bottomShapeHighestLayerByQuad[quad]);
+        }
+        const smallestGapBetweenShapes = Math.min(...gapsBetweenShapes);
+        // Can't merge at a layer lower than 0
+        const layerToMergeAt = Math.max(1 - smallestGapBetweenShapes, 0);
+
+        const mergedLayers = this.internalCloneLayers();
+        for (let layer = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
+            mergedLayers.push([null, null, null, null]);
+        }
+
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const layerMergingAt = layerToMergeAt + layer;
+            const bottomShapeLayer = mergedLayers[layerMergingAt];
+            const topShapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; quad++) {
+                assert(!(bottomShapeLayer[quad] && topShapeLayer[quad]), "Shape merge: Sub shape got lost");
+                bottomShapeLayer[quad] = bottomShapeLayer[quad] || topShapeLayer[quad];
+            }
+        }
+
+        // Limit to 4 layers at max
+        mergedLayers.splice(4);
+
+        return new ShapeDefinition({ layers: mergedLayers });
     }
 
     /**
@@ -573,23 +599,6 @@ export class ShapeDefinition extends BasicSerializableObject {
     }
 
     /**
-     * Clones the shape and inverts all colors
-     */
-    cloneAndInvertColors() {
-        const newLayers = this.internalCloneLayers();
-        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants = newLayers[layerIndex];
-            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
-                const item = quadrants[quadrantIndex];
-                if (item) {
-                    item.color = enumInvertedColors[item.color];
-                }
-            }
-        }
-        return new ShapeDefinition({ layers: newLayers });
-    }
-
-    /**
      * Clones the shape and colors everything in the given colors
      * @param {[enumColors, enumColors, enumColors, enumColors]} colors
      */
@@ -601,7 +610,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 const item = quadrants[quadrantIndex];
                 if (item) {
-                    item.color = colors[quadrantIndex];
+                    item.color = colors[quadrantIndex] || item.color;
                 }
             }
         }

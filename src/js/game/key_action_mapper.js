@@ -26,7 +26,7 @@ export const KEYMAPPINGS = {
         exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
 
-        switchLayers: { keyCode: key("Y") },
+        switchLayers: { keyCode: key("E") },
     },
 
     navigation: {
@@ -44,8 +44,9 @@ export const KEYMAPPINGS = {
     },
 
     buildings: {
+        // Primary Toolbar
         belt: { keyCode: key("1") },
-        splitter: { keyCode: key("2") },
+        balancer: { keyCode: key("2") },
         underground_belt: { keyCode: key("3") },
         miner: { keyCode: key("4") },
         cutter: { keyCode: key("5") },
@@ -54,12 +55,26 @@ export const KEYMAPPINGS = {
         mixer: { keyCode: key("8") },
         painter: { keyCode: key("9") },
         trash: { keyCode: key("0") },
-        energy_generator: { keyCode: key("O") },
-        advanced_processor: { keyCode: key("P") },
 
-        // Wires layer
+        // Sandbox
+        item_producer: { keyCode: key("L") },
+
+        // Secondary toolbar
+        storage: { keyCode: key("Y") },
+        reader: { keyCode: key("U") },
+        lever: { keyCode: key("I") },
+        filter: { keyCode: key("O") },
+        display: { keyCode: key("P") },
+
+        // Wires toolbar
         wire: { keyCode: key("1") },
-        wire_crossings: { keyCode: key("2") },
+        wire_tunnel: { keyCode: key("2") },
+        constant_signal: { keyCode: key("3") },
+        logic_gate: { keyCode: key("4") },
+        virtual_processor: { keyCode: key("5") },
+        analyzer: { keyCode: key("6") },
+        comparator: { keyCode: key("7") },
+        transistor: { keyCode: key("8") },
     },
 
     placement: {
@@ -69,6 +84,8 @@ export const KEYMAPPINGS = {
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },
+
+        copyWireValue: { keyCode: key("Z") },
     },
 
     massSelect: {
@@ -105,6 +122,7 @@ export const KEYCODE_RMB = 3;
  * @returns {string}
  */
 export function getStringForKeyCode(code) {
+    // @todo: Refactor into dictionary
     switch (code) {
         case KEYCODE_LMB:
             return "LMB";
@@ -199,22 +217,20 @@ export function getStringForKeyCode(code) {
         case 115:
             return "F4";
         case 116:
-            return "F4";
-        case 117:
             return "F5";
-        case 118:
+        case 117:
             return "F6";
-        case 119:
+        case 118:
             return "F7";
-        case 120:
+        case 119:
             return "F8";
-        case 121:
+        case 120:
             return "F9";
-        case 122:
+        case 121:
             return "F10";
-        case 123:
+        case 122:
             return "F11";
-        case 124:
+        case 123:
             return "F12";
 
         case 144:
@@ -233,6 +249,8 @@ export function getStringForKeyCode(code) {
             return ",";
         case 189:
             return "-";
+        case 190:
+            return ".";
         case 191:
             return "/";
         case 219:
@@ -245,7 +263,9 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return String.fromCharCode(code);
+    return (48 <= code && code <= 57) || (65 <= code && code <= 90)
+        ? String.fromCharCode(code)
+        : "[" + code + "]";
 }
 
 export class Keybinding {
@@ -349,6 +369,13 @@ export class KeyActionMapper {
                 }
 
                 this.keybindings[key] = new Keybinding(this, this.root.app, payload);
+
+                if (G_IS_DEV) {
+                    // Sanity
+                    if (!T.keybindings.mappings[key]) {
+                        assertAlways(false, "Keybinding " + key + " has no translation!");
+                    }
+                }
             }
         }
 

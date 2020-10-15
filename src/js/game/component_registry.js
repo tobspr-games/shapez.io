@@ -5,14 +5,20 @@ import { ItemEjectorComponent } from "./components/item_ejector";
 import { ItemAcceptorComponent } from "./components/item_acceptor";
 import { MinerComponent } from "./components/miner";
 import { ItemProcessorComponent } from "./components/item_processor";
-import { ReplaceableMapEntityComponent } from "./components/replaceable_map_entity";
 import { UndergroundBeltComponent } from "./components/underground_belt";
-import { UnremovableComponent } from "./components/unremovable";
 import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
-import { EnergyGeneratorComponent } from "./components/energy_generator";
 import { WiredPinsComponent } from "./components/wired_pins";
-import { EnergyConsumerComponent } from "./components/energy_consumer";
+import { BeltUnderlaysComponent } from "./components/belt_underlays";
+import { WireComponent } from "./components/wire";
+import { ConstantSignalComponent } from "./components/constant_signal";
+import { LogicGateComponent } from "./components/logic_gate";
+import { LeverComponent } from "./components/lever";
+import { WireTunnelComponent } from "./components/wire_tunnel";
+import { DisplayComponent } from "./components/display";
+import { BeltReaderComponent } from "./components/belt_reader";
+import { FilterComponent } from "./components/filter";
+import { ItemProducerComponent } from "./components/item_producer";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -21,14 +27,20 @@ export function initComponentRegistry() {
     gComponentRegistry.register(ItemAcceptorComponent);
     gComponentRegistry.register(MinerComponent);
     gComponentRegistry.register(ItemProcessorComponent);
-    gComponentRegistry.register(ReplaceableMapEntityComponent);
     gComponentRegistry.register(UndergroundBeltComponent);
-    gComponentRegistry.register(UnremovableComponent);
     gComponentRegistry.register(HubComponent);
     gComponentRegistry.register(StorageComponent);
-    gComponentRegistry.register(EnergyGeneratorComponent);
     gComponentRegistry.register(WiredPinsComponent);
-    gComponentRegistry.register(EnergyConsumerComponent);
+    gComponentRegistry.register(BeltUnderlaysComponent);
+    gComponentRegistry.register(WireComponent);
+    gComponentRegistry.register(ConstantSignalComponent);
+    gComponentRegistry.register(LogicGateComponent);
+    gComponentRegistry.register(LeverComponent);
+    gComponentRegistry.register(WireTunnelComponent);
+    gComponentRegistry.register(DisplayComponent);
+    gComponentRegistry.register(BeltReaderComponent);
+    gComponentRegistry.register(FilterComponent);
+    gComponentRegistry.register(ItemProducerComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 

@@ -26,9 +26,6 @@ export default {
     // Allow to zoom freely without limits
     // disableZoomLimits: true,
     // -----------------------------------------------------------------------------------
-    // Shows a border arround every chunk
-    // showChunkBorders: true,
-    // -----------------------------------------------------------------------------------
     // All rewards can be unlocked by passing just 1 of any shape
     // rewardsInstant: true,
     // -----------------------------------------------------------------------------------
@@ -51,7 +48,7 @@ export default {
     // testClipping: true,
     // -----------------------------------------------------------------------------------
     // Allows to render slower, useful for recording at half speed to avoid stuttering
-    // framePausesBetweenTicks: 1,
+    // framePausesBetweenTicks: 250,
     // -----------------------------------------------------------------------------------
     // Replace all translations with emojis to see which texts are translateable
     // testTranslations: true,
@@ -94,6 +91,24 @@ export default {
     // -----------------------------------------------------------------------------------
     // Whether to items / s instead of items / m in stats
     // detailedStatistics: true,
+    // -----------------------------------------------------------------------------------
+    // Shows detailed information about which atlas is used
+    // showAtlasInfo: true,
+    // -----------------------------------------------------------------------------------
+    // Renders the rotation of all wires
+    // renderWireRotations: true,
+    // -----------------------------------------------------------------------------------
+    // Renders information about wire networks
+    // renderWireNetworkInfos: true,
+    // -----------------------------------------------------------------------------------
+    // Disables ejector animations and processing
+    // disableEjectorProcessing: true,
+    // -----------------------------------------------------------------------------------
+    // Allows manual ticking
+    // manualTickOnly: true,
+    // -----------------------------------------------------------------------------------
+    // Disables slow asserts, useful for debugging performance
+    // disableSlowAsserts: true,
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

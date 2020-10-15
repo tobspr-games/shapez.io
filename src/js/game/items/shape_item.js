@@ -1,8 +1,9 @@
 import { DrawParameters } from "../../core/draw_parameters";
 import { types } from "../../savegame/serialization";
-import { BaseItem, enumItemType } from "../base_item";
+import { BaseItem } from "../base_item";
 import { ShapeDefinition } from "../shape_definition";
 import { THEME } from "../theme";
+import { globalConfig } from "../../core/config";
 
 export class ShapeItem extends BaseItem {
     static getId() {
@@ -21,8 +22,23 @@ export class ShapeItem extends BaseItem {
         this.definition = ShapeDefinition.fromShortKey(data);
     }
 
+    /** @returns {"shape"} **/
     getItemType() {
-        return enumItemType.shape;
+        return "shape";
+    }
+
+    /**
+     * @returns {string}
+     */
+    getAsCopyableKey() {
+        return this.definition.getHash();
+    }
+
+    /**
+     * @param {BaseItem} other
+     */
+    equalsImpl(other) {
+        return this.definition.getHash() === /** @type {ShapeItem} */ (other).definition.getHash();
     }
 
     /**
@@ -30,7 +46,6 @@ export class ShapeItem extends BaseItem {
      */
     constructor(definition) {
         super();
-        // logger.log("New shape item for shape definition", definition.generateId(), "created");
 
         /**
          * This property must not be modified on runtime, you have to clone the class in order to change the definition
@@ -43,12 +58,21 @@ export class ShapeItem extends BaseItem {
     }
 
     /**
+     * Draws the item to a canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} size
+     */
+    drawFullSizeOnCanvas(context, size) {
+        this.definition.drawFullSizeOnCanvas(context, size);
+    }
+
+    /**
      * @param {number} x
      * @param {number} y
      * @param {DrawParameters} parameters
-     * @param {number=} size
+     * @param {number=} diameter
      */
-    draw(x, y, parameters, size) {
-        this.definition.draw(x, y, parameters, size);
+    drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+        this.definition.drawCentered(x, y, parameters, diameter);
     }
 }

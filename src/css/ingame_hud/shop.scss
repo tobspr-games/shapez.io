@@ -21,7 +21,7 @@
             }
 
             @include DarkThemeOverride {
-                background: #55585a;
+                background: $darkModeControlsBackground;
             }
 
             .title {
@@ -113,9 +113,13 @@
                     overflow: hidden;
 
                     button.pin {
+                        & {
+                            /* @load-async */
+                            background: uiResource("icons/pin.png") center center / 95% no-repeat;
+                        }
+
                         @include S(width, 12px);
                         @include S(height, 12px);
-                        background: uiResource("icons/pin.png") center center / 95% no-repeat;
                         position: absolute;
                         @include S(top, 2px);
                         @include S(right, 2px);
@@ -143,6 +147,7 @@
                         }
 
                         &.isGoal {
+                            /* @load-async */
                             background: uiResource("icons/current_goal_marker.png") center center / 95%
                                 no-repeat;
                             opacity: $disabledOpacity !important;
@@ -198,7 +203,6 @@
                     button.showInfo {
                         @include S(width, 11px);
                         @include S(height, 11px);
-                        background: uiResource("icons/info_button.png") center center / 95% no-repeat;
                         position: absolute;
                         @include S(top, 17px);
                         @include S(right, 2.5px);
@@ -212,6 +216,10 @@
                         &:hover {
                             opacity: 0.6;
                         }
+                    }
+                    button.showInfo {
+                        /* @load-async */
+                        background: uiResource("icons/info_button.png") center center / 95% no-repeat;
                     }
 
                     canvas {

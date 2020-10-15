@@ -1,11 +1,13 @@
+require("colors");
 const packager = require("electron-packager");
 const path = require("path");
-const buildutils = require("./buildutils");
+const { getVersion } = require("./buildutils");
 const fs = require("fs");
 const fse = require("fs-extra");
+const buildutils = require("./buildutils");
 const execSync = require("child_process").execSync;
 
-function gulptasksStandalone($, gulp, buildFolder) {
+function gulptasksStandalone($, gulp) {
     const electronBaseDir = path.join(__dirname, "..", "electron");
 
     const tempDestDir = path.join(__dirname, "..", "tmp_standalone_files");
@@ -46,50 +48,22 @@ function gulptasksStandalone($, gulp, buildFolder) {
         cb();
     });
 
+    gulp.task("standalone.prepareVDF", cb => {
+        const hash = buildutils.getRevision();
+
+        const steampipeDir = path.join(__dirname, "steampipe", "scripts");
+        const templateContents = fs
+            .readFileSync(path.join(steampipeDir, "app.vdf.template"), { encoding: "utf-8" })
+            .toString();
+
+        const convertedContents = templateContents.replace("$DESC$", "Commit " + hash);
+        fs.writeFileSync(path.join(steampipeDir, "app.vdf"), convertedContents);
+
+        cb();
+    });
+
     gulp.task("standalone.prepare.minifyCode", () => {
-        return (
-            gulp
-                .src(path.join(electronBaseDir, "*.js"))
-                // .pipe(
-                //     $.terser({
-                //         ecma: 6,
-                //         parse: {},
-                //         module: false,
-                //         toplevel: true,
-                //         keep_classnames: false,
-                //         keep_fnames: false,
-                //         safari10: false,
-                //         compress: {
-                //             arguments: false, // breaks
-                //             drop_console: false,
-                //             // keep_fargs: false,
-                //             keep_infinity: true,
-                //             passes: 2,
-                //             module: false,
-                //             toplevel: true,
-                //             unsafe_math: true,
-                //             unsafe_arrows: false,
-                //             warnings: true,
-                //         },
-                //         mangle: {
-                //             eval: true,
-                //             keep_classnames: false,
-                //             keep_fnames: false,
-                //             module: false,
-                //             toplevel: true,
-                //             safari10: false,
-                //         },
-                //         output: {
-                //             comments: false,
-                //             ascii_only: true,
-                //             beautify: false,
-                //             braces: false,
-                //             ecma: 6,
-                //         },
-                //     })
-                // )
-                .pipe(gulp.dest(tempDestBuildDir))
-        );
+        return gulp.src(path.join(electronBaseDir, "*.js")).pipe(gulp.dest(tempDestBuildDir));
     });
 
     gulp.task("standalone.prepare.copyGamefiles", () => {
@@ -124,13 +98,13 @@ function gulptasksStandalone($, gulp, buildFolder) {
      * @param {function():void} cb
      * @param {boolean=} isRelease
      */
-    function packageStandalone(platform, arch, cb, isRelease = false) {
+    function packageStandalone(platform, arch, cb, isRelease = true) {
         const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
 
         packager({
             dir: tempDestBuildDir,
             appCopyright: "Tobias Springer",
-            appVersion: buildutils.getVersion(),
+            appVersion: getVersion(),
             buildVersion: "1.0.0",
             arch,
             platform,
@@ -142,6 +116,21 @@ function gulptasksStandalone($, gulp, buildFolder) {
             overwrite: true,
             appBundleId: "io.shapez.standalone",
             appCategoryType: "public.app-category.games",
+            ...(isRelease &&
+                platform === "darwin" && {
+                    osxSign: {
+                        "identity": process.env.SHAPEZ_CLI_APPLE_CERT_NAME,
+                        "hardened-runtime": true,
+                        "hardenedRuntime": true,
+                        "entitlements": "entitlements.plist",
+                        "entitlements-inherit": "entitlements.plist",
+                        "signature-flags": "library",
+                    },
+                    osxNotarize: {
+                        appleId: process.env.SHAPEZ_CLI_APPLE_ID,
+                        appleIdPassword: "@keychain:SHAPEZ_CLI_APPLE_ID",
+                    },
+                }),
         }).then(
             appPaths => {
                 console.log("Packages created:", appPaths);
@@ -164,22 +153,17 @@ function gulptasksStandalone($, gulp, buildFolder) {
                             '#!/usr/bin/env bash\n./shapezio --no-sandbox "$@"\n'
                         );
                         fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
-                    } else if (platform === "win32") {
-                        // Optional: Create a playable copy. Shouldn't be required
-                        // const playablePath = appPath + "_playable";
-                        // fse.copySync(appPath, playablePath);
-                        // fs.writeFileSync(path.join(playablePath, "steam_appid.txt"), "1134480");
-                        // fs.writeFileSync(
-                        //     path.join(playablePath, "play.bat"),
-                        //     "start shapezio --dev --disable-direct-composition --in-process-gpu\r\n"
-                        // );
-                        // fs.writeFileSync(
-                        //     path.join(playablePath, "play_local.bat"),
-                        //     "start shapezio --local --dev --disable-direct-composition --in-process-gpu\r\n"
-                        // );
                     }
 
-                    if (platform === "darwin") {
+                    if (process.platform === "win32" && platform === "darwin") {
+                        console.warn(
+                            "Cross-building for macOS on Windows: dereferencing symlinks.\n".red +
+                                "This will nearly double app size and make code signature invalid. Sorry!\n"
+                                    .red.bold +
+                                "For more information, see " +
+                                "https://github.com/electron/electron-packager/issues/71".underline
+                        );
+
                         // Clear up framework folders
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
@@ -226,11 +210,14 @@ function gulptasksStandalone($, gulp, buildFolder) {
         );
     }
 
-    gulp.task("standalone.package.prod.win64", cb => packageStandalone("win32", "x64", cb, true));
-    gulp.task("standalone.package.prod.win32", cb => packageStandalone("win32", "ia32", cb, true));
-    gulp.task("standalone.package.prod.linux64", cb => packageStandalone("linux", "x64", cb, true));
-    gulp.task("standalone.package.prod.linux32", cb => packageStandalone("linux", "ia32", cb, true));
-    gulp.task("standalone.package.prod.darwin64", cb => packageStandalone("darwin", "x64", cb, true));
+    gulp.task("standalone.package.prod.win64", cb => packageStandalone("win32", "x64", cb));
+    gulp.task("standalone.package.prod.win32", cb => packageStandalone("win32", "ia32", cb));
+    gulp.task("standalone.package.prod.linux64", cb => packageStandalone("linux", "x64", cb));
+    gulp.task("standalone.package.prod.linux32", cb => packageStandalone("linux", "ia32", cb));
+    gulp.task("standalone.package.prod.darwin64", cb => packageStandalone("darwin", "x64", cb));
+    gulp.task("standalone.package.prod.darwin64.unsigned", cb =>
+        packageStandalone("darwin", "x64", cb, false)
+    );
 
     gulp.task(
         "standalone.package.prod",
@@ -240,8 +227,6 @@ function gulptasksStandalone($, gulp, buildFolder) {
                 "standalone.package.prod.win64",
                 "standalone.package.prod.linux64",
                 "standalone.package.prod.darwin64"
-                // "standalone.package.prod.win32",
-                // "standalone.package.prod.linux32",
             )
         )
     );

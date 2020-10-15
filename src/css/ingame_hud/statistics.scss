@@ -14,24 +14,74 @@
             @include S(padding, 1px, 10px);
             border: 0;
             box-shadow: none;
-            border-radius: 0;
             @include IncreasedClickArea(1px);
             @include S(min-width, 30px);
             color: #fff;
             opacity: 0.25;
-            @include S(margin-left, 1px);
+            @include S(border-radius, $globalBorderRadius);
+
+            border-radius: 0;
+            &:first-child {
+                @include S(border-top-left-radius, $globalBorderRadius);
+                @include S(border-bottom-left-radius, $globalBorderRadius);
+            }
+
+            &:last-child {
+                @include S(border-top-right-radius, $globalBorderRadius);
+                @include S(border-bottom-right-radius, $globalBorderRadius);
+            }
 
             &.displayIcons,
+            &.displayDetailed,
+            &.displaySorted,
+            &.displayIterateUnit {
+                background: transparent center center / #{D(15px)} no-repeat;
+            }
+
             &.displayDetailed {
-                background: uiResource("icons/display_list.png") center center / #{D(15px)} no-repeat;
-                &.displayIcons {
-                    background-image: uiResource("icons/display_icons.png");
-                    background-size: #{D(11.5px)};
+                /* @load-async */
+                background-image: uiResource("icons/display_list.png");
+            }
+
+            &.displayIcons {
+                /* @load-async */
+                background-image: uiResource("icons/display_icons.png");
+                background-size: #{D(11.5px)};
+            }
+
+            &.displayDetailed {
+                @include S(border-top-left-radius, $globalBorderRadius);
+                @include S(border-bottom-left-radius, $globalBorderRadius);
+            }
+
+            &.displaySorted {
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/display_sorted.png");
                 }
+                background-size: #{D(11.5px)};
+                margin-right: 5px;
+                @include S(border-top-right-radius, $globalBorderRadius);
+                @include S(border-bottom-right-radius, $globalBorderRadius);
+
+                @include S(padding, 1px, 0);
+            }
+
+            &.displayIterateUnit {
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/toggle_unit.png");
+                }
+                opacity: 0.8;
+                @include S(padding, 1px, 0);
             }
 
             background-color: #44484a !important;
             transition: opacity 0.2s ease-in-out;
+
+            @include DarkThemeOverride {
+                background-color: lighten($darkModeControlsBackground, 10) !important;
+            }
         }
 
         .filtersDataSource,
@@ -80,15 +130,24 @@
             background: #f4f4f4;
             @include S(margin-bottom, 4px);
             display: grid;
-
-            @include DarkThemeOverride {
-                background: #222428;
-            }
+            @include S(border-radius, $globalBorderRadius);
 
             grid-template-columns: 1fr auto;
             @include S(padding, 5px);
             &:last-child {
                 margin-bottom: 0;
+            }
+
+            &.pinned {
+                background: #e3e5e9;
+            }
+
+            @include DarkThemeOverride {
+                background: $darkModeControlsBackground;
+
+                &.pinned {
+                    background: mix($darkModeControlsBackground, $colorBlueBright, 90%);
+                }
             }
 
             canvas.icon {
@@ -100,7 +159,6 @@
 
             .counter {
                 @include SuperSmallText;
-
                 @include S(padding, 0, 3px);
             }
         }
@@ -109,6 +167,7 @@
     .dialogInner {
         &[data-displaymode="detailed"] .displayDetailed,
         &[data-displaymode="icons"] .displayIcons,
+        &[data-sorted="true"] .displaySorted,
         &[data-datasource="produced"] .modeProduced,
         &[data-datasource="delivered"] .modeDelivered,
         &[data-datasource="stored"] .modeStored {
@@ -132,8 +191,12 @@
                 .counter {
                     grid-column: 1 / 2;
                     grid-row: 2 / 3;
-                    background: rgba(0, 10, 20, 0.05);
                     justify-self: end;
+                    color: #55595a;
+
+                    @include DarkThemeOverride {
+                        color: #aaa;
+                    }
                 }
             }
         }
@@ -151,6 +214,10 @@
                     align-self: center;
                     text-align: right;
                     color: #55595a;
+
+                    @include DarkThemeOverride {
+                        color: #aaa;
+                    }
                 }
 
                 canvas.graph {

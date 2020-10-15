@@ -11,9 +11,10 @@ const { fileURLToPath } = require("url");
 async function run() {
     console.log("Running");
 
-    const fps = 28;
-    const dimensions = 126;
-    const beltBorder = 15.5;
+    const fps = 14;
+    const dimensions = 192;
+    const beltBorder = 23.5;
+    const lineSize = 5;
 
     const borderColor = "#91949e";
     const fillColor = "#d2d4d9";
@@ -21,8 +22,8 @@ async function run() {
 
     // Generate arrow sprite
 
-    const arrowW = 40;
-    const arrowH = 20;
+    const arrowW = 60;
+    const arrowH = arrowW / 2;
     /** @type {HTMLCanvasElement} */
     const arrowSprite = createCanvas(arrowW, arrowH);
     const arrowContext = arrowSprite.getContext("2d");
@@ -37,6 +38,8 @@ async function run() {
     arrowContext.closePath();
     arrowContext.fill();
 
+    const promises = [];
+
     // First, generate the forward belt
     for (let i = 0; i < fps; ++i) {
         /** @type {HTMLCanvasElement} */
@@ -49,7 +52,7 @@ async function run() {
 
         context.fillStyle = fillColor;
         context.strokeStyle = borderColor;
-        context.lineWidth = 3;
+        context.lineWidth = lineSize;
 
         context.beginPath();
         context.rect(beltBorder, -10, dimensions - 2 * beltBorder, dimensions + 20);
@@ -64,9 +67,10 @@ async function run() {
             context.drawImage(arrowSprite, dimensions / 2 - arrowW / 2, y);
         }
 
-        const out = fs.createWriteStream(path.join(__dirname, "forward_" + i + ".png"));
+        const out = fs.createWriteStream(path.join(__dirname, "built", "forward_" + i + ".png"));
         const stream = canvas.createPNGStream();
         stream.pipe(out);
+        promises.push(new Promise(resolve => stream.on("end", resolve)));
     }
 
     // Generate left and right side belt
@@ -82,7 +86,7 @@ async function run() {
 
         context.fillStyle = fillColor;
         context.strokeStyle = borderColor;
-        context.lineWidth = 3;
+        context.lineWidth = lineSize;
 
         context.beginPath();
         context.moveTo(beltBorder, dimensions + 10);
@@ -160,14 +164,43 @@ async function run() {
         flippedContext.scale(-1, 1);
         flippedContext.drawImage(canvas, -dimensions, 0, dimensions, dimensions);
 
-        const out = fs.createWriteStream(path.join(__dirname, "right_" + i + ".png"));
-        const stream = canvas.createPNGStream();
-        stream.pipe(out);
+        const outRight = fs.createWriteStream(path.join(__dirname, "built", "right_" + i + ".png"));
+        const streamRight = canvas.createPNGStream();
+        streamRight.pipe(outRight);
 
-        const outLeft = fs.createWriteStream(path.join(__dirname, "left_" + i + ".png"));
+        const outLeft = fs.createWriteStream(path.join(__dirname, "built", "left_" + i + ".png"));
         const streamLeft = flippedCanvas.createPNGStream();
         streamLeft.pipe(outLeft);
+
+        promises.push(new Promise(resolve => streamRight.on("end", resolve)));
+        promises.push(new Promise(resolve => streamLeft.on("end", resolve)));
     }
+
+    console.log("Waiting for completion");
+    await Promise.all(promises);
+
+    // Also wait a bit more
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    console.log("Copying files to all locations");
+
+    // Copy other files
+    fs.copyFileSync(
+        path.join(__dirname, "built", "forward_0.png"),
+        path.join(__dirname, "..", "buildings", "belt_top.png")
+    );
+
+    fs.copyFileSync(
+        path.join(__dirname, "built", "right_0.png"),
+        path.join(__dirname, "..", "buildings", "belt_right.png")
+    );
+
+    fs.copyFileSync(
+        path.join(__dirname, "built", "left_0.png"),
+        path.join(__dirname, "..", "buildings", "belt_left.png")
+    );
+
+    console.log("Done!");
 }
 
 run();

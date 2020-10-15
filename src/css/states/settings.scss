@@ -1,110 +1,223 @@
 #state_SettingsState {
-    .content {
-        .versionbar {
-            @include S(margin-top, 20px);
-            @include SuperSmallText;
+    $colorCategoryButton: #eeeff5;
+    $colorCategoryButtonSelected: $colorBlueBright;
+
+    $layoutBreak: 1000px;
+
+    .container .content {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        @include S(grid-gap, 10px);
+
+        @include StyleBelowWidth($layoutBreak) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+        }
+
+        .sidebar {
             display: grid;
-            align-items: center;
-            grid-template-columns: 1fr auto;
-            .buildVersion {
-                display: flex;
-                flex-direction: column;
-                color: #aaadaf;
-            }
-        }
+            @include S(min-width, 210px);
+            @include S(max-width, 320px);
+            @include S(grid-gap, 3px);
+            grid-template-rows: auto auto auto auto auto 1fr;
 
-        button.about {
-            background-color: $colorGreenBright;
-        }
-
-        .setting {
-            @include S(padding, 10px);
-            background: #eeeff5;
-            @include S(border-radius, $globalBorderRadius);
-            @include S(margin-bottom, 5px);
-
-            label {
-                text-transform: uppercase;
-                @include Text;
+            @include StyleBelowWidth($layoutBreak) {
+                grid-template-rows: 1fr 1fr;
+                grid-template-columns: auto auto;
+                max-width: unset !important;
             }
 
-            .desc {
-                @include S(margin-top, 5px);
+            button {
+                text-align: left;
+                &::after {
+                    content: unset;
+                }
+                width: 100%;
+                box-sizing: border-box;
+
+                @include StyleBelowWidth($layoutBreak) {
+                    text-align: center;
+                }
+            }
+
+            .other {
+                @include S(margin-top, 10px);
+                align-self: end;
+
+                @include StyleBelowWidth($layoutBreak) {
+                    margin-top: 0;
+                }
+            }
+
+            button.categoryButton,
+            button.about {
+                background-color: $colorCategoryButton;
+                color: #777a7f;
+
+                &.active {
+                    background-color: $colorCategoryButtonSelected;
+                    color: #fff;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                &.pressed {
+                    transform: none !important;
+                }
+            }
+
+            .versionbar {
+                @include S(margin-top, 10px);
+
+                @include StyleBelowWidth($layoutBreak) {
+                    display: none;
+                }
+
                 @include SuperSmallText;
-                color: #aaadb2;
-            }
-
-            > .row {
                 display: grid;
                 align-items: center;
                 grid-template-columns: 1fr auto;
-            }
-
-            &.disabled {
-                // opacity: 0.3;
-                pointer-events: none;
-                * {
-                    pointer-events: none !important;
-                    cursor: default !important;
-                }
-                position: relative;
-                .standaloneOnlyHint {
-                    @include PlainText;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    pointer-events: all;
+                .buildVersion {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: rgba(#fff, 0.5);
-                    text-transform: uppercase;
-                    color: $colorRedBright;
+                    flex-direction: column;
+                    color: #aaadaf;
                 }
             }
+        }
 
-            .value.enum {
-                background: #fff;
-                @include PlainText;
-                display: flex;
-                align-items: flex-start;
-                pointer-events: all;
-                cursor: pointer;
-                justify-content: center;
-                @include S(min-width, 100px);
-                @include S(border-radius, $globalBorderRadius);
-                @include S(padding, 4px);
-                @include S(padding-right, 15px);
+        .categoryContainer {
+            overflow-y: scroll;
+            pointer-events: all;
+            @include S(padding-right, 10px);
 
-                background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
-                    calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+            .category {
+                display: none;
 
-                transition: background-color 0.12s ease-in-out;
-                &:hover {
-                    background-color: #fafafa;
+                &.active {
+                    display: block;
+                }
+
+                .setting {
+                    @include S(padding, 10px);
+                    background: #eeeff5;
+                    @include S(border-radius, $globalBorderRadius);
+                    @include S(margin-bottom, 5px);
+
+                    .desc {
+                        @include S(margin-top, 5px);
+                        @include SuperSmallText;
+                        color: #aaadb2;
+                    }
+
+                    > .row {
+                        display: grid;
+                        align-items: center;
+                        grid-template-columns: 1fr auto;
+
+                        > label {
+                            text-transform: uppercase;
+                            @include Text;
+                        }
+                    }
+
+                    &.disabled {
+                        // opacity: 0.3;
+                        pointer-events: none;
+                        * {
+                            pointer-events: none !important;
+                            cursor: default !important;
+                        }
+                        position: relative;
+                        .standaloneOnlyHint {
+                            @include PlainText;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            pointer-events: all;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(#fff, 0.5);
+                            text-transform: uppercase;
+                            color: $colorRedBright;
+                        }
+                    }
+
+                    .value.enum {
+                        background: #fff;
+                        @include PlainText;
+                        display: flex;
+                        align-items: flex-start;
+                        pointer-events: all;
+                        cursor: pointer;
+                        justify-content: center;
+                        @include S(min-width, 100px);
+                        @include S(border-radius, $globalBorderRadius);
+                        @include S(padding, 4px);
+                        @include S(padding-right, 15px);
+
+                        & {
+                            /* @load-async */
+                            background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
+                                calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
+                        }
+
+                        transition: background-color 0.12s ease-in-out;
+                        &:hover {
+                            background-color: #fafafa;
+                        }
+                    }
                 }
             }
         }
     }
 
     @include DarkThemeOverride {
-        .content {
-            .setting {
-                background: darken($darkModeGameBackground, 10);
+        .container .content {
+            .sidebar {
+                button.categoryButton,
+                button.about {
+                    color: #ccc;
+                    background-color: darken($darkModeControlsBackground, 5);
 
-                .value.enum {
-                    // dirty but works
-                    filter: invert(0.85);
-                    color: #222;
+                    &.active {
+                        color: #fff;
+                        background-color: $colorCategoryButtonSelected;
+                    }
                 }
+            }
 
-                .value.checkbox {
-                    background-color: #74767b;
+            .categoryContainer {
+                .category {
+                    .setting {
+                        background: darken($darkModeGameBackground, 10);
 
-                    &.checked {
-                        background-color: $colorBlueBright;
+                        .value.enum {
+                            // dirty but works
+                            // color: #222;
+                            background-color: $darkModeControlsBackground;
+
+                            & {
+                                /* @load-async */
+                                background-image: uiResource("icons/enum_selector_white.png");
+                            }
+                            color: #ddd;
+                            &:hover {
+                                background-color: darken($darkModeControlsBackground, 2);
+                            }
+                        }
+
+                        .value.checkbox {
+                            background-color: #74767b;
+
+                            &.checked {
+                                background-color: $colorBlueBright;
+                            }
+                        }
                     }
                 }
             }

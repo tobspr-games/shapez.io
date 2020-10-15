@@ -18,12 +18,10 @@ export class Component extends BasicSerializableObject {
     }
 
     /**
-     * Should duplicate the component but without its contents
-     * @returns {object}
+     * Copy the current state to another component
+     * @param {Component} otherComponent
      */
-    duplicateWithoutContents() {
-        abstract;
-    }
+    copyAdditionalStateTo(otherComponent) {}
 
     /* dev:start */
 
@@ -44,3 +42,9 @@ export class Component extends BasicSerializableObject {
     }
     /* dev:end */
 }
+
+/**
+ * TypeScript does not support Abstract Static methods (https://github.com/microsoft/TypeScript/issues/34516)
+ * One workaround is to declare the type of the component and reference that for static methods
+ * @typedef {typeof Component} StaticComponent
+ */

@@ -6,10 +6,8 @@ import { types, BasicSerializableObject } from "../../savegame/serialization";
 import { RegularGameSpeed } from "./regular_game_speed";
 import { BaseGameSpeed } from "./base_game_speed";
 import { PausedGameSpeed } from "./paused_game_speed";
-import { FastForwardGameSpeed } from "./fast_forward_game_speed";
 import { gGameSpeedRegistry } from "../../core/global_registries";
 import { globalConfig } from "../../core/config";
-import { checkTimerExpired, quantizeFloat } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 
 const logger = createLogger("game_time");
@@ -62,15 +60,6 @@ export class GameTime extends BasicSerializableObject {
      */
     getTimeMs() {
         return this.timeSeconds * 1000.0;
-    }
-
-    /**
-     * Safe check to check if a timer is expired. quantizes numbers
-     * @param {number} lastTick Last tick of the timer
-     * @param {number} tickRateSeconds Interval of the timer in seconds
-     */
-    isIngameTimerExpired(lastTick, tickRateSeconds) {
-        return checkTimerExpired(this.timeSeconds, lastTick, tickRateSeconds);
     }
 
     /**
@@ -141,7 +130,7 @@ export class GameTime extends BasicSerializableObject {
             }
 
             // Step game time
-            this.timeSeconds = quantizeFloat(this.timeSeconds + this.root.dynamicTickrate.deltaSeconds);
+            this.timeSeconds += this.root.dynamicTickrate.deltaSeconds;
 
             // Game time speed changed, need to abort since our logic steps are no longer valid
             if (speedAtStart.getId() !== this.speed.getId()) {
@@ -151,11 +140,6 @@ export class GameTime extends BasicSerializableObject {
                     "to",
                     this.speed.getId()
                 );
-                break;
-            }
-
-            // If we queued async tasks, perform them next frame and do not update anymore
-            if (this.root.hud.parts.processingOverlay.hasTasks()) {
                 break;
             }
         }
@@ -210,9 +194,6 @@ export class GameTime extends BasicSerializableObject {
         // Adjust realtime now difference so they match
         this.realtimeAdjust = this.realtimeSeconds - performance.now() / 1000.0;
         this.updateRealtimeNow();
-
-        // Make sure we have a quantizied time
-        this.timeSeconds = quantizeFloat(this.timeSeconds);
 
         this.speed.initializeAfterDeserialize(this.root);
     }

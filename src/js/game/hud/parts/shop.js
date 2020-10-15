@@ -1,9 +1,8 @@
 import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
-import { formatBigNumber, makeDiv } from "../../../core/utils";
+import { formatBigNumber, getRomanNumber, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
-import { UPGRADES } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
@@ -21,7 +20,7 @@ export class HUDShop extends BaseHUDPart {
         this.upgradeToElements = {};
 
         // Upgrades
-        for (const upgradeId in UPGRADES) {
+        for (const upgradeId in this.root.gameMode.getUpgrades()) {
             const handle = {};
             handle.requireIndexToElement = [];
 
@@ -59,16 +58,16 @@ export class HUDShop extends BaseHUDPart {
     rerenderFull() {
         for (const upgradeId in this.upgradeToElements) {
             const handle = this.upgradeToElements[upgradeId];
-            const { tiers } = UPGRADES[upgradeId];
+            const upgradeTiers = this.root.gameMode.getUpgrades()[upgradeId];
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
             const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
-            const tierHandle = tiers[currentTier];
+            const tierHandle = upgradeTiers[currentTier];
 
             // Set tier
             handle.elemTierLabel.innerText = T.ingame.shop.tier.replace(
                 "<x>",
-                "" + T.ingame.shop.tierLabels[currentTier]
+                getRomanNumber(currentTier + 1)
             );
 
             handle.elemTierLabel.setAttribute("data-tier", currentTier);
@@ -90,17 +89,15 @@ export class HUDShop extends BaseHUDPart {
                 // Max level
                 handle.elemDescription.innerText = T.ingame.shop.maximumLevel.replace(
                     "<currentMult>",
-                    currentTierMultiplier.toString()
+                    formatBigNumber(currentTierMultiplier)
                 );
                 continue;
             }
 
             // Set description
             handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
-                .replace("<currentMult>", currentTierMultiplier.toString())
-                .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toString())
-                // Backwards compatibility
-                .replace("<gain>", (tierHandle.improvement * 100.0).toString());
+                .replace("<currentMult>", formatBigNumber(currentTierMultiplier))
+                .replace("<newMult>", formatBigNumber(currentTierMultiplier + tierHandle.improvement));
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
@@ -207,8 +204,6 @@ export class HUDShop extends BaseHUDPart {
     }
 
     cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
-
         // Cleanup detectors
         for (const upgradeId in this.upgradeToElements) {
             const handle = this.upgradeToElements[upgradeId];
@@ -224,15 +219,12 @@ export class HUDShop extends BaseHUDPart {
 
     show() {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
-        // this.background.classList.add("visible");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.rerenderFull();
     }
 
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
@@ -247,5 +239,9 @@ export class HUDShop extends BaseHUDPart {
     tryUnlockNextTier(upgradeId) {
         // Nothing
         this.root.hubGoals.tryUnlockUpgrade(upgradeId);
+    }
+
+    isBlockingOverlay() {
+        return this.visible;
     }
 }

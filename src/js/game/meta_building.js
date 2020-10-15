@@ -4,7 +4,8 @@ import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
 import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
-import { enumLayer, GameRoot } from "./root";
+import { GameRoot } from "./root";
+import { getCodeFromBuildingData } from "./building_codes";
 
 export const defaultBuildingVariant = "default";
 
@@ -26,10 +27,10 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
-     * @returns {enumLayer}
+     * @returns {Layer}
      */
     getLayer() {
-        return enumLayer.regular;
+        return "regular";
     }
 
     /**
@@ -54,6 +55,18 @@ export class MetaBuilding {
     }
 
     /**
+     * Can return a special interlaved 9 elements overlay matrix for rendering
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return null;
+    }
+
+    /**
      * Should return additional statistics about this building
      * @param {GameRoot} root
      * @param {string} variant
@@ -61,6 +74,13 @@ export class MetaBuilding {
      */
     getAdditionalStatistics(root, variant) {
         return [];
+    }
+
+    /**
+     * Returns whether this building can get replaced
+     */
+    getIsReplaceable() {
+        return false;
     }
 
     /**
@@ -72,11 +92,26 @@ export class MetaBuilding {
     }
 
     /**
+     * Whether to show a preview of the wires layer when placing the building
+     */
+    getShowWiresLayerPreview() {
+        return false;
+    }
+
+    /**
      * Whether to rotate automatically in the dragging direction while placing
      * @param {string} variant
      */
     getRotateAutomaticallyWhilePlacing(variant) {
         return false;
+    }
+
+    /**
+     * Returns whether this building is removable
+     * @returns {boolean}
+     */
+    getIsRemovable() {
+        return true;
     }
 
     /**
@@ -125,7 +160,7 @@ export class MetaBuilding {
      * @param {string} variant
      * @returns {boolean}
      */
-    isRotateable(variant) {
+    getIsRotateable(variant) {
         return true;
     }
 
@@ -139,9 +174,19 @@ export class MetaBuilding {
 
     /**
      * Should return a silhouette color for the map overview or null if not set
+     * @param {string} variant
+     * @param {number} rotationVariant
      */
-    getSilhouetteColor() {
+    getSilhouetteColor(variant, rotationVariant) {
         return null;
+    }
+
+    /**
+     * Should return false if the pins are already included in the sprite of the building
+     * @returns {boolean}
+     */
+    getRenderPins() {
+        return true;
     }
 
     /**
@@ -157,25 +202,33 @@ export class MetaBuilding {
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
         entity.layer = this.getLayer();
-        const blueprintSprite = this.getBlueprintSprite(rotationVariant, variant);
         entity.addComponent(
             new StaticMapEntityComponent({
-                spriteKey:
-                    "sprites/buildings/" +
-                    this.id +
-                    (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                    ".png",
                 origin: new Vector(origin.x, origin.y),
                 rotation,
                 originalRotation,
                 tileSize: this.getDimensions(variant).copy(),
-                silhouetteColor: this.getSilhouetteColor(),
-                blueprintSpriteKey: blueprintSprite ? blueprintSprite.spriteName : "",
+                code: getCodeFromBuildingData(this, variant, rotationVariant),
             })
         );
         this.setupEntityComponents(entity, root);
         this.updateVariants(entity, rotationVariant, variant);
         return entity;
+    }
+
+    /**
+     * Returns the sprite for a given variant
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @returns {AtlasSprite}
+     */
+    getSprite(rotationVariant, variant) {
+        return Loader.getSprite(
+            "sprites/buildings/" +
+                this.id +
+                (variant === defaultBuildingVariant ? "" : "-" + variant) +
+                ".png"
+        );
     }
 
     /**
@@ -185,11 +238,11 @@ export class MetaBuilding {
      * @param {Vector} param0.tile
      * @param {number} param0.rotation
      * @param {string} param0.variant
-     * @param {string} param0.layer
+     * @param {Layer} param0.layer
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        if (!this.isRotateable(variant)) {
+        if (!this.getIsRotateable(variant)) {
             return {
                 rotation: 0,
                 rotationVariant: 0,

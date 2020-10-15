@@ -17,12 +17,14 @@ export function getDeviceDPI() {
 export function smoothenDpi(dpi) {
     if (dpi < 0.05) {
         return 0.05;
-    } else if (dpi < 0.1) {
-        return round2Digits(dpi);
+    } else if (dpi < 0.2) {
+        return round2Digits(Math.round(dpi / 0.04) * 0.04);
     } else if (dpi < 1) {
-        return round1Digit(dpi);
-    } else {
+        return round1Digit(Math.round(dpi / 0.1) * 0.1);
+    } else if (dpi < 4) {
         return round1Digit(Math.round(dpi / 0.5) * 0.5);
+    } else {
+        return 4;
     }
 }
 
