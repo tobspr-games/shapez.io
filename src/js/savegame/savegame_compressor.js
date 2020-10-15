@@ -59,7 +59,7 @@ if (G_IS_DEV) {
     }
 }
 
-function compressObjectInternal(obj, keys = [], values = []) {
+function compressObjectInternal(obj, keys, values) {
     if (Array.isArray(obj)) {
         let result = [];
         for (let i = 0; i < obj.length; ++i) {
@@ -69,33 +69,41 @@ function compressObjectInternal(obj, keys = [], values = []) {
     } else if (typeof obj === "object" && obj !== null) {
         let result = {};
         for (const key in obj) {
-            let index = keys.indexOf(key);
-            if (index < 0) {
-                keys.push(key);
-                index = keys.length - 1;
+            let index = keys.get(key);
+            if (index === undefined) {
+                index = keys.size;
+                keys.set(key, index);
             }
             const value = obj[key];
             result[compressInt(index)] = compressObjectInternal(value, keys, values);
         }
         return result;
     } else if (typeof obj === "string") {
-        let index = values.indexOf(obj);
-        if (index < 0) {
-            values.push(obj);
-            index = values.length - 1;
+        let index = values.get(obj);
+        if (index === undefined) {
+            index = values.size;
+            values.set(obj, index);
         }
         return compressInt(index);
     }
     return obj;
 }
 
+function indexMapToArray(hashMap) {
+    const result = [];
+    hashMap.forEach((index, key) => {
+        result[index] = key;
+    });
+    return result;
+}
+
 export function compressObject(obj) {
-    const keys = [];
-    const values = [];
+    const keys = new Map();
+    const values = new Map();
     const data = compressObjectInternal(obj, keys, values);
     return {
-        keys,
-        values,
+        keys: indexMapToArray(keys),
+        values: indexMapToArray(values),
         data,
     };
 }
