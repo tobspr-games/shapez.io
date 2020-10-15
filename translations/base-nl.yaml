@@ -2,27 +2,28 @@ steamPage:
     shortText: shapez.io is een spel dat draait om het bouwen van fabrieken voor het
         produceren en automatiseren van steeds complexere vormen in een oneindig
         groot speelveld.
-    discordLinkShort: Officiële Discord
+    discordLinkShort: Officiële Discord server
     intro: >-
         Shapez.io is een spel waarin je fabrieken moet bouwen voor de
         automatische productie van geometrische vormen.
 
         Naarmate het spel vordert, worden de vormen complexer, en moet je uitbreiden in het oneindige speelveld.
 
-        En als dat nog niet genoeg is moet je ook nog eens steeds me produceren om aan de vraag te kunnen voldoen. Het enige dat helpt is uitbreiden!
+        En als dat nog niet genoeg is moet je ook nog eens steeds meer produceren om aan de vraag te kunnen voldoen. Het enige dat helpt is uitbreiden!
 
         Ondanks het feit dat je in het begin alleen vormen maakt, komt er het punt waarop je ze moet kleuren. Deze kleuren moet je vinden en mengen!
 
-        Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen.
+        Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen
+        om over te schakelen zonder voortgang te verliezen.
     title_advantages: Standalone Voordelen
     advantages:
         - <b>12 Nieuwe Levels</b> met een totaal van 26 levels
         - <b>18 Nieuwe Gebouwen</b> voor een volledig geautomatiseerde fabriek!
         - <b>20 Upgrade Levels</b> voor vele speeluren!
         - <b>Draden Update</b> voor een volledig nieuwe dimensie!
-        - <b>Dark Mode</b>!
-        - Ongelimiteerde Saves
-        - Ongelimiteerde Markers
+        - <b>Dark Mode</b> Donkere modus!
+        - Oneindig veel werelden.
+        - Oneindig veel Markers
         - Help mij! ❤️
     title_future: Geplande Content
     planned:
@@ -40,7 +41,7 @@ steamPage:
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
-        translate: Help vertalen
+        translate: Hulp met vertalen
     text_open_source: >-
         Iedereen mag meewerken. Ik ben actief betrokken in de community en
         probeer alle suggesties en feedback te beoordelen als dat nodig is.
@@ -56,9 +57,9 @@ global:
         millions: M
         billions: B
         trillions: T
-    infinite: inf
+    infinite: ∞
     time:
-        oneSecondAgo: één seconde geleden
+        oneSecondAgo: een seconde geleden
         xSecondsAgo: <x> seconden geleden
         oneMinuteAgo: een minuut geleden
         xMinutesAgo: <x> minuten geleden
@@ -86,12 +87,12 @@ mainMenu:
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
     discordLink: Officiële Discord-server (Engelstalig)
-    helpTranslate: Help met vertalen!
+    helpTranslate: Help ons met vertalen!
     browserWarning: Sorry, maar dit spel draait langzaam in je huidige browser! Koop
         de standalone versie of download chrome voor de volledige ervaring.
     savegameLevel: Level <x>
     savegameLevelUnknown: Onbekend Level
-    continue: Verder
+    continue: Ga verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
     subreddit: Reddit
@@ -119,10 +120,10 @@ dialogs:
         title: Het spel is kapot
         text: "Het laden van je savegame is mislukt:"
     confirmSavegameDelete:
-        title: Bevestig verwijderen
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        title: Bevestig het verwijderen
+        text: Ben je zeker dat je het volgende spel wil verwijderen?<br><br>
+            '<savegameName>' op niveau <savegameLevel><br><br> Dit kan niet ongedaan worden
+            gemaakt!
     savegameDeletionError:
         title: Verwijderen mislukt
         text: "Het verwijderen van de savegame is mislukt:"
@@ -177,9 +178,9 @@ dialogs:
             van lopende banden om te draaien wanneer je ze plaatst.<br>"
     createMarker:
         title: Nieuwe markering
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
-        titleEdit: Edit Marker
+        desc: Geef het een nuttige naam, Je kan ook een <strong>snel
+            toets</strong> van een vorm gebruiken (die je <link>here</link> kan genereren).
+        titleEdit: Bewerk markering
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor
             een ongelimiteerde hoeveelheid markeringen!
@@ -197,21 +198,20 @@ dialogs:
         desc: Je kunt het je niet veroorloven om de selectie te plakken! Weet je zeker
             dat je het wil knippen?
     editSignal:
-        title: Set Signal
+        title: Stel het signaal in.
         descItems: "Kies een ingesteld item:"
-        descShortKey: ... of voer de <strong>short key</strong> van een vorm (Die je
-            <link>hier</link> kunt vinden) in.
+        descShortKey: ... of voer de <strong>hotkey</strong> in van een vorm (Die je
+            <link>hier</link> kunt vinden).
     renameSavegame:
         title: Hernoem opgeslagen spel
         desc: Geef je opgeslagen spel een nieuwe naam.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial Beschikbaar
+        desc: Er is een tutorial video beschikbaar voor dit level! Zou je het willen bekijken?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        desc: Er is een tutorial beschikbaar voor dit level, maar het is alleen
+            beschikbaar in het Engels. Zou je het toch graag kijken?
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg speelveld
@@ -240,8 +240,8 @@ ingame:
             speed: Snelheid
             range: Bereik
             storage: Opslag
-            oneItemPerSecond: 1 voorwerp / s
-            itemsPerSecond: <x> voorwerpen / s
+            oneItemPerSecond: 1 voorwerp/s
+            itemsPerSecond: <x> voorwerpen/s
             itemsPerSecondDouble: (x2)
             tiles: <x> tegels
     levelCompleteNotification:
@@ -273,9 +273,9 @@ ingame:
                 description: Geeft alle vormen weer die in de HUB worden bezorgd.
         noShapesProduced: Er zijn nog geen vormen geproduceerd.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes>/s
+            minute: <shapes>/m
+            hour: <shapes>/h
     settingsMenu:
         playtime: Speeltijd
         buildingsPlaced: Gebouwen
@@ -307,30 +307,30 @@ ingame:
                 en lopende banden om het doel sneller te behalen.<br><br>Tip:
                 Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te
                 plaatsen en gebruik <strong>R</strong> om ze te draaien."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Plaats nu een <strong>Knipper</strong> om de cirkels in twee te knippen
+                halves!<br><br> PS: De knipper knipt altijd van <strong>boven naar
+                onder</strong> ongeacht zijn oriëntatie."
+            2_2_place_trash: De knipper kan vormen <strong>verstoppen en bijhouden</strong>!<br><br> Gebruik een
+                <strong>vuilbak</strong> om van het (!) niet
+                nodige afval vanaf te geraken.
+            2_3_more_cutters: "Goed gedaan! Plaats nu <strong>2 extra knippers</strong> om dit traag
+                process te versnellen! <br><br> PS: Gebruik de <strong>0-9
+                sneltoetsen</strong> om gebouwen sneller te selecteren."
+            3_1_rectangles: "Laten we nu rechthoeken ontginnen! <strong>Bouw 4 
+                ontginners</strong> en verbind ze met de lever.<br><br> PS:
+                Houd <strong>SHIFT</strong> Ingedrukt terwijl je lopende banden plaats
+                om ze te plannen!"
+            21_1_place_quad_painter: Plaats de <strong>quad painter</strong> en krijg een paar
+                <strong>cirkels</strong> in <strong>witte</strong> en
+                <strong>rode</strong> kleur!
+            21_2_switch_to_wires: Schakel naar de draden laag door te duwen op
+                <strong>E</strong>!<br><br> <strong>verbind daarna alle
+                inputs</strong> van de verver met kabels!
+            21_3_place_button: Mooi! Plaats nu een <strong>schakelaar</strong> en verbind het
+                met draden!
+            21_4_press_button: "Druk op de schakelaar om het een <strong>Juist signaal door
+                te geven</strong> en de verver te activeren.<br><br> PS: Je
+                moet niet alle inputs verbinden! Probeer er eens 2."
     colors:
         red: Rood
         green: Groen
@@ -352,7 +352,7 @@ ingame:
     watermark:
         title: Demo versie
         desc: Klik hier om het spel op Steam te bekijken!
-        get_on_steam: Get on steam
+        get_on_steam: Krijg het op Steam
     standaloneAdvantages:
         title: Koop de volledige versie!
         no_thanks: Nee, bedankt!
@@ -430,10 +430,10 @@ buildings:
             name: Roteerder
             description: Draait vormen 90 graden met de klok mee.
         ccw:
-            name: Roteerder (andersom)
+            name: Roteerder (omgekeerd)
             description: Draait vormen 90 graden tegen de klok in.
         rotate180:
-            name: Roteerder (180)
+            name: Roteerder (180°)
             description: Draait vormen 180 graden.
     stacker:
         default:
@@ -467,7 +467,7 @@ buildings:
             name: Vuilnisbak
             description: Accepteert input van alle kanten en vernietigt het. Voor altijd.
     hub:
-        deliver: Lever
+        deliver: Lever in
         toUnlock: om te ontgrendelen
         levelShortcut: LVL
         endOfDemo: End of Demo
@@ -490,11 +490,11 @@ buildings:
             name: Samenvoeger
             description: Voeg 2 lopende banden samen.
         splitter:
-            name: Splitter (compact)
-            description: Split een lopende band in tweeën.
+            name: Splitser (compact)
+            description: Splits een lopende band in tweeën.
         splitter-inverse:
-            name: Splitter
-            description: Split een lopende band in tweeën.
+            name: Splitser
+            description: Splits een lopende band in tweeën.
     storage:
         default:
             name: Opslag
@@ -517,18 +517,18 @@ buildings:
         default:
             name: AND poort
             description: Zend een 1 uit als beide invoeren hetzelfde zijn. (Kan een vorm,
-                kleur of boolean (1 / 0) zijn)
+                kleur of boolean (1/0) zijn)
         not:
             name: NOT poort
             description: Zend een 1 uit als de invoer een 0 is.
         xor:
             name: XOR poort
             description: Zend een 1 uit als de invoeren niet hetzelfde zijn. (Kan een vorm,
-                kleur of boolean (1 / 0) zijn)
+                kleur of boolean (1/0) zijn)
         or:
-            name: OR gate
+            name: OR poort
             description: Zend een 1 uit als de invoeren wel of niet hetzelfde zijn, maar
-                niet uit zijn. (Kan een vorm, kleur of boolean (1 / 0) zijn)
+                niet uit zijn. (Kan een vorm, kleur of boolean (1/0) zijn)
     transistor:
         default:
             name: Transistor
@@ -545,7 +545,7 @@ buildings:
         default:
             name: Scherm
             description: Verbind een signaal met het scherm om de soort weer te geven. Kan
-                een vorm, kleur of boolean (1 / 0) zijn.
+                een vorm, kleur of boolean (1/0) zijn.
     reader:
         default:
             name: Lopende band lezer
@@ -560,7 +560,7 @@ buildings:
         default:
             name: Vergelijker
             description: Zend 1 uit als beiden invoeren gelijk zijn, kunnen vormen, kleuren
-                of booleans (1 / 0) zijn
+                of booleans (1/0) zijn
     virtual_processor:
         default:
             name: Virtuele Snijder
@@ -587,12 +587,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Vormen Knippen
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Je hebt juist de <strong>knipper</strong> ontgrendeld, die vormen in de helft
+            kan knippen van boven naar onder <strong>ongeacht zijn rotatie
+            </strong>!<br><br>Wees zeker dat je het afval weggooit, want
+            anders <strong>zal het vastlopen</strong> - Voor deze reden
+            heb ik je de <strong>vuilbak</strong> gegeven, die alles
+            vernietigd wat je erin laat stromen!
     reward_rotater:
         title: Roteren
         desc: De <strong>roteerder</strong> is ontgrendeld - Het draait vormen 90 graden
@@ -617,10 +617,10 @@ storyRewards:
             worden dan wordt het rechtervoorwerp <strong>boven op</strong> het
             linker geplaatst!
     reward_splitter:
-        title: Splitter/samenvoeger
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        title: Splitser/samenvoeger
+        desc: Je hebt de <strong>splitser</strong> ontgrendeld, een variant van de
+            <strong>samenvoeger</strong> - Het accepteert 1 input en verdeelt het
+            in 2!
     reward_tunnel:
         title: Tunnel
         desc: De <strong>tunnel</strong> is ontgrendeld - Je kunt nu voorwerpen onder
@@ -633,15 +633,15 @@ storyRewards:
             wisselen</strong>!
     reward_miner_chainable:
         title: Ketting-ontginner
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "Je hebt de <strong>Ketting-ontginner</strong> ontgrendeld! Het kan
+            <strong>zijn materialen ontginnen</strong> via andere ontginners zodat je
+            meer materialen tegelijkertijd kan ontginnen!<br><br> PS: De oude
+            ontginner is vervangen in je toolbar!"
     reward_underground_belt_tier_2:
         title: Tunnel Niveau II
-        desc: You have unlocked a new variant of the <strong>tunnel</strong> - It has a
-            <strong>bigger range</strong>, and you can also mix-n-match those
-            tunnels now!
+        desc: Je hebt een nieuwe variant van de <strong>tunnel</strong> ontgrendeld. - Het heeft een
+            <strong>groter bereik</strong>, en je kan nu ook die tunnels mixen
+            over en onder elkaar!
     reward_cutter_quad:
         title: Quad Knippen
         desc: Je hebt een variant van de <strong>knipper</strong> ontgrendeld - Dit
@@ -653,18 +653,18 @@ storyRewards:
             tegelijk</strong> met één kleur in plaats van twee!
     reward_storage:
         title: Opslagbuffer
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        desc: Je hebt een variant van de <strong>opslag</strong> ontgrendeld - Het laat je toe om
+            vormen op te slagen tot een bepaalde capaciteit!<br><br> Het verkiest de linkse
+            output, dus je kan het altijd gebruiken als een <strong>overloop poort</strong>!
     reward_freeplay:
         title: Vrij spel
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Je hebt het gedaan! Je hebt de <strong>free-play modus</strong> ontgrendeld! Dit betekend
+            dat vormen nu <strong>willekeurig</strong> gegenereerd worden!<br><br>
+            Omdat de hub vanaf nu een <strong>bepaald aantal vormen per seconden</strong> nodig heeft,
+            Raad ik echt aan een machine te maken die automatisch
+            de juiste vormen genereert!<br><br> De HUB geeft de vorm die je nodig hebt
+            op de tweede laag met draden, dus alles wat je moet doen is dat analyseren
+            en je fabriek dat automatisch laten maken op basis van dat.
     reward_blueprints:
         title: Blauwdrukken
         desc: Je kunt nu delen van je fabriek <strong>kopiëren en plakken</strong>!
@@ -685,9 +685,9 @@ storyRewards:
             uitgebereid in de standalone!
     reward_balancer:
         title: Verdeler
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: De multifunctionele <strong>verdeler</strong> is nu ontgrendeld - Het kan
+             gebruikt worden om grotere <strong>te knippen en plakken</strong> vormen op meerdere
+             lopende banden te zetten
     reward_merger:
         title: Compacte samenvoeger
         desc: Je hebt een variant op de <strong>samenvoeger</strong> van de
@@ -704,17 +704,17 @@ storyRewards:
             je een item op de band 180 graden draaien!
     reward_display:
         title: Scherm
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "Je hebt het <strong>scherm</strong> ontgrendeld - Verbind een signaal met de
+            laag van draden om het te visualiseren!<br><br> PS: Heb je gezien dat de lopende band
+            lezer en opslag hun laatste vorm weergeven? Probeer het te tonen op
+            een scherm!"
     reward_constant_signal:
         title: Constante Signaal
         desc: Je hebt het <strong>constante signaal</strong> vrijgespeeld op de kabel
             dimensie! Dit gebouw is handig in samenwerking met <strong>item
             filters</strong>.<br><br> Het constante signaal kan een
             <strong>vorm</strong>, <strong>kleur</strong> of
-            <strong>boolean</strong> (1 / 0) zijn.
+            <strong>boolean</strong> (1/0) zijn.
     reward_logic_gates:
         title: Logische poorten
         desc: Je hebt de <strong>logische poorten</strong> vrijgespeeld! Misschien word
@@ -723,29 +723,29 @@ storyRewards:
             uitvoeren.<br><br> Als bonus krijg je ook nog een
             <strong>transistor</strong> van mij!
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: VIrtuele verwerking
+        desc: Ik heb juist een hele hoop nieuwe gebouwen toegevoegd die je toetstaan om
+            <strong>het process van vormen te stimuleren</strong>!<br><br> Je kan
+            nu de knipper, draaier, stapelaar en meer op de dradenlaag stimuleren!
+            Met dit heb je nu 3 opties om verder te gaan met het spel:<br><br> -
+            Bouw een <strong>automatische fabriek</strong> om eender welke mogelijke
+            vorm te maken gebraagd door de HUB (Ik raad aan dit te proberen!).<br><br> - Bouw
+            iets cool met draden.<br><br> - Ga verder met normaal
+            spelen.<br><br> Wat je ook kiest, onthoud dat je plezier hoort te hebben!
     reward_wires_painter_and_levers:
         title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Je hebt juist de <strong>draden laag</strong> ontgrendeld: Het is een aparte
+            laag boven op de huidige laag en introduceert heel veel nieuwe
+            manieren om te spelen!<br><br> Voor het begin heb ik voor jou de <strong>Quad
+            Painter</strong> ontgrendeld - Verbind de gleuf waarin je wilt verven op
+            de draden laag!<br><br> Om over te schakelen naar de draden laag, Duw op
+            <strong>E</strong>. <br><br> PS: <strong>Zet hints aan</strong> in
+            de instellingen om de draden tutorial te activeren!"
     reward_filter:
         title: Item Filter
         desc: Je hebt de <strong>Item Filter</strong> vrijgespeeld! Items worden naar
             rechts of naar boven gestuurd, afhankelijk van de invoer.<br><br> Er
-            kan ook een boolean (1 / 0) worden ingevoerd om de filter in en uit
+            kan ook een boolean (1/0) worden ingevoerd om de filter in en uit
             te schakelen.
     reward_demo_end:
         title: Einde van de Demo
@@ -756,10 +756,10 @@ settings:
         general: Algemeen
         userInterface: Opmaak
         advanced: Geavanceerd
-        performance: Performance
+        performance: Prestatie
     versionBadges:
         dev: Ontwikkeling
-        staging: Staging
+        staging: Positie
         prod: Productie
     buildDate: <at-date> gebouwd
     labels:
@@ -799,12 +799,12 @@ settings:
             description: Wanneer dit aan staat wordt alle muziek uitgeschakeld.
         theme:
             title: Donkere modus
-            description: Kies de gewenste weergave (licht / donker).
+            description: Kies de gewenste weergave (licht/donker).
             themes:
                 dark: Donker
                 light: Licht
         refreshRate:
-            title: Simulation Target
+            title: Simulatie doel
             description: Wanneer je een 144 hz monitor hebt, verander de refresh rate hier
                 zodat het spel naar behoren weer blijft geven. Dit verlaagt
                 mogelijk de FPS als je computer te traag is.
@@ -868,11 +868,11 @@ settings:
                 laatst geplaatst hebt. Dit kan handig zijn wanneer je vaak
                 tussen verschillende soorten gebouwen wisselt.
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: Geluidsvolume
+            description: Stel het volume voor geluidseffecten in.
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: Muziekvolume
+            description: Stel het volume voor muziek in.
         lowQualityMapResources:
             title: Lage kwaliteit van resources
             description: Versimpeldde resources op de wereld wanneer ingezoomd om de
@@ -911,13 +911,13 @@ settings:
                 Plaats de cursor boven, rechts, links of onder om daar naartoe
                 te bewegen.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoom naar de Muis
+            description: "Wanneer geactiveert: de zoom zal gebeuren in de richting van je
+                muispositie, anders in het midden van het scherm."
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Kaartbronnen schaal
+            description: Controleert de grote van de vormen op het map overzicht (wanneer je
+                uitzoomt).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Sneltoetsen
@@ -1013,7 +1013,7 @@ demo:
         restoringGames: Savegames terughalen
         importingGames: Savegames importeren
         oneGameLimit: Gelimiteerd tot één savegame
-        customizeKeybindings: Custom sneltoetsen
+        customizeKeybindings: Aangepaste sneltoetsen
         exportingBase: Exporteer volledige basis als afbeelding
     settingNotAvailable: Niet beschikbaar in de demo.
 tips:

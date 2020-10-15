@@ -207,13 +207,13 @@ dialogs:
         title: Renomear Savegame
         desc: Podes renomear o teu savegame aqui.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial Disponível
+        desc: Existe um vídeo de tutorial disponível para este nível! Gostarias de
+            o ver?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial Disponível
+        desc: Existe um vídeo de tutorial disponível para este nível, mas apenas
+            está disponível em Inglês. Gostarias de o ver?
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -308,30 +308,30 @@ ingame:
                 e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica:
                 Pressiona <strong>SHIFT</strong> para colocar vários extratores,
                 e usa <strong>R</strong> para os rodar."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Agora coloca um <strong>Cortador</strong> para cortares os circulos
+                em duas metades!<br><br> PS: O cortador corta sempre <strong>de cima para
+                baixo</strong> independentemente da sua orientação"
+            2_2_place_trash: O cortador pode <strong>encravar e parar</strong>!<br><br> Usa
+                um <strong>lixo</strong> para de livrares do atual (!) não
+                é necessário desperdício.
+            2_3_more_cutters: "Bom trabalho! Agora coloca<strong>mais 2 cortadores</strong> para acelerades
+                este progresso lento!<br><br> PS: Usa os <strong>atalhos
+                0-9</strong> para acederes às contruções mais rapidamente!"
+            3_1_rectangles: "Agora vamos extrair alguns retângulos! <strong>Constrói 4
+                extratores</strong> e conecta-os ao edifício central.<br><br> PS:
+                Pressiona <strong>SHIFT</strong> enquanto arrastas um tapete rolante
+                para ativares o planeador de tapetes!"
+            21_1_place_quad_painter: Coloca o <strong>pintor quádruplo</strong> e arranja alguns
+                <strong>círculos</strong>, cores <strong>branca</strong> e
+                <strong>vermelha</strong>!
+            21_2_switch_to_wires: Troca para a camada de fios pressionando
+                <strong>E</strong>!<br><br> A seguir <strong>conecta todas as quatro
+                entradas</strong> do pintor com fios!
+            21_3_place_button: Fantástico! Agora coloca o <strong>Interruptor</strong> e conecta-o
+                com os fios!
+            21_4_press_button: "Pressiona o interruptor para que ele <strong>emita um
+                sinal verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
+                não tens de conectar todas as entradas! Tenta conectar apenas duas."
     colors:
         red: Vermelho
         green: Verde
@@ -748,13 +748,13 @@ storyRewards:
             Independentemente da tua escolha, lembra-te de te divertires!
     reward_wires_painter_and_levers:
         title: Fios & Pintor Quádruplo
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Desbloquaste a <strong>Camada de Fios</strong>: É uma camada separada no
+            topo da camada normal e introduz um monte de novas
+            mecânicas!<br><br> Para o inicio eu dei-te o <strong>Pintor
+            Quádruplo</strong> - Conecta as entradas que queres pintar na camada
+            de fios!<br><br> Para trocares para a camada de fios, pressiona a
+            tecla <strong>E</strong>. <br><br> PS: <strong>Ativa as dicas</strong> nas
+            definições para ativares o tutorial de fios!"
     reward_filter:
         title: Filtro de Itens
         desc: Desbloquaste o <strong>Filtro de Itens</strong>! Vai mandar itens ou para
@@ -1033,22 +1033,22 @@ demo:
         exportingBase: Exportar base como uma imagem
     settingNotAvailable: Não disponível no Demo.
 tips:
-    - O edifício central aceita qualquer entrada, não apenas a forma atual!
+    - O edifício central aceita qualquer entrada, não apenas a da forma atual!
     - Tem a certeza que as tuas fábricas são modulares - vai valer a pena!
-    - Não construas demasiado perto do edifício, ou vai ser um grande caos!
+    - Não construas demasiado perto do edifício, ou será um grande caos!
     - Se empilhar não funciona, tenta trocar as entradas.
     - Podes alternar a direção do planeador de tapete rolante ao pressionar
       <b>R</b>.
-    - Ao segurar <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
+    - Ao pressionares <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
     - Os rácios continuam os mesmos, desde que todos os upgrades estejam no
       mesmo Nível.
     - Execução em série é mais eficiente que em paralelo.
-    - Vais desbloquear mais variações de edifícios mais tarde no jogo!
-    - Podes usar <b>T</b> para trocar entre as diferentes variantes.
+    - Vais desbloquear mais variações de edifícios, mais tarde no jogo!
+    - Podes usar <b>T</b> para trocares entre as diferentes variantes.
     - Simetria é a solução!
-    - Podes entrelaçar diferentes níveis de túneis.
+    - Podes entrelaçar diferentes tipos de túneis.
     - Tenta construir fábricas compactas - vai valer a pena!
-    - O pintor tem uma variante espelhada que podes selectionar com <b>T</b>
+    - O pintor tem uma variante espelhada que podes selecionar com <b>T</b>
     - Ter os rácios de edifícios corretos vai maximizar a eficiência.
     - No nível máximo, 5 extratores vão encher um tapete.
     - Não te esqueças dos túneis!
@@ -1066,31 +1066,31 @@ tips:
     - As formas que estão mais longes do edifício central são mais complexas.
     - As Máquinas têm uma velocidade limitada, divide-as para eficiência máxima.
     - Usa balanceadores para maximizar a tua eficiência.
-    - Organização é importante. Tenta não cruzar tapetes demasiado.
-    - Planeja antecipadamente, ou vai ser um grande caos!
-    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloquear
+    - Organização é importante. Tenta não cruzar demasiados tapetes.
+    - Planeia antecipadamente, ou vai ser um grande caos!
+    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloqueares
       upgrades.
-    - Tenta superar o nível 18 sozinho sem procurar ajuda!
+    - Tenta superar o nível 20 sozinho sem procurar ajuda!
     - Não complicas as coisas, tenta continuar simples e irás muito longe.
-    - Talvez precises de reusar fábricas mais tarde no jogo. Planeia as tuas
+    - Talvez precises de reutilizar fábricas, mais tarde no jogo. Planeia as tuas
       fábricas para serem reutilizáveis.
     - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com
       empilhadoras.
     - Moinhos de vento e cataventos completos nunca aparecem naturalmente.
-    - Pinta as tuas formas antes de cortar-las para eficiência máxima.
-    - Com módulos, o espaço é apenas uma percepção; uma preocupação para pessoas
+    - Pinta as tuas formas antes de as cortares para eficiência máxima.
+    - Com módulos, o espaço é apenas uma perceção; uma preocupação para pessoas
       mortais.
     - Faz uma fábrica de diagramas separada. São importantes para módulos.
     - Dá uma olhada ao misturador de cores, e as tuas questões serão respondidas.
-    - Use <b>CTRL</b> + Clique para selecionar uma área.
+    - Usa <b>CTRL</b> + Clique para selecionar uma área.
     - Construir demasiado perto do edifício central pode ficar no caminho de
       projetos futuros.
-    - O ícone de alfinete perto duma forma na lista de upgrades vai afixar-la ao
+    - O ícone de alfinete perto duma forma na lista de upgrades vai afixa-la ao
       ecrã.
-    - Junta todas as cores primárias juntas para fazer branco!
+    - Junta todas as cores primárias para fazeres branco!
     - Tu tens um mapa infinito, não limites a tua fábrica, expande!
     - Tenta também Factorio! É o meu jogo favorito.
-    - O cortador quádruplo corta no sentido dos ponteiros começando no canto
+    - O cortador quádruplo corta no sentido dos ponteiros do relógio começando no canto
       superior direito!
     - Podes fazer download dos teus savegames no menu principal!
     - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de
@@ -1101,4 +1101,4 @@ tips:
     - Para limpar tapetes, corta a área e cola-a na mesma localização.
     - Pressiona F4 para mostrar os teus FPS e Tick Rate.
     - Pressiona F4 duas vezes para mostrar a tile do teu rato e câmara.
-    - Podes clicar numa forma afixada no lado direito para desafixar-la.
+    - Podes clicar numa forma afixada no lado direito para desafixa-la.

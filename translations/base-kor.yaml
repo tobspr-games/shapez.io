@@ -182,13 +182,12 @@ dialogs:
         title: 세이브 파일 이름 설정
         desc: 여기에서 세이브 파일의 이름을 바꿀 수 있습니다.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 보시겠습니까?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만
+            제공될 것입니다. 보시겠습니까?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -279,30 +278,28 @@ ingame:
             1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
                 달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
                 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "이제 <strong>절단기</strong>를 배치하여 원형 도형을 둘로 자르세요!<br><br>
+                추신: 절단기는 방향에 관계 없이 항상 수직으로 자릅니다."
+            2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
+                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을
+                제거하세요.
+            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong>
+                이상 배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여
+                건물을 빠르게 선택할 수 있습니다!"
+            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를
+                배치</strong>하고 허브와 연결하세요.<br><br> 추신: 긴 벨트 한 줄을
+                간단히 만들려면 <strong>SHIFT 키</strong>를 누른 채 드래그하세요!"
+            21_1_place_quad_painter: <strong>4단 색칠기</strong>를 배치하여 <strong>흰색</strong>과
+                <strong>빨간색</strong>이 칠해진 <strong>원형
+                도형</strong>을 만들어보세요!
+            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어
+                로 전환하세요!<br><br> 그 후 색칠기의 <strong>네 입력 부분</strong>을
+                모두 케이블로 연결하세요!
+            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로
+                연결하세요!
+            21_4_press_button: "스위치를 눌러 </strong>참 신호를 내보내<strong>
+                색칠기를 활성화하세요. 추신: 모든 입력을 연결할 필요는 없습니다!
+                지금은 두 개만 연결하세요."
     colors:
         red: 빨간색
         green: 초록색
@@ -314,13 +311,13 @@ ingame:
         black: 검은색
         uncolored: 회색
     shapeViewer:
-        title: 층
+        title: 레이어
         empty: 비었음
         copyKey: 키 복사하기
     connectedMiners:
         one_miner: 추출기 1 개
         n_miners: 추출기 <amount>개
-        limited_items: <max_throughput>개로 제한됨
+        limited_items: <max_throughput>까지가 한계임
     watermark:
         title: 체험판 버전
         desc: 정식 버전의 장점을 보려면 여기를 클릭하세요!
@@ -652,13 +649,12 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "<strong>전선 레이어</strong>가 잠금 해제되었습니다! 전선 레이어는
+            일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운
+            메커니즘을 소개하겠습니다!<br><br> 우선 <strong>4단 색칠기</strong>가
+            잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
+            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요. <br><br>
+            추신: 설정에서 <strong>힌트를 활성화</strong>하여 전선 튜토리얼을 활성화하세요!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
