@@ -1,6 +1,6 @@
 steamPage:
     shortText: shapez.io adalah game tentang membangun pabrik untuk mengotomatiskan
-        pembuatan dan pemrosesan bentuk-bentuk yang semakin lama semakin kompleks 
+        pembuatan dan pemrosesan bentuk-bentuk yang semakin lama semakin kompleks
         di dalam peta yang meluas tanpa batas.
     discordLinkShort: Server Discord Resmi
     intro: >-
@@ -189,17 +189,17 @@ dialogs:
             <link>disini</link>)
     markerDemoLimit:
         desc: Kamu hanya dapat membuat dua penanda pada versi demo. Dapatkan versi
-            lengkap untuk penanda-penanda tak terhingga!
+            lengkap untuk penanda-penanda tak terbatas!
     exportScreenshotWarning:
         title: Ekspor Screenshot
-        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot. 
-            Harap ketahui bahwa ini bisa menjadi lambat untuk pabrik 
+        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot.
+            Harap ketahui bahwa ini bisa menjadi lambat untuk pabrik
             yang besar dan bahkan dapat membuat permainanmu berhenti!
     editSignal:
         title: Atur Tanda
         descItems: "Pilih item yang telah ditentukan sebelumnya:"
         descShortKey: ... atau masukkan <strong>shortkey</strong> dari bentuk (Yang
-            bisa Kamu buat sendiri <link>disini</link>)
+            bisa kamu buat sendiri <link>disini</link>)
     renameSavegame:
         title: Ganti Nama Data Simpanan
         desc: Kamu bisa mengganti nama data simpanan di sini.
@@ -208,7 +208,7 @@ dialogs:
         desc: Ada video tutorial yang tersedia untuk level ini! Apakah kamu ingin menontonnya?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Tersedia
-        desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris. 
+        desc: Ada video tutorial yang tersedia untuk level ini, tetapi hanya dalam Bahasa Inggris.
             Apakah kamu ingin menontonnya?
 ingame:
     keybindingsOverlay:
@@ -616,7 +616,7 @@ storyRewards:
             warna</strong> di dalam pengaturan!"
     reward_mixer:
         title: Mencampur Warna
-        desc: <strong>Pencampur Warna</strong> telah dibuka – Ia mencampur dua warna menjadi satu!
+        desc: <strong>Pencampur Warna</strong> telah dibuka – Bangunan ini mencampur dua warna menjadi satu!
     reward_stacker:
         title: Penumpuk
         desc: Kamu sekarang dapat mengombinasikan bentuk-bentuk dengan
@@ -893,18 +893,18 @@ settings:
             description: Mengatur volume untuk musik
         lowQualityMapResources:
             title: Kualitas Peta Sumber Daya Rendah
-            description: Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa. 
+            description: Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa.
                 Bahkan terlihat lebih rapi, jadi pastikan untuk mencobanya!
         disableTileGrid:
             title: Nonaktifkan Grid
-            description: Menonaktifkan ubin grid dapat membantu performa. 
+            description: Menonaktifkan ubin grid dapat membantu performa.
                 Ini juga membuat game menjadi lebih rapi!
         clearCursorOnDeleteWhilePlacing:
             title: Menghapus Kursor dengan Klik Kanan
             description: Diaktifkan secara default, menghapus kursor setiap kali kamu mengklik kanan saat kamu memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, kamu dapat menghapus bangunan dengan mengklik kanan saat meletakkan bangunan.
         lowQualityTextures:
             title: Tekstur Kualitas Rendah (Jelek)
-            description: Menggunakan kualitas rendah untuk menyelamatkan performa. 
+            description: Menggunakan kualitas rendah untuk menyelamatkan performa.
                 Ini akan membuat penampilan game menjadi jelek!
         displayChunkBorders:
             title: Tampilkan Batasan Chunk
@@ -917,7 +917,7 @@ settings:
         simplifiedBelts:
             title: Sabuk Sederhana (Jelek)
             description: Tidak merender item pada sabuk konveyor kecuali ketika mengarahkan ke konveyor
-                untuk menyelamatkan performa. Saya tidak merekomendasikan untuk bermain dengan pengaturan ini 
+                untuk menyelamatkan performa. Saya tidak merekomendasikan untuk bermain dengan pengaturan ini
                 jika kamu tidak benar-benar perlu performanya.
         enableMousePan:
             title: Bergeser pada Layar Tepi
@@ -1032,7 +1032,7 @@ tips:
     - Pastikan pabrikmu berbentuk modul - akan membantu!
     - Jangan membangun terlalu dekat PUSAT, atau akan menjadi berantakan!
     - Apabila penumpukkan tidak bekerja, cobalah tukar kedua input.
-    - Kamu bisa mengaktifkan Perencana Sabuk Konveyor dengan menekan tombol <b>R</b>.
+    - Kamu bisa mengubah arah Perencana Sabuk Konveyor dengan menekan tombol <b>R</b>.
     - Menahan <b>CTRL</b> memungkinkan untuk menyeret sabuk konveyor tanpa rotasi otomatis.
     - Rasio akan tetap sama, selama semua upgrade berada pada Tingkatan yang sama.
     - Eksekusi atau pembuatan secara serial lebih efisian daripada paralel.
@@ -1044,12 +1044,12 @@ tips:
     - Pengecat memiliki varian lain yang bisa kamu pilih dengan menekan tombol <b>T</b>
     - Memiliki rasio bangunan yang tepat dapat memaksimalkan efektivitas.
     - Pada level maksimum, 5 ekstraktor akan memenuhi 1 sabuk konveyor.
-    - Jangan lupa tentang terowongan!
+    - Jangan lupa gunakan terowongan!
     - Kamu tidak perlu membagi item secara merata untuk meraih efisiensi maksimal.
     - Menahan <b>SHIFT</b> akan mengaktifkan Perencana Sabuk Konveyor, memungkinkan kamu untuk meletakkan sabuk konveyor yang panjang dengan mudah
     - Pemotong selalu memotong secara vertikal, bagaimanapun orientasinya.
     - Untuk mendapatkan warna putih, campurkan ketiga warna.
-    - Tempat penyimpanan memprioritaskan output pertama.
+    - Tempat penyimpanan memprioritaskan output kiri.
     - Gunakan waktu untuk menciptakan desain yang dapat diulang - sangat berharga!
     - Menahan <b>SHIFT</b> memungkinkan kamu untuk meletakkan beberapa bangunan sekaligus.
     - Kamu dapat menahan <b>ALT</b> untuk memutar arah pada sabuk konveyor yang sudah diletakkan.
@@ -1059,7 +1059,7 @@ tips:
     - Gunakan penyeimbang untuk memaksimalkan efisiensi pabrikmu.
     - Pabrik yang terorganisir itu penting. Cobalah untuk tidak banyak menyebrangi konveyor.
     - Rencanakan terlebih dahulu, supaya tidak menjadi berantakan!
-    - Jangan hapus pabrik-pabrik lama kamu! Kamu akan memerlukannya untuk membuka Tingkatan.
+    - Jangan hapus pabrik-pabrik lama kamu! Kamu akan memerlukannya untuk mengupgrade Tingkatan selanjutnya.
     - Cobalah untuk menyelesaikan level 20 atau 26 sendiri terlebih dahulu sebelum mencari bantuan!
     - Jangan mempersulit hal-hal, cobalah untuk tetap simpel dan kamu akan maju.
     - Kamu mungkin perlu menggunakan ulang pabrik-pabrik yang telah kamu buat. Buat pabrikmu supaya dapat digunakan kembali.
@@ -1073,14 +1073,14 @@ tips:
     - Bangunan yang terlau dekat dengan pusat dapat menghalangi projek yang akan datang.
     - Ikon pin di samping tiap bentuk pada tab upgrade akan mem-pin bentuknya ke layar.
     - Campur semua warna utama untuk menciptakan warna putih!
-    - Kamu punya peta yang tak terbatas, Jadi jangan memadatkan pabrikmu di pusat, luaskan!
+    - Kamu punya peta yang tak terbatas. Jadi jangan memadatkan pabrikmu di pusat, luaskan!
     - Cobalah Factorio juga! Itu game favorit saya.
     - Pemotong (Empat Bagian) memotong searah jarum jam mulai dari bagian kanan atas.
     - Kamu bisa mengunduh data simpananmu di menu utama (main menu)!
     - Game ini memiliki banyak tombol pintas (keybindings) yag sangat berguna! Pastikan untuk mengeceknya di pengaturan.
     - Game ini memiliki banyak pengaturan, Pastikan untuk mengeceknya!
     - Penanda bangunan pusatmu memiliki kompas yang menunjukkan lokasinya!
-    - Untuk membersihkan sabuk konveyor, pindahkan bagian dan tempel di lokasi yang sama.
+    - Untuk membersihkan sabuk konveyor, pindahkan (cut) bagian dan tempel (paste) di lokasi yang sama.
     - Tekan F4 untuk menunjukkan FPS dan Tick Rate kamu.
     - Tekan F4 dua kali untuk menunjukkan ubin mouse dan kameramu.
     - Kamu bisa mengklik bentuk yang di-pin di sebelah kiri untuk tidak mem-pinnya lagi.
