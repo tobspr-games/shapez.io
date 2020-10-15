@@ -678,7 +678,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (
             button === enumMouseButton.right &&
             metaBuilding &&
-            !this.root.app.settings.getSetting("canDeleteWhileBuilding")
+            this.root.app.settings.getAllSettings().clearCursorOnDeleteWhilePlacing
         ) {
             this.currentMetaBuilding.set(null);
         }

@@ -285,8 +285,7 @@ export const allApplicationSettings = [
     new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
     new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
     new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
-    new BoolSetting("middleMousePan", categoryGame, (app, value) => {}),
-    new BoolSetting("canDeleteWhileBuilding", categoryGame, (app, value) => {}),
+    new BoolSetting("middleMousePan", enumCategories.userInterface, (app, value) => {}),
 ];
 
 export function getApplicationSettingById(id) {
@@ -320,7 +319,6 @@ class SettingsStorage {
         this.pickMinerOnPatch = true;
         this.enableMousePan = true;
         this.middleMousePan = false;
-        this.canDeleteWhileBuilding = false;
 
         this.enableColorBlindHelper = false;
 
@@ -689,7 +687,6 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         if (data.version < 31) {
             data.settings.middleMousePan = false;
-            data.settings.canDeleteWhileBuilding = false;
             data.version = 31;
         }
 
