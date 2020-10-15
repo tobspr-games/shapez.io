@@ -900,9 +900,9 @@ settings:
             description: Używa niskiej jakości tekstur, by zwiększyć wydajność. Spowoduje to,
                 że gra będzie wyglądać bardzo brzydko!
         displayChunkBorders:
-            title: Wyświetl granice chunków
-            description: Gra jest podzielona na chunki o wielkości 16x15 kratek. Włączenie
-                tego ustawienia powoduje wyświetlenie granicy każdego chunku.
+            title: Wyświetl granice obszarów
+            description: Gra jest podzielona na obszary o wielkości 16x15 kratek. Włączenie
+                tego ustawienia powoduje wyświetlenie granicy każdego obszaru.
         pickMinerOnPatch:
             title: Wybierz ekstraktor zamiast źródła
             description: Domyślnie włączone, wybiera ekstraktor, jeżeli spróbujesz wybrać
@@ -919,8 +919,7 @@ settings:
                 poruszania.
         zoomToCursor:
             title: Powiększ w kierunku kursora
-            description: Powiększ w kierunku pozycji kursora myszy, w przeciwnym razie kierunku
-                środka ekranu.
+            description: Powiększ w kierunku pozycji kursora myszylub do środka ekranu.
         mapResourcesScale:
             title: Rozmiar mapy zasobów
             description: Steruje rozmiarem kształtów w przeglądzie mapy (podczas pomniejszenia).
