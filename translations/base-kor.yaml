@@ -265,7 +265,7 @@ ingame:
         waypoints: 마커
         hub: 허브
         description: 마커를 좌클릭하여 그곳으로 이동하고, 우클릭으로 삭제할 수 있습니다.<br><br>마커를 배치하기 위해
-            <keybinding> 키로 지금 있는 위치에 혹은 <strong>우클릭</strong>하여 원하는 위치에 배치할 수
+            <keybinding> 키로 지금 있는 위치에, 또는 <strong>우클릭</strong>하여 원하는 위치에 배치할 수
             있습니다.
         creationSuccessNotification: 마커가 성공적으로 생성되었습니다.
     interactiveTutorial:
@@ -436,10 +436,10 @@ buildings:
     wire:
         default:
             name: 전선
-            description: 아이템, 색상, 또는 불 값 (0 혹은 1)이 될 수 있는 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
+            description: 아이템, 색상, 또는 불 값 (0 또는 1) 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
         second:
             name: 전선
-            description: 아이템, 색상, 또는 불 값 (0 혹은 1)이 될 수 있는 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
+            description: 아이템, 색상, 또는 불 값 (0 또는 1) 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
     balancer:
         default:
             name: 밸런서
@@ -459,19 +459,19 @@ buildings:
     storage:
         default:
             name: 저장고
-            description: 아이템을 지정된 용량까지 저장합니다. 왼쪽 출력이 가장 우선되므로 오버플로 회로로 사용할 수 있습니다.
+            description: 아이템을 지정된 용량까지 저장합니다. 왼쪽 출력이 가장 우선되므로 오버플로로 사용할 수 있습니다.
     wire_tunnel:
         default:
-            name: 전선 교차 장치
+            name: 전선 교차기
             description: 두 전선이 서로 연결되지 않고 교차할 수 있도록 합니다.
     constant_signal:
         default:
-            name: 일정 신호
-            description: 모양, 색상, 또는 불 값 (1 혹은 0)이 될 수 있는 상수 신호를 방출합니다.
+            name: 일정 신호기
+            description: 모양, 색상, 또는 불 값 (1 또는 0) 상수 신호를 방출합니다.
     lever:
         default:
             name: 스위치
-            description: 전선 레이어에서 불 값 (1 또는 0)를 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데
+            description: 전선 레이어에서 불 값 (1 또는 0)을 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데
                 사용될 수 있습니다.
     logic_gate:
         default:
@@ -593,10 +593,10 @@ storyRewards:
             출력이 우선되므로 <strong>오버플로 회로</strong>로도 활용될 수 있습니다!
     reward_freeplay:
         title: 자유플레이
-        desc: 드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이는 즉 앞으로 도형이
-            <strong>무작위</strong>로 생성됩니다.<br><br> 이제부터 허브는 <strong>처리량</strong>이
+        desc: 드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이제 앞으로 도형이
+            <strong>무작위</strong>로 생성됩니다.<br><br> 또한 허브는 <strong>처리량</strong>이
             필요하므로 요청하는 도형을 자동으로 전달하는 공장을 구축하는 것이 좋습니다.<br><br> 허브는 요청된 도형을 전선
-            레이어에서 출력하므로 이를 분석하고 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
+            레이어를 통해 내보내므로 이를 분석하는 구조를 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
     reward_blueprints:
         title: 청사진
         desc: 이제 공장의 일부를 <strong>복사하고 붙여넣는 기능</strong>을 사용할 수 있습니다! 영역을 선택 (CTRL 키를 누른 채
@@ -631,10 +631,10 @@ storyRewards:
         desc: "<strong>디스플레이</strong>가 잠금 해제되었습니다! 이제 신호를 전선 레이어에 연결해 시각화할 수
             있습니다.<br><br> 추신: 벨트 판독기와 저장고가 마지막으로 읽은 아이템을 출력했나요? 디스플레이로 한번 봐보세요!"
     reward_constant_signal:
-        title: 일정 신호
-        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템
-            선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호는 <strong>도형</strong>,
-            <strong>색상</strong>, 혹은 <strong>불 값</strong> (1 혹은 0)을 출력할 수 있습니다.
+        title: 일정 신호기
+        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호기</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템
+            선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호기는 <strong>도형</strong>,
+            <strong>색상</strong>, 또는 <strong>불 값</strong> (1 또는 0)을 출력할 수 있습니다.
     reward_logic_gates:
         title: 논리 회로
         desc: <strong>논리 회로</strong>가 잠금 해제되었습니다! 굳이 흥분할 필요는 없지만, 진짜 멋진 기술입니다!<br><br>
@@ -862,11 +862,11 @@ keybindings:
         wire: 전선
         balancer: 밸런서
         storage: 저장고
-        constant_signal: 일정 신호
+        constant_signal: 일정 신호기
         logic_gate: 논리 회로
         lever: 레버
         filter: 선별기
-        wire_tunnel: 전선 교차 장치
+        wire_tunnel: 전선 교차기
         display: 디스플레이
         reader: 벨트 판독기
         virtual_processor: 가상 절단기
