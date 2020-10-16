@@ -103,7 +103,7 @@ global:
         trillions: T
 
     # Shown for infinitely big numbers
-    infinite: oneindig
+    infinite: ∞
 
     time:
         # Used for formatting past time dates
