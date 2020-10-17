@@ -44,10 +44,11 @@ export class WireTunnelComponent extends Component {
 			if(!this.Connections[ahash]) {
 				this.Connections[ahash] = b;
 			}
-
-			const bhash = b.toString();
+			let alta = a.rotateFastMultipleOf90(180);
+			let altb = b.rotateFastMultipleOf90(180);
+			const bhash = altb.toString();
 			if(!this.Connections[bhash]) {
-				this.Connections[bhash] = a;
+				this.Connections[bhash] = alta;
 			}
 		}
 		console.log(this.Connections);
@@ -71,7 +72,7 @@ export class WireTunnelComponent extends Component {
 	CanConnect(dir) {
 		return !!this.Connections[dir.toString()];
 	}
-
+	
 	/**
 	 * @param {import("./static_map_entity").StaticMapEntityComponent} staticComp
 	 * @param {Vector} input 
@@ -80,7 +81,8 @@ export class WireTunnelComponent extends Component {
 	GetOutputDirection(staticComp, input) {
 		const inputDir = staticComp.unapplyRotationToVector(input); //TODO: Fix the Wierd Shit
 		if(this.CanConnect(inputDir)){
-			return staticComp.applyRotationToVector(this.Connections[inputDir.toString()]);;
+			let out = this.Connections[inputDir.toString()];
+			return staticComp.applyRotationToVector(out);
 		}
 		return null;
 	}

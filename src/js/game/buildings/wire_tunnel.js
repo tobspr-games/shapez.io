@@ -24,10 +24,10 @@ const wireTunnelsOverlayMatrix = {
  * @enum {Array<Array<Vector>>}
  */
 export const ConnectionDirections = {
-    [defaultBuildingVariant]: [[new Vector(0, 1), new Vector(0, -1)], [new Vector(-1, 0), new Vector(1, 0)]],
+    [defaultBuildingVariant]: [[new Vector(0, 1), new Vector(0, 1)], [new Vector(1, 0), new Vector(1, 0)]],
     [enumWireTunnelVariants.DoubleElbow]: [[new Vector(0, 1), new Vector(1, 0)], [new Vector(0, -1), new Vector(-1, 0)]],
     [enumWireTunnelVariants.Elbow]: [[new Vector(0, 1), new Vector(1, 0)]],
-    [enumWireTunnelVariants.Straight]: [[new Vector(0, 1), new Vector(0, -1)]],
+    [enumWireTunnelVariants.Straight]: [[new Vector(0, 1), new Vector(0, 1)]],
 };
 
 export class MetaWireTunnelBuilding extends MetaBuilding {
@@ -102,7 +102,6 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      */
     updateVariants(entity, rotationVariant, variant) {
 		if(entity.components.WireTunnel){
-			let a = new Vector(1, 0);
 			//a.rotateInplaceFastMultipleOf90(rotationVariant);
 			entity.components.WireTunnel.UpdateConnections(variant, ConnectionDirections[variant])
 		}
