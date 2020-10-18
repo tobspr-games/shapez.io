@@ -1,5 +1,11 @@
 import { generateMatrixRotations } from "../../core/utils";
-import { Vector } from "../../core/vector";
+import {
+    arrayAllDirections,
+    enumDirection,
+    enumDirectionToVector,
+    enumInvertedDirections,
+    Vector,
+} from "../../core/vector";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
@@ -21,13 +27,20 @@ const wireTunnelsOverlayMatrix = {
 };
 
 /**
- * @enum {Array<Array<Vector>>}
+ * Enum of Objects containing the Tunnel Variant Connections
+ * @enum {Object.<string, Vector>}
  */
 export const ConnectionDirections = {
-    [defaultBuildingVariant]: [[new Vector(0, 1), new Vector(0, 1)], [new Vector(1, 0), new Vector(1, 0)]],
-    [enumWireTunnelVariants.DoubleElbow]: [[new Vector(0, 1), new Vector(1, 0)], [new Vector(0, -1), new Vector(-1, 0)]],
-    [enumWireTunnelVariants.Elbow]: [[new Vector(0, 1), new Vector(1, 0)]],
-    [enumWireTunnelVariants.Straight]: [[new Vector(0, 1), new Vector(0, 1)]],
+    [defaultBuildingVariant]: BuildConnections([
+        [new Vector(0, 1), new Vector(0, 1)],
+        [new Vector(1, 0), new Vector(1, 0)],
+    ]),
+    [enumWireTunnelVariants.DoubleElbow]: BuildConnections([
+        [new Vector(0, 1), new Vector(1, 0)],
+        [new Vector(0, -1), new Vector(-1, 0)],
+    ]),
+    [enumWireTunnelVariants.Elbow]: BuildConnections([[new Vector(0, 1), new Vector(1, 0)]]),
+    [enumWireTunnelVariants.Straight]: BuildConnections([[new Vector(0, 1), new Vector(0, 1)]]),
 };
 
 export class MetaWireTunnelBuilding extends MetaBuilding {
@@ -44,22 +57,21 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      */
     getIsUnlocked(root) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers);
-	}
-	
-	/**
-     *
-     * @param {GameRoot} root
-     */
-    getAvailableVariants(root) {
-		return [defaultBuildingVariant, enumWireTunnelVariants.Elbow, enumWireTunnelVariants.Straight, enumWireTunnelVariants.DoubleElbow];
-        // if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-        //     return [enumMinerVariants.chainable];
-        // }
-        // return super.getAvailableVariants(root);
     }
 
     /**
-     *
+     * @param {GameRoot} root
+     */
+    getAvailableVariants(root) {
+        return [
+            defaultBuildingVariant,
+            enumWireTunnelVariants.Elbow,
+            enumWireTunnelVariants.Straight,
+            enumWireTunnelVariants.DoubleElbow,
+        ];
+    }
+
+    /**
      * @param {number} rotation
      * @param {number} rotationVariant
      * @param {string} variant
@@ -73,10 +85,10 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
         return true;
     }
 
-	getStayInPlacementMode() {
+    getStayInPlacementMode() {
         return true;
-	}
-	
+    }
+
     getDimensions() {
         return new Vector(1, 1);
     }
@@ -91,19 +103,50 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(new WireTunnelComponent({Variant: defaultBuildingVariant, Connections: ConnectionDirections[defaultBuildingVariant]}));
-	}
-	
-	/**
+        entity.addComponent(
+            new WireTunnelComponent({
+                Connections: ConnectionDirections[defaultBuildingVariant],
+            })
+        );
+    }
+
+    /**
      *
      * @param {Entity} entity
      * @param {number} rotationVariant
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
-		if(entity.components.WireTunnel){
-			//a.rotateInplaceFastMultipleOf90(rotationVariant);
-			entity.components.WireTunnel.UpdateConnections(variant, ConnectionDirections[variant])
-		}
-	}
+        if (entity.components.WireTunnel) {
+            entity.components.WireTunnel.UpdateConnections(ConnectionDirections[variant]);
+        }
+    }
+}
+
+/**
+ * Builds the Connection Graph object from the input Array
+ * @param {Array<Array<Vector>>} Connections
+ * @returns {Object.<string, Vector>}
+ */
+function BuildConnections(Connections) {
+    /**
+     * @type {Object.<string, Vector>}
+     */
+    let res = {};
+    for (let i = 0; i < Connections.length; ++i) {
+        assert(Connections[i].length == 2, "Connection Wasn't Continuos");
+        let [a, b] = Connections[i];
+
+        const ahash = a.toString();
+        if (!res[ahash]) {
+            res[ahash] = b;
+        }
+        let alta = a.rotateFastMultipleOf90(180);
+        let altb = b.rotateFastMultipleOf90(180);
+        const bhash = altb.toString();
+        if (!res[bhash]) {
+            res[bhash] = alta;
+        }
+    }
+    return res;
 }

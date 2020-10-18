@@ -314,12 +314,12 @@ export class WireSystem extends GameSystemWithFilter {
                     newSearchDirections = [staticComp.localDirectionToWorld(slot.direction)];
                     newSearchTile = staticComp.localTileToWorld(slot.pos);
                 }
-			}
-			
-			const tunnelComp = nextEntity.components.WireTunnel;
-			if(tunnelComp){
-				//const outputDir = tunnelComp.GetOutputDirection(staticComp, offset);
-			}
+            }
+
+            const tunnelComp = nextEntity.components.WireTunnel;
+            if (tunnelComp) {
+                //const outputDir = tunnelComp.GetOutputDirection(staticComp, offset);
+            }
 
             if (newSearchTile) {
                 // Find new surrounding wire targets
@@ -369,7 +369,7 @@ export class WireSystem extends GameSystemWithFilter {
      * @param {Vector} initialTile
      * @param {Array<enumDirection>} directions
      * @param {WireNetwork} network
-     * @param {enumWireVariant=} variantMask Only accept connections to this mask
+     * @param {enumWireVariant} variantMask Only accept connections to this mask
      * @returns {Array<any>}
      */
     findSurroundingWireTargets(initialTile, directions, network, variantMask = null) {
@@ -406,8 +406,8 @@ export class WireSystem extends GameSystemWithFilter {
             for (let j = 0; j < initialContents.length; ++j) {
                 contents.push({
                     entity: initialContents[j],
-					tile: initialSearchTile,
-					dir: offset
+                    tile: initialSearchTile,
+                    dir: offset,
                 });
             }
 
@@ -444,8 +444,17 @@ export class WireSystem extends GameSystemWithFilter {
                         }
 
                         // Check if the direction (inverted) matches
-                        const pinDirection = staticComp.localDirectionToWorld(slot.direction);
-                        if (pinDirection !== enumInvertedDirections[direction]) {
+                        // const pinDirection = staticComp.localDirectionToWorld(slot.direction);
+                        // if (pinDirection !== enumInvertedDirections[direction]) {
+                        //     continue;
+                        // }
+                        // /**
+                        //  * @type {Vector}
+                        //  */
+                        const worldDir = staticComp.localDirectionToWorld(slot.direction);
+                        const invDir = enumInvertedDirections[worldDir];
+                        const pinDirection = enumDirectionToVector[invDir];
+                        if (!pinDirection.equals(dir)) {
                             continue;
                         }
 
@@ -469,15 +478,15 @@ export class WireSystem extends GameSystemWithFilter {
                         continue;
                     }
 
-					const staticComp = entity.components.StaticMapEntity;
-					
-					//const localDir = staticComp.worldToLocalTile(tile.sub(offset));
-					//staticComp.localDirectionToWorld();
-					const outputDir = tunnelComp.GetOutputDirection(staticComp, dir);
-					if(!outputDir){
-						continue;
-					}
-					const forwardedTile = staticComp.origin.add(outputDir);
+                    const staticComp = entity.components.StaticMapEntity;
+
+                    //const localDir = staticComp.worldToLocalTile(tile.sub(offset));
+                    //staticComp.localDirectionToWorld();
+                    const outputDir = tunnelComp.GetOutputDirection(staticComp, dir);
+                    if (!outputDir) {
+                        continue;
+                    }
+                    const forwardedTile = staticComp.origin.add(outputDir);
 
                     //TODO: Alter to Allow for different tunnel Types
                     // Compute where this tunnel connects to
@@ -497,15 +506,15 @@ export class WireSystem extends GameSystemWithFilter {
                         forwardedTile.x,
                         forwardedTile.y
                     );
-					
+
                     // Attach the entities and the tile we search at, because it may change
                     for (let h = 0; h < connectedContents.length; ++h) {
                         contents.push({
                             entity: connectedContents[h],
-							tile: forwardedTile,
-							dir: outputDir
+                            tile: forwardedTile,
+                            dir: outputDir,
                         });
-					}
+                    }
 
                     // Add the tunnel to the network
                     if (tunnelComp.linkedNetworks.indexOf(network) < 0) {

@@ -1,89 +1,77 @@
-import { Vector } from "../../core/vector";
+import {
+    arrayAllDirections,
+    enumDirection,
+    enumDirectionToVector,
+    enumInvertedDirections,
+    Vector,
+} from "../../core/vector";
 import { Component } from "../component";
 import { defaultBuildingVariant } from "../meta_building";
 
 export class WireTunnelComponent extends Component {
-	static getId() {
-		return "WireTunnel";
+    static getId() {
+        return "WireTunnel";
+    }
 
-	}
+    /**
+     *
+     * @param {{Connections: Object.<string, Vector>}} Elements
+     */
+    constructor({ Connections = {} }) {
+        super();
+        /**
+         * @type {Object.<string, Vector>}
+         */
+        this.Connections = Connections;
 
-	constructor({ Variant, Connections = [] }) {
-		super();
+        /**
+         * Linked network, only if its not multiple directions
+         * @type {Array<import("../systems/wire").WireNetwork>}
+         */
+        this.linkedNetworks = [];
+    }
 
-		this.Variant = Variant;
-		// /**
-		//  * All Connection Directions
-		//  * @type {Object.<string, Array<Vector>>} Possibility for a T piece. Should be Irrelevant
-		//  */
-		/**
-		 * @type {Object.<string, Vector>} 
-		 */
-		this.Connections = {};
+    /**
+     * @param {Object.<string, Vector>} Connections
+     */
+    UpdateConnections(Connections) {
+        this.Connections = Connections;
+    }
 
-		this.RebuildConnections(Connections);
+    /**
+     * Returns if the Tunnel accepts inputs from the given direction
+     * @param {Vector} dir
+     * Local Space Vector into the Tunnel
+     */
+    CanConnect(dir) {
+        return !!this.Connections[dir.toString()];
+    }
 
-		/**
-		 * Linked network, only if its not multiple directions
-		 * @type {Array<import("../systems/wire").WireNetwork>}
-		 */
-		this.linkedNetworks = [];
-	}
+    /**
+     * Returns if the Tunnel accepts inputs from the given direction
+     * @param {import("./static_map_entity").StaticMapEntityComponent} staticComp
+     * Static Map Entity Component
+     * @param {Vector} dir
+     * World space Vector into the Tunnel
+     */
+    CanConnectWorld(staticComp, dir) {
+        const inputDir = staticComp.unapplyRotationToVector(dir);
+        return !!this.Connections[inputDir.toString()];
+    }
 
-	/**
-	 * @param {import("../buildings/wire_tunnel").ConnectionDirections} Connections 
-	 */
-	RebuildConnections(Connections) {
-
-		this.Connections = {};
-		for(let i = 0; i < Connections.length; ++i) {
-			assert(Connections[i].length == 2, "Connection Wasn't Continuos");
-			let [a, b] = Connections[i];
-
-			const ahash = a.toString();
-			if(!this.Connections[ahash]) {
-				this.Connections[ahash] = b;
-			}
-			let alta = a.rotateFastMultipleOf90(180);
-			let altb = b.rotateFastMultipleOf90(180);
-			const bhash = altb.toString();
-			if(!this.Connections[bhash]) {
-				this.Connections[bhash] = alta;
-			}
-		}
-		console.log(this.Connections);
-	}
-
-	/**
-	 * @param {string} Variant
-	 * @param {import("../buildings/wire_tunnel").ConnectionDirections} Connections 
-	 */
-	UpdateConnections(Variant, Connections) {
-		if(this.Variant !== Variant){
-			this.Variant = Variant;
-			this.RebuildConnections(Connections)
-		}
-	}
-
-	/**
-	 * Local Space Direction the connection is coming from
-	 * @param {Vector} dir 
-	 */
-	CanConnect(dir) {
-		return !!this.Connections[dir.toString()];
-	}
-	
-	/**
-	 * @param {import("./static_map_entity").StaticMapEntityComponent} staticComp
-	 * @param {Vector} input 
-	 * LocalSpace Direction into the Tunnel
-	 */
-	GetOutputDirection(staticComp, input) {
-		const inputDir = staticComp.unapplyRotationToVector(input); //TODO: Fix the Wierd Shit
-		if(this.CanConnect(inputDir)){
-			let out = this.Connections[inputDir.toString()];
-			return staticComp.applyRotationToVector(out);
-		}
-		return null;
-	}
+    /**
+     * Returns the Worldspace Vector out from the Tunnel or Null
+     * @param {import("./static_map_entity").StaticMapEntityComponent} staticComp
+     * Static Map Entity Component
+     * @param {Vector|null} input
+     * Worldspace Direction into the Tunnel
+     */
+    GetOutputDirection(staticComp, input) {
+        const inputDir = staticComp.unapplyRotationToVector(input);
+        if (this.CanConnect(inputDir)) {
+            let out = this.Connections[inputDir.toString()];
+            return staticComp.applyRotationToVector(out);
+        }
+        return null;
+    }
 }
