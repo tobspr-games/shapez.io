@@ -14,7 +14,7 @@ steamPage:
     advantages:
         - <b>12 Nových úrovní</b> z celkových 26 úrovní
         - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
-        - <b>20 Řad vylepšení</b> pro mnoho hodin zábavy!
+        - Neomezený řad vylepšení pro mnoho hodin zábavy!
         - <b>Wires Update</b> pro zcela novou dimenzi!
         - <b>Tmavý mód</b>!
         - Neomezený počet uložených her
@@ -358,7 +358,7 @@ ingame:
                 title: ∞ Uložených her
                 desc: Tolik, kolik vaše srdce touží!
             upgrades:
-                title: 20 vylepšení
+                title: ∞ vylepšení
                 desc: Tato demo verze má pouze 5!
             markers:
                 title: ∞ Značek
