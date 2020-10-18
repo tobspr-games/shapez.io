@@ -281,7 +281,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     tryRotate() {
         const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.backwardsModifier).pressed) {
                 this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
             } else {
                 this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
@@ -468,7 +468,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 index = 0;
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
-            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.backwardsModifier)
                 .pressed
                 ? -1
                 : 1;

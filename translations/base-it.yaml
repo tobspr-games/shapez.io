@@ -205,11 +205,6 @@ dialogs:
     renameSavegame:
         title: Rinomina salvataggio.
         desc: Qui puoi cambiare il nome del salvataggio.
-    entityWarning:
-        title: Attento alle prestazioni
-        desc: Hai posizionato molti edifici, questo messaggio serve a ricordarti che il
-            gioco non può gestire una quantità infinita di edifici. Quindi cerca
-            di mantenere le tue fabbriche compatte!
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -255,27 +250,6 @@ ingame:
         title: Miglioramenti
         buttonUnlock: Sblocca
         tier: Grado <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: GRADO MASSIMO (Velocità x<currentMult>)
     statistics:
         title: Statistiche
@@ -299,10 +273,6 @@ ingame:
         playtime: Tempo di gioco
         buildingsPlaced: Edifici
         beltsPlaced: Nastri
-        buttons:
-            continue: Continua
-            settings: Impostazioni
-            menu: Torna al menù
     tutorialHints:
         title: Serve aiuto?
         showHint: Mostra indizio
@@ -693,7 +663,7 @@ storyRewards:
         title: Bilanciatore
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Aggregatore compatto
         desc: Hai sbloccato un <strong>aggregatore</strong>, variante del
@@ -920,6 +890,10 @@ settings:
             description: Consente di spostare la mappa spostando il mouse verso il bordo
                 dello schermo. La velocità dipende dall'impostazione Velocità di
                 movimento.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Comandi
@@ -959,7 +933,6 @@ keybindings:
         painter: Verniciatrice
         trash: Cestino
         rotateWhilePlacing: Ruota
-        rotateInverseModifier: "Modificatore: Ruota in senso antiorario"
         cycleBuildingVariants: Cicla varianti
         confirmMassDelete: Conferma eliminazione di massa
         cycleBuildings: Cicla edifici
@@ -994,6 +967,7 @@ keybindings:
         comparator: Comparatore
         item_producer: Generatore di oggetti (Sandbox)
         copyWireValue: "Cavi: Copia valore sotto il cursore"
+        backwardsModifier: "Modifier: Rotate CCW instead"
 about:
     title: Riguardo questo gioco
     body: >-

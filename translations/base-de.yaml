@@ -1,15 +1,18 @@
----
 steamPage:
     shortText: In shapez.io nutzt du die vorhandenen Ressourcen, um mit deinen
         Maschinen durch Kombination immer komplexere Formen zu erschaffen.
     discordLinkShort: Offizieller Discord
-    intro: >-
-        Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
-        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
-        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten.
-        Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
-        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen!
-        Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
+    intro: Du magst Automatisierungsspiele? Dann bist du hier genau richtig!
+        shapez.io ist ein ruhiges Spiel, in dem du Fabriken zur automatisierten
+        Produktion von geometrischen Formen bauen musst. Mit steigendem Level
+        werden die Formen immer komplexer, und du musst dich auf der unendlich
+        großen Karte ausbreiten. Das ist noch nicht alles, denn du musst
+        exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da
+        hilft nur skalieren! Während du am Anfang nur Formen verarbeitest, musst
+        du diese später auch einfärben - Dafür musst du Farben extrahieren und
+        mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die
+        Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen
+        und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
     advantages:
         - <b>12 Neue Level</b> für insgesamt 26 Level
@@ -30,10 +33,9 @@ steamPage:
         - Sandkastenmodus
         - ... und noch viel mehr!
     title_open_source: Dieses Spiel ist quelloffen!
-    text_open_source: >-
-        Jeder kann etwas zum Spiel beitragen! Ich engagiere mich aktiv in der
-        Community und versuche alle Vorschläge zu berücksichtigen.
-        Die vollständige Roadmap findet ihr auf meinem Trello-Board!
+    text_open_source: Jeder kann etwas zum Spiel beitragen! Ich engagiere mich aktiv
+        in der Community und versuche alle Vorschläge zu berücksichtigen. Die
+        vollständige Roadmap findet ihr auf meinem Trello-Board!
     title_links: Links
     links:
         discord: Offizieller Discord
@@ -44,7 +46,7 @@ steamPage:
 global:
     loading: Laden
     error: Fehler
-    thousandsDivider: "."
+    thousandsDivider: .
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -117,7 +119,8 @@ dialogs:
     confirmSavegameDelete:
         title: Löschen bestätigen
         text: Bist du sicher, dass du folgenden Speicherstand löschen willst?<br><br>
-            '<savegameName>' auf Level <savegameLevel><br><br>Das kann nicht rückgängig gemacht werden!
+            '<savegameName>' auf Level <savegameLevel><br><br>Das kann nicht
+            rückgängig gemacht werden!
     savegameDeletionError:
         title: Löschen fehlgeschlagen
         text: "Das Löschen des Speicherstands ist fehlgeschlagen:"
@@ -147,22 +150,20 @@ dialogs:
         desc: "Hier sind die Änderungen, seitdem du das letzte Mal gespielt hast:"
     upgradesIntroduction:
         title: Upgrades freischalten
-        desc: >-
-            Viele deiner Formen können noch benutzt werden, um Upgrades freizuschalten
+        desc: Viele deiner Formen können noch benutzt werden, um Upgrades freizuschalten
             - <strong>Zerstöre deine alten Fabriken nicht!</strong> Den
             Upgrade-Tab findest du oben rechts im Bildschirm.
     massDeleteConfirm:
         title: Löschen bestätigen
-        desc: Du löscht viele Gebäude (<count> um genau zu sein)! Bist du dir
-            sicher?
+        desc: Du löscht viele Gebäude (<count> um genau zu sein)! Bist du dir sicher?
     massCutConfirm:
         title: Ausschneiden bestätigen
-        desc: Du schneidest viele Gebäude aus (<count> um genau zu sein)! Bist du
-            dir sicher?
+        desc: Du schneidest viele Gebäude aus (<count> um genau zu sein)! Bist du dir
+            sicher?
     massCutInsufficientConfirm:
         title: Ausschneiden bestätigen
-        desc: Du wirst dir das Einfügen nicht leisten können! Bist du sicher, dass du trotzdem
-            Ausschneiden möchtest?
+        desc: Du wirst dir das Einfügen nicht leisten können! Bist du sicher, dass du
+            trotzdem Ausschneiden möchtest?
     blueprintsNotUnlocked:
         title: Noch nicht freigeschaltet
         desc: Blaupausen werden erst in Level 12 freigeschaltet!
@@ -179,11 +180,14 @@ dialogs:
     createMarker:
         title: Neuer Marker
         titleEdit: Marker bearbeiten
-        desc: Gib ihm einen griffigen Namen. Du kannst auch den <strong>Kurz-Code</strong> einer Form eingeben (Welchen du <link>hier</link> generieren kannst).
+        desc: Gib ihm einen griffigen Namen. Du kannst auch den
+            <strong>Kurz-Code</strong> einer Form eingeben (Welchen du
+            <link>hier</link> generieren kannst).
     editSignal:
         title: Signal setzen
         descItems: "Wähle ein vordefiniertes Item:"
-        descShortKey: ... oder gib den <strong>Kurz-Code</strong> einer Form an (Welchen du <link>hier</link> generieren kannst).
+        descShortKey: ... oder gib den <strong>Kurz-Code</strong> einer Form an (Welchen
+            du <link>hier</link> generieren kannst).
     markerDemoLimit:
         desc: Du kannst nur 2 Marker in der Demo benutzen. Hole dir die Vollversion, um
             unendlich viele Marker zu erstellen!
@@ -195,9 +199,6 @@ dialogs:
     renameSavegame:
         title: Speicherstand umbenennen
         desc: Hier kannst du deinen Speicherstand umbenennen.
-    entityWarning:
-        title: Leistungswarnung
-        desc: Du hast eine Menge Gebäude platziert. Das hier ist nur ein freundlicher Hinweis, dass das Spiel nicht mit unendlich vielen Gebäuden umgehen kann. Halte deine Fabriken kompakt!
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -253,27 +254,6 @@ ingame:
         title: Upgrades
         buttonUnlock: Upgrade
         tier: Stufe <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: MAXIMALE STUFE (Geschw. x<currentMult>)
     statistics:
         title: Statistiken
@@ -319,8 +299,8 @@ ingame:
         hints:
             1_1_extractor: Platziere einen <strong>Extrahierer</strong> auf der
                 <strong>Kreisform</strong>, um sie zu extrahieren!
-            1_2_conveyor: "Verbinde den Extrahierer mit einem <strong>Fließband</strong>
-                und schließe ihn am Hub an!<br><br>Tipp: <strong>Drücke und
+            1_2_conveyor: "Verbinde den Extrahierer mit einem <strong>Fließband</strong> und
+                schließe ihn am Hub an!<br><br>Tipp: <strong>Drücke und
                 ziehe</strong> das Fließband mit der Maus!"
             1_3_expand: "Dies ist <strong>KEIN</strong> Idle-Game! Baue mehr Extrahierer und
                 Förderbänder, um das Ziel schneller zu erreichen.<br><br>Tipp:
@@ -334,7 +314,6 @@ ingame:
         title: Demo-Version
         desc: Klicke hier, um die Vorteile der Vollversion zu sehen!
         get_on_steam: Zur Vollversion
-
     standaloneAdvantages:
         title: Vorteile der Vollversion
         no_thanks: Nein, danke!
@@ -406,7 +385,8 @@ buildings:
     balancer:
         default:
             name: Verteiler
-            description: Multifunktional - Verteilt alle Eingänge gleichmäßig auf die Ausgänge.
+            description: Multifunktional - Verteilt alle Eingänge gleichmäßig auf die
+                Ausgänge.
         merger:
             name: Kombinierer (kompakt)
             description: Kombiniert zwei Fließbänder zu einem.
@@ -463,8 +443,8 @@ buildings:
         quad:
             name: Färber (vierfach)
             description: Erlaubt dir, jeden Quadranten der Form individuell zu färben. Nur
-                Quadranten mit einem <strong>wahren Signal</strong> auf der Wires-Ebene
-                werden angemalt!
+                Quadranten mit einem <strong>wahren Signal</strong> auf der
+                Wires-Ebene werden angemalt!
     trash:
         default:
             name: Mülleimer
@@ -473,16 +453,20 @@ buildings:
     storage:
         default:
             name: Speicher
-            description:
-                Speichert überschüssige Gegenstände, bis zu einer bestimmten Kapazität. Priorisiert den linken
-                Ausgang und kann als Überlauftor verwendet werden.
+            description: Speichert überschüssige Gegenstände, bis zu einer bestimmten
+                Kapazität. Priorisiert den linken Ausgang und kann als
+                Überlauftor verwendet werden.
     wire:
         default:
             name: Signalkabel
-            description: Erlaubt den Transport von Signalen. Das sind Items, Farben oder Wahrheitswerte (1 oder 0). Unterschiedlich gefärbte Kabel verbinden sich nicht.
+            description: Erlaubt den Transport von Signalen. Das sind Items, Farben oder
+                Wahrheitswerte (1 oder 0). Unterschiedlich gefärbte Kabel
+                verbinden sich nicht.
         second:
             name: Signalkabel
-            description: Erlaubt den Transport von Signalen. Das sind Items, Farben oder Wahrheitswerte (1 oder 0). Unterschiedlich gefärbte Kabel verbinden sich nicht.
+            description: Erlaubt den Transport von Signalen. Das sind Items, Farben oder
+                Wahrheitswerte (1 oder 0). Unterschiedlich gefärbte Kabel
+                verbinden sich nicht.
     wire_tunnel:
         default:
             name: Kabelkreuzung
@@ -490,93 +474,100 @@ buildings:
     constant_signal:
         default:
             name: Signalgeber
-            description: Sendet ein konstantes Signal. Du wählst zwischen Formen, Farben oder
-                Wahrheitswerten (1 oder 0).
+            description: Sendet ein konstantes Signal. Du wählst zwischen Formen, Farben
+                oder Wahrheitswerten (1 oder 0).
     lever:
         default:
             name: Schalter
-            description:
-                Sendet einen Wahrheitswert (1 oder 0) auf der Wires-Ebene abhängig von seiner Stellung,
-                welcher dann z.B. zur Steuerung eines Filters verwendet werden kann.
+            description: Sendet einen Wahrheitswert (1 oder 0) auf der Wires-Ebene abhängig
+                von seiner Stellung, welcher dann z.B. zur Steuerung eines
+                Filters verwendet werden kann.
     logic_gate:
         default:
             name: UND Gatter
-            description: Gibt eine "1" aus, wenn beide Eingänge wahr sind (wahr bedeutet Form,
-                Farbe oder "1").
+            description: Gibt eine "1" aus, wenn beide Eingänge wahr sind (wahr bedeutet
+                Form, Farbe oder "1").
         not:
             name: NICHT Gatter
-            description: Gibt eine "1" aus, wenn der Eingang nicht wahr ist (wahr bedeutet Form,
-                Farbe oder "1").
+            description: Gibt eine "1" aus, wenn der Eingang nicht wahr ist (wahr bedeutet
+                Form, Farbe oder "1").
         xor:
             name: XOR Gatter
-            description: Gibt eine "1" aus, wenn einer der Eingänge wahr ist, aber nicht beide
-                (wahr bedeutet Form, Farbe oder "1").
+            description: Gibt eine "1" aus, wenn einer der Eingänge wahr ist, aber nicht
+                beide (wahr bedeutet Form, Farbe oder "1").
         or:
             name: ODER Gatter
-            description: Gibt eine "1" aus, wenn einer der Eingänge wahr ist (wahr bedeutet Form, Farbe oder "1").
+            description: Gibt eine "1" aus, wenn einer der Eingänge wahr ist (wahr bedeutet
+                Form, Farbe oder "1").
     transistor:
         default:
             name: Transistor
-            description: Leitet den unteren Eingang weiter, wenn der seitliche Eingang wahr ist (eine Form,
-                Farbe oder "1").
+            description: Leitet den unteren Eingang weiter, wenn der seitliche Eingang wahr
+                ist (eine Form, Farbe oder "1").
         mirrored:
             name: Transistor
-            description: Leitet den unteren Eingang weiter, wenn der seitliche Eingang wahr ist (eine Form,
-                Farbe oder "1").
+            description: Leitet den unteren Eingang weiter, wenn der seitliche Eingang wahr
+                ist (eine Form, Farbe oder "1").
     filter:
         default:
             name: Filter
-            description: Verbinde ein Signal, um alle passenden Gegenstände nach oben zu leiten und die
-                restlichen nach rechts. Kann auch mit Wahrheitswerten gesteuert werden.
+            description: Verbinde ein Signal, um alle passenden Gegenstände nach oben zu
+                leiten und die restlichen nach rechts. Kann auch mit
+                Wahrheitswerten gesteuert werden.
     display:
         default:
             name: Anzeige
-            description: Verbinde ein Signal, um es auf der Anzeige darzustellen. Es kann eine Form,
-                Farbe oder ein Wahrheitswert sein.
+            description: Verbinde ein Signal, um es auf der Anzeige darzustellen. Es kann
+                eine Form, Farbe oder ein Wahrheitswert sein.
     reader:
         default:
             name: Fließbandkontrolle
-            description:
-                Ermöglicht es, den durchschnittlichen Durchsatz des Fließbandes zu messen. Gibt den letzten
-                Gegenstand auf der Wires-Ebene aus (sobald freigeschaltet).
+            description: Ermöglicht es, den durchschnittlichen Durchsatz des Fließbandes zu
+                messen. Gibt den letzten Gegenstand auf der Wires-Ebene aus
+                (sobald freigeschaltet).
     analyzer:
         default:
             name: Formanalyse
-            description: Analysiert den oberen rechten Quadranten der untersten Schicht der Form
-                und gibt seine Form und Farbe zurück.
+            description: Analysiert den oberen rechten Quadranten der untersten Schicht der
+                Form und gibt seine Form und Farbe zurück.
     comparator:
         default:
             name: Vergleich
-            description: Gibt eine "1" zurück, wenn beide Signale genau gleich sind. Kann Formen, Farben und Wahrheitswerte vergleichen.
+            description: Gibt eine "1" zurück, wenn beide Signale genau gleich sind. Kann
+                Formen, Farben und Wahrheitswerte vergleichen.
     virtual_processor:
         default:
             name: Virtueller Schneider
             description: Schneidet die Form virtuell in zwei Hälften.
         rotater:
             name: Virtueller Rotierer
-            description: Dreht die Form virtuell, sowohl im als auch gegen den Uhrzeigersinn.
+            description: Dreht die Form virtuell, sowohl im als auch gegen den
+                Uhrzeigersinn.
         unstacker:
             name: Virtueller Entstapler
-            description: Extrahiert virtuell die oberste Ebene nach rechts und die
-                die restlichen Ebenen nach links.
+            description: Extrahiert virtuell die oberste Ebene nach rechts und die die
+                restlichen Ebenen nach links.
         stacker:
             name: Virtueller Stapler
             description: Stapelt virtuell die rechte Form auf die linke.
         painter:
             name: Virtueller Färber
-            description: Färbt virtuell die Form vom unteren Eingang mit der Farbe aus dem rechten Eingang.
+            description: Färbt virtuell die Form vom unteren Eingang mit der Farbe aus dem
+                rechten Eingang.
     item_producer:
         default:
             name: Item-Produzent
-            description: Nur im Sandkastenmodus verfügbar. Gibt das Signal aus der Wires-Ebene auf der regulären Ebene aus.
+            description: Nur im Sandkastenmodus verfügbar. Gibt das Signal aus der
+                Wires-Ebene auf der regulären Ebene aus.
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
-        desc:
-            Du hast gerade den <strong>Schneider</strong> freigeschaltet, der Formen in zwei Hälften schneidet,
-            von oben nach unten, <b>unabhängig der Orientierung</b>!<br><br>Achte darauf, den Abfall loszuwerden, oder
-            <b>er wird verstopfen und blockieren</b> - Zu diesem Zweck habe ich dir den <strong>Mülleimer</strong> gegeben, der
-            alles entsorgt, was du hineintust!
+        desc: Du hast gerade den <strong>Schneider</strong> freigeschaltet, der Formen
+            in zwei Hälften schneidet, von oben nach unten, <b>unabhängig der
+            Orientierung</b>!<br><br>Achte darauf, den Abfall loszuwerden, oder
+            <b>er wird verstopfen und blockieren</b> - Zu diesem Zweck habe ich
+            dir den <strong>Mülleimer</strong> gegeben, der alles entsorgt, was
+            du hineintust!
     reward_rotater:
         title: Rotieren
         desc: Der <strong>Rotierer</strong> wurde freigeschaltet! Er rotiert Formen im
@@ -600,8 +591,9 @@ storyRewards:
             <strong>gestapelt</strong>.
     reward_balancer:
         title: Verteiler
-        desc: Der multifunktionale <strong>Verteiler</strong> wurde freigeschaltet! Er kann
-            benutzt werden, um größere Fabriken zu bauen, indem Items auf Fließbänder aufgeteilt oder zusammengelegt werden!
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_tunnel:
         title: Tunnel
         desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun
@@ -614,10 +606,10 @@ storyRewards:
             verschiedene Varianten zuzugreifen</strong>.
     reward_miner_chainable:
         title: Extrahierer (Kette)
-        desc: >-
-            Du hast den <strong>Kettenextrahierer</strong> freigeschaltet! Er kann
-            seine Resourcen an andere Extrahierer <strong>weiterleiten</strong>! <br><br>
-            PS: Die alten Extrahierer wurde jetzt in deiner Symbolleiste ersetzt!
+        desc: "Du hast den <strong>Kettenextrahierer</strong> freigeschaltet! Er kann
+            seine Resourcen an andere Extrahierer <strong>weiterleiten</strong>!
+            <br><br> PS: Die alten Extrahierer wurde jetzt in deiner
+            Symbolleiste ersetzt!"
     reward_underground_belt_tier_2:
         title: Tunnel Stufe II
         desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet!
@@ -625,21 +617,25 @@ storyRewards:
             beide Tunnel miteinander mischen.
     reward_merger:
         title: Kompakter Kombinierer
-        desc: Du hast eine <strong>kompakte Variante</strong> des <strong>Verteilers</strong>
-            freigeschaltet! Der Kombinierer vereint zwei Eingäge zu einem Ausgang.
+        desc: Du hast eine <strong>kompakte Variante</strong> des
+            <strong>Verteilers</strong> freigeschaltet! Der Kombinierer vereint
+            zwei Eingäge zu einem Ausgang.
     reward_splitter:
         title: Kompakter Aufteiler
-        desc: Du hast eine <strong>kompakte Variante</strong> des <strong>Verteilers</strong>
-            freigeschaltet! Der Aufteiler spaltet einen Eingang in zwei Aufgänge auf.
+        desc: Du hast eine <strong>kompakte Variante</strong> des
+            <strong>Verteilers</strong> freigeschaltet! Der Aufteiler spaltet
+            einen Eingang in zwei Aufgänge auf.
     reward_belt_reader:
         title: Fließbandkontrolle
-        desc: Du hast nun die <strong>Fließbandkontrolle</strong> freigeschaltet! Damit kannst du dir
-            den Durchsatz eines Fließbandes anzeigen lassen.<br><br>Wenn du Stromkabel freischaltest,
-            wird er um eine sehr nützliche Funktion ergänzt!
+        desc: Du hast nun die <strong>Fließbandkontrolle</strong> freigeschaltet! Damit
+            kannst du dir den Durchsatz eines Fließbandes anzeigen
+            lassen.<br><br>Wenn du Stromkabel freischaltest, wird er um eine
+            sehr nützliche Funktion ergänzt!
     reward_cutter_quad:
         title: Schneider (4-fach)
         desc: Du hast eine neue Variante des <strong>Schneiders</strong> freigeschaltet!
-            Damit kannst du Formen in alle <strong>vier Teile</strong> zerschneiden.
+            Damit kannst du Formen in alle <strong>vier Teile</strong>
+            zerschneiden.
     reward_painter_double:
         title: Färber (2-fach)
         desc: Du hast eine neue Variante des <strong>Färbers</strong> freigeschaltet!
@@ -649,7 +645,8 @@ storyRewards:
         title: Lager
         desc: Du hast das <strong>Lager</strong> freigeschaltet! Es erlaubt dir,
             Gegenstände bis zu einer bestimmten Kapazität zu speichern!<br><br>
-            Es priorisiert den linken Ausgang, also kannst du es auch als <strong>Überlauftor</strong> benutzen!
+            Es priorisiert den linken Ausgang, also kannst du es auch als
+            <strong>Überlauftor</strong> benutzen!
     reward_blueprints:
         title: Blaupausen
         desc: Jetzt kannst du Teile deiner Fabrik <strong>kopieren und
@@ -660,8 +657,9 @@ storyRewards:
             zu decken (Welche du gerade produziert hast)!
     reward_rotater_180:
         title: Rotierer (180°)
-        desc: Du hast eine weitere Variante des <strong>Rotierers</strong> freigeschaltet! Mit ihm
-            kannst du Formen um 180° drehen (Überraschung! :D).
+        desc: Du hast eine weitere Variante des <strong>Rotierers</strong>
+            freigeschaltet! Mit ihm kannst du Formen um 180° drehen
+            (Überraschung! :D).
     reward_wires_painter_and_levers:
         title: Wires & Quad Painter
         desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
@@ -716,12 +714,14 @@ storyRewards:
         desc: Du hast das nächste Level freigeschaltet!
     reward_freeplay:
         title: Freies Spiel
-        desc: Du hast es geschafft! Du hast den <strong>Freispiel-Modus</strong> freigeschaltet! Das bedeutet,
-            dass die abzuliefernden Formen jetzt <strong>zufällig</strong> erzeugt werden!<br><br>
-            Da der Hub ab jetzt einen bestimmten <strong>Durchsatz</strong> benötigt, empfehle ich dringend, eine Maschine zu bauen,
-            die automatisch die gewünschte Form liefert!<br><br>
-            Der Hub gibt die gewünschte Form auf der Wires-Ebene aus. Also musst du sie nur analysieren und
-            basierend darauf automatisch deine Fabrik konfigurieren.
+        desc: Du hast es geschafft! Du hast den <strong>Freispiel-Modus</strong>
+            freigeschaltet! Das bedeutet, dass die abzuliefernden Formen jetzt
+            <strong>zufällig</strong> erzeugt werden!<br><br> Da der Hub ab
+            jetzt einen bestimmten <strong>Durchsatz</strong> benötigt, empfehle
+            ich dringend, eine Maschine zu bauen, die automatisch die gewünschte
+            Form liefert!<br><br> Der Hub gibt die gewünschte Form auf der
+            Wires-Ebene aus. Also musst du sie nur analysieren und basierend
+            darauf automatisch deine Fabrik konfigurieren.
     reward_demo_end:
         title: Ende der Demo
         desc: Du bist am Ende der Demo angekommen!
@@ -854,43 +854,51 @@ settings:
                 mehr als 100 Feldern angezeigt wird.
         lowQualityMapResources:
             title: Minimalistische Ressourcen
-            description: Vereinfacht die Darstellung der Ressourcen auf der hereingezoomten Karte
-                zur Verbesserung der Leistung. Die Darstellung ist übersichtlicher, also probiere
-                es ruhig aus!
+            description: Vereinfacht die Darstellung der Ressourcen auf der hereingezoomten
+                Karte zur Verbesserung der Leistung. Die Darstellung ist
+                übersichtlicher, also probiere es ruhig aus!
         disableTileGrid:
             title: Gitter deaktivieren
-            description: Das Deaktivieren des Gitters kann deine Leistung verbessern. Außerdem vereinfacht
-                es die Darstellung!
+            description: Das Deaktivieren des Gitters kann deine Leistung verbessern.
+                Außerdem vereinfacht es die Darstellung!
         clearCursorOnDeleteWhilePlacing:
             title: Abwählen mit Rechtsklick
-            description: Standardmäßig eingeschaltet, wählt es das aktuelle, zur Platzierung ausgewählte Gebäude
-                ab, wenn du die rechte Masutaste drückst. Wenn du es abschaltest, kannst du mit der rechten
-                Maustaste Gebäude löschen, während du im Platzierungsmodus bist.
+            description: Standardmäßig eingeschaltet, wählt es das aktuelle, zur Platzierung
+                ausgewählte Gebäude ab, wenn du die rechte Masutaste drückst.
+                Wenn du es abschaltest, kannst du mit der rechten Maustaste
+                Gebäude löschen, während du im Platzierungsmodus bist.
         lowQualityTextures:
             title: Niedrige Texturqualität (Unschön)
             description: Das Spiel verwendet eine niedrigere Auflösung bei den Texturen.
                 Allerdings leidet die Grafik des Spiels sehr darunter!
         displayChunkBorders:
             title: Chunk-Ränder anzeigen
-            description: Das Spiel ist in Blöcke (Chunks) aus je 16x16 Feldern aufgeteilt. Diese Einstellung
-                lässt dich die Grenzen zwischen den Chunks anzeigen.
-
+            description: Das Spiel ist in Blöcke (Chunks) aus je 16x16 Feldern aufgeteilt.
+                Diese Einstellung lässt dich die Grenzen zwischen den Chunks
+                anzeigen.
         pickMinerOnPatch:
             title: Automatisch Extrahierer auswählen
-            description: Standardmäßig eingeschaltet, wählst du automatisch den Extrahierer, wenn du mit
-                der Pipette auf einen Ressourcenfleck zeigst
+            description: Standardmäßig eingeschaltet, wählst du automatisch den Extrahierer,
+                wenn du mit der Pipette auf einen Ressourcenfleck zeigst
         simplifiedBelts:
             title: Minimalistische Förderbänder (Unschön)
-            description: Zur Verbesserung der Leistung werden die Items auf Förderbändern nur angezeigt,
-                wenn du deine Maus darüber bewegst. Hier leidet sowohl die Grafik, also auch dein
-                Spielerlebnis. Benutze die Funktion nur, wenn du auf die Leistung wirklich angewiesen bist!
+            description: Zur Verbesserung der Leistung werden die Items auf Förderbändern
+                nur angezeigt, wenn du deine Maus darüber bewegst. Hier leidet
+                sowohl die Grafik, also auch dein Spielerlebnis. Benutze die
+                Funktion nur, wenn du auf die Leistung wirklich angewiesen bist!
         enableMousePan:
             title: Scrollen am Bildschirmrand
-            description: Damit kannst du dich über die Karte bewegen, indem du deinen Mauszeiger am
-                Bildschirmrand platzierst. Die Geschwindigkeit stimmt dabei mit den Tasten überein.
+            description: Damit kannst du dich über die Karte bewegen, indem du deinen
+                Mauszeiger am Bildschirmrand platzierst. Die Geschwindigkeit
+                stimmt dabei mit den Tasten überein.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
 keybindings:
     title: Tastenbelegung
-    hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene Platzierungsoptionen."
+    hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
+        Platzierungsoptionen."
     resetKeybindings: Tastenbelegung zurücksetzen
     categoryLabels:
         general: Anwendung
@@ -945,7 +953,6 @@ keybindings:
         item_producer: Item-Produzent (Sandkastenmodus)
         pipette: Pipette
         rotateWhilePlacing: Rotieren
-        rotateInverseModifier: "Modifikator: stattdessen gegen den UZS rotieren"
         cycleBuildingVariants: Nächste Variante auswählen
         confirmMassDelete: Löschen bestätigen
         pasteLastBlueprint: Letzte Blaupause einfügen
@@ -960,18 +967,22 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
+        backwardsModifier: "Modifier: Rotate CCW instead"
 about:
     title: Über dieses Spiel
-    body: >-
-        Dieses Spiel ist quelloffen (Open Source) und wurde von <a
+    body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
-        (das bin ich!) entwickelt.<br><br>
-        Wenn du etwas zum Spiel beitragen möchtest, dann schaue dir <a href="<githublink>" target="_blank">shapez.io auf GitHub</a> an.<br><br>
-        Das Spiel wurde erst durch die großartige Discord-Community um meine Spiele möglich gemacht.
-        Komm doch einfach mal auf dem <a href="<discordlink>" target="_blank">Discord-Server</a> vorbei!<br><br>
-        Der Soundtrack wurde von <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br>
-        Abschließend möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> danken!
-        Ohne unsere etlichen gemeinsamen Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
+        (das bin ich!) entwickelt.<br><br> Wenn du etwas zum Spiel beitragen
+        möchtest, dann schaue dir <a href="<githublink>"
+        target="_blank">shapez.io auf GitHub</a> an.<br><br> Das Spiel wurde
+        erst durch die großartige Discord-Community um meine Spiele möglich
+        gemacht. Komm doch einfach mal auf dem <a href="<discordlink>"
+        target="_blank">Discord-Server</a> vorbei!<br><br> Der Soundtrack wurde
+        von <a href="https://soundcloud.com/pettersumelius"
+        target="_blank">Peppsen</a> komponiert! Klasse Typ.<br><br> Abschließend
+        möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl"
+        target="_blank">Niklas</a> danken! Ohne unsere etlichen gemeinsamen
+        Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 changelog:
     title: Änderungen
 demo:
@@ -984,41 +995,57 @@ demo:
     settingNotAvailable: Nicht verfügbar in der Demo.
 tips:
     - Der Hub akzeptiert alle Formen, nicht nur die aktuell geforderten!
-    - Stelle sicher, dass deine Fabriken modular sind. Es zahlt sich irgendwann aus!
+    - Stelle sicher, dass deine Fabriken modular sind. Es zahlt sich irgendwann
+      aus!
     - Baue nicht zu nah am Hub, sonst entsteht ein riesiges Chaos!
-    - Wenn der Stapler nicht die richtige Form ausspuckt, wechsle doch mal die Eingänge.
+    - Wenn der Stapler nicht die richtige Form ausspuckt, wechsle doch mal die
+      Eingänge.
     - Du kannst mit <b>R</b> die Richtung des Bandplaners umkehren.
-    - Halte <b>STRG</b>, um die Förderbänder ohne automatische Orientierung zu platzieren.
-    - Die Verhältnisse der Maschinen bleiben gleich, wenn du die Upgrades gleichmäßig kaufst.
+    - Halte <b>STRG</b>, um die Förderbänder ohne automatische Orientierung zu
+      platzieren.
+    - Die Verhältnisse der Maschinen bleiben gleich, wenn du die Upgrades
+      gleichmäßig kaufst.
     - Serielle Ausführung ist effizienter als parallele.
     - Für viele Gebäude wirst du im Spielverlauf neue Varianten freischalten!
-    - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäudes zu wechseln.
+    - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäudes zu
+      wechseln.
     - Symmetrie ist der Schlüssel!
     - Du kannst verschiedene Arten von Tunneln miteinander verweben.
     - Versuche kompakte Fabriken zu bauen. Es zahlt sich aus!
-    - Der Färber hat eine spiegelverkehrte Variante, die du mit <b>T</b> auswählen kannst.
+    - Der Färber hat eine spiegelverkehrte Variante, die du mit <b>T</b>
+      auswählen kannst.
     - Das richtige Verhältnis der Gebäude maximiert die Effizienz.
-    - Auf der gleichen Upgrade-Stufe genügen 5 Extrahierer für ein ganzes Fließband.
+    - Auf der gleichen Upgrade-Stufe genügen 5 Extrahierer für ein ganzes
+      Fließband.
     - Vergiss die Tunnel nicht!
     - Für maximale Effizienz musst du die Items nicht gleichmässig aufteilen.
-    - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der lange Förderbänder ganz einfach platziert.
+    - Das Halten von <b>UMSCH</b> aktiviert den Bandplaner, der lange
+      Förderbänder ganz einfach platziert.
     - Schneider teilen die Form immer vertikal, unabhängig von der Orientierung.
     - Weiß erhälst du aus der Kombination aller 3 Grundfarben.
     - Das Lager gibt Items immer zuerst am linken Ausgang ab.
     - Es lohnt sich, Zeit in den Bau von wiederverwendbaren Designs zu stecken!
     - Das Halten von <b>STRG</b> ermöglicht dir, mehrere Gebäude zu platzieren.
-    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder umzukehren.
+    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Förderbänder
+      umzukehren.
     - Effizienz ist entscheidend!
     - Abbaubare Formen werden komplexer, je weiter sie vom Hub entfernt sind.
-    - Gebäude haben eine limitierte Geschwindigkeit. Teile die Last zwischen mehreren auf.
+    - Gebäude haben eine limitierte Geschwindigkeit. Teile die Last zwischen
+      mehreren auf.
     - Benutze Aufteiler, um deine Effizienz zu maximieren.
-    - Organisation ist wichtig! Verheddere dich nicht in einem Gewirr aus Förderbändern.
-    - Plane vorher und lasse dir Platz für Reserven, oder es gibt ein riesiges Chaos!
-    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades freizuschalten.
+    - Organisation ist wichtig! Verheddere dich nicht in einem Gewirr aus
+      Förderbändern.
+    - Plane vorher und lasse dir Platz für Reserven, oder es gibt ein riesiges
+      Chaos!
+    - Lösche deine alten Fabriken nicht! Du benötigst sie um Upgrades
+      freizuschalten.
     - Versuche Level 20 alleine zu meistern, bevor du nach Hilfe suchst!
-    - Mache es dir nicht zu kompliziert! Auch mit einfachen Konzepten kommst du hier sehr weit.
-    - Manche Fabriken musst du später wiederverwenden. Also baue sie so, damit du genau das kannst.
-    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie herstellen zu müssen.
+    - Mache es dir nicht zu kompliziert! Auch mit einfachen Konzepten kommst du
+      hier sehr weit.
+    - Manche Fabriken musst du später wiederverwenden. Also baue sie so, damit
+      du genau das kannst.
+    - Manchmal kannst du die gewünschte Form auf der Karte finden, ohne sie
+      herstellen zu müssen.
     - Vollständige Windmühlen werden nicht natürlich generiert.
     - Färbe deine Formen vor dem Schneiden! Das geht viel schneller.
     - Mit Modulen wird Platz nur noch zum Begriff; eine Sorge für Sterbliche.
@@ -1026,16 +1053,21 @@ tips:
     - Schau dir den Farbmischer genauer an und du wirst deine Antwort finden.
     - Benutze <b>STRG</b> + Rechtsklick, um einen Bereich zu selektieren.
     - Zu nahe am Hub zu bauen, kann späteren Projekten im Weg stehen.
-    - Die Reißzwecke neben Formen in der Upgrade-Liste lässt sie dich am Bildschirm anheften.
+    - Die Reißzwecke neben Formen in der Upgrade-Liste lässt sie dich am
+      Bildschirm anheften.
     - Mische alle drei Grundfarben, um Weiß zu erhalten!
     - Du hast eine unendlich grosse Karte, nutze den Platz und expandiere!
     - Probier auch mal Factorio! Es ist mein Lieblingsspiel.
     - Der Vierfachschneider schneidet im Uhrzeigersinn von oben rechts beginnend!
     - Du kannst deine Speicherstände im Hauptmenü herunterladen!
-    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den Einstellungen an.
+    - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den
+      Einstellungen an.
     - Dieses Spiel hat eine Menge Einstellungen, schaue sie dir einmal an!
-    - Die Richtung zu deinem Hub ist oben rechts mit einer kleinen Kompassnadel markiert!
-    - Um alle Förderbänder zu leeren, schneide den Bereich aus und füge ihn auf der selben Position wieder ein.
+    - Die Richtung zu deinem Hub ist oben rechts mit einer kleinen Kompassnadel
+      markiert!
+    - Um alle Förderbänder zu leeren, schneide den Bereich aus und füge ihn auf
+      der selben Position wieder ein.
     - Drücke F4 um deine FPS und Tickrate anzuzeigen.
-    - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu bestimmen.
+    - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu
+      bestimmen.
     - Du kannst die angehefteten Formen am linken Rand wieder entfernen.

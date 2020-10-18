@@ -155,7 +155,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
      */
     rotateBlueprint() {
         if (this.currentBlueprint.get()) {
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.backwardsModifier).pressed) {
                 this.currentBlueprint.get().rotateCcw();
             } else {
                 this.currentBlueprint.get().rotateCw();

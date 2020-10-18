@@ -204,11 +204,6 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Передвижение
@@ -254,27 +249,6 @@ ingame:
         title: Улучшения
         buttonUnlock: Улучшить
         tier: Уровень <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: Скорость x<currentMult> (макс.)
     statistics:
         title: Статистика
@@ -298,10 +272,6 @@ ingame:
         playtime: Игровое время
         buildingsPlaced: Постройки
         beltsPlaced: Конвейеры
-        buttons:
-            continue: Продолжить
-            settings: Настройки
-            menu: Вернуться в меню
     tutorialHints:
         title: Нужна помощь?
         showHint: Показать подсказку
@@ -681,7 +651,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -905,6 +875,10 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Настройки управления
@@ -944,7 +918,6 @@ keybindings:
         painter: Покрасчик
         trash: Мусорка
         rotateWhilePlacing: Вращать
-        rotateInverseModifier: "Модификатор: Вращать против часовой стрелки"
         cycleBuildingVariants: Переключение Вариантов
         confirmMassDelete: Подтверждение Массового Удаления
         cycleBuildings: Переключение Построек
@@ -979,6 +952,7 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        backwardsModifier: "Modifier: Rotate CCW instead"
 about:
     title: Об игре
     body: >-

@@ -80,7 +80,7 @@ export const KEYMAPPINGS = {
     placement: {
         pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
-        rotateInverseModifier: { keyCode: 16 }, // SHIFT
+        backwardsModifier: { keyCode: 16 }, // SHIFT
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },

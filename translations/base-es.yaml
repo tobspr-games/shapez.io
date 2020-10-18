@@ -4,8 +4,8 @@ steamPage:
         infinito.
     discordLinkShort: Discord oficial
     intro: >-
-        Shapez.io es un juego tranquilo en el que tienes que construir fábricas para la
-        producción automatizada de formas geométricas.
+        Shapez.io es un juego tranquilo en el que tienes que construir fábricas
+        para la producción automatizada de formas geométricas.
 
         A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
@@ -204,11 +204,6 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -264,27 +259,6 @@ ingame:
         title: Mejoras
         buttonUnlock: Mejorar
         tier: Nivel <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NIVEL MÁXIMO (Velocidad x<currentMult>)
     statistics:
         title: Estadísticas
@@ -308,10 +282,6 @@ ingame:
         playtime: Tiempo de juego
         buildingsPlaced: Edificios
         beltsPlaced: Cintas transportadoras
-        buttons:
-            continue: Continuar
-            settings: Opciones
-            menu: Volver al menú principal
     tutorialHints:
         title: ¿Necesitas ayuda?
         showHint: Mostrar pista
@@ -690,7 +660,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -910,6 +880,10 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado
@@ -955,7 +929,6 @@ keybindings:
         wire: Cable
         pipette: Cuentagotas
         rotateWhilePlacing: Rotar
-        rotateInverseModifier: "Modificador: Rotar inversamente"
         cycleBuildingVariants: Ciclar variantes
         confirmMassDelete: Borrar área
         pasteLastBlueprint: Pegar último plano
@@ -984,6 +957,7 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        backwardsModifier: "Modifier: Rotate CCW instead"
 about:
     title: Sobre el juego
     body: >-

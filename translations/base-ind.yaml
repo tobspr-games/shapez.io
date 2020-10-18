@@ -206,11 +206,6 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
 ingame:
     keybindingsOverlay:
         moveMap: Pindahkan
@@ -266,27 +261,6 @@ ingame:
         title: Tingkatan-tingkatan
         buttonUnlock: Tingkatkan
         tier: Tingkat <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: LEVEL MAKSIMUM (Kecepatan x<currentMult>)
     statistics:
         title: Statistika
@@ -312,10 +286,6 @@ ingame:
         playtime: Waktu bermain
         buildingsPlaced: Bangunan
         beltsPlaced: Sabuk konveyor
-        buttons:
-            continue: Lanjutkan
-            settings: Pengaturan
-            menu: Kembali ke menu
     tutorialHints:
         title: Butuh bantuan?
         showHint: Tampilkan petunjuk
@@ -415,8 +385,8 @@ buildings:
             description: Memungkinkan anda untuk mengangkut Energi.
         second:
             name: Kabel
-            description: Mentransfer sinyal, dapat berupa bentuk, warna, atau boolean (1 / 0).
-                Kabel dengan warna berbeda tidak akan menyambung.
+            description: Mentransfer sinyal, dapat berupa bentuk, warna, atau boolean (1 /
+                0). Kabel dengan warna berbeda tidak akan menyambung.
     miner:
         default:
             name: Ekstraktor
@@ -460,8 +430,8 @@ buildings:
     stacker:
         default:
             name: Penumpuk
-            description: Menumpukkan kedua bentuk. Apabila mereka tidak dapat
-                digabungkan, bentuk kanan akan diletakkan diatas bentuk kiri.
+            description: Menumpukkan kedua bentuk. Apabila mereka tidak dapat digabungkan,
+                bentuk kanan akan diletakkan diatas bentuk kiri.
     mixer:
         default:
             name: Pencampur Warna
@@ -490,7 +460,8 @@ buildings:
     balancer:
         default:
             name: Pengimbang
-            description: Multifungsional - Mendistribusikan seluruh input secara merata ke seluruh output.
+            description: Multifungsional - Mendistribusikan seluruh input secara merata ke
+                seluruh output.
         merger:
             name: Penggabung (Kompak)
             description: Menggabungkan dua sabuk konveyor menjadi satu.
@@ -506,7 +477,8 @@ buildings:
     storage:
         default:
             name: Tempat Penyimpanan
-            description: Menyumpan bentuk yang berlebuhan, hingga kapasitas yang tertentu. Memprioritaskan output dari kiri
+            description: Menyumpan bentuk yang berlebuhan, hingga kapasitas yang tertentu.
+                Memprioritaskan output dari kiri
     wire_tunnel:
         default:
             name: Penyebrangan Kabel
@@ -514,53 +486,56 @@ buildings:
     constant_signal:
         default:
             name: Sinyal Konstan
-            description: Mengeluarkan sinyal yang konstan, dapat berupa bentuk, warna atau boolean (1 / 0).
+            description: Mengeluarkan sinyal yang konstan, dapat berupa bentuk, warna atau
+                boolean (1 / 0).
     lever:
         default:
             name: Saklar
-            description: Dapat diubah untuk mengeluarkan sinyal boolean (1 / 0) pada lapisan kabel,
-                yang bisa digunakan untuk mengontrol seperti penyaring.
+            description: Dapat diubah untuk mengeluarkan sinyal boolean (1 / 0) pada lapisan
+                kabel, yang bisa digunakan untuk mengontrol seperti penyaring.
     logic_gate:
         default:
             name: Gerbang AND
-            description: Mengeluarkan boolean "1" jika kedua input adalah benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
         not:
             name: Gerbang NOT
-            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
         xor:
             name: Gerbang XOR
-            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan keduanya.
-                (Benar berarti sebuah bentuk, warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika kedua input adalah benar, namun bukan
+                keduanya. (Benar berarti sebuah bentuk, warna atau boolean "1")
         or:
             name: Gerbang OR
-            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar berarti sebuah bentuk,
-                warna atau boolean "1")
+            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar
+                berarti sebuah bentuk, warna atau boolean "1")
     transistor:
         default:
             name: Transistor
-            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
-                warna atau boolean "1")
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar
+                (sebuah bentuk, warna atau boolean "1")
         mirrored:
             name: Transistor
-            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar (sebuah bentuk,
-                warna atau boolean "1")
+            description: Melanjutkan sinyal dari input bawah jika input samping adalah benar
+                (sebuah bentuk, warna atau boolean "1")
     filter:
         default:
             name: Filter
-            description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke atas dan
-                sisanya ke kanan. Dapat juga dikontrol dengan sinyal boolean
+            description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke
+                atas dan sisanya ke kanan. Dapat juga dikontrol dengan sinyal
+                boolean
     display:
         default:
             name: Layar
-            description: Hubungkan dengan sebuah sinyal untuk ditunjukkan pada layar - Dapat berupa bentuk,
-                warna atau boolean.
+            description: Hubungkan dengan sebuah sinyal untuk ditunjukkan pada layar - Dapat
+                berupa bentuk, warna atau boolean.
     reader:
         default:
             name: Pembaca Sabuk Konveyor
-            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk konveyor. Mengeluarkan output benda terakhir
-                yang dilewati pada lapisan kabel (Setelah terbuka).
+            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk
+                konveyor. Mengeluarkan output benda terakhir yang dilewati pada
+                lapisan kabel (Setelah terbuka).
     analyzer:
         default:
             name: Penganalisa bentuk
@@ -569,15 +544,16 @@ buildings:
     comparator:
         default:
             name: Pembanding
-            description: Mengeluarkan boolean "1" jika kedua sinya adalah sama. Dapat membandingkan
-                Bentuk, warna dan boolean.
+            description: Mengeluarkan boolean "1" jika kedua sinya adalah sama. Dapat
+                membandingkan Bentuk, warna dan boolean.
     virtual_processor:
         default:
             name: Pemotong Virtual
             description: Memotong bentuk secara virtual menjadi dua bagian.
         rotater:
             name: Pemutar Virtual
-            description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah jarum jam.
+            description: Memutar bentuk secara virtual, searah jarum jam dan tidak searah
+                jarum jam.
         unstacker:
             name: Pemisah Tumpukan Virtual
             description: Memisahkan lapisan teratas secara virtual ke output kanan dan
@@ -587,22 +563,21 @@ buildings:
             description: Menumpuk bentuk kanan ke bentuk kiri secara virtual.
         painter:
             name: Pencat Virtual
-            description: Mengecat bentuk dari input bawah dengan warna
-                dari input kanan.
+            description: Mengecat bentuk dari input bawah dengan warna dari input kanan.
     item_producer:
         default:
             name: Pembuat Artikel
-            description: Hanya tersedia di dalam mode sandbox , Mengeluarkan sinyal yang diberikan dari
-                lapisan kabel ke lapisan biasa.
+            description: Hanya tersedia di dalam mode sandbox , Mengeluarkan sinyal yang
+                diberikan dari lapisan kabel ke lapisan biasa.
 storyRewards:
     reward_cutter_and_trash:
         title: Memotong Bentuk
-        desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi dua
-            secara vertikal <strong>apapun
+        desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi
+            dua secara vertikal <strong>apapun
             orientasinya</strong>!<br><br>Pastikan untuk membuang sisanya, jika
-            tidak <strong>ini dapat menghambat dan memperlambat</strong> - karena ini
-            anda diberikan <strong>Tong sampah</strong>, yang menghapus
-            semua yang anda masukkan!
+            tidak <strong>ini dapat menghambat dan memperlambat</strong> -
+            karena ini anda diberikan <strong>Tong sampah</strong>, yang
+            menghapus semua yang anda masukkan!
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah
@@ -699,7 +674,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -923,6 +898,10 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Tombol pintas
@@ -968,7 +947,6 @@ keybindings:
         wire: Kawat Energi
         pipette: Pipet
         rotateWhilePlacing: Putar
-        rotateInverseModifier: "Modifier: Putar berlawanan arah jarum jam sebagai gantinya"
         cycleBuildingVariants: Ganti varian
         confirmMassDelete: Hapus area
         pasteLastBlueprint: Gandakan cetak biru terakhir
@@ -997,6 +975,7 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        backwardsModifier: "Modifier: Rotate CCW instead"
 about:
     title: Tentang permainan ini
     body: >-

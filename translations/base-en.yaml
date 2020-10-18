@@ -1098,7 +1098,7 @@ keybindings:
 
         pipette: Pipette
         rotateWhilePlacing: Rotate
-        rotateInverseModifier: >-
+        backwardsModifier: >-
             Modifier: Rotate CCW instead
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Delete area
