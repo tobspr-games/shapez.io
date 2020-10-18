@@ -9,21 +9,21 @@ steamPage:
 
         A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
-        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es escalar!
+        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es ampliar!
 
-        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar los colores!
+        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar colores!
 
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
     title_advantages: Ventajas del juego
     advantages:
         - <b>12 nuevos niveles</b> de un total de 26 niveles
         - <b>18 nuevos edificios</b> ¡Para una fábrica totalmente automatizada!
-        - <b>20 Nievels de mejoras</b> ¡Parra horas de diversión!
+        - <b>Nieveles infinitos de mejoras</b> ¡Para horas de diversión!
         - ¡<b>Cables</b> para una dimensión completamente nueva!
-        - <b>Modo oscuro</b>!
+        - ¡<b>Modo oscuro</b>!
         - Partidad guardadas ilimitadas
         - Marcadores ilimitados
-        - Me apoyarás! ❤️
+        - ¡Me apoyarás! ❤️
     title_future: Contenido futuro
     planned:
         - Librería de planos (Exclusivo de Standalone)
@@ -46,7 +46,7 @@ steamPage:
         trato de revisar todas las sugerencias además de tomar en cuenta los consejos
         siempre que sea posible.
 
-        Asegurate de revisar mi página de Trello donde podrás encontrar el Roadmap!
+        ¡Asegurate de revisar mi página de Trello donde podrás encontrar el Roadmap!
 global:
     loading: Cargando
     error: Error
@@ -121,8 +121,8 @@ dialogs:
         text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: Estás seguro de querér borrar el siguiente guardado?<br><br>
-            '<savegameName>' que está en el nivel <savegameLevel><br><br> Esto no se puede deshacer!
+        text: ¿Estás seguro de querér borrar el siguiente guardado?<br><br>
+            '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto no se puede deshacer!
     savegameDeletionError:
         title: Fallo al borrar
         text: "Fallo al borrar la partida guardada:"
@@ -131,7 +131,7 @@ dialogs:
         text: Tienes que reinciar la partida para aplicar los cambios.
     editKeybinding:
         title: Cambiar atajos de teclado
-        desc: Pulsa la tecla o botón del ratón que quieras asignar, o escape para
+        desc: Pulsa la tecla o botón del ratón que quieras asignar, o presiona escape para
             cancelar.
     resetKeybindingsConfirmation:
         title: Reiniciar atajos de teclado
@@ -166,7 +166,7 @@ dialogs:
         desc: ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro
             de que quieres hacer esto?
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Confirmar corte
         desc: ¡No puedes permitirte pegar este área! ¿Estás seguro de que quieres
             cortarlo?
     blueprintsNotUnlocked:
@@ -197,7 +197,7 @@ dialogs:
     editSignal:
         title: Establecer señal
         descItems: "Elige un item pre-definido:"
-        descShortKey: ... o escribe la <strong>calve</strong> de una forma (La cual
+        descShortKey: ... o escribe la <strong>clave</strong> de una forma (La cual
             puedes generar <link>aquí</link>)
     renameSavegame:
         title: Renombrar archivo de guardado
@@ -364,7 +364,7 @@ ingame:
                 title: Archivos de guardado infinitos
                 desc: ¡Tantos como desees!
             upgrades:
-                title: 20 niveles de mejoras
+                title: Niveles infinitos de mejoras
                 desc: ¡Esta demo solo tiene 5!
             markers:
                 title: Marcadores infinitos
