@@ -18,7 +18,7 @@ steamPage:
         - <b>ダークモード</b>!
         - セーブ数の上限がなくなります。
         - マップマーカー数の上限がなくなります。
-        - 私をサポートできる！❤️
+        - 皆様からの支援をお願いします！❤️
     title_future: 計画中の要素
     planned:
         - ブループリント (スタンドアロン版専用)
@@ -38,7 +38,7 @@ steamPage:
         roadmap: ロードマップ
         subreddit: Subreddit
         source_code: ソースコード(GitHub)
-        translate: 翻訳を助けてください！
+        translate: 翻訳のお手伝いをお願いします！
 global:
     loading: ロード中
     error: エラー
@@ -82,7 +82,7 @@ mainMenu:
     importSavegame: インポート
     openSourceHint: このゲームはオープンソースです
     discordLink: 公式Discordサーバー
-    helpTranslate: 翻訳を助けてください！
+    helpTranslate: 翻訳のお手伝いをお願いします
     madeBy: <author-link>によって作られました
     browserWarning: このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることでこの問題は避けられます。
     savegameLevel: レベル <x>
@@ -177,13 +177,12 @@ dialogs:
         title: セーブデータの名前を変更
         desc: セーブデータの名前を変更することができます
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: チュートリアル動画があります
+        desc: このレベル向けのチュートリアル動画があります! 確認しますか?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: チュートリアル動画があります
+        desc: このレベル向けのチュートリアル動画があります! 英語版しかありませんが確認しますか?
+
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -281,36 +280,34 @@ ingame:
         title: チュートリアル
         hints:
             1_1_extractor: <strong>抽出機</strong> を <strong>円の形</strong> の上において抽出しましょう！
-            1_2_conveyor: "抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip:
-                <strong>マウスのドラッグ</strong> でベルトを引けます。"
+            1_2_conveyor: 抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip:
+                <strong>マウスのドラッグ</strong> でベルトを引けます。
             1_3_expand: "このゲームは放置系のゲームでは<strong>ありません</strong>！
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
-                キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+                キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。
+            2_1_place_cutter: "<strong>切断機</strong>を置いて、円を投入して半分にしましょう!
+                <br><br> PS: 投入されるものは向きに関わらず切断機は必ず<strong>上から下へ
+                </strong> 裁断されます。
+            2_2_place_trash: 裁断機からてでくる2つのオブジェクトは同時に取り出さないと<strong>詰まって止まります</strong>!<br><br>
+                現時点では(!)使わないものが出てくる出口側に<strong>ゴミ箱</strong> を配置して、
+                目詰まりを阻止しましょう。
+            2_3_more_cutters: "Good job! それでは<strong>2台以上裁断機</strong>設置してスピードを上げていきましょう
+                <br><br> PS: キーボードの<strong>0-9
+                キー</strong>を使って建造物を素早く選択できます。
+            3_1_rectangles: "四角を抽出しましょう!<strong>4つ抽出機を建造し
+                </strong>HUBに接続しましょう。<br><br> PS:
+                <strong>SHIFTキー</strong>長押しでベルトプランナーが
+                利用できます!
+            21_1_place_quad_painter: <strong>着色機 (四分割)</strong>を設置して
+                <strong>丸</strong>を投入してみましょう, <strong>白</strong>と
+                <strong>赤</strong>が着色できます!
+            21_2_switch_to_wires: <strong>E</strong>キーを押してWireレイヤーに切り替えてみましょう
+                !<br><br> そして着色機<strong>4つすべての入力を
+                </strong>ケーブルでつなぎましょう!
+            21_3_place_button: すごい! <strong>スイッチ</strong>を設置してワイヤをつなげていきましょう!
+            21_4_press_button: "スイッチを押して<strong>真</strong>の信号を出力しましょう。すると着色機が起動します。<br><br>
+            　　 PS: 全部の入力を繋げなくても大丈夫! まずはケーブル2箇所だけをつないでみましょう"
     connectedMiners:
         one_miner: 1個の抽出機
         n_miners: <amount>個の抽出機
@@ -549,9 +546,8 @@ storyRewards:
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
     reward_balancer:
         title: 分配機/合流機
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: 多機能な<strong>分配機/合流機</strong>がアンロックされました。
+            大規模工場建造によく使われ、<strong>複数のベルトへの分配や合流に</strong>使われます!
     reward_tunnel:
         title: トンネル
         desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
@@ -561,10 +557,10 @@ storyRewards:
             反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "<strong>連鎖抽出機</strong>をアンロックしました!
+            <strong>矢印の向きに連接する抽出機と</strong>連鎖して
+            効率的に抽出できます!<br><br> PS: ツールバーにあった古い抽出機は
+            これ以降すべて連鎖抽出機になります!"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
