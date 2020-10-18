@@ -965,7 +965,7 @@ keybindings:
         comparator: Comparador
         item_producer: Productor d'items (Sandbox)
         copyWireValue: "Cables: Copiar valor davall el cursor"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: Sobre aquest Joc
     body: >-

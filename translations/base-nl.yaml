@@ -954,7 +954,7 @@ keybindings:
         comparator: Vergelijk
         item_producer: Item Producent (Sandbox)
         copyWireValue: "Kabels: Kopieer waarde onder cursor"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: Over dit spel
     body: >-

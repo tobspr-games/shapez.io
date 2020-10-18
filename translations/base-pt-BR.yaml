@@ -962,7 +962,7 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copiar valor abaixo do cursor"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: Sobre o jogo
     body: >-

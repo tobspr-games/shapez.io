@@ -849,7 +849,7 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "Wires: Copy value below cursor"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: 게임 정보
     body: >-

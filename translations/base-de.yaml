@@ -967,7 +967,7 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: Über dieses Spiel
     body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a

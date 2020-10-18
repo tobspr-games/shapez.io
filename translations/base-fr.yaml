@@ -979,7 +979,7 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser l’orientation des convoyeurs
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: À propos de ce jeu
     body: >-

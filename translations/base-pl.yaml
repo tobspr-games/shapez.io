@@ -965,7 +965,7 @@ keybindings:
         comparator: Porównywacz
         item_producer: Producent Przedmiotów (Tryb Piaskownicy)
         copyWireValue: "Przewody: Skopiuj wartość pod kursorem"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: O Grze
     body: 'Ta gra jest open-source. Rozwijana jest przez <a

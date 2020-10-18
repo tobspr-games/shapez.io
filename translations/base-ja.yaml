@@ -824,7 +824,7 @@ keybindings:
         placementDisableAutoOrientation: 自動向き合わせ無効
         placeMultiple: 配置モードの維持
         placeInverse: ベルトの自動向き合わせを逆転
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: このゲームについて
     body: >-

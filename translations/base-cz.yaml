@@ -930,7 +930,7 @@ keybindings:
         comparator: Porovnávač
         item_producer: Výrobník předmětů (Sandbox)
         copyWireValue: "Kabely: Zkopírovat hodnotu pod kurzorem"
-        backwardsModifier: "Modifier: Rotate CCW instead"
+        backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: O hře
     body: >-

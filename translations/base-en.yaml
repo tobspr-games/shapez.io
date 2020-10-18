@@ -1099,7 +1099,7 @@ keybindings:
         pipette: Pipette
         rotateWhilePlacing: Rotate
         backwardsModifier: >-
-            Modifier: Rotate CCW instead
+            Modifier: Cycle backwards
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Delete area
         pasteLastBlueprint: Paste last blueprint
