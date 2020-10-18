@@ -176,7 +176,7 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Ge det ett meningsfullt namn, du kan också inkludera en <strong>kort 
+        desc: Ge det ett meningsfullt namn, du kan också inkludera en <strong>kort
             nyckel</strong> av en form (Som du kan generera <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
@@ -198,7 +198,7 @@ dialogs:
     editSignal:
         title: Sätt singal
         descItems: "Välj en förvald sak:"
-        descShortKey: ... eller skriv in <strong>kort nyckel</strong> av en form 
+        descShortKey: ... eller skriv in <strong>kort nyckel</strong> av en form
             (Som du kan generera <link>här</link>)
     renameSavegame:
         title: Byt namn på sparfil
@@ -208,7 +208,7 @@ dialogs:
         desc: Det finns en handledningsvideo tillgänglig för denna nivå! Vill du se den?
     tutorialVideoAvailableForeignLanguage:
         title: Handledning Tillgänglig
-        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men den är bara 
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men den är bara
             tillgänglig på engelska. Vill du se den?
 ingame:
     keybindingsOverlay:
@@ -503,8 +503,7 @@ buildings:
     constant_signal:
         default:
             name: Konstant Signal
-            description: Avger en konstant signal, som kan vara en form, färg eller
-            boolean (1 / 0)
+            description: Avger en konstant signal, som kan vara en form, färg eller boolean (1 / 0).
     lever:
         default:
             name: Signalknapp
