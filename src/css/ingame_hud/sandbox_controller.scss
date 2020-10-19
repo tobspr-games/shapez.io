@@ -46,5 +46,15 @@
             @include IncreasedClickArea(0px);
             @include SuperSmallText;
         }
+        .bigPlusMinus {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @include S(grid-gap, 2px);
+            button {
+                @include S(margin-bottom, 2px);
+                @include IncreasedClickArea(0px);
+                @include SuperSmallText;
+            }
+        }
     }
 }

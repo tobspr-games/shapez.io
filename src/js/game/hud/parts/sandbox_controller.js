@@ -45,8 +45,11 @@ export class HUDSandboxController extends BaseHUDPart {
                 </div>
 
                 <div class="additionalOptions">
+                    <div class="bigPlusMinus">
+                        <button class="styledButton bigMinus">-100 All</button>
+                        <button class="styledButton bigPlus">+100 All</button> 
+                    </div>
                     <button class="styledButton giveBlueprints">Fill blueprint shapes</button>
-                    <button class="styledButton maxOutAll">Max out all</button>
                 </div>
             </div>
         `
@@ -55,7 +58,8 @@ export class HUDSandboxController extends BaseHUDPart {
         const bind = (selector, handler) => this.trackClicks(this.element.querySelector(selector), handler);
 
         bind(".giveBlueprints", this.giveBlueprints);
-        bind(".maxOutAll", this.maxOutAll);
+        bind(".bigMinus", () => this.modifyAll(-100));
+        bind(".bigPlus", () => this.modifyAll(100));
         bind(".levelToggle .minus", () => this.modifyLevel(-1));
         bind(".levelToggle .plus", () => this.modifyLevel(1));
 
@@ -80,11 +84,11 @@ export class HUDSandboxController extends BaseHUDPart {
         this.root.hubGoals.storedShapes[shape] += 1e9;
     }
 
-    maxOutAll() {
-        this.modifyUpgrade("belt", 100);
-        this.modifyUpgrade("miner", 100);
-        this.modifyUpgrade("processors", 100);
-        this.modifyUpgrade("painting", 100);
+    modifyAll(amount) {
+        this.modifyUpgrade("belt", amount);
+        this.modifyUpgrade("miner", amount);
+        this.modifyUpgrade("processors", amount);
+        this.modifyUpgrade("painting", amount);
     }
 
     modifyUpgrade(id, amount) {
