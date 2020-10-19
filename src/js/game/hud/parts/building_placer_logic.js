@@ -468,8 +468,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 index = 0;
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
-            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.backwardsModifier)
-                .pressed
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.backwardsModifier).pressed
                 ? -1
                 : 1;
             let newIndex = safeModulo(index + direction, availableVariants.length);
