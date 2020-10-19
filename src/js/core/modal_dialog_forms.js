@@ -2,6 +2,17 @@ import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
 import { Signal } from "./signal";
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 export class FormElement {
     constructor(id, label) {
         this.id = id;

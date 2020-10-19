@@ -18,6 +18,12 @@ export const THIRDPARTY_URLS = {
     shapeViewer: "https://viewer.shapez.io",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
+
+    levelTutorialVideos: {
+        21: "https://www.youtube.com/watch?v=0nUfRLMCcgo&",
+        25: "https://www.youtube.com/watch?v=7OCV1g40Iew&",
+        26: "https://www.youtube.com/watch?v=gfm6dS1dCoY",
+    },
 };
 
 export const A_B_TESTING_LINK_TYPE = Math.random() > 0.5 ? "steam_1_pr" : "steam_2_npr";
@@ -131,4 +137,9 @@ if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
 
 if (globalConfig.debug.fastGameEnter) {
     globalConfig.debug.noArtificialDelays = true;
+}
+
+if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
+    globalConfig.warmupTimeSecondsFast = 0;
+    globalConfig.warmupTimeSecondsRegular = 0;
 }

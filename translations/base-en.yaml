@@ -28,7 +28,7 @@ steamPage:
     discordLinkShort: Official Discord
 
     intro: >-
-        You like automation games? Then you are in the right place!
+        Do you like automation games? Then you are in the right place!
 
         shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
@@ -272,6 +272,14 @@ dialogs:
         title: Rename Savegame
         desc: You can rename your savegame here.
 
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to watch it?
+
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only available in English. Would you like to watch it?
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -413,6 +421,36 @@ ingame:
 
             1_3_expand: >-
                 This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+
+            2_1_place_cutter: >-
+                Now place a <strong>Cutter</strong> to cut the circles in two halves!<br><br>
+                PS: The cutter always cuts from <strong>top to bottom</strong> regardless of its orientation.
+
+            2_2_place_trash: >-
+                The cutter can <strong>clog and stall</strong>!<br><br>
+                Use a <strong>trash</strong> to get rid of the currently (!) not needed waste.
+
+            2_3_more_cutters: >-
+                Good job! Now place <strong>2 more cutters</strong> to speed up this slow process!<br><br>
+                PS: Use the <strong>0-9 hotkeys</strong> to access buildings faster!
+
+            3_1_rectangles: >-
+                Now let's extract some rectangles! <strong>Build 4 extractors</strong> and connect them to the hub.<br><br>
+                PS: Hold <strong>SHIFT</strong> while dragging a belt to activate the belt planner!
+
+            21_1_place_quad_painter: >-
+                Place the <strong>quad painter</strong> and get some <strong>circles</strong>, <strong>white</strong> and <strong>red</strong> color!
+
+            21_2_switch_to_wires: >-
+                Switch to the wires layer by pressing <strong>E</strong>!<br><br>
+                Then <strong>connect all four inputs</strong> of the painter with cables!
+
+            21_3_place_button: >-
+                Awesome! Now place a <strong>Switch</strong> and connect it with wires!
+
+            21_4_press_button: >-
+                Press the switch to make it <strong>emit a truthy signal</strong> and thus activate the painter.<br><br>
+                PS: You don't have to connect all inputs! Try wiring only two.
 
     # Connected miners
     connectedMiners:
@@ -668,7 +706,7 @@ buildings:
 
         rotater:
             name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            description: Virtually rotates the shape clockwise.
 
         unstacker:
             name: Virtual Unstacker
@@ -775,7 +813,8 @@ storyRewards:
         desc: >-
             You just unlocked the <strong>Wires Layer</strong>: It is a separate layer on top of the regular layer and introduces a lot of new mechanics!<br><br>
             For the beginning I unlocked you the <strong>Quad Painter</strong> - Connect the slots you would like to paint with on the wires layer!<br><br>
-            To switch to the wires layer, press <strong>E</strong>.
+            To switch to the wires layer, press <strong>E</strong>. <br><br>
+            PS: <strong>Enable hints</strong> in the settings to activate the wires tutorial!
 
     reward_filter:
         title: >-
@@ -1030,6 +1069,11 @@ settings:
             description: >-
                 If activated the zoom will happen in the direction of your mouse position, otherwise in the middle of the screen.
 
+        mapResourcesScale:
+            title: Map Resources Size
+            description: >-
+                Controls the size of the shapes on the map overview (when zooming out).
+
 keybindings:
     title: Keybindings
     hint: >-
@@ -1145,9 +1189,9 @@ demo:
     settingNotAvailable: Not available in the demo.
 
 tips:
-    - The hub accepts input of any kind, not just the current shape!
+    - The hub will accept any input, not just the current shape!
     - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
+    - Don't build too close to the hub, or it will be a mess!
     - If stacking does not work, try switching the inputs.
     - You can toggle the belt planner direction by pressing <b>R</b>.
     - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
@@ -1165,21 +1209,20 @@ tips:
     - You don't need to divide up items evenly for full efficiency.
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
     - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Efficiency is key!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
     - Use balancers to maximize your efficiency.
     - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
+    - Plan in advance, or it will be a mess!
     - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
+    - Try beating level 20 or 26 on your own before seeking for help!
     - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to be re-usable.
+    - You may need to reuse factories later in the game. Build your factories to be reusable.
     - Sometimes, you can find a needed shape in the map without creating it with stackers.
     - Full windmills/pinwheels can never spawn naturally.
     - Color your shapes before cutting for maximum efficiency.
@@ -1190,13 +1233,13 @@ tips:
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
     - Mix all three primary colors to make white!
-    - You have an infinite map, don't cramp your factory, expand!
+    - You have an infinite map. Don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
+    - The quad cutter cuts clockwise, starting from the top right.
     - You can download your savegames in the main menu!
     - This game has a lot of useful keybindings! Be sure to check out the settings page.
     - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
+    - Your hub marker has a small compass that shows which direction it is in!
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.

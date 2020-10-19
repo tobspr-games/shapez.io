@@ -7,6 +7,17 @@ import { T } from "../translations";
 
 const logger = createLogger("setting_types");
 
+/*
+ * ***************************************************
+ *
+ *  LEGACY CODE WARNING
+ *
+ *  This is old code from yorg3.io and needs to be refactored
+ *  @TODO
+ *
+ * ***************************************************
+ */
+
 export class BaseSetting {
     /**
      *

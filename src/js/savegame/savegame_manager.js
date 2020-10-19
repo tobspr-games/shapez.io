@@ -41,7 +41,7 @@ export class SavegameManager extends ReadWriteProxy {
     }
 
     verify(data) {
-        // TODO / FIXME!!!!
+        // @TODO
         return ExplainedResult.good();
     }
 

@@ -1,5 +1,14 @@
 export const CHANGELOG = [
     {
+        version: "1.2.1",
+        date: "unreleased",
+        entries: [
+            "Fixed stacking bug for level 26 which required restarting the game",
+            "Fix reward notification being too long sometimes (by LeopoldTal)",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.2.0",
         date: "09.10.2020",
         entries: [

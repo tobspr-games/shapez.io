@@ -45,7 +45,7 @@ function generateUpgrades(limitedVersion = false) {
     const upgrades = {
         belt: [
             {
-                required: [{ shape: "CuCuCuCu", amount: 60 }],
+                required: [{ shape: "CuCuCuCu", amount: 30 }],
             },
             {
                 required: [{ shape: "--CuCu--", amount: 500 }],
@@ -334,7 +334,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // Belt reader
                   {
                       shape: "--Cg----:--Cr----", // unused
-                      required: 16, // Per second!
+                      required: 8, // Per second!
                       reward: enumHubGoalRewards.reward_belt_reader,
                       throughputOnly: true,
                   },

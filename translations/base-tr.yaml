@@ -201,6 +201,14 @@ dialogs:
     renameSavegame:
         title: Oyun Kaydının Yeniden Adlandır
         desc: Oyun kaydını buradan adlandırabilirsiniz.
+    tutorialVideoAvailable:
+        title: Eğitim Mevcut
+        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek
+            ister misin?
+    tutorialVideoAvailableForeignLanguage:
+        title: Eğitim Mevcut
+        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde.
+            İzlemek ister misin?
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -261,9 +269,9 @@ ingame:
                 description: Merkez binanıza giden bütün şekilleri gösterir.
         noShapesProduced: Henüz hiçbir şekil üretilmedi.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / sn
+            minute: <shapes> / dk
+            hour: <shapes> / sa
     settingsMenu:
         playtime: Oynama zamanı
         buildingsPlaced: Yapılar
@@ -294,6 +302,30 @@ ingame:
                 yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için
                 <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong>
                 tuşuyla taşıma bandının yönünü döndür."
+            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
+                Not: Kesici şekilleri yönünden bağımsız olarak her zaman <strong>yukarıdan aşağıya</strong>
+                keser."
+            2_2_place_trash: Kesicinin çıkış hatları doluysa <strong>durabilir</strong>!<br><br>
+                Bunun için kullanılmayan çıktılara <strong>çöp</strong>
+                yerleştirin.
+            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
+                yerleştir.<br><br> Not: <strong>0-9 tuşlarını</strong> kullanarak yapılara
+                daha hızlı ulaşabilirsin!"
+            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici yerleştir</strong> ve
+                bunları merkeze bağla.<br><br> Not: <strong>SHIFT tuşuna</strong>
+                basılı tutarak bant planlayıcıyı
+                etkinleştir!"
+            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
+                <strong>beyaz</strong> ve <strong>kırmızı</strong> renkleri
+                elde edin!
+            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş yapın!<br><br>
+                Sonra boyayıcının <strong>dört girişini kablolara
+                bağlayın</strong>!
+            21_3_place_button: Harika! Şimdi bir <strong>Anahtar</strong> yerleştirin ve onu
+                kablolarla bağlayın!
+            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1) gönderin</strong> ve bununla
+                boyayıcıyı aktifleştirin.<br><br> Not: Bütün girişleri bağlamanıza gerek yok!
+                Sadece iki tanesini kabloyla bağlamayı deneyin."
     colors:
         red: Kırmızı
         green: Yeşil
@@ -562,7 +594,7 @@ storyRewards:
             eden <strong>çöpü</strong> de verdim!
     reward_rotater:
         title: Döndürme
-        desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönüne 90
+        desc: <strong>Döndürücü</strong> açıldı! Döndürücü şekilleri saat yönünde 90
             derece döndürür.
     reward_painter:
         title: Boyama
@@ -653,9 +685,9 @@ storyRewards:
         desc: Deneme sürümünün sonuna geldin!
     reward_balancer:
         title: Dengeleyici
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Çok fonksiyonlu <strong>dengeleyici</strong> açıldı. - <strong>Eşyaları
+            bantlara ayırarak ve bantları birleştirerek</strong> daha büyük
+            fabrikalar kurmak için kullanılabilir!
     reward_merger:
         title: Tekil Birleştirici
         desc: <strong>Birleştiriciyi</strong> açtın ! <strong>dengeleyecinin</strong>
@@ -671,17 +703,17 @@ storyRewards:
             döndürür (Süpriz! :D)
     reward_display:
         title: Ekran
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "<strong>Ekranı</strong> açtın. - Kablo katmanında bir sinyal bağla ve onu
+            ekranda göster! <br><br> Not: Bant okuyucunun ve deponun son
+            okudukları eşyayı çıkardığını fark ettin mi? Bunu ekranda göstermeyi
+            dene!"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 or 0).
+        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın!
+            Bu yapı örneğin <strong>eşya filtrelerine</strong> bağlanabilir.<br><br>
+            Sabit sinyal <strong>şekil</strong>, <strong>renk</strong> veya
+            <strong>ikili değer</strong> (1 veya 0)
+            gönderelebilir.
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
@@ -706,7 +738,8 @@ storyRewards:
             vardır!<br><br> Başlangıç olarak senin için <strong>Dörtlü
             Boyayıcıyı</strong> açıyorum. - Kablo katmanında boyamak için
             istediğin hatları bağla! <br><br> Kablo katmanına geçiş yapmak için
-            <strong>E</strong> tuşunu kullan."
+            <strong>E tuşunu </strong> kullan. <br><br> Not: İpuçlarını kablo eğitimlerini
+            görmek için ayarlarda aktifleştirmeyi unutma."
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -725,6 +758,7 @@ settings:
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
+    rangeSliderPercentage: <amount> %
     labels:
         uiScale:
             title: Arayüz Ölçeğİ
@@ -872,10 +906,14 @@ settings:
             title: Fare Kaydırarak Hareket Etme
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
-    rangeSliderPercentage: <amount> %
+            title: Farenin Konumuna Yakınlaştırma
+            description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin
+                bulunduğu yere doğru olur. Etkinleştirilmezse yakınlaştırma
+                ekranın ortasına doğru olur.
+        mapResourcesScale:
+            title: Uzak Bakışta Kaynakların Büyüklüğü
+            description: Haritaya uzaktan bakıldığında, haritadaki şekillerin büyüklüğünü
+                ayarlar.
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme

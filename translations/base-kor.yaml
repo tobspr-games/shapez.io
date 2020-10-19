@@ -77,7 +77,7 @@ demoBanners:
 mainMenu:
     play: 시작
     changelog: 버전 기록
-    importSavegame: 불러오기
+    importSavegame: 가져오기
     openSourceHint: 이 게임은 오픈 소스입니다!
     discordLink: 공식 디스코드 서버
     helpTranslate: 번역을 도와주세요!
@@ -104,14 +104,14 @@ dialogs:
         showUpgrades: 업그레이드 보기
         showKeybindings: 조작법 보기
     importSavegameError:
-        title: 불러오기 오류
-        text: "Failed to import your savegame:"
+        title: 가져오기 오류
+        text: "세이브 파일을 가져오지 못했습니다:"
     importSavegameSuccess:
-        title: 세이브 파일 불러오기 성공
+        title: 세이브 파일 가져오기 성공
         text: 세이브 파일을 성공적으로 불러왔습니다.
     gameLoadFailure:
         title: 세이브 파일 에러
-        text: "Failed to load your savegame:"
+        text: "세이브 파일을 불러오지 못했습니다:"
     confirmSavegameDelete:
         title: 삭제 확인
         text: 이 세이브 파일을 정말로 삭제하시겠습니까?<br><br> '<savegameName>' <savegameLevel>
@@ -176,11 +176,18 @@ dialogs:
         desc: 이 영역에는 붙여넣기를 할 수 없습니다! 정말 자르시겠습니까?
     editSignal:
         title: 신호 설정
-        descItems: "Choose a pre-defined item:"
+        descItems: "미리 정의된 아이템을 선택합니다:"
         descShortKey: ... 또는 도형 <strong>단축키</strong>를 사용합니다 (<link>여기</link>에서 만드실 수 있습니다).
     renameSavegame:
         title: 세이브 파일 이름 설정
         desc: 여기에서 세이브 파일의 이름을 바꿀 수 있습니다.
+    tutorialVideoAvailable:
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 보시겠습니까?
+    tutorialVideoAvailableForeignLanguage:
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만
+            제공될 것입니다. 보시겠습니까?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -204,7 +211,7 @@ ingame:
         switchLayers: 레이어 전환
     buildingPlacement:
         cycleBuildingVariants: <key> 키를 눌러 변형 전환
-        hotkeyLabel: "Hotkey: <key>"
+        hotkeyLabel: "단축키: <key>"
         infoTexts:
             speed: 속도
             range: 최대 거리
@@ -266,13 +273,33 @@ ingame:
         hints:
             1_1_extractor: <strong>원형 도형</strong>을 추출하기 위해 그 위에 <strong>추출기</strong>를 선택한 뒤
                 배치하여 추출하세요!
-            1_2_conveyor: "Connect the extractor with a <strong>conveyor belt</strong> to
-                your hub!<br><br>Tip: <strong>Click and drag</strong> the belt
-                with your mouse!"
-            1_3_expand: "This is <strong>NOT</strong> an idle game! Build more extractors
-                and belts to finish the goal quicker.<br><br>Tip: Hold
-                <strong>SHIFT</strong> to place multiple extractors, and use
-                <strong>R</strong> to rotate them."
+            1_2_conveyor: "이제 <strong>컨베이어 벨트</strong>를 추출기와 허브를 서로 연결하세요!<br><br> 팁: 벨트를
+                마우스로 <strong>클릭한 뒤 드래그</strong>하세요!"
+            1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
+                달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
+                있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
+            2_1_place_cutter: "이제 <strong>절단기</strong>를 배치하여 원형 도형을 둘로 자르세요!<br><br>
+                추신: 절단기는 방향에 관계 없이 항상 수직으로 자릅니다."
+            2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
+                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을
+                제거하세요.
+            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong>
+                이상 배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여
+                건물을 빠르게 선택할 수 있습니다!"
+            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를
+                배치</strong>하고 허브와 연결하세요.<br><br> 추신: 긴 벨트 한 줄을
+                간단히 만들려면 <strong>SHIFT 키</strong>를 누른 채 드래그하세요!"
+            21_1_place_quad_painter: <strong>4단 색칠기</strong>를 배치하여 <strong>흰색</strong>과
+                <strong>빨간색</strong>이 칠해진 <strong>원형
+                도형</strong>을 만들어보세요!
+            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어
+                로 전환하세요!<br><br> 그 후 색칠기의 <strong>네 입력 부분</strong>을
+                모두 케이블로 연결하세요!
+            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로
+                연결하세요!
+            21_4_press_button: "스위치를 눌러 </strong>참 신호를 내보내<strong>
+                색칠기를 활성화하세요. 추신: 모든 입력을 연결할 필요는 없습니다!
+                지금은 두 개만 연결하세요."
     colors:
         red: 빨간색
         green: 초록색
@@ -284,13 +311,13 @@ ingame:
         black: 검은색
         uncolored: 회색
     shapeViewer:
-        title: 층
+        title: 레이어
         empty: 비었음
         copyKey: 키 복사하기
     connectedMiners:
         one_miner: 추출기 1 개
         n_miners: 추출기 <amount>개
-        limited_items: <max_throughput>개로 제한됨
+        limited_items: <max_throughput>까지가 한계임
     watermark:
         title: 체험판 버전
         desc: 정식 버전의 장점을 보려면 여기를 클릭하세요!
@@ -510,12 +537,10 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: <strong>절단기</strong>가 잠금 해제되었습니다! 절단기는 들어오는 도형이 어떤 모양을 하고 있던 수직으로 잘라
+            <strong>반으로 나눕니다</strong>!<br><br> 쓰지 않는 도형은 쓰레기로 처리하세요, 그렇지 않으면
+            <strong>작동을 멈출 것입니다</strong>! 이러한 목적을 위해 <strong>휴지통</strong>도 함께
+            지급되었습니다. 휴지통에 들어간 것은 모두 파괴됩니다!
     reward_rotater:
         title: 회전기
         desc: <strong>회전기</strong>가 잠금 해제되었습니다! 회전기는 들어오는 도형을 시계 방향으로 90도 회전시켜줍니다.
@@ -580,9 +605,8 @@ storyRewards:
             기능을 사용할 수 있습니다! (방금 당신이 만든 것입니다.)
     no_reward:
         title: 다음 레벨
-        desc: "This level gave you no reward, but the next one will! <br><br> PS: Better
-            not destroy your existing factory - You'll need <strong>all</strong>
-            those shapes later to <strong>unlock upgrades</strong>!"
+        desc: "이번 레벨의 보상은 없네요. 대신 다음 레벨에서 줄겁니다!<br><br> 추신: 기존 공장을 파괴하지는 마세요. 후에
+            <strong>업그레이드 잠금 해제</strong>되면 <strong>기존의 모든</strong> 도형이 필요합니다!"
     no_reward_freeplay:
         title: 다음 레벨
         desc: 축하드립니다!
@@ -625,12 +649,12 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+        desc: "<strong>전선 레이어</strong>가 잠금 해제되었습니다! 전선 레이어는
+            일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운
+            메커니즘을 소개하겠습니다!<br><br> 우선 <strong>4단 색칠기</strong>가
+            잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
+            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요. <br><br>
+            추신: 설정에서 <strong>힌트를 활성화</strong>하여 전선 튜토리얼을 활성화하세요!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -773,14 +797,15 @@ settings:
             title: 화면 가장자리 패닝
             description: 커서를 화면 가장자리로 옮기면 스크롤되어 지도를 이동할 수 있습니다. 스크롤 속도는 이동 속도 설정에 따릅니다.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: 커서를 기준으로 줌
+            description: 활성화할 경우 화면 줌 인 아웃이 마우스 커서가 있는 지점을 기준이 되며, 아닐 경우 화면 중앙이 기준이 됩니다.
+        mapResourcesScale:
+            title: 지도 자원 크기
+            description: 지도를 축소할 때 나타나는 도형의 크기를 제어합니다.
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 조작법
-    hint: "Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different
-        placement options."
+    hint: "팁: CTRL, SHIFT, ALT를 적절히 사용하세요! 건물을 배치할 때 유용합니다."
     resetKeybindings: 초기화
     categoryLabels:
         general: 애플리케이션
@@ -829,7 +854,7 @@ keybindings:
         exportScreenshot: 공장 전체를 이미지로 내보내기
         mapMoveFaster: 더 빠르게 움직이기
         lockBeltDirection: 벨트 계획기 활성화
-        switchDirectionLockSide: "Planner: Switch side"
+        switchDirectionLockSide: "계획기: 방향 바꾸기"
         pipette: 피펫
         menuClose: 메뉴 닫기
         switchLayers: 레이어 전환
@@ -848,7 +873,7 @@ keybindings:
         analyzer: 도형 분석기
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
-        copyWireValue: "Wires: Copy value below cursor"
+        copyWireValue: "전선: 커서 아래 값 복사"
         backwardsModifier: "Modifier: Cycle backwards"
 about:
     title: 게임 정보
@@ -868,7 +893,7 @@ changelog:
 demo:
     features:
         restoringGames: 게임 세이브 파일 복원 하기
-        importingGames: 게임 세이브 파일 불러오기
+        importingGames: 게임 세이브 파일 가져오기
         oneGameLimit: 게임 세이브 파일 최대 1개
         customizeKeybindings: 조작법 설정하기
         exportingBase: 공장 전체를 이미지로 내보내기
@@ -892,8 +917,7 @@ tips:
     - 최대 레벨에서, 한 줄의 벨트를 채우기 위해 다섯 개의 추출기가 필요합니다.
     - 터널을 잊지 마세요!
     - 완벽한 효율성을 위해 굳이 아이템을 균등하게 배분할 필요는 없습니다.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
+    - <b>SHIFT</b>키를 누르면 벨트 계획기가 활성화되어 긴 길이의 벨트 한 줄을 쉽게 배치할 수 있습니다.
     - 절단기는 들어오는 도형과 배치된 절단기의 방향에 관계 없이, 언제나 수직으로 자릅니다.
     - 흰색은 세 가지의 색소를 혼합해야 합니다.
     - 저장고의 양쪽 출력 중 왼쪽 출력이 가장 우선됩니다.
