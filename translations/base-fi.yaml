@@ -43,7 +43,7 @@ steamPage:
         translate: Auta kääntämään
     text_open_source: >-
         Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä 
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä
         mahdollista.
 
         Muista tarkistaa Trello -lautani, jossa löytyy koko roadmap!
@@ -317,7 +317,7 @@ ingame:
                 laittaaksesi useampia kaivajia ja käytä <strong>R</strong>
                 kääntääksesi niitä."
             2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
-                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong> 
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong>
                 riippumatta sen asennosta."
             2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
                 <strong>trash</strong> to get rid of the currently (!) not
@@ -992,7 +992,8 @@ about:
 
         Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
 
-        Lopuksi, isot kiitokset minun parhaalle kaverilleni <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Ilman meidän factorio istuntoja tätä peliä ei olisi koskaan ollut olemassa.
+        Lopuksi, isot kiitokset minun parhaalle kaverilleni <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Ilman meidän factorio istuntoja tätä peliä ei olisi koskaan ollut
+        olemassa.
 changelog:
     title: Muutosloki
 demo:
