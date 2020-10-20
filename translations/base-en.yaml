@@ -30,9 +30,11 @@ steamPage:
     intro: >-
         Do you like automation games? Then you are in the right place!
 
-        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you
+        have to spread out on the infinite map.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the beginning, you will later have to color them - by extracting and mixing colors!
+        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the
+        beginning, you will later have to color them - by extracting and mixing colors!
 
         Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez.io first and decide later!
 
@@ -402,7 +404,9 @@ ingame:
     waypoints:
         waypoints: Markers
         hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
+        description: >-
+            Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the
+            selected location.
         creationSuccessNotification: Marker has been created.
 
     # Shape viewer
@@ -420,7 +424,8 @@ ingame:
                 Connect the extractor with a <strong>conveyor belt</strong> to your hub!<br><br>Tip: <strong>Click and drag</strong> the belt with your mouse!
 
             1_3_expand: >-
-                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use <strong>R</strong> to rotate them.
+                This is <strong>NOT</strong> an idle game! Build more extractors and belts to finish the goal quicker.<br><br>Tip: Hold <strong>SHIFT</strong> to place multiple extractors, and use
+                <strong>R</strong> to rotate them.
 
             2_1_place_cutter: >-
                 Now place a <strong>Cutter</strong> to cut the circles in two halves!<br><br>
@@ -729,7 +734,9 @@ storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
         title: Cutting Shapes
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or otherwise <strong>it will clog and stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
+        desc: >-
+            You just unlocked the <strong>cutter</strong>, which cuts shapes in half from top to bottom <strong>regardless of its orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose I have given you the <strong>trash</strong>, which destroys everything you put into it!
 
     reward_rotater:
         title: Rotating
@@ -738,7 +745,8 @@ storyRewards:
     reward_painter:
         title: Painting
         desc: >-
-            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are colorblind, there is a <strong>colorblind mode</strong> in the settings!
+            The <strong>painter</strong> has been unlocked - Extract some color veins (just as you do with shapes) and combine it with a shape in the painter to color them!<br><br>PS: If you are
+            colorblind, there is a <strong>colorblind mode</strong> in the settings!
 
     reward_mixer:
         title: Color Mixing
@@ -746,7 +754,9 @@ storyRewards:
 
     reward_stacker:
         title: Stacker
-        desc: You can now combine shapes with the <strong>stacker</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right input is <strong>stacked on top</strong> of the left input!
+        desc: >-
+            You can now combine shapes with the <strong>stacker</strong>! Both inputs are combined, and if they can be put next to each other, they will be <strong>fused</strong>. If not, the right
+            input is <strong>stacked on top</strong> of the left input!
 
     reward_balancer:
         title: Balancer
@@ -758,7 +768,9 @@ storyRewards:
 
     reward_rotater_ccw:
         title: CCW Rotating
-        desc: You have unlocked a variant of the <strong>rotator</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotator and <strong>press 'T' to cycle through its variants</strong>!
+        desc: >-
+            You have unlocked a variant of the <strong>rotator</strong> - It allows you to rotate shapes counter-clockwise! To build it, select the rotator and
+            <strong>press 'T' to cycle through its variants</strong>!
 
     reward_miner_chainable:
         title: Chaining Extractor
@@ -791,7 +803,9 @@ storyRewards:
 
     reward_painter_double:
         title: Double Painting
-        desc: You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color instead of two!
+        desc: >-
+            You have unlocked a variant of the <strong>painter</strong> - It works similar to the regular painter but processes <strong>two shapes at once</strong>, consuming just one color
+            instead of two!
 
     reward_storage:
         title: Storage
@@ -801,7 +815,9 @@ storyRewards:
 
     reward_blueprints:
         title: Blueprints
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
+        desc: >-
+            You can now <strong>copy and paste</strong> parts of your factory! Select an area (Hold CTRL, then drag with your mouse), and press 'C' to copy it.<br><br>Pasting it is
+            <strong>not free</strong>, you need to produce <strong>blueprint shapes</strong> to afford it! (Those you just delivered).
 
     reward_rotater_180:
         title: Rotator (180°)
@@ -857,7 +873,8 @@ storyRewards:
     no_reward:
         title: Next level
         desc: >-
-            This level gave you no reward, but the next one will! <br><br> PS: Better not destroy your existing factory - You'll need <strong>all</strong> those shapes later to <strong>unlock upgrades</strong>!
+            This level gave you no reward, but the next one will! <br><br> PS: Better not destroy your existing factory - You'll need <strong>all</strong> those shapes later to
+            <strong>unlock upgrades</strong>!
 
     no_reward_freeplay:
         title: Next level
@@ -986,7 +1003,8 @@ settings:
         refreshRate:
             title: Tick Rate
             description: >-
-                This determines how many game ticks happen per second. In general, a higher tick rate means better precision but also worse performance. On lower tickrates, the throughput may not be exact.
+                This determines how many game ticks happen per second. In general, a higher tick rate means better precision but also worse performance. On lower tickrates, the throughput may not be
+                exact.
 
         alwaysMultiplace:
             title: Multiplace
@@ -1037,7 +1055,8 @@ settings:
         clearCursorOnDeleteWhilePlacing:
             title: Clear Cursor on Right Click
             description: >-
-                Enabled by default, clears the cursor whenever you right click while you have a building selected for placement. If disabled, you can delete buildings by right-clicking while placing a building.
+                Enabled by default, clears the cursor whenever you right click while you have a building selected for placement. If disabled, you can delete buildings by right-clicking while placing
+                a building.
 
         lowQualityTextures:
             title: Low quality textures (Ugly)
