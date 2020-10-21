@@ -26,7 +26,7 @@ export class HUDSandboxController extends BaseHUDPart {
                 </div>
                 
                 <div class="upgradesBelt plusMinus">
-                    <label>&rarr; Belt</label>
+                    <label>&rarr; Belts</label>
                     <button class="styledButton reset">⮂</button>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
@@ -55,11 +55,14 @@ export class HUDSandboxController extends BaseHUDPart {
 
                 <div class="additionalOptions">
                     <div class="bigPlusMinus">
+                        <button class="styledButton levelOverride">Override</button>
+                        <button class="styledButton levelUp">Level up</button> 
+                    </div>
+                    <div class="bigPlusMinus">
                         <button class="styledButton bigMinus">-100 All</button>
                         <button class="styledButton bigPlus">+100 All</button> 
                     </div>
                     <button class="styledButton giveBlueprints">Fill blueprint shapes</button>
-                    <button class="styledButton levelOverride">Override level</button>
                 </div>
             </div>
         `
@@ -67,13 +70,15 @@ export class HUDSandboxController extends BaseHUDPart {
 
         const bind = (selector, handler) => this.trackClicks(this.element.querySelector(selector), handler);
 
-        bind(".giveBlueprints", this.giveBlueprints);
+        bind(".levelOverride", this.promptOverrideLevel);
+        bind(".levelUp", this.tryLevelUp)
         bind(".bigMinus", () => this.modifyAll(-100));
         bind(".bigPlus", () => this.modifyAll(100));
+        bind(".giveBlueprints", this.giveBlueprints);
+
         bind(".levelToggle .reset", this.resetLevel);
         bind(".levelToggle .minus", () => this.modifyLevel(-1));
         bind(".levelToggle .plus", () => this.modifyLevel(1));
-        bind(".levelOverride", this.promptOverrideLevel);
 
         bind(".upgradesBelt .reset", () => this.resetUpgrade("belt"));
         bind(".upgradesBelt .minus", () => this.modifyUpgrade("belt", -1));
@@ -188,7 +193,7 @@ export class HUDSandboxController extends BaseHUDPart {
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: "Override Level",
-            desc: "Enter shape to override with:",
+            desc: "Enter a shape to override with:",
             formElements: [signalValueInput],
             buttons: ["cancel:bad:escape", "ok:good:enter"],
             closeButton: false,
@@ -212,6 +217,12 @@ export class HUDSandboxController extends BaseHUDPart {
             "Overrode level to " + hubGoals.currentGoal.definition.getHash(),
             enumNotificationType.upgrade
         );
+    }
+
+    tryLevelUp() {
+        if (!this.root.hubGoals.isEndOfDemoReached()) {
+            this.root.hubGoals.onGoalCompleted();
+        }
     }
 
     initialize() {
