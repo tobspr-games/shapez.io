@@ -71,7 +71,7 @@ export class HUDSandboxController extends BaseHUDPart {
         const bind = (selector, handler) => this.trackClicks(this.element.querySelector(selector), handler);
 
         bind(".levelOverride", this.promptOverrideLevel);
-        bind(".levelUp", this.tryLevelUp)
+        bind(".levelUp", this.tryLevelUp);
         bind(".bigMinus", () => this.modifyAll(-100));
         bind(".bigPlus", () => this.modifyAll(100));
         bind(".giveBlueprints", this.giveBlueprints);
