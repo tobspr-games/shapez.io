@@ -172,7 +172,7 @@ export class HUDSandboxController extends BaseHUDPart {
             }
         }
 
-        this.root.buffers.cache.get("hub").clear();
+        this.root.buffers.cache.get("hub") && this.root.buffers.cache.get("hub").clear();
         this.root.hud.parts.pinnedShapes.rerenderFull();
 
         this.root.hud.signals.notification.dispatch(
@@ -204,13 +204,12 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     overrideLevel(shape) {
-        console.log(shape);
         const hubGoals = this.root.hubGoals;
         hubGoals.currentGoal.definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
 
         hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
 
-        this.root.buffers.cache.get("hub").clear();
+        this.root.buffers.cache.get("hub") && this.root.buffers.cache.get("hub").clear();
         this.root.hud.parts.pinnedShapes.rerenderFull();
 
         this.root.hud.signals.notification.dispatch(
