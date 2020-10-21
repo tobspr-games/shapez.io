@@ -21,7 +21,7 @@
     .plusMinus {
         @include S(margin-top, 4px);
         display: grid;
-        grid-template-columns: 1fr auto auto;
+        grid-template-columns: 1fr auto auto auto;
         align-items: center;
         @include S(grid-gap, 4px);
 
