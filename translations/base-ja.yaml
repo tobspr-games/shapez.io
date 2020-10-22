@@ -285,7 +285,7 @@ ingame:
             1_3_expand: "このゲームは放置系のゲームでは<strong>ありません</strong>！
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
-                キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。
+                キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
             2_1_place_cutter: "<strong>切断機</strong>を置いて、円を投入して半分にしましょう!
                 <br><br> PS: 投入されるものは向きに関わらず切断機は必ず<strong>上から下へ
                 </strong> 裁断されます。"
