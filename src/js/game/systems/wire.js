@@ -391,9 +391,6 @@ export class WireSystem extends GameSystemWithFilter {
             const offset = enumDirectionToVector[direction];
             const initialSearchTile = initialTile.add(offset);
 
-            // Store which tunnels we already visited to avoid infinite loops
-            const visitedTunnels = new Set();
-
             // First, find the initial connected entities
             const initialContents = this.root.map.getLayersContentsMultipleXY(
                 initialSearchTile.x,
@@ -473,10 +470,6 @@ export class WireSystem extends GameSystemWithFilter {
                 // Check if it's a tunnel, if so, go to the forwarded item
                 const tunnelComp = entity.components.WireTunnel;
                 if (tunnelComp) {
-                    //TODO: Add Additional Tunnel Variants
-                    if (visitedTunnels.has(entity.uid)) {
-                        continue;
-                    }
 
                     const staticComp = entity.components.StaticMapEntity;
 
@@ -523,9 +516,6 @@ export class WireSystem extends GameSystemWithFilter {
                     if (network.tunnels.indexOf(entity) < 0) {
                         network.tunnels.push(entity);
                     }
-
-                    // Remember this tunnel
-                    visitedTunnels.add(entity.uid);
                 }
             }
         }
