@@ -280,8 +280,8 @@ ingame:
         title: チュートリアル
         hints:
             1_1_extractor: <strong>抽出機</strong> を <strong>円の形</strong> の上において抽出しましょう！
-            1_2_conveyor: 抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip:
-                <strong>マウスのドラッグ</strong> でベルトを引けます。
+            1_2_conveyor: "抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip:
+                <strong>マウスのドラッグ</strong> でベルトを引けます。"
             1_3_expand: "このゲームは放置系のゲームでは<strong>ありません</strong>！
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
@@ -599,8 +599,8 @@ storyRewards:
          desc: "<strong>ワイヤーレイヤー</ strong>をアンロックしました。これは通常のレイヤーの上にある別のレイヤーであり、
          多くの新しいメカニズムが導入されています!<br><br> 最初に<strong> 着色機 (四分割)</ strong>を解除しました
          - 塗装したいスロットをワイヤーレイヤーに接続してください!<br><br> ワイヤーレイヤーに切り替えるには、
-            <strong>E</strong>キーを押してください。 <br><br> 
-            PS: 設定で<strong>ヒントを有効にする</strong>でワイヤーのチュートリアルが表示されるようになります!"  
+            <strong>E</strong>キーを押してください。 <br><br>
+            PS: 設定で<strong>ヒントを有効にする</strong>でワイヤーのチュートリアルが表示されるようになります!"
     reward_filter:
         title: アイテムフィルタ
         desc: <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
