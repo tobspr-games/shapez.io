@@ -48,7 +48,9 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 2. If you aren't already on `C:\Users\[Your user]`, type `cd %USERPROFILE%`
 3. `cd shapez.io`
 4. See below for switching builds. If you wish to perform any of those commands, run them at this step.
-5. `yarn & cd gulp & yarn & yarn gulp`. This will take a while, but afterwards shapez.io should be running in a browser tab. Note that if both `yarn` commands respond with `Already up-to-date`, if the future you only have to run `cd gulp & yarn gulp`, but only do this if you know you are up to date.
+5. `yarn && cd gulp && yarn && yarn gulp`. This will take a while, but afterwards shapez.io should be running in a browser tab (there may be an error at first, but it should quickly go away).
+- Note that if both `yarn` commands respond with `Already up-to-date`, you only have to run `cd gulp && yarn gulp` in the future, as long as there are no changes to the dependencies.
+- Also note that `cd gulp` takes you from the `shapez.io` directory to the `gulp` directory. If you are already in the `gulp` directory (current directory is by the prompt), skip the `cd gulp` command.
 
 **SWITCHING BUILD**
 - If you want to run a specific pull request, run `gh pr checkout [pr number]`
