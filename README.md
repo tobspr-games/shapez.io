@@ -22,26 +22,26 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 ## Building
 
-Note that this process is for Windows. Use equivalent actions for other operating systems. This guide is also meant to be understandable by users with little to no knowledge of Git.
+Note that this process is for Windows. Use equivalent actions for other operating systems if they are apparent. This guide is also meant to be understandable by users with little to no knowledge of Git.
 
 (credit to Hyperion-21)
 
 **SETUP**
 1. Download FFmpeg at https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z
 2. Extract the .zip onto desktop, rename it to FFmpeg
-3. Move the folder into `C:\Program Files`, anywhere works but there is convienient
-4. Go to `Control Panel\System and Security\System` and click on `Advanced system settings`
-5. Go to the `Advanced` tab. Click on `Enviornment Variables...`
-6. Click on the listing that says `PATH` and click edit. 
+3. Move the folder into `C:\Program Files`, anywhere works but there is convenient
+4. Open the start menu and search for "env". Open the first result.
+5. Click on the listing that says `PATH` and click edit. 
 - On win10, you should see a list. Click `New` then type in `C:\Program Files\FFmpeg\bin`
 - On win7, you should see a window that says `Edit User Variable.` In the text field that says "Variable value:" you want to type at the end `;C:\Program Files\FFmpeg\bin`. The semicolon is for seperating the file path from the other file paths in that field.
-7. FFmpeg should now be installed. To test if you did this correctly, run `cmd.exe` as administrator and type `ffmpeg -version` and it should spit at you several lines of code.
-8. Install `Node.js`, `Yarn`, and `GitHub CLI`. All three of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java` and `Git`, but both are very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
-9. `cd C:\Program Files (x86)\GitHub CLI` then `gh` in `cmd.exe`. Login through that, selecting HTTP over SSH.
-10. `cd %USERPROFILE%` to return to your user folder.
-11. `gh repo clone tobspr/shapez.io` to make sure the game's code is on your system.
+6. FFmpeg should now be installed. To test if you did this correctly, run `cmd.exe` as administrator and type `ffmpeg -version` and it should spit at you several lines of code.
+7. Install `Node.js`, `Yarn`, and `GitHub CLI`. All three of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java` and `Git`, but both are very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
+8. Run `gh auth login` in `cmd.exe`. Login, selecting HTTP over SSH.
+9. `cd %USERPROFILE%` to return to your user folder.
+10. It is reccomended you create a new folder within your user folder for housing repos, but this is completely optional. Running `mkdir [name]` creates a new folder without having to open a Windows Explorer window. `cd` into it.
+11. `gh repo clone tobspr/shapez.io` to make sure the game's code is on your system. If you want to clone it into a different folder, `cd` into it. Personally,
 12. `git remote add upstream https://github.com/tobspr/shapez.io.git` for resetting branches to the current and official build on GitHub.
-13. Set up branches for development. If you just want to build and not make anything, skip this step. On your fork, you should create a new branch. Each unique pull request should have its own branch. Reserve the `master` branch to being level with `tobspr/master`. Run `git reset --hard upstream/(username)/master && git push --force` to reset your master to be level with tob's. Make sure all of your current work is on the branch you created.
+13. Set up branches for development. If you just want to build and not make anything, skip this step. On your fork, you should create a new branch. Each unique pull request should have its own branch. Reserve the `master` branch to being level with `tobspr/master`. Run `git reset --hard upstream/(username)/master && git push --force` to reset your master to be level with mine. Make sure all of your current work is on the branch you created.
 
 **EXECUTION**
 1. Start `cmd.exe`
@@ -55,7 +55,7 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 **SWITCHING BUILD**
 - If you want to run a specific pull request, run `gh pr checkout [pr number]`
 - If you want to run a specific fork, run `git remote add [arbitrary name] [HTTP url, click 'code' on the fork's page and copy the url here] & git fetch -a`. You now have the fork as a remote. This will allow you to select the branches of the fork (see below). You only have to do this once per fork, and you can check the remotes you currently have with `git remote`.
-- If you want to run a specific branch, run `git branch -a` and choose the branch you want to run. Run `git checkout [branch]`. This should put you into `detached HEAD`.
+- If you want to run a specific branch, run `git branch -a` and choose the branch you want to run. Run `git checkout [branch]`.
 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify [`src/js/core/config.js`](src/js/core/config.js).
 
