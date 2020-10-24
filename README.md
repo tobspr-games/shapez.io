@@ -41,7 +41,7 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 10. It is reccomended you create a new folder within your user folder for housing repos, but this is completely optional. Running `mkdir [name]` creates a new folder without having to open a Windows Explorer window. `cd` into it.
 11. `gh repo clone tobspr/shapez.io` to make sure the game's code is on your system. If you want to clone it into a different folder, `cd` into it. Personally,
 12. `git remote add upstream https://github.com/tobspr/shapez.io.git` for resetting branches to the current and official build on GitHub.
-13. Set up branches for development. If you just want to build and not make anything, skip this step. On your fork, you should create a new branch. Each unique pull request should have its own branch. Reserve the `master` branch to being level with `tobspr/master`. Run `git reset --hard upstream/(username)/master && git push --force` to reset your master to be level with mine. Make sure all of your current work is on the branch you created.
+13. Set up branches for development. If you just want to build and not make anything, skip this step. On your fork, you should create a new branch. Each unique pull request should have its own branch. Reserve the `master` branch to being level with `tobspr/master`. Run `git reset --hard upstream/(username)/master && git push --force` to reset your master to be level with the main one. Make sure all of your current work is on the branch you created.
 
 **EXECUTION**
 1. Start `cmd.exe`
