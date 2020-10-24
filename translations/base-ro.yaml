@@ -178,7 +178,7 @@ dialogs:
             rulante.<br>"
     createMarker:
         title: Marcaj nou
-        desc: Dă-i un nume cu sens, mai poți să incluzi și un <strong>scurt 
+        desc: Dă-i un nume cu sens, mai poți să incluzi și un <strong>scurt
             cod</strong> a unei forme (Pe care îl poți genera <link>aici</link>)
         titleEdit: Editează marcaj
     markerDemoLimit:
@@ -206,10 +206,10 @@ dialogs:
         desc: Îți poți redenumi savegame-ul aici.
     tutorialVideoAvailable:
         title: Tutorial disponibil
-        desc: Un tutorial este disponibil pentru acest nivel! Ai dori 
+        desc: Un tutorial este disponibil pentru acest nivel! Ai dori
             să-l vizionezi?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial disponibil 
+        title: Tutorial disponibil
         desc: Un tutorial este disponibil pentru acest nivel, dar numai în
             limba engleză. Ai dori să-l vizionezi?
 ingame:
@@ -256,7 +256,7 @@ ingame:
     shop:
         title: Upgrade-uri
         buttonUnlock: Upgrade
-            tier: Gradul <x>
+            tier: Tier <x>
         maximumLevel: NIVELUL MAXIM (Speed x<currentMult>)
     statistics:
         title: Statistici
