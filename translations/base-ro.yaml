@@ -177,44 +177,44 @@ dialogs:
             class='keybinding'>ALT</code>: Inversează orientația a benzilor
             rulante.<br>"
     createMarker:
-        title: Nou waypoint
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
-        titleEdit: Edit Marker
+        title: Marcaj nou
+        desc: Dă-i un nume cu sens, mai poți să incluzi și un <strong>scurt 
+            cod</strong> a unei forme (Pe care îl poți genera <link>aici</link>)
+        titleEdit: Editează marcaj
     markerDemoLimit:
-        desc: Poți crea decât două waypoint-uri personalizate în demo. Ia standalone-ul
-            pentru Waypoint-uri nelimitate!
+        desc: Poți crea decât două marcaje personalizate în demo. Ia standalone-ul
+            pentru marcaje nelimitate!
     massCutConfirm:
         title: Confirmă tăierea
-        desc: Tu tai multe construcții (<count> pentru a fi precis)! Sunteți sigur că
-            vreți să faceți asta?
+        desc: Urmați să tăieți multe construcții (<count> pentru a fi mai precis)! Sunteți sigur că
+            doriți să faceți asta?
     exportScreenshotWarning:
         title: Exportează captură de ecran
         desc: Ai solicitat să exportezi baza ta ca o captură de ecran. Vă rugăm să
-            rețineți că asta poate fi destul de lent pentru o bază mare și poate
+            țineți cont că asta poate fi destul de lent pentru o bază mare și poate
             chiar să blocheze jocul!
     massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
+        title: Confirmă tăierea
+        desc: Nu îți poți permite să lipești această zonă! Ești sigur că dorești să o tai?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Setează Semnal
+        descItems: "Alege un item predefinit"
+        descShortKey: ... sau introdu<strong>codul scurt</strong> a unei forme (Ce îl
+            poți genera <link>aici</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Redenumește savegame-ul
+        desc: Îți poți redenumi savegame-ul aici.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial disponibil
+        desc: Un tutorial este disponibil pentru acest nivel! Ai dori 
+            să-l vizionezi?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial disponibil 
+        desc: Un tutorial este disponibil pentru acest nivel, dar numai în
+            limba engleză. Ai dori să-l vizionezi?
 ingame:
     keybindingsOverlay:
-        moveMap: Move
+        moveMap: Miscă
         selectBuildings: Selectează zona
         stopPlacement: Oprește plasarea
         rotateBuilding: Rotește construcția
@@ -223,7 +223,7 @@ ingame:
         disableAutoOrientation: Dezactivați auto orientarea
         toggleHud: Comută Interfața
         placeBuilding: Plasează construcția
-        createMarker: Crează Waypoint
+        createMarker: Crează Marcaj
         delete: Distruge
         pasteLastBlueprint: Lipește ultimul plan
         lockBeltDirection: Activează planificator de benzi
@@ -231,16 +231,16 @@ ingame:
         cutSelection: Taie
         copySelection: Copiază
         clearSelection: Golește Secțiunea
-        pipette: Pipette
-        switchLayers: Switch layers
+        pipette: Pipetă
+        switchLayers: Schimbă straturile
     buildingPlacement:
-        cycleBuildingVariants: Apasă <key> pentru a cicla variantele.
+        cycleBuildingVariants: Apasă <key> pentru a comuta între variante.
         hotkeyLabel: "Tasta: <key>"
         infoTexts:
             speed: Viteză
             range: Distanță
             storage: Capacitate
-            oneItemPerSecond: 1 obiect / second
+            oneItemPerSecond: 1 obiect / secundă
             itemsPerSecond: <x> obiecte / s
             itemsPerSecondDouble: (x2)
             tiles: <x> Câmpuri
@@ -252,11 +252,11 @@ ingame:
     notifications:
         newUpgrade: Un upgrade nou este disponibil!
         gameSaved: Jocul tău a fost salvat.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Nivelul <level> a fost completat!
     shop:
         title: Upgrade-uri
         buttonUnlock: Upgrade
-        tier: Tier <x>
+            tier: Gradul <x>
         maximumLevel: NIVELUL MAXIM (Speed x<currentMult>)
     statistics:
         title: Statistici
@@ -267,7 +267,7 @@ ingame:
             produced:
                 title: Produse
                 description: Afișează toate formele pe care fabrica ta le produce, incluzând
-                    produsele intermediate.
+                    produsele intermediare.
             delivered:
                 title: Livrate
                 description: Afișează formele care sunt livrate la construcția centrală.
@@ -287,13 +287,13 @@ ingame:
     blueprintPlacer:
         cost: Preț
     waypoints:
-        waypoints: Waypointuri
+        waypoints: Marcaje
         hub: Interfață
-        description: Click-stânga pe un waypoint pentru a merge la el, click-dreapta
+        description: Click-stânga pe un marcaj pentru a merge la el, click-dreapta
             pentru a îl șterge.<br><br>Apasă <keybinding> pentru a crea un
             waypoint din perspectiva actuală, sau <strong>click-dreapta</strong>
-            pentru a crea un waypoint.
-        creationSuccessNotification: Waypointul a fost creat.
+            pentru a crea un marcaj.
+        creationSuccessNotification: Marcajul a fost creat.
     interactiveTutorial:
         title: Tutorial
         hints:
@@ -305,32 +305,31 @@ ingame:
             1_3_expand: "Acesta <strong>NU</strong> este un joc idle! Construiește mai multe
                 extractoare și benzi pentru a finaliza scopul mai
                 rapid.<br><br>Sfat: Ține apăsat <strong>SHIFT</strong> pentru a
-                plasa mai multe extractoare, și flosește <strong>R</strong>
+                plasa mai multe extractoare, și folosește <strong>R</strong>
                 pentru a le roti."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Acum plasează un <strong>tăietor</strong> pentru a tăia cercurile în două
+                jumătăți!<br><br> PS: Tăietorul mereu va tăia din <strong>sus către
+                jos</strong> indiferent de orientarea sa."
+            2_2_place_trash: Tăietorul poate <strong>înfunda și întrerupe</strong>!<br><br> Folosește un
+                <strong>coș de gunoi</strong> pentru a scăpa de gunoiul momentan (!) nefolositor.
+            2_3_more_cutters: "Bravo! Acum plasează <strong>încă 2 tăietori</strong> pentru a grăbi
+                acest proces încet!<br><br> PS: Folosește <strong>tastele
+                0-9</strong> pentru a accesa construcții mai rapid!"
+            3_1_rectangles: "Acum hai să extragem câteva dreptunghiuri! <strong>Construiește 4
+                extractoare</strong> și conectează-le la centru.<br><br> PS:
+                Ține apăsat <strong>SHIFT</strong> În timp ce tragi o bandă rulantă pentru a activa
+                planificatorul de benzi!"
+            21_1_place_quad_painter: Plasează <strong>vopsitorul cvadruplu</strong> și obține câteva
+                <strong>cercuri</strong>, câtva <strong>alb</strong> și
+                <strong>roșu</strong>!
+            21_2_switch_to_wires: Comută la stratul firelor cu ajutorul tastei 
+                <strong>E</strong>!<br><br> Apoi <strong>conectează toate cele patru
+                intrări</strong> ale vopsitorului cu fire!
+            21_3_place_button: Bravo! Acum plasează un<strong>întrerupător</strong> și conectează-l
+                cu fire!
+            21_4_press_button: "Apasă pe întrerupător pentru îl face să <strong>emită un semnal
+                binar</strong> astfel activând vopsitorul.<br><br> PS: Nu trebuie
+                să conectezi fiecare intrare! Încearcă să pui fire numai la două."
     colors:
         red: Roșu
         green: Verde
