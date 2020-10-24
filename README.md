@@ -35,7 +35,7 @@ Note that this process is for Windows. Use equivalent actions for other operatin
    - On win10, you should see a list. Click `New` then type in `C:\Program Files\FFmpeg\bin`
    - On win7, you should see a window that says `Edit User Variable.` In the text field that says "Variable value:" you want to type at the end `;C:\Program Files\FFmpeg\bin`. The semicolon is for separating the file path from the other file paths in that field.
 6. FFmpeg should now be installed. To test if you did this correctly, run `cmd.exe` as administrator and type `ffmpeg -version` and it should spit at you several lines of code.
-7. Install `Node.js`, `Yarn`, and `GitHub CLI`. All three of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java` and `Git`, but both are very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
+7. Install `Node.js`, `Yarn`, `Git`, and `GitHub CLI`. All three of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java`, but it is very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
 8. Run `gh auth login` in `cmd.exe`. Login, selecting HTTPS over SSH.
 9. `cd %USERPROFILE%` to return to your user folder.
 10. It is recommended you create a new folder within your user folder for housing repos, but this is completely optional. Running `mkdir [name]` creates a new folder without having to open an explorer window. `cd` into it.
