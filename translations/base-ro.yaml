@@ -256,7 +256,7 @@ ingame:
     shop:
         title: Upgrade-uri
         buttonUnlock: Upgrade
-            tier: Tier <x>
+        tier: Tier <x>
         maximumLevel: NIVELUL MAXIM (Speed x<currentMult>)
     statistics:
         title: Statistici
@@ -322,7 +322,7 @@ ingame:
             21_1_place_quad_painter: Plasează <strong>vopsitorul cvadruplu</strong> și obține câteva
                 <strong>cercuri</strong>, câtva <strong>alb</strong> și
                 <strong>roșu</strong>!
-            21_2_switch_to_wires: Comută la stratul firelor cu ajutorul tastei 
+            21_2_switch_to_wires: Comută la stratul firelor cu ajutorul tastei
                 <strong>E</strong>!<br><br> Apoi <strong>conectează toate cele patru
                 intrări</strong> ale vopsitorului cu fire!
             21_3_place_button: Bravo! Acum plasează un<strong>întrerupător</strong> și conectează-l
