@@ -38,7 +38,7 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 7. Install `Node.js`, `Yarn`, and `GitHub CLI`. All three of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java` and `Git`, but both are very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
 8. Run `gh auth login` in `cmd.exe`. Login, selecting HTTPS over SSH.
 9. `cd %USERPROFILE%` to return to your user folder.
-10. It is reccomended you create a new folder within your user folder for housing repos, but this is completely optional. Running `mkdir [name]` creates a new folder without having to open an explorer window. `cd` into it.
+10. It is recommended you create a new folder within your user folder for housing repos, but this is completely optional. Running `mkdir [name]` creates a new folder without having to open an explorer window. `cd` into it.
 11. `gh repo clone tobspr/shapez.io` to make sure the game's code is on your system. If you want to clone it into a different folder, `cd` into it.
 12. `git remote add upstream https://github.com/tobspr/shapez.io.git` for resetting branches to the current and official build on GitHub.
 13. Set up branches for development. If you just want to build and not make anything, skip this step. On your fork, you should create a new branch. Each unique pull request should have its own branch. Reserve the `master` branch to being level with `tobspr/master`. Run `git reset --hard upstream/(username)/master && git push --force` to reset your master to be level with the main one. Make sure all of your current work is on the branch you created.
@@ -49,8 +49,8 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 3. `cd shapez.io`
 4. See below for switching builds. If you wish to perform any of those commands, run them at this step.
 5. `yarn && cd gulp && yarn && yarn gulp`. This will take a while, but afterwards shapez.io should be running in a browser tab (there may be an error at first, but it should quickly go away).
-- Note that if both `yarn` commands respond with `Already up-to-date`, you only have to run `cd gulp && yarn gulp` in the future, as long as there are no changes to the dependencies.
-- Also note that `cd gulp` takes you from the `shapez.io` directory to the `gulp` directory. If you are already in the `gulp` directory (current directory is by the prompt), skip the `cd gulp` command.
+   - Note that if both `yarn` commands respond with `Already up-to-date`, you only have to run `cd gulp && yarn gulp` in the future, as long as there are no changes to the dependencies.
+   - Also note that `cd gulp` takes you from the `shapez.io` directory to the `gulp` directory. If you are already in the `gulp` directory (current directory is by the prompt), skip the `cd gulp` command.
 
 **SWITCHING BUILD**
 - If you want to run a specific pull request, run `gh pr checkout [pr number]`
