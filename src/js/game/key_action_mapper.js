@@ -65,6 +65,7 @@ export const KEYMAPPINGS = {
         lever: { keyCode: key("I") },
         filter: { keyCode: key("O") },
         display: { keyCode: key("P") },
+        wireless_display: { keyCode: key("K") },
 
         // Wires toolbar
         wire: { keyCode: key("1") },

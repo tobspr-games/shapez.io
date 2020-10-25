@@ -697,6 +697,14 @@ buildings:
             name: &display Display
             description: Connect a signal to show it on the display - It can be a shape, color or boolean.
 
+    wireless_display:
+        default:
+            name: &wireless_display Wireless Display
+            description: Connect a signal to show it on the display - It can be a shape, color or boolean.
+        remote_control:
+            name: OR Gate
+            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means shape, color or boolean "1")
+
     reader:
         default:
             name: &reader Belt Reader
@@ -1145,6 +1153,7 @@ keybindings:
         filter: *filter
         wire_tunnel: *wire_tunnel
         display: *display
+        wireless_display: *wireless_display
         reader: *reader
         virtual_processor: *virtual_processor
         transistor: *transistor

@@ -19,6 +19,7 @@ import { DisplayComponent } from "./components/display";
 import { BeltReaderComponent } from "./components/belt_reader";
 import { FilterComponent } from "./components/filter";
 import { ItemProducerComponent } from "./components/item_producer";
+import { WirelessDisplayComponent } from "./components/wireless_display";
 /* typehints:end */
 
 /**
@@ -79,6 +80,9 @@ export class EntityComponentStorage {
 
         /** @type {DisplayComponent} */
         this.Display;
+
+        /** @type {WirelessDisplayComponent} */
+        this.WirelessDisplay;
 
         /** @type {BeltReaderComponent} */
         this.BeltReader;
