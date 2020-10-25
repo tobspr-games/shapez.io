@@ -519,8 +519,7 @@ buildings:
                 sind.
         not:
             name: NICHT-Gatter
-            description: Gibt eine "1" aus, wenn beide Eingänge nicht wahr (kein Signal oder
-                "0") sind.
+            description: Kehrt den Wert um. Macht aus einer "1" eine "0" und eine "0" aus einer "1".
         xor:
             name: XODER-Gatter
             description: Gibt eine "1" aus, wenn genau einer der Eingänge wahr (Form, Farbe
