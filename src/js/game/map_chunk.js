@@ -195,38 +195,59 @@ export class MapChunk {
         if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff
             weights[enumSubShape.star] = 0;
-            weights[enumSubShape.windmill] = 0;
+            weights[enumSubShape.windmill] = 0; 
+        }
+
+        if (distanceToOriginInChunks < 10) {
+            // Initial chunk patches always have the same shape
+            const subShape = this.internalGenerateRandomSubShape(rng, weights);
+            subShapes = [subShape, subShape, subShape, subShape];
+        } else if (distanceToOriginInChunks < 15) {
+            // Later patches can also have mixed ones
+            const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
+            const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
+            subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
+        } else {
+            // Finally there is a mix of everything
+            subShapes = [
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights)
+            ];
         }
 
         // Makes sure windmills never spawn as whole
-        let windmillCount;
-        do {
-            windmillCount = 0;
-            if (distanceToOriginInChunks < 10) {
-                // Initial chunk patches always have the same shape
-                weights[enumSubShape.windmill] = 0; // no whole windmills
+        let windmillCount = 0;
+        for (let i = 0; i < subShapes.length; ++i) {
+            if (subShapes[i] === enumSubShape.windmill) {
+                ++windmillCount;
+            }
+        }
+        if (windmillCount > 1) {
+            weights[enumSubShape.windmill] = 0;
+            if (distanceToOriginInChunks < 15) {
+                // Turn left or right subshapes into a random type that is not windmill
                 const subShape = this.internalGenerateRandomSubShape(rng, weights);
-                subShapes = [subShape, subShape, subShape, subShape];
-            } else if (distanceToOriginInChunks < 15) {
-                // Later patches can also have mixed ones
-                const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
-                const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
-                subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
-            } else {
-                // Finally there is a mix of everything
-                subShapes = [
-                    this.internalGenerateRandomSubShape(rng, weights),
-                    this.internalGenerateRandomSubShape(rng, weights),
-                    this.internalGenerateRandomSubShape(rng, weights),
-                    this.internalGenerateRandomSubShape(rng, weights),
-                ];
-            }
-            for (let i = 0; i < subShapes.length; ++i) {
-                if (subShapes[i] === enumSubShape.windmill) {
-                    ++windmillCount;
+                if (rng.next() < 0.5) {
+                    subShapes[0] = subShape;
+                    subShapes[1] = subShape;
+                } else {
+                    subShapes[2] = subShape;
+                    subShapes[3] = subShape;
                 }
+            } else {
+                // Turn subshape at 2 random positions into a random type that is not windmill
+                let quad1 = rng.nextIntRange(0,3);
+                let quad2 = rng.nextIntRange(0,2);
+                if (quad2 >= quad1) 
+                { 
+                    ++quad2;
+                }
+                subShapes[quad1] = this.internalGenerateRandomSubShape(rng, weights);
+                subShapes[quad2] = this.internalGenerateRandomSubShape(rng, weights);
             }
-        } while (windmillCount > 2);
+        }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
         this.internalGeneratePatch(
