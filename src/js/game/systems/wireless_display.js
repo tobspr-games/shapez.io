@@ -17,6 +17,8 @@ import { Entity } from "../entity";
 import { ShapeDefinition } from "../shape_definition";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { init } from "logrocket";
+import { Signal } from "../../core/signal";
+import { serializeError } from "../../core/logging";
 
 export class WirelessDisplaySystem extends GameSystemWithFilter {
     constructor(root) {
@@ -33,7 +35,10 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
             }
             this.displaySprites[colorId] = Loader.getSprite("sprites/wires/display/" + colorId + ".png");
         }
-        this.wirelessMachineList = [];
+
+        this.wirelessMachineList = {};
+
+        this.displayNumber = 0;
     }
 
     /**
@@ -86,7 +91,7 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
                     entity.wireless_code = signalValueInput.getValue();
                 } else if (signalValueInput.getValue() && entity.components.WiredPins){
                     entity.wireless_code = signalValueInput.getValue();
-                    this.wirelessMachineList.push(entity);
+                    this.wirelessMachineList[entity.wireless_code] = entity;
                 }
             };
 
@@ -156,39 +161,41 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
         for (let i = 0; i < contents.length; ++i) {
             const entity_a = contents[i];
             if (entity_a && !entity_a.components.WiredPins && entity_a.components.WirelessDisplay) {
-                for (let j = 0; j < this.wirelessMachineList.length; ++j) {
-                    const entity_b = this.wirelessMachineList[j];
-                    if (entity_a.wireless_code == entity_b.wireless_code) {
-                        const origin = entity_a.components.StaticMapEntity.origin;
-                        const pinsComp = entity_b.components.WiredPins;
-                        const network = pinsComp.slots[0].linkedNetwork;
-        
-                        if (!network || !network.hasValue()) {
-                            continue;
-                        }
-        
-                        const value = this.getDisplayItem(network.currentValue);
-        
-                        if (!value) {
-                            continue;
-                        }
-
-                        if (value.getItemType()) {
-                            if (value.getItemType() === "color") {
-                                this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
-                                    parameters,
-                                    (origin.x + 0.5) * globalConfig.tileSize,
-                                    (origin.y + 0.5) * globalConfig.tileSize,
-                                    globalConfig.tileSize
-                                );
-                            } else if (value.getItemType() === "shape") {
-                                value.drawItemCenteredClipped(
-                                    (origin.x + 0.5) * globalConfig.tileSize,
-                                    (origin.y + 0.5) * globalConfig.tileSize,
-                                    parameters,
-                                    30
-                                );
-                            }
+                const entity_b = this.wirelessMachineList[entity_a.wireless_code];
+                if (entity_b) {
+                    if (!this.allEntities.includes(entity_b)) {
+                        this.wirelessMachineList[entity_b] = undefined;
+                        return;
+                    }
+                    const origin = entity_a.components.StaticMapEntity.origin;
+                    const pinsComp = entity_b.components.WiredPins;
+                    const network = pinsComp.slots[0].linkedNetwork;
+    
+                    if (!network) {
+                        continue;
+                    }
+    
+                    const value = this.getDisplayItem(network.currentValue);
+    
+                    if (!value) {
+                        continue;
+                    }
+    
+                    if (value.getItemType()) {
+                        if (value.getItemType() === "color") {
+                            this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
+                                parameters,
+                                (origin.x + 0.5) * globalConfig.tileSize,
+                                (origin.y + 0.5) * globalConfig.tileSize,
+                                globalConfig.tileSize
+                            );
+                        } else if (value.getItemType() === "shape") {
+                            value.drawItemCenteredClipped(
+                                (origin.x + 0.5) * globalConfig.tileSize,
+                                (origin.y + 0.5) * globalConfig.tileSize,
+                                parameters,
+                                30
+                            );
                         }
                     }
                 }
