@@ -1,55 +1,53 @@
 steamPage:
     shortText: shapez.io är ett spel som går ut på att automatisera skapandet av
         former med ökande komplexitet inom den oändligt stora världen.
-    discordLinkShort: Officiel Discord
+    discordLinkShort: Officiell Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io är att avslappnat spel där man ska bygga fabriker för att automatisera produktionen av geometriska former.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Formerna blir svårare och mer komplexa vartefter nivån ökar och du blir tvungen att sprida ut dig över den oändliga kartan.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Och som om det inte vore nog så som behöver du samtidigt producera exponentiellt mer för att mätta efterfrågan - den enda lösningar är att skala upp produktionen!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        I början skapar man bara former, men senare behöver du även färga dem - för att uppnå detta behöver du samla och blanda färger!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        På Steam kan du köpa den fulla versionen av spelet, men du kan även spela demot på shapez.io först och bestämma dig senare!
+    title_advantages: Fördelar med fullversionen
     advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
+        - <b>12 nya nivåer</b> för totalt 26 nivåer!
+        - <b>18 nya byggnader</b> möjligör en fullt automatiserad fabrik!
+        - <b>20 uppgraderingsnivåer</b> ger dig många timmars underhållning!
+        - <b>Kabel-uppdatering</b> för en helt ny dimension!
+        - <b>Mörkt läge</b>!
+        - Oändligt antal sparningar
+        - Oändligt antal markeringar
+        - Stöd mig! ❤️
+    title_future: Planerat innehåll
     planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
+        - Design-bibliotek (exklusivt för fullversionen)
+        - Steam Prestationer
+        - Pussel-läge
+        - Mini-karta
+        - Moddar
+        - Sandbox-läge
+        - ... och mycket mer!
+    title_open_source: Det här spelet har öppen källkod!
+    title_links: Länkar
     links:
-        discord: Official Discord
+        discord: Officiell Discord
         roadmap: Roadmap
         subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
+        source_code: Källkod (GitHub)
+        translate: Hjälp översätta
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Vem som helst kan bidra! Jag medverkar aktivt i communityt och försöker granska
+        alla förslag och tar hänsyns till förslag när det är möjligt.
 
-        Be sure to check out my trello board for the full roadmap!
+        Se till att kolla upp min trello board för en full roadmap!
 global:
     loading: Laddar
-    error: Error
-    thousandsDivider: .
+    error: Fel
+    thousandsDivider: " "
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -71,14 +69,14 @@ global:
         hoursAndMinutesShort: <hours>t <minutes>m
         xMinutes: <x> minuter
     keys:
-        tab: TAB
+        tab: TABB
         control: CTRL
         alt: ALT
         escape: ESC
         shift: SKIFT
         space: MELLANSLAG
 demoBanners:
-    title: Demo Version
+    title: Demo-version
     intro: Skaffa den fristående versionen för att låsa upp alla funktioner!
 mainMenu:
     play: Spela
@@ -87,8 +85,8 @@ mainMenu:
     openSourceHint: Detta spelet har öppen kod!
     discordLink: Officiell Discord Server
     helpTranslate: Hjälp till att översätta!
-    browserWarning: Förlåt, men det är känt att spelet spelar långsamt på din
-        browser! Skaffa den fristående versionen eller ladda ner Chrome för en
+    browserWarning: Förlåt, men det är känt att spelet spelar långsamt i din
+        webbläsare! Skaffa den fristående versionen eller ladda ned Chrome för en
         bättre upplevelse.
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Okänd Nivå
@@ -96,7 +94,7 @@ mainMenu:
     newGame: Nytt spel
     madeBy: Skapad av <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Namnlöst
 dialogs:
     buttons:
         ok: OK
@@ -176,8 +174,7 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Ge det ett meningsfullt namn. Du kan även inkludera en <strong>snabbkod</strong> av en form (som kan genereras <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
@@ -204,13 +201,12 @@ dialogs:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Handledning tillgänglig
+        desc: Det finns en handledande video för den här nivån! Vill du se den?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Handledning tillgänglig
+        desc: Det finns en handledande video för den här nivån,
+            men den finns bara på engelska. Vill du se den?
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
