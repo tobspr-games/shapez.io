@@ -99,21 +99,20 @@
 
             background: none !important;
             @include S(padding-left, 0);
-            canvas {
+            canvas.compass {
                 @include S(width, 12px);
                 @include S(height, 12px);
                 @include S(margin-right, 1px);
+                pointer-events: none;
             }
         }
 
-        &.shapeIcon {
-            canvas {
-                @include S(width, 15px);
-                @include S(height, 15px);
-                pointer-events: none;
-                // Double invert, to make sure it has the right color
-                @include DarkThemeInvert();
-            }
+        canvas.shapeIcon {
+            @include S(width, 15px);
+            @include S(height, 15px);
+            pointer-events: none;
+            // Double invert, to make sure it has the right color
+            @include DarkThemeInvert();
         }
     }
 }

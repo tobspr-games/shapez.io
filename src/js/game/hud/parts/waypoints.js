@@ -32,6 +32,7 @@ import { enumNotificationType } from "./notifications";
 
 const MAX_LABEL_LENGTH = 70;
 const SHAPE_TEXT_LENGTH = 2;
+const COMPASS_PREFIX = "!";
 
 export class HUDWaypoints extends BaseHUDPart {
     /**
@@ -79,6 +80,20 @@ export class HUDWaypoints extends BaseHUDPart {
             return "Invalid waypoints data";
         }
         this.waypoints = data.waypoints;
+
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+            if (waypoint.label && waypoint.label.startsWith(COMPASS_PREFIX)) {
+                const [canvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    reusable: false,
+                    label: "waypoints-compass/" + waypoint.center.x + "/" + waypoint.center.y,
+                });
+                canvas.classList.add("compass");
+                this.compassBuffers["" + waypoint.center.x + "/" + waypoint.center.y] = { canvas, context };
+            }
+        }
+
         this.rerenderWaypointList();
     }
 
@@ -123,15 +138,16 @@ export class HUDWaypoints extends BaseHUDPart {
          * This is interpolated over multiple frames so we have some sort of fade effect
          */
         this.currentMarkerOpacity = 1;
-        this.currentCompassOpacity = 0;
+        this.currentCompassOpacities = { ["0/0"]: 0 };
 
         // Create buffer which is used to indicate the hub direction
         const [canvas, context] = makeOffscreenBuffer(48, 48, {
             smooth: true,
             reusable: false,
-            label: "waypoints-compass",
+            label: "waypoints-compass/0/0",
         });
-        this.compassBuffer = { canvas, context };
+        canvas.classList.add("compass");
+        this.compassBuffers = { ["0/0"]: { canvas, context } };
 
         /**
          * Stores a cache from a shape short key to its canvas representation
@@ -206,8 +222,8 @@ export class HUDWaypoints extends BaseHUDPart {
                         label: part + "-waypoint-" + i,
                     });
                     context.drawImage(canvas, 0, 0);
+                    newCanvas.classList.add("shapeIcon");
                     element.appendChild(newCanvas);
-                    element.classList.add("shapeIcon");
                 } else {
                     element.appendChild(document.createTextNode(part));
                 }
@@ -219,10 +235,12 @@ export class HUDWaypoints extends BaseHUDPart {
                 this.trackClicks(editButton, () => this.requestSaveMarker({ waypoint }));
             }
 
-            if (!waypoint.label) {
-                // This must be the hub label
+            if (!waypoint.label || waypoint.label.startsWith(COMPASS_PREFIX)) {
+                // This must be a compass label
                 element.classList.add("hub");
-                element.insertBefore(this.compassBuffer.canvas, element.childNodes[0]);
+
+                const canvas = this.compassBuffers["" + waypoint.center.x + "/" + waypoint.center.y].canvas;
+                element.insertBefore(canvas, element.childNodes[0]);
             }
 
             this.trackClicks(element, () => this.moveToWaypoint(waypoint), {
@@ -329,6 +347,20 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     addWaypoint(label, position) {
         const parts = this.splitLabel(label);
+
+        if (label.startsWith(COMPASS_PREFIX)) {
+            const bufferKey = "" + position.x + "/" + position.y;
+            if (!this.compassBuffers[bufferKey]) {
+                const [canvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    reusable: false,
+                    label: "waypoints-compass/" + position.x + "/" + position.y,
+                });
+                canvas.classList.add("compass");
+                this.compassBuffers[bufferKey] = { canvas, context };
+            }
+        }
+
         this.waypoints.push({
             label,
             parts,
@@ -356,6 +388,19 @@ export class HUDWaypoints extends BaseHUDPart {
     renameWaypoint(waypoint, label) {
         waypoint.label = label;
         waypoint.parts = this.splitLabel(waypoint.label);
+
+        if (label.startsWith(COMPASS_PREFIX)) {
+            const bufferKey = "" + waypoint.center.x + "/" + waypoint.center.y;
+            if (!this.compassBuffers[bufferKey]) {
+                const [canvas, context] = makeOffscreenBuffer(48, 48, {
+                    smooth: true,
+                    reusable: false,
+                    label: "waypoints-compass/" + waypoint.center.x + "/" + waypoint.center.y,
+                });
+                canvas.classList.add("compass");
+                this.compassBuffers[bufferKey] = { canvas, context };
+            }
+        }
 
         this.sortWaypoints();
 
@@ -579,26 +624,37 @@ export class HUDWaypoints extends BaseHUDPart {
 
     /**
      * Rerenders the compass
+     * @param {Waypoint} waypoint
      */
-    rerenderWaypointsCompass() {
+    rerenderWaypointsCompass(waypoint) {
         const dims = 48;
         const indicatorSize = 30;
-        const cameraPos = this.root.camera.center;
+        const relativeCameraPos = new Vector(waypoint.center.x, waypoint.center.y).direction(
+            this.root.camera.center
+        );
 
-        const context = this.compassBuffer.context;
+        const bufferKey = "" + waypoint.center.x + "/" + waypoint.center.y;
+        const context = this.compassBuffers[bufferKey].context;
         context.clearRect(0, 0, dims, dims);
 
-        const distanceToHub = cameraPos.length();
+        const distanceToHub = relativeCameraPos.length();
         const compassVisible = distanceToHub > (10 * globalConfig.tileSize) / this.root.camera.zoomLevel;
         const targetCompassAlpha = compassVisible ? 1 : 0;
 
         // Fade the compas in / out
-        this.currentCompassOpacity = lerp(this.currentCompassOpacity, targetCompassAlpha, 0.08);
+        if (this.currentCompassOpacities[bufferKey] === undefined) {
+            this.currentCompassOpacities[bufferKey] = 0;
+        }
+        this.currentCompassOpacities[bufferKey] = lerp(
+            this.currentCompassOpacities[bufferKey],
+            targetCompassAlpha,
+            0.08
+        );
 
         // Render the compass
-        if (this.currentCompassOpacity > 0.01) {
-            context.globalAlpha = this.currentCompassOpacity;
-            const angle = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
+        if (this.currentCompassOpacities[bufferKey] > 0.01) {
+            context.globalAlpha = this.currentCompassOpacities[bufferKey];
+            const angle = relativeCameraPos.angle() + Math.radians(45) + Math.PI / 2;
             context.translate(dims / 2, dims / 2);
             context.rotate(angle);
             this.directionIndicatorSprite.drawCentered(context, 0, 0, indicatorSize);
@@ -608,7 +664,7 @@ export class HUDWaypoints extends BaseHUDPart {
         }
 
         // Render the regualr icon
-        const iconOpacity = 1 - this.currentCompassOpacity;
+        const iconOpacity = 1 - this.currentCompassOpacities[bufferKey];
         if (iconOpacity > 0.01) {
             context.globalAlpha = iconOpacity;
             this.waypointSprite.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
@@ -625,7 +681,12 @@ export class HUDWaypoints extends BaseHUDPart {
         const desiredOpacity = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.currentMarkerOpacity = lerp(this.currentMarkerOpacity, desiredOpacity, 0.08);
 
-        this.rerenderWaypointsCompass();
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+            if (!waypoint.label || waypoint.label.startsWith(COMPASS_PREFIX)) {
+                this.rerenderWaypointsCompass(waypoint);
+            }
+        }
 
         // Don't render with low opacity
         if (this.currentMarkerOpacity < 0.01) {
