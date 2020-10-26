@@ -54,7 +54,7 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 
 **SWITCHING BUILD**
 - If you want to run a specific pull request, run `gh pr checkout [pr number]`
-- If you want to run a specific fork, run `git remote add [arbitrary name] [HTTPS url, click 'code' on the fork's page and copy the url here] & git fetch -a`. You now have the fork as a remote. This will allow you to select the branches of the fork (see below). You only have to do this once per fork, and you can check the remotes you currently have with `git remote`.
+- If you want to run a specific fork, run `git remote add [arbitrary name] [HTTPS url, click 'code' on the fork's page and copy the url here] & git fetch --all`. You now have the fork as a remote. This will allow you to select the branches of the fork (see below). You only have to do this once per fork, and you can check the remotes you currently have with `git remote`.
 - If you want to run a specific branch, run `git branch -a` and choose the branch you want to run. Run `git checkout [branch]`.
 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify [`src/js/core/config.js`](src/js/core/config.js).
