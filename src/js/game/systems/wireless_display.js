@@ -7,10 +7,22 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { isTrueItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
+import trim from "trim";
+import { THIRDPARTY_URLS } from "../../core/config";
+import { DialogWithForm } from "../../core/modal_dialog_elements";
+import { FormElementInput, FormElementItemChooser } from "../../core/modal_dialog_forms";
+import { fillInLinkIntoTranslation } from "../../core/utils";
+import { T } from "../../translations";
+import { Entity } from "../entity";
+import { ShapeDefinition } from "../shape_definition";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
+import { init } from "logrocket";
 
 export class WirelessDisplaySystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [WirelessDisplayComponent]);
+
+        this.root.signals.entityManuallyPlaced.add(this.channelSignalValue, this);
 
         /** @type {Object<string, import("../../core/draw_utils").AtlasSprite>} */
         this.displaySprites = {};
@@ -20,6 +32,88 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
                 continue;
             }
             this.displaySprites[colorId] = Loader.getSprite("sprites/wires/display/" + colorId + ".png");
+        }
+        this.wirelessMachineList = [];
+    }
+
+    /**
+     * Asks the entity to enter a valid signal code
+     * @param {Entity} entity
+     */
+    channelSignalValue(entity) {
+        if (entity.components.WirelessDisplay) {
+            // Ok, query, but also save the uid because it could get stale
+            const uid = entity.uid;
+
+            const signalValueInput = new FormElementInput({
+                id: "channelValue",
+                label: fillInLinkIntoTranslation(T.dialogs.editChannel.descShortKey, THIRDPARTY_URLS.shapeViewer),
+                placeholder: "",
+                defaultValue: "",
+                validator: val => val,
+            });
+
+            const channeldialog = new DialogWithForm({
+                app: this.root.app,
+                title: T.dialogs.editChannel.title,
+                desc: T.dialogs.editChannel.descItems,
+                formElements: [signalValueInput],
+                buttons: ["cancel:bad:escape", "ok:good:enter"],
+                closeButton: false,
+            });
+            this.root.hud.parts.dialogs.internalShowDialog(channeldialog);
+
+            // When confirmed, set the signal
+            const closeHandler = () => {
+                if (!this.root || !this.root.entityMgr) {
+                    // Game got stopped
+                    return;
+                }
+
+                const entityRef = this.root.entityMgr.findByUid(uid, false);
+                if (!entityRef) {
+                    // outdated
+                    return;
+                }
+
+                const constantComp = entityRef.components.WirelessDisplay;
+                if (!constantComp) {
+                    // no longer interesting
+                    return;
+                }
+
+                if (signalValueInput.getValue() && !entity.components.WiredPins){
+                    entity.wireless_code = signalValueInput.getValue();
+                } else if (signalValueInput.getValue() && entity.components.WiredPins){
+                    entity.wireless_code = signalValueInput.getValue();
+                    this.wirelessMachineList.push(entity);
+                }
+            };
+
+            channeldialog.buttonSignals.ok.add(closeHandler);
+            channeldialog.valueChosen.add(closeHandler);
+
+            // When cancelled, destroy the entity again
+            channeldialog.buttonSignals.cancel.add(() => {
+                if (!this.root || !this.root.entityMgr) {
+                    // Game got stopped
+                    return;
+                }
+
+                const entityRef = this.root.entityMgr.findByUid(uid, false);
+                if (!entityRef) {
+                    // outdated
+                    return;
+                }
+
+                const constantComp = entityRef.components.WirelessDisplay;
+                if (!constantComp) {
+                    // no longer interesting
+                    return;
+                }
+
+                this.root.logic.tryDeleteBuilding(entityRef);
+            });
         }
     }
 
@@ -60,38 +154,46 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
     drawChunk(parameters, chunk) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
-            const entity = contents[i];
-            if (entity && entity.components.Display) {
-                const pinsComp = entity.components.WiredPins;
-                const network = pinsComp.slots[0].linkedNetwork;
+            const entity_a = contents[i];
+            if (entity_a && !entity_a.components.WiredPins && entity_a.components.WirelessDisplay) {
+                for (let j = 0; j < this.wirelessMachineList.length; ++j) {
+                    const entity_b = this.wirelessMachineList[j];
+                    if (entity_a.wireless_code == entity_b.wireless_code) {
+                        const origin = entity_a.components.StaticMapEntity.origin;
+                        const pinsComp = entity_b.components.WiredPins;
+                        const network = pinsComp.slots[0].linkedNetwork;
+        
+                        if (!network || !network.hasValue()) {
+                            continue;
+                        }
+        
+                        const value = this.getDisplayItem(network.currentValue);
+        
+                        if (!value) {
+                            continue;
+                        }
 
-                if (!network || !network.hasValue()) {
-                    continue;
-                }
-
-                const value = this.getDisplayItem(network.currentValue);
-
-                if (!value) {
-                    continue;
-                }
-
-                const origin = entity.components.StaticMapEntity.origin;
-                if (value.getItemType() === "color") {
-                    this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
-                        parameters,
-                        (origin.x + 0.5) * globalConfig.tileSize,
-                        (origin.y + 0.5) * globalConfig.tileSize,
-                        globalConfig.tileSize
-                    );
-                } else if (value.getItemType() === "shape") {
-                    value.drawItemCenteredClipped(
-                        (origin.x + 0.5) * globalConfig.tileSize,
-                        (origin.y + 0.5) * globalConfig.tileSize,
-                        parameters,
-                        30
-                    );
+                        if (value.getItemType()) {
+                            if (value.getItemType() === "color") {
+                                this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
+                                    parameters,
+                                    (origin.x + 0.5) * globalConfig.tileSize,
+                                    (origin.y + 0.5) * globalConfig.tileSize,
+                                    globalConfig.tileSize
+                                );
+                            } else if (value.getItemType() === "shape") {
+                                value.drawItemCenteredClipped(
+                                    (origin.x + 0.5) * globalConfig.tileSize,
+                                    (origin.y + 0.5) * globalConfig.tileSize,
+                                    parameters,
+                                    30
+                                );
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 }
+

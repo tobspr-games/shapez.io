@@ -64,6 +64,11 @@ export class Entity extends BasicSerializableObject {
          * @type {string} */
         this.destroyReason;
 
+        /**
+         * Stores wireless code of this entity
+         */
+        this.wireless_code = 0;
+
         /* typehints:end */
     }
 

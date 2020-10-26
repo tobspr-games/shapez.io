@@ -6,11 +6,6 @@ import { GameRoot } from "../root";
 import { WirelessDisplayComponent } from "../components/wireless_display";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
-import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
-import { T } from "../../translations";
-import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 
 /** @enum {string} */
@@ -65,7 +60,7 @@ export class MetaWirelessDisplayBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-
+        entity.addComponent(new WirelessDisplayComponent({}));
     }
 
     /**

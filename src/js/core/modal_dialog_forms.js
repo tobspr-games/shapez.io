@@ -208,7 +208,15 @@ export class FormElementItemChooser extends FormElement {
             canvas.width = 128;
             canvas.height = 128;
             const context = canvas.getContext("2d");
-            item.drawFullSizeOnCanvas(context, 128);
+            if (typeof item == "string") {
+                context.fillStyle = "#000000";
+                context.font = "64px sans-serif"
+                context.textAlign = "center";
+                context.fillText(item, 32, 32, 128);
+                console.log(context);
+            } else {
+                item.drawFullSizeOnCanvas(context, 128);
+            }
             this.element.appendChild(canvas);
 
             const detector = new ClickDetector(canvas, {});

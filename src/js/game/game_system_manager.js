@@ -89,6 +89,9 @@ export class GameSystemManager {
             /** @type {DisplaySystem} */
             display: null,
 
+            /** @type {WirelessDisplaySystem} */
+            wirelessDisplay: null,
+
             /** @type {ItemProcessorOverlaysSystem} */
             itemProcessorOverlays: null,
 
@@ -163,6 +166,7 @@ export class GameSystemManager {
         add("beltReader", BeltReaderSystem);
 
         add("display", DisplaySystem);
+        add("wirelessDisplay", WirelessDisplaySystem);
 
         add("itemProcessorOverlays", ItemProcessorOverlaysSystem);
 
