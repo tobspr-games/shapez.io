@@ -25,14 +25,13 @@ import { enumNotificationType } from "./notifications";
 
 /** @typedef {{
  *   label: string | null,
+ *   parts: Array<string> | null,
  *   center: { x: number, y: number },
  *   zoomLevel: number
  * }} Waypoint */
 
-/**
- * Used when a shape icon is rendered instead
- */
-const MAX_LABEL_LENGTH = 71;
+const MAX_LABEL_LENGTH = 70;
+const SHAPE_TEXT_LENGTH = 2;
 
 export class HUDWaypoints extends BaseHUDPart {
     /**
@@ -96,6 +95,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.waypoints = [
             {
                 label: null,
+                parts: null,
                 center: { x: 0, y: 0 },
                 zoomLevel: 3,
             },
@@ -140,7 +140,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
         /**
          * Store cached text widths
-         * @type {Object<string, number>}
+         * @type {Object<string, Object<string, number>>}
          */
         this.cachedTextWidths = {};
 
@@ -154,12 +154,16 @@ export class HUDWaypoints extends BaseHUDPart {
      * @returns {number}
      */
     getTextWidth(text) {
-        if (this.cachedTextWidths[text]) {
-            return this.cachedTextWidths[text];
+        const scale = this.getTextScale();
+        if (!this.cachedTextWidths[scale]) {
+            this.cachedTextWidths[scale] = {};
+        }
+        if (this.cachedTextWidths[scale][text]) {
+            return this.cachedTextWidths[scale][text];
         }
 
-        this.dummyBuffer.font = "bold " + this.getTextScale() + "px GameFont";
-        return (this.cachedTextWidths[text] = this.dummyBuffer.measureText(text).width);
+        this.dummyBuffer.font = "bold " + scale + "px GameFont";
+        return (this.cachedTextWidths[scale][text] = this.dummyBuffer.measureText(text).width);
     }
 
     /**
@@ -185,28 +189,32 @@ export class HUDWaypoints extends BaseHUDPart {
 
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
-            const label = this.getWaypointLabel(waypoint);
+            const parts = this.getWaypointParts(waypoint);
 
             const element = makeDiv(this.waypointsListElement, null, ["waypoint"]);
 
-            if (ShapeDefinition.isValidShortKey(label)) {
-                const canvas = this.getWaypointCanvas(waypoint);
-                /**
-                 * Create a clone of the cached canvas, as calling appendElement when a canvas is
-                 * already in the document will move the existing canvas to the new position.
-                 */
-                const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
-                    smooth: true,
-                    label: label + "-waypoint-" + i,
-                });
-                context.drawImage(canvas, 0, 0);
-                element.appendChild(newCanvas);
-                element.classList.add("shapeIcon");
-            } else {
-                element.innerText = label;
+            for (let j = 0; j < parts.length; ++j) {
+                const part = parts[j];
+                if (ShapeDefinition.isValidShortKey(part)) {
+                    const canvas = this.getWaypointCanvas(part);
+                    /**
+                     * Create a clone of the cached canvas, as calling appendElement when a canvas is
+                     * already in the document will move the existing canvas to the new position.
+                     */
+                    const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
+                        smooth: true,
+                        label: part + "-waypoint-" + i,
+                    });
+                    context.drawImage(canvas, 0, 0);
+                    element.appendChild(newCanvas);
+                    element.classList.add("shapeIcon");
+                } else {
+                    element.appendChild(document.createTextNode(part));
+                }
             }
 
             if (this.isWaypointDeletable(waypoint)) {
+                makeDiv(element, null, ["editMargin"]);
                 const editButton = makeDiv(element, null, ["editButton"]);
                 this.trackClicks(editButton, () => this.requestSaveMarker({ waypoint }));
             }
@@ -242,12 +250,11 @@ export class HUDWaypoints extends BaseHUDPart {
     }
 
     /**
-     * Gets the canvas for a given waypoint
-     * @param {Waypoint} waypoint
+     * Gets the canvas for a given waypoint key
+     * @param {string} key
      * @returns {HTMLCanvasElement}
      */
-    getWaypointCanvas(waypoint) {
-        const key = waypoint.label;
+    getWaypointCanvas(key) {
         if (this.cachedKeyToCanvas[key]) {
             return this.cachedKeyToCanvas[key];
         }
@@ -272,8 +279,7 @@ export class HUDWaypoints extends BaseHUDPart {
             label: null,
             placeholder: "",
             defaultValue: waypoint ? waypoint.label : "",
-            validator: val =>
-                val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
+            validator: val => val.length > 0 && this.getLabelLength(val) <= MAX_LABEL_LENGTH,
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
@@ -322,8 +328,10 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {Vector} position
      */
     addWaypoint(label, position) {
+        const parts = this.splitLabel(label);
         this.waypoints.push({
             label,
+            parts,
             center: { x: position.x, y: position.y },
             zoomLevel: this.root.camera.zoomLevel,
         });
@@ -347,6 +355,7 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     renameWaypoint(waypoint, label) {
         waypoint.label = label;
+        waypoint.parts = this.splitLabel(waypoint.label);
 
         this.sortWaypoints();
 
@@ -358,6 +367,57 @@ export class HUDWaypoints extends BaseHUDPart {
 
         // Re-render the list and thus add it
         this.rerenderWaypointList();
+    }
+
+    /**
+     * Splits a label into shortkeys and text
+     * @param {string} label
+     * @returns {Array<string>}
+     */
+    splitLabel(label) {
+        const words = label.split(" ");
+        let part = null;
+        let parts = [];
+        for (let i = 0; i < words.length; ++i) {
+            const word = words[i];
+            if (ShapeDefinition.isValidShortKey(word)) {
+                if (part !== null) {
+                    parts.push(part);
+                    part = null;
+                }
+                parts.push(word);
+            } else {
+                if (part !== null) {
+                    part += " " + word;
+                } else {
+                    part = word;
+                }
+            }
+        }
+        if (part !== null) {
+            parts.push(part);
+        }
+        return parts;
+    }
+
+    /**
+     * Returns the character length of a label,
+     * treating shapes as a constant number of characters
+     * @param {string} label
+     * @returns {number}
+     */
+    getLabelLength(label) {
+        const parts = this.splitLabel(label);
+        let length = 0;
+        for (let i = 0; i < parts.length; ++i) {
+            const part = parts[i];
+            if (ShapeDefinition.isValidShortKey(part)) {
+                length += SHAPE_TEXT_LENGTH;
+            } else {
+                length += part.length;
+            }
+        }
+        return length;
     }
 
     /**
@@ -380,9 +440,7 @@ export class HUDWaypoints extends BaseHUDPart {
             if (!b.label) {
                 return 1;
             }
-            return this.getWaypointLabel(a)
-                .padEnd(MAX_LABEL_LENGTH, "0")
-                .localeCompare(this.getWaypointLabel(b).padEnd(MAX_LABEL_LENGTH, "0"));
+            return this.getWaypointLabel(a).localeCompare(this.getWaypointLabel(b));
         });
     }
 
@@ -393,6 +451,15 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     getWaypointLabel(waypoint) {
         return waypoint.label || T.ingame.waypoints.hub;
+    }
+
+    /**
+     * Returns the parts of the label for a given waypoint
+     * @param {Waypoint} waypoint
+     * @returns {Array<string>}
+     */
+    getWaypointParts(waypoint) {
+        return waypoint.parts || [T.ingame.waypoints.hub];
     }
 
     /**
@@ -410,8 +477,10 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {Waypoint} waypoint
      * @return {{
      *   screenBounds: Rectangle
-     *   item: BaseItem|null,
+     *   parts: Array<{
+     *   item: boolean,
      *   text: string
+     *   }>
      * }}
      */
     getWaypointScreenParams(waypoint) {
@@ -424,17 +493,23 @@ export class HUDWaypoints extends BaseHUDPart {
         const screenPos = this.root.camera.worldToScreen(new Vector(waypoint.center.x, waypoint.center.y));
 
         // Distinguish between text and item waypoints -> Figure out parameters
-        const originalLabel = this.getWaypointLabel(waypoint);
-        let text, item, textWidth;
+        const originalParts = this.getWaypointParts(waypoint);
+        let parts = [];
+        let textWidth = 0;
 
-        if (ShapeDefinition.isValidShortKey(originalLabel)) {
-            // If the label is actually a key, render the shape icon
-            item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey(originalLabel);
-            textWidth = 40;
-        } else {
-            // Otherwise render a regular waypoint
-            text = originalLabel;
-            textWidth = this.getTextWidth(text);
+        for (let i = 0; i < originalParts.length; ++i) {
+            const originalPart = originalParts[i];
+            let item = false;
+            const text = originalPart;
+            if (ShapeDefinition.isValidShortKey(originalPart)) {
+                // If the label is actually a key, render the shape icon
+                item = true;
+                textWidth += 14 * scale;
+            } else {
+                // Otherwise render a regular waypoint
+                textWidth += this.getTextWidth(text);
+            }
+            parts.push({ item, text });
         }
 
         return {
@@ -444,8 +519,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 15 * scale + textWidth,
                 15 * scale
             ),
-            item,
-            text,
+            parts,
         };
     }
 
@@ -582,6 +656,7 @@ export class HUDWaypoints extends BaseHUDPart {
             }
 
             const bounds = waypointData.screenBounds;
+            const parts = waypointData.parts;
             const contentPaddingX = 7 * scale;
             const isSelected = mousePos && bounds.containsPoint(mousePos.x, mousePos.y);
 
@@ -591,28 +666,32 @@ export class HUDWaypoints extends BaseHUDPart {
             parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
 
             // Render the text
-            if (waypointData.item) {
-                const canvas = this.getWaypointCanvas(waypoint);
-                const itemSize = 14 * scale;
-                parameters.context.drawImage(
-                    canvas,
-                    bounds.x + contentPaddingX + 6 * scale,
-                    bounds.y + bounds.h / 2 - itemSize / 2,
-                    itemSize,
-                    itemSize
-                );
-            } else if (waypointData.text) {
-                // Render the text
-                parameters.context.fillStyle = "#000";
-                parameters.context.textBaseline = "middle";
-                parameters.context.fillText(
-                    waypointData.text,
-                    bounds.x + contentPaddingX + 6 * scale,
-                    bounds.y + bounds.h / 2
-                );
-                parameters.context.textBaseline = "alphabetic";
-            } else {
-                assertAlways(false, "Waypoint has no item and text");
+            let textWidth = 0;
+            for (let j = 0; j < parts.length; ++j) {
+                const part = parts[j];
+                if (part.item) {
+                    const canvas = this.getWaypointCanvas(part.text);
+                    const itemSize = 14 * scale;
+                    parameters.context.drawImage(
+                        canvas,
+                        bounds.x + contentPaddingX + 6 * scale + textWidth,
+                        bounds.y + bounds.h / 2 - itemSize / 2,
+                        itemSize,
+                        itemSize
+                    );
+                    textWidth += 14 * scale;
+                } else {
+                    // Render the text
+                    parameters.context.fillStyle = "#000";
+                    parameters.context.textBaseline = "middle";
+                    parameters.context.fillText(
+                        part.text,
+                        bounds.x + contentPaddingX + 6 * scale + textWidth,
+                        bounds.y + bounds.h / 2
+                    );
+                    parameters.context.textBaseline = "alphabetic";
+                    textWidth += this.getTextWidth(part.text);
+                }
             }
 
             // Render the small icon on the left
