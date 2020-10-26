@@ -185,6 +185,8 @@ dialogs:
         titleEdit: Modifier cette balise
         desc: Donnez-lui un nom. Vous pouvez aussi inclure <strong>le raccourci</strong>
             d’une forme (que vous pouvez générer <link>ici</link>).
+        compassDesc: >-
+            Add a compass that points to the marker:
     editSignal:
         title: Définir le signal
         descItems: "Choisissez un objet prédéfini :"

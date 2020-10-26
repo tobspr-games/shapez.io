@@ -186,6 +186,8 @@ dialogs:
         title: Nuevo marcador
         titleEdit: Editar marcador
         desc: Dale un nombre significativo, tambien puedes incluir la <strong>clave</strong> de una forma (La cual puedes generar <link>aquí</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego
             completo para marcadores ilimitados!

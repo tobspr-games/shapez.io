@@ -179,6 +179,8 @@ dialogs:
         desc: Дайте ему значимое название, вы также можете добавить <strong>короткий
             ключ</strong> фигуры (Который можно сгенерировать
             <link>здесь</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Редактирование маркера
     markerDemoLimit:
         desc: Вы можете создать только 2 своих маркера в демоверсии. Приобретите полную

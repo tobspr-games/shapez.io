@@ -187,6 +187,8 @@ dialogs:
         desc: Berikan nama yang berguna, kamu juga bisa memasukkan <strong>short key
             </strong> dari sebuah bentuk (Yang bisa kamu buat sendiri
             <link>disini</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: Kamu hanya dapat membuat dua penanda pada versi demo. Dapatkan versi
             lengkap untuk penanda-penanda tak terhingga!

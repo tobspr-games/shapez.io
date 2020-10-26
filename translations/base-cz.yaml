@@ -180,6 +180,8 @@ dialogs:
         titleEdit: Upravit značku
         desc: Použijte smysluplný název, můžete také zahrnout <strong>krátký
             klíč</strong> tvaru (Ten můžete vygenerovat <link>zde</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     editSignal:
         title: Nastavte signál
         descItems: "Vyberte předdefinovanou položku:"

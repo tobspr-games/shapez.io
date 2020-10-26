@@ -155,6 +155,8 @@ dialogs:
         title: 創建標記
         desc: 給地圖標記起一個的名字。 你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。 （你可以在 <link>here</link>
             生成短代碼。）
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: 修改標記
     markerDemoLimit:
         desc: 在演示版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。

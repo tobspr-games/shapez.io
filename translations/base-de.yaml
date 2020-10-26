@@ -180,6 +180,8 @@ dialogs:
         desc: Gib ihm einen griffigen Namen. Du kannst auch den
             <strong>Kurz-Code</strong> einer Form eingeben (Welchen du
             <link>hier</link> generieren kannst).
+        compassDesc: >-
+            Add a compass that points to the marker:
     editSignal:
         title: Signal setzen
         descItems: "Wähle ein vordefiniertes Item:"

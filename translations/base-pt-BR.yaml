@@ -182,6 +182,8 @@ dialogs:
         titleEdit: Editar Marcador
         desc: Dê um nome significativo, você também pode incluir um <strong>código
             </strong> de uma forma (Você pode gerá-lo <link>aqui</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: Você só pode criar dois marcadores na versão demo. Adquira a versão
             completa para marcadores ilimitados!

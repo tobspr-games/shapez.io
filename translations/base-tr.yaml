@@ -176,6 +176,8 @@ dialogs:
         title: Yeni Konum İşareti
         desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil koduda</strong> koyabilirsiniz
             (<link>Buradan</link> kod yapabilirisinz )
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer

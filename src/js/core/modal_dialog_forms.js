@@ -123,7 +123,7 @@ export class FormElementInput extends FormElement {
 }
 
 export class FormElementCheckbox extends FormElement {
-    constructor({ id, label, defaultValue = true }) {
+    constructor({ id, label, defaultValue = false }) {
         super(id, label);
         this.defaultValue = defaultValue;
         this.value = this.defaultValue;

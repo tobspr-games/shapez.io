@@ -180,6 +180,8 @@ dialogs:
         title: Nowy Znacznik
         desc: Nadaj mu nazwę. Możesz w niej zawrzeć <strong>kod</strong> kształtu (Który
             możesz wygenerować <link>tutaj</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Edytuj Znacznik
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną

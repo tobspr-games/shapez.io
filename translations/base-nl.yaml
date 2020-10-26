@@ -180,6 +180,8 @@ dialogs:
         title: Nieuwe markering
         desc: Geef het een nuttige naam, Je kan ook een <strong>snel
             toets</strong> van een vorm gebruiken (die je <link>here</link> kan genereren).
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Bewerk markering
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor

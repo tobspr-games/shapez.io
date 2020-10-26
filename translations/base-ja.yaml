@@ -164,6 +164,8 @@ dialogs:
         title: マーカーを設置
         titleEdit: マーカーを編集
         desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<link>ここ</link>から生成できます）
+        compassDesc: >-
+            Add a compass that points to the marker:
     editSignal:
         title: 信号を設定
         descItems: "プリセットを選択:"

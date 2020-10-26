@@ -165,6 +165,8 @@ dialogs:
         titleEdit: 마커 변경
         desc: 의미있는 이름을 정해주거나 <strong>단축키</strong>를 통해 도형을 직접 삽입할 수도 있습니다.
             (<link>여기</link>에서 만드실 수 있습니다).
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: 체험판 버전에서는 마커를 2개 까지만 배치할 수 있습니다. 정식 버전을 구입하면 마커를 무제한으로 배치할 수 있습니다!
     exportScreenshotWarning:

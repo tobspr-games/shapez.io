@@ -181,6 +181,8 @@ dialogs:
         desc: Dá-lhe um nome com significado, também poderás adicionar um
             <strong>pequeno código</strong> de uma forma. (Pode ser gerado
             <link>aqui</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Editar Marco
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo

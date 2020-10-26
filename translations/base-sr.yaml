@@ -184,6 +184,8 @@ dialogs:
         titleEdit: Uredi Putokaz
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite
             samostalnu igru za beskonačno mnogo putokaza!

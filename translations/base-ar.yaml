@@ -181,6 +181,8 @@ dialogs:
         titleEdit: Edit Marker
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for
             unlimited markers!

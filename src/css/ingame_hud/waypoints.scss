@@ -93,7 +93,7 @@
             }
         }
 
-        &.hub {
+        &.hasCompass {
             // Transform because there is a canvas before
             @include S(margin-left, -2px);
 

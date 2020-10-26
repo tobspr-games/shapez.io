@@ -187,6 +187,8 @@ dialogs:
         title: Új Jelölő
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Jelölő Szerkesztése
     markerDemoLimit:
         desc: A Demó verzióban csak két Jelölőd lehet. Vásárold meg az Önálló verziót,

@@ -182,6 +182,8 @@ dialogs:
         title: Ny Markør
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Rediger markør
     markerDemoLimit:
         desc: Du kan kun ha to markører i demoverjsonen. Skaff deg den frittstående

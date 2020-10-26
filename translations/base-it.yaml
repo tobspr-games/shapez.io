@@ -181,6 +181,8 @@ dialogs:
         desc: Dagli un nome significativo, puoi anche inserire un
             <strong>codice</strong> di una forma (Che puoi generare
             <link>qui</link>)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Modifica etichetta
     markerDemoLimit:
         desc: Puoi creare solo due etichette personalizzate nella Demo. Ottieni la

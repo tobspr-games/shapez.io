@@ -181,6 +181,8 @@ dialogs:
         title: Uusi merkki
         desc: Anna merkille merkitsevä nimi. Voit myös liittää <strong>lyhyen koodin</strong>
             muodosta. (Jonka voit luoda <link>täällä</link>.)
+        compassDesc: >-
+            Add a compass that points to the marker:
         titleEdit: Muokkaa merkkiä
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki kokoversio

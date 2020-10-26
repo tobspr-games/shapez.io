@@ -3,7 +3,7 @@ import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
-import { FormElementInput } from "../../../core/modal_dialog_forms";
+import { FormElementCheckbox, FormElementInput } from "../../../core/modal_dialog_forms";
 import { Rectangle } from "../../../core/rectangle";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import {
@@ -27,12 +27,12 @@ import { enumNotificationType } from "./notifications";
  *   label: string | null,
  *   parts: Array<string> | null,
  *   center: { x: number, y: number },
- *   zoomLevel: number
+ *   zoomLevel: number,
+ *   hasCompass: boolean
  * }} Waypoint */
 
 const MAX_LABEL_LENGTH = 70;
 const SHAPE_TEXT_LENGTH = 2;
-const COMPASS_PREFIX = "!";
 
 export class HUDWaypoints extends BaseHUDPart {
     /**
@@ -83,7 +83,13 @@ export class HUDWaypoints extends BaseHUDPart {
 
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
-            if (waypoint.label && waypoint.label.startsWith(COMPASS_PREFIX)) {
+            if (!waypoint.label) {
+                waypoint.hasCompass = true;
+            }
+            if (waypoint.hasCompass === undefined) {
+                waypoint.hasCompass = false;
+            }
+            if (waypoint.hasCompass) {
                 const [canvas, context] = makeOffscreenBuffer(48, 48, {
                     smooth: true,
                     reusable: false,
@@ -110,6 +116,7 @@ export class HUDWaypoints extends BaseHUDPart {
             parts: null,
             center: { x: 0, y: 0 },
             zoomLevel: 3,
+            hasCompass: true,
         };
         /** @type {Array<Waypoint>}
          */
@@ -242,9 +249,9 @@ export class HUDWaypoints extends BaseHUDPart {
                 this.trackClicks(editButton, () => this.requestSaveMarker({ waypoint }));
             }
 
-            if (this.compassBuffers.has(waypoint)) {
+            if (waypoint.hasCompass) {
                 // This must be a compass label
-                element.classList.add("hub");
+                element.classList.add("hasCompass");
 
                 const canvas = this.compassBuffers.get(waypoint).canvas;
                 element.insertBefore(canvas, element.childNodes[0]);
@@ -306,11 +313,17 @@ export class HUDWaypoints extends BaseHUDPart {
             defaultValue: waypoint ? waypoint.label : "",
             validator: val => val.length > 0 && this.getLabelLength(val) <= MAX_LABEL_LENGTH,
         });
+        console.log(waypoint && waypoint.hasCompass);
+        const compassInput = new FormElementCheckbox({
+            id: "compassChoice",
+            label: T.dialogs.createMarker.compassDesc,
+            defaultValue: waypoint ? waypoint.hasCompass : false,
+        });
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: waypoint ? T.dialogs.createMarker.titleEdit : T.dialogs.createMarker.title,
             desc: fillInLinkIntoTranslation(T.dialogs.createMarker.desc, THIRDPARTY_URLS.shapeViewer),
-            formElements: [markerNameInput],
+            formElements: [markerNameInput, compassInput],
             buttons: waypoint ? ["delete:bad", "cancel", "ok:good"] : ["cancel", "ok:good"],
         });
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
@@ -319,7 +332,7 @@ export class HUDWaypoints extends BaseHUDPart {
         if (waypoint) {
             dialog.buttonSignals.ok.add(() => {
                 // Actually rename the waypoint
-                this.renameWaypoint(waypoint, markerNameInput.getValue());
+                this.renameWaypoint(waypoint, markerNameInput.getValue(), compassInput.getValue());
             });
             dialog.buttonSignals.delete.add(() => {
                 // Actually delete the waypoint
@@ -342,7 +355,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 }
 
                 // Actually create the waypoint
-                this.addWaypoint(markerNameInput.getValue(), center);
+                this.addWaypoint(markerNameInput.getValue(), center, compassInput.getValue());
             });
         }
     }
@@ -351,8 +364,9 @@ export class HUDWaypoints extends BaseHUDPart {
      * Adds a new waypoint at the given location with the given label
      * @param {string} label
      * @param {Vector} position
+     * @param {boolean} hasCompass
      */
-    addWaypoint(label, position) {
+    addWaypoint(label, position, hasCompass = false) {
         const parts = this.splitLabel(label);
 
         const waypoint = {
@@ -360,19 +374,17 @@ export class HUDWaypoints extends BaseHUDPart {
             parts,
             center: { x: position.x, y: position.y },
             zoomLevel: this.root.camera.zoomLevel,
+            hasCompass,
         };
 
-        if (label.startsWith(COMPASS_PREFIX)) {
-            const bufferKey = "" + position.x + "/" + position.y;
-            if (!this.compassBuffers[bufferKey]) {
-                const [canvas, context] = makeOffscreenBuffer(48, 48, {
-                    smooth: true,
-                    reusable: false,
-                    label: "waypoints-compass",
-                });
-                canvas.classList.add("compass");
-                this.compassBuffers.set(waypoint, { canvas, context, opacity: 0 });
-            }
+        if (hasCompass) {
+            const [canvas, context] = makeOffscreenBuffer(48, 48, {
+                smooth: true,
+                reusable: false,
+                label: "waypoints-compass",
+            });
+            canvas.classList.add("compass");
+            this.compassBuffers.set(waypoint, { canvas, context, opacity: 0 });
         }
 
         this.waypoints.push(waypoint);
@@ -393,14 +405,15 @@ export class HUDWaypoints extends BaseHUDPart {
      * Renames a waypoint with the given label
      * @param {Waypoint} waypoint
      * @param {string} label
+     * @param {boolean} hasCompass
      */
-    renameWaypoint(waypoint, label) {
+    renameWaypoint(waypoint, label, hasCompass = false) {
         waypoint.label = label;
         waypoint.parts = this.splitLabel(waypoint.label);
+        waypoint.hasCompass = hasCompass;
 
-        if (label.startsWith(COMPASS_PREFIX)) {
-            const bufferKey = "" + waypoint.center.x + "/" + waypoint.center.y;
-            if (!this.compassBuffers[bufferKey]) {
+        if (hasCompass) {
+            if (!this.compassBuffers.has(waypoint)) {
                 const [canvas, context] = makeOffscreenBuffer(48, 48, {
                     smooth: true,
                     reusable: false,
@@ -408,6 +421,10 @@ export class HUDWaypoints extends BaseHUDPart {
                 });
                 canvas.classList.add("compass");
                 this.compassBuffers.set(waypoint, { canvas, context, opacity: 0 });
+            }
+        } else {
+            if (this.compassBuffers.has(waypoint)) {
+                this.compassBuffers.delete(waypoint);
             }
         }
 
@@ -686,7 +703,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
-            if (this.compassBuffers.has(waypoint)) {
+            if (waypoint.hasCompass) {
                 this.rerenderWaypointsCompass(waypoint);
             }
         }
