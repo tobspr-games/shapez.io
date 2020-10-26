@@ -1057,9 +1057,10 @@ tips:
       orientació.
     - Per obtenir blanc barregeu els tres colors primaris.
     - La memòria intermèdia d’emmagatzematge prioritza la primera sortida.
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - "Invertiu temps per crear dissenys repetibles: val la pena."
     - Si mantingueu <b> CTRL </b> permet col·locar diversos edificis.
-    - Efficiency is key!
+    - Podeu mantenir premut <b> ALT </b> per invertir la direcció dels cinturons
+      col·locats.
     - L’eficiència és clau!
     - Les formes geomètriques que apareixen més lluny del NEXE són més complexes.
     - Les màquines tenen una velocitat limitada, dividiu-les per obtenir la
@@ -1082,8 +1083,9 @@ tips:
     - Amb els mòduls, l’espai és només una percepció; una preocupació per als
       homes mortals.
     - Feu una fàbrica de plànols independent. Són importants per als mòduls.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
+    - Feu una ullada més de prop al mesclador de colors i les vostres preguntes
+      seran contestades.
+    - Utilitzeu <b> CTRL </b> + Feu clic per seleccionar una àrea.
     - Construir massa a prop del centre pot dificultar els projectes posteriors.
     - La icona de fixació situada al costat de cada forma de la llista
       d'actualitzacions la fixa a la pantalla.
@@ -1101,4 +1103,4 @@ tips:
     - Per netejar els cinturons, talleu la zona i enganxeu-la al mateix lloc.
     - Premeu F4 per mostrar la vostra tarifa FPS i Tick.
     - Premeu F4 dues vegades per mostrar el mosaic del ratolí i la càmera.
-    - null
+    - Podeu fer clic a una forma fixada al costat esquerre per desenganxar-la.

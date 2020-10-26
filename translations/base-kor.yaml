@@ -186,7 +186,8 @@ dialogs:
         desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 보시겠습니까?
     tutorialVideoAvailableForeignLanguage:
         title: 활성화된 튜토리얼
-        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만 제공될 것입니다. 보시겠습니까?
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만
+            제공될 것입니다. 보시겠습니까?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -278,25 +279,28 @@ ingame:
             1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
                 달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
                 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
+            2_1_place_cutter: "이제 <strong>절단기</strong>를 배치하여 원형 도형을 둘로 자르세요!<br><br>
+                추신: 절단기는 방향에 관계 없이 항상 수직으로 자릅니다."
             2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
-                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을 제거하세요.
-            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong> 이상
-                배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여 건물을
-                빠르게 선택할 수 있습니다!"
-            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를 배치</strong>하고 허브와
-                연결하세요.<br><br> 추신: 긴 벨트 한 줄을 간단히 만들려면 <strong>SHIFT 키</strong>를
-                누른 채 드래그하세요!"
+                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을
+                제거하세요.
+            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong>
+                이상 배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여
+                건물을 빠르게 선택할 수 있습니다!"
+            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를
+                배치</strong>하고 허브와 연결하세요.<br><br> 추신: 긴 벨트 한 줄을
+                간단히 만들려면 <strong>SHIFT 키</strong>를 누른 채 드래그하세요!"
             21_1_place_quad_painter: <strong>4단 색칠기</strong>를 배치하여 <strong>흰색</strong>과
-                <strong>빨간색</strong>이 칠해진 <strong>원형 도형</strong>을 만들어보세요!
-            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어 로 전환하세요!<br><br> 그 후 색칠기의
-                <strong>네 입력 부분</strong>을 모두 케이블로 연결하세요!
-            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로 연결하세요!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+                <strong>빨간색</strong>이 칠해진 <strong>원형
+                도형</strong>을 만들어보세요!
+            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어
+                로 전환하세요!<br><br> 그 후 색칠기의 <strong>네 입력 부분</strong>을
+                모두 케이블로 연결하세요!
+            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로
+                연결하세요!
+            21_4_press_button: "스위치를 눌러 </strong>참 신호를 내보내<strong>
+                색칠기를 활성화하세요. 추신: 모든 입력을 연결할 필요는 없습니다!
+                지금은 두 개만 연결하세요."
     colors:
         red: 빨간색
         green: 초록색
@@ -646,13 +650,12 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "<strong>전선 레이어</strong>가 잠금 해제되었습니다! 전선 레이어는
+            일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운
+            메커니즘을 소개하겠습니다!<br><br> 우선 <strong>4단 색칠기</strong>가
+            잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
+            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요. <br><br>
+            추신: 설정에서 <strong>힌트를 활성화</strong>하여 전선 튜토리얼을 활성화하세요!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -919,9 +922,9 @@ tips:
     - 절단기는 들어오는 도형과 배치된 절단기의 방향에 관계 없이, 언제나 수직으로 자릅니다.
     - 흰색은 세 가지의 색소를 혼합해야 합니다.
     - 저장고의 양쪽 출력 중 왼쪽 출력이 가장 우선됩니다.
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - 가능한 반복적으로 배치할 수 있는 일종의 연쇄 구조를 만들도록 하세요! 그만한 가치가 충분합니다!
     - <b>CTRL</b>키를 누른 상태로 건물을 배치하여 여러 건물을 빠르게 배치할 수 있습니다.
-    - Efficiency is key!
+    - <b>ALT</b>키를 누른 상태로 벨트를 배치하면 벨트의 방향이 반전됩니다.
     - 효율성이 핵심입니다!
     - 허브에서 멀리 떨어질수록, 도형 패치의 형태가 더욱 복잡해집니다.
     - 기계는 속도가 한정되어 있습니다. 최대 효율을 위해 자원을 분할하세요.
@@ -937,8 +940,8 @@ tips:
     - 색소를 최대한 덜 사용하기 위해, 절단하기 전에 먼저 색칠기로 색칠하세요.
     - 극한의 확장성을 가진 모듈 공장을 사용한다면 이 넓은 땅은 인간의 관심사에 있는 공간에 불과합니다.
     - 별도의 청사진 공장을 만드세요. 언제나 확장성이 중요합니다.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
+    - 혼합기를 잘 살펴보면, 그 질문에 대한 답을 얻을 수 있습니다.
+    - <b>CTRL</b> + 클릭을 사용하여 영역을 선택합니다.
     - 공장을 허브에 가까이 지으면 나중에 거대한 프로젝트에 방해가 될 수 있습니다.
     - 업그레이드 목록에 나타나는 도형 옆의 핀 아이콘을 누르면 화면에 고정됩니다.
     - 세 가지의 기본 색상을 모두 섞어서 흰색을 만드세요!
@@ -952,4 +955,4 @@ tips:
     - 벨트를 제거하고 싶다면 해당 영역을 잘라낸 다음, 같은 위치에 붙여 넣으세요.
     - F4 키를 누르면 FPS와 틱 비율을 표시합니다.
     - F4 키를 두번 누르면 마우스와 카메라의 타일을 표시합니다.
-    - null
+    - 왼쪽에 고정된 도형을 클릭하여 고정을 해제할 수 있습니다.

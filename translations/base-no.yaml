@@ -1040,9 +1040,9 @@ tips:
     - Cutters always cut vertically, regardless of their orientation.
     - To get white mix all three colors.
     - The storage buffer priorities the first output.
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
-    - Efficiency is key!
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Efficiency is key!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
@@ -1060,8 +1060,8 @@ tips:
     - Color your shapes before cutting for maximum efficiency.
     - With modules, space is merely a perception; a concern for mortal men.
     - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
     - Mix all primary colors together to make white!
@@ -1076,4 +1076,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
-    - null
+    - You can click a pinned shape on the left side to unpin it.

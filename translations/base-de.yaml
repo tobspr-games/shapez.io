@@ -1067,9 +1067,10 @@ tips:
     - Schneider teilen die Form immer vertikal, unabhängig von der Orientierung.
     - Weiß erhälst du aus der Kombination aller 3 Grundfarben.
     - Das Lager gibt Items immer zuerst am linken Ausgang ab.
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - Es lohnt sich, Zeit in den Bau von wiederverwendbaren Designs zu stecken!
     - Das Halten von <b>STRG</b> ermöglicht dir, mehrere Gebäude zu platzieren.
-    - Efficiency is key!
+    - Du kanst <b>ALT</b> gedrückt halten, um die Richtung der Fließbänder
+      umzukehren.
     - Effizienz ist entscheidend!
     - Abbaubare Formen werden komplexer, je weiter sie vom Hub entfernt sind.
     - Gebäude haben eine limitierte Geschwindigkeit. Teile die Last zwischen
@@ -1092,8 +1093,8 @@ tips:
     - Färbe deine Formen vor dem Schneiden! Das geht viel schneller.
     - Mit Modulen wird Platz nur noch zum Begriff; eine Sorge für Sterbliche.
     - Stelle deinen Nachschub an Blaupausen sicher. Ohne sie sind Module nutzlos.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
+    - Schau dir den Farbmischer genauer an und du wirst deine Antwort finden.
+    - Benutze <b>STRG</b> + Rechtsklick, um einen Bereich zu selektieren.
     - Zu nahe am Hub zu bauen, kann späteren Projekten im Weg stehen.
     - Die Reißzwecke neben Formen in der Upgrade-Liste lässt sie dich am
       Bildschirm anheften.
@@ -1112,4 +1113,4 @@ tips:
     - Drücke F4 um deine FPS und Tickrate anzuzeigen.
     - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu
       bestimmen.
-    - null
+    - Du kannst die angehefteten Formen am linken Rand wieder entfernen.

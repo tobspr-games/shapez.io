@@ -4,8 +4,8 @@ steamPage:
         loputtomassa maailmassa.
     discordLinkShort: Virallinen Discord
     intro: >-
-        Shapez.io on rento peli, jossa sinun täytyy rakentaa tehtaita
-        geometristen muotojen automatisoituun tuotantoon.
+        Shapez.io on rento peli, jossa sinun täytyy rakentaa tehtaita geometristen muotojen
+        automatisoituun tuotantoon.
 
         Kun taso kasvaa, muodot tulevat entistä vaikeammaksi sekä sinun täytyy laajentua loputtomassa kartassa.
 
@@ -43,8 +43,8 @@ steamPage:
         translate: Auta kääntämään
     text_open_source: >-
         Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon
-        missä  mahdollista.
+        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä 
+        mahdollista.
 
         Muista tarkistaa Trello -lautani, jossa löytyy koko roadmap!
 global:
@@ -121,8 +121,9 @@ dialogs:
         text: "Tallennuksen lataus epäonnistui:"
     confirmSavegameDelete:
         title: Varmista poisto
-        text: Oletko varma, että haluat poistaa valitun pelin?<br><br> '<savegameName>'
-            tasossa <savegameLevel><br><br> Tätä toimintoa ei voida peruuttaa!
+        text: Oletko varma, että haluat poistaa valitun pelin?<br><br>
+            '<savegameName>' tasossa <savegameLevel><br><br> Tätä toimintoa ei
+            voida peruuttaa!
     savegameDeletionError:
         title: Poisto epäonnistui
         text: "Tallennuksen poisto epäonnistui:"
@@ -131,8 +132,8 @@ dialogs:
         text: Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
     editKeybinding:
         title: Vaihda pikanäppäin
-        desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina escape
-            peruuttaaksesi.
+        desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina
+            escape peruuttaaksesi.
     resetKeybindingsConfirmation:
         title: Nollaa pikanäppäimet
         desc: Tämä nollaa kaikki pikanäppäimet oletusarvoihin. Vahvista.
@@ -142,7 +143,8 @@ dialogs:
     featureRestriction:
         title: Demoversio
         desc: Yritit käyttää ominaisuutta (<feature>), joka ei ole saatavilla
-            demoversiossa. Harkitse kokoversio avataksesi kaikki ominaisuudet!
+            demoversiossa. Harkitse kokoversio avataksesi
+            kaikki ominaisuudet!
     oneSavegameLimit:
         title: Rajoitetut tallennukset
         desc: Sinulla voi olla vain yksi tallennus kerrallaan demoversiossa. Poista
@@ -157,12 +159,12 @@ dialogs:
             päivitysikkunan näytön oikeasta yläkulmasta.
     massDeleteConfirm:
         title: Vahvista poisto
-        desc: Olet poistamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma,
-            että haluat jatkaa?
+        desc: Olet poistamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
+            haluat jatkaa?
     massCutConfirm:
         title: Vahvista leikkaus
-        desc: Olet leikkaamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma,
-            että haluat jatkaa?
+        desc: Olet leikkaamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
+            haluat jatkaa?
     blueprintsNotUnlocked:
         title: Ei vielä avattu
         desc: Suorita taso 12 avataksesi piirustukset!
@@ -177,8 +179,8 @@ dialogs:
             Käännä sijoitettavien hihnojen suunta.<br>"
     createMarker:
         title: Uusi merkki
-        desc: Anna merkille merkitsevä nimi. Voit myös liittää <strong>lyhyen
-            koodin</strong> muodosta. (Jonka voit luoda <link>täällä</link>.)
+        desc: Anna merkille merkitsevä nimi. Voit myös liittää <strong>lyhyen koodin</strong>
+            muodosta. (Jonka voit luoda <link>täällä</link>.)
         titleEdit: Muokkaa merkkiä
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki kokoversio
@@ -316,8 +318,8 @@ ingame:
                 laittaaksesi useampia kaivajia ja käytä <strong>R</strong>
                 kääntääksesi niitä."
             2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
-                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä
-                alaspäin</strong> riippumatta sen asennosta."
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong> 
+                riippumatta sen asennosta."
             2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
                 <strong>trash</strong> to get rid of the currently (!) not
                 needed waste.
@@ -404,9 +406,8 @@ buildings:
             description: Sallii sähkönkuljetuksen
         second:
             name: Johto
-            description: Siirtää signaaleja, jotka voivat olla muotoja, värejä, taikka
-                binääriarvoja (1 / 0). Eriväriset johdot eivät yhdisty
-                toisiinsa.
+            description: Siirtää signaaleja, jotka voivat olla muotoja, värejä, taikka binääriarvoja (1 / 0).
+                Eriväriset johdot eivät yhdisty toisiinsa.
     miner:
         default:
             name: Kaivaja
@@ -494,8 +495,8 @@ buildings:
     storage:
         default:
             name: Varasto
-            description: Varasotoi ylijäämätavarat tiettyyn kapasiteettiin asti. Priorisoi
-                vasemman ulostulon ja voidaan käyttää ylivuotoporttina.
+            description: Varasotoi ylijäämätavarat tiettyyn kapasiteettiin asti. Priorisoi vasemman ulostulon
+                ja voidaan käyttää ylivuotoporttina.
     wire_tunnel:
         default:
             name: Johdon ylitys
@@ -503,31 +504,29 @@ buildings:
     constant_signal:
         default:
             name: Jatkuva signaali
-            description: Lähettää vakiosignaalin, joka voi olla muoto, väri, taikka
-                binääriarvo (1 / 0).
+            description: Lähettää vakiosignaalin, joka voi olla muoto, väri, taikka binääriarvo (1 / 0).
     lever:
         default:
             name: Kytkin
-            description: Voidaan kytkeä lähettämään binääriarvoa (1 / 0) johtotasolla, jota
-                voidaan sitten käyttää esimerkiksi tavarasuodattimen ohjaukseen.
+            description: Voidaan kytkeä lähettämään binääriarvoa (1 / 0) johtotasolla,
+                jota voidaan sitten käyttää esimerkiksi tavarasuodattimen ohjaukseen.
     logic_gate:
         default:
             name: AND portti
-            description: Lähettää totuusarvon "1", jos molemmat sisääntulot ovat totta.
-                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
+            description: Lähettää totuusarvon "1", jos molemmat sisääntulot ovat totta. (Totuus tarkoittaa,
+                että muoto, väri tai totuusarvo "1")
         not:
             name: NOT portti
-            description: Lähettää totuusarvon "1", jos sisääntulot eivät ole totta. (Totuus
-                tarkoittaa, että muoto, väri tai totuusarvo "1")
+            description: Lähettää totuusarvon "1", jos sisääntulot eivät ole totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
         xor:
             name: XOR portti
-            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta, mutta
-                kaikki eivät. (Totuus tarkoittaa, että muoto, väri tai
-                totuusarvo "1")
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta, mutta kaikki eivät.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
         or:
             name: OR portti
-            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta. (Totuus
-                tarkoittaa, että muoto, väri tai totuusarvo "1")
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta.
+                (Totuus tarkoittaa, että muoto, väri tai totuusarvo "1")
     transistor:
         default:
             name: Transistori
@@ -540,18 +539,18 @@ buildings:
     filter:
         default:
             name: Suodatin
-            description: Yhdistä signaali reitittääksesi kaikki vastaavat tavarat ylös, ja
-                jäljelle jäämät vasemmalle. Voidaan ohjata myös binääriarvoilla.
+            description: Yhdistä signaali reitittääksesi kaikki vastaavat tavarat ylös,
+                ja jäljelle jäämät vasemmalle. Voidaan ohjata myös binääriarvoilla.
     display:
         default:
             name: Näyttö
-            description: Yhdistö signaali näyttääksesi sen näytöllä. Voi olla muoto, väri
-                tai binääriarvo.
+            description: Yhdistö signaali näyttääksesi sen näytöllä. Voi olla muoto,
+                väri tai binääriarvo.
     reader:
         default:
             name: Hihnanlukija
-            description: Mittaa hihnan keskiarvosuorituskyky. Antaa viimeksi luetun tavaran
-                signaalin johtotasolla (kun saavutettu).
+            description: Mittaa hihnan keskiarvosuorituskyky. Antaa viimeksi luetun
+                tavaran signaalin johtotasolla (kun saavutettu).
     analyzer:
         default:
             name: Tutkija
@@ -560,8 +559,8 @@ buildings:
     comparator:
         default:
             name: Vertain
-            description: Palauttaa binääriarvon "1", jos molemmat signaalit ovat täysin
-                samat. Voi verrata värejä, tavaroita, ja binääriarvoja.
+            description: Palauttaa binääriarvon "1", jos molemmat signaalit ovat täysin samat.
+                Voi verrata värejä, tavaroita, ja binääriarvoja.
     virtual_processor:
         default:
             name: Virtuaalileikkuri
@@ -571,20 +570,19 @@ buildings:
             description: Virtuaalisesti käännä tavara, sekä myötäpäivään että vastapäivään.
         unstacker:
             name: Virtuaalierottaja
-            description: Virtuaalisesti erota ylin taso oikeaan ulostuloon ja jäljelle
-                jäävät vasempaan ulostuloon.
+            description: Virtuaalisesti erota ylin taso oikeaan ulostuloon ja jäljelle jäävät
+                vasempaan ulostuloon.
         stacker:
             name: Virtuaaliyhdistäjä
             description: Virtuaalisesti yhdistä oikea tavara vasempaan.
         painter:
             name: Virtuaalimaalaaja
-            description: Virtuaalisesti maalaa tavara alhaalta sisääntulosta oikean
-                sisääntulon värillä.
+            description: Virtuaalisesti maalaa tavara alhaalta sisääntulosta oikean sisääntulon värillä.
     item_producer:
         default:
             name: Item Producer
-            description: Saatavilla vain hiekkalaatikkotilassa. Palauttaa johtotasolla
-                annetun signaalin normaaliin tasoon.
+            description: Saatavilla vain hiekkalaatikkotilassa. Palauttaa
+                johtotasolla annetun signaalin normaaliin tasoon.
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
@@ -760,8 +758,7 @@ settings:
         uiScale:
             title: Käyttöliittymän koko
             description: Muuttaa käyttöliittymän kokoa. Käyttöliittymä skaalataan silti
-                laitteen resoluution perusteella, mutta tämä asetus määrittää
-                skaalauksen määrän.
+                laitteen resoluution perusteella, mutta tämä asetus määrittää skaalauksen määrän.
             scales:
                 super_small: Erittäin pieni
                 small: Pieni
@@ -781,8 +778,7 @@ settings:
                 disabled: Pois käytöstä
         scrollWheelSensitivity:
             title: Suurennusherkkyys
-            description: Vaihtaa kuinka herkkä suurennus on (Joko hiiren rulla tai
-                ohjauslevy).
+            description: Vaihtaa kuinka herkkä suurennus on (Joko hiiren rulla tai ohjauslevy).
             sensitivity:
                 super_slow: Erittäin hidas
                 slow: Hidas
@@ -1032,9 +1028,9 @@ tips:
     - Cutters always cut vertically, regardless of their orientation.
     - Sekoita kolmea väriä saadaksesi valkoista.
     - The storage buffer priorities the first output.
-    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
+    - Invest time to build repeatable designs - it's worth it!
     - Holding <b>CTRL</b> allows to place multiple buildings.
-    - Efficiency is key!
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Tehokkuus on keskeistä!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
@@ -1052,8 +1048,8 @@ tips:
     - Color your shapes before cutting for maximum efficiency.
     - With modules, space is merely a perception; a concern for mortal men.
     - Make a separate blueprint factory. They're important for modules.
+    - Have a closer look on the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
     - Mix all primary colors together to make white!
@@ -1068,4 +1064,4 @@ tips:
     - To clear belts, cut the area and then paste it at the same location.
     - Paina F4 nähdäksesi FPS laskurin ja virkistystaajuuden.
     - Press F4 twice to show the tile of your mouse and camera.
-    - null
+    - You can click a pinned shape on the left side to unpin it.
