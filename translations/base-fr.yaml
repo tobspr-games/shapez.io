@@ -47,7 +47,7 @@ steamPage:
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider:
+    thousandsDivider: ","
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -300,6 +300,7 @@ ingame:
             sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer
             une sur l’endroit pointé.
         creationSuccessNotification: La balise a été créée.
+        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Couches
         empty: Vide
@@ -317,19 +318,20 @@ ingame:
                 plus vite votre but.<br><br> Astuce : Gardez
                 <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs,
                 et utilisez <strong>R</strong> pour les faire pivoter."
-            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour
-                couper les cercles en deux.<br><br> PS : Le découpeur coupe toujours
-                <strong>de haut en bas</strong> quelle que soit son orientation."
+            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour couper
+                les cercles en deux.<br><br> PS : Le découpeur coupe toujours
+                <strong>de haut en bas</strong> quelle que soit son
+                orientation."
             2_2_place_trash: Le découpeur peut se <strong>bloquer</strong> !<br><br>
-                Utilisez la <strong>poubelle</strong> pour vous débarrasser des déchets
-                dont vous n’avez pas (encore) besoin.
+                Utilisez la <strong>poubelle</strong> pour vous débarrasser des
+                déchets dont vous n’avez pas (encore) besoin.
             2_3_more_cutters: "Bravo ! Maintenant ajoutez <strong>deux découpeurs de
-                plus</strong> pour accélérer le processus !<br><br>
-                PS : Utilisez les <strong>raccourcis clavier 0–9</strong> pour accéder
-                plus rapidement aux bâtiments."
-            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez
-                quatre extracteurs</strong> et connectez-les au centre.<br><br>
-                PS : Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
+                plus</strong> pour accélérer le processus !<br><br> PS :
+                Utilisez les <strong>raccourcis clavier 0–9</strong> pour
+                accéder plus rapidement aux bâtiments."
+            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez quatre
+                extracteurs</strong> et connectez-les au centre.<br><br> PS :
+                Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
                 activer le planificateur."
             21_1_place_quad_painter: Placez un <strong>quadruple peintre</strong> et
                 connectez des <strong>cercles</strong> et des couleurs
@@ -337,11 +339,11 @@ ingame:
             21_2_switch_to_wires: Basculez sur le calque de câblage en appuyant sur
                 <strong>E</strong>.<br><br> Puis <strong>connectez les quatre
                 entrées</strong> du peintre avec des câbles !
-            21_3_place_button: Génial ! Maintenant, placez un
-                <strong>interrupteur</strong> et connectez-le avec des câbles !
-            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un
-                <strong>signal vrai</strong> et active le peintre.<br><br> PS : Vous
-                n’êtes pas obligé de connecter toutes les entrées ! Essayez d’en brancher
+            21_3_place_button: Génial ! Maintenant, placez un <strong>interrupteur</strong>
+                et connectez-le avec des câbles !
+            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un <strong>signal
+                vrai</strong> et active le peintre.<br><br> PS : Vous n’êtes pas
+                obligé de connecter toutes les entrées ! Essayez d’en brancher
                 seulement deux."
     connectedMiners:
         one_miner: 1 extracteur
@@ -599,11 +601,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous avez débloqué le <strong>découpeur</strong>. Il coupe des formes en
-            deux <strong>de haut en bas</strong> quelle que soit son
-            orientation !<br><br> Assurez-vous de vous débarrasser des déchets,
-            sinon <strong>gare au blocage</strong>. À cet effet, je mets à votre
-            disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -629,10 +632,9 @@ storyRewards:
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué. Il peut
-            être utilisé pour construire de plus grandes usines en
-            <strong>distribuant équitablement et rassemblant les formes</strong>
-            entre plusieurs convoyeurs !<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_tunnel:
         title: Tunnel
         desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
@@ -657,12 +659,13 @@ storyRewards:
     reward_merger:
         title: Fusionneur compact
         desc: Vous avez débloqué le <strong>fusionneur</strong>, une variante du
-            <strong>répartiteur</strong>. Il accepte deux entrées et les fusionne en un
-            seul convoyeur !
+            <strong>répartiteur</strong>. Il accepte deux entrées et les
+            fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
-        desc: Vous avez débloqué une variante compacte du <strong>répartiteur</strong> —
-            Il accepte une seule entrée et la divise en deux sorties !
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -704,9 +707,9 @@ storyRewards:
             nouvelles mécaniques de jeu !<br><br> Pour commencer, je vous
             débloque le <strong>quadruple peintre</strong>. Connectez les
             entrées à peindre sur le calque de câblage.<br><br> Pour voir le
-            calque de câblage, appuyez sur <strong>E</strong>.<br><br>PS : Activez
-            les <strong>indices</strong> dans les paramètres pour voir un tutoriel
-            sur le câblage."
+            calque de câblage, appuyez sur <strong>E</strong>.<br><br>PS :
+            Activez les <strong>indices</strong> dans les paramètres pour voir
+            un tutoriel sur le câblage."
     reward_filter:
         title: Filtre à objets
         desc: Vous avez débloqué le <strong>filtre à objets</strong> ! Il dirige les
@@ -738,17 +741,14 @@ storyRewards:
             <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
-            permettent de <strong>simuler le traitement des
-            formes</strong> !<br><br> Vous pouvez maintenant simuler un
-            découpeur, un pivoteur, un combineur et plus encore sur le calque de
-            câblage !<br><br> Avec ça, vous avez trois possibilités pour
-            continuer le jeu :<br><br> - Construire une <strong>machine
-            automatisée</strong> pour fabriquer n’importe quelle forme demandée
-            par le centre (je conseille d’essayer !).<br><br> - Construire
-            quelque chose de cool avec des câbles.<br><br> - Continuer à jouer
-            normalement.<br><br> Dans tous les cas, l’important c’est de
-            s’amuser !
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotater, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            regulary.<br><br> Whatever you choose, remember to have fun!
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -941,10 +941,12 @@ settings:
                 déplacement.
         zoomToCursor:
             title: Zoomer vers le curseur
-            description: Si activé, zoome vers la position de la souris ; sinon, vers le centre de l’écran.
+            description: Si activé, zoome vers la position de la souris ; sinon, vers le
+                centre de l’écran.
         mapResourcesScale:
             title: Taille des ressources sur la carte
-            description: Contrôle la taille des formes sur la vue d’ensemble de la carte visible en dézoomant.
+            description: Contrôle la taille des formes sur la vue d’ensemble de la carte
+                visible en dézoomant.
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1073,11 +1075,9 @@ tips:
       orientation.
     - Pour obtenir du blanc, mélangez les trois couleurs.
     - Le stockage priorise la première sortie.
-    - Investissez du temps pour créer des patrons reproductibles, ça vaut le
-      coup !
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - Maintenir <b>CTRL</b> permet de placer plusieurs bâtiments.
-    - Vous pouvez maintenir <b>ALT</b> pour inverser la direction des convoyeurs
-      placés.
+    - Efficiency is key!
     - L’efficacité est la clé !
     - Les gisements plus éloignés du centre produisent des formes plus complexes.
     - Les machines ont une vitesse limitée, divisez-les pour une efficacité
@@ -1099,9 +1099,8 @@ tips:
     - Avec les modules, l’espace n’est qu’une perception ; une préoccupation
       pour les hommes mortels.
     - Créez une usine de patrons à part. Ils sont importants pour les modules.
-    - Regardez de plus près le mélangeur de couleur et vous aurez la réponse à
-      vos questions.
-    - Utilisez <b>CTRL</b> + clic pour sélectionner une zone.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - Construire trop près du centre peut gêner les projets futurs.
     - L’icône d’épingle à côté de chaque forme dans la liste d’améliorations
       épingle la forme à l’écran.
@@ -1120,4 +1119,4 @@ tips:
       endroit.
     - Appuyez sur F4 pour voir vos IPS et votre fréquence de rafraîchissement.
     - Appuyez deux fois sur F4 pour voir les coordonnées.
-    - Cliquez sur une forme épinglée à gauche pour l’enlever.
+    - null

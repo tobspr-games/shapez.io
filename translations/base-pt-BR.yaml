@@ -299,6 +299,7 @@ ingame:
             atual ou <strong>clique com o botão direito do mouse</strong> para
             criar um marcador no local selecionado.
         creationSuccessNotification: Marcador criado.
+        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Camadas
         empty: Vazio
@@ -1049,9 +1050,9 @@ tips:
     - Cortadores sempre cortam verticalmente, independente da orientação.
     - Misture todas as cores para obter branco.
     - O armazenamento prioriza a saída primária.
-    - Invista tempo em construir designs que podem ser repetidos - vale a pena!
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - Segurar <b>CTRL</b> permite colocar múltiplas construções.
-    - Segure <b>ALT</b> para inverter a direção de esteiras posicionadas.
+    - Efficiency is key!
     - Efficiência é a chave!
     - Fontes de recursos mais distantes do HUB são mais complexas.
     - Máquinas tem uma velocidade máxima, divida os itens para uma eficiência
@@ -1073,9 +1074,8 @@ tips:
       mortais.
     - Faça uma fábrica separada para projetos. Eles são importantes para os
       módulos.
-    - Dê uma olhada mais de perto no misturador de cores, e suas perguntas serão
-      respondidas.
-    - Use <b>CTRL</b> + Clique para selecionar uma área.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - Construções muito perto do HUB podem entrar no caminho de projetos futuros.
     - O ícone de pin ao lado de cada forma na lista de melhorias fixa essa forma
       na tela.
@@ -1092,4 +1092,4 @@ tips:
     - Para limpar as esteiras, corte a área e cole-a no mesmo lugar.
     - Pressione F4 para mostrar seu FPS e taxa de tiques.
     - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
-    - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
+    - null

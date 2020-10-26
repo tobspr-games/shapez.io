@@ -361,7 +361,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
         // Show notification about renamed
         this.root.hud.signals.notification.dispatch(
-            T.ingame.waypoints.creationSuccessNotification,
+            T.ingame.waypoints.editSuccessNotification,
             enumNotificationType.success
         );
 

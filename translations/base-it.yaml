@@ -296,6 +296,7 @@ ingame:
             dalla visuale corrente, oppure <strong>click destro</strong> per
             creare un etichetta nella posizione selezionata.
         creationSuccessNotification: L'etichetta è stata creata.
+        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: Tutorial
         hints:
@@ -1060,10 +1061,9 @@ tips:
       dall'orientamento.
     - Mischia tutti i tre colori per fare il bianco.
     - Il magazzino prioritizza la prima uscita.
-    - Impiega tempo per costruire design replicabili, ne vale la pena!
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - Tenere premuto <b>CTRL</b> ti consente di piazzare multipli edifici.
-    - Puoi tenere premuto <b>ALT</b> per invertire la direzione dei nastri
-      posizionati.
+    - Efficiency is key!
     - L'efficienza è la chiave!
     - I giacimenti più lontani dall'hub contengono forme più complesse.
     - Le macchine hanno una velocità limitata, distribuisci il carico per la
@@ -1085,9 +1085,8 @@ tips:
       mortali.
     - Costruisci una fabbrica dedicata per i progetti. Sono importanti per i
       moduli.
-    - Guarda da vicino il miscelatore di colori, e le tue domande avranno
-      risposta.
-    - Usa <b>CTRL</b> + Clic per selezionare un'area.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - Costruire troppo vicino all'hub potrebbe intralciare progetti futuri.
     - Premere la puntina vicino a ogni forma nel menù miglioramenti la farà
       visualizzare sempre a schermo
@@ -1104,5 +1103,4 @@ tips:
     - Per svuotare i nastri, taglia e re-incolla l'area nello stesso punto.
     - Premi F4 per mostrare FPS e Tick al secondo.
     - Press F4 due volte per mostrare la casella del cursore e della telecamera.
-    - Puoi cliccare a sinistra di una forma fermata a schermo per rimuoverla
-      dalla lista.
+    - null

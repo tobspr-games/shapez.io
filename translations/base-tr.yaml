@@ -203,12 +203,11 @@ dialogs:
         desc: Oyun kaydını buradan adlandırabilirsiniz.
     tutorialVideoAvailable:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek
-            ister misin?
+        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek ister misin?
     tutorialVideoAvailableForeignLanguage:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde.
-            İzlemek ister misin?
+        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde. İzlemek ister
+            misin?
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -289,6 +288,7 @@ ingame:
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
             bas, <strong>sağ-tık</strong> ile mevcut konumda yer imi oluştur.
         creationSuccessNotification: Yer İmi oluşturuldu.
+        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: Eğİtİm
         hints:
@@ -302,30 +302,33 @@ ingame:
                 yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için
                 <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong>
                 tuşuyla taşıma bandının yönünü döndür."
-            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
-                Not: Kesici şekilleri yönünden bağımsız olarak her zaman <strong>yukarıdan aşağıya</strong>
-                keser."
-            2_2_place_trash: Kesicinin çıkış hatları doluysa <strong>durabilir</strong>!<br><br>
-                Bunun için kullanılmayan çıktılara <strong>çöp</strong>
-                yerleştirin.
-            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
-                yerleştir.<br><br> Not: <strong>0-9 tuşlarını</strong> kullanarak yapılara
-                daha hızlı ulaşabilirsin!"
-            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici yerleştir</strong> ve
-                bunları merkeze bağla.<br><br> Not: <strong>SHIFT tuşuna</strong>
-                basılı tutarak bant planlayıcıyı
+            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir
+                <strong>Kesici</strong> yerleştir!<br><br> Not: Kesici şekilleri
+                yönünden bağımsız olarak her zaman <strong>yukarıdan
+                aşağıya</strong> keser."
+            2_2_place_trash: Kesicinin çıkış hatları doluysa
+                <strong>durabilir</strong>!<br><br> Bunun için kullanılmayan
+                çıktılara <strong>çöp</strong> yerleştirin.
+            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki
+                kesici daha</strong> yerleştir.<br><br> Not: <strong>0-9
+                tuşlarını</strong> kullanarak yapılara daha hızlı
+                ulaşabilirsin!"
+            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici
+                yerleştir</strong> ve bunları merkeze bağla.<br><br> Not:
+                <strong>SHIFT tuşuna</strong> basılı tutarak bant planlayıcıyı
                 etkinleştir!"
-            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
-                <strong>beyaz</strong> ve <strong>kırmızı</strong> renkleri
-                elde edin!
-            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş yapın!<br><br>
-                Sonra boyayıcının <strong>dört girişini kablolara
+            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve
+                <strong>daireyi</strong>, <strong>beyaz</strong> ve
+                <strong>kırmızı</strong> renkleri elde edin!
+            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş
+                yapın!<br><br> Sonra boyayıcının <strong>dört girişini kablolara
                 bağlayın</strong>!
             21_3_place_button: Harika! Şimdi bir <strong>Anahtar</strong> yerleştirin ve onu
                 kablolarla bağlayın!
-            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1) gönderin</strong> ve bununla
-                boyayıcıyı aktifleştirin.<br><br> Not: Bütün girişleri bağlamanıza gerek yok!
-                Sadece iki tanesini kabloyla bağlamayı deneyin."
+            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1)
+                gönderin</strong> ve bununla boyayıcıyı aktifleştirin.<br><br>
+                Not: Bütün girişleri bağlamanıza gerek yok! Sadece iki tanesini
+                kabloyla bağlamayı deneyin."
     colors:
         red: Kırmızı
         green: Yeşil
@@ -709,10 +712,10 @@ storyRewards:
             dene!"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın!
-            Bu yapı örneğin <strong>eşya filtrelerine</strong> bağlanabilir.<br><br>
-            Sabit sinyal <strong>şekil</strong>, <strong>renk</strong> veya
-            <strong>ikili değer</strong> (1 veya 0)
+        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın! Bu
+            yapı örneğin <strong>eşya filtrelerine</strong>
+            bağlanabilir.<br><br> Sabit sinyal <strong>şekil</strong>,
+            <strong>renk</strong> veya <strong>ikili değer</strong> (1 veya 0)
             gönderelebilir.
     reward_logic_gates:
         title: Mantık Kapıları
@@ -733,13 +736,13 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce <strong>Kablo Katmanını</strong> açtın: Normal oyunun bulunduğu
-            katmanın üzerinde ayrı bir katmandır ve bir sürü yeni özelliği
-            vardır!<br><br> Başlangıç olarak senin için <strong>Dörtlü
-            Boyayıcıyı</strong> açıyorum. - Kablo katmanında boyamak için
-            istediğin hatları bağla! <br><br> Kablo katmanına geçiş yapmak için
-            <strong>E tuşunu </strong> kullan. <br><br> Not: İpuçlarını kablo eğitimlerini
-            görmek için ayarlarda aktifleştirmeyi unutma."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -1039,10 +1042,9 @@ tips:
     - Kesiciler, kendi yönlerinden bağımsız olarak daima dikey olarak keserler.
     - Beyaz renk elde etmek için üç rengi birbiriyle karıştırın.
     - Depolama yapısı ilk çıktıya öncelik verir.
-    - Tekrarlanabilir tasarımlar oluşturmak için zaman ayırın - buna değer!
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - <b>CTRL</b> tuşunu basılı tutmak, birden çok yapı yerleştirmeye izin verir.
-    - Yerleştirilen bantların yönünü ters çevirmek için <b>ALT</b> tuşunu basılı
-      tutabilirsiniz.
+    - Efficiency is key!
     - Verimlilik işin püf noktasıdır!
     - Merkezden daha uzaktaki şekil kaynakları daha karmaşıktır.
     - Makinelerin sınırlı bir hızı vardır, bunları maksimum verimlilik için
@@ -1065,8 +1067,8 @@ tips:
     - Modülleri ile uzay yalnızca bir algıdır; ölümlü insanlar için bir endişe
       kaynağı.
     - Ayrı bir taslak fabrikası yapın. Modüller için önemlidirler.
-    - Renk karıştırıcısına daha yakından bakın, sorularınız cevaplanacaktır.
-    - Bir alan seçmek için <b>CTRL</b> tuşuna basılı olarak tıklayın.
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - Merkeze çok yakın inşa etmek sonraki projelerin önüne geçebilir.
     - Geliştirme listesindeki her şeklin yanındaki iğne simgesi, onu ekrana
       sabitler.
@@ -1083,5 +1085,4 @@ tips:
     - FPS'nizi (oyun kare hızı) ve Tik Oranınızı (oyun hızı) göstermek için F4'e
       basın.
     - Farenizin ve kameranızın sınırlarını göstermek için F4'e iki kez basın.
-    - Sol tarafta sabitlenmiş bir şekle tıklayarak sabitlemesini
-      kaldırabilirsiniz.
+    - null

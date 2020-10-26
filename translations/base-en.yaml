@@ -404,6 +404,7 @@ ingame:
         hub: HUB
         description: Left-click a marker to jump to it, right-click to delete it.<br><br>Press <keybinding> to create a marker from the current view, or <strong>right-click</strong> to create a marker at the selected location.
         creationSuccessNotification: Marker has been created.
+        editSuccessNotification: Marker has been edited.
 
     # Shape viewer
     shapeViewer:

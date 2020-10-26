@@ -262,6 +262,7 @@ ingame:
         description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。 <br><br>按 <keybinding>
             為當前區域建立地圖標記或按 <strong>right-click</strong> 為選取區域建立地圖標記。
         creationSuccessNotification: 成功創建地圖標記。
+        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: 教程
         hints:
@@ -932,9 +933,9 @@ tips:
     - 不論擺放方向，切割機永遠做垂直切割。
     - 白 = 紅 + 綠 + 藍。
     - 倉庫優先從左側輸出。
-    - 花點時間研究可以重複利用的設計，會有回報的!
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - 按住 <b>CTRL</b> 可以一次放置多個建築。
-    - 按住 <b>ALT</b> 以反轉輸送帶的放置方向。
+    - Efficiency is key!
     - 效率是關鍵!
     - 離基地越遠得圖形叢越複雜。
     - 機器的運作速度有上限，多放幾個增加生產效率。
@@ -950,8 +951,8 @@ tips:
     - 先上色再切割會比較有效率。
     - 有了模組，空間淪為假議題、凡夫俗子的憂思。
     - 創建一個藍圖工廠，這對模組化很有幫助。
-    - 靠近一點看混色機，你會找到解答。
-    - 按 <b>CTRL</b> + 點選想選取的區域。
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - 離基地太近的建築可能在未來會礙事。
     - 更新目錄的每個圖形旁都有圖釘，點選即可把圖形釘在螢幕上(目標圖形旁)。
     - 混合所有基本色就會得到白色!
@@ -965,4 +966,4 @@ tips:
     - 清除輸送帶有個方法:複製它再原地貼上。
     - 按 F4 來顯示螢幕的幀數(FPS)與刷新率(Tick Rate)。
     - 按 F4 兩次來顯示相機和游標的絕對位置。
-    - 在已標記的圖形上按左鍵去除標記。
+    - null

@@ -306,6 +306,7 @@ ingame:
             marker na środku widoku lub <strong>prawy przycisk myszy</strong>,
             by stworzyć na wskazanej lokacji.
         creationSuccessNotification: Pomyślnie utworzono znacznik.
+        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Warstwy
         empty: Puste
@@ -1055,10 +1056,10 @@ tips:
     - Przecinaki zawsze tną pionowo, nie zważając na ich orientację.
     - Zmieszanie wszystich 3 barwników daje biały barwnik.
     - Pierwsze wyjście z magazynu ma najwyższy piorytet.
-    - Zainwestuj czas w budowanie powtarzalnych układów fabryk - warto!
+    - Holding <b>SHIFT</b> lets you place multiple buildings in one click.
     - Przytrymanie <b>CTRL</b> pozwala na układanie wielu budynków tego samego
       typu.
-    - Możesz przytrzymać <b>ALT</b>, by odwrócić kierunek układanych taśmociągów.
+    - Efficiency is key!
     - Wydajność to klucz do sukcesu!
     - Kształty położone dalej od budynku głównego są bardziej skomplikowane.
     - Maszyny mają limitowaną prędkość, podziel wejścia między wiele ich, by
@@ -1079,9 +1080,8 @@ tips:
     - Z modułami, miejsce jest tylko tym, co postrzegamy; troska dla
       śmiertelników
     - Zbuduj osobną fabrykę schematów. Są one bardzo potrzebne do modułów.
-    - Obejrz dokładnie mikser kolorów, a wszystkie twoje pytania zostaną
-      rozwiązane.
-    - Przytrzymaj <b>CTRL</b> i przeciągnij, by zaznaczyć obszar
+    - Use <b>CTRL</b> + Click to select an area.
+    - Building too close to the hub can get in the way of later projects.
     - Budowanie zbyt blisko budynku głównego może przeszkodzić ci w późniejszych
       projektach.
     - Ikona pinezki przy każdym kształcie na liście ulepszeń przypina je na
@@ -1100,4 +1100,4 @@ tips:
     - By wyczyścić taśmociągi, wytnij obszar i wklej go w tym samym miejscu.
     - Naciśnij F4, by zobaczyć ilość FPS i tempo ticków.
     - Naciśnij F4 dwa razy, by zobaczyć kratkę twojej myszy i kamery.
-    - Możesz klinąć przypięty kształt po lewej stronie, by go odpiąć.
+    - null
