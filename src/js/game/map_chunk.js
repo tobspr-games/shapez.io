@@ -224,9 +224,9 @@ export class MapChunk {
                 ++windmillCount;
             }
         }
-        if (windmillCount > 1) {
-            subShapes[0] = enumSubShape.rect;
-            subShapes[1] = enumSubShape.rect;
+        if (windmillCount > 2) {
+            this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
+            return;
         }
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
