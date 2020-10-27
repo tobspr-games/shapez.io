@@ -294,7 +294,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
         const originalTime = 1 / baseSpeed;
 
-        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
+        const bonusTimeToApply = Math.max(originalTime, processorComp.bonusTime);
         const timeToProcess = originalTime - bonusTimeToApply;
 
         processorComp.bonusTime -= bonusTimeToApply;
