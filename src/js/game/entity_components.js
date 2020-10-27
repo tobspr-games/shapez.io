@@ -20,6 +20,7 @@ import { BeltReaderComponent } from "./components/belt_reader";
 import { FilterComponent } from "./components/filter";
 import { ItemProducerComponent } from "./components/item_producer";
 import { WirelessDisplayComponent } from "./components/wireless_display";
+import { WirelessCodeComponent } from "./components/wireless_code";
 /* typehints:end */
 
 /**
@@ -92,6 +93,9 @@ export class EntityComponentStorage {
 
         /** @type {ItemProducerComponent} */
         this.ItemProducer;
+
+        /** @type {WirelessCodeComponent} */
+        this.WirelessCode;
 
         /* typehints:end */
     }

@@ -12,7 +12,6 @@ import { Loader } from "../core/loader";
 import { drawRotatedSprite } from "../core/draw_utils";
 import { gComponentRegistry } from "../core/global_registries";
 import { getBuildingDataFromCode } from "./building_codes";
-import { WirelessDisplayComponent } from "./components/wireless_display";
 
 export class Entity extends BasicSerializableObject {
     /**
@@ -65,12 +64,6 @@ export class Entity extends BasicSerializableObject {
          * @type {string} */
         this.destroyReason;
 
-        /**
-         * Stores wireless code of this entity
-         * @type {string}
-         */
-        this.wireless_code;
-
         /* typehints:end */
     }
 
@@ -83,7 +76,6 @@ export class Entity extends BasicSerializableObject {
      * @returns {import("../savegame/serialization").Schema}
      */
     static getSchema() {
-        console.log(types);
         return {
             uid: types.uint,
             components: types.keyValueMap(types.objData(gComponentRegistry), false),
@@ -94,7 +86,6 @@ export class Entity extends BasicSerializableObject {
      * Returns a clone of this entity
      */
     clone() {
-        const wireless_code = this.wireless_code;
         const staticComp = this.components.StaticMapEntity;
         const buildingData = getBuildingDataFromCode(staticComp.code);
 
@@ -105,7 +96,7 @@ export class Entity extends BasicSerializableObject {
             rotation: staticComp.rotation,
             rotationVariant: buildingData.rotationVariant,
             variant: buildingData.variant,
-            wirelessCode: this.wireless_code,
+            wireless_code: this.components.WirelessCode,
         });
 
         for (const key in this.components) {

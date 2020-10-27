@@ -140,7 +140,6 @@ export class SavegameSerializer {
         if (errorReason) {
             return ExplainedResult.bad(errorReason);
         }
-
         return ExplainedResult.good();
     }
 }

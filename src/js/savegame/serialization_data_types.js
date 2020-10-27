@@ -1,10 +1,11 @@
 /* typehints:start */
 import { GameRoot } from "../game/root";
-import { BasicSerializableObject } from "./serialization";
+import { BasicSerializableObject, types } from "./serialization";
 /* typehints:end */
 
 import { Vector } from "../core/vector";
 import { round4Digits } from "../core/utils";
+import { convertCompilerOptionsFromJson } from "typescript";
 export const globalJsonSchemaDefs = {};
 
 /**

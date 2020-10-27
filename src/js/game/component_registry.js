@@ -20,6 +20,7 @@ import { BeltReaderComponent } from "./components/belt_reader";
 import { FilterComponent } from "./components/filter";
 import { ItemProducerComponent } from "./components/item_producer";
 import { WirelessDisplayComponent } from "./components/wireless_display";
+import { WirelessCodeComponent } from "./components/wireless_code";
 
 export function initComponentRegistry() {
     gComponentRegistry.register(StaticMapEntityComponent);
@@ -43,6 +44,7 @@ export function initComponentRegistry() {
     gComponentRegistry.register(BeltReaderComponent);
     gComponentRegistry.register(FilterComponent);
     gComponentRegistry.register(ItemProducerComponent);
+    gComponentRegistry.register(WirelessCodeComponent);
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 

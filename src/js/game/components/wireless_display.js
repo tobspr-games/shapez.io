@@ -8,10 +8,6 @@ export class WirelessDisplayComponent extends Component {
         return "WirelessDisplay";
     }
 
-    static getWirelessCode() {
-        return 0;
-    }
-
     static getSchema() {
         return {
             signal: types.nullable(typeItemSingleton),

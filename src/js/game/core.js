@@ -89,7 +89,6 @@ export class GameCore {
         this.root.savegame = savegame;
         this.root.gameWidth = this.app.screenWidth;
         this.root.gameHeight = this.app.screenHeight;
-
         // Initialize canvas element & context
         this.internalInitCanvas();
 

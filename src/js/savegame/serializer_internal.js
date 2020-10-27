@@ -2,6 +2,7 @@ import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "../game/building_codes";
+import { WirelessCodeComponent } from "../game/components/wireless_code";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
 
@@ -57,6 +58,7 @@ export class SerializerInternal {
             originalRotation: staticData.originalRotation,
             rotationVariant: data.rotationVariant,
             variant: data.variant,
+            wireless_code: payload.components.WirelessCode,
         });
 
         entity.uid = payload.uid;
@@ -86,6 +88,9 @@ export class SerializerInternal {
                     }
                 }
                 continue;
+            }
+            if (entity.components.WirelessCode && !entity.components.WirelessCode.WirelessCodeComponent && entity.components.WirelessCode.wireless_code) {
+                entity.components.WirelessCode = new WirelessCodeComponent(entity.components.WirelessCode.wireless_code);
             }
 
             const errorStatus = entity.components[componentId].deserialize(data[componentId], root);

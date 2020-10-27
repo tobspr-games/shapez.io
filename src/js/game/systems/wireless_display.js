@@ -19,6 +19,8 @@ import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item
 import { init } from "logrocket";
 import { Signal } from "../../core/signal";
 import { serializeError } from "../../core/logging";
+import { WirelessCodeComponent } from "../components/wireless_code";
+import { enumInvertedDirections } from "../../core/vector";
 
 export class WirelessDisplaySystem extends GameSystemWithFilter {
     constructor(root) {
@@ -39,6 +41,19 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
         this.wirelessMachineList = {};
 
         this.displayNumber = 0;
+        this.entityCount = 0;
+    }
+
+    update() {
+        if (this.entityCount != this.allEntities.length) {
+            for (let i = 0; i < this.allEntities.length; i++) {
+                const entity = this.allEntities[i];
+                if (entity.components.WirelessDisplay && entity.components.WiredPins && entity.components.WirelessCode && !this.wirelessMachineList[entity.components.WirelessCode]) {
+                    this.wirelessMachineList[entity.components.WirelessCode["wireless_code"]] = entity;
+                }
+            }
+            this.entityCount = this.allEntities.length;
+        }
     }
 
     /**
@@ -87,11 +102,11 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
                     return;
                 }
 
-                if (signalValueInput.getValue() && !entity.components.WiredPins){
-                    entity.wireless_code = signalValueInput.getValue();
-                } else if (signalValueInput.getValue() && entity.components.WiredPins){
-                    entity.wireless_code = signalValueInput.getValue();
-                    this.wirelessMachineList[entity.wireless_code] = entity;
+                if (signalValueInput.getValue() && !entity.components.WiredPins) {
+                    entity.addComponent(new WirelessCodeComponent(signalValueInput.getValue()));
+                } else if (signalValueInput.getValue() && entity.components.WiredPins) {
+                    entity.addComponent(new WirelessCodeComponent(signalValueInput.getValue()));
+                    this.wirelessMachineList[entity.components.WirelessCode["wireless_code"]] = entity;
                 }
             };
 
@@ -160,8 +175,8 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity_a = contents[i];
-            if (entity_a && !entity_a.components.WiredPins && entity_a.components.WirelessDisplay) {
-                const entity_b = this.wirelessMachineList[entity_a.wireless_code];
+            if (entity_a && !entity_a.components.WiredPins && entity_a.components.WirelessDisplay && entity_a.components.WirelessCode) {
+                const entity_b = this.wirelessMachineList[entity_a.components.WirelessCode["wireless_code"]];
                 if (entity_b) {
                     if (!this.allEntities.includes(entity_b)) {
                         this.wirelessMachineList[entity_b] = undefined;

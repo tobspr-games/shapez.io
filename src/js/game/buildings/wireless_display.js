@@ -1,5 +1,6 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
+import { WirelessCodeComponent } from "../components/wireless_code";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -31,7 +32,7 @@ export class MetaWirelessDisplayBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
+        return true //root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
     }
 
     /**
@@ -40,7 +41,7 @@ export class MetaWirelessDisplayBuilding extends MetaBuilding {
     getAvailableVariants(root) {
         let available = [defaultBuildingVariant];
 
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display)) {
+        if (true || root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display)) {
             available.push(enumWirelessDisplayVariants.remote_control);
         }
 
@@ -80,7 +81,7 @@ export class MetaWirelessDisplayBuilding extends MetaBuilding {
                             type: enumPinSlotType.logicalAcceptor,
                         },
                     ],
-                })
+                }),
             );
         }
     }
