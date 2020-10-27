@@ -195,7 +195,7 @@ export class MapChunk {
         if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff
             weights[enumSubShape.star] = 0;
-            weights[enumSubShape.windmill] = 0; 
+            weights[enumSubShape.windmill] = 0;
         }
 
         if (distanceToOriginInChunks < 10) {
@@ -213,7 +213,7 @@ export class MapChunk {
                 this.internalGenerateRandomSubShape(rng, weights),
                 this.internalGenerateRandomSubShape(rng, weights),
                 this.internalGenerateRandomSubShape(rng, weights),
-                this.internalGenerateRandomSubShape(rng, weights)
+                this.internalGenerateRandomSubShape(rng, weights),
             ];
         }
 
@@ -238,10 +238,10 @@ export class MapChunk {
                 }
             } else {
                 // Turn subshape at 2 random positions into a random type that is not windmill
-                let quad1 = rng.nextIntRange(0,3);
-                let quad2 = rng.nextIntRange(0,2);
-                if (quad2 >= quad1) 
-                { 
+                let quad1 = rng.nextIntRange(0,4);
+                let quad2 = rng.nextIntRange(0,3);
+                if (quad2 >= quad1)
+                {
                     ++quad2;
                 }
                 subShapes[quad1] = this.internalGenerateRandomSubShape(rng, weights);
