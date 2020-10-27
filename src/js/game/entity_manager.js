@@ -74,7 +74,6 @@ export class EntityManager extends BasicSerializableObject {
 
         this.entities.push(entity);
 
-        //console.log(entity.components);
         // Register into the componentToEntity map
         for (const componentId in entity.components) {
             if (entity.components[componentId]) {

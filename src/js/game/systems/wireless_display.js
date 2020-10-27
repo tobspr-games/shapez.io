@@ -7,20 +7,13 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { isTrueItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
-import trim from "trim";
 import { THIRDPARTY_URLS } from "../../core/config";
 import { DialogWithForm } from "../../core/modal_dialog_elements";
 import { FormElementInput, FormElementItemChooser } from "../../core/modal_dialog_forms";
 import { fillInLinkIntoTranslation } from "../../core/utils";
 import { T } from "../../translations";
 import { Entity } from "../entity";
-import { ShapeDefinition } from "../shape_definition";
-import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
-import { init } from "logrocket";
-import { Signal } from "../../core/signal";
-import { serializeError } from "../../core/logging";
 import { WirelessCodeComponent } from "../components/wireless_code";
-import { enumInvertedDirections } from "../../core/vector";
 
 export class WirelessDisplaySystem extends GameSystemWithFilter {
     constructor(root) {

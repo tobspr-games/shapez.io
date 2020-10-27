@@ -79,7 +79,7 @@ export class GameLogic {
         }
 
         // Perform additional placement checks
-        if (this.root.signals.prePlacementCheck.dispatch(entity, offset) === STOP_PROPAGATION && !entity.components.Wire) {
+        if (this.root.signals.prePlacementCheck.dispatch(entity, offset) === STOP_PROPAGATION) {
             return false;
         }
 

@@ -37,6 +37,7 @@ const enumWireVariantToVariant = {
 export class MetaWireBuilding extends MetaBuilding {
     constructor() {
         super("wire");
+        this.a = "a";
     }
 
     getHasDirectionLockAvailable() {
@@ -177,7 +178,6 @@ export class MetaWireBuilding extends MetaBuilding {
 
         // First, reset rotation
         rotation = 0;
-
         switch (flag) {
             case 0b0000:
                 // Nothing

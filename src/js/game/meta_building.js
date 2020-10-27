@@ -6,8 +6,6 @@ import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
-import { WirelessCodeComponent } from "./components/wireless_code";
-import { WirelessDisplayComponent } from "./components/wireless_display";
 
 export const defaultBuildingVariant = "default";
 
