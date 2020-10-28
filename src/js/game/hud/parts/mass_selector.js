@@ -23,6 +23,7 @@ export class HUDMassSelector extends BaseHUDPart {
     createElements(parent) {}
 
     initialize() {
+        this.multiLayerSelect = false;
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
         this.selectedUids = new Set();
@@ -212,6 +213,10 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
 
+        this.multiLayerSelect = this.root.keyMapper.getBinding(
+            KEYMAPPINGS.massSelect.massSelectSelectMultiLayer
+        ).pressed;
+
         if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
             this.selectedUids = new Set();
@@ -246,10 +251,7 @@ export class HUDMassSelector extends BaseHUDPart {
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     let entities = [];
-                    if (
-                        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer)
-                            .pressed
-                    ) {
+                    if (this.multiLayerSelect) {
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
                     } else {
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
@@ -273,6 +275,10 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
+        this.multiLayerSelect =
+            this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiLayer).pressed ||
+            this.multiLayerSelect;
+
         if (this.currentSelectionStartWorld) {
             const worldStart = this.currentSelectionStartWorld;
             const worldEnd = this.root.camera.screenToWorld(this.currentSelectionEnd);
@@ -301,14 +307,10 @@ export class HUDMassSelector extends BaseHUDPart {
 
             const renderedUids = new Set();
 
-            const isMultiLayerPressed = this.root.keyMapper.getBinding(
-                KEYMAPPINGS.massSelect.massSelectSelectMultiLayer
-            ).pressed;
-
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     let entities = [];
-                    if (isMultiLayerPressed) {
+                    if (this.multiLayerSelect) {
                         entities = this.root.map.getLayersContentsMultipleXY(x, y);
                     } else {
                         entities = [this.root.map.getLayerContentXY(x, y, this.root.currentLayer)];
@@ -330,12 +332,15 @@ export class HUDMassSelector extends BaseHUDPart {
                 }
             }
         }
-        //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)wa
+
+        //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
 
             this.RenderSelectonPreviewTile(parameters, entity);
         });
+
+        parameters.context.globalAlpha = 1;
     }
     /**
      *
@@ -344,6 +349,8 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     RenderSelectonPreviewTile(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
+
+        parameters.context.globalAlpha = entity.layer == this.root.currentLayer ? 1 : 0.7;
 
         parameters.context.beginPath();
 
