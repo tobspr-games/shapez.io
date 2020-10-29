@@ -25,8 +25,10 @@ export class HUDMassSelector extends BaseHUDPart {
     initialize() {
         this.multiLayerSelect = false;
         this.currentSelectionStartWorld = null;
-        this.currentSelectionEnd = null;
-        this.selectedUids = new Set();
+		this.currentSelectionEnd = null;
+
+		/**@type {Array<Entity>} */
+        this.selectedEntities = [];
 
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.clearSelection, this);
@@ -53,8 +55,10 @@ export class HUDMassSelector extends BaseHUDPart {
     onEntityDestroyed(entity) {
         if (this.root.bulkOperationRunning) {
             return;
-        }
-        this.selectedUids.delete(entity.uid);
+		}
+		const index = this.selectedEntities.indexOf(entity);
+		if(index != -1)
+        	this.selectedEntities.splice(index, 1);
     }
 
     /**
@@ -62,8 +66,8 @@ export class HUDMassSelector extends BaseHUDPart {
      */
     onBack() {
         // Clear entities on escape
-        if (this.selectedUids.size > 0) {
-            this.selectedUids = new Set();
+        if (this.selectedEntities.length > 0) {
+            this.selectedEntities = [];
             return STOP_PROPAGATION;
         }
     }
@@ -72,19 +76,19 @@ export class HUDMassSelector extends BaseHUDPart {
      * Clears the entire selection
      */
     clearSelection() {
-        this.selectedUids = new Set();
+        this.selectedEntities = [];
     }
 
     confirmDelete() {
         if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
-            this.selectedUids.size > 100
+            this.selectedEntities.length > 100
         ) {
             const { ok } = this.root.hud.parts.dialogs.showWarning(
                 T.dialogs.massDeleteConfirm.title,
                 T.dialogs.massDeleteConfirm.desc.replace(
                     "<count>",
-                    "" + formatBigNumberFull(this.selectedUids.size)
+                    "" + formatBigNumberFull(this.selectedEntities.length)
                 ),
                 ["cancel:good:escape", "ok:bad:enter"]
             );
@@ -95,7 +99,7 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     doDelete() {
-        const entityUids = Array.from(this.selectedUids);
+        const entities = Array.from(this.selectedEntities);
 
         // Build mapping from uid to entity
         /**
@@ -104,11 +108,11 @@ export class HUDMassSelector extends BaseHUDPart {
         const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
 
         this.root.logic.performBulkOperation(() => {
-            for (let i = 0; i < entityUids.length; ++i) {
-                const uid = entityUids[i];
-                const entity = mapUidToEntity.get(uid);
+            for (let i = 0; i < entities.length; ++i) {
+                const entity = mapUidToEntity.get(entities[i].uid);
+
                 if (!entity) {
-                    logger.error("Entity not found by uid:", uid);
+                    logger.warn("Invalid Entity in Selected Entities");
                     continue;
                 }
 
@@ -119,20 +123,22 @@ export class HUDMassSelector extends BaseHUDPart {
         });
 
         // Clear uids later
-        this.selectedUids = new Set();
+        this.selectedEntities = [];
     }
 
     startCopy() {
-        if (this.selectedUids.size > 0) {
+        if (this.selectedEntities.length > 0) {
             if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
                 this.root.hud.parts.dialogs.showInfo(
                     T.dialogs.blueprintsNotUnlocked.title,
                     T.dialogs.blueprintsNotUnlocked.desc
                 );
                 return;
-            }
-            this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
-            this.selectedUids = new Set();
+			}
+
+			this.root.hud.signals.buildingsSelectedForCopy.dispatch(this.selectedEntities);
+			
+            this.selectedEntities = [];
             this.root.soundProxy.playUiClick();
         } else {
             this.root.soundProxy.playUiError();
@@ -147,13 +153,13 @@ export class HUDMassSelector extends BaseHUDPart {
             );
         } else if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
-            this.selectedUids.size > 100
+            this.selectedEntities.length > 100
         ) {
             const { ok } = this.root.hud.parts.dialogs.showWarning(
                 T.dialogs.massCutConfirm.title,
                 T.dialogs.massCutConfirm.desc.replace(
                     "<count>",
-                    "" + formatBigNumberFull(this.selectedUids.size)
+                    "" + formatBigNumberFull(this.selectedEntities.length)
                 ),
                 ["cancel:good:escape", "ok:bad:enter"]
             );
@@ -164,24 +170,22 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     doCut() {
-        if (this.selectedUids.size > 0) {
-            const entityUids = Array.from(this.selectedUids);
-
+        if (this.selectedEntities.length > 0) {
+			const entities = Array.from(this.selectedEntities);
             const cutAction = () => {
                 // copy code relies on entities still existing, so must copy before deleting.
-                this.root.hud.signals.buildingsSelectedForCopy.dispatch(entityUids);
+                this.root.hud.signals.buildingsSelectedForCopy.dispatch(entities);
 
-                for (let i = 0; i < entityUids.length; ++i) {
-                    const uid = entityUids[i];
-                    const entity = this.root.entityMgr.findByUid(uid);
+                for (let i = 0; i < entities.length; ++i) {
+                    const entity = entities[i];
                     if (!this.root.logic.tryDeleteBuilding(entity)) {
                         logger.error("Error in mass cut, could not remove building");
-                        this.selectedUids.delete(uid);
+                        this.selectedEntities.splice(i, 1);
                     }
                 }
             };
 
-            const blueprint = Blueprint.fromUids(this.root, entityUids);
+            const blueprint = Blueprint.fromEntities(this.root, entities);
             if (blueprint.canAfford(this.root)) {
                 cutAction();
             } else {
@@ -219,7 +223,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
         if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
-            this.selectedUids = new Set();
+            this.selectedEntities = [];
         }
 
         this.currentSelectionStartWorld = this.root.camera.screenToWorld(pos.copy());
@@ -260,7 +264,7 @@ export class HUDMassSelector extends BaseHUDPart {
                     for (let i = 0; i < entities.length; ++i) {
                         let entity = entities[i];
                         if (entity && this.root.logic.canDeleteBuilding(entity))
-                            this.selectedUids.add(entity.uid);
+                            this.selectedEntities.push(entity);
                     }
                 }
             }
@@ -333,12 +337,16 @@ export class HUDMassSelector extends BaseHUDPart {
             }
         }
 
-        //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
-        this.selectedUids.forEach(uid => {
-            const entity = this.root.entityMgr.findByUid(uid);
+		//EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
+		for(let i = 0; i < this.selectedEntities.length; ++ i){
+			const entity = this.selectedEntities[i];
+			this.RenderSelectonPreviewTile(parameters, entity);
+		}
+        // this.selectedUids.forEach(uid => {
+        //     const entity = this.root.entityMgr.findByUid(uid);
 
-            this.RenderSelectonPreviewTile(parameters, entity);
-        });
+        //     this.RenderSelectonPreviewTile(parameters, entity);
+        // });
 
         parameters.context.globalAlpha = 1;
     }
