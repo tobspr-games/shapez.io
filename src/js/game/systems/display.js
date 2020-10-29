@@ -84,6 +84,14 @@ export class DisplaySystem extends GameSystemWithFilter {
                         globalConfig.tileSize
                     );
                 } else if (value.getItemType() === "shape") {
+                    if (this.root.currentLayer == "wires") {
+                        value.drawItemCenteredClipped(
+                            (origin.x + 0.5) * globalConfig.tileSize,
+                            (origin.y + 0.5) * globalConfig.tileSize,
+                            parameters,
+                            30
+                        );                 
+                    }
                     value.drawItemCenteredClipped(
                         (origin.x + 0.5) * globalConfig.tileSize,
                         (origin.y + 0.5) * globalConfig.tileSize,
