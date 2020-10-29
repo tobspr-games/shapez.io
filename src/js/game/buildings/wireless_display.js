@@ -31,7 +31,7 @@ export class MetaWirelessDisplayBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return true //root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
     }
 
     /**

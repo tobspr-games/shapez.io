@@ -123,11 +123,11 @@ export class AtlasSprite extends BaseSprite {
      * @param {DrawParameters} parameters
      * @param {number} x
      * @param {number} y
-     * @param {number} size
+     * @param {number} size_x
      * @param {boolean=} clipping
      */
-    drawCachedCentered(parameters, x, y, size, clipping = true) {
-        this.drawCached(parameters, x - size / 2, y - size / 2, size, size, clipping);
+    drawCachedCentered(parameters, x, y, size_x, clipping = true) {
+        this.drawCached(parameters, x - size_x / 2, y - size_x / 2, size_x, size_x, clipping);
     }
 
     /**

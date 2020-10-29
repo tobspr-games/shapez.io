@@ -706,10 +706,10 @@ buildings:
     wireless_display:
         default:
             name: &wireless_display Wireless Display
-            description: Connect a signal to show it on the display - It can be a shape, color or boolean.
+            description: Connect to a channel and if channel connects, it receives the signal coming from Remote Control - Signal can be a shape, color or boolean.
         remote_control:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means shape, color or boolean "1")
+            name: Remote Control
+            description: Connect to a channel and if channel connects, it emits signal to Wireless Control - Signal can be a shape, color or boolean.
 
     reader:
         default:

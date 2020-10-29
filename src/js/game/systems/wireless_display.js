@@ -14,6 +14,7 @@ import { fillInLinkIntoTranslation } from "../../core/utils";
 import { T } from "../../translations";
 import { Entity } from "../entity";
 import { WirelessCodeComponent } from "../components/wireless_code";
+import { THEME} from "../theme";
 
 export class WirelessDisplaySystem extends GameSystemWithFilter {
     constructor(root) {
@@ -47,6 +48,7 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
             }
             this.entityCount = this.allEntities.length;
         }
+        const mousePos = this.root.app.mousePosition;
     }
 
     /**
@@ -160,6 +162,48 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
     }
 
     /**
+     * Computes the color below the current tile
+     * @returns {number}
+     */
+    computeColorBelowTile() {
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return null;
+        }
+
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile, "regular");
+
+        if (contents && contents.components.WirelessDisplay) {
+            // We hovered a lower layer, show the color there
+            if (contents && contents.components.WirelessCode && contents.components.WirelessCode.wireless_code) {
+                return contents.components.WirelessCode.wireless_code;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Draws Text Storked
+     * @param {string} text
+     * @param {number} y
+     * @param {number} x
+     * @param {number=} width
+     */
+    drawStroked(ctx, text, x, y, width = undefined) {
+        ctx.font = '15px Sans-serif';
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 1;
+        ctx.miterLimit=2
+        ctx.strokeText(text, x, y, width);
+        ctx.fillStyle = 'white';
+        ctx.fillText(text, x, y, width);
+    }
+
+    /**
      * Draws a given chunk
      * @param {import("../../core/draw_utils").DrawParameters} parameters
      * @param {MapChunkView} chunk
@@ -168,42 +212,57 @@ export class WirelessDisplaySystem extends GameSystemWithFilter {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity_a = contents[i];
-            if (entity_a && !entity_a.components.WiredPins && entity_a.components.WirelessDisplay && entity_a.components.WirelessCode) {
-                const entity_b = this.wirelessMachineList[entity_a.components.WirelessCode["wireless_code"]];
-                if (entity_b) {
-                    if (!this.allEntities.includes(entity_b)) {
-                        this.wirelessMachineList[entity_b] = undefined;
-                        return;
-                    }
-                    const origin = entity_a.components.StaticMapEntity.origin;
-                    const pinsComp = entity_b.components.WiredPins;
-                    const network = pinsComp.slots[0].linkedNetwork;
-    
-                    if (!network) {
-                        continue;
-                    }
-    
-                    const value = this.getDisplayItem(network.currentValue);
-    
-                    if (!value) {
-                        continue;
-                    }
-    
-                    if (value.getItemType()) {
-                        if (value.getItemType() === "color") {
-                            this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
-                                parameters,
-                                (origin.x + 0.5) * globalConfig.tileSize,
-                                (origin.y + 0.5) * globalConfig.tileSize,
-                                globalConfig.tileSize
-                            );
-                        } else if (value.getItemType() === "shape") {
-                            value.drawItemCenteredClipped(
-                                (origin.x + 0.5) * globalConfig.tileSize,
-                                (origin.y + 0.5) * globalConfig.tileSize,
-                                parameters,
-                                30
-                            );
+            if (entity_a && entity_a.components.WirelessDisplay) {
+                const below = this.computeColorBelowTile();
+                if (below) {
+                    // We have something below our tile
+                    const mousePosition = this.root.app.mousePosition;
+                    const worldPos = this.root.camera.screenToWorld(mousePosition);
+                    const tile = worldPos.toTileSpace().toWorldSpace();
+                    
+                    this.drawStroked(parameters.context, below.toString(), worldPos.x + 5, worldPos.y + 5)
+                    parameters.context.strokeStyle = THEME.map.colorBlindPickerTile;
+                    parameters.context.beginPath();
+                    parameters.context.rect(tile.x, tile.y, globalConfig.tileSize, globalConfig.tileSize);
+                    parameters.context.stroke();
+                }
+                if (!entity_a.components.WiredPins) {
+                    const entity_b = this.wirelessMachineList[entity_a.components.WirelessCode["wireless_code"]];
+                    if (entity_b) {
+                        if (!this.allEntities.includes(entity_b)) {
+                            this.wirelessMachineList[entity_b] = undefined;
+                            return;
+                        }
+                        const origin = entity_a.components.StaticMapEntity.origin;
+                        const pinsComp = entity_b.components.WiredPins;
+                        const network = pinsComp.slots[0].linkedNetwork;
+        
+                        if (!network) {
+                            continue;
+                        }
+        
+                        const value = this.getDisplayItem(network.currentValue);
+        
+                        if (!value) {
+                            continue;
+                        }
+        
+                        if (value.getItemType()) {
+                            if (value.getItemType() === "color") {
+                                this.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
+                                    parameters,
+                                    (origin.x + 0.5) * globalConfig.tileSize,
+                                    (origin.y + 0.5) * globalConfig.tileSize,
+                                    globalConfig.tileSize
+                                );
+                            } else if (value.getItemType() === "shape") {
+                                value.drawItemCenteredClipped(
+                                    (origin.x + 0.5) * globalConfig.tileSize,
+                                    (origin.y + 0.5) * globalConfig.tileSize,
+                                    parameters,
+                                    30
+                                );
+                            }
                         }
                     }
                 }
