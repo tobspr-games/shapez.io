@@ -190,8 +190,8 @@ export class WiredPinsSystem extends GameSystemWithFilter {
 
                 if (staticComp.getMetaBuilding().getRenderPins()) {
                     this.sprite = this.pinSprites[slot.type];
-                    if (staticComp.getMetaBuilding().id == "display") { 
-                        this.sprite = Loader.getSprite("sprites/wires/display_logical_acceptor.png")
+                    if (staticComp.getMetaBuilding().id == "display") {
+                        this.sprite = Loader.getSprite("sprites/wires/display_logical_acceptor.png");
                     }
                     drawRotatedSprite({
                         parameters,
@@ -202,7 +202,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                         size: globalConfig.tileSize + 2,
                         offsetX: 0,
                         offsetY: 0,
-                    });  
+                    });
                 }
 
                 // Draw contained item to visualize whats emitted

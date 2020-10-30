@@ -90,7 +90,7 @@ export class DisplaySystem extends GameSystemWithFilter {
                             (origin.y + 0.5) * globalConfig.tileSize,
                             parameters,
                             30
-                        );                 
+                        );
                     }
                     value.drawItemCenteredClipped(
                         (origin.x + 0.5) * globalConfig.tileSize,
