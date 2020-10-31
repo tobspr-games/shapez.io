@@ -302,20 +302,23 @@ ingame:
                 yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için
                 <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong>
                 tuşuyla taşıma bandının yönünü döndür."
-            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
+            2_1_place_cutter:
+                "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
                 Not: Kesici şekilleri yönünden bağımsız olarak her zaman <strong>yukarıdan aşağıya</strong>
                 keser."
             2_2_place_trash: Kesicinin çıkış hatları doluysa <strong>durabilir</strong>!<br><br>
                 Bunun için kullanılmayan çıktılara <strong>çöp</strong>
                 yerleştirin.
-            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
+            2_3_more_cutters:
+                "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
                 yerleştir.<br><br> Not: <strong>0-9 tuşlarını</strong> kullanarak yapılara
                 daha hızlı ulaşabilirsin!"
             3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici yerleştir</strong> ve
                 bunları merkeze bağla.<br><br> Not: <strong>SHIFT tuşuna</strong>
                 basılı tutarak bant planlayıcıyı
                 etkinleştir!"
-            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
+            21_1_place_quad_painter:
+                <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
                 <strong>beyaz</strong> ve <strong>kırmızı</strong> renkleri
                 elde edin!
             21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş yapın!<br><br>
@@ -362,7 +365,7 @@ ingame:
                 title: ∞ Oyun Kayıtları
                 desc: Canın ne kadar isterse!
             upgrades:
-                title: 20 Geliştirme Aşaması
+                title: ∞ Geliştirme Aşaması
                 desc: Bu deneme sürümünde sadece 5 tane var!
             markers:
                 title: ∞ Yer imleri

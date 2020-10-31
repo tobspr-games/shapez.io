@@ -117,4 +117,11 @@ export const LANGUAGES = {
         code: "da",
         region: "",
     },
+
+    "hu": {
+        name: "Magyar",
+        data: require("./built-temp/base-hu.json"),
+        code: "hu",
+        region: "",
+    },
 };

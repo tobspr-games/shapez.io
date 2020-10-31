@@ -266,6 +266,7 @@ export function findNiceIntegerValue(num) {
  * Formats a big number
  * @param {number} num
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ * @param {number=} precision The number of signficant digits to display
  * @returns {string}
  */
 export function formatBigNumber(num, separator = T.global.decimalSeparator, precision = 3) {
@@ -554,7 +555,16 @@ export function formatSeconds(secs) {
 }
 
 /**
- * Formats a number like 2.5 to "2.5 items / s"
+ * Formats a number like 2.51 to "2.5"
+ * @param {number} speed
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ */
+export function round1DigitLocalized(speed, separator = T.global.decimalSeparator) {
+    return round1Digit(speed).toString().replace(".", separator);
+}
+
+/**
+ * Formats a number like 2.51 to "2.51 items / s"
  * @param {number} speed
  * @param {boolean=} double
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
