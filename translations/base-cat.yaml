@@ -189,8 +189,6 @@ dialogs:
         titleEdit: Editar Marcador
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
     markerDemoLimit:
         desc: En la Demo només pots crear dos marcadors, aconsegueix la versió completa
             per gaudir de l'experiència completa!
@@ -308,7 +306,6 @@ ingame:
             crear un marcador des de la vista actual, o fes <strong>clic
             dret</strong> per a crear un marcador en el punt seleccionat.
         creationSuccessNotification: S'ha creat un marcador .
-        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Capes
         empty: Buit
@@ -372,7 +369,7 @@ ingame:
                 title: Guarda ∞ partides
                 desc: Tantes com vulguis!
             upgrades:
-                title: 20 Nivells de millora
+                title: ∞ Nivells de millora
                 desc: La versió demo només en té 5!
             markers:
                 title: ∞ Marcadors

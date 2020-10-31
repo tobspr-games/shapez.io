@@ -156,8 +156,6 @@ dialogs:
         title: 创建地图标记
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
         titleEdit: 编辑地图标记
     markerDemoLimit:
         desc: 在试玩版中你只能创建两个地图标记。请获取独立版以创建更多标记。
@@ -265,7 +263,6 @@ ingame:
         description: 左键跳转到地图标记，右键删除地图标记。<br><br>按 <keybinding>
             在当前地点创建地图标记，或者在选定位置上<strong>右键</strong>创建地图标记.
         creationSuccessNotification: 成功创建地图标记。
-        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: 教程
         hints:

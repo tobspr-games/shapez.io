@@ -181,8 +181,6 @@ dialogs:
         desc: Dá-lhe um nome com significado, também poderás adicionar um
             <strong>pequeno código</strong> de uma forma. (Pode ser gerado
             <link>aqui</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
         titleEdit: Editar Marco
     markerDemoLimit:
         desc: Apenas podes criar dois marcos na versão Demo. Adquire o jogo completo
@@ -298,7 +296,6 @@ ingame:
             na vista atual, ou <strong>botão direito</strong> para criar um
             marco no local selecionado.
         creationSuccessNotification: Marco criado com sucesso.
-        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: Tutorial
         hints:
@@ -371,7 +368,7 @@ ingame:
                 title: Savegames ∞
                 desc: Tantos quanto o teu corção desejar!
             upgrades:
-                title: 20 Níveis de melhoria
+                title: ∞ Níveis de melhoria
                 desc: Nesta versão demo apenas tens 5!
             markers:
                 title: Marcos ∞

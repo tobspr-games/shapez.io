@@ -182,8 +182,6 @@ dialogs:
         titleEdit: Editar Marcador
         desc: Dê um nome significativo, você também pode incluir um <strong>código
             </strong> de uma forma (Você pode gerá-lo <link>aqui</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
     markerDemoLimit:
         desc: Você só pode criar dois marcadores na versão demo. Adquira a versão
             completa para marcadores ilimitados!
@@ -301,7 +299,6 @@ ingame:
             atual ou <strong>clique com o botão direito do mouse</strong> para
             criar um marcador no local selecionado.
         creationSuccessNotification: Marcador criado.
-        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Camadas
         empty: Vazio
@@ -364,7 +361,7 @@ ingame:
                 title: Saves ∞
                 desc: Quantos o seu coração mandar!
             upgrades:
-                title: 20 Níveis de Melhorias
+                title: ∞ Níveis de Melhorias
                 desc: Essa demo tem apenas 5!
             markers:
                 title: Marcadores ∞

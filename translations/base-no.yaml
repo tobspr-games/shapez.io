@@ -182,8 +182,6 @@ dialogs:
         title: Ny Markør
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
         titleEdit: Rediger markør
     markerDemoLimit:
         desc: Du kan kun ha to markører i demoverjsonen. Skaff deg den frittstående
@@ -295,7 +293,6 @@ ingame:
             nåværende sted, eller <strong>høyreklikk</strong> for å lage en
             markør på valgt område.
         creationSuccessNotification: Markren ble laget.
-        editSuccessNotification: Marker has been edited.
     interactiveTutorial:
         title: Opplæring
         hints:
@@ -368,7 +365,7 @@ ingame:
                 title: ∞ Savegames
                 desc: As many as your heart desires!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ Markers

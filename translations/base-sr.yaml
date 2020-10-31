@@ -17,7 +17,7 @@ steamPage:
     advantages:
         - <b>12 New Level</b> for a total of 26 levels
         - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Unlimited Upgrade Tiers</b> for many hours of fun!
         - <b>Wires Update</b> for an entirely new dimension!
         - <b>Dark Mode</b>!
         - Unlimited Savegames
@@ -184,8 +184,6 @@ dialogs:
         titleEdit: Uredi Putokaz
         desc: Give it a meaningful name, you can also include a <strong>short
             key</strong> of a shape (Which you can generate <link>here</link>)
-        compassDesc: >-
-            Add a compass that points to the marker:
     markerDemoLimit:
         desc: U demo verziji možete imati samo dva putokaza istovremeno. Nabavite
             samostalnu igru za beskonačno mnogo putokaza!
@@ -301,7 +299,6 @@ ingame:
             <keybinding>, ili <strong>desnim klikom</strong> napravi putokaz na
             odabranoj lokaciji.
         creationSuccessNotification: Putokaz kreiran.
-        editSuccessNotification: Marker has been edited.
     shapeViewer:
         title: Slojevi
         empty: Prazno
@@ -364,7 +361,7 @@ ingame:
                 title: ∞ Savegames
                 desc: As many as your heart desires!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ Markers
