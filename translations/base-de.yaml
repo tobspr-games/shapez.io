@@ -7,9 +7,11 @@ steamPage:
 
         shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
 
-        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
+        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren,
+        um die Anforderungen zu erfüllen - Da hilft nur skalieren!
 
-        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
+        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die
+        Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
     advantages:
         - <b>12 Neue Level</b> für insgesamt 26 Level
@@ -358,7 +360,7 @@ ingame:
                 title: ∞ Speicherstände
                 desc: So viele dein Herz begehrt!
             upgrades:
-                title: 20 Upgrade-Stufen
+                title: ∞ Upgrade-Stufen
                 desc: Diese Demo hat nur 5!
             markers:
                 title: ∞ Marker
@@ -519,8 +521,7 @@ buildings:
                 sind.
         not:
             name: NICHT-Gatter
-            description: Gibt eine "1" aus, wenn beide Eingänge nicht wahr (kein Signal oder
-                "0") sind.
+            description: Kehrt den Wert um. Macht aus einer "1" eine "0" und eine "0" aus einer "1".
         xor:
             name: XODER-Gatter
             description: Gibt eine "1" aus, wenn genau einer der Eingänge wahr (Form, Farbe

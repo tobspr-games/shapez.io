@@ -5,7 +5,12 @@ export const CHANGELOG = [
         entries: [
             "Fixed stacking bug for level 26 which required restarting the game",
             "Fix reward notification being too long sometimes (by LeopoldTal)",
-            "Updated translations",
+            "Use locale decimal separator on belt reader display (by LeopoldTal)",
+            "Vastly improved performance when saving games (by LeopoldTal)",
+            "Prevent some antivirus programs blocking the opening of external links (by LeopoldTal)",
+            "Match tutorials to the correct painter variants (by LeopoldTal)",
+            "Prevent throughput goals containing fractional numbers (by CEbbinghaus)",
+            "Updated translations and added Hungarian",
         ],
     },
     {

@@ -9,21 +9,21 @@ steamPage:
 
         A medida que el nivel aumenta, las formas se vuelven más y más complejas, y tienes que extenderte en un mapa infinito.
 
-        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es escalar!
+        Y por si fuera poco, también tienes que producir exponencialmente más para satisfacer las demandas - ¡lo único que ayuda es ampliar!
 
-        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar los colores!
+        Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar colores!
 
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
     title_advantages: Ventajas del juego
     advantages:
         - <b>12 nuevos niveles</b> de un total de 26 niveles
-        - <b>18 nuevos edificios</b> ¡para una fábrica totalmente automatizada!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Modo oscuro</b>!
+        - <b>18 nuevos edificios</b> ¡Para una fábrica totalmente automatizada!
+        - <b>Nieveles infinitos de mejoras</b> ¡Para horas de diversión!
+        - ¡<b>Cables</b> para una dimensión completamente nueva!
+        - ¡<b>Modo oscuro</b>!
         - Partidad guardadas ilimitadas
         - Marcadores ilimitados
-        - Me apoyarás! ❤️
+        - ¡Me apoyarás! ❤️
     title_future: Contenido futuro
     planned:
         - Librería de planos (Exclusivo de Standalone)
@@ -46,7 +46,7 @@ steamPage:
         trato de revisar todas las sugerencias además de tomar en cuenta los consejos
         siempre que sea posible.
 
-        Asegurate de revisar mi página de Trello donde podrás encontrar el Roadmap!
+        ¡Asegurate de revisar mi página de Trello donde podrás encontrar el Roadmap!
 global:
     loading: Cargando
     error: Error
@@ -92,7 +92,7 @@ mainMenu:
     discordLink: Servidor de Discord oficial
     helpTranslate: ¡Ayuda a traducirlo!
     madeBy: Desarrollado por <author-link>
-    browserWarning: ¡Lo siento, pero el juego funcionará despacio en tu navegador!
+    browserWarning: ¡Lo siento, pero el juego funcionará lento en tu navegador!
         Obtén el juego completo o descarga Chrome para la experiencia completa.
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
@@ -121,8 +121,8 @@ dialogs:
         text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: Estás seguro de querér borrar el siguiente guardado?<br><br>
-            '<savegameName>' que está en el nivel <savegameLevel><br><br> Esto no se puede deshacer!
+        text: ¿Estás seguro de querér borrar el siguiente guardado?<br><br>
+            '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto no se puede deshacer!
     savegameDeletionError:
         title: Fallo al borrar
         text: "Fallo al borrar la partida guardada:"
@@ -131,7 +131,7 @@ dialogs:
         text: Tienes que reinciar la partida para aplicar los cambios.
     editKeybinding:
         title: Cambiar atajos de teclado
-        desc: Pulsa la tecla o botón del ratón que quieras asignar, o escape para
+        desc: Pulsa la tecla o botón del ratón que quieras asignar, o presiona escape para
             cancelar.
     resetKeybindingsConfirmation:
         title: Reiniciar atajos de teclado
@@ -166,7 +166,7 @@ dialogs:
         desc: ¡Estás cortando muchos edificios (<count> para ser exactos)! ¿Estas seguro
             de que quieres hacer esto?
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Confirmar corte
         desc: ¡No puedes permitirte pegar este área! ¿Estás seguro de que quieres
             cortarlo?
     blueprintsNotUnlocked:
@@ -197,7 +197,7 @@ dialogs:
     editSignal:
         title: Establecer señal
         descItems: "Elige un item pre-definido:"
-        descShortKey: ... o escribe la <strong>calve</strong> de una forma (La cual
+        descShortKey: ... o escribe la <strong>clave</strong> de una forma (La cual
             puedes generar <link>aquí</link>)
     renameSavegame:
         title: Renombrar archivo de guardado
@@ -258,7 +258,7 @@ ingame:
     notifications:
         newUpgrade: ¡Una nueva mejora está disponible!
         gameSaved: Se ha guardado la partida.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: ¡El nivel <level> ha sido completado!
     shop:
         title: Mejoras
         buttonUnlock: Mejorar
@@ -269,14 +269,14 @@ ingame:
         dataSources:
             stored:
                 title: Almacenado
-                description: Muestra la cantidad de figuras guardadas en tu edificio central.
+                description: Muestra la cantidad de figuras guardadas en tu HUB.
             produced:
                 title: Producido
                 description: Muestra todas las figuras que tu fábrica al completo produce,
                     incluyendo productos intermedios.
             delivered:
                 title: Entregados
-                description: Muestra las figuras que son entregadas a tu edificio central.
+                description: Muestra las figuras que son entregadas a tu HUB.
         noShapesProduced: Todavía no se han producido figuras.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -294,7 +294,7 @@ ingame:
         cost: Coste
     waypoints:
         waypoints: Marcadores
-        hub: Edificio Central
+        hub: HUB
         description: Click izquierdo sobre un marcador para ir ahí, click derecho para
             borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la
             vista actual o <strong>click derecho</strong> para crear un marcador
@@ -310,7 +310,7 @@ ingame:
             1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
                 <strong>círculo</strong> para extraerlo!
             1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
-                transportadora</strong> a tu edificio central!<br><br> Pista:
+                transportadora</strong> a tu HUB!<br><br> Pista:
                 ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con
                 el ratón!"
             1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
@@ -321,14 +321,14 @@ ingame:
             2_1_place_cutter: "¡Ahora pon un <strong>Cortador</strong> para dividir los circulos en dos
                 mitades!<br><br> PD: El cortador siempre corta de <strong>de arriba a
                 abajo</strong> independientemente de su orientación."
-            2_2_place_trash: ¡El cortador se puede <strong>tabar y atorar</strong>!<br><br> Usa un
+            2_2_place_trash: ¡El cortador se puede <strong>trabar y atorar</strong>!<br><br> Usa un
                 <strong>basurero</strong> para deshacerse de la actualmente (!) no
                 necesitada basura.
             2_3_more_cutters: "¡Buen trabajo! ¡Ahora pon <strong>2 cortadores más</strong> para acelerar
                 este lento proceso!<br><br> PD: Usa las teclas <strong>0-9
                 </strong> para acceder a los edificios más rápido!"
             3_1_rectangles: "¡Ahora consigamos unos rectangulos! <strong>construye 4
-                extractores</strong> y conectalos a el edificio central.<br><br> PD:
+                extractores</strong> y conectalos a el HUB.<br><br> PD:
                 Manten apretado <strong>SHIFT</strong> mientrás pones cintas transportadoras para activar
                 el planeador de cintas!"
             21_1_place_quad_painter: ¡Pon el <strong>pintaor cuadruple</strong> y consigue unos
@@ -339,7 +339,7 @@ ingame:
                 entradas</strong> de el pintador con cables!
             21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y conectalo
                 con cables!
-            21_4_press_button: "Presioa el interruptor para hacer que <strong>emita una señal
+            21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una señal
                 verdadera</strong> lo cual activa el piintador.<br><br> PD: ¡No necesitas
                 conectar todas las entradas! Intenta conectando solo dos."
     connectedMiners:
@@ -364,7 +364,7 @@ ingame:
                 title: Archivos de guardado infinitos
                 desc: ¡Tantos como desees!
             upgrades:
-                title: 20 niveles de mejoras
+                title: Niveles infinitos de mejoras
                 desc: ¡Esta demo solo tiene 5!
             markers:
                 title: Marcadores infinitos
@@ -660,11 +660,11 @@ storyRewards:
         title: Juego libre
         desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>! ¡Esto significa
             que las formas ahora son <strong>aleatoriamente</strong> generadas!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+            Debído a que desde ahora de adelante el HUB pedrirá una cantidad especifica de formas <strong>por segundo</strong>
+            ¡Te recomiendo encarecidamente que construyas una maquina que automáticamente
+            envíe la forma pedida!<br><br> El HUB emite la forma
+            pedida en la capa de cables, así que todo lo que tienes que hacer es analizarla y
+            automaticamente configurar tu fabrica basada en ello.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -1014,63 +1014,60 @@ demo:
         exportingBase: Exportando la base completa como imagen
     settingNotAvailable: No disponible en la versión de prueba.
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - El HUB acepta entradas de cualquier tipo ¡No solo la forma actual!
+    - Trata de que tus fábricas sean modulares - ¡Te servirá en el futuro!
+    - No construyas muy cerca del HUB ¡O se volverá todo un caos!
+    - Si apilar las formas no funciona, intenta intercambiar las entradas.
+    - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
+    - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
+    - Las proporciones siempre serán las mismas. Siempre y cuando todas las mejoras estén al mismo nivel.
+    - La ejecución en serie es más eficiente que la paralela.
+    - ¡Desbloquearás más variantes de edificios más adelante en el juego!
+    - Puedes usar <b>T</b> para cambiar entre diferentes variantes.
+    - ¡La simetría es clave!
+    - Los túneles de diferentes niveles pueden cruzarse entre sí
+    - Intenta construir fábricas compactas - ¡Me lo agradecerás luego!
+    - El pintor tiene una variante en espejo que puedes seleccionar con la técla <b>T</b>
+    - Tener una buena proporción entre edificion maximizará su eficiencia
+    - A su máximo nivel, 5 extractores llenarán por completo una cinta trasnportadora.
+    - ¡No te olvides de utilizár túneles!
+    - No es necesario dividir los items de manera uniforme para conseguír la mayor eficiencia.
+    - Mantener apretado <b>SHIFT</b> activará el planeador de cintas, permitiendote poner
+      largas lineas de cintas fácilmente.
+    - Los cortadores siempre cortan verticalmente, sin importar su orientación.
+    - Para obtener blanco solo mexcla todos los colores.
+    - El buffer de almacenamiento prioriza la primera salida.
+    - Invierte tiempo en construir diseños repetibles, ¡vale la pena!
+    - Mantener apretado <b>CTRL</b> te permite poner varios edificios a la vez.
+    - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las cintas.
+    - ¡La eficiencia es la clave!
+    - Mientras más lejos del HUB estés más complejas serán las formas que te encuentres.
+    - Las máquinas tienen una velocidad limitada, divídelas para una máxima eficiencia.
+    - Usa balanceadores para maximizar tu eficiencia.
+    - La organización es importante. Trate de no cruzar demasiado las cintas transportadoras.
+    - ¡Planea con anticipación, o será un gran caos!
+    - ¡No saques tus viejas fábricas! Las necesitararás para desbloquear nuevas mejoras.
+    - ¡Intenta superar el nivel 20 por tu cuenta antes de buscar ayuda!
+    - No compliques las cosas, intenta mantenerlo simple y llegarás lejos.
+    - Puede que tengas que reutilizar las fábricas más tarde en el juego. Planea tus fábricas para que sean reutilizables.
+    - A veces puedes encontrar la forma que necesitas en el mapa sin la necesidad de usar apiladores.
+    - Los molinillos no pueden aparecer enteros naturalmente.
+    - Colorear las formas antes de cortarlas para una máxima eficiencia.
+    - Con los módulos, el espacio es sólo una percepción; una preocupación para los mortales.
+    - Haz una fábrica para planos separada. Son importantes para los módulos.
+    - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas serán respondidas.
+    - Usa <b>CTRL</b> + Click izquierdo para seleccionar un área.
+    - Construir demasiado cerca del HUB puede interponerse en el camino de proyectos a futuro.
+    - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a la pantalla.
+    - ¡Mezcla todos los colores primarios para obtener blanco!
+    - Tienes un mapa infinito, no te agobies tu fábrica, ¡expande!
+    - ¡Prueba también Factorio! Es mi juego favorito.
+    - ¡El cortador cuádruple corta en el sentido de las agujas del reloj empezando por la parte superior derecha!
+    - ¡Puedes descargar tus archivos de guardado en el menú principal!
+    - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la página de ajustes.
+    - Este juego tiene muchos ajustes, ¡asegúrate de revisarlos!
+    - ¡El marcador de tu HUB tiene una pequeña brújula para indicar su dirección!
+    - Para despejar las cintas transportadoras, corta el área y luego pégala en el mismo lugar.
+    - Presiona F4 para mostrar tu FPS y Tick Rate.
+    - Presiona F4 dos veces para mostrar las coordenadas de tu ratón y de la cámara.
+    - Puedes hacer clic en una forma fijada en el lado izquierdo para desfijarla.
