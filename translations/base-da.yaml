@@ -4,22 +4,22 @@ steamPage:
         mere komplicerede.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io er et afslapet spil hvor du skal bygge fabrikker for at
+        Shapez.io er et afslappet spil hvor du skal bygge fabrikker for at
         automatisere productionen af geometriske figurer.
 
         Jo længer du når, jo mere kompliseret bliver figurene, og du bliver nød til at spræde dig ud på den grænseløse spilleflade.
 
-        og hvis det ikke var nok, så skal du også producere eksponentielt flere figurer for at måde behovene spillet giver dig - det eneste der virker er skalering!
+        og hvis det ikke var nok, så skal du også producere eksponentielt flere figurer for at møde behovene spillet giver dig - det eneste der virker er skalering!
 
-        Mens du i starten kun laver former, skal du senere farve lægge dem - for at gøre dette skal du udvinde og blande farver!
+        Mens du i starten kun laver former, skal du senere farvelægge dem - for at gøre dette skal du udvinde og blande farver!
 
         At købe spllet på Steam, giver dig adgang til det fulde spil, men du kan også spille en demo version på shapez.io og vælge senere!
     title_advantages: Steam version Fordele
     advantages:
         - <b>12 Nye Niveauer</b> for i alt 26 niveauer
-        - <b>18 Nye Byginger</b> for en fuldt autmaticeret fabrik!
+        - <b>18 Nye Bygninger</b> for en fuldt autmaticeret fabrik!
         - <b>20 Upgraderings Niveauer</b> for mange timers sjov!
-        - <b>Wires Update</b> for an entirely new dimension!
+        - <b>Ledninger Opdatering</b> for en helt ny dimension!
         - <b>Dark Mode</b>!
         - Unlimited Savegames
         - Uendelige Markører
@@ -32,7 +32,7 @@ steamPage:
         - Minimap
         - Mods
         - Sandbox mode
-        - ... and a lot more!
+        - ... og meget mere!
     title_open_source: This game is open source!
     title_links: Links
     links:
@@ -40,11 +40,11 @@ steamPage:
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Source code (GitHub)
-        translate: Help translate
+        translate: Hjælp med oversættelse
     text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
+        Hvem som helst kan bidrage, jeg er aktivt involveret i fælleskabet og
+        forsøger at gennemgå alle ideer og tager feedback i overvejelse
+        hvor muligt.
 
         Be sure to check out my trello board for the full roadmap!
 global:
@@ -259,7 +259,7 @@ ingame:
     notifications:
         newUpgrade: En ny opgradering er tilgængelig!
         gameSaved: Dit spil er gemt.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Level <level> er blevet fuldført!
     shop:
         title: Opgraderinger
         buttonUnlock: Opgrader
@@ -282,7 +282,7 @@ ingame:
         shapesDisplayUnits:
             second: <shapes> / s
             minute: <shapes> / m
-            hour: <shapes> / h
+            hour: <shapes> / t
     settingsMenu:
         playtime: Spilletid
         buildingsPlaced: Bygninger
@@ -348,35 +348,35 @@ ingame:
     watermark:
         title: Demo version
         desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        get_on_steam: Få på steam
     standaloneAdvantages:
-        title: Get the full version!
-        no_thanks: No, thanks!
+        title: Få den fulde version!
+        no_thanks: Nej tak!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 Nye Levels
+                desc: For et total af 26 levels!
             buildings:
-                title: 18 New Buildings
+                title: 18 Nye Bygninger
                 desc: Fully automate your factory!
             savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
+                title: ∞ Gemte spil
+                desc: Så mange dit hjerte begær!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ Markers
                 desc: Never get lost in your factory!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: Ledninger
+                desc: En helt ny dimension!
             darkmode:
                 title: Dark Mode
                 desc: Stop hurting your eyes!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: Støt mig
+                desc: Jeg arbejder på det i min fritid!
 shopUpgrades:
     belt:
         name: Bælter, Fordelere & Tuneller
@@ -434,7 +434,7 @@ buildings:
             description: Drejer figurer 90 grader mod uret.
         rotate180:
             name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            description: Drejer figurer 180 grader med uret.
     stacker:
         default:
             name: Stabler
@@ -468,25 +468,25 @@ buildings:
             name: Energiledning
             description: Lader dig transportere energi.
         second:
-            name: Wire
-            description: Transfers signals, which can be items, colors or booleans (1 / 0).
-                Different colored wires do not connect.
+            name: Ledning
+            description: Overfør signaler, som kan være elementer, farver eller boolsk variabler (1 / 0).
+                Forskellig farvet ledninger kan ikke forbindes.
     balancer:
         default:
             name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            description: Multifunktionelt - Fordeler alle indgange jævnt til alle udgange.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Forener (kompakt)
+            description: Forener to transportbånd til en.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Forener (kompakt)
+            description: Forener to transportbånd til en.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Splitter (kompakt)
+            description: Splitter et transportbånd til to.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Splitter (kompakt)
+            description: Splitter et transportbånd til to.
     storage:
         default:
             name: Storage
@@ -992,7 +992,8 @@ about:
 
         Hvis du vil kontribuere, tjek <a href="<githublink>" target="_blank">shapez.io på github</a>.<br><br>
 
-        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
+        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på
+        <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
 
         Lydsporet er lavet af <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Han er fantastisk.<br><br>
 

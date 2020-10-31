@@ -7,7 +7,7 @@ steamPage:
         Shapez.io jest spokojną grą, której celem jest budowanie automatycznych
         fabryk produkujących różne kształty geometryczne.
 
-        W miarę zwiększania się poziomów, kształty będą stawać się coraz bardziej skomplikowane, a Twoja fabryka będzie musiała się rozpszetrzenić na mapie o nieskończonej wielkości.
+        W miarę zwiększania się poziomów, kształty będą stawać się coraz bardziej skomplikowane, a Twoja fabryka będzie musiała się rozprzestrzenić na mapie o nieskończonej wielkości.
 
         A jeżeli to było mało, będziesz również musiał produkować coraz więcej kształtów, by zaspokoić wymagania - jedynym rozwiązaniem jest skalowanie fabryki!
 
@@ -207,13 +207,11 @@ dialogs:
         title: Zmień nazwę zapisu gry
         desc: Tutaj możesz zmienić nazwę zapisu gry.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Dostępny tutorial
+        desc: Dla tego poziomu dostępny jest video tutorial. Chcesz go obejrzeć?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Dostępny tutorial
+        desc: Dla tego poziomu dostępny jest video tutorial w języku angielskim. Chcesz go obejrzeć?
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -316,37 +314,36 @@ ingame:
             1_1_extractor: Postaw <strong>ekstraktor</strong> na źródle <strong>kształtu
                 koła</strong>, aby go wydobyć!
             1_2_conveyor: "Połącz ekstraktor <strong>taśmociągiem</strong> do głównego
-                budynku!<br><br>Porada: <strong>Kliknij i przeciągnij</strong>
+                budynku!<br><br>PS: <strong>Kliknij i przeciągnij</strong>
                 taśmociąg myszką!"
             1_3_expand: 'To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej
                 taśmociągów i ekstraktorów, by wydobywać
-                szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong>, by
+                szybciej.<br><br>PS: Przytrzymaj <strong>SHIFT</strong>, by
                 postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je
                 obracać.'
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Teraz umieść <strong>przecinak</strong> aby przeciąć koła na dwie
+                połowy!<br><br> PS: Przecinak zawsze tnie <strong>pionowo</strong>
+                niezależnie od swojej orientacji."
+            2_2_place_trash: Przecinak może się <strong>zapchać i zablokować</strong>!<br><br> Użyj
+                <strong>śmietnik</strong> aby usunąć obecnie (!) nie potrzebne elementy.
+            2_3_more_cutters:
+                "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć
+                ten wolny proces!<br><br> PS: Użyj <strong>klawiszy 0-9</strong>,
+                aby szybciej uzyskać dostęp do budynków!"
+            3_1_rectangles: "Teraz wydobądź kilka kwadratów! <strong>Wybuduj
+                ekstraktory</strong> i połącz je do głównego budynku.<br><br> PS:
+                Przytrzymaj <strong>SHIFT</strong> i przeciągnij taśmociąg, aby uruchomić
+                planer taśmociągu!"
+            21_1_place_quad_painter: Umieść <strong>malarz poczwórny</strong> i wykonaj kilka
+                biało-czerwonych kółek!
+            21_2_switch_to_wires: Przełącz się na warstwę przewodów wciskając
+                <strong>E</strong>!<br><br> Następnie <strong>połącz wszystkie cztery
+                wejścia</strong> malarza przewodem!
+            21_3_place_button: Świetnie! Teraz umieść <strong>Przełącznik</strong> i połącz go
+                z przewodem!
+            21_4_press_button: "Wciśnij przełącznik aby <strong>emitował sygnał
+                Prawda</strong> i aktywował malarza.<br><br> PS: Nie
+                musisz łączyć wszystkich wejść! Spróbuj połączyć tylko dwa."
     connectedMiners:
         one_miner: 1 ekstraktor
         n_miners: <amount> ekstraktorów
@@ -369,7 +366,7 @@ ingame:
                 title: ∞ Zapisów Gry
                 desc: Twórz tyle, ile potrzebujesz!
             upgrades:
-                title: 20 Poziomów Ulepszeń
+                title: ∞ Poziomów Ulepszeń
                 desc: To demo posiada tylko 5!
             markers:
                 title: ∞ Znaczników
@@ -462,9 +459,9 @@ buildings:
                 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            description: Pozwala pomalować każdą ćwiartkę osobno. Tylko
+                sloty z podłączonym <strong>sygnałem "Prawda"</strong> w warstwie przewodów
+                będą malowane!
         mirrored:
             name: Malarz
             description: Koloruje kształt za pomocą koloru dostarczonego od boku.
@@ -603,7 +600,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Przecinanie Kształtów
-        desc: Właśnie odblokowałeś <strong>przecinaka</strong>, który przecina kstałty
+        desc: Właśnie odblokowałeś <strong>przecinaka</strong>, który przecina kształty
             na pół od góry na dół <strong>bez znaczenia na ich
             orientację</strong>!<br><br> Upewnij się, że usuwasz śmieci - w
             przeciwnym przypadku <strong>maszyna zapcha się i przestanie
@@ -666,7 +663,7 @@ storyRewards:
             raz</strong>, pobierając wyłącznie jeden barwnik!
     reward_storage:
         title: Magazyn
-        desc: Właśnie odblokowałeś <strong>magazyn</strong> - Pozwala na przecowywanie
+        desc: Właśnie odblokowałeś <strong>magazyn</strong> - Pozwala na przechowywanie
             przedmiotów, do pewnej ilości!<br><br> Prawe wyjście posiada większy
             piorytet, więc może być on użyty jako <strong>brama
             przepełnieniowa</strong>!
@@ -676,7 +673,7 @@ storyRewards:
             kształty są teraz <strong>losowo</strong> generowane!<br><br> Od
             teraz budynek główny będzie wymagał odpowiedniej
             <strong>przepustowości</strong> kształtów, zatem sugeruję budowę
-            maszyny, która będzie atuomatycznie dostarczała wymagany
+            maszyny, która będzie automatycznie dostarczała wymagany
             kształt!<br><br> Budynek główny emituje wymagany kształt na warstwie
             przewodów, więc wystarczy analizować ten sygnał i konfigurować
             fabrykę bazując na nim.
@@ -699,9 +696,9 @@ storyRewards:
             pełnej!
     reward_balancer:
         title: Dystrybutor
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Wielofunkcyjny <strong>dystrybutor</strong> został odblokowany - Może
+            być wykorzystany przy budowaniu większych fabryk do <strong>łączenia i dzielenia
+            przedmiotów</strong> na kilku taśmociągach!
     reward_merger:
         title: Kompaktowy łącznik
         desc: Właśnie odblokowałeś <strong>łącznik</strong> - typ
@@ -715,7 +712,7 @@ storyRewards:
             użyteczny!
     reward_rotater_180:
         title: Obracacz (180°)
-        desc: Właśnie odblokowałeś kolejny wariant <strong>obraczacza</strong>! -
+        desc: Właśnie odblokowałeś kolejny wariant <strong>obrazacza</strong>! -
             Pozwala ci na obrócenie kształtu o 180 stopni!
     reward_display:
         title: Wyświetlacz
@@ -743,23 +740,23 @@ storyRewards:
             przecinaka, obracacza, sklejacza i wiele więcej na warstwie
             przewodów! Teraz masz trzy opcje na kontynuację gry:<br><br> -
             Zbuduj <strong>zautomatyzowaną maszynę</strong>, która stworzy każdy
-            kstałt ządany przez budynek główny (Polecam tą opcję!).<br><br> -
+            kształt żądany przez budynek główny (Polecam tą opcję!).<br><br> -
             Zbuduj coś ciekawego za pomocą przewodów.<br><br> - Kontynuuj zwykłą
             rozgrywkę.<br><br> Cokolwiek wybierzesz, pamiętaj by się dobrze
             bawić!
     reward_wires_painter_and_levers:
         title: Przewody i poczwórny malarz
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Właśnie odblokowałeś <strong>Warstwę Przewodów</strong>: Jest to osobna
+            warstwa powyżej zwykłej warstwy i wprowadza wiele nowych możliwości.<br><br>
+            Na początku odblokowałem dla Ciebie <strong>Poczwórnego Malarza</strong>
+            - Podłącz ćwiartki, które chcesz pomalować, na warstwie przewodów!!<br><br>
+            Aby przełączyć się na warstwę przewodów, wciśnij
+            <strong>E</strong>. <br><br> PS: <strong>Włącz podpowiedzi</strong> w
+            ustawieniach, aby aktywować samouczek przewodów!"
     reward_filter:
         title: Filtr przedmiotów
         desc: Właśnie odblokowałeś <strong>Filtr Przedmiotów</strong>! Będzie on
-            przekirowywał przedmioty do górnego lub prawego wyjścia, zależnie od
+            przekierowywał przedmioty do górnego lub prawego wyjścia, zależnie od
             tego, czy pasują one do sygnału z warstwy przewodów.<br><br> Możesz
             również przekazać sygnał typu Prawda/Fałsz, by całkowicie go włączyć
             lub wyłączyć.
@@ -901,12 +898,12 @@ settings:
                 budynki podczas budowania używając tego samego przycisku.
         lowQualityTextures:
             title: Tekstury niskiej jakości (Brzydkie)
-            description: Używa niskej jakości tekstur, by zwiększyć wydajność. Spowoduje to,
+            description: Używa niskiej jakości tekstur, by zwiększyć wydajność. Spowoduje to,
                 że gra będzie wyglądać bardzo brzydko!
         displayChunkBorders:
-            title: Wyświetl granice chunków
-            description: Gra jest podzielona na chunki o wielkości 16x15 kratek. Włączenie
-                tego ustawienia powoduje wyświetlenie granicy każdego chunku.
+            title: Wyświetl granice obszarów
+            description: Gra jest podzielona na obszary o wielkości 16x15 kratek. Włączenie
+                tego ustawienia powoduje wyświetlenie granicy każdego obszaru.
         pickMinerOnPatch:
             title: Wybierz ekstraktor zamiast źródła
             description: Domyślnie włączone, wybiera ekstraktor, jeżeli spróbujesz wybrać
@@ -922,13 +919,11 @@ settings:
                 granicy ekranu. Szybkość jest zależna od ustawienia Prędkość
                 poruszania.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Powiększ w kierunku kursora
+            description: Powiększ w kierunku pozycji kursora myszylub do środka ekranu.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Rozmiar mapy zasobów
+            description: Steruje rozmiarem kształtów w przeglądzie mapy (podczas pomniejszenia).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klawiszologia
@@ -1035,7 +1030,7 @@ tips:
     - Nie buduj zbyt blisko budynku głównego, albo będziesz miał wielki chaos!
     - Jeżeli łączenie kształtów nie działa, spróbuj zamienić wejścia.
     - Możesz zmienić kierunek planera taśmociągów poprzez naciśnięcie <b>R</b>.
-    - Przytrymanie <b>CTRL</b> pozwala na przeciąganie taśmociągów bez
+    - Przytrzymanie <b>CTRL</b> pozwala na przeciąganie taśmociągów bez
       automatycznego zmieniania kierunków.
     - Stosunku pozostają takie same, dopóki wszystkie ulepszenia są na tym samym
       poziomie.
@@ -1050,13 +1045,13 @@ tips:
     - Na najwyższym poziomie, 5 ekstraktorów zapełni pojedynczy taśmociąg.
     - Nie zapomnij o tunelach!
     - Nie musisz dzielić równo przedmiotów, by osiągnąć pełną wydajność.
-    - Przytrymanie <b>SHIFT</b> aktywuje planera taśmociągów, pozwalającego ci
+    - Przytrzymanie <b>SHIFT</b> aktywuje planera taśmociągów, pozwalającego ci
       na łatwe budowanie długich taśmociągów.
     - Przecinaki zawsze tną pionowo, nie zważając na ich orientację.
-    - Zmieszanie wszystich 3 barwników daje biały barwnik.
+    - Zmieszanie wszystkich 3 barwników daje biały barwnik.
     - Pierwsze wyjście z magazynu ma najwyższy piorytet.
     - Zainwestuj czas w budowanie powtarzalnych układów fabryk - warto!
-    - Przytrymanie <b>CTRL</b> pozwala na układanie wielu budynków tego samego
+    - Przytrzymanie <b>CTRL</b> pozwala na układanie wielu budynków tego samego
       typu.
     - Możesz przytrzymać <b>ALT</b>, by odwrócić kierunek układanych taśmociągów.
     - Wydajność to klucz do sukcesu!
@@ -1073,31 +1068,31 @@ tips:
     - Możesz potrzebować ponownie używać swoich fabryk w późniejszej fazie
       rozgrywki. Planuj swoje fabryki, by były zdatne do ponownego użycia.
     - Czasami znajdziesz wymagany kształt na mapie, bez potrzeby tworzenia go za
-      pomoca sklejaczy.
+      pomocą sklejaczy.
     - Pełne "wiatraczki" nigdy nie pojawią się naturalnie na mapie.
-    - Maluj swoje kształty przed przecianiem dla maksymalnej wydajności.
+    - Maluj swoje kształty przed przecinaniem dla maksymalnej wydajności.
     - Z modułami, miejsce jest tylko tym, co postrzegamy; troska dla
       śmiertelników
     - Zbuduj osobną fabrykę schematów. Są one bardzo potrzebne do modułów.
-    - Obejrz dokładnie mikser kolorów, a wszystkie twoje pytania zostaną
+    - Obejrzyj dokładnie mikser kolorów, a wszystkie twoje pytania zostaną
       rozwiązane.
     - Przytrzymaj <b>CTRL</b> i przeciągnij, by zaznaczyć obszar
     - Budowanie zbyt blisko budynku głównego może przeszkodzić ci w późniejszych
       projektach.
     - Ikona pinezki przy każdym kształcie na liście ulepszeń przypina je na
       ekranie.
-    - Połącz wszystkie głowne kolory, by stworzyć biały!
+    - Połącz wszystkie główne kolory, by stworzyć biały!
     - Masz nieskończoną mapę, nie ściskaj swojej fabryki, rozszerzaj ją!
     - Spróbuj też Factorio! To moja ulubiona gra.
     - Poczwórny przecinak tnie zgodnie z ruchem wskazówek zegara, zaczynając do
       prawej górnej ćwiartki!
-    - Możesz pobrać swoje zapisy gry w głownym menu gry!
+    - Możesz pobrać swoje zapisy gry w głównym menu gry!
     - Ta gra posiada dużo użytecznych skrótów klawiszowych! Sprawdź stronę
       ustawień!
     - Ta gra posiada mnóstwo ustawień, sprawdź je!
-    - Znacznik do budynku główneko posiada mały kompas, wskazujący do niego
+    - Znacznik do budynku głównego posiada mały kompas, wskazujący do niego
       kierunek!
     - By wyczyścić taśmociągi, wytnij obszar i wklej go w tym samym miejscu.
     - Naciśnij F4, by zobaczyć ilość FPS i tempo ticków.
     - Naciśnij F4 dwa razy, by zobaczyć kratkę twojej myszy i kamery.
-    - Możesz klinąć przypięty kształt po lewej stronie, by go odpiąć.
+    - Możesz kliknąć przypięty kształt po lewej stronie, by go odpiąć.

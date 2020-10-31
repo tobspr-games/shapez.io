@@ -17,7 +17,7 @@ steamPage:
     advantages:
         - <b>12 New Level</b> for a total of 26 levels
         - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
+        - <b>Unlimited Upgrade Tiers</b> for many hours of fun!
         - <b>Wires Update</b> for an entirely new dimension!
         - <b>Dark Mode</b>!
         - Unlimited Savegames
@@ -360,7 +360,7 @@ ingame:
                 title: ∞ Savegames
                 desc: As many as your heart desires!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ Markers

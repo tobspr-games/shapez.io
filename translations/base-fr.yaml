@@ -6,9 +6,11 @@ steamPage:
     intro: >-
         Vous aimez les jeux d’automatisation ? Ce jeu est pour vous !
 
-        shapez.io est un jeu calme où vous devrez construire des usines pour produire automatiquement des formes géométriques. À mesure que le niveau augmente, les formes deviennent de plus en plus complexes, et vous devrez vous étendre sur la carte infinie.
+        shapez.io est un jeu calme où vous devrez construire des usines pour produire automatiquement des formes géométriques. À mesure que le niveau augmente, les formes deviennent de plus en plus
+        complexes, et vous devrez vous étendre sur la carte infinie.
 
-        Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
+        Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais
+        plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
     title_advantages: Avantages de la version complète
@@ -365,7 +367,7 @@ ingame:
                 title: Sauvegardes ∞
                 desc: Autant que votre cœur le désire !
             upgrades:
-                title: 20 niveaux d’amélioration
+                title: ∞ niveaux d’amélioration
                 desc: Cette version de démonstration n’en a que 5 !
             markers:
                 title: Balises ∞
@@ -1028,7 +1030,8 @@ about:
 
         Si vous souhaitez contribuer, allez voir <a href="<githublink>" target="_blank">shapez.io sur GitHub</a>.<br><br>
 
-        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
+        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le
+        <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> — Il est génial !<br><br>
 

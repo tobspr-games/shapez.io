@@ -310,13 +310,14 @@ ingame:
             2_1_place_cutter: "Plaats nu een <strong>Knipper</strong> om de cirkels in twee te knippen
                 halves!<br><br> PS: De knipper knipt altijd van <strong>boven naar
                 onder</strong> ongeacht zijn oriëntatie."
-            2_2_place_trash: De knipper kan vormen <strong>verstoppen en bijhouden</strong>!<br><br> Gebruik een
+            2_2_place_trash:
+                De knipper kan vormen <strong>verstoppen en bijhouden</strong>!<br><br> Gebruik een
                 <strong>vuilbak</strong> om van het (!) niet
                 nodige afval vanaf te geraken.
             2_3_more_cutters: "Goed gedaan! Plaats nu <strong>2 extra knippers</strong> om dit traag
                 process te versnellen! <br><br> PS: Gebruik de <strong>0-9
                 sneltoetsen</strong> om gebouwen sneller te selecteren."
-            3_1_rectangles: "Laten we nu rechthoeken ontginnen! <strong>Bouw 4 
+            3_1_rectangles: "Laten we nu rechthoeken ontginnen! <strong>Bouw 4
                 ontginners</strong> en verbind ze met de lever.<br><br> PS:
                 Houd <strong>SHIFT</strong> Ingedrukt terwijl je lopende banden plaats
                 om ze te plannen!"
@@ -367,7 +368,7 @@ ingame:
                 title: ∞ Savegames
                 desc: Zo veel je maar wilt!
             upgrades:
-                title: 20 Upgrade Levels
+                title: ∞ Upgrade Levels
                 desc: Deze demo heeft er enkel 5!
             markers:
                 title: ∞ Markeringen
@@ -686,8 +687,8 @@ storyRewards:
     reward_balancer:
         title: Verdeler
         desc: De multifunctionele <strong>verdeler</strong> is nu ontgrendeld - Het kan
-             gebruikt worden om grotere <strong>te knippen en plakken</strong> vormen op meerdere
-             lopende banden te zetten
+            gebruikt worden om grotere <strong>te knippen en plakken</strong> vormen op meerdere
+            lopende banden te zetten
     reward_merger:
         title: Compacte samenvoeger
         desc: Je hebt een variant op de <strong>samenvoeger</strong> van de
@@ -1001,7 +1002,8 @@ about:
 
         Als je ook bij wil dragen, ga dan naar <a href="<githublink>" target="_blank">shapez.io op github</a>.<br><br>
 
-        Dit spel was niet mogelijk geweest zonder de geweldige Discord community rondom mijn spellen - Je zou eens lid moeten worden van de <a href="<discordlink>" target="_blank">Discord server</a> (engelstalig)!<br><br>
+        Dit spel was niet mogelijk geweest zonder de geweldige Discord community rondom mijn spellen - Je zou eens lid moeten worden van de
+        <a href="<discordlink>" target="_blank">Discord server</a> (engelstalig)!<br><br>
 
         De muziek is gemaakt door <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hij is geweldig.<br><br>
 

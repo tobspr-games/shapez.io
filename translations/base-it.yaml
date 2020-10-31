@@ -207,13 +207,12 @@ dialogs:
         title: Rinomina salvataggio.
         desc: Qui puoi cambiare il nome del salvataggio.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial Disponibile
+        desc: C'è un video tutorial disponibile per questo livello! Vorresti dargli un'occhiata?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial Disponibile
+        desc: C'è un video tutorial per questo livello, ma è disponibile solo in
+            Inglese. Vorresti dargli un'occhiata?
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -309,30 +308,29 @@ ingame:
                 velocemente.<br><br>Suggerimento: Tieni premuto
                 <strong>MAIUSC</strong> per piazzare estrattori multipli, e usa
                 <strong>R</strong> per ruotarli."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Ora posiziona un <strong>Taglierino</strong> per tagliare i cerchi in due
+                metà!<br><br> PS: Il taglierino taglia sempre <strong>dall'alto verso il
+                basso</strong> indipendentemente dal suo orientamento."
+            2_2_place_trash: Il taglierino può <strong>intasarsi e bloccarsi</strong>!<br><br> Usa un
+                <strong>cestino</strong> per sbarazzarti delgli scarti (!) inutilizzati.
+            2_3_more_cutters: "Ben fatto! Ora posiziona <strong>altri 2 taglierini</strong> per velocizzare
+                questo lento processo!<br><br> PS: Usa i numeri <strong>da 0 a 9 </strong>
+                per selezionare gli edifici più in fretta!"
+            3_1_rectangles: "Ora estraiamo qualche rettangolo! <strong>Costruisci 4
+                estrattori</strong> and connect them to the HUB.<br><br> PS:
+                Tieni premuto <strong>SHIFT</strong> mentre trascini un nastro per attivare il
+                pianificatore di nastri!"
+            21_1_place_quad_painter: Posiziona il <strong>verniciatore quadruplo</strong> e prendi dei
+                <strong>cerchi</strong> e i colori <strong>bianco</strong>
+                <strong>rosso</strong>!
+            21_2_switch_to_wires: Per passare al livello elettrico basta premere
+                <strong>E</strong>!<br><br> Poi <strong>connetti tutti e quattro gli
+                input</strong> del verniciatore con i cavi!
+            21_3_place_button: Fantastico! Ora posiziona un <strong>Interruttore</strong> e connettilo
+                con i cavi!
+            21_4_press_button: "Premi l'interruttore per fargli <strong>emettere un segnale di verità
+                </strong> e fargli quindi attivare il vernciatore.<br><br> PS: Non c'è bisogno
+                che tu connetta tutti gli imput! Prova a collegarne solo due."
     colors:
         red: Rosso
         green: Verde
@@ -369,7 +367,7 @@ ingame:
                 title: ∞ salvataggi
                 desc: Quanti ne desideri!
             upgrades:
-                title: 20 gradi di miglioramenti
+                title: ∞ gradi di miglioramenti
                 desc: Questa demo ne ha solo 5!
             markers:
                 title: ∞ etichette
@@ -747,13 +745,13 @@ storyRewards:
             divertirti!
     reward_wires_painter_and_levers:
         title: Cavi e Verniciatrice quadrupla
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Hai appena sbloccato il <strong>Livello Elettrico</strong>: è un livello separato
+            dal livelo normale e introduce molte altre
+            meccaniche di gioco!<br><br> Per il momento ti ho sbloccato il <strong>Verniciatore
+            Quadruplo</strong> - Connetti con il piano elettrico gli spazi
+            che vorresti colorare!<br><br> Per passare al livello elettrico ti basta premere
+            <strong>E</strong>. <br><br> PS: <strong>Attiva gli aiuti</strong> nelle
+            impostazioni per attivare il tutorial dei cavi!"
     reward_filter:
         title: Filtro oggetti
         desc: Hai sbloccato il <strong>filtro oggetti</strong>! Smisterà gli oggetti
@@ -927,13 +925,13 @@ settings:
                 dello schermo. La velocità dipende dall'impostazione Velocità di
                 movimento.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoom verso il Cursore
+            description: Se attivato, lo zoom andrà verso la posizione del mouse,
+                altrimenti sarà verso il centro dello schermo.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Grandezza delle Risorse sulla Mappa
+            description: Controlla la grandezza delle forme visualizzate sulla mappa (quando si fa lo zoom
+                indietro).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Comandi
@@ -1017,11 +1015,13 @@ about:
 
         Se vuoi contribuire visita la pagina github di <a href="<githublink>" target="_blank">shapez.io</a>.<br><br>
 
-        Realizzare questo gioco non sarebbe stato possibile senza la grande community di Discord per i miei giochi - Unisciti al <a href="<discordlink>" target="_blank">server di Discord</a>!<br><br>
+        Realizzare questo gioco non sarebbe stato possibile senza la grande community di Discord per i miei giochi -
+        Unisciti al <a href="<discordlink>" target="_blank">server di Discord</a>!<br><br>
 
         La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - È un grande.<br><br>
 
-        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
+        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
+        Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
     title: Registro modifiche
 demo:
@@ -1103,6 +1103,6 @@ tips:
     - L'etichetta dell'hub ha una piccola bussola per indicarne la direzione!
     - Per svuotare i nastri, taglia e re-incolla l'area nello stesso punto.
     - Premi F4 per mostrare FPS e Tick al secondo.
-    - Press F4 due volte per mostrare la casella del cursore e della telecamera.
+    - Premi F4 due volte per mostrare la casella del cursore e della telecamera.
     - Puoi cliccare a sinistra di una forma fermata a schermo per rimuoverla
       dalla lista.
