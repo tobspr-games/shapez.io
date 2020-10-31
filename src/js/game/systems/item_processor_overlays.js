@@ -1,6 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
-import { smoothPulse } from "../../core/utils";
+import { round1DigitLocalized, smoothPulse } from "../../core/utils";
 import { enumItemProcessorRequirements, enumItemProcessorTypes } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystem } from "../game_system";
@@ -92,7 +92,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         parameters.context.textAlign = "center";
         parameters.context.font = "bold 10px GameFont";
         parameters.context.fillText(
-            "" + Math.round(readerComp.lastThroughput * 10) / 10,
+            round1DigitLocalized(readerComp.lastThroughput),
             (staticComp.origin.x + 0.5) * globalConfig.tileSize,
             (staticComp.origin.y + 0.62) * globalConfig.tileSize
         );
