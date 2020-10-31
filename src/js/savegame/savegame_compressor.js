@@ -59,6 +59,12 @@ if (G_IS_DEV) {
     }
 }
 
+/**
+ * @param {any} obj
+ * @param {Map} keys
+ * @param {Map} values
+ * @returns {any[]|object|number|string}
+ */
 function compressObjectInternal(obj, keys, values) {
     if (Array.isArray(obj)) {
         let result = [];
@@ -89,14 +95,21 @@ function compressObjectInternal(obj, keys, values) {
     return obj;
 }
 
+/**
+ * @param {Map} hashMap
+ * @returns {Array}
+ */
 function indexMapToArray(hashMap) {
-    const result = [];
+    const result = new Array(hashMap.size);
     hashMap.forEach((index, key) => {
         result[index] = key;
     });
     return result;
 }
 
+/**
+ * @param {object} obj
+ */
 export function compressObject(obj) {
     const keys = new Map();
     const values = new Map();
@@ -108,6 +121,12 @@ export function compressObject(obj) {
     };
 }
 
+/**
+ * @param {object} obj
+ * @param {string[]} keys
+ * @param {any[]} values
+ * @returns {object}
+ */
 function decompressObjectInternal(obj, keys = [], values = []) {
     if (Array.isArray(obj)) {
         let result = [];
@@ -130,6 +149,9 @@ function decompressObjectInternal(obj, keys = [], values = []) {
     return obj;
 }
 
+/**
+ * @param {object} obj
+ */
 export function decompressObject(obj) {
     if (obj.keys && obj.values && obj.data) {
         const keys = obj.keys;

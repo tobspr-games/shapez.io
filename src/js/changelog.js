@@ -5,6 +5,8 @@ export const CHANGELOG = [
         entries: [
             "Fixed stacking bug for level 26 which required restarting the game",
             "Fix reward notification being too long sometimes (by LeopoldTal)",
+            "Use locale decimal separator on belt reader display (by LeopoldTal)",
+            "Vastly improved performance when saving games (by LeopoldTal)",
             "Updated translations",
         ],
     },
