@@ -6,9 +6,11 @@ steamPage:
     intro: >-
         Kamu suka game otomasi? Maka kamu berada di tempat yang tepat!
 
-        shapez.io adalah game santai dimana kamu harus membuat pabrik untuk mengotomatiskan produksi bentuk-bentuk geometris. Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks, dan kamu perlu meluaskan pabrikmu semakin jauh lagi.
+        shapez.io adalah game santai dimana kamu harus membuat pabrik untuk mengotomatiskan produksi bentuk-bentuk geometris. Semakin meningkatnya level, bentuk-bentuknya menjadi lebih kompleks,
+        dan kamu perlu meluaskan pabrikmu semakin jauh lagi.
 
-        Dan jita itu tidak cukup, kamu juga perlu memproduksi bentuk secara eksponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun kamu hanya perlu memproses bentuk di awal, nantinya kamu harus memberinya warna - dengan mengekstrak dan mencampur warna!
+        Dan jita itu tidak cukup, kamu juga perlu memproduksi bentuk secara eksponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun kamu hanya perlu
+        memproses bentuk di awal, nantinya kamu harus memberinya warna - dengan mengekstrak dan mencampur warna!
 
         Membeli game ini di Steam memberikan kamu akses ke versi lengkap, namun kamu juga dapat mencoba demo dan memutuskan nanti!
     title_advantages: Keuntungan Versi Lengkap
@@ -325,7 +327,8 @@ ingame:
                 bawah</strong> apapun orientasinya."
             2_2_place_trash: Pemotong dapat <strong>tersumbat dan macet</strong>!<br><br> Gunakan
                 <strong>tong sampah</strong> untuk membuang sisa (!) yang saat ini tidak diperlukan.
-            2_3_more_cutters: "Kerja yang bagus! Sekarang letakkan <strong>2 pemotong lagi</strong> untuk mempercepat
+            2_3_more_cutters:
+                "Kerja yang bagus! Sekarang letakkan <strong>2 pemotong lagi</strong> untuk mempercepat
                 proses ini!<br><br> NB: Gunakan <strong>tombol 0-9
                 </strong> untuk mengakses bangunan lebih cepat!"
             3_1_rectangles: "Sekarang ekstrak beberapa persegi! <strong>Bangun 4
@@ -893,7 +896,8 @@ settings:
             description: Mengatur volume untuk musik
         lowQualityMapResources:
             title: Kualitas Peta Sumber Daya Rendah
-            description: Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa.
+            description:
+                Menyederhanakan rendering sumber daya pada peta saat diperbesar untuk meningkatkan performa.
                 Bahkan terlihat lebih rapi, jadi pastikan untuk mencobanya!
         disableTileGrid:
             title: Nonaktifkan Grid
@@ -901,7 +905,9 @@ settings:
                 Ini juga membuat game menjadi lebih rapi!
         clearCursorOnDeleteWhilePlacing:
             title: Menghapus Kursor dengan Klik Kanan
-            description: Diaktifkan secara default, menghapus kursor setiap kali kamu mengklik kanan saat kamu memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, kamu dapat menghapus bangunan dengan mengklik kanan saat meletakkan bangunan.
+            description: >-
+                Diaktifkan secara default, menghapus kursor setiap kali kamu mengklik kanan saat kamu memiliki bangunan yang dipilih untuk penempatan. Jika dinonaktifkan, kamu dapat menghapus
+                bangunan dengan mengklik kanan saat meletakkan bangunan.
         lowQualityTextures:
             title: Tekstur Kualitas Rendah (Jelek)
             description: Menggunakan kualitas rendah untuk menyelamatkan performa.
@@ -1016,7 +1022,8 @@ about:
 
         Lagunya dibuat oleh <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Dia mengagumkan.<br><br>
 
-        Akhir kata, banyak terima kasih kepada teman baik saya <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Tanpa sesi-sesi factorio kami, permainan ini tidak mungkin tercipta.
+        Akhir kata, banyak terima kasih kepada teman baik saya <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Tanpa sesi-sesi factorio kami, permainan ini tidak mungkin
+        tercipta.
 changelog:
     title: Catatan Perubahan
 demo:
