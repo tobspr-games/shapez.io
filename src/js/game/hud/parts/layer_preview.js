@@ -76,6 +76,12 @@ export class HUDLayerPreview extends BaseHUDPart {
                 const tileY = dy + startTileY;
 
                 const content = this.root.map.getLayerContentXY(tileX, tileY, "wires");
+                const contentRegular = this.root.map.getLayerContentXY(tileX, tileY, "regular");
+                if (contentRegular && content) {
+                    // We don't want to count something on the wires layer here if it is on the normal layer,
+                    // because then it will get rendered twice
+                    continue;
+                }
                 if (content) {
                     MapChunkView.drawSingleWiresOverviewTile({
                         context: this.context,

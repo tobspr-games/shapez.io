@@ -372,10 +372,24 @@ export class MapChunk {
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
+        const regularContents = this.contents[localX][localY] || null;
         if (layer === "regular") {
-            return this.contents[localX][localY] || null;
+            return regularContents;
         } else {
-            return this.wireContents[localX][localY] || null;
+            const wireContents = this.wireContents[localX][localY] || null;
+            // If there is a reader, lever, or display on the tile, we count it
+            // as a wires component and act as if it is on the wires layer.
+            const regularContentsIsWireComponent =
+                regularContents ?
+                    regularContents.components.BeltReader ||
+                    regularContents.components.Lever ||
+                    regularContents.components.Display
+                : false;
+            if (!wireContents && regularContentsIsWireComponent) {
+                return regularContents;
+            } else {
+                return wireContents;
+            }
         }
     }
     /**
