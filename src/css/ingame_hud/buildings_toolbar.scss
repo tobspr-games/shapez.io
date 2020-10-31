@@ -27,7 +27,7 @@
         @include S(border-radius, $globalBorderRadius);
 
         @include DarkThemeOverride {
-            background-color: rgba(darken($darkModeGameBackground, 15), 0.4);
+            background-color: rgba(darken($darkModeGameBackground, 15), 0.95);
         }
 
         &.secondary {

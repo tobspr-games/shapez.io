@@ -93,9 +93,9 @@ mainMenu:
     discordLink: Servidor Discord oficial
     helpTranslate: Ajuda a traduir-lo!
     madeBy: Creat per <author-link>
-    browserWarning: >-
-
-        Disculpa, però el joc funcionarà lent al teu navegador! Aconsegueix el joc complet o descarrega't chrome per una millor experiència.
+    browserWarning: Disculpa, però el joc funcionarà lent al teu navegador!
+        Aconsegueix el joc complet o descarrega't chrome per una millor
+        experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
     savegameUnnamed: Unnamed
@@ -205,11 +205,14 @@ dialogs:
     renameSavegame:
         title: Canviar el nom.
         desc: Canviar el nom de la partida guardada.
-    entityWarning:
-        title: Alerta de rendiment
-        desc: Has col·locat molts edificis, això és una alerta amistosa de que el joc no
-            pot suportar edificis infinits, així que intenta mantenir els teus
-            dissenys minimament compactes!
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Moure
@@ -265,27 +268,6 @@ ingame:
         title: Millores
         buttonUnlock: Millorar
         tier: Nivell <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NIVELL MÀXIM (Velocitat x<currentMult>)
     statistics:
         title: Estadístiques
@@ -310,10 +292,6 @@ ingame:
         playtime: Temps de joc
         buildingsPlaced: Edificis
         beltsPlaced: Cintes transportadores
-        buttons:
-            continue: Continuar
-            settings: Configuració
-            menu: Tornar al menú
     tutorialHints:
         title: Necessites ajuda?
         showHint: Mostrar pista
@@ -345,6 +323,30 @@ ingame:
                 ràpidament.<br><br>Pista: Manté pressionat
                 <strong>SHIFT</strong> per a col·locar més extractors, i
                 utilitza <strong>R</strong> per a rotar-los."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
@@ -692,9 +694,9 @@ storyRewards:
             completa - fora del web!
     reward_balancer:
         title: Equilibrador
-        desc: Has desbloquejat el multifuncional <strong>equilibrador</strong>! Pot
-            ésser emprat per construir fàbriques més grans <strong>dividint i
-            fusionant ítems</strong> a múltiples cintes!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Fusionador Compacte
         desc: Has desbloquejat una variant <strong>fusionadora</strong> de
@@ -742,12 +744,13 @@ storyRewards:
             passar-ho bé!
     reward_wires_painter_and_levers:
         title: Cables i Pintador Quàdruple
-        desc: "\"Has desbloquejat la <strong>Capa de Cables</strong>: És una capa
-            separada damunt la capa normal i introdueix moltes mecàniques
-            noves!<br><br> Per començar t'he desbloquejat el <strong>Pintador
-            Quàdruple</strong>. Conecta les ranures que vols pintar a la capa de
-            Cables!<br><br> Per canviar a la capa de Cables, prem
-            <strong>E</strong>.\""
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Filtre d'Ítems
         desc: Has desbloquejat el <strong>Filtre d'Ítems</strong>! Filtrarà els ítems a
@@ -918,6 +921,14 @@ settings:
             description: Permet moure el mapa quan mous el cursor a les vores de la
                 pantalla. La velocitat de moviment depèn de la configuració de
                 Velocitat de Moviment.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Combinacions de tecles

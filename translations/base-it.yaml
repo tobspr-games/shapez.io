@@ -22,7 +22,7 @@ steamPage:
         - <b>L'aggiornamento dei Cavi</b> per una dimensione completamente nuova!
         - <b>Modalità scura</b>!
         - Salvataggi illimitati
-        - Segnapunti illimitati
+        - Etichette illimitate
         - Mi sostieni! ❤️
     title_future: Contenuti pianificati
     planned:
@@ -82,8 +82,8 @@ demoBanners:
     title: Versione Demo
     intro: Ottieni la versione completa per sbloccare tutte le funzioni!
 mainMenu:
-    play: Play
-    changelog: Changelog
+    play: Gioca
+    changelog: Registro modifiche
     importSavegame: Importa
     openSourceHint: Questo gioco è open source!
     discordLink: Server ufficiale Discord
@@ -121,9 +121,9 @@ dialogs:
         text: "Impossibile caricare il salvataggio:"
     confirmSavegameDelete:
         title: Conferma eliminazione
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: Sei sicuro di voler eliminare la partita seguente?<br><br>
+            '<savegameName>' al livello <savegameLevel><br><br>  Da qui in poi
+            non si può più tornare indietro!
     savegameDeletionError:
         title: Impossibile eliminare
         text: "Impossibile eliminare il salvataggio:"
@@ -177,13 +177,14 @@ dialogs:
             class='keybinding'>ALT</code>: Inverti l'orientamento dei nastri
             trasportatori.<br>"
     createMarker:
-        title: Nuovo segnapunto
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
-        titleEdit: Modifica segnapunto
+        title: Nuova etichetta
+        desc: Dagli un nome significativo, puoi anche inserire un
+            <strong>codice</strong> di una forma (Che puoi generare
+            <link>qui</link>)
+        titleEdit: Modifica etichetta
     markerDemoLimit:
-        desc: Puoi creare solo due segnapunti personalizzati nella Demo. Ottieni la
-            versione completa per avere segnapunti personalizzati illimitati!
+        desc: Puoi creare solo due etichette personalizzate nella Demo. Ottieni la
+            versione completa per avere etichette personalizzate illimitati!
     massCutConfirm:
         title: Conferma taglio
         desc: Stai tagliando molte strutture (<count> per essere precisi)! Sei sicuro di
@@ -205,11 +206,14 @@ dialogs:
     renameSavegame:
         title: Rinomina salvataggio.
         desc: Qui puoi cambiare il nome del salvataggio.
-    entityWarning:
-        title: Attento alle prestazioni
-        desc: Hai posizionato molti edifici, questo messaggio serve a ricordarti che il
-            gioco non può gestire una quantità infinita di edifici. Quindi cerca
-            di mantenere le tue fabbriche compatte!
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -239,7 +243,7 @@ ingame:
             range: Raggio
             storage: Spazio
             oneItemPerSecond: 1 oggetto / secondo
-            itemsPerSecond: <x> oggetti / s
+            itemsPerSecond: <x> oggetti / secondo
             itemsPerSecondDouble: (x2)
             tiles: <x> caselle
     levelCompleteNotification:
@@ -250,39 +254,18 @@ ingame:
     notifications:
         newUpgrade: È disponibile un nuovo aggiornamento!
         gameSaved: Partita salvata.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Il livello <level> è stato completato!
     shop:
         title: Miglioramenti
         buttonUnlock: Sblocca
         tier: Grado <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: GRADO MASSIMO (Velocità x<currentMult>)
     statistics:
         title: Statistiche
         dataSources:
             stored:
                 title: Immagazzinate
-                description: Mostra il numero di forme immagizzinate nell'edificio centrale.
+                description: Mostra il numero di forme immagazzinate nell'Edificio centrale.
             produced:
                 title: Prodotte
                 description: Mostra tutte le forme prodotte dalla tua fabbrica, inclusi i
@@ -299,10 +282,6 @@ ingame:
         playtime: Tempo di gioco
         buildingsPlaced: Edifici
         beltsPlaced: Nastri
-        buttons:
-            continue: Continua
-            settings: Impostazioni
-            menu: Torna al menù
     tutorialHints:
         title: Serve aiuto?
         showHint: Mostra indizio
@@ -310,19 +289,19 @@ ingame:
     blueprintPlacer:
         cost: Costo
     waypoints:
-        waypoints: Segnapunti
+        waypoints: Punti di interesse
         hub: HUB
-        description: Clic sinistro su un segnapunto per raggiungerlo, clic destro per
-            cancellarlo. <br><br>Premi <keybinding> per creare un segnapunto
+        description: Clic sinistro su un etichetta per raggiungerla, clic destro per
+            cancellarla. <br><br>Premi <keybinding> per creare un etichetta
             dalla visuale corrente, oppure <strong>click destro</strong> per
-            creare un segnapunto nella posizione selezionata.
-        creationSuccessNotification: Il segnapunto è stato creato.
+            creare un etichetta nella posizione selezionata.
+        creationSuccessNotification: L'etichetta è stata creata.
     interactiveTutorial:
         title: Tutorial
         hints:
             1_1_extractor: Posiziona un <strong>estrattore</strong> sopra una <strong>forma
                 circolare</strong> per estrarla!
-            1_2_conveyor: "Connetti l'estrattore all'Hub centrale utilizzando un
+            1_2_conveyor: "Connetti l'estrattore all'Edificio centrale utilizzando un
                 <strong>nastro trasportatore</strong>!<br><br>Suggerimento:
                 <strong>Clicca e trascina</strong> il nastro con il mouse!"
             1_3_expand: "Questo <strong>NON</strong> è un idle game! Costruisci più
@@ -330,6 +309,30 @@ ingame:
                 velocemente.<br><br>Suggerimento: Tieni premuto
                 <strong>MAIUSC</strong> per piazzare estrattori multipli, e usa
                 <strong>R</strong> per ruotarli."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     colors:
         red: Rosso
         green: Verde
@@ -338,7 +341,7 @@ ingame:
         purple: Magenta
         cyan: Azzurro
         white: Bianco
-        uncolored: No colore
+        uncolored: Senza colore
         black: Nero
     shapeViewer:
         title: Strati
@@ -350,7 +353,7 @@ ingame:
         limited_items: Limitato a <max_throughput>
     watermark:
         title: Versione demo
-        desc: Clicca qui per vedere i vantaggi della versione Steam!
+        desc: Clicca qui per vedere i vantaggi della versione Completa!
         get_on_steam: Ottieni su Steam
     standaloneAdvantages:
         title: Ottieni la versione completa!
@@ -369,7 +372,7 @@ ingame:
                 title: 20 gradi di miglioramenti
                 desc: Questa demo ne ha solo 5!
             markers:
-                title: ∞ segnapunti
+                title: ∞ etichette
                 desc: Non perderti nella tua fabbrica!
             wires:
                 title: Cavi
@@ -397,43 +400,43 @@ buildings:
     belt:
         default:
             name: Nastro Trasportatore
-            description: Trasporta oggetti, clicca e trascina per posizionare in sequenza.
+            description: Trasporta oggetti, clicca e trascina per posizionarli in sequenza.
     miner:
         default:
             name: Estrattore
-            description: Posiziona sopra una forma o un colore per estrarlo.
+            description: Posizionalo sopra una forma o un colore per estrarlo.
         chainable:
             name: Estrattore (Catena)
-            description: Posiziona sopra una forma o un colore per estrarlo. Puoi combinarlo
-                con altri estrattori.
+            description: Posizionalo sopra una forma o un colore per estrarlo. Puoi
+                combinarlo con altri estrattori.
     underground_belt:
         default:
             name: Tunnel
-            description: Permette di far passare delle risorse sotto a costruzioni e nastri
-                trasportatori.
+            description: Permette di far passare le risorse sotto alle costruzioni e ai
+                nastri trasportatori.
         tier2:
             name: Tunnel Grado II
-            description: Permette di far passare delle risorse sotto a costruzioni e nastri
-                trasportatori.
+            description: Permette di far passare le risorse sotto alle costruzioni e ai
+                nastri trasportatori.
     cutter:
         default:
-            name: Tagliatrice
-            description: Taglia le forme verticalmente e restituisce le metà destra e
-                sinistra. <strong>Se usi solo una parte, distruggi l'altra o la
-                macchina si fermerà!</strong>
+            name: Taglierino
+            description: Taglia le forme verticalmente e restituisce le due metà a destra e
+                a sinistra. <strong>Se usi solo una parte, distruggi l'altra o
+                la macchina si fermerà!</strong>
         quad:
-            name: Tagliatrice (4x)
-            description: Taglia le forme in quattro parti. <strong>Se usi solo una parte,
-                distruggi le altre o la macchina si fermerà!</strong>
+            name: Taglierino (4x)
+            description: Taglia le forme in quattro parti. <strong>Se usi meno di quattro
+                parti, distruggi le altre o la macchina si fermerà!</strong>
     rotater:
         default:
-            name: Ruotatrice
+            name: Ruotatore
             description: Ruota le forme di 90 gradi in senso orario.
         ccw:
-            name: Ruotatrice (Ant.)
+            name: Ruotatore (Ant.)
             description: Ruota le forme di 90 gradi in senso antiorario.
         rotate180:
-            name: Ruotatrice (180)
+            name: Ruotatore (180°)
             description: Ruota le forme di 180 gradi.
     stacker:
         default:
@@ -442,26 +445,26 @@ buildings:
                 uniti, l'oggetto destro è posizionato sopra il sinstro.
     mixer:
         default:
-            name: Mixer Colori
+            name: Miscelatore di vernice
             description: Mescola due colori mediante sintesi additiva.
     painter:
         default:
-            name: Verniciatrice
+            name: Verniciatore
             description: Colora l'intera forma dall'ingresso sinistro con il colore
-                dall'ingresso destro.
+                dall'ingresso superiore.
         double:
-            name: Verniciatrice (2x)
+            name: Verniciatore (2x)
             description: Colora le forme dagli ingressi sinistri con il colore dall'ingresso
-                destro.
+                superiore.
         quad:
-            name: Verniciatrice (4x)
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            name: Verniciatore (4x)
+            description: Ti permette di colorare ogni quadrante della forma individualmente.
+                Solo gli spazi con un <strong>Vero</strong> sul livello
+                elettrico saranno colorati!
         mirrored:
-            name: Verniciatrice
+            name: Verniciatore
             description: Colora l'intera forma dall'ingresso sinistro con il colore
-                dall'ingresso destro.
+                dall'ingresso inferiore.
     trash:
         default:
             name: Cestino
@@ -482,7 +485,7 @@ buildings:
     balancer:
         default:
             name: Bilanciatore
-            description: Multifunzionale, distribuisce equamente gli ogetti in ingresso tra
+            description: Multifunzione, distribuisce equamente gli oggetti in ingresso tra
                 tutte le uscite.
         merger:
             name: Aggregatore (compatto)
@@ -498,13 +501,13 @@ buildings:
             description: Divide un nastro in due.
     storage:
         default:
-            name: Stoccaggio
+            name: Magazzino
             description: Immagazzina gli oggetti in eccesso, fino ad una capacità massima.
-                Prioritizza l'uscita sinistra e può quindi essere usato per
+                Dà priorità all'uscita sinistra e può quindi essere usato per
                 gestire le eccedenze.
     wire_tunnel:
         default:
-            name: Incrocio cavi
+            name: Incrocio fra cavi
             description: Consente a due cavi di attraversarsi senza connettersi.
     constant_signal:
         default:
@@ -513,15 +516,15 @@ buildings:
                 un booleano (1 / 0).
     lever:
         default:
-            name: Bottone
+            name: Interruttore
             description: Può essere azionato per emettere un segnale booleano (1 / 0) nel
-                livello dei cavi, che può essere usato per controllare, per
+                livello elettrico, che può essere usato per controllare, per
                 esempio, un filtro.
     logic_gate:
         default:
             name: Porta AND
             description: Emette un "1" booleano se entrambi gli ingressi sono veri. (Vero
-                significa forma, colore o "1" boolean)
+                significa forma, colore o "1" booleano)
         not:
             name: Porta NOT
             description: Emette un "1" booleano se l'ingresso è falso. (Vero significa
@@ -536,11 +539,11 @@ buildings:
                 significa forma, colore o "1" booleano)
     transistor:
         default:
-            name: Transistor
+            name: Transistore
             description: Inoltra il segnale dall'ingresso inferiore se l'ingresso laterale è
                 vero (una forma, un colore o "1").
         mirrored:
-            name: Transistor
+            name: Transistore
             description: Inoltra il segnale dall'ingresso inferiore se l'ingresso laterale è
                 vero (una forma, un colore o "1").
     filter:
@@ -572,105 +575,107 @@ buildings:
                 comparare forme, colori e booleani.
     virtual_processor:
         default:
-            name: Tagliatrice virtuale
+            name: Taglierino virtuale
             description: Taglia virtualmente la forma in due metà.
         rotater:
-            name: Ruotatrice virtuale
-            description: Ruota virtualmente la forma, sia in senso orario che antiorario.
+            name: Ruotatore virtuale
+            description: Ruota virtualmente la forma, sia in senso orario sia antiorario.
         unstacker:
             name: Disimpilatrice virtuale
             description: Estrae virtualmente lo strato più alto e lo emette a destra, i
                 restanti sono emessi a sinistra.
         stacker:
             name: Impilatrice virtuale
-            description: Impila visrtualmente la forma destra sulla sinistra.
+            description: Impila virtualmente la forma destra sulla sinistra.
         painter:
-            name: Verniciatrice virtuale
+            name: Verniciatore virtuale
             description: Vernicia virtualmente la forma dall'ingresso inferiore con il
                 colore dall'ingresso destro.
     item_producer:
         default:
             name: Generatore di oggetti
             description: Disponibile solo nella modalità sandbox, emette il segnale dal
-                livello dei cavi come oggetti sul livello normale.
+                livello elettrico come oggetti sul livello normale.
 storyRewards:
     reward_cutter_and_trash:
         title: Taglio forme
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Il <strong>taglierino</strong> è stato bloccato! Taglia le forme a metà da
+            sopra a sotto <strong>indipendentemente dal suo
+            orientamento</strong>!<br><br> Assicurati di buttare via lo scarto,
+            sennò <strong>si intaserà e andrà in stallo </strong> - Per questo
+            ti ho dato il <strong>certino</strong>, che distrugge tutto quello
+            che riceve!
     reward_rotater:
         title: Rotazione
-        desc: La <strong>ruotatrice</strong> è stata sbloccata! Ruota le forme di 90
+        desc: Il <strong>ruotatore</strong> è stato sbloccato! Ruota le forme di 90
             gradi in senso orario.
     reward_painter:
         title: Verniciatura
-        desc: "La <strong>verniciatrice</strong> è stata sbloccata - Estrai dalle vene
+        desc: "Il <strong>verniciatore</strong> è stato sbloccato! Estrai dalle vene
             colorate (esattamente come fai con le forme) e combina il colore con
             una forma nella veniciatrice per colorarla!<br><br>PS: Se sei
             daltonico, c'è la <strong>modalità daltonici </strong> nelle
-            opzioni!"
+            impostazion!"
     reward_mixer:
         title: Mix colori
-        desc: Il <strong>mixer</strong> è stato sbloccato - Con questo edificio, puoi
-            combinare due colori mediante <strong>sintesi additiva</strong>!
+        desc: Il <strong>miscelatore</strong> è stato sbloccato! Con questo edificio,
+            puoi combinare due colori mediante la <strong>sintesi
+            additiva</strong>!
     reward_splitter:
         title: Separatore/Agrregatore
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: Il <strong>separatore</strong> è stato sbloccato! è una variante del
+            <strong>bilanciatore</strong> - Accetta un imput e lo divide in due!
     reward_tunnel:
         title: Tunnel
-        desc: Il <strong>tunnel</strong> è stato sbloccato. In questo modo puoi
+        desc: Il <strong>tunnel</strong> è stato sbloccato! In questo modo puoi
             trasportare oggetti al di sotto di nastri ed edifici!
     reward_rotater_ccw:
         title: Rotazione antioraria
-        desc: Hai sbloccato una variante della <strong>ruotatrice</strong>. Consente di
+        desc: Hai sbloccato una variante del <strong>ruotatore</strong>! Consente di
             ruotare in senso antiorario! Per costruirla, seleziona la ruotatrice
             e <strong>premi 'T' per cambiare variante</strong>!
     reward_miner_chainable:
         title: Estrattore a catena
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "L'<strong>estrattore a catena</strong> è stato sbloccato! Può
+            <strong>passare le sue risorse</strong> agli altri estrattori, così
+            tu puoi estrarre le risorse in modo più efficiente!<br><br> PS: Il
+            primo estrattore è stato rimpiazzato nel tuo inventario!"
     reward_underground_belt_tier_2:
         title: Tunnel grado II
-        desc: Hai sbloccato una nuova variante del <strong>tunnel</strong>. Ha un
+        desc: Hai sbloccato una variante del <strong>tunnel</strong>! Ha un
             <strong>raggio più ampio</strong> e puoi anche mischiare le due
             varianti ora!
     reward_cutter_quad:
         title: Taglio quadruplo
-        desc: Hai sbloccato una variante della <strong>tagliatrice</strong>. Cconsente
-            di tagliare le forme in <strong>quattro parti</strong> invece che in
+        desc: Hai sbloccato una variante del <strong>taglierino</strong>! Consente di
+            tagliare le forme in <strong>quattro parti</strong> invece che in
             due!
     reward_painter_double:
         title: Verniciatura doppia
-        desc: Hai sbloccato una variante della <strong>verniciatrice</strong>. Funziona
-            come una normale verniciatrice, ma processa <strong>due forme alla
+        desc: Hai sbloccato una variante del <strong>verniciatore</strong>! Funziona
+            come un normale verniciatore, ma processa <strong>due forme alla
             volta</strong> consumando solo un'unità di colore invece che due!
     reward_storage:
         title: Unità di stoccaggio
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        desc: Hai sbloccato il <strong>magazzino</strong>! Ti permette di immagazzinare
+            le forme fino a un certo limite!<br><br> Dà priorità all'uscita a
+            sinistra, puoi quindi usarlo per gestire le
+            <strong>eccedenze</strong>!
     reward_freeplay:
         title: Modalità libera
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Ce l'hai fatta! Hai sbloccato la <strong>modalità libera</strong>! Questo
+            significa che le forme da adesso in poi sono generate
+            <strong>casualmente</strong>!<br><br> Visto che la HUB avrà bisogno
+            di una <strong>portata maggiore</strong> Ti consiglio vivamente di
+            costruire un macchinario che consegna automaticamente la forma
+            richiesta!<br><br> La HUB da come output la forma richiesta sul
+            livello elettrico, quindi ti basta solo analizzarla e configurare
+            automaticamente la tua fabbrica in base a quei dati.
     reward_blueprints:
         title: Progetti
-        desc: Ora puoi <strong>copiare ed incollare</strong> parti della tua fabbrica!
-            Seleziona un'area (Tieni premuto CTRL e trascina con il mouse) e
-            premi 'C' per copiarla.<br><br>Incollarla <strong>non è
+        desc: Ora puoi <strong>copiare ed incollare</strong> componenti della tua
+            fabbrica! Seleziona un'area (Tieni premuto CTRL e trascina con il
+            mouse) e premi 'C' per copiarla.<br><br>Incollarla <strong>non è
             gratis</strong>, devi produrre <strong>forme progetto</strong> per
             potertelo permettere! (Quelle che hai appena consegnato).
     no_reward:
@@ -693,11 +698,11 @@ storyRewards:
         title: Bilanciatore
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Aggregatore compatto
         desc: Hai sbloccato un <strong>aggregatore</strong>, variante del
-            <strong>bilanciatore</strong>. Acetta due ingressi e li aggrega su
+            <strong>bilanciatore</strong>! Acetta due ingressi e li aggrega su
             un unico nastro!
     reward_belt_reader:
         title: Lettore di nastri
@@ -706,19 +711,19 @@ storyRewards:
             allora sì che sarà molto utile!
     reward_rotater_180:
         title: Ruotatrice (180 gradi)
-        desc: Hai appena sbloccato la <strong>ruotatrice</strong> a 180 gradi! Consente
+        desc: Hai appena sbloccato il <strong>ruotatore</strong> a 180 gradi! Consente
             di ruotare una forma di 180 gradi (Sorpresa! :D)
     reward_display:
         title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "Hai sbloccato il <strong>Display</strong>! Connetti un segnale sul
+            livello elettrico per visualizzarlo!<br><br> PS: Hai notato che il
+            lettore di nastri e il magazzino mostrano l'ultimo oggetto da loro
+            letto? Prova a mostrarlo su di un display!"
     reward_constant_signal:
         title: Sengale costante
-        desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello dei
-            cavi! È utile collegarlo ai <strong>filtri oggetti</strong> per
-            esempio.<br><br> Il segnale costante può emettere una
+        desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello
+            elettrico! È utile collegarlo ai <strong>filtri di oggetti</strong>
+            per esempio.<br><br> Il segnale costante può emettere una
             <strong>forma</strong>, un <strong>colore</strong> o un
             <strong>booleano</strong> (1 / 0).
     reward_logic_gates:
@@ -727,33 +732,34 @@ storyRewards:
             entusiasta, ma in realtà sono fantastiche!<br><br> Con quelle porte
             ora puoi eseguire le operazioni logiche di AND, OR, XOR e
             NOT.<br><br> Come bonus extra ti ho anche regalato un
-            <strong>transistor</strong>!
+            <strong>transistore</strong>!
     reward_virtual_processing:
         title: Lavorazione virtuale
         desc: Ti ho appena dato un bel po' di nuovi edifici che ti consentono di
             <strong>simulare la lavorazione delle forme</strong>!<br><br> Ora
-            puoi simulare una tagliatrice, una ruotatrice, un'impilatrice e
-            molto altro sul livello dei cavi! In questo modo hai tre opzioni per
+            puoi simulare un taglierino, un ruotatore, un'impilatrice e molto
+            altro sul livello elettrico! In questo modo hai tre opzioni per
             continuare il gioco:<br><br> -Costruisci una <strong>macchina
             automatica</strong> per creare ogni possibile forma richiesta
             dall'HUB (ti consiglio di provarci!).<br><br> - Costruisci qualcosa
             di interessante con i cavi.<br><br> - Continua a giocare
-            normalmente. <br><br> Qualsiasi cosa tu scelga, riordati di
+            normalmente. <br><br> Qualsiasi cosa tu scelga, ricordati di
             divertirti!
     reward_wires_painter_and_levers:
         title: Cavi e Verniciatrice quadrupla
-        desc: "Hai appena sbloccato il <strong>livello dei cavi</strong>: È un livello
-            separato al di sopra di quello normale e introduce un sacco di nuove
-            meccaniche!<br><br> Per il momento ti ho sbloccato la
-            <strong>Verniciatrice quadrupla</strong>. Collega gli ingressi con i
-            quali vuoi dipingere nel livello dei cavi!<br><br> Per passare al
-            livello dei cavi, premi <strong>E</strong>."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Filtro oggetti
         desc: Hai sbloccato il <strong>filtro oggetti</strong>! Smisterà gli oggetti
-            verso l'alto o verso destra a seconda che corrispondano al sengale
-            dal livello dei cavi o no.<br><br> Puoi anche mandargli un segnale
-            booleano (1 / 0) per attivarlo o disattivarlo completamente.
+            verso l'alto o verso destra a seconda del segnale dal livello
+            elettrico o meno.<br><br> Puoi anche mandargli un segnale booleano
+            (1 / 0) per attivarlo o disattivarlo completamente.
     reward_demo_end:
         title: Fine della demo
         desc: Hai raggiunto la fine della demo!
@@ -763,7 +769,7 @@ settings:
         general: Generali
         userInterface: Interfaccia utente
         advanced: Avanzate
-        performance: Performance
+        performance: Prestazioni
     versionBadges:
         dev: Sviluppo
         staging: Staging
@@ -920,6 +926,14 @@ settings:
             description: Consente di spostare la mappa spostando il mouse verso il bordo
                 dello schermo. La velocità dipende dall'impostazione Velocità di
                 movimento.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Comandi
@@ -944,7 +958,7 @@ keybindings:
         centerMap: Centra mappa
         mapZoomIn: Aumenta zoom
         mapZoomOut: Riduci zoom
-        createMarker: Crea segnapunto
+        createMarker: Crea Etichetta
         menuOpenShop: Miglioramenti
         menuOpenStats: Statistiche
         toggleHud: Mostra/Nascondi HUD
@@ -952,17 +966,17 @@ keybindings:
         belt: Nastro Trasportatore
         underground_belt: Tunnel
         miner: Estrattore
-        cutter: Tagliatrice
-        rotater: Ruotatrice
+        cutter: Taglierino
+        rotater: Ruotatore
         stacker: Impilatrice
-        mixer: Mixer Colori
-        painter: Verniciatrice
+        mixer: Miscelatore di vernice
+        painter: Verniciatore
         trash: Cestino
         rotateWhilePlacing: Ruota
         rotateInverseModifier: "Modificatore: Ruota in senso antiorario"
         cycleBuildingVariants: Cicla varianti
         confirmMassDelete: Conferma eliminazione di massa
-        cycleBuildings: Cicla edifici
+        cycleBuildings: Cambia variante
         massSelectStart: Clicca e trascina per cominciare
         massSelectSelectMultiple: Seleziona aree multiple
         massSelectCopy: Copia area
@@ -980,16 +994,16 @@ keybindings:
         switchLayers: Cambia livello
         wire: Cavo
         balancer: Bilanciatore
-        storage: Stoccaggio
+        storage: Magazzino
         constant_signal: Segnale costante
         logic_gate: Porta logica
-        lever: Bottone (normale)
+        lever: Interruttore (normale)
         filter: Filtro
         wire_tunnel: Incrocio cavi
         display: Display
         reader: Lettore nastri
-        virtual_processor: Tagliatrice virtuale
-        transistor: Transistor
+        virtual_processor: Taglierino virtuale
+        transistor: Transistore
         analyzer: Analizzatore forme
         comparator: Comparatore
         item_producer: Generatore di oggetti (Sandbox)
@@ -1009,7 +1023,7 @@ about:
 
         Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
-    title: Changelog
+    title: Registro modifiche
 demo:
     features:
         restoringGames: Recupero salvataggi
@@ -1034,8 +1048,7 @@ tips:
     - La simmetria è la chiave!
     - Puoi intrecciare gradi diversi del tunnel.
     - Cerca di costruire fabbriche compatte, sarai ricompensato!
-    - La verniciatrice ha una variante speculare che puoi selezionare con
-      <b>T</b>
+    - Il verniciatore ha una variante speculare che puoi selezionare con <b>T</b>
     - Avere i giusti rapporti tra gli edifici massimizzerà l'efficienza.
     - Al massimo livello, 5 estrattori saturano un singolo nastro.
     - Non dimenticare i tunnel!
@@ -1043,10 +1056,10 @@ tips:
       efficienza.
     - Tenere premuto <b>SHIFT</b> attiva il pianificatore nastri, facilitando il
       posizionamento dei nastri più lunghi
-    - Le tagliatrici tagliano sempre in verticale, indipendentemente dalla
-      direzione.
+    - I taglierini tagliano sempre in verticale, indipendentemente
+      dall'orientamento.
     - Mischia tutti i tre colori per fare il bianco.
-    - L'unità di stoccaggio prioritizza la prima uscita.
+    - Il magazzino prioritizza la prima uscita.
     - Impiega tempo per costruire design replicabili, ne vale la pena!
     - Tenere premuto <b>CTRL</b> ti consente di piazzare multipli edifici.
     - Puoi tenere premuto <b>ALT</b> per invertire la direzione dei nastri
@@ -1072,23 +1085,24 @@ tips:
       mortali.
     - Costruisci una fabbrica dedicata per i progetti. Sono importanti per i
       moduli.
-    - Guarda da vicino il mixer dei colori, e le tue domande avranno risposta.
+    - Guarda da vicino il miscelatore di colori, e le tue domande avranno
+      risposta.
     - Usa <b>CTRL</b> + Clic per selezionare un'area.
     - Costruire troppo vicino all'hub potrebbe intralciare progetti futuri.
     - Premere la puntina vicino a ogni forma nel menù miglioramenti la farà
       visualizzare sempre a schermo
     - Mescola tutti i colori primari per fare il bianco!
-    - Hai una mappa finita, non incastrare la tua fabbrica, espanditi!
-    - Prova anhe factorio! È il mio gioco preferito.
-    - La tagliatrice quadrupla taglia in senso orario a partire dal quadrante in
+    - Hai una mappa infinita, non incastrare la tua fabbrica, espanditi!
+    - Prova anche factorio! È il mio gioco preferito.
+    - Il taglierino quadruplo taglia in senso orario a partire dal quadrante in
       alto a destra!
     - Puoi scaricare i salvataggi dal menù principale!
     - Questo gioco ha molti tasti di scelta rapida! Dai un'occhiata alla pagina
       delle impostazioni
     - Questo gioco ha molte impostazioni, dai un'occhiata!
-    - Il segnapunto dell'hub ha una piccola bussola per indicarne la direzione!
-    - Per svutare i nastri, taglia e re-incolla l'area nello stesso punto.
+    - L'etichetta dell'hub ha una piccola bussola per indicarne la direzione!
+    - Per svuotare i nastri, taglia e re-incolla l'area nello stesso punto.
     - Premi F4 per mostrare FPS e Tick al secondo.
     - Press F4 due volte per mostrare la casella del cursore e della telecamera.
     - Puoi cliccare a sinistra di una forma fermata a schermo per rimuoverla
-      dalla lisata.
+      dalla lista.

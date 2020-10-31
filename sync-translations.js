@@ -36,7 +36,7 @@ function match(originalObj, translatedObj, path = "/") {
         if (typeof valueOriginal === "object") {
             match(valueOriginal, valueMatching, path + key + "/");
         } else if (typeof valueOriginal === "string") {
-            // todo
+            // @todo
             const originalPlaceholders = matchAll(valueOriginal, placeholderRegexp).toArray();
             const translatedPlaceholders = matchAll(valueMatching, placeholderRegexp).toArray();
 

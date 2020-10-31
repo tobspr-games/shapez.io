@@ -267,6 +267,7 @@ export const allApplicationSettings = [
     new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("pickMinerOnPatch", enumCategories.advanced, (app, value) => {}),
+    new RangeSetting("mapResourcesScale", enumCategories.advanced, () => null),
 
     new EnumSetting("refreshRate", {
         options: refreshRateOptions,
@@ -324,6 +325,7 @@ class SettingsStorage {
         this.lowQualityTextures = false;
         this.simplifiedBelts = false;
         this.zoomToCursor = true;
+        this.mapResourcesScale = 0.5;
 
         /**
          * @type {Object.<string, number>}
@@ -534,7 +536,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 29;
+        return 30;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -670,6 +672,15 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 29) {
             data.settings.zoomToCursor = true;
             data.version = 29;
+        }
+
+        if (data.version < 30) {
+            data.settings.mapResourcesScale = 0.5;
+
+            // Re-enable hints as well
+            data.settings.offerHints = true;
+
+            data.version = 30;
         }
 
         return ExplainedResult.good();

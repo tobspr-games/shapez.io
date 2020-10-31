@@ -4,8 +4,8 @@ steamPage:
         mapie, która nie ma końca.
     discordLinkShort: Oficjalny serwer Discord
     intro: >-
-        Shapez.io jest spokojną grą, której celem jest budowanie automatycznych fabryk
-        produkujących różne kształty geometryczne.
+        Shapez.io jest spokojną grą, której celem jest budowanie automatycznych
+        fabryk produkujących różne kształty geometryczne.
 
         W miarę zwiększania się poziomów, kształty będą stawać się coraz bardziej skomplikowane, a Twoja fabryka będzie musiała się rozpszetrzenić na mapie o nieskończonej wielkości.
 
@@ -17,7 +17,8 @@ steamPage:
     title_advantages: Korzyści wersji pełnej
     advantages:
         - <b>12 Nowych poziomów</b> (razem 26 poziomów)s
-        - <b>18 Nowych budynków</b> umożliwiających zbudowanie całkowicie automatycznej fabryki!
+        - <b>18 Nowych budynków</b> umożliwiających zbudowanie całkowicie
+          automatycznej fabryki!
         - <b>20 Poziomów ulepszeń</b> zapewniających wiele godzin zabawy!
         - <b>Aktualizacja z przewodami</b> dodająca całkowicie nowy wymiar!
         - <b>Tryb Ciemny</b>!
@@ -42,8 +43,8 @@ steamPage:
         source_code: Kod źródłowy (GitHub)
         translate: Pomóż w tłumaczeniu
     text_open_source: >-
-        Każdy może pomóc w tworzeniu gry, jestem aktywny wśród społeczności
-        i próbuję odbierać wszystkie sugestie i brać je pod uwagę, gdzie tylko
+        Każdy może pomóc w tworzeniu gry, jestem aktywny wśród społeczności i
+        próbuję odbierać wszystkie sugestie i brać je pod uwagę, gdzie tylko
         jest to możliwe.
 
         Sprawdź moją tablicę Trello, by zobaczyć moje dalsze plany!
@@ -122,8 +123,8 @@ dialogs:
     confirmSavegameDelete:
         title: Potwierdź usuwanie
         text: Czy jesteś pewny, że chcesz usunąć poniższy zapis gry?<br><br>
-            '<savegameName>' (poziom <savegameLevel>)<br><br>
-            Ta akcja nie może być cofnięta!
+            '<savegameName>' (poziom <savegameLevel>)<br><br> Ta akcja nie może
+            być cofnięta!
     savegameDeletionError:
         title: Błąd usuwania
         text: "Nie udało się usunąć zapisu:"
@@ -177,8 +178,8 @@ dialogs:
             taśmociągów.<br>"
     createMarker:
         title: Nowy Znacznik
-        desc: Nadaj mu nazwę. Możesz w niej zawrzeć <strong>kod</strong>
-            kształtu (Który możesz wygenerować <link>tutaj</link>)
+        desc: Nadaj mu nazwę. Możesz w niej zawrzeć <strong>kod</strong> kształtu (Który
+            możesz wygenerować <link>tutaj</link>)
         titleEdit: Edytuj Znacznik
     markerDemoLimit:
         desc: Możesz stworzyć tylko dwa własne znaczniki w wersji demo. Zakup pełną
@@ -205,11 +206,14 @@ dialogs:
     renameSavegame:
         title: Zmień nazwę zapisu gry
         desc: Tutaj możesz zmienić nazwę zapisu gry.
-    entityWarning:
-        title: Uwaga o Wydajności gry
-        desc: Postawiłeś dużo budynków, to jest tylko przyjazne przypomnienie, że
-            gra nie może utrzymać nieskończonej ilości budynków - Więc spróbuj
-            zrobić swoje budowle kompaktowe!
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -265,27 +269,6 @@ ingame:
         title: Ulepszenia
         buttonUnlock: Ulepsz
         tier: Poziom <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: POZIOM MAKSYMALNY (Szybkość x<currentMult>)
     statistics:
         title: Statystyki
@@ -309,10 +292,6 @@ ingame:
         playtime: Czas Gry
         buildingsPlaced: Budynki
         beltsPlaced: Taśmociągi
-        buttons:
-            continue: Kontynuuj
-            settings: Ustawienia
-            menu: Powrót do menu
     tutorialHints:
         title: Potrzebujesz pomocy?
         showHint: Pokaż Wskazówkę
@@ -344,6 +323,30 @@ ingame:
                 szybciej.<br><br>Porada: Przytrzymaj <strong>SHIFT</strong>, by
                 postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je
                 obracać.'
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: 1 ekstraktor
         n_miners: <amount> ekstraktorów
@@ -475,13 +478,14 @@ buildings:
             description: Pozwala na transportowanie energii.
         second:
             name: Przewód logiczny
-            description:
-                Przekazuje sygnały, które mogą być w postaci przedmiotów, kolorów lub wartości typu Prawda/Fałsz.
-                Przewody o różnych kolorach nie łączą sie ze sobą.
+            description: Przekazuje sygnały, które mogą być w postaci przedmiotów, kolorów
+                lub wartości typu Prawda/Fałsz. Przewody o różnych kolorach nie
+                łączą sie ze sobą.
     balancer:
         default:
             name: Dystrybutor
-            description: Wielofunkcyjny - Równo rozdziela wszystkie kształty wejściowe do wyjść.
+            description: Wielofunkcyjny - Równo rozdziela wszystkie kształty wejściowe do
+                wyjść.
         merger:
             name: Łącznik (kompaktowy)
             description: Łączy dwa taśmociągi w jeden.
@@ -497,8 +501,9 @@ buildings:
     storage:
         default:
             name: Magazyn
-            description: Przechowuje dodatkowe przedmioty, do pewnej ilości. Może zostać użyty jako
-                brama przepełnieniowa. Prawe wyjście posiada większy piorytet.
+            description: Przechowuje dodatkowe przedmioty, do pewnej ilości. Może zostać
+                użyty jako brama przepełnieniowa. Prawe wyjście posiada większy
+                piorytet.
     wire_tunnel:
         default:
             name: Skrzyżowanie przewodów
@@ -506,63 +511,72 @@ buildings:
     constant_signal:
         default:
             name: Stały sygnał
-            description: Emituje stały sygnał, który może być w postaci przedmiotu, koloru lub wartości typu Prawda/Fałsz.
+            description: Emituje stały sygnał, który może być w postaci przedmiotu, koloru
+                lub wartości typu Prawda/Fałsz.
     lever:
         default:
             name: Przełącznik
-            description: >-
-                Może zostać przełączony, by emitować sygnał typu prawda/fałsz,
-                co pozwala na przykład: na przełączanie filtra przedmiotów.
+            description: "Może zostać przełączony, by emitować sygnał typu prawda/fałsz, co
+                pozwala na przykład: na przełączanie filtra przedmiotów."
     logic_gate:
         default:
             name: Bramka AND
-            description: Emituje sygnał "Prawda", jeżeli oba wejścia są wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Emituje sygnał "Prawda", jeżeli oba wejścia są wartością typu
+                Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
         not:
             name: Bramka NOT
-            description: Emituje sygnał "Prawda", jeżeli wejście NIE jest wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Emituje sygnał "Prawda", jeżeli wejście NIE jest wartością typu
+                Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
         xor:
             name: Bramka XOR
-            description: Emituje sygnał "Prawda", jeżeli tylko jedno wejście jest wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Emituje sygnał "Prawda", jeżeli tylko jedno wejście jest wartością
+                typu Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
         or:
             name: Bramka OR
-            description: Emituje sygnał "Prawda", jeżeli dowolne wejście jest wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Emituje sygnał "Prawda", jeżeli dowolne wejście jest wartością typu
+                Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
     transistor:
         default:
             name: Tranzystor
-            description: Przekazuje dolne wejście, jeżeli wejście boczne jest wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Przekazuje dolne wejście, jeżeli wejście boczne jest wartością typu
+                Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
         mirrored:
             name: Tranzystor
-            description: Przekazuje dolne wejście, jeżeli wejście boczne jest wartością typu Prawda.
-                (Prawda oznacza dowolny kształt lub kolor, a także sygnał "Prawda")
+            description: Przekazuje dolne wejście, jeżeli wejście boczne jest wartością typu
+                Prawda. (Prawda oznacza dowolny kształt lub kolor, a także
+                sygnał "Prawda")
     filter:
         default:
             name: Filtr
-            description: Podłącz sygnał, by przekierować wszystkie pasujące przedmioty na górę, a
-                resztę na prawo. Może być również sterowany za pomocą sygnałów Prawda/Fałsz.
+            description: Podłącz sygnał, by przekierować wszystkie pasujące przedmioty na
+                górę, a resztę na prawo. Może być również sterowany za pomocą
+                sygnałów Prawda/Fałsz.
     display:
         default:
             name: Wyświetlacz
-            description: Podłącz sygnał, by pokazać go na wyświetlaczu - Może on być kształtem, kolorem
-                lub wartością Prawda/Fałsz.
+            description: Podłącz sygnał, by pokazać go na wyświetlaczu - Może on być
+                kształtem, kolorem lub wartością Prawda/Fałsz.
     reader:
         default:
             name: Czytnik taśmociągów
-            description: Pozwala na odczytywanie średniej przepustowości taśmociągu. Emituje ostatnio
-                odczytany przedmiot na warstwie przewodów (gdy ją odblokujesz).
+            description: Pozwala na odczytywanie średniej przepustowości taśmociągu. Emituje
+                ostatnio odczytany przedmiot na warstwie przewodów (gdy ją
+                odblokujesz).
     analyzer:
         default:
             name: Analizator kształtów
-            description: Analizuje prawą górną ćwiartkę najniższej warstwy i zwraca jej kształt i kolor.
+            description: Analizuje prawą górną ćwiartkę najniższej warstwy i zwraca jej
+                kształt i kolor.
     comparator:
         default:
             name: Porównywacz
-            description: Zwraca sygnał "Prawda", jeżeli oba sygnały są dokładnie takie same. Działa na
-                kształtach, kolorach i wartościach Prawda/Fałsz.
+            description: Zwraca sygnał "Prawda", jeżeli oba sygnały są dokładnie takie same.
+                Działa na kształtach, kolorach i wartościach Prawda/Fałsz.
     virtual_processor:
         default:
             name: Wirtualny Przecinak
@@ -572,15 +586,15 @@ buildings:
             description: Wirtualnie obraca kształt, potrafi to robić w oba kierunki.
         unstacker:
             name: Wirtualny Odklejacz
-            description: Wirtualnie oddziela najwyższą warstwę na prawe wyjście i
-                resztę na lewe.
+            description: Wirtualnie oddziela najwyższą warstwę na prawe wyjście i resztę na
+                lewe.
         stacker:
             name: Wirtualny Sklejacz
             description: Wirtualnie skleja prawy kształt na lewy.
         painter:
             name: Wirtualny Malarz
-            description: Wirtualnie maluje kształt z dolnego wejścia barwnikiem z
-                prawego wejścia.
+            description: Wirtualnie maluje kształt z dolnego wejścia barwnikiem z prawego
+                wejścia.
     item_producer:
         default:
             name: Producent kształtów
@@ -589,10 +603,11 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Przecinanie Kształtów
-        desc: Właśnie odblokowałeś <strong>przecinaka</strong>, który przecina kstałty na pół
-            od góry na dół <strong>bez znaczenia na ich orientację</strong>!<br><br>
-            Upewnij się, że usuwasz śmieci - w przeciwnym przypadku <strong>maszyna zapcha
-            się i przestanie działać!</strong> Do tego celu dałem ci <strong>śmietnik</strong>,
+        desc: Właśnie odblokowałeś <strong>przecinaka</strong>, który przecina kstałty
+            na pół od góry na dół <strong>bez znaczenia na ich
+            orientację</strong>!<br><br> Upewnij się, że usuwasz śmieci - w
+            przeciwnym przypadku <strong>maszyna zapcha się i przestanie
+            działać!</strong> Do tego celu dałem ci <strong>śmietnik</strong>,
             który usuwa wszystko, co do niego włożysz!
     reward_rotater:
         title: Obracanie
@@ -617,8 +632,9 @@ storyRewards:
             kształt po prawej jest <strong>kładziony na</strong> ten z lewej!"
     reward_splitter:
         title: Rozdzielacz/Łącznik
-        desc: Właśnie odblokowałeś <strong>rozdzielacz</strong> - typ <strong>dystrybutor</strong>,
-            który akceptuje jedno wejście i rozdziela je na dwa!
+        desc: Właśnie odblokowałeś <strong>rozdzielacz</strong> - typ
+            <strong>dystrybutor</strong>, który akceptuje jedno wejście i
+            rozdziela je na dwa!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> został odblokowany - Możesz teraz prowadzić
@@ -632,8 +648,8 @@ storyRewards:
         title: Wydobycie Łańcuchowe
         desc: "Właśnie odblokowałeś <strong>łańcuchowy ekstraktor</strong>! Może on
             <strong>przekazywać swoje surowce</strong> do innych ekstraktorów,
-            byś mógł bardziej efektywnie wydobywać surowce!<br><br> PS: Stary ekstraktor
-            na pasku narzędzi został teraz zastąpiony nowym!"
+            byś mógł bardziej efektywnie wydobywać surowce!<br><br> PS: Stary
+            ekstraktor na pasku narzędzi został teraz zastąpiony nowym!"
     reward_underground_belt_tier_2:
         title: Tunel Poziomu II
         desc: Odblokowano nowy wariant <strong>tunelu</strong> - Posiada większy
@@ -650,17 +666,20 @@ storyRewards:
             raz</strong>, pobierając wyłącznie jeden barwnik!
     reward_storage:
         title: Magazyn
-        desc: Właśnie odblokowałeś <strong>magazyn</strong> - Pozwala na przecowywanie przedmiotów,
-            do pewnej ilości!<br><br> Prawe wyjście posiada większy piorytet, więc może być on
-            użyty jako <strong>brama przepełnieniowa</strong>!
+        desc: Właśnie odblokowałeś <strong>magazyn</strong> - Pozwala na przecowywanie
+            przedmiotów, do pewnej ilości!<br><br> Prawe wyjście posiada większy
+            piorytet, więc może być on użyty jako <strong>brama
+            przepełnieniowa</strong>!
     reward_freeplay:
         title: Tryb swobodny
         desc: Udało ci się! Odblokowałeś <strong>tryb swobodny</strong>! To oznacza, że
-            kształty są teraz <strong>losowo</strong> generowane!<br><br>
-            Od teraz budynek główny będzie wymagał odpowiedniej <strong>przepustowości</strong>
-            kształtów, zatem sugeruję budowę maszyny, która będzie atuomatycznie dostarczała
-            wymagany kształt!<br><br> Budynek główny emituje wymagany kształt na warstwie
-            przewodów, więc wystarczy analizować ten sygnał i konfigurować fabrykę bazując na nim.
+            kształty są teraz <strong>losowo</strong> generowane!<br><br> Od
+            teraz budynek główny będzie wymagał odpowiedniej
+            <strong>przepustowości</strong> kształtów, zatem sugeruję budowę
+            maszyny, która będzie atuomatycznie dostarczała wymagany
+            kształt!<br><br> Budynek główny emituje wymagany kształt na warstwie
+            przewodów, więc wystarczy analizować ten sygnał i konfigurować
+            fabrykę bazując na nim.
     reward_blueprints:
         title: Schematy
         desc: Możesz teraz <strong>kopiować i wklejać</strong> części swojej fabryki!
@@ -680,62 +699,70 @@ storyRewards:
             pełnej!
     reward_balancer:
         title: Dystrybutor
-        desc: Właśnie odblokowałeś wielofunkcyjny <strong>dystrybutor</strong> - Pozwala
-            na budowę większych fabryk poprzez <strong>rozdzielanie i łączenie</strong>
-            taśmociągów!<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_merger:
         title: Kompaktowy łącznik
-        desc: Właśnie odblokowałeś <strong>łącznik</strong> - typ <strong>dystrybutora</strong>,
-            który akceptuje dwa wejścia i łączy je na jeden taśmociąg!
+        desc: Właśnie odblokowałeś <strong>łącznik</strong> - typ
+            <strong>dystrybutora</strong>, który akceptuje dwa wejścia i łączy
+            je na jeden taśmociąg!
     reward_belt_reader:
         title: Czytnik taśmociągów
         desc: Właśnie odblokowałeś <strong>czytnik taśmociągów</strong>! Pozwala ci na
-            mierzenie przepustowości taśmociągu.<br><br>Czekaj tylko, aż odblokujesz przewody
-            logiczne - dopiero wtedy staje się bardzo użyteczny!
+            mierzenie przepustowości taśmociągu.<br><br>Czekaj tylko, aż
+            odblokujesz przewody logiczne - dopiero wtedy staje się bardzo
+            użyteczny!
     reward_rotater_180:
         title: Obracacz (180°)
-        desc: Właśnie odblokowałeś kolejny wariant <strong>obraczacza</strong>! - Pozwala ci na
-            obrócenie kształtu o 180 stopni!
+        desc: Właśnie odblokowałeś kolejny wariant <strong>obraczacza</strong>! -
+            Pozwala ci na obrócenie kształtu o 180 stopni!
     reward_display:
         title: Wyświetlacz
-        desc: "Właśnie odblokowałeś <strong>Wyświetlacz</strong> - Podłącz sygnał na warstwie
-            przewodów, by go zwizualizować!<br><br> PS: Czy zauważyłeś, że czytnik taśmociągów
-            i magazyn emitują ostatni przedmiot jako sygnał? Spróbuj wyświetlić go na wyświetlaczu!"
+        desc: "Właśnie odblokowałeś <strong>Wyświetlacz</strong> - Podłącz sygnał na
+            warstwie przewodów, by go zwizualizować!<br><br> PS: Czy zauważyłeś,
+            że czytnik taśmociągów i magazyn emitują ostatni przedmiot jako
+            sygnał? Spróbuj wyświetlić go na wyświetlaczu!"
     reward_constant_signal:
         title: Stały sygnał
-        desc: >-
-            Właśnie odblokowałeś budynek emitujący <strong>stały sygnał</strong> na warstwie przewodów!
-            Jest on przydatny na przykład: do ustawiania <strong>filtrów</strong><br><br>
-            Sygnał może być <strong>kształtem</strong>, <strong>kolorem</strong> lub wartością
-            <strong>Prawda/Fałsz</strong>.
+        desc: "Właśnie odblokowałeś budynek emitujący <strong>stały sygnał</strong> na
+            warstwie przewodów! Jest on przydatny na przykład: do ustawiania
+            <strong>filtrów</strong><br><br> Sygnał może być
+            <strong>kształtem</strong>, <strong>kolorem</strong> lub wartością
+            <strong>Prawda/Fałsz</strong>."
     reward_logic_gates:
         title: Bramki logiczne
-        desc: Właśnie odblokowałeś <strong>bramki logiczne</strong>! Nie musisz być z tego powodu
-            podekscytowany, ale one są bardzo fajne!<br><br> Z tymi bramkami możesz teraz wykonywać
-            operacje AND, OR, XOR i NOT.<br><br> Dodatkowo dałem ci <strong>tranzystor</strong>!
+        desc: Właśnie odblokowałeś <strong>bramki logiczne</strong>! Nie musisz być z
+            tego powodu podekscytowany, ale one są bardzo fajne!<br><br> Z tymi
+            bramkami możesz teraz wykonywać operacje AND, OR, XOR i NOT.<br><br>
+            Dodatkowo dałem ci <strong>tranzystor</strong>!
     reward_virtual_processing:
         title: Wirtualne przetwarzanie
-        desc: Właśnie dałem ci mnóstwo budynków, które pozwolą ci
-            <strong>symulować przetwarzanie kształtów</strong>!<br><br> Możesz teraz symulować
-            przecinaka, obracacza, sklejacza i wiele więcej na warstwie przewodów!
-            Teraz masz trzy opcje na kontynuację gry:<br><br> -
-            Zbuduj <strong>zautomatyzowaną maszynę</strong>, która stworzy każdy kstałt
-            ządany przez budynek główny (Polecam tą opcję!).<br><br> - Zbuduj
-            coś ciekawego za pomocą przewodów.<br><br> - Kontynuuj zwykłą
-            rozgrywkę.<br><br> Cokolwiek wybierzesz, pamiętaj by się dobrze bawić!
+        desc: Właśnie dałem ci mnóstwo budynków, które pozwolą ci <strong>symulować
+            przetwarzanie kształtów</strong>!<br><br> Możesz teraz symulować
+            przecinaka, obracacza, sklejacza i wiele więcej na warstwie
+            przewodów! Teraz masz trzy opcje na kontynuację gry:<br><br> -
+            Zbuduj <strong>zautomatyzowaną maszynę</strong>, która stworzy każdy
+            kstałt ządany przez budynek główny (Polecam tą opcję!).<br><br> -
+            Zbuduj coś ciekawego za pomocą przewodów.<br><br> - Kontynuuj zwykłą
+            rozgrywkę.<br><br> Cokolwiek wybierzesz, pamiętaj by się dobrze
+            bawić!
     reward_wires_painter_and_levers:
         title: Przewody i poczwórny malarz
-        desc: "Właśnie odblokowałeś <strong>Warstwę przewodów</strong>: Jest to osobna
-            warstwa położnoa na istniejącej, która wprowadza wiele nowych mechanik! <br><br>
-            Na początek dałem ci <strong>Poczwórnego Malarza</strong> - Podłącz ćwiartki, które
-            chcesz pomalować na warstwie przewodów!<br><br> By przełączyć się na warstwę przewodów,
-            wciśnij <strong>E</strong>."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Filtr przedmiotów
-        desc: Właśnie odblokowałeś <strong>Filtr Przedmiotów</strong>! Będzie on przekirowywał
-            przedmioty do górnego lub prawego wyjścia, zależnie od tego, czy pasują one do
-            sygnału z warstwy przewodów.<br><br> Możesz również przekazać sygnał typu Prawda/Fałsz,
-            by całkowicie go włączyć lub wyłączyć.
+        desc: Właśnie odblokowałeś <strong>Filtr Przedmiotów</strong>! Będzie on
+            przekirowywał przedmioty do górnego lub prawego wyjścia, zależnie od
+            tego, czy pasują one do sygnału z warstwy przewodów.<br><br> Możesz
+            również przekazać sygnał typu Prawda/Fałsz, by całkowicie go włączyć
+            lub wyłączyć.
     reward_demo_end:
         title: Koniec wersji demo
         desc: Dotarłeś do końca wersji demo!
@@ -860,38 +887,48 @@ settings:
             description: Ustaw głośność muzyki
         lowQualityMapResources:
             title: Zasoby mapy o niskiej jakości
-            description: Upraszcza renderowanie zasobów na mapie, gdy kamera jest przybliżona,
-                by zwiększyć wydajność. Wygląda to nawet ładnie, więc wypróbuj tą funkcję!
+            description: Upraszcza renderowanie zasobów na mapie, gdy kamera jest
+                przybliżona, by zwiększyć wydajność. Wygląda to nawet ładnie,
+                więc wypróbuj tą funkcję!
         disableTileGrid:
             title: Wyłącz siatkę
             description: Wyłączenie siatki może pomóc z wydajnością. Oprócz tego, poprawia
                 wygląd gry!
         clearCursorOnDeleteWhilePlacing:
             title: Wyczyść kursor przy kliknięciu PPM
-            description: Domyślnie włączone, resetuje wybrany budynek do budowy,
-                gdy klikasz prawym przyciskiem myszy. Jeżeli to wyłączysz, możesz
-                usuwać budynki podczas budowania używając tego samego przycisku.
+            description: Domyślnie włączone, resetuje wybrany budynek do budowy, gdy klikasz
+                prawym przyciskiem myszy. Jeżeli to wyłączysz, możesz usuwać
+                budynki podczas budowania używając tego samego przycisku.
         lowQualityTextures:
             title: Tekstury niskiej jakości (Brzydkie)
             description: Używa niskej jakości tekstur, by zwiększyć wydajność. Spowoduje to,
                 że gra będzie wyglądać bardzo brzydko!
         displayChunkBorders:
             title: Wyświetl granice chunków
-            description: Gra jest podzielona na chunki o wielkości 16x15 kratek.
-                Włączenie tego ustawienia powoduje wyświetlenie granicy każdego chunku.
+            description: Gra jest podzielona na chunki o wielkości 16x15 kratek. Włączenie
+                tego ustawienia powoduje wyświetlenie granicy każdego chunku.
         pickMinerOnPatch:
             title: Wybierz ekstraktor zamiast źródła
-            description: Domyślnie włączone, wybiera ekstraktor, jeżeli spróbujesz
-                wybrać źródło surowców za pomocą pipety
+            description: Domyślnie włączone, wybiera ekstraktor, jeżeli spróbujesz wybrać
+                źródło surowców za pomocą pipety
         simplifiedBelts:
             title: Uproszczone taśmociągi (Brzydkie)
-            description: Nie renderuje przedmiotów na taśmociągach, jeżeli nie
-                są zaznaczone kursorem, by zwiększyć wydajność. Nie zalecam
-                używać tego ustawienia, chyba że absolutnie potrzebujesz wydajności.
+            description: Nie renderuje przedmiotów na taśmociągach, jeżeli nie są zaznaczone
+                kursorem, by zwiększyć wydajność. Nie zalecam używać tego
+                ustawienia, chyba że absolutnie potrzebujesz wydajności.
         enableMousePan:
             title: Włącz przesuwanie myszą
-            description: Pozwala na poruszanie kamerą poprzez przez przesuwanie kursora
-                do granicy ekranu. Szybkość jest zależna od ustawienia Prędkość poruszania.
+            description: Pozwala na poruszanie kamerą poprzez przez przesuwanie kursora do
+                granicy ekranu. Szybkość jest zależna od ustawienia Prędkość
+                poruszania.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klawiszologia
@@ -992,13 +1029,16 @@ demo:
         exportingBase: Eksportowanie całej fabryki jako zrzut ekranu
     settingNotAvailable: Niedostępne w wersji demo.
 tips:
-    - Budynek główny akceptuje wejście każdego rodzaju - nie tylko aktualny kształt!
+    - Budynek główny akceptuje wejście każdego rodzaju - nie tylko aktualny
+      kształt!
     - Upewnij się, że twoje fabryki są modularne - opłaci się to!
     - Nie buduj zbyt blisko budynku głównego, albo będziesz miał wielki chaos!
     - Jeżeli łączenie kształtów nie działa, spróbuj zamienić wejścia.
     - Możesz zmienić kierunek planera taśmociągów poprzez naciśnięcie <b>R</b>.
-    - Przytrymanie <b>CTRL</b> pozwala na przeciąganie taśmociągów bez automatycznego zmieniania kierunków.
-    - Stosunku pozostają takie same, dopóki wszystkie ulepszenia są na tym samym poziomie.
+    - Przytrymanie <b>CTRL</b> pozwala na przeciąganie taśmociągów bez
+      automatycznego zmieniania kierunków.
+    - Stosunku pozostają takie same, dopóki wszystkie ulepszenia są na tym samym
+      poziomie.
     - Seryjne wykonanie jest badziej wydajne niż równoległe.
     - Odblokujesz więcej wariantów budynków później w rozgrywce!
     - Możesz użyć <b>T</b>, by zmienić warianty budynków.
@@ -1010,40 +1050,53 @@ tips:
     - Na najwyższym poziomie, 5 ekstraktorów zapełni pojedynczy taśmociąg.
     - Nie zapomnij o tunelach!
     - Nie musisz dzielić równo przedmiotów, by osiągnąć pełną wydajność.
-    - Przytrymanie <b>SHIFT</b> aktywuje planera taśmociągów, pozwalającego ci na łatwe budowanie długich taśmociągów.
+    - Przytrymanie <b>SHIFT</b> aktywuje planera taśmociągów, pozwalającego ci
+      na łatwe budowanie długich taśmociągów.
     - Przecinaki zawsze tną pionowo, nie zważając na ich orientację.
     - Zmieszanie wszystich 3 barwników daje biały barwnik.
     - Pierwsze wyjście z magazynu ma najwyższy piorytet.
     - Zainwestuj czas w budowanie powtarzalnych układów fabryk - warto!
-    - Przytrymanie <b>CTRL</b> pozwala na układanie wielu budynków tego samego typu.
+    - Przytrymanie <b>CTRL</b> pozwala na układanie wielu budynków tego samego
+      typu.
     - Możesz przytrzymać <b>ALT</b>, by odwrócić kierunek układanych taśmociągów.
     - Wydajność to klucz do sukcesu!
     - Kształty położone dalej od budynku głównego są bardziej skomplikowane.
-    - Maszyny mają limitowaną prędkość, podziel wejścia między wiele ich, by zmaksymalizować wydajność.
+    - Maszyny mają limitowaną prędkość, podziel wejścia między wiele ich, by
+      zmaksymalizować wydajność.
     - Użyj dystrybutorów, by zmaksymalizować wydajność.
     - Organizacja jest ważna. Próbuj nie krzyżować zbyt wielu taśmociągów.
     - Planuj na przyszłość, albo wszystko będzie wielkim chaosem!
-    - Nie usuwaj swoich starych fabryk! Będziesz ich potrzebował, by odblokować ulepszenia.
+    - Nie usuwaj swoich starych fabryk! Będziesz ich potrzebował, by odblokować
+      ulepszenia.
     - Spróbuj przejść poziom 20 samemu, zanim zaczniesz szukać pomocy!
     - Nie komplikuj rzeczy, próbuj budować proste rzeczy, a zajdziesz daleko.
-    - Możesz potrzebować ponownie używać swoich fabryk w późniejszej fazie rozgrywki. Planuj swoje fabryki, by były zdatne do ponownego użycia.
-    - Czasami znajdziesz wymagany kształt na mapie, bez potrzeby tworzenia go za pomoca sklejaczy.
+    - Możesz potrzebować ponownie używać swoich fabryk w późniejszej fazie
+      rozgrywki. Planuj swoje fabryki, by były zdatne do ponownego użycia.
+    - Czasami znajdziesz wymagany kształt na mapie, bez potrzeby tworzenia go za
+      pomoca sklejaczy.
     - Pełne "wiatraczki" nigdy nie pojawią się naturalnie na mapie.
     - Maluj swoje kształty przed przecianiem dla maksymalnej wydajności.
-    - Z modułami, miejsce jest tylko tym, co postrzegamy; troska dla śmiertelników
+    - Z modułami, miejsce jest tylko tym, co postrzegamy; troska dla
+      śmiertelników
     - Zbuduj osobną fabrykę schematów. Są one bardzo potrzebne do modułów.
-    - Obejrz dokładnie mikser kolorów, a wszystkie twoje pytania zostaną rozwiązane.
+    - Obejrz dokładnie mikser kolorów, a wszystkie twoje pytania zostaną
+      rozwiązane.
     - Przytrzymaj <b>CTRL</b> i przeciągnij, by zaznaczyć obszar
-    - Budowanie zbyt blisko budynku głównego może przeszkodzić ci w późniejszych projektach.
-    - Ikona pinezki przy każdym kształcie na liście ulepszeń przypina je na ekranie.
+    - Budowanie zbyt blisko budynku głównego może przeszkodzić ci w późniejszych
+      projektach.
+    - Ikona pinezki przy każdym kształcie na liście ulepszeń przypina je na
+      ekranie.
     - Połącz wszystkie głowne kolory, by stworzyć biały!
     - Masz nieskończoną mapę, nie ściskaj swojej fabryki, rozszerzaj ją!
     - Spróbuj też Factorio! To moja ulubiona gra.
-    - Poczwórny przecinak tnie zgodnie z ruchem wskazówek zegara, zaczynając do prawej górnej ćwiartki!
+    - Poczwórny przecinak tnie zgodnie z ruchem wskazówek zegara, zaczynając do
+      prawej górnej ćwiartki!
     - Możesz pobrać swoje zapisy gry w głownym menu gry!
-    - Ta gra posiada dużo użytecznych skrótów klawiszowych! Sprawdź stronę ustawień!
+    - Ta gra posiada dużo użytecznych skrótów klawiszowych! Sprawdź stronę
+      ustawień!
     - Ta gra posiada mnóstwo ustawień, sprawdź je!
-    - Znacznik do budynku główneko posiada mały kompas, wskazujący do niego kierunek!
+    - Znacznik do budynku główneko posiada mały kompas, wskazujący do niego
+      kierunek!
     - By wyczyścić taśmociągi, wytnij obszar i wklej go w tym samym miejscu.
     - Naciśnij F4, by zobaczyć ilość FPS i tempo ticków.
     - Naciśnij F4 dwa razy, by zobaczyć kratkę twojej myszy i kamery.

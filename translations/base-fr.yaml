@@ -47,7 +47,7 @@ steamPage:
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider: " "
+    thousandsDivider:
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -176,16 +176,15 @@ dialogs:
             usines. En voici quelques-uns, n’hésitez pas à aller
             <strong>découvrir les raccourcis</strong> !<br><br> <code
             class="keybinding">CTRL</code> + glisser : Sélectionne une zone à
-            copier / supprimer.<br> <code class="keybinding">MAJ</code> : Laissez
-            appuyé pour placer plusieurs fois le même bâtiment.<br> <code
-            class="keybinding">ALT</code> : Inverse l’orientation des convoyeurs
-            placés.<br>'
+            copier / supprimer.<br> <code class="keybinding">MAJ</code> :
+            Laissez appuyé pour placer plusieurs fois le même bâtiment.<br>
+            <code class="keybinding">ALT</code> : Inverse l’orientation des
+            convoyeurs placés.<br>'
     createMarker:
         title: Nouvelle balise
         titleEdit: Modifier cette balise
         desc: Donnez-lui un nom. Vous pouvez aussi inclure <strong>le raccourci</strong>
-            d’une forme (que vous pouvez générer <a
-            href="https://viewer.shapez.io" target="_blank">ici</a>).
+            d’une forme (que vous pouvez générer <link>ici</link>).
     editSignal:
         title: Définir le signal
         descItems: "Choisissez un objet prédéfini :"
@@ -202,11 +201,13 @@ dialogs:
     renameSavegame:
         title: Renommer la sauvegarde
         desc: Vous pouvez renommer la sauvegarde ici.
-    entityWarning:
-        title: Avertissement sur les performances
-        desc: Vous avez placé beaucoup de bâtiments. Ceci est juste un rappel amical que
-            le jeu ne peut pas gérer un nombre infini de bâtiments, alors
-            essayez de garder vos usines compactes !
+    tutorialVideoAvailable:
+        title: Tutoriel disponible
+        desc: Il y a un tutoriel vidéo pour ce niveau. Voulez-vous le regarder ?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutoriel disponible
+        desc: Il y a un tutoriel vidéo pour ce niveau, mais il n’est disponible qu’en
+            anglais. Voulez-vous le regarder ?
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -262,27 +263,6 @@ ingame:
         title: Améliorations
         buttonUnlock: Améliorer
         tier: Niveau <x>
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: NIVEAU MAX (Vitesse ×<currentMult>)
     statistics:
         title: Statistiques
@@ -306,10 +286,6 @@ ingame:
         playtime: Temps de jeu
         buildingsPlaced: Bâtiments
         beltsPlaced: Convoyeurs
-        buttons:
-            continue: Continuer
-            settings: Options
-            menu: Retourner au menu
     tutorialHints:
         title: Besoin d’aide ?
         showHint: Indice
@@ -319,8 +295,8 @@ ingame:
     waypoints:
         waypoints: Balise
         hub: Centre
-        description: Cliquez sur une balise pour vous y rendre, clic-droit pour
-            la supprimer.<br><br> Appuyez sur <keybinding> pour créer une balise
+        description: Cliquez sur une balise pour vous y rendre, clic-droit pour la
+            supprimer.<br><br> Appuyez sur <keybinding> pour créer une balise
             sur la vue actuelle, ou <strong>clic-droit</strong> pour en créer
             une sur l’endroit pointé.
         creationSuccessNotification: La balise a été créée.
@@ -341,6 +317,32 @@ ingame:
                 plus vite votre but.<br><br> Astuce : Gardez
                 <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs,
                 et utilisez <strong>R</strong> pour les faire pivoter."
+            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour
+                couper les cercles en deux.<br><br> PS : Le découpeur coupe toujours
+                <strong>de haut en bas</strong> quelle que soit son orientation."
+            2_2_place_trash: Le découpeur peut se <strong>bloquer</strong> !<br><br>
+                Utilisez la <strong>poubelle</strong> pour vous débarrasser des déchets
+                dont vous n’avez pas (encore) besoin.
+            2_3_more_cutters: "Bravo ! Maintenant ajoutez <strong>deux découpeurs de
+                plus</strong> pour accélérer le processus !<br><br>
+                PS : Utilisez les <strong>raccourcis clavier 0–9</strong> pour accéder
+                plus rapidement aux bâtiments."
+            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez
+                quatre extracteurs</strong> et connectez-les au centre.<br><br>
+                PS : Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
+                activer le planificateur."
+            21_1_place_quad_painter: Placez un <strong>quadruple peintre</strong> et
+                connectez des <strong>cercles</strong> et des couleurs
+                <strong>blanche</strong> et <strong>rouge</strong> !
+            21_2_switch_to_wires: Basculez sur le calque de câblage en appuyant sur
+                <strong>E</strong>.<br><br> Puis <strong>connectez les quatre
+                entrées</strong> du peintre avec des câbles !
+            21_3_place_button: Génial ! Maintenant, placez un
+                <strong>interrupteur</strong> et connectez-le avec des câbles !
+            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un
+                <strong>signal vrai</strong> et active le peintre.<br><br> PS : Vous
+                n’êtes pas obligé de connecter toutes les entrées ! Essayez d’en brancher
+                seulement deux."
     connectedMiners:
         one_miner: 1 extracteur
         n_miners: <amount> extracteurs
@@ -654,8 +656,9 @@ storyRewards:
             les deux variantes de tunnels !
     reward_merger:
         title: Fusionneur compact
-        desc: Vous avez débloqué une variante du <strong>répartiteur</strong>. Il
-            accepte deux entrées et les fusionne en un seul convoyeur !
+        desc: Vous avez débloqué le <strong>fusionneur</strong>, une variante du
+            <strong>répartiteur</strong>. Il accepte deux entrées et les fusionne en un
+            seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
         desc: Vous avez débloqué une variante compacte du <strong>répartiteur</strong> —
@@ -701,7 +704,9 @@ storyRewards:
             nouvelles mécaniques de jeu !<br><br> Pour commencer, je vous
             débloque le <strong>quadruple peintre</strong>. Connectez les
             entrées à peindre sur le calque de câblage.<br><br> Pour voir le
-            calque de câblage, appuyez sur <strong>E</strong>."
+            calque de câblage, appuyez sur <strong>E</strong>.<br><br>PS : Activez
+            les <strong>indices</strong> dans les paramètres pour voir un tutoriel
+            sur le câblage."
     reward_filter:
         title: Filtre à objets
         desc: Vous avez débloqué le <strong>filtre à objets</strong> ! Il dirige les
@@ -934,6 +939,12 @@ settings:
             description: Permet de déplacer la carte en déplaçant le curseur sur les bords
                 de l’écran. La vitesse dépend du réglage de la vitesse de
                 déplacement.
+        zoomToCursor:
+            title: Zoomer vers le curseur
+            description: Si activé, zoome vers la position de la souris ; sinon, vers le centre de l’écran.
+        mapResourcesScale:
+            title: Taille des ressources sur la carte
+            description: Contrôle la taille des formes sur la vue d’ensemble de la carte visible en dézoomant.
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1083,8 +1094,7 @@ tips:
       Planifiez vos usines pour qu’elles soient réutilisables.
     - Parfois, vous pouvez trouver une forme nécessaire sur la carte sans la
       créer avec des combineurs.
-    - Les formes en hélice complètes ne peuvent jamais apparaître
-      naturellement.
+    - Les formes en hélice complètes ne peuvent jamais apparaître naturellement.
     - Colorez vos formes avant de les découper pour une efficacité maximale.
     - Avec les modules, l’espace n’est qu’une perception ; une préoccupation
       pour les hommes mortels.

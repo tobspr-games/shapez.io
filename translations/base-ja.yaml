@@ -1,4 +1,3 @@
----
 steamPage:
     shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
     discordLinkShort: 公式Discord
@@ -20,7 +19,6 @@ steamPage:
         - セーブ数の上限がなくなります。
         - マップマーカー数の上限がなくなります。
         - 私をサポートできる！❤️
-
     title_future: 計画中の要素
     planned:
         - ブループリント (スタンドアロン版専用)
@@ -31,12 +29,9 @@ steamPage:
         - サンドボックスモード
         - ……あともっとたくさんの要素!
     title_open_source: このゲームはオープンソースです！
-
-    text_open_source: >-
+    text_open_source: |-
         誰でも参加することができます。私はコミュニティに積極的に参加し、すべての提案を確認し、可能な場合はフィードバックしようとしています。
-
         完全なロードマップについては、Trello boardを確認してください！
-
     title_links: リンク
     links:
         discord: 公式Discord
@@ -44,12 +39,11 @@ steamPage:
         subreddit: Subreddit
         source_code: ソースコード(GitHub)
         translate: 翻訳を助けてください！
-
 global:
     loading: ロード中
     error: エラー
     thousandsDivider: ","
-    decimalSeparator: "."
+    decimalSeparator: .
     suffix:
         thousands: k
         millions: M
@@ -78,8 +72,7 @@ global:
         space: SPACE
 demoBanners:
     title: デモ版
-    intro: >-
-        スタンドアローン版を手に入れ、すべての機能をアンロックしましょう！
+    intro: スタンドアローン版を手に入れ、すべての機能をアンロックしましょう！
 mainMenu:
     play: プレイ
     continue: 続きから
@@ -91,9 +84,7 @@ mainMenu:
     discordLink: 公式Discordサーバー
     helpTranslate: 翻訳を助けてください！
     madeBy: <author-link>によって作られました
-    browserWarning: >-
-        このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることでこの問題は避けられます。
-
+    browserWarning: このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることでこの問題は避けられます。
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
     savegameUnnamed: 無名のデータ
@@ -110,116 +101,89 @@ dialogs:
         viewUpdate: アップデートを見る
         showUpgrades: アップグレード表示
         showKeybindings: キー設定表示
-
     importSavegameError:
         title: インポートエラー
-        text: >-
-            セーブデータのインポートに失敗しました:
-
+        text: "セーブデータのインポートに失敗しました:"
     importSavegameSuccess:
         title: セーブデータのインポートに成功
         text: セーブデータをインポートしました。
-
     gameLoadFailure:
         title: ゲームが壊れています
-        text: >-
-            セーブデータのロードに失敗しました:
-
+        text: "セーブデータのロードに失敗しました:"
     confirmSavegameDelete:
         title: 削除確認
-        text: >-
-            本当に削除しますか？<br><br>
-            レベル<savegameLevel>: '<savegameName>'<br><br>
-            この操作は取り消しできません！
-
+        text: "本当に削除しますか？<br><br> レベル<savegameLevel>: '<savegameName>'<br><br>
+            この操作は取り消しできません！"
     savegameDeletionError:
         title: 削除に失敗
-        text: >-
-            セーブデータの削除に失敗しました:
-
+        text: "セーブデータの削除に失敗しました:"
     restartRequired:
         title: 再起動が必要
         text: 設定を反映するには再起動が必要です
-
     editKeybinding:
         title: キー設定の変更
         desc: 割り当てるキーかマウスボタンを押してください。ESCでキャンセルします。
-
     resetKeybindingsConfirmation:
         title: キー設定のリセット
         desc: すべてのキー設定を初期値に戻します。実行する前によく確認してください。
-
     keybindingsResetOk:
         title: キー設定のリセット
         desc: キー設定を初期値に設定しました！
-
     featureRestriction:
         title: デモ版
         desc: アクセスした要素 (<feature>) はデモ版では利用できません。スタンドアローン版の入手をご検討ください！
-
     oneSavegameLimit:
         title: セーブデータ制限
         desc: デモ版ではひとつのセーブデータのみ保持できます。既存のデータを削除するか、スタンドアローン版の入手をご検討ください！
-
     updateSummary:
         title: 新アップデート！
-        desc: >-
-            前回からの変更点:
-
+        desc: "前回からの変更点:"
     upgradesIntroduction:
         title: アップグレード解除
         desc: すべての納品された形はアップグレードの解除のためにカウントされています。<strong>作った生産ラインを削除しないようにしてください！</strong>　アップグレードタブは画面の右上から確認できます。
-
     massDeleteConfirm:
         title: 削除確認
         desc: 多数の建造物を削除しようとしています！ (<count> 個の選択) 続行しますか？
-
     massCutConfirm:
         title: カット確認
         desc: 多数の建造物をカットしようとしています！ (<count> 個の選択) 続行しますか？
-
     massCutInsufficientConfirm:
         title: カット確認
         desc: 設置コストが不足しています！ 続行しますか？
-
     blueprintsNotUnlocked:
         title: 未解除
         desc: レベル12をクリアしてブループリント機能を解除してください！
-
     keybindingsIntroduction:
         title: 便利なキー設定
-        desc: >-
-            このゲームには大規模な工場の構築をスムーズにするため、沢山のキー設定があります。
-            以下に数例を示します。詳細は<strong>キー設定を確認してください</strong>！<br><br>
-            <code class='keybinding'>CTRL</code> + ドラッグ: 削除範囲を指定<br>
-            <code class='keybinding'>SHIFT</code>: 押し続けると1種の建造物を連続配置<br>
-            <code class='keybinding'>ALT</code>: 設置されたベルトの方向を逆転させる<br>
-
+        desc: "このゲームには大規模な工場の構築をスムーズにするため、沢山のキー設定があります。
+            以下に数例を示します。詳細は<strong>キー設定を確認してください</strong>！<br><br> <code
+            class='keybinding'>CTRL</code> + ドラッグ: 削除範囲を指定<br> <code
+            class='keybinding'>SHIFT</code>: 押し続けると1種の建造物を連続配置<br> <code
+            class='keybinding'>ALT</code>: 設置されたベルトの方向を逆転させる<br>"
     createMarker:
         title: マーカーを設置
         titleEdit: マーカーを編集
         desc: わかりやすい名前をつけてください。形を表す<strong>短いキー</strong>を含めることもできます。（<link>ここ</link>から生成できます）
     editSignal:
         title: 信号を設定
-        descItems: >-
-            プリセットを選択:
+        descItems: "プリセットを選択:"
         descShortKey: もしくは形を表す<strong>短いキー</strong>を入力してください。 (<link>ここ</link>から生成できます)
-
     markerDemoLimit:
         desc: デモ版ではマーカー設置は2つまでに制限されています。スタンドアローン版は無制限です！
-
     exportScreenshotWarning:
         title: スクリーンショット出力
         desc: スクリーンショット出力を実行します。この処理は工場の全体像があまりに大きいと、 ゲームが遅くなったりクラッシュしてしまう可能性があります！
-
     renameSavegame:
         title: セーブデータの名前を変更
         desc: セーブデータの名前を変更することができます
-
-    entityWarning:
-        title: パフォーマンスの警告
-        desc: あなたは沢山の工場を配置しましたが、このゲームは無限の建物を処理できるわけではありません。これは友好的なリマインダですが、より工場をコンパクトにすることに挑戦してみてください。
-
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -241,7 +205,6 @@ ingame:
         clearSelection: 選択範囲をクリア
         pipette: ピペット
         switchLayers: レイヤーを変更
-
     colors:
         red: 赤
         green: 緑
@@ -252,11 +215,9 @@ ingame:
         white: 白
         black: 黒
         uncolored: 無色
-
     buildingPlacement:
         cycleBuildingVariants: <key> キーを押して変更
         hotkeyLabel: "ホットキー: <key>"
-
         infoTexts:
             speed: スピード
             range: レンジ
@@ -265,27 +226,20 @@ ingame:
             itemsPerSecond: <x> アイテム / 秒
             itemsPerSecondDouble: (x2)
             tiles: <x> タイル
-
     levelCompleteNotification:
         levelTitle: レベル <level>
         completed: 完了
         unlockText: <reward> を解除！
         buttonNextLevel: 次のレベル
-
     notifications:
         newUpgrade: 新しいアップグレードが利用可能です！
         gameSaved: ゲームをセーブしました。
         freeplayLevelComplete: レベル <level> をクリアしました!
-
     shop:
         title: アップグレード
         buttonUnlock: アップグレード
         tier: 第 <x> 段階
-
-        tierLabels:
-            [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX]
         maximumLevel: 最大レベル (スピード x<currentMult>)
-
     statistics:
         title: 統計情報
         dataSources:
@@ -299,60 +253,68 @@ ingame:
                 title: 納品済
                 description: 中央の建造物に納品された形の総数です。
         noShapesProduced: まだ形が生産されていません。
-
         shapesDisplayUnits:
             second: <shapes> / 秒
             minute: <shapes> / 分
             hour: <shapes> / 時間
-
     settingsMenu:
         playtime: プレイ時間
-
         buildingsPlaced: 建造物
         beltsPlaced: ベルト
-
-        buttons:
-            continue: 続ける
-            settings: 設定
-            menu: メニューに戻る
-
     tutorialHints:
         title: ヒントが必要ですか？
         showHint: ヒントを見る
         hideHint: 閉じる
-
     blueprintPlacer:
         cost: コスト
-
     waypoints:
         waypoints: マーカー
         hub: HUB
-        description: >-
-            マーカーを左クリックでその場所にジャンプ、右クリックで削除します。<br><br>
+        description: マーカーを左クリックでその場所にジャンプ、右クリックで削除します。<br><br>
             <keybinding>キーを押すことで現在地にマーカーを設置します。選択した位置で<strong>右クリック</strong>することでもマーカー設置できます。
         creationSuccessNotification: マーカーを設置しました
     shapeViewer:
         title: レイヤー
         empty: 空
         copyKey: キーをコピー
-
     interactiveTutorial:
         title: チュートリアル
         hints:
             1_1_extractor: <strong>抽出機</strong> を <strong>円の形</strong> の上において抽出しましょう！
-            1_2_conveyor: >-
-                抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip: <strong>マウスのドラッグ</strong> でベルトを引けます。
-
+            1_2_conveyor: "抽出機を <strong>コンベアベルト</strong> でHUBまで繋げましょう！<br><br> Tip:
+                <strong>マウスのドラッグ</strong> でベルトを引けます。"
             1_3_expand: "このゲームは放置系のゲームでは<strong>ありません</strong>！
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
                 キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
-
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: 1個の抽出機
         n_miners: <amount>個の抽出機
         limited_items: <max_throughput>に制限されます
-
     watermark:
         title: デモバージョン
         desc: Steamバージョンの特典を確認するには、ここをクリックしてください！
@@ -406,25 +368,25 @@ buildings:
         endOfDemo: お試し終了
     belt:
         default:
-            name: &belt コンベアベルト
+            name: コンベアベルト
             description: アイテムを輸送します。マウスドラッグで連続配置できます。
     miner:
         default:
-            name: &miner 抽出機
+            name: 抽出機
             description: 形や色の上に設置することで抽出できます。
         chainable:
             name: 連鎖抽出機
             description: 形や色の上に設置することで抽出できます。連鎖設置可能です。
     underground_belt:
         default:
-            name: &underground_belt トンネル
+            name: トンネル
             description: 建造物や他のベルトの地下を通してベルトを配置できます。
         tier2:
             name: トンネル レベルII
             description: 建造物や他のベルトの地下を通してベルトを配置できます。
     balancer:
         default:
-            name: &balancer 分配機/合流機
+            name: 分配機/合流機
             description: 多機能 - すべての入力をすべての出力に均等に分配します。
         merger:
             name: 合流機(コンパクト)
@@ -440,14 +402,14 @@ buildings:
             description: 1つの入力を2つの出力に分配します。
     cutter:
         default:
-            name: &cutter 切断機
+            name: 切断機
             description: 形を上下の直線で切断し、双方を出力します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
         quad:
             name: 切断機 (四分割)
             description: 形を四分割します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
     rotater:
         default:
-            name: &rotater 回転機
+            name: 回転機
             description: 形を時計回り方向に90度回転します。
         ccw:
             name: 回転機 (逆)
@@ -457,56 +419,53 @@ buildings:
             description: 形を180度回転します。
     stacker:
         default:
-            name: &stacker 積層機
+            name: 積層機
             description: 入力アイテムを積み重ねます。もしうまく統合できなかった場合は、右の入力アイテムを左の入力アイテムの上に重ねます。
     mixer:
         default:
-            name: &mixer 混合機
+            name: 混合機
             description: 2つの色を加算混合で混ぜ合わせます。
     painter:
         default:
-            name: &painter 着色機
-            description: &painter_desc 左から入力された形の全体を、上から入力された色で着色します。
+            name: 着色機
+            description: 左から入力された形の全体を、上から入力された色で着色します。
         mirrored:
-            name: *painter
+            name: 着色機
             description: 左から入力された形の全体を、下から入力された色で着色します。
         double:
             name: 着色機 (ダブル)
             description: 左から入力された形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
-            description: 入力された形を四分割づつ別の色で塗り分けられます。 <strong>真らしい信号</strong>が流れているスロットのみがペイントされます！
-
+            description: 入力された形を四分割づつ別の色で塗り分けられます。
+                <strong>真らしい信号</strong>が流れているスロットのみがペイントされます！
     trash:
         default:
-            name: &trash ゴミ箱
+            name: ゴミ箱
             description: すべての辺からの入力を破棄します。永遠に。
     storage:
         default:
-            name: &storage ストレージ
-            description: >-
-                所定の容量まで、アイテムを蓄えることができます。左側の出力が優先され、オーバーフローゲートとして利用できます。
+            name: ストレージ
+            description: 所定の容量まで、アイテムを蓄えることができます。左側の出力が優先され、オーバーフローゲートとして利用できます。
     wire:
         default:
-            name: &wire ワイヤ
-            description: &wire_desc 形状、色、真偽値(1/0)の信号を運ぶことができます。異なる色のワイヤは互いに接続しません。
+            name: ワイヤ
+            description: 形状、色、真偽値(1/0)の信号を運ぶことができます。異なる色のワイヤは互いに接続しません。
         second:
-            name: *wire
-            description: *wire_desc
-
+            name: ワイヤ
+            description: 形状、色、真偽値(1/0)の信号を運ぶことができます。異なる色のワイヤは互いに接続しません。
     wire_tunnel:
         default:
-            name: &wire_tunnel 交差ワイヤ
+            name: 交差ワイヤ
             description: 2本のワイヤを接続させることなく交差させることができます。
     constant_signal:
         default:
-            name: &constant_signal 定値信号
+            name: 定値信号
             description: 常に同じ値を出力します。形状、色、真偽値(1/0)が使用できます。
     lever:
         default:
-            name: &lever スイッチ
-            description: >-
-                ワイヤ上に真偽値(1/0)を出力できます。スイッチを押すことで1と0を切り替えることができ、
+            name: スイッチ
+            description: ワイヤ上に真偽値(1/0)を出力できます。スイッチを押すことで1と0を切り替えることができ、
                 それを利用してアイテムフィルタ等を制御できます。
     logic_gate:
         default:
@@ -523,42 +482,34 @@ buildings:
             description: 両方の入力のうち少なくとも片方が真らしいなら、真偽値"1"を出力します。(真らしいとは、形状、色、または真偽値"1"のことです)
     transistor:
         default:
-            name: &transistor トランジスタ
-            description: &transistor_desc 横からの入力が真らしいなら、下からの入力を通過させます。(真らしいとは、形状、色、または真偽値"1"のことです)
+            name: トランジスタ
+            description: 横からの入力が真らしいなら、下からの入力を通過させます。(真らしいとは、形状、色、または真偽値"1"のことです)
         mirrored:
-            name: *transistor
-            description: *transistor_desc
+            name: トランジスタ
+            description: 横からの入力が真らしいなら、下からの入力を通過させます。(真らしいとは、形状、色、または真偽値"1"のことです)
     filter:
         default:
-            name: &filter アイテムフィルタ
-            description: >-
-                入力された信号と一致するアイテムを上部に通過させ、残りを右側に通過させます。
-                真偽値(1/0)でも制御できます。
+            name: アイテムフィルタ
+            description: 入力された信号と一致するアイテムを上部に通過させ、残りを右側に通過させます。 真偽値(1/0)でも制御できます。
     display:
         default:
-            name: &display ディスプレイ
-            description: >-
-                入力された信号をディスプレイに表示します。
-                形状、色、真偽値のいずれでも可能です。
+            name: ディスプレイ
+            description: 入力された信号をディスプレイに表示します。 形状、色、真偽値のいずれでも可能です。
     reader:
         default:
-            name: &reader ベルトリーダ
-            description: >-
-                平均スループットを計測できます。 アンロック後は、
-                最後に通過したアイテムの情報を出力します。
+            name: ベルトリーダ
+            description: 平均スループットを計測できます。 アンロック後は、 最後に通過したアイテムの情報を出力します。
     analyzer:
         default:
-            name: &analyzer 形状解析機
+            name: 形状解析機
             description: 形状の最下層の右上の形状を分析し、形状と色に分解します。
     comparator:
         default:
-            name: &comparator 比較機
-            description: >-
-                両方の信号が完全に一致している場合、真偽値"1"を出力します。
-                形状、色、真偽値を比較できます。
+            name: 比較機
+            description: 両方の信号が完全に一致している場合、真偽値"1"を出力します。 形状、色、真偽値を比較できます。
     virtual_processor:
         default:
-            name: &virtual_processor 仮想切断機
+            name: 仮想切断機
             description: 形状の信号を2つに切断できます。
         rotater:
             name: 仮想回転機
@@ -576,140 +527,133 @@ buildings:
         default:
             name: なんでも抽出機
             description: サンドボックスモードでのみ使用可能で、ワイヤレイヤーで与えられた信号の形状を通常レイヤーに出力します。
-
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong> - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
+        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
+            - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
         desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
     reward_painter:
         title: 着色
-        desc: >-
-            <strong>着色機</strong>が利用可能になりました。(今まで形状でやってきた方法で)色を抽出し、
+        desc: "<strong>着色機</strong>が利用可能になりました。(今まで形状でやってきた方法で)色を抽出し、
             形状と合成することで着色します！<br><br>追伸: もし色覚特性をお持ちでしたら、
-            設定に<strong>色覚特性モード</strong>があります！
+            設定に<strong>色覚特性モード</strong>があります！"
     reward_mixer:
         title: 色の混合
-        desc: <strong>混合機</strong>が利用可能になりました。 - この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
+        desc: <strong>混合機</strong>が利用可能になりました。 -
+            この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
     reward_stacker:
         title: 積層機
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
     reward_balancer:
         title: 分配機/合流機
-        desc: >-
-            多機能な<strong>分配機/合流機</strong>が利用可能になりました。 - より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！<br><br>
+        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
+            be used to build bigger factories by <strong>splitting and merging
+            items</strong> onto multiple belts!
     reward_tunnel:
         title: トンネル
         desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
     reward_rotater_ccw:
         title: 反時計回りの回転
-        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 - 反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 -
+            反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: >-
-            <strong>連鎖抽出機</strong>が利用可能になりました。他の抽出機に<strong>出力を渡す</strong>ことができるので、資源の抽出がより効率的になります！
-            補足: ツールバーの旧い抽出機が置き換えられました！
+        desc: "You have unlocked the <strong>chained extractor</strong>! It can
+            <strong>forward its resources</strong> to other extractors so you
+            can more efficiently extract resources!<br><br> PS: The old
+            extractor has been replaced in your toolbar now!"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
-        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 - <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
+        desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
+            <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
     reward_merger:
         title: コンパクトな合流機
-        desc: >-
-            <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ - 2つの入力を1つの出力に合流させます！
+        desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ -
+            2つの入力を1つの出力に合流させます！
     reward_splitter:
         title: コンパクトな分配機
-        desc: >-
-            <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ - 1つの入力を2つの出力に分配します！
+        desc: <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ -
+            1つの入力を2つの出力に分配します！
     reward_belt_reader:
         title: ベルトリーダ
-        desc: >-
-            <strong>ベルトリーダ</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
+        desc: <strong>ベルトリーダ</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
     reward_cutter_quad:
         title: 四分割
-        desc: >-
-            <strong>切断機</strong>のバリエーションが利用可能になりました。 -
+        desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 -
             上下の二分割ではなく、<strong>四分割</strong>に切断できます！
     reward_painter_double:
         title: 着色機 (ダブル)
-        desc: >-
-            <strong>着色機</strong>のバリエーションが利用可能になりました。 -
+        desc: <strong>着色機</strong>のバリエーションが利用可能になりました。 -
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: 余剰の貯蓄
-        desc: >-
-            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
-
     reward_blueprints:
         title: ブループリント
         desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
     reward_rotater_180:
         title: 180度の回転
-        desc: >-
-            <strong>回転機</strong>のバリエーションが利用可能になりました！
-            180度の回転ができるようになります！(サプライズ！ :D)
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！ 180度の回転ができるようになります！(サプライズ！ :D)
     reward_wires_painter_and_levers:
         title: ワイヤ＆着色機(四分割)
-        desc: >-
-            <strong>ワイヤレイヤ</strong>が利用可能になりました！: 通常レイヤとは別のレイヤーであり、異なる機能が使用できます！<br><br>
-            最初に、<strong>着色機(四分割)</strong>が利用可能です。着色したいスロットを、ワイヤレイヤで接続します。<br><br>
-            ワイヤレイヤに切り替えるには、<strong>E</strong>を押します。
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: アイテムフィルタ
-        desc: >-
-            <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
+        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
             アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
             どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_display:
         title: ディスプレイ
-        desc: >-
-            <strong>ディスプレイ</strong>が利用可能になりました！ ワイヤレイヤで信号を接続することで、その内容を視認することができます！
-            補足: ベルトリーダーとストレージが最後に通過したアイテムを出力していることに気づきましたか？ディスプレイに表示するのを試してみてください！
+        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
+            wires layer to visualize it!<br><br> PS: Did you notice the belt
+            reader and storage output their last read item? Try showing it on a
+            display!"
     reward_constant_signal:
         title: 定数信号
-        desc: >-
-            <strong>定数信号</strong>が利用可能になりました！
-            これは、例えばアイテムフィルタに接続する場合に便利です。
-            定数信号は、<strong>形状</strong>、<strong>色</strong>、または<strong>真偽値(1/0)</strong>を出力できます。
+        desc: You unlocked the <strong>constant signal</strong> building on the wires
+            layer! This is useful to connect it to <strong>item filters</strong>
+            for example.<br><br> The constant signal can emit a
+            <strong>shape</strong>, <strong>color</strong> or
+            <strong>boolean</strong> (1 or 0).
     reward_logic_gates:
         title: 論理ゲート
-        desc: >-
-            <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは
-            ありませんが、これらは非常に優秀です！<br><br>
-            AND, OR, XOR and NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
+        desc: <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
+            AND, OR, XOR and
+            NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
         title: 仮想処理
-        desc: >-
-            <strong>形状処理をシミュレート</strong>できる新しい部品を沢山追加しました！<br><br>
+        desc: <strong>形状処理をシミュレート</strong>できる新しい部品を沢山追加しました！<br><br>
             ワイヤレイヤで切断、回転、積層をシミュレートできるようになりました。
-            これからゲームを続けるにあたり、3つの方法があります:<br><br>
-            - <strong>完全自動化された機械</strong>を構築し、HUBが要求する形状を作成する(試してみることをオススメします！)。<br><br>
-            - ワイヤでイカしたものを作る。<br><br>
-            - 今までのように工場を建設する。<br><br>
-            いずれにしても、楽しんでください！
-
+            これからゲームを続けるにあたり、3つの方法があります:<br><br> -
+            <strong>完全自動化された機械</strong>を構築し、HUBが要求する形状を作成する(試してみることをオススメします！)。<br><br>
+            - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc: >-
-            このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
-            生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になります！
+        desc: "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+            生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になりま\
+            す！"
     no_reward_freeplay:
         title: 次のレベル
-        desc: >-
-            おめでとうございます！
+        desc: おめでとうございます！
     reward_freeplay:
         title: フリープレイ
-        desc: >-
-            やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 - これからは納品すべき形は<strong>ランダムに</strong>生成されます！<br><br>
+        desc: やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 -
+            これからは納品すべき形は<strong>ランダムに</strong>生成されます！<br><br>
             今後、ハブには<strong>スループット</strong>が必要になるため、要求する形状を自動的に納品するマシンを構築することを強くお勧めします！<br><br>
             ハブは要求する形状をワイヤー層に出力するので、それを分析し自動的に調整する工場を作成するだけです。
-
     reward_demo_end:
         title: お試し終了
-        desc: >-
-            デモ版の最後に到達しました！
+        desc: デモ版の最後に到達しました！
 settings:
     title: 設定
     categories:
@@ -726,8 +670,7 @@ settings:
     labels:
         uiScale:
             title: 画面表示サイズ
-            description: >-
-                ユーザーインターフェイスのサイズを変更します。解像度をベースに調整されますが、この設定でそれを変更できます。
+            description: ユーザーインターフェイスのサイズを変更します。解像度をベースに調整されますが、この設定でそれを変更できます。
             scales:
                 super_small: 極小
                 small: 小
@@ -736,9 +679,7 @@ settings:
                 huge: 極大
         autosaveInterval:
             title: オートセーブ間隔
-            description: >-
-                ゲームが自動的にセーブされる頻度を設定します。無効化することも可能です。
-
+            description: ゲームが自動的にセーブされる頻度を設定します。無効化することも可能です。
             intervals:
                 one_minute: 1分
                 two_minutes: 2分
@@ -783,7 +724,6 @@ settings:
         soundVolume:
             title: 音量(SE)
             description: 効果音の音量を設定してください。
-
         musicVolume:
             title: 音量(BGM)
             description: 音楽の音量を設定してください。
@@ -802,7 +742,6 @@ settings:
         offerHints:
             title: ヒントとチュートリアル
             description: ゲーム中、ヒントとチュートリアルを表示します。レベルごとに不要なUI要素も非表示になり、ゲームに集中しやすくなります。
-
         enableTunnelSmartplace:
             title: スマートトンネル
             description: 有効にすると、トンネルを設置した際に不要なベルトを自動的に除去します。
@@ -818,30 +757,23 @@ settings:
             description: レートのみを表示することで、建造物の情報ボックスを短くします。選択しない場合は、説明文と画像も表示されます。
         disableCutDeleteWarnings:
             title: カット/削除の警告を無効化
-            description: >-
-                100個以上のエンティティをカット/削除する際に表示される警告ダイアログを無効にします。
-
+            description: 100個以上のエンティティをカット/削除する際に表示される警告ダイアログを無効にします。
         lowQualityMapResources:
             title: リソース表示の簡易化
-            description: ズームインしたときのリソース表示を簡素化して、パフォーマンスを向上させます。
-                外見もすっきりしますので、ぜひお試しください！
+            description: ズームインしたときのリソース表示を簡素化して、パフォーマンスを向上させます。 外見もすっきりしますので、ぜひお試しください！
         disableTileGrid:
             title: グリッドの無効化
-            description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。
-                これにより、ゲームの見た目もすっきりします。
+            description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description:
-                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)
-            description: 低品質のテクスチャを使用してパフォーマンスを向上させます。
-                ゲームの視認性が非常に低下します！
+            description: 低品質のテクスチャを使用してパフォーマンスを向上させます。 ゲームの視認性が非常に低下します！
         displayChunkBorders:
             title: チャンクの境界線を表示する
-            description: このゲームでは16x16タイルのチャンクで構成されています。
-                有効にすると、チャンクの境界線が表示されます。
+            description: このゲームでは16x16タイルのチャンクで構成されています。 有効にすると、チャンクの境界線が表示されます。
         pickMinerOnPatch:
             title: 資源で抽出機を選択
             description: デフォルトで有効です。資源の上でスポイトを使用すると、抽出機を選択します。
@@ -852,14 +784,18 @@ settings:
         enableMousePan:
             title: マウスで画面を移動
             description: 画面の端にカーソルを合わせることで移動できます。移動速度を設定することで、速度を変更できます。
-
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
 keybindings:
     title: キー設定
-    hint: >-
-        Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。
-
+    hint: "Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。"
     resetKeybindings: キー設定をリセット
-
     categoryLabels:
         general: アプリケーション
         ingame: ゲーム
@@ -877,73 +813,62 @@ keybindings:
         mapMoveLeft: 左移動
         mapMoveFaster: より速く移動
         centerMap: マップ中央移動
-
         mapZoomIn: ズームイン
         mapZoomOut: ズームアウト
         createMarker: マーカー設置
-
         menuOpenShop: アップグレード
         menuOpenStats: 統計情報
         menuClose: メニューを閉じる
-
         toggleHud: HUD切り替え
         toggleFPSInfo: FPS、デバッグ情報表示切り替え
         switchLayers: レイヤを変更
         exportScreenshot: 工場の全体像を画像出力
-
-        # --- Do not translate the values in this section
-        belt: *belt
-        balancer: *balancer
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
-        storage: *storage
-        wire: *wire
-        constant_signal: *constant_signal
+        belt: コンベアベルト
+        balancer: 分配機/合流機
+        underground_belt: トンネル
+        miner: 抽出機
+        cutter: 切断機
+        rotater: 回転機
+        stacker: 積層機
+        mixer: 混合機
+        painter: 着色機
+        trash: ゴミ箱
+        storage: ストレージ
+        wire: ワイヤ
+        constant_signal: 定値信号
         logic_gate: Logic Gate
-        lever: *lever
-        filter: *filter
-        wire_tunnel: *wire_tunnel
-        display: *display
-        reader: *reader
-        virtual_processor: *virtual_processor
-        transistor: *transistor
-        analyzer: *analyzer
-        comparator: *comparator
+        lever: スイッチ
+        filter: アイテムフィルタ
+        wire_tunnel: 交差ワイヤ
+        display: ディスプレイ
+        reader: ベルトリーダ
+        virtual_processor: 仮想切断機
+        transistor: トランジスタ
+        analyzer: 形状解析機
+        comparator: 比較機
         item_producer: なんでも抽出機(サンドボックス)
-        # ---
-
         pipette: スポイト
         rotateWhilePlacing: 回転
-        rotateInverseModifier: >-
-            Modifier: 逆時計回りにする
+        rotateInverseModifier: "Modifier: 逆時計回りにする"
         cycleBuildingVariants: バリエーション変更
         confirmMassDelete: 複数選択削除の確認
         pasteLastBlueprint: 直前のブループリントをペーストする
         cycleBuildings: 建造物の選択
         lockBeltDirection: ベルトプランナーを有効化
-        switchDirectionLockSide: >-
-            プランナー: 通る側を切り替え
-        copyWireValue: >-
-            ワイヤ: カーソルに合っている形状信号をキーとしてコピー
+        switchDirectionLockSide: "プランナー: 通る側を切り替え"
+        copyWireValue: "ワイヤ: カーソルに合っている形状信号をキーとしてコピー"
         massSelectStart: マウスドラッグで開始
         massSelectSelectMultiple: 複数範囲選択
         massSelectCopy: 範囲コピー
         massSelectCut: 範囲カット
-
         placementDisableAutoOrientation: 自動向き合わせ無効
         placeMultiple: 配置モードの維持
         placeInverse: ベルトの自動向き合わせを逆転
-
 about:
     title: このゲームについて
     body: >-
-        このゲームはオープンソースであり、<a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (私)によって開発されています。<br><br>
+        このゲームはオープンソースであり、<a href="https://github.com/tobspr"
+        target="_blank">Tobias Springer</a> (私)によって開発されています。<br><br>
 
         開発に参加したい場合は以下をチェックしてみてください。<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
@@ -961,9 +886,7 @@ demo:
         oneGameLimit: セーブデータの1個制限
         customizeKeybindings: キー設定のカスタマイズ
         exportingBase: 工場の全体像の画像出力
-
     settingNotAvailable: デモ版では利用できません。
-
 tips:
     - ハブは現在指定されている形状だけではなく、あらゆる種類の入力を受け付けることができます。
     - あなたの工場が拡張可能か確認してください - あとで報われるでしょう！

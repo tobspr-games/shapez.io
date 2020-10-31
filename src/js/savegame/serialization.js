@@ -97,6 +97,13 @@ export const types = {
     },
 
     /**
+     * @param {BaseDataType} innerType
+     */
+    fixedSizeArray(innerType) {
+        return new TypeArray(innerType, true);
+    },
+
+    /**
      * @param {SingletonFactoryTemplate<*>} innerType
      */
     classRef(registry) {

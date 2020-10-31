@@ -148,8 +148,7 @@ dialogs:
         desc: 你还没有解锁蓝图功能！完成更多的关卡来解锁蓝图。
     keybindingsIntroduction:
         title: 实用按键
-        desc:
-            "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
+        desc: "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
             <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多个。<br> <code
             class='keybinding'>ALT</code>: 反向放置传送带。<br>"
@@ -177,9 +176,14 @@ dialogs:
     renameSavegame:
         title: 重命名存档
         desc: 您可以在此重命名存档。
-    entityWarning:
-        title: 性能警告
-        desc: 您有非常多建筑，善意的提醒您，这个游戏无法处理过多的建筑 - 尝试将您的工厂压缩！
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -225,27 +229,6 @@ ingame:
         title: 建筑升级
         buttonUnlock: 升级
         tier: <x>级
-        tierLabels:
-            - 一
-            - 二
-            - 三
-            - 四
-            - 五
-            - 六
-            - 七
-            - 八
-            - 九
-            - 十
-            - 十一
-            - 十二
-            - 十三
-            - 十四
-            - 十五
-            - 十六
-            - 十七
-            - 十八
-            - 十九
-            - 二十
         maximumLevel: 最高级（<currentMult>倍效率）
     statistics:
         title: 统计信息
@@ -268,10 +251,6 @@ ingame:
         playtime: 游戏时间
         buildingsPlaced: 建筑数量
         beltsPlaced: 传送带数量
-        buttons:
-            continue: 继续
-            settings: 设置
-            menu: 回到主界面
     tutorialHints:
         title: 需要帮助？
         showHint: 显示帮助
@@ -289,9 +268,32 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采机</strong>来获取圆形！
             1_2_conveyor: 用<strong>传送带</strong>将你的开采机连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
-            1_3_expand:
-                这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
+            1_3_expand: 这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
                 <strong>SHIFT</strong> 键来放置多个开采机，用 <strong>R</strong> 键旋转它们。
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     colors:
         red: 红色
         green: 绿色
@@ -617,7 +619,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -668,7 +670,8 @@ storyRewards:
             mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
             Painter</strong> - Connect the slots you would like to paint with on
             the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Item Filter
         desc: You unlocked the <strong>Item Filter</strong>! It will route items either
@@ -817,6 +820,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按键设置

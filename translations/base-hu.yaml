@@ -204,11 +204,14 @@ dialogs:
     renameSavegame:
         title: Rename Savegame
         desc: You can rename your savegame here.
-    entityWarning:
-        title: Performance Warning
-        desc: You have placed a lot of buildings, this is just a friendly reminder that
-            the game can not handle an endless count of buildings - So try to
-            keep your factories compact!
+    tutorialVideoAvailable:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level! Would you like to
+            watch it?
+    tutorialVideoAvailableForeignLanguage:
+        title: Tutorial Available
+        desc: There is a tutorial video available for this level, but it is only
+            available in English. Would you like to watch it?
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -264,27 +267,6 @@ ingame:
         title: Fejlesztések
         buttonUnlock: Fejlesztés
         tier: <x>. Szint
-        tierLabels:
-            - I
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
-            - IX
-            - X
-            - XI
-            - XII
-            - XIII
-            - XIV
-            - XV
-            - XVI
-            - XVII
-            - XVIII
-            - XIX
-            - XX
         maximumLevel: LEGMAGASABB SZINT (<currentMult>x Sebesség)
     statistics:
         title: Statisztikák
@@ -308,10 +290,6 @@ ingame:
         playtime: Játékidő
         buildingsPlaced: Épületek száma
         beltsPlaced: Futószalagok hossza
-        buttons:
-            continue: Folytatás
-            settings: Beállítások
-            menu: Vissza a menübe
     tutorialHints:
         title: Segítségre van szükséged?
         showHint: Segítség mutatása
@@ -342,6 +320,30 @@ ingame:
                 futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd
                 lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát
                 helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
+            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
+                <strong>trash</strong> to get rid of the currently (!) not
+                needed waste.
+            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
+                up this slow process!<br><br> PS: Use the <strong>0-9
+                hotkeys</strong> to access buildings faster!"
+            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
+                extractors</strong> and connect them to the hub.<br><br> PS:
+                Hold <strong>SHIFT</strong> while dragging a belt to activate
+                the belt planner!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
+            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
+                with wires!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners
@@ -684,7 +686,7 @@ storyRewards:
         title: Balancer
         desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
             be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!<br><br>
+            items</strong> onto multiple belts!
     reward_merger:
         title: Compact Merger
         desc: You have unlocked a <strong>merger</strong> variant of the
@@ -735,7 +737,8 @@ storyRewards:
             mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
             Painter</strong> - Connect the slots you would like to paint with on
             the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>."
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Item Filter
         desc: You unlocked the <strong>Item Filter</strong>! It will route items either
@@ -901,6 +904,14 @@ settings:
             title: Enable Mouse Pan
             description: Allows to move the map by moving the cursor to the edges of the
                 screen. The speed depends on the Movement Speed setting.
+        zoomToCursor:
+            title: Zoom towards Cursor
+            description: If activated the zoom will happen in the direction of your mouse
+                position, otherwise in the middle of the screen.
+        mapResourcesScale:
+            title: Map Resources Size
+            description: Controls the size of the shapes on the map overview (when zooming
+                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Keybindings
