@@ -38,7 +38,7 @@ steamPage:
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Källkod (GitHub)
-         translate: Översättningshjälp
+        translate: Översättningshjälp
     text_open_source: >-
         Vem som helst kan bidra, jag är aktivt involverad i gruppen
         och försöker granska alla förslag och ta förslag och feedback
@@ -176,7 +176,7 @@ dialogs:
     createMarker:
         title: Ny Markör
         desc: Ge det ett meningsfullt namn, du kan också inkludera ett
-        <strong>kortkommando</strong> av en form (som du kan generera <link>här</link>)
+            <strong>kortkommando</strong> av en form (som du kan generera <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
