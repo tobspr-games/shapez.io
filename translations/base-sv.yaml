@@ -14,36 +14,37 @@ steamPage:
         På Steam kan du köpa den fulla versionen av spelet, men du kan även spela demot på shapez.io först och bestämma dig senare!
     title_advantages: Fördelar med fullversionen
     advantages:
-        - <b>12 nya nivåer</b> för totalt 26 nivåer!
-        - <b>18 nya byggnader</b> möjligör en fullt automatiserad fabrik!
-        - <b>20 uppgraderingsnivåer</b> ger dig många timmars underhållning!
-        - <b>Kabel-uppdatering</b> för en helt ny dimension!
-        - <b>Mörkt läge</b>!
-        - Oändligt antal sparningar
-        - Oändligt antal markeringar
-        - Stöd mig! ❤️
+        - <b>12 Nya nivåer</b> av totalt 26 nivåer!
+        - <b>18 Nya byggnader</b> för en fullt automatiserad fabrik!
+        - <b>20 Upgraderingsnivåer</b> för många roliga timmar!
+        - <b>Kabelupdatering</b> för en helt ny dimension!
+        - <b>Mörkt Läge</b>!
+        - Obegränsade sparningar!
+        - Obegränsade markeringar!
+        - Stötta mig! ❤️
     title_future: Planerat innehåll
     planned:
-        - Design-bibliotek (exklusivt för fullversionen)
-        - Steam Prestationer
-        - Pussel-läge
-        - Mini-karta
-        - Moddar
-        - Sandbox-läge
+        - Planbibliotek (Standalone Exclusive)
+        - Steam prestationer
+        - Pusselläge
+        - Minimap
+        - Mods
+        - Sandlådeläge
         - ... och mycket mer!
-    title_open_source: Det här spelet har öppen källkod!
+    title_open_source: Detta spel har öppen källkod!
     title_links: Länkar
     links:
         discord: Officiell Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Källkod (GitHub)
-        translate: Hjälp översätta
+         translate: Översättningshjälp
     text_open_source: >-
-        Vem som helst kan bidra! Jag medverkar aktivt i communityt och försöker granska
-        alla förslag och tar hänsyns till förslag när det är möjligt.
+        Vem som helst kan bidra, jag är aktivt involverad i gruppen
+        och försöker granska alla förslag och ta förslag och feedback
+        i åtanke där det är möjligt.
 
-        Se till att kolla upp min trello board för en full roadmap!
+        Se till och kolla mitt trello board för hela roadmappen!
 global:
     loading: Laddar
     error: Fel
@@ -174,7 +175,8 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Ge det ett meningsfullt namn. Du kan även inkludera en <strong>snabbkod</strong> av en form (som kan genereras <link>här</link>)
+        desc: Ge det ett meningsfullt namn, du kan också inkludera ett
+        <strong>kortkommando</strong> av en form (som du kan generera <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
@@ -201,12 +203,12 @@ dialogs:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
     tutorialVideoAvailable:
-        title: Handledning tillgänglig
-        desc: Det finns en handledande video för den här nivån! Vill du se den?
+        title: Handledning Tillgänglig
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå! Vill du se den?
     tutorialVideoAvailableForeignLanguage:
-        title: Handledning tillgänglig
-        desc: Det finns en handledande video för den här nivån,
-            men den finns bara på engelska. Vill du se den?
+        title: Handledning Tillgänglig
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men den är bara
+            tillgänglig på engelska. Vill du se den?
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
