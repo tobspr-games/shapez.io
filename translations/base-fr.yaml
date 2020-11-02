@@ -11,7 +11,7 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    title_advantages: Avantages de la version complète :
+    title_advantages: Avantages de la version complète
     advantages:
         - <b>12 nouveaux niveaux</b> avec 26 niveaux en tout !
         - <b>18 nouveaux bâtiments</b> pour automatiser entièrement votre usine !
@@ -21,7 +21,7 @@ steamPage:
         - Sauvegardes illimitées
         - Balises illimitées
         - Me soutenir ! ❤️
-    title_future: Prévu :
+    title_future: Prévu
     planned:
         - Bibliothèque de plans
         - Succès sur Steam
