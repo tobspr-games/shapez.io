@@ -1,8 +1,24 @@
 #ingame_HUD_BetaOverlay {
     position: fixed;
     @include S(top, 10px);
-    @include S(right, 15px);
+    left: 50%;
+    transform: translateX(-50%);
     color: $colorRedBright;
     @include Heading;
     text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+        @include PlainText;
+    }
+
+    span {
+        color: #555;
+        @include SuperSmallText;
+    }
 }

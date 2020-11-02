@@ -4,22 +4,35 @@ import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
+import { MetaCutterBuilding } from "./cutter";
+import { MetaPainterBuilding } from "./painter";
+import { MetaRotaterBuilding } from "./rotater";
+import { MetaStackerBuilding } from "./stacker";
 
 /** @enum {string} */
 export const enumVirtualProcessorVariants = {
-    analyzer: "analyzer",
     rotater: "rotater",
     unstacker: "unstacker",
-    shapecompare: "shapecompare",
+    stacker: "stacker",
+    painter: "painter",
 };
 
 /** @enum {string} */
 export const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.cutter,
-    [enumVirtualProcessorVariants.analyzer]: enumLogicGateType.analyzer,
     [enumVirtualProcessorVariants.rotater]: enumLogicGateType.rotater,
     [enumVirtualProcessorVariants.unstacker]: enumLogicGateType.unstacker,
-    [enumVirtualProcessorVariants.shapecompare]: enumLogicGateType.shapecompare,
+    [enumVirtualProcessorVariants.stacker]: enumLogicGateType.stacker,
+    [enumVirtualProcessorVariants.painter]: enumLogicGateType.painter,
+};
+
+const colors = {
+    [defaultBuildingVariant]: new MetaCutterBuilding().getSilhouetteColor(),
+    [enumVirtualProcessorVariants.rotater]: new MetaRotaterBuilding().getSilhouetteColor(),
+    [enumVirtualProcessorVariants.unstacker]: new MetaStackerBuilding().getSilhouetteColor(),
+    [enumVirtualProcessorVariants.stacker]: new MetaStackerBuilding().getSilhouetteColor(),
+    [enumVirtualProcessorVariants.painter]: new MetaPainterBuilding().getSilhouetteColor(),
 };
 
 export class MetaVirtualProcessorBuilding extends MetaBuilding {
@@ -27,16 +40,15 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
         super("virtual_processor");
     }
 
-    getSilhouetteColor() {
-        return "#823cab";
+    getSilhouetteColor(variant) {
+        return colors[variant];
     }
 
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing);
     }
 
     /** @returns {"wires"} **/
@@ -52,9 +64,9 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
         return [
             defaultBuildingVariant,
             enumVirtualProcessorVariants.rotater,
+            enumVirtualProcessorVariants.stacker,
+            enumVirtualProcessorVariants.painter,
             enumVirtualProcessorVariants.unstacker,
-            enumVirtualProcessorVariants.analyzer,
-            enumVirtualProcessorVariants.shapecompare,
         ];
     }
 
@@ -74,7 +86,6 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
         const pinComp = entity.components.WiredPins;
         switch (gateType) {
             case enumLogicGateType.cutter:
-            case enumLogicGateType.analyzer:
             case enumLogicGateType.unstacker: {
                 pinComp.setSlots([
                     {
@@ -110,7 +121,8 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
                 ]);
                 break;
             }
-            case enumLogicGateType.shapecompare: {
+            case enumLogicGateType.stacker:
+            case enumLogicGateType.painter: {
                 pinComp.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -119,7 +131,7 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction: enumDirection.left,
+                        direction: enumDirection.bottom,
                         type: enumPinSlotType.logicalAcceptor,
                     },
                     {

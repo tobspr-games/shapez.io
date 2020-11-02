@@ -2,7 +2,12 @@
 import { Application } from "../application";
 /* typehints:end */
 import { BufferMaintainer } from "../core/buffer_maintainer";
-import { disableImageSmoothing, enableImageSmoothing, registerCanvas } from "../core/buffer_utils";
+import {
+    disableImageSmoothing,
+    enableImageSmoothing,
+    getBufferStats,
+    registerCanvas,
+} from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
@@ -26,6 +31,7 @@ import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
+import { RegularGameMode } from "./modes/regular";
 import { ProductionAnalytics } from "./production_analytics";
 import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
@@ -95,6 +101,9 @@ export class GameCore {
 
         // Needs to come first
         root.dynamicTickrate = new DynamicTickrate(root);
+
+        // Init game mode
+        root.gameMode = new RegularGameMode(root);
 
         // Init classes
         root.camera = new Camera(root);
@@ -218,9 +227,6 @@ export class GameCore {
 
             lastContext.clearRect(0, 0, lastCanvas.width, lastCanvas.height);
         }
-
-        // globalConfig.smoothing.smoothMainCanvas = getDeviceDPI() < 1.5;
-        // globalConfig.smoothing.smoothMainCanvas = true;
 
         canvas.classList.toggle("smoothed", globalConfig.smoothing.smoothMainCanvas);
 
@@ -374,9 +380,9 @@ export class GameCore {
             (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
 
         let desiredAtlasScale = "0.25";
-        if (effectiveZoomLevel > 0.8 && !lowQuality) {
+        if (effectiveZoomLevel > 0.5 && !lowQuality) {
             desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
-        } else if (effectiveZoomLevel > 0.4 && !lowQuality) {
+        } else if (effectiveZoomLevel > 0.35 && !lowQuality) {
             desiredAtlasScale = "0.5";
         }
 
@@ -413,6 +419,11 @@ export class GameCore {
 
         const desiredOverlayAlpha = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.overlayAlpha = lerp(this.overlayAlpha, desiredOverlayAlpha, 0.25);
+
+        // On low performance, skip the fade
+        if (this.root.entityMgr.entities.length > 5000 || this.root.dynamicTickrate.averageFps < 50) {
+            this.overlayAlpha = desiredOverlayAlpha;
+        }
 
         if (this.overlayAlpha < 0.99) {
             // Background (grid, resources, etc)
@@ -500,17 +511,36 @@ export class GameCore {
             );
 
             const stats = this.root.buffers.getStats();
+
             context.fillText(
-                "Buffers: " +
+                "Maintained Buffers: " +
                     stats.rootKeys +
-                    " root keys, " +
+                    " root keys / " +
                     stats.subKeys +
-                    " sub keys / buffers / VRAM: " +
+                    " buffers / VRAM: " +
                     round2Digits(stats.vramBytes / (1024 * 1024)) +
                     " MB",
-
                 20,
                 620
+            );
+            const internalStats = getBufferStats();
+            context.fillText(
+                "Total Buffers: " +
+                    internalStats.bufferCount +
+                    " buffers / " +
+                    internalStats.backlogSize +
+                    " backlog / " +
+                    internalStats.backlogKeys +
+                    " keys in backlog / VRAM " +
+                    round2Digits(internalStats.vramUsage / (1024 * 1024)) +
+                    " MB / Backlog " +
+                    round2Digits(internalStats.backlogVramUsage / (1024 * 1024)) +
+                    " MB / Created " +
+                    internalStats.numCreated +
+                    " / Reused " +
+                    internalStats.numReused,
+                20,
+                640
             );
         }
 

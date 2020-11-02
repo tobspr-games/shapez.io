@@ -4,13 +4,14 @@ import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
+import { generateMatrixRotations } from "../../core/utils";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
 /** @enum {string} */
 export const enumLogicGateVariants = {
     not: "not",
     xor: "xor",
     or: "or",
-    transistor: "transistor",
 };
 
 /** @enum {string} */
@@ -19,7 +20,20 @@ export const enumVariantToGate = {
     [enumLogicGateVariants.not]: enumLogicGateType.not,
     [enumLogicGateVariants.xor]: enumLogicGateType.xor,
     [enumLogicGateVariants.or]: enumLogicGateType.or,
-    [enumLogicGateVariants.transistor]: enumLogicGateType.transistor,
+};
+
+const overlayMatrices = {
+    [defaultBuildingVariant]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+    [enumLogicGateVariants.xor]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+    [enumLogicGateVariants.or]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+    [enumLogicGateVariants.not]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+};
+
+const colors = {
+    [defaultBuildingVariant]: "#f48d41",
+    [enumLogicGateVariants.xor]: "#f4a241",
+    [enumLogicGateVariants.or]: "#f4d041",
+    [enumLogicGateVariants.not]: "#f44184",
 };
 
 export class MetaLogicGateBuilding extends MetaBuilding {
@@ -27,16 +41,15 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         super("logic_gate");
     }
 
-    getSilhouetteColor() {
-        return "#89dc60";
+    getSilhouetteColor(variant) {
+        return colors[variant];
     }
 
     /**
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates);
     }
 
     /** @returns {"wires"} **/
@@ -48,13 +61,16 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         return new Vector(1, 1);
     }
 
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant) {
+        return overlayMatrices[variant][rotation];
+    }
+
     getAvailableVariants() {
         return [
             defaultBuildingVariant,
+            enumLogicGateVariants.or,
             enumLogicGateVariants.not,
             enumLogicGateVariants.xor,
-            enumLogicGateVariants.or,
-            enumLogicGateVariants.transistor,
         ];
     }
 
@@ -92,26 +108,6 @@ export class MetaLogicGateBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.right,
-                        type: enumPinSlotType.logicalAcceptor,
-                    },
-                ]);
-                break;
-            }
-            case enumLogicGateType.transistor: {
-                pinComp.setSlots([
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top,
-                        type: enumPinSlotType.logicalEjector,
-                    },
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.left,
-                        type: enumPinSlotType.logicalAcceptor,
-                    },
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.bottom,
                         type: enumPinSlotType.logicalAcceptor,
                     },
                 ]);

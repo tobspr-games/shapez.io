@@ -29,6 +29,7 @@ import { MobileWarningState } from "./states/mobile_warning";
 import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
+import { RestrictionManager } from "./core/restriction_manager";
 
 /**
  * @typedef {import("./platform/game_analytics").GameAnalyticsInterface} GameAnalyticsInterface
@@ -69,6 +70,9 @@ export class Application {
         this.savegameMgr = new SavegameManager(this);
         this.inputMgr = new InputDistributor(this);
         this.backgroundResourceLoader = new BackgroundResourcesLoader(this);
+
+        // Restrictions (Like demo etc)
+        this.restrictionMgr = new RestrictionManager(this);
 
         // Platform dependent stuff
 
@@ -168,6 +172,9 @@ export class Application {
 
         if (!G_IS_MOBILE_APP && !IS_MOBILE) {
             window.addEventListener("mousemove", this.handleMousemove.bind(this));
+            window.addEventListener("mouseout", this.handleMousemove.bind(this));
+            window.addEventListener("mouseover", this.handleMousemove.bind(this));
+            window.addEventListener("mouseleave", this.handleMousemove.bind(this));
         }
 
         // Unload events

@@ -8,6 +8,10 @@ import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
+import { enumHubGoalRewards } from "../tutorial_goals";
+import { generateMatrixRotations } from "../../core/utils";
+
+const overlayMatrix = generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]);
 
 export class MetaReaderBuilding extends MetaBuilding {
     constructor() {
@@ -22,8 +26,7 @@ export class MetaReaderBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_belt_reader);
     }
 
     getDimensions() {
@@ -32,6 +35,17 @@ export class MetaReaderBuilding extends MetaBuilding {
 
     getShowWiresLayerPreview() {
         return true;
+    }
+
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        return overlayMatrix[rotation];
     }
 
     /**

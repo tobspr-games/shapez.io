@@ -25,17 +25,43 @@ export function disableImageSmoothing(context) {
     context.webkitImageSmoothingEnabled = false;
 }
 
-const registeredCanvas = [];
-const freeCanvasList = [];
+/**
+ * @typedef {{
+ *   canvas: HTMLCanvasElement,
+ *   context: CanvasRenderingContext2D
+ * }} CanvasCacheEntry
+ */
 
-let vramUsage = 0;
-let bufferCount = 0;
+/**
+ * @type {Array<CanvasCacheEntry>}
+ */
+const registeredCanvas = [];
+
+/**
+ * Buckets for each width * height combination
+ * @type {Map<number, Array<CanvasCacheEntry>>}
+ */
+const freeCanvasBuckets = new Map();
+
+/**
+ * Track statistics
+ */
+const stats = {
+    vramUsage: 0,
+    backlogVramUsage: 0,
+    bufferCount: 0,
+    numReused: 0,
+    numCreated: 0,
+};
 
 /**
  *
  * @param {HTMLCanvasElement} canvas
  */
 export function getBufferVramUsageBytes(canvas) {
+    assert(canvas, "no canvas given");
+    assert(Number.isFinite(canvas.width), "bad canvas width: " + canvas.width);
+    assert(Number.isFinite(canvas.height), "bad canvas height" + canvas.height);
     return canvas.width * canvas.height * 4;
 }
 
@@ -43,17 +69,31 @@ export function getBufferVramUsageBytes(canvas) {
  * Returns stats on the allocated buffers
  */
 export function getBufferStats() {
+    let numBuffersFree = 0;
+    freeCanvasBuckets.forEach(bucket => {
+        numBuffersFree += bucket.length;
+    });
+
     return {
-        vramUsage,
-        bufferCount,
-        backlog: freeCanvasList.length,
+        ...stats,
+        backlogKeys: freeCanvasBuckets.size,
+        backlogSize: numBuffersFree,
     };
 }
 
+/**
+ * Clears the backlog buffers if they grew too much
+ */
 export function clearBufferBacklog() {
-    while (freeCanvasList.length > 50) {
-        freeCanvasList.pop();
-    }
+    freeCanvasBuckets.forEach(bucket => {
+        while (bucket.length > 500) {
+            const entry = bucket[bucket.length - 1];
+            stats.backlogVramUsage -= getBufferVramUsageBytes(entry.canvas);
+            delete entry.canvas;
+            delete entry.context;
+            bucket.pop();
+        }
+    });
 }
 
 /**
@@ -84,59 +124,37 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
     let canvas = null;
     let context = null;
 
-    let bestMatchingOne = null;
-    let bestMatchingPixelsDiff = 1e50;
-
-    const currentPixels = w * h;
-
     // Ok, search in cache first
-    for (let i = 0; i < freeCanvasList.length; ++i) {
-        const { canvas: useableCanvas, context: useableContext } = freeCanvasList[i];
+    const bucket = freeCanvasBuckets.get(w * h) || [];
+
+    for (let i = 0; i < bucket.length; ++i) {
+        const { canvas: useableCanvas, context: useableContext } = bucket[i];
         if (useableCanvas.width === w && useableCanvas.height === h) {
             // Ok we found one
             canvas = useableCanvas;
             context = useableContext;
 
-            fastArrayDelete(freeCanvasList, i);
+            // Restore past state
+            context.restore();
+            context.save();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            delete canvas.style.width;
+            delete canvas.style.height;
+
+            stats.numReused++;
+            stats.backlogVramUsage -= getBufferVramUsageBytes(canvas);
+            fastArrayDelete(bucket, i);
             break;
         }
-
-        const otherPixels = useableCanvas.width * useableCanvas.height;
-        const diff = Math.abs(otherPixels - currentPixels);
-        if (diff < bestMatchingPixelsDiff) {
-            bestMatchingPixelsDiff = diff;
-            bestMatchingOne = {
-                canvas: useableCanvas,
-                context: useableContext,
-                index: i,
-            };
-        }
-    }
-
-    // Ok none matching, reuse one though
-    if (!canvas && bestMatchingOne) {
-        canvas = bestMatchingOne.canvas;
-        context = bestMatchingOne.context;
-        canvas.width = w;
-        canvas.height = h;
-        fastArrayDelete(freeCanvasList, bestMatchingOne.index);
-    }
-
-    // Reset context
-    if (context) {
-        // Restore past state
-        context.restore();
-        context.save();
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        delete canvas.style.width;
-        delete canvas.style.height;
     }
 
     // None found , create new one
     if (!canvas) {
         canvas = document.createElement("canvas");
         context = canvas.getContext("2d" /*, { alpha } */);
+
+        stats.numCreated++;
 
         canvas.width = w;
         canvas.height = h;
@@ -145,6 +163,7 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
         context.save();
     }
 
+    // @ts-ignore
     canvas.label = label;
 
     if (smooth) {
@@ -167,8 +186,9 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
 export function registerCanvas(canvas, context) {
     registeredCanvas.push({ canvas, context });
 
-    bufferCount += 1;
-    vramUsage += getBufferVramUsageBytes(canvas);
+    stats.bufferCount += 1;
+    const bytesUsed = getBufferVramUsageBytes(canvas);
+    stats.vramUsage += bytesUsed;
 }
 
 /**
@@ -180,6 +200,7 @@ export function freeCanvas(canvas) {
 
     let index = -1;
     let data = null;
+
     for (let i = 0; i < registeredCanvas.length; ++i) {
         if (registeredCanvas[i].canvas === canvas) {
             index = i;
@@ -193,8 +214,18 @@ export function freeCanvas(canvas) {
         return;
     }
     fastArrayDelete(registeredCanvas, index);
-    freeCanvasList.push(data);
 
-    bufferCount -= 1;
-    vramUsage -= getBufferVramUsageBytes(canvas);
+    const key = canvas.width * canvas.height;
+    const bucket = freeCanvasBuckets.get(key);
+    if (bucket) {
+        bucket.push(data);
+    } else {
+        freeCanvasBuckets.set(key, [data]);
+    }
+
+    stats.bufferCount -= 1;
+
+    const bytesUsed = getBufferVramUsageBytes(canvas);
+    stats.vramUsage -= bytesUsed;
+    stats.backlogVramUsage += bytesUsed;
 }

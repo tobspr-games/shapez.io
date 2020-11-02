@@ -41,7 +41,7 @@ export class SavegameSerializer {
             beltPaths: root.systemMgr.systems.belt.serializePaths(),
         };
 
-        if (!G_IS_RELEASE) {
+        if (G_IS_DEV) {
             if (sanityChecks) {
                 // Sanity check
                 const sanity = this.verifyLogicalErrors(data);
@@ -64,7 +64,7 @@ export class SavegameSerializer {
             return ExplainedResult.bad("Savegame has no entities");
         }
 
-        const seenUids = [];
+        const seenUids = new Set();
 
         // Check for duplicate UIDS
         for (let i = 0; i < savegame.entities.length; ++i) {
@@ -75,10 +75,10 @@ export class SavegameSerializer {
             if (!Number.isInteger(uid)) {
                 return ExplainedResult.bad("Entity has invalid uid: " + uid);
             }
-            if (seenUids.indexOf(uid) >= 0) {
+            if (seenUids.has(uid)) {
                 return ExplainedResult.bad("Duplicate uid " + uid);
             }
-            seenUids.push(uid);
+            seenUids.add(uid);
 
             // Verify components
             if (!entity.components) {
@@ -130,7 +130,7 @@ export class SavegameSerializer {
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
         errorReason = errorReason || root.map.deserialize(savegame.map);
-        errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals);
+        errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals, root);
         errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
         errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
         errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);

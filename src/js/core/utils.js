@@ -558,7 +558,16 @@ export function formatSeconds(secs) {
 }
 
 /**
- * Formats a number like 2.5 to "2.5 items / s"
+ * Formats a number like 2.51 to "2.5"
+ * @param {number} speed
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ */
+export function round1DigitLocalized(speed, separator = T.global.decimalSeparator) {
+    return round1Digit(speed).toString().replace(".", separator);
+}
+
+/**
+ * Formats a number like 2.51 to "2.51 items / s"
  * @param {number} speed
  * @param {boolean=} double
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
@@ -669,4 +678,84 @@ export function safeModulo(n, m) {
  */
 export function smoothPulse(time) {
     return Math.sin(time * 4) * 0.5 + 0.5;
+}
+
+/**
+ * Fills in a <link> tag
+ * @param {string} translation
+ * @param {string} link
+ */
+export function fillInLinkIntoTranslation(translation, link) {
+    return translation
+        .replace("<link>", "<a href='" + link + "' target='_blank'>")
+        .replace("</link>", "</a>");
+}
+
+/**
+ * Generates a file download
+ * @param {string} filename
+ * @param {string} text
+ */
+export function generateFileDownload(filename, text) {
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+}
+
+/**
+ * Starts a file chooser
+ * @param {string} acceptedType
+ */
+export function startFileChoose(acceptedType = ".bin") {
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = acceptedType;
+
+    return new Promise(resolve => {
+        input.onchange = _ => resolve(input.files[0]);
+        input.click();
+    });
+}
+
+const romanLiterals = [
+    "0", // NULL
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
+    "XI",
+    "XII",
+    "XIII",
+    "XIV",
+    "XV",
+    "XVI",
+    "XVII",
+    "XVIII",
+    "XIX",
+    "XX",
+];
+
+/**
+ *
+ * @param {number} number
+ * @returns {string}
+ */
+export function getRomanNumber(number) {
+    number = Math.max(0, Math.round(number));
+    if (number < romanLiterals.length) {
+        return romanLiterals[number];
+    }
+    return String(number);
 }

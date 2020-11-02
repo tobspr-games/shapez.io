@@ -1,33 +1,40 @@
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { createLogger } from "../core/logging";
+import { T } from "../translations";
+import { MetaAnalyzerBuilding } from "./buildings/analyzer";
+import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaBeltBuilding } from "./buildings/belt";
-import { MetaBeltBaseBuilding } from "./buildings/belt_base";
+import { MetaComparatorBuilding } from "./buildings/comparator";
+import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
+import { MetaDisplayBuilding } from "./buildings/display";
+import { MetaFilterBuilding } from "./buildings/filter";
 import { MetaHubBuilding } from "./buildings/hub";
+import { MetaItemProducerBuilding } from "./buildings/item_producer";
+import { MetaLeverBuilding } from "./buildings/lever";
+import { enumLogicGateVariants, MetaLogicGateBuilding } from "./buildings/logic_gate";
 import { enumMinerVariants, MetaMinerBuilding } from "./buildings/miner";
 import { MetaMixerBuilding } from "./buildings/mixer";
 import { enumPainterVariants, MetaPainterBuilding } from "./buildings/painter";
-import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
-import { enumSplitterVariants, MetaSplitterBuilding } from "./buildings/splitter";
-import { MetaStackerBuilding } from "./buildings/stacker";
-import { enumTrashVariants, MetaTrashBuilding } from "./buildings/trash";
-import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
-import { MetaWireBuilding } from "./buildings/wire";
-import { gBuildingVariants, registerBuildingVariant } from "./building_codes";
-import { defaultBuildingVariant } from "./meta_building";
-import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
-import { MetaLogicGateBuilding, enumLogicGateVariants } from "./buildings/logic_gate";
-import { MetaLeverBuilding } from "./buildings/lever";
-import { MetaFilterBuilding } from "./buildings/filter";
-import { MetaWireTunnelBuilding, enumWireTunnelVariants } from "./buildings/wire_tunnel";
-import { MetaDisplayBuilding } from "./buildings/display";
-import { MetaVirtualProcessorBuilding, enumVirtualProcessorVariants } from "./buildings/virtual_processor";
 import { MetaReaderBuilding } from "./buildings/reader";
+import { enumRotaterVariants, MetaRotaterBuilding } from "./buildings/rotater";
+import { MetaStackerBuilding } from "./buildings/stacker";
+import { MetaStorageBuilding } from "./buildings/storage";
+import { enumTransistorVariants, MetaTransistorBuilding } from "./buildings/transistor";
+import { MetaTrashBuilding } from "./buildings/trash";
+import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buildings/underground_belt";
+import { enumVirtualProcessorVariants, MetaVirtualProcessorBuilding } from "./buildings/virtual_processor";
+import { MetaWireBuilding } from "./buildings/wire";
+import { MetaWireTunnelBuilding } from "./buildings/wire_tunnel";
+import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
+import { enumWireVariant } from "./components/wire";
+import { KEYMAPPINGS } from "./key_action_mapper";
+import { defaultBuildingVariant } from "./meta_building";
 
 const logger = createLogger("building_registry");
 
 export function initMetaBuildingRegistry() {
-    gMetaBuildingRegistry.register(MetaSplitterBuilding);
+    gMetaBuildingRegistry.register(MetaBalancerBuilding);
     gMetaBuildingRegistry.register(MetaMinerBuilding);
     gMetaBuildingRegistry.register(MetaCutterBuilding);
     gMetaBuildingRegistry.register(MetaRotaterBuilding);
@@ -35,6 +42,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaMixerBuilding);
     gMetaBuildingRegistry.register(MetaPainterBuilding);
     gMetaBuildingRegistry.register(MetaTrashBuilding);
+    gMetaBuildingRegistry.register(MetaStorageBuilding);
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
@@ -47,18 +55,22 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaDisplayBuilding);
     gMetaBuildingRegistry.register(MetaVirtualProcessorBuilding);
     gMetaBuildingRegistry.register(MetaReaderBuilding);
+    gMetaBuildingRegistry.register(MetaTransistorBuilding);
+    gMetaBuildingRegistry.register(MetaAnalyzerBuilding);
+    gMetaBuildingRegistry.register(MetaComparatorBuilding);
+    gMetaBuildingRegistry.register(MetaItemProducerBuilding);
 
     // Belt
-    registerBuildingVariant(1, MetaBeltBaseBuilding, defaultBuildingVariant, 0);
-    registerBuildingVariant(2, MetaBeltBaseBuilding, defaultBuildingVariant, 1);
-    registerBuildingVariant(3, MetaBeltBaseBuilding, defaultBuildingVariant, 2);
+    registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
+    registerBuildingVariant(2, MetaBeltBuilding, defaultBuildingVariant, 1);
+    registerBuildingVariant(3, MetaBeltBuilding, defaultBuildingVariant, 2);
 
-    // Splitter
-    registerBuildingVariant(4, MetaSplitterBuilding);
-    registerBuildingVariant(5, MetaSplitterBuilding, enumSplitterVariants.compact);
-    registerBuildingVariant(6, MetaSplitterBuilding, enumSplitterVariants.compactInverse);
-    registerBuildingVariant(47, MetaSplitterBuilding, enumSplitterVariants.compactMerge);
-    registerBuildingVariant(48, MetaSplitterBuilding, enumSplitterVariants.compactMergeInverse);
+    // Balancer
+    registerBuildingVariant(4, MetaBalancerBuilding);
+    registerBuildingVariant(5, MetaBalancerBuilding, enumBalancerVariants.merger);
+    registerBuildingVariant(6, MetaBalancerBuilding, enumBalancerVariants.mergerInverse);
+    registerBuildingVariant(47, MetaBalancerBuilding, enumBalancerVariants.splitter);
+    registerBuildingVariant(48, MetaBalancerBuilding, enumBalancerVariants.splitterInverse);
 
     // Miner
     registerBuildingVariant(7, MetaMinerBuilding);
@@ -71,7 +83,7 @@ export function initMetaBuildingRegistry() {
     // Rotater
     registerBuildingVariant(11, MetaRotaterBuilding);
     registerBuildingVariant(12, MetaRotaterBuilding, enumRotaterVariants.ccw);
-    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.fl);
+    registerBuildingVariant(13, MetaRotaterBuilding, enumRotaterVariants.rotate180);
 
     // Stacker
     registerBuildingVariant(14, MetaStackerBuilding);
@@ -87,7 +99,9 @@ export function initMetaBuildingRegistry() {
 
     // Trash
     registerBuildingVariant(20, MetaTrashBuilding);
-    registerBuildingVariant(21, MetaTrashBuilding, enumTrashVariants.storage);
+
+    // Storage
+    registerBuildingVariant(21, MetaStorageBuilding);
 
     // Underground belt
     registerBuildingVariant(22, MetaUndergroundBeltBuilding, defaultBuildingVariant, 0);
@@ -104,6 +118,11 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(29, MetaWireBuilding, defaultBuildingVariant, 2);
     registerBuildingVariant(30, MetaWireBuilding, defaultBuildingVariant, 3);
 
+    registerBuildingVariant(52, MetaWireBuilding, enumWireVariant.second, 0);
+    registerBuildingVariant(53, MetaWireBuilding, enumWireVariant.second, 1);
+    registerBuildingVariant(54, MetaWireBuilding, enumWireVariant.second, 2);
+    registerBuildingVariant(55, MetaWireBuilding, enumWireVariant.second, 3);
+
     // Constant signal
     registerBuildingVariant(31, MetaConstantSignalBuilding);
 
@@ -112,7 +131,10 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(34, MetaLogicGateBuilding, enumLogicGateVariants.not);
     registerBuildingVariant(35, MetaLogicGateBuilding, enumLogicGateVariants.xor);
     registerBuildingVariant(36, MetaLogicGateBuilding, enumLogicGateVariants.or);
-    registerBuildingVariant(38, MetaLogicGateBuilding, enumLogicGateVariants.transistor);
+
+    // Transistor
+    registerBuildingVariant(38, MetaTransistorBuilding, defaultBuildingVariant);
+    registerBuildingVariant(60, MetaTransistorBuilding, enumTransistorVariants.mirrored);
 
     // Lever
     registerBuildingVariant(33, MetaLeverBuilding);
@@ -122,20 +144,26 @@ export function initMetaBuildingRegistry() {
 
     // Wire tunnel
     registerBuildingVariant(39, MetaWireTunnelBuilding);
-    registerBuildingVariant(41, MetaWireTunnelBuilding, enumWireTunnelVariants.coating);
 
     // Display
     registerBuildingVariant(40, MetaDisplayBuilding);
 
     // Virtual Processor
     registerBuildingVariant(42, MetaVirtualProcessorBuilding);
-    registerBuildingVariant(43, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.analyzer);
     registerBuildingVariant(44, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.rotater);
     registerBuildingVariant(45, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.unstacker);
-    registerBuildingVariant(46, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.shapecompare);
+    registerBuildingVariant(50, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.stacker);
+    registerBuildingVariant(51, MetaVirtualProcessorBuilding, enumVirtualProcessorVariants.painter);
+
+    // Analyzer
+    registerBuildingVariant(46, MetaComparatorBuilding);
+    registerBuildingVariant(43, MetaAnalyzerBuilding);
 
     // Reader
     registerBuildingVariant(49, MetaReaderBuilding);
+
+    // Item producer
+    registerBuildingVariant(61, MetaItemProducerBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {
@@ -156,6 +184,29 @@ export function initMetaBuildingRegistry() {
         }
     }
 
+    // Check for valid keycodes
+    if (G_IS_DEV) {
+        gMetaBuildingRegistry.entries.forEach(metaBuilding => {
+            const id = metaBuilding.getId();
+            if (!["hub"].includes(id)) {
+                if (!KEYMAPPINGS.buildings[id]) {
+                    assertAlways(
+                        false,
+                        "Building " + id + " has no keybinding assigned! Add it to key_action_mapper.js"
+                    );
+                }
+
+                if (!T.buildings[id]) {
+                    assertAlways(false, "Translation for building " + id + " missing!");
+                }
+
+                if (!T.buildings[id].default) {
+                    assertAlways(false, "Translation for building " + id + " missing (default variant)!");
+                }
+            }
+        });
+    }
+
     logger.log("Registered", gMetaBuildingRegistry.getNumEntries(), "buildings");
     logger.log("Registered", Object.keys(gBuildingVariants).length, "building codes");
 }
@@ -173,6 +224,12 @@ export function initBuildingCodesAfterResourcesLoaded() {
             variant.rotationVariant,
             variant.variant
         );
-        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor();
+        variant.silhouetteColor = variant.metaInstance.getSilhouetteColor(
+            variant.variant,
+            variant.rotationVariant
+        );
     }
+
+    // Update caches
+    buildBuildingCodeCache();
 }

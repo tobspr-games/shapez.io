@@ -8,10 +8,6 @@ export class BeltReaderComponent extends Component {
         return "BeltReader";
     }
 
-    duplicateWithoutContents() {
-        return new BeltReaderComponent();
-    }
-
     static getSchema() {
         return {
             lastItem: types.nullable(typeItemSingleton),

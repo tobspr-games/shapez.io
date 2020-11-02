@@ -121,6 +121,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.storyGoalCompleted.add(() => this.currentMetaBuilding.set(null));
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
@@ -253,6 +254,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @see BaseHUDPart.update
      */
     update() {
+        // Abort placement if a dialog was shown in the meantime
+        if (this.root.hud.hasBlockingOverlayOpen()) {
+            this.abortPlacement();
+            return;
+        }
+
         // Always update since the camera might have moved
         const mousePos = this.root.app.mousePosition;
         if (mousePos) {
@@ -327,10 +334,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
 
             // Check if there's a shape or color item below, if so select the miner
-            if (tileBelow && this.root.app.settings.getAllSettings().pickMinerOnPatch) {
+            if (
+                tileBelow &&
+                this.root.app.settings.getAllSettings().pickMinerOnPatch &&
+                this.root.currentLayer === "regular"
+            ) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
-                // Select chained miner if available, since thats always desired once unlocked
+                // Select chained miner if available, since that's always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
                     this.currentVariant.set(enumMinerVariants.chainable);
                 }
@@ -451,11 +462,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentVariant.set(defaultBuildingVariant);
         } else {
             const availableVariants = metaBuilding.getAvailableVariants(this.root);
-            const index = availableVariants.indexOf(this.currentVariant.get());
-            assert(
-                index >= 0,
-                "Current variant was invalid: " + this.currentVariant.get() + " out of " + availableVariants
-            );
+            let index = availableVariants.indexOf(this.currentVariant.get());
+            if (index < 0) {
+                index = 0;
+                console.warn("Invalid variant selected:", this.currentVariant.get());
+            }
             const newIndex = (index + 1) % availableVariants.length;
             const newVariant = availableVariants[newIndex];
             this.setVariant(newVariant);
@@ -589,7 +600,17 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            const variant = this.preferredVariants[metaBuilding.getId()] || defaultBuildingVariant;
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            const preferredVariant = this.preferredVariants[metaBuilding.getId()];
+
+            // Choose last stored variant if possible, otherwise the default one
+            let variant;
+            if (!preferredVariant || !availableVariants.includes(preferredVariant)) {
+                variant = availableVariants[0];
+            } else {
+                variant = preferredVariant;
+            }
+
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);

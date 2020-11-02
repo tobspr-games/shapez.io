@@ -17,6 +17,8 @@ import { LeverComponent } from "./components/lever";
 import { WireTunnelComponent } from "./components/wire_tunnel";
 import { DisplayComponent } from "./components/display";
 import { BeltReaderComponent } from "./components/belt_reader";
+import { FilterComponent } from "./components/filter";
+import { ItemProducerComponent } from "./components/item_producer";
 /* typehints:end */
 
 /**
@@ -80,6 +82,12 @@ export class EntityComponentStorage {
 
         /** @type {BeltReaderComponent} */
         this.BeltReader;
+
+        /** @type {FilterComponent} */
+        this.Filter;
+
+        /** @type {ItemProducerComponent} */
+        this.ItemProducer;
 
         /* typehints:end */
     }

@@ -4,7 +4,7 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { enumAnalyticsDataSource } from "../../production_analytics";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { enumDisplayMode, HUDShapeStatisticsHandle } from "./statistics_handle";
+import { enumDisplayMode, HUDShapeStatisticsHandle, statisticsUnitsSeconds } from "./statistics_handle";
 import { T } from "../../../translations";
 
 /**
@@ -47,10 +47,12 @@ export class HUDStatistics extends BaseHUDPart {
             this.trackClicks(button, () => this.setDataSource(dataSource));
         }
 
+        const buttonIterateUnit = makeButton(this.filtersDisplayMode, ["displayIterateUnit"]);
         const buttonDisplaySorted = makeButton(this.filtersDisplayMode, ["displaySorted"]);
         const buttonDisplayDetailed = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
         const buttonDisplayIcons = makeButton(this.filtersDisplayMode, ["displayIcons"]);
 
+        this.trackClicks(buttonIterateUnit, () => this.iterateUnit());
         this.trackClicks(buttonDisplaySorted, () => this.toggleSorted());
         this.trackClicks(buttonDisplayIcons, () => this.setDisplayMode(enumDisplayMode.icons));
         this.trackClicks(buttonDisplayDetailed, () => this.setDisplayMode(enumDisplayMode.detailed));
@@ -97,6 +99,17 @@ export class HUDStatistics extends BaseHUDPart {
         this.setSorted(!this.sorted);
     }
 
+    /**
+     * Chooses the next unit
+     */
+    iterateUnit() {
+        const units = Array.from(Object.keys(statisticsUnitsSeconds));
+        const newIndex = (units.indexOf(this.currentUnit) + 1) % units.length;
+        this.currentUnit = units[newIndex];
+
+        this.rerenderPartial();
+    }
+
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -111,6 +124,8 @@ export class HUDStatistics extends BaseHUDPart {
 
         /** @type {Object.<string, HUDShapeStatisticsHandle>} */
         this.activeHandles = {};
+
+        this.currentUnit = "second";
 
         this.setSorted(true);
         this.setDataSource(enumAnalyticsDataSource.produced);
@@ -136,13 +151,12 @@ export class HUDStatistics extends BaseHUDPart {
         }
     }
 
-    cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
+    isBlockingOverlay() {
+        return this.visible;
     }
 
     show() {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.rerenderFull();
         this.update();
@@ -150,7 +164,6 @@ export class HUDStatistics extends BaseHUDPart {
 
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
@@ -173,7 +186,7 @@ export class HUDStatistics extends BaseHUDPart {
     rerenderPartial() {
         for (const key in this.activeHandles) {
             const handle = this.activeHandles[key];
-            handle.update(this.displayMode, this.dataSource);
+            handle.update(this.displayMode, this.dataSource, this.currentUnit);
         }
     }
 

@@ -119,7 +119,15 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id][variant].name;
         this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id][variant].description;
 
-        const binding = this.root.keyMapper.getBinding(KEYMAPPINGS.buildings[metaBuilding.getId()]);
+        const layer = this.root.currentLayer;
+
+        let rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + layer];
+        if (!rawBinding) {
+            rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
+        }
+
+        const binding = this.root.keyMapper.getBinding(rawBinding);
+
         this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace(
             "<key>",
             "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>"

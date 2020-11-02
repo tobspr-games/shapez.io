@@ -28,22 +28,6 @@ export class ItemAcceptorComponent extends Component {
         return "ItemAcceptor";
     }
 
-    duplicateWithoutContents() {
-        const slotsCopy = [];
-        for (let i = 0; i < this.slots.length; ++i) {
-            const slot = this.slots[i];
-            slotsCopy.push({
-                pos: slot.pos.copy(),
-                directions: slot.directions.slice(),
-                filter: slot.filter,
-            });
-        }
-
-        return new ItemAcceptorComponent({
-            slots: slotsCopy,
-        });
-    }
-
     /**
      *
      * @param {object} param0

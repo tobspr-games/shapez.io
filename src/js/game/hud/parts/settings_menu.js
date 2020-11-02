@@ -29,29 +29,33 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         const buttons = [
             {
-                title: T.ingame.settingsMenu.buttons.continue,
+                id: "continue",
                 action: () => this.close(),
             },
             {
-                title: T.ingame.settingsMenu.buttons.settings,
+                id: "settings",
                 action: () => this.goToSettings(),
             },
             {
-                title: T.ingame.settingsMenu.buttons.menu,
+                id: "menu",
                 action: () => this.returnToMenu(),
             },
         ];
 
         for (let i = 0; i < buttons.length; ++i) {
-            const { title, action } = buttons[i];
+            const { action, id } = buttons[i];
 
             const element = document.createElement("button");
             element.classList.add("styledButton");
-            element.innerText = title;
+            element.classList.add(id);
             this.buttonContainer.appendChild(element);
 
             this.trackClicks(element, action);
         }
+    }
+
+    isBlockingOverlay() {
+        return this.visible;
     }
 
     returnToMenu() {
@@ -84,13 +88,8 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.close();
     }
 
-    cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
-    }
-
     show() {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
         const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
@@ -116,7 +115,6 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }

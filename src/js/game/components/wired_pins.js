@@ -31,7 +31,7 @@ export class WiredPinsComponent extends Component {
 
     static getSchema() {
         return {
-            slots: types.array(
+            slots: types.fixedSizeArray(
                 types.structured({
                     value: types.nullable(typeItemSingleton),
                 })
@@ -47,20 +47,6 @@ export class WiredPinsComponent extends Component {
     constructor({ slots = [] }) {
         super();
         this.setSlots(slots);
-    }
-
-    duplicateWithoutContents() {
-        const slots = [];
-        for (let i = 0; i < this.slots.length; ++i) {
-            const slot = this.slots[i];
-            slots.push({
-                pos: slot.pos.copy(),
-                type: slot.type,
-                direction: slot.direction,
-            });
-        }
-
-        return new WiredPinsComponent({ slots });
     }
 
     /**

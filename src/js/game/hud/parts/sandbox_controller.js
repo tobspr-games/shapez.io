@@ -1,9 +1,7 @@
-import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
+import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { blueprintShape, UPGRADES } from "../../upgrades";
 import { enumNotificationType } from "./notifications";
-import { tutorialGoals } from "../../tutorial_goals";
 
 export class HUDSandboxController extends BaseHUDPart {
     createElements(parent) {
@@ -13,7 +11,7 @@ export class HUDSandboxController extends BaseHUDPart {
             [],
             `
             <label>Sandbox Options</label>
-            <span class="hint">Use F6 to toggle this overlay</span>
+            <span class="sandboxHint">Use F6 to toggle this overlay</span>
 
             <div class="buttons">
                 <div class="levelToggle plusMinus">
@@ -75,10 +73,11 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     giveBlueprints() {
-        if (!this.root.hubGoals.storedShapes[blueprintShape]) {
-            this.root.hubGoals.storedShapes[blueprintShape] = 0;
+        const shape = this.root.gameMode.getBlueprintShapeKey();
+        if (!this.root.hubGoals.storedShapes[shape]) {
+            this.root.hubGoals.storedShapes[shape] = 0;
         }
-        this.root.hubGoals.storedShapes[blueprintShape] += 1e9;
+        this.root.hubGoals.storedShapes[shape] += 1e9;
     }
 
     maxOutAll() {
@@ -89,8 +88,8 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     modifyUpgrade(id, amount) {
-        const handle = UPGRADES[id];
-        const maxLevel = handle.tiers.length;
+        const upgradeTiers = this.root.gameMode.getUpgrades()[id];
+        const maxLevel = upgradeTiers.length;
 
         this.root.hubGoals.upgradeLevels[id] = Math.max(
             0,
@@ -100,7 +99,7 @@ export class HUDSandboxController extends BaseHUDPart {
         // Compute improvement
         let improvement = 1;
         for (let i = 0; i < this.root.hubGoals.upgradeLevels[id]; ++i) {
-            improvement += handle.tiers[i].improvement;
+            improvement += upgradeTiers[i].improvement;
         }
         this.root.hubGoals.upgradeImprovements[id] = improvement;
         this.root.signals.upgradePurchased.dispatch(id);
@@ -113,7 +112,7 @@ export class HUDSandboxController extends BaseHUDPart {
     modifyLevel(amount) {
         const hubGoals = this.root.hubGoals;
         hubGoals.level = Math.max(1, hubGoals.level + amount);
-        hubGoals.createNextGoal();
+        hubGoals.computeNextGoal();
 
         // Clear all shapes of this level
         hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
@@ -122,9 +121,10 @@ export class HUDSandboxController extends BaseHUDPart {
 
         // Compute gained rewards
         hubGoals.gainedRewards = {};
+        const levels = this.root.gameMode.getLevelDefinitions();
         for (let i = 0; i < hubGoals.level - 1; ++i) {
-            if (i < tutorialGoals.length) {
-                const reward = tutorialGoals[i].reward;
+            if (i < levels.length) {
+                const reward = levels[i].reward;
                 hubGoals.gainedRewards[reward] = (hubGoals.gainedRewards[reward] || 0) + 1;
             }
         }

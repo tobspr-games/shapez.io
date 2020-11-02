@@ -123,7 +123,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
     }
 
-    // Simple geters & setters
+    // Simple getters & setters
 
     addScreenShake(amount) {
         const currentShakeAmount = this.currentShake.length();
@@ -353,7 +353,7 @@ export class Camera extends BasicSerializableObject {
             .add(() => (this.desiredZoom = this.zoomLevel * 1.2));
         mapper
             .getBinding(KEYMAPPINGS.navigation.mapZoomOut)
-            .add(() => (this.desiredZoom = this.zoomLevel * 0.8));
+            .add(() => (this.desiredZoom = this.zoomLevel / 1.2));
 
         mapper.getBinding(KEYMAPPINGS.navigation.centerMap).add(() => this.centerOnMap());
     }
@@ -502,16 +502,20 @@ export class Camera extends BasicSerializableObject {
         }
         const prevZoom = this.zoomLevel;
 
-        const delta = Math.sign(event.deltaY) * -0.15 * this.root.app.settings.getScrollWheelSensitivity();
-        assert(Number.isFinite(delta), "Got invalid delta in mouse wheel event: " + event.deltaY);
+        const scale = 1 + 0.15 * this.root.app.settings.getScrollWheelSensitivity();
+        assert(Number.isFinite(scale), "Got invalid scale in mouse wheel event: " + event.deltaY);
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *before* wheel: " + this.zoomLevel);
-        this.zoomLevel *= 1 + delta;
+        this.zoomLevel *= event.deltaY < 0 ? scale : 1 / scale;
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
 
         this.clampZoomLevel();
         this.desiredZoom = null;
 
-        const mousePosition = this.root.app.mousePosition;
+        let mousePosition = this.root.app.mousePosition;
+        if (!this.root.app.settings.getAllSettings().zoomToCursor) {
+            mousePosition = new Vector(this.root.gameWidth / 2, this.root.gameHeight / 2);
+        }
+
         if (mousePosition) {
             const worldPos = this.root.camera.screenToWorld(mousePosition);
             const worldDelta = worldPos.sub(this.center);
@@ -769,6 +773,7 @@ export class Camera extends BasicSerializableObject {
             this.cameraUpdateTimeBucket -= physicsStepSizeMs;
 
             this.internalUpdatePanning(now, physicsStepSizeMs);
+            this.internalUpdateMousePanning(now, physicsStepSizeMs);
             this.internalUpdateZooming(now, physicsStepSizeMs);
             this.internalUpdateCentering(now, physicsStepSizeMs);
             this.internalUpdateShake(now, physicsStepSizeMs);
@@ -856,6 +861,69 @@ export class Camera extends BasicSerializableObject {
     }
 
     /**
+     * Internal screen panning handler
+     * @param {number} now
+     * @param {number} dt
+     */
+    internalUpdateMousePanning(now, dt) {
+        if (!this.root.app.focused) {
+            return;
+        }
+
+        if (!this.root.app.settings.getAllSettings().enableMousePan) {
+            // Not enabled
+            return;
+        }
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
+
+        if (this.root.hud.shouldPauseGame() || this.root.hud.hasBlockingOverlayOpen()) {
+            return;
+        }
+
+        if (this.desiredCenter || this.desiredZoom || this.currentlyMoving || this.currentlyPinching) {
+            // Performing another method of movement right now
+            return;
+        }
+
+        if (
+            mousePos.x < 0 ||
+            mousePos.y < 0 ||
+            mousePos.x > this.root.gameWidth ||
+            mousePos.y > this.root.gameHeight
+        ) {
+            // Out of screen
+            return;
+        }
+
+        const panAreaPixels = 2;
+
+        const panVelocity = new Vector();
+        if (mousePos.x < panAreaPixels) {
+            panVelocity.x -= 1;
+        }
+        if (mousePos.x > this.root.gameWidth - panAreaPixels) {
+            panVelocity.x += 1;
+        }
+
+        if (mousePos.y < panAreaPixels) {
+            panVelocity.y -= 1;
+        }
+        if (mousePos.y > this.root.gameHeight - panAreaPixels) {
+            panVelocity.y += 1;
+        }
+
+        this.center = this.center.add(
+            panVelocity.multiplyScalar(
+                ((0.5 * dt) / this.zoomLevel) * this.root.app.settings.getMovementSpeed()
+            )
+        );
+    }
+
+    /**
      * Updates the non user interaction zooming
      * @param {number} now Time now in seconds
      * @param {number} dt Delta time
@@ -875,6 +943,7 @@ export class Camera extends BasicSerializableObject {
                 this.zoomLevel = this.zoomLevel * fade + this.desiredZoom * (1 - fade);
                 assert(Number.isFinite(this.zoomLevel), "Zoom level is NaN after fade: " + this.zoomLevel);
             } else {
+                this.zoomLevel = this.desiredZoom;
                 this.desiredZoom = null;
             }
         }

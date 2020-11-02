@@ -1,12 +1,14 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { KEYMAPPINGS } from "../../key_action_mapper";
-import { THEME } from "../../theme";
-import { BaseHUDPart } from "../base_hud_part";
 import { Loader } from "../../../core/loader";
 import { lerp } from "../../../core/utils";
+import { SOUNDS } from "../../../platform/sound";
+import { KEYMAPPINGS } from "../../key_action_mapper";
+import { enumHubGoalRewards } from "../../tutorial_goals";
+import { BaseHUDPart } from "../base_hud_part";
 
+const copy = require("clipboard-copy");
 const wiresBackgroundDpi = 4;
 
 export class HUDWiresOverlay extends BaseHUDPart {
@@ -15,6 +17,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
     initialize() {
         // Probably not the best location, but the one which makes most sense
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.switchLayers).add(this.switchLayers, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.placement.copyWireValue).add(this.copyWireValue, this);
 
         this.generateTilePattern();
 
@@ -26,7 +29,12 @@ export class HUDWiresOverlay extends BaseHUDPart {
      */
     switchLayers() {
         if (this.root.currentLayer === "regular") {
-            this.root.currentLayer = "wires";
+            if (
+                this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers) ||
+                (G_IS_DEV && globalConfig.debug.allBuildingsUnlocked)
+            ) {
+                this.root.currentLayer = "wires";
+            }
         } else {
             this.root.currentLayer = "regular";
         }
@@ -51,7 +59,53 @@ export class HUDWiresOverlay extends BaseHUDPart {
 
     update() {
         const desiredAlpha = this.root.currentLayer === "wires" ? 1.0 : 0.0;
-        this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.12);
+
+        // On low performance, skip the fade
+        if (this.root.entityMgr.entities.length > 5000 || this.root.dynamicTickrate.averageFps < 50) {
+            this.currentAlpha = desiredAlpha;
+        } else {
+            this.currentAlpha = lerp(this.currentAlpha, desiredAlpha, 0.12);
+        }
+    }
+
+    /**
+     * Copies the wires value below the cursor
+     */
+    copyWireValue() {
+        if (this.root.currentLayer !== "wires") {
+            return;
+        }
+
+        const mousePos = this.root.app.mousePosition;
+        if (!mousePos) {
+            return;
+        }
+
+        const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
+        if (!contents) {
+            return;
+        }
+
+        let value = null;
+        if (contents.components.Wire) {
+            const network = contents.components.Wire.linkedNetwork;
+            if (network && network.hasValue()) {
+                value = network.currentValue;
+            }
+        }
+
+        if (contents.components.ConstantSignal) {
+            value = contents.components.ConstantSignal.signal;
+        }
+
+        if (value) {
+            copy(value.getAsCopyableKey());
+            this.root.soundProxy.playUi(SOUNDS.copy);
+        } else {
+            copy("");
+            this.root.soundProxy.playUiError();
+        }
     }
 
     /**

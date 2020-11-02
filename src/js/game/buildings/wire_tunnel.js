@@ -1,19 +1,12 @@
-import { Vector } from "../../core/vector";
-import { Entity } from "../entity";
-import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot } from "../root";
-import { WireTunnelComponent } from "../components/wire_tunnel";
 import { generateMatrixRotations } from "../../core/utils";
+import { Vector } from "../../core/vector";
+import { WireTunnelComponent } from "../components/wire_tunnel";
+import { Entity } from "../entity";
+import { MetaBuilding } from "../meta_building";
+import { GameRoot } from "../root";
+import { enumHubGoalRewards } from "../tutorial_goals";
 
-/** @enum {string} */
-export const enumWireTunnelVariants = {
-    coating: "coating",
-};
-
-const wireTunnelOverlayMatrices = {
-    [defaultBuildingVariant]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]),
-    [enumWireTunnelVariants.coating]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
-};
+const wireTunnelOverlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]);
 
 export class MetaWireTunnelBuilding extends MetaBuilding {
     constructor() {
@@ -28,8 +21,7 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        // @todo
-        return true;
+        return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers);
     }
 
     /**
@@ -40,19 +32,15 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-        return wireTunnelOverlayMatrices[variant][rotation];
+        return wireTunnelOverlayMatrix[rotation];
     }
 
-    getIsRotateable(variant) {
-        return variant !== defaultBuildingVariant;
+    getIsRotateable() {
+        return false;
     }
 
     getDimensions() {
         return new Vector(1, 1);
-    }
-
-    getAvailableVariants() {
-        return [defaultBuildingVariant, enumWireTunnelVariants.coating];
     }
 
     /** @returns {"wires"} **/
@@ -60,28 +48,11 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
         return "wires";
     }
 
-    getRotateAutomaticallyWhilePlacing() {
-        return true;
-    }
-
-    getStayInPlacementMode() {
-        return true;
-    }
-
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        entity.addComponent(new WireTunnelComponent({}));
-    }
-
-    /**
-     * @param {Entity} entity
-     * @param {number} rotationVariant
-     * @param {string} variant
-     */
-    updateVariants(entity, rotationVariant, variant) {
-        entity.components.WireTunnel.multipleDirections = variant === defaultBuildingVariant;
+        entity.addComponent(new WireTunnelComponent());
     }
 }

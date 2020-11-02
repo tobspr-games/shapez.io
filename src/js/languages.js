@@ -110,4 +110,18 @@ export const LANGUAGES = {
         code: "sv",
         region: "",
     },
+
+    "da": {
+        name: "Dansk",
+        data: require("./built-temp/base-da.json"),
+        code: "da",
+        region: "",
+    },
+
+    "hu": {
+        name: "Magyar",
+        data: require("./built-temp/base-hu.json"),
+        code: "hu",
+        region: "",
+    },
 };

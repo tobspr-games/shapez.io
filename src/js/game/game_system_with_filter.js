@@ -6,6 +6,7 @@ import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
+import { globalConfig } from "../core/config";
 
 export class GameSystemWithFilter extends GameSystem {
     /**
@@ -44,7 +45,11 @@ export class GameSystemWithFilter extends GameSystem {
             }
         }
 
-        assert(this.allEntities.indexOf(entity) < 0, "entity already in list: " + entity);
+        // This is slow!
+        if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
+            assert(this.allEntities.indexOf(entity) < 0, "entity already in list: " + entity);
+        }
+
         this.internalRegisterEntity(entity);
     }
 
@@ -83,15 +88,16 @@ export class GameSystemWithFilter extends GameSystem {
     }
 
     refreshCaches() {
-        this.allEntities.sort((a, b) => a.uid - b.uid);
-
         // Remove all entities which are queued for destroy
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             if (entity.queuedForDestroy || entity.destroyed) {
                 this.allEntities.splice(i, 1);
+                i -= 1;
             }
         }
+
+        this.allEntities.sort((a, b) => a.uid - b.uid);
     }
 
     /**

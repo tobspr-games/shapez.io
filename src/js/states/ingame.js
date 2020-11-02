@@ -64,9 +64,15 @@ export class InGameState extends GameState {
         this.loadingOverlay = null;
 
         /** @type {Savegame} */
-        this.savegame;
+        this.savegame = null;
 
         this.boundInputFilter = this.filterInput.bind(this);
+
+        /**
+         * Whether we are currently saving the game
+         * @TODO: This doesn't realy fit here
+         */
+        this.currentSavePromise = null;
     }
 
     /**
@@ -279,14 +285,10 @@ export class InGameState extends GameState {
      */
     stage7Warmup() {
         if (this.switchStage(stages.s7_warmup)) {
-            if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
-                this.warmupTimeSeconds = 0.05;
+            if (this.creationPayload.fastEnter) {
+                this.warmupTimeSeconds = globalConfig.warmupTimeSecondsFast;
             } else {
-                if (this.creationPayload.fastEnter) {
-                    this.warmupTimeSeconds = globalConfig.warmupTimeSecondsFast;
-                } else {
-                    this.warmupTimeSeconds = globalConfig.warmupTimeSecondsRegular;
-                }
+                this.warmupTimeSeconds = globalConfig.warmupTimeSecondsRegular;
             }
         }
     }
@@ -427,12 +429,26 @@ export class InGameState extends GameState {
             return Promise.resolve();
         }
 
-        // First update the game data
+        if (this.currentSavePromise) {
+            logger.warn("Skipping double save and returning same promise");
+            return this.currentSavePromise;
+        }
         logger.log("Starting to save game ...");
-        this.core.root.signals.gameSaved.dispatch();
         this.savegame.updateData(this.core.root);
-        return this.savegame.writeSavegameAndMetadata().catch(err => {
-            logger.warn("Failed to save:", err);
-        });
+
+        this.currentSavePromise = this.savegame
+            .writeSavegameAndMetadata()
+            .catch(err => {
+                // Catch errors
+                logger.warn("Failed to save:", err);
+            })
+            .then(() => {
+                // Clear promise
+                logger.log("Saved!");
+                this.core.root.signals.gameSaved.dispatch();
+                this.currentSavePromise = null;
+            });
+
+        return this.currentSavePromise;
     }
 }

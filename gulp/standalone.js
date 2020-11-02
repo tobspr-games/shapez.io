@@ -1,8 +1,10 @@
+require("colors");
 const packager = require("electron-packager");
 const path = require("path");
 const { getVersion } = require("./buildutils");
 const fs = require("fs");
 const fse = require("fs-extra");
+const buildutils = require("./buildutils");
 const execSync = require("child_process").execSync;
 
 function gulptasksStandalone($, gulp) {
@@ -46,6 +48,20 @@ function gulptasksStandalone($, gulp) {
         cb();
     });
 
+    gulp.task("standalone.prepareVDF", cb => {
+        const hash = buildutils.getRevision();
+
+        const steampipeDir = path.join(__dirname, "steampipe", "scripts");
+        const templateContents = fs
+            .readFileSync(path.join(steampipeDir, "app.vdf.template"), { encoding: "utf-8" })
+            .toString();
+
+        const convertedContents = templateContents.replace("$DESC$", "Commit " + hash);
+        fs.writeFileSync(path.join(steampipeDir, "app.vdf"), convertedContents);
+
+        cb();
+    });
+
     gulp.task("standalone.prepare.minifyCode", () => {
         return gulp.src(path.join(electronBaseDir, "*.js")).pipe(gulp.dest(tempDestBuildDir));
     });
@@ -80,8 +96,9 @@ function gulptasksStandalone($, gulp) {
      * @param {'win32'|'linux'|'darwin'} platform
      * @param {'x64'|'ia32'} arch
      * @param {function():void} cb
+     * @param {boolean=} isRelease
      */
-    function packageStandalone(platform, arch, cb) {
+    function packageStandalone(platform, arch, cb, isRelease = true) {
         const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
 
         packager({
@@ -99,6 +116,21 @@ function gulptasksStandalone($, gulp) {
             overwrite: true,
             appBundleId: "io.shapez.standalone",
             appCategoryType: "public.app-category.games",
+            ...(isRelease &&
+                platform === "darwin" && {
+                    osxSign: {
+                        "identity": process.env.SHAPEZ_CLI_APPLE_CERT_NAME,
+                        "hardened-runtime": true,
+                        "hardenedRuntime": true,
+                        "entitlements": "entitlements.plist",
+                        "entitlements-inherit": "entitlements.plist",
+                        "signature-flags": "library",
+                    },
+                    osxNotarize: {
+                        appleId: process.env.SHAPEZ_CLI_APPLE_ID,
+                        appleIdPassword: "@keychain:SHAPEZ_CLI_APPLE_ID",
+                    },
+                }),
         }).then(
             appPaths => {
                 console.log("Packages created:", appPaths);
@@ -123,7 +155,15 @@ function gulptasksStandalone($, gulp) {
                         fs.chmodSync(path.join(appPath, "play.sh"), 0o775);
                     }
 
-                    if (platform === "darwin") {
+                    if (process.platform === "win32" && platform === "darwin") {
+                        console.warn(
+                            "Cross-building for macOS on Windows: dereferencing symlinks.\n".red +
+                                "This will nearly double app size and make code signature invalid. Sorry!\n"
+                                    .red.bold +
+                                "For more information, see " +
+                                "https://github.com/electron/electron-packager/issues/71".underline
+                        );
+
                         // Clear up framework folders
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
@@ -175,6 +215,9 @@ function gulptasksStandalone($, gulp) {
     gulp.task("standalone.package.prod.linux64", cb => packageStandalone("linux", "x64", cb));
     gulp.task("standalone.package.prod.linux32", cb => packageStandalone("linux", "ia32", cb));
     gulp.task("standalone.package.prod.darwin64", cb => packageStandalone("darwin", "x64", cb));
+    gulp.task("standalone.package.prod.darwin64.unsigned", cb =>
+        packageStandalone("darwin", "x64", cb, false)
+    );
 
     gulp.task(
         "standalone.package.prod",

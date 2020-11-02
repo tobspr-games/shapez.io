@@ -49,7 +49,10 @@
                 @include S(width, 12px);
                 @include S(height, 12px);
                 display: inline-block;
-                background: uiResource("icons/help.png") center center / 95% no-repeat;
+                & {
+                    /* @load-async */
+                    background: uiResource("icons/help.png") center center / 95% no-repeat;
+                }
             }
         }
 

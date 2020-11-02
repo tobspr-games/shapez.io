@@ -5,9 +5,6 @@ import { lerp } from "../../core/utils";
 
 /* dev:start */
 import trailerPoints from "./trailer_points";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { MetaBeltBaseBuilding } from "../buildings/belt_base";
-import { MinerComponent } from "../components/miner";
 
 const tickrate = 1 / 165;
 

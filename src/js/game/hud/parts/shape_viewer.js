@@ -48,6 +48,10 @@ export class HUDShapeViewer extends BaseHUDPart {
         this.close();
     }
 
+    isBlockingOverlay() {
+        return this.visible;
+    }
+
     /**
      * Called when the copying of a key was requested
      */
@@ -63,7 +67,6 @@ export class HUDShapeViewer extends BaseHUDPart {
      */
     close() {
         this.visible = false;
-        document.body.classList.remove("ingameDialogOpen");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
@@ -74,7 +77,6 @@ export class HUDShapeViewer extends BaseHUDPart {
      */
     renderForShape(definition) {
         this.visible = true;
-        document.body.classList.add("ingameDialogOpen");
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
         removeAllChildren(this.renderArea);
@@ -118,13 +120,6 @@ export class HUDShapeViewer extends BaseHUDPart {
                 }
             }
         }
-    }
-
-    /**
-     * Cleans up everything
-     */
-    cleanup() {
-        document.body.classList.remove("ingameDialogOpen");
     }
 
     update() {

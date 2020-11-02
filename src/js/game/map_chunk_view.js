@@ -88,32 +88,35 @@ export class MapChunkView extends MapChunk {
         });
 
         const dims = globalConfig.mapChunkWorldSize;
+        const extrude = 0.05;
 
         // Draw chunk "pixel" art
         parameters.context.imageSmoothingEnabled = false;
         drawSpriteClipped({
             parameters,
             sprite,
-            x: this.x * dims,
-            y: this.y * dims,
-            w: dims,
-            h: dims,
+            x: this.x * dims - extrude,
+            y: this.y * dims - extrude,
+            w: dims + 2 * extrude,
+            h: dims + 2 * extrude,
             originalW: overlaySize,
             originalH: overlaySize,
         });
 
         parameters.context.imageSmoothingEnabled = true;
+        const resourcesScale = this.root.app.settings.getAllSettings().mapResourcesScale;
 
         // Draw patch items
-        if (this.root.currentLayer === "regular") {
+        if (this.root.currentLayer === "regular" && resourcesScale > 0.05) {
+            const diameter = (70 / Math.pow(parameters.zoomLevel, 0.35)) * (0.2 + 2 * resourcesScale);
+
             for (let i = 0; i < this.patches.length; ++i) {
                 const patch = this.patches[i];
-
-                const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
-                const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
-                const diameter = Math.min(80, 30 / parameters.zoomLevel);
-
-                patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
+                if (patch.item.getItemType() === "shape") {
+                    const destX = this.x * dims + patch.pos.x * globalConfig.tileSize;
+                    const destY = this.y * dims + patch.pos.y * globalConfig.tileSize;
+                    patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
+                }
             }
         }
     }
@@ -169,7 +172,10 @@ export class MapChunkView extends MapChunk {
                             );
                         }
 
-                        context.fillStyle = metaBuilding.getSilhouetteColor();
+                        context.fillStyle = metaBuilding.getSilhouetteColor(
+                            data.variant,
+                            data.rotationVariant
+                        );
                         for (let dx = 0; dx < 3; ++dx) {
                             for (let dy = 0; dy < 3; ++dy) {
                                 const isFilled = overlayMatrix[dx + dy * 3];
@@ -186,7 +192,10 @@ export class MapChunkView extends MapChunk {
 
                         continue;
                     } else {
-                        context.fillStyle = metaBuilding.getSilhouetteColor();
+                        context.fillStyle = metaBuilding.getSilhouetteColor(
+                            data.variant,
+                            data.rotationVariant
+                        );
                         context.fillRect(
                             x * CHUNK_OVERLAY_RES,
                             y * CHUNK_OVERLAY_RES,
@@ -255,7 +264,8 @@ export class MapChunkView extends MapChunk {
             data.variant,
             entity
         );
-        context.fillStyle = overrideColor || metaBuilding.getSilhouetteColor();
+        context.fillStyle =
+            overrideColor || metaBuilding.getSilhouetteColor(data.variant, data.rotationVariant);
         if (overlayMatrix) {
             for (let dx = 0; dx < 3; ++dx) {
                 for (let dy = 0; dy < 3; ++dy) {

@@ -1,14 +1,9 @@
+import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
-import { Loader } from "../core/loader";
-import { createLogger } from "../core/logging";
+import { findNiceIntegerValue } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
-import { findNiceIntegerValue } from "../core/utils";
-import { blueprintShape } from "./upgrades";
-import { globalConfig } from "../core/config";
-
-const logger = createLogger("blueprint");
 
 export class Blueprint {
     /**
@@ -44,7 +39,7 @@ export class Blueprint {
             const entity = root.entityMgr.findByUid(uids[i]);
             assert(entity, "Entity for blueprint not found:" + uids[i]);
 
-            const clone = entity.duplicateWithoutContents();
+            const clone = entity.clone();
             newEntities.push(clone);
 
             const pos = entity.components.StaticMapEntity.getTileSpaceBounds().getCenter();
@@ -143,7 +138,7 @@ export class Blueprint {
      * @param {GameRoot} root
      */
     canAfford(root) {
-        return root.hubGoals.getShapesStoredByKey(blueprintShape) >= this.getCost();
+        return root.hubGoals.getShapesStoredByKey(root.gameMode.getBlueprintShapeKey()) >= this.getCost();
     }
 
     /**
@@ -160,7 +155,7 @@ export class Blueprint {
                     continue;
                 }
 
-                const clone = entity.duplicateWithoutContents();
+                const clone = entity.clone();
                 clone.components.StaticMapEntity.origin.addInplace(tile);
                 root.logic.freeEntityAreaBeforeBuild(clone);
                 root.map.placeStaticEntity(clone);

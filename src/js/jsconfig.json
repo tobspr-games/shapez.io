@@ -2,5 +2,6 @@
     "compilerOptions": {
         "target": "es6",
         "checkJs": true
-    }
+    },
+    "include": ["./**/*.js"]
 }

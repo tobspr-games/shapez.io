@@ -27,86 +27,103 @@ function gulptasksHTML($, gulp, buildFolder) {
         return gulp
             .src("../src/html/" + (standalone ? "index.standalone.html" : "index.html"))
             .pipe(
-                $.dom(/** @this {Document} **/ function () {
-                    const document = this;
+                $.dom(
+                    /** @this {Document} **/ function () {
+                        const document = this;
 
-                    // Preconnect to api
-                    const prefetchLink = document.createElement("link");
-                    prefetchLink.rel = "preconnect";
-                    prefetchLink.href = apiUrl;
-                    prefetchLink.setAttribute("crossorigin", "anonymous");
-                    document.head.appendChild(prefetchLink);
+                        // Preconnect to api
+                        const prefetchLink = document.createElement("link");
+                        prefetchLink.rel = "preconnect";
+                        prefetchLink.href = apiUrl;
+                        prefetchLink.setAttribute("crossorigin", "anonymous");
+                        document.head.appendChild(prefetchLink);
 
-                    // Append css
-                    const css = document.createElement("link");
-                    css.rel = "stylesheet";
-                    css.type = "text/css";
-                    css.media = "none";
-                    css.setAttribute("onload", "this.media='all'");
-                    css.href = cachebust("main.css");
-                    if (integrity) {
-                        css.setAttribute(
-                            "integrity",
-                            computeIntegrityHash(path.join(buildFolder, "main.css"))
-                        );
-                    }
-                    document.head.appendChild(css);
+                        // Append css
+                        const css = document.createElement("link");
+                        css.rel = "stylesheet";
+                        css.type = "text/css";
+                        css.media = "none";
+                        css.setAttribute("onload", "this.media='all'");
+                        css.href = cachebust("main.css");
+                        if (integrity) {
+                            css.setAttribute(
+                                "integrity",
+                                computeIntegrityHash(path.join(buildFolder, "main.css"))
+                            );
+                        }
+                        document.head.appendChild(css);
 
-                    if (app) {
-                        // Append cordova link
-                        const cdv = document.createElement("script");
-                        cdv.src = "cordova.js";
-                        cdv.type = "text/javascript";
-                        document.head.appendChild(cdv);
-                    }
+                        // Append async css
+                        // const asyncCss = document.createElement("link");
+                        // asyncCss.rel = "stylesheet";
+                        // asyncCss.type = "text/css";
+                        // asyncCss.media = "none";
+                        // asyncCss.setAttribute("onload", "this.media='all'");
+                        // asyncCss.href = cachebust("async-resources.css");
+                        // if (integrity) {
+                        //     asyncCss.setAttribute(
+                        //         "integrity",
+                        //         computeIntegrityHash(path.join(buildFolder, "async-resources.css"))
+                        //     );
+                        // }
+                        // document.head.appendChild(asyncCss);
 
-                    // Google analytics
-                    if (analytics) {
-                        const tagManagerScript = document.createElement("script");
-                        tagManagerScript.src = "https://www.googletagmanager.com/gtag/js?id=UA-165342524-1";
-                        tagManagerScript.setAttribute("async", "");
-                        document.head.appendChild(tagManagerScript);
+                        if (app) {
+                            // Append cordova link
+                            const cdv = document.createElement("script");
+                            cdv.src = "cordova.js";
+                            cdv.type = "text/javascript";
+                            document.head.appendChild(cdv);
+                        }
 
-                        const initScript = document.createElement("script");
-                        initScript.textContent = `
+                        // Google analytics
+                        if (analytics) {
+                            const tagManagerScript = document.createElement("script");
+                            tagManagerScript.src =
+                                "https://www.googletagmanager.com/gtag/js?id=UA-165342524-1";
+                            tagManagerScript.setAttribute("async", "");
+                            document.head.appendChild(tagManagerScript);
+
+                            const initScript = document.createElement("script");
+                            initScript.textContent = `
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
                         gtag('config', 'UA-165342524-1', { anonymize_ip: true });
                         `;
-                        document.head.appendChild(initScript);
+                            document.head.appendChild(initScript);
 
-                        const abTestingScript = document.createElement("script");
-                        abTestingScript.setAttribute(
-                            "src",
-                            "https://www.googleoptimize.com/optimize.js?id=OPT-M5NHCV7"
-                        );
-                        abTestingScript.setAttribute("async", "");
-                        document.head.appendChild(abTestingScript);
-                    }
+                            const abTestingScript = document.createElement("script");
+                            abTestingScript.setAttribute(
+                                "src",
+                                "https://www.googleoptimize.com/optimize.js?id=OPT-M5NHCV7"
+                            );
+                            abTestingScript.setAttribute("async", "");
+                            document.head.appendChild(abTestingScript);
+                        }
 
-                    // Do not need to preload in app or standalone
-                    if (!hasLocalFiles) {
-                        // Preload essentials
-                        const preloads = ["fonts/GameFont.woff2"];
+                        // Do not need to preload in app or standalone
+                        if (!hasLocalFiles) {
+                            // Preload essentials
+                            const preloads = ["fonts/GameFont.woff2"];
 
-                        preloads.forEach(src => {
-                            const preloadLink = document.createElement("link");
-                            preloadLink.rel = "preload";
-                            preloadLink.href = cachebust("res/" + src);
-                            if (src.endsWith(".woff2")) {
-                                preloadLink.setAttribute("crossorigin", "anonymous");
-                                preloadLink.setAttribute("as", "font");
-                            } else {
-                                preloadLink.setAttribute("as", "image");
-                            }
-                            document.head.appendChild(preloadLink);
-                        });
-                    }
+                            preloads.forEach(src => {
+                                const preloadLink = document.createElement("link");
+                                preloadLink.rel = "preload";
+                                preloadLink.href = cachebust("res/" + src);
+                                if (src.endsWith(".woff2")) {
+                                    preloadLink.setAttribute("crossorigin", "anonymous");
+                                    preloadLink.setAttribute("as", "font");
+                                } else {
+                                    preloadLink.setAttribute("as", "image");
+                                }
+                                document.head.appendChild(preloadLink);
+                            });
+                        }
 
-                    const loadingSvg = `background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46YXV0bztiYWNrZ3JvdW5kOjAgMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgZGlzcGxheT0iYmxvY2siPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM5Mzc0NyIgc3Ryb2tlLXdpZHRoPSIzIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTk3LjkyMDMzNzE3NjE1Njk4IDY3Ljk3MzQ0NTcyNTM4NTY2IiB0cmFuc2Zvcm09InJvdGF0ZSg0OC4yNjUgNTAgNTApIj48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGR1cj0iNS41NTU1NTU1NTU1NTU1NTVzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIi8+PC9jaXJjbGU+PC9zdmc+")`;
+                        const loadingSvg = `background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46YXV0bztiYWNrZ3JvdW5kOjAgMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgZGlzcGxheT0iYmxvY2siPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM5Mzc0NyIgc3Ryb2tlLXdpZHRoPSIzIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTk3LjkyMDMzNzE3NjE1Njk4IDY3Ljk3MzQ0NTcyNTM4NTY2IiB0cmFuc2Zvcm09InJvdGF0ZSg0OC4yNjUgNTAgNTApIj48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGR1cj0iNS41NTU1NTU1NTU1NTU1NTVzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIi8+PC9jaXJjbGU+PC9zdmc+")`;
 
-                    const loadingCss = `
+                        const loadingCss = `
                     @font-face {
                         font-family: 'GameFont';
                         font-style: normal;
@@ -158,52 +175,52 @@ function gulptasksHTML($, gulp, buildFolder) {
                     }
                 `;
 
-                    const style = document.createElement("style");
-                    style.setAttribute("type", "text/css");
-                    style.textContent = loadingCss;
-                    document.head.appendChild(style);
+                        const style = document.createElement("style");
+                        style.setAttribute("type", "text/css");
+                        style.textContent = loadingCss;
+                        document.head.appendChild(style);
 
-                    // Append loader, but not in standalone (directly include bundle there)
-                    if (standalone) {
-                        const bundleScript = document.createElement("script");
-                        bundleScript.type = "text/javascript";
-                        bundleScript.src = "bundle.js";
-                        if (integrity) {
-                            bundleScript.setAttribute(
-                                "integrity",
-                                computeIntegrityHash(path.join(buildFolder, "bundle.js"))
-                            );
-                        }
-                        document.head.appendChild(bundleScript);
-                    } else {
-                        const loadJs = document.createElement("script");
-                        loadJs.type = "text/javascript";
-                        let scriptContent = "";
-                        scriptContent += `var bundleSrc = '${cachebust("bundle.js")}';\n`;
-                        scriptContent += `var bundleSrcTranspiled = '${cachebust(
-                            "bundle-transpiled.js"
-                        )}';\n`;
-
-                        if (integrity) {
-                            scriptContent +=
-                                "var bundleIntegrity = '" +
-                                computeIntegrityHash(path.join(buildFolder, "bundle.js")) +
-                                "';\n";
-                            scriptContent +=
-                                "var bundleIntegrityTranspiled = '" +
-                                computeIntegrityHash(path.join(buildFolder, "bundle-transpiled.js")) +
-                                "';\n";
+                        // Append loader, but not in standalone (directly include bundle there)
+                        if (standalone) {
+                            const bundleScript = document.createElement("script");
+                            bundleScript.type = "text/javascript";
+                            bundleScript.src = "bundle.js";
+                            if (integrity) {
+                                bundleScript.setAttribute(
+                                    "integrity",
+                                    computeIntegrityHash(path.join(buildFolder, "bundle.js"))
+                                );
+                            }
+                            document.head.appendChild(bundleScript);
                         } else {
-                            scriptContent += "var bundleIntegrity = null;\n";
-                            scriptContent += "var bundleIntegrityTranspiled = null;\n";
+                            const loadJs = document.createElement("script");
+                            loadJs.type = "text/javascript";
+                            let scriptContent = "";
+                            scriptContent += `var bundleSrc = '${cachebust("bundle.js")}';\n`;
+                            scriptContent += `var bundleSrcTranspiled = '${cachebust(
+                                "bundle-transpiled.js"
+                            )}';\n`;
+
+                            if (integrity) {
+                                scriptContent +=
+                                    "var bundleIntegrity = '" +
+                                    computeIntegrityHash(path.join(buildFolder, "bundle.js")) +
+                                    "';\n";
+                                scriptContent +=
+                                    "var bundleIntegrityTranspiled = '" +
+                                    computeIntegrityHash(path.join(buildFolder, "bundle-transpiled.js")) +
+                                    "';\n";
+                            } else {
+                                scriptContent += "var bundleIntegrity = null;\n";
+                                scriptContent += "var bundleIntegrityTranspiled = null;\n";
+                            }
+
+                            scriptContent += fs.readFileSync("./bundle-loader.js").toString();
+                            loadJs.textContent = scriptContent;
+                            document.head.appendChild(loadJs);
                         }
 
-                        scriptContent += fs.readFileSync("./bundle-loader.js").toString();
-                        loadJs.textContent = scriptContent;
-                        document.head.appendChild(loadJs);
-                    }
-
-                    const bodyContent = `
+                        const bodyContent = `
                 <div id="ll_fp">_</div>
                 <div id="ll_p">
                     <span></span>
@@ -211,8 +228,9 @@ function gulptasksHTML($, gulp, buildFolder) {
                 </div >
                 `;
 
-                    document.body.innerHTML = bodyContent;
-                })
+                        document.body.innerHTML = bodyContent;
+                    }
+                )
             )
             .pipe(
                 $.htmlmin({
