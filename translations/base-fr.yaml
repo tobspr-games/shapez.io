@@ -258,7 +258,7 @@ ingame:
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
         gameSaved: Votre partie a bien été sauvegardée.
-        freeplayLevelComplete: Niveau <level> terminer !
+        freeplayLevelComplete: Niveau <level> terminé !
     shop:
         title: Améliorations
         buttonUnlock: Améliorer
@@ -461,7 +461,7 @@ buildings:
     stacker:
         default:
             name: Assembleur
-            description: Assemble deux formes. Si elles ne peuvent pas être assembler,
+            description: Assemblées deux formes. Si elles ne peuvent pas être assemblées,
                 la forme de droite est placée sur la forme de gauche.
     mixer:
         default:
@@ -589,7 +589,7 @@ buildings:
             name: Assembleur virtuel
             description: Assemble virtuellement la forme de droite sur celle de gauche.
         painter:
-            name: Station de peinture virtuel
+            name: Station de peinture virtuelle
             description: Peint virtuellement la forme du bas avec la couleur de droite.
     item_producer:
         default:
@@ -610,9 +610,9 @@ storyRewards:
             degrés vers la droite.
     reward_painter:
         title: Peinture
-        desc: "La <strong>station de peinture</strong> a été débloqué. Extrayez
-            des pigments decouleur (comme vous le faites avec les formes) et
-            combinez-les avec une forme dans une station pour les peindres !
+        desc: "La <strong>station de peinture</strong> a été débloquée. Extrayez
+            des pigments de couleur (comme vous le faites avec les formes) et
+            combinez-les avec une forme dans une station pour les peindre !
             <br><br>PS : Si vous êtes daltonien, il y a un <strong>mode
             daltonien</strong> paramétrable dans les préférences !"
     reward_mixer:
@@ -621,9 +621,9 @@ storyRewards:
             utilisant <strong>la synthèse additive des couleurs</strong> avec ce
             bâtiment !
     reward_stacker:
-        title: Assembler
-        desc: Vous pouvez maintenant assembler deux formes avec le
-            <strong>combineur</strong> ! Les deux entrées sont assembler,si
+        title: Assembleur
+        desc: Vous pouvez maintenant assemblées deux formes avec le
+            <strong>combineur</strong> ! Les deux entrées sont assemblées,si
             elles peuvent être mises l’une à côté de l’autre, elles sont
             <strong>fusionnées</strong>, sinon, la forme de droite est
             <strong>placée au-dessus</strong> de la forme de gauche.
