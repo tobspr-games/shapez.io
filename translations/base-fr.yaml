@@ -556,7 +556,7 @@ buildings:
                 aussi avec un signal booléen.
     display:
         default:
-            name: Affichage
+            name: Afficheur
             description: Connectez un signal pour l’afficher. Ça peut être une forme, une
                 couleur, ou un booléen.
     reader:
@@ -715,8 +715,8 @@ storyRewards:
             connecter un signal booléen (1 / 0) pour l’activer ou le désactiver
             complètement.
     reward_display:
-        title: Affichage
-        desc: "Vous avez débloqué l’<strong>affichage</strong> ! Connectez-y un signal
+        title: Afficheur
+        desc: "Vous avez débloqué l’<strong>afficheur</strong> ! Connectez-y un signal
             sur le calque de câblage pour afficher une couleur, une forme ou un
             booléen !<br><br> PS : Avez-vous remarqué que le lecteur de débit et
             le stockage émettent le dernier objet vu ? Essayez de le montrer sur
