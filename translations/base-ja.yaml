@@ -177,13 +177,13 @@ dialogs:
         title: セーブデータの名前を変更
         desc: セーブデータの名前を変更することができます
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: チュートリアル視聴可能
+        desc: このレベルで利用できるチュートリアルの動画があります！
+            見ますか？
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: チュートリアル視聴可能
+        desc: このレベルで利用できるチュートリアルの動画がありますが、それは
+            英語です。見ますか？
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -222,10 +222,10 @@ ingame:
             speed: スピード
             range: レンジ
             storage: ストレージ
-            oneItemPerSecond: 1 アイテム / 秒
-            itemsPerSecond: <x> アイテム / 秒
+            oneItemPerSecond: 1アイテム/秒
+            itemsPerSecond: <x>アイテム/秒
             itemsPerSecondDouble: (x2)
-            tiles: <x> タイル
+            tiles: <x>タイル
     levelCompleteNotification:
         levelTitle: レベル <level>
         completed: 完了
@@ -287,34 +287,32 @@ ingame:
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
                 キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "次に、<strong>切断機</strong>を設置し、円を
+                2分割します！<br><br> 追記: 切断機はそれの向きに関わらず、<strong>縦の線</strong>で切断します。"
+            2_2_place_trash: 切断機は<strong>詰まる</strong>場合があります!<br><br>
+                <strong>ゴミ箱</strong>を利用して、不必要な部品を廃棄することができます。
+            2_3_more_cutters: "いいですね！<strong>更に2つ以上の切断機</strong>を設置して
+                処理をスピードアップさせましょう！<br><br> 追記: <strong>0から9
+                のホットキー</strong>を使用すると素早く部品にアクセスできます。"
+            3_1_rectangles: "それでは四角形を抽出しましょう！<strong>4つの抽出機を
+                作成</strong>してそれをハブに接続します。<br><br> 追記:
+                <strong>SHIFT</strong>を押しながらベルトを引くと
+                ベルトプランナーが有効になります！"
+            21_1_place_quad_painter: <strong>四色着色機</strong>を設置して、
+                <strong>円</strong>、<strong>白</strong>そして
+                <strong>赤</strong>を抽出します！
+            21_2_switch_to_wires: <strong>E</strong>を押すとワイヤレイヤに
+                切り替えできます！<br><br>そして<strong>4つの入力全てを</strong>
+                ケーブルで接続します！
+            21_3_place_button: いいね！次に<strong>スイッチ</strong>を設置して
+                そのワイヤに接続します！
+            21_4_press_button: "スイッチを押して<strong>真らしい信号を
+                発する</strong>ようにして、着色機を有効化します。<br><br> 追記: 全ての
+                入力を接続する必要はありません！2つだけ接続してみてください。"
     connectedMiners:
         one_miner: 1個の抽出機
         n_miners: <amount>個の抽出機
-        limited_items: <max_throughput>に制限されます
+        limited_items: <max_throughput>に制限
     watermark:
         title: デモバージョン
         desc: Steamバージョンの特典を確認するには、ここをクリックしてください！
@@ -530,7 +528,8 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
+        desc:
+            <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
             - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
@@ -549,9 +548,9 @@ storyRewards:
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
     reward_balancer:
         title: 分配機/合流機
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: 多機能な<strong>分配機/合流機</strong>が利用可能になりました - より
+            大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、
+            分配</strong>できます！
     reward_tunnel:
         title: トンネル
         desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
@@ -561,10 +560,10 @@ storyRewards:
             反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "<strong>連鎖抽出機</strong>が利用可能になりました！他の
+            他の抽出機に<strong>出力を渡す</strong>ことができるので、
+            資源の抽出がより効率的になります！<br><br> 補足: ツールバーの
+            旧い抽出機が置き換えられました！"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
@@ -590,44 +589,49 @@ storyRewards:
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: 余剰の貯蓄
-        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+        desc:
+            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
     reward_blueprints:
         title: ブループリント
-        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！　範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
+        desc: >-
+            工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！
+            範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
     reward_rotater_180:
         title: 180度の回転
         desc: <strong>回転機</strong>のバリエーションが利用可能になりました！ 180度の回転ができるようになります！(サプライズ！ :D)
     reward_wires_painter_and_levers:
         title: ワイヤ＆着色機(四分割)
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "<strong>ワイヤレイヤ</strong>が利用可能になりました: これは通常の
+            レイヤーの上にある別のレイヤであり、多くの新しい要素が
+            あります！<br><br> 最初に、<strong>四色
+            着色機</strong>が利用可能になりました - 着色するスロットをワイヤレイヤで
+            接続します！<br><br> ワイヤレイヤに切り替えるには、
+            <strong>E</strong>を押します。 <br><br> 補足: 設定で<strong>ヒントを有効にする</strong>と、
+            ワイヤのチュートリアルが有効になります。"
     reward_filter:
         title: アイテムフィルタ
-        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
+        desc:
+            <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
             アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
             どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_display:
         title: ディスプレイ
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        desc: "<strong>ディスプレイ</strong>が利用可能になりました - ワイヤレイヤで
+            信号を接続することで、その内容を視認することができます！<br><br> 補足: ベルトリーダーとストレージが
+            最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに
+            表示してみてください！"
     reward_constant_signal:
         title: 定数信号
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 or 0).
+        desc: <strong>定数信号</strong>がワイヤレイヤで
+            利用可能になりました！これは例えば<strong>アイテムフィルタ</strong>に接続する
+            場合に便利です。<br><br> 定数信号は
+            <strong>形状</strong>、<strong>色</strong>または
+            <strong>真偽値</strong>(1か0)を発信できます。
     reward_logic_gates:
         title: 論理ゲート
-        desc: <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
+        desc:
+            <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
             AND, OR, XOR and
             NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
@@ -639,7 +643,8 @@ storyRewards:
             - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc: "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+        desc:
+            "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
             生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になりま\
             す！"
     no_reward_freeplay:
@@ -705,7 +710,7 @@ settings:
                 regular: 普通
                 fast: 速い
                 super_fast: 超速
-                extremely_fast: ちょっぱや
+                extremely_fast: 極速
         language:
             title: 言語
             description: 言語を変更します。すべての翻訳はユーザーからの協力で成り立っており、まだ完全には完了していない可能性があります！
@@ -766,7 +771,8 @@ settings:
             description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description:
+                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)
@@ -785,13 +791,12 @@ settings:
             title: マウスで画面を移動
             description: 画面の端にカーソルを合わせることで移動できます。移動速度を設定することで、速度を変更できます。
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: カーソルに向かってズーム
+            description: 有効にすると、カーソルの方に向かってズームします。
+                無効にすると、画面の中央に向かってズームします。
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: 資源アイコンのサイズ
+            description: ズームアウトしたときの図形のサイズを調節します。
 keybindings:
     title: キー設定
     hint: "Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。"
@@ -836,7 +841,7 @@ keybindings:
         storage: ストレージ
         wire: ワイヤ
         constant_signal: 定値信号
-        logic_gate: Logic Gate
+        logic_gate: 論理ゲート
         lever: スイッチ
         filter: アイテムフィルタ
         wire_tunnel: 交差ワイヤ
@@ -849,7 +854,7 @@ keybindings:
         item_producer: なんでも抽出機(サンドボックス)
         pipette: スポイト
         rotateWhilePlacing: 回転
-        rotateInverseModifier: "Modifier: 逆時計回りにする"
+        rotateInverseModifier: "変更: 逆時計回りにする"
         cycleBuildingVariants: バリエーション変更
         confirmMassDelete: 複数選択削除の確認
         pasteLastBlueprint: 直前のブループリントをペーストする

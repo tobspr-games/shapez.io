@@ -368,7 +368,7 @@ ingame:
                 title: ∞ Savegames
                 desc: Zo veel je maar wilt!
             upgrades:
-                title: 20 Upgrade Levels
+                title: ∞ Upgrade Levels
                 desc: Deze demo heeft er enkel 5!
             markers:
                 title: ∞ Markeringen
@@ -1002,7 +1002,8 @@ about:
 
         Als je ook bij wil dragen, ga dan naar <a href="<githublink>" target="_blank">shapez.io op github</a>.<br><br>
 
-        Dit spel was niet mogelijk geweest zonder de geweldige Discord community rondom mijn spellen - Je zou eens lid moeten worden van de <a href="<discordlink>" target="_blank">Discord server</a> (engelstalig)!<br><br>
+        Dit spel was niet mogelijk geweest zonder de geweldige Discord community rondom mijn spellen - Je zou eens lid moeten worden van de
+        <a href="<discordlink>" target="_blank">Discord server</a> (engelstalig)!<br><br>
 
         De muziek is gemaakt door <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hij is geweldig.<br><br>
 

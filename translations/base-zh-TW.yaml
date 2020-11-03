@@ -5,14 +5,14 @@ steamPage:
         你喜歡自動化生產的遊戲類型嗎？那你來對地方了！
         Shapez.io 是一款建造工廠、自動化生產與組合圖形的休閒遊戲。
         每當玩家不斷晉級，形狀會越來越複雜，你的工廠將在一個無邊際的地圖上不斷擴展。
-        除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不段地擴張！
+        除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不斷地擴張！
         遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。
         玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
     title_advantages: 單機版優點
     advantages:
-        - <b>12 個新關卡</b> （總共有26關）
-        - <b>18 個新建築</b> 幫助玩家自動化整個工廠！
-        - <b>20 個升級</b> 讓遊玩時間更久！
+        - <b>12個新關卡</b> （總共有26關）
+        - <b>18個新建築</b> 幫助玩家自動化整個工廠！
+        - <b>20個升級</b> 讓遊玩時間更久！
         - <b>電路更新</b> 帶給玩家新次元體驗！
         - <b>深色模式</b>！
         - 無限存檔
@@ -33,7 +33,7 @@ steamPage:
         discord: 官方 Discord 伺服器
         roadmap: Roadmap
         subreddit: Reddit
-        source_code: Source code (GitHub)
+        source_code: 原始碼(GitHub)
         translate: 幫助我們翻譯！
     text_open_source: |-
         任何人都可以幫助我開發遊戲或提供建議，我很活躍於各個社群媒體，也會讀所有的建議與回饋、並嘗試改善。
@@ -70,7 +70,7 @@ global:
         shift: SHIFT
         space: 空格
 demoBanners:
-    title: 演示版
+    title: 試玩版
     intro: 獲取單機版以解鎖所有功能！
 mainMenu:
     play: 開始遊戲
@@ -78,8 +78,8 @@ mainMenu:
     importSavegame: 導入
     openSourceHint: 本遊戲已開源！
     discordLink: 官方 Discord 伺服器
-    helpTranslate: 幫助我們翻譯！
-    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用chrome或者獲取單機版以得到更好的體驗。
+    helpTranslate: 協助我們翻譯！
+    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用 chrome 或者獲取單機版以得到更好的體驗。
     savegameLevel: <x>級
     savegameLevelUnknown: 未知關卡
     continue: 繼續
@@ -111,7 +111,7 @@ dialogs:
         text: 存檔載入失敗：
     confirmSavegameDelete:
         title: 確認刪除
-        text: 你確定要刪除這個存檔？<br><br> '<savegameName>' 在第 <savegameLevel><br><br> 級 不能反悔喔！
+        text: 你確定要刪除這個存檔？<br><br> '<savegameName>' 在第<savegameLevel>級 <br><br> 不能反悔喔！
     savegameDeletionError:
         title: 刪除錯誤
         text: 存檔刪除失敗
@@ -120,7 +120,7 @@ dialogs:
         text: 你需要重啟遊戲以套用變更的設置。
     editKeybinding:
         title: 更改按鍵設置
-        desc: 請按下你想要使用的按鍵，或者按下ESC鍵來取消設置。
+        desc: 請按下你想要使用的按鍵，或者按下 ESC 鍵來取消設置。
     resetKeybindingsConfirmation:
         title: 重置所有按鍵
         desc: 這將會重置所有按鍵，請確認。
@@ -128,11 +128,11 @@ dialogs:
         title: 重置了所有按鍵
         desc: 成功重置了所有按鍵！
     featureRestriction:
-        title: 演示版
-        desc: 你嘗試使用了 <feature> 功能。該功能在演示版中不可用。請考慮購買單機版以獲得更好的體驗。
+        title: 試玩版
+        desc: 你嘗試使用了 <feature> 功能。該功能在試玩版中不可用。請考慮購買單機版以獲得更好的體驗。
     oneSavegameLimit:
         title: 存檔數量限制
-        desc: 演示版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
+        desc: 試玩版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
     updateSummary:
         title: 更新了！
         desc: "以下為自上次遊戲以來更新的內容:"
@@ -157,7 +157,7 @@ dialogs:
             生成短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
-        desc: 在演示版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
+        desc: 在試玩版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
     massCutConfirm:
         title: 確認剪下
         desc: 你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
@@ -168,21 +168,18 @@ dialogs:
         title: 確認剪下
         desc: 你的複製圖形不夠貼上！你確定要剪下嗎？
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: 訊號設定
+        descItems: "選擇一個預先設定的物件"
+        descShortKey: ... 或輸入圖形的<strong>短代碼</strong> (可以由 <link>here</link> 生成)
     renameSavegame:
         title: 重新命名存檔
         desc: 你可以在這裡重新命名存檔
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: 有教程
+        desc: 這個等級有教學影片!你想觀看嗎?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: 有教程
+        desc: 這個等級目前只有英文版教學影片，你想觀看嗎?
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -192,7 +189,7 @@ ingame:
         placeMultiple: 放置多個
         reverseOrientation: 反向放置
         disableAutoOrientation: 關閉自動定向
-        toggleHud: 開關HUD
+        toggleHud: 開關基地
         placeBuilding: 放置建築
         createMarker: 創建地圖標記
         delete: 銷毀
@@ -270,30 +267,21 @@ ingame:
                 <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
             1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半!<br><br>
+                PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
+            2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>!<br><br>
+                用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
+            2_3_more_cutters: "做得好! 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線!<br><br>
+                PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 !"
+            3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
+                選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
+            21_1_place_quad_painter: 放置一個<strong>切割機（四分）</strong>並取得一些
+                <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
+            21_2_switch_to_wires: 按<strong>E</strong>切換到電路層<br><br>
+                然後將上色機的<strong>四個輸入端</strong>用電線<strong>連接</strong>。
+            21_3_place_button: 太棒了！現在放置一個<strong>開關</strong>並將之與電線連接。
+            21_4_press_button: "按下開關使之<strong>輸出真值</strong>並啟動上色機。<br><br>
+                PS: 你不用連接所有的輸入端，試試只連接兩個。"
     colors:
         red: 紅
         green: 綠
@@ -303,18 +291,18 @@ ingame:
         cyan: 青
         white: 白
         uncolored: 無顏色
-        black: Black
+        black: 黑
     shapeViewer:
         title: 層
         empty: 空
-        copyKey: Copy Key
+        copyKey: 複製鍵
     connectedMiners:
         one_miner: 1 個開採機
         n_miners: <amount> 個開採機
-        limited_items: Limited to <max_throughput>
+        limited_items: 上限 <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
+        title: 試玩版
+        desc: 按這裡看 Steam 版的優勢！
         get_on_steam: 在 Steam 上取得
     standaloneAdvantages:
         title: 取得單機版！
@@ -452,18 +440,16 @@ buildings:
             description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，可以被用來作為溢流門。
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: 電線交叉
+            description: 電線彼此交叉但不互相連接。
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: 固定信號
+            description: 輸出固定信號，可以是形狀、顏色或布林值（1或0）。
     lever:
         default:
             name: 信號切換器
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            description: 切換電路層的輸出布林值（1或0），舉例來說，它可以操控物件分類器。
     logic_gate:
         default:
             name: AND 邏輯閘
@@ -488,30 +474,25 @@ buildings:
                 （「真」值代表：形狀正確、顏色正確或布林值為1）
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: 物件分類器
+            description: 它會依據電路層收到的訊號分類，符合的會到上方，不符合的到右方。
+                它也可以被布林值訊號控制。
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: 顯示器
+            description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、物件或布林值。
     reader:
         default:
             name: 傳送帶讀取機
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
             name: 形狀分析機
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            description: 分析最底層右上角的圖形並輸出他的形狀跟顏色。
     comparator:
         default:
             name: 比較機
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            description: 當兩個輸入訊號完全相等時，輸出布林值「1」。它可以比較形狀、物件或布林值。
     virtual_processor:
         default:
             name: 虛擬切割機
@@ -552,9 +533,8 @@ storyRewards:
         desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
+            - 它將單個傳送帶分流成兩個。
     reward_tunnel:
         title: 隧道
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
@@ -589,11 +569,9 @@ storyRewards:
             基地會在電路層輸出他需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
-        desc: You can now <strong>copy and paste</strong> parts of your factory! Select
-            an area (Hold CTRL, then drag with your mouse), and press 'C' to
-            copy it.<br><br>Pasting it is <strong>not free</strong>, you need to
-            produce <strong>blueprint shapes</strong> to afford it! (Those you
-            just delivered).
+        desc: 你現在可以<strong>複製貼上</strong>你的工廠某些區域。
+            選擇一個區域（按住 CTRL 並拖曳滑鼠），再按「C」來複製。<br><br>
+            貼上<strong>不是免費的</strong>，你必須製造（剛才生成的）<strong>藍圖形狀</strong>來給付。
     no_reward:
         title: 下一關
         desc: "這一關沒有獎勵，但是下一關有！ <br><br> PS:
@@ -606,72 +584,66 @@ storyRewards:
         desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個傳送帶上的物品。
     reward_merger:
         title: 合流
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        desc: <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
+            - 它會將兩個傳送帶整合成一個。
     reward_belt_reader:
-        title: Belt reader
-        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
-            measure the throughput of a belt.<br><br>And wait until you unlock
-            wires - then it gets really useful!
+        title: 讀取輸送帶
+        desc: <strong>輸送帶讀取機</strong>已解鎖。
+            它會讀取輸送帶的流量。<br><br>
+            當你解鎖電路層時，它會變得超有用！
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: 180度旋轉
+        desc: 180度<strong>旋轉機</strong>已解鎖。
+            - 它可以180度旋轉物件（驚喜！:D）
     reward_display:
-        title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        title: 顯示器
+        desc: "<strong>顯示器</strong> 已解鎖。
+            - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
+            PS: 你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？
+            試試看在顯示器上顯示它吧！"
     reward_constant_signal:
-        title: Constant Signal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 / 0).
+        title: 固定信號
+        desc: 電路層上的<strong>固定信號</strong>已解鎖。
+            舉例，將<strong>物件分類器</strong>連上固定信號會很有用。<br><br>
+            固定信號可以輸出<strong>形狀</strong>、<strong>顏色</strong>或是
+            <strong>布林值</strong>（1或0）。
     reward_logic_gates:
-        title: Logic Gates
-        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
-            about this, but it's actually super cool!<br><br> With those gates
-            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
-            bonus on top I also just gave you a <strong>transistor</strong>!
+        title: 邏輯閘
+        desc: <strong>邏輯閘</strong>已解鎖。
+            你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
+            有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT。<br><br>
+            錦上添花，我再送你<strong>電晶體</strong>!
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: 虛擬操作
+        desc: <strong>虛擬操作</strong>!<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
+            繼續遊玩的你現在有三個選項：<br><br>
+            - 蓋一個自動生成任何基地要求圖形的<strong>自動機</strong>（推薦！）。<br><br>
+            - 利用電路層蓋一些很酷建築<br><br>
+            - 繼續用原本的方式破關。<br><br>
+            不論你的選擇是什麼，祝你玩得開心！
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        title: 電路層 & 四角上色機
+        desc: "You just unlocked the <strong>電路層</strong>已解鎖。
+            它是一個獨立於一般層之外的存在，將帶給你更多玩法！<br><br>
+            首先，我為你解鎖<strong>四角上色機</strong>。
+            想要上色的角落記得在電路層通電！<br><br>
+            按<strong>E</strong>切換至電路層。<br><br>
+            PS: 設定裡<strong>開啟提示</strong>來啟動教程！"
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: 物件分類器
+        desc: <strong>物件分類器</strong>已解鎖。
+            它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
+            你也可以送一個固定訊號（1或0）來徹底啟用或不啟用此機器。
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: 試玩結束
+        desc: 你已破關試玩版！
 settings:
     title: 設置
     categories:
-        general: General
-        userInterface: User Interface
-        advanced: Advanced
-        performance: Performance
+        general: 一般
+        userInterface: 使用者介面（UI）
+        advanced: 進階
+        performance: 效能
     versionBadges:
         dev: 開發版本
         staging: 預覽版本
@@ -770,53 +742,41 @@ settings:
             title: 音樂
             description: 音樂設定
         lowQualityMapResources:
-            title: Low Quality Map Resources
-            description: Simplifies the rendering of resources on the map when zoomed in to
-                improve performance. It even looks cleaner, so be sure to try it
-                out!
+            title: 低畫質地圖資源
+            description: 地圖資源在放大時呈現低畫質，此舉可以提升效率。地圖看起來更乾淨了，不妨試試看！
         disableTileGrid:
-            title: Disable Grid
-            description: Disabling the tile grid can help with the performance. This also
-                makes the game look cleaner!
+            title: 取消網格
+            description: 取消網格可以增加效能，畫面也會比較乾淨！
         clearCursorOnDeleteWhilePlacing:
-            title: Clear Cursor on Right Click
-            description: Enabled by default, clears the cursor whenever you right click
-                while you have a building selected for placement. If disabled,
-                you can delete buildings by right-clicking while placing a
-                building.
+            title: 按右鍵淨空游標
+            description: 預設是開啟的，按下右鍵時，清空游標上顯示的準備要蓋建築。
+                如果關閉此選項，你可以一邊蓋工廠一邊刪除不要的建築。
         lowQualityTextures:
-            title: Low quality textures (Ugly)
-            description: Uses low quality textures to save performance. This will make the
-                game look very ugly!
+            title: 低畫質(醜)
+            description: 用低畫質節省效能。遊戲畫面會變的很醜！
         displayChunkBorders:
-            title: Display Chunk Borders
-            description: The game is divided into chunks of 16x16 tiles, if this setting is
-                enabled the borders of each chunk are displayed.
+            title: 顯示分區邊界
+            description: 遊戲是由許多 16x16 的分區組成，啟用這個選項會顯示分區的邊界。
         pickMinerOnPatch:
-            title: Pick miner on resource patch
-            description: Enabled by default, selects the miner if you use the pipette when
-                hovering a resource patch.
+            title: 在資源叢上使用開採機
+            description: 預設是開啟的，當滴管移動到資源叢上方時，選擇開採機。
         simplifiedBelts:
-            title: Simplified Belts (Ugly)
-            description: Does not render belt items except when hovering the belt to save
-                performance. I do not recommend to play with this setting if you
-                do not absolutely need the performance.
+            title: 簡化輸送帶（醜）
+            description: 為節省效能，不 render 輸送帶。
+                除非有必要節省效能，不然我是不建議使用。
         enableMousePan:
-            title: Enable Mouse Pan
-            description: Allows to move the map by moving the cursor to the edges of the
-                screen. The speed depends on the Movement Speed setting.
+            title: 允許用滑鼠移動畫面
+            description: 當滑鼠靠近畫面邊緣時，會移動地圖。移動速度取決於「移動速度」設定。
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: 聚焦游標
+            description: 如果啟用的話，放大縮小地圖時會以游標位置為中心，不然會以畫面中央為中心。
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: 地圖資源標示大小
+            description: 控制地圖資源標示大小（縮小俯瞰時）。
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按鍵設置
-    hint: 提示：使用CTRL、SHIFT、ALT! 這些建在放置建築時有不同的效果。
+    hint: 提示：使用 CTRL、SHIFT、ALT ! 這些建在放置建築時有不同的效果。
     resetKeybindings: 重置按鍵設置
     categoryLabels:
         general: 通用
@@ -839,7 +799,7 @@ keybindings:
         createMarker: 創建地圖標記
         menuOpenShop: 升級選單
         menuOpenStats: 統計選單
-        toggleHud: 開關HUD
+        toggleHud: 開關基地
         toggleFPSInfo: 開關幀數與調試信息
         belt: 傳送帶
         underground_belt: 隧道
@@ -867,25 +827,25 @@ keybindings:
         mapMoveFaster: 快速移動
         lockBeltDirection: 啟用傳送帶規劃
         switchDirectionLockSide: 規劃器：換邊
-        pipette: Pipette
-        menuClose: Close Menu
+        pipette: 滴管
+        menuClose: 關閉選單
         switchLayers: 更換層
         wire: 電線
         balancer: 平衡機
-        storage: Storage
-        constant_signal: Constant Signal
+        storage: 倉庫
+        constant_signal: 固定信號
         logic_gate: 邏輯閘
-        lever: Switch (regular)
-        filter: Filter
-        wire_tunnel: Wire Crossing
+        lever: 開關（一般）
+        filter: 過濾器
+        wire_tunnel: 電線交叉
         display: Display
-        reader: Belt Reader
-        virtual_processor: Virtual Cutter
-        transistor: Transistor
+        reader: 輸送帶讀取機
+        virtual_processor: 虛擬切割機
+        transistor: 電晶體
         analyzer: 形狀分析機
         comparator: 比對機
         item_producer: 物品生產機(沙盒模式)
-        copyWireValue: "Wires: Copy value below cursor"
+        copyWireValue: "電路：複製數值於游標底下"
 about:
     title: 關於遊戲
     body: >-
@@ -908,7 +868,7 @@ demo:
         oneGameLimit: 最多一個存檔
         customizeKeybindings: 按鍵設置
         exportingBase: 匯出工廠截圖
-    settingNotAvailable: 在演示版中不可用。
+    settingNotAvailable: 在試玩版中不可用。
 tips:
     - 基地接受任何輸入，不只是當前要求的圖形!
     - 盡量讓工廠模組化，會有回報的!
@@ -933,7 +893,7 @@ tips:
     - 白 = 紅 + 綠 + 藍。
     - 倉庫優先從左側輸出。
     - 花點時間研究可以重複利用的設計，會有回報的!
-    - 按住 <b>CTRL</b> 可以一次放置多個建築。
+    - 按住 <b>SHIFT</b> 可以一次放置多個建築。
     - 按住 <b>ALT</b> 以反轉輸送帶的放置方向。
     - 效率是關鍵!
     - 離基地越遠得圖形叢越複雜。
