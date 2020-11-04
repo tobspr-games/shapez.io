@@ -461,8 +461,8 @@ buildings:
     stacker:
         default:
             name: Assembleur
-            description: Assemblées deux formes. Si elles ne peuvent pas être assemblées,
-                la forme de droite est placée sur la forme de gauche.
+            description: Assemble les formes à l'entrée, de préférence sur la même couche.
+                Sinon, la forme de droite sera placée sur la forme de gauche
     mixer:
         default:
             name: Mélangeur de couleur
