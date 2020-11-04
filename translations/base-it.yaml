@@ -317,7 +317,7 @@ ingame:
                 questo lento processo!<br><br> PS: Usa i numeri <strong>da 0 a 9 </strong>
                 per selezionare gli edifici più in fretta!"
             3_1_rectangles: "Ora estraiamo qualche rettangolo! <strong>Costruisci 4
-                estrattori</strong> and connect them to the HUB.<br><br> PS:
+                estrattori</strong> e connettili alla HUB.<br><br> PS:
                 Tieni premuto <strong>SHIFT</strong> mentre trascini un nastro per attivare il
                 pianificatore di nastri!"
             21_1_place_quad_painter: Posiziona il <strong>verniciatore quadruplo</strong> e prendi dei
@@ -479,7 +479,7 @@ buildings:
         second:
             name: Cavo
             description: Trasmette segnali, che possono essere oggetti, colori o booleani (1
-                / 0). Cavi di colore diverso non si connettono.
+                / 0). I cavi di colore diverso non si connettono.
     balancer:
         default:
             name: Bilanciatore
@@ -609,7 +609,7 @@ storyRewards:
             gradi in senso orario.
     reward_painter:
         title: Verniciatura
-        desc: "Il <strong>verniciatore</strong> è stato sbloccato! Estrai dalle vene
+        desc: "Il <strong>verniciatore</strong> è stato sbloccato! Estrai dai giacimenti
             colorate (esattamente come fai con le forme) e combina il colore con
             una forma nella veniciatrice per colorarla!<br><br>PS: Se sei
             daltonico, c'è la <strong>modalità daltonici </strong> nelle
@@ -684,7 +684,7 @@ storyRewards:
             per <strong>sbloccare i miglioramenti</strong>!"
     no_reward_freeplay:
         title: Prossimo livello
-        desc: Congratulazioni! Ci sono altri contenuti in prgramma per la versione
+        desc: Congratulazioni! Ci sono altri contenuti in programma per la versione
             completa!
     reward_stacker:
         title: Impilatrice
@@ -694,9 +694,9 @@ storyRewards:
             destro è <strong>impilato sopra</strong> il sinistro!
     reward_balancer:
         title: Bilanciatore
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Il <strong>bilanciatore</strong> multifunzione è stato sbloccato - Può essere
+            usato per costruire fabbriche più grandi <strong>unendo e dividendo gli
+            oggetti</strong> su diversi nastri!
     reward_merger:
         title: Aggregatore compatto
         desc: Hai sbloccato un <strong>aggregatore</strong>, variante del
@@ -903,7 +903,7 @@ settings:
                 edifici.
         lowQualityTextures:
             title: Texture in bassa qualità (Brutto)
-            description: Usa texture a bassa qualità per migliorare le prestazioni. Quesro
+            description: Usa texture a bassa qualità per migliorare le prestazioni. Questo
                 renderà il gioco molto brutto!
         displayChunkBorders:
             title: Mostra confini dei Chunk
@@ -912,7 +912,7 @@ settings:
         pickMinerOnPatch:
             title: Scegli estrattore sui giacimenti di risorse
             description: Attivato di default, seleziona l'estrattore se usi il contagocce
-                quando il cursore è su un giacimento risorse.
+                quando il cursore è su una vena di risorse.
         simplifiedBelts:
             title: Nastri semplificati (Brutto)
             description: Non renderizza gli oggetti sui nastri a meno che il cursore non sia
@@ -1018,7 +1018,8 @@ about:
         Realizzare questo gioco non sarebbe stato possibile senza la grande community di Discord per i miei giochi -
         Unisciti al <a href="<discordlink>" target="_blank">server di Discord</a>!<br><br>
 
-        La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - È un grande.<br><br>
+        La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank">
+        Peppsen</a> - È un grande.<br><br>
 
         Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
         Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
@@ -1029,7 +1030,7 @@ demo:
         restoringGames: Recupero salvataggi
         importingGames: Importazione salvataggi
         oneGameLimit: Limite di un salvataggio
-        customizeKeybindings: Scorciatoie personalizabili
+        customizeKeybindings: Scorciatoie personalizzabili
         exportingBase: Esportazione dell'intera base come immagine
     settingNotAvailable: Non disponibile nella demo.
 tips:
@@ -1057,7 +1058,7 @@ tips:
     - Tenere premuto <b>SHIFT</b> attiva il pianificatore nastri, facilitando il
       posizionamento dei nastri più lunghi
     - I taglierini tagliano sempre in verticale, indipendentemente
-      dall'orientamento.
+      dal loro orientamento.
     - Mischia tutti i tre colori per fare il bianco.
     - Il magazzino prioritizza la prima uscita.
     - Impiega tempo per costruire design replicabili, ne vale la pena!
@@ -1076,7 +1077,7 @@ tips:
     - Cerca di risolvere il livello 20 da solo prima di chiedere aiuto!
     - Non complicare le cose, cerca di mantenere la semplicità e farai strada.
     - Dovrai riusare le tue fabbriche più avanti nel gioco. Pianifica le tue
-      fabbriche in modo che siano reutilizzabili.
+      fabbriche in modo che siano riutilizzabili.
     - A volte, puoi trovare la forma che ti serve nella mappa senza crearla con
       le impilatrici.
     - Non troverai mai giacimenti di girandole complete.
@@ -1099,7 +1100,7 @@ tips:
     - Puoi scaricare i salvataggi dal menù principale!
     - Questo gioco ha molti tasti di scelta rapida! Dai un'occhiata alla pagina
       delle impostazioni
-    - Questo gioco ha molte impostazioni, dai un'occhiata!
+    - Questo gioco ha molte impostazioni, dagli un'occhiata!
     - L'etichetta dell'hub ha una piccola bussola per indicarne la direzione!
     - Per svuotare i nastri, taglia e re-incolla l'area nello stesso punto.
     - Premi F4 per mostrare FPS e Tick al secondo.
