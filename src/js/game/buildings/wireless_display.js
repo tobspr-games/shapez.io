@@ -7,7 +7,6 @@ import { WirelessDisplayComponent } from "../components/wireless_display";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 
-
 /** @enum {string} */
 export const enumWirelessDisplayVariants = {
     remote_control: "remote_control",
