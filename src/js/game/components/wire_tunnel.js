@@ -1,3 +1,4 @@
+
 import { Component } from "../component";
 
 export class WireTunnelComponent extends Component {

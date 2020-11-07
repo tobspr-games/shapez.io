@@ -199,7 +199,7 @@ export class MetaBuilding {
      * @param {number} param0.rotationVariant Rotation variant
      * @param {string} param0.variant
      */
-    createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
+    createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant, wireless_code }) {
         const entity = new Entity(root);
         entity.layer = this.getLayer();
         entity.addComponent(
@@ -213,6 +213,11 @@ export class MetaBuilding {
         );
         this.setupEntityComponents(entity, root);
         this.updateVariants(entity, rotationVariant, variant);
+        if (entity.components.WirelessDisplay && wireless_code) {
+            if (!entity.components.WirelessCode) {
+                entity.components.WirelessCode = wireless_code;
+            }
+        }
         return entity;
     }
 

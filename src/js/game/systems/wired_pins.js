@@ -189,16 +189,17 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                 );
 
                 if (staticComp.getMetaBuilding().getRenderPins()) {
+                    this.sprite = this.pinSprites[slot.type];
                     drawRotatedSprite({
                         parameters,
-                        sprite: this.pinSprites[slot.type],
+                        sprite: this.sprite,
                         x: worldPos.x,
                         y: worldPos.y,
                         angle: effectiveRotation,
                         size: globalConfig.tileSize + 2,
                         offsetX: 0,
                         offsetY: 0,
-                    });
+                    });  
                 }
 
                 // Draw contained item to visualize whats emitted

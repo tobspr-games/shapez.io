@@ -68,6 +68,7 @@ export class MapChunkView extends MapChunk {
         systems.staticMapEntities.drawChunk(parameters, this);
         systems.lever.drawChunk(parameters, this);
         systems.display.drawChunk(parameters, this);
+        systems.wirelessDisplay.drawChunk(parameters, this);
         systems.storage.drawChunk(parameters, this);
         systems.itemProcessorOverlays.drawChunk(parameters, this);
     }

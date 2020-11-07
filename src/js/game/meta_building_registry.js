@@ -26,6 +26,7 @@ import { enumUndergroundBeltVariants, MetaUndergroundBeltBuilding } from "./buil
 import { enumVirtualProcessorVariants, MetaVirtualProcessorBuilding } from "./buildings/virtual_processor";
 import { MetaWireBuilding } from "./buildings/wire";
 import { MetaWireTunnelBuilding } from "./buildings/wire_tunnel";
+import { MetaWirelessDisplayBuilding, enumWirelessDisplayVariants } from "./buildings/wireless_display";
 import { buildBuildingCodeCache, gBuildingVariants, registerBuildingVariant } from "./building_codes";
 import { enumWireVariant } from "./components/wire";
 import { KEYMAPPINGS } from "./key_action_mapper";
@@ -59,6 +60,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaAnalyzerBuilding);
     gMetaBuildingRegistry.register(MetaComparatorBuilding);
     gMetaBuildingRegistry.register(MetaItemProducerBuilding);
+    gMetaBuildingRegistry.register(MetaWirelessDisplayBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
@@ -121,7 +123,7 @@ export function initMetaBuildingRegistry() {
     registerBuildingVariant(52, MetaWireBuilding, enumWireVariant.second, 0);
     registerBuildingVariant(53, MetaWireBuilding, enumWireVariant.second, 1);
     registerBuildingVariant(54, MetaWireBuilding, enumWireVariant.second, 2);
-    registerBuildingVariant(55, MetaWireBuilding, enumWireVariant.second, 3);
+	registerBuildingVariant(55, MetaWireBuilding, enumWireVariant.second, 3);
 
     // Constant signal
     registerBuildingVariant(31, MetaConstantSignalBuilding);
@@ -164,6 +166,10 @@ export function initMetaBuildingRegistry() {
 
     // Item producer
     registerBuildingVariant(61, MetaItemProducerBuilding);
+
+    // Wireless Display
+    registerBuildingVariant(62, MetaWirelessDisplayBuilding);
+    registerBuildingVariant(63, MetaWirelessDisplayBuilding, enumWirelessDisplayVariants.remote_control);
 
     // Propagate instances
     for (const key in gBuildingVariants) {
