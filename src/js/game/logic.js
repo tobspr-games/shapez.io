@@ -243,10 +243,10 @@ export class GameLogic {
 
         const targetStaticComp = targetEntity.components.StaticMapEntity;
 
-        // Check if its a tunnel
+        // Check if its a crossing
         const wireTunnelComp = targetEntity.components.WireTunnel;
         if (wireTunnelComp) {
-            return wireTunnelComp.CanConnectWorld(targetStaticComp, offset);
+            return true;
         }
 
         // Check if its a wire
