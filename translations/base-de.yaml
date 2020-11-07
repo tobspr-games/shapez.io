@@ -7,17 +7,17 @@ steamPage:
 
         shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
 
-        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren,
+        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell wachsen,
         um die Anforderungen zu erfüllen - Da hilft nur skalieren!
 
         Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die
         Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
     title_advantages: Vorteile der Vollversion
     advantages:
-        - <b>12 Neue Level</b> für insgesamt 26 Level
+        - <b>12 Neue Level</b> also insgesamt 26 Level
         - <b>18 Neue Gebäude</b> für eine komplett automatisierte Fabrik!
         - <b>20 Upgrade-Stufen</b> für viele Stunden Spielspaß
-        - <b>Wires-Update</b> für eine komplett neue Dimension!
+        - <b>Wires-Update</b> sorgen für eine komplett neue Dimension!
         - <b>Dark-Mode</b>!
         - Unbegrenzte Speicherstände
         - Unbegrenzte Wegpunkte
@@ -26,7 +26,7 @@ steamPage:
     planned:
         - Blaupausen-Bibliothek
         - Errungenschaften auf Steam
-        - Puzzel-Modus
+        - Puzzle-Modus
         - Minimap
         - Modunterstützung
         - Sandkastenmodus
@@ -149,9 +149,9 @@ dialogs:
         desc: "Hier sind die Änderungen, seitdem du das letzte Mal gespielt hast:"
     upgradesIntroduction:
         title: Upgrades freischalten
-        desc: Viele deiner Formen können noch benutzt werden, um Upgrades freizuschalten
-            - <strong>Zerstöre deine alten Fabriken nicht!</strong> Den
-            Upgrade-Tab findest du oben rechts im Bildschirm.
+        desc: Viele deiner Formen werden benötigt, um Upgrades freizuschalten
+            - <strong>Zerstöre deine alten Fabriken nicht!</strong> Das
+            Upgrade-Menu findest du oben rechts im Bildschirm.
     massDeleteConfirm:
         title: Löschen bestätigen
         desc: Du löscht viele Gebäude (<count> um genau zu sein)! Bist du dir sicher?
@@ -1050,7 +1050,7 @@ tips:
       gleichmäßig kaufst.
     - Serielle Ausführung ist effizienter als parallele.
     - Für viele Gebäude wirst du im Spielverlauf neue Varianten freischalten!
-    - Du kanst <b>T</b> drücken, um auf andere Varianten des Gebäudes zu
+    - Du kannst <b>T</b> drücken, um auf andere Varianten des Gebäudes zu
       wechseln.
     - Symmetrie ist der Schlüssel!
     - Du kannst verschiedene Arten von Tunneln miteinander verweben.
