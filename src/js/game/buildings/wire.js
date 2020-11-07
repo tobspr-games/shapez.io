@@ -25,19 +25,16 @@ export const wireOverlayMatrices = {
 /** @enum {string} */
 export const wireVariants = {
     second: "second",
-    third: "third"
 };
 
 const enumWireVariantToVariant = {
     [defaultBuildingVariant]: enumWireVariant.first,
     [wireVariants.second]: enumWireVariant.second,
-    [wireVariants.third]: enumWireVariant.third,
 };
 
 export class MetaWireBuilding extends MetaBuilding {
     constructor() {
         super("wire");
-        this.a = "a";
     }
 
     getHasDirectionLockAvailable() {
@@ -49,7 +46,7 @@ export class MetaWireBuilding extends MetaBuilding {
     }
 
     getAvailableVariants() {
-        return [defaultBuildingVariant, wireVariants.second, wireVariants.third];
+        return [defaultBuildingVariant, wireVariants.second];
     }
 
     getDimensions() {
@@ -169,95 +166,96 @@ export class MetaWireBuilding extends MetaBuilding {
         };
 
         let flag = 0;
-        flag |= connections.top ? 0b1000 : 0;
-        flag |= connections.right ? 0b100 : 0;
-        flag |= connections.bottom ? 0b10 : 0;
-        flag |= connections.left ? 0b1 : 0;
+        flag |= connections.top ? 0x1000 : 0;
+        flag |= connections.right ? 0x100 : 0;
+        flag |= connections.bottom ? 0x10 : 0;
+        flag |= connections.left ? 0x1 : 0;
 
         let targetType = enumWireType.forward;
 
         // First, reset rotation
         rotation = 0;
+
         switch (flag) {
-            case 0b0000:
+            case 0x0000:
                 // Nothing
                 break;
 
-            case 0b0001:
+            case 0x0001:
                 // Left
                 rotation += 90;
                 break;
 
-            case 0b0010:
+            case 0x0010:
                 // Bottom
                 // END
                 break;
 
-            case 0b0011:
+            case 0x0011:
                 // Bottom | Left
                 targetType = enumWireType.turn;
                 rotation += 90;
                 break;
 
-            case 0b0100:
+            case 0x0100:
                 // Right
                 rotation += 90;
                 break;
 
-            case 0b0101:
+            case 0x0101:
                 // Right | Left
                 rotation += 90;
                 break;
 
-            case 0b0110:
+            case 0x0110:
                 // Right | Bottom
                 targetType = enumWireType.turn;
                 break;
 
-            case 0b0111:
+            case 0x0111:
                 // Right | Bottom | Left
                 targetType = enumWireType.split;
                 break;
 
-            case 0b1000:
+            case 0x1000:
                 // Top
                 break;
 
-            case 0b1001:
+            case 0x1001:
                 // Top | Left
                 targetType = enumWireType.turn;
                 rotation += 180;
                 break;
 
-            case 0b1010:
+            case 0x1010:
                 // Top | Bottom
                 break;
 
-            case 0b1011:
+            case 0x1011:
                 // Top | Bottom | Left
                 targetType = enumWireType.split;
                 rotation += 90;
                 break;
 
-            case 0b1100:
+            case 0x1100:
                 // Top | Right
                 targetType = enumWireType.turn;
                 rotation -= 90;
                 break;
 
-            case 0b1101:
+            case 0x1101:
                 // Top | Right | Left
                 targetType = enumWireType.split;
                 rotation += 180;
                 break;
 
-            case 0b1110:
+            case 0x1110:
                 // Top | Right | Bottom
                 targetType = enumWireType.split;
                 rotation -= 90;
                 break;
 
-            case 0b1111:
+            case 0x1111:
                 // Top | Right | Bottom | Left
                 targetType = enumWireType.cross;
                 break;
