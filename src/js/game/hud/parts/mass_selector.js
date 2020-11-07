@@ -305,9 +305,16 @@ export class HUDMassSelector extends BaseHUDPart {
                         renderedUids.add(uid);
 
                         const staticComp = contents.components.StaticMapEntity;
-                        staticComp.drawSpriteOnBoundsClipped(parameters, staticComp.getBlueprintSprite(), 0);
+                        const bounds = staticComp.getTileSpaceBounds();
+                        parameters.context.beginRoundedRect(
+                            bounds.x * globalConfig.tileSize + boundsBorder,
+                            bounds.y * globalConfig.tileSize + boundsBorder,
+                            bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+                            bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+                            2
+                        );
+                        parameters.context.fill();
                     }
-                    parameters.context.globalAlpha = 1;
                 }
             }
         }
@@ -316,8 +323,15 @@ export class HUDMassSelector extends BaseHUDPart {
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
-    
-            staticComp.drawSpriteOnBoundsClipped(parameters, staticComp.getBlueprintSprite(), 0);
+            const bounds = staticComp.getTileSpaceBounds();
+            parameters.context.beginRoundedRect(
+                bounds.x * globalConfig.tileSize + boundsBorder,
+                bounds.y * globalConfig.tileSize + boundsBorder,
+                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
+                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
+                2
+            );
+            parameters.context.fill();
         });
     }
 }
