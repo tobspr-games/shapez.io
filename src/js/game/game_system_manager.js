@@ -20,7 +20,6 @@ import { ConstantSignalSystem } from "./systems/constant_signal";
 import { LogicGateSystem } from "./systems/logic_gate";
 import { LeverSystem } from "./systems/lever";
 import { DisplaySystem } from "./systems/display";
-import { WirelessDisplaySystem } from "./systems/wireless_display";
 import { ItemProcessorOverlaysSystem } from "./systems/item_processor_overlays";
 import { BeltReaderSystem } from "./systems/belt_reader";
 import { FilterSystem } from "./systems/filter";

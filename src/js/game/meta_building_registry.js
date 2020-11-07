@@ -8,7 +8,6 @@ import { MetaComparatorBuilding } from "./buildings/comparator";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaDisplayBuilding } from "./buildings/display";
-import { enumWirelessDisplayVariants, MetaWirelessDisplayBuilding } from "./buildings/wireless_display";
 import { MetaFilterBuilding } from "./buildings/filter";
 import { MetaHubBuilding } from "./buildings/hub";
 import { MetaItemProducerBuilding } from "./buildings/item_producer";
@@ -54,7 +53,6 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaFilterBuilding);
     gMetaBuildingRegistry.register(MetaWireTunnelBuilding);
     gMetaBuildingRegistry.register(MetaDisplayBuilding);
-    gMetaBuildingRegistry.register(MetaWirelessDisplayBuilding);
     gMetaBuildingRegistry.register(MetaVirtualProcessorBuilding);
     gMetaBuildingRegistry.register(MetaReaderBuilding);
     gMetaBuildingRegistry.register(MetaTransistorBuilding);
@@ -166,10 +164,6 @@ export function initMetaBuildingRegistry() {
 
     // Item producer
     registerBuildingVariant(61, MetaItemProducerBuilding);
-
-    // Wireless Display
-    registerBuildingVariant(62, MetaWirelessDisplayBuilding);
-    registerBuildingVariant(63, MetaWirelessDisplayBuilding, enumWirelessDisplayVariants.remote_control);
 
     // Propagate instances
     for (const key in gBuildingVariants) {
