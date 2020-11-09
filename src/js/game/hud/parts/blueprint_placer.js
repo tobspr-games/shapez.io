@@ -110,22 +110,24 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             }
         }
 
-        const blueprint = this.currentBlueprint.get();
-        if (!blueprint) {
-            return;
-        }
+        if (button === enumMouseButton.left) {
+            const blueprint = this.currentBlueprint.get();
+            if (!blueprint) {
+                return;
+            }
 
-        if (!blueprint.canAfford(this.root)) {
-            this.root.soundProxy.playUiError();
-            return;
-        }
+            if (!blueprint.canAfford(this.root)) {
+                this.root.soundProxy.playUiError();
+                return;
+            }
 
-        const worldPos = this.root.camera.screenToWorld(pos);
-        const tile = worldPos.toTileSpace();
-        if (blueprint.tryPlace(this.root, tile)) {
-            const cost = blueprint.getCost();
-            this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
-            this.root.soundProxy.playUi(SOUNDS.placeBuilding);
+            const worldPos = this.root.camera.screenToWorld(pos);
+            const tile = worldPos.toTileSpace();
+            if (blueprint.tryPlace(this.root, tile)) {
+                const cost = blueprint.getCost();
+                this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                this.root.soundProxy.playUi(SOUNDS.placeBuilding);
+            }
         }
     }
 
