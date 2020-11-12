@@ -575,9 +575,6 @@ buildings:
         splitter-inverse:
             name: Splitter (compact)
             description: Splits one conveyor belt into two.
-        splitter-triple:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into three.
 
     cutter:
         default:
