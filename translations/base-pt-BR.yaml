@@ -44,7 +44,7 @@ steamPage:
         Qualquer um pode contribuir, estou ativamente envolvido com a comunidade
         e tento ler todas as sugestões e receber críticas quando possível.
 
-        Cheque minha lousa no trello para a linha do tempo completa!
+        Cheque meu quadro no trello para a linha do tempo completa!
 global:
     loading: Carregando
     error: Erro
@@ -78,7 +78,7 @@ global:
         space: Espaço
 demoBanners:
     title: Versão Demo
-    intro: Compre a versão completa para desbloquear todas os recursos!
+    intro: Compre a versão completa para desbloquear todos os recursos!
 mainMenu:
     play: Jogar
     continue: Continuar
@@ -543,7 +543,7 @@ buildings:
     filter:
         default:
             name: Filtro
-            description: Conecte um sinal para rotear todos os itens desejador para o topo e
+            description: Conecte um sinal para rotear todos os itens desejados para o topo e
                 o restante para a direita. Pode ser controlado por sinais
                 binários também.
     display:
@@ -636,10 +636,10 @@ storyRewards:
             variantes</strong>!
     reward_miner_chainable:
         title: Extrator em Cadeia
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: Você desbloqueou o <strong>extrator em cadeia</strong>! Ele 
+            <strong>encaminha os recursos</strong> para outros extratores para que você
+            possa extrair recursos de forma mais eficiente!<br><br> OBS: O velho
+            extrator foi substituído na sua barra de ferramentas!"
     reward_underground_belt_tier_2:
         title: Túnel Classe II
         desc: Você desbloqueou uma nova variante do <strong>túnel</strong> - ele tem um
@@ -656,10 +656,10 @@ storyRewards:
             pintor regular, mas processa <strong>duas formas ao mesmo
             tempo</strong>, consumindo apenas uma cor em vez de duas!
     reward_storage:
-        title: Acúmulo de excesso
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        title: Armazém
+        desc: Você desbloqueou o <strong>armazém</strong> - Permite que você
+            armazene itens até uma certa capacidade!<br><br> Ele prioriza a saída
+            da esquerda, para que você tambpem possa usá-lo como um <strong>portão de excesso</strong>!
     reward_freeplay:
         title: Modo Livre
         desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso
