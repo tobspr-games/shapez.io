@@ -326,7 +326,8 @@ ingame:
                 niezależnie od swojej orientacji."
             2_2_place_trash: Przecinak może się <strong>zapchać i zablokować</strong>!<br><br> Użyj
                 <strong>śmietnik</strong> aby usunąć obecnie (!) nie potrzebne elementy.
-            2_3_more_cutters: "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć
+            2_3_more_cutters:
+                "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć
                 ten wolny proces!<br><br> PS: Użyj <strong>klawiszy 0-9</strong>,
                 aby szybciej uzyskać dostęp do budynków!"
             3_1_rectangles: "Teraz wydobądź kilka kwadratów! <strong>Wybuduj
@@ -365,7 +366,7 @@ ingame:
                 title: ∞ Zapisów Gry
                 desc: Twórz tyle, ile potrzebujesz!
             upgrades:
-                title: 20 Poziomów Ulepszeń
+                title: ∞ Poziomów Ulepszeń
                 desc: To demo posiada tylko 5!
             markers:
                 title: ∞ Znaczników

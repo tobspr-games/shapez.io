@@ -364,7 +364,7 @@ ingame:
                 title: ∞ med sparfiler
                 desc: Så många som du bara vill!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ med markeringar!
@@ -520,7 +520,8 @@ buildings:
                 färger eller booleansk "1")
         xor:
             name: XOR Grind
-            description: Avger en booleansk "1" om ett av inflöderna är positiv, dock inte om båda är positiva.
+            description:
+                Avger en booleansk "1" om ett av inflöderna är positiv, dock inte om båda är positiva.
                 (Positiva menas med former, färger eller booleansk "1")
         or:
             name: OR Grind

@@ -303,7 +303,8 @@ ingame:
             2_1_place_cutter: "Teď umístěte <strong>pilu</strong> k rozřezání kruhového tvaru na dvě
                 poloviny!<br><br> PS: Pila řeže tvary vždy <strong>svisle na
                 poloviny</strong> bez ohledu na její orientaci."
-            2_2_place_trash: Pila se může <strong>zaseknout a zastavit vaši produkci</strong>!<br><br> Použijte
+            2_2_place_trash:
+                Pila se může <strong>zaseknout a zastavit vaši produkci</strong>!<br><br> Použijte
                 <strong>koš</strong> ke smazání (!) nepotřebných
                 částí tvarů.
             2_3_more_cutters: "Dobrá práce! Teď postavte <strong>více pil</strong> pro zrychlení
@@ -360,7 +361,7 @@ ingame:
                 title: ∞ Uložených her
                 desc: Tolik, kolik vaše srdce touží!
             upgrades:
-                title: 20 vylepšení
+                title: ∞ vylepšení
                 desc: Tato demo verze má pouze 5!
             markers:
                 title: ∞ Značek

@@ -42,10 +42,10 @@ steamPage:
         source_code: Source code (GitHub)
         translate: Hjælp med oversættelse
     text_open_source: >-
-        Hvem som helst kan bidrage, jeg er aktivt involveret i fælleskabet og 
-        forsøger at gennemgå alle ideer og tager feedback i overvejelse 
+        Hvem som helst kan bidrage, jeg er aktivt involveret i fælleskabet og
+        forsøger at gennemgå alle ideer og tager feedback i overvejelse
         hvor muligt.
-        
+
         Be sure to check out my trello board for the full roadmap!
 global:
     loading: Indlæser
@@ -363,7 +363,7 @@ ingame:
                 title: ∞ Gemte spil
                 desc: Så mange dit hjerte begær!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
             markers:
                 title: ∞ Markers
