@@ -636,7 +636,7 @@ storyRewards:
             variantes</strong>!
     reward_miner_chainable:
         title: Extrator em Cadeia
-        desc: Você desbloqueou o <strong>extrator em cadeia</strong>! Ele 
+        desc: "Você desbloqueou o <strong>extrator em cadeia</strong>! Ele
             <strong>encaminha os recursos</strong> para outros extratores para que você
             possa extrair recursos de forma mais eficiente!<br><br> OBS: O velho
             extrator foi substituído na sua barra de ferramentas!"
