@@ -880,8 +880,8 @@ settings:
             title: Deshabilitar grilla
             description: Deshabilitar la grilla puede ayudar con el rendimiento. ¡También hace
                 que el juego se vea más limpio!
-        clearCursorOnDeleteWhilePlacing:
-            title: Limpiar el cursos al apretar click derecho
+        clearOnDeleteWhilePlacing:
+            title: Limpiar el cursor al apretar click derecho
             description: Activado por defecto, Limpia el cursor al hacer click derecho
                 mientras tengas un un edificio seleccionado. Si se deshabilita,
                 puedes eliminar edificios al hacer click derecho mientras pones
@@ -988,7 +988,7 @@ keybindings:
         analyzer: Analizador de formas
         comparator: Comparador
         item_producer: Productor de items (Sandbox)
-        copyWireValue: "Cables: Copiar valor bajo el cursos"
+        copyWireValue: "Cables: Copiar valor bajo el cursor"
 about:
     title: Sobre el juego
     body: >-
