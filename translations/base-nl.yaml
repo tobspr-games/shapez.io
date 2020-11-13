@@ -118,7 +118,7 @@ dialogs:
         text: Je savegame is succesvol geïmporteerd.
     gameLoadFailure:
         title: Corrupte savegame
-        text: Het laden van je savegame is mislukt:
+        text: "Het laden van je savegame is mislukt:"
     confirmSavegameDelete:
         title: Bevestig het verwijderen
         text: Ben je zeker dat je het volgende spel wil verwijderen?<br><br>
