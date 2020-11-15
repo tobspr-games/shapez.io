@@ -117,7 +117,8 @@ export class HUDWiresOverlay extends BaseHUDPart {
             return;
         }
 
-        if (!this.cachedPatternBackground) {
+        const hasTileGrid = !this.root.app.settings.getAllSettings().disableTileGrid;
+        if (hasTileGrid && !this.cachedPatternBackground) {
             this.cachedPatternBackground = parameters.context.createPattern(this.tilePatternCanvas, "repeat");
         }
 
@@ -132,7 +133,9 @@ export class HUDWiresOverlay extends BaseHUDPart {
         parameters.context.globalCompositeOperation = "source-over";
 
         parameters.context.scale(scaleFactor, scaleFactor);
-        parameters.context.fillStyle = this.cachedPatternBackground;
+        parameters.context.fillStyle = hasTileGrid
+            ? this.cachedPatternBackground
+            : "rgba(78, 137, 125, 0.75)";
         parameters.context.fillRect(
             bounds.x / scaleFactor,
             bounds.y / scaleFactor,
