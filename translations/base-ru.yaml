@@ -33,7 +33,7 @@ steamPage:
         - Моды
         - Режим песочницы
         - ... и многое другое!
-    title_open_source: Эта игра находится в открытом доступе!
+    title_open_source: Эта игра с открытым исходным кодом!
     title_links: Ссылки
     links:
         discord: Официальный Discord сервер
@@ -86,7 +86,7 @@ mainMenu:
     changelog: Список изменений
     importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
-    discordLink: Офици- альный Дискорд
+    discordLink: Официальный Дискорд сервер!
     helpTranslate: Помоги с переводом!
     browserWarning: Извините, но игра работает медленно в вашем браузере!
         Приобретите полную версию или загрузите Chrome чтобы ознакомится с игрой
@@ -110,7 +110,7 @@ dialogs:
         deleteGame: Я знаю, что я делаю
         viewUpdate: Посмотреть Обновление
         showUpgrades: Показать Улучшения
-        showKeybindings: Показать Управление
+        showKeybindings: Показать Управление (Привязку клавиш)
     importSavegameError:
         title: Ошибка импортирования
         text: Не удалось импортировать сохранение игры.
@@ -123,7 +123,7 @@ dialogs:
     confirmSavegameDelete:
         title: Подтвердите удаление.
         text: Вы уверены, что хотите удалить это сохранение?<br><br> '<savegameName>' на
-            уровне <savegameLevel><br><br> Это не может быть отменено!
+            уровне <savegameLevel><br><br> Оно будет удалено безвозвратно!
     savegameDeletionError:
         title: Ошибка удаления
         text: Не удалось удалить сохранение игры.
