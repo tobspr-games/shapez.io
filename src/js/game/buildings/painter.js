@@ -182,7 +182,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                 ]);
 
                 entity.components.ItemEjector.setSlots([
-                    { pos: new Vector(1, 0), direction: enumDirection.right },
+                    { pos: new Vector(1, 0), direction: enumDirection.right, buffered: true },
                 ]);
 
                 entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;

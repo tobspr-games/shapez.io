@@ -182,7 +182,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 if (destPath) {
                     // Try passing the item over
                     if (destPath.tryAcceptItem(item)) {
-                        sourceSlot.item = null;
+                        sourceEjectorComp.takeSlotItem(j);
                     }
 
                     // Always stop here, since there can *either* be a belt path *or*
@@ -209,7 +209,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                                 item
                             );
                         }
-                        sourceSlot.item = null;
+                        sourceEjectorComp.takeSlotItem(j);
                         continue;
                     }
                 }
