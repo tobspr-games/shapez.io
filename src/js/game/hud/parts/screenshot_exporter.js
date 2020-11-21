@@ -8,6 +8,8 @@ import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
+import { DialogWithForm } from "../../../core/modal_dialog_elements";
+import { FormElementInput, FormElementCheckbox } from "../../../core/modal_dialog_forms";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -24,15 +26,34 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             return;
         }
 
-        const { ok } = this.root.hud.parts.dialogs.showInfo(
-            T.dialogs.exportScreenshotWarning.title,
-            T.dialogs.exportScreenshotWarning.desc,
-            ["cancel:good", "ok:bad"]
+        const layerInput = new FormElementCheckbox({
+            id: "screenshotLayer",
+            label: "Include wires layer",
+            defaultValue: this.root.currentLayer === "wires" ? true : false,
+        });
+        const qualityInput = new FormElementInput({
+            id: "screenshotQuality",
+            label: "Pixel width per tile",
+            placeholder: "",
+            defaultValue: "",
+            validator: val => !isNaN(val) && parseInt(val) === parseFloat(val) && !isNaN(parseInt(val, 10)),
+        });
+        const dialog = new DialogWithForm({
+            app: this.root.app,
+            title: T.dialogs.exportScreenshotWarning.title,
+            desc: T.dialogs.exportScreenshotWarning.desc,
+            formElements: [layerInput, qualityInput],
+            buttons: ["cancel:good", "ok:bad"],
+        });
+
+        this.root.hud.parts.dialogs.internalShowDialog(dialog);
+        dialog.buttonSignals.ok.add(
+            () => this.doExport(layerInput.getValue(), qualityInput.getValue()),
+            this
         );
-        ok.add(this.doExport, this);
     }
 
-    doExport() {
+    doExport(wiresLayer, quality) {
         logger.log("Starting export ...");
 
         // Find extends
@@ -55,11 +76,11 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const dimensions = maxChunk.sub(minChunk);
         logger.log("Dimensions:", dimensions);
 
-        let chunkSizePixels = 128;
+        let chunkSizePixels = quality * globalConfig.mapChunkSize;
         const maxDimensions = Math.max(dimensions.x, dimensions.y);
 
         if (maxDimensions > 128) {
-            chunkSizePixels = Math.max(1, Math.floor(128 * (128 / maxDimensions)));
+            chunkSizePixels = Math.max(1, Math.floor(chunkSizePixels * (128 / maxDimensions)));
         }
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
@@ -96,8 +117,15 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         context.translate(-visibleRect.x, -visibleRect.y);
 
         // Render all relevant chunks
+        this.root.signals.gameFrameStarted.dispatch();
         this.root.map.drawBackground(parameters);
+        this.root.systemMgr.systems.belt.drawBeltItems(parameters);
         this.root.map.drawForeground(parameters);
+        this.root.systemMgr.systems.hub.draw(parameters);
+        if (wiresLayer) {
+            this.root.hud.parts.wiresOverlay.draw(parameters, true);
+            this.root.map.drawWiresForegroundLayer(parameters);
+        }
 
         // Offer export
         logger.log("Rendered buffer, exporting ...");
