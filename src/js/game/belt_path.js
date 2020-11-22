@@ -1087,29 +1087,26 @@ export class BeltPath extends BasicSerializableObject {
 
             // If the last item can be ejected, eject it and reduce the spacing, because otherwise
             // we lose velocity
-            if (isFirstItemProcessed && nextDistanceAndItem[_nextDistance] < 1e-7) {
-                // Store how much velocity we "lost" because we bumped the item to the end of the
-                // belt but couldn't move it any farther. We need this to tell the item acceptor
-                // animation to start a tad later, so everything matches up. Yes I'm a perfectionist.
-                const excessVelocity = beltSpeed - clampedProgress;
-
+            if (isFirstItemProcessed) {
                 // Try to directly get rid of the item
-                if (this.tryHandOverItem(nextDistanceAndItem[_item], excessVelocity)) {
+                if (
+                    nextDistanceAndItem[_nextDistance] < 1e-7 &&
+                    this.tryHandOverItem(nextDistanceAndItem[_item], beltSpeed - clampedProgress)
+                ) {
                     this.items.pop();
 
                     this.numCompressedItemsAfterFirstItem = Math.max(
                         0,
                         this.numCompressedItemsAfterFirstItem - 1
                     );
+                } else {
+                    // Skip N null items after first items if we don't need to bump the next item
+                    lastItemProcessed -= this.numCompressedItemsAfterFirstItem;
                 }
+
+                isFirstItemProcessed = false;
             }
 
-            if (isFirstItemProcessed) {
-                // Skip N null items after first items
-                lastItemProcessed -= this.numCompressedItemsAfterFirstItem;
-            }
-
-            isFirstItemProcessed = false;
             this.spacingToFirstItem += clampedProgress;
             if (remainingVelocity < 1e-7) {
                 break;
