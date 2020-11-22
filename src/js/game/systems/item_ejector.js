@@ -159,9 +159,14 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
+                const maxProgress = Math.min(
+                    1.0,
+                    sourceSlot.cachedBeltPath ? sourceSlot.cachedBeltPath.spacingToFirstItem * 1.45 : 1.0
+                );
+
                 // Advance items on the slot
                 sourceSlot.progress = Math.min(
-                    1,
+                    maxProgress,
                     sourceSlot.progress +
                         progressGrowth *
                             this.root.hubGoals.getBeltBaseSpeed() *
@@ -169,11 +174,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 );
 
                 if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                    sourceSlot.progress = 1.0;
+                    sourceSlot.progress = maxProgress;
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < 1.0) {
+                if (sourceSlot.progress < maxProgress) {
                     continue;
                 }
 
