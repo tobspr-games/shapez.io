@@ -159,10 +159,16 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const maxProgress = Math.min(
-                    1.0,
-                    sourceSlot.cachedBeltPath ? sourceSlot.cachedBeltPath.spacingToFirstItem * 1.45 : 1.0
-                );
+                let maxProgress = 1.0;
+
+                // Check if there's an item blocking the ejector
+                const destPath = sourceSlot.cachedBeltPath;
+                if (destPath) {
+                    maxProgress = Math.min(
+                        1.0,
+                        sourceSlot.cachedBeltPath.spacingToFirstItem / globalConfig.itemSpacingOnBelts
+                    );
+                }
 
                 // Advance items on the slot
                 sourceSlot.progress = Math.min(
@@ -183,7 +189,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if we are ejecting to a belt path
-                const destPath = sourceSlot.cachedBeltPath;
                 if (destPath) {
                     // Try passing the item over
                     if (destPath.tryAcceptItem(item)) {
