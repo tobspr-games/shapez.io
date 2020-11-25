@@ -178,7 +178,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < maxProgress) {
+                if (sourceSlot.progress < 1.0) {
                     continue;
                 }
 
