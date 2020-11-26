@@ -166,7 +166,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 if (destPath) {
                     maxProgress = Math.min(
                         1.0,
-                        sourceSlot.cachedBeltPath.spacingToFirstItem / globalConfig.itemSpacingOnBelts
+                        destPath.spacingToFirstItem / globalConfig.itemSpacingOnBelts
                     );
                 }
 
