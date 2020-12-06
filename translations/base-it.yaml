@@ -694,8 +694,8 @@ storyRewards:
             destro è <strong>impilato sopra</strong> il sinistro!
     reward_balancer:
         title: Bilanciatore
-        desc: Hai sbloccato il  <strong>bilanciatore</strong>! Puoi usarlo 
-            per costruire fabbriche più grandi <strong> unendo e separando 
+        desc: Hai sbloccato il  <strong>bilanciatore</strong>! Puoi usarlo
+            per costruire fabbriche più grandi <strong> unendo e separando
             gli oggetti</strong> su diversi nastri!
     reward_merger:
         title: Aggregatore compatto
