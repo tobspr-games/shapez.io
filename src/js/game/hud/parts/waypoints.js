@@ -271,7 +271,7 @@ export class HUDWaypoints extends BaseHUDPart {
 
     /**
      * Splits the waypoint label on its first whitespace.
-     * @param {string} waypoint label
+     * @param {string} label
      * @returns {[string, string]}
      */
     splitWaypointLabel(label) {
