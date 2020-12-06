@@ -316,7 +316,8 @@ export class HUDWaypoints extends BaseHUDPart {
         console.log(waypoint && waypoint.hasCompass);
         const compassInput = new FormElementCheckbox({
             id: "compassChoice",
-            label: "[PLACEHOLDER] Add a compass that points to the marker:",
+            // @TODO: Add translation (T.dialogs.createMarker.descCompass)
+            label: "Add a compass that points to the marker:",
             defaultValue: waypoint ? waypoint.hasCompass : false,
         });
         const dialog = new DialogWithForm({
@@ -432,7 +433,8 @@ export class HUDWaypoints extends BaseHUDPart {
 
         // Show notification about renamed
         this.root.hud.signals.notification.dispatch(
-            "[PLACEHOLDER] Marker has been edited.",
+            // @TODO: Add translation (T.ingame.waypoints.editSuccessNotification)
+            "Marker has been edited.",
             enumNotificationType.success
         );
 
