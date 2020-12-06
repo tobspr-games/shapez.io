@@ -122,6 +122,7 @@ export const KEYCODE_RMB = 3;
  * @returns {string}
  */
 export function getStringForKeyCode(code) {
+    // @todo: Refactor into dictionary
     switch (code) {
         case KEYCODE_LMB:
             return "LMB";
@@ -248,6 +249,8 @@ export function getStringForKeyCode(code) {
             return ",";
         case 189:
             return "-";
+        case 190:
+            return ".";
         case 191:
             return "/";
         case 219:
@@ -260,7 +263,9 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return String.fromCharCode(code);
+    return (48 <= code && code <= 57) || (65 <= code && code <= 90)
+        ? String.fromCharCode(code)
+        : "[" + code + "]";
 }
 
 export class Keybinding {

@@ -191,7 +191,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         ) {
             tile = tile.addScalars(searchVector.x, searchVector.y);
 
-            /* WIRES: FIXME */
             const contents = root.map.getTileContent(tile, "regular");
             if (contents) {
                 const undergroundComp = contents.components.UndergroundBelt;

@@ -15,7 +15,7 @@ import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
 import { HUDGameMenu } from "./parts/game_menu";
 import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig, IS_DEMO } from "../../core/config";
+import { IS_MOBILE, globalConfig } from "../../core/config";
 import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { HUDStatistics } from "./parts/statistics";
@@ -45,9 +45,9 @@ import { HUDLeverToggle } from "./parts/lever_toggle";
 import { HUDLayerPreview } from "./parts/layer_preview";
 import { HUDMinerHighlight } from "./parts/miner_highlight";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
-import { HUDPerformanceWarning } from "./parts/performance_warning";
 import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";
+import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
 
 export class GameHUD {
     /**
@@ -61,6 +61,18 @@ export class GameHUD {
      * Initializes the hud parts
      */
     initialize() {
+        this.signals = {
+            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
+            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
+            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
+            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
+            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
+            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
+            unlockNotificationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
+        };
+
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
             wiresToolbar: new HUDWiresToolbar(this.root),
@@ -88,24 +100,13 @@ export class GameHUD {
             layerPreview: new HUDLayerPreview(this.root),
 
             minerHighlight: new HUDMinerHighlight(this.root),
-            performanceWarning: new HUDPerformanceWarning(this.root),
+            tutorialVideoOffer: new HUDTutorialVideoOffer(this.root),
 
             // Typing hints
             /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
             /* typehints:end */
-        };
-
-        this.signals = {
-            buildingSelectedForPlacement: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            selectedPlacementBuildingChanged: /** @type {TypedSignal<[MetaBuilding|null]>} */ (new Signal()),
-            shapePinRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
-            shapeUnpinRequested: /** @type {TypedSignal<[string]>} */ (new Signal()),
-            notification: /** @type {TypedSignal<[string, enumNotificationType]>} */ (new Signal()),
-            buildingsSelectedForCopy: /** @type {TypedSignal<[Array<number>]>} */ (new Signal()),
-            pasteBlueprintRequested: /** @type {TypedSignal<[]>} */ (new Signal()),
-            viewShapeDetailsRequested: /** @type {TypedSignal<[ShapeDefinition]>} */ (new Signal()),
         };
 
         if (!IS_MOBILE) {
@@ -116,7 +117,7 @@ export class GameHUD {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
-        if (IS_DEMO) {
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
             this.parts.watermark = new HUDWatermark(this.root);
             this.parts.standaloneAdvantages = new HUDStandaloneAdvantages(this.root);
             this.parts.catMemes = new HUDCatMemes(this.root);

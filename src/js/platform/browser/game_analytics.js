@@ -1,14 +1,12 @@
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { queryParamOptions } from "../../core/query_parameters";
+import { BeltComponent } from "../../game/components/belt";
+import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 import { GameRoot } from "../../game/root";
 import { InGameState } from "../../states/ingame";
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
-import { blueprintShape, UPGRADES } from "../../game/upgrades";
-import { tutorialGoals } from "../../game/tutorial_goals";
-import { BeltComponent } from "../../game/components/belt";
-import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
-import { queryParamOptions } from "../../core/query_parameters";
 
 const logger = createLogger("game_analytics");
 
@@ -190,23 +188,26 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
     /**
      * Returns true if the shape is interesting
+     * @param {GameRoot} root
      * @param {string} key
      */
-    isInterestingShape(key) {
-        if (key === blueprintShape) {
+    isInterestingShape(root, key) {
+        if (key === root.gameMode.getBlueprintShapeKey()) {
             return true;
         }
 
         // Check if its a story goal
-        for (let i = 0; i < tutorialGoals.length; ++i) {
-            if (key === tutorialGoals[i].shape) {
+        const levels = root.gameMode.getLevelDefinitions();
+        for (let i = 0; i < levels.length; ++i) {
+            if (key === levels[i].shape) {
                 return true;
             }
         }
 
         // Check if its required to unlock an upgrade
-        for (const upgradeKey in UPGRADES) {
-            const upgradeTiers = UPGRADES[upgradeKey];
+        const upgrades = root.gameMode.getUpgrades();
+        for (const upgradeKey in upgrades) {
+            const upgradeTiers = upgrades[upgradeKey];
             for (let i = 0; i < upgradeTiers.length; ++i) {
                 const tier = upgradeTiers[i];
                 const required = tier.required;
@@ -226,7 +227,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @param {GameRoot} root
      */
     generateGameDump(root) {
-        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(this.isInterestingShape.bind(this));
+        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(key =>
+            this.isInterestingShape(root, key)
+        );
         let shapes = {};
         for (let i = 0; i < shapeIds.length; ++i) {
             shapes[shapeIds[i]] = root.hubGoals.storedShapes[shapeIds[i]];

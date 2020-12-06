@@ -1,14 +1,14 @@
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
+import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { T } from "../../../translations";
 import { defaultBuildingVariant } from "../../meta_building";
-import { enumHubGoalRewards, tutorialGoals } from "../../tutorial_goals";
+import { enumHubGoalRewards } from "../../tutorial_goals";
+import { enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals_mappings";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { enumHubGoalRewardsToContentUnlocked } from "../../tutorial_goals_mappings";
-import { InputReceiver } from "../../../core/input_receiver";
 import { enumNotificationType } from "./notifications";
 
 export class HUDUnlockNotification extends BaseHUDPart {
@@ -53,7 +53,9 @@ export class HUDUnlockNotification extends BaseHUDPart {
     showForLevel(level, reward) {
         this.root.soundProxy.playUi(SOUNDS.levelComplete);
 
-        if (level > tutorialGoals.length) {
+        const levels = this.root.gameMode.getLevelDefinitions();
+        // Don't use getIsFreeplay() because we want the freeplay level up to show
+        if (level > levels.length) {
             this.root.hud.signals.notification.dispatch(
                 T.ingame.notifications.freeplayLevelComplete.replace("<level>", String(level)),
                 enumNotificationType.success
@@ -126,6 +128,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
     requestClose() {
         this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
+
+            this.root.hud.signals.unlockNotificationFinished.dispatch();
 
             if (!this.root.app.settings.getAllSettings().offerHints) {
                 return;

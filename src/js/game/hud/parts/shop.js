@@ -1,9 +1,8 @@
 import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
-import { formatBigNumber, makeDiv } from "../../../core/utils";
+import { formatBigNumber, getRomanNumber, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
-import { UPGRADES } from "../../upgrades";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
@@ -21,7 +20,7 @@ export class HUDShop extends BaseHUDPart {
         this.upgradeToElements = {};
 
         // Upgrades
-        for (const upgradeId in UPGRADES) {
+        for (const upgradeId in this.root.gameMode.getUpgrades()) {
             const handle = {};
             handle.requireIndexToElement = [];
 
@@ -59,7 +58,7 @@ export class HUDShop extends BaseHUDPart {
     rerenderFull() {
         for (const upgradeId in this.upgradeToElements) {
             const handle = this.upgradeToElements[upgradeId];
-            const upgradeTiers = UPGRADES[upgradeId];
+            const upgradeTiers = this.root.gameMode.getUpgrades()[upgradeId];
 
             const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
             const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
@@ -68,7 +67,7 @@ export class HUDShop extends BaseHUDPart {
             // Set tier
             handle.elemTierLabel.innerText = T.ingame.shop.tier.replace(
                 "<x>",
-                "" + T.ingame.shop.tierLabels[currentTier]
+                getRomanNumber(currentTier + 1)
             );
 
             handle.elemTierLabel.setAttribute("data-tier", currentTier);

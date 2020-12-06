@@ -225,8 +225,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
      */
     tryPassOverItem(item, receiver, slotIndex) {
         // Try figuring out how what to do with the item
-        // TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
-        // Also its just a few cases (hope it stays like this .. :x).
+        // @TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
 
         const beltComp = receiver.components.Belt;
         if (beltComp) {

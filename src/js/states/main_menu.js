@@ -1,21 +1,23 @@
-import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { A_B_TESTING_LINK_TYPE, globalConfig, IS_DEMO, THIRDPARTY_URLS } from "../core/config";
+import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
+import { GameState } from "../core/game_state";
+import { DialogWithForm } from "../core/modal_dialog_elements";
+import { FormElementInput } from "../core/modal_dialog_forms";
+import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
-    makeDiv,
-    makeButtonElement,
     formatSecondsToTimeAgo,
-    waitNextFrame,
+    generateFileDownload,
     isSupportedBrowser,
     makeButton,
+    makeButtonElement,
+    makeDiv,
     removeAllChildren,
+    startFileChoose,
+    waitNextFrame,
 } from "../core/utils";
-import { ReadWriteProxy } from "../core/read_write_proxy";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
-import { T } from "../translations";
 import { getApplicationSettingById } from "../profile/application_settings";
-import { FormElementInput } from "../core/modal_dialog_forms";
-import { DialogWithForm } from "../core/modal_dialog_elements";
+import { T } from "../translations";
 
 const trim = require("trim");
 
@@ -23,23 +25,6 @@ const trim = require("trim");
  * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
  * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
  */
-
-/**
- * Generates a file download
- * @param {string} filename
- * @param {string} text
- */
-function generateFileDownload(filename, text) {
-    var element = document.createElement("a");
-    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
-    element.setAttribute("download", filename);
-
-    element.style.display = "none";
-    document.body.appendChild(element);
-
-    element.click();
-    document.body.removeChild(element);
-}
 
 export class MainMenuState extends GameState {
     constructor() {
@@ -49,18 +34,16 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
-
             <p>${T.demoBanners.intro}</p>
-
             <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
         `;
 
-        return `
+        const showDemoBadges = this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
+        return `
             <div class="topButtons">
                 <button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
                 <button class="settingsButton"></button>
-
             ${
                 G_IS_STANDALONE || G_IS_DEV
                     ? `
@@ -74,17 +57,14 @@ export class MainMenuState extends GameState {
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
             </video>
 
-
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
                 <span class="updateLabel">Wires update!</span>
             </div>
 
-
-            <div class="mainWrapper ${IS_DEMO ? "demo" : "noDemo"}">
-
+            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
                 <div class="sideContainer">
-                    ${IS_DEMO ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
+                    ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
@@ -95,12 +75,9 @@ export class MainMenuState extends GameState {
                     }
                     <div class="buttons"></div>
                 </div>
-
-
             </div>
 
             <div class="footer">
-
                 <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
@@ -123,32 +100,29 @@ export class MainMenuState extends GameState {
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
-
             </div>
         `;
     }
 
+    /**
+     * Asks the user to import a savegame
+     */
     requestImportSavegame() {
         if (
-            IS_DEMO &&
             this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
-            !this.app.platformWrapper.getHasUnlimitedSavegames()
+            !this.app.restrictionMgr.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("importgame_slot_limit_show");
             this.showSavegameSlotLimit();
             return;
         }
 
-        var input = document.createElement("input");
-        input.type = "file";
-        input.accept = ".bin";
-
-        input.onchange = e => {
-            const file = input.files[0];
+        // Create a 'fake' file-input to accept savegames
+        startFileChoose(".bin").then(file => {
             if (file) {
+                const closeLoader = this.dialogs.showLoadingDialog();
                 waitNextFrame().then(() => {
                     this.app.analytics.trackUiClick("import_savegame");
-                    const closeLoader = this.dialogs.showLoadingDialog();
                     const reader = new FileReader();
                     reader.addEventListener("load", event => {
                         const contents = event.target.result;
@@ -194,8 +168,7 @@ export class MainMenuState extends GameState {
                     reader.readAsText(file, "utf-8");
                 });
             }
-        };
-        input.click();
+        });
     }
 
     onBackButton() {
@@ -347,20 +320,23 @@ export class MainMenuState extends GameState {
         });
 
         optionSelected.add(value => {
-            this.app.settings.updateLanguage(value);
-            if (setting.restartRequired) {
-                if (this.app.platformWrapper.getSupportsRestart()) {
-                    this.app.platformWrapper.performRestart();
-                } else {
-                    this.dialogs.showInfo(T.dialogs.restartRequired.title, T.dialogs.restartRequired.text, [
-                        "ok:good",
-                    ]);
+            this.app.settings.updateLanguage(value).then(() => {
+                if (setting.restartRequired) {
+                    if (this.app.platformWrapper.getSupportsRestart()) {
+                        this.app.platformWrapper.performRestart();
+                    } else {
+                        this.dialogs.showInfo(
+                            T.dialogs.restartRequired.title,
+                            T.dialogs.restartRequired.text,
+                            ["ok:good"]
+                        );
+                    }
                 }
-            }
 
-            if (setting.changeCb) {
-                setting.changeCb(this.app, value);
-            }
+                if (setting.changeCb) {
+                    setting.changeCb(this.app, value);
+                }
+            });
 
             // Update current icon
             this.htmlElement.querySelector("button.languageChoose").setAttribute("data-languageIcon", value);
@@ -557,9 +533,8 @@ export class MainMenuState extends GameState {
 
     onPlayButtonClicked() {
         if (
-            IS_DEMO &&
             this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
-            !this.app.platformWrapper.getHasUnlimitedSavegames()
+            !this.app.restrictionMgr.getHasUnlimitedSavegames()
         ) {
             this.app.analytics.trackUiClick("startgame_slot_limit_show");
             this.showSavegameSlotLimit();

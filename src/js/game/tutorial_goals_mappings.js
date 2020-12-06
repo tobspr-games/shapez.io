@@ -55,7 +55,7 @@ export const enumHubGoalRewardsToContentUnlocked = {
     ]),
     [enumHubGoalRewards.reward_logic_gates]: typed([[MetaLogicGateBuilding, defaultBuildingVariant]]),
     [enumHubGoalRewards.reward_filter]: typed([[MetaFilterBuilding, defaultBuildingVariant]]),
-    [enumHubGoalRewards.reward_virtual_processing]: null, // @TODO!
+    [enumHubGoalRewards.reward_virtual_processing]: null,
 
     [enumHubGoalRewards.reward_wires_painter_and_levers]: typed([
         [MetaPainterBuilding, enumPainterVariants.quad],

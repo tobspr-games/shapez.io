@@ -12,7 +12,6 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
-import { blueprintShape } from "../upgrades";
 
 export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -61,7 +60,9 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
                 this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
                     this.root.hubGoals.currentGoal.definition
                 ),
-                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(blueprintShape),
+                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
+                    this.root.gameMode.getBlueprintShapeKey()
+                ),
                 ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
                     this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
                 ),

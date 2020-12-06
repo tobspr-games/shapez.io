@@ -71,10 +71,6 @@ releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
 
-// FIXME
-// const cordova = require("./cordova");
-// cordova.gulptasksCordova($, gulp, buildFolder);
-
 /////////////////////  BUILD TASKS  /////////////////////
 
 // Cleans up everything
@@ -86,8 +82,16 @@ gulp.task("utils.cleanBuildTempFolder", () => {
         .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false, allowEmpty: true })
         .pipe($.clean({ force: true }));
 });
+gulp.task("utils.cleanImageBuildFolder", () => {
+    return gulp
+        .src(path.join(__dirname, "res_built"), { read: false, allowEmpty: true })
+        .pipe($.clean({ force: true }));
+});
 
-gulp.task("utils.cleanup", gulp.series("utils.cleanBuildFolder", "utils.cleanBuildTempFolder"));
+gulp.task(
+    "utils.cleanup",
+    gulp.series("utils.cleanBuildFolder", "utils.cleanImageBuildFolder", "utils.cleanBuildTempFolder")
+);
 
 // Requires no uncomitted files
 gulp.task("utils.requireCleanWorkingTree", cb => {
@@ -174,10 +178,12 @@ function serve({ standalone }) {
     );
 
     // Watch resource files and copy them on change
+    gulp.watch(imgres.rawImageResourcesGlobs, gulp.series("imgres.buildAtlas"));
     gulp.watch(imgres.nonImageResourcesGlobs, gulp.series("imgres.copyNonImageResources"));
     gulp.watch(imgres.imageResourcesGlobs, gulp.series("imgres.copyImageResources"));
 
     // Watch .atlas files and recompile the atlas on change
+    gulp.watch("../res_built/atlas/*.atlas", gulp.series("imgres.atlasToJson"));
     gulp.watch("../res_built/atlas/*.json", gulp.series("imgres.atlas"));
 
     // Watch the build folder and reload when anything changed
@@ -215,6 +221,8 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",
@@ -230,12 +238,13 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "imgres.buildAtlas",
+        "imgres.atlasToJson",
         "imgres.atlas",
         "sounds.dev",
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
-        "js.standalone-dev",
         "css.dev",
         "html.standalone-dev"
     )

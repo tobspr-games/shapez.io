@@ -19,7 +19,6 @@ import { getCodeFromBuildingData } from "../../game/building_codes.js";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity.js";
 import { Entity } from "../../game/entity.js";
 import { defaultBuildingVariant, MetaBuilding } from "../../game/meta_building.js";
-import { finalGameShape } from "../../game/upgrades.js";
 import { SavegameInterface_V1005 } from "./1005.js";
 
 const schema = require("./1006.json");
@@ -152,7 +151,8 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             stored[shapeKey] = rebalance(stored[shapeKey]);
         }
 
-        stored[finalGameShape] = 0;
+        // Reset final game shape
+        stored["RuCw--Cw:----Ru--"] = 0;
 
         // Reduce goals
         if (dump.hubGoals.currentGoal) {
@@ -248,7 +248,7 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             if (components.Storage) {
                 // @ts-ignore
                 components.Storage = {
-                    storedCount: 0,
+                    storedCount: rebalance(components.Storage.storedCount),
                     storedItem: null,
                 };
             }

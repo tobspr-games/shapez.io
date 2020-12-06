@@ -26,7 +26,7 @@ export class ItemEjectorComponent extends Component {
     static getSchema() {
         // The cachedDestSlot, cachedTargetEntity fields are not serialized.
         return {
-            slots: types.array(
+            slots: types.fixedSizeArray(
                 types.structured({
                     item: types.nullable(typeItemSingleton),
                     progress: types.float,
