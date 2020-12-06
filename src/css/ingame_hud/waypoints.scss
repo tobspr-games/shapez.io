@@ -103,6 +103,14 @@
         }
 
         &.shapeIcon {
+            .shapeIconText {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                canvas {
+                    @include S(margin-right, 1px);
+                }
+            }
+
             canvas {
                 @include S(width, 15px);
                 @include S(height, 15px);

@@ -186,10 +186,11 @@ export class HUDWaypoints extends BaseHUDPart {
         for (let i = 0; i < this.waypoints.length; ++i) {
             const waypoint = this.waypoints[i];
             const label = this.getWaypointLabel(waypoint);
+            const [textOrShortKey, emptyOrText] = this.splitWaypointLabel(label);
 
             const element = makeDiv(this.waypointsListElement, null, ["waypoint"]);
 
-            if (ShapeDefinition.isValidShortKey(label)) {
+            if (ShapeDefinition.isValidShortKey(textOrShortKey)) {
                 const canvas = this.getWaypointCanvas(waypoint);
                 /**
                  * Create a clone of the cached canvas, as calling appendElement when a canvas is
@@ -197,11 +198,21 @@ export class HUDWaypoints extends BaseHUDPart {
                  */
                 const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
                     smooth: true,
-                    label: label + "-waypoint-" + i,
+                    label: textOrShortKey + "-waypoint-" + i,
                 });
                 context.drawImage(canvas, 0, 0);
-                element.appendChild(newCanvas);
                 element.classList.add("shapeIcon");
+                if (emptyOrText.length > 0) {
+                    // if additional text should be rendered, nest the canvas and the text
+                    // in a wrapper element to preserve waypoints list grid format
+                    const combinedElement = makeDiv(element, null, ["shapeIconText"]);
+                    const textElement = makeDiv(combinedElement);
+                    combinedElement.appendChild(newCanvas);
+                    combinedElement.appendChild(textElement);
+                    textElement.innerText = emptyOrText;
+                } else {
+                    element.appendChild(newCanvas);
+                }
             } else {
                 element.innerText = label;
             }
@@ -247,7 +258,7 @@ export class HUDWaypoints extends BaseHUDPart {
      * @returns {HTMLCanvasElement}
      */
     getWaypointCanvas(waypoint) {
-        const key = waypoint.label;
+        const key = this.splitWaypointLabel(this.getWaypointLabel(waypoint))[0];
         if (this.cachedKeyToCanvas[key]) {
             return this.cachedKeyToCanvas[key];
         }
@@ -256,6 +267,18 @@ export class HUDWaypoints extends BaseHUDPart {
         const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
         const preRendered = definition.generateAsCanvas(48);
         return (this.cachedKeyToCanvas[key] = preRendered);
+    }
+
+    /**
+     * Splits the waypoint label on its first whitespace.
+     * @param {string} waypoint label
+     * @returns {[string, string]}
+     */
+    splitWaypointLabel(label) {
+        const firstLabelWhitespaceIdx = label.search(/\s/);
+        return firstLabelWhitespaceIdx < 0
+            ? [label, ""]
+            : [label.substring(0, firstLabelWhitespaceIdx), label.slice(firstLabelWhitespaceIdx)];
     }
 
     /**
@@ -423,14 +446,21 @@ export class HUDWaypoints extends BaseHUDPart {
         const scale = this.getWaypointUiScale();
         const screenPos = this.root.camera.worldToScreen(new Vector(waypoint.center.x, waypoint.center.y));
 
-        // Distinguish between text and item waypoints -> Figure out parameters
+        // Distinguish between text, item and combined waypoints -> Figure out parameters
         const originalLabel = this.getWaypointLabel(waypoint);
+        const [shortKeyOrText, restOrEmpty] = this.splitWaypointLabel(originalLabel);
         let text, item, textWidth;
 
-        if (ShapeDefinition.isValidShortKey(originalLabel)) {
-            // If the label is actually a key, render the shape icon
-            item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey(originalLabel);
-            textWidth = 40;
+        if (ShapeDefinition.isValidShortKey(shortKeyOrText)) {
+            // If the label starts with an actual key, render the shape icon
+            item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey(shortKeyOrText);
+            // Render the optinal rest of the label as text
+            if (restOrEmpty.length == 0) {
+                textWidth = 40;
+            } else {
+                text = restOrEmpty;
+                textWidth = 25 + this.getTextWidth(text);
+            }
         } else {
             // Otherwise render a regular waypoint
             text = originalLabel;
@@ -533,7 +563,7 @@ export class HUDWaypoints extends BaseHUDPart {
             context.globalAlpha = 1;
         }
 
-        // Render the regualr icon
+        // Render the regular icon
         const iconOpacity = 1 - this.currentCompassOpacity;
         if (iconOpacity > 0.01) {
             context.globalAlpha = iconOpacity;
@@ -584,16 +614,16 @@ export class HUDWaypoints extends BaseHUDPart {
             const bounds = waypointData.screenBounds;
             const contentPaddingX = 7 * scale;
             const isSelected = mousePos && bounds.containsPoint(mousePos.x, mousePos.y);
+            const itemSize = 14 * scale;
 
             // Render the background rectangle
             parameters.context.globalAlpha = this.currentMarkerOpacity * (isSelected ? 1 : 0.7);
             parameters.context.fillStyle = "rgba(255, 255, 255, 0.7)";
             parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
 
-            // Render the text
+            // Render the item
             if (waypointData.item) {
                 const canvas = this.getWaypointCanvas(waypoint);
-                const itemSize = 14 * scale;
                 parameters.context.drawImage(
                     canvas,
                     bounds.x + contentPaddingX + 6 * scale,
@@ -601,17 +631,19 @@ export class HUDWaypoints extends BaseHUDPart {
                     itemSize,
                     itemSize
                 );
-            } else if (waypointData.text) {
+            }
+            if (waypointData.text) {
                 // Render the text
                 parameters.context.fillStyle = "#000";
                 parameters.context.textBaseline = "middle";
                 parameters.context.fillText(
                     waypointData.text,
-                    bounds.x + contentPaddingX + 6 * scale,
+                    bounds.x + contentPaddingX + 6 * scale + (waypointData.item ? itemSize : 0),
                     bounds.y + bounds.h / 2
                 );
                 parameters.context.textBaseline = "alphabetic";
-            } else {
+            }
+            if (!waypointData.item && !waypointData.text) {
                 assertAlways(false, "Waypoint has no item and text");
             }
 
