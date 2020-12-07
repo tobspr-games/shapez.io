@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "1.2.2",
         date: "07.12.2020",
         entries: [
+            "Fix item readers and some other buildings slowing up belts, especially if they stalled (inspired by Keterr's fix)",
             "Added the ability to edit constant signals by left clicking them",
             "You can now add markers in the wire layer (partially by daanbreur)",
             "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by EmeraldBlock)",
