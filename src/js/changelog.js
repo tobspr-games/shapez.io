@@ -9,6 +9,7 @@ export const CHANGELOG = [
             "Allow to cycle variants backwards with SHIFT + T",
             "Upgrade numbers now use roman numerals until tier 50 (by LeopoldTal)",
             "Add button to unpin shapes from the left side (by artemisSystem)",
+            "Fix middle mouse button also placing blueprints (by Eiim)",
             "Updated translations (Thanks to all contributors!)",
         ],
     },

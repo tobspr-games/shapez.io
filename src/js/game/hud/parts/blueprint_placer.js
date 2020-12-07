@@ -108,9 +108,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 this.abortPlacement();
                 return STOP_PROPAGATION;
             }
-        }
-
-        if (button === enumMouseButton.left) {
+        } else if (button === enumMouseButton.left) {
             const blueprint = this.currentBlueprint.get();
             if (!blueprint) {
                 return;
