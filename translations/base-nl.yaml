@@ -53,7 +53,7 @@ global:
     thousandsDivider: .
     decimalSeparator: ","
     suffix:
-        thousands: k
+        thousands: K
         millions: M
         billions: B
         trillions: T
@@ -61,11 +61,11 @@ global:
     time:
         oneSecondAgo: een seconde geleden
         xSecondsAgo: <x> seconden geleden
-        oneMinuteAgo: een minuut geleden
+        oneMinuteAgo: één minuut geleden
         xMinutesAgo: <x> minuten geleden
-        oneHourAgo: een uur geleden
+        oneHourAgo: één uur geleden
         xHoursAgo: <x> uren geleden
-        oneDayAgo: een dag geleden
+        oneDayAgo: één dag geleden
         xDaysAgo: <x> dagen geleden
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
@@ -83,7 +83,7 @@ demoBanners:
     intro: Koop de standalone om alle functies te ontgrendelen!
 mainMenu:
     play: Spelen
-    changelog: Changelog
+    changelog: Wijzigingenlijst
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
     discordLink: Officiële Discord-server (Engelstalig)
@@ -103,7 +103,7 @@ dialogs:
         delete: Verwijder
         cancel: Annuleer
         later: Later
-        restart: Herstarten
+        restart: Herstart
         reset: Reset
         getStandalone: Koop de Standalone
         deleteGame: Ik weet wat ik doe
@@ -117,7 +117,7 @@ dialogs:
         title: Savegame geïmporteerd
         text: Je savegame is succesvol geïmporteerd.
     gameLoadFailure:
-        title: Het spel is kapot
+        title: Corrupte savegame
         text: "Het laden van je savegame is mislukt:"
     confirmSavegameDelete:
         title: Bevestig het verwijderen
