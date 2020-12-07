@@ -1,6 +1,7 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
@@ -16,8 +17,10 @@ import {
 import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { BaseItem } from "../../base_item";
+import { MetaHubBuilding } from "../../buildings/hub";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { layers } from "../../root";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -26,7 +29,8 @@ import { enumNotificationType } from "./notifications";
 /** @typedef {{
  *   label: string | null,
  *   center: { x: number, y: number },
- *   zoomLevel: number
+ *   zoomLevel: number,
+ *   layer: Layer,
  * }} Waypoint */
 
 /**
@@ -98,6 +102,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 label: null,
                 center: { x: 0, y: 0 },
                 zoomLevel: 3,
+                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
             },
         ];
 
@@ -228,6 +233,7 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {Waypoint} waypoint
      */
     moveToWaypoint(waypoint) {
+        this.root.currentLayer = waypoint.layer;
         this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
         this.root.camera.setDesiredZoom(waypoint.zoomLevel);
     }
@@ -326,6 +332,7 @@ export class HUDWaypoints extends BaseHUDPart {
             label,
             center: { x: position.x, y: position.y },
             zoomLevel: this.root.camera.zoomLevel,
+            layer: this.root.currentLayer,
         });
 
         this.sortWaypoints();
