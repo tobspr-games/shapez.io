@@ -2,11 +2,11 @@ steamPage:
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
-        Shapez.io 是一个休闲游戏，在其中，您将建造工厂以生产各种各样的几何图形。
-        随着等级提升，您需要生产的图形将会越来越复杂，您需要在无尽的地图中不断的扩建您的工厂。
-        如果这些还不够的话，您的生产目标是指数性增长的 - 您需要持续的增大工厂的规模！
-        虽然您刚开始只需要生产图形，但您之后还可以给这些图形上色 - 您需要开采并混合颜料！
-        您可以在 Steam 游戏商城购买此游戏的完整版, 但您可以先游玩试玩版并体验游戏！
+        Shapez.io 是一个休闲游戏，在其中，你将建造工厂以生产各种各样的几何图形。
+        随着等级提升，你需要生产的图形将会越来越复杂，你需要在无尽的地图中不断的扩建你的工厂。
+        如果这些还不够的话，你的生产目标是指数性增长的 - 你需要持续的增大工厂的规模！
+        虽然你刚开始只需要生产图形，但你之后还可以给这些图形上色 - 你需要开采并混合颜料！
+        你可以在 Steam 游戏商城购买此游戏的完整版, 但你可以先游玩试玩版并体验游戏！
     title_advantages: 完整版内容
     advantages:
         - <b>12 个全新关卡</b> 总共 26 个不同关卡
@@ -175,7 +175,7 @@ dialogs:
             can generate <link>here</link>)
     renameSavegame:
         title: 重命名存档
-        desc: 您可以在此重命名存档。
+        desc: 你可以在此重命名存档。
     tutorialVideoAvailable:
         title: Tutorial Available
         desc: There is a tutorial video available for this level! Would you like to
