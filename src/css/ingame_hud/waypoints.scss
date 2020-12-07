@@ -61,6 +61,12 @@
             /* @load-async */
             background: uiResource("icons/waypoint.png") left 50% / #{D(8px)} no-repeat;
         }
+
+        &.layer--wires {
+            /* @load-async */
+            background-image: uiResource("icons/waypoint_wires.png");
+        }
+
         opacity: 0.7;
         @include S(margin-bottom, 1px);
         font-weight: bold;

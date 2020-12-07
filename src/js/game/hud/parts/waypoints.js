@@ -20,7 +20,6 @@ import { BaseItem } from "../../base_item";
 import { MetaHubBuilding } from "../../buildings/hub";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
-import { layers } from "../../root";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -92,7 +91,12 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     initialize() {
         // Cache the sprite for the waypoints
-        this.waypointSprite = Loader.getSprite("sprites/misc/waypoint.png");
+
+        this.waypointSprites = {
+            regular: Loader.getSprite("sprites/misc/waypoint.png"),
+            wires: Loader.getSprite("sprites/misc/waypoint_wires.png"),
+        };
+
         this.directionIndicatorSprite = Loader.getSprite("sprites/misc/hub_direction_indicator.png");
 
         /** @type {Array<Waypoint>}
@@ -192,7 +196,10 @@ export class HUDWaypoints extends BaseHUDPart {
             const waypoint = this.waypoints[i];
             const label = this.getWaypointLabel(waypoint);
 
-            const element = makeDiv(this.waypointsListElement, null, ["waypoint"]);
+            const element = makeDiv(this.waypointsListElement, null, [
+                "waypoint",
+                "layer--" + waypoint.layer,
+            ]);
 
             if (ShapeDefinition.isValidShortKey(label)) {
                 const canvas = this.getWaypointCanvas(waypoint);
@@ -544,7 +551,7 @@ export class HUDWaypoints extends BaseHUDPart {
         const iconOpacity = 1 - this.currentCompassOpacity;
         if (iconOpacity > 0.01) {
             context.globalAlpha = iconOpacity;
-            this.waypointSprite.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
+            this.waypointSprites.regular.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
             context.globalAlpha = 1;
         }
     }
@@ -623,11 +630,11 @@ export class HUDWaypoints extends BaseHUDPart {
             }
 
             // Render the small icon on the left
-            this.waypointSprite.drawCentered(
+            this.waypointSprites[waypoint.layer].drawCentered(
                 parameters.context,
                 bounds.x + contentPaddingX,
                 bounds.y + bounds.h / 2,
-                bounds.h * 0.7
+                bounds.h * 0.6
             );
         }
 

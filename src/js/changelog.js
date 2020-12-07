@@ -2,7 +2,10 @@ export const CHANGELOG = [
     {
         version: "1.2.2",
         date: "07.12.2020",
-        entries: ["Added the ability to edit constant signals by left clicking them"],
+        entries: [
+            "Added the ability to edit constant signals by left clicking them",
+            "You can now add markers in the wire layer (partially by daanbreur)",
+        ],
     },
     {
         version: "1.2.1",
