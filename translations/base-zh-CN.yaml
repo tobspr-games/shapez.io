@@ -59,7 +59,7 @@ global:
         xDaysAgo: <x>天前
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
-        hoursAndMinutesShort: <hours>时 <minutes>秒
+        hoursAndMinutesShort: <hours>时 <minutes>分
         xMinutes: <x>分钟
     keys:
         tab: TAB
