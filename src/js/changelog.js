@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Added the ability to edit constant signals by left clicking them",
             "You can now add markers in the wire layer (partially by daanbreur)",
+            "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by emeraldblock)",
         ],
     },
     {
