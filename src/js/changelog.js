@@ -1,5 +1,10 @@
 export const CHANGELOG = [
     {
+        version: "1.2.2",
+        date: "07.12.2020",
+        entries: ["Added the ability to edit constant signals by left clicking them"],
+    },
+    {
         version: "1.2.1",
         date: "31.10.2020",
         entries: [
