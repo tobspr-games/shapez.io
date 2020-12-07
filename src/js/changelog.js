@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Fix item readers and some other buildings slowing up belts, especially if they stalled (inspired by Keterr's fix)",
             "Added the ability to edit constant signals by left clicking them",
+            "Prevent items from being rendered on each other when a belt stalls (inspired by Keterr)",
             "You can now add markers in the wire layer (partially by daanbreur)",
             "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by EmeraldBlock)",
             "Allow to cycle variants backwards with SHIFT + T",

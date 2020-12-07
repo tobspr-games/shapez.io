@@ -328,6 +328,21 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
+                // Limit the progress to the maximum available space on the next belt (also see #1000)
+                let progress = slot.progress;
+                const nextBeltPath = slot.cachedBeltPath;
+                if (nextBeltPath) {
+                    progress = Math.min(
+                        progress,
+                        nextBeltPath.spacingToFirstItem / globalConfig.itemSpacingOnBelts
+                    );
+                }
+
+                // Skip if the item would barely be visible
+                if (progress < 0.05) {
+                    continue;
+                }
+
                 const realPosition = staticComp.localTileToWorld(slot.pos);
                 if (!chunk.tileSpaceRectangle.containsPoint(realPosition.x, realPosition.y)) {
                     // Not within this chunk
@@ -337,8 +352,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const realDirection = staticComp.localDirectionToWorld(slot.direction);
                 const realDirectionVector = enumDirectionToVector[realDirection];
 
-                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * slot.progress;
-                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * slot.progress;
+                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * progress;
+                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * progress;
 
                 const worldX = tileX * globalConfig.tileSize;
                 const worldY = tileY * globalConfig.tileSize;
