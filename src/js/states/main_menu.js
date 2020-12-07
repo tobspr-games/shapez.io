@@ -59,7 +59,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                <span class="updateLabel">Wires update!</span>
+                <span class="updateLabel">v${G_BUILD_VERSION}</span>
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
