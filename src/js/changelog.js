@@ -13,6 +13,7 @@ export const CHANGELOG = [
             "Add button to unpin shapes from the left side (by artemisSystem)",
             "Fix middle mouse button also placing blueprints (by Eiim)",
             "Hide wires grid when using the 'Disable Grid' setting (by EmeraldBlock)",
+            "Fix UI using multiple different save icons",
             "Updated translations (Thanks to all contributors!)",
         ],
     },
