@@ -15,6 +15,11 @@
 		"vetur.format.defaultFormatter.ts": "vscode-typescript",
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true,
-		"files.trimTrailingWhitespace": true
+		"files.trimTrailingWhitespace": true,
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#163328",
+			"titleBar.activeBackground": "#1F4738",
+			"titleBar.activeForeground": "#F7FBFA"
+		}
 	}
 }

@@ -6,7 +6,10 @@ export const CHANGELOG = [
             "Added the ability to edit constant signals by left clicking them",
             "You can now add markers in the wire layer (partially by daanbreur)",
             "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by emeraldblock)",
+            "Allow to cycle variants backwards with SHIFT + T",
             "Upgrade numbers now use roman numerals until tier 50 (by LeopoldTal)",
+            "Add button to unpin shapes from the left side (by artemisSystem)",
+            "Updated translations (Thanks to all contributors!)",
         ],
     },
     {
