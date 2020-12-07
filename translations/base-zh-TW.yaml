@@ -199,7 +199,7 @@ ingame:
         cutSelection: 剪下選取
         copySelection: 複製選取
         clearSelection: 清空選取
-        pipette: 吸附
+        pipette: 滴管
         switchLayers: 切換層
     buildingPlacement:
         cycleBuildingVariants: 按<key>鍵以選擇建築變體.
