@@ -126,6 +126,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
                 this.root.soundProxy.playUi(SOUNDS.placeBuilding);
             }
+            return STOP_PROPAGATION;
         }
     }
 

@@ -23,9 +23,6 @@ export class HUDConstantSignalEdit extends BaseHUDPart {
                         deleteOnCancel: false,
                     });
                     return STOP_PROPAGATION;
-                } else if (button === enumMouseButton.right) {
-                    this.root.logic.tryDeleteBuilding(contents);
-                    return STOP_PROPAGATION;
                 }
             }
         }
