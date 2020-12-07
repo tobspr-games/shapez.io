@@ -2,8 +2,8 @@
     "name": "shapez.io",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/tobspr/shapez.io",
-    "author": "Tobias Springer <tobias.springer1@gmail.com>",
+    "repository": "https://github.com/malte9799/shapez.io",
+    "author": "Malte9799 <maltem.hilpert@gmx.de>",
     "license": "MIT",
     "private": true,
     "scripts": {
