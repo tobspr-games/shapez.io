@@ -313,19 +313,19 @@ ingame:
                 esteiras para concluir o objetivo mais rapidamente.<br><br>Dica,
                 segure <strong>SHIFT</strong> para colocar vários extratores e
                 use <strong>R</strong> para girá-los.
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
+            2_1_place_cutter: "Agora coloque um <strong>Cortador</strong> para cortar os círculos em duas
+                metades!<br><br> PS: O cortador sempre corta de <strong>cima para
+                baixo</strong> independentemente de sua orientação."
+            2_2_place_trash: O cortador pode <strong>emtupir e parar</strong>!<br><br> Use um
+                <strong>lixo</strong> para se livrar do que atualmente (!) não for
+                necessário.
+            2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2 cortadores</strong> para acelerar
+                este processo lento!<br><br> PS: Use as <strong> hotkeys 0-9
+                </strong> para acessar as construções mais rápido!"
+            3_1_rectangles: "Vamos extrair alguns retângulos! <strong>Construa 4
+                extratores</strong> e conecte-os ao hub.<br><br> PS:
+                Segure <strong>SHIFT</strong> enquanto arrasta a esteira para ativar o
+                planejador de esteiras!"
             21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
                 <strong>circles</strong>, <strong>white</strong> and
                 <strong>red</strong> color!
@@ -440,7 +440,7 @@ buildings:
             name: Rotacionador (Anti-horário)
             description: Gira as formas no sentido anti-horário em 90 graus.
         rotate180:
-            name: Rotacionador (180)
+            name: Rotacionador (180°)
             description: Gira as formas em 180 graus.
     stacker:
         default:
@@ -701,7 +701,7 @@ storyRewards:
             você meça a passagem de itens em uma esteira.<br><br>Espere até você
             desbloquear os fios - ele se torna muito útil!
     reward_rotater_180:
-        title: Rotacionador (180 graus)
+        title: Rotacionador (180°)
         desc: Você acabou de desbloquear o <strong>rotacionador</strong> de 180 graus! -
             Ele permite que você rotacione uma forma em 180 graus (Surpresa! :D)
     reward_display:
