@@ -63,7 +63,7 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
-                buffered: slot.buffered,
+                buffered: !!slot.buffered,
                 nextItem: null,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
