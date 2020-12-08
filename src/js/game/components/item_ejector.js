@@ -12,7 +12,8 @@ import { typeItemSingleton } from "../item_resolver";
  *    direction: enumDirection,
  *    item: BaseItem,
  *    progress: number?,
- *    nextItem?: BaseItem,
+ *    buffered: boolean,
+ *    nextItem: BaseItem,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
  *    cachedBeltPath?: BeltPath,
  *    cachedTargetEntity?: Entity
@@ -62,7 +63,8 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 progress: 0,
-                nextItem: slot.buffered ? null : undefined,
+                buffered: slot.buffered,
+                nextItem: null,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
@@ -99,7 +101,8 @@ export class ItemEjectorComponent extends Component {
      */
     canEjectOnSlot(slotIndex) {
         assert(slotIndex >= 0 && slotIndex < this.slots.length, "Invalid ejector slot: " + slotIndex);
-        return !this.slots[slotIndex].item || this.slots[slotIndex].nextItem === null;
+        const slot = this.slots[slotIndex];
+        return !slot.item || (slot.buffered && !slot.nextItem);
     }
 
     /**
@@ -142,11 +145,11 @@ export class ItemEjectorComponent extends Component {
     takeSlotItem(slotIndex) {
         const slot = this.slots[slotIndex];
         const item = slot.item;
-        if (slot.nextItem === undefined) {
-            slot.item = null;
-        } else {
+        if (slot.buffered) {
             slot.item = slot.nextItem;
             slot.nextItem = null;
+        } else {
+            slot.item = null;
         }
         slot.progress = 0.0;
         return item;
