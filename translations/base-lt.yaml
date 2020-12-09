@@ -688,8 +688,8 @@ storyRewards:
             wires - then it gets really useful!
     reward_rotater_180:
         title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        desc: You just unlocked the 180 degrees <strong>rotater</strong>! - It allows
+            you to rotate a shape by 180 degrees (Surprise! :D)
     reward_display:
         title: Display
         desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
