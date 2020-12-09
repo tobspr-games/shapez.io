@@ -922,11 +922,10 @@ settings:
         mapResourcesScale:
             title: Tamanho do Mapa de Recursos
             description: Controla o tamanho das formas no mapa de panorama (quando afasta o zoom).
-                out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles
-    hint: "Tip: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
+    hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
         opções de construção."
     resetKeybindings: Resetar Controles
     categoryLabels:
