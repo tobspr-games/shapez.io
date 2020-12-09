@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.2.3",
+        date: "unreleased",
+        entries: [
+            "Fixed constant signals being editable from the regular layer",
+            "Fixed items still overlapping sometimes between buildings and belts",
+        ],
+    },
+    {
         version: "1.2.2",
         date: "07.12.2020",
         entries: [

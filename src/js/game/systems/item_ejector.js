@@ -332,10 +332,53 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 let progress = slot.progress;
                 const nextBeltPath = slot.cachedBeltPath;
                 if (nextBeltPath) {
-                    progress = Math.min(
-                        progress,
-                        nextBeltPath.spacingToFirstItem / globalConfig.itemSpacingOnBelts
-                    );
+                    /*
+                    If you imagine the track between the center of the building and the center of the first belt as
+                    a range from 0 to 1:
+
+                           Building              Belt
+                    |         X         |         X         |
+                    |         0...................1         |
+
+                    And for example the first item on belt has a distance of 0.4 to the beginning of the belt:
+
+                           Building              Belt
+                    |         X         |         X         |
+                    |         0...................1         |
+                                               ^ item
+
+                    Then the space towards this first item is always 0.5 (the distance from the center of the building to the beginning of the belt)
+                    PLUS the spacing to the item, so in this case 0.5 + 0.4 = 0.9:
+
+                    Building              Belt
+                    |         X         |         X         |
+                    |         0...................1         |
+                                               ^ item @ 0.9
+
+                    Since items must not get clashed, we need to substract some spacing (lets assume it is 0.6, exact value see globalConfig.itemSpacingOnBelts),
+                    So we do 0.9 - globalConfig.itemSpacingOnBelts = 0.3
+
+                    Building              Belt
+                    |         X         |         X         |
+                    |         0...................1         |
+                                    ^           ^ item @ 0.9
+                                    ^ max progress = 0.3
+
+                    Because now our range actually only goes to the end of the building, and not towards the center of the building, we need to multiply
+                    all values by 2:
+
+                    Building              Belt
+                    |         X         |         X         |
+                    |         0.........1.........2         |
+                                    ^           ^ item @ 1.8
+                                    ^ max progress = 0.6
+
+                    And that's it! If you summarize the calculations from above into a formula, you get the one below.
+                    */
+
+                    const maxProgress =
+                        (0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts) * 2;
+                    progress = Math.min(maxProgress, progress);
                 }
 
                 // Skip if the item would barely be visible
