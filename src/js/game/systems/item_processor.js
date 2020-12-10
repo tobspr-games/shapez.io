@@ -91,7 +91,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
-                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
+                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds + processorComp.bonusTime;
+                    processorComp.bonusTime = 0;
                     if (currentCharge.remainingTime > 0.0) {
                         // This charge is not finished, so don't process the next one
                         break;
@@ -302,15 +303,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         // Queue Charge
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        const originalTime = 1 / baseSpeed;
 
-        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
-        const timeToProcess = originalTime - bonusTimeToApply;
-
-        processorComp.bonusTime -= bonusTimeToApply;
         processorComp.ongoingCharges.push({
             items: outItems,
-            remainingTime: timeToProcess,
+            remainingTime: 1 / baseSpeed,
         });
     }
 
