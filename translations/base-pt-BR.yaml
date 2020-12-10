@@ -586,7 +586,7 @@ buildings:
                 entrada direita.
     item_producer:
         default:
-            name: Fábricante de Itens
+            name: Fabricante de Itens
             description: Disponível no modo sandbox apenas, envia o sinal recebido do plano
                 de fios para o plano regular.
 storyRewards:
@@ -657,7 +657,7 @@ storyRewards:
         title: Armazém
         desc: Você desbloqueou o <strong>armazém</strong> - Permite que você
             armazene itens até uma certa capacidade!<br><br> Ele prioriza a saída
-            da esquerda, para que você tambpem possa usá-lo como um <strong>portão de excesso</strong>!
+            da esquerda, para que você também possa usá-lo como um <strong>portão de excesso</strong>!
     reward_freeplay:
         title: Modo Livre
         desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso
@@ -917,17 +917,15 @@ settings:
             description: Permite mover o mapa ao mover o cursor para as bordas da tela. A
                 velocidade depende da configuração Velocidade de Movimento.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoom na direção do cursor
+            description: Se ativado, o zoom irá se deslocar na direção do cursor do seu mouse. Caso contrário, irá para o meio da tela.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Tamanho do Mapa de Recursos
+            description: Controla o tamanho das formas no mapa de panorama (quando afasta o zoom).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles
-    hint: "Tip: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
+    hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
         opções de construção."
     resetKeybindings: Resetar Controles
     categoryLabels:
