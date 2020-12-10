@@ -74,8 +74,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            for (let chargeIndex = 0; true; chargeIndex++) {
-
+            for (let chargeIndex = 0; ; chargeIndex++) {
                 // Check if we have an open queue spot and can start a new charge
                 if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
                     if (this.canProcess(entity)) {
@@ -91,7 +90,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
-                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds + processorComp.bonusTime;
+                    const deltaTime = this.root.dynamicTickrate.deltaSeconds + processorComp.bonusTime;
+                    currentCharge.remainingTime -= deltaTime;
                     processorComp.bonusTime = 0;
                     if (currentCharge.remainingTime > 0.0) {
                         // This charge is not finished, so don't process the next one
