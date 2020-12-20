@@ -123,7 +123,7 @@ export class EntityManager extends BasicSerializableObject {
      */
     removeDynamicComponent(entity, component) {
         entity.removeComponent(component, true);
-        const componentId = /** @type {typeof Component} */ (component.constructor).getId();
+        const componentId = component.getId();
 
         fastArrayDeleteValue(this.componentToEntity[componentId], entity);
         this.root.signals.entityComponentRemoved.dispatch(entity);
