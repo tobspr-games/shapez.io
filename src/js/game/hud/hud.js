@@ -48,6 +48,7 @@ import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";
 import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
+import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
 
 export class GameHUD {
     /**
@@ -86,6 +87,7 @@ export class GameHUD {
             waypoints: new HUDWaypoints(this.root),
             wireInfo: new HUDWireInfo(this.root),
             leverToggle: new HUDLeverToggle(this.root),
+            constantSignalEdit: new HUDConstantSignalEdit(this.root),
 
             // Must always exist
             pinnedShapes: new HUDPinnedShapes(this.root),

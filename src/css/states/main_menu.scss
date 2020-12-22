@@ -94,9 +94,11 @@
         }
 
         .standaloneBanner {
-            background: rgb(255, 234, 245);
-            @include S(border-radius, $globalBorderRadius);
+            background: rgb(255, 75, 84);
+            @include S(border-radius, $globalBorderRadius + 4);
             box-sizing: border-box;
+            border: solid rgba(#fff, 0.15);
+            @include S(border-width, 4px);
             @include S(padding, 15px);
 
             display: flex;
@@ -110,13 +112,14 @@
             h3 {
                 @include Heading;
                 font-weight: bold;
-                @include S(margin-bottom, 5px);
+                @include S(margin-bottom, 20px);
                 text-transform: uppercase;
-                color: $colorRedBright;
+                color: #fff;
             }
 
             p {
                 @include Text;
+                color: #fff;
             }
 
             ul {
@@ -138,7 +141,7 @@
                 display: block;
                 text-indent: -999em;
                 cursor: pointer;
-                @include S(margin-top, 20px);
+                @include S(margin-top, 30px);
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
@@ -181,9 +184,8 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: $colorRedBright;
+            color: rgb(231, 78, 58);
             @include Heading;
-            text-transform: uppercase;
             font-weight: bold;
             @include S(right, 40px);
             @include S(bottom, 20px);

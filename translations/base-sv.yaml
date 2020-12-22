@@ -1,19 +1,18 @@
 steamPage:
     shortText: shapez.io är ett spel som går ut på att automatisera skapandet av
         former med ökande komplexitet inom den oändligt stora världen.
-    discordLinkShort: Officiel Discord
+    discordLinkShort: Officiell Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io är att avslappnat spel där man ska bygga fabriker för att automatisera produktionen av geometriska former.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Formerna blir svårare och mer komplexa vartefter nivån ökar och du blir tvungen att sprida ut dig över den oändliga kartan.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Och som om det inte vore nog så som behöver du samtidigt producera exponentiellt mer för att mätta efterfrågan - den enda lösningar är att skala upp produktionen!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        I början skapar man bara former, men senare behöver du även färga dem - för att uppnå detta behöver du samla och blanda färger!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
+        På Steam kan du köpa den fulla versionen av spelet, men du kan även spela demot på shapez.io först och bestämma dig senare!
+    title_advantages: Fördelar med fullversionen
     advantages:
         - <b>12 Nya nivåer</b> av totalt 26 nivåer!
         - <b>18 Nya byggnader</b> för en fullt automatiserad fabrik!
@@ -35,7 +34,7 @@ steamPage:
     title_open_source: Detta spel har öppen källkod!
     title_links: Länkar
     links:
-        discord: Official Discord
+        discord: Officiell Discord
         roadmap: Roadmap
         subreddit: Subreddit
         source_code: Källkod (GitHub)
@@ -48,8 +47,8 @@ steamPage:
         Se till och kolla mitt trello board för hela roadmappen!
 global:
     loading: Laddar
-    error: Error
-    thousandsDivider: .
+    error: Fel
+    thousandsDivider: " "
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -71,14 +70,14 @@ global:
         hoursAndMinutesShort: <hours>t <minutes>m
         xMinutes: <x> minuter
     keys:
-        tab: TAB
+        tab: TABB
         control: CTRL
         alt: ALT
         escape: ESC
         shift: SKIFT
         space: MELLANSLAG
 demoBanners:
-    title: Demo Version
+    title: Demo-version
     intro: Skaffa den fristående versionen för att låsa upp alla funktioner!
 mainMenu:
     play: Spela
@@ -87,8 +86,8 @@ mainMenu:
     openSourceHint: Detta spelet har öppen kod!
     discordLink: Officiell Discord Server
     helpTranslate: Hjälp till att översätta!
-    browserWarning: Förlåt, men det är känt att spelet spelar långsamt på din
-        browser! Skaffa den fristående versionen eller ladda ner Chrome för en
+    browserWarning: Förlåt, men det är känt att spelet spelar långsamt i din
+        webbläsare! Skaffa den fristående versionen eller ladda ned Chrome för en
         bättre upplevelse.
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Okänd Nivå
@@ -96,7 +95,7 @@ mainMenu:
     newGame: Nytt spel
     madeBy: Skapad av <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Namnlöst
 dialogs:
     buttons:
         ok: OK
@@ -176,8 +175,8 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Ge det ett meningsfullt namn, du kan också inkludera en <strong>kort
-            nyckel</strong> av en form (Som du kan generera <link>här</link>)
+        desc: Ge det ett meningsfullt namn, du kan också inkludera ett
+            <strong>kortkommando</strong> av en form (som du kan generera <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
@@ -198,7 +197,7 @@ dialogs:
     editSignal:
         title: Sätt singal
         descItems: "Välj en förvald sak:"
-        descShortKey: ... eller skriv in <strong>kort nyckel</strong> av en form
+        descShortKey: ... eller skriv in <strong>kortkommando</strong> av en form
             (Som du kan generera <link>här</link>)
     renameSavegame:
         title: Byt namn på sparfil
@@ -364,7 +363,7 @@ ingame:
                 title: ∞ med sparfiler
                 desc: Så många som du bara vill!
             upgrades:
-                title: ∞ Upgrade Tiers
+                title: 1000 uppgraderingsnivåer
                 desc: This demo version has only 5!
             markers:
                 title: ∞ med markeringar!
@@ -480,87 +479,86 @@ buildings:
             name: Balancer
             description: Multifunktionell - Distribuerar alla inflöden till alla utflöden.
         merger:
-            name: Merger (Kompakt)
-            description: Sammansätter två rullband till ett.
+            name: Merger (kompakt)
+            description: Sammanfogar två rullband till ett.
         merger-inverse:
-            name: Merger (Kompakt)
-            description: Sammansätter två rullband till ett.
+            name: Merger (kompakt)
+            description: Sammanfogar två rullband till ett.
         splitter:
-            name: Splitter (Kompakt)
-            description: Delar ett rullband till två.
+            name: Splitter (kompakt)
+            description: Delar upp ett rullband till två.
         splitter-inverse:
-            name: Splitter (Kompakt)
-            description: Delar ett rullband till två.
+            name: Splitter (kompakt)
+            description: Delar upp ett rullband till två.
     storage:
         default:
             name: Lagring
-            description: Lagra överflödiga saker, till en viss mängd. Prioriterar den vänstra
-                utflödet och kan användas som en överströmningsgrind.
+            description: Lagra överflödiga saker, till en viss mängd. Prioriterar det vänstra
+                utflödet och kan användas som en översvämningsgrind.
     wire_tunnel:
         default:
             name: Korsande sladdar
             description: Tillåter två sladdar att korsa varandra utan att koppla samman.
     constant_signal:
         default:
-            name: Konstant Signal
-            description: Avger en konstant signal, som kan vara en form, färg eller boolean (1 / 0).
+            name: Konstant signal
+            description: Avger en konstant signal, som kan vara en form, färg eller boolesk (1 / 0).
     lever:
         default:
-            name: Signalknapp
-            description: Kan ställas om till att ge en booleansk singal (1 / 0) på sladdlagret,
-                vilket kan användas för att kontrollera till exempel ett sakfilter.
+            name: Brytare
+            description: Kan ställas att ge en boolesk signal (1 / 0) på kabellagret,
+                vilket till exempel kan användas för att kontrollera ett sakfilter.
     logic_gate:
         default:
-            name: AND Grind
-            description: Avger en booleansk "1" om båda inflöden är positiva. (positiva menas med former,
-                färger eller booleansk "1")
+            name: AND-grind
+            description: Avger en boolesk "1" om båda inflödena är positiva. (positiva menas med former,
+                färger eller boolesk "1")
         not:
-            name: NOT Grind
-            description: Avger en booleansk "1" om inflödet inte är positiv. (positiva menas med former,
-                färger eller booleansk "1")
+            name: NOT-grind
+            description: Avger en boolesk "1" om inflödet inte är positivt. (positivt menas med former,
+                färger eller boolesk "1")
         xor:
-            name: XOR Grind
-            description:
-                Avger en booleansk "1" om ett av inflöderna är positiv, dock inte om båda är positiva.
-                (Positiva menas med former, färger eller booleansk "1")
+            name: XOR-grind
+            description: Avger en boolesk "1" om bara ett av inflödena är positivt.
+                (med positivt menas former, färger eller boolesk "1")
         or:
-            name: OR Grind
-            description: Avger en booleansk "1" om ett av inflöderna är positiv. (positiva menas med former,
-                färger eller booleansk "1")
+            name: OR-grind
+            description: Avger en boolesk "1" om minst ett av inflödena är positivt.
+                (med positivt menas former, färger eller boolesk "1")
     transistor:
         default:
             name: Transistor
-            description: För fram det undre inflödet om sido inflödet är positivt (en form,
-                färg eller "1").
+            description: Sänder vidare det undre inflödet om sido inflödet är positivt.
+                (med positivt menas former, färger eller boolesk "1")
         mirrored:
             name: Transistor
-            description: För fram det undre inflödet om sido inflödet är positivt (en form,
-                färg eller "1").
+            description: Sänder vidare det undre inflödet om sido inflödet är positivt.
+                (med positivt menas former, färger eller boolesk "1")
     filter:
         default:
             name: Filter
-            description: Koppla en signal för att dirigera alla matchande objekt till toppen och
-                dem kvarvarande till höger. Kan kontrolleras med booleanska singaler också.
+            description: Anslut en signal för att dirigera alla matchande objekt till toppen och
+                resterande åt höger. Kan även styras med booleska signaler.
     display:
         default:
             name: Display
-            description: Koppla en singal för att visa den på displayen - Det kan vara en form,
-                färg eller boolean.
+            description: Anslut en singal för att visa den på displayen - Det kan vara en form,
+                färg eller boolesk.
     reader:
         default:
             name: Rullbandsläsare
-            description: Mäter den genomsnittliga rullbands genomströmningen. Läser ut det sist
+            description: Mäter den genomsnittliga rullbands genomströmningen. Sänder ut den sista
                 lästa saken på sladdlagret (när det är upplåst).
     analyzer:
         default:
             name: Formanalysator
             description: Analyserar den övre högra kvadranten av formens lägsta lager
-                och returnerar sin form och färg.
+                och returnerar dess form och färg.
     comparator:
         default:
             name: Jämför
-            description: Returnerar booleansk "1" om båda signalerna är exakt lika. Kan jämföra
-                former, saker och boolean.
+            description: Returnerar boolesk "1" om båda signalerna är exakt lika. Kan jämföra
+                former, saker och booleska.
     virtual_processor:
         default:
             name: Virtuell skärare
@@ -570,20 +568,19 @@ buildings:
             description: Roterar virtuellt formen, både medurs och moturs.
         unstacker:
             name: Virtuell stapelupplösare
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            description: Lösgör virtuellt det översta lagret och sänder ut åt höger medan resten
+                sänds åt till vänster.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Virtuell staplare
+            description: Staplar virtuellt den högra formen ovanpå den vänstra.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Virtuell målare
+            description: Målar virtuellt formen underifrån med formen från höger.
     item_producer:
         default:
             name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            description: Endast tillgänglig i sandlådeläge, avger en given signal från kabellagret
+                till det vanliga lagret.
 storyRewards:
     reward_cutter_and_trash:
         title: Att klippa former

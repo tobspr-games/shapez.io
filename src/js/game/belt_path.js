@@ -1085,6 +1085,9 @@ export class BeltPath extends BasicSerializableObject {
             // Reduce the spacing
             nextDistanceAndItem[_nextDistance] -= clampedProgress;
 
+            // Advance all items behind by the progress we made
+            this.spacingToFirstItem += clampedProgress;
+
             // If the last item can be ejected, eject it and reduce the spacing, because otherwise
             // we lose velocity
             if (isFirstItemProcessed && nextDistanceAndItem[_nextDistance] < 1e-7) {
@@ -1097,6 +1100,24 @@ export class BeltPath extends BasicSerializableObject {
                 if (this.tryHandOverItem(nextDistanceAndItem[_item], excessVelocity)) {
                     this.items.pop();
 
+                    const itemBehind = this.items[lastItemProcessed - 1];
+                    if (itemBehind && this.numCompressedItemsAfterFirstItem > 0) {
+                        // So, with the next tick we will skip this item, but it actually has the potential
+                        // to process farther -> If we don't advance here, we loose a tiny bit of progress
+                        // every tick which causes the belt to be slower than it actually is.
+                        // Also see #999
+                        const fixupProgress = Math.max(
+                            0,
+                            Math.min(remainingVelocity, itemBehind[_nextDistance])
+                        );
+
+                        // See above
+                        itemBehind[_nextDistance] -= fixupProgress;
+                        remainingVelocity -= fixupProgress;
+                        this.spacingToFirstItem += fixupProgress;
+                    }
+
+                    // Reduce the number of compressed items since the first item no longer exists
                     this.numCompressedItemsAfterFirstItem = Math.max(
                         0,
                         this.numCompressedItemsAfterFirstItem - 1
@@ -1110,7 +1131,6 @@ export class BeltPath extends BasicSerializableObject {
             }
 
             isFirstItemProcessed = false;
-            this.spacingToFirstItem += clampedProgress;
             if (remainingVelocity < 1e-7) {
                 break;
             }

@@ -2,11 +2,11 @@ steamPage:
     shortText: shapez.io 是一款在无边际的地图上建造工厂、自动化生产与组合愈加复杂的图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
-        Shapez.io 是一个休闲游戏，在其中，您将建造工厂以生产各种各样的几何图形。
-        随着等级提升，您需要生产的图形将会越来越复杂，您需要在无尽的地图中不断的扩建您的工厂。
-        如果这些还不够的话，您的生产目标是指数性增长的 - 您需要持续的增大工厂的规模！
-        虽然您刚开始只需要生产图形，但您之后还可以给这些图形上色 - 您需要开采并混合颜料！
-        您可以在 Steam 游戏商城购买此游戏的完整版, 但您可以先游玩试玩版并体验游戏！
+        Shapez.io 是一个休闲游戏，在其中，你将建造工厂以生产各种各样的几何图形。
+        随着等级提升，你需要生产的图形将会越来越复杂，你需要在无尽的地图中不断的扩建你的工厂。
+        如果这些还不够的话，你的生产目标是指数性增长的 - 你需要持续的增大工厂的规模！
+        虽然你刚开始只需要生产图形，但你之后还可以给这些图形上色 - 你需要开采并混合颜料！
+        你可以在 Steam 游戏商城购买此游戏的完整版, 但你可以先游玩试玩版并体验游戏！
     title_advantages: 完整版内容
     advantages:
         - <b>12 个全新关卡</b> 总共 26 个不同关卡
@@ -59,7 +59,7 @@ global:
         xDaysAgo: <x>天前
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
-        hoursAndMinutesShort: <hours>时 <minutes>秒
+        hoursAndMinutesShort: <hours>时 <minutes>分
         xMinutes: <x>分钟
     keys:
         tab: TAB
@@ -110,9 +110,8 @@ dialogs:
         text: 未能导入你的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: 你确定要删除这个游戏吗?<br><br>
+            '<savegameName>' 等级 <savegameLevel><br><br> 该操作无法回退！
     savegameDeletionError:
         title: 删除错误
         text: 未能删除你的存档
@@ -148,14 +147,14 @@ dialogs:
         desc: 你还没有解锁蓝图功能！完成更多的关卡来解锁蓝图。
     keybindingsIntroduction:
         title: 实用按键
-        desc: "这个游戏有很多能帮助搭建工厂的使用按键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
+        desc:
+            "这个游戏有很多有用的快捷键。 以下是其中的一些，记得在<strong>按键设置</strong>中查看其他的！<br><br>
             <code class='keybinding'>CTRL</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多个。<br> <code
             class='keybinding'>ALT</code>: 反向放置传送带。<br>"
     createMarker:
         title: 创建地图标记
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: 填写一个有意义的名称, 你也可以使用形状的 <strong>短代码</strong> (你可以 <link>点击这里</link> 生成短代码)
         titleEdit: 编辑地图标记
     markerDemoLimit:
         desc: 在试玩版中你只能创建两个地图标记。请获取独立版以创建更多标记。
@@ -169,21 +168,18 @@ dialogs:
         title: 确认剪切
         desc: 你没有足够的图形来粘贴这个区域！你确定要剪切吗？
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: 设置信号
+        descItems: "选择一个预定义的信号:"
+        descShortKey: ... 或者输入图形的 <strong>短代码</strong> (你可以 <link>点击这里</link> 生成短代码)
     renameSavegame:
         title: 重命名存档
-        desc: 您可以在此重命名存档。
+        desc: 你可以在此重命名存档。
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: 教程
+        desc: 该等级有视频教程! 你想查看这个视频吗?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: 教程
+        desc: 该等级有英语版本的视频教程! 你想查看这个视频吗??
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -204,9 +200,9 @@ ingame:
         copySelection: 复制
         clearSelection: 取消选择
         pipette: 选取器
-        switchLayers: Switch layers
+        switchLayers: 选择层
     buildingPlacement:
-        cycleBuildingVariants: 按 <key> 键以选择建筑变体.
+        cycleBuildingVariants: 按 <key> 键以选择建筑变体。
         hotkeyLabel: "快捷键: <key>"
         infoTexts:
             speed: 效率
@@ -224,7 +220,7 @@ ingame:
     notifications:
         newUpgrade: 有新更新啦！
         gameSaved: 游戏已保存。
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: 等级 <level> 完成了!
     shop:
         title: 建筑升级
         buttonUnlock: 升级
@@ -261,39 +257,26 @@ ingame:
         waypoints: 地图标记
         hub: 基地
         description: 左键跳转到地图标记，右键删除地图标记。<br><br>按 <keybinding>
-            在当前地点创建地图标记，或者在选定位置上<strong>右键</strong>创建地图标记.
+            在当前地点创建地图标记，或者在选定位置上<strong>右键</strong>创建地图标记。
         creationSuccessNotification: 成功创建地图标记。
     interactiveTutorial:
         title: 教程
         hints:
-            1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采机</strong>来获取圆形！
-            1_2_conveyor: 用<strong>传送带</strong>将你的开采机连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
-            1_3_expand: 这<strong>不是</strong>一个挂机游戏！建造更多的开采机和传送带来更快地完成目标。<br><br> 提示：按住
-                <strong>SHIFT</strong> 键来放置多个开采机，用 <strong>R</strong> 键旋转它们。
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            1_1_extractor: 在<strong>圆形矿脉</strong>上放一个<strong>开采器</strong>来获取圆形！
+            1_2_conveyor: 用<strong>传送带</strong>将你的开采器连接到基地上！<br><br>提示：用你的鼠标<strong>按下并拖动</strong>传送带！
+            1_3_expand:
+                这<strong>不是</strong>一个挂机游戏！建造更多的开采器和传送带来更快地完成目标。<br><br> 提示：按住
+                <strong>SHIFT</strong> 键来放置多个开采器，用 <strong>R</strong> 键旋转它们。
+            2_1_place_cutter: "现在放置一个<strong>切割器</strong>，把圆切成两半！<br><br>注意：无论方向如何，切割机总是<strong>从上到下</strong>切割。"
+            2_2_place_trash: 切割机可能会<strong>堵塞</strong>。<br><br>使用垃圾桶清除当前 (!) 不需要的废物。
+            2_3_more_cutters: "干的好！现在放置<strong>2个以上的切割机</strong>来加快当前缓慢的过程！<br><br>提示：用<strong>0-9快捷键</strong>可以快速选择建筑！"
+            3_1_rectangles:
+                "现在让我们开采一些矩形！<strong>建4个人开采器</strong>并将它们连接到基地。<br><br>
+                提示：按住<strong>SHIFT</strong>拖到传送带会激活传送带规划！"
+            21_1_place_quad_painter: 放置<strong>四口上色器</strong>并且输入<strong>圆形</strong>，<strong>白色</strong>和<strong>红色</strong>！
+            21_2_switch_to_wires: 按 <strong>E</strong> 键选择电线层！<br><br> 然后用导线连接上色器的<strong>四个输入口</strong>！
+            21_3_place_button: 很好！现在放置一个<strong>开关</strong>并连接导线！
+            21_4_press_button: "按下开关去<strong>产生正信号</strong>来激活上色器。<br><br>注：你不用连上所有的输入口！试着只接两个。"
     colors:
         red: 红色
         green: 绿色
@@ -309,8 +292,8 @@ ingame:
         empty: 空
         copyKey: 复制短代码
     connectedMiners:
-        one_miner: 1 个开采机
-        n_miners: <amount> 个开采机
+        one_miner: 1 个开采器
+        n_miners: <amount> 个开采器
         limited_items: 限制在 <max_throughput>
     watermark:
         title: 试玩版
@@ -364,10 +347,10 @@ buildings:
             description: 运送物品，按住并拖动来放置多个传送带。
     miner:
         default:
-            name: 开采机
+            name: 开采器
             description: 在图形或者颜色上放置来开采他们。
         chainable:
-            name: 链式开采机
+            name: 链式开采器
             description: 在图形或者颜色上放置来开采他们。可以被链接在一起。
     underground_belt:
         default:
@@ -396,25 +379,23 @@ buildings:
     stacker:
         default:
             name: 堆叠机
-            description: 将输入的图形拼贴在一起。如果不能被直接拼贴，右边的图形会被堆叠在左边的图形上面.
+            description: 将输入的图形拼贴在一起。如果不能被直接拼贴，右边的图形会被堆叠在左边的图形上面。
     mixer:
         default:
-            name: 混色机
+            name: 混色器
             description: 用加法混色将两个颜色混合起来
     painter:
         default:
-            name: 上色机
+            name: 上色器
             description: 将整个图形涂上输入的颜色。
         double:
-            name: 上色机（双倍）
+            name: 上色器（双倍）
             description: 同时为两个输入的图形上色，每次上色只消耗一份颜色。
         quad:
-            name: 上色机（四向）
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            name: 上色器（四口）
+            description: 能够为图形的四个象限单独上色。只有电线层上带有<strong>正信号</strong>的插槽才可以上色！
         mirrored:
-            name: 上色机 (镜像)
+            name: 上色器 (镜像)
             description: 将整个图形涂上输入的颜色。
     trash:
         default:
@@ -427,148 +408,126 @@ buildings:
         endOfDemo: 试玩版结束
     wire:
         default:
-            name: 能量导线
-            description: 用于传输能量。
+            name: 导线
+            description: 传输信号，信号可以是物品，颜色或者布尔值。 不同颜色的导线不会互相连接
         second:
             name: 导线
             description: 传输信号，信号可以是物品，颜色或者布尔值。 不同颜色的导线不会互相连接。
     balancer:
         default:
-            name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            name: 平衡器
+            description: 多功能-将所有输入均匀地分配到所有输出上。
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合并器 (小型)
+            description: 将两条传送带合并为一条。
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: 合并器 (小型)
+            description: 将两条传送带合并为一条。
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分配器 (小型)
+            description: 将一条传送带分成为两条。
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: 分配器 (小型)
+            description: 将一条传送带分成为两条。
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: 存储器
+            description: 储存多余的物品，直到指定的容量。 优先处理左边的输出，可以用作溢出门。
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: 交差导线
+            description: 使两根导线交差，而不会连接起来。
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: 固定信号
+            description: 发出固定信号，可以是图形、颜色、开关量（1 / 0）。
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: 开关
+            description: 可以在电线层上发出开关量（1 / 0）信号。比如说它可以用来控制过滤器。
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: 与门
+            description: 如果输入<strong>都是</strong>正信号，则发出<strong>开（1）</strong>信号。（正信号：图形，颜色，开（1）信号）
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: 非门
+            description: 如果输入<strong>不是</strong>正信号，则发出<strong>开（1）</strong>信号。（正信号：图形，颜色，开（1）信号）
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: 异或门
+            description: 如果输入<strong>只有一个</strong>正信号，则发出<strong>开（1）</strong>信号。（正信号：图形，颜色，开（1）信号）
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: 或门
+            description: 如果输入<strong>有一个</strong>是正信号，则发出<strong>开（1）</strong>信号。（正信号：图形，颜色，开（1）信号）
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: 晶体管
+            description: 如果侧边输入正信号，输入可以通过。（正信号：图形，颜色，开（1）信号）
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: 晶体管
+            description: 如果侧边输入正信号，输入可以通过。（正信号：图形，颜色，开（1）信号）
     filter:
         default:
-            name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            name: 过滤器
+            description: 在上面输出和信号匹配的内容，在右侧输出不匹配的内容。如果是开关量的话，开（1）信号从上面输出，关（0）信号从右侧输出
+
     display:
         default:
-            name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            name: 显示器
+            description: 在显示器上显示连接的信号（这些信号可以是：图形、颜色、开关量）。
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: 传送带阅读器
+            description: 可以测量传送带平均吞吐量。在电线层输出最后输入物品的信号（可以在‘显示器’上显示，也可用来做过滤）
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: 图形分析器
+            description: 分析图形最低层的右上象限并返回其图形和颜色。
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: 比较器
+            description: 如果输入的两个信号一样将输出开（1）信号,可以比较图形，颜色，和开关量。
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: 模拟切割机
+            description: 将信号中的图形切割成两半并输出信号
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: 模拟旋转机
+            description: 将信号中的图形旋转后输出信号
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: 模拟拆分器
+            description: 将信号中图形的最上层图形信号从右侧输出，其余的图形信号从左侧输出。
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: 模拟堆叠机
+            description: 将右侧的图形叠在左侧的图形上
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: 模拟上色器
+            description: 使用右侧输入的颜色给底部输入的图形上色
     item_producer:
         default:
-            name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            name: 物品生成器
+            description: 仅在沙盒模式下可用，在常规层上输出电线层给定信号的图形。
 storyRewards:
     reward_cutter_and_trash:
         title: 切割图形
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: 你刚解锁了<strong>切割机</strong>，它会从上到下切开图形而<strong>不管它的方向</strong>！
+            <br><br>一定要用扔掉不用的东西，不然它会<strong>阻塞</strong>传送带，
+            为此我给了你<strong>垃圾桶</strong>，它会摧毁所有放进去的东西！
     reward_rotater:
         title: 顺时针旋转
         desc: 恭喜！你解锁了<strong>旋转机</strong>。它会顺时针旋转输入的图形90度。
     reward_painter:
         title: 上色
-        desc: 恭喜！你解锁了<strong>上色机</strong>。开采一些颜色 (就像你开采图形一样)
-            将其在上色机中与图形结合来将图形上色！<br><br>PS：如果你患有色盲，可以在设置中启用<strong>色盲模式</strong>！
+        desc: 恭喜！你解锁了<strong>上色器</strong>。开采一些颜色 (就像你开采图形一样)
+            将其在上色器中与图形结合来将图形上色！<br><br>注意：如果你患有色盲，可以在设置中启用<strong>色盲模式</strong>！
     reward_mixer:
         title: 混合颜色
-        desc: 恭喜！你解锁了<strong>混色机</strong>。这个建筑使用<strong>加法混色</strong>将两种颜色混合起来。
+        desc: 恭喜！你解锁了<strong>混色器</strong>。这个建筑使用<strong>加法混色</strong>将两种颜色混合起来。
     reward_stacker:
         title: 堆叠
         desc: 恭喜！你解锁了<strong>堆叠机</strong>。堆叠机会尝试把两个输入的图形<strong>拼贴</strong>在一起。如果有重叠的部分，右边的输入会被<strong>堆叠</strong>在左边的输入上方！
     reward_splitter:
         title: 分离与合并
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: 你已经解锁了<strong>平衡器</strong>的变体<strong>分配器</strong>，它会把输入的东西分配在两边输出！
     reward_tunnel:
         title: 隧道
         desc: 恭喜！你解锁了<strong>隧道</strong>。你现在可以从其他传送带或建筑底下运送物品了！
@@ -576,11 +535,10 @@ storyRewards:
         title: 逆时针旋转
         desc: 恭喜！你解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。这个变体可以逆时针旋转图形。选择旋转机然后按"T"键来选取这个变体。
     reward_miner_chainable:
-        title: 链式开采机
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        title: 链式开采器
+        desc:
+            "你已经解锁了<strong>链式开采器</strong>！它能<strong>转发它的资源</strong>给其他的开采器，这样你就会更有效率的开采资源了！<br><br>
+            注意：新的开采器替换了工具栏里旧的开采器！"
     reward_underground_belt_tier_2:
         title: 二级隧道
         desc: 恭喜！你解锁了<strong>二级隧道</strong>。这是隧道的一个变体。二级隧道有<strong>更长的传输距离</strong>。你还可以混用不同的隧道变体！
@@ -588,22 +546,17 @@ storyRewards:
         title: 四向切割机
         desc: 恭喜！你解锁了<strong>切割机</strong>的<strong>四向</strong>变体。它可以将输入的图形切成四块而不只是左右两块！
     reward_painter_double:
-        title: 双倍上色机
-        desc: 恭喜！你解锁了<strong>上色机</strong>的<strong>双倍</strong>变体。它可以同时为两个图形上色，每次只消耗一份颜色！
+        title: 双倍上色器
+        desc: 恭喜！你解锁了<strong>上色器</strong>的<strong>双倍</strong>变体。它可以同时为两个图形上色，每次只消耗一份颜色！
     reward_storage:
-        title: 仓库
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        title: 存储器
+        desc: 你已经解锁了<strong>存储器</strong>，它能存满指定容量的物品！<br><br>
+            它<strong>先从左边</strong>输出，这样你就可以用它做一个<strong>溢流门</strong>了！
     reward_freeplay:
         title: 自由模式
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: 成功了！你解锁了<strong>自由模式</strong>！这意味着现在将<strong>随机</strong>生成图形！
+            从现在起，基地将需要<strong>生产率</strong>，我强烈建议你去制造一台能够自动交付所需图形的机器！<br><br>
+            基地会在电线层输出需要的图形，你需要去分析图形并在此基础上自动配置你的工厂。
     reward_blueprints:
         title: 蓝图
         desc: 你现在可以<strong>复制粘贴</strong>你的工厂的一部分了！按住 CTRL
@@ -611,83 +564,67 @@ storyRewards:
     no_reward:
         title: 下一关
         desc: 这一关没有奖励，但是下一关有！<br><br>
-            PS：你生产过的<strong>所有</strong>图形都会被用来<strong>升级建筑</strong>。
+            注意：你生产过的<strong>所有</strong>图形都会被用来<strong>升级建筑</strong>。
     no_reward_freeplay:
         title: 下一关
         desc: 恭喜你！另外，我们已经计划在独立版中加入更多内容！
     reward_balancer:
-        title: Balancer
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        title: 平衡器
+        desc: 解锁了多功能的<strong>平衡器</strong>，它能够<strong>分割和合并</strong>多个传送带的资源,可以用来建造更大的工厂！
     reward_merger:
-        title: Compact Merger
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        title: 小型合并器
+        desc: 你已经解锁了<strong>平衡器</strong>的变体<strong>合并器</strong>，它能合并两个输入到一个传送带上！
     reward_belt_reader:
-        title: Belt reader
-        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
-            measure the throughput of a belt.<br><br>And wait until you unlock
-            wires - then it gets really useful!
+        title: 传送带阅读器
+        desc: 你已经解锁了<strong>传送带阅读器</strong>！它能够测量传送带上的生产率。<br><br>
+            等你解锁了电线层后，它会更有用！
     reward_rotater_180:
-        title: Rotater (180 degrees)
-        desc: You just unlocked the 180 degress <strong>rotater</strong>! - It allows
-            you to rotate a shape by 180 degress (Surprise! :D)
+        title: 180度旋转器
+        desc: 你刚刚解锁了180度<strong>旋转器</strong>！它能帮你把一个图形旋转180度(Surprise! :D)
     reward_display:
-        title: Display
-        desc: "You have unlocked the <strong>Display</strong> - Connect a signal on the
-            wires layer to visualize it!<br><br> PS: Did you notice the belt
-            reader and storage output their last read item? Try showing it on a
-            display!"
+        title: 显示器
+        desc: "你已经解锁了<strong>显示器</strong>，显示一个在电线层上输入的信号！<br><br>
+            注意：你注意到传输带阅读器和存储器输出他们最后一次输入的物品的信号了吗？试着在显示屏上展示一下！"
     reward_constant_signal:
-        title: Constant Signal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 / 0).
+        title: 固定信号
+        desc:
+            你解锁了电线层上的<strong>固定信号</strong>建筑，比如它连接<strong>过滤器</strong>时非常有用。<br><br>
+            它能发出图形、颜色、开关量（1 / 0）的固定信号。
     reward_logic_gates:
-        title: Logic Gates
-        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
-            about this, but it's actually super cool!<br><br> With those gates
-            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
-            bonus on top I also just gave you a <strong>transistor</strong>!
+        title: 逻辑门
+        desc: 你解锁了<strong>逻辑门</strong>！它们是个好东西！<br><br>
+            你可以用它们来进行'与，或，非，异或'操作。<br><br>作为奖励，我还给你解锁了<strong>晶体管</strong>！
+
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: 模拟处理器
+        desc: 我刚刚给了一大堆新建筑，让你可以<strong>模拟形状的处理过程</strong>！<br><br>
+            你现在可以在电线层上模拟切割机，旋转机，堆叠机和其他机器！<br><br>
+            有了这些，你可以选择下面三个方向来继续游戏：<br><br>
+            -建立一个<strong>自动化</strong>生产基地需要图形的机器（我建议试试！）。<br><br>
+            -用电线层上做些酷炫的东西。<br><br>
+            -继续正常比赛。<br><br>
+            无论你选择什么，记住要玩得开心！
+
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        title: 电控四口上色器
+        desc: "你刚刚解锁了<strong>电线层</strong>：它是正常层之上的一个层，它带来了许多新的机制！<br><br>
+            首先我解锁了你的<strong>四口上色器</strong>，按<strong>E</strong>键切换到电线层，然后连接你想要染色的槽,用开关来控制开启。<br><br>
+            注意：在设置中打开电线层教程！"
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: 物品过滤器
+        desc:
+            你解锁了物品<strong>过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
+            你也可以输入正负（1 / 0）信号来激活或者禁用它。
     reward_demo_end:
-        title: End of Demo
-        desc: You have reached the end of the demo version!
+        title: 试玩结束
+        desc: 你已经玩完了试玩版本！
 settings:
     title: 设置
     categories:
         general: 通用
         userInterface: 用户界面
         advanced: 高级
-        performance: Performance
+        performance: 性能
     versionBadges:
         dev: 开发版本
         staging: 预览版本
@@ -779,55 +716,43 @@ settings:
             title: 记忆建筑方向
             description: 每一类建筑都会记住各自上一次的旋转方向。如果你经常在不同建筑类型之间切换，这个设置会让游戏更加舒适。
         soundVolume:
-            title: Sound Volume
-            description: Set the volume for sound effects
+            title: 音效音量
+            description: 设置音效的音量
         musicVolume:
-            title: Music Volume
-            description: Set the volume for music
+            title: 音乐音量
+            description: 设置音乐的音量
         lowQualityMapResources:
-            title: Low Quality Map Resources
-            description: Simplifies the rendering of resources on the map when zoomed in to
-                improve performance. It even looks cleaner, so be sure to try it
-                out!
+            title: 简陋的地图资源
+            description: 放大时简化地图上资源的渲染以提高性能。它看起来更干净，所以一定要试试！
         disableTileGrid:
-            title: Disable Grid
-            description: Disabling the tile grid can help with the performance. This also
-                makes the game look cleaner!
+            title: 禁用网格
+            description: 禁用平铺网格有助于提高性能。这也让游戏看起来更干净！
         clearCursorOnDeleteWhilePlacing:
-            title: Clear Cursor on Right Click
-            description: Enabled by default, clears the cursor whenever you right click
-                while you have a building selected for placement. If disabled,
-                you can delete buildings by right-clicking while placing a
-                building.
+            title: 右键取消
+            description: 默认情况下取消当前的所有操作，如果禁用的话，你可以在保持将放置建筑的情况下删除已有的建筑。
         lowQualityTextures:
-            title: Low quality textures (Ugly)
-            description: Uses low quality textures to save performance. This will make the
-                game look very ugly!
+            title: 低质量纹理(丑陋)
+            description: 使用低质量纹理保存游戏性能。但是游戏看起来很丑！
         displayChunkBorders:
-            title: Display Chunk Borders
-            description: The game is divided into chunks of 16x16 tiles, if this setting is
-                enabled the borders of each chunk are displayed.
+            title: 显示大块的边框
+            description: 游戏将16x16的小块分成一个大块，如果打开这个设置将会显示每个大块的边框。
         pickMinerOnPatch:
-            title: Pick miner on resource patch
-            description: Enabled by default, selects the miner if you use the pipette when
-                hovering a resource patch.
+            title: 在资源块上选择开采器
+            description: 默认开启，当在资源块上使用选取器时会选择开采器。
         simplifiedBelts:
-            title: Simplified Belts (Ugly)
-            description: Does not render belt items except when hovering the belt to save
-                performance. I do not recommend to play with this setting if you
-                do not absolutely need the performance.
+            title: 简单的传送带（简陋）
+            description: 为了保存性能，除非鼠标放在传送带上，不然不会渲染传送带上的物品。
+                除非你特别需要性能，否则我不推荐在这种设置下玩游戏。
         enableMousePan:
-            title: Enable Mouse Pan
-            description: Allows to move the map by moving the cursor to the edges of the
-                screen. The speed depends on the Movement Speed setting.
+            title: 鼠标平移
+            description: 在鼠标滑到屏幕边缘时可以移动地图。移动速度取决于移动速度设置。
+
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: 鼠标位置缩放
+            description: 打开后在鼠标位置进行缩放，否则在屏幕中间进行缩放。
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: 地图资源图形尺寸
+            description: 控制地图总览时图形的尺寸（指缩小视野时）。
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按键设置
@@ -858,12 +783,12 @@ keybindings:
         toggleFPSInfo: 开关帧数与调试信息
         belt: 传送带
         underground_belt: 隧道
-        miner: 开采机
+        miner: 开采器
         cutter: 切割机
         rotater: 旋转机
         stacker: 堆叠机
-        mixer: 混色机
-        painter: 上色机
+        mixer: 混色器
+        painter: 上色器
         trash: 垃圾桶
         rotateWhilePlacing: 顺时针旋转
         rotateInverseModifier: "修饰键: 改为逆时针旋转"
@@ -883,24 +808,24 @@ keybindings:
         lockBeltDirection: 启用传送带规划
         switchDirectionLockSide: 规划器：换边
         pipette: 选取器
-        menuClose: Close Menu
-        switchLayers: Switch layers
-        wire: Energy Wire
-        balancer: Balancer
-        storage: Storage
-        constant_signal: Constant Signal
-        logic_gate: Logic Gate
+        menuClose: 关闭菜单
+        switchLayers: 选择层
+        wire: 导线
+        balancer: 平衡器
+        storage: 存储器
+        constant_signal: 固定信号
+        logic_gate: 逻辑门
         lever: Switch (regular)
-        filter: Filter
-        wire_tunnel: Wire Crossing
-        display: Display
-        reader: Belt Reader
-        virtual_processor: Virtual Cutter
-        transistor: Transistor
-        analyzer: Shape Analyzer
-        comparator: Compare
-        item_producer: Item Producer (Sandbox)
-        copyWireValue: "Wires: Copy value below cursor"
+        filter: 过滤器
+        wire_tunnel: 交差导线
+        display: 显示
+        reader: 传送带阅读器
+        virtual_processor: 模拟切割机
+        transistor: 晶体管
+        analyzer: 图形分析器
+        comparator: 比较器
+        item_producer: 物品生产器 (沙盒)
+        copyWireValue: "电线：复制指定电线上的值"
 about:
     title: 关于游戏
     body: >-
@@ -925,63 +850,58 @@ demo:
         exportingBase: 导出工厂截图
     settingNotAvailable: 在试玩版中不可用。
 tips:
-    - The hub accepts input of any kind, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a huge chaos!
-    - If stacking does not work, try switching the inputs.
-    - You can toggle the belt planner direction by pressing <b>R</b>.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
-    - Ratios stay the same, as long as all upgrades are on the same Tier.
-    - Serial execution is more efficient than parallel.
-    - You will unlock more variants of buildings later in the game!
-    - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
-    - You can weave different tiers of tunnels.
-    - Try to build compact factories - it will pay out!
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
-    - At maximum level, 5 extractors will fill a single belt.
-    - Don't forget about tunnels!
-    - You don't need to divide up items evenly for full efficiency.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
-    - Cutters always cut vertically, regardless of their orientation.
-    - To get white mix all three colors.
-    - The storage buffer priorities the first output.
-    - Invest time to build repeatable designs - it's worth it!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
-    - Shape patches that are further away from the hub are more complex.
-    - Machines have a limited speed, divide them up for maximum efficiency.
-    - Use balancers to maximize your efficiency.
-    - Organization is important. Try not to cross conveyors too much.
-    - Plan in advance, or it will be a huge chaos!
-    - Don't remove your old factories! You'll need them to unlock upgrades.
-    - Try beating level 20 on your own before seeking for help!
-    - Don't complicate things, try to stay simple and you'll go far.
-    - You may need to re-use factories later in the game. Plan your factories to
-      be re-usable.
-    - Sometimes, you can find a needed shape in the map without creating it with
-      stackers.
-    - Full windmills / pinwheels can never spawn naturally.
-    - Color your shapes before cutting for maximum efficiency.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Make a separate blueprint factory. They're important for modules.
-    - Have a closer look on the color mixer, and your questions will be answered.
-    - Use <b>CTRL</b> + Click to select an area.
-    - Building too close to the hub can get in the way of later projects.
-    - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
-    - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - The marker to your hub has a small compass to indicate its direction!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - 基地接受所有输入的图形！
+    - 确保都是模块化的工厂，不然后面会很麻烦的！
+    - 不要建设的太靠近基地，不然后面会非常混乱的！
+    - 如果堆叠不起作用，那就换种方案。
+    - 你可以通过 <b>R</b> 键切换传送带规化方向。
+    - 按住 <b>CTRL</b> 键拖动传送带将不会自动改变它的方向。
+    - 只要所有建筑等级一致，效率也将一致。
+    - 串行执行比并行执行更有效。
+    - 在后面的游戏中你会解锁更多建筑的变种！
+    - 你可以使用<b>T</b>键切换不同的变种。
+    - 对称是关键！
+    - 你可以使用隧道构建不同层次的通道。
+    - 试着建造紧凑型工厂，它会给你带来好处的！
+    - 你可以按<b>T</b>来切换上色器的镜像变体。
+    - 正确的建筑比例将使效率最大化。
+    - 在传送带和开采器等级一致时，5个开采器就可以占满一条传送带的运量。
+    - 别忘了隧道！
+    - 你不必为了充分发挥效率而平均分配物品。
+    - 按住<b>SHIFT</b>键将激活传送带规划，能让你更容易的放置长线的传送带。
+    - 切割机总是垂直切割，而不管图形方向如何。
+    - 混合三原色能够获得白色。
+    - 存储缓冲区优先处理第一个输出。
+    - 你值得花时间来构建可重复的设计！
+    - 按住<b>CTRL</b>键能够放置多个建筑。
+    - 你可以按住<b>ALT</b>来反向你将放置传送带的方向。
+    - 效率是关键!
+    - 离基地越远图形越复杂。
+    - 机器的速度是有限的，把它们分开可以获得最高的效率。
+    - 使用平衡器最大化你的效率。
+    - 组织很重要。尽量不要过多地穿过传送带。
+    - 提前规划，省的后面混乱!
+    - 不要删除旧的工厂，你会需要他们生产的东西升级建筑来提高效率。
+    - 在寻求帮助之前，试着自己完成20级！!
+    - 不要把事情复杂化，试着保持简单，你会成功的。
+    - 你可能需要在游戏的后期重复使用工厂。把你的工厂规划成可重复使用的。
+    - 有时，你可以在地图上找到你需要的图形，而不用堆叠机去合成它。
+    - 风车图形不会自动产生
+    - 在切割前，给你的图形上色可以获得最高的效率。
+    - 模块化，可以使你提高效率。
+    - 记得做一个单独的蓝图工厂。
+    - 仔细看看调色器，你就会调色了。
+    - <b>CTRL+点击</b>能够选择一块区域。
+    - 建得离基地太近会妨碍以后的工作。
+    - 升级列表中每个形状旁边的固定图标可以将其固定到屏幕上。
+    - 地图无限大，你可以随意布置。
+    - 尝试下Factorio！这是我最喜欢的游戏。
+    - 四输入切割机从右上角进行顺时针切割!
+    - 在主菜单你可以下载你保存的游戏进度文件!
+    - 这个游戏有很多有用的快捷键！一定要到快捷键页面看看。
+    - 这个游戏有很多设置，一定要检查一下！
+    - 总览时基地的标记边上有个指向它所在方向的指针！
+    - 想清理传送带，就剪切那块区域并在相同位置放置他们。
+    - 按F4显示FPS。
+    - 按两次F4显示你鼠标所在的块。
+    - 你可以点击固定在屏幕左侧的图形来解除固定。
