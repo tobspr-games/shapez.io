@@ -42,6 +42,7 @@
         "markdown-loader": "^5.1.0",
         "node-sri": "^1.1.1",
         "phonegap-plugin-mobile-accessibility": "^1.0.5",
+        "postcss": ">=5.0.0",
         "promise-polyfill": "^8.1.0",
         "query-string": "^6.8.1",
         "rusha": "^0.8.13",

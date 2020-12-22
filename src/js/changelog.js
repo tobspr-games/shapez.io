@@ -1,7 +1,33 @@
 export const CHANGELOG = [
     {
-        version: "1.2.1",
+        version: "1.2.3",
         date: "unreleased",
+        entries: [
+            "Fixed constant signals being editable from the regular layer",
+            "Fixed items still overlapping sometimes between buildings and belts",
+        ],
+    },
+    {
+        version: "1.2.2",
+        date: "07.12.2020",
+        entries: [
+            "Fix item readers and some other buildings slowing up belts, especially if they stalled (inspired by Keterr's fix)",
+            "Added the ability to edit constant signals by left clicking them",
+            "Prevent items from being rendered on each other when a belt stalls (inspired by Keterr)",
+            "You can now add markers in the wire layer (partially by daanbreur)",
+            "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by EmeraldBlock)",
+            "Allow to cycle variants backwards with SHIFT + T",
+            "Upgrade numbers now use roman numerals until tier 50 (by LeopoldTal)",
+            "Add button to unpin shapes from the left side (by artemisSystem)",
+            "Fix middle mouse button also placing blueprints (by Eiim)",
+            "Hide wires grid when using the 'Disable Grid' setting (by EmeraldBlock)",
+            "Fix UI using multiple different save icons",
+            "Updated translations (Thanks to all contributors!)",
+        ],
+    },
+    {
+        version: "1.2.1",
+        date: "31.10.2020",
         entries: [
             "Fixed stacking bug for level 26 which required restarting the game",
             "Fix reward notification being too long sometimes (by LeopoldTal)",

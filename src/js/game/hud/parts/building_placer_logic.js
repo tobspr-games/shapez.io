@@ -14,6 +14,7 @@ import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
 import { MetaHubBuilding } from "../../buildings/hub";
+import { safeModulo } from "../../../core/utils";
 
 /**
  * Contains all logic for the building placer - this doesn't include the rendering
@@ -467,7 +468,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 index = 0;
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
-            const newIndex = (index + 1) % availableVariants.length;
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+                .pressed
+                ? -1
+                : 1;
+
+            const newIndex = safeModulo(index + direction, availableVariants.length);
             const newVariant = availableVariants[newIndex];
             this.setVariant(newVariant);
         }

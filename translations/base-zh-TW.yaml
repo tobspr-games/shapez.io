@@ -10,7 +10,7 @@ steamPage:
         玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
     title_advantages: 單機版優點
     advantages:
-        - <b>12個新關卡</b> （總共有26關）
+        - <b>12個新關卡</b>（總共有26關）
         - <b>18個新建築</b> 幫助玩家自動化整個工廠！
         - <b>20個升級</b> 讓遊玩時間更久！
         - <b>電路更新</b> 帶給玩家新次元體驗！
@@ -33,13 +33,13 @@ steamPage:
         discord: 官方 Discord 伺服器
         roadmap: Roadmap
         subreddit: Reddit
-        source_code: 原始碼(GitHub)
+        source_code: 原始碼（GitHub）
         translate: 幫助我們翻譯！
     text_open_source: |-
         任何人都可以幫助我開發遊戲或提供建議，我很活躍於各個社群媒體，也會讀所有的建議與回饋、並嘗試改善。
         記得查看我的 trello board 以了解我的完整計畫！
 global:
-    loading: 加載中
+    loading: 載入中
     error: 錯誤
     thousandsDivider: " "
     decimalSeparator: .
@@ -68,18 +68,18 @@ global:
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: 空格
+        space: 空白鍵
 demoBanners:
     title: 試玩版
-    intro: 獲取單機版以解鎖所有功能！
+    intro: 取得單機版以解鎖所有功能！
 mainMenu:
     play: 開始遊戲
     changelog: 更新日誌
-    importSavegame: 導入
+    importSavegame: 匯入存檔
     openSourceHint: 本遊戲已開源！
     discordLink: 官方 Discord 伺服器
     helpTranslate: 協助我們翻譯！
-    browserWarning: 很抱歉, 本遊戲在當前瀏覽器上可能運行緩慢! 使用 chrome 或者獲取單機版以得到更好的體驗。
+    browserWarning: 很抱歉，本遊戲在目前的瀏覽器上執行效率可能會有所緩慢！使用 Chrome 或者取得單機版以得到更好的體驗。
     savegameLevel: <x>級
     savegameLevelUnknown: 未知關卡
     continue: 繼續
@@ -95,11 +95,11 @@ dialogs:
         later: 之後
         restart: 重啟
         reset: 重置
-        getStandalone: 獲得單機版
+        getStandalone: 取得單機版
         deleteGame: 我知道我在做什麼
         viewUpdate: 查看更新
         showUpgrades: 顯示建築升級
-        showKeybindings: 顯示按鍵設置
+        showKeybindings: 顯示按鍵設定
     importSavegameError:
         title: 匯入錯誤
         text: 存檔匯入失敗：
@@ -117,10 +117,10 @@ dialogs:
         text: 存檔刪除失敗
     restartRequired:
         title: 需要重啟
-        text: 你需要重啟遊戲以套用變更的設置。
+        text: 你需要重啟遊戲以套用變更的設定。
     editKeybinding:
-        title: 更改按鍵設置
-        desc: 請按下你想要使用的按鍵，或者按下 ESC 鍵來取消設置。
+        title: 更改按鍵設定
+        desc: 請按下你想要使用的按鍵，或者按下 ESC 鍵來取消設定。
     resetKeybindingsConfirmation:
         title: 重置所有按鍵
         desc: 這將會重置所有按鍵，請確認。
@@ -132,13 +132,13 @@ dialogs:
         desc: 你嘗試使用了 <feature> 功能。該功能在試玩版中不可用。請考慮購買單機版以獲得更好的體驗。
     oneSavegameLimit:
         title: 存檔數量限制
-        desc: 試玩版中只能保存一份存檔。請刪除舊存檔或者獲取單機版！
+        desc: 試玩版中只能保存一份存檔。請刪除舊存檔或者取得單機版！
     updateSummary:
         title: 更新了！
-        desc: "以下為自上次遊戲以來更新的內容:"
+        desc: "以下為自上次遊戲以來更新的內容："
     upgradesIntroduction:
         title: 解鎖建築升級
-        desc: 你生產過的所有圖形可以被用來升級建築。<strong>不要銷毀你之前建造的工廠！</strong> 升級選單在屏幕右上角。
+        desc: 你生產過的所有圖形可以被用來升級建築。<strong>不要銷毀你之前建造的工廠！</strong> 升級選單在螢幕右上角。
     massDeleteConfirm:
         title: 確認刪除
         desc: 你將要刪除很多建築，準確來說有<count>幢！你確定要這麼做嗎？
@@ -147,17 +147,19 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設置</strong>中查看其他的！ <br><br>
-            <code class='keybinding'>CTRL</code> + 拖動：選擇區域以復製或刪除。 <br> <code
+        desc:
+            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
+            <code class='keybinding'>CTRL</code> + 拖曳：選擇區域以複製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
-            class='keybinding'>ALT</code>: 反向放置傳送帶。 <br>"
+            class='keybinding'>ALT</code>: 反向放置輸送帶。 <br>"
     createMarker:
-        title: 創建標記
-        desc: 給地圖標記起一個的名字。 你可以在名字中加入一個<strong>短代碼</strong>以加入圖形。 （你可以在 <link>here</link>
-            生成短代碼。）
+        title: 建立標記
+        desc:
+            給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
+            建立簡短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
-        desc: 在試玩版中你只能創建兩個地圖標記。請獲取單機版以創建更多標記。
+        desc: 在試玩版中你只能建立兩個地圖標記。請取得單機版以建立更多標記。
     massCutConfirm:
         title: 確認剪下
         desc: 你將要剪下很多建築，準確來說有<count>幢！你確定要這麼做嗎？
@@ -170,16 +172,16 @@ dialogs:
     editSignal:
         title: 訊號設定
         descItems: "選擇一個預先設定的物件"
-        descShortKey: ... 或輸入圖形的<strong>短代碼</strong> (可以由 <link>here</link> 生成)
+        descShortKey: …或輸入圖形的<strong>簡短代碼</strong>（可以在<link>這裡</link>建立）
     renameSavegame:
         title: 重新命名存檔
         desc: 你可以在這裡重新命名存檔
     tutorialVideoAvailable:
-        title: 有教程
-        desc: 這個等級有教學影片!你想觀看嗎?
+        title: 有教學
+        desc: 這個等級有教學影片！你想觀看嗎？
     tutorialVideoAvailableForeignLanguage:
-        title: 有教程
-        desc: 這個等級目前只有英文版教學影片，你想觀看嗎?
+        title: 有教學
+        desc: 這個等級目前只有英文版教學影片，你想觀看嗎？
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -191,19 +193,19 @@ ingame:
         disableAutoOrientation: 關閉自動定向
         toggleHud: 開關基地
         placeBuilding: 放置建築
-        createMarker: 創建地圖標記
+        createMarker: 建立地圖標記
         delete: 銷毀
         pasteLastBlueprint: 貼上一個藍圖
-        lockBeltDirection: 啟用傳送帶規劃
+        lockBeltDirection: 啟用輸送帶規劃
         plannerSwitchSide: 規劃器換邊
         cutSelection: 剪下選取
         copySelection: 複製選取
         clearSelection: 清空選取
-        pipette: 吸附
+        pipette: 滴管
         switchLayers: 切換層
     buildingPlacement:
-        cycleBuildingVariants: 按<key>鍵以選擇建築變體.
-        hotkeyLabel: "快捷鍵: <key>"
+        cycleBuildingVariants: 按<key>鍵以選擇建築變體。
+        hotkeyLabel: "快捷鍵：<key>"
         infoTexts:
             speed: 效率
             range: 範圍
@@ -246,7 +248,7 @@ ingame:
     settingsMenu:
         playtime: 遊戲時間
         buildingsPlaced: 建築數量
-        beltsPlaced: 傳送帶數量
+        beltsPlaced: 輸送帶數量
     tutorialHints:
         title: 需要幫助？
         showHint: 顯示
@@ -256,23 +258,23 @@ ingame:
     waypoints:
         waypoints: 地圖標記
         hub: 基地
-        description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。 <br><br>按 <keybinding>
-            為當前區域建立地圖標記或按 <strong>right-click</strong> 為選取區域建立地圖標記。
-        creationSuccessNotification: 成功創建地圖標記。
+        description: 在標記上按左鍵以快速移動到標記區域，在標記上按右鍵以刪除該標記。<br><br>按 <keybinding>
+            為目前區域建立地圖標記或按<strong>右鍵</strong>為選取區域建立地圖標記。
+        creationSuccessNotification: 成功建立地圖標記。
     interactiveTutorial:
-        title: 教程
+        title: 教學
         hints:
-            1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來獲取圓形！
-            1_2_conveyor: 用<strong>傳送帶</strong>將你的開採機連接到基地上！
-                <br><br>提示：用你的游標<strong>按下並拖動</strong>傳送帶！
-            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和傳送帶來更快地完成目標。 <br><br>
+            1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來採集圓形！
+            1_2_conveyor: 用<strong>輸送帶</strong>將你的開採機連接到基地上！
+                <br><br>提示：用你的游標<strong>按下並拖曳</strong>輸送帶！
+            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
-            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半!<br><br>
+            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半！<br><br>
                 PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
-            2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>!<br><br>
+            2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>！<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters: "做得好! 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線!<br><br>
-                PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 !"
+            2_3_more_cutters: "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br>
+                PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 ！"
             3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
                 選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
             21_1_place_quad_painter: 放置一個<strong>切割機（四分）</strong>並取得一些
@@ -334,7 +336,7 @@ ingame:
                 desc: 遊戲使我利用閒暇時間做的！
 shopUpgrades:
     belt:
-        name: 傳送帶、平衡機、隧道
+        name: 輸送帶、平衡機、隧道
         description: 效率 <currentMult>倍 → <newMult>倍
     miner:
         name: 開採
@@ -348,8 +350,8 @@ shopUpgrades:
 buildings:
     belt:
         default:
-            name: 傳送帶
-            description: 運送物品，按住並拖動來放置多個。
+            name: 輸送帶
+            description: 運送物品，按住並拖曳來放置多個。
     miner:
         default:
             name: 開採機
@@ -360,10 +362,10 @@ buildings:
     underground_belt:
         default:
             name: 隧道
-            description: 可以從其他傳送帶或建築底下方運送物品。
+            description: 可以從其他輸送帶或建築底下方運送物品。
         tier2:
             name: 貳級隧道
-            description: 可以從其他傳送帶或建築底下方運送物品。
+            description: 可以從其他輸送帶或建築底下方運送物品。
     cutter:
         default:
             name: 切割機
@@ -379,7 +381,7 @@ buildings:
             name: 旋轉機（逆時針）
             description: 將圖形逆時針旋轉90度。
         rotate180:
-            name: 旋轉機 (180度)
+            name: 旋轉機（180度）
             description: 將圖形旋轉180度。
     stacker:
         default:
@@ -424,16 +426,16 @@ buildings:
             description: 多功能——將所有輸入平均分配到所有輸出。
         merger:
             name: 合流機（右）
-            description: 將兩個傳送帶整合成一個。
+            description: 將兩個輸送帶整合成一個。
         merger-inverse:
             name: 合流機（左）
-            description: 將兩個傳送帶整合成一個。
+            description: 將兩個輸送帶整合成一個。
         splitter:
             name: 分流機（右）
-            description: 將單個傳送帶分流成兩個。
+            description: 將單個輸送帶分流成兩個。
         splitter-inverse:
             name: 分流機（左）
-            description: 將單個傳送帶分流成兩個。
+            description: 將單個輸送帶分流成兩個
     storage:
         default:
             name: 倉庫
@@ -453,25 +455,25 @@ buildings:
     logic_gate:
         default:
             name: AND 邏輯閘
-            description: 當輸入均為「真」時，輸出才為1。 （「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當輸入均為「真」時，輸出才為1。（「真」值代表：形狀正確、顏色正確或布林值為1）
         not:
             name: NOT 邏輯閘
-            description: 當輸入之ㄧ為「假」時，輸出才為1。 （「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入之ㄧ為「假」時，輸出才為1。（「假」值代表：形狀不正確、顏色不正確或布林值為0）
         xor:
             name: XOR 邏輯閘
-            description: 當輸入均為「假」時，輸出才為1。 （「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入均為「假」時，輸出才為1。（「假」值代表：形狀不正確、顏色不正確或布林值為0）
         or:
             name: OR 邏輯閘
-            description: 當輸入之ㄧ為「真」時，輸出才為1。 （「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當輸入之ㄧ為「真」時，輸出才為1。（「真」值代表：形狀正確、顏色正確或布林值為1）
     transistor:
         default:
             name: 電晶體
             description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+              （「真」值代表：形狀正確、顏色正確或布林值為1）
         mirrored:
             name: 電晶體
             description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+              （「真」值代表：形狀正確、顏色正確或布林值為1）
     filter:
         default:
             name: 物件分類器
@@ -483,7 +485,7 @@ buildings:
             description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、物件或布林值。
     reader:
         default:
-            name: 傳送帶讀取機
+            name: 輸送帶讀取機
             description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
@@ -524,7 +526,7 @@ storyRewards:
         desc: <strong>順時針旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
     reward_painter:
         title: 上色
-        desc: <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設置中有<strong>色盲模式</strong>可以選。
+        desc: <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設定中有<strong>色盲模式</strong>可以選。
     reward_mixer:
         title: 混色
         desc: <strong>混色器</strong>已解鎖-在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
@@ -534,14 +536,14 @@ storyRewards:
     reward_splitter:
         title: 分流
         desc: <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
-            - 它將單個傳送帶分流成兩個。
+            - 它將單個輸送帶分流成兩個。
     reward_tunnel:
         title: 隧道
-        desc: <strong>隧道</strong>已解鎖。你現在可以從其他傳送帶或建築底下運送物品了！
+        desc: <strong>隧道</strong>已解鎖。你現在可以從其他輸送帶或建築底下運送物品了！
     reward_rotater_ccw:
         title: 逆時針旋轉
         desc: <strong>逆時針旋轉機</strong>已解鎖。它會逆時針旋轉輸入的圖形90度。
-            逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能創建。
+            逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能建立。
     reward_miner_chainable:
         title: 鏈式開採
         desc: "<strong>鏈式開採機</strong>變體已解鎖。它是開採機的一個變體。
@@ -581,11 +583,11 @@ storyRewards:
         desc: 恭喜你！另外，我們已經計劃在單機版中加入更多內容！
     reward_balancer:
         title: 平衡物流
-        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個傳送帶上的物品。
+        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
     reward_merger:
         title: 合流
         desc: <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
-            - 它會將兩個傳送帶整合成一個。
+            - 它會將兩個輸送帶整合成一個。
     reward_belt_reader:
         title: 讀取輸送帶
         desc: <strong>輸送帶讀取機</strong>已解鎖。
@@ -612,10 +614,11 @@ storyRewards:
         desc: <strong>邏輯閘</strong>已解鎖。
             你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
             有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT。<br><br>
-            錦上添花，我再送你<strong>電晶體</strong>!
+            錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
         title: 虛擬操作
-        desc: <strong>虛擬操作</strong>!<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
+        desc:
+            <strong>虛擬操作</strong>！<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
             繼續遊玩的你現在有三個選項：<br><br>
             - 蓋一個自動生成任何基地要求圖形的<strong>自動機</strong>（推薦！）。<br><br>
             - 利用電路層蓋一些很酷建築<br><br>
@@ -628,7 +631,7 @@ storyRewards:
             首先，我為你解鎖<strong>四角上色機</strong>。
             想要上色的角落記得在電路層通電！<br><br>
             按<strong>E</strong>切換至電路層。<br><br>
-            PS: 設定裡<strong>開啟提示</strong>來啟動教程！"
+            PS: 設定裡<strong>開啟提示</strong>來啟動教學！"
     reward_filter:
         title: 物件分類器
         desc: <strong>物件分類器</strong>已解鎖。
@@ -638,7 +641,7 @@ storyRewards:
         title: 試玩結束
         desc: 你已破關試玩版！
 settings:
-    title: 設置
+    title: 設定
     categories:
         general: 一般
         userInterface: 使用者介面（UI）
@@ -648,11 +651,11 @@ settings:
         dev: 開發版本
         staging: 預覽版本
         prod: 正式版本
-    buildDate: 於<at-date>創建
+    buildDate: 於<at-date>建立
     labels:
         uiScale:
-            title: 用戶界面大小
-            description: 改變用戶界面大小。用戶界面會隨著設備分辨率縮放，這個設置決定縮放比例。
+            title: 顯示介面大小
+            description: 改變顯示介面大小。顯示介面會隨著設備解析度縮放，這個設定決定縮放比例。
             scales:
                 super_small: 最小
                 small: 較小
@@ -661,7 +664,7 @@ settings:
                 huge: 最大
         scrollWheelSensitivity:
             title: 縮放靈敏度
-            description: 改變縮放靈敏度（鼠標滾輪或者觸控板）。
+            description: 改變縮放靈敏度（滑鼠滾輪或者軌跡板）。
             sensitivity:
                 super_slow: 最低
                 slow: 較低
@@ -687,17 +690,17 @@ settings:
                 dark: 深色
                 light: 淺色
         refreshRate:
-            title: 模擬頻率、刷新頻率
-            description: 如果你的顯示器是144hz的，請在這裡更改刷新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦性能不佳，提高刷新頻率可能降低幀數。
+            title: 模擬頻率、更新頻率
+            description: 如果你的顯示器是 144Hz 的，請在這裡更改更新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦效能不佳，提高更新頻率可能降低幀數。
         alwaysMultiplace:
             title: 多重放置
-            description: 開啟這個選項之後放下建築將不會取消建築選擇。等同於一直按下SHIFT鍵。
+            description: 開啟這個選項之後放下建築將不會取消建築選擇。等同於一直按下 SHIFT 鍵。
         offerHints:
-            title: 提示與教程
-            description: 是否顯示提示、教程以及一些其他的幫助理解遊戲的UI元素。
+            title: 提示與教學
+            description: 是否顯示提示、教學以及一些其他的幫助理解遊戲的介面元素。
         movementSpeed:
             title: 移動速度
-            description: 改變攝像頭移動速度
+            description: 改變視角移動速度
             speeds:
                 super_slow: 最慢
                 slow: 較慢
@@ -706,35 +709,35 @@ settings:
                 super_fast: 非常快
                 extremely_fast: 最快
         enableTunnelSmartplace:
-            title: 智能隧道放置
-            description: 啟用後，放置隧道時會將多餘的傳送帶移除。 此外，拖動隧道可以快速鋪設隧道，以及移除不必要的隧道。
+            title: 智慧隧道放置
+            description: 啟用後，放置隧道時會將多餘的輸送帶移除。此外，拖曳隧道可以快速鋪設隧道，以及移除不必要的隧道。
         vignette:
             title: 暈映
-            description: 啟用暈映，將屏幕角落裡的顏色變深，更容易閱讀文字。
+            description: 啟用暈映，將螢幕角落裡的顏色變深，更容易閱讀文字。
         autosaveInterval:
             title: 自動刷新時間
-            description: 控制遊戲自動刷新的頻率。 您也可以禁用它。
+            description: 控制遊戲自動刷新的頻率。您也可以停用它。
             intervals:
-                one_minute: 1分鐘
-                two_minutes: 2分鐘
-                five_minutes: 5分鐘
-                ten_minutes: 10分鐘
-                twenty_minutes: 20分鐘
+                one_minute: 1 分鐘
+                two_minutes: 2 分鐘
+                five_minutes: 5 分鐘
+                ten_minutes: 10 分鐘
+                twenty_minutes: 20 分鐘
                 disabled: 停用
         compactBuildingInfo:
-            title: 省略建築信息
+            title: 省略建築資訊
             description: |-
-                通過顯示建築物的比率來縮短建築物的資訊框。 否則
+                通過顯示建築物的比例來縮短建築物的資訊框。否則
                  顯示所有說明+圖像。
         disableCutDeleteWarnings:
             title: 停用剪下/刪除的警告
             description: 剪下/刪除超過100幢建築物時不顯示警告。
         enableColorBlindHelper:
             title: 色盲模式
-            description: 如果您是色盲者，啟用了這設定，就可以玩遊戲了。
+            description: 如果您是色盲者，啟用了這設定就可以玩遊戲了。
         rotationByBuilding:
             title: 依建築類型旋轉
-            description: 每個建築類型，將會分別記住您最後一次使用的旋轉方向。 如果您常常切換不同類型的建築，這樣可能會更方便。
+            description: 每個建築類型，將會分別記住您最後一次使用的旋轉方向。如果您常常切換不同類型的建築，這樣可能會更方便。
         soundVolume:
             title: 音效
             description: 音效設定
@@ -752,8 +755,8 @@ settings:
             description: 預設是開啟的，按下右鍵時，清空游標上顯示的準備要蓋建築。
                 如果關閉此選項，你可以一邊蓋工廠一邊刪除不要的建築。
         lowQualityTextures:
-            title: 低畫質(醜)
-            description: 用低畫質節省效能。遊戲畫面會變的很醜！
+            title: 低畫質（簡陋）
+            description: 用低畫質節省效能。遊戲畫面會變的很簡陋！
         displayChunkBorders:
             title: 顯示分區邊界
             description: 遊戲是由許多 16x16 的分區組成，啟用這個選項會顯示分區的邊界。
@@ -762,7 +765,7 @@ settings:
             description: 預設是開啟的，當滴管移動到資源叢上方時，選擇開採機。
         simplifiedBelts:
             title: 簡化輸送帶（醜）
-            description: 為節省效能，不 render 輸送帶。
+            description: 為節省效能，不渲染輸送帶。
                 除非有必要節省效能，不然我是不建議使用。
         enableMousePan:
             title: 允許用滑鼠移動畫面
@@ -775,9 +778,9 @@ settings:
             description: 控制地圖資源標示大小（縮小俯瞰時）。
     rangeSliderPercentage: <amount> %
 keybindings:
-    title: 按鍵設置
-    hint: 提示：使用 CTRL、SHIFT、ALT ! 這些建在放置建築時有不同的效果。
-    resetKeybindings: 重置按鍵設置
+    title: 按鍵設定
+    hint: 提示：使用 CTRL、SHIFT、ALT ！ 這些建在放置建築時有不同的效果。
+    resetKeybindings: 重置按鍵設定
     categoryLabels:
         general: 通用
         ingame: 遊戲
@@ -796,12 +799,12 @@ keybindings:
         centerMap: 回到基地
         mapZoomIn: 放大
         mapZoomOut: 縮小
-        createMarker: 創建地圖標記
+        createMarker: 建立地圖標記
         menuOpenShop: 升級選單
         menuOpenStats: 統計選單
         toggleHud: 開關基地
-        toggleFPSInfo: 開關幀數與調試信息
-        belt: 傳送帶
+        toggleFPSInfo: 開關幀數與除錯信息
+        belt: 輸送帶
         underground_belt: 隧道
         miner: 開採機
         cutter: 切割機
@@ -820,12 +823,12 @@ keybindings:
         massSelectCopy: 複製
         placementDisableAutoOrientation: 取消自動定向
         placeMultiple: 繼續放置
-        placeInverse: 反向放置傳送帶
+        placeInverse: 反向放置輸送帶
         pasteLastBlueprint: 貼上前一張藍圖
         massSelectCut: 剪切
         exportScreenshot: 匯出截圖
         mapMoveFaster: 快速移動
-        lockBeltDirection: 啟用傳送帶規劃
+        lockBeltDirection: 啟用輸送帶規劃
         switchDirectionLockSide: 規劃器：換邊
         pipette: 滴管
         menuClose: 關閉選單
@@ -844,7 +847,7 @@ keybindings:
         transistor: 電晶體
         analyzer: 形狀分析機
         comparator: 比對機
-        item_producer: 物品生產機(沙盒模式)
+        item_producer: 物品生產機（沙盒模式）
         copyWireValue: "電路：複製數值於游標底下"
 about:
     title: 關於遊戲
@@ -866,63 +869,63 @@ demo:
         restoringGames: 恢復存檔
         importingGames: 匯入存檔
         oneGameLimit: 最多一個存檔
-        customizeKeybindings: 按鍵設置
+        customizeKeybindings: 按鍵設定
         exportingBase: 匯出工廠截圖
     settingNotAvailable: 在試玩版中不可用。
 tips:
-    - 基地接受任何輸入，不只是當前要求的圖形!
-    - 盡量讓工廠模組化，會有回報的!
-    - 建築不要距離基地太近，否則容易混亂!
+    - 基地接受任何輸入，不只是當下要求的圖形！
+    - 盡量讓工廠模組化，會有回報的！
+    - 建築不要距離基地太近，否則容易混亂！
     - 如果堆疊不如預期，嘗試將輸入端互換。
     - 輸送帶的方向可以按 <b>R</b> 更換。
     - 按住 <b>CTRL</b> 來防止輸送帶自動轉向。
     - 同等級的生產比例會是一樣的。
     - 串聯比並聯更有效率。
-    - 遊戲後期可以解鎖更多建築變體!
+    - 遊戲後期可以解鎖更多建築變體！
     - 玩家可以按 <b>T</b> 來選擇不同變體。
-    - 對稱是關鍵!
+    - 對稱是關鍵！
     - 不同等級的隧道可以相互交織。
-    - 盡量讓工廠保持緊密，會有回報的!
+    - 盡量讓工廠保持緊密，會有回報的！
     - 上色機有對稱的變體。按 <b>T</b> 來選擇不同變體。
     - 正確的建築比例可以將效率最大化。
     - 最高級時，五個開採機可填滿一個輸送帶。
-    - 別忘記使用隧道!
+    - 別忘記使用隧道！
     - 最高效率不一定來自均勻切割。
     - 按住 <b>SHIFT</b> 輕鬆規劃長距離輸送帶。
     - 不論擺放方向，切割機永遠做垂直切割。
     - 白 = 紅 + 綠 + 藍。
     - 倉庫優先從左側輸出。
-    - 花點時間研究可以重複利用的設計，會有回報的!
+    - 花點時間研究可以重複利用的設計，會有回報的！
     - 按住 <b>SHIFT</b> 可以一次放置多個建築。
     - 按住 <b>ALT</b> 以反轉輸送帶的放置方向。
-    - 效率是關鍵!
+    - 效率是關鍵！
     - 離基地越遠得圖形叢越複雜。
     - 機器的運作速度有上限，多放幾個增加生產效率。
     - 用平衡機讓效率最大化。
     - 規劃很重要，盡量別讓輸送帶錯綜複雜。
-    - 預先規劃，不然會混亂不堪!
+    - 預先規劃，不然會混亂不堪！
     - 不要刪除舊的工廠，解鎖更新能會需要它們。
-    - 先試著靠自己破第20關再去尋求幫助。
+    - 先試著靠自己破第 20 關再去尋求幫助。
     - 不要讓東西複雜化，保持簡單則行的遠。
     - 遊戲中有時需要重複利用工廠，設計時記得考量重複利用性。
     - 有些圖形地圖上就找的到，不必自行堆疊。
     - 地圖永遠部會自然生成完整的風車圖形。
     - 先上色再切割會比較有效率。
     - 有了模組，空間淪為假議題、凡夫俗子的憂思。
-    - 創建一個藍圖工廠，這對模組化很有幫助。
+    - 建立一個藍圖工廠，這對模組化很有幫助。
     - 靠近一點看混色機，你會找到解答。
     - 按 <b>CTRL</b> + 點選想選取的區域。
     - 離基地太近的建築可能在未來會礙事。
-    - 更新目錄的每個圖形旁都有圖釘，點選即可把圖形釘在螢幕上(目標圖形旁)。
-    - 混合所有基本色就會得到白色!
-    - 地圖是無限延展的，別執著，擴張吧!
-    - Factorio 是我最喜歡的遊戲，非常推薦!
+    - 更新目錄的每個圖形旁都有圖釘，點選即可把圖形訂選在螢幕上（目標圖形旁）。
+    - 混合所有基本色就會得到白色！
+    - 地圖是無限延展的；別執著於一處，盡情地擴張吧！
+    - Factorio 是我最喜歡的遊戲，非常推薦！
     - 四分切割機從右上角順時鐘地輸出圖形的四個區塊。
     - 你可以從主畫面下載存檔。
-    - 去設定頁看看，有很多有用的按鍵組合!
+    - 去設定頁看看，有很多有用的按鍵組合！
     - 有很多東西都可以設定，有空的話去設定頁看看。
     - 看不見基地時，基地的標示左側有個小指南針會提醒你它的方位。
-    - 清除輸送帶有個方法:複製它再原地貼上。
-    - 按 F4 來顯示螢幕的幀數(FPS)與刷新率(Tick Rate)。
+    - 清除輸送帶有個方法：複製它再原地貼上。
+    - 按 F4 來顯示螢幕的幀數（FPS）與刷新率（Tick Rate）。
     - 按 F4 兩次來顯示相機和游標的絕對位置。
     - 在已標記的圖形上按左鍵去除標記。
