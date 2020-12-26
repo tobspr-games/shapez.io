@@ -1181,6 +1181,7 @@ keybindings:
     placementDisableAutoOrientation: Disable automatic orientation
     placeMultiple: Stay in placement mode
     placeInverse: Invert automatic belt orientation
+    delete: Delete Building
 
 about:
   title: About this Game

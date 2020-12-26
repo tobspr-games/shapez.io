@@ -83,6 +83,7 @@ export const KEYMAPPINGS = {
 
     placement: {
         placeBuilding: { keyCode: KEYCODE_LMB },
+        delete: { keyCode: KEYCODE_RMB },
         pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT

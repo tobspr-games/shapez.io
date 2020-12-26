@@ -173,7 +173,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             {
                 // Delete with right click
                 label: T.ingame.keybindingsOverlay.delete,
-                keys: [KEYCODE_RMB],
+                keys: [KEYCODE_RMB, DIVIDER_TOKEN, k.placement.delete],
                 condition: () =>
                     !this.anyPlacementActive && !this.mapOverviewActive && !this.anythingSelectedOnMap,
             },
@@ -195,7 +195,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             {
                 // Place building
                 label: T.ingame.keybindingsOverlay.placeBuilding,
-                keys: [k.placement.placeBuilding],
+                keys: [KEYCODE_LMB, DIVIDER_TOKEN, k.placement.placeBuilding],
                 condition: () => this.anyPlacementActive,
             },
 
@@ -299,7 +299,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                         break;
                     default:
                         html += `<code class="keybinding">${getStringForKeyCode(
-                            mapper.getBinding(/** @type {KeyCode} */ (key)).keyCode
+                            mapper.getBinding(/** @type {KeyCode} */(key)).keyCode
                         )}</code>`;
                 }
             }

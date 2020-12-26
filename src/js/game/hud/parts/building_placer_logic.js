@@ -117,7 +117,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
         this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.placeBuilding).add(this.tryPlaceCurrentBuildingAtCursor, this)
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.placeBuilding).add(this.tryPlaceCurrentBuildingAtCursor, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.delete).add(this.tryDeleteBelowCursor, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -148,6 +149,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const mouseTile = worldPos.toTileSpace();
 
         this.tryPlaceCurrentBuildingAt(mouseTile);
+    }
+
+    tryDeleteBelowCursor() {
+        if (this.currentMetaBuilding.get()) {
+            return;
+        }
+
+        this.deleteBelowCursor();
     }
 
     /**
