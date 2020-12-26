@@ -117,6 +117,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
         this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.placeBuilding).add(this.tryPlaceCurrentBuildingAtCursor, this)
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -130,6 +131,23 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
+    }
+
+    tryPlaceCurrentBuildingAtCursor() {
+        if (!this.currentMetaBuilding.get()) {
+            return;
+        }
+
+        const mousePosition = this.root.app.mousePosition;
+        if (!mousePosition) {
+            // Not on screen
+            return;
+        }
+
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = worldPos.toTileSpace();
+
+        this.tryPlaceCurrentBuildingAt(mouseTile);
     }
 
     /**

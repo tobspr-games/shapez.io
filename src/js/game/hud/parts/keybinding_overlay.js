@@ -195,7 +195,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
             {
                 // Place building
                 label: T.ingame.keybindingsOverlay.placeBuilding,
-                keys: [KEYCODE_LMB],
+                keys: [k.placement.placeBuilding],
                 condition: () => this.anyPlacementActive,
             },
 

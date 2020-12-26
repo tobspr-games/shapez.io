@@ -11,6 +11,10 @@ function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
 
+export const KEYCODE_LMB = 1;
+export const KEYCODE_MMB = 2;
+export const KEYCODE_RMB = 3;
+
 export const KEYMAPPINGS = {
     general: {
         confirm: { keyCode: 13 }, // enter
@@ -78,6 +82,7 @@ export const KEYMAPPINGS = {
     },
 
     placement: {
+        placeBuilding: { keyCode: KEYCODE_LMB },
         pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
@@ -111,10 +116,6 @@ for (const categoryId in KEYMAPPINGS) {
         KEYMAPPINGS[categoryId][mappingId].id = mappingId;
     }
 }
-
-export const KEYCODE_LMB = 1;
-export const KEYCODE_MMB = 2;
-export const KEYCODE_RMB = 3;
 
 /**
  * Returns a keycode -> string
@@ -261,6 +262,32 @@ export function getStringForKeyCode(code) {
             return "]";
         case 222:
             return "'";
+
+        // Xbox Gamepad
+        case 300:
+            return "🎮 A";
+        case 301:
+            return "🎮 B";
+        case 302:
+            return "🎮 X";
+        case 303:
+            return "🎮 Y";
+        case 304:
+            return "🎮 LB";
+        case 305:
+            return "🎮 RB";
+        case 306:
+            return "🎮 LT";
+        case 307:
+            return "🎮 RT";
+        case 312:
+            return "🎮 ⬆";
+        case 313:
+            return "🎮 ⬇";
+        case 314:
+            return "🎮 ⬅";
+        case 315:
+            return "🎮 ➡";
     }
 
     return (48 <= code && code <= 57) || (65 <= code && code <= 90)

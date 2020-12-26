@@ -185,7 +185,7 @@ export class InputDistributor {
         const gamepad = navigator.getGamepads()[this.connectedGamepadIndex];
 
         for (const [index, button] of gamepad.buttons.entries()) {
-            const keyCode = 200 + index
+            const keyCode = 300 + index;
             const isInitial = !this.keysDown.has(keyCode);
 
             if (button.pressed) {
