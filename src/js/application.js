@@ -366,6 +366,8 @@ export class Application {
 
         const time = performance.now();
 
+        this.inputMgr.processGamepadInputs();
+
         // Periodically check for resizes, this is expensive (takes 2-3ms so only do it once in a while!)
         if (!this.lastResizeCheck || time - this.lastResizeCheck > 1000) {
             this.checkResize();

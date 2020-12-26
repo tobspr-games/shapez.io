@@ -1,4 +1,4 @@
-@each $num in ("changeAnimEven", "changeAnimOdd") {
+@each $animName in ("changeAnimEven", "changeAnimOdd") {
     @keyframes #{$animName} {
         0% {
             transform: scale(1, 1);

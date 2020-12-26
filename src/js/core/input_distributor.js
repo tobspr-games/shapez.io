@@ -28,6 +28,8 @@ export class InputDistributor {
          */
         this.keysDown = new Set();
 
+        this.connectedGamepadIndex = null;
+
         this.bindToEvents();
     }
 
@@ -149,6 +151,8 @@ export class InputDistributor {
         window.addEventListener("mouseup", this.handleKeyMouseUp.bind(this));
 
         window.addEventListener("blur", this.handleBlur.bind(this));
+
+        window.addEventListener("gamepadconnected", this.handleGamepadConnected.bind(this))
     }
 
     forwardToReceiver(eventId, payload = null) {
@@ -168,6 +172,45 @@ export class InputDistributor {
         assert(signal instanceof Signal, "Not a valid event id");
         return signal.dispatch(payload);
     }
+
+    handleGamepadConnected(event) {
+        this.connectedGamepadIndex = event.gamepad.index;
+    }
+
+    processGamepadInputs() {
+        if (this.connectedGamepadIndex === null) {
+            return
+        }
+
+        const gamepad = navigator.getGamepads()[this.connectedGamepadIndex];
+
+        for (const [index, button] of gamepad.buttons.entries()) {
+            const keyCode = 200 + index
+            const isInitial = !this.keysDown.has(keyCode);
+
+            if (button.pressed) {
+                logger.debug(`gamepad button [${index}]: ${button.pressed ? 'pressed' : ''}`)
+                this.keysDown.add(keyCode);
+
+                this.forwardToReceiver("keydown", {
+                    keyCode: keyCode,
+                    shift: 0,
+                    alt: 0,
+                    initial: isInitial,
+                })
+            }
+            if (!button.pressed && !isInitial) {
+                this.keysDown.delete(keyCode);
+
+                this.forwardToReceiver("keyup", {
+                    keyCode: keyCode,
+                    shift: 0,
+                    alt: 0,
+                });
+            }
+        }
+    }
+
 
     /**
      * @param {Event} event

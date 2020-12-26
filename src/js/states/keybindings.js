@@ -99,7 +99,7 @@ export class KeybindingsState extends TextualGameState {
                 event.preventDefault();
             }
 
-            if (event.target && event.target.tagName === "BUTTON" && keyCode === 1) {
+            if (event && event.target && event.target.tagName === "BUTTON" && keyCode === 1) {
                 return;
             }
 
@@ -117,7 +117,7 @@ export class KeybindingsState extends TextualGameState {
             this.updateKeybindings();
         });
 
-        dialog.inputReciever.backButton.add(() => {});
+        dialog.inputReciever.backButton.add(() => { });
         this.dialogs.internalShowDialog(dialog);
 
         this.app.sound.playUiSound(SOUNDS.dialogOk);
