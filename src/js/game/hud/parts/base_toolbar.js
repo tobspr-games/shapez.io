@@ -151,7 +151,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
     }
 
     isBuildingSelected() {
-        return Object.entries(this.buildingHandles).some(([_, handle]) => handle.selected)
+        return Object.entries(this.buildingHandles).some(([_, handle]) => handle.selected);
     }
 
     /**
@@ -166,7 +166,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
         let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
         if (this.isBuildingSelected()) {
-            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+                .pressed
                 ? -1
                 : 1;
 

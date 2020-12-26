@@ -299,7 +299,7 @@ export class HUDKeybindingOverlay extends BaseHUDPart {
                         break;
                     default:
                         html += `<code class="keybinding">${getStringForKeyCode(
-                            mapper.getBinding(/** @type {KeyCode} */(key)).keyCode
+                            mapper.getBinding(/** @type {KeyCode} */ (key)).keyCode
                         )}</code>`;
                 }
             }

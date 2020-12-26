@@ -152,7 +152,7 @@ export class InputDistributor {
 
         window.addEventListener("blur", this.handleBlur.bind(this));
 
-        window.addEventListener("gamepadconnected", this.handleGamepadConnected.bind(this))
+        window.addEventListener("gamepadconnected", this.handleGamepadConnected.bind(this));
     }
 
     forwardToReceiver(eventId, payload = null) {
@@ -179,7 +179,7 @@ export class InputDistributor {
 
     processGamepadInputs() {
         if (this.connectedGamepadIndex === null) {
-            return
+            return;
         }
 
         const gamepad = navigator.getGamepads()[this.connectedGamepadIndex];
@@ -189,7 +189,7 @@ export class InputDistributor {
             const isInitial = !this.keysDown.has(keyCode);
 
             if (button.pressed) {
-                logger.debug(`gamepad button [${index}]: ${button.pressed ? 'pressed' : ''}`)
+                logger.debug(`gamepad button [${index}]: ${button.pressed ? "pressed" : ""}`);
                 this.keysDown.add(keyCode);
 
                 this.forwardToReceiver("keydown", {
@@ -197,7 +197,7 @@ export class InputDistributor {
                     shift: 0,
                     alt: 0,
                     initial: isInitial,
-                })
+                });
             }
             if (!button.pressed && !isInitial) {
                 this.keysDown.delete(keyCode);
@@ -210,7 +210,6 @@ export class InputDistributor {
             }
         }
     }
-
 
     /**
      * @param {Event} event

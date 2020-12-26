@@ -117,7 +117,7 @@ export class KeybindingsState extends TextualGameState {
             this.updateKeybindings();
         });
 
-        dialog.inputReciever.backButton.add(() => { });
+        dialog.inputReciever.backButton.add(() => {});
         this.dialogs.internalShowDialog(dialog);
 
         this.app.sound.playUiSound(SOUNDS.dialogOk);
