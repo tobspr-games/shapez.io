@@ -150,6 +150,10 @@ export class HUDBaseToolbar extends BaseHUDPart {
         }
     }
 
+    isBuildingSelected() {
+        return Object.entries(this.buildingHandles).some(([_, handle]) => handle.selected)
+    }
+
     /**
      * Cycles through all buildings
      */
@@ -161,22 +165,25 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
-        const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
-            ? -1
-            : 1;
+        if (this.isBuildingSelected()) {
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
+                ? -1
+                : 1;
 
-        for (let i = 0; i <= this.primaryBuildings.length; ++i) {
-            newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);
-            const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
-            const handle = this.buildingHandles[metaBuilding.id];
-            if (!handle.selected && handle.unlocked) {
-                newBuildingFound = true;
-                break;
+            for (let i = 0; i <= this.primaryBuildings.length; ++i) {
+                newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);
+                const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
+                const handle = this.buildingHandles[metaBuilding.id];
+                if (!handle.selected && handle.unlocked) {
+                    newBuildingFound = true;
+                    break;
+                }
+            }
+            if (!newBuildingFound) {
+                return;
             }
         }
-        if (!newBuildingFound) {
-            return;
-        }
+
         const metaBuildingClass = this.primaryBuildings[newIndex];
         const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
