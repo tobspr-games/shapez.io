@@ -117,10 +117,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.abortPlacement, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.pipette).add(this.startPipette, this);
         this.root.gameState.inputReciever.keyup.add(this.checkForDirectionLockSwitch, this);
-        keyActionMapper
-            .getBinding(KEYMAPPINGS.placement.placeBuilding)
-            .add(this.tryPlaceCurrentBuildingAtCursor, this);
-        keyActionMapper.getBinding(KEYMAPPINGS.placement.delete).add(this.tryDeleteBelowCursor, this);
+        this.root.gameState.inputReciever.keydown.add(this.onKeyDown, this);
+        this.root.gameState.inputReciever.keyup.add(this.onKeyUp, this);
 
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
@@ -136,29 +134,44 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
     }
 
-    tryPlaceCurrentBuildingAtCursor() {
-        if (!this.currentMetaBuilding.get()) {
+    onKeyDown({ keyCode }) {
+        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.placeBuilding).keyCode) {
+            const mousePosition = this.root.app.mousePosition;
+            if (!mousePosition) {
+                // Not on screen
+                return;
+            }
+
+            this.onMouseDown(mousePosition, enumMouseButton.left);
             return;
         }
 
-        const mousePosition = this.root.app.mousePosition;
-        if (!mousePosition) {
-            // Not on screen
+        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.delete).keyCode) {
+            const mousePosition = this.root.app.mousePosition;
+            if (!mousePosition) {
+                // Not on screen
+                return;
+            }
+
+            if (this.currentMetaBuilding.get()) {
+                return;
+            }
+
+            this.onMouseDown(mousePosition, enumMouseButton.right);
             return;
         }
-
-        const worldPos = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile = worldPos.toTileSpace();
-
-        this.tryPlaceCurrentBuildingAt(mouseTile);
     }
 
-    tryDeleteBelowCursor() {
-        if (this.currentMetaBuilding.get()) {
+    onKeyUp({ keyCode }) {
+        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.placeBuilding).keyCode) {
+            this.onMouseUp();
             return;
         }
 
-        this.deleteBelowCursor();
+        if (keyCode === this.root.keyMapper.getBinding(KEYMAPPINGS.placement.delete).keyCode) {
+            this.onMouseUp();
+            return;
+        }
     }
 
     /**

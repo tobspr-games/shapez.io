@@ -196,7 +196,8 @@ export class InputDistributor {
             const keyCode = 300 + index;
             const isInitial = !this.keysDown.has(keyCode);
 
-            if (button.pressed) {
+            // Limit to initial presses only, otherwise it generates event every frame
+            if (button.pressed && isInitial) {
                 logger.debug(`gamepad button [${index}]: ${button.pressed ? "pressed" : ""}`);
                 this.keysDown.add(keyCode);
 
