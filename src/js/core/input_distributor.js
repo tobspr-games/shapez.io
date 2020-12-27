@@ -220,6 +220,24 @@ export class InputDistributor {
         }
     }
 
+    getGamepadAxes() {
+        if (this.connectedGamepadIndex === null) {
+            return {
+                x: 0,
+                y: 0,
+            };
+        }
+
+        const gamepad = navigator.getGamepads()[this.connectedGamepadIndex];
+
+        // Threshold 0.25 as the joysticks never return to exact 0
+        // power to 9 function to decrease the sensitivity, to be ~0.25 at 85%
+        return {
+            x: Math.abs(gamepad.axes[0]) < 0.25 ? 0 : gamepad.axes[0],
+            y: Math.abs(gamepad.axes[1]) < 0.25 ? 0 : gamepad.axes[1],
+        };
+    }
+
     /**
      * @param {Event} event
      */

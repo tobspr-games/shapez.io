@@ -778,6 +778,7 @@ export class Camera extends BasicSerializableObject {
             this.internalUpdateCentering(now, physicsStepSizeMs);
             this.internalUpdateShake(now, physicsStepSizeMs);
             this.internalUpdateKeyboardForce(now, physicsStepSizeMs);
+            this.internalUpdateGamepadForce(now, physicsStepSizeMs);
         }
         this.clampZoomLevel();
     }
@@ -1006,6 +1007,26 @@ export class Camera extends BasicSerializableObject {
 
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;
+        }
+    }
+
+    /**
+     * Updates the gamepad axis forces
+     * @param {number} now
+     * @param {number} dt Delta time
+     */
+    internalUpdateGamepadForce(now, dt) {
+        const inputMgr = this.root.app.inputMgr;
+
+        if (inputMgr.connectedGamepadIndex !== null && !this.currentlyMoving && this.desiredCenter == null) {
+            const limitingDimension = Math.min(this.root.gameWidth, this.root.gameHeight);
+
+            const moveAmount = ((limitingDimension / 2048) * dt) / this.zoomLevel;
+
+            let { x, y } = inputMgr.getGamepadAxes();
+
+            this.center.x += moveAmount * x * 2;
+            this.center.y += moveAmount * y * 2;
         }
     }
 }
