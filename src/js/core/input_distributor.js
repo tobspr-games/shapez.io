@@ -28,6 +28,7 @@ export class InputDistributor {
          */
         this.keysDown = new Set();
 
+        /** @type number */
         this.connectedGamepadIndex = null;
 
         this.bindToEvents();
@@ -153,6 +154,7 @@ export class InputDistributor {
         window.addEventListener("blur", this.handleBlur.bind(this));
 
         window.addEventListener("gamepadconnected", this.handleGamepadConnected.bind(this));
+        window.addEventListener("gamepaddisconnected", this.handleGamepadDisconnected.bind(this));
     }
 
     forwardToReceiver(eventId, payload = null) {
@@ -175,6 +177,12 @@ export class InputDistributor {
 
     handleGamepadConnected(event) {
         this.connectedGamepadIndex = event.gamepad.index;
+    }
+
+    handleGamepadDisconnected(event) {
+        if (event.gamepad.index === this.connectedGamepadIndex) {
+            this.connectedGamepadIndex = null;
+        }
     }
 
     processGamepadInputs() {
