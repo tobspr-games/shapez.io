@@ -53,7 +53,7 @@ global:
     thousandsDivider: .
     decimalSeparator: ","
     suffix:
-        thousands: k
+        thousands: K
         millions: M
         billions: B
         trillions: T
@@ -61,11 +61,11 @@ global:
     time:
         oneSecondAgo: een seconde geleden
         xSecondsAgo: <x> seconden geleden
-        oneMinuteAgo: een minuut geleden
+        oneMinuteAgo: één minuut geleden
         xMinutesAgo: <x> minuten geleden
-        oneHourAgo: een uur geleden
+        oneHourAgo: één uur geleden
         xHoursAgo: <x> uren geleden
-        oneDayAgo: een dag geleden
+        oneDayAgo: één dag geleden
         xDaysAgo: <x> dagen geleden
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
@@ -83,7 +83,7 @@ demoBanners:
     intro: Koop de standalone om alle functies te ontgrendelen!
 mainMenu:
     play: Spelen
-    changelog: Changelog
+    changelog: Wijzigingenlijst
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
     discordLink: Officiële Discord-server (Engelstalig)
@@ -91,19 +91,19 @@ mainMenu:
     browserWarning: Sorry, maar dit spel draait langzaam in je huidige browser! Koop
         de standalone versie of download chrome voor de volledige ervaring.
     savegameLevel: Level <x>
-    savegameLevelUnknown: Onbekend Level
+    savegameLevelUnknown: Level onbekend
     continue: Ga verder
     newGame: Nieuw Spel
     madeBy: Gemaakt door <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Naamloos
 dialogs:
     buttons:
         ok: OK
         delete: Verwijder
         cancel: Annuleer
         later: Later
-        restart: Herstarten
+        restart: Herstart
         reset: Reset
         getStandalone: Koop de Standalone
         deleteGame: Ik weet wat ik doe
@@ -117,7 +117,7 @@ dialogs:
         title: Savegame geïmporteerd
         text: Je savegame is succesvol geïmporteerd.
     gameLoadFailure:
-        title: Het spel is kapot
+        title: Corrupte savegame
         text: "Het laden van je savegame is mislukt:"
     confirmSavegameDelete:
         title: Bevestig het verwijderen
@@ -160,14 +160,14 @@ dialogs:
             Het upgrades-tabblad staat in de rechterbovenhoek van het scherm.
     massDeleteConfirm:
         title: Bevestig verwijderen
-        desc: Je bent veel gebouwen aan het verwijderen (<count> om precies te zijn)!
+        desc: Je bent veel gebouwen aan het verwijderen (<count> om precies te zijn!)
             Weet je zeker dat je dit wil doen?
     blueprintsNotUnlocked:
         title: Nog niet ontgrendeld
         desc: Blauwdrukken zijn nog niet ontgrendeld! Voltooi meer levels om ze te
             ontgrendelen.
     keybindingsIntroduction:
-        title: Nuttige sneltoetsen
+        title: Handige sneltoetsen
         desc: "Dit spel heeft veel sneltoetsen die het makkelijker maken om grote
             fabrieken te bouwen. Hier zijn er een aantal, maar zorg dat je
             <strong>kijkt naar de sneltoetsen</strong>!<br><br> <code
@@ -186,7 +186,7 @@ dialogs:
             een ongelimiteerde hoeveelheid markeringen!
     massCutConfirm:
         title: Bevestig knippen
-        desc: Je bent veel gebouwen aan het knippen (<count> om precies te zijn)! Weet
+        desc: Je bent veel vormen aan het knippen (<count> om precies te zijn)! Weet
             je zeker dat je dit wil doen?
     exportScreenshotWarning:
         title: Exporteer screenshot
@@ -221,10 +221,10 @@ ingame:
         placeMultiple: Plaats meerdere
         reverseOrientation: Omgekeerde oriëntatie
         disableAutoOrientation: Schakel auto-oriëntatie uit
-        toggleHud: Aan-/Uitzetten HUD
+        toggleHud: HUD aan-/uitzetten
         placeBuilding: Plaats gebouw
         createMarker: Plaats markering
-        delete: Vernietig
+        delete: Verwijder
         pasteLastBlueprint: Plak laatst gekopieerde blauwdruk
         lockBeltDirection: Gebruik lopende band planner
         plannerSwitchSide: Draai de richting van de planner
@@ -265,11 +265,11 @@ ingame:
                 title: In opslag
                 description: Geeft alle vormen weer die opgeslagen zijn in de HUB.
             produced:
-                title: Geproduceerd
+                title: Productie
                 description: Geeft alle vormen weer die op dit moment geproduceerd worden,
                     inclusief tussenproducten.
             delivered:
-                title: Geleverd
+                title: Levering
                 description: Geeft alle vormen weer die in de HUB worden bezorgd.
         noShapesProduced: Er zijn nog geen vormen geproduceerd.
         shapesDisplayUnits:
@@ -340,7 +340,7 @@ ingame:
         purple: Paars
         cyan: Cyaan
         white: Wit
-        uncolored: Geen kleur
+        uncolored: Kleurloos
         black: Zwart
     shapeViewer:
         title: Lagen
@@ -352,18 +352,18 @@ ingame:
         limited_items: "Gelimiteerd tot: <max_throughput>"
     watermark:
         title: Demo versie
-        desc: Klik hier om het spel op Steam te bekijken!
+        desc: Klik hier om het spel op Steam te kopen!
         get_on_steam: Krijg het op Steam
     standaloneAdvantages:
         title: Koop de volledige versie!
-        no_thanks: Nee, bedankt!
+        no_thanks: Nee, dankjewel!
         points:
             levels:
                 title: 12 Nieuwe Levels
                 desc: Voor een totaal van 26 levels!
             buildings:
                 title: 18 Nieuwe Gebouwen
-                desc: Automatiseer je fabrieken!
+                desc: Automatiseer je fabrieken nog beter en maak ze nog sneller!
             savegames:
                 title: ∞ Savegames
                 desc: Zo veel je maar wilt!
@@ -375,7 +375,7 @@ ingame:
                 desc: Verdwaal nooit meer in je fabriek!
             wires:
                 title: Kabels
-                desc: Een volledig nieuwe dimensie!
+                desc: Een volledig nieuwe wereld!
             darkmode:
                 title: Dark Mode
                 desc: Minder vervelend voor je ogen!
@@ -387,7 +387,7 @@ shopUpgrades:
         name: Banden, Verdeler & Tunnels
         description: Snelheid x<currentMult> → x<newMult>
     miner:
-        name: Ontginner
+        name: Mijner
         description: Snelheid x<currentMult> → x<newMult>
     processors:
         name: Knippen, draaien & stapelen
@@ -402,7 +402,7 @@ buildings:
             description: Transporteert voorwerpen, klik en sleep om meerdere te plaatsen.
     miner:
         default:
-            name: Ontginner
+            name: Mijner
             description: Plaats op een vorm of kleur om deze te onttrekken.
         chainable:
             name: Ontginner (Ketting)
@@ -471,14 +471,14 @@ buildings:
         deliver: Lever in
         toUnlock: om te ontgrendelen
         levelShortcut: LVL
-        endOfDemo: End of Demo
+        endOfDemo: Dit is het einde van de demo, koop het spel op Steam om verder te gaan!
     wire:
         default:
             name: Energiekabel
             description: Voor transport van energie.
         second:
             name: Kabel
-            description: Vervoerd signalen, zoals items, kleuren of booleans (1 of 0).
+            description: Vervoert signalen, zoals items, kleuren of booleans (1 of 0).
                 Verschillende kleuren kabels kunnen niet verbonden worden.
     balancer:
         default:
@@ -555,7 +555,7 @@ buildings:
     analyzer:
         default:
             name: Vorm Analyse
-            description: Analiseerd de onderste laag rechts boven en geeft de kleur en vorm
+            description: Analiseert de onderste laag rechts boven en geeft de kleur en vorm
                 door aan de kabel.
     comparator:
         default:
@@ -695,7 +695,7 @@ storyRewards:
             <strong>verdeler</strong> vrijgespeeld - Dit gebouw maakt van 2
             lopende banden 1!
     reward_belt_reader:
-        title: Lopende band lezer
+        title: Lopende band sensor
         desc: Je hebt de <strong>lopende band lezer</strong> vrijgespeeld! Dit gebouw
             geeft de doorvoer op een lopende band weer.<br><br>Wacht maar tot je
             kabels vrijspeeld, dan wordt het pas echt interessant!
@@ -710,7 +710,7 @@ storyRewards:
             lezer en opslag hun laatste vorm weergeven? Probeer het te tonen op
             een scherm!"
     reward_constant_signal:
-        title: Constante Signaal
+        title: Constant Signaal
         desc: Je hebt het <strong>constante signaal</strong> vrijgespeeld op de kabel
             dimensie! Dit gebouw is handig in samenwerking met <strong>item
             filters</strong>.<br><br> Het constante signaal kan een
@@ -724,7 +724,7 @@ storyRewards:
             uitvoeren.<br><br> Als bonus krijg je ook nog een
             <strong>transistor</strong> van mij!
     reward_virtual_processing:
-        title: VIrtuele verwerking
+        title: Virtuele verwerking
         desc: Ik heb juist een hele hoop nieuwe gebouwen toegevoegd die je toetstaan om
             <strong>het process van vormen te stimuleren</strong>!<br><br> Je kan
             nu de knipper, draaier, stapelaar en meer op de dradenlaag stimuleren!
@@ -755,7 +755,7 @@ settings:
     title: Opties
     categories:
         general: Algemeen
-        userInterface: Opmaak
+        userInterface: Gebruikersinterface
         advanced: Geavanceerd
         performance: Prestatie
     versionBadges:
@@ -774,7 +774,7 @@ settings:
                 small: Klein
                 regular: Middel
                 large: Groot
-                huge: Jumbo
+                huge: Ultragroot
         scrollWheelSensitivity:
             title: Zoom-gevoeligheid
             description: Veranderd hoe gevoelig het zoomen is (muiswiel of trackpad).
@@ -805,7 +805,7 @@ settings:
                 dark: Donker
                 light: Licht
         refreshRate:
-            title: Simulatie doel
+            title: Simulatiedoel
             description: Wanneer je een 144 hz monitor hebt, verander de refresh rate hier
                 zodat het spel naar behoren weer blijft geven. Dit verlaagt
                 mogelijk de FPS als je computer te traag is.
@@ -913,18 +913,17 @@ settings:
                 te bewegen.
         zoomToCursor:
             title: Zoom naar de Muis
-            description: "Wanneer geactiveert: de zoom zal gebeuren in de richting van je
-                muispositie, anders in het midden van het scherm."
+            description: "Wanneer geactiveerd, zal de zoom naar de muis bewegen. Anders in het midden van het scherm."
         mapResourcesScale:
             title: Kaartbronnen schaal
-            description: Controleert de grote van de vormen op het map overzicht (wanneer je
+            description: Controleert de grootte van de vormen op het map overzicht (wanneer je
                 uitzoomt).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Sneltoetsen
     hint: "Tip: Maak gebruik van CTRL, SHIFT en ALT! Hiermee kun je dingen anders en
         gemakkelijker plaatsen."
-    resetKeybindings: Reset sneltoetsen
+    resetKeybindings: Herstel sneltoetsen
     categoryLabels:
         general: Applicatie
         ingame: Spel
@@ -978,11 +977,11 @@ keybindings:
         menuClose: Sluit Menu
         switchLayers: Lagen omwisselen
         wire: Energiekabel
-        balancer: Balancer
+        balancer: Balanceerder
         storage: Opslag
         constant_signal: Constant Signaal
         logic_gate: Logische poort
-        lever: Schakelaar (regulier)
+        lever: Schakelaar (standaard)
         filter: Filter
         wire_tunnel: Kabel kruising
         display: Scherm
@@ -1093,5 +1092,5 @@ tips:
       dezelfde locatie.
     - Druk op F4 om uw FPS en Tick Rate weer te geven.
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
-    - U kunt aan de linkerkant op een vastgezette vorm klikken om deze los te
+    - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.

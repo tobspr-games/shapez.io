@@ -44,7 +44,7 @@ steamPage:
         Qualquer um pode contribuir, estou ativamente envolvido com a comunidade
         e tento ler todas as sugestões e receber críticas quando possível.
 
-        Cheque minha lousa no trello para a linha do tempo completa!
+        Cheque meu quadro no trello para a linha do tempo completa!
 global:
     loading: Carregando
     error: Erro
@@ -78,7 +78,7 @@ global:
         space: Espaço
 demoBanners:
     title: Versão Demo
-    intro: Compre a versão completa para desbloquear todas os recursos!
+    intro: Compre a versão completa para desbloquear todos os recursos!
 mainMenu:
     play: Jogar
     continue: Continuar
@@ -199,13 +199,11 @@ dialogs:
         title: Renomear Save
         desc: Você pode renomear seu save aqui.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial disponível
+        desc: Existe um tutorial em vídeo para esse nível! Gostaria de assistí-lo?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial disponível
+        desc: Existe um tutorial em vídeo para esse nível, mas está disponível apenas em Inglês. Gostaria de assistí-lo?
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -315,19 +313,19 @@ ingame:
                 esteiras para concluir o objetivo mais rapidamente.<br><br>Dica,
                 segure <strong>SHIFT</strong> para colocar vários extratores e
                 use <strong>R</strong> para girá-los.
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
+            2_1_place_cutter: "Agora coloque um <strong>Cortador</strong> para cortar os círculos em duas
+                metades!<br><br> PS: O cortador sempre corta de <strong>cima para
+                baixo</strong> independentemente de sua orientação."
+            2_2_place_trash: O cortador pode <strong>emtupir e parar</strong>!<br><br> Use um
+                <strong>lixo</strong> para se livrar do que atualmente (!) não for
+                necessário.
+            2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2 cortadores</strong> para acelerar
+                este processo lento!<br><br> PS: Use as <strong> hotkeys 0-9
+                </strong> para acessar as construções mais rápido!"
+            3_1_rectangles: "Vamos extrair alguns retângulos! <strong>Construa 4
+                extratores</strong> e conecte-os ao hub.<br><br> PS:
+                Segure <strong>SHIFT</strong> enquanto arrasta a esteira para ativar o
+                planejador de esteiras!"
             21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
                 <strong>circles</strong>, <strong>white</strong> and
                 <strong>red</strong> color!
@@ -442,7 +440,7 @@ buildings:
             name: Rotacionador (Anti-horário)
             description: Gira as formas no sentido anti-horário em 90 graus.
         rotate180:
-            name: Rotacionador (180)
+            name: Rotacionador (180°)
             description: Gira as formas em 180 graus.
     stacker:
         default:
@@ -543,7 +541,7 @@ buildings:
     filter:
         default:
             name: Filtro
-            description: Conecte um sinal para rotear todos os itens desejador para o topo e
+            description: Conecte um sinal para rotear todos os itens desejados para o topo e
                 o restante para a direita. Pode ser controlado por sinais
                 binários também.
     display:
@@ -588,7 +586,7 @@ buildings:
                 entrada direita.
     item_producer:
         default:
-            name: Fábricante de Itens
+            name: Fabricante de Itens
             description: Disponível no modo sandbox apenas, envia o sinal recebido do plano
                 de fios para o plano regular.
 storyRewards:
@@ -636,10 +634,10 @@ storyRewards:
             variantes</strong>!
     reward_miner_chainable:
         title: Extrator em Cadeia
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "Você desbloqueou o <strong>extrator em cadeia</strong>! Ele
+            <strong>encaminha os recursos</strong> para outros extratores para que você
+            possa extrair recursos de forma mais eficiente!<br><br> OBS: O velho
+            extrator foi substituído na sua barra de ferramentas!"
     reward_underground_belt_tier_2:
         title: Túnel Classe II
         desc: Você desbloqueou uma nova variante do <strong>túnel</strong> - ele tem um
@@ -656,10 +654,10 @@ storyRewards:
             pintor regular, mas processa <strong>duas formas ao mesmo
             tempo</strong>, consumindo apenas uma cor em vez de duas!
     reward_storage:
-        title: Acúmulo de excesso
-        desc: You have unlocked the <strong>storage</strong> building - It allows you to
-            store items up to a given capacity!<br><br> It priorities the left
-            output, so you can also use it as an <strong>overflow gate</strong>!
+        title: Armazém
+        desc: Você desbloqueou o <strong>armazém</strong> - Permite que você
+            armazene itens até uma certa capacidade!<br><br> Ele prioriza a saída
+            da esquerda, para que você também possa usá-lo como um <strong>portão de excesso</strong>!
     reward_freeplay:
         title: Modo Livre
         desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso
@@ -703,7 +701,7 @@ storyRewards:
             você meça a passagem de itens em uma esteira.<br><br>Espere até você
             desbloquear os fios - ele se torna muito útil!
     reward_rotater_180:
-        title: Rotacionador (180 graus)
+        title: Rotacionador (180°)
         desc: Você acabou de desbloquear o <strong>rotacionador</strong> de 180 graus! -
             Ele permite que você rotacione uma forma em 180 graus (Surpresa! :D)
     reward_display:
@@ -919,17 +917,15 @@ settings:
             description: Permite mover o mapa ao mover o cursor para as bordas da tela. A
                 velocidade depende da configuração Velocidade de Movimento.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoom na direção do cursor
+            description: Se ativado, o zoom irá se deslocar na direção do cursor do seu mouse. Caso contrário, irá para o meio da tela.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Tamanho do Mapa de Recursos
+            description: Controla o tamanho das formas no mapa de panorama (quando afasta o zoom).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles
-    hint: "Tip: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
+    hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
         opções de construção."
     resetKeybindings: Resetar Controles
     categoryLabels:
