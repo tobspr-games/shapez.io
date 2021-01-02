@@ -79,7 +79,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             if (currentCharge) {
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
-                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
+                    const deltaTime = this.root.dynamicTickrate.deltaSeconds + processorComp.bonusTime;
+                    currentCharge.remainingTime -= deltaTime;
                     if (currentCharge.remainingTime < 0.0) {
                         // Add bonus time, this is the time we spent too much
                         processorComp.bonusTime += -currentCharge.remainingTime;
