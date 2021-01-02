@@ -128,6 +128,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     // If the charge was entirely emptied to the outputs, start the next charge
                     if (itemsToEject.length === 0) {
                         processorComp.ongoingCharges.shift();
+                    } else {
+                        processorComp.extraOutputTime += this.root.dynamicTickrate.deltaSeconds;
                     }
                 }
             }
@@ -291,12 +293,15 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Queue Charge
-        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
+        let baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
         const originalTime = 1 / baseSpeed;
 
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
-        const timeToProcess = originalTime - bonusTimeToApply;
-
+        let timeToProcess = originalTime - bonusTimeToApply;
+        if(processorComp.extraOutputTime <= 1 / this.root.hubGoals.getBeltBaseSpeed()){
+            timeToProcess -= processorComp.extraOutputTime;
+        }
+        processorComp.extraOutputTime = 0;
         processorComp.bonusTime -= bonusTimeToApply;
         processorComp.ongoingCharges.push({
             items: outItems,
