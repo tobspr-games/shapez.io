@@ -96,7 +96,7 @@ export class ItemProcessorComponent extends Component {
          * @type {number}
          */
         this.bonusTime = 0;
-        
+
         /**
          * The extra time it took to empty the last charge to the outputs
          * @type {number}
