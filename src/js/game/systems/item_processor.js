@@ -300,7 +300,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
         let timeToProcess = originalTime - bonusTimeToApply;
         const itemOnBeltSpeed = 1 / this.root.hubGoals.getBeltBaseSpeed();
-        if (processorComp.extraOutputTime <= itemOnBeltSpeed){
+        if (processorComp.extraOutputTime <= itemOnBeltSpeed) {
             timeToProcess -= processorComp.extraOutputTime;
         }
         processorComp.extraOutputTime = 0;
