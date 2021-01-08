@@ -216,7 +216,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const dimensions = metaBuilding.getDimensions(variant);
             const sprite = metaBuilding.getPreviewSprite(0, variant);
             const spriteWrapper = makeDiv(element, null, ["iconWrap"]);
+            // @ts-ignore
             spriteWrapper.setAttribute("data-tile-w", dimensions.x);
+            // @ts-ignore
             spriteWrapper.setAttribute("data-tile-h", dimensions.y);
 
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
