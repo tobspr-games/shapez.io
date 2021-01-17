@@ -7,7 +7,7 @@ import { StorageComponent } from "../components/storage";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 const storageSize = 5000;

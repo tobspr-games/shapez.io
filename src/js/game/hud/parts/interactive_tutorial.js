@@ -1,6 +1,6 @@
 import { BaseHUDPart } from "../base_hud_part";
 import { makeDiv } from "../../../core/utils";
-import { GameRoot } from "../../root";
+import { GameRoot } from "../../root.ts";
 import { MinerComponent } from "../../components/miner";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { TrackedState } from "../../../core/tracked_state";

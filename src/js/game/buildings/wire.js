@@ -5,7 +5,7 @@ import { SOUNDS } from "../../platform/sound";
 import { enumWireType, enumWireVariant, WireComponent } from "../components/wire";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export const arrayWireRotationVariantToType = [

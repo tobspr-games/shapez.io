@@ -3,7 +3,7 @@ import { createLogger } from "../core/logging";
 import { Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "../game/building_codes";
 import { Entity } from "../game/entity";
-import { GameRoot } from "../game/root";
+import { GameRoot } from "../game/root.ts";
 
 const logger = createLogger("serializer_internal");
 

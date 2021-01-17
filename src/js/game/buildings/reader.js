@@ -5,7 +5,7 @@ import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/it
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
 import { enumHubGoalRewards } from "../tutorial_goals";

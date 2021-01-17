@@ -6,7 +6,7 @@ import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { THEME } from "../theme";
 
 export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];

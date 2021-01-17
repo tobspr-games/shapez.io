@@ -9,7 +9,7 @@ const CircularDependencyPlugin = require("circular-dependency-plugin");
 module.exports = ({ watch = false, standalone = false }) => {
     return {
         mode: "development",
-        devtool: "cheap-source-map",
+        devtool: "source-map",
         entry: {
             "bundle.js": [path.resolve(__dirname, "../src/js/main.js")],
         },
@@ -106,6 +106,11 @@ module.exports = ({ watch = false, standalone = false }) => {
                     test: /\.ya?ml$/,
                     type: "json", // Required by Webpack v4
                     use: "yaml-loader",
+                },
+                {
+                    test: /\.ts$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
                 },
             ],
         },

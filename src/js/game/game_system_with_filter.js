@@ -3,7 +3,7 @@ import { Component } from "./component";
 import { Entity } from "./entity";
 /* typehints:end */
 
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { GameSystem } from "./game_system";
 import { arrayDelete, arrayDeleteValue } from "../core/utils";
 import { globalConfig } from "../core/config";

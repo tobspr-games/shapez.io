@@ -1,5 +1,5 @@
 /* typehints:start */
-import { GameRoot } from "../game/root";
+import { GameRoot } from "../game/root.ts";
 import { BasicSerializableObject } from "./serialization";
 /* typehints:end */
 

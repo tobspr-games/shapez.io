@@ -1,5 +1,5 @@
 /* typehints:start */
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { DrawParameters } from "../core/draw_parameters";
 /* typehints:end */
 

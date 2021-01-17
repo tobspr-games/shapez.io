@@ -1,4 +1,4 @@
-import { GameRoot } from "../game/root";
+import { GameRoot } from "../game/root.ts";
 import { clearBufferBacklog, freeCanvas, getBufferStats, makeOffscreenBuffer } from "./buffer_utils";
 import { createLogger } from "./logging";
 import { round1Digit } from "./utils";

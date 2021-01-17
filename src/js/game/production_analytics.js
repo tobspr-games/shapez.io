@@ -1,4 +1,4 @@
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { ShapeDefinition } from "./shape_definition";
 import { globalConfig } from "../core/config";
 import { BaseItem } from "./base_item";

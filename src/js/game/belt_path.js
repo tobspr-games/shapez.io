@@ -8,7 +8,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { typeItemSingleton } from "./item_resolver";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 
 const logger = createLogger("belt_path");
 

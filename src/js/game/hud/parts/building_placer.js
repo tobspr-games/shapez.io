@@ -18,7 +18,7 @@ import { THEME } from "../../theme";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { HUDBuildingPlacerLogic } from "./building_placer_logic";
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
-import { layers } from "../../root";
+import { layers } from "../../root.ts";
 import { getCodeFromBuildingData } from "../../building_codes";
 
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {

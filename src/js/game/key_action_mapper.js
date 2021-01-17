@@ -1,5 +1,5 @@
 /* typehints:start */
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { InputReceiver } from "../core/input_receiver";
 import { Application } from "../application";
 /* typehints:end */

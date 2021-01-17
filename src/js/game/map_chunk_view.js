@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { getBuildingDataFromCode } from "./building_codes";
 import { Entity } from "./entity";
 import { MapChunk } from "./map_chunk";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { THEME } from "./theme";
 import { drawSpriteClipped } from "../core/draw_utils";
 

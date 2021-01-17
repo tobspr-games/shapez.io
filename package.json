@@ -98,6 +98,7 @@
         "sass-unused": "^0.3.0",
         "strip-json-comments": "^3.0.1",
         "trim": "^0.0.1",
+        "ts-loader": "^8.0.14",
         "yarn": "^1.22.4"
     }
 }

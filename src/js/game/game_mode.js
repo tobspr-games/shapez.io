@@ -2,7 +2,7 @@
 import { enumHubGoalRewards } from "./tutorial_goals";
 /* typehints:end */
 
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 
 /** @typedef {{
  *   shape: string,

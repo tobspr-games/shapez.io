@@ -173,6 +173,11 @@ module.exports = ({
                 },
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
                 {
+                    test: /\.ts$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
+                {
                     test: /\.js$/,
                     enforce: "pre",
                     exclude: /node_modules/,

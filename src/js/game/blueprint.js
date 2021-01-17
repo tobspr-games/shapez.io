@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { findNiceIntegerValue } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 
 export class Blueprint {
     /**

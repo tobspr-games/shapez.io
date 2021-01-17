@@ -1,7 +1,7 @@
 /* typehints:start */
 import { Application } from "../application";
 import { Vector } from "../core/vector";
-import { GameRoot } from "../game/root";
+import { GameRoot } from "../game/root.ts";
 /* typehints:end */
 
 import { newEmptyMap, clamp } from "../core/utils";

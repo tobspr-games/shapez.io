@@ -33,7 +33,7 @@ import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
 import { RegularGameMode } from "./modes/regular";
 import { ProductionAnalytics } from "./production_analytics";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";

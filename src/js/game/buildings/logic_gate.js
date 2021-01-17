@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding, defaultBuildingVariant } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { generateMatrixRotations } from "../../core/utils";
 import { enumHubGoalRewards } from "../tutorial_goals";

@@ -1,4 +1,4 @@
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { globalConfig } from "../../core/config";
 import { Vector, mixVector } from "../../core/vector";
 import { lerp } from "../../core/utils";

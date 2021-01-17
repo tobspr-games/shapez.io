@@ -2,7 +2,7 @@ import { createLogger } from "../core/logging";
 import { BasicSerializableObject } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { ShapeItem } from "./items/shape_item";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 
 const logger = createLogger("shape_definition_manager");

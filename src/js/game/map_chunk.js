@@ -7,7 +7,7 @@ import { BaseItem } from "./base_item";
 import { enumColors } from "./colors";
 import { Entity } from "./entity";
 import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { enumSubShape } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
 

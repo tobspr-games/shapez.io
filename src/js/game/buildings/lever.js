@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { LeverComponent } from "../components/lever";
 import { enumHubGoalRewards } from "../tutorial_goals";
 

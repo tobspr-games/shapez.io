@@ -4,7 +4,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { MapChunkView } from "./map_chunk_view";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 
 export class BaseMap extends BasicSerializableObject {
     static getId() {

@@ -5,7 +5,7 @@ import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
 import { enumAnalyticsDataSource } from "./production_analytics";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { enumHubGoalRewards } from "./tutorial_goals";
 

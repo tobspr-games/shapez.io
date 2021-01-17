@@ -7,7 +7,7 @@ import { clamp } from "../core/utils";
 import { mixVector, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { KEYMAPPINGS } from "./key_action_mapper";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 
 const logger = createLogger("camera");
 

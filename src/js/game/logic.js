@@ -8,7 +8,7 @@ import { enumWireVariant } from "./components/wire";
 import { Entity } from "./entity";
 import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
 import { MetaBuilding } from "./meta_building";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { WireNetwork } from "./systems/wire";
 
 const logger = createLogger("ingame/logic");

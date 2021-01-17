@@ -7,7 +7,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaFilterBuilding extends MetaBuilding {

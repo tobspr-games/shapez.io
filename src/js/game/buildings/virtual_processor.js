@@ -3,7 +3,7 @@ import { LogicGateComponent, enumLogicGateType } from "../components/logic_gate"
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
-import { GameRoot } from "../root";
+import { GameRoot } from "../root.ts";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { MetaCutterBuilding } from "./cutter";
 import { MetaPainterBuilding } from "./painter";

@@ -1,4 +1,4 @@
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
 

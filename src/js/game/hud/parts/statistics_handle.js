@@ -3,7 +3,7 @@ import { globalConfig } from "../../../core/config";
 import { clamp, formatBigNumber, round2Digits } from "../../../core/utils";
 import { T } from "../../../translations";
 import { enumAnalyticsDataSource } from "../../production_analytics";
-import { GameRoot } from "../../root";
+import { GameRoot } from "../../root.ts";
 import { ShapeDefinition } from "../../shape_definition";
 
 /** @enum {string} */

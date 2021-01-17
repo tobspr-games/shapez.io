@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { Component } from "./component";
 /* typehints:end */
 
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { globalConfig } from "../core/config";
 import { enumDirectionToVector, enumDirectionToAngle } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";

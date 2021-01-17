@@ -3,7 +3,7 @@ import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
-import { GameRoot } from "../../game/root";
+import { GameRoot } from "../../game/root.ts";
 import { InGameState } from "../../states/ingame";
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";

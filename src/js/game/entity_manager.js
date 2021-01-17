@@ -1,6 +1,6 @@
 import { arrayDeleteValue, newEmptyMap, fastArrayDeleteValue } from "../core/utils";
 import { Component } from "./component";
-import { GameRoot } from "./root";
+import { GameRoot } from "./root.ts";
 import { Entity } from "./entity";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { createLogger } from "../core/logging";
