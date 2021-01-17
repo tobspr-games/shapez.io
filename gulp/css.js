@@ -62,7 +62,7 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
         return gulp
             .src("../src/css/main.scss", { cwd: __dirname })
             .pipe($.plumber())
-            .pipe($.sass.sync().on("error", $.sass.logError))
+            .pipe($.dartSass.sync().on("error", $.dartSass.logError))
             .pipe(
                 $.postcss([
                     $.postcssCriticalSplit({
@@ -95,7 +95,7 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
         return gulp
             .src("../src/css/main.scss", { cwd: __dirname })
             .pipe($.plumber())
-            .pipe($.sass.sync().on("error", $.sass.logError))
+            .pipe($.dartSass.sync().on("error", $.dartSass.logError))
             .pipe(
                 $.postcss([
                     $.postcssCriticalSplit({

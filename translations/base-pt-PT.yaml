@@ -895,7 +895,7 @@ settings:
                 lembra-te de experimentares!
         disableTileGrid:
             title: Desativar Grelha
-            description: Desativar a grelha pode ajudar com o desempenho. Isto também fazz o
+            description: Desativar a grelha pode ajudar com o desempenho. Isto também faz o
                 jogo parecer mais limpo!
         clearCursorOnDeleteWhilePlacing:
             title: Limpar Cursor com Clique Direito
@@ -905,7 +905,7 @@ settings:
                 direito do rato enquanto colocas um edifício.
         lowQualityTextures:
             title: Texturas de baixa qualidade (Feio)
-            description: sa texturas de baixa qualidade para melhorar o desempenho. sto vai
+            description: Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai
                 tornar o jogo parecer muito feio!
         displayChunkBorders:
             title: Mostrar bordas de limites (chunk borders)
@@ -928,12 +928,12 @@ settings:
                 velociade depende da definição de velocidade de movimentação.
         zoomToCursor:
             title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            description: Se ativado o zoom será na direção da posição
+                do teu rato, de outra forma será para o centro do ecrã.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Tamanho de Recursos no Mapa
+            description: Controla o tamanho das formas na visão geral do mapa (aplicando
+                zoom out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atalhos
