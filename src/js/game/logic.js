@@ -110,6 +110,7 @@ export class GameLogic {
             this.freeEntityAreaBeforeBuild(entity);
             this.root.map.placeStaticEntity(entity);
             this.root.entityMgr.registerEntity(entity);
+            this.root.historyMgr.addAction(entity);
             return entity;
         }
         return null;
@@ -178,6 +179,7 @@ export class GameLogic {
         if (!this.canDeleteBuilding(building)) {
             return false;
         }
+        this.root.historyMgr.removeAction(building.clone());
         this.root.map.removeStaticEntity(building);
         this.root.entityMgr.destroyEntity(building);
         this.root.entityMgr.processDestroyList();
