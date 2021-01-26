@@ -29,15 +29,15 @@ class LiFoQueue {
 }
 
 const ActionType = {
-    add: "ADD",
-    remove: "REMOVE",
+    add: 0,
+    remove: 1,
 };
 
 export class HistoryManager {
     constructor(root) {
         this.root = root;
-        this._forUndo = new LiFoQueue();
-        this._forRedo = new LiFoQueue();
+        this._forUndo = new LiFoQueue(100);
+        this._forRedo = new LiFoQueue(20);
 
         this.initializeBindings();
     }
