@@ -630,8 +630,8 @@ storyRewards:
             esquerda!
     reward_splitter:
         title: Divisor
-        desc: Desbloqueaste o <strong>dvisor</strong> uma variante do
-            <strong>distribuidor</strong> - Aceita uma entradae divide-a em
+        desc: Desbloqueaste o <strong>divisor</strong> uma variante do
+            <strong>distribuidor</strong> - Aceita uma entrada e divide-a em
             duas!
     reward_tunnel:
         title: Túnel
