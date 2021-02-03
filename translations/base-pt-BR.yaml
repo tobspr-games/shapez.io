@@ -326,17 +326,17 @@ ingame:
                 extratores</strong> e conecte-os ao hub.<br><br> PS:
                 Segure <strong>SHIFT</strong> enquanto arrasta a esteira para ativar o
                 planejador de esteiras!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            21_1_place_quad_painter: Coloque o <strong>pintor (quádruplo)</strong> e consiga alguns
+                <strong>circulos</strong>, pigmento <strong>branco</strong> e
+                <strong>vermelho</strong>!
+            21_2_switch_to_wires: Troque para o nível de fios pressionando
+                <strong>E</strong>!<br><br> E então <strong>conecte todos as quatro
+                entradas</strong> do pintor com fios!
+            21_3_place_button: Incrivel! Agora coloque um <strong>interruptor</strong> e o conecte
+                com fio!
+            21_4_press_button: "Pressione o interruptor para fazé-lo <strong>emitir um sinal
+                verdadeiro</strong> o que ativará o pintor.<br><br> OBS: Você
+                não precisa conectar todas as entradas! Tente conectar somente duas."
     connectedMiners:
         one_miner: 1 Extrator
         n_miners: <amount> Extratores
@@ -687,9 +687,9 @@ storyRewards:
         desc: Parabéns! Aliás, mais conteúdo vindo na versão completa!
     reward_balancer:
         title: Balanceador
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: O multifuncional <strong>balanceador</strong> foi desbloqueado - Ele pode
+            ser usado para construir fabricas maiores ao <strong>dividir e juntar
+            itens</strong> em múltiplas esteiras!
     reward_merger:
         title: Unificador Compacto
         desc: Você desbloqueou uma variante <strong>unificadora</strong> do
@@ -737,13 +737,13 @@ storyRewards:
             lembre de se divertir!
     reward_wires_painter_and_levers:
         title: Fios e Pintor Quádruplo
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Você acabou de desbloquear o <strong>nivel de fios</strong>: Ele é uma dimensão
+            separada da dimensão normal e introduz varias novas mecanicas!
+            <br><br> Para Começar eu desbloqueae para você o <strong>pintor
+            (quádruplo)</strong> - Conecte os espaços que você gostaria de usar para pintar com fios no
+            nivel de fios!<br><br> Para entrar no nivel de fios, pressione
+            <strong>E</strong>. <br><br> OBS: <strong>Ligue as dicas</strong> nas
+            configurações para ativar o tutorial de fios!"
     reward_filter:
         title: Filtro de Itens
         desc: Você desbloqueou o <strong>Filtro de Itens</strong>! Ele irá rotear os
