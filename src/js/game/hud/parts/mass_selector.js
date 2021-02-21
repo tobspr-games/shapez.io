@@ -16,10 +16,13 @@ import { enumHubGoalRewards } from "../../tutorial_goals";
 import { Blueprint } from "../../blueprint";
 
 const logger = createLogger("hud/mass_selector");
+var globalTileSizeAdjusted = 0;
 
 export class HUDMassSelector extends BaseHUDPart {
+    
     createElements(parent) {}
 
+    
     initialize() {
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
@@ -41,6 +44,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
         this.root.signals.editModeChanged.add(this.clearSelection, this);
+        globalTileSizeAdjusted = globalConfig.tileSize - 2 * 2;
     }
 
     /**
@@ -315,18 +319,20 @@ export class HUDMassSelector extends BaseHUDPart {
         }
 
         parameters.context.fillStyle = THEME.map.selectionOverlay;
+        parameters.context.beginPath();
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
             const bounds = staticComp.getTileSpaceBounds();
-            parameters.context.beginRoundedRect(
+            // tried writing this in one line: it worked but it was very slow... WHY?
+            parameters.context.fillRect(
                 bounds.x * globalConfig.tileSize + boundsBorder,
                 bounds.y * globalConfig.tileSize + boundsBorder,
-                bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                2
+                bounds.w * globalTileSizeAdjusted,
+                bounds.h * globalTileSizeAdjusted, // This seems like microoptimization but on a huuuge scale it makes a difference
             );
-            parameters.context.fill();
         });
+        parameters.context.closePath(); // +1 fps for some reason
+        
     }
 }
