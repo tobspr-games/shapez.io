@@ -8,49 +8,29 @@ import { createLogger } from "../core/logging";
 const logger = createLogger("achievement_manager");
 
 export class AchievementManager {
-    static getId() {
-        return "AchievementManager";
-    }
-
     constructor(root) {
         this.root = root;
-        this.achievements = null;
+        this.achievements = this.root.app.achievements;
 
-        if (!this.root.app.achievements.hasAchievements()) {
-            logger.debug("Bypassing achievement set up");
-            // Set adhoc checks to reference a noop, ignore signals.
-            return;
-        }
-
-        this.init();
+        this.load()
     }
 
-    init () {
-        return this.root.app.achievements.load()
+    load () {
+        return this.achievements.load()
             .then(() => {
-                this.achievements = this.root.app.achievements.getAchievements();
+                if (!this.achievements.hasAchievements()) {
+                    logger.log("Achievements disabled");
+                    return;
+                }
 
-                return this.setChecks();
+                logger.log("There are", this.achievements.count, "achievements");
+            })
+            .catch(err => {
+                logger.error("Achievements failed to load", err);
             })
     }
 
-    setChecks () {
-        logger.debug("loaded", this.achievements);
-
-        // set checks on achievements
-
-        //this.root.signals.itemProduced.add(this.onItemProduced, this);
-    }
-
-    /**
-     * @param {BaseItem} item
-     */
-    onItemProduced(item) {
-        logger.debug(item);
-    }
-
-    // Have one check function per achievement
-    isPainted () {
-        return 
+    unlock (key) {
+        this.achievements.unlock(key);
     }
 }

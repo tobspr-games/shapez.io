@@ -5,7 +5,14 @@ export class NoAchievements extends AchievementsInterface {
         return Promise.resolve();
     }
 
+    load() {
+        return Promise.resolve();
+    }
+
     hasAchievements() {
         return false;
+    }
+
+    unlock() {
     }
 }

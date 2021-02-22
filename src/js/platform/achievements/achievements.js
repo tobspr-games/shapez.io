@@ -1,76 +1,87 @@
-import { AchievementsInterface } from "../achievements";
+import { ACHIEVEMENTS, AchievementsInterface } from "../achievements";
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
-import { newEmptyMap } from "../../core/utils";
-//import { T } from "../../translations";
 
-const logger = createLogger("achievements/default");
+const logger = createLogger("achievements/steam");
 
-// Include API id per key
-export const ACHIEVEMENTS = {
-    painting: "painting"
+const IDS = {
+    painting: "<id>",
+    cutting: "<id>",
+    rotating: "<id>",
+    stacking: "<id>",
+    blueprints: "<id>"
 }
 
 export class Achievements extends AchievementsInterface {
     initialize() {
-        this.authTicket = null;
-        this.achievementNames = null;
-        this.achievements = null;
-        this.connected = false;
-        this.connectPromise = Promise.resolve();
+        this.map = new Map();
+        this.type = "Steam";
+        this.count = 0;
 
-        if (globalConfig.debug.testAchievements) {
-            return Promise.resolve();
+        logger.log("Initializing", this.type, "achievements");
+
+        for (let key in ACHIEVEMENTS) {
+            this.map[key] = new Map();
+            this.map[key].id = IDS[key];
+            this.map[key].key = key;
+            this.map[key].unlocked = false;
+            this.map[key].relevant = true;
+            this.count++;
         }
 
-        // Check for resolve in AchievementManager via load() to not block game state
-        // transition
-        this.connectPromise = this.fetchAuthTicket()
-            .then(() => this.fetchAchievementNames());
+        this.logOnly = globalConfig.debug.testAchievements;
 
-        return Promise.resolve();
-    }
-
-    fetchAuthTicket () {
-        return Promise.resolve();
-    }
-
-    fetchAchievementNames () {
         return Promise.resolve();
     }
 
     load () {
-        this.achievements = newEmptyMap();
+        // TODO: inspect safe file and update achievements
+        // Consider removing load since there's no async behavior anticipated
+        return Promise.resolve();
+    }
 
-        for (let key in ACHIEVEMENTS) {
-            this.achievements[key] = newEmptyMap();
-            this.achievements[key].unlocked = false;
-            this.achievements[key].invalid = false;
+    /**
+     * @param {string} key
+     */
+    unlock (key) {
+        let achievement = this.map[key];
+
+        if (!achievement) {
+            logger.error("Achievement does not exist:", key);
+            return;
         }
 
-        return this.connectPromise
+        if (!achievement.relevant) {
+            logger.debug("Achievement unlocked/irrelevant:", key);
+            return;
+        }
+
+        achievement.activate = achievement.activate || this.activate(achievement)
             .then(() => {
-                // factor in game state, save data, then Steam data (if accessible) as
-                // source of truth.
+                achievement.unlocked = true;
+                achievement.relevant = false;
+
+                logger.log("Achievement unlocked:", key);
             })
+            .catch(err => {
+                logger.error("Failed to unlock achievement", err);
+            })
+            .finally(() => {
+                achievement.activate = null;
+            })
+
     }
 
-    /**
-     * @param {string} key
-     */
-    fetchAchievement (key) {
-        return Promise.resolve();
-    }
+    activate (achievement) {
+        if (this.logOnly) {
+            return Promise.resolve();
+        }
 
-    /**
-     * @param {string} key
-     */
-    unlockAchievement (key) {
-        return Promise.resolve();
-    }
+        return new Promise((resolve, reject) => {
+            //TODO: Implement greenworks activate
 
-    getAchievements() {
-        return this.achievements;
+            return resolve();
+        });
     }
 
     hasAchievements() {
