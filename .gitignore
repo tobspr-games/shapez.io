@@ -50,3 +50,7 @@ tmp_standalone_files
 # Local config
 config.local.js
 .DS_Store
+
+# Editor artifacts
+*.*.swp
+*.*.swo

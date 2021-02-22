@@ -35,6 +35,7 @@ import { RegularGameMode } from "./modes/regular";
 import { ProductionAnalytics } from "./production_analytics";
 import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
+import { AchievementManager } from "./achievement_manager";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
 
@@ -118,6 +119,7 @@ export class GameCore {
         root.entityMgr = new EntityManager(root);
         root.systemMgr = new GameSystemManager(root);
         root.shapeDefinitionMgr = new ShapeDefinitionManager(root);
+        root.achievementMgr = new AchievementManager(root);
         root.hubGoals = new HubGoals(root);
         root.productionAnalytics = new ProductionAnalytics(root);
         root.buffers = new BufferMaintainer(root);

@@ -12,6 +12,9 @@ import { getPlatformName, waitNextFrame } from "./core/utils";
 import { Vector } from "./core/vector";
 import { AdProviderInterface } from "./platform/ad_provider";
 import { NoAdProvider } from "./platform/ad_providers/no_ad_provider";
+import { AchievementsInterface } from "./platform/achievements";
+import { NoAchievements } from "./platform/achievements/no_achievements";
+import { Achievements } from "./platform/achievements/achievements";
 import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { SoundImplBrowser } from "./platform/browser/sound";
@@ -85,6 +88,9 @@ export class Application {
         /** @type {PlatformWrapperInterface} */
         this.platformWrapper = null;
 
+        /** @type {AchievementsInterface} */
+        this.achievements = null;
+
         /** @type {AdProviderInterface} */
         this.adProvider = null;
 
@@ -137,6 +143,7 @@ export class Application {
         this.sound = new SoundImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
+        this.achievements = new NoAchievements(this);
     }
 
     /**
