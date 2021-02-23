@@ -12,9 +12,7 @@ import { getPlatformName, waitNextFrame } from "./core/utils";
 import { Vector } from "./core/vector";
 import { AdProviderInterface } from "./platform/ad_provider";
 import { NoAdProvider } from "./platform/ad_providers/no_ad_provider";
-import { AchievementsInterface } from "./platform/achievements";
-import { NoAchievements } from "./platform/achievements/no_achievements";
-import { Achievements } from "./platform/achievements/achievements";
+import { NoAchievements } from "./platform/browser/no_achievements";
 import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { SoundImplBrowser } from "./platform/browser/sound";
@@ -35,6 +33,7 @@ import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { RestrictionManager } from "./core/restriction_manager";
 
 /**
+ * @typedef {import("./platform/achievements").AchievementsInterface} AchievementsInterface
  * @typedef {import("./platform/game_analytics").GameAnalyticsInterface} GameAnalyticsInterface
  * @typedef {import("./platform/sound").SoundInterface} SoundInterface
  * @typedef {import("./platform/storage").StorageInterface} StorageInterface

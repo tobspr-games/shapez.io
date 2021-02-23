@@ -2,6 +2,7 @@ import { PlatformWrapperImplBrowser } from "../browser/wrapper";
 import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 import { StorageImplElectron } from "./storage";
+import { SteamAchievements } from "./steam_achievements";
 import { PlatformWrapperInterface } from "../wrapper";
 
 const logger = createLogger("electron-wrapper");
@@ -9,6 +10,8 @@ const logger = createLogger("electron-wrapper");
 export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     initialize() {
         this.app.storage = new StorageImplElectron(this);
+        this.app.achievements = new SteamAchievements(this.app);
+
         return PlatformWrapperInterface.prototype.initialize.call(this);
     }
 

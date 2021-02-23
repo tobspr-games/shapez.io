@@ -4,7 +4,7 @@ import { queryParamOptions } from "../../core/query_parameters";
 import { clamp } from "../../core/utils";
 import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
-import { Achievements } from "../achievements/achievements";
+import { SteamAchievements } from "../electron/steam_achievements";
 import { PlatformWrapperInterface } from "../wrapper";
 import { StorageImplBrowser } from "./storage";
 import { StorageImplBrowserIndexedDB } from "./storage_indexed_db";
@@ -70,9 +70,13 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
         logger.log("Embed provider:", this.embedProvider.id);
 
+        if (G_IS_DEV && globalConfig.debug.testAchievements) {
+            logger.log("Testing achievements");
+            this.app.achievements = new SteamAchievements(this.app);
+        }
+
         return this.detectStorageImplementation()
             .then(() => this.initializeAdProvider())
-            .then(() => this.initializeAchievements())
             .then(() => super.initialize());
     }
 
@@ -196,16 +200,6 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
                 this.app.adProvider = new NoAdProvider(this.app);
             });
         });
-    }
-
-    initializeAchievements() {
-        if (G_IS_STANDALONE || (G_IS_DEV && globalConfig.debug.testAchievements)) {
-            this.app.achievements = new Achievements(this.app);
-            return this.app.achievements.initialize();
-        }
-
-        logger.log("Achievements are not supported in this environment");
-        return Promise.resolve();
     }
 
     exitApp() {

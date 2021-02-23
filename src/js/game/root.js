@@ -179,6 +179,9 @@ export class GameRoot {
             // Called before actually placing an entity, use to perform additional logic
             // for freeing space before actually placing.
             freeEntityAreaBeforeBuild: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
+
+            // Called with the key of the unlocked achievement
+            achievementUnlocked: /** @type {TypedSignal<[string]>} */ (new Signal()),
         };
 
         // RNG's

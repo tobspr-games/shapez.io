@@ -97,7 +97,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         const rightSide = definition.cloneFilteredByQuadrants([2, 3]);
         const leftSide = definition.cloneFilteredByQuadrants([0, 1]);
 
-        this.root.achievementMgr.unlock(ACHIEVEMENTS.cutting);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.cutting);
 
         return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key] = [
             this.registerOrReturnHandle(rightSide),
@@ -140,7 +140,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
 
         const rotated = definition.cloneRotateCW();
 
-        this.root.achievementMgr.unlock(ACHIEVEMENTS.rotating);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.rotating);
 
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             rotated
@@ -208,13 +208,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      */
     shapeActionPaintWith(definition, color) {
         const key = "paint/" + definition.getHash() + "/" + color;
-        logger.debug("shapePainted", definition, color);
         if (this.operationCache[key]) {
-            logger.debug("shapePaintedCache", definition, color);
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
 
-        this.root.achievementMgr.unlock(ACHIEVEMENTS.painting);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.painting);
 
         const colorized = definition.cloneAndPaintWith(color);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(

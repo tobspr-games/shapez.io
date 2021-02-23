@@ -12,8 +12,21 @@ const IDS = {
     blueprints: "<id>"
 }
 
-export class Achievements extends AchievementsInterface {
-    initialize() {
+/** @typedef {object} SteamAchievementMap
+ *  @property {string} id
+ *  @property {string} key
+ *  @property {boolean} unlocked
+ *  @property {boolean} relevant
+ *  @property {?Promise} activate
+ */
+
+/** @typedef {Map<string, SteamAchievement>} SteamAchievementMap */
+
+export class SteamAchievements extends AchievementsInterface {
+    constructor(app) {
+        super(app);
+
+        /** @type {AchievementMap} */
         this.map = new Map();
         this.type = "Steam";
         this.count = 0;
@@ -21,21 +34,22 @@ export class Achievements extends AchievementsInterface {
         logger.log("Initializing", this.type, "achievements");
 
         for (let key in ACHIEVEMENTS) {
-            this.map[key] = new Map();
-            this.map[key].id = IDS[key];
-            this.map[key].key = key;
-            this.map[key].unlocked = false;
-            this.map[key].relevant = true;
+            this.map.set(key, {
+                id: IDS[key],
+                key: key,
+                unlocked: false,
+                relevant: true,
+                activate: null
+            });
+
             this.count++;
         }
 
         this.logOnly = globalConfig.debug.testAchievements;
-
-        return Promise.resolve();
     }
 
     load () {
-        // TODO: inspect safe file and update achievements
+        // TODO: inspect save file and update achievements
         // Consider removing load since there's no async behavior anticipated
         return Promise.resolve();
     }
@@ -44,15 +58,15 @@ export class Achievements extends AchievementsInterface {
      * @param {string} key
      */
     unlock (key) {
-        let achievement = this.map[key];
-
-        if (!achievement) {
+        if (!this.map.has(key)) {
             logger.error("Achievement does not exist:", key);
             return;
         }
 
+        let achievement = this.map.get(key);
+
         if (!achievement.relevant) {
-            logger.debug("Achievement unlocked/irrelevant:", key);
+            console.log("Achievement unlocked/irrelevant:", key);
             return;
         }
 

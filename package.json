@@ -8,6 +8,7 @@
     "private": true,
     "scripts": {
         "dev": "cd gulp && yarn gulp main.serveDev",
+        "dev-standalone": "cd gulp && yarn gulp main.serveStandalone",
         "tslint": "cd src/js && tsc",
         "lint": "eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",

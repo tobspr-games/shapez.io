@@ -12,22 +12,14 @@ export class AchievementManager {
         this.root = root;
         this.achievements = this.root.app.achievements;
 
-        this.load()
-    }
+        if (!this.achievements.hasAchievements()) {
+            logger.log("Achievements disabled");
+            return;
+        }
 
-    load () {
-        return this.achievements.load()
-            .then(() => {
-                if (!this.achievements.hasAchievements()) {
-                    logger.log("Achievements disabled");
-                    return;
-                }
+        logger.log("There are", this.achievements.count, "achievements");
 
-                logger.log("There are", this.achievements.count, "achievements");
-            })
-            .catch(err => {
-                logger.error("Achievements failed to load", err);
-            })
+        this.root.signals.achievementUnlocked.add(this.unlock, this);
     }
 
     unlock (key) {

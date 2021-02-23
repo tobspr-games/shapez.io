@@ -11,8 +11,8 @@ export const ACHIEVEMENTS = {
 }
 
 export class AchievementsInterface {
+    /** @param {Application} app */
     constructor(app) {
-        /** @type {Application} */
         this.app = app;
     }
 
@@ -30,13 +30,12 @@ export class AchievementsInterface {
 
     /**
      * Call to unlock an achievement
-     * @params [key] - A property within the ACHIEVEMENTS enum or empty if
+     * @params {string} [key] - A property within the ACHIEVEMENTS enum or empty if
      * bypassing.
-     * @returns {(undefined|Promise)}
+     * @returns {void}
      */
     unlock(key) {
         abstract;
-        return Promise.reject();
     }
 
     /**
