@@ -6,8 +6,11 @@ const url = require("url");
 const childProcess = require("child_process");
 const { ipcMain, shell } = require("electron");
 const fs = require("fs");
+const steam = require('./steam');
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
+
+steam.init(isDev);
 
 const roamingFolder =
     process.env.APPDATA ||
@@ -222,3 +225,5 @@ ipcMain.on("fs-sync-job", (event, arg) => {
     const result = performFsJob(arg);
     event.returnValue = result;
 });
+
+steam.listen();

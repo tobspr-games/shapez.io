@@ -1,6 +1,7 @@
-import { ACHIEVEMENTS, AchievementsInterface } from "../achievements";
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { getIPCRenderer } from "../../core/utils";
+import { ACHIEVEMENTS, AchievementsInterface } from "../achievements";
 
 const logger = createLogger("achievements/steam");
 
@@ -12,7 +13,7 @@ const IDS = {
     blueprints: "<id>"
 }
 
-/** @typedef {object} SteamAchievementMap
+/** @typedef {object} SteamAchievement
  *  @property {string} id
  *  @property {string} key
  *  @property {boolean} unlocked
@@ -26,11 +27,13 @@ export class SteamAchievements extends AchievementsInterface {
     constructor(app) {
         super(app);
 
-        /** @type {AchievementMap} */
+        /** @type {SteamAchievementMap} */
         this.map = new Map();
         this.type = "Steam";
         this.count = 0;
+        this.steamInitialized = false;
 
+       
         logger.log("Initializing", this.type, "achievements");
 
         for (let key in ACHIEVEMENTS) {
@@ -45,13 +48,38 @@ export class SteamAchievements extends AchievementsInterface {
             this.count++;
         }
 
-        this.logOnly = globalConfig.debug.testAchievements;
+        this.load()
     }
 
     load () {
         // TODO: inspect save file and update achievements
-        // Consider removing load since there's no async behavior anticipated
-        return Promise.resolve();
+    
+        if (!G_IS_STANDALONE) {
+            logger.warn("Steam listener isn't active. Achievements won't sync.");
+            return Promise.resolve();
+        }
+
+        this.ipc = getIPCRenderer();
+
+        return this.ipc.invoke("steam:is-initialized")
+            .then(initialized => {
+                if (!initialized) {
+                    logger.warn("Steam failed to intialize. Achievements won't sync.");
+                    return;
+                }
+
+                logger.log("Steam listener is active");
+
+                this.steamInitialized = true;
+
+                return this.ipc.invoke("steam:get-achievement-names")
+                    .then(result => {
+                        logger.log("steam:get-achievement-names", result);
+                    });
+            })
+            .catch(err => {
+                logger.error(err);
+            })
     }
 
     /**
@@ -59,7 +87,7 @@ export class SteamAchievements extends AchievementsInterface {
      */
     unlock (key) {
         if (!this.map.has(key)) {
-            logger.error("Achievement does not exist:", key);
+            logger.warn("Achievement does not exist:", key);
             return;
         }
 
@@ -86,16 +114,15 @@ export class SteamAchievements extends AchievementsInterface {
 
     }
 
+    /**
+     * @param {SteamAchievement} achievement
+     */
     activate (achievement) {
-        if (this.logOnly) {
+        if (!this.steamInitialized) {
             return Promise.resolve();
         }
 
-        return new Promise((resolve, reject) => {
-            //TODO: Implement greenworks activate
-
-            return resolve();
-        });
+        return this.ipc.invoke("steam:activate-achievement", achievement.id)
     }
 
     hasAchievements() {

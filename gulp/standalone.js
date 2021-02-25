@@ -38,7 +38,7 @@ function gulptasksStandalone($, gulp) {
             JSON.stringify(
                 {
                     devDependencies: {
-                        electron: "6.1.12",
+                        electron: "9.4.3",
                     },
                 },
                 null,
