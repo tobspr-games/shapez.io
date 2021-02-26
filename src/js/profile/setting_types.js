@@ -24,8 +24,8 @@ export class BaseSetting {
      *
      * @param {string} id
      * @param {string} categoryId
-     * @param {function(app: Application,value: any):void} changeCb
-     * @param {function(app: Application) : boolean=} enabledCb
+     * @param {function(Application,any):void} changeCb
+     * @param {function(app:Application) : boolean=} enabledCb
      */
     constructor(id, categoryId, changeCb, enabledCb = null) {
         this.id = id;
