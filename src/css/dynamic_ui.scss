@@ -21,7 +21,7 @@
 // Helper method to scale a property value
 @mixin S($propName, $v1, $v2: "", $v3: "", $v4: "", $important: false) {
     $impSuffix: "";
-    @if $important==true {
+    @if $important == true {
         $impSuffix: "!important";
     }
     $v1: D($v1);
