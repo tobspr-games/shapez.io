@@ -13,7 +13,7 @@ export class HUDWireInfo extends BaseHUDPart {
 
     /**
      *
-     * @param {import("../../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../../core/draw_parameters").DrawParameters} parameters
      */
     drawOverlays(parameters) {
         if (this.root.currentLayer !== "wires") {
@@ -81,7 +81,7 @@ export class HUDWireInfo extends BaseHUDPart {
     /**
      *
      *
-     * @param {import("../../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../../core/draw_parameters").DrawParameters} parameters
      * @param {WireNetwork} network
      */
     drawHighlightedNetwork(parameters, network) {

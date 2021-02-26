@@ -31,7 +31,7 @@ export class LeverSystem extends GameSystemWithFilter {
 
     /**
      * Draws a given chunk
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../core/draw_parameters").DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
     drawChunk_ForegroundStaticLayer(parameters, chunk) {

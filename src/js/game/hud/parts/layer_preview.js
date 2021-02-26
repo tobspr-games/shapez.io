@@ -98,7 +98,7 @@ export class HUDLayerPreview extends BaseHUDPart {
 
     /**
      * Renders the preview at the given position
-     * @param {import("../../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../../core/draw_parameters").DrawParameters} parameters
      * @param {Vector} worldPos
      * @param {number} scale 1 / zoomLevel
      */

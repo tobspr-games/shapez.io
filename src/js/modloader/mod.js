@@ -945,6 +945,8 @@ export class ShapezAPI {
                 {
                     meta: atlasData.atlasData.meta,
                     sourceData: atlasData.atlasData.frames,
+                    sourceFileName: null,
+                    getFullSourcePath: null,
                 },
                 sourceImage
             );

@@ -12,7 +12,7 @@ export class DisplaySystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [DisplayComponent]);
 
-        /** @type {Object<string, import("../../core/draw_utils").AtlasSprite>} */
+        /** @type {Object<string, import("../../core/sprites").AtlasSprite>} */
         this.displaySprites = {};
 
         for (const colorId in enumColors) {
@@ -44,7 +44,7 @@ export class DisplaySystem extends GameSystemWithFilter {
 
     /**
      * Draws a given chunk
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../core/draw_parameters").DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
     drawChunk_ForegroundStaticLayer(parameters, chunk) {

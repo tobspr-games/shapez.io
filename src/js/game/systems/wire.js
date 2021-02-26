@@ -571,7 +571,7 @@ export class WireSystem extends GameSystemWithFilter {
     /**
      * Returns the given tileset and opacity
      * @param {WireComponent} wireComp
-     * @returns {{ spriteSet: Object<enumWireType, import("../../core/draw_utils").AtlasSprite>, opacity: number}}
+     * @returns {{ spriteSet: Object<enumWireType, import("../../core/sprites").AtlasSprite>, opacity: number}}
      */
     getSpriteSetAndOpacityForWire(wireComp) {
         if (!wireComp.linkedNetwork) {
@@ -601,7 +601,7 @@ export class WireSystem extends GameSystemWithFilter {
 
     /**
      * Draws a given chunk
-     * @param {import("../../core/draw_utils").DrawParameters} parameters
+     * @param {import("../../core/draw_parameters").DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
     drawChunk_WiresForegroundLayer(parameters, chunk) {

@@ -146,7 +146,7 @@ export class MetaWireBuilding extends MetaBuilding {
      *
      * @param {number} rotationVariant
      * @param {string} variant
-     * @returns {import("../../core/draw_utils").AtlasSprite}
+     * @returns {import("../../core/sprites").AtlasSprite}
      */
     getPreviewSprite(rotationVariant, variant) {
         const wireVariant = MetaWireBuilding.wireVariantToVariant[variant];

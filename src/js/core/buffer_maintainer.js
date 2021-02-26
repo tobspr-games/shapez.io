@@ -129,7 +129,7 @@ export class BufferMaintainer {
      * @param {number} param0.w
      * @param {number} param0.h
      * @param {number} param0.dpi
-     * @param {function(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, width: number, height: number, dpi: number, additionalParams: object?) : void} param0.redrawMethod
+     * @param {function(HTMLCanvasElement, CanvasRenderingContext2D, number, number, number, object?) : void} param0.redrawMethod
      * @param {object=} param0.additionalParams
      * @returns {HTMLCanvasElement}
      *
