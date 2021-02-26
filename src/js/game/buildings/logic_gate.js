@@ -117,11 +117,11 @@ export class MetaLogicGateBuilding extends MetaBuilding {
 }
 MetaLogicGateBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [],
+            })
+        ),
     entity => entity.addComponent(new LogicGateComponent({})),
 ];
 
@@ -202,7 +202,8 @@ MetaLogicGateBuilding.layerPreview = {
 
 MetaLogicGateBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,
@@ -223,7 +224,8 @@ MetaLogicGateBuilding.componentVariations = {
     },
 
     [MetaLogicGateBuilding.variants.xor]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,
@@ -244,7 +246,8 @@ MetaLogicGateBuilding.componentVariations = {
     },
 
     [MetaLogicGateBuilding.variants.or]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,
@@ -264,7 +267,8 @@ MetaLogicGateBuilding.componentVariations = {
         entity.components.LogicGate.type = enumLogicGateType.or;
     },
     [MetaLogicGateBuilding.variants.not]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,

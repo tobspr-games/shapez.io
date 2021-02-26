@@ -98,21 +98,23 @@ export class MetaItemProducerBuilding extends MetaBuilding {
 
 MetaItemProducerBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                type: enumPinSlotType.logicalAcceptor,
-                direction: enumDirection.bottom,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        type: enumPinSlotType.logicalAcceptor,
+                        direction: enumDirection.bottom,
+                    },
+                ],
+            })
+        ),
 
     entity => entity.addComponent(new ItemProducerComponent()),
 ];
@@ -153,10 +155,12 @@ MetaItemProducerBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
         entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
 
-        entity.components.WiredPins.setSlots([{
-            pos: new Vector(0, 0),
-            type: enumPinSlotType.logicalAcceptor,
-            direction: enumDirection.bottom,
-        }, ]);
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                type: enumPinSlotType.logicalAcceptor,
+                direction: enumDirection.bottom,
+            },
+        ]);
     },
 };

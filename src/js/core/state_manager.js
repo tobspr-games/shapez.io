@@ -97,7 +97,8 @@ export class StateManager {
 
         this.app.analytics.trackStateEnter(key);
 
-        window.history.pushState({
+        window.history.pushState(
+            {
                 key,
             },
             key

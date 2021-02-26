@@ -607,8 +607,10 @@ ShapeDefinition.renderQuad = {
         context.beginPath();
         context.moveTo(insetPadding + -quadrantHalfSize, -insetPadding + quadrantHalfSize);
         context.arc(
-            insetPadding + -quadrantHalfSize, -insetPadding + quadrantHalfSize,
-            quadrantSize * layerScale, -Math.PI * 0.5,
+            insetPadding + -quadrantHalfSize,
+            -insetPadding + quadrantHalfSize,
+            quadrantSize * layerScale,
+            -Math.PI * 0.5,
             0
         );
         context.closePath();

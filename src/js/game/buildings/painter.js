@@ -121,27 +121,28 @@ export class MetaPainterBuilding extends MetaBuilding {
 MetaPainterBuilding.setupEntityComponents = [
     entity => entity.addComponent(new ItemProcessorComponent({})),
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 0),
-                    directions: [enumDirection.top],
-                    filter: "color",
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.top],
+                        filter: "color",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaPainterBuilding.variants = {
@@ -251,7 +252,8 @@ MetaPainterBuilding.componentVariations = {
             entity.removeComponent(WiredPinsComponent);
         }
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.left],
                 filter: "shape",
@@ -275,7 +277,8 @@ MetaPainterBuilding.componentVariations = {
             entity.removeComponent(WiredPinsComponent);
         }
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.left],
                 filter: "shape",
@@ -299,7 +302,8 @@ MetaPainterBuilding.componentVariations = {
             entity.removeComponent(WiredPinsComponent);
         }
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.left],
                 filter: "shape",
@@ -328,7 +332,8 @@ MetaPainterBuilding.componentVariations = {
             entity.addComponent(new WiredPinsComponent({ slots: [] }));
         }
 
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.bottom,
                 type: enumPinSlotType.logicalAcceptor,
@@ -350,7 +355,8 @@ MetaPainterBuilding.componentVariations = {
             },
         ]);
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.left],
                 filter: "shape",

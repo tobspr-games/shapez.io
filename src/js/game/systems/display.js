@@ -86,7 +86,7 @@ DisplaySystem.displayItemType = {
 
 DisplaySystem.displayItem = {
     color: (parameters, value, origin, globalConfig) =>
-        DisplaySystem.displaySprites[ /** @type {ColorItem} */ (value).color].drawCachedCentered(
+        DisplaySystem.displaySprites[/** @type {ColorItem} */ (value).color].drawCachedCentered(
             parameters,
             (origin.x + 0.5) * globalConfig.tileSize,
             (origin.y + 0.5) * globalConfig.tileSize,

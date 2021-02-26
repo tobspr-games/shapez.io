@@ -84,6 +84,6 @@ export class FilterSystem extends GameSystemWithFilter {
 }
 
 FilterSystem.listToCheck = (entity, slot, item, filterComp, networkValue) =>
-    networkValue.equals(BOOL_TRUE_SINGLETON) || networkValue.equals(item) ?
-    filterComp.pendingItemsToLeaveThrough :
-    filterComp.pendingItemsToReject;
+    networkValue.equals(BOOL_TRUE_SINGLETON) || networkValue.equals(item)
+        ? filterComp.pendingItemsToLeaveThrough
+        : filterComp.pendingItemsToReject;

@@ -35,23 +35,23 @@ export class HubSystem extends GameSystemWithFilter {
     }
 
     update() {
-            for (let i = 0; i < this.allEntities.length; ++i) {
-                // Set hub goal
-                const entity = this.allEntities[i];
-                const pinsComp = entity.components.WiredPins;
-                pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                    this.root.hubGoals.currentGoal.definition
-                );
-            }
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            // Set hub goal
+            const entity = this.allEntities[i];
+            const pinsComp = entity.components.WiredPins;
+            pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                this.root.hubGoals.currentGoal.definition
+            );
         }
-        /**
-         *
-         * @param {HTMLCanvasElement} canvas
-         * @param {CanvasRenderingContext2D} context
-         * @param {number} w
-         * @param {number} h
-         * @param {number} dpi
-         */
+    }
+    /**
+     *
+     * @param {HTMLCanvasElement} canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} w
+     * @param {number} h
+     * @param {number} dpi
+     */
     redrawHubBaseTexture(canvas, context, w, h, dpi) {
         // This method is quite ugly, please ignore it!
 

@@ -20,7 +20,7 @@ function initAssert() {
      * @param {Boolean} condition
      * @param  {...String} failureMessage
      */
-    window.assert = function(condition, ...failureMessage) {
+    window.assert = function (condition, ...failureMessage) {
         if (!condition) {
             logger.error("assertion failed:", ...failureMessage);
             if (!assertionErrorShown) {

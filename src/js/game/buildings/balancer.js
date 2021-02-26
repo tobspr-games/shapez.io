@@ -130,27 +130,27 @@ export class MetaBalancerBuilding extends MetaBuilding {
 
 MetaBalancerBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [], // set later
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [], // set later
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 1,
-            processorType: enumItemProcessorTypes.balancer,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.balancer,
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [], // set later
-            renderFloatingItems: false,
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [], // set later
+                renderFloatingItems: false,
+            })
+        ),
 
     entity => entity.addComponent(new BeltUnderlaysComponent({ underlays: [] })),
 ];
@@ -297,7 +297,8 @@ MetaBalancerBuilding.silhouetteColors = {
 
 MetaBalancerBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.bottom],
             },
@@ -319,7 +320,8 @@ MetaBalancerBuilding.componentVariations = {
     },
 
     [MetaBalancerBuilding.variants.merger]: (entity, rotationVariant) => {
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.bottom],
             },
@@ -335,7 +337,8 @@ MetaBalancerBuilding.componentVariations = {
     },
 
     [MetaBalancerBuilding.variants.mergerInverse]: (entity, rotationVariant) => {
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.bottom],
             },
@@ -352,12 +355,15 @@ MetaBalancerBuilding.componentVariations = {
 
     [MetaBalancerBuilding.variants.splitter]: (entity, rotationVariant) => {
         {
-            entity.components.ItemAcceptor.setSlots([{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            }, ]);
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                },
+            ]);
 
-            entity.components.ItemEjector.setSlots([{
+            entity.components.ItemEjector.setSlots([
+                {
                     pos: new Vector(0, 0),
                     direction: enumDirection.top,
                 },
@@ -375,12 +381,15 @@ MetaBalancerBuilding.componentVariations = {
 
     [MetaBalancerBuilding.variants.splitterInverse]: (entity, rotationVariant) => {
         {
-            entity.components.ItemAcceptor.setSlots([{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            }, ]);
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                },
+            ]);
 
-            entity.components.ItemEjector.setSlots([{
+            entity.components.ItemEjector.setSlots([
+                {
                     pos: new Vector(0, 0),
                     direction: enumDirection.top,
                 },

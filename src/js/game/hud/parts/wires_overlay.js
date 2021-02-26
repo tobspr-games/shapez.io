@@ -146,9 +146,9 @@ export class HUDWiresOverlay extends BaseHUDPart {
         parameters.context.globalCompositeOperation = "source-over";
 
         parameters.context.scale(scaleFactor, scaleFactor);
-        parameters.context.fillStyle = hasTileGrid ?
-            this.cachedPatternBackground :
-            "rgba(78, 137, 125, 0.75)";
+        parameters.context.fillStyle = hasTileGrid
+            ? this.cachedPatternBackground
+            : "rgba(78, 137, 125, 0.75)";
         parameters.context.fillRect(
             bounds.x / scaleFactor,
             bounds.y / scaleFactor,

@@ -150,7 +150,8 @@ export class SavegameManager extends ReadWriteProxy {
         this.updateAfterSavegamesChanged();
 
         return new Savegame(
-            this.app, {
+            this.app,
+            {
                 internalId: id,
                 metaDataRef: metaData,
             },

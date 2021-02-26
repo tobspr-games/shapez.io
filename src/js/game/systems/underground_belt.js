@@ -254,7 +254,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         // Search in the direction of the tunnel
         for (
-            let searchOffset = 0; searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
+            let searchOffset = 0;
+            searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
             ++searchOffset
         ) {
             currentTile = currentTile.add(searchVector);

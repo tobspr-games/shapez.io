@@ -201,38 +201,34 @@ export class StaticMapEntityComponent extends Component {
         const size = this.getTileSize();
 
         switch (this.rotation) {
-            case 0:
-                {
-                    x = this.origin.x;
-                    y = this.origin.y;
-                    w = size.x;
-                    h = size.y;
-                    break;
-                }
-            case 90:
-                {
-                    x = this.origin.x - size.y + 1;
-                    y = this.origin.y;
-                    w = size.y;
-                    h = size.x;
-                    break;
-                }
-            case 180:
-                {
-                    x = this.origin.x - size.x + 1;
-                    y = this.origin.y - size.y + 1;
-                    w = size.x;
-                    h = size.y;
-                    break;
-                }
-            case 270:
-                {
-                    x = this.origin.x;
-                    y = this.origin.y - size.x + 1;
-                    w = size.y;
-                    h = size.x;
-                    break;
-                }
+            case 0: {
+                x = this.origin.x;
+                y = this.origin.y;
+                w = size.x;
+                h = size.y;
+                break;
+            }
+            case 90: {
+                x = this.origin.x - size.y + 1;
+                y = this.origin.y;
+                w = size.y;
+                h = size.x;
+                break;
+            }
+            case 180: {
+                x = this.origin.x - size.x + 1;
+                y = this.origin.y - size.y + 1;
+                w = size.x;
+                h = size.y;
+                break;
+            }
+            case 270: {
+                x = this.origin.x;
+                y = this.origin.y - size.x + 1;
+                w = size.y;
+                h = size.x;
+                break;
+            }
             default:
                 assert(false, "Invalid rotation");
         }
@@ -281,7 +277,9 @@ export class StaticMapEntityComponent extends Component {
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math.radians(this.rotation));
             sprite.drawCached(
-                parameters, -globalConfig.halfTileSize - extrudePixels * size.x, -globalConfig.halfTileSize - extrudePixels * size.y,
+                parameters,
+                -globalConfig.halfTileSize - extrudePixels * size.x,
+                -globalConfig.halfTileSize - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
                 globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
                 false // no clipping possible here

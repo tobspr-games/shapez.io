@@ -142,9 +142,9 @@ export class MapChunkView extends MapChunk {
      */
     generateOverlayBuffer(canvas, context, w, h, dpi) {
         context.fillStyle =
-            this.containedEntities.length > 0 ?
-            THEME.map.chunkOverview.filled :
-            THEME.map.chunkOverview.empty;
+            this.containedEntities.length > 0
+                ? THEME.map.chunkOverview.filled
+                : THEME.map.chunkOverview.empty;
         context.fillRect(0, 0, w, h);
 
         if (this.root.app.settings.getAllSettings().displayChunkBorders) {

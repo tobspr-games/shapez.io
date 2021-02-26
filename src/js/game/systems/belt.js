@@ -502,7 +502,7 @@ export class BeltSystem extends GameSystemWithFilter {
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-            globalConfig.itemSpacingOnBelts
+                globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.containedEntitiesByLayer.regular;
 

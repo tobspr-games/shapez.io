@@ -115,11 +115,11 @@ export class MetaMinerBuilding extends MetaBuilding {
 MetaMinerBuilding.setupEntityComponents = [
     entity => entity.addComponent(new MinerComponent({})),
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+            })
+        ),
 ];
 MetaMinerBuilding.variants = {
     chainable: "chainable",

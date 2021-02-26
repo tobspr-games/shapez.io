@@ -93,7 +93,7 @@ export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
  * @returns {boolean}
  */
 export function isTrueItem(item) {
-    return item && item.getItemType() === "boolean" && !!( /** @type {BooleanItem} */ (item).value);
+    return item && item.getItemType() === "boolean" && !!(/** @type {BooleanItem} */ (item).value);
 }
 
 /**
@@ -107,7 +107,7 @@ export function isTruthyItem(item) {
     }
 
     if (item.getItemType() === "boolean") {
-        return !!( /** @type {BooleanItem} */ (item).value);
+        return !!(/** @type {BooleanItem} */ (item).value);
     }
 
     return true;

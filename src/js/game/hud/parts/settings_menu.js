@@ -15,7 +15,8 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.statsElement = makeDiv(
             this.background,
-            null, ["statsElement"],
+            null,
+            ["statsElement"],
             `
             <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
             <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
@@ -91,7 +92,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         buildingsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
-            this.root.entityMgr.getAllWithComponent(BeltComponent).length
+                this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
 
         beltsPlacedElement.innerText = formatBigNumberFull(
@@ -110,7 +111,8 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 }
 
-HUDSettingsMenu.buttons = [{
+HUDSettingsMenu.buttons = [
+    {
         id: "continue",
         action: hudSettingsMenu => () => hudSettingsMenu.close(),
         options: {

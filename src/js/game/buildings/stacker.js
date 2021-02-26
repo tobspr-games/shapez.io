@@ -129,34 +129,35 @@ export class MetaStackerBuilding extends MetaBuilding {
 
 MetaStackerBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 2,
-            processorType: enumItemProcessorTypes.stacker,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 2,
+                processorType: enumItemProcessorTypes.stacker,
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 0),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaStackerBuilding.dimensions = {
@@ -216,7 +217,8 @@ MetaStackerBuilding.componentVariations = {
 
         entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.bottom],
                 filter: "shape",

@@ -279,20 +279,20 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Tries to rotate the current building
      */
     tryRotate() {
-            const selectedBuilding = this.currentMetaBuilding.get();
-            if (selectedBuilding) {
-                if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
-                    this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
-                } else {
-                    this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
-                }
-                const staticComp = this.fakeEntity.components.StaticMapEntity;
-                staticComp.rotation = this.currentBaseRotation;
+        const selectedBuilding = this.currentMetaBuilding.get();
+        if (selectedBuilding) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
+            } else {
+                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
             }
+            const staticComp = this.fakeEntity.components.StaticMapEntity;
+            staticComp.rotation = this.currentBaseRotation;
         }
-        /**
-         * Tries to delete the building under the mouse
-         */
+    }
+    /**
+     * Tries to delete the building under the mouse
+     */
     deleteBelowCursor() {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
@@ -443,7 +443,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             }
 
             // Check if we should stop placement
-            if (!metaBuilding.getStayInPlacementMode() &&
+            if (
+                !metaBuilding.getStayInPlacementMode() &&
                 !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed &&
                 !this.root.app.settings.getAllSettings().alwaysMultiplace
             ) {
@@ -471,9 +472,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
             const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
-                .pressed ?
-                -1 :
-                1;
+                .pressed
+                ? -1
+                : 1;
 
             const newIndex = safeModulo(index + direction, availableVariants.length);
             const newVariant = availableVariants[newIndex];

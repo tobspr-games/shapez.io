@@ -12,7 +12,7 @@ export class SettingsState extends TextualGameState {
     }
 
     getMainContentHTML() {
-            return `<div class="sidebar">
+        return `<div class="sidebar">
                         ${this.getCategoryButtonsHtml()}
                         ${
                             this.app.platformWrapper.getSupportsKeyboard()

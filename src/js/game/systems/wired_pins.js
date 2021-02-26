@@ -121,9 +121,11 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             if (collidingEntity) {
                 const staticComp = collidingEntity.components.StaticMapEntity;
                 const data = getBuildingDataFromCode(staticComp.code);
-                if (!collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(
+                if (
+                    !collidingEntity.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(
                         data.variant
-                    )) {
+                    )
+                ) {
                     return true;
                 }
             }
@@ -193,7 +195,9 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                 const worldPos = tile.toWorldSpaceCenterOfTile();
 
                 // Culling
-                if (!parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, globalConfig.halfTileSize)) {
+                if (
+                    !parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, globalConfig.halfTileSize)
+                ) {
                     continue;
                 }
 

@@ -1,7 +1,8 @@
 /**
  * @type {Array<{version: string, date: string, entries: Array<String>}>} changelog
  */
-export const CHANGELOG = [{
+export const CHANGELOG = [
+    {
         version: "1.2.3",
         date: "unreleased",
         entries: [

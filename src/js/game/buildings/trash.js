@@ -120,26 +120,28 @@ export class MetaTrashBuilding extends MetaBuilding {
 
 MetaTrashBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                directions: [
-                    enumDirection.top,
-                    enumDirection.right,
-                    enumDirection.bottom,
-                    enumDirection.left,
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [
+                            enumDirection.top,
+                            enumDirection.right,
+                            enumDirection.bottom,
+                            enumDirection.left,
+                        ],
+                    },
                 ],
-            }, ],
-        })
-    ),
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 1,
-            processorType: enumItemProcessorTypes.trash,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.trash,
+            })
+        ),
 ];
 
 MetaTrashBuilding.overlayMatrices = {
@@ -182,15 +184,17 @@ MetaTrashBuilding.avaibleVariants = {
 
 MetaTrashBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemAcceptor.setSlots([{
-            pos: new Vector(0, 0),
-            directions: [
-                enumDirection.top,
-                enumDirection.right,
-                enumDirection.bottom,
-                enumDirection.left,
-            ],
-        }, ]);
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [
+                    enumDirection.top,
+                    enumDirection.right,
+                    enumDirection.bottom,
+                    enumDirection.left,
+                ],
+            },
+        ]);
 
         entity.components.ItemProcessor.inputsPerCharge = 1;
 

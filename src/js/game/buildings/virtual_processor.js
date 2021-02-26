@@ -121,11 +121,11 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
 
 MetaVirtualProcessorBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [],
+            })
+        ),
     entity => entity.addComponent(new LogicGateComponent({})),
 ];
 
@@ -219,7 +219,8 @@ MetaVirtualProcessorBuilding.silhouetteColors = {
 
 MetaVirtualProcessorBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.left,
                 type: enumPinSlotType.logicalEjector,
@@ -240,7 +241,8 @@ MetaVirtualProcessorBuilding.componentVariations = {
     },
 
     [MetaVirtualProcessorBuilding.variants.rotater]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,
@@ -256,7 +258,8 @@ MetaVirtualProcessorBuilding.componentVariations = {
     },
 
     [MetaVirtualProcessorBuilding.variants.unstacker]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.left,
                 type: enumPinSlotType.logicalEjector,
@@ -277,7 +280,8 @@ MetaVirtualProcessorBuilding.componentVariations = {
     },
 
     [MetaVirtualProcessorBuilding.variants.stacker]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,
@@ -298,7 +302,8 @@ MetaVirtualProcessorBuilding.componentVariations = {
     },
 
     [MetaVirtualProcessorBuilding.variants.painter]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,

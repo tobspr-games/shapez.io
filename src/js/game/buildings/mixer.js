@@ -115,35 +115,36 @@ export class MetaMixerBuilding extends MetaBuilding {
 
 MetaMixerBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 2,
-            processorType: enumItemProcessorTypes.mixer,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 2,
+                processorType: enumItemProcessorTypes.mixer,
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.bottom],
-                    filter: "color",
-                },
-                {
-                    pos: new Vector(1, 0),
-                    directions: [enumDirection.bottom],
-                    filter: "color",
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "color",
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "color",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaMixerBuilding.silhouetteColors = {
@@ -195,7 +196,8 @@ MetaMixerBuilding.componentVariations = {
 
         entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.bottom],
                 filter: "color",

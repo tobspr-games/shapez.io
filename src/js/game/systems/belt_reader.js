@@ -30,9 +30,9 @@ export class BeltReaderSystem extends GameSystemWithFilter {
             pinsComp.slots[1].value = readerComp.lastItem;
             pinsComp.slots[0].value =
                 (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
-                minimumTimeForThroughput ?
-                BOOL_TRUE_SINGLETON :
-                BOOL_FALSE_SINGLETON;
+                minimumTimeForThroughput
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
 
             if (now - readerComp.lastThroughputComputation > 0.5) {
                 // Compute throughput

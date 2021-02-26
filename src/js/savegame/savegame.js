@@ -151,12 +151,12 @@ export class Savegame extends ReadWriteProxy {
      * @returns {boolean}
      */
     isSaveable() {
-            return true;
-        }
-        /**
-         * Returns the statistics of the savegame
-         * @returns {import("./savegame_typedefs").SavegameStats}
-         */
+        return true;
+    }
+    /**
+     * Returns the statistics of the savegame
+     * @returns {import("./savegame_typedefs").SavegameStats}
+     */
     getStatistics() {
         return this.currentData.stats;
     }

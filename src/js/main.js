@@ -15,7 +15,7 @@ import { addVanillaSystemsToAPI } from "./game/game_system_manager";
 import { addVanillaGameModesToAPI } from "./game/game_mode_registry";
 import { getIPCRenderer } from "./core/utils";
 const logger = createLogger("main");
-window.onload = async() => {
+window.onload = async () => {
     if (window.coreThreadLoadedCb) {
         logger.log("Javascript parsed, calling html thread");
         window.coreThreadLoadedCb();

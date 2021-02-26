@@ -33,7 +33,7 @@ export const gBuildingVariants = {
  */
 export function registerBuildingVariant(
     meta,
-    variant = "default" /* @TODO: Circular dependency, actually its defaultBuildingVariant */ ,
+    variant = "default" /* @TODO: Circular dependency, actually its defaultBuildingVariant */,
     rotationVariant = 0
 ) {
     // @ts-ignore

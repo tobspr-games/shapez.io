@@ -277,7 +277,7 @@
                     grid-row: 2 / 3;
                     @include SuperSmallText;
                     opacity: 0.5;
-                    >span {
+                    > span {
                         display: inline-flex;
                         @include S(max-width, 140px);
                         overflow: hidden;
@@ -290,7 +290,7 @@
                     @include PlainText;
                     display: inline-flex;
                     align-items: center;
-                    >span {
+                    > span {
                         display: inline-flex;
                         @include S(max-width, 140px);
                         overflow: hidden;
@@ -429,7 +429,7 @@
         $linkBg: #fdfdff;
         $linkBgHover: darken($linkBg, 2);
         $linkColor: #55586a;
-        >.boxLink {
+        > .boxLink {
             display: grid;
             align-items: center;
             grid-template-columns: 1fr auto;
@@ -470,14 +470,14 @@
                 }
             }
         }
-        >.sidelinks {
+        > .sidelinks {
             display: grid;
             align-items: flex-start;
             justify-content: flex-start;
             grid-template-rows: 1fr 1fr 1fr;
             @include S(grid-gap, 3px);
             @include S(height, 60px);
-            >a {
+            > a {
                 color: $linkColor;
                 background: $linkBg;
                 height: 100%;
@@ -524,8 +524,8 @@
             }
         }
         .footer {
-            >a,
-            .sidelinks>a {
+            > a,
+            .sidelinks > a {
                 background-color: $darkModeControlsBackground;
                 color: #eee;
                 &:hover {
@@ -534,7 +534,7 @@
             }
             .author {
                 color: #bdbdbd;
-                >a {
+                > a {
                     color: white;
                 }
             }

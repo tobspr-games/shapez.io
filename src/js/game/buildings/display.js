@@ -105,15 +105,17 @@ export class MetaDisplayBuilding extends MetaBuilding {
 
 MetaDisplayBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
     entity => entity.addComponent(new DisplayComponent()),
 ];
 
@@ -155,10 +157,12 @@ MetaDisplayBuilding.renderPins = {
 
 MetaDisplayBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
-            pos: new Vector(0, 0),
-            direction: enumDirection.bottom,
-            type: enumPinSlotType.logicalAcceptor,
-        }, ]);
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.bottom,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+        ]);
     },
 };

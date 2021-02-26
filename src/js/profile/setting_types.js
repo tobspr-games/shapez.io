@@ -117,7 +117,8 @@ export class BaseSetting {
 
 export class EnumSetting extends BaseSetting {
     constructor(
-        id, {
+        id,
+        {
             options,
             valueGetter,
             textGetter,
@@ -145,8 +146,8 @@ export class EnumSetting extends BaseSetting {
      * @param {Application} app
      */
     getHtml(app) {
-            const available = this.getIsAvailable(app);
-            return `
+        const available = this.getIsAvailable(app);
+        return `
             <div class="setting cardbox ${available ? "enabled" : "disabled"}">
                 ${available ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
                 <div class="row">

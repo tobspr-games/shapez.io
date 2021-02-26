@@ -5,7 +5,7 @@ import { Rectangle } from "./rectangle";
 const logger = createLogger("draw_utils");
 
 export function initDrawUtils() {
-    CanvasRenderingContext2D.prototype.beginRoundedRect = function(x, y, w, h, r) {
+    CanvasRenderingContext2D.prototype.beginRoundedRect = function (x, y, w, h, r) {
         this.beginPath();
 
         if (r < 0.05) {
@@ -28,7 +28,7 @@ export function initDrawUtils() {
         this.arcTo(x, y, x + w, y, r);
     };
 
-    CanvasRenderingContext2D.prototype.beginCircle = function(x, y, r) {
+    CanvasRenderingContext2D.prototype.beginCircle = function (x, y, r) {
         this.beginPath();
 
         if (r < 0.05) {

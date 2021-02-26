@@ -118,32 +118,33 @@ export class MetaTransistorBuilding extends MetaBuilding {
 
 MetaTransistorBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.bottom,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new LogicGateComponent({
-            type: enumLogicGateType.transistor,
-        })
-    ),
+        entity.addComponent(
+            new LogicGateComponent({
+                type: enumLogicGateType.transistor,
+            })
+        ),
 ];
 
 MetaTransistorBuilding.variants = {

@@ -112,14 +112,14 @@ export class ModManager {
             });
         } else
             return Promise.race([
-                    new Promise((resolve, reject) => {
-                        setTimeout(reject, 60 * 1000);
-                    }),
-                    fetch(url, {
-                        method: "GET",
-                        cache: "no-cache",
-                    }),
-                ])
+                new Promise((resolve, reject) => {
+                    setTimeout(reject, 60 * 1000);
+                }),
+                fetch(url, {
+                    method: "GET",
+                    cache: "no-cache",
+                }),
+            ])
                 .then(res => res.text())
                 .catch(err => {
                     assert(this, "Failed to load mod:", err);
@@ -208,9 +208,9 @@ export class ModManager {
                 if (isMissingDependecie) {
                     console.warn(
                         "Mod with mod id: " +
-                        mod.id +
-                        " is disabled because it's missings the dependecie " +
-                        missingDependecie
+                            mod.id +
+                            " is disabled because it's missings the dependecie " +
+                            missingDependecie
                     );
                     continue;
                 } else sorter.add(id, mod.dependencies);

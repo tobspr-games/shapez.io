@@ -132,55 +132,62 @@ export class MetaReaderBuilding extends MetaBuilding {
 
 MetaReaderBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.right,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalEjector,
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            processorType: enumItemProcessorTypes.reader,
-            inputsPerCharge: 1,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                processorType: enumItemProcessorTypes.reader,
+                inputsPerCharge: 1,
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new BeltUnderlaysComponent({
-            underlays: [{
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new BeltUnderlaysComponent({
+                underlays: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        ),
     entity => entity.addComponent(new BeltReaderComponent()),
 ];
 
@@ -229,23 +236,29 @@ MetaReaderBuilding.renderPins = {
 
 MetaReaderBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemAcceptor.setSlots([{
-            pos: new Vector(0, 0),
-            directions: [enumDirection.bottom],
-        }, ]);
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [enumDirection.bottom],
+            },
+        ]);
 
-        entity.components.ItemEjector.setSlots([{
-            pos: new Vector(0, 0),
-            direction: enumDirection.top,
-        }, ]);
+        entity.components.ItemEjector.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+            },
+        ]);
 
         entity.components.ItemProcessor.inputsPerCharge = 1;
 
         entity.components.ItemProcessor.type = enumItemProcessorTypes.reader;
 
-        entity.components.BeltUnderlays.underlays = [{
-            pos: new Vector(0, 0),
-            direction: enumDirection.top,
-        }, ];
+        entity.components.BeltUnderlays.underlays = [
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+            },
+        ];
     },
 };

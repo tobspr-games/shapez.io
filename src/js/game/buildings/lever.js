@@ -121,15 +121,17 @@ export class MetaLeverBuilding extends MetaBuilding {
 
 MetaLeverBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                ],
+            })
+        ),
     entity => entity.addComponent(new LeverComponent({})),
 ];
 
@@ -172,10 +174,12 @@ MetaLeverBuilding.renderPins = {
 
 MetaLeverBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
-            pos: new Vector(0, 0),
-            direction: enumDirection.top,
-            type: enumPinSlotType.logicalEjector,
-        }, ]);
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+                type: enumPinSlotType.logicalEjector,
+            },
+        ]);
     },
 };

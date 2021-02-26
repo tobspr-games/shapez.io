@@ -118,32 +118,33 @@ export class MetaComparatorBuilding extends MetaBuilding {
 
 MetaComparatorBuilding.setupEntityComponents = [
     (entity, rotationVariant) =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.right,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
     (entity, rotationVariant) =>
-    entity.addComponent(
-        new LogicGateComponent({
-            type: enumLogicGateType.compare,
-        })
-    ),
+        entity.addComponent(
+            new LogicGateComponent({
+                type: enumLogicGateType.compare,
+            })
+        ),
 ];
 
 MetaComparatorBuilding.overlayMatrices = {
@@ -185,7 +186,8 @@ MetaComparatorBuilding.layerByVariant = {
 
 MetaComparatorBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
                 type: enumPinSlotType.logicalEjector,

@@ -155,7 +155,8 @@ export class KeybindingsState extends TextualGameState {
     resetBindings() {
         const { reset } = this.dialogs.showWarning(
             T.dialogs.resetKeybindingsConfirmation.title,
-            T.dialogs.resetKeybindingsConfirmation.desc, ["cancel:good", "reset:bad"]
+            T.dialogs.resetKeybindingsConfirmation.desc,
+            ["cancel:good", "reset:bad"]
         );
 
         reset.add(() => {

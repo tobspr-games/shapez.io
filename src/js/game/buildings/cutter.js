@@ -89,23 +89,25 @@ export class MetaCutterBuilding extends MetaBuilding {
 }
 MetaCutterBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 1,
-            processorType: enumItemProcessorTypes.cutter,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.cutter,
+            })
+        ),
     entity => entity.addComponent(new ItemEjectorComponent({})),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-                filter: "shape",
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaCutterBuilding.variants = {

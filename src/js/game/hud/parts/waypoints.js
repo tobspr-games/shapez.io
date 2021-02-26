@@ -44,12 +44,13 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {HTMLElement} parent
      */
     createElements(parent) {
-            // Create the helper box on the lower right when zooming out
-            if (this.root.app.settings.getAllSettings().offerHints) {
-                this.hintElement = makeDiv(
-                        parent,
-                        "ingame_HUD_Waypoints_Hint", [],
-                        `
+        // Create the helper box on the lower right when zooming out
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.hintElement = makeDiv(
+                parent,
+                "ingame_HUD_Waypoints_Hint",
+                [],
+                `
             <strong class='title'>${T.ingame.waypoints.waypoints}</strong>
             <span class='desc'>${T.ingame.waypoints.description.replace(
                 "<keybinding>",

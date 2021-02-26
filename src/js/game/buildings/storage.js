@@ -132,56 +132,59 @@ export class MetaStorageBuilding extends MetaBuilding {
 
 MetaStorageBuilding.setupEntityComponents = [
     entity =>
-    // Required, since the item processor needs this.
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                },
-                {
-                    pos: new Vector(1, 0),
-                    direction: enumDirection.top,
-                },
-            ],
-        })
-    ),
+        // Required, since the item processor needs this.
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                    pos: new Vector(0, 1),
-                    directions: [enumDirection.bottom],
-                },
-                {
-                    pos: new Vector(1, 1),
-                    directions: [enumDirection.bottom],
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 1),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(1, 1),
+                        directions: [enumDirection.bottom],
+                    },
+                ],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new StorageComponent({
-            maximumStorage: storageSize,
-        })
-    ),
+        entity.addComponent(
+            new StorageComponent({
+                maximumStorage: storageSize,
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                    pos: new Vector(1, 1),
-                    direction: enumDirection.right,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 1),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalEjector,
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(1, 1),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 1),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaStorageBuilding.dimensions = {
@@ -232,7 +235,8 @@ MetaStorageBuilding.renderPins = {
 
 MetaStorageBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemEjector.setSlots([{
+        entity.components.ItemEjector.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
             },
@@ -241,7 +245,8 @@ MetaStorageBuilding.componentVariations = {
                 direction: enumDirection.top,
             },
         ]);
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 1),
                 directions: [enumDirection.bottom],
             },
@@ -251,7 +256,8 @@ MetaStorageBuilding.componentVariations = {
             },
         ]);
         entity.components.Storage.maximumStorage = storageSize;
-        entity.components.WiredPins.setSlots([{
+        entity.components.WiredPins.setSlots([
+            {
                 pos: new Vector(1, 1),
                 direction: enumDirection.right,
                 type: enumPinSlotType.logicalEjector,

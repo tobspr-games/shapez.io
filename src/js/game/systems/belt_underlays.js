@@ -252,12 +252,14 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 }
 
                 // Culling, Part 2: Check if the overlay is visible
-                if (!parameters.visibleRect.containsRect4Params(
+                if (
+                    !parameters.visibleRect.containsRect4Params(
                         destX,
                         destY,
                         globalConfig.tileSize,
                         globalConfig.tileSize
-                    )) {
+                    )
+                ) {
                     continue;
                 }
 
@@ -280,14 +282,16 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 // SYNC with systems/belt.js:drawSingleEntity!
                 const animationIndex = Math.floor(
                     ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                    globalConfig.itemSpacingOnBelts
+                        globalConfig.itemSpacingOnBelts
                 );
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
                 this.underlayBeltSprites[
                     animationIndex % this.underlayBeltSprites.length
                 ].drawCachedWithClipRect(
-                    parameters, -globalConfig.halfTileSize, -globalConfig.halfTileSize,
+                    parameters,
+                    -globalConfig.halfTileSize,
+                    -globalConfig.halfTileSize,
                     globalConfig.tileSize,
                     globalConfig.tileSize,
                     clipRect

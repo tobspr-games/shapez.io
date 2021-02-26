@@ -130,40 +130,45 @@ export class MetaFilterBuilding extends MetaBuilding {
 
 MetaFilterBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalAcceptor,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ],
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                },
-                {
-                    pos: new Vector(1, 0),
-                    direction: enumDirection.right,
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        direction: enumDirection.right,
+                    },
+                ],
+            })
+        ),
 
     entity => entity.addComponent(new FilterComponent()),
 ];
@@ -212,18 +217,23 @@ MetaFilterBuilding.renderPins = {
 
 MetaFilterBuilding.componentVariations = {
     [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([{
-            pos: new Vector(0, 0),
-            direction: enumDirection.left,
-            type: enumPinSlotType.logicalAcceptor,
-        }, ]);
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.left,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+        ]);
 
-        entity.components.ItemAcceptor.setSlots([{
-            pos: new Vector(0, 0),
-            directions: [enumDirection.bottom],
-        }, ]);
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [enumDirection.bottom],
+            },
+        ]);
 
-        entity.components.ItemEjector.setSlots([{
+        entity.components.ItemEjector.setSlots([
+            {
                 pos: new Vector(0, 0),
                 direction: enumDirection.top,
             },

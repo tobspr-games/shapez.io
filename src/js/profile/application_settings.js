@@ -24,7 +24,8 @@ export const enumCategories = {
     debug: "debug",
 };
 
-export const uiScales = [{
+export const uiScales = [
+    {
         id: "super_small",
         size: 0.6,
     },
@@ -46,7 +47,8 @@ export const uiScales = [{
     },
 ];
 
-export const scrollWheelSensitivities = [{
+export const scrollWheelSensitivities = [
+    {
         id: "super_slow",
         scale: 0.25,
     },
@@ -68,7 +70,8 @@ export const scrollWheelSensitivities = [{
     },
 ];
 
-export const movementSpeeds = [{
+export const movementSpeeds = [
+    {
         id: "super_slow",
         multiplier: 0.25,
     },
@@ -94,7 +97,8 @@ export const movementSpeeds = [{
     },
 ];
 
-export const autosaveIntervals = [{
+export const autosaveIntervals = [
+    {
         id: "one_minute",
         seconds: 60,
     },
@@ -150,9 +154,9 @@ export const allApplicationSettings = () => {
             category: enumCategories.userInterface,
             restartRequired: false,
             changeCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 (app, id) => app.updateAfterUiScaleChanged(),
         }),
 
@@ -208,17 +212,17 @@ export const allApplicationSettings = () => {
             category: enumCategories.userInterface,
             restartRequired: false,
             changeCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 (app, id) => {
-                applyGameTheme(id);
-                document.documentElement.setAttribute("data-theme", id);
-            },
+                    applyGameTheme(id);
+                    document.documentElement.setAttribute("data-theme", id);
+                },
             enabledCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 app => app.restrictionMgr.getHasExtendedSettings(),
         }),
 
@@ -229,9 +233,9 @@ export const allApplicationSettings = () => {
             category: enumCategories.advanced,
             restartRequired: false,
             changeCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 (app, id) => null,
         }),
 
@@ -242,9 +246,9 @@ export const allApplicationSettings = () => {
             category: enumCategories.advanced,
             restartRequired: false,
             changeCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 (app, id) => app.updateAfterUiScaleChanged(),
         }),
 
@@ -278,9 +282,9 @@ export const allApplicationSettings = () => {
             restartRequired: false,
             changeCb: (app, id) => {},
             enabledCb:
-            /**
-             * @param {Application} app
-             */
+                /**
+                 * @param {Application} app
+                 */
                 app => app.restrictionMgr.getHasExtendedSettings(),
         }),
 
@@ -372,7 +376,7 @@ export class ApplicationSettings extends ReadWriteProxy {
                 }
             })
 
-        .then(() => this.writeAsync());
+            .then(() => this.writeAsync());
     }
 
     save() {
@@ -510,12 +514,12 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string} id
      */
     resetKeybindingOverride(id) {
-            delete this.getAllSettings().keybindingOverrides[id];
-            return this.writeAsync();
-        }
-        /**
-         * Resets all keybinding overrides
-         */
+        delete this.getAllSettings().keybindingOverrides[id];
+        return this.writeAsync();
+    }
+    /**
+     * Resets all keybinding overrides
+     */
     resetKeybindingOverrides() {
         this.getAllSettings().keybindingOverrides = {};
         return this.writeAsync();
@@ -537,14 +541,14 @@ export class ApplicationSettings extends ReadWriteProxy {
             if (!setting.validate(storedValue)) {
                 return ExplainedResult.bad(
                     "Bad setting value for " +
-                    setting.id +
-                    ": " +
-                    storedValue +
-                    " @ settings version " +
-                    data.version +
-                    " (latest is " +
-                    this.getCurrentVersion() +
-                    ")"
+                        setting.id +
+                        ": " +
+                        storedValue +
+                        " @ settings version " +
+                        data.version +
+                        " (latest is " +
+                        this.getCurrentVersion() +
+                        ")"
                 );
             }
         }

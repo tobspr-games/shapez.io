@@ -122,100 +122,103 @@ MetaHubBuilding.canPipet = () => false;
 MetaHubBuilding.setupEntityComponents = [
     entity => entity.addComponent(new HubComponent()),
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 1,
-            processorType: enumItemProcessorTypes.hub,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.hub,
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new WiredPinsComponent({
-            slots: [{
-                pos: new Vector(0, 2),
-                type: enumPinSlotType.logicalEjector,
-                direction: enumDirection.left,
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 2),
+                        type: enumPinSlotType.logicalEjector,
+                        direction: enumDirection.left,
+                    },
+                ],
+            })
+        ),
 
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.top, enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 0),
-                    directions: [enumDirection.top],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(2, 0),
-                    directions: [enumDirection.top],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 0),
-                    directions: [enumDirection.top, enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 3),
-                    directions: [enumDirection.bottom, enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 3),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(2, 3),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 3),
-                    directions: [enumDirection.bottom, enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 1),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 2),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 3),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 1),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 2),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 3),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-            ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.top, enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.top],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(2, 0),
+                        directions: [enumDirection.top],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 0),
+                        directions: [enumDirection.top, enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        directions: [enumDirection.bottom, enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 3),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(2, 3),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        directions: [enumDirection.bottom, enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 1),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 2),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 1),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 2),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaHubBuilding.silhouetteColors = {
@@ -256,13 +259,16 @@ MetaHubBuilding.componentVariations = {
 
         entity.components.ItemProcessor.type = enumItemProcessorTypes.hub;
 
-        entity.components.WiredPins.setSlots([{
-            pos: new Vector(0, 2),
-            type: enumPinSlotType.logicalEjector,
-            direction: enumDirection.left,
-        }, ]);
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 2),
+                type: enumPinSlotType.logicalEjector,
+                direction: enumDirection.left,
+            },
+        ]);
 
-        entity.components.ItemAcceptor.setSlots([{
+        entity.components.ItemAcceptor.setSlots([
+            {
                 pos: new Vector(0, 0),
                 directions: [enumDirection.top, enumDirection.left],
                 filter: "shape",

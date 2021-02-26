@@ -188,7 +188,8 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         const targetSenderRotation = rotation;
 
         for (
-            let searchOffset = 1; searchOffset <= globalConfig.undergroundBeltMaxTilesByTier[tier];
+            let searchOffset = 1;
+            searchOffset <= globalConfig.undergroundBeltMaxTilesByTier[tier];
             ++searchOffset
         ) {
             tile = tile.addScalars(searchVector.x, searchVector.y);
@@ -245,18 +246,18 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
 MetaUndergroundBeltBuilding.setupEntityComponents = [
     // Required, since the item processor needs this.
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [],
+            })
+        ),
     entity => entity.addComponent(new UndergroundBeltComponent({})),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [],
+            })
+        ),
 ];
 
 MetaUndergroundBeltBuilding.rotationVariants = [0, 1];
@@ -360,18 +361,22 @@ MetaUndergroundBeltBuilding.componentVariationsByRotation = {
     [enumUndergroundBeltMode.sender]: (entity, rotationVariant) => {
         entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.sender;
         entity.components.ItemEjector.setSlots([]);
-        entity.components.ItemAcceptor.setSlots([{
-            pos: new Vector(0, 0),
-            directions: [enumDirection.bottom],
-        }, ]);
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [enumDirection.bottom],
+            },
+        ]);
     },
 
     [enumUndergroundBeltMode.receiver]: (entity, rotationVariant) => {
         entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.receiver;
         entity.components.ItemAcceptor.setSlots([]);
-        entity.components.ItemEjector.setSlots([{
-            pos: new Vector(0, 0),
-            direction: enumDirection.top,
-        }, ]);
+        entity.components.ItemEjector.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+            },
+        ]);
     },
 };

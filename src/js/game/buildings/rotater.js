@@ -129,28 +129,30 @@ export class MetaRotaterBuilding extends MetaBuilding {
 
 MetaRotaterBuilding.setupEntityComponents = [
     entity =>
-    entity.addComponent(
-        new ItemProcessorComponent({
-            inputsPerCharge: 1,
-            processorType: enumItemProcessorTypes.rotater,
-        })
-    ),
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.rotater,
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemEjectorComponent({
-            slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-        })
-    ),
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+            })
+        ),
     entity =>
-    entity.addComponent(
-        new ItemAcceptorComponent({
-            slots: [{
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-                filter: "shape",
-            }, ],
-        })
-    ),
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                ],
+            })
+        ),
 ];
 
 MetaRotaterBuilding.variants = {

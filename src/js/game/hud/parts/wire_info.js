@@ -36,7 +36,8 @@ export class HUDWireInfo extends BaseHUDPart {
             return;
         }
 
-        if (!this.root.camera.getIsMapOverlayActive() &&
+        if (
+            !this.root.camera.getIsMapOverlayActive() &&
             !this.root.logic.getIsEntityIntersectedWithMatrix(entity, worldPos)
         ) {
             // Detailed intersection check
