@@ -137,7 +137,8 @@ window.onload = async () => {
     if (G_IS_STANDALONE) {
         modFolderContents = getIPCRenderer().sendSync("fs-sync-job", {
             mods: true,
-            type: "get",
+            type: "readDir",
+            filename: "",
         }).data;
         if (modFolderContents.includes("modpack.json")) {
             instance = getIPCRenderer().sendSync("fs-sync-job", {

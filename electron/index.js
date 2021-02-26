@@ -17,10 +17,11 @@ const roamingFolder =
 let storePath = path.join(roamingFolder, "shapez.io", "saves");
 let modsPath = path.join(roamingFolder, "shapez.io", "mods");
 
-if (!fs.existsSync(storePath)) {
-    // No try-catch by design
+if (!fs.existsSync(storePath))
+// No try-catch by design
     fs.mkdirSync(storePath, { recursive: true });
-}
+
+if (!fs.existsSync(modsPath)) fs.mkdirSync(modsPath);
 
 /** @type {BrowserWindow} */
 let win = null;
@@ -154,147 +155,82 @@ ipcMain.on("exit-app", (event, flag) => {
 });
 
 function performFsJob(job) {
-    if (job.mods) {
-        if (!fs.existsSync(modsPath)) fs.mkdirSync(modsPath);
-        switch (job.type) {
-            case "get":
-                {
-                    let contents = "";
-                    try {
-                        contents = fs.readdirSync(modsPath, { encoding: "utf8" });
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
+    let fname = path.join(storePath, job.filename);
+    if (job.mods) fname = path.join(modsPath, job.filename);
+
+    switch (job.type) {
+        case "readDir":
+            {
+                let contents = "";
+                try {
+                    contents = fs.readdirSync(fname, { encoding: "utf8" });
+                } catch (ex) {
                     return {
-                        success: true,
-                        data: contents,
+                        error: ex,
                     };
                 }
-            case "read":
-                {
-                    const fname = path.join(modsPath, job.filename);
-                    if (!fs.existsSync(fname)) {
-                        return {
-                            // Special FILE_NOT_FOUND error code
-                            error: "file_not_found",
-                        };
-                    }
-
-                    let contents = "";
-                    try {
-                        contents = fs.readFileSync(fname, { encoding: "utf8" });
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
-
+                return {
+                    success: true,
+                    data: contents,
+                };
+            }
+        case "read":
+            {
+                if (!fs.existsSync(fname)) {
                     return {
-                        success: true,
-                        data: contents,
-                    };
-                }
-            case "write":
-                {
-                    const fname = path.join(modsPath, job.filename);
-                    try {
-                        fs.writeFileSync(fname, job.contents);
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
-
-                    return {
-                        success: true,
-                        data: job.contents,
+                        // Special FILE_NOT_FOUND error code
+                        error: "file_not_found",
                     };
                 }
 
-            case "delete":
-                {
-                    const fname = path.join(modsPath, job.filename);
-                    try {
-                        fs.unlinkSync(fname);
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
-
+                let contents = "";
+                try {
+                    contents = fs.readFileSync(fname, { encoding: "utf8" });
+                } catch (ex) {
                     return {
-                        success: true,
-                        data: null,
+                        error: ex,
                     };
                 }
 
-            default:
-                throw new Error("Unkown fs job: " + job.type);
-        }
-    } else {
-        const fname = path.join(storePath, job.filename);
-
-        switch (job.type) {
-            case "read":
-                {
-                    if (!fs.existsSync(fname)) {
-                        return {
-                            // Special FILE_NOT_FOUND error code
-                            error: "file_not_found",
-                        };
-                    }
-
-                    let contents = "";
-                    try {
-                        contents = fs.readFileSync(fname, { encoding: "utf8" });
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
-
+                return {
+                    success: true,
+                    data: contents,
+                };
+            }
+        case "write":
+            {
+                try {
+                    fs.writeFileSync(fname, job.contents);
+                } catch (ex) {
                     return {
-                        success: true,
-                        data: contents,
-                    };
-                }
-            case "write":
-                {
-                    try {
-                        fs.writeFileSync(fname, job.contents);
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
-
-                    return {
-                        success: true,
-                        data: job.contents,
+                        error: ex,
                     };
                 }
 
-            case "delete":
-                {
-                    try {
-                        fs.unlinkSync(fname);
-                    } catch (ex) {
-                        return {
-                            error: ex,
-                        };
-                    }
+                return {
+                    success: true,
+                    data: job.contents,
+                };
+            }
 
+        case "delete":
+            {
+                try {
+                    fs.unlinkSync(fname);
+                } catch (ex) {
                     return {
-                        success: true,
-                        data: null,
+                        error: ex,
                     };
                 }
 
-            default:
-                throw new Error("Unkown fs job: " + job.type);
-        }
+                return {
+                    success: true,
+                    data: null,
+                };
+            }
+
+        default:
+            throw new Error("Unkown fs job: " + job.type);
     }
 }
 
