@@ -1,7 +1,27 @@
-$buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
-    constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader, storage,
-    transistor, analyzer, comparator, item_producer;
-
+$buildings: belt,
+cutter,
+miner,
+mixer,
+painter,
+rotater,
+balancer,
+stacker,
+trash,
+underground_belt,
+wire,
+constant_signal,
+logic_gate,
+lever,
+filter,
+wire_tunnel,
+display,
+virtual_processor,
+reader,
+storage,
+transistor,
+analyzer,
+comparator,
+item_producer;
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
         /* @load-async */
@@ -9,11 +29,41 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
     }
 }
 
-$buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2, miner, miner-chainable,
-    cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer, painter-double, painter-quad, trash, storage,
-    reader, rotater-rotate180, display, constant_signal, wire, wire_tunnel, logic_gate-or, logic_gate-not,
-    logic_gate-xor, analyzer, virtual_processor-rotater, virtual_processor-unstacker, item_producer,
-    virtual_processor-stacker, virtual_processor-painter, wire-second, painter, painter-mirrored, comparator;
+$buildingsAndVariants: belt,
+balancer,
+underground_belt,
+underground_belt-tier2,
+miner,
+miner-chainable,
+cutter,
+cutter-quad,
+rotater,
+rotater-ccw,
+stacker,
+mixer,
+painter-double,
+painter-quad,
+trash,
+storage,
+reader,
+rotater-rotate180,
+display,
+constant_signal,
+wire,
+wire_tunnel,
+logic_gate-or,
+logic_gate-not,
+logic_gate-xor,
+analyzer,
+virtual_processor-rotater,
+virtual_processor-unstacker,
+item_producer,
+virtual_processor-stacker,
+virtual_processor-painter,
+wire-second,
+painter,
+painter-mirrored,
+comparator;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         /* @load-async */
@@ -58,7 +108,9 @@ $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2,
     background-image: uiResource("res/ui/building_tutorials/virtual_processor-cutter.png") !important;
 }
 
-$icons: notification_saved, notification_success, notification_upgrade;
+$icons: notification_saved,
+notification_success,
+notification_upgrade;
 @each $icon in $icons {
     [data-icon="icons/#{$icon}.png"] {
         /* @load-async */
@@ -66,15 +118,41 @@ $icons: notification_saved, notification_success, notification_upgrade;
     }
 }
 
-$languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW, zh-CN, nb, mt-MT, ar, nl, vi,
-    th, hu, pl, ja, kor, no, pt-PT;
-
+$languages: en,
+de,
+cs,
+da,
+et,
+es-419,
+fr,
+it,
+pt-BR,
+sv,
+tr,
+el,
+ru,
+uk,
+zh-TW,
+zh-CN,
+nb,
+mt-MT,
+ar,
+nl,
+vi,
+th,
+hu,
+pl,
+ja,
+kor,
+no,
+pt-PT;
 @each $language in $languages {
     [data-languageicon="#{$language}"] {
         /* @load-async */
         background-image: uiResource("languages/#{$language}.svg") !important;
     }
 }
+
 
 /*
 PRICE

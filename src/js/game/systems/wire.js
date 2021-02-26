@@ -14,9 +14,9 @@ import {
     Vector,
 } from "../../core/vector";
 import { BaseItem } from "../base_item";
-import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
+import { MetaWireBuilding } from "../buildings/wire";
 import { getCodeFromBuildingData } from "../building_codes";
-import { enumWireType, enumWireVariant, WireComponent } from "../components/wire";
+import { enumWireType, WireComponent } from "../components/wire";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
@@ -94,11 +94,11 @@ export class WireSystem extends GameSystemWithFilter {
         super(root, [WireComponent]);
 
         /**
-         * @type {Object<enumWireVariant, Object<enumWireType, AtlasSprite>>}
+         * @type {Object<MetaWireBuilding.wireVariants, Object<enumWireType, AtlasSprite>>}
          */
         this.wireSprites = {};
 
-        const variants = ["conflict", ...Object.keys(enumWireVariant)];
+        const variants = ["conflict", ...Object.keys(MetaWireBuilding.wireVariants)];
         for (let i = 0; i < variants.length; ++i) {
             const wireVariant = variants[i];
             const sprites = {};
@@ -130,6 +130,10 @@ export class WireSystem extends GameSystemWithFilter {
          * @type {Array<WireNetwork>}
          */
         this.networks = [];
+    }
+
+    static getId() {
+        return "wire";
     }
 
     /**
@@ -213,17 +217,15 @@ export class WireSystem extends GameSystemWithFilter {
                 currentNetwork.uid,
                 ")"
             );
-        const entitiesToVisit = [
-            {
-                entity: initialEntity,
-                slot,
-            },
-        ];
+        const entitiesToVisit = [{
+            entity: initialEntity,
+            slot,
+        }, ];
 
         /**
          * Once we occur a wire, we store its variant so we don't connect to
          * mismatching ones
-         * @type {enumWireVariant}
+         * @type {MetaWireBuilding.wireVariants}
          */
         let variantMask = null;
 
@@ -243,14 +245,13 @@ export class WireSystem extends GameSystemWithFilter {
             //// WIRE
             if (wireComp) {
                 // Sanity check
-                assert(
-                    !wireComp.linkedNetwork || wireComp.linkedNetwork === currentNetwork,
+                assert(!wireComp.linkedNetwork || wireComp.linkedNetwork === currentNetwork,
                     "Mismatching wire network on wire entity " +
-                        (wireComp.linkedNetwork ? wireComp.linkedNetwork.uid : "<empty>") +
-                        " vs " +
-                        currentNetwork.uid +
-                        " @ " +
-                        staticComp.origin.toString()
+                    (wireComp.linkedNetwork ? wireComp.linkedNetwork.uid : "<empty>") +
+                    " vs " +
+                    currentNetwork.uid +
+                    " @ " +
+                    staticComp.origin.toString()
                 );
 
                 if (!wireComp.linkedNetwork) {
@@ -286,12 +287,11 @@ export class WireSystem extends GameSystemWithFilter {
                 }
 
                 // Sanity check
-                assert(
-                    !slot.linkedNetwork || slot.linkedNetwork === currentNetwork,
+                assert(!slot.linkedNetwork || slot.linkedNetwork === currentNetwork,
                     "Mismatching wire network on pin slot entity " +
-                        (slot.linkedNetwork ? slot.linkedNetwork.uid : "<empty>") +
-                        " vs " +
-                        currentNetwork.uid
+                    (slot.linkedNetwork ? slot.linkedNetwork.uid : "<empty>") +
+                    " vs " +
+                    currentNetwork.uid
                 );
                 if (!slot.linkedNetwork) {
                     // This one is new
@@ -364,7 +364,7 @@ export class WireSystem extends GameSystemWithFilter {
      * @param {Vector} initialTile
      * @param {Array<enumDirection>} directions
      * @param {WireNetwork} network
-     * @param {enumWireVariant=} variantMask Only accept connections to this mask
+     * @param {MetaWireBuilding.wireVariants=} variantMask Only accept connections to this mask
      * @returns {Array<any>}
      */
     findSurroundingWireTargets(initialTile, directions, network, variantMask = null) {
@@ -463,9 +463,8 @@ export class WireSystem extends GameSystemWithFilter {
                     }
 
                     const staticComp = entity.components.StaticMapEntity;
-
                     // Compute where this tunnel connects to
-                    const forwardedTile = staticComp.origin.add(offset);
+                    const forwardedTile = WireSystem.getForwardedTile(tunnelComp, staticComp, offset);
                     VERBOSE_WIRES &&
                         logger.log(
                             "   Found tunnel",
@@ -574,6 +573,7 @@ export class WireSystem extends GameSystemWithFilter {
         if (!wireComp.linkedNetwork) {
             // There is no network, it's empty
             return {
+                // @ts-ignore
                 spriteSet: this.wireSprites[wireComp.variant],
                 opacity: 0.5,
             };
@@ -589,6 +589,7 @@ export class WireSystem extends GameSystemWithFilter {
         }
 
         return {
+            // @ts-ignore
             spriteSet: this.wireSprites[wireComp.variant],
             opacity: isTruthyItem(network.currentValue) ? 1 : 0.5,
         };
@@ -599,7 +600,7 @@ export class WireSystem extends GameSystemWithFilter {
      * @param {import("../../core/draw_utils").DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
-    drawChunk(parameters, chunk) {
+    drawChunk_WiresForegroundLayer(parameters, chunk) {
         const contents = chunk.wireContents;
         for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
             for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
@@ -738,7 +739,7 @@ export class WireSystem extends GameSystemWithFilter {
                     });
 
                     // Compute delta to see if anything changed
-                    const newType = arrayWireRotationVariantToType[rotationVariant];
+                    const newType = MetaWireBuilding.rotationVariantToType[rotationVariant];
 
                     if (targetStaticComp.rotation !== rotation || newType !== targetWireComp.type) {
                         // Change stuff
@@ -756,3 +757,5 @@ export class WireSystem extends GameSystemWithFilter {
         }
     }
 }
+
+WireSystem.getForwardedTile = (tunnelComp, staticComp, offset) => staticComp.origin.add(offset);

@@ -334,9 +334,9 @@ export function formatBigNumberFull(num, divider = T.global.thousandsDivider) {
  * @returns {Promise<void>}
  */
 export function waitNextFrame() {
-    return new Promise(function (resolve) {
-        window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(function () {
+    return new Promise(function(resolve) {
+        window.requestAnimationFrame(function() {
+            window.requestAnimationFrame(function() {
                 resolve();
             });
         });
@@ -573,12 +573,12 @@ export function round1DigitLocalized(speed, separator = T.global.decimalSeparato
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
  */
 export function formatItemsPerSecond(speed, double = false, separator = T.global.decimalSeparator) {
-    return speed === 1.0
-        ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
-        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
-              "<x>",
-              round2Digits(speed).toString().replace(".", separator)
-          ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
+    return speed === 1.0 ?
+        T.ingame.buildingPlacement.infoTexts.oneItemPerSecond :
+        T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
+            "<x>",
+            round2Digits(speed).toString().replace(".", separator)
+        ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
 }
 
 /**

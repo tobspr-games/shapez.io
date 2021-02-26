@@ -1,6 +1,4 @@
 /**
- * @typedef {import("../game/entity").Entity} Entity
- *
  * @typedef {{}} SavegameStats
  *
  * @typedef {{
@@ -11,15 +9,16 @@
  *   hubGoals: any,
  *   pinnedShapes: any,
  *   waypoints: any,
- *   entities: Array<Entity>,
+ *   entities: Array<import("../game/entity").Entity>,
  *   beltPaths: Array<any>
  * }} SerializedGame
  *
  * @typedef {{
- *   version: number,
+ *   version: any,
  *   dump: SerializedGame,
  *   stats: SavegameStats,
  *   lastUpdate: number,
+ *   gamemode: string|null,
  * }} SavegameData
  *
  * @typedef {{

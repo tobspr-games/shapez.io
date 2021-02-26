@@ -15,8 +15,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.statsElement = makeDiv(
             this.background,
-            null,
-            ["statsElement"],
+            null, ["statsElement"],
             `
             <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
             <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
@@ -27,30 +26,17 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
 
-        const buttons = [
-            {
-                id: "continue",
-                action: () => this.close(),
-            },
-            {
-                id: "settings",
-                action: () => this.goToSettings(),
-            },
-            {
-                id: "menu",
-                action: () => this.returnToMenu(),
-            },
-        ];
+        const buttons = HUDSettingsMenu.buttons;
 
         for (let i = 0; i < buttons.length; ++i) {
-            const { action, id } = buttons[i];
+            const { action, id, options } = buttons[i];
 
             const element = document.createElement("button");
             element.classList.add("styledButton");
             element.classList.add(id);
             this.buttonContainer.appendChild(element);
 
-            this.trackClicks(element, action);
+            this.trackClicks(element, action(this), options);
         }
     }
 
@@ -105,7 +91,7 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         buildingsPlacedElement.innerText = formatBigNumberFull(
             this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
-                this.root.entityMgr.getAllWithComponent(BeltComponent).length
+            this.root.entityMgr.getAllWithComponent(BeltComponent).length
         );
 
         beltsPlacedElement.innerText = formatBigNumberFull(
@@ -123,3 +109,26 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.domAttach.update(this.visible);
     }
 }
+
+HUDSettingsMenu.buttons = [{
+        id: "continue",
+        action: hudSettingsMenu => () => hudSettingsMenu.close(),
+        options: {
+            preventDefault: false,
+        },
+    },
+    {
+        id: "settings",
+        action: hudSettingsMenu => () => hudSettingsMenu.goToSettings(),
+        options: {
+            preventDefault: false,
+        },
+    },
+    {
+        id: "menu",
+        action: hudSettingsMenu => () => hudSettingsMenu.returnToMenu(),
+        options: {
+            preventDefault: false,
+        },
+    },
+];

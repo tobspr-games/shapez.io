@@ -19,7 +19,7 @@ export class KeybindingsState extends TextualGameState {
             <div class="topEntries">
                 <span class="hint">${T.keybindings.hint}</span>
                 <button class="styledButton resetBindings">${T.keybindings.resetKeybindings}</button>
-            
+
             </div>
 
             <div class="keybindings">
@@ -155,8 +155,7 @@ export class KeybindingsState extends TextualGameState {
     resetBindings() {
         const { reset } = this.dialogs.showWarning(
             T.dialogs.resetKeybindingsConfirmation.title,
-            T.dialogs.resetKeybindingsConfirmation.desc,
-            ["cancel:good", "reset:bad"]
+            T.dialogs.resetKeybindingsConfirmation.desc, ["cancel:good", "reset:bad"]
         );
 
         reset.add(() => {

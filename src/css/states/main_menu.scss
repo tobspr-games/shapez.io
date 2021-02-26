@@ -3,10 +3,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     // background: #aaacb4 center center / cover !important;
     background: #bbc2cf center center / cover !important;
-
     .topButtons {
         position: absolute;
         @include S(top, 20px);
@@ -14,7 +12,6 @@
         display: grid;
         grid-auto-flow: column;
         @include S(grid-gap, 15px);
-
         .settingsButton,
         .exitAppButton,
         .languageChoose {
@@ -33,13 +30,11 @@
                 opacity: 1;
             }
         }
-
         .exitAppButton {
             /* @load-async */
             background-image: uiResource("icons/main_menu_exit.png");
             background-size: 90%;
         }
-
         .languageChoose {
             @include S(border-radius, 8px);
             border: solid #222428;
@@ -49,7 +44,6 @@
             opacity: 0.8;
         }
     }
-
     .fullscreenBackgroundVideo {
         // display: none !important;
         z-index: -1;
@@ -58,17 +52,14 @@
         bottom: 50%;
         min-width: 100%;
         min-height: 100%;
-
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
         filter: blur(D(3px));
-
         $opacity: 0.07;
         &.loaded {
             display: block;
             opacity: $opacity;
-
             @include InlineAnimation(0.1s ease-in-out) {
                 0% {
                     opacity: 0;
@@ -79,20 +70,16 @@
             }
         }
     }
-
     .mainWrapper {
         @include S(padding, 0, 10px);
         align-items: start;
         justify-items: center;
-
         @include S(grid-column-gap, 10px);
         display: grid;
         grid-template-columns: 1fr;
-
         &.demo {
             grid-template-columns: 1fr 1fr;
         }
-
         .standaloneBanner {
             background: rgb(255, 75, 84);
             @include S(border-radius, $globalBorderRadius + 4);
@@ -100,15 +87,12 @@
             border: solid rgba(#fff, 0.15);
             @include S(border-width, 4px);
             @include S(padding, 15px);
-
             display: flex;
             flex-direction: column;
-
             strong {
                 font-weight: bold;
                 @include S(margin, 0, 4px);
             }
-
             h3 {
                 @include Heading;
                 font-weight: bold;
@@ -116,12 +100,10 @@
                 text-transform: uppercase;
                 color: #fff;
             }
-
             p {
                 @include Text;
                 color: #fff;
             }
-
             ul {
                 @include S(margin-top, 5px);
                 @include S(padding-left, 20px);
@@ -129,7 +111,6 @@
                     @include Text;
                 }
             }
-
             .steamLink {
                 align-self: center;
                 justify-self: center;
@@ -146,9 +127,7 @@
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
                 transform: skewX(-0.5deg);
-
                 @include S(border-radius, $globalBorderRadius);
-
                 &:hover {
                     transform: scale(1.02);
                     opacity: 0.9;
@@ -156,19 +135,16 @@
             }
         }
     }
-
     .logo {
         display: flex;
         flex-grow: 1;
         align-items: center;
         justify-content: center;
-
         flex-direction: column;
         @include S(padding-top, 20px);
         img {
             @include S(width, 350px);
         }
-
         .demoBadge {
             @include S(margin, 10px, 0);
             @include S(width, 100px);
@@ -179,7 +155,6 @@
             }
             display: inline-block;
         }
-
         position: relative;
         .updateLabel {
             position: absolute;
@@ -189,19 +164,16 @@
             font-weight: bold;
             @include S(right, 40px);
             @include S(bottom, 20px);
-
             @include InlineAnimation(1.3s ease-in-out infinite) {
                 50% {
                     transform: translateX(50%) rotate(-7deg) scale(1.1);
                 }
             }
-
             @include DarkThemeOverride {
                 color: $colorBlueBright;
             }
         }
     }
-
     .betaWarning {
         @include S(width, 400px);
         @include PlainText;
@@ -212,18 +184,15 @@
         @include S(margin-top, 10px);
         border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
     }
-
     .sideContainer {
         display: flex;
         flex-direction: column;
         @include S(width, 300px);
-
         .standaloneBanner {
             flex-grow: 1;
             @include S(margin-bottom, 10px);
         }
     }
-
     .mainContainer {
         display: flex;
         align-items: center;
@@ -236,13 +205,11 @@
         height: 100%;
         width: 100%;
         box-sizing: border-box;
-
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
         .browserWarning {
             @include S(margin-bottom, 10px);
             background-color: $colorRedBright;
@@ -252,7 +219,6 @@
             @include S(padding, 5px);
             @include S(width, 300px);
         }
-
         .playButton,
         .continueButton {
             @include SuperHeading;
@@ -264,28 +230,23 @@
             color: #fff;
             background-color: $colorGreenBright;
             transition: transform 0.12s ease-in-out, background-color 0.12s ease-in-out;
-
             &:hover {
                 background-color: darken($colorGreenBright, 4);
                 opacity: 1;
             }
-
             &.continueButton {
                 @include Heading;
             }
         }
-
         .importButton {
             @include S(margin-top, 15px);
             @include IncreasedClickArea(0px);
         }
-
         .newGameButton {
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
             @include S(margin-left, 15px);
         }
-
         .savegames {
             @include S(max-height, 105px);
             overflow-y: auto;
@@ -296,7 +257,6 @@
             grid-auto-flow: row;
             @include S(grid-gap, 5px);
             @include S(margin-top, 10px);
-
             .savegame {
                 background: #eee;
                 @include S(border-radius, $globalBorderRadius);
@@ -306,46 +266,47 @@
                 grid-template-rows: auto auto;
                 @include S(grid-column-gap, 4px);
                 @include S(grid-row-gap, 1px);
-
                 .playtime {
                     grid-column: 2 / 3;
                     grid-row: 2 / 3;
                     @include SuperSmallText;
                     opacity: 0.5;
                 }
-
                 .level {
                     grid-column: 1 / 2;
                     grid-row: 2 / 3;
                     @include SuperSmallText;
                     opacity: 0.5;
+                    >span {
+                        display: inline-flex;
+                        @include S(max-width, 140px);
+                        overflow: hidden;
+                        vertical-align: middle;
+                    }
                 }
-
                 .name {
                     grid-column: 1 / 3;
                     grid-row: 1 / 2;
                     @include PlainText;
                     display: inline-flex;
                     align-items: center;
-
-                    > span {
+                    >span {
                         display: inline-flex;
                         @include S(max-width, 140px);
                         overflow: hidden;
                     }
                 }
-
                 button.resumeGame,
                 button.downloadGame,
                 button.deleteGame,
-                button.renameGame {
+                button.renameGame,
+                button.gamemode {
                     padding: 0;
                     align-self: center;
                     justify-self: center;
                     @include IncreasedClickArea(0px);
                     background: #44484a center center / 40% no-repeat;
                 }
-
                 button.resumeGame {
                     background-color: #44484a;
                     & {
@@ -353,12 +314,10 @@
                         background-image: uiResource("icons/play.png");
                     }
                 }
-
                 button.downloadGame {
                     grid-column: 3 / 4;
                     grid-row: 1 / 2;
                     background-color: transparent;
-
                     & {
                         /* @load-async */
                         background-image: uiResource("icons/download.png");
@@ -369,20 +328,16 @@
                     background-size: 80%;
                     align-self: start;
                     opacity: 0.4;
-
                     &:hover {
                         opacity: 0.5;
                     }
-
                     @include DarkThemeInvert;
                 }
-
                 button.deleteGame {
                     grid-column: 3 / 4;
                     grid-row: 2 / 3;
                     background-color: transparent;
                     @include IncreasedClickArea(0px);
-
                     & {
                         /* @load-async */
                         background-image: uiResource("icons/delete.png");
@@ -392,18 +347,14 @@
                     align-self: end;
                     background-size: 80%;
                     opacity: 0.4;
-
                     &:hover {
                         opacity: 0.5;
                     }
-
                     @include DarkThemeInvert;
                 }
-
                 button.renameGame {
                     background-color: transparent;
                     @include IncreasedClickArea(2px);
-
                     & {
                         /* @load-async */
                         background-image: uiResource("icons/edit_key.png");
@@ -412,18 +363,35 @@
                     @include S(height, 10px);
                     align-self: center;
                     justify-self: center;
-
                     background-size: 90%;
                     opacity: 0.4;
                     @include S(margin-left, 4px);
-
                     &:hover {
                         opacity: 0.5;
                     }
-
                     @include DarkThemeInvert;
                 }
-
+                button.gamemode {
+                    display: inline-flex;
+                    vertical-align: middle;
+                    background-color: transparent;
+                    @include IncreasedClickArea(2px);
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("icons/edit_key.png");
+                    }
+                    @include S(width, 8px);
+                    @include S(height, 8px);
+                    align-self: center;
+                    justify-self: center;
+                    background-size: 90%;
+                    opacity: 0.4;
+                    @include S(margin-left, 4px);
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                    @include DarkThemeInvert;
+                }
                 button.resumeGame {
                     grid-column: 4 / 5;
                     grid-row: 1 / 3;
@@ -431,7 +399,6 @@
                     @include S(width, 32px);
                     height: 100%;
                     @include S(margin-left, 4px);
-
                     @include DarkThemeOverride {
                         background-color: lighten($darkModeControlsBackground, 10);
                     }
@@ -439,7 +406,6 @@
             }
         }
     }
-
     .footer {
         display: grid;
         flex-grow: 1;
@@ -450,7 +416,6 @@
         @include S(padding, 10px);
         box-sizing: border-box;
         @include S(grid-gap, 4px);
-
         .author {
             flex-grow: 1;
             text-align: right;
@@ -460,20 +425,15 @@
                 color: #333438;
             }
         }
-
         @include S(padding, 15px);
-
         $linkBg: #fdfdff;
         $linkBgHover: darken($linkBg, 2);
         $linkColor: #55586a;
-
-        > .boxLink {
+        >.boxLink {
             display: grid;
             align-items: center;
             grid-template-columns: 1fr auto;
-
             justify-content: center;
-
             & {
                 /* @load-async */
                 background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
@@ -482,22 +442,18 @@
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
             @include SuperSmallText();
-
             font-weight: bold;
             box-sizing: border-box;
             text-transform: uppercase;
             color: $linkColor;
-
             transition: background-color 0.12s ease-in-out;
             pointer-events: all;
             @include S(width, 120px);
             @include S(height, 60px);
-
             cursor: pointer;
             &:hover {
                 background-color: $linkBgHover;
             }
-
             .thirdpartyLogo {
                 display: inline-block;
                 @include S(width, 50px);
@@ -514,20 +470,17 @@
                 }
             }
         }
-
-        > .sidelinks {
+        >.sidelinks {
             display: grid;
             align-items: flex-start;
             justify-content: flex-start;
             grid-template-rows: 1fr 1fr 1fr;
             @include S(grid-gap, 3px);
             @include S(height, 60px);
-
-            > a {
+            >a {
                 color: $linkColor;
                 background: $linkBg;
                 height: 100%;
-
                 &:hover {
                     background-color: $linkBgHover;
                 }
@@ -538,7 +491,6 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-
                 @include S(padding-left, 25px);
                 box-sizing: border-box;
                 font-weight: bold;
@@ -546,9 +498,7 @@
                 background-size: #{D(12px)};
                 background-repeat: no-repeat;
                 @include S(border-radius, $globalBorderRadius);
-
                 transition: background-color 0.12s ease-in-out;
-
                 &.redditLink {
                     /* @load-async */
                     background-image: uiResource("main_menu/reddit.svg");
@@ -564,38 +514,30 @@
             }
         }
     }
-
     @include DarkThemeOverride {
         background: $darkModeGameBackground center center / cover !important;
-
         .mainContainer {
             background: $darkModeControlsBackground;
-
             .savegames .savegame {
                 background: darken($darkModeControlsBackground, 5);
                 color: white;
             }
         }
-
         .footer {
-            > a,
-            .sidelinks > a {
+            >a,
+            .sidelinks>a {
                 background-color: $darkModeControlsBackground;
                 color: #eee;
-
                 &:hover {
                     background-color: darken($darkModeControlsBackground, 5);
                 }
             }
-
             .author {
                 color: #bdbdbd;
-
-                > a {
+                >a {
                     color: white;
                 }
             }
-
             .thirdpartyLogo.githubLogo {
                 filter: invert(1);
             }

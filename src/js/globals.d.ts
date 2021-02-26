@@ -200,3 +200,5 @@ declare module "worker-loader?inline=true&fallback=false!*" {
 
     export default WebpackWorker;
 }
+
+declare let shapezAPI: import("../js/modloader/mod").ShapezAPI;

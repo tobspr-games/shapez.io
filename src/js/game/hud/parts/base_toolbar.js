@@ -18,8 +18,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
      * @param {Layer=} param0.layer
      */
     constructor(
-        root,
-        { primaryBuildings, secondaryBuildings = [], visibilityCondition, htmlElementId, layer = "regular" }
+        root, { primaryBuildings, secondaryBuildings = [], visibilityCondition, htmlElementId, layer = "regular" }
     ) {
         super(root);
 
@@ -82,8 +81,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
             const itemContainer = makeDiv(
                 this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary,
-                null,
-                ["building"]
+                null, ["building"]
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
@@ -161,9 +159,9 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
-        const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
-            ? -1
-            : 1;
+        const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed ?
+            -1 :
+            1;
 
         for (let i = 0; i <= this.primaryBuildings.length; ++i) {
             newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);

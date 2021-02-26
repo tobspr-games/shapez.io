@@ -8,12 +8,6 @@ export const enumWireType = {
     cross: "cross",
 };
 
-/** @enum {string} */
-export const enumWireVariant = {
-    first: "first",
-    second: "second",
-};
-
 export class WireComponent extends Component {
     static getId() {
         return "Wire";
@@ -22,15 +16,16 @@ export class WireComponent extends Component {
     /**
      * @param {object} param0
      * @param {enumWireType=} param0.type
-     * @param {enumWireVariant=} param0.variant
+     * @param {import("../buildings/wire").MetaWireBuilding.wireVariants=} param0.variant
      */
-    constructor({ type = enumWireType.forward, variant = enumWireVariant.first }) {
+    // @ts-ignore
+    constructor({ type = enumWireType.forward, variant = "first" /*MetaWireBuilding.wireVariants.first*/ }) {
         super();
         this.type = type;
 
         /**
          * The variant of the wire, different variants do not connect
-         * @type {enumWireVariant}
+         * @type {import("../buildings/wire").MetaWireBuilding.wireVariants}
          */
         this.variant = variant;
 

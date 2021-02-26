@@ -7,7 +7,7 @@ import { AtlasSprite } from "../../core/sprites";
 import { fastArrayDeleteValue } from "../../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
 import { BeltPath } from "../belt_path";
-import { arrayBeltVariantToRotation, MetaBeltBuilding } from "../buildings/belt";
+import { MetaBeltBuilding } from "../buildings/belt";
 import { getCodeFromBuildingData } from "../building_codes";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
@@ -64,6 +64,10 @@ export class BeltSystem extends GameSystemWithFilter {
 
         /** @type {Array<BeltPath>} */
         this.beltPaths = [];
+    }
+
+    static getId() {
+        return "belt";
     }
 
     /**
@@ -162,7 +166,7 @@ export class BeltSystem extends GameSystemWithFilter {
                     });
 
                     // Compute delta to see if anything changed
-                    const newDirection = arrayBeltVariantToRotation[rotationVariant];
+                    const newDirection = MetaBeltBuilding.variantToRotation[rotationVariant];
 
                     if (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction) {
                         const originalPath = targetBeltComp.assignedPath;
@@ -490,7 +494,7 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
-    drawChunk(parameters, chunk) {
+    drawChunk_BackgroundLayer(parameters, chunk) {
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
@@ -498,7 +502,7 @@ export class BeltSystem extends GameSystemWithFilter {
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
+            globalConfig.itemSpacingOnBelts
         );
         const contents = chunk.containedEntitiesByLayer.regular;
 

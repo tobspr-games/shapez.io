@@ -1,0 +1,5832 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 6794,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 114,
+      "column": 2
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 6794,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 114,
+        "column": 2
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ExportDefaultDeclaration",
+        "start": 0,
+        "end": 6794,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 114,
+            "column": 2
+          }
+        },
+        "declaration": {
+          "type": "ObjectExpression",
+          "start": 15,
+          "end": 6793,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 15
+            },
+            "end": {
+              "line": 114,
+              "column": 1
+            }
+          },
+          "properties": [
+            {
+              "type": "ObjectProperty",
+              "start": 2067,
+              "end": 2089,
+              "loc": {
+                "start": {
+                  "line": 36,
+                  "column": 4
+                },
+                "end": {
+                  "line": 36,
+                  "column": 26
+                }
+              },
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 2067,
+                "end": 2083,
+                "loc": {
+                  "start": {
+                    "line": 36,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 36,
+                    "column": 20
+                  },
+                  "identifierName": "blueprintsNoCost"
+                },
+                "name": "blueprintsNoCost",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "BooleanLiteral",
+                "start": 2085,
+                "end": 2089,
+                "loc": {
+                  "start": {
+                    "line": 36,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 36,
+                    "column": 26
+                  }
+                },
+                "value": true
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " You can set any debug options here!",
+                  "start": 22,
+                  "end": 60,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 42
+                    }
+                  }
+                },
+                {
+                  "type": "CommentBlock",
+                  "value": " dev:start ",
+                  "start": 66,
+                  "end": 81,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 19
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 87,
+                  "end": 173,
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Quickly enters the game and skips the main menu - good for fast iterating",
+                  "start": 179,
+                  "end": 255,
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 80
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " fastGameEnter: true,",
+                  "start": 261,
+                  "end": 284,
+                  "loc": {
+                    "start": {
+                      "line": 6,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 27
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 290,
+                  "end": 376,
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Skips any delays like transitions between states and such",
+                  "start": 382,
+                  "end": 442,
+                  "loc": {
+                    "start": {
+                      "line": 8,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 64
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " noArtificialDelays: true,",
+                  "start": 448,
+                  "end": 476,
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 482,
+                  "end": 568,
+                  "loc": {
+                    "start": {
+                      "line": 10,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables writing of savegames, useful for testing the same savegame over and over",
+                  "start": 574,
+                  "end": 658,
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 88
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableSavegameWrite: true,",
+                  "start": 664,
+                  "end": 694,
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 700,
+                  "end": 786,
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Shows bounds of all entities",
+                  "start": 792,
+                  "end": 823,
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 35
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " showEntityBounds: true,",
+                  "start": 829,
+                  "end": 855,
+                  "loc": {
+                    "start": {
+                      "line": 15,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 30
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 861,
+                  "end": 947,
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Shows arrows for every ejector / acceptor",
+                  "start": 953,
+                  "end": 997,
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 48
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " showAcceptorEjectors: true,",
+                  "start": 1003,
+                  "end": 1033,
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1039,
+                  "end": 1125,
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables the music (Overrides any setting, can cause weird behaviour)",
+                  "start": 1131,
+                  "end": 1203,
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 76
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableMusic: true,",
+                  "start": 1209,
+                  "end": 1231,
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1237,
+                  "end": 1323,
+                  "loc": {
+                    "start": {
+                      "line": 22,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Do not render static map entities (=most buildings)",
+                  "start": 1329,
+                  "end": 1383,
+                  "loc": {
+                    "start": {
+                      "line": 23,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 58
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " doNotRenderStatics: true,",
+                  "start": 1389,
+                  "end": 1417,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1423,
+                  "end": 1509,
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Allow to zoom freely without limits",
+                  "start": 1515,
+                  "end": 1553,
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 42
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableZoomLimits: true,",
+                  "start": 1559,
+                  "end": 1586,
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1592,
+                  "end": 1678,
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " All rewards can be unlocked by passing just 1 of any shape",
+                  "start": 1684,
+                  "end": 1745,
+                  "loc": {
+                    "start": {
+                      "line": 29,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 65
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " rewardsInstant: true,",
+                  "start": 1751,
+                  "end": 1775,
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1781,
+                  "end": 1867,
+                  "loc": {
+                    "start": {
+                      "line": 31,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Unlocks all buildings",
+                  "start": 1873,
+                  "end": 1897,
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " allBuildingsUnlocked: true,",
+                  "start": 1903,
+                  "end": 1933,
+                  "loc": {
+                    "start": {
+                      "line": 33,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 1939,
+                  "end": 2025,
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables cost of blueprints",
+                  "start": 2031,
+                  "end": 2061,
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 34
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 2222,
+              "end": 2242,
+              "loc": {
+                "start": {
+                  "line": 39,
+                  "column": 4
+                },
+                "end": {
+                  "line": 39,
+                  "column": 24
+                }
+              },
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 2222,
+                "end": 2236,
+                "loc": {
+                  "start": {
+                    "line": 39,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 18
+                  },
+                  "identifierName": "upgradesNoCost"
+                },
+                "name": "upgradesNoCost",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "BooleanLiteral",
+                "start": 2238,
+                "end": 2242,
+                "loc": {
+                  "start": {
+                    "line": 39,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 24
+                  }
+                },
+                "value": true
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 2096,
+                  "end": 2182,
+                  "loc": {
+                    "start": {
+                      "line": 37,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 37,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables cost of upgrades",
+                  "start": 2188,
+                  "end": 2216,
+                  "loc": {
+                    "start": {
+                      "line": 38,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 32
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 2249,
+                  "end": 2335,
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables the dialog when completing a level",
+                  "start": 2341,
+                  "end": 2387,
+                  "loc": {
+                    "start": {
+                      "line": 41,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 50
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableUnlockDialog: true,",
+                  "start": 2393,
+                  "end": 2422,
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 42,
+                      "column": 33
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 2428,
+                  "end": 2514,
+                  "loc": {
+                    "start": {
+                      "line": 43,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables the simulation - This effectively pauses the game.",
+                  "start": 2520,
+                  "end": 2582,
+                  "loc": {
+                    "start": {
+                      "line": 44,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 44,
+                      "column": 66
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableLogicTicks: true,",
+                  "start": 2588,
+                  "end": 2615,
+                  "loc": {
+                    "start": {
+                      "line": 45,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 45,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 2621,
+                  "end": 2707,
+                  "loc": {
+                    "start": {
+                      "line": 46,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Test the rendering if everything is clipped out properly",
+                  "start": 2713,
+                  "end": 2772,
+                  "loc": {
+                    "start": {
+                      "line": 47,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 63
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testClipping: true,",
+                  "start": 2778,
+                  "end": 2800,
+                  "loc": {
+                    "start": {
+                      "line": 48,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 48,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 2806,
+                  "end": 2892,
+                  "loc": {
+                    "start": {
+                      "line": 49,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Allows to render slower, useful for recording at half speed to avoid stuttering",
+                  "start": 2898,
+                  "end": 2980,
+                  "loc": {
+                    "start": {
+                      "line": 50,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 86
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " framePausesBetweenTicks: 250,",
+                  "start": 2986,
+                  "end": 3018,
+                  "loc": {
+                    "start": {
+                      "line": 51,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 36
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 3024,
+                  "end": 3110,
+                  "loc": {
+                    "start": {
+                      "line": 52,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 52,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Replace all translations with emojis to see which texts are translateable",
+                  "start": 3116,
+                  "end": 3192,
+                  "loc": {
+                    "start": {
+                      "line": 53,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 53,
+                      "column": 80
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testTranslations: true,",
+                  "start": 3198,
+                  "end": 3224,
+                  "loc": {
+                    "start": {
+                      "line": 54,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 54,
+                      "column": 30
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 3230,
+                  "end": 3316,
+                  "loc": {
+                    "start": {
+                      "line": 55,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Enables an inspector which shows information about the entity below the curosr",
+                  "start": 3322,
+                  "end": 3403,
+                  "loc": {
+                    "start": {
+                      "line": 56,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 56,
+                      "column": 85
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " enableEntityInspector: true,",
+                  "start": 3409,
+                  "end": 3440,
+                  "loc": {
+                    "start": {
+                      "line": 57,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 35
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 3446,
+                  "end": 3532,
+                  "loc": {
+                    "start": {
+                      "line": 58,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 58,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Enables ads in the local build (normally they are deactivated there)",
+                  "start": 3538,
+                  "end": 3609,
+                  "loc": {
+                    "start": {
+                      "line": 59,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 75
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testAds: true,",
+                  "start": 3615,
+                  "end": 3632,
+                  "loc": {
+                    "start": {
+                      "line": 60,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 60,
+                      "column": 21
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 3638,
+                  "end": 3724,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables the automatic switch to an overview when zooming out",
+                  "start": 3730,
+                  "end": 3794,
+                  "loc": {
+                    "start": {
+                      "line": 62,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 62,
+                      "column": 68
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableMapOverview: true,",
+                  "start": 3800,
+                  "end": 3828,
+                  "loc": {
+                    "start": {
+                      "line": 63,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 63,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 3834,
+                  "end": 3920,
+                  "loc": {
+                    "start": {
+                      "line": 64,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 64,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables the notification when there are new entries in the changelog since last played",
+                  "start": 3926,
+                  "end": 4016,
+                  "loc": {
+                    "start": {
+                      "line": 65,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 65,
+                      "column": 94
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableUpgradeNotification: true,",
+                  "start": 4022,
+                  "end": 4058,
+                  "loc": {
+                    "start": {
+                      "line": 66,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 66,
+                      "column": 40
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4064,
+                  "end": 4150,
+                  "loc": {
+                    "start": {
+                      "line": 67,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 67,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Makes belts almost infinitely fast",
+                  "start": 4156,
+                  "end": 4193,
+                  "loc": {
+                    "start": {
+                      "line": 68,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 41
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " instantBelts: true,",
+                  "start": 4199,
+                  "end": 4221,
+                  "loc": {
+                    "start": {
+                      "line": 69,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 69,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4227,
+                  "end": 4313,
+                  "loc": {
+                    "start": {
+                      "line": 70,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 70,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Makes item processors almost infinitely fast",
+                  "start": 4319,
+                  "end": 4366,
+                  "loc": {
+                    "start": {
+                      "line": 71,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 71,
+                      "column": 51
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " instantProcessors: true,",
+                  "start": 4372,
+                  "end": 4399,
+                  "loc": {
+                    "start": {
+                      "line": 72,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 72,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4405,
+                  "end": 4491,
+                  "loc": {
+                    "start": {
+                      "line": 73,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Makes miners almost infinitely fast",
+                  "start": 4497,
+                  "end": 4535,
+                  "loc": {
+                    "start": {
+                      "line": 74,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 74,
+                      "column": 42
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " instantMiners: true,",
+                  "start": 4541,
+                  "end": 4564,
+                  "loc": {
+                    "start": {
+                      "line": 75,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 75,
+                      "column": 27
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4570,
+                  "end": 4656,
+                  "loc": {
+                    "start": {
+                      "line": 76,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " When using fastGameEnter, controls whether a new game is started or the last one is resumed",
+                  "start": 4662,
+                  "end": 4756,
+                  "loc": {
+                    "start": {
+                      "line": 77,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 77,
+                      "column": 98
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " resumeGameOnFastEnter: true,",
+                  "start": 4762,
+                  "end": 4793,
+                  "loc": {
+                    "start": {
+                      "line": 78,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 78,
+                      "column": 35
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4799,
+                  "end": 4885,
+                  "loc": {
+                    "start": {
+                      "line": 79,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 79,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Special option used to render the trailer",
+                  "start": 4891,
+                  "end": 4935,
+                  "loc": {
+                    "start": {
+                      "line": 80,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 80,
+                      "column": 48
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " renderForTrailer: true,",
+                  "start": 4941,
+                  "end": 4967,
+                  "loc": {
+                    "start": {
+                      "line": 81,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 81,
+                      "column": 30
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 4973,
+                  "end": 5059,
+                  "loc": {
+                    "start": {
+                      "line": 82,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 82,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Whether to render changes",
+                  "start": 5065,
+                  "end": 5093,
+                  "loc": {
+                    "start": {
+                      "line": 83,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " renderChanges: true,",
+                  "start": 5099,
+                  "end": 5122,
+                  "loc": {
+                    "start": {
+                      "line": 84,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 84,
+                      "column": 27
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5128,
+                  "end": 5214,
+                  "loc": {
+                    "start": {
+                      "line": 85,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 85,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Whether to render belt paths",
+                  "start": 5220,
+                  "end": 5251,
+                  "loc": {
+                    "start": {
+                      "line": 86,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 86,
+                      "column": 35
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " renderBeltPaths: true,",
+                  "start": 5257,
+                  "end": 5282,
+                  "loc": {
+                    "start": {
+                      "line": 87,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 87,
+                      "column": 29
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5288,
+                  "end": 5374,
+                  "loc": {
+                    "start": {
+                      "line": 88,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Whether to check belt paths",
+                  "start": 5380,
+                  "end": 5410,
+                  "loc": {
+                    "start": {
+                      "line": 89,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 89,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " checkBeltPaths: true,",
+                  "start": 5416,
+                  "end": 5440,
+                  "loc": {
+                    "start": {
+                      "line": 90,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 90,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5446,
+                  "end": 5532,
+                  "loc": {
+                    "start": {
+                      "line": 91,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 91,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Whether to items / s instead of items / m in stats",
+                  "start": 5538,
+                  "end": 5591,
+                  "loc": {
+                    "start": {
+                      "line": 92,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 92,
+                      "column": 57
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " detailedStatistics: true,",
+                  "start": 5597,
+                  "end": 5625,
+                  "loc": {
+                    "start": {
+                      "line": 93,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 93,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5631,
+                  "end": 5717,
+                  "loc": {
+                    "start": {
+                      "line": 94,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 94,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Shows detailed information about which atlas is used",
+                  "start": 5723,
+                  "end": 5778,
+                  "loc": {
+                    "start": {
+                      "line": 95,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 95,
+                      "column": 59
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " showAtlasInfo: true,",
+                  "start": 5784,
+                  "end": 5807,
+                  "loc": {
+                    "start": {
+                      "line": 96,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 96,
+                      "column": 27
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5813,
+                  "end": 5899,
+                  "loc": {
+                    "start": {
+                      "line": 97,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 97,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Renders the rotation of all wires",
+                  "start": 5905,
+                  "end": 5941,
+                  "loc": {
+                    "start": {
+                      "line": 98,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 98,
+                      "column": 40
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " renderWireRotations: true,",
+                  "start": 5947,
+                  "end": 5976,
+                  "loc": {
+                    "start": {
+                      "line": 99,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 99,
+                      "column": 33
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 5982,
+                  "end": 6068,
+                  "loc": {
+                    "start": {
+                      "line": 100,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 100,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Renders information about wire networks",
+                  "start": 6074,
+                  "end": 6116,
+                  "loc": {
+                    "start": {
+                      "line": 101,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 46
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " renderWireNetworkInfos: true,",
+                  "start": 6122,
+                  "end": 6154,
+                  "loc": {
+                    "start": {
+                      "line": 102,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 102,
+                      "column": 36
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 6160,
+                  "end": 6246,
+                  "loc": {
+                    "start": {
+                      "line": 103,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 103,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables ejector animations and processing",
+                  "start": 6252,
+                  "end": 6297,
+                  "loc": {
+                    "start": {
+                      "line": 104,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 104,
+                      "column": 49
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableEjectorProcessing: true,",
+                  "start": 6303,
+                  "end": 6337,
+                  "loc": {
+                    "start": {
+                      "line": 105,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 105,
+                      "column": 38
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 6343,
+                  "end": 6429,
+                  "loc": {
+                    "start": {
+                      "line": 106,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Allows manual ticking",
+                  "start": 6435,
+                  "end": 6459,
+                  "loc": {
+                    "start": {
+                      "line": 107,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 107,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " manualTickOnly: true,",
+                  "start": 6465,
+                  "end": 6489,
+                  "loc": {
+                    "start": {
+                      "line": 108,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 6495,
+                  "end": 6581,
+                  "loc": {
+                    "start": {
+                      "line": 109,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Disables slow asserts, useful for debugging performance",
+                  "start": 6587,
+                  "end": 6645,
+                  "loc": {
+                    "start": {
+                      "line": 110,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 110,
+                      "column": 62
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " disableSlowAsserts: true,",
+                  "start": 6651,
+                  "end": 6679,
+                  "loc": {
+                    "start": {
+                      "line": 111,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " -----------------------------------------------------------------------------------",
+                  "start": 6685,
+                  "end": 6771,
+                  "loc": {
+                    "start": {
+                      "line": 112,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 112,
+                      "column": 90
+                    }
+                  }
+                },
+                {
+                  "type": "CommentBlock",
+                  "value": " dev:end ",
+                  "start": 6777,
+                  "end": 6790,
+                  "loc": {
+                    "start": {
+                      "line": 113,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 113,
+                      "column": 17
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      }
+    ],
+    "directives": []
+  },
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " You can set any debug options here!",
+      "start": 22,
+      "end": 60,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "line": 2,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " dev:start ",
+      "start": 66,
+      "end": 81,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 4
+        },
+        "end": {
+          "line": 3,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 87,
+      "end": 173,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 4
+        },
+        "end": {
+          "line": 4,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Quickly enters the game and skips the main menu - good for fast iterating",
+      "start": 179,
+      "end": 255,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 4
+        },
+        "end": {
+          "line": 5,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " fastGameEnter: true,",
+      "start": 261,
+      "end": 284,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "line": 6,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 290,
+      "end": 376,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "line": 7,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Skips any delays like transitions between states and such",
+      "start": 382,
+      "end": 442,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 8,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " noArtificialDelays: true,",
+      "start": 448,
+      "end": 476,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 482,
+      "end": 568,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "line": 10,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables writing of savegames, useful for testing the same savegame over and over",
+      "start": 574,
+      "end": 658,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "line": 11,
+          "column": 88
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableSavegameWrite: true,",
+      "start": 664,
+      "end": 694,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "line": 12,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 700,
+      "end": 786,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows bounds of all entities",
+      "start": 792,
+      "end": 823,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "line": 14,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showEntityBounds: true,",
+      "start": 829,
+      "end": 855,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 861,
+      "end": 947,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "line": 16,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows arrows for every ejector / acceptor",
+      "start": 953,
+      "end": 997,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 4
+        },
+        "end": {
+          "line": 17,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showAcceptorEjectors: true,",
+      "start": 1003,
+      "end": 1033,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 4
+        },
+        "end": {
+          "line": 18,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1039,
+      "end": 1125,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the music (Overrides any setting, can cause weird behaviour)",
+      "start": 1131,
+      "end": 1203,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableMusic: true,",
+      "start": 1209,
+      "end": 1231,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1237,
+      "end": 1323,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Do not render static map entities (=most buildings)",
+      "start": 1329,
+      "end": 1383,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 58
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " doNotRenderStatics: true,",
+      "start": 1389,
+      "end": 1417,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1423,
+      "end": 1509,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 25,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allow to zoom freely without limits",
+      "start": 1515,
+      "end": 1553,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 4
+        },
+        "end": {
+          "line": 26,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableZoomLimits: true,",
+      "start": 1559,
+      "end": 1586,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 4
+        },
+        "end": {
+          "line": 27,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1592,
+      "end": 1678,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 4
+        },
+        "end": {
+          "line": 28,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " All rewards can be unlocked by passing just 1 of any shape",
+      "start": 1684,
+      "end": 1745,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 4
+        },
+        "end": {
+          "line": 29,
+          "column": 65
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " rewardsInstant: true,",
+      "start": 1751,
+      "end": 1775,
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 4
+        },
+        "end": {
+          "line": 30,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1781,
+      "end": 1867,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 4
+        },
+        "end": {
+          "line": 31,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Unlocks all buildings",
+      "start": 1873,
+      "end": 1897,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 32,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " allBuildingsUnlocked: true,",
+      "start": 1903,
+      "end": 1933,
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1939,
+      "end": 2025,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 4
+        },
+        "end": {
+          "line": 34,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables cost of blueprints",
+      "start": 2031,
+      "end": 2061,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 4
+        },
+        "end": {
+          "line": 35,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2096,
+      "end": 2182,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 4
+        },
+        "end": {
+          "line": 37,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables cost of upgrades",
+      "start": 2188,
+      "end": 2216,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 4
+        },
+        "end": {
+          "line": 38,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2249,
+      "end": 2335,
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 4
+        },
+        "end": {
+          "line": 40,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the dialog when completing a level",
+      "start": 2341,
+      "end": 2387,
+      "loc": {
+        "start": {
+          "line": 41,
+          "column": 4
+        },
+        "end": {
+          "line": 41,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableUnlockDialog: true,",
+      "start": 2393,
+      "end": 2422,
+      "loc": {
+        "start": {
+          "line": 42,
+          "column": 4
+        },
+        "end": {
+          "line": 42,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2428,
+      "end": 2514,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 4
+        },
+        "end": {
+          "line": 43,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the simulation - This effectively pauses the game.",
+      "start": 2520,
+      "end": 2582,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 4
+        },
+        "end": {
+          "line": 44,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableLogicTicks: true,",
+      "start": 2588,
+      "end": 2615,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2621,
+      "end": 2707,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 4
+        },
+        "end": {
+          "line": 46,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Test the rendering if everything is clipped out properly",
+      "start": 2713,
+      "end": 2772,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 4
+        },
+        "end": {
+          "line": 47,
+          "column": 63
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testClipping: true,",
+      "start": 2778,
+      "end": 2800,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 48,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2806,
+      "end": 2892,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 4
+        },
+        "end": {
+          "line": 49,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows to render slower, useful for recording at half speed to avoid stuttering",
+      "start": 2898,
+      "end": 2980,
+      "loc": {
+        "start": {
+          "line": 50,
+          "column": 4
+        },
+        "end": {
+          "line": 50,
+          "column": 86
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " framePausesBetweenTicks: 250,",
+      "start": 2986,
+      "end": 3018,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 4
+        },
+        "end": {
+          "line": 51,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3024,
+      "end": 3110,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 4
+        },
+        "end": {
+          "line": 52,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Replace all translations with emojis to see which texts are translateable",
+      "start": 3116,
+      "end": 3192,
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 4
+        },
+        "end": {
+          "line": 53,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testTranslations: true,",
+      "start": 3198,
+      "end": 3224,
+      "loc": {
+        "start": {
+          "line": 54,
+          "column": 4
+        },
+        "end": {
+          "line": 54,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3230,
+      "end": 3316,
+      "loc": {
+        "start": {
+          "line": 55,
+          "column": 4
+        },
+        "end": {
+          "line": 55,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Enables an inspector which shows information about the entity below the curosr",
+      "start": 3322,
+      "end": 3403,
+      "loc": {
+        "start": {
+          "line": 56,
+          "column": 4
+        },
+        "end": {
+          "line": 56,
+          "column": 85
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " enableEntityInspector: true,",
+      "start": 3409,
+      "end": 3440,
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 4
+        },
+        "end": {
+          "line": 57,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3446,
+      "end": 3532,
+      "loc": {
+        "start": {
+          "line": 58,
+          "column": 4
+        },
+        "end": {
+          "line": 58,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Enables ads in the local build (normally they are deactivated there)",
+      "start": 3538,
+      "end": 3609,
+      "loc": {
+        "start": {
+          "line": 59,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testAds: true,",
+      "start": 3615,
+      "end": 3632,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 4
+        },
+        "end": {
+          "line": 60,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3638,
+      "end": 3724,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 4
+        },
+        "end": {
+          "line": 61,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the automatic switch to an overview when zooming out",
+      "start": 3730,
+      "end": 3794,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 4
+        },
+        "end": {
+          "line": 62,
+          "column": 68
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableMapOverview: true,",
+      "start": 3800,
+      "end": 3828,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 4
+        },
+        "end": {
+          "line": 63,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3834,
+      "end": 3920,
+      "loc": {
+        "start": {
+          "line": 64,
+          "column": 4
+        },
+        "end": {
+          "line": 64,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the notification when there are new entries in the changelog since last played",
+      "start": 3926,
+      "end": 4016,
+      "loc": {
+        "start": {
+          "line": 65,
+          "column": 4
+        },
+        "end": {
+          "line": 65,
+          "column": 94
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableUpgradeNotification: true,",
+      "start": 4022,
+      "end": 4058,
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 4
+        },
+        "end": {
+          "line": 66,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4064,
+      "end": 4150,
+      "loc": {
+        "start": {
+          "line": 67,
+          "column": 4
+        },
+        "end": {
+          "line": 67,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes belts almost infinitely fast",
+      "start": 4156,
+      "end": 4193,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 4
+        },
+        "end": {
+          "line": 68,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantBelts: true,",
+      "start": 4199,
+      "end": 4221,
+      "loc": {
+        "start": {
+          "line": 69,
+          "column": 4
+        },
+        "end": {
+          "line": 69,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4227,
+      "end": 4313,
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 4
+        },
+        "end": {
+          "line": 70,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes item processors almost infinitely fast",
+      "start": 4319,
+      "end": 4366,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 4
+        },
+        "end": {
+          "line": 71,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantProcessors: true,",
+      "start": 4372,
+      "end": 4399,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 4
+        },
+        "end": {
+          "line": 72,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4405,
+      "end": 4491,
+      "loc": {
+        "start": {
+          "line": 73,
+          "column": 4
+        },
+        "end": {
+          "line": 73,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes miners almost infinitely fast",
+      "start": 4497,
+      "end": 4535,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 4
+        },
+        "end": {
+          "line": 74,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantMiners: true,",
+      "start": 4541,
+      "end": 4564,
+      "loc": {
+        "start": {
+          "line": 75,
+          "column": 4
+        },
+        "end": {
+          "line": 75,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4570,
+      "end": 4656,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 4
+        },
+        "end": {
+          "line": 76,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " When using fastGameEnter, controls whether a new game is started or the last one is resumed",
+      "start": 4662,
+      "end": 4756,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 4
+        },
+        "end": {
+          "line": 77,
+          "column": 98
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resumeGameOnFastEnter: true,",
+      "start": 4762,
+      "end": 4793,
+      "loc": {
+        "start": {
+          "line": 78,
+          "column": 4
+        },
+        "end": {
+          "line": 78,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4799,
+      "end": 4885,
+      "loc": {
+        "start": {
+          "line": 79,
+          "column": 4
+        },
+        "end": {
+          "line": 79,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Special option used to render the trailer",
+      "start": 4891,
+      "end": 4935,
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 4
+        },
+        "end": {
+          "line": 80,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderForTrailer: true,",
+      "start": 4941,
+      "end": 4967,
+      "loc": {
+        "start": {
+          "line": 81,
+          "column": 4
+        },
+        "end": {
+          "line": 81,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4973,
+      "end": 5059,
+      "loc": {
+        "start": {
+          "line": 82,
+          "column": 4
+        },
+        "end": {
+          "line": 82,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to render changes",
+      "start": 5065,
+      "end": 5093,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 4
+        },
+        "end": {
+          "line": 83,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderChanges: true,",
+      "start": 5099,
+      "end": 5122,
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 4
+        },
+        "end": {
+          "line": 84,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5128,
+      "end": 5214,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 4
+        },
+        "end": {
+          "line": 85,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to render belt paths",
+      "start": 5220,
+      "end": 5251,
+      "loc": {
+        "start": {
+          "line": 86,
+          "column": 4
+        },
+        "end": {
+          "line": 86,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderBeltPaths: true,",
+      "start": 5257,
+      "end": 5282,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 4
+        },
+        "end": {
+          "line": 87,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5288,
+      "end": 5374,
+      "loc": {
+        "start": {
+          "line": 88,
+          "column": 4
+        },
+        "end": {
+          "line": 88,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to check belt paths",
+      "start": 5380,
+      "end": 5410,
+      "loc": {
+        "start": {
+          "line": 89,
+          "column": 4
+        },
+        "end": {
+          "line": 89,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " checkBeltPaths: true,",
+      "start": 5416,
+      "end": 5440,
+      "loc": {
+        "start": {
+          "line": 90,
+          "column": 4
+        },
+        "end": {
+          "line": 90,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5446,
+      "end": 5532,
+      "loc": {
+        "start": {
+          "line": 91,
+          "column": 4
+        },
+        "end": {
+          "line": 91,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to items / s instead of items / m in stats",
+      "start": 5538,
+      "end": 5591,
+      "loc": {
+        "start": {
+          "line": 92,
+          "column": 4
+        },
+        "end": {
+          "line": 92,
+          "column": 57
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " detailedStatistics: true,",
+      "start": 5597,
+      "end": 5625,
+      "loc": {
+        "start": {
+          "line": 93,
+          "column": 4
+        },
+        "end": {
+          "line": 93,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5631,
+      "end": 5717,
+      "loc": {
+        "start": {
+          "line": 94,
+          "column": 4
+        },
+        "end": {
+          "line": 94,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows detailed information about which atlas is used",
+      "start": 5723,
+      "end": 5778,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 4
+        },
+        "end": {
+          "line": 95,
+          "column": 59
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showAtlasInfo: true,",
+      "start": 5784,
+      "end": 5807,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 4
+        },
+        "end": {
+          "line": 96,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5813,
+      "end": 5899,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 4
+        },
+        "end": {
+          "line": 97,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Renders the rotation of all wires",
+      "start": 5905,
+      "end": 5941,
+      "loc": {
+        "start": {
+          "line": 98,
+          "column": 4
+        },
+        "end": {
+          "line": 98,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderWireRotations: true,",
+      "start": 5947,
+      "end": 5976,
+      "loc": {
+        "start": {
+          "line": 99,
+          "column": 4
+        },
+        "end": {
+          "line": 99,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5982,
+      "end": 6068,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 4
+        },
+        "end": {
+          "line": 100,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Renders information about wire networks",
+      "start": 6074,
+      "end": 6116,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 4
+        },
+        "end": {
+          "line": 101,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderWireNetworkInfos: true,",
+      "start": 6122,
+      "end": 6154,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 4
+        },
+        "end": {
+          "line": 102,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6160,
+      "end": 6246,
+      "loc": {
+        "start": {
+          "line": 103,
+          "column": 4
+        },
+        "end": {
+          "line": 103,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables ejector animations and processing",
+      "start": 6252,
+      "end": 6297,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 4
+        },
+        "end": {
+          "line": 104,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableEjectorProcessing: true,",
+      "start": 6303,
+      "end": 6337,
+      "loc": {
+        "start": {
+          "line": 105,
+          "column": 4
+        },
+        "end": {
+          "line": 105,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6343,
+      "end": 6429,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 4
+        },
+        "end": {
+          "line": 106,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows manual ticking",
+      "start": 6435,
+      "end": 6459,
+      "loc": {
+        "start": {
+          "line": 107,
+          "column": 4
+        },
+        "end": {
+          "line": 107,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " manualTickOnly: true,",
+      "start": 6465,
+      "end": 6489,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 4
+        },
+        "end": {
+          "line": 108,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6495,
+      "end": 6581,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 4
+        },
+        "end": {
+          "line": 109,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables slow asserts, useful for debugging performance",
+      "start": 6587,
+      "end": 6645,
+      "loc": {
+        "start": {
+          "line": 110,
+          "column": 4
+        },
+        "end": {
+          "line": 110,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableSlowAsserts: true,",
+      "start": 6651,
+      "end": 6679,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 4
+        },
+        "end": {
+          "line": 111,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6685,
+      "end": 6771,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 4
+        },
+        "end": {
+          "line": 112,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " dev:end ",
+      "start": 6777,
+      "end": 6790,
+      "loc": {
+        "start": {
+          "line": 113,
+          "column": 4
+        },
+        "end": {
+          "line": 113,
+          "column": 17
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 0,
+      "end": 6,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "default",
+        "keyword": "default",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "default",
+      "start": 7,
+      "end": 14,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 7
+        },
+        "end": {
+          "line": 1,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 15,
+      "end": 16,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 15
+        },
+        "end": {
+          "line": 1,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " You can set any debug options here!",
+      "start": 22,
+      "end": 60,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "line": 2,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " dev:start ",
+      "start": 66,
+      "end": 81,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 4
+        },
+        "end": {
+          "line": 3,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 87,
+      "end": 173,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 4
+        },
+        "end": {
+          "line": 4,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Quickly enters the game and skips the main menu - good for fast iterating",
+      "start": 179,
+      "end": 255,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 4
+        },
+        "end": {
+          "line": 5,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " fastGameEnter: true,",
+      "start": 261,
+      "end": 284,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 4
+        },
+        "end": {
+          "line": 6,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 290,
+      "end": 376,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "line": 7,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Skips any delays like transitions between states and such",
+      "start": 382,
+      "end": 442,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 8,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " noArtificialDelays: true,",
+      "start": 448,
+      "end": 476,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 482,
+      "end": 568,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "line": 10,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables writing of savegames, useful for testing the same savegame over and over",
+      "start": 574,
+      "end": 658,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 4
+        },
+        "end": {
+          "line": 11,
+          "column": 88
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableSavegameWrite: true,",
+      "start": 664,
+      "end": 694,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "line": 12,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 700,
+      "end": 786,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 13,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows bounds of all entities",
+      "start": 792,
+      "end": 823,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "line": 14,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showEntityBounds: true,",
+      "start": 829,
+      "end": 855,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 861,
+      "end": 947,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "line": 16,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows arrows for every ejector / acceptor",
+      "start": 953,
+      "end": 997,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 4
+        },
+        "end": {
+          "line": 17,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showAcceptorEjectors: true,",
+      "start": 1003,
+      "end": 1033,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 4
+        },
+        "end": {
+          "line": 18,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1039,
+      "end": 1125,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the music (Overrides any setting, can cause weird behaviour)",
+      "start": 1131,
+      "end": 1203,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableMusic: true,",
+      "start": 1209,
+      "end": 1231,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1237,
+      "end": 1323,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Do not render static map entities (=most buildings)",
+      "start": 1329,
+      "end": 1383,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 58
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " doNotRenderStatics: true,",
+      "start": 1389,
+      "end": 1417,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1423,
+      "end": 1509,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 25,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allow to zoom freely without limits",
+      "start": 1515,
+      "end": 1553,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 4
+        },
+        "end": {
+          "line": 26,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableZoomLimits: true,",
+      "start": 1559,
+      "end": 1586,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 4
+        },
+        "end": {
+          "line": 27,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1592,
+      "end": 1678,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 4
+        },
+        "end": {
+          "line": 28,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " All rewards can be unlocked by passing just 1 of any shape",
+      "start": 1684,
+      "end": 1745,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 4
+        },
+        "end": {
+          "line": 29,
+          "column": 65
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " rewardsInstant: true,",
+      "start": 1751,
+      "end": 1775,
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 4
+        },
+        "end": {
+          "line": 30,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1781,
+      "end": 1867,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 4
+        },
+        "end": {
+          "line": 31,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Unlocks all buildings",
+      "start": 1873,
+      "end": 1897,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 32,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " allBuildingsUnlocked: true,",
+      "start": 1903,
+      "end": 1933,
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 1939,
+      "end": 2025,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 4
+        },
+        "end": {
+          "line": 34,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables cost of blueprints",
+      "start": 2031,
+      "end": 2061,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 4
+        },
+        "end": {
+          "line": 35,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "blueprintsNoCost",
+      "start": 2067,
+      "end": 2083,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 4
+        },
+        "end": {
+          "line": 36,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2083,
+      "end": 2084,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 20
+        },
+        "end": {
+          "line": 36,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 2085,
+      "end": 2089,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 22
+        },
+        "end": {
+          "line": 36,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2089,
+      "end": 2090,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 26
+        },
+        "end": {
+          "line": 36,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2096,
+      "end": 2182,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 4
+        },
+        "end": {
+          "line": 37,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables cost of upgrades",
+      "start": 2188,
+      "end": 2216,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 4
+        },
+        "end": {
+          "line": 38,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "upgradesNoCost",
+      "start": 2222,
+      "end": 2236,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 4
+        },
+        "end": {
+          "line": 39,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2236,
+      "end": 2237,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 18
+        },
+        "end": {
+          "line": 39,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 2238,
+      "end": 2242,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 20
+        },
+        "end": {
+          "line": 39,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2242,
+      "end": 2243,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 24
+        },
+        "end": {
+          "line": 39,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2249,
+      "end": 2335,
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 4
+        },
+        "end": {
+          "line": 40,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the dialog when completing a level",
+      "start": 2341,
+      "end": 2387,
+      "loc": {
+        "start": {
+          "line": 41,
+          "column": 4
+        },
+        "end": {
+          "line": 41,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableUnlockDialog: true,",
+      "start": 2393,
+      "end": 2422,
+      "loc": {
+        "start": {
+          "line": 42,
+          "column": 4
+        },
+        "end": {
+          "line": 42,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2428,
+      "end": 2514,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 4
+        },
+        "end": {
+          "line": 43,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the simulation - This effectively pauses the game.",
+      "start": 2520,
+      "end": 2582,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 4
+        },
+        "end": {
+          "line": 44,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableLogicTicks: true,",
+      "start": 2588,
+      "end": 2615,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2621,
+      "end": 2707,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 4
+        },
+        "end": {
+          "line": 46,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Test the rendering if everything is clipped out properly",
+      "start": 2713,
+      "end": 2772,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 4
+        },
+        "end": {
+          "line": 47,
+          "column": 63
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testClipping: true,",
+      "start": 2778,
+      "end": 2800,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 48,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 2806,
+      "end": 2892,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 4
+        },
+        "end": {
+          "line": 49,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows to render slower, useful for recording at half speed to avoid stuttering",
+      "start": 2898,
+      "end": 2980,
+      "loc": {
+        "start": {
+          "line": 50,
+          "column": 4
+        },
+        "end": {
+          "line": 50,
+          "column": 86
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " framePausesBetweenTicks: 250,",
+      "start": 2986,
+      "end": 3018,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 4
+        },
+        "end": {
+          "line": 51,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3024,
+      "end": 3110,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 4
+        },
+        "end": {
+          "line": 52,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Replace all translations with emojis to see which texts are translateable",
+      "start": 3116,
+      "end": 3192,
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 4
+        },
+        "end": {
+          "line": 53,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testTranslations: true,",
+      "start": 3198,
+      "end": 3224,
+      "loc": {
+        "start": {
+          "line": 54,
+          "column": 4
+        },
+        "end": {
+          "line": 54,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3230,
+      "end": 3316,
+      "loc": {
+        "start": {
+          "line": 55,
+          "column": 4
+        },
+        "end": {
+          "line": 55,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Enables an inspector which shows information about the entity below the curosr",
+      "start": 3322,
+      "end": 3403,
+      "loc": {
+        "start": {
+          "line": 56,
+          "column": 4
+        },
+        "end": {
+          "line": 56,
+          "column": 85
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " enableEntityInspector: true,",
+      "start": 3409,
+      "end": 3440,
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 4
+        },
+        "end": {
+          "line": 57,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3446,
+      "end": 3532,
+      "loc": {
+        "start": {
+          "line": 58,
+          "column": 4
+        },
+        "end": {
+          "line": 58,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Enables ads in the local build (normally they are deactivated there)",
+      "start": 3538,
+      "end": 3609,
+      "loc": {
+        "start": {
+          "line": 59,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testAds: true,",
+      "start": 3615,
+      "end": 3632,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 4
+        },
+        "end": {
+          "line": 60,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3638,
+      "end": 3724,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 4
+        },
+        "end": {
+          "line": 61,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the automatic switch to an overview when zooming out",
+      "start": 3730,
+      "end": 3794,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 4
+        },
+        "end": {
+          "line": 62,
+          "column": 68
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableMapOverview: true,",
+      "start": 3800,
+      "end": 3828,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 4
+        },
+        "end": {
+          "line": 63,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 3834,
+      "end": 3920,
+      "loc": {
+        "start": {
+          "line": 64,
+          "column": 4
+        },
+        "end": {
+          "line": 64,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables the notification when there are new entries in the changelog since last played",
+      "start": 3926,
+      "end": 4016,
+      "loc": {
+        "start": {
+          "line": 65,
+          "column": 4
+        },
+        "end": {
+          "line": 65,
+          "column": 94
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableUpgradeNotification: true,",
+      "start": 4022,
+      "end": 4058,
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 4
+        },
+        "end": {
+          "line": 66,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4064,
+      "end": 4150,
+      "loc": {
+        "start": {
+          "line": 67,
+          "column": 4
+        },
+        "end": {
+          "line": 67,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes belts almost infinitely fast",
+      "start": 4156,
+      "end": 4193,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 4
+        },
+        "end": {
+          "line": 68,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantBelts: true,",
+      "start": 4199,
+      "end": 4221,
+      "loc": {
+        "start": {
+          "line": 69,
+          "column": 4
+        },
+        "end": {
+          "line": 69,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4227,
+      "end": 4313,
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 4
+        },
+        "end": {
+          "line": 70,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes item processors almost infinitely fast",
+      "start": 4319,
+      "end": 4366,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 4
+        },
+        "end": {
+          "line": 71,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantProcessors: true,",
+      "start": 4372,
+      "end": 4399,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 4
+        },
+        "end": {
+          "line": 72,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4405,
+      "end": 4491,
+      "loc": {
+        "start": {
+          "line": 73,
+          "column": 4
+        },
+        "end": {
+          "line": 73,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Makes miners almost infinitely fast",
+      "start": 4497,
+      "end": 4535,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 4
+        },
+        "end": {
+          "line": 74,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " instantMiners: true,",
+      "start": 4541,
+      "end": 4564,
+      "loc": {
+        "start": {
+          "line": 75,
+          "column": 4
+        },
+        "end": {
+          "line": 75,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4570,
+      "end": 4656,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 4
+        },
+        "end": {
+          "line": 76,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " When using fastGameEnter, controls whether a new game is started or the last one is resumed",
+      "start": 4662,
+      "end": 4756,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 4
+        },
+        "end": {
+          "line": 77,
+          "column": 98
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resumeGameOnFastEnter: true,",
+      "start": 4762,
+      "end": 4793,
+      "loc": {
+        "start": {
+          "line": 78,
+          "column": 4
+        },
+        "end": {
+          "line": 78,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4799,
+      "end": 4885,
+      "loc": {
+        "start": {
+          "line": 79,
+          "column": 4
+        },
+        "end": {
+          "line": 79,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Special option used to render the trailer",
+      "start": 4891,
+      "end": 4935,
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 4
+        },
+        "end": {
+          "line": 80,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderForTrailer: true,",
+      "start": 4941,
+      "end": 4967,
+      "loc": {
+        "start": {
+          "line": 81,
+          "column": 4
+        },
+        "end": {
+          "line": 81,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 4973,
+      "end": 5059,
+      "loc": {
+        "start": {
+          "line": 82,
+          "column": 4
+        },
+        "end": {
+          "line": 82,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to render changes",
+      "start": 5065,
+      "end": 5093,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 4
+        },
+        "end": {
+          "line": 83,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderChanges: true,",
+      "start": 5099,
+      "end": 5122,
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 4
+        },
+        "end": {
+          "line": 84,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5128,
+      "end": 5214,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 4
+        },
+        "end": {
+          "line": 85,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to render belt paths",
+      "start": 5220,
+      "end": 5251,
+      "loc": {
+        "start": {
+          "line": 86,
+          "column": 4
+        },
+        "end": {
+          "line": 86,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderBeltPaths: true,",
+      "start": 5257,
+      "end": 5282,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 4
+        },
+        "end": {
+          "line": 87,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5288,
+      "end": 5374,
+      "loc": {
+        "start": {
+          "line": 88,
+          "column": 4
+        },
+        "end": {
+          "line": 88,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to check belt paths",
+      "start": 5380,
+      "end": 5410,
+      "loc": {
+        "start": {
+          "line": 89,
+          "column": 4
+        },
+        "end": {
+          "line": 89,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " checkBeltPaths: true,",
+      "start": 5416,
+      "end": 5440,
+      "loc": {
+        "start": {
+          "line": 90,
+          "column": 4
+        },
+        "end": {
+          "line": 90,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5446,
+      "end": 5532,
+      "loc": {
+        "start": {
+          "line": 91,
+          "column": 4
+        },
+        "end": {
+          "line": 91,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to items / s instead of items / m in stats",
+      "start": 5538,
+      "end": 5591,
+      "loc": {
+        "start": {
+          "line": 92,
+          "column": 4
+        },
+        "end": {
+          "line": 92,
+          "column": 57
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " detailedStatistics: true,",
+      "start": 5597,
+      "end": 5625,
+      "loc": {
+        "start": {
+          "line": 93,
+          "column": 4
+        },
+        "end": {
+          "line": 93,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5631,
+      "end": 5717,
+      "loc": {
+        "start": {
+          "line": 94,
+          "column": 4
+        },
+        "end": {
+          "line": 94,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Shows detailed information about which atlas is used",
+      "start": 5723,
+      "end": 5778,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 4
+        },
+        "end": {
+          "line": 95,
+          "column": 59
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " showAtlasInfo: true,",
+      "start": 5784,
+      "end": 5807,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 4
+        },
+        "end": {
+          "line": 96,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5813,
+      "end": 5899,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 4
+        },
+        "end": {
+          "line": 97,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Renders the rotation of all wires",
+      "start": 5905,
+      "end": 5941,
+      "loc": {
+        "start": {
+          "line": 98,
+          "column": 4
+        },
+        "end": {
+          "line": 98,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderWireRotations: true,",
+      "start": 5947,
+      "end": 5976,
+      "loc": {
+        "start": {
+          "line": 99,
+          "column": 4
+        },
+        "end": {
+          "line": 99,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 5982,
+      "end": 6068,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 4
+        },
+        "end": {
+          "line": 100,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Renders information about wire networks",
+      "start": 6074,
+      "end": 6116,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 4
+        },
+        "end": {
+          "line": 101,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " renderWireNetworkInfos: true,",
+      "start": 6122,
+      "end": 6154,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 4
+        },
+        "end": {
+          "line": 102,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6160,
+      "end": 6246,
+      "loc": {
+        "start": {
+          "line": 103,
+          "column": 4
+        },
+        "end": {
+          "line": 103,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables ejector animations and processing",
+      "start": 6252,
+      "end": 6297,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 4
+        },
+        "end": {
+          "line": 104,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableEjectorProcessing: true,",
+      "start": 6303,
+      "end": 6337,
+      "loc": {
+        "start": {
+          "line": 105,
+          "column": 4
+        },
+        "end": {
+          "line": 105,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6343,
+      "end": 6429,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 4
+        },
+        "end": {
+          "line": 106,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows manual ticking",
+      "start": 6435,
+      "end": 6459,
+      "loc": {
+        "start": {
+          "line": 107,
+          "column": 4
+        },
+        "end": {
+          "line": 107,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " manualTickOnly: true,",
+      "start": 6465,
+      "end": 6489,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 4
+        },
+        "end": {
+          "line": 108,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6495,
+      "end": 6581,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 4
+        },
+        "end": {
+          "line": 109,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Disables slow asserts, useful for debugging performance",
+      "start": 6587,
+      "end": 6645,
+      "loc": {
+        "start": {
+          "line": 110,
+          "column": 4
+        },
+        "end": {
+          "line": 110,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " disableSlowAsserts: true,",
+      "start": 6651,
+      "end": 6679,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 4
+        },
+        "end": {
+          "line": 111,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " -----------------------------------------------------------------------------------",
+      "start": 6685,
+      "end": 6771,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 4
+        },
+        "end": {
+          "line": 112,
+          "column": 90
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " dev:end ",
+      "start": 6777,
+      "end": 6790,
+      "loc": {
+        "start": {
+          "line": 113,
+          "column": 4
+        },
+        "end": {
+          "line": 113,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 6792,
+      "end": 6793,
+      "loc": {
+        "start": {
+          "line": 114,
+          "column": 0
+        },
+        "end": {
+          "line": 114,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6793,
+      "end": 6794,
+      "loc": {
+        "start": {
+          "line": 114,
+          "column": 1
+        },
+        "end": {
+          "line": 114,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6794,
+      "end": 6794,
+      "loc": {
+        "start": {
+          "line": 114,
+          "column": 2
+        },
+        "end": {
+          "line": 114,
+          "column": 2
+        }
+      }
+    }
+  ]
+}

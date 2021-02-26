@@ -107,10 +107,10 @@ export class BackgroundResourcesLoader {
     internalStartLoadingEssentialsForBareGame() {
         logger.log("⏰ Start load: bare game");
         this.internalLoadSpritesAndSounds(
-            essentialBareGameSprites,
-            essentialBareGameSounds,
-            essentialBareGameAtlases
-        )
+                essentialBareGameSprites,
+                essentialBareGameSounds,
+                essentialBareGameAtlases
+            )
             .then(() => this.internalPreloadCss("async-resources.scss"))
             .catch(err => {
                 logger.warn("⏰ Failed to load essentials for bare game:", err);
@@ -174,13 +174,13 @@ export class BackgroundResourcesLoader {
             this.soundsLoaded.push(sounds[i]);
             promises.push(
                 this.app.sound
-                    .loadSound(sounds[i])
-                    .catch(err => {
-                        logger.warn("Failed to load sound:", sounds[i]);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+                .loadSound(sounds[i])
+                .catch(err => {
+                    logger.warn("Failed to load sound:", sounds[i]);
+                })
+                .then(() => {
+                    this.numAssetsLoaded++;
+                })
             );
         }
 
@@ -192,12 +192,12 @@ export class BackgroundResourcesLoader {
             this.spritesLoaded.push(sprites[i]);
             promises.push(
                 Loader.preloadCSSSprite(sprites[i])
-                    .catch(err => {
-                        logger.warn("Failed to load css sprite:", sprites[i]);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+                .catch(err => {
+                    logger.warn("Failed to load css sprite:", sprites[i]);
+                })
+                .then(() => {
+                    this.numAssetsLoaded++;
+                })
             );
         }
 
@@ -205,28 +205,28 @@ export class BackgroundResourcesLoader {
             const atlas = atlases[i];
             promises.push(
                 Loader.preloadAtlas(atlas)
-                    .catch(err => {
-                        logger.warn("Failed to load atlas:", atlas.sourceFileName);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+                .catch(err => {
+                    logger.warn("Failed to load atlas:", atlas.sourceFileName);
+                })
+                .then(() => {
+                    this.numAssetsLoaded++;
+                })
             );
         }
 
         return (
             Promise.all(promises)
 
-                // // Remove some pressure by waiting a bit
-                // .then(() => {
-                //     return new Promise(resolve => {
-                //         setTimeout(resolve, 200);
-                //     });
-                // })
-                .then(() => {
-                    this.numAssetsToLoadTotal = 0;
-                    this.numAssetsLoaded = 0;
-                })
+            // // Remove some pressure by waiting a bit
+            // .then(() => {
+            //     return new Promise(resolve => {
+            //         setTimeout(resolve, 200);
+            //     });
+            // })
+            .then(() => {
+                this.numAssetsToLoadTotal = 0;
+                this.numAssetsLoaded = 0;
+            })
         );
     }
 }

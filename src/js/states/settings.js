@@ -2,7 +2,6 @@ import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
 import { allApplicationSettings, enumCategories } from "../profile/application_settings";
 import { T } from "../translations";
-
 export class SettingsState extends TextualGameState {
     constructor() {
         super("SettingsState");
@@ -13,34 +12,30 @@ export class SettingsState extends TextualGameState {
     }
 
     getMainContentHTML() {
-        return `
+            return `<div class="sidebar">
+                        ${this.getCategoryButtonsHtml()}
+                        ${
+                            this.app.platformWrapper.getSupportsKeyboard()
+                                ? `<button class="styledButton categoryButton editKeybindings">
+                                ${T.keybindings.title}
+                            </button>`
+                                : ""
+                        }${this.getExtraButtonsHtml()}<div class="other">
+                            <button class="styledButton about">${T.about.title}</button>
 
-        <div class="sidebar">
-            ${this.getCategoryButtonsHtml()}
+                            <div class="versionbar">
+                                <div class="buildVersion">${T.global.loading} ...</div>
+                            </div>
+                        </div>
+                    </div>
 
-            ${
-                this.app.platformWrapper.getSupportsKeyboard()
-                    ? `
-            <button class="styledButton categoryButton editKeybindings">
-            ${T.keybindings.title}
-            </button>`
-                    : ""
-            }
-
-            <div class="other">
-                <button class="styledButton about">${T.about.title}</button>
-
-                <div class="versionbar">
-                    <div class="buildVersion">${T.global.loading} ...</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="categoryContainer">
-            ${this.getSettingsHtml()}
-        </div>
-
-        `;
+                    <div class="categoryContainer">
+                        ${this.getSettingsHtml()}
+                    </div>
+                `;
+    }
+    getExtraButtonsHtml() {
+        return SettingsState.extraSideBarButtons.join("");
     }
 
     getCategoryButtonsHtml() {
@@ -65,8 +60,8 @@ export class SettingsState extends TextualGameState {
             categoriesHTML[catName] = `<div class="category" data-category="${catName}">`;
         });
 
-        for (let i = 0; i < allApplicationSettings.length; ++i) {
-            const setting = allApplicationSettings[i];
+        for (let i = 0; i < allApplicationSettings().length; ++i) {
+            const setting = allApplicationSettings()[i];
 
             categoriesHTML[setting.categoryId] += setting.getHtml(this.app);
         }
@@ -94,9 +89,15 @@ export class SettingsState extends TextualGameState {
 
     onEnter(payload) {
         this.renderBuildText();
-        this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
-            preventDefault: false,
-        });
+
+        for (let i = 0; i < SettingsState.trackClicks.length; i++) {
+            const trackClick = SettingsState.trackClicks[i];
+            this.trackClicks(
+                this.htmlElement.querySelector(trackClick.htmlElement),
+                trackClick.action(this),
+                trackClick.options
+            );
+        }
 
         const keybindingsButton = this.htmlElement.querySelector(".editKeybindings");
 
@@ -130,7 +131,7 @@ export class SettingsState extends TextualGameState {
     }
 
     initSettings() {
-        allApplicationSettings.forEach(setting => {
+        allApplicationSettings().forEach(setting => {
             /** @type {HTMLElement} */
             const element = this.htmlElement.querySelector("[data-setting='" + setting.id + "']");
             setting.bind(this.app, element, this.dialogs);
@@ -159,11 +160,25 @@ export class SettingsState extends TextualGameState {
         });
     }
 
-    onAboutClicked() {
-        this.moveToStateAddGoBack("AboutState");
+    onClickedStateAddGoBack(state) {
+        this.moveToStateAddGoBack(state);
     }
 
     onKeybindingsClicked() {
         this.moveToStateAddGoBack("KeybindingsState");
     }
 }
+
+SettingsState.extraSideBarButtons = [];
+
+SettingsState.trackClicks = [
+    {
+        htmlElement: ".about",
+        action: settingsState => () => {
+            settingsState.onClickedStateAddGoBack("AboutState");
+        },
+        options: {
+            preventDefault: false,
+        },
+    },
+];

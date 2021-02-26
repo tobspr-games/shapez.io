@@ -151,7 +151,7 @@ export class Blueprint {
             let anyPlaced = false;
             for (let i = 0; i < this.entities.length; ++i) {
                 const entity = this.entities[i];
-                if (!root.logic.checkCanPlaceEntity(entity, tile)) {
+                if (!root.logic.checkCanPlaceEntity(entity, tile, true)) {
                     continue;
                 }
 
@@ -159,7 +159,7 @@ export class Blueprint {
                 clone.components.StaticMapEntity.origin.addInplace(tile);
                 root.logic.freeEntityAreaBeforeBuild(clone);
                 root.map.placeStaticEntity(clone);
-                root.entityMgr.registerEntity(clone);
+                root.entityMgr.registerEntity(clone, null, true);
                 anyPlaced = true;
             }
             return anyPlaced;

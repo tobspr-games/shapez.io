@@ -27,14 +27,17 @@ export class MetaBuilding {
 
     /**
      * Returns the edit layer of the building
+     * @param {GameRoot} root
+     * @param {string} variant
      * @returns {Layer}
      */
-    getLayer() {
+    getLayer(root, variant = defaultBuildingVariant) {
         return "regular";
     }
 
     /**
      * Should return the dimensions of the building
+     * @param {string} variant
      */
     getDimensions(variant = defaultBuildingVariant) {
         return new Vector(1, 1);
@@ -79,7 +82,7 @@ export class MetaBuilding {
     /**
      * Returns whether this building can get replaced
      */
-    getIsReplaceable() {
+    getIsReplaceable(variant = defaultBuildingVariant) {
         return false;
     }
 
@@ -92,33 +95,36 @@ export class MetaBuilding {
     }
 
     /**
-     * Whether to show a preview of the wires layer when placing the building
+     * Whether to show a preview of the layer when placing the building
+     * @param {string} variant
      */
-    getShowWiresLayerPreview() {
-        return false;
+    getShowLayerPreview(variant) {
+        return null;
     }
 
     /**
      * Whether to rotate automatically in the dragging direction while placing
      * @param {string} variant
      */
-    getRotateAutomaticallyWhilePlacing(variant) {
+    getRotateAutomaticallyWhilePlacing(variant = defaultBuildingVariant) {
         return false;
     }
 
     /**
      * Returns whether this building is removable
+     * @param {string} variant
      * @returns {boolean}
      */
-    getIsRemovable() {
+    getIsRemovable(variant = defaultBuildingVariant) {
         return true;
     }
 
     /**
      * Returns the placement sound
+     * @param {string} variant
      * @returns {string}
      */
-    getPlacementSound() {
+    getPlacementSound(variant = defaultBuildingVariant) {
         return SOUNDS.placeBuilding;
     }
 
@@ -136,9 +142,9 @@ export class MetaBuilding {
     getPreviewSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
         return Loader.getSprite(
             "sprites/buildings/" +
-                this.id +
-                (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                ".png"
+            this.id +
+            (variant === defaultBuildingVariant ? "" : "-" + variant) +
+            ".png"
         );
     }
 
@@ -149,9 +155,9 @@ export class MetaBuilding {
     getBlueprintSprite(rotationVariant = 0, variant = defaultBuildingVariant) {
         return Loader.getSprite(
             "sprites/blueprints/" +
-                this.id +
-                (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                ".png"
+            this.id +
+            (variant === defaultBuildingVariant ? "" : "-" + variant) +
+            ".png"
         );
     }
 
@@ -183,9 +189,10 @@ export class MetaBuilding {
 
     /**
      * Should return false if the pins are already included in the sprite of the building
+     * @param {string} variant
      * @returns {boolean}
      */
-    getRenderPins() {
+    getRenderPins(variant = defaultBuildingVariant) {
         return true;
     }
 
@@ -201,7 +208,7 @@ export class MetaBuilding {
      */
     createEntity({ root, origin, rotation, originalRotation, rotationVariant, variant }) {
         const entity = new Entity(root);
-        entity.layer = this.getLayer();
+        entity.layer = this.getLayer(root, variant);
         entity.addComponent(
             new StaticMapEntityComponent({
                 origin: new Vector(origin.x, origin.y),
@@ -225,9 +232,9 @@ export class MetaBuilding {
     getSprite(rotationVariant, variant) {
         return Loader.getSprite(
             "sprites/buildings/" +
-                this.id +
-                (variant === defaultBuildingVariant ? "" : "-" + variant) +
-                ".png"
+            this.id +
+            (variant === defaultBuildingVariant ? "" : "-" + variant) +
+            ".png"
         );
     }
 

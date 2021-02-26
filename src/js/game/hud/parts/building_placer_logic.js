@@ -10,7 +10,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { defaultBuildingVariant, MetaBuilding } from "../../meta_building";
 import { BaseHUDPart } from "../base_hud_part";
 import { SOUNDS } from "../../../platform/sound";
-import { MetaMinerBuilding, enumMinerVariants } from "../../buildings/miner";
+import { MetaMinerBuilding } from "../../buildings/miner";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { getBuildingDataFromCode, getCodeFromBuildingData } from "../../building_codes";
 import { MetaHubBuilding } from "../../buildings/hub";
@@ -139,7 +139,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     onEditModeChanged(layer) {
         const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding) {
-            if (metaBuilding.getLayer() !== layer) {
+            if (metaBuilding.getLayer(this.root, this.currentVariant.get()) !== layer) {
                 // This layer doesn't fit the edit mode anymore
                 this.currentMetaBuilding.set(null);
             }
@@ -279,20 +279,20 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Tries to rotate the current building
      */
     tryRotate() {
-        const selectedBuilding = this.currentMetaBuilding.get();
-        if (selectedBuilding) {
-            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
-                this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
-            } else {
-                this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+            const selectedBuilding = this.currentMetaBuilding.get();
+            if (selectedBuilding) {
+                if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
+                    this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
+                } else {
+                    this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
+                }
+                const staticComp = this.fakeEntity.components.StaticMapEntity;
+                staticComp.rotation = this.currentBaseRotation;
             }
-            const staticComp = this.fakeEntity.components.StaticMapEntity;
-            staticComp.rotation = this.currentBaseRotation;
         }
-    }
-    /**
-     * Tries to delete the building under the mouse
-     */
+        /**
+         * Tries to delete the building under the mouse
+         */
     deleteBelowCursor() {
         const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
@@ -344,7 +344,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
                 // Select chained miner if available, since that's always desired once unlocked
                 if (this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
-                    this.currentVariant.set(enumMinerVariants.chainable);
+                    this.currentVariant.set(MetaMinerBuilding.variants.chainable);
                 }
             } else {
                 this.currentMetaBuilding.set(null);
@@ -357,7 +357,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const extracted = getBuildingDataFromCode(buildingCode);
 
         // Disable pipetting the hub
-        if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
+        if (
+            extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId() &&
+            !MetaHubBuilding.canPipet()
+        ) {
             this.currentMetaBuilding.set(null);
             return;
         }
@@ -413,7 +416,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             tile,
             rotation: this.currentBaseRotation,
             variant: this.currentVariant.get(),
-            layer: metaBuilding.getLayer(),
+            layer: metaBuilding.getLayer(this.root, this.currentVariant.get()),
         });
 
         const entity = this.root.logic.tryPlaceBuilding({
@@ -440,8 +443,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             }
 
             // Check if we should stop placement
-            if (
-                !metaBuilding.getStayInPlacementMode() &&
+            if (!metaBuilding.getStayInPlacementMode() &&
                 !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeMultiple).pressed &&
                 !this.root.app.settings.getAllSettings().alwaysMultiplace
             ) {
@@ -469,9 +471,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
             const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
-                .pressed
-                ? -1
-                : 1;
+                .pressed ?
+                -1 :
+                1;
 
             const newIndex = safeModulo(index + direction, availableVariants.length);
             const newVariant = availableVariants[newIndex];
@@ -519,7 +521,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         });
 
         if (anythingPlaced) {
-            this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+            this.root.soundProxy.playUi(metaBuilding.getPlacementSound(this.currentVariant.get()));
         }
     }
 
@@ -620,8 +622,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentVariant.set(variant);
 
             this.fakeEntity = new Entity(null);
-            metaBuilding.setupEntityComponents(this.fakeEntity, null);
-
             this.fakeEntity.addComponent(
                 new StaticMapEntityComponent({
                     origin: new Vector(0, 0),
@@ -630,6 +630,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     code: getCodeFromBuildingData(metaBuilding, variant, 0),
                 })
             );
+            metaBuilding.setupEntityComponents(this.fakeEntity, null);
+
             metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
         } else {
             this.fakeEntity = null;
@@ -661,7 +663,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             // Place initial building, but only if direction lock is not active
             if (!this.isDirectionLockActive) {
                 if (this.tryPlaceCurrentBuildingAt(this.lastDragTile)) {
-                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound(this.currentVariant.get()));
                 }
             }
             return STOP_PROPAGATION;
@@ -775,7 +777,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 }
 
                 if (anythingPlaced) {
-                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound());
+                    this.root.soundProxy.playUi(metaBuilding.getPlacementSound(this.currentVariant.get()));
                 }
                 if (anythingDeleted) {
                     this.root.soundProxy.playUi(SOUNDS.destroyBuilding);

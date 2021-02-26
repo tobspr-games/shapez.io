@@ -7,6 +7,7 @@ import { Application } from "../application";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
 import { T } from "../translations";
+
 function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
@@ -263,9 +264,9 @@ export function getStringForKeyCode(code) {
             return "'";
     }
 
-    return (48 <= code && code <= 57) || (65 <= code && code <= 90)
-        ? String.fromCharCode(code)
-        : "[" + code + "]";
+    return (48 <= code && code <= 57) || (65 <= code && code <= 90) ?
+        String.fromCharCode(code) :
+        "[" + code + "]";
 }
 
 export class Keybinding {

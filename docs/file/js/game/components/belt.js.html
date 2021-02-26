@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <base data-ice="baseUrl" href="../../../../">
+    <title data-ice="title">js/game/components/belt.js | Shapez.io - Mods</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+    <script src="script/prettify/prettify.js"></script>
+    <script src="script/manual.js"></script>
+<meta name="description" content="The shapez.io mods theme for esdoc"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Shapez.io - Mods"><meta property="twitter:description" content="The shapez.io mods theme for esdoc"></head>
+
+<body class="layout-container" data-ice="rootContainer">
+    <header>
+        <a href="/"><img src="./image/logo.svg"></a>
+        <a href="./">Home</a>
+        
+        <a href="identifiers.html">Reference</a>
+        <a href="source.html">Source</a>
+        
+        <div class="search-box">
+            <span>
+                    <img src="./image/search.svg">
+                    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+            </span>
+            <ul class="search-result"></ul>
+        </div>
+    <a style="position:relative; top:3px;" href="https://github.com/tobspr/shapez.io"><img width="20px" src="./image/github.png"></a></header>
+
+    <nav class="navigation" data-ice="nav"><div>
+    <ul>
+        
+    <li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/application.js~Application.html">Application</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-applyLanguage">applyLanguage</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-autoDetectLanguageId">autoDetectLanguageId</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-matchOverwriteRecursive">matchOverwriteRecursive</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateApplicationLanguage">updateApplicationLanguage</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHANGELOG">CHANGELOG</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LANGUAGES">LANGUAGES</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-T">T</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/animation_frame.js~AnimationFrame.html">AnimationFrame</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/background_resources_loader.js~BackgroundResourcesLoader.html">BackgroundResourcesLoader</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/buffer_maintainer.js~BufferMaintainer.html">BufferMaintainer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/draw_parameters.js~DrawParameters.html">DrawParameters</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/explained_result.js~ExplainedResult.html">ExplainedResult</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/factory.js~Factory.html">Factory</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/game_state.js~GameState.html">GameState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/input_distributor.js~InputDistributor.html">InputDistributor</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/input_receiver.js~InputReceiver.html">InputReceiver</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/loader.js~LoaderImpl.html">LoaderImpl</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_elements.js~Dialog.html">Dialog</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_elements.js~DialogLoading.html">DialogLoading</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_elements.js~DialogOptionChooser.html">DialogOptionChooser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_elements.js~DialogWithForm.html">DialogWithForm</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_forms.js~FormElement.html">FormElement</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_forms.js~FormElementCheckbox.html">FormElementCheckbox</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_forms.js~FormElementInput.html">FormElementInput</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/modal_dialog_forms.js~FormElementItemChooser.html">FormElementItemChooser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/read_write_proxy.js~ReadWriteProxy.html">ReadWriteProxy</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/rectangle.js~Rectangle.html">Rectangle</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/request_channel.js~RequestChannel.html">RequestChannel</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/restriction_manager.js~RestrictionManager.html">RestrictionManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/rng.js~RandomNumberGenerator.html">RandomNumberGenerator</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/signal.js~Signal.html">Signal</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/singleton_factory.js~SingletonFactory.html">SingletonFactory</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/sprites.js~AtlasSprite.html">AtlasSprite</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/sprites.js~BaseSprite.html">BaseSprite</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/sprites.js~RegularSprite.html">RegularSprite</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/sprites.js~SpriteAtlasLink.html">SpriteAtlasLink</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/stale_area_detector.js~StaleAreaDetector.html">StaleAreaDetector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/state_manager.js~StateManager.html">StateManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/textual_game_state.js~TextualGameState.html">TextualGameState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/tracked_state.js~TrackedState.html">TrackedState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core/vector.js~Vector.html">Vector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cachebust">cachebust</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getDeviceDPI">getDeviceDPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareHighDPIContext">prepareHighDPIContext</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resizeCanvas">resizeCanvas</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resizeCanvasAndClear">resizeCanvasAndClear</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resizeHighDPICanvas">resizeHighDPICanvas</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-smoothenDpi">smoothenDpi</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-drawRotatedSprite">drawRotatedSprite</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-drawSpriteClipped">drawSpriteClipped</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initDrawUtils">initDrawUtils</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initBuildingsByCategory">initBuildingsByCategory</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setGlobalApp">setGlobalApp</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createLogger">createLogger</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-globalDebug">globalDebug</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-globalError">globalError</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-globalLog">globalLog</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-globalWarn">globalWarn</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logSection">logSection</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-serializeError">serializeError</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stringifyObjectContainingErrors">stringifyObjectContainingErrors</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compressU8">compressU8</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compressU8WHeader">compressU8WHeader</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compressX64">compressX64</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decompressU8WHeader">decompressU8WHeader</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decompressX64">decompressX64</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-computeCrc">computeCrc</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getNameOfProvider">getNameOfProvider</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sha1">sha1</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-accessNestedPropertyReverse">accessNestedPropertyReverse</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-arrayDelete">arrayDelete</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-arrayDeleteValue">arrayDeleteValue</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clamp">clamp</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epsilonCompare">epsilonCompare</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fastArrayDelete">fastArrayDelete</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fastArrayDeleteValue">fastArrayDeleteValue</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fastArrayDeleteValueIfContained">fastArrayDeleteValueIfContained</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fillInLinkIntoTranslation">fillInLinkIntoTranslation</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findNiceIntegerValue">findNiceIntegerValue</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findNiceValue">findNiceValue</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatBigNumber">formatBigNumber</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatBigNumberFull">formatBigNumberFull</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatItemsPerSecond">formatItemsPerSecond</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatSeconds">formatSeconds</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatSecondsToTimeAgo">formatSecondsToTimeAgo</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateFileDownload">generateFileDownload</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateMatrixRotations">generateMatrixRotations</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIPCRenderer">getIPCRenderer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPlatformName">getPlatformName</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRomanNumber">getRomanNumber</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isAndroid">isAndroid</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isIos">isIos</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isSupportedBrowser">isSupportedBrowser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lerp">lerp</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-make2DUndefinedArray">make2DUndefinedArray</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeButton">makeButton</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeButtonElement">makeButtonElement</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-makeDiv">makeDiv</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEmptyMap">newEmptyMap</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomChoice">randomChoice</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeAllChildren">removeAllChildren</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rotateDirectionalObject">rotateDirectionalObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rotateFlatMatrix3x3">rotateFlatMatrix3x3</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-round1Digit">round1Digit</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-round1DigitLocalized">round1DigitLocalized</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-round2Digits">round2Digits</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-round3Digits">round3Digits</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-round4Digits">round4Digits</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-safeModulo">safeModulo</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-smoothPulse">smoothPulse</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startFileChoose">startFileChoose</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-waitNextFrame">waitNextFrame</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mixVector">mixVector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asyncCompressor">asyncCompressor</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-compressionPrefix">compressionPrefix</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-atlasFiles">atlasFiles</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MAX_MOVE_DISTANCE_PX">MAX_MOVE_DISTANCE_PX</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-clickDetectorGlobals">clickDetectorGlobals</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-A_B_TESTING_LINK_TYPE">A_B_TESTING_LINK_TYPE</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IS_DEBUG">IS_DEBUG</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IS_MAC">IS_MAC</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-IS_MOBILE">IS_MOBILE</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORT_TOUCH">SUPPORT_TOUCH</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-THIRDPARTY_URLS">THIRDPARTY_URLS</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-globalConfig">globalConfig</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APPLICATION_ERROR_OCCURED">APPLICATION_ERROR_OCCURED</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gBuildingsByCategory">gBuildingsByCategory</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gComponentRegistry">gComponentRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gGameModeRegistry">gGameModeRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gGameSpeedRegistry">gGameSpeedRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gItemRegistry">gItemRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gMetaBuildingRegistry">gMetaBuildingRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GLOBAL_APP">GLOBAL_APP</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Loader">Loader</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queryParamOptions">queryParamOptions</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROMISE_ABORTED">PROMISE_ABORTED</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CRC_PREFIX">CRC_PREFIX</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-STOP_PROPAGATION">STOP_PROPAGATION</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FULL_CLIP_RECT">FULL_CLIP_RECT</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ORIGINAL_SPRITE_SCALE">ORIGINAL_SPRITE_SCALE</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-arrayAllDirections">arrayAllDirections</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumAngleToDirection">enumAngleToDirection</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumDirection">enumDirection</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumDirectionToAngle">enumDirectionToAngle</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumDirectionToVector">enumDirectionToVector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumInvertedDirections">enumInvertedDirections</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-JobEntry">JobEntry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SourceData">SourceData</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-CacheEntry">CacheEntry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClickDetectorConstructorArgs">ClickDetectorConstructorArgs</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DirectionalObject">DirectionalObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game">game</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/automatic_save.js~AutomaticSave.html">AutomaticSave</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/base_item.js~BaseItem.html">BaseItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/belt_path.js~BeltPath.html">BeltPath</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/blueprint.js~Blueprint.html">Blueprint</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/camera.js~Camera.html">Camera</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/component.js~Component.html">Component</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/core.js~GameCore.html">GameCore</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/dynamic_tickrate.js~DynamicTickrate.html">DynamicTickrate</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/entity.js~Entity.html">Entity</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/entity_components.js~EntityComponentStorage.html">EntityComponentStorage</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/entity_manager.js~EntityManager.html">EntityManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/game_loading_overlay.js~GameLoadingOverlay.html">GameLoadingOverlay</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/game_system.js~GameSystem.html">GameSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/game_system_manager.js~GameSystemManager.html">GameSystemManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/game_system_with_filter.js~GameSystemWithFilter.html">GameSystemWithFilter</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hub_goals.js~HubGoals.html">HubGoals</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/key_action_mapper.js~KeyActionMapper.html">KeyActionMapper</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/key_action_mapper.js~Keybinding.html">Keybinding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/map.js~BaseMap.html">BaseMap</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/map_chunk.js~MapChunk.html">MapChunk</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/map_chunk_view.js~MapChunkView.html">MapChunkView</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/map_view.js~MapView.html">MapView</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/meta_building.js~MetaBuilding.html">MetaBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/production_analytics.js~ProductionAnalytics.html">ProductionAnalytics</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/root.js~GameRoot.html">GameRoot</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/shape_definition.js~ShapeDefinition.html">ShapeDefinition</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/shape_definition_manager.js~ShapeDefinitionManager.html">ShapeDefinitionManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/sound_proxy.js~SoundProxy.html">SoundProxy</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getBuildingDataFromCode">getBuildingDataFromCode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getCodeFromBuildingData">getCodeFromBuildingData</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-registerBuildingVariant">registerBuildingVariant</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaComponentsToAPI">addVanillaComponentsToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initComponentRegistry">initComponentRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaGameModesToAPI">addVanillaGameModesToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initGameModeRegistry">initGameModeRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaGameSpeedToAPI">addVanillaGameSpeedToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initGameSpeedRegistry">initGameSpeedRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaSystemsToAPI">addVanillaSystemsToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomHint">getRandomHint</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaItemsToAPI">addVanillaItemsToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initItemRegistry">initItemRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-itemResolverSingleton">itemResolverSingleton</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getStringForKeyCode">getStringForKeyCode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addVanillaBuildingsToAPI">addVanillaBuildingsToAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initBuildingCodesAfterResourcesLoaded">initBuildingCodesAfterResourcesLoaded</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initMetaBuildingRegistry">initMetaBuildingRegistry</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSimpleShape">createSimpleShape</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-applyGameTheme">applyGameTheme</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumSavePriority">enumSavePriority</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gBuildingVariants">gBuildingVariants</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USER_INTERACT_MOVE">USER_INTERACT_MOVE</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USER_INTERACT_TOUCHEND">USER_INTERACT_TOUCHEND</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USER_INTERACT_ZOOM">USER_INTERACT_ZOOM</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumMouseButton">enumMouseButton</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumColorMixingResults">enumColorMixingResults</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumColorToShortcode">enumColorToShortcode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumColors">enumColors</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumColorsToHexCode">enumColorsToHexCode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumShortcodeToColor">enumShortcodeToColor</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-typeItemSingleton">typeItemSingleton</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYCODE_LMB">KEYCODE_LMB</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYCODE_MMB">KEYCODE_MMB</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYCODE_RMB">KEYCODE_RMB</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KEYMAPPINGS">KEYMAPPINGS</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHUNK_OVERLAY_RES">CHUNK_OVERLAY_RES</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-defaultBuildingVariant">defaultBuildingVariant</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumAnalyticsDataSource">enumAnalyticsDataSource</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-layers">layers</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumShortcodeToSubShape">enumShortcodeToSubShape</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumSubShape">enumSubShape</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumSubShapeToShortcode">enumSubShapeToShortcode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-THEME">THEME</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VANILLA_THEMES">VANILLA_THEMES</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumHubGoalRewards">enumHubGoalRewards</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumHubGoalRewardsToContentUnlocked">enumHubGoalRewardsToContentUnlocked</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-BuildingVariantIdentifier">BuildingVariantIdentifier</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StaticComponent">StaticComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-null">null</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-LevelDefinition">LevelDefinition</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TierRequirement">TierRequirement</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UpgradeRequirement">UpgradeRequirement</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UpgradeTiers">UpgradeTiers</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-AcceptorsAffectingTile">AcceptorsAffectingTile</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-AcceptorsAndEjectorsAffectingTile">AcceptorsAndEjectorsAffectingTile</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EjectorsAffectingTile">EjectorsAffectingTile</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ShapeLayer">ShapeLayer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ShapeLayerItem">ShapeLayerItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TutorialGoalReward">TutorialGoalReward</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-buildings">game/buildings</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/analyzer.js~MetaAnalyzerBuilding.html">MetaAnalyzerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/balancer.js~MetaBalancerBuilding.html">MetaBalancerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/belt.js~MetaBeltBuilding.html">MetaBeltBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/comparator.js~MetaComparatorBuilding.html">MetaComparatorBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/constant_signal.js~MetaConstantSignalBuilding.html">MetaConstantSignalBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/cutter.js~MetaCutterBuilding.html">MetaCutterBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/display.js~MetaDisplayBuilding.html">MetaDisplayBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/filter.js~MetaFilterBuilding.html">MetaFilterBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/hub.js~MetaHubBuilding.html">MetaHubBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/item_producer.js~MetaItemProducerBuilding.html">MetaItemProducerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/lever.js~MetaLeverBuilding.html">MetaLeverBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/logic_gate.js~MetaLogicGateBuilding.html">MetaLogicGateBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/miner.js~MetaMinerBuilding.html">MetaMinerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/mixer.js~MetaMixerBuilding.html">MetaMixerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/painter.js~MetaPainterBuilding.html">MetaPainterBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/reader.js~MetaReaderBuilding.html">MetaReaderBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/rotater.js~MetaRotaterBuilding.html">MetaRotaterBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/stacker.js~MetaStackerBuilding.html">MetaStackerBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/storage.js~MetaStorageBuilding.html">MetaStorageBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/transistor.js~MetaTransistorBuilding.html">MetaTransistorBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/trash.js~MetaTrashBuilding.html">MetaTrashBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/underground_belt.js~MetaUndergroundBeltBuilding.html">MetaUndergroundBeltBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/virtual_processor.js~MetaVirtualProcessorBuilding.html">MetaVirtualProcessorBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/wire.js~MetaWireBuilding.html">MetaWireBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/buildings/wire_tunnel.js~MetaWireTunnelBuilding.html">MetaWireTunnelBuilding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-components">game/components</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/belt.js~BeltComponent.html">BeltComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/belt_reader.js~BeltReaderComponent.html">BeltReaderComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/constant_signal.js~ConstantSignalComponent.html">ConstantSignalComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/display.js~DisplayComponent.html">DisplayComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/hub.js~HubComponent.html">HubComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/item_producer.js~ItemProducerComponent.html">ItemProducerComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/lever.js~LeverComponent.html">LeverComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/logic_gate.js~LogicGateComponent.html">LogicGateComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/miner.js~MinerComponent.html">MinerComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/static_map_entity.js~StaticMapEntityComponent.html">StaticMapEntityComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/storage.js~StorageComponent.html">StorageComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/wire.js~WireComponent.html">WireComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/components/wire_tunnel.js~WireTunnelComponent.html">WireTunnelComponent</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumClippedBeltUnderlayType">enumClippedBeltUnderlayType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumItemProcessorRequirements">enumItemProcessorRequirements</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumItemProcessorTypes">enumItemProcessorTypes</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumLogicGateType">enumLogicGateType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumUndergroundBeltMode">enumUndergroundBeltMode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumWireType">enumWireType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumPinSlotType">enumPinSlotType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-BeltUnderlayTile">BeltUnderlayTile</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PendingFilterItem">PendingFilterItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ItemAcceptorLocatedSlot">ItemAcceptorLocatedSlot</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ItemAcceptorSlot">ItemAcceptorSlot</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ItemAcceptorSlotConfig">ItemAcceptorSlotConfig</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ItemEjectorSlot">ItemEjectorSlot</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EjectorCharge">EjectorCharge</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EjectorItemToEject">EjectorItemToEject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-LinkedUndergroundBelt">LinkedUndergroundBelt</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WirePinSlot">WirePinSlot</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WirePinSlotDefinition">WirePinSlotDefinition</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-hud">game/hud</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/base_hud_part.js~BaseHUDPart.html">BaseHUDPart</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/dynamic_dom_attach.js~DynamicDomAttach.html">DynamicDomAttach</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/hud.js~GameHUD.html">GameHUD</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/trailer_maker.js~TrailerMaker.html">TrailerMaker</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-hud-parts">game/hud/parts</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/base_toolbar.js~HUDBaseToolbar.html">HUDBaseToolbar</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/beta_overlay.js~HUDBetaOverlay.html">HUDBetaOverlay</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/blueprint_placer.js~HUDBlueprintPlacer.html">HUDBlueprintPlacer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/building_placer.js~HUDBuildingPlacer.html">HUDBuildingPlacer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/building_placer_logic.js~HUDBuildingPlacerLogic.html">HUDBuildingPlacerLogic</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/buildings_toolbar.js~HUDBuildingsToolbar.html">HUDBuildingsToolbar</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/cat_memes.js~HUDCatMemes.html">HUDCatMemes</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/color_blind_helper.js~HUDColorBlindHelper.html">HUDColorBlindHelper</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/constant_signal_edit.js~HUDConstantSignalEdit.html">HUDConstantSignalEdit</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/debug_info.js~HUDDebugInfo.html">HUDDebugInfo</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/entity_debugger.js~HUDEntityDebugger.html">HUDEntityDebugger</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/game_menu.js~HUDGameMenu.html">HUDGameMenu</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/interactive_tutorial.js~HUDInteractiveTutorial.html">HUDInteractiveTutorial</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/layer_preview.js~HUDLayerPreview.html">HUDLayerPreview</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/lever_toggle.js~HUDLeverToggle.html">HUDLeverToggle</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/mass_selector.js~HUDMassSelector.html">HUDMassSelector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/miner_highlight.js~HUDMinerHighlight.html">HUDMinerHighlight</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/modal_dialogs.js~HUDModalDialogs.html">HUDModalDialogs</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/notifications.js~HUDNotifications.html">HUDNotifications</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/pinned_shapes.js~HUDPinnedShapes.html">HUDPinnedShapes</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/sandbox_controller.js~HUDSandboxController.html">HUDSandboxController</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/screenshot_exporter.js~HUDScreenshotExporter.html">HUDScreenshotExporter</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/settings_menu.js~HUDSettingsMenu.html">HUDSettingsMenu</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/shape_viewer.js~HUDShapeViewer.html">HUDShapeViewer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/shop.js~HUDShop.html">HUDShop</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/standalone_advantages.js~HUDStandaloneAdvantages.html">HUDStandaloneAdvantages</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/statistics.js~HUDStatistics.html">HUDStatistics</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/statistics_handle.js~HUDShapeStatisticsHandle.html">HUDShapeStatisticsHandle</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/tutorial_hints.js~HUDPartTutorialHints.html">HUDPartTutorialHints</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/tutorial_video_offer.js~HUDTutorialVideoOffer.html">HUDTutorialVideoOffer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/unlock_notification.js~HUDUnlockNotification.html">HUDUnlockNotification</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/vignette_overlay.js~HUDVignetteOverlay.html">HUDVignetteOverlay</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/watermark.js~HUDWatermark.html">HUDWatermark</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/waypoints.js~HUDWaypoints.html">HUDWaypoints</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/wire_info.js~HUDWireInfo.html">HUDWireInfo</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/wires_overlay.js~HUDWiresOverlay.html">HUDWiresOverlay</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/hud/parts/wires_toolbar.js~HUDWiresToolbar.html">HUDWiresToolbar</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumNotificationType">enumNotificationType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumDisplayMode">enumDisplayMode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-statisticsUnitsSeconds">statisticsUnitsSeconds</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DebugChange">DebugChange</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-KeyBinding">KeyBinding</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-KeyCode">KeyCode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Waypoint">Waypoint</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-items">game/items</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/items/boolean_item.js~BooleanItem.html">BooleanItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/items/color_item.js~ColorItem.html">ColorItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/items/shape_item.js~ShapeItem.html">ShapeItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTrueItem">isTrueItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isTruthyItem">isTruthyItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BOOL_FALSE_SINGLETON">BOOL_FALSE_SINGLETON</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BOOL_TRUE_SINGLETON">BOOL_TRUE_SINGLETON</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-modes">game/modes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/modes/regular.js~RegularGameMode.html">RegularGameMode</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-generateLevelDefinitions">generateLevelDefinitions</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-systems">game/systems</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/belt.js~BeltSystem.html">BeltSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/belt_reader.js~BeltReaderSystem.html">BeltReaderSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/belt_underlays.js~BeltUnderlaysSystem.html">BeltUnderlaysSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/constant_signal.js~ConstantSignalSystem.html">ConstantSignalSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/display.js~DisplaySystem.html">DisplaySystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/filter.js~FilterSystem.html">FilterSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/hub.js~HubSystem.html">HubSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/item_acceptor.js~ItemAcceptorSystem.html">ItemAcceptorSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/item_ejector.js~ItemEjectorSystem.html">ItemEjectorSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/item_processor_overlays.js~ItemProcessorOverlaysSystem.html">ItemProcessorOverlaysSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/item_producer.js~ItemProducerSystem.html">ItemProducerSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/lever.js~LeverSystem.html">LeverSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/logic_gate.js~LogicGateSystem.html">LogicGateSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/map_resources.js~MapResourcesSystem.html">MapResourcesSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/miner.js~MinerSystem.html">MinerSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/static_map_entity.js~StaticMapEntitySystem.html">StaticMapEntitySystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/storage.js~StorageSystem.html">StorageSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/underground_belt.js~UndergroundBeltSystem.html">UndergroundBeltSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/wire.js~WireNetwork.html">WireNetwork</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/wire.js~WireSystem.html">WireSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/systems/wired_pins.js~WiredPinsSystem.html">WiredPinsSystem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BELT_ANIM_COUNT">BELT_ANIM_COUNT</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ProcessorImplementationPayload">ProcessorImplementationPayload</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ProducedItem">ProducedItem</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#game-time">game/time</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/time/base_game_speed.js~BaseGameSpeed.html">BaseGameSpeed</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/time/fast_forward_game_speed.js~FastForwardGameSpeed.html">FastForwardGameSpeed</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/time/game_time.js~GameTime.html">GameTime</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/time/paused_game_speed.js~PausedGameSpeed.html">PausedGameSpeed</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/game/time/regular_game_speed.js~RegularGameSpeed.html">RegularGameSpeed</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#modloader">modloader</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/modloader/mod.js~ShapezAPI.html">ShapezAPI</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/modloader/modmanager.js~ModManager.html">ModManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-matchOverwriteRecursiveSettings">matchOverwriteRecursiveSettings</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ModInfo">ModInfo</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-null">null</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ModPack">ModPack</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#platform">platform</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/ad_provider.js~AdProviderInterface.html">AdProviderInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/analytics.js~AnalyticsInterface.html">AnalyticsInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/game_analytics.js~GameAnalyticsInterface.html">GameAnalyticsInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/sound.js~MusicInstanceInterface.html">MusicInstanceInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/sound.js~SoundInstanceInterface.html">SoundInstanceInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/sound.js~SoundInterface.html">SoundInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/storage.js~StorageInterface.html">StorageInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/wrapper.js~PlatformWrapperInterface.html">PlatformWrapperInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MUSIC">MUSIC</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SOUNDS">SOUNDS</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FILE_NOT_FOUND">FILE_NOT_FOUND</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#platform-ad-providers">platform/ad_providers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/ad_providers/adinplay.js~AdinplayAdProvider.html">AdinplayAdProvider</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/ad_providers/gamedistribution.js~GamedistributionAdProvider.html">GamedistributionAdProvider</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/ad_providers/no_ad_provider.js~NoAdProvider.html">NoAdProvider</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#platform-browser">platform/browser</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/game_analytics.js~ShapezGameAnalytics.html">ShapezGameAnalytics</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/google_analytics.js~GoogleAnalyticsImpl.html">GoogleAnalyticsImpl</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/no_game_analytics.js~NoGameAnalytics.html">NoGameAnalytics</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/sound.js~SoundImplBrowser.html">SoundImplBrowser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/storage.js~StorageImplBrowser.html">StorageImplBrowser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/storage_indexed_db.js~StorageImplBrowserIndexedDB.html">StorageImplBrowserIndexedDB</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/browser/wrapper.js~PlatformWrapperImplBrowser.html">PlatformWrapperImplBrowser</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#platform-electron">platform/electron</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/electron/storage.js~StorageImplElectron.html">StorageImplElectron</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/platform/electron/wrapper.js~PlatformWrapperImplElectron.html">PlatformWrapperImplElectron</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#profile">profile</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/profile/application_settings.js~ApplicationSettings.html">ApplicationSettings</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/profile/setting_types.js~BaseSetting.html">BaseSetting</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/profile/setting_types.js~BoolSetting.html">BoolSetting</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/profile/setting_types.js~EnumSetting.html">EnumSetting</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/profile/setting_types.js~RangeSetting.html">RangeSetting</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-allApplicationSettings">allApplicationSettings</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getApplicationSettingById">getApplicationSettingById</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-autosaveIntervals">autosaveIntervals</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumCategories">enumCategories</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-movementSpeeds">movementSpeeds</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-scrollWheelSensitivities">scrollWheelSensitivities</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-uiScales">uiScales</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#savegame">savegame</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/savegame.js~Savegame.html">Savegame</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/savegame_interface.js~BaseSavegameInterface.html">BaseSavegameInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/savegame_manager.js~SavegameManager.html">SavegameManager</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/savegame_serializer.js~SavegameSerializer.html">SavegameSerializer</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization.js~BasicSerializableObject.html">BasicSerializableObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~BaseDataType.html">BaseDataType</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeArray.html">TypeArray</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeBoolean.html">TypeBoolean</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeClass.html">TypeClass</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeClassData.html">TypeClassData</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeClassFromMetaclass.html">TypeClassFromMetaclass</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeClassId.html">TypeClassId</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeEntity.html">TypeEntity</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeEntityWeakref.html">TypeEntityWeakref</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeEnum.html">TypeEnum</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeFixedClass.html">TypeFixedClass</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeInteger.html">TypeInteger</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeKeyValueMap.html">TypeKeyValueMap</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeMetaClass.html">TypeMetaClass</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeNullable.html">TypeNullable</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeNumber.html">TypeNumber</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypePair.html">TypePair</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypePositiveInteger.html">TypePositiveInteger</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypePositiveNumber.html">TypePositiveNumber</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeString.html">TypeString</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeStructuredObject.html">TypeStructuredObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeTileVector.html">TypeTileVector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serialization_data_types.js~TypeVector.html">TypeVector</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/serializer_internal.js~SerializerInternal.html">SerializerInternal</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compressObject">compressObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decompressObject">decompressObject</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSavegameInterface">getSavegameInterface</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deserializeSchema">deserializeSchema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendSchema">extendSchema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-serializeSchema">serializeSchema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-verifySchema">verifySchema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-schemaToJsonSchema">schemaToJsonSchema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-savegameInterfaces">savegameInterfaces</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-enumLocalSavegameStatus">enumLocalSavegameStatus</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-types">types</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-globalJsonSchemaDefs">globalJsonSchemaDefs</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SavegamesData">SavegamesData</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Schema">Schema</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#savegame-schemas">savegame/schemas</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1000.js~SavegameInterface_V1000.html">SavegameInterface_V1000</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1001.js~SavegameInterface_V1001.html">SavegameInterface_V1001</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1002.js~SavegameInterface_V1002.html">SavegameInterface_V1002</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1003.js~SavegameInterface_V1003.html">SavegameInterface_V1003</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1004.js~SavegameInterface_V1004.html">SavegameInterface_V1004</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1005.js~SavegameInterface_V1005.html">SavegameInterface_V1005</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1006.js~SavegameInterface_V1006.html">SavegameInterface_V1006</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/1007.js~SavegameInterface_V1007.html">SavegameInterface_V1007</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/savegame/schemas/ML01.js~SavegameInterface_ML01.html">SavegameInterface_ML01</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-codes">codes</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-OldStaticMapEntity">OldStaticMapEntity</a></span></span>
+        </li>
+<li data-ice="doc">
+            <a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#states">states</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/about.js~AboutState.html">AboutState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/changelog.js~ChangelogState.html">ChangelogState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/ingame.js~GameCreationPayload.html">GameCreationPayload</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/ingame.js~InGameState.html">InGameState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/keybindings.js~KeybindingsState.html">KeybindingsState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/main_menu.js~MainMenuState.html">MainMenuState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/mobile_warning.js~MobileWarningState.html">MobileWarningState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/preload.js~PreloadState.html">PreloadState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/states/settings.js~SettingsState.html">SettingsState</a></span></span>
+        </li>
+<li data-ice="doc">
+            <span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gameCreationAction">gameCreationAction</a></span></span>
+        </li>
+</ul>
+</div></nav>
+
+    <div class="content" data-ice="content"><h1 data-ice="title">js/game/components/belt.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { enumDirection, Vector } from &quot;../../core/vector&quot;;
+import { BeltPath } from &quot;../belt_path&quot;;
+import { Component } from &quot;../component&quot;;
+
+export class BeltComponent extends Component {
+    static getId() {
+        return &quot;Belt&quot;;
+    }
+
+    /**
+     *
+     * @param {object} param0
+     * @param {enumDirection=} param0.direction The direction of the belt
+     */
+    constructor({ direction = enumDirection.top }) {
+        super();
+
+        this.direction = direction;
+
+        /**
+         * The path this belt is contained in, not serialized
+         * @type {BeltPath}
+         */
+        this.assignedPath = null;
+    }
+
+    /**
+     * Returns the effective length of this belt in tile space
+     * @returns {number}
+     */
+    getEffectiveLengthTiles() {
+        return this.direction === enumDirection.top ? 1.0 : BeltComponent.curvedBeltLength;
+    }
+
+    /**
+     * Returns fake acceptor slot used for matching
+     * @returns {import(&quot;./item_acceptor&quot;).ItemAcceptorSlot}
+     */
+    getFakeAcceptorSlot() {
+        return BeltComponent.fake_belt_acceptor_slot;
+    }
+
+    /**
+     * Returns fake acceptor slot used for matching
+     * @returns {import(&quot;./item_ejector&quot;).ItemEjectorSlot}
+     */
+    getFakeEjectorSlot() {
+        assert(
+            BeltComponent.fake_belt_ejector_slot_by_direction[this.direction],
+            &quot;Invalid belt direction: &quot;,
+            this.direction
+        );
+        return BeltComponent.fake_belt_ejector_slot_by_direction[this.direction];
+    }
+
+    /**
+     * Converts from belt space (0 = start of belt ... 1 = end of belt) to the local
+     * belt coordinates (-0.5|-0.5 to 0.5|0.5)
+     * @param {number} progress
+     * @returns {Vector}
+     */
+    transformBeltToLocalSpace(progress) {
+        assert(progress &gt;= 0.0, &quot;Invalid progress ( &lt; 0): &quot; + progress);
+        switch (this.direction) {
+            case enumDirection.top:
+                assert(progress &lt;= 1.02, &quot;Invalid progress: &quot; + progress);
+                return new Vector(0, 0.5 - progress);
+
+            case enumDirection.right:
+                {
+                    assert(progress &lt;= BeltComponent.curvedBeltLength + 0.02, &quot;Invalid progress 2: &quot; + progress);
+                    const arcProgress = (progress / BeltComponent.curvedBeltLength) * 0.5 * Math.PI;
+                    return new Vector(0.5 - 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
+                }
+            case enumDirection.left:
+                {
+                    assert(progress &lt;= BeltComponent.curvedBeltLength + 0.02, &quot;Invalid progress 3: &quot; + progress);
+                    const arcProgress = (progress / BeltComponent.curvedBeltLength) * 0.5 * Math.PI;
+                    return new Vector(-0.5 + 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
+                }
+            default:
+                assertAlways(false, &quot;Invalid belt direction: &quot; + this.direction);
+                return new Vector(0, 0);
+        }
+    }
+}
+
+BeltComponent.curvedBeltLength = /* Math.PI / 4 */ 0.78;
+
+/** @type {import(&quot;./item_acceptor&quot;).ItemAcceptorSlot} */
+BeltComponent.fake_belt_acceptor_slot = {
+    pos: new Vector(0, 0),
+    directions: [enumDirection.bottom],
+};
+
+/** @type {Object&lt;enumDirection, import(&quot;./item_ejector&quot;).ItemEjectorSlot&gt;} */
+BeltComponent.fake_belt_ejector_slot_by_direction = {
+    [enumDirection.top]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.top,
+        item: null,
+        progress: 0,
+    },
+
+    [enumDirection.right]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.right,
+        item: null,
+        progress: 0,
+    },
+
+    [enumDirection.left]: {
+        pos: new Vector(0, 0),
+        direction: enumDirection.left,
+        item: null,
+        progress: 0,
+    },
+};</code></pre>
+
+</div>
+
+    <footer class="footer">
+        Generated by
+        <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+    </footer>
+
+    <script src="script/search_index.js"></script>
+    <script src="script/search.js"></script>
+    <script src="script/pretty-print.js"></script>
+    <script src="script/inherited-summary.js"></script>
+    <script src="script/test-summary.js"></script>
+    <script src="script/inner-link.js"></script>
+    <script src="script/patch-for-local.js"></script>
+</body>
+
+</html>

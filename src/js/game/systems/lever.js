@@ -13,6 +13,10 @@ export class LeverSystem extends GameSystemWithFilter {
         this.spriteOff = Loader.getSprite("sprites/buildings/lever.png");
     }
 
+    static getId() {
+        return "lever";
+    }
+
     update() {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -30,7 +34,7 @@ export class LeverSystem extends GameSystemWithFilter {
      * @param {import("../../core/draw_utils").DrawParameters} parameters
      * @param {MapChunkView} chunk
      */
-    drawChunk(parameters, chunk) {
+    drawChunk_ForegroundStaticLayer(parameters, chunk) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];

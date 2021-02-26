@@ -46,6 +46,10 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         );
     }
 
+    static getId() {
+        return "undergroundBelt";
+    }
+
     /**
      * Callback when an entity got placed, used to remove belts between underground belts
      * @param {Entity} entity
@@ -250,8 +254,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         // Search in the direction of the tunnel
         for (
-            let searchOffset = 0;
-            searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
+            let searchOffset = 0; searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
             ++searchOffset
         ) {
             currentTile = currentTile.add(searchVector);

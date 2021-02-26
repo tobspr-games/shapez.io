@@ -80,6 +80,10 @@ export class BooleanItem extends BaseItem {
     }
 }
 
+BooleanItem.resolveSingleton = (root, itemData) => {
+    return itemData ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
+};
+
 export const BOOL_FALSE_SINGLETON = new BooleanItem(0);
 export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
 
@@ -89,7 +93,7 @@ export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
  * @returns {boolean}
  */
 export function isTrueItem(item) {
-    return item && item.getItemType() === "boolean" && !!(/** @type {BooleanItem} */ (item).value);
+    return item && item.getItemType() === "boolean" && !!( /** @type {BooleanItem} */ (item).value);
 }
 
 /**
@@ -103,7 +107,7 @@ export function isTruthyItem(item) {
     }
 
     if (item.getItemType() === "boolean") {
-        return !!(/** @type {BooleanItem} */ (item).value);
+        return !!( /** @type {BooleanItem} */ (item).value);
     }
 
     return true;

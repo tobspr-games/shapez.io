@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* typehints:start */
 import { Application } from "../application";
 /* typehints:end */
@@ -23,8 +24,8 @@ export class BaseSetting {
      *
      * @param {string} id
      * @param {string} categoryId
-     * @param {function(Application, any):void} changeCb
-     * @param {function(Application) : boolean=} enabledCb
+     * @param {function(app: Application,value: any):void} changeCb
+     * @param {function(app: Application) : boolean=} enabledCb
      */
     constructor(id, categoryId, changeCb, enabledCb = null) {
         this.id = id;
@@ -116,8 +117,7 @@ export class BaseSetting {
 
 export class EnumSetting extends BaseSetting {
     constructor(
-        id,
-        {
+        id, {
             options,
             valueGetter,
             textGetter,
@@ -145,8 +145,8 @@ export class EnumSetting extends BaseSetting {
      * @param {Application} app
      */
     getHtml(app) {
-        const available = this.getIsAvailable(app);
-        return `
+            const available = this.getIsAvailable(app);
+            return `
             <div class="setting cardbox ${available ? "enabled" : "disabled"}">
                 ${available ? "" : `<span class="standaloneOnlyHint">${T.demo.settingNotAvailable}</span>`}
                 <div class="row">

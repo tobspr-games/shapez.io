@@ -20,6 +20,7 @@ import { BaseItem } from "../../base_item";
 import { MetaHubBuilding } from "../../buildings/hub";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { defaultBuildingVariant } from "../../meta_building";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -43,13 +44,12 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {HTMLElement} parent
      */
     createElements(parent) {
-        // Create the helper box on the lower right when zooming out
-        if (this.root.app.settings.getAllSettings().offerHints) {
-            this.hintElement = makeDiv(
-                parent,
-                "ingame_HUD_Waypoints_Hint",
-                [],
-                `
+            // Create the helper box on the lower right when zooming out
+            if (this.root.app.settings.getAllSettings().offerHints) {
+                this.hintElement = makeDiv(
+                        parent,
+                        "ingame_HUD_Waypoints_Hint", [],
+                        `
             <strong class='title'>${T.ingame.waypoints.waypoints}</strong>
             <span class='desc'>${T.ingame.waypoints.description.replace(
                 "<keybinding>",
@@ -106,7 +106,9 @@ export class HUDWaypoints extends BaseHUDPart {
                 label: null,
                 center: { x: 0, y: 0 },
                 zoomLevel: 3,
-                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
+                layer: gMetaBuildingRegistry
+                    .findByClass(MetaHubBuilding)
+                    .getLayer(this.root, defaultBuildingVariant),
             },
         ];
 

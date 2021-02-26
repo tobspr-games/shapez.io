@@ -103,9 +103,9 @@ export class HUDMinerHighlight extends BaseHUDPart {
         parameters.context.globalAlpha = 0.6;
         parameters.context.font = "bold " + scale * 8 + "px GameFont";
         parameters.context.fillText(
-            connectedEntities.length === 1
-                ? T.ingame.connectedMiners.one_miner
-                : T.ingame.connectedMiners.n_miners.replace("<amount>", String(connectedEntities.length)),
+            connectedEntities.length === 1 ?
+            T.ingame.connectedMiners.one_miner :
+            T.ingame.connectedMiners.n_miners.replace("<amount>", String(connectedEntities.length)),
             tooltipLocation.x + 10 * scale,
             tooltipLocation.y + 22 * scale
         );

@@ -36,8 +36,7 @@ export class HUDWireInfo extends BaseHUDPart {
             return;
         }
 
-        if (
-            !this.root.camera.getIsMapOverlayActive() &&
+        if (!this.root.camera.getIsMapOverlayActive() &&
             !this.root.logic.getIsEntityIntersectedWithMatrix(entity, worldPos)
         ) {
             // Detailed intersection check
@@ -91,7 +90,7 @@ export class HUDWireInfo extends BaseHUDPart {
             const wire = network.wires[i];
             const staticComp = wire.components.StaticMapEntity;
             const screenTile = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
-            MapChunkView.drawSingleWiresOverviewTile({
+            MapChunkView.drawSingleOverviewTile({
                 context: parameters.context,
                 x: screenTile.x,
                 y: screenTile.y,
@@ -105,7 +104,7 @@ export class HUDWireInfo extends BaseHUDPart {
             const tunnel = network.tunnels[i];
             const staticComp = tunnel.components.StaticMapEntity;
             const screenTile = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
-            MapChunkView.drawSingleWiresOverviewTile({
+            MapChunkView.drawSingleOverviewTile({
                 context: parameters.context,
                 x: screenTile.x,
                 y: screenTile.y,

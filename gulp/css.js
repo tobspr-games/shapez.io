@@ -21,7 +21,6 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
         const plugins = [postcssAssetsPlugin(cachebust)];
         if (prod) {
             plugins.unshift(
-                $.postcssUnprefix(),
                 $.postcssPresetEnv({
                     browsers: ["> 0.1%"],
                 })
@@ -62,7 +61,7 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
         return gulp
             .src("../src/css/main.scss", { cwd: __dirname })
             .pipe($.plumber())
-            .pipe($.dartSass.sync().on("error", $.dartSass.logError))
+            .pipe($.sass.sync().on("error", $.sass.logError))
             .pipe(
                 $.postcss([
                     $.postcssCriticalSplit({
@@ -95,7 +94,7 @@ function gulptasksCSS($, gulp, buildFolder, browserSync) {
         return gulp
             .src("../src/css/main.scss", { cwd: __dirname })
             .pipe($.plumber())
-            .pipe($.dartSass.sync().on("error", $.dartSass.logError))
+            .pipe($.sass.sync().on("error", $.sass.logError))
             .pipe(
                 $.postcss([
                     $.postcssCriticalSplit({

@@ -699,7 +699,7 @@ export class TypeClassData extends BaseDataType {
         for (let i = 0; i < entries.length; ++i) {
             const entry = entries[i];
             options.push(
-                schemaToJsonSchema(/** @type {typeof BasicSerializableObject} */ (entry).getCachedSchema())
+                schemaToJsonSchema( /** @type {typeof BasicSerializableObject} */ (entry).getCachedSchema())
             );
         }
         return { oneOf: options };
@@ -1197,8 +1197,7 @@ export class TypeNullable extends BaseDataType {
 
     getAsJsonSchemaUncached() {
         return {
-            oneOf: [
-                {
+            oneOf: [{
                     type: "null",
                 },
                 this.wrapped.getAsJsonSchema(),
