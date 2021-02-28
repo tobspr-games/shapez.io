@@ -504,7 +504,9 @@
             display: grid;
             align-items: center;
             grid-template-columns: 1fr auto;
+
             justify-content: center;
+
             & {
                 /* @load-async */
                 background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
@@ -618,6 +620,7 @@
                     background-color: darken($darkModeControlsBackground, 5);
                 }
             }
+
             .author {
                 color: #bdbdbd;
 
@@ -625,6 +628,7 @@
                     color: white;
                 }
             }
+
             .thirdpartyLogo.githubLogo {
                 filter: invert(1);
             }
