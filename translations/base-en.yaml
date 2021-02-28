@@ -1163,6 +1163,10 @@ keybindings:
         rotateWhilePlacing: Rotate
         rotateInverseModifier: >-
             Modifier: Rotate CCW instead
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
         cycleBuildingVariants: Cycle Variants
         confirmMassDelete: Delete area
         pasteLastBlueprint: Paste last blueprint
