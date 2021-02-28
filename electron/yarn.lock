@@ -498,7 +498,7 @@
   dependencies:
     "type-fest" "^0.13.1"
 
-"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts":
+"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#af8d792fe1429af95d990bba4a68362c2aa907c9":
   "integrity" "sha512-Sp3JL2gSJloqkZ5hINBTcrFomwnCD0mguuRMfJb91SkcZfZuySPEtfi7m2S+96GedA1BI6+gLygDRY217ElTFg=="
   "resolved" "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git"
   "version" "0.1.0"

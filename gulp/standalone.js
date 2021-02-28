@@ -151,6 +151,11 @@ function gulptasksStandalone($, gulp) {
 
                     fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
 
+                    fse.copySync(
+                        path.join(tempDestBuildDir, "steam_appid.txt"),
+                        path.join(appPath, "steam_appid.txt")
+                    );
+
                     if (platform === "linux") {
                         fs.writeFileSync(
                             path.join(appPath, "play.sh"),
