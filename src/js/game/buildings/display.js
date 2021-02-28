@@ -21,13 +21,6 @@ export class MetaDisplayBuilding extends MetaBuilding {
     /**
      * @param {GameRoot} root
      */
-    getIsUnlocked(root) {
-        return this.getAvailableVariants(root).length > 0;
-    }
-
-    /**
-     * @param {GameRoot} root
-     */
     getAvailableVariants(root) {
         const variants = MetaDisplayBuilding.avaibleVariants;
 

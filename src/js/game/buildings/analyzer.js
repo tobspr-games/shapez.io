@@ -20,13 +20,6 @@ export class MetaAnalyzerBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     */
-    getIsUnlocked(root) {
-        return this.getAvailableVariants(root).length > 0;
-    }
-
-    /**
      * @param {string} variant
      */
     getIsRemovable(variant) {

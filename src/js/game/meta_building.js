@@ -175,7 +175,7 @@ export class MetaBuilding {
      * @param {GameRoot} root
      */
     getIsUnlocked(root) {
-        return true;
+        return this.getAvailableVariants(root).length > 0;
     }
 
     /**

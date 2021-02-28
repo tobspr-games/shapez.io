@@ -64,13 +64,6 @@ export class MetaCutterBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {GameRoot} root
-     */
-    getIsUnlocked(root) {
-        return this.getAvailableVariants(root).length > 0;
-    }
-
-    /**
      * Creates the entity at the given location
      * @param {Entity} entity
      */
