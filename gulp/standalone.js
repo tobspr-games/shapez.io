@@ -23,7 +23,7 @@ function gulptasksStandalone($, gulp) {
         const requiredFiles = [
             path.join(electronBaseDir, "node_modules", "**", "*.*"),
             path.join(electronBaseDir, "node_modules", "**", ".*"),
-//            path.join(electronBaseDir, "steam_appid.txt"),
+            path.join(electronBaseDir, "steam_appid.txt"),
             path.join(electronBaseDir, "favicon*"),
 
             // fails on platforms which support symlinks
