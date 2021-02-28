@@ -194,6 +194,9 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
+
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.stacking);
+
         const stacked = lowerDefinition.cloneAndStackWith(upperDefinition);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             stacked

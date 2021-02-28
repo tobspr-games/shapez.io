@@ -8,9 +8,10 @@ let initialized = false;
 
 try {
     greenworks = require("shapez.io-private-artifacts/steam/greenworks");
-    appId = fs.readFileSync(path.join(__dirname, "steam_appid.txt"), "utf8");
+    appId = parseInt(fs.readFileSync(path.join(__dirname, "steam_appid.txt"), "utf8"));
 } catch (err) {
     // greenworks is not installed
+    // throw err;
 }
 
 function init (isDev) {
@@ -26,7 +27,7 @@ function init (isDev) {
     }
 
     if (!greenworks.init()) {
-        console.error("Failed to initialize greenworks");
+        console.log("Failed to initialize greenworks");
         process.exit(1);
     }
 
@@ -36,7 +37,8 @@ function init (isDev) {
 function listen () {
     ipcMain.handle("steam:is-initialized", isInitialized);
 
-    if (!greenworks) {
+    if (!greenworks || !initialized) {
+        console.log("Ignoring Steam IPC events");
         return;
     }
 

@@ -1,5 +1,6 @@
 require("colors");
 const packager = require("electron-packager");
+const pj = require("../electron/package.json");
 const path = require("path");
 const { getVersion } = require("./buildutils");
 const fs = require("fs");
@@ -20,9 +21,9 @@ function gulptasksStandalone($, gulp) {
     gulp.task("standalone.prepare.copyPrefab", () => {
         // const requiredFiles = $.glob.sync("../electron/");
         const requiredFiles = [
-            path.join(electronBaseDir, "lib", "**", "*.node"),
             path.join(electronBaseDir, "node_modules", "**", "*.*"),
             path.join(electronBaseDir, "node_modules", "**", ".*"),
+//            path.join(electronBaseDir, "steam_appid.txt"),
             path.join(electronBaseDir, "favicon*"),
 
             // fails on platforms which support symlinks
@@ -33,18 +34,13 @@ function gulptasksStandalone($, gulp) {
     });
 
     gulp.task("standalone.prepare.writePackageJson", cb => {
-        fs.writeFileSync(
-            path.join(tempDestBuildDir, "package.json"),
-            JSON.stringify(
-                {
-                    devDependencies: {
-                        electron: "9.4.3",
-                    },
-                },
-                null,
-                4
-            )
-        );
+        const packageJsonString = JSON.stringify({
+            optionalDependencies: pj.optionalDependencies,
+            devDependencies: pj.devDependencies
+        }, null, 4);
+
+        fs.writeFileSync(path.join(tempDestBuildDir, "package.json"), packageJsonString);
+
         cb();
     });
 
@@ -100,6 +96,14 @@ function gulptasksStandalone($, gulp) {
      */
     function packageStandalone(platform, arch, cb, isRelease = true) {
         const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
+        const privateArtifactsPath = "node_modules/shapez.io-private-artifacts";
+
+        let asar;
+        if (fs.existsSync(path.join(tempDestBuildDir, privateArtifactsPath))) {
+            asar = { unpackDir: privateArtifactsPath };
+        } else {
+            asar = true;
+        }
 
         packager({
             dir: tempDestBuildDir,
@@ -108,7 +112,7 @@ function gulptasksStandalone($, gulp) {
             buildVersion: "1.0.0",
             arch,
             platform,
-            asar: true,
+            asar: asar,
             executableName: "shapezio",
             icon: path.join(electronBaseDir, "favicon"),
             name: "shapez.io-standalone",

@@ -7,10 +7,11 @@ const logger = createLogger("achievements/steam");
 
 const IDS = {
     painting: "<id>",
-    cutting: "<id>",
+    cutting: "achievement_01", // Test ID
     rotating: "<id>",
     stacking: "<id>",
-    blueprints: "<id>"
+    blueprints: "<id>",
+    wires: "<id>",
 }
 
 /** @typedef {object} SteamAchievement

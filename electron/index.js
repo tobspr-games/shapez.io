@@ -10,8 +10,6 @@ const steam = require('./steam');
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
 
-steam.init(isDev);
-
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
@@ -226,4 +224,5 @@ ipcMain.on("fs-sync-job", (event, arg) => {
     event.returnValue = result;
 });
 
+steam.init(isDev);
 steam.listen();
