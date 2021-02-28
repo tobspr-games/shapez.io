@@ -18,6 +18,7 @@ plugins:
     - "@typescript-eslint"
     - "prettier"
 rules:
+    prettier/prettier: error
     no-undef: off
     no-unused-vars: off
     no-prototype-builtins: off

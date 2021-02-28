@@ -51,10 +51,3 @@ tmp_standalone_files
 config.local
 config.local.js
 .DS_Store
-gulp/package-lock.json
-gulp/yarn.lock
-package-lock.json
-yarn.lock
-modloader/runnable-texturepacker.jar
-modloader/modloader.rar
-modloader/atlas/

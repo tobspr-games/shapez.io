@@ -111,7 +111,6 @@ export class Application {
         // Store the mouse position, or null if not available
         /** @type {Vector|null} */
         this.mousePosition = null;
-        this.onAboutClicked = undefined;
     }
 
     /**
