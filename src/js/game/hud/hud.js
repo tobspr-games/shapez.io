@@ -112,6 +112,11 @@ export class GameHUD {
             /* typehints:end */
         };
 
+        for (const partKey in shapezAPI.ingame.hudParts) {
+            if (!shapezAPI.ingame.hudParts.hasOwnProperty(partKey)) continue;
+            this.parts[partKey] = shapezAPI.ingame.hudParts[partKey];
+        }
+
         for (let i = 0; i < shapezAPI.ingame.layers.length; i++) {
             const layer = shapezAPI.ingame.layers[i];
             if (shapezAPI.toolbars[layer])
