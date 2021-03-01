@@ -4,7 +4,7 @@ import { queryParamOptions } from "../../core/query_parameters";
 import { clamp } from "../../core/utils";
 import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
-import { SteamAchievements } from "../electron/steam_achievements";
+import { SteamAchievementProvider } from "../electron/steam_achievement_provider";
 import { PlatformWrapperInterface } from "../wrapper";
 import { StorageImplBrowser } from "./storage";
 import { StorageImplBrowserIndexedDB } from "./storage_indexed_db";
@@ -72,7 +72,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
         if (G_IS_DEV && globalConfig.debug.testAchievements) {
             logger.log("Testing achievements");
-            this.app.achievements = new SteamAchievements(this.app);
+            this.app.achievementProvider = new SteamAchievementProvider(this.app);
         }
 
         return this.detectStorageImplementation()

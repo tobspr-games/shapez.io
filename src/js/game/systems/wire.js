@@ -13,6 +13,7 @@ import {
     enumInvertedDirections,
     Vector,
 } from "../../core/vector";
+import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { BaseItem } from "../base_item";
 import { arrayWireRotationVariantToType, MetaWireBuilding } from "../buildings/wire";
 import { getCodeFromBuildingData } from "../building_codes";
@@ -695,6 +696,12 @@ export class WireSystem extends GameSystemWithFilter {
         const staticComp = entity.components.StaticMapEntity;
         if (!staticComp) {
             return;
+        }
+
+        if (entity.components.Wire && entity.registered &&
+            this.root.entityMgr.componentToEntity.Wire.length === 100) {
+
+            this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.networked);
         }
 
         // Invalidate affected area

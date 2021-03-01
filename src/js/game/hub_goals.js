@@ -1,6 +1,7 @@
 import { globalConfig } from "../core/config";
 import { RandomNumberGenerator } from "../core/rng";
 import { clamp } from "../core/utils";
+import { ACHIEVEMENTS } from "../platform/achievement_provider";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors } from "./colors";
 import { enumItemProcessorTypes } from "./components/item_processor";
@@ -260,6 +261,12 @@ export class HubGoals extends BasicSerializableObject {
         this.computeNextGoal();
 
         this.root.signals.storyGoalCompleted.dispatch(this.level - 1, reward);
+
+        if (this.level - 1 === 20) {
+            this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.wires);
+        } else if (this.level - 1 === 26) {
+            this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.freedom);
+        }
     }
 
     /**

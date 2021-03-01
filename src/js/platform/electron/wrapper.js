@@ -2,7 +2,7 @@ import { PlatformWrapperImplBrowser } from "../browser/wrapper";
 import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 import { StorageImplElectron } from "./storage";
-import { SteamAchievements } from "./steam_achievements";
+import { SteamAchievementProvider } from "./steam_achievement_provider";
 import { PlatformWrapperInterface } from "../wrapper";
 
 const logger = createLogger("electron-wrapper");
@@ -20,7 +20,7 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
         this.app.ticker.frameEmitted.add(this.steamOverlayFixRedrawCanvas, this);
 
         this.app.storage = new StorageImplElectron(this);
-        this.app.achievements = new SteamAchievements(this.app);
+        this.app.achievementProvider = new SteamAchievementProvider(this.app);
 
         return PlatformWrapperInterface.prototype.initialize.call(this);
     }

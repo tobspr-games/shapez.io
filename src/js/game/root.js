@@ -8,7 +8,7 @@ import { createLogger } from "../core/logging";
 import { GameTime } from "./time/game_time";
 import { EntityManager } from "./entity_manager";
 import { GameSystemManager } from "./game_system_manager";
-import { AchievementManager } from "./achievement_manager";
+import { AchievementProxy } from "./achievement_proxy";
 import { GameHUD } from "./hud/hud";
 import { MapView } from "./map_view";
 import { Camera } from "./camera";
@@ -120,8 +120,8 @@ export class GameRoot {
         /** @type {SoundProxy} */
         this.soundProxy = null;
 
-        /** @type {AchievementManager} */
-        this.achievementMgr = null;
+        /** @type {AchievementProxy} */
+        this.achievementProxy = null;
 
         /** @type {ShapeDefinitionManager} */
         this.shapeDefinitionMgr = null;

@@ -4,6 +4,7 @@ import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
+import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
@@ -274,6 +275,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // It's a storage
             if (storageComp.canAcceptItem(item)) {
                 storageComp.takeItem(item);
+
+                if (storageComp.storedCount === 1) {
+                    this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.storage);
+                }
+
                 return true;
             }
 

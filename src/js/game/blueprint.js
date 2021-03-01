@@ -3,7 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { findNiceIntegerValue } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
-import { ACHIEVEMENTS } from "../platform/achievements";
+import { ACHIEVEMENTS } from "../platform/achievement_provider";
 import { GameRoot } from "./root";
 
 export class Blueprint {

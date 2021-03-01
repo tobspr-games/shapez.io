@@ -4,7 +4,7 @@ import { enumColors } from "./colors";
 import { ShapeItem } from "./items/shape_item";
 import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
-import { ACHIEVEMENTS } from "../platform/achievements";
+import { ACHIEVEMENTS } from "../platform/achievement_provider";
 
 const logger = createLogger("shape_definition_manager");
 
@@ -251,6 +251,9 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return this.shapeKeyToDefinition[id];
         }
         this.shapeKeyToDefinition[id] = definition;
+
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.theLogo, definition);
+
         // logger.log("Registered shape with key (2)", id);
         return definition;
     }
