@@ -10,9 +10,9 @@
         "start": "electron --disable-direct-composition --in-process-gpu ."
     },
     "devDependencies": {
-        "electron": "9.4.3"
+        "electron": "11.3.0"
     },
     "optionalDependencies": {
-        "shapez.io-private-artifacts": "github:tobspr/shapez.io-private-artifacts#af8d792fe1429af95d990bba4a68362c2aa907c9"
+        "shapez.io-private-artifacts": "github:tobspr/shapez.io-private-artifacts#abi-v85"
     }
 }

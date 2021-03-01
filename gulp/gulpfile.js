@@ -50,6 +50,9 @@ css.gulptasksCSS($, gulp, buildFolder, browserSync);
 const sounds = require("./sounds");
 sounds.gulptasksSounds($, gulp, buildFolder);
 
+const localConfig = require("./local-config");
+localConfig.gulptasksLocalConfig($, gulp);
+
 const js = require("./js");
 js.gulptasksJS($, gulp, buildFolder, browserSync);
 
@@ -221,6 +224,7 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",
@@ -238,6 +242,7 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",

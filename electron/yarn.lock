@@ -141,10 +141,10 @@
   "resolved" "https://registry.npmjs.org/duplexer3/-/duplexer3-0.1.4.tgz"
   "version" "0.1.4"
 
-"electron@9.4.3":
-  "integrity" "sha512-FQjVH0jdFj9EIxpHk/CK6nKmPawdayZ01N+o0sVHAGK0qcvTVCkBZT/1qbsJaTBPD1yf3PcN2frpwfTDBCn9GA=="
-  "resolved" "https://registry.npmjs.org/electron/-/electron-9.4.3.tgz"
-  "version" "9.4.3"
+"electron@11.3.0":
+  "integrity" "sha512-MhdS0gok3wZBTscLBbYrOhLaQybCSAfkupazbK1dMP5c+84eVMxJE/QGohiWQkzs0tVFIJsAHyN19YKPbelNrQ=="
+  "resolved" "https://registry.npmjs.org/electron/-/electron-11.3.0.tgz"
+  "version" "11.3.0"
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
@@ -498,7 +498,7 @@
   dependencies:
     "type-fest" "^0.13.1"
 
-"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#af8d792fe1429af95d990bba4a68362c2aa907c9":
+"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v85":
   "integrity" "sha512-Sp3JL2gSJloqkZ5hINBTcrFomwnCD0mguuRMfJb91SkcZfZuySPEtfi7m2S+96GedA1BI6+gLygDRY217ElTFg=="
   "resolved" "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git"
   "version" "0.1.0"
