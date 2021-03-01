@@ -311,8 +311,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 this.currentBaseRotation = 90;
             } else if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToLeft).pressed) {
                 this.currentBaseRotation = 270;
-            } else {
-                // No op
             }
 
             const staticComp = this.fakeEntity.components.StaticMapEntity;
