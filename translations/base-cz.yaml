@@ -563,7 +563,7 @@ buildings:
                 do levé.
         stacker:
             name: Virtuální kombinátor
-            description: Virtuálně Spojí tvary dohromady. Pokud nemohou být spojeny, pravý
+            description: Virtuálně spojí tvary dohromady. Pokud nemohou být spojeny, pravý
                 tvar je položen na levý.
         painter:
             name: Virtuální barvič
