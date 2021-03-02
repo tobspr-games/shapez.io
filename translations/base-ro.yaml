@@ -80,23 +80,23 @@ global:
         space: SPACE
 demoBanners:
     title: Versiunea Demo
-    intro: Ia versiunea Standalone pentru a debloca toate funcțiile!
+    intro: Instalează versiunea Standalone pentru a debloca toate funcțiile!
 mainMenu:
     play: Joacă
-    changelog: Changelog
-    importSavegame: Import
+    changelog: Jurnalul schimbărilor
+    importSavegame: Importă
     openSourceHint: Acest joc este open source!
     discordLink: Serverul oficial de Discord
     helpTranslate: Ajută să traducem!
     browserWarning: Scuze dar, jocul este știut să ruleze încet pe browser-ul tău!
-        Ia versiunea standalone sau descarcă chrome pentru experiența completă.
+        Instalează versiunea standalone sau descarcă chrome pentru experiența completă.
     savegameLevel: Nivelul <x>
     savegameLevelUnknown: Nivel necunoscut
     continue: Continuă
     newGame: Joc nou
     madeBy: Făcut de <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Fară nume
 dialogs:
     buttons:
         ok: OK
@@ -105,28 +105,28 @@ dialogs:
         later: Mai târziu
         restart: Restartează
         reset: Resetează
-        getStandalone: Ia Standalone-ul
+        getStandalone: Instalează Standalone-ul
         deleteGame: Știu ce fac
         viewUpdate: Vezi Update-ul
         showUpgrades: Vezi Upgrade-urile
         showKeybindings: Arată tastele configurate
     importSavegameError:
-        title: Eroare la Import
-        text: "Încercarea de import a eșuat:"
+        title: Eroare la Importare
+        text: "Încercarea de importare a eșuat:"
     importSavegameSuccess:
-        title: Savegame importat
-        text: Savegame-ul tău a fost importat cu succes.
+        title: Salvarea importată
+        text: Salvarea ta a fost importat cu succes.
     gameLoadFailure:
-        title: Jocul este stricat
-        text: "Încercarea de încărcat savegame-ul a eșuat:"
+        title: Jocul este corupt
+        text: "Încercarea de a încărca salvarea a eșuat:"
     confirmSavegameDelete:
         title: Confirmă ștergerea
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        text: Ești sigur că vrei să ștergi următorul joc?<br><br>
+            '<savegameName>' la nivelul <savegameLevel><br><br> Acest lucru nu poate fi
+            anulat!
     savegameDeletionError:
         title: Eroare la ștergere
-        text: "Nu a reușit să se ștearga savegame-ul:"
+        text: "Nu a reușit să se ștearga salvarii:"
     restartRequired:
         title: Restartare necesară
         text: Trebuie să restartezi jocul pentru a aplica setările.
@@ -144,11 +144,11 @@ dialogs:
     featureRestriction:
         title: Demo Version
         desc: Ai încercat să accesezi o funcție (<feature>) care nu este disponibilă în
-            demo. Consideră să iei standalone-ul pentru experiența completă!
+            demo. Consideră să instalezi standalone-ul pentru experiența completă!
     oneSavegameLimit:
-        title: Savegame-uri limitate
-        desc: Poți avea doar un savegame în același timp în versiunea demo. Te rugăm
-            șterge-o pe cea existentă sau ia standalone-ul!
+        title: Salvări limitate
+        desc: Poți avea doar o salvare în același timp în versiunea demo. Te rugăm
+            șterge-o pe cea existentă sau instalează standalone-ul!
     updateSummary:
         title: Update nou!
         desc: "Aici sunt schimbările de când ai jucat ultima oară:"

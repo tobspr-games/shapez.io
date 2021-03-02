@@ -340,7 +340,7 @@ ingame:
         purple: Roxo
         cyan: Ciano
         white: Branco
-        uncolored: Sem cor
+        uncolored: Incolor
         black: Preto
     shapeViewer:
         title: Camadas
@@ -366,7 +366,7 @@ ingame:
                 desc: Para uma fábrica totalmente automatizada!
             savegames:
                 title: Savegames ∞
-                desc: Tantos quanto o teu corção desejar!
+                desc: Tantos quanto o teu coração desejar!
             upgrades:
                 title: ∞ Níveis de melhoria
                 desc: Nesta versão demo apenas tens 5!
@@ -477,11 +477,11 @@ buildings:
         default:
             name: Fio Elétrico
             description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
-                ou 0). Fios de cores diferestes não se conectam.
+                ou 0). Fios de cores diferentes não se conectam.
         second:
             name: Fio Elétrico
             description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
-                ou 0). Fios de cores diferestes não se conectam.
+                ou 0). Fios de cores diferentes não se conectam.
     balancer:
         default:
             name: Distribuidor
@@ -630,8 +630,8 @@ storyRewards:
             esquerda!
     reward_splitter:
         title: Divisor
-        desc: Desbloqueaste o <strong>dvisor</strong> uma variante do
-            <strong>distribuidor</strong> - Aceita uma entradae divide-a em
+        desc: Desbloqueaste o <strong>divisor</strong> uma variante do
+            <strong>distribuidor</strong> - Aceita uma entrada e divide-a em
             duas!
     reward_tunnel:
         title: Túnel
@@ -699,9 +699,9 @@ storyRewards:
         desc: Parabéns! Já agora, está planeado mais conteúdo para o jogo completo!
     reward_balancer:
         title: Distribuidor
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: O <strong>Distribuidor</strong> foi desbloqueado - Pode ser
+            usado para construir fábricas maiores ao <strong>dividir e misturar
+            itens</strong> para vários tapetes!
     reward_merger:
         title: Misturador (compacto)
         desc: Desbloqueaste um <strong>misturador</strong>, uma variante do
@@ -731,15 +731,15 @@ storyRewards:
             binário</strong> (1 ou 0).
     reward_logic_gates:
         title: Portões Lógicos
-        desc: Desbloqueaste os <strong>portões lógicos</strong>! N tens de te excitar
+        desc: Desbloqueaste os <strong>portões lógicos</strong>! Não tens de te excitar
             com isto, mas é realmente super fixe!<br><br> Com estes portões
             agora podes realizar operações AND, OR, XOR and NOT.<br><br> Como um
-            bónus anteriormente já de dei um <strong>transístor</strong>!
+            bónus anteriormente já te dei um <strong>transístor</strong>!
     reward_virtual_processing:
         title: Processamento Virtual
         desc: Acadei de te dar um monte de novas construções, que te vão permitir
             <strong>simular o processamento de formas</strong>!<br><br> Agora
-            podes simular um cortador,um rodador, um empilhador e muito mais na
+            podes simular um cortador, um rodador, um empilhador e muito mais na
             camada de fios! Com isto, agora tens três opções para continuares o
             jogo:<br><br> - Construir uma <strong>máquina automática</strong>
             para criar qualquer forma possível pedida pelo Edifício Central
@@ -760,7 +760,7 @@ storyRewards:
         desc: Desbloquaste o <strong>Filtro de Itens</strong>! Vai mandar itens ou para
             o topo ou para a saída da esquerda dependendo depending se são
             iguais ao sinal da camada de fios ou não.<br><br> Também podes
-            passar um sinal binário (1 ou 0) para ativa-lo ou desativa-lo
+            passar um sinal binário (1 ou 0) para ativá-lo ou desativá-lo
             totalmente.
     reward_demo_end:
         title: Fim da Demo
@@ -895,7 +895,7 @@ settings:
                 lembra-te de experimentares!
         disableTileGrid:
             title: Desativar Grelha
-            description: Desativar a grelha pode ajudar com o desempenho. Isto também fazz o
+            description: Desativar a grelha pode ajudar com o desempenho. Isto também faz o
                 jogo parecer mais limpo!
         clearCursorOnDeleteWhilePlacing:
             title: Limpar Cursor com Clique Direito
@@ -905,12 +905,12 @@ settings:
                 direito do rato enquanto colocas um edifício.
         lowQualityTextures:
             title: Texturas de baixa qualidade (Feio)
-            description: sa texturas de baixa qualidade para melhorar o desempenho. sto vai
+            description: Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai
                 tornar o jogo parecer muito feio!
         displayChunkBorders:
             title: Mostrar bordas de limites (chunk borders)
             description: O jogo está dividido em partes de 16x16 quadrados, se esta
-                dedinição estiver ativada as bordas de cada limitece são
+                definição estiver ativada as bordas de cada limite são
                 mostradas.
         pickMinerOnPatch:
             title: Selecionar extrator num quadrado de recurso
@@ -927,13 +927,13 @@ settings:
             description: Permite-te mover o mapa movento o rato nos cantos do ecrâ. A
                 velociade depende da definição de velocidade de movimentação.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Aproximar no cursor
+            description: Se ativado o zoom será na direção da posição
+                do teu rato, de outra forma será para o centro do ecrã.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Tamanho de Recursos no Mapa
+            description: Controla o tamanho das formas na visão geral do mapa (aplicando
+                zoom out).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atalhos
