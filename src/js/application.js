@@ -49,6 +49,19 @@ if (typeof document.hidden !== "undefined") {
 }
 
 export class Application {
+    static trackClicks = undefined;
+    static getMainContentHTML = undefined;
+    static states = {
+        PreloadState,
+        MobileWarningState,
+        MainMenuState,
+        InGameState,
+        SettingsState,
+        KeybindingsState,
+        AboutState,
+        ChangelogState,
+    };
+
     constructor() {
         assert(!GLOBAL_APP, "Tried to construct application twice");
         logger.log("Creating application, platform =", getPlatformName());
@@ -396,18 +409,3 @@ export class Application {
         this.checkResize(true);
     }
 }
-
-Application.trackClicks = undefined;
-
-Application.getMainContentHTML = undefined;
-
-Application.states = {
-    PreloadState,
-    MobileWarningState,
-    MainMenuState,
-    InGameState,
-    SettingsState,
-    KeybindingsState,
-    AboutState,
-    ChangelogState,
-};

@@ -364,59 +364,61 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
     }
-}
 
-ItemEjectorSystem.tryPassOverItemComponents = {
-    Belt: (comp, item, receiver, slotIndex, itemEjector) => {
-        const path = comp.assignedPath;
-        assert(path, "belt has no path");
-        if (path.tryAcceptItem(item)) {
-            return true;
-        }
-        // Belt can have nothing else
-        return false;
-    },
-
-    ItemProcessor: (comp, item, receiver, slotIndex, itemEjector) => {
-        // Check for potential filters
-        if (!itemEjector.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
+    static tryPassOverItemComponents = {
+        Belt: (comp, item, receiver, slotIndex, itemEjector) => {
+            const path = comp.assignedPath;
+            assert(path, "belt has no path");
+            if (path.tryAcceptItem(item)) {
+                return true;
+            }
+            // Belt can have nothing else
             return false;
-        }
+        },
 
-        // Its an item processor ..
-        if (comp.tryTakeItem(item, slotIndex)) {
-            return true;
-        }
-        // Item processor can have nothing else
-        return false;
-    },
+        ItemProcessor: (comp, item, receiver, slotIndex, itemEjector) => {
+            // Check for potential filters
+            if (
+                !itemEjector.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)
+            ) {
+                return false;
+            }
 
-    UndergroundBelt: (comp, item, receiver, slotIndex, itemEjector) => {
-        // Its an underground belt. yay.
-        if (comp.tryAcceptExternalItem(item, itemEjector.root.hubGoals.getUndergroundBeltBaseSpeed())) {
-            return true;
-        }
+            // Its an item processor ..
+            if (comp.tryTakeItem(item, slotIndex)) {
+                return true;
+            }
+            // Item processor can have nothing else
+            return false;
+        },
 
-        // Underground belt can have nothing else
-        return false;
-    },
+        UndergroundBelt: (comp, item, receiver, slotIndex, itemEjector) => {
+            // Its an underground belt. yay.
+            if (comp.tryAcceptExternalItem(item, itemEjector.root.hubGoals.getUndergroundBeltBaseSpeed())) {
+                return true;
+            }
 
-    Storage: (comp, item, receiver, slotIndex, itemEjector) => {
-        // It's a storage
-        if (comp.canAcceptItem(item)) {
-            comp.takeItem(item);
-            return true;
-        }
+            // Underground belt can have nothing else
+            return false;
+        },
 
-        // Storage can't have anything else
-        return false;
-    },
+        Storage: (comp, item, receiver, slotIndex, itemEjector) => {
+            // It's a storage
+            if (comp.canAcceptItem(item)) {
+                comp.takeItem(item);
+                return true;
+            }
 
-    Filter: (comp, item, receiver, slotIndex, itemEjector) => {
-        // It's a filter! Unfortunately the filter has to know a lot about it's
-        // surrounding state and components, so it can't be within the component itself.
-        if (itemEjector.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
-            return true;
-        }
-    },
-};
+            // Storage can't have anything else
+            return false;
+        },
+
+        Filter: (comp, item, receiver, slotIndex, itemEjector) => {
+            // It's a filter! Unfortunately the filter has to know a lot about it's
+            // surrounding state and components, so it can't be within the component itself.
+            if (itemEjector.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
+                return true;
+            }
+        },
+    };
+}
