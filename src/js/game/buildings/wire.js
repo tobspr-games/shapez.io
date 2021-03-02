@@ -13,86 +13,86 @@ export class MetaWireBuilding extends MetaBuilding {
         super("wire");
     }
 
-    // /**
-    //  * @param {string} variant
-    //  */
-    // getSilhouetteColor(variant) {
-    //     return MetaWireBuilding.silhouetteColors[variant]();
-    // }
+    /**
+     * @param {string} variant
+     */
+    getSilhouetteColor(variant) {
+        return MetaWireBuilding.silhouetteColors[variant]();
+    }
 
-    // /**
-    //  * @param {GameRoot} root
-    //  */
-    // getIsUnlocked(root) {
-    //     return this.getAvailableVariants(root).length > 0;
-    // }
+    /**
+     * @param {GameRoot} root
+     */
+    getIsUnlocked(root) {
+        return this.getAvailableVariants(root).length > 0;
+    }
 
-    // /**
-    //  * @param {string} variant
-    //  */
-    // getIsRemovable(variant) {
-    //     return MetaWireBuilding.isRemovable[variant]();
-    // }
+    /**
+     * @param {string} variant
+     */
+    getIsRemovable(variant) {
+        return MetaWireBuilding.isRemovable[variant]();
+    }
 
-    // /**
-    //  * @param {string} variant
-    //  */
-    // getIsRotateable(variant) {
-    //     return MetaWireBuilding.isRotateable[variant]();
-    // }
+    /**
+     * @param {string} variant
+     */
+    getIsRotateable(variant) {
+        return MetaWireBuilding.isRotateable[variant]();
+    }
 
-    // /**
-    //  * @param {GameRoot} root
-    //  */
-    // getAvailableVariants(root) {
-    //     const variants = MetaWireBuilding.avaibleVariants;
+    /**
+     * @param {GameRoot} root
+     */
+    getAvailableVariants(root) {
+        const variants = MetaWireBuilding.avaibleVariants;
 
-    //     let available = [];
-    //     for (const variant in variants) {
-    //         if (variants[variant](root)) available.push(variant);
-    //     }
+        let available = [];
+        for (const variant in variants) {
+            if (variants[variant](root)) available.push(variant);
+        }
 
-    //     return available;
-    // }
+        return available;
+    }
 
-    // /**
-    //  * Returns the edit layer of the building
-    //  * @param {GameRoot} root
-    //  * @param {string} variant
-    //  * @returns {Layer}
-    //  */
-    // getLayer(root, variant) {
-    //     // @ts-ignore
-    //     return MetaWireBuilding.layerByVariant[variant](root);
-    // }
+    /**
+     * Returns the edit layer of the building
+     * @param {GameRoot} root
+     * @param {string} variant
+     * @returns {Layer}
+     */
+    getLayer(root, variant) {
+        // @ts-ignore
+        return MetaWireBuilding.layerByVariant[variant](root);
+    }
 
-    // /**
-    //  * @param {string} variant
-    //  */
-    // getDimensions(variant) {
-    //     return MetaWireBuilding.dimensions[variant]();
-    // }
+    /**
+     * @param {string} variant
+     */
+    getDimensions(variant) {
+        return MetaWireBuilding.dimensions[variant]();
+    }
 
-    // /**
-    //  * @param {string} variant
-    //  */
-    // getShowLayerPreview(variant) {
-    //     return MetaWireBuilding.layerPreview[variant]();
-    // }
+    /**
+     * @param {string} variant
+     */
+    getShowLayerPreview(variant) {
+        return MetaWireBuilding.layerPreview[variant]();
+    }
 
-    // /**
-    //  * @param {number} rotation
-    //  * @param {number} rotationVariant
-    //  * @param {string} variant
-    //  * @param {Entity} entity
-    //  * @returns {Array<number>|null}
-    //  */
-    // getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
-    //     let matrices = MetaWireBuilding.overlayMatrices[
-    //         MetaWireBuilding.rotationVariantToType[rotationVariant]
-    //     ](entity, rotationVariant);
-    //     return matrices ? matrices[rotation] : null;
-    // }
+    /**
+     * @param {number} rotation
+     * @param {number} rotationVariant
+     * @param {string} variant
+     * @param {Entity} entity
+     * @returns {Array<number>|null}
+     */
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant, entity) {
+        let matrices = MetaWireBuilding.overlayMatrices[
+            MetaWireBuilding.rotationVariantToType[rotationVariant]
+        ](entity, rotationVariant);
+        return matrices ? matrices[rotation] : null;
+    }
 
     /**
      * @param {string} variant
