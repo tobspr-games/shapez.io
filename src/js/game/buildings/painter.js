@@ -109,277 +109,285 @@ export class MetaPainterBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaPainterBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity => entity.addComponent(new ItemProcessorComponent({})),
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
+                })
+            ),
+        entity =>
+            entity.addComponent(
+                new ItemAcceptorComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            directions: [enumDirection.left],
+                            filter: "shape",
+                        },
+                        {
+                            pos: new Vector(1, 0),
+                            directions: [enumDirection.top],
+                            filter: "color",
+                        },
+                    ],
+                })
+            ),
+    ];
+
+    static variants = {
+        mirrored: "mirrored",
+        double: "double",
+        quad: "quad",
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#cd9b7d",
+        [MetaPainterBuilding.variants.mirrored]: () => "#cd9b7d",
+        [MetaPainterBuilding.variants.double]: () => "#cd9b7d",
+        [MetaPainterBuilding.variants.quad]: () => "#cd9b7d",
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(2, 1),
+        [MetaPainterBuilding.variants.mirrored]: () => new Vector(2, 1),
+        [MetaPainterBuilding.variants.double]: () => new Vector(2, 2),
+        [MetaPainterBuilding.variants.quad]: () => new Vector(4, 1),
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaPainterBuilding.variants.mirrored]: () => true,
+        [MetaPainterBuilding.variants.double]: () => true,
+        [MetaPainterBuilding.variants.quad]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaPainterBuilding.variants.mirrored]: () => true,
+        [MetaPainterBuilding.variants.double]: () => true,
+        [MetaPainterBuilding.variants.quad]: () => true,
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+        [MetaPainterBuilding.variants.mirrored]: root => "regular",
+        [MetaPainterBuilding.variants.double]: root => "regular",
+        [MetaPainterBuilding.variants.quad]: root => "regular",
+    };
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => null,
+        [MetaPainterBuilding.variants.mirrored]: (entity, rotationVariant) => null,
+        [MetaPainterBuilding.variants.double]: (entity, rotationVariant) => null,
+        [MetaPainterBuilding.variants.quad]: (entity, rotationVariant) => null,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter),
+        [MetaPainterBuilding.variants.mirrored]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter),
+        [MetaPainterBuilding.variants.double]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double),
+        [MetaPainterBuilding.variants.quad]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
+    };
+
+    static additionalStatistics = {
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [defaultBuildingVariant]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter)),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaPainterBuilding.variants.mirrored]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter)),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaPainterBuilding.variants.double]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(
+                    root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble)
+                ),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaPainterBuilding.variants.quad]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad)),
+            ],
+        ],
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            if (entity.components.WiredPins) {
+                entity.removeComponent(WiredPinsComponent);
+            }
+
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.left],
+                    filter: "shape",
+                },
+                {
+                    pos: new Vector(1, 0),
+                    directions: [enumDirection.top],
+                    filter: "color",
+                },
+            ]);
+
+            entity.components.ItemEjector.setSlots([
+                { pos: new Vector(1, 0), direction: enumDirection.right },
+            ]);
+
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
+            entity.components.ItemProcessor.processingRequirement = null;
+            entity.components.ItemProcessor.inputsPerCharge = 2;
+        },
+
+        [MetaPainterBuilding.variants.mirrored]: (entity, rotationVariant) => {
+            if (entity.components.WiredPins) {
+                entity.removeComponent(WiredPinsComponent);
+            }
+
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.left],
+                    filter: "shape",
+                },
+                {
+                    pos: new Vector(1, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+            ]);
+
+            entity.components.ItemEjector.setSlots([
+                { pos: new Vector(1, 0), direction: enumDirection.right },
+            ]);
+
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
+            entity.components.ItemProcessor.processingRequirement = null;
+            entity.components.ItemProcessor.inputsPerCharge = 2;
+        },
+
+        [MetaPainterBuilding.variants.double]: (entity, rotationVariant) => {
+            if (entity.components.WiredPins) {
+                entity.removeComponent(WiredPinsComponent);
+            }
+
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.left],
+                    filter: "shape",
+                },
+                {
+                    pos: new Vector(0, 1),
+                    directions: [enumDirection.left],
+                    filter: "shape",
+                },
+                {
+                    pos: new Vector(1, 0),
+                    directions: [enumDirection.top],
+                    filter: "color",
+                },
+            ]);
+
+            entity.components.ItemEjector.setSlots([
+                { pos: new Vector(1, 0), direction: enumDirection.right },
+            ]);
+
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
+            entity.components.ItemProcessor.processingRequirement = null;
+            entity.components.ItemProcessor.inputsPerCharge = 3;
+        },
+
+        [MetaPainterBuilding.variants.quad]: (entity, rotationVariant) => {
+            if (!entity.components.WiredPins) {
+                entity.addComponent(new WiredPinsComponent({ slots: [] }));
+            }
+
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(1, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(2, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(3, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.left],
+                    filter: "shape",
+                },
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+                {
+                    pos: new Vector(1, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+                {
+                    pos: new Vector(2, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+                {
+                    pos: new Vector(3, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+            ]);
+
+            entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
+
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.painterQuad;
+            entity.components.ItemProcessor.processingRequirement = enumItemProcessorRequirements.painterQuad;
+            entity.components.ItemProcessor.inputsPerCharge = 5;
+        },
+    };
 }
-
-MetaPainterBuilding.setupEntityComponents = [
-    entity => entity.addComponent(new ItemProcessorComponent({})),
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
-            })
-        ),
-    entity =>
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
-                        filter: "color",
-                    },
-                ],
-            })
-        ),
-];
-
-MetaPainterBuilding.variants = {
-    mirrored: "mirrored",
-    double: "double",
-    quad: "quad",
-};
-
-MetaPainterBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#cd9b7d",
-    [MetaPainterBuilding.variants.mirrored]: () => "#cd9b7d",
-    [MetaPainterBuilding.variants.double]: () => "#cd9b7d",
-    [MetaPainterBuilding.variants.quad]: () => "#cd9b7d",
-};
-
-MetaPainterBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(2, 1),
-    [MetaPainterBuilding.variants.mirrored]: () => new Vector(2, 1),
-    [MetaPainterBuilding.variants.double]: () => new Vector(2, 2),
-    [MetaPainterBuilding.variants.quad]: () => new Vector(4, 1),
-};
-
-MetaPainterBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaPainterBuilding.variants.mirrored]: () => true,
-    [MetaPainterBuilding.variants.double]: () => true,
-    [MetaPainterBuilding.variants.quad]: () => true,
-};
-
-MetaPainterBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaPainterBuilding.variants.mirrored]: () => true,
-    [MetaPainterBuilding.variants.double]: () => true,
-    [MetaPainterBuilding.variants.quad]: () => true,
-};
-
-MetaPainterBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-    [MetaPainterBuilding.variants.mirrored]: root => "regular",
-    [MetaPainterBuilding.variants.double]: root => "regular",
-    [MetaPainterBuilding.variants.quad]: root => "regular",
-};
-
-MetaPainterBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => null,
-    [MetaPainterBuilding.variants.mirrored]: (entity, rotationVariant) => null,
-    [MetaPainterBuilding.variants.double]: (entity, rotationVariant) => null,
-    [MetaPainterBuilding.variants.quad]: (entity, rotationVariant) => null,
-};
-
-MetaPainterBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter),
-    [MetaPainterBuilding.variants.mirrored]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter),
-    [MetaPainterBuilding.variants.double]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double),
-    [MetaPainterBuilding.variants.quad]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
-};
-
-MetaPainterBuilding.additionalStatistics = {
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [defaultBuildingVariant]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter)),
-        ],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaPainterBuilding.variants.mirrored]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter)),
-        ],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaPainterBuilding.variants.double]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble)),
-        ],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaPainterBuilding.variants.quad]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad)),
-        ],
-    ],
-};
-
-MetaPainterBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        if (entity.components.WiredPins) {
-            entity.removeComponent(WiredPinsComponent);
-        }
-
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.left],
-                filter: "shape",
-            },
-            {
-                pos: new Vector(1, 0),
-                directions: [enumDirection.top],
-                filter: "color",
-            },
-        ]);
-
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(1, 0), direction: enumDirection.right }]);
-
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
-        entity.components.ItemProcessor.processingRequirement = null;
-        entity.components.ItemProcessor.inputsPerCharge = 2;
-    },
-
-    [MetaPainterBuilding.variants.mirrored]: (entity, rotationVariant) => {
-        if (entity.components.WiredPins) {
-            entity.removeComponent(WiredPinsComponent);
-        }
-
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.left],
-                filter: "shape",
-            },
-            {
-                pos: new Vector(1, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-        ]);
-
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(1, 0), direction: enumDirection.right }]);
-
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.painter;
-        entity.components.ItemProcessor.processingRequirement = null;
-        entity.components.ItemProcessor.inputsPerCharge = 2;
-    },
-
-    [MetaPainterBuilding.variants.double]: (entity, rotationVariant) => {
-        if (entity.components.WiredPins) {
-            entity.removeComponent(WiredPinsComponent);
-        }
-
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.left],
-                filter: "shape",
-            },
-            {
-                pos: new Vector(0, 1),
-                directions: [enumDirection.left],
-                filter: "shape",
-            },
-            {
-                pos: new Vector(1, 0),
-                directions: [enumDirection.top],
-                filter: "color",
-            },
-        ]);
-
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(1, 0), direction: enumDirection.right }]);
-
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.painterDouble;
-        entity.components.ItemProcessor.processingRequirement = null;
-        entity.components.ItemProcessor.inputsPerCharge = 3;
-    },
-
-    [MetaPainterBuilding.variants.quad]: (entity, rotationVariant) => {
-        if (!entity.components.WiredPins) {
-            entity.addComponent(new WiredPinsComponent({ slots: [] }));
-        }
-
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(1, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(2, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(3, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.left],
-                filter: "shape",
-            },
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-            {
-                pos: new Vector(1, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-            {
-                pos: new Vector(2, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-            {
-                pos: new Vector(3, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-        ]);
-
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
-
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.painterQuad;
-        entity.components.ItemProcessor.processingRequirement = enumItemProcessorRequirements.painterQuad;
-        entity.components.ItemProcessor.inputsPerCharge = 5;
-    },
-};

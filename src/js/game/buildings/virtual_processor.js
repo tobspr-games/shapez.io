@@ -110,209 +110,209 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaVirtualProcessorBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new WiredPinsComponent({
+                    slots: [],
+                })
+            ),
+        entity => entity.addComponent(new LogicGateComponent({})),
+    ];
+
+    static variants = {
+        rotater: "rotater",
+        unstacker: "unstacker",
+        stacker: "stacker",
+        painter: "painter",
+    };
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => null,
+        [MetaVirtualProcessorBuilding.variants.rotater]: (entity, rotationVariant) => null,
+        [MetaVirtualProcessorBuilding.variants.unstacker]: (entity, rotationVariant) => null,
+        [MetaVirtualProcessorBuilding.variants.stacker]: (entity, rotationVariant) => null,
+        [MetaVirtualProcessorBuilding.variants.painter]: (entity, rotationVariant) => null,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+        [MetaVirtualProcessorBuilding.variants.rotater]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+        [MetaVirtualProcessorBuilding.variants.unstacker]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+        [MetaVirtualProcessorBuilding.variants.stacker]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+        [MetaVirtualProcessorBuilding.variants.painter]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+        [MetaVirtualProcessorBuilding.variants.rotater]: () => new Vector(1, 1),
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () => new Vector(1, 1),
+        [MetaVirtualProcessorBuilding.variants.stacker]: () => new Vector(1, 1),
+        [MetaVirtualProcessorBuilding.variants.painter]: () => new Vector(1, 1),
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaVirtualProcessorBuilding.variants.rotater]: () => true,
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () => true,
+        [MetaVirtualProcessorBuilding.variants.stacker]: () => true,
+        [MetaVirtualProcessorBuilding.variants.painter]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaVirtualProcessorBuilding.variants.rotater]: () => true,
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () => true,
+        [MetaVirtualProcessorBuilding.variants.stacker]: () => true,
+        [MetaVirtualProcessorBuilding.variants.painter]: () => true,
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => false,
+        [MetaVirtualProcessorBuilding.variants.rotater]: () => false,
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () => false,
+        [MetaVirtualProcessorBuilding.variants.stacker]: () => false,
+        [MetaVirtualProcessorBuilding.variants.painter]: () => false,
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+        [MetaVirtualProcessorBuilding.variants.rotater]: () => "wires",
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () => "wires",
+        [MetaVirtualProcessorBuilding.variants.stacker]: () => "wires",
+        [MetaVirtualProcessorBuilding.variants.painter]: () => "wires",
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "wires",
+        [MetaVirtualProcessorBuilding.variants.rotater]: root => "wires",
+        [MetaVirtualProcessorBuilding.variants.unstacker]: root => "wires",
+        [MetaVirtualProcessorBuilding.variants.stacker]: root => "wires",
+        [MetaVirtualProcessorBuilding.variants.painter]: root => "wires",
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => MetaCutterBuilding.silhouetteColors[defaultBuildingVariant],
+        [MetaVirtualProcessorBuilding.variants.rotater]: () =>
+            MetaRotaterBuilding.silhouetteColors[defaultBuildingVariant],
+        [MetaVirtualProcessorBuilding.variants.unstacker]: () =>
+            MetaStackerBuilding.silhouetteColors[defaultBuildingVariant],
+        [MetaVirtualProcessorBuilding.variants.stacker]: () =>
+            MetaStackerBuilding.silhouetteColors[defaultBuildingVariant],
+        [MetaVirtualProcessorBuilding.variants.painter]: () =>
+            MetaPainterBuilding.silhouetteColors[defaultBuildingVariant],
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.cutter;
+        },
+
+        [MetaVirtualProcessorBuilding.variants.rotater]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.rotater;
+        },
+
+        [MetaVirtualProcessorBuilding.variants.unstacker]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.unstacker;
+        },
+
+        [MetaVirtualProcessorBuilding.variants.stacker]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.stacker;
+        },
+
+        [MetaVirtualProcessorBuilding.variants.painter]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.painter;
+        },
+    };
 }
-
-MetaVirtualProcessorBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [],
-            })
-        ),
-    entity => entity.addComponent(new LogicGateComponent({})),
-];
-
-MetaVirtualProcessorBuilding.variants = {
-    rotater: "rotater",
-    unstacker: "unstacker",
-    stacker: "stacker",
-    painter: "painter",
-};
-
-MetaVirtualProcessorBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => null,
-    [MetaVirtualProcessorBuilding.variants.rotater]: (entity, rotationVariant) => null,
-    [MetaVirtualProcessorBuilding.variants.unstacker]: (entity, rotationVariant) => null,
-    [MetaVirtualProcessorBuilding.variants.stacker]: (entity, rotationVariant) => null,
-    [MetaVirtualProcessorBuilding.variants.painter]: (entity, rotationVariant) => null,
-};
-
-MetaVirtualProcessorBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    [MetaVirtualProcessorBuilding.variants.rotater]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    [MetaVirtualProcessorBuilding.variants.unstacker]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    [MetaVirtualProcessorBuilding.variants.stacker]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    [MetaVirtualProcessorBuilding.variants.painter]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-};
-
-MetaVirtualProcessorBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-    [MetaVirtualProcessorBuilding.variants.rotater]: () => new Vector(1, 1),
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () => new Vector(1, 1),
-    [MetaVirtualProcessorBuilding.variants.stacker]: () => new Vector(1, 1),
-    [MetaVirtualProcessorBuilding.variants.painter]: () => new Vector(1, 1),
-};
-
-MetaVirtualProcessorBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaVirtualProcessorBuilding.variants.rotater]: () => true,
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () => true,
-    [MetaVirtualProcessorBuilding.variants.stacker]: () => true,
-    [MetaVirtualProcessorBuilding.variants.painter]: () => true,
-};
-
-MetaVirtualProcessorBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaVirtualProcessorBuilding.variants.rotater]: () => true,
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () => true,
-    [MetaVirtualProcessorBuilding.variants.stacker]: () => true,
-    [MetaVirtualProcessorBuilding.variants.painter]: () => true,
-};
-
-MetaVirtualProcessorBuilding.renderPins = {
-    [defaultBuildingVariant]: () => false,
-    [MetaVirtualProcessorBuilding.variants.rotater]: () => false,
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () => false,
-    [MetaVirtualProcessorBuilding.variants.stacker]: () => false,
-    [MetaVirtualProcessorBuilding.variants.painter]: () => false,
-};
-
-MetaVirtualProcessorBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-    [MetaVirtualProcessorBuilding.variants.rotater]: () => "wires",
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () => "wires",
-    [MetaVirtualProcessorBuilding.variants.stacker]: () => "wires",
-    [MetaVirtualProcessorBuilding.variants.painter]: () => "wires",
-};
-
-MetaVirtualProcessorBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "wires",
-    [MetaVirtualProcessorBuilding.variants.rotater]: root => "wires",
-    [MetaVirtualProcessorBuilding.variants.unstacker]: root => "wires",
-    [MetaVirtualProcessorBuilding.variants.stacker]: root => "wires",
-    [MetaVirtualProcessorBuilding.variants.painter]: root => "wires",
-};
-
-MetaVirtualProcessorBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => MetaCutterBuilding.silhouetteColors[defaultBuildingVariant],
-    [MetaVirtualProcessorBuilding.variants.rotater]: () =>
-        MetaRotaterBuilding.silhouetteColors[defaultBuildingVariant],
-    [MetaVirtualProcessorBuilding.variants.unstacker]: () =>
-        MetaStackerBuilding.silhouetteColors[defaultBuildingVariant],
-    [MetaVirtualProcessorBuilding.variants.stacker]: () =>
-        MetaStackerBuilding.silhouetteColors[defaultBuildingVariant],
-    [MetaVirtualProcessorBuilding.variants.painter]: () =>
-        MetaPainterBuilding.silhouetteColors[defaultBuildingVariant],
-};
-
-MetaVirtualProcessorBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.cutter;
-    },
-
-    [MetaVirtualProcessorBuilding.variants.rotater]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.rotater;
-    },
-
-    [MetaVirtualProcessorBuilding.variants.unstacker]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.unstacker;
-    },
-
-    [MetaVirtualProcessorBuilding.variants.stacker]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.stacker;
-    },
-
-    [MetaVirtualProcessorBuilding.variants.painter]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.painter;
-    },
-};

@@ -106,48 +106,48 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaWireTunnelBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [entity => entity.addComponent(new WireTunnelComponent())];
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]),
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#777a86",
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => false,
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => false,
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "wires",
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {},
+    };
 }
-
-MetaWireTunnelBuilding.setupEntityComponents = [entity => entity.addComponent(new WireTunnelComponent())];
-
-MetaWireTunnelBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]),
-};
-
-MetaWireTunnelBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-};
-
-MetaWireTunnelBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#777a86",
-};
-
-MetaWireTunnelBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaWireTunnelBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => false,
-};
-
-MetaWireTunnelBuilding.renderPins = {
-    [defaultBuildingVariant]: () => false,
-};
-
-MetaWireTunnelBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-};
-
-MetaWireTunnelBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
-};
-
-MetaWireTunnelBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "wires",
-};
-
-MetaWireTunnelBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {},
-};

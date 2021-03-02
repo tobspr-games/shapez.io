@@ -103,83 +103,90 @@ export class MetaMinerBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaMinerBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity => entity.addComponent(new MinerComponent({})),
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                })
+            ),
+    ];
+
+    static variants = {
+        chainable: "chainable",
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#b37dcd",
+        [MetaMinerBuilding.variants.chainable]: () => "#b37dcd",
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+        [MetaMinerBuilding.variants.chainable]: () => new Vector(1, 1),
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaMinerBuilding.variants.chainable]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaMinerBuilding.variants.chainable]: () => true,
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+        [MetaMinerBuilding.variants.chainable]: root => "regular",
+    };
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) =>
+            generateMatrixRotations([1, 1, 1, 1, 0, 1, 1, 1, 1]),
+        [MetaMinerBuilding.variants.chainable]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root =>
+            !root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable),
+        [MetaMinerBuilding.variants.chainable]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable),
+    };
+
+    static additionalStatistics = {
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [defaultBuildingVariant]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getMinerBaseSpeed()),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaMinerBuilding.variants.chainable]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getMinerBaseSpeed()),
+            ],
+        ],
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.Miner.chainable = false;
+        },
+
+        [MetaMinerBuilding.variants.chainable]: (entity, rotationVariant) => {
+            entity.components.Miner.chainable = true;
+        },
+    };
 }
-
-MetaMinerBuilding.setupEntityComponents = [
-    entity => entity.addComponent(new MinerComponent({})),
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-            })
-        ),
-];
-MetaMinerBuilding.variants = {
-    chainable: "chainable",
-};
-
-MetaMinerBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#b37dcd",
-    [MetaMinerBuilding.variants.chainable]: () => "#b37dcd",
-};
-
-MetaMinerBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-    [MetaMinerBuilding.variants.chainable]: () => new Vector(1, 1),
-};
-
-MetaMinerBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaMinerBuilding.variants.chainable]: () => true,
-};
-
-MetaMinerBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaMinerBuilding.variants.chainable]: () => true,
-};
-
-MetaMinerBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-    [MetaMinerBuilding.variants.chainable]: root => "regular",
-};
-
-MetaMinerBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) =>
-        generateMatrixRotations([1, 1, 1, 1, 0, 1, 1, 1, 1]),
-    [MetaMinerBuilding.variants.chainable]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
-};
-
-MetaMinerBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root =>
-        !root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable),
-    [MetaMinerBuilding.variants.chainable]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable),
-};
-
-MetaMinerBuilding.additionalStatistics = {
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [defaultBuildingVariant]: root => [
-        [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(root.hubGoals.getMinerBaseSpeed())],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaMinerBuilding.variants.chainable]: root => [
-        [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(root.hubGoals.getMinerBaseSpeed())],
-    ],
-};
-
-MetaMinerBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.Miner.chainable = false;
-    },
-
-    [MetaMinerBuilding.variants.chainable]: (entity, rotationVariant) => {
-        entity.components.Miner.chainable = true;
-    },
-};

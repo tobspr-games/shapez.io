@@ -110,69 +110,69 @@ export class MetaLeverBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaLeverBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new WiredPinsComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            direction: enumDirection.top,
+                            type: enumPinSlotType.logicalEjector,
+                        },
+                    ],
+                })
+            ),
+        entity => entity.addComponent(new LeverComponent({})),
+    ];
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => null,
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#1a678b",
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+            ]);
+        },
+    };
 }
-
-MetaLeverBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top,
-                        type: enumPinSlotType.logicalEjector,
-                    },
-                ],
-            })
-        ),
-    entity => entity.addComponent(new LeverComponent({})),
-];
-
-MetaLeverBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => null,
-};
-
-MetaLeverBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-};
-
-MetaLeverBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#1a678b",
-};
-
-MetaLeverBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaLeverBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaLeverBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers),
-};
-
-MetaLeverBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-};
-
-MetaLeverBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-};
-
-MetaLeverBuilding.renderPins = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaLeverBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-        ]);
-    },
-};

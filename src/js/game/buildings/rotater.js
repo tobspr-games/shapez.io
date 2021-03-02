@@ -118,143 +118,143 @@ export class MetaRotaterBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaRotaterBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new ItemProcessorComponent({
+                    inputsPerCharge: 1,
+                    processorType: enumItemProcessorTypes.rotater,
+                })
+            ),
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                })
+            ),
+        entity =>
+            entity.addComponent(
+                new ItemAcceptorComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            directions: [enumDirection.bottom],
+                            filter: "shape",
+                        },
+                    ],
+                })
+            ),
+    ];
+
+    static variants = {
+        ccw: "ccw",
+        rotate180: "rotate180",
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+        [MetaRotaterBuilding.variants.ccw]: () => new Vector(1, 1),
+        [MetaRotaterBuilding.variants.rotate180]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#7dc6cd",
+        [MetaRotaterBuilding.variants.ccw]: () => "#7dc6cd",
+        [MetaRotaterBuilding.variants.rotate180]: () => "#7dc6cd",
+    };
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 1, 1, 1, 0, 0, 1, 1]),
+        [MetaRotaterBuilding.variants.ccw]: (entity, rotationVariant) =>
+            generateMatrixRotations([1, 1, 0, 0, 1, 1, 1, 1, 0]),
+        [MetaRotaterBuilding.variants.rotate180]: (entity, rotationVariant) =>
+            generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater),
+        [MetaRotaterBuilding.variants.ccw]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw),
+        [MetaRotaterBuilding.variants.rotate180]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_180),
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaRotaterBuilding.variants.ccw]: () => true,
+        [MetaRotaterBuilding.variants.rotate180]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaRotaterBuilding.variants.ccw]: () => true,
+        [MetaRotaterBuilding.variants.rotate180]: () => true,
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+        [MetaRotaterBuilding.variants.ccw]: root => "regular",
+        [MetaRotaterBuilding.variants.rotate180]: root => "regular",
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => null,
+        [MetaRotaterBuilding.variants.ccw]: () => null,
+        [MetaRotaterBuilding.variants.rotate180]: () => null,
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => null,
+        [MetaRotaterBuilding.variants.ccw]: () => null,
+        [MetaRotaterBuilding.variants.rotate180]: () => null,
+    };
+
+    static additionalStatistics = {
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [defaultBuildingVariant]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater)),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaRotaterBuilding.variants.ccw]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW)),
+            ],
+        ],
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaRotaterBuilding.variants.rotate180]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180)),
+            ],
+        ],
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
+        },
+
+        [MetaRotaterBuilding.variants.ccw]: (entity, rotationVariant) => {
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
+        },
+
+        [MetaRotaterBuilding.variants.rotate180]: (entity, rotationVariant) => {
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater180;
+        },
+    };
 }
-
-MetaRotaterBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new ItemProcessorComponent({
-                inputsPerCharge: 1,
-                processorType: enumItemProcessorTypes.rotater,
-            })
-        ),
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-            })
-        ),
-    entity =>
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                        filter: "shape",
-                    },
-                ],
-            })
-        ),
-];
-
-MetaRotaterBuilding.variants = {
-    ccw: "ccw",
-    rotate180: "rotate180",
-};
-
-MetaRotaterBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-    [MetaRotaterBuilding.variants.ccw]: () => new Vector(1, 1),
-    [MetaRotaterBuilding.variants.rotate180]: () => new Vector(1, 1),
-};
-
-MetaRotaterBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#7dc6cd",
-    [MetaRotaterBuilding.variants.ccw]: () => "#7dc6cd",
-    [MetaRotaterBuilding.variants.rotate180]: () => "#7dc6cd",
-};
-
-MetaRotaterBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 1, 1, 1, 0, 0, 1, 1]),
-    [MetaRotaterBuilding.variants.ccw]: (entity, rotationVariant) =>
-        generateMatrixRotations([1, 1, 0, 0, 1, 1, 1, 1, 0]),
-    [MetaRotaterBuilding.variants.rotate180]: (entity, rotationVariant) =>
-        generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
-};
-
-MetaRotaterBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater),
-    [MetaRotaterBuilding.variants.ccw]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_ccw),
-    [MetaRotaterBuilding.variants.rotate180]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_rotater_180),
-};
-
-MetaRotaterBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaRotaterBuilding.variants.ccw]: () => true,
-    [MetaRotaterBuilding.variants.rotate180]: () => true,
-};
-
-MetaRotaterBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaRotaterBuilding.variants.ccw]: () => true,
-    [MetaRotaterBuilding.variants.rotate180]: () => true,
-};
-
-MetaRotaterBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-    [MetaRotaterBuilding.variants.ccw]: root => "regular",
-    [MetaRotaterBuilding.variants.rotate180]: root => "regular",
-};
-
-MetaRotaterBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => null,
-    [MetaRotaterBuilding.variants.ccw]: () => null,
-    [MetaRotaterBuilding.variants.rotate180]: () => null,
-};
-
-MetaRotaterBuilding.renderPins = {
-    [defaultBuildingVariant]: () => null,
-    [MetaRotaterBuilding.variants.ccw]: () => null,
-    [MetaRotaterBuilding.variants.rotate180]: () => null,
-};
-
-MetaRotaterBuilding.additionalStatistics = {
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [defaultBuildingVariant]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater)),
-        ],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaRotaterBuilding.variants.ccw]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW)),
-        ],
-    ],
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaRotaterBuilding.variants.rotate180]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180)),
-        ],
-    ],
-};
-
-MetaRotaterBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater;
-    },
-
-    [MetaRotaterBuilding.variants.ccw]: (entity, rotationVariant) => {
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotaterCCW;
-    },
-
-    [MetaRotaterBuilding.variants.rotate180]: (entity, rotationVariant) => {
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.rotater180;
-    },
-};

@@ -87,73 +87,73 @@ export class MetaItemProducerBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaItemProducerBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                })
+            ),
+        entity =>
+            entity.addComponent(
+                new WiredPinsComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            type: enumPinSlotType.logicalAcceptor,
+                            direction: enumDirection.bottom,
+                        },
+                    ],
+                })
+            ),
+
+        entity => entity.addComponent(new ItemProducerComponent()),
+    ];
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => null,
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#b37dcd",
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => true,
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
+
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    type: enumPinSlotType.logicalAcceptor,
+                    direction: enumDirection.bottom,
+                },
+            ]);
+        },
+    };
 }
-
-MetaItemProducerBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-            })
-        ),
-    entity =>
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        type: enumPinSlotType.logicalAcceptor,
-                        direction: enumDirection.bottom,
-                    },
-                ],
-            })
-        ),
-
-    entity => entity.addComponent(new ItemProducerComponent()),
-];
-
-MetaItemProducerBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => null,
-};
-
-MetaItemProducerBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-};
-
-MetaItemProducerBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#b37dcd",
-};
-
-MetaItemProducerBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaItemProducerBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaItemProducerBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => true,
-};
-
-MetaItemProducerBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-};
-
-MetaItemProducerBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-};
-
-MetaItemProducerBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
-
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                type: enumPinSlotType.logicalAcceptor,
-                direction: enumDirection.bottom,
-            },
-        ]);
-    },
-};

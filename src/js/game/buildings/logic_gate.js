@@ -107,172 +107,174 @@ export class MetaLogicGateBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaLogicGateBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new WiredPinsComponent({
+                    slots: [],
+                })
+            ),
+        entity => entity.addComponent(new LogicGateComponent({})),
+    ];
+
+    static variants = {
+        not: "not",
+        xor: "xor",
+        or: "or",
+    };
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+        [MetaLogicGateBuilding.variants.xor]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+        [MetaLogicGateBuilding.variants.or]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
+        [MetaLogicGateBuilding.variants.not]: (entity, rotationVariant) =>
+            generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    };
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+        [MetaLogicGateBuilding.variants.xor]: () => new Vector(1, 1),
+        [MetaLogicGateBuilding.variants.or]: () => new Vector(1, 1),
+        [MetaLogicGateBuilding.variants.not]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#f48d41",
+        [MetaLogicGateBuilding.variants.xor]: () => "#f4a241",
+        [MetaLogicGateBuilding.variants.or]: () => "#f4d041",
+        [MetaLogicGateBuilding.variants.not]: () => "#f44184",
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaLogicGateBuilding.variants.xor]: () => true,
+        [MetaLogicGateBuilding.variants.or]: () => true,
+        [MetaLogicGateBuilding.variants.not]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaLogicGateBuilding.variants.xor]: () => true,
+        [MetaLogicGateBuilding.variants.or]: () => true,
+        [MetaLogicGateBuilding.variants.not]: () => true,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+        [MetaLogicGateBuilding.variants.xor]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+        [MetaLogicGateBuilding.variants.or]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+        [MetaLogicGateBuilding.variants.not]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "wires",
+        [MetaLogicGateBuilding.variants.xor]: root => "wires",
+        [MetaLogicGateBuilding.variants.or]: root => "wires",
+        [MetaLogicGateBuilding.variants.not]: root => "wires",
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => false,
+        [MetaLogicGateBuilding.variants.xor]: () => false,
+        [MetaLogicGateBuilding.variants.or]: () => false,
+        [MetaLogicGateBuilding.variants.not]: () => false,
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+        [MetaLogicGateBuilding.variants.xor]: () => "wires",
+        [MetaLogicGateBuilding.variants.or]: () => "wires",
+        [MetaLogicGateBuilding.variants.not]: () => "wires",
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.and;
+        },
+
+        [MetaLogicGateBuilding.variants.xor]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.xor;
+        },
+
+        [MetaLogicGateBuilding.variants.or]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.right,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.or;
+        },
+        [MetaLogicGateBuilding.variants.not]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                    type: enumPinSlotType.logicalEjector,
+                },
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.bottom,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.LogicGate.type = enumLogicGateType.not;
+        },
+    };
 }
-MetaLogicGateBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [],
-            })
-        ),
-    entity => entity.addComponent(new LogicGateComponent({})),
-];
-
-MetaLogicGateBuilding.variants = {
-    not: "not",
-    xor: "xor",
-    or: "or",
-};
-
-MetaLogicGateBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
-    [MetaLogicGateBuilding.variants.xor]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
-    [MetaLogicGateBuilding.variants.or]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
-    [MetaLogicGateBuilding.variants.not]: (entity, rotationVariant) =>
-        generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
-};
-MetaLogicGateBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-    [MetaLogicGateBuilding.variants.xor]: () => new Vector(1, 1),
-    [MetaLogicGateBuilding.variants.or]: () => new Vector(1, 1),
-    [MetaLogicGateBuilding.variants.not]: () => new Vector(1, 1),
-};
-
-MetaLogicGateBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#f48d41",
-    [MetaLogicGateBuilding.variants.xor]: () => "#f4a241",
-    [MetaLogicGateBuilding.variants.or]: () => "#f4d041",
-    [MetaLogicGateBuilding.variants.not]: () => "#f44184",
-};
-
-MetaLogicGateBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaLogicGateBuilding.variants.xor]: () => true,
-    [MetaLogicGateBuilding.variants.or]: () => true,
-    [MetaLogicGateBuilding.variants.not]: () => true,
-};
-
-MetaLogicGateBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaLogicGateBuilding.variants.xor]: () => true,
-    [MetaLogicGateBuilding.variants.or]: () => true,
-    [MetaLogicGateBuilding.variants.not]: () => true,
-};
-
-MetaLogicGateBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-    [MetaLogicGateBuilding.variants.xor]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-    [MetaLogicGateBuilding.variants.or]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-    [MetaLogicGateBuilding.variants.not]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-};
-
-MetaLogicGateBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "wires",
-    [MetaLogicGateBuilding.variants.xor]: root => "wires",
-    [MetaLogicGateBuilding.variants.or]: root => "wires",
-    [MetaLogicGateBuilding.variants.not]: root => "wires",
-};
-
-MetaLogicGateBuilding.renderPins = {
-    [defaultBuildingVariant]: () => false,
-    [MetaLogicGateBuilding.variants.xor]: () => false,
-    [MetaLogicGateBuilding.variants.or]: () => false,
-    [MetaLogicGateBuilding.variants.not]: () => false,
-};
-
-MetaLogicGateBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-    [MetaLogicGateBuilding.variants.xor]: () => "wires",
-    [MetaLogicGateBuilding.variants.or]: () => "wires",
-    [MetaLogicGateBuilding.variants.not]: () => "wires",
-};
-
-MetaLogicGateBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.and;
-    },
-
-    [MetaLogicGateBuilding.variants.xor]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.xor;
-    },
-
-    [MetaLogicGateBuilding.variants.or]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.right,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.or;
-    },
-    [MetaLogicGateBuilding.variants.not]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-                type: enumPinSlotType.logicalEjector,
-            },
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.bottom,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.LogicGate.type = enumLogicGateType.not;
-    },
-};

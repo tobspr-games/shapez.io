@@ -119,121 +119,124 @@ export class MetaFilterBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaFilterBuilding.componentVariations[variant](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new WiredPinsComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            direction: enumDirection.left,
+                            type: enumPinSlotType.logicalAcceptor,
+                        },
+                    ],
+                })
+            ),
+
+        entity =>
+            entity.addComponent(
+                new ItemAcceptorComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            directions: [enumDirection.bottom],
+                        },
+                    ],
+                })
+            ),
+
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            direction: enumDirection.top,
+                        },
+                        {
+                            pos: new Vector(1, 0),
+                            direction: enumDirection.right,
+                        },
+                    ],
+                })
+            ),
+
+        entity => entity.addComponent(new FilterComponent()),
+    ];
+
+    static overlayMatrices = {
+        [defaultBuildingVariant]: () => null,
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(2, 1),
+    };
+
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#c45c2e",
+    };
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_filter),
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => "wires",
+    };
+
+    static additionalStatistics = {
+        [defaultBuildingVariant]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed()),
+            ],
+        ],
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => true,
+    };
+
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.WiredPins.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.left,
+                    type: enumPinSlotType.logicalAcceptor,
+                },
+            ]);
+
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                },
+            ]);
+
+            entity.components.ItemEjector.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                },
+                {
+                    pos: new Vector(1, 0),
+                    direction: enumDirection.right,
+                },
+            ]);
+        },
+    };
 }
-
-MetaFilterBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new WiredPinsComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.left,
-                        type: enumPinSlotType.logicalAcceptor,
-                    },
-                ],
-            })
-        ),
-
-    entity =>
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                    },
-                ],
-            })
-        ),
-
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top,
-                    },
-                    {
-                        pos: new Vector(1, 0),
-                        direction: enumDirection.right,
-                    },
-                ],
-            })
-        ),
-
-    entity => entity.addComponent(new FilterComponent()),
-];
-
-MetaFilterBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: () => null,
-};
-
-MetaFilterBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(2, 1),
-};
-
-MetaFilterBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#c45c2e",
-};
-
-MetaFilterBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaFilterBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaFilterBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_filter),
-};
-
-MetaFilterBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-};
-
-MetaFilterBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => "wires",
-};
-
-MetaFilterBuilding.additionalStatistics = {
-    [defaultBuildingVariant]: root => [
-        [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed())],
-    ],
-};
-
-MetaFilterBuilding.renderPins = {
-    [defaultBuildingVariant]: () => true,
-};
-
-MetaFilterBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.WiredPins.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.left,
-                type: enumPinSlotType.logicalAcceptor,
-            },
-        ]);
-
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            },
-        ]);
-
-        entity.components.ItemEjector.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-            },
-            {
-                pos: new Vector(1, 0),
-                direction: enumDirection.right,
-            },
-        ]);
-    },
-};

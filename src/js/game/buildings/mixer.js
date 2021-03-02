@@ -104,102 +104,102 @@ export class MetaMixerBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaMixerBuilding.componentVariations[variant](entity, rotationVariant);
     }
-}
 
-MetaMixerBuilding.setupEntityComponents = [
-    entity =>
-        entity.addComponent(
-            new ItemProcessorComponent({
-                inputsPerCharge: 2,
-                processorType: enumItemProcessorTypes.mixer,
-            })
-        ),
+    static setupEntityComponents = [
+        entity =>
+            entity.addComponent(
+                new ItemProcessorComponent({
+                    inputsPerCharge: 2,
+                    processorType: enumItemProcessorTypes.mixer,
+                })
+            ),
 
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
-            })
-        ),
-    entity =>
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
-                        filter: "color",
-                    },
-                    {
-                        pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
-                        filter: "color",
-                    },
-                ],
-            })
-        ),
-];
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
+                })
+            ),
+        entity =>
+            entity.addComponent(
+                new ItemAcceptorComponent({
+                    slots: [
+                        {
+                            pos: new Vector(0, 0),
+                            directions: [enumDirection.bottom],
+                            filter: "color",
+                        },
+                        {
+                            pos: new Vector(1, 0),
+                            directions: [enumDirection.bottom],
+                            filter: "color",
+                        },
+                    ],
+                })
+            ),
+    ];
 
-MetaMixerBuilding.silhouetteColors = {
-    [defaultBuildingVariant]: () => "#cdbb7d",
-};
+    static silhouetteColors = {
+        [defaultBuildingVariant]: () => "#cdbb7d",
+    };
 
-MetaMixerBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(2, 1),
-};
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(2, 1),
+    };
 
-MetaMixerBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-};
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+    };
 
-MetaMixerBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-};
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+    };
 
-MetaMixerBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-};
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+    };
 
-MetaMixerBuilding.overlayMatrices = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => null,
-};
+    static overlayMatrices = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => null,
+    };
 
-MetaMixerBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_mixer),
-};
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_mixer),
+    };
 
-MetaMixerBuilding.additionalStatistics = {
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [defaultBuildingVariant]: root => [
-        [
-            T.ingame.buildingPlacement.infoTexts.speed,
-            formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer)),
+    static additionalStatistics = {
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [defaultBuildingVariant]: root => [
+            [
+                T.ingame.buildingPlacement.infoTexts.speed,
+                formatItemsPerSecond(root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer)),
+            ],
         ],
-    ],
-};
+    };
 
-MetaMixerBuilding.componentVariations = {
-    [defaultBuildingVariant]: (entity, rotationVariant) => {
-        entity.components.ItemProcessor.inputsPerCharge = 2;
+    static componentVariations = {
+        [defaultBuildingVariant]: (entity, rotationVariant) => {
+            entity.components.ItemProcessor.inputsPerCharge = 2;
 
-        entity.components.ItemProcessor.type = enumItemProcessorTypes.mixer;
+            entity.components.ItemProcessor.type = enumItemProcessorTypes.mixer;
 
-        entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
+            entity.components.ItemEjector.setSlots([{ pos: new Vector(0, 0), direction: enumDirection.top }]);
 
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-            {
-                pos: new Vector(1, 0),
-                directions: [enumDirection.bottom],
-                filter: "color",
-            },
-        ]);
-    },
-};
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+                {
+                    pos: new Vector(1, 0),
+                    directions: [enumDirection.bottom],
+                    filter: "color",
+                },
+            ]);
+        },
+    };
+}

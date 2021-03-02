@@ -234,142 +234,139 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         entity.components.UndergroundBelt.tier = MetaUndergroundBeltBuilding.variantToTier[variant];
         MetaUndergroundBeltBuilding.componentVariationsByRotation[mode](entity, rotationVariant);
     }
+
+    static setupEntityComponents = [
+        // Required, since the item processor needs this.
+        entity =>
+            entity.addComponent(
+                new ItemEjectorComponent({
+                    slots: [],
+                })
+            ),
+        entity => entity.addComponent(new UndergroundBeltComponent({})),
+        entity =>
+            entity.addComponent(
+                new ItemAcceptorComponent({
+                    slots: [],
+                })
+            ),
+    ];
+
+    static rotationVariants = [0, 1];
+
+    static variants = {
+        tier2: "tier2",
+    };
+
+    static overlayMatricesByRotation = [
+        // Sender
+        (entity, rotationVariant) => generateMatrixRotations([1, 1, 1, 0, 1, 0, 0, 1, 0]),
+        // Receiver
+        (entity, rotationVariant) => generateMatrixRotations([0, 1, 0, 0, 1, 0, 1, 1, 1]),
+    ];
+
+    static rotationVariantToMode = [enumUndergroundBeltMode.sender, enumUndergroundBeltMode.receiver];
+
+    static variantToTier = {
+        [defaultBuildingVariant]: 0,
+        [MetaUndergroundBeltBuilding.variants.tier2]: 1,
+    };
+
+    static dimensions = {
+        [defaultBuildingVariant]: () => new Vector(1, 1),
+        [MetaUndergroundBeltBuilding.variants.tier2]: () => new Vector(1, 1),
+    };
+
+    static silhouetteColorsByRotation = [() => "#6d9dff", () => "#71ff9c"];
+
+    static isRemovable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaUndergroundBeltBuilding.variants.tier2]: () => true,
+    };
+
+    static isRotateable = {
+        [defaultBuildingVariant]: () => true,
+        [MetaUndergroundBeltBuilding.variants.tier2]: () => true,
+    };
+
+    static renderPins = {
+        [defaultBuildingVariant]: () => null,
+        [MetaUndergroundBeltBuilding.variants.tier2]: () => null,
+    };
+
+    static layerPreview = {
+        [defaultBuildingVariant]: () => null,
+        [MetaUndergroundBeltBuilding.variants.tier2]: () => null,
+    };
+
+    static avaibleVariants = {
+        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_tunnel),
+        [MetaUndergroundBeltBuilding.variants.tier2]: root =>
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2),
+    };
+
+    static layerByVariant = {
+        [defaultBuildingVariant]: root => "regular",
+        [MetaUndergroundBeltBuilding.variants.tier2]: root => "regular",
+    };
+
+    static additionalStatistics = {
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [defaultBuildingVariant]: root => {
+            const rangeTiles = globalConfig.undergroundBeltMaxTilesByTier[0];
+
+            const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
+            return [
+                [
+                    T.ingame.buildingPlacement.infoTexts.range,
+                    T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
+                ],
+                [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
+            ];
+        },
+
+        /**
+         * @param {*} root
+         * @returns {Array<[string, string]>}
+         */
+        [MetaUndergroundBeltBuilding.variants.tier2]: root => {
+            const rangeTiles = globalConfig.undergroundBeltMaxTilesByTier[1];
+
+            const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
+            return [
+                [
+                    T.ingame.buildingPlacement.infoTexts.range,
+                    T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
+                ],
+                [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
+            ];
+        },
+    };
+
+    static componentVariationsByRotation = {
+        [enumUndergroundBeltMode.sender]: (entity, rotationVariant) => {
+            entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.sender;
+            entity.components.ItemEjector.setSlots([]);
+            entity.components.ItemAcceptor.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    directions: [enumDirection.bottom],
+                },
+            ]);
+        },
+
+        [enumUndergroundBeltMode.receiver]: (entity, rotationVariant) => {
+            entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.receiver;
+            entity.components.ItemAcceptor.setSlots([]);
+            entity.components.ItemEjector.setSlots([
+                {
+                    pos: new Vector(0, 0),
+                    direction: enumDirection.top,
+                },
+            ]);
+        },
+    };
 }
-
-MetaUndergroundBeltBuilding.setupEntityComponents = [
-    // Required, since the item processor needs this.
-    entity =>
-        entity.addComponent(
-            new ItemEjectorComponent({
-                slots: [],
-            })
-        ),
-    entity => entity.addComponent(new UndergroundBeltComponent({})),
-    entity =>
-        entity.addComponent(
-            new ItemAcceptorComponent({
-                slots: [],
-            })
-        ),
-];
-
-MetaUndergroundBeltBuilding.rotationVariants = [0, 1];
-
-MetaUndergroundBeltBuilding.variants = {
-    tier2: "tier2",
-};
-
-MetaUndergroundBeltBuilding.overlayMatricesByRotation = [
-    // Sender
-    (entity, rotationVariant) => generateMatrixRotations([1, 1, 1, 0, 1, 0, 0, 1, 0]),
-    // Receiver
-    (entity, rotationVariant) => generateMatrixRotations([0, 1, 0, 0, 1, 0, 1, 1, 1]),
-];
-
-MetaUndergroundBeltBuilding.rotationVariantToMode = [
-    enumUndergroundBeltMode.sender,
-    enumUndergroundBeltMode.receiver,
-];
-
-MetaUndergroundBeltBuilding.variantToTier = {
-    [defaultBuildingVariant]: 0,
-    [MetaUndergroundBeltBuilding.variants.tier2]: 1,
-};
-
-MetaUndergroundBeltBuilding.dimensions = {
-    [defaultBuildingVariant]: () => new Vector(1, 1),
-    [MetaUndergroundBeltBuilding.variants.tier2]: () => new Vector(1, 1),
-};
-
-MetaUndergroundBeltBuilding.silhouetteColorsByRotation = [() => "#6d9dff", () => "#71ff9c"];
-
-MetaUndergroundBeltBuilding.isRemovable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaUndergroundBeltBuilding.variants.tier2]: () => true,
-};
-
-MetaUndergroundBeltBuilding.isRotateable = {
-    [defaultBuildingVariant]: () => true,
-    [MetaUndergroundBeltBuilding.variants.tier2]: () => true,
-};
-
-MetaUndergroundBeltBuilding.renderPins = {
-    [defaultBuildingVariant]: () => null,
-    [MetaUndergroundBeltBuilding.variants.tier2]: () => null,
-};
-
-MetaUndergroundBeltBuilding.layerPreview = {
-    [defaultBuildingVariant]: () => null,
-    [MetaUndergroundBeltBuilding.variants.tier2]: () => null,
-};
-
-MetaUndergroundBeltBuilding.avaibleVariants = {
-    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_tunnel),
-    [MetaUndergroundBeltBuilding.variants.tier2]: root =>
-        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_underground_belt_tier_2),
-};
-
-MetaUndergroundBeltBuilding.layerByVariant = {
-    [defaultBuildingVariant]: root => "regular",
-    [MetaUndergroundBeltBuilding.variants.tier2]: root => "regular",
-};
-
-MetaUndergroundBeltBuilding.additionalStatistics = {
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [defaultBuildingVariant]: root => {
-        const rangeTiles = globalConfig.undergroundBeltMaxTilesByTier[0];
-
-        const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
-        return [
-            [
-                T.ingame.buildingPlacement.infoTexts.range,
-                T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
-            ],
-            [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
-        ];
-    },
-
-    /**
-     * @param {*} root
-     * @returns {Array<[string, string]>}
-     */
-    [MetaUndergroundBeltBuilding.variants.tier2]: root => {
-        const rangeTiles = globalConfig.undergroundBeltMaxTilesByTier[1];
-
-        const beltSpeed = root.hubGoals.getUndergroundBeltBaseSpeed();
-        return [
-            [
-                T.ingame.buildingPlacement.infoTexts.range,
-                T.ingame.buildingPlacement.infoTexts.tiles.replace("<x>", "" + rangeTiles),
-            ],
-            [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)],
-        ];
-    },
-};
-
-MetaUndergroundBeltBuilding.componentVariationsByRotation = {
-    [enumUndergroundBeltMode.sender]: (entity, rotationVariant) => {
-        entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.sender;
-        entity.components.ItemEjector.setSlots([]);
-        entity.components.ItemAcceptor.setSlots([
-            {
-                pos: new Vector(0, 0),
-                directions: [enumDirection.bottom],
-            },
-        ]);
-    },
-
-    [enumUndergroundBeltMode.receiver]: (entity, rotationVariant) => {
-        entity.components.UndergroundBelt.mode = enumUndergroundBeltMode.receiver;
-        entity.components.ItemAcceptor.setSlots([]);
-        entity.components.ItemEjector.setSlots([
-            {
-                pos: new Vector(0, 0),
-                direction: enumDirection.top,
-            },
-        ]);
-    },
-};
