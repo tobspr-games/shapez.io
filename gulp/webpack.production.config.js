@@ -139,7 +139,8 @@ module.exports = ({
                             beautify: false,
                             braces: false,
                             ecma: es6 ? 6 : 5,
-                            preamble: "/* shapez.io Codebase - Copyright 2020 Tobias Springer - " +
+                            preamble:
+                                "/* shapez.io Codebase - Copyright 2020 Tobias Springer - " +
                                 getVersion() +
                                 " @ " +
                                 getRevision() +
@@ -163,7 +164,8 @@ module.exports = ({
             }),
         ],
         module: {
-            rules: [{
+            rules: [
+                {
                     test: /\.json$/,
                     enforce: "pre",
                     use: ["./gulp/loader.compressjson"],
@@ -174,7 +176,8 @@ module.exports = ({
                     test: /\.js$/,
                     enforce: "pre",
                     exclude: /node_modules/,
-                    use: [{
+                    use: [
+                        {
                             loader: "webpack-strip-block",
                             options: {
                                 start: "typehints:start",
@@ -225,7 +228,8 @@ module.exports = ({
                 },
                 {
                     test: /\.worker\.js$/,
-                    use: [{
+                    use: [
+                        {
                             loader: "worker-loader",
                             options: {
                                 fallback: false,

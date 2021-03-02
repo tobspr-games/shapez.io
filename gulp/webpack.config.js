@@ -27,7 +27,8 @@ module.exports = ({ watch = false, standalone = false }) => {
             new webpack.DefinePlugin({
                 assert: "window.assert",
                 assertAlways: "window.assert",
-                abstract: "window.assert(false, 'abstract method called of: ' + (this.name || (this.constructor && this.constructor.name)));",
+                abstract:
+                    "window.assert(false, 'abstract method called of: ' + (this.name || (this.constructor && this.constructor.name)));",
                 G_HAVE_ASSERT: "true",
                 G_APP_ENVIRONMENT: JSON.stringify("dev"),
                 G_TRACKING_ENDPOINT: JSON.stringify(
@@ -60,7 +61,8 @@ module.exports = ({ watch = false, standalone = false }) => {
             }),
         ],
         module: {
-            rules: [{
+            rules: [
+                {
                     test: /\.json$/,
                     enforce: "pre",
                     use: ["./gulp/loader.compressjson"],
@@ -69,7 +71,8 @@ module.exports = ({ watch = false, standalone = false }) => {
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
                 {
                     test: /\.md$/,
-                    use: [{
+                    use: [
+                        {
                             loader: "html-loader",
                         },
                         "markdown-loader",
@@ -79,13 +82,15 @@ module.exports = ({ watch = false, standalone = false }) => {
                     test: /\.js$/,
                     enforce: "pre",
                     exclude: /node_modules/,
-                    use: [{
-                        loader: "webpack-strip-block",
-                        options: {
-                            start: "typehints:start",
-                            end: "typehints:end",
+                    use: [
+                        {
+                            loader: "webpack-strip-block",
+                            options: {
+                                start: "typehints:start",
+                                end: "typehints:end",
+                            },
                         },
-                    }, ],
+                    ],
                 },
                 {
                     test: /\.worker\.js$/,
