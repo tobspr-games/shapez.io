@@ -155,8 +155,19 @@ ipcMain.on("exit-app", (event, flag) => {
 });
 
 function performFsJob(job) {
-    let fname = path.join(storePath, job.filename);
-    if (job.mods) fname = path.join(modsPath, job.filename);
+    let parent = storePath;
+
+    if (job.mods)
+        let parent = modsPath;
+
+    const fname = path.join(parent, job.filename);
+    const relative = path.relative(parent, fname);
+
+    //If not a child of parent
+    if(!relative && !relative.startsWith('..') && !path.isAbsolute(relative))
+        return {
+            error: "Cannot get above parent folder"
+        }
 
     switch (job.type) {
         case "readDir":
