@@ -698,11 +698,7 @@ export class WireSystem extends GameSystemWithFilter {
             return;
         }
 
-        if (entity.components.Wire && entity.registered &&
-            this.root.entityMgr.componentToEntity.Wire.length === 100) {
-
-            this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.networked);
-        }
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.networked, entity);
 
         // Invalidate affected area
         const originalRect = staticComp.getTileSpaceBounds();

@@ -253,6 +253,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         this.shapeKeyToDefinition[id] = definition;
 
         this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.theLogo, definition);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.toTheMoon, definition);
 
         // logger.log("Registered shape with key (2)", id);
         return definition;

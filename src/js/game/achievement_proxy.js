@@ -16,10 +16,12 @@ export class AchievementProxy {
             return;
         }
 
-        this.provider.initialize()
-            .then(() => {
-                this.root.signals.achievementUnlocked.add(this.provider.unlock, this.provider);
+        this.root.signals.postLoadHook.add(this.onLoad, this);
+    }
 
+    onLoad() {
+        this.provider.initialize(this.root)
+            .then(() => {
                 logger.log("Listening for unlocked achievements");
             })
             .catch(err => {

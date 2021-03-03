@@ -23,7 +23,11 @@ const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.storage]: "<id>",
     [ACHIEVEMENTS.freedom]: "<id>",
     [ACHIEVEMENTS.networked]: "<id>",
-    [ACHIEVEMENTS.theLogo]: "<id>"
+    [ACHIEVEMENTS.theLogo]: "<id>",
+    [ACHIEVEMENTS.toTheMoon]: "<id>",
+    [ACHIEVEMENTS.millionBlueprintShapes]: "<id>",
+
+    [ACHIEVEMENTS.hundredShapes]: "<id>",
 };
 
 export class SteamAchievementProvider extends AchievementProviderInterface {
@@ -32,17 +36,24 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         super(app);
 
         this.initialized = false;
-        this.collection = new AchievementCollection(
-            Object.keys(ACHIEVEMENT_IDS),
-            this.activate.bind(this)
-        );
+        this.keys = Object.keys(ACHIEVEMENT_IDS);
+        this.collection = new AchievementCollection(this.keys, this.activate.bind(this));
 
         logger.log("Steam achievement collection created");
     }
 
-    initialize () {
+    /**
+     * @returns {boolean}
+     */
+    hasAchievements() {
+        return true;
+    }
+
+    initialize (root) {
+        this.collection.initialize(root);
+
         if (!G_IS_STANDALONE) {
-            logger.warn("Steam listener isn't active. Achievements won't sync.");
+            logger.warn("Steam unavailable. Achievements won't sync.");
             return Promise.resolve();
         }
 
@@ -50,14 +61,13 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
 
         return this.ipc.invoke("steam:is-initialized")
             .then(initialized => {
-                if (!initialized) {
+                this.initialized = initialized;
+
+                if (!this.initialized) {
                     logger.warn("Steam failed to intialize. Achievements won't sync.");
-                    return;
+                } else {
+                    logger.log("Steam achievement provider initialized");
                 }
-
-                this.initialized = true;
-
-                logger.log("Steam achievement provider initialized");
             })
             .catch(err => {
                 logger.error("Steam achievement provider error", err);
@@ -66,53 +76,24 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
     }
 
     /**
-     * @param {string} key - Maps to an Achievement
-     * @param {*} [details] - Additional information as needed to validate
+     * @param {string} key - An ACHIEVEMENTS key
+     * @returns {Promise<void>}
      */
-    unlock (key, details) {
-        if (!this.collection.has(key)) {
-            console.log("Achievement already unlocked", key);
-            return;
+    activate (key) {
+        let promise;
+
+        if (!this.initialized) {
+            promise = Promise.resolve();
+        } else {
+            promise = this.ipc.invoke("steam:activate-achievement", ACHIEVEMENT_IDS[key]);
         }
 
-        if (!this.collection.isValid(key, details)) {
-            console.log("Achievement is invalid", key);
-            return;
-        }
-
-        this.collection.unlock(key)
+        return promise 
             .then(() => {
                 logger.log("Achievement unlocked:", key);
             })
             .catch(err => {
-                logger.error("Failed to unlock achievement", err);
+                logger.error("Failed to unlock achievement:", key, err);
             })
-    }
-
-    /**
-     * @param {string} key - Maps to an API ID for the achievement
-     * @returns {string}
-     */
-    getApiId (key) {
-        return ACHIEVEMENT_IDS[key];
-    }
-
-    /**
-     * @param {Achievement} achievement
-     * @returns {Promise<void>}
-     */
-    activate (achievement) {
-        if (!this.initialized) {
-            return Promise.resolve();
-        }
-
-        return this.ipc.invoke("steam:activate-achievement", this.getApiId(achievement.key))
-    }
-
-    /**
-     * @returns {boolean}
-     */
-    hasAchievements() {
-        return true;
     }
 }
