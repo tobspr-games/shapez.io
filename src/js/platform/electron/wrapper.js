@@ -1,3 +1,4 @@
+import { NoAchievementProvider } from "../browser/no_achievement_provider";
 import { PlatformWrapperImplBrowser } from "../browser/wrapper";
 import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
@@ -22,7 +23,8 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
         this.app.storage = new StorageImplElectron(this);
         this.app.achievementProvider = new SteamAchievementProvider(this.app);
 
-        return PlatformWrapperInterface.prototype.initialize.call(this);
+        return this.initializeAchievementProvider()
+            .then(() => PlatformWrapperInterface.prototype.initialize.call(this));
     }
 
     steamOverlayFixRedrawCanvas() {
@@ -53,6 +55,15 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
 
     initializeAdProvider() {
         return Promise.resolve();
+    }
+
+    initializeAchievementProvider() {
+        return this.app.achievementProvider.initialize()
+            .catch(err => {
+                logger.error("Failed to initialize achievement provider, disabling:", err);
+
+                this.app.achievementProvider = new NoAchievementProvider(this.app);
+            });
     }
 
     getSupportsFullscreen() {

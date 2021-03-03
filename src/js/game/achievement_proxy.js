@@ -3,6 +3,7 @@ import { GameRoot } from "./root";
 /* typehints:end */
 
 import { createLogger } from "../core/logging";
+import { ACHIEVEMENTS } from "../platform/achievement_provider";
 
 const logger = createLogger("achievement_proxy");
 
@@ -20,9 +21,10 @@ export class AchievementProxy {
     }
 
     onLoad() {
-        this.provider.initialize(this.root)
+        this.provider.onLoad(this.root)
             .then(() => {
                 logger.log("Listening for unlocked achievements");
+                this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.darkMode);
             })
             .catch(err => {
                 logger.error("Ignoring achievement signals", err);

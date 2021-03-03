@@ -7,30 +7,34 @@ import { ShapeDefinition } from "../game/shape_definition";
 /* typehints:end */
 
 export const ACHIEVEMENTS = {
-    painting: "painting",
+    blueprints: "blueprints",
     cutting: "cutting",
+    darkMode: "darkMode",
+    fourLayers: "fourLayers",
+    freedom: "freedom",
+    hundredShapes: "hundredShapes",
+    longBelt: "longBelt",
+    millionBlueprintShapes: "millionBlueprintShapes",
+    networked: "networked",
+    painting: "painting",
     rotating: "rotating",
     stacking: "stacking",
-    blueprints: "blueprints",
-    wires: "wires",
     storage: "storage",
-    freedom: "freedom",
-    networked: "networked",
     theLogo: "theLogo",
     toTheMoon: "toTheMoon",
-    millionBlueprintShapes: "millionBlueprintShapes",
-
-    hundredShapes: "hundredShapes",
+    wires: "wires",
 };
 
+const BLUEPRINT_SHAPE = "CbCbCbRb:CwCwCwCw";
+const DARK_MODE = "dark";
+const FREEDOM_LEVEL = 26;
+const LOGO_SHAPE = "RuCw--Cw:----Ru--";
+const LONG_BELT_COUNT = 200;
+const NETWORKED_WIRE_COUNT = 100;
 const ONE_HUNDRED = 100;
 const ONE_MILLION = 1000000;
-const BLUEPRINT_SHAPE = "CbCbCbRb:CwCwCwCw";
-const LOGO_SHAPE = "RuCw--Cw:----Ru--";
 const ROCKET_SHAPE = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
-const FREEDOM_LEVEL = 26;
 const WIRES_LEVEL = 20;
-const NETWORKED_WIRE_COUNT = 100;
 
 export class AchievementProviderInterface {
     /** @param {Application} app */
@@ -43,6 +47,26 @@ export class AchievementProviderInterface {
      * @returns {Promise<void>}
      */
     initialize() {
+        abstract;
+        return Promise.reject();
+    }
+
+    /**
+     * Opportunity to do additional initialization work with the GameRoot.
+     * @param {GameRoot} root
+     * @returns {Promise<void>}
+     */
+    onLoad(root) {
+        abstract;
+        return Promise.reject();
+    }
+
+    /**
+     * Call to activate an achievement with the provider
+     * @param {string} key - Maps to an Achievement
+     * @returns {Promise<void>}
+     */
+    activate(key) {
         abstract;
         return Promise.reject();
     }
@@ -61,14 +85,17 @@ export class Achievement {
     /** @param {string} key - An ACHIEVEMENTS key */
     constructor(key) {
         this.key = key;
-        this.unlocked = false;
-        this.signal = null;
-        this.receiver = null;
         this.activate = null;
         this.activatePromise = null;
+        this.receiver = null;
+        this.signal = null;
     }
 
-    isValid () {
+    isValid() {
+        return true;
+    }
+
+    isRelevant() {
         return true;
     }
 
@@ -83,18 +110,62 @@ export class Achievement {
 
 export class AchievementCollection {
     /**
-     * @param {string[]} keys - An array of ACHIEVEMENTS keys
-     * @param {function} [activate] - Resolves when provider activation is complete
+     * @param {function} activate - Resolves when provider activation is complete
      */
-    constructor(keys, activate) {
+    constructor(activate) {
         this.map = new Map();
         this.activate = activate;
+        this.initialized = false;
 
-        assert(Object.keys(ACHIEVEMENTS).length === keys.length, "Mismatched achievements");
-
-        for (var i = 0; i < keys.length; i++) {
-            assert(ACHIEVEMENTS[keys[i]], "Achievement does not exist: " + keys[i]);
-        }
+        this.createAndSet(ACHIEVEMENTS.blueprints, {
+            isValid: this.isBlueprintsValid
+        });
+        this.createAndSet(ACHIEVEMENTS.cutting);
+        this.createAndSet(ACHIEVEMENTS.darkMode, {
+            isValid: this.isDarkModeValid
+        });
+        this.createAndSet(ACHIEVEMENTS.fourLayers, {
+            isValid: this.isFourLayersValid
+        });
+        this.createAndSet(ACHIEVEMENTS.freedom, {
+            isRelevant: this.isFreedomRelevant,
+            isValid: this.isFreedomValid,
+            signal: "storyGoalCompleted"
+        });
+        this.createAndSet(ACHIEVEMENTS.hundredShapes, {
+            isRelevant: this.isHundredShapesRelevant,
+            isValid: this.isHundredShapesValid,
+            signal: "shapeDelivered"
+        });
+        this.createAndSet(ACHIEVEMENTS.longBelt, {
+            isValid: this.isLongBeltValid,
+            signal: "entityAdded"
+        });
+        this.createAndSet(ACHIEVEMENTS.millionBlueprintShapes, {
+            isValid: this.isMillionBlueprintShapesValid,
+            signal: "shapeDelivered"
+        });
+        this.createAndSet(ACHIEVEMENTS.networked, {
+            isValid: this.isNetworkedValid,
+        });
+        this.createAndSet(ACHIEVEMENTS.painting);
+        this.createAndSet(ACHIEVEMENTS.rotating);
+        this.createAndSet(ACHIEVEMENTS.stacking);
+        this.createAndSet(ACHIEVEMENTS.storage, {
+            isValid: this.isStorageValid,
+            signal: "entityGotNewComponent"
+        });
+        this.createAndSet(ACHIEVEMENTS.theLogo, {
+            isValid: this.isTheLogoValid
+        });
+        this.createAndSet(ACHIEVEMENTS.toTheMoon, {
+            isValid: this.isToTheMoonValid
+        });
+        this.createAndSet(ACHIEVEMENTS.wires, {
+            isRelevant: this.isWiresRelevant,
+            isValid: this.isWiresValid,
+            signal: "storyGoalCompleted"
+        });
     }
 
     /** @param {GameRoot} root */
@@ -102,58 +173,49 @@ export class AchievementCollection {
         this.root = root;
         this.root.signals.achievementUnlocked.add(this.unlock, this);
 
-        this.createAndSet(ACHIEVEMENTS.painting)
-        this.createAndSet(ACHIEVEMENTS.cutting)
-        this.createAndSet(ACHIEVEMENTS.rotating)
-        this.createAndSet(ACHIEVEMENTS.stacking)
-        this.createAndSet(ACHIEVEMENTS.blueprints, this.isBlueprintsValid);
+        for (let [key, achievement] of this.map.entries()) {
+            if (!achievement.isRelevant()) {
+                this.remove(key);
+                continue;
+            }
 
-        if (this.isWiresRelevant()) {
-            this.createAndSet(ACHIEVEMENTS.wires, this.isWiresValid, "storyGoalCompleted");
+            if (achievement.signal) {
+                achievement.receiver = this.unlock.bind(this, key);
+                this.root.signals[achievement.signal].add(achievement.receiver);
+            }
         }
 
-        this.createAndSet(ACHIEVEMENTS.storage, this.isStorageValid, "entityGotNewComponent");
-
-        if (this.isFreedomRelevant()) { // ...is it?
-            this.createAndSet(ACHIEVEMENTS.freedom, this.isFreedomValid, "storyGoalCompleted");
+        if (!this.hasDefaultReceivers()) {
+            this.root.signals.achievementUnlocked.remove(this.unlock);
         }
 
-        this.createAndSet(ACHIEVEMENTS.networked, this.isNetworkedValid);
-        this.createAndSet(ACHIEVEMENTS.theLogo, this.isTheLogoValid);
-        this.createAndSet(ACHIEVEMENTS.toTheMoon, this.isToTheMoonValid);
-        this.createAndSet(
-            ACHIEVEMENTS.millionBlueprintShapes,
-            this.isMillionBlueprintShapesValid,
-            "shapeDelivered"
-        );
-
-        if (this.isHundredShapesRelevant()) {
-            this.createAndSet(
-                ACHIEVEMENTS.hundredShapes,
-                this.isHundredShapesValid,
-                "shapeDelivered"
-            );
-        }
+        this.initialized = true;
     }
 
     /**
      * @param {string} key - Maps to an Achievement
-     * @param {function} [isValid] - Validates achievement when a signal message is received
-     * @param {string} [signal] - Signal name to listen to for unlock attempts
+     * @param {object} [options]
+     * @param {function} [options.isValid]
+     * @param {function} [options.isRelevant]
+     * @param {string} [options.signal]
      */
-    createAndSet(key, isValid, signal) {
+    createAndSet(key, options) {
         const achievement = new Achievement(key);
 
         achievement.activate = this.activate;
 
-        if (isValid) {
-            achievement.isValid = isValid.bind(this);
-        }
+        if (options) {
+            if (options.isValid) {
+                achievement.isValid = options.isValid.bind(this);
+            }
 
-        if (signal) {
-            achievement.signal = signal;
-            achievement.receiver = this.unlock.bind(this, key);
-            this.root.signals[achievement.signal].add(achievement.receiver);
+            if (options.isRelevant) {
+                achievement.isRelevant = options.isRelevant.bind(this);
+            }
+
+            if (options.signal) {
+                achievement.signal = options.signal;
+            }
         }
 
         this.map.set(key, achievement);
@@ -165,31 +227,34 @@ export class AchievementCollection {
      */
     unlock(key) {
         if (!this.map.has(key)) {
-            console.log("Achievement unlocked or irrelevant:", key);
             return;
         }
 
         const achievement = this.map.get(key);
 
         if (!achievement.isValid(...arguments)) {
-            console.log("Achievement is invalid:", key);
             return;
         }
 
         return achievement.unlock()
             .finally(() => {
-                if (achievement.receiver) {
-                    this.root.signals[achievement.signal].remove(achievement.receiver);
-                    console.log("Achievement receiver removed:", key);
-                }
-
-                this.map.delete(key);
+                this.remove(key);
 
                 if (!this.hasDefaultReceivers()) {
                     this.root.signals.achievementUnlocked.remove(this.unlock);
-                    console.log("removed achievementUnlocked receiver");
                 }
             });
+    }
+
+    /** @param {string} key - Maps to an Achievement */
+    remove(key) {
+        const achievement = this.map.get(key);
+
+        if (achievement.receiver) {
+            this.root.signals[achievement.signal].remove(achievement.receiver);
+        }
+
+        this.map.delete(key);
     }
 
     hasDefaultReceivers() {
@@ -197,7 +262,7 @@ export class AchievementCollection {
             return false;
         }
 
-        for(let achievement of this.map.values()) {
+        for (let achievement of this.map.values()) {
             if (!achievement.signal) {
                 return true;
             }
@@ -303,4 +368,32 @@ export class AchievementCollection {
     isHundredShapesValid(key) {
         return Object.keys(this.root.hubGoals.storedShapes).length === ONE_HUNDRED;
     }
+
+    /**
+     * @param {string} key
+     * @param {ShapeDefinition} definition
+     * @returns {boolean}
+     */
+    isFourLayersValid(key, definition) {
+        return definition.layers.length === 4;
+    }
+
+    /**
+     * @param {string} key
+     * @param {Entity} entity
+     * @returns {boolean}
+     */
+    isLongBeltValid(key, entity) {
+        return entity.components.Belt &&
+            entity.components.Belt.assignedPath.totalLength >= LONG_BELT_COUNT;
+    }
+
+    /**
+     * @param {string} key
+     * @returns {boolean}
+     */
+    isDarkModeValid(key) {
+        return this.root.app.settings.currentData.settings.theme === DARK_MODE;
+    }
+
 }

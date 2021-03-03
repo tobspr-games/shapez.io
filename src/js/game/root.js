@@ -180,8 +180,8 @@ export class GameRoot {
             // for freeing space before actually placing.
             freeEntityAreaBeforeBuild: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
 
-            // Called with the key of the unlocked achievement
-            achievementUnlocked: /** @type {TypedSignal<[string]>} */ (new Signal()),
+            // Called with an achievement key and necessary args to validate it can be unlocked.
+            achievementUnlocked: /** @type {TypedSignal<[string, ...*]>} */ (new Signal()),
         };
 
         // RNG's

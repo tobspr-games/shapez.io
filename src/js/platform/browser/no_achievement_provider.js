@@ -9,6 +9,11 @@ export class NoAchievementProvider extends AchievementProviderInterface {
         return Promise.resolve();
     }
 
-    unlock() {
+    onLoad() {
+        return Promise.resolve();
+    }
+
+    activate() {
+        return Promise.resolve();
     }
 }

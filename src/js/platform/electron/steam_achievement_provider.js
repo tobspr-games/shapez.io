@@ -1,6 +1,6 @@
 /* typehints:start */
 import { Application } from "../../application";
-import { Achievement } from "../achievement_provider";
+import { GameRoot } from "../../game/root";
 /* typehints:end */
 
 import { createLogger } from "../../core/logging";
@@ -14,20 +14,22 @@ import {
 const logger = createLogger("achievements/steam");
 
 const ACHIEVEMENT_IDS = {
-    [ACHIEVEMENTS.painting]: "<id>",
+    [ACHIEVEMENTS.blueprints]: "<id>",
     [ACHIEVEMENTS.cutting]: "achievement_01", // Test ID
+    [ACHIEVEMENTS.darkMode]: "<id>",
+    [ACHIEVEMENTS.fourLayers]: "<id>",
+    [ACHIEVEMENTS.freedom]: "<id>",
+    [ACHIEVEMENTS.hundredShapes]: "<id>",
+    [ACHIEVEMENTS.longBelt]: "<id>",
+    [ACHIEVEMENTS.millionBlueprintShapes]: "<id>",
+    [ACHIEVEMENTS.networked]: "<id>",
+    [ACHIEVEMENTS.painting]: "<id>",
     [ACHIEVEMENTS.rotating]: "<id>",
     [ACHIEVEMENTS.stacking]: "<id>",
-    [ACHIEVEMENTS.blueprints]: "<id>",
-    [ACHIEVEMENTS.wires]: "<id>",
     [ACHIEVEMENTS.storage]: "<id>",
-    [ACHIEVEMENTS.freedom]: "<id>",
-    [ACHIEVEMENTS.networked]: "<id>",
     [ACHIEVEMENTS.theLogo]: "<id>",
     [ACHIEVEMENTS.toTheMoon]: "<id>",
-    [ACHIEVEMENTS.millionBlueprintShapes]: "<id>",
-
-    [ACHIEVEMENTS.hundredShapes]: "<id>",
+    [ACHIEVEMENTS.wires]: "<id>",
 };
 
 export class SteamAchievementProvider extends AchievementProviderInterface {
@@ -36,10 +38,9 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         super(app);
 
         this.initialized = false;
-        this.keys = Object.keys(ACHIEVEMENT_IDS);
-        this.collection = new AchievementCollection(this.keys, this.activate.bind(this));
+        this.collection = new AchievementCollection(this.activate.bind(this));
 
-        logger.log("Steam achievement collection created");
+        logger.log("Collection created with", this.collection.map.size, "achievements");
     }
 
     /**
@@ -49,9 +50,23 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         return true;
     }
 
-    initialize (root) {
-        this.collection.initialize(root);
+    /** @param {GameRoot} root */
+    onLoad(root) {
+        if (this.collection.initialized) {
+            return Promise.resolve();
+        }
 
+        try {
+            this.collection.initialize(root);
+            logger.log(this.collection.map.size, "achievements are relevant and initialized");
+            return Promise.resolve();
+        } catch (err) {
+            logger.error("Failed to initialize the achievement collection");
+            return Promise.reject(err);
+        }
+    }
+
+    initialize() {
         if (!G_IS_STANDALONE) {
             logger.warn("Steam unavailable. Achievements won't sync.");
             return Promise.resolve();
@@ -68,11 +83,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
                 } else {
                     logger.log("Steam achievement provider initialized");
                 }
-            })
-            .catch(err => {
-                logger.error("Steam achievement provider error", err);
-                throw err;
-            })
+            });
     }
 
     /**
@@ -90,10 +101,10 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
 
         return promise 
             .then(() => {
-                logger.log("Achievement unlocked:", key);
+                logger.log("Achievement activated:", key);
             })
             .catch(err => {
-                logger.error("Failed to unlock achievement:", key, err);
+                logger.error("Failed to activate achievement:", key, err);
             })
     }
 }
