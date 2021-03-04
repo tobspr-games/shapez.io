@@ -13,8 +13,11 @@ export const ACHIEVEMENTS = {
     completeLvl26: "completeLvl26",
     cutShape: "cutShape",
     darkMode: "darkMode",
+    irrelevantShape: "irrelevantShape",
     level100: "level100",
     level50: "level50",
+    oldLevel17: "oldLevel17",
+    openWires: "openWires",
     paintShape: "paintShape",
     place5000Wires: "place5000Wires",
     placeBlueprint: "placeBlueprint",
@@ -33,6 +36,7 @@ export const ACHIEVEMENTS = {
 };
 
 const DARK_MODE = "dark";
+const WIRE_LAYER = "wires";
 const HOUR_1 = 3600; // Seconds
 const HOUR_10 = HOUR_1 * 10;
 const HOUR_20 = HOUR_1 * 20;
@@ -40,6 +44,7 @@ const SHAPE_BLUEPRINT = "CbCbCbRb:CwCwCwCw";
 const SHAPE_LOGO = "RuCw--Cw:----Ru--";
 const SHAPE_MS_LOGO = "RgRyRbRr";
 const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+const SHAPE_OLD_LEVEL_17 = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
 
 export class AchievementProviderInterface {
     /** @param {Application} app */
@@ -144,8 +149,19 @@ export class AchievementCollection {
         this.createAndSet(ACHIEVEMENTS.darkMode, {
             isValid: this.isDarkModeValid,
         });
+        /*
+         *this.createAndSet(ACHIEVEMENTS.irrelevantShape, {
+         *    isValid: this.isIrrelevantShapeValid,
+         *    signal: "shapeDelivered",
+         *});
+         */
         this.createAndSet(ACHIEVEMENTS.level100, this.createLevelOptions(100));
         this.createAndSet(ACHIEVEMENTS.level50, this.createLevelOptions(50));
+        this.createAndSet(ACHIEVEMENTS.oldLevel17, this.createShapeOptions(SHAPE_OLD_LEVEL_17));
+        this.createAndSet(ACHIEVEMENTS.openWires, {
+            isValid: this.isOpenWiresValid,
+            signal: "editModeChanged",
+        });
         this.createAndSet(ACHIEVEMENTS.paintShape);
         this.createAndSet(ACHIEVEMENTS.place5000Wires, {
             isValid: this.isPlace5000WiresValid,
@@ -344,6 +360,24 @@ export class AchievementCollection {
      */
     isDarkModeValid(key) {
         return this.root.app.settings.currentData.settings.theme === DARK_MODE;
+    }
+
+    /**
+     * @param {string} key
+     * @param {ShapeDefinition} definition
+     * @returns {boolean}
+     */
+    isIrrelevantShapeValid(key, definition) {
+        //return definition.cachedHash !== this.hubGoals.currentGoal.definition.cachedHash
+    }
+
+    /**
+     * @param {string} key
+     * @param {string} currentLayer
+     * @returns {boolean}
+     */
+    isOpenWiresValid(key, currentLayer) {
+        return currentLayer === WIRE_LAYER;
     }
 
     /**

@@ -252,6 +252,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         }
         this.shapeKeyToDefinition[id] = definition;
 
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.oldLevel17, definition);
         this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceLogo, definition);
         this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceMsLogo, definition);
         this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceRocket, definition);
