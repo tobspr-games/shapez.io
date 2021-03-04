@@ -97,7 +97,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         const rightSide = definition.cloneFilteredByQuadrants([2, 3]);
         const leftSide = definition.cloneFilteredByQuadrants([0, 1]);
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.cutting);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.cutShape);
 
         return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key] = [
             this.registerOrReturnHandle(rightSide),
@@ -140,7 +140,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
 
         const rotated = definition.cloneRotateCW();
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.rotating);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.rotateShape);
 
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             rotated
@@ -195,7 +195,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.stacking);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.stackShape);
 
         const stacked = lowerDefinition.cloneAndStackWith(upperDefinition);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
@@ -215,7 +215,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.painting);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.paintShape);
 
         const colorized = definition.cloneAndPaintWith(color);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
@@ -252,9 +252,10 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         }
         this.shapeKeyToDefinition[id] = definition;
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.theLogo, definition);
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.toTheMoon, definition);
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.fourLayers, definition);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceLogo, definition);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceMsLogo, definition);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.produceRocket, definition);
+        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.stack4Layers, definition);
 
         // logger.log("Registered shape with key (2)", id);
         return definition;

@@ -164,7 +164,7 @@ export class Blueprint {
                 anyPlaced = true;
             }
 
-            root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.blueprints, anyPlaced);
+            root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.placeBlueprint, anyPlaced);
 
             return anyPlaced;
         });

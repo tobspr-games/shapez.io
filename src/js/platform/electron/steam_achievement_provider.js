@@ -5,31 +5,31 @@ import { GameRoot } from "../../game/root";
 
 import { createLogger } from "../../core/logging";
 import { getIPCRenderer } from "../../core/utils";
-import {
-    ACHIEVEMENTS,
-    AchievementCollection,
-    AchievementProviderInterface
-} from "../achievement_provider";
+import { ACHIEVEMENTS, AchievementCollection, AchievementProviderInterface } from "../achievement_provider";
 
 const logger = createLogger("achievements/steam");
 
 const ACHIEVEMENT_IDS = {
-    [ACHIEVEMENTS.blueprints]: "<id>",
-    [ACHIEVEMENTS.cutting]: "achievement_01", // Test ID
-    [ACHIEVEMENTS.darkMode]: "<id>",
-    [ACHIEVEMENTS.fourLayers]: "<id>",
-    [ACHIEVEMENTS.freedom]: "<id>",
-    [ACHIEVEMENTS.hundredShapes]: "<id>",
-    [ACHIEVEMENTS.longBelt]: "<id>",
-    [ACHIEVEMENTS.millionBlueprintShapes]: "<id>",
-    [ACHIEVEMENTS.networked]: "<id>",
-    [ACHIEVEMENTS.painting]: "<id>",
-    [ACHIEVEMENTS.rotating]: "<id>",
-    [ACHIEVEMENTS.stacking]: "<id>",
-    [ACHIEVEMENTS.storage]: "<id>",
-    [ACHIEVEMENTS.theLogo]: "<id>",
-    [ACHIEVEMENTS.toTheMoon]: "<id>",
-    [ACHIEVEMENTS.wires]: "<id>",
+    [ACHIEVEMENTS.belt500Tiles]: "belt_500_tiles",
+    [ACHIEVEMENTS.blueprint100k]: "blueprint_100k",
+    [ACHIEVEMENTS.blueprint1m]: "blueprint_1m",
+    [ACHIEVEMENTS.completeLvl26]: "complete_lvl_26",
+    [ACHIEVEMENTS.cutShape]: "cut_shape",
+    [ACHIEVEMENTS.darkMode]: "dark_mode",
+    [ACHIEVEMENTS.level100]: "level_100",
+    [ACHIEVEMENTS.level50]: "level_50",
+    [ACHIEVEMENTS.paintShape]: "paint_shape",
+    [ACHIEVEMENTS.place5000Wires]: "place_5000_wires",
+    [ACHIEVEMENTS.placeBlueprint]: "place_blueprint",
+    [ACHIEVEMENTS.produceLogo]: "produce_logo",
+    [ACHIEVEMENTS.produceMsLogo]: "produce_ms_logo",
+    [ACHIEVEMENTS.produceRocket]: "produce_rocket",
+    [ACHIEVEMENTS.rotateShape]: "rotate_shape",
+    [ACHIEVEMENTS.stack4Layers]: "stack_4_layers",
+    [ACHIEVEMENTS.stackShape]: "stack_shape",
+    [ACHIEVEMENTS.store100Unique]: "store_100_unique",
+    [ACHIEVEMENTS.storeShape]: "store_shape",
+    [ACHIEVEMENTS.unlockWires]: "unlock_wires",
 };
 
 export class SteamAchievementProvider extends AchievementProviderInterface {
@@ -90,7 +90,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
      * @param {string} key - An ACHIEVEMENTS key
      * @returns {Promise<void>}
      */
-    activate (key) {
+    activate(key) {
         let promise;
 
         if (!this.initialized) {
@@ -99,12 +99,13 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
             promise = this.ipc.invoke("steam:activate-achievement", ACHIEVEMENT_IDS[key]);
         }
 
-        return promise 
+        return promise
             .then(() => {
                 logger.log("Achievement activated:", key);
             })
             .catch(err => {
                 logger.error("Failed to activate achievement:", key, err);
-            })
+                throw err;
+            });
     }
 }
