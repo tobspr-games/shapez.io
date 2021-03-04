@@ -5,6 +5,10 @@ export class NoAchievementProvider extends AchievementProviderInterface {
         return false;
     }
 
+    hasLoaded() {
+        return false;
+    }
+
     initialize() {
         return Promise.resolve();
     }

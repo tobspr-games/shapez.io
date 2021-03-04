@@ -21,6 +21,9 @@ const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.paintShape]: "paint_shape",
     [ACHIEVEMENTS.place5000Wires]: "place_5000_wires",
     [ACHIEVEMENTS.placeBlueprint]: "place_blueprint",
+    [ACHIEVEMENTS.play1h]: "play_1h",
+    [ACHIEVEMENTS.play10h]: "play_10h",
+    [ACHIEVEMENTS.play20h]: "play_20h",
     [ACHIEVEMENTS.produceLogo]: "produce_logo",
     [ACHIEVEMENTS.produceMsLogo]: "produce_ms_logo",
     [ACHIEVEMENTS.produceRocket]: "produce_rocket",
@@ -38,26 +41,34 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         super(app);
 
         this.initialized = false;
+        this.loaded = false;
         this.collection = new AchievementCollection(this.activate.bind(this));
 
         logger.log("Collection created with", this.collection.map.size, "achievements");
     }
 
-    /**
-     * @returns {boolean}
-     */
+    /** @returns {boolean} */
     hasAchievements() {
         return true;
     }
 
-    /** @param {GameRoot} root */
+    /** @returns {boolean} */
+    hasLoaded() {
+        return this.loaded;
+    }
+
+    /**
+     * @param {GameRoot} root
+     * @returns {Promise<void>}
+     */
     onLoad(root) {
-        if (this.collection.initialized) {
+        if (this.loaded) {
             return Promise.resolve();
         }
 
         try {
             this.collection.initialize(root);
+            this.loaded = true;
             logger.log(this.collection.map.size, "achievements are relevant and initialized");
             return Promise.resolve();
         } catch (err) {
@@ -66,6 +77,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         }
     }
 
+    /** @returns {Promise<void>} */
     initialize() {
         if (!G_IS_STANDALONE) {
             logger.warn("Steam unavailable. Achievements won't sync.");
@@ -87,7 +99,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
     }
 
     /**
-     * @param {string} key - An ACHIEVEMENTS key
+     * @param {string} key
      * @returns {Promise<void>}
      */
     activate(key) {

@@ -18,6 +18,9 @@ export const ACHIEVEMENTS = {
     paintShape: "paintShape",
     place5000Wires: "place5000Wires",
     placeBlueprint: "placeBlueprint",
+    play1h: "play1h",
+    play10h: "play10h",
+    play20h: "play20h",
     produceLogo: "produceLogo",
     produceMsLogo: "produceMsLogo",
     produceRocket: "produceRocket",
@@ -30,6 +33,9 @@ export const ACHIEVEMENTS = {
 };
 
 const DARK_MODE = "dark";
+const HOUR_1 = 3600; // Seconds
+const HOUR_10 = HOUR_1 * 10;
+const HOUR_20 = HOUR_1 * 20;
 const SHAPE_BLUEPRINT = "CbCbCbRb:CwCwCwCw";
 const SHAPE_LOGO = "RuCw--Cw:----Ru--";
 const SHAPE_MS_LOGO = "RgRyRbRr";
@@ -58,6 +64,12 @@ export class AchievementProviderInterface {
     onLoad(root) {
         abstract;
         return Promise.reject();
+    }
+
+    /** @returns {boolean} */
+    hasLoaded() {
+        abstract;
+        return false;
     }
 
     /**
@@ -114,7 +126,6 @@ export class AchievementCollection {
     constructor(activate) {
         this.map = new Map();
         this.activate = activate;
-        this.initialized = false;
 
         this.createAndSet(ACHIEVEMENTS.belt500Tiles, {
             isValid: this.isBelt500TilesValid,
@@ -142,6 +153,9 @@ export class AchievementCollection {
         this.createAndSet(ACHIEVEMENTS.placeBlueprint, {
             isValid: this.isPlaceBlueprintValid,
         });
+        this.createAndSet(ACHIEVEMENTS.play1h, this.createTimeOptions(HOUR_1));
+        this.createAndSet(ACHIEVEMENTS.play10h, this.createTimeOptions(HOUR_10));
+        this.createAndSet(ACHIEVEMENTS.play20h, this.createTimeOptions(HOUR_20));
         this.createAndSet(ACHIEVEMENTS.produceLogo, this.createShapeOptions(SHAPE_LOGO));
         this.createAndSet(ACHIEVEMENTS.produceRocket, this.createShapeOptions(SHAPE_ROCKET));
         this.createAndSet(ACHIEVEMENTS.produceMsLogo, this.createShapeOptions(SHAPE_MS_LOGO));
@@ -182,8 +196,6 @@ export class AchievementCollection {
         if (!this.hasDefaultReceivers()) {
             this.root.signals.achievementUnlocked.remove(this.unlock);
         }
-
-        this.initialized = true;
     }
 
     /**
@@ -287,6 +299,13 @@ export class AchievementCollection {
     createShapeOptions (shape) {
         return {
             isValid: (key, definition) => definition.cachedHash === shape
+        }
+    }
+
+    createTimeOptions (duration) {
+        return {
+            isRelevant: () => this.root.time.now() < duration,
+            isValid: () => this.root.time.now() >= duration,
         }
     }
 

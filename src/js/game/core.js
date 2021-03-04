@@ -151,6 +151,9 @@ export class GameCore {
 
                     // Update analytics
                     root.productionAnalytics.update();
+
+                    // Check achievements
+                    root.achievementProxy.update();
                 }
             });
         }
@@ -276,6 +279,9 @@ export class GameCore {
 
             // Update analytics
             root.productionAnalytics.update();
+
+            // Check achievements
+            root.achievementProxy.update();
         }
 
         // Update automatic save after everything finished
