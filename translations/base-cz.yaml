@@ -291,7 +291,7 @@ ingame:
     interactiveTutorial:
         title: Tutoriál
         hints:
-            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště<strong>kruhového
+            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště <strong>kruhového
                 tvaru</strong> a vytěžte jej!
             1_2_conveyor: "Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k
                 vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong>
@@ -563,7 +563,7 @@ buildings:
                 do levé.
         stacker:
             name: Virtuální kombinátor
-            description: Virtuálně Spojí tvary dohromady. Pokud nemohou být spojeny, pravý
+            description: Virtuálně spojí tvary dohromady. Pokud nemohou být spojeny, pravý
                 tvar je položen na levý.
         painter:
             name: Virtuální barvič
