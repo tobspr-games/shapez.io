@@ -181,7 +181,8 @@ export class GameRoot {
             freeEntityAreaBeforeBuild: /** @type {TypedSignal<[Entity]>} */ (new Signal()),
 
             // Called with an achievement key and necessary args to validate it can be unlocked.
-            achievementUnlocked: /** @type {TypedSignal<[string, ...*]>} */ (new Signal()),
+            achievementCheck: /** @type {TypedSignal<[string, *]>} */ (new Signal()),
+            bulkAchievementCheck: /** @type {TypedSignal<[string, ...*]>} */ (new Signal()),
         };
 
         // RNG's

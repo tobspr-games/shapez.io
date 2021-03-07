@@ -149,7 +149,7 @@ export class Blueprint {
      */
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
-            let anyPlaced = false;
+            let count = 0;
             for (let i = 0; i < this.entities.length; ++i) {
                 const entity = this.entities[i];
                 if (!root.logic.checkCanPlaceEntity(entity, tile)) {
@@ -161,12 +161,15 @@ export class Blueprint {
                 root.logic.freeEntityAreaBeforeBuild(clone);
                 root.map.placeStaticEntity(clone);
                 root.entityMgr.registerEntity(clone);
-                anyPlaced = true;
+                count++;
             }
 
-            root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.placeBlueprint, anyPlaced);
+            root.signals.bulkAchievementCheck.dispatch(
+                ACHIEVEMENTS.placeBlueprint, count,
+                ACHIEVEMENTS.placeBp1000, count
+            );
 
-            return anyPlaced;
+            return count !== 0;
         });
     }
 }

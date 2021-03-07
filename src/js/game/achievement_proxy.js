@@ -24,30 +24,27 @@ export class AchievementProxy {
     }
 
     onLoad() {
-        if (this.provider.hasLoaded()) {
-            this.disabled = false;
-            return;
-        }
-
         this.provider.onLoad(this.root)
             .then(() => {
-                logger.log("Listening for unlocked achievements");
-                this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.darkMode);
+                logger.log("Recieving achievement signals");
+                this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.darkMode);
                 this.startSlice();
                 this.disabled = false;
             })
             .catch(err => {
                 this.disabled = true;
                 logger.error("Ignoring achievement signals", err);
-            })
+            });
     }
 
     startSlice() {
         this.lastSlice = this.root.time.now();
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.play1h, this.lastSlice);
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.play10h, this.lastSlice);
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.play20h, this.lastSlice);
+        this.root.signals.bulkAchievementCheck.dispatch(
+            ACHIEVEMENTS.play1h, this.lastSlice,
+            ACHIEVEMENTS.play10h, this.lastSlice,
+            ACHIEVEMENTS.play20h, this.lastSlice
+        );
     }
 
     update() {

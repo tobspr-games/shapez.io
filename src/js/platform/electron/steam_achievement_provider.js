@@ -16,14 +16,18 @@ const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.completeLvl26]: "complete_lvl_26",
     [ACHIEVEMENTS.cutShape]: "cut_shape",
     [ACHIEVEMENTS.darkMode]: "dark_mode",
+    [ACHIEVEMENTS.destroy1000]: "destroy_1000",
     [ACHIEVEMENTS.irrelevantShape]: "irrelevant_shape",
     [ACHIEVEMENTS.level100]: "level_100",
     [ACHIEVEMENTS.level50]: "level_50",
+    [ACHIEVEMENTS.logoBefore18]: "logo_before_18",
+    [ACHIEVEMENTS.mapMarkers15]: "map_markers_15",
     [ACHIEVEMENTS.openWires]: "open_wires",
     [ACHIEVEMENTS.oldLevel17]: "old_level_17",
     [ACHIEVEMENTS.paintShape]: "paint_shape",
     [ACHIEVEMENTS.place5000Wires]: "place_5000_wires",
     [ACHIEVEMENTS.placeBlueprint]: "place_blueprint",
+    [ACHIEVEMENTS.placeBp1000]: "place_bp_1000",
     [ACHIEVEMENTS.play1h]: "play_1h",
     [ACHIEVEMENTS.play10h]: "play_10h",
     [ACHIEVEMENTS.play20h]: "play_20h",
@@ -36,6 +40,8 @@ const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.store100Unique]: "store_100_unique",
     [ACHIEVEMENTS.storeShape]: "store_shape",
     [ACHIEVEMENTS.unlockWires]: "unlock_wires",
+    [ACHIEVEMENTS.upgradesTier5]: "upgrades_tier_5",
+    [ACHIEVEMENTS.upgradesTier8]: "upgrades_tier_8",
 };
 
 export class SteamAchievementProvider extends AchievementProviderInterface {
@@ -44,8 +50,14 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         super(app);
 
         this.initialized = false;
-        this.loaded = false;
+        this.saveId = null;
         this.collection = new AchievementCollection(this.activate.bind(this));
+
+        if (G_IS_DEV) {
+            for (let key in ACHIEVEMENT_IDS) {
+                assert(this.collection.map.has(key), "Key not found in collection: " + key);
+            }
+        }
 
         logger.log("Collection created with", this.collection.map.size, "achievements");
     }
@@ -55,27 +67,26 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         return true;
     }
 
-    /** @returns {boolean} */
-    hasLoaded() {
-        return this.loaded;
-    }
-
     /**
      * @param {GameRoot} root
      * @returns {Promise<void>}
      */
     onLoad(root) {
-        if (this.loaded) {
-            return Promise.resolve();
-        }
+        this.root = root;
 
         try {
-            this.collection.initialize(root);
-            this.loaded = true;
-            logger.log(this.collection.map.size, "achievements are relevant and initialized");
+            if (!this.saveId || this.saveId === this.root.savegame.internalId) {
+                this.collection.initialize(root);
+            } else {
+                this.collection = new AchievementCollection(this.activate.bind(this));
+                this.collection.initialize(root);
+            }
+
+            logger.log("Initialized", this.collection.map.size, "relevant achievements");
+            this.saveId = this.root.savegame.internalId;
             return Promise.resolve();
         } catch (err) {
-            logger.error("Failed to initialize the achievement collection");
+            logger.error("Failed to initialize the collection");
             return Promise.reject(err);
         }
     }

@@ -13,14 +13,18 @@ export const ACHIEVEMENTS = {
     completeLvl26: "completeLvl26",
     cutShape: "cutShape",
     darkMode: "darkMode",
+    destroy1000: "destroy1000",
     irrelevantShape: "irrelevantShape",
     level100: "level100",
     level50: "level50",
+    logoBefore18: "logoBefore18",
+    mapMarkers15: "mapMarkers15",
     oldLevel17: "oldLevel17",
     openWires: "openWires",
     paintShape: "paintShape",
     place5000Wires: "place5000Wires",
     placeBlueprint: "placeBlueprint",
+    placeBp1000: "placeBp1000",
     play1h: "play1h",
     play10h: "play10h",
     play20h: "play20h",
@@ -33,6 +37,8 @@ export const ACHIEVEMENTS = {
     store100Unique: "store100Unique",
     storeShape: "storeShape",
     unlockWires: "unlockWires",
+    upgradesTier5: "upgradesTier5",
+    upgradesTier8: "upgradesTier8",
 };
 
 const DARK_MODE = "dark";
@@ -149,14 +155,23 @@ export class AchievementCollection {
         this.createAndSet(ACHIEVEMENTS.darkMode, {
             isValid: this.isDarkModeValid,
         });
-        /*
-         *this.createAndSet(ACHIEVEMENTS.irrelevantShape, {
-         *    isValid: this.isIrrelevantShapeValid,
-         *    signal: "shapeDelivered",
-         *});
-         */
+        this.createAndSet(ACHIEVEMENTS.destroy1000, {
+            isValid: this.isDestroy1000Valid,
+        });
+        this.createAndSet(ACHIEVEMENTS.irrelevantShape, {
+            isValid: this.isIrrelevantShapeValid,
+            signal: "shapeDelivered",
+        });
         this.createAndSet(ACHIEVEMENTS.level100, this.createLevelOptions(100));
         this.createAndSet(ACHIEVEMENTS.level50, this.createLevelOptions(50));
+        this.createAndSet(ACHIEVEMENTS.logoBefore18, {
+            isRelevant: this.isLogoBefore18Relevant,
+            isValid: this.isLogoBefore18Valid,
+        });
+        this.createAndSet(ACHIEVEMENTS.mapMarkers15, {
+            isRelevant: this.isMapMarkers15Relevant,
+            isValid: this.isMapMarkers15Valid,
+        });
         this.createAndSet(ACHIEVEMENTS.oldLevel17, this.createShapeOptions(SHAPE_OLD_LEVEL_17));
         this.createAndSet(ACHIEVEMENTS.openWires, {
             isValid: this.isOpenWiresValid,
@@ -168,6 +183,9 @@ export class AchievementCollection {
         });
         this.createAndSet(ACHIEVEMENTS.placeBlueprint, {
             isValid: this.isPlaceBlueprintValid,
+        });
+        this.createAndSet(ACHIEVEMENTS.placeBp1000, {
+            isValid: this.isPlaceBp1000Valid,
         });
         this.createAndSet(ACHIEVEMENTS.play1h, this.createTimeOptions(HOUR_1));
         this.createAndSet(ACHIEVEMENTS.play10h, this.createTimeOptions(HOUR_10));
@@ -190,12 +208,15 @@ export class AchievementCollection {
             signal: "entityGotNewComponent",
         });
         this.createAndSet(ACHIEVEMENTS.unlockWires, this.createLevelOptions(20));
+        this.createAndSet(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
+        this.createAndSet(ACHIEVEMENTS.upgradesTier8, this.createUpgradeOptions(8));
     }
 
     /** @param {GameRoot} root */
     initialize(root) {
         this.root = root;
-        this.root.signals.achievementUnlocked.add(this.unlock, this);
+        this.root.signals.achievementCheck.add(this.unlock, this);
+        this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
 
         for (let [key, achievement] of this.map.entries()) {
             if (!achievement.isRelevant()) {
@@ -210,7 +231,7 @@ export class AchievementCollection {
         }
 
         if (!this.hasDefaultReceivers()) {
-            this.root.signals.achievementUnlocked.remove(this.unlock);
+            this.root.signals.achievementCheck.remove(this.unlock);
         }
     }
 
@@ -222,6 +243,10 @@ export class AchievementCollection {
      * @param {string} [options.signal]
      */
     createAndSet(key, options = {}) {
+        if (G_IS_DEV) {
+            assert(ACHIEVEMENTS[key], "Achievement key not found: ", key);
+        }
+
         const achievement = new Achievement(key);
 
         achievement.activate = this.activate;
@@ -239,6 +264,12 @@ export class AchievementCollection {
         }
 
         this.map.set(key, achievement);
+    }
+
+    bulkUnlock() {
+        for (let i = 0; i < arguments.length; i += 2) {
+            this.unlock(arguments[i], arguments[i + 1]);
+        }
     }
 
     /**
@@ -271,11 +302,11 @@ export class AchievementCollection {
      * @param {?Error} err - Error is null if activation was successful
      * @param {string} key - Maps to an Achievement
      */
-    onActivate (err, key) {
+    onActivate(err, key) {
         this.remove(key);
 
         if (!this.hasDefaultReceivers()) {
-            this.root.signals.achievementUnlocked.remove(this.unlock);
+            this.root.signals.achievementCheck.remove(this.unlock);
         }
     }
 
@@ -304,25 +335,45 @@ export class AchievementCollection {
         return false;
     }
 
-    createLevelOptions (level) {
+    hasAllUpgradesAtTier(tier) {
+        const upgrades = this.root.gameMode.getUpgrades();
+
+        for (let upgradeId in upgrades) {
+            if (this.root.hubGoals.getUpgradeLevel(upgradeId) < tier - 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    createLevelOptions(level) {
         return {
             isRelevant: () => this.root.hubGoals.level < level,
             isValid: (key, currentLevel) => currentLevel === level,
-            signal: "storyGoalCompleted"
-        }
+            signal: "storyGoalCompleted",
+        };
     }
 
-    createShapeOptions (shape) {
+    createShapeOptions(shape) {
         return {
-            isValid: (key, definition) => definition.cachedHash === shape
-        }
+            isValid: (key, definition) => definition.cachedHash === shape,
+        };
     }
 
-    createTimeOptions (duration) {
+    createTimeOptions(duration) {
         return {
             isRelevant: () => this.root.time.now() < duration,
             isValid: () => this.root.time.now() >= duration,
-        }
+        };
+    }
+
+    createUpgradeOptions(tier) {
+        return {
+            isRelevant: () => !this.hasAllUpgradesAtTier(tier),
+            isValid: () => this.hasAllUpgradesAtTier(tier),
+            signal: "upgradePurchased",
+        };
     }
 
     /**
@@ -340,8 +391,10 @@ export class AchievementCollection {
      * @returns {boolean}
      */
     isBlueprint100kValid(key, definition) {
-        return definition.cachedHash === SHAPE_BLUEPRINT &&
-            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 100000;
+        return (
+            definition.cachedHash === SHAPE_BLUEPRINT &&
+            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 100000
+        );
     }
 
     /**
@@ -350,8 +403,10 @@ export class AchievementCollection {
      * @returns {boolean}
      */
     isBlueprint1mValid(key, definition) {
-        return definition.cachedHash === SHAPE_BLUEPRINT &&
-            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 1000000;
+        return (
+            definition.cachedHash === SHAPE_BLUEPRINT &&
+            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 1000000
+        );
     }
 
     /**
@@ -364,11 +419,64 @@ export class AchievementCollection {
 
     /**
      * @param {string} key
+     * @param {number} count - The count of selected entities destroyed
+     * @returns {boolean}
+     */
+    isDestroy1000Valid(key, count) {
+        return count >= 1000;
+    }
+
+    /**
+     * @param {string} key
      * @param {ShapeDefinition} definition
      * @returns {boolean}
      */
     isIrrelevantShapeValid(key, definition) {
-        //return definition.cachedHash !== this.hubGoals.currentGoal.definition.cachedHash
+        if (definition.cachedHash === this.root.hubGoals.currentGoal.definition.cachedHash) {
+            return false;
+        }
+
+        const upgrades = this.root.gameMode.getUpgrades();
+        for (let upgradeId in upgrades) {
+            const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
+            const requiredShapes = upgrades[upgradeId][currentTier].required;
+
+            for (let i = 0; i < requiredShapes.length; i++) {
+                if (definition.cachedHash === requiredShapes[i].shape) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /** @returns {boolean} */
+    isLogoBefore18Relevant() {
+        return this.root.hubGoals.level < 18;
+    }
+
+    /**
+     * @param {string} key
+     * @param {ShapeDefinition} definition
+     * @returns {boolean}
+     */
+    isLogoBefore18Valid(key, definition) {
+        return this.root.hubGoals.level < 18 && definition.cachedHash === SHAPE_LOGO;
+    }
+
+    /** @returns {boolean} */
+    isMapMarkers15Relevant() {
+        return this.root.hud.parts.waypoints.waypoints.length < 16; // 16 - HUB
+    }
+
+    /**
+     * @param {string} key
+     * @param {number} count - Count of map markers excluding HUB
+     * @returns {boolean}
+     */
+    isMapMarkers15Valid(key, count) {
+        return count === 15;
     }
 
     /**
@@ -386,18 +494,29 @@ export class AchievementCollection {
      * @returns {boolean}
      */
     isPlace5000WiresValid(key, entity) {
-        return entity.components.Wire &&
+        return (
+            entity.components.Wire &&
             entity.registered &&
-            entity.root.entityMgr.componentToEntity.Wire.length === 5000;
+            entity.root.entityMgr.componentToEntity.Wire.length === 5000
+        );
     }
 
     /**
      * @param {string} key
-     * @param {boolean} anyPlaced
+     * @param {number} count
      * @returns {boolean}
      */
-    isPlaceBlueprintValid(key, anyPlaced) {
-        return anyPlaced;
+    isPlaceBlueprintValid(key, count) {
+        return count != 0;
+    }
+
+    /**
+     * @param {string} key
+     * @param {number} count
+     * @returns {boolean}
+     */
+    isPlaceBp1000Valid(key, count) {
+        return count >= 1000;
     }
 
     /**

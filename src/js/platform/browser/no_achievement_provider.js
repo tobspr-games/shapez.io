@@ -14,7 +14,7 @@ export class NoAchievementProvider extends AchievementProviderInterface {
     }
 
     onLoad() {
-        return Promise.resolve();
+        return Promise.reject(new Error("No achievements to load"));
     }
 
     activate() {

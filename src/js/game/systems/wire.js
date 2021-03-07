@@ -698,7 +698,7 @@ export class WireSystem extends GameSystemWithFilter {
             return;
         }
 
-        this.root.signals.achievementUnlocked.dispatch(ACHIEVEMENTS.place5000Wires, entity);
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.place5000Wires, entity);
 
         // Invalidate affected area
         const originalRect = staticComp.getTileSpaceBounds();
