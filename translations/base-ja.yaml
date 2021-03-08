@@ -495,7 +495,7 @@ buildings:
             description: 入力された信号をディスプレイに表示します。 形状、色、真偽値のいずれでも可能です。
     reader:
         default:
-            name: ベルトリーダ
+            name: ベルトリーダー
             description: 平均スループットを計測できます。 アンロック後は、 最後に通過したアイテムの情報を出力します。
     analyzer:
         default:
@@ -577,8 +577,8 @@ storyRewards:
         desc: <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ -
             1つの入力を2つの出力に分配します！
     reward_belt_reader:
-        title: ベルトリーダ
-        desc: <strong>ベルトリーダ</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
+        title: ベルトリーダー
+        desc: <strong>ベルトリーダー</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
     reward_cutter_quad:
         title: 四分割
         desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 -
@@ -846,7 +846,7 @@ keybindings:
         filter: アイテムフィルタ
         wire_tunnel: 交差ワイヤ
         display: ディスプレイ
-        reader: ベルトリーダ
+        reader: ベルトリーダー
         virtual_processor: 仮想切断機
         transistor: トランジスタ
         analyzer: 形状解析機
