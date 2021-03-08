@@ -438,7 +438,7 @@ buildings:
             name: Döndürücü (Saat Yönünün Tersİ)
             description: Şekilleri saat yönünün tersinde 90 derece döndürür.
         rotate180:
-            name: Dödürücü (180 Derece)
+            name: Döndürücü (180 Derece)
             description: Şekilleri 180 derece döndürür.
     stacker:
         default:
@@ -701,7 +701,7 @@ storyRewards:
             hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
             çok kullanışlı olacak.
     reward_rotater_180:
-        title: Dödürücü (180 derece)
+        title: Döndürücü (180 derece)
         desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri 180 derece
             döndürür (Süpriz! :D)
     reward_display:
