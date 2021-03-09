@@ -28,6 +28,7 @@ module.exports = function (api) {
                 loose: true,
             },
         ],
+        [require("@babel/plugin-proposal-class-properties"), { loose: true }],
     ];
     return {
         presets,

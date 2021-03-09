@@ -124,6 +124,10 @@ function createWindow() {
         win.show();
         win.focus();
     });
+
+    if (process.platform == "win32" && process.argv.length >= 2) {
+        emitOpenedWithFile(process.argv[1]);
+    }
 }
 
 if (!app.requestSingleInstanceLock()) {
@@ -149,10 +153,15 @@ if (isDev && process.platform === "win32") {
     // Set the path of electron.exe and your app.
     // These two additional parameters are only available on windows.
     // Setting this is required to get this working in dev mode.
-    app.setAsDefaultProtocolClient(protocol, process.execPath, [resolve(process.argv[1])]);
+    app.setAsDefaultProtocolClient(protocol, process.execPath, [path.resolve(process.argv[1])]);
 } else {
     app.setAsDefaultProtocolClient(protocol);
 }
+
+app.on("open-file", function (event, path) {
+    event.preventDefault();
+    emitOpenedWithFile(path);
+});
 
 app.on("open-url", function (event, url) {
     event.preventDefault();
@@ -275,4 +284,9 @@ const emitProtocol = url => {
     const protocol = url.split("://")[0],
         args = url.split("://")[1];
     ipcMain.emit("protocol-request", protocol, args.split("/"));
+};
+
+const emitOpenedWithFile = path => {
+    const content = fs.readFileSync(path, "utf-8");
+    ipcMain.emit("opened-with-file", path, content);
 };
