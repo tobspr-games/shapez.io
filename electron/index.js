@@ -16,14 +16,12 @@ const roamingFolder =
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
-let storePath = path.join(roamingFolder, "shapez.io", "saves");
-let modsPath = path.join(roamingFolder, "shapez.io", "mods");
+const shapezIOFolder = path.join(roamingFolder, "shapez.io");
+let storePath = path.join(shapezIOFolder, "saves");
 
 if (!fs.existsSync(storePath))
     // No try-catch by design
     fs.mkdirSync(storePath, { recursive: true });
-
-if (!fs.existsSync(modsPath)) fs.mkdirSync(modsPath);
 
 /** @type {BrowserWindow} */
 let win = null;
@@ -187,16 +185,18 @@ ipcMain.on("exit-app", (event, flag) => {
 function performFsJob(job) {
     let parent = storePath;
 
-    if (job.mods) parent = modsPath;
+    if (job.folder) parent = path.join(shapezIOFolder, job.folder);
 
     const fname = path.join(parent, job.filename);
-    const relative = path.relative(parent, fname);
+    const relative = path.relative(shapezIOFolder, fname);
 
     //If not a child of parent
     if (!relative && !relative.startsWith("..") && !path.isAbsolute(relative))
         return {
             error: "Cannot get above parent folder",
         };
+
+    if (!fs.existsSync(parent)) fs.mkdirSync(parent, { recursive: true });
 
     switch (job.type) {
         case "readDir": {
