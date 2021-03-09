@@ -22,5 +22,12 @@ export class SavegameInterface_V1008 extends SavegameInterface_V1007 {
         if (!dump) {
             return true;
         }
+
+        Object.assign(data.stats, {
+            failedMam: false,
+            trashedCount: 0,
+            upgradedBelt: false,
+            usedInverseRotater: false
+        });
     }
 }

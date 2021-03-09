@@ -1,7 +1,12 @@
 /**
  * @typedef {import("../game/entity").Entity} Entity
  *
- * @typedef {{}} SavegameStats
+ * @typedef {{
+ *   failedMam: boolean,
+ *   trashedCount: number,
+ *   upgradedBelt: boolean,
+ *   usedInverseRotater: boolean
+ * }} SavegameStats
  *
  * @typedef {{
  *   camera: any,

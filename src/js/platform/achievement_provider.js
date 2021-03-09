@@ -1,13 +1,11 @@
 /* typehints:start */
 import { Application } from "../application";
-import { BaseItem } from "./base_item";
 import { StorageComponent } from "../game/components/storage";
+import { ShapeItem } from "../game/items/shape_item";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
 import { ShapeDefinition } from "../game/shape_definition";
 /* typehints:end */
-
-import { enumAnalyticsDataSource } from "../game/production_analytics";
 
 export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
@@ -21,7 +19,10 @@ export const ACHIEVEMENTS = {
     level100: "level100",
     level50: "level50",
     logoBefore18: "logoBefore18",
+    mam: "mam",
     mapMarkers15: "mapMarkers15",
+    noBeltUpgradesUntilBp: "noBeltUpgradesUntilBp",
+    noInverseRotater: "noInverseRotater",
     oldLevel17: "oldLevel17",
     openWires: "openWires",
     paintShape: "paintShape",
@@ -64,11 +65,13 @@ const MINUTE_60 = MINUTE_30 * 2;
 const MINUTE_120 = MINUTE_30 * 4;
 const PRODUCED = "produced";
 const RATE_SLICE_COUNT = 10;
+const ROTATER_CCW_CODE = 12;
+const ROTATER_180_CODE = 13;
 const SHAPE_BP = "CbCbCbRb:CwCwCwCw";
 const SHAPE_LOGO = "RuCw--Cw:----Ru--";
 const SHAPE_MS_LOGO = "RgRyRbRr";
-const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const SHAPE_OLD_LEVEL_17 = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
+const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const WIRE_LAYER = "wires";
 
 export class AchievementProviderInterface {
@@ -132,6 +135,10 @@ export class Achievement {
         this.signal = null;
     }
 
+    init() {
+
+    }
+
     isValid() {
         return true;
     }
@@ -157,92 +164,109 @@ export class AchievementCollection {
         this.map = new Map();
         this.activate = activate;
 
-        this.createAndSet(ACHIEVEMENTS.belt500Tiles, {
+        this.add(ACHIEVEMENTS.belt500Tiles, {
             isValid: this.isBelt500TilesValid,
             signal: "entityAdded",
         });
-        this.createAndSet(ACHIEVEMENTS.blueprint100k, {
+        this.add(ACHIEVEMENTS.blueprint100k, {
             isValid: this.isBlueprint100kValid,
             signal: "shapeDelivered",
         });
-        this.createAndSet(ACHIEVEMENTS.blueprint1m, {
+        this.add(ACHIEVEMENTS.blueprint1m, {
             isValid: this.isBlueprint1mValid,
             signal: "shapeDelivered",
         });
-        this.createAndSet(ACHIEVEMENTS.completeLvl26, this.createLevelOptions(26));
-        this.createAndSet(ACHIEVEMENTS.cutShape);
-        this.createAndSet(ACHIEVEMENTS.darkMode, {
+        this.add(ACHIEVEMENTS.completeLvl26, this.createLevelOptions(26));
+        this.add(ACHIEVEMENTS.cutShape);
+        this.add(ACHIEVEMENTS.darkMode, {
             isValid: this.isDarkModeValid,
         });
-        this.createAndSet(ACHIEVEMENTS.destroy1000, {
+        this.add(ACHIEVEMENTS.destroy1000, {
             isValid: this.isDestroy1000Valid,
         });
-        this.createAndSet(ACHIEVEMENTS.irrelevantShape, {
+        this.add(ACHIEVEMENTS.irrelevantShape, {
             isValid: this.isIrrelevantShapeValid,
             signal: "shapeDelivered",
         });
-        this.createAndSet(ACHIEVEMENTS.level100, this.createLevelOptions(100));
-        this.createAndSet(ACHIEVEMENTS.level50, this.createLevelOptions(50));
-        this.createAndSet(ACHIEVEMENTS.logoBefore18, {
+        this.add(ACHIEVEMENTS.level100, this.createLevelOptions(100));
+        this.add(ACHIEVEMENTS.level50, this.createLevelOptions(50));
+        this.add(ACHIEVEMENTS.logoBefore18, {
             isRelevant: this.isLogoBefore18Relevant,
             isValid: this.isLogoBefore18Valid,
             signal: "itemProduced"
         });
-        this.createAndSet(ACHIEVEMENTS.mapMarkers15, {
+        this.add(ACHIEVEMENTS.mam, {
+            isRelevant: this.isMamRelevant,
+            isValid: this.isMamValid,
+            signal: "storyGoalCompleted",
+        });
+        this.add(ACHIEVEMENTS.mapMarkers15, {
             isRelevant: this.isMapMarkers15Relevant,
             isValid: this.isMapMarkers15Valid,
         });
-        this.createAndSet(ACHIEVEMENTS.oldLevel17, this.createShapeOptions(SHAPE_OLD_LEVEL_17));
-        this.createAndSet(ACHIEVEMENTS.openWires, {
+        this.add(ACHIEVEMENTS.noBeltUpgradesUntilBp, {
+            init: this.initNoBeltUpgradesUntilBp,
+            isRelevant: this.isNoBeltUpgradesUntilBpRelevant,
+            isValid: this.isNoBeltUpgradesUntilBpValid,
+            signal: "storyGoalCompleted",
+        });
+        this.add(ACHIEVEMENTS.noInverseRotater, {
+            init: this.initNoInverseRotater,
+            isRelevant: this.isNoInverseRotaterRelevant,
+            isValid: this.isNoInverseRotaterValid,
+            signal: "storyGoalCompleted",
+        });
+        this.add(ACHIEVEMENTS.oldLevel17, this.createShapeOptions(SHAPE_OLD_LEVEL_17));
+        this.add(ACHIEVEMENTS.openWires, {
             isValid: this.isOpenWiresValid,
             signal: "editModeChanged",
         });
-        this.createAndSet(ACHIEVEMENTS.paintShape);
-        this.createAndSet(ACHIEVEMENTS.place5000Wires, {
+        this.add(ACHIEVEMENTS.paintShape);
+        this.add(ACHIEVEMENTS.place5000Wires, {
             isValid: this.isPlace5000WiresValid,
         });
-        this.createAndSet(ACHIEVEMENTS.placeBlueprint, {
+        this.add(ACHIEVEMENTS.placeBlueprint, {
             isValid: this.isPlaceBlueprintValid,
         });
-        this.createAndSet(ACHIEVEMENTS.placeBp1000, {
+        this.add(ACHIEVEMENTS.placeBp1000, {
             isValid: this.isPlaceBp1000Valid,
         });
-        this.createAndSet(ACHIEVEMENTS.play1h, this.createTimeOptions(HOUR_1));
-        this.createAndSet(ACHIEVEMENTS.play10h, this.createTimeOptions(HOUR_10));
-        this.createAndSet(ACHIEVEMENTS.play20h, this.createTimeOptions(HOUR_20));
-        this.createAndSet(ACHIEVEMENTS.produceLogo, this.createShapeOptions(SHAPE_LOGO));
-        this.createAndSet(ACHIEVEMENTS.produceRocket, this.createShapeOptions(SHAPE_ROCKET));
-        this.createAndSet(ACHIEVEMENTS.produceMsLogo, this.createShapeOptions(SHAPE_MS_LOGO));
-        this.createAndSet(ACHIEVEMENTS.rotateShape);
-        this.createAndSet(ACHIEVEMENTS.speedrunBp30, this.createSpeedOptions(12, MINUTE_30));
-        this.createAndSet(ACHIEVEMENTS.speedrunBp60, this.createSpeedOptions(12, MINUTE_60));
-        this.createAndSet(ACHIEVEMENTS.speedrunBp120, this.createSpeedOptions(12, MINUTE_120));
-        this.createAndSet(ACHIEVEMENTS.stack4Layers, {
+        this.add(ACHIEVEMENTS.play1h, this.createTimeOptions(HOUR_1));
+        this.add(ACHIEVEMENTS.play10h, this.createTimeOptions(HOUR_10));
+        this.add(ACHIEVEMENTS.play20h, this.createTimeOptions(HOUR_20));
+        this.add(ACHIEVEMENTS.produceLogo, this.createShapeOptions(SHAPE_LOGO));
+        this.add(ACHIEVEMENTS.produceRocket, this.createShapeOptions(SHAPE_ROCKET));
+        this.add(ACHIEVEMENTS.produceMsLogo, this.createShapeOptions(SHAPE_MS_LOGO));
+        this.add(ACHIEVEMENTS.rotateShape);
+        this.add(ACHIEVEMENTS.speedrunBp30, this.createSpeedOptions(12, MINUTE_30));
+        this.add(ACHIEVEMENTS.speedrunBp60, this.createSpeedOptions(12, MINUTE_60));
+        this.add(ACHIEVEMENTS.speedrunBp120, this.createSpeedOptions(12, MINUTE_120));
+        this.add(ACHIEVEMENTS.stack4Layers, {
             isValid: this.isStack4LayersValid,
             signal: "itemProduced",
         });
-        this.createAndSet(ACHIEVEMENTS.stackShape);
-        this.createAndSet(ACHIEVEMENTS.store100Unique, {
+        this.add(ACHIEVEMENTS.stackShape);
+        this.add(ACHIEVEMENTS.store100Unique, {
             isRelevant: this.isStore100UniqueRelevant,
             isValid: this.isStore100UniqueValid,
             signal: "shapeDelivered",
         });
-        this.createAndSet(ACHIEVEMENTS.storeShape, {
+        this.add(ACHIEVEMENTS.storeShape, {
             isValid: this.isStoreShapeValid,
         });
-        this.createAndSet(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
-        this.createAndSet(ACHIEVEMENTS.throughputBp50, this.createRateOptions(SHAPE_BP, 50));
-        this.createAndSet(ACHIEVEMENTS.throughputLogo25, this.createRateOptions(SHAPE_LOGO, 25));
-        this.createAndSet(ACHIEVEMENTS.throughputLogo50, this.createRateOptions(SHAPE_LOGO, 50));
-        this.createAndSet(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 25));
-        this.createAndSet(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 50));
-        this.createAndSet(ACHIEVEMENTS.trash1000, {
+        this.add(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
+        this.add(ACHIEVEMENTS.throughputBp50, this.createRateOptions(SHAPE_BP, 50));
+        this.add(ACHIEVEMENTS.throughputLogo25, this.createRateOptions(SHAPE_LOGO, 25));
+        this.add(ACHIEVEMENTS.throughputLogo50, this.createRateOptions(SHAPE_LOGO, 50));
+        this.add(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 25));
+        this.add(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 50));
+        this.add(ACHIEVEMENTS.trash1000, {
             init: this.initTrash1000,
             isValid: this.isTrash1000Valid,
         });
-        this.createAndSet(ACHIEVEMENTS.unlockWires, this.createLevelOptions(20));
-        this.createAndSet(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
-        this.createAndSet(ACHIEVEMENTS.upgradesTier8, this.createUpgradeOptions(8));
+        this.add(ACHIEVEMENTS.unlockWires, this.createLevelOptions(20));
+        this.add(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
+        this.add(ACHIEVEMENTS.upgradesTier8, this.createUpgradeOptions(8));
     }
 
     /** @param {GameRoot} root */
@@ -269,17 +293,19 @@ export class AchievementCollection {
 
         if (!this.hasDefaultReceivers()) {
             this.root.signals.achievementCheck.remove(this.unlock);
+            this.root.signals.bulkAchievementCheck.remove(this.bulkUnlock);
         }
     }
 
     /**
      * @param {string} key - Maps to an Achievement
      * @param {object} [options]
-     * @param {function} [options.isValid]
+     * @param {function} [options.init]
      * @param {function} [options.isRelevant]
+     * @param {function} [options.isValid]
      * @param {string} [options.signal]
      */
-    createAndSet(key, options = {}) {
+    add(key, options = {}) {
         if (G_IS_DEV) {
             assert(ACHIEVEMENTS[key], "Achievement key not found: ", key);
         }
@@ -324,7 +350,7 @@ export class AchievementCollection {
 
         const achievement = this.map.get(key);
 
-        if (!achievement.isValid(data, achievement.state)) {
+        if (!achievement.isValid(data)) {
             return;
         }
 
@@ -362,6 +388,22 @@ export class AchievementCollection {
         this.map.delete(key);
     }
 
+    /**
+     * Intended to be called on occasion to prune achievements that became
+     * irrelevant during a play session.
+     */
+    clean() {
+        for (let [key, achievement] of this.map.entries()) {
+            if (!achievement.activatePromise && !achievement.isRelevant()) {
+                this.remove(key);
+            }
+        }
+    }
+
+    /**
+     * Check if the collection-level achievementCheck receivers are still
+     * necessary.
+     */
     hasDefaultReceivers() {
         if (!this.map.size) {
             return false;
@@ -376,6 +418,11 @@ export class AchievementCollection {
         return false;
     }
 
+    /*
+     * Remaining methods exist to extend Achievement instances within the
+     * collection.
+     */
+
     hasAllUpgradesAtTier(tier) {
         const upgrades = this.root.gameMode.getUpgrades();
 
@@ -389,7 +436,7 @@ export class AchievementCollection {
     }
 
     /**
-     * @param {BaseItem} item
+     * @param {ShapeItem} item
      * @param {string} shape
      * @returns {boolean}
      */
@@ -409,7 +456,7 @@ export class AchievementCollection {
         return {
             isValid: () => {
                 return this.root.productionAnalytics.getCurrentShapeRate(
-                    enumAnalyticsDataSource.produced,
+                    PRODUCED,
                     this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)
                 ) >= rate;
             }
@@ -503,9 +550,33 @@ export class AchievementCollection {
         return this.root.hubGoals.level < 18;
     }
 
-    /** @param {BaseItem} item @returns {boolean} */
+    /** @param {ShapeItem} item @returns {boolean} */
     isLogoBefore18Valid(item) {
         return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
+    }
+
+    initMam() {
+        const stats = this.root.savegame.currentData.stats;
+
+        if (stats.failedMam === true) {
+            return;
+        }
+
+        if (this.root.hubGoals.level === 26 && stats.failedMam === false) {
+            return;
+        }
+
+        stats.failedMam = this.root.hubGoals.level < 26;
+    }
+
+    /** @returns {boolean} */
+    isMamRelevant() {
+        return this.root.hubGoals.level <= 26 && !this.root.savegame.currentData.stats.failedMam;
+    }
+
+    /** @params {number} level @returns {boolean} */
+    isMamValid(level) {
+        return level === 27 && !this.root.savegame.currentData.stats.failedMam;
     }
 
     /** @returns {boolean} */
@@ -516,6 +587,58 @@ export class AchievementCollection {
     /** @param {number} count @returns {boolean} */
     isMapMarkers15Valid(count) {
         return count === 15;
+    }
+
+    initNoBeltUpgradesUntilBp() {
+        const stats = this.root.savegame.currentData.stats;
+
+        if (stats.upgradedBelt === true) {
+            return;
+        }
+
+        stats.upgradedBelt = this.root.hubGoals.upgradeLevels.belt > 0;
+    }
+
+    /** @returns {boolean} */
+    isNoBeltUpgradesUntilBpRelevant() {
+        return this.root.hubGoals.level <= 12 &&
+            !this.root.savegame.currentData.stats.upgradedBelt;
+    }
+
+    /** @params {number} level @returns {boolean} */
+    isNoBeltUpgradesUntilBpValid(level) {
+        return level === 12 && !this.root.savegame.currentData.stats.upgradedBelt;
+    }
+
+    initNoInverseRotater() {
+        if (this.root.savegame.currentData.stats.usedInverseRotater === true) {
+            return;
+        }
+
+        const entities = this.root.entityMgr.componentToEntity.StaticMapEntity;
+
+        let usedInverseRotater = false;
+        for (var i = 0; i < entities.length; i++) {
+            const entity = entities[i].components.StaticMapEntity;
+
+            if (entity.code === ROTATER_CCW_CODE || entity.code === ROTATER_180_CODE) {
+                usedInverseRotater = true;
+                break;
+            }
+        }
+
+        this.root.savegame.currentData.stats.usedInverseRotater = usedInverseRotater;
+    }
+
+    /** @returns {boolean} */
+    isNoInverseRotaterRelevant() {
+        return this.root.hubGoals.level < 14 &&
+            !this.root.savegame.currentData.stats.usedInverseRotater;
+    }
+
+    /** @param {number} level @returns {boolean} */
+    isNoInverseRotaterValid(level) {
+        return level === 14 && !this.root.savegame.currentData.stats.usedInverseRotater;
     }
 
     /** @param {string} currentLayer @returns {boolean} */
@@ -542,7 +665,7 @@ export class AchievementCollection {
         return count >= 1000;
     }
 
-    /** @param {string} key @param {BaseItem} item @returns {boolean} */
+    /** @param {ShapeItem} item @returns {boolean} */
     isStack4LayersValid(item) {
         return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
     }
@@ -557,7 +680,7 @@ export class AchievementCollection {
         return Object.keys(this.root.hubGoals.storedShapes).length === 100;
     }
 
-    /** @param {StorageComponent} storage @returns {boolean} */
+    /** @returns {boolean} */
     isStoreShapeValid() {
         const entities = this.root.systemMgr.systems.storage.allEntities;
 
@@ -574,21 +697,18 @@ export class AchievementCollection {
         return false;
     }
 
-    initTrash1000(achievement) {
-        // get state from root
-        console.log(this.root.savegame.currentData.dump);
+    initTrash1000() {
+        if (Number(this.root.savegame.currentData.stats.trashedCount)) {
+            return;
+        }
 
-        achievement.state = achievement.state || {
-            count: 0
-        };
+        this.root.savegame.currentData.stats.trashedCount = 0;
     }
-    /**
-     * @params {number} count
-     * @params {object} state - The achievement's current state
-     * @returns {boolean} */
-    isTrash1000Valid(count, state) {
-        state.count += count;
 
-        return state.count >= 1000;
+    /** @params {number} count @returns {boolean} */
+    isTrash1000Valid(count) {
+        this.root.savegame.currentData.stats.trashedCount += count;
+
+        return this.root.savegame.currentData.stats.trashedCount >= 1000;
     }
 }

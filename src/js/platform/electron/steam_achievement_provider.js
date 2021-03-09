@@ -5,7 +5,11 @@ import { GameRoot } from "../../game/root";
 
 import { createLogger } from "../../core/logging";
 import { getIPCRenderer } from "../../core/utils";
-import { ACHIEVEMENTS, AchievementCollection, AchievementProviderInterface } from "../achievement_provider";
+import {
+    ACHIEVEMENTS,
+    AchievementCollection,
+    AchievementProviderInterface
+} from "../achievement_provider";
 
 const logger = createLogger("achievements/steam");
 
@@ -21,9 +25,12 @@ const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.level100]: "level_100",
     [ACHIEVEMENTS.level50]: "level_50",
     [ACHIEVEMENTS.logoBefore18]: "logo_before_18",
+    [ACHIEVEMENTS.mam]: "mam",
     [ACHIEVEMENTS.mapMarkers15]: "map_markers_15",
     [ACHIEVEMENTS.openWires]: "open_wires",
     [ACHIEVEMENTS.oldLevel17]: "old_level_17",
+    [ACHIEVEMENTS.noBeltUpgradesUntilBp]: "no_belt_upgrades_until_bp",
+    [ACHIEVEMENTS.noInverseRotater]: "no_inverse_rotator", // [sic]
     [ACHIEVEMENTS.paintShape]: "paint_shape",
     [ACHIEVEMENTS.place5000Wires]: "place_5000_wires",
     [ACHIEVEMENTS.placeBlueprint]: "place_blueprint",
@@ -60,7 +67,6 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         super(app);
 
         this.initialized = false;
-        this.saveId = null;
         this.collection = new AchievementCollection(this.activate.bind(this));
 
         if (G_IS_DEV) {
@@ -85,15 +91,10 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         this.root = root;
 
         try {
-            if (!this.saveId || this.saveId === this.root.savegame.internalId) {
-                this.collection.initialize(root);
-            } else {
-                this.collection = new AchievementCollection(this.activate.bind(this));
-                this.collection.initialize(root);
-            }
+            this.collection = new AchievementCollection(this.activate.bind(this));
+            this.collection.initialize(root);
 
             logger.log("Initialized", this.collection.map.size, "relevant achievements");
-            this.saveId = this.root.savegame.internalId;
             return Promise.resolve();
         } catch (err) {
             logger.error("Failed to initialize the collection");
