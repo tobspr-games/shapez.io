@@ -275,9 +275,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             // It's a storage
             if (storageComp.canAcceptItem(item)) {
                 storageComp.takeItem(item);
-
-                this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.storeShape, storageComp);
-
                 return true;
             }
 

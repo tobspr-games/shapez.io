@@ -251,16 +251,6 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
             return this.shapeKeyToDefinition[id];
         }
         this.shapeKeyToDefinition[id] = definition;
-
-        this.root.signals.bulkAchievementCheck.dispatch(
-            ACHIEVEMENTS.logoBefore18, definition,
-            ACHIEVEMENTS.oldLevel17, definition,
-            ACHIEVEMENTS.produceLogo, definition,
-            ACHIEVEMENTS.produceMsLogo, definition,
-            ACHIEVEMENTS.produceRocket, definition,
-            ACHIEVEMENTS.stack4Layers, definition
-        );
-
         // logger.log("Registered shape with key (2)", id);
         return definition;
     }

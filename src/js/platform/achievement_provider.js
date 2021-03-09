@@ -1,10 +1,13 @@
 /* typehints:start */
 import { Application } from "../application";
+import { BaseItem } from "./base_item";
 import { StorageComponent } from "../game/components/storage";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
 import { ShapeDefinition } from "../game/shape_definition";
 /* typehints:end */
+
+import { enumAnalyticsDataSource } from "../game/production_analytics";
 
 export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
@@ -32,25 +35,41 @@ export const ACHIEVEMENTS = {
     produceMsLogo: "produceMsLogo",
     produceRocket: "produceRocket",
     rotateShape: "rotateShape",
+    speedrunBp30: "speedrunBp30",
+    speedrunBp60: "speedrunBp60",
+    speedrunBp120: "speedrunBp120",
     stack4Layers: "stack4Layers",
     stackShape: "stackShape",
     store100Unique: "store100Unique",
     storeShape: "storeShape",
+    throughputBp25: "throughputBp25",
+    throughputBp50: "throughputBp50",
+    throughputLogo25: "throughputLogo25",
+    throughputLogo50: "throughputLogo50",
+    throughputRocket10: "throughputRocket10",
+    throughputRocket20: "throughputRocket20",
+    trash1000: "trash1000",
     unlockWires: "unlockWires",
     upgradesTier5: "upgradesTier5",
     upgradesTier8: "upgradesTier8",
 };
 
 const DARK_MODE = "dark";
-const WIRE_LAYER = "wires";
 const HOUR_1 = 3600; // Seconds
 const HOUR_10 = HOUR_1 * 10;
 const HOUR_20 = HOUR_1 * 20;
-const SHAPE_BLUEPRINT = "CbCbCbRb:CwCwCwCw";
+const ITEM_SHAPE = "shape";
+const MINUTE_30 = 1800; // Seconds
+const MINUTE_60 = MINUTE_30 * 2;
+const MINUTE_120 = MINUTE_30 * 4;
+const PRODUCED = "produced";
+const RATE_SLICE_COUNT = 10;
+const SHAPE_BP = "CbCbCbRb:CwCwCwCw";
 const SHAPE_LOGO = "RuCw--Cw:----Ru--";
 const SHAPE_MS_LOGO = "RgRyRbRr";
 const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const SHAPE_OLD_LEVEL_17 = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
+const WIRE_LAYER = "wires";
 
 export class AchievementProviderInterface {
     /** @param {Application} app */
@@ -167,6 +186,7 @@ export class AchievementCollection {
         this.createAndSet(ACHIEVEMENTS.logoBefore18, {
             isRelevant: this.isLogoBefore18Relevant,
             isValid: this.isLogoBefore18Valid,
+            signal: "itemProduced"
         });
         this.createAndSet(ACHIEVEMENTS.mapMarkers15, {
             isRelevant: this.isMapMarkers15Relevant,
@@ -194,8 +214,12 @@ export class AchievementCollection {
         this.createAndSet(ACHIEVEMENTS.produceRocket, this.createShapeOptions(SHAPE_ROCKET));
         this.createAndSet(ACHIEVEMENTS.produceMsLogo, this.createShapeOptions(SHAPE_MS_LOGO));
         this.createAndSet(ACHIEVEMENTS.rotateShape);
+        this.createAndSet(ACHIEVEMENTS.speedrunBp30, this.createSpeedOptions(12, MINUTE_30));
+        this.createAndSet(ACHIEVEMENTS.speedrunBp60, this.createSpeedOptions(12, MINUTE_60));
+        this.createAndSet(ACHIEVEMENTS.speedrunBp120, this.createSpeedOptions(12, MINUTE_120));
         this.createAndSet(ACHIEVEMENTS.stack4Layers, {
             isValid: this.isStack4LayersValid,
+            signal: "itemProduced",
         });
         this.createAndSet(ACHIEVEMENTS.stackShape);
         this.createAndSet(ACHIEVEMENTS.store100Unique, {
@@ -205,7 +229,16 @@ export class AchievementCollection {
         });
         this.createAndSet(ACHIEVEMENTS.storeShape, {
             isValid: this.isStoreShapeValid,
-            signal: "entityGotNewComponent",
+        });
+        this.createAndSet(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
+        this.createAndSet(ACHIEVEMENTS.throughputBp50, this.createRateOptions(SHAPE_BP, 50));
+        this.createAndSet(ACHIEVEMENTS.throughputLogo25, this.createRateOptions(SHAPE_LOGO, 25));
+        this.createAndSet(ACHIEVEMENTS.throughputLogo50, this.createRateOptions(SHAPE_LOGO, 50));
+        this.createAndSet(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 25));
+        this.createAndSet(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 50));
+        this.createAndSet(ACHIEVEMENTS.trash1000, {
+            init: this.initTrash1000,
+            isValid: this.isTrash1000Valid,
         });
         this.createAndSet(ACHIEVEMENTS.unlockWires, this.createLevelOptions(20));
         this.createAndSet(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
@@ -219,6 +252,10 @@ export class AchievementCollection {
         this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
 
         for (let [key, achievement] of this.map.entries()) {
+            if (achievement.init) {
+                achievement.init();
+            }
+
             if (!achievement.isRelevant()) {
                 this.remove(key);
                 continue;
@@ -251,6 +288,10 @@ export class AchievementCollection {
 
         achievement.activate = this.activate;
 
+        if (options.init) {
+            achievement.init = options.init.bind(this, achievement);
+        }
+
         if (options.isValid) {
             achievement.isValid = options.isValid.bind(this);
         }
@@ -274,16 +315,16 @@ export class AchievementCollection {
 
     /**
      * @param {string} key - Maps to an Achievement
-     * @param {*[]} [arguments] - Additional arguments received from signal dispatches
+     * @param {?*} data - Data received from signal dispatches for validation
      */
-    unlock(key) {
+    unlock(key, data) {
         if (!this.map.has(key)) {
             return;
         }
 
         const achievement = this.map.get(key);
 
-        if (!achievement.isValid(...arguments)) {
+        if (!achievement.isValid(data, achievement.state)) {
             return;
         }
 
@@ -347,17 +388,46 @@ export class AchievementCollection {
         return true;
     }
 
+    /**
+     * @param {BaseItem} item
+     * @param {string} shape
+     * @returns {boolean}
+     */
+    isShape(item, shape) {
+        return item.getItemType() === ITEM_SHAPE && item.definition.getHash() === shape;
+    }
+
     createLevelOptions(level) {
         return {
             isRelevant: () => this.root.hubGoals.level < level,
-            isValid: (key, currentLevel) => currentLevel === level,
+            isValid: (currentLevel) => currentLevel === level,
             signal: "storyGoalCompleted",
+        };
+    }
+
+    createRateOptions(shape, rate) {
+        return {
+            isValid: () => {
+                return this.root.productionAnalytics.getCurrentShapeRate(
+                    enumAnalyticsDataSource.produced,
+                    this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)
+                ) >= rate;
+            }
         };
     }
 
     createShapeOptions(shape) {
         return {
-            isValid: (key, definition) => definition.cachedHash === shape,
+            isValid: (item) => this.isShape(item, shape),
+            signal: "itemProduced",
+        };
+    }
+
+    createSpeedOptions(level, time) {
+        return {
+            isRelevant: () => this.root.hubGoals.level <= level && this.root.time.now() < time,
+            isValid: (currentLevel) => currentLevel === level && this.root.time.now() < time,
+            signal: "storyGoalCompleted",
         };
     }
 
@@ -376,62 +446,39 @@ export class AchievementCollection {
         };
     }
 
-    /**
-     * @param {string} key
-     * @param {Entity} entity
-     * @returns {boolean}
-     */
-    isBelt500TilesValid(key, entity) {
+    /** @param {Entity} entity @returns {boolean} */
+    isBelt500TilesValid(entity) {
         return entity.components.Belt && entity.components.Belt.assignedPath.totalLength >= 500;
     }
 
-    /**
-     * @param {string} key
-     * @param {ShapeDefinition} definition
-     * @returns {boolean}
-     */
-    isBlueprint100kValid(key, definition) {
+    /** @param {ShapeDefinition} definition @returns {boolean} */
+    isBlueprint100kValid(definition) {
         return (
-            definition.cachedHash === SHAPE_BLUEPRINT &&
-            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 100000
+            definition.cachedHash === SHAPE_BP &&
+            this.root.hubGoals.storedShapes[SHAPE_BP] >= 100000
         );
     }
 
-    /**
-     * @param {string} key
-     * @param {ShapeDefinition} definition
-     * @returns {boolean}
-     */
-    isBlueprint1mValid(key, definition) {
+    /** @param {ShapeDefinition} definition @returns {boolean} */
+    isBlueprint1mValid(definition) {
         return (
-            definition.cachedHash === SHAPE_BLUEPRINT &&
-            this.root.hubGoals.storedShapes[SHAPE_BLUEPRINT] >= 1000000
+            definition.cachedHash === SHAPE_BP &&
+            this.root.hubGoals.storedShapes[SHAPE_BP] >= 1000000
         );
     }
 
-    /**
-     * @param {string} key
-     * @returns {boolean}
-     */
-    isDarkModeValid(key) {
+    /** @returns {boolean} */
+    isDarkModeValid() {
         return this.root.app.settings.currentData.settings.theme === DARK_MODE;
     }
 
-    /**
-     * @param {string} key
-     * @param {number} count - The count of selected entities destroyed
-     * @returns {boolean}
-     */
-    isDestroy1000Valid(key, count) {
+    /** @param {number} count @returns {boolean} */
+    isDestroy1000Valid(count) {
         return count >= 1000;
     }
 
-    /**
-     * @param {string} key
-     * @param {ShapeDefinition} definition
-     * @returns {boolean}
-     */
-    isIrrelevantShapeValid(key, definition) {
+    /** @param {ShapeDefinition} definition @returns {boolean} */
+    isIrrelevantShapeValid(definition) {
         if (definition.cachedHash === this.root.hubGoals.currentGoal.definition.cachedHash) {
             return false;
         }
@@ -456,13 +503,9 @@ export class AchievementCollection {
         return this.root.hubGoals.level < 18;
     }
 
-    /**
-     * @param {string} key
-     * @param {ShapeDefinition} definition
-     * @returns {boolean}
-     */
-    isLogoBefore18Valid(key, definition) {
-        return this.root.hubGoals.level < 18 && definition.cachedHash === SHAPE_LOGO;
+    /** @param {BaseItem} item @returns {boolean} */
+    isLogoBefore18Valid(item) {
+        return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
     }
 
     /** @returns {boolean} */
@@ -470,30 +513,18 @@ export class AchievementCollection {
         return this.root.hud.parts.waypoints.waypoints.length < 16; // 16 - HUB
     }
 
-    /**
-     * @param {string} key
-     * @param {number} count - Count of map markers excluding HUB
-     * @returns {boolean}
-     */
-    isMapMarkers15Valid(key, count) {
+    /** @param {number} count @returns {boolean} */
+    isMapMarkers15Valid(count) {
         return count === 15;
     }
 
-    /**
-     * @param {string} key
-     * @param {string} currentLayer
-     * @returns {boolean}
-     */
-    isOpenWiresValid(key, currentLayer) {
+    /** @param {string} currentLayer @returns {boolean} */
+    isOpenWiresValid(currentLayer) {
         return currentLayer === WIRE_LAYER;
     }
 
-    /**
-     * @param {string} key
-     * @param {Entity} entity
-     * @returns {boolean}
-     */
-    isPlace5000WiresValid(key, entity) {
+    /** @param {Entity} entity @returns {boolean} */
+    isPlace5000WiresValid(entity) {
         return (
             entity.components.Wire &&
             entity.registered &&
@@ -501,31 +532,19 @@ export class AchievementCollection {
         );
     }
 
-    /**
-     * @param {string} key
-     * @param {number} count
-     * @returns {boolean}
-     */
-    isPlaceBlueprintValid(key, count) {
+    /** @param {number} count @returns {boolean} */
+    isPlaceBlueprintValid(count) {
         return count != 0;
     }
 
-    /**
-     * @param {string} key
-     * @param {number} count
-     * @returns {boolean}
-     */
-    isPlaceBp1000Valid(key, count) {
+    /** @param {number} count @returns {boolean} */
+    isPlaceBp1000Valid(count) {
         return count >= 1000;
     }
 
-    /**
-     * @param {string} key
-     * @param {ShapeDefinition} definition
-     * @returns {boolean}
-     */
-    isStack4LayersValid(key, definition) {
-        return definition.layers.length === 4;
+    /** @param {string} key @param {BaseItem} item @returns {boolean} */
+    isStack4LayersValid(item) {
+        return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
     }
 
     /** @returns {boolean} */
@@ -533,20 +552,43 @@ export class AchievementCollection {
         return Object.keys(this.root.hubGoals.storedShapes).length < 100;
     }
 
-    /**
-     * @param {string} key
-     * @returns {boolean}
-     */
-    isStore100UniqueValid(key) {
+    /** @returns {boolean} */
+    isStore100UniqueValid() {
         return Object.keys(this.root.hubGoals.storedShapes).length === 100;
     }
 
+    /** @param {StorageComponent} storage @returns {boolean} */
+    isStoreShapeValid() {
+        const entities = this.root.systemMgr.systems.storage.allEntities;
+
+        if (entities.length === 0) {
+            return false;
+        }
+
+        for (var i = 0; i < entities.length; i++) {
+            if (entities[i].components.Storage.storedCount > 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    initTrash1000(achievement) {
+        // get state from root
+        console.log(this.root.savegame.currentData.dump);
+
+        achievement.state = achievement.state || {
+            count: 0
+        };
+    }
     /**
-     * @param {string} key
-     * @param {StorageComponent} storage
-     * @returns {boolean}
-     */
-    isStoreShapeValid(key, storage) {
-        return storage.storedCount >= 1;
+     * @params {number} count
+     * @params {object} state - The achievement's current state
+     * @returns {boolean} */
+    isTrash1000Valid(count, state) {
+        state.count += count;
+
+        return state.count >= 1000;
     }
 }
