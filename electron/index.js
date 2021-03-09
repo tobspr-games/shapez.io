@@ -9,6 +9,8 @@ const fs = require("fs");
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
 
+const protocol = "shapezio";
+
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
@@ -128,6 +130,11 @@ if (!app.requestSingleInstanceLock()) {
     app.exit(0);
 } else {
     app.on("second-instance", (event, commandLine, workingDirectory) => {
+        if (process.platform !== "darwin") {
+            // Find the arg that is our custom protocol url and emit event
+            emitProtocol(argv.find(arg => arg.startsWith(`${protocol}://`)));
+        }
+
         // Someone tried to run a second instance, we should focus
         if (win) {
             if (win.isMinimized()) {
@@ -137,6 +144,20 @@ if (!app.requestSingleInstanceLock()) {
         }
     });
 }
+
+if (isDev && process.platform === "win32") {
+    // Set the path of electron.exe and your app.
+    // These two additional parameters are only available on windows.
+    // Setting this is required to get this working in dev mode.
+    app.setAsDefaultProtocolClient(protocol, process.execPath, [resolve(process.argv[1])]);
+} else {
+    app.setAsDefaultProtocolClient(protocol);
+}
+
+app.on("open-url", function (event, url) {
+    event.preventDefault();
+    emitProtocol(url);
+});
 
 app.on("ready", createWindow);
 
@@ -249,3 +270,9 @@ ipcMain.on("fs-sync-job", (event, arg) => {
     const result = performFsJob(arg);
     event.returnValue = result;
 });
+
+const emitProtocol = url => {
+    const protocol = url.split("://")[0],
+        args = url.split("://")[1];
+    ipcMain.emit("protocol-request", protocol, args.split("/"));
+};

@@ -116,6 +116,14 @@ function gulptasksStandalone($, gulp) {
             overwrite: true,
             appBundleId: "io.shapez.standalone",
             appCategoryType: "public.app-category.games",
+            ...(platform === "darwin" && {
+                protocols: [
+                    {
+                        name: "shapezio",
+                        schemes: ["shapezio"],
+                    },
+                ],
+            }),
             ...(isRelease &&
                 platform === "darwin" && {
                     osxSign: {
