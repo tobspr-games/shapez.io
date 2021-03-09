@@ -40,13 +40,26 @@
             background-size: 90%;
         }
 
+        .settingsButton,
+        .exitAppButton {
+            & {
+                @include DarkThemeOverride {
+                    filter: invert(1);
+                }
+            }
+        }
+
         .languageChoose {
+            $languageBorderColor: #222428;
             @include S(border-radius, 8px);
-            border: solid #222428;
+            border: solid $languageBorderColor;
             background-color: #fff;
             @include S(border-width, 2px);
             background-size: cover;
             opacity: 0.8;
+            @include DarkThemeOverride {
+                border-color: invert($languageBorderColor);
+            }
         }
     }
 
