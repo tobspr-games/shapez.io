@@ -170,8 +170,8 @@ export class SavegameInterface_ML01 extends SavegameInterface_V1007 {
     /**
      * @param {import("../savegame_typedefs.js").SavegameData} data
      */
-    static migrate1007toML01(data) {
-        logger.log("Migrating 1007 to ML01");
+    static migrate1008toML01(data) {
+        logger.log("Migrating 1008 to ML01");
         const dump = data.dump;
         if (!dump) {
             return true;
