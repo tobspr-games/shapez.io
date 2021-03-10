@@ -145,12 +145,10 @@
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
-                transform: skewX(-0.5deg);
 
                 @include S(border-radius, $globalBorderRadius);
 
                 &:hover {
-                    transform: scale(1.02);
                     opacity: 0.9;
                 }
             }
