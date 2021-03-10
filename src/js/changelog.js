@@ -1,5 +1,5 @@
 /**
- * @type {Array<{version: string, date: string, entries: Array<String>}>} changelog
+ * @type {Array<{version: string, date: string, skin?: string, entries: Array<String>}>} changelog
  */
 export const CHANGELOG = [
     {
