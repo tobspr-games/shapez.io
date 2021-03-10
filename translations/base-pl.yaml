@@ -186,7 +186,7 @@ dialogs:
             wersję gry dla nielimitowanych znaczników!
     massCutConfirm:
         title: Potwierdź wycinanie
-        desc: Wycinasz sporą ilość maszyn (<count> gwoli ścisłości)! Czy na pewno chcesz
+        desc: Wycinasz sporą ilość maszyn (<count> w roli ścisłości)! Czy na pewno chcesz
             kontynuować?
     exportScreenshotWarning:
         title: Tworzenie zrzutu fabryki

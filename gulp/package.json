@@ -34,6 +34,7 @@
         "fastdom": "^1.0.9",
         "flatted": "^2.0.1",
         "fs-extra": "^8.1.0",
+        "gifsicle": "^5.2.0",
         "gulp-audiosprite": "^1.1.0",
         "howler": "^2.1.2",
         "html-loader": "^0.5.5",

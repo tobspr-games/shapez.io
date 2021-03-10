@@ -291,7 +291,7 @@ ingame:
     interactiveTutorial:
         title: Tutoriál
         hints:
-            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště<strong>kruhového
+            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště <strong>kruhového
                 tvaru</strong> a vytěžte jej!
             1_2_conveyor: "Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k
                 vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong>
@@ -404,7 +404,7 @@ buildings:
             name: Extraktor
             description: Umístěte na naleziště tvaru nebo barvy pro zahájení těžby.
         chainable:
-            name: Extraktor (Navazující)
+            name: Extraktor (Řetěz)
             description: Umístěte na naleziště tvaru nebo barvy pro zahájení těžby. Lze
                 zapojit po skupinách.
     underground_belt:
@@ -449,10 +449,10 @@ buildings:
             name: Barvič
             description: Obarví celý tvar v levém vstupu barvou z pravého vstupu.
         double:
-            name: Barvič (dvojnásobný)
+            name: Barvič (2x)
             description: Obarví tvary z levých vstupů barvou z horního vstupu.
         quad:
-            name: Barvič (čtyřnásobný)
+            name: Barvič (4x)
             description: Umožňuje obarvit každou čtvrtinu tvaru individuálně. Jen čtvrtiny
                 se vstupy barev s <strong>logickým signálem</strong> na vrstvě
                 kabelů budou obarveny!
@@ -475,16 +475,16 @@ buildings:
             name: Vyvažovač
             description: Multifunkční - Rovnoměrně rozděluje vstupy na výstupech.
         merger:
-            name: Spojovač (kompaktní)
+            name: Spojovač
             description: Spojí dva pásy do jednoho.
         merger-inverse:
-            name: Spojovač (kompaktní)
+            name: Spojovač
             description: Spojí dva pásy do jednoho.
         splitter:
-            name: Rozdělovač (kompaktní)
+            name: Rozdělovač
             description: Rozdělí jeden pás na dva.
         splitter-inverse:
-            name: Rozdělovač (kompaktní)
+            name: Rozdělovač
             description: Rozdělí jeden pás na dva.
     storage:
         default:
@@ -558,12 +558,12 @@ buildings:
             name: Virtuální rotor
             description: Virtuálně otáčí tvary o 90 stupňů po směru hodinových ručiček.
         unstacker:
-            name: Virtuální extrahátor
+            name: Virt. extrahátor
             description: Virtuálně extrahuje nejvyšší vrstvu do pravého výstupu a zbývající
                 do levé.
         stacker:
-            name: Virtuální kombinátor
-            description: Virtuálně Spojí tvary dohromady. Pokud nemohou být spojeny, pravý
+            name: Virt. kombinátor
+            description: Virtuálně spojí tvary dohromady. Pokud nemohou být spojeny, pravý
                 tvar je položen na levý.
         painter:
             name: Virtuální barvič
@@ -615,8 +615,8 @@ storyRewards:
             proti směru hodinových ručiček. Vyberte rotor a <strong>zmáčkněte
             'T' pro přepnutí mezi variantami</strong>!
     reward_miner_chainable:
-        title: Napojovací extraktor
-        desc: "Právě jste odemkli <strong>napojovací extraktor</strong>! Může
+        title: Řetězový extraktor
+        desc: "Právě jste odemkli <strong>řetězový extraktor</strong>! Může
             <strong>předat své zdroje</strong> ostatním extraktorům, čímž můžete
             efektivněji těžit více zdrojů!<br><br> PS: Starý extraktor bude od
             teď nahrazen ve vašem panelu nástrojů!"
@@ -1008,7 +1008,7 @@ tips:
     - Můžete proplétat různé úrovně tunelů.
     - Snažte se postavit kompaktní továrny - vyplatí se to!
     - Barvič má zrcadlově otočenou variantu, kterou můžete vybrat klávesou
-      <b>T</b>
+      <b>T</b>.
     - Užití správné kombinace vylepšení maximalizuje efektivitu.
     - Na maximální úrovní, 5 extraktorů zaplní jeden celý pás.
     - Nezapomeňte na tunely!
