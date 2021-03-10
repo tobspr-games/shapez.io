@@ -601,13 +601,12 @@ export class AchievementCollection {
 
     /** @returns {boolean} */
     isNoBeltUpgradesUntilBpRelevant() {
-        return this.root.hubGoals.level <= 12 &&
-            !this.root.savegame.currentData.stats.upgradedBelt;
+        return this.root.hubGoals.level <= 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
 
     /** @params {number} level @returns {boolean} */
     isNoBeltUpgradesUntilBpValid(level) {
-        return level === 12 && !this.root.savegame.currentData.stats.upgradedBelt;
+        return level === 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
 
     initNoInverseRotater() {

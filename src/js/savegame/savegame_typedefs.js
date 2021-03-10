@@ -4,7 +4,6 @@
  * @typedef {{
  *   failedMam: boolean,
  *   trashedCount: number,
- *   upgradedBelt: boolean,
  *   usedInverseRotater: boolean
  * }} SavegameStats
  *
