@@ -14,6 +14,7 @@
         padding: 10px;
         box-sizing: border-box;
         background: #eef1f4;
+        @include S(border-radius, 3px);
 
         @include DarkThemeOverride {
             background: #424242;

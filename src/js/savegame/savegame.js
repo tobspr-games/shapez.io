@@ -78,7 +78,11 @@ export class Savegame extends ReadWriteProxy {
         return {
             version: this.getCurrentVersion(),
             dump: null,
-            stats: {},
+            stats: {
+                failedMam: false,
+                trashedCount: 0,
+                usedInverseRotater: false,
+            },
             lastUpdate: Date.now(),
         };
     }

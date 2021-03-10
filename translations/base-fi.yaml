@@ -168,13 +168,14 @@ dialogs:
         desc: Suorita taso 12 avataksesi piirustukset!
     keybindingsIntroduction:
         title: Hyödyllisiä pikanäppäimiä
-        desc: "Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden
+        desc: >-
+            Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden
             rakentamisesta helpompaa. Tässä on muutama, mutta <strong>katso
             kaikki pikanäppäimet</strong>!<br><br> <code
             class='keybinding'>CTRL</code> + Raahaus: Valitse alue.<br> <code
             class='keybinding'>SHIFT</code>: Pidä pohjassa sijoittaaksesi
             useita samoja rakennuksia.<br> <code class='keybinding'>ALT</code>:
-            Käännä sijoitettavien kuljettimien suunta.<br>"
+            Käännä sijoitettavien kuljettimien suunta.<br>
     createMarker:
         title: Uusi merkki
         desc: Anna merkille kuvaava nimi. Voit myös liittää <strong>lyhyen koodin</strong>
@@ -306,26 +307,31 @@ ingame:
         hints:
             1_1_extractor: Laita <strong>Poimija</strong> <strong>ympyrämuodon</strong>
                 päälle käyttääksesi sitä!
-            1_2_conveyor: "Yhdistä poimija <strong>kuljettimella</strong>
+            1_2_conveyor: >-
+                Yhdistä poimija <strong>kuljettimella</strong>
                 keskusrakennukseen!<br><br>Vihje: <strong>Paina ja
-                raahaa</strong> kuljetinta hiirellä!"
-            1_3_expand: "Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää
+                raahaa</strong> kuljetinta hiirellä!
+            1_3_expand: >-
+                Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää
                 poimijoita ja kuljettimia saavuttaaksesi tavoitteen nopeammin
                 valmiiksi.<br><br>Vihje: Pidä <strong>SHIFT</strong> pohjassa
                 laittaaksesi useampia poimijoita ja käytä <strong>R</strong>
-                kääntääksesi niitä."
-            2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
+                kääntääksesi niitä.
+            2_1_place_cutter: >-
+                Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
                 puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong>
-                riippumatta sen asennosta."
+                riippumatta sen asennosta.
             2_2_place_trash: Leikkuri voi <strong>tukkeutua</strong>!<br><br> Käytä
                 <strong>roskakoria</strong> hävittääksesi (vielä!) tarpeeton jäte.
-            2_3_more_cutters: "Hienoa! Lisää <strong>kaksi leikkuria</strong> nopeuttaaksesi
+            2_3_more_cutters: >-
+                Hienoa! Lisää <strong>kaksi leikkuria</strong> nopeuttaaksesi
                 hidasta prosessia!<br><br> PS: Käytä <strong>pikanäppäimiä 0-9</strong>
-                valitaksesi rakennuksen nopeammin!"
-            3_1_rectangles: "Poimitaanpa nyt neliöitä! <strong>Rakenna 4
+                valitaksesi rakennuksen nopeammin!
+            3_1_rectangles: >-
+                Poimitaanpa nyt neliöitä! <strong>Rakenna 4
                 poimijaa</strong> ja yhdistä ne keskusrakennukseen.<br><br> PS:
                 Pidä <strong>SHIFT</strong> painettuna, kun raahaat kuljetinta
-                aktivoidaksesi kuljetinsuunnittelijan!"
+                aktivoidaksesi kuljetinsuunnittelijan!
             21_1_place_quad_painter: Aseta <strong>nelimaalain</strong> ja hanki
                 <strong>ympyröitä</strong>, <strong>valkoista</strong> ja
                 <strong>punaista</strong> väriä!
@@ -333,9 +339,10 @@ ingame:
                 <strong>E</strong>!<br><br> Sitten <strong>yhdistä kaikki neljä tuloa</strong> maalaimeen johdoilla!
             21_3_place_button: MahtaVATA! Aseta nyt <strong>kytkin</strong> ja yhdistä
                 se johdoilla!
-            21_4_press_button: "Paina kytkintä <strong>lähettääksesi tosi-
+            21_4_press_button: >-
+                Paina kytkintä <strong>lähettääksesi tosi-
                 signaalin</strong> ja aktivoidaksesi maalaimen.<br><br> PS: Kaikkia
-                tuloja ei tarvitse kytkeä! Kokeile vaikka vain kahta."
+                tuloja ei tarvitse kytkeä! Kokeile vaikka vain kahta.
     connectedMiners:
         one_miner: 1 poimija
         n_miners: <amount> poimijaa
@@ -587,10 +594,11 @@ storyRewards:
         desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90 astetta.
     reward_painter:
         title: Värjäys
-        desc: "Avasit <strong>Maalaimen</strong> - Poimi joitain värialueita
+        desc: >-
+            Avasit <strong>Maalaimen</strong> - Poimi joitain värialueita
             (Samoin kuin muotoja) ja yhdistä se muotoon maalaimen
             avulla!<br><br>PS: Jos olet värisokea, asetuksissa on <strong> tila
-            värisokeille</strong>!"
+            värisokeille</strong>!
     reward_mixer:
         title: Värin Sekoitus
         desc: Avasit <strong>Värinsekoittajan</strong> - Yhdistä kaksi väriä
@@ -617,10 +625,11 @@ storyRewards:
             <strong>painamalla 'T' vaihtaaksesi sen versioita</strong>!
     reward_miner_chainable:
         title: Sarjapoimija
-        desc: "Avasit juuri <strong>Sarjapoimijan</strong>! Se voi
+        desc: >-
+            Avasit juuri <strong>Sarjapoimijan</strong>! Se voi
             <strong>siirtää resurssejaan</strong> muihin poimijoihin, joten
             voit hankkia resursseja tehokkaammin!<br><br> PS: Vanha
-            poimija on nyt korvattu työkalupalkissa!"
+            poimija on nyt korvattu työkalupalkissa!
     reward_underground_belt_tier_2:
         title: Tunneli Taso II
         desc: Avasit uuden version <strong>Tunnelista</strong> - Siinä on <strong>pidempi
@@ -657,9 +666,10 @@ storyRewards:
             jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
     no_reward:
         title: Seuraava taso
-        desc: "Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
+        desc: >-
+            Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
             olla tuhoamatta vanhoja tehtaita - Tarvitset <strong>kaikkia</strong>
-            muotoja myöhemmin <strong>avataksesi päivityksiä</strong>!"
+            muotoja myöhemmin <strong>avataksesi päivityksiä</strong>!
     no_reward_freeplay:
         title: Seuraava taso
         desc: Onnittelut! Muuten, lisää sisältöä on suunniteltu täysversioon!
@@ -682,8 +692,9 @@ storyRewards:
             kääntää muotoa 180 astetta (Ylläripylläri! :D)
     reward_display:
         title: Näyttö
-        desc: "Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
-        Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!"
+        desc: >-
+            Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
+            Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!
     reward_constant_signal:
         title: Jatkuva Signaali
         desc: Avasit <strong>Jatkuvan Signaalin</strong> laitteen johtotasolla!
@@ -708,12 +719,13 @@ storyRewards:
             tavallisesti.<br><br> Mitä valitsetkin, muista pitää hauskaa!
     reward_wires_painter_and_levers:
         title: Johdot & Nelimaalain
-        desc: "Avasit juuri <strong>Johtotason</strong>: Se on erillinen
+        desc: >-
+            Avasit juuri <strong>Johtotason</strong>: Se on erillinen
             taso tavallisen tason päällä ja sieltä löytyy useita uusia
             mekaniikkoja!<br><br> Aluksi avasin sinulle <strong>Nelimaalaimen</strong>
             - Yhdistä johtotasolla lokerot, joihin haluat maalia<br><br>
             Vaihtaaksesi johtotasolle, paina <strong>E</strong>. <br><br>
-            PS: <strong>Aktivoi vinkit</strong> asetuksissa nähdäksesi Johdot-tutoriaalin!"
+            PS: <strong>Aktivoi vinkit</strong> asetuksissa nähdäksesi Johdot-tutoriaalin!
     reward_filter:
         title: Esinesuodatin
         desc: Olet avannut <strong>Esinesuodattimen</strong>! Se lähettää esineet
@@ -878,8 +890,9 @@ settings:
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Pikanäppäimet
-    hint: "Vinkki: Muista käyttää CTRL, SHIFT ja ALT! Ne ottavat käyttöön erilaisia
-        sijoitteluvaihtoehtoja."
+    hint: >-
+        Vinkki: Muista käyttää CTRL, SHIFT ja ALT! Ne ottavat käyttöön erilaisia
+        sijoitteluvaihtoehtoja.
     resetKeybindings: Nollaa pikanäppäimet
     categoryLabels:
         general: Sovellus

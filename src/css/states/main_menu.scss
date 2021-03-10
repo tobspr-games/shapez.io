@@ -184,7 +184,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: rgb(231, 78, 58);
+            color: rgb(133, 58, 231);
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);

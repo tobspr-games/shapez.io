@@ -199,7 +199,9 @@ export class PreloadState extends GameState {
                         for (let i = 0; i < changelogEntries.length; ++i) {
                             const entry = changelogEntries[i];
                             dialogHtml += `
-                            <div class="changelogDialogEntry">
+                            <div class="changelogDialogEntry" data-changelog-skin="${
+                                entry.skin || "default"
+                            }">
                                 <span class="version">${entry.version}</span>
                                 <span class="date">${entry.date}</span>
                                 <ul class="changes">

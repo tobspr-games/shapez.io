@@ -203,12 +203,11 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
         if (G_IS_DEV && globalConfig.debug.testAchievements) {
             this.app.achievementProvider = new SteamAchievementProvider(this.app);
 
-            return this.app.achievementProvider.initialize()
-                .catch(err => {
-                    logger.error("Failed to initialize achievement provider, disabling:", err);
+            return this.app.achievementProvider.initialize().catch(err => {
+                logger.error("Failed to initialize achievement provider, disabling:", err);
 
-                    this.app.achievementProvider = new NoAchievementProvider(this.app);
-                });
+                this.app.achievementProvider = new NoAchievementProvider(this.app);
+            });
         }
 
         return this.app.achievementProvider.initialize();

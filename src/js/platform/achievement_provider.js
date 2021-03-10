@@ -1,11 +1,13 @@
 /* typehints:start */
 import { Application } from "../application";
-import { StorageComponent } from "../game/components/storage";
-import { ShapeItem } from "../game/items/shape_item";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
 import { ShapeDefinition } from "../game/shape_definition";
+import { THEMES } from "../game/theme";
 /* typehints:end */
+
+import { enumAnalyticsDataSource } from "../game/production_analytics";
+import { ShapeItem } from "../game/items/shape_item";
 
 export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
@@ -55,16 +57,16 @@ export const ACHIEVEMENTS = {
     upgradesTier8: "upgradesTier8",
 };
 
+/** @type {keyof typeof THEMES} */
 const DARK_MODE = "dark";
+
 const HOUR_1 = 3600; // Seconds
 const HOUR_10 = HOUR_1 * 10;
 const HOUR_20 = HOUR_1 * 20;
-const ITEM_SHAPE = "shape";
+const ITEM_SHAPE = ShapeItem.getId();
 const MINUTE_30 = 1800; // Seconds
 const MINUTE_60 = MINUTE_30 * 2;
 const MINUTE_120 = MINUTE_30 * 4;
-const PRODUCED = "produced";
-const RATE_SLICE_COUNT = 10;
 const ROTATER_CCW_CODE = 12;
 const ROTATER_180_CODE = 13;
 const SHAPE_BP = "CbCbCbRb:CwCwCwCw";
@@ -72,9 +74,15 @@ const SHAPE_LOGO = "RuCw--Cw:----Ru--";
 const SHAPE_MS_LOGO = "RgRyRbRr";
 const SHAPE_OLD_LEVEL_17 = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
 const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+
+/** @type {Layer} */
 const WIRE_LAYER = "wires";
 
 export class AchievementProviderInterface {
+    /* typehints:start */
+    collection = /** @type {AchievementCollection|undefined} */ (null);
+    /* typehints:end */
+
     /** @param {Application} app */
     constructor(app) {
         this.app = app;
@@ -135,9 +143,7 @@ export class Achievement {
         this.signal = null;
     }
 
-    init() {
-
-    }
+    init() {}
 
     isValid() {
         return true;
@@ -193,19 +199,16 @@ export class AchievementCollection {
         this.add(ACHIEVEMENTS.logoBefore18, {
             isRelevant: this.isLogoBefore18Relevant,
             isValid: this.isLogoBefore18Valid,
-            signal: "itemProduced"
+            signal: "itemProduced",
         });
         this.add(ACHIEVEMENTS.mam, {
-            isRelevant: this.isMamRelevant,
             isValid: this.isMamValid,
-            signal: "storyGoalCompleted",
         });
         this.add(ACHIEVEMENTS.mapMarkers15, {
             isRelevant: this.isMapMarkers15Relevant,
             isValid: this.isMapMarkers15Valid,
         });
         this.add(ACHIEVEMENTS.noBeltUpgradesUntilBp, {
-            init: this.initNoBeltUpgradesUntilBp,
             isRelevant: this.isNoBeltUpgradesUntilBpRelevant,
             isValid: this.isNoBeltUpgradesUntilBpValid,
             signal: "storyGoalCompleted",
@@ -354,7 +357,8 @@ export class AchievementCollection {
             return;
         }
 
-        achievement.unlock()
+        achievement
+            .unlock()
             .then(() => {
                 this.onActivate(null, key);
             })
@@ -380,12 +384,13 @@ export class AchievementCollection {
     /** @param {string} key - Maps to an Achievement */
     remove(key) {
         const achievement = this.map.get(key);
+        if (achievement) {
+            if (achievement.receiver) {
+                this.root.signals[achievement.signal].remove(achievement.receiver);
+            }
 
-        if (achievement.receiver) {
-            this.root.signals[achievement.signal].remove(achievement.receiver);
+            this.map.delete(key);
         }
-
-        this.map.delete(key);
     }
 
     /**
@@ -447,7 +452,7 @@ export class AchievementCollection {
     createLevelOptions(level) {
         return {
             isRelevant: () => this.root.hubGoals.level < level,
-            isValid: (currentLevel) => currentLevel === level,
+            isValid: currentLevel => currentLevel === level,
             signal: "storyGoalCompleted",
         };
     }
@@ -455,17 +460,19 @@ export class AchievementCollection {
     createRateOptions(shape, rate) {
         return {
             isValid: () => {
-                return this.root.productionAnalytics.getCurrentShapeRate(
-                    PRODUCED,
-                    this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)
-                ) >= rate;
-            }
+                return (
+                    this.root.productionAnalytics.getCurrentShapeRate(
+                        enumAnalyticsDataSource.delivered,
+                        this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)
+                    ) >= rate
+                );
+            },
         };
     }
 
     createShapeOptions(shape) {
         return {
-            isValid: (item) => this.isShape(item, shape),
+            isValid: item => this.isShape(item, shape),
             signal: "itemProduced",
         };
     }
@@ -473,7 +480,7 @@ export class AchievementCollection {
     createSpeedOptions(level, time) {
         return {
             isRelevant: () => this.root.hubGoals.level <= level && this.root.time.now() < time,
-            isValid: (currentLevel) => currentLevel === level && this.root.time.now() < time,
+            isValid: currentLevel => currentLevel === level && this.root.time.now() < time,
             signal: "storyGoalCompleted",
         };
     }
@@ -500,18 +507,12 @@ export class AchievementCollection {
 
     /** @param {ShapeDefinition} definition @returns {boolean} */
     isBlueprint100kValid(definition) {
-        return (
-            definition.cachedHash === SHAPE_BP &&
-            this.root.hubGoals.storedShapes[SHAPE_BP] >= 100000
-        );
+        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 100000;
     }
 
     /** @param {ShapeDefinition} definition @returns {boolean} */
     isBlueprint1mValid(definition) {
-        return (
-            definition.cachedHash === SHAPE_BP &&
-            this.root.hubGoals.storedShapes[SHAPE_BP] >= 1000000
-        );
+        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 1000000;
     }
 
     /** @returns {boolean} */
@@ -530,14 +531,18 @@ export class AchievementCollection {
             return false;
         }
 
+        if (definition.cachedHash === this.root.gameMode.getBlueprintShapeKey()) {
+            return false;
+        }
+
         const upgrades = this.root.gameMode.getUpgrades();
         for (let upgradeId in upgrades) {
-            const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
-            const requiredShapes = upgrades[upgradeId][currentTier].required;
-
-            for (let i = 0; i < requiredShapes.length; i++) {
-                if (definition.cachedHash === requiredShapes[i].shape) {
-                    return false;
+            for (const tier in upgrades[upgradeId]) {
+                const requiredShapes = upgrades[upgradeId][tier].required;
+                for (let i = 0; i < requiredShapes.length; i++) {
+                    if (definition.cachedHash === requiredShapes[i].shape) {
+                        return false;
+                    }
                 }
             }
         }
@@ -555,28 +560,9 @@ export class AchievementCollection {
         return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
     }
 
-    initMam() {
-        const stats = this.root.savegame.currentData.stats;
-
-        if (stats.failedMam === true) {
-            return;
-        }
-
-        if (this.root.hubGoals.level === 26 && stats.failedMam === false) {
-            return;
-        }
-
-        stats.failedMam = this.root.hubGoals.level < 26;
-    }
-
-    /** @returns {boolean} */
-    isMamRelevant() {
-        return this.root.hubGoals.level <= 26 && !this.root.savegame.currentData.stats.failedMam;
-    }
-
     /** @params {number} level @returns {boolean} */
-    isMamValid(level) {
-        return level === 27 && !this.root.savegame.currentData.stats.failedMam;
+    isMamValid() {
+        return this.root.hubGoals.level > 27 && !this.root.savegame.currentData.stats.failedMam;
     }
 
     /** @returns {boolean} */
@@ -587,16 +573,6 @@ export class AchievementCollection {
     /** @param {number} count @returns {boolean} */
     isMapMarkers15Valid(count) {
         return count === 15;
-    }
-
-    initNoBeltUpgradesUntilBp() {
-        const stats = this.root.savegame.currentData.stats;
-
-        if (stats.upgradedBelt === true) {
-            return;
-        }
-
-        stats.upgradedBelt = this.root.hubGoals.upgradeLevels.belt > 0;
     }
 
     /** @returns {boolean} */
@@ -631,8 +607,7 @@ export class AchievementCollection {
 
     /** @returns {boolean} */
     isNoInverseRotaterRelevant() {
-        return this.root.hubGoals.level < 14 &&
-            !this.root.savegame.currentData.stats.usedInverseRotater;
+        return this.root.hubGoals.level < 14 && !this.root.savegame.currentData.stats.usedInverseRotater;
     }
 
     /** @param {number} level @returns {boolean} */

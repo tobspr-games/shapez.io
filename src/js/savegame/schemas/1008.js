@@ -24,9 +24,9 @@ export class SavegameInterface_V1008 extends SavegameInterface_V1007 {
         }
 
         Object.assign(data.stats, {
-            failedMam: false,
+            failedMam: true,
             trashedCount: 0,
-            usedInverseRotater: false
+            usedInverseRotater: true,
         });
     }
 }

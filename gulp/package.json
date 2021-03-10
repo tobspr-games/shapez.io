@@ -62,7 +62,8 @@
         "webpack-plugin-replace": "^1.1.1",
         "webpack-strip-block": "^0.2.0",
         "whatwg-fetch": "^3.0.0",
-        "worker-loader": "^2.0.0"
+        "worker-loader": "^2.0.0",
+        "yaml": "^1.10.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.4.3",

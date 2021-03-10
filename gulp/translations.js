@@ -25,6 +25,7 @@ function gulptasksTranslations($, gulp) {
         files
             .filter(name => name.endsWith(".yaml"))
             .forEach(fname => {
+                console.log("Loading", fname);
                 const languageName = fname.replace(".yaml", "");
                 const abspath = path.join(translationsSourceDir, fname);
 
@@ -40,39 +41,13 @@ function gulptasksTranslations($, gulp) {
 
                 ${storePage.intro.replace(/\n/gi, "\n\n")}
 
-                [h2]${storePage.title_advantages}[/h2]
+                [h2]${storePage.what_others_say}[/h2]
 
                 [list]
-                ${storePage.advantages
-                    .map(x => "[*] " + x.replace(/<b>/, "[b]").replace(/<\/b>/, "[/b]"))
-                    .join("\n")}
+                    [*] [i]${storePage.northernlion_comment}[/i] [b]- Northernlion, YouTube[/b]
+                    [*] [i]${storePage.notch_comment}[/i] [b]- Notch[/b]
+                    [*] [i]${storePage.steam_review_comment}[/i] [b]- Steam User[/b]
                 [/list]
-
-                [h2]${storePage.title_future}[/h2]
-
-                [list]
-                ${storePage.planned
-                    .map(x => "[*] " + x.replace(/<b>/, "[b]").replace(/<\/b>/, "[/b]"))
-                    .join("\n")}
-                [/list]
-
-                [h2]${storePage.title_open_source}[/h2]
-
-                ${storePage.text_open_source.replace(/\n/gi, "\n\n")}
-
-                [h2]${storePage.title_links}[/h2]
-
-                [list]
-                [*] [url=https://discord.com/invite/HN7EVzV]${storePage.links.discord}[/url]
-                [*] [url=https://trello.com/b/ISQncpJP/shapezio]${storePage.links.roadmap}[/url]
-                [*] [url=https://www.reddit.com/r/shapezio]${storePage.links.subreddit}[/url]
-                [*] [url=https://github.com/tobspr/shapez.io]${storePage.links.source_code}[/url]
-                [*] [url=https://github.com/tobspr/shapez.io/blob/master/translations/README.md]${
-                    storePage.links.translate
-                }[/url]
-                [/list]
-            
-
                     `;
 
                 fs.writeFileSync(destpath, trim(content.replace(/(\n[ \t\r]*)/gi, "\n")), {
