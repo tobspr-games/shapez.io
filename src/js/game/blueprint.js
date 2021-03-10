@@ -165,8 +165,10 @@ export class Blueprint {
             }
 
             root.signals.bulkAchievementCheck.dispatch(
-                ACHIEVEMENTS.placeBlueprint, count,
-                ACHIEVEMENTS.placeBp1000, count
+                ACHIEVEMENTS.placeBlueprint,
+                count,
+                ACHIEVEMENTS.placeBp1000,
+                count
             );
 
             return count !== 0;

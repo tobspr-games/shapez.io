@@ -2,11 +2,11 @@
 import { Application } from "../application";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
-import { ShapeDefinition } from "../game/shape_definition";
 import { THEMES } from "../game/theme";
 /* typehints:end */
 
 import { enumAnalyticsDataSource } from "../game/production_analytics";
+import { ShapeDefinition } from "../game/shape_definition";
 import { ShapeItem } from "../game/items/shape_item";
 import { globalConfig } from "../core/config";
 
@@ -171,14 +171,8 @@ export class AchievementCollection {
             isValid: this.isBelt500TilesValid,
             signal: "entityAdded",
         });
-        this.add(ACHIEVEMENTS.blueprint100k, {
-            isValid: this.isBlueprint100kValid,
-            signal: "shapeDelivered",
-        });
-        this.add(ACHIEVEMENTS.blueprint1m, {
-            isValid: this.isBlueprint1mValid,
-            signal: "shapeDelivered",
-        });
+        this.add(ACHIEVEMENTS.blueprint100k, this.createBlueprintOptions(100000));
+        this.add(ACHIEVEMENTS.blueprint1m, this.createBlueprintOptions(1000000));
         this.add(ACHIEVEMENTS.completeLvl26, this.createLevelOptions(26));
         this.add(ACHIEVEMENTS.cutShape);
         this.add(ACHIEVEMENTS.darkMode, {
@@ -271,13 +265,13 @@ export class AchievementCollection {
         this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
 
         for (let [key, achievement] of this.map.entries()) {
-            if (achievement.init) {
-                achievement.init();
-            }
-
             if (achievement.signal) {
                 achievement.receiver = this.unlock.bind(this, key);
                 this.root.signals[achievement.signal].add(achievement.receiver);
+            }
+
+            if (achievement.init) {
+                achievement.init();
             }
         }
 
@@ -419,8 +413,18 @@ export class AchievementCollection {
         return item.getItemType() === ITEM_SHAPE && item.definition.getHash() === shape;
     }
 
+    createBlueprintOptions(count) {
+        return {
+            init: ({ key }) => this.unlock(key, ShapeDefinition.fromShortKey(SHAPE_BP)),
+            isValid: definition =>
+                definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= count,
+            signal: "shapeDelivered",
+        };
+    }
+
     createLevelOptions(level) {
         return {
+            init: ({ key }) => this.unlock(key, this.root.hubGoals.level),
             isValid: currentLevel => currentLevel >= level,
             signal: "storyGoalCompleted",
         };
@@ -463,6 +467,7 @@ export class AchievementCollection {
 
     createUpgradeOptions(tier) {
         return {
+            init: ({ key }) => this.unlock(key),
             isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
@@ -516,6 +521,13 @@ export class AchievementCollection {
         }
 
         return true;
+    }
+
+    /** @param {Achievement} achievement */
+    initLogoBefore18({ key }) {
+        const item = new ShapeItem(ShapeDefinition.fromShortKey(SHAPE_LOGO));
+
+        this.unlock(key, item);
     }
 
     /** @param {ShapeItem} item @returns {boolean} */
@@ -595,6 +607,11 @@ export class AchievementCollection {
         return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
     }
 
+    /** @param {Achievement} achievement */
+    initStore100Unique({ key }) {
+        this.unlock(key);
+    }
+
     /** @returns {boolean} */
     isStore100UniqueValid() {
         return Object.keys(this.root.hubGoals.storedShapes).length >= 100;
@@ -617,8 +634,10 @@ export class AchievementCollection {
         return false;
     }
 
-    initTrash1000() {
+    /** @param {Achievement} achievement */
+    initTrash1000({ key }) {
         if (Number(this.root.savegame.currentData.stats.trashedCount)) {
+            this.unlock(key, 0);
             return;
         }
 

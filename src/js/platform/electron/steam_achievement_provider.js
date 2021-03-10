@@ -5,11 +5,7 @@ import { GameRoot } from "../../game/root";
 
 import { createLogger } from "../../core/logging";
 import { getIPCRenderer } from "../../core/utils";
-import {
-    ACHIEVEMENTS,
-    AchievementCollection,
-    AchievementProviderInterface
-} from "../achievement_provider";
+import { ACHIEVEMENTS, AchievementCollection, AchievementProviderInterface } from "../achievement_provider";
 
 const logger = createLogger("achievements/steam");
 
@@ -111,16 +107,15 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
 
         this.ipc = getIPCRenderer();
 
-        return this.ipc.invoke("steam:is-initialized")
-            .then(initialized => {
-                this.initialized = initialized;
+        return this.ipc.invoke("steam:is-initialized").then(initialized => {
+            this.initialized = initialized;
 
-                if (!this.initialized) {
-                    logger.warn("Steam failed to intialize. Achievements won't sync.");
-                } else {
-                    logger.log("Steam achievement provider initialized");
-                }
-            });
+            if (!this.initialized) {
+                logger.warn("Steam failed to intialize. Achievements won't sync.");
+            } else {
+                logger.log("Steam achievement provider initialized");
+            }
+        });
     }
 
     /**
