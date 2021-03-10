@@ -9,7 +9,7 @@ import { VANILLA_THEMES } from "../game/theme";
 import { enumAnalyticsDataSource } from "../game/production_analytics";
 import { ShapeItem } from "../game/items/shape_item";
 import { globalConfig } from "../core/config";
-import { codes } from "../savegame/schemas/ML01";
+import { codes } from "../modloader/old_buildings_codes";
 
 export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
