@@ -66,48 +66,34 @@ export class AchievementProxy {
     startSlice() {
         this.sliceTime = this.root.time.now();
 
-        // Every slice
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.storeShape);
-
-        // Every other slice
-        if (this.sliceIteration % 2 === 0) {
-            this.root.signals.bulkAchievementCheck.dispatch(
-                ACHIEVEMENTS.throughputBp25,
-                this.sliceTime,
-                ACHIEVEMENTS.throughputBp50,
-                this.sliceTime,
-                ACHIEVEMENTS.throughputLogo25,
-                this.sliceTime,
-                ACHIEVEMENTS.throughputLogo50,
-                this.sliceTime,
-                ACHIEVEMENTS.throughputRocket10,
-                this.sliceTime,
-                ACHIEVEMENTS.throughputRocket20,
-                this.sliceTime
-            );
-        }
-
-        // Every 3rd slice
-        if (this.sliceIteration % 3 === 0) {
-            this.root.signals.bulkAchievementCheck.dispatch(
-                ACHIEVEMENTS.play1h,
-                this.sliceTime,
-                ACHIEVEMENTS.play10h,
-                this.sliceTime,
-                ACHIEVEMENTS.play20h,
-                this.sliceTime
-            );
-        }
-
-        // Every 10th slice
-        if (this.sliceIteration % 10 === 0) {
-            if (this.provider.collection) {
-                this.provider.collection.clean();
-            }
-        }
+        this.root.signals.bulkAchievementCheck.dispatch(
+            ACHIEVEMENTS.storeShape,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputBp25,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputBp50,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputLogo25,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputLogo50,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputRocket10,
+            this.sliceTime,
+            ACHIEVEMENTS.throughputRocket20,
+            this.sliceTime,
+            ACHIEVEMENTS.play1h,
+            this.sliceTime,
+            ACHIEVEMENTS.play10h,
+            this.sliceTime,
+            ACHIEVEMENTS.play20h,
+            this.sliceTime
+        );
 
         if (this.sliceIteration === this.sliceIterationLimit) {
             this.sliceIteration = 1;
+            if (this.provider.collection) {
+                this.provider.collection.clean();
+            }
         } else {
             this.sliceIteration++;
         }

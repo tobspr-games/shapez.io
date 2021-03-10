@@ -8,6 +8,7 @@ import { THEMES } from "../game/theme";
 
 import { enumAnalyticsDataSource } from "../game/production_analytics";
 import { ShapeItem } from "../game/items/shape_item";
+import { globalConfig } from "../core/config";
 
 export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
@@ -428,7 +429,7 @@ export class AchievementCollection {
      * collection.
      */
 
-    hasAllUpgradesAtTier(tier) {
+    hasAllUpgradesAtLeastAtTier(tier) {
         const upgrades = this.root.gameMode.getUpgrades();
 
         for (let upgradeId in upgrades) {
@@ -452,7 +453,7 @@ export class AchievementCollection {
     createLevelOptions(level) {
         return {
             isRelevant: () => this.root.hubGoals.level < level,
-            isValid: currentLevel => currentLevel === level,
+            isValid: currentLevel => currentLevel >= level,
             signal: "storyGoalCompleted",
         };
     }
@@ -461,10 +462,12 @@ export class AchievementCollection {
         return {
             isValid: () => {
                 return (
-                    this.root.productionAnalytics.getCurrentShapeRate(
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(
                         enumAnalyticsDataSource.delivered,
                         this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)
-                    ) >= rate
+                    ) /
+                        globalConfig.analyticsSliceDurationSeconds >=
+                    rate
                 );
             },
         };
@@ -480,22 +483,21 @@ export class AchievementCollection {
     createSpeedOptions(level, time) {
         return {
             isRelevant: () => this.root.hubGoals.level <= level && this.root.time.now() < time,
-            isValid: currentLevel => currentLevel === level && this.root.time.now() < time,
+            isValid: currentLevel => currentLevel >= level && this.root.time.now() < time,
             signal: "storyGoalCompleted",
         };
     }
 
     createTimeOptions(duration) {
         return {
-            isRelevant: () => this.root.time.now() < duration,
             isValid: () => this.root.time.now() >= duration,
         };
     }
 
     createUpgradeOptions(tier) {
         return {
-            isRelevant: () => !this.hasAllUpgradesAtTier(tier),
-            isValid: () => this.hasAllUpgradesAtTier(tier),
+            isRelevant: () => !this.hasAllUpgradesAtLeastAtTier(tier),
+            isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
     }
@@ -572,7 +574,7 @@ export class AchievementCollection {
 
     /** @param {number} count @returns {boolean} */
     isMapMarkers15Valid(count) {
-        return count === 15;
+        return count >= 15;
     }
 
     /** @returns {boolean} */
@@ -580,9 +582,12 @@ export class AchievementCollection {
         return this.root.hubGoals.level <= 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
 
-    /** @params {number} level @returns {boolean} */
+    /**
+     * @param {number} level
+     * @returns {boolean}
+     */
     isNoBeltUpgradesUntilBpValid(level) {
-        return level === 12 && this.root.hubGoals.upgradeLevels.belt === 0;
+        return level >= 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
 
     initNoInverseRotater() {
@@ -612,7 +617,7 @@ export class AchievementCollection {
 
     /** @param {number} level @returns {boolean} */
     isNoInverseRotaterValid(level) {
-        return level === 14 && !this.root.savegame.currentData.stats.usedInverseRotater;
+        return level >= 14 && !this.root.savegame.currentData.stats.usedInverseRotater;
     }
 
     /** @param {string} currentLayer @returns {boolean} */
@@ -625,7 +630,7 @@ export class AchievementCollection {
         return (
             entity.components.Wire &&
             entity.registered &&
-            entity.root.entityMgr.componentToEntity.Wire.length === 5000
+            entity.root.entityMgr.componentToEntity.Wire.length >= 5000
         );
     }
 
@@ -651,7 +656,7 @@ export class AchievementCollection {
 
     /** @returns {boolean} */
     isStore100UniqueValid() {
-        return Object.keys(this.root.hubGoals.storedShapes).length === 100;
+        return Object.keys(this.root.hubGoals.storedShapes).length >= 100;
     }
 
     /** @returns {boolean} */
