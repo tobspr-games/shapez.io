@@ -3,6 +3,7 @@ import { DrawParameters } from "../core/draw_parameters";
 import { findNiceIntegerValue } from "../core/utils";
 import { Vector } from "../core/vector";
 import { Entity } from "./entity";
+import { ACHIEVEMENTS } from "../platform/achievement_provider";
 import { GameRoot } from "./root";
 
 export class Blueprint {
@@ -148,7 +149,7 @@ export class Blueprint {
      */
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
-            let anyPlaced = false;
+            let count = 0;
             for (let i = 0; i < this.entities.length; ++i) {
                 const entity = this.entities[i];
                 if (!root.logic.checkCanPlaceEntity(entity, tile, true)) {
@@ -160,9 +161,17 @@ export class Blueprint {
                 root.logic.freeEntityAreaBeforeBuild(clone);
                 root.map.placeStaticEntity(clone);
                 root.entityMgr.registerEntity(clone, null, true);
-                anyPlaced = true;
+                count++;
             }
-            return anyPlaced;
+
+            root.signals.bulkAchievementCheck.dispatch(
+                ACHIEVEMENTS.placeBlueprint,
+                count,
+                ACHIEVEMENTS.placeBp1000,
+                count
+            );
+
+            return count !== 0;
         });
     }
 }

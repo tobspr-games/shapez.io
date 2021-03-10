@@ -6,6 +6,7 @@ const url = require("url");
 const childProcess = require("child_process");
 const { ipcMain, shell } = require("electron");
 const fs = require("fs");
+const steam = require("./steam");
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
 
@@ -290,3 +291,5 @@ const emitOpenedWithFile = path => {
     const content = fs.readFileSync(path, "utf-8");
     ipcMain.emit("opened-with-file", path, content);
 };
+steam.init(isDev);
+steam.listen();

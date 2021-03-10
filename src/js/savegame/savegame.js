@@ -12,6 +12,7 @@ import { SavegameInterface_V1004 } from "./schemas/1004";
 import { SavegameInterface_V1005 } from "./schemas/1005";
 import { SavegameInterface_V1006 } from "./schemas/1006";
 import { SavegameInterface_V1007 } from "./schemas/1007";
+import { SavegameInterface_V1008 } from "./schemas/1008";
 import { SavegameInterface_ML01 } from "./schemas/ML01";
 import { RegularGameMode } from "../game/modes/regular";
 
@@ -70,7 +71,11 @@ export class Savegame extends ReadWriteProxy {
         return {
             version: this.getCurrentVersion(),
             dump: null,
-            stats: {},
+            stats: {
+                failedMam: false,
+                trashedCount: 0,
+                usedInverseRotater: false,
+            },
             lastUpdate: Date.now(),
             gamemode: RegularGameMode.getId(),
         };
@@ -121,7 +126,12 @@ export class Savegame extends ReadWriteProxy {
         }
 
         if (data.version === 1007) {
-            SavegameInterface_ML01.migrate1007toML01(data);
+            SavegameInterface_V1008.migrate1007to1008(data);
+            data.version = 1008;
+        }
+
+        if (data.version === 1008) {
+            SavegameInterface_ML01.migrate1008toML01(data);
             data.version = "ML01";
         }
 

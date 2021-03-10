@@ -42,7 +42,12 @@ export class MainMenuState extends GameState {
 
         return `
             <div class="topButtons">
-                <button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
+                ${
+                    G_CHINA_VERSION
+                        ? ""
+                        : `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
+                }
+
                 <button class="settingsButton"></button>
                 ${this.getExtraTopButtons()}
             ${
@@ -59,8 +64,10 @@ export class MainMenuState extends GameState {
             </video>
 
             <div class="logo">
-                <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
-                <span class="updateLabel">v${G_BUILD_VERSION}</span>
+                <img src="${cachebust(
+                    G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
+                )}" alt="shapez.io Logo">
+                <span class="updateLabel">v${G_BUILD_VERSION} - Achievements!</span>
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
@@ -78,11 +85,17 @@ export class MainMenuState extends GameState {
                 </div>
             </div>
 
-            <div class="footer">
+            <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
+
+                ${
+                    G_CHINA_VERSION
+                        ? ""
+                        : `
                 <a class="githubLink boxLink" target="_blank">
                     ${T.mainMenu.openSourceHint}
                     <span class="thirdpartyLogo githubLogo"></span>
-                </a>
+                </a>`
+                }
 
                 <a class="discordLink boxLink" target="_blank">
                     ${T.mainMenu.discordLink}
@@ -90,11 +103,11 @@ export class MainMenuState extends GameState {
                 </a>
 
                 <div class="sidelinks">
-                    <a class="redditLink">${T.mainMenu.subreddit}</a>
+                    ${G_CHINA_VERSION ? "" : `<a class="redditLink">${T.mainMenu.subreddit}</a>`}
 
-                    <a class="changelog">${T.changelog.title}</a>
+                    ${G_CHINA_VERSION ? "" : `<a class="changelog">${T.changelog.title}</a>`}
 
-                    <a class="helpTranslate">${T.mainMenu.helpTranslate}</a>
+                    ${G_CHINA_VERSION ? "" : `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>`}
                 </div>
 
                 <div class="author">${T.mainMenu.madeBy.replace(
@@ -226,10 +239,13 @@ export class MainMenuState extends GameState {
             );
         }
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
-        this.trackClicks(qs(".changelog"), this.onChangelogClicked);
-        this.trackClicks(qs(".redditLink"), this.onRedditClicked);
-        this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
-        this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
+
+        if (!G_CHINA_VERSION) {
+            this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
+            this.trackClicks(qs(".redditLink"), this.onRedditClicked);
+            this.trackClicks(qs(".changelog"), this.onChangelogClicked);
+            this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
+        }
 
         if (G_IS_STANDALONE) {
             this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
@@ -251,11 +267,13 @@ export class MainMenuState extends GameState {
         );
 
         const githubLink = this.htmlElement.querySelector(".githubLink");
-        this.trackClicks(
-            githubLink,
-            () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github),
-            { preventClick: true }
-        );
+        if (githubLink) {
+            this.trackClicks(
+                githubLink,
+                () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github),
+                { preventClick: true }
+            );
+        }
 
         const producerLink = this.htmlElement.querySelector(".producerLink");
         this.trackClicks(

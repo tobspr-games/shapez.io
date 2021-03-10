@@ -215,21 +215,21 @@ ingame:
         selectBuildings: Alan seç
         stopPlacement: Yerleştİrmeyİ durdur
         rotateBuilding: Yapıyı döndür
-        placeMultiple: Çoklu yerleştİr
-        reverseOrientation: Yönünü ters çevİr
+        placeMultiple: Çoklu yerleştir
+        reverseOrientation: Yönünü ters çevir
         disableAutoOrientation: Otomatik yönü devre dışı bırak
         toggleHud: Kullanıcı arayüzünü aç/kapa
-        placeBuilding: Yapı yerleştİr
-        createMarker: Yer İmi oluştur
+        placeBuilding: Yapı yerleştir
+        createMarker: Yer imi oluştur
         delete: SİL
         pasteLastBlueprint: Son taslağı yapıştır
         lockBeltDirection: Taşıma bandı planlayıcısını kullan
         plannerSwitchSide: Planlayıcıyı ters çevir
         cutSelection: Kes
         copySelection: Kopyala
-        clearSelection: Seçİmİ temİzle
-        pipette: Pİpet
-        switchLayers: Katman değİştİr
+        clearSelection: Seçimi temİzle
+        pipette: Pipet
+        switchLayers: Katman değiştir
     buildingPlacement:
         cycleBuildingVariants: Yapının farklı türlerine geçmek için <key> tuşuna bas.
         hotkeyLabel: "Kısayol: <key>"
@@ -245,14 +245,14 @@ ingame:
         levelTitle: SEVİYE <level>
         completed: Tamamlandı
         unlockText: Açıldı <reward>!
-        buttonNextLevel: Sonrakİ Sevİye
+        buttonNextLevel: Sonraki Seviye
     notifications:
         newUpgrade: Yeni geliştirme mevcut!
         gameSaved: Oyun kaydedildi.
         freeplayLevelComplete: Seviye <level> tamamlandı!
     shop:
-        title: Gelİştİrmeler
-        buttonUnlock: Gelİştİr
+        title: Geliştirmeler
+        buttonUnlock: Geliştİr
         tier: Aşama <x>
         maximumLevel: SON SEVİYE (Hız x<currentMult>)
     statistics:
@@ -283,19 +283,19 @@ ingame:
     blueprintPlacer:
         cost: Bedel
     waypoints:
-        waypoints: Yer İmi
+        waypoints: Yer imler
         hub: MERKEZ
-        description: Sol-tık ile Yer İmlerine git, sağ-tık ile yer imini
+        description: Sol-tık ile Yer imlerine git, sağ-tık ile yer imini
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
             bas, <strong>sağ-tık</strong> ile mevcut konumda yer imi oluştur.
-        creationSuccessNotification: Yer İmi oluşturuldu.
+        creationSuccessNotification: Yer imi oluşturuldu.
     interactiveTutorial:
-        title: Eğİtİm
+        title: Eğitim
         hints:
             1_1_extractor: Daire üretmek için <strong>daire şekli</strong> üzerine bir
                 <strong>üretici</strong> yerleştir!
             1_2_conveyor: "Üreticiyi <strong>taşıma bandı</strong> ile merkezine
-                bağla!<br><br>İpucu: Taşıma bandı nı seç ve taşıma bandını
+                bağla!<br><br>İpucu: Taşıma bandını seç ve taşıma bandını
                 farenin sol tuşu ile <strong>tıkla ve sürükle</strong>!"
             1_3_expand: "Bu bir boşta kalma oyunu (idle game) <strong>değil</strong>! Hedefe
                 ulaşmak için daha fazla üretici ve taşıma bandı
@@ -394,7 +394,7 @@ shopUpgrades:
         description: Hız x<currentMult> → x<newMult>
 buildings:
     hub:
-        deliver: Teslİm et
+        deliver: Teslim et
         toUnlock: Açılacak
         levelShortcut: SVY
         endOfDemo: Deneme Sürümünün Sonu
@@ -405,10 +405,10 @@ buildings:
                 sürükle.
     miner:
         default:
-            name: Üretİcİ
+            name: Üretici
             description: Bir şekli veya rengi üretmek için üzerlerini yerleştir.
         chainable:
-            name: Üretİcİ (Zİncİrleme)
+            name: Üretici (Zİncİrleme)
             description: Bir şekli veya rengi üretmek için üzerlerini yerleştir. Zincirleme
                 bağlanabilir.
     underground_belt:
@@ -421,12 +421,12 @@ buildings:
                 aktarımı sağlar.
     cutter:
         default:
-            name: Kesİcİ
+            name: Kesici
             description: Şekilleri yukarıdan aşağıya böler ve iki yarım parçayı çıktı olarak
                 verir. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer
                 çıkan parçayı yok etmeyi unutmayın, yoksa kesim durur!</strong>
         quad:
-            name: Kesİcİ (Dörtlü)
+            name: Kesici (Dörtlü)
             description: Şekilleri dört parçaya böler. <strong>Eğer sadece bir çıktıyı
                 kullanıyorsanız diğer çıkan parçaları yok etmeyi unutmayın,
                 yoksa kesim durur!</strong>
@@ -435,10 +435,10 @@ buildings:
             name: Döndürücü
             description: Şekilleri saat yönünde 90 derece döndürür.
         ccw:
-            name: Döndürücü (Saat Yönünün Tersİ)
+            name: Döndürücü (Saat Yönünün Tersi)
             description: Şekilleri saat yönünün tersinde 90 derece döndürür.
         rotate180:
-            name: Dödürücü (180 Derece)
+            name: Döndürücü (180 Derece)
             description: Şekilleri 180 derece döndürür.
     stacker:
         default:
@@ -486,10 +486,10 @@ buildings:
             name: Dengeleyici
             description: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.
         merger:
-            name: Bİrleştİrİcİ (tekİl)
+            name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         merger-inverse:
-            name: Birleştİrİcİ (tekİl)
+            name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         splitter:
             name: Ayırıcı (tekİl)
@@ -499,7 +499,7 @@ buildings:
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
     storage:
         default:
-            name: Storage
+            name: Depo
             description: Belirli bir sınıra kadar fazla eşyaları depolar. Taşırma kapısı
                 olarak kullanıla bilir.
     constant_signal:
@@ -589,7 +589,7 @@ buildings:
                 katmanda çıktı olarak verir.
 storyRewards:
     reward_cutter_and_trash:
-        title: Şekİllerİ Kesmek
+        title: Şekilleri Kesmek
         desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne
             olursa olsun</strong> ortadan ikiye böler!<br><br> Çıkan şekilleri
             kullanmayı veya çöpe atmayı unutma yoksa <strong>makine
@@ -645,7 +645,7 @@ storyRewards:
         desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki
             parça yerine <strong>dört parçaya</strong> ayırabilir!
     reward_painter_double:
-        title: Çİfte Boyama
+        title: Çifte Boyama
         desc: <strong>Boyayıcının<strong> başka bir türünü açtın - Sıradan bir boyayıcı
             gibi çalışır, fakat <strong>iki şekli birden</strong> boyayarak iki
             boya yerine sadece bir boya harcar!
@@ -665,13 +665,13 @@ storyRewards:
             yapıştırabilmek için <strong>taslak şekilleri</strong> üretmelisin!
             (Az önce teslim ettiğin şekiller).
     no_reward:
-        title: Sonrakİ Sevİye
+        title: Sonraki Seviye
         desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu
             anki fabrikalarını yok etmemeni öneririm - Daha sonra
             <strong>Geliştirmeleri açmak için </strong> <strong>bütün
             hepsine</strong> ihtiyacın olacak!"
     no_reward_freeplay:
-        title: Sonrakİ Sevİye
+        title: Sonraki Seviye
         desc: Tebrikler!
     reward_freeplay:
         title: Özgür Mod
@@ -701,7 +701,7 @@ storyRewards:
             hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
             çok kullanışlı olacak.
     reward_rotater_180:
-        title: Dödürücü (180 derece)
+        title: Döndürücü (180 derece)
         desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri 180 derece
             döndürür (Süpriz! :D)
     reward_display:
@@ -754,7 +754,7 @@ settings:
     categories:
         general: Genel
         userInterface: Kullanıcı Arayüzü
-        advanced: Gelİşmİş
+        advanced: Gelişmİş
         performance: Performans
     versionBadges:
         dev: Geliştirme
@@ -764,7 +764,7 @@ settings:
     rangeSliderPercentage: <amount> %
     labels:
         uiScale:
-            title: Arayüz Ölçeğİ
+            title: Arayüz Ölçeği
             description: Kullanıcı arayüzünün boyutunu değiştirir. Arayüz cihazınızın
                 çözünürlüğüne göre ölçeklendirilir, ama ölçeğin miktarı burada
                 ayarlanabilir.
@@ -775,7 +775,7 @@ settings:
                 large: Büyük
                 huge: Çok Büyük
         scrollWheelSensitivity:
-            title: Yakınlaştırma Hassasİyeti
+            title: Yakınlaştırma Hassasiyeti
             description: Yakınlaştırmanın ne kadar hassas olduğunu ayarlar (Fare tekerleği
                 veya dokunmatik farketmez).
             sensitivity:
@@ -785,7 +785,7 @@ settings:
                 fast: Hızlı
                 super_fast: Çok Hızlı
         language:
-            title: Dİl
+            title: Dil
             description: Dili değiştirir. Bütün çevirmeler kullanıcı katkılarıyla
                 oluşturulmuştur ve tam olmayabilir!
         fullscreen:
@@ -793,10 +793,10 @@ settings:
             description: En iyi oyun tecrübesi için oyunun tam ekranda oynanması tavsiye
                 edilir. Sadece tam sürümde mevcut.
         soundsMuted:
-            title: Ses Efektlerİnİ Sustur
+            title: Ses Efektlerini Sustur
             description: Aktif edildiğinde bütün ses efektleri susturulur.
         musicMuted:
-            title: Müzİğİ Sustur
+            title: Müziği Sustur
             description: Aktif edildiğinde bütün müzikler susturulur.
         theme:
             title: Renk Teması
@@ -805,7 +805,7 @@ settings:
                 dark: Karanlık
                 light: Aydınlık
         refreshRate:
-            title: Sİmülasyon Hızı
+            title: Simülasyon Hızı
             description: Eğer mönitörünüzün yenileme hızı (Hz) yüksekse oyunun akıcı bir
                 şekilde çalışması için yenileme hızını buradan değiştirin. Eğer
                 bilgisayarınız yavaşsa bu ayar oyunun gösterdiği kare hızını
@@ -817,7 +817,7 @@ settings:
                 özellik SHIFT tuşuna sürekli basılı tutup yapı yerleştirmeyle
                 aynıdır.
         offerHints:
-            title: İpuçları ve Eğİtİmler
+            title: İpuçları ve Eğitimler
             description: İpuçları ve eğitimleri açar. Ayrıca bazı arayüz elemanlarını oyunun
                 daha kolay öğrenilebilmesi için gizler.
         enableTunnelSmartplace:
@@ -827,11 +827,11 @@ settings:
                 tünellerin çekilerek inşa edilmesi ve aşırı uzağa yerleştirilen
                 tünel uçlarının silinmesini de sağlar.
         vignette:
-            title: Gölgelendİrme
+            title: Gölgelendirme
             description: Gölgelendirmeyi açar. Gölgelendirme ekranın köşelerini karartır ve
                 yazıları daha kolay okuyabilmeinizi sağlar.
         autosaveInterval:
-            title: Otomatİk Kayıt Sıklığı
+            title: Otomatik Kayıt Sıklığı
             description: Oyunun hangi sıklıkta kaydedileceğini belirler. Ayrıca otomatik
                 kayıt tamamen kapatılabilir.
             intervals:
@@ -842,11 +842,11 @@ settings:
                 twenty_minutes: 20 Dakika
                 disabled: Devredışı
         compactBuildingInfo:
-            title: Derlİ Toplu Yapı Bİlgİlerİ
+            title: Derli Toplu Yapı Bilgileri
             description: Yapıların bilgi kutularını sadece oranlarını göstecek şekilde
                 kısaltır. Aksi taktirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
-            title: Kes/Sİl Uyarılarını Devredışı Bırak
+            title: Kes/Sil Uyarılarını Devre dışı Bırak
             description: 100 birimden fazla parçayı kesme/silme işlemlerinde beliren uyarı
                 pencerelerini devredışı bırakır.
         enableColorBlindHelper:
@@ -872,36 +872,36 @@ settings:
             title: Ses Ayarı
             description: Ses efektlerinin seviyesini ayarlar
         musicVolume:
-            title: Müzİk Ayarı
+            title: Müzik Ayarı
             description: Müzik seviyesini ayarlar
         lowQualityMapResources:
-            title: Düşük Kalİte Harİta Kaynakları
+            title: Düşük Kalite Harita Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
                 kalitesinin sadeleştirir. Kaynaklar daha açık görüneceğinde bu
                 özelliği bir dene!
         disableTileGrid:
-            title: Harİta Çİzgİlerİnİ Gizle
+            title: Harita Çizgilerini Gizle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
                 Aynı zamanda oyunun daha açık görünmesini sağlar!
         clearCursorOnDeleteWhilePlacing:
-            title: Sağ Tık İnşa İptalİ
+            title: Sağ Tık İnşa İptali
             description: Varsayılan olarak açık. Özellik açıksa, inşa modundayken sağ yık
                 yapıldığında inşa modundan çıkar. Eğer özellik kapalıysa, inşa
                 modundan çıkmadan var olan yapıları sağ tık ile silebilirsiniz.
         lowQualityTextures:
-            title: Düşük Kalİte Görüntü (Çirkin)
+            title: Düşük Kalite Görüntü (Çirkin)
             description: Performans için düşük kalite görüntü kullanır. Bu oyunun daha
                 çirkin görünmesine sebep olur!
         displayChunkBorders:
-            title: Harİta Alan Sınırlarını Göster
+            title: Harita Alan Sınırlarını Göster
             description: Oyun 16'ya 16 alanlardan oluşur. Bu seçenek aktif olduğunda alan
                 sınırları görüntülenir.
         pickMinerOnPatch:
-            title: Kaynak Üzerinde Üretİcİ Seç
+            title: Kaynak Üzerinde Üretici Seç
             description: Varsayılan olarak açık. Eğer pipet bir kaynağın üzerinde
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
-            title: Sadeleştİrİlmİş Bantlar (Çirkin)
+            title: Sadeleştirilmiş Bantlar (Çirkin)
             description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse
                 görüntülenmez. Eğer gerçekten performansa ihtiyacınız yoksa bu
                 ayarla oynamanız tavsiye edilmez.
@@ -929,7 +929,7 @@ keybindings:
         placement: Yerleştİrme
         massSelect: Çoklu Seçim
         buildings: Yapı Kısayolları
-        placementModifiers: Yerleştİrme Özellİklerİ
+        placementModifiers: Yerleştirme Özellikleri
     mappings:
         confirm: Kabul
         back: Geri
@@ -947,8 +947,8 @@ keybindings:
         toggleFPSInfo: FPS ve Debug Bilgisini Aç/Kapat
         belt: Taşıma Bandı
         underground_belt: Tünel
-        miner: Üretİcİ
-        cutter: Kesİcİ
+        miner: Üretici
+        cutter: Kesici
         rotater: Döndürücü
         stacker: Kaynaştırıcı
         mixer: Renk Karıştırıcısı

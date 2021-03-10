@@ -3,7 +3,6 @@ import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
-import { findNiceValue } from "../core/utils";
 import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
@@ -20,7 +19,7 @@ export class PreloadState extends GameState {
         return `
             <div class="loadingImage"></div>
             <div class="loadingStatus">
-                <span class="desc">Booting</span>
+                <span class="desc">${G_CHINA_VERSION ? "加载中" : "Booting"}</span>
                 </div>
             </div>
             <span class="prefab_GameHint"></span>
@@ -115,6 +114,10 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Initializing language"))
             .then(() => {
+                if (G_CHINA_VERSION) {
+                    return this.app.settings.updateLanguage("zh-CN");
+                }
+
                 if (this.app.settings.getLanguage() === "auto-detect") {
                     const language = autoDetectLanguageId();
                     logger.log("Setting language to", language);
@@ -163,6 +166,10 @@ export class PreloadState extends GameState {
                     return;
                 }
 
+                if (G_CHINA_VERSION) {
+                    return;
+                }
+
                 return this.app.storage
                     .readFileAsync("lastversion.bin")
                     .catch(err => {
@@ -192,7 +199,9 @@ export class PreloadState extends GameState {
                         for (let i = 0; i < changelogEntries.length; ++i) {
                             const entry = changelogEntries[i];
                             dialogHtml += `
-                            <div class="changelogDialogEntry">
+                            <div class="changelogDialogEntry" data-changelog-skin="${
+                                entry.skin || "default"
+                            }">
                                 <span class="version">${entry.version}</span>
                                 <span class="date">${entry.date}</span>
                                 <ul class="changes">
@@ -220,6 +229,9 @@ export class PreloadState extends GameState {
     }
 
     update() {
+        if (G_CHINA_VERSION) {
+            return;
+        }
         const now = performance.now();
         if (now - this.lastHintShown > this.nextHintDuration) {
             this.lastHintShown = now;
@@ -250,6 +262,9 @@ export class PreloadState extends GameState {
      */
     setStatus(text) {
         logger.log("✅ " + text);
+        if (G_CHINA_VERSION) {
+            return Promise.resolve();
+        }
         this.currentStatus = text;
         this.statusText.innerText = text;
         return Promise.resolve();
@@ -265,7 +280,9 @@ export class PreloadState extends GameState {
 
         subElement.innerHTML = `
                 <div class="logo">
-                    <img src="${cachebust("res/logo.png")}" alt="Shapez.io Logo">
+                    <img src="${cachebust(
+                        G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
+                    )}" alt="Shapez.io Logo">
                 </div>
                 <div class="failureInner">
                     <div class="errorHeader">

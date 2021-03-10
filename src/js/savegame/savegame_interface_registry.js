@@ -8,6 +8,7 @@ import { SavegameInterface_V1004 } from "./schemas/1004";
 import { SavegameInterface_V1005 } from "./schemas/1005";
 import { SavegameInterface_V1006 } from "./schemas/1006";
 import { SavegameInterface_V1007 } from "./schemas/1007";
+import { SavegameInterface_V1008 } from "./schemas/1008";
 import { SavegameInterface_ML01 } from "./schemas/ML01";
 
 /** @type {Object.<any, typeof BaseSavegameInterface>} */
@@ -20,6 +21,7 @@ export const savegameInterfaces = {
     1005: SavegameInterface_V1005,
     1006: SavegameInterface_V1006,
     1007: SavegameInterface_V1007,
+    1008: SavegameInterface_V1008,
     ML01: SavegameInterface_ML01,
 };
 

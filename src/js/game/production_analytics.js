@@ -83,7 +83,7 @@ export class ProductionAnalytics extends BasicSerializableObject {
      * @param {enumAnalyticsDataSource} dataSource
      * @param {ShapeDefinition} definition
      */
-    getCurrentShapeRate(dataSource, definition) {
+    getCurrentShapeRateRaw(dataSource, definition) {
         const slices = this.history[dataSource];
         return slices[slices.length - 2][definition.getHash()] || 0;
     }
@@ -108,7 +108,7 @@ export class ProductionAnalytics extends BasicSerializableObject {
      * Returns the rates of all shapes
      * @param {enumAnalyticsDataSource} dataSource
      */
-    getCurrentShapeRates(dataSource) {
+    getCurrentShapeRatesRaw(dataSource) {
         const slices = this.history[dataSource];
 
         // First, copy current slice

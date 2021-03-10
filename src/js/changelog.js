@@ -3,11 +3,14 @@
  */
 export const CHANGELOG = [
     {
-        version: "1.2.3",
-        date: "unreleased",
+        version: "1.3.0",
+        date: "12.03.2020",
+        skin: "achievements",
         entries: [
+            "There are now <strong>45 Steam Achievements!</strong>",
             "Fixed constant signals being editable from the regular layer",
             "Fixed items still overlapping sometimes between buildings and belts",
+            "Updated translations (Thanks to all contributors!)",
         ],
     },
     {

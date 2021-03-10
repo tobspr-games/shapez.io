@@ -63,6 +63,10 @@ export class SettingsState extends TextualGameState {
         for (let i = 0; i < allApplicationSettings().length; ++i) {
             const setting = allApplicationSettings()[i];
 
+            if (G_CHINA_VERSION && setting.id === "language") {
+                continue;
+            }
+
             categoriesHTML[setting.categoryId] += setting.getHtml(this.app);
         }
 
@@ -90,13 +94,15 @@ export class SettingsState extends TextualGameState {
     onEnter(payload) {
         this.renderBuildText();
 
-        for (let i = 0; i < SettingsState.trackClicks.length; i++) {
-            const trackClick = SettingsState.trackClicks[i];
-            this.trackClicks(
-                this.htmlElement.querySelector(trackClick.htmlElement),
-                trackClick.action(this),
-                trackClick.options
-            );
+        if (!G_CHINA_VERSION) {
+            for (let i = 0; i < SettingsState.trackClicks.length; i++) {
+                const trackClick = SettingsState.trackClicks[i];
+                this.trackClicks(
+                    this.htmlElement.querySelector(trackClick.htmlElement),
+                    trackClick.action(this),
+                    trackClick.options
+                );
+            }
         }
 
         const keybindingsButton = this.htmlElement.querySelector(".editKeybindings");
@@ -132,6 +138,10 @@ export class SettingsState extends TextualGameState {
 
     initSettings() {
         allApplicationSettings().forEach(setting => {
+            if (G_CHINA_VERSION && setting.id === "language") {
+                return;
+            }
+
             /** @type {HTMLElement} */
             const element = this.htmlElement.querySelector("[data-setting='" + setting.id + "']");
             setting.bind(this.app, element, this.dialogs);

@@ -145,12 +145,10 @@
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
-                transform: skewX(-0.5deg);
 
                 @include S(border-radius, $globalBorderRadius);
 
                 &:hover {
-                    transform: scale(1.02);
                     opacity: 0.9;
                 }
             }
@@ -184,7 +182,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: rgb(231, 78, 58);
+            color: rgb(133, 58, 231);
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -483,6 +481,10 @@
         @include S(padding, 10px);
         box-sizing: border-box;
         @include S(grid-gap, 4px);
+
+        &.china {
+            grid-template-columns: auto auto 1fr;
+        }
 
         .author {
             flex-grow: 1;

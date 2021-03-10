@@ -1,5 +1,6 @@
 import { generateMatrixRotations } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
+import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
@@ -93,6 +94,25 @@ export class MetaTrashBuilding extends MetaBuilding {
         return MetaTrashBuilding.renderPins[variant]();
     }
 
+    addAchievementReceiver(entity) {
+        if (!entity.root) {
+            return;
+        }
+
+        const itemProcessor = entity.components.ItemProcessor;
+        const tryTakeItem = itemProcessor.tryTakeItem.bind(itemProcessor);
+
+        itemProcessor.tryTakeItem = () => {
+            const taken = tryTakeItem(...arguments);
+
+            if (taken) {
+                entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
+            }
+
+            return taken;
+        };
+    }
+
     /**
      * Creates the entity at the given location
      * @param {Entity} entity
@@ -107,7 +127,7 @@ export class MetaTrashBuilding extends MetaBuilding {
      * @param {string} variant
      */
     updateVariants(entity, rotationVariant, variant) {
-        MetaTrashBuilding.componentVariations[variant](entity, rotationVariant);
+        MetaTrashBuilding.componentVariations[variant].bind(this)(entity, rotationVariant);
     }
 
     static setupEntityComponents = [
@@ -134,6 +154,10 @@ export class MetaTrashBuilding extends MetaBuilding {
                     processorType: enumItemProcessorTypes.trash,
                 })
             ),
+        function (entity) {
+            // @ts-ignore
+            this.addAchievementReceiver(entity);
+        },
     ];
 
     static overlayMatrices = {
