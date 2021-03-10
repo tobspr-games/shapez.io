@@ -1207,6 +1207,11 @@ demo:
 
     settingNotAvailable: Not available in the demo.
 
+achievements:
+    painting:
+        displayName: Painting
+        description: Paint a shape
+
 tips:
     - The hub will accept any input, not just the current shape!
     - Make sure your factories are modular - it will pay out!

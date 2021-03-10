@@ -1,5 +1,6 @@
 require("colors");
 const packager = require("electron-packager");
+const pj = require("../electron/package.json");
 const path = require("path");
 const { getVersion } = require("./buildutils");
 const fs = require("fs");
@@ -9,49 +10,53 @@ const execSync = require("child_process").execSync;
 
 function gulptasksStandalone($, gulp) {
     const electronBaseDir = path.join(__dirname, "..", "electron");
-
-    for (const { tempDestDir, suffix, taskPrefix } of [
-        { tempDestDir: path.join(__dirname, "..", "tmp_standalone_files"), suffix: "", taskPrefix: "" },
+    const targets = [
+        {
+            tempDestDir: path.join(__dirname, "..", "tmp_standalone_files"),
+            suffix: "",
+            taskPrefix: ""
+        },
         {
             tempDestDir: path.join(__dirname, "..", "tmp_standalone_files_china"),
             suffix: "china",
             taskPrefix: "china.",
         },
-    ]) {
+    ];
+
+    for (const { tempDestDir, suffix, taskPrefix } of targets) {
         const tempDestBuildDir = path.join(tempDestDir, "built");
 
         gulp.task(taskPrefix + "standalone.prepare.cleanup", () => {
-            return gulp.src(tempDestDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
+            return gulp.src(tempDestDir, { read: false, allowEmpty: true })
+                .pipe($.clean({ force: true }));
         });
 
         gulp.task(taskPrefix + "standalone.prepare.copyPrefab", () => {
-            // const requiredFiles = $.glob.sync("../electron/");
             const requiredFiles = [
-                path.join(electronBaseDir, "lib", "**", "*.node"),
                 path.join(electronBaseDir, "node_modules", "**", "*.*"),
                 path.join(electronBaseDir, "node_modules", "**", ".*"),
+                path.join(electronBaseDir, "steam_appid.txt"),
                 path.join(electronBaseDir, "favicon*"),
 
                 // fails on platforms which support symlinks
                 // https://github.com/gulpjs/gulp/issues/1427
                 // path.join(electronBaseDir, "node_modules", "**", "*"),
             ];
-            return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
+            return gulp.src(requiredFiles, { base: electronBaseDir })
+                .pipe(gulp.dest(tempDestBuildDir));
         });
 
         gulp.task(taskPrefix + "standalone.prepare.writePackageJson", cb => {
-            fs.writeFileSync(
-                path.join(tempDestBuildDir, "package.json"),
-                JSON.stringify(
-                    {
-                        devDependencies: {
-                            electron: "6.1.12",
-                        },
-                    },
-                    null,
-                    4
-                )
-            );
+            const packageJsonString = JSON.stringify({
+                scripts: {
+                    start: pj.scripts.start
+                },
+                devDependencies: pj.devDependencies,
+                optionalDependencies: pj.optionalDependencies
+            }, null, 4);
+
+            fs.writeFileSync(path.join(tempDestBuildDir, "package.json"), packageJsonString);
+
             cb();
         });
 
@@ -74,7 +79,8 @@ function gulptasksStandalone($, gulp) {
         });
 
         gulp.task(taskPrefix + "standalone.prepare.copyGamefiles", () => {
-            return gulp.src("../build/**/*.*", { base: "../build" }).pipe(gulp.dest(tempDestBuildDir));
+            return gulp.src("../build/**/*.*", { base: "../build" })
+                .pipe(gulp.dest(tempDestBuildDir));
         });
 
         gulp.task(taskPrefix + "standalone.killRunningInstances", cb => {
@@ -106,6 +112,14 @@ function gulptasksStandalone($, gulp) {
          */
         function packageStandalone(platform, arch, cb) {
             const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
+            const privateArtifactsPath = "node_modules/shapez.io-private-artifacts";
+
+            let asar;
+            if (fs.existsSync(path.join(tempDestBuildDir, privateArtifactsPath))) {
+                asar = { unpackDir: privateArtifactsPath };
+            } else {
+                asar = true;
+            }
 
             packager({
                 dir: tempDestBuildDir,
@@ -114,7 +128,7 @@ function gulptasksStandalone($, gulp) {
                 buildVersion: "1.0.0",
                 arch,
                 platform,
-                asar: true,
+                asar: asar,
                 executableName: "shapezio",
                 icon: path.join(electronBaseDir, "favicon"),
                 name: "shapez.io-standalone" + suffix,
@@ -134,6 +148,11 @@ function gulptasksStandalone($, gulp) {
                         fs.writeFileSync(
                             path.join(appPath, "LICENSE"),
                             fs.readFileSync(path.join(__dirname, "..", "LICENSE"))
+                        );
+
+                        fse.copySync(
+                            path.join(tempDestBuildDir, "steam_appid.txt"),
+                            path.join(appPath, "steam_appid.txt")
                         );
 
                         fs.writeFileSync(path.join(appPath, ".itch.toml"), tomlFile);
@@ -156,7 +175,9 @@ function gulptasksStandalone($, gulp) {
             );
         }
 
-        gulp.task(taskPrefix + "standalone.package.prod.win64", cb => packageStandalone("win32", "x64", cb));
+        gulp.task(taskPrefix + "standalone.package.prod.win64", cb =>
+            packageStandalone("win32", "x64", cb)
+        );
         gulp.task(taskPrefix + "standalone.package.prod.linux64", cb =>
             packageStandalone("linux", "x64", cb)
         );

@@ -59,6 +59,9 @@ export default {
     // Enables ads in the local build (normally they are deactivated there)
     // testAds: true,
     // -----------------------------------------------------------------------------------
+    // Allows unlocked achievements to be logged to console in the local build
+    // testAchievements: true,
+    // -----------------------------------------------------------------------------------
     // Disables the automatic switch to an overview when zooming out
     // disableMapOverview: true,
     // -----------------------------------------------------------------------------------
