@@ -14,6 +14,8 @@ module.exports = function (api) {
         ],
     ];
     const plugins = [
+        ["@babel/plugin-proposal-class-properties", { loose: true }],
+
         "closure-elimination",
         // var is faster than let and const!
         [
@@ -28,7 +30,6 @@ module.exports = function (api) {
                 loose: true,
             },
         ],
-        [require("@babel/plugin-proposal-class-properties"), { loose: true }],
     ];
     return {
         presets,

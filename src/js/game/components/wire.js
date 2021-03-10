@@ -1,4 +1,7 @@
+/* typehints:start */
 import { MetaWireBuilding } from "../buildings/wire";
+/* typehints:end */
+
 import { Component } from "../component";
 
 /** @enum {string} */
