@@ -27,8 +27,6 @@ export class AchievementProxy {
         }
 
         this.sliceTime = 0;
-        this.sliceIteration = 1;
-        this.sliceIterationLimit = 10;
 
         this.root.signals.postLoadHook.add(this.onLoad, this);
     }
@@ -88,15 +86,6 @@ export class AchievementProxy {
             ACHIEVEMENTS.play20h,
             this.sliceTime
         );
-
-        if (this.sliceIteration === this.sliceIterationLimit) {
-            this.sliceIteration = 1;
-            if (this.provider.collection) {
-                this.provider.collection.clean();
-            }
-        } else {
-            this.sliceIteration++;
-        }
     }
 
     update() {

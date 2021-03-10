@@ -150,10 +150,6 @@ export class Achievement {
         return true;
     }
 
-    isRelevant() {
-        return true;
-    }
-
     unlock() {
         if (!this.activatePromise) {
             this.activatePromise = this.activate(this.key);
@@ -198,7 +194,6 @@ export class AchievementCollection {
         this.add(ACHIEVEMENTS.level100, this.createLevelOptions(100));
         this.add(ACHIEVEMENTS.level50, this.createLevelOptions(50));
         this.add(ACHIEVEMENTS.logoBefore18, {
-            isRelevant: this.isLogoBefore18Relevant,
             isValid: this.isLogoBefore18Valid,
             signal: "itemProduced",
         });
@@ -206,17 +201,14 @@ export class AchievementCollection {
             isValid: this.isMamValid,
         });
         this.add(ACHIEVEMENTS.mapMarkers15, {
-            isRelevant: this.isMapMarkers15Relevant,
             isValid: this.isMapMarkers15Valid,
         });
         this.add(ACHIEVEMENTS.noBeltUpgradesUntilBp, {
-            isRelevant: this.isNoBeltUpgradesUntilBpRelevant,
             isValid: this.isNoBeltUpgradesUntilBpValid,
             signal: "storyGoalCompleted",
         });
         this.add(ACHIEVEMENTS.noInverseRotater, {
             init: this.initNoInverseRotater,
-            isRelevant: this.isNoInverseRotaterRelevant,
             isValid: this.isNoInverseRotaterValid,
             signal: "storyGoalCompleted",
         });
@@ -251,7 +243,6 @@ export class AchievementCollection {
         });
         this.add(ACHIEVEMENTS.stackShape);
         this.add(ACHIEVEMENTS.store100Unique, {
-            isRelevant: this.isStore100UniqueRelevant,
             isValid: this.isStore100UniqueValid,
             signal: "shapeDelivered",
         });
@@ -284,11 +275,6 @@ export class AchievementCollection {
                 achievement.init();
             }
 
-            if (!achievement.isRelevant()) {
-                this.remove(key);
-                continue;
-            }
-
             if (achievement.signal) {
                 achievement.receiver = this.unlock.bind(this, key);
                 this.root.signals[achievement.signal].add(achievement.receiver);
@@ -305,7 +291,6 @@ export class AchievementCollection {
      * @param {string} key - Maps to an Achievement
      * @param {object} [options]
      * @param {function} [options.init]
-     * @param {function} [options.isRelevant]
      * @param {function} [options.isValid]
      * @param {string} [options.signal]
      */
@@ -324,10 +309,6 @@ export class AchievementCollection {
 
         if (options.isValid) {
             achievement.isValid = options.isValid.bind(this);
-        }
-
-        if (options.isRelevant) {
-            achievement.isRelevant = options.isRelevant.bind(this);
         }
 
         if (options.signal) {
@@ -395,18 +376,6 @@ export class AchievementCollection {
     }
 
     /**
-     * Intended to be called on occasion to prune achievements that became
-     * irrelevant during a play session.
-     */
-    clean() {
-        for (let [key, achievement] of this.map.entries()) {
-            if (!achievement.activatePromise && !achievement.isRelevant()) {
-                this.remove(key);
-            }
-        }
-    }
-
-    /**
      * Check if the collection-level achievementCheck receivers are still
      * necessary.
      */
@@ -452,7 +421,6 @@ export class AchievementCollection {
 
     createLevelOptions(level) {
         return {
-            isRelevant: () => this.root.hubGoals.level < level,
             isValid: currentLevel => currentLevel >= level,
             signal: "storyGoalCompleted",
         };
@@ -482,7 +450,6 @@ export class AchievementCollection {
 
     createSpeedOptions(level, time) {
         return {
-            isRelevant: () => this.root.hubGoals.level <= level && this.root.time.now() < time,
             isValid: currentLevel => currentLevel >= level && this.root.time.now() < time,
             signal: "storyGoalCompleted",
         };
@@ -496,7 +463,6 @@ export class AchievementCollection {
 
     createUpgradeOptions(tier) {
         return {
-            isRelevant: () => !this.hasAllUpgradesAtLeastAtTier(tier),
             isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
@@ -552,11 +518,6 @@ export class AchievementCollection {
         return true;
     }
 
-    /** @returns {boolean} */
-    isLogoBefore18Relevant() {
-        return this.root.hubGoals.level < 18;
-    }
-
     /** @param {ShapeItem} item @returns {boolean} */
     isLogoBefore18Valid(item) {
         return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
@@ -567,19 +528,9 @@ export class AchievementCollection {
         return this.root.hubGoals.level > 27 && !this.root.savegame.currentData.stats.failedMam;
     }
 
-    /** @returns {boolean} */
-    isMapMarkers15Relevant() {
-        return this.root.hud.parts.waypoints.waypoints.length < 16; // 16 - HUB
-    }
-
     /** @param {number} count @returns {boolean} */
     isMapMarkers15Valid(count) {
         return count >= 15;
-    }
-
-    /** @returns {boolean} */
-    isNoBeltUpgradesUntilBpRelevant() {
-        return this.root.hubGoals.level <= 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
 
     /**
@@ -608,11 +559,6 @@ export class AchievementCollection {
         }
 
         this.root.savegame.currentData.stats.usedInverseRotater = usedInverseRotater;
-    }
-
-    /** @returns {boolean} */
-    isNoInverseRotaterRelevant() {
-        return this.root.hubGoals.level < 14 && !this.root.savegame.currentData.stats.usedInverseRotater;
     }
 
     /** @param {number} level @returns {boolean} */
@@ -647,11 +593,6 @@ export class AchievementCollection {
     /** @param {ShapeItem} item @returns {boolean} */
     isStack4LayersValid(item) {
         return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
-    }
-
-    /** @returns {boolean} */
-    isStore100UniqueRelevant() {
-        return Object.keys(this.root.hubGoals.storedShapes).length < 100;
     }
 
     /** @returns {boolean} */
