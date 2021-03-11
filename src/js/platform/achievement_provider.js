@@ -237,10 +237,12 @@ export class AchievementCollection {
         });
         this.add(ACHIEVEMENTS.stackShape);
         this.add(ACHIEVEMENTS.store100Unique, {
+            init: this.initStore100Unique,
             isValid: this.isStore100UniqueValid,
             signal: "shapeDelivered",
         });
         this.add(ACHIEVEMENTS.storeShape, {
+            init: this.initStoreShape,
             isValid: this.isStoreShapeValid,
         });
         this.add(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
@@ -478,16 +480,6 @@ export class AchievementCollection {
         return entity.components.Belt && entity.components.Belt.assignedPath.totalLength >= 500;
     }
 
-    /** @param {ShapeDefinition} definition @returns {boolean} */
-    isBlueprint100kValid(definition) {
-        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 100000;
-    }
-
-    /** @param {ShapeDefinition} definition @returns {boolean} */
-    isBlueprint1mValid(definition) {
-        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 1000000;
-    }
-
     /** @returns {boolean} */
     isDarkModeValid() {
         return this.root.app.settings.currentData.settings.theme === DARK_MODE;
@@ -523,19 +515,12 @@ export class AchievementCollection {
         return true;
     }
 
-    /** @param {Achievement} achievement */
-    initLogoBefore18({ key }) {
-        const item = new ShapeItem(ShapeDefinition.fromShortKey(SHAPE_LOGO));
-
-        this.unlock(key, item);
-    }
-
     /** @param {ShapeItem} item @returns {boolean} */
     isLogoBefore18Valid(item) {
         return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
     }
 
-    /** @params {number} level @returns {boolean} */
+    /** @returns {boolean} */
     isMamValid() {
         return this.root.hubGoals.level > 27 && !this.root.savegame.currentData.stats.failedMam;
     }
@@ -617,6 +602,11 @@ export class AchievementCollection {
         return Object.keys(this.root.hubGoals.storedShapes).length >= 100;
     }
 
+    /** @param {Achievement} achievement */
+    initStoreShape({ key }) {
+        this.unlock(key);
+    }
+
     /** @returns {boolean} */
     isStoreShapeValid() {
         const entities = this.root.systemMgr.systems.storage.allEntities;
@@ -644,7 +634,7 @@ export class AchievementCollection {
         this.root.savegame.currentData.stats.trashedCount = 0;
     }
 
-    /** @params {number} count @returns {boolean} */
+    /** @param {number} count @returns {boolean} */
     isTrash1000Valid(count) {
         this.root.savegame.currentData.stats.trashedCount += count;
 
