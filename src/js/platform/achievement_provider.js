@@ -322,7 +322,7 @@ export class AchievementCollection {
 
     /**
      * @param {string} key - Maps to an Achievement
-     * @param {?*} data - Data received from signal dispatches for validation
+     * @param {any} data - Data received from signal dispatches for validation
      */
     unlock(key, data) {
         if (!this.map.has(key)) {
@@ -469,7 +469,7 @@ export class AchievementCollection {
 
     createUpgradeOptions(tier) {
         return {
-            init: ({ key }) => this.unlock(key),
+            init: ({ key }) => this.unlock(key, null),
             isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
@@ -594,7 +594,7 @@ export class AchievementCollection {
 
     /** @param {Achievement} achievement */
     initStore100Unique({ key }) {
-        this.unlock(key);
+        this.unlock(key, null);
     }
 
     /** @returns {boolean} */
@@ -604,7 +604,7 @@ export class AchievementCollection {
 
     /** @param {Achievement} achievement */
     initStoreShape({ key }) {
-        this.unlock(key);
+        this.unlock(key, null);
     }
 
     /** @returns {boolean} */
