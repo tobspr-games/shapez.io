@@ -42,6 +42,7 @@ jobs:
               run: |
                   cd gulp
                   yarn gulp translations.fullBuild
+                  yarn gulp localConfig.findOrCreate
                   cd ..
                   yarn tslint
 

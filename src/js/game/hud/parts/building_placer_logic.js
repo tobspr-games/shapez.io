@@ -110,6 +110,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // KEYBINDINGS
         const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
+
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToUp).add(this.trySetRotate, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToDown).add(this.trySetRotate, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToRight).add(this.trySetRotate, this);
+        keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToLeft).add(this.trySetRotate, this);
+
         keyActionMapper.getBinding(KEYMAPPINGS.placement.cycleBuildingVariants).add(this.cycleVariants, this);
         keyActionMapper
             .getBinding(KEYMAPPINGS.placement.switchDirectionLockSide)
@@ -290,6 +296,28 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             staticComp.rotation = this.currentBaseRotation;
         }
     }
+
+    /**
+     * Rotates the current building to the specified direction.
+     */
+    trySetRotate() {
+        const selectedBuilding = this.currentMetaBuilding.get();
+        if (selectedBuilding) {
+            if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToUp).pressed) {
+                this.currentBaseRotation = 0;
+            } else if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToDown).pressed) {
+                this.currentBaseRotation = 180;
+            } else if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToRight).pressed) {
+                this.currentBaseRotation = 90;
+            } else if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToLeft).pressed) {
+                this.currentBaseRotation = 270;
+            }
+
+            const staticComp = this.fakeEntity.components.StaticMapEntity;
+            staticComp.rotation = this.currentBaseRotation;
+        }
+    }
+
     /**
      * Tries to delete the building under the mouse
      */

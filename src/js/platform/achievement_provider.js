@@ -2,11 +2,11 @@
 import { Application } from "../application";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
-import { ShapeDefinition } from "../game/shape_definition";
 import { VANILLA_THEMES } from "../game/theme";
 /* typehints:end */
 
 import { enumAnalyticsDataSource } from "../game/production_analytics";
+import { ShapeDefinition } from "../game/shape_definition";
 import { ShapeItem } from "../game/items/shape_item";
 import { globalConfig } from "../core/config";
 import { codes } from "../modloader/old_buildings_codes";
@@ -172,14 +172,8 @@ export class AchievementCollection {
             isValid: this.isBelt500TilesValid,
             signal: "entityAdded",
         });
-        this.add(ACHIEVEMENTS.blueprint100k, {
-            isValid: this.isBlueprint100kValid,
-            signal: "shapeDelivered",
-        });
-        this.add(ACHIEVEMENTS.blueprint1m, {
-            isValid: this.isBlueprint1mValid,
-            signal: "shapeDelivered",
-        });
+        this.add(ACHIEVEMENTS.blueprint100k, this.createBlueprintOptions(100000));
+        this.add(ACHIEVEMENTS.blueprint1m, this.createBlueprintOptions(1000000));
         this.add(ACHIEVEMENTS.completeLvl26, this.createLevelOptions(26));
         this.add(ACHIEVEMENTS.cutShape);
         this.add(ACHIEVEMENTS.darkMode, {
@@ -244,10 +238,12 @@ export class AchievementCollection {
         });
         this.add(ACHIEVEMENTS.stackShape);
         this.add(ACHIEVEMENTS.store100Unique, {
+            init: this.initStore100Unique,
             isValid: this.isStore100UniqueValid,
             signal: "shapeDelivered",
         });
         this.add(ACHIEVEMENTS.storeShape, {
+            init: this.initStoreShape,
             isValid: this.isStoreShapeValid,
         });
         this.add(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
@@ -272,13 +268,13 @@ export class AchievementCollection {
         this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
 
         for (let [key, achievement] of this.map.entries()) {
-            if (achievement.init) {
-                achievement.init();
-            }
-
             if (achievement.signal) {
                 achievement.receiver = this.unlock.bind(this, key);
                 this.root.signals[achievement.signal].add(achievement.receiver);
+            }
+
+            if (achievement.init) {
+                achievement.init();
             }
         }
 
@@ -327,7 +323,7 @@ export class AchievementCollection {
 
     /**
      * @param {string} key - Maps to an Achievement
-     * @param {?*} data - Data received from signal dispatches for validation
+     * @param {any} data - Data received from signal dispatches for validation
      */
     unlock(key, data) {
         if (!this.map.has(key)) {
@@ -420,8 +416,18 @@ export class AchievementCollection {
         return item.getItemType() === ITEM_SHAPE && item.definition.getHash() === shape;
     }
 
+    createBlueprintOptions(count) {
+        return {
+            init: ({ key }) => this.unlock(key, ShapeDefinition.fromShortKey(SHAPE_BP)),
+            isValid: definition =>
+                definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= count,
+            signal: "shapeDelivered",
+        };
+    }
+
     createLevelOptions(level) {
         return {
+            init: ({ key }) => this.unlock(key, this.root.hubGoals.level),
             isValid: currentLevel => currentLevel >= level,
             signal: "storyGoalCompleted",
         };
@@ -464,6 +470,7 @@ export class AchievementCollection {
 
     createUpgradeOptions(tier) {
         return {
+            init: ({ key }) => this.unlock(key, null),
             isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
@@ -472,16 +479,6 @@ export class AchievementCollection {
     /** @param {Entity} entity @returns {boolean} */
     isBelt500TilesValid(entity) {
         return entity.components.Belt && entity.components.Belt.assignedPath.totalLength >= 500;
-    }
-
-    /** @param {ShapeDefinition} definition @returns {boolean} */
-    isBlueprint100kValid(definition) {
-        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 100000;
-    }
-
-    /** @param {ShapeDefinition} definition @returns {boolean} */
-    isBlueprint1mValid(definition) {
-        return definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= 1000000;
     }
 
     /** @returns {boolean} */
@@ -524,7 +521,7 @@ export class AchievementCollection {
         return this.root.hubGoals.level < 18 && this.isShape(item, SHAPE_LOGO);
     }
 
-    /** @params {number} level @returns {boolean} */
+    /** @returns {boolean} */
     isMamValid() {
         return this.root.hubGoals.level > 27 && !this.root.savegame.currentData.stats.failedMam;
     }
@@ -596,9 +593,19 @@ export class AchievementCollection {
         return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
     }
 
+    /** @param {Achievement} achievement */
+    initStore100Unique({ key }) {
+        this.unlock(key, null);
+    }
+
     /** @returns {boolean} */
     isStore100UniqueValid() {
         return Object.keys(this.root.hubGoals.storedShapes).length >= 100;
+    }
+
+    /** @param {Achievement} achievement */
+    initStoreShape({ key }) {
+        this.unlock(key, null);
     }
 
     /** @returns {boolean} */
@@ -618,15 +625,17 @@ export class AchievementCollection {
         return false;
     }
 
-    initTrash1000() {
+    /** @param {Achievement} achievement */
+    initTrash1000({ key }) {
         if (Number(this.root.savegame.currentData.stats.trashedCount)) {
+            this.unlock(key, 0);
             return;
         }
 
         this.root.savegame.currentData.stats.trashedCount = 0;
     }
 
-    /** @params {number} count @returns {boolean} */
+    /** @param {number} count @returns {boolean} */
     isTrash1000Valid(count) {
         this.root.savegame.currentData.stats.trashedCount += count;
 

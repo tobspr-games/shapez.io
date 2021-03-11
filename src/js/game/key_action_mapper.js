@@ -12,6 +12,11 @@ function key(str) {
     return str.toUpperCase().charCodeAt(0);
 }
 
+const KEYCODE_UP_ARROW = 38;
+const KEYCODE_DOWN_ARROW = 40;
+const KEYCODE_LEFT_ARROW = 37;
+const KEYCODE_RIGHT_ARROW = 39;
+
 export const KEYMAPPINGS = {
     general: {
         confirm: { keyCode: 13 }, // enter
@@ -82,6 +87,10 @@ export const KEYMAPPINGS = {
         pipette: { keyCode: key("Q") },
         rotateWhilePlacing: { keyCode: key("R") },
         rotateInverseModifier: { keyCode: 16 }, // SHIFT
+        rotateToUp: { keyCode: KEYCODE_UP_ARROW },
+        rotateToDown: { keyCode: KEYCODE_DOWN_ARROW },
+        rotateToRight: { keyCode: KEYCODE_RIGHT_ARROW },
+        rotateToLeft: { keyCode: KEYCODE_LEFT_ARROW },
         cycleBuildingVariants: { keyCode: key("T") },
         cycleBuildings: { keyCode: 9 }, // TAB
         switchDirectionLockSide: { keyCode: key("R") },
@@ -163,13 +172,13 @@ export function getStringForKeyCode(code) {
             return "END";
         case 36:
             return "HOME";
-        case 37:
+        case KEYCODE_LEFT_ARROW:
             return "⬅";
-        case 38:
+        case KEYCODE_UP_ARROW:
             return "⬆";
-        case 39:
+        case KEYCODE_RIGHT_ARROW:
             return "➡";
-        case 40:
+        case KEYCODE_DOWN_ARROW:
             return "⬇";
         case 44:
             return "PRNT";
