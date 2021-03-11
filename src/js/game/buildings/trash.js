@@ -43,7 +43,7 @@ export class MetaTrashBuilding extends MetaBuilding {
             return;
         }
 
-        const itemProcessor = entity.components.ItemProcessor
+        const itemProcessor = entity.components.ItemProcessor;
         const tryTakeItem = itemProcessor.tryTakeItem.bind(itemProcessor);
 
         itemProcessor.tryTakeItem = () => {
@@ -54,7 +54,7 @@ export class MetaTrashBuilding extends MetaBuilding {
             }
 
             return taken;
-        }
+        };
     }
 
     /**
