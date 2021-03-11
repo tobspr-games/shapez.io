@@ -46,7 +46,7 @@ export class AchievementProxy {
     }
 
     initialize() {
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.darkMode, null);
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.darkMode);
 
         if (this.has(ACHIEVEMENTS.mam)) {
             this.root.signals.entityAdded.add(this.onMamFailure, this);
@@ -136,7 +136,7 @@ export class AchievementProxy {
             this.root.signals.entityDestroyed.add(this.onMamFailure, this);
         }
 
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.mam, null);
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.mam);
 
         // reset on every level
         this.root.savegame.currentData.stats.failedMam = false;
