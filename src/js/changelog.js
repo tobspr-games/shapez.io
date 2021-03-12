@@ -7,6 +7,7 @@ export const CHANGELOG = [
             "There are now <strong>45 Steam Achievements!</strong>",
             "Fixed constant signals being editable from the regular layer",
             "Fixed items still overlapping sometimes between buildings and belts",
+            "The game is now available in finish, italian, romanian and ukrainian! (Thanks to all contributors!)",
             "Updated translations (Thanks to all contributors!)",
         ],
     },

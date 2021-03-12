@@ -43,9 +43,10 @@
         .languageChoose {
             @include S(border-radius, 8px);
             border: solid #222428;
-            background-color: #fff;
             @include S(border-width, 2px);
-            background-size: cover;
+            background-color: #222428 !important;
+            background-size: contain !important;
+            background-position: center center !important;
             opacity: 0.8;
         }
     }
@@ -182,7 +183,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: rgb(133, 58, 231);
+            color: #3291e9;
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -444,7 +445,7 @@
         justify-content: center;
         align-items: flex-end;
         width: 100%;
-        grid-template-columns: auto auto auto 1fr;
+        grid-template-columns: auto auto auto auto 1fr;
         @include S(padding, 10px);
         box-sizing: border-box;
         @include S(grid-gap, 4px);
@@ -500,6 +501,15 @@
                 background-color: $linkBgHover;
             }
 
+            &.nftLink {
+                background-color: #3291e9;
+                color: #fff;
+
+                &:hover {
+                    background-color: darken(#3291e9, 5);
+                }
+            }
+
             .thirdpartyLogo {
                 display: inline-block;
                 @include S(width, 50px);
@@ -513,6 +523,12 @@
                     /* @load-async */
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
+                }
+
+                &.nftLogo {
+                    /* @load-async */
+                    background-image: uiResource("main_menu/opensea.png");
+                    background-size: 80%;
                 }
             }
         }

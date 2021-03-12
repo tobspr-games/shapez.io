@@ -11,43 +11,18 @@ steamPage:
         És ha ez nem lenne elég, exponenciálisan többet kell termelned az igények kielégítése érdekében - az egyetlen dolog, ami segít, az a termelés mennyisége! Az alakzatokat a játék elején csak feldolgoznod kell, később azonban színezned is kell őket - ehhez bányászni és keverni kell a színeket!
 
         A játék Steamen történő megvásárlása hozzáférést biztosít a teljes verzióhoz, de kipróbálhatod a játékot a shapez.io oldalon, és később dönthetsz!
-    title_advantages: Önálló Verzió Előnyei
-    advantages:
-        - <b>12 Új Szint</b>, összesen 26
-        - <b>18 Új Épület</b> egy teljesen automatizált gyárhoz!
-        - <b>20 Fejlesztési szint</b> sok órányi szórakozáshoz!
-        - <b>Vezetékek Frissítés</b> egy teljesen új dimenzióhoz!
-        - <b>Sötét mód</b>!
-        - Végtelen mentés
-        - Végtelen Jelölő
-        - Támogatod a Fejlesztőt ❤️
-    title_future: Tervezett Tartalom
-    planned:
-        - Tervrajz Könyvtár
-        - Steam Eredmények
-        - Puzzle Mód
-        - Kistérkép
-        - Modok
-        - Homokozó játékmód
-        - ... és még sok más!
-    title_open_source: A játék nyílt forráskódú!
-    text_open_source: >-
-        Bárki hozzájárulhat, aktívan részt veszek a közösségben és próbálok
-        áttekinteni minden javaslatot, és figyelembe veszem a visszajelzéseket,
-        ahol lehetséges.
-
-        Feltétlenül nézd meg a Trello táblámat a teljes ütemtervért!
-    title_links: Linkek
-    links:
-        discord: Hivatalos Discord
-        roadmap: Ütemterv
-        subreddit: Subreddit
-        source_code: Forráskód (GitHub)
-        translate: Segíts lefordítani
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Betöltés
     error: Hiba
-    thousandsDivider: "."
+    thousandsDivider: .
     decimalSeparator: ","
     suffix:
         thousands: e
@@ -359,9 +334,6 @@ ingame:
             buildings:
                 title: 18 Új Épület
                 desc: Egy teljesen automatikus gyárhoz!
-            savegames:
-                title: ∞ Mentés
-                desc: Amennyit csak szeretnél!
             upgrades:
                 title: ∞ Fejlesztési Szint
                 desc: A Demó Verzió csak 5-öt tartalmaz!
@@ -377,6 +349,9 @@ ingame:
             support:
                 title: Támogass
                 desc: A játékot továbbfejlesztem szabadidőmben
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Futószalagok, Elosztók & Alagutak
@@ -743,7 +718,14 @@ storyRewards:
         desc: Elérted a Demó verzió végét!
     reward_freeplay:
         title: Végtelen Játékmód
-        desc: Megcsináltad! Feloldottad a <strong>Végtelen Játékmódot</strong>! Innentől kezdve az alakzatok <strong>véleetlenszerűen</strong> generálódnak!<br><br> A Központ innentől nem darabszámot kér, hanem <strong>átmenő teljesítményt</strong>, így ajánlom, hogy építs egy olyan gépezetet, amely automatikusan eljuttatja a Központnak a kívánt alakzatot!<br><br> A Központ kiküldi a kívánt alakzatot a Vezeték rétegre, szóval annyi a dolgot, hogy megvizsgáld az Alakzatvizsgálóval és ez alapján beállítsd a gyáradat.
+        desc: Megcsináltad! Feloldottad a <strong>Végtelen Játékmódot</strong>! Innentől
+            kezdve az alakzatok <strong>véleetlenszerűen</strong>
+            generálódnak!<br><br> A Központ innentől nem darabszámot kér, hanem
+            <strong>átmenő teljesítményt</strong>, így ajánlom, hogy építs egy
+            olyan gépezetet, amely automatikusan eljuttatja a Központnak a
+            kívánt alakzatot!<br><br> A Központ kiküldi a kívánt alakzatot a
+            Vezeték rétegre, szóval annyi a dolgot, hogy megvizsgáld az
+            Alakzatvizsgálóval és ez alapján beállítsd a gyáradat.
 settings:
     title: Beállítások
     categories:
@@ -986,6 +968,10 @@ keybindings:
         placementDisableAutoOrientation: Automatikus irány kikapcsolása
         placeMultiple: Több lehelyezése
         placeInverse: Futószalag irányának megfordítása
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: A Játékról
     body: >-
@@ -1016,30 +1002,29 @@ tips:
     - Igyekezz kompakt gyárakat építeni - megéri!
     - Ne építs közvetlenül a Központ közelébe, mert óriási káoszt okozhat!
     - A szalagtervező irányát az <b>R</b> billentyűvel állíthatod.
-    - Az arányok mindaddig állandók maradnak, amíg a Fejlesztéseid azonos
-      szinten vannak.
+    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
     - A soros végrehajtás hatékonyabb, mint a párhuzamos.
-    - A <b>T</b> megnyomásával váltogathatsz a különböző épülettípusok között.
+    - Serial execution is more efficient than parallel.
     - A szimmetria kulcsfontosságú!
-    - A hatékonyság kulcsfontosságú!
-    - A Festőnek van egy tükrözött változata is, amit a <b>T</b>-vel hozhatsz elő.
-    - Az épületek megfelelő arányban való építésével maximalizálható a hatékonyság.
+    - You can use <b>T</b> to switch between different variants.
+    - Symmetry is key!
+    - Az épületek megfelelő arányban való építésével maximalizálható a
+      hatékonyság.
     - A legmagasabb szinten 5 Bánya teljesen megtölt egy Futószalagot.
-    - Ne feledkezz meg az Alagutakról!
-    - A <b>SHIFT</b> lenyomva tartásával bekapcsolod a Futószalagok automatikus
-      iránykeresését, amellyel hosszú Futószalagokat helyezhetsz le könnyedén.
+    - The painter has a mirrored variant which you can select with <b>T</b>
+    - Having the right building ratios will maximize efficiency.
     - A Vágók mindig függőleges irányban vágnak, mindegy, milyen irányban állnak.
     - A fehér szín előállításához keverd össze mindhárom színt.
-    - A <b>SHIFT</b> lenyomva tartásával több épületet is lehelyezhetsz egymás után.
-    - Az <b>ALT</b> lenyomva tartásával megfordíthatod a lehelyezendú Futószalag irányát.
+    - You don't need to divide up items evenly for full efficiency.
+    - Az <b>ALT</b> lenyomva tartásával megfordíthatod a lehelyezendú Futószalag
+      irányát.
     - A hatékonyság kulcsfontosságú!
     - A Központtól távolabb eső bányászható alakzatok jóval összetettebbek.
     - A gépeknek korlátozott sebességük van, csinálj belőlük többet a maximális
       hatékonyságért.
     - Használj Elosztókat a maximális hatékonyságért.
-    - A rendszerezettség fontos. Igyekezz a lehető legkevesebbszer keresztezni
-      Futószalagokat.
-    - Tervezz előre, mert óriási káosz lehet a vége!
+    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Ne rombold le a régi gyáraidat! Szükséged lesz rájuk a Fejlesztésekhez.
     - Próbáld megdönteni a 20. Szintet, mielőtt segítséget kérnél!
     - Ne bonyolítsd túl a dolgokat; csináld egyszerűen és sokra viheted.
@@ -1052,7 +1037,8 @@ tips:
     - Színezd be az alakzatodat vágás előtt a maximális hatékonyság érdekében.
     - Ha modulárisan építkezel, akkor nem számít a hely.
     - Csinálj egy különálló Tervrajz-gyárat. A modulokhoz később hasznos lesz.
-    - A <b>CTRL</b> + balklikkel jelölhetsz ki egy területet a pályán.
+    - You may need to reuse factories later in the game. Build your factories to
+      be reusable.
     - Ha közel építesz a Központhoz, útban lesz a következő projektjeidnek.
     - A Fejlesztések lapon a gombostű ikon megnyomásával kitűzheted a képernyőre
       az aktuális alakzatot.
@@ -1061,7 +1047,7 @@ tips:
     - Próbáld ki a Factorio-t is! Az a kedvenc játékom.
     - A Negyedelő az alakzat jobb felső negyedétől kezd vágni, az óramutató
       járásával megegyező irányban!
-    - A játékmentéseidet a Főmenüben tudod lementeni!
+    - Use <b>CTRL</b> + Click to select an area.
     - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
       Beállítások menüben.
     - A játék nagyon sok beállítást tartalmaz, mindenképpen nézd meg őket!
@@ -1070,3 +1056,12 @@ tips:
       ugyanarra a helyre.
     - Az F4 megnyomásával láthatod az FPS-edet és a Tick/mp értéket.
     - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
+    - You can download your savegames in the main menu!
+    - This game has a lot of useful keybindings! Be sure to check out the
+      settings page.
+    - This game has a lot of settings, be sure to check them out!
+    - Your hub marker has a small compass that shows which direction it is in!
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.

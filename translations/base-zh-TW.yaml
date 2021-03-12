@@ -8,36 +8,14 @@ steamPage:
         除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不斷地擴張！
         遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。
         玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
-    title_advantages: 單機版優點
-    advantages:
-        - <b>12個新關卡</b>（總共有26關）
-        - <b>18個新建築</b> 幫助玩家自動化整個工廠！
-        - <b>20個升級</b> 讓遊玩時間更久！
-        - <b>電路更新</b> 帶給玩家新次元體驗！
-        - <b>深色模式</b>！
-        - 無限存檔
-        - 無限標記
-        - 支持我！ ❤️
-    title_future: 未來計劃
-    planned:
-        - 藍圖圖庫（單機版獨有）
-        - Steam 成就
-        - 拼圖模式
-        - 迷你地圖
-        - 模組
-        - 沙盒模式
-        - ... 還有更多！
-    title_open_source: 本遊戲已開源！
-    title_links: 連結
-    links:
-        discord: 官方 Discord 伺服器
-        roadmap: Roadmap
-        subreddit: Reddit
-        source_code: 原始碼（GitHub）
-        translate: 幫助我們翻譯！
-    text_open_source: |-
-        任何人都可以幫助我開發遊戲或提供建議，我很活躍於各個社群媒體，也會讀所有的建議與回饋、並嘗試改善。
-        記得查看我的 trello board 以了解我的完整計畫！
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: 載入中
     error: 錯誤
@@ -135,7 +113,7 @@ dialogs:
         desc: 試玩版中只能保存一份存檔。請刪除舊存檔或者取得單機版！
     updateSummary:
         title: 更新了！
-        desc: "以下為自上次遊戲以來更新的內容："
+        desc: 以下為自上次遊戲以來更新的內容：
     upgradesIntroduction:
         title: 解鎖建築升級
         desc: 你生產過的所有圖形可以被用來升級建築。<strong>不要銷毀你之前建造的工廠！</strong> 升級選單在螢幕右上角。
@@ -147,15 +125,13 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc:
-            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
+        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
             <code class='keybinding'>CTRL</code> + 拖曳：選擇區域以複製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
             class='keybinding'>ALT</code>: 反向放置輸送帶。 <br>"
     createMarker:
         title: 建立標記
-        desc:
-            給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
+        desc: 給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
             建立簡短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
@@ -171,7 +147,7 @@ dialogs:
         desc: 你的複製圖形不夠貼上！你確定要剪下嗎？
     editSignal:
         title: 訊號設定
-        descItems: "選擇一個預先設定的物件"
+        descItems: 選擇一個預先設定的物件
         descShortKey: …或輸入圖形的<strong>簡短代碼</strong>（可以在<link>這裡</link>建立）
     renameSavegame:
         title: 重新命名存檔
@@ -205,7 +181,7 @@ ingame:
         switchLayers: 切換層
     buildingPlacement:
         cycleBuildingVariants: 按<key>鍵以選擇建築變體。
-        hotkeyLabel: "快捷鍵：<key>"
+        hotkeyLabel: 快捷鍵：<key>
         infoTexts:
             speed: 效率
             range: 範圍
@@ -269,21 +245,22 @@ ingame:
                 <br><br>提示：用你的游標<strong>按下並拖曳</strong>輸送帶！
             1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
-            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半！<br><br>
-                PS: 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
+            2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半！<br><br> PS:
+                不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
             2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>！<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters: "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br>
-                PS: 使用<strong>0-9快捷鍵</strong>可以更快選取建築 ！"
+            2_3_more_cutters: "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br> PS:
+                使用<strong>0-9快捷鍵</strong>可以更快選取建築 ！"
             3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
                 選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
             21_1_place_quad_painter: 放置一個<strong>切割機（四分）</strong>並取得一些
                 <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
-            21_2_switch_to_wires: 按<strong>E</strong>切換到電路層<br><br>
-                然後將上色機的<strong>四個輸入端</strong>用電線<strong>連接</strong>。
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
             21_3_place_button: 太棒了！現在放置一個<strong>開關</strong>並將之與電線連接。
-            21_4_press_button: "按下開關使之<strong>輸出真值</strong>並啟動上色機。<br><br>
-                PS: 你不用連接所有的輸入端，試試只連接兩個。"
+            21_4_press_button: "按下開關使之<strong>輸出真值</strong>並啟動上色機。<br><br> PS:
+                你不用連接所有的輸入端，試試只連接兩個。"
     colors:
         red: 紅
         green: 綠
@@ -316,9 +293,6 @@ ingame:
             buildings:
                 title: 18 個新建築
                 desc: 邁向完全自動化！
-            savegames:
-                title: ∞ 個存檔
-                desc: 隨心所欲！
             upgrades:
                 title: 20 個等級
                 desc: 試玩版只有 5 個。
@@ -334,6 +308,9 @@ ingame:
             support:
                 title: 支持我
                 desc: 遊戲使我利用閒暇時間做的！
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: 輸送帶、平衡機、隧道
@@ -469,16 +446,15 @@ buildings:
         default:
             name: 電晶體
             description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-              （「真」值代表：形狀正確、顏色正確或布林值為1）
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
         mirrored:
             name: 電晶體
             description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-              （「真」值代表：形狀正確、顏色正確或布林值為1）
+                （「真」值代表：形狀正確、顏色正確或布林值為1）
     filter:
         default:
             name: 物件分類器
-            description: 它會依據電路層收到的訊號分類，符合的會到上方，不符合的到右方。
-                它也可以被布林值訊號控制。
+            description: 它會依據電路層收到的訊號分類，符合的會到上方，不符合的到右方。 它也可以被布林值訊號控制。
     display:
         default:
             name: 顯示器
@@ -535,8 +511,7 @@ storyRewards:
         desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
-        desc: <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
-            - 它將單個輸送帶分流成兩個。
+        desc: <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。 - 它將單個輸送帶分流成兩個。
     reward_tunnel:
         title: 隧道
         desc: <strong>隧道</strong>已解鎖。你現在可以從其他輸送帶或建築底下運送物品了！
@@ -571,8 +546,8 @@ storyRewards:
             基地會在電路層輸出他需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
-        desc: 你現在可以<strong>複製貼上</strong>你的工廠某些區域。
-            選擇一個區域（按住 CTRL 並拖曳滑鼠），再按「C」來複製。<br><br>
+        desc: 你現在可以<strong>複製貼上</strong>你的工廠某些區域。 選擇一個區域（按住 CTRL
+            並拖曳滑鼠），再按「C」來複製。<br><br>
             貼上<strong>不是免費的</strong>，你必須製造（剛才生成的）<strong>藍圖形狀</strong>來給付。
     no_reward:
         title: 下一關
@@ -586,23 +561,17 @@ storyRewards:
         desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
     reward_merger:
         title: 合流
-        desc: <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖。
-            - 它會將兩個輸送帶整合成一個。
+        desc: <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖。 - 它會將兩個輸送帶整合成一個。
     reward_belt_reader:
         title: 讀取輸送帶
-        desc: <strong>輸送帶讀取機</strong>已解鎖。
-            它會讀取輸送帶的流量。<br><br>
-            當你解鎖電路層時，它會變得超有用！
+        desc: <strong>輸送帶讀取機</strong>已解鎖。 它會讀取輸送帶的流量。<br><br> 當你解鎖電路層時，它會變得超有用！
     reward_rotater_180:
         title: 180度旋轉
-        desc: 180度<strong>旋轉機</strong>已解鎖。
-            - 它可以180度旋轉物件（驚喜！:D）
+        desc: 180度<strong>旋轉機</strong>已解鎖。 - 它可以180度旋轉物件（驚喜！:D）
     reward_display:
         title: 顯示器
-        desc: "<strong>顯示器</strong> 已解鎖。
-            - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
-            PS: 你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？
-            試試看在顯示器上顯示它吧！"
+        desc: "<strong>顯示器</strong> 已解鎖。 - 在電路層上連接一個訊號到顯示器上顯示！<br><br> PS:
+            你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？ 試試看在顯示器上顯示它吧！"
     reward_constant_signal:
         title: 固定信號
         desc: 電路層上的<strong>固定信號</strong>已解鎖。
@@ -611,31 +580,23 @@ storyRewards:
             <strong>布林值</strong>（1或0）。
     reward_logic_gates:
         title: 邏輯閘
-        desc: <strong>邏輯閘</strong>已解鎖。
-            你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
-            有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT。<br><br>
-            錦上添花，我再送你<strong>電晶體</strong>！
+        desc: <strong>邏輯閘</strong>已解鎖。 你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br> 有了這些邏輯閘，你可以運算 AND,
+            OR, XOR 與 NOT。<br><br> 錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
         title: 虛擬操作
-        desc:
-            <strong>虛擬操作</strong>！<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
-            繼續遊玩的你現在有三個選項：<br><br>
-            - 蓋一個自動生成任何基地要求圖形的<strong>自動機</strong>（推薦！）。<br><br>
-            - 利用電路層蓋一些很酷建築<br><br>
-            - 繼續用原本的方式破關。<br><br>
-            不論你的選擇是什麼，祝你玩得開心！
+        desc: <strong>虛擬操作</strong>！<br><br>已解鎖。很多新建築有虛擬版，你可以模擬切割機、旋轉機、推疊機還有更多電路層上的建築。
+            繼續遊玩的你現在有三個選項：<br><br> -
+            蓋一個自動生成任何基地要求圖形的<strong>自動機</strong>（推薦！）。<br><br> -
+            利用電路層蓋一些很酷建築<br><br> - 繼續用原本的方式破關。<br><br> 不論你的選擇是什麼，祝你玩得開心！
     reward_wires_painter_and_levers:
         title: 電路層 & 四角上色機
         desc: "You just unlocked the <strong>電路層</strong>已解鎖。
-            它是一個獨立於一般層之外的存在，將帶給你更多玩法！<br><br>
-            首先，我為你解鎖<strong>四角上色機</strong>。
-            想要上色的角落記得在電路層通電！<br><br>
-            按<strong>E</strong>切換至電路層。<br><br>
-            PS: 設定裡<strong>開啟提示</strong>來啟動教學！"
+            它是一個獨立於一般層之外的存在，將帶給你更多玩法！<br><br> 首先，我為你解鎖<strong>四角上色機</strong>。
+            想要上色的角落記得在電路層通電！<br><br> 按<strong>E</strong>切換至電路層。<br><br> PS:
+            設定裡<strong>開啟提示</strong>來啟動教學！"
     reward_filter:
         title: 物件分類器
-        desc: <strong>物件分類器</strong>已解鎖。
-            它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
+        desc: <strong>物件分類器</strong>已解鎖。 它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
             你也可以送一個固定訊號（1或0）來徹底啟用或不啟用此機器。
     reward_demo_end:
         title: 試玩結束
@@ -691,7 +652,8 @@ settings:
                 light: 淺色
         refreshRate:
             title: 模擬頻率、更新頻率
-            description: 如果你的顯示器是 144Hz 的，請在這裡更改更新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦效能不佳，提高更新頻率可能降低幀數。
+            description: 如果你的顯示器是 144Hz
+                的，請在這裡更改更新頻率，這樣遊戲可以正確地根據你的螢幕進行模擬。但是如果你的電腦效能不佳，提高更新頻率可能降低幀數。
         alwaysMultiplace:
             title: 多重放置
             description: 開啟這個選項之後放下建築將不會取消建築選擇。等同於一直按下 SHIFT 鍵。
@@ -752,8 +714,7 @@ settings:
             description: 取消網格可以增加效能，畫面也會比較乾淨！
         clearCursorOnDeleteWhilePlacing:
             title: 按右鍵淨空游標
-            description: 預設是開啟的，按下右鍵時，清空游標上顯示的準備要蓋建築。
-                如果關閉此選項，你可以一邊蓋工廠一邊刪除不要的建築。
+            description: 預設是開啟的，按下右鍵時，清空游標上顯示的準備要蓋建築。 如果關閉此選項，你可以一邊蓋工廠一邊刪除不要的建築。
         lowQualityTextures:
             title: 低畫質（簡陋）
             description: 用低畫質節省效能。遊戲畫面會變的很簡陋！
@@ -765,8 +726,7 @@ settings:
             description: 預設是開啟的，當滴管移動到資源叢上方時，選擇開採機。
         simplifiedBelts:
             title: 簡化輸送帶（醜）
-            description: 為節省效能，不渲染輸送帶。
-                除非有必要節省效能，不然我是不建議使用。
+            description: 為節省效能，不渲染輸送帶。 除非有必要節省效能，不然我是不建議使用。
         enableMousePan:
             title: 允許用滑鼠移動畫面
             description: 當滑鼠靠近畫面邊緣時，會移動地圖。移動速度取決於「移動速度」設定。
@@ -848,7 +808,11 @@ keybindings:
         analyzer: 形狀分析機
         comparator: 比對機
         item_producer: 物品生產機（沙盒模式）
-        copyWireValue: "電路：複製數值於游標底下"
+        copyWireValue: 電路：複製數值於游標底下
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: 關於遊戲
     body: >-

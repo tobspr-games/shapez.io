@@ -14,39 +14,14 @@ steamPage:
         While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
 
         Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Avantaje Standalone
-    advantages:
-        - <b>12 Noi Nivele</b> pentru un total de 26 niveluri
-        - <b>18 Noi Clădiri</b> pentru o  fabrică complet automatizată!
-        - <b>20 de Grade de Upgrade</b> pentru multe ore de distracție!
-        - <b>Actualizare cu Fire</b> pentru o dimensiune cu totul nouă!
-        - <b>Temă întunecată</b>!
-        - Unlimited Savegames
-        - Marcaje nelimitate!
-        - Susține-mă! ❤️
-    title_future: Conținut Planificat
-    planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Realizări Steam
-        - Mod Puzzle
-        - Hartă
-        - Mod-uri
-        - Mod Sandbox
-        - ... și multe altele!
-    title_open_source: Acest joc are sursă liberă!
-    title_links: Link-uri
-    links:
-        discord: Discord Oficial
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Cod sursă (GitHub)
-        translate: Ajută la traducere
-    text_open_source: >-
-        Oricine poate să contribuie, Sunt implicat activ în comunitate și
-        încerc să revizuiesc toate sugestiile și să iau păreri și răspunsuri în considerație
-        oriunde-i posibil.
-
-        Fii sigur să-mi vezi panoul Trello pentru roadmap-ul întreg!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Se Încarcă
     error: Eroare
@@ -89,7 +64,8 @@ mainMenu:
     discordLink: Serverul oficial de Discord
     helpTranslate: Ajută să traducem!
     browserWarning: Scuze dar, jocul este știut să ruleze încet pe browser-ul tău!
-        Instalează versiunea standalone sau descarcă chrome pentru experiența completă.
+        Instalează versiunea standalone sau descarcă chrome pentru experiența
+        completă.
     savegameLevel: Nivelul <x>
     savegameLevelUnknown: Nivel necunoscut
     continue: Continuă
@@ -121,9 +97,8 @@ dialogs:
         text: "Încercarea de a încărca salvarea a eșuat:"
     confirmSavegameDelete:
         title: Confirmă ștergerea
-        text: Ești sigur că vrei să ștergi următorul joc?<br><br>
-            '<savegameName>' la nivelul <savegameLevel><br><br> Acest lucru nu poate fi
-            anulat!
+        text: Ești sigur că vrei să ștergi următorul joc?<br><br> '<savegameName>' la
+            nivelul <savegameLevel><br><br> Acest lucru nu poate fi anulat!
     savegameDeletionError:
         title: Eroare la ștergere
         text: "Nu a reușit să se ștearga salvarii:"
@@ -144,7 +119,8 @@ dialogs:
     featureRestriction:
         title: Demo Version
         desc: Ai încercat să accesezi o funcție (<feature>) care nu este disponibilă în
-            demo. Consideră să instalezi standalone-ul pentru experiența completă!
+            demo. Consideră să instalezi standalone-ul pentru experiența
+            completă!
     oneSavegameLimit:
         title: Salvări limitate
         desc: Poți avea doar o salvare în același timp în versiunea demo. Te rugăm
@@ -363,9 +339,6 @@ ingame:
             buildings:
                 title: 18 New Buildings
                 desc: Fully automate your factory!
-            savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
             upgrades:
                 title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
@@ -381,6 +354,9 @@ ingame:
             support:
                 title: Support me
                 desc: I develop it in my spare time!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Benzi, Distribuitor & Tunele
@@ -995,6 +971,10 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Despre acest joc
     body: >-
@@ -1004,8 +984,7 @@ about:
 
         Dacă vrei să contribui, verifică <a href="<githublink>" target="_blank">shapez.io pe github</a>.<br><br>
 
-        Acest joc nu ar fi fost posibil fără minunata comunitate de pe Discord pe lângă jocurile mele - Chiar ar trebui să te alături
-        <a href="<discordlink>" target="_blank">server-ului de Discord</a>!<br><br>
+        Acest joc nu ar fi fost posibil fără minunata comunitate de pe Discord pe lângă jocurile mele - Chiar ar trebui să te alături <a href="<discordlink>" target="_blank">server-ului de Discord</a>!<br><br>
 
         Coloana sonoră a fost făcută de <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Este uimitor.<br><br>
 

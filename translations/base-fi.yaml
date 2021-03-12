@@ -4,48 +4,24 @@ steamPage:
         loputtomassa maailmassa.
     discordLinkShort: Virallinen Discord
     intro: >-
-        Shapez.io on rento peli, jossa sinun täytyy rakentaa tehtaita geometristen muotojen
-        automatisoituun tuotantoon.
+        Shapez.io on rento peli, jossa sinun täytyy rakentaa tehtaita
+        geometristen muotojen automatisoituun tuotantoon.
 
         Kun taso nousee, muodot tulevat entistä vaikeammiksi ja sinun täytyy laajentua loputtomassa kartassa.
 
-        Ja jos tämä ei ollut tarpeeksi, niin sinun täytyy tuottaa eksponentiaalisesti enemmän täyttääksesi tarpeet
-        - ainut asia mikä auttaa on skaalautuminen!
+        Ja jos tämä ei ollut tarpeeksi, niin sinun täytyy tuottaa eksponentiaalisesti enemmän täyttääksesi tarpeet - ainut asia mikä auttaa on skaalautuminen!
 
         Vaikka alussa vain prosessoit muotoja, myöhemmin niitä pitää myös maalata - tätä varten sinun täytyy kerätä ja sekoittaa värejä
 
         Pelin ostaminen Steamista antaa sinulle pääsyn pelin täysversioon, mutta voit myös pelata kokeiluversiota ensin sivuillamme shapez.io ja päättää myöhemmin!
-    title_advantages: Täysversion hyödyt
-    advantages:
-        - <b>12 uutta tasoa</b> nostaen tasojen määrän 26 tasoon!
-        - <b>18 uutta laitetta</b> täysin automatisoidulle tehtaalle!
-        - <b>20 päivitystasoa</b> monelle hauskalle pelitunnille!
-        - <b>Johdot -päivitys</b> tuo täysin uuden ulottuvuuden!
-        - <b>Tumma teema</b>!
-        - Rajattomat tallennukset
-        - Rajattomat merkit
-        - Tue minua! ❤️
-    title_future: Suunniteltu sisältö
-    planned:
-        - Pohjapiirustuskirjasto (Vain täysversiossa)
-        - Steam Achievements
-        - Palapelitila
-        - Minikartta
-        - Modit
-        - Hiekkalaatikkotila
-        - ... ja paljon muuta!
-    title_open_source: Tämä peli on avointa lähdekoodia!
-    title_links: Linkit
-    links:
-        discord: Virallinen Discord
-        roadmap: Tiekartta
-        subreddit: Subreddit
-        source_code: Lähdekoodi (GitHub)
-        translate: Auta kääntämään
-    text_open_source: >-
-        Kuka tahansa voi osallistua. Olen aktiivisesti mukana yhteisössä ja
-        yritän tarkistaa kaikki ehdotukset ja ottaa palautteen huomioon missä mahdollista.
-        Muista tarkistaa Trello -lautani, jossa löytyy koko tiekartta!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Ladataan
     error: Virhe
@@ -120,19 +96,18 @@ dialogs:
         text: "Tallennuksen lataus epäonnistui:"
     confirmSavegameDelete:
         title: Varmista poisto
-        text: Oletko varma, että haluat poistaa valitun pelin?<br><br>
-            '<savegameName>' tasossa <savegameLevel><br><br> Tätä toimintoa ei
-            voi peruuttaa!
+        text: Oletko varma, että haluat poistaa valitun pelin?<br><br> '<savegameName>'
+            tasossa <savegameLevel><br><br> Tätä toimintoa ei voi peruuttaa!
     savegameDeletionError:
         title: Poisto epäonnistui
         text: "Tallennuksen poisto epäonnistui:"
     restartRequired:
         title: Uudelleenkäynnistys vaaditaan
-        text: "Käynnistä peli uudelleen ottaaksesi asetukset käyttöön."
+        text: Käynnistä peli uudelleen ottaaksesi asetukset käyttöön.
     editKeybinding:
         title: Vaihda pikanäppäin
-        desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina
-            escape peruuttaaksesi.
+        desc: Paina näppäintä tai hiiren nappia, jonka haluat asettaa tai paina escape
+            peruuttaaksesi.
     resetKeybindingsConfirmation:
         title: Nollaa pikanäppäimet
         desc: Tämä nollaa kaikki pikanäppäimet oletusarvoihin. Vahvista.
@@ -157,29 +132,28 @@ dialogs:
             päivitysikkunan näytön oikeasta yläkulmasta.
     massDeleteConfirm:
         title: Vahvista poisto
-        desc: Olet poistamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
-            haluat jatkaa?
+        desc: Olet poistamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma,
+            että haluat jatkaa?
     massCutConfirm:
         title: Vahvista leikkaus
-        desc: Olet leikkaamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma, että
-            haluat jatkaa?
+        desc: Olet leikkaamassa paljon rakennuksia (<count> tarkalleen)! Oletko varma,
+            että haluat jatkaa?
     blueprintsNotUnlocked:
         title: Ei vielä avattu
         desc: Suorita taso 12 avataksesi piirustukset!
     keybindingsIntroduction:
         title: Hyödyllisiä pikanäppäimiä
-        desc: >-
-            Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden
+        desc: "Tässä pelissä on paljon pikanäppäimiä, jotka tekevät isojen tehtaiden
             rakentamisesta helpompaa. Tässä on muutama, mutta <strong>katso
             kaikki pikanäppäimet</strong>!<br><br> <code
             class='keybinding'>CTRL</code> + Raahaus: Valitse alue.<br> <code
-            class='keybinding'>SHIFT</code>: Pidä pohjassa sijoittaaksesi
-            useita samoja rakennuksia.<br> <code class='keybinding'>ALT</code>:
-            Käännä sijoitettavien kuljettimien suunta.<br>
+            class='keybinding'>SHIFT</code>: Pidä pohjassa sijoittaaksesi useita
+            samoja rakennuksia.<br> <code class='keybinding'>ALT</code>: Käännä
+            sijoitettavien kuljettimien suunta.<br>"
     createMarker:
         title: Uusi merkki
-        desc: Anna merkille kuvaava nimi. Voit myös liittää <strong>lyhyen koodin</strong>
-            muodosta. (Jonka voit luoda <link>täällä</link>.)
+        desc: Anna merkille kuvaava nimi. Voit myös liittää <strong>lyhyen
+            koodin</strong> muodosta. (Jonka voit luoda <link>täällä</link>.)
         titleEdit: Muokkaa merkkiä
     markerDemoLimit:
         desc: Voit tehdä vain kaksi mukautettua merkkiä demoversiossa. Hanki täysversio
@@ -194,9 +168,9 @@ dialogs:
             leikata sen?
     editSignal:
         title: Aseta signaali
-        descItems: "Valitse esivalmisteltu muoto"
-        descShortKey: ... tai käytä muodon <strong>pikanäppäintä</strong>
-            (Jonka voit luoda <link>täällä</link>)
+        descItems: Valitse esivalmisteltu muoto
+        descShortKey: ... tai käytä muodon <strong>pikanäppäintä</strong> (Jonka voit
+            luoda <link>täällä</link>)
     renameSavegame:
         title: Nimeä tallennus uudelleen
         desc: Voit nimetä tallennuksesi uudelleen täällä.
@@ -307,42 +281,38 @@ ingame:
         hints:
             1_1_extractor: Laita <strong>Poimija</strong> <strong>ympyrämuodon</strong>
                 päälle käyttääksesi sitä!
-            1_2_conveyor: >-
-                Yhdistä poimija <strong>kuljettimella</strong>
+            1_2_conveyor: "Yhdistä poimija <strong>kuljettimella</strong>
                 keskusrakennukseen!<br><br>Vihje: <strong>Paina ja
-                raahaa</strong> kuljetinta hiirellä!
-            1_3_expand: >-
-                Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää
+                raahaa</strong> kuljetinta hiirellä!"
+            1_3_expand: "Tämä <strong>EI OLE</strong> tyhjäkäyntipeli! Rakenna lisää
                 poimijoita ja kuljettimia saavuttaaksesi tavoitteen nopeammin
                 valmiiksi.<br><br>Vihje: Pidä <strong>SHIFT</strong> pohjassa
                 laittaaksesi useampia poimijoita ja käytä <strong>R</strong>
-                kääntääksesi niitä.
-            2_1_place_cutter: >-
-                Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
-                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä alaspäin</strong>
-                riippumatta sen asennosta.
+                kääntääksesi niitä."
+            2_1_place_cutter: "Nyt aseta <strong>Leikkuri</strong> leikataksesi ympyrä
+                puoliksi!<br><br> PS: Leikkuri aina leikkaa <strong>ylhäältä
+                alaspäin</strong> riippumatta sen asennosta."
             2_2_place_trash: Leikkuri voi <strong>tukkeutua</strong>!<br><br> Käytä
-                <strong>roskakoria</strong> hävittääksesi (vielä!) tarpeeton jäte.
-            2_3_more_cutters: >-
-                Hienoa! Lisää <strong>kaksi leikkuria</strong> nopeuttaaksesi
-                hidasta prosessia!<br><br> PS: Käytä <strong>pikanäppäimiä 0-9</strong>
-                valitaksesi rakennuksen nopeammin!
-            3_1_rectangles: >-
-                Poimitaanpa nyt neliöitä! <strong>Rakenna 4
-                poimijaa</strong> ja yhdistä ne keskusrakennukseen.<br><br> PS:
-                Pidä <strong>SHIFT</strong> painettuna, kun raahaat kuljetinta
-                aktivoidaksesi kuljetinsuunnittelijan!
+                <strong>roskakoria</strong> hävittääksesi (vielä!) tarpeeton
+                jäte.
+            2_3_more_cutters: "Hienoa! Lisää <strong>kaksi leikkuria</strong> nopeuttaaksesi
+                hidasta prosessia!<br><br> PS: Käytä <strong>pikanäppäimiä
+                0-9</strong> valitaksesi rakennuksen nopeammin!"
+            3_1_rectangles: "Poimitaanpa nyt neliöitä! <strong>Rakenna 4 poimijaa</strong>
+                ja yhdistä ne keskusrakennukseen.<br><br> PS: Pidä
+                <strong>SHIFT</strong> painettuna, kun raahaat kuljetinta
+                aktivoidaksesi kuljetinsuunnittelijan!"
             21_1_place_quad_painter: Aseta <strong>nelimaalain</strong> ja hanki
                 <strong>ympyröitä</strong>, <strong>valkoista</strong> ja
                 <strong>punaista</strong> väriä!
             21_2_switch_to_wires: Vaihda Johdot -tasolle painamalla
-                <strong>E</strong>!<br><br> Sitten <strong>yhdistä kaikki neljä tuloa</strong> maalaimeen johdoilla!
-            21_3_place_button: MahtaVATA! Aseta nyt <strong>kytkin</strong> ja yhdistä
-                se johdoilla!
-            21_4_press_button: >-
-                Paina kytkintä <strong>lähettääksesi tosi-
-                signaalin</strong> ja aktivoidaksesi maalaimen.<br><br> PS: Kaikkia
-                tuloja ei tarvitse kytkeä! Kokeile vaikka vain kahta.
+                <strong>E</strong>!<br><br> Sitten <strong>yhdistä kaikki neljä
+                tuloa</strong> maalaimeen johdoilla!
+            21_3_place_button: MahtaVATA! Aseta nyt <strong>kytkin</strong> ja yhdistä se
+                johdoilla!
+            21_4_press_button: "Paina kytkintä <strong>lähettääksesi tosi-
+                signaalin</strong> ja aktivoidaksesi maalaimen.<br><br> PS:
+                Kaikkia tuloja ei tarvitse kytkeä! Kokeile vaikka vain kahta."
     connectedMiners:
         one_miner: 1 poimija
         n_miners: <amount> poimijaa
@@ -361,9 +331,6 @@ ingame:
             buildings:
                 title: 18 Uutta laitetta
                 desc: Automatisoi tehtaasi täysin!
-            savegames:
-                title: ∞ Tallennukset
-                desc: Niin paljon kuin sielusi kaipaa!
             upgrades:
                 title: ∞ päivitystasoa
                 desc: Kokeiluversiossa on vain viisi!
@@ -379,6 +346,9 @@ ingame:
             support:
                 title: Tue minua
                 desc: Kehitän peliä vapaa-ajallani!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Kuljettimet, jakelijat & tunnelit
@@ -408,22 +378,25 @@ buildings:
             description: Sallii sähkönkuljetuksen
         second:
             name: Johto
-            description: Siirtää signaaleja, jotka voivat olla muotoja, värejä, taikka binääriarvoja (1 / 0).
-                Eriväriset johdot eivät yhdisty toisiinsa.
+            description: Siirtää signaaleja, jotka voivat olla muotoja, värejä, taikka
+                binääriarvoja (1 / 0). Eriväriset johdot eivät yhdisty
+                toisiinsa.
     miner:
         default:
             name: Poimija
             description: Laita muodon tai värin päälle poimiaksesi sitä.
         chainable:
             name: Poimija (Sarja)
-            description: Laita muodon tai värin päälle poimiaksesi sitä. Voidaan kytkeä sarjaan.
+            description: Laita muodon tai värin päälle poimiaksesi sitä. Voidaan kytkeä
+                sarjaan.
     underground_belt:
         default:
             name: Tunneli
             description: Sallii resurssien kuljetuksen laitteiden ja kuljetinten alta.
         tier2:
             name: Tunneli taso II
-            description: Sallii resurssien kuljetuksen laitteiden ja kuljetinten alta pidemmältä matkalta.
+            description: Sallii resurssien kuljetuksen laitteiden ja kuljetinten alta
+                pidemmältä matkalta.
     cutter:
         default:
             name: Leikkuri
@@ -469,8 +442,8 @@ buildings:
                 sisääntulosta tulevalla värillä.
         quad:
             name: Maalain (neljännes)
-            description: Maalaa jokaisen neljänneksen erikseen. Vain ruudut
-                joissa <strong>signaali on tosi</strong> johtotasolla maalataan.
+            description: Maalaa jokaisen neljänneksen erikseen. Vain ruudut joissa
+                <strong>signaali on tosi</strong> johtotasolla maalataan.
     trash:
         default:
             name: Roskakori
@@ -478,7 +451,8 @@ buildings:
     balancer:
         default:
             name: Tasaaja
-            description: Monikäyttöinen - Jakaa sisääntulot tasaisesti kaikkiin ulostuloihin.
+            description: Monikäyttöinen - Jakaa sisääntulot tasaisesti kaikkiin
+                ulostuloihin.
         merger:
             name: Yhdistäjä (compact)
             description: Yhdistää kaksi kuljetinta yhteen.
@@ -494,8 +468,8 @@ buildings:
     storage:
         default:
             name: Varasto
-            description: Varastoi ylijäämätavarat tiettyyn kapasiteettiin asti. Priorisoi vasemman ulostulon
-                ja voidaan käyttää ylivuotoporttina.
+            description: Varastoi ylijäämätavarat tiettyyn kapasiteettiin asti. Priorisoi
+                vasemman ulostulon ja voidaan käyttää ylivuotoporttina.
     wire_tunnel:
         default:
             name: Johdon ylitys
@@ -503,29 +477,31 @@ buildings:
     constant_signal:
         default:
             name: Jatkuva signaali
-            description: Lähettää vakiosignaalin, joka voi olla muoto, väri, taikka binääriarvo (1 / 0).
+            description: Lähettää vakiosignaalin, joka voi olla muoto, väri, taikka
+                binääriarvo (1 / 0).
     lever:
         default:
             name: Kytkin
-            description: Voidaan kytkeä lähettämään binääriarvoa (1 / 0) johtotasolla,
-                jota voidaan sitten käyttää esimerkiksi tavarasuodattimen ohjaukseen.
+            description: Voidaan kytkeä lähettämään binääriarvoa (1 / 0) johtotasolla, jota
+                voidaan sitten käyttää esimerkiksi tavarasuodattimen ohjaukseen.
     logic_gate:
         default:
             name: AND portti
-            description: Lähettää totuusarvon "1", jos molemmat sisääntulot ovat totta. (Totuus tarkoittaa,
-                että muoto, väri tai binääriarvo on "1")
+            description: Lähettää totuusarvon "1", jos molemmat sisääntulot ovat totta.
+                (Totuus tarkoittaa, että muoto, väri tai binääriarvo on "1")
         not:
             name: NOT portti
-            description: Lähettää totuusarvon "1", jos sisääntulot eivät ole totta.
-                (Totuus tarkoittaa, että muoto, väri tai binääriarvo on "1")
+            description: Lähettää totuusarvon "1", jos sisääntulot eivät ole totta. (Totuus
+                tarkoittaa, että muoto, väri tai binääriarvo on "1")
         xor:
             name: XOR portti
-            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta, mutta kaikki eivät.
-                (Totuus tarkoittaa, että muoto, väri tai binääriarvo on "1")
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta, mutta
+                kaikki eivät. (Totuus tarkoittaa, että muoto, väri tai
+                binääriarvo on "1")
         or:
             name: OR portti
-            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta.
-                (Totuus tarkoittaa, että muoto, väri tai binääriarvo on "1")
+            description: Lähettää totuusarvon "1", jos yksi sisääntuloista on totta. (Totuus
+                tarkoittaa, että muoto, väri tai binääriarvo on "1")
     transistor:
         default:
             name: Transistori
@@ -538,13 +514,13 @@ buildings:
     filter:
         default:
             name: Suodatin
-            description: Yhdistä signaali reitittääksesi kaikki vastaavat tavarat ylös,
-                ja jäljelle jäävät vasemmalle. Voidaan ohjata myös binääriarvoilla.
+            description: Yhdistä signaali reitittääksesi kaikki vastaavat tavarat ylös, ja
+                jäljelle jäävät vasemmalle. Voidaan ohjata myös binääriarvoilla.
     display:
         default:
             name: Näyttö
-            description: Yhdistä signaali näyttääksesi sen näytöllä. Voi olla muoto,
-                väri tai binääriarvo.
+            description: Yhdistä signaali näyttääksesi sen näytöllä. Voi olla muoto, väri
+                tai binääriarvo.
     reader:
         default:
             name: Kuljetinanturi
@@ -558,8 +534,8 @@ buildings:
     comparator:
         default:
             name: Vertain
-            description: Palauttaa totuusarvon "1", jos molemmat signaalit ovat täysin samat.
-                Voi verrata värejä, tavaroita ja binääriarvoja.
+            description: Palauttaa totuusarvon "1", jos molemmat signaalit ovat täysin
+                samat. Voi verrata värejä, tavaroita ja binääriarvoja.
     virtual_processor:
         default:
             name: Virtuaalileikkuri
@@ -569,36 +545,38 @@ buildings:
             description: Käännä tavara virtuaalisesti, sekä myötäpäivään että vastapäivään.
         unstacker:
             name: Virtuaalierottaja
-            description: Erota ylin taso virtuaalisesti oikeaan ulostuloon ja jäljelle jäävät
-                vasempaan ulostuloon.
+            description: Erota ylin taso virtuaalisesti oikeaan ulostuloon ja jäljelle
+                jäävät vasempaan ulostuloon.
         stacker:
             name: Virtuaaliyhdistäjä
             description: Yhdistä oikea tavara virtuaalisesti vasempaan.
         painter:
             name: Virtuaalimaalain
-            description: Maalaa virtuaalisesti tavara alhaalta sisääntulosta oikean sisääntulon värillä.
+            description: Maalaa virtuaalisesti tavara alhaalta sisääntulosta oikean
+                sisääntulon värillä.
     item_producer:
         default:
             name: Signaaligeneraattori
-            description: Saatavilla vain hiekkalaatikkotilassa. Lähettää
-                johtotasolla annetun signaalin normaaliin tasoon.
+            description: Saatavilla vain hiekkalaatikkotilassa. Lähettää johtotasolla
+                annetun signaalin normaaliin tasoon.
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
-        desc: Avasit juuri <strong>leikkurin</strong>. Se leikkaa muotoja ylhäältä alaspäin
-            ja tuottaa muodon molemmat puoliskot. <strong>Jos käytät vain yhden puoliskon, tuhoa toinen
-            puolisko tai se jumittaa leikkurin!</strong> - Siksi sinulla on
-            <strong>roskakori</strong>, joka tuhoaa kaiken sinne laittamasi!
+        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
+            from top to bottom <strong>regardless of its
+            orientation</strong>!<br><br>Be sure to get rid of the waste, or
+            otherwise <strong>it will clog and stall</strong> - For this purpose
+            I have given you the <strong>trash</strong>, which destroys
+            everything you put into it!
     reward_rotater:
         title: Kääntö
-        desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90 astetta.
+        desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90
+            astetta.
     reward_painter:
         title: Värjäys
-        desc: >-
-            Avasit <strong>Maalaimen</strong> - Poimi joitain värialueita
-            (Samoin kuin muotoja) ja yhdistä se muotoon maalaimen
-            avulla!<br><br>PS: Jos olet värisokea, asetuksissa on <strong> tila
-            värisokeille</strong>!
+        desc: "Avasit <strong>Maalaimen</strong> - Poimi joitain värialueita (Samoin
+            kuin muotoja) ja yhdistä se muotoon maalaimen avulla!<br><br>PS: Jos
+            olet värisokea, asetuksissa on <strong> tila värisokeille</strong>!"
     reward_mixer:
         title: Värin Sekoitus
         desc: Avasit <strong>Värinsekoittajan</strong> - Yhdistä kaksi väriä
@@ -625,15 +603,15 @@ storyRewards:
             <strong>painamalla 'T' vaihtaaksesi sen versioita</strong>!
     reward_miner_chainable:
         title: Sarjapoimija
-        desc: >-
-            Avasit juuri <strong>Sarjapoimijan</strong>! Se voi
-            <strong>siirtää resurssejaan</strong> muihin poimijoihin, joten
-            voit hankkia resursseja tehokkaammin!<br><br> PS: Vanha
-            poimija on nyt korvattu työkalupalkissa!
+        desc: "Avasit juuri <strong>Sarjapoimijan</strong>! Se voi <strong>siirtää
+            resurssejaan</strong> muihin poimijoihin, joten voit hankkia
+            resursseja tehokkaammin!<br><br> PS: Vanha poimija on nyt korvattu
+            työkalupalkissa!"
     reward_underground_belt_tier_2:
         title: Tunneli Taso II
-        desc: Avasit uuden version <strong>Tunnelista</strong> - Siinä on <strong>pidempi
-            kantama</strong>, ja voit myös yhdistellä ja sovitella tunneleita!
+        desc: Avasit uuden version <strong>Tunnelista</strong> - Siinä on
+            <strong>pidempi kantama</strong>, ja voit myös yhdistellä ja
+            sovitella tunneleita!
     reward_cutter_quad:
         title: Neljännesleikkuri
         desc: Avasit version <strong>Leikkurista</strong> - Se sallii muotojen
@@ -645,39 +623,40 @@ storyRewards:
             kerrallaan</strong> käyttäen vain yhden värin kahden sijaan!
     reward_storage:
         title: Varastopuskuri
-        desc: Olet avannut <strong>Varaston</strong> - Voit varastoida
-            resursseja tiettyyn rajaan saakka!<br><br> Priorisoi vasemman ulostulon
-            ja voidaan käyttää <strong> ylivuotoporttina</strong>!
+        desc: Olet avannut <strong>Varaston</strong> - Voit varastoida resursseja
+            tiettyyn rajaan saakka!<br><br> Priorisoi vasemman ulostulon ja
+            voidaan käyttää <strong> ylivuotoporttina</strong>!
     reward_freeplay:
         title: Vapaapeli
-        desc: Onnistuit! Avasit juuri <strong>vapaapelimuodon</strong>!
-            Muodot luodaan nyt <strong>satunnaisesti</strong><br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
+        desc: Onnistuit! Avasit juuri <strong>vapaapelimuodon</strong>! Muodot luodaan
+            nyt <strong>satunnaisesti</strong><br><br> Since the hub will
+            require a <strong>throughput</strong> from now on, I highly
+            recommend to build a machine which automatically delivers the
+            requested shape!<br><br> The HUB outputs the requested shape on the
+            wires layer, so all you have to do is to analyze it and
             automatically configure your factory based on that.
     reward_blueprints:
         title: Piirustukset
         desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse
             alue (pidä CTRL pohjassa ja raahaa hiirellä), ja paina 'C'
             kopioidaksesi piirrustuksen.<br><br>Sen liittäminen ei ole
-            <strong>ilmaista</strong>. Sinun täytyy tuottaa <strong>piirustusmuotoja</strong>,
-            jotta sinulla on varaa siihen! (Ne mitkä juuri toimitit).
+            <strong>ilmaista</strong>. Sinun täytyy tuottaa
+            <strong>piirustusmuotoja</strong>, jotta sinulla on varaa siihen!
+            (Ne mitkä juuri toimitit).
     no_reward:
         title: Seuraava taso
-        desc: >-
-            Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat! <br><br> PS: Parempi
-            olla tuhoamatta vanhoja tehtaita - Tarvitset <strong>kaikkia</strong>
-            muotoja myöhemmin <strong>avataksesi päivityksiä</strong>!
+        desc: "Et saanut palkintoa tältä tasolta, mutta seuraavalta tasolta saat!
+            <br><br> PS: Parempi olla tuhoamatta vanhoja tehtaita - Tarvitset
+            <strong>kaikkia</strong> muotoja myöhemmin <strong>avataksesi
+            päivityksiä</strong>!"
     no_reward_freeplay:
         title: Seuraava taso
         desc: Onnittelut! Muuten, lisää sisältöä on suunniteltu täysversioon!
     reward_balancer:
         title: Tasaaja
-        desc: Monikäyttöinen <strong>tasaaja</strong> avattu - Voit rakentaa
-            sen avulla isompia tehtaita <strong>erottaen ja yhdistäen
-            tavaroita</strong> useille kuljettimille!
+        desc: Monikäyttöinen <strong>tasaaja</strong> avattu - Voit rakentaa sen avulla
+            isompia tehtaita <strong>erottaen ja yhdistäen tavaroita</strong>
+            useille kuljettimille!
     reward_merger:
         title: Kompakti Yhdistäjä
         desc: Avasit <strong>yhdistäjän</strong>, joka on versio
@@ -685,53 +664,56 @@ storyRewards:
     reward_belt_reader:
         title: Kuljetinanturi
         desc: Olet avannut <strong>Kuljetinanturin</strong>! Voit mitata kuljettimen
-            tehokkuutta.<br><br>Ja odotahan vain, kunhan saat Johdot auki. Sitten tämä on kätevä!
+            tehokkuutta.<br><br>Ja odotahan vain, kunhan saat Johdot auki.
+            Sitten tämä on kätevä!
     reward_rotater_180:
         title: Kääntäjä (180°)
-        desc: Avasit juuri 180-asteen <strong>Kääntäjän</strong>! - Sillä voit
-            kääntää muotoa 180 astetta (Ylläripylläri! :D)
+        desc: Avasit juuri 180-asteen <strong>Kääntäjän</strong>! - Sillä voit kääntää
+            muotoa 180 astetta (Ylläripylläri! :D)
     reward_display:
         title: Näyttö
-        desc: >-
-            Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
-            Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä saada se näkyviin näytölle!
+        desc: "Avasit juuri <strong>Näytön</strong> - Yhdistä signaali näyttöön
+            Johto-tasolla visualisoidaksesi sen<br><br> PS: Huomasitko, että
+            kuljetinanturi ja varasto näyttävät viimeisimmän esineen? Yritäpä
+            saada se näkyviin näytölle!"
     reward_constant_signal:
         title: Jatkuva Signaali
-        desc: Avasit <strong>Jatkuvan Signaalin</strong> laitteen johtotasolla!
-            Tämä on hyödyllinen esimerkiksi yhdistettynä
-            <strong>tavarasuodattimeen.</strong><br><br> Jatkuva signaali voi lähettää esim.
-            <strong>muodon</strong>, <strong>värin</strong> tai <strong>binääriarvon</strong> (1 / 0).
+        desc: Avasit <strong>Jatkuvan Signaalin</strong> laitteen johtotasolla! Tämä on
+            hyödyllinen esimerkiksi yhdistettynä
+            <strong>tavarasuodattimeen.</strong><br><br> Jatkuva signaali voi
+            lähettää esim. <strong>muodon</strong>, <strong>värin</strong> tai
+            <strong>binääriarvon</strong> (1 / 0).
     reward_logic_gates:
         title: Logiikkaportit
-        desc: Avasit <strong>Logiikkaportit</strong> (heh,heh)! Niistä ei tarvitse innostua,
-            mutta ne ovat oikeasti tosi päheitä!<br><br> Logiikkaporteilla
-            voit suorittaa AND, OR, XOR ja NOT operaatioita.<br><br> Kaupanpäällisiksi sait
-            myös <strong>transistorin</strong>!
+        desc: Avasit <strong>Logiikkaportit</strong> (heh,heh)! Niistä ei tarvitse
+            innostua, mutta ne ovat oikeasti tosi päheitä!<br><br>
+            Logiikkaporteilla voit suorittaa AND, OR, XOR ja NOT
+            operaatioita.<br><br> Kaupanpäällisiksi sait myös
+            <strong>transistorin</strong>!
     reward_virtual_processing:
         title: Virtuaaliprosessointi
-        desc: Sait juuri hyvän setin uusia laitteita, joiden avulla
-            <strong>voit simuloida muotojen prosessointia</strong>!<br><br> Nyt voit
+        desc: Sait juuri hyvän setin uusia laitteita, joiden avulla <strong>voit
+            simuloida muotojen prosessointia</strong>!<br><br> Nyt voit
             simuloida leikkuria, kääntäjää, pinoajaa ja muita johtotasolla!
             Sinulla on nyt kolme vaihtoehtoa pelin jatkamiseen:<br><br> -
             Rakenna <strong>automatisoitu kone</strong> luodaksesi mikä tahansa
-            keskusrakennuksen vaatima muoto (Suosittelen kokeilemaan!).<br><br> - Rakenna
-            jotakin hienoa johdoilla.<br><br> - Jatka pelaamista
+            keskusrakennuksen vaatima muoto (Suosittelen kokeilemaan!).<br><br>
+            - Rakenna jotakin hienoa johdoilla.<br><br> - Jatka pelaamista
             tavallisesti.<br><br> Mitä valitsetkin, muista pitää hauskaa!
     reward_wires_painter_and_levers:
         title: Johdot & Nelimaalain
-        desc: >-
-            Avasit juuri <strong>Johtotason</strong>: Se on erillinen
-            taso tavallisen tason päällä ja sieltä löytyy useita uusia
-            mekaniikkoja!<br><br> Aluksi avasin sinulle <strong>Nelimaalaimen</strong>
-            - Yhdistä johtotasolla lokerot, joihin haluat maalia<br><br>
-            Vaihtaaksesi johtotasolle, paina <strong>E</strong>. <br><br>
-            PS: <strong>Aktivoi vinkit</strong> asetuksissa nähdäksesi Johdot-tutoriaalin!
+        desc: "Avasit juuri <strong>Johtotason</strong>: Se on erillinen taso tavallisen
+            tason päällä ja sieltä löytyy useita uusia mekaniikkoja!<br><br>
+            Aluksi avasin sinulle <strong>Nelimaalaimen</strong> - Yhdistä
+            johtotasolla lokerot, joihin haluat maalia<br><br> Vaihtaaksesi
+            johtotasolle, paina <strong>E</strong>. <br><br> PS: <strong>Aktivoi
+            vinkit</strong> asetuksissa nähdäksesi Johdot-tutoriaalin!"
     reward_filter:
         title: Esinesuodatin
-        desc: Olet avannut <strong>Esinesuodattimen</strong>! Se lähettää esineet
-            joko ylös tai oikealle riippuen siitä vastaavatko ne
-            signaalia johtotasolla vai eivät.<br><br> Voit myös lähettää
-            binääriarvon (1 / 0) aktivoidaksesi tai sammuttaaksesi sen.
+        desc: Olet avannut <strong>Esinesuodattimen</strong>! Se lähettää esineet joko
+            ylös tai oikealle riippuen siitä vastaavatko ne signaalia
+            johtotasolla vai eivät.<br><br> Voit myös lähettää binääriarvon (1 /
+            0) aktivoidaksesi tai sammuttaaksesi sen.
     reward_demo_end:
         title: Kokeiluversion loppu!
         desc: Olet läpäissyt kokeiluversion!
@@ -751,7 +733,8 @@ settings:
         uiScale:
             title: Käyttöliittymän koko
             description: Muuttaa käyttöliittymän kokoa. Käyttöliittymä skaalataan silti
-                laitteen resoluution perusteella, mutta tämä asetus määrittää skaalauksen määrän.
+                laitteen resoluution perusteella, mutta tämä asetus määrittää
+                skaalauksen määrän.
             scales:
                 super_small: Erittäin pieni
                 small: Pieni
@@ -794,12 +777,12 @@ settings:
                 saattavat olla puutteellisia!
         enableColorBlindHelper:
             title: Värisokeatila
-            description: Ottaa käyttöön useita työkaluja, jotka helpottavat pelaamista
-                jos olet värisokea.
+            description: Ottaa käyttöön useita työkaluja, jotka helpottavat pelaamista jos
+                olet värisokea.
         fullscreen:
             title: Kokonäyttö
-            description: Peliä suositellaan pelattavaksi kokonäytön tilassa
-                parhaan kokemuksen saamiseksi. Saatavilla vain täysversiossa.
+            description: Peliä suositellaan pelattavaksi kokonäytön tilassa parhaan
+                kokemuksen saamiseksi. Saatavilla vain täysversiossa.
         soundsMuted:
             title: Mykistä äänet
             description: Jos käytössä, mykistää kaikki ääniefektit.
@@ -838,16 +821,16 @@ settings:
                 tekstin lukemisesta helpompaa.
         rotationByBuilding:
             title: Kiertäminen laitetyypin mukaan
-            description: Muistaa jokaisen laitetyypin viimeisimmän kiertoasetuksen.
-                Tämä voi olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
+            description: Muistaa jokaisen laitetyypin viimeisimmän kiertoasetuksen. Tämä voi
+                olla mukavampi vaihtoehto jos sijoitat usein eri laitetyyppejä.
         compactBuildingInfo:
             title: Kompaktit laitetiedot
             description: Lyhentää laitteiden tietolaatikoita näyttämällä vain niiden
                 suhteet. Muuten laitteen kuvaus ja kuva näytetään.
         disableCutDeleteWarnings:
             title: Poista leikkaus/poisto -varoitukset
-            description: Poista varoitusikkunat, jotka ilmestyvät kun leikkaat/poistat enemmän
-                kuin 100 entiteettiä.
+            description: Poista varoitusikkunat, jotka ilmestyvät kun leikkaat/poistat
+                enemmän kuin 100 entiteettiä.
         soundVolume:
             title: Efektien äänenvoimakkuus
             description: Aseta ääniefektien äänenvoimakkuus
@@ -857,13 +840,16 @@ settings:
         lowQualityMapResources:
             title: Alhaisen tason resurssit
             description: Yksinkertaistaa resurssikenttien ulkonäön suurennetussa näkymässä
-                suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten kannattaa kokeilla!
+                suorituskyvyn parantamiseksi. Näyttää jopa siistimmältä, joten
+                kannattaa kokeilla!
         disableTileGrid:
             title: Poista ruudukko
-            description: Poistaa ruudukon ja parantaa suorituskykyä. Pelialue näyttää myös siistimmältä!
+            description: Poistaa ruudukon ja parantaa suorituskykyä. Pelialue näyttää myös
+                siistimmältä!
         clearCursorOnDeleteWhilePlacing:
             title: Tyhjennä kursori oikalla klikillä
-            description: Oletuksena päällä. Tyhjentää kursorin klikattaessa oikealla kun laite on valittu asetettavaksi.
+            description: Oletuksena päällä. Tyhjentää kursorin klikattaessa oikealla kun
+                laite on valittu asetettavaksi.
         lowQualityTextures:
             title: Alhaisen tason tekstuurit (ruma)
             description: Käyttää alhaisen tason tekstuureja tehojen säästämiseksi. Tämä
@@ -874,25 +860,29 @@ settings:
                 reunat jokaiselle kimpaleelle näytetään.
         pickMinerOnPatch:
             title: Valitse poimija resurssikentässä
-            description: Oletuksena päällä. Valitsee poimijan jos käytät pipettiä resurssikentän päällä.
+            description: Oletuksena päällä. Valitsee poimijan jos käytät pipettiä
+                resurssikentän päällä.
         simplifiedBelts:
             title: Yksinkertaiset kuljettimet (ruma)
-            description: Ei näytä tavaroita kuljettimella, ellei hiiren osoitin ole sen päällä. Asetusta ei suositella, ellet todella tarvitse lisätehoja.
+            description: Ei näytä tavaroita kuljettimella, ellei hiiren osoitin ole sen
+                päällä. Asetusta ei suositella, ellet todella tarvitse
+                lisätehoja.
         enableMousePan:
             title: Ruudun liikuttaminen hiirellä
-            description: Liikuttaa ruutua siirrettäessä hiiri reunaan. Nopeus määritellään liikenopeuden asetuksissa.
+            description: Liikuttaa ruutua siirrettäessä hiiri reunaan. Nopeus määritellään
+                liikenopeuden asetuksissa.
         zoomToCursor:
             title: Suurenna kursoriin
-            description: Aktivoituna suurentaa näkymää hiiren osoittimen suuntaan. Muuten suurentaa ruudun keskelle.
+            description: Aktivoituna suurentaa näkymää hiiren osoittimen suuntaan. Muuten
+                suurentaa ruudun keskelle.
         mapResourcesScale:
             title: Kartan resurssien koko
             description: Määrittää muotojen koon kartalla (loitonnettaessa).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Pikanäppäimet
-    hint: >-
-        Vinkki: Muista käyttää CTRL, SHIFT ja ALT! Ne ottavat käyttöön erilaisia
-        sijoitteluvaihtoehtoja.
+    hint: "Vinkki: Muista käyttää CTRL, SHIFT ja ALT! Ne ottavat käyttöön erilaisia
+        sijoitteluvaihtoehtoja."
     resetKeybindings: Nollaa pikanäppäimet
     categoryLabels:
         general: Sovellus
@@ -962,18 +952,24 @@ keybindings:
         comparator: Vertaa
         item_producer: Signaaligeneraattori (Hiekkalaattikko)
         copyWireValue: "Johdot: Kopioi arvo kursorin kohdalta"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Tietoja tästä pelistä
     body: >-
-        Tämä peli on avointa lähdekoodia ja kehittäjä on <a
+        This game is open source and developed by <a
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
-        (tämä on minä).<br><br>
+        (this is me).<br><br>
 
-        Tämän pelin tekeminen ei olisi ollut mahdollista ilman suurta Discord-yhteisöä pelini ympärillä - Voisit liittyä <a href="<discordlink>" target="_blank">Discord palvelimelleni</a>!<br><br>
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
 
-        Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on mahtava.<br><br>
+        This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
-        Lopuksi, isot kiitokset parhaalle kaverilleni <a href="https://github.com/niklas-dahl" target="_blank">Niklakselle</a> - Ilman meidän factorio istuntoja tätä peliä ei olisi koskaan olemassa.
+        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
+
+        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our Factorio sessions, this game would never have existed.
 changelog:
     title: Muutosloki
 demo:
@@ -990,7 +986,8 @@ tips:
     - Älä rakenna liian lähelle keskusrakennusta tai olet pian pulassa!
     - Jos pinoaminen ei toimi, kokeile vaihtaa syöttöjä.
     - Voit vaihtaa kuljetinsuunnittelijan suuntaa painamalla <b>R</b>.
-    - <b>CTRL:n</b> painaminen antaa vetää kuljettimia ilman automaattisuuntausta.
+    - <b>CTRL:n</b> painaminen antaa vetää kuljettimia ilman
+      automaattisuuntausta.
     - Suhteet säilyvät samana, kunhan kaikki pivityset ovat samalla tasolla.
     - Sarjassa tekeminen on tehokkaampaa, kuin rinnan.
     - Rakennuksista avautuu lisää versioita myöhemmin pelissä!
@@ -1003,7 +1000,8 @@ tips:
     - Maksimitasolla 5 poimijaa täyttää yhden kuljettimen.
     - Älä unohda tunneleita!
     - Asioita ei tarvitse jakaa tasan parhaan tehokkuuden saavuttamiseksi.
-    - <b>SHIFTin</b>painaminen aktivoi kuljetinsuunnittelijan, joka helpottaa pitkien linjojen rakentamista.
+    - <b>SHIFTin</b>painaminen aktivoi kuljetinsuunnittelijan, joka helpottaa
+      pitkien linjojen rakentamista.
     - Leikkurit leikkaavat aina pystysuunnassa riippumatta niiden asemoinnista.
     - Sekoita kolmea väriä saadaksesi valkoista.
     - Varasto priorisoi ensimmäisen lähdön.
@@ -1012,14 +1010,16 @@ tips:
     - <b>ALTia</b> voit vaihtaa kuljetinten suuntaa.
     - Tehokkuus on keskeistä!
     - Muotokentät ovat monimutkaisempia kauempana keskusrakennuksesta.
-    - Koneiden nopeus on rajoitettu. Jaa töitä useammalle koneelle tehokkuuden maksimoimiseksi
+    - Koneiden nopeus on rajoitettu. Jaa töitä useammalle koneelle tehokkuuden
+      maksimoimiseksi
     - Käytä tasaajia tehokkuuden maksimoimiseksi.
     - Järjestys on tärkeää. Vältä liiallista kuljetinten risteämistä.
     - Suunnittele etukäteen tai jodut keskelle kaaosta!
     - Älä poista vanhoja tehtaitasi! Tarvitset niitä päivitysten avaamiseen.
     - Yritä läpäistä taso 20 itseksesi, ennen kuin etsit apuja!
     - Älä monimutkaista asioita. Yksinkertainen vie pitkälle.
-    - Saatat joutua käyttämään tehtaitasi uudelleen myöhemmin. Rakenna niistä kierrätettäviä.
+    - Saatat joutua käyttämään tehtaitasi uudelleen myöhemmin. Rakenna niistä
+      kierrätettäviä.
     - Joskus tarvitsemasi muoto löytyy suoraan kartalta, etkä tarvitse pinoajia.
     - Kokonaiset tuulimyllyt ja piikkipyörät eivät synny luonnollisesti.
     - Tehokkainta on maalata muodot ennen leikkausta.
@@ -1027,14 +1027,16 @@ tips:
     - Tee erilliset mallitehtaat. Ne ovat tärkeitä modulaarisuudessa.
     - Katso tarkkaan värinsekoitinta ja kysymyksiisi vastataan.
     - <b>CTRL</b> + hiiren vasen nappi valitsee alueen.
-    - Liian lähelle keskusrakennusta rakennettu tehdas on tiellä myöhemmissä projekteissa.
+    - Liian lähelle keskusrakennusta rakennettu tehdas on tiellä myöhemmissä
+      projekteissa.
     - Nastaikoni päivityslistan muotojen vieressä kiinnittää muodon ruudulle.
     - Sekoita kaikkia päävärejä saadaksesi valkoista!
     - Kartta on ääretön. Älä rakenna tehtaitasi liian ahtaasti, laajenna!
     - Kokeile myös Factoriota! Se on lempipelini.
     - Nelileikkuri leikkaa myötäpäivään aloittaen yläoikealta!
     - Voit ladata tallennuksesi päävalikosta!
-    - Tässä pelissä on monia käteviä pikanäppäimiä. Muista tutustua asetussivuihin.
+    - Tässä pelissä on monia käteviä pikanäppäimiä. Muista tutustua
+      asetussivuihin.
     - Tässä pelissä on useita asetuksia. Tutustu niihin!
     - Keskusrakennuksen merkissä on pieni kompassi osoittamassa sen suuntaa!
     - Poistaaksesti kuljettimia leikkaa alue ja liitä se samaan kohtaan

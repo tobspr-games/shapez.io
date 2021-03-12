@@ -44,7 +44,7 @@ function gulptasksTranslations($, gulp) {
                 [h2]${storePage.what_others_say}[/h2]
 
                 [list]
-                    [*] [i]${storePage.northernlion_comment}[/i] [b]- Northernlion, YouTube[/b]
+                    [*] [i]${storePage.nothernlion_comment}[/i] [b]- Northernlion, YouTube[/b]
                     [*] [i]${storePage.notch_comment}[/i] [b]- Notch[/b]
                     [*] [i]${storePage.steam_review_comment}[/i] [b]- Steam User[/b]
                 [/list]
