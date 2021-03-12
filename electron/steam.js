@@ -43,7 +43,9 @@ function listen () {
     }
 
     ipcMain.handle("steam:get-achievement-names", getAchievementNames);
+    ipcMain.handle("steam:get-achievement", getAchievement);
     ipcMain.handle("steam:activate-achievement", activateAchievement);
+    ipcMain.handle("steam:deactivate-achievement", deactivateAchievement);
 }
 
 function isInitialized(event) {
@@ -61,9 +63,21 @@ function getAchievementNames(event) {
     });
 }
 
+function getAchievement(event, id) {
+    return new Promise((resolve, reject) => {
+        greenworks.getAchievement(id, () => resolve(), err => reject(err))
+    });
+}
+
 function activateAchievement(event, id) {
     return new Promise((resolve, reject) => {
-        greenworks.activateAchievement(id, () => resolve(), err => reject(err))
+        greenworks.activateAchievement(id, (is_achieved) => resolve(is_achieved), err => reject(err))
+    });
+}
+
+function deactivateAchievement(event, id) {
+    return new Promise((resolve, reject) => {
+        greenworks.clearAchievement(id, () => resolve(), err => reject(err))
     });
 }
 

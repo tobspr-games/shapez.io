@@ -33,6 +33,13 @@ export class HUDGameMenu extends BaseHUDPart {
                 visible: () =>
                     !this.root.app.settings.getAllSettings().offerHints || this.root.hubGoals.level >= 3,
             },
+            {
+                id: "achievements",
+                label: "Achievements",
+                handler: () => this.root.hud.parts.achievements.show(),
+                keybinding: KEYMAPPINGS.ingame.menuOpenAchievements,
+                visible: () => true,
+            },
         ];
 
         /** @type {Array<{

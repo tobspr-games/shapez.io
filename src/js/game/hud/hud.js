@@ -49,6 +49,7 @@ import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";
 import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
 import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
+import { HUDAchievements } from "./parts/achievements";
 
 export class GameHUD {
     /**
@@ -84,6 +85,7 @@ export class GameHUD {
             massSelector: new HUDMassSelector(this.root),
             shop: new HUDShop(this.root),
             statistics: new HUDStatistics(this.root),
+            achievements: new HUDAchievements(this.root),
             waypoints: new HUDWaypoints(this.root),
             wireInfo: new HUDWireInfo(this.root),
             leverToggle: new HUDLeverToggle(this.root),

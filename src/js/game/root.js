@@ -183,6 +183,7 @@ export class GameRoot {
             // Called with an achievement key and necessary args to validate it can be unlocked.
             achievementCheck: /** @type {TypedSignal<[string, any]>} */ (new Signal()),
             bulkAchievementCheck: /** @type {TypedSignal<(string|any)[]>} */ (new Signal()),
+            achievementCompleted: /** @type {TypedSignal<[string, any]>} */ (new Signal()),
         };
 
         // RNG's
