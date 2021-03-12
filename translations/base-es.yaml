@@ -14,39 +14,14 @@ steamPage:
         Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar colores!
 
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
-    title_advantages: Ventajas del juego
-    advantages:
-        - <b>12 nuevos niveles</b> de un total de 26 niveles
-        - <b>18 nuevos edificios</b> ¡Para una fábrica totalmente automatizada!
-        - <b>Nieveles infinitos de mejoras</b> ¡Para horas de diversión!
-        - ¡<b>Cables</b> para una dimensión completamente nueva!
-        - ¡<b>Modo oscuro</b>!
-        - Partidad guardadas ilimitadas
-        - Marcadores ilimitados
-        - ¡Me apoyarás! ❤️
-    title_future: Contenido futuro
-    planned:
-        - Librería de planos (Exclusivo de Standalone)
-        - Logros de Steam
-        - Modo Puzzle
-        - Minimapa
-        - Mods
-        - Modo libre
-        - ... y mucho más!
-    title_open_source: Este juego es de código abierto!
-    title_links: Links
-    links:
-        discord: Discord oficial
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Código fuente (GitHub)
-        translate: Ayuda a traducír
-    text_open_source: >-
-        Cualquiera puede contribuír, Estoy activamete involucrado en la comunidad y
-        trato de revisar todas las sugerencias además de tomar en cuenta los consejos
-        siempre que sea posible.
-
-        ¡Asegurate de revisar mi página de Trello donde podrás encontrar el Roadmap!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Cargando
     error: Error
@@ -122,7 +97,8 @@ dialogs:
     confirmSavegameDelete:
         title: Confirmar borrado
         text: ¿Estás seguro de querér borrar el siguiente guardado?<br><br>
-            '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto no se puede deshacer!
+            '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto
+            no se puede deshacer!
     savegameDeletionError:
         title: Fallo al borrar
         text: "Fallo al borrar la partida guardada:"
@@ -131,8 +107,8 @@ dialogs:
         text: Tienes que reinciar la partida para aplicar los cambios.
     editKeybinding:
         title: Cambiar atajos de teclado
-        desc: Pulsa la tecla o botón del ratón que quieras asignar, o presiona escape para
-            cancelar.
+        desc: Pulsa la tecla o botón del ratón que quieras asignar, o presiona escape
+            para cancelar.
     resetKeybindingsConfirmation:
         title: Reiniciar atajos de teclado
         desc: Esto devolverá todos los atajos de teclado a los valores por defecto. Por
@@ -185,7 +161,9 @@ dialogs:
     createMarker:
         title: Nuevo marcador
         titleEdit: Editar marcador
-        desc: Dale un nombre significativo, tambien puedes incluir la <strong>clave</strong> de una forma (La cual puedes generar <link>aquí</link>)
+        desc: Dale un nombre significativo, tambien puedes incluir la
+            <strong>clave</strong> de una forma (La cual puedes generar
+            <link>aquí</link>)
     markerDemoLimit:
         desc: Solo puedes crear dos marcadores en la versión de prueba. ¡Obtén el juego
             completo para marcadores ilimitados!
@@ -207,7 +185,8 @@ dialogs:
         desc: ¡Hay un video tutorial disponible para este nivel! ¿Te gustaría verlo?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Disponible
-        desc: Hay un video tutorial disponible para este nivel, pero solo está disponible en inglés ¿Te gustaría verlo?
+        desc: Hay un video tutorial disponible para este nivel, pero solo está
+            disponible en inglés ¿Te gustaría verlo?
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -310,38 +289,39 @@ ingame:
             1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
                 <strong>círculo</strong> para extraerlo!
             1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
-                transportadora</strong> a tu HUB!<br><br> Pista:
-                ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con
-                el ratón!"
+                transportadora</strong> a tu HUB!<br><br> Pista: ¡<strong>Pulsa
+                y arrastra</strong> la cinta transportadora con el ratón!"
             1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
                 extractores y cintas transportadoras para completar el objetivo
                 más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong>
                 para colocar varios extractores y usa <strong>R</strong> para
                 rotarlos.'
-            2_1_place_cutter: "¡Ahora pon un <strong>Cortador</strong> para dividir los circulos en dos
-                mitades!<br><br> PD: El cortador siempre corta de <strong>de arriba a
-                abajo</strong> independientemente de su orientación."
-            2_2_place_trash: ¡El cortador se puede <strong>trabar y atorar</strong>!<br><br> Usa un
-                <strong>basurero</strong> para deshacerse de la actualmente (!) no
-                necesitada basura.
-            2_3_more_cutters: "¡Buen trabajo! ¡Ahora pon <strong>2 cortadores más</strong> para acelerar
-                este lento proceso!<br><br> PD: Usa las teclas <strong>0-9
-                </strong> para acceder a los edificios más rápido!"
+            2_1_place_cutter: "¡Ahora pon un <strong>Cortador</strong> para dividir los
+                circulos en dos mitades!<br><br> PD: El cortador siempre corta
+                de <strong>de arriba a abajo</strong> independientemente de su
+                orientación."
+            2_2_place_trash: ¡El cortador se puede <strong>trabar y atorar</strong>!<br><br>
+                Usa un <strong>basurero</strong> para deshacerse de la
+                actualmente (!) no necesitada basura.
+            2_3_more_cutters: "¡Buen trabajo! ¡Ahora pon <strong>2 cortadores más</strong>
+                para acelerar este lento proceso!<br><br> PD: Usa las teclas
+                <strong>0-9 </strong> para acceder a los edificios más rápido!"
             3_1_rectangles: "¡Ahora consigamos unos rectangulos! <strong>construye 4
-                extractores</strong> y conectalos a el HUB.<br><br> PD:
-                Manten apretado <strong>SHIFT</strong> mientrás pones cintas transportadoras para activar
-                el planeador de cintas!"
-            21_1_place_quad_painter: ¡Pon el <strong>pintaor cuadruple</strong> y consigue unos
-                <strong>circulos</strong>, el color <strong>blanco</strong> y el color
-                <strong>rojo</strong>!
+                extractores</strong> y conectalos a el HUB.<br><br> PD: Manten
+                apretado <strong>SHIFT</strong> mientrás pones cintas
+                transportadoras para activar el planeador de cintas!"
+            21_1_place_quad_painter: ¡Pon el <strong>pintaor cuadruple</strong> y consigue
+                unos <strong>circulos</strong>, el color <strong>blanco</strong>
+                y el color <strong>rojo</strong>!
             21_2_switch_to_wires: ¡Cambia a la capa de cables apretando la técla
                 <strong>E</strong>!<br><br> Luego <strong>conecta las cuatro
                 entradas</strong> de el pintador con cables!
-            21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y conectalo
-                con cables!
-            21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una señal
-                verdadera</strong> lo cual activa el piintador.<br><br> PD: ¡No necesitas
-                conectar todas las entradas! Intenta conectando solo dos."
+            21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y
+                conectalo con cables!
+            21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una
+                señal verdadera</strong> lo cual activa el piintador.<br><br>
+                PD: ¡No necesitas conectar todas las entradas! Intenta
+                conectando solo dos."
     connectedMiners:
         one_miner: 1 Minero
         n_miners: <amount> Mineros
@@ -360,9 +340,6 @@ ingame:
             buildings:
                 title: 18 nuevos edificios
                 desc: ¡Automatiza completamente tu fabrica!
-            savegames:
-                title: Archivos de guardado infinitos
-                desc: ¡Tantos como desees!
             upgrades:
                 title: Niveles infinitos de mejoras
                 desc: ¡Esta demo solo tiene 5!
@@ -378,6 +355,9 @@ ingame:
             support:
                 title: Apoyame
                 desc: ¡Desarrollo este juego en mi tiempo libre!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Cintas transportadoras, Distribuidores y Túneles
@@ -408,8 +388,8 @@ buildings:
             description: Te permite transportar energía
         second:
             name: Cable
-            description: Transfiere señales, que pueden ser items, colores o valores booleanos (1 / 0).
-                Cables de diferentes colores no se conectan.
+            description: Transfiere señales, que pueden ser items, colores o valores
+                booleanos (1 / 0). Cables de diferentes colores no se conectan.
     miner:
         default:
             name: Extractor
@@ -471,9 +451,9 @@ buildings:
                 la entrada de arriba.
         quad:
             name: Pintor (Cuádruple)
-            description: Te permite colorear cada cuadrante de la forma individualemte. ¡Solo las
-                ranuras con una <strong>señal verdadera</strong> en la capa de cables
-                seran pintadas!
+            description: Te permite colorear cada cuadrante de la forma individualemte.
+                ¡Solo las ranuras con una <strong>señal verdadera</strong> en la
+                capa de cables seran pintadas!
     trash:
         default:
             name: Basurero
@@ -481,7 +461,8 @@ buildings:
     balancer:
         default:
             name: Balanceador
-            description: Multifuncional - Distribuye igualmente todas las entradas en las salidas.
+            description: Multifuncional - Distribuye igualmente todas las entradas en las
+                salidas.
         merger:
             name: Unión (compacta)
             description: Junta dos cintas transportadoras en una.
@@ -497,8 +478,9 @@ buildings:
     storage:
         default:
             name: Almacén
-            description: Guarda items en exceso, hasta una dada capacidad. Prioritiza la salida
-                de la izquierda y puede ser usada como una puerta de desbordamiento.
+            description: Guarda items en exceso, hasta una dada capacidad. Prioritiza la
+                salida de la izquierda y puede ser usada como una puerta de
+                desbordamiento.
     wire_tunnel:
         default:
             name: Cruze de cables
@@ -506,71 +488,76 @@ buildings:
     constant_signal:
         default:
             name: Señal costante
-            description: Emite una señal constante, que puede ser una forma, color o valor booleano (1 / 0).
+            description: Emite una señal constante, que puede ser una forma, color o valor
+                booleano (1 / 0).
     lever:
         default:
             name: Interruptor
-            description: Puede ser activado para emitir una señal booleana (1 / 0) en la capa de cables,
-                la cual puede ser usada por ejemplo para un filtro de items.
+            description: Puede ser activado para emitir una señal booleana (1 / 0) en la
+                capa de cables, la cual puede ser usada por ejemplo para un
+                filtro de items.
     logic_gate:
         default:
             name: Puerta AND
-            description: Emite el valor booleano "1" si ambas entradas son verdaderas. (Verdadeas significa una forma,
-                color o valor booleano "1")
+            description: Emite el valor booleano "1" si ambas entradas son verdaderas.
+                (Verdadeas significa una forma, color o valor booleano "1")
         not:
             name: Puerta NOT
-            description: Emite el valor booleano "1" si ambas entradas no son verdaderas. (Verdadeas significa una forma,
-                color o valor booleano "1")
+            description: Emite el valor booleano "1" si ambas entradas no son verdaderas.
+                (Verdadeas significa una forma, color o valor booleano "1")
         xor:
             name: Puerta XOR
-            description: Emite el valor booleano "1" si una de las entradas es verdadera, pero no si ambas lo son.
-                (Verdadeas significa una forma,
-                color o valor booleano "1")
+            description: Emite el valor booleano "1" si una de las entradas es verdadera,
+                pero no si ambas lo son. (Verdadeas significa una forma, color o
+                valor booleano "1")
         or:
             name: Puerta OR
-            description: Emite el valor booleano "1" Si una de las entradas es verdadera. (Verdadeas significa una forma,
-                color o valor booleano "1")
+            description: Emite el valor booleano "1" Si una de las entradas es verdadera.
+                (Verdadeas significa una forma, color o valor booleano "1")
     transistor:
         default:
             name: Transistor
-            description: Envia la señal de abajo si la señal del costado es verdadera (Verdadeas significa una forma,
-                color o valor booleano "1").
+            description: Envia la señal de abajo si la señal del costado es verdadera
+                (Verdadeas significa una forma, color o valor booleano "1").
         mirrored:
             name: Transistor
-            description: Envia la señal de abajo si la señal del costado es verdadera (Verdadeas significa una forma,
-                color o valor booleano "1").
+            description: Envia la señal de abajo si la señal del costado es verdadera
+                (Verdadeas significa una forma, color o valor booleano "1").
     filter:
         default:
             name: Filtro
-            description: Conecta una señal para enviar todas las que coincidan hacia arriba y las demás
-                hacia la derecha. También puede ser controlada por señales booleanas.
+            description: Conecta una señal para enviar todas las que coincidan hacia arriba
+                y las demás hacia la derecha. También puede ser controlada por
+                señales booleanas.
     display:
         default:
             name: Monitor
-            description: Conecta una señal para mostrarla en el monitor - Puede ser una forma,
-                color o valor booleano.
+            description: Conecta una señal para mostrarla en el monitor - Puede ser una
+                forma, color o valor booleano.
     reader:
         default:
             name: Lector de cinta
-            description: Te permite medir la cantidad media de items que pasan por la cinta. Emite el último
-                item leído en la capa de cables (una vez desbloquada).
+            description: Te permite medir la cantidad media de items que pasan por la cinta.
+                Emite el último item leído en la capa de cables (una vez
+                desbloquada).
     analyzer:
         default:
             name: Analizador de formas
-            description: analiza el cuadrante de arriba a la derecha de la capa más baja de la forma
-                y devuelve su figura y color.
+            description: analiza el cuadrante de arriba a la derecha de la capa más baja de
+                la forma y devuelve su figura y color.
     comparator:
         default:
             name: Comparador
-            description: Devuelve el valor booleano "1" Si ambas señales son exactamente iguales. Puede comparar
-                formas, items y valores booleanos.
+            description: Devuelve el valor booleano "1" Si ambas señales son exactamente
+                iguales. Puede comparar formas, items y valores booleanos.
     virtual_processor:
         default:
             name: Cortador virtual
             description: Corta virtualmente la forma en dos.
         rotater:
             name: Rotador virtual
-            description: Rota virtualmente la forma, tanto en sentido del horario como sentido anti-horario.
+            description: Rota virtualmente la forma, tanto en sentido del horario como
+                sentido anti-horario.
         unstacker:
             name: Desapilador virtual
             description: Extrae virtualmente la capa más alta en la salida a la derecha y
@@ -585,17 +572,17 @@ buildings:
     item_producer:
         default:
             name: Productor de items
-            description: Solo disponible en modo libre, envía la señal recivida de la
-                capa de cables en la capa regular.
+            description: Solo disponible en modo libre, envía la señal recivida de la capa
+                de cables en la capa regular.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortador de figuras
-        desc: ¡Acabas de desbloquear el <strong>cortador</strong>, el cual corta formas por la mitad
-            de arriba a abajo <strong>independientemente de su
+        desc: ¡Acabas de desbloquear el <strong>cortador</strong>, el cual corta formas
+            por la mitad de arriba a abajo <strong>independientemente de su
             orientacion</strong>!<br><br>Asegurate de deshacerte de la basura, o
-            sino <strong>se trabará y parará</strong> - Por este proposite
-            Te he dado el <strong>basurero</strong>, el cual destruye
-            todo lo que pongas dentro de él!
+            sino <strong>se trabará y parará</strong> - Por este proposite Te he
+            dado el <strong>basurero</strong>, el cual destruye todo lo que
+            pongas dentro de él!
     reward_rotater:
         title: Rotador
         desc: ¡El <strong>rotador</strong> se ha desbloqueado! Rota figuras en sentido
@@ -620,8 +607,8 @@ storyRewards:
     reward_splitter:
         title: Separador/Fusionador
         desc: Has desbloqueado el <strong>separador</strong> , una variante de el
-            <strong>balanceador</strong> - Acepta una entrada y la separa
-            en dos!
+            <strong>balanceador</strong> - Acepta una entrada y la separa en
+            dos!
     reward_tunnel:
         title: Túnel
         desc: El <strong>túnel</strong> se ha desbloqueado - ¡Ahora puedes transportar
@@ -635,8 +622,8 @@ storyRewards:
         title: Extractor en cadena
         desc: "¡Has desbloqueado el <strong>extractor en cadena</strong>! ¡Este puede
             <strong>enviar sus recursos</strong> a otros extractores así puedes
-            extraer recursos más eficientemente!<br><br> PD: ¡El extractor
-            viejo ha sido reemplazado en tu barra de herramientas!"
+            extraer recursos más eficientemente!<br><br> PD: ¡El extractor viejo
+            ha sido reemplazado en tu barra de herramientas!"
     reward_underground_belt_tier_2:
         title: Túnel nivel II
         desc: Has desbloqueado una nueva variante del <strong>túnel</strong> - ¡Tiene un
@@ -653,18 +640,21 @@ storyRewards:
             consumiendo solo un color en vez de dos!
     reward_storage:
         title: Almacenamiento intermedio
-        desc: Haz desbloquado el edificio de <strong>almacenamiento</strong> - ¡Te permite
-            guardar items hasta una capacidad determinada!<br><br> Prioriza la salida
-            de la izquierda, por lo que tambien puedes suarlo como una <strong>puerta de desbordamiento</strong>!
+        desc: Haz desbloquado el edificio de <strong>almacenamiento</strong> - ¡Te
+            permite guardar items hasta una capacidad determinada!<br><br>
+            Prioriza la salida de la izquierda, por lo que tambien puedes suarlo
+            como una <strong>puerta de desbordamiento</strong>!
     reward_freeplay:
         title: Juego libre
-        desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>! ¡Esto significa
-            que las formas ahora son <strong>aleatoriamente</strong> generadas!<br><br>
-            Debído a que desde ahora de adelante el HUB pedrirá una cantidad especifica de formas <strong>por segundo</strong>
-            ¡Te recomiendo encarecidamente que construyas una maquina que automáticamente
-            envíe la forma pedida!<br><br> El HUB emite la forma
-            pedida en la capa de cables, así que todo lo que tienes que hacer es analizarla y
-            automaticamente configurar tu fabrica basada en ello.
+        desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>!
+            ¡Esto significa que las formas ahora son
+            <strong>aleatoriamente</strong> generadas!<br><br> Debído a que
+            desde ahora de adelante el HUB pedrirá una cantidad especifica de
+            formas <strong>por segundo</strong> ¡Te recomiendo encarecidamente
+            que construyas una maquina que automáticamente envíe la forma
+            pedida!<br><br> El HUB emite la forma pedida en la capa de cables,
+            así que todo lo que tienes que hacer es analizarla y automaticamente
+            configurar tu fabrica basada en ello.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -685,67 +675,71 @@ storyRewards:
             completo!
     reward_balancer:
         title: Balanceador
-        desc: El <strong>balanceador</strong> multifuncional ha sido desbloqueado - ¡Este puede
-            ser usado para construir fabricas más grandes al <strong>separar y mezclar
-            items</strong> hacia múltiples cintas!
+        desc: El <strong>balanceador</strong> multifuncional ha sido desbloqueado -
+            ¡Este puede ser usado para construir fabricas más grandes al
+            <strong>separar y mezclar items</strong> hacia múltiples cintas!
     reward_merger:
         title: Unión compacta
         desc: Has desbloqueado la variante <strong>unión</strong> de el
-            <strong>balanceador</strong> - ¡Acepta dos entradas y las une en
-            una sola cinta!
+            <strong>balanceador</strong> - ¡Acepta dos entradas y las une en una
+            sola cinta!
     reward_belt_reader:
         title: Lector de cinta
-        desc: ¡Has desbloqueado el <strong>lector de cinta</strong>! Este te permite
-            medir la cantidad de items que pasan por esta.<br><brY tan solo espera hasta debloquear
-            los cables - ¡Ahí si que se vuelve útil!
+        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
+            measure the throughput of a belt.<br><br>And wait until you unlock
+            wires - then it gets really useful!
     reward_rotater_180:
         title: Rotador (180 grados)
         desc: ¡Has desbloqueado el <strong>rotador</strong> de 180 grados! - Te permite
             rotar una forma en 180 grados (¡Sorpresa! :D)
     reward_display:
         title: Monitor
-        desc: "Has desbloqueado el <strong>Monitor</strong> - ¡Conecta una señal dentro de
-            la capa de cables para visualizarla!<br><br> PD: ¿Te has dado cuenta que el lector
-            de cinta y el almacenador emiten su último item leído? ¡Trata de conectarlo
-            al monitor!"
+        desc: "Has desbloqueado el <strong>Monitor</strong> - ¡Conecta una señal dentro
+            de la capa de cables para visualizarla!<br><br> PD: ¿Te has dado
+            cuenta que el lector de cinta y el almacenador emiten su último item
+            leído? ¡Trata de conectarlo al monitor!"
     reward_constant_signal:
         title: Señal constante
         desc: ¡Has desbloqueado la <strong>señal constante</strong> en la capa de
-            cables! Esto es muy útil para conectar a el <strong>filtro de items</strong>
-            por ejemplo.<br><br> La señal constante puede emitir
-            <strong>formas</strong>, <strong>colores</strong> o
-            <strong>valores booleanos</strong> (1 / 0).
+            cables! Esto es muy útil para conectar a el <strong>filtro de
+            items</strong> por ejemplo.<br><br> La señal constante puede emitir
+            <strong>formas</strong>, <strong>colores</strong> o <strong>valores
+            booleanos</strong> (1 / 0).
     reward_logic_gates:
         title: Puertas lógicas
-        desc: ¡Has desbloqueado las <strong>puertas lógicas</strong>! No es necesario que te emociones
-            por esto ¡Pero en realidad es super geniall!<br><br> Con estas puertas
-            ahora puedes computar operaciones AND, OR, XOR y NOT.<br><br> Como bonus
-            también te he dado el <strong>transistor</strong>!
+        desc: ¡Has desbloqueado las <strong>puertas lógicas</strong>! No es necesario
+            que te emociones por esto ¡Pero en realidad es super
+            geniall!<br><br> Con estas puertas ahora puedes computar operaciones
+            AND, OR, XOR y NOT.<br><br> Como bonus también te he dado el
+            <strong>transistor</strong>!
     reward_virtual_processing:
         title: Procesamiento virtual
         desc: ¡Acabo de darte un monton de nuevos edificios los cuales te permiten
-            <strong>simular el procesamiento de las formas</strong>!<br><br> ¡Ahora puedes
-            simular un cortador, rotador, apilador y más dentro de la capa de cables!
-            Con esto ahora tienes tres opciones para continuar el juego:<br><br> -
-            Construir una <strong>maquina automatizada</strong> para crear cualquier
-            forma que te pida el HUB (¡Te recomiendo que lo intentes!).<br><br> - Construir
-            algo genial con los cables.<br><br> - Continuar jugando de
-            la manera regular.<br><br> ¡Cualquiera que eligas, recuerda divertirte!
+            <strong>simular el procesamiento de las formas</strong>!<br><br>
+            ¡Ahora puedes simular un cortador, rotador, apilador y más dentro de
+            la capa de cables! Con esto ahora tienes tres opciones para
+            continuar el juego:<br><br> - Construir una <strong>maquina
+            automatizada</strong> para crear cualquier forma que te pida el HUB
+            (¡Te recomiendo que lo intentes!).<br><br> - Construir algo genial
+            con los cables.<br><br> - Continuar jugando de la manera
+            regular.<br><br> ¡Cualquiera que eligas, recuerda divertirte!
     reward_wires_painter_and_levers:
         title: Cables y pintor cuádruple
         desc: "Has desbloqueado la <strong>Capa de cables</strong>: ¡Es una capa
             separada a la capa regular e introduce un montón de mecanicas
             nuevas!<br><br> Para empezar te he dado el <strong>Pintor
             Cuádruple</strong> - ¡Conecta las ranuras que quieras pintar usando
-            la capa de cables!<br><br> Para cambiar a la capa de cables, presiona la tecla
-            <strong>E</strong>. <br><br> PD: ¡Activa las <strong>pistas</strong> en
-            las opciones para activar el tutorial de cables!"
+            la capa de cables!<br><br> Para cambiar a la capa de cables,
+            presiona la tecla <strong>E</strong>. <br><br> PD: ¡Activa las
+            <strong>pistas</strong> en las opciones para activar el tutorial de
+            cables!"
     reward_filter:
         title: Filtro de items
-        desc: Has desbloqueado el <strong>Filtro de Items</strong>! Este enviará los items tanto
-            arriaba como a la derecha dependiendo en si coinciden con la
-            señal de la capa de cables o no.<br><br> Tambien puedes enviar una señal
-            booleana (1 / 0) para activarlo o desactivarlo completamente.
+        desc: Has desbloqueado el <strong>Filtro de Items</strong>! Este enviará los
+            items tanto arriaba como a la derecha dependiendo en si coinciden
+            con la señal de la capa de cables o no.<br><br> Tambien puedes
+            enviar una señal booleana (1 / 0) para activarlo o desactivarlo
+            completamente.
     reward_demo_end:
         title: Fin de la demo
         desc: ¡Has llegado al final de la demo!
@@ -874,12 +868,13 @@ settings:
             description: Establece el volumen para la música
         lowQualityMapResources:
             title: Recursos del mapa de baja calidad
-            description: Simplifica el renderizado de los recusos en el mapa al ser vistos desde cerca,
-                mejorando el rendimiento. ¡Incluso se ve más limpio, asi que asegurate de probarlo!
+            description: Simplifica el renderizado de los recusos en el mapa al ser vistos
+                desde cerca, mejorando el rendimiento. ¡Incluso se ve más
+                limpio, asi que asegurate de probarlo!
         disableTileGrid:
             title: Deshabilitar grilla
-            description: Deshabilitar la grilla puede ayudar con el rendimiento. ¡También hace
-                que el juego se vea más limpio!
+            description: Deshabilitar la grilla puede ayudar con el rendimiento. ¡También
+                hace que el juego se vea más limpio!
         clearCursorOnDeleteWhilePlacing:
             title: Limpiar el cursos al apretar click derecho
             description: Activado por defecto, Limpia el cursor al hacer click derecho
@@ -888,33 +883,35 @@ settings:
                 un edificio.
         lowQualityTextures:
             title: Texturas de baja calidad (Feo)
-            description: Usa texturas de baja calidad para mejorar el rendimiento. ¡Esto hará que el
-                juego se vea muy feo!
+            description: Usa texturas de baja calidad para mejorar el rendimiento. ¡Esto
+                hará que el juego se vea muy feo!
         displayChunkBorders:
             title: Mostrar bordes de chunk
-            description: Este juego está dividido en chunks de 16x16 cuadrados, si esta opción es
-                habilitada los bordes de cada chunk serán mostrados.
+            description: Este juego está dividido en chunks de 16x16 cuadrados, si esta
+                opción es habilitada los bordes de cada chunk serán mostrados.
         pickMinerOnPatch:
             title: Elegír el minero en la veta de recursos
-            description: Activado pir defecto, selecciona el minero si usas el cuentagotas sobre
-                una veta de recursos.
+            description: Activado pir defecto, selecciona el minero si usas el cuentagotas
+                sobre una veta de recursos.
         simplifiedBelts:
             title: Cintas trasportadoras simplificadas (Feo)
-            description: No rederiza los items en las cintas trasportadoras exceptuando al pasar el cursor sobre la cinta para mejorar
-                el rendimiento. No recomiendo jugar con esta opcion activada
-                a menos que necesites fuertemente mejorar el rendimiento.
+            description: No rederiza los items en las cintas trasportadoras exceptuando al
+                pasar el cursor sobre la cinta para mejorar el rendimiento. No
+                recomiendo jugar con esta opcion activada a menos que necesites
+                fuertemente mejorar el rendimiento.
         enableMousePan:
             title: Habilitar movimiento con mouse
             description: Te permite mover el mapa moviendo el cursor hacia los bordes de la
-                pantalla. La velocidad depende de la opción de velocidad de movimiento.
+                pantalla. La velocidad depende de la opción de velocidad de
+                movimiento.
         zoomToCursor:
             title: Hacer zoom donde está el cursor
-            description: Si se activa, se hará zoom en al dirección donde esté tu cursor,
-                a diferencia de hacer zoom en el centro de la pantalla.
+            description: Si se activa, se hará zoom en al dirección donde esté tu cursor, a
+                diferencia de hacer zoom en el centro de la pantalla.
         mapResourcesScale:
             title: Tamaño de recursos en el mapa
-            description: Controla el tamaño de los recursos en la vista de aerea del mapa (Al hacer zoom
-                minimo).
+            description: Controla el tamaño de los recursos en la vista de aerea del mapa
+                (Al hacer zoom minimo).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado
@@ -989,6 +986,10 @@ keybindings:
         comparator: Comparador
         item_producer: Productor de items (Sandbox)
         copyWireValue: "Cables: Copiar valor bajo el cursos"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Sobre el juego
     body: >-
@@ -1020,54 +1021,73 @@ tips:
     - Si apilar las formas no funciona, intenta intercambiar las entradas.
     - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
     - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
-    - Las proporciones siempre serán las mismas. Siempre y cuando todas las mejoras estén al mismo nivel.
+    - Las proporciones siempre serán las mismas. Siempre y cuando todas las
+      mejoras estén al mismo nivel.
     - La ejecución en serie es más eficiente que la paralela.
     - ¡Desbloquearás más variantes de edificios más adelante en el juego!
     - Puedes usar <b>T</b> para cambiar entre diferentes variantes.
     - ¡La simetría es clave!
     - Los túneles de diferentes niveles pueden cruzarse entre sí
     - Intenta construir fábricas compactas - ¡Me lo agradecerás luego!
-    - El pintor tiene una variante en espejo que puedes seleccionar con la técla <b>T</b>
+    - El pintor tiene una variante en espejo que puedes seleccionar con la técla
+      <b>T</b>
     - Tener una buena proporción entre edificion maximizará su eficiencia
-    - A su máximo nivel, 5 extractores llenarán por completo una cinta trasnportadora.
+    - A su máximo nivel, 5 extractores llenarán por completo una cinta
+      trasnportadora.
     - ¡No te olvides de utilizár túneles!
-    - No es necesario dividir los items de manera uniforme para conseguír la mayor eficiencia.
-    - Mantener apretado <b>SHIFT</b> activará el planeador de cintas, permitiendote poner
-      largas lineas de cintas fácilmente.
+    - No es necesario dividir los items de manera uniforme para conseguír la
+      mayor eficiencia.
+    - Mantener apretado <b>SHIFT</b> activará el planeador de cintas,
+      permitiendote poner largas lineas de cintas fácilmente.
     - Los cortadores siempre cortan verticalmente, sin importar su orientación.
     - Para obtener blanco solo mexcla todos los colores.
     - El buffer de almacenamiento prioriza la primera salida.
     - Invierte tiempo en construir diseños repetibles, ¡vale la pena!
     - Mantener apretado <b>CTRL</b> te permite poner varios edificios a la vez.
-    - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las cintas.
+    - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las
+      cintas.
     - ¡La eficiencia es la clave!
-    - Mientras más lejos del HUB estés más complejas serán las formas que te encuentres.
-    - Las máquinas tienen una velocidad limitada, divídelas para una máxima eficiencia.
+    - Mientras más lejos del HUB estés más complejas serán las formas que te
+      encuentres.
+    - Las máquinas tienen una velocidad limitada, divídelas para una máxima
+      eficiencia.
     - Usa balanceadores para maximizar tu eficiencia.
-    - La organización es importante. Trate de no cruzar demasiado las cintas transportadoras.
+    - La organización es importante. Trate de no cruzar demasiado las cintas
+      transportadoras.
     - ¡Planea con anticipación, o será un gran caos!
-    - ¡No saques tus viejas fábricas! Las necesitararás para desbloquear nuevas mejoras.
+    - ¡No saques tus viejas fábricas! Las necesitararás para desbloquear nuevas
+      mejoras.
     - ¡Intenta superar el nivel 20 por tu cuenta antes de buscar ayuda!
     - No compliques las cosas, intenta mantenerlo simple y llegarás lejos.
-    - Puede que tengas que reutilizar las fábricas más tarde en el juego. Planea tus fábricas para que sean reutilizables.
-    - A veces puedes encontrar la forma que necesitas en el mapa sin la necesidad de usar apiladores.
+    - Puede que tengas que reutilizar las fábricas más tarde en el juego. Planea
+      tus fábricas para que sean reutilizables.
+    - A veces puedes encontrar la forma que necesitas en el mapa sin la
+      necesidad de usar apiladores.
     - Los molinillos no pueden aparecer enteros naturalmente.
     - Colorear las formas antes de cortarlas para una máxima eficiencia.
-    - Con los módulos, el espacio es sólo una percepción; una preocupación para los mortales.
+    - Con los módulos, el espacio es sólo una percepción; una preocupación para
+      los mortales.
     - Haz una fábrica para planos separada. Son importantes para los módulos.
-    - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas serán respondidas.
+    - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas
+      serán respondidas.
     - Usa <b>CTRL</b> + Click izquierdo para seleccionar un área.
-    - Construir demasiado cerca del HUB puede interponerse en el camino de proyectos a futuro.
-    - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a la pantalla.
+    - Construir demasiado cerca del HUB puede interponerse en el camino de
+      proyectos a futuro.
+    - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a
+      la pantalla.
     - ¡Mezcla todos los colores primarios para obtener blanco!
     - Tienes un mapa infinito, no te agobies tu fábrica, ¡expande!
     - ¡Prueba también Factorio! Es mi juego favorito.
-    - ¡El cortador cuádruple corta en el sentido de las agujas del reloj empezando por la parte superior derecha!
+    - ¡El cortador cuádruple corta en el sentido de las agujas del reloj
+      empezando por la parte superior derecha!
     - ¡Puedes descargar tus archivos de guardado en el menú principal!
-    - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la página de ajustes.
+    - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la
+      página de ajustes.
     - Este juego tiene muchos ajustes, ¡asegúrate de revisarlos!
     - ¡El marcador de tu HUB tiene una pequeña brújula para indicar su dirección!
-    - Para despejar las cintas transportadoras, corta el área y luego pégala en el mismo lugar.
+    - Para despejar las cintas transportadoras, corta el área y luego pégala en
+      el mismo lugar.
     - Presiona F4 para mostrar tu FPS y Tick Rate.
-    - Presiona F4 dos veces para mostrar las coordenadas de tu ratón y de la cámara.
+    - Presiona F4 dos veces para mostrar las coordenadas de tu ratón y de la
+      cámara.
     - Puedes hacer clic en una forma fijada en el lado izquierdo para desfijarla.

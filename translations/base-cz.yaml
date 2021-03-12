@@ -5,46 +5,19 @@ steamPage:
     intro: >-
         Máte rádi automatizaci? Tak to jste na správném místě!
 
-        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají
-        stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
+        shapez.io je relaxační hra, ve které musíte stavět továrny na automatizaci výroby geometrických tvarů. Jak se zvyšuje úroveň, tvary se stávají stále složitějšími a vy se musíte rozšířit po nekonečné mapě.
 
-        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco
-        na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
+        A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
 
         Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
-    title_advantages: Výhody samostatné verze hry
-    advantages:
-        - <b>12 Nových úrovní</b> z celkových 26 úrovní
-        - <b>18 Nových budov</b> pro plně automatizovanou továrnu!
-        - <b>20 Řad vylepšení</b> pro mnoho hodin zábavy!
-        - <b>Wires Update</b> pro zcela novou dimenzi!
-        - <b>Tmavý mód</b>!
-        - Neomezený počet uložených her
-        - Neomezené značky
-        - Podpořte mě! ❤️
-    title_future: Plánovaný obsah
-    planned:
-        - Blueprintová knihovna
-        - Steam Achievements
-        - Puzzle mód
-        - Minimapa
-        - Módy
-        - Sandbox mód
-        - ... a mnohem více!
-    title_open_source: Tato hra je open source!
-    text_open_source: >-
-        Kdokoli může přispět, jsem aktivně zapojený do komunity, pokouším se
-        zkontrolovat všechny návrhy a vzít v úvahu zpětnou vazbu všude, kde je
-        to možné.
-
-        Nezapomeňte se podívat na můj trello board pro kompletní plán!
-    title_links: Odkazy
-    links:
-        discord: Oficiální Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Zdrojový kód (GitHub)
-        translate: Pomozte přeložit hru!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Načítání
     error: Chyba
@@ -200,12 +173,11 @@ dialogs:
         desc: Zde můžete přejmenovat svoji uloženou hru.
     tutorialVideoAvailable:
         title: Dostupný tutoriál
-        desc: Pro tuto úroveň je k dispozici tutoriál! Chtěli byste se na
-            něj podívat?
+        desc: Pro tuto úroveň je k dispozici tutoriál! Chtěli byste se na něj podívat?
     tutorialVideoAvailableForeignLanguage:
         title: Dostupný tutoriál
-        desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný
-            pouze v angličtině. Chtěli byste se na něj podívat?
+        desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný pouze v
+            angličtině. Chtěli byste se na něj podívat?
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -291,8 +263,8 @@ ingame:
     interactiveTutorial:
         title: Tutoriál
         hints:
-            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště <strong>kruhového
-                tvaru</strong> a vytěžte jej!
+            1_1_extractor: Umístěte <strong>extraktor</strong> na naleziště
+                <strong>kruhového tvaru</strong> a vytěžte jej!
             1_2_conveyor: "Připojte extraktor pomocí <strong>dopravníkového pásu</strong> k
                 vašemu HUBu!<br><br>Tip: <strong>Klikněte a táhněte</strong>
                 myší pro položení více pásů!"
@@ -300,22 +272,23 @@ ingame:
                 a pásy, abyste dosáhli cíle rychleji.<br><br>Tip: Chcete-li
                 umístit více extraktorů, podržte <strong>SHIFT</strong>. Pomocí
                 <strong>R</strong> je můžete otočit."
-            2_1_place_cutter: "Teď umístěte <strong>pilu</strong> k rozřezání kruhového tvaru na dvě
-                poloviny!<br><br> PS: Pila řeže tvary vždy <strong>svisle na
-                poloviny</strong> bez ohledu na její orientaci."
-            2_2_place_trash:
-                Pila se může <strong>zaseknout a zastavit vaši produkci</strong>!<br><br> Použijte
-                <strong>koš</strong> ke smazání (!) nepotřebných
-                částí tvarů.
-            2_3_more_cutters: "Dobrá práce! Teď postavte <strong>více pil</strong> pro zrychlení
-                tohoto pomalého procesu!<br><br> PS: Použijte <strong>0-9
-                na klávesnici</strong> pro rychlejší přístup k budovám!"
+            2_1_place_cutter: "Teď umístěte <strong>pilu</strong> k rozřezání kruhového
+                tvaru na dvě poloviny!<br><br> PS: Pila řeže tvary vždy
+                <strong>svisle na poloviny</strong> bez ohledu na její
+                orientaci."
+            2_2_place_trash: Pila se může <strong>zaseknout a zastavit vaši
+                produkci</strong>!<br><br> Použijte <strong>koš</strong> ke
+                smazání (!) nepotřebných částí tvarů.
+            2_3_more_cutters: "Dobrá práce! Teď postavte <strong>více pil</strong> pro
+                zrychlení tohoto pomalého procesu!<br><br> PS: Použijte
+                <strong>0-9 na klávesnici</strong> pro rychlejší přístup k
+                budovám!"
             3_1_rectangles: "Teď vytěžte nějaké obdélníkové tvary! <strong>Postavte 4
-                extraktory</strong> a připojte je k HUBu.<br><br> PS:
-                Podržením klávesy <strong>SHIFT</strong> a tažením pásu aktivujete
+                extraktory</strong> a připojte je k HUBu.<br><br> PS: Podržením
+                klávesy <strong>SHIFT</strong> a tažením pásu aktivujete
                 plánovač pásů!"
-            21_1_place_quad_painter: Postavte <strong>čtyřnásobný barvič</strong> a získejte nějaké
-                <strong>kruhové tvary</strong>, <strong>bílou</strong> a
+            21_1_place_quad_painter: Postavte <strong>čtyřnásobný barvič</strong> a získejte
+                nějaké <strong>kruhové tvary</strong>, <strong>bílou</strong> a
                 <strong>červenou</strong> barvu!
             21_2_switch_to_wires: Změňte vrstvy na vrstvu kabelů stisknutím klávesy
                 <strong>E</strong>!<br><br> Pak <strong>připojte všechny čtyři
@@ -357,9 +330,6 @@ ingame:
             buildings:
                 title: 18 Nových budov
                 desc: Plně automatizujte svou továrnu!
-            savegames:
-                title: ∞ Uložených her
-                desc: Tolik, kolik vaše srdce touží!
             upgrades:
                 title: ∞ vylepšení
                 desc: Tato demo verze má pouze 5!
@@ -375,6 +345,9 @@ ingame:
             support:
                 title: Podpořte mě
                 desc: Vyvíjím to ve svém volném čase!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Pásy, distribuce a tunely
@@ -611,9 +584,9 @@ storyRewards:
             budovami a pásy.
     reward_rotater_ccw:
         title: Otáčení II
-        desc: Odemkli jste variantu <strong>rotoru</strong> - Umožňuje vám otáčet
-            proti směru hodinových ručiček. Vyberte rotor a <strong>zmáčkněte
-            'T' pro přepnutí mezi variantami</strong>!
+        desc: Odemkli jste variantu <strong>rotoru</strong> - Umožňuje vám otáčet proti
+            směru hodinových ručiček. Vyberte rotor a <strong>zmáčkněte 'T' pro
+            přepnutí mezi variantami</strong>!
     reward_miner_chainable:
         title: Řetězový extraktor
         desc: "Právě jste odemkli <strong>řetězový extraktor</strong>! Může
@@ -641,12 +614,13 @@ storyRewards:
     reward_freeplay:
         title: Volná hra
         desc: Zvládli jste to! Odemkli jste <strong>mód volné hry</strong>! To znamená,
-            že od teď budou tvary <strong>náhodně</strong> generovány!<br><br> Vzhledem k
-            tomu, že Hub nadále potřebuje <strong>propustnost</strong>,
-            především doporučuji postavit továrnu, která automaticky doručí
-            požadovaný tvar!<br><br> Hub vysílá požadovaný tvar na vrstvu
-            kabelů, takže jediné co musíte udělat, je analyzovat tvar a
-            automaticky nastavit svou továrnu dle této analýzy.
+            že od teď budou tvary <strong>náhodně</strong> generovány!<br><br>
+            Vzhledem k tomu, že Hub nadále potřebuje
+            <strong>propustnost</strong>, především doporučuji postavit továrnu,
+            která automaticky doručí požadovaný tvar!<br><br> Hub vysílá
+            požadovaný tvar na vrstvu kabelů, takže jediné co musíte udělat, je
+            analyzovat tvar a automaticky nastavit svou továrnu dle této
+            analýzy.
     reward_blueprints:
         title: Plány
         desc: Nyní můžete <strong>kopírovat a vkládat</strong> části továrny! Vyberte
@@ -656,8 +630,8 @@ storyRewards:
             (Jsou to ty které jste právě dodali).
     no_reward:
         title: Další úroveň
-        desc: "Tato úroveň vám nic neodemkla, ale s další to přijde! <br><br> PS:
-            Radši neničte vaše stávající továrny - budete potřebovat
+        desc: "Tato úroveň vám nic neodemkla, ale s další to přijde! <br><br> PS: Radši
+            neničte vaše stávající továrny - budete potřebovat
             <strong>všechny</strong> produkované tvary později na
             <strong>odemčení vylepšení</strong>!"
     no_reward_freeplay:
@@ -665,8 +639,8 @@ storyRewards:
         desc: Gratuluji! Mimochodem, více obsahu najdete v plné verzi!
     reward_balancer:
         title: Vyvažovač
-        desc: Multifunkční <strong>vyvažovač</strong> byl odemknut - Může
-            být použit ke zvětšení vašich továren <strong>rozdělováním a spojováním
+        desc: Multifunkční <strong>vyvažovač</strong> byl odemknut - Může být použit ke
+            zvětšení vašich továren <strong>rozdělováním a spojováním
             předmětů</strong> na několik pásu!
     reward_merger:
         title: Kompaktní spojovač
@@ -717,10 +691,10 @@ storyRewards:
         desc: "Právě jste odemkli <strong>vrstvu kabelů</strong>: Je to samostatná
             vrstva navíc oproti běžné vrstvě a představuje spoustu nových
             možností!<br><br> Do začátku jsem zpřístupnil <strong>čtyřnásobný
-            barvič</strong> - Připojte vstupy, které byste chtěli obarvit
-            na vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
-            <strong>E</strong>. <br><br> PS: <strong>Aktivujte nápovědy</strong> v
-            nastavení pro spuštění tutoriálu o kabelech!"
+            barvič</strong> - Připojte vstupy, které byste chtěli obarvit na
+            vrstvě kabelů!<br><br> Pro přepnutí mezi vrstvami stiskněte klávesu
+            <strong>E</strong>. <br><br> PS: <strong>Aktivujte nápovědy</strong>
+            v nastavení pro spuštění tutoriálu o kabelech!"
     reward_filter:
         title: Filtr předmětů
         desc: Právě jste odemkli <strong>filtr předmětů</strong>! Nasměruje předměty buď
@@ -794,8 +768,9 @@ settings:
                 SHIFT.
         offerHints:
             title: Tipy & Nápovědy
-            description: Pokud bude zapnuté, budou se ve hře zobrazovat tipy a nápovědy. Také
-                skryje určité elementy na obrazovce pro jednodušší osvojení hry.
+            description: Pokud bude zapnuté, budou se ve hře zobrazovat tipy a nápovědy.
+                Také skryje určité elementy na obrazovce pro jednodušší osvojení
+                hry.
         movementSpeed:
             title: Rychlost kamery
             description: Mění, jak rychle se kamera posouvá při použití klávesnice.
@@ -862,8 +837,8 @@ settings:
             title: Uvolní kurzor při kliknutím pravým tlačítkem
             description: Povoleno dle výchozího nastavení, uvolní kurzor pokaždé co kliknete
                 pravým tlačítkem, když máte budovu vybranou pro pokládání. Při
-                vypnutí, můžete smazat budovy při kliknutí pravým tlačítkem spolu
-                s položením dalších budov.
+                vypnutí, můžete smazat budovy při kliknutí pravým tlačítkem
+                spolu s položením dalších budov.
         lowQualityTextures:
             title: Nižší kvalita textur (Horší vzhled)
             description: Používá nižší kvalitu textur pro zlepšení výkonu. Toto nastavení
@@ -887,12 +862,11 @@ settings:
                 obrazovky. Rychlost záleží na nastavení rychlosti pohybu.
         zoomToCursor:
             title: Přiblížení ke kurzoru
-            description: Při zapnutí dojde k přibližování ve směru polohy
-                kurzoru, jinak ve středu obrazovky.
+            description: Při zapnutí dojde k přibližování ve směru polohy kurzoru, jinak ve
+                středu obrazovky.
         mapResourcesScale:
             title: Velikost zdrojů na mapě
-            description: Určuje velikost ikon tvarů na náhledu mapy (při
-                oddálení).
+            description: Určuje velikost ikon tvarů na náhledu mapy (při oddálení).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klávesové zkratky
@@ -967,22 +941,24 @@ keybindings:
         comparator: Porovnávač
         item_producer: Výrobník předmětů (Sandbox)
         copyWireValue: "Kabely: Zkopírovat hodnotu pod kurzorem"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: O hře
     body: >-
-        Tato hra je open source. Je vyvíjená <a
-        href="https://github.com/tobspr" target="_blank">Tobiasem Springerem</a>
-        (česky neumí, ale je fakt frajer :) ).<br><br>
+        Tato hra je open source. Je vyvíjená <a href="https://github.com/tobspr"
+        target="_blank">Tobiasem Springerem</a> (česky neumí, ale je fakt frajer
+        :) ).<br><br>
 
         Pokud se chceš na hře podílet, podívej se na <a href="<githublink>" target="_blank">shapez.io na githubu</a>.<br><br>
 
-        Tato hra by nebyla možná ani bez skvělé Discord komunity okolo Tobiasových her - Vážně by ses měl přijít mrknout na
-        <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        Tato hra by nebyla možná ani bez skvělé Discord komunity okolo Tobiasových her - Vážně by ses měl přijít mrknout na <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
         Soundtrack udělal <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Je úžasnej.<br><br>
 
-        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi
-        <a href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených u Factoria by tato hra nikdy neexistovala.
+        V neposlední řadě by Tobias (já jen tlumočím) rád poděkoval skvělému kamarádovi <a href="https://github.com/niklas-dahl" target="_blank">Niklasi</a> - Bez hodin strávených u Factoria by tato hra nikdy neexistovala.
 changelog:
     title: Seznam změn
 demo:

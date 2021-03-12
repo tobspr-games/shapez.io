@@ -14,40 +14,14 @@ steamPage:
         Początkowo przekształcanie kształtów będzie proste, ale później będziesz również musiał je malować - wymaga to wydobywania i łączenia barwników!
 
         Kupienie gry w serwisie Steam przyznaje Ci dostęp do pełnej wersji, ale możesz również skorzystać z wersji demonstracyjnej na strone shapez.io i rozważyć zakup później!
-    title_advantages: Korzyści wersji pełnej
-    advantages:
-        - <b>12 Nowych poziomów</b> (razem 26 poziomów)s
-        - <b>18 Nowych budynków</b> umożliwiających zbudowanie całkowicie
-          automatycznej fabryki!
-        - <b>20 Poziomów ulepszeń</b> zapewniających wiele godzin zabawy!
-        - <b>Aktualizacja z przewodami</b> dodająca całkowicie nowy wymiar!
-        - <b>Tryb Ciemny</b>!
-        - Nielimitowane zapisy gry
-        - Nielimitowane znaczniki
-        - Wspomóż mnie! ❤️
-    title_future: Planowane funkcje
-    planned:
-        - Biblioteka schematów (Tylko dla Wersji pełnej)
-        - Osiągniecia
-        - Tryb zagadek
-        - Minimapa
-        - Modyfikacje
-        - Tryb piaskownicy
-        - ... i wiele więcej!
-    title_open_source: Ta gra jest open-source!
-    title_links: Linki
-    links:
-        discord: Oficjalny serwer Discord
-        roadmap: Plany gry
-        subreddit: Reddit
-        source_code: Kod źródłowy (GitHub)
-        translate: Pomóż w tłumaczeniu
-    text_open_source: >-
-        Każdy może pomóc w tworzeniu gry, jestem aktywny wśród społeczności i
-        próbuję odbierać wszystkie sugestie i brać je pod uwagę, gdzie tylko
-        jest to możliwe.
-
-        Sprawdź moją tablicę Trello, by zobaczyć moje dalsze plany!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Ładowanie
     error: Wystąpił błąd
@@ -186,8 +160,8 @@ dialogs:
             wersję gry dla nielimitowanych znaczników!
     massCutConfirm:
         title: Potwierdź wycinanie
-        desc: Wycinasz sporą ilość maszyn (<count> w roli ścisłości)! Czy na pewno chcesz
-            kontynuować?
+        desc: Wycinasz sporą ilość maszyn (<count> w roli ścisłości)! Czy na pewno
+            chcesz kontynuować?
     exportScreenshotWarning:
         title: Tworzenie zrzutu fabryki
         desc: Zamierzasz wyeksportować swoją fabrykę jako zrzut ekranu. W przypadku
@@ -211,7 +185,8 @@ dialogs:
         desc: Dla tego poziomu dostępny jest video tutorial. Chcesz go obejrzeć?
     tutorialVideoAvailableForeignLanguage:
         title: Dostępny tutorial
-        desc: Dla tego poziomu dostępny jest video tutorial w języku angielskim. Chcesz go obejrzeć?
+        desc: Dla tego poziomu dostępny jest video tutorial w języku angielskim. Chcesz
+            go obejrzeć?
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -317,33 +292,34 @@ ingame:
                 budynku!<br><br>PS: <strong>Kliknij i przeciągnij</strong>
                 taśmociąg myszką!"
             1_3_expand: 'To <strong>NIE JEST</strong> gra "do poczekania"! Buduj więcej
-                taśmociągów i ekstraktorów, by wydobywać
-                szybciej.<br><br>PS: Przytrzymaj <strong>SHIFT</strong>, by
-                postawić wiele ekstraktorów. Naciśnij <strong>R</strong>, by je
-                obracać.'
-            2_1_place_cutter: "Teraz umieść <strong>przecinak</strong> aby przeciąć koła na dwie
-                połowy!<br><br> PS: Przecinak zawsze tnie <strong>pionowo</strong>
-                niezależnie od swojej orientacji."
-            2_2_place_trash: Przecinak może się <strong>zapchać i zablokować</strong>!<br><br> Użyj
-                <strong>śmietnik</strong> aby usunąć obecnie (!) nie potrzebne elementy.
-            2_3_more_cutters:
-                "Dobra robota! Teraz umieść <strong>2 kolejne przecinaki</strong>,aby przyspieszyć
-                ten wolny proces!<br><br> PS: Użyj <strong>klawiszy 0-9</strong>,
-                aby szybciej uzyskać dostęp do budynków!"
+                taśmociągów i ekstraktorów, by wydobywać szybciej.<br><br>PS:
+                Przytrzymaj <strong>SHIFT</strong>, by postawić wiele
+                ekstraktorów. Naciśnij <strong>R</strong>, by je obracać.'
+            2_1_place_cutter: "Teraz umieść <strong>przecinak</strong> aby przeciąć koła na
+                dwie połowy!<br><br> PS: Przecinak zawsze tnie
+                <strong>pionowo</strong> niezależnie od swojej orientacji."
+            2_2_place_trash: Przecinak może się <strong>zapchać i
+                zablokować</strong>!<br><br> Użyj <strong>śmietnik</strong> aby
+                usunąć obecnie (!) nie potrzebne elementy.
+            2_3_more_cutters: "Dobra robota! Teraz umieść <strong>2 kolejne
+                przecinaki</strong>,aby przyspieszyć ten wolny proces!<br><br>
+                PS: Użyj <strong>klawiszy 0-9</strong>, aby szybciej uzyskać
+                dostęp do budynków!"
             3_1_rectangles: "Teraz wydobądź kilka kwadratów! <strong>Wybuduj
-                ekstraktory</strong> i połącz je do głównego budynku.<br><br> PS:
-                Przytrzymaj <strong>SHIFT</strong> i przeciągnij taśmociąg, aby uruchomić
-                planer taśmociągu!"
-            21_1_place_quad_painter: Umieść <strong>malarz poczwórny</strong> i wykonaj kilka
-                biało-czerwonych kółek!
+                ekstraktory</strong> i połącz je do głównego budynku.<br><br>
+                PS: Przytrzymaj <strong>SHIFT</strong> i przeciągnij taśmociąg,
+                aby uruchomić planer taśmociągu!"
+            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
+                <strong>circles</strong>, <strong>white</strong> and
+                <strong>red</strong> color!
             21_2_switch_to_wires: Przełącz się na warstwę przewodów wciskając
-                <strong>E</strong>!<br><br> Następnie <strong>połącz wszystkie cztery
-                wejścia</strong> malarza przewodem!
-            21_3_place_button: Świetnie! Teraz umieść <strong>Przełącznik</strong> i połącz go
-                z przewodem!
+                <strong>E</strong>!<br><br> Następnie <strong>połącz wszystkie
+                cztery wejścia</strong> malarza przewodem!
+            21_3_place_button: Świetnie! Teraz umieść <strong>Przełącznik</strong> i połącz
+                go z przewodem!
             21_4_press_button: "Wciśnij przełącznik aby <strong>emitował sygnał
-                Prawda</strong> i aktywował malarza.<br><br> PS: Nie
-                musisz łączyć wszystkich wejść! Spróbuj połączyć tylko dwa."
+                Prawda</strong> i aktywował malarza.<br><br> PS: Nie musisz
+                łączyć wszystkich wejść! Spróbuj połączyć tylko dwa."
     connectedMiners:
         one_miner: 1 ekstraktor
         n_miners: <amount> ekstraktorów
@@ -362,9 +338,6 @@ ingame:
             buildings:
                 title: 18 Nowych Budynków
                 desc: W pełni zautomatyzuj produkcję!
-            savegames:
-                title: ∞ Zapisów Gry
-                desc: Twórz tyle, ile potrzebujesz!
             upgrades:
                 title: ∞ Poziomów Ulepszeń
                 desc: To demo posiada tylko 5!
@@ -380,6 +353,9 @@ ingame:
             support:
                 title: Wspomóż mnie
                 desc: Tworzę tą grę w swoim wolnym czasie!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Taśmociągi, Dystrybutory & Tunele
@@ -459,9 +435,9 @@ buildings:
                 kształty używając 1 barwnika.
         quad:
             name: Malarz (Poczwórny)
-            description: Pozwala pomalować każdą ćwiartkę osobno. Tylko
-                sloty z podłączonym <strong>sygnałem "Prawda"</strong> w warstwie przewodów
-                będą malowane!
+            description: Pozwala pomalować każdą ćwiartkę osobno. Tylko sloty z podłączonym
+                <strong>sygnałem "Prawda"</strong> w warstwie przewodów będą
+                malowane!
         mirrored:
             name: Malarz
             description: Koloruje kształt za pomocą koloru dostarczonego od boku.
@@ -696,9 +672,9 @@ storyRewards:
             pełnej!
     reward_balancer:
         title: Dystrybutor
-        desc: Wielofunkcyjny <strong>dystrybutor</strong> został odblokowany - Może
-            być wykorzystany przy budowaniu większych fabryk do <strong>łączenia i dzielenia
-            przedmiotów</strong> na kilku taśmociągach!
+        desc: Wielofunkcyjny <strong>dystrybutor</strong> został odblokowany - Może być
+            wykorzystany przy budowaniu większych fabryk do <strong>łączenia i
+            dzielenia przedmiotów</strong> na kilku taśmociągach!
     reward_merger:
         title: Kompaktowy łącznik
         desc: Właśnie odblokowałeś <strong>łącznik</strong> - typ
@@ -712,8 +688,8 @@ storyRewards:
             użyteczny!
     reward_rotater_180:
         title: Obracacz (180°)
-        desc: Właśnie odblokowałeś kolejny wariant <strong>obrazacza</strong>! -
-            Pozwala ci na obrócenie kształtu o 180 stopni!
+        desc: Właśnie odblokowałeś kolejny wariant <strong>obrazacza</strong>! - Pozwala
+            ci na obrócenie kształtu o 180 stopni!
     reward_display:
         title: Wyświetlacz
         desc: "Właśnie odblokowałeś <strong>Wyświetlacz</strong> - Podłącz sygnał na
@@ -747,19 +723,20 @@ storyRewards:
     reward_wires_painter_and_levers:
         title: Przewody i poczwórny malarz
         desc: "Właśnie odblokowałeś <strong>Warstwę Przewodów</strong>: Jest to osobna
-            warstwa powyżej zwykłej warstwy i wprowadza wiele nowych możliwości.<br><br>
-            Na początku odblokowałem dla Ciebie <strong>Poczwórnego Malarza</strong>
-            - Podłącz ćwiartki, które chcesz pomalować, na warstwie przewodów!!<br><br>
-            Aby przełączyć się na warstwę przewodów, wciśnij
-            <strong>E</strong>. <br><br> PS: <strong>Włącz podpowiedzi</strong> w
-            ustawieniach, aby aktywować samouczek przewodów!"
+            warstwa powyżej zwykłej warstwy i wprowadza wiele nowych
+            możliwości.<br><br> Na początku odblokowałem dla Ciebie
+            <strong>Poczwórnego Malarza</strong> - Podłącz ćwiartki, które
+            chcesz pomalować, na warstwie przewodów!!<br><br> Aby przełączyć się
+            na warstwę przewodów, wciśnij <strong>E</strong>. <br><br> PS:
+            <strong>Włącz podpowiedzi</strong> w ustawieniach, aby aktywować
+            samouczek przewodów!"
     reward_filter:
         title: Filtr przedmiotów
         desc: Właśnie odblokowałeś <strong>Filtr Przedmiotów</strong>! Będzie on
-            przekierowywał przedmioty do górnego lub prawego wyjścia, zależnie od
-            tego, czy pasują one do sygnału z warstwy przewodów.<br><br> Możesz
-            również przekazać sygnał typu Prawda/Fałsz, by całkowicie go włączyć
-            lub wyłączyć.
+            przekierowywał przedmioty do górnego lub prawego wyjścia, zależnie
+            od tego, czy pasują one do sygnału z warstwy przewodów.<br><br>
+            Możesz również przekazać sygnał typu Prawda/Fałsz, by całkowicie go
+            włączyć lub wyłączyć.
     reward_demo_end:
         title: Koniec wersji demo
         desc: Dotarłeś do końca wersji demo!
@@ -898,8 +875,8 @@ settings:
                 budynki podczas budowania używając tego samego przycisku.
         lowQualityTextures:
             title: Tekstury niskiej jakości (Brzydkie)
-            description: Używa niskiej jakości tekstur, by zwiększyć wydajność. Spowoduje to,
-                że gra będzie wyglądać bardzo brzydko!
+            description: Używa niskiej jakości tekstur, by zwiększyć wydajność. Spowoduje
+                to, że gra będzie wyglądać bardzo brzydko!
         displayChunkBorders:
             title: Wyświetl granice obszarów
             description: Gra jest podzielona na obszary o wielkości 16x15 kratek. Włączenie
@@ -923,7 +900,8 @@ settings:
             description: Powiększ w kierunku pozycji kursora myszylub do środka ekranu.
         mapResourcesScale:
             title: Rozmiar mapy zasobów
-            description: Steruje rozmiarem kształtów w przeglądzie mapy (podczas pomniejszenia).
+            description: Steruje rozmiarem kształtów w przeglądzie mapy (podczas
+                pomniejszenia).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Klawiszologia
@@ -998,6 +976,10 @@ keybindings:
         comparator: Porównywacz
         item_producer: Producent Przedmiotów (Tryb Piaskownicy)
         copyWireValue: "Przewody: Skopiuj wartość pod kursorem"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: O Grze
     body: 'Ta gra jest open-source. Rozwijana jest przez <a

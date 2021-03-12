@@ -8,38 +8,14 @@ steamPage:
         심지어 그것만으로는 충분하지 않을 겁니다. 수요는 기하급수적으로 늘어나게 될 것이고, 더욱 복잡한 도형을 더욱 많이 생산하여야 하므로, 유일하게 도움이 되는 것은 끊임없이 확장을 하는 것입니다! 처음에는 단순한 도형만을 만들지만, 나중에는 색소를 추출하고 혼합하여 도형에 색칠을 해야 합니다!
 
         Steam에서 게임을 구매하여 정식 버전의 콘텐츠를 사용하실 수 있지만, 먼저 Shapez.io의 체험판 버전을 플레이해보시고 구매를 고려하셔도 됩니다!
-    title_advantages: 정식 버전의 장점
-    advantages:
-        - <b>새로운 12 레벨</b>의 추가로 총 26레벨까지
-        - 완벽한 자동화를 위한 <b>새로운 18개의 건물</b>!
-        - <b>20 티어 업그레이드</b>로 오랫동안 즐겨보세요!
-        - <b>전선 업데이트</b>로 완전히 새로운 차원을 접해보세요!
-        - <b>다크 모드</b>!
-        - 무한한 세이브 파일
-        - 무한한 마커
-        - 저를 지원해주세요! ❤️
-    title_future: 계획된 콘텐츠
-    planned:
-        - 청사진 라이브러리
-        - Steam 도전과제
-        - 퍼즐 모드
-        - 미니맵
-        - 모드
-        - 샌드박스 모드
-        - ... 그리고 더 다양한 것까지!
-    title_open_source: 이 게임은 오픈 소스입니다!
-    title_links: 링크
-    links:
-        discord: 공식 Discord
-        roadmap: 로드맵
-        subreddit: Subreddit
-        source_code: 소스 코드 (GitHub)
-        translate: 번역에 도움주세요
-    text_open_source: >-
-        누구나 번역에 기여하실 수 있으며, 저는 커뮤니티에서 적극적으로 참여하여 모든 제안을 검토하고 가능한 모든 피드백도 고려하고자
-        합니다.
-
-        모든 로드맵을 보시려면 저의 trello 보드를 참고해주세요.
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: 불러오는 중
     error: 오류
@@ -186,8 +162,7 @@ dialogs:
         desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 보시겠습니까?
     tutorialVideoAvailableForeignLanguage:
         title: 활성화된 튜토리얼
-        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만
-            제공될 것입니다. 보시겠습니까?
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만 제공될 것입니다. 보시겠습니까?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -278,28 +253,25 @@ ingame:
             1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
                 달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
                 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
-            2_1_place_cutter: "이제 <strong>절단기</strong>를 배치하여 원형 도형을 둘로 자르세요!<br><br>
-                추신: 절단기는 방향에 관계 없이 항상 수직으로 자릅니다."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
             2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
-                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을
-                제거하세요.
-            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong>
-                이상 배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여
-                건물을 빠르게 선택할 수 있습니다!"
-            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를
-                배치</strong>하고 허브와 연결하세요.<br><br> 추신: 긴 벨트 한 줄을
-                간단히 만들려면 <strong>SHIFT 키</strong>를 누른 채 드래그하세요!"
+                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을 제거하세요.
+            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong> 이상
+                배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여 건물을
+                빠르게 선택할 수 있습니다!"
+            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를 배치</strong>하고 허브와
+                연결하세요.<br><br> 추신: 긴 벨트 한 줄을 간단히 만들려면 <strong>SHIFT 키</strong>를
+                누른 채 드래그하세요!"
             21_1_place_quad_painter: <strong>4단 색칠기</strong>를 배치하여 <strong>흰색</strong>과
-                <strong>빨간색</strong>이 칠해진 <strong>원형
-                도형</strong>을 만들어보세요!
-            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어
-                로 전환하세요!<br><br> 그 후 색칠기의 <strong>네 입력 부분</strong>을
-                모두 케이블로 연결하세요!
-            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로
-                연결하세요!
-            21_4_press_button: "스위치를 눌러 </strong>참 신호를 내보내<strong>
-                색칠기를 활성화하세요. 추신: 모든 입력을 연결할 필요는 없습니다!
-                지금은 두 개만 연결하세요."
+                <strong>빨간색</strong>이 칠해진 <strong>원형 도형</strong>을 만들어보세요!
+            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어 로 전환하세요!<br><br> 그 후 색칠기의
+                <strong>네 입력 부분</strong>을 모두 케이블로 연결하세요!
+            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로 연결하세요!
+            21_4_press_button: "Press the switch to make it <strong>emit a truthy
+                signal</strong> and thus activate the painter.<br><br> PS: You
+                don't have to connect all inputs! Try wiring only two."
     colors:
         red: 빨간색
         green: 초록색
@@ -332,9 +304,6 @@ ingame:
             buildings:
                 title: 새로운 18개의 건축물
                 desc: 완벽한 자동화된 공장을 위한 건물들입니다!
-            savegames:
-                title: 무한한 세이브 파일
-                desc: 당신이 내키는대로 마음껏 할 수 있습니다!
             upgrades:
                 title: 20 티어까지 확장된 업그레이드
                 desc: 체험판에서는 5 티어까지만 사용할 수 있습니다!
@@ -350,6 +319,9 @@ ingame:
             support:
                 title: 저를 지원해주세요
                 desc: 저는 여가 시간에 게임을 개발합니다!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: 벨트, 밸런서, 터널
@@ -632,9 +604,10 @@ storyRewards:
             있습니다.<br><br> 추신: 벨트 판독기와 저장고가 마지막으로 읽은 아이템을 출력했나요? 디스플레이로 한번 봐보세요!"
     reward_constant_signal:
         title: 일정 신호기
-        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호기</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템
-            선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호기는 <strong>도형</strong>,
-            <strong>색상</strong>, 또는 <strong>불 값</strong> (1 또는 0)을 출력할 수 있습니다.
+        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호기</strong>가 잠금 해제되었습니다! 간단한 예시로,
+            <strong>아이템 선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호기는
+            <strong>도형</strong>, <strong>색상</strong>, 또는 <strong>불 값</strong> (1
+            또는 0)을 출력할 수 있습니다.
     reward_logic_gates:
         title: 논리 회로
         desc: <strong>논리 회로</strong>가 잠금 해제되었습니다! 굳이 흥분할 필요는 없지만, 진짜 멋진 기술입니다!<br><br>
@@ -649,12 +622,13 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "<strong>전선 레이어</strong>가 잠금 해제되었습니다! 전선 레이어는
-            일반 레이어 위에 존재하는 별도의 레이어로, 이를 통한 다양하고 새로운
-            메커니즘을 소개하겠습니다!<br><br> 우선 <strong>4단 색칠기</strong>가
-            잠금 해제되었습니다. 전선 레이어에서 색칠하고 싶은 슬롯에 전선을 연결하세요!
-            전선 레이어로 전환하려면 <strong>E</strong> 키를 누르세요. <br><br>
-            추신: 설정에서 <strong>힌트를 활성화</strong>하여 전선 튜토리얼을 활성화하세요!"
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -875,6 +849,10 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: 게임 정보
     body: >-
