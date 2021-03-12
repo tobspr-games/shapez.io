@@ -109,16 +109,6 @@ export class MainMenuState extends GameState {
                     ${G_CHINA_VERSION ? "" : `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>`}
                 </div>
 
-                ${
-                    G_CHINA_VERSION
-                        ? ""
-                        : `
-                <a class="nftLink boxLink" target="_blank">
-                    shapez.io NFT Tokens
-                    <span class="thirdpartyLogo nftLogo"></span>
-                </a>`
-                }
-
 
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
@@ -261,18 +251,6 @@ export class MainMenuState extends GameState {
             },
             { preventClick: true }
         );
-
-        const nftLink = this.htmlElement.querySelector(".nftLink");
-        if (nftLink) {
-            this.trackClicks(
-                nftLink,
-                () => {
-                    this.app.analytics.trackUiClick("main_menu_link_nft");
-                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.nftTokens);
-                },
-                { preventClick: true }
-            );
-        }
 
         const githubLink = this.htmlElement.querySelector(".githubLink");
         if (githubLink) {
