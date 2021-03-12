@@ -14,7 +14,7 @@ function gulptasksStandalone($, gulp) {
         {
             tempDestDir: path.join(__dirname, "..", "tmp_standalone_files"),
             suffix: "",
-            taskPrefix: "",
+            taskPrefix: ""
         },
         {
             tempDestDir: path.join(__dirname, "..", "tmp_standalone_files_china"),
@@ -27,7 +27,8 @@ function gulptasksStandalone($, gulp) {
         const tempDestBuildDir = path.join(tempDestDir, "built");
 
         gulp.task(taskPrefix + "standalone.prepare.cleanup", () => {
-            return gulp.src(tempDestDir, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
+            return gulp.src(tempDestDir, { read: false, allowEmpty: true })
+                .pipe($.clean({ force: true }));
         });
 
         gulp.task(taskPrefix + "standalone.prepare.copyPrefab", () => {
@@ -41,21 +42,18 @@ function gulptasksStandalone($, gulp) {
                 // https://github.com/gulpjs/gulp/issues/1427
                 // path.join(electronBaseDir, "node_modules", "**", "*"),
             ];
-            return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
+            return gulp.src(requiredFiles, { base: electronBaseDir })
+                .pipe(gulp.dest(tempDestBuildDir));
         });
 
         gulp.task(taskPrefix + "standalone.prepare.writePackageJson", cb => {
-            const packageJsonString = JSON.stringify(
-                {
-                    scripts: {
-                        start: pj.scripts.start,
-                    },
-                    devDependencies: pj.devDependencies,
-                    optionalDependencies: pj.optionalDependencies,
+            const packageJsonString = JSON.stringify({
+                scripts: {
+                    start: pj.scripts.start
                 },
-                null,
-                4
-            );
+                devDependencies: pj.devDependencies,
+                optionalDependencies: pj.optionalDependencies
+            }, null, 4);
 
             fs.writeFileSync(path.join(tempDestBuildDir, "package.json"), packageJsonString);
 
@@ -81,7 +79,8 @@ function gulptasksStandalone($, gulp) {
         });
 
         gulp.task(taskPrefix + "standalone.prepare.copyGamefiles", () => {
-            return gulp.src("../build/**/*.*", { base: "../build" }).pipe(gulp.dest(tempDestBuildDir));
+            return gulp.src("../build/**/*.*", { base: "../build" })
+                .pipe(gulp.dest(tempDestBuildDir));
         });
 
         gulp.task(taskPrefix + "standalone.killRunningInstances", cb => {
@@ -176,7 +175,9 @@ function gulptasksStandalone($, gulp) {
             );
         }
 
-        gulp.task(taskPrefix + "standalone.package.prod.win64", cb => packageStandalone("win32", "x64", cb));
+        gulp.task(taskPrefix + "standalone.package.prod.win64", cb =>
+            packageStandalone("win32", "x64", cb)
+        );
         gulp.task(taskPrefix + "standalone.package.prod.linux64", cb =>
             packageStandalone("linux", "x64", cb)
         );
