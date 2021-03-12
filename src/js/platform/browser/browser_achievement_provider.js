@@ -117,7 +117,7 @@ export class BrowserAchievementProvider extends AchievementProviderInterface {
 
     /** @returns {Promise<void>} */
     initialize() {
-        return this.storage.initialize();
+        return Promise.resolve();
     }
 
     /**

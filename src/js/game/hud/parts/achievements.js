@@ -1,6 +1,5 @@
-import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
-import { formatBigNumber, getRomanNumber, makeDiv } from "../../../core/utils";
+import { makeDiv } from "../../../core/utils";
 import { ACHIEVEMENTS, enum_achievement_mappings } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
