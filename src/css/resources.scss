@@ -58,7 +58,7 @@ $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2,
     background-image: uiResource("res/ui/building_tutorials/virtual_processor-cutter.png") !important;
 }
 
-$icons: notification_saved, notification_success, notification_upgrade;
+$icons: notification_saved, notification_success, notification_upgrade, notification_achievement;
 @each $icon in $icons {
     [data-icon="icons/#{$icon}.png"] {
         /* @load-async */
