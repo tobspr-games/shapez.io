@@ -109,6 +109,17 @@ export class MainMenuState extends GameState {
                     ${G_CHINA_VERSION ? "" : `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>`}
                 </div>
 
+                ${
+                    G_CHINA_VERSION
+                        ? ""
+                        : `
+                <a class="nftLink boxLink" target="_blank">
+                    shapez.io NFT Tokens
+                    <span class="thirdpartyLogo nftLogo"></span>
+                </a>`
+                }
+
+
                 <div class="author">${T.mainMenu.madeBy.replace(
                     "<author-link>",
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
@@ -244,25 +255,41 @@ export class MainMenuState extends GameState {
         const discordLink = this.htmlElement.querySelector(".discordLink");
         this.trackClicks(
             discordLink,
-            () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord),
+            () => {
+                this.app.analytics.trackUiClick("main_menu_link_discord");
+                this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
+            },
             { preventClick: true }
         );
+
+        const nftLink = this.htmlElement.querySelector(".nftLink");
+        if (nftLink) {
+            this.trackClicks(
+                nftLink,
+                () => {
+                    this.app.analytics.trackUiClick("main_menu_link_nft");
+                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.nftTokens);
+                },
+                { preventClick: true }
+            );
+        }
 
         const githubLink = this.htmlElement.querySelector(".githubLink");
         if (githubLink) {
             this.trackClicks(
                 githubLink,
-                () => this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github),
+                () => {
+                    this.app.analytics.trackUiClick("main_menu_link_github");
+                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github);
+                },
                 { preventClick: true }
             );
         }
 
         const producerLink = this.htmlElement.querySelector(".producerLink");
-        this.trackClicks(
-            producerLink,
-            () => this.app.platformWrapper.openExternalLink("https://tobspr.com"),
-            { preventClick: true }
-        );
+        this.trackClicks(producerLink, () => this.app.platformWrapper.openExternalLink("https://tobspr.io"), {
+            preventClick: true,
+        });
     }
 
     renderMainMenu() {
