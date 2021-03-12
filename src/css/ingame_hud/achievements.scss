@@ -16,6 +16,10 @@
             @include S(height, 85px);
             grid-template-rows: #{D(20px)} auto;
 
+            &.hidden {
+                display: none;
+            }
+
             &:last-child {
                 margin-bottom: 0;
             }

@@ -1,6 +1,10 @@
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
-import { ACHIEVEMENTS, enum_achievement_mappings } from "../../../platform/achievement_provider";
+import {
+    ACHIEVEMENTS,
+    enum_achievement_mappings,
+    HIDDEN_ACHIEVEMENTS,
+} from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
@@ -60,15 +64,53 @@ export class HUDAchievements extends BaseHUDPart {
             // Assign handle
             this.achievementToElements[achievementKey] = handle;
         }
+
+        const handle = {};
+        // Wrapper
+        handle.hidden = makeDiv(this.contentDiv, null, ["achievement"]);
+
+        // Icon
+        handle.icon = makeDiv(handle.hidden, null, ["icon"]);
+        handle.icon.setAttribute("data-icon", "achievements/hidden.png");
+
+        // Info
+        handle.info = makeDiv(handle.hidden, null, ["info"]);
+
+        // Title
+        handle.title = makeDiv(handle.info, null, ["title"], T.achievements.hidden.title);
+
+        // Description
+        handle.description = makeDiv(
+            handle.info,
+            null,
+            ["description"],
+            T.achievements.hidden.description.replace("<amountHidden>", HIDDEN_ACHIEVEMENTS.length + "")
+        );
+        this.hiddenElement = handle;
     }
 
     renderStatus() {
+        let hidden = 0;
         for (const achievementKey in this.achievementToElements) {
             const handle = this.achievementToElements[achievementKey];
+
             if (!this.root.achievementProxy.provider.collection.map.get(ACHIEVEMENTS[achievementKey])) {
                 if (!handle.elem.classList.contains("unlocked")) handle.elem.classList.add("unlocked");
-            } else if (handle.elem.classList.contains("unlocked")) handle.elem.classList.remove("unlocked");
+                if (handle.elem.classList.contains("hidden")) handle.elem.classList.remove("hidden");
+            } else {
+                if (handle.elem.classList.contains("unlocked")) handle.elem.classList.remove("unlocked");
+
+                if (HIDDEN_ACHIEVEMENTS.includes(ACHIEVEMENTS[achievementKey])) {
+                    if (!handle.elem.classList.contains("hidden")) handle.elem.classList.add("hidden");
+                    hidden++;
+                }
+            }
         }
+
+        this.hiddenElement.description.innerHTML = T.achievements.hidden.description.replace(
+            "<amountHidden>",
+            hidden + ""
+        );
     }
 
     initialize() {

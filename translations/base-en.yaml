@@ -499,6 +499,9 @@ shopUpgrades:
 
 # All achievements
 achievements:
+    hidden:
+        title: Hidden achievements
+        description: You have <amountHidden> hidden achievement(s)
     belt500Tiles:
         title: I need trains
         description: Have a belt with a length of 500 tiles

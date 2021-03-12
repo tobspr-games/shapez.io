@@ -58,6 +58,17 @@ export const ACHIEVEMENTS = {
     upgradesTier8: "upgradesTier8",
 };
 
+export const HIDDEN_ACHIEVEMENTS = [
+    ACHIEVEMENTS.placeBp1000,
+    ACHIEVEMENTS.darkMode,
+    ACHIEVEMENTS.irrelevantShape,
+    ACHIEVEMENTS.logoBefore18,
+    ACHIEVEMENTS.mapMarkers15,
+    ACHIEVEMENTS.produceMsLogo,
+    ACHIEVEMENTS.belt500Tiles,
+    ACHIEVEMENTS.oldLevel17,
+];
+
 export const enum_achievement_mappings = {
     [ACHIEVEMENTS.belt500Tiles]: function () {
         return {
