@@ -30,11 +30,11 @@ Note that this process is for Windows. Use equivalent actions for other operatin
 1. Download FFmpeg at https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z
 2. Extract the .zip onto desktop, rename it to FFmpeg
 3. Move the folder into `C:\Program Files`, anywhere works but there is convenient
-4. Open the start menu and search for "env". Open the first result.
+4. Open the start menu and search for "env". Open the second result.
 5. Click on the listing that says `PATH` and click edit. 
-   - On win10, you should see a list. Click `New` then type in `C:\Program Files\FFmpeg\bin`
-   - On win7, you should see a window that says `Edit User Variable.` In the text field that says "Variable value:" you want to type at the end `;C:\Program Files\FFmpeg\bin`. The semicolon is for separating the file path from the other file paths in that field.
-6. FFmpeg should now be installed. To test if you did this correctly, run `cmd.exe` as administrator and type `ffmpeg -version` and it should spit at you several lines of code.
+   - You should see a list. Click `New` then type in `C:\Program Files\FFmpeg\bin`
+   - If, instead, you see a singular text field, you should see a window that says `Edit User Variable.` In the text field that says "Variable value:" you want to type at the end `;C:\Program Files\FFmpeg\bin`. The semicolon is for separating the file path from the other file paths in that field.
+6. FFmpeg should now be installed. To test if you did this correctly, run `cmd.exe` as administrator and type `ffmpeg -version` and it should spit at you several lines of code. If it says something similar to "not recognized internal or external command," you messed up one of the previous steps.
 7. Install `Node.js`, `Yarn`, `Git`, and `GitHub CLI`. All four of these softwares use setup wizards, so installation should be easy. If you don't know what setting to put in, use the default. Also make sure you have `Java`, but it is very commom afaik. Run `cmd.exe` if you closed it earlier and run `java -version` and `git --version` to test if you already have them installed or not.
 8. Run `gh auth login` in `cmd.exe`. Login, selecting HTTPS over SSH.
 9. `cd %USERPROFILE%` to return to your user folder.
