@@ -253,6 +253,10 @@ dialogs:
         title: Tutorial Available
         desc: There is a tutorial video available for this level, but it is only available in English. Would you like to watch it?
 
+    resetAchievements:
+        title: Reset Achievements
+        description: Are you sure you want to reset all your achievements?
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -499,6 +503,9 @@ shopUpgrades:
 
 # All achievements
 achievements:
+    reset:
+        title: Reset achievements
+        description: Resets all your achievements!
     hidden:
         title: Hidden achievements
         description: You have <amountHidden> hidden achievement(s)

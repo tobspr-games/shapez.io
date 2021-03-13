@@ -39,6 +39,9 @@
             }
 
             .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 grid-column: 2;
                 grid-row: 2 / 3;
                 .title {
@@ -71,6 +74,26 @@
 
                 &:hover {
                     background-color: lighten($colorGreenBright, 10);
+                }
+            }
+
+            &.reset {
+                button.reset {
+                    background-color: $colorRedBright;
+
+                    &:hover {
+                        background-color: darken($colorRedBright, 10);
+                    }
+                }
+
+                .info {
+                    .title {
+                        font-weight: bold;
+                        color: $colorRedBright;
+                    }
+                    .description {
+                        color: lighten($colorRedBright, 10);
+                    }
                 }
             }
 

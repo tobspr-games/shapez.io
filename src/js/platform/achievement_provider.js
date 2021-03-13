@@ -472,8 +472,8 @@ export class AchievementCollection {
         achievement
             .unlock()
             .then(() => {
+                if (this.map.has(key)) this.root.signals.achievementCompleted.dispatch(key, data);
                 this.onActivate(null, key);
-                this.root.signals.achievementCompleted.dispatch(key, data);
             })
             .catch(err => {
                 this.onActivate(err, key);
