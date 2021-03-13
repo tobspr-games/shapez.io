@@ -14,7 +14,7 @@ steamPage:
         Vaikka alussa vain prosessoit muotoja, myöhemmin niitä pitää myös maalata - tätä varten sinun täytyy kerätä ja sekoittaa värejä
 
         Pelin ostaminen Steamista antaa sinulle pääsyn pelin täysversioon, mutta voit myös pelata kokeiluversiota ensin sivuillamme shapez.io ja päättää myöhemmin!
-    what_others_say: What people say about shapez.io
+    what_others_say: Muiden mielipiteitä shapez.io:sta
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -30,7 +30,7 @@ global:
     suffix:
         thousands: k
         millions: M
-        billions: B
+        billions: G
         trillions: T
     infinite: ∞
     time:
@@ -195,7 +195,7 @@ ingame:
         delete: Poista
         pasteLastBlueprint: Liitä viimeisin piirustus
         lockBeltDirection: Ota kuljettimen suunnittelija käyttöön
-        plannerSwitchSide: Käännä suunnittelijan puoli
+        plannerSwitchSide: Vaihda suunnittelijan puolta
         cutSelection: Leikkaa
         copySelection: Kopioi
         clearSelection: Tyhjennä valinta
@@ -347,8 +347,8 @@ ingame:
                 title: Tue minua
                 desc: Kehitän peliä vapaa-ajallani!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Saavutukset
+                desc: Metsästä kaikki!
 shopUpgrades:
     belt:
         name: Kuljettimet, jakelijat & tunnelit
@@ -454,16 +454,16 @@ buildings:
             description: Monikäyttöinen - Jakaa sisääntulot tasaisesti kaikkiin
                 ulostuloihin.
         merger:
-            name: Yhdistäjä (compact)
+            name: Yhdistäjä (kompakti)
             description: Yhdistää kaksi kuljetinta yhteen.
         merger-inverse:
-            name: Yhdistäjä (compact)
+            name: Yhdistäjä (kompakti)
             description: Yhdistää kaksi kuljetinta yhteen.
         splitter:
-            name: Erottaja (compact)
+            name: Erottaja (kompakti)
             description: Erottaa kuljettimen kahteen kuljettimeen.
         splitter-inverse:
-            name: Erottaja (compact)
+            name: Erottaja (kompakti)
             description: Erottaa kuljettimen kahteen kuljettimeen.
     storage:
         default:
@@ -562,12 +562,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Muotojen Leikkaus
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Avasit <strong>Leikkurin</strong>, joka leikkaa muotoja
+            ylhäältä alas <strong>muodon suunnasta
+            riippumatta</strong>!<br><br>muista hankkiutua eroon jätteestä, tai
+            muuten <strong>se tukkii ja pysäyttää leikkurin</strong> - Siksi
+            olen antanut sinulle <strong>roskiksen</strong>, joka tuhoaa
+            kaiken sinne laitetun!
     reward_rotater:
         title: Kääntö
         desc: Avasit <strong>Kääntäjän</strong>! Se kääntää muotoja myötäpäivään 90
@@ -629,12 +629,12 @@ storyRewards:
     reward_freeplay:
         title: Vapaapeli
         desc: Onnistuit! Avasit juuri <strong>vapaapelimuodon</strong>! Muodot luodaan
-            nyt <strong>satunnaisesti</strong><br><br> Since the hub will
-            require a <strong>throughput</strong> from now on, I highly
-            recommend to build a machine which automatically delivers the
-            requested shape!<br><br> The HUB outputs the requested shape on the
-            wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+            nyt <strong>satunnaisesti</strong><br><br> Koska keskusrakennus vaatii
+            tietyn <strong>kuljetuskapasiteetin</strong> tästä eteenpäin, suosittelen
+            lämpimästi rakentamaan koneen, joka tuottaa vaaditun muodon
+            automaattisesti!<br><br> Keskusrakennus lähettää pyydetyn muodon
+            johtotasolle, joten sinun ei tarvitse kuin analysoida se ja
+            konfiguroida tehtaasi sen perusteella.
     reward_blueprints:
         title: Piirustukset
         desc: Nyt voit <strong>Kopioida ja Liittää</strong> paloja tehtaastasi! Valitse
@@ -928,7 +928,7 @@ keybindings:
         pasteLastBlueprint: Liitä viimeisin piirustus
         cycleBuildings: Valitse rakennuksia
         lockBeltDirection: Ota kuljetinsuunnittelija käyttöön
-        switchDirectionLockSide: "Suunnittelija: Muuta sivua"
+        switchDirectionLockSide: "Suunnittelija: Vaihda sivua"
         massSelectStart: Pidä pohjassa ja raahaa aloittaaksesi
         massSelectSelectMultiple: Valitse useita alueita
         massSelectCopy: Kopioi alue
@@ -952,24 +952,24 @@ keybindings:
         comparator: Vertaa
         item_producer: Signaaligeneraattori (Hiekkalaattikko)
         copyWireValue: "Johdot: Kopioi arvo kursorin kohdalta"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Käännä: osoittaa ylös"
+        rotateToDown: "Käännä: osoittaa alas"
+        rotateToRight: "Käännä: osoittaa oikealle"
+        rotateToLeft: "Käännä: osoittaa vasemmalle"
 about:
     title: Tietoja tästä pelistä
     body: >-
-        This game is open source and developed by <a
-        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
-        (this is me).<br><br>
+        Tämä peli on avointa lähdekoodia ja <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>in
+        (siis minun) kehittämäni.<br><br>
 
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
+        Jos haluat avustaa, käy katsomassa <a href="<githublink>" target="_blank">shapez.io GitHubissa</a>.<br><br>
 
-        This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        Tämä peli ei olisi mahdollinen ilman pelieni ympärillä olevaa Discord-yhteisöä - Sinun todella kannattaisi liittyä <a href="<discordlink>" target="_blank">Discord serverillemme</a>!<br><br>
 
-        The soundtrack was made by <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - He's awesome.<br><br>
+        Ääniraidan on tehnyt <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Hän on uskomattoman loistava.<br><br>
 
-        Finally, huge thanks to my best friend <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Without our Factorio sessions, this game would never have existed.
+        Lopuksi valtavat kiitokset parhaalle ystävälleni <a href="https://github.com/niklas-dahl" target="_blank">Niklakselle</a> - Ilman Factorio-sessioitamme tätä peliä ei olisi olemassa.
 changelog:
     title: Muutosloki
 demo:
