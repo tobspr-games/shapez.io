@@ -21,6 +21,56 @@ export class HUDAchievements extends BaseHUDPart {
         this.trackClicks(this.closeButton, this.close);
         this.contentDiv = makeDiv(this.dialogInner, null, ["content"]);
 
+        this.resetElement = {};
+
+        // Wrapper
+        this.resetElement.elem = makeDiv(this.contentDiv, null, ["achievement", "reset", "unlocked"]);
+
+        // Icon
+        this.resetElement.icon = makeDiv(this.resetElement.elem, null, ["icon"]);
+        this.resetElement.icon.setAttribute("data-icon", "achievements/reset.png");
+
+        // Info
+        this.resetElement.info = makeDiv(this.resetElement.elem, null, ["info"]);
+
+        // Title
+        this.resetElement.title = makeDiv(
+            this.resetElement.info,
+            null,
+            ["title"],
+            T.achievements.reset.title
+        );
+
+        // Description
+        this.resetElement.description = makeDiv(
+            this.resetElement.info,
+            null,
+            ["description"],
+            T.achievements.reset.description
+        );
+
+        // Reset button
+        this.resetElement.resetButton = document.createElement("button");
+        this.resetElement.resetButton.classList.add("reset", "styledButton");
+        this.resetElement.resetButton.innerText = T.ingame.achievements.buttonReset;
+        this.resetElement.elem.appendChild(this.resetElement.resetButton);
+        this.trackClicks(this.resetElement.resetButton, () => {
+            const signals = this.root.hud.parts.dialogs.showWarning(
+                T.dialogs.resetAchievements.title,
+                T.dialogs.resetAchievements.description,
+                ["cancel:bad:escape", "ok:good:enter"]
+            );
+            signals.ok.add(() => {
+                for (const achievementKey in ACHIEVEMENTS) {
+                    if (!this.root.achievementProxy.provider.collection.map.has(achievementKey))
+                        this.root.achievementProxy.provider.collection.lock(
+                            achievementKey,
+                            enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
+                        );
+                }
+            });
+        });
+
         this.achievementToElements = {};
 
         // ACHIEVEMENTS
@@ -91,56 +141,6 @@ export class HUDAchievements extends BaseHUDPart {
             ["description"],
             T.achievements.hidden.description.replace("<amountHidden>", HIDDEN_ACHIEVEMENTS.length + "")
         );
-
-        this.resetElement = {};
-
-        // Wrapper
-        this.resetElement.elem = makeDiv(this.contentDiv, null, ["achievement", "reset", "unlocked"]);
-
-        // Icon
-        this.resetElement.icon = makeDiv(this.resetElement.elem, null, ["icon"]);
-        this.resetElement.icon.setAttribute("data-icon", "achievements/reset.png");
-
-        // Info
-        this.resetElement.info = makeDiv(this.resetElement.elem, null, ["info"]);
-
-        // Title
-        this.resetElement.title = makeDiv(
-            this.resetElement.info,
-            null,
-            ["title"],
-            T.achievements.reset.title
-        );
-
-        // Description
-        this.resetElement.description = makeDiv(
-            this.resetElement.info,
-            null,
-            ["description"],
-            T.achievements.reset.description
-        );
-
-        // Reset button
-        this.resetElement.resetButton = document.createElement("button");
-        this.resetElement.resetButton.classList.add("reset", "styledButton");
-        this.resetElement.resetButton.innerText = T.ingame.achievements.buttonReset;
-        this.resetElement.elem.appendChild(this.resetElement.resetButton);
-        this.trackClicks(this.resetElement.resetButton, () => {
-            const signals = this.root.hud.parts.dialogs.showWarning(
-                T.dialogs.resetAchievements.title,
-                T.dialogs.resetAchievements.description,
-                ["cancel:bad:escape", "ok:good:enter"]
-            );
-            signals.ok.add(() => {
-                for (const achievementKey in ACHIEVEMENTS) {
-                    if (!this.root.achievementProxy.provider.collection.map.has(achievementKey))
-                        this.root.achievementProxy.provider.collection.lock(
-                            achievementKey,
-                            enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
-                        );
-                }
-            });
-        });
     }
 
     renderStatus() {
