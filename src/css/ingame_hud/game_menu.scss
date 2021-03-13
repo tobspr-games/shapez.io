@@ -8,6 +8,10 @@
 
     backdrop-filter: blur(D(1px));
 
+    .stats ~ .achievements {
+        grid-column: 1;
+    }
+
     > button,
     > .button {
         @include PlainText;
@@ -38,7 +42,7 @@
         @include DarkThemeInvert;
 
         &.achievements {
-            grid-column: 1;
+            grid-column: 3;
             & {
                 /* @load-async */
                 background-image: uiResource("icons/achievements.png");
