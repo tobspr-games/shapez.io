@@ -319,6 +319,15 @@ export class AchievementProviderInterface {
     }
 
     /**
+     * Unlocks already unlocked achievements.
+     * @returns {Promise<void>}
+     */
+    unlockUnlocked() {
+        abstract;
+        return Promise.reject();
+    }
+
+    /**
      * Opportunity to do additional initialization work with the GameRoot.
      * @param {GameRoot} root
      * @returns {Promise<void>}

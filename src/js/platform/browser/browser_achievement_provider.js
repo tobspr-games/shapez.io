@@ -115,6 +115,20 @@ export class BrowserAchievementProvider extends AchievementProviderInterface {
         }
     }
 
+    unlockUnlocked() {
+        let promise = Promise.resolve();
+
+        //Unlock already unlocked
+        for (let i = 0; i < this.storage.currentData.unlocked.length; i++) {
+            promise.then(() => {
+                const achievement = this.storage.currentData.unlocked[i];
+                this.collection.unlock(achievement, null, true);
+            });
+        }
+
+        return promise;
+    }
+
     /** @returns {Promise<void>} */
     initialize() {
         return Promise.resolve();

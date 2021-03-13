@@ -132,6 +132,22 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         });
     }
 
+    unlockUnlocked() {
+        let promise = Promise.resolve();
+
+        //Unlock already unlocked
+        for (const id in ACHIEVEMENT_IDS) {
+            promise.then(() =>
+                this.ipc.invoke("steam:get-achievement", ACHIEVEMENT_IDS[id]).then(is_achieved => {
+                    if (is_achieved) this.collection.unlock(id, null, true);
+                    return Promise.resolve();
+                })
+            );
+        }
+
+        return promise;
+    }
+
     /**
      * @param {string} key
      * @returns {Promise<void>}

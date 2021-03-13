@@ -119,3 +119,19 @@
         }
     }
 }
+
+#state_AchievementsState {
+    #ingame_HUD_Achievements {
+        z-index: unset;
+        overflow-y: scroll;
+        position: relative;
+        background-color: unset;
+        max-height: 100%;
+        align-items: unset;
+
+        .content {
+            width: 100%;
+            display: block;
+        }
+    }
+}

@@ -31,6 +31,7 @@ import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { RestrictionManager } from "./core/restriction_manager";
+import { AchievementsState } from "./states/achievements";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -159,6 +160,7 @@ export class Application {
             KeybindingsState,
             AboutState,
             ChangelogState,
+            AchievementsState,
         ];
 
         for (let i = 0; i < states.length; ++i) {
