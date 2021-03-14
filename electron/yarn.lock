@@ -35,6 +35,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-12.20.5.tgz"
   integrity sha512-5Oy7tYZnu3a4pnJ//d4yVvOImExl4Vtwf0D40iKUlU+XlUsyV9iyFWyCFlwy489b72FMAik/EFwRkNLjjOdSPg==
 
+async-lock@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/async-lock/-/async-lock-1.2.8.tgz#7b02bdfa2de603c0713acecd11184cf97bbc7c4c"
+  integrity sha512-G+26B2jc0Gw0EG/WN2M6IczuGepBsfR1+DtqLnyFSH4p2C668qkOCtEkGNVEaaNAVlYwEMazy1+/jnLxltBkIQ==
+
 boolean@^3.0.1:
   version "3.0.2"
   resolved "https://registry.npmjs.org/boolean/-/boolean-3.0.2.tgz"

@@ -14,5 +14,8 @@
     },
     "optionalDependencies": {
         "shapez.io-private-artifacts": "github:tobspr/shapez.io-private-artifacts#abi-v85"
+    },
+    "dependencies": {
+        "async-lock": "^1.2.8"
     }
 }
