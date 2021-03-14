@@ -496,10 +496,12 @@ export class BeltSystem extends GameSystemWithFilter {
 
         // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
         // 126 / 42 is the exact animation speed of the png animation
-        const animationIndex = Math.floor(
+        let animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                 globalConfig.itemSpacingOnBelts
         );
+        if (this.root.time.getIsPaused()) animationIndex = 0;
+
         const contents = chunk.containedEntitiesByLayer.regular;
 
         if (this.root.app.settings.getAllSettings().simplifiedBelts) {

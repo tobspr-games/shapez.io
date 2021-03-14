@@ -1100,6 +1100,7 @@ keybindings:
 
         toggleHud: Toggle HUD
         toggleFPSInfo: Toggle FPS and Debug Info
+        togglePause: Toggle all the processes
         switchLayers: Switch layers
         exportScreenshot: Export whole Base as Image
 

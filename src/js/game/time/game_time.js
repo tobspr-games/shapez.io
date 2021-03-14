@@ -9,6 +9,7 @@ import { PausedGameSpeed } from "./paused_game_speed";
 import { gGameSpeedRegistry } from "../../core/global_registries";
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { KEYMAPPINGS } from "../key_action_mapper";
 
 const logger = createLogger("game_time");
 
@@ -31,9 +32,13 @@ export class GameTime extends BasicSerializableObject {
 
         /** @type {BaseGameSpeed} */
         this.speed = new RegularGameSpeed(this.root);
+        /** @type {BaseGameSpeed} */
+        this.previousSpeed = null;
 
         // Store how much time we have in bucket
         this.logicTimeBudget = 0;
+
+        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.togglePause).add(this.togglePause, this);
     }
 
     static getId() {
@@ -183,6 +188,19 @@ export class GameTime extends BasicSerializableObject {
             logger.warn("Same speed set than current one:", speed.constructor.getId());
         }
         this.speed = speed;
+    }
+
+    togglePause() {
+        if (this.getIsPaused()) {
+            if (!this.previousSpeed) this.setSpeed(new RegularGameSpeed(this.root));
+            else {
+                this.setSpeed(this.previousSpeed);
+                this.previousSpeed = null;
+            }
+        } else {
+            this.previousSpeed = this.speed;
+            this.setSpeed(new PausedGameSpeed(this.root));
+        }
     }
 
     deserialize(data) {

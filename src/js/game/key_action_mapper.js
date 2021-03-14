@@ -30,6 +30,7 @@ export const KEYMAPPINGS = {
         toggleHud: { keyCode: 113 }, // F2
         exportScreenshot: { keyCode: 114 }, // F3PS
         toggleFPSInfo: { keyCode: 115 }, // F4
+        togglePause: { keyCode: 118 }, // F7
 
         switchLayers: { keyCode: key("E") },
     },
