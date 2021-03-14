@@ -84,17 +84,20 @@ window.onload = async () => {
     let instance = undefined;
     let modFolderContents = [];
     if (G_IS_STANDALONE) {
-        modFolderContents = getIPCRenderer().sendSync("fs-sync-job", {
+        const dirResult = await getIPCRenderer().invoke("fs-job", {
             folder: "mods",
             type: "readDir",
             filename: "",
-        }).data;
+        });
+        if (dirResult.success) modFolderContents = dirResult.data;
+
         if (modFolderContents.includes("modpack.json")) {
-            instance = getIPCRenderer().sendSync("fs-sync-job", {
+            const instanceResult = await getIPCRenderer().invoke("fs-job", {
                 folder: "mods",
                 type: "read",
                 filename: "modpack.json",
             });
+            if (instanceResult.success) instance = JSON.parse(instanceResult.data);
         }
     } else if (!G_IS_DEV) {
         user = JSON.parse(localStorage.getItem("user"));
