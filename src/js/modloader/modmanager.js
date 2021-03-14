@@ -91,27 +91,30 @@ export class ModManager {
      */
     addMod(url, fromFile = false) {
         if (fromFile && G_IS_STANDALONE) {
-            return new Promise(async (resolve, reject) => {
-                const modCodeResult = await getIPCRenderer().invoke("fs-job", {
-                    folder: "mods",
-                    type: "read",
-                    filename: url,
-                });
-                if (!modCodeResult.success) return reject("Mod is invalid");
+            return new Promise((resolve, reject) => {
+                getIPCRenderer()
+                    .invoke("fs-job", {
+                        folder: "mods",
+                        type: "read",
+                        filename: url,
+                    })
+                    .then(modCodeResult => {
+                        if (!modCodeResult.success) return reject("Mod is invalid");
 
-                const modCode = modCodeResult.data;
-                const modScript = document.createElement("script");
-                modScript.textContent = modCode;
-                modScript.type = "text/javascript";
-                try {
-                    document.head.appendChild(modScript);
-                    resolve();
-                } catch (ex) {
-                    console.error("Failed to insert mod, bad js:", ex);
-                    this.nextModResolver = null;
-                    this.nextModRejector = null;
-                    reject("Mod is invalid");
-                }
+                        const modCode = modCodeResult.data;
+                        const modScript = document.createElement("script");
+                        modScript.textContent = modCode;
+                        modScript.type = "text/javascript";
+                        try {
+                            document.head.appendChild(modScript);
+                            resolve();
+                        } catch (ex) {
+                            console.error("Failed to insert mod, bad js:", ex);
+                            this.nextModResolver = null;
+                            this.nextModRejector = null;
+                            reject("Mod is invalid");
+                        }
+                    });
             });
         } else
             return Promise.race([
