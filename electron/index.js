@@ -1,9 +1,8 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, session } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell } = require("electron");
 const path = require("path");
 const url = require("url");
-const { ipcMain, shell } = require("electron");
 const fs = require("fs");
 const steam = require("./steam");
 const asyncLock = require("async-lock");
@@ -287,10 +286,14 @@ async function performFsJob(job) {
     }
 }
 
-ipcMain.on("fs-job", async (event, arg) => {
-    const result = await performFsJob(arg);
-    event.reply("fs-response", { id: arg.id, result });
-});
+ipcMain.handle(
+    "fs-job",
+    (event, arg) =>
+        new Promise(async (resolve, reject) => {
+            const result = await performFsJob(arg);
+            resolve(result);
+        })
+);
 
 steam.init(isDev);
 steam.listen();

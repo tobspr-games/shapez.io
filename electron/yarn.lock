@@ -503,10 +503,6 @@ serialize-error@^7.0.1:
   dependencies:
     type-fest "^0.13.1"
 
-"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v85":
-  version "0.1.0"
-  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#63adf7e0ea4b90c2a29053ce1f0ec9d573b3ac0a"
-
 sprintf-js@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.2.tgz#da1765262bf8c0f571749f2ad6c26300207ae673"
