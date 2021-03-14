@@ -91,12 +91,15 @@ export class ModManager {
      */
     addMod(url, fromFile = false) {
         if (fromFile && G_IS_STANDALONE) {
-            return new Promise((resolve, reject) => {
-                const modCode = getIPCRenderer().send("fs-job", {
+            return new Promise(async (resolve, reject) => {
+                const modCodeResult = await getIPCRenderer().invoke("fs-job", {
                     folder: "mods",
                     type: "read",
                     filename: url,
-                }).data;
+                });
+                if (!modCodeResult.success) return reject("Mod is invalid");
+
+                const modCode = modCodeResult.data;
                 const modScript = document.createElement("script");
                 modScript.textContent = modCode;
                 modScript.type = "text/javascript";
