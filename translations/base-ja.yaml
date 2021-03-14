@@ -2,43 +2,21 @@ steamPage:
     shortText: shapez.ioは無限のマップ内で様々な"形"を資源とし、段々と複雑になっていく形の作成や合成の自動化を目指して工場を構築するゲームです。
     discordLinkShort: 公式Discord
     intro: >-
-        工場の自動化ゲームはお好きですか？それなら間違いないでしょう！
+        工場の自動化ゲームはお好きですか？　それならここに来て正解です！
 
-        Shapez.ioは、様々な幾何学的形状を生成するために工場を建設する、落ち着いたゲームです。レベルが上がる毎に生成すべき形はどんどん複雑になり、工場を無限に広がるマップに拡張する必要があります。
+        shapez.ioは、様々な幾何学形状の自動生産工場を建設する、リラックスして遊べるゲームです。レベルが上がるにつれ生産すべき形はどんどん複雑になり、無限に広がるマップに工場を拡張していくことになります。
 
-        しかし、それだけでは不十分です。需要は指数関数的に上昇し、より多くの形状を生産する必要があり――"スケーリング"が、唯一の対抗策と成り得ます。最初は形状を加工するだけですが、後々着色も必要になってきます――それには色を抽出して、混ぜ合わせることが必要です！
+        しかし、それだけでは不十分です。指数関数的に増大していく形状の要求量に対応する必要があり――「スケーリング」が、唯一の対抗策と成り得ます。また、最初は形状を加工するだけですが、後々着色も必要になってきます。色を抽出して混ぜ合わせましょう！
 
-        Steamでゲームを購入するとフルバージョンで遊ぶことができますが、まずshapez.ioでデモをプレイし、その後で決めることもできます！
-    title_advantages: スタンドアロン版の特典
-    advantages:
-        - <b>新しい12個のレベル</b>が追加され、全部で26個のレベルになります。
-        - <b>新しい18個のパーツ</b>が自動化工場建設のために使用できます！
-        - <b>20個のアップデートティア</b>によって多くの時間楽しむことができます！
-        - <b>ワイヤアップデート</b>によって全く新次元の体験を得られます！
-        - <b>ダークモード</b>!
-        - セーブ数の上限がなくなります。
-        - マップマーカー数の上限がなくなります。
-        - 私をサポートできる！❤️
-    title_future: 計画中の要素
-    planned:
-        - ブループリント (スタンドアロン版専用)
-        - Steamの実績
-        - パズルモード
-        - ミニマップ
-        - MOD対応
-        - サンドボックスモード
-        - ……あともっとたくさんの要素!
-    title_open_source: このゲームはオープンソースです！
-    text_open_source: |-
-        誰でも参加することができます。私はコミュニティに積極的に参加し、すべての提案を確認し、可能な場合はフィードバックしようとしています。
-        完全なロードマップについては、Trello boardを確認してください！
-    title_links: リンク
-    links:
-        discord: 公式Discord
-        roadmap: ロードマップ
-        subreddit: Subreddit
-        source_code: ソースコード(GitHub)
-        translate: 翻訳を助けてください！
+        Steamでゲームを購入するとフルバージョンで遊べますが、まずshapez.ioでデモをプレイし、その後で決めることもできます！
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: ロード中
     error: エラー
@@ -149,7 +127,7 @@ dialogs:
         desc: 多数の建造物をカットしようとしています！ (<count> 個の選択) 続行しますか？
     massCutInsufficientConfirm:
         title: カット確認
-        desc: 設置コストが不足しています！ 続行しますか？
+        desc: 設置コストが不足しています！　続行しますか？
     blueprintsNotUnlocked:
         title: 未解除
         desc: レベル12をクリアしてブループリント機能を解除してください！
@@ -178,12 +156,10 @@ dialogs:
         desc: セーブデータの名前を変更することができます
     tutorialVideoAvailable:
         title: チュートリアル視聴可能
-        desc: このレベルで利用できるチュートリアルの動画があります！
-            見ますか？
+        desc: このレベルで利用できるチュートリアル動画があります！　確認しますか？
     tutorialVideoAvailableForeignLanguage:
         title: チュートリアル視聴可能
-        desc: このレベルで利用できるチュートリアルの動画がありますが、それは
-            英語です。見ますか？
+        desc: このレベルで利用できるチュートリアル動画がありますが、言語は英語です。確認しますか？
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -287,28 +263,23 @@ ingame:
                 もっと早く要件を満たせるように、追加の抽出機とベルトを設置しましょう。<br><br>Tip:
                 <strong>SHIFT</strong>
                 キーを押し続けると抽出機を連続配置できます。<strong>R</strong>キーで設置方向を回転できます。"
-            2_1_place_cutter: "次に、<strong>切断機</strong>を設置し、円を
-                2分割します！<br><br> 追記: 切断機はそれの向きに関わらず、<strong>縦の線</strong>で切断します。"
+            2_1_place_cutter: "次に、<strong>切断機</strong>を設置し、円を 二分割します！<br><br> 追記:
+                切断機はそれの向きに関わらず、<strong>縦の線</strong>で切断します。"
             2_2_place_trash: 切断機は<strong>詰まる</strong>場合があります!<br><br>
                 <strong>ゴミ箱</strong>を利用して、不必要な部品を廃棄することができます。
-            2_3_more_cutters: "いいですね！<strong>更に2つ以上の切断機</strong>を設置して
-                処理をスピードアップさせましょう！<br><br> 追記: <strong>0から9
-                のホットキー</strong>を使用すると素早く部品にアクセスできます。"
-            3_1_rectangles: "それでは四角形を抽出しましょう！<strong>4つの抽出機を
-                作成</strong>してそれをハブに接続します。<br><br> 追記:
-                <strong>SHIFT</strong>を押しながらベルトを引くと
-                ベルトプランナーが有効になります！"
+            2_3_more_cutters: "いいですね！　<strong>更に2つ以上の切断機</strong>を設置して処理をスピードアップさせましょう！<br>\
+                <br> 追記: <strong>0から9 のホットキー</strong>を使用すると素早く部品にアクセスできます。"
+            3_1_rectangles: "それでは四角形を抽出しましょう！　<strong>4つの抽出機を作成</strong>してそれをハブに接続します。<br><\
+                br> 追記: <strong>SHIFT</strong>を押しながらベルトを引くと ベルトプランナーが有効になります！"
             21_1_place_quad_painter: <strong>四色着色機</strong>を設置して、
                 <strong>円</strong>、<strong>白</strong>そして
                 <strong>赤</strong>を抽出します！
             21_2_switch_to_wires: <strong>E</strong>を押すとワイヤレイヤに
-                切り替えできます！<br><br>そして<strong>4つの入力全てを</strong>
-                ケーブルで接続します！
-            21_3_place_button: いいね！次に<strong>スイッチ</strong>を設置して
-                そのワイヤに接続します！
+                切り替えできます！　<br><br>そして<strong>4つの入力全てを</strong> ケーブルで接続します！
+            21_3_place_button: いいですね！　次に<strong>スイッチ</strong>を設置して そのワイヤに接続します！
             21_4_press_button: "スイッチを押して<strong>真らしい信号を
                 発する</strong>ようにして、着色機を有効化します。<br><br> 追記: 全ての
-                入力を接続する必要はありません！2つだけ接続してみてください。"
+                入力を接続する必要はありません！　2つだけ接続してみてください。"
     connectedMiners:
         one_miner: 1個の抽出機
         n_miners: <amount>個の抽出機
@@ -327,9 +298,6 @@ ingame:
             buildings:
                 title: 新しい18個の設置物
                 desc: あなたの工場を完全自動化しましょう！
-            savegames:
-                title: 無限個のセーブデータ
-                desc: あなたが望むだけデータを作成できます！
             upgrades:
                 title: 20個のアップデートティア
                 desc: このデモバージョンでは5ティアのみです！
@@ -345,6 +313,9 @@ ingame:
             support:
                 title: 製作者をサポート
                 desc: 余暇に制作しています！
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: ベルト、ディストリビュータとトンネル
@@ -401,17 +372,17 @@ buildings:
     cutter:
         default:
             name: 切断機
-            description: 形を上下の直線で切断し、双方を出力します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
+            description: 形を垂直に切断し、双方を出力します。<strong>ひとつの出力しか使わない場合、他の出力を破棄しないと詰まって停止してしまうことに注意してください！</strong>
         quad:
             name: 切断機 (四分割)
-            description: 形を四分割します。<strong>もしひとつの出力しか使わない場合、他の出力を破棄しないと出力が詰まって停止することに注意してください！</strong>
+            description: 形を四分割します。<strong>ひとつの出力しか使わない場合、他の出力を破棄しないと詰まって停止してしまうことに注意してください！</strong>
     rotater:
         default:
             name: 回転機
-            description: 形を時計回り方向に90度回転します。
+            description: 形を時計回りに90度回転します。
         ccw:
             name: 回転機 (逆)
-            description: 形を反時計回り方向に90度回転します。
+            description: 形を反時計回りに90度回転します。
         rotate180:
             name: 回転機 (180度)
             description: 形を180度回転します。
@@ -528,57 +499,47 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc:
-            <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します。<br><br>利用しない側の出力に注意しましょう。破棄するなどをしない限り<strong>詰まって停止してしまいます</strong>
+        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します！　<br><br>利用しない側の出力に注意しましょう、破棄しなければ<strong>詰まって停止してしまいます。</strong>
             - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
-        desc: <strong>回転機</strong>が利用可能になりました。形を時計回り方向に90度回転させます。
+        desc: <strong>回転機</strong>が利用可能になりました！　形を時計回り方向に90度回転させます。
     reward_painter:
         title: 着色
-        desc: "<strong>着色機</strong>が利用可能になりました。(今まで形状でやってきた方法で)色を抽出し、
-            形状と合成することで着色します！<br><br>追伸: もし色覚特性をお持ちでしたら、
-            設定に<strong>色覚特性モード</strong>があります！"
+        desc: "<strong>着色機</strong>が利用可能になりました。（今まで形状でやってきた方法で）色を抽出し、形状と合成することで着色します！　<\
+            br><br>追伸: もし色覚特性をお持ちでしたら、 設定に<strong>色覚特性モード</strong>があります！"
     reward_mixer:
         title: 色の混合
-        desc: <strong>混合機</strong>が利用可能になりました。 -
-            この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます。
+        desc: <strong>混合機</strong>が利用可能になりました。この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます！
     reward_stacker:
         title: 積層機
-        desc: <strong>積層機</strong>で形を組み合わせ可能になりました。双方の入力を組み合わせ、もし連続した形になっていればそれらは<strong>融合してひとつ</strong>になります！　もしできなかった場合は、左の入力の<strong>上に右の入力が重なります。</strong>
+        desc: <strong>積層機</strong>で形を組み合わせ可能になりました！　双方の入力を組み合わせ、連続した形になっていればそれらは<strong>融合してひとつ</strong>になります。そうでなければ、左の入力の<strong>上に右の入力が重なります！</strong>
     reward_balancer:
         title: 分配機/合流機
-        desc: 多機能な<strong>分配機/合流機</strong>が利用可能になりました - より
-            大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、
-            分配</strong>できます！
+        desc: 多機能な<strong>分配機/合流機</strong>が利用可能になりました。より大規模な工場を構築するため、複数のベルト間で<strong>アイテムを合流、分配</strong>できます！
     reward_tunnel:
         title: トンネル
-        desc: <strong>トンネル</strong>が利用可能になりました。 - 他のベルトや建造物の地下を通してベルトが配置可能です！
+        desc: <strong>トンネル</strong>が利用可能になりました。他のベルトや建造物の地下を通してベルトが配置可能です！
     reward_rotater_ccw:
         title: 反時計回りの回転
-        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。 -
-            反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます</strong>
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました。反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます。</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc: "<strong>連鎖抽出機</strong>が利用可能になりました！他の
-            他の抽出機に<strong>出力を渡す</strong>ことができるので、
-            資源の抽出がより効率的になります！<br><br> 補足: ツールバーの
-            旧い抽出機が置き換えられました！"
+        desc: "<strong>連鎖抽出機</strong>が利用可能になりました！ 他の抽出機に<strong>出力を渡す</strong>ことができるので、
+            資源の抽出がより効率的になります！<br><br> 補足: ツールバーの 旧い抽出機が置き換えられました！"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
             <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
     reward_merger:
         title: コンパクトな合流機
-        desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ -
-            2つの入力を1つの出力に合流させます！
+        desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！　2つの入力を1つの出力に合流させます！
     reward_splitter:
         title: コンパクトな分配機
-        desc: <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！ -
-            1つの入力を2つの出力に分配します！
+        desc: <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！　1つの入力を2つの出力に分配します！
     reward_belt_reader:
         title: ベルトリーダー
-        desc: <strong>ベルトリーダー</strong>が利用可能になりました！ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
+        desc: <strong>ベルトリーダー</strong>が利用可能になりました！　ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
     reward_cutter_quad:
         title: 四分割
         desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 -
@@ -589,62 +550,53 @@ storyRewards:
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: 余剰の貯蓄
-        desc:
-            <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
     reward_blueprints:
         title: ブループリント
-        desc: >-
-            工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！
+        desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！
             範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
     reward_rotater_180:
         title: 180度の回転
-        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！ 180度の回転ができるようになります！(サプライズ！ :D)
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！　180度の回転ができるようになります！(サプライズ！ :D)
     reward_wires_painter_and_levers:
         title: ワイヤ＆着色機(四分割)
-        desc: "<strong>ワイヤレイヤ</strong>が利用可能になりました: これは通常の
-            レイヤーの上にある別のレイヤであり、多くの新しい要素が
-            あります！<br><br> 最初に、<strong>四色
-            着色機</strong>が利用可能になりました - 着色するスロットをワイヤレイヤで
-            接続します！<br><br> ワイヤレイヤに切り替えるには、
-            <strong>E</strong>を押します。 <br><br> 補足: 設定で<strong>ヒントを有効にする</strong>と、
-            ワイヤのチュートリアルが有効になります。"
+        desc: "<strong>ワイヤレイヤ</strong>が利用可能になりました: これは通常の レイヤーの上にある別のレイヤであり、多くの新しい要素が
+            あります！<br><br> 最初に、<strong>四色 着色機</strong>が利用可能になりました -
+            着色するスロットをワイヤレイヤで 接続します！<br><br> ワイヤレイヤに切り替えるには、
+            <strong>E</strong>を押します。 <br><br> 補足:
+            設定で<strong>ヒントを有効にする</strong>と、 ワイヤのチュートリアルが有効になります。"
     reward_filter:
         title: アイテムフィルタ
-        desc:
-            <strong>アイテムフィルタ</strong>が利用可能になりました！ ワイヤレイヤの信号と一致するかどうかに応じて、
+        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！　ワイヤレイヤの信号と一致するかどうかに応じて、
             アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
             どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
     reward_display:
         title: ディスプレイ
         desc: "<strong>ディスプレイ</strong>が利用可能になりました - ワイヤレイヤで
             信号を接続することで、その内容を視認することができます！<br><br> 補足: ベルトリーダーとストレージが
-            最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに
-            表示してみてください！"
+            最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに 表示してみてください！"
     reward_constant_signal:
         title: 定数信号
         desc: <strong>定数信号</strong>がワイヤレイヤで
-            利用可能になりました！これは例えば<strong>アイテムフィルタ</strong>に接続する
-            場合に便利です。<br><br> 定数信号は
-            <strong>形状</strong>、<strong>色</strong>または
+            利用可能になりました！　これは例えば<strong>アイテムフィルタ</strong>に接続する 場合に便利です。<br><br>
+            定数信号は <strong>形状</strong>、<strong>色</strong>または
             <strong>真偽値</strong>(1か0)を発信できます。
     reward_logic_gates:
         title: 論理ゲート
-        desc:
-            <strong>論理ゲート</strong>が利用可能になりました！ 興奮するほどでは ありませんが、これらは非常に優秀です！<br><br>
-            AND, OR, XOR and
-            NOTを計算できます！<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
+        desc: <strong>論理ゲート</strong>が利用可能になりました！　興奮する必要はありませんが、非常に優秀なのです！<br><br>
+            これでAND, OR, XOR,
+            NOTを計算できます。<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
         title: 仮想処理
-        desc: <strong>形状処理をシミュレート</strong>できる新しい部品を沢山追加しました！<br><br>
-            ワイヤレイヤで切断、回転、積層をシミュレートできるようになりました。
-            これからゲームを続けるにあたり、3つの方法があります:<br><br> -
-            <strong>完全自動化された機械</strong>を構築し、HUBが要求する形状を作成する(試してみることをオススメします！)。<br><br>
+        desc: <strong>形状処理をシミュレート</strong>できる新しい部品をたくさん追加しました！<br><br>
+            ワイヤレイヤで切断、回転、積層などをシミュレートできるようになりました！
+            ゲームを続けるにあたって、あなたには３つの選択肢があります：<br><br> -
+            <strong>完全自動化された工場</strong>を構築し、HUBが要求するあらゆる形状を作成する（試してみることをオススメします！）。<br><br>
             - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc:
-            "このレベルには報酬はありません。次にはあるでしょう！ <br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+        desc: "このレベルには報酬はありません。次にはあるでしょう！　<br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
             生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になりま\
             す！"
     no_reward_freeplay:
@@ -655,7 +607,7 @@ storyRewards:
         desc: やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 -
             これからは納品すべき形は<strong>ランダムに</strong>生成されます！<br><br>
             今後、ハブには<strong>スループット</strong>が必要になるため、要求する形状を自動的に納品するマシンを構築することを強くお勧めします！<br><br>
-            ハブは要求する形状をワイヤー層に出力するので、それを分析し自動的に調整する工場を作成するだけです。
+            ハブは要求する形状をワイヤレイヤに出力するので、それを分析し自動的に調整する工場を作成するだけです。
     reward_demo_end:
         title: お試し終了
         desc: デモ版の最後に到達しました！
@@ -771,8 +723,7 @@ settings:
             description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description:
-                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)
@@ -792,8 +743,7 @@ settings:
             description: 画面の端にカーソルを合わせることで移動できます。移動速度を設定することで、速度を変更できます。
         zoomToCursor:
             title: カーソルに向かってズーム
-            description: 有効にすると、カーソルの方に向かってズームします。
-                無効にすると、画面の中央に向かってズームします。
+            description: 有効にすると、カーソルの方に向かってズームします。 無効にすると、画面の中央に向かってズームします。
         mapResourcesScale:
             title: 資源アイコンのサイズ
             description: ズームアウトしたときの図形のサイズを調節します。
@@ -869,6 +819,10 @@ keybindings:
         placementDisableAutoOrientation: 自動向き合わせ無効
         placeMultiple: 配置モードの維持
         placeInverse: ベルトの自動向き合わせを逆転
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: このゲームについて
     body: >-
@@ -916,7 +870,7 @@ tips:
     - ストレージは左側の出力を優先します。
     - 増築可能なデザインを作るために時間を使ってください。それだけの価値があります！
     - <b>SHIFT</b>を使用すると複数の建物を一度に配置できます。
-    - <b>ALT</b>を押しながらベルトを設置すると、逆向きに設置できます。
+    - <b>ALT</b>を押しながらベルトを設置すると、向きを逆転できます。
     - 効率が重要です！
     - ハブから遠くに離れるほど、形状資源はより複雑な形になります。
     - 機械の速度には上限があるので、最大効率を得るためには入力を分割してください。

@@ -14,40 +14,14 @@ steamPage:
         Mentre que al principi només processes formes, més envant les hauràs de colorejar, pel que necessitaràs extreure y mesclar colors!
 
         Si compres el joc a Steam tendràs accés al joc complet, però també pots jugar a la demo a shapez.io primer i decidir-te més tard!
-    title_advantages: "Avantatges de la versió completa:"
-    advantages:
-        - <b>12 Nous nivells</b> per a un total de 26 nivells
-        - <b>18 Nous edificis</b> per construir una fàbrica completament
-          automatitzada!
-        - <b>20 Nivells de millora</b> per més hores de diversió!
-        - <b>Actualització de Cablejat</b> per a una dimensió totalment nova!
-        - <b>Mode Oscur</b>!
-        - Pots guardar jocs il·limitats
-        - Marcadors il·limitats
-        - Em dones suport! ❤️
-    title_future: Contingut Planejat
-    planned:
-        - Llibreria de plànols (Exclusiu de la versió completa)
-        - Trofeus d'Steam
-        - Mode Puzzle
-        - Minimapa
-        - Mods
-        - Mode Sandbox
-        - ... i mot més!
-    title_open_source: Aquest joc és de codi obert!
-    title_links: Enllaços
-    links:
-        discord: Discord Oficial
-        roadmap: Full de ruta
-        subreddit: Subreddit
-        source_code: Codi font (GitHub)
-        translate: Ajuda a traduir-lo
-    text_open_source: >-
-        Qualsevol pot contribuir, i estic activament involucrat en la comunitat
-        i intent prestar atenció a tots els suggeriments i tenir en compte tots
-        el comentaris.
-
-        Assegura't de mirar el meu tauler de Trello per al full de ruta complet!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Carregant
     error: Error
@@ -365,9 +339,6 @@ ingame:
             buildings:
                 title: 18 Nous edificis
                 desc: Automatitza la teva fàbrica completament!
-            savegames:
-                title: Guarda ∞ partides
-                desc: Tantes com vulguis!
             upgrades:
                 title: ∞ Nivells de millora
                 desc: La versió demo només en té 5!
@@ -383,6 +354,9 @@ ingame:
             support:
                 title: Dona'm suport
                 desc: EL desenvolupo en el meu temps lliure!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Cintes transportadores, Distribuidors i Túnels
@@ -1003,6 +977,10 @@ keybindings:
         comparator: Comparador
         item_producer: Productor d'items (Sandbox)
         copyWireValue: "Cables: Copiar valor davall el cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Sobre aquest Joc
     body: >-

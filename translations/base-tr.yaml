@@ -13,39 +13,14 @@ steamPage:
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
         Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez.io deneme sürümünü oynayıp sonradan karar verebilirsin!
-    title_advantages: Bağımsıza özel Avantajlar
-    advantages:
-        - <b>12 Yeni Seviye</b> toplamda 26 seviye.
-        - <b>18 Yeni Yapı</b> tam otomatik bir fabrika için!
-        - <b>20 Geliştirme Aşaması</b> saatlerce eğlence için!
-        - <b>Kablolar Güncellemesi</b> tamamen yeni bir boyut için!
-        - <b>Gece Modu</b>!
-        - Sınırsız Oyun Kaydı
-        - Sınırsız Yerimi
-        - Beni destekleyin! ❤️
-    title_future: Planlanan İçerik
-    planned:
-        - Taslak Kütüphanesi (Bağımsıza Özel)
-        - Steam Başarımları
-        - Yapboz Modu
-        - Küçük Harita
-        - Modlar
-        - Kum Kutusu Modu
-        - ... ve daha fazlası!
-    title_open_source: Bu oyun açık kaynak kodlu!
-    title_links: Bağlantılar
-    links:
-        discord: Resmi Discord Sunucusu
-        roadmap: Yol Haritası
-        subreddit: Subreddit
-        source_code: Kaynak kodu (GitHub)
-        translate: Çeviriye yardım et
-    text_open_source: >-
-        Herkes bu oyuna katkıda bulunabilir. Toplulukla aktif bir şekilde
-        ilgileniyorum. Bütün önerileri ve geri dönüşleri incelemeye çalışıyorum
-        ve mümkün olanları değerlendirmeye alıyorum.
-
-        Bütün yol haritasına Trello kartımda göz atmayı unutma!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Yüklenİyor
     error: Hata
@@ -203,12 +178,11 @@ dialogs:
         desc: Oyun kaydını buradan adlandırabilirsiniz.
     tutorialVideoAvailable:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek
-            ister misin?
+        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek ister misin?
     tutorialVideoAvailableForeignLanguage:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde.
-            İzlemek ister misin?
+        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde. İzlemek ister
+            misin?
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -302,33 +276,33 @@ ingame:
                 yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için
                 <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong>
                 tuşuyla taşıma bandının yönünü döndür."
-            2_1_place_cutter:
-                "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
-                Not: Kesici şekilleri yönünden bağımsız olarak her zaman <strong>yukarıdan aşağıya</strong>
-                keser."
-            2_2_place_trash: Kesicinin çıkış hatları doluysa <strong>durabilir</strong>!<br><br>
-                Bunun için kullanılmayan çıktılara <strong>çöp</strong>
-                yerleştirin.
-            2_3_more_cutters:
-                "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
-                yerleştir.<br><br> Not: <strong>0-9 tuşlarını</strong> kullanarak yapılara
-                daha hızlı ulaşabilirsin!"
-            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici yerleştir</strong> ve
-                bunları merkeze bağla.<br><br> Not: <strong>SHIFT tuşuna</strong>
-                basılı tutarak bant planlayıcıyı
+            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir
+                <strong>Kesici</strong> yerleştir!<br><br> Not: Kesici şekilleri
+                yönünden bağımsız olarak her zaman <strong>yukarıdan
+                aşağıya</strong> keser."
+            2_2_place_trash: Kesicinin çıkış hatları doluysa
+                <strong>durabilir</strong>!<br><br> Bunun için kullanılmayan
+                çıktılara <strong>çöp</strong> yerleştirin.
+            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki
+                kesici daha</strong> yerleştir.<br><br> Not: <strong>0-9
+                tuşlarını</strong> kullanarak yapılara daha hızlı
+                ulaşabilirsin!"
+            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici
+                yerleştir</strong> ve bunları merkeze bağla.<br><br> Not:
+                <strong>SHIFT tuşuna</strong> basılı tutarak bant planlayıcıyı
                 etkinleştir!"
-            21_1_place_quad_painter:
-                <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
-                <strong>beyaz</strong> ve <strong>kırmızı</strong> renkleri
-                elde edin!
-            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş yapın!<br><br>
-                Sonra boyayıcının <strong>dört girişini kablolara
+            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve
+                <strong>daireyi</strong>, <strong>beyaz</strong> ve
+                <strong>kırmızı</strong> renkleri elde edin!
+            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş
+                yapın!<br><br> Sonra boyayıcının <strong>dört girişini kablolara
                 bağlayın</strong>!
             21_3_place_button: Harika! Şimdi bir <strong>Anahtar</strong> yerleştirin ve onu
                 kablolarla bağlayın!
-            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1) gönderin</strong> ve bununla
-                boyayıcıyı aktifleştirin.<br><br> Not: Bütün girişleri bağlamanıza gerek yok!
-                Sadece iki tanesini kabloyla bağlamayı deneyin."
+            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1)
+                gönderin</strong> ve bununla boyayıcıyı aktifleştirin.<br><br>
+                Not: Bütün girişleri bağlamanıza gerek yok! Sadece iki tanesini
+                kabloyla bağlamayı deneyin."
     colors:
         red: Kırmızı
         green: Yeşil
@@ -361,9 +335,6 @@ ingame:
             buildings:
                 title: 18 Yeni Yapı
                 desc: Fabrikanı tamamen otomatikleştir!
-            savegames:
-                title: ∞ Oyun Kayıtları
-                desc: Canın ne kadar isterse!
             upgrades:
                 title: ∞ Geliştirme Aşaması
                 desc: Bu deneme sürümünde sadece 5 tane var!
@@ -379,6 +350,9 @@ ingame:
             support:
                 title: Beni destekleyin
                 desc: Boş zamanımda bu oyunu geliştiriyorum!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Taşıma Bandı, Dağıtıcılar & Tüneller
@@ -712,10 +686,10 @@ storyRewards:
             dene!"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın!
-            Bu yapı örneğin <strong>eşya filtrelerine</strong> bağlanabilir.<br><br>
-            Sabit sinyal <strong>şekil</strong>, <strong>renk</strong> veya
-            <strong>ikili değer</strong> (1 veya 0)
+        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın! Bu
+            yapı örneğin <strong>eşya filtrelerine</strong>
+            bağlanabilir.<br><br> Sabit sinyal <strong>şekil</strong>,
+            <strong>renk</strong> veya <strong>ikili değer</strong> (1 veya 0)
             gönderelebilir.
     reward_logic_gates:
         title: Mantık Kapıları
@@ -736,13 +710,13 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce <strong>Kablo Katmanını</strong> açtın: Normal oyunun bulunduğu
-            katmanın üzerinde ayrı bir katmandır ve bir sürü yeni özelliği
-            vardır!<br><br> Başlangıç olarak senin için <strong>Dörtlü
-            Boyayıcıyı</strong> açıyorum. - Kablo katmanında boyamak için
-            istediğin hatları bağla! <br><br> Kablo katmanına geçiş yapmak için
-            <strong>E tuşunu </strong> kullan. <br><br> Not: İpuçlarını kablo eğitimlerini
-            görmek için ayarlarda aktifleştirmeyi unutma."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -990,6 +964,10 @@ keybindings:
         comparator: Karşılaştırıcı
         item_producer: Eşya Üretici (Kum Kutusu)
         copyWireValue: "Kablo: Fare altındaki değeri kopyala"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Oyun Hakkında
     body: >-

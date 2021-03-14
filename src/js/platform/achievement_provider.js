@@ -250,8 +250,8 @@ export class AchievementCollection {
         this.add(ACHIEVEMENTS.throughputBp50, this.createRateOptions(SHAPE_BP, 50));
         this.add(ACHIEVEMENTS.throughputLogo25, this.createRateOptions(SHAPE_LOGO, 25));
         this.add(ACHIEVEMENTS.throughputLogo50, this.createRateOptions(SHAPE_LOGO, 50));
-        this.add(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 25));
-        this.add(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 50));
+        this.add(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 10));
+        this.add(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 20));
         this.add(ACHIEVEMENTS.trash1000, {
             init: this.initTrash1000,
             isValid: this.isTrash1000Valid,

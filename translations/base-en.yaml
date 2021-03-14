@@ -1207,6 +1207,7 @@ tips:
     - You don't need to divide up items evenly for full efficiency.
     - Holding <b>SHIFT</b> will activate the belt planner, letting you place long lines of belts easily.
     - Cutters always cut vertically, regardless of their orientation.
+    - Mix all three primary colors to get white.
     - The storage buffer prioritises the left output.
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>SHIFT</b> lets you place multiple buildings at a time.

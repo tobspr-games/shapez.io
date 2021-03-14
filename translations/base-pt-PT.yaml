@@ -14,39 +14,14 @@ steamPage:
         Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
 
         Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
-    title_advantages: Vantagens da versão completa
-    advantages:
-        - <b>12 Novos Níveis</b> para um total de 26 Níves
-        - <b>18 Novas Construções</b> para uma fábrica totalmente automatizada!
-        - <b>20 Níveis de Melhoria</b> para muitas horas de diversão!
-        - <b>Atualização de Fios</b> para uma dimensão totalmente nova!
-        - <b>Modo escuro</b>!
-        - Savegames ilimitados
-        - Marcos ilimitados
-        - Ajuda-me! ❤️
-    title_future: Conteúdo Planeado
-    planned:
-        - Biblioteca Blueprint (Exclusivo na versão Completa)
-        - Conquistas na Steam
-        - Modo Puzzle
-        - Minimapa
-        - Modos
-        - Modo Sandbox
-        - ... e Muito Mais!
-    title_open_source: Este jogo é open source (código aberto)!
-    title_links: Links
-    links:
-        discord: Discord Oficial
-        roadmap: Roteiro de desenvolvimento
-        subreddit: Subreddit
-        source_code: Código Fonte (GitHub)
-        translate: Ajuda a Traduzir
-    text_open_source: >-
-        Qualquer um pode contribuir, estou ativamente envolvido na comunidade e
-        tento ver todas as sugestões e ter em consideração o feedback recebido
-        assim que possível.
-
-        Segue o meu trello board para veres todo o roteiro de desenvolvimento!
+    what_others_say: O que dizem sobre o shapez.io
+    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado enquanto o jogo,
+        e o tempo parece que voa.
+    notch_comment: Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir
+        como criar computorizar no shapez.io
+    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta.
+        Jogo de fábrica relaxante que não me deixa parar de fazer as minhas linhas
+        cada vez mais eficientes.
 global:
     loading: A Carregar
     error: Erro
@@ -208,12 +183,12 @@ dialogs:
         desc: Podes renomear o teu savegame aqui.
     tutorialVideoAvailable:
         title: Tutorial Disponível
-        desc: Existe um vídeo de tutorial disponível para este nível! Gostarias de
-            o ver?
+        desc: Existe um vídeo de tutorial disponível para este nível! Gostarias de o
+            ver?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Disponível
-        desc: Existe um vídeo de tutorial disponível para este nível, mas apenas
-            está disponível em Inglês. Gostarias de o ver?
+        desc: Existe um vídeo de tutorial disponível para este nível, mas apenas está
+            disponível em Inglês. Gostarias de o ver?
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -308,30 +283,33 @@ ingame:
                 e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica:
                 Pressiona <strong>SHIFT</strong> para colocar vários extratores,
                 e usa <strong>R</strong> para os rodar."
-            2_1_place_cutter: "Agora coloca um <strong>Cortador</strong> para cortares os circulos
-                em duas metades!<br><br> PS: O cortador corta sempre <strong>de cima para
-                baixo</strong> independentemente da sua orientação"
+            2_1_place_cutter: "Agora coloca um <strong>Cortador</strong> para cortares os
+                circulos em duas metades!<br><br> PS: O cortador corta sempre
+                <strong>de cima para baixo</strong> independentemente da sua
+                orientação"
             2_2_place_trash: O cortador pode <strong>encravar e parar</strong>!<br><br> Usa
-                um <strong>lixo</strong> para te livrares do atual (!) não
-                é necessário desperdício.
-            2_3_more_cutters: "Bom trabalho! Agora coloca<strong>mais 2 cortadores</strong> para acelerades
-                este progresso lento!<br><br> PS: Usa os <strong>atalhos
-                0-9</strong> para acederes às contruções mais rapidamente!"
+                um <strong>lixo</strong> para te livrares do atual (!) não é
+                necessário desperdício.
+            2_3_more_cutters: "Bom trabalho! Agora coloca<strong>mais 2 cortadores</strong>
+                para acelerades este progresso lento!<br><br> PS: Usa os
+                <strong>atalhos 0-9</strong> para acederes às contruções mais
+                rapidamente!"
             3_1_rectangles: "Agora vamos extrair alguns retângulos! <strong>Constrói 4
-                extratores</strong> e conecta-os ao edifício central.<br><br> PS:
-                Pressiona <strong>SHIFT</strong> enquanto arrastas um tapete rolante
-                para ativares o planeador de tapetes!"
-            21_1_place_quad_painter: Coloca o <strong>pintor quádruplo</strong> e arranja alguns
-                <strong>círculos</strong>, cores <strong>branca</strong> e
-                <strong>vermelha</strong>!
+                extratores</strong> e conecta-os ao edifício central.<br><br>
+                PS: Pressiona <strong>SHIFT</strong> enquanto arrastas um tapete
+                rolante para ativares o planeador de tapetes!"
+            21_1_place_quad_painter: Coloca o <strong>pintor quádruplo</strong> e arranja
+                alguns <strong>círculos</strong>, cores <strong>branca</strong>
+                e <strong>vermelha</strong>!
             21_2_switch_to_wires: Troca para a camada de fios pressionando
-                <strong>E</strong>!<br><br> A seguir <strong>conecta todas as quatro
-                entradas</strong> do pintor com fios!
-            21_3_place_button: Fantástico! Agora coloca o <strong>Interruptor</strong> e conecta-o
-                com os fios!
-            21_4_press_button: "Pressiona o interruptor para que ele <strong>emita um
-                sinal verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
-                não tens de conectar todas as entradas! Tenta conectar apenas duas."
+                <strong>E</strong>!<br><br> A seguir <strong>conecta todas as
+                quatro entradas</strong> do pintor com fios!
+            21_3_place_button: Fantástico! Agora coloca o <strong>Interruptor</strong> e
+                conecta-o com os fios!
+            21_4_press_button: "Pressiona o interruptor para que ele <strong>emita um sinal
+                verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
+                não tens de conectar todas as entradas! Tenta conectar apenas
+                duas."
     colors:
         red: Vermelho
         green: Verde
@@ -340,7 +318,7 @@ ingame:
         purple: Roxo
         cyan: Ciano
         white: Branco
-        uncolored: Incolor
+        uncolored: Sem cor
         black: Preto
     shapeViewer:
         title: Camadas
@@ -364,9 +342,6 @@ ingame:
             buildings:
                 title: 18 Novas contruções
                 desc: Para uma fábrica totalmente automatizada!
-            savegames:
-                title: Savegames ∞
-                desc: Tantos quanto o teu coração desejar!
             upgrades:
                 title: ∞ Níveis de melhoria
                 desc: Nesta versão demo apenas tens 5!
@@ -382,6 +357,9 @@ ingame:
             support:
                 title: Ajuda-me
                 desc: Eu desenvolvo este jogo no meu tempo livre!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Tapetes, Distribuidores e Túneis
@@ -699,8 +677,8 @@ storyRewards:
         desc: Parabéns! Já agora, está planeado mais conteúdo para o jogo completo!
     reward_balancer:
         title: Distribuidor
-        desc: O <strong>Distribuidor</strong> foi desbloqueado - Pode ser
-            usado para construir fábricas maiores ao <strong>dividir e misturar
+        desc: O <strong>Distribuidor</strong> foi desbloqueado - Pode ser usado para
+            construir fábricas maiores ao <strong>dividir e misturar
             itens</strong> para vários tapetes!
     reward_merger:
         title: Misturador (compacto)
@@ -753,8 +731,8 @@ storyRewards:
             mecânicas!<br><br> Para o inicio eu dei-te o <strong>Pintor
             Quádruplo</strong> - Conecta as entradas que queres pintar na camada
             de fios!<br><br> Para trocares para a camada de fios, pressiona a
-            tecla <strong>E</strong>. <br><br> PS: <strong>Ativa as dicas</strong> nas
-            definições para ativares o tutorial de fios!"
+            tecla <strong>E</strong>. <br><br> PS: <strong>Ativa as
+            dicas</strong> nas definições para ativares o tutorial de fios!"
     reward_filter:
         title: Filtro de Itens
         desc: Desbloquaste o <strong>Filtro de Itens</strong>! Vai mandar itens ou para
@@ -905,8 +883,8 @@ settings:
                 direito do rato enquanto colocas um edifício.
         lowQualityTextures:
             title: Texturas de baixa qualidade (Feio)
-            description: Usa texturas de baixa qualidade para melhorar o desempenho. Isto vai
-                tornar o jogo parecer muito feio!
+            description: Usa texturas de baixa qualidade para melhorar o desempenho. Isto
+                vai tornar o jogo parecer muito feio!
         displayChunkBorders:
             title: Mostrar bordas de limites (chunk borders)
             description: O jogo está dividido em partes de 16x16 quadrados, se esta
@@ -928,8 +906,8 @@ settings:
                 velociade depende da definição de velocidade de movimentação.
         zoomToCursor:
             title: Aproximar no cursor
-            description: Se ativado o zoom será na direção da posição
-                do teu rato, de outra forma será para o centro do ecrã.
+            description: Se ativado o zoom será na direção da posição do teu rato, de outra
+                forma será para o centro do ecrã.
         mapResourcesScale:
             title: Tamanho de Recursos no Mapa
             description: Controla o tamanho das formas na visão geral do mapa (aplicando
@@ -1008,6 +986,10 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copia o valor debaixo do cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Sobre o Jogo
     body: >-
@@ -1039,7 +1021,8 @@ tips:
     - Se empilhar não funciona, tenta trocar as entradas.
     - Podes alternar a direção do planeador de tapete rolante ao pressionar
       <b>R</b>.
-    - Ao pressionares <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
+    - Ao pressionares <b>CTRL</b> podes arrastar tapetes rolantes sem
+      auto-orientação.
     - Os rácios continuam os mesmos, desde que todos os upgrades estejam no
       mesmo Nível.
     - Execução em série é mais eficiente que em paralelo.
@@ -1068,12 +1051,12 @@ tips:
     - Usa balanceadores para maximizar a tua eficiência.
     - Organização é importante. Tenta não cruzar demasiados tapetes.
     - Planeia antecipadamente, ou vai ser um grande caos!
-    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloqueares
-      upgrades.
+    - Não removas as tuas fábricas antigas! Vais precisar delas para
+      desbloqueares upgrades.
     - Tenta superar o nível 20 sozinho sem procurar ajuda!
     - Não complicas as coisas, tenta continuar simples e irás muito longe.
-    - Talvez precises de reutilizar fábricas, mais tarde no jogo. Planeia as tuas
-      fábricas para serem reutilizáveis.
+    - Talvez precises de reutilizar fábricas, mais tarde no jogo. Planeia as
+      tuas fábricas para serem reutilizáveis.
     - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com
       empilhadoras.
     - Moinhos de vento e cataventos completos nunca aparecem naturalmente.
@@ -1090,8 +1073,8 @@ tips:
     - Junta todas as cores primárias para fazeres branco!
     - Tu tens um mapa infinito, não limites a tua fábrica, expande!
     - Tenta também Factorio! É o meu jogo favorito.
-    - O cortador quádruplo corta no sentido dos ponteiros do relógio começando no canto
-      superior direito!
+    - O cortador quádruplo corta no sentido dos ponteiros do relógio começando
+      no canto superior direito!
     - Podes fazer download dos teus savegames no menu principal!
     - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de
       verificar a página de configurações.

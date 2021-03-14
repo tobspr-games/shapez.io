@@ -51,6 +51,7 @@ function gulptasksStandalone($, gulp) {
                         start: pj.scripts.start,
                     },
                     devDependencies: pj.devDependencies,
+                    dependencies: pj.dependencies,
                     optionalDependencies: pj.optionalDependencies,
                 },
                 null,

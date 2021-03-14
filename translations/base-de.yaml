@@ -7,41 +7,17 @@ steamPage:
 
         shapez.io ist ein entspanntes Spiel, in dem du Fabriken zur automatisierten Produktion von geometrischen Formen bauen musst.
 
-        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren,
-        um die Anforderungen zu erfüllen - Da hilft nur skalieren!
+        Mit steigendem Level werden die Formen immer komplexer, und du musst dich auf der unendlich großen Karte ausbreiten. Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
 
-        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die
-        Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
-    title_advantages: Vorteile der Vollversion
-    advantages:
-        - <b>12 Neue Level</b> für insgesamt 26 Level
-        - <b>18 Neue Gebäude</b> für eine komplett automatisierte Fabrik!
-        - <b>20 Upgrade-Stufen</b> für viele Stunden Spielspaß
-        - <b>Wires-Update</b> für eine komplett neue Dimension!
-        - <b>Dark-Mode</b>!
-        - Unbegrenzte Speicherstände
-        - Unbegrenzte Wegpunkte
-        - Unterstütze mich! ❤️
-    title_future: Geplante Inhalte
-    planned:
-        - Blaupausen-Bibliothek
-        - Errungenschaften auf Steam
-        - Puzzel-Modus
-        - Minimap
-        - Modunterstützung
-        - Sandkastenmodus
-        - ... und noch viel mehr!
-    title_open_source: Dieses Spiel ist quelloffen!
-    text_open_source: Jeder kann etwas zum Spiel beitragen! Ich engagiere mich aktiv
-        in der Community und versuche alle Vorschläge zu berücksichtigen. Die
-        vollständige Roadmap findet ihr auf meinem Trello-Board!
-    title_links: Links
-    links:
-        discord: Offizieller Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Quellcode (GitHub)
-        translate: Hilf beim Übersetzen
+        Während du am Anfang nur Formen verarbeitest, musst du diese später auch einfärben - Dafür musst du Farben extrahieren und mischen! Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
+    what_others_say: Was andere über shapez.io sagen
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Laden
     error: Fehler
@@ -356,9 +332,6 @@ ingame:
             buildings:
                 title: 18 Neue Gebäude
                 desc: Automatisiere deine Fabrik!
-            savegames:
-                title: ∞ Speicherstände
-                desc: So viele dein Herz begehrt!
             upgrades:
                 title: ∞ Upgrade-Stufen
                 desc: Diese Demo hat nur 5!
@@ -374,6 +347,9 @@ ingame:
             support:
                 title: Unterstütze Mich
                 desc: Ich entwickle in meiner Freizeit!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Fließbänder, Verteiler & Tunnel
@@ -521,7 +497,8 @@ buildings:
                 sind.
         not:
             name: NICHT-Gatter
-            description: Kehrt den Wert um. Macht aus einer "1" eine "0" und eine "0" aus einer "1".
+            description: Kehrt den Wert um. Macht aus einer "1" eine "0" und eine "0" aus
+                einer "1".
         xor:
             name: XODER-Gatter
             description: Gibt eine "1" aus, wenn genau einer der Eingänge wahr (Form, Farbe
@@ -1011,6 +988,10 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Über dieses Spiel
     body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a

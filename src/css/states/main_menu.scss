@@ -43,9 +43,10 @@
         .languageChoose {
             @include S(border-radius, 8px);
             border: solid #222428;
-            background-color: #fff;
             @include S(border-width, 2px);
-            background-size: cover;
+            background-color: #222428 !important;
+            background-size: contain !important;
+            background-position: center center !important;
             opacity: 0.8;
         }
     }
@@ -182,7 +183,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: rgb(133, 58, 231);
+            color: #3291e9;
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -483,7 +484,7 @@
         @include S(grid-gap, 4px);
 
         &.china {
-            grid-template-columns: auto auto 1fr;
+            grid-template-columns: auto 1fr;
         }
 
         .author {
