@@ -108,229 +108,229 @@ export class MetaHubBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaHubBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static canPipet = () => false;
-
-    static setupEntityComponents = [
-        entity => entity.addComponent(new HubComponent()),
-        entity =>
-            entity.addComponent(
-                new ItemProcessorComponent({
-                    inputsPerCharge: 1,
-                    processorType: enumItemProcessorTypes.hub,
-                })
-            ),
-
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 2),
-                            type: enumPinSlotType.logicalEjector,
-                            direction: enumDirection.left,
-                        },
-                    ],
-                })
-            ),
-
-        entity =>
-            entity.addComponent(
-                new ItemAcceptorComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            directions: [enumDirection.top, enumDirection.left],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(1, 0),
-                            directions: [enumDirection.top],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(2, 0),
-                            directions: [enumDirection.top],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(3, 0),
-                            directions: [enumDirection.top, enumDirection.right],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(0, 3),
-                            directions: [enumDirection.bottom, enumDirection.left],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(1, 3),
-                            directions: [enumDirection.bottom],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(2, 3),
-                            directions: [enumDirection.bottom],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(3, 3),
-                            directions: [enumDirection.bottom, enumDirection.right],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(0, 1),
-                            directions: [enumDirection.left],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(0, 2),
-                            directions: [enumDirection.left],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(0, 3),
-                            directions: [enumDirection.left],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(3, 1),
-                            directions: [enumDirection.right],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(3, 2),
-                            directions: [enumDirection.right],
-                            filter: "shape",
-                        },
-                        {
-                            pos: new Vector(3, 3),
-                            directions: [enumDirection.right],
-                            filter: "shape",
-                        },
-                    ],
-                })
-            ),
-    ];
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#eb5555",
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(4, 4),
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => null,
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root => false,
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "regular",
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.ItemProcessor.inputsPerCharge = 1;
-
-            entity.components.ItemProcessor.type = enumItemProcessorTypes.hub;
-
-            entity.components.WiredPins.setSlots([
-                {
-                    pos: new Vector(0, 2),
-                    type: enumPinSlotType.logicalEjector,
-                    direction: enumDirection.left,
-                },
-            ]);
-
-            entity.components.ItemAcceptor.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.top, enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 0),
-                    directions: [enumDirection.top],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(2, 0),
-                    directions: [enumDirection.top],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 0),
-                    directions: [enumDirection.top, enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 3),
-                    directions: [enumDirection.bottom, enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(1, 3),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(2, 3),
-                    directions: [enumDirection.bottom],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 3),
-                    directions: [enumDirection.bottom, enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 1),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 2),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(0, 3),
-                    directions: [enumDirection.left],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 1),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 2),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-                {
-                    pos: new Vector(3, 3),
-                    directions: [enumDirection.right],
-                    filter: "shape",
-                },
-            ]);
-        },
-    };
 }
+
+MetaHubBuilding.canPipet = () => false;
+
+MetaHubBuilding.setupEntityComponents = [
+    entity => entity.addComponent(new HubComponent()),
+    entity =>
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.hub,
+            })
+        ),
+
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 2),
+                        type: enumPinSlotType.logicalEjector,
+                        direction: enumDirection.left,
+                    },
+                ],
+            })
+        ),
+
+    entity =>
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.top, enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 0),
+                        directions: [enumDirection.top],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(2, 0),
+                        directions: [enumDirection.top],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 0),
+                        directions: [enumDirection.top, enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        directions: [enumDirection.bottom, enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(1, 3),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(2, 3),
+                        directions: [enumDirection.bottom],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        directions: [enumDirection.bottom, enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 1),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 2),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 1),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 2),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                ],
+            })
+        ),
+];
+
+MetaHubBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#eb5555",
+};
+
+MetaHubBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(4, 4),
+};
+
+MetaHubBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaHubBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaHubBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => null,
+};
+
+MetaHubBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root => false,
+};
+
+MetaHubBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "regular",
+};
+
+MetaHubBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaHubBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.ItemProcessor.inputsPerCharge = 1;
+
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.hub;
+
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 2),
+                type: enumPinSlotType.logicalEjector,
+                direction: enumDirection.left,
+            },
+        ]);
+
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [enumDirection.top, enumDirection.left],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(1, 0),
+                directions: [enumDirection.top],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(2, 0),
+                directions: [enumDirection.top],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(3, 0),
+                directions: [enumDirection.top, enumDirection.right],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(0, 3),
+                directions: [enumDirection.bottom, enumDirection.left],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(1, 3),
+                directions: [enumDirection.bottom],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(2, 3),
+                directions: [enumDirection.bottom],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(3, 3),
+                directions: [enumDirection.bottom, enumDirection.right],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(0, 1),
+                directions: [enumDirection.left],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(0, 2),
+                directions: [enumDirection.left],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(0, 3),
+                directions: [enumDirection.left],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(3, 1),
+                directions: [enumDirection.right],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(3, 2),
+                directions: [enumDirection.right],
+                filter: "shape",
+            },
+            {
+                pos: new Vector(3, 3),
+                directions: [enumDirection.right],
+                filter: "shape",
+            },
+        ]);
+    },
+};

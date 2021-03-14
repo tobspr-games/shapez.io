@@ -94,68 +94,68 @@ export class MetaDisplayBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaDisplayBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.bottom,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                    ],
-                })
-            ),
-        entity => entity.addComponent(new DisplayComponent()),
-    ];
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => null,
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#aaaaaa",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display),
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "regular",
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.WiredPins.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.bottom,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-            ]);
-        },
-    };
 }
+
+MetaDisplayBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
+    entity => entity.addComponent(new DisplayComponent()),
+];
+
+MetaDisplayBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => null,
+};
+
+MetaDisplayBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaDisplayBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#aaaaaa",
+};
+
+MetaDisplayBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaDisplayBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaDisplayBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display),
+};
+
+MetaDisplayBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "regular",
+};
+
+MetaDisplayBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaDisplayBuilding.renderPins = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaDisplayBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.bottom,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+        ]);
+    },
+};

@@ -107,98 +107,97 @@ export class MetaTransistorBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaTransistorBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.top,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.left,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.bottom,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                    ],
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new LogicGateComponent({
-                    type: enumLogicGateType.transistor,
-                })
-            ),
-    ];
-
-    static variants = {
-        mirrored: "mirrored",
-    };
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
-        [MetaTransistorBuilding.variants.mirrored]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-        [MetaTransistorBuilding.variants.mirrored]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#823cab",
-        [MetaTransistorBuilding.variants.mirrored]: () => "#823cab",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-        [MetaTransistorBuilding.variants.mirrored]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-        [MetaTransistorBuilding.variants.mirrored]: () => true,
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => false,
-        [MetaTransistorBuilding.variants.mirrored]: () => false,
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-        [MetaTransistorBuilding.variants.mirrored]: () => "wires",
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-        [MetaTransistorBuilding.variants.mirrored]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "wires",
-        [MetaTransistorBuilding.variants.mirrored]: root => "wires",
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.WiredPins.slots[1].direction = enumDirection.left;
-        },
-
-        [MetaTransistorBuilding.variants.mirrored]: (entity, rotationVariant) => {
-            entity.components.WiredPins.slots[1].direction = enumDirection.right;
-        },
-    };
 }
+
+MetaTransistorBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new LogicGateComponent({
+                type: enumLogicGateType.transistor,
+            })
+        ),
+];
+
+MetaTransistorBuilding.variants = {
+    mirrored: "mirrored",
+};
+
+MetaTransistorBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) =>
+        generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
+    [MetaTransistorBuilding.variants.mirrored]: (entity, rotationVariant) =>
+        generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
+};
+
+MetaTransistorBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+    [MetaTransistorBuilding.variants.mirrored]: () => new Vector(1, 1),
+};
+
+MetaTransistorBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#823cab",
+    [MetaTransistorBuilding.variants.mirrored]: () => "#823cab",
+};
+
+MetaTransistorBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+    [MetaTransistorBuilding.variants.mirrored]: () => true,
+};
+
+MetaTransistorBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+    [MetaTransistorBuilding.variants.mirrored]: () => true,
+};
+
+MetaTransistorBuilding.renderPins = {
+    [defaultBuildingVariant]: () => false,
+    [MetaTransistorBuilding.variants.mirrored]: () => false,
+};
+
+MetaTransistorBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+    [MetaTransistorBuilding.variants.mirrored]: () => "wires",
+};
+
+MetaTransistorBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+    [MetaTransistorBuilding.variants.mirrored]: root =>
+        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates),
+};
+
+MetaTransistorBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "wires",
+    [MetaTransistorBuilding.variants.mirrored]: root => "wires",
+};
+
+MetaTransistorBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.WiredPins.slots[1].direction = enumDirection.left;
+    },
+
+    [MetaTransistorBuilding.variants.mirrored]: (entity, rotationVariant) => {
+        entity.components.WiredPins.slots[1].direction = enumDirection.right;
+    },
+};

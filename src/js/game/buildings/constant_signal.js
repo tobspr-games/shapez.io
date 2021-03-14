@@ -107,70 +107,70 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaConstantSignalBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.top,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                    ],
-                })
-            ),
-        entity => entity.addComponent(new ConstantSignalComponent({})),
-    ];
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#2b84fd",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_constant_signal),
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "wires",
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.WiredPins.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                    type: enumPinSlotType.logicalEjector,
-                },
-            ]);
-        },
-    };
 }
+
+MetaConstantSignalBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                ],
+            })
+        ),
+    entity => entity.addComponent(new ConstantSignalComponent({})),
+];
+
+MetaConstantSignalBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) =>
+        generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
+};
+
+MetaConstantSignalBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaConstantSignalBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#2b84fd",
+};
+
+MetaConstantSignalBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaConstantSignalBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaConstantSignalBuilding.renderPins = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaConstantSignalBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root =>
+        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_constant_signal),
+};
+
+MetaConstantSignalBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "wires",
+};
+
+MetaConstantSignalBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaConstantSignalBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+                type: enumPinSlotType.logicalEjector,
+            },
+        ]);
+    },
+};

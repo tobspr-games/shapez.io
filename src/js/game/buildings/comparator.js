@@ -107,96 +107,96 @@ export class MetaComparatorBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaComparatorBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        (entity, rotationVariant) =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.top,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.left,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.right,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                    ],
-                })
-            ),
-        (entity, rotationVariant) =>
-            entity.addComponent(
-                new LogicGateComponent({
-                    type: enumLogicGateType.compare,
-                })
-            ),
-    ];
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: () => null,
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#823cab",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.WiredPins.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.right,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-            ]);
-
-            entity.components.LogicGate.type = enumLogicGateType.compare;
-        },
-    };
 }
+
+MetaComparatorBuilding.setupEntityComponents = [
+    (entity, rotationVariant) =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
+    (entity, rotationVariant) =>
+        entity.addComponent(
+            new LogicGateComponent({
+                type: enumLogicGateType.compare,
+            })
+        ),
+];
+
+MetaComparatorBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: () => null,
+};
+
+MetaComparatorBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaComparatorBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#823cab",
+};
+
+MetaComparatorBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaComparatorBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaComparatorBuilding.renderPins = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaComparatorBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaComparatorBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root =>
+        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+};
+
+MetaComparatorBuilding.layerByVariant = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaComparatorBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+                type: enumPinSlotType.logicalEjector,
+            },
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.left,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.right,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+        ]);
+
+        entity.components.LogicGate.type = enumLogicGateType.compare;
+    },
+};

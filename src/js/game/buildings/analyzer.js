@@ -106,98 +106,98 @@ export class MetaAnalyzerBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaAnalyzerBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.left,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.right,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.bottom,
-                            type: enumPinSlotType.logicalAcceptor,
-                        },
-                    ],
-                })
-            ),
-
-        entity =>
-            entity.addComponent(
-                new LogicGateComponent({
-                    type: enumLogicGateType.analyzer,
-                })
-            ),
-    ];
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#555759",
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
-    };
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) =>
-            generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 0]),
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "wires",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.WiredPins.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.left,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.right,
-                    type: enumPinSlotType.logicalEjector,
-                },
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.bottom,
-                    type: enumPinSlotType.logicalAcceptor,
-                },
-            ]);
-
-            entity.components.LogicGate.type = enumLogicGateType.analyzer;
-        },
-    };
 }
+
+MetaAnalyzerBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        type: enumPinSlotType.logicalAcceptor,
+                    },
+                ],
+            })
+        ),
+
+    entity =>
+        entity.addComponent(
+            new LogicGateComponent({
+                type: enumLogicGateType.analyzer,
+            })
+        ),
+];
+
+MetaAnalyzerBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#555759",
+};
+
+MetaAnalyzerBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root =>
+        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing),
+};
+
+MetaAnalyzerBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) =>
+        generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 0]),
+};
+
+MetaAnalyzerBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaAnalyzerBuilding.renderPins = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaAnalyzerBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "wires",
+};
+
+MetaAnalyzerBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaAnalyzerBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaAnalyzerBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaAnalyzerBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.WiredPins.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.left,
+                type: enumPinSlotType.logicalEjector,
+            },
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.right,
+                type: enumPinSlotType.logicalEjector,
+            },
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.bottom,
+                type: enumPinSlotType.logicalAcceptor,
+            },
+        ]);
+
+        entity.components.LogicGate.type = enumLogicGateType.analyzer;
+    },
+};

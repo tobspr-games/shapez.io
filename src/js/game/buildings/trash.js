@@ -118,7 +118,7 @@ export class MetaTrashBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        MetaTrashBuilding.setupEntityComponents.forEach(func => func(entity));
+        MetaTrashBuilding.setupEntityComponents.forEach(func => func.bind(this)(entity));
     }
 
     /**
@@ -129,92 +129,93 @@ export class MetaTrashBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaTrashBuilding.componentVariations[variant].bind(this)(entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new ItemAcceptorComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            directions: [
-                                enumDirection.top,
-                                enumDirection.right,
-                                enumDirection.bottom,
-                                enumDirection.left,
-                            ],
-                        },
-                    ],
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new ItemProcessorComponent({
-                    inputsPerCharge: 1,
-                    processorType: enumItemProcessorTypes.trash,
-                })
-            ),
-        function (entity) {
-            // @ts-ignore
-            this.addAchievementReceiver(entity);
-        },
-    ];
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) =>
-            generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#ed1d5d",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => false,
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "regular",
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => null,
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_and_trash),
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.ItemAcceptor.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    directions: [
-                        enumDirection.top,
-                        enumDirection.right,
-                        enumDirection.bottom,
-                        enumDirection.left,
-                    ],
-                },
-            ]);
-
-            entity.components.ItemProcessor.inputsPerCharge = 1;
-
-            entity.components.ItemProcessor.type = enumItemProcessorTypes.trash;
-        },
-    };
 }
+
+MetaTrashBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [
+                            enumDirection.top,
+                            enumDirection.right,
+                            enumDirection.bottom,
+                            enumDirection.left,
+                        ],
+                    },
+                ],
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: enumItemProcessorTypes.trash,
+            })
+        ),
+
+    function (entity) {
+        // @ts-ignore
+        this.addAchievementReceiver(entity);
+    },
+];
+
+MetaTrashBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) =>
+        generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]),
+};
+
+MetaTrashBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaTrashBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#ed1d5d",
+};
+
+MetaTrashBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaTrashBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaTrashBuilding.renderPins = {
+    [defaultBuildingVariant]: () => false,
+};
+
+MetaTrashBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "regular",
+};
+
+MetaTrashBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => null,
+};
+
+MetaTrashBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root =>
+        root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_and_trash),
+};
+
+MetaTrashBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [
+                    enumDirection.top,
+                    enumDirection.right,
+                    enumDirection.bottom,
+                    enumDirection.left,
+                ],
+            },
+        ]);
+
+        entity.components.ItemProcessor.inputsPerCharge = 1;
+
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.trash;
+    },
+};

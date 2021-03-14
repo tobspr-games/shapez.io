@@ -121,141 +121,137 @@ export class MetaReaderBuilding extends MetaBuilding {
     updateVariants(entity, rotationVariant, variant) {
         MetaReaderBuilding.componentVariations[variant](entity, rotationVariant);
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new WiredPinsComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.right,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.left,
-                            type: enumPinSlotType.logicalEjector,
-                        },
-                    ],
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new ItemAcceptorComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            directions: [enumDirection.bottom],
-                        },
-                    ],
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new ItemEjectorComponent({
-                    slots: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.top,
-                        },
-                    ],
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new ItemProcessorComponent({
-                    processorType: enumItemProcessorTypes.reader,
-                    inputsPerCharge: 1,
-                })
-            ),
-        entity =>
-            entity.addComponent(
-                new BeltUnderlaysComponent({
-                    underlays: [
-                        {
-                            pos: new Vector(0, 0),
-                            direction: enumDirection.top,
-                        },
-                    ],
-                })
-            ),
-        entity => entity.addComponent(new BeltReaderComponent()),
-    ];
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => "#25fff2",
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static additionalStatistics = {
-        [defaultBuildingVariant]: root => [
-            [
-                T.ingame.buildingPlacement.infoTexts.speed,
-                formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed()),
-            ],
-        ],
-    };
-
-    static overlayMatrices = {
-        [defaultBuildingVariant]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
-    };
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root =>
-            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_belt_reader),
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "regular",
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => "wires",
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.ItemAcceptor.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    directions: [enumDirection.bottom],
-                },
-            ]);
-
-            entity.components.ItemEjector.setSlots([
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                },
-            ]);
-
-            entity.components.ItemProcessor.inputsPerCharge = 1;
-
-            entity.components.ItemProcessor.type = enumItemProcessorTypes.reader;
-
-            entity.components.BeltUnderlays.underlays = [
-                {
-                    pos: new Vector(0, 0),
-                    direction: enumDirection.top,
-                },
-            ];
-        },
-    };
 }
+
+MetaReaderBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new WiredPinsComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                        type: enumPinSlotType.logicalEjector,
+                    },
+                ],
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                ],
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new ItemEjectorComponent({
+                slots: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new ItemProcessorComponent({
+                processorType: enumItemProcessorTypes.reader,
+                inputsPerCharge: 1,
+            })
+        ),
+    entity =>
+        entity.addComponent(
+            new BeltUnderlaysComponent({
+                underlays: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                ],
+            })
+        ),
+    entity => entity.addComponent(new BeltReaderComponent()),
+];
+
+MetaReaderBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaReaderBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => "#25fff2",
+};
+
+MetaReaderBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaReaderBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaReaderBuilding.additionalStatistics = {
+    [defaultBuildingVariant]: root => [
+        [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed())],
+    ],
+};
+
+MetaReaderBuilding.overlayMatrices = {
+    [defaultBuildingVariant]: (entity, rotationVariant) =>
+        generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+};
+
+MetaReaderBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root => root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_belt_reader),
+};
+
+MetaReaderBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "regular",
+};
+
+MetaReaderBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => "wires",
+};
+
+MetaReaderBuilding.renderPins = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaReaderBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.ItemAcceptor.setSlots([
+            {
+                pos: new Vector(0, 0),
+                directions: [enumDirection.bottom],
+            },
+        ]);
+
+        entity.components.ItemEjector.setSlots([
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+            },
+        ]);
+
+        entity.components.ItemProcessor.inputsPerCharge = 1;
+
+        entity.components.ItemProcessor.type = enumItemProcessorTypes.reader;
+
+        entity.components.BeltUnderlays.underlays = [
+            {
+                pos: new Vector(0, 0),
+                direction: enumDirection.top,
+            },
+        ];
+    },
+};

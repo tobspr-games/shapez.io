@@ -281,84 +281,79 @@ export class MetaBeltBuilding extends MetaBuilding {
             rotationVariant: 0,
         };
     }
-
-    static setupEntityComponents = [
-        entity =>
-            entity.addComponent(
-                new BeltComponent({
-                    direction: enumDirection.top, // updated later
-                })
-            ),
-    ];
-    static silhouetteColors = {
-        [defaultBuildingVariant]: () => THEME.map.chunkOverview.beltColor,
-    };
-
-    static variantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
-
-    static overlayMatrices = {
-        [enumDirection.top]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
-        [enumDirection.left]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
-        [enumDirection.right]: (entity, rotationVariant) =>
-            generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
-    };
-
-    static placementSounds = {
-        [defaultBuildingVariant]: () => SOUNDS.placeBelt,
-    };
-
-    static rotationVariants = [0, 1, 2];
-
-    static avaibleVariants = {
-        [defaultBuildingVariant]: root => true,
-    };
-
-    static dimensions = {
-        [defaultBuildingVariant]: () => new Vector(1, 1),
-    };
-
-    static isRemovable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isReplaceable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static isRotateable = {
-        [defaultBuildingVariant]: () => true,
-    };
-
-    static renderPins = {
-        [defaultBuildingVariant]: () => null,
-    };
-
-    static layerPreview = {
-        [defaultBuildingVariant]: () => null,
-    };
-
-    static layerByVariant = {
-        [defaultBuildingVariant]: root => "regular",
-    };
-
-    static componentVariations = {
-        [defaultBuildingVariant]: (entity, rotationVariant) => {
-            entity.components.Belt.direction = MetaBeltBuilding.variantToRotation[rotationVariant];
-        },
-    };
-
-    static additionalStatistics = {
-        /**
-         * @param {*} root
-         * @returns {Array<[string, string]>}
-         */
-        [defaultBuildingVariant]: root => [
-            [
-                T.ingame.buildingPlacement.infoTexts.speed,
-                formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed()),
-            ],
-        ],
-    };
 }
+
+MetaBeltBuilding.setupEntityComponents = [
+    entity =>
+        entity.addComponent(
+            new BeltComponent({
+                direction: enumDirection.top, // updated later
+            })
+        ),
+];
+
+MetaBeltBuilding.silhouetteColors = {
+    [defaultBuildingVariant]: () => THEME.map.chunkOverview.beltColor,
+};
+
+MetaBeltBuilding.variantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
+
+MetaBeltBuilding.overlayMatrices = {
+    [enumDirection.top]: (entity, rotationVariant) => generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
+    [enumDirection.left]: (entity, rotationVariant) => generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
+    [enumDirection.right]: (entity, rotationVariant) => generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
+};
+
+MetaBeltBuilding.placementSounds = {
+    [defaultBuildingVariant]: () => SOUNDS.placeBelt,
+};
+
+MetaBeltBuilding.rotationVariants = [0, 1, 2];
+
+MetaBeltBuilding.avaibleVariants = {
+    [defaultBuildingVariant]: root => true,
+};
+
+MetaBeltBuilding.dimensions = {
+    [defaultBuildingVariant]: () => new Vector(1, 1),
+};
+
+MetaBeltBuilding.isRemovable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaBeltBuilding.isReplaceable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaBeltBuilding.isRotateable = {
+    [defaultBuildingVariant]: () => true,
+};
+
+MetaBeltBuilding.renderPins = {
+    [defaultBuildingVariant]: () => null,
+};
+
+MetaBeltBuilding.layerPreview = {
+    [defaultBuildingVariant]: () => null,
+};
+
+MetaBeltBuilding.layerByVariant = {
+    [defaultBuildingVariant]: root => "regular",
+};
+
+MetaBeltBuilding.componentVariations = {
+    [defaultBuildingVariant]: (entity, rotationVariant) => {
+        entity.components.Belt.direction = MetaBeltBuilding.variantToRotation[rotationVariant];
+    },
+};
+
+MetaBeltBuilding.additionalStatistics = {
+    /**
+     * @param {*} root
+     * @returns {Array<[string, string]>}
+     */
+    [defaultBuildingVariant]: root => [
+        [T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(root.hubGoals.getBeltBaseSpeed())],
+    ],
+};
