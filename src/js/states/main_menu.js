@@ -82,6 +82,9 @@ export class MainMenuState extends GameState {
                     }
                     <div class="buttons"></div>
                 </div>
+                <div class="bottomContainer">
+                    <div class="buttons"></div>
+                </div>
             </div>
 
             <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
@@ -304,6 +307,22 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
+
+        const modeButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
+        removeAllChildren(modeButtonContainer);
+
+        const puzzleModeButton = makeButton(
+            modeButtonContainer,
+            ["styledButton"],
+            T.mainMenu.puzzleMode
+        );
+
+        modeButtonContainer.appendChild(puzzleModeButton);
+        this.trackClicks(puzzleModeButton, this.onPuzzleModeButtonClicked);
+    }
+
+    onPuzzleModeButtonClicked() {
+        this.moveToState("InGameState");
     }
 
     onSteamLinkClicked() {

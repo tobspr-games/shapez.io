@@ -116,6 +116,7 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
     savegameUnnamed: Unnamed
+    puzzleMode: Puzzle Mode
 
 dialogs:
     buttons:

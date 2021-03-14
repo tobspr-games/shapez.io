@@ -439,6 +439,27 @@
         }
     }
 
+    .bottomContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        @include S(padding-top, 10px);
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 10px;
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
     .footer {
         display: grid;
         flex-grow: 1;
