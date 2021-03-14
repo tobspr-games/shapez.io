@@ -53,7 +53,7 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
                 this.drawnUids.add(entity.uid);
 
                 if (ItemProcessorOverlaysSystem.processorOverlayStatic[requirement])
-                    ItemProcessorOverlaysSystem.processorOverlayStatic[requirement](
+                    ItemProcessorOverlaysSystem.processorOverlayStatic[requirement].bind(this)(
                         parameters,
                         chunk,
                         entity,
