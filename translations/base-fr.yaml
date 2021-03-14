@@ -11,14 +11,14 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Ce que les gens disent à propos de Shapez.io
+    nothernlion_comment: Ce jeu est génial - je m'amuse beaucoup en jouant,
+        et le temps passe très vite.
+    notch_comment: Oh mince. Je devrais vraiment dormir, mais je crois que je viens de comprendre
+        comment fabriquer un ordinateur sur shapez.io.
+    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer.
+        Un jeu d'usine tranquille qui ne me laisse pas arrêter de rendre mes lignes plus
+        efficace.
 global:
     loading: Chargement
     error: Erreur
@@ -577,12 +577,11 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Vous venez de déverrouiller le <strong>découpeur de formes</strong>, qui 
+            coupe les formes en deux de haut en bas <strong>quel que soit son orientation
+            </strong>!<br><br>Assurez-vous de vous débarrasser des déchets, ou sinon
+            <strong>il s'encrassera et se bloquera.</strong> Dans ce but, je vous ai donné 
+            la <strong>poubelle</strong>, qui détruit tout ce que vous y mettez!
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -639,9 +638,9 @@ storyRewards:
             fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        desc: Vous avez débloqué un <strong>splitter</strong> un variant du
+            <strong>balanceur</strong> - Il accepte une entrée et les divisent
+            en deux !
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -716,14 +715,14 @@ storyRewards:
             gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotator, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            normally.<br><br> Whatever you choose, remember to have fun!
+        desc: Je viens de donner tout un tas de nouveaux bâtiments qui vous permettent de
+            <strong>simuler le traitement des formes</strong>!<br><br> Vous pouvez
+            maintenant simuler un cutteur, un rotateur, un empileur et plus encore sur les 
+            convoyeurs ! Avec cela, vous avez maintenant trois options pour continuer le jeu :
+            <br><br> - Construire une <strong>machine automatisée</strong> pour créer toutes 
+            les formes possibles demandée par le HUB (je vous recommande d'essayer !).<br><br> 
+            - Construire quelque chose de cool avec des fils.<br><br> - Continuer à jouer
+            normalement.<br><br>Quoi que vous choisissiez, n'oubliez pas de vous amuser !
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -996,10 +995,10 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser l’orientation des convoyeurs
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Orientation: Point Haut"
+        rotateToDown: "Orientation: Point Bas"
+        rotateToRight: "Orientation: Point Droit"
+        rotateToLeft: "Orientation: Point Gauche"
 about:
     title: À propos de ce jeu
     body: >-
