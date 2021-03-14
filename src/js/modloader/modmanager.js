@@ -92,7 +92,7 @@ export class ModManager {
     addMod(url, fromFile = false) {
         if (fromFile && G_IS_STANDALONE) {
             return new Promise((resolve, reject) => {
-                const modCode = getIPCRenderer().sendSync("fs-sync-job", {
+                const modCode = getIPCRenderer().send("fs-job", {
                     folder: "mods",
                     type: "read",
                     filename: url,

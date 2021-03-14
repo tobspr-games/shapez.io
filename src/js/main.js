@@ -135,13 +135,13 @@ window.onload = async () => {
     let instance = undefined;
     let modFolderContents = [];
     if (G_IS_STANDALONE) {
-        modFolderContents = getIPCRenderer().sendSync("fs-sync-job", {
+        modFolderContents = getIPCRenderer().send("fs-job", {
             folder: "mods",
             type: "readDir",
             filename: "",
         }).data;
         if (modFolderContents.includes("modpack.json")) {
-            instance = getIPCRenderer().sendSync("fs-sync-job", {
+            instance = getIPCRenderer().send("fs-job", {
                 folder: "mods",
                 type: "read",
                 filename: "modpack.json",
