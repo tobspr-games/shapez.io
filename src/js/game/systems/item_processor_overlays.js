@@ -144,10 +144,10 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
 
         parameters.context.globalAlpha = 1;
     }
-
-    static processorOverlayStatic = {
-        [enumItemProcessorRequirements.painterQuad]: function (parameters, chunk, entity, processorComp) {
-            this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
-        },
-    };
 }
+
+ItemProcessorOverlaysSystem.processorOverlayStatic = {
+    [enumItemProcessorRequirements.painterQuad]: function (parameters, chunk, entity, processorComp) {
+        this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
+    },
+};

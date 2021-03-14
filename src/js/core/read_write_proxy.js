@@ -318,7 +318,7 @@ export class ReadWriteProxy {
         if (!data) {
             return ExplainedResult.bad("Data is empty");
         }
-        if (!savegameInterfaces[data.version]) {
+        if (!savegameInterfaces[data.version] && data.version !== this.getCurrentVersion()) {
             return ExplainedResult.bad(
                 `Data has invalid version: ${data.version} (expected ${this.getCurrentVersion()})`
             );

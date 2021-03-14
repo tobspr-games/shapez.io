@@ -80,77 +80,23 @@ window.onload = async () => {
 
     logSection("Boot Process", "#f9a825");
 
-    // var modpack = {
-    //     mods: [{
-    //             url: "http://localhost:3006/mod",
-    //             id: "a18121cf-fc7c-4f23-906d-b7ab0512bbc8",
-    //             config: {},
-    //             settings: {
-    //                 hasMakeModButton: {
-    //                     value: true,
-    //                 },
-    //                 // enum: {
-    //                 //     value: "new test",
-    //                 // },
-    //                 // range: {
-    //                 //     value: 10,
-    //                 // },
-    //             },
-    //         },
-    //         // {
-    //         //     url: "http://localhost:3010/mod",
-    //         //     id: "cbae38a0-7ac5-4a0a-9985-da3110b1a6e8",
-    //         //     config: {},
-    //         //     settings: {
-    //         //         hasHubPlacement: { value: true },
-    //         //     },
-    //         // },
-    //         // {
-    //         //     url: "http://localhost:3011/mod",
-    //         //     id: "cba4229f-851b-4f01-807f-2a0c86c3aed7",
-    //         //     config: {},
-    //         //     settings: {},
-    //         // },
-    //         // {
-    //         //     url: "http://localhost:3012/mod",
-    //         //     id: "b6eaf06b-a0f7-48ac-b219-4e97fd275beb",
-    //         //     config: {},
-    //         //     settings: {},
-    //         // },
-    //         // {
-    //         //     url: "http://localhost:3013/mod",
-    //         //     id: "ca2fb74a-3827-4805-b5fe-8a23bf913c65",
-    //         //     config: {},
-    //         //     settings: {},
-    //         // },
-    //         // {
-    //         //     url: "http://localhost:3014/mod",
-    //         //     id: "3ae3751d-6dfb-4504-92dc-99a38a3d8c06",
-    //         //     config: {},
-    //         //     settings: {},
-    //         // },
-    //     ],
-    // };
     let user = undefined;
     let instance = undefined;
     let modFolderContents = [];
     if (G_IS_STANDALONE) {
-        const dirResult = await getIPCRenderer().invoke("fs-job", {
+        modFolderContents = getIPCRenderer().sendSync("fs-sync-job", {
             folder: "mods",
             type: "readDir",
             filename: "",
-        });
-        if (dirResult.success) modFolderContents = dirResult.data;
-
+        }).data;
         if (modFolderContents.includes("modpack.json")) {
-            const instanceResult = await getIPCRenderer().invoke("fs-job", {
+            instance = getIPCRenderer().sendSync("fs-sync-job", {
                 folder: "mods",
                 type: "read",
                 filename: "modpack.json",
             });
-            if (instanceResult.success) instance = JSON.parse(instanceResult.data);
         }
-    } else {
+    } else if (!G_IS_DEV) {
         user = JSON.parse(localStorage.getItem("user"));
         instance = JSON.parse(localStorage.getItem("instance"));
         // instance = {
@@ -175,7 +121,7 @@ window.onload = async () => {
             if (mod.split(".").pop() !== "js") continue;
             modMgr.addMod(mod, true);
         }
-    } else await modMgr.addModPackMods();
+    } else if (modMgr.modPack) await modMgr.addModPackMods();
     modMgr.loadMods();
 
     initDrawUtils();
