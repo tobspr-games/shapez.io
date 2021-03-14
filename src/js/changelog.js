@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.3.1",
+        date: "beta",
+        entries: [
+            "Fixed savegames getting corrupt in rare conditions",
+            "Fixed game crashing sometimes since the achievements update",
+        ],
+    },
+    {
         version: "1.3.0",
         date: "12.03.2020",
         skin: "achievements",
