@@ -454,6 +454,10 @@ const fullVersionLevels = generateLevelDefinitions(false);
 const demoVersionLevels = generateLevelDefinitions(true);
 
 export class RegularGameMode extends GameMode {
+    static getId() {
+        return "Regular";
+    }
+
     constructor(root) {
         super(root);
     }

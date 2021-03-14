@@ -9,6 +9,7 @@ import {
     registerCanvas,
 } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
+import { gGameModeRegistry } from "./game_mode_registry";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
@@ -31,7 +32,7 @@ import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
-import { RegularGameMode } from "./modes/regular";
+import { GameMode } from "./game_mode";
 import { ProductionAnalytics } from "./production_analytics";
 import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
@@ -104,7 +105,7 @@ export class GameCore {
         root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init game mode
-        root.gameMode = new RegularGameMode(root);
+        root.gameMode = GameMode.create(root);
 
         // Init classes
         root.camera = new Camera(root);

@@ -207,6 +207,11 @@ export class MainMenuState extends GameState {
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
+            if (globalConfig.debug.testPuzzleMode) {
+                this.onPuzzlePlayButtonClicked();
+                return;
+            }
+
             const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
                 this.resumeGame(games[0]);
@@ -308,21 +313,65 @@ export class MainMenuState extends GameState {
             buttonContainer.appendChild(importButtonElement);
         }
 
-        const modeButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
-        removeAllChildren(modeButtonContainer);
+        const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
+        removeAllChildren(bottomButtonContainer);
 
         const puzzleModeButton = makeButton(
-            modeButtonContainer,
+            bottomButtonContainer,
             ["styledButton"],
             T.mainMenu.puzzleMode
         );
 
-        modeButtonContainer.appendChild(puzzleModeButton);
+        bottomButtonContainer.appendChild(puzzleModeButton);
         this.trackClicks(puzzleModeButton, this.onPuzzleModeButtonClicked);
     }
 
+    renderPuzzleModeMenu() {
+        const savegames = this.htmlElement.querySelector(".mainContainer .savegames");
+
+        if (savegames) {
+            savegames.remove();
+        }
+
+        const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
+        removeAllChildren(buttonContainer);
+
+        const playButtonElement = makeButtonElement(
+            ["playButton", "styledButton"],
+            T.mainMenu.play
+        );
+
+        buttonContainer.appendChild(playButtonElement);
+        this.trackClicks(playButtonElement, this.onPuzzlePlayButtonClicked);
+
+        const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
+        removeAllChildren(bottomButtonContainer);
+
+        const backButton = makeButton(
+            bottomButtonContainer,
+            ["styledButton"],
+            T.mainMenu.back
+        );
+
+        bottomButtonContainer.appendChild(backButton);
+        this.trackClicks(backButton, this.onBackButtonClicked);
+    }
+
+    onPuzzlePlayButtonClicked() {
+        const savegame = this.app.savegameMgr.createNewSavegame();
+
+        this.moveToState("InGameState", {
+            savegame,
+        });
+    }
+
     onPuzzleModeButtonClicked() {
-        this.moveToState("InGameState");
+        this.renderPuzzleModeMenu();
+    }
+
+    onBackButtonClicked() {
+        this.renderMainMenu();
+        this.renderSavegames();
     }
 
     onSteamLinkClicked() {

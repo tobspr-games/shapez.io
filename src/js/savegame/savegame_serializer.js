@@ -33,6 +33,7 @@ export class SavegameSerializer {
             camera: root.camera.serialize(),
             time: root.time.serialize(),
             map: root.map.serialize(),
+            gameMode: root.gameMode.serialize(),
             entityMgr: root.entityMgr.serialize(),
             hubGoals: root.hubGoals.serialize(),
             pinnedShapes: root.hud.parts.pinnedShapes.serialize(),

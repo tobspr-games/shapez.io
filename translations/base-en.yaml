@@ -117,6 +117,7 @@ mainMenu:
     savegameLevelUnknown: Unknown Level
     savegameUnnamed: Unnamed
     puzzleMode: Puzzle Mode
+    back: Back
 
 dialogs:
     buttons:

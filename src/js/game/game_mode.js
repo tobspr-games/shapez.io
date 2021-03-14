@@ -1,8 +1,10 @@
 /* typehints:start */
 import { enumHubGoalRewards } from "./tutorial_goals";
+import { GameRoot } from "./root";
 /* typehints:end */
 
-import { GameRoot } from "./root";
+import { gGameModeRegistry } from "../core/global_registries";
+import { types, BasicSerializableObject } from "../savegame/serialization";
 
 /** @typedef {{
  *   shape: string,
@@ -24,13 +26,43 @@ import { GameRoot } from "./root";
  *   throughputOnly?: boolean
  * }} LevelDefinition */
 
-export class GameMode {
-    /**
-     *
-     * @param {GameRoot} root
-     */
+export class GameMode extends BasicSerializableObject {
+    /** @returns {string} */
+    static getId() {
+        abstract;
+        return "unknown-mode";
+    }
+
+    static getSchema() {
+        return {
+            id: types.string
+        }
+    }
+
+    static create (root) {
+        let id;
+
+        if (!root.savegame.gameMode || !root.savegame.gameMode.id) {
+            id = "Regular";
+        } else {
+            id = root.savegame.gameMode.id
+        }
+
+        const Mode = gGameModeRegistry.findById(id);
+
+        return new Mode(root);
+    }
+
+    /** @param {GameRoot} root */
     constructor(root) {
+        super();
         this.root = root;
+        this.id = this.getId();
+    }
+
+    getId() {
+        // @ts-ignore
+        return this.constructor.getId();
     }
 
     /**
