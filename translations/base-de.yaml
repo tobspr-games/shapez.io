@@ -348,8 +348,8 @@ ingame:
                 title: Unterstütze Mich
                 desc: Ich entwickle in meiner Freizeit!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Erfolge
+                desc: Hol sie dir alle!
 shopUpgrades:
     belt:
         name: Fließbänder, Verteiler & Tunnel
@@ -913,8 +913,7 @@ settings:
                 position, otherwise in the middle of the screen.
         mapResourcesScale:
             title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            description: Legt die Größe der Formen (beim rauszoomen) auf der Kartenübersicht fest.
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
@@ -988,10 +987,10 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platziermodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotieren: Nach oben zeigend"
+        rotateToDown: "Rotieren: Nach unten zeigend"
+        rotateToRight: "Rotieren: Nach rechts zeigend"
+        rotateToLeft: "Rotieren: Nach links zeigend"
 about:
     title: Über dieses Spiel
     body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a
