@@ -5,6 +5,7 @@ export class PuzzlePlayGameMode extends GameMode {
         return "PuzzlePlay";
     }
 
+    /** param {GameRoot} root */
     constructor(root) {
         super(root);
     }

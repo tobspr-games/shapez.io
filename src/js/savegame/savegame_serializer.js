@@ -131,6 +131,7 @@ export class SavegameSerializer {
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
         errorReason = errorReason || root.map.deserialize(savegame.map);
+        errorReason = errorReason || root.gameMode.deserialize(savegame.gameMode);
         errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals, root);
         errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
         errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);

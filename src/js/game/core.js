@@ -83,7 +83,7 @@ export class GameCore {
      * @param {import("../states/ingame").InGameState} parentState
      * @param {Savegame} savegame
      */
-    initializeRoot(parentState, savegame) {
+    initializeRoot(parentState, savegame, gameModeId) {
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
@@ -105,7 +105,7 @@ export class GameCore {
         root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init game mode
-        root.gameMode = GameMode.create(root);
+        root.gameMode = GameMode.create(root, gameModeId);
 
         // Init classes
         root.camera = new Camera(root);

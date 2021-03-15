@@ -1,7 +1,33 @@
+/* typehints:start */
+import { enumHubGoalRewards } from "../tutorial_goals";
+import { GameRoot } from "../root";
+/* typehints:end */
+
 import { findNiceIntegerValue } from "../../core/utils";
 import { GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { types } from "../../savegame/serialization";
+
+/** @typedef {{
+ *   shape: string,
+ *   amount: number
+ * }} UpgradeRequirement */
+
+/** @typedef {{
+ *   required: Array<UpgradeRequirement>
+ *   improvement?: number,
+ *   excludePrevious?: boolean
+ * }} TierRequirement */
+
+/** @typedef {Array<TierRequirement>} UpgradeTiers */
+
+/** @typedef {{
+ *   shape: string,
+ *   required: number,
+ *   reward: enumHubGoalRewards,
+ *   throughputOnly?: boolean
+ * }} LevelDefinition */
 
 const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const finalGameShape = "RuCw--Cw:----Ru--";
@@ -458,24 +484,48 @@ export class RegularGameMode extends GameMode {
         return "Regular";
     }
 
-    constructor(root) {
-        super(root);
+    static getSchema() {
+        return {
+            test: types.string
+        }
     }
 
+    constructor(root) {
+        super(root);
+        this.test = "test";
+    }
+
+    /**
+     * Should return all available upgrades
+     * @returns {Object<string, UpgradeTiers>}
+     */
     getUpgrades() {
         return this.root.app.restrictionMgr.getHasExtendedUpgrades()
             ? fullVersionUpgrades
             : demoVersionUpgrades;
     }
 
+    /**
+     * Should return whether free play is available or if the game stops
+     * after the predefined levels
+     * @returns {boolean}
+     */
     getIsFreeplayAvailable() {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
     }
 
+    /**
+     * Returns the blueprint shape key
+     * @returns {string}
+     */
     getBlueprintShapeKey() {
         return blueprintShape;
     }
 
+    /**
+     * Returns the goals for all levels including their reward
+     * @returns {Array<LevelDefinition>}
+     */
     getLevelDefinitions() {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay()
             ? fullVersionLevels
