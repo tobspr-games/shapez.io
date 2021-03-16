@@ -341,7 +341,7 @@ buildings:
             name: 隧道
             description: 可以從其他輸送帶或建築底下方運送物品。
         tier2:
-            name: 貳級隧道
+            name: 二級隧道
             description: 可以從其他輸送帶或建築底下方運送物品。
     cutter:
         default:
@@ -525,8 +525,8 @@ storyRewards:
             它可以將開採出來的資源<strong>傳遞</strong>給其他的開採機，使得資源提取更加高效！<br><br> PS:
             工具列中舊的開採機已被取代。"
     reward_underground_belt_tier_2:
-        title: 貳級隧道
-        desc: <strong>貳級隧道</strong>變體已解鎖。這個隧道有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
+        title: 二級隧道
+        desc: <strong>二級隧道</strong>變體已解鎖。這個隧道有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
     reward_cutter_quad:
         title: 四分切割
         desc: 您已解鎖了<strong>切割機</strong>的變體：四分切割機。
@@ -809,10 +809,10 @@ keybindings:
         comparator: 比對機
         item_producer: 物品生產機（沙盒模式）
         copyWireValue: 電路：複製數值於游標底下
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: 轉動: 向上
+        rotateToDown: 轉動: 向下
+        rotateToRight: 轉動: 向右
+        rotateToLeft: 轉動: 向左
 about:
     title: 關於遊戲
     body: >-
