@@ -11,14 +11,14 @@ steamPage:
         Dan jita itu tidak cukup, kamu juga perlu memproduksi bentuk secara eksponensial untuk memenuhkan kebutuhan - hal yang membantu hanyalah memperbesar pabrik! Walaupun kamu hanya perlu memproses bentuk di awal, nantinya kamu harus memberinya warna - dengan mengekstrak dan mencampur warna!
 
         Membeli game ini di Steam memberikan kamu akses ke versi lengkap, namun kamu juga dapat mencoba demo dan memutuskan nanti!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Apa yang orang lain katakan tentang shapez.io
+    nothernlion_comment: Game ini bagus - Saya sangat menikmati waktu saya ketika
+        memainkan game ini, dan waktu telah berlalu.
+    notch_comment: Oh sial. Saya benar-benar harus tidur, namun sepertinya saya baru
+        menemukan bagaimana cara membuat komputer di shapez.io
+    steam_review_comment: Game ini telah mencuri hidup saya dan saya tidak
+        menginginkannya kembali. Game pembuatan pabrik yang sangat santai yang tidak
+        akan membiarkan saya berhenti membuat pabrik saya lebih efisien.
 global:
     loading: Memuat
     error: Terjadi kesalahan
