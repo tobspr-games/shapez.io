@@ -348,7 +348,7 @@ ingame:
                 title: Unterstütze Mich
                 desc: Ich entwickle in meiner Freizeit!
             achievements:
-                title: Erfolge
+                title: Errungenschaften
                 desc: Hol sie dir alle!
 shopUpgrades:
     belt:
@@ -912,8 +912,8 @@ settings:
             description: If activated the zoom will happen in the direction of your mouse
                 position, otherwise in the middle of the screen.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Legt die Größe der Formen (beim rauszoomen) auf der Kartenübersicht fest.
+            title: Größe der Ressourcen auf der Karte
+            description:Legt die Größe der Ressourcen beim Herauszoomen fest.
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
