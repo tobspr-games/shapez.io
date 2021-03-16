@@ -451,13 +451,13 @@
         justify-content: center;
         align-items: flex-end;
         width: 100%;
-        grid-template-columns: auto auto auto auto 1fr;
+        grid-template-columns: auto auto auto 1fr;
         @include S(padding, 10px);
         box-sizing: border-box;
         @include S(grid-gap, 4px);
 
         &.china {
-            grid-template-columns: auto auto 1fr;
+            grid-template-columns: auto 1fr;
         }
 
         .author {
@@ -507,15 +507,6 @@
                 background-color: $linkBgHover;
             }
 
-            &.nftLink {
-                background-color: #3291e9;
-                color: #fff;
-
-                &:hover {
-                    background-color: darken(#3291e9, 5);
-                }
-            }
-
             .thirdpartyLogo {
                 display: inline-block;
                 @include S(width, 50px);
@@ -529,12 +520,6 @@
                     /* @load-async */
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
-                }
-
-                &.nftLogo {
-                    /* @load-async */
-                    background-image: uiResource("main_menu/opensea.png");
-                    background-size: 80%;
                 }
             }
         }

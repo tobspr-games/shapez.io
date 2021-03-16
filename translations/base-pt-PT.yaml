@@ -14,14 +14,14 @@ steamPage:
         Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
 
         Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: O que dizem sobre o shapez.io
+    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado enquanto o jogo,
+        e o tempo parece que voa.
+    notch_comment: Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir
+        como criar computorizar no shapez.io
+    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta.
+        Jogo de fábrica relaxante que não me deixa parar de fazer as minhas linhas
+        cada vez mais eficientes.
 global:
     loading: A Carregar
     error: Erro
@@ -318,7 +318,7 @@ ingame:
         purple: Roxo
         cyan: Ciano
         white: Branco
-        uncolored: Incolor
+        uncolored: Sem cor
         black: Preto
     shapeViewer:
         title: Camadas

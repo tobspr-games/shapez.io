@@ -13,14 +13,14 @@ steamPage:
         Enquanto no começo você apenas processa as formas, mais a frente você deve pintá-las - para isso você deve extrair e misturar cores!
 
         Comprar o jogo na Steam te garante acesso à versão completa, mas você pode jogar a versão demo em shapez.io primeiro e decidir depois!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: O que as pessoas dizem sobre o shapez.io
+    nothernlion_comment: Este jogo é ótimo - estou me divertindo muito jogando
+        e o tempo passou voando.
+    notch_comment: Droga. Eu realmente deveria dormir, mas eu acho que acabei
+        de descobrir como fazer um computador no shapez.io
+    steam_review_comment: Este jogo roubou minha vida e eu não a quero de volta.
+        Jogo de fábrica muito descontraído que não me deixa parar de fazer
+        linhas mais eficientes.
 global:
     loading: Carregando
     error: Erro
@@ -214,7 +214,7 @@ ingame:
         uncolored: Sem cor
     buildingPlacement:
         cycleBuildingVariants: Aperte <key> para variações.
-        hotkeyLabel: "Hotkey: <key>"
+        hotkeyLabel: "Tecla: <key>"
         infoTexts:
             speed: Velocidade
             range: Distância
@@ -299,7 +299,7 @@ ingame:
                 não for necessário.
             2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2
                 cortadores</strong> para acelerar este processo lento!<br><br>
-                PS: Use as <strong> hotkeys 0-9 </strong> para acessar as
+                PS: Use as <strong> teclas 0-9 </strong> para acessar as
                 construções mais rápido!"
             3_1_rectangles: "Vamos extrair alguns retângulos! <strong>Construa 4
                 extratores</strong> e conecte-os ao hub.<br><br> PS: Segure

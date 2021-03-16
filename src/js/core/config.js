@@ -16,7 +16,6 @@ export const THIRDPARTY_URLS = {
     github: "https://github.com/tobspr/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
-    nftTokens: "https://opensea.io/collection/shapez",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
 
