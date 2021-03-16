@@ -9,14 +9,11 @@ steamPage:
         しかし、それだけでは不十分です。指数関数的に増大していく形状の要求量に対応する必要があり――「スケーリング」が、唯一の対抗策と成り得ます。また、最初は形状を加工するだけですが、後々着色も必要になってきます。色を抽出して混ぜ合わせましょう！
 
         Steamでゲームを購入するとフルバージョンで遊べますが、まずshapez.ioでデモをプレイし、その後で決めることもできます！
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: shapez.ioプレイヤーの反応：
+    nothernlion_comment: これはすごいゲーム。プレイ体験が最高な上に時間の溶け方が尋常でない。
+    notch_comment: いややばいって。マジで寝なきゃなんだけど、今ならshapez.ioで計算機組めそうな気がする。
+    steam_review_comment: このゲームは私の生活を奪い去っていったが、返して欲しいとは思わない。
+        いくらでも気の向くままに生産ラインを効率化させてくれる、そんなとても穏やかな工場ゲームだ。
 global:
     loading: ロード中
     error: エラー
@@ -60,9 +57,9 @@ mainMenu:
     importSavegame: インポート
     openSourceHint: このゲームはオープンソースです
     discordLink: 公式Discordサーバー
-    helpTranslate: 翻訳を助けてください！
+    helpTranslate: 翻訳にご協力ください！
     madeBy: <author-link>によって作られました
-    browserWarning: このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることでこの問題は避けられます。
+    browserWarning: このゲームはお使いのブラウザでは速度が落ちることがあります。スタンドアローン版を入手するか、Chromeでプレイすることで解決できます。
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
     savegameUnnamed: 無名のデータ
@@ -153,7 +150,7 @@ dialogs:
         desc: スクリーンショット出力を実行します。この処理は工場の全体像があまりに大きいと、 ゲームが遅くなったりクラッシュしてしまう可能性があります！
     renameSavegame:
         title: セーブデータの名前を変更
-        desc: セーブデータの名前を変更することができます
+        desc: セーブデータの名前を変更できます
     tutorialVideoAvailable:
         title: チュートリアル視聴可能
         desc: このレベルで利用できるチュートリアル動画があります！　確認しますか？
@@ -179,7 +176,7 @@ ingame:
         cutSelection: カット
         copySelection: コピー
         clearSelection: 選択範囲をクリア
-        pipette: ピペット
+        pipette: スポイト
         switchLayers: レイヤーを変更
     colors:
         red: 赤
@@ -266,7 +263,7 @@ ingame:
             2_1_place_cutter: "次に、<strong>切断機</strong>を設置し、円を 二分割します！<br><br> 追記:
                 切断機はそれの向きに関わらず、<strong>縦の線</strong>で切断します。"
             2_2_place_trash: 切断機は<strong>詰まる</strong>場合があります!<br><br>
-                <strong>ゴミ箱</strong>を利用して、不必要な部品を廃棄することができます。
+                <strong>ゴミ箱</strong>を利用して、不必要な部品を廃棄できます。
             2_3_more_cutters: "いいですね！　<strong>更に2つ以上の切断機</strong>を設置して処理をスピードアップさせましょう！<br>\
                 <br> 追記: <strong>0から9 のホットキー</strong>を使用すると素早く部品にアクセスできます。"
             3_1_rectangles: "それでは四角形を抽出しましょう！　<strong>4つの抽出機を作成</strong>してそれをハブに接続します。<br><\
@@ -299,8 +296,8 @@ ingame:
                 title: 新しい18個の設置物
                 desc: あなたの工場を完全自動化しましょう！
             upgrades:
-                title: 20個のアップデートティア
-                desc: このデモバージョンでは5ティアのみです！
+                title: 無限のアップグレード段階
+                desc: このデモバージョンでは5段階のみです！
             markers:
                 title: 無限個のマップマーカー
                 desc: これでもうあなたの工場を見失いません！
@@ -314,20 +311,20 @@ ingame:
                 title: 製作者をサポート
                 desc: 余暇に制作しています！
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: アチーブメント
+                desc: 取り尽くせ！
 shopUpgrades:
     belt:
-        name: ベルト、ディストリビュータとトンネル
+        name: ベルト、分配機とトンネル
         description: スピード x<currentMult> → x<newMult>
     miner:
-        name: 抽出機
+        name: 抽出
         description: スピード x<currentMult> → x<newMult>
     processors:
         name: 切断、回転と積み重ね
         description: スピード x<currentMult> → x<newMult>
     painting:
-        name: 混合と着色
+        name: 混色と着色
         description: スピード x<currentMult> → x<newMult>
 buildings:
     hub:
@@ -389,11 +386,11 @@ buildings:
     stacker:
         default:
             name: 積層機
-            description: 入力アイテムを積み重ねます。もしうまく統合できなかった場合は、右の入力アイテムを左の入力アイテムの上に重ねます。
+            description: 入力アイテムを積み重ねます。可能なら同じレイヤーに統合し、そうでなければ右の入力アイテムを左の入力アイテムの上に重ねます。
     mixer:
         default:
-            name: 混合機
-            description: 2つの色を加算混合で混ぜ合わせます。
+            name: 混色機
+            description: 2つの色を加法混色で混ぜ合わせます。
     painter:
         default:
             name: 着色機
@@ -403,10 +400,10 @@ buildings:
             description: 左から入力された形の全体を、下から入力された色で着色します。
         double:
             name: 着色機 (ダブル)
-            description: 左から入力された形を、上から入力された色で着色します。
+            description: 左から入力された複数の形を、上から入力された色で着色します。
         quad:
             name: 着色機 (四分割)
-            description: 入力された形を四分割づつ別の色で塗り分けられます。
+            description: 入力された形の四部分をそれぞれ別の色で塗り分けられます。
                 <strong>真らしい信号</strong>が流れているスロットのみがペイントされます！
     trash:
         default:
@@ -467,7 +464,7 @@ buildings:
     reader:
         default:
             name: ベルトリーダー
-            description: 平均スループットを計測できます。 アンロック後は、 最後に通過したアイテムの情報を出力します。
+            description: 平均スループットを計測できます。 ワイヤレイヤのアンロック後は、 最後に通過したアイテムの情報を出力します。
     analyzer:
         default:
             name: 形状解析機
@@ -482,7 +479,7 @@ buildings:
             description: 形状の信号を2つに切断できます。
         rotater:
             name: 仮想回転機
-            description: 形状の信号を時計回り、反時計回りに回転させます。
+            description: 形状の信号を時計回りに回転させます。
         unstacker:
             name: 仮想分離機
             description: 形状の信号の最上層を右側に出力し、残りの層を左側に出力します。
@@ -509,8 +506,8 @@ storyRewards:
         desc: "<strong>着色機</strong>が利用可能になりました。（今まで形状でやってきた方法で）色を抽出し、形状と合成することで着色します！　<\
             br><br>追伸: もし色覚特性をお持ちでしたら、 設定に<strong>色覚特性モード</strong>があります！"
     reward_mixer:
-        title: 色の混合
-        desc: <strong>混合機</strong>が利用可能になりました。この建造物は2つの色を<strong>加算混合で</strong>混ぜ合わせます！
+        title: 混色
+        desc: <strong>混色機</strong>が利用可能になりました。この建造物は2つの色を<strong>加法混色で</strong>混ぜ合わせます！
     reward_stacker:
         title: 積層機
         desc: <strong>積層機</strong>で形を組み合わせ可能になりました！　双方の入力を組み合わせ、連続した形になっていればそれらは<strong>融合してひとつ</strong>になります。そうでなければ、左の入力の<strong>上に右の入力が重なります！</strong>
@@ -530,7 +527,7 @@ storyRewards:
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
-            <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用することができます！
+            <strong>距離拡張版が追加され</strong>、以前のものと組み合わせて目的に応じて利用できます！
     reward_merger:
         title: コンパクトな合流機
         desc: <strong>合流機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！　2つの入力を1つの出力に合流させます！
@@ -539,54 +536,49 @@ storyRewards:
         desc: <strong>分配機</strong>の<strong>コンパクトバージョン</strong>が利用可能になりました！　1つの入力を2つの出力に分配します！
     reward_belt_reader:
         title: ベルトリーダー
-        desc: <strong>ベルトリーダー</strong>が利用可能になりました！　ベルトのスループットを計測できます。<br><br>ワイヤーのロックが解除されれば、より便利になります！
+        desc: <strong>ベルトリーダー</strong>が利用可能になりました！　ベルトのスループットを計測できます。<br><br>ワイヤ関連の機能がアンロックされれば、より便利になります！
     reward_cutter_quad:
-        title: 四分割
+        title: 四分割切断機
         desc: <strong>切断機</strong>のバリエーションが利用可能になりました。 -
-            上下の二分割ではなく、<strong>四分割</strong>に切断できます！
+            左右二分割ではなく、<strong>四つ</strong>に切断できます！
     reward_painter_double:
         title: 着色機 (ダブル)
         desc: <strong>着色機</strong>のバリエーションが利用可能になりました。 -
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
-        title: 余剰の貯蓄
-        desc: <strong>ゴミ箱</strong>のバリエーションが利用可能になりました。 - 容量上限までアイテムを格納することができます！<br><br>
+        title: ストレージ
+        desc: <strong>ストレージ</strong>が利用可能になりました。 - 容量上限までアイテムを格納できます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
     reward_blueprints:
         title: ブループリント
         desc: 工場の建造物の<strong>コピー＆ペースト</strong>が利用可能になりました！
-            範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産することで可能になります！(たった今納品したものです)
+            範囲選択(CTRLキーを押したままマウスドラッグ)した状態で、'C'キーを押すことでコピーができます。<br><br>ただしペーストは<strong>タダではありません。</strong><strong>ブループリントの形</strong>を生産する必要があります！(たった今納品した形です)
     reward_rotater_180:
-        title: 180度の回転
-        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！　180度の回転ができるようになります！(サプライズ！ :D)
+        title: 回転（180°）
+        desc: <strong>回転機</strong>のバリエーションが利用可能になりました！　180°の回転ができるようになります！（サプライズ！ :D）
     reward_wires_painter_and_levers:
         title: ワイヤ＆着色機(四分割)
-        desc: "<strong>ワイヤレイヤ</strong>が利用可能になりました: これは通常の レイヤーの上にある別のレイヤであり、多くの新しい要素が
-            あります！<br><br> 最初に、<strong>四色 着色機</strong>が利用可能になりました -
-            着色するスロットをワイヤレイヤで 接続します！<br><br> ワイヤレイヤに切り替えるには、
-            <strong>E</strong>を押します。 <br><br> 補足:
-            設定で<strong>ヒントを有効にする</strong>と、 ワイヤのチュートリアルが有効になります。"
+        desc: "<strong>ワイヤレイヤ</strong>が利用可能になりました: これは通常の レイヤーの上にある別のレイヤであり、多くの新しい要素があります！<br><br>
+            まず最初に、<strong>四色着色機</strong>が利用可能になりました - 着色するスロットをワイヤレイヤで接続してください！<br><br>
+            ワイヤレイヤに切り替えるには、<strong>E</strong>を押します。 <br><br>
+            補足: 設定で<strong>ヒントを有効にする</strong>と、 ワイヤのチュートリアルが有効になります。"
     reward_filter:
         title: アイテムフィルタ
-        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！　ワイヤレイヤの信号と一致するかどうかに応じて、
-            アイテムを上部または右側の出力に分離します。<br><br>真偽値(0/1)信号を利用することで
-            どんなアイテムでも通過させるか、または通過させないかを選ぶこともできます。
+        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！　ワイヤレイヤの信号と一致するかどうかに応じて、アイテムを上側または右側の出力に分離します。<br><br>
+            また、真偽値(0/1)信号を入力すれば全てのアイテムの通過・非通過を制御できます。
     reward_display:
         title: ディスプレイ
-        desc: "<strong>ディスプレイ</strong>が利用可能になりました - ワイヤレイヤで
-            信号を接続することで、その内容を視認することができます！<br><br> 補足: ベルトリーダーとストレージが
-            最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに 表示してみてください！"
+        desc: "<strong>ディスプレイ</strong>が利用可能になりました - ワイヤレイヤで信号を接続することで、その内容を表示できます！<br><br>
+            補足: ベルトリーダーとストレージが最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに表示してみてください！"
     reward_constant_signal:
         title: 定数信号
-        desc: <strong>定数信号</strong>がワイヤレイヤで
-            利用可能になりました！　これは例えば<strong>アイテムフィルタ</strong>に接続する 場合に便利です。<br><br>
-            定数信号は <strong>形状</strong>、<strong>色</strong>または
-            <strong>真偽値</strong>(1か0)を発信できます。
+        desc: <strong>定数信号</strong>がワイヤレイヤで利用可能になりました！　これは例えば<strong>アイテムフィルタ</strong>に接続すると便利です。<br><br>
+            発信できる信号は<strong>形状</strong>、<strong>色</strong>、<strong>真偽値</strong>(1か0)です。
     reward_logic_gates:
         title: 論理ゲート
-        desc: <strong>論理ゲート</strong>が利用可能になりました！　興奮する必要はありませんが、非常に優秀なのです！<br><br>
-            これでAND, OR, XOR,
-            NOTを計算できます。<br><br>ボーナスとして<strong>トランジスタ</strong>も追加しました！
+        desc: <strong>論理ゲート</strong>が利用可能になりました！　興奮する必要はありませんが、これは非常に優秀なんですよ！<br><br>
+            これでAND, OR, XOR, NOTを計算できます。<br><br>
+            ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
         title: 仮想処理
         desc: <strong>形状処理をシミュレート</strong>できる新しい部品をたくさん追加しました！<br><br>
@@ -596,9 +588,8 @@ storyRewards:
             - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc: "このレベルには報酬はありません。次にはあるでしょう！　<br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
-            生産された形は<strong>すべて</strong>、後に<strong>アップグレードの解除</strong>のために必要になりま\
-            す！"
+        desc: "このレベルには報酬はありません。次はきっとありますよ！　<br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+            生産された形は<strong>すべて</strong>、後で<strong>アップグレードの解除</strong>に必要になります！"
     no_reward_freeplay:
         title: 次のレベル
         desc: おめでとうございます！
@@ -606,8 +597,8 @@ storyRewards:
         title: フリープレイ
         desc: やりましたね！　<strong>フリープレイモード</strong>が利用可能になりました。 -
             これからは納品すべき形は<strong>ランダムに</strong>生成されます！<br><br>
-            今後、ハブには<strong>スループット</strong>が必要になるため、要求する形状を自動的に納品するマシンを構築することを強くお勧めします！<br><br>
-            ハブは要求する形状をワイヤレイヤに出力するので、それを分析し自動的に調整する工場を作成するだけです。
+            今後、ハブは<strong>スループット</strong>を要求してきます。要求された形状を自動的に納品するマシンを構築することを強くお勧めします！<br><br>
+            ハブは要求する形状をワイヤレイヤに出力するので、それを分析して自動的に工場を調整するだけですよ。
     reward_demo_end:
         title: お試し終了
         desc: デモ版の最後に到達しました！
@@ -665,13 +656,13 @@ settings:
                 extremely_fast: 極速
         language:
             title: 言語
-            description: 言語を変更します。すべての翻訳はユーザーからの協力で成り立っており、まだ完全には完了していない可能性があります！
+            description: 言語を変更します。すべての翻訳はユーザーの皆さんの協力によるものであり、まだ不完全な可能性があります！
         enableColorBlindHelper:
             title: 色覚モード
             description: 色覚特性を持っていてもゲームがプレイできるようにするための各種ツールを有効化します。
         fullscreen:
             title: フルスクリーン
-            description: フルスクリーンでのプレイが推奨です。スタンドアローン版のみ変更可能です。
+            description: フルスクリーンでのプレイが推奨されます。スタンドアローン版のみ変更可能です。
         soundsMuted:
             title: 効果音ミュート
             description: 有効に設定するとすべての効果音をミュートします。
@@ -686,13 +677,13 @@ settings:
             description: 音楽の音量を設定してください。
         theme:
             title: ゲームテーマ
-            description: ゲームテーマを選択します。 (ライト / ダーク).
+            description: ゲームテーマを選択します。（ライト／ダーク）
             themes:
                 dark: ダーク
                 light: ライト
         refreshRate:
-            title: シミュレーション対象
-            description: もし144hzのモニターを利用しているなら、この設定でリフレッシュレートを変更することで、ゲームが高リフレッシュレートを正しくシミュレーションします。利用しているPCが非力な場合、この設定により実効FPSが遅くなる可能性があります。
+            title: リフレッシュレート
+            description: 秒間何回ゲームが更新されるかを設定できます。一般的には値が高いほど正確になりますが、パフォーマンスは低下します。値が低い場合、正確なスループットを計測できなくなる可能性があります。
         alwaysMultiplace:
             title: 連続配置
             description: この設定を有効にすると、建造物を選択後に意図的にキャンセルするまで選択された状態を維持します。これはSHIFTキーを押し続けている状態と同等です。
@@ -749,7 +740,7 @@ settings:
             description: ズームアウトしたときの図形のサイズを調節します。
 keybindings:
     title: キー設定
-    hint: "Tip: CTRL, SHIFT, ALTを利用するようにしてください。これらはそれぞれ建造物配置の際の機能があります。"
+    hint: "Tip: CTRL, SHIFT, ALTを活用してください。建造物配置の際の追加機能がそれぞれ割り当てられています。"
     resetKeybindings: キー設定をリセット
     categoryLabels:
         general: アプリケーション
@@ -785,7 +776,7 @@ keybindings:
         cutter: 切断機
         rotater: 回転機
         stacker: 積層機
-        mixer: 混合機
+        mixer: 混色機
         painter: 着色機
         trash: ゴミ箱
         storage: ストレージ
@@ -811,31 +802,31 @@ keybindings:
         cycleBuildings: 建造物の選択
         lockBeltDirection: ベルトプランナーを有効化
         switchDirectionLockSide: "プランナー: 通る側を切り替え"
-        copyWireValue: "ワイヤ: カーソルに合っている形状信号をキーとしてコピー"
+        copyWireValue: "ワイヤ: カーソルの下の形状信号をキーとしてコピー"
         massSelectStart: マウスドラッグで開始
         massSelectSelectMultiple: 複数範囲選択
         massSelectCopy: 範囲コピー
         massSelectCut: 範囲カット
-        placementDisableAutoOrientation: 自動向き合わせ無効
+        placementDisableAutoOrientation: 自動向き合わせを無効化
         placeMultiple: 配置モードの維持
         placeInverse: ベルトの自動向き合わせを逆転
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "回転: 上向きにする"
+        rotateToDown: "回転: 下向きにする"
+        rotateToRight: "回転: 右向きにする"
+        rotateToLeft: "回転: 左向きにする"
 about:
     title: このゲームについて
     body: >-
         このゲームはオープンソースであり、<a href="https://github.com/tobspr"
-        target="_blank">Tobias Springer</a> (私)によって開発されています。<br><br>
+        target="_blank">Tobias Springer</a> （私です）によって開発されています。<br><br>
 
-        開発に参加したい場合は以下をチェックしてみてください。<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
+        開発に参加したい場合はこちらをチェックしてみてください：<a href="<githublink>" target="_blank">shapez.io on github</a>.<br><br>
 
-        このゲームはdiscordでの素晴らしいコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
+        このゲームは素晴らしいDiscordコミュニティなしには実現しませんでした。 - このサーバにも是非参加してください！　<a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 
-        サウンドトラックは<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>により製作されました。 - 彼は素晴らしいです<br><br>
+        サウンドトラックは<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a>により製作されました。 - 彼は素晴らしいです。<br><br>
 
-        最後に、私の最高の友人<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>に大きな感謝を。 - 彼とのFactorioのゲーム体験がなければ、このゲームは存在しませんでした。
+        最後に、私の最高の友人<a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>に大きな感謝を。 - 彼とのFactorioのゲーム体験がなければ、このゲームは存在しなかったでしょう。
 changelog:
     title: 更新履歴
 demo:
@@ -886,7 +877,7 @@ tips:
     - 最大の効率を得るためには、切断する前に着色をしてください。
     - モジュールがあれば、空間はただの認識に過ぎなくなる――生ある人間に対する気遣いだ。
     - 設計図としての工場を別に作っておくと、工場のモジュール化において重要な役割を果たします。
-    - 混合機をよく見ると、色の混ぜ方が解ります。
+    - 混色機をよく見ると、色の混ぜ方が解ります。
     - <b>CTRL</b> + クリックで範囲選択ができます。
     - ハブに近すぎる設計物を作ると、のちの設計の邪魔になるかもしれません。
     - アップグレードリストの各形状の横にあるピンのアイコンは、その形状を画面左に固定表示します。
@@ -899,6 +890,6 @@ tips:
     - このゲームにはたくさんの設定があります。是非チェックしてみてください！
     - ハブのマーカーには、その方向を示す小さなコンパスがついています。
     - ベルトの中身をクリアするには、範囲選択して同じ場所に貼り付けをします。
-    - F4を押すことで、FPSとTickレートを表示することができます。
-    - F4を2回押すと、マウスとカメラの座標を表示することができます。
+    - F4を押すことで、FPSとTickレートを表示できます。
+    - F4を2回押すと、マウスとカメラの座標を表示できます。
     - 左のピン留めされた図形をクリックすると、固定を解除できます。
