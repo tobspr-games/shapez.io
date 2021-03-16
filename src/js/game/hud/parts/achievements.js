@@ -1,10 +1,6 @@
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
-import {
-    ACHIEVEMENTS,
-    enum_achievement_mappings,
-    HIDDEN_ACHIEVEMENTS,
-} from "../../../platform/achievement_provider";
+import { ACHIEVEMENTS, HIDDEN_ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
@@ -63,10 +59,7 @@ export class HUDAchievements extends BaseHUDPart {
             signals.ok.add(() => {
                 for (const achievementKey in ACHIEVEMENTS) {
                     if (!this.root.achievementProxy.provider.collection.map.has(achievementKey))
-                        this.root.achievementProxy.provider.collection.lock(
-                            achievementKey,
-                            enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
-                        );
+                        this.root.achievementProxy.provider.collection.lock(ACHIEVEMENTS[achievementKey]);
                 }
             });
         });
@@ -105,10 +98,7 @@ export class HUDAchievements extends BaseHUDPart {
             handle.elem.appendChild(handle.resetButton);
 
             this.trackClicks(handle.resetButton, () => {
-                this.root.achievementProxy.provider.collection.lock(
-                    achievementKey,
-                    enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
-                );
+                this.root.achievementProxy.provider.collection.lock(ACHIEVEMENTS[achievementKey]);
             });
 
             // Assign handle

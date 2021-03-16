@@ -1,10 +1,6 @@
 import { TextualGameState } from "../core/textual_game_state";
 import { makeDiv } from "../core/utils";
-import {
-    ACHIEVEMENTS,
-    enum_achievement_mappings,
-    HIDDEN_ACHIEVEMENTS,
-} from "../platform/achievement_provider";
+import { ACHIEVEMENTS, HIDDEN_ACHIEVEMENTS } from "../platform/achievement_provider";
 import { T } from "../translations";
 
 export class AchievementsState extends TextualGameState {
@@ -66,10 +62,7 @@ export class AchievementsState extends TextualGameState {
             signals.ok.add(() => {
                 for (const achievementKey in ACHIEVEMENTS) {
                     if (!this.app.achievementProvider.collection.map.has(achievementKey))
-                        this.app.achievementProvider.collection.lock(
-                            achievementKey,
-                            enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
-                        );
+                        this.app.achievementProvider.collection.lock(ACHIEVEMENTS[achievementKey]);
                 }
             });
         });
@@ -108,10 +101,7 @@ export class AchievementsState extends TextualGameState {
             handle.elem.appendChild(handle.resetButton);
 
             this.trackClicks(handle.resetButton, () => {
-                this.app.achievementProvider.collection.lock(
-                    achievementKey,
-                    enum_achievement_mappings[ACHIEVEMENTS[achievementKey]]
-                );
+                this.app.achievementProvider.collection.lock(ACHIEVEMENTS[achievementKey]);
             });
 
             // Assign handle
