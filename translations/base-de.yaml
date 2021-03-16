@@ -913,7 +913,7 @@ settings:
                 position, otherwise in the middle of the screen.
         mapResourcesScale:
             title: Größe der Ressourcen auf der Karte
-            description:Legt die Größe der Ressourcen beim Herauszoomen fest.
+            description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen) fest.
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
