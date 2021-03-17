@@ -1,6 +1,7 @@
 import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
 import { Signal } from "./signal";
+import { safeModulo } from "./utils";
 
 /*
  * ***************************************************
@@ -231,6 +232,59 @@ export class FormElementItemChooser extends FormElement {
 
     getValue() {
         return null;
+    }
+
+    focus() {}
+}
+
+export class FormElementEnum extends FormElement {
+    constructor({ id, label = null, options, valueGetter, textGetter }) {
+        super(id, label);
+        this.options = options;
+        this.valueGetter = valueGetter;
+        this.textGetter = textGetter;
+        this.index = 0;
+
+        this.element = null;
+    }
+
+    getHtml() {
+        return `
+            <div class="formElement enumFormElem">
+                ${this.label ? `<label>${this.label}</label>` : ""}
+                <div class="enum" data-formId="${this.id}">
+                    <div class="toggle prev">⯇</div>
+                    <div class="value">${this.textGetter(this.options[0])}</div>
+                    <div class="toggle next">⯈</div>
+                </div>
+            </div>
+            `;
+    }
+
+    /**
+     * @param {HTMLElement} parent
+     * @param {Array<ClickDetector>} clickTrackers
+     */
+    bindEvents(parent, clickTrackers) {
+        this.element = this.getFormElement(parent);
+
+        const children = this.element.children;
+        for (let i = 0; i < children.length; ++i) {
+            const child = children[i];
+            const detector = new ClickDetector(child, { preventDefault: false });
+            clickTrackers.push(detector);
+            const change = child.classList.contains("prev") ? -1 : 1;
+            detector.click.add(() => this.toggle(change), this);
+        }
+    }
+
+    getValue() {
+        return this.valueGetter(this.options[this.index]);
+    }
+
+    toggle(amount) {
+        this.index = safeModulo(this.index + amount, this.options.length);
+        this.element.querySelector(".value").innerText = this.textGetter(this.options[this.index]);
     }
 
     focus() {}

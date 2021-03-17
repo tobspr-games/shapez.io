@@ -9,9 +9,37 @@ import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
-import { FormElementInput, FormElementCheckbox } from "../../../core/modal_dialog_forms";
+import { FormElementInput, FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog_forms";
 
 const logger = createLogger("screenshot_exporter");
+
+/**
+ * @typedef {{mode: string, resolution?: number}} QualityOptions
+ */
+
+/**
+ * @type {{id: string, options: QualityOptions}[]}
+ */
+const screenshotQualities = [
+    {
+        id: "high",
+        options: { mode: "regular", resolution: 16384 },
+    },
+    {
+        id: "medium",
+        options: { mode: "regular", resolution: 4096 },
+    },
+    {
+        id: "low",
+        options: { mode: "regular", resolution: 1024 },
+    },
+    {
+        id: "map",
+        options: { mode: "map" },
+    },
+];
+// @TODO: translation (T.dialogs.exportScreenshotWarning.qualities)
+const qualityNames = { high: "High", medium: "Medium", low: "Low", map: "Map" };
 
 export class HUDScreenshotExporter extends BaseHUDPart {
     createElements() {}
@@ -26,23 +54,24 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             return;
         }
 
+        const qualityInput = new FormElementEnum({
+            id: "screenshotQuality",
+            options: screenshotQualities,
+            valueGetter: quality => quality.options,
+            // @TODO: translation (T.dialogs.exportScreenshotWarning.qualityLabel)
+            textGetter: quality => "Quality:" + " " + qualityNames[quality.id],
+        });
         const layerInput = new FormElementCheckbox({
             id: "screenshotLayer",
+            // @TODO: translation (T.dialogs.exportScreenshotWarning.descLayer)
             label: "Include wires layer",
             defaultValue: this.root.currentLayer === "wires" ? true : false,
-        });
-        const qualityInput = new FormElementInput({
-            id: "screenshotQuality",
-            label: "Pixel width per tile",
-            placeholder: "",
-            defaultValue: "",
-            validator: val => !isNaN(val) && parseInt(val) === parseFloat(val) && !isNaN(parseInt(val, 10)),
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: T.dialogs.exportScreenshotWarning.title,
             desc: T.dialogs.exportScreenshotWarning.desc,
-            formElements: [layerInput, qualityInput],
+            formElements: [qualityInput, layerInput],
             buttons: ["cancel:good", "ok:bad"],
         });
 
@@ -53,7 +82,11 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         );
     }
 
-    doExport(wiresLayer, quality) {
+    /**
+     * @param {boolean} wiresLayer
+     * @param {QualityOptions} options
+     */
+    doExport(wiresLayer, options) {
         logger.log("Starting export ...");
 
         // Find extends
@@ -76,12 +109,15 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const dimensions = maxChunk.sub(minChunk);
         logger.log("Dimensions:", dimensions);
 
-        let chunkSizePixels = quality * globalConfig.mapChunkSize;
         const maxDimensions = Math.max(dimensions.x, dimensions.y);
 
-        if (maxDimensions > 128) {
-            chunkSizePixels = Math.max(1, Math.floor(chunkSizePixels * (128 / maxDimensions)));
-        }
+        // we want integer pixels per tile
+        // if resolution too low, we want integer pixels per chunk
+        const chunkSizePixels =
+            maxDimensions * globalConfig.mapChunkSize > options.resolution
+                ? Math.max(1, Math.floor(options.resolution / maxDimensions))
+                : Math.floor(options.resolution / (maxDimensions * globalConfig.mapChunkSize)) *
+                  globalConfig.mapChunkSize;
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
         const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
