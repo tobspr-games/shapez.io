@@ -809,10 +809,10 @@ keybindings:
         comparator: 比對機
         item_producer: 物品生產機（沙盒模式）
         copyWireValue: 電路：複製數值於游標底下
-        rotateToUp: 轉動: 向上
-        rotateToDown: 轉動: 向下
-        rotateToRight: 轉動: 向右
-        rotateToLeft: 轉動: 向左
+        rotateToUp: "轉動: 向上"
+        rotateToDown: "轉動: 向下"
+        rotateToRight: 轉動: 向右"
+        rotateToLeft: "轉動: 向左"
 about:
     title: 關於遊戲
     body: >-
