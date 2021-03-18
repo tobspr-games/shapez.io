@@ -964,10 +964,10 @@ keybindings:
         comparator: Karşılaştırıcı
         item_producer: Eşya Üretici (Kum Kutusu)
         copyWireValue: "Kablo: Fare altındaki değeri kopyala"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Döndür: Yukarı İşaret Et"
+        rotateToDown: "Döndür: Aşağı İşaret Et"
+        rotateToRight: "Döndür: Sağa İşaret Et"
+        rotateToLeft: "Döndür: Sola İşaret Et"
 about:
     title: Oyun Hakkında
     body: >-
@@ -983,7 +983,7 @@ about:
 
         Son olarak, en iyi arkadaşım <a href="https://github.com/niklas-dahl" target="_blank">Niklas'a</a> büyük teşekkürler. Factorio oyunlarımız olmasaydı bu oyun hiç var olmamış olacaktı.
 changelog:
-    title: Değİşİklİk Günlüğü
+    title: Değişiklik Günlüğü
 demo:
     features:
         restoringGames: Oyun kayıtlarını yükleme
