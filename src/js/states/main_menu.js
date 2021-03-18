@@ -15,7 +15,7 @@ import {
     startFileChoose,
     waitNextFrame,
 } from "../core/utils";
-import { gGameModeRegistry } from "../core/global_registries";
+import { enumGameModeIds } from "../game/game_mode";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
@@ -360,10 +360,9 @@ export class MainMenuState extends GameState {
 
     onPuzzlePlayButtonClicked() {
         const savegame = this.app.savegameMgr.createNewSavegame();
-        const gameModeId = gGameModeRegistry.idToEntry.PuzzlePlay.getId();
 
         this.moveToState("InGameState", {
-            gameModeId,
+            gameModeId: enumGameModeIds.puzzlePlay,
             savegame,
         });
     }

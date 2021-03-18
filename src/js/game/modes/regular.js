@@ -1,10 +1,9 @@
 /* typehints:start */
-import { enumHubGoalRewards } from "../tutorial_goals";
 import { GameRoot } from "../root";
 /* typehints:end */
 
 import { findNiceIntegerValue } from "../../core/utils";
-import { GameMode } from "../game_mode";
+import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { types } from "../../savegame/serialization";
@@ -32,14 +31,13 @@ import { types } from "../../savegame/serialization";
 const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const finalGameShape = "RuCw--Cw:----Ru--";
 const preparementShape = "CpRpCp--:SwSwSwSw";
-const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 // Tiers need % of the previous tier as requirement too
 const tierGrowth = 2.5;
 
 /**
  * Generates all upgrades
- * @returns {Object<string, import("../game_mode").UpgradeTiers>} */
+ * @returns {Object<string, UpgradeTiers>} */
 function generateUpgrades(limitedVersion = false) {
     const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
     const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
@@ -481,18 +479,16 @@ const demoVersionLevels = generateLevelDefinitions(true);
 
 export class RegularGameMode extends GameMode {
     static getId() {
-        return "Regular";
+        return enumGameModeIds.regular;
     }
 
-    static getSchema() {
-        return {
-            test: types.string
-        }
+    static getType() {
+        return enumGameModeTypes.default;
     }
 
+    /** @param {GameRoot} root */
     constructor(root) {
         super(root);
-        this.test = "test";
     }
 
     /**
@@ -506,23 +502,6 @@ export class RegularGameMode extends GameMode {
     }
 
     /**
-     * Should return whether free play is available or if the game stops
-     * after the predefined levels
-     * @returns {boolean}
-     */
-    getIsFreeplayAvailable() {
-        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
-    }
-
-    /**
-     * Returns the blueprint shape key
-     * @returns {string}
-     */
-    getBlueprintShapeKey() {
-        return blueprintShape;
-    }
-
-    /**
      * Returns the goals for all levels including their reward
      * @returns {Array<LevelDefinition>}
      */
@@ -530,5 +509,14 @@ export class RegularGameMode extends GameMode {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay()
             ? fullVersionLevels
             : demoVersionLevels;
+    }
+
+    /**
+     * Should return whether free play is available or if the game stops
+     * after the predefined levels
+     * @returns {boolean}
+     */
+    getIsFreeplayAvailable() {
+        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
     }
 }

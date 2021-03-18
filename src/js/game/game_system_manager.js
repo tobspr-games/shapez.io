@@ -6,6 +6,7 @@ import { createLogger } from "../core/logging";
 import { BeltSystem } from "./systems/belt";
 import { ItemEjectorSystem } from "./systems/item_ejector";
 import { MapResourcesSystem } from "./systems/map_resources";
+import { MapZoneSystem } from "./systems/map_zone";
 import { MinerSystem } from "./systems/miner";
 import { ItemProcessorSystem } from "./systems/item_processor";
 import { UndergroundBeltSystem } from "./systems/underground_belt";
@@ -45,6 +46,9 @@ export class GameSystemManager {
 
             /** @type {MapResourcesSystem} */
             mapResources: null,
+
+            /** @type {MapZoneSystem} */
+            mapZone: null,
 
             /** @type {MinerSystem} */
             miner: null,
@@ -139,6 +143,8 @@ export class GameSystemManager {
         add("itemEjector", ItemEjectorSystem);
 
         add("mapResources", MapResourcesSystem);
+
+        add("mapZone", MapZoneSystem);
 
         add("hub", HubSystem);
 

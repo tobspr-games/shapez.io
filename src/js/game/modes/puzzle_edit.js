@@ -1,10 +1,16 @@
-import { GameMode } from "../game_mode";
+/* typehints:start */
+import { GameRoot } from "../root";
+/* typehints:end */
 
-export class PuzzleEditGameMode extends GameMode {
+import { PuzzleGameMode } from "./puzzle";
+import { enumGameModeIds } from "../game_mode";
+
+export class PuzzleEditGameMode extends PuzzleGameMode {
     static getId() {
-        return "PuzzleEdit";
+        return enumGameModeIds.puzzleEdit;
     }
 
+    /** @param {GameRoot} root */
     constructor(root) {
         super(root);
     }

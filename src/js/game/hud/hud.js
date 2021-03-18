@@ -74,42 +74,42 @@ export class GameHUD {
             unlockNotificationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
         };
 
-        this.parts = {
-            buildingsToolbar: new HUDBuildingsToolbar(this.root),
-            wiresToolbar: new HUDWiresToolbar(this.root),
-            blueprintPlacer: new HUDBlueprintPlacer(this.root),
-            buildingPlacer: new HUDBuildingPlacer(this.root),
-            unlockNotification: new HUDUnlockNotification(this.root),
-            gameMenu: new HUDGameMenu(this.root),
-            massSelector: new HUDMassSelector(this.root),
-            shop: new HUDShop(this.root),
-            statistics: new HUDStatistics(this.root),
-            waypoints: new HUDWaypoints(this.root),
-            wireInfo: new HUDWireInfo(this.root),
-            leverToggle: new HUDLeverToggle(this.root),
-            constantSignalEdit: new HUDConstantSignalEdit(this.root),
+        this.initParts({
+            buildingsToolbar: HUDBuildingsToolbar,
+            wiresToolbar: HUDWiresToolbar,
+            blueprintPlacer: HUDBlueprintPlacer,
+            buildingPlacer: HUDBuildingPlacer,
+            unlockNotification: HUDUnlockNotification,
+            gameMenu: HUDGameMenu,
+            massSelector: HUDMassSelector,
+            shop: HUDShop,
+            statistics: HUDStatistics,
+            waypoints: HUDWaypoints,
+            wireInfo: HUDWireInfo,
+            leverToggle: HUDLeverToggle,
+            constantSignalEdit: HUDConstantSignalEdit,
 
             // Must always exist
-            pinnedShapes: new HUDPinnedShapes(this.root),
-            notifications: new HUDNotifications(this.root),
-            settingsMenu: new HUDSettingsMenu(this.root),
-            debugInfo: new HUDDebugInfo(this.root),
-            dialogs: new HUDModalDialogs(this.root),
-            screenshotExporter: new HUDScreenshotExporter(this.root),
-            shapeViewer: new HUDShapeViewer(this.root),
+            pinnedShapes: HUDPinnedShapes,
+            notifications: HUDNotifications,
+            settingsMenu: HUDSettingsMenu,
+            debugInfo: HUDDebugInfo,
+            dialogs: HUDModalDialogs,
+            screenshotExporter: HUDScreenshotExporter,
+            shapeViewer: HUDShapeViewer,
 
-            wiresOverlay: new HUDWiresOverlay(this.root),
-            layerPreview: new HUDLayerPreview(this.root),
+            wiresOverlay: HUDWiresOverlay,
+            layerPreview: HUDLayerPreview,
 
-            minerHighlight: new HUDMinerHighlight(this.root),
-            tutorialVideoOffer: new HUDTutorialVideoOffer(this.root),
+            minerHighlight: HUDMinerHighlight,
+            tutorialVideoOffer: HUDTutorialVideoOffer,
 
             // Typing hints
             /* typehints:start */
             /** @type {HUDChangesDebugger} */
             changesDebugger: null,
             /* typehints:end */
-        };
+        });
 
         if (!IS_MOBILE) {
             this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
@@ -129,7 +129,7 @@ export class GameHUD {
             this.parts.changesDebugger = new HUDChangesDebugger(this.root);
         }
 
-        if (this.root.app.settings.getAllSettings().offerHints) {
+        if (this.root.gameMode.hasHints() && this.root.app.settings.getAllSettings().offerHints) {
             this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
             this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
         }
@@ -168,6 +168,21 @@ export class GameHUD {
             this.trailerMaker = new TrailerMaker(this.root);
         }
         /* dev:end*/
+    }
+
+    /** @param {object} parts */
+    initParts(parts) {
+        this.parts = {};
+
+        for (let key in parts) {
+            const Part = parts[key];
+
+            if (!Part || this.root.gameMode.isHudPartExcluded(Part)) {
+                continue;
+            }
+
+            this.parts[key] = new Part(this.root); 
+        }
     }
 
     /**

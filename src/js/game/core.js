@@ -9,7 +9,6 @@ import {
     registerCanvas,
 } from "../core/buffer_utils";
 import { globalConfig } from "../core/config";
-import { gGameModeRegistry } from "./game_mode_registry";
 import { getDeviceDPI, resizeHighDPICanvas } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { gMetaBuildingRegistry } from "../core/global_registries";
@@ -168,6 +167,10 @@ export class GameCore {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = randomInt(0, 100000);
+
+        if (!this.root.gameMode.hasHub()) {
+            return;
+        }
 
         // Place the hub
         const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
