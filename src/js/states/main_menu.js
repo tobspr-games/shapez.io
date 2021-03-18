@@ -317,11 +317,7 @@ export class MainMenuState extends GameState {
         const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
         removeAllChildren(bottomButtonContainer);
 
-        const puzzleModeButton = makeButton(
-            bottomButtonContainer,
-            ["styledButton"],
-            T.mainMenu.puzzleMode
-        );
+        const puzzleModeButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.puzzleMode);
 
         bottomButtonContainer.appendChild(puzzleModeButton);
         this.trackClicks(puzzleModeButton, this.onPuzzleModeButtonClicked);
@@ -337,10 +333,7 @@ export class MainMenuState extends GameState {
         const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
         removeAllChildren(buttonContainer);
 
-        const playButtonElement = makeButtonElement(
-            ["playButton", "styledButton"],
-            T.mainMenu.play
-        );
+        const playButtonElement = makeButtonElement(["playButton", "styledButton"], T.mainMenu.play);
 
         buttonContainer.appendChild(playButtonElement);
         this.trackClicks(playButtonElement, this.onPuzzlePlayButtonClicked);
@@ -348,11 +341,7 @@ export class MainMenuState extends GameState {
         const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
         removeAllChildren(bottomButtonContainer);
 
-        const backButton = makeButton(
-            bottomButtonContainer,
-            ["styledButton"],
-            T.mainMenu.back
-        );
+        const backButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.back);
 
         bottomButtonContainer.appendChild(backButton);
         this.trackClicks(backButton, this.onBackButtonClicked);

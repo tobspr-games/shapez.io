@@ -30,9 +30,9 @@ export class PuzzleGameMode extends GameMode {
 
         this.type = this.getType();
         this.hiddenHudParts = data.hiddenHudParts || this.getDefaultHiddenHudParts();
-//        this.excludedHudParts = data.hiddenHudParts || this.getDefaultHiddenHudParts();
-        this.zoneHeight = data.zoneHeight || (3 * globalConfig.tileSize);
-        this.zoneWidth = data.zoneWidth || (4 * globalConfig.tileSize);
+        // this.excludedHudParts = data.hiddenHudParts || this.getDefaultHiddenHudParts();
+        this.zoneHeight = data.zoneHeight || 3 * globalConfig.tileSize;
+        this.zoneWidth = data.zoneWidth || 4 * globalConfig.tileSize;
         this.boundaryHeight = this.zoneHeight * 2;
         this.boundaryWidth = this.zoneWidth * 2;
     }
@@ -49,7 +49,7 @@ export class PuzzleGameMode extends GameMode {
 
     getDefaultHiddenHudParts() {
         return {
-            [HUDPinnedShapes.name]: true
+            [HUDPinnedShapes.name]: true,
         };
     }
 

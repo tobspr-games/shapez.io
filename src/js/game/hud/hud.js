@@ -181,7 +181,7 @@ export class GameHUD {
                 continue;
             }
 
-            this.parts[key] = new Part(this.root); 
+            this.parts[key] = new Part(this.root);
         }
     }
 

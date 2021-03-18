@@ -39,6 +39,9 @@ export class GameCreationPayload {
         /** @type {boolean|undefined} */
         this.fastEnter;
 
+        /** @type {string} */
+        this.gameModeId;
+
         /** @type {Savegame} */
         this.savegame;
     }

@@ -943,7 +943,7 @@ export class Camera extends BasicSerializableObject {
             )
         );
 
-        this.clampPosition(this.center)
+        this.clampPosition(this.center);
     }
 
     /**

@@ -27,8 +27,8 @@ export class SavegameInterface_V1009 extends SavegameInterface_V1008 {
         dump.gameMode = {
             mode: {
                 id: RegularGameMode.getId(),
-                data: {}
-            }
+                data: {},
+            },
         };
     }
 }
