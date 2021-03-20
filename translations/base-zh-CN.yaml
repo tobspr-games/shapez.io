@@ -213,14 +213,14 @@ ingame:
         title: 统计信息
         dataSources:
             stored:
-                title: 已存储
-                description: 所有图形已存储于中心。
+                title: 仓库
+                description: 所有存储在中心基地的图形。
             produced:
                 title: 生产
-                description: 所有图形已在工厂内生产，包括中间产物。
+                description: 所有在工厂内生产的图形，包括中间产物。
             delivered:
                 title: 交付
-                description: 图形已交付到中心基地。
+                description: 交付到中心基地的图形。
         noShapesProduced: 您还没有生产任何图形。
         shapesDisplayUnits:
             second: <shapes> / 秒
