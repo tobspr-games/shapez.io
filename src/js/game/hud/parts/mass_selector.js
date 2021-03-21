@@ -322,15 +322,15 @@ export class HUDMassSelector extends BaseHUDPart {
         parameters.context.fillStyle = THEME.map.selectionOverlay;
         parameters.context.beginPath();
         this.selectedUids.forEach(uid => {
+        	// Do not attempt to write this in one line, it will be much slower.
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
             const bounds = staticComp.getTileSpaceBounds();
-            // tried writing this in one line: it worked but it was very slow... WHY?
             parameters.context.fillRect(
                 bounds.x * globalConfig.tileSize + boundsBorder,
                 bounds.y * globalConfig.tileSize + boundsBorder,
                 bounds.w * globalTileSizeAdjusted,
-                bounds.h * globalTileSizeAdjusted // This seems like microoptimization but on a huuuge scale it makes a difference
+                bounds.h * globalTileSizeAdjusted // MICROOPTIMIZATION: Avoid computing inside loops.
             );
         });
         parameters.context.closePath(); // +1 fps for some reason
