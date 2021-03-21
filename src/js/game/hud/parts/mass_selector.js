@@ -19,10 +19,8 @@ const logger = createLogger("hud/mass_selector");
 var globalTileSizeAdjusted = 0;
 
 export class HUDMassSelector extends BaseHUDPart {
-    
     createElements(parent) {}
 
-    
     initialize() {
         this.currentSelectionStartWorld = null;
         this.currentSelectionEnd = null;
@@ -206,7 +204,8 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-        if (!(this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).pressed) || mouseButton !== enumMouseButton.left) {
+        if (!(this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart).pressed) 
+        	|| mouseButton !== enumMouseButton.left) {
             return;
         }
 
@@ -329,10 +328,9 @@ export class HUDMassSelector extends BaseHUDPart {
                 bounds.x * globalConfig.tileSize + boundsBorder,
                 bounds.y * globalConfig.tileSize + boundsBorder,
                 bounds.w * globalTileSizeAdjusted,
-                bounds.h * globalTileSizeAdjusted, // This seems like microoptimization but on a huuuge scale it makes a difference
+                bounds.h * globalTileSizeAdjusted // This seems like microoptimization but on a huuuge scale it makes a difference
             );
         });
         parameters.context.closePath(); // +1 fps for some reason
-        
     }
 }
