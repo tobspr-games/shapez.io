@@ -204,11 +204,11 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {enumMouseButton} mouseButton
      */
     onMouseDown(pos, mouseButton) {
-		if (
-		!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart.pressed) ||
-        mouseButton !== enumMouseButton.left) {
-		    return;
-		}
+        if (
+        !this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectStart.pressed) ||
+            mouseButton !== enumMouseButton.left) {
+            return;
+        }
 
         if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
