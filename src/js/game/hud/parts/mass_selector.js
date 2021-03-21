@@ -212,6 +212,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
         if (!this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectSelectMultiple).pressed) {
             // Start new selection
+
             this.selectedUids = new Set();
         }
 
