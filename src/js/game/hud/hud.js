@@ -129,9 +129,14 @@ export class GameHUD {
             this.parts.changesDebugger = new HUDChangesDebugger(this.root);
         }
 
-        if (this.root.gameMode.hasHints() && this.root.app.settings.getAllSettings().offerHints) {
-            this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
-            this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            if (!this.root.gameMode.isHudPartExcluded(HUDPartTutorialHints.name)) {
+                this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
+            }
+
+            if (!this.root.gameMode.isHudPartExcluded(HUDInteractiveTutorial.name)) {
+                this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
+            }
         }
 
         if (this.root.app.settings.getAllSettings().vignette) {
@@ -177,7 +182,7 @@ export class GameHUD {
         for (let key in parts) {
             const Part = parts[key];
 
-            if (!Part || this.root.gameMode.isHudPartExcluded(Part)) {
+            if (!Part || this.root.gameMode.isHudPartExcluded(Part.name)) {
                 continue;
             }
 

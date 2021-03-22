@@ -102,14 +102,12 @@ export class HUDWaypoints extends BaseHUDPart {
 
         /** @type {Array<Waypoint>} */
         this.waypoints = [];
-        if (this.root.gameMode.hasHub()) {
-            this.waypoints.push({
-                label: null,
-                center: { x: 0, y: 0 },
-                zoomLevel: 3,
-                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
-            });
-        }
+        this.waypoints.push({
+            label: null,
+            center: { x: 0, y: 0 },
+            zoomLevel: 3,
+            layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
+        });
 
         // Create a buffer we can use to measure text
         this.dummyBuffer = makeOffscreenBuffer(1, 1, {

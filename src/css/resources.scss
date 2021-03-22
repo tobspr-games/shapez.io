@@ -1,6 +1,6 @@
 $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, trash, underground_belt, wire,
     constant_signal, logic_gate, lever, filter, wire_tunnel, display, virtual_processor, reader, storage,
-    transistor, analyzer, comparator, item_producer;
+    transistor, analyzer, comparator, item_producer, constant_producer;
 
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
@@ -13,7 +13,8 @@ $buildingsAndVariants: belt, balancer, underground_belt, underground_belt-tier2,
     cutter, cutter-quad, rotater, rotater-ccw, stacker, mixer, painter-double, painter-quad, trash, storage,
     reader, rotater-rotate180, display, constant_signal, wire, wire_tunnel, logic_gate-or, logic_gate-not,
     logic_gate-xor, analyzer, virtual_processor-rotater, virtual_processor-unstacker, item_producer,
-    virtual_processor-stacker, virtual_processor-painter, wire-second, painter, painter-mirrored, comparator;
+    constant_producer, virtual_processor-stacker, virtual_processor-painter, wire-second, painter,
+    painter-mirrored, comparator;
 @each $building in $buildingsAndVariants {
     [data-icon="building_tutorials/#{$building}.png"] {
         /* @load-async */

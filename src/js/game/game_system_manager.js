@@ -6,7 +6,6 @@ import { createLogger } from "../core/logging";
 import { BeltSystem } from "./systems/belt";
 import { ItemEjectorSystem } from "./systems/item_ejector";
 import { MapResourcesSystem } from "./systems/map_resources";
-import { MapZoneSystem } from "./systems/map_zone";
 import { MinerSystem } from "./systems/miner";
 import { ItemProcessorSystem } from "./systems/item_processor";
 import { UndergroundBeltSystem } from "./systems/underground_belt";
@@ -25,6 +24,7 @@ import { ItemProcessorOverlaysSystem } from "./systems/item_processor_overlays";
 import { BeltReaderSystem } from "./systems/belt_reader";
 import { FilterSystem } from "./systems/filter";
 import { ItemProducerSystem } from "./systems/item_producer";
+import { ZoneSystem } from "./systems/zone";
 
 const logger = createLogger("game_system_manager");
 
@@ -46,9 +46,6 @@ export class GameSystemManager {
 
             /** @type {MapResourcesSystem} */
             mapResources: null,
-
-            /** @type {MapZoneSystem} */
-            mapZone: null,
 
             /** @type {MinerSystem} */
             miner: null,
@@ -104,6 +101,9 @@ export class GameSystemManager {
             /** @type {ItemProducerSystem} */
             itemProducer: null,
 
+            /** @type {ZoneSystem} */
+            zone: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -142,9 +142,9 @@ export class GameSystemManager {
 
         add("itemEjector", ItemEjectorSystem);
 
-        add("mapResources", MapResourcesSystem);
-
-        add("mapZone", MapZoneSystem);
+        if (this.root.gameMode.hasResources()) {
+            add("mapResources", MapResourcesSystem);
+        }
 
         add("hub", HubSystem);
 
@@ -170,6 +170,10 @@ export class GameSystemManager {
         add("display", DisplaySystem);
 
         add("itemProcessorOverlays", ItemProcessorOverlaysSystem);
+
+        if (this.root.gameMode.hasZone()) {
+            add("zone", ZoneSystem);
+        }
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

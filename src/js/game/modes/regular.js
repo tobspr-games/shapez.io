@@ -2,11 +2,13 @@
 import { GameRoot } from "../root";
 /* typehints:end */
 
+import { queryParamOptions } from "../../core/query_parameters";
 import { findNiceIntegerValue } from "../../core/utils";
+import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
+import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { types } from "../../savegame/serialization";
 
 /** @typedef {{
  *   shape: string,
@@ -489,6 +491,11 @@ export class RegularGameMode extends GameMode {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root);
+
+        this.setBuildings({
+            [MetaConstantProducerBuilding.name]: false,
+            [MetaItemProducerBuilding.name]: queryParamOptions.sandboxMode || G_IS_DEV,
+        });
     }
 
     /**

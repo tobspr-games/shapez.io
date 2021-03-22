@@ -13,6 +13,5 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root);
-        this.initialize();
     }
 }

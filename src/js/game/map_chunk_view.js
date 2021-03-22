@@ -42,7 +42,7 @@ export class MapChunkView extends MapChunk {
     drawBackgroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
         if (this.root.gameMode.hasZone()) {
-            systems.mapZone.drawChunk(parameters, this);
+            systems.zone.drawChunk(parameters, this);
         }
 
         if (this.root.gameMode.hasResources()) {

@@ -711,7 +711,6 @@ export class Camera extends BasicSerializableObject {
 
         this.didMoveSinceTouchStart = this.didMoveSinceTouchStart || delta.length() > 0;
         this.center = this.center.add(delta);
-        this.clampPosition(this.center);
 
         this.touchPostMoveVelocity = this.touchPostMoveVelocity
             .multiplyScalar(velocitySmoothing)
@@ -763,16 +762,15 @@ export class Camera extends BasicSerializableObject {
      * Clamps x, y position within set boundaries
      * @param {Vector} vector
      */
-    clampPosition(vector) {
-        if (!this.root.gameMode.hasBoundaries()) {
+    clampToBounds(vector) {
+        if (!this.root.gameMode.hasBounds()) {
             return;
         }
 
-        const width = this.root.gameMode.getBoundaryWidth();
-        const height = this.root.gameMode.getBoundaryHeight();
+        const bounds = this.root.gameMode.getBounds().allScaled(globalConfig.tileSize);
 
-        vector.x = clamp(vector.x, -width, width);
-        vector.y = clamp(vector.y, -height, height);
+        vector.x = clamp(vector.x, bounds.x, bounds.x + bounds.w);
+        vector.y = clamp(vector.y, bounds.y, bounds.y + bounds.h);
     }
 
     /**
@@ -878,6 +876,7 @@ export class Camera extends BasicSerializableObject {
             // Panning
             this.currentPan = mixVector(this.currentPan, this.desiredPan, 0.06);
             this.center = this.center.add(this.currentPan.multiplyScalar((0.5 * dt) / this.zoomLevel));
+            this.clampToBounds(this.center);
         }
     }
 
@@ -943,7 +942,7 @@ export class Camera extends BasicSerializableObject {
             )
         );
 
-        this.clampPosition(this.center);
+        this.clampToBounds(this.center);
     }
 
     /**
@@ -1029,6 +1028,8 @@ export class Camera extends BasicSerializableObject {
 
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;
+
+            this.clampToBounds(this.center);
         }
     }
 }

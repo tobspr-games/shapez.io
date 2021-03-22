@@ -119,6 +119,10 @@ mainMenu:
     puzzleMode: Puzzle Mode
     back: Back
 
+puzzleMenu:
+    play: Play
+    edit: Edit
+
 dialogs:
     buttons:
         ok: OK
@@ -703,6 +707,11 @@ buildings:
             name: Item Producer
             description: Available in sandbox mode only, outputs the given signal from the wires layer on the regular layer.
 
+    constant_producer:
+        default:
+            name: &constant_producer Constant Producer
+            description: Outputs a shape, color or boolean (1 or 0) as specified.
+
 storyRewards:
     # Those are the rewards gained from completing the store
     reward_cutter_and_trash:
@@ -1130,6 +1139,7 @@ keybindings:
         analyzer: *analyzer
         comparator: *comparator
         item_producer: Item Producer (Sandbox)
+        constant_producer: *constant_producer
         # ---
 
         pipette: Pipette

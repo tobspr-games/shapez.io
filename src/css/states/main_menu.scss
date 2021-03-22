@@ -242,6 +242,16 @@
             align-items: center;
         }
 
+        .modeButtons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include S(grid-column-gap, 10px);
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         .browserWarning {
             @include S(margin-bottom, 10px);
             background-color: $colorRedBright;
@@ -280,6 +290,18 @@
         }
 
         .newGameButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .playModeButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .editModeButton {
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
             @include S(margin-left, 15px);
@@ -452,7 +474,7 @@
         .buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 10px;
+            @include S(grid-column-gap, 10px);
             align-items: start;
             height: 100%;
             width: 100%;

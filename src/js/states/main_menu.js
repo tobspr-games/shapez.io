@@ -333,10 +333,13 @@ export class MainMenuState extends GameState {
         const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
         removeAllChildren(buttonContainer);
 
-        const playButtonElement = makeButtonElement(["playButton", "styledButton"], T.mainMenu.play);
+        const playButtonElement = makeButtonElement(["playModeButton", "styledButton"], T.puzzleMenu.play);
+        const editButtonElement = makeButtonElement(["editModeButton", "styledButton"], T.puzzleMenu.edit);
 
         buttonContainer.appendChild(playButtonElement);
         this.trackClicks(playButtonElement, this.onPuzzlePlayButtonClicked);
+        buttonContainer.appendChild(editButtonElement);
+        this.trackClicks(editButtonElement, this.onPuzzleEditButtonClicked);
 
         const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
         removeAllChildren(bottomButtonContainer);
@@ -352,6 +355,15 @@ export class MainMenuState extends GameState {
 
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzlePlay,
+            savegame,
+        });
+    }
+
+    onPuzzleEditButtonClicked() {
+        const savegame = this.app.savegameMgr.createNewSavegame();
+
+        this.moveToState("InGameState", {
+            gameModeId: enumGameModeIds.puzzleEdit,
             savegame,
         });
     }

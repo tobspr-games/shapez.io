@@ -2,8 +2,9 @@
 import { GameRoot } from "../root";
 /* typehints:end */
 
-import { PuzzleGameMode } from "./puzzle";
+import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { enumGameModeIds } from "../game_mode";
+import { PuzzleGameMode } from "./puzzle";
 
 export class PuzzleEditGameMode extends PuzzleGameMode {
     static getId() {
@@ -13,5 +14,9 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root);
+
+        this.setBuildings({
+            [MetaConstantProducerBuilding.name]: true,
+        });
     }
 }

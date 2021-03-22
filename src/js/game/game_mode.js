@@ -1,5 +1,6 @@
 /* typehints:start */
 import { GameRoot } from "./root";
+import { Rectangle } from "../core/rectangle";
 /* typehints:end */
 
 import { gGameModeRegistry } from "../core/global_registries";
@@ -44,6 +45,8 @@ export class GameMode extends BasicSerializableObject {
     constructor(root) {
         super();
         this.root = root;
+        this.hudParts = {};
+        this.buildings = {};
     }
 
     /** @returns {object} */
@@ -71,12 +74,12 @@ export class GameMode extends BasicSerializableObject {
         return this.constructor.getType();
     }
 
-    /**
-     * @param {string} name - Class name of HUD Part
-     * @returns {boolean}
-     */
-    isHudPartHidden(name) {
-        return false;
+    setBuildings(buildings) {
+        Object.assign(this.buildings, buildings);
+    }
+
+    setHudParts(parts) {
+        Object.assign(this.hudParts, parts);
     }
 
     /**
@@ -84,17 +87,20 @@ export class GameMode extends BasicSerializableObject {
      * @returns {boolean}
      */
     isHudPartExcluded(name) {
-        return false;
+        return this.hudParts[name] === false;
+    }
+
+    /**
+     * @param {string} name - Class name of building
+     * @returns {boolean}
+     */
+    isBuildingExcluded(name) {
+        return this.buildings[name] === false;
     }
 
     /** @returns {boolean} */
     hasZone() {
         return false;
-    }
-
-    /** @returns {boolean} */
-    hasHints() {
-        return true;
     }
 
     /** @returns {boolean} */
@@ -108,7 +114,7 @@ export class GameMode extends BasicSerializableObject {
     }
 
     /** @returns {boolean} */
-    hasBoundaries() {
+    hasBounds() {
         return false;
     }
 
@@ -122,29 +128,24 @@ export class GameMode extends BasicSerializableObject {
         return 3.5;
     }
 
-    /** @returns {object} */
+    /** @returns {Object<string, Array>} */
     getUpgrades() {
-        return {};
+        return {
+            belt: [],
+            miner: [],
+            processors: [],
+            painting: [],
+        };
     }
 
-    /** @returns {number} */
-    getZoneWidth() {
-        return 0;
+    /** @returns {?Rectangle} */
+    getZone() {
+        return null;
     }
 
-    /** @returns {number} */
-    getZoneHeight() {
-        return 0;
-    }
-
-    /** @returns {number} */
-    getBoundaryWidth() {
-        return Infinity;
-    }
-
-    /** @returns {number} */
-    getBoundaryHeight() {
-        return Infinity;
+    /** @returns {?Rectangle} */
+    getBounds() {
+        return null;
     }
 
     /** @returns {array} */

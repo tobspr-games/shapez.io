@@ -153,10 +153,6 @@ export class HUDPinnedShapes extends BaseHUDPart {
      * Rerenders the whole component
      */
     rerenderFull() {
-        if (this.root.gameMode.isHudPartHidden(this.constructor.name)) {
-            return;
-        }
-
         const currentGoal = this.root.hubGoals.currentGoal;
         const currentKey = currentGoal.definition.getHash();
 
