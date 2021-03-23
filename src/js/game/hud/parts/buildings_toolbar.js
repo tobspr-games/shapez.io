@@ -16,12 +16,14 @@ import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaStorageBuilding } from "../../buildings/storage";
 import { MetaItemProducerBuilding } from "../../buildings/item_producer";
 import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
         super(root, {
             primaryBuildings: [
                 MetaConstantProducerBuilding,
+                MetaGoalAcceptorBuilding,
                 MetaBeltBuilding,
                 MetaBalancerBuilding,
                 MetaUndergroundBeltBuilding,

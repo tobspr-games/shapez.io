@@ -59,6 +59,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.painterQuad]: this.process_PAINTER_QUAD,
             [enumItemProcessorTypes.hub]: this.process_HUB,
             [enumItemProcessorTypes.reader]: this.process_READER,
+            [enumItemProcessorTypes.goal]: this.process_GOAL,
         };
 
         // Bind all handlers
@@ -561,5 +562,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const item = /** @type {ShapeItem} */ (payload.items[i].item);
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
         }
+    }
+
+    /**
+     * @param {ProcessorImplementationPayload} payload
+     */
+    process_GOAL(payload) {
+        const readerComp = payload.entity.components.BeltReader;
+        readerComp.lastItemTimes.push(this.root.time.now());
+        readerComp.lastItem = payload.items[payload.items.length - 1].item;
     }
 }

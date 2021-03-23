@@ -5,6 +5,7 @@ import { GameRoot } from "../root";
 import { queryParamOptions } from "../../core/query_parameters";
 import { findNiceIntegerValue } from "../../core/utils";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
@@ -494,6 +495,7 @@ export class RegularGameMode extends GameMode {
 
         this.setBuildings({
             [MetaConstantProducerBuilding.name]: false,
+            [MetaGoalAcceptorBuilding.name]: false,
             [MetaItemProducerBuilding.name]: queryParamOptions.sandboxMode || G_IS_DEV,
         });
     }

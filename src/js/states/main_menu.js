@@ -209,7 +209,7 @@ export class MainMenuState extends GameState {
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             if (globalConfig.debug.testPuzzleMode) {
-                this.onPuzzlePlayButtonClicked();
+                this.onPuzzleEditButtonClicked();
                 return;
             }
 

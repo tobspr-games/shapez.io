@@ -110,6 +110,6 @@ export class MetaReaderBuilding extends MetaBuilding {
             })
         );
 
-        entity.addComponent(new BeltReaderComponent());
+        entity.addComponent(new BeltReaderComponent({}));
     }
 }

@@ -500,6 +500,7 @@ export class HubGoals extends BasicSerializableObject {
         switch (processorType) {
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
+            case enumItemProcessorTypes.goal:
                 return 1e30;
             case enumItemProcessorTypes.balancer:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;

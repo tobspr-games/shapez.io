@@ -19,6 +19,7 @@ export const enumItemProcessorTypes = {
     hub: "hub",
     filter: "filter",
     reader: "reader",
+    goal: "goal",
 };
 
 /** @enum {string} */
@@ -104,7 +105,11 @@ export class ItemProcessorComponent extends Component {
      * @param {number} sourceSlot
      */
     tryTakeItem(item, sourceSlot) {
-        if (this.type === enumItemProcessorTypes.hub || this.type === enumItemProcessorTypes.trash) {
+        if (
+            this.type === enumItemProcessorTypes.hub ||
+            this.type === enumItemProcessorTypes.trash ||
+            this.type === enumItemProcessorTypes.goal
+        ) {
             // Hub has special logic .. not really nice but efficient.
             this.inputSlots.push({ item, sourceSlot });
             return true;

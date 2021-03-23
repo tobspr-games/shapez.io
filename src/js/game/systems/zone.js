@@ -39,15 +39,16 @@ export class ZoneSystem extends GameSystem {
      */
     drawChunk(parameters, chunk) {
         const zone = this.root.gameMode.getZone().allScaled(globalConfig.tileSize);
+        const context = parameters.context;
 
-        parameters.context.globalAlpha = 0.1;
-        parameters.context.fillStyle = THEME.map.zone.background;
-        parameters.context.fillRect(zone.x, zone.y, zone.w, zone.h);
+        context.globalAlpha = 0.1;
+        context.fillStyle = THEME.map.zone.background;
+        context.fillRect(zone.x, zone.y, zone.w, zone.h);
 
-        parameters.context.globalAlpha = 0.9;
-        parameters.context.strokeStyle = THEME.map.zone.border;
-        parameters.context.strokeRect(zone.x, zone.y, zone.w, zone.h);
+        context.globalAlpha = 0.9;
+        context.strokeStyle = THEME.map.zone.border;
+        context.strokeRect(zone.x, zone.y, zone.w, zone.h);
 
-        parameters.context.globalAlpha = 1;
+        context.globalAlpha = 1;
     }
 }

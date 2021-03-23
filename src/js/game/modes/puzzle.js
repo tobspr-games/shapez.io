@@ -117,4 +117,9 @@ export class PuzzleGameMode extends GameMode {
     getMinimumZoom() {
         return 1;
     }
+
+    /** @returns {boolean} */
+    getIsFreeplayAvailable() {
+        return true;
+    }
 }

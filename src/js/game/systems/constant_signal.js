@@ -6,9 +6,10 @@ import { fillInLinkIntoTranslation } from "../../core/utils";
 import { T } from "../../translations";
 import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
-import { ConstantSignalComponent } from "../components/constant_signal";
+import { enumConstantSignalType, ConstantSignalComponent } from "../components/constant_signal";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
@@ -26,8 +27,13 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         // Set signals
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const pinsComp = entity.components.WiredPins;
             const signalComp = entity.components.ConstantSignal;
+
+            if (signalComp.isWireless()) {
+                continue;
+            }
+
+            const pinsComp = entity.components.WiredPins;
             pinsComp.slots[0].value = signalComp.signal;
         }
     }
@@ -54,23 +60,33 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             validator: val => this.parseSignalCode(val),
         });
 
+        const items = [
+            BOOL_FALSE_SINGLETON,
+            BOOL_TRUE_SINGLETON,
+            ...Object.values(COLOR_ITEM_SINGLETONS),
+            this.root.shapeDefinitionMgr.getShapeItemFromShortKey(this.root.gameMode.getBlueprintShapeKey()),
+        ];
+
+        if (this.root.gameMode.hasHub()) {
+            items.push(
+                this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                    this.root.hubGoals.currentGoal.definition
+                )
+            );
+        }
+
+        if (!this.root.gameMode.isHudPartExcluded(HUDPinnedShapes.name)) {
+            items.push(
+                ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
+                    this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
+                )
+            );
+        }
+
         const itemInput = new FormElementItemChooser({
             id: "signalItem",
             label: null,
-            items: [
-                BOOL_FALSE_SINGLETON,
-                BOOL_TRUE_SINGLETON,
-                ...Object.values(COLOR_ITEM_SINGLETONS),
-                this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                    this.root.hubGoals.currentGoal.definition
-                ),
-                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
-                    this.root.gameMode.getBlueprintShapeKey()
-                ),
-                ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
-                    this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
-                ),
-            ],
+            items,
         });
 
         const dialog = new DialogWithForm({
@@ -103,7 +119,6 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             }
 
             if (itemInput.chosenItem) {
-                console.log(itemInput.chosenItem);
                 constantComp.signal = itemInput.chosenItem;
             } else {
                 constantComp.signal = this.parseSignalCode(signalValueInput.getValue());

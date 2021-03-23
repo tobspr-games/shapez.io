@@ -1,3 +1,4 @@
+import { types } from "../../savegame/serialization";
 import { Component } from "../component";
 
 /** @enum {string} */
@@ -11,12 +12,22 @@ export class ItemProducerComponent extends Component {
         return "ItemProducer";
     }
 
+    static getSchema() {
+        return {
+            type: types.string,
+        };
+    }
+
     /**
-     * @param {object} options
-     * @prop {type=} options.type
+     * @param {object} param0
+     * @param {string=} param0.type
      */
     constructor({ type = enumItemProducerType.wired }) {
         super();
         this.type = type;
+    }
+
+    isWireless() {
+        return this.type === enumItemProducerType.wireless;
     }
 }

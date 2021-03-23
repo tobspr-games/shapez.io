@@ -49,8 +49,9 @@ export const KEYMAPPINGS = {
     },
 
     buildings: {
-        // Puzzle
-        constant_producer: { keyCode: 192 }, // "`"
+        // Puzzle buildings
+        constant_producer: { keyCode: key("H") },
+        goal_acceptor: { keyCode: key("N") },
 
         // Primary Toolbar
         belt: { keyCode: key("1") },
