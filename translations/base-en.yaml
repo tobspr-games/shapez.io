@@ -483,6 +483,24 @@ ingame:
                 title: Support me
                 desc: I develop the game in my spare time!
 
+    modeMenu:
+        puzzleEditMode:
+            back:
+                title: Main Menu
+            next: 
+                title: Playtest
+                desc: You will have to complete the puzzle before being able to publish it
+        puzzleEditTestMode:
+            back: 
+                title: Edit
+            next: 
+                title: Publish
+        puzzlePlayMode:
+            back:
+                title: Puzzle Menu
+            next:
+                title: Next
+
 # All shop upgrades
 shopUpgrades:
     belt:

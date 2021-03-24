@@ -118,6 +118,16 @@ export class GameMode extends BasicSerializableObject {
         return false;
     }
 
+    /** @returns {boolean} */
+    isZoneRestricted() {
+        return false;
+    }
+
+    /** @returns {boolean} */
+    isBoundaryRestricted() {
+        return false;
+    }
+
     /** @returns {number} */
     getMinimumZoom() {
         return 0.1;
@@ -141,6 +151,15 @@ export class GameMode extends BasicSerializableObject {
     /** @returns {?Rectangle} */
     getZone() {
         return null;
+    }
+
+    /**
+     * @param {number} w
+     * @param {number} h
+     */
+    expandZone(w = 0, h = 0) {
+        abstract;
+        return;
     }
 
     /** @returns {?Rectangle} */

@@ -24,11 +24,18 @@ export class ZoneSystem extends GameSystem {
             return;
         }
 
-        const zone = this.root.gameMode.getZone().expandedInAllDirections(-1);
+        const mode = this.root.gameMode;
+        const zone = mode.getZone().expandedInAllDirections(-1);
         const transformed = staticComp.getTileSpaceBounds();
 
         if (zone.containsRect(transformed)) {
-            return STOP_PROPAGATION;
+            if (mode.isZoneRestricted()) {
+                return STOP_PROPAGATION;
+            }
+        } else {
+            if (mode.isBoundaryRestricted()) {
+                return STOP_PROPAGATION;
+            }
         }
     }
 
@@ -38,15 +45,17 @@ export class ZoneSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        const zone = this.root.gameMode.getZone().allScaled(globalConfig.tileSize);
+        const mode = this.root.gameMode;
+        const zone = mode.getZone().allScaled(globalConfig.tileSize);
         const context = parameters.context;
 
         context.globalAlpha = 0.1;
         context.fillStyle = THEME.map.zone.background;
         context.fillRect(zone.x, zone.y, zone.w, zone.h);
 
-        context.globalAlpha = 0.9;
+        context.globalAlpha = 1;
         context.strokeStyle = THEME.map.zone.border;
+        context.lineWidth = 2;
         context.strokeRect(zone.x, zone.y, zone.w, zone.h);
 
         context.globalAlpha = 1;

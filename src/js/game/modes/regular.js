@@ -7,6 +7,10 @@ import { findNiceIntegerValue } from "../../core/utils";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
+import { HUDModeMenuBack } from "../hud/parts/mode_menu_back";
+import { HUDModeMenuNext } from "../hud/parts/mode_menu_next";
+import { HUDModeMenu } from "../hud/parts/mode_menu";
+import { HUDModeSettings } from "../hud/parts/mode_settings";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
@@ -492,6 +496,13 @@ export class RegularGameMode extends GameMode {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root);
+
+        this.setHudParts({
+            [HUDModeMenuBack.name]: false,
+            [HUDModeMenuNext.name]: false,
+            [HUDModeMenu.name]: false,
+            [HUDModeSettings.name]: false,
+        });
 
         this.setBuildings({
             [MetaConstantProducerBuilding.name]: false,

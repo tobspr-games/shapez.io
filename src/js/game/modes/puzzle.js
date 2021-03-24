@@ -5,9 +5,11 @@ import { GameRoot } from "../root";
 import { Rectangle } from "../../core/rectangle";
 import { types } from "../../savegame/serialization";
 import { enumGameModeTypes, GameMode } from "../game_mode";
+import { HUDGameMenu } from "../hud/parts/game_menu";
 import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
-import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
+import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
 import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
+import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
 import { HUDWaypoints } from "../hud/parts/waypoints";
 
 export class PuzzleGameMode extends GameMode {
@@ -30,7 +32,9 @@ export class PuzzleGameMode extends GameMode {
         const data = this.getSaveData();
 
         this.setHudParts({
+            [HUDGameMenu.name]: false,
             [HUDInteractiveTutorial.name]: false,
+            [HUDKeybindingOverlay.name]: false,
             [HUDPartTutorialHints.name]: false,
             [HUDPinnedShapes.name]: false,
             [HUDWaypoints.name]: false,

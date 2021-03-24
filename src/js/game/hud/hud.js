@@ -49,6 +49,10 @@ import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
 import { HUDCatMemes } from "./parts/cat_memes";
 import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
 import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
+import { HUDModeMenuBack } from "./parts/mode_menu_back";
+import { HUDModeMenuNext } from "./parts/mode_menu_next";
+import { HUDModeMenu } from "./parts/mode_menu";
+import { HUDModeSettings } from "./parts/mode_settings";
 
 export class GameHUD {
     /**
@@ -88,6 +92,10 @@ export class GameHUD {
             wireInfo: HUDWireInfo,
             leverToggle: HUDLeverToggle,
             constantSignalEdit: HUDConstantSignalEdit,
+            modeMenuBack: HUDModeMenuBack,
+            modeMenuNext: HUDModeMenuNext,
+            modeMenu: HUDModeMenu,
+            modeSettings: HUDModeSettings,
 
             // Must always exist
             pinnedShapes: HUDPinnedShapes,
@@ -112,7 +120,9 @@ export class GameHUD {
         });
 
         if (!IS_MOBILE) {
-            this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
+            if (!this.root.gameMode.isHudPartExcluded(HUDKeybindingOverlay.name)) {
+                this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
+            }
         }
 
         if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
