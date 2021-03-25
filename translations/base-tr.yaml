@@ -98,8 +98,7 @@ dialogs:
         text: >-
             Bu kaydı silmek istediğinize emin misiniz?<br><br>
             '<savegameName>' seviyesi <savegameLevel><br><br>
-            Bu işlem geri alınamaz!
-            
+            Bu işlem geri alınamaz! 
     savegameDeletionError:
         title: Silme başarısız
         text: "Oyun kaydı silinemedi:"
@@ -737,7 +736,7 @@ settings:
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
-    rangeSliderPercentage: % <amount>
+    rangeSliderPercentage: "% <amount>"
     labels:
         uiScale:
             title: Arayüz Ölçeği
