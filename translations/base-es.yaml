@@ -310,18 +310,18 @@ ingame:
                 extractores</strong> y conectalos a el HUB.<br><br> PD: Manten
                 apretado <strong>SHIFT</strong> mientrás pones cintas
                 transportadoras para activar el planeador de cintas!"
-            21_1_place_quad_painter: ¡Pon el <strong>pintaor cuadruple</strong> y consigue
-                unos <strong>circulos</strong>, el color <strong>blanco</strong>
+            21_1_place_quad_painter: ¡Pon el <strong>pintador cuádruple</strong> y consigue
+                unos <strong>círculos</strong>, el color <strong>blanco</strong>
                 y el color <strong>rojo</strong>!
-            21_2_switch_to_wires: ¡Cambia a la capa de cables apretando la técla
+            21_2_switch_to_wires: ¡Cambia a la capa de cables apretando la tecla
                 <strong>E</strong>!<br><br> Luego <strong>conecta las cuatro
-                entradas</strong> de el pintador con cables!
+                entradas</strong> del pintador con cables!
             21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y
-                conectalo con cables!
+                conéctalo con cables!
             21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una
-                señal verdadera</strong> lo cual activa el piintador.<br><br>
+                señal verdadera</strong> lo cual activa el pintador.<br><br>
                 PD: ¡No necesitas conectar todas las entradas! Intenta
-                conectando solo dos."
+                conectando sólo dos."
     connectedMiners:
         one_miner: 1 Minero
         n_miners: <amount> Mineros
