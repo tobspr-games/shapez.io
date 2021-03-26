@@ -13,14 +13,14 @@ steamPage:
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
         Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez.io deneme sürümünü oynayıp sonradan karar verebilirsin!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: İnsanlar shapez.io hakkında ne düşünüyor?
+    nothernlion_comment: Bu oyun süper - Oynarken harika vakit geçiriyorum
+        ve zaman akıp gidiyor.
+    notch_comment: Hay aksi. Gerçekten uyumalıyım, ama şimdi shapez.io'da
+        nasıl bir bilgisayar yapabileceğimi çözdüm.
+    steam_review_comment: Bu oyun hayatımı çaldı ve geri istemiyorum.
+        Üretim hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir
+        fabrika oyunu.
 global:
     loading: Yüklenİyor
     error: Hata
