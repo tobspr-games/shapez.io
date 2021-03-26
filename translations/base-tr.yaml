@@ -955,7 +955,7 @@ keybindings:
         logic_gate: Mantık Kapısı
         lever: Anahtar (normal)
         filter: Filtre
-        wire_tunnel: Kablo Köprüsü
+        wire_tunnel: Kablo Tüneli
         display: Ekran
         reader: Bant Okuyucu
         virtual_processor: Sanal Kesici
