@@ -1,3 +1,17 @@
+# Oversætterbemærkninger:
+# Liste af de besværlige ord, ift. spil terminologi, og for at undgå ordrette 
+#   men mensingsfyrrende "undersættelser" og være konsistent
+# shape: Figurer   Level: Niveau (spil niveauet)   Upgrade Tier: Forbedring Trin
+# HUB: Nav  (eller central)   Tile: Flise    Chunk: Klynge (klump?)
+# Blueprints: Skabelon (tidl oversættelse var "Arbejdstegninger")
+# Valgt Fabrik (Factory) som hele spillepladen, 
+# Bygning (Building) for et enkel object, Maskine (machine) som en lille gruppe; 
+#   de sidste to er ikke brugt consisten i den engelske orginal
+# Item: figur (enhed er mere korrekt men item er altid en "shape")
+# rotate: Drejning. Splitter/merge/balancer: variere med contekst: Fordeler/samler(balancer)
+#
+# Der er ikke oversat ting jeg ikke har nået med mit spil - mest for at ikke ødelægge min fornøjelse endnu. (Author M-square)
+#
 steamPage:
     shortText: Shapez.io handler om at bygge fabrikker på en grænseløs spilleflade
         for automatisk at skabe og kombinere figurer, der i stigende grad bliver
@@ -84,7 +98,7 @@ dialogs:
         deleteGame: Jeg ved hvad jeg laver
         viewUpdate: Se Opdatering
         showUpgrades: Vis Opgraderinger
-        showKeybindings: Vis taste funktioner
+        showKeybindings: Vis tastefunktioner
     importSavegameError:
         title: Import Fejl
         text: "Importering af gemt spil fejlede:"
@@ -97,7 +111,7 @@ dialogs:
     confirmSavegameDelete:
         title: Bekræft sletning
         text: Er du sikker på du vil slette dette spil?<br><br>
-            '<savegameName>' på niveau <savegameLevel><br><br> Dette kan ikke fortrydes!
+            '<savegameName>' på niveau <savegameLevel><br><br>Dette kan ikke fortrydes!
     savegameDeletionError:
         title: Sletning fejlede
         text: "Det lykkedes ikke at slette dit gemte spil:"
@@ -126,8 +140,8 @@ dialogs:
         title: Ny opdatering!
         desc: "Dette har ændret sig siden sidst du spillede:"
     upgradesIntroduction:
-        title: Få Forbedringer
-        desc: Alle figurer du producerer kan blive brugt til at få forbedringer -
+        title: Skabe Forbedringer
+        desc: Alle figurer du producerer kan blive brugt til at skabe forbedringer -
             <strong>Ødelæg ikke dine gamle fabrikker!</strong>
             Forbedringsvinduet kan findes i det øverste højre hjørne af
             skærmen.
@@ -219,8 +233,8 @@ ingame:
             speed: Fart
             range: Rækkevidde
             storage: Opbevaring
-            oneItemPerSecond: 1 genstand / sekund
-            itemsPerSecond: <x> genstande / s
+            oneItemPerSecond: 1 figur / sekund
+            itemsPerSecond: <x> figurer / s
             itemsPerSecondDouble: (x2)
             tiles: <x> fliser
     levelCompleteNotification:
@@ -231,10 +245,10 @@ ingame:
     notifications:
         newUpgrade: En ny forbedring er tilgængelig!
         gameSaved: Dit spil er gemt.
-        freeplayLevelComplete: Level <level> er blevet fuldført!
+        freeplayLevelComplete: Niveau <level> er blevet fuldført!
     shop:
         title: Forbedringer
-        buttonUnlock: Forbedring
+        buttonUnlock: Forbedre
         tier: Trin <x>
         maximumLevel: HØJESTE NIVEAU (fart x<currentMult>)
     statistics:
@@ -242,14 +256,14 @@ ingame:
         dataSources:
             stored:
                 title: Opbevaret
-                description: Viser mængden af opbevarede figurer i din centrale bygning.
+                description: Viser mængden af opbevarede figurer i dit centrale Nav.
             produced:
                 title: Produceret
                 description: Viser alle de figurer hele din fabrik producerer, inklusiv
                     produkter brugt til videre produktion.
             delivered:
                 title: Afleveret
-                description: Viser figurer som er afleveret til din centrale bygning.
+                description: Viser figurer som bliver afleveret til din centrale Nav.
         noShapesProduced: Ingen figurer er blevet produceret indtil videre.
         shapesDisplayUnits:
             second: <shapes> / s
@@ -267,7 +281,7 @@ ingame:
         cost: Pris
     waypoints:
         waypoints: Markører
-        hub: HUB
+        hub: NAV
         description: Venstreklik et stednavn for at hoppe til det, højreklik for at slette
             det.<br><br>Tryk <keybinding> for at lave et stednavn på det nuværende
             sted, eller <strong>højreklik</strong> for at lave et stednavn på det
@@ -282,7 +296,7 @@ ingame:
         hints:
             1_1_extractor: Sæt en <strong>udvinder</strong> på toppen af
                 en<strong>cirkelfigur</strong> for at begynde produktion af den!
-            1_2_conveyor: "Forbind udvinderen til din hub med et
+            1_2_conveyor: "Forbind udvinderen til dit nav med et
                 <strong>transportbælte</strong>!<br><br>Tip: <strong>Tryk og
                 træk</strong> bæltet med din mus!"
             1_3_expand: "Dette er <strong>IKKE</strong> et tomgangs spil! Byg flere udvindere og
@@ -291,11 +305,11 @@ ingame:
                 <strong>R</strong> for at rotere dem."
             2_1_place_cutter: "Placer en <strong>klipper</strong> for at klippe cirklen i to halvdele!<br><br> Bemærk: Klippet er altid lodret fra <strong>top til bund</strong> uanset klipperens placering"
             2_2_place_trash: Klipperen kan <strong>stoppe til</strong>!<br><br> Brug
-                <strong>skraldespanden</strong> for at smide det (for tiden) uønskede rester.
+                <strong>skraldespanden</strong> for at smide de (for tiden) uønskede rester væk.
             2_3_more_cutters: "Godt gjort! Sæt yderelige <strong>2 klippere</strong> for at sætte fart på den langsome process!<br><br> Bemærk: Brug <strong>0-9
                 tasterne</strong> for indvælge fabrikkerne nemmere !"
-            3_1_rectangles: "Nu skl vi have fat i firkanter! <strong>Byg 4
-                udvindere</strong> og forbind dem til centralen.<br><br> Bemærk:
+            3_1_rectangles: "Nu skal vi have fat i firkanter! <strong>Byg 4
+                udvindere</strong> og forbind dem til dit nav.<br><br> Bemærk:
                 Hold <strong>SKIFT</strong> mens du trækker bælte - det aktiverer bæleplanlæggeren!"
             21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
                 <strong>circles</strong>, <strong>white</strong> and
@@ -512,7 +526,7 @@ buildings:
     reader:
         default:
             name: Bæltlæser
-            description: Tillader at måle gennemstrømning af et bælte. Den sidste målte genstand angives på Lednings laget (når tilgængligt)
+            description: Tillader at måle gennemstrømning på et bælte. Den sidste målte genstand angives på Lednings laget (når tilgængligt)
     analyzer:
         default:
             name: Shape Analyzer
@@ -560,7 +574,7 @@ storyRewards:
             med uret.
     reward_painter:
         title: Maling
-        desc: "<strong>Maleren</strong> er nu tilgængelig - Få noget farve med
+        desc: "<strong>Maleren</strong> er nu tilgængelig - Få nogle farveklatter med
             udvinderen (lige som du gør med figurer) og kombiner det med en
             farve i maleren for at farve dem!<br><br>Bemærk: Hvis du er farveblind,
             så er der en <strong>farveblindstilstand</strong> i
@@ -957,9 +971,9 @@ demo:
         exportingBase: Eksportere hele basen som et billede
     settingNotAvailable: Ikke tilgængelig i demoen.
 tips:
-    - Centralen modtager alle figurer, ikke kun den aktuelle figur!
+    - Det central nav modtager alle figurer, ikke kun den aktuelle figur!
     - Anstreng dig at fabrikker er modulære - det betaler sig!
-    - Undgå at bygge for tæt på Centralen - det bliver hurtigt rodet!
+    - Undgå at bygge for tæt på navet - det bliver hurtigt rodet!
     - Hvis stablingen ikke virker, så prøv at bytte de to indgange.
     - Du kan vende bæltplanlæggerens retning ved at trykke <b>R</b>.
     - At holde <b>CTRL</b> muliggør trækning af bælter uden auto retningsændring.
@@ -985,7 +999,7 @@ tips:
     - Med <b>ALT</b> holdt nede, vendes retning af bæltet ved placering.
     - Effektivitet er nøglen!
     - Figure-felterne bliver mere komplex længere væk fra Centralen.
-    - Msakinerne har begrænset fart - del arbejdet op for effektivitet.
+    - Maskinerne har begrænset fart - del arbejdet op for effektivitet.
     - Use balancers to maximize your efficiency.
     - Organization is important. Try not to cross conveyors too much.
     - Plan in advance, or it will be a huge chaos!
