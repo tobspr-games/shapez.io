@@ -1,11 +1,11 @@
 # Oversætterbemærkninger:
-# Liste af de besværlige ord, ift. spil terminologi, og for at undgå ordrette 
+# Spil terminologi ord, for at undgå ordrette
 #   men mensingsfyrrende "undersættelser" og være konsistent
 # shape: Figurer   Level: Niveau (spil niveauet)   Upgrade Tier: Forbedring Trin
 # HUB: Nav  (eller central)   Tile: Flise    Chunk: Klynge (klump?)
 # Blueprints: Skabelon (tidl oversættelse var "Arbejdstegninger")
-# Valgt Fabrik (Factory) som hele spillepladen, 
-# Bygning (Building) for et enkel object, Maskine (machine) som en lille gruppe; 
+# Valgt Fabrik (Factory) som hele spillepladen,
+# Bygning (Building) for et enkel object, Maskine (machine) som en lille gruppe;
 #   de sidste to er ikke brugt consisten i den engelske orginal
 # Item: figur (enhed er mere korrekt men item er altid en "shape")
 # rotate: Drejning. Splitter/merge/balancer: variere med contekst: Fordeler/samler(balancer)
@@ -302,7 +302,8 @@ ingame:
                 bælter for at færdiggøre målet hurtigere.<br><br>Tip: Hold
                 <strong>SKIFT</strong> for at sætte flere udvindere, og tryk
                 <strong>R</strong> for at rotere dem."
-            2_1_place_cutter: "Placer en <strong>klipper</strong> for at klippe cirklen i to halvdele!<br><br> Bemærk: Klippet er altid lodret fra <strong>top til bund</strong> uanset klipperens placering"
+            2_1_place_cutter: "Placer en <strong>klipper</strong> for at klippe cirklen i to halvdele!<br><br>
+		Bemærk: Klippet er altid lodret fra <strong>top til bund</strong> uanset klipperens placering"
             2_2_place_trash: Klipperen kan <strong>stoppe til</strong>!<br><br> Brug
                 <strong>skraldespanden</strong> for at smide de (for tiden) uønskede rester væk.
             2_3_more_cutters: "Godt gjort! Sæt yderelige <strong>2 klippere</strong> for at sætte fart på den langsome process!<br><br> Bemærk: Brug <strong>0-9
@@ -623,7 +624,7 @@ storyRewards:
             og bruger kun en farve i stedet for to.
     reward_storage:
         title: Opbevaringsbuffer
-        desc: <strong>Opbevaringsbuffer</strong> er nu tilgænglig - 
+        desc: <strong>Opbevaringsbuffer</strong> er nu tilgænglig -
           Den kan opbevare figurer op til dens kapacitet!<br><br> Den venstre udgang bruges fortinsvis. Kan bruges til <strong>overskuds regulering</strong>.!
     reward_freeplay:
         title: Frit spil
@@ -842,9 +843,7 @@ settings:
             description: Slå flise stregerne fra kan øge spillets ydelse. Det gør fremtoningen renere!
         clearCursorOnDeleteWhilePlacing:
             title: Ryd Cursor med højre klik
-            description: Normalt slået til.
-            Rydder cursorens indhold hvis du har en bygning parat til placering.
-            Hvis slået fra, så sletter den byging med højreclick også hvis noget er i cursoren.
+            description: Normalt slået til. Rydder cursorens indhold hvis du har en bygning parat til placering. Hvis slået fra, så sletter den bygning med højreclick også hvis noget er i cursoren.
         lowQualityTextures:
             title: Lav kvalitets texturer (Gremt)
             description: Bruger lav kvalitet for at forbedre spillets ydelse. Det får spillet at se gremt ud!
@@ -954,7 +953,8 @@ about:
 
         Hvis du vil bidrage, tjek <a href="<githublink>" target="_blank">shapez.io på github</a>.<br><br>
 
-        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
+        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - 
+	  Du burde virkelig deltage på <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
 
         Lydsporet er lavet af <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Han er fantastisk.<br><br>
 
