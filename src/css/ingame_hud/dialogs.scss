@@ -215,24 +215,28 @@
                 }
             }
 
-            .checkBoxFormElem {
+            .checkBoxFormElem,
+            .enumFormElem {
+                display: flex;
+                align-items: center;
                 @include S(margin, 10px, 0);
+
                 > label {
                     @include S(margin-right, 10px);
                 }
-                display: flex;
-                align-items: center;
             }
 
             .enum {
-                @include S(margin, 10px, 0);
                 display: grid;
                 grid-template-columns: auto 1fr auto;
                 @include S(grid-gap, 4px);
-                @include S(width, 200px);
+                @include S(min-width, 160px);
 
-                > * {
+                > div {
                     background: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     text-align: center;
                     pointer-events: all;
                     cursor: pointer;
@@ -253,7 +257,7 @@
                     }
 
                     &.toggle {
-                        @include S(width, 20px);
+                        @include S(width, 16px);
                     }
 
                     &.value {

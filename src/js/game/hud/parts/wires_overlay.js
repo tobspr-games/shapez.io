@@ -114,10 +114,9 @@ export class HUDWiresOverlay extends BaseHUDPart {
     /**
      *
      * @param {DrawParameters} parameters
-     * @param {boolean=} forced
      */
-    draw(parameters, forced = false) {
-        if (!forced && this.currentAlpha < 0.02) {
+    draw(parameters) {
+        if (this.currentAlpha < 0.02) {
             return;
         }
 
@@ -128,7 +127,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
 
         const bounds = parameters.visibleRect;
 
-        parameters.context.globalAlpha = forced ? 1 : this.currentAlpha;
+        parameters.context.globalAlpha = this.currentAlpha;
 
         const scaleFactor = 1 / wiresBackgroundDpi;
         parameters.context.globalCompositeOperation = "overlay";

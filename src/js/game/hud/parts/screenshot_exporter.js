@@ -9,37 +9,28 @@ import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
-import { FormElementInput, FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog_forms";
+import { FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog_forms";
+import { ORIGINAL_SPRITE_SCALE } from "../../../core/sprites";
+import { getDeviceDPI } from "../../../core/dpi_manager";
 
 const logger = createLogger("screenshot_exporter");
 
-/**
- * @typedef {{mode: string, resolution?: number}} QualityOptions
- */
-
-/**
- * @type {{id: string, options: QualityOptions}[]}
- */
 const screenshotQualities = [
     {
         id: "high",
-        options: { mode: "regular", resolution: 16384 },
+        resolution: 16384,
     },
     {
         id: "medium",
-        options: { mode: "regular", resolution: 4096 },
+        resolution: 4096,
     },
     {
         id: "low",
-        options: { mode: "regular", resolution: 1024 },
-    },
-    {
-        id: "map",
-        options: { mode: "map" },
+        resolution: 1024,
     },
 ];
 // @TODO: translation (T.dialogs.exportScreenshotWarning.qualities)
-const qualityNames = { high: "High", medium: "Medium", low: "Low", map: "Map" };
+const qualityNames = { high: "High", medium: "Medium", low: "Low" };
 
 export class HUDScreenshotExporter extends BaseHUDPart {
     createElements() {}
@@ -56,10 +47,17 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         const qualityInput = new FormElementEnum({
             id: "screenshotQuality",
+            label: "Quality",
             options: screenshotQualities,
-            valueGetter: quality => quality.options,
+            valueGetter: quality => quality.resolution,
             // @TODO: translation (T.dialogs.exportScreenshotWarning.qualityLabel)
-            textGetter: quality => "Quality:" + " " + qualityNames[quality.id],
+            textGetter: quality => qualityNames[quality.id],
+        });
+        const overlayInput = new FormElementCheckbox({
+            id: "screenshotView",
+            // @TODO: translation (T.dialogs.exportScreenshotWarning.descOverlay)
+            label: "Map view",
+            defaultValue: this.root.camera.getIsMapOverlayActive() ? true : false,
         });
         const layerInput = new FormElementCheckbox({
             id: "screenshotLayer",
@@ -71,22 +69,24 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             app: this.root.app,
             title: T.dialogs.exportScreenshotWarning.title,
             desc: T.dialogs.exportScreenshotWarning.desc,
-            formElements: [qualityInput, layerInput],
+            formElements: [qualityInput, overlayInput, layerInput],
             buttons: ["cancel:good", "ok:bad"],
         });
 
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
         dialog.buttonSignals.ok.add(
-            () => this.doExport(layerInput.getValue(), qualityInput.getValue()),
+            () => this.doExport(qualityInput.getValue(), overlayInput.getValue(), layerInput.getValue()),
             this
         );
     }
 
     /**
+     * Renders a screenshot of the entire base as closely as possible to the ingame camera
+     * @param {number} resolution
+     * @param {boolean} overlay
      * @param {boolean} wiresLayer
-     * @param {QualityOptions} options
      */
-    doExport(wiresLayer, options) {
+    doExport(resolution, overlay, wiresLayer) {
         logger.log("Starting export ...");
 
         // Find extends
@@ -114,14 +114,27 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         // we want integer pixels per tile
         // if resolution too low, we want integer pixels per chunk
         const chunkSizePixels =
-            maxDimensions * globalConfig.mapChunkSize > options.resolution
-                ? Math.max(1, Math.floor(options.resolution / maxDimensions))
-                : Math.floor(options.resolution / (maxDimensions * globalConfig.mapChunkSize)) *
+            maxDimensions * globalConfig.mapChunkSize > resolution
+                ? Math.max(1, Math.floor(resolution / maxDimensions))
+                : Math.floor(resolution / (maxDimensions * globalConfig.mapChunkSize)) *
                   globalConfig.mapChunkSize;
         logger.log("ChunkSizePixels:", chunkSizePixels);
 
+        // equivalent to zoomLevel
         const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
         logger.log("Scale:", chunkScale);
+
+        // Compute atlas scale
+        const lowQuality = this.root.app.settings.getAllSettings().lowQualityTextures;
+        const effectiveZoomLevel =
+            (chunkScale / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
+
+        let desiredAtlasScale = "0.25";
+        if (effectiveZoomLevel > 0.5 && !lowQuality) {
+            desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
+        } else if (effectiveZoomLevel > 0.35 && !lowQuality) {
+            desiredAtlasScale = "0.5";
+        }
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
         const [canvas, context] = makeOffscreenBuffer(
@@ -144,7 +157,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const parameters = new DrawParameters({
             context,
             visibleRect,
-            desiredAtlasScale: 0.25,
+            desiredAtlasScale,
             root: this.root,
             zoomLevel: chunkScale,
         });
@@ -152,16 +165,35 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         context.scale(chunkScale, chunkScale);
         context.translate(-visibleRect.x, -visibleRect.y);
 
+        // hack but works
+        const currentLayer = this.root.currentLayer;
+        const currentAlpha = this.root.hud.parts.wiresOverlay.currentAlpha;
+        if (wiresLayer) {
+            this.root.currentLayer = "wires";
+            this.root.hud.parts.wiresOverlay.currentAlpha = 1;
+        } else {
+            this.root.currentLayer = "regular";
+            this.root.hud.parts.wiresOverlay.currentAlpha = 0;
+        }
+
         // Render all relevant chunks
         this.root.signals.gameFrameStarted.dispatch();
-        this.root.map.drawBackground(parameters);
-        this.root.systemMgr.systems.belt.drawBeltItems(parameters);
-        this.root.map.drawForeground(parameters);
-        this.root.systemMgr.systems.hub.draw(parameters);
-        if (wiresLayer) {
-            this.root.hud.parts.wiresOverlay.draw(parameters, true);
-            this.root.map.drawWiresForegroundLayer(parameters);
+        if (overlay) {
+            this.root;
+            this.root.map.drawOverlay(parameters);
+        } else {
+            this.root.map.drawBackground(parameters);
+            this.root.systemMgr.systems.belt.drawBeltItems(parameters);
+            this.root.map.drawForeground(parameters);
+            this.root.systemMgr.systems.hub.draw(parameters);
+            this.root.hud.parts.wiresOverlay.draw(parameters);
+            if (this.root.currentLayer === "wires") {
+                this.root.map.drawWiresForegroundLayer(parameters);
+            }
         }
+
+        this.root.currentLayer = currentLayer;
+        this.root.hud.parts.wiresOverlay.currentAlpha = currentAlpha;
 
         // Offer export
         logger.log("Rendered buffer, exporting ...");
