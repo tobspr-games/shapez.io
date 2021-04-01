@@ -15,22 +15,28 @@ import { getDeviceDPI } from "../../../core/dpi_manager";
 
 const logger = createLogger("screenshot_exporter");
 
+const MAX_CANVAS_DIMS = 16384;
+
 const screenshotQualities = [
     {
         id: "high",
-        resolution: 16384,
+        resolution: MAX_CANVAS_DIMS,
     },
     {
         id: "medium",
-        resolution: 4096,
+        resolution: MAX_CANVAS_DIMS / 4,
     },
     {
         id: "low",
-        resolution: 1024,
+        resolution: MAX_CANVAS_DIMS / 16,
+    },
+    {
+        id: "pixels",
+        resolution: 0,
     },
 ];
 // @TODO: translation (T.dialogs.exportScreenshotWarning.qualities)
-const qualityNames = { high: "High", medium: "Medium", low: "Low" };
+const qualityNames = { high: "High", medium: "Medium", low: "Low", pixels: "Pixels" };
 
 export class HUDScreenshotExporter extends BaseHUDPart {
     createElements() {}
@@ -111,14 +117,21 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         const maxDimensions = Math.max(dimensions.x, dimensions.y);
 
-        // we want integer pixels per tile
-        // if resolution too low, we want integer pixels per chunk
+        // we want odd integer pixels per tile, so that center of tile is rendered
+        // at least 3 pixels per tile, for bearable quality
         const chunkSizePixels =
-            maxDimensions * globalConfig.mapChunkSize > resolution
-                ? Math.max(1, Math.floor(resolution / maxDimensions))
-                : Math.floor(resolution / (maxDimensions * globalConfig.mapChunkSize)) *
-                  globalConfig.mapChunkSize;
+            Math.max(
+                3,
+                Math.floor((resolution / (maxDimensions * globalConfig.mapChunkSize) + 1) / 2) * 2 - 1
+            ) * globalConfig.mapChunkSize;
         logger.log("ChunkSizePixels:", chunkSizePixels);
+
+        if (chunkSizePixels * maxDimensions > MAX_CANVAS_DIMS) {
+            logger.error("Maximum canvas size exceeded, aborting");
+            //@TODO: translation (T.dialogs.exportScreenshotFail.title) (T.dialogs.exportScreenshotFail.text)
+            this.root.hud.parts.dialogs.showInfo("Too large", "The base is too large to render, sorry!");
+            return;
+        }
 
         // equivalent to zoomLevel
         const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
