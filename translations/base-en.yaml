@@ -503,7 +503,7 @@ buildings:
     belt:
         default:
             name: &belt Conveyor Belt
-            description: Transports items, hold and drag to place multiple.
+            description: Transports items, click and drag to place multiple.
 
     # Internal name for the Extractor
     miner:
@@ -519,11 +519,11 @@ buildings:
     underground_belt:
         default:
             name: &underground_belt Tunnel
-            description: Allows you to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources up to <strong>5</strong> blocks away under buildings and belts. 
 
         tier2:
             name: Tunnel Tier II
-            description: Allows you to tunnel resources under buildings and belts.
+            description: Allows you to tunnel resources up to <strong>9</strong> blocks away under buildings and belts.
 
     # Balancer
     balancer:
