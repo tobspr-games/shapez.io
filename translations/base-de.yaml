@@ -194,7 +194,7 @@ ingame:
         placeBuilding: Gebäude platzieren
         createMarker: Marker erstellen
         delete: Löschen
-        pasteLastBlueprint: Letzte Blaupause einfügen
+        pasteLastBlueprint: Letzte Kopie einfügen
         lockBeltDirection: Bandplaner aktivieren
         plannerSwitchSide: "Planer: Seite wechseln"
         cutSelection: Ausschneiden
