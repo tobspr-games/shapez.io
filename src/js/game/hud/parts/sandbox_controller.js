@@ -1,3 +1,4 @@
+import { queryParamOptions } from "../../../core/query_parameters";
 import { makeDiv } from "../../../core/utils";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -19,25 +20,25 @@ export class HUDSandboxController extends BaseHUDPart {
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesBelt plusMinus">
                     <label>Upgrades &rarr; Belt</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesExtraction plusMinus">
                     <label>Upgrades &rarr; Extraction</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesProcessing plusMinus">
                     <label>Upgrades &rarr; Processing</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesPainting plusMinus">
                     <label>Upgrades &rarr; Painting</label>
                     <button class="styledButton minus">-</button>
@@ -148,7 +149,21 @@ export class HUDSandboxController extends BaseHUDPart {
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }
 
+    isAvailable() {
+        if (queryParamOptions.sandboxMode || G_IS_DEV) {
+            return true;
+        }
+        // @ts-ignore
+        if (window.sandboxMode) {
+            return true;
+        }
+        return false;
+    }
+
     toggle() {
+        if (!this.visible && !this.isAvailable()) {
+            return;
+        }
         this.visible = !this.visible;
     }
 

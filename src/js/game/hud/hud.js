@@ -142,9 +142,7 @@ export class GameHUD {
             this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
         }
 
-        if (queryParamOptions.sandboxMode || G_IS_DEV) {
-            this.parts.sandboxController = new HUDSandboxController(this.root);
-        }
+        this.parts.sandboxController = new HUDSandboxController(this.root);
 
         if (!G_IS_RELEASE && !G_IS_DEV) {
             this.parts.betaOverlay = new HUDBetaOverlay(this.root);

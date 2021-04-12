@@ -2,10 +2,21 @@ export const CHANGELOG = [
     {
         version: "1.3.1",
         date: "beta",
-        entries: [
-            "Fixed savegames getting corrupt in rare conditions",
-            "Fixed game crashing sometimes since the achievements update",
-        ],
+        entries: G_CHINA_VERSION
+            ? [
+                  "The level 13 shape has been changed to reflect the chinese symbol 'Ancient Chinese Compass', created by 凯风入心",
+                  "The level 17 shape has been changed to reflect the chinese symbol 'Yongle Coins of Ming Dynasty', created by 金天赐",
+                  "The level 22 shape has been changed to reflect the chinese symbol 'Phoenix', created by 我没得眼镜",
+                  "The level 23 shape has been changed to reflect the chinese symbol 'Ancient wheel', created by 百京清真卤煮",
+                  "The level 24 shape has been changed to reflect the chinese symbol 'Panda', created by 窝囸倪现任",
+
+                  "Fixed savegames getting corrupt in rare conditions",
+                  "Fixed game crashing sometimes since the achievements update",
+              ]
+            : [
+                  "Fixed savegames getting corrupt in rare conditions",
+                  "Fixed game crashing sometimes since the achievements update",
+              ],
     },
     {
         version: "1.3.0",
