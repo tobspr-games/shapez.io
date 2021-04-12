@@ -4,6 +4,12 @@ import { Component } from "../component";
 import { BaseItem } from "../base_item";
 import { typeItemSingleton } from "../item_resolver";
 
+/** @enum {string} */
+export const enumConstantSignalType = {
+    wired: "wired",
+    wireless: "wireless",
+};
+
 export class ConstantSignalComponent extends Component {
     static getId() {
         return "ConstantSignal";
@@ -11,6 +17,7 @@ export class ConstantSignalComponent extends Component {
 
     static getSchema() {
         return {
+            type: types.string,
             signal: types.nullable(typeItemSingleton),
         };
     }
@@ -21,15 +28,22 @@ export class ConstantSignalComponent extends Component {
      */
     copyAdditionalStateTo(otherComponent) {
         otherComponent.signal = this.signal;
+        otherComponent.type = this.type;
     }
 
     /**
      *
      * @param {object} param0
+     * @param {string=} param0.type
      * @param {BaseItem=} param0.signal The signal to store
      */
-    constructor({ signal = null }) {
+    constructor({ signal = null, type = enumConstantSignalType.wired }) {
         super();
         this.signal = signal;
+        this.type = type;
+    }
+
+    isWireless() {
+        return this.type === enumConstantSignalType.wireless;
     }
 }

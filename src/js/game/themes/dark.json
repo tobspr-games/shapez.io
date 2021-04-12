@@ -47,6 +47,11 @@
             "textColor": "#fff",
             "textColorCapped": "#ef5072",
             "background": "rgba(40, 50, 60, 0.8)"
+        },
+
+        "zone": {
+            "background": "#3e3f47",
+            "border": "#667964"
         }
     },
 

@@ -39,6 +39,9 @@ export class GameCreationPayload {
         /** @type {boolean|undefined} */
         this.fastEnter;
 
+        /** @type {string} */
+        this.gameModeId;
+
         /** @type {Savegame} */
         this.savegame;
     }
@@ -220,7 +223,7 @@ export class InGameState extends GameState {
             logger.log("Creating new game core");
             this.core = new GameCore(this.app);
 
-            this.core.initializeRoot(this, this.savegame);
+            this.core.initializeRoot(this, this.savegame, this.gameModeId);
 
             if (this.savegame.hasGameDump()) {
                 this.stage4bResumeGame();
@@ -354,6 +357,7 @@ export class InGameState extends GameState {
 
         this.creationPayload = payload;
         this.savegame = payload.savegame;
+        this.gameModeId = payload.gameModeId;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
         this.loadingOverlay.showBasic();

@@ -31,7 +31,7 @@ import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
-import { RegularGameMode } from "./modes/regular";
+import { GameMode } from "./game_mode";
 import { ProductionAnalytics } from "./production_analytics";
 import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
@@ -82,7 +82,7 @@ export class GameCore {
      * @param {import("../states/ingame").InGameState} parentState
      * @param {Savegame} savegame
      */
-    initializeRoot(parentState, savegame) {
+    initializeRoot(parentState, savegame, gameModeId) {
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
@@ -104,7 +104,7 @@ export class GameCore {
         root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init game mode
-        root.gameMode = new RegularGameMode(root);
+        root.gameMode = GameMode.create(root, gameModeId);
 
         // Init classes
         root.camera = new Camera(root);
@@ -167,6 +167,10 @@ export class GameCore {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = randomInt(0, 100000);
+
+        if (!this.root.gameMode.hasHub()) {
+            return;
+        }
 
         // Place the hub
         const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({

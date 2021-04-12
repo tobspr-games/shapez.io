@@ -392,13 +392,20 @@ export class Camera extends BasicSerializableObject {
         return rect.containsPoint(point.x, point.y);
     }
 
+    getMaximumZoom() {
+        return this.root.gameMode.getMaximumZoom() * this.root.app.platformWrapper.getScreenScale();
+    }
+
+    getMinimumZoom() {
+        return this.root.gameMode.getMinimumZoom() * this.root.app.platformWrapper.getScreenScale();
+    }
+
     /**
      * Returns if we can further zoom in
      * @returns {boolean}
      */
     canZoomIn() {
-        const maxLevel = this.root.app.platformWrapper.getMaximumZoom();
-        return this.zoomLevel <= maxLevel - 0.01;
+        return this.zoomLevel <= this.getMaximumZoom() - 0.01;
     }
 
     /**
@@ -406,8 +413,7 @@ export class Camera extends BasicSerializableObject {
      * @returns {boolean}
      */
     canZoomOut() {
-        const minLevel = this.root.app.platformWrapper.getMinimumZoom();
-        return this.zoomLevel >= minLevel + 0.01;
+        return this.zoomLevel >= this.getMinimumZoom() + 0.01;
     }
 
     // EVENTS
@@ -743,15 +749,28 @@ export class Camera extends BasicSerializableObject {
         if (G_IS_DEV && globalConfig.debug.disableZoomLimits) {
             return;
         }
-        const wrapper = this.root.app.platformWrapper;
-
         assert(Number.isFinite(this.zoomLevel), "Invalid zoom level *before* clamp: " + this.zoomLevel);
-        this.zoomLevel = clamp(this.zoomLevel, wrapper.getMinimumZoom(), wrapper.getMaximumZoom());
+        this.zoomLevel = clamp(this.zoomLevel, this.getMinimumZoom(), this.getMaximumZoom());
         assert(Number.isFinite(this.zoomLevel), "Invalid zoom level *after* clamp: " + this.zoomLevel);
 
         if (this.desiredZoom) {
-            this.desiredZoom = clamp(this.desiredZoom, wrapper.getMinimumZoom(), wrapper.getMaximumZoom());
+            this.desiredZoom = clamp(this.desiredZoom, this.getMinimumZoom(), this.getMaximumZoom());
         }
+    }
+
+    /**
+     * Clamps x, y position within set boundaries
+     * @param {Vector} vector
+     */
+    clampToBounds(vector) {
+        if (!this.root.gameMode.hasBounds()) {
+            return;
+        }
+
+        const bounds = this.root.gameMode.getBounds().allScaled(globalConfig.tileSize);
+
+        vector.x = clamp(vector.x, bounds.x, bounds.x + bounds.w);
+        vector.y = clamp(vector.y, bounds.y, bounds.y + bounds.h);
     }
 
     /**
@@ -857,6 +876,7 @@ export class Camera extends BasicSerializableObject {
             // Panning
             this.currentPan = mixVector(this.currentPan, this.desiredPan, 0.06);
             this.center = this.center.add(this.currentPan.multiplyScalar((0.5 * dt) / this.zoomLevel));
+            this.clampToBounds(this.center);
         }
     }
 
@@ -921,6 +941,8 @@ export class Camera extends BasicSerializableObject {
                 ((0.5 * dt) / this.zoomLevel) * this.root.app.settings.getMovementSpeed()
             )
         );
+
+        this.clampToBounds(this.center);
     }
 
     /**
@@ -1006,6 +1028,8 @@ export class Camera extends BasicSerializableObject {
 
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;
+
+            this.clampToBounds(this.center);
         }
     }
 }

@@ -116,6 +116,12 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
     savegameUnnamed: Unnamed
+    puzzleMode: Puzzle Mode
+    back: Back
+
+puzzleMenu:
+    play: Play
+    edit: Edit
 
 dialogs:
     buttons:
@@ -477,6 +483,24 @@ ingame:
                 title: Support me
                 desc: I develop the game in my spare time!
 
+    modeMenu:
+        puzzleEditMode:
+            back:
+                title: Main Menu
+            next: 
+                title: Playtest
+                desc: You will have to complete the puzzle before being able to publish it
+        puzzleEditTestMode:
+            back: 
+                title: Edit
+            next: 
+                title: Publish
+        puzzlePlayMode:
+            back:
+                title: Puzzle Menu
+            next:
+                title: Next
+
 # All shop upgrades
 shopUpgrades:
     belt:
@@ -700,6 +724,16 @@ buildings:
         default:
             name: Item Producer
             description: Available in sandbox mode only, outputs the given signal from the wires layer on the regular layer.
+
+    constant_producer:
+        default:
+            name: &constant_producer Constant Producer
+            description: Outputs a shape, color or boolean (1 or 0) as specified.
+
+    goal_acceptor:
+        default:
+            name: &goal_acceptor Goal Acceptor
+            description: Accepts items and triggers a goal if the specified item and/or rate criteria are met.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -1128,6 +1162,8 @@ keybindings:
         analyzer: *analyzer
         comparator: *comparator
         item_producer: Item Producer (Sandbox)
+        constant_producer: *constant_producer
+        goal_acceptor: *goal_acceptor
         # ---
 
         pipette: Pipette

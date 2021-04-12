@@ -23,8 +23,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
     ) {
         super(root);
 
-        this.primaryBuildings = primaryBuildings;
-        this.secondaryBuildings = secondaryBuildings;
+        this.primaryBuildings = this.filterBuildings(primaryBuildings);
+        this.secondaryBuildings = this.filterBuildings(secondaryBuildings);
         this.visibilityCondition = visibilityCondition;
         this.htmlElementId = htmlElementId;
         this.layer = layer;
@@ -45,6 +45,24 @@ export class HUDBaseToolbar extends BaseHUDPart {
      */
     createElements(parent) {
         this.element = makeDiv(parent, this.htmlElementId, ["ingame_buildingsToolbar"], "");
+    }
+
+    /**
+     * @param {Array<typeof MetaBuilding>} buildings
+     * @returns {Array<typeof MetaBuilding>}
+     */
+    filterBuildings(buildings) {
+        const filtered = [];
+
+        for (let i = 0; i < buildings.length; i++) {
+            if (this.root.gameMode.isBuildingExcluded(buildings[i].name)) {
+                continue;
+            }
+
+            filtered.push(buildings[i]);
+        }
+
+        return filtered;
     }
 
     /**

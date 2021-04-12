@@ -49,6 +49,10 @@ export const KEYMAPPINGS = {
     },
 
     buildings: {
+        // Puzzle buildings
+        constant_producer: { keyCode: key("H") },
+        goal_acceptor: { keyCode: key("N") },
+
         // Primary Toolbar
         belt: { keyCode: key("1") },
         balancer: { keyCode: key("2") },
@@ -262,6 +266,8 @@ export function getStringForKeyCode(code) {
             return ".";
         case 191:
             return "/";
+        case 192:
+            return "`";
         case 219:
             return "[";
         case 220:

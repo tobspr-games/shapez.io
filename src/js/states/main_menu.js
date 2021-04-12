@@ -15,6 +15,7 @@ import {
     startFileChoose,
     waitNextFrame,
 } from "../core/utils";
+import { enumGameModeIds } from "../game/game_mode";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
@@ -80,6 +81,9 @@ export class MainMenuState extends GameState {
                             ? ""
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
+                    <div class="buttons"></div>
+                </div>
+                <div class="bottomContainer">
                     <div class="buttons"></div>
                 </div>
             </div>
@@ -204,6 +208,11 @@ export class MainMenuState extends GameState {
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
 
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
+            if (globalConfig.debug.testPuzzleMode) {
+                this.onPuzzleEditButtonClicked();
+                return;
+            }
+
             const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
                 this.resumeGame(games[0]);
@@ -304,6 +313,68 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
+
+        const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
+        removeAllChildren(bottomButtonContainer);
+
+        const puzzleModeButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.puzzleMode);
+
+        bottomButtonContainer.appendChild(puzzleModeButton);
+        this.trackClicks(puzzleModeButton, this.onPuzzleModeButtonClicked);
+    }
+
+    renderPuzzleModeMenu() {
+        const savegames = this.htmlElement.querySelector(".mainContainer .savegames");
+
+        if (savegames) {
+            savegames.remove();
+        }
+
+        const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
+        removeAllChildren(buttonContainer);
+
+        const playButtonElement = makeButtonElement(["playModeButton", "styledButton"], T.puzzleMenu.play);
+        const editButtonElement = makeButtonElement(["editModeButton", "styledButton"], T.puzzleMenu.edit);
+
+        buttonContainer.appendChild(playButtonElement);
+        this.trackClicks(playButtonElement, this.onPuzzlePlayButtonClicked);
+        buttonContainer.appendChild(editButtonElement);
+        this.trackClicks(editButtonElement, this.onPuzzleEditButtonClicked);
+
+        const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
+        removeAllChildren(bottomButtonContainer);
+
+        const backButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.back);
+
+        bottomButtonContainer.appendChild(backButton);
+        this.trackClicks(backButton, this.onBackButtonClicked);
+    }
+
+    onPuzzlePlayButtonClicked() {
+        const savegame = this.app.savegameMgr.createNewSavegame();
+
+        this.moveToState("InGameState", {
+            gameModeId: enumGameModeIds.puzzlePlay,
+            savegame,
+        });
+    }
+
+    onPuzzleEditButtonClicked() {
+        const savegame = this.app.savegameMgr.createNewSavegame();
+
+        this.moveToState("InGameState", {
+            gameModeId: enumGameModeIds.puzzleEdit,
+            savegame,
+        });
+    }
+
+    onPuzzleModeButtonClicked() {
+        this.renderPuzzleModeMenu();
+    }
+
+    onBackButtonClicked() {
+        this.renderMainMenu();
+        this.renderSavegames();
     }
 
     onSteamLinkClicked() {

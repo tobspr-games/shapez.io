@@ -39,6 +39,6 @@ export class MetaItemProducerBuilding extends MetaBuilding {
                 ],
             })
         );
-        entity.addComponent(new ItemProducerComponent());
+        entity.addComponent(new ItemProducerComponent({}));
     }
 }

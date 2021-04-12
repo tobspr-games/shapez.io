@@ -55,6 +55,10 @@
 @import "ingame_hud/sandbox_controller";
 @import "ingame_hud/standalone_advantages";
 @import "ingame_hud/cat_memes";
+@import "ingame_hud/mode_menu_back";
+@import "ingame_hud/mode_menu_next";
+@import "ingame_hud/mode_menu";
+@import "ingame_hud/mode_settings";
 
 // prettier-ignore
 $elements:
@@ -71,6 +75,10 @@ ingame_HUD_PlacerVariants,
 ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
+ingame_HUD_ModeMenuBack,
+ingame_HUD_ModeMenuNext,
+ingame_HUD_ModeMenu,
+ingame_HUD_ModeSettings,
 ingame_HUD_Notifications,
 ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
@@ -113,6 +121,8 @@ body.uiHidden {
     #ingame_HUD_PlacementHints,
     #ingame_HUD_GameMenu,
     #ingame_HUD_PinnedShapes,
+    #ingame_HUD_ModeMenuBack,
+    #ingame_HUD_ModeMenuNext,
     #ingame_HUD_Notifications,
     #ingame_HUD_TutorialHints,
     #ingame_HUD_Waypoints,

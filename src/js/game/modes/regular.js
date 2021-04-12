@@ -1,19 +1,50 @@
+/* typehints:start */
+import { GameRoot } from "../root";
+/* typehints:end */
+
+import { queryParamOptions } from "../../core/query_parameters";
 import { findNiceIntegerValue } from "../../core/utils";
-import { GameMode } from "../game_mode";
+import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
+import { MetaItemProducerBuilding } from "../buildings/item_producer";
+import { HUDModeMenuBack } from "../hud/parts/mode_menu_back";
+import { HUDModeMenuNext } from "../hud/parts/mode_menu_next";
+import { HUDModeMenu } from "../hud/parts/mode_menu";
+import { HUDModeSettings } from "../hud/parts/mode_settings";
+import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
+
+/** @typedef {{
+ *   shape: string,
+ *   amount: number
+ * }} UpgradeRequirement */
+
+/** @typedef {{
+ *   required: Array<UpgradeRequirement>
+ *   improvement?: number,
+ *   excludePrevious?: boolean
+ * }} TierRequirement */
+
+/** @typedef {Array<TierRequirement>} UpgradeTiers */
+
+/** @typedef {{
+ *   shape: string,
+ *   required: number,
+ *   reward: enumHubGoalRewards,
+ *   throughputOnly?: boolean
+ * }} LevelDefinition */
 
 const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const finalGameShape = "RuCw--Cw:----Ru--";
 const preparementShape = "CpRpCp--:SwSwSwSw";
-const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 // Tiers need % of the previous tier as requirement too
 const tierGrowth = 2.5;
 
 /**
  * Generates all upgrades
- * @returns {Object<string, import("../game_mode").UpgradeTiers>} */
+ * @returns {Object<string, UpgradeTiers>} */
 function generateUpgrades(limitedVersion = false) {
     const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
     const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
@@ -454,27 +485,58 @@ const fullVersionLevels = generateLevelDefinitions(false);
 const demoVersionLevels = generateLevelDefinitions(true);
 
 export class RegularGameMode extends GameMode {
-    constructor(root) {
-        super(root);
+    static getId() {
+        return enumGameModeIds.regular;
     }
 
+    static getType() {
+        return enumGameModeTypes.default;
+    }
+
+    /** @param {GameRoot} root */
+    constructor(root) {
+        super(root);
+
+        this.setHudParts({
+            [HUDModeMenuBack.name]: false,
+            [HUDModeMenuNext.name]: false,
+            [HUDModeMenu.name]: false,
+            [HUDModeSettings.name]: false,
+        });
+
+        this.setBuildings({
+            [MetaConstantProducerBuilding.name]: false,
+            [MetaGoalAcceptorBuilding.name]: false,
+            [MetaItemProducerBuilding.name]: queryParamOptions.sandboxMode || G_IS_DEV,
+        });
+    }
+
+    /**
+     * Should return all available upgrades
+     * @returns {Object<string, UpgradeTiers>}
+     */
     getUpgrades() {
         return this.root.app.restrictionMgr.getHasExtendedUpgrades()
             ? fullVersionUpgrades
             : demoVersionUpgrades;
     }
 
-    getIsFreeplayAvailable() {
-        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
-    }
-
-    getBlueprintShapeKey() {
-        return blueprintShape;
-    }
-
+    /**
+     * Returns the goals for all levels including their reward
+     * @returns {Array<LevelDefinition>}
+     */
     getLevelDefinitions() {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay()
             ? fullVersionLevels
             : demoVersionLevels;
+    }
+
+    /**
+     * Should return whether free play is available or if the game stops
+     * after the predefined levels
+     * @returns {boolean}
+     */
+    getIsFreeplayAvailable() {
+        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
     }
 }

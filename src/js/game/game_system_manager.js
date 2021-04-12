@@ -24,6 +24,9 @@ import { ItemProcessorOverlaysSystem } from "./systems/item_processor_overlays";
 import { BeltReaderSystem } from "./systems/belt_reader";
 import { FilterSystem } from "./systems/filter";
 import { ItemProducerSystem } from "./systems/item_producer";
+import { ConstantProducerSystem } from "./systems/constant_producer";
+import { GoalAcceptorSystem } from "./systems/goal_acceptor";
+import { ZoneSystem } from "./systems/zone";
 
 const logger = createLogger("game_system_manager");
 
@@ -100,6 +103,15 @@ export class GameSystemManager {
             /** @type {ItemProducerSystem} */
             itemProducer: null,
 
+            /** @type {ConstantProducerSystem} */
+            ConstantProducer: null,
+
+            /** @type {GoalAcceptorSystem} */
+            GoalAcceptor: null,
+
+            /** @type {ZoneSystem} */
+            zone: null,
+
             /* typehints:end */
         };
         this.systemUpdateOrder = [];
@@ -138,7 +150,9 @@ export class GameSystemManager {
 
         add("itemEjector", ItemEjectorSystem);
 
-        add("mapResources", MapResourcesSystem);
+        if (this.root.gameMode.hasResources()) {
+            add("mapResources", MapResourcesSystem);
+        }
 
         add("hub", HubSystem);
 
@@ -164,6 +178,14 @@ export class GameSystemManager {
         add("display", DisplaySystem);
 
         add("itemProcessorOverlays", ItemProcessorOverlaysSystem);
+
+        add("constantProducer", ConstantProducerSystem);
+
+        add("goalAcceptor", GoalAcceptorSystem);
+
+        if (this.root.gameMode.hasZone()) {
+            add("zone", ZoneSystem);
+        }
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");
     }

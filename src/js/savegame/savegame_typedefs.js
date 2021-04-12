@@ -12,6 +12,7 @@
  *   time: any,
  *   entityMgr: any,
  *   map: any,
+ *   gameMode: object,
  *   hubGoals: any,
  *   pinnedShapes: any,
  *   waypoints: any,
