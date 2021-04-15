@@ -24,11 +24,15 @@ export class BeltReaderSystem extends GameSystemWithFilter {
             }
 
             pinsComp.slots[1].value = readerComp.lastItem;
-            pinsComp.slots[0].value =
-                (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
-                minimumTimeForThroughput
-                    ? BOOL_TRUE_SINGLETON
-                    : BOOL_FALSE_SINGLETON;
+            if( (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
+            minimumTimeForThroughput) {
+                pinsComp.slots[0].value = BOOL_TRUE_SINGLETON;
+            } else {
+                pinsComp.slots[0].value = BOOL_FALSE_SINGLETON;
+                if(entity.components.ItemEjector.canEjectOnSlot(0)) {
+                    readerComp.lastItem = null;
+                }
+            }
 
             if (now - readerComp.lastThroughputComputation > 0.5) {
                 // Compute throughput
@@ -46,6 +50,11 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                     }
 
                     throughput = 1 / (averageSpacing / averageSpacingNum);
+                    const decimal = throughput - Math.floor(throughput);
+                    if(decimal > 0.8)
+                    {
+                        throughput = Math.round(throughput);
+                    }
                 }
 
                 readerComp.lastThroughput = Math.min(globalConfig.beltSpeedItemsPerSecond * 23.9, throughput);
