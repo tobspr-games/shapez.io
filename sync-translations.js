@@ -18,7 +18,7 @@ const original = YAML.parse(originalContents);
 
 const placeholderRegexp = /[[<]([a-zA-Z_0-9/-_]+?)[\]>]/gi;
 
-function match(originalObj, translatedObj, path = "/") {
+function match(originalObj, translatedObj, path = "/", ignorePlaceholderMismatch = false) {
     for (const key in originalObj) {
         if (!translatedObj.hasOwnProperty(key)) {
             console.warn(" | Missing key", path + key);
@@ -34,13 +34,12 @@ function match(originalObj, translatedObj, path = "/") {
         }
 
         if (typeof valueOriginal === "object") {
-            match(valueOriginal, valueMatching, path + key + "/");
+            match(valueOriginal, valueMatching, path + key + "/", ignorePlaceholderMismatch);
         } else if (typeof valueOriginal === "string") {
-            // @todo
             const originalPlaceholders = matchAll(valueOriginal, placeholderRegexp).toArray();
             const translatedPlaceholders = matchAll(valueMatching, placeholderRegexp).toArray();
 
-            if (originalPlaceholders.length !== translatedPlaceholders.length) {
+            if (!ignorePlaceholderMismatch && originalPlaceholders.length !== translatedPlaceholders.length) {
                 console.warn(
                     " | Mismatching placeholders in",
                     path + key,
@@ -66,12 +65,13 @@ function match(originalObj, translatedObj, path = "/") {
 }
 
 for (let i = 0; i < files.length; ++i) {
-    const filePath = path.join(__dirname, "translations", files[i]);
-    console.log("Processing", files[i]);
+    const filename = files[i];
+    const filePath = path.join(__dirname, "translations", filename);
+    console.log("Processing", filename);
     const translatedContents = fs.readFileSync(filePath).toString("utf-8");
 
     const json = YAML.parse(translatedContents);
-    match(original, json, "/");
+    match(original, json, "/", filename.toLowerCase().includes("zh-cn"));
 
     const stringified = YAML.stringify(json, {
         indent: 4,

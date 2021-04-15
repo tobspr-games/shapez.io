@@ -31,16 +31,6 @@ export class StorageInterface {
     }
 
     /**
-     * Tries to write a file synchronously, used in unload handler
-     * @param {string} filename
-     * @param {string} contents
-     */
-    writeFileSyncIfSupported(filename, contents) {
-        abstract;
-        return false;
-    }
-
-    /**
      * Reads a string asynchronously. Returns Promise<FILE_NOT_FOUND> if file was not found.
      * @param {string} filename
      * @returns {Promise<string>}

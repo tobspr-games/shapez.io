@@ -209,7 +209,9 @@ export class HUDStatistics extends BaseHUDPart {
             }
             case enumAnalyticsDataSource.produced:
             case enumAnalyticsDataSource.delivered: {
-                entries = Object.entries(this.root.productionAnalytics.getCurrentShapeRates(this.dataSource));
+                entries = Object.entries(
+                    this.root.productionAnalytics.getCurrentShapeRatesRaw(this.dataSource)
+                );
                 break;
             }
         }

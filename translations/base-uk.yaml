@@ -1,33 +1,7 @@
-#
-# GAME TRANSLATIONS
-#
-#  Contributing:
-#
-#    If you want to contribute, please make a pull request on this respository
-#    and I will have a look.
-#
-#  Placeholders:
-#
-#    Do *not* replace placeholders! Placeholders have a special syntax like
-#    `Hotkey: <key>`. They are encapsulated within angle brackets. The correct
-#    translation for this one in German for example would be: `Taste: <key>` (notice
-#    how the placeholder stayed '<key>' and was not replaced!)
-#
-#  Adding a new language:
-#
-#    If you want to add a new language, ask me in the Discord and I will setup
-#    the basic structure so the game also detects it.
-#
-
----
 steamPage:
-    # This is the short text appearing on the steam page
     shortText: shapez.io — це гра про будування фабрик для автоматизації створення
         та обробки все більш складних форм на нескінченно розширюваній карті.
-
-    # This is the text shown above the Discord link
     discordLinkShort: Official Discord
-
     intro: >-
         Shapez.io - розслабляюча гра, в якій вам потрібно будувати фабрики для
         автоматизованого виробництва геометричних фігур.
@@ -39,66 +13,26 @@ steamPage:
         Спочатку ви лише обробляєте фігури, пізніше їх потрібно буде ще й фарбувати - для цього необхідно буде видобувати та змішувати кольори!
 
         Купуючи гру в Steam ви отримаєте доступ до повної версії гри, але ви також можете спробувати демо-версію гри на shapez.io та вирішити пізніше!
-
-    title_advantages: Переваги повної версії
-    advantages:
-        - <b>12 нових рівнів</b> що в цілому 26 рівнів
-        - <b>18 нових будівель</b> для повної автоматизації фабрики!
-        - <b>20 рівнів поліпшення</b> для довготривалої та веселої гри!
-        - <b>Оновлення "Wires"(Дроти)</b> для цілого нового виміру!
-        - <b>Нічний режим</b>!
-        - Необмежена кільксть збережень
-        - Необмежена кільксть позначок
-        - Підтримка автора! ❤️
-
-    title_future: Запланований вміст
-    planned:
-        - Бібліотека креслень (лише в Повній версії)
-        - Досягнення в Steam
-        - Режим головоломок
-        - Мінікарта
-        - Модифікації
-        - Режим пісочниці
-        - ... та багато іншого!
-
-    title_open_source: Гра з відкритим кодом!
-    text_open_source: >-
-        Будь-хто може зробити свій внесок. Я активно беру участь у спільноті та
-        намагаюсь переглянути всі пропозиції та враховувати відгуки.
-
-        Не забудьте перевірити дошку trello, щоб отримати розгорнутий список планів!
-
-    title_links: Посилання
-
-    links:
-        discord: Офіційний Discord
-        roadmap: Плани
-        subreddit: Subreddit
-        source_code: Вихідний код (GitHub)
-        translate: Допомогти з перекладом
-
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Завантаження
     error: Помилка
-
-    # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: " "
-
-    # What symbol to use to seperate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: ","
-
-    # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: тис.
         millions: млн
         billions: млрд
         trillions: трлн
-
-    # Shown for infinitely big numbers
     infinite: неск.
-
     time:
-        # Used for formatting past time dates
         oneSecondAgo: одну секунду тому
         xSecondsAgo: <x> секунд тому
         oneMinuteAgo: хвилину тому
@@ -107,12 +41,9 @@ global:
         xHoursAgo: <x> годин тому
         oneDayAgo: один день тому
         xDaysAgo: <x> днів тому
-
-        # Short formats for times, e.g. '5h 23m'
         secondsShort: <seconds>сек.
         minutesAndSecondsShort: <minutes>хв. <seconds>сек.
         hoursAndMinutesShort: <hours>год. <minutes>хв.
-
         xMinutes: <x> хв.
     keys:
         tab: TAB
@@ -121,13 +52,9 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-
 demoBanners:
-    # This is the "advertisement" shown in the main menu and other various places
     title: Демо-версія
-    intro: >-
-        Завантажте повну версію, щоб розблокувати всі можливості та вміст!
-
+    intro: Завантажте повну версію, щоб розблокувати всі можливості та вміст!
 mainMenu:
     play: Грати
     continue: Продовжити
@@ -139,17 +66,12 @@ mainMenu:
     discordLink: Офіційний Discord сервер
     helpTranslate: Допоможіть з перекладом!
     madeBy: Зробив <author-link>
-
-    # This is shown when using firefox and other browsers which are not supported.
-    browserWarning: >-
-        Вибачте, але гра, як відомо, працює повільно у вашому браузері!
-        Завантажте повну версію чи Google Chrome, щоб отримати більше задоволення від
-        гри.
-
+    browserWarning: Вибачте, але гра, як відомо, працює повільно у вашому браузері!
+        Завантажте повну версію чи Google Chrome, щоб отримати більше
+        задоволення від гри.
     savegameLevel: Рівень <x>
     savegameLevelUnknown: Невідомий рівень
     savegameUnnamed: Unnamed
-
 dialogs:
     buttons:
         ok: Гаразд
@@ -163,147 +85,106 @@ dialogs:
         viewUpdate: Переглянути оновлення
         showUpgrades: Показати поліпшення
         showKeybindings: Показати прив’язки клавіш
-
     importSavegameError:
         title: Помилка при імпортуванні
-        text: >-
-            Не вдалося імпортувати вашу збережену гру:
-
+        text: "Не вдалося імпортувати вашу збережену гру:"
     importSavegameSuccess:
         title: Збереження імпортовано
-        text: >-
-            Вашу збережену гру успішно імпортовано.
-
+        text: Вашу збережену гру успішно імпортовано.
     gameLoadFailure:
         title: Гра поламана
-        text: >-
-            Не вдалося завантажити вашу збережену гру.
-
+        text: Не вдалося завантажити вашу збережену гру.
     confirmSavegameDelete:
         title: Підтвердження видалення
-        text: >-
-            Ви дійсно бажаєте видалити цю збережену гру?<br><br>
-            '<savegameName>' яка <savegameLevel> рівня<br><br>
-            Цю дію неможливо буде відмінити!
-
+        text: Ви дійсно бажаєте видалити цю збережену гру?<br><br> '<savegameName>' яка
+            <savegameLevel> рівня<br><br> Цю дію неможливо буде відмінити!
     savegameDeletionError:
         title: Не вдалось видалити
-        text: >-
-            Не вдалося видалити збережену гру:
-
+        text: "Не вдалося видалити збережену гру:"
     restartRequired:
         title: Потрібне перезавантаження
-        text: >-
-            Перезавантажте гру, щоб налаштування вступили в дію.
-
+        text: Перезавантажте гру, щоб налаштування вступили в дію.
     editKeybinding:
         title: Зміна гарячої клавіши
-        desc: Натисніть клавішу, або кнопку миші, яку ви хочете призначити, або escape для скасування.
-
+        desc: Натисніть клавішу, або кнопку миші, яку ви хочете призначити, або escape
+            для скасування.
     resetKeybindingsConfirmation:
         title: Скинути гарячі клавіші
         desc: Це скине всі прив'язки клавіш до їхніх значень за замовчуванням. Будь
             ласка, підтвердіть.
-
     keybindingsResetOk:
         title: Гарячі клавіші скинуто
         desc: Гарячі клавіши скинуто до їхніх початкових значень!
-
     featureRestriction:
         title: Демо-версія
-        desc: >-
-            Ви спробували отримати доступ до функції (<feature>), яка недоступна в
+        desc: Ви спробували отримати доступ до функції (<feature>), яка недоступна в
             демонстраційній версії. Подумайте про отримання повної версії, щоб
             насолодитися грою сповна!
-
     oneSavegameLimit:
         title: Обмежені збереження
         desc: Ви можете мати лише одне збереження одночасно в демо-версії. Будь ласка,
             видаліть існуюче збереження чи купіть повну версію гри!
-
     updateSummary:
         title: Нове оновлення!
-        desc: >-
-            Ось зміни з вашої останньої гри:
-
+        desc: "Ось зміни з вашої останньої гри:"
     upgradesIntroduction:
         title: Розблокування поліпшень
-        desc: >-
-            Усі фігури, що ви виробляєте, можуть використовуватися для розблокування
+        desc: Усі фігури, що ви виробляєте, можуть використовуватися для розблокування
             поліпшень - <strong>радимо не видаляти старі фабрики!<strong>
             Вкладку з поліпшеннями можна знайти в правому верхньому куті екрана.
-
     massDeleteConfirm:
         title: Підтвердження видалення
-        desc: >-
-            Ви видаляєте багато будівль (<count>, якщо бути точним)! Ви справді хочете
+        desc: Ви видаляєте багато будівль (<count>, якщо бути точним)! Ви справді хочете
             зробити це?
-
     massCutConfirm:
         title: Підтвердження вирізання
-        desc: >-
-            Ви вирізаєте багато будівль(<count>, якщо бути точним)! Ви справді хочете
+        desc: Ви вирізаєте багато будівль(<count>, якщо бути точним)! Ви справді хочете
             зробити це?
-
     massCutInsufficientConfirm:
         title: Підтвердити вирізання
-        desc: >-
-            Ви не можете дозволити собі вставити цю область! Ви справді хочете
+        desc: Ви не можете дозволити собі вставити цю область! Ви справді хочете
             вирізати її?
-
     blueprintsNotUnlocked:
         title: Ще не розблоковано
-        desc: >-
-            Досягніть 13-го рівня, щоб розблокувати креслення!
-
+        desc: Досягніть 13-го рівня, щоб розблокувати креслення!
     keybindingsIntroduction:
         title: Корисні гарячі клавіши
-        desc: >-
-            Гра має багато гарячих клавіш, що полегшують будівництво великих фабрик.
-            Ось декілька, але обов’язково <strong>ознайомтеся з прив’язками клавіш</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + тягніть: виділити зону.<br>
-            <code class='keybinding'>SHIFT</code>: тримайте, щоб розмістити декілька копій однієї будівлі.<br>
-            <code class='keybinding'>ALT</code>: змінити напрям розміщеної конвеєрної стрічки.<br>
-
+        desc: "Гра має багато гарячих клавіш, що полегшують будівництво великих фабрик.
+            Ось декілька, але обов’язково <strong>ознайомтеся з прив’язками
+            клавіш</strong>!<br><br> <code class='keybinding'>CTRL</code> +
+            тягніть: виділити зону.<br> <code class='keybinding'>SHIFT</code>:
+            тримайте, щоб розмістити декілька копій однієї будівлі.<br> <code
+            class='keybinding'>ALT</code>: змінити напрям розміщеної конвеєрної
+            стрічки.<br>"
     createMarker:
         title: Нова позначка
         titleEdit: Редагувати позначку
         desc: Дайте їй інформативну назву, ви також можете використати <strong>код
             </strong> фігури (Який ви можете створити <link>тут</link>)
-
     editSignal:
         title: Встановити сигнал
-        descItems: >-
-            Виберіть попередньо визначений елемент:
-        descShortKey: ... або введіть <strong>код</strong> фігури (Який ви
-            можете створити <link>тут</link>)
-
+        descItems: "Виберіть попередньо визначений елемент:"
+        descShortKey: ... або введіть <strong>код</strong> фігури (Який ви можете
+            створити <link>тут</link>)
     markerDemoLimit:
-        desc: Ви можете створити тільки 2 позначки в демо-версії. Отримайте повну версію гри
-            для створення необмеженної кількості позначок.
-
+        desc: Ви можете створити тільки 2 позначки в демо-версії. Отримайте повну версію
+            гри для створення необмеженної кількості позначок.
     exportScreenshotWarning:
         title: Експортувати знімок
-        desc: Ви запросили експорт бази в зображення. Зверніть увагу, що для
-            великої бази це може бути досить повільним процесом і може навіть
-            зруйнувати вашу гру!
-
+        desc: Ви запросили експорт бази в зображення. Зверніть увагу, що для великої
+            бази це може бути досить повільним процесом і може навіть зруйнувати
+            вашу гру!
     renameSavegame:
         title: Перейменувати збереження
         desc: Тут ви можете перейменувати збереження гри.
-
     tutorialVideoAvailable:
         title: Доступна інструкція
         desc: Для цього рівня доступна відео-інструкція! Чи бажаєте переглянути її?
-
     tutorialVideoAvailableForeignLanguage:
         title: Доступна інструкція
-        desc: Для цього рівня доступна відео-інструкція, але вона доступна
-            лише на Англійській. Чи бажаєте переглянути її?
-
+        desc: Для цього рівня доступна відео-інструкція, але вона доступна лише на
+            Англійській. Чи бажаєте переглянути її?
 ingame:
-    # This is shown in the top left corner and displays useful keybindings in
-    # every situation
     keybindingsOverlay:
         moveMap: Рухатися
         selectBuildings: Виділити область
@@ -324,8 +205,6 @@ ingame:
         clearSelection: Очистити виділене
         pipette: Піпетка
         switchLayers: Змінити шар
-
-    # Names of the colors, used for the color blind mode
     colors:
         red: Червоний
         green: Зелений
@@ -336,15 +215,9 @@ ingame:
         white: Білий
         black: Чорний
         uncolored: Без кольору
-
-    # Everything related to placing buildings (I.e. as soon as you selected a building
-    # from the toolbar)
     buildingPlacement:
         cycleBuildingVariants: Натисніть <key> для перебору варіантів.
-
-        # Shows the hotkey in the ui, e.g. "Hotkey: Q"
         hotkeyLabel: "Гаряча клавіша: <key>"
-
         infoTexts:
             speed: Швидкість
             range: Дальність
@@ -352,33 +225,21 @@ ingame:
             oneItemPerSecond: 1 предмет/сек.
             itemsPerSecond: <x> предм./сек
             itemsPerSecondDouble: (x2)
-
             tiles: <x> плиток
-
-    # The notification when completing a level
     levelCompleteNotification:
-        # <level> is replaced by the actual level, so this gets 'Level 03' for example.
         levelTitle: Рівень <level>
         completed: Завершено
         unlockText: Розблоковано «<reward>»!
         buttonNextLevel: Наступний рівень
-
-    # Notifications on the lower right
     notifications:
         newUpgrade: Нове поліпшення розблоковано!
         gameSaved: Вашу гру збережено.
         freeplayLevelComplete: Рівень <level> було завершено!
-
-    # The "Upgrades" window
     shop:
         title: Поліпшення
         buttonUnlock: Відкрити
-        # Gets replaced to e.g. "Tier IX"
         tier: Ранг <x>
-
         maximumLevel: МАКСИМАЛЬНИЙ РІВЕНЬ (Швидкість x<currentMult>)
-
-    # The "Statistics" window
     statistics:
         title: Статистика
         dataSources:
@@ -393,153 +254,108 @@ ingame:
                 title: Доставляється
                 description: Відображає форми, що доставляються до Центру.
         noShapesProduced: Жодна фігура поки не випускається.
-
-        # Displays the shapes per second, e.g. '523 / s'
         shapesDisplayUnits:
             second: <shapes> / с
             minute: <shapes> / хв
             hour: <shapes> / г
-
-    # Settings menu, when you press "ESC"
     settingsMenu:
         playtime: У грі
         buildingsPlaced: Будівель
         beltsPlaced: Конвеєрів
-
-    # Bottom left tutorial hints
     tutorialHints:
         title: Потрібна допомога?
         showHint: Показати підказку
         hideHint: Закрити
-
-    # When placing a blueprint
     blueprintPlacer:
         cost: Вартість
-
-    # Map markers
     waypoints:
         waypoints: Позначки
         hub: Центр
-        description: <strong>ЛКМ</strong> на позначку, щоб перейти до неї, <strong>ПКМ</strong> для
-            видалення<br><br>Натисніть <keybinding> для створення позначки з
-            поточного виду або <strong>ПКМ</strong>, щоб створити позначку в
-            обраному місці.
+        description: Left-click a marker to jump to it, right-click to delete
+            it.<br><br>Press <keybinding> to create a marker from the current
+            view, or <strong>right-click</strong> to create a marker at the
+            selected location.
         creationSuccessNotification: Позначку створено.
-
-    # Shape viewer
     shapeViewer:
         title: Шари
         empty: Пустий
         copyKey: Копіювати ключ
-
-    # Interactive tutorial
     interactiveTutorial:
         title: Навчання
         hints:
             1_1_extractor: Розмістіть <strong>екстрактор</strong> поверх <strong>фігури
                 кола</strong>, щоб видобути її!
-
-            1_2_conveyor: >-
-                З’єднайте екстрактор з вашим центром за допомогою
+            1_2_conveyor: "З’єднайте екстрактор з вашим центром за допомогою
                 <strong>конвеєрної стрічки</strong>!<br><br>Підказка:
-                <strong>Натисніть і протягніть</strong> стрічку вашою мишею.
-
-            1_3_expand: >-
-                У цій грі <strong>ВАМ НЕ ПОТРІБНО БЕЗДІЯТИ</strong>! Будуйте більше
+                <strong>Натисніть і протягніть</strong> стрічку вашою мишею."
+            1_3_expand: "У цій грі <strong>ВАМ НЕ ПОТРІБНО БЕЗДІЯТИ</strong>! Будуйте більше
                 екстракторів і стрічок, щоб виконати свою мету
                 швидше.<br><br>Підказка: Утримуйте <strong>SHIFT</strong>, щоб
                 розмістити багато екстракторів, і використовуйте
-                <strong>R</strong>, щоб обертати їх.
-
-            2_1_place_cutter: >-
-                Тепер розмістіть <strong>Різчик</strong> щоб розрізати коло на дві
-                половинки!<br><br> PS: Різчик завжди ділить фігуру <strong> по вертикалі
-                </strong> незалежного від його орієнтації.
-
-            2_2_place_trash: >-
-                Різчик може <strong>забиватись</strong>!<br><br> Використовуйте
-                <strong>Смітник</strong> аби позбутись поки що(!) не
-                потрібних залишків.
-
-            2_3_more_cutters: >-
-                Чудово! Тепер розмістіть <strong>ще 2 різчика</strong> щоб прискорити
-                цей повільний процес!<br><br> PS: Використовуте <strong>0-9
-                гарячі клавіші</strong> аби мати швидкий доступ до будівель!
-
-            3_1_rectangles: >-
-                Тепер давайте добудемо квадратів! <strong>Збудуйте 4
+                <strong>R</strong>, щоб обертати їх."
+            2_1_place_cutter: "Тепер розмістіть <strong>Різчик</strong> щоб розрізати коло
+                на дві половинки!<br><br> PS: Різчик завжди ділить фігуру
+                <strong> по вертикалі </strong> незалежного від його
+                орієнтації."
+            2_2_place_trash: Різчик може <strong>забиватись</strong>!<br><br> Використовуйте
+                <strong>Смітник</strong> аби позбутись поки що(!) не потрібних
+                залишків.
+            2_3_more_cutters: "Чудово! Тепер розмістіть <strong>ще 2 різчика</strong> щоб
+                прискорити цей повільний процес!<br><br> PS: Використовуте
+                <strong>0-9 гарячі клавіші</strong> аби мати швидкий доступ до
+                будівель!"
+            3_1_rectangles: "Тепер давайте добудемо квадратів! <strong>Збудуйте 4
                 Екстрактори</strong> і приєднайте їх до Центру.<br><br> PS:
-                Утримуйте <strong>SHIFT</strong> + тягнути для переходу в режим планувальника конвеєрів!
-
-            21_1_place_quad_painter: >-
-                Розмістіть <strong>Фарбувач (х4)</strong> та добудьте
+                Утримуйте <strong>SHIFT</strong> + тягнути для переходу в режим
+                планувальника конвеєрів!"
+            21_1_place_quad_painter: Розмістіть <strong>Фарбувач (х4)</strong> та добудьте
                 <strong>коло</strong>, <strong>білий</strong> та
                 <strong>червоний</strong> кольори!
-
-            21_2_switch_to_wires: >-
-                Перейдіть в шар проводів натиснувши
+            21_2_switch_to_wires: Перейдіть в шар проводів натиснувши
                 <strong>E</strong>!<br><br> Та <strong>підключіть всі 4
                 вводи</strong> фарбувальника за допомогою проводу!
-
-            21_3_place_button: >-
-                Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та з'єднайте їх
-                дротом!
-
-            21_4_press_button: >-
-                Натисніть вимикач, аби він почав <strong>видавати сигнал "Істина"
-                </strong> активувавши таким чином фарбувальник.<br><br> PS: Не обов'язково
-                підключати всі входи! Спробуйте підключити лише два.
-
-    # Connected miners
+            21_3_place_button: Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та
+                з'єднайте їх дротом!
+            21_4_press_button: "Натисніть вимикач, аби він почав <strong>видавати сигнал
+                \"Істина\" </strong> активувавши таким чином
+                фарбувальник.<br><br> PS: Не обов'язково підключати всі входи!
+                Спробуйте підключити лише два."
     connectedMiners:
         one_miner: 1 Екстрактор
         n_miners: <amount> Екстракторів
         limited_items: Обмежено до <max_throughput>
-
-    # Pops up in the demo every few minutes
     watermark:
         title: Демо-версія
         desc: Натисніть сюди аби переглянути переваги Steam версії!
         get_on_steam: Отримати в Steam
-
     standaloneAdvantages:
         title: Отримати повну версію!
         no_thanks: Ні, дякую!
-
         points:
             levels:
                 title: 12 нових Рівнів
                 desc: В цілому 26 рівнів!
-
             buildings:
                 title: 18 нових Будівель
                 desc: Для повної автоматизації вашої фабрики!
-
-            savegames:
-                title: ∞ Збережень
-                desc: Стільки, скільки вашій душі завгодно!
-
             upgrades:
                 title: ∞ рівнів Поліпшень
                 desc: Демо-версія має лише 5!
-
             markers:
                 title: ∞ Позначок
                 desc: Забудьте про блукання по фабриці!
-
             wires:
                 title: Дроти
                 desc: Цілий новий вимір!
-
             darkmode:
                 title: Нічний режим
                 desc: Дайте очам відпочити!
-
             support:
                 title: Підтримайте мене
                 desc: Я розробляю гру в свій вільний час!
-
-# All shop upgrades
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Стрічки, розподілювачі і тунелі
@@ -553,80 +369,63 @@ shopUpgrades:
     painting:
         name: Змішування і малювання
         description: Шв. x<currentMult> → x<newMult>
-
-# Buildings and their name / description
 buildings:
     hub:
         deliver: Доставте,
         toUnlock: щоб розблокувати
         levelShortcut: РІВ
         endOfDemo: Кінець Демки
-
     belt:
         default:
-            name: &belt Конвеєрна стрічка
+            name: Конвеєрна стрічка
             description: Транспортує предмети, утримуйте і перетягуйте для розміщення
                 декількох.
-
-    # Internal name for the Extractor
     miner:
         default:
-            name: &miner Екстрактор
+            name: Екстрактор
             description: Розмістіть над фігурою чи кольором, який хочете видобути.
-
         chainable:
             name: Екстрактор (Ланц.)
             description: Розмістіть над фігурою чи кольором, який хочете видобути. Можна
                 об’єднати в ланцюг.
-
-    # Internal name for the Tunnel
     underground_belt:
         default:
-            name: &underground_belt Тунель
+            name: Тунель
             description: Дозволяє транспортувати ресурси під будівлями та іншими стрічками.
-
         tier2:
             name: Тунель, ранг II
             description: Дозволяє транспортувати ресурси під будівлями та іншими стрічками.
-
-    # Balancer
     balancer:
         default:
-            name: &balancer Балансир
-            description: Багатофункціональний - Рівномірно розподіляє всі входи між всіма виходами.
-
+            name: Балансир
+            description: Багатофункціональний - Рівномірно розподіляє всі входи між всіма
+                виходами.
         merger:
             name: З'єднувач
             description: З'єднує дві конвеєрних стрічки в одну.
-
         merger-inverse:
             name: З'єднувач
             description: З'єднує дві конвеєрних стрічки в одну.
-
         splitter:
             name: Розподілювач
             description: Поділяє конвеєрну стрічку на дві.
-
         splitter-inverse:
             name: Розподілювач
             description: Поділяє конвеєрну стрічку на дві.
-
     cutter:
         default:
-            name: &cutter Різчик
+            name: Різчик
             description: Розрізає фігури зверху вниз і виводить обидві половинки.
                 <strong>Якщо ви використовуєте лише одну частину, не забудьте
-                знищити іншу, інакше вона застрягне в
-                механізмі!</strong>
+                знищити іншу, інакше вона застрягне в механізмі!</strong>
         quad:
             name: Різчик (4 вих.)
             description: Розрізає фігури на 4 частини. <strong>Якщо ви використовуєте не всі
-                частини, не забудьте знищити решту, інакше вони застрягнуть
-                в механізмі!</strong>
-
+                частини, не забудьте знищити решту, інакше вони застрягнуть в
+                механізмі!</strong>
     rotater:
         default:
-            name: &rotater Обертач
+            name: Обертач
             description: Обертає фігури за годинниковою стрілкою на 90 градусів.
         ccw:
             name: Обертач (-90)
@@ -634,266 +433,229 @@ buildings:
         rotate180:
             name: Обертач (180)
             description: Обертає фігури за годинниковою стрілкою на 180 градусів.
-
     stacker:
         default:
-            name: &stacker Укладальник
+            name: Укладальник
             description: Складає обидва елементи. Якщо їх неможливо об’єднати, правий
                 елемент розміщується над лівим елементом.
-
     mixer:
         default:
-            name: &mixer Змішувач кольорів
+            name: Змішувач кольорів
             description: Змішує два кольори за допомогою добавки.
-
     painter:
         default:
-            name: &painter Фарбувач
-            description: &painter_desc Фарбує всю фігуру з лівого входу в колір з верхнього входу.
-
+            name: Фарбувач
+            description: Фарбує всю фігуру з лівого входу в колір з верхнього входу.
         mirrored:
-            name: *painter
+            name: Фарбувач
             description: Фарбує всю фігуру з лівого входу в колір з нижнього входу.
-
         double:
             name: Подвійний Фарбувач
             description: Фарбує фігури, що надійшли з лівих входів, кольором, що надійшов з
                 верхнього.
-
         quad:
             name: Фарбувач (х4)
-            description: Дозволяє вам розфарбувати кожну частину окремо. Лише
-                частини з <strong>сигналом "Істина"</strong> на шарі Дротів
-                буде пофабровано!
-
+            description: Дозволяє вам розфарбувати кожну частину окремо. Лише частини з
+                <strong>сигналом "Істина"</strong> на шарі Дротів буде
+                пофабровано!
     trash:
         default:
-            name: &trash Смітник
+            name: Смітник
             description: Приймає фігури зі всіх сторін і знищує їх. Назавжди.
-
     storage:
         default:
-            name: &storage Сховище
-            description: Зберігає надлишкові предмети, до заданої ємності. Лівий вихід пріоритетний,
-                може бути використаний як переповнювальний затвор.
-
+            name: Сховище
+            description: Зберігає надлишкові предмети, до заданої ємності. Лівий вихід
+                пріоритетний, може бути використаний як переповнювальний затвор.
     wire:
         default:
-            name: &wire Дріт
-            description: &wire_desc Передає сигнали, якими можуть бути фігури, кольори чи логічні сигнали (1 чи 0). Дроти різних кольорів не приєднуються один до одного.
-
+            name: Дріт
+            description: Передає сигнали, якими можуть бути фігури, кольори чи логічні
+                сигнали (1 чи 0). Дроти різних кольорів не приєднуються один до
+                одного.
         second:
-            name: *wire
-            description: *wire_desc
-
+            name: Дріт
+            description: Передає сигнали, якими можуть бути фігури, кольори чи логічні
+                сигнали (1 чи 0). Дроти різних кольорів не приєднуються один до
+                одного.
     wire_tunnel:
         default:
-            name: &wire_tunnel Пересічення дроту
+            name: Пересічення дроту
             description: Дозволяє двом дротам пересіктись не підключаючись один до одного.
-
     constant_signal:
         default:
-            name: &constant_signal Постійний Сигнал
-            description: Видає постійний сигнал, яким може бути фігура, колір чи
-                логічний сигнал (1 / 0).
-
+            name: Постійний Сигнал
+            description: Видає постійний сигнал, яким може бути фігура, колір чи логічний
+                сигнал (1 / 0).
     lever:
         default:
-            name: &lever Вимикач
+            name: Вимикач
             description: Можна перемикати видачу логічного сигналу (1 / 0) на шар дротів,
-                цей сигнал може бути використаний для управління компонентами, наприклад Фільтром елементів.
-
+                цей сигнал може бути використаний для управління компонентами,
+                наприклад Фільтром елементів.
     logic_gate:
         default:
             name: Логічне "І"
-            description:
-                Видає логічну "1" якщо обидва вводи отримують сигнал "Істинний". (Під "Істинний" мається наувазі фігура,
-                колір чи логічна "1")
+            description: Видає логічну "1" якщо обидва вводи отримують сигнал "Істинний".
+                (Під "Істинний" мається наувазі фігура, колір чи логічна "1")
         not:
             name: Логічне "НЕ"
-            description: Видає логічну "1" якщо вхід отримує сигнал "Хибний". ("Хибний" сигнал - протилежний "Істинному", і відповідає логічному "0")
+            description: Видає логічну "1" якщо вхід отримує сигнал "Хибний". ("Хибний"
+                сигнал - протилежний "Істинному", і відповідає логічному "0")
         xor:
             name: Виключне "АБО"
             description: Видає логічну "1" якщо лише один з вводів "Істинний", но не обидва.
                 (Під "Істинний" мається наувазі фігура, колір чи логічна "1")
         or:
             name: Логічне "АБО"
-            description: Видає логічну "1" якщо хоча б один з вводів "Істинний".
-                (Під "Істинний" мається наувазі фігура, колір чи логічна "1")
-
+            description: Видає логічну "1" якщо хоча б один з вводів "Істинний". (Під
+                "Істинний" мається наувазі фігура, колір чи логічна "1")
     transistor:
         default:
-            name: &transistor Транзистор
-            description: &transistor_desc Пропускає нижній сигнал якщо боковий вхід "Істинний" (фігура,
-                колір чи логічна "1").
-
+            name: Транзистор
+            description: Пропускає нижній сигнал якщо боковий вхід "Істинний" (фігура, колір
+                чи логічна "1").
         mirrored:
-            name: *transistor
-            description: *transistor_desc
-
+            name: Транзистор
+            description: Пропускає нижній сигнал якщо боковий вхід "Істинний" (фігура, колір
+                чи логічна "1").
     filter:
         default:
-            name: &filter Фільтр
-            description: Підключіть сигнал щоб направити всі відповідні елементи вгору, а решту вправо.
-                Також ним можна керувати за допомогою логічних сигналів (1 / 0).
-
+            name: Фільтр
+            description: Підключіть сигнал щоб направити всі відповідні елементи вгору, а
+                решту вправо. Також ним можна керувати за допомогою логічних
+                сигналів (1 / 0).
     display:
         default:
-            name: &display Дисплей
-            description: Підключіть сигнал, аби відобразити його на дисплеї - ним може бути фігура,
-                колір чи логічний сигнал
-
+            name: Дисплей
+            description: Підключіть сигнал, аби відобразити його на дисплеї - ним може бути
+                фігура, колір чи логічний сигнал
     reader:
         default:
-            name: &reader Зчитувач конвеєєра
-            description:
-                Дозволяє вимірювати середню пропускну здатність конвеєрної стрічки. Видає сигнал останнього зчитаного елемента
-                на шар дротів (коли розблоковано).
-
+            name: Зчитувач конвеєєра
+            description: Дозволяє вимірювати середню пропускну здатність конвеєрної стрічки.
+                Видає сигнал останнього зчитаного елемента на шар дротів (коли
+                розблоковано).
     analyzer:
         default:
-            name: &analyzer Дослідник фігур
-            description: Аналізує верхню-праву частину самого нижнього слою фігури
-                та повертає її форму і колір.
-
+            name: Дослідник фігур
+            description: Аналізує верхню-праву частину самого нижнього слою фігури та
+                повертає її форму і колір.
     comparator:
         default:
-            name: &comparator Компаратор
-            description: Видає логічну "1" якщо обидва сигнали абсолютно рівні. Може порівнювати
-                фігури, елементи та кольори.
-
+            name: Компаратор
+            description: Видає логічну "1" якщо обидва сигнали абсолютно рівні. Може
+                порівнювати фігури, елементи та кольори.
     virtual_processor:
         default:
-            name: &virtual_processor Віртуальний Різчик
+            name: Віртуальний Різчик
             description: Віртуально розрізає фігуру на дві половинки.
-
         rotater:
             name: Віртуальний Обертач
             description: Віртуально обертає фігуру по часовій стрілці, та проти.
-
         unstacker:
             name: Віртуальний Розпаковувач
-            description: Віртуально видобуває верхній шар фігури на правий вихід, а решту на лівий вихід.
-
+            description: Віртуально видобуває верхній шар фігури на правий вихід, а решту на
+                лівий вихід.
         stacker:
             name: Віртуальний Укладальник
             description: Віртуально складає праву фігуру на ліву.
-
         painter:
             name: Віртуальний Фарбувач
-            description: Віртуально фарбує фігуру з нижнього вводу, використовуючи колір з правого вводу.
-
+            description: Віртуально фарбує фігуру з нижнього вводу, використовуючи колір з
+                правого вводу.
     item_producer:
         default:
             name: Генератор елементів
-            description: Доступно лише в режимі Пісочниці, видає отриманий на шарі дроту сигнал в якості фігури на звичайний шар.
-
+            description: Доступно лише в режимі Пісочниці, видає отриманий на шарі дроту
+                сигнал в якості фігури на звичайний шар.
 storyRewards:
-    # Those are the rewards gained from completing the story
     reward_cutter_and_trash:
         title: Різання фігур
-        desc: Ви щойно відкрили <strong>Різчик</strong>, який ріже фігури навпіл
-            зверху вниз <strong>незалежно від його орієнтації</strong>!<br><br>
-            Обов'язково позбудьтесь відходів, інакше
-            <strong>вони застрягнуть</strong> - Для цих цілей
-            я дав вам <strong>Смітник</strong>, який знищує все що ви туда направите!
-
+        desc: Ви щойно відкрили <strong>Різчик</strong>, який ріже фігури навпіл зверху
+            вниз <strong>незалежно від його орієнтації</strong>!<br><br>
+            Обов'язково позбудьтесь відходів, інакше <strong>вони
+            застрягнуть</strong> - Для цих цілей я дав вам
+            <strong>Смітник</strong>, який знищує все що ви туда направите!
     reward_rotater:
         title: Обертання
         desc: <strong>Обертач</strong> розблоковано! Він повертає фігури за годинниковою
             стрілкою на 90 градусів.
-
     reward_painter:
         title: Фарбування
-        desc: >-
-            <strong>Фарбувач</strong> розблоковано. Видобудьте трохи кольорів з
+        desc: <strong>Фарбувач</strong> розблоковано. Видобудьте трохи кольорів з
             відповідних жилок (як ви зробили це з фігурами) і об’єднайте їх з
             фігурами у фарбувачі, щоб розфарбувати фігури!<br><br>До речі, для
-            дальтоніків, доступний <strong>режим високої
-            контрастності</strong> в налаштуваннях!
-
+            дальтоніків, доступний <strong>режим високої контрастності</strong>
+            в налаштуваннях!
     reward_mixer:
         title: Змішування кольорів
         desc: <strong>Змішувач кольорів</strong> було відкрито - Він змішує два кольори
             шляхом <strong>добавки</strong>!
-
     reward_stacker:
         title: Поєднання фігур
-        desc: Тепер ви можете поєднувати фігури з <strong>Укладальником</strong>!
-            Фігури об’єднуються з двох сторін, і якщо їх можна поставити поруч,
-            вони будуть <strong>з’єднані</strong>. Якщо ні, то фігуру, що подана
-            з правого входу, <strong>буде накладено</strong> на фігуру з лівого входу.
-
+        desc: Тепер ви можете поєднувати фігури з <strong>Укладальником</strong>! Фігури
+            об’єднуються з двох сторін, і якщо їх можна поставити поруч, вони
+            будуть <strong>з’єднані</strong>. Якщо ні, то фігуру, що подана з
+            правого входу, <strong>буде накладено</strong> на фігуру з лівого
+            входу.
     reward_balancer:
         title: Балансир
         desc: Багатофункціональний <strong>Балансир</strong> було відкрито - Він
-            використовується для будування більших фабрик шляхом <strong>розподілу чи змішування
-            елементів</strong> між кількома конвеєрними стрічками!
-
+            використовується для будування більших фабрик шляхом
+            <strong>розподілу чи змішування елементів</strong> між кількома
+            конвеєрними стрічками!
     reward_tunnel:
         title: Тунель
         desc: <strong>Тунель</strong> розблоковано. Ви можете створювати тунелі для
             преметів через стрічки і будівлі.
-
     reward_rotater_ccw:
         title: Обертання проти годинникової стрілки
         desc: Ви розблокували новий варіант <strong>обертача</strong>. Він дозволяє
             обертати проти годинникової стрілки! Щоб побудувати його виберіть
             обертач, <strong>натисніть «T», щоб переглянути всі варіанти, та
             оберіть потрібний</strong>!
-
     reward_miner_chainable:
         title: Екстрактор (ланцюг.)
-        desc: >-
-            Ви відкрили <strong>Ланцюговий Екстрактор</strong>! Він може
-            <strong>направляти свої ресурси</strong> в інший екстрактор
-            так ви зможете добувати ресурси більш ефективно!<br><br> PS: Звичаний Екстрактор
-            було замінено на вашій панелі інструментів!
-
+        desc: "Ви відкрили <strong>Ланцюговий Екстрактор</strong>! Він може
+            <strong>направляти свої ресурси</strong> в інший екстрактор так ви
+            зможете добувати ресурси більш ефективно!<br><br> PS: Звичаний
+            Екстрактор було замінено на вашій панелі інструментів!"
     reward_underground_belt_tier_2:
         title: Тунель II
         desc: Ви розблокували новий варіант <strong>тунеля</strong>. Він має
             <strong>більшу дальність</strong>, і ви можете також змішувати і
             зіставляти ці тунелі!
-
     reward_merger:
         title: З'єднувач
-        desc: >-
-            Ви відкрили <strong>З'єднувач</strong> - різновид
-            <strong>балансиру</strong> - Приймає два вводи, та з'єднує їх
-            в одину конвеєрну стрічку!
-
+        desc: Ви відкрили <strong>З'єднувач</strong> - різновид
+            <strong>балансиру</strong> - Приймає два вводи, та з'єднує їх в
+            одину конвеєрну стрічку!
     reward_splitter:
         title: Розподілювач
-        desc: >-
-            Ви відкрили <strong>Розподілювач</strong> - різновид
-            <strong>балансиру</strong> - Приймає один ввід, та розподілює їх на два!
-
+        desc: Ви відкрили <strong>Розподілювач</strong> - різновид
+            <strong>балансиру</strong> - Приймає один ввід, та розподілює їх на
+            два!
     reward_belt_reader:
         title: Зчитувач конвеєєра
-        desc: >-
-            Ви відкрили <strong>Зчитувач конвеєєра</strong>! Дає вам змогу
-            вимірювати пропускну здатність конвеєрної стрічки.<br><br>Зачекайте поки відкриєте шар
-            дротів - тоді він стане ще кориснішим!
-
+        desc: Ви відкрили <strong>Зчитувач конвеєєра</strong>! Дає вам змогу вимірювати
+            пропускну здатність конвеєрної стрічки.<br><br>Зачекайте поки
+            відкриєте шар дротів - тоді він стане ще кориснішим!
     reward_cutter_quad:
         title: Різчик (чотири)
         desc: Ви розблокували інший варіант <strong>різчика</strong>. Він може розрізати
             фігури на <strong>чотири частини</strong> замість двох.
-
     reward_painter_double:
         title: Подвійний Фарбувач
         desc: Ви розблокували інший варіант <strong>фарбувача</strong>. Він працює як
             звичайний фарбувач, але обробляє <strong>дві фігури
             одночасно</strong>, споживаючи лише один колір замість двох!
-
     reward_storage:
         title: Сховище
-        desc: >-
-            Ви відкрили <strong>Сховище</strong> - Воно дає вам змогу
-            зберігати елементи  до заданої місткості!<br><br> Лівий вихід є пріоритетним,
-            ви також можете використовувати його як <strong>переповнювальний затвор</strong>!
-
+        desc: Ви відкрили <strong>Сховище</strong> - Воно дає вам змогу зберігати
+            елементи  до заданої місткості!<br><br> Лівий вихід є пріоритетним,
+            ви також можете використовувати його як <strong>переповнювальний
+            затвор</strong>!
     reward_blueprints:
         title: Креслення
         desc: Ви вже можете <strong>копіювати і вставляти</strong> частини вашої
@@ -902,98 +664,76 @@ storyRewards:
             <strong>річ не безкоштовна</strong>, спочатку вам потрібно створити
             <strong>фігури креслень</strong>, щоб собі це дозволити! (ті, що ви
             щойно доставили).
-
     reward_rotater_180:
         title: Обертач (180 градусів)
-        desc: Ви щойно відкрили <strong>Обертач</strong> на 180! - Він повертає фігури за годинниковою стрілкою на 180 градусів. (Сюрприз! :D)
-
+        desc: Ви щойно відкрили <strong>Обертач</strong> на 180! - Він повертає фігури
+            за годинниковою стрілкою на 180 градусів. (Сюрприз! :D)
     reward_wires_painter_and_levers:
-        title: >-
-            Дроти & Фарбувач(х4)
-        desc: >-
-            Ви щойно відкрили <strong>шар Дротів</strong>: Це окремий
-            шар поверх звичайного, він впроваджує нові механіки!
-            <br><br> Для початку вам доступний <strong>Фарбувач
-            (х4)</strong> - Підключіть входи з яких ви хочете пофарбувати
-            через шар дротів!<br><br> Щоб перейти на шар дротів, натисніть
-            <strong>E</strong>.<br><br>PS: <strong>Включіть підказки</strong> в
-            налаштуваннях щоб активувати навчання по дротам!
-
+        title: Дроти & Фарбувач(х4)
+        desc: "Ви щойно відкрили <strong>шар Дротів</strong>: Це окремий шар поверх
+            звичайного, він впроваджує нові механіки! <br><br> Для початку вам
+            доступний <strong>Фарбувач (х4)</strong> - Підключіть входи з яких
+            ви хочете пофарбувати через шар дротів!<br><br> Щоб перейти на шар
+            дротів, натисніть <strong>E</strong>.<br><br>PS: <strong>Включіть
+            підказки</strong> в налаштуваннях щоб активувати навчання по
+            дротам!"
     reward_filter:
-        title: >-
-            Фільтр
-        desc: >-
-            Ви відкрили <strong>Фільтр</strong>! Він направлятиме елементи
-            в верхній чи правий виходи в залежності чи відповідають вони
-            сигналу отриманому з шару дроту.<br><br>Ви також можете передати
-            логічний сигнал (1 / 0) аби повністю активувати чи деактивувати його.
-
+        title: Фільтр
+        desc: Ви відкрили <strong>Фільтр</strong>! Він направлятиме елементи в верхній
+            чи правий виходи в залежності чи відповідають вони сигналу
+            отриманому з шару дроту.<br><br>Ви також можете передати логічний
+            сигнал (1 / 0) аби повністю активувати чи деактивувати його.
     reward_display:
         title: Дисплей
-        desc: >-
-            Ви відкрили <strong>Дисплей</strong> - Підключіть сигнал на
-            шар дротів щоб візуалізувати його!<br><br>PS: Чи помітили ви що Зчитувач конвеєєра
-            та Сховище виводять останній прочитаний елемент? Спробуйте показати їх на
-            дисплеї!
-
+        desc: "Ви відкрили <strong>Дисплей</strong> - Підключіть сигнал на шар дротів
+            щоб візуалізувати його!<br><br>PS: Чи помітили ви що Зчитувач
+            конвеєєра та Сховище виводять останній прочитаний елемент? Спробуйте
+            показати їх на дисплеї!"
     reward_constant_signal:
         title: Постійний Сигнал
-        desc: >-
-            Ви відкрили <strong>Постійний Сигнал</strong> на шарі дротів!
-            Пригодиться для приєднання до <strong>Фільтру елементів</strong>
+        desc: Ви відкрили <strong>Постійний Сигнал</strong> на шарі дротів! Пригодиться
+            для приєднання до <strong>Фільтру елементів</strong>
             наприклад.<br><br>Постійний сигнал може видавати
-            <strong>фігуру</strong>, <strong>колір</strong> або
-            <strong>логічний сигнал</strong> (1/0).
-
+            <strong>фігуру</strong>, <strong>колір</strong> або <strong>логічний
+            сигнал</strong> (1/0).
     reward_logic_gates:
         title: Логічні вентилі
         desc: >-
-            Ви відкрили <strong>Логічні вентилі</strong>! Вам не обов'язково відчувати захоплення,
+            Ви відкрили <strong>Логічні вентилі</strong>! Вам не обов'язково
+            відчувати захоплення,
              але це й насправді круто!<br><br>З їх допомогою
              ви можете обчислювати операції "І", "АБО", "НЕ-АБО" і "НЕ".<br><br>Як
              бонус, я щойно дав вам <strong>Транзистор</strong>!
-
     reward_virtual_processing:
         title: Віртуальна обробка
-        desc: >-
-            Я щойно дав цілу гору нових будівель, які дозволяють вам
-            <strong>імітувати обробку фігур</strong>!<br><br>Ви можете
-            тепер імітувати різак, обертач, укладач та решту на шарі дротів!
-            З цим у вас є три варіанти продовження гри:<br><br> -
-            Створіть <strong>автоматизовану машину</strong>, щоб створювати будь-яку можливу
-            фігуру за запитом Центру (рекомендую спробувати!).<br><br> - Побудуйте
-            щось круте з дротами.<br><br> - Продовжуйте грати як раніше.
-            <br><br> Що б ви не вибрали, не забувайте насолоджуватись грою!
-
-    # Special reward, which is shown when there is no reward actually
+        desc: Я щойно дав цілу гору нових будівель, які дозволяють вам <strong>імітувати
+            обробку фігур</strong>!<br><br>Ви можете тепер імітувати різак,
+            обертач, укладач та решту на шарі дротів! З цим у вас є три варіанти
+            продовження гри:<br><br> - Створіть <strong>автоматизовану
+            машину</strong>, щоб створювати будь-яку можливу фігуру за запитом
+            Центру (рекомендую спробувати!).<br><br> - Побудуйте щось круте з
+            дротами.<br><br> - Продовжуйте грати як раніше. <br><br> Що б ви не
+            вибрали, не забувайте насолоджуватись грою!
     no_reward:
         title: Наступний рівень
-        desc: >-
-            Цей рівень не дає вам винагороди, але наступний дасть!<br><br>PS: Краще
+        desc: "Цей рівень не дає вам винагороди, але наступний дасть!<br><br>PS: Краще
             не руйнувати існуючу фабрику - Вам знадобляться <strong>всі</strong>
-            ці фігури пізніше, щоб <strong>розблокувати поліпшення</strong>!
-
+            ці фігури пізніше, щоб <strong>розблокувати поліпшення</strong>!"
     no_reward_freeplay:
         title: Наступний рівень
-        desc: >-
-            Вітаємо!
-
+        desc: Вітаємо!
     reward_freeplay:
         title: Вільна гра
-        desc: >-
-            Вам це вдалось! Ви відкрили режим <strong>Вільної гри</strong>! Це означає
+        desc: Вам це вдалось! Ви відкрили режим <strong>Вільної гри</strong>! Це означає
             що тепер фігури генеруються <strong>випадково</strong>!<br><br>
-            Оскільки Центр вимагатиме забезпечення <strong>пропускної здатності</strong>, відтепер
-            я настійно рекомендую будувати машину, яка автоматично
-            створюватиме запитувану форму!<br><br>Центр виводить задану
-            фігуру на шарі дротів, і все, що вам потрібно буде зробити, це проаналізувати її та
-            автоматично налаштувати свою фабрику.
-
+            Оскільки Центр вимагатиме забезпечення <strong>пропускної
+            здатності</strong>, відтепер я настійно рекомендую будувати машину,
+            яка автоматично створюватиме запитувану форму!<br><br>Центр виводить
+            задану фігуру на шарі дротів, і все, що вам потрібно буде зробити,
+            це проаналізувати її та автоматично налаштувати свою фабрику.
     reward_demo_end:
         title: Кінець демо-версії
-        desc: >-
-            Ви досягнули кінець демо-версії!
-
+        desc: Ви досягнули кінець демо-версії!
 settings:
     title: Налаштування
     categories:
@@ -1001,20 +741,16 @@ settings:
         userInterface: Користувацький інтерфейс
         advanced: Розширені
         performance: Продуктивність
-
     versionBadges:
         dev: Розробка
         staging: Тестування
         prod: Виробництво
     buildDate: Створено <at-date>
-
     rangeSliderPercentage: <amount> %
-
     labels:
         uiScale:
             title: Масштаб інтерфейсу
-            description: >-
-                Змінює розмір користувацього інтерфейсу. Інтерфейс усе ще буде
+            description: Змінює розмір користувацього інтерфейсу. Інтерфейс усе ще буде
                 масштабуватися залежно від роздільної здатності вашого пристрою,
                 але цей параметр контролює ступінь масштабування.
             scales:
@@ -1023,13 +759,10 @@ settings:
                 regular: Звичайний
                 large: Великий
                 huge: Величезний
-
         autosaveInterval:
             title: Проміжок між автозбереженнями
-            description: >-
-                Контролює, як часто гра автоматично зберігатиметься. Ви також
+            description: Контролює, як часто гра автоматично зберігатиметься. Ви також
                 можете повністю вимкнути його тут.
-
             intervals:
                 one_minute: 1 хвилина
                 two_minutes: 2 хвилини
@@ -1037,7 +770,6 @@ settings:
                 ten_minutes: 10 хвилин
                 twenty_minutes: 20 хвилин
                 disabled: Вимкнено
-
         scrollWheelSensitivity:
             title: Чутливість масштабування
             description: Змінює наскільки чутливе масштабування (колесо миші або трекпад).
@@ -1047,10 +779,10 @@ settings:
                 regular: Звичайна
                 fast: Швидка
                 super_fast: Надзвичайно швидка
-
         movementSpeed:
             title: Швидкість руху
-            description: Змінює швидкість руху камери при використанні клавіатури, або тягнучи мишу до країв екрану.
+            description: Змінює швидкість руху камери при використанні клавіатури, або
+                тягнучи мишу до країв екрану.
             speeds:
                 super_slow: Надзвичайно повільна
                 slow: Повільна
@@ -1058,168 +790,125 @@ settings:
                 fast: Швидка
                 super_fast: Надзвичайно швидка
                 extremely_fast: Екстремально швидка
-
         language:
             title: Мова
             description: Зміна мови. Усі переклади зроблені користувачами і можуть бути
                 незавершеними!
-
         enableColorBlindHelper:
             title: Режим високої контрастності
             description: Дозволяє використовувати різні інструменти, які дозволяють грати в
                 гру, якщо ви є дальтоніком.
-
         fullscreen:
             title: Повноекранний режим
             description: Щоб повністю насолодитися грою, рекомендується грати у
                 повноекранному режимі. Доступно лише в повній версії.
-
         soundsMuted:
             title: Заглушити звуки
             description: Якщо увімкнено, то приглушує всі звукові ефекти.
-
         musicMuted:
             title: Заглушити музику
             description: Якщо увімкнено, то приглушує всю музику.
-
         soundVolume:
             title: Гучність звуків
             description: Встановити гучність для звукових ефектів
-
         musicVolume:
             title: Гучність музики
             description: Встановити гучність для музики
-
         theme:
             title: Тема гри
             description: Оберіть тему гри (світлу чи темну).
             themes:
                 dark: Темна
                 light: Світла
-
         refreshRate:
             title: Частота оновлення
-            description: >-
-                Визначає як багато ігрових циклів буде оброблено за секунду.
-                Загалом, висока частота циклів оновлення дає більшу точність розрахунків, але, також зменьшує продуктивність гри.
-                З низькою частотою пропускна здатність конвеєрних стрічок та машин може бути не точною.
-
+            description: Визначає як багато ігрових циклів буде оброблено за секунду.
+                Загалом, висока частота циклів оновлення дає більшу точність
+                розрахунків, але, також зменьшує продуктивність гри. З низькою
+                частотою пропускна здатність конвеєрних стрічок та машин може
+                бути не точною.
         alwaysMultiplace:
             title: Мультирозміщення
-            description: >-
-                Якщо ввімкнено, всі будівлі залишатимуться вибраними після
+            description: Якщо ввімкнено, всі будівлі залишатимуться вибраними після
                 розміщення, доки ви не скасуєте це. Це еквівалентно постійному
                 утримуванню SHIFT.
-
         offerHints:
             title: Підказки & посібники
-            description: >-
-                Якщо увімкнено, то пропонує підказки та посібники під час гри.
+            description: Якщо увімкнено, то пропонує підказки та посібники під час гри.
                 Також приховує певні елементи інтерфейсу до заданого рівня, щоб
                 полегшити потрапляння в гру.
-
         enableTunnelSmartplace:
             title: Розумні тунелі
-            description: >-
-                Якщо увімкнено, то розміщення тунелів видалить непотрібні стрічки.
-                Це також дозволяє вам перетягувати тунелі, що видалятими автоматично
-                зайві тунелі.
-
+            description: Якщо увімкнено, то розміщення тунелів видалить непотрібні стрічки.
+                Це також дозволяє вам перетягувати тунелі, що видалятими
+                автоматично зайві тунелі.
         vignette:
             title: Віньєтка
-            description: >-
-                Вмикає віньєтку, яка затемнює кути екрану і робить текст легшим для
+            description: Вмикає віньєтку, яка затемнює кути екрану і робить текст легшим для
                 читання.
-
         rotationByBuilding:
             title: Обертання за типом будівлі
-            description: >-
-                Кожний тип будівлі запам’ятовує обертання, яке ви встановили.
+            description: Кожний тип будівлі запам’ятовує обертання, яке ви встановили.
                 Досить зручно, якщо ви часто перемикаєтесь між розміщенням
                 різних типів будівель.
-
         compactBuildingInfo:
             title: Компактна інформація про будівлі
-            description: >-
-                Скорочує інформаційні поля для будівель, лише показуючи їх
+            description: Скорочує інформаційні поля для будівель, лише показуючи їх
                 співвідношення. В іншому випадку відображається ще й опис та
                 зображення.
-
         disableCutDeleteWarnings:
             title: Вимкнути попердження про вирізання та видалення
-            description: >-
-                Вимикає діалогові вікна попередження, що з’являються під час
+            description: Вимикає діалогові вікна попередження, що з’являються під час
                 вирізання/видалення 100 та більше об’єктів.
-
         lowQualityMapResources:
             title: Ресурси низької якості на карті
-            description: >-
-                Спрощує відображення ресурсів в режимі карти, щоб збільшити продуктивність.
-                Крім того, так навіть виглядає чуть чистіше, тож раджу спробувати!
-
+            description: Спрощує відображення ресурсів в режимі карти, щоб збільшити
+                продуктивність. Крім того, так навіть виглядає чуть чистіше, тож
+                раджу спробувати!
         disableTileGrid:
             title: Вимкнути сітку
-            description: >-
-                Вимкнення сітки може допомогти з продуктивністю.
-                Також робить гру чуть чистіше!
-
+            description: Вимкнення сітки може допомогти з продуктивністю. Також робить гру
+                чуть чистіше!
         clearCursorOnDeleteWhilePlacing:
             title: Очистити курсор кліком правої кнопки миші
-            description: >-
-                Увімкнено за замовчуванням, очищає курсор при кожному натисканні правої кнопки миші
-                поки у вас є будівля, обрана для розміщення. Якщо вимкнено,
-                ви можете видаляти будівлі, клацнувши правою кнопкою миші, в режимі розміщення
-                будівель.
-
+            description: Увімкнено за замовчуванням, очищає курсор при кожному натисканні
+                правої кнопки миші поки у вас є будівля, обрана для розміщення.
+                Якщо вимкнено, ви можете видаляти будівлі, клацнувши правою
+                кнопкою миші, в режимі розміщення будівель.
         lowQualityTextures:
             title: Текстури низької якості (Потворне)
-            description: >-
-                Використовує текстури низької якості для збереження продуктивності. Але це зробить
-                гру дуже потворною!
-
+            description: Використовує текстури низької якості для збереження продуктивності.
+                Але це зробить гру дуже потворною!
         displayChunkBorders:
             title: Відображати рамки блоків
-            description: >-
-                Гра розділена на блоки 16х16 плиток, якщо ця опція включена
-                межі блоків будуть відображатись.
-
+            description: Гра розділена на блоки 16х16 плиток, якщо ця опція включена межі
+                блоків будуть відображатись.
         pickMinerOnPatch:
             title: Підбирати екстрактор на родовищі ресурсів
-            description: >-
-                Активоване за замовчуванням, обирає майнер, якщо ви використовуєте
+            description: Активоване за замовчуванням, обирає майнер, якщо ви використовуєте
                 піпетку при наведенні на родовище ресурсів.
-
         simplifiedBelts:
             title: Спрощує конвеєри (Потворне)
-            description: >-
-                Відображає предмети на конвеєрі лише коли наведено на них, аби зберегти продуктивність.
-                Я не рекомендую грати з цією опцією, якщо є така можливість.
-
+            description: Відображає предмети на конвеєрі лише коли наведено на них, аби
+                зберегти продуктивність. Я не рекомендую грати з цією опцією,
+                якщо є така можливість.
         enableMousePan:
             title: Ввімкнути панорамування мишею
-            description: >-
-                Дозволяє передвигатись по карті курсором миші передвигаючи його до країв екрану.
-                Швидкість залежить від обраної в налаштуваннях Швидкості Руху.
-
+            description: Дозволяє передвигатись по карті курсором миші передвигаючи його до
+                країв екрану. Швидкість залежить від обраної в налаштуваннях
+                Швидкості Руху.
         zoomToCursor:
             title: Приближати в напрямку курсора
-            description: >-
-                Якщо активовано, масштабування буде відбуватись в
-                напрямку курсору миші, в іншому випадку до ентру екрану.
-
+            description: Якщо активовано, масштабування буде відбуватись в напрямку курсору
+                миші, в іншому випадку до ентру екрану.
         mapResourcesScale:
             title: Розмір ресурсів на карті
-            description: >-
-                Регулює розмір фігур в режимі карти (при віддаленні).
-
+            description: Регулює розмір фігур в режимі карти (при віддаленні).
 keybindings:
     title: Гарячі клавіши
-    hint: >-
-        "Підказка: Упевніться, що ви використовуєте CTRL, SHIFT і ALT! Вони
-        дозволяють застосовувати різні варіанти розміщення."
-
+    hint: '"Підказка: Упевніться, що ви використовуєте CTRL, SHIFT і ALT! Вони
+        дозволяють застосовувати різні варіанти розміщення."'
     resetKeybindings: Скинути гарячі клавіші
-
     categoryLabels:
         general: Загальні
         ingame: Гра
@@ -1228,7 +917,6 @@ keybindings:
         massSelect: Масовий вибір
         buildings: Гарячі клавіши будівництва
         placementModifiers: Модифікатори розміщення
-
     mappings:
         confirm: Підтвердити
         back: Назад
@@ -1238,69 +926,61 @@ keybindings:
         mapMoveLeft: Ліворуч
         mapMoveFaster: Пришвидшитися
         centerMap: Центрувати мапу
-
         mapZoomIn: Приблизити
         mapZoomOut: Віддалити
         createMarker: Створити позначку
-
         menuOpenShop: Поліпшення
         menuOpenStats: Статистика
         menuClose: Закрити меню
-
         toggleHud: Перемкнути користувацький інтерфейс
         toggleFPSInfo: Перемкнути інформацію про FPS та налагоджувальну інформацію
         switchLayers: Перемкнути шари
         exportScreenshot: Експортувати цілу базу у вигляді зображення
-
-        # --- Do not translate the values in this section
-        belt: *belt
-        balancer: *balancer
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
-        storage: *storage
-        wire: *wire
-        constant_signal: *constant_signal
+        belt: Конвеєрна стрічка
+        balancer: Балансир
+        underground_belt: Тунель
+        miner: Екстрактор
+        cutter: Різчик
+        rotater: Обертач
+        stacker: Укладальник
+        mixer: Змішувач кольорів
+        painter: Фарбувач
+        trash: Смітник
+        storage: Сховище
+        wire: Дріт
+        constant_signal: Постійний Сигнал
         logic_gate: Логічний вентиль
-        lever: *lever
-        filter: *filter
-        wire_tunnel: *wire_tunnel
-        display: *display
-        reader: *reader
-        virtual_processor: *virtual_processor
-        transistor: *transistor
-        analyzer: *analyzer
-        comparator: *comparator
+        lever: Вимикач
+        filter: Фільтр
+        wire_tunnel: Пересічення дроту
+        display: Дисплей
+        reader: Зчитувач конвеєєра
+        virtual_processor: Віртуальний Різчик
+        transistor: Транзистор
+        analyzer: Дослідник фігур
+        comparator: Компаратор
         item_producer: Матеріалізатор елементів (Пісочниця)
-        # ---
-
         pipette: Піпетка
         rotateWhilePlacing: Повернути
-        rotateInverseModifier: >-
-            "Модифікатор: Повернути проти годинникової стрілки натомість"
+        rotateInverseModifier: '"Модифікатор: Повернути проти годинникової стрілки натомість"'
         cycleBuildingVariants: Повторювати варіанти циклічно
         confirmMassDelete: Видалити ділянку
         pasteLastBlueprint: Вставити останнє креслення
         cycleBuildings: Перемикання будівль
         lockBeltDirection: Увімкнути планувальник конвеєрних стрічок
-        switchDirectionLockSide: >-
-            "Планувальник: Змінити сторону"
-        copyWireValue: >-
-            "Дроти: Копіювати значення зпід курсору"
+        switchDirectionLockSide: '"Планувальник: Змінити сторону"'
+        copyWireValue: '"Дроти: Копіювати значення зпід курсору"'
         massSelectStart: Утримуйте і перетягуйте, щоб розпочати
         massSelectSelectMultiple: Виділити кілька ділянок
         massSelectCopy: Копіювати ділянку
         massSelectCut: Вирізати ділянку
-
         placementDisableAutoOrientation: Вимкнути автоматичну орієнтацію
         placeMultiple: Залишатися у режимі розміщення
         placeInverse: Перевернути автоматичну орієнтацію стрічки
-
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Про гру
     body: >-
@@ -1315,10 +995,8 @@ about:
         Звуковий трек був зроблений <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> — він просто приголомшливий.<br><br>
 
         І нарешті, величезна подяка моєму найкращому другу <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a>, бо без наших сеансів у факторіо ця гра ніколи б не існувала.
-
 changelog:
     title: Журнал змін
-
 demo:
     features:
         restoringGames: Відновлення збережень
@@ -1326,16 +1004,16 @@ demo:
         oneGameLimit: Обмежено одним збереженням
         customizeKeybindings: Налаштування гарячих клавіш
         exportingBase: Експортування цілої бази у вигляді зображення
-
     settingNotAvailable: Недоступно в демоверсії.
-
 tips:
     - Центр приймає фігури різного виду, не лише ті що наразі вимагаються!
     - Переконайтесь що ваші фабрики модульні - це в майбутньому може знадобитись!
     - Не будуйте близько до Центру, інакше це може перерости в великий хаос!
-    - Якщо укладальник працює не так як очікувалось, спробуйте поміняти місцями входи.
+    - Якщо укладальник працює не так як очікувалось, спробуйте поміняти місцями
+      входи.
     - Ви можете переключити напрямок планувальника конвеєрів натискаючи <b>R</b>.
-    - Утримуючи <b>CTRL</b> ви можете перетягувати конвеєри не змінюючи їх орієнтації.
+    - Утримуючи <b>CTRL</b> ви можете перетягувати конвеєри не змінюючи їх
+      орієнтації.
     - Співвідношення залишаються однаковими поки поліпшення на одному рівні.
     - Послідовне виконання більш ефективне ніж паралельне.
     - Ви відкриєте більше варіантів будівель пізніше в грі.
@@ -1343,46 +1021,62 @@ tips:
     - Симетрія - ключ!
     - Ви можете переплітати тунелі різніх рангів.
     - Намагайтесь будувати компактні фабрики - це відплатить вам в майбутньому!
-    - Фарбувальник має дзеркальний варіант, який ви можете обрати натиснувши <b>T</b>
+    - Фарбувальник має дзеркальний варіант, який ви можете обрати натиснувши
+      <b>T</b>
     - Дотримування правильних співвідношень збільшить ефективність.
     - На максимальному рівні 5 Екстракторів заповнять конвеєрну стрічку.
     - Не забувайте про тунелі!
     - Вам не обов'язково розділяти елементи рівномірно для повної ефективності.
-    - Утримуючи <b>SHIFT</b> активується планувальник конвеєрних стрічок, що дає вам змогу розміщувати конвеєри значно легче.
+    - Утримуючи <b>SHIFT</b> активується планувальник конвеєрних стрічок, що дає
+      вам змогу розміщувати конвеєри значно легче.
     - Різчик завжди ділить фігуру вертикально, не залежно від його орієнтації.
     - Для отримання білого кольору змішайте всі три основних кольори.
     - Сховище має пріоритетний вихід, що знаходиться зліва.
-    - Приділіть час для будування компактного та повторюваного дизайну - воно того варте!
+    - Приділіть час для будування компактного та повторюваного дизайну - воно
+      того варте!
     - Утримування <b>SHIFT</b> дозволяє ставити будівлю кілька раз.
     - Ви можете утримувати <b>ALT</b> для зміни напряму конвеєрних стрічок.
     - Ефективність - ключ!
     - Родовища що знаходяться дальше від Центру мають більш складні фігури.
-    - Машини мають обмежену швидкість, розподіляйте елементи між ними для збільшення ефективності.
+    - Машини мають обмежену швидкість, розподіляйте елементи між ними для
+      збільшення ефективності.
     - Використовуйте балансири для збільшення ефективності.
     - Організація важлива. Постарайтесь не пересікати конвеєри дуже часто.
     - Плануйте заздалегідь, аби уникнути неймовірного хаосу!
-    - Не поспішайте видаляти старі фабрики! Вони знадобляться вам для відкриття поліпшень.
+    - Не поспішайте видаляти старі фабрики! Вони знадобляться вам для відкриття
+      поліпшень.
     - Спробуйте подолати 20 рівень своїми силами, перед пошуком допомоги!
-    - Не ускладнюйте речі, намагайтесь тримати все якомога простим, і ви продвинетесь далеко.
-    - Ви можете повторно використовувати старі фабрики пізніше в грі. Плануйте фабрики універсальними.
-    - Інколи ви можете знайти необхідну фігуру на карті, без необхідності використання різчика та укладальника.
+    - Не ускладнюйте речі, намагайтесь тримати все якомога простим, і ви
+      продвинетесь далеко.
+    - Ви можете повторно використовувати старі фабрики пізніше в грі. Плануйте
+      фабрики універсальними.
+    - Інколи ви можете знайти необхідну фігуру на карті, без необхідності
+      використання різчика та укладальника.
     - Ціла фігура млин/вентилятор не появляється на карті.
     - Фарбуйте ваші фігури перед розрізанням, для більшої ефективності.
     - З модулями, простір - лише сприйняття; турбота для смертних.
     - Зробіть окрему фабрику для фігур креслення. Вони дуже важливі для модулів.
-    - Гляньте уважніше на Змішувач кольорів, і на ваші питання найдеться відповідь.
+    - Гляньте уважніше на Змішувач кольорів, і на ваші питання найдеться
+      відповідь.
     - Використовуйте <b>CTRL</b> + Тягнути мишою для виділення області.
     - Будування поруч з Центром може завадити подальшим проектам.
-    - Іконка "кнопки" поруч з фігурою в списку поліпшень закріплює фігуру на екрані.
+    - Іконка "кнопки" поруч з фігурою в списку поліпшень закріплює фігуру на
+      екрані.
     - Змішайте всі три основних кольори аби отримати білий колір!
     - У вас є безмежна карта, не кучкуйте фабрику, розширюйте!
     - Також спробуйте Factorio! Це моя улюблена гра.
-    - Різчик (4 вих.) розділяє по часовій стрілці починаючи з верхнього правого кута!
+    - Різчик (4 вих.) розділяє по часовій стрілці починаючи з верхнього правого
+      кута!
     - Ви можете завантажити свої збереження в основному меню гри!
-    - Ця гра має багато корисних гарячих клавіш! Вам варто глянути сторінку налаштувань.
+    - Ця гра має багато корисних гарячих клавіш! Вам варто глянути сторінку
+      налаштувань.
     - Ця гра має багато цікавих налаштувань, обов'язково перевірте їх!
-    - Позначка вашого Центру має невеликий компас, що завжди вказує напрямок до нього!
+    - Позначка вашого Центру має невеликий компас, що завжди вказує напрямок до
+      нього!
     - Аби очистити конвеєрні стрічки, виріжте область та вставте її в те ж місце.
-    - Натисніть F4 аби відобразити вашу частоту кадрів та частоту циклів оновлень.
-    - Натисніть F4 двічі аби відобразити координати плитки що під курсором та координати камери.
-    - Ви можете натиснути на фігуру, зкаріплену в лівому краю екрану, аби відкріпити її.
+    - Натисніть F4 аби відобразити вашу частоту кадрів та частоту циклів
+      оновлень.
+    - Натисніть F4 двічі аби відобразити координати плитки що під курсором та
+      координати камери.
+    - Ви можете натиснути на фігуру, зкаріплену в лівому краю екрану, аби
+      відкріпити її.

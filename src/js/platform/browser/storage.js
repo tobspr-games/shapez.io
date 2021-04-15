@@ -58,11 +58,6 @@ export class StorageImplBrowser extends StorageInterface {
         });
     }
 
-    writeFileSyncIfSupported(filename, contents) {
-        window.localStorage.setItem(filename, contents);
-        return true;
-    }
-
     readFileAsync(filename) {
         if (this.currentBusyFilename === filename) {
             logger.warn("Attempt to read", filename, "while write progress on it is ongoing!");
