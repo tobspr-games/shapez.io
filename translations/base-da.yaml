@@ -14,39 +14,14 @@ steamPage:
         Mens du i starten kun laver former, skal du senere farvelægge dem - for at gøre dette skal du udvinde og blande farver!
 
         At købe spllet på Steam, giver dig adgang til det fulde spil, men du kan også spille en demo version på shapez.io og vælge senere!
-    title_advantages: Steam version Fordele
-    advantages:
-        - <b>12 Nye Niveauer</b> for i alt 26 niveauer
-        - <b>18 Nye Bygninger</b> for en fuldt autmaticeret fabrik!
-        - <b>20 Upgraderings Niveauer</b> for mange timers sjov!
-        - <b>Ledninger Opdatering</b> for en helt ny dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Uendelige Markører
-        - Hjælp med at støtte mig! ❤️
-    title_future: Planned Content
-    planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... og meget mere!
-    title_open_source: This game is open source!
-    title_links: Links
-    links:
-        discord: Official Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Hjælp med oversættelse
-    text_open_source: >-
-        Hvem som helst kan bidrage, jeg er aktivt involveret i fælleskabet og
-        forsøger at gennemgå alle ideer og tager feedback i overvejelse
-        hvor muligt.
-
-        Be sure to check out my trello board for the full roadmap!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Indlæser
     error: Fejl
@@ -359,9 +334,6 @@ ingame:
             buildings:
                 title: 18 Nye Bygninger
                 desc: Fully automate your factory!
-            savegames:
-                title: ∞ Gemte spil
-                desc: Så mange dit hjerte begær!
             upgrades:
                 title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
@@ -377,6 +349,9 @@ ingame:
             support:
                 title: Støt mig
                 desc: Jeg arbejder på det i min fritid!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Bælter, Fordelere & Tuneller
@@ -469,8 +444,9 @@ buildings:
             description: Lader dig transportere energi.
         second:
             name: Ledning
-            description: Overfør signaler, som kan være elementer, farver eller boolsk variabler (1 / 0).
-                Forskellig farvet ledninger kan ikke forbindes.
+            description: Overfør signaler, som kan være elementer, farver eller boolsk
+                variabler (1 / 0). Forskellig farvet ledninger kan ikke
+                forbindes.
     balancer:
         default:
             name: Balancer
@@ -983,6 +959,10 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Om dette spil
     body: >-
@@ -992,8 +972,7 @@ about:
 
         Hvis du vil kontribuere, tjek <a href="<githublink>" target="_blank">shapez.io på github</a>.<br><br>
 
-        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på
-        <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
+        Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
 
         Lydsporet er lavet af <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Han er fantastisk.<br><br>
 

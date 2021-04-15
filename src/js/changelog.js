@@ -1,10 +1,22 @@
 export const CHANGELOG = [
     {
-        version: "1.2.3",
-        date: "unreleased",
+        version: "1.3.1",
+        date: "beta",
         entries: [
+            "Fixed savegames getting corrupt in rare conditions",
+            "Fixed game crashing sometimes since the achievements update",
+        ],
+    },
+    {
+        version: "1.3.0",
+        date: "12.03.2020",
+        skin: "achievements",
+        entries: [
+            "There are now <strong>45 Steam Achievements!</strong>",
             "Fixed constant signals being editable from the regular layer",
             "Fixed items still overlapping sometimes between buildings and belts",
+            "The game is now available in finnish, italian, romanian and ukrainian! (Thanks to all contributors!)",
+            "Updated translations (Thanks to all contributors!)",
         ],
     },
     {

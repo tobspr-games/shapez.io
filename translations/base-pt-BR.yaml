@@ -13,38 +13,14 @@ steamPage:
         Enquanto no começo você apenas processa as formas, mais a frente você deve pintá-las - para isso você deve extrair e misturar cores!
 
         Comprar o jogo na Steam te garante acesso à versão completa, mas você pode jogar a versão demo em shapez.io primeiro e decidir depois!
-    title_advantages: Vantagens da versão completa
-    advantages:
-        - <b>12 Novos Níveis</b> para um total de 26 níveis!
-        - <b>18 Novas Construções</b> para uma fábrica completamente automática!
-        - <b>20 Níveis de Melhorias</b> para muitas horas de diversão!
-        - <b>Atualização da Fiação</b> para uma dimensão completamente nova!
-        - <b>Modo Escuro</b>!
-        - Saves ilimitados
-        - Marcadores ilimitados
-        - Me ajuda! ❤️
-    title_future: Conteúdo Planejado
-    planned:
-        - Biblioteca de projetos (Exclusivo para a versão completa)
-        - Conquistas da Steam
-        - Modo Puzzle
-        - Minimapa
-        - Mods
-        - Modo Sandbox
-        - ... e muito mais!
-    title_open_source: Este jogo tem código aberto!
-    title_links: Links
-    links:
-        discord: Discord Oficial
-        roadmap: Linha do Tempo
-        subreddit: Subreddit
-        source_code: Código-fonte (GitHub)
-        translate: Ajude a traduzir
-    text_open_source: >-
-        Qualquer um pode contribuir, estou ativamente envolvido com a comunidade
-        e tento ler todas as sugestões e receber críticas quando possível.
-
-        Cheque meu quadro no trello para a linha do tempo completa!
+    what_others_say: O que as pessoas dizem sobre o shapez.io
+    nothernlion_comment: Este jogo é ótimo - estou me divertindo muito jogando
+        e o tempo passou voando.
+    notch_comment: Droga. Eu realmente deveria dormir, mas eu acho que acabei
+        de descobrir como fazer um computador no shapez.io
+    steam_review_comment: Este jogo roubou minha vida e eu não a quero de volta.
+        Jogo de fábrica muito descontraído que não me deixa parar de fazer
+        linhas mais eficientes.
 global:
     loading: Carregando
     error: Erro
@@ -203,7 +179,8 @@ dialogs:
         desc: Existe um tutorial em vídeo para esse nível! Gostaria de assistí-lo?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial disponível
-        desc: Existe um tutorial em vídeo para esse nível, mas está disponível apenas em Inglês. Gostaria de assistí-lo?
+        desc: Existe um tutorial em vídeo para esse nível, mas está disponível apenas em
+            Inglês. Gostaria de assistí-lo?
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -237,7 +214,7 @@ ingame:
         uncolored: Sem cor
     buildingPlacement:
         cycleBuildingVariants: Aperte <key> para variações.
-        hotkeyLabel: "Hotkey: <key>"
+        hotkeyLabel: "Tecla: <key>"
         infoTexts:
             speed: Velocidade
             range: Distância
@@ -313,30 +290,33 @@ ingame:
                 esteiras para concluir o objetivo mais rapidamente.<br><br>Dica,
                 segure <strong>SHIFT</strong> para colocar vários extratores e
                 use <strong>R</strong> para girá-los.
-            2_1_place_cutter: "Agora coloque um <strong>Cortador</strong> para cortar os círculos em duas
-                metades!<br><br> PS: O cortador sempre corta de <strong>cima para
-                baixo</strong> independentemente de sua orientação."
-            2_2_place_trash: O cortador pode <strong>emtupir e parar</strong>!<br><br> Use um
-                <strong>lixo</strong> para se livrar do que atualmente (!) não for
-                necessário.
-            2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2 cortadores</strong> para acelerar
-                este processo lento!<br><br> PS: Use as <strong> hotkeys 0-9
-                </strong> para acessar as construções mais rápido!"
+            2_1_place_cutter: "Agora coloque um <strong>Cortador</strong> para cortar os
+                círculos em duas metades!<br><br> PS: O cortador sempre corta de
+                <strong>cima para baixo</strong> independentemente de sua
+                orientação."
+            2_2_place_trash: O cortador pode <strong>emtupir e parar</strong>!<br><br> Use
+                um <strong>lixo</strong> para se livrar do que atualmente (!)
+                não for necessário.
+            2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2
+                cortadores</strong> para acelerar este processo lento!<br><br>
+                PS: Use as <strong> teclas 0-9 </strong> para acessar as
+                construções mais rápido!"
             3_1_rectangles: "Vamos extrair alguns retângulos! <strong>Construa 4
-                extratores</strong> e conecte-os ao hub.<br><br> PS:
-                Segure <strong>SHIFT</strong> enquanto arrasta a esteira para ativar o
+                extratores</strong> e conecte-os ao hub.<br><br> PS: Segure
+                <strong>SHIFT</strong> enquanto arrasta a esteira para ativar o
                 planejador de esteiras!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            21_1_place_quad_painter: Coloque o <strong>pintor (quádruplo)</strong> e consiga
+                alguns <strong>circulos</strong>, pigmento
+                <strong>branco</strong> e <strong>vermelho</strong>!
+            21_2_switch_to_wires: Troque para o nível de fios pressionando
+                <strong>E</strong>!<br><br> E então <strong>conecte todos as
+                quatro entradas</strong> do pintor com fios!
+            21_3_place_button: Incrivel! Agora coloque um <strong>interruptor</strong> e o
+                conecte com fio!
+            21_4_press_button: "Pressione o interruptor para fazé-lo <strong>emitir um sinal
+                verdadeiro</strong> o que ativará o pintor.<br><br> OBS: Você
+                não precisa conectar todas as entradas! Tente conectar somente
+                duas."
     connectedMiners:
         one_miner: 1 Extrator
         n_miners: <amount> Extratores
@@ -355,9 +335,6 @@ ingame:
             buildings:
                 title: 18 Novas Construções
                 desc: Automatize sua fábrica inteira!
-            savegames:
-                title: Saves ∞
-                desc: Quantos o seu coração mandar!
             upgrades:
                 title: ∞ Níveis de Melhorias
                 desc: Essa demo tem apenas 5!
@@ -373,6 +350,9 @@ ingame:
             support:
                 title: Me ajuda
                 desc: Eu desenvolvo o jogo no meu tempo livre!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
@@ -635,9 +615,9 @@ storyRewards:
     reward_miner_chainable:
         title: Extrator em Cadeia
         desc: "Você desbloqueou o <strong>extrator em cadeia</strong>! Ele
-            <strong>encaminha os recursos</strong> para outros extratores para que você
-            possa extrair recursos de forma mais eficiente!<br><br> OBS: O velho
-            extrator foi substituído na sua barra de ferramentas!"
+            <strong>encaminha os recursos</strong> para outros extratores para
+            que você possa extrair recursos de forma mais eficiente!<br><br>
+            OBS: O velho extrator foi substituído na sua barra de ferramentas!"
     reward_underground_belt_tier_2:
         title: Túnel Classe II
         desc: Você desbloqueou uma nova variante do <strong>túnel</strong> - ele tem um
@@ -655,9 +635,10 @@ storyRewards:
             tempo</strong>, consumindo apenas uma cor em vez de duas!
     reward_storage:
         title: Armazém
-        desc: Você desbloqueou o <strong>armazém</strong> - Permite que você
-            armazene itens até uma certa capacidade!<br><br> Ele prioriza a saída
-            da esquerda, para que você também possa usá-lo como um <strong>portão de excesso</strong>!
+        desc: Você desbloqueou o <strong>armazém</strong> - Permite que você armazene
+            itens até uma certa capacidade!<br><br> Ele prioriza a saída da
+            esquerda, para que você também possa usá-lo como um <strong>portão
+            de excesso</strong>!
     reward_freeplay:
         title: Modo Livre
         desc: Você conseguiu! Você desbloqueou o <strong>modo livre</strong>! Isso
@@ -687,9 +668,9 @@ storyRewards:
         desc: Parabéns! Aliás, mais conteúdo vindo na versão completa!
     reward_balancer:
         title: Balanceador
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: O multifuncional <strong>balanceador</strong> foi desbloqueado - Ele pode
+            ser usado para construir fabricas maiores ao <strong>dividir e
+            juntar itens</strong> em múltiplas esteiras!
     reward_merger:
         title: Unificador Compacto
         desc: Você desbloqueou uma variante <strong>unificadora</strong> do
@@ -737,13 +718,14 @@ storyRewards:
             lembre de se divertir!
     reward_wires_painter_and_levers:
         title: Fios e Pintor Quádruplo
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Você acabou de desbloquear o <strong>nivel de fios</strong>: Ele é uma
+            dimensão separada da dimensão normal e introduz varias novas
+            mecanicas! <br><br> Para Começar eu desbloqueae para você o
+            <strong>pintor (quádruplo)</strong> - Conecte os espaços que você
+            gostaria de usar para pintar com fios no nivel de fios!<br><br> Para
+            entrar no nivel de fios, pressione <strong>E</strong>. <br><br> OBS:
+            <strong>Ligue as dicas</strong> nas configurações para ativar o
+            tutorial de fios!"
     reward_filter:
         title: Filtro de Itens
         desc: Você desbloqueou o <strong>Filtro de Itens</strong>! Ele irá rotear os
@@ -918,10 +900,12 @@ settings:
                 velocidade depende da configuração Velocidade de Movimento.
         zoomToCursor:
             title: Zoom na direção do cursor
-            description: Se ativado, o zoom irá se deslocar na direção do cursor do seu mouse. Caso contrário, irá para o meio da tela.
+            description: Se ativado, o zoom irá se deslocar na direção do cursor do seu
+                mouse. Caso contrário, irá para o meio da tela.
         mapResourcesScale:
             title: Tamanho do Mapa de Recursos
-            description: Controla o tamanho das formas no mapa de panorama (quando afasta o zoom).
+            description: Controla o tamanho das formas no mapa de panorama (quando afasta o
+                zoom).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Controles
@@ -996,6 +980,10 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copiar valor abaixo do cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Sobre o jogo
     body: >-

@@ -16,12 +16,15 @@ module.exports = ({
     standalone = false,
     isBrowser = true,
     mobileApp = false,
+    chineseVersion = false,
 }) => {
     const globalDefs = {
         assert: enableAssert ? "window.assert" : "false && window.assert",
         assertAlways: "window.assert",
         abstract: "window.assert(false, 'abstract method called');",
         G_IS_DEV: "false",
+
+        G_CHINA_VERSION: JSON.stringify(chineseVersion),
         G_IS_RELEASE: environment === "prod" ? "true" : "false",
         G_IS_STANDALONE: standalone ? "true" : "false",
         G_IS_BROWSER: isBrowser ? "true" : "false",

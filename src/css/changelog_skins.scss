@@ -1,0 +1,18 @@
+[data-changelog-skin="achievements"] {
+    background: #f8f8f8;
+
+    @include DarkThemeOverride {
+        background: rgba(0, 10, 20, 0.2);
+    }
+
+    @include S(border-radius, 5px);
+    &::before {
+        content: " ";
+        width: 100%;
+        display: block;
+        background: uiResource("changelog_skins/achievements.noinline.png") center center / cover no-repeat !important;
+        @include S(height, 80px);
+        @include S(border-radius, 5px);
+        @include S(margin-bottom, 5px);
+    }
+}

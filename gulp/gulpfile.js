@@ -50,6 +50,9 @@ css.gulptasksCSS($, gulp, buildFolder, browserSync);
 const sounds = require("./sounds");
 sounds.gulptasksSounds($, gulp, buildFolder);
 
+const localConfig = require("./local-config");
+localConfig.gulptasksLocalConfig($, gulp);
+
 const js = require("./js");
 js.gulptasksJS($, gulp, buildFolder, browserSync);
 
@@ -136,7 +139,7 @@ gulp.task("main.webserver", () => {
     );
 });
 
-function serve({ standalone }) {
+function serve({ standalone, chineseVersion = false }) {
     browserSync.init({
         server: buildFolder,
         port: 3005,
@@ -200,7 +203,11 @@ function serve({ standalone }) {
     if (standalone) {
         gulp.series("js.standalone-dev.watch")(() => true);
     } else {
-        gulp.series("js.dev.watch")(() => true);
+        if (chineseVersion) {
+            gulp.series("china.js.dev.watch")(() => true);
+        } else {
+            gulp.series("js.dev.watch")(() => true);
+        }
     }
 }
 
@@ -221,6 +228,7 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",
@@ -238,6 +246,7 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",
@@ -284,30 +293,28 @@ gulp.task(
 );
 
 // Builds everything (standalone-prod)
-gulp.task(
-    "step.standalone-prod.code",
-    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "js.standalone-prod")
-);
-gulp.task("step.standalone-prod.mainbuild", gulp.parallel("step.baseResources", "step.standalone-prod.code"));
-gulp.task(
-    "step.standalone-prod.all",
-    gulp.series("step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
-);
-gulp.task(
-    "build.standalone-prod",
-    gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
-);
 
-// OS X build and release upload
-gulp.task(
-    "build.darwin64-prod",
-    gulp.series(
-        "build.standalone-prod",
-        "standalone.prepare",
-        "standalone.package.prod.darwin64",
-        "standalone.uploadRelease.darwin64"
-    )
-);
+for (const prefix of ["", "china."]) {
+    gulp.task(
+        prefix + "step.standalone-prod.code",
+        gulp.series("sounds.fullbuildHQ", "translations.fullBuild", prefix + "js.standalone-prod")
+    );
+
+    gulp.task(
+        prefix + "step.standalone-prod.mainbuild",
+        gulp.parallel("step.baseResources", prefix + "step.standalone-prod.code")
+    );
+
+    gulp.task(
+        prefix + "step.standalone-prod.all",
+        gulp.series(prefix + "step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
+    );
+
+    gulp.task(
+        prefix + "build.standalone-prod",
+        gulp.series("utils.cleanup", prefix + "step.standalone-prod.all", "step.postbuild")
+    );
+}
 
 // Deploying!
 gulp.task(
@@ -320,7 +327,12 @@ gulp.task(
 );
 gulp.task("main.deploy.prod", gulp.series("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
 gulp.task("main.deploy.all", gulp.series("main.deploy.staging", "main.deploy.prod"));
-gulp.task("main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+gulp.task("regular.main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+gulp.task(
+    "china.main.standalone",
+    gulp.series("china.build.standalone-prod", "china.standalone.package.prod")
+);
+gulp.task("standalone.all", gulp.series("regular.main.standalone", "china.main.standalone"));
 
 // Live-development
 gulp.task(
@@ -330,6 +342,10 @@ gulp.task(
 gulp.task(
     "main.serveStandalone",
     gulp.series("build.standalone.dev", () => serve({ standalone: true }))
+);
+gulp.task(
+    "china.main.serveDev",
+    gulp.series("build.dev", () => serve({ standalone: false, chineseVersion: true }))
 );
 
 gulp.task("default", gulp.series("main.serveDev"));

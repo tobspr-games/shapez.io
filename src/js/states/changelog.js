@@ -19,7 +19,7 @@ export class ChangelogState extends TextualGameState {
         for (let i = 0; i < entries.length; ++i) {
             const entry = entries[i];
             html += `
-                <div class="entry">
+                <div class="entry" data-changelog-skin="${entry.skin || "default"}">
                     <span class="version">${entry.version}</span>
                     <span class="date">${entry.date}</span>
                     <ul class="changes">

@@ -273,7 +273,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
             if (handle.throughputOnly) {
                 currentValue =
-                    this.root.productionAnalytics.getCurrentShapeRate(
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(
                         enumAnalyticsDataSource.delivered,
                         handle.definition
                     ) / globalConfig.analyticsSliceDurationSeconds;

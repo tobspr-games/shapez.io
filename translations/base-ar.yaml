@@ -6,45 +6,19 @@ steamPage:
         لعبة شيبز (أشكال) هي لعبة مريحة تقوم فيها ببناء مصانع ووتشغيلها آليا
         لصناعة أشكال هندسية.
 
-        مع التقدم في المستوى، تزداد الأشكال تعقيداً، فيتوجب عليك التوسع في الخريطة اللانهائية، وذلك ليس كافياً للتقدم في مستوى اللعبة حيث عليك صناعة المزيد بأضعاف مضاعفة لتلبية الطلب، الشيء
-        الوحيد الذي يمكنه مساعدتك هو التوسع.
+        مع التقدم في المستوى، تزداد الأشكال تعقيداً، فيتوجب عليك التوسع في الخريطة اللانهائية، وذلك ليس كافياً للتقدم في مستوى اللعبة حيث عليك صناعة المزيد بأضعاف مضاعفة لتلبية الطلب، الشيء الوحيد الذي يمكنه مساعدتك هو التوسع.
 
         بينما في البداية تقوم بصناعة أشكال مختلفة، تتطلب منك المراحل المتقدمة تلوين هذه الأشكال، حيث يتوجب عليك استخراج وخلط الألوان.
 
         عند شراءك اللعبة على ستيم (Steam) تحصل على الإصدار الكامل للعبة، ولكن يمكن أيضاً لعبة نسخة تجريبية على موقع shapez.io  ثم يمكنك القرار لاحقا
-    title_advantages: ميزات نسخة الحاسوب
-    advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>Unlimited Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
-    planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
-    links:
-        discord: Official Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
-    text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Loading
     error: Error
@@ -355,9 +329,6 @@ ingame:
             buildings:
                 title: 18 New Buildings
                 desc: Fully automate your factory!
-            savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
             upgrades:
                 title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
@@ -373,6 +344,9 @@ ingame:
             support:
                 title: Support me
                 desc: I develop it in my spare time!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
@@ -976,6 +950,10 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: About this Game
     body: >-
