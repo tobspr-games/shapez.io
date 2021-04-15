@@ -46,7 +46,12 @@ res_built
 
 gulp/runnable-texturepacker.jar
 tmp_standalone_files
+tmp_standalone_files_china
 
 # Local config
 config.local.js
 .DS_Store
+
+# Editor artifacts
+*.*.swp
+*.*.swo

@@ -43,9 +43,10 @@
         .languageChoose {
             @include S(border-radius, 8px);
             border: solid #222428;
-            background-color: #fff;
             @include S(border-width, 2px);
-            background-size: cover;
+            background-color: #222428 !important;
+            background-size: contain !important;
+            background-position: center center !important;
             opacity: 0.8;
         }
     }
@@ -145,12 +146,10 @@
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
-                transform: skewX(-0.5deg);
 
                 @include S(border-radius, $globalBorderRadius);
 
                 &:hover {
-                    transform: scale(1.02);
                     opacity: 0.9;
                 }
             }
@@ -184,7 +183,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: rgb(231, 78, 58);
+            color: #3291e9;
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -450,6 +449,10 @@
         @include S(padding, 10px);
         box-sizing: border-box;
         @include S(grid-gap, 4px);
+
+        &.china {
+            grid-template-columns: auto 1fr;
+        }
 
         .author {
             flex-grow: 1;

@@ -13,39 +13,14 @@ steamPage:
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
         Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez.io deneme sürümünü oynayıp sonradan karar verebilirsin!
-    title_advantages: Bağımsıza özel Avantajlar
-    advantages:
-        - <b>12 Yeni Seviye</b> toplamda 26 seviye.
-        - <b>18 Yeni Yapı</b> tam otomatik bir fabrika için!
-        - <b>20 Geliştirme Aşaması</b> saatlerce eğlence için!
-        - <b>Kablolar Güncellemesi</b> tamamen yeni bir boyut için!
-        - <b>Gece Modu</b>!
-        - Sınırsız Oyun Kaydı
-        - Sınırsız Yerimi
-        - Beni destekleyin! ❤️
-    title_future: Planlanan İçerik
-    planned:
-        - Taslak Kütüphanesi (Bağımsıza Özel)
-        - Steam Başarımları
-        - Yapboz Modu
-        - Küçük Harita
-        - Modlar
-        - Kum Kutusu Modu
-        - ... ve daha fazlası!
-    title_open_source: Bu oyun açık kaynak kodlu!
-    title_links: Bağlantılar
-    links:
-        discord: Resmi Discord Sunucusu
-        roadmap: Yol Haritası
-        subreddit: Subreddit
-        source_code: Kaynak kodu (GitHub)
-        translate: Çeviriye yardım et
-    text_open_source: >-
-        Herkes bu oyuna katkıda bulunabilir. Toplulukla aktif bir şekilde
-        ilgileniyorum. Bütün önerileri ve geri dönüşleri incelemeye çalışıyorum
-        ve mümkün olanları değerlendirmeye alıyorum.
-
-        Bütün yol haritasına Trello kartımda göz atmayı unutma!
+    what_others_say: İnsanlar shapez.io hakkında ne düşünüyor?
+    nothernlion_comment: Bu oyun süper - Oynarken harika vakit geçiriyorum
+        ve zaman akıp gidiyor.
+    notch_comment: Hay aksi. Gerçekten uyumalıyım, ama şimdi shapez.io'da
+        nasıl bir bilgisayar yapabileceğimi çözdüm.
+    steam_review_comment: Bu oyun hayatımı çaldı ve geri istemiyorum.
+        Üretim hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir
+        fabrika oyunu.
 global:
     loading: Yüklenİyor
     error: Hata
@@ -67,8 +42,8 @@ global:
         oneDayAgo: bir gün önce
         xDaysAgo: <x> gün önce
         secondsShort: <seconds>sn
-        minutesAndSecondsShort: <minutes>dk <seconds>dk
-        hoursAndMinutesShort: <hours>sa <minutes>sa
+        minutesAndSecondsShort: <minutes>dk <seconds>sn
+        hoursAndMinutesShort: <hours>sa <minutes>dk
         xMinutes: <x> dakika
     keys:
         tab: TAB
@@ -95,7 +70,7 @@ mainMenu:
     newGame: YENİ OYUN
     madeBy: <author-link> tarafından yapıldı
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: İsimsiz
 dialogs:
     buttons:
         ok: OK
@@ -119,16 +94,17 @@ dialogs:
         title: Oyun bozuk
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
-        title: Silme işlemini onayla
-        text: <br><br> Bu kayıdı silmek istiyor musunuz?
-            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu işlem geri
-            alınamaz!
+        title: Sİlme İşlemİnİ onayla
+        text: >-
+            Bu kaydı silmek istediğinize emin misiniz?<br><br>
+            '<savegameName>' seviyesi <savegameLevel><br><br>
+            Bu işlem geri alınamaz!
     savegameDeletionError:
         title: Silme başarısız
-        text: "Oyun kaydını silme başarısız:"
+        text: "Oyun kaydı silinemedi:"
     restartRequired:
         title: Yeniden başlatma gerekiyor
-        text: Değişiklikleri uygulamak için oyunu yeniden başlatılmalı.
+        text: Değişiklikleri uygulamak için oyunu yeniden başlatın.
     editKeybinding:
         title: Tuş Atamasını Değiştir
         desc: Atamak isteğiniz tuşa veya fare butonun basın, veya iptal etmek için Esc
@@ -146,7 +122,7 @@ dialogs:
             için tam versiyonu satın alın.
     oneSavegameLimit:
         title: Sınırlı Oyun Kaydı
-        desc: Deneme sürümünde sadece tek bir oyun kaydınız olabilir. Lütfen varolanı
+        desc: Deneme sürümünde sadece tek bir oyun kaydınız olabilir. Lütfen mevcut kaydı
             silin veya tam sürümü satın alın!
     updateSummary:
         title: Yeni güncelleme!
@@ -174,8 +150,8 @@ dialogs:
             taşıma bantlarının yönünü ters çevirir.<br>"
     createMarker:
         title: Yeni Konum İşareti
-        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil koduda</strong> koyabilirsiniz
-            (<link>Buradan</link> kod yapabilirisinz )
+        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil kodu da</strong> koyabilirsiniz
+            (<link>Buradan</link> kod yapabilirsiniz )
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer
@@ -197,39 +173,38 @@ dialogs:
         title: Sinyal Ata
         descItems: "Önceden tanımlı bir eşya seçin:"
         descShortKey: ... veya <strong>şekil kodunu</strong> girin (<link>Buradan</link>
-            edinebileceğiniz)
+            oluşturabilirsiniz)
     renameSavegame:
-        title: Oyun Kaydının Yeniden Adlandır
-        desc: Oyun kaydını buradan adlandırabilirsiniz.
+        title: Oyun Kaydını Yeniden Adlandır
+        desc: Oyun kayıt ismini buradan değiştirebilirsiniz.
     tutorialVideoAvailable:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek
-            ister misin?
+        desc: Bu seviye için eğitim videosu mevcut! İzlemek ister misin?
     tutorialVideoAvailableForeignLanguage:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde.
-            İzlemek ister misin?
+        desc: Bu seviye için eğitim videosu mevcut, ama İngilizce dilinde. İzlemek ister
+            misin?
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
         selectBuildings: Alan seç
         stopPlacement: Yerleştİrmeyİ durdur
         rotateBuilding: Yapıyı döndür
-        placeMultiple: Çoklu yerleştİr
-        reverseOrientation: Yönünü ters çevİr
+        placeMultiple: Çoklu yerleştir
+        reverseOrientation: Yönünü ters çevir
         disableAutoOrientation: Otomatik yönü devre dışı bırak
         toggleHud: Kullanıcı arayüzünü aç/kapa
-        placeBuilding: Yapı yerleştİr
-        createMarker: Yer İmi oluştur
+        placeBuilding: Yapı yerleştir
+        createMarker: Yer imi oluştur
         delete: SİL
         pasteLastBlueprint: Son taslağı yapıştır
         lockBeltDirection: Taşıma bandı planlayıcısını kullan
         plannerSwitchSide: Planlayıcıyı ters çevir
         cutSelection: Kes
         copySelection: Kopyala
-        clearSelection: Seçİmİ temİzle
-        pipette: Pİpet
-        switchLayers: Katman değİştİr
+        clearSelection: Seçimi temİzle
+        pipette: Pipet
+        switchLayers: Katman değiştir
     buildingPlacement:
         cycleBuildingVariants: Yapının farklı türlerine geçmek için <key> tuşuna bas.
         hotkeyLabel: "Kısayol: <key>"
@@ -240,19 +215,19 @@ ingame:
             itemsPerSecond: <x> eşya / sn
             itemsPerSecondDouble: (x2)
             tiles: <x> karo
-            speed: Speed
+            speed: Hız
     levelCompleteNotification:
         levelTitle: SEVİYE <level>
         completed: Tamamlandı
         unlockText: Açıldı <reward>!
-        buttonNextLevel: Sonrakİ Sevİye
+        buttonNextLevel: Sonraki Seviye
     notifications:
         newUpgrade: Yeni geliştirme mevcut!
         gameSaved: Oyun kaydedildi.
         freeplayLevelComplete: Seviye <level> tamamlandı!
     shop:
-        title: Gelİştİrmeler
-        buttonUnlock: Gelİştİr
+        title: Geliştirmeler
+        buttonUnlock: Geliştİr
         tier: Aşama <x>
         maximumLevel: SON SEVİYE (Hız x<currentMult>)
     statistics:
@@ -283,52 +258,52 @@ ingame:
     blueprintPlacer:
         cost: Bedel
     waypoints:
-        waypoints: Yer İmi
+        waypoints: Yer imler
         hub: MERKEZ
-        description: Sol-tık ile Yer İmlerine git, sağ-tık ile yer imini
+        description: Sol-tık ile Yer imlerine git, sağ-tık ile yer imini
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
             bas, <strong>sağ-tık</strong> ile mevcut konumda yer imi oluştur.
-        creationSuccessNotification: Yer İmi oluşturuldu.
+        creationSuccessNotification: Yer imi oluşturuldu.
     interactiveTutorial:
-        title: Eğİtİm
+        title: Eğitim
         hints:
             1_1_extractor: Daire üretmek için <strong>daire şekli</strong> üzerine bir
                 <strong>üretici</strong> yerleştir!
             1_2_conveyor: "Üreticiyi <strong>taşıma bandı</strong> ile merkezine
-                bağla!<br><br>İpucu: Taşıma bandı nı seç ve taşıma bandını
+                bağla!<br><br>İpucu: Taşıma bandını seç ve taşıma bandını
                 farenin sol tuşu ile <strong>tıkla ve sürükle</strong>!"
             1_3_expand: "Bu bir boşta kalma oyunu (idle game) <strong>değil</strong>! Hedefe
                 ulaşmak için daha fazla üretici ve taşıma bandı
                 yerleştir.<br><br>İpucu: Birden fazla üretici yerleştirmek için
                 <strong>SHIFT</strong> tuşuna basılı tut, ve <strong>R</strong>
                 tuşuyla taşıma bandının yönünü döndür."
-            2_1_place_cutter:
-                "Şimdi daireleri yarıya bölmek için bir <strong>Kesici</strong> yerleştir!<br><br>
-                Not: Kesici şekilleri yönünden bağımsız olarak her zaman <strong>yukarıdan aşağıya</strong>
-                keser."
-            2_2_place_trash: Kesicinin çıkış hatları doluysa <strong>durabilir</strong>!<br><br>
-                Bunun için kullanılmayan çıktılara <strong>çöp</strong>
-                yerleştirin.
-            2_3_more_cutters:
-                "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki kesici daha</strong>
-                yerleştir.<br><br> Not: <strong>0-9 tuşlarını</strong> kullanarak yapılara
-                daha hızlı ulaşabilirsin!"
-            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici yerleştir</strong> ve
-                bunları merkeze bağla.<br><br> Not: <strong>SHIFT tuşuna</strong>
-                basılı tutarak bant planlayıcıyı
+            2_1_place_cutter: "Şimdi daireleri yarıya bölmek için bir
+                <strong>Kesici</strong> yerleştir!<br><br> Not: Kesici şekilleri
+                yönünden bağımsız olarak her zaman <strong>yukarıdan
+                aşağıya</strong> keser."
+            2_2_place_trash: Kesicinin çıkış hatları doluysa
+                <strong>durabilir</strong>!<br><br> Bunun için kullanılmayan
+                çıktılara <strong>çöp</strong> yerleştirin.
+            2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki
+                kesici daha</strong> yerleştir.<br><br> Not: <strong>0-9
+                tuşlarını</strong> kullanarak yapılara daha hızlı
+                ulaşabilirsin!"
+            3_1_rectangles: "Şimdi biraz dikdörtgen üretelim! <strong>4 Üretici
+                yerleştir</strong> ve bunları merkeze bağla.<br><br> Not:
+                <strong>SHIFT tuşuna</strong> basılı tutarak bant planlayıcıyı
                 etkinleştir!"
-            21_1_place_quad_painter:
-                <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve <strong>daireyi</strong>,
-                <strong>beyaz</strong> ve <strong>kırmızı</strong> renkleri
-                elde edin!
-            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş yapın!<br><br>
-                Sonra boyayıcının <strong>dört girişini kablolara
+            21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve
+                <strong>daireyi</strong>, <strong>beyaz</strong> ve
+                <strong>kırmızı</strong> renkleri elde edin!
+            21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş
+                yapın!<br><br> Sonra boyayıcının <strong>dört girişini kablolara
                 bağlayın</strong>!
             21_3_place_button: Harika! Şimdi bir <strong>Anahtar</strong> yerleştirin ve onu
                 kablolarla bağlayın!
-            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1) gönderin</strong> ve bununla
-                boyayıcıyı aktifleştirin.<br><br> Not: Bütün girişleri bağlamanıza gerek yok!
-                Sadece iki tanesini kabloyla bağlamayı deneyin."
+            21_4_press_button: "Anahtara basarak <strong>gerçekçi sinyal(1)
+                gönderin</strong> ve bununla boyayıcıyı aktifleştirin.<br><br>
+                Not: Bütün girişleri bağlamanıza gerek yok! Sadece iki tanesini
+                kabloyla bağlamayı deneyin."
     colors:
         red: Kırmızı
         green: Yeşil
@@ -361,9 +336,6 @@ ingame:
             buildings:
                 title: 18 Yeni Yapı
                 desc: Fabrikanı tamamen otomatikleştir!
-            savegames:
-                title: ∞ Oyun Kayıtları
-                desc: Canın ne kadar isterse!
             upgrades:
                 title: ∞ Geliştirme Aşaması
                 desc: Bu deneme sürümünde sadece 5 tane var!
@@ -375,10 +347,13 @@ ingame:
                 desc: Tamamen yeni bir boyut!
             darkmode:
                 title: Gece Modu
-                desc: Gözlerini artık yorma!
+                desc: Gözlerin artık yorulmasın!
             support:
                 title: Beni destekleyin
                 desc: Boş zamanımda bu oyunu geliştiriyorum!
+            achievements:
+                title: Başarımlar
+                desc: Bütün başarımları açmaya çalış!
 shopUpgrades:
     belt:
         name: Taşıma Bandı, Dağıtıcılar & Tüneller
@@ -394,7 +369,7 @@ shopUpgrades:
         description: Hız x<currentMult> → x<newMult>
 buildings:
     hub:
-        deliver: Teslİm et
+        deliver: Teslim et
         toUnlock: Açılacak
         levelShortcut: SVY
         endOfDemo: Deneme Sürümünün Sonu
@@ -405,11 +380,11 @@ buildings:
                 sürükle.
     miner:
         default:
-            name: Üretİcİ
-            description: Bir şekli veya rengi üretmek için üzerlerini yerleştir.
+            name: Üretici
+            description: Bir şekli veya rengi üretmek için üzerine yerleştir.
         chainable:
-            name: Üretİcİ (Zİncİrleme)
-            description: Bir şekli veya rengi üretmek için üzerlerini yerleştir. Zincirleme
+            name: Üretici (Zİncİrleme)
+            description: Bir şekli veya rengi üretmek için üzerine yerleştir. Zincirleme
                 bağlanabilir.
     underground_belt:
         default:
@@ -421,12 +396,12 @@ buildings:
                 aktarımı sağlar.
     cutter:
         default:
-            name: Kesİcİ
+            name: Kesici
             description: Şekilleri yukarıdan aşağıya böler ve iki yarım parçayı çıktı olarak
                 verir. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer
                 çıkan parçayı yok etmeyi unutmayın, yoksa kesim durur!</strong>
         quad:
-            name: Kesİcİ (Dörtlü)
+            name: Kesici (Dörtlü)
             description: Şekilleri dört parçaya böler. <strong>Eğer sadece bir çıktıyı
                 kullanıyorsanız diğer çıkan parçaları yok etmeyi unutmayın,
                 yoksa kesim durur!</strong>
@@ -435,16 +410,16 @@ buildings:
             name: Döndürücü
             description: Şekilleri saat yönünde 90 derece döndürür.
         ccw:
-            name: Döndürücü (Saat Yönünün Tersİ)
+            name: Döndürücü (Saat Yönünün Tersi)
             description: Şekilleri saat yönünün tersinde 90 derece döndürür.
         rotate180:
-            name: Dödürücü (180 Derece)
+            name: Döndürücü (180 Derece)
             description: Şekilleri 180 derece döndürür.
     stacker:
         default:
-            name: Kaynaştırıcı
-            description: İki eşyayı kaynaştırır. Eğer eşyalar kaynaştırılamazsa sağdaki eşya
-                soldaki eşyanın üzerine kaynaştırılır.
+            name: Birleştirici
+            description: İki eşyayı birleştirir. Eğer eşyalar birleştirilemezse sağdaki eşya
+                soldaki eşyanın üzerine eklenir.
     mixer:
         default:
             name: Renk Karıştırıcısı
@@ -471,11 +446,11 @@ buildings:
     wire:
         default:
             name: Kablo
-            description: Sinyali, eşyalar veya ikili değerler(1 / 0), aktarmayı sağlar.
+            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı sağlar.
                 Farklı renkteki kablolar bağlanamaz.
         second:
             name: Kablo
-            description: Sinyali, eşyalar veya ikili değerler(1 / 0), aktarmayı sağlar.
+            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı sağlar.
                 Farklı renkteki kablolar bağlanamaz.
     wire_tunnel:
         default:
@@ -486,10 +461,10 @@ buildings:
             name: Dengeleyici
             description: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.
         merger:
-            name: Bİrleştİrİcİ (tekİl)
+            name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         merger-inverse:
-            name: Birleştİrİcİ (tekİl)
+            name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         splitter:
             name: Ayırıcı (tekİl)
@@ -499,9 +474,9 @@ buildings:
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
     storage:
         default:
-            name: Storage
-            description: Belirli bir sınıra kadar fazla eşyaları depolar. Taşırma kapısı
-                olarak kullanıla bilir.
+            name: Depo
+            description: Belirli bir sınıra kadar fazla eşyaları depolar. Sol çıkışa öncelik verir ve taşma kapısı
+                olarak kullanılabilir.
     constant_signal:
         default:
             name: Sabit Sinyal
@@ -515,11 +490,11 @@ buildings:
                 kullanılabilir.
     logic_gate:
         default:
-            name: AND Kapısı
+            name: VE Kapısı
             description: Eğer iki girdi de doğruysa, bu kapı"1" sinyali gönderir. (Doğru;
                 bir şekil, renk veya "1" girdisi demektir.)
         not:
-            name: NOT Kapısı
+            name: DEĞİL Kapısı
             description: Eğer girdi doğru değilse, bu kapı "1" sinyali gönderir. (Doğru; bir
                 şekil, renk veya "1" girdisi demektir.)
         xor:
@@ -527,7 +502,7 @@ buildings:
             description: Eğer iki girdiden sadece biri "1" sinyali alıyorsa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
         or:
-            name: OR Kapısı
+            name: YADA Kapısı
             description: Eğer iki girdiden herhangi biri "1" sinyali alıyorsa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
     transistor:
@@ -552,7 +527,7 @@ buildings:
                 veya ikili değer (1/0) olabilir.
     reader:
         default:
-            name: Band Okuyucu
+            name: Bant Okuyucu
             description: Bant üzerindeki ortalama hızı ölçer. Kablo katmanında son okunan
                 eşyayı gösterir (açıldığında).
     analyzer:
@@ -589,7 +564,7 @@ buildings:
                 katmanda çıktı olarak verir.
 storyRewards:
     reward_cutter_and_trash:
-        title: Şekİllerİ Kesmek
+        title: Şekilleri Kesmek
         desc: <strong>Kesici</strong> açıldı, bu alet şekilleri <strong>yönelimi ne
             olursa olsun</strong> ortadan ikiye böler!<br><br> Çıkan şekilleri
             kullanmayı veya çöpe atmayı unutma yoksa <strong>makine
@@ -645,7 +620,7 @@ storyRewards:
         desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki
             parça yerine <strong>dört parçaya</strong> ayırabilir!
     reward_painter_double:
-        title: Çİfte Boyama
+        title: Çifte Boyama
         desc: <strong>Boyayıcının<strong> başka bir türünü açtın - Sıradan bir boyayıcı
             gibi çalışır, fakat <strong>iki şekli birden</strong> boyayarak iki
             boya yerine sadece bir boya harcar!
@@ -665,13 +640,13 @@ storyRewards:
             yapıştırabilmek için <strong>taslak şekilleri</strong> üretmelisin!
             (Az önce teslim ettiğin şekiller).
     no_reward:
-        title: Sonrakİ Sevİye
+        title: Sonraki Seviye
         desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu
             anki fabrikalarını yok etmemeni öneririm - Daha sonra
             <strong>Geliştirmeleri açmak için </strong> <strong>bütün
             hepsine</strong> ihtiyacın olacak!"
     no_reward_freeplay:
-        title: Sonrakİ Sevİye
+        title: Sonraki Seviye
         desc: Tebrikler!
     reward_freeplay:
         title: Özgür Mod
@@ -701,7 +676,7 @@ storyRewards:
             hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
             çok kullanışlı olacak.
     reward_rotater_180:
-        title: Dödürücü (180 derece)
+        title: Döndürücü (180 derece)
         desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri 180 derece
             döndürür (Süpriz! :D)
     reward_display:
@@ -712,10 +687,10 @@ storyRewards:
             dene!"
     reward_constant_signal:
         title: Sabit Sinyal
-        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın!
-            Bu yapı örneğin <strong>eşya filtrelerine</strong> bağlanabilir.<br><br>
-            Sabit sinyal <strong>şekil</strong>, <strong>renk</strong> veya
-            <strong>ikili değer</strong> (1 veya 0)
+        desc: Kablo katmanında inşa edilebilen <strong>sabit sinyal'i</strong> açtın! Bu
+            yapı örneğin <strong>eşya filtrelerine</strong>
+            bağlanabilir.<br><br> Sabit sinyal <strong>şekil</strong>,
+            <strong>renk</strong> veya <strong>ikili değer</strong> (1 veya 0)
             gönderelebilir.
     reward_logic_gates:
         title: Mantık Kapıları
@@ -736,13 +711,13 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce <strong>Kablo Katmanını</strong> açtın: Normal oyunun bulunduğu
-            katmanın üzerinde ayrı bir katmandır ve bir sürü yeni özelliği
-            vardır!<br><br> Başlangıç olarak senin için <strong>Dörtlü
-            Boyayıcıyı</strong> açıyorum. - Kablo katmanında boyamak için
-            istediğin hatları bağla! <br><br> Kablo katmanına geçiş yapmak için
-            <strong>E tuşunu </strong> kullan. <br><br> Not: İpuçlarını kablo eğitimlerini
-            görmek için ayarlarda aktifleştirmeyi unutma."
+        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
+            layer on top of the regular layer and introduces a lot of new
+            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
+            Painter</strong> - Connect the slots you would like to paint with on
+            the wires layer!<br><br> To switch to the wires layer, press
+            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
+            the settings to activate the wires tutorial!"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -754,17 +729,17 @@ settings:
     categories:
         general: Genel
         userInterface: Kullanıcı Arayüzü
-        advanced: Gelİşmİş
+        advanced: Gelişmİş
         performance: Performans
     versionBadges:
         dev: Geliştirme
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
-    rangeSliderPercentage: <amount> %
+    rangeSliderPercentage: "% <amount>"
     labels:
         uiScale:
-            title: Arayüz Ölçeğİ
+            title: Arayüz Ölçeği
             description: Kullanıcı arayüzünün boyutunu değiştirir. Arayüz cihazınızın
                 çözünürlüğüne göre ölçeklendirilir, ama ölçeğin miktarı burada
                 ayarlanabilir.
@@ -775,7 +750,7 @@ settings:
                 large: Büyük
                 huge: Çok Büyük
         scrollWheelSensitivity:
-            title: Yakınlaştırma Hassasİyeti
+            title: Yakınlaştırma Hassasiyeti
             description: Yakınlaştırmanın ne kadar hassas olduğunu ayarlar (Fare tekerleği
                 veya dokunmatik farketmez).
             sensitivity:
@@ -785,18 +760,18 @@ settings:
                 fast: Hızlı
                 super_fast: Çok Hızlı
         language:
-            title: Dİl
-            description: Dili değiştirir. Bütün çevirmeler kullanıcı katkılarıyla
+            title: Dil
+            description: Dili değiştirir. Tüm çeviriler kullanıcı katkılarıyla
                 oluşturulmuştur ve tam olmayabilir!
         fullscreen:
             title: Tam Ekran
             description: En iyi oyun tecrübesi için oyunun tam ekranda oynanması tavsiye
                 edilir. Sadece tam sürümde mevcut.
         soundsMuted:
-            title: Ses Efektlerİnİ Sustur
+            title: Ses Efektlerini Sustur
             description: Aktif edildiğinde bütün ses efektleri susturulur.
         musicMuted:
-            title: Müzİğİ Sustur
+            title: Müziği Sustur
             description: Aktif edildiğinde bütün müzikler susturulur.
         theme:
             title: Renk Teması
@@ -805,7 +780,7 @@ settings:
                 dark: Karanlık
                 light: Aydınlık
         refreshRate:
-            title: Sİmülasyon Hızı
+            title: Simülasyon Hızı
             description: Eğer mönitörünüzün yenileme hızı (Hz) yüksekse oyunun akıcı bir
                 şekilde çalışması için yenileme hızını buradan değiştirin. Eğer
                 bilgisayarınız yavaşsa bu ayar oyunun gösterdiği kare hızını
@@ -817,7 +792,7 @@ settings:
                 özellik SHIFT tuşuna sürekli basılı tutup yapı yerleştirmeyle
                 aynıdır.
         offerHints:
-            title: İpuçları ve Eğİtİmler
+            title: İpuçları ve Eğitimler
             description: İpuçları ve eğitimleri açar. Ayrıca bazı arayüz elemanlarını oyunun
                 daha kolay öğrenilebilmesi için gizler.
         enableTunnelSmartplace:
@@ -827,11 +802,11 @@ settings:
                 tünellerin çekilerek inşa edilmesi ve aşırı uzağa yerleştirilen
                 tünel uçlarının silinmesini de sağlar.
         vignette:
-            title: Gölgelendİrme
+            title: Gölgelendirme
             description: Gölgelendirmeyi açar. Gölgelendirme ekranın köşelerini karartır ve
                 yazıları daha kolay okuyabilmeinizi sağlar.
         autosaveInterval:
-            title: Otomatİk Kayıt Sıklığı
+            title: Otomatik Kayıt Sıklığı
             description: Oyunun hangi sıklıkta kaydedileceğini belirler. Ayrıca otomatik
                 kayıt tamamen kapatılabilir.
             intervals:
@@ -844,9 +819,9 @@ settings:
         compactBuildingInfo:
             title: Derlİ Toplu Yapı Bİlgİlerİ
             description: Yapıların bilgi kutularını sadece oranlarını göstecek şekilde
-                kısaltır. Aksi taktirde yapının açıklaması ve resmi gösterilir.
+                kısaltır. Aksi takdirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
-            title: Kes/Sİl Uyarılarını Devredışı Bırak
+            title: Kes/Sil Uyarılarını Devre dışı Bırak
             description: 100 birimden fazla parçayı kesme/silme işlemlerinde beliren uyarı
                 pencerelerini devredışı bırakır.
         enableColorBlindHelper:
@@ -877,23 +852,23 @@ settings:
         lowQualityMapResources:
             title: Düşük Kalİte Harİta Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
-                kalitesinin sadeleştirir. Kaynaklar daha açık görüneceğinde bu
-                özelliği bir dene!
+                kalitesini sadeleştirir.
+                Hatta daha net bir görüntü sağlar, bu yüzden bir dene!
         disableTileGrid:
-            title: Harİta Çİzgİlerİnİ Gizle
+            title: Harİta Çİzgİlerİnİ Gİzle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
-                Aynı zamanda oyunun daha açık görünmesini sağlar!
+                Aynı zamanda oyunun daha net görünmesini sağlar!
         clearCursorOnDeleteWhilePlacing:
             title: Sağ Tık İnşa İptalİ
             description: Varsayılan olarak açık. Özellik açıksa, inşa modundayken sağ yık
                 yapıldığında inşa modundan çıkar. Eğer özellik kapalıysa, inşa
                 modundan çıkmadan var olan yapıları sağ tık ile silebilirsiniz.
         lowQualityTextures:
-            title: Düşük Kalİte Görüntü (Çirkin)
+            title: Düşük Kalİte Görüntü (Çİrkİn)
             description: Performans için düşük kalite görüntü kullanır. Bu oyunun daha
                 çirkin görünmesine sebep olur!
         displayChunkBorders:
-            title: Harİta Alan Sınırlarını Göster
+            title: Harita Alan Sınırlarını Göster
             description: Oyun 16'ya 16 alanlardan oluşur. Bu seçenek aktif olduğunda alan
                 sınırları görüntülenir.
         pickMinerOnPatch:
@@ -901,7 +876,7 @@ settings:
             description: Varsayılan olarak açık. Eğer pipet bir kaynağın üzerinde
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
-            title: Sadeleştİrİlmİş Bantlar (Çirkin)
+            title: Sadeleştİrİlmİş Bantlar (Çİrkİn)
             description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse
                 görüntülenmez. Eğer gerçekten performansa ihtiyacınız yoksa bu
                 ayarla oynamanız tavsiye edilmez.
@@ -909,7 +884,7 @@ settings:
             title: Fare Kaydırarak Hareket Etme
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
-            title: Farenin Konumuna Yakınlaştırma
+            title: Farenİn Konumuna Yakınlaştırma
             description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin
                 bulunduğu yere doğru olur. Etkinleştirilmezse yakınlaştırma
                 ekranın ortasına doğru olur.
@@ -923,11 +898,11 @@ keybindings:
         seçeneklerini kullanmanızı sağlarlar."
     resetKeybindings: Tuş Atamalarını Sıfırla
     categoryLabels:
-        general: Uygulama
+        general: Genel
         ingame: Oyun
         navigation: Hareket
         placement: Yerleştİrme
-        massSelect: Çoklu Seçim
+        massSelect: Çoklu Seçİm
         buildings: Yapı Kısayolları
         placementModifiers: Yerleştİrme Özellİklerİ
     mappings:
@@ -947,8 +922,8 @@ keybindings:
         toggleFPSInfo: FPS ve Debug Bilgisini Aç/Kapat
         belt: Taşıma Bandı
         underground_belt: Tünel
-        miner: Üretİcİ
-        cutter: Kesİcİ
+        miner: Üretici
+        cutter: Kesici
         rotater: Döndürücü
         stacker: Kaynaştırıcı
         mixer: Renk Karıştırıcısı
@@ -981,7 +956,7 @@ keybindings:
         logic_gate: Mantık Kapısı
         lever: Anahtar (normal)
         filter: Filtre
-        wire_tunnel: Kablo Köprüsü
+        wire_tunnel: Kablo Tüneli
         display: Ekran
         reader: Bant Okuyucu
         virtual_processor: Sanal Kesici
@@ -990,6 +965,10 @@ keybindings:
         comparator: Karşılaştırıcı
         item_producer: Eşya Üretici (Kum Kutusu)
         copyWireValue: "Kablo: Fare altındaki değeri kopyala"
+        rotateToUp: "Yukarı Döndür"
+        rotateToDown: "Aşağı Döndür"
+        rotateToRight: "Sağa Döndür"
+        rotateToLeft: "Sola Döndür"
 about:
     title: Oyun Hakkında
     body: >-

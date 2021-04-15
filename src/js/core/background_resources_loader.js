@@ -13,7 +13,7 @@ import { cachebust } from "./cachebust";
 const logger = createLogger("background_loader");
 
 const essentialMainMenuSprites = [
-    "logo.png",
+    G_CHINA_VERSION ? "logo_cn.png" : "logo.png",
     ...G_ALL_UI_IMAGES.filter(src => src.startsWith("ui/") && src.indexOf(".gif") < 0),
 ];
 const essentialMainMenuSounds = [

@@ -1,0 +1,12 @@
+"DepotBuildConfig"
+{
+	"DepotID" "1318695"
+	"contentroot" "C:\work\shapez.io\tmp_standalone_files_china\shapez.io-standalonechina-linux-x64"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"DepotPath" "."
+		"recursive" "1"
+	}
+	"FileExclusion" "*.pdb"
+}

@@ -14,39 +14,14 @@ steamPage:
         Mens du kun produserer former i starten må du fargelegge de senere - for å gjøre dette må du hente ut og blande farger!
 
         Ved å kjøpe spillet på Steam får du tilgang til fullversjonen, men du kan også spille en demo på shapez.io først og bestemme deg senere!
-    title_advantages: Fordeler med fullversjonen
-    advantages:
-        - <b>12 Nye nivåer</b> til totalt 26 nivåer
-        - <b>18 Nye byggninger</b> For en helautomatisert fabrikk!
-        - <b>20 Oppgraderingsnivåer</b> for mange timer med moro!
-        - <b>Kabeloppdateringen</b> For en helt ny dimensjon!
-        - <b>Mørkt tema</b>!
-        - Uendelige lagringsplasser
-        - Uendelige markører
-        - Støtt meg! ❤️
-    title_future: Planlagt innhold
-    planned:
-        - Blåkopibibliotek (Eksklusivt til fullversjonen)
-        - Steam-medaljer
-        - Puslemodus
-        - Minikart
-        - Mods
-        - Sandkassemodus
-        - ... og masse mer!
-    title_open_source: Dette spillet har åpen kildekode!
-    title_links: Lenker
-    links:
-        discord: Offisiell Discord
-        roadmap: Veikart
-        subreddit: Subreddit
-        source_code: Kildekode (GitHub)
-        translate: Hjelp til med å oversette
-    text_open_source: >-
-        Alle kan bidra, jeg er aktivt involvert i sammfunnet og prøver å se
-        gjennom alle forslagene og tar tilbakemeldinger i betraktning  der det
-        er mulig.
-
-        Sjekk også mitt Trello-brett for hele veikartet!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Laster
     error: Feil
@@ -361,9 +336,6 @@ ingame:
             buildings:
                 title: 18 New Buildings
                 desc: Fully automate your factory!
-            savegames:
-                title: ∞ Savegames
-                desc: As many as your heart desires!
             upgrades:
                 title: ∞ Upgrade Tiers
                 desc: This demo version has only 5!
@@ -379,6 +351,9 @@ ingame:
             support:
                 title: Support me
                 desc: I develop it in my spare time!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Belter, Distributører & Tunneler
@@ -991,6 +966,10 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Om dette spillet
     body: >-

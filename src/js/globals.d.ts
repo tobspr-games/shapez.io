@@ -19,6 +19,8 @@ declare const G_BUILD_VERSION: string;
 declare const G_ALL_UI_IMAGES: Array<string>;
 declare const G_IS_RELEASE: boolean;
 
+declare const G_CHINA_VERSION: boolean;
+
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;
