@@ -8,38 +8,14 @@ steamPage:
         심지어 그것만으로는 충분하지 않을 겁니다. 수요는 기하급수적으로 늘어나게 될 것이고, 더욱 복잡한 도형을 더욱 많이 생산하여야 하므로, 유일하게 도움이 되는 것은 끊임없이 확장을 하는 것입니다! 처음에는 단순한 도형만을 만들지만, 나중에는 색소를 추출하고 혼합하여 도형에 색칠을 해야 합니다!
 
         Steam에서 게임을 구매하여 정식 버전의 콘텐츠를 사용하실 수 있지만, 먼저 Shapez.io의 체험판 버전을 플레이해보시고 구매를 고려하셔도 됩니다!
-    title_advantages: 정식 버전의 장점
-    advantages:
-        - <b>새로운 12 레벨</b>의 추가로 총 26레벨까지
-        - 완벽한 자동화를 위한 <b>새로운 18개의 건물</b>!
-        - <b>20 티어 업그레이드</b>로 오랫동안 즐겨보세요!
-        - <b>전선 업데이트</b>로 완전히 새로운 차원을 접해보세요!
-        - <b>다크 모드</b>!
-        - 무한한 세이브 파일
-        - 무한한 마커
-        - 저를 지원해주세요! ❤️
-    title_future: 계획된 콘텐츠
-    planned:
-        - 청사진 라이브러리
-        - Steam 도전과제
-        - 퍼즐 모드
-        - 미니맵
-        - 모드
-        - 샌드박스 모드
-        - ... 그리고 더 다양한 것까지!
-    title_open_source: 이 게임은 오픈 소스입니다!
-    title_links: 링크
-    links:
-        discord: 공식 Discord
-        roadmap: 로드맵
-        subreddit: Subreddit
-        source_code: 소스 코드 (GitHub)
-        translate: 번역에 도움주세요
-    text_open_source: >-
-        누구나 번역에 기여하실 수 있으며, 저는 커뮤니티에서 적극적으로 참여하여 모든 제안을 검토하고 가능한 모든 피드백도 고려하고자
-        합니다.
-
-        모든 로드맵을 보시려면 저의 trello 보드를 참고해주세요.
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: 불러오는 중
     error: 오류
@@ -182,13 +158,11 @@ dialogs:
         title: 세이브 파일 이름 설정
         desc: 여기에서 세이브 파일의 이름을 바꿀 수 있습니다.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 보시겠습니까?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: 활성화된 튜토리얼
+        desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만 제공될 것입니다. 보시겠습니까?
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -266,7 +240,7 @@ ingame:
         waypoints: 마커
         hub: 허브
         description: 마커를 좌클릭하여 그곳으로 이동하고, 우클릭으로 삭제할 수 있습니다.<br><br>마커를 배치하기 위해
-            <keybinding> 키로 지금 있는 위치에 혹은 <strong>우클릭</strong>하여 원하는 위치에 배치할 수
+            <keybinding> 키로 지금 있는 위치에, 또는 <strong>우클릭</strong>하여 원하는 위치에 배치할 수
             있습니다.
         creationSuccessNotification: 마커가 성공적으로 생성되었습니다.
     interactiveTutorial:
@@ -282,24 +256,19 @@ ingame:
             2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
                 halves!<br><br> PS: The cutter always cuts from <strong>top to
                 bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
+            2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
+                <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을 제거하세요.
+            2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong> 이상
+                배치해보세요!<br><br> 추신: <strong>상단 숫자 단축키 (0~9)</strong>를 사용하여 건물을
+                빠르게 선택할 수 있습니다!"
+            3_1_rectangles: "이제 사각형 도형을 추출해 볼까요! <strong>추출기 네 개를 배치</strong>하고 허브와
+                연결하세요.<br><br> 추신: 긴 벨트 한 줄을 간단히 만들려면 <strong>SHIFT 키</strong>를
+                누른 채 드래그하세요!"
+            21_1_place_quad_painter: <strong>4단 색칠기</strong>를 배치하여 <strong>흰색</strong>과
+                <strong>빨간색</strong>이 칠해진 <strong>원형 도형</strong>을 만들어보세요!
+            21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어 로 전환하세요!<br><br> 그 후 색칠기의
+                <strong>네 입력 부분</strong>을 모두 케이블로 연결하세요!
+            21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로 연결하세요!
             21_4_press_button: "Press the switch to make it <strong>emit a truthy
                 signal</strong> and thus activate the painter.<br><br> PS: You
                 don't have to connect all inputs! Try wiring only two."
@@ -314,13 +283,13 @@ ingame:
         black: 검은색
         uncolored: 회색
     shapeViewer:
-        title: 층
+        title: 레이어
         empty: 비었음
         copyKey: 키 복사하기
     connectedMiners:
         one_miner: 추출기 1 개
         n_miners: 추출기 <amount>개
-        limited_items: <max_throughput>개로 제한됨
+        limited_items: <max_throughput>까지가 한계임
     watermark:
         title: 체험판 버전
         desc: 정식 버전의 장점을 보려면 여기를 클릭하세요!
@@ -335,9 +304,6 @@ ingame:
             buildings:
                 title: 새로운 18개의 건축물
                 desc: 완벽한 자동화된 공장을 위한 건물들입니다!
-            savegames:
-                title: 무한한 세이브 파일
-                desc: 당신이 내키는대로 마음껏 할 수 있습니다!
             upgrades:
                 title: 20 티어까지 확장된 업그레이드
                 desc: 체험판에서는 5 티어까지만 사용할 수 있습니다!
@@ -353,6 +319,9 @@ ingame:
             support:
                 title: 저를 지원해주세요
                 desc: 저는 여가 시간에 게임을 개발합니다!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: 벨트, 밸런서, 터널
@@ -439,10 +408,10 @@ buildings:
     wire:
         default:
             name: 전선
-            description: 아이템, 색상, 또는 불 값 (0 혹은 1)이 될 수 있는 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
+            description: 아이템, 색상, 또는 불 값 (0 또는 1) 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
         second:
             name: 전선
-            description: 아이템, 색상, 또는 불 값 (0 혹은 1)이 될 수 있는 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
+            description: 아이템, 색상, 또는 불 값 (0 또는 1) 신호를 전송합니다. 색이 다른 전선은 서로 연결되지 않습니다.
     balancer:
         default:
             name: 밸런서
@@ -462,19 +431,19 @@ buildings:
     storage:
         default:
             name: 저장고
-            description: 아이템을 지정된 용량까지 저장합니다. 왼쪽 출력이 가장 우선되므로 오버플로 회로로 사용할 수 있습니다.
+            description: 아이템을 지정된 용량까지 저장합니다. 왼쪽 출력이 가장 우선되므로 오버플로로 사용할 수 있습니다.
     wire_tunnel:
         default:
-            name: 전선 교차 장치
+            name: 전선 교차기
             description: 두 전선이 서로 연결되지 않고 교차할 수 있도록 합니다.
     constant_signal:
         default:
-            name: 일정 신호
-            description: 모양, 색상, 또는 불 값 (1 혹은 0)이 될 수 있는 상수 신호를 방출합니다.
+            name: 일정 신호기
+            description: 모양, 색상, 또는 불 값 (1 또는 0) 상수 신호를 방출합니다.
     lever:
         default:
             name: 스위치
-            description: 전선 레이어에서 불 값 (1 또는 0)를 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데
+            description: 전선 레이어에서 불 값 (1 또는 0)을 방출하도록 전환할 수 있으며, 그 후 아이템 선별같은 구성 요소를 제어하는 데
                 사용될 수 있습니다.
     logic_gate:
         default:
@@ -596,10 +565,10 @@ storyRewards:
             출력이 우선되므로 <strong>오버플로 회로</strong>로도 활용될 수 있습니다!
     reward_freeplay:
         title: 자유플레이
-        desc: 드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이는 즉 앞으로 도형이
-            <strong>무작위</strong>로 생성됩니다.<br><br> 이제부터 허브는 <strong>처리량</strong>이
+        desc: 드디어 해내셨군요! <strong>자유플레이 모드</strong>가 잠금 해제되었습니다! 이제 앞으로 도형이
+            <strong>무작위</strong>로 생성됩니다.<br><br> 또한 허브는 <strong>처리량</strong>이
             필요하므로 요청하는 도형을 자동으로 전달하는 공장을 구축하는 것이 좋습니다.<br><br> 허브는 요청된 도형을 전선
-            레이어에서 출력하므로 이를 분석하고 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
+            레이어를 통해 내보내므로 이를 분석하는 구조를 기반으로 하여 공장을 자동으로 구성하기만 하면 됩니다.
     reward_blueprints:
         title: 청사진
         desc: 이제 공장의 일부를 <strong>복사하고 붙여넣는 기능</strong>을 사용할 수 있습니다! 영역을 선택 (CTRL 키를 누른 채
@@ -634,10 +603,11 @@ storyRewards:
         desc: "<strong>디스플레이</strong>가 잠금 해제되었습니다! 이제 신호를 전선 레이어에 연결해 시각화할 수
             있습니다.<br><br> 추신: 벨트 판독기와 저장고가 마지막으로 읽은 아이템을 출력했나요? 디스플레이로 한번 봐보세요!"
     reward_constant_signal:
-        title: 일정 신호
-        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호</strong>가 잠금 해제되었습니다! 간단한 예시로, <strong>아이템
-            선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호는 <strong>도형</strong>,
-            <strong>색상</strong>, 혹은 <strong>불 값</strong> (1 혹은 0)을 출력할 수 있습니다.
+        title: 일정 신호기
+        desc: 전선 레이어에서 구축할 수 있는 <strong>일정 신호기</strong>가 잠금 해제되었습니다! 간단한 예시로,
+            <strong>아이템 선별</strong>에 연결하여 사용하는 데 유용합니다.<br><br> 일정 신호기는
+            <strong>도형</strong>, <strong>색상</strong>, 또는 <strong>불 값</strong> (1
+            또는 0)을 출력할 수 있습니다.
     reward_logic_gates:
         title: 논리 회로
         desc: <strong>논리 회로</strong>가 잠금 해제되었습니다! 굳이 흥분할 필요는 없지만, 진짜 멋진 기술입니다!<br><br>
@@ -866,11 +836,11 @@ keybindings:
         wire: 전선
         balancer: 밸런서
         storage: 저장고
-        constant_signal: 일정 신호
+        constant_signal: 일정 신호기
         logic_gate: 논리 회로
         lever: 레버
         filter: 선별기
-        wire_tunnel: 전선 교차 장치
+        wire_tunnel: 전선 교차기
         display: 디스플레이
         reader: 벨트 판독기
         virtual_processor: 가상 절단기
@@ -879,6 +849,10 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: 게임 정보
     body: >-

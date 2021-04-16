@@ -17,7 +17,9 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ConstantSignalComponent]);
 
-        this.root.signals.entityManuallyPlaced.add(this.querySigalValue, this);
+        this.root.signals.entityManuallyPlaced.add(entity =>
+            this.editConstantSignal(entity, { deleteOnCancel: true })
+        );
     }
 
     update() {
@@ -33,8 +35,10 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
     /**
      * Asks the entity to enter a valid signal code
      * @param {Entity} entity
+     * @param {object} param0
+     * @param {boolean=} param0.deleteOnCancel
      */
-    querySigalValue(entity) {
+    editConstantSignal(entity, { deleteOnCancel = true }) {
         if (!entity.components.ConstantSignal) {
             return;
         }
@@ -110,26 +114,28 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         dialog.valueChosen.add(closeHandler);
 
         // When cancelled, destroy the entity again
-        dialog.buttonSignals.cancel.add(() => {
-            if (!this.root || !this.root.entityMgr) {
-                // Game got stopped
-                return;
-            }
+        if (deleteOnCancel) {
+            dialog.buttonSignals.cancel.add(() => {
+                if (!this.root || !this.root.entityMgr) {
+                    // Game got stopped
+                    return;
+                }
 
-            const entityRef = this.root.entityMgr.findByUid(uid, false);
-            if (!entityRef) {
-                // outdated
-                return;
-            }
+                const entityRef = this.root.entityMgr.findByUid(uid, false);
+                if (!entityRef) {
+                    // outdated
+                    return;
+                }
 
-            const constantComp = entityRef.components.ConstantSignal;
-            if (!constantComp) {
-                // no longer interesting
-                return;
-            }
+                const constantComp = entityRef.components.ConstantSignal;
+                if (!constantComp) {
+                    // no longer interesting
+                    return;
+                }
 
-            this.root.logic.tryDeleteBuilding(entityRef);
-        });
+                this.root.logic.tryDeleteBuilding(entityRef);
+            });
+        }
     }
 
     /**

@@ -100,7 +100,7 @@ export class HUDShapeStatisticsHandle {
             case enumAnalyticsDataSource.delivered:
             case enumAnalyticsDataSource.produced: {
                 let rate =
-                    this.root.productionAnalytics.getCurrentShapeRate(dataSource, this.definition) /
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(dataSource, this.definition) /
                     globalConfig.analyticsSliceDurationSeconds;
 
                 this.counter.innerText = T.ingame.statistics.shapesDisplayUnits[unit].replace(

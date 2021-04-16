@@ -1,6 +1,7 @@
 import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { Loader } from "../../../core/loader";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput } from "../../../core/modal_dialog_forms";
@@ -14,8 +15,10 @@ import {
     removeAllChildren,
 } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
+import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { BaseItem } from "../../base_item";
+import { MetaHubBuilding } from "../../buildings/hub";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { ShapeDefinition } from "../../shape_definition";
@@ -26,7 +29,8 @@ import { enumNotificationType } from "./notifications";
 /** @typedef {{
  *   label: string | null,
  *   center: { x: number, y: number },
- *   zoomLevel: number
+ *   zoomLevel: number,
+ *   layer: Layer,
  * }} Waypoint */
 
 /**
@@ -88,7 +92,12 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     initialize() {
         // Cache the sprite for the waypoints
-        this.waypointSprite = Loader.getSprite("sprites/misc/waypoint.png");
+
+        this.waypointSprites = {
+            regular: Loader.getSprite("sprites/misc/waypoint.png"),
+            wires: Loader.getSprite("sprites/misc/waypoint_wires.png"),
+        };
+
         this.directionIndicatorSprite = Loader.getSprite("sprites/misc/hub_direction_indicator.png");
 
         /** @type {Array<Waypoint>}
@@ -98,6 +107,7 @@ export class HUDWaypoints extends BaseHUDPart {
                 label: null,
                 center: { x: 0, y: 0 },
                 zoomLevel: 3,
+                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
             },
         ];
 
@@ -187,7 +197,10 @@ export class HUDWaypoints extends BaseHUDPart {
             const waypoint = this.waypoints[i];
             const label = this.getWaypointLabel(waypoint);
 
-            const element = makeDiv(this.waypointsListElement, null, ["waypoint"]);
+            const element = makeDiv(this.waypointsListElement, null, [
+                "waypoint",
+                "layer--" + waypoint.layer,
+            ]);
 
             if (ShapeDefinition.isValidShortKey(label)) {
                 const canvas = this.getWaypointCanvas(waypoint);
@@ -228,6 +241,7 @@ export class HUDWaypoints extends BaseHUDPart {
      * @param {Waypoint} waypoint
      */
     moveToWaypoint(waypoint) {
+        this.root.currentLayer = waypoint.layer;
         this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
         this.root.camera.setDesiredZoom(waypoint.zoomLevel);
     }
@@ -326,6 +340,7 @@ export class HUDWaypoints extends BaseHUDPart {
             label,
             center: { x: position.x, y: position.y },
             zoomLevel: this.root.camera.zoomLevel,
+            layer: this.root.currentLayer,
         });
 
         this.sortWaypoints();
@@ -334,6 +349,10 @@ export class HUDWaypoints extends BaseHUDPart {
         this.root.hud.signals.notification.dispatch(
             T.ingame.waypoints.creationSuccessNotification,
             enumNotificationType.success
+        );
+        this.root.signals.achievementCheck.dispatch(
+            ACHIEVEMENTS.mapMarkers15,
+            this.waypoints.length - 1 // Disregard HUB
         );
 
         // Re-render the list and thus add it
@@ -537,7 +556,7 @@ export class HUDWaypoints extends BaseHUDPart {
         const iconOpacity = 1 - this.currentCompassOpacity;
         if (iconOpacity > 0.01) {
             context.globalAlpha = iconOpacity;
-            this.waypointSprite.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
+            this.waypointSprites.regular.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
             context.globalAlpha = 1;
         }
     }
@@ -616,11 +635,11 @@ export class HUDWaypoints extends BaseHUDPart {
             }
 
             // Render the small icon on the left
-            this.waypointSprite.drawCentered(
+            this.waypointSprites[waypoint.layer].drawCentered(
                 parameters.context,
                 bounds.x + contentPaddingX,
                 bounds.y + bounds.h / 2,
-                bounds.h * 0.7
+                bounds.h * 0.6
             );
         }
 

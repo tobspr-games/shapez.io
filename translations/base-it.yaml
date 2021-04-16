@@ -14,39 +14,14 @@ steamPage:
         All'inizio lavorerai solo con le forme, ma in seguito dovrai colorarle; a questo scopo dovrai estrarre e mescolare i colori!
 
         Comprare il gioco su Steam ti garantirà l'accesso alla versone completa, ma puoi anche giocare una demo su shapez.io e decidere in seguito!
-    title_advantages: Vantaggi della versione completa
-    advantages:
-        - <b>12 nuovi livelli</b> per un totale di 26 livelli
-        - <b>18 nuovi edifici</b> per una fabbrica completamente automatizzata!
-        - <b>20 gradi di miglioramenti</b> per molte ore di divertimento!
-        - <b>L'aggiornamento dei Cavi</b> per una dimensione completamente nuova!
-        - <b>Modalità scura</b>!
-        - Salvataggi illimitati
-        - Etichette illimitate
-        - Mi sostieni! ❤️
-    title_future: Contenuti pianificati
-    planned:
-        - Archivio dei progetti (esclusiva della versione completa)
-        - Achievement di steam
-        - Modalità puzzle
-        - Minimappa
-        - Mod
-        - Modalità sandbox
-        - ... e molto altro!
-    title_open_source: Questo gioco è open source!
-    title_links: Link
-    links:
-        discord: Server Discord ufficiale
-        roadmap: Tabella di marcia
-        subreddit: Reddit
-        source_code: Codice sorgente (GitHub)
-        translate: Aiutaci a tradurre
-    text_open_source: >-
-        Chiunque può contribuire, partecipo attivamente nella community e cerco
-        di leggere tutti i suggerimenti e di prendere in considerazione tutti i
-        feedback, quando possibile.
-
-        Controlla la mia pagina di trello per la tabella di marcia completa!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Caricamento
     error: Errore
@@ -207,13 +182,13 @@ dialogs:
         title: Rinomina salvataggio.
         desc: Qui puoi cambiare il nome del salvataggio.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutorial Disponibile
+        desc: C'è un video tutorial disponibile per questo livello! Vorresti dargli
+            un'occhiata?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutorial Disponibile
+        desc: C'è un video tutorial per questo livello, ma è disponibile solo in
+            Inglese. Vorresti dargli un'occhiata?
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -309,30 +284,33 @@ ingame:
                 velocemente.<br><br>Suggerimento: Tieni premuto
                 <strong>MAIUSC</strong> per piazzare estrattori multipli, e usa
                 <strong>R</strong> per ruotarli."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Ora posiziona un <strong>Taglierino</strong> per tagliare i
+                cerchi in due metà!<br><br> PS: Il taglierino taglia sempre
+                <strong>dall'alto verso il basso</strong> indipendentemente dal
+                suo orientamento."
+            2_2_place_trash: Il taglierino può <strong>intasarsi e
+                bloccarsi</strong>!<br><br> Usa un <strong>cestino</strong> per
+                sbarazzarti delgli scarti (!) inutilizzati.
+            2_3_more_cutters: "Ben fatto! Ora posiziona <strong>altri 2 taglierini</strong>
+                per velocizzare questo lento processo!<br><br> PS: Usa i numeri
+                <strong>da 0 a 9 </strong> per selezionare gli edifici più in
+                fretta!"
+            3_1_rectangles: "Ora estraiamo qualche rettangolo! <strong>Costruisci 4
+                estrattori</strong> e connettili alla HUB.<br><br> PS: Tieni
+                premuto <strong>SHIFT</strong> mentre trascini un nastro per
+                attivare il pianificatore di nastri!"
+            21_1_place_quad_painter: Posiziona il <strong>verniciatore quadruplo</strong> e
+                prendi dei <strong>cerchi</strong> e i colori
+                <strong>bianco</strong> <strong>rosso</strong>!
+            21_2_switch_to_wires: Per passare al livello elettrico basta premere
+                <strong>E</strong>!<br><br> Poi <strong>connetti tutti e quattro
+                gli input</strong> del verniciatore con i cavi!
+            21_3_place_button: Fantastico! Ora posiziona un <strong>Interruttore</strong> e
+                connettilo con i cavi!
+            21_4_press_button: "Premi l'interruttore per fargli <strong>emettere un segnale
+                di verità </strong> e fargli quindi attivare il
+                vernciatore.<br><br> PS: Non c'è bisogno che tu connetta tutti
+                gli imput! Prova a collegarne solo due."
     colors:
         red: Rosso
         green: Verde
@@ -365,11 +343,8 @@ ingame:
             buildings:
                 title: 18 nuovi edifici
                 desc: Automatizza completamente la tua fabbrica!
-            savegames:
-                title: ∞ salvataggi
-                desc: Quanti ne desideri!
             upgrades:
-                title: 20 gradi di miglioramenti
+                title: ∞ gradi di miglioramenti
                 desc: Questa demo ne ha solo 5!
             markers:
                 title: ∞ etichette
@@ -383,6 +358,9 @@ ingame:
             support:
                 title: Sostienimi
                 desc: Lo sviluppo nel tempo libero!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Nastri, distribuzione e tunnel
@@ -481,7 +459,7 @@ buildings:
         second:
             name: Cavo
             description: Trasmette segnali, che possono essere oggetti, colori o booleani (1
-                / 0). Cavi di colore diverso non si connettono.
+                / 0). I cavi di colore diverso non si connettono.
     balancer:
         default:
             name: Bilanciatore
@@ -611,7 +589,7 @@ storyRewards:
             gradi in senso orario.
     reward_painter:
         title: Verniciatura
-        desc: "Il <strong>verniciatore</strong> è stato sbloccato! Estrai dalle vene
+        desc: "Il <strong>verniciatore</strong> è stato sbloccato! Estrai dai giacimenti
             colorate (esattamente come fai con le forme) e combina il colore con
             una forma nella veniciatrice per colorarla!<br><br>PS: Se sei
             daltonico, c'è la <strong>modalità daltonici </strong> nelle
@@ -686,7 +664,7 @@ storyRewards:
             per <strong>sbloccare i miglioramenti</strong>!"
     no_reward_freeplay:
         title: Prossimo livello
-        desc: Congratulazioni! Ci sono altri contenuti in prgramma per la versione
+        desc: Congratulazioni! Ci sono altri contenuti in programma per la versione
             completa!
     reward_stacker:
         title: Impilatrice
@@ -696,9 +674,9 @@ storyRewards:
             destro è <strong>impilato sopra</strong> il sinistro!
     reward_balancer:
         title: Bilanciatore
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Il <strong>bilanciatore</strong> multifunzione è stato sbloccato - Può
+            essere usato per costruire fabbriche più grandi <strong>unendo e
+            dividendo gli oggetti</strong> su diversi nastri!
     reward_merger:
         title: Aggregatore compatto
         desc: Hai sbloccato un <strong>aggregatore</strong>, variante del
@@ -747,13 +725,14 @@ storyRewards:
             divertirti!
     reward_wires_painter_and_levers:
         title: Cavi e Verniciatrice quadrupla
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Hai appena sbloccato il <strong>Livello Elettrico</strong>: è un livello
+            separato dal livelo normale e introduce molte altre meccaniche di
+            gioco!<br><br> Per il momento ti ho sbloccato il
+            <strong>Verniciatore Quadruplo</strong> - Connetti con il piano
+            elettrico gli spazi che vorresti colorare!<br><br> Per passare al
+            livello elettrico ti basta premere <strong>E</strong>. <br><br> PS:
+            <strong>Attiva gli aiuti</strong> nelle impostazioni per attivare il
+            tutorial dei cavi!"
     reward_filter:
         title: Filtro oggetti
         desc: Hai sbloccato il <strong>filtro oggetti</strong>! Smisterà gli oggetti
@@ -905,7 +884,7 @@ settings:
                 edifici.
         lowQualityTextures:
             title: Texture in bassa qualità (Brutto)
-            description: Usa texture a bassa qualità per migliorare le prestazioni. Quesro
+            description: Usa texture a bassa qualità per migliorare le prestazioni. Questo
                 renderà il gioco molto brutto!
         displayChunkBorders:
             title: Mostra confini dei Chunk
@@ -914,7 +893,7 @@ settings:
         pickMinerOnPatch:
             title: Scegli estrattore sui giacimenti di risorse
             description: Attivato di default, seleziona l'estrattore se usi il contagocce
-                quando il cursore è su un giacimento risorse.
+                quando il cursore è su una vena di risorse.
         simplifiedBelts:
             title: Nastri semplificati (Brutto)
             description: Non renderizza gli oggetti sui nastri a meno che il cursore non sia
@@ -927,13 +906,13 @@ settings:
                 dello schermo. La velocità dipende dall'impostazione Velocità di
                 movimento.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoom verso il Cursore
+            description: Se attivato, lo zoom andrà verso la posizione del mouse, altrimenti
+                sarà verso il centro dello schermo.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Grandezza delle Risorse sulla Mappa
+            description: Controlla la grandezza delle forme visualizzate sulla mappa (quando
+                si fa lo zoom indietro).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Comandi
@@ -1008,6 +987,10 @@ keybindings:
         comparator: Comparatore
         item_producer: Generatore di oggetti (Sandbox)
         copyWireValue: "Cavi: Copia valore sotto il cursore"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Riguardo questo gioco
     body: >-
@@ -1019,7 +1002,7 @@ about:
 
         Realizzare questo gioco non sarebbe stato possibile senza la grande community di Discord per i miei giochi - Unisciti al <a href="<discordlink>" target="_blank">server di Discord</a>!<br><br>
 
-        La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - È un grande.<br><br>
+        La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank"> Peppsen</a> - È un grande.<br><br>
 
         Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
@@ -1029,7 +1012,7 @@ demo:
         restoringGames: Recupero salvataggi
         importingGames: Importazione salvataggi
         oneGameLimit: Limite di un salvataggio
-        customizeKeybindings: Scorciatoie personalizabili
+        customizeKeybindings: Scorciatoie personalizzabili
         exportingBase: Esportazione dell'intera base come immagine
     settingNotAvailable: Non disponibile nella demo.
 tips:
@@ -1056,8 +1039,8 @@ tips:
       efficienza.
     - Tenere premuto <b>SHIFT</b> attiva il pianificatore nastri, facilitando il
       posizionamento dei nastri più lunghi
-    - I taglierini tagliano sempre in verticale, indipendentemente
-      dall'orientamento.
+    - I taglierini tagliano sempre in verticale, indipendentemente dal loro
+      orientamento.
     - Mischia tutti i tre colori per fare il bianco.
     - Il magazzino prioritizza la prima uscita.
     - Impiega tempo per costruire design replicabili, ne vale la pena!
@@ -1076,7 +1059,7 @@ tips:
     - Cerca di risolvere il livello 20 da solo prima di chiedere aiuto!
     - Non complicare le cose, cerca di mantenere la semplicità e farai strada.
     - Dovrai riusare le tue fabbriche più avanti nel gioco. Pianifica le tue
-      fabbriche in modo che siano reutilizzabili.
+      fabbriche in modo che siano riutilizzabili.
     - A volte, puoi trovare la forma che ti serve nella mappa senza crearla con
       le impilatrici.
     - Non troverai mai giacimenti di girandole complete.
@@ -1099,10 +1082,10 @@ tips:
     - Puoi scaricare i salvataggi dal menù principale!
     - Questo gioco ha molti tasti di scelta rapida! Dai un'occhiata alla pagina
       delle impostazioni
-    - Questo gioco ha molte impostazioni, dai un'occhiata!
+    - Questo gioco ha molte impostazioni, dagli un'occhiata!
     - L'etichetta dell'hub ha una piccola bussola per indicarne la direzione!
     - Per svuotare i nastri, taglia e re-incolla l'area nello stesso punto.
     - Premi F4 per mostrare FPS e Tick al secondo.
-    - Press F4 due volte per mostrare la casella del cursore e della telecamera.
+    - Premi F4 due volte per mostrare la casella del cursore e della telecamera.
     - Puoi cliccare a sinistra di una forma fermata a schermo per rimuoverla
       dalla lista.

@@ -4,9 +4,10 @@ import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { formatBigNumberFull } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
+import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
+import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
-import { enumMouseButton } from "../../camera";
 import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
@@ -101,13 +102,18 @@ export class HUDMassSelector extends BaseHUDPart {
          * @type {Map<number, Entity>}
          */
 
+        let count = 0;
         this.root.logic.performBulkOperation(() => {
             const arr = [...this.selectedEntities.values()];
             for (let i = arr.length - 1; i >= 0; --i) {
                 if (!this.root.logic.tryDeleteBuilding(arr[i])) {
                     logger.error("Error in mass delete, could not remove building");
+                } else {
+                    count++;
                 }
             }
+
+            this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.destroy1000, count);
         });
 
         this.clear();

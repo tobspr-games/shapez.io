@@ -11,43 +11,18 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    title_advantages: Avantages de la version complète
-    advantages:
-        - <b>12 nouveaux niveaux</b> avec 26 niveaux en tout
-        - <b>18 nouveaux bâtiments</b> pour automatiser entièrement votre usine !
-        - <b>20 niveaux d’amélioration</b> pour s’amuser pendant des heures !
-        - <b>Les câbles</b> ouvrent une toute nouvelle dimension !
-        - <b>Mode sombre</b> !
-        - Sauvegardes illimitées
-        - Balises illimitées
-        - Me soutenir ! ❤️
-    title_future: Prévu
-    planned:
-        - Bibliothèque de patrons
-        - Succès sur Steam
-        - Mode réflexion
-        - Mini-carte
-        - Mods
-        - Mode bac à sable
-        - …et bien plus !
-    title_open_source: Ce jeu est open source !
-    text_open_source: >-
-        Tout le monde peut contribuer. Je suis très impliqué dans la communauté
-        et j’essaie de lire toutes les suggestions et de prendre en compte vos
-        retours quand c’est possible.
-
-        N’oubliez pas de consulter mon tableau Trello pour voir tout le plan de développement !
-    title_links: Liens
-    links:
-        discord: Discord officiel
-        roadmap: Plan de développement
-        subreddit: Reddit
-        source_code: Code source (GitHub)
-        translate: Aidez à traduire
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider:  
+    thousandsDivider: ","
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -151,9 +126,9 @@ dialogs:
         desc: "Voici les changements depuis votre dernière session de jeu :"
     upgradesIntroduction:
         title: Débloquer les améliorations
-        desc: Toutes les formes que vous produisez peuvent être utilisées pour débloquer
-            des améliorations — <strong>Ne détruisez pas vos anciennes
-            usines !</strong> L’onglet des améliorations se trouve dans le coin
+        desc: <strong>Ne détruisez pas vos anciennes usines !</strong> Toutes les formes
+            que vous produisez peuvent être utilisées pour débloquer des
+            améliorations. L’onglet des améliorations se trouve dans le coin
             supérieur droit de l’écran.
     massDeleteConfirm:
         title: Confirmer la suppression
@@ -169,7 +144,7 @@ dialogs:
             la couper ?
     blueprintsNotUnlocked:
         title: Pas encore débloqué
-        desc: Terminez le niveau 12 pour avoir accès aux patrons !
+        desc: Terminez le niveau 12 pour avoir accès aux plans !
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: 'Le jeu a de nombreux raccourcis facilitant la construction de grandes
@@ -183,8 +158,8 @@ dialogs:
     createMarker:
         title: Nouvelle balise
         titleEdit: Modifier cette balise
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Donnez-lui un nom. Vous pouvez aussi inclure <strong>le raccourci</strong>
+            d’une forme (que vous pouvez générer <link>ici</link>).
     editSignal:
         title: Définir le signal
         descItems: "Choisissez un objet prédéfini :"
@@ -202,13 +177,12 @@ dialogs:
         title: Renommer la sauvegarde
         desc: Vous pouvez renommer la sauvegarde ici.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Tutoriel disponible
+        desc: Il y a un tutoriel vidéo pour ce niveau. Voulez-vous le regarder ?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Tutoriel disponible
+        desc: Il y a un tutoriel vidéo pour ce niveau, mais il n’est disponible qu’en
+            anglais. Voulez-vous le regarder ?
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -222,7 +196,7 @@ ingame:
         placeBuilding: Placer un bâtiment
         createMarker: Créer une balise
         delete: Supprimer
-        pasteLastBlueprint: Copier le dernier patron
+        pasteLastBlueprint: Copier le dernier plan
         lockBeltDirection: Utiliser le planificateur de convoyeurs
         plannerSwitchSide: Inverser la direction du planificateur
         cutSelection: Couper
@@ -247,8 +221,8 @@ ingame:
             speed: Vitesse
             range: Portée
             storage: Espace de stockage
-            oneItemPerSecond: 1 forme ⁄ s
-            itemsPerSecond: <x> formes ⁄ s
+            oneItemPerSecond: 1 objet ⁄ s
+            itemsPerSecond: <x> objets ⁄ s
             itemsPerSecondDouble: (×2)
             tiles: <x> cases
     levelCompleteNotification:
@@ -258,8 +232,8 @@ ingame:
         buttonNextLevel: Niveau suivant
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
-        gameSaved: Votre partie a été sauvegardée.
-        freeplayLevelComplete: Niveau <level> complet !
+        gameSaved: Votre partie a bien été sauvegardée.
+        freeplayLevelComplete: Niveau <level> terminé !
     shop:
         title: Améliorations
         buttonUnlock: Améliorer
@@ -269,14 +243,14 @@ ingame:
         title: Statistiques
         dataSources:
             stored:
-                title: Stocké
+                title: Stock
                 description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
-                title: Produit
+                title: Production
                 description: Affiche toutes les formes que votre usine produit, y compris les
                     formes intermédiaires.
             delivered:
-                title: Livré
+                title: Arrivage
                 description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme produite pour le moment.
         shapesDisplayUnits:
@@ -318,30 +292,35 @@ ingame:
                 plus vite votre but.<br><br> Astuce : Gardez
                 <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs,
                 et utilisez <strong>R</strong> pour les faire pivoter."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour couper
+                les cercles en deux.<br><br> PS : Le découpeur coupe toujours
+                <strong>de haut en bas</strong> quelle que soit son
+                orientation."
+            2_2_place_trash: Le découpeur peut se <strong>bloquer</strong> !<br><br>
+                Utilisez la <strong>poubelle</strong> pour vous débarrasser des
+                déchets dont vous n’avez pas (encore) besoin.
+            2_3_more_cutters: "Bravo ! Maintenant ajoutez <strong>deux découpeurs de
+                plus</strong> pour accélérer le processus !<br><br> PS :
+                Utilisez les <strong>raccourcis clavier 0–9</strong> pour
+                accéder plus rapidement aux bâtiments."
+            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez quatre
+                extracteurs</strong> et connectez-les au centre.<br><br> PS :
+                Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
+                activer le planificateur."
+            21_1_place_quad_painter: Placez une <strong>station de peinture
+                quadruple</strong> et connectez des <strong>cercles</strong> et
+                des couleurs <strong>blanche</strong> et
+                <strong>rouge</strong> !
+            21_2_switch_to_wires: Basculez sur le calque de câblage en appuyant sur
+                <strong>E</strong>.<br><br> Puis <strong>connectez les quatre
+                entrées</strong> de la station de peinture quadruple avec des
+                câbles !
+            21_3_place_button: Génial ! Maintenant, placez un <strong>interrupteur</strong>
+                et connectez-le avec des câbles !
+            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un <strong>signal
+                vrai</strong> et active la station de peinture
+                quadruple.<br><br> PS : Vous n’êtes pas obligé de connecter
+                toutes les entrées ! Essayez d’en brancher seulement deux."
     connectedMiners:
         one_miner: 1 extracteur
         n_miners: <amount> extracteurs
@@ -360,11 +339,8 @@ ingame:
             buildings:
                 title: 18 nouveaux bâtiments
                 desc: Automatisez entièrement votre usine !
-            savegames:
-                title: Sauvegardes ∞
-                desc: Autant que votre cœur le désire !
             upgrades:
-                title: 20 niveaux d’amélioration
+                title: ∞ niveaux d’amélioration
                 desc: Cette version de démonstration n’en a que 5 !
             markers:
                 title: Balises ∞
@@ -378,6 +354,9 @@ ingame:
             support:
                 title: Me soutenir
                 desc: Je le développe pendant mon temps libre !
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Convoyeurs, distributeurs et tunnels
@@ -395,7 +374,7 @@ buildings:
     hub:
         deliver: Livrez
         toUnlock: pour débloquer
-        levelShortcut: NV
+        levelShortcut: Niv
         endOfDemo: Fin de la démo
     belt:
         default:
@@ -416,9 +395,9 @@ buildings:
             description: Permet de faire passer des ressources sous les bâtiments et les
                 convoyeurs.
         tier2:
-            name: Tunnel niveau II
+            name: Tunnel Niv II
             description: Permet de faire passer des ressources sous les bâtiments et les
-                convoyeurs.
+                convoyeurs deux fois plus loin qu'un tunnel simple.
     balancer:
         default:
             name: Répartiteur
@@ -459,9 +438,9 @@ buildings:
             description: Tourne une forme de 180 degrés.
     stacker:
         default:
-            name: Combineur
-            description: Combine deux formes. Si elles ne peuvent pas être combinées, la
-                forme de droite est placée sur la forme de gauche.
+            name: Assembleur
+            description: Assemble les formes à l'entrée, de préférence sur la même couche.
+                Sinon, la forme de droite sera placée sur la forme de gauche
     mixer:
         default:
             name: Mélangeur de couleur
@@ -469,20 +448,20 @@ buildings:
                 couleurs.
     painter:
         default:
-            name: Peintre
-            description: Colorie entièrement la forme venant de gauche avec la couleur
-                entrant en haut.
+            name: Station de peinture
+            description: Peint entièrement la forme venant de gauche avec la couleur entrant
+                en haut.
         mirrored:
-            name: Peintre
-            description: Colorie entièrement la forme venant de gauche avec la couleur
-                entrant en bas.
+            name: Station de peinture
+            description: Peint entièrement la forme venant de gauche avec la couleur entrant
+                en bas.
         double:
-            name: Peintre (double)
-            description: Colorie les deux formes venant de gauche avec la couleur entrant en
-                haut.
+            name: Station de peinture (double)
+            description: Peint entièrement les deux formes venant de gauche avec la couleur
+                entrant en haut.
         quad:
-            name: Peintre (quadruple)
-            description: Colorie chaque quadrant d’une forme avec une couleur différente.
+            name: Station de peinture (quadruple)
+            description: Peint chaque quadrant d’une forme avec une couleur différente.
                 Seules les entrées recevant un <strong>signal vrai</strong> sur
                 le calque de câblage seront peintes !
     trash:
@@ -512,7 +491,7 @@ buildings:
             description: Permet de croiser deux câbles sans les connecter entre eux.
     constant_signal:
         default:
-            name: Constante
+            name: Générateur constant
             description: Émet un signal constant, qui peut être une forme, une couleur ou un
                 booléen (1 / 0).
     lever:
@@ -527,7 +506,7 @@ buildings:
             description: Émet un “1” booléen si les deux entrées sont vraies (une forme,
                 couleur ou “1”).
         not:
-            name: Porte INVERSEUR
+            name: Porte NON
             description: Émet un “1” booléen si l’entrée n’est pas vraie (une forme, couleur
                 ou “1”).
         xor:
@@ -571,8 +550,8 @@ buildings:
     comparator:
         default:
             name: Comparateur
-            description: Émet un “1” booléen si les deux entrées sont exactement les mêmes.
-                Peut comparer des formes, des couleurs, et des booléens.
+            description: Émet “1” si les deux entrées sont exactement les mêmes, sinon émet
+                “0”. Peut comparer des formes, des couleurs, et des booléens.
     virtual_processor:
         default:
             name: Découpeur virtuel
@@ -585,10 +564,10 @@ buildings:
             description: Renvoie la couche supérieure à droite, et les couches restantes à
                 gauche.
         stacker:
-            name: Combineur virtuel
-            description: Combine virtuellement la forme de droite sur celle de gauche.
+            name: Assembleur virtuel
+            description: Assemble virtuellement la forme de droite sur celle de gauche.
         painter:
-            name: Peintre virtuel
+            name: Station de peinture virtuelle
             description: Peint virtuellement la forme du bas avec la couleur de droite.
     item_producer:
         default:
@@ -609,23 +588,23 @@ storyRewards:
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
             degrés vers la droite.
     reward_painter:
-        title: Peintre
-        desc: "Le <strong>peintre</strong> a été débloqué. Extrayez des pigments de
-            couleur (comme vous le faites avec les formes) et combinez-les avec
-            une forme dans un peintre pour les colorier !<br><br>PS : Si vous
-            êtes daltonien, il y a un <strong>mode daltonien</strong>
-            paramétrable dans les préférences !"
+        title: Peinture
+        desc: "La <strong>station de peinture</strong> a été débloquée. Extrayez des
+            pigments de couleur (comme vous le faites avec les formes) et
+            combinez-les avec une forme dans une station pour les peindre !
+            <br><br>PS : Si vous êtes daltonien, il y a un <strong>mode
+            daltonien</strong> paramétrable dans les préférences !"
     reward_mixer:
         title: Mélangeur de couleurs
         desc: Le <strong>mélangeur</strong> a été débloqué. Combinez deux couleurs en
             utilisant <strong>la synthèse additive des couleurs</strong> avec ce
             bâtiment !
     reward_stacker:
-        title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le
-            <strong>combineur</strong> ! Les deux entrées sont combinées et si
+        title: Assembleur
+        desc: Vous pouvez maintenant assemblées deux formes avec le
+            <strong>combineur</strong> ! Les deux entrées sont assemblées,si
             elles peuvent être mises l’une à côté de l’autre, elles sont
-            <strong>fusionnées</strong>. Sinon, la forme de droite est
+            <strong>fusionnées</strong>, sinon, la forme de droite est
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
@@ -655,9 +634,9 @@ storyRewards:
             les deux variantes de tunnels !
     reward_merger:
         title: Fusionneur compact
-        desc: You have unlocked a <strong>merger</strong> variant of the
-            <strong>balancer</strong> - It accepts two inputs and merges them
-            into one belt!
+        desc: Vous avez débloqué le <strong>fusionneur</strong>, une variante du
+            <strong>répartiteur</strong>. Il accepte deux entrées et les
+            fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
         desc: You have unlocked a <strong>splitter</strong> variant of the
@@ -674,38 +653,39 @@ storyRewards:
             permet de découper les formes en <strong>quatre parties</strong>
             plutôt que seulement deux !
     reward_painter_double:
-        title: Double peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> — Elle
-            fonctionne comme le peintre de base, mais elle permet de traiter
-            <strong>deux formes à la fois</strong> en ne consommant qu’une
-            couleur au lieu de deux !
+        title: Station de peinture double
+        desc: Vous avez débloqué une variante de la  <strong>station de
+            peinture</strong> — Elle fonctionne comme la station de peinture de
+            base, mais elle permet de traiter <strong>deux formes à la
+            fois</strong> en ne consommant qu’une couleur au lieu de deux !
     reward_storage:
-        title: Tampon de stockage
+        title: Stockage
         desc: Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de
             stocker des objets jusqu’à une certaine limite !<br><br> Il priorise
             la sortie gauche, vous pouvez donc aussi l’utiliser comme
             <strong>drain de débordement</strong> !
     reward_blueprints:
-        title: Patrons
+        title: Plans
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de
             votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et
             sélectionnez avec votre souris), et appuyez sur “C” pour la
             copier.<br><br> Coller n’est <strong>pas gratuit</strong>, vous
-            devez produire <strong>des formes de patrons</strong> pour vous le
+            devez produire <strong>des formes de plans</strong> pour vous le
             payer (les mêmes que celles que vous venez de livrer).
     reward_rotater_180:
         title: Retourneur
         desc: Vous avez débloqué le <strong>retourneur</strong> ! Il permet de faire
             pivoter une forme de 180 degrés (Surprise ! :D)
     reward_wires_painter_and_levers:
-        title: Câbles & quadruple peintre
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        title: Câbles & station de peinture quadruple
+        desc: "Vous avez débloqué le <strong>calque de câblage</strong> : C’est un
+            calque au-dessus du calque normal, qui introduit beaucoup de
+            nouvelles mécaniques de jeu !<br><br> Pour commencer, je vous
+            débloque la <strong>station de peinture quadruple</strong>.
+            Connectez les entrées à peindre sur le calque de câblage.<br><br>
+            Pour voir le calque de câblage, appuyez sur
+            <strong>E</strong>.<br><br>PS : Activez les <strong>indices</strong>
+            dans les paramètres pour voir un tutoriel sur le câblage."
     reward_filter:
         title: Filtre à objets
         desc: Vous avez débloqué le <strong>filtre à objets</strong> ! Il dirige les
@@ -721,7 +701,7 @@ storyRewards:
             le stockage émettent le dernier objet vu ? Essayez de le montrer sur
             un écran !"
     reward_constant_signal:
-        title: Constante
+        title: Générateur constant
         desc: Vous avez débloqué l’émetteur de <strong>constante</strong> sur le calque
             de câblage ! Vous pouvez par exemple la connecter à des
             <strong>filtres à objets</strong>.<br><br> La constante peut émettre
@@ -732,19 +712,18 @@ storyRewards:
         desc: "Vous avez débloqué les <strong>portes logiques</strong> ! Vous n’êtes pas
             obligé de trouver ça génial, mais en fait c’est super cool !<br><br>
             Avec ces portes, vous pouvez maintenant faire les opérations
-            booléennes ET, OU, OU-EXCLUSIF et INVERSEUR !<br><br> Et la cerise
-            sur le gâteau : je vous donne aussi le
-            <strong>transistor</strong> !"
+            booléennes ET, OU, OU-EXCLUSIF et NON !<br><br> Et la cerise sur le
+            gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
         desc: I just gave a whole bunch of new buildings which allow you to
             <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
+            now simulate a cutter, rotator, stacker and more on the wires layer!
             With this you now have three options to continue the game:<br><br> -
             Build an <strong>automated machine</strong> to create any possible
             shape requested by the HUB (I recommend to try it!).<br><br> - Build
             something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+            normally.<br><br> Whatever you choose, remember to have fun!
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -936,13 +915,13 @@ settings:
                 de l’écran. La vitesse dépend du réglage de la vitesse de
                 déplacement.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Zoomer vers le curseur
+            description: Si activé, zoome vers la position de la souris ; sinon, vers le
+                centre de l’écran.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Taille des ressources sur la carte
+            description: Contrôle la taille des formes sur la vue d’ensemble de la carte
+                visible en dézoomant.
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -982,9 +961,9 @@ keybindings:
         miner: Extracteur
         cutter: Découpeur
         rotater: Pivoteur
-        stacker: Combineur
+        stacker: Assembleur
         mixer: Mélangeur de couleur
-        painter: Peintre
+        painter: Station de peinture
         trash: Poubelle
         storage: Stockage
         wire: Câble
@@ -1005,7 +984,7 @@ keybindings:
         rotateInverseModifier: "Variante : Pivote à gauche"
         cycleBuildingVariants: Alterner entre les variantes
         confirmMassDelete: Confirmer la suppression de la sélection
-        pasteLastBlueprint: Copier le dernier patron
+        pasteLastBlueprint: Copier le dernier plan
         cycleBuildings: Alterner entre les bâtiments
         lockBeltDirection: Utiliser le planificateur de convoyeurs
         switchDirectionLockSide: "Planificateur : changer de côté"
@@ -1017,6 +996,10 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser l’orientation des convoyeurs
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: À propos de ce jeu
     body: >-
@@ -1058,8 +1041,8 @@ tips:
     - La symétrie est la clé !
     - Vous pouvez entrelacer différents niveaux de tunnels.
     - Essayez de construire des usines compactes, cela paiera !
-    - Le peintre a une variante en miroir que vous pouvez sélectionner avec
-      <b>T</b>
+    - La station de peinture a une variante en miroir que vous pouvez
+      sélectionner avec <b>T</b>
     - Avoir les bons ratios de construction maximisera l’efficacité.
     - Au niveau maximum, 5 extracteurs rempliront un seul convoyeur.
     - N’oubliez pas les tunnels !
@@ -1071,8 +1054,7 @@ tips:
       orientation.
     - Pour obtenir du blanc, mélangez les trois couleurs.
     - Le stockage priorise la première sortie.
-    - Investissez du temps pour créer des patrons reproductibles, ça vaut le
-      coup !
+    - Investissez du temps pour créer des plans reproductibles, ça vaut le coup !
     - Maintenir <b>CTRL</b> permet de placer plusieurs bâtiments.
     - Vous pouvez maintenir <b>ALT</b> pour inverser la direction des convoyeurs
       placés.
@@ -1096,7 +1078,7 @@ tips:
     - Colorez vos formes avant de les découper pour une efficacité maximale.
     - Avec les modules, l’espace n’est qu’une perception ; une préoccupation
       pour les hommes mortels.
-    - Créez une usine de patrons à part. Ils sont importants pour les modules.
+    - Créez une usine de plans à part. Ils sont importants pour les modules.
     - Regardez de plus près le mélangeur de couleur et vous aurez la réponse à
       vos questions.
     - Utilisez <b>CTRL</b> + clic pour sélectionner une zone.

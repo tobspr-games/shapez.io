@@ -59,7 +59,13 @@ if (G_IS_DEV) {
     }
 }
 
-function compressObjectInternal(obj, keys = [], values = []) {
+/**
+ * @param {any} obj
+ * @param {Map} keys
+ * @param {Map} values
+ * @returns {any[]|object|number|string}
+ */
+function compressObjectInternal(obj, keys, values) {
     if (Array.isArray(obj)) {
         let result = [];
         for (let i = 0; i < obj.length; ++i) {
@@ -69,37 +75,58 @@ function compressObjectInternal(obj, keys = [], values = []) {
     } else if (typeof obj === "object" && obj !== null) {
         let result = {};
         for (const key in obj) {
-            let index = keys.indexOf(key);
-            if (index < 0) {
-                keys.push(key);
-                index = keys.length - 1;
+            let index = keys.get(key);
+            if (index === undefined) {
+                index = keys.size;
+                keys.set(key, index);
             }
             const value = obj[key];
             result[compressInt(index)] = compressObjectInternal(value, keys, values);
         }
         return result;
     } else if (typeof obj === "string") {
-        let index = values.indexOf(obj);
-        if (index < 0) {
-            values.push(obj);
-            index = values.length - 1;
+        let index = values.get(obj);
+        if (index === undefined) {
+            index = values.size;
+            values.set(obj, index);
         }
         return compressInt(index);
     }
     return obj;
 }
 
+/**
+ * @param {Map} hashMap
+ * @returns {Array}
+ */
+function indexMapToArray(hashMap) {
+    const result = new Array(hashMap.size);
+    hashMap.forEach((index, key) => {
+        result[index] = key;
+    });
+    return result;
+}
+
+/**
+ * @param {object} obj
+ */
 export function compressObject(obj) {
-    const keys = [];
-    const values = [];
+    const keys = new Map();
+    const values = new Map();
     const data = compressObjectInternal(obj, keys, values);
     return {
-        keys,
-        values,
+        keys: indexMapToArray(keys),
+        values: indexMapToArray(values),
         data,
     };
 }
 
+/**
+ * @param {object} obj
+ * @param {string[]} keys
+ * @param {any[]} values
+ * @returns {object}
+ */
 function decompressObjectInternal(obj, keys = [], values = []) {
     if (Array.isArray(obj)) {
         let result = [];
@@ -122,6 +149,9 @@ function decompressObjectInternal(obj, keys = [], values = []) {
     return obj;
 }
 
+/**
+ * @param {object} obj
+ */
 export function decompressObject(obj) {
     if (obj.keys && obj.values && obj.data) {
         const keys = obj.keys;

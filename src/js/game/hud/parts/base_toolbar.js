@@ -1,6 +1,6 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { Signal, STOP_PROPAGATION } from "../../../core/signal";
-import { makeDiv } from "../../../core/utils";
+import { STOP_PROPAGATION } from "../../../core/signal";
+import { makeDiv, safeModulo } from "../../../core/utils";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { MetaBuilding } from "../../meta_building";
 import { GameRoot } from "../../root";
@@ -161,8 +161,12 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         let newBuildingFound = false;
         let newIndex = this.lastSelectedIndex;
-        for (let i = 0; i < this.primaryBuildings.length; ++i, ++newIndex) {
-            newIndex %= this.primaryBuildings.length;
+        const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
+            ? -1
+            : 1;
+
+        for (let i = 0; i <= this.primaryBuildings.length; ++i) {
+            newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);
             const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
             const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {

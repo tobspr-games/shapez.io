@@ -26,7 +26,8 @@ export const THIRDPARTY_URLS = {
     },
 };
 
-export const A_B_TESTING_LINK_TYPE = Math.random() > 0.5 ? "steam_1_pr" : "steam_2_npr";
+// export const A_B_TESTING_LINK_TYPE = Math.random() > 0.95 ? "steam_1_pr" : "steam_2_npr";
+export const A_B_TESTING_LINK_TYPE = "steam_2_npr";
 
 export const globalConfig = {
     // Size of a single tile in Pixels.
@@ -38,6 +39,9 @@ export const globalConfig = {
     assetsDpi: 192 / 32,
     assetsSharpness: 1.5,
     shapesSharpness: 1.4,
+
+    // Achievements
+    achievementSliceDuration: 10, // Seconds
 
     // Production analytics
     statisticsGraphDpi: 2.5,

@@ -2,14 +2,16 @@
 {
 	"appid" "1318690"
 	"desc" "$DESC$"
-	"buildoutput" "C:\work\shapez\shapez.io\gulp\steampipe\steamtemp"
+	"buildoutput" "C:\work\shapez.io\gulp\steampipe\steamtemp"
 	"contentroot" ""
 	"setlive" ""
 	"preview" "0"
 	"local"	""
 	"depots"
 	{
-		"1318691"	"C:\work\shapez\shapez.io\gulp\steampipe\scripts\windows.vdf"
-		"1318692"	"C:\work\shapez\shapez.io\gulp\steampipe\scripts\linux.vdf"
+		"1318691"	"C:\work\shapez.io\gulp\steampipe\scripts\windows.vdf"
+		"1318694"	"C:\work\shapez.io\gulp\steampipe\scripts\china-windows.vdf"
+		"1318692"	"C:\work\shapez.io\gulp\steampipe\scripts\linux.vdf"
+		"1318695"	"C:\work\shapez.io\gulp\steampipe\scripts\china-linux.vdf"
 	}
 }

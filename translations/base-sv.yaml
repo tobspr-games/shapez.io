@@ -1,55 +1,30 @@
 steamPage:
     shortText: shapez.io är ett spel som går ut på att automatisera skapandet av
         former med ökande komplexitet inom den oändligt stora världen.
-    discordLinkShort: Officiel Discord
+    discordLinkShort: Officiell Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io är att avslappnat spel där man ska bygga fabriker för att
+        automatisera produktionen av geometriska former.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Formerna blir svårare och mer komplexa vartefter nivån ökar och du blir tvungen att sprida ut dig över den oändliga kartan.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Och som om det inte vore nog så som behöver du samtidigt producera exponentiellt mer för att mätta efterfrågan - den enda lösningar är att skala upp produktionen!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        I början skapar man bara former, men senare behöver du även färga dem - för att uppnå detta behöver du samla och blanda färger!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    title_advantages: Standalone Advantages
-    advantages:
-        - <b>12 New Level</b> for a total of 26 levels
-        - <b>18 New Buildings</b> for a fully automated factory!
-        - <b>20 Upgrade Tiers</b> for many hours of fun!
-        - <b>Wires Update</b> for an entirely new dimension!
-        - <b>Dark Mode</b>!
-        - Unlimited Savegames
-        - Unlimited Markers
-        - Support me! ❤️
-    title_future: Planned Content
-    planned:
-        - Blueprint Library (Standalone Exclusive)
-        - Steam Achievements
-        - Puzzle Mode
-        - Minimap
-        - Mods
-        - Sandbox mode
-        - ... and a lot more!
-    title_open_source: This game is open source!
-    title_links: Links
-    links:
-        discord: Official Discord
-        roadmap: Roadmap
-        subreddit: Subreddit
-        source_code: Source code (GitHub)
-        translate: Help translate
-    text_open_source: >-
-        Anybody can contribute, I'm actively involved in the community and
-        attempt to review all suggestions and take feedback into consideration
-        where possible.
-
-        Be sure to check out my trello board for the full roadmap!
+        På Steam kan du köpa den fulla versionen av spelet, men du kan även spela demot på shapez.io först och bestämma dig senare!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Laddar
-    error: Error
-    thousandsDivider: .
+    error: Fel
+    thousandsDivider: " "
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -71,14 +46,14 @@ global:
         hoursAndMinutesShort: <hours>t <minutes>m
         xMinutes: <x> minuter
     keys:
-        tab: TAB
+        tab: TABB
         control: CTRL
         alt: ALT
         escape: ESC
         shift: SKIFT
         space: MELLANSLAG
 demoBanners:
-    title: Demo Version
+    title: Demo-version
     intro: Skaffa den fristående versionen för att låsa upp alla funktioner!
 mainMenu:
     play: Spela
@@ -87,16 +62,16 @@ mainMenu:
     openSourceHint: Detta spelet har öppen kod!
     discordLink: Officiell Discord Server
     helpTranslate: Hjälp till att översätta!
-    browserWarning: Förlåt, men det är känt att spelet spelar långsamt på din
-        browser! Skaffa den fristående versionen eller ladda ner Chrome för en
-        bättre upplevelse.
+    browserWarning: Förlåt, men det är känt att spelet spelar långsamt i din
+        webbläsare! Skaffa den fristående versionen eller ladda ned Chrome för
+        en bättre upplevelse.
     savegameLevel: Nivå <x>
     savegameLevelUnknown: Okänd Nivå
     continue: Fortsätt
     newGame: Nytt spel
     madeBy: Skapad av <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Namnlöst
 dialogs:
     buttons:
         ok: OK
@@ -176,8 +151,9 @@ dialogs:
             rullband.<br>"
     createMarker:
         title: Ny Markör
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        desc: Ge det ett meningsfullt namn, du kan också inkludera ett
+            <strong>kortkommando</strong> av en form (som du kan generera
+            <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
         desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
@@ -196,21 +172,20 @@ dialogs:
         desc: Du har inte råd att placera detta område! Är du säker att du vill klippa
             det?
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Sätt singal
+        descItems: "Välj en förvald sak:"
+        descShortKey: ... eller skriv in <strong>kortkommando</strong> av en form (Som
+            du kan generera <link>här</link>)
     renameSavegame:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Handledning Tillgänglig
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå! Vill du se den?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Handledning Tillgänglig
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men den är bara
+            tillgänglig på engelska. Vill du se den?
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
@@ -361,11 +336,8 @@ ingame:
             buildings:
                 title: 18 nya byggnader!
                 desc: Automatisera din fabrik fullkomligt!
-            savegames:
-                title: ∞ med sparfiler
-                desc: Så många som du bara vill!
             upgrades:
-                title: 20 Upgrade Tiers
+                title: 1000 uppgraderingsnivåer
                 desc: This demo version has only 5!
             markers:
                 title: ∞ med markeringar!
@@ -379,6 +351,9 @@ ingame:
             support:
                 title: Stöd mig
                 desc: Jag utvecklar det på min fritid!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Rullband, Distributörer & Tunnlar
@@ -479,113 +454,111 @@ buildings:
     balancer:
         default:
             name: Balancer
-            description: Multifunctional - Evenly distributes all inputs onto all outputs.
+            description: Multifunktionell - Distribuerar alla inflöden till alla utflöden.
         merger:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Merger (kompakt)
+            description: Sammanfogar två rullband till ett.
         merger-inverse:
-            name: Merger (compact)
-            description: Merges two conveyor belts into one.
+            name: Merger (kompakt)
+            description: Sammanfogar två rullband till ett.
         splitter:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Splitter (kompakt)
+            description: Delar upp ett rullband till två.
         splitter-inverse:
-            name: Splitter (compact)
-            description: Splits one conveyor belt into two.
+            name: Splitter (kompakt)
+            description: Delar upp ett rullband till två.
     storage:
         default:
-            name: Storage
-            description: Stores excess items, up to a given capacity. Prioritizes the left
-                output and can be used as an overflow gate.
+            name: Lagring
+            description: Lagra överflödiga saker, till en viss mängd. Prioriterar det
+                vänstra utflödet och kan användas som en översvämningsgrind.
     wire_tunnel:
         default:
-            name: Wire Crossing
-            description: Allows to cross two wires without connecting them.
+            name: Korsande sladdar
+            description: Tillåter två sladdar att korsa varandra utan att koppla samman.
     constant_signal:
         default:
-            name: Constant Signal
-            description: Emits a constant signal, which can be either a shape, color or
-                boolean (1 / 0).
+            name: Konstant signal
+            description: Avger en konstant signal, som kan vara en form, färg eller boolesk
+                (1 / 0).
     lever:
         default:
-            name: Switch
-            description: Can be toggled to emit a boolean signal (1 / 0) on the wires layer,
-                which can then be used to control for example an item filter.
+            name: Brytare
+            description: Kan ställas att ge en boolesk signal (1 / 0) på kabellagret, vilket
+                till exempel kan användas för att kontrollera ett sakfilter.
     logic_gate:
         default:
-            name: AND Gate
-            description: Emits a boolean "1" if both inputs are truthy. (Truthy means shape,
-                color or boolean "1")
+            name: AND-grind
+            description: Avger en boolesk "1" om båda inflödena är positiva. (positiva menas
+                med former, färger eller boolesk "1")
         not:
-            name: NOT Gate
-            description: Emits a boolean "1" if the input is not truthy. (Truthy means
-                shape, color or boolean "1")
+            name: NOT-grind
+            description: Avger en boolesk "1" om inflödet inte är positivt. (positivt menas
+                med former, färger eller boolesk "1")
         xor:
-            name: XOR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
-                (Truthy means shape, color or boolean "1")
+            name: XOR-grind
+            description: Avger en boolesk "1" om bara ett av inflödena är positivt. (med
+                positivt menas former, färger eller boolesk "1")
         or:
-            name: OR Gate
-            description: Emits a boolean "1" if one of the inputs is truthy. (Truthy means
-                shape, color or boolean "1")
+            name: OR-grind
+            description: Avger en boolesk "1" om minst ett av inflödena är positivt. (med
+                positivt menas former, färger eller boolesk "1")
     transistor:
         default:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Sänder vidare det undre inflödet om sido inflödet är positivt. (med
+                positivt menas former, färger eller boolesk "1")
         mirrored:
             name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            description: Sänder vidare det undre inflödet om sido inflödet är positivt. (med
+                positivt menas former, färger eller boolesk "1")
     filter:
         default:
             name: Filter
-            description: Connect a signal to route all matching items to the top and the
-                remaining to the right. Can be controlled with boolean signals
-                too.
+            description: Anslut en signal för att dirigera alla matchande objekt till toppen
+                och resterande åt höger. Kan även styras med booleska signaler.
     display:
         default:
             name: Display
-            description: Connect a signal to show it on the display - It can be a shape,
-                color or boolean.
+            description: Anslut en singal för att visa den på displayen - Det kan vara en
+                form, färg eller boolesk.
     reader:
         default:
-            name: Belt Reader
-            description: Allows to measure the average belt throughput. Outputs the last
-                read item on the wires layer (once unlocked).
+            name: Rullbandsläsare
+            description: Mäter den genomsnittliga rullbands genomströmningen. Sänder ut den
+                sista lästa saken på sladdlagret (när det är upplåst).
     analyzer:
         default:
-            name: Shape Analyzer
-            description: Analyzes the top right quadrant of the lowest layer of the shape
-                and returns its shape and color.
+            name: Formanalysator
+            description: Analyserar den övre högra kvadranten av formens lägsta lager och
+                returnerar dess form och färg.
     comparator:
         default:
-            name: Compare
-            description: Returns boolean "1" if both signals are exactly equal. Can compare
-                shapes, items and booleans.
+            name: Jämför
+            description: Returnerar boolesk "1" om båda signalerna är exakt lika. Kan
+                jämföra former, saker och booleska.
     virtual_processor:
         default:
-            name: Virtual Cutter
-            description: Virtually cuts the shape into two halves.
+            name: Virtuell skärare
+            description: Skär virtuellt formen till två halvor.
         rotater:
-            name: Virtual Rotater
-            description: Virtually rotates the shape, both clockwise and counter-clockwise.
+            name: Virtuell roterare
+            description: Roterar virtuellt formen, både medurs och moturs.
         unstacker:
-            name: Virtual Unstacker
-            description: Virtually extracts the topmost layer to the right output and the
-                remaining ones to the left.
+            name: Virtuell stapelupplösare
+            description: Lösgör virtuellt det översta lagret och sänder ut åt höger medan
+                resten sänds åt till vänster.
         stacker:
-            name: Virtual Stacker
-            description: Virtually stacks the right shape onto the left.
+            name: Virtuell staplare
+            description: Staplar virtuellt den högra formen ovanpå den vänstra.
         painter:
-            name: Virtual Painter
-            description: Virtually paints the shape from the bottom input with the shape on
-                the right input.
+            name: Virtuell målare
+            description: Målar virtuellt formen underifrån med formen från höger.
     item_producer:
         default:
             name: Item Producer
-            description: Available in sandbox mode only, outputs the given signal from the
-                wires layer on the regular layer.
+            description: Endast tillgänglig i sandlådeläge, avger en given signal från
+                kabellagret till det vanliga lagret.
 storyRewards:
     reward_cutter_and_trash:
         title: Att klippa former
@@ -988,6 +961,10 @@ keybindings:
         comparator: Compare
         item_producer: Item Producer (Sandbox)
         copyWireValue: "Wires: Copy value below cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Om detta spel
     body: >-

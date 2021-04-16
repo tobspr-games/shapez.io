@@ -3,49 +3,23 @@ steamPage:
         создания и объединения все более сложных фигур на бесконечной карте.
     discordLinkShort: Официальный Discord сервер
     intro: >-
-        Shapez.io - это спокойная игра о создании фабрик для автоматизации
-        создания сложных геометрических фигур.
+        Любите игры про автоматизацию? Тогда вы по адресу!
 
-        По мере управления уровня, фигуры становятся все сложнее, так что придется расширять фабрику засчет бесконечной карты.
+        shapez.io это спокойная игра, в которой вам предстоит строить фабрики по автоматизированному производству геометрических фигур. По мере управления уровня, фигуры становятся все сложнее, так что придется расширять фабрику засчет бесконечной карты.
 
-        Если этого мало, то Вам так же придется экспоненциально производить все больше и больше фигур, чтобы удовлетворить потребности Вашей фабрики. Ключ к успеху - расширение!
+        Если этого мало, то Вам так же придется  экспоненциально увеличивать производство, чтобы удовлетворить потребности Вашей фабрики. Ключ к успеху - масштабирование! И если в начале вам понадобится обрабатывать только формы, то позже вы начнёте их раскрашивать, добывая и комбенируя красители.
 
         Вначале игры Вам понадобится производить только фигуры, однако позже фигуры надо будет окрашивать. Для этого добывайте и смешивайте краски!
 
         Приобретение игры в Steam предоставляет доступ к полной версии игры, но вы можете опробовать демоверсию игры на shapez.io и принять решение позже!
-    title_advantages: Преимущества полной версии
-    advantages:
-        - <b>12 новых уровней</b> - всего 26 уровней!
-        - <b>18 новых построек</b> для полностью автоматизированной фабрики!
-        - <b>20 стадий улучшения</b> для долгих часов веселья!
-        - <b>Провода</b> - открывает полноценное новое измерение!
-        - <b>Темная тема</b>!
-        - Неограниченные сохранения
-        - Неограниченные маркеры
-        - Поддержите меня! ❤️
-    title_future: Запланированный контент
-    planned:
-        - Библиотека чертежей (только для Полной версии)
-        - Достижения Steam
-        - Режим головоломок
-        - Мини-карта
-        - Моды
-        - Режим песочницы
-        - ... и многое другое!
-    title_open_source: Эта игра находится в открытом доступе!
-    title_links: Ссылки
-    links:
-        discord: Официальный Discord сервер
-        roadmap: Планы
-        subreddit: Subreddit
-        source_code: Исходный код (GitHub)
-        translate: Помочь с переводом
-    text_open_source: >-
-        Кто угодно может внести свой вклад в разработку игры - я активно
-        вовлечен в сообщество и стараюсь просмотреть все предложения и по
-        возможности прислушиваться к отзывам.
-
-        Не забудьте заглянуть на мой Trello board, чтобы ознакомиться с планами на будущее!
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
 global:
     loading: Загрузка
     error: Ошибка
@@ -85,18 +59,18 @@ mainMenu:
     changelog: Список изменений
     importSavegame: Импорт
     openSourceHint: Это игра с открытым исходным кодом!
-    discordLink: Офици- альный Дискорд
+    discordLink: Официальный Дискорд сервер
     helpTranslate: Помоги с переводом!
     browserWarning: Извините, но игра работает медленно в вашем браузере!
-        Приобретите полную версию или загрузите Chrome чтобы ознакомится с игрой
-        в полной мере.
+        Приобретите полную версию или загрузите Google Chrome, чтобы ознакомится
+        с игрой в полной мере.
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
     continue: Продолжить
     newGame: Новая Игра
     madeBy: Создал <author-link>
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: Без названия
 dialogs:
     buttons:
         ok: OK
@@ -109,7 +83,7 @@ dialogs:
         deleteGame: Я знаю, что я делаю
         viewUpdate: Посмотреть Обновление
         showUpgrades: Показать Улучшения
-        showKeybindings: Показать Управление
+        showKeybindings: Показать Управление (Привязку клавиш)
     importSavegameError:
         title: Ошибка импортирования
         text: Не удалось импортировать сохранение игры.
@@ -122,7 +96,7 @@ dialogs:
     confirmSavegameDelete:
         title: Подтвердите удаление.
         text: Вы уверены, что хотите удалить это сохранение?<br><br> '<savegameName>' на
-            уровне <savegameLevel><br><br> Это не может быть отменено!
+            уровне <savegameLevel><br><br> Оно будет удалено безвозвратно!
     savegameDeletionError:
         title: Ошибка удаления
         text: Не удалось удалить сохранение игры.
@@ -205,13 +179,12 @@ dialogs:
         title: Переименовать Сохранение
         desc: Здесь вы можете изменить название своего сохранения.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: Доступно обучение
+        desc: Для этого уровня доступно видео-обучение! Посмотрите его?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Доступно обучение
+        desc: Для этого уровня доступно видео-обучение, но только на английском языке.
+            Посмотрите его?
 ingame:
     keybindingsOverlay:
         moveMap: Передвижение
@@ -252,7 +225,7 @@ ingame:
     notifications:
         newUpgrade: Новое улучшение доступно!
         gameSaved: Игра сохранена.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Уровень <level> завершён!
     shop:
         title: Улучшения
         buttonUnlock: Улучшить
@@ -273,9 +246,9 @@ ingame:
                 description: Показывает фигуры, которые доставляются в хаб.
         noShapesProduced: Фигуры еще не произведены.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / с
+            minute: <shapes> / м
+            hour: <shapes> / ч
     settingsMenu:
         playtime: Игровое время
         buildingsPlaced: Постройки
@@ -306,30 +279,32 @@ ingame:
                 конвейеров, чтобы достичь цели быстрее.<br><br>Подсказка:
                 Удерживайте <strong>SHIFT</strong> чтобы разместить несколько
                 экстракторов, а <strong>R</strong> чтобы вращать их."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Разместите <strong>Резак</strong> для разрезания кругов на
+                две половины! <br><br> PS: Резак всегда разрезает <strong>сверху
+                вниз</strong> независимо от ориентации."
+            2_2_place_trash: Резак может <strong>засориться и остановиться</strong>!<br><br>
+                Используйте <strong>мусорку</strong> что бы избавиться от в
+                данный момент (!) ненужных частей.
+            2_3_more_cutters: "Хорошая работа! Теперь разместите <strong>ещё 2
+                резака</strong> что бы ускорить этот медленный процесс!<br><br>
+                PS: Используйте <strong>клавиши 0-9 </strong> для быстрого
+                доступа к постройкам!"
+            3_1_rectangles: "Теперь давайте извлечём немного прямоугольников!
+                <strong>Постройте 4 экстрактора</strong>и соедините их с
+                хабом.<br><br> PS: Удерживайте <strong>SHIFT</strong> во время
+                удерживания конвейера для активации планировщика конвейеров!"
+            21_1_place_quad_painter: Разместите <strong>покрасчик для 4 предметов</strong> и
+                получите <strong>круги</strong>, <strong>белого</strong> и
+                <strong>красного</strong> цветов!
+            21_2_switch_to_wires: Переключите слой проводов нажатием клавиши
+                <strong>E</strong>!<br><br> Потом <strong>соедините все
+                входы</strong> покрасчика кабелями!
+            21_3_place_button: Отлично! Теперь разместите <strong>Переключатель</strong> и
+                присоедини его проводами!
+            21_4_press_button: "Нажмите на переключатель что бы заставить его
+                <strong>выдавать истинный сигнал </strong> и активировать этим
+                покрасчика.<br><br> PS: Не обязательно соединять все входы!
+                Достаточно двух."
     colors:
         red: Красный
         green: Зеленый
@@ -362,11 +337,8 @@ ingame:
             buildings:
                 title: 18 новых Построек!
                 desc: Полностью автоматизируйте свою фабрику!
-            savegames:
-                title: ∞ Сохранений
-                desc: Сколько Вашей душе угодно!
             upgrades:
-                title: 20 стадий улучшений!
+                title: ∞ стадий улучшений!
                 desc: В демоверсии всего 5!
             markers:
                 title: ∞ Маркеров!
@@ -380,6 +352,9 @@ ingame:
             support:
                 title: Поддержите меня
                 desc: Я занимаюсь разработкой в свободное время!
+            achievements:
+                title: Achievements
+                desc: Hunt them all!
 shopUpgrades:
     belt:
         name: Конвейеры, Разделители & Туннели
@@ -516,20 +491,20 @@ buildings:
                 Фильтром, например.
     logic_gate:
         default:
-            name: AND Gate
+            name: И
             description: Издает значение "1" если оба входа положительны. (Положительный -
                 значит ресурс, цвет или логическое значение "1")
         not:
-            name: NOT Gate
+            name: НЕ
             description: Издает значение "1" если вход не положительный. (Положительный -
                 значит ресурс, цвет или логическое значение "1")
         xor:
-            name: XOR Gate
+            name: Исключающее ИЛИ
             description: Издает значение "1" только один из входов положительный.
                 (Положительный - значит ресурс, цвет или логическое значение
                 "1")
         or:
-            name: OR Gate
+            name: ИЛИ
             description: Издает значение "1" если хотя бы один вход положительный.
                 (Положительный - значит ресурс, цвет или логическое значение
                 "1").
@@ -570,7 +545,7 @@ buildings:
         unstacker:
             name: Виртуальный Разъединитель
             description: Виртуально извлекает самый верхний слой фигуры направо, а все
-                остальное направо.
+                остальное налево.
         stacker:
             name: Виртуальный Объединитель
             description: Виртуально помещает правый предмет поверх левого.
@@ -585,13 +560,13 @@ buildings:
                 проводами сигнал на обычном слое.
     transistor:
         default:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Транзистор
+            description: Пропускает предметы только если вход сбоку имеет истинноре значение
+                (фигура, цвет или "1").
         mirrored:
-            name: Transistor
-            description: Forwards the bottom input if the side input is truthy (a shape,
-                color or "1").
+            name: Транзистор
+            description: Пропускает предметы только если вход сбоку имеет истинноре значение
+                (фигура, цвет или "1").
 storyRewards:
     reward_cutter_and_trash:
         title: Разрезание Фигур
@@ -687,9 +662,9 @@ storyRewards:
         desc: Поздравляем! Кстати, больше контента планируется для полной версии!
     reward_balancer:
         title: Балансер
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Многофункциональный <strong>балансер</strong> разблокирован - Он
+            используется для <strong>разделения и обьединения потока
+            предметов</strong> на несколько конвейеров!
     reward_merger:
         title: Компактный Соединитель
         desc: Разблокирован <strong>соединитель</strong> - вариант
@@ -698,11 +673,11 @@ storyRewards:
     reward_belt_reader:
         title: Измеритель
         desc: Разблокирован <strong>измеритель</strong>! Он позволяет измерять
-            пропускную способность конвейера.<br><br>А как полезен он будет,
-            когда вы разблокируете провода!
+            пропускную способность конвейера.<br><br>Вы узнаете, как он полезен,
+            когда разблокируете провода!
     reward_rotater_180:
         title: Вращатель (180 градусов)
-        desc: Разблокирован <strong>rotater</strong> на 180 градусов! - Он позволяет
+        desc: Разблокирован <strong>вращатель</strong> на 180 градусов! - Он позволяет
             вращать фигур на 180 градусов (Сюрприз! :D)
     reward_display:
         title: Экран
@@ -737,13 +712,13 @@ storyRewards:
             выбрали, не забывайте хорошо проводить время!
     reward_wires_painter_and_levers:
         title: Провода & Покрасчик (4 входа)
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Вы разблокировали <strong>Слой проводов</strong>: Это отдельный слой выше
+            обычного слоя и он предоставляет много новых механик!<br><br> Для
+            начала я разблокировал тебе <strong>Покрасчик на 4 входа </strong> -
+            Соедини слоты которые нужно покрасить на слое проводов!<br><br> Для
+            переключения видимости слоя проводов, нажми <strong>E</strong>.
+            <br><br> PS: <strong>Включи подсказки</strong> в настройках что бы
+            активировать обучение по проводам!"
     reward_filter:
         title: Фильтр
         desc: Разблокирован <strong>Фильтр</strong>! Он направит ресурсы наверх или
@@ -759,7 +734,7 @@ settings:
         general: Основные
         userInterface: Интерфейс
         advanced: Продвинутые
-        performance: Performance
+        performance: Производительность
     versionBadges:
         dev: Разработчик
         staging: Постановка
@@ -809,11 +784,11 @@ settings:
                 dark: Темная
                 light: Светлая
         refreshRate:
-            title: Частота обновления
-            description: Если у вас монитор 144 Гц, измените частоту обновления здесь, чтобы
-                игра правильно выглядела при более высоких частотах обновления.
-                Это может уменьшить FPS, если ваш компьютер работает слишком
-                медленно.
+            title: Тикрейт
+            description: Определяет, сколько игровых тиков происходит в секунду. Более
+                высокая частота тиков означает лучшую точность, но также и
+                худшую производительность. На низких тикрейтах симуляция может
+                быть неточной.
         alwaysMultiplace:
             title: Многократное размещение
             description: Если включено, все здания останутся выбранными после размещения,
@@ -878,7 +853,7 @@ settings:
             title: Громкость Звука
             description: Задает громкость звуковых эффектов.
         musicVolume:
-            title: Music Volume
+            title: Громкость музыки
             description: Задает громкость музыки.
         lowQualityMapResources:
             title: Низкое качество ресурсов на карте
@@ -916,13 +891,12 @@ settings:
             description: Позволяет двигать карту, перемещая курсор к краям экрана. Скорость
                 зависит от настройки Скорости движения.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Приближение в точку курсора
+            description: Если включено, приближение будет в направлении курсора мыши, иначе
+                в центр экрана.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Размер ресурсов на карте
+            description: Устанавливает размер фигур на карте (когда вид достаточно отдалён).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Настройки управления
@@ -997,6 +971,10 @@ keybindings:
         comparator: Сравнить
         item_producer: Генератор Ресурсов (Песочница)
         copyWireValue: "Провода: скопировать значение под курсором"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
 about:
     title: Об игре
     body: >-
@@ -1006,7 +984,7 @@ about:
 
         Если вы хотите внести свой вклад игре - <a href="<githublink>" target="_blank">shapez.io в github</a>.<br><br>
 
-        Эта игра не была бы возможна без большого сообщества в дискорде, которое собралось вокруг моих игр - Вам действительно стоит присоединиться к <a href="<discordlink>" target="_blank">серверу Discord!</a>!<br><br>
+        Эта игра не была бы возможна без большого сообщества в Discord, которое собралось вокруг моих игр - Вам действительно стоит присоединиться к <a href="<discordlink>" target="_blank">серверу Discord!</a>!<br><br>
 
         Саундтрек сделал <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Он потрясающий.<br><br>
 
@@ -1038,17 +1016,18 @@ tips:
     - Покрасчик имеет зеркальный вариант, который может быть выбран, нажав
       <b>T</b>.
     - Правильные соотношения построек позволяет улучшить эффективность фабрики.
-    - At maximum level, 5 extractors will fill a single belt.
+    - На максимальном уровне, 5 экстракторов заполняют один конвейер.
     - Резаки всегда разрезают пополам по вертикали вне зависимости от ориентации.
     - Чтобы получить белый цвет, смешайте все три цвета.
-    - Holding <b>SHIFT</b> will activate the belt planner, letting you place
-      long lines of belts easily.
+    - Удерживание <b>SHIFT</b> активирует планировщик конвейеров, что упрощает
+      простройку длинных конвейеров.
     - Вкладывайте время в строительство повторяемых механизмов - оно того стоит!
-    - To get white mix all three colors.
-    - The storage buffer prioritises the left output.
+    - Смешайте все три цвета для получения белого.
+    - Буффер хранилища с большим приоритетом выдаёт на левый выход.
     - Эффективность - ключ к успеху!
-    - Holding <b>CTRL</b> allows to place multiple buildings.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - Удерживание <b>CTRL</b> даёт возможность размещения нескольких построек.
+    - Можно зажать <b>ALT</b> для инвертирования направления размещаемых
+      конвейеров.
     - Используйте балансеры, чтобы максимизировать эффективность.
     - Организация очень важна, старайтесь не пересекать конвейеры слишком часто.
     - Планируйте заранее, иначе начнется ужасный хаос!
@@ -1067,12 +1046,10 @@ tips:
     - С модулями теряется восприятие пространства; забота смертных.
     - Создайте отдельную фабрику чертежей. Они очень важны для модулей.
     - Взгляните внимательнее на смешиватель и вы найдете ответы на свои вопросы.
-    - With modules, space is merely a perception; a concern for mortal men.
-    - Строительство вблизи ХАБ-а может помешать будущим проектам.
+    - Строительство вблизи ХАБ-а может помешать будущим фабрикам.
     - Иконка булавки на каждой фигуре закрепляет ее на экране.
+    - Have a closer look at the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
-    - В вашем распоряжении бесконечная карта! Не загромождайте вашу фабрику,
-      расширяйтесь!
     - Также попробуйте Factorio. Это моя любимая игра.
     - Резак(4 входа) разрезает по часовой стрелке, начиная с правой верхней
       части!
@@ -1080,10 +1057,11 @@ tips:
     - В этой игре множество полезных комбинаций клавиш. Загляните в настройки,
       чтобы ознакомиться с ними.
     - В этой игре множество настроек, не забудьте с ними ознакомиться.
-    - Маркер ХАБ-а имеет небольшой компас, указывающий его направление.
+    - Маркер ХАБ-а имеет небольшой компас, указывающий его местоположение.
     - Нажмите F4, чтобы показать FPS и Частоту Обновления.
     - Нажмите F4 дважды, чтобы показать координаты курсора и камеры.
     - Вы можете нажать на закрепленную фигуру слева, чтобы открепить ее.
+    - Для очистки конвейеров, вырежьте область и вставьте её в то же место.
     - To clear belts, cut the area and then paste it at the same location.
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.

@@ -1,5 +1,57 @@
 export const CHANGELOG = [
     {
+        version: "1.3.1",
+        date: "beta",
+        entries: [
+            "Fixed savegames getting corrupt in rare conditions",
+            "Fixed game crashing sometimes since the achievements update",
+        ],
+    },
+    {
+        version: "1.3.0",
+        date: "12.03.2020",
+        skin: "achievements",
+        entries: [
+            "There are now <strong>45 Steam Achievements!</strong>",
+            "Fixed constant signals being editable from the regular layer",
+            "Fixed items still overlapping sometimes between buildings and belts",
+            "The game is now available in finnish, italian, romanian and ukrainian! (Thanks to all contributors!)",
+            "Updated translations (Thanks to all contributors!)",
+        ],
+    },
+    {
+        version: "1.2.2",
+        date: "07.12.2020",
+        entries: [
+            "Fix item readers and some other buildings slowing up belts, especially if they stalled (inspired by Keterr's fix)",
+            "Added the ability to edit constant signals by left clicking them",
+            "Prevent items from being rendered on each other when a belt stalls (inspired by Keterr)",
+            "You can now add markers in the wire layer (partially by daanbreur)",
+            "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by EmeraldBlock)",
+            "Allow to cycle variants backwards with SHIFT + T",
+            "Upgrade numbers now use roman numerals until tier 50 (by LeopoldTal)",
+            "Add button to unpin shapes from the left side (by artemisSystem)",
+            "Fix middle mouse button also placing blueprints (by Eiim)",
+            "Hide wires grid when using the 'Disable Grid' setting (by EmeraldBlock)",
+            "Fix UI using multiple different save icons",
+            "Updated translations (Thanks to all contributors!)",
+        ],
+    },
+    {
+        version: "1.2.1",
+        date: "31.10.2020",
+        entries: [
+            "Fixed stacking bug for level 26 which required restarting the game",
+            "Fix reward notification being too long sometimes (by LeopoldTal)",
+            "Use locale decimal separator on belt reader display (by LeopoldTal)",
+            "Vastly improved performance when saving games (by LeopoldTal)",
+            "Prevent some antivirus programs blocking the opening of external links (by LeopoldTal)",
+            "Match tutorials to the correct painter variants (by LeopoldTal)",
+            "Prevent throughput goals containing fractional numbers (by CEbbinghaus)",
+            "Updated translations and added Hungarian",
+        ],
+    },
+    {
         version: "1.2.0",
         date: "09.10.2020",
         entries: [

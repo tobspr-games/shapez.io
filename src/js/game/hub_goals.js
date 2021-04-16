@@ -169,7 +169,7 @@ export class HubGoals extends BasicSerializableObject {
     getCurrentGoalDelivered() {
         if (this.currentGoal.throughputOnly) {
             return (
-                this.root.productionAnalytics.getCurrentShapeRate(
+                this.root.productionAnalytics.getCurrentShapeRateRaw(
                     enumAnalyticsDataSource.delivered,
                     this.currentGoal.definition
                 ) / globalConfig.analyticsSliceDurationSeconds
@@ -238,7 +238,8 @@ export class HubGoals extends BasicSerializableObject {
             return;
         }
 
-        const required = Math.min(200, 4 + (this.level - 27) * 0.25);
+        //Floor Required amount to remove confusion
+        const required = Math.min(200, Math.floor(4 + (this.level - 27) * 0.25));
         this.currentGoal = {
             definition: this.computeFreeplayShape(this.level),
             required,

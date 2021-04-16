@@ -217,11 +217,14 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         let detector = null;
         if (canUnpin) {
+            const unpinButton = document.createElement("button");
+            unpinButton.classList.add("unpinButton");
+            element.appendChild(unpinButton);
             element.classList.add("removable");
-            detector = new ClickDetector(element, {
+            detector = new ClickDetector(unpinButton, {
                 consumeEvents: true,
                 preventDefault: true,
-                targetOnly: false,
+                targetOnly: true,
             });
             detector.click.add(() => this.unpinShape(key));
         } else {
@@ -270,7 +273,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
             if (handle.throughputOnly) {
                 currentValue =
-                    this.root.productionAnalytics.getCurrentShapeRate(
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(
                         enumAnalyticsDataSource.delivered,
                         handle.definition
                     ) / globalConfig.analyticsSliceDurationSeconds;

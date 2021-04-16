@@ -19,7 +19,6 @@
         color: #333438;
 
         &.removable {
-            cursor: pointer;
             pointer-events: all;
         }
 
@@ -83,6 +82,28 @@
             & {
                 /* @load-async */
                 background: uiResource("icons/info_button.png") center center / 95% no-repeat;
+            }
+        }
+
+        > .unpinButton {
+            @include S(width, 8px);
+            @include S(height, 8px);
+            position: absolute;
+            opacity: 0.7;
+            @include S(top, 3px);
+            @include S(left, -7px);
+            @include DarkThemeInvert;
+            @include IncreasedClickArea(2px);
+            transition: opacity 0.12s ease-in-out;
+            z-index: 100;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            & {
+                /* @load-async */
+                background: uiResource("icons/unpin_shape.png") center center / 80% no-repeat;
             }
         }
 
