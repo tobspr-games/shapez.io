@@ -52,7 +52,7 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                 pinsComp.slots[1].value = readerComp.lastItem;
             } else {
                 pinsComp.slots[0].value = BOOL_FALSE_SINGLETON;
-                if(entity.components.ItemProcessor.ongoingCharges.length < 2) {
+                if (entity.components.ItemProcessor.ongoingCharges.length < 2) {
                     pinsComp.slots[1].value = null;
                 }
             }
