@@ -43,7 +43,7 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                     throughput = 1 / (averageSpacing / averageSpacingNum) + 0.01;
                 }
 
-                readerComp.lastThroughput = Math.min(globalConfig.beltSpeedItemsPerSecond, throughput);
+                readerComp.lastThroughput = Math.min(globalConfig.beltSpeedItemsPerSecond * this.root.hubGoals.upgradeLevels["belt"], throughput);
             }
 
             // Set the pins value - shape output consistent with the boolean output
