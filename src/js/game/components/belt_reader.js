@@ -41,6 +41,10 @@ export class BeltReaderComponent extends Component {
          */
         this.lastThroughputComputation = 0;
 
+        /**
+         * Stores the entry time of the latest removed item
+         * @type {number}
+         */
         this.lastRemovedItemTime = 0;
     }
 }
