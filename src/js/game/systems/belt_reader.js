@@ -44,7 +44,7 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                 }
 
                 readerComp.lastThroughput = Math.min(
-                    globalConfig.beltSpeedItemsPerSecond * this.root.hubGoals.upgradeLevels.belt,
+                    globalConfig.beltSpeedItemsPerSecond * this.root.hubGoals.upgradeImprovements.belt,
                     throughput
                 );
             }
