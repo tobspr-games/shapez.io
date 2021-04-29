@@ -61,11 +61,13 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         });
 
         const items = [
-            BOOL_FALSE_SINGLETON,
-            BOOL_TRUE_SINGLETON,
             ...Object.values(COLOR_ITEM_SINGLETONS),
             this.root.shapeDefinitionMgr.getShapeItemFromShortKey(this.root.gameMode.getBlueprintShapeKey()),
         ];
+
+        if (entity.components.ConstantSignal.type === enumConstantSignalType.wired) {
+            items.unshift(BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON);
+        }
 
         if (this.root.gameMode.hasHub()) {
             items.push(

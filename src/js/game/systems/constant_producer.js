@@ -1,11 +1,12 @@
 /* typehints:start */
-import { GameRoot } from "../root";
 /* typehints:end */
-
 import { globalConfig } from "../../core/config";
+import { DrawParameters } from "../../core/draw_parameters";
 import { ConstantSignalComponent } from "../components/constant_signal";
 import { ItemProducerComponent } from "../components/item_producer";
 import { GameSystemWithFilter } from "../game_system_with_filter";
+import { MapChunk } from "../map_chunk";
+import { GameRoot } from "../root";
 
 export class ConstantProducerSystem extends GameSystemWithFilter {
     /** @param {GameRoot} root */
@@ -29,6 +30,12 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
         }
     }
 
+    /**
+     *
+     * @param {DrawParameters} parameters
+     * @param {MapChunk} chunk
+     * @returns
+     */
     drawChunk(parameters, chunk) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
@@ -48,7 +55,7 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
 
             // TODO: Better looking overlay
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-            item.drawItemCenteredClipped(center.x, center.y, parameters, globalConfig.tileSize);
+            item.drawItemCenteredClipped(center.x, center.y + 1, parameters, globalConfig.tileSize * 0.65);
         }
     }
 }

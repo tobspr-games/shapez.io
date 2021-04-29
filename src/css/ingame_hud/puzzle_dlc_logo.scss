@@ -1,0 +1,12 @@
+#ingame_HUD_PuzzleDLCLogo {
+    position: absolute;
+    @include S(width, 150px);
+    @include S(height, 40px);
+    @include S(bottom, 10px);
+    @include S(right, 15px);
+
+    & {
+        /* @load-async */
+        background: uiResource("puzzle_dlc_logo.png") center center / contain no-repeat;
+    }
+}

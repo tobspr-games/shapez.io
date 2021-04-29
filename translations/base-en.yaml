@@ -122,6 +122,14 @@ mainMenu:
 puzzleMenu:
     play: Play
     edit: Edit
+    title: Puzzle Mode
+    createPuzzle: Create Puzzle
+
+    categories:
+        levels: Levels
+        new: New
+        topRated: Top Rated
+        myPuzzles: My Puzzles
 
 dialogs:
     buttons:
@@ -258,6 +266,11 @@ dialogs:
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Available
         desc: There is a tutorial video available for this level, but it is only available in English. Would you like to watch it?
+
+    puzzleLoadFailed:
+        title: Puzzles failed to load
+        desc: >-
+            Unfortunately the puzzles could not be loaded:
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -486,18 +499,18 @@ ingame:
     modeMenu:
         puzzleEditMode:
             back:
-                title: Main Menu
-            next: 
+                title: Menu
+            next:
                 title: Playtest
-                desc: You will have to complete the puzzle before being able to publish it
+                desc: Required for publishing
         puzzleEditTestMode:
-            back: 
+            back:
                 title: Edit
-            next: 
+            next:
                 title: Publish
         puzzlePlayMode:
             back:
-                title: Puzzle Menu
+                title: Menu
             next:
                 title: Next
 

@@ -8,6 +8,7 @@ import { KeyActionMapper } from "../game/key_action_mapper";
 import { Savegame } from "../savegame/savegame";
 import { GameCore } from "../game/core";
 import { MUSIC } from "../platform/sound";
+import { enumGameModeIds } from "../game/game_mode";
 
 const logger = createLogger("state/ingame");
 
@@ -150,7 +151,11 @@ export class InGameState extends GameState {
      * Goes back to the menu state
      */
     goBackToMenu() {
-        this.saveThenGoToState("MainMenuState");
+        if ([enumGameModeIds.puzzleEdit, enumGameModeIds.puzzlePlay].includes(this.gameModeId)) {
+            this.saveThenGoToState("PuzzleMenuState");
+        } else {
+            this.saveThenGoToState("MainMenuState");
+        }
     }
 
     /**
@@ -437,6 +442,11 @@ export class InGameState extends GameState {
             logger.warn("Skipping double save and returning same promise");
             return this.currentSavePromise;
         }
+
+        if (!this.core.root.gameMode.getIsSaveable()) {
+            return Promise.resolve();
+        }
+
         logger.log("Starting to save game ...");
         this.savegame.updateData(this.core.root);
 

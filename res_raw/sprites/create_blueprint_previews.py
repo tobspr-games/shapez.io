@@ -41,7 +41,7 @@ def process_image(data, outfilename, src_image):
     if isWire:
         targetR = 255
         targetG = 104
-        targetB = 232 
+        targetB = 232
 
     for x in range(img.width):
         for y in range(img.height):
@@ -85,6 +85,8 @@ def generate_blueprint_sprite(infilename, outfilename):
 buildings = listdir("buildings")
 
 for buildingId in buildings:
+    if not ".png" in buildingId:
+        continue
     if "hub" in buildingId:
         continue
     if "wire-" in buildingId:

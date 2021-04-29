@@ -11,6 +11,7 @@ import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
 import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
 import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
 import { HUDWaypoints } from "../hud/parts/waypoints";
+import { HUDMassSelector } from "../hud/parts/mass_selector";
 
 export class PuzzleGameMode extends GameMode {
     static getType() {
@@ -33,6 +34,7 @@ export class PuzzleGameMode extends GameMode {
 
         this.setHudParts({
             [HUDGameMenu.name]: false,
+            [HUDMassSelector.name]: false,
             [HUDInteractiveTutorial.name]: false,
             [HUDKeybindingOverlay.name]: false,
             [HUDPartTutorialHints.name]: false,
@@ -120,6 +122,14 @@ export class PuzzleGameMode extends GameMode {
 
     getMinimumZoom() {
         return 1;
+    }
+
+    getIsSaveable() {
+        return false;
+    }
+
+    getSupportsCopyPaste() {
+        return false;
     }
 
     /** @returns {boolean} */

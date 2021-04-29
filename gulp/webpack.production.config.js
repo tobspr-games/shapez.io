@@ -40,7 +40,7 @@ module.exports = ({
         G_ALL_UI_IMAGES: JSON.stringify(getAllResourceImages()),
     };
 
-    const minifyNames = environment === "prod";
+    const minifyNames = false;
 
     return {
         mode: "production",

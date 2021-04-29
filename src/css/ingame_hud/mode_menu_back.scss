@@ -18,18 +18,23 @@
         color: #333438;
         transition: all 0.12s ease-in-out;
         transition-property: opacity, transform;
+        text-transform: uppercase;
+        @include PlainText;
 
-        opacity: 0.8;
+        opacity: 1;
         &:hover {
-            opacity: 1 !important;
+            opacity: 0.9 !important;
         }
 
         &.pressed {
-            transform: scale(0.9) !important;
+            transform: scale(0.95) !important;
         }
 
-        @include DarkThemeOverride {
-            color: #fff;
+        @include S(padding-left, 25px);
+
+        & {
+            /* @load-async */
+            background: uiResource("icons/state_back_button.png") left center / D(15px) no-repeat;
         }
     }
 }

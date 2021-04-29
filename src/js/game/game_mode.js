@@ -177,6 +177,16 @@ export class GameMode extends BasicSerializableObject {
         return false;
     }
 
+    /** @returns {boolean} */
+    getIsSaveable() {
+        return true;
+    }
+
+    /** @returns {boolean} */
+    getSupportsCopyPaste() {
+        return true;
+    }
+
     /** @returns {string} */
     getBlueprintShapeKey() {
         return "CbCbCbRb:CwCwCwCw";

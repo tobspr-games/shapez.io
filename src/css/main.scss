@@ -29,6 +29,7 @@
 @import "states/about";
 @import "states/mobile_warning";
 @import "states/changelog";
+@import "states/puzzle_menu";
 
 @import "ingame_hud/buildings_toolbar";
 @import "ingame_hud/building_placer";
@@ -59,12 +60,14 @@
 @import "ingame_hud/mode_menu_next";
 @import "ingame_hud/mode_menu";
 @import "ingame_hud/mode_settings";
+@import "ingame_hud/puzzle_dlc_logo";
 
 // prettier-ignore
 $elements:
 // Base
 ingame_Canvas,
 ingame_VignetteOverlay,
+ingame_HUD_PuzzleDLCLogo,
 
 // Ingame overlays
 ingame_HUD_Waypoints,

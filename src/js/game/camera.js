@@ -474,6 +474,7 @@ export class Camera extends BasicSerializableObject {
 
         // Clamp everything afterwards
         this.clampZoomLevel();
+        this.clampToBounds();
         return false;
     }
 
@@ -759,18 +760,16 @@ export class Camera extends BasicSerializableObject {
     }
 
     /**
-     * Clamps x, y position within set boundaries
-     * @param {Vector} vector
+     * Clamps the center within set boundaries
      */
-    clampToBounds(vector) {
+    clampToBounds() {
         if (!this.root.gameMode.hasBounds()) {
             return;
         }
 
         const bounds = this.root.gameMode.getBounds().allScaled(globalConfig.tileSize);
-
-        vector.x = clamp(vector.x, bounds.x, bounds.x + bounds.w);
-        vector.y = clamp(vector.y, bounds.y, bounds.y + bounds.h);
+        this.center.x = clamp(this.center.x, bounds.x, bounds.x + bounds.w);
+        this.center.y = clamp(this.center.y, bounds.y, bounds.y + bounds.h);
     }
 
     /**
@@ -876,7 +875,7 @@ export class Camera extends BasicSerializableObject {
             // Panning
             this.currentPan = mixVector(this.currentPan, this.desiredPan, 0.06);
             this.center = this.center.add(this.currentPan.multiplyScalar((0.5 * dt) / this.zoomLevel));
-            this.clampToBounds(this.center);
+            this.clampToBounds();
         }
     }
 
@@ -942,7 +941,7 @@ export class Camera extends BasicSerializableObject {
             )
         );
 
-        this.clampToBounds(this.center);
+        this.clampToBounds();
     }
 
     /**
@@ -1029,7 +1028,7 @@ export class Camera extends BasicSerializableObject {
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;
 
-            this.clampToBounds(this.center);
+            this.clampToBounds();
         }
     }
 }

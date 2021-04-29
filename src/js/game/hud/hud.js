@@ -1,58 +1,56 @@
 /* typehints:start */
-import { GameRoot } from "../root";
-/* typehints:end */
-
-/* dev:start */
-import { TrailerMaker } from "./trailer_maker";
-/* dev:end */
-
-import { Signal } from "../../core/signal";
+import { globalConfig, IS_MOBILE } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+/* dev:end */
+import { Signal } from "../../core/signal";
+import { KEYMAPPINGS } from "../key_action_mapper";
+import { MetaBuilding } from "../meta_building";
+import { GameRoot } from "../root";
+import { ShapeDefinition } from "../shape_definition";
+import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
-import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
-import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
-import { HUDUnlockNotification } from "./parts/unlock_notification";
-import { HUDGameMenu } from "./parts/game_menu";
-import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig } from "../../core/config";
-import { HUDMassSelector } from "./parts/mass_selector";
-import { HUDVignetteOverlay } from "./parts/vignette_overlay";
-import { HUDStatistics } from "./parts/statistics";
-import { MetaBuilding } from "../meta_building";
-import { HUDPinnedShapes } from "./parts/pinned_shapes";
-import { ShapeDefinition } from "../shape_definition";
-import { HUDNotifications, enumNotificationType } from "./parts/notifications";
-import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDCatMemes } from "./parts/cat_memes";
+import { HUDColorBlindHelper } from "./parts/color_blind_helper";
+import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
+import { HUDChangesDebugger } from "./parts/debug_changes";
 import { HUDDebugInfo } from "./parts/debug_info";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
-import { KEYMAPPINGS } from "../key_action_mapper";
-import { HUDWatermark } from "./parts/watermark";
-import { HUDModalDialogs } from "./parts/modal_dialogs";
-import { HUDPartTutorialHints } from "./parts/tutorial_hints";
-import { HUDWaypoints } from "./parts/waypoints";
+import { HUDGameMenu } from "./parts/game_menu";
 import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
-import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
-import { HUDColorBlindHelper } from "./parts/color_blind_helper";
-import { HUDShapeViewer } from "./parts/shape_viewer";
-import { HUDWiresOverlay } from "./parts/wires_overlay";
-import { HUDChangesDebugger } from "./parts/debug_changes";
-import { queryParamOptions } from "../../core/query_parameters";
-import { HUDSandboxController } from "./parts/sandbox_controller";
-import { HUDWiresToolbar } from "./parts/wires_toolbar";
-import { HUDWireInfo } from "./parts/wire_info";
-import { HUDLeverToggle } from "./parts/lever_toggle";
+import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
 import { HUDLayerPreview } from "./parts/layer_preview";
+import { HUDLeverToggle } from "./parts/lever_toggle";
+import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDMinerHighlight } from "./parts/miner_highlight";
-import { HUDBetaOverlay } from "./parts/beta_overlay";
-import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
-import { HUDCatMemes } from "./parts/cat_memes";
-import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
-import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
+import { HUDModalDialogs } from "./parts/modal_dialogs";
+import { HUDModeMenu } from "./parts/mode_menu";
 import { HUDModeMenuBack } from "./parts/mode_menu_back";
 import { HUDModeMenuNext } from "./parts/mode_menu_next";
-import { HUDModeMenu } from "./parts/mode_menu";
 import { HUDModeSettings } from "./parts/mode_settings";
+import { enumNotificationType, HUDNotifications } from "./parts/notifications";
+import { HUDPinnedShapes } from "./parts/pinned_shapes";
+import { HUDPuzzleDLCLogo } from "./parts/puzzle_dlc_logo";
+import { HUDSandboxController } from "./parts/sandbox_controller";
+import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
+import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDShapeViewer } from "./parts/shape_viewer";
+import { HUDShop } from "./parts/shop";
+import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
+import { HUDStatistics } from "./parts/statistics";
+import { HUDPartTutorialHints } from "./parts/tutorial_hints";
+import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
+import { HUDUnlockNotification } from "./parts/unlock_notification";
+import { HUDVignetteOverlay } from "./parts/vignette_overlay";
+import { HUDWatermark } from "./parts/watermark";
+import { HUDWaypoints } from "./parts/waypoints";
+import { HUDWiresOverlay } from "./parts/wires_overlay";
+import { HUDWiresToolbar } from "./parts/wires_toolbar";
+import { HUDWireInfo } from "./parts/wire_info";
+/* typehints:end */
+/* dev:start */
+import { TrailerMaker } from "./trailer_maker";
 
 export class GameHUD {
     /**
@@ -96,6 +94,7 @@ export class GameHUD {
             modeMenuNext: HUDModeMenuNext,
             modeMenu: HUDModeMenu,
             modeSettings: HUDModeSettings,
+            puzzleDlcLogo: HUDPuzzleDLCLogo,
 
             // Must always exist
             pinnedShapes: HUDPinnedShapes,

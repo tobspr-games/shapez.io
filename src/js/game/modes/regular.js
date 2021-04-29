@@ -14,6 +14,7 @@ import { HUDModeSettings } from "../hud/parts/mode_settings";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
 
 /** @typedef {{
  *   shape: string,
@@ -522,6 +523,7 @@ export class RegularGameMode extends GameMode {
             [HUDModeMenuNext.name]: false,
             [HUDModeMenu.name]: false,
             [HUDModeSettings.name]: false,
+            [HUDPuzzleDLCLogo.name]: false,
         });
 
         this.setBuildings({

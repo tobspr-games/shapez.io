@@ -1,0 +1,181 @@
+#state_PuzzleMenuState {
+    > .headerBar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
+    > .container {
+        > .mainContent {
+            overflow: hidden;
+
+            > .categoryChooser {
+                display: grid;
+                grid-auto-columns: 1fr;
+                grid-auto-flow: column;
+                @include S(grid-gap, 2px);
+                @include S(padding-right, 10px);
+
+                > .category {
+                    background: $accentColorBright;
+                    border-radius: 0;
+                    color: $accentColorDark;
+                    transition: all 0.12s ease-in-out;
+                    transition-property: opacity, background-color, color;
+
+                    &:first-child {
+                        @include S(border-top-left-radius, $globalBorderRadius);
+                        @include S(border-bottom-left-radius, $globalBorderRadius);
+                    }
+                    &:last-child {
+                        border-top-right-radius: $globalBorderRadius;
+                        border-bottom-right-radius: $globalBorderRadius;
+                    }
+
+                    &.active {
+                        background: $colorBlueBright;
+                        opacity: 1 !important;
+                        color: #fff;
+                        cursor: default;
+                    }
+                }
+            }
+
+            > .puzzles {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                @include S(grid-auto-rows, 120px);
+                @include S(grid-gap, 3px);
+                @include S(grid-auto-columns, 1fr);
+                @include S(margin-top, 10px);
+                @include S(padding-right, 4px);
+                @include S(height, 360px);
+                overflow-y: scroll;
+                pointer-events: all;
+
+                > .puzzle {
+                    width: 100%;
+                    @include S(height, 120px);
+                    background: #f3f3f8;
+                    @include S(border-radius, $globalBorderRadius);
+
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    grid-template-rows: D(15px) 1fr auto;
+                    @include S(padding, 5px);
+                    @include S(grid-column-gap, 5px);
+                    box-sizing: border-box;
+                    pointer-events: all;
+                    cursor: pointer;
+                    position: relative;
+
+                    @include InlineAnimation(0.12s ease-in-out) {
+                        0% {
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    &:hover {
+                        background: #f0f0f8;
+                    }
+
+                    > .title {
+                        grid-column: 1 / 2;
+                        grid-row: 1/ 2;
+                        @include PlainText;
+                    }
+
+                    > .icon {
+                        grid-column: 1 / 3;
+                        grid-row: 2 / 3;
+                        align-self: center;
+                        justify-self: center;
+                        @include S(width, 70px);
+                        @include S(height, 70px);
+
+                        canvas {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    > .author {
+                        grid-column: 1 / 2;
+                        grid-row: 3 / 4;
+                        @include SuperSmallText;
+                        color: $accentColorDark;
+                        align-self: end;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    > .playcount {
+                        grid-column: 1 / 2;
+                        display: none;
+                        grid-row: 3 / 4;
+                        @include SuperSmallText;
+                    }
+
+                    > .upvotes {
+                        @include SuperSmallText;
+                        grid-column: 2 / 3;
+                        grid-row: 3 / 4;
+                        color: $accentColorDark;
+                        align-self: end;
+                        justify-self: end;
+                        font-weight: bold;
+                        @include S(padding-right, 12px);
+
+                        & {
+                            /* @load-async */
+                            background: uiResource("icons/puzzle_upvotes.png") calc(100% - #{D(2px)}) #{D(
+                                    3.3px
+                                )} / #{D(8px)} #{D(8px)} no-repeat;
+                        }
+                    }
+
+                    &.completed {
+                        .icon,
+                        .upvotes,
+                        .playcount,
+                        .author,
+                        .title {
+                            opacity: 0.5;
+                        }
+
+                        background: #fafafa;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            @include S(top, 10px);
+                            @include S(right, 10px);
+                            @include S(width, 30px);
+                            @include S(height, 30px);
+                            opacity: 0.1;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_complete_indicator.png") center center /
+                                    contain no-repeat;
+                            }
+                        }
+                    }
+                }
+
+                > .loader {
+                    grid-column: 1 / -1;
+                    grid-row: 1 / 3;
+                    display: flex;
+                    align-items: center;
+                    color: $accentColorBright;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

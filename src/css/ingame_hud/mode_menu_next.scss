@@ -17,26 +17,32 @@
         position: relative;
         color: #333438;
         transition: all 0.12s ease-in-out;
+        text-transform: uppercase;
         transition-property: opacity, transform;
+        @include PlainText;
+        @include S(padding-right, 25px);
+        opacity: 1;
 
-        opacity: 0.8;
         &:hover {
-            opacity: 1 !important;
+            opacity: 0.9 !important;
         }
 
         &.pressed {
-            transform: scale(0.9) !important;
+            transform: scale(0.95) !important;
         }
 
-        @include DarkThemeOverride {
-            color: #fff;
+        & {
+            /* @load-async */
+            background: uiResource("icons/state_next_button.png") right center / D(15px) no-repeat;
         }
     }
 
     > .content {
-        @include SuperSmallText;
-        @include S(font-size, 7px);
-        @include S(width, 150px);
+        @include SuperDuperSmallText;
+        @include S(width, 180px);
+        @include S(padding-right, 25px);
         text-align: right;
+        text-transform: uppercase;
+        color: $accentColorDark;
     }
 }
