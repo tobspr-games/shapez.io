@@ -1,7 +1,5 @@
-/* typehints:start */
 import { globalConfig, IS_MOBILE } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-/* dev:end */
 import { Signal } from "../../core/signal";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { MetaBuilding } from "../meta_building";
@@ -49,8 +47,6 @@ import { HUDWaypoints } from "./parts/waypoints";
 import { HUDWiresOverlay } from "./parts/wires_overlay";
 import { HUDWiresToolbar } from "./parts/wires_toolbar";
 import { HUDWireInfo } from "./parts/wire_info";
-/* typehints:end */
-/* dev:start */
 import { TrailerMaker } from "./trailer_maker";
 
 export class GameHUD {
