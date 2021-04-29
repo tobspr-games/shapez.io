@@ -183,7 +183,7 @@ export class GameSystemManager {
 
         add("goalAcceptor", GoalAcceptorSystem);
 
-        if (this.root.gameMode.hasZone()) {
+        if (this.root.gameMode.getBuildableZones()) {
             add("zone", ZoneSystem);
         }
 

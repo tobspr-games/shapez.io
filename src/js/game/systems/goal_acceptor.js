@@ -49,25 +49,17 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
 
         const itemInput = new FormElementInput({
             id: "goalItemInput",
-            label: fillInLinkIntoTranslation(T.dialogs.editSignal.descShortKey, THIRDPARTY_URLS.shapeViewer),
+            label: fillInLinkIntoTranslation(T.dialogs.editGoalAcceptor.desc, THIRDPARTY_URLS.shapeViewer),
             placeholder: "CuCuCuCu",
             defaultValue: "CuCuCuCu",
             validator: val => this.parseItem(val),
         });
 
-        const rateInput = new FormElementInput({
-            id: "goalRateInput",
-            label: "Rate:",
-            placeholder: "0",
-            defaultValue: "0",
-            validator: val => !isNaN(Number(val)),
-        });
-
         const dialog = new DialogWithForm({
             app: this.root.app,
-            title: "Set Goal",
+            title: T.dialogs.editGoalAcceptor.title,
             desc: "",
-            formElements: [itemInput, rateInput],
+            formElements: [itemInput],
             buttons: ["cancel:bad:escape", "ok:good:enter"],
             closeButton: false,
         });
@@ -79,7 +71,6 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
             }
 
             goalComp.item = this.parseItem(itemInput.getValue());
-            goalComp.rate = this.parseRate(rateInput.getValue());
         };
 
         dialog.buttonSignals.ok.add(closeHandler);

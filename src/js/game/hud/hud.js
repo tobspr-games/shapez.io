@@ -32,6 +32,7 @@ import { HUDModeSettings } from "./parts/mode_settings";
 import { enumNotificationType, HUDNotifications } from "./parts/notifications";
 import { HUDPinnedShapes } from "./parts/pinned_shapes";
 import { HUDPuzzleDLCLogo } from "./parts/puzzle_dlc_logo";
+import { HUDPuzzleEditorControls } from "./parts/puzzle_editor_controls";
 import { HUDSandboxController } from "./parts/sandbox_controller";
 import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
 import { HUDSettingsMenu } from "./parts/settings_menu";
@@ -95,6 +96,7 @@ export class GameHUD {
             modeMenu: HUDModeMenu,
             modeSettings: HUDModeSettings,
             puzzleDlcLogo: HUDPuzzleDLCLogo,
+            puzzleEditorControls: HUDPuzzleEditorControls,
 
             // Must always exist
             pinnedShapes: HUDPinnedShapes,

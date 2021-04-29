@@ -184,6 +184,10 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      */
     getUpgradeLevel(upgradeId) {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return 10;
+        }
+
         return this.upgradeLevels[upgradeId] || 0;
     }
 
@@ -193,6 +197,10 @@ export class HubGoals extends BasicSerializableObject {
      */
     isRewardUnlocked(reward) {
         if (G_IS_DEV && globalConfig.debug.allBuildingsUnlocked) {
+            return true;
+        }
+        if (this.root.gameMode.getLevelDefinitions().length < 1) {
+            // no story, so always unlocked
             return true;
         }
         return !!this.gainedRewards[reward];
@@ -472,6 +480,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getBeltBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * 5;
+        }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 
@@ -480,6 +491,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getUndergroundBeltBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * 5;
+        }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 
@@ -488,6 +502,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getMinerBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.minerSpeedItemsPerSecond * 5;
+        }
         return globalConfig.minerSpeedItemsPerSecond * this.upgradeImprovements.miner;
     }
 
@@ -497,6 +514,10 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getProcessorBaseSpeed(processorType) {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return 10;
+        }
+
         switch (processorType) {
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:

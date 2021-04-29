@@ -7,13 +7,13 @@ steamPage:
 
     intro: >-
         אתה אוהב משחקי אוטומציה? אתה במקום הנכון!
-        
+
         shapez.io הוא משחק שלווה שבו אתה בונה מפעל בשביל ליצור צורות גאומטריות אוטומטית. ככל שמתקדמים השלבים, הצורות נהיות יותר ויותר מסובכות, ואתה צריך להפתח על המפה האין סופית.
-        
+
         ואם זה לא היה מספיק, אתה צריך ליצור יותר ויותר צורות  בשביל לספק את הדרישה - הדבר היחיד שיכול לעזור זה להגדיל את המפעל! בזמן שבהתחלה אתה רק צריך לערוך צורות, בהמשך אתה צריך לצבוע אותם בעזרת צבעים שאתה מערבב.
-        
+
         קניית המשחק בsteam תתן לך גישה למשחק המלא, אבל אתה יכול לשחק משחק דמו בhttps://shapez.io/ ולהחליט אחר כך.
-        
+
     what_others_say: What people say about shapez.io
 
     nothernlion_comment: >-
@@ -85,7 +85,8 @@ mainMenu:
     openSourceHint: המשחק הזה הוא עם קוד פתוח!
     discordLink: שרת הדסקורד הרשמי
     helpTranslate: תעזור לתרגם!
-    madeBy: יוצר המשחק: <author-link>
+    madeBy: >-
+        יוצר המשחק: <author-link>
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-

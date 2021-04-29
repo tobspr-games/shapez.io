@@ -124,16 +124,17 @@
                         @include SuperSmallText;
                         grid-column: 2 / 3;
                         grid-row: 3 / 4;
-                        color: $accentColorDark;
+                        color: #444;
                         align-self: end;
                         justify-self: end;
                         font-weight: bold;
                         @include S(padding-right, 12px);
+                        opacity: 0.89;
 
                         & {
                             /* @load-async */
                             background: uiResource("icons/puzzle_upvotes.png") calc(100% - #{D(2px)}) #{D(
-                                    3.3px
+                                    3.5px
                                 )} / #{D(8px)} #{D(8px)} no-repeat;
                         }
                     }

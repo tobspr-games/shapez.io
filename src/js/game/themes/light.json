@@ -52,7 +52,9 @@
 
         "zone": {
             "background": "#fff",
-            "border": "#cbffc4"
+            "border": "rgba(23, 192, 255, 0.1)",
+            "borderSolid": "rgba(23, 192, 255, 0.7)",
+            "outerColor": "rgba(240, 240, 255, 0.5)"
         }
     },
 

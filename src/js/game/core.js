@@ -83,6 +83,8 @@ export class GameCore {
      * @param {Savegame} savegame
      */
     initializeRoot(parentState, savegame, gameModeId) {
+        logger.log("initializing root");
+
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
@@ -157,6 +159,8 @@ export class GameCore {
                 }
             });
         }
+
+        logger.log("root initialized");
     }
 
     /**

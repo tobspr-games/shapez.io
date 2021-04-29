@@ -8,7 +8,8 @@ export class HUDModeSettings extends BaseHUDPart {
 
         const bind = (selector, handler) => this.trackClicks(this.element.querySelector(selector), handler);
 
-        if (this.root.gameMode.hasZone()) {
+        // @fixme
+        if (this.root.gameMode.getBuildableZones()) {
             this.zone = makeDiv(
                 this.element,
                 null,
@@ -52,7 +53,12 @@ export class HUDModeSettings extends BaseHUDPart {
     }
 
     updateZoneValues() {
-        const zone = this.root.gameMode.getZone();
+        const zones = this.root.gameMode.getBuildableZones();
+        if (!zones || zones.length === 0) {
+            return;
+        }
+
+        const zone = zones[0];
         this.element.querySelector(".zoneWidth > .value").textContent = String(zone.w);
         this.element.querySelector(".zoneHeight > .value").textContent = String(zone.h);
     }

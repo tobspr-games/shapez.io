@@ -32,7 +32,7 @@ export class PuzzleGameMode extends GameMode {
 
         const data = this.getSaveData();
 
-        this.setHudParts({
+        this.hiddenHurtParts = {
             [HUDGameMenu.name]: false,
             [HUDMassSelector.name]: false,
             [HUDInteractiveTutorial.name]: false,
@@ -40,7 +40,7 @@ export class PuzzleGameMode extends GameMode {
             [HUDPartTutorialHints.name]: false,
             [HUDPinnedShapes.name]: false,
             [HUDWaypoints.name]: false,
-        });
+        };
 
         this.setDimensions(data.zoneWidth, data.zoneHeight);
     }
@@ -48,17 +48,13 @@ export class PuzzleGameMode extends GameMode {
     setDimensions(w = 16, h = 9) {
         this.zoneWidth = w < 2 ? 2 : w;
         this.zoneHeight = h < 2 ? 2 : h;
-        this.boundsHeight = this.zoneHeight < 8 ? 8 : this.zoneHeight;
-        this.boundsWidth = this.zoneWidth < 8 ? 8 : this.zoneWidth;
     }
 
     getSaveData() {
         const save = this.root.savegame.getCurrentDump();
-
         if (!save) {
             return {};
         }
-
         return save.gameMode.data;
     }
 
@@ -66,46 +62,12 @@ export class PuzzleGameMode extends GameMode {
         return new Rectangle(-Math.ceil(width / 2), -Math.ceil(height / 2), width, height);
     }
 
-    getBounds() {
-        if (this.bounds) {
-            return this.bounds;
-        }
-
-        this.bounds = this.createCenteredRectangle(this.boundsWidth, this.boundsHeight);
-
-        return this.bounds;
+    getCameraBounds() {
+        return this.createCenteredRectangle(this.zoneWidth + 20, this.zoneHeight + 20);
     }
 
-    getZone() {
-        if (this.zone) {
-            return this.zone;
-        }
-
-        this.zone = this.createCenteredRectangle(this.zoneWidth, this.zoneHeight);
-
-        return this.zone;
-    }
-
-    /**
-     * Overrides GameMode's implementation to treat buildings like a whitelist
-     * instead of a blacklist by default.
-     * @param {string} name - Class name of building
-     * @returns {boolean}
-     */
-    isBuildingExcluded(name) {
-        return this.buildings[name] !== true;
-    }
-
-    isInBounds(x, y) {
-        return this.bounds.containsPoint(x, y);
-    }
-
-    isInZone(x, y) {
-        return this.zone.containsPoint(x, y);
-    }
-
-    hasZone() {
-        return true;
+    getBuildableZones() {
+        return [this.createCenteredRectangle(this.zoneWidth, this.zoneHeight)];
     }
 
     hasHub() {
@@ -114,10 +76,6 @@ export class PuzzleGameMode extends GameMode {
 
     hasResources() {
         return false;
-    }
-
-    hasBounds() {
-        return true;
     }
 
     getMinimumZoom() {
@@ -129,6 +87,14 @@ export class PuzzleGameMode extends GameMode {
     }
 
     getSupportsCopyPaste() {
+        return false;
+    }
+
+    throughputDoesNotMatter() {
+        return true;
+    }
+
+    getSupportsWires() {
         return false;
     }
 

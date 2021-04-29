@@ -763,13 +763,14 @@ export class Camera extends BasicSerializableObject {
      * Clamps the center within set boundaries
      */
     clampToBounds() {
-        if (!this.root.gameMode.hasBounds()) {
+        const bounds = this.root.gameMode.getCameraBounds();
+        if (!bounds) {
             return;
         }
 
-        const bounds = this.root.gameMode.getBounds().allScaled(globalConfig.tileSize);
-        this.center.x = clamp(this.center.x, bounds.x, bounds.x + bounds.w);
-        this.center.y = clamp(this.center.y, bounds.y, bounds.y + bounds.h);
+        const tileScaleBounds = this.root.gameMode.getCameraBounds().allScaled(globalConfig.tileSize);
+        this.center.x = clamp(this.center.x, tileScaleBounds.x, tileScaleBounds.x + tileScaleBounds.w);
+        this.center.y = clamp(this.center.y, tileScaleBounds.y, tileScaleBounds.y + tileScaleBounds.h);
     }
 
     /**

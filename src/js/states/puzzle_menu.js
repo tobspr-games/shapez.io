@@ -1,3 +1,4 @@
+import { globalConfig } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
@@ -206,6 +207,10 @@ export class PuzzleMenuState extends TextualGameState {
         }
 
         this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), this.createNewPuzzle);
+
+        if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
+            this.createNewPuzzle();
+        }
     }
 
     createNewPuzzle() {

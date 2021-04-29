@@ -1,0 +1,26 @@
+#ingame_HUD_PuzzleEditorControls {
+    position: absolute;
+
+    @include S(top, 70px);
+    @include S(left, 10px);
+
+    display: flex;
+    flex-direction: column;
+    @include SuperDuperSmallText;
+    @include S(width, 200px);
+
+    > span {
+        @include S(margin-bottom, 10px);
+    }
+}
+
+#ingame_HUD_PuzzleEditorTitle {
+    position: absolute;
+
+    @include S(top, 23px);
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    @include Heading;
+    text-align: center;
+}

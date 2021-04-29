@@ -518,19 +518,15 @@ export class RegularGameMode extends GameMode {
     constructor(root) {
         super(root);
 
-        this.setHudParts({
+        this.hiddenHurtParts = {
             [HUDModeMenuBack.name]: false,
             [HUDModeMenuNext.name]: false,
             [HUDModeMenu.name]: false,
             [HUDModeSettings.name]: false,
             [HUDPuzzleDLCLogo.name]: false,
-        });
+        };
 
-        this.setBuildings({
-            [MetaConstantProducerBuilding.name]: false,
-            [MetaGoalAcceptorBuilding.name]: false,
-            [MetaItemProducerBuilding.name]: queryParamOptions.sandboxMode || G_IS_DEV,
-        });
+        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding];
     }
 
     /**

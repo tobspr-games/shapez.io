@@ -370,7 +370,13 @@ export class InGameState extends GameState {
         // Remove unneded default element
         document.body.querySelector(".modalDialogParent").remove();
 
-        this.asyncChannel.watch(waitNextFrame()).then(() => this.stage3CreateCore());
+        this.asyncChannel
+            .watch(waitNextFrame())
+            .then(() => this.stage3CreateCore())
+            .catch(ex => {
+                logger.error(ex);
+                throw ex;
+            });
     }
 
     /**

@@ -248,6 +248,10 @@ dialogs:
             Choose a pre-defined item:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
 
+    editGoalAcceptor:
+        title: Set Goal
+        desc: Enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>). The goal will count as completed once 1 item /s is delivered.
+
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
 

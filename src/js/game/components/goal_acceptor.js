@@ -14,9 +14,7 @@ export class GoalAcceptorComponent extends Component {
     constructor({ item = null, rate = null }) {
         super();
         this.item = item;
-        this.rate = rate;
 
         this.achieved = false;
-        this.achievedOnce = false;
     }
 }

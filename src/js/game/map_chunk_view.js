@@ -41,7 +41,7 @@ export class MapChunkView extends MapChunk {
      */
     drawBackgroundLayer(parameters) {
         const systems = this.root.systemMgr.systems;
-        if (this.root.gameMode.hasZone()) {
+        if (systems.zone) {
             systems.zone.drawChunk(parameters, this);
         }
 

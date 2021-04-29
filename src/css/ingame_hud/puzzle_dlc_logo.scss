@@ -2,8 +2,8 @@
     position: absolute;
     @include S(width, 150px);
     @include S(height, 40px);
-    @include S(bottom, 10px);
-    @include S(right, 15px);
+    @include S(left, 50px);
+    @include S(top, 10px);
 
     & {
         /* @load-async */

@@ -13,8 +13,12 @@ export class ZoneSystem extends GameSystem {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root);
-
+        this.drawn = false;
         this.root.signals.prePlacementCheck.add(this.prePlacementCheck, this);
+
+        this.root.signals.gameFrameStarted.add(() => {
+            this.drawn = false;
+        });
     }
 
     prePlacementCheck(entity, tile = null) {
@@ -25,17 +29,23 @@ export class ZoneSystem extends GameSystem {
         }
 
         const mode = this.root.gameMode;
-        const zone = mode.getZone().expandedInAllDirections(-1);
+
+        const zones = mode.getBuildableZones();
+        if (!zones) {
+            return;
+        }
+
         const transformed = staticComp.getTileSpaceBounds();
 
-        if (zone.containsRect(transformed)) {
-            if (mode.isZoneRestricted()) {
-                return STOP_PROPAGATION;
+        let withinAnyZone = false;
+        for (const zone of zones) {
+            if (zone.expandedInAllDirections(-1).containsRect(transformed)) {
+                withinAnyZone = true;
             }
-        } else {
-            if (mode.isBoundaryRestricted()) {
-                return STOP_PROPAGATION;
-            }
+        }
+
+        if (!withinAnyZone) {
+            return STOP_PROPAGATION;
         }
     }
 
@@ -45,18 +55,46 @@ export class ZoneSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (this.drawn) {
+            // oof
+            return;
+        }
+        this.drawn = true;
+
         const mode = this.root.gameMode;
-        const zone = mode.getZone().allScaled(globalConfig.tileSize);
+
+        const zones = mode.getBuildableZones();
+        if (!zones) {
+            return;
+        }
+
+        const zone = zones[0].allScaled(globalConfig.tileSize);
         const context = parameters.context;
 
-        context.globalAlpha = 0.1;
-        context.fillStyle = THEME.map.zone.background;
-        context.fillRect(zone.x, zone.y, zone.w, zone.h);
-
-        context.globalAlpha = 1;
-        context.strokeStyle = THEME.map.zone.border;
         context.lineWidth = 2;
-        context.strokeRect(zone.x, zone.y, zone.w, zone.h);
+        context.strokeStyle = THEME.map.zone.borderSolid;
+        context.beginPath();
+        context.rect(zone.x, zone.y, zone.w, zone.h);
+
+        context.stroke();
+
+        const outer = zone;
+        const padding = 40 * globalConfig.tileSize;
+        context.fillStyle = THEME.map.zone.outerColor;
+        context.fillRect(outer.x + outer.w, outer.y, padding, outer.h);
+        context.fillRect(outer.x - padding, outer.y, padding, outer.h);
+        context.fillRect(
+            outer.x - padding - globalConfig.tileSize,
+            outer.y - padding,
+            2 * padding + zone.w + 2 * globalConfig.tileSize,
+            padding
+        );
+        context.fillRect(
+            outer.x - padding - globalConfig.tileSize,
+            outer.y + outer.h,
+            2 * padding + zone.w + 2 * globalConfig.tileSize,
+            padding
+        );
 
         context.globalAlpha = 1;
     }

@@ -11,7 +11,6 @@
 
     > .button {
         @include PlainText;
-        @include IncreasedClickArea(0px);
         pointer-events: all;
         cursor: pointer;
         position: relative;
@@ -20,6 +19,8 @@
         transition-property: opacity, transform;
         text-transform: uppercase;
         @include PlainText;
+        @include S(width, 30px);
+        @include S(height, 30px);
 
         opacity: 1;
         &:hover {
@@ -30,11 +31,9 @@
             transform: scale(0.95) !important;
         }
 
-        @include S(padding-left, 25px);
-
         & {
             /* @load-async */
-            background: uiResource("icons/state_back_button.png") left center / D(15px) no-repeat;
+            background: uiResource("icons/state_back_button.png") center center / D(15px) no-repeat;
         }
     }
 }

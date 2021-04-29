@@ -61,6 +61,7 @@
 @import "ingame_hud/mode_menu";
 @import "ingame_hud/mode_settings";
 @import "ingame_hud/puzzle_dlc_logo";
+@import "ingame_hud/puzzle_editor_controls";
 
 // prettier-ignore
 $elements:
@@ -80,6 +81,8 @@ ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
 ingame_HUD_ModeMenuBack,
 ingame_HUD_ModeMenuNext,
+ingame_HUD_PuzzleEditorControls,
+ingame_HUD_PuzzleEditorTitle,
 ingame_HUD_ModeMenu,
 ingame_HUD_ModeSettings,
 ingame_HUD_Notifications,

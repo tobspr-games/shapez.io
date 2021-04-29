@@ -5,6 +5,8 @@ import { Rectangle } from "../core/rectangle";
 
 import { gGameModeRegistry } from "../core/global_registries";
 import { types, BasicSerializableObject } from "../savegame/serialization";
+import { MetaBuilding } from "./meta_building";
+import { MetaItemProducerBuilding } from "./buildings/item_producer";
 
 /** @enum {string} */
 export const enumGameModeIds = {
@@ -45,8 +47,10 @@ export class GameMode extends BasicSerializableObject {
     constructor(root) {
         super();
         this.root = root;
-        this.hudParts = {};
-        this.buildings = {};
+        this.hiddenHurtParts = {};
+
+        /** @type {typeof MetaBuilding[]} */
+        this.hiddenBuildings = [MetaItemProducerBuilding];
     }
 
     /** @returns {object} */
@@ -74,33 +78,30 @@ export class GameMode extends BasicSerializableObject {
         return this.constructor.getType();
     }
 
-    setBuildings(buildings) {
-        Object.assign(this.buildings, buildings);
-    }
-
-    setHudParts(parts) {
-        Object.assign(this.hudParts, parts);
-    }
-
     /**
      * @param {string} name - Class name of HUD Part
      * @returns {boolean}
      */
     isHudPartExcluded(name) {
-        return this.hudParts[name] === false;
+        return this.hiddenHurtParts[name] === false;
     }
 
     /**
-     * @param {string} name - Class name of building
+     * @param {typeof MetaBuilding} building - Class name of building
      * @returns {boolean}
      */
-    isBuildingExcluded(name) {
-        return this.buildings[name] === false;
+    isBuildingExcluded(building) {
+        return this.hiddenBuildings.indexOf(building) >= 0;
     }
 
-    /** @returns {boolean} */
-    hasZone() {
-        return false;
+    /** @returns {undefined|Rectangle[]} */
+    getBuildableZones() {
+        return;
+    }
+
+    /** @returns {Rectangle|undefined} */
+    getCameraBounds() {
+        return;
     }
 
     /** @returns {boolean} */
@@ -111,21 +112,6 @@ export class GameMode extends BasicSerializableObject {
     /** @returns {boolean} */
     hasResources() {
         return true;
-    }
-
-    /** @returns {boolean} */
-    hasBounds() {
-        return false;
-    }
-
-    /** @returns {boolean} */
-    isZoneRestricted() {
-        return false;
-    }
-
-    /** @returns {boolean} */
-    isBoundaryRestricted() {
-        return false;
     }
 
     /** @returns {number} */
@@ -148,9 +134,8 @@ export class GameMode extends BasicSerializableObject {
         };
     }
 
-    /** @returns {?Rectangle} */
-    getZone() {
-        return null;
+    throughputDoesNotMatter() {
+        return false;
     }
 
     /**
@@ -160,11 +145,6 @@ export class GameMode extends BasicSerializableObject {
     expandZone(w = 0, h = 0) {
         abstract;
         return;
-    }
-
-    /** @returns {?Rectangle} */
-    getBounds() {
-        return null;
     }
 
     /** @returns {array} */
@@ -184,6 +164,11 @@ export class GameMode extends BasicSerializableObject {
 
     /** @returns {boolean} */
     getSupportsCopyPaste() {
+        return true;
+    }
+
+    /** @returns {boolean} */
+    getSupportsWires() {
         return true;
     }
 

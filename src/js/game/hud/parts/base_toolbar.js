@@ -55,7 +55,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
         const filtered = [];
 
         for (let i = 0; i < buildings.length; i++) {
-            if (this.root.gameMode.isBuildingExcluded(buildings[i].name)) {
+            if (this.root.gameMode.isBuildingExcluded(buildings[i])) {
                 continue;
             }
 
