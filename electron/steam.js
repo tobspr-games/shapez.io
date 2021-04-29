@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 const { ipcMain } = require("electron");
 
 let greenworks = null;
@@ -11,10 +11,10 @@ try {
     appId = parseInt(fs.readFileSync(path.join(__dirname, "steam_appid.txt"), "utf8"));
 } catch (err) {
     // greenworks is not installed
-    // throw err;
+    console.warn("Failed to load steam api:", err);
 }
 
-function init (isDev) {
+function init(isDev) {
     if (!greenworks) {
         return;
     }
@@ -34,11 +34,16 @@ function init (isDev) {
     initialized = true;
 }
 
-function listen () {
+function listen() {
     ipcMain.handle("steam:is-initialized", isInitialized);
 
-    if (!greenworks || !initialized) {
-        console.log("Ignoring Steam IPC events");
+    if (!initialized) {
+        console.warn("Steam not initialized, won't be able to listen");
+        return;
+    }
+
+    if (!greenworks) {
+        console.warn("Greenworks not loaded, won't be able to listen");
         return;
     }
 
@@ -53,7 +58,7 @@ function isInitialized(event) {
 function getAchievementNames(event) {
     return new Promise((resolve, reject) => {
         try {
-            const achievements = greenworks.getAchievementNames()
+            const achievements = greenworks.getAchievementNames();
             resolve(achievements);
         } catch (err) {
             reject(err);
@@ -63,11 +68,15 @@ function getAchievementNames(event) {
 
 function activateAchievement(event, id) {
     return new Promise((resolve, reject) => {
-        greenworks.activateAchievement(id, () => resolve(), err => reject(err))
+        greenworks.activateAchievement(
+            id,
+            () => resolve(),
+            err => reject(err)
+        );
     });
 }
 
 module.exports = {
     init,
-    listen
+    listen,
 };

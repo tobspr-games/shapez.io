@@ -118,7 +118,14 @@ function generateUpgrades(limitedVersion = false) {
                 required: [{ shape: "CwCwCwCw:WbWbWbWb", amount: 23000 }],
             },
             {
-                required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 50000 }],
+                required: [
+                    {
+                        shape: G_CHINA_VERSION
+                            ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
+                            : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                        amount: 50000,
+                    },
+                ],
             },
             {
                 required: [{ shape: preparementShape, amount: 25000 }],
@@ -172,7 +179,12 @@ function generateUpgrades(limitedVersion = false) {
                 required: [{ shape: "WrWrWrWr", amount: 3800 }],
             },
             {
-                required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 6500 }],
+                required: [
+                    {
+                        shape: G_CHINA_VERSION ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
+                        amount: 6500,
+                    },
+                ],
             },
             {
                 required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp", amount: 25000 }],
@@ -346,7 +358,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
         // 13
         // Tunnel Tier 2
         {
-            shape: "RpRpRpRp:CwCwCwCw", // painting t3
+            shape: G_CHINA_VERSION ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", // painting t3
             required: 3800,
             reward: enumHubGoalRewards.reward_underground_belt_tier_2,
         },
@@ -355,7 +367,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
         ...(limitedVersion
             ? [
                   {
-                      shape: "RpRpRpRp:CwCwCwCw",
+                      shape: G_CHINA_VERSION ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
                       required: 0,
                       reward: enumHubGoalRewards.reward_demo_end,
                   },
@@ -389,7 +401,9 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 17
                   // Double painter
                   {
-                      shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
+                      shape: G_CHINA_VERSION
+                          ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
+                          : "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
                       required: 20000,
                       reward: enumHubGoalRewards.reward_painter_double,
                   },
@@ -429,7 +443,9 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 22
                   // Constant signal
                   {
-                      shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                      shape: G_CHINA_VERSION
+                          ? "RrSySrSy:RyCrCwCr:CyCyRyCy"
+                          : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_constant_signal,
                   },
@@ -437,14 +453,18 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 23
                   // Display
                   {
-                      shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                      shape: G_CHINA_VERSION
+                          ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr"
+                          : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_display,
                   },
 
                   // 24 Logic gates
                   {
-                      shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                      shape: G_CHINA_VERSION
+                          ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
+                          : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_logic_gates,
                   },

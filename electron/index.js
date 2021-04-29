@@ -74,19 +74,7 @@ function createWindow() {
     win.on("closed", () => {
         console.log("Window closed");
         win = null;
-        app.quit();
     });
-
-    function handleWindowBeforeunload(event) {
-        const confirmed = dialog.showMessageBox(remote.getCurrentWindow(), options) === 1;
-        if (confirmed) {
-            remote.getCurrentWindow().close();
-        } else {
-            event.returnValue = false;
-        }
-    }
-
-    win.on("", handleWindowBeforeunload);
 
     if (isDev) {
         menu = new Menu();

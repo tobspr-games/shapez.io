@@ -71,6 +71,8 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      * Returns if this acceptor can accept a new item at slot N
+     *
+     * NOTICE: The belt path ignores this for performance reasons and does his own check
      * @param {number} slotIndex
      * @param {BaseItem=} item
      */
