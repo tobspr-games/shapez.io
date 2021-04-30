@@ -11,10 +11,14 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root, [GoalAcceptorComponent]);
+
+        this.puzzleCompleted = false;
     }
 
     update() {
         const now = this.root.time.now();
+
+        let allAccepted = true;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -25,6 +29,20 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
                 d =>
                     now - d.time < globalConfig.goalAcceptorMinimumDurationSeconds && d.item === goalComp.item
             );
+
+            if (goalComp.deliveryHistory.length < goalComp.getRequiredDeliveryHistorySize()) {
+                allAccepted = false;
+            }
+        }
+
+        if (
+            !this.puzzleCompleted &&
+            this.root.gameInitialized &&
+            allAccepted &&
+            !this.root.gameMode.getIsEditor()
+        ) {
+            this.root.hud.parts.dialogs.showInfo("Puzzle completed", "Congrats!");
+            this.puzzleCompleted = true;
         }
     }
 
