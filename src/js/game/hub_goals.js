@@ -184,10 +184,6 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      */
     getUpgradeLevel(upgradeId) {
-        if (this.root.gameMode.throughputDoesNotMatter()) {
-            return 10;
-        }
-
         return this.upgradeLevels[upgradeId] || 0;
     }
 
@@ -481,7 +477,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getBeltBaseSpeed() {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return globalConfig.beltSpeedItemsPerSecond * 5;
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
         }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
@@ -492,7 +488,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getUndergroundBeltBaseSpeed() {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return globalConfig.beltSpeedItemsPerSecond * 5;
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
         }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
@@ -503,7 +499,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getMinerBaseSpeed() {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return globalConfig.minerSpeedItemsPerSecond * 5;
+            return globalConfig.minerSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
         }
         return globalConfig.minerSpeedItemsPerSecond * this.upgradeImprovements.miner;
     }
@@ -515,7 +511,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getProcessorBaseSpeed(processorType) {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return 10;
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed * 10;
         }
 
         switch (processorType) {

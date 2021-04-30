@@ -2,13 +2,11 @@
 import { GameRoot } from "../root";
 /* typehints:end */
 
-import { queryParamOptions } from "../../core/query_parameters";
 import { findNiceIntegerValue } from "../../core/utils";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
-import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { HUDModeMenuBack } from "../hud/parts/mode_menu_back";
-import { HUDModeMenuNext } from "../hud/parts/mode_menu_next";
+import { HUDPuzzleReview } from "../hud/parts/mode_puzzle_review";
 import { HUDModeMenu } from "../hud/parts/mode_menu";
 import { HUDModeSettings } from "../hud/parts/mode_settings";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
@@ -520,7 +518,7 @@ export class RegularGameMode extends GameMode {
 
         this.hiddenHurtParts = {
             [HUDModeMenuBack.name]: false,
-            [HUDModeMenuNext.name]: false,
+            [HUDPuzzleReview.name]: false,
             [HUDModeMenu.name]: false,
             [HUDModeSettings.name]: false,
             [HUDPuzzleDLCLogo.name]: false,

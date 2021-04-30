@@ -124,6 +124,9 @@ puzzleMenu:
     edit: Edit
     title: Puzzle Mode
     createPuzzle: Create Puzzle
+    reviewPuzzle: Review & Publish
+    validtingPuzzle: Validating Puzzle
+    submittingPuzzle: Submitting Puzzle
 
     categories:
         levels: Levels
@@ -131,6 +134,14 @@ puzzleMenu:
         topRated: Top Rated
         myPuzzles: My Puzzles
 
+    validation:
+        title: Invalid Puzzle
+        noProducers: Please place a Constant Producer!
+        noGoalAcceptors: Please place a Goal Acceptor!
+        goalAcceptorNoItem: >-
+            One or more Goal Acceptors have not yet assigned an item. Deliver a shape to them to set a goal.
+        goalAcceptorRateNotMet: >-
+            One or more Goal Acceptors are not getting enough items. Make sure that the indicators are green for all acceptors.
 dialogs:
     buttons:
         ok: OK
@@ -248,9 +259,8 @@ dialogs:
             Choose a pre-defined item:
         descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>)
 
-    editGoalAcceptor:
-        title: Set Goal
-        desc: Enter the <strong>short key</strong> of a shape (Which you can generate <link>here</link>). The goal will count as completed once 1 item /s is delivered.
+    editConstantProducer:
+        title: Set Item
 
     markerDemoLimit:
         desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
@@ -275,6 +285,15 @@ dialogs:
         title: Puzzles failed to load
         desc: >-
             Unfortunately the puzzles could not be loaded:
+
+    submitPuzzle:
+        title: Submit Puzzle
+        descName: >-
+            Give your puzzle a name:
+        descIcon: >-
+            Please enter a unique short key, which will be shown as the icon of your puzzle (You can generate them <link>here</link>, or choose one of the randomly suggested shapes below):
+
+        placeholderName: Puzzle Title
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -499,24 +518,6 @@ ingame:
             support:
                 title: Support me
                 desc: I develop the game in my spare time!
-
-    modeMenu:
-        puzzleEditMode:
-            back:
-                title: Menu
-            next:
-                title: Playtest
-                desc: Required for publishing
-        puzzleEditTestMode:
-            back:
-                title: Edit
-            next:
-                title: Publish
-        puzzlePlayMode:
-            back:
-                title: Menu
-            next:
-                title: Next
 
 # All shop upgrades
 shopUpgrades:

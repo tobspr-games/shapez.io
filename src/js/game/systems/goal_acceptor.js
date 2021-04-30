@@ -1,111 +1,114 @@
-/* typehints:start */
-import { GameRoot } from "../root";
-/* typehints:end */
-
-import { THIRDPARTY_URLS, globalConfig } from "../../core/config";
-import { DialogWithForm } from "../../core/modal_dialog_elements";
-import { FormElementInput, FormElementItemChooser } from "../../core/modal_dialog_forms";
-import { fillInLinkIntoTranslation } from "../../core/utils";
-import { T } from "../../translations";
+import { globalConfig } from "../../core/config";
+import { DrawParameters } from "../../core/draw_parameters";
+import { clamp, lerp } from "../../core/utils";
+import { Vector } from "../../core/vector";
 import { GoalAcceptorComponent } from "../components/goal_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-// import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
-// import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
+import { MapChunk } from "../map_chunk";
+import { GameRoot } from "../root";
 
 export class GoalAcceptorSystem extends GameSystemWithFilter {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root, [GoalAcceptorComponent]);
-
-        this.root.signals.entityManuallyPlaced.add(this.editGoal, this);
     }
 
     update() {
+        const now = this.root.time.now();
+
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const goalComp = entity.components.GoalAcceptor;
-            const readerComp = entity.components.BeltReader;
 
-            // Check against goals (set on placement)
+            // filter the ones which are no longer active, or which are not the same
+            goalComp.deliveryHistory = goalComp.deliveryHistory.filter(
+                d =>
+                    now - d.time < globalConfig.goalAcceptorMinimumDurationSeconds && d.item === goalComp.item
+            );
         }
-
-        // Check if goal criteria has been met for all goals
     }
 
+    /**
+     *
+     * @param {DrawParameters} parameters
+     * @param {MapChunk} chunk
+     * @returns
+     */
     drawChunk(parameters, chunk) {
-        /*
-         *const contents = chunk.containedEntitiesByLayer.regular;
-         *for (let i = 0; i < contents.length; ++i) {}
-         */
-    }
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const goalComp = contents[i].components.GoalAcceptor;
 
-    editGoal(entity) {
-        if (!entity.components.GoalAcceptor) {
-            return;
-        }
-
-        const uid = entity.uid;
-        const goalComp = entity.components.GoalAcceptor;
-
-        const itemInput = new FormElementInput({
-            id: "goalItemInput",
-            label: fillInLinkIntoTranslation(T.dialogs.editGoalAcceptor.desc, THIRDPARTY_URLS.shapeViewer),
-            placeholder: "CuCuCuCu",
-            defaultValue: "CuCuCuCu",
-            validator: val => this.parseItem(val),
-        });
-
-        const dialog = new DialogWithForm({
-            app: this.root.app,
-            title: T.dialogs.editGoalAcceptor.title,
-            desc: "",
-            formElements: [itemInput],
-            buttons: ["cancel:bad:escape", "ok:good:enter"],
-            closeButton: false,
-        });
-        this.root.hud.parts.dialogs.internalShowDialog(dialog);
-
-        const closeHandler = () => {
-            if (this.isEntityStale(uid)) {
-                return;
+            if (!goalComp) {
+                continue;
             }
 
-            goalComp.item = this.parseItem(itemInput.getValue());
-        };
+            const staticComp = contents[i].components.StaticMapEntity;
+            const item = goalComp.item;
 
-        dialog.buttonSignals.ok.add(closeHandler);
-        dialog.buttonSignals.cancel.add(() => {
-            if (this.isEntityStale(uid)) {
-                return;
+            const requiredItemsForSuccess = goalComp.getRequiredDeliveryHistorySize();
+            const percentage = clamp(goalComp.deliveryHistory.length / requiredItemsForSuccess, 0, 1);
+
+            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+            if (item) {
+                const localOffset = new Vector(0, -1.8).rotateFastMultipleOf90(staticComp.rotation);
+                item.drawItemCenteredClipped(
+                    center.x + localOffset.x,
+                    center.y + localOffset.y,
+                    parameters,
+                    globalConfig.tileSize * 0.65
+                );
             }
 
-            this.root.logic.tryDeleteBuilding(entity);
-        });
-    }
+            const isValid = item && goalComp.deliveryHistory.length >= requiredItemsForSuccess;
 
-    parseRate(value) {
-        return Number(value);
-    }
+            parameters.context.translate(center.x, center.y);
+            parameters.context.rotate((staticComp.rotation / 180) * Math.PI);
 
-    parseItem(value) {
-        return this.root.systemMgr.systems.constantSignal.parseSignalCode(value);
-    }
+            parameters.context.lineWidth = 1;
+            parameters.context.fillStyle = "#8de255";
+            parameters.context.strokeStyle = "#64666e";
+            parameters.context.lineCap = "round";
 
-    isEntityStale(uid) {
-        if (!this.root || !this.root.entityMgr) {
-            return true;
+            // progress arc
+
+            goalComp.displayPercentage = lerp(goalComp.displayPercentage, percentage, 0.3);
+
+            const startAngle = Math.PI * 0.595;
+            const maxAngle = Math.PI * 1.82;
+            parameters.context.beginPath();
+            parameters.context.arc(
+                0.25,
+                -1.5,
+                11.6,
+                startAngle,
+                startAngle + goalComp.displayPercentage * maxAngle,
+                false
+            );
+            parameters.context.arc(
+                0.25,
+                -1.5,
+                15.5,
+                startAngle + goalComp.displayPercentage * maxAngle,
+                startAngle,
+                true
+            );
+            parameters.context.closePath();
+            parameters.context.fill();
+            parameters.context.stroke();
+            parameters.context.lineCap = "butt";
+
+            // LED indicator
+
+            parameters.context.lineWidth = 1;
+            parameters.context.strokeStyle = "#64666e";
+            parameters.context.fillStyle = isValid ? "#8de255" : "#e2555f";
+            parameters.context.beginCircle(10, 11.8, 3);
+            parameters.context.fill();
+            parameters.context.stroke();
+
+            parameters.context.rotate((-staticComp.rotation / 180) * Math.PI);
+            parameters.context.translate(-center.x, -center.y);
         }
-
-        const entity = this.root.entityMgr.findByUid(uid, false);
-        if (!entity) {
-            return true;
-        }
-
-        const goalComp = entity.components.GoalAcceptor;
-        if (!goalComp) {
-            return true;
-        }
-
-        return false;
     }
 }

@@ -29,7 +29,7 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.top],
+                        directions: [enumDirection.bottom],
                     },
                 ],
             })
@@ -38,12 +38,6 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemProcessorComponent({
                 processorType: enumItemProcessorTypes.goal,
-            })
-        );
-
-        entity.addComponent(
-            new BeltReaderComponent({
-                type: enumBeltReaderType.wireless,
             })
         );
 

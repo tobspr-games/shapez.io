@@ -568,8 +568,18 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_GOAL(payload) {
-        const readerComp = payload.entity.components.BeltReader;
-        readerComp.lastItemTimes.push(this.root.time.now());
-        readerComp.lastItem = payload.items[payload.items.length - 1].item;
+        const goalComp = payload.entity.components.GoalAcceptor;
+        if (this.root.gameMode.getIsEditor()) {
+            // while playing in editor, assign the item
+            goalComp.item = payload.items[0].item;
+        }
+
+        const now = this.root.time.now();
+
+        // push our new entry
+        goalComp.deliveryHistory.push({
+            item: payload.items[0].item,
+            time: now,
+        });
     }
 }

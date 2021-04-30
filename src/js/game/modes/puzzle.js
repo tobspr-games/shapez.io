@@ -82,6 +82,10 @@ export class PuzzleGameMode extends GameMode {
         return 1;
     }
 
+    getMaximumZoom() {
+        return 4;
+    }
+
     getIsSaveable() {
         return false;
     }
@@ -96,6 +100,14 @@ export class PuzzleGameMode extends GameMode {
 
     getSupportsWires() {
         return false;
+    }
+
+    getIsDeterministic() {
+        return true;
+    }
+
+    getFixedTickrate() {
+        return 300;
     }
 
     /** @returns {boolean} */

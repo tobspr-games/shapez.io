@@ -25,7 +25,7 @@ import { HUDMinerHighlight } from "./parts/miner_highlight";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { HUDModeMenu } from "./parts/mode_menu";
 import { HUDModeMenuBack } from "./parts/mode_menu_back";
-import { HUDModeMenuNext } from "./parts/mode_menu_next";
+import { HUDPuzzleReview } from "./parts/mode_puzzle_review";
 import { HUDModeSettings } from "./parts/mode_settings";
 import { enumNotificationType, HUDNotifications } from "./parts/notifications";
 import { HUDPinnedShapes } from "./parts/pinned_shapes";
@@ -88,7 +88,7 @@ export class GameHUD {
             leverToggle: HUDLeverToggle,
             constantSignalEdit: HUDConstantSignalEdit,
             modeMenuBack: HUDModeMenuBack,
-            modeMenuNext: HUDModeMenuNext,
+            PuzzleReview: HUDPuzzleReview,
             modeMenu: HUDModeMenu,
             modeSettings: HUDModeSettings,
             puzzleDlcLogo: HUDPuzzleDLCLogo,

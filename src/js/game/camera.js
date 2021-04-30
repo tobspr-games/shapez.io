@@ -393,11 +393,11 @@ export class Camera extends BasicSerializableObject {
     }
 
     getMaximumZoom() {
-        return this.root.gameMode.getMaximumZoom() * this.root.app.platformWrapper.getScreenScale();
+        return this.root.gameMode.getMaximumZoom();
     }
 
     getMinimumZoom() {
-        return this.root.gameMode.getMinimumZoom() * this.root.app.platformWrapper.getScreenScale();
+        return this.root.gameMode.getMinimumZoom();
     }
 
     /**

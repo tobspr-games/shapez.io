@@ -66,4 +66,8 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
 
         this.zone = this.createCenteredRectangle(this.zoneWidth, this.zoneHeight);
     }
+
+    getIsEditor() {
+        return true;
+    }
 }

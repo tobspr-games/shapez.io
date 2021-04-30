@@ -172,6 +172,21 @@ export class GameMode extends BasicSerializableObject {
         return true;
     }
 
+    /** @returns {boolean} */
+    getIsDeterministic() {
+        return false;
+    }
+
+    /** @returns {boolean} */
+    getIsEditor() {
+        return false;
+    }
+
+    /** @returns {number | undefined} */
+    getFixedTickrate() {
+        return;
+    }
+
     /** @returns {string} */
     getBlueprintShapeKey() {
         return "CbCbCbRb:CwCwCwCw";

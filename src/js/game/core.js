@@ -102,11 +102,11 @@ export class GameCore {
         // This isn't nice, but we need it right here
         root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
 
-        // Needs to come first
-        root.dynamicTickrate = new DynamicTickrate(root);
-
         // Init game mode
         root.gameMode = GameMode.create(root, gameModeId);
+
+        // Needs to come first
+        root.dynamicTickrate = new DynamicTickrate(root);
 
         // Init classes
         root.camera = new Camera(root);

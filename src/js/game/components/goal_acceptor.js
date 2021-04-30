@@ -1,9 +1,17 @@
+import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 export class GoalAcceptorComponent extends Component {
     static getId() {
         return "GoalAcceptor";
+    }
+
+    static getSchema() {
+        return {
+            item: typeItemSingleton,
+        };
     }
 
     /**
@@ -13,8 +21,25 @@ export class GoalAcceptorComponent extends Component {
      */
     constructor({ item = null, rate = null }) {
         super();
+
+        // ths item to produce
+        /** @type {BaseItem | undefined} */
         this.item = item;
 
-        this.achieved = false;
+        // the last items we delivered
+        /** @type {{ item: BaseItem; time: number; }[]} */
+        this.deliveryHistory = [];
+
+        // Used for animations
+        this.displayPercentage = 0;
+    }
+
+    getRequiredDeliveryHistorySize() {
+        return (
+            (globalConfig.puzzleModeSpeed *
+                globalConfig.goalAcceptorMinimumDurationSeconds *
+                globalConfig.beltSpeedItemsPerSecond) /
+            globalConfig.goalAcceptorsPerProducer
+        );
     }
 }

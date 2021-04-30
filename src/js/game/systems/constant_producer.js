@@ -1,7 +1,6 @@
-/* typehints:start */
-/* typehints:end */
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { Vector } from "../../core/vector";
 import { ConstantSignalComponent } from "../components/constant_signal";
 import { ItemProducerComponent } from "../components/item_producer";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -43,19 +42,25 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
             const signalComp = contents[i].components.ConstantSignal;
 
             if (!producerComp || !producerComp.isWireless() || !signalComp || !signalComp.isWireless()) {
-                return;
+                continue;
             }
 
             const staticComp = contents[i].components.StaticMapEntity;
             const item = signalComp.signal;
 
             if (!item) {
-                return;
+                continue;
             }
 
-            // TODO: Better looking overlay
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-            item.drawItemCenteredClipped(center.x, center.y + 1, parameters, globalConfig.tileSize * 0.65);
+
+            const localOffset = new Vector(0, 1).rotateFastMultipleOf90(staticComp.rotation);
+            item.drawItemCenteredClipped(
+                center.x + localOffset.x,
+                center.y + localOffset.y,
+                parameters,
+                globalConfig.tileSize * 0.65
+            );
         }
     }
 }
