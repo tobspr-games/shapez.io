@@ -20,6 +20,15 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
     }
 
     /**
+     *
+     * @param {import("../../savegame/savegame_serializer").GameRoot} root
+     * @returns
+     */
+    getIsRemovable(root) {
+        return root.gameMode.getIsEditor();
+    }
+
+    /**
      * Creates the entity at the given location
      * @param {Entity} entity
      */

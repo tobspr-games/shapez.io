@@ -1,4 +1,4 @@
-#ingame_HUD_PuzzleEditorMetadata {
+#ingame_HUD_PuzzlePlayMetadata {
     position: absolute;
 
     @include S(top, 70px);
@@ -15,5 +15,24 @@
         strong {
             font-weight: bold;
         }
+    }
+}
+
+#ingame_HUD_PuzzlePlayTitle {
+    position: absolute;
+
+    @include S(top, 18px);
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    @include Heading;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    > .name {
+        @include PlainText;
+        opacity: 0.5;
     }
 }

@@ -204,20 +204,20 @@ export class PuzzleMenuState extends TextualGameState {
                 {
                     type: "emitter",
                     item: "CuCuCuCu",
-                    pos: { x: 0, y: 0, r: 180 },
+                    pos: { x: -2, y: 2, r: 0 },
                 },
                 {
                     type: "emitter",
                     item: "red",
-                    pos: { x: 2, y: 0, r: 180 },
+                    pos: { x: 1, y: 2, r: 0 },
                 },
                 {
                     type: "goal",
                     item: "CrCrCrCr",
-                    pos: { x: 0, y: 4, r: 0 },
+                    pos: { x: 0, y: -3, r: 0 },
                 },
             ],
-            bounds: { w: 10, h: 10 },
+            bounds: { w: 4, h: 6 },
         };
 
         const savegame = this.app.savegameMgr.createNewSavegame();

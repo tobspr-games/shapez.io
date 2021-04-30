@@ -22,6 +22,9 @@ import { MetaTransistorBuilding } from "../buildings/transistor";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
 import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
+import { PuzzleSerializer } from "../../savegame/puzzle_serializer";
+import { T } from "../../translations";
+import { HUDPuzzlePlayMetadata } from "../hud/parts/puzzle_play_metadata";
 
 export class PuzzlePlayGameMode extends PuzzleGameMode {
     static getId() {
@@ -58,9 +61,31 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             MetaTransistorBuilding,
         ];
 
-        this.additionalHudParts.constantSignalEdit = HUDConstantSignalEdit;
+        this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
 
-        console.log("playing puzzle:", puzzle);
+        root.signals.postLoadHook.add(this.loadPuzzle, this);
+
         this.puzzle = puzzle;
+    }
+
+    loadPuzzle() {
+        let errorText;
+
+        try {
+            errorText = new PuzzleSerializer().deserializePuzzle(this.root, this.puzzle.game);
+
+            this.zoneWidth = this.puzzle.game.bounds.w;
+            this.zoneHeight = this.puzzle.game.bounds.h;
+        } catch (ex) {
+            errorText = ex.message || ex;
+        }
+
+        if (errorText) {
+            const signals = this.root.hud.parts.dialogs.showWarning(
+                T.dialogs.puzzleLoadError.title,
+                T.dialogs.puzzleLoadError.desc + " " + errorText
+            );
+            signals.ok.add(() => this.root.gameState.moveToState("PuzzleMenuState"));
+        }
     }
 }

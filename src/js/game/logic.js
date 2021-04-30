@@ -167,7 +167,7 @@ export class GameLogic {
      */
     canDeleteBuilding(building) {
         const staticComp = building.components.StaticMapEntity;
-        return staticComp.getMetaBuilding().getIsRemovable();
+        return staticComp.getMetaBuilding().getIsRemovable(this.root);
     }
 
     /**

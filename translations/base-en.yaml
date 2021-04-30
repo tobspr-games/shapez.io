@@ -302,6 +302,11 @@ dialogs:
         title: Resize not possible
         desc: You can't make the zone any smaller, because then some buildings would be outside the zone.
 
+    puzzleLoadError:
+        title: Bad Puzzle
+        desc: >-
+            The puzzle failed to load:
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation

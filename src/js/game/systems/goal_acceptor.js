@@ -102,7 +102,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
 
             parameters.context.lineWidth = 1;
             parameters.context.strokeStyle = "#64666e";
-            parameters.context.fillStyle = isValid ? "#8de255" : "#e2555f";
+            parameters.context.fillStyle = isValid ? "#8de255" : "#ff666a";
             parameters.context.beginCircle(10, 11.8, 3);
             parameters.context.fill();
             parameters.context.stroke();

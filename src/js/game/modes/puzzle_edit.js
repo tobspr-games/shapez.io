@@ -22,7 +22,6 @@ import { MetaTransistorBuilding } from "../buildings/transistor";
 import { HUDPuzzleEditorControls } from "../hud/parts/puzzle_editor_controls";
 import { HUDPuzzleEditorReview } from "../hud/parts/puzzle_editor_review";
 import { HUDPuzzleEditorSettings } from "../hud/parts/puzzle_editor_settings";
-import { HUDPuzzleBackToMenu } from "../hud/parts/puzzle_back_to_menu";
 
 export class PuzzleEditGameMode extends PuzzleGameMode {
     static getId() {
