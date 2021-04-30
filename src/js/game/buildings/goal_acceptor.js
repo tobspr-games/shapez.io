@@ -30,6 +30,7 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        filter: "shape",
                     },
                 ],
             })

@@ -2,11 +2,13 @@ import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { createLogger } from "../../../core/logging";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementInput, FormElementItemChooser } from "../../../core/modal_dialog_forms";
+import { STOP_PROPAGATION } from "../../../core/signal";
 import { fillInLinkIntoTranslation, makeDiv } from "../../../core/utils";
 import { PuzzleSerializer } from "../../../savegame/puzzle_serializer";
 import { T } from "../../../translations";
 import { ConstantSignalComponent } from "../../components/constant_signal";
 import { GoalAcceptorComponent } from "../../components/goal_acceptor";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { ShapeItem } from "../../items/shape_item";
 import { ShapeDefinition } from "../../shape_definition";
 import { BaseHUDPart } from "../base_hud_part";
@@ -161,6 +163,14 @@ export class HUDPuzzleReview extends BaseHUDPart {
             const required = goalComp.getRequiredDeliveryHistorySize();
             if (goalComp.deliveryHistory.length < required) {
                 return T.puzzleMenu.validation.goalAcceptorRateNotMet;
+            }
+        }
+
+        // Check if all buildings are within the area
+        const entities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
+        for (const entity of entities) {
+            if (this.root.systemMgr.systems.zone.prePlacementCheck(entity) === STOP_PROPAGATION) {
+                return T.puzzleMenu.validation.buildingOutOfBounds;
             }
         }
     }

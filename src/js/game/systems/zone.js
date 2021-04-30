@@ -8,6 +8,8 @@ import { globalConfig } from "../../core/config";
 import { STOP_PROPAGATION } from "../../core/signal";
 import { GameSystem } from "../game_system";
 import { THEME } from "../theme";
+import { Entity } from "../entity";
+import { Vector } from "../../core/vector";
 
 export class ZoneSystem extends GameSystem {
     /** @param {GameRoot} root */
@@ -21,6 +23,12 @@ export class ZoneSystem extends GameSystem {
         });
     }
 
+    /**
+     *
+     * @param {Entity} entity
+     * @param {Vector | undefined} tile
+     * @returns
+     */
     prePlacementCheck(entity, tile = null) {
         const staticComp = entity.components.StaticMapEntity;
 
@@ -36,10 +44,15 @@ export class ZoneSystem extends GameSystem {
         }
 
         const transformed = staticComp.getTileSpaceBounds();
+        if (tile) {
+            transformed.x += tile.x;
+            transformed.y += tile.y;
+        }
 
         let withinAnyZone = false;
         for (const zone of zones) {
-            if (zone.expandedInAllDirections(-1).containsRect(transformed)) {
+            const intersection = zone.getIntersection(transformed);
+            if (intersection && intersection.w * intersection.h === transformed.w * transformed.h) {
                 withinAnyZone = true;
             }
         }

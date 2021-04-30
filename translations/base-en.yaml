@@ -142,6 +142,9 @@ puzzleMenu:
             One or more Goal Acceptors have not yet assigned an item. Deliver a shape to them to set a goal.
         goalAcceptorRateNotMet: >-
             One or more Goal Acceptors are not getting enough items. Make sure that the indicators are green for all acceptors.
+        buildingOutOfBounds: >-
+            One ore more buildings are outside of the buildable area. Either increase the area or remove them.
+
 dialogs:
     buttons:
         ok: OK
