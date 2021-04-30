@@ -13,6 +13,7 @@ import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
+import { HUDPuzzleEditorControls } from "../hud/parts/puzzle_editor_controls";
 
 /** @typedef {{
  *   shape: string,
@@ -516,12 +517,13 @@ export class RegularGameMode extends GameMode {
     constructor(root) {
         super(root);
 
-        this.hiddenHurtParts = {
+        this.hiddenHudParts = {
             [HUDModeMenuBack.name]: false,
             [HUDPuzzleReview.name]: false,
             [HUDModeMenu.name]: false,
             [HUDModeSettings.name]: false,
             [HUDPuzzleDLCLogo.name]: false,
+            [HUDPuzzleEditorControls.name]: false,
         };
 
         this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding];

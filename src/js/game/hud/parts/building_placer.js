@@ -234,7 +234,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
+        if (this.root.camera.getIsMapOverlayActive()) {
             // Dont allow placing in overview mode
             this.domAttach.update(false);
             this.variantsAttach.update(false);
