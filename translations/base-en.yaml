@@ -143,7 +143,7 @@ puzzleMenu:
         goalAcceptorRateNotMet: >-
             One or more Goal Acceptors are not getting enough items. Make sure that the indicators are green for all acceptors.
         buildingOutOfBounds: >-
-            One ore more buildings are outside of the buildable area. Either increase the area or remove them.
+            One or more buildings are outside of the buildable area. Either increase the area or remove them.
 
 dialogs:
     buttons:
