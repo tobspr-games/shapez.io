@@ -32,7 +32,7 @@ export class PuzzleGameMode extends GameMode {
 
         const data = this.getSaveData();
 
-        this.hiddenHurtParts = {
+        this.hiddenHudParts = {
             [HUDGameMenu.name]: false,
             [HUDMassSelector.name]: false,
             [HUDInteractiveTutorial.name]: false,

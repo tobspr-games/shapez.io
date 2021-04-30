@@ -48,7 +48,7 @@ export class HUDModeSettings extends BaseHUDPart {
     }
 
     modifyZone(width, height) {
-        this.root.gameMode.expandZone(width, height);
+        this.root.gameMode.adjustZone(width, height);
         this.updateZoneValues();
     }
 

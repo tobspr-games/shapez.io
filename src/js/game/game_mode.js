@@ -47,7 +47,7 @@ export class GameMode extends BasicSerializableObject {
     constructor(root) {
         super();
         this.root = root;
-        this.hiddenHurtParts = {};
+        this.hiddenHudParts = {};
 
         /** @type {typeof MetaBuilding[]} */
         this.hiddenBuildings = [MetaItemProducerBuilding];
@@ -83,7 +83,7 @@ export class GameMode extends BasicSerializableObject {
      * @returns {boolean}
      */
     isHudPartExcluded(name) {
-        return this.hiddenHurtParts[name] === false;
+        return this.hiddenHudParts[name] === false;
     }
 
     /**
@@ -142,7 +142,7 @@ export class GameMode extends BasicSerializableObject {
      * @param {number} w
      * @param {number} h
      */
-    expandZone(w = 0, h = 0) {
+    adjustZone(w = 0, h = 0) {
         abstract;
         return;
     }

@@ -72,7 +72,7 @@ export class Rectangle {
     /**
      * Returns if this rectangle is equal to the other while taking an epsilon into account
      * @param {Rectangle} other
-     * @param {number} epsilon
+     * @param {number} [epsilon]
      */
     equalsEpsilon(other, epsilon) {
         return (
