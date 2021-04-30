@@ -68,9 +68,11 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
         const newZone = this.createCenteredRectangle(this.zoneWidth + w, this.zoneHeight + h);
         const entities = this.root.entityMgr.entities;
 
+        // @fixme find a better way to check this
         for (const entity of entities) {
-            const point = entity.components.StaticMapEntity.origin;
-            if (!newZone.containsPoint(point.x, point.y)) {
+            const staticComp = entity.components.StaticMapEntity;
+            const union = newZone.getUnion(staticComp.getTileSpaceBounds());
+            if (!union.equalsEpsilon(newZone)) {
                 return;
             }
         }

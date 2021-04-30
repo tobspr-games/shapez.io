@@ -49,17 +49,14 @@ export class ZoneSystem extends GameSystem {
             transformed.y += tile.y;
         }
 
-        let withinAnyZone = false;
         for (const zone of zones) {
             const intersection = zone.getIntersection(transformed);
             if (intersection && intersection.w * intersection.h === transformed.w * transformed.h) {
-                withinAnyZone = true;
+                return;
             }
         }
 
-        if (!withinAnyZone) {
-            return STOP_PROPAGATION;
-        }
+        return STOP_PROPAGATION;
     }
 
     /**
