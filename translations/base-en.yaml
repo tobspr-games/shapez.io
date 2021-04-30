@@ -834,7 +834,7 @@ storyRewards:
         title: Storage
         desc: >-
             You have unlocked the <strong>storage</strong> building - It allows you to store items up to a given capacity!<br><br>
-            It priorities the left output, so you can also use it as an <strong>overflow gate</strong>!
+            It prioritises the left output, so you can also use it as an <strong>overflow gate</strong>!
 
     reward_blueprints:
         title: Blueprints
