@@ -77,7 +77,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             );
         }
 
-        if (!this.root.gameMode.isHudPartExcluded(HUDPinnedShapes.name)) {
+        if (this.root.hud.parts.pinnedShapes) {
             items.push(
                 ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
                     this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)

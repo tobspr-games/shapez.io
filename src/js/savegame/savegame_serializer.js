@@ -40,12 +40,8 @@ export class SavegameSerializer {
             hubGoals: root.hubGoals.serialize(),
             entities: this.internal.serializeEntityArray(root.entityMgr.entities),
             beltPaths: root.systemMgr.systems.belt.serializePaths(),
-            pinnedShapes: root.gameMode.isHudPartExcluded(HUDPinnedShapes.name)
-                ? null
-                : root.hud.parts.pinnedShapes.serialize(),
-            waypoints: root.gameMode.isHudPartExcluded(HUDWaypoints.name)
-                ? null
-                : root.hud.parts.waypoints.serialize(),
+            pinnedShapes: root.hud.parts.pinnedShapes ? root.hud.parts.pinnedShapes.serialize() : null,
+            waypoints: root.hud.parts.waypoints ? root.hud.parts.waypoints.serialize() : null,
         };
 
         if (G_IS_DEV) {
@@ -142,11 +138,11 @@ export class SavegameSerializer {
         errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);
         errorReason = errorReason || root.systemMgr.systems.belt.deserializePaths(savegame.beltPaths);
 
-        if (!root.gameMode.isHudPartExcluded(HUDPinnedShapes.name)) {
+        if (root.hud.parts.pinnedShapes) {
             errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
         }
 
-        if (!root.gameMode.isHudPartExcluded(HUDWaypoints.name)) {
+        if (root.hud.parts.waypoints) {
             errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
         }
 

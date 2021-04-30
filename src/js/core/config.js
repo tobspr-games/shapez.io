@@ -74,6 +74,8 @@ export const globalConfig = {
     goalAcceptorMinimumDurationSeconds: G_IS_DEV ? 1 : 5,
     goalAcceptorsPerProducer: G_IS_DEV ? 4 : 4,
     puzzleModeSpeed: 3,
+    puzzleMinBoundsSize: 2,
+    puzzleMaxBoundsSize: 20,
 
     buildingSpeeds: {
         cutter: 1 / 4,

@@ -1,12 +1,13 @@
 /* typehints:start */
 import { GameRoot } from "./root";
-import { Rectangle } from "../core/rectangle";
 /* typehints:end */
 
+import { Rectangle } from "../core/rectangle";
 import { gGameModeRegistry } from "../core/global_registries";
 import { types, BasicSerializableObject } from "../savegame/serialization";
 import { MetaBuilding } from "./meta_building";
 import { MetaItemProducerBuilding } from "./buildings/item_producer";
+import { BaseHUDPart } from "./hud/base_hud_part";
 
 /** @enum {string} */
 export const enumGameModeIds = {
@@ -36,9 +37,10 @@ export class GameMode extends BasicSerializableObject {
     /**
      * @param {GameRoot} root
      * @param {string} [id=Regular]
+     * @param {object|undefined} payload
      */
-    static create(root, id = enumGameModeIds.regular) {
-        return new (gGameModeRegistry.findById(id))(root);
+    static create(root, id = enumGameModeIds.regular, payload = undefined) {
+        return new (gGameModeRegistry.findById(id))(root, payload);
     }
 
     /**
@@ -47,7 +49,11 @@ export class GameMode extends BasicSerializableObject {
     constructor(root) {
         super();
         this.root = root;
-        this.hiddenHudParts = {};
+
+        /**
+         * @type {Record<string, typeof BaseHUDPart>}
+         */
+        this.additionalHudParts = {};
 
         /** @type {typeof MetaBuilding[]} */
         this.hiddenBuildings = [MetaItemProducerBuilding];
@@ -76,14 +82,6 @@ export class GameMode extends BasicSerializableObject {
     getType() {
         // @ts-ignore
         return this.constructor.getType();
-    }
-
-    /**
-     * @param {string} name - Class name of HUD Part
-     * @returns {boolean}
-     */
-    isHudPartExcluded(name) {
-        return this.hiddenHudParts[name] === false;
     }
 
     /**

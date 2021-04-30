@@ -5,13 +5,8 @@ import { GameRoot } from "../root";
 import { Rectangle } from "../../core/rectangle";
 import { types } from "../../savegame/serialization";
 import { enumGameModeTypes, GameMode } from "../game_mode";
-import { HUDGameMenu } from "../hud/parts/game_menu";
-import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
-import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
-import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
-import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
-import { HUDWaypoints } from "../hud/parts/waypoints";
-import { HUDMassSelector } from "../hud/parts/mass_selector";
+import { HUDPuzzleBackToMenu } from "../hud/parts/puzzle_back_to_menu";
+import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
 
 export class PuzzleGameMode extends GameMode {
     static getType() {
@@ -32,22 +27,13 @@ export class PuzzleGameMode extends GameMode {
 
         const data = this.getSaveData();
 
-        this.hiddenHudParts = {
-            [HUDGameMenu.name]: false,
-            [HUDMassSelector.name]: false,
-            [HUDInteractiveTutorial.name]: false,
-            [HUDKeybindingOverlay.name]: false,
-            [HUDPartTutorialHints.name]: false,
-            [HUDPinnedShapes.name]: false,
-            [HUDWaypoints.name]: false,
+        this.additionalHudParts = {
+            puzzleBackToMenu: HUDPuzzleBackToMenu,
+            puzzleDlcLogo: HUDPuzzleDLCLogo,
         };
 
-        this.setDimensions(data.zoneWidth, data.zoneHeight);
-    }
-
-    setDimensions(w = 16, h = 9) {
-        this.zoneWidth = w < 2 ? 2 : w;
-        this.zoneHeight = h < 2 ? 2 : h;
+        this.zoneWidth = data.zoneWidth || 8;
+        this.zoneHeight = data.zoneHeight || 6;
     }
 
     getSaveData() {
@@ -58,16 +44,12 @@ export class PuzzleGameMode extends GameMode {
         return save.gameMode.data;
     }
 
-    createCenteredRectangle(width, height) {
-        return new Rectangle(-Math.ceil(width / 2), -Math.ceil(height / 2), width, height);
-    }
-
     getCameraBounds() {
-        return this.createCenteredRectangle(this.zoneWidth + 20, this.zoneHeight + 20);
+        return Rectangle.centered(this.zoneWidth + 20, this.zoneHeight + 20);
     }
 
     getBuildableZones() {
-        return [this.createCenteredRectangle(this.zoneWidth, this.zoneHeight)];
+        return [Rectangle.centered(this.zoneWidth, this.zoneHeight)];
     }
 
     hasHub() {

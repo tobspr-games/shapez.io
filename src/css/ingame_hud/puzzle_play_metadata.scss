@@ -1,4 +1,4 @@
-#ingame_HUD_PuzzleEditorControls {
+#ingame_HUD_PuzzleEditorMetadata {
     position: absolute;
 
     @include S(top, 70px);
@@ -16,15 +16,4 @@
             font-weight: bold;
         }
     }
-}
-
-#ingame_HUD_PuzzleEditorTitle {
-    position: absolute;
-
-    @include S(top, 18px);
-    left: 50%;
-    transform: translateX(-50%);
-    text-transform: uppercase;
-    @include Heading;
-    text-align: center;
 }

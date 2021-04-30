@@ -1,7 +1,7 @@
-#ingame_HUD_ModeMenuBack {
+#ingame_HUD_PuzzleBackToMenu {
     position: absolute;
     @include S(top, 10px);
-    @include S(left, 10px);
+    @include S(left, 0px);
 
     display: flex;
     flex-direction: column;

@@ -275,11 +275,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const worldPosition = this.root.camera.screenToWorld(mousePosition);
 
         // Draw peeker
-        this.root.hud.parts.layerPreview.renderPreview(
-            parameters,
-            worldPosition,
-            1 / this.root.camera.zoomLevel
-        );
+        if (this.root.hud.parts.layerPreview) {
+            this.root.hud.parts.layerPreview.renderPreview(
+                parameters,
+                worldPosition,
+                1 / this.root.camera.zoomLevel
+            );
+        }
     }
 
     /**

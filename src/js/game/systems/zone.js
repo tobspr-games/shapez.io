@@ -49,14 +49,9 @@ export class ZoneSystem extends GameSystem {
             transformed.y += tile.y;
         }
 
-        for (const zone of zones) {
-            const intersection = zone.getIntersection(transformed);
-            if (intersection && intersection.w * intersection.h === transformed.w * transformed.h) {
-                return;
-            }
+        if (!zones.some(zone => zone.intersectsFully(transformed))) {
+            return STOP_PROPAGATION;
         }
-
-        return STOP_PROPAGATION;
     }
 
     /**
@@ -84,8 +79,7 @@ export class ZoneSystem extends GameSystem {
         context.lineWidth = 2;
         context.strokeStyle = THEME.map.zone.borderSolid;
         context.beginPath();
-        context.rect(zone.x, zone.y, zone.w, zone.h);
-
+        context.rect(zone.x - 1, zone.y - 1, zone.w + 2, zone.h + 2);
         context.stroke();
 
         const outer = zone;

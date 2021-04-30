@@ -16,7 +16,7 @@ import { BaseHUDPart } from "../base_hud_part";
 const trim = require("trim");
 const logger = createLogger("puzzle-review");
 
-export class HUDPuzzleReview extends BaseHUDPart {
+export class HUDPuzzleEditorReview extends BaseHUDPart {
     constructor(root) {
         super(root);
 
@@ -27,7 +27,7 @@ export class HUDPuzzleReview extends BaseHUDPart {
     createElements(parent) {
         const key = this.root.gameMode.getId();
 
-        this.element = makeDiv(parent, "ingame_HUD_PuzzleReview");
+        this.element = makeDiv(parent, "ingame_HUD_PuzzleEditorReview");
         this.button = document.createElement("button");
         this.button.classList.add("button");
         this.button.textContent = T.puzzleMenu.reviewPuzzle;

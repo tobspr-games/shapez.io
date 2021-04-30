@@ -103,7 +103,7 @@ export class GameCore {
         root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
 
         // Init game mode
-        root.gameMode = GameMode.create(root, gameModeId);
+        root.gameMode = GameMode.create(root, gameModeId, parentState.creationPayload.gameModeParameters);
 
         // Needs to come first
         root.dynamicTickrate = new DynamicTickrate(root);
@@ -455,7 +455,9 @@ export class GameCore {
             systems.hub.draw(params);
 
             // Green wires overlay
-            root.hud.parts.wiresOverlay.draw(params);
+            if (root.hud.parts.wiresOverlay) {
+                root.hud.parts.wiresOverlay.draw(params);
+            }
 
             if (this.root.currentLayer === "wires") {
                 // Static map entities

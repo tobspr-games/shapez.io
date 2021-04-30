@@ -45,6 +45,9 @@ export class GameCreationPayload {
 
         /** @type {Savegame} */
         this.savegame;
+
+        /** @type {object|undefined} */
+        this.gameModeParameters;
     }
 }
 

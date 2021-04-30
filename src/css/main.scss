@@ -56,12 +56,12 @@
 @import "ingame_hud/sandbox_controller";
 @import "ingame_hud/standalone_advantages";
 @import "ingame_hud/cat_memes";
-@import "ingame_hud/mode_menu_back";
-@import "ingame_hud/mode_menu_next";
-@import "ingame_hud/mode_menu";
-@import "ingame_hud/mode_settings";
+@import "ingame_hud/puzzle_back_to_menu";
+@import "ingame_hud/puzzle_editor_review";
 @import "ingame_hud/puzzle_dlc_logo";
 @import "ingame_hud/puzzle_editor_controls";
+@import "ingame_hud/puzzle_editor_settings";
+@import "ingame_hud/puzzle_play_metadata";
 
 // prettier-ignore
 $elements:
@@ -79,12 +79,12 @@ ingame_HUD_PlacerVariants,
 ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
-ingame_HUD_ModeMenuBack,
-ingame_HUD_PuzzleReview,
+ingame_HUD_PuzzleBackToMenu,
+ingame_HUD_PuzzleEditorReview,
 ingame_HUD_PuzzleEditorControls,
 ingame_HUD_PuzzleEditorTitle,
-ingame_HUD_ModeMenu,
-ingame_HUD_ModeSettings,
+ingame_HUD_PuzzleEditorSettings,
+ingame_HUD_PuzzlePlayMetadata
 ingame_HUD_Notifications,
 ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
@@ -127,8 +127,8 @@ body.uiHidden {
     #ingame_HUD_PlacementHints,
     #ingame_HUD_GameMenu,
     #ingame_HUD_PinnedShapes,
-    #ingame_HUD_ModeMenuBack,
-    #ingame_HUD_PuzzleReview,
+    #ingame_HUD_PuzzleBackToMenu,
+    #ingame_HUD_PuzzleEditorReview,
     #ingame_HUD_Notifications,
     #ingame_HUD_TutorialHints,
     #ingame_HUD_Waypoints,

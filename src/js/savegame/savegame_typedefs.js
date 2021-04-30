@@ -41,4 +41,46 @@
  * }} SavegamesData
  */
 
+/**
+ * @typedef {{
+ *    shortKey: string;
+ *    upvotes: number;
+ *    playcount: number;
+ *    title: string;
+ *    author: string;
+ *    completed: boolean;
+ * }} PuzzleMetadata
+ */
+
+/**
+ * @typedef {{
+ *   type: "emitter";
+ *   item: string;
+ *   pos: { x: number; y: number; r: number }
+ * }} PuzzleGameBuildingConstantProducer
+ */
+
+/**
+ * @typedef {{
+ *   type: "goal";
+ *   item: string;
+ *   pos: { x: number; y: number; r: number }
+ * }} PuzzleGameBuildingGoal
+ */
+
+/**
+ * @typedef {{
+ *   version: number;
+ *   bounds: { w: number; h: number; },
+ *   buildings: (PuzzleGameBuildingGoal | PuzzleGameBuildingConstantProducer)[]
+ * }} PuzzleGameData
+ */
+
+/**
+ * @typedef {{
+ *   meta: PuzzleMetadata,
+ *   game: PuzzleGameData
+ * }} PuzzleFullData
+ */
+
 export default {};

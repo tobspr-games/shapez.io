@@ -298,6 +298,10 @@ dialogs:
 
         placeholderName: Puzzle Title
 
+    puzzleResizeBadBuildings:
+        title: Resize not possible
+        desc: You can't make the zone any smaller, because then some buildings would be outside the zone.
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -521,6 +525,22 @@ ingame:
             support:
                 title: Support me
                 desc: I develop the game in my spare time!
+
+    # puzzle mode
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Width
+        zoneHeight: Height
+        trimZone: Trim
+
+    puzzleEditorControls:
+        title: Puzzle Creator
+        instructions:
+            - 1. Place <strong>Constant Producers</strong> to provide shapes and colors to the player
+            - 2. Build one or more shapes you want the player to build later and deliver it to one or more <strong>Goal Acceptors</strong>
+            - 3. Once a Goal Acceptor receives a shape for a certain amount of time, it <strong>saves it as a goal</strong> that the player must produce later (Indicated by the <strong>green badge</strong>).
+            - 4. Once you click review, your puzzle will be validated and you can publish it.
+            - 5. Upon release, <strong>all buildings will be removed</strong> except for the Producers and Goal Acceptors - That's the part that the player is supposed to figure out for themselves, after all :)
 
 # All shop upgrades
 shopUpgrades:
@@ -749,12 +769,12 @@ buildings:
     constant_producer:
         default:
             name: &constant_producer Constant Producer
-            description: Outputs a shape, color or boolean (1 or 0) as specified.
+            description: Constantly outputs a specified shape or color.
 
     goal_acceptor:
         default:
             name: &goal_acceptor Goal Acceptor
-            description: Accepts items and triggers a goal if the specified item and/or rate criteria are met.
+            description: Deliver shapes to the goal acceptor to set them as a goal.
 
 storyRewards:
     # Those are the rewards gained from completing the store

@@ -1,14 +1,15 @@
-#ingame_HUD_ModeSettings {
+#ingame_HUD_PuzzleEditorSettings {
     position: absolute;
     background: $ingameHudBg;
     @include S(padding, 10px);
-    @include S(bottom, 50px);
-    @include S(left, 15px);
+    @include S(bottom, 60px);
+    @include S(left, 10px);
 
     @include SuperSmallText;
     color: #eee;
     display: flex;
     flex-direction: column;
+    @include S(border-radius, $globalBorderRadius);
 
     > .section {
         > label {
@@ -37,11 +38,15 @@
                 @include IncreasedClickArea(0px);
             }
 
-
             .value {
                 text-align: center;
                 @include S(min-width, 15px);
             }
+        }
+
+        > .buttons > button.trim {
+            @include S(margin-top, 10px);
+            @include SuperSmallText;
         }
     }
 }

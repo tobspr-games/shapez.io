@@ -118,7 +118,9 @@ export class HUDSandboxController extends BaseHUDPart {
         // Clear all shapes of this level
         hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
 
-        this.root.hud.parts.pinnedShapes.rerenderFull();
+        if (this.root.hud.parts.pinnedShapes) {
+            this.root.hud.parts.pinnedShapes.rerenderFull();
+        }
 
         // Compute gained rewards
         hubGoals.gainedRewards = {};
@@ -149,19 +151,8 @@ export class HUDSandboxController extends BaseHUDPart {
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }
 
-    isAvailable() {
-        if (queryParamOptions.sandboxMode || G_IS_DEV) {
-            return true;
-        }
-        // @ts-ignore
-        if (window.sandboxMode) {
-            return true;
-        }
-        return false;
-    }
-
     toggle() {
-        if (!this.visible && !this.isAvailable()) {
+        if (!this.visible) {
             return;
         }
         this.visible = !this.visible;

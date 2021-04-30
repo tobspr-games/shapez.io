@@ -1,18 +1,23 @@
+/* typehints:start */
+import { GameRoot } from "../game/root";
+import { PuzzleGameMode } from "../game/modes/puzzle";
+/* typehints:end */
 import { enumConstantSignalType } from "../game/components/constant_signal";
 import { StaticMapEntityComponent } from "../game/components/static_map_entity";
 import { ShapeItem } from "../game/items/shape_item";
-import { GameRoot } from "../game/root";
 
 export class PuzzleSerializer {
     /**
      * Serializes the game root into a dump
      * @param {GameRoot} root
-     * @param {boolean=} sanityChecks Whether to check for validity
-     * @returns {object}
+     * @returns {import("./savegame_typedefs").PuzzleGameData}
      */
-    generateDumpFromGameRoot(root, sanityChecks = true) {
+    generateDumpFromGameRoot(root) {
         console.log("serializing", root);
 
+        /**
+         * @type {import("./savegame_typedefs").PuzzleGameData["buildings"]}
+         */
         let buildings = [];
 
         for (const entity of root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
@@ -51,9 +56,15 @@ export class PuzzleSerializer {
             }
         }
 
+        const mode = /** @type {PuzzleGameMode} */ (root.gameMode);
+
         return {
+            version: 1,
             buildings,
-            bounds: root.gameMode.getBuildableZones()[0],
+            bounds: {
+                w: mode.zoneWidth,
+                h: mode.zoneHeight,
+            },
         };
     }
 }

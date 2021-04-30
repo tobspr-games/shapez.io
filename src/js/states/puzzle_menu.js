@@ -7,17 +7,6 @@ import { T } from "../translations";
 
 const categories = ["levels", "new", "topRated", "myPuzzles"];
 
-/**
- * @typedef {{
- *    shortKey: string;
- *    upvotes: number;
- *    playcount: number;
- *    title: string;
- *    author: string;
- *    completed: boolean;
- * }} PuzzleMetadata
- */
-
 const SAMPLE_PUZZLE = {
     shortKey: "CuCuCuCu",
     upvotes: 10000,
@@ -26,6 +15,7 @@ const SAMPLE_PUZZLE = {
     author: "verylongsteamnamewhichbreaks",
     completed: false,
 };
+
 const BUILTIN_PUZZLES = [
     { ...SAMPLE_PUZZLE, completed: true },
     { ...SAMPLE_PUZZLE, completed: true },
@@ -141,7 +131,7 @@ export class PuzzleMenuState extends TextualGameState {
 
     /**
      *
-     * @param {PuzzleMetadata[]} puzzles
+     * @param {import("../savegame/savegame_typedefs").PuzzleMetadata[]} puzzles
      */
     renderPuzzles(puzzles) {
         const container = this.htmlElement.querySelector("#mainContainer");
@@ -191,11 +181,56 @@ export class PuzzleMenuState extends TextualGameState {
             elem.appendChild(icon);
 
             container.appendChild(elem);
+
+            this.trackClicks(elem, () => this.playPuzzle(puzzle));
         }
     }
 
     getPuzzlesForCategory(category) {
         return new Promise(resolve => setTimeout(() => resolve(BUILTIN_PUZZLES), 100));
+    }
+
+    /**
+     *
+     * @param {import("../savegame/savegame_typedefs").PuzzleMetadata} puzzle
+     */
+    playPuzzle(puzzle) {
+        /**
+         * @type {import("../savegame/savegame_typedefs").PuzzleGameData}
+         */
+        const puzzleData = {
+            version: 1,
+            buildings: [
+                {
+                    type: "emitter",
+                    item: "CuCuCuCu",
+                    pos: { x: 0, y: 0, r: 180 },
+                },
+                {
+                    type: "emitter",
+                    item: "red",
+                    pos: { x: 2, y: 0, r: 180 },
+                },
+                {
+                    type: "goal",
+                    item: "CrCrCrCr",
+                    pos: { x: 0, y: 4, r: 0 },
+                },
+            ],
+            bounds: { w: 10, h: 10 },
+        };
+
+        const savegame = this.app.savegameMgr.createNewSavegame();
+        this.moveToState("InGameState", {
+            gameModeId: enumGameModeIds.puzzlePlay,
+            gameModeParameters: {
+                puzzle: {
+                    meta: puzzle,
+                    game: puzzleData,
+                },
+            },
+            savegame,
+        });
     }
 
     onEnter() {
@@ -209,7 +244,8 @@ export class PuzzleMenuState extends TextualGameState {
         this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), this.createNewPuzzle);
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
-            this.createNewPuzzle();
+            // this.createNewPuzzle();
+            this.playPuzzle(SAMPLE_PUZZLE);
         }
     }
 

@@ -5,15 +5,37 @@ import { GameRoot } from "../root";
 import { findNiceIntegerValue } from "../../core/utils";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
-import { HUDModeMenuBack } from "../hud/parts/mode_menu_back";
-import { HUDPuzzleReview } from "../hud/parts/mode_puzzle_review";
-import { HUDModeMenu } from "../hud/parts/mode_menu";
-import { HUDModeSettings } from "../hud/parts/mode_settings";
 import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
-import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
-import { HUDPuzzleEditorControls } from "../hud/parts/puzzle_editor_controls";
+import { HUDWiresToolbar } from "../hud/parts/wires_toolbar";
+import { HUDBlueprintPlacer } from "../hud/parts/blueprint_placer";
+import { HUDUnlockNotification } from "../hud/parts/unlock_notification";
+import { HUDMassSelector } from "../hud/parts/mass_selector";
+import { HUDShop } from "../hud/parts/shop";
+import { HUDWaypoints } from "../hud/parts/waypoints";
+import { HUDStatistics } from "../hud/parts/statistics";
+import { HUDWireInfo } from "../hud/parts/wire_info";
+import { HUDLeverToggle } from "../hud/parts/lever_toggle";
+import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
+import { HUDNotifications } from "../hud/parts/notifications";
+import { HUDScreenshotExporter } from "../hud/parts/screenshot_exporter";
+import { HUDWiresOverlay } from "../hud/parts/wires_overlay";
+import { HUDShapeViewer } from "../hud/parts/shape_viewer";
+import { HUDLayerPreview } from "../hud/parts/layer_preview";
+import { HUDTutorialVideoOffer } from "../hud/parts/tutorial_video_offer";
+import { HUDMinerHighlight } from "../hud/parts/miner_highlight";
+import { HUDGameMenu } from "../hud/parts/game_menu";
+import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
+import { IS_MOBILE } from "../../core/config";
+import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
+import { HUDWatermark } from "../hud/parts/watermark";
+import { HUDStandaloneAdvantages } from "../hud/parts/standalone_advantages";
+import { HUDCatMemes } from "../hud/parts/cat_memes";
+import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
+import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
+import { HUDSandboxController } from "../hud/parts/sandbox_controller";
+import { queryParamOptions } from "../../core/query_parameters";
 
 /** @typedef {{
  *   shape: string,
@@ -517,14 +539,47 @@ export class RegularGameMode extends GameMode {
     constructor(root) {
         super(root);
 
-        this.hiddenHudParts = {
-            [HUDModeMenuBack.name]: false,
-            [HUDPuzzleReview.name]: false,
-            [HUDModeMenu.name]: false,
-            [HUDModeSettings.name]: false,
-            [HUDPuzzleDLCLogo.name]: false,
-            [HUDPuzzleEditorControls.name]: false,
+        this.additionalHudParts = {
+            wiresToolbar: HUDWiresToolbar,
+            blueprintPlacer: HUDBlueprintPlacer,
+            unlockNotification: HUDUnlockNotification,
+            massSelector: HUDMassSelector,
+            shop: HUDShop,
+            statistics: HUDStatistics,
+            waypoints: HUDWaypoints,
+            wireInfo: HUDWireInfo,
+            leverToggle: HUDLeverToggle,
+            pinnedShapes: HUDPinnedShapes,
+            notifications: HUDNotifications,
+            screenshotExporter: HUDScreenshotExporter,
+            wiresOverlay: HUDWiresOverlay,
+            shapeViewer: HUDShapeViewer,
+            layerPreview: HUDLayerPreview,
+            minerHighlight: HUDMinerHighlight,
+            tutorialVideoOffer: HUDTutorialVideoOffer,
+            gameMenu: HUDGameMenu,
+            constantSignalEdit: HUDConstantSignalEdit,
         };
+
+        if (!IS_MOBILE) {
+            this.additionalHudParts.keybindingOverlay = HUDKeybindingOverlay;
+        }
+
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
+            this.additionalHudParts.watermark = HUDWatermark;
+            this.additionalHudParts.standaloneAdvantages = HUDStandaloneAdvantages;
+            this.additionalHudParts.catMemes = HUDCatMemes;
+        }
+
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
+        }
+
+        // @ts-ignore
+        if (queryParamOptions.sandboxMode || window.sandboxMode || G_IS_DEV) {
+            this.additionalHudParts.sandboxController = HUDSandboxController;
+        }
 
         this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding];
     }
