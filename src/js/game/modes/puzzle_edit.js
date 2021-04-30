@@ -55,16 +55,28 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
         ];
     }
 
-    expandZone(w = 0, h = 0) {
-        if (this.zoneWidth + w > 0) {
-            this.zoneWidth += w;
+    adjustZone(w = 0, h = 0) {
+        // @todo notify user when zone cannot be shrunk
+        if (this.zoneWidth + w <= 0) {
+            return;
         }
 
-        if (this.zoneHeight + h > 0) {
-            this.zoneHeight += h;
+        if (this.zoneHeight + h <= 0) {
+            return;
         }
 
-        this.zone = this.createCenteredRectangle(this.zoneWidth, this.zoneHeight);
+        const newZone = this.createCenteredRectangle(this.zoneWidth + w, this.zoneHeight + h);
+        const entities = this.root.entityMgr.entities;
+
+        for (const entity of entities) {
+            const point = entity.components.StaticMapEntity.origin;
+            if (!newZone.containsPoint(point.x, point.y)) {
+                return;
+            }
+        }
+
+        this.zoneWidth = newZone.w;
+        this.zoneHeight = newZone.h;
     }
 
     getIsEditor() {

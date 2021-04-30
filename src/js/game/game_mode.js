@@ -142,7 +142,7 @@ export class GameMode extends BasicSerializableObject {
      * @param {number} w
      * @param {number} h
      */
-    expandZone(w = 0, h = 0) {
+    adjustZone(w = 0, h = 0) {
         abstract;
         return;
     }
