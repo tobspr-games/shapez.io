@@ -78,10 +78,9 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         logger.log("Loading puzzle", this.puzzle);
 
         try {
-            errorText = new PuzzleSerializer().deserializePuzzle(this.root, this.puzzle.game);
-
             this.zoneWidth = this.puzzle.game.bounds.w;
             this.zoneHeight = this.puzzle.game.bounds.h;
+            errorText = new PuzzleSerializer().deserializePuzzle(this.root, this.puzzle.game);
         } catch (ex) {
             errorText = ex.message || ex;
         }
