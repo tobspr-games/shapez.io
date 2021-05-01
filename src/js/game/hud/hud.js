@@ -79,11 +79,9 @@ export class GameHUD {
         }
 
         const additionalParts = this.root.gameMode.additionalHudParts;
-        console.log(additionalParts);
         for (const [partId, part] of Object.entries(additionalParts)) {
             this.parts[partId] = new part(this.root);
         }
-        console.log(this.parts);
 
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {

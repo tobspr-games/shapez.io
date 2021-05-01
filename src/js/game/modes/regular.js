@@ -57,8 +57,8 @@ import { queryParamOptions } from "../../core/query_parameters";
  *   throughputOnly?: boolean
  * }} LevelDefinition */
 
-const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
-const finalGameShape = "RuCw--Cw:----Ru--";
+export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+export const finalGameShape = "RuCw--Cw:----Ru--";
 const preparementShape = "CpRpCp--:SwSwSwSw";
 
 // Tiers need % of the previous tier as requirement too

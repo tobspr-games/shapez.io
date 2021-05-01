@@ -6,10 +6,9 @@ import { fillInLinkIntoTranslation } from "../../core/utils";
 import { T } from "../../translations";
 import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
-import { enumConstantSignalType, ConstantSignalComponent } from "../components/constant_signal";
+import { ConstantSignalComponent, enumConstantSignalType } from "../components/constant_signal";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeDefinition } from "../shape_definition";
@@ -60,13 +59,20 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             validator: val => this.parseSignalCode(entity.components.ConstantSignal.type, val),
         });
 
-        const items = [
-            ...Object.values(COLOR_ITEM_SINGLETONS),
-            this.root.shapeDefinitionMgr.getShapeItemFromShortKey(this.root.gameMode.getBlueprintShapeKey()),
-        ];
+        const items = [...Object.values(COLOR_ITEM_SINGLETONS)];
 
         if (entity.components.ConstantSignal.type === enumConstantSignalType.wired) {
             items.unshift(BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON);
+            items.push(
+                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
+                    this.root.gameMode.getBlueprintShapeKey()
+                )
+            );
+        } else if (entity.components.ConstantSignal.type === enumConstantSignalType.wireless) {
+            const shapes = ["CuCuCuCu", "RuRuRuRu", "WuWuWuWu", "SuSuSuSu"];
+            items.unshift(
+                ...shapes.reverse().map(key => this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key))
+            );
         }
 
         if (this.root.gameMode.hasHub()) {

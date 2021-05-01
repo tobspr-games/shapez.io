@@ -41,7 +41,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
             allAccepted &&
             !this.root.gameMode.getIsEditor()
         ) {
-            this.root.hud.parts.dialogs.showInfo("Puzzle completed", "Congrats!");
+            this.root.signals.puzzleComplete.dispatch();
             this.puzzleCompleted = true;
         }
     }

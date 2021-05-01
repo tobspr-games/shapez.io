@@ -48,6 +48,7 @@ steamPage:
 global:
     loading: Loading
     error: Error
+    loggingIn: Logging in
 
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
@@ -127,12 +128,13 @@ puzzleMenu:
     reviewPuzzle: Review & Publish
     validtingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
+    noPuzzles: There are currently no puzzles in this section.
 
     categories:
         levels: Levels
         new: New
-        topRated: Top Rated
-        myPuzzles: My Puzzles
+        top-rated: Top Rated
+        mine: My Puzzles
 
     validation:
         title: Invalid Puzzle
@@ -158,6 +160,9 @@ dialogs:
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
+        retry: Retry
+        continue: Continue
+        playOffline: Play Offline
 
     importSavegameError:
         title: Import Error
@@ -306,6 +311,31 @@ dialogs:
         title: Bad Puzzle
         desc: >-
             The puzzle failed to load:
+
+    offlineMode:
+        title: Offline Mode
+        desc: >-
+            We couldn't reach the backend servers, so the game has to run in offline mode. Please make sure you have an active internect connection.
+
+    puzzleDownloadError:
+        title: Download Error
+        desc: >-
+            Failed to download the puzzle:
+
+    puzzleSubmitError:
+        title: Submission Error
+        desc: >-
+            Failed to submit your puzzle:
+
+    puzzleSubmitOk:
+        title: Puzzle Published
+        desc: >-
+            Congratulations! Your puzzle has been published and can now be played by others. You can now find it in the "My puzzles" section.
+
+    puzzleCreateOffline:
+        title: Offline Mode
+        desc: >-
+            Since you are offline, you will not be able to save and/or publish your puzzle. Would you still like to continue?
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -546,6 +576,15 @@ ingame:
             - 3. Once a Goal Acceptor receives a shape for a certain amount of time, it <strong>saves it as a goal</strong> that the player must produce later (Indicated by the <strong>green badge</strong>).
             - 4. Once you click review, your puzzle will be validated and you can publish it.
             - 5. Upon release, <strong>all buildings will be removed</strong> except for the Producers and Goal Acceptors - That's the part that the player is supposed to figure out for themselves, after all :)
+
+    puzzleCompletion:
+        title: Puzzle Completed!
+
+        titleLike: >-
+            Please rate the puzzle:
+        titleRating: How difficult did you find the puzzle?
+
+        buttonSubmit: Submit
 
 # All shop upgrades
 shopUpgrades:

@@ -62,6 +62,7 @@
 @import "ingame_hud/puzzle_editor_controls";
 @import "ingame_hud/puzzle_editor_settings";
 @import "ingame_hud/puzzle_play_metadata";
+@import "ingame_hud/puzzle_complete_notification";
 
 // prettier-ignore
 $elements:
@@ -109,6 +110,7 @@ ingame_HUD_Statistics,
 ingame_HUD_ShapeViewer,
 ingame_HUD_StandaloneAdvantages,
 ingame_HUD_UnlockNotification,
+ingame_HUD_PuzzleCompleteNotification,
 ingame_HUD_SettingsMenu,
 ingame_HUD_ModalDialogs,
 ingame_HUD_CatMemes;

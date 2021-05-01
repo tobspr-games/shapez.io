@@ -41,14 +41,16 @@
  * }} SavegamesData
  */
 
+// Notice: Update backend too
 /**
  * @typedef {{
- *    shortKey: string;
- *    upvotes: number;
- *    playcount: number;
- *    title: string;
- *    author: string;
- *    completed: boolean;
+ * id: number;
+ * shortKey: string;
+ * likes: number;
+ * downloads: number;
+ * title: string;
+ * author: string;
+ * completed: boolean;
  * }} PuzzleMetadata
  */
 

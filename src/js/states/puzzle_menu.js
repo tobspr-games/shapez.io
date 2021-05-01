@@ -1,36 +1,48 @@
 import { globalConfig } from "../core/config";
+import { createLogger } from "../core/logging";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
 import { ShapeDefinition } from "../game/shape_definition";
 import { T } from "../translations";
 
-const categories = ["levels", "new", "topRated", "myPuzzles"];
+const categories = ["levels", "new", "top-rated", "mine"];
 
+/**
+ * @type {import("../savegame/savegame_typedefs").PuzzleMetadata}
+ */
 const SAMPLE_PUZZLE = {
+    id: 1,
     shortKey: "CuCuCuCu",
-    upvotes: 10000,
-    playcount: 1000,
+    downloads: 0,
+    likes: 0,
     title: "Level 1",
     author: "verylongsteamnamewhichbreaks",
     completed: false,
 };
 
-const BUILTIN_PUZZLES = [
-    { ...SAMPLE_PUZZLE, completed: true },
-    { ...SAMPLE_PUZZLE, completed: true },
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-    SAMPLE_PUZZLE,
-];
+/**
+ * @type {import("../savegame/savegame_typedefs").PuzzleMetadata[]}
+ */
+const BUILTIN_PUZZLES = G_IS_DEV
+    ? [
+          //   { ...SAMPLE_PUZZLE, completed: true },
+          //   { ...SAMPLE_PUZZLE, completed: true },
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+          //   SAMPLE_PUZZLE,
+      ]
+    : [];
+
+const logger = createLogger("puzzle-menu");
 
 export class PuzzleMenuState extends TextualGameState {
     constructor() {
@@ -124,6 +136,7 @@ export class PuzzleMenuState extends TextualGameState {
                         T.dialogs.puzzleLoadFailed.title,
                         T.dialogs.puzzleLoadFailed.desc + " " + error
                     );
+                    this.renderPuzzles([]);
                 }
             )
             .then(() => (this.loading = false));
@@ -158,19 +171,19 @@ export class PuzzleMenuState extends TextualGameState {
                 elem.appendChild(author);
             }
 
-            if (puzzle.upvotes) {
-                const upvotes = document.createElement("div");
-                upvotes.classList.add("upvotes");
-                upvotes.innerText = formatBigNumberFull(puzzle.upvotes);
-                elem.appendChild(upvotes);
-            }
+            const stats = document.createElement("div");
+            stats.classList.add("stats");
+            elem.appendChild(stats);
 
-            if (puzzle.playcount) {
-                const playcount = document.createElement("div");
-                playcount.classList.add("playcount");
-                playcount.innerText = String(puzzle.playcount) + " plays";
-                elem.appendChild(playcount);
-            }
+            const downloads = document.createElement("div");
+            downloads.classList.add("downloads");
+            downloads.innerText = String(puzzle.downloads);
+            stats.appendChild(downloads);
+
+            const likes = document.createElement("div");
+            likes.classList.add("likes");
+            likes.innerText = formatBigNumberFull(puzzle.likes);
+            stats.appendChild(likes);
 
             const definition = ShapeDefinition.fromShortKey(puzzle.shortKey);
             const canvas = definition.generateAsCanvas(100 * this.app.getEffectiveUiScale());
@@ -184,10 +197,30 @@ export class PuzzleMenuState extends TextualGameState {
 
             this.trackClicks(elem, () => this.playPuzzle(puzzle));
         }
+
+        if (puzzles.length === 0) {
+            const elem = document.createElement("div");
+            elem.classList.add("empty");
+            elem.innerText = T.puzzleMenu.noPuzzles;
+            container.appendChild(elem);
+        }
     }
 
+    /**
+     *
+     * @param {*} category
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]}
+     */
     getPuzzlesForCategory(category) {
-        return new Promise(resolve => setTimeout(() => resolve(BUILTIN_PUZZLES), 100));
+        if (category === "levels") {
+            return Promise.resolve(BUILTIN_PUZZLES);
+        }
+
+        const result = this.app.clientApi.apiListPuzzles(category);
+        return result.catch(err => {
+            logger.error("Failed to get", category, ":", err);
+            throw err;
+        });
     }
 
     /**
@@ -195,53 +228,46 @@ export class PuzzleMenuState extends TextualGameState {
      * @param {import("../savegame/savegame_typedefs").PuzzleMetadata} puzzle
      */
     playPuzzle(puzzle) {
-        /**
-         * @type {import("../savegame/savegame_typedefs").PuzzleGameData}
-         */
-        const puzzleData = {
-            version: 1,
-            buildings: [
-                {
-                    type: "emitter",
-                    item: "CuCuCuCu",
-                    pos: { x: -2, y: 2, r: 0 },
-                },
-                {
-                    type: "emitter",
-                    item: "red",
-                    pos: { x: 1, y: 2, r: 0 },
-                },
-                {
-                    type: "goal",
-                    item: "CrCrCrCr",
-                    pos: { x: 0, y: -3, r: 0 },
-                },
-            ],
-            bounds: { w: 4, h: 6 },
-        };
+        const closeLoading = this.dialogs.showLoadingDialog();
 
-        const savegame = this.app.savegameMgr.createNewSavegame();
-        this.moveToState("InGameState", {
-            gameModeId: enumGameModeIds.puzzlePlay,
-            gameModeParameters: {
-                puzzle: {
-                    meta: puzzle,
-                    game: puzzleData,
-                },
+        this.app.clientApi.apiDownloadPuzzle(puzzle.id).then(
+            puzzleData => {
+                closeLoading();
+
+                logger.log("Got puzzle:", puzzleData);
+                const savegame = this.app.savegameMgr.createNewSavegame();
+                this.moveToState("InGameState", {
+                    gameModeId: enumGameModeIds.puzzlePlay,
+                    gameModeParameters: {
+                        puzzle: puzzleData,
+                    },
+                    savegame,
+                });
             },
-            savegame,
-        });
+            err => {
+                closeLoading();
+                logger.error("Failed to download puzzle", puzzle.id, ":", err);
+                this.dialogs.showWarning(
+                    T.dialogs.puzzleDownloadError.title,
+                    T.dialogs.puzzleDownloadError.desc + " " + err
+                );
+            }
+        );
     }
 
-    onEnter() {
+    onEnter(payload) {
         this.selectCategory("levels");
+
+        if (payload && payload.error) {
+            this.dialogs.showWarning(payload.error.title, payload.error.desc);
+        }
 
         for (const category of categories) {
             const button = this.htmlElement.querySelector(`[data-category="${category}"]`);
             this.trackClicks(button, () => this.selectCategory(category));
         }
 
-        this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), this.createNewPuzzle);
+        this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), () => this.createNewPuzzle());
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
             // this.createNewPuzzle();
@@ -249,7 +275,17 @@ export class PuzzleMenuState extends TextualGameState {
         }
     }
 
-    createNewPuzzle() {
+    createNewPuzzle(force = false) {
+        if (!force && !this.app.clientApi.isLoggedIn()) {
+            const signals = this.dialogs.showWarning(
+                T.dialogs.puzzleCreateOffline.title,
+                T.dialogs.puzzleCreateOffline.desc,
+                ["cancel:good", "continue:bad"]
+            );
+            signals.continue.add(() => this.createNewPuzzle(true));
+            return;
+        }
+
         const savegame = this.app.savegameMgr.createNewSavegame();
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzleEdit,

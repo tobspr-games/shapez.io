@@ -25,6 +25,10 @@ import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
 import { PuzzleSerializer } from "../../savegame/puzzle_serializer";
 import { T } from "../../translations";
 import { HUDPuzzlePlayMetadata } from "../hud/parts/puzzle_play_metadata";
+import { createLogger } from "../../core/logging";
+import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_notification";
+
+const logger = createLogger("puzzle-play");
 
 export class PuzzlePlayGameMode extends PuzzleGameMode {
     static getId() {
@@ -62,6 +66,7 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         ];
 
         this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
+        this.additionalHudParts.puzzleCompleteNotification = HUDPuzzleCompleteNotification;
 
         root.signals.postLoadHook.add(this.loadPuzzle, this);
 
@@ -70,6 +75,7 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
 
     loadPuzzle() {
         let errorText;
+        logger.log("Loading puzzle", this.puzzle);
 
         try {
             errorText = new PuzzleSerializer().deserializePuzzle(this.root, this.puzzle.game);
@@ -81,11 +87,40 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         }
 
         if (errorText) {
-            const signals = this.root.hud.parts.dialogs.showWarning(
-                T.dialogs.puzzleLoadError.title,
-                T.dialogs.puzzleLoadError.desc + " " + errorText
-            );
-            signals.ok.add(() => this.root.gameState.moveToState("PuzzleMenuState"));
+            this.root.gameState.moveToState("PuzzleMenuState", {
+                error: {
+                    title: T.dialogs.puzzleLoadError.title,
+                    desc: T.dialogs.puzzleLoadError.desc + " " + errorText,
+                },
+            });
+            // const signals = this.root.hud.parts.dialogs.showWarning(
+            //     T.dialogs.puzzleLoadError.title,
+            //     T.dialogs.puzzleLoadError.desc + " " + errorText
+            // );
+            // signals.ok.add(() => this.root.gameState.moveToState("PuzzleMenuState"));
         }
+    }
+
+    /**
+     *
+     * @param {boolean} liked
+     * @param {number} difficulty
+     * @param {number} time
+     */
+    trackCompleted(liked, difficulty, time) {
+        const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
+
+        return this.root.app.clientApi
+            .apiCompletePuzzle(this.puzzle.meta.id, {
+                time,
+                difficulty,
+                liked,
+            })
+            .catch(err => {
+                logger.warn("Failed to complete puzzle:", err);
+            })
+            .then(() => {
+                closeLoading();
+            });
     }
 }

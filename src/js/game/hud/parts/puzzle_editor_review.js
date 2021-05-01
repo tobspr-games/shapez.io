@@ -58,14 +58,14 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
         };
     }
 
-    startSubmit() {
-        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
+    startSubmit(title = "", shortKey = "") {
+        const regex = /^[a-zA-Z0-9_\- ]{4,20}$/;
         const nameInput = new FormElementInput({
             id: "nameInput",
             label: T.dialogs.submitPuzzle.descName,
             placeholder: T.dialogs.submitPuzzle.placeholderName,
-            defaultValue: "",
-            validator: val => val.match(regex) && trim(val).length > 0,
+            defaultValue: title,
+            validator: val => trim(val).match(regex) && trim(val).length > 0,
         });
 
         let items = new Set();
@@ -93,7 +93,7 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             id: "shapeKeyInput",
             label: null,
             placeholder: "CuCuCuCu",
-            defaultValue: "",
+            defaultValue: shortKey,
             validator: val => ShapeDefinition.isValidShortKey(trim(val)),
         });
 
@@ -126,7 +126,32 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
 
         const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog(T.puzzleMenu.submittingPuzzle);
 
-        // @todo
+        this.root.app.clientApi
+            .apiSubmitPuzzle({
+                title,
+                shortKey,
+                data: serialized,
+            })
+            .then(
+                () => {
+                    closeLoading();
+                    const { ok } = this.root.hud.parts.dialogs.showInfo(
+                        T.dialogs.puzzleSubmitOk.title,
+                        T.dialogs.puzzleSubmitOk.desc
+                    );
+                    ok.add(() => this.root.gameState.moveToState("PuzzleMenuState"));
+                },
+                err => {
+                    closeLoading();
+                    logger.warn("Failed to submit puzzle:", err);
+                    const signals = this.root.hud.parts.dialogs.showWarning(
+                        T.dialogs.puzzleSubmitError.title,
+                        T.dialogs.puzzleSubmitError.desc + " " + err,
+                        ["cancel", "retry:good"]
+                    );
+                    signals.retry.add(() => this.startSubmit(title, shortKey));
+                }
+            );
     }
 
     update() {
