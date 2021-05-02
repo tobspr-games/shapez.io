@@ -56,31 +56,49 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
     trim() {
         const mode = /** @type {PuzzleGameMode} */ (this.root.gameMode);
 
-        let w = mode.zoneWidth;
-        let h = mode.zoneHeight;
-        if (this.anyBuildingOutsideZone(w, h)) {
-            logger.error("Trim: Zone is already too small");
+        const sourceRect = Rectangle.centered(mode.zoneWidth, mode.zoneHeight);
+        const entities = this.root.entityMgr.entities;
+
+        if (entities.length == 0) {
+            logger.log("Zone trim: no buildings found");
             return;
         }
 
-        logger.log("Zone trim: Starts at", w, h);
+        logger.log("Zone trim: Starts at", sourceRect.toString());
 
-        while (!this.anyBuildingOutsideZone(w - 1, h)) {
-            --w;
+        const initialRect = entities[0].components.StaticMapEntity.getTileSpaceBounds();
+
+        // Get union of all entity rectangles
+        let destRect = entities.reduce((rect, current) => {
+            const staticComp = current.components.StaticMapEntity;
+            return rect.getUnion(staticComp.getTileSpaceBounds());
+        }, initialRect);
+
+        // Make sure the new zone matches min requirement
+        const minRect = Rectangle.fromSquare(destRect.x, destRect.y, globalConfig.puzzleMinBoundsSize);
+        destRect = destRect.getUnion(minRect);
+
+        // Now find center of the new zone and align entities to (0, 0)
+        const center = destRect.getCenter().ceil();
+
+        // We need two loops to make sure entities don't corrupt each other
+        for (const entity of entities) {
+            this.root.map.removeStaticEntity(entity);
         }
 
-        while (!this.anyBuildingOutsideZone(w, h - 1)) {
-            --h;
+        for (const entity of entities) {
+            entity.components.StaticMapEntity.origin.subInplace(center);
+            this.root.map.placeStaticEntity(entity);
         }
 
-        logger.log("Zone trim: After height pass at", w, h);
-        if (this.anyBuildingOutsideZone(w, h)) {
+        logger.log("Zone trim: Finished at", destRect.toString());
+        if (this.anyBuildingOutsideZone(destRect.w, destRect.h)) {
             logger.error("Trim: Zone is too small *after* trim");
             return;
         }
 
-        mode.zoneWidth = w;
-        mode.zoneHeight = h;
+        mode.zoneWidth = destRect.w;
+        mode.zoneHeight = destRect.h;
         this.updateZoneValues();
     }
 
