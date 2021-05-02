@@ -640,7 +640,7 @@ storyRewards:
     reward_storage:
         title: Magazyn
         desc: Właśnie odblokowałeś <strong>magazyn</strong> - Pozwala na przechowywanie
-            przedmiotów, do pewnej ilości!<br><br> Prawe wyjście posiada większy
+            przedmiotów, do pewnej ilości!<br><br> Lewe wyjście posiada większy
             piorytet, więc może być on użyty jako <strong>brama
             przepełnieniowa</strong>!
     reward_freeplay:
