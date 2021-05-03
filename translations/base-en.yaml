@@ -137,7 +137,9 @@ puzzleMenu:
         top-rated: Top Rated
         mine: My Puzzles
         short: Short
+        easy: Easy
         hard: Hard
+        completed: Completed
 
     validation:
         title: Invalid Puzzle

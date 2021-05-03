@@ -3,14 +3,13 @@ import { createLogger } from "../core/logging";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
 import { TextualGameState } from "../core/textual_game_state";
-import { clamp, formatBigNumberFull } from "../core/utils";
+import { formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
-import { PUZZLE_RATINGS } from "../game/hud/parts/puzzle_complete_notification";
 import { ShapeDefinition } from "../game/shape_definition";
 import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
-const categories = ["top-rated", "short", "hard", "new", "mine"];
+const categories = ["top-rated", "new", "easy", "short", "hard", "completed", "mine"];
 
 /**
  * @type {import("../savegame/savegame_typedefs").PuzzleMetadata}
@@ -186,8 +185,20 @@ export class PuzzleMenuState extends TextualGameState {
             if (puzzle.downloads > 0) {
                 const difficulty = document.createElement("div");
                 difficulty.classList.add("difficulty");
-                difficulty.innerText = Math.round((puzzle.completions / puzzle.downloads) * 100.0) + "%";
+
+                const completionPercentage = Math.round((puzzle.completions / puzzle.downloads) * 100.0);
+                difficulty.innerText = completionPercentage + "%";
                 stats.appendChild(difficulty);
+
+                if (completionPercentage < 10) {
+                    difficulty.classList.add("stage--hard");
+                } else if (completionPercentage < 30) {
+                    difficulty.classList.add("stage--medium");
+                } else if (completionPercentage < 60) {
+                    difficulty.classList.add("stage--normal");
+                } else {
+                    difficulty.classList.add("stage--easy");
+                }
             }
 
             const downloads = document.createElement("div");

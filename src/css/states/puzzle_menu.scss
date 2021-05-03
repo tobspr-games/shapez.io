@@ -62,9 +62,9 @@
 
             > .puzzles {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(D(130px), 1fr));
-                @include S(grid-auto-rows, 90px);
-                @include S(grid-gap, 3px);
+                grid-template-columns: repeat(auto-fit, minmax(D(180px), 1fr));
+                @include S(grid-auto-rows, 65px);
+                @include S(grid-gap, 7px);
                 @include S(margin-top, 10px);
                 @include S(padding-right, 4px);
                 @include S(height, 360px);
@@ -74,19 +74,20 @@
 
                 > .puzzle {
                     width: 100%;
-                    @include S(height, 90px);
+                    @include S(height, 65px);
                     background: #f3f3f8;
                     @include S(border-radius, $globalBorderRadius);
 
                     display: grid;
-                    grid-template-columns: 1fr auto;
-                    grid-template-rows: D(15px) 1fr auto;
+                    grid-template-columns: auto 1fr;
+                    grid-template-rows: D(15px) D(15px) 1fr;
                     @include S(padding, 5px);
                     @include S(grid-column-gap, 5px);
                     box-sizing: border-box;
                     pointer-events: all;
                     cursor: pointer;
                     position: relative;
+                    @include S(padding-left, 10px);
 
                     @include DarkThemeOverride {
                         background: rgba(0, 0, 10, 0.2);
@@ -106,23 +107,35 @@
                     }
 
                     > .title {
-                        grid-column: 1 / 3;
+                        grid-column: 2 / 3;
                         grid-row: 1 / 2;
                         @include PlainText;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         align-self: center;
-                        justify-self: center;
+                        justify-self: start;
                         width: 100%;
                         box-sizing: border-box;
                         @include S(padding, 2px, 5px);
                         @include S(height, 17px);
                     }
 
-                    > .icon {
-                        grid-column: 1 / 3;
+                    > .author {
+                        grid-column: 2 / 2;
                         grid-row: 2 / 3;
+                        @include SuperSmallText;
+                        color: $accentColorDark;
+                        align-self: center;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        @include S(padding, 2px, 5px);
+                    }
+
+                    > .icon {
+                        grid-column: 1 / 2;
+                        grid-row: 1 / 4;
                         align-self: center;
                         justify-self: center;
                         @include S(width, 45px);
@@ -132,17 +145,6 @@
                             width: 100%;
                             height: 100%;
                         }
-                    }
-
-                    > .author {
-                        grid-column: 1 / 2;
-                        grid-row: 3 / 4;
-                        @include SuperSmallText;
-                        color: $accentColorDark;
-                        align-self: center;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
                     }
 
                     > .stats {
@@ -200,14 +202,20 @@
                             color: #000;
                             font-weight: bold;
                             @include S(margin-right, 3px);
-                            @include S(padding-left, 14px);
                             opacity: 0.7;
-                            @include DarkThemeInvert;
 
-                            & {
-                                /* @load-async */
-                                background: uiResource("icons/puzzle_completion_rate.png") #{D(1px)} #{D(2px)} /
-                                    #{D(10px)} #{D(10px)} no-repeat;
+                            &.stage--easy {
+                                color: $colorGreenBright;
+                            }
+                            &.stage--normal {
+                                color: #000;
+                                @include DarkThemeInvert;
+                            }
+                            &.stage--medium {
+                                color: $colorOrangeBright;
+                            }
+                            &.stage--hard {
+                                color: $colorRedBright;
                             }
                         }
                     }
