@@ -23,7 +23,7 @@ export class ClientAPI {
         this.token = null;
 
         this.syncToken = window.localStorage.getItem("tmp.syncToken");
-        if (!this.syncToken || G_IS_DEV) {
+        if (!this.syncToken) {
             this.syncToken = rusha
                 .createHash()
                 .update(new Date().getTime() + "=" + Math.random())
@@ -78,10 +78,10 @@ export class ClientAPI {
                     return res;
                 })
                 .then(res => res.json()),
-            new Promise(resolve => setTimeout(resolve, 5000)),
+            new Promise((resolve, reject) => setTimeout(() => reject("timeout"), 15000)),
         ])
             .then(data => {
-                if (data.error) {
+                if (data && data.error) {
                     logger.warn("Got error from api:", data);
                     throw T.backendErrors[data.error] || data.error;
                 }

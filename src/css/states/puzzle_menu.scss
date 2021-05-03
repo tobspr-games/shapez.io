@@ -62,7 +62,7 @@
 
             > .puzzles {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, D(150px));
+                grid-template-columns: repeat(auto-fit, minmax(D(150px), 1fr));
                 @include S(grid-auto-rows, 120px);
                 @include S(grid-gap, 3px);
                 @include S(margin-top, 10px);
@@ -149,8 +149,6 @@
                         align-self: end;
                         @include S(height, 14px);
 
-                        @include DarkThemeInvert;
-
                         > .downloads {
                             @include SuperSmallText;
                             color: #000;
@@ -162,6 +160,7 @@
                             display: inline-flex;
                             align-items: center;
                             justify-content: center;
+                            @include DarkThemeInvert;
 
                             & {
                                 /* @load-async */
@@ -179,6 +178,7 @@
                             font-weight: bold;
                             @include S(padding-left, 14px);
                             opacity: 0.7;
+                            @include DarkThemeInvert;
 
                             & {
                                 /* @load-async */
