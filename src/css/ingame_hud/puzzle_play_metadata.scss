@@ -16,11 +16,16 @@
 
         > label {
             text-transform: uppercase;
-            @include SuperSmallText;
+            @include SuperDuperSmallText;
+            color: $accentColorDark;
         }
         > span {
             display: flex;
+            color: darken($accentColorDark, 25);
             @include SuperSmallText;
+            @include DarkThemeOverride {
+                color: lighten($accentColorDark, 15);
+            }
         }
     }
 
@@ -30,9 +35,12 @@
         justify-self: end;
         align-self: end;
         flex-direction: row;
-
+        @include S(margin-bottom, 10px);
+        opacity: 0.8;
         @include DarkThemeInvert;
-        opacity: 0.4;
+        @include DarkThemeOverride {
+            opacity: 0.8;
+        }
 
         > .downloads {
             @include SuperSmallText;
@@ -63,7 +71,6 @@
             font-weight: bold;
             @include S(padding-left, 14px);
             opacity: 0.7;
-
             & {
                 /* @load-async */
                 background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} center / #{D(8px)} #{D(8px)} no-repeat;
@@ -114,5 +121,9 @@
     > .name {
         @include PlainText;
         opacity: 0.5;
+    }
+
+    @include DarkThemeOverride {
+        color: #eee;
     }
 }

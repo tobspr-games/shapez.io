@@ -4,8 +4,10 @@ import { Application } from "../application";
 import { createLogger } from "../core/logging";
 import { compressX64 } from "../core/lzstring";
 import { T } from "../translations";
+import { ShapezGameAnalytics } from "./browser/game_analytics";
 
 const logger = createLogger("puzzle-api");
+const rusha = require("rusha");
 
 export class ClientAPI {
     /**
@@ -20,6 +22,15 @@ export class ClientAPI {
          * @type {string|null}
          */
         this.token = null;
+
+        this.syncToken = window.localStorage.getItem("tmp.syncToken");
+        if (!this.syncToken || G_IS_DEV) {
+            this.syncToken = rusha
+                .createHash()
+                .update(new Date().getTime() + "=" + Math.random())
+                .digest("hex");
+            window.localStorage.setItem("tmp.syncToken", this.syncToken);
+        }
     }
 
     getEndpoint() {
@@ -102,7 +113,7 @@ export class ClientAPI {
         return this._request("/v1/public/login", {
             method: "POST",
             body: {
-                hello: "world",
+                token: this.syncToken,
             },
         });
     }

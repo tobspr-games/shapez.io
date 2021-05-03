@@ -636,7 +636,7 @@ ingame:
     puzzleMetadata:
         author: Author
         shortKey: Short Key
-        rating: Difficulty
+        rating: Difficulty score
         averageDuration: Avg. Duration
 
 # All shop upgrades

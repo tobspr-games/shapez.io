@@ -30,5 +30,7 @@
     @include Heading;
     text-align: center;
 
-    @include DarkThemeInvert;
+    @include DarkThemeOverride {
+        color: #eee;
+    }
 }

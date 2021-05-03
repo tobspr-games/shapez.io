@@ -132,7 +132,7 @@
                         grid-row: 3 / 4;
                         @include SuperSmallText;
                         color: $accentColorDark;
-                        align-self: end;
+                        align-self: center;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
@@ -146,6 +146,7 @@
                         justify-self: end;
                         justify-content: center;
                         align-self: end;
+                        @include S(height, 14px);
 
                         @include DarkThemeInvert;
 

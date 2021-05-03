@@ -22,7 +22,7 @@ export class HUDPuzzlePlayMetadata extends BaseHUDPart {
         this.element = makeDiv(parent, "ingame_HUD_PuzzlePlayMetadata");
         this.element.innerHTML = `
 
-            <div class="info plays">
+            <div class="plays">
                 <span class="downloads">${formatBigNumberFull(puzzle.meta.downloads)}</span>
                 <span class="likes">${formatBigNumberFull(puzzle.meta.likes)}</span>
             </div>
@@ -36,7 +36,10 @@ export class HUDPuzzlePlayMetadata extends BaseHUDPart {
                 <label>${T.ingame.puzzleMetadata.rating}</label>
                 <span>${
                     puzzle.meta.difficulty
-                        ? puzzle.meta.difficulty.toFixed(1)
+                        ? puzzle.meta.difficulty.toFixed(2) +
+                          " (" +
+                          T.ingame.puzzleCompletion.difficulties[Math.round(puzzle.meta.difficulty)] +
+                          ")"
                         : T.puzzleMenu.difficultyNotDetermined
                 }</span>
             </div>
