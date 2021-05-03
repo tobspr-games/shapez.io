@@ -10,6 +10,7 @@
 
         .createPuzzle {
             background-color: $colorGreenBright;
+            @include S(margin-left, 5px);
         }
     }
 
