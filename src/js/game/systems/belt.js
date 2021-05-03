@@ -123,10 +123,6 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        if (this.root.immutableOperationRunning) {
-            return;
-        }
-
         const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBuilding);
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();
@@ -168,7 +164,10 @@ export class BeltSystem extends GameSystemWithFilter {
                     // Compute delta to see if anything changed
                     const newDirection = arrayBeltVariantToRotation[rotationVariant];
 
-                    if (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction) {
+                    if (
+                        !this.root.immutableOperationRunning &&
+                        (targetStaticComp.rotation !== rotation || newDirection !== targetBeltComp.direction)
+                    ) {
                         const originalPath = targetBeltComp.assignedPath;
 
                         // Ok, first remove it from its current path
