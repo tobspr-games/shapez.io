@@ -36,6 +36,11 @@ export class ItemAcceptorComponent extends Component {
     constructor({ slots = [] }) {
         super();
 
+        this.setSlots(slots);
+        this.clear();
+    }
+
+    clear() {
         /**
          * Fixes belt animations
          * @type {Array<{
@@ -46,8 +51,6 @@ export class ItemAcceptorComponent extends Component {
          * }>}
          */
         this.itemConsumptionAnimations = [];
-
-        this.setSlots(slots);
     }
 
     /**

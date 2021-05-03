@@ -26,6 +26,10 @@ export class GoalAcceptorComponent extends Component {
         /** @type {BaseItem | undefined} */
         this.item = item;
 
+        this.clear();
+    }
+
+    clear() {
         // the last items we delivered
         /** @type {{ item: BaseItem; time: number; }[]} */
         this.deliveryHistory = [];

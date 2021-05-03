@@ -102,18 +102,6 @@ export class MetaBalancerBuilding extends MetaBuilding {
             available.push(enumBalancerVariants.splitter, enumBalancerVariants.splitterInverse);
         }
 
-        if (root.gameMode.getIsDeterministic()) {
-            // mergers are not deterministic
-            available = available.filter(
-                v =>
-                    ![
-                        enumBalancerVariants.merger,
-                        enumBalancerVariants.mergerInverse,
-                        defaultBuildingVariant,
-                    ].includes(v)
-            );
-        }
-
         return available;
     }
 

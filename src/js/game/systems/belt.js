@@ -123,6 +123,10 @@ export class BeltSystem extends GameSystemWithFilter {
             return;
         }
 
+        if (this.root.immutableOperationRunning) {
+            return;
+        }
+
         const metaBelt = gMetaBuildingRegistry.findByClass(MetaBeltBuilding);
         // Compute affected area
         const originalRect = staticComp.getTileSpaceBounds();

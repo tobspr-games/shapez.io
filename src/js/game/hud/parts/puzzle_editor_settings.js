@@ -41,7 +41,10 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                         <button class="styledButton plus">+</button>
                     </div>
 
-                    <button class="styledButton trim">${T.ingame.puzzleEditorSettings.trimZone}</button>
+                    <div class="buttonBar">
+                        <button class="styledButton trim">${T.ingame.puzzleEditorSettings.trimZone}</button>
+                        <button class="styledButton clear">${T.ingame.puzzleEditorSettings.clearItems}</button>
+                    </div>
                 </div>`
             );
 
@@ -50,20 +53,82 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .minus", () => this.modifyZone(0, -1));
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
+            bind("button.clear", this.clear);
         }
     }
 
-    trim() {
-        const mode = /** @type {PuzzleGameMode} */ (this.root.gameMode);
+    clear() {
+        this.root.logic.clearAllBeltsAndItems();
+    }
 
-        let w = mode.zoneWidth;
-        let h = mode.zoneHeight;
-        if (this.anyBuildingOutsideZone(w, h)) {
-            logger.error("Trim: Zone is already too small");
+    trim() {
+        // Now, find the center
+        const buildings = this.root.entityMgr.entities.slice();
+
+        if (buildings.length === 0) {
+            // nothing to do
             return;
         }
 
-        logger.log("Zone trim: Starts at", w, h);
+        let minRect = null;
+
+        for (const building of buildings) {
+            const staticComp = building.components.StaticMapEntity;
+            const bounds = staticComp.getTileSpaceBounds();
+
+            if (!minRect) {
+                minRect = bounds;
+            } else {
+                minRect = minRect.getUnion(bounds);
+            }
+        }
+
+        const mode = /** @type {PuzzleGameMode} */ (this.root.gameMode);
+        const moveByInverse = minRect.getCenter().round();
+
+        // move buildings
+        if (moveByInverse.length() > 0) {
+            // increase area size
+            mode.zoneWidth = globalConfig.puzzleMaxBoundsSize;
+            mode.zoneHeight = globalConfig.puzzleMaxBoundsSize;
+
+            // First, remove any items etc
+            this.root.logic.clearAllBeltsAndItems();
+
+            this.root.logic.performImmutableOperation(() => {
+                // 1. remove all buildings
+                for (const building of buildings) {
+                    if (!this.root.logic.tryDeleteBuilding(building)) {
+                        assertAlways(false, "Failed to remove building in trim");
+                    }
+                }
+
+                // 2. place them again, but centered
+                for (const building of buildings) {
+                    const staticComp = building.components.StaticMapEntity;
+                    const result = this.root.logic.tryPlaceBuilding({
+                        origin: staticComp.origin.sub(moveByInverse),
+                        building: staticComp.getMetaBuilding(),
+                        originalRotation: staticComp.originalRotation,
+                        rotation: staticComp.rotation,
+                        rotationVariant: staticComp.getRotationVariant(),
+                        variant: staticComp.getVariant(),
+                    });
+                    if (!result) {
+                        this.root.bulkOperationRunning = false;
+                        assertAlways(false, "Failed to re-place building in trim");
+                    }
+
+                    if (building.components.ConstantSignal) {
+                        result.components.ConstantSignal.signal = building.components.ConstantSignal.signal;
+                    }
+                }
+            });
+        }
+
+        // 3. Actually trim
+        let w = mode.zoneWidth;
+        let h = mode.zoneHeight;
 
         while (!this.anyBuildingOutsideZone(w - 1, h)) {
             --w;
@@ -71,12 +136,6 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
         while (!this.anyBuildingOutsideZone(w, h - 1)) {
             --h;
-        }
-
-        logger.log("Zone trim: After height pass at", w, h);
-        if (this.anyBuildingOutsideZone(w, h)) {
-            logger.error("Trim: Zone is too small *after* trim");
-            return;
         }
 
         mode.zoneWidth = w;

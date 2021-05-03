@@ -84,10 +84,6 @@ export class PuzzleGameMode extends GameMode {
         return false;
     }
 
-    getIsDeterministic() {
-        return true;
-    }
-
     getFixedTickrate() {
         return 300;
     }

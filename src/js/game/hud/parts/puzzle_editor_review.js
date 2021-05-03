@@ -19,9 +19,6 @@ const logger = createLogger("puzzle-review");
 export class HUDPuzzleEditorReview extends BaseHUDPart {
     constructor(root) {
         super(root);
-
-        this.validationEndsIn = null;
-        this.callOnceValidationEnded = null;
     }
 
     createElements(parent) {
@@ -45,9 +42,37 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             return;
         }
 
-        const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog(T.puzzleMenu.validtingPuzzle);
-        this.validationEndsIn = this.root.time.now() + globalConfig.goalAcceptorMinimumDurationSeconds;
-        this.callOnceValidationEnded = () => {
+        const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog(T.puzzleMenu.validatingPuzzle);
+
+        // Wait a bit, so the user sees the puzzle actually got validated
+        setTimeout(() => {
+            // Manually simulate ticks
+            this.root.logic.clearAllBeltsAndItems();
+
+            const ticks =
+                this.root.gameMode.getFixedTickrate() * globalConfig.puzzleValidationDurationSeconds;
+            const deltaMs = this.root.dynamicTickrate.deltaMs;
+            logger.log("Simulating", ticks, "ticks, start=", this.root.time.now().toFixed(1));
+            const now = performance.now();
+            for (let i = 0; i < ticks; ++i) {
+                if (i % Math.round((ticks - 1) / 10) === 0) {
+                    console.log("Ticking", Math.round((i / ticks) * 100) + "%");
+                }
+
+                // Perform logic ticks
+                this.root.time.performTicks(deltaMs, this.root.gameState.core.boundInternalTick);
+            }
+            const duration = performance.now() - now;
+            logger.log(
+                "Simulated",
+                ticks,
+                "ticks, end=",
+                this.root.time.now().toFixed(1),
+                "duration=",
+                duration.toFixed(2),
+                "ms"
+            );
+
             closeLoading();
             const validationError = this.validatePuzzle();
             if (validationError) {
@@ -55,7 +80,7 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
                 return;
             }
             this.startSubmit();
-        };
+        }, 750);
     }
 
     startSubmit(title = "", shortKey = "") {
@@ -102,7 +127,7 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             title: T.dialogs.submitPuzzle.title,
             desc: "",
             formElements: [nameInput, itemInput, shapeKeyInput],
-            buttons: ["cancel:bad:escape", "ok:good:enter"],
+            buttons: ["ok:good:enter"],
         });
 
         itemInput.valueChosen.add(value => {
@@ -152,18 +177,6 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
                     signals.retry.add(() => this.startSubmit(title, shortKey));
                 }
             );
-    }
-
-    update() {
-        if (
-            this.validationEndsIn &&
-            this.validationEndsIn < this.root.time.now() &&
-            this.callOnceValidationEnded
-        ) {
-            const callMethod = this.callOnceValidationEnded;
-            this.callOnceValidationEnded = null;
-            callMethod();
-        }
     }
 
     validatePuzzle() {

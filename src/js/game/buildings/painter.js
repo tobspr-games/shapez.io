@@ -74,7 +74,10 @@ export class MetaPainterBuilding extends MetaBuilding {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double)) {
             variants.push(enumPainterVariants.double);
         }
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers)) {
+        if (
+            root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers) &&
+            root.gameMode.getSupportsWires()
+        ) {
             variants.push(enumPainterVariants.quad);
         }
         return variants;

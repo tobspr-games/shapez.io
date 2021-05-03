@@ -2,7 +2,7 @@ export const CHANGELOG = [
     {
         version: "1.4.0",
         date: "UNRELEASED",
-        entries: ["Added puzzle mode"],
+        entries: ["Added puzzle mode", "Belts in blueprints should now always paste correctly"],
     },
     {
         version: "1.3.1",

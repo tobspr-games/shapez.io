@@ -2,6 +2,8 @@
 import { Application } from "../application";
 /* typehints:end */
 import { createLogger } from "../core/logging";
+import { compressX64 } from "../core/lzstring";
+import { T } from "../translations";
 
 const logger = createLogger("puzzle-api");
 
@@ -70,7 +72,8 @@ export class ClientAPI {
         ])
             .then(data => {
                 if (data.error) {
-                    throw data.error;
+                    logger.warn("Got error from api:", data);
+                    throw T.backendErrors[data.error] || data.error;
                 }
                 return data;
             })
@@ -127,6 +130,31 @@ export class ClientAPI {
     }
 
     /**
+     * @param {number} shortKey
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
+     */
+    apiDownloadPuzzleByKey(shortKey) {
+        if (!this.isLoggedIn()) {
+            return Promise.reject("not-logged-in");
+        }
+        return this._request("/v1/puzzles/download/" + shortKey, {});
+    }
+
+    /**
+     * @param {number} puzzleId
+     * @returns {Promise<void>}
+     */
+    apiReportPuzzle(puzzleId, reason) {
+        if (!this.isLoggedIn()) {
+            return Promise.reject("not-logged-in");
+        }
+        return this._request("/v1/puzzles/report/" + puzzleId, {
+            method: "POST",
+            body: { reason },
+        });
+    }
+
+    /**
      * @param {number} puzzleId
      * @param {object} payload
      * @param {number} payload.time
@@ -157,7 +185,10 @@ export class ClientAPI {
         }
         return this._request("/v1/puzzles/submit", {
             method: "POST",
-            body: payload,
+            body: {
+                ...payload,
+                data: compressX64(JSON.stringify(payload.data)),
+            },
         });
     }
 }

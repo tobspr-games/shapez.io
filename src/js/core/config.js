@@ -76,6 +76,7 @@ export const globalConfig = {
     puzzleModeSpeed: 3,
     puzzleMinBoundsSize: 2,
     puzzleMaxBoundsSize: 20,
+    puzzleValidationDurationSeconds: 30,
 
     buildingSpeeds: {
         cutter: 1 / 4,
@@ -99,7 +100,7 @@ export const globalConfig = {
     gameSpeed: 1,
 
     warmupTimeSecondsFast: 0.5,
-    warmupTimeSecondsRegular: 3,
+    warmupTimeSecondsRegular: 1.5,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,

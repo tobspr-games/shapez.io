@@ -79,6 +79,11 @@ export class GameRoot {
          */
         this.bulkOperationRunning = false;
 
+        /**
+         * Whether a immutable operation is running
+         */
+        this.immutableOperationRunning = false;
+
         //////// Other properties ///////
 
         /** @type {Camera} */
@@ -169,6 +174,7 @@ export class GameRoot {
             itemProduced: /** @type {TypedSignal<[BaseItem]>} */ (new Signal()),
 
             bulkOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
+            immutableOperationFinished: /** @type {TypedSignal<[]>} */ (new Signal()),
 
             editModeChanged: /** @type {TypedSignal<[Layer]>} */ (new Signal()),
 

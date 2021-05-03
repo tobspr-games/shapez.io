@@ -171,11 +171,6 @@ export class GameMode extends BasicSerializableObject {
     }
 
     /** @returns {boolean} */
-    getIsDeterministic() {
-        return false;
-    }
-
-    /** @returns {boolean} */
     getIsEditor() {
         return false;
     }

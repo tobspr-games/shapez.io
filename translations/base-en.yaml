@@ -125,16 +125,20 @@ puzzleMenu:
     edit: Edit
     title: Puzzle Mode
     createPuzzle: Create Puzzle
+    loadPuzzle: Load
     reviewPuzzle: Review & Publish
-    validtingPuzzle: Validating Puzzle
+    validatingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
     noPuzzles: There are currently no puzzles in this section.
+    difficultyNotDetermined: Not yet determined
 
     categories:
         levels: Levels
         new: New
         top-rated: Top Rated
         mine: My Puzzles
+        short: Short
+        hard: Hard
 
     validation:
         title: Invalid Puzzle
@@ -336,6 +340,38 @@ dialogs:
         title: Offline Mode
         desc: >-
             Since you are offline, you will not be able to save and/or publish your puzzle. Would you still like to continue?
+
+    puzzlePlayRegularRecommendation:
+        title: Recommendation
+        desc: >-
+            I <strong>strongly</strong> recommend playing the normal game to level 12 before attempting the puzzle DLC, otherwise you will have comprehension problems. Do you still want to continue?
+
+    puzzleShare:
+        title: Short Key Copied
+        desc: >-
+            The short key of the puzzle (<key>) has been copied to your clipboard! It can be entered in the puzzle menu to access the puzzle.
+
+    puzzleReport:
+        title: Report Puzzle
+        options:
+            profane: Profane
+            unsolvable: Not solvable
+            trolling: Trolling
+
+    puzzleReportComplete:
+        title: Thank you for your feedback!
+        desc: >-
+            The puzzle has been flagged.
+
+    puzzleReportError:
+        title: Failed to report
+        desc: >-
+            Your report could not get processed:
+
+    puzzleLoadShortKey:
+        title: Enter short key
+        desc: >-
+            Enter the short key of the puzzle to load it.
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -567,6 +603,9 @@ ingame:
         zoneWidth: Width
         zoneHeight: Height
         trimZone: Trim
+        clearItems: Clear Items
+        share: Share
+        report: Report
 
     puzzleEditorControls:
         title: Puzzle Creator
@@ -584,7 +623,20 @@ ingame:
             Please rate the puzzle:
         titleRating: How difficult did you find the puzzle?
 
-        buttonSubmit: Submit
+        buttonSubmit: Continue
+
+        difficulties:
+            - No challenge
+            - Easy
+            - Medium
+            - Hard
+            - Impossible
+
+    puzzleMetadata:
+        author: Author
+        shortKey: Short Key
+        rating: Difficulty
+        averageDuration: Avg. Duration
 
 # All shop upgrades
 shopUpgrades:
@@ -1302,6 +1354,26 @@ demo:
         exportingBase: Exporting whole Base as Image
 
     settingNotAvailable: Not available in the demo.
+
+backendErrors:
+    ratelimit: You are performing your actions too frequent. Please wait a bit.
+    invalid-api-key: Failed to communicate with the backend, please try to update/restart the game (Invalid Api Key).
+    unauthorized: Failed to communicate with the backend, please try to update/restart the game (Unauthorized).
+    bad-token: Failed to communicate with the backend, please try to update/restart the game (Bad Token).
+    bad-id: Invalid puzzle identifier.
+    not-found: The given puzzle could not be found.
+    bad-category: The given category could not be found.
+    bad-short-key: The given short key is invalid.
+    profane-title: Your puzzle title contains profane words.
+    bad-title-too-many-spaces: Your puzzle title is too short.
+    bad-shape-key-in-emitter: A constant producer has an invalid item.
+    bad-shape-key-in-goal: A goal acceptor has an invalid item.
+    no-emitters: Your puzzle does not contain any constant producers.
+    no-goals: Your puzzle does not contain any goal acceptors.
+    short-key-already-taken: This short key is already taken, please use another one.
+    can-not-report-your-own-puzzle: You can not report your own puzzle.
+    bad-payload: The request contains invalid data.
+    bad-building-placement: Your puzzle contains invalid placed buildings.
 
 tips:
     - The hub will accept any input, not just the current shape!

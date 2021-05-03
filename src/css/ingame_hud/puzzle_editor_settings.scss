@@ -44,9 +44,19 @@
             }
         }
 
-        > .buttons > button.trim {
-            @include S(margin-top, 10px);
-            @include SuperSmallText;
+        > .buttons {
+            > .buttonBar {
+                display: flex;
+                align-items: center;
+                @include S(margin-top, 10px);
+                > button {
+                    @include S(margin-right, 4px);
+                    @include SuperSmallText;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
         }
     }
 }

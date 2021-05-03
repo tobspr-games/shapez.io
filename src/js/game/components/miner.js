@@ -25,13 +25,6 @@ export class MinerComponent extends Component {
         this.chainable = chainable;
 
         /**
-         * Stores items from other miners which were chained to this
-         * miner.
-         * @type {Array<BaseItem>}
-         */
-        this.itemChainBuffer = [];
-
-        /**
          * @type {BaseItem}
          */
         this.cachedMinedItem = null;
@@ -42,6 +35,17 @@ export class MinerComponent extends Component {
          * @type {Entity|null|false}
          */
         this.cachedChainedMiner = null;
+
+        this.clear();
+    }
+
+    clear() {
+        /**
+         * Stores items from other miners which were chained to this
+         * miner.
+         * @type {Array<BaseItem>}
+         */
+        this.itemChainBuffer = [];
     }
 
     /**

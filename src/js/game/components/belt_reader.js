@@ -30,6 +30,10 @@ export class BeltReaderComponent extends Component {
 
         this.type = type;
 
+        this.clear();
+    }
+
+    clear() {
         /**
          * Which items went through the reader, we only store the time
          * @type {Array<number>}

@@ -1,0 +1,23 @@
+#ingame_HUD_PuzzlePlaySettings {
+    position: absolute;
+    background: $ingameHudBg;
+    @include S(padding, 10px);
+    @include S(bottom, 60px);
+    @include S(left, 10px);
+
+    @include SuperSmallText;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    @include S(border-radius, $globalBorderRadius);
+
+    > .section {
+        display: grid;
+        @include S(grid-gap, 10px);
+        grid-auto-flow: row;
+
+        > button {
+            @include SuperSmallText;
+        }
+    }
+}

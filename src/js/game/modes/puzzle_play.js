@@ -27,8 +27,10 @@ import { T } from "../../translations";
 import { HUDPuzzlePlayMetadata } from "../hud/parts/puzzle_play_metadata";
 import { createLogger } from "../../core/logging";
 import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_notification";
+import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 
 const logger = createLogger("puzzle-play");
+const copy = require("clipboard-copy");
 
 export class PuzzlePlayGameMode extends PuzzleGameMode {
     static getId() {
@@ -66,6 +68,7 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         ];
 
         this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
+        this.additionalHudParts.puzzlePlaySettings = HUDPuzzlePlaySettings;
         this.additionalHudParts.puzzleCompleteNotification = HUDPuzzleCompleteNotification;
 
         root.signals.postLoadHook.add(this.loadPuzzle, this);
@@ -121,5 +124,48 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             .then(() => {
                 closeLoading();
             });
+    }
+
+    sharePuzzle() {
+        copy(this.puzzle.meta.shortKey);
+
+        this.root.hud.parts.dialogs.showInfo(
+            T.dialogs.puzzleShare.title,
+            T.dialogs.puzzleShare.desc.replace("<key>", this.puzzle.meta.shortKey)
+        );
+    }
+
+    reportPuzzle() {
+        const { optionSelected } = this.root.hud.parts.dialogs.showOptionChooser(
+            T.dialogs.puzzleReport.title,
+            {
+                options: [
+                    { value: "profane", text: T.dialogs.puzzleReport.options.profane },
+                    { value: "unsolvable", text: T.dialogs.puzzleReport.options.unsolvable },
+                    { value: "trolling", text: T.dialogs.puzzleReport.options.trolling },
+                ],
+            }
+        );
+
+        optionSelected.add(option => {
+            const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
+
+            this.root.app.clientApi.apiReportPuzzle(this.puzzle.meta.id, option).then(
+                () => {
+                    closeLoading();
+                    this.root.hud.parts.dialogs.showInfo(
+                        T.dialogs.puzzleReportComplete.title,
+                        T.dialogs.puzzleReportComplete.desc
+                    );
+                },
+                err => {
+                    closeLoading();
+                    this.root.hud.parts.dialogs.showInfo(
+                        T.dialogs.puzzleReportError.title,
+                        T.dialogs.puzzleReportError.desc + " " + err
+                    );
+                }
+            );
+        });
     }
 }

@@ -50,10 +50,8 @@
         },
 
         "zone": {
-            "background": "#fff",
-            "border": "rgba(23, 192, 255, 0.1)",
-            "borderSolid": "rgba(23, 192, 255, 0.7)",
-            "outerColor": "rgba(240, 240, 255, 0.5)"
+            "borderSolid": "rgba(23, 192, 255, 1)",
+            "outerColor": "rgba(20 , 20, 25, 0.5)"
         }
     },
 

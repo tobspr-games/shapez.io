@@ -1,12 +1,16 @@
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
+import { DialogWithForm } from "../core/modal_dialog_elements";
+import { FormElementInput } from "../core/modal_dialog_forms";
 import { TextualGameState } from "../core/textual_game_state";
-import { formatBigNumberFull } from "../core/utils";
+import { clamp, formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
+import { PUZZLE_RATINGS } from "../game/hud/parts/puzzle_complete_notification";
 import { ShapeDefinition } from "../game/shape_definition";
+import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
-const categories = ["levels", "new", "top-rated", "mine"];
+const categories = ["top-rated", "short", "hard", "new", "mine"];
 
 /**
  * @type {import("../savegame/savegame_typedefs").PuzzleMetadata}
@@ -16,6 +20,8 @@ const SAMPLE_PUZZLE = {
     shortKey: "CuCuCuCu",
     downloads: 0,
     likes: 0,
+    averageTime: 1,
+    difficulty: null,
     title: "Level 1",
     author: "verylongsteamnamewhichbreaks",
     completed: false,
@@ -63,6 +69,7 @@ export class PuzzleMenuState extends TextualGameState {
                 <h1><button class="backButton"></button> ${this.getStateHeaderTitle()}</h1>
 
                 <div class="actions">
+                    <button class="styledButton loadPuzzle">${T.puzzleMenu.loadPuzzle}</button>
                     <button class="styledButton createPuzzle">+ ${T.puzzleMenu.createPuzzle}</button>
                 </div>
             </div>`;
@@ -89,12 +96,7 @@ export class PuzzleMenuState extends TextualGameState {
                         .join("")}
                 </div>
 
-                <div class="puzzles" id="mainContainer">
-                    <div class="puzzle"></div>
-                    <div class="puzzle"></div>
-                    <div class="puzzle"></div>
-                    <div class="puzzle"></div>
-                </div>
+                <div class="puzzles" id="mainContainer"></div>
         `;
 
         return html;
@@ -104,9 +106,11 @@ export class PuzzleMenuState extends TextualGameState {
         if (category === this.activeCategory) {
             return;
         }
+
         if (this.loading) {
             return;
         }
+
         this.loading = true;
         this.activeCategory = category;
 
@@ -175,6 +179,22 @@ export class PuzzleMenuState extends TextualGameState {
             stats.classList.add("stats");
             elem.appendChild(stats);
 
+            if (puzzle.difficulty !== null) {
+                const difficulty = document.createElement("div");
+                difficulty.classList.add("difficulty");
+
+                const canvas = document.createElement("canvas");
+                canvas.width = 32;
+                canvas.height = 32;
+                const context = canvas.getContext("2d");
+                PUZZLE_RATINGS[
+                    clamp(Math.round(puzzle.difficulty), 0, PUZZLE_RATINGS.length - 1)
+                ].drawFullSizeOnCanvas(context, 32);
+                difficulty.appendChild(canvas);
+
+                stats.appendChild(difficulty);
+            }
+
             const downloads = document.createElement("div");
             downloads.classList.add("downloads");
             downloads.innerText = String(puzzle.downloads);
@@ -233,16 +253,8 @@ export class PuzzleMenuState extends TextualGameState {
         this.app.clientApi.apiDownloadPuzzle(puzzle.id).then(
             puzzleData => {
                 closeLoading();
-
                 logger.log("Got puzzle:", puzzleData);
-                const savegame = this.app.savegameMgr.createNewSavegame();
-                this.moveToState("InGameState", {
-                    gameModeId: enumGameModeIds.puzzlePlay,
-                    gameModeParameters: {
-                        puzzle: puzzleData,
-                    },
-                    savegame,
-                });
+                this.startLoadedPuzzle(puzzleData);
             },
             err => {
                 closeLoading();
@@ -255,8 +267,23 @@ export class PuzzleMenuState extends TextualGameState {
         );
     }
 
+    /**
+     *
+     * @param {import("../savegame/savegame_typedefs").PuzzleFullData} puzzle
+     */
+    startLoadedPuzzle(puzzle) {
+        const savegame = this.createEmptySavegame();
+        this.moveToState("InGameState", {
+            gameModeId: enumGameModeIds.puzzlePlay,
+            gameModeParameters: {
+                puzzle,
+            },
+            savegame,
+        });
+    }
+
     onEnter(payload) {
-        this.selectCategory("levels");
+        this.selectCategory(categories[0]);
 
         if (payload && payload.error) {
             this.dialogs.showWarning(payload.error.title, payload.error.desc);
@@ -268,11 +295,62 @@ export class PuzzleMenuState extends TextualGameState {
         }
 
         this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), () => this.createNewPuzzle());
+        this.trackClicks(this.htmlElement.querySelector("button.loadPuzzle"), () => this.loadPuzzle());
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
             // this.createNewPuzzle();
             this.playPuzzle(SAMPLE_PUZZLE);
         }
+    }
+
+    createEmptySavegame() {
+        return new Savegame(this.app, {
+            internalId: "puzzle",
+            metaDataRef: {
+                internalId: "puzzle",
+                lastUpdate: 0,
+                version: 0,
+                level: 0,
+                name: "puzzle",
+            },
+        });
+    }
+
+    loadPuzzle() {
+        const shortKeyInput = new FormElementInput({
+            id: "shortKey",
+            label: null,
+            placeholder: "",
+            defaultValue: "",
+            validator: val => ShapeDefinition.isValidShortKey(val),
+        });
+
+        const dialog = new DialogWithForm({
+            app: this.app,
+            title: T.dialogs.puzzleLoadShortKey.title,
+            desc: T.dialogs.puzzleLoadShortKey.desc,
+            formElements: [shortKeyInput],
+            buttons: ["ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        dialog.buttonSignals.ok.add(() => {
+            const closeLoading = this.dialogs.showLoadingDialog();
+
+            this.app.clientApi.apiDownloadPuzzleByKey(shortKeyInput.getValue()).then(
+                puzzle => {
+                    closeLoading();
+                    this.startLoadedPuzzle(puzzle);
+                },
+                err => {
+                    closeLoading();
+                    this.dialogs.showWarning(
+                        T.dialogs.puzzleDownloadError.title,
+                        T.dialogs.puzzleDownloadError.desc + " " + err
+                    );
+                }
+            );
+        });
     }
 
     createNewPuzzle(force = false) {
@@ -286,7 +364,7 @@ export class PuzzleMenuState extends TextualGameState {
             return;
         }
 
-        const savegame = this.app.savegameMgr.createNewSavegame();
+        const savegame = this.createEmptySavegame();
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzleEdit,
             savegame,

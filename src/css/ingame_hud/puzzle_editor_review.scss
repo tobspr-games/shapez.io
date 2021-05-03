@@ -23,6 +23,8 @@
         @include S(padding-right, 25px);
         opacity: 1;
 
+        @include DarkThemeInvert;
+
         &:hover {
             opacity: 0.9 !important;
         }

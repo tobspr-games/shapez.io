@@ -22,6 +22,8 @@
         @include S(width, 30px);
         @include S(height, 30px);
 
+        @include DarkThemeInvert;
+
         opacity: 1;
         &:hover {
             opacity: 0.9 !important;

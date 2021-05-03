@@ -67,7 +67,7 @@ export class MainMenuState extends GameState {
                 <img src="${cachebust(
                     G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
                 )}" alt="shapez.io Logo">
-                <span class="updateLabel">v${G_BUILD_VERSION} - Achievements!</span>
+                <span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
@@ -208,7 +208,7 @@ export class MainMenuState extends GameState {
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
-            this.onPuzzleModeButtonClicked();
+            this.onPuzzleModeButtonClicked(true);
             return;
         }
 
@@ -320,10 +320,22 @@ export class MainMenuState extends GameState {
         const puzzleModeButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.puzzleMode);
 
         bottomButtonContainer.appendChild(puzzleModeButton);
-        this.trackClicks(puzzleModeButton, this.onPuzzleModeButtonClicked);
+        this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
     }
 
-    onPuzzleModeButtonClicked() {
+    onPuzzleModeButtonClicked(force = false) {
+        const hasUnlockedBlueprints = this.app.savegameMgr.getSavegamesMetaData().some(s => s.level >= 12);
+        console.log(hasUnlockedBlueprints);
+        if (!force && !hasUnlockedBlueprints) {
+            const { ok } = this.dialogs.showWarning(
+                T.dialogs.puzzlePlayRegularRecommendation.title,
+                T.dialogs.puzzlePlayRegularRecommendation.desc,
+                ["cancel:good", "ok:bad:timeout"]
+            );
+            ok.add(() => this.onPuzzleModeButtonClicked(true));
+            return;
+        }
+
         this.moveToState("LoginState", {
             nextStateId: "PuzzleMenuState",
         });
