@@ -21,6 +21,7 @@ const SAMPLE_PUZZLE = {
     downloads: 0,
     likes: 0,
     averageTime: 1,
+    completions: 1,
     difficulty: null,
     title: "Level 1",
     author: "verylongsteamnamewhichbreaks",

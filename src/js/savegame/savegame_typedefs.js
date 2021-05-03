@@ -48,6 +48,7 @@
  * shortKey: string;
  * likes: number;
  * downloads: number;
+ * completions: number;
  * difficulty: number | null;
  * averageTime: number | null;
  * title: string;

@@ -13,7 +13,7 @@
 
     & {
         /* @load-async */
-        background: rgba(#333538, 0.98) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
+        background: rgba(#333538, 0.95) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
     }
 
     @include InlineAnimation(0.1s ease-in-out) {
@@ -129,6 +129,12 @@
                 flex-direction: column;
                 align-items: center;
                 @include S(margin-bottom, 10px);
+
+                > .desc {
+                    @include SuperSmallText;
+                    opacity: 0.4;
+                    @include S(margin-bottom, 4px);
+                }
 
                 > .shapes {
                     @include S(margin-top, 10px);

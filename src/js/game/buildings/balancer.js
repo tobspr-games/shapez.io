@@ -92,9 +92,11 @@ export class MetaBalancerBuilding extends MetaBuilding {
      * @param {GameRoot} root
      */
     getAvailableVariants(root) {
-        let available = [defaultBuildingVariant];
+        const deterministic = root.gameMode.getIsDeterministic();
 
-        if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger)) {
+        let available = deterministic ? [] : [defaultBuildingVariant];
+
+        if (!deterministic && root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger)) {
             available.push(enumBalancerVariants.merger, enumBalancerVariants.mergerInverse);
         }
 

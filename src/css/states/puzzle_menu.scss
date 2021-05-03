@@ -62,8 +62,8 @@
 
             > .puzzles {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(D(150px), 1fr));
-                @include S(grid-auto-rows, 120px);
+                grid-template-columns: repeat(auto-fit, minmax(D(130px), 1fr));
+                @include S(grid-auto-rows, 90px);
                 @include S(grid-gap, 3px);
                 @include S(margin-top, 10px);
                 @include S(padding-right, 4px);
@@ -74,7 +74,7 @@
 
                 > .puzzle {
                     width: 100%;
-                    @include S(height, 120px);
+                    @include S(height, 90px);
                     background: #f3f3f8;
                     @include S(border-radius, $globalBorderRadius);
 
@@ -112,6 +112,12 @@
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         overflow: hidden;
+                        align-self: center;
+                        justify-self: center;
+                        width: 100%;
+                        box-sizing: border-box;
+                        @include S(padding, 2px, 5px);
+                        @include S(height, 17px);
                     }
 
                     > .icon {
@@ -119,8 +125,8 @@
                         grid-row: 2 / 3;
                         align-self: center;
                         justify-self: center;
-                        @include S(width, 70px);
-                        @include S(height, 70px);
+                        @include S(width, 45px);
+                        @include S(height, 45px);
 
                         canvas {
                             width: 100%;
@@ -154,8 +160,8 @@
                             color: #000;
                             justify-self: start;
                             font-weight: bold;
-                            @include S(margin-right, 10px);
-                            @include S(padding-left, 14px);
+                            @include S(margin-right, 5px);
+                            @include S(padding-left, 12px);
                             opacity: 0.7;
                             display: inline-flex;
                             align-items: center;
@@ -176,7 +182,7 @@
                             color: #000;
                             justify-self: start;
                             font-weight: bold;
-                            @include S(padding-left, 14px);
+                            @include S(padding-left, 12px);
                             opacity: 0.7;
                             @include DarkThemeInvert;
 
@@ -202,10 +208,14 @@
                         > .stats,
                         > .author,
                         > .title {
-                            opacity: 0.5;
+                            opacity: 0.3;
                         }
 
                         background: #fafafa;
+
+                        @include DarkThemeOverride {
+                            background: rgba(0, 0, 0, 0.05);
+                        }
 
                         &::after {
                             content: "";

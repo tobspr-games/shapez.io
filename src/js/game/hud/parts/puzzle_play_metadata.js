@@ -51,6 +51,14 @@ export class HUDPuzzlePlayMetadata extends BaseHUDPart {
                         : T.puzzleMenu.difficultyNotDetermined
                 }</span>
             </div>
+            <div class="info rating">
+                <label>${T.ingame.puzzleMetadata.completionRate}</label>
+                <span>${
+                    puzzle.meta.downloads > 10
+                        ? ((puzzle.meta.completions / puzzle.meta.downloads) * 100.0).toFixed(1) + "%"
+                        : T.puzzleMenu.difficultyNotDetermined
+                }</span>
+            </div>
 
             <div class="buttons">
                 <button class="styledButton share">${T.ingame.puzzleEditorSettings.share}</button>

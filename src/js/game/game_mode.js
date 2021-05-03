@@ -175,6 +175,11 @@ export class GameMode extends BasicSerializableObject {
         return false;
     }
 
+    /** @returns {boolean} */
+    getIsDeterministic() {
+        return false;
+    }
+
     /** @returns {number | undefined} */
     getFixedTickrate() {
         return;

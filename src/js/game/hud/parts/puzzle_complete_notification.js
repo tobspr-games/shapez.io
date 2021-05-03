@@ -32,7 +32,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
         this.root.signals.puzzleComplete.add(this.show, this);
 
-        this.selectionLiked = null;
+        this.selectionLiked = false;
         this.selectionDifficulty = null;
         this.timeOfCompletion = 0;
     }
@@ -69,20 +69,13 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.buttonLikeYes.classList.add("liked-yes");
         likeButtons.appendChild(this.buttonLikeYes);
         this.trackClicks(this.buttonLikeYes, () => {
-            this.selectionLiked = true;
-            this.updateState();
-        });
-
-        this.buttonLikeNo = document.createElement("button");
-        this.buttonLikeNo.classList.add("liked-no");
-        likeButtons.appendChild(this.buttonLikeNo);
-        this.trackClicks(this.buttonLikeNo, () => {
-            this.selectionLiked = false;
+            this.selectionLiked = !this.selectionLiked;
             this.updateState();
         });
 
         const stepDifficulty = makeDiv(this.elemContents, null, ["step", "stepDifficulty"]);
         makeDiv(stepDifficulty, null, ["title"], T.ingame.puzzleCompletion.titleRating);
+        makeDiv(stepDifficulty, null, ["desc"], T.ingame.puzzleCompletion.titleRatingDesc);
 
         const shapeContainer = makeDiv(stepDifficulty, null, ["shapes"]);
 
@@ -135,7 +128,6 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
     updateState() {
         this.buttonLikeYes.classList.toggle("active", this.selectionLiked === true);
-        this.buttonLikeNo.classList.toggle("active", this.selectionLiked === false);
         this.difficultyElements.forEach((canvas, index) =>
             canvas.classList.toggle("active", index === this.selectionDifficulty)
         );
@@ -165,7 +157,9 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         /** @type {PuzzlePlayGameMode} */ (this.root.gameMode)
             .trackCompleted(this.selectionLiked, this.selectionDifficulty, Math.round(this.timeOfCompletion))
             .then(() => {
-                this.root.gameState.moveToState("PuzzleMenuState");
+                // this.root.gameState.moveToState("PuzzleMenuState");
+                this.visible = false;
+                this.cleanup();
             });
     }
 

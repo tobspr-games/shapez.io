@@ -569,17 +569,26 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_GOAL(payload) {
         const goalComp = payload.entity.components.GoalAcceptor;
+        const item = payload.items[0].item;
+        const now = this.root.time.now();
+
         if (this.root.gameMode.getIsEditor()) {
             // while playing in editor, assign the item
             goalComp.item = payload.items[0].item;
+            goalComp.deliveryHistory.push({
+                item,
+                time: now,
+            });
+        } else {
+            // otherwise, make sure it is the same, otherwise reset
+            if (item.equals(goalComp.item)) {
+                goalComp.deliveryHistory.push({
+                    item,
+                    time: now,
+                });
+            } else {
+                goalComp.deliveryHistory = [];
+            }
         }
-
-        const now = this.root.time.now();
-
-        // push our new entry
-        goalComp.deliveryHistory.push({
-            item: payload.items[0].item,
-            time: now,
-        });
     }
 }

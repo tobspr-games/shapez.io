@@ -621,8 +621,9 @@ ingame:
         title: Puzzle Completed!
 
         titleLike: >-
-            Please rate the puzzle:
+            Click the heart if you liked the puzzle:
         titleRating: How difficult did you find the puzzle?
+        titleRatingDesc: Your rating will help me to make you better suggestions in the future
 
         buttonSubmit: Continue
 
@@ -638,6 +639,7 @@ ingame:
         shortKey: Short Key
         rating: Difficulty score
         averageDuration: Avg. Duration
+        completionRate: Completion rate
 
 # All shop upgrades
 shopUpgrades:

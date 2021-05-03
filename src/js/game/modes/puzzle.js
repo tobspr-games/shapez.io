@@ -88,6 +88,10 @@ export class PuzzleGameMode extends GameMode {
         return 300;
     }
 
+    getIsDeterministic() {
+        return true;
+    }
+
     /** @returns {boolean} */
     getIsFreeplayAvailable() {
         return true;
