@@ -450,13 +450,6 @@ export class GameLogic {
      * Clears all belts and items
      */
     clearAllBeltsAndItems() {
-        // Belts
-        const beltPaths = this.root.systemMgr.systems.belt.beltPaths;
-        for (const path of beltPaths) {
-            path.clearAllItems();
-        }
-
-        // Acceptors
         for (const entity of this.root.entityMgr.entities) {
             for (const component of Object.values(entity.components)) {
                 /** @type {Component} */ (component).clear();

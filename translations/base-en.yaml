@@ -393,6 +393,7 @@ ingame:
         plannerSwitchSide: Flip planner side
         cutSelection: Cut
         copySelection: Copy
+        clearBelts: Clear belts
         clearSelection: Clear selection
         pipette: Pipette
         switchLayers: Switch layers
@@ -1324,6 +1325,7 @@ keybindings:
         massSelectSelectMultiple: Select multiple areas
         massSelectCopy: Copy area
         massSelectCut: Cut area
+        massSelectClear: Clear belts
 
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode

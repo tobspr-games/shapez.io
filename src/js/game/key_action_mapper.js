@@ -106,6 +106,7 @@ export const KEYMAPPINGS = {
         massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
         massSelectCopy: { keyCode: key("C") },
         massSelectCut: { keyCode: key("X") },
+        massSelectClear: { keyCode: key("B") },
         confirmMassDelete: { keyCode: 46 }, // DEL
         pasteLastBlueprint: { keyCode: key("V") },
     },
@@ -326,6 +327,15 @@ export class Keybinding {
      */
     add(receiver, scope = null) {
         this.signal.add(receiver, scope);
+    }
+
+    /**
+     * Adds an event listener
+     * @param {function() : void} receiver
+     * @param {object=} scope
+     */
+    addToTop(receiver, scope = null) {
+        this.signal.addToTop(receiver, scope);
     }
 
     /**

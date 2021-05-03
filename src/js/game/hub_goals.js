@@ -110,7 +110,7 @@ export class HubGoals extends BasicSerializableObject {
         // Allow quickly switching goals in dev mode
         if (G_IS_DEV) {
             window.addEventListener("keydown", ev => {
-                if (ev.key === "b") {
+                if (ev.key === "p") {
                     // root is not guaranteed to exist within ~0.5s after loading in
                     if (this.root && this.root.app && this.root.app.gameAnalytics) {
                         if (!this.isEndOfDemoReached()) {
