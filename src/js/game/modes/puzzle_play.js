@@ -147,25 +147,28 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             }
         );
 
-        optionSelected.add(option => {
-            const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
+        return new Promise(resolve => {
+            optionSelected.add(option => {
+                const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
 
-            this.root.app.clientApi.apiReportPuzzle(this.puzzle.meta.id, option).then(
-                () => {
-                    closeLoading();
-                    this.root.hud.parts.dialogs.showInfo(
-                        T.dialogs.puzzleReportComplete.title,
-                        T.dialogs.puzzleReportComplete.desc
-                    );
-                },
-                err => {
-                    closeLoading();
-                    this.root.hud.parts.dialogs.showInfo(
-                        T.dialogs.puzzleReportError.title,
-                        T.dialogs.puzzleReportError.desc + " " + err
-                    );
-                }
-            );
+                this.root.app.clientApi.apiReportPuzzle(this.puzzle.meta.id, option).then(
+                    () => {
+                        closeLoading();
+                        const { ok } = this.root.hud.parts.dialogs.showInfo(
+                            T.dialogs.puzzleReportComplete.title,
+                            T.dialogs.puzzleReportComplete.desc
+                        );
+                        ok.add(resolve);
+                    },
+                    err => {
+                        closeLoading();
+                        const { ok } = this.root.hud.parts.dialogs.showInfo(
+                            T.dialogs.puzzleReportError.title,
+                            T.dialogs.puzzleReportError.desc + " " + err
+                        );
+                    }
+                );
+            });
         });
     }
 }

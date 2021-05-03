@@ -130,7 +130,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
     report() {
         const mode = /** @type {PuzzlePlayGameMode} */ (this.root.gameMode);
-        mode.reportPuzzle();
+        mode.reportPuzzle().then(() => this.close());
     }
 
     updateState() {
