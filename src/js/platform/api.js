@@ -4,7 +4,6 @@ import { Application } from "../application";
 import { createLogger } from "../core/logging";
 import { compressX64 } from "../core/lzstring";
 import { T } from "../translations";
-import { ShapezGameAnalytics } from "./browser/game_analytics";
 
 const logger = createLogger("puzzle-api");
 const rusha = require("rusha");
@@ -56,7 +55,7 @@ export class ClientAPI {
      */
     _request(endpoint, options) {
         const headers = {
-            "x-api-key": "d5c54aaa491f200709afff082c153ef1",
+            "x-api-key": "d5c54aaa491f200709afff082c153ef2",
             "Content-Type": "application/json",
         };
 
