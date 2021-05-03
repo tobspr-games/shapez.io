@@ -51,6 +51,8 @@ const BUILTIN_PUZZLES = G_IS_DEV
 
 const logger = createLogger("puzzle-menu");
 
+let lastCategory = categories[0];
+
 export class PuzzleMenuState extends TextualGameState {
     constructor() {
         super("PuzzleMenuState");
@@ -104,6 +106,7 @@ export class PuzzleMenuState extends TextualGameState {
     }
 
     selectCategory(category) {
+        lastCategory = category;
         if (category === this.activeCategory) {
             return;
         }
@@ -180,19 +183,10 @@ export class PuzzleMenuState extends TextualGameState {
             stats.classList.add("stats");
             elem.appendChild(stats);
 
-            if (puzzle.difficulty !== null) {
+            if (puzzle.downloads > 0) {
                 const difficulty = document.createElement("div");
                 difficulty.classList.add("difficulty");
-
-                const canvas = document.createElement("canvas");
-                canvas.width = 32;
-                canvas.height = 32;
-                const context = canvas.getContext("2d");
-                PUZZLE_RATINGS[
-                    clamp(Math.round(puzzle.difficulty), 0, PUZZLE_RATINGS.length - 1)
-                ].drawFullSizeOnCanvas(context, 32);
-                difficulty.appendChild(canvas);
-
+                difficulty.innerText = Math.round((puzzle.completions / puzzle.downloads) * 100.0) + "%";
                 stats.appendChild(difficulty);
             }
 
@@ -284,7 +278,7 @@ export class PuzzleMenuState extends TextualGameState {
     }
 
     onEnter(payload) {
-        this.selectCategory(categories[0]);
+        this.selectCategory(lastCategory);
 
         if (payload && payload.error) {
             this.dialogs.showWarning(payload.error.title, payload.error.desc);

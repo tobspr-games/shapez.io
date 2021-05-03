@@ -16,6 +16,7 @@ import trim from "trim";
 import { enumColors } from "../game/colors";
 import { COLOR_ITEM_SINGLETONS } from "../game/items/color_item";
 import { ShapeDefinition } from "../game/shape_definition";
+import { MetaBlockBuilding } from "../game/buildings/block";
 
 const logger = createLogger("puzzle-serializer");
 
@@ -66,6 +67,17 @@ export class PuzzleSerializer {
                     },
                 });
                 continue;
+            }
+
+            if (staticComp.getMetaBuilding().id === gMetaBuildingRegistry.findByClass(MetaBlockBuilding).id) {
+                buildings.push({
+                    type: "block",
+                    pos: {
+                        x: staticComp.origin.x,
+                        y: staticComp.origin.y,
+                        r: staticComp.rotation,
+                    },
+                });
             }
         }
 
@@ -158,6 +170,21 @@ export class PuzzleSerializer {
                     }
 
                     entity.components.GoalAcceptor.item = item;
+                    break;
+                }
+                case "block": {
+                    const entity = root.logic.tryPlaceBuilding({
+                        origin: new Vector(building.pos.x, building.pos.y),
+                        building: gMetaBuildingRegistry.findByClass(MetaBlockBuilding),
+                        originalRotation: building.pos.r,
+                        rotation: building.pos.r,
+                        rotationVariant: 0,
+                        variant: defaultBuildingVariant,
+                    });
+                    if (!entity) {
+                        logger.warn("Failed to place block:", building);
+                        return "failed-to-place-block";
+                    }
                     break;
                 }
                 default: {

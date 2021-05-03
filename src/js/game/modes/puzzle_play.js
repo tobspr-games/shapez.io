@@ -21,13 +21,13 @@ import { MetaComparatorBuilding } from "../buildings/comparator";
 import { MetaTransistorBuilding } from "../buildings/transistor";
 import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
-import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
 import { PuzzleSerializer } from "../../savegame/puzzle_serializer";
 import { T } from "../../translations";
 import { HUDPuzzlePlayMetadata } from "../hud/parts/puzzle_play_metadata";
 import { createLogger } from "../../core/logging";
 import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_notification";
 import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
+import { MetaBlockBuilding } from "../buildings/block";
 
 const logger = createLogger("puzzle-play");
 const copy = require("clipboard-copy");
@@ -48,6 +48,7 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         this.hiddenBuildings = [
             MetaConstantProducerBuilding,
             MetaGoalAcceptorBuilding,
+            MetaBlockBuilding,
 
             MetaStorageBuilding,
             MetaReaderBuilding,
@@ -106,16 +107,14 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
     /**
      *
      * @param {boolean} liked
-     * @param {number} difficulty
      * @param {number} time
      */
-    trackCompleted(liked, difficulty, time) {
+    trackCompleted(liked, time) {
         const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
 
         return this.root.app.clientApi
             .apiCompletePuzzle(this.puzzle.meta.id, {
                 time,
-                difficulty,
                 liked,
             })
             .catch(err => {

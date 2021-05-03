@@ -3,6 +3,7 @@ import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
+import { RegularGameMode } from "../../game/modes/regular";
 import { GameRoot } from "../../game/root";
 import { InGameState } from "../../states/ingame";
 import { GameAnalyticsInterface } from "../game_analytics";
@@ -160,6 +161,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         const root = gameState.core.root;
         if (!root) {
             logger.warn("Root is not initialized");
+            return;
+        }
+
+        if (!(root.gameMode instanceof RegularGameMode)) {
             return;
         }
 

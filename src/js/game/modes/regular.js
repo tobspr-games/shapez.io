@@ -36,6 +36,7 @@ import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
 import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
 import { HUDSandboxController } from "../hud/parts/sandbox_controller";
 import { queryParamOptions } from "../../core/query_parameters";
+import { MetaBlockBuilding } from "../buildings/block";
 
 /** @typedef {{
  *   shape: string,
@@ -581,7 +582,7 @@ export class RegularGameMode extends GameMode {
             this.additionalHudParts.sandboxController = HUDSandboxController;
         }
 
-        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding];
+        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
     }
 
     /**

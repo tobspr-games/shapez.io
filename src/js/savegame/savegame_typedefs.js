@@ -75,9 +75,16 @@
 
 /**
  * @typedef {{
+ *   type: "block";
+ *   pos: { x: number; y: number; r: number }
+ * }} PuzzleGameBuildingBlock
+ */
+
+/**
+ * @typedef {{
  *   version: number;
  *   bounds: { w: number; h: number; },
- *   buildings: (PuzzleGameBuildingGoal | PuzzleGameBuildingConstantProducer)[]
+ *   buildings: (PuzzleGameBuildingGoal | PuzzleGameBuildingConstantProducer | PuzzleGameBuildingBlock)[]
  * }} PuzzleGameData
  */
 

@@ -130,7 +130,6 @@ puzzleMenu:
     validatingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
     noPuzzles: There are currently no puzzles in this section.
-    difficultyNotDetermined: Not yet determined
 
     categories:
         levels: Levels
@@ -627,13 +626,6 @@ ingame:
 
         buttonSubmit: Continue
 
-        difficulties:
-            - No challenge
-            - Easy
-            - Medium
-            - Hard
-            - Impossible
-
     puzzleMetadata:
         author: Author
         shortKey: Short Key
@@ -874,6 +866,11 @@ buildings:
         default:
             name: &goal_acceptor Goal Acceptor
             description: Deliver shapes to the goal acceptor to set them as a goal.
+
+    block:
+        default:
+            name: &block Block
+            description: Allows you to block a tile.
 
 storyRewards:
     # Those are the rewards gained from completing the store
@@ -1304,6 +1301,7 @@ keybindings:
         item_producer: Item Producer (Sandbox)
         constant_producer: *constant_producer
         goal_acceptor: *goal_acceptor
+        block: *block
         # ---
 
         pipette: Pipette

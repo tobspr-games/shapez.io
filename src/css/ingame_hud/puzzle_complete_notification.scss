@@ -61,8 +61,6 @@
         }
 
         > .contents {
-            @include S(width, 400px);
-            @include S(height, 170px);
             @include InlineAnimation(0.5s ease-in-out) {
                 0% {
                     transform: translateX(-100vw);
@@ -75,6 +73,7 @@
                     transform: translateX(-2vw);
                 }
             }
+
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -84,6 +83,7 @@
                 display: flex;
                 flex-direction: column;
                 @include S(margin-bottom, 10px);
+                @include SuperSmallText;
 
                 > .buttons {
                     display: flex;
@@ -92,8 +92,8 @@
                     @include S(margin, 10px, 0);
 
                     > button {
-                        @include S(width, 40px);
-                        @include S(height, 40px);
+                        @include S(width, 60px);
+                        @include S(height, 60px);
                         @include S(margin, 0, 10px);
                         box-sizing: border-box;
                         @include S(border-radius, $globalBorderRadius);
@@ -101,12 +101,7 @@
 
                         &.liked-yes {
                             /* @load-async */
-                            background: uiResource("icons/puzzle_action_liked_yes.png") center center / 60%
-                                no-repeat;
-                        }
-                        &.liked-no {
-                            /* @load-async */
-                            background: uiResource("icons/puzzle_action_liked_no.png") center center / 60%
+                            background: uiResource("icons/puzzle_action_liked_yes.png") center center / 70%
                                 no-repeat;
                         }
 
@@ -124,88 +119,30 @@
                 }
             }
 
-            > .stepDifficulty {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                @include S(margin-bottom, 10px);
+            > .actions {
+                position: absolute;
+                @include S(bottom, 40px);
 
-                > .desc {
+                display: grid;
+                @include S(grid-gap, 15px);
+                grid-auto-flow: column;
+
+                button {
                     @include SuperSmallText;
-                    opacity: 0.4;
-                    @include S(margin-bottom, 4px);
                 }
-
-                > .shapes {
-                    @include S(margin-top, 10px);
-                    display: flex;
-                    align-items: center;
-
-                    > .rating {
-                        @include S(border-radius, $globalBorderRadius);
-                        pointer-events: all;
-                        cursor: pointer;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-
-                        @include S(margin, 0, 5px);
-                        @include S(width, 65px);
-                        @include S(height, 50px);
-
-                        > canvas {
-                            @include S(width, 30px);
-                            @include S(height, 30px);
-                            transition: opacity 0.12s ease-in-out, background-color 0.12s ease-in-out,
-                                box-shadow 0.12s ease-in-out;
-                        }
-
-                        > .description {
-                            @include SuperSmallText;
-                            white-space: nowrap;
-                        }
-
-                        &.active {
-                            background-color: #151118 !important;
-                            box-shadow: 0 0 0 D(2px) #151118;
-                        }
-
-                        &:not(.active) {
-                            opacity: 0.4;
-                        }
-                    }
+                .report {
+                    background-color: $accentColorDark;
                 }
-            }
-        }
-
-        > .actions {
-            position: absolute;
-            @include S(bottom, 40px);
-
-            display: grid;
-            @include S(grid-gap, 15px);
-            grid-auto-flow: column;
-
-            button {
-                @include SuperSmallText;
-            }
-            .report {
-                background-color: $accentColorDark;
             }
         }
 
         button.close {
             border: 0;
             position: relative;
-            @include S(margin-top, 30px);
+            @include S(margin-top, 15px);
             background: $colorGreenBright;
-            @include S(padding, 10px, 40px);
-
-            &:not(.visible) {
-                opacity: 0;
-                pointer-events: none;
-            }
+            @include Heading;
+            @include S(padding, 14px, 40px);
         }
     }
 }

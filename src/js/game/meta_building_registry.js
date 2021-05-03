@@ -4,6 +4,7 @@ import { T } from "../translations";
 import { MetaAnalyzerBuilding } from "./buildings/analyzer";
 import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaBeltBuilding } from "./buildings/belt";
+import { MetaBlockBuilding } from "./buildings/block";
 import { MetaComparatorBuilding } from "./buildings/comparator";
 import { MetaConstantProducerBuilding } from "./buildings/constant_producer";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
@@ -63,6 +64,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaComparatorBuilding);
     gMetaBuildingRegistry.register(MetaItemProducerBuilding);
     gMetaBuildingRegistry.register(MetaConstantProducerBuilding);
+    gMetaBuildingRegistry.register(MetaBlockBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
@@ -174,6 +176,9 @@ export function initMetaBuildingRegistry() {
 
     // Goal acceptor
     registerBuildingVariant(63, MetaGoalAcceptorBuilding);
+
+    // Block
+    registerBuildingVariant(64, MetaBlockBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

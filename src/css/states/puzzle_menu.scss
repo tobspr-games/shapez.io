@@ -158,7 +158,6 @@
                         > .downloads {
                             @include SuperSmallText;
                             color: #000;
-                            justify-self: start;
                             font-weight: bold;
                             @include S(margin-right, 5px);
                             @include S(padding-left, 12px);
@@ -170,8 +169,9 @@
 
                             & {
                                 /* @load-async */
-                                background: uiResource("icons/puzzle_plays.png") #{D(2px)} center / #{D(8px)}
-                                    #{D(8px)} no-repeat;
+                                background: uiResource("icons/puzzle_plays.png") #{D(2px)} #{D(2.5px)} / #{D(
+                                        8px
+                                    )} #{D(8px)} no-repeat;
                             }
                         }
 
@@ -180,26 +180,35 @@
                             align-items: center;
                             justify-content: center;
                             color: #000;
-                            justify-self: start;
                             font-weight: bold;
-                            @include S(padding-left, 12px);
+                            @include S(padding-left, 14px);
                             opacity: 0.7;
                             @include DarkThemeInvert;
 
                             & {
                                 /* @load-async */
-                                background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} center / #{D(
-                                        8px
-                                    )} #{D(8px)} no-repeat;
+                                background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} #{D(2.4px)} / #{D(
+                                        9px
+                                    )} #{D(9px)} no-repeat;
                             }
                         }
 
                         > .difficulty {
-                            @include S(margin-top, 1px);
-                            @include S(margin-right, 7px);
-                            display: inline-flex;
+                            @include SuperSmallText;
                             align-items: center;
                             justify-content: center;
+                            color: #000;
+                            font-weight: bold;
+                            @include S(margin-right, 3px);
+                            @include S(padding-left, 14px);
+                            opacity: 0.7;
+                            @include DarkThemeInvert;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_completion_rate.png") #{D(1px)} #{D(2px)} /
+                                    #{D(10px)} #{D(10px)} no-repeat;
+                            }
                         }
                     }
 

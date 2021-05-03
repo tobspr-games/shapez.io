@@ -14,14 +14,6 @@ import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { ShapeItem } from "../../items/shape_item";
 import { ShapeDefinition } from "../../shape_definition";
 
-export const PUZZLE_RATINGS = [
-    new ColorItem(enumColors.red),
-    new ShapeItem(ShapeDefinition.fromShortKey("CuCuCuCu")),
-    new ShapeItem(ShapeDefinition.fromShortKey("WwWwWwWw")),
-    new ShapeItem(ShapeDefinition.fromShortKey(finalGameShape)),
-    new ShapeItem(ShapeDefinition.fromShortKey(rocketShape)),
-];
-
 export class HUDPuzzleCompleteNotification extends BaseHUDPart {
     initialize() {
         this.visible = false;
@@ -32,8 +24,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
         this.root.signals.puzzleComplete.add(this.show, this);
 
-        this.selectionLiked = false;
-        this.selectionDifficulty = null;
+        this.userDidLikePuzzle = false;
         this.timeOfCompletion = 0;
     }
 
@@ -48,18 +39,6 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.elemContents = makeDiv(dialog, null, ["contents"]);
         this.elemActions = makeDiv(dialog, null, ["actions"]);
 
-        const reportBtn = document.createElement("button");
-        reportBtn.classList.add("styledButton", "report");
-        reportBtn.innerHTML = T.ingame.puzzleEditorSettings.report;
-        this.elemActions.appendChild(reportBtn);
-        this.trackClicks(reportBtn, this.report);
-
-        const shareBtn = document.createElement("button");
-        shareBtn.classList.add("styledButton", "share");
-        shareBtn.innerHTML = T.ingame.puzzleEditorSettings.share;
-        this.elemActions.appendChild(shareBtn);
-        this.trackClicks(shareBtn, this.share);
-
         const stepLike = makeDiv(this.elemContents, null, ["step", "stepLike"]);
         makeDiv(stepLike, null, ["title"], T.ingame.puzzleCompletion.titleLike);
 
@@ -69,44 +48,9 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.buttonLikeYes.classList.add("liked-yes");
         likeButtons.appendChild(this.buttonLikeYes);
         this.trackClicks(this.buttonLikeYes, () => {
-            this.selectionLiked = !this.selectionLiked;
+            this.userDidLikePuzzle = !this.userDidLikePuzzle;
             this.updateState();
         });
-
-        const stepDifficulty = makeDiv(this.elemContents, null, ["step", "stepDifficulty"]);
-        makeDiv(stepDifficulty, null, ["title"], T.ingame.puzzleCompletion.titleRating);
-        makeDiv(stepDifficulty, null, ["desc"], T.ingame.puzzleCompletion.titleRatingDesc);
-
-        const shapeContainer = makeDiv(stepDifficulty, null, ["shapes"]);
-
-        this.difficultyElements = [];
-        let index = 0;
-        for (const shape of PUZZLE_RATINGS) {
-            const localIndex = index;
-
-            const elem = document.createElement("div");
-            elem.classList.add("rating");
-            shapeContainer.appendChild(elem);
-
-            const canvas = document.createElement("canvas");
-            canvas.width = 128;
-            canvas.height = 128;
-            const context = canvas.getContext("2d");
-            shape.drawFullSizeOnCanvas(context, 128);
-            elem.appendChild(canvas);
-
-            this.trackClicks(elem, () => {
-                this.selectionDifficulty = localIndex;
-                this.updateState();
-            });
-            this.difficultyElements.push(elem);
-
-            const desc = document.createElement("div");
-            desc.classList.add("description");
-            desc.innerText = T.ingame.puzzleCompletion.difficulties[localIndex];
-            elem.appendChild(desc);
-            ++index;
-        }
 
         this.btnClose = document.createElement("button");
         this.btnClose.classList.add("close", "styledButton");
@@ -116,26 +60,8 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.trackClicks(this.btnClose, this.close);
     }
 
-    share() {
-        const mode = /** @type {PuzzlePlayGameMode} */ (this.root.gameMode);
-        mode.sharePuzzle();
-    }
-
-    report() {
-        const mode = /** @type {PuzzlePlayGameMode} */ (this.root.gameMode);
-        mode.reportPuzzle().then(() => this.close());
-    }
-
     updateState() {
-        this.buttonLikeYes.classList.toggle("active", this.selectionLiked === true);
-        this.difficultyElements.forEach((canvas, index) =>
-            canvas.classList.toggle("active", index === this.selectionDifficulty)
-        );
-
-        this.btnClose.classList.toggle(
-            "visible",
-            typeof this.selectionDifficulty === "number" && typeof this.selectionLiked === "boolean"
-        );
+        this.buttonLikeYes.classList.toggle("active", this.userDidLikePuzzle === true);
     }
 
     show() {
@@ -155,7 +81,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
     close() {
         /** @type {PuzzlePlayGameMode} */ (this.root.gameMode)
-            .trackCompleted(this.selectionLiked, this.selectionDifficulty, Math.round(this.timeOfCompletion))
+            .trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion))
             .then(() => {
                 // this.root.gameState.moveToState("PuzzleMenuState");
                 this.visible = false;

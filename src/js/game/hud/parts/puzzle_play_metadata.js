@@ -33,30 +33,15 @@ export class HUDPuzzlePlayMetadata extends BaseHUDPart {
                 <label>${T.ingame.puzzleMetadata.shortKey}</label><span>${puzzle.meta.shortKey}</span>
             </div>
             <div class="info rating">
-                <label>${T.ingame.puzzleMetadata.rating}</label>
-                <span>${
-                    puzzle.meta.difficulty
-                        ? puzzle.meta.difficulty.toFixed(2) +
-                          " (" +
-                          T.ingame.puzzleCompletion.difficulties[Math.round(puzzle.meta.difficulty)] +
-                          ")"
-                        : T.puzzleMenu.difficultyNotDetermined
-                }</span>
-            </div>
-            <div class="info rating">
                 <label>${T.ingame.puzzleMetadata.averageDuration}</label>
-                <span>${
-                    puzzle.meta.averageTime
-                        ? formatSeconds(puzzle.meta.averageTime)
-                        : T.puzzleMenu.difficultyNotDetermined
-                }</span>
+                <span>${puzzle.meta.averageTime ? formatSeconds(puzzle.meta.averageTime) : "-"}</span>
             </div>
             <div class="info rating">
                 <label>${T.ingame.puzzleMetadata.completionRate}</label>
                 <span>${
-                    puzzle.meta.downloads > 10
+                    puzzle.meta.downloads > 0
                         ? ((puzzle.meta.completions / puzzle.meta.downloads) * 100.0).toFixed(1) + "%"
-                        : T.puzzleMenu.difficultyNotDetermined
+                        : "-"
                 }</span>
             </div>
 

@@ -168,7 +168,6 @@ export class ClientAPI {
      * @param {number} puzzleId
      * @param {object} payload
      * @param {number} payload.time
-     * @param {number} payload.difficulty
      * @param {boolean} payload.liked
      * @returns {Promise<{ success: true }>}
      */
