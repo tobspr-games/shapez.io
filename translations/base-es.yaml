@@ -14,19 +14,20 @@ steamPage:
         Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar colores!
 
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Lo que otras personas dicen sobre shapez.io
+    nothernlion_comment: Este juego es estupendo - Estoy teniendo un tiempo maravolloso jugano,
+        y el tiempo ha pasado volando.
+    notch_comment: Miercoles. Verdaderamente debería dormir, pero creo que acabo de descubrir 
+        como hacer un ordenador en shapez.io
+    steam_review_comment: Este juego ha robado mi vida y no la quiero de vuelta.
+        Muy relajante juego de fábrica que no me dejará hacer mis lineas más 
+        eficientes.
+        
 global:
     loading: Cargando
     error: Error
-    thousandsDivider: .
-    decimalSeparator: ","
+    thousandsDivider: ,
+    decimalSeparator: "."
     suffix:
         thousands: k
         millions: M
@@ -196,7 +197,7 @@ ingame:
         placeMultiple: Colocar varios
         reverseOrientation: Invertir la orientación
         disableAutoOrientation: Desactivar la autoorientación
-        toggleHud: Habilitar el HUD
+        toggleHud: Habilitar la interfaz
         placeBuilding: Colocar edificio
         createMarker: Crear marcador
         delete: Destruir
@@ -217,7 +218,7 @@ ingame:
         cyan: Cian
         white: Blanco
         black: Negro
-        uncolored: Gris
+        uncolored: Incoloro
     buildingPlacement:
         cycleBuildingVariants: Pulsa <key> para rotar por las distintas variantes.
         hotkeyLabel: "Tecla: <key>"
@@ -248,18 +249,18 @@ ingame:
         dataSources:
             stored:
                 title: Almacenado
-                description: Muestra la cantidad de figuras guardadas en tu HUB.
+                description: Muestra la cantidad de figuras guardadas en tu Centro.
             produced:
                 title: Producido
                 description: Muestra todas las figuras que tu fábrica al completo produce,
                     incluyendo productos intermedios.
             delivered:
                 title: Entregados
-                description: Muestra las figuras que son entregadas a tu HUB.
+                description: Muestra las figuras que son entregadas a tu Centro.
         noShapesProduced: Todavía no se han producido figuras.
         shapesDisplayUnits:
             second: <shapes> / s
-            minute: <shapes> / m
+            minute: <shapes> / min
             hour: <shapes> / h
     settingsMenu:
         playtime: Tiempo de juego
@@ -273,7 +274,7 @@ ingame:
         cost: Coste
     waypoints:
         waypoints: Marcadores
-        hub: HUB
+        hub: Centro
         description: Click izquierdo sobre un marcador para ir ahí, click derecho para
             borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la
             vista actual o <strong>click derecho</strong> para crear un marcador
@@ -289,7 +290,7 @@ ingame:
             1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
                 <strong>círculo</strong> para extraerlo!
             1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
-                transportadora</strong> a tu HUB!<br><br> Pista: ¡<strong>Pulsa
+                transportadora</strong> a tu Centro!<br><br> Pista: ¡<strong>Pulsa
                 y arrastra</strong> la cinta transportadora con el ratón!"
             1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
                 extractores y cintas transportadoras para completar el objetivo
@@ -307,7 +308,7 @@ ingame:
                 para acelerar este lento proceso!<br><br> PD: Usa las teclas
                 <strong>0-9 </strong> para acceder a los edificios más rápido!"
             3_1_rectangles: "¡Ahora consigamos unos rectangulos! <strong>construye 4
-                extractores</strong> y conectalos a el HUB.<br><br> PD: Manten
+                extractores</strong> y conectalos a el Centro.<br><br> PD: Manten
                 apretado <strong>SHIFT</strong> mientrás pones cintas
                 transportadoras para activar el planeador de cintas!"
             21_1_place_quad_painter: ¡Pon el <strong>pintador cuádruple</strong> y consigue
@@ -356,8 +357,8 @@ ingame:
                 title: Apoyame
                 desc: ¡Desarrollo este juego en mi tiempo libre!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Logros
+                desc: Atrapalos a todos!
 shopUpgrades:
     belt:
         name: Cintas transportadoras, Distribuidores y Túneles
@@ -375,8 +376,8 @@ buildings:
     hub:
         deliver: Entregar
         toUnlock: para desbloquear
-        levelShortcut: LVL
-        endOfDemo: End of Demo
+        levelShortcut: Nivel
+        endOfDemo: Final de la demo
     belt:
         default:
             name: Cinta Transportadora
@@ -649,10 +650,10 @@ storyRewards:
         desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>!
             ¡Esto significa que las formas ahora son
             <strong>aleatoriamente</strong> generadas!<br><br> Debído a que
-            desde ahora de adelante el HUB pedrirá una cantidad especifica de
+            desde ahora de adelante el Centro pedrirá una cantidad especifica de
             formas <strong>por segundo</strong> ¡Te recomiendo encarecidamente
             que construyas una maquina que automáticamente envíe la forma
-            pedida!<br><br> El HUB emite la forma pedida en la capa de cables,
+            pedida!<br><br> El Centro emite la forma pedida en la capa de cables,
             así que todo lo que tienes que hacer es analizarla y automaticamente
             configurar tu fabrica basada en ello.
     reward_blueprints:
@@ -719,7 +720,7 @@ storyRewards:
             ¡Ahora puedes simular un cortador, rotador, apilador y más dentro de
             la capa de cables! Con esto ahora tienes tres opciones para
             continuar el juego:<br><br> - Construir una <strong>maquina
-            automatizada</strong> para crear cualquier forma que te pida el HUB
+            automatizada</strong> para crear cualquier forma que te pida el Centro
             (¡Te recomiendo que lo intentes!).<br><br> - Construir algo genial
             con los cables.<br><br> - Continuar jugando de la manera
             regular.<br><br> ¡Cualquiera que eligas, recuerda divertirte!
@@ -941,7 +942,7 @@ keybindings:
         menuOpenShop: Mejoras
         menuOpenStats: Estadísticas
         menuClose: Cerrar menú
-        toggleHud: Activar HUD
+        toggleHud: Activar Interfaz
         toggleFPSInfo: Activar FPS e información de depurado
         switchLayers: Cambiar capas
         exportScreenshot: Exportar la base completa como imagen
@@ -963,7 +964,7 @@ keybindings:
         pasteLastBlueprint: Pegar último plano
         cycleBuildings: Ciclar edificios
         lockBeltDirection: Activar planificador de cintas transportadoras
-        switchDirectionLockSide: "Planner: Cambiar sentido"
+        switchDirectionLockSide: "Planificador: Cambiar sentido"
         massSelectStart: Mantén pulsado y arrastra para empezar
         massSelectSelectMultiple: Seleccionar múltiples áreas
         massSelectCopy: Copiar área
@@ -986,10 +987,10 @@ keybindings:
         comparator: Comparador
         item_producer: Productor de items (Sandbox)
         copyWireValue: "Cables: Copiar valor bajo el cursos"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotar: Apuntar hacia arriba"
+        rotateToDown: "Rotar: Apuntar hacia abajo"
+        rotateToRight: "Rotar: Apuntar hacia la derecha"
+        rotateToLeft: "Rotar: Apuntar hacia la izquierda"
 about:
     title: Sobre el juego
     body: >-
@@ -1015,9 +1016,9 @@ demo:
         exportingBase: Exportando la base completa como imagen
     settingNotAvailable: No disponible en la versión de prueba.
 tips:
-    - El HUB acepta entradas de cualquier tipo ¡No solo la forma actual!
+    - El Centro acepta entradas de cualquier tipo ¡No solo la forma actual!
     - Trata de que tus fábricas sean modulares - ¡Te servirá en el futuro!
-    - No construyas muy cerca del HUB ¡O se volverá todo un caos!
+    - No construyas muy cerca del Centro ¡O se volverá todo un caos!
     - Si apilar las formas no funciona, intenta intercambiar las entradas.
     - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
     - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
@@ -1047,7 +1048,7 @@ tips:
     - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las
       cintas.
     - ¡La eficiencia es la clave!
-    - Mientras más lejos del HUB estés más complejas serán las formas que te
+    - Mientras más lejos del Centro estés más complejas serán las formas que te
       encuentres.
     - Las máquinas tienen una velocidad limitada, divídelas para una máxima
       eficiencia.
@@ -1071,7 +1072,7 @@ tips:
     - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas
       serán respondidas.
     - Usa <b>CTRL</b> + Click izquierdo para seleccionar un área.
-    - Construir demasiado cerca del HUB puede interponerse en el camino de
+    - Construir demasiado cerca del Centro puede interponerse en el camino de
       proyectos a futuro.
     - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a
       la pantalla.
@@ -1084,7 +1085,7 @@ tips:
     - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la
       página de ajustes.
     - Este juego tiene muchos ajustes, ¡asegúrate de revisarlos!
-    - ¡El marcador de tu HUB tiene una pequeña brújula para indicar su dirección!
+    - ¡El marcador de tu Centro tiene una pequeña brújula para indicar su dirección!
     - Para despejar las cintas transportadoras, corta el área y luego pégala en
       el mismo lugar.
     - Presiona F4 para mostrar tu FPS y Tick Rate.
