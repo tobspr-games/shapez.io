@@ -89,9 +89,10 @@ export class Dialog {
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
+     * @param {boolean} param0.ctrl
      * @param {boolean} param0.alt
      */
-    handleKeydown({ keyCode, shift, alt }) {
+    handleKeydown({ keyCode, shift, ctrl, alt }) {
         if (keyCode === kbEnter && this.enterHandler) {
             this.internalButtonHandler(this.enterHandler);
             return STOP_PROPAGATION;
@@ -309,7 +310,7 @@ export class DialogOptionChooser extends Dialog {
                 <div class='option ${value === options.active ? "active" : ""} ${
                 iconPrefix ? "hasIcon" : ""
             }' data-optionvalue='${value}'>
-                    ${iconHtml}    
+                    ${iconHtml}
                     <span class='title'>${text}</span>
                     ${descHtml}
                 </div>
