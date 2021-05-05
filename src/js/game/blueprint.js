@@ -15,6 +15,13 @@ export class Blueprint {
     }
 
     /**
+     * Returns array of entities
+     */
+    getEntities() {
+        return this.entities;
+    }
+
+    /**
      * Returns the layer of this blueprint
      * @returns {Layer}
      */

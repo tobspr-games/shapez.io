@@ -15,6 +15,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { Blueprint } from "../../blueprint";
+import { SerializerInternal } from "../../../savegame/serializer_internal";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -42,6 +43,11 @@ export class HUDMassSelector extends BaseHUDPart {
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
         this.root.signals.editModeChanged.add(this.clearSelection, this);
+
+        this.serializer = new SerializerInternal();
+
+        // TODO: This probably belongs at a higher level
+        document.addEventListener("copy", this.copyToClipboard.bind(this));
     }
 
     /**
@@ -200,6 +206,24 @@ export class HUDMassSelector extends BaseHUDPart {
         } else {
             this.root.soundProxy.playUiError();
         }
+    }
+
+    /**
+     * @param {ClipboardEvent} event
+     */
+    copyToClipboard(event) {
+        if (this.selectedUids.size == 0) {
+            return;
+        }
+
+        const entityUids = Array.from(this.selectedUids);
+        const blueprint = Blueprint.fromUids(this.root, entityUids);
+        const serializedBP = this.serializer.serializeEntityArray(blueprint.getEntities());
+        const json = JSON.stringify(serializedBP);
+        event.clipboardData.setData("text/plain", json);
+        event.preventDefault();
+
+        logger.log("Copied selection to clipboard");
     }
 
     /**
