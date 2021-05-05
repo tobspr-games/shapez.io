@@ -25,21 +25,26 @@ export class SerializerInternal {
     }
 
     /**
-     *
      * @param {GameRoot} root
      * @param {Array<Entity>} array
      * @returns {string|void}
      */
     deserializeEntityArray(root, array) {
         for (let i = 0; i < array.length; ++i) {
-            this.deserializeEntity(root, array[i]);
+            const serializedEntity = array[i];
+            const result = this.deserializeEntity(root, serializedEntity);
+            if (typeof result == "string") {
+                return result;
+            }
+            root.entityMgr.registerEntity(result, serializedEntity.uid);
+            root.map.placeStaticEntity(result);
         }
     }
 
     /**
-     *
      * @param {GameRoot} root
      * @param {Entity} payload
+     * @returns {string|Entity}
      */
     deserializeEntity(root, payload) {
         const staticData = payload.components.StaticMapEntity;
@@ -61,10 +66,9 @@ export class SerializerInternal {
 
         entity.uid = payload.uid;
 
-        this.deserializeComponents(root, entity, payload.components);
+        const errorStatus = this.deserializeComponents(root, entity, payload.components);
 
-        root.entityMgr.registerEntity(entity, payload.uid);
-        root.map.placeStaticEntity(entity);
+        return errorStatus || entity;
     }
 
     /////// COMPONENTS ////
@@ -89,9 +93,7 @@ export class SerializerInternal {
             }
 
             const errorStatus = entity.components[componentId].deserialize(data[componentId], root);
-            if (errorStatus) {
-                return errorStatus;
-            }
+            return errorStatus;
         }
     }
 }

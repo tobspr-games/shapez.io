@@ -1,15 +1,20 @@
 import { DrawParameters } from "../../../core/draw_parameters";
+import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { TrackedState } from "../../../core/tracked_state";
 import { makeDiv } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { SOUNDS } from "../../../platform/sound";
+import { SerializerInternal } from "../../../savegame/serializer_internal";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
+import { Entity } from "../../entity";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+
+const logger = createLogger("blueprint_placer");
 
 export class HUDBlueprintPlacer extends BaseHUDPart {
     createElements(parent) {
@@ -48,6 +53,11 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
         this.domAttach = new DynamicDomAttach(this.root, this.costDisplayParent);
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
+
+        this.serializer = new SerializerInternal();
+
+        // TODO: This probably belongs at a higher level
+        document.addEventListener("paste", this.pasteFromClipboard.bind(this));
     }
 
     getHasFreeCopyPaste() {
@@ -104,7 +114,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
-     * mouse down pre handler
+     * Mouse down pre handler
      * @param {Vector} pos
      * @param {enumMouseButton} button
      */
@@ -191,7 +201,6 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
-     *
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
@@ -209,4 +218,58 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const tile = worldPos.toTileSpace();
         blueprint.draw(parameters, tile);
     }
+
+    /**
+     * @param {ClipboardEvent} event
+     */
+    pasteFromClipboard(event) {
+        const data = event.clipboardData.getData("Text");
+        if (!data) {
+            return;
+        }
+        let json;
+        try {
+            json = JSON.parse(data);
+        } catch (error) {
+            logger.error("Unable to parse clipboard data:", error.message);
+            return;
+        }
+        if (!verifyBlueprintData(json)) {
+            logger.error("Invalid clipboard data");
+            return;
+        }
+        logger.log("Paste blueprint from clipboard");
+        const entityArray = [];
+        for (let i = 0; i < json.length; ++i) {
+            const serializedEntity = json[i];
+            const result = this.serializer.deserializeEntity(this.root, serializedEntity);
+            if (typeof result == "string") {
+                logger.error(result);
+                return;
+            }
+            entityArray.push(result);
+        }
+        const newBP = new Blueprint(entityArray);
+        this.currentBlueprint.set(newBP);
+    }
+}
+
+/**
+ * Verify data is a valid serialized blueprint
+ * @param {Array<Entity>} data
+ */
+function verifyBlueprintData(data) {
+    if (typeof data != "object") {
+        return false;
+    }
+    if (!Array.isArray(data)) {
+        return false;
+    }
+    for (let i = 0; i < data.length; ++i) {
+        const value = data[i];
+        if (value.components == undefined || value.components.StaticMapEntity == undefined) {
+            return false;
+        }
+    }
+    return true;
 }
