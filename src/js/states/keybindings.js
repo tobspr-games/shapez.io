@@ -19,7 +19,7 @@ export class KeybindingsState extends TextualGameState {
             <div class="topEntries">
                 <span class="hint">${T.keybindings.hint}</span>
                 <button class="styledButton resetBindings">${T.keybindings.resetKeybindings}</button>
-            
+
             </div>
 
             <div class="keybindings">
@@ -89,7 +89,7 @@ export class KeybindingsState extends TextualGameState {
             type: "info",
         });
 
-        dialog.inputReciever.keydown.add(({ keyCode, shift, alt, event }) => {
+        dialog.inputReciever.keydown.add(({ keyCode, shift, ctrl, alt, event }) => {
             if (keyCode === 27) {
                 this.dialogs.closeDialog(dialog);
                 return;
