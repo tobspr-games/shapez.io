@@ -36,6 +36,7 @@ export class SerializerInternal {
             if (typeof result == "string") {
                 return result;
             }
+            result.uid = serializedEntity.uid;
             root.entityMgr.registerEntity(result, serializedEntity.uid);
             root.map.placeStaticEntity(result);
         }
@@ -63,9 +64,7 @@ export class SerializerInternal {
             rotationVariant: data.rotationVariant,
             variant: data.variant,
         });
-
-        entity.uid = payload.uid;
-
+        
         const errorStatus = this.deserializeComponents(root, entity, payload.components);
 
         return errorStatus || entity;
@@ -93,7 +92,9 @@ export class SerializerInternal {
             }
 
             const errorStatus = entity.components[componentId].deserialize(data[componentId], root);
-            return errorStatus;
+            if (errorStatus) {
+                return errorStatus;
+            }
         }
     }
 }
