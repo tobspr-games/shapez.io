@@ -41,6 +41,8 @@
  * }} SavegamesData
  */
 
+import { MetaBuilding } from "../game/meta_building";
+
 // Notice: Update backend too
 /**
  * @typedef {{
@@ -84,7 +86,8 @@
  * @typedef {{
  *   version: number;
  *   bounds: { w: number; h: number; },
- *   buildings: (PuzzleGameBuildingGoal | PuzzleGameBuildingConstantProducer | PuzzleGameBuildingBlock)[]
+ *   buildings: (PuzzleGameBuildingGoal | PuzzleGameBuildingConstantProducer | PuzzleGameBuildingBlock)[],
+ *   excludedBuildings: (typeof MetaBuilding)[],
  * }} PuzzleGameData
  */
 

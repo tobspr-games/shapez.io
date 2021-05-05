@@ -90,6 +90,7 @@ export class PuzzleSerializer {
                 w: mode.zoneWidth,
                 h: mode.zoneHeight,
             },
+            excludedBuildings: [],
         };
     }
 
