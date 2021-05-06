@@ -15,7 +15,6 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { Blueprint } from "../../blueprint";
-import { SerializerInternal } from "../../../savegame/serializer_internal";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -43,8 +42,6 @@ export class HUDMassSelector extends BaseHUDPart {
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
         this.root.signals.editModeChanged.add(this.clearSelection, this);
-
-        this.serializer = new SerializerInternal();
     }
 
     /**
