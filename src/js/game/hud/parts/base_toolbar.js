@@ -35,6 +35,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
          * selected: boolean,
          * element: HTMLElement,
          * index: number
+         * puzzleLocked: boolean,
          * }>} */
         this.buildingHandles = {};
     }
@@ -105,10 +106,17 @@ export class HUDBaseToolbar extends BaseHUDPart {
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
+                clickSound: null,
+            });
+
+            //new stuff
+            const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
+            puzzleLock.setAttribute("data-icon", "unlocked_building.png");
+
+            this.trackClicks(puzzleLock, () => this.togglePuzzleLock(metaBuilding), {
                 clickSound: null,
             });
 
@@ -118,6 +126,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
                 unlocked: false,
                 selected: false,
                 index: i,
+                puzzleLocked: false,
             };
         }
 
@@ -246,5 +255,25 @@ export class HUDBaseToolbar extends BaseHUDPart {
         this.root.soundProxy.playUiClick();
         this.root.hud.signals.buildingSelectedForPlacement.dispatch(metaBuilding);
         this.onSelectedPlacementBuildingChanged(metaBuilding);
+    }
+
+    /**
+     * @param {MetaBuilding} metaBuilding
+     */
+    togglePuzzleLock(metaBuilding) {
+        if (!this.visibilityCondition()) {
+            // Not active
+            return;
+        }
+
+        if (!metaBuilding.getIsUnlocked(this.root)) {
+            this.root.soundProxy.playUiError();
+            return STOP_PROPAGATION;
+        }
+
+        const handle = this.buildingHandles[metaBuilding.getId()];
+        handle.puzzleLocked = !handle.puzzleLocked;
+
+        this.root.soundProxy.playUiClick();
     }
 }

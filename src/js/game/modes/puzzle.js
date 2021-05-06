@@ -7,6 +7,9 @@ import { types } from "../../savegame/serialization";
 import { enumGameModeTypes, GameMode } from "../game_mode";
 import { HUDPuzzleBackToMenu } from "../hud/parts/puzzle_back_to_menu";
 import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
+import { MetaBalancerBuilding } from "../buildings/balancer";
+import { MetaUndergroundBeltBuilding } from "../buildings/underground_belt";
 
 export class PuzzleGameMode extends GameMode {
     static getType() {
@@ -34,6 +37,13 @@ export class PuzzleGameMode extends GameMode {
 
         this.zoneWidth = data.zoneWidth || 8;
         this.zoneHeight = data.zoneHeight || 6;
+    }
+
+    /**
+     * @param {typeof import("../meta_building").MetaBuilding} building
+     */
+    isBuildingExcluded(building) {
+        return this.hiddenBuildings.indexOf(building) >= 0;
     }
 
     getSaveData() {

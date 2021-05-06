@@ -33,7 +33,6 @@ export class PuzzleSerializer {
          * @type {import("./savegame_typedefs").PuzzleGameData["buildings"]}
          */
         let buildings = [];
-
         for (const entity of root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
             const signalComp = entity.components.ConstantSignal;
@@ -90,6 +89,7 @@ export class PuzzleSerializer {
                 w: mode.zoneWidth,
                 h: mode.zoneHeight,
             },
+            //read from the toolbar when making a puzzle
             excludedBuildings: [],
         };
     }
