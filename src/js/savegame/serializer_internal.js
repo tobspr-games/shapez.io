@@ -33,7 +33,7 @@ export class SerializerInternal {
         for (let i = 0; i < array.length; ++i) {
             const serializedEntity = array[i];
             const result = this.deserializeEntity(root, serializedEntity);
-            if (typeof result == "string") {
+            if (typeof result === "string") {
                 return result;
             }
             result.uid = serializedEntity.uid;
@@ -64,7 +64,7 @@ export class SerializerInternal {
             rotationVariant: data.rotationVariant,
             variant: data.variant,
         });
-        
+
         const errorStatus = this.deserializeComponents(root, entity, payload.components);
 
         return errorStatus || entity;

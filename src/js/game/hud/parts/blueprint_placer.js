@@ -13,6 +13,9 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { Entity } from "../../entity";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { globalConfig } from "../../../core/config";
+
+const copy = require("clipboard-copy");
 
 const logger = createLogger("blueprint_placer");
 
@@ -55,9 +58,6 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
 
         this.serializer = new SerializerInternal();
-
-        // TODO: This probably belongs at a higher level
-        document.addEventListener("paste", this.pasteFromClipboard.bind(this));
     }
 
     getHasFreeCopyPaste() {
@@ -167,6 +167,8 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             return;
         }
         this.currentBlueprint.set(Blueprint.fromUids(this.root, uids));
+
+        this.copyToClipboard();
     }
 
     /**
@@ -185,16 +187,22 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     /**
      * Attempts to paste the last blueprint
      */
-    pasteBlueprint() {
-        if (this.lastBlueprintUsed !== null) {
-            if (this.lastBlueprintUsed.layer !== this.root.currentLayer) {
+    async pasteBlueprint() {
+        /** @type {Blueprint|void} */
+        let blueprint = null;
+        if (G_IS_DEV && globalConfig.debug.useClipboard) {
+            blueprint = await this.pasteFromClipboard();
+        }
+        blueprint = blueprint || this.lastBlueprintUsed;
+        if (blueprint !== null) {
+            if (blueprint.layer !== this.root.currentLayer) {
                 // Not compatible
                 this.root.soundProxy.playUiError();
                 return;
             }
 
             this.root.hud.signals.pasteBlueprintRequested.dispatch();
-            this.currentBlueprint.set(this.lastBlueprintUsed);
+            this.currentBlueprint.set(blueprint);
         } else {
             this.root.soundProxy.playUiError();
         }
@@ -220,56 +228,82 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
-     * @param {ClipboardEvent} event
+     * Copy blueprint to system clipboard
      */
-    pasteFromClipboard(event) {
-        const data = event.clipboardData.getData("Text");
-        if (!data) {
+    async copyToClipboard() {
+        if (!G_IS_DEV || !globalConfig.debug.useClipboard) {
             return;
         }
-        let json;
+        const blueprint = this.currentBlueprint.get();
+        // TODO: Move serialize() to Blueprint?
+        const serializedBP = this.serializer.serializeEntityArray(blueprint.getEntities());
+        const json = JSON.stringify(serializedBP);
+
         try {
-            json = JSON.parse(data);
-        } catch (error) {
-            logger.error("Unable to parse clipboard data:", error.message);
-            return;
+            await copy(json);
+            this.root.soundProxy.playUi(SOUNDS.copy);
+            logger.debug("Copied blueprint to clipboard");
+        } catch (e) {
+            logger.error("Copy to clipboard failed:", e.message);
         }
-        if (!verifyBlueprintData(json)) {
-            logger.error("Invalid clipboard data");
-            return;
+    }
+
+    /**
+     * Attempt to get Blueprint from clipboard
+     * @returns {Promise<Blueprint|void>}
+     */
+    async pasteFromClipboard() {
+        let data;
+        try {
+            data = await paste();
+            // logger.debug("Paste data:", data);
+        } catch (e) {
+            logger.error("Problems with paste:", e.message);
         }
-        logger.log("Paste blueprint from clipboard");
-        const entityArray = [];
-        for (let i = 0; i < json.length; ++i) {
-            const serializedEntity = json[i];
-            const result = this.serializer.deserializeEntity(this.root, serializedEntity);
-            if (typeof result == "string") {
-                logger.error(result);
+        return this.deserializeBlueprint(data);
+    }
+
+    /**
+     * @param {string} data
+     * @retruns {Blueprint|void}
+     */
+    deserializeBlueprint(data) {
+        // TODO: Move to Blueprint?
+        try {
+            let json = JSON.parse(data);
+            if (typeof json != "object") {
                 return;
             }
-            entityArray.push(result);
+            if (!Array.isArray(json)) {
+                return;
+            }
+            /** @type {Array<Entity>} */
+            const entityArray = [];
+            for (let i = 0; i < json.length; ++i) {
+                /** @type {Entity?} */
+                const value = json[i];
+                if (value.components == undefined || value.components.StaticMapEntity == undefined) {
+                    return;
+                }
+                const result = this.serializer.deserializeEntity(this.root, value);
+                if (typeof result === "string") {
+                    throw new Error(result);
+                }
+                entityArray.push(result);
+            }
+            const newBP = new Blueprint(entityArray);
+            return newBP;
+        } catch (e) {
+            logger.error("Invalid bluerint data:", e.message);
         }
-        const newBP = new Blueprint(entityArray);
-        this.currentBlueprint.set(newBP);
     }
 }
 
+/* TODO: Move this to a module */
 /**
- * Verify data is a valid serialized blueprint
- * @param {Array<Entity>} data
+ * @returns {Promise<string>}
  */
-function verifyBlueprintData(data) {
-    if (typeof data != "object") {
-        return false;
-    }
-    if (!Array.isArray(data)) {
-        return false;
-    }
-    for (let i = 0; i < data.length; ++i) {
-        const value = data[i];
-        if (value.components == undefined || value.components.StaticMapEntity == undefined) {
-            return false;
-        }
-    }
-    return true;
+async function paste() {
+    /* TODO: Add fallback method */
+    return navigator.clipboard.readText();
 }
