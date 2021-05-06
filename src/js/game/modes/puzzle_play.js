@@ -28,7 +28,6 @@ import { createLogger } from "../../core/logging";
 import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_notification";
 import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 import { MetaBlockBuilding } from "../buildings/block";
-import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { MetaBuilding } from "../meta_building";
 
 const logger = createLogger("puzzle-play");

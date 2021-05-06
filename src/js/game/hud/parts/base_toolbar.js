@@ -1,6 +1,7 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv, safeModulo } from "../../../core/utils";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { MetaBuilding } from "../../meta_building";
 import { GameRoot } from "../../root";
@@ -35,7 +36,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
          * selected: boolean,
          * element: HTMLElement,
          * index: number
-         * puzzleLocked: boolean,
+         * puzzleLocked: boolean;
+         * class: typeof MetaBuilding,
          * }>} */
         this.buildingHandles = {};
     }
@@ -106,7 +108,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-            binding.add(() => this.selectBuildingForPlacement(metaBuilding));
+            binding.add(() => this.togglePuzzleLock(metaBuilding));
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
                 clickSound: null,
@@ -121,12 +123,13 @@ export class HUDBaseToolbar extends BaseHUDPart {
             });
 
             this.buildingHandles[metaBuilding.id] = {
-                metaBuilding,
+                metaBuilding: metaBuilding,
                 element: itemContainer,
                 unlocked: false,
                 selected: false,
                 index: i,
                 puzzleLocked: false,
+                class: allBuildings[i],
             };
         }
 
@@ -154,7 +157,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
             let recomputeSecondaryToolbarVisibility = false;
             for (const buildingId in this.buildingHandles) {
                 const handle = this.buildingHandles[buildingId];
-                const newStatus = handle.metaBuilding.getIsUnlocked(this.root);
+                const newStatus = !handle.puzzleLocked && handle.metaBuilding.getIsUnlocked(this.root);
                 if (handle.unlocked !== newStatus) {
                     handle.unlocked = newStatus;
                     handle.element.classList.toggle("unlocked", newStatus);
@@ -271,8 +274,24 @@ export class HUDBaseToolbar extends BaseHUDPart {
             return STOP_PROPAGATION;
         }
 
+        const entityManager = this.root.entityMgr;
+        for (const entity of entityManager.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+            if (staticComp.getMetaBuilding().id === metaBuilding.id) {
+                this.root.map.removeStaticEntity(entity);
+                entityManager.destroyEntity(entity);
+            }
+        }
+        entityManager.processDestroyList();
+
+        const currentMetaBuilding = this.root.hud.parts.buildingPlacer.currentMetaBuilding;
+        if (currentMetaBuilding.get() == metaBuilding) {
+            currentMetaBuilding.set(null);
+        }
+
         const handle = this.buildingHandles[metaBuilding.getId()];
         handle.puzzleLocked = !handle.puzzleLocked;
+        handle.element.classList.toggle("unlocked", handle.puzzleLocked);
 
         this.root.soundProxy.playUiClick();
     }
