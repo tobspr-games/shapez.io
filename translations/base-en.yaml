@@ -345,7 +345,7 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Recommendation
         desc: >-
-            I <strong>strongly</strong> recommend playing the normal game to level 12 before attempting the puzzle DLC, otherwise you will have comprehension problems. Do you still want to continue?
+            I <strong>strongly</strong> recommend playing the normal game to level 12 before attempting the puzzle DLC, otherwise you may encounter mechanics not yet introduced. Do you still want to continue?
 
     puzzleShare:
         title: Short Key Copied

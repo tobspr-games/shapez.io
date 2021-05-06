@@ -114,6 +114,7 @@ export class BeltPath extends BasicSerializableObject {
     clearAllItems() {
         this.items = [];
         this.spacingToFirstItem = this.totalLength;
+        this.numCompressedItemsAfterFirstItem = 0;
     }
 
     /**
