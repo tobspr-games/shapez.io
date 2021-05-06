@@ -13,6 +13,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { Entity } from "../../entity";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { globalConfig } from "../../../core/config";
+import { paste } from "../../../core/clipboard_paste";
 
 const copy = require("clipboard-copy");
 
@@ -253,14 +254,4 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         }
         return Blueprint.deserialize(this.root, json);
     }
-}
-
-/* TODO: Move this to a module */
-
-/**
- * @returns {Promise<string>}
- */
-async function paste() {
-    /* TODO: Add fallback method */
-    return navigator.clipboard.readText();
 }
