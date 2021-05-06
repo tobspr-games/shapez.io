@@ -90,7 +90,7 @@ export class PuzzleSerializer {
                 h: mode.zoneHeight,
             },
             //read from the toolbar when making a puzzle
-            excludedBuildings: [],
+            excludedBuildings: [MetaBlockBuilding],
         };
     }
 
