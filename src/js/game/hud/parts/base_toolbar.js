@@ -1,6 +1,10 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv, safeModulo } from "../../../core/utils";
+import { MetaBeltBuilding } from "../../buildings/belt";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { MetaBuilding } from "../../meta_building";
@@ -108,19 +112,21 @@ export class HUDBaseToolbar extends BaseHUDPart {
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-            binding.add(() => this.togglePuzzleLock(metaBuilding));
+            binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
             this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
                 clickSound: null,
             });
 
             //new stuff
-            const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
-            puzzleLock.setAttribute("data-icon", "unlocked_building.png");
+            if (this.root.gameMode.getIsEditor() && !this.inRequiredBuildings(metaBuilding)) {
+                const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
 
-            this.trackClicks(puzzleLock, () => this.togglePuzzleLock(metaBuilding), {
-                clickSound: null,
-            });
+                itemContainer.classList.toggle("editor", true);
+                this.trackClicks(puzzleLock, () => this.toggleBuildingLock(metaBuilding), {
+                    clickSound: null,
+                });
+            }
 
             this.buildingHandles[metaBuilding.id] = {
                 metaBuilding: metaBuilding,
@@ -246,6 +252,14 @@ export class HUDBaseToolbar extends BaseHUDPart {
             return STOP_PROPAGATION;
         }
 
+        const handle = this.buildingHandles[metaBuilding.getId()];
+        if (handle.puzzleLocked) {
+            handle.puzzleLocked = false;
+            handle.element.classList.toggle("unlocked", false);
+            this.root.soundProxy.playUiClick();
+            return;
+        }
+
         // Allow clicking an item again to deselect it
         for (const buildingId in this.buildingHandles) {
             const handle = this.buildingHandles[buildingId];
@@ -263,16 +277,21 @@ export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * @param {MetaBuilding} metaBuilding
      */
-    togglePuzzleLock(metaBuilding) {
+    toggleBuildingLock(metaBuilding) {
         if (!this.visibilityCondition()) {
             // Not active
             return;
         }
 
-        if (!metaBuilding.getIsUnlocked(this.root)) {
+        if (this.inRequiredBuildings(metaBuilding) || !metaBuilding.getIsUnlocked(this.root)) {
             this.root.soundProxy.playUiError();
             return STOP_PROPAGATION;
         }
+
+        const handle = this.buildingHandles[metaBuilding.getId()];
+        handle.puzzleLocked = !handle.puzzleLocked;
+        handle.element.classList.toggle("unlocked", !handle.puzzleLocked);
+        this.root.soundProxy.playUiClick();
 
         const entityManager = this.root.entityMgr;
         for (const entity of entityManager.getAllWithComponent(StaticMapEntityComponent)) {
@@ -288,11 +307,18 @@ export class HUDBaseToolbar extends BaseHUDPart {
         if (currentMetaBuilding.get() == metaBuilding) {
             currentMetaBuilding.set(null);
         }
+    }
 
-        const handle = this.buildingHandles[metaBuilding.getId()];
-        handle.puzzleLocked = !handle.puzzleLocked;
-        handle.element.classList.toggle("unlocked", handle.puzzleLocked);
-
-        this.root.soundProxy.playUiClick();
+    /**
+     * @param {MetaBuilding} metaBuilding
+     */
+    inRequiredBuildings(metaBuilding) {
+        const requiredBuildings = [
+            gMetaBuildingRegistry.findByClass(MetaConstantProducerBuilding),
+            gMetaBuildingRegistry.findByClass(MetaGoalAcceptorBuilding),
+            gMetaBuildingRegistry.findByClass(MetaBlockBuilding),
+            gMetaBuildingRegistry.findByClass(MetaBeltBuilding),
+        ];
+        return requiredBuildings.includes(metaBuilding);
     }
 }
