@@ -5,7 +5,9 @@ $buildings: belt, cutter, miner, mixer, painter, rotater, balancer, stacker, tra
 @each $building in $buildings {
     [data-icon="building_icons/#{$building}.png"] {
         /* @load-async */
-        background-image: uiResource("res/ui/building_icons/#{$building}.png") !important;
+        .icon {
+            background-image: uiResource("res/ui/building_icons/#{$building}.png") !important;
+        }
     }
 }
 

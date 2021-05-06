@@ -1,7 +1,6 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv, safeModulo } from "../../../core/utils";
-import { MetaBeltBuilding } from "../../buildings/belt";
 import { MetaBlockBuilding } from "../../buildings/block";
 import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
@@ -114,11 +113,13 @@ export class HUDBaseToolbar extends BaseHUDPart {
             itemContainer.setAttribute("data-id", metaBuilding.getId());
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
-            this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
+            const icon = makeDiv(itemContainer, null, ["icon"]);
+
+            this.trackClicks(icon, () => this.selectBuildingForPlacement(metaBuilding), {
                 clickSound: null,
             });
 
-            //new stuff
+            //lock icon for puzzle editor
             if (this.root.gameMode.getIsEditor() && !this.inRequiredBuildings(metaBuilding)) {
                 const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
 
@@ -317,7 +318,6 @@ export class HUDBaseToolbar extends BaseHUDPart {
             gMetaBuildingRegistry.findByClass(MetaConstantProducerBuilding),
             gMetaBuildingRegistry.findByClass(MetaGoalAcceptorBuilding),
             gMetaBuildingRegistry.findByClass(MetaBlockBuilding),
-            gMetaBuildingRegistry.findByClass(MetaBeltBuilding),
         ];
         return requiredBuildings.includes(metaBuilding);
     }
