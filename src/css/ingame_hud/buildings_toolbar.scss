@@ -109,14 +109,6 @@
                     }
                 }
             }
-
-            &.puzzle-lock {
-                display: inline;
-                background-image: uiResource("res/ui/unlocked-building.png");
-                background-size: 50%;
-                background-position-x: right;
-                background-position-y: top;
-            }
         }
     }
 }
