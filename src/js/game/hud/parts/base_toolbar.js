@@ -301,6 +301,10 @@ export class HUDBaseToolbar extends BaseHUDPart {
                 this.root.map.removeStaticEntity(entity);
                 entityManager.destroyEntity(entity);
             }
+            const goalComp = entity.components.GoalAcceptor;
+            if (goalComp) {
+                goalComp.clear();
+            }
         }
         entityManager.processDestroyList();
 
