@@ -60,7 +60,8 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
                 // Perform logic tick
                 this.root.time.performTicks(deltaMs, this.root.gameState.core.boundInternalTick);
                 simulatedTicks++;
-                if (!this.validatePuzzle()) {
+
+                if (simulatedTicks % 100 == 0 && !this.validatePuzzle()) {
                     break;
                 }
             }
@@ -80,7 +81,7 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             closeLoading();
 
             //if it took so little ticks that it must have autocompeted
-            if (simulatedTicks < 300) {
+            if (simulatedTicks <= 300) {
                 this.root.hud.parts.dialogs.showWarning(
                     T.puzzleMenu.validation.title,
                     T.puzzleMenu.validation.autoComplete
