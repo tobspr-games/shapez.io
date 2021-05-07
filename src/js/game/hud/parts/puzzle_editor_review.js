@@ -49,23 +49,26 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             // Manually simulate ticks
             this.root.logic.clearAllBeltsAndItems();
 
-            const ticks =
+            const maxTicks =
                 this.root.gameMode.getFixedTickrate() * globalConfig.puzzleValidationDurationSeconds;
             const deltaMs = this.root.dynamicTickrate.deltaMs;
-            logger.log("Simulating", ticks, "ticks, start=", this.root.time.now().toFixed(1));
+            logger.log("Simulating up to", maxTicks, "ticks, start=", this.root.time.now().toFixed(1));
             const now = performance.now();
-            for (let i = 0; i < ticks; ++i) {
-                if (i % Math.round((ticks - 1) / 10) === 0) {
-                    console.log("Ticking", Math.round((i / ticks) * 100) + "%");
-                }
 
-                // Perform logic ticks
+            let simulatedTicks = 0;
+            for (let i = 0; i < maxTicks; ++i) {
+                // Perform logic tick
                 this.root.time.performTicks(deltaMs, this.root.gameState.core.boundInternalTick);
+                simulatedTicks++;
+                if (!this.validatePuzzle()) {
+                    break;
+                }
             }
+
             const duration = performance.now() - now;
             logger.log(
                 "Simulated",
-                ticks,
+                simulatedTicks,
                 "ticks, end=",
                 this.root.time.now().toFixed(1),
                 "duration=",
@@ -73,7 +76,19 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
                 "ms"
             );
 
+            console.log("duration: " + duration);
             closeLoading();
+
+            //if it took so little ticks that it must have autocompeted
+            if (simulatedTicks < 300) {
+                this.root.hud.parts.dialogs.showWarning(
+                    T.puzzleMenu.validation.title,
+                    T.puzzleMenu.validation.autoComplete
+                );
+                return;
+            }
+
+            //if we reached maximum ticks and the puzzle still isn't completed
             const validationError = this.validatePuzzle();
             if (validationError) {
                 this.root.hud.parts.dialogs.showWarning(T.puzzleMenu.validation.title, validationError);

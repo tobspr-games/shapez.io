@@ -151,6 +151,8 @@ puzzleMenu:
             One or more Goal Acceptors are not getting enough items. Make sure that the indicators are green for all acceptors.
         buildingOutOfBounds: >-
             One or more buildings are outside of the buildable area. Either increase the area or remove them.
+        autoComplete: >-
+            Your puzzle autocompletes itself! Please make sure your constant producers are not directly delivering to your goal acceptors.
 
 dialogs:
     buttons:
