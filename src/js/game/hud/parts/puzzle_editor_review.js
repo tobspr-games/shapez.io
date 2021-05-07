@@ -91,7 +91,7 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
 
             //if we reached maximum ticks and the puzzle still isn't completed
             const validationError = this.validatePuzzle();
-            if (validationError) {
+            if (simulatedTicks == maxTicks && validationError) {
                 this.root.hud.parts.dialogs.showWarning(T.puzzleMenu.validation.title, validationError);
                 return;
             }
