@@ -271,10 +271,9 @@ ingame:
     waypoints:
         waypoints: Позначки
         hub: Центр
-        description: Left-click a marker to jump to it, right-click to delete
-            it.<br><br>Press <keybinding> to create a marker from the current
-            view, or <strong>right-click</strong> to create a marker at the
-            selected location.
+        description: Натисніть ліву кнопку миші на позначці, щоб переміститися
+            до неї, праву - для її видалення.<br><br>Натисніть <keybinding> щоб створити позначку на місці вашої камери,
+            або <strong>праву кнопку миші</strong>, щоб створити її в положенні курсора.
         creationSuccessNotification: Позначку створено.
     shapeViewer:
         title: Шари
