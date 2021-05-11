@@ -62,7 +62,9 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
         dialog.appendChild(this.menuBtn);
 
-        this.trackClicks(this.continueBtn, this.close);
+        this.trackClicks(this.continueBtn, () => {
+            this.close(false);
+        });
         this.trackClicks(this.menuBtn, () => {
             this.close(true);
         });
@@ -87,7 +89,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         return this.visible;
     }
 
-    close(toMenu = false) {
+    close(toMenu) {
         /** @type {PuzzlePlayGameMode} */ (this.root.gameMode)
             .trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion))
             .then(() => {
