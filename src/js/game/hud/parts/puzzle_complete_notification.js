@@ -52,12 +52,20 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
             this.updateState();
         });
 
-        this.btnClose = document.createElement("button");
-        this.btnClose.classList.add("close", "styledButton");
-        this.btnClose.innerText = T.ingame.puzzleCompletion.buttonSubmit;
-        dialog.appendChild(this.btnClose);
+        this.continueBtn = document.createElement("button");
+        this.continueBtn.classList.add("close", "styledButton");
+        this.continueBtn.innerText = T.ingame.puzzleCompletion.continueBtn;
+        dialog.appendChild(this.continueBtn);
 
-        this.trackClicks(this.btnClose, this.close);
+        this.menuBtn = document.createElement("button");
+        this.menuBtn.classList.add("close", "styledButton");
+        this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
+        dialog.appendChild(this.menuBtn);
+
+        this.trackClicks(this.continueBtn, this.close);
+        this.trackClicks(this.menuBtn, () => {
+            this.close(true);
+        });
     }
 
     updateState() {
@@ -79,11 +87,13 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         return this.visible;
     }
 
-    close() {
+    close(toMenu = false) {
         /** @type {PuzzlePlayGameMode} */ (this.root.gameMode)
             .trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion))
             .then(() => {
-                // this.root.gameState.moveToState("PuzzleMenuState");
+                if (toMenu) {
+                    this.root.gameState.moveToState("PuzzleMenuState");
+                }
                 this.visible = false;
                 this.cleanup();
             });
