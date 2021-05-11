@@ -93,9 +93,10 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
             .then(() => {
                 if (toMenu) {
                     this.root.gameState.moveToState("PuzzleMenuState");
+                } else {
+                    this.visible = false;
+                    this.cleanup();
                 }
-                this.visible = false;
-                this.cleanup();
             });
     }
 
