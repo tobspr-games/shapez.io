@@ -13,14 +13,14 @@ steamPage:
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
         Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez.io deneme sürümünü oynayıp sonradan karar verebilirsin!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: İnsanlar shapez.io hakkında ne düşünüyor?
+    nothernlion_comment: Bu oyun süper - Oynarken harika vakit geçiriyorum
+        ve zaman akıp gidiyor.
+    notch_comment: Hay aksi. Gerçekten uyumalıyım, ama şimdi shapez.io'da
+        nasıl bir bilgisayar yapabileceğimi çözdüm.
+    steam_review_comment: Bu oyun hayatımı çaldı ve geri istemiyorum.
+        Üretim hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir
+        fabrika oyunu.
 global:
     loading: Yüklenİyor
     error: Hata
@@ -42,8 +42,8 @@ global:
         oneDayAgo: bir gün önce
         xDaysAgo: <x> gün önce
         secondsShort: <seconds>sn
-        minutesAndSecondsShort: <minutes>dk <seconds>dk
-        hoursAndMinutesShort: <hours>sa <minutes>sa
+        minutesAndSecondsShort: <minutes>dk <seconds>sn
+        hoursAndMinutesShort: <hours>sa <minutes>dk
         xMinutes: <x> dakika
     keys:
         tab: TAB
@@ -70,7 +70,7 @@ mainMenu:
     newGame: YENİ OYUN
     madeBy: <author-link> tarafından yapıldı
     subreddit: Reddit
-    savegameUnnamed: Unnamed
+    savegameUnnamed: İsimsiz
 dialogs:
     buttons:
         ok: OK
@@ -94,16 +94,17 @@ dialogs:
         title: Oyun bozuk
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
-        title: Silme işlemini onayla
-        text: <br><br> Bu kayıdı silmek istiyor musunuz?
-            '<savegameName>'  <savegameLevel><br><br>. seviyede. Bu işlem geri
-            alınamaz!
+        title: Sİlme İşlemİnİ onayla
+        text: >-
+            Bu kaydı silmek istediğinize emin misiniz?<br><br>
+            '<savegameName>' seviyesi <savegameLevel><br><br>
+            Bu işlem geri alınamaz!
     savegameDeletionError:
         title: Silme başarısız
-        text: "Oyun kaydını silme başarısız:"
+        text: "Oyun kaydı silinemedi:"
     restartRequired:
         title: Yeniden başlatma gerekiyor
-        text: Değişiklikleri uygulamak için oyunu yeniden başlatılmalı.
+        text: Değişiklikleri uygulamak için oyunu yeniden başlatın.
     editKeybinding:
         title: Tuş Atamasını Değiştir
         desc: Atamak isteğiniz tuşa veya fare butonun basın, veya iptal etmek için Esc
@@ -121,7 +122,7 @@ dialogs:
             için tam versiyonu satın alın.
     oneSavegameLimit:
         title: Sınırlı Oyun Kaydı
-        desc: Deneme sürümünde sadece tek bir oyun kaydınız olabilir. Lütfen varolanı
+        desc: Deneme sürümünde sadece tek bir oyun kaydınız olabilir. Lütfen mevcut kaydı
             silin veya tam sürümü satın alın!
     updateSummary:
         title: Yeni güncelleme!
@@ -149,8 +150,8 @@ dialogs:
             taşıma bantlarının yönünü ters çevirir.<br>"
     createMarker:
         title: Yeni Konum İşareti
-        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil koduda</strong> koyabilirsiniz
-            (<link>Buradan</link> kod yapabilirisinz )
+        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil kodu da</strong> koyabilirsiniz
+            (<link>Buradan</link> kod yapabilirsiniz )
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer
@@ -172,16 +173,16 @@ dialogs:
         title: Sinyal Ata
         descItems: "Önceden tanımlı bir eşya seçin:"
         descShortKey: ... veya <strong>şekil kodunu</strong> girin (<link>Buradan</link>
-            edinebileceğiniz)
+            oluşturabilirsiniz)
     renameSavegame:
-        title: Oyun Kaydının Yeniden Adlandır
-        desc: Oyun kaydını buradan adlandırabilirsiniz.
+        title: Oyun Kaydını Yeniden Adlandır
+        desc: Oyun kayıt ismini buradan değiştirebilirsiniz.
     tutorialVideoAvailable:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut! İzlemek ister misin?
+        desc: Bu seviye için eğitim videosu mevcut! İzlemek ister misin?
     tutorialVideoAvailableForeignLanguage:
         title: Eğitim Mevcut
-        desc: Bu seviye için eğitim vidyosu mevcut, ama İngilizce dilinde. İzlemek ister
+        desc: Bu seviye için eğitim videosu mevcut, ama İngilizce dilinde. İzlemek ister
             misin?
 ingame:
     keybindingsOverlay:
@@ -214,7 +215,7 @@ ingame:
             itemsPerSecond: <x> eşya / sn
             itemsPerSecondDouble: (x2)
             tiles: <x> karo
-            speed: Speed
+            speed: Hız
     levelCompleteNotification:
         levelTitle: SEVİYE <level>
         completed: Tamamlandı
@@ -346,13 +347,13 @@ ingame:
                 desc: Tamamen yeni bir boyut!
             darkmode:
                 title: Gece Modu
-                desc: Gözlerini artık yorma!
+                desc: Gözlerin artık yorulmasın!
             support:
                 title: Beni destekleyin
                 desc: Boş zamanımda bu oyunu geliştiriyorum!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Başarımlar
+                desc: Bütün başarımları açmaya çalış!
 shopUpgrades:
     belt:
         name: Taşıma Bandı, Dağıtıcılar & Tüneller
@@ -380,10 +381,10 @@ buildings:
     miner:
         default:
             name: Üretici
-            description: Bir şekli veya rengi üretmek için üzerlerini yerleştir.
+            description: Bir şekli veya rengi üretmek için üzerine yerleştir.
         chainable:
             name: Üretici (Zİncİrleme)
-            description: Bir şekli veya rengi üretmek için üzerlerini yerleştir. Zincirleme
+            description: Bir şekli veya rengi üretmek için üzerine yerleştir. Zincirleme
                 bağlanabilir.
     underground_belt:
         default:
@@ -416,9 +417,9 @@ buildings:
             description: Şekilleri 180 derece döndürür.
     stacker:
         default:
-            name: Kaynaştırıcı
-            description: İki eşyayı kaynaştırır. Eğer eşyalar kaynaştırılamazsa sağdaki eşya
-                soldaki eşyanın üzerine kaynaştırılır.
+            name: Birleştirici
+            description: İki eşyayı birleştirir. Eğer eşyalar birleştirilemezse sağdaki eşya
+                soldaki eşyanın üzerine eklenir.
     mixer:
         default:
             name: Renk Karıştırıcısı
@@ -445,11 +446,11 @@ buildings:
     wire:
         default:
             name: Kablo
-            description: Sinyali, eşyalar veya ikili değerler(1 / 0), aktarmayı sağlar.
+            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı sağlar.
                 Farklı renkteki kablolar bağlanamaz.
         second:
             name: Kablo
-            description: Sinyali, eşyalar veya ikili değerler(1 / 0), aktarmayı sağlar.
+            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı sağlar.
                 Farklı renkteki kablolar bağlanamaz.
     wire_tunnel:
         default:
@@ -474,8 +475,8 @@ buildings:
     storage:
         default:
             name: Depo
-            description: Belirli bir sınıra kadar fazla eşyaları depolar. Taşırma kapısı
-                olarak kullanıla bilir.
+            description: Belirli bir sınıra kadar fazla eşyaları depolar. Sol çıkışa öncelik verir ve taşma kapısı
+                olarak kullanılabilir.
     constant_signal:
         default:
             name: Sabit Sinyal
@@ -489,11 +490,11 @@ buildings:
                 kullanılabilir.
     logic_gate:
         default:
-            name: AND Kapısı
+            name: VE Kapısı
             description: Eğer iki girdi de doğruysa, bu kapı"1" sinyali gönderir. (Doğru;
                 bir şekil, renk veya "1" girdisi demektir.)
         not:
-            name: NOT Kapısı
+            name: DEĞİL Kapısı
             description: Eğer girdi doğru değilse, bu kapı "1" sinyali gönderir. (Doğru; bir
                 şekil, renk veya "1" girdisi demektir.)
         xor:
@@ -501,7 +502,7 @@ buildings:
             description: Eğer iki girdiden sadece biri "1" sinyali alıyorsa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
         or:
-            name: OR Kapısı
+            name: YADA Kapısı
             description: Eğer iki girdiden herhangi biri "1" sinyali alıyorsa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
     transistor:
@@ -526,7 +527,7 @@ buildings:
                 veya ikili değer (1/0) olabilir.
     reader:
         default:
-            name: Band Okuyucu
+            name: Bant Okuyucu
             description: Bant üzerindeki ortalama hızı ölçer. Kablo katmanında son okunan
                 eşyayı gösterir (açıldığında).
     analyzer:
@@ -735,7 +736,7 @@ settings:
         staging: Yükseltme
         prod: Üretim
     buildDate: <at-date> derlendi
-    rangeSliderPercentage: <amount> %
+    rangeSliderPercentage: "% <amount>"
     labels:
         uiScale:
             title: Arayüz Ölçeği
@@ -760,7 +761,7 @@ settings:
                 super_fast: Çok Hızlı
         language:
             title: Dil
-            description: Dili değiştirir. Bütün çevirmeler kullanıcı katkılarıyla
+            description: Dili değiştirir. Tüm çeviriler kullanıcı katkılarıyla
                 oluşturulmuştur ve tam olmayabilir!
         fullscreen:
             title: Tam Ekran
@@ -816,9 +817,9 @@ settings:
                 twenty_minutes: 20 Dakika
                 disabled: Devredışı
         compactBuildingInfo:
-            title: Derli Toplu Yapı Bilgileri
+            title: Derlİ Toplu Yapı Bİlgİlerİ
             description: Yapıların bilgi kutularını sadece oranlarını göstecek şekilde
-                kısaltır. Aksi taktirde yapının açıklaması ve resmi gösterilir.
+                kısaltır. Aksi takdirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
             title: Kes/Sil Uyarılarını Devre dışı Bırak
             description: 100 birimden fazla parçayı kesme/silme işlemlerinde beliren uyarı
@@ -846,24 +847,24 @@ settings:
             title: Ses Ayarı
             description: Ses efektlerinin seviyesini ayarlar
         musicVolume:
-            title: Müzik Ayarı
+            title: Müzİk Ayarı
             description: Müzik seviyesini ayarlar
         lowQualityMapResources:
-            title: Düşük Kalite Harita Kaynakları
+            title: Düşük Kalİte Harİta Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
-                kalitesinin sadeleştirir. Kaynaklar daha açık görüneceğinde bu
-                özelliği bir dene!
+                kalitesini sadeleştirir.
+                Hatta daha net bir görüntü sağlar, bu yüzden bir dene!
         disableTileGrid:
-            title: Harita Çizgilerini Gizle
+            title: Harİta Çİzgİlerİnİ Gİzle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
-                Aynı zamanda oyunun daha açık görünmesini sağlar!
+                Aynı zamanda oyunun daha net görünmesini sağlar!
         clearCursorOnDeleteWhilePlacing:
-            title: Sağ Tık İnşa İptali
+            title: Sağ Tık İnşa İptalİ
             description: Varsayılan olarak açık. Özellik açıksa, inşa modundayken sağ yık
                 yapıldığında inşa modundan çıkar. Eğer özellik kapalıysa, inşa
                 modundan çıkmadan var olan yapıları sağ tık ile silebilirsiniz.
         lowQualityTextures:
-            title: Düşük Kalite Görüntü (Çirkin)
+            title: Düşük Kalİte Görüntü (Çİrkİn)
             description: Performans için düşük kalite görüntü kullanır. Bu oyunun daha
                 çirkin görünmesine sebep olur!
         displayChunkBorders:
@@ -871,11 +872,11 @@ settings:
             description: Oyun 16'ya 16 alanlardan oluşur. Bu seçenek aktif olduğunda alan
                 sınırları görüntülenir.
         pickMinerOnPatch:
-            title: Kaynak Üzerinde Üretici Seç
+            title: Kaynak Üzerinde Üretİcİ Seç
             description: Varsayılan olarak açık. Eğer pipet bir kaynağın üzerinde
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
-            title: Sadeleştirilmiş Bantlar (Çirkin)
+            title: Sadeleştİrİlmİş Bantlar (Çİrkİn)
             description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse
                 görüntülenmez. Eğer gerçekten performansa ihtiyacınız yoksa bu
                 ayarla oynamanız tavsiye edilmez.
@@ -883,7 +884,7 @@ settings:
             title: Fare Kaydırarak Hareket Etme
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
-            title: Farenin Konumuna Yakınlaştırma
+            title: Farenİn Konumuna Yakınlaştırma
             description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin
                 bulunduğu yere doğru olur. Etkinleştirilmezse yakınlaştırma
                 ekranın ortasına doğru olur.
@@ -897,13 +898,13 @@ keybindings:
         seçeneklerini kullanmanızı sağlarlar."
     resetKeybindings: Tuş Atamalarını Sıfırla
     categoryLabels:
-        general: Uygulama
+        general: Genel
         ingame: Oyun
         navigation: Hareket
         placement: Yerleştİrme
-        massSelect: Çoklu Seçim
+        massSelect: Çoklu Seçİm
         buildings: Yapı Kısayolları
-        placementModifiers: Yerleştirme Özellikleri
+        placementModifiers: Yerleştİrme Özellİklerİ
     mappings:
         confirm: Kabul
         back: Geri
@@ -955,7 +956,7 @@ keybindings:
         logic_gate: Mantık Kapısı
         lever: Anahtar (normal)
         filter: Filtre
-        wire_tunnel: Kablo Köprüsü
+        wire_tunnel: Kablo Tüneli
         display: Ekran
         reader: Bant Okuyucu
         virtual_processor: Sanal Kesici
@@ -964,10 +965,10 @@ keybindings:
         comparator: Karşılaştırıcı
         item_producer: Eşya Üretici (Kum Kutusu)
         copyWireValue: "Kablo: Fare altındaki değeri kopyala"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Yukarı Döndür"
+        rotateToDown: "Aşağı Döndür"
+        rotateToRight: "Sağa Döndür"
+        rotateToLeft: "Sola Döndür"
 about:
     title: Oyun Hakkında
     body: >-

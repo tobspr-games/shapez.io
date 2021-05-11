@@ -343,14 +343,7 @@ async function performFsJob(job) {
     }
 }
 
-ipcMain.handle(
-    "fs-job",
-    (event, arg) =>
-        new Promise(async (resolve, reject) => {
-            const result = await performFsJob(arg);
-            resolve(result);
-        })
-);
+ipcMain.handle("fs-job", (event, arg) => performFsJob(arg));
 
 const emitProtocol = url => {
     const protocol = url.split("://")[0],

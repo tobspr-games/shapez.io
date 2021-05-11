@@ -493,12 +493,11 @@ export class AchievementCollection {
 
     /** @param {ShapeDefinition} definition @returns {boolean} */
     isIrrelevantShapeValid(definition) {
-        if (definition.cachedHash === this.root.hubGoals.currentGoal.definition.cachedHash) {
-            return false;
-        }
-
-        if (definition.cachedHash === this.root.gameMode.getBlueprintShapeKey()) {
-            return false;
+        const levels = this.root.gameMode.getLevelDefinitions();
+        for (let i = 0; i < levels.length; i++) {
+            if (definition.cachedHash === levels[i].shape) {
+                return false;
+            }
         }
 
         const upgrades = this.root.gameMode.getUpgrades();
