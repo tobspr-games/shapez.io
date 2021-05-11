@@ -102,15 +102,20 @@ window.onload = async () => {
     } else if (!G_IS_DEV) {
         user = JSON.parse(localStorage.getItem("user"));
         instance = JSON.parse(localStorage.getItem("instance"));
-        // instance = {
-        //     mods: [{
-        //         url: "http://mods.thomasbrants.nl/static/mods/b89404ac-7cbc-45bf-81b7-7d4d8108faf0/1.0.0.js",
-        //         id: "b89404ac-7cbc-45bf-81b7-7d4d8108faf0",
-        //         config: {},
-        //         settings: {},
-        //     }, ],
-        // };
     }
+    // else {
+    //     instance = {
+    //         mods: [
+    //             {
+    //                 url:
+    //                     "http://mods.thomasbrants.nl/static/mods/a18121cf-fc7c-4f23-906d-b7ab0512bbc8/1.0.0.js",
+    //                 id: "a18121cf-fc7c-4f23-906d-b7ab0512bbc8",
+    //                 config: {},
+    //                 settings: {},
+    //             },
+    //         ],
+    //     };
+    // }
     var modMgr = new ModManager(user, instance);
     addVanillaBuildingsToAPI();
     addVanillaComponentsToAPI();
@@ -124,7 +129,8 @@ window.onload = async () => {
             if (mod.split(".").pop() !== "js") continue;
             modMgr.addMod(mod, true);
         }
-    } else if (modMgr.modPack) await modMgr.addModPackMods();
+    }
+    if (modMgr.modPack) await modMgr.addModPackMods();
     modMgr.loadMods();
 
     initDrawUtils();
@@ -133,12 +139,9 @@ window.onload = async () => {
     initMetaBuildingRegistry();
     initGameSpeedRegistry();
 
-    let app = null;
-
     function bootApp() {
         logger.log("Page Loaded");
-        app = new Application();
-        app.boot();
+        new Application().boot();
     }
     bootApp();
 };

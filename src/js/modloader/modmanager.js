@@ -166,9 +166,11 @@ export class ModManager {
             let promise = Promise.resolve(null);
 
             for (let i = 0; i < this.modPack.mods.length; i++) {
-                promise = promise.then(() => {
-                    return this.addMod(this.modPack.mods[i].url);
-                });
+                if (this.modPack.mods[i].url) {
+                    promise = promise.then(() => {
+                        return this.addMod(this.modPack.mods[i].url);
+                    });
+                }
             }
             return promise;
         }

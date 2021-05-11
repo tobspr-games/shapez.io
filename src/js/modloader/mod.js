@@ -789,6 +789,9 @@ export class ShapezAPI {
             PreloadState,
             MobileWarningState,
 
+            //Hub goals
+            HubGoals,
+
             //Systems
             ItemAcceptorSystem,
             BeltSystem,
@@ -870,14 +873,11 @@ export class ShapezAPI {
             buildings: {},
             components: {},
             hudParts: {},
-            //Must be array because of update order
-            systems: [],
+            systems: [], //Must be array because of update order
             items: {},
             gamemodes: {},
             gamespeed: {},
-            //List of layer names
-            layers: [],
-            hub_goals: HubGoals,
+            layers: [], //List of layer names
         };
 
         this.toolbars = {
@@ -986,8 +986,8 @@ export class ShapezAPI {
      */
     registerIcon(id, iconDataURL) {
         var css = ``;
-        var style = undefined;
-        if (!(style = document.getElementById("mod-loader-icons"))) {
+        var style = document.getElementById("mod-loader-icons");
+        if (!style) {
             var head = document.head || document.getElementsByTagName("head")[0];
             style = document.createElement("style");
             style.id = "mod-loader-icons";
@@ -1007,20 +1007,5 @@ export class ShapezAPI {
         this.ingame.buildings[id] = buildingClass;
         this.registerIcon("building_icons/" + id, iconDataURL);
         this.KEYMAPPINGS.buildings[id] = { keyCode: this.KEYMAPPINGS.key(key), id: id };
-    }
-
-    /**
-     * Tracks clicks on a element (e.g. button). Useful because you should both support
-     * touch and mouse events.
-     * @param {HTMLElement} element
-     * @param {function} clickHandler
-     */
-    trackClicks(element, clickHandler) {
-        const clickDetector = new ClickDetector(element, {
-            consumeEvents: true,
-            preventDefault: true,
-        });
-        clickDetector.click.add(clickHandler);
-        this.clickDetectors.push(clickDetector);
     }
 }
