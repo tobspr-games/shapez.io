@@ -1,5 +1,12 @@
 export const CHANGELOG = [
     {
+        version: "NEW GAME RELEASED",
+        date: "14.05.2020",
+        entries: [
+            'I released a new game, be sure to check it out! It\'s called <a href="https://schoolbreak.io?r=shapez" target="_blank">schoolbreak.io</a>!',
+        ],
+    },
+    {
         version: "1.3.0",
         date: "12.03.2020",
         skin: "achievements",
