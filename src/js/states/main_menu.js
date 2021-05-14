@@ -84,6 +84,18 @@ export class MainMenuState extends GameState {
                 </div>
             </div>
 
+            ${
+                G_CHINA_VERSION
+                    ? ""
+                    : `
+                <div class="schoolbreakLink">
+                    <strong>Check out my new game!</strong>
+                    <a target="_blank" href="https://schoolbreak.io?r=shapez"></a>
+                </div>`
+            }
+
+
+
             <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
 
                 ${
