@@ -66,7 +66,7 @@ export const KEYMAPPINGS = {
         item_producer: { keyCode: key("L") },
 
         // Secondary toolbar
-        storage: { keyCode: key("Y") },
+        storage: { keyCode: key("Y"), ctrl: false },
         reader: { keyCode: key("U") },
         lever: { keyCode: key("I") },
         filter: { keyCode: key("O") },
@@ -98,7 +98,7 @@ export const KEYMAPPINGS = {
         copyWireValue: { keyCode: key("Z") },
 
         undo: { keyCode: key("Z"), ctrl: true, shift: false },
-        redo: { keyCode: key("Z"), ctrl: true, shift: true },
+        redo: { keyCode: key("Y"), ctrl: true, shift: false },
     },
 
     massSelect: {
