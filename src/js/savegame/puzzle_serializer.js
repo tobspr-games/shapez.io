@@ -85,12 +85,13 @@ export class PuzzleSerializer {
         const handles = root.hud.parts.buildingsToolbar.buildingHandles;
         const ids = gMetaBuildingRegistry.getAllIds();
 
-        /** @type {Array<typeof MetaBuilding>} */
+        /** @type {Array<string>} */
         let excludedBuildings = [];
         for (let i = 0; i < ids.length; ++i) {
             const handle = handles[ids[i]];
             if (handle && handle.puzzleLocked) {
-                excludedBuildings.push(handle.class);
+                // @ts-ignore
+                excludedBuildings.push(handle.metaBuilding.getId());
             }
         }
 

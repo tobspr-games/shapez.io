@@ -29,6 +29,7 @@ import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_noti
 import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaBuilding } from "../meta_building";
+import { gMetaBuildingRegistry } from "../../core/global_registries";
 
 const logger = createLogger("puzzle-play");
 const copy = require("clipboard-copy");
@@ -47,7 +48,7 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         super(root);
 
         /** @type {Array<typeof MetaBuilding>} */
-        const excludedBuildings = [
+        let excludedBuildings = [
             MetaConstantProducerBuilding,
             MetaGoalAcceptorBuilding,
             MetaBlockBuilding,
@@ -70,7 +71,22 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             MetaTransistorBuilding,
         ];
 
-        this.hiddenBuildings = excludedBuildings.concat(puzzle.game.excludedBuildings);
+        if (puzzle.game.excludedBuildings) {
+            /**
+             * @type {any}
+             */
+            const puzzleHidden = puzzle.game.excludedBuildings
+                .map(id => {
+                    if (!gMetaBuildingRegistry.hasId(id)) {
+                        return;
+                    }
+                    return gMetaBuildingRegistry.findById(id).constructor;
+                })
+                .filter(x => !!x);
+            excludedBuildings = excludedBuildings.concat(puzzleHidden);
+        }
+
+        this.hiddenBuildings = excludedBuildings;
 
         this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
         this.additionalHudParts.puzzlePlaySettings = HUDPuzzlePlaySettings;

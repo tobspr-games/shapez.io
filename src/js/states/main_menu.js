@@ -15,7 +15,6 @@ import {
     startFileChoose,
     waitNextFrame,
 } from "../core/utils";
-import { enumGameModeIds } from "../game/game_mode";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
@@ -83,9 +82,19 @@ export class MainMenuState extends GameState {
                     }
                     <div class="buttons"></div>
                 </div>
-                <div class="bottomContainer">
-                    <div class="buttons"></div>
-                </div>
+
+                ${
+                    // @TODO: Only display if DLC is owned, otherwise show ad for store page
+                    showDemoBadges
+                        ? ""
+                        : `
+                    <div class="puzzleContainer">
+                        <img class="dlcLogo" src="${cachebust(
+                            "res/puzzle_dlc_logo.png"
+                        )}" alt="shapez.io Logo">
+                        <button class="styledButton puzzleDlcPlayButton">Play</button>
+                    </div>`
+                }
             </div>
 
             <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
@@ -314,13 +323,10 @@ export class MainMenuState extends GameState {
             buttonContainer.appendChild(importButtonElement);
         }
 
-        const bottomButtonContainer = this.htmlElement.querySelector(".bottomContainer .buttons");
-        removeAllChildren(bottomButtonContainer);
-
-        const puzzleModeButton = makeButton(bottomButtonContainer, ["styledButton"], T.mainMenu.puzzleMode);
-
-        bottomButtonContainer.appendChild(puzzleModeButton);
-        this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
+        const puzzleModeButton = this.htmlElement.querySelector(".puzzleDlcPlayButton");
+        if (puzzleModeButton) {
+            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
+        }
     }
 
     onPuzzleModeButtonClicked(force = false) {

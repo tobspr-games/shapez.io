@@ -90,9 +90,9 @@ export class StateManager {
         dialogParent.classList.add("modalDialogParent");
         document.body.appendChild(dialogParent);
 
+        this.currentState.internalEnterCallback(payload);
         this.app.sound.playThemeMusic(this.currentState.getThemeMusic());
 
-        this.currentState.internalEnterCallback(payload);
         this.currentState.onResized(this.app.screenWidth, this.app.screenHeight);
 
         this.app.analytics.trackStateEnter(key);
