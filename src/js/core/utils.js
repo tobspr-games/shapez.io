@@ -579,7 +579,7 @@ export function formatItemsPerSecond(speed, double = false, separator = T.global
             : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
                   "<x>",
                   round2Digits(speed).toString().replace(".", separator)
-              )) + (double ? "··" + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "")
+              )) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "")
     );
 }
 
