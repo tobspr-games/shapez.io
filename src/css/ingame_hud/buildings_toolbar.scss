@@ -36,9 +36,11 @@
             border-bottom-right-radius: 0;
 
             .building {
-                @include S(width, 30px);
-                @include S(height, 22px);
-                background-size: 45%;
+                .icon {
+                    @include S(width, 30px);
+                    @include S(height, 22px);
+                    background-size: 45%;
+                }
 
                 &:not(.unlocked) {
                     &::before {
