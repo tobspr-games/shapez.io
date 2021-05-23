@@ -71,6 +71,13 @@ export const globalConfig = {
 
     readerAnalyzeIntervalSeconds: 10,
 
+    goalAcceptorMinimumDurationSeconds: 5,
+    goalAcceptorsPerProducer: 4.5,
+    puzzleModeSpeed: 3,
+    puzzleMinBoundsSize: 2,
+    puzzleMaxBoundsSize: 20,
+    puzzleValidationDurationSeconds: 30,
+
     buildingSpeeds: {
         cutter: 1 / 4,
         cutterQuad: 1 / 4,
@@ -93,7 +100,7 @@ export const globalConfig = {
     gameSpeed: 1,
 
     warmupTimeSecondsFast: 0.5,
-    warmupTimeSecondsRegular: 3,
+    warmupTimeSecondsRegular: 1.5,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,

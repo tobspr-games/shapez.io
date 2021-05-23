@@ -35,6 +35,10 @@ export const MUSIC = {
     menu: "menu",
 };
 
+if (G_IS_STANDALONE || G_IS_DEV) {
+    MUSIC.puzzle = "puzzle-full";
+}
+
 export class SoundInstanceInterface {
     constructor(key, url) {
         this.key = key;

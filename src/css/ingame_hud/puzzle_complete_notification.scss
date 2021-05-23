@@ -1,0 +1,171 @@
+#ingame_HUD_PuzzleCompleteNotification {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & {
+        /* @load-async */
+        background: rgba(#333538, 0.95) uiResource("dialog_bg_pattern.png") top left / #{D(10px)} repeat;
+    }
+
+    @include InlineAnimation(0.1s ease-in-out) {
+        0% {
+            opacity: 0;
+        }
+    }
+
+    > .dialog {
+        // background: rgba(#222428, 0.5);
+        @include S(border-radius, $globalBorderRadius);
+        @include S(padding, 30px);
+
+        @include InlineAnimation(0.5s ease-in-out) {
+            0% {
+                opacity: 0;
+            }
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #fff;
+        text-align: center;
+
+        > .title {
+            @include SuperHeading;
+            text-transform: uppercase;
+            @include S(font-size, 30px);
+            @include S(margin-bottom, 40px);
+            color: $colorGreenBright !important;
+
+            @include InlineAnimation(0.5s ease-in-out) {
+                0% {
+                    transform: translateY(-50vh);
+                }
+                50% {
+                    transform: translateY(5vh);
+                }
+                75% {
+                    transform: translateY(-2vh);
+                }
+            }
+        }
+
+        > .contents {
+            @include InlineAnimation(0.5s ease-in-out) {
+                0% {
+                    transform: translateX(-100vw);
+                }
+                50% {
+                    transform: translateX(5vw);
+                }
+
+                75% {
+                    transform: translateX(-2vw);
+                }
+            }
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            > .stepLike {
+                display: flex;
+                flex-direction: column;
+                @include S(margin-bottom, 10px);
+                @include SuperSmallText;
+
+                > .buttons {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include S(margin, 10px, 0);
+
+                    > button {
+                        @include S(width, 60px);
+                        @include S(height, 60px);
+                        @include S(margin, 0, 10px);
+                        box-sizing: border-box;
+                        border-radius: 50%;
+                        transition: opacity 0.12s ease-in-out, background-color 0.12s ease-in-out;
+                        @include IncreasedClickArea(0px);
+
+                        &.liked-yes {
+                            /* @load-async */
+                            background: uiResource("icons/puzzle_action_liked_yes.png") center 55% / 60%
+                                no-repeat;
+                        }
+
+                        &:hover:not(.active) {
+                            opacity: 0.5 !important;
+                        }
+
+                        &.active {
+                            background-color: $colorRedBright !important;
+                            @include InlineAnimation(0.3s ease-in-out) {
+                                0% {
+                                    transform: scale(0);
+                                }
+                                50% {
+                                    transform: scale(1.2);
+                                }
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                        }
+                        &:not(.active) {
+                            opacity: 0.4;
+                        }
+                    }
+                }
+            }
+
+            > .buttonBar {
+                display: flex;
+                @include S(margin-top, 20px);
+
+                button.continue {
+                    background: #555;
+                    @include S(margin-right, 10px);
+                }
+
+                button.menu {
+                    background-color: $colorGreenBright;
+                }
+
+                > button {
+                    @include S(min-width, 100px);
+                    @include S(padding, 10px, 20px);
+                    @include IncreasedClickArea(0px);
+                }
+            }
+
+            > .actions {
+                position: absolute;
+                @include S(bottom, 40px);
+
+                display: grid;
+                @include S(grid-gap, 15px);
+                grid-auto-flow: column;
+
+                button {
+                    @include SuperSmallText;
+                }
+                .report {
+                    background-color: $accentColorDark;
+                }
+            }
+        }
+    }
+}

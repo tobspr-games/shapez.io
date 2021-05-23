@@ -29,6 +29,7 @@
 @import "states/about";
 @import "states/mobile_warning";
 @import "states/changelog";
+@import "states/puzzle_menu";
 
 @import "ingame_hud/buildings_toolbar";
 @import "ingame_hud/building_placer";
@@ -55,12 +56,21 @@
 @import "ingame_hud/sandbox_controller";
 @import "ingame_hud/standalone_advantages";
 @import "ingame_hud/cat_memes";
+@import "ingame_hud/puzzle_back_to_menu";
+@import "ingame_hud/puzzle_editor_review";
+@import "ingame_hud/puzzle_dlc_logo";
+@import "ingame_hud/puzzle_editor_controls";
+@import "ingame_hud/puzzle_editor_settings";
+@import "ingame_hud/puzzle_play_settings";
+@import "ingame_hud/puzzle_play_metadata";
+@import "ingame_hud/puzzle_complete_notification";
 
 // prettier-ignore
 $elements:
 // Base
 ingame_Canvas,
 ingame_VignetteOverlay,
+ingame_HUD_PuzzleDLCLogo,
 
 // Ingame overlays
 ingame_HUD_Waypoints,
@@ -71,6 +81,14 @@ ingame_HUD_PlacerVariants,
 ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
+ingame_HUD_PuzzleBackToMenu,
+ingame_HUD_PuzzleEditorReview,
+ingame_HUD_PuzzleEditorControls,
+ingame_HUD_PuzzleEditorTitle,
+ingame_HUD_PuzzleEditorSettings,
+ingame_HUD_PuzzlePlaySettings,
+ingame_HUD_PuzzlePlayMetadata,
+ingame_HUD_PuzzlePlayTitle,
 ingame_HUD_Notifications,
 ingame_HUD_DebugInfo,
 ingame_HUD_EntityDebugger,
@@ -94,6 +112,7 @@ ingame_HUD_Statistics,
 ingame_HUD_ShapeViewer,
 ingame_HUD_StandaloneAdvantages,
 ingame_HUD_UnlockNotification,
+ingame_HUD_PuzzleCompleteNotification,
 ingame_HUD_SettingsMenu,
 ingame_HUD_ModalDialogs,
 ingame_HUD_CatMemes;
@@ -113,6 +132,8 @@ body.uiHidden {
     #ingame_HUD_PlacementHints,
     #ingame_HUD_GameMenu,
     #ingame_HUD_PinnedShapes,
+    #ingame_HUD_PuzzleBackToMenu,
+    #ingame_HUD_PuzzleEditorReview,
     #ingame_HUD_Notifications,
     #ingame_HUD_TutorialHints,
     #ingame_HUD_Waypoints,

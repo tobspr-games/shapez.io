@@ -57,8 +57,6 @@ export class PreloadState extends GameState {
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
-        this.currentStatus = "booting";
-
         this.startLoading();
     }
 

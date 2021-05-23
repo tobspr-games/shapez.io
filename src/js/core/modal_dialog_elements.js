@@ -267,7 +267,7 @@ export class Dialog {
  * Dialog which simply shows a loading spinner
  */
 export class DialogLoading extends Dialog {
-    constructor(app) {
+    constructor(app, text = "") {
         super({
             app,
             title: "",
@@ -279,6 +279,8 @@ export class DialogLoading extends Dialog {
         // Loading dialog can not get closed with back button
         this.inputReciever.backButton.removeAll();
         this.inputReciever.context = "dialog-loading";
+
+        this.text = text;
     }
 
     createElement() {
@@ -286,6 +288,13 @@ export class DialogLoading extends Dialog {
         elem.classList.add("ingameDialog");
         elem.classList.add("loadingDialog");
         this.element = elem;
+
+        if (this.text) {
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.innerText = this.text;
+            elem.appendChild(text);
+        }
 
         const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
@@ -309,7 +318,7 @@ export class DialogOptionChooser extends Dialog {
                 <div class='option ${value === options.active ? "active" : ""} ${
                 iconPrefix ? "hasIcon" : ""
             }' data-optionvalue='${value}'>
-                    ${iconHtml}    
+                    ${iconHtml}
                     <span class='title'>${text}</span>
                     ${descHtml}
                 </div>
@@ -444,7 +453,7 @@ export class DialogWithForm extends Dialog {
         for (let i = 0; i < this.formElements.length; ++i) {
             const elem = this.formElements[i];
             elem.bindEvents(div, this.clickDetectors);
-            elem.valueChosen.add(this.closeRequested.dispatch, this.closeRequested);
+            // elem.valueChosen.add(this.closeRequested.dispatch, this.closeRequested);
             elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
         }
 

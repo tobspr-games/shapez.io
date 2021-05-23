@@ -88,11 +88,7 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr;
-
-        &.demo {
-            grid-template-columns: 1fr 1fr;
-        }
+        grid-template-columns: 1fr 1fr;
 
         .standaloneBanner {
             background: rgb(255, 75, 84);
@@ -183,7 +179,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: #3291e9;
+            color: #ff590b;
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -223,9 +219,33 @@
         }
     }
 
+    .puzzleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #4cc98a;
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        @include S(padding, 20px);
+        @include S(border-radius, $globalBorderRadius);
+        > .dlcLogo {
+            @include S(width, 200px);
+        }
+
+        > button {
+            @include S(margin-top, 20px);
+            @include Heading;
+            @include S(padding, 10px, 30px);
+            background-color: #333;
+            color: #fff;
+        }
+    }
+
     .mainContainer {
         display: flex;
         align-items: center;
+        grid-row: 1 / 2;
         justify-content: center;
         flex-direction: column;
         background: #fafafa;
@@ -240,6 +260,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .modeButtons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include S(grid-column-gap, 10px);
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .browserWarning {
@@ -280,6 +310,18 @@
         }
 
         .newGameButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .playModeButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .editModeButton {
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
             @include S(margin-left, 15px);
@@ -436,6 +478,27 @@
                     }
                 }
             }
+        }
+    }
+
+    .bottomContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        @include S(padding-top, 10px);
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include S(grid-column-gap, 10px);
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 

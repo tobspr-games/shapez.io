@@ -1,0 +1,62 @@
+#ingame_HUD_PuzzleEditorSettings {
+    position: absolute;
+    background: $ingameHudBg;
+    @include S(padding, 10px);
+    @include S(bottom, 60px);
+    @include S(left, 10px);
+
+    @include SuperSmallText;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    @include S(border-radius, $globalBorderRadius);
+
+    > .section {
+        > label {
+            text-transform: uppercase;
+        }
+
+        .plusMinus {
+            @include S(margin-top, 5px);
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            align-items: center;
+            @include S(grid-gap, 5px);
+
+            label {
+                @include S(margin-right, 10px);
+            }
+
+            button {
+                @include PlainText;
+                @include S(padding, 0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include S(width, 15px);
+                @include S(height, 15px);
+                @include IncreasedClickArea(0px);
+            }
+
+            .value {
+                text-align: center;
+                @include S(min-width, 15px);
+            }
+        }
+
+        > .buttons {
+            > .buttonBar {
+                display: flex;
+                align-items: center;
+                @include S(margin-top, 10px);
+                > button {
+                    @include S(margin-right, 4px);
+                    @include SuperSmallText;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

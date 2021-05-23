@@ -67,6 +67,14 @@
         * {
             color: #fff;
         }
+
+        display: flex;
+        flex-direction: column;
+
+        .text {
+            text-transform: uppercase;
+            @include S(margin-bottom, 10px);
+        }
     }
 
     > .dialogInner {
@@ -168,6 +176,11 @@
 
                 &.errored {
                     background-color: rgb(250, 206, 206);
+
+                    &::placeholder {
+                        color: #fff;
+                        opacity: 0.8;
+                    }
                 }
             }
 

@@ -11,6 +11,7 @@ export const itemTypes = ["shape", "color", "boolean"];
 export class BaseItem extends BasicSerializableObject {
     constructor() {
         super();
+        this._type = this.getItemType();
     }
 
     static getId() {

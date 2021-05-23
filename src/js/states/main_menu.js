@@ -66,7 +66,7 @@ export class MainMenuState extends GameState {
                 <img src="${cachebust(
                     G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
                 )}" alt="shapez.io Logo">
-                <span class="updateLabel">v${G_BUILD_VERSION} - Achievements!</span>
+                <span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
@@ -82,6 +82,19 @@ export class MainMenuState extends GameState {
                     }
                     <div class="buttons"></div>
                 </div>
+
+                ${
+                    // @TODO: Only display if DLC is owned, otherwise show ad for store page
+                    showDemoBadges
+                        ? ""
+                        : `
+                    <div class="puzzleContainer">
+                        <img class="dlcLogo" src="${cachebust(
+                            "res/puzzle_dlc_logo.png"
+                        )}" alt="shapez.io Logo">
+                        <button class="styledButton puzzleDlcPlayButton">Play</button>
+                    </div>`
+                }
             </div>
 
             <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
@@ -203,6 +216,11 @@ export class MainMenuState extends GameState {
 
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
 
+        if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
+            this.onPuzzleModeButtonClicked(true);
+            return;
+        }
+
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
@@ -304,6 +322,34 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
+
+        const puzzleModeButton = this.htmlElement.querySelector(".puzzleDlcPlayButton");
+        if (puzzleModeButton) {
+            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
+        }
+    }
+
+    onPuzzleModeButtonClicked(force = false) {
+        const hasUnlockedBlueprints = this.app.savegameMgr.getSavegamesMetaData().some(s => s.level >= 12);
+        console.log(hasUnlockedBlueprints);
+        if (!force && !hasUnlockedBlueprints) {
+            const { ok } = this.dialogs.showWarning(
+                T.dialogs.puzzlePlayRegularRecommendation.title,
+                T.dialogs.puzzlePlayRegularRecommendation.desc,
+                ["cancel:good", "ok:bad:timeout"]
+            );
+            ok.add(() => this.onPuzzleModeButtonClicked(true));
+            return;
+        }
+
+        this.moveToState("LoginState", {
+            nextStateId: "PuzzleMenuState",
+        });
+    }
+
+    onBackButtonClicked() {
+        this.renderMainMenu();
+        this.renderSavegames();
     }
 
     onSteamLinkClicked() {
