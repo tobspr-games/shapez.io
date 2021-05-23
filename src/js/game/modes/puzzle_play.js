@@ -28,6 +28,7 @@ import { createLogger } from "../../core/logging";
 import { HUDPuzzleCompleteNotification } from "../hud/parts/puzzle_complete_notification";
 import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 import { MetaBlockBuilding } from "../buildings/block";
+import { MetaBuilding } from "../meta_building";
 
 const logger = createLogger("puzzle-play");
 const copy = require("clipboard-copy");
@@ -45,7 +46,8 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
     constructor(root, { puzzle }) {
         super(root);
 
-        this.hiddenBuildings = [
+        /** @type {Array<typeof MetaBuilding>} */
+        const excludedBuildings = [
             MetaConstantProducerBuilding,
             MetaGoalAcceptorBuilding,
             MetaBlockBuilding,
@@ -67,6 +69,8 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             MetaComparatorBuilding,
             MetaTransistorBuilding,
         ];
+
+        this.hiddenBuildings = excludedBuildings.concat(puzzle.game.excludedBuildings);
 
         this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
         this.additionalHudParts.puzzlePlaySettings = HUDPuzzlePlaySettings;

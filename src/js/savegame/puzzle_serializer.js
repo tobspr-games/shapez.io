@@ -7,7 +7,7 @@ import { StaticMapEntityComponent } from "../game/components/static_map_entity";
 import { ShapeItem } from "../game/items/shape_item";
 import { Vector } from "../core/vector";
 import { MetaConstantProducerBuilding } from "../game/buildings/constant_producer";
-import { defaultBuildingVariant } from "../game/meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../game/meta_building";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { MetaGoalAcceptorBuilding } from "../game/buildings/goal_acceptor";
 import { createLogger } from "../core/logging";
@@ -33,7 +33,6 @@ export class PuzzleSerializer {
          * @type {import("./savegame_typedefs").PuzzleGameData["buildings"]}
          */
         let buildings = [];
-
         for (const entity of root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
             const signalComp = entity.components.ConstantSignal;
@@ -83,6 +82,18 @@ export class PuzzleSerializer {
 
         const mode = /** @type {PuzzleGameMode} */ (root.gameMode);
 
+        const handles = root.hud.parts.buildingsToolbar.buildingHandles;
+        const ids = gMetaBuildingRegistry.getAllIds();
+
+        /** @type {Array<typeof MetaBuilding>} */
+        let excludedBuildings = [];
+        for (let i = 0; i < ids.length; ++i) {
+            const handle = handles[ids[i]];
+            if (handle && handle.puzzleLocked) {
+                excludedBuildings.push(handle.class);
+            }
+        }
+
         return {
             version: 1,
             buildings,
@@ -90,6 +101,8 @@ export class PuzzleSerializer {
                 w: mode.zoneWidth,
                 h: mode.zoneHeight,
             },
+            //read from the toolbar when making a puzzle
+            excludedBuildings,
         };
     }
 

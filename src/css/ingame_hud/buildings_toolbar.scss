@@ -49,63 +49,94 @@
         }
 
         .building {
-            color: $accentColorDark;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            align-items: center;
-            justify-content: center;
-            @include S(padding, 5px);
-            @include S(padding-bottom, 1px);
-            @include S(width, 35px);
-            @include S(height, 40px);
+            .icon {
+                color: $accentColorDark;
+                display: flex;
+                flex-direction: column-reverse;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+                @include S(padding, 5px);
+                @include S(padding-bottom, 1px);
+                @include S(width, 35px);
+                @include S(height, 37px);
+                @include S(border-radius, $globalBorderRadius);
 
-            background: center center / 70% no-repeat;
+                background: center center / 70% no-repeat;
+            }
 
             &:not(.unlocked) {
-                @include S(width, 20px);
-                opacity: 0.15;
-                background-image: none !important;
-
-                &::before {
-                    content: " ";
-
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    z-index: 4;
-                    & {
-                        /* @load-async */
-                        background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
-                            no-repeat;
+                .icon {
+                    @include S(width, 20px);
+                    opacity: 0.15;
+                }
+                &.editor {
+                    .icon {
+                        pointer-events: all;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: rgba(22, 30, 68, 0.1);
+                        }
+                    }
+                }
+                &:not(.editor) {
+                    .icon {
+                        background-image: uiResource("locked_building.png") !important;
                     }
                 }
             }
 
-            @include S(border-radius, $globalBorderRadius);
-
             &.unlocked {
-                pointer-events: all;
-                transition: all 50ms ease-in-out;
-                transition-property: background-color, transform;
+                .icon {
+                    pointer-events: all;
+                    transition: all 50ms ease-in-out;
+                    transition-property: background-color, transform;
 
-                cursor: pointer;
-                &:hover {
-                    background-color: rgba(30, 40, 90, 0.1);
+                    cursor: pointer;
+                    &:hover {
+                        background-color: rgba(30, 40, 90, 0.1);
+                    }
+
+                    &.pressed {
+                        transform: scale(0.9) !important;
+                    }
+
+                    &.selected {
+                        // transform: scale(1.05);
+                        background-color: rgba(lighten($colorBlueBright, 9), 0.4);
+
+                        .keybinding {
+                            color: #111;
+                        }
+                    }
                 }
 
-                &.pressed {
-                    transform: scale(0.9) !important;
-                }
+                .puzzle-lock {
+                    & {
+                        /* @load-async */
+                        background: uiResource("locked_building.png") center center / #{D(14px)} #{D(14px)}
+                            no-repeat;
+                    }
 
-                &.selected {
-                    // transform: scale(1.05);
-                    background-color: rgba(lighten($colorBlueBright, 9), 0.4);
+                    display: grid;
+                    grid-auto-flow: column;
+                    @include S(margin-top, 2px);
+                    @include S(margin-left, 16px);
+                    @include S(margin-bottom, 29px);
 
-                    .keybinding {
-                        color: #111;
+                    position: absolute;
+                    bottom: 20px;
+                    transition: all 0.12s ease-in-out;
+                    transition-property: opacity, transform;
+
+                    cursor: pointer;
+                    pointer-events: all;
+
+                    @include S(width, 14px);
+                    @include S(height, 14px);
+
+                    &:hover {
+                        opacity: 0.5;
                     }
                 }
             }

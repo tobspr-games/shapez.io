@@ -1,6 +1,10 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv, safeModulo } from "../../../core/utils";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { MetaBuilding } from "../../meta_building";
 import { GameRoot } from "../../root";
@@ -35,6 +39,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
          * selected: boolean,
          * element: HTMLElement,
          * index: number
+         * puzzleLocked: boolean;
+         * class: typeof MetaBuilding,
          * }>} */
         this.buildingHandles = {};
     }
@@ -105,19 +111,32 @@ export class HUDBaseToolbar extends BaseHUDPart {
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-
             binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
-            this.trackClicks(itemContainer, () => this.selectBuildingForPlacement(metaBuilding), {
+            const icon = makeDiv(itemContainer, null, ["icon"]);
+
+            this.trackClicks(icon, () => this.selectBuildingForPlacement(metaBuilding), {
                 clickSound: null,
             });
 
+            //lock icon for puzzle editor
+            if (this.root.gameMode.getIsEditor() && !this.inRequiredBuildings(metaBuilding)) {
+                const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
+
+                itemContainer.classList.toggle("editor", true);
+                this.trackClicks(puzzleLock, () => this.toggleBuildingLock(metaBuilding), {
+                    clickSound: null,
+                });
+            }
+
             this.buildingHandles[metaBuilding.id] = {
-                metaBuilding,
+                metaBuilding: metaBuilding,
                 element: itemContainer,
                 unlocked: false,
                 selected: false,
                 index: i,
+                puzzleLocked: false,
+                class: allBuildings[i],
             };
         }
 
@@ -145,7 +164,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
             let recomputeSecondaryToolbarVisibility = false;
             for (const buildingId in this.buildingHandles) {
                 const handle = this.buildingHandles[buildingId];
-                const newStatus = handle.metaBuilding.getIsUnlocked(this.root);
+                const newStatus = !handle.puzzleLocked && handle.metaBuilding.getIsUnlocked(this.root);
                 if (handle.unlocked !== newStatus) {
                     handle.unlocked = newStatus;
                     handle.element.classList.toggle("unlocked", newStatus);
@@ -234,6 +253,14 @@ export class HUDBaseToolbar extends BaseHUDPart {
             return STOP_PROPAGATION;
         }
 
+        const handle = this.buildingHandles[metaBuilding.getId()];
+        if (handle.puzzleLocked) {
+            handle.puzzleLocked = false;
+            handle.element.classList.toggle("unlocked", false);
+            this.root.soundProxy.playUiClick();
+            return;
+        }
+
         // Allow clicking an item again to deselect it
         for (const buildingId in this.buildingHandles) {
             const handle = this.buildingHandles[buildingId];
@@ -246,5 +273,52 @@ export class HUDBaseToolbar extends BaseHUDPart {
         this.root.soundProxy.playUiClick();
         this.root.hud.signals.buildingSelectedForPlacement.dispatch(metaBuilding);
         this.onSelectedPlacementBuildingChanged(metaBuilding);
+    }
+
+    /**
+     * @param {MetaBuilding} metaBuilding
+     */
+    toggleBuildingLock(metaBuilding) {
+        if (!this.visibilityCondition()) {
+            // Not active
+            return;
+        }
+
+        if (this.inRequiredBuildings(metaBuilding) || !metaBuilding.getIsUnlocked(this.root)) {
+            this.root.soundProxy.playUiError();
+            return STOP_PROPAGATION;
+        }
+
+        const handle = this.buildingHandles[metaBuilding.getId()];
+        handle.puzzleLocked = !handle.puzzleLocked;
+        handle.element.classList.toggle("unlocked", !handle.puzzleLocked);
+        this.root.soundProxy.playUiClick();
+
+        const entityManager = this.root.entityMgr;
+        for (const entity of entityManager.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+            if (staticComp.getMetaBuilding().id === metaBuilding.id) {
+                this.root.map.removeStaticEntity(entity);
+                entityManager.destroyEntity(entity);
+            }
+        }
+        entityManager.processDestroyList();
+
+        const currentMetaBuilding = this.root.hud.parts.buildingPlacer.currentMetaBuilding;
+        if (currentMetaBuilding.get() == metaBuilding) {
+            currentMetaBuilding.set(null);
+        }
+    }
+
+    /**
+     * @param {MetaBuilding} metaBuilding
+     */
+    inRequiredBuildings(metaBuilding) {
+        const requiredBuildings = [
+            gMetaBuildingRegistry.findByClass(MetaConstantProducerBuilding),
+            gMetaBuildingRegistry.findByClass(MetaGoalAcceptorBuilding),
+            gMetaBuildingRegistry.findByClass(MetaBlockBuilding),
+        ];
+        return requiredBuildings.includes(metaBuilding);
     }
 }

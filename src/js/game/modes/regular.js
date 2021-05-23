@@ -1,5 +1,6 @@
 /* typehints:start */
 import { GameRoot } from "../root";
+import { MetaBuilding } from "../meta_building";
 /* typehints:end */
 
 import { findNiceIntegerValue } from "../../core/utils";
@@ -582,6 +583,7 @@ export class RegularGameMode extends GameMode {
             this.additionalHudParts.sandboxController = HUDSandboxController;
         }
 
+        /** @type {(typeof MetaBuilding)[]} */
         this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
     }
 
