@@ -3,6 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 import { createLogger } from "../core/logging";
 import { compressX64 } from "../core/lzstring";
+import { getIPCRenderer } from "../core/utils";
 import { T } from "../translations";
 
 const logger = createLogger("puzzle-api");
@@ -109,12 +110,27 @@ export class ClientAPI {
      * @returns {Promise<{token: string}>}
      */
     apiTryLogin() {
-        return this._request("/v1/public/login", {
-            method: "POST",
-            body: {
-                token: this.syncToken,
+        if (!G_IS_STANDALONE) {
+            return Promise.reject("Not possible outside of standalone.");
+        }
+
+        const renderer = getIPCRenderer();
+
+        return renderer.invoke("steam:get-ticket").then(
+            ticket => {
+                logger.log("Got auth ticket:", ticket);
+                return this._request("/v1/public/login", {
+                    method: "POST",
+                    body: {
+                        token: ticket,
+                    },
+                });
             },
-        });
+            err => {
+                logger.error("Failed to get auth ticket from steam: ", err);
+                throw err;
+            }
+        );
     }
 
     /**

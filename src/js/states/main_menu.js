@@ -16,6 +16,7 @@ import {
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
 
@@ -39,6 +40,11 @@ export class MainMenuState extends GameState {
         `;
 
         const showDemoBadges = this.app.restrictionMgr.getIsStandaloneMarketingActive();
+
+        const puzzleDlc =
+            G_IS_STANDALONE &&
+            /** @type { PlatformWrapperImplElectron
+        }*/ (this.app.platformWrapper).dlcs.puzzle;
 
         return `
             <div class="topButtons">
@@ -86,8 +92,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    // @TODO: Only display if DLC is owned, otherwise show ad for store page
-                    G_IS_STANDALONE && false
+                    G_IS_STANDALONE && puzzleDlc
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -99,8 +104,7 @@ export class MainMenuState extends GameState {
                 }
 
                 ${
-                    // @TODO: Only display if DLC is owned, otherwise show ad for store page
-                    G_IS_STANDALONE && true
+                    G_IS_STANDALONE && !puzzleDlc
                         ? `
                     <div class="puzzleContainer notOwned">
                         <img class="dlcLogo" src="${cachebust(
@@ -304,6 +308,16 @@ export class MainMenuState extends GameState {
         this.trackClicks(producerLink, () => this.app.platformWrapper.openExternalLink("https://tobspr.io"), {
             preventClick: true,
         });
+
+        const puzzleModeButton = qs(".puzzleDlcPlayButton");
+        if (puzzleModeButton) {
+            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
+        }
+
+        const puzzleWishlistButton = qs(".puzzleDlcGetButton");
+        if (puzzleWishlistButton) {
+            this.trackClicks(puzzleWishlistButton, () => this.onPuzzleWishlistButtonClicked());
+        }
     }
 
     renderMainMenu() {
@@ -340,11 +354,6 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
-
-        const puzzleModeButton = this.htmlElement.querySelector(".puzzleDlcPlayButton");
-        if (puzzleModeButton) {
-            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
-        }
     }
 
     onPuzzleModeButtonClicked(force = false) {
@@ -363,6 +372,12 @@ export class MainMenuState extends GameState {
         this.moveToState("LoginState", {
             nextStateId: "PuzzleMenuState",
         });
+    }
+
+    onPuzzleWishlistButtonClicked() {
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.puzzleDlcStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
+        );
     }
 
     onBackButtonClicked() {
