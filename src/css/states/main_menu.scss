@@ -88,7 +88,9 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        &[data-columns="1"] {
+            grid-template-columns: 1fr;
+        }
 
         .standaloneBanner {
             background: rgb(255, 75, 84);
@@ -230,7 +232,7 @@
         @include S(padding, 20px);
         @include S(border-radius, $globalBorderRadius);
         > .dlcLogo {
-            @include S(width, 200px);
+            @include S(width, 190px);
         }
 
         > button {
@@ -239,6 +241,21 @@
             @include S(padding, 10px, 30px);
             background-color: #333;
             color: #fff;
+        }
+
+        &.notOwned {
+            p {
+                @include PlainText;
+                color: #333;
+                @include S(margin-top, 10px);
+                @include S(width, 190px);
+            }
+            > button {
+                box-sizing: border-box;
+                @include S(margin-top, 10px);
+                @include S(width, 190px);
+                @include S(padding, 10px, 20px);
+            }
         }
     }
 

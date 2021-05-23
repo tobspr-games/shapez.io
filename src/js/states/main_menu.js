@@ -69,7 +69,9 @@ export class MainMenuState extends GameState {
                 <span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>
             </div>
 
-            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
+            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
+            G_IS_STANDALONE ? 2 : showDemoBadges ? 2 : 1
+        }">
                 <div class="sideContainer">
                     ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
@@ -85,15 +87,31 @@ export class MainMenuState extends GameState {
 
                 ${
                     // @TODO: Only display if DLC is owned, otherwise show ad for store page
-                    showDemoBadges
-                        ? ""
-                        : `
+                    G_IS_STANDALONE && false
+                        ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
                             "res/puzzle_dlc_logo.png"
                         )}" alt="shapez.io Logo">
                         <button class="styledButton puzzleDlcPlayButton">Play</button>
                     </div>`
+                        : ""
+                }
+
+                ${
+                    // @TODO: Only display if DLC is owned, otherwise show ad for store page
+                    G_IS_STANDALONE && true
+                        ? `
+                    <div class="puzzleContainer notOwned">
+                        <img class="dlcLogo" src="${cachebust(
+                            "res/puzzle_dlc_logo.png"
+                        )}" alt="shapez.io Logo">
+                        <p>${T.mainMenu.puzzleDlcText}</p>
+                        <button class="styledButton puzzleDlcGetButton">${
+                            T.mainMenu.puzzleDlcWishlist
+                        }</button>
+                    </div>`
+                        : ""
                 }
             </div>
 

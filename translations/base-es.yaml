@@ -17,16 +17,16 @@ steamPage:
     what_others_say: Lo que otras personas dicen sobre shapez.io
     nothernlion_comment: Este juego es estupendo - Estoy teniendo un tiempo maravolloso jugano,
         y el tiempo ha pasado volando.
-    notch_comment: Miercoles. Verdaderamente debería dormir, pero creo que acabo de descubrir 
+    notch_comment: Miercoles. Verdaderamente debería dormir, pero creo que acabo de descubrir
         como hacer un ordenador en shapez.io
     steam_review_comment: Este juego ha robado mi vida y no la quiero de vuelta.
-        Muy relajante juego de fábrica que no me dejará hacer mis lineas más 
+        Muy relajante juego de fábrica que no me dejará hacer mis lineas más
         eficientes.
-        
+
 global:
     loading: Cargando
     error: Error
-    thousandsDivider: ,
+    thousandsDivider: ","
     decimalSeparator: "."
     suffix:
         thousands: k

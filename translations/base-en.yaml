@@ -120,6 +120,11 @@ mainMenu:
     puzzleMode: Puzzle Mode
     back: Back
 
+    puzzleDlcText: >-
+        Do you enjoy compacting and optimizing factories?
+        Get the Puzzle DLC now on Steam for even more fun!
+    puzzleDlcWishlist: Wishlist now!
+
 puzzleMenu:
     play: Play
     edit: Edit
