@@ -41,13 +41,13 @@
                     @include S(height, 22px);
                     background-size: 45%;
                 }
-              
+
                 &:not(.unlocked) {
                     &::before {
                         background-size: #{D(13px)};
                     }
                 }
-              
+
                 &.unlocked {
                     .puzzle-lock {
                         & {
