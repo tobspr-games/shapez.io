@@ -6,6 +6,7 @@ import { TextualGameState } from "../core/textual_game_state";
 import { formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
 import { ShapeDefinition } from "../game/shape_definition";
+import { MUSIC } from "../platform/sound";
 import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
@@ -57,6 +58,10 @@ export class PuzzleMenuState extends TextualGameState {
         super("PuzzleMenuState");
         this.loading = false;
         this.activeCategory = "";
+    }
+
+    getThemeMusic() {
+        return MUSIC.puzzle;
     }
 
     getStateHeaderTitle() {

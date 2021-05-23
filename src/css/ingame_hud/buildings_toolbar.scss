@@ -104,29 +104,28 @@
                     &.pressed {
                         transform: scale(0.9) !important;
                     }
+                }
+                &.selected {
+                    // transform: scale(1.05);
+                    background-color: rgba(lighten($colorBlueBright, 9), 0.4);
+                    @include S(border-radius, 2px);
 
-                    &.selected {
-                        // transform: scale(1.05);
-                        background-color: rgba(lighten($colorBlueBright, 9), 0.4);
-
-                        .keybinding {
-                            color: #111;
-                        }
+                    .keybinding {
+                        color: #111;
                     }
                 }
 
                 .puzzle-lock {
                     & {
                         /* @load-async */
-                        background: uiResource("locked_building.png") center center / #{D(14px)} #{D(14px)}
-                            no-repeat;
+                        background: uiResource("locked_building.png") center center / 90% no-repeat;
                     }
 
                     display: grid;
                     grid-auto-flow: column;
 
                     position: absolute;
-                    top: -30px;
+                    @include S(top, -15px);
                     left: 50%;
                     transform: translateX(-50%) !important;
                     transition: all 0.12s ease-in-out;
@@ -135,8 +134,8 @@
                     cursor: pointer;
                     pointer-events: all;
 
-                    @include S(width, 14px);
-                    @include S(height, 14px);
+                    @include S(width, 12px);
+                    @include S(height, 12px);
 
                     &:hover {
                         opacity: 0.5;
