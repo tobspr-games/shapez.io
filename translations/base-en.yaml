@@ -628,7 +628,7 @@ ingame:
         titleRating: How difficult did you find the puzzle?
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
 
-        continueBtn: Continue
+        continueBtn: Keep Playing
         menuBtn: Menu
 
     puzzleMetadata:

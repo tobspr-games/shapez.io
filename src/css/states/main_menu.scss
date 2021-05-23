@@ -88,11 +88,7 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr;
-
-        &.demo {
-            grid-template-columns: 1fr 1fr;
-        }
+        grid-template-columns: 1fr 1fr;
 
         .standaloneBanner {
             background: rgb(255, 75, 84);
@@ -223,9 +219,33 @@
         }
     }
 
+    .puzzleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #4cc98a;
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        @include S(padding, 20px);
+        @include S(border-radius, $globalBorderRadius);
+        > .dlcLogo {
+            @include S(width, 200px);
+        }
+
+        > button {
+            @include S(margin-top, 20px);
+            @include Heading;
+            @include S(padding, 10px, 30px);
+            background-color: #333;
+            color: #fff;
+        }
+    }
+
     .mainContainer {
         display: flex;
         align-items: center;
+        grid-row: 1 / 2;
         justify-content: center;
         flex-direction: column;
         background: #fafafa;

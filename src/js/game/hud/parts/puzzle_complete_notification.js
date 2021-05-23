@@ -52,19 +52,23 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
             this.updateState();
         });
 
+        const buttonBar = document.createElement("div");
+        buttonBar.classList.add("buttonBar");
+        this.elemContents.appendChild(buttonBar);
+
         this.continueBtn = document.createElement("button");
-        this.continueBtn.classList.add("close", "styledButton");
+        this.continueBtn.classList.add("continue", "styledButton");
         this.continueBtn.innerText = T.ingame.puzzleCompletion.continueBtn;
-        dialog.appendChild(this.continueBtn);
-
-        this.menuBtn = document.createElement("button");
-        this.menuBtn.classList.add("close", "styledButton");
-        this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
-        dialog.appendChild(this.menuBtn);
-
+        buttonBar.appendChild(this.continueBtn);
         this.trackClicks(this.continueBtn, () => {
             this.close(false);
         });
+
+        this.menuBtn = document.createElement("button");
+        this.menuBtn.classList.add("menu", "styledButton");
+        this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
+        buttonBar.appendChild(this.menuBtn);
+
         this.trackClicks(this.menuBtn, () => {
             this.close(true);
         });

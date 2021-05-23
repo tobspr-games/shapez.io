@@ -40,7 +40,6 @@ export class HUDBaseToolbar extends BaseHUDPart {
          * element: HTMLElement,
          * index: number
          * puzzleLocked: boolean;
-         * class: typeof MetaBuilding,
          * }>} */
         this.buildingHandles = {};
     }
@@ -136,7 +135,6 @@ export class HUDBaseToolbar extends BaseHUDPart {
                 selected: false,
                 index: i,
                 puzzleLocked: false,
-                class: allBuildings[i],
             };
         }
 

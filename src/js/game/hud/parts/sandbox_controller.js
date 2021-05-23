@@ -152,9 +152,6 @@ export class HUDSandboxController extends BaseHUDPart {
     }
 
     toggle() {
-        if (!this.visible) {
-            return;
-        }
         this.visible = !this.visible;
     }
 

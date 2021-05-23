@@ -163,7 +163,9 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
         const serialized = new PuzzleSerializer().generateDumpFromGameRoot(this.root);
 
         logger.log("Submitting puzzle, title=", title, "shortKey=", shortKey);
-        logger.log("Serialized data:", serialized);
+        if (G_IS_DEV) {
+            logger.log("Serialized data:", serialized);
+        }
 
         const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog(T.puzzleMenu.submittingPuzzle);
 
