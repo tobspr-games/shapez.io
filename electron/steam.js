@@ -47,6 +47,8 @@ function listen() {
         return;
     }
 
+    console.log("Adding listeners");
+
     ipcMain.handle("steam:get-achievement-names", getAchievementNames);
     ipcMain.handle("steam:activate-achievement", activateAchievement);
 
@@ -56,22 +58,24 @@ function listen() {
             .join("");
     }
 
-    ipcMain.on("steam:get-ticket", (event, arg) => {
+    ipcMain.handle("steam:get-ticket", (event, arg) => {
         console.log("Requested steam ticket ...");
-        greenworks.getAuthSessionTicket(
-            success => {
-                const ticketHex = bufferToHex(success.ticket);
-                event.reply("steam:ticket-success", ticketHex);
-            },
-            error => {
-                console.error("Failed to get steam ticket:", error);
-                event.reply("steam:ticket-error", "" + error);
-            }
-        );
+        return new Promise((resolve, reject) => {
+            greenworks.getAuthSessionTicket(
+                success => {
+                    const ticketHex = bufferToHex(success.ticket);
+                    resolve(ticketHex);
+                },
+                error => {
+                    console.error("Failed to get steam ticket:", error);
+                    reject(error);
+                }
+            );
+        });
     });
 
-    ipcMain.on("steam:check-app-ownership", (event, appId) => {
-        event.reply(greenworks.isSubscribedApp(appId));
+    ipcMain.handle("steam:check-app-ownership", (event, appId) => {
+        return Promise.resolve(greenworks.isSubscribedApp(appId));
     });
 }
 

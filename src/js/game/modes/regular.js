@@ -615,4 +615,9 @@ export class RegularGameMode extends GameMode {
     getIsFreeplayAvailable() {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
     }
+
+    /** @returns {boolean} */
+    hasAchievements() {
+        return true;
+    }
 }

@@ -7,7 +7,6 @@ import { getIPCRenderer } from "../core/utils";
 import { T } from "../translations";
 
 const logger = createLogger("puzzle-api");
-const rusha = require("rusha");
 
 export class ClientAPI {
     /**
@@ -22,15 +21,6 @@ export class ClientAPI {
          * @type {string|null}
          */
         this.token = null;
-
-        this.syncToken = window.localStorage.getItem("tmp.syncToken");
-        if (!this.syncToken) {
-            this.syncToken = rusha
-                .createHash()
-                .update(new Date().getTime() + "=" + Math.random())
-                .digest("hex");
-            window.localStorage.setItem("tmp.syncToken", this.syncToken);
-        }
     }
 
     getEndpoint() {
