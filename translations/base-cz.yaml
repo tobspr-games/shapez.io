@@ -72,8 +72,8 @@ mainMenu:
     savegameUnnamed: Nepojmenovaný
     puzzleMode: Puzzle mód
     back: Zpět
-    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si Puzzle
-        DLC nyní na Steamu pro ještě více zábavy!
+    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní Puzzle
+        DLC na Steamu pro ještě více zábavy!
     puzzleDlcWishlist: Přidejte si nyní na seznam přání!
 dialogs:
     buttons:
@@ -188,13 +188,13 @@ dialogs:
         desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný pouze v
             angličtině. Chtěli byste se na něj podívat?
     editConstantProducer:
-        title: Set Item
+        title: Nastavte tvar
     puzzleLoadFailed:
         title: Puzzles failed to load
         desc: "Unfortunately the puzzles could not be loaded:"
     submitPuzzle:
         title: Submit Puzzle
-        descName: "Give your puzzle a name:"
+        descName: "Pojmenujte svůj puzzle:"
         descIcon: "Please enter a unique short key, which will be shown as the icon of
             your puzzle (You can generate them <link>here</link>, or choose one
             of the randomly suggested shapes below):"
