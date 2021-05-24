@@ -246,7 +246,7 @@ export class PuzzleMenuState extends TextualGameState {
     /**
      *
      * @param {*} category
-     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]}
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]>}
      */
     getPuzzlesForCategory(category) {
         if (category === "levels") {

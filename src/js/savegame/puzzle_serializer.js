@@ -2,7 +2,6 @@
 import { GameRoot } from "../game/root";
 import { PuzzleGameMode } from "../game/modes/puzzle";
 /* typehints:end */
-import { enumConstantSignalType } from "../game/components/constant_signal";
 import { StaticMapEntityComponent } from "../game/components/static_map_entity";
 import { ShapeItem } from "../game/items/shape_item";
 import { Vector } from "../core/vector";
@@ -38,7 +37,6 @@ export class PuzzleSerializer {
             const signalComp = entity.components.ConstantSignal;
 
             if (signalComp) {
-                assert(signalComp.type === enumConstantSignalType.wireless, "not a wireless signal");
                 assert(["shape", "color"].includes(signalComp.signal.getItemType()), "not a shape signal");
                 buildings.push({
                     type: "emitter",

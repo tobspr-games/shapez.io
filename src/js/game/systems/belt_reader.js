@@ -22,7 +22,7 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                 readerComp.lastItemTimes.shift();
             }
 
-            if (!entity.components.BeltReader.isWireless()) {
+            if (pinsComp) {
                 pinsComp.slots[1].value = readerComp.lastItem;
                 pinsComp.slots[0].value =
                     (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
