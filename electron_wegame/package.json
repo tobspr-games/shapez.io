@@ -1,0 +1,18 @@
+{
+    "name": "electron",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "startDev": "electron --disable-direct-composition --in-process-gpu . --dev --local",
+        "startDevGpu": "electron --enable-gpu-rasterization --enable-accelerated-2d-canvas --num-raster-threads=8 --enable-zero-copy . --dev --local",
+        "start": "electron --disable-direct-composition --in-process-gpu ."
+    },
+    "devDependencies": {
+        "electron": "3.1.13"
+    },
+    "dependencies": {
+        "async-lock": "^1.2.8"
+    }
+}
