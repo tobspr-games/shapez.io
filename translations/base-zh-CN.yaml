@@ -214,7 +214,7 @@ dialogs:
         options:
             profane: 污言秽语
             unsolvable: 无法完成
-            trolling: Trolling
+            trolling: 恶意设计
     puzzleReportComplete:
         title: 感谢您的反馈！
         desc: 此谜题已标记！
