@@ -21,6 +21,11 @@ function gulptasksStandalone($, gulp) {
             suffix: "china",
             taskPrefix: "china.",
         },
+        {
+            tempDestDir: path.join(__dirname, "..", "tmp_standalone_files_wegame"),
+            suffix: "wegame",
+            taskPrefix: "wegame.",
+        },
     ];
 
     for (const { tempDestDir, suffix, taskPrefix } of targets) {

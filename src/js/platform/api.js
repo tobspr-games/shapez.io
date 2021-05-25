@@ -101,7 +101,10 @@ export class ClientAPI {
      */
     apiTryLogin() {
         if (!G_IS_STANDALONE) {
-            return Promise.reject("Not possible outside of standalone.");
+            const token = window.prompt(
+                "Please enter the auth token for the puzzle DLC (If you have none, you can't login):"
+            );
+            return Promise.resolve({ token });
         }
 
         const renderer = getIPCRenderer();

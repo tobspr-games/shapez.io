@@ -53,6 +53,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     initialize() {
         this.syncKey = null;
 
+        if (G_WEGAME_VERSION) {
+            return;
+        }
+
         setInterval(() => this.sendTimePoints(), 60 * 1000);
 
         // Retrieve sync key from player
@@ -136,6 +140,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @param {string} value
      */
     sendGameEvent(category, value) {
+        if (G_WEGAME_VERSION) {
+            return;
+        }
+
         if (!this.syncKey) {
             logger.warn("Can not send event due to missing sync key");
             return;

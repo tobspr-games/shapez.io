@@ -1,3 +1,4 @@
+import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
 import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
@@ -49,7 +50,7 @@ export class MainMenuState extends GameState {
         return `
             <div class="topButtons">
                 ${
-                    G_CHINA_VERSION
+                    G_CHINA_VERSION || G_WEGAME_VERSION
                         ? ""
                         : `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
                 }
@@ -69,10 +70,12 @@ export class MainMenuState extends GameState {
             </video>
 
             <div class="logo">
-                <img src="${cachebust(
-                    G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
-                )}" alt="shapez.io Logo">
-                <span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>
+                <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
+                ${
+                    G_WEGAME_VERSION
+                        ? ""
+                        : `<span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>`
+                }
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
@@ -92,7 +95,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    (G_IS_STANDALONE && puzzleDlc) || G_IS_DEV
+                    !G_WEGAME_VERSION && ((G_IS_STANDALONE && puzzleDlc) || G_IS_DEV)
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -104,7 +107,7 @@ export class MainMenuState extends GameState {
                 }
 
                 ${
-                    G_IS_STANDALONE && !puzzleDlc
+                    !G_WEGAME_VERSION && G_IS_STANDALONE && !puzzleDlc
                         ? `
                     <div class="puzzleContainer notOwned">
                         <img class="dlcLogo" src="${cachebust(
@@ -119,7 +122,11 @@ export class MainMenuState extends GameState {
                 }
             </div>
 
-            <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
+            ${
+                G_WEGAME_VERSION
+                    ? "<div class='footer wegame'></div>"
+                    : `
+            <div class="footer ${G_CHINA_VERSION ? "china" : ""} ">
 
                 ${
                     G_CHINA_VERSION
@@ -150,6 +157,8 @@ export class MainMenuState extends GameState {
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
             </div>
+            `
+            }
         `;
     }
 
@@ -263,7 +272,7 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
 
-        if (!G_CHINA_VERSION) {
+        if (!G_CHINA_VERSION && !G_WEGAME_VERSION) {
             this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
             this.trackClicks(qs(".redditLink"), this.onRedditClicked);
             this.trackClicks(qs(".changelog"), this.onChangelogClicked);
@@ -283,14 +292,16 @@ export class MainMenuState extends GameState {
         }
 
         const discordLink = this.htmlElement.querySelector(".discordLink");
-        this.trackClicks(
-            discordLink,
-            () => {
-                this.app.analytics.trackUiClick("main_menu_link_discord");
-                this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
-            },
-            { preventClick: true }
-        );
+        if (discordLink) {
+            this.trackClicks(
+                discordLink,
+                () => {
+                    this.app.analytics.trackUiClick("main_menu_link_discord");
+                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
+                },
+                { preventClick: true }
+            );
+        }
 
         const githubLink = this.htmlElement.querySelector(".githubLink");
         if (githubLink) {
@@ -305,9 +316,15 @@ export class MainMenuState extends GameState {
         }
 
         const producerLink = this.htmlElement.querySelector(".producerLink");
-        this.trackClicks(producerLink, () => this.app.platformWrapper.openExternalLink("https://tobspr.io"), {
-            preventClick: true,
-        });
+        if (producerLink) {
+            this.trackClicks(
+                producerLink,
+                () => this.app.platformWrapper.openExternalLink("https://tobspr.io"),
+                {
+                    preventClick: true,
+                }
+            );
+        }
 
         const puzzleModeButton = qs(".puzzleDlcPlayButton");
         if (puzzleModeButton) {
