@@ -44,6 +44,8 @@ function gulptasksStandalone($, gulp) {
             const requiredFiles = [
                 path.join(electronBaseDir, "node_modules", "**", "*.*"),
                 path.join(electronBaseDir, "node_modules", "**", ".*"),
+                path.join(electronBaseDir, "wegame_sdk", "**", "*.*"),
+                path.join(electronBaseDir, "wegame_sdk", "**", ".*"),
                 path.join(electronBaseDir, "favicon*"),
 
                 // fails on platforms which support symlinks
@@ -133,11 +135,10 @@ function gulptasksStandalone($, gulp) {
             const tomlFile = fs.readFileSync(path.join(__dirname, ".itch.toml"));
             const privateArtifactsPath = "node_modules/shapez.io-private-artifacts";
 
-            let asar;
+            let asar = steam;
             if (steam && fs.existsSync(path.join(tempDestBuildDir, privateArtifactsPath))) {
+                // @ts-expect-error
                 asar = { unpackDir: privateArtifactsPath };
-            } else {
-                asar = true;
             }
 
             packager({

@@ -73,6 +73,10 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     initializeDlcStatus() {
         const renderer = getIPCRenderer();
 
+        if (G_WEGAME_VERSION) {
+            return Promise.resolve();
+        }
+
         logger.log("Checking DLC ownership ...");
         // @todo: Don't hardcode the app id
         return renderer.invoke("steam:check-app-ownership", 1625400).then(

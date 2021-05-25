@@ -247,7 +247,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     requireUncached("./webpack.production.config.js")({
                         enableAssert: false,
                         environment: "prod",
-                        es6: true,
+                        es6: false,
                         standalone: true,
                         wegameVersion: true,
                     })

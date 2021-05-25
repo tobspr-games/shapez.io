@@ -87,7 +87,7 @@ export class MainMenuState extends GameState {
 
                 <div class="mainContainer">
                     ${
-                        isSupportedBrowser()
+                        G_IS_STANDALONE || isSupportedBrowser()
                             ? ""
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
