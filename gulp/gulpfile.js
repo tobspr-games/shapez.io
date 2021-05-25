@@ -360,7 +360,11 @@ gulp.task(
 );
 
 // all (except wegame)
-gulp.task("standalone.all", gulp.series("regular.main.standalone", "wegame.main.standalone"));
+gulp.task("standalone.steam", gulp.series("regular.main.standalone", "china.main.standalone"));
+gulp.task(
+    "standalone.all",
+    gulp.series("regular.main.standalone", "china.main.standalone", "wegame.main.standalone")
+);
 
 // Live-development
 gulp.task(
