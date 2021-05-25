@@ -99,9 +99,11 @@ export class MainMenuState extends GameState {
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
-                            "res/puzzle_dlc_logo.png"
+                            G_CHINA_VERSION || G_WEGAME_VERSION
+                                ? "res/puzzle_dlc_logo_china.png"
+                                : "res/puzzle_dlc_logo.png"
                         )}" alt="shapez.io Logo">
-                        <button class="styledButton puzzleDlcPlayButton">Play</button>
+                        <button class="styledButton puzzleDlcPlayButton">${T.mainMenu.play}</button>
                     </div>`
                         : ""
                 }
@@ -111,7 +113,9 @@ export class MainMenuState extends GameState {
                         ? `
                     <div class="puzzleContainer notOwned">
                         <img class="dlcLogo" src="${cachebust(
-                            "res/puzzle_dlc_logo.png"
+                            G_CHINA_VERSION || G_WEGAME_VERSION
+                                ? "res/puzzle_dlc_logo_china.png"
+                                : "res/puzzle_dlc_logo.png"
                         )}" alt="shapez.io Logo">
                         <p>${T.mainMenu.puzzleDlcText}</p>
                         <button class="styledButton puzzleDlcGetButton">${
