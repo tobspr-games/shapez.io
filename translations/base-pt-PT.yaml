@@ -74,11 +74,11 @@ mainMenu:
     madeBy: Criado por <author-link>
     subreddit: Reddit
     savegameUnnamed: Sem Nome
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Modo Puzzle
+    back: Voltar
+    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC Puzzle
+        na Steam para ainda mais diversão!
+    puzzleDlcWishlist: Lista de desejos agora!
 dialogs:
     buttons:
         ok: OK
@@ -92,9 +92,9 @@ dialogs:
         viewUpdate: Ver Update
         showUpgrades: Mostrar Upgrades
         showKeybindings: Mostrar Atalhos
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Tentar novamente
+        continue: Continuar
+        playOffline: Jogar Offline
     importSavegameError:
         title: Erro de importação
         text: "Erro ao importar o teu savegame:"
@@ -199,66 +199,66 @@ dialogs:
         desc: Existe um vídeo de tutorial disponível para este nível, mas apenas está
             disponível em Inglês. Gostarias de o ver?
     editConstantProducer:
-        title: Set Item
+        title: Selecionar Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Puzzles falharam a carregar
+        desc: "Infelizmente os puzzles não podem ser carregados:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Submeter Puzzle
+        descName: "Dá um nome ao teu puzzle:"
+        descIcon: "Por favor insere um pequeno código único que será a imagem do ícone
+            da teu puzzle (Podes gerar o código <link>aqui</link>, ou escolher uma
+            das seguintes sugestões aleatoriamente geradas.):"
+        placeholderName: Título do Puzzle
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Não é possível alterar o tamanho
+        desc: Não podes tornar a zona mais pequena, assim algumas das construções ficariam
+            fora da zona.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Mau puzzle
+        desc: "O puzzle falhou a carregar:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        title: Modo Offline
+        desc: Não conseguimos correr os servidores, sendo assim o jogo tem de ser jogado em modo offline.
+            Por favor assegura-te de que tens uma boa conexão de internet.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Falha no Download
+        desc: "Falha ao fazer o download do puzzle:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Erro ao submeter
+        desc: "Falha ao submeter o teu puzzle:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzzle Publicado
+        desc: Parabéns! O teu puzzle foi publicado e agora pode ser jogado
+            por outros jogadores. Agora podes encontrar o teu puzzle na zona "Meus puzzles".
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Modo Offline
+        desc: Como estás no modo offline, tu não poderás salvar e/ou publicar o
+            teu puzzle. Mesmo assim queres continuar?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Recomendação
+        desc: Eu recomendo <strong>fortemente</strong> a jogares no modo normal até ao nível 12
+            antes de tentares o "puzzle DLC", caso contrário poderás encontrar
+            mecanicas às quais ainda não foste introduzido. Mesmo assim queres continuar?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Pequeno código copiado
+        desc: O pequeno código do puzzle (<key>) foi copiado para a tua área de transferências!
+            Poderá ser introduzido no menu puzzle para teres acesso ao puzzle.
     puzzleReport:
-        title: Report Puzzle
+        title: Reportar Puzzle
         options:
-            profane: Profane
-            unsolvable: Not solvable
+            profane: Inapropriado
+            unsolvable: Não solucionável
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Obrigado pelo teu feedback!
+        desc: O puzzle foi sinalizado.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Falha ao reportar
+        desc: "Não foi possível proceder com o ter reporte:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Introduzir pequeno código
+        desc: Introduz um pequeno código para o puzzle carregar.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -280,7 +280,7 @@ ingame:
         clearSelection: Cancelar
         pipette: Pipeta
         switchLayers: Troca de camadas
-        clearBelts: Clear belts
+        clearBelts: Limpar tapetes rolantes
     buildingPlacement:
         cycleBuildingVariants: Pressionar <key> para obter variações.
         hotkeyLabel: "Atalho: <key>"
