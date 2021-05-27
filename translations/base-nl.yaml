@@ -76,7 +76,7 @@ mainMenu:
     puzzleMode: Puzzel Modus
     back: Terug
     puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken? Verkrijg de puzzel
-         DLC nu op Steam voor nog meer plezier!
+        DLC nu op Steam voor nog meer plezier!
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
 dialogs:
     buttons:
@@ -206,8 +206,8 @@ dialogs:
         title: Puzzel indienen
         descName: "Geef je puzzel een naam:"
         descIcon: "Voer een unieke vorm sleutel in, die wordt weergegeven als het icoon van
-             uw puzzel (je kunt ze <link>hier</link> genereren, of je kunt er een kiezen
-             van de willekeurig voorgestelde vormen hieronder):"
+            uw puzzel (je kunt ze <link>hier</link> genereren, of je kunt er een kiezen
+            van de willekeurig voorgestelde vormen hieronder):"
         placeholderName: Puzzel Naam
     puzzleResizeBadBuildings:
         title: Formaat wijzigen niet mogelijk
@@ -227,17 +227,17 @@ dialogs:
     puzzleSubmitOk:
         title: Puzzel Gepubliceerd
         desc: Gefeliciteerd! Je puzzel is gepubliceerd en kan nu worden gespeeld door
-             anderen. Je kunt het nu vinden in het gedeelte "Mijn puzzels".
+            anderen. Je kunt het nu vinden in het gedeelte "Mijn puzzels".
     puzzleCreateOffline:
         title: Offline Modus
         desc: Aangezien je offline bent, kan je je puzzels niet opslaan of publiceren. Wil je nog steeds doorgaan?
     puzzlePlayRegularRecommendation:
         title: Aanbeveling
         desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te spelen
-             voordat je de puzzel-DLC probeert, anders kan je mechanica 
-             tegenkomen die je nog niet kent. Wil je toch doorgaan?
+            voordat je de puzzel-DLC probeert, anders kan je mechanica
+            tegenkomen die je nog niet kent. Wil je toch doorgaan?
     puzzleShare:
-        title: Vorm Sleutel Gekopieerd 
+        title: Vorm Sleutel Gekopieerd
         desc: De vorm sleutel van de puzzel (<key>) is naar je klembord gekopieerd! Het kan in het puzzelmenu worden ingevoerd om toegang te krijgen tot de puzzel.
     puzzleReport:
         title: Puzzel Rapporteren
@@ -275,7 +275,7 @@ ingame:
         clearSelection: Annuleer selectie
         pipette: Pipet
         switchLayers: Wissel lagen
-        clearBelts:  Lopende banden leeg maken
+        clearBelts: Lopende banden leeg maken
     buildingPlacement:
         cycleBuildingVariants: Druk op <key> om tussen varianten te wisselen.
         hotkeyLabel: "Hotkey: <key>"
@@ -437,14 +437,14 @@ ingame:
         title: Puzzel Maker
         instructions:
             - 1. Plaats <strong>Constante Producenten</strong> om vormen en
-               kleuren aan de speler te bieden
+              kleuren aan de speler te bieden
             - 2. Bouw een of meer vormen die de speler later en
-               bezorg het aan een of meer <strong>Doelacceptanten</strong>
-            - 3. Wanneer een doelacceptant een vorm ontvangt voor een bepaalde tijd, het  <strong>slaat het op als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicatoren</strong>).
+              bezorg het aan een of meer <strong>Doel Acceptanten</strong>
+            - 3. Wanneer een Doel Acceptant een vorm ontvangt voor een bepaalde tijd, het  <strong>slaat het op als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicatoren</strong>).
             - 4. Klik de <strong>vergrendelknop</strong> om een gebouw uit te schakelen.
             - 5. Zodra je op review klikt, wordt je puzzel gevalideerd en jij
-               kan het publiceren.
-            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Doelacceptanten - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
+              kan het publiceren.
+            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Doel Acceptanten - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
     puzzleCompletion:
         title: Puzzel Voltooid!
         titleLike: "Klik op het hartje als je de puzzel leuk vond:"
@@ -668,8 +668,8 @@ buildings:
             description: Voert constant een bepaalde vorm of kleur uit.
     goal_acceptor:
         default:
-            name: Doelacceptant
-            description: Lever vormen aan de doelacceptant om ze als doel te stellen.
+            name: Doel Acceptant
+            description: Lever vormen aan de Doel Acceptant om ze als doel te stellen.
     block:
         default:
             name: Muur
@@ -1092,7 +1092,7 @@ keybindings:
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
         constant_producer: Constante Producent
-        goal_acceptor: Doelacceptant
+        goal_acceptor: Doel Acceptant
         block: Muur
         massSelectClear: Lopende banden leeg maken
 about:
@@ -1219,12 +1219,12 @@ puzzleMenu:
         title: Ongeldige Puzzel
         noProducers: Plaats alstublieft een Constante Producent!
         noGoalAcceptors: Plaats alstublieft een Doel Acceptant!
-        goalAcceptorNoItem: Een of meer Doelacceptanten hebben nog geen item toegewezen.
-             Geef ze een vorm om een doel te stellen.
-        goalAcceptorRateNotMet: Een of meerdere Doelacceptanten krijgen niet genoeg items.
-             Zorg ervoor dat de indicatoren groen zijn voor alle acceptanten.
+        goalAcceptorNoItem: Een of meer Doel Acceptanten hebben nog geen item toegewezen.
+            Geef ze een vorm om een doel te stellen.
+        goalAcceptorRateNotMet: Een of meerdere Doel Acceptanten krijgen niet genoeg items.
+            Zorg ervoor dat de indicatoren groen zijn voor alle acceptanten.
         buildingOutOfBounds: Een of meer gebouwen bevinden zich buiten het bebouwbare gebied. Vergroot het gebied of verwijder ze.
-        autoComplete: Je puzzel voltooid zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Doelacceptanten leveren.
+        autoComplete: Je puzzel voltooid zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Doel Acceptanten leveren.
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
     invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (ongeldige API-sleutel).
@@ -1236,10 +1236,10 @@ backendErrors:
     bad-short-key: De opgegeven vorm sleutel is ongeldig.
     profane-title: Je puzzel titel bevat groffe woorden.
     bad-title-too-many-spaces: Je puzzel titel is te kort.
-    bad-shape-key-in-emitter: Een Doelacceptant heeft een ongeldig item.
+    bad-shape-key-in-emitter: Een Doel Acceptant heeft een ongeldig item.
     bad-shape-key-in-goal: Een Constante Producent heeft een ongeldig item.
     no-emitters: Je puzzel heeft geen Constante Producenten.
-    no-goals: Je puzzel heeft geen Doelacceptanten.
+    no-goals: Je puzzel heeft geen Doel Acceptanten.
     short-key-already-taken: Deze vorm sleutel is al in gebruik, gebruik een andere.
     can-not-report-your-own-puzzle: Je kunt je eigen puzzel niet melden.
     bad-payload: Het verzoek bevat ongeldige gegevens.
