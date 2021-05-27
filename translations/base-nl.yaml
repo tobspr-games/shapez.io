@@ -233,9 +233,7 @@ dialogs:
         desc: Aangezien je offline bent, kan je je puzzels niet opslaan of publiceren. Wil je nog steeds doorgaan?
     puzzlePlayRegularRecommendation:
         title: Aanbeveling
-        desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te spelen
-            voordat je de puzzel-DLC probeert, anders kan je mechanica
-            tegenkomen die je nog niet kent. Wil je toch doorgaan?
+        desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te spelen voordat je de puzzel-DLC probeert, anders kan je mechanica tegenkomen die je nog niet kent. Wil je toch doorgaan?
     puzzleShare:
         title: Vorm Sleutel Gekopieerd
         desc: De vorm sleutel van de puzzel (<key>) is naar je klembord gekopieerd! Het kan in het puzzelmenu worden ingevoerd om toegang te krijgen tot de puzzel.
