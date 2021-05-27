@@ -670,7 +670,7 @@ buildings:
             description: Lever vormen aan de Doel Acceptant om ze als doel te stellen.
     block:
         default:
-            name: Muur
+            name: Blokkade
             description: Hiermee kan je een tegel blokkeren.
 storyRewards:
     reward_cutter_and_trash:
@@ -1091,7 +1091,7 @@ keybindings:
         rotateToLeft: "Rotate: Point Left"
         constant_producer: Constante Producent
         goal_acceptor: Doel Acceptant
-        block: Muur
+        block: Blokkade
         massSelectClear: Lopende banden leeg maken
 about:
     title: Over dit spel
