@@ -1101,14 +1101,14 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copiar valor abaixo do cursor"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        rotateToUp: "Rotação: Para cima"
+        rotateToDown: "Rotação: Para baixo"
+        rotateToRight: "Rotação: Para direita"
+        rotateToLeft: "Rotação: Para esquerda"
+        constant_producer: Produtor Constante
+        goal_acceptor: Aceitador de Objetivo
+        block: Bloco
+        massSelectClear: Limpar esteiras
 about:
     title: Sobre o jogo
     body: >-
@@ -1203,56 +1203,56 @@ tips:
     - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
     - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Jogar
+    edit: Editar
+    title: Modo Puzzle
+    createPuzzle: Criar Desafio
+    loadPuzzle: Carregar
+    reviewPuzzle: Revisar e Publicar
+    validatingPuzzle: Validando Desafio
+    submittingPuzzle: Enviando Desafio
+    noPuzzles: Não existem desafios nesta categoria atualmente.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        levels: Níveis
+        new: Novo
+        top-rated: Melhor Avaliados
+        mine: Meus Desafios
+        short: Curto
+        easy: Fácil
+        hard: Difícil
+        completed: Completados
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Desafio inválido
+        noProducers: Por favor coloque um Produtor Constante!
+        noGoalAcceptors: Por favor coloque um Aceitador de Objetivo!
+        goalAcceptorNoItem: Um ou mais Aceitadores de Objetivo ainda não tiveram um item determinado.
+            Entregue um item a ele para definir seu objetivo.
+        goalAcceptorRateNotMet: Um ou mais Aceitadores de Objetivo não estão recebendo itens suficientes.
+            Garanta que os indicadores estejam verdes para todos os Aceitadores.
+        buildingOutOfBounds: Uma ou mais construções estão fora da área contraível.
+            Você pode aumentar a área ou removê-los.
+        autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus Produtores
+            Constantes não estão entregando diretamente aos seus Aceitadores de Objetivos.
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Você está fazendo coisas muito rápido. Por favor espere um pouco.
+    invalid-api-key: Falha ao comunicar com o backend, por favor tente
+        atualizar/reiniciar o jogo (Chave API Inválida).
+    unauthorized: Falha ao comunicar com o backend, por favor tente
+        atualizar/reiniciar o jogo (Não autorizado).
+    bad-token: Falha ao comunicar com o backend, por favor tente
+        atualizar/reiniciar o jogo (Bad Token).
+    bad-id: Indentificador de desafio inválido.
+    not-found: O desafio não pôde ser achado.
+    bad-category: A categoria não pôde ser achada.
+    bad-short-key: O atalho é inválido.
+    profane-title: O nome do seu desafio contém palavras ruins.
+    bad-title-too-many-spaces: O nome do seu desafio é muito curto.
+    bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
+    bad-shape-key-in-goal: Um Aceitador de Objetivo tem um item inválido.
+    no-emitters: Seu desafio não contém nenhum Produtor Constante.
+    no-goals: Seu desafio não contém nenhum Aceitador de Objetivos.
+    short-key-already-taken: Esse atalho já está sendo usado, por favor escolha outro.
+    can-not-report-your-own-puzzle: Você não pode denunciar seu próprio desafio.
+    bad-payload: O pedido contém dados inválidos.
+    bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
+    timeout: Acabou o tempo do pedido.
