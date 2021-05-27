@@ -437,12 +437,12 @@ ingame:
             - 1. Plaats <strong>Constante Producenten</strong> om vormen en
               kleuren aan de speler te bieden
             - 2. Bouw een of meer vormen die de speler later en
-              bezorg het aan een of meer <strong>Doel Acceptanten</strong>
-            - 3. Wanneer een Doel Acceptant een vorm ontvangt voor een bepaalde tijd, het  <strong>slaat het op als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicatoren</strong>).
+              bezorg het aan een of meer <strong>Ontvangers</strong>
+            - 3. Wanneer een Ontvanger een vorm ontvangt voor een bepaalde tijd, het  <strong>slaat het op als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicatoren</strong>).
             - 4. Klik de <strong>vergrendelknop</strong> om een gebouw uit te schakelen.
             - 5. Zodra je op review klikt, wordt je puzzel gevalideerd en jij
               kan het publiceren.
-            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Doel Acceptanten - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
+            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Ontvangers - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
     puzzleCompletion:
         title: Puzzel Voltooid!
         titleLike: "Klik op het hartje als je de puzzel leuk vond:"
@@ -666,8 +666,8 @@ buildings:
             description: Voert constant een bepaalde vorm of kleur uit.
     goal_acceptor:
         default:
-            name: Doel Acceptant
-            description: Lever vormen aan de Doel Acceptant om ze als doel te stellen.
+            name: Ontvanger
+            description: Lever vormen aan de Ontvanger om ze als doel te stellen.
     block:
         default:
             name: Blokkade
@@ -1090,7 +1090,7 @@ keybindings:
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
         constant_producer: Constante Producent
-        goal_acceptor: Doel Acceptant
+        goal_acceptor: Ontvanger
         block: Blokkade
         massSelectClear: Lopende banden leeg maken
 about:
@@ -1216,13 +1216,13 @@ puzzleMenu:
     validation:
         title: Ongeldige Puzzel
         noProducers: Plaats alstublieft een Constante Producent!
-        noGoalAcceptors: Plaats alstublieft een Doel Acceptant!
-        goalAcceptorNoItem: Een of meer Doel Acceptanten hebben nog geen item toegewezen.
+        noGoalAcceptors: Plaats alstublieft een Ontvanger!
+        goalAcceptorNoItem: Een of meer Ontvangers hebben nog geen item toegewezen.
             Geef ze een vorm om een doel te stellen.
-        goalAcceptorRateNotMet: Een of meerdere Doel Acceptanten krijgen niet genoeg items.
+        goalAcceptorRateNotMet: Een of meerdere Ontvangers krijgen niet genoeg items.
             Zorg ervoor dat de indicatoren groen zijn voor alle acceptanten.
         buildingOutOfBounds: Een of meer gebouwen bevinden zich buiten het bebouwbare gebied. Vergroot het gebied of verwijder ze.
-        autoComplete: Je puzzel voltooid zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Doel Acceptanten leveren.
+        autoComplete: Je puzzel voltooid zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Ontvangers leveren.
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
     invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (ongeldige API-sleutel).
@@ -1234,10 +1234,10 @@ backendErrors:
     bad-short-key: De opgegeven vorm sleutel is ongeldig.
     profane-title: Je puzzel titel bevat groffe woorden.
     bad-title-too-many-spaces: Je puzzel titel is te kort.
-    bad-shape-key-in-emitter: Een Doel Acceptant heeft een ongeldig item.
+    bad-shape-key-in-emitter: Een Ontvanger heeft een ongeldig item.
     bad-shape-key-in-goal: Een Constante Producent heeft een ongeldig item.
     no-emitters: Je puzzel heeft geen Constante Producenten.
-    no-goals: Je puzzel heeft geen Doel Acceptanten.
+    no-goals: Je puzzel heeft geen Ontvangers.
     short-key-already-taken: Deze vorm sleutel is al in gebruik, gebruik een andere.
     can-not-report-your-own-puzzle: Je kunt je eigen puzzel niet melden.
     bad-payload: Het verzoek bevat ongeldige gegevens.
