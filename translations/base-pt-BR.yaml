@@ -1106,7 +1106,7 @@ keybindings:
         rotateToRight: "Rotação: Para direita"
         rotateToLeft: "Rotação: Para esquerda"
         constant_producer: Produtor Constante
-        goal_acceptor: Aceitador de Objetivo
+        goal_acceptor: Receptor de Objetivo
         block: Bloco
         massSelectClear: Limpar esteiras
 about:
@@ -1224,15 +1224,15 @@ puzzleMenu:
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
-        noGoalAcceptors: Por favor coloque um Aceitador de Objetivo!
-        goalAcceptorNoItem: Um ou mais Aceitadores de Objetivo ainda não tiveram um item determinado.
+        noGoalAcceptors: Por favor coloque um Receptor de Objetivo!
+        goalAcceptorNoItem: Um ou mais Receptores de Objetivo ainda não tiveram um item determinado.
             Entregue um item a ele para definir seu objetivo.
-        goalAcceptorRateNotMet: Um ou mais Aceitadores de Objetivo não estão recebendo itens suficientes.
-            Garanta que os indicadores estejam verdes para todos os Aceitadores.
+        goalAcceptorRateNotMet: Um ou mais Receptores de Objetivo não estão recebendo itens suficientes.
+            Garanta que os indicadores estejam verdes para todos os Receptores.
         buildingOutOfBounds: Uma ou mais construções estão fora da área contraível.
             Você pode aumentar a área ou removê-los.
         autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus Produtores
-            Constantes não estão entregando diretamente aos seus Aceitadores de Objetivos.
+            Constantes não estão entregando diretamente aos seus Receptores de Objetivos.
 backendErrors:
     ratelimit: Você está fazendo coisas muito rápido. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
@@ -1248,9 +1248,9 @@ backendErrors:
     profane-title: O nome do seu desafio contém palavras ruins.
     bad-title-too-many-spaces: O nome do seu desafio é muito curto.
     bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
-    bad-shape-key-in-goal: Um Aceitador de Objetivo tem um item inválido.
+    bad-shape-key-in-goal: Um Receptor de Objetivo tem um item inválido.
     no-emitters: Seu desafio não contém nenhum Produtor Constante.
-    no-goals: Seu desafio não contém nenhum Aceitador de Objetivos.
+    no-goals: Seu desafio não contém nenhum Receptor de Objetivos.
     short-key-already-taken: Esse atalho já está sendo usado, por favor escolha outro.
     can-not-report-your-own-puzzle: Você não pode denunciar seu próprio desafio.
     bad-payload: O pedido contém dados inválidos.
