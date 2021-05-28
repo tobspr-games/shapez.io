@@ -52,7 +52,7 @@ global:
         escape: ESC
         shift: Shift
         space: Espaço
-    loggingIn: Logging in
+    loggingIn: Entrando
 demoBanners:
     title: Versão Demo
     intro: Compre a versão completa para desbloquear todos os recursos!
@@ -72,11 +72,11 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
     savegameUnnamed: Sem nome
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Modo Puzzle
+    back: Voltar
+    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle
+        DLC agora na Steam para se divertir ainda mais!
+    puzzleDlcWishlist: Adicione já a sua lista de desejos!
 dialogs:
     buttons:
         ok: OK
@@ -90,9 +90,9 @@ dialogs:
         viewUpdate: Atualizações
         showUpgrades: Melhorias
         showKeybindings: Controles
-        retry: Retry
+        retry: Tentar novamente
         continue: Continue
-        playOffline: Play Offline
+        playOffline: Jogar Offline
     importSavegameError:
         title: Erro de importação
         text: "Houve uma falha ao importar seu jogo salvo:"
@@ -191,66 +191,66 @@ dialogs:
         desc: Existe um tutorial em vídeo para esse nível, mas está disponível apenas em
             Inglês. Gostaria de assistí-lo?
     editConstantProducer:
-        title: Set Item
+        title: Selecionar Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: O carregamento dos desafios falhou
+        desc: "Infelizmente os desafios não puderam ser carregados:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Enviar desafio
+        descName: "Dê um nome ao seu desafio:"
+        descIcon: "Por favor crie um código exclusivo, o qual será o ícone
+            do seu Desafio (Você pode gera-los <link>aqui</link>, ou escolha um
+            dos gerados aleatoriamente abaixo):"
+        placeholderName: Nome do desafio
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Mudar o tamanho não é possível
+        desc: Você não pode deixar a zona menor, porque algumas construções ficariam
+            fora dela.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Desafio Ruim
+        desc: "O desafio não pôde ser carregado:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        title: Modo Offline
+        desc: Não conseguimos nos conectar aos servidores, então o jogo terá que ser jogado no Modo Offline.
+            Por favor garanta que você tenha uma conexão ativa com a internet.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Erro no download
+        desc: "Falha ao baixar o desafio:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Erro no envio
+        desc: "Erro ao enviar seu desafio:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Desafio publicado
+        desc: Parabéns! Seu desafio foi publicado e pode ser acessado por
+            outros jogadores. Você pode acha-lo na categoria "Meus Desafios".
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Modo Offline
+        desc: Como você está no Modo Offline, não será possível salvar e/ou publicar seus
+            desafios. Você deseja continuar?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Recomendação
+        desc: Eu <strong>fortemente</strong> recomendo jogar o jogo normal até o nível 12
+            antes de se aventurar na Puzzle DLC, senão você poderá encontrar
+           mecânicas que ainda não foram introduzidas. Você ainda deseja continuar?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Código copiado
+        desc: O código do desafio (<key>) foi copiado para sua área de transferência! Ele
+            pode ser inserido no menu de desafios para acessar o desafio.
     puzzleReport:
-        title: Report Puzzle
+        title: Denunciar Desafio
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: Ofensivo
+            unsolvable: Impossível
+            trolling: Antijogo
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Obrigado pelo seu feedback!
+        desc: O desafio foi marcado.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Falha ao denunciar
+        desc: "Sua denúncia não pôde ser processada:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Insira código 
+        desc: Insira o código  do desafio para carrega-lo.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -422,46 +422,45 @@ ingame:
                 title: Me ajuda
                 desc: Eu desenvolvo o jogo no meu tempo livre!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Conquistas
+                desc: Consiga todas elas!
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        zoneTitle: Zona
+        zoneWidth: Largura
+        zoneHeight: Altura
+        trimZone: Cortar
+        clearItems: Limpar Items
+        share: Compartilhar
+        report: Denunciar
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Criador de Desafios
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Coloque <strong>Produtores Constantes</strong> para gerar itens e
+              cores ao jogador
+            - 2. Monte uma ou mais itens que você quer que o jogador produza e
+              entregue em um ou mais <strong>Receptores de Objetivo</strong>
+            - 3. Uma vez que um Receptor de Objetivo recebe uma item por uma certa quantidade de
+              tempo, ele <strong>a salva como seu objetivo</strong> , o qual o jogador terá
+              que produzir depois (Indicato pela <strong>insígnia verde</strong>).
+            - 4. Clique no <strong>botao de travar</strong> de uma construção para desabilita-la.
+            - 5. Uma vez que você clicou em revisar, seu desafio será validado e você
+              poderá publica-lo.
+            - 6. Quando seu desafio for publicado, <strong>todas as construções serão removidas</strong>
+              exceto os Produtores Constantes e Receptores de Objetivo - Essa é a parte que
+              o jogador terá que descobrir sozinho, por isso se chama desafio :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        title: Desafio Completo!
+        titleLike: "Clique no coração se você gostou do desafio:"
+        titleRating: O qual difícil foi esse desafio?
+        titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
+        continueBtn: Continuar jogando
         menuBtn: Menu
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Autor
+        shortKey: Código 
+        rating: Dificuldade
+        averageDuration: Duração média
+        completionRate: Taxa de sucesso
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
@@ -680,16 +679,16 @@ buildings:
                 de fios para o plano regular.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Produtor Constante
+            description: Produz constantemente uma item ou cor específica.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Receptor de Objetivo
+            description: Entregue itens ao Receptor de Objetivo para os definir como o objetivo.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Bloco
+            description: Te permite bloquear um espaço.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortando formas
@@ -1229,12 +1228,12 @@ puzzleMenu:
             Entregue um item a ele para definir seu objetivo.
         goalAcceptorRateNotMet: Um ou mais Receptores de Objetivo não estão recebendo itens suficientes.
             Garanta que os indicadores estejam verdes para todos os Receptores.
-        buildingOutOfBounds: Uma ou mais construções estão fora da área contraível.
+        buildingOutOfBounds: Uma ou mais construções estão fora da área construível.
             Você pode aumentar a área ou removê-los.
         autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus Produtores
-            Constantes não estão entregando diretamente aos seus Receptores de Objetivos.
+            Constantes não estão entregando diretamente aos seus Receptores de Objetivo.
 backendErrors:
-    ratelimit: Você está fazendo coisas muito rápido. Por favor espere um pouco.
+    ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
         atualizar/reiniciar o jogo (Chave API Inválida).
     unauthorized: Falha ao comunicar com o backend, por favor tente
@@ -1244,14 +1243,14 @@ backendErrors:
     bad-id: Indentificador de desafio inválido.
     not-found: O desafio não pôde ser achado.
     bad-category: A categoria não pôde ser achada.
-    bad-short-key: O atalho é inválido.
-    profane-title: O nome do seu desafio contém palavras ruins.
+    bad-short-key: O código é inválido.
+    profane-title: O nome do seu desafio contém palavras proibidas.
     bad-title-too-many-spaces: O nome do seu desafio é muito curto.
     bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
     bad-shape-key-in-goal: Um Receptor de Objetivo tem um item inválido.
     no-emitters: Seu desafio não contém nenhum Produtor Constante.
-    no-goals: Seu desafio não contém nenhum Receptor de Objetivos.
-    short-key-already-taken: Esse atalho já está sendo usado, por favor escolha outro.
+    no-goals: Seu desafio não contém nenhum Receptor de Objetivo.
+    short-key-already-taken: Esse código já está sendo usado, por favor escolha outro.
     can-not-report-your-own-puzzle: Você não pode denunciar seu próprio desafio.
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
