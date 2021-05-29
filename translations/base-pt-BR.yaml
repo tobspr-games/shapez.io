@@ -250,7 +250,7 @@ dialogs:
         desc: "Sua denúncia não pôde ser processada:"
     puzzleLoadShortKey:
         title: Insira código 
-        desc: Insira o código  do desafio para carrega-lo.
+        desc: Insira o código do desafio para carrega-lo.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
