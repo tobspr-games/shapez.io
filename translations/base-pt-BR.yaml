@@ -680,7 +680,7 @@ buildings:
     constant_producer:
         default:
             name: Produtor Constante
-            description: Produz constantemente uma item ou cor específica.
+            description: Produz constantemente um item ou cor específica.
     goal_acceptor:
         default:
             name: Receptor de Objetivo
@@ -1246,8 +1246,8 @@ backendErrors:
     bad-short-key: O código é inválido.
     profane-title: O nome do seu desafio contém palavras proibidas.
     bad-title-too-many-spaces: O nome do seu desafio é muito curto.
-    bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
-    bad-shape-key-in-goal: Um Receptor de Objetivo tem um item inválido.
+    bad-shape-key-in-emitter: Um Produtor Constante contém um item inválido.
+    bad-shape-key-in-goal: Um Receptor de Objetivo contém um item inválido.
     no-emitters: Seu desafio não contém nenhum Produtor Constante.
     no-goals: Seu desafio não contém nenhum Receptor de Objetivo.
     short-key-already-taken: Esse código já está sendo usado, por favor escolha outro.
