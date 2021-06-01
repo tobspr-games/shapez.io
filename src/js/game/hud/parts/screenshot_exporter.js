@@ -79,6 +79,12 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             buttons: ["cancel:good", "ok:bad"],
         });
 
+        dialog.inputReciever.keydown.add(({ keyCode }) => {
+            if (keyCode === KEYMAPPINGS.ingame.exportScreenshot.keyCode) {
+                this.root.hud.parts.dialogs.closeDialog(dialog);
+            }
+        });
+
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
         dialog.buttonSignals.ok.add(
             () => this.doExport(qualityInput.getValue(), overlayInput.getValue(), layerInput.getValue()),
