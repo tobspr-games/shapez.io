@@ -12,6 +12,7 @@ import { DialogWithForm } from "../../../core/modal_dialog_elements";
 import { FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog_forms";
 import { ORIGINAL_SPRITE_SCALE } from "../../../core/sprites";
 import { getDeviceDPI } from "../../../core/dpi_manager";
+import { HUDMassSelector } from "./mass_selector";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -51,6 +52,18 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             return;
         }
 
+        let bounds = undefined;
+        const massSelector = this.root.hud.parts.massSelector;
+        if (massSelector instanceof HUDMassSelector && massSelector.currentSelectionStartWorld) {
+            const worldStart = massSelector.currentSelectionStartWorld;
+            const worldEnd = this.root.camera.screenToWorld(massSelector.currentSelectionEnd);
+
+            const tileStart = worldStart.toTileSpace();
+            const tileEnd = worldEnd.toTileSpace();
+
+            bounds = Rectangle.fromTwoPoints(tileStart, tileEnd.addScalars(1, 1));
+        }
+
         const qualityInput = new FormElementEnum({
             id: "screenshotQuality",
             label: "Quality",
@@ -87,7 +100,13 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
         dialog.buttonSignals.ok.add(
-            () => this.doExport(qualityInput.getValue(), overlayInput.getValue(), layerInput.getValue()),
+            () =>
+                this.doExport(
+                    qualityInput.getValue(),
+                    overlayInput.getValue(),
+                    layerInput.getValue(),
+                    bounds
+                ),
             this
         );
     }
@@ -97,8 +116,9 @@ export class HUDScreenshotExporter extends BaseHUDPart {
      * @param {number} resolution
      * @param {boolean} overlay
      * @param {boolean} wiresLayer
+     * @param {Rectangle?} bounds
      */
-    doExport(resolution, overlay, wiresLayer) {
+    doExport(resolution, overlay, wiresLayer, bounds) {
         logger.log("Starting export ...");
 
         // Find extends
@@ -106,47 +126,53 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         const minTile = new Vector(0, 0);
         const maxTile = new Vector(0, 0);
-        for (let i = 0; i < staticEntities.length; ++i) {
-            const bounds = staticEntities[i].components.StaticMapEntity.getTileSpaceBounds();
-            minTile.x = Math.min(minTile.x, bounds.x);
-            minTile.y = Math.min(minTile.y, bounds.y);
+        if (bounds) {
+            minTile.x = bounds.x;
+            minTile.y = bounds.y;
 
-            maxTile.x = Math.max(maxTile.x, bounds.x + bounds.w);
-            maxTile.y = Math.max(maxTile.y, bounds.y + bounds.h);
+            maxTile.x = bounds.x + bounds.w;
+            maxTile.y = bounds.y + bounds.h;
+        } else {
+            for (let i = 0; i < staticEntities.length; ++i) {
+                const entityBounds = staticEntities[i].components.StaticMapEntity.getTileSpaceBounds();
+                minTile.x = Math.min(minTile.x, entityBounds.x);
+                minTile.y = Math.min(minTile.y, entityBounds.y);
+
+                maxTile.x = Math.max(maxTile.x, entityBounds.x + entityBounds.w);
+                maxTile.y = Math.max(maxTile.y, entityBounds.y + entityBounds.h);
+            }
+
+            minTile.x = Math.floor(minTile.x / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
+            minTile.y = Math.floor(minTile.y / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
+
+            maxTile.x = Math.ceil(maxTile.x / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
+            maxTile.y = Math.ceil(maxTile.y / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
         }
 
-        const minChunk = minTile.divideScalar(globalConfig.mapChunkSize).floor();
-        const maxChunk = maxTile.divideScalar(globalConfig.mapChunkSize).ceil();
-
-        const dimensions = maxChunk.sub(minChunk);
+        const dimensions = maxTile.sub(minTile);
         logger.log("Dimensions:", dimensions);
 
         const maxDimensions = Math.max(dimensions.x, dimensions.y);
 
         // we want odd integer pixels per tile, so that center of tile is rendered
         // at least 3 pixels per tile, for bearable quality
-        const chunkSizePixels =
-            Math.max(
-                3,
-                Math.floor((resolution / (maxDimensions * globalConfig.mapChunkSize) + 1) / 2) * 2 - 1
-            ) * globalConfig.mapChunkSize;
-        logger.log("ChunkSizePixels:", chunkSizePixels);
+        const tileSizePixels = Math.max(3, Math.floor((resolution / maxDimensions + 1) / 2) * 2 - 1);
+        logger.log("ChunkSizePixels:", tileSizePixels);
 
-        if (chunkSizePixels * maxDimensions > MAX_CANVAS_DIMS) {
+        if (tileSizePixels * maxDimensions > MAX_CANVAS_DIMS) {
             logger.error("Maximum canvas size exceeded, aborting");
-            //@TODO: translation (T.dialogs.exportScreenshotFail.title) (T.dialogs.exportScreenshotFail.text)
+            // @TODO: translation (T.dialogs.exportScreenshotFail.title) (T.dialogs.exportScreenshotFail.text)
             this.root.hud.parts.dialogs.showInfo("Too large", "The base is too large to render, sorry!");
             return;
         }
 
-        // equivalent to zoomLevel
-        const chunkScale = chunkSizePixels / globalConfig.mapChunkWorldSize;
-        logger.log("Scale:", chunkScale);
+        const zoomLevel = tileSizePixels / globalConfig.tileSize;
+        logger.log("Scale:", zoomLevel);
 
         // Compute atlas scale
         const lowQuality = this.root.app.settings.getAllSettings().lowQualityTextures;
         const effectiveZoomLevel =
-            (chunkScale / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
+            (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
 
         let desiredAtlasScale = "0.25";
         if (effectiveZoomLevel > 0.5 && !lowQuality) {
@@ -157,8 +183,8 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
         const [canvas, context] = makeOffscreenBuffer(
-            dimensions.x * chunkSizePixels,
-            dimensions.y * chunkSizePixels,
+            dimensions.x * tileSizePixels,
+            dimensions.y * tileSizePixels,
             {
                 smooth: true,
                 reusable: false,
@@ -168,20 +194,20 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         logger.log("Got buffer, rendering now ...");
 
         const visibleRect = new Rectangle(
-            minChunk.x * globalConfig.mapChunkWorldSize,
-            minChunk.y * globalConfig.mapChunkWorldSize,
-            dimensions.x * globalConfig.mapChunkWorldSize,
-            dimensions.y * globalConfig.mapChunkWorldSize
+            minTile.x * globalConfig.tileSize,
+            minTile.y * globalConfig.tileSize,
+            dimensions.x * globalConfig.tileSize,
+            dimensions.y * globalConfig.tileSize
         );
         const parameters = new DrawParameters({
             context,
             visibleRect,
             desiredAtlasScale,
             root: this.root,
-            zoomLevel: chunkScale,
+            zoomLevel: zoomLevel,
         });
 
-        context.scale(chunkScale, chunkScale);
+        context.scale(zoomLevel, zoomLevel);
         context.translate(-visibleRect.x, -visibleRect.y);
 
         // hack but works
