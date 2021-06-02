@@ -54,14 +54,34 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         let bounds = undefined;
         const massSelector = this.root.hud.parts.massSelector;
-        if (massSelector instanceof HUDMassSelector && massSelector.currentSelectionStartWorld) {
-            const worldStart = massSelector.currentSelectionStartWorld;
-            const worldEnd = this.root.camera.screenToWorld(massSelector.currentSelectionEnd);
+        if (massSelector instanceof HUDMassSelector) {
+            if (massSelector.currentSelectionStartWorld) {
+                const worldStart = massSelector.currentSelectionStartWorld;
+                const worldEnd = this.root.camera.screenToWorld(massSelector.currentSelectionEnd);
 
-            const tileStart = worldStart.toTileSpace();
-            const tileEnd = worldEnd.toTileSpace();
+                const tileStart = worldStart.toTileSpace();
+                const tileEnd = worldEnd.toTileSpace();
 
-            bounds = Rectangle.fromTwoPoints(tileStart, tileEnd.addScalars(1, 1));
+                bounds = Rectangle.fromTwoPoints(tileStart, tileEnd.addScalars(1, 1));
+            } else if (massSelector.selectedUids.size > 0) {
+                const minTile = new Vector(Infinity, Infinity);
+                const maxTile = new Vector(-Infinity, -Infinity);
+
+                const entityUids = Array.from(massSelector.selectedUids);
+                for (let i = 0; i < entityUids.length; ++i) {
+                    const entityBounds = this.root.entityMgr
+                        .findByUid(entityUids[i])
+                        .components.StaticMapEntity.getTileSpaceBounds();
+
+                    minTile.x = Math.min(minTile.x, entityBounds.x);
+                    minTile.y = Math.min(minTile.y, entityBounds.y);
+
+                    maxTile.x = Math.max(maxTile.x, entityBounds.x + entityBounds.w);
+                    maxTile.y = Math.max(maxTile.y, entityBounds.y + entityBounds.h);
+                }
+
+                bounds = Rectangle.fromTwoPoints(minTile, maxTile);
+            }
         }
 
         const qualityInput = new FormElementEnum({
