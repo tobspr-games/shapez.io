@@ -142,13 +142,12 @@ export class HUDScreenshotExporter extends BaseHUDPart {
     doExport(resolution, overlay, wiresLayer, bounds) {
         logger.log("Starting export ...");
 
-        // Find extends
-        const staticEntities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
-
         if (!bounds) {
+            // Find extends
+            const staticEntities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
+
             const minTile = new Vector(0, 0);
             const maxTile = new Vector(0, 0);
-
             for (let i = 0; i < staticEntities.length; ++i) {
                 const entityBounds = staticEntities[i].components.StaticMapEntity.getTileSpaceBounds();
                 minTile.x = Math.min(minTile.x, entityBounds.x);
