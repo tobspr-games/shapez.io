@@ -145,15 +145,10 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         // Find extends
         const staticEntities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
 
-        const minTile = new Vector(0, 0);
-        const maxTile = new Vector(0, 0);
-        if (bounds) {
-            minTile.x = bounds.x;
-            minTile.y = bounds.y;
+        if (!bounds) {
+            const minTile = new Vector(0, 0);
+            const maxTile = new Vector(0, 0);
 
-            maxTile.x = bounds.x + bounds.w;
-            maxTile.y = bounds.y + bounds.h;
-        } else {
             for (let i = 0; i < staticEntities.length; ++i) {
                 const entityBounds = staticEntities[i].components.StaticMapEntity.getTileSpaceBounds();
                 minTile.x = Math.min(minTile.x, entityBounds.x);
@@ -168,12 +163,13 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
             maxTile.x = Math.ceil(maxTile.x / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
             maxTile.y = Math.ceil(maxTile.y / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
+
+            bounds = Rectangle.fromTwoPoints(minTile, maxTile);
         }
 
-        const dimensions = maxTile.sub(minTile);
-        logger.log("Dimensions:", dimensions);
+        logger.log("Bounds:", bounds);
 
-        const maxDimensions = Math.max(dimensions.x, dimensions.y);
+        const maxDimensions = Math.max(bounds.w, bounds.h);
 
         const tileSizePixels = overlay
             ? // we want multiple of 3 pixels per tile, since the map mode buildings are 3x3 pixels
@@ -215,23 +211,14 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         }
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
-        const [canvas, context] = makeOffscreenBuffer(
-            dimensions.x * tileSizePixels,
-            dimensions.y * tileSizePixels,
-            {
-                smooth: true,
-                reusable: false,
-                label: "export-buffer",
-            }
-        );
+        const [canvas, context] = makeOffscreenBuffer(bounds.w * tileSizePixels, bounds.h * tileSizePixels, {
+            smooth: true,
+            reusable: false,
+            label: "export-buffer",
+        });
         logger.log("Got buffer, rendering now ...");
 
-        const visibleRect = new Rectangle(
-            minTile.x * globalConfig.tileSize,
-            minTile.y * globalConfig.tileSize,
-            dimensions.x * globalConfig.tileSize,
-            dimensions.y * globalConfig.tileSize
-        );
+        const visibleRect = bounds.allScaled(globalConfig.tileSize);
         const parameters = new DrawParameters({
             context,
             visibleRect,
