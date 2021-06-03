@@ -13,6 +13,7 @@ import { FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog
 import { ORIGINAL_SPRITE_SCALE } from "../../../core/sprites";
 import { getDeviceDPI } from "../../../core/dpi_manager";
 import { HUDMassSelector } from "./mass_selector";
+import { clamp } from "../../../core/utils";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -174,10 +175,23 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         const maxDimensions = Math.max(dimensions.x, dimensions.y);
 
-        // we want odd integer pixels per tile, so that center of tile is rendered
-        // at least 3 pixels per tile, for bearable quality
-        const tileSizePixels = Math.max(3, Math.floor((resolution / maxDimensions + 1) / 2) * 2 - 1);
-        logger.log("ChunkSizePixels:", tileSizePixels);
+        const tileSizePixels = overlay
+            ? // we want multiple of 3 pixels per tile, since the map mode buildings are 3x3 pixels
+              // higher resolutions are to render resource patch icons
+              clamp(
+                  Math.floor(resolution / maxDimensions / 3) * 3,
+                  3,
+                  Math.floor((globalConfig.assetsDpi * globalConfig.tileSize) / 3) * 3
+              )
+            : // we want odd integer pixels per tile, so that center of tile is rendered
+              // at least 3 pixels per tile, for bearable quality
+              // at most the resolution of the assets, to not be excessive
+              clamp(
+                  Math.floor((resolution / maxDimensions + 1) / 2) * 2 - 1,
+                  3,
+                  globalConfig.assetsDpi * globalConfig.tileSize
+              );
+        logger.log("Pixels per tile:", tileSizePixels);
 
         if (tileSizePixels * maxDimensions > MAX_CANVAS_DIMS) {
             logger.error("Maximum canvas size exceeded, aborting");
@@ -191,8 +205,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         // Compute atlas scale
         const lowQuality = this.root.app.settings.getAllSettings().lowQualityTextures;
-        const effectiveZoomLevel =
-            (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
+        const effectiveZoomLevel = (zoomLevel / globalConfig.assetsDpi) * globalConfig.assetsSharpness;
 
         let desiredAtlasScale = "0.25";
         if (effectiveZoomLevel > 0.5 && !lowQuality) {
