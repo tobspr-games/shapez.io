@@ -67,7 +67,9 @@ export class HUDScreenshotExporter extends BaseHUDPart {
                 const tileStart = worldStart.toTileSpace();
                 const tileEnd = worldEnd.toTileSpace();
 
-                bounds = Rectangle.fromTwoPoints(tileStart, tileEnd.addScalars(1, 1));
+                bounds = Rectangle.fromTwoPoints(tileStart, tileEnd);
+                bounds.w += 1;
+                bounds.h += 1;
             } else if (massSelector.selectedUids.size > 0) {
                 const minTile = new Vector(Infinity, Infinity);
                 const maxTile = new Vector(-Infinity, -Infinity);
