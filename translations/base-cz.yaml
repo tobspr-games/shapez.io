@@ -433,7 +433,7 @@ ingame:
             - 1. Umístěte <strong>výrobníky</strong>, které poskytnou hráči
               tvary a barvy.
             - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
-              doručte to do jednoho či více <strong>příjemců cílů</strong>
+              doručte to do jednoho či více <strong>příjemců cílů</strong>.
             - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
               úsek, <strong>uloží se jako cíl</strong>, který hráč musí
               pozdeji vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
@@ -443,7 +443,7 @@ ingame:
               ho publikovat.
             - 6. Během publikace budou kromě výrobníků a příjemců cílů
               <strong>všechny budovy odstraněny</strong> - To je ta část,
-              na kterou má koneckonců každý hráč přijít sám :)
+              na kterou má koneckonců každý hráč přijít sám. :)
     puzzleCompletion:
         title: Puzzle dokončeno!
         titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
