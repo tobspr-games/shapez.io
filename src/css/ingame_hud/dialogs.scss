@@ -226,6 +226,18 @@
                 }
             }
 
+            .checkBoxGridFormElem {
+                display: inline-grid;
+                grid-template-columns: 1fr;
+                @include S(margin, 10px, 0);
+                @include S(grid-row-gap, 10px);
+
+                > .checkBoxFormElem {
+                    margin: 0;
+                    justify-content: space-between;
+                }
+            }
+
             .enum {
                 display: grid;
                 grid-template-columns: auto 1fr auto;

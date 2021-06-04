@@ -140,7 +140,7 @@ export class FormElementCheckbox extends FormElement {
     getHtml() {
         return `
             <div class="formElement checkBoxFormElem">
-            ${this.label ? `<label>${this.label}</label>` : ""}
+                ${this.label ? `<label>${this.label}</label>` : ""}
                 <div class="checkbox ${this.defaultValue ? "checked" : ""}" data-formId='${this.id}'>
                     <span class="knob"></span >
                 </div >
@@ -165,6 +165,31 @@ export class FormElementCheckbox extends FormElement {
     toggle() {
         this.value = !this.value;
         this.element.classList.toggle("checked", this.value);
+    }
+
+    focus(parent) {}
+}
+
+export class FormElementCheckboxList extends FormElement {
+    constructor({ id, label = null, checkboxes = [] }) {
+        super(id, label);
+        this.checkboxes = checkboxes;
+    }
+
+    getHtml() {
+        return `
+            <div class="formElement checkBoxGridFormElem">
+                ${this.checkboxes.map(checkbox => checkbox.getHtml()).join("\n")}
+            </div>
+        `;
+    }
+
+    bindEvents(parent, clickTrackers) {
+        this.checkboxes.forEach(checkbox => checkbox.bindEvents(parent, clickTrackers));
+    }
+
+    getValue() {
+        return this.checkboxes.map(checkbox => checkbox.getValue());
     }
 
     focus(parent) {}

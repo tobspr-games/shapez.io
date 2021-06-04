@@ -9,12 +9,16 @@ import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DialogWithForm } from "../../../core/modal_dialog_elements";
-import { FormElementCheckbox, FormElementEnum } from "../../../core/modal_dialog_forms";
+import {
+    FormElementCheckbox,
+    FormElementCheckboxList,
+    FormElementEnum,
+} from "../../../core/modal_dialog_forms";
 import { ORIGINAL_SPRITE_SCALE } from "../../../core/sprites";
 import { getDeviceDPI } from "../../../core/dpi_manager";
 import { HUDMassSelector } from "./mass_selector";
 import { clamp } from "../../../core/utils";
-import { CHUNK_OVERLAY_RES } from "../../map_chunk_view";
+import { CHUNK_OVERLAY_RES, MapChunkView } from "../../map_chunk_view";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -113,6 +117,16 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             label: "Wires layer",
             defaultValue: this.root.currentLayer === "wires" ? true : false,
         });
+        const backgroundInput = new FormElementCheckbox({
+            id: "screenshotBackground",
+            // @TODO: translation (T.dialogs.exportScreenshotWarning.descBackground)
+            label: "Transparent background",
+            defaultValue: false,
+        });
+        const checkboxInputs = new FormElementCheckboxList({
+            id: "screenshotCheckboxes",
+            checkboxes: [overlayInput, layerInput, backgroundInput],
+        });
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: T.dialogs.exportScreenshotWarning.title,
@@ -128,7 +142,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
                               .getKeyCodeString() +
                           "</code>"
                   ),
-            formElements: [qualityInput, overlayInput, layerInput],
+            formElements: [qualityInput, checkboxInputs],
             buttons: ["cancel:good", "ok:bad"],
         });
 
@@ -145,6 +159,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
                     qualityInput.getValue(),
                     overlayInput.getValue(),
                     layerInput.getValue(),
+                    backgroundInput.getValue(),
                     !!bounds,
                     bounds
                 ),
@@ -157,10 +172,11 @@ export class HUDScreenshotExporter extends BaseHUDPart {
      * @param {number} targetResolution
      * @param {boolean} overlay
      * @param {boolean} wiresLayer
+     * @param {boolean} hideBackground
      * @param {boolean} allowBorder
      * @param {Rectangle?} tileBounds
      */
-    doExport(targetResolution, overlay, wiresLayer, allowBorder, tileBounds) {
+    doExport(targetResolution, overlay, wiresLayer, hideBackground, allowBorder, tileBounds) {
         logger.log("Starting export ...");
 
         const boundsSelected = !!tileBounds;
@@ -296,9 +312,23 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         this.root.signals.gameFrameStarted.dispatch();
         if (overlay) {
             this.root;
-            this.root.map.drawOverlay(parameters);
+            if (hideBackground) {
+                this.root.map.drawVisibleChunks(parameters, MapChunkView.prototype.drawOverlayNoBackground);
+            } else {
+                this.root.map.drawOverlay(parameters);
+            }
         } else {
-            this.root.map.drawBackground(parameters);
+            if (hideBackground) {
+                this.root.map.drawVisibleChunks(
+                    parameters,
+                    /** @this {MapChunkView} */ function (parameters) {
+                        this.root.systemMgr.systems.beltUnderlays.drawChunk(parameters, this);
+                        this.root.systemMgr.systems.belt.drawChunk(parameters, this);
+                    }
+                );
+            } else {
+                this.root.map.drawBackground(parameters);
+            }
             this.root.systemMgr.systems.belt.drawBeltItems(parameters);
             this.root.map.drawForeground(parameters);
             this.root.systemMgr.systems.hub.draw(parameters);
