@@ -446,17 +446,17 @@ ingame:
               na kterou má koneckonců každý hráč přijít sám :)
     puzzleCompletion:
         title: Puzzle dokončeno!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
+        titleRating: Jak obtížný ti tento puzzle přišel?
+        titleRatingDesc: Vaše hodnocení nám pomůže podat vám v budoucnu lepší návrhy
+        continueBtn: Hrát dál
         menuBtn: Menu
     puzzleMetadata:
         author: Autor
         shortKey: Krátký klíč
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        rating: Úrověn obtížnosti
+        averageDuration: Prům. doba trvání
+        completionRate: Míra dokončení
 shopUpgrades:
     belt:
         name: Pásy, distribuce a tunely
@@ -1062,14 +1062,14 @@ keybindings:
         comparator: Porovnávač
         item_producer: Výrobník předmětů (Sandbox)
         copyWireValue: "Kabely: Zkopírovat hodnotu pod kurzorem"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        rotateToUp: "Otočit: Nahoru"
+        rotateToDown: "Otočit: Dolů"
+        rotateToRight: "Otočit: Doprava"
+        rotateToLeft: "Otočit: Doleva"
+        constant_producer: Výrobník
+        goal_acceptor: Přijemce cílů
+        block: Blok
+        massSelectClear: Vymazat pásy
 about:
     title: O hře
     body: >-
@@ -1184,9 +1184,9 @@ puzzleMenu:
         hard: Těžké
         completed: Dokončeno
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
+        title: Neplatné puzzle
+        noProducers: Prosím umístěte výrobník!
+        noGoalAcceptors: Prosím umístěte příjemce cílů!
         goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
             Deliver a shape to them to set a goal.
         goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
