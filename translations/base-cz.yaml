@@ -15,7 +15,7 @@ steamPage:
         jen strašně rychle utekl.
     notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna přišel na to,
         jak v shapez.io vytvořit počítač.
-    steam_review_comment: Tato hra mi ukradla život a já ho zpět nechci.
+    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět.
         Odpočinková factory hra, která mi nedovolí přestat dělat mé výrobní linky více
         efektivní.
 global:
@@ -190,32 +190,32 @@ dialogs:
     editConstantProducer:
         title: Nastavte tvar
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Načítání puzzle selhalo
+        desc: "Bohužel nebylo možné puzzle načíst:"
     submitPuzzle:
-        title: Submit Puzzle
+        title: Odeslat puzzle
         descName: "Pojmenujte svůj puzzle:"
         descIcon: "Please enter a unique short key, which will be shown as the icon of
             your puzzle (You can generate them <link>here</link>, or choose one
             of the randomly suggested shapes below):"
         placeholderName: Puzzle Title
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Změna velikosti není možná
+        desc: Zónu není možné více zmenšit, protože by některé budovy byly
+            mimo zónu.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Špatný puzzle
+        desc: "Načítání puzzlu selhalo:"
     offlineMode:
-        title: Offline Mode
+        title: Offline mód
         desc: We couldn't reach the servers, so the game has to run in offline mode.
             Please make sure you have an active internect connection.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Chyba stahování
+        desc: "Stažení puzzlu selhalo:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Chyba odeslání
+        desc: "Odeslání puzzlu selhalo:"
     puzzleSubmitOk:
         title: Puzzle Published
         desc: Congratulations! Your puzzle has been published and can now be played by
