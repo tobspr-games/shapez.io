@@ -11,11 +11,11 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    what_others_say: What people say about shapez.io
+    what_others_say: Ce que les gens pensent de Shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
+    notch_comment: Mince! Je devrais vraiment me coucher, Mais je crois que j'ai trouvé
+        comment faire un ordinateur dans Shapez.io
     steam_review_comment: This game has stolen my life and I don't want it back.
         Very chill factory game that won't let me stop making my lines more
         efficient.
@@ -73,8 +73,8 @@ mainMenu:
     savegameUnnamed: Sans titre
     puzzleMode: Puzzle Mode
     back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines? Achetez le DLC 
+        sur Steam dés maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Wishlist now!
 dialogs:
     buttons:
@@ -89,9 +89,9 @@ dialogs:
         viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Reesayer
+        continue: Continuer
+        playOffline: Jouer Hors-ligne
     importSavegameError:
         title: Erreur d’importation
         text: "Impossible d’importer votre sauvegarde :"
@@ -193,13 +193,13 @@ dialogs:
         desc: Il y a un tutoriel vidéo pour ce niveau, mais il n’est disponible qu’en
             anglais. Voulez-vous le regarder ?
     editConstantProducer:
-        title: Set Item
+        title: Définir l'objet
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Le chargement du Puzzle à échoué
+        desc: "Malheuresement, le puzzle n'a pas pu être chargé:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
+        title: Envoyer le Puzzle
+        descName: "Donnez un nom à votre puzzle:"
         descIcon: "Please enter a unique short key, which will be shown as the icon of
             your puzzle (You can generate them <link>here</link>, or choose one
             of the randomly suggested shapes below):"
@@ -212,21 +212,21 @@ dialogs:
         title: Bad Puzzle
         desc: "The puzzle failed to load:"
     offlineMode:
-        title: Offline Mode
+        title: Mode hors-ligne
         desc: We couldn't reach the servers, so the game has to run in offline mode.
             Please make sure you have an active internect connection.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Erreur de téléchargment
+        desc: "Le téléchargement à échoué:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Erreur d'envoi
+        desc: "L'envoi à échoué:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzzle envoyé
+        desc: Félicitation! Votre puzzle à été envoyé et peut maintenant être joué.
+            Vous pouvez maintenant le retrouver dans la section "Mes Puzzle".
     puzzleCreateOffline:
-        title: Offline Mode
+        title: Mode Hors-ligne
         desc: Since you are offline, you will not be able to save and/or publish your
             puzzle. Would you still like to continue?
     puzzlePlayRegularRecommendation:
@@ -245,8 +245,8 @@ dialogs:
             unsolvable: Not solvable
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Merci pour votre retour!
+        desc: Le puzzle à été marqué.
     puzzleReportError:
         title: Failed to report
         desc: "Your report could not get processed:"
@@ -274,7 +274,7 @@ ingame:
         clearSelection: Effacer la sélection
         pipette: Pipette
         switchLayers: Changer de calque
-        clearBelts: Clear belts
+        clearBelts: Suprimer les rails
     colors:
         red: Rouge
         green: Vert
