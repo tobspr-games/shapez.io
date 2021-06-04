@@ -14,10 +14,14 @@ import { ORIGINAL_SPRITE_SCALE } from "../../../core/sprites";
 import { getDeviceDPI } from "../../../core/dpi_manager";
 import { HUDMassSelector } from "./mass_selector";
 import { clamp } from "../../../core/utils";
+import { CHUNK_OVERLAY_RES } from "../../map_chunk_view";
 
 const logger = createLogger("screenshot_exporter");
 
 const MAX_CANVAS_DIMS = 16384;
+// should be odd so that the centers of tiles are rendered
+// as pixels per tile must be a multiple of this
+const TARGET_INVERSE_BORDER = 3;
 
 const screenshotQualities = [
     {
@@ -126,6 +130,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
                     qualityInput.getValue(),
                     overlayInput.getValue(),
                     layerInput.getValue(),
+                    !!bounds,
                     bounds
                 ),
             this
@@ -134,15 +139,16 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
     /**
      * Renders a screenshot of the entire base as closely as possible to the ingame camera
-     * @param {number} resolution
+     * @param {number} targetResolution
      * @param {boolean} overlay
      * @param {boolean} wiresLayer
-     * @param {Rectangle?} bounds
+     * @param {boolean} allowBorder
+     * @param {Rectangle?} tileBounds
      */
-    doExport(resolution, overlay, wiresLayer, bounds) {
+    doExport(targetResolution, overlay, wiresLayer, allowBorder, tileBounds) {
         logger.log("Starting export ...");
 
-        if (!bounds) {
+        if (!tileBounds) {
             // Find extends
             const staticEntities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
 
@@ -163,32 +169,42 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             maxTile.x = Math.ceil(maxTile.x / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
             maxTile.y = Math.ceil(maxTile.y / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
 
-            bounds = Rectangle.fromTwoPoints(minTile, maxTile);
+            tileBounds = Rectangle.fromTwoPoints(minTile, maxTile);
         }
 
+        // if the desired pixels per tile is too small, we do not create a border
+        // so that we have more valid values for pixels per tile
+        // we do not create a border for map view since there is no sprite overflow
+        const border =
+            allowBorder &&
+            !overlay &&
+            targetResolution / (Math.max(tileBounds.w, tileBounds.h) + 2 / TARGET_INVERSE_BORDER) >=
+                3 * TARGET_INVERSE_BORDER;
+
+        const bounds = border ? tileBounds.expandedInAllDirections(1 / TARGET_INVERSE_BORDER) : tileBounds;
         logger.log("Bounds:", bounds);
 
         const maxDimensions = Math.max(bounds.w, bounds.h);
 
+        // at least 3 pixels per tile, for bearable quality
+        // at most the resolution of the assets, to not be excessive
+        const clamped = clamp(
+            targetResolution / (maxDimensions + (border ? 2 / 3 : 0)),
+            3,
+            globalConfig.assetsDpi * globalConfig.tileSize
+        );
+
+        // 1 is a fake value since it behaves the same as a border width of 0
+        const inverseBorder = border ? TARGET_INVERSE_BORDER : 1;
         const tileSizePixels = overlay
-            ? // we want multiple of 3 pixels per tile, since the map mode buildings are 3x3 pixels
-              // higher resolutions are to render resource patch icons
-              clamp(
-                  Math.floor(resolution / maxDimensions / 3) * 3,
-                  3,
-                  Math.floor((globalConfig.assetsDpi * globalConfig.tileSize) / 3) * 3
-              )
-            : // we want odd integer pixels per tile, so that center of tile is rendered
-              // at least 3 pixels per tile, for bearable quality
-              // at most the resolution of the assets, to not be excessive
-              clamp(
-                  Math.floor((resolution / maxDimensions + 1) / 2) * 2 - 1,
-                  3,
-                  globalConfig.assetsDpi * globalConfig.tileSize
-              );
+            ? // we floor to the nearest multiple of the map view tile resolution
+              Math.floor(clamped / CHUNK_OVERLAY_RES) * CHUNK_OVERLAY_RES || CHUNK_OVERLAY_RES
+            : // we floor to the nearest odd multiple so that the center of each building is rendered
+              Math.floor((clamped + inverseBorder) / (2 * inverseBorder)) * (2 * inverseBorder) -
+                  inverseBorder || inverseBorder;
         logger.log("Pixels per tile:", tileSizePixels);
 
-        if (tileSizePixels * maxDimensions > MAX_CANVAS_DIMS) {
+        if (Math.round(tileSizePixels * maxDimensions) > MAX_CANVAS_DIMS) {
             logger.error("Maximum canvas size exceeded, aborting");
             // @TODO: translation (T.dialogs.exportScreenshotFail.title) (T.dialogs.exportScreenshotFail.text)
             this.root.hud.parts.dialogs.showInfo("Too large", "The base is too large to render, sorry!");
@@ -210,11 +226,15 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         }
 
         logger.log("Allocating buffer, if the factory grew too big it will crash here");
-        const [canvas, context] = makeOffscreenBuffer(bounds.w * tileSizePixels, bounds.h * tileSizePixels, {
-            smooth: true,
-            reusable: false,
-            label: "export-buffer",
-        });
+        const [canvas, context] = makeOffscreenBuffer(
+            Math.round(bounds.w * tileSizePixels),
+            Math.round(bounds.h * tileSizePixels),
+            {
+                smooth: true,
+                reusable: false,
+                label: "export-buffer",
+            }
+        );
         logger.log("Got buffer, rendering now ...");
 
         const visibleRect = bounds.allScaled(globalConfig.tileSize);
