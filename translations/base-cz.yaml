@@ -219,7 +219,7 @@ dialogs:
     puzzleSubmitOk:
         title: Puzzle publikováno
         desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro
-            ostatní hráče. Můžete ho najít v sekci "Má puzzle".
+            ostatní hráče. Můžete ho najít v sekci "Moje puzzly".
     puzzleCreateOffline:
         title: Offline mód
         desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše
@@ -430,30 +430,30 @@ ingame:
     puzzleEditorControls:
         title: Puzzle editor
         instructions:
-            - 1. Umístěte <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Umístěte <strong>výrobníky</strong>, které poskytnou hráči
+              tvary a barvy.
+            - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
+              doručte to do jednoho či více <strong>příjemců cílů</strong>
+            - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
+              úsek, <strong>uloží se jako cíl</strong>, který hráč musí
+              pozdeji vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
+            - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově dojde k její
+              deaktivaci.
+            - 5. Jakmile kliknete na ověření, vaše puzzle bude ověřeno a můžete
+              ho publikovat.
+            - 6. Během publikace budou kromě výrobníků a příjemců cílů
+              <strong>všechny budovy odstraněny</strong> - To je ta část,
+              na kterou má koneckonců každý hráč přijít sám :)
     puzzleCompletion:
-        title: Puzzle Completed!
+        title: Puzzle dokončeno!
         titleLike: "Click the heart if you liked the puzzle:"
         titleRating: How difficult did you find the puzzle?
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
         continueBtn: Keep Playing
         menuBtn: Menu
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
+        author: Autor
+        shortKey: Krátký klíč
         rating: Difficulty score
         averageDuration: Avg. Duration
         completionRate: Completion rate
@@ -658,7 +658,7 @@ buildings:
     constant_producer:
         default:
             name: Výrobník
-            description: Constantly outputs a specified shape or color.
+            description: Neustále vydává zadaný tvar či barvu.
     goal_acceptor:
         default:
             name: Příjemce cílů
@@ -1170,15 +1170,15 @@ puzzleMenu:
     title: Puzzle mód
     createPuzzle: Vytvořit puzzle
     loadPuzzle: Načíst
-    reviewPuzzle: Review & Publish
+    reviewPuzzle: Ověření a publikace
     validatingPuzzle: Ověřování puzzlu
     submittingPuzzle: Odesílání puzzlu
-    noPuzzles: V této sekci nejsou momentálně žádné puzzly.
+    noPuzzles: V této sekci momentálně nejsou žádné puzzly.
     categories:
         levels: Úrovně
         new: Nové
-        top-rated: Top Rated
-        mine: Má puzzle
+        top-rated: Nejlépe hodnocené
+        mine: Moje puzzly
         short: Krátké
         easy: Lehké
         hard: Těžké
