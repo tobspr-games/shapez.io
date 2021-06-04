@@ -430,7 +430,7 @@ ingame:
     puzzleEditorControls:
         title: Puzzle editor
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
+            - 1. Umístěte <strong>Constant Producers</strong> to provide shapes and
               colors to the player
             - 2. Build one or more shapes you want the player to build later and
               deliver it to one or more <strong>Goal Acceptors</strong>
@@ -657,16 +657,16 @@ buildings:
                 kabelů na běžnou vrstvu.
     constant_producer:
         default:
-            name: Constant Producer
+            name: Výrobník
             description: Constantly outputs a specified shape or color.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Příjemce cílů
+            description: Doručte tvary příjemci cílů, abyste je nastavili jako cíl.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Blok
+            description: Umožňuje zablokovat políčko.
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
@@ -1165,24 +1165,24 @@ tips:
     - Stisknutím F4 dvakrát zobrazíte souřadnici myši a kamery.
     - Můžete kliknout na připínáček vlevo vedle připnutého tvaru k jeho odepnutí.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
+    play: Hrát
+    edit: Upravit
+    title: Puzzle mód
+    createPuzzle: Vytvořit puzzle
+    loadPuzzle: Načíst
     reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    validatingPuzzle: Ověřování puzzlu
+    submittingPuzzle: Odesílání puzzlu
+    noPuzzles: V této sekci nejsou momentálně žádné puzzly.
     categories:
-        levels: Levels
-        new: New
+        levels: Úrovně
+        new: Nové
         top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        mine: Má puzzle
+        short: Krátké
+        easy: Lehké
+        hard: Těžké
+        completed: Dokončeno
     validation:
         title: Invalid Puzzle
         noProducers: Please place a Constant Producer!
