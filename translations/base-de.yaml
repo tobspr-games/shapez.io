@@ -70,11 +70,11 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Puzzle Modus
+    back: Zurück
+    puzzleDlcText: Du mags das optimieren und Verbessern deiner Fabriken? Hol dir den
+        Puzzle DLC jetzt auf Steam für noch mehr Spaß!
+    puzzleDlcWishlist: Füge es heute noch deiner Wunschlist hinzu!
 dialogs:
     buttons:
         ok: OK
