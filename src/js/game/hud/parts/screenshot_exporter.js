@@ -57,6 +57,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             return;
         }
 
+        /** @type {Rectangle} */
         let bounds = undefined;
         const massSelector = this.root.hud.parts.massSelector;
         if (massSelector instanceof HUDMassSelector) {
@@ -108,13 +109,24 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         const layerInput = new FormElementCheckbox({
             id: "screenshotLayer",
             // @TODO: translation (T.dialogs.exportScreenshotWarning.descLayer)
-            label: "Include wires layer",
+            label: "Wires layer",
             defaultValue: this.root.currentLayer === "wires" ? true : false,
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
             title: T.dialogs.exportScreenshotWarning.title,
-            desc: T.dialogs.exportScreenshotWarning.desc,
+            desc: bounds
+                ? // @TODO: translation (T.dialogs.exportScreenshotWarning.descSelection)
+                  "You requested to export a region of your base as a screenshot. Please note that this will be quite slow for a bigger region and could potentially crash your game!"
+                : // @TODO: update translation (T.dialogs.exportScreenshotWarning.desc)
+                  "You requested to export your base as a screenshot. Please note that this will be quite slow for a bigger base and could potentially crash your game!<br><br>Tip: You can select a region with <key> to only take a screenshot of that region.".replace(
+                      "<key>",
+                      "<code class='keybinding'>" +
+                          this.root.keyMapper
+                              .getBinding(KEYMAPPINGS.massSelect.massSelectStart)
+                              .getKeyCodeString() +
+                          "</code>"
+                  ),
             formElements: [qualityInput, overlayInput, layerInput],
             buttons: ["cancel:good", "ok:bad"],
         });
@@ -150,6 +162,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
     doExport(targetResolution, overlay, wiresLayer, allowBorder, tileBounds) {
         logger.log("Starting export ...");
 
+        const boundsSelected = !!tileBounds;
         if (!tileBounds) {
             // Find extends
             const staticEntities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
@@ -210,8 +223,22 @@ export class HUDScreenshotExporter extends BaseHUDPart {
 
         if (Math.round(tileSizePixels * maxDimensions) > MAX_CANVAS_DIMS) {
             logger.error("Maximum canvas size exceeded, aborting");
-            // @TODO: translation (T.dialogs.exportScreenshotFail.title) (T.dialogs.exportScreenshotFail.text)
-            this.root.hud.parts.dialogs.showInfo("Too large", "The base is too large to render, sorry!");
+            this.root.hud.parts.dialogs.showInfo(
+                // @TODO: translation (T.dialogs.exportScreenshotFail.title)
+                "Too large",
+                boundsSelected
+                    ? // @TODO: translation (T.dialogs.exportScreenshotFail.descSelection)
+                      "The region selected is too large to render, sorry! Try selecting a smaller region."
+                    : // @TODO: translation (T.dialogs.exportScreenshotFail.desc)
+                      "The base is too large to render, sorry! Try selecting just a region of your base with <key>.".replace(
+                          "<key>",
+                          "<code class='keybinding'>" +
+                              this.root.keyMapper
+                                  .getBinding(KEYMAPPINGS.massSelect.massSelectStart)
+                                  .getKeyCodeString() +
+                              "</code>"
+                      )
+            );
             return;
         }
 
