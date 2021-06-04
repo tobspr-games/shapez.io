@@ -1221,56 +1221,56 @@ tips:
       bestimmen.
     - Du kannst die angehefteten Formen am linken Rand wieder entfernen.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Spielen
+    edit: bearbeiten
+    title: Puzzle Modus
+    createPuzzle: Puzzle erstellen
+    loadPuzzle: Laden
+    reviewPuzzle: Überprüfen & Veröffentlichen
+    validatingPuzzle: Puzzle wird überprüft
+    submittingPuzzle: Puzzle wird veröffentlicht
+    noPuzzles: Hier gibt es bisher noch keine Puzzles.
     categories:
         levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        new: Neu
+        top-rated: Am besten bewertet
+        mine: Meine Puzzles
+        short: Kurz
+        easy: Einfach
+        hard: Schwierig
+        completed: Abgeschlossen
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Ungültiges Puzzle
+        noProducers: Bitte plaziere einen Item-Produzent!
+        noGoalAcceptors: Bitte plaziere einen Ziel-Akzeptor!
+        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein zugewiesenes Item.
+            Liefere eine Form zu diesen, um ein Ziel zu setzen.
+        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht genügend Items.
+            Stelle sicher, dass alle Akzeptatorindikatoren grün sind.
+        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des beabauren Bereichs.
+            Vergrößere den Bereich oder entferene die Gebäude.
+        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass deine Item-Produzent
+            nicht direkt an deine Ziel-Akzeptoren lieferen.
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
+    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
+        neustarten oder zu updaten (Ungültiger Api-Schlüssel).
+    unauthorized: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
+        neustarten oder zu updaten (Nicht autorisiert).
+    bad-token: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
+        neustarten oder zu updaten (Ungültiger Token).
+    bad-id: Ungültige Puzzle Identifikation.
+    not-found: Das gegebene Puzzle konnte nicht gefunden werden.
+    bad-category: Die gegebene Kategorie konnte nicht gefunden werden.
+    bad-short-key: Der gegebene Kurzschlüssel ist ungültig.
+    profane-title: Dein Puzzletitel enthält ungültige Wörter.
+    bad-title-too-many-spaces: Dein Puzzletitel ist zu kurz.
+    bad-shape-key-in-emitter: Einem konstanten Produzenten wurde ein ungültiges Item zugewiesen.
+    bad-shape-key-in-goal: Einem Ziel-Akzeptor wurde ein ungültiges Item zugewiesen.
+    no-emitters: Dein Puzzle enthält keine konstanten Produzenten.
+    no-goals: Dein Puzzle enthält keine Ziel-Akzeptoren.
+    short-key-already-taken: Dieser Kurzschlüssel ist bereits vergeben, bitte wähle einen anderen.
+    can-not-report-your-own-puzzle: Du kannst nicht dein eigenes Puzzle melden.
+    bad-payload: Die Anfrage beinhaltet ungültige Daten.
+    bad-building-placement: Dein Puzzle beinhaltet Gebäude, die sich an ungültigen Stellen befinden.
+    timeout: Es kam zu einer Zeitüberschreitung bei der Anfrage.
