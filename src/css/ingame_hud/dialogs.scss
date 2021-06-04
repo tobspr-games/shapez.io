@@ -164,7 +164,7 @@
             .keybinding {
                 position: relative;
                 background: #eee;
-                @include PlainText;
+                @include SuperSmallText;
                 height: unset;
                 margin: 1px 0;
             }
