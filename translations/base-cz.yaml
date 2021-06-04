@@ -1184,37 +1184,37 @@ puzzleMenu:
         hard: Těžké
         completed: Dokončeno
     validation:
-        title: Neplatné puzzle
+        title: Neplatný puzzle
         noProducers: Prosím umístěte výrobník!
         noGoalAcceptors: Prosím umístěte příjemce cílů!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        goalAcceptorNoItem: Jeden nebo více příjemců cílů ještě nemají nastavený tvar.
+            Doručte jim tvar, abyste jej nastavili jako cíl.
+        goalAcceptorRateNotMet: Jeden nebo více příjemců cílů nedostávají dostatečný počet tvarů.
+            Ujistěte se, že indikátory jsou zelené pro všechny příjemce.
+        buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast.
+            Buď zvětšete plochu, nebo je odstraňte.
+        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že vyrobníky
+            nedodávají své tvary přímo do přijemců cílů.
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Provádíte své akce příliš často. Počkejte prosím.
+    invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (neplatný Api Key).
+    unauthorized: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Neautorizovaný).
+    bad-token: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Špatný token).
+    bad-id: Neplatný identifikátor puzzlu.
+    not-found: Daný puzzle nebyl nalezen.
+    bad-category: Daná kategorie nebyla nalezena.
+    bad-short-key: Krátký klíč je neplatný.
+    profane-title: Název vašeho puzzlu obsahuje rouhavá slova.
+    bad-title-too-many-spaces: Název vašeho puzzlu je příliš krátký.
+    bad-shape-key-in-emitter: Výrobník má nastaven neplatný tvar.
+    bad-shape-key-in-goal: Příjemce cílů má nastaven neplatný tvar.
+    no-emitters: Váš puzzle neobsahuje žádné výrobníky.
+    no-goals: Váš puzzle neobsahuje žádné příjemce cílů.
+    short-key-already-taken: Tento krátký klíč je již používán, zadejte prosím jiný.
+    can-not-report-your-own-puzzle: Nemůžete nahlásit vlastní puzzle.
+    bad-payload: Žádost obsahuje neplatná data.
+    bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
+    timeout: Žádost vypršela.
