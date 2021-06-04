@@ -233,7 +233,7 @@
                 @include S(min-width, 160px);
 
                 > div {
-                    background: #fff;
+                    background: $mainBgColor;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -245,7 +245,7 @@
 
                     transition: background-color 0.12s ease-in-out;
                     &:hover {
-                        background-color: #fafafa;
+                        background-color: darken($mainBgColor, 5);
                     }
 
                     @include DarkThemeOverride {
