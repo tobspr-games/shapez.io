@@ -96,6 +96,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             id: "screenshotQuality",
             label: "Quality",
             options: screenshotQualities,
+            defaultValue: 1,
             valueGetter: quality => quality.resolution,
             // @TODO: translation (T.dialogs.exportScreenshotWarning.qualityLabel)
             textGetter: quality => qualityNames[quality.id],

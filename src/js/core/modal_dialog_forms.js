@@ -238,12 +238,12 @@ export class FormElementItemChooser extends FormElement {
 }
 
 export class FormElementEnum extends FormElement {
-    constructor({ id, label = null, options, valueGetter, textGetter }) {
+    constructor({ id, label = null, options, defaultValue = 0, valueGetter, textGetter }) {
         super(id, label);
         this.options = options;
         this.valueGetter = valueGetter;
         this.textGetter = textGetter;
-        this.index = 0;
+        this.index = defaultValue;
 
         this.element = null;
     }
@@ -254,7 +254,7 @@ export class FormElementEnum extends FormElement {
                 ${this.label ? `<label>${this.label}</label>` : ""}
                 <div class="enum" data-formId="${this.id}">
                     <div class="toggle prev">⯇</div>
-                    <div class="value">${this.textGetter(this.options[0])}</div>
+                    <div class="value">${this.textGetter(this.options[this.index])}</div>
                     <div class="toggle next">⯈</div>
                 </div>
             </div>
