@@ -217,37 +217,37 @@ dialogs:
         title: Chyba odeslání
         desc: "Odeslání puzzlu selhalo:"
     puzzleSubmitOk:
-        title: Puzzle zveřejněno
-        desc: Gratuluji! Vaše puzzle bylo zvěřejněno a je dostupné pro
+        title: Puzzle publikováno
+        desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro
             ostatní hráče. Můžete ho najít v sekci "Má puzzle".
     puzzleCreateOffline:
         title: Offline mód
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše
+            puzzle. Chcete přesto pokračovat?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Doporučení
+        desc: <strong>Důrazně</strong> doporučujeme průchod základní hrou nejméně do úrovně 12
+            před vstupem do puzzle DLC, jinak můžete narazit na
+            mechaniku hry, se kterou jste se ještě nesetkali. Chcete přesto pokračovat?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Krátký klíč zkopírován
+        desc: Krátký klíč tohoto puzzlu (<key>) byl zkopírován do vaší schránky! Může
+            být vložen v puzzle menu pro přístup k danému puzzlu.
     puzzleReport:
-        title: Report Puzzle
+        title: Nahlásit puzzle
         options:
-            profane: Profane
-            unsolvable: Not solvable
+            profane: Rouhavý
+            unsolvable: Nelze vyřešit
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Děkujeme za vaši zpětnou vazbu!
+        desc: Toto puzzle bylo označeno.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Nahlášení selhalo
+        desc: "Vaše nahlášení nemohlo být zpracováno:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Vložte krátký klíč
+        desc: Vložte krátký klíč pro načtení příslušného puzzlu.
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -423,12 +423,12 @@ ingame:
         zoneTitle: Zóna
         zoneWidth: Šířka
         zoneHeight: Výška
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        trimZone: Okraj
+        clearItems: Vymazat tvary
+        share: Sdílet
+        report: Nahlásit
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Puzzle editor
         instructions:
             - 1. Place <strong>Constant Producers</strong> to provide shapes and
               colors to the player
