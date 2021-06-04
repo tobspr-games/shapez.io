@@ -171,7 +171,9 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             maxTile.x = Math.ceil(maxTile.x / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
             maxTile.y = Math.ceil(maxTile.y / globalConfig.mapChunkSize) * globalConfig.mapChunkSize;
 
-            tileBounds = Rectangle.fromTwoPoints(minTile, maxTile);
+            tileBounds = Rectangle.fromTwoPoints(minTile, maxTile).expandedInAllDirections(
+                globalConfig.mapChunkSize
+            );
         }
 
         // if the desired pixels per tile is too small, we do not create a border
