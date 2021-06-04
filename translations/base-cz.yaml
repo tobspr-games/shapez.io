@@ -195,10 +195,10 @@ dialogs:
     submitPuzzle:
         title: Odeslat puzzle
         descName: "Pojmenujte svůj puzzle:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        descIcon: "Prosím zadejte unikátní krátký klíč, který bude zobrazen jako ikona
+            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte jeden
+            z níže náhodně vybraných tvarů):"
+        placeholderName: Název puzzlu
     puzzleResizeBadBuildings:
         title: Změna velikosti není možná
         desc: Zónu není možné více zmenšit, protože by některé budovy byly
@@ -208,8 +208,8 @@ dialogs:
         desc: "Načítání puzzlu selhalo:"
     offlineMode:
         title: Offline mód
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline módu.
+            Ujistěte se, že máte aktivní připojení k internetu.
     puzzleDownloadError:
         title: Chyba stahování
         desc: "Stažení puzzlu selhalo:"
@@ -217,11 +217,11 @@ dialogs:
         title: Chyba odeslání
         desc: "Odeslání puzzlu selhalo:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzzle zveřejněno
+        desc: Gratuluji! Vaše puzzle bylo zvěřejněno a je dostupné pro
+            ostatní hráče. Můžete ho najít v sekci "Má puzzle".
     puzzleCreateOffline:
-        title: Offline Mode
+        title: Offline mód
         desc: Since you are offline, you will not be able to save and/or publish your
             puzzle. Would you still like to continue?
     puzzlePlayRegularRecommendation:
