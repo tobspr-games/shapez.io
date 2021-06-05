@@ -71,8 +71,8 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
     savegameUnnamed: Sans titre
-    puzzleMode: Puzzle Mode
-    back: Back
+    puzzleMode: Mode Puzzle
+    back: Retour
     puzzleDlcText: Vous aimez compacter et optimiser vos usines? Achetez le DLC 
         sur Steam dés maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Wishlist now!
@@ -89,7 +89,7 @@ dialogs:
         viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
-        retry: Reesayer
+        retry: Réessayer
         continue: Continuer
         playOffline: Jouer Hors-ligne
     importSavegameError:
@@ -200,17 +200,15 @@ dialogs:
     submitPuzzle:
         title: Envoyer le Puzzle
         descName: "Donnez un nom à votre puzzle:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        descIcon: "Veuillez entrer une unique et courte clef, qui sera affichée comme icône de votre puzzle (Vous pouvez les générer <link>ici</link>, ou en choisir une
+            parmi les formes suggérées alétoirement ci-dessous):"
+        placeholderName: Titre du Puzzle
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Impossible de redimensionner
+        desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en dehors de la zone
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Mauvais Puzzle
+        desc: "Le puzzle n'a pas réussi à charger:"
     offlineMode:
         title: Mode hors-ligne
         desc: We couldn't reach the servers, so the game has to run in offline mode.
@@ -230,7 +228,7 @@ dialogs:
         desc: Since you are offline, you will not be able to save and/or publish your
             puzzle. Would you still like to continue?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
+        title: Recommandation
         desc: I <strong>strongly</strong> recommend playing the normal game to level 12
             before attempting the puzzle DLC, otherwise you may encounter
             mechanics not yet introduced. Do you still want to continue?
@@ -239,16 +237,16 @@ dialogs:
         desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
             can be entered in the puzzle menu to access the puzzle.
     puzzleReport:
-        title: Report Puzzle
+        title: Signaler le Puzzle
         options:
             profane: Profane
-            unsolvable: Not solvable
+            unsolvable: Irrésolvable
             trolling: Trolling
     puzzleReportComplete:
         title: Merci pour votre retour!
         desc: Le puzzle à été marqué.
     puzzleReportError:
-        title: Failed to report
+        title: Échec du signalement
         desc: "Your report could not get processed:"
     puzzleLoadShortKey:
         title: Enter short key
@@ -426,16 +424,16 @@ ingame:
                 title: Me soutenir
                 desc: Je le développe pendant mon temps libre !
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Succès
+                desc: Débloquez-les tous !
     puzzleEditorSettings:
         zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
+        zoneWidth: Largeur
+        zoneHeight: Hauteur
         trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        clearItems: Supprimer les objets
+        share: Partager
+        report: Signaler
     puzzleEditorControls:
         title: Puzzle Creator
         instructions:
@@ -454,8 +452,8 @@ ingame:
               except for the Producers and Goal Acceptors - That's the part that
               the player is supposed to figure out for themselves, after all :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
+        title: Puzzle Résolu!
+        titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
         titleRating: How difficult did you find the puzzle?
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
         continueBtn: Keep Playing
@@ -465,7 +463,7 @@ ingame:
         shortKey: Short Key
         rating: Difficulty score
         averageDuration: Avg. Duration
-        completionRate: Completion rate
+        completionRate: Taux de réussite
 shopUpgrades:
     belt:
         name: Convoyeurs, distributeurs et tunnels
@@ -1150,7 +1148,7 @@ demo:
         exportingBase: Exporter une image de toute la base
     settingNotAvailable: Indisponible dans la démo.
 tips:
-    - Le centre n’importe quelle forme, pas seulement la forme actuelle !
+    - Le centre accepte n’importe quelle forme, pas seulement la forme actuelle !
     - Assurez-vous que vos usines soient modulaires, cela paiera !
     - Ne construisez pas trop près du centre, ou ce sera un énorme chaos !
     - Si l’empilement ne fonctionne pas, essayez d’échanger les entrées.
@@ -1227,26 +1225,26 @@ tips:
     - Appuyez deux fois sur F4 pour voir les coordonnées.
     - Cliquez sur une forme épinglée à gauche pour l’enlever.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
+    play: Jouer
+    edit: Éditer
+    title: Mode Puzzle
+    createPuzzle: Créer un Puzzle
+    loadPuzzle: Charger
+    reviewPuzzle: Revoir et Publier
     validatingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    noPuzzles: Il n'y actuellement aucun puzzle dans cette section.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        levels: Niveaux
+        new: Nouveaux
+        top-rated: Les Mieux Notés
+        mine: Mes Puzzles
+        short: Courts
+        easy: Faciles
+        hard: Difficiles
+        completed: Terminés
     validation:
-        title: Invalid Puzzle
+        title: Puzzle Invalide
         noProducers: Please place a Constant Producer!
         noGoalAcceptors: Please place a Goal Acceptor!
         goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
@@ -1258,7 +1256,7 @@ puzzleMenu:
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
+    ratelimit: Vous affectuez vos actions trop rapidement. Merci d'attendre un peu.
     invalid-api-key: Failed to communicate with the backend, please try to
         update/restart the game (Invalid Api Key).
     unauthorized: Failed to communicate with the backend, please try to
@@ -1266,17 +1264,17 @@ backendErrors:
     bad-token: Failed to communicate with the backend, please try to update/restart
         the game (Bad Token).
     bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
+    not-found: Le puzzle donné n'a pas pu être trouvé.
+    bad-category: La catégorie donnée n'a pas pu être trouvée.
     bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
+    profane-title: Le titre de votre puzzle contient des mots non autorisés.
+    bad-title-too-many-spaces: Le titre de votre puzzle est trop court.
     bad-shape-key-in-emitter: A constant producer has an invalid item.
     bad-shape-key-in-goal: A goal acceptor has an invalid item.
     no-emitters: Your puzzle does not contain any constant producers.
     no-goals: Your puzzle does not contain any goal acceptors.
     short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
+    can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
     bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    bad-building-placement: Votre puzzle contient des bâtiments mal placés.
+    timeout: La demande a expiré.
