@@ -230,7 +230,7 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Öneri
         desc: Ben <strong>muhakkak</strong> yapboz moduna başlamadan önce normal oyunu
-            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi taktirde henüz sunulmamış
+            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz sunulmamış
             mekaniklerle (yapılar ve oynanış şekilleri) karşılaşabilirsiniz.
     puzzleShare:
         title: Kısa Anahtar Kopyalandı
@@ -426,7 +426,7 @@ ingame:
         zoneTitle: Alan
         zoneWidth: Genişlik
         zoneHeight: Yükseklik
-        trimZone: Kesim Alanı(?)
+        trimZone: Alanı Sınırlandır
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
