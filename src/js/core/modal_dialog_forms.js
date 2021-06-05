@@ -170,7 +170,7 @@ export class FormElementCheckbox extends FormElement {
         this.element.classList.toggle("checked", this.value);
     }
 
-    focus(parent) {}
+    focus() {}
 }
 
 export class FormElementCheckboxList extends FormElement {
@@ -195,7 +195,7 @@ export class FormElementCheckboxList extends FormElement {
         return this.checkboxes.map(checkbox => checkbox.getValue());
     }
 
-    focus(parent) {}
+    focus() {}
 }
 
 export class FormElementItemChooser extends FormElement {
