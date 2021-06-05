@@ -19,6 +19,7 @@ import { getDeviceDPI } from "../../../core/dpi_manager";
 import { HUDMassSelector } from "./mass_selector";
 import { clamp } from "../../../core/utils";
 import { CHUNK_OVERLAY_RES, MapChunkView } from "../../map_chunk_view";
+import { enumHubGoalRewards } from "../../tutorial_goals";
 
 const logger = createLogger("screenshot_exporter");
 
@@ -125,7 +126,13 @@ export class HUDScreenshotExporter extends BaseHUDPart {
         });
         const checkboxInputs = new FormElementCheckboxList({
             id: "screenshotCheckboxes",
-            checkboxes: [overlayInput, layerInput, backgroundInput],
+            checkboxes: [
+                overlayInput,
+                ...(this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers)
+                    ? [layerInput]
+                    : []),
+                backgroundInput,
+            ],
         });
         const dialog = new DialogWithForm({
             app: this.root.app,
