@@ -1,5 +1,6 @@
 import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
+import { createLogger } from "./logging";
 import { Signal } from "./signal";
 import { safeModulo } from "./utils";
 
@@ -13,6 +14,8 @@ import { safeModulo } from "./utils";
  *
  * ***************************************************
  */
+
+const logger = createLogger("dialog_forms");
 
 export class FormElement {
     constructor(id, label) {
@@ -263,12 +266,20 @@ export class FormElementItemChooser extends FormElement {
 }
 
 export class FormElementEnum extends FormElement {
-    constructor({ id, label = null, options, defaultValue = 0, valueGetter, textGetter }) {
+    constructor({ id, label = null, options, defaultValue = null, valueGetter, textGetter }) {
         super(id, label);
         this.options = options;
         this.valueGetter = valueGetter;
         this.textGetter = textGetter;
-        this.index = defaultValue;
+        this.index = 0;
+        if (defaultValue !== null) {
+            const index = this.options.findIndex(option => option.id === defaultValue);
+            if (index >= 0) {
+                this.index = index;
+            } else {
+                logger.warn("Option ID", defaultValue, "not found in", options, "!");
+            }
+        }
 
         this.element = null;
     }
