@@ -14,7 +14,7 @@ steamPage:
     what_others_say: Ce que les gens pensent de Shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
-    notch_comment: Mince! Je devrais vraiment me coucher, Mais je crois que j'ai trouvé
+    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai trouvé
         comment faire un ordinateur dans Shapez.io
     steam_review_comment: This game has stolen my life and I don't want it back.
         Very chill factory game that won't let me stop making my lines more
@@ -73,8 +73,8 @@ mainMenu:
     savegameUnnamed: Sans titre
     puzzleMode: Mode Puzzle
     back: Retour
-    puzzleDlcText: Vous aimez compacter et optimiser vos usines? Achetez le DLC 
-        sur Steam dés maintenant pour encore plus d'amusement!
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC 
+        sur Steam dès maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Wishlist now!
 dialogs:
     buttons:
@@ -200,7 +200,7 @@ dialogs:
     submitPuzzle:
         title: Envoyer le Puzzle
         descName: "Donnez un nom à votre puzzle:"
-        descIcon: "Veuillez entrer une unique et courte clef, qui sera affichée comme icône de votre puzzle (Vous pouvez les générer <link>ici</link>, ou en choisir une
+        descIcon: "Veuillez entrer un unique raccourci d'une forme, qui sera affichée comme icône de votre puzzle (Vous pouvez générer le raccourci d'une forme <link>ici</link>, ou en choisir une
             parmi les formes suggérées alétoirement ci-dessous):"
         placeholderName: Titre du Puzzle
     puzzleResizeBadBuildings:
@@ -211,8 +211,8 @@ dialogs:
         desc: "Le puzzle n'a pas réussi à charger:"
     offlineMode:
         title: Mode hors-ligne
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en mode hors ligne.
+            Veuillez vous assurez que vous disposez d'une connexion Internet active.
     puzzleDownloadError:
         title: Erreur de téléchargment
         desc: "Le téléchargement à échoué:"
@@ -221,17 +221,16 @@ dialogs:
         desc: "L'envoi à échoué:"
     puzzleSubmitOk:
         title: Puzzle envoyé
-        desc: Félicitation! Votre puzzle à été envoyé et peut maintenant être joué.
-            Vous pouvez maintenant le retrouver dans la section "Mes Puzzle".
+        desc: Félicitations ! Votre puzzle a été envoyé et peut maintenant être joué.
+            Vous pouvez maintenant le retrouver dans la section "Mes Puzzles".
     puzzleCreateOffline:
         title: Mode Hors-ligne
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        desc: Puisque vous êtes hors ligne, vous ne pourrez pas enregistrer et/ou publier votre puzzle. Souhaitez-vous toujours continuer ?
     puzzlePlayRegularRecommendation:
         title: Recommandation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au niveau 12
+            avant d'essayer le Puzzle DLC, sinon vous risqez de rencontrer
+            des méchanismes pas encore introduits. Voulez-vous toujours continuer ?
     puzzleShare:
         title: Short Key Copied
         desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
@@ -272,7 +271,7 @@ ingame:
         clearSelection: Effacer la sélection
         pipette: Pipette
         switchLayers: Changer de calque
-        clearBelts: Suprimer les rails
+        clearBelts: Supprimer les rails
     colors:
         red: Rouge
         green: Vert
@@ -437,10 +436,10 @@ ingame:
     puzzleEditorControls:
         title: Puzzle Creator
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
+            - 1. Placez des <strong>Producteurs Constants</strong> pour fournir des formes et
+              des couleurs au joueur
+            - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur fabrique plus tard et
+              délivrez-la/les à un ou plusieurs <strong>Récepteurs d'Objectif</strong>
             - 3. Once a Goal Acceptor receives a shape for a certain amount of
               time, it <strong>saves it as a goal</strong> that the player must
               produce later (Indicated by the <strong>green badge</strong>).
@@ -452,17 +451,17 @@ ingame:
               except for the Producers and Goal Acceptors - That's the part that
               the player is supposed to figure out for themselves, after all :)
     puzzleCompletion:
-        title: Puzzle Résolu!
+        title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        titleRating: À quel point avez-vous trouvé le puzzle diffcile ?
+        titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
+        continueBtn: Continuer à jouer
         menuBtn: Menu
     puzzleMetadata:
-        author: Author
+        author: Auteur
         shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
+        rating: Niveau de difficulté
+        averageDuration: Durée moyenne
         completionRate: Taux de réussite
 shopUpgrades:
     belt:
@@ -683,25 +682,25 @@ buildings:
                 calque de câblage sur le calque normal.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Producteur Constabnt
+            description: Sort constamment une forme ou une couleur spécifiée.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Récepteur d'Objetcif
+            description: Délivrez des formes au récepteur d'objectif pour les définir comme objectif.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Bloc
+            description: Permet de bloquer une case.
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Vous venez de déverrouiller le <strong>découpeur</strong>, qui coupe les formes en deux
+            de haut en bas <strong>indépendamment de son
+            orientation</strong>!<br><br>Assurez-vous de vous débarrasser des déchets, ou
+            sinon <strong>il se bouchera et se bloquera</strong> - À cet effet,
+            Je vous ai donné la <strong>poubelle</strong>, qui détruit
+            tout ce que vous mettez dedans !
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -727,9 +726,9 @@ storyRewards:
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut
+            être utilisé pour construire de plus grandes usines en <strong>divisant et en rassemblant
+            des objets</strong> sur plusieurs convoyeurs !
     reward_tunnel:
         title: Tunnel
         desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
@@ -835,14 +834,14 @@ storyRewards:
             gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotator, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            normally.<br><br> Whatever you choose, remember to have fun!
+        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous permettent de
+            <strong>simuler le traitement des formes</strong>!<br><br> Vous pouvez
+            maintenant simuler un découpeur, un pivoteur, un assembleur et plus encore sur la couche des fils !
+            Avec cela vous avez maintenant trois options pour continuer le jeu:<br><br> -
+            Construire une <strong>machine automatique</strong> pour créer toute forme
+            possible demandée par le HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
+            quelque chose de cool avec les fils.<br><br> - Continuer à jouer
+            normalement.<br><br> Quoi que vous choisissiez, n'oubliez pas de vous amuser !
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -1119,10 +1118,10 @@ keybindings:
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        constant_producer: Producteur Constant
+        goal_acceptor: Récepteur d'Objectif
+        block: Bloc
+        massSelectClear: Vider les convoyeurs
 about:
     title: À propos de ce jeu
     body: >-
@@ -1231,8 +1230,8 @@ puzzleMenu:
     createPuzzle: Créer un Puzzle
     loadPuzzle: Charger
     reviewPuzzle: Revoir et Publier
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
+    validatingPuzzle: Validation du Puzzle
+    submittingPuzzle: Soumission du Puzzle
     noPuzzles: Il n'y actuellement aucun puzzle dans cette section.
     categories:
         levels: Niveaux
@@ -1245,16 +1244,16 @@ puzzleMenu:
         completed: Terminés
     validation:
         title: Puzzle Invalide
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
+        noProducers: Veuillez placer un Producteur Constant !
+        noGoalAcceptors: Veuillez placer un Récepteur d'Objectif !
         goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
             Deliver a shape to them to set a goal.
         goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
             Make sure that the indicators are green for all acceptors.
         buildingOutOfBounds: One or more buildings are outside of the buildable area.
             Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        autoComplete: Votre puzzle se complète de lui-même ! Veuillez vous assurer que vos producteurs
+            constants ne délivrent pas directement à vos récepteurs d'objectifs.
 backendErrors:
     ratelimit: Vous affectuez vos actions trop rapidement. Merci d'attendre un peu.
     invalid-api-key: Failed to communicate with the backend, please try to
