@@ -90,7 +90,7 @@ dialogs:
         showKeybindings: Kürzel anzeigen
         retry: Wiederholen
         continue: Fortsetzen
-        playOffline: Offline Spielen
+        playOffline: Offline spielen
     importSavegameError:
         title: Importfehler
         text: "Fehler beim Importieren deines Speicherstands:"
@@ -193,48 +193,48 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzle konnte nicht geladen werden.
+        title: Fehler beim Laden des Puzzles
         desc: "Leider konnte das Puzzle nicht geladen werden."
     submitPuzzle:
         title: Puzzle einreichen
         descName: "Gib deinem Puzzle einen Namen:"
-        descIcon: "Bitte gib einen kurzen Code ein, welcher als Icon für dein Puzzle benutzt wird (Du kannst diese <link>hier</link> erstellen, oder suche dir eines der zufällig generierten Icons aus.):"
-        placeholderName: Puzzle Titel
+        descIcon: "Bitte gib hier den Kurz-Code einer Form an. Dieser wird als Icon für das Puzzle verwendet (Du kannst diese <link>hier</link> erstellen, oder suche dir eines der zufällig generierten Icons aus):"
+        placeholderName: Puzzletitel
     puzzleResizeBadBuildings:
-        title: Ändern der Größe nicht möglich.
-        desc: Du kannst die Zone nicht verkleinern, weil sich dann manche der Gebäude außerhalb der Zone befinden würden
+        title: Ändern der Größe nicht möglich
+        desc: Du kannst die Zone nicht verkleinern, weil sich dann manche der Gebäude außerhalb der Zone befinden würden.
     puzzleLoadError:
         title: Fehlerhaftes Puzzle
         desc: "Puzzle konnte nicht geladen werden:"
     offlineMode:
-        title: Offline Modus
-        desc: Wir konnten die Server nicht erreichen, also muss das Spiel im Offline Modus laufen.
-            Bitte versicher dich, dass du eine aktive Internetverbindung besitzt.
+        title: Offlinemodus
+        desc: Wir konnten die Server nicht erreichen, also muss das Spiel im Offlinemodus laufen.
+            Bitte versichere dich, dass du eine aktive Internetverbindung besitzt.
     puzzleDownloadError:
-        title: Download Fehler
-        desc: "Downloaden des Puzzles fehlgeschlagen"
+        title: Downloadfehler
+        desc: "Der Download des Puzzles ist fehlgeschlagen"
     puzzleSubmitError:
         title: Fehler beim Einreichen
-        desc: "Konnte dein Puzzle nicht einreichen"
+        desc: "Das Puzzle konnte nicht eingereicht werden."
     puzzleSubmitOk:
         title: Puzzle veröffentlicht
         desc: Gratulation! Dein Puzzle wurde veröffentlicht und kann nun von anderen gespielt werden.
             Du kannst es nun in der "Meine Puzzles" Sektion finden.
     puzzleCreateOffline:
-        title: Offline Modus
-        desc: Nachdem du offline bist, wird es dir nicht möglich sein dein Puzzle zu speichern oder zu veröffentlichen. Möchtest du trotzdem fortsetzen?
+        title: Offline-Modus
+        desc: Nachdem du offline bist, wird es dir nicht möglich sein, dein Puzzle zu speichern oder zu veröffentlichen. Möchtest du trotzdem fortfahren?
     puzzlePlayRegularRecommendation:
         title: Empfehlung
-        desc: I empfehle <strong>dringend</strong> das normale Spiel bis Level 12 zu spielen,
-            bevor du das Puzzle DLC versuchst, sonst wirst du Mechaniken über den Weg laufen welche du noch nicht kennen gelernt hast. Möchtest du trotzdem fortsetzen?
+        desc: Ich empfehle <strong>dringend</strong>, das normale Spiel bis Level 12 zu spielen,
+           bevor du das Puzzle-DLC versuchst. Du läufst sonst Mechaniken über den Weg, die du noch nicht kennst. Möchtest du trotzdem fortfahren?
     puzzleShare:
         title: 
-        desc: Der Codes des Puzzles (<key>) wrude in deine Zwischenablage kopiert! Er
-            kann im Puzzle Menü eingegeben werden um das Puzzle zu erreichen.
+        desc: Der Kurz-Code des Puzzles (<key>) wurde in die Zwischenablage kopiert! Er
+            kann im Puzzlemenü eingegeben werden, um das Puzzle zu erreichen.
     puzzleReport:
         title: Puzzle melden
         options:
-            profane: Profan
+            profane: Missbrauch
             unsolvable: Nicht lösbar
             trolling: Trolling
     puzzleReportComplete:
@@ -244,8 +244,8 @@ dialogs:
         title: Fehler beim Melden
         desc: "Deine Meldung konnte nicht verarbeitet werden:"
     puzzleLoadShortKey:
-        title: Code eingeben
-        desc: Gib den Code für das Puzzle ein.
+        title: Kurz-Code eingeben
+        desc: Gib den Kurz-Code für das Puzzle ein.
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
