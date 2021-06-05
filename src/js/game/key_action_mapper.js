@@ -439,18 +439,17 @@ export class KeyActionMapper {
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
-     * @param {boolean} param0.ctrl
      * @param {boolean} param0.alt
      * @param {boolean=} param0.initial
      */
-    handleKeydown({ keyCode, shift, ctrl, alt, initial }) {
+    handleKeydown({ keyCode, shift, alt, initial }) {
         let stop = false;
 
         // Find mapping
         for (const key in this.keybindings) {
             /** @type {Keybinding} */
             const binding = this.keybindings[key];
-            if (binding.keyCode === keyCode && !shift && !ctrl && !alt && (initial || binding.repeated)) {
+            if (binding.keyCode === keyCode && (initial || binding.repeated)) {
                 /** @type {Signal} */
                 const signal = this.keybindings[key].signal;
                 if (signal.dispatch() === STOP_PROPAGATION) {
@@ -469,10 +468,9 @@ export class KeyActionMapper {
      * @param {object} param0
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
-     * @param {boolean} param0.ctrl
      * @param {boolean} param0.alt
      */
-    handleKeyup({ keyCode, shift, ctrl, alt }) {
+    handleKeyup({ keyCode, shift, alt }) {
         // Empty
     }
 
