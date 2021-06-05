@@ -70,9 +70,9 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
-    puzzleMode: Puzzle Modus
+    puzzleMode: Puzzlemodus
     back: Zurück
-    puzzleDlcText: Du hast Spaß daran deine Fabriken zu optimieren und effizienter zu machen?
+    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter zu machen?
         Hol dir den Puzzle DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
 dialogs:
