@@ -10,10 +10,10 @@ import { Blueprint } from "../../blueprint";
 import { enumMouseButton } from "../../camera";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
-import { Entity } from "../../entity";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { globalConfig } from "../../../core/config";
 import { paste } from "../../../core/clipboard_paste";
+import { compressX64, decompressX64 } from "../../../core/lzstring";
 
 const copy = require("clipboard-copy");
 
@@ -231,7 +231,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         const serializedBP = this.currentBlueprint.get().serialize();
         try {
             const json = JSON.stringify(serializedBP);
-            await copy(json);
+            await copy(compressX64(json));
             this.root.soundProxy.playUi(SOUNDS.copy);
             logger.debug("Copied blueprint to clipboard");
         } catch (e) {
@@ -247,7 +247,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         let json;
         try {
             let data = await paste();
-            json = JSON.parse(data);
+            json = JSON.parse(decompressX64(data.trim()));
             logger.debug("Received data from clipboard");
         } catch (e) {
             logger.error("Paste from clipboard failed:", e.message);
