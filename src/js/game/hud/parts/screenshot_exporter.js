@@ -337,7 +337,9 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             this.root.systemMgr.systems.belt.drawBeltItems(parameters);
             this.root.map.drawForeground(parameters);
             this.root.systemMgr.systems.hub.draw(parameters);
-            this.root.hud.parts.wiresOverlay.draw(parameters);
+            if (this.root.hud.parts.wiresOverlay) {
+                this.root.hud.parts.wiresOverlay.draw(parameters);
+            }
             if (this.root.currentLayer === "wires") {
                 this.root.map.drawWiresForegroundLayer(parameters);
             }
