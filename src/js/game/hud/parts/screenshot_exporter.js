@@ -307,6 +307,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             this.root.currentLayer = "regular";
             this.root.hud.parts.wiresOverlay.currentAlpha = 0;
         }
+        this.root.systemMgr.systems.itemAcceptor.updateForScreenshot();
 
         // Render all relevant chunks
         this.root.signals.gameFrameStarted.dispatch();
