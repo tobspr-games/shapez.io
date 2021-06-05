@@ -34,7 +34,14 @@ export class Blueprint {
      * Serialize
      */
     serialize() {
-        return this.serializer.serializeEntityArray(this.entities);
+        let data = this.serializer.serializeEntityArray(this.entities);
+        // Remove unneeded fields
+        for (let i = 0; i < data.length; ++i) {
+            const entry = data[i];
+            delete entry.uid;
+            delete entry.components.WiredPins;
+        }
+        return data;
     }
 
     /**
@@ -57,6 +64,10 @@ export class Blueprint {
                 /** @type {Entity?} */
                 const value = json[i];
                 if (value.components == undefined || value.components.StaticMapEntity == undefined) {
+                    return;
+                }
+                const staticData = value.components.StaticMapEntity;
+                if (staticData.code == undefined || staticData.origin == undefined) {
                     return;
                 }
                 const result = new SerializerInternal().deserializeEntity(root, value);
