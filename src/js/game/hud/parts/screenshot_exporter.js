@@ -321,10 +321,7 @@ export class HUDScreenshotExporter extends BaseHUDPart {
             if (hideBackground) {
                 this.root.map.drawVisibleChunks(
                     parameters,
-                    /** @this {MapChunkView} */ function (parameters) {
-                        this.root.systemMgr.systems.beltUnderlays.drawChunk(parameters, this);
-                        this.root.systemMgr.systems.belt.drawChunk(parameters, this);
-                    }
+                    MapChunkView.prototype.drawBackgroundLayerBeltsOnly
                 );
             } else {
                 this.root.map.drawBackground(parameters);

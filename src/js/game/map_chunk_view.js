@@ -54,6 +54,17 @@ export class MapChunkView extends MapChunk {
     }
 
     /**
+     * Draws only the belts of the background layer
+     * @param {DrawParameters} parameters
+     */
+    drawBackgroundLayerBeltsOnly(parameters) {
+        const systems = this.root.systemMgr.systems;
+
+        systems.beltUnderlays.drawChunk(parameters, this);
+        systems.belt.drawChunk(parameters, this);
+    }
+
+    /**
      * Draws the dynamic foreground layer
      * @param {DrawParameters} parameters
      */
