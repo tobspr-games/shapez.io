@@ -1230,8 +1230,8 @@ puzzleMenu:
     createPuzzle: Créer un Puzzle
     loadPuzzle: Charger
     reviewPuzzle: Revoir et Publier
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
+    validatingPuzzle: Validation du Puzzle
+    submittingPuzzle: Soumission du Puzzle
     noPuzzles: Il n'y actuellement aucun puzzle dans cette section.
     categories:
         levels: Niveaux
