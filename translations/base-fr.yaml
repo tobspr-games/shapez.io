@@ -208,17 +208,17 @@ dialogs:
         desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en dehors de la zone
     puzzleLoadError:
         title: Mauvais Puzzle
-        desc: "Le puzzle n'a pas réussi à charger:"
+        desc: "Le chargement du puzzle a échoué:"
     offlineMode:
         title: Mode hors-ligne
         desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en mode hors ligne.
             Veuillez vous assurez que vous disposez d'une connexion Internet active.
     puzzleDownloadError:
         title: Erreur de téléchargment
-        desc: "Le téléchargement à échoué:"
+        desc: "Le téléchargement a échoué:"
     puzzleSubmitError:
         title: Erreur d'envoi
-        desc: "L'envoi à échoué:"
+        desc: "L'envoi a échoué:"
     puzzleSubmitOk:
         title: Puzzle envoyé
         desc: Félicitations ! Votre puzzle a été envoyé et peut maintenant être joué.
