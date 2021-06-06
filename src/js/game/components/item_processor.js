@@ -1,6 +1,7 @@
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+const { Set } = require("immutable");
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -26,6 +27,12 @@ export const enumItemProcessorTypes = {
 export const enumItemProcessorRequirements = {
     painterQuad: "painterQuad",
 };
+
+const specialCaseProcessorTypes = Set.of(
+    enumItemProcessorTypes.hub,
+    enumItemProcessorTypes.trash,
+    enumItemProcessorTypes.goal
+);
 
 /** @typedef {{
  *  item: BaseItem,
@@ -73,6 +80,12 @@ export class ItemProcessorComponent extends Component {
         // Type of processing requirement
         this.processingRequirement = processingRequirement;
 
+        /**
+         * Our current inputs
+         * @type {Map<number, BaseItem>}
+         */
+        this.inputSlotsMap = new Map();
+
         this.clear();
     }
 
@@ -87,6 +100,8 @@ export class ItemProcessorComponent extends Component {
          * @type {Array<{ item: BaseItem, sourceSlot: number }>}
          */
         this.inputSlots = [];
+
+        this.inputSlotsMap.clear();
 
         /**
          * What we are currently processing, empty if we don't produce anything rn
@@ -109,13 +124,10 @@ export class ItemProcessorComponent extends Component {
      * @param {number} sourceSlot
      */
     tryTakeItem(item, sourceSlot) {
-        if (
-            this.type === enumItemProcessorTypes.hub ||
-            this.type === enumItemProcessorTypes.trash ||
-            this.type === enumItemProcessorTypes.goal
-        ) {
+        if (specialCaseProcessorTypes.contains(this.type)) {
             // Hub has special logic .. not really nice but efficient.
             this.inputSlots.push({ item, sourceSlot });
+            this.inputSlotsMap.set(sourceSlot, item);
             return true;
         }
 
@@ -128,6 +140,7 @@ export class ItemProcessorComponent extends Component {
         }
 
         this.inputSlots.push({ item, sourceSlot });
+        this.inputSlotsMap.set(sourceSlot, item);
         return true;
     }
 }
