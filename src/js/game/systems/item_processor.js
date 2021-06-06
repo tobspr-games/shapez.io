@@ -225,7 +225,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check if all colors of the enabled slots are there
                 for (let i = 0; i < slotStatus.length; ++i) {
-                    if (slotStatus[i] && !processorComp.inputSlotsMap.has(1 + 1)) {
+                    if (slotStatus[i] && !processorComp.inputSlotsMap.has(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
                         for (let j = 0; j < 4; ++j) {
