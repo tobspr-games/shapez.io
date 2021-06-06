@@ -81,7 +81,7 @@ export class ItemProcessorComponent extends Component {
         this.processingRequirement = processingRequirement;
 
         /**
-         * Our current inputs
+         * Our current inputs. Mapping of slot number to item.
          * @type {Map<number, BaseItem>}
          */
         this.inputSlotsMap = new Map();
@@ -94,12 +94,6 @@ export class ItemProcessorComponent extends Component {
         // it will take the other one. Some machines ignore this (e.g. the balancer) to make
         // sure the outputs always match
         this.nextOutputSlot = 0;
-
-        /**
-         * Our current inputs
-         * @type {Array<{ item: BaseItem, sourceSlot: number }>}
-         */
-        this.inputSlots = [];
 
         this.inputSlotsMap.clear();
 
@@ -126,20 +120,12 @@ export class ItemProcessorComponent extends Component {
     tryTakeItem(item, sourceSlot) {
         if (specialCaseProcessorTypes.contains(this.type)) {
             // Hub has special logic .. not really nice but efficient.
-            this.inputSlots.push({ item, sourceSlot });
             this.inputSlotsMap.set(sourceSlot, item);
             return true;
         }
 
-        // Check that we only take one item per slot
-        for (let i = 0; i < this.inputSlots.length; ++i) {
-            const slot = this.inputSlots[i];
-            if (slot.sourceSlot === sourceSlot) {
-                return false;
-            }
-        }
+        if (this.inputSlotsMap.has(sourceSlot)) return false;
 
-        this.inputSlots.push({ item, sourceSlot });
         this.inputSlotsMap.set(sourceSlot, item);
         return true;
     }

@@ -253,14 +253,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const processorComp = entity.components.ItemProcessor;
 
         // First, take items
-        processorComp.inputSlots = [];
-
         /** @type {Map<number, BaseItem>} */
-        const itemsBySlotMap = new Map();
-        for (let [key, value] of processorComp.inputSlotsMap.entries()) {
-            itemsBySlotMap.set(key, value);
-        }
-        processorComp.inputSlotsMap.clear();
+        const itemsBySlotMap = processorComp.inputSlotsMap;
 
         /** @type {Array<ProducedItem>} */
         const outItems = [];
@@ -275,6 +269,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             itemsBySlotMap,
             outItems,
         });
+
+        processorComp.inputSlotsMap.clear();
 
         // Track produced items
         for (let i = 0; i < outItems.length; ++i) {
