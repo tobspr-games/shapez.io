@@ -31,7 +31,6 @@ const MAX_QUEUED_CHARGES = 2;
  * Type of a processor implementation
  * @typedef {{
  *   entity: Entity,
- *   items: Array<{ item: BaseItem, sourceSlot: number }>,
  *   itemsBySlotMap: Map<number, BaseItem>,
  *   outItems: Array<ProducedItem>
  *   }} ProcessorImplementationPayload
@@ -188,7 +187,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // DEFAULT
             // By default, we can start processing once all inputs are there
             case null: {
-                return processorComp.inputSlots.length >= processorComp.inputsPerCharge;
+                return processorComp.inputSlotsMap.size >= processorComp.inputsPerCharge;
             }
 
             // QUAD PAINTER
@@ -254,14 +253,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const processorComp = entity.components.ItemProcessor;
 
         // First, take items
-        const items = processorComp.inputSlots;
         processorComp.inputSlots = [];
-
-        /** @type {Object<string, BaseItem>} */
-        const itemsBySlot = {};
-        for (let i = 0; i < items.length; ++i) {
-            itemsBySlot[items[i].sourceSlot] = items[i].item;
-        }
 
         /** @type {Map<number, BaseItem>} */
         const itemsBySlotMap = new Map();
@@ -280,7 +272,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         // Call implementation
         handler({
             entity,
-            items,
             itemsBySlotMap,
             outItems,
         });
@@ -319,13 +310,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         const nextSlot = processorComp.nextOutputSlot++ % availableSlots;
 
-        for (let i = 0; i < payload.items.length; ++i) {
+        for (let [key, value] of payload.itemsBySlotMap.entries()) {
             payload.outItems.push({
-                item: payload.items[i].item,
-                preferredSlot: (nextSlot + i) % availableSlots,
+                item: value,
+                preferredSlot: (nextSlot + key) % availableSlots,
                 doNotTrack: true,
             });
         }
+
         return true;
     }
 
@@ -333,7 +325,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_CUTTER(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.itemsBySlotMap.get(0));
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -354,7 +346,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_CUTTER_QUAD(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.itemsBySlotMap.get(0));
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -375,7 +367,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.itemsBySlotMap.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -389,7 +381,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER_CCW(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.itemsBySlotMap.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -403,7 +395,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER_180(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.itemsBySlotMap.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -444,8 +436,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_MIXER(payload) {
         // Find both colors and combine them
-        const item1 = /** @type {ColorItem} */ (payload.items[0].item);
-        const item2 = /** @type {ColorItem} */ (payload.items[1].item);
+        const item1 = /** @type {ColorItem} */ (payload.itemsBySlotMap.get(0));
+        const item2 = /** @type {ColorItem} */ (payload.itemsBySlotMap.get(1));
         assert(item1 instanceof ColorItem, "Input for color mixer is not a color");
         assert(item2 instanceof ColorItem, "Input for color mixer is not a color");
 
@@ -559,8 +551,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const hubComponent = payload.entity.components.Hub;
         assert(hubComponent, "Hub item processor has no hub component");
 
-        for (let i = 0; i < payload.items.length; ++i) {
-            const item = /** @type {ShapeItem} */ (payload.items[i].item);
+        for (let value of payload.itemsBySlotMap.values()) {
+            const item = /** @type {ShapeItem} */ (value);
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
         }
     }
@@ -570,12 +562,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_GOAL(payload) {
         const goalComp = payload.entity.components.GoalAcceptor;
-        const item = payload.items[0].item;
+        const item = payload.itemsBySlotMap.get(0);
         const now = this.root.time.now();
 
         if (this.root.gameMode.getIsEditor()) {
             // while playing in editor, assign the item
-            goalComp.item = payload.items[0].item;
+            goalComp.item = payload.itemsBySlotMap.get(0);
             goalComp.deliveryHistory.push({
                 item,
                 time: now,
