@@ -380,6 +380,15 @@ export class ReadWriteProxy {
 
   /** @returns {ExplainedResult} */
   internalVerifyEntry(data) {
+    // NOTE: this check could be removed if it's only used in `readAsync`,
+    // as the data HAS to be migrated. Probably with a sanity check at `readAsync`
+    // to check that migration did set the version flag accordingly, i.e
+    // ```js
+    // if (contents.version < currentVersion) { 
+    //  // .. migrate contents and check result
+    //  if (contents.version !== currentVersion) return Prmoise.reject(`Version mismatch after migration: ...`);
+    // }
+    // ```
     if (data.version !== this.getCurrentVersion()) {
       return ExplainedResult.bad(
         "Version mismatch, got " + data.version + " and expected " + this.getCurrentVersion()
