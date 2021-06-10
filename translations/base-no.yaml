@@ -192,9 +192,9 @@ dialogs:
         desc: Det er en introduksjonsvideo tilgjengelig for dette nivået! Ønsker du
             å ta en titt?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: Introduksjon tilgjengelig
+        desc: Det er en introduksjonsvideo tilgjengelig, men den er kun
+            tilgjengelig på Engelsk. Ønsker du å ta en titt?
     editConstantProducer:
         title: Velg Gjenstand
     puzzleLoadFailed:
