@@ -329,13 +329,10 @@ export class ReadWriteProxy {
         .readFileAsync(this.filename)
         // Decrypt data (if its encrypted)
         // @ts-ignore
-        .then(rawData => tryDecompress(rawData).then(verifyChecksum).then(tryParseJSON))
+        .then(rawData => tryDecompress(rawData).then(verifyChecksum).then(tryParseJSON).then(decompressObject))
 
         // Check for errors during read
         .catch(onReadError)
-
-        // Decompress
-        .then(decompressObject)
 
         // Verify basic structure
         .then(verifyBasicStructure)
