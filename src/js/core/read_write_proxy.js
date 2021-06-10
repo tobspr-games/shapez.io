@@ -161,141 +161,196 @@ export class ReadWriteProxy {
 
   // Reads the data asynchronously, fails if verify() fails
   readAsync() {
+
+    /**
+      * Decompresses raw data through `decompressX64`
+      * Fails if decompression failed or
+      * data is too small.
+      * @param {string} data
+      * @returns {Promise<string>}
+      */
+    const decompressRaw = data => {
+      const decompressed = decompressX64(data.substr(compressionPrefix.length));
+      if (!decompressed) return Promise.reject("bad-content / decompression-failed");
+      return Promise.resolve(decompressed);
+    };
+
+    /**
+      * Verifies the checksum and returns the payload.
+      * Fails if the payload is too small to contain the checksum
+      * or the checksums don't match.
+      *
+      * @param {string} data
+      * @returns {Promise<string>}
+      */
+    const verifyChecksum = data => {
+      if (data.length < 40) return Promise.reject("bad-content / payload-too-small");
+      const checksum = data.substr(0, 40);
+      const payload = data.substr(40);
+      const saltedPayload = payload + salt;
+      const desiredChecksum = checksum.startsWith(CRC_PREFIX) ? computeCrc(saltedPayload) : sha1(saltedPayload);
+      if (desiredChecksum !== checksum) return Promise.reject(`bad-content / checksum-mismatch: ${desiredChecksum} vs ${checksum} `);
+      return Promise.resolve(payload);
+    };
+
+    /**
+      * Tries to parse the JSON data.
+      * Logs and fails if the parser failed.
+      *
+      * @param {string} jsonString
+      * @returns {Promise<any>}
+      */
+    const tryParseJSON = jsonString => {
+      try {
+        const parsedData = JSON.parse(jsonString);
+        return Promise.resolve(parsedData);
+      } catch (ex) {
+        logger.error(
+          "Failed to parse file content of",
+          this.filename,
+          ":",
+          ex,
+          "(content was:",
+          jsonString,
+          ")"
+        );
+        throw new Error("invalid-serialized-data");
+      }
+    };
+
+    /**
+      * Tries to decompress the data.
+      * Fails if data is not compressed
+      * and code is in production.
+      *
+      * @param {string} rawData 
+      * @returns {Promise<string>}
+      */
+    const tryDecompress = rawData => {
+      if (rawData.startsWith(compressionPrefix)) return decompressRaw(rawData);
+      if (!G_IS_DEV) return Promise.reject("bad-content / missing-compression");
+      return Promise.resolve(rawData);
+    };
+
+    /**
+      * Checks for errors during file read.
+      * If the file was not found, it will not fail
+      * and instead return default data.
+      * 
+      * @param {FILE_NOT_FOUND | string} err
+      * @returns {Promise<object>}
+      */
+    const onReadError = err => {
+      if (err === FILE_NOT_FOUND) {
+        logger.log("File not found, using default data");
+        return Promise.resolve(this.getDefaultData());
+      }
+      return Promise.reject(`file-error: ${err}`);
+    };
+
+    /**
+      * Verifies basic structure of the data
+      * through `internalVerifyBasicStructure`.
+      *
+      * @param {any} contents
+      * @returns {Promise<any>}
+      */
+    const verifyBasicStructure = contents => {
+      const verifyResult = this.internalVerifyBasicStructure(contents);
+      if (verifyResult.isBad()) return Promise.reject(`verify-failed: ${verifyResult.reason}`);
+      return Promise.resolve(contents);
+    };
+
+    /**
+      * Checks the version and migrates if required.
+      * Fails if the version required for the data is newer
+      * or migration failed.
+      *
+      * @param {any} contents
+      * @returns {Promise<any>}
+      */
+    const checkVersionAndMigrate = contents => {
+      const currentVersion = this.getCurrentVersion();
+      if (contents.version > currentVersion) return Promise.reject("stored-data-is-newer");
+      if (contents.version < currentVersion) {
+        logger.log(
+          `Trying to migrate data object from version ${contents.version} to ${currentVersion}`
+        );
+        const migrationResult = this.migrate(contents); // modify in place
+        if (migrationResult.isBad()) {
+          return Promise.reject(`migration-failed: ${migrationResult.reason}`);
+        }
+      }
+      return Promise.resolve(contents);
+    }
+
+    /**
+      * Verifies contents once they've been version-matched 
+      * and migrated if needed, through `internalVerifyEntry`.
+      * Fails if such method fails.
+      *
+      * @param {any} contents
+      * @returns {Promise<any>}
+      */
+    const verifyEntry = contents => {
+      const verifyResult = this.internalVerifyEntry(contents);
+      if (!verifyResult.result) {
+        logger.error(
+          `Read invalid data from ${this.filename}, reason: ${verifyResult.reason}, contents: ${contents}`
+        );
+        return Promise.reject(`invalid-data: ${verifyResult.reason}`);
+      }
+      return Promise.resolve(contents);
+    };
+
+    /**
+      * Stores the verified data.
+      *
+      * @param {any} contents
+      * @returns {any}
+      */
+    const storeContents = contents => {
+      this.currentData = contents;
+      logger.log("📄 Read data with version", this.currentData.version, "from", this.filename);
+      return contents;
+    };
+
+    /**
+      * Generic handler for any failure.
+      *
+      * @param {any} err
+      * @returns {Promise<void>}
+      */
+    const genericOnFail = err => Promise.reject(`Failed to read ${this.filename}: ${err}`);
+
     // Start read request
     return (
       this.app.storage
         .readFileAsync(this.filename)
         // Decrypt data (if its encrypted)
         // @ts-ignore
-        .then(rawData => {
-          if (rawData == null) {
-            // So, the file has not been found, use default data
-            return JSON.stringify(compressObject(this.getDefaultData()));
-          }
+        .then(rawData => tryDecompress(rawData).then(verifyChecksum).then(tryParseJSON))
 
-          if (rawData.startsWith(compressionPrefix)) {
-            const decompressed = decompressX64(rawData.substr(compressionPrefix.length));
-            if (!decompressed) {
-              // LZ string decompression failure
-              return Promise.reject("bad-content / decompression-failed");
-            }
-            if (decompressed.length < 40) {
-              // String too short
-              return Promise.reject("bad-content / payload-too-small");
-            }
-
-            // Compare stored checksum with actual checksum
-            const checksum = decompressed.substring(0, 40);
-            const jsonString = decompressed.substr(40);
-
-            const desiredChecksum = checksum.startsWith(CRC_PREFIX)
-              ? computeCrc(jsonString + salt)
-              : sha1(jsonString + salt);
-
-            if (desiredChecksum !== checksum) {
-              // Checksum mismatch
-              return Promise.reject(
-                "bad-content / checksum-mismatch: " + desiredChecksum + " vs " + checksum
-              );
-            }
-
-            // Parse JSON
-            try {
-              return JSON.parse(jsonString);
-            } catch (ex) {
-              logger.error(
-                "Failed to parse file content of",
-                this.filename,
-                ":",
-                ex,
-                "(content was:",
-                jsonString,
-                ")"
-              );
-              throw new Error("invalid-serialized-data");
-            }
-
-          }
-
-          if (!G_IS_DEV) {
-            return Promise.reject("bad-content / missing-compression");
-          }
-          return rawData;
-        })
         // Check for errors during read
-        .catch(err => {
-          if (err === FILE_NOT_FOUND) {
-            logger.log("File not found, using default data");
-
-            // File not found or unreadable, assume default file
-            return Promise.resolve(this.getDefaultData());
-          }
-
-          return Promise.reject("file-error: " + err);
-        })
-
+        .catch(onReadError)
 
         // Decompress
         .then(decompressObject)
 
         // Verify basic structure
-        .then(contents => {
-          const result = this.internalVerifyBasicStructure(contents);
-          if (!result.isGood()) {
-            return Promise.reject("verify-failed: " + result.reason);
-          }
-          return contents;
-        })
+        .then(verifyBasicStructure)
 
         // Check version and migrate if required
-        .then(contents => {
-          if (contents.version > this.getCurrentVersion()) {
-            return Promise.reject("stored-data-is-newer");
-          }
-
-          if (contents.version < this.getCurrentVersion()) {
-            logger.log(
-              "Trying to migrate data object from version",
-              contents.version,
-              "to",
-              this.getCurrentVersion()
-            );
-            const migrationResult = this.migrate(contents); // modify in place
-            if (migrationResult.isBad()) {
-              return Promise.reject("migration-failed: " + migrationResult.reason);
-            }
-          }
-          return contents;
-        })
+        .then(checkVersionAndMigrate)
 
         // Verify
-        .then(contents => {
-          const verifyResult = this.internalVerifyEntry(contents);
-          if (!verifyResult.result) {
-            logger.error(
-              "Read invalid data from",
-              this.filename,
-              "reason:",
-              verifyResult.reason,
-              "contents:",
-              contents
-            );
-            return Promise.reject("invalid-data: " + verifyResult.reason);
-          }
-          return contents;
-        })
+        .then(verifyEntry)
 
         // Store
-        .then(contents => {
-          this.currentData = contents;
-          logger.log("📄 Read data with version", this.currentData.version, "from", this.filename);
-          return contents;
-        })
+        .then(storeContents)
 
         // Catchall
-        .catch(err => {
-          return Promise.reject("Failed to read " + this.filename + ": " + err);
-        })
+        .catch(genericOnFail)
     );
   }
 
