@@ -244,12 +244,12 @@ dialogs:
     puzzleReport:
         title: Reportar Puzle
         options:
-            profane: Profano
+            profane: Lenguaje soez
             unsolvable: Imposible de resolver
             trolling: Troll
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: ¡Gracias por tu aporte!
+        desc: El puzle ha sido marcado como abuso.
     puzzleReportError:
         title: No se pudo reportar
         desc: "No pudimos procesar tu informe:"
@@ -434,7 +434,7 @@ ingame:
         zoneWidth: Anchura
         zoneHeight: Altura
         trimZone: Área de recorte
-        clearItems: Limpiar Elementos
+        clearItems: Eliminar todos los elementos
         share: Compartir
         report: Reportar
     puzzleEditorControls:
