@@ -434,7 +434,7 @@ ingame:
         zoneWidth: Anchura
         zoneHeight: Altura
         trimZone: Área de recorte
-        clearItems: Limpiar Elementos
+        clearItems: Eliminar todos los elementos
         share: Compartir
         report: Reportar
     puzzleEditorControls:
