@@ -1200,7 +1200,7 @@ backendErrors:
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
         aktualizovat/restartovat hru (neplatný Api Key).
     unauthorized: Komunikace s back-endem se nezdařila, prosím zkuste
-        aktualizovat/restartovat hru (Neautorizovaný).
+        aktualizovat/restartovat hru (Bez autorizace).
     bad-token: Komunikace s back-endem se nezdařila, prosím zkuste
         aktualizovat/restartovat hru (Špatný token).
     bad-id: Neplatný identifikátor puzzlu.
