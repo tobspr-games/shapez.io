@@ -1198,7 +1198,7 @@ puzzleMenu:
 backendErrors:
     ratelimit: Provádíte své akce příliš často. Počkejte prosím.
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
-        aktualizovat/restartovat hru (neplatný Api Key).
+        aktualizovat/restartovat hru (Neplatný API klíč).
     unauthorized: Komunikace s back-endem se nezdařila, prosím zkuste
         aktualizovat/restartovat hru (Bez autorizace).
     bad-token: Komunikace s back-endem se nezdařila, prosím zkuste
