@@ -11,14 +11,14 @@ steamPage:
         És ha ez nem lenne elég, exponenciálisan többet kell termelned az igények kielégítése érdekében - az egyetlen dolog, ami segít, az a termelés mennyisége! Az alakzatokat a játék elején csak feldolgoznod kell, később azonban színezned is kell őket - ehhez bányászni és keverni kell a színeket!
 
         A játék Steamen történő megvásárlása hozzáférést biztosít a teljes verzióhoz, de kipróbálhatod a játékot a shapez.io oldalon, és később dönthetsz!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Mit mondanak mások a shapez.io-ról
+    nothernlion_comment: Ez a játék nagyszerű - Csodás élmény vele játszani,
+        az idő meg csak repül.
+    notch_comment: Basszus... aludnom kéne, de épp most jöttem rá,
+        hogyan tudok számítógépet építeni a shapez.io-ban!
+    steam_review_comment: Ez a játék ellopta az életemet, de nem kérem vissza!
+        Nagyon nyugis gyárépítős játék, amiben nem győzöm a futószalagjaimat
+        optimalizálni.
 global:
     loading: Betöltés
     error: Hiba
@@ -50,7 +50,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SZÓKÖZ
-    loggingIn: Logging in
+    loggingIn: Bejelentkezés
 demoBanners:
     title: Demó verzió
     intro: Vásárold meg az Önálló Verziót a teljes játékélményért!
@@ -70,11 +70,11 @@ mainMenu:
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
     savegameUnnamed: Névtelen
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Fejtörő Mód
+    back: Vissza
+    puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát? Szerezd meg a Puzzle
+        DLC-t a Steamen most!
+    puzzleDlcWishlist: Kívánságlistára vele!
 dialogs:
     buttons:
         ok: OK
@@ -88,9 +88,9 @@ dialogs:
         viewUpdate: Frissítés Megtekintése
         showUpgrades: Fejlesztések
         showKeybindings: Irányítás
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Újra
+        continue: Folytatás
+        playOffline: Offline Játék
     importSavegameError:
         title: Importálás Hiba
         text: "Nem sikerült importálni a mentésedet:"
@@ -192,27 +192,27 @@ dialogs:
         desc: Elérhető egy oktatóvideó ehhez a szinthez, de csak angol nyelven.
             Szeretnéd megnézni?
     editConstantProducer:
-        title: Set Item
+        title: Elem beállítása
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Fejtörő betöltése sikertelen
+        desc: "Sajnos a fejtörőt nem sikerült betölteni:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Fejtörő Beküldése
+        descName: "Adj nevet a fejtörődnek:"
+        descIcon: "Írj be egy egyedi gyorskódot, ami a fejtörőd ikonja lesz
+            (<link>itt</link> tudod legenerálni, vagy válassz egyet az alábbi
+            random generált alakzatok közül):"
+        placeholderName: Fejtörő Neve
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Átméretezés nem lehetséges
+        desc: Nem tudod tovább csökkenteni a zóna méretét, mert bizonyos épületek
+            kilógnának a zónából.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Hibás Fejtörő
+        desc: "A fejtörőt nem sikerült betölteni:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
+        title: Offline Mód
+        desc: Nem tudjuk elérni a szervereket, így a játék Offline módban fut.
             Please make sure you have an active internect connection.
     puzzleDownloadError:
         title: Download Error
