@@ -1,13 +1,13 @@
 steamPage:
     # This is the short text appearing on the steam page
     shortText: shapez.io — це гра про будування фабрик для автоматизації створення
-    та обробки все більш складних форм на нескінченно розширюваній мапі.
+        та обробки все більш складних форм на нескінченно розширюваній мапі.
 
     # This is the text shown above the Discord link
     discordLinkShort: Офіційний Discord
 
     intro: >-
-        Вам подобаються ігри на автоматизацію? Тоді ви в правильному місці!
+        Вам подобаються ігри, що пов'язані з автоматизацією? Тоді ви в правильному місці!
 
         shapez.io — це невимушена гра, в якій вам доведеться будувати фабрики задля автоматизованого виробництва геометричних форм. Зі збільшенням рівня форми стають дедалі складнішими, тому вам доводиться розповсюджуватися по нескінченній мапі.
 
@@ -15,7 +15,7 @@ steamPage:
 
         Купуючи гру в Steam, ви отримуєте доступ до повної версії, але ви також можете спочатку зіграти у демоверсію на shapez.io, а потім прийняти рішення!
 
-    what_others_say: Що говорять люди про shapez.io
+    what_others_say: Що говорять люди про shapez.io?
 
     nothernlion_comment: >-
         Ця гра надзвичайна, я навіть не помічаю як швидко летить час!
@@ -101,7 +101,7 @@ mainMenu:
     back: Назад
 
     puzzleDlcText: >-
-        Do you enjoy compacting and optimizing factories?
+        Вам подобається ущільнювати та оптимізувати заводи?
         Get the Puzzle DLC now on Steam for even more fun!
     puzzleDlcWishlist: Додайте до бажаного!
 
@@ -119,7 +119,7 @@ puzzleMenu:
     categories:
         levels: Рівні
         new: Новий
-        top-rated: Top Rated
+        top-rated: Високо оцінені
         mine: Мої головоломки
         short: Short
         easy: Easy
@@ -225,24 +225,27 @@ dialogs:
             Вкладку з поліпшеннями можна знайти в правому верхньому куті екрана.
 
     massDeleteConfirm:
-        title: Confirm delete
+        title: Підтвердження видалення
         desc: >-
-            You are deleting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Ви видаляєте багато будівль (<count>, якщо бути точним)! Ви справді хочете
+            зробити це?
 
     massCutConfirm:
-        title: Confirm cut
+        title: Підтвердження вирізання
         desc: >-
-            You are cutting a lot of buildings (<count> to be exact)! Are you sure you want to do this?
+            Ви вирізаєте багато будівль(<count>, якщо бути точним)! Ви справді хочете
+            зробити це?
 
     massCutInsufficientConfirm:
-        title: Confirm cut
+        title: Підтвердити вирізання
         desc: >-
-            You can not afford to paste this area! Are you sure you want to cut it?
+            Ви не можете дозволити собі вставити цю ділянку! Ви справді хочете
+            вирізати її?
 
     blueprintsNotUnlocked:
-        title: Not unlocked yet
+        title:  Ще не розблоковано
         desc: >-
-            Complete level 12 to unlock Blueprints!
+            Досягніть 12-го рівня для розблокування креслень!
 
     keybindingsIntroduction:
         title: Useful keybindings
@@ -1239,13 +1242,13 @@ keybindings:
     resetKeybindings: Скинути
 
     categoryLabels:
-        general: Application
-        ingame: Game
-        navigation: Navigating
-        placement: Placement
-        massSelect: Mass Select
-        buildings: Building Shortcuts
-        placementModifiers: Placement Modifiers
+        general: Загальні
+        ingame: Гра
+        navigation: Навігація
+        placement: Розміщення
+        massSelect: Масовий вибір
+        buildings: Гарячі клавіши будівництва
+        placementModifiers: Модифікатори розміщення
 
     mappings:
         confirm: Підтвердити
@@ -1358,27 +1361,27 @@ backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to update/restart the game (Invalid Api Key).
     unauthorized: Failed to communicate with the backend, please try to update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
+    bad-token: Не вдалося встановити зв’язок із серверною базою, спробуйте оновити чи перезапустити гру (Bad Token).
+    bad-id: Недійсний ідентифікатор головоломки.
+    not-found: Не вдалося знайти цю головомку.
+    bad-category: Не вдалося знайти цю категорію.
     bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
+    profane-title: Заголовок вашої головоломки містить нецензурні слова.
+    bad-title-too-many-spaces: Назва головоломки занадто коротка.
     bad-shape-key-in-emitter: A constant producer has an invalid item.
     bad-shape-key-in-goal: A goal acceptor has an invalid item.
     no-emitters: Your puzzle does not contain any constant producers.
     no-goals: Your puzzle does not contain any goal acceptors.
     short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
+    can-not-report-your-own-puzzle: Ви не можете повідомити про свою головоломку.
+    bad-payload: Запит містить недійсні дані.
     bad-building-placement: Your puzzle contains invalid placed buildings.
     timeout: The request timed out.
 
 tips:
     - The hub will accept any input, not just the current shape!
-    - Make sure your factories are modular - it will pay out!
-    - Don't build too close to the hub, or it will be a mess!
+    - Переконайтесь що ваші фабрики модульні — в майбутньому може знадобитись!
+    - Не будуйте близько до Центру, інакше це може перерости у великий хаос!
     - If stacking does not work, try switching the inputs.
     - You can toggle the belt planner direction by pressing <b>R</b>.
     - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
@@ -1386,7 +1389,7 @@ tips:
     - Serial execution is more efficient than parallel.
     - You will unlock more variants of buildings later in the game!
     - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
+    - Симетрія — запорука успіху!
     - You can weave different tiers of tunnels.
     - Try to build compact factories - it will pay out!
     - The painter has a mirrored variant which you can select with <b>T</b>
@@ -1401,7 +1404,7 @@ tips:
     - Invest time to build repeatable designs - it's worth it!
     - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
     - You can hold <b>ALT</b> to invert the direction of placed belts.
-    - Efficiency is key!
+    - Ефективність — запорука успіху!
     - Shape patches that are further away from the hub are more complex.
     - Machines have a limited speed, divide them up for maximum efficiency.
     - Use balancers to maximize your efficiency.
@@ -1424,11 +1427,16 @@ tips:
     - You have an infinite map. Don't cramp your factory, expand!
     - Also try Factorio! It's my favorite game.
     - The quad cutter cuts clockwise, starting from the top right.
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - Your hub marker has a small compass that shows which direction it is in!
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Ви можете завантажити свої збереження в головному меню гри!
+    - Ця гра має багато корисних прив'язок клавіш, тому варто заглянути на сторінку
+      налаштувань.
+    - Ця гра має багато цікавих налаштувань, обов'язково перевірте їх!
+    - Позначка вашого Центру має невеликий компас, який завжди вказує напрямок до
+      нього!
+    - Для очищення конвеєрних стрічкок виріжте область та вставте її в те ж місце.
+    - Натисніть F4, щоби показати вашу частоту кадрів та частоту циклів
+      оновлень.
+    - Натисніть F4 двічі, щоби показати координати плитки, що під курсором, та
+      координати камери.
+    - Ви можете натиснути на фігуру, закріплену в лівому краю екрану, щоби
+    відкріпити її.
