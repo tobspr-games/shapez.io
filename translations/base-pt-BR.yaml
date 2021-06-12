@@ -249,7 +249,7 @@ dialogs:
         title: Falha ao denunciar
         desc: "Sua denúncia não pôde ser processada:"
     puzzleLoadShortKey:
-        title: Insira código 
+        title: Insira código
         desc: Insira o código do desafio para carrega-lo.
 ingame:
     keybindingsOverlay:
@@ -457,7 +457,7 @@ ingame:
         menuBtn: Menu
     puzzleMetadata:
         author: Autor
-        shortKey: Código 
+        shortKey: Código
         rating: Dificuldade
         averageDuration: Duração média
         completionRate: Taxa de sucesso
