@@ -117,6 +117,11 @@ export class FormElementInput extends FormElement {
         return this.element.value;
     }
 
+    setValue(value) {
+        this.element.value = value;
+        this.updateErrorState();
+    }
+
     focus() {
         this.element.focus();
     }

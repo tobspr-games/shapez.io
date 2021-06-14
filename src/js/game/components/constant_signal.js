@@ -1,7 +1,6 @@
-import { gItemRegistry } from "../../core/global_registries";
 import { types } from "../../savegame/serialization";
-import { Component } from "../component";
 import { BaseItem } from "../base_item";
+import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 
 export class ConstantSignalComponent extends Component {

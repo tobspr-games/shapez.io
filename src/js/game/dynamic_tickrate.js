@@ -23,10 +23,16 @@ export class DynamicTickrate {
 
         this.averageFps = 60;
 
-        this.setTickRate(this.root.app.settings.getDesiredFps());
+        const fixedRate = this.root.gameMode.getFixedTickrate();
+        if (fixedRate) {
+            logger.log("Setting fixed tickrate of", fixedRate);
+            this.setTickRate(fixedRate);
+        } else {
+            this.setTickRate(this.root.app.settings.getDesiredFps());
 
-        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
-            this.setTickRate(300);
+            if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+                this.setTickRate(300);
+            }
         }
     }
 
@@ -99,9 +105,7 @@ export class DynamicTickrate {
 
             this.averageTickDuration = average;
 
-            const desiredFps = this.root.app.settings.getDesiredFps();
-
-            // Disabled for now: Dynamicall adjusting tick rate
+            // Disabled for now: Dynamically adjusting tick rate
             // if (this.averageFps > desiredFps * 0.9) {
             //     // if (average < maxTickDuration) {
             //     this.increaseTickRate();

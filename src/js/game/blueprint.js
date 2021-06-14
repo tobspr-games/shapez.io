@@ -149,29 +149,31 @@ export class Blueprint {
      */
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
-            let count = 0;
-            for (let i = 0; i < this.entities.length; ++i) {
-                const entity = this.entities[i];
-                if (!root.logic.checkCanPlaceEntity(entity, tile)) {
-                    continue;
+            return root.logic.performImmutableOperation(() => {
+                let count = 0;
+                for (let i = 0; i < this.entities.length; ++i) {
+                    const entity = this.entities[i];
+                    if (!root.logic.checkCanPlaceEntity(entity, tile)) {
+                        continue;
+                    }
+
+                    const clone = entity.clone();
+                    clone.components.StaticMapEntity.origin.addInplace(tile);
+                    root.logic.freeEntityAreaBeforeBuild(clone);
+                    root.map.placeStaticEntity(clone);
+                    root.entityMgr.registerEntity(clone);
+                    count++;
                 }
 
-                const clone = entity.clone();
-                clone.components.StaticMapEntity.origin.addInplace(tile);
-                root.logic.freeEntityAreaBeforeBuild(clone);
-                root.map.placeStaticEntity(clone);
-                root.entityMgr.registerEntity(clone);
-                count++;
-            }
+                root.signals.bulkAchievementCheck.dispatch(
+                    ACHIEVEMENTS.placeBlueprint,
+                    count,
+                    ACHIEVEMENTS.placeBp1000,
+                    count
+                );
 
-            root.signals.bulkAchievementCheck.dispatch(
-                ACHIEVEMENTS.placeBlueprint,
-                count,
-                ACHIEVEMENTS.placeBp1000,
-                count
-            );
-
-            return count !== 0;
+                return count !== 0;
+            });
         });
     }
 }

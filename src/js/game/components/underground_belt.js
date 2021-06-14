@@ -41,6 +41,17 @@ export class UndergroundBeltComponent extends Component {
         this.mode = mode;
         this.tier = tier;
 
+        /**
+         * The linked entity, used to speed up performance. This contains either
+         * the entrance or exit depending on the tunnel type
+         * @type {LinkedUndergroundBelt}
+         */
+        this.cachedLinkedEntity = null;
+
+        this.clear();
+    }
+
+    clear() {
         /** @type {Array<{ item: BaseItem, progress: number }>} */
         this.consumptionAnimations = [];
 
@@ -51,13 +62,6 @@ export class UndergroundBeltComponent extends Component {
          * @type {Array<[BaseItem, number]>} Format is [Item, ingame time to eject the item]
          */
         this.pendingItems = [];
-
-        /**
-         * The linked entity, used to speed up performance. This contains either
-         * the entrance or exit depending on the tunnel type
-         * @type {LinkedUndergroundBelt}
-         */
-        this.cachedLinkedEntity = null;
     }
 
     /**

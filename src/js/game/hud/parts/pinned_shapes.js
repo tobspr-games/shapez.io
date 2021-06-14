@@ -55,7 +55,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
      */
     deserialize(data) {
         if (!data || !data.shapes || !Array.isArray(data.shapes)) {
-            return "Invalid pinned shapes data";
+            return "Invalid pinned shapes data: " + JSON.stringify(data);
         }
         this.pinnedShapes = data.shapes;
     }

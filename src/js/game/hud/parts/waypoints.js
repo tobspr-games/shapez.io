@@ -100,16 +100,14 @@ export class HUDWaypoints extends BaseHUDPart {
 
         this.directionIndicatorSprite = Loader.getSprite("sprites/misc/hub_direction_indicator.png");
 
-        /** @type {Array<Waypoint>}
-         */
-        this.waypoints = [
-            {
-                label: null,
-                center: { x: 0, y: 0 },
-                zoomLevel: 3,
-                layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
-            },
-        ];
+        /** @type {Array<Waypoint>} */
+        this.waypoints = [];
+        this.waypoints.push({
+            label: null,
+            center: { x: 0, y: 0 },
+            zoomLevel: 3,
+            layer: gMetaBuildingRegistry.findByClass(MetaHubBuilding).getLayer(),
+        });
 
         // Create a buffer we can use to measure text
         this.dummyBuffer = makeOffscreenBuffer(1, 1, {

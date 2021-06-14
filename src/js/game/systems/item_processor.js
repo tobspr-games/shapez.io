@@ -59,6 +59,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.painterQuad]: this.process_PAINTER_QUAD,
             [enumItemProcessorTypes.hub]: this.process_HUB,
             [enumItemProcessorTypes.reader]: this.process_READER,
+            [enumItemProcessorTypes.goal]: this.process_GOAL,
         };
 
         // Bind all handlers
@@ -560,6 +561,34 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         for (let i = 0; i < payload.items.length; ++i) {
             const item = /** @type {ShapeItem} */ (payload.items[i].item);
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
+        }
+    }
+
+    /**
+     * @param {ProcessorImplementationPayload} payload
+     */
+    process_GOAL(payload) {
+        const goalComp = payload.entity.components.GoalAcceptor;
+        const item = payload.items[0].item;
+        const now = this.root.time.now();
+
+        if (this.root.gameMode.getIsEditor()) {
+            // while playing in editor, assign the item
+            goalComp.item = payload.items[0].item;
+            goalComp.deliveryHistory.push({
+                item,
+                time: now,
+            });
+        } else {
+            // otherwise, make sure it is the same, otherwise reset
+            if (item.equals(goalComp.item)) {
+                goalComp.deliveryHistory.push({
+                    item,
+                    time: now,
+                });
+            } else {
+                goalComp.deliveryHistory = [];
+            }
         }
     }
 }
