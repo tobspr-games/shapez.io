@@ -204,7 +204,7 @@ dialogs:
     submitPuzzle:
         title: Enviar Puzzle
         descName: "Nombra tu puzle:"
-        descIcon: "Por favor ingresa una clave breve y única, que será el icono de
+        descIcon: "Por favor ingresa una clave única, que será el icono de
             tu puzle (Puedes generarlas <link>aquí</link>, o escoger una
             de las formas sugeridas de forma aleatoria, aquí abajo):"
         placeholderName: Título del Puzle
@@ -238,8 +238,8 @@ dialogs:
             antes de intentar el DLC de puzles, de otra manera puede que te encuentres con
             mecánicas que aún no hemos introducido. ¿Quieres continuar igualmente?
     puzzleShare:
-        title: Clave breve Copiada
-        desc: Hemos copiado la clave breve de tu puzle (<key>) a tu portapapeles! Puedes
+        title: Clave Copiada
+        desc: Hemos copiado la clave de tu puzle (<key>) a tu portapapeles! Puedes
             ponerlo en el menú de puzles para acceder al puzle.
     puzzleReport:
         title: Reportar Puzle
@@ -254,8 +254,8 @@ dialogs:
         title: No se pudo reportar
         desc: "No pudimos procesar tu informe:"
     puzzleLoadShortKey:
-        title: Introducir clave breve
-        desc: Introduce la clave breve del puzle para cargarlo.
+        title: Introducir clave
+        desc: Introduce la clave del puzle para cargarlo.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -463,7 +463,7 @@ ingame:
         menuBtn: Menú
     puzzleMetadata:
         author: Autor
-        shortKey: Clave breve
+        shortKey: Clave
         rating: Puntuación de dificultad
         averageDuration: Duración media
         completionRate: Índice de finalización
@@ -1260,14 +1260,14 @@ backendErrors:
     bad-id: El identificador del puzle no es válido.
     not-found: No pudimos encontrar ese puzle.
     bad-category: No pudimos encontar esa categoría.
-    bad-short-key: La clave breve que nos diste no es válida.
+    bad-short-key: La clave que nos diste no es válida.
     profane-title: El título de tu puzle contiene lenguaje soez.
     bad-title-too-many-spaces: El título de tu puzle es demasiado breve.
     bad-shape-key-in-emitter: Un productor de un solo elemento tiene un elemento no válido.
     bad-shape-key-in-goal: Un aceptador de objetivos tiene un elemento no válido.
     no-emitters: Tu puzle no contiene ningún productor de un solo item.
     no-goals: Tu puzle no contiene ningún aceptador de objetivos.
-    short-key-already-taken: Esta clave breve ya está siendo usada, por favor usa otra.
+    short-key-already-taken: Esta clave ya está siendo usada, por favor usa otra.
     can-not-report-your-own-puzzle: No pudes reportar tu propio puzle.
     bad-payload: La petición contiene datos no válidos.
     bad-building-placement: Tu puzle contiene edificios en posiciones no válidas.
