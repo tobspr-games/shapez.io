@@ -233,7 +233,7 @@ dialogs:
             altri. Puoi trovarlo nella sezione "I miei puzzle".
     puzzleCreateOffline:
         title: Modalità offline
-        desc: Dato che sei offline, non potrai salvare e/o pubblicare il tuo 
+        desc: Dato che sei offline, non potrai salvare e/o pubblicare il tuo
             puzzle. Sei sicuro di voler contnuare?
     puzzlePlayRegularRecommendation:
         title: Raccomandazione
