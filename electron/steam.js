@@ -47,8 +47,36 @@ function listen() {
         return;
     }
 
+    console.log("Adding listeners");
+
     ipcMain.handle("steam:get-achievement-names", getAchievementNames);
     ipcMain.handle("steam:activate-achievement", activateAchievement);
+
+    function bufferToHex(buffer) {
+        return Array.from(new Uint8Array(buffer))
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    ipcMain.handle("steam:get-ticket", (event, arg) => {
+        console.log("Requested steam ticket ...");
+        return new Promise((resolve, reject) => {
+            greenworks.getAuthSessionTicket(
+                success => {
+                    const ticketHex = bufferToHex(success.ticket);
+                    resolve(ticketHex);
+                },
+                error => {
+                    console.error("Failed to get steam ticket:", error);
+                    reject(error);
+                }
+            );
+        });
+    });
+
+    ipcMain.handle("steam:check-app-ownership", (event, appId) => {
+        return Promise.resolve(greenworks.isSubscribedApp(appId));
+    });
 }
 
 function isInitialized(event) {

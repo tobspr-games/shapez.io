@@ -3,9 +3,9 @@ import { Entity } from "../entity";
 /* typehints:end */
 
 import { enumDirection, Vector } from "../../core/vector";
-import { enumConstantSignalType, ConstantSignalComponent } from "../components/constant_signal";
+import { ConstantSignalComponent } from "../components/constant_signal";
 import { ItemEjectorComponent } from "../components/item_ejector";
-import { enumItemProducerType, ItemProducerComponent } from "../components/item_producer";
+import { ItemProducerComponent } from "../components/item_producer";
 import { MetaBuilding } from "../meta_building";
 
 export class MetaConstantProducerBuilding extends MetaBuilding {
@@ -36,15 +36,7 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
                 slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
             })
         );
-        entity.addComponent(
-            new ItemProducerComponent({
-                type: enumItemProducerType.wireless,
-            })
-        );
-        entity.addComponent(
-            new ConstantSignalComponent({
-                type: enumConstantSignalType.wireless,
-            })
-        );
+        entity.addComponent(new ItemProducerComponent({}));
+        entity.addComponent(new ConstantSignalComponent({}));
     }
 }

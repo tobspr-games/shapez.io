@@ -1,11 +1,11 @@
 export const CHANGELOG = [
     {
         version: "1.4.0",
-        date: "UNRELEASED",
+        date: "04.06.2021",
         entries: [
-            "Added puzzle mode",
             "Belts in blueprints should now always paste correctly",
-            "You can now clear belts by selecting them, and then pressing 'B'",
+            "You can now clear belts by selecting them and then pressing 'B'",
+            "Preparations for the <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/' target='_blank'>Puzzle DLC</a>, coming June 22nd!",
         ],
     },
     {

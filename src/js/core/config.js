@@ -18,6 +18,7 @@ export const THIRDPARTY_URLS = {
     shapeViewer: "https://viewer.shapez.io",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
+    puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",
 
     levelTutorialVideos: {
         21: "https://www.youtube.com/watch?v=0nUfRLMCcgo&",

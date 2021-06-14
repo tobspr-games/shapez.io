@@ -6,6 +6,7 @@ import { TextualGameState } from "../core/textual_game_state";
 import { formatBigNumberFull } from "../core/utils";
 import { enumGameModeIds } from "../game/game_mode";
 import { ShapeDefinition } from "../game/shape_definition";
+import { MUSIC } from "../platform/sound";
 import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
@@ -57,6 +58,10 @@ export class PuzzleMenuState extends TextualGameState {
         super("PuzzleMenuState");
         this.loading = false;
         this.activeCategory = "";
+    }
+
+    getThemeMusic() {
+        return MUSIC.puzzle;
     }
 
     getStateHeaderTitle() {
@@ -186,7 +191,10 @@ export class PuzzleMenuState extends TextualGameState {
                 const difficulty = document.createElement("div");
                 difficulty.classList.add("difficulty");
 
-                const completionPercentage = Math.round((puzzle.completions / puzzle.downloads) * 100.0);
+                const completionPercentage = Math.max(
+                    0,
+                    Math.min(100, Math.round((puzzle.completions / puzzle.downloads) * 100.0))
+                );
                 difficulty.innerText = completionPercentage + "%";
                 stats.appendChild(difficulty);
 
@@ -201,10 +209,13 @@ export class PuzzleMenuState extends TextualGameState {
                 }
             }
 
-            const downloads = document.createElement("div");
-            downloads.classList.add("downloads");
-            downloads.innerText = String(puzzle.downloads);
-            stats.appendChild(downloads);
+            if (this.activeCategory === "mine") {
+                const downloads = document.createElement("div");
+                downloads.classList.add("downloads");
+                downloads.innerText = String(puzzle.downloads);
+                stats.appendChild(downloads);
+                stats.classList.add("withDownloads");
+            }
 
             const likes = document.createElement("div");
             likes.classList.add("likes");
@@ -235,7 +246,7 @@ export class PuzzleMenuState extends TextualGameState {
     /**
      *
      * @param {*} category
-     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]}
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]>}
      */
     getPuzzlesForCategory(category) {
         if (category === "levels") {

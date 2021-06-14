@@ -120,6 +120,11 @@ mainMenu:
     puzzleMode: Puzzle Mode
     back: Back
 
+    puzzleDlcText: >-
+        Do you enjoy compacting and optimizing factories?
+        Get the Puzzle DLC now on Steam for even more fun!
+    puzzleDlcWishlist: Wishlist now!
+
 puzzleMenu:
     play: Play
     edit: Edit
@@ -617,8 +622,9 @@ ingame:
             - 1. Place <strong>Constant Producers</strong> to provide shapes and colors to the player
             - 2. Build one or more shapes you want the player to build later and deliver it to one or more <strong>Goal Acceptors</strong>
             - 3. Once a Goal Acceptor receives a shape for a certain amount of time, it <strong>saves it as a goal</strong> that the player must produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Once you click review, your puzzle will be validated and you can publish it.
-            - 5. Upon release, <strong>all buildings will be removed</strong> except for the Producers and Goal Acceptors - That's the part that the player is supposed to figure out for themselves, after all :)
+            - 4. Click the <strong>lock button</strong> on a building to disable it.
+            - 5. Once you click review, your puzzle will be validated and you can publish it.
+            - 6. Upon release, <strong>all buildings will be removed</strong> except for the Producers and Goal Acceptors - That's the part that the player is supposed to figure out for themselves, after all :)
 
     puzzleCompletion:
         title: Puzzle Completed!
@@ -628,7 +634,8 @@ ingame:
         titleRating: How difficult did you find the puzzle?
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
 
-        buttonSubmit: Continue
+        continueBtn: Keep Playing
+        menuBtn: Menu
 
     puzzleMetadata:
         author: Author

@@ -12,8 +12,13 @@ import { cachebust } from "./cachebust";
 
 const logger = createLogger("background_loader");
 
+export function getLogoSprite() {
+    // @todo: ugh, in a hurry
+    return G_WEGAME_VERSION ? "logo_wegame.png" : G_CHINA_VERSION ? "logo_cn.png" : "logo.png";
+}
+
 const essentialMainMenuSprites = [
-    G_CHINA_VERSION ? "logo_cn.png" : "logo.png",
+    getLogoSprite(),
     ...G_ALL_UI_IMAGES.filter(src => src.startsWith("ui/") && src.indexOf(".gif") < 0),
 ];
 const essentialMainMenuSounds = [

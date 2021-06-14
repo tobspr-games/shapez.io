@@ -6,7 +6,7 @@ import { fillInLinkIntoTranslation } from "../../core/utils";
 import { T } from "../../translations";
 import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
-import { ConstantSignalComponent, enumConstantSignalType } from "../components/constant_signal";
+import { ConstantSignalComponent } from "../components/constant_signal";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
@@ -27,13 +27,11 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const signalComp = entity.components.ConstantSignal;
-
-            if (signalComp.isWireless()) {
-                continue;
-            }
-
             const pinsComp = entity.components.WiredPins;
-            pinsComp.slots[0].value = signalComp.signal;
+
+            if (pinsComp) {
+                pinsComp.slots[0].value = signalComp.signal;
+            }
         }
     }
 
@@ -56,19 +54,20 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             label: fillInLinkIntoTranslation(T.dialogs.editSignal.descShortKey, THIRDPARTY_URLS.shapeViewer),
             placeholder: "",
             defaultValue: "",
-            validator: val => this.parseSignalCode(entity.components.ConstantSignal.type, val),
+            validator: val => this.parseSignalCode(entity, val),
         });
 
         const items = [...Object.values(COLOR_ITEM_SINGLETONS)];
 
-        if (entity.components.ConstantSignal.type === enumConstantSignalType.wired) {
+        if (entity.components.WiredPins) {
             items.unshift(BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON);
             items.push(
                 this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
                     this.root.gameMode.getBlueprintShapeKey()
                 )
             );
-        } else if (entity.components.ConstantSignal.type === enumConstantSignalType.wireless) {
+        } else {
+            // producer which can produce virtually anything
             const shapes = ["CuCuCuCu", "RuRuRuRu", "WuWuWuWu", "SuSuSuSu"];
             items.unshift(
                 ...shapes.reverse().map(key => this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key))
@@ -129,10 +128,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             if (itemInput.chosenItem) {
                 constantComp.signal = itemInput.chosenItem;
             } else {
-                constantComp.signal = this.parseSignalCode(
-                    entity.components.ConstantSignal.type,
-                    signalValueInput.getValue()
-                );
+                constantComp.signal = this.parseSignalCode(entity, signalValueInput.getValue());
             }
         };
 
@@ -171,11 +167,11 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
 
     /**
      * Tries to parse a signal code
-     * @param {string} type
+     * @param {Entity} entity
      * @param {string} code
      * @returns {BaseItem}
      */
-    parseSignalCode(type, code) {
+    parseSignalCode(entity, code) {
         if (!this.root || !this.root.shapeDefinitionMgr) {
             // Stale reference
             return null;
@@ -188,7 +184,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             return COLOR_ITEM_SINGLETONS[codeLower];
         }
 
-        if (type === enumConstantSignalType.wired) {
+        if (entity.components.WiredPins) {
             if (code === "1" || codeLower === "true") {
                 return BOOL_TRUE_SINGLETON;
             }

@@ -16,20 +16,12 @@ export class BeltReaderComponent extends Component {
 
     static getSchema() {
         return {
-            type: types.string,
             lastItem: types.nullable(typeItemSingleton),
         };
     }
 
-    /**
-     * @param {object} param0
-     * @param {string=} param0.type
-     */
-    constructor({ type = enumBeltReaderType.wired }) {
+    constructor() {
         super();
-
-        this.type = type;
-
         this.clear();
     }
 
@@ -57,9 +49,5 @@ export class BeltReaderComponent extends Component {
          * @type {number}
          */
         this.lastThroughputComputation = 0;
-    }
-
-    isWireless() {
-        return this.type === enumBeltReaderType.wireless;
     }
 }

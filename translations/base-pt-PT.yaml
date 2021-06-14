@@ -15,12 +15,12 @@ steamPage:
 
         Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
     what_others_say: O que dizem sobre o shapez.io
-    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado enquanto o jogo,
-        e o tempo parece que voa.
+    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado
+        enquanto o jogo, e o tempo parece que voa.
     notch_comment: Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir
         como criar computorizar no shapez.io
-    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta.
-        Jogo de fábrica relaxante que não me deixa parar de fazer as minhas linhas
+    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta. Jogo
+        de fábrica relaxante que não me deixa parar de fazer as minhas linhas
         cada vez mais eficientes.
 global:
     loading: A Carregar
@@ -53,6 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+    loggingIn: Logging in
 demoBanners:
     title: Versão Demo
     intro: Compra a versão completa para desbloqueares todas as funcionalidades!
@@ -73,6 +74,11 @@ mainMenu:
     madeBy: Criado por <author-link>
     subreddit: Reddit
     savegameUnnamed: Sem Nome
+    puzzleMode: Modo Puzzle
+    back: Voltar
+    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC Puzzle
+        na Steam para ainda mais diversão!
+    puzzleDlcWishlist: Lista de desejos agora!
 dialogs:
     buttons:
         ok: OK
@@ -86,6 +92,9 @@ dialogs:
         viewUpdate: Ver Update
         showUpgrades: Mostrar Upgrades
         showKeybindings: Mostrar Atalhos
+        retry: Tentar novamente
+        continue: Continuar
+        playOffline: Jogar Offline
     importSavegameError:
         title: Erro de importação
         text: "Erro ao importar o teu savegame:"
@@ -189,6 +198,67 @@ dialogs:
         title: Tutorial Disponível
         desc: Existe um vídeo de tutorial disponível para este nível, mas apenas está
             disponível em Inglês. Gostarias de o ver?
+    editConstantProducer:
+        title: Selecionar Item
+    puzzleLoadFailed:
+        title: Puzzles falharam a carregar
+        desc: "Infelizmente os puzzles não podem ser carregados:"
+    submitPuzzle:
+        title: Submeter Puzzle
+        descName: "Dá um nome ao teu puzzle:"
+        descIcon: "Por favor insere um pequeno código único que será a imagem do ícone
+            da teu puzzle (Podes gerar o código <link>aqui</link>, ou escolher uma
+            das seguintes sugestões aleatoriamente geradas.):"
+        placeholderName: Título do Puzzle
+    puzzleResizeBadBuildings:
+        title: Não é possível alterar o tamanho
+        desc: Não podes tornar a zona mais pequena, assim algumas das construções ficariam
+            fora da zona.
+    puzzleLoadError:
+        title: Mau puzzle
+        desc: "O puzzle falhou ao carregar:"
+    offlineMode:
+        title: Modo Offline
+        desc: Não conseguimos correr os servidores, sendo assim o jogo tem de ser jogado em modo offline.
+            Por favor assegura-te de que tens uma boa conexão de internet.
+    puzzleDownloadError:
+        title: Falha no Download
+        desc: "Falha ao fazer o download do puzzle:"
+    puzzleSubmitError:
+        title: Erro ao submeter
+        desc: "Falha ao submeter o teu puzzle:"
+    puzzleSubmitOk:
+        title: Puzzle Publicado
+        desc: Parabéns! O teu puzzle foi publicado e agora pode ser jogado
+            por outros jogadores. Agora podes encontrar o teu puzzle na zona "Meus puzzles".
+    puzzleCreateOffline:
+        title: Modo Offline
+        desc: Como estás no modo offline, tu não poderás salvar e/ou publicar o
+            teu puzzle. Mesmo assim queres continuar?
+    puzzlePlayRegularRecommendation:
+        title: Recomendação
+        desc: Eu recomendo <strong>fortemente</strong> a jogares no modo normal até ao nível 12
+            antes de tentares o "puzzle DLC", caso contrário poderás encontrar
+            mecanicas às quais ainda não foste introduzido. Mesmo assim queres continuar?
+    puzzleShare:
+        title: Pequeno código copiado
+        desc: O pequeno código do puzzle (<key>) foi copiado para a tua área de transferências!
+            Poderá ser introduzido no menu puzzle para teres acesso ao puzzle.
+    puzzleReport:
+        title: Reportar Puzzle
+        options:
+            profane: Inapropriado
+            unsolvable: Não solucionável
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Obrigado pelo teu feedback!
+        desc: O puzzle foi sinalizado.
+    puzzleReportError:
+        title: Falha ao reportar
+        desc: "Não foi possível proceder com o ter reporte:"
+    puzzleLoadShortKey:
+        title: Introduzir pequeno código
+        desc: Introduz um pequeno código para o puzzle carregar.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -210,6 +280,7 @@ ingame:
         clearSelection: Cancelar
         pipette: Pipeta
         switchLayers: Troca de camadas
+        clearBelts: Limpar tapetes rolantes
     buildingPlacement:
         cycleBuildingVariants: Pressionar <key> para obter variações.
         hotkeyLabel: "Atalho: <key>"
@@ -358,8 +429,46 @@ ingame:
                 title: Ajuda-me
                 desc: Eu desenvolvo este jogo no meu tempo livre!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Conquistas
+                desc: Tenta obtê-las todas!
+    puzzleEditorSettings:
+        zoneTitle: Zona
+        zoneWidth: Largura
+        zoneHeight: Altura
+        trimZone: Aparar
+        clearItems: Limpar Itens
+        share: Partilhar
+        report: Reportar
+    puzzleEditorControls:
+        title: Criador de Puzzle
+        instructions:
+            - 1. Coloca um <strong>Produtor Constante</strong> para fornecer formas e
+              cores ao jogador
+            - 2. Constrói uma ou mais formas que queiras que o jogador tenha de contruir mais tarde
+               e a tenha de entregar a um ou mais <strong>Recetor de Objetivo</strong>
+            - 3. Assim que o Recetor de Objetivo receba uma forma durante um certo espaço
+              de tempo, ele <strong>guarda-a num objetivo</strong> que o jogador terá
+              de produzir mais tarde (Indicatdo pelo <strong>distintivo verde</strong>).
+            - 4. Clcica no <strong>botão de bloqueio</strong> numa construção para
+              desátiva-lo.
+            - 5. Assim que clicares em analisar, o teu puzzle será validado e poderás
+              publicá-lo.
+            - 6. Após publicado, <strong>todas as construções serão removidas</strong>
+              excepto os Produtores e Recetores de Objetivo - Esta é a parte em que
+              é suposto o jogador tentar descobrir como resolver o teu Puzzle :)
+    puzzleCompletion:
+        title: Puzzle Completo!
+        titleLike: "Clica no coração se gostaste do puzzle:"
+        titleRating: Quão difícil achaste que foi o puzzle?
+        titleRatingDesc: A tua avaliação ajudar-me-á a fazer melhores sugestões no futuro
+        continueBtn: Continua a Jogar
+        menuBtn: Menu
+    puzzleMetadata:
+        author: Autor
+        shortKey: Pequeno Código
+        rating: Grau de dificuldade
+        averageDuration: Média de duração
+        completionRate: Taxa de conclusão
 shopUpgrades:
     belt:
         name: Tapetes, Distribuidores e Túneis
@@ -576,6 +685,18 @@ buildings:
             name: Produtor de Itens
             description: Disponível apenas no modo sandbox, produz o sinal dado na camada de
                 fios na camada normal.
+    constant_producer:
+        default:
+            name: Produtor Constante
+            description: Produz constantemente uma forma ou cor específica.
+    goal_acceptor:
+        default:
+            name: Recetor de Objetivo
+            description: Entrega formas ao recetor de objetivo para defini-las como um objetivo.
+    block:
+        default:
+            name: Bloqueador
+            description: Permite-te bloquear uma quadrícula.
 storyRewards:
     reward_cutter_and_trash:
         title: Corte de formas
@@ -990,6 +1111,10 @@ keybindings:
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
+        constant_producer: Produtor Constante
+        goal_acceptor: Recetor de Objetivo
+        block: Bloqueador
+        massSelectClear: Limpar tapetes rolante
 about:
     title: Sobre o Jogo
     body: >-
@@ -1085,3 +1210,57 @@ tips:
     - Pressiona F4 para mostrar os teus FPS e Tick Rate.
     - Pressiona F4 duas vezes para mostrar a tile do teu rato e câmara.
     - Podes clicar numa forma afixada no lado direito para desafixa-la.
+puzzleMenu:
+    play: Jogar
+    edit: Editar
+    title: Modo Puzzle
+    createPuzzle: Criar Puzzle
+    loadPuzzle: Carregar
+    reviewPuzzle: Analisar e Publicar
+    validatingPuzzle: A validar Puzzle
+    submittingPuzzle: A submeter Puzzle
+    noPuzzles: Não há atualmente puzzles nesta secção.
+    categories:
+        levels: Nivéis
+        new: Novo
+        top-rated: Melhor Avaliado
+        mine: Meus Puzzles
+        short: Pequeno
+        easy: Fácil
+        hard: Difícil
+        completed: Completo
+    validation:
+        title: Puzzle Inválido
+        noProducers: Por favor coloca um Produtor Constante!
+        noGoalAcceptors: Por favor coloca um Recetor de Objetivo!
+        goalAcceptorNoItem: Um ou mais Recetores de Objetivo ainda não tem itens atrbuídos.
+            Entrega uma forma nele para definires um objetivo.
+        goalAcceptorRateNotMet: Um ou mais Recetores de Objetivo não está a receber itens suficientes.
+            Assegura-te de que tens o indicador verde em todos os Recetores.
+        buildingOutOfBounds: Uma ou mais formas estão fora da área de construção.
+            Ou aumentas a área ou removes esses itens.
+        autoComplete: O teu Puzzle completa-se sozinho! Por favor assegura-te de que os teus
+            Produtores Constantes não estão automaticamente direcionados para os Recetores de Objetivo.
+backendErrors:
+    ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
+    invalid-api-key: Falha ao cominucar com o backend, por favor tenta
+        atualizar/resetar o Jogo (Chave Api inválida).
+    unauthorized: Falha ao cominucar com o backend, or favor tenta
+        atualizar/resetar o Jogo (Não autorizado).
+    bad-token: Falha ao cominucar com o backend, por favor tenta atualizar/resetar
+        o Jogo (Mau Token).
+    bad-id: Identificador de Puzzle inválido.
+    not-found: O Puzzle pedido não foi encontrado.
+    bad-category: A categoria pedida não foi encontrada.
+    bad-short-key: O pequeno código inserido não é válido.
+    profane-title: O título do teu Puzzle contém palavras impróprias.
+    bad-title-too-many-spaces: O título do teu Puzzle é demasiado pequeno.
+    bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
+    bad-shape-key-in-goal: Um Recetor de Objetivo tem um item inválido.
+    no-emitters: O teu Puzzle não contém nenhum Produtor Constante.
+    no-goals: O teu Puzzle não contém nenhum Recetor de Objetivo.
+    short-key-already-taken: Este pequeno código já foi utilizado, por favor tenta outro.
+    can-not-report-your-own-puzzle: Não podes reportar o teu próprio puzzle.
+    bad-payload: O pedido contém informção inválida.
+    bad-building-placement: O teu Puzzle contém construções posicionadas de forma inválida.
+    timeout: O tempo do pedido esgotou.

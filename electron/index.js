@@ -274,7 +274,10 @@ async function performFsJob(job) {
     }
 }
 
-ipcMain.handle("fs-job", (event, arg) => performFsJob(arg));
+ipcMain.on("fs-job", async (event, arg) => {
+    const result = await performFsJob(arg);
+    event.reply("fs-response", { id: arg.id, result });
+});
 
 steam.init(isDev);
 steam.listen();

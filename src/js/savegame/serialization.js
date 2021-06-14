@@ -275,7 +275,7 @@ export function deserializeSchema(obj, schema, data, baseclassErrorResult = null
         return baseclassErrorResult;
     }
 
-    if (!data) {
+    if (data === null || typeof data === "undefined") {
         logger.error("Got 'NULL' data for", obj, "and schema", schema, "!");
         return "Got null data";
     }

@@ -16,4 +16,9 @@
             background: uiResource("puzzle_dlc_logo_inverse.png") center center / contain no-repeat;
         }
     }
+
+    &.china {
+        /* @load-async */
+        background: uiResource("puzzle_dlc_logo_china.png") center center / contain no-repeat !important;
+    }
 }

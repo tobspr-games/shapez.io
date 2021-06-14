@@ -20,6 +20,7 @@ declare const G_ALL_UI_IMAGES: Array<string>;
 declare const G_IS_RELEASE: boolean;
 
 declare const G_CHINA_VERSION: boolean;
+declare const G_WEGAME_VERSION: boolean;
 
 // Polyfills
 declare interface String {

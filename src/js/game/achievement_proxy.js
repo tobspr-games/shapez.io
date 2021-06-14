@@ -32,6 +32,12 @@ export class AchievementProxy {
     }
 
     onLoad() {
+        if (!this.root.gameMode.hasAchievements()) {
+            logger.log("Disabling achievements because game mode does not have achievements");
+            this.disabled = true;
+            return;
+        }
+
         this.provider
             .onLoad(this.root)
             .then(() => {

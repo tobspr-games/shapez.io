@@ -16,15 +16,11 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
     update() {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const producerComp = entity.components.ItemProducer;
             const signalComp = entity.components.ConstantSignal;
-
-            if (!producerComp.isWireless() || !signalComp.isWireless()) {
+            const ejectorComp = entity.components.ItemEjector;
+            if (!ejectorComp) {
                 continue;
             }
-
-            const ejectorComp = entity.components.ItemEjector;
-
             ejectorComp.tryEject(0, signalComp.signal);
         }
     }
@@ -41,7 +37,7 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
             const producerComp = contents[i].components.ItemProducer;
             const signalComp = contents[i].components.ConstantSignal;
 
-            if (!producerComp || !producerComp.isWireless() || !signalComp || !signalComp.isWireless()) {
+            if (!producerComp || !signalComp) {
                 continue;
             }
 

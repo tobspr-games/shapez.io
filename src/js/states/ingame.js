@@ -104,6 +104,9 @@ export class InGameState extends GameState {
     }
 
     getThemeMusic() {
+        if (this.creationPayload.gameModeId && this.creationPayload.gameModeId.includes("puzzle")) {
+            return MUSIC.puzzle;
+        }
         return MUSIC.theme;
     }
 

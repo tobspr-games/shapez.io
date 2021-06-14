@@ -199,7 +199,7 @@ export class BeltPath extends BasicSerializableObject {
     /**
      * Finds the entity which accepts our items
      * @param {boolean=} debug_Silent Whether debug output should be silent
-     * @return { (BaseItem, number) => boolean }
+     * @return { (BaseItem, number?) => boolean }
      */
     computeAcceptingEntityAndSlot(debug_Silent = false) {
         DEBUG && !debug_Silent && logger.log("Recomputing acceptor target");

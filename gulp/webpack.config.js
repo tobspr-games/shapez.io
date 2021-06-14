@@ -6,7 +6,7 @@ const { getRevision, getVersion, getAllResourceImages } = require("./buildutils"
 const lzString = require("lz-string");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
-module.exports = ({ watch = false, standalone = false, chineseVersion = false }) => {
+module.exports = ({ watch = false, standalone = false, chineseVersion = false, wegameVersion = false }) => {
     return {
         mode: "development",
         devtool: "cheap-source-map",
@@ -35,6 +35,7 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false })
                     lzString.compressToEncodedURIComponent("http://localhost:10005/v1")
                 ),
                 G_CHINA_VERSION: JSON.stringify(chineseVersion),
+                G_WEGAME_VERSION: JSON.stringify(wegameVersion),
                 G_IS_DEV: "true",
                 G_IS_RELEASE: "false",
                 G_IS_MOBILE_APP: "false",

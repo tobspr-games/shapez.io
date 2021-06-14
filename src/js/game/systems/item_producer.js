@@ -15,14 +15,12 @@ export class ItemProducerSystem extends GameSystemWithFilter {
     update() {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const producerComp = entity.components.ItemProducer;
             const ejectorComp = entity.components.ItemEjector;
-
-            if (producerComp.isWireless()) {
+            const pinsComp = entity.components.WiredPins;
+            if (!pinsComp) {
                 continue;
             }
 
-            const pinsComp = entity.components.WiredPins;
             const pin = pinsComp.slots[0];
             const network = pin.linkedNetwork;
 
