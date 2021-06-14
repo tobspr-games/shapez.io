@@ -184,4 +184,12 @@ export const LANGUAGES = {
         code: "uk",
         region: "",
     },
+
+    "he": {
+        // hebrew
+        name: "עברית",
+        data: require("./built-temp/base-he.json"),
+        code: "he",
+        region: "",
+    },
 };

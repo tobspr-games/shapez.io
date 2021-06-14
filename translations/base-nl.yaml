@@ -53,6 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPATIE
+    loggingIn: Inloggen
 demoBanners:
     title: Demoversie
     intro: Koop de standalone om alle functies te ontgrendelen!
@@ -72,6 +73,11 @@ mainMenu:
     madeBy: Gemaakt door <author-link>
     subreddit: Reddit
     savegameUnnamed: Naamloos
+    puzzleMode: Puzzel Modus
+    back: Terug
+    puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken? Verkrijg de puzzel
+        DLC nu op Steam voor nog meer plezier!
+    puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
 dialogs:
     buttons:
         ok: OK
@@ -85,6 +91,9 @@ dialogs:
         viewUpdate: Zie Update
         showUpgrades: Zie Upgrades
         showKeybindings: Zie Sneltoetsen
+        retry: Opnieuw Proberen
+        continue: Ga Verder
+        playOffline: Offline Spelen
     importSavegameError:
         title: Importeerfout
         text: "Het importeren van je savegame is mislukt:"
@@ -185,9 +194,64 @@ dialogs:
         desc: Er is een tutorial video beschikbaar voor dit level! Zou je het willen
             bekijken?
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
+        title: Tutorial Beschikbaar
         desc: Er is een tutorial beschikbaar voor dit level, maar het is alleen
             beschikbaar in het Engels. Zou je het toch graag kijken?
+    editConstantProducer:
+        title: Item instellen
+    puzzleLoadFailed:
+        title: Puzzels kunnen niet geladen worden
+        desc: "Helaas konden de puzzels niet worden geladen:"
+    submitPuzzle:
+        title: Puzzel indienen
+        descName: "Geef je puzzel een naam:"
+        descIcon: "Voer een unieke vorm sleutel in, die wordt weergegeven als het icoon van
+            uw puzzel (je kunt ze <link>hier</link> genereren, of je kunt er een kiezen
+            van de willekeurig voorgestelde vormen hieronder):"
+        placeholderName: Puzzel Naam
+    puzzleResizeBadBuildings:
+        title: Formaat wijzigen niet mogelijk
+        desc: Je kunt het gebied niet kleiner maken, want dan zouden sommige gebouwen buiten het gebied zijn.
+    puzzleLoadError:
+        title: Foute Puzzel
+        desc: "De puzzel kon niet geladen worden:"
+    offlineMode:
+        title: Offline Modus
+        desc: We konden de server niet bereiken, dus het spel moet offline modus draaien. Zorg ervoor dat je een actieve internetverbinding heeft.
+    puzzleDownloadError:
+        title: Download fout
+        desc: "Downloaden van de puzzel is mislukt:"
+    puzzleSubmitError:
+        title: Indieningsfout
+        desc: "Het indienen van je puzzel is mislukt:"
+    puzzleSubmitOk:
+        title: Puzzel Gepubliceerd
+        desc: Gefeliciteerd! Je puzzel is gepubliceerd en kan nu worden gespeeld door
+            anderen. Je kunt het nu vinden in het gedeelte "Mijn puzzels".
+    puzzleCreateOffline:
+        title: Offline Modus
+        desc: Aangezien je offline bent, kan je je puzzels niet opslaan of publiceren. Wil je nog steeds doorgaan?
+    puzzlePlayRegularRecommendation:
+        title: Aanbeveling
+        desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te spelen voordat je de puzzel-DLC probeert, anders kan je mechanica tegenkomen die je nog niet kent. Wil je toch doorgaan?
+    puzzleShare:
+        title: Vorm Sleutel Gekopieerd
+        desc: De vorm sleutel van de puzzel (<key>) is naar je klembord gekopieerd! Het kan in het puzzelmenu worden ingevoerd om toegang te krijgen tot de puzzel.
+    puzzleReport:
+        title: Puzzel Rapporteren
+        options:
+            profane: Ongepast
+            unsolvable: Niet oplosbaar
+            trolling: Trollen
+    puzzleReportComplete:
+        title: Bedankt voor je feedback!
+        desc: De puzzel is gemarkeerd.
+    puzzleReportError:
+        title: Melden mislukt
+        desc: "Uw melding kan niet worden verwerkt:"
+    puzzleLoadShortKey:
+        title: Voer een vorm sleutel in
+        desc: Voer de vorm sleutel van de puzzel in om deze te laden.
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg speelveld
@@ -209,6 +273,7 @@ ingame:
         clearSelection: Annuleer selectie
         pipette: Pipet
         switchLayers: Wissel lagen
+        clearBelts: Lopende banden leeg maken
     buildingPlacement:
         cycleBuildingVariants: Druk op <key> om tussen varianten te wisselen.
         hotkeyLabel: "Hotkey: <key>"
@@ -358,6 +423,39 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Hunt them all!
+    puzzleEditorSettings:
+        zoneTitle: Gebied
+        zoneWidth: Breedte
+        zoneHeight: Hoogte
+        trimZone: Bijsnijden
+        clearItems: Items leeg maken
+        share: Delen
+        report: Rapporteren
+    puzzleEditorControls:
+        title: Puzzel Maker
+        instructions:
+            - 1. Plaats <strong>Constante Producenten</strong> om vormen en
+              kleuren aan de speler te bieden
+            - 2. Bouw een of meer vormen die de speler later en
+              bezorg het aan een of meer <strong>Ontvangers</strong>
+            - 3. Wanneer een Ontvanger een vorm ontvangt voor een bepaalde tijd, het  <strong>slaat het op als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicatoren</strong>).
+            - 4. Klik de <strong>vergrendelknop</strong> om een gebouw uit te schakelen.
+            - 5. Zodra je op review klikt, wordt je puzzel gevalideerd en jij
+              kan het publiceren.
+            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Ontvangers - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
+    puzzleCompletion:
+        title: Puzzel Voltooid!
+        titleLike: "Klik op het hartje als je de puzzel leuk vond:"
+        titleRating: Hoe moeilijk vond je de puzzel?
+        titleRatingDesc: Je beoordeling helpt me om je in de toekomst betere suggesties te geven
+        continueBtn: Blijf Spelen
+        menuBtn: Menu
+    puzzleMetadata:
+        author: Auteur
+        shortKey: Vorm Sleutel
+        rating: Moeilijkheidsgraad
+        averageDuration: Gem. Speel Tijd
+        completionRate: Voltooiingspercentage
 shopUpgrades:
     belt:
         name: Banden, Verdeler & Tunnels
@@ -562,6 +660,18 @@ buildings:
             name: Item Producent
             description: Alleen beschikbaar in sandbox-modus, geeft het gegeven signaal van
                 de kabel laag op de reguliere laag.
+    constant_producer:
+        default:
+            name: Constante Producent
+            description: Voert constant een bepaalde vorm of kleur uit.
+    goal_acceptor:
+        default:
+            name: Ontvanger
+            description: Lever vormen aan de Ontvanger om ze als doel te stellen.
+    block:
+        default:
+            name: Blokkade
+            description: Hiermee kan je een tegel blokkeren.
 storyRewards:
     reward_cutter_and_trash:
         title: Vormen Knippen
@@ -979,6 +1089,10 @@ keybindings:
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
+        constant_producer: Constante Producent
+        goal_acceptor: Ontvanger
+        block: Blokkade
+        massSelectClear: Lopende banden leeg maken
 about:
     title: Over dit spel
     body: >-
@@ -1080,3 +1194,52 @@ tips:
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
+puzzleMenu:
+    play: Spelen
+    edit: Bewerken
+    title: Puzzel Modus
+    createPuzzle: Puzzel Maken
+    loadPuzzle: Laden
+    reviewPuzzle: Beoordeel en publiceer
+    validatingPuzzle: Puzzel Valideren
+    submittingPuzzle: Puzzel Indienen
+    noPuzzles: Er zijn momenteel geen puzzels in deze sectie.
+    categories:
+        levels: Levels
+        new: Nieuw
+        top-rated: Best Beoordeeld
+        mine: Mijn Puzzels
+        short: Kort
+        easy: Makkelijk
+        hard: Moeilijk
+        completed: Voltooid
+    validation:
+        title: Ongeldige Puzzel
+        noProducers: Plaats alstublieft een Constante Producent!
+        noGoalAcceptors: Plaats alstublieft een Ontvanger!
+        goalAcceptorNoItem: Een of meer Ontvangers hebben nog geen item toegewezen.
+            Geef ze een vorm om een doel te stellen.
+        goalAcceptorRateNotMet: Een of meerdere Ontvangers krijgen niet genoeg items.
+            Zorg ervoor dat de indicatoren groen zijn voor alle acceptanten.
+        buildingOutOfBounds: Een of meer gebouwen bevinden zich buiten het bebouwbare gebied. Vergroot het gebied of verwijder ze.
+        autoComplete: Je puzzel voltooid zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Ontvangers leveren.
+backendErrors:
+    ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
+    invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (ongeldige API-sleutel).
+    unauthorized: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (Onbevoegd).
+    bad-token: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (Ongeldige Token).
+    bad-id: Ongeldige puzzel-ID.
+    not-found: De opgegeven puzzel is niet gevonden.
+    bad-category: De opgegeven categorie is niet gevonden.
+    bad-short-key: De opgegeven vorm sleutel is ongeldig.
+    profane-title: Je puzzel titel bevat groffe woorden.
+    bad-title-too-many-spaces: Je puzzel titel is te kort.
+    bad-shape-key-in-emitter: Een Ontvanger heeft een ongeldig item.
+    bad-shape-key-in-goal: Een Constante Producent heeft een ongeldig item.
+    no-emitters: Je puzzel heeft geen Constante Producenten.
+    no-goals: Je puzzel heeft geen Ontvangers.
+    short-key-already-taken: Deze vorm sleutel is al in gebruik, gebruik een andere.
+    can-not-report-your-own-puzzle: Je kunt je eigen puzzel niet melden.
+    bad-payload: Het verzoek bevat ongeldige gegevens.
+    bad-building-placement: Je puzzel bevat ongeldig geplaatste gebouwen.
+    timeout: Het verzoek is verlopen.

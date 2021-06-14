@@ -1,0 +1,277 @@
+#state_PuzzleMenuState {
+    > .headerBar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+
+        > h1 {
+            justify-self: start;
+        }
+
+        .createPuzzle {
+            background-color: $colorGreenBright;
+            @include S(margin-left, 5px);
+        }
+    }
+
+    > .container {
+        > .mainContent {
+            overflow: hidden;
+
+            > .categoryChooser {
+                display: grid;
+                grid-auto-columns: 1fr;
+                grid-auto-flow: column;
+                @include S(grid-gap, 2px);
+                @include S(padding-right, 10px);
+
+                > .category {
+                    background: $accentColorBright;
+                    border-radius: 0;
+                    color: $accentColorDark;
+                    transition: all 0.12s ease-in-out;
+                    transition-property: opacity, background-color, color;
+
+                    &:first-child {
+                        @include S(border-top-left-radius, $globalBorderRadius);
+                        @include S(border-bottom-left-radius, $globalBorderRadius);
+                    }
+                    &:last-child {
+                        border-top-right-radius: $globalBorderRadius;
+                        border-bottom-right-radius: $globalBorderRadius;
+                    }
+
+                    &.active {
+                        background: $colorBlueBright;
+                        opacity: 1 !important;
+                        color: #fff;
+                        cursor: default;
+                    }
+
+                    @include DarkThemeOverride {
+                        background: $accentColorDark;
+                        color: #bbbbc4;
+
+                        &.active {
+                            background: $colorBlueBright;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            > .puzzles {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(D(180px), 1fr));
+                @include S(grid-auto-rows, 65px);
+                @include S(grid-gap, 7px);
+                @include S(margin-top, 10px);
+                @include S(padding-right, 4px);
+                @include S(height, 360px);
+                overflow-y: scroll;
+                pointer-events: all;
+                position: relative;
+
+                > .puzzle {
+                    width: 100%;
+                    @include S(height, 65px);
+                    background: #f3f3f8;
+                    @include S(border-radius, $globalBorderRadius);
+
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-template-rows: D(15px) D(15px) 1fr;
+                    @include S(padding, 5px);
+                    @include S(grid-column-gap, 5px);
+                    box-sizing: border-box;
+                    pointer-events: all;
+                    cursor: pointer;
+                    position: relative;
+                    @include S(padding-left, 10px);
+
+                    @include DarkThemeOverride {
+                        background: rgba(0, 0, 10, 0.2);
+                    }
+
+                    @include InlineAnimation(0.12s ease-in-out) {
+                        0% {
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    &:hover {
+                        background: #f0f0f8;
+                    }
+
+                    > .title {
+                        grid-column: 2 / 3;
+                        grid-row: 1 / 2;
+                        @include PlainText;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        align-self: center;
+                        justify-self: start;
+                        width: 100%;
+                        box-sizing: border-box;
+                        @include S(padding, 2px, 5px);
+                        @include S(height, 17px);
+                    }
+
+                    > .author {
+                        grid-column: 2 / 2;
+                        grid-row: 2 / 3;
+                        @include SuperSmallText;
+                        color: $accentColorDark;
+                        align-self: center;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        @include S(padding, 2px, 5px);
+                    }
+
+                    > .icon {
+                        grid-column: 1 / 2;
+                        grid-row: 1 / 4;
+                        align-self: center;
+                        justify-self: center;
+                        @include S(width, 45px);
+                        @include S(height, 45px);
+
+                        canvas {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    > .stats {
+                        grid-column: 2 / 3;
+                        grid-row: 3 / 4;
+                        display: flex;
+                        align-items: center;
+                        justify-self: end;
+                        justify-content: center;
+                        align-self: end;
+                        @include S(height, 14px);
+
+                        > .downloads {
+                            @include SuperSmallText;
+                            color: #000;
+                            font-weight: bold;
+                            @include S(margin-right, 5px);
+                            @include S(padding-left, 12px);
+                            opacity: 0.7;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            @include DarkThemeInvert;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_plays.png") #{D(2px)} #{D(2.5px)} / #{D(
+                                        8px
+                                    )} #{D(8px)} no-repeat;
+                            }
+                        }
+
+                        > .likes {
+                            @include SuperSmallText;
+                            align-items: center;
+                            justify-content: center;
+                            color: #000;
+                            font-weight: bold;
+                            @include S(padding-left, 14px);
+                            opacity: 0.7;
+                            @include DarkThemeInvert;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} #{D(2.4px)} / #{D(
+                                        9px
+                                    )} #{D(9px)} no-repeat;
+                            }
+                        }
+
+                        > .difficulty {
+                            @include SuperSmallText;
+                            align-items: center;
+                            justify-content: center;
+                            color: #000;
+                            font-weight: bold;
+                            @include S(margin-right, 3px);
+                            opacity: 0.7;
+
+                            &.stage--easy {
+                                color: $colorGreenBright;
+                            }
+                            &.stage--normal {
+                                color: #000;
+                                @include DarkThemeInvert;
+                            }
+                            &.stage--medium {
+                                color: $colorOrangeBright;
+                            }
+                            &.stage--hard {
+                                color: $colorRedBright;
+                            }
+                        }
+                    }
+
+                    &.completed {
+                        > .icon,
+                        > .stats,
+                        > .author,
+                        > .title {
+                            opacity: 0.3;
+                        }
+
+                        background: #fafafa;
+
+                        @include DarkThemeOverride {
+                            background: rgba(0, 0, 0, 0.05);
+                        }
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            @include S(top, 10px);
+                            @include S(right, 10px);
+                            @include S(width, 30px);
+                            @include S(height, 30px);
+                            opacity: 0.1;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_complete_indicator.png") center center /
+                                    contain no-repeat;
+                            }
+                        }
+                        @include DarkThemeOverride {
+                            &::after {
+                                /* @load-async */
+                                background: uiResource("icons/puzzle_complete_indicator_inverse.png") center
+                                    center / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+
+                > .loader,
+                > .empty {
+                    display: flex;
+                    align-items: center;
+                    color: $accentColorDark;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

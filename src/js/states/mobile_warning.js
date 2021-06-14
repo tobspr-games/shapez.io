@@ -1,6 +1,7 @@
 import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
 import { THIRDPARTY_URLS } from "../core/config";
+import { getLogoSprite } from "../core/background_resources_loader";
 
 export class MobileWarningState extends GameState {
     constructor() {
@@ -10,9 +11,7 @@ export class MobileWarningState extends GameState {
     getInnerHTML() {
         return `
 
-            <img class="logo" src="${cachebust(
-                G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
-            )}" alt="shapez.io Logo">
+            <img class="logo" src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
 
             <p>
                 I'm sorry, but shapez.io is not available on mobile devices yet!

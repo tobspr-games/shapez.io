@@ -234,7 +234,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      * @param {DrawParameters} parameters
      */
     draw(parameters) {
-        if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
+        if (this.root.camera.getIsMapOverlayActive()) {
             // Dont allow placing in overview mode
             this.domAttach.update(false);
             this.variantsAttach.update(false);
@@ -275,11 +275,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const worldPosition = this.root.camera.screenToWorld(mousePosition);
 
         // Draw peeker
-        this.root.hud.parts.layerPreview.renderPreview(
-            parameters,
-            worldPosition,
-            1 / this.root.camera.zoomLevel
-        );
+        if (this.root.hud.parts.layerPreview) {
+            this.root.hud.parts.layerPreview.renderPreview(
+                parameters,
+                worldPosition,
+                1 / this.root.camera.zoomLevel
+            );
+        }
     }
 
     /**

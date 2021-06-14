@@ -26,9 +26,12 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         // Set signals
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const pinsComp = entity.components.WiredPins;
             const signalComp = entity.components.ConstantSignal;
-            pinsComp.slots[0].value = signalComp.signal;
+            const pinsComp = entity.components.WiredPins;
+
+            if (pinsComp) {
+                pinsComp.slots[0].value = signalComp.signal;
+            }
         }
     }
 
@@ -51,31 +54,51 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             label: fillInLinkIntoTranslation(T.dialogs.editSignal.descShortKey, THIRDPARTY_URLS.shapeViewer),
             placeholder: "",
             defaultValue: "",
-            validator: val => this.parseSignalCode(val),
+            validator: val => this.parseSignalCode(entity, val),
         });
+
+        const items = [...Object.values(COLOR_ITEM_SINGLETONS)];
+
+        if (entity.components.WiredPins) {
+            items.unshift(BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON);
+            items.push(
+                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
+                    this.root.gameMode.getBlueprintShapeKey()
+                )
+            );
+        } else {
+            // producer which can produce virtually anything
+            const shapes = ["CuCuCuCu", "RuRuRuRu", "WuWuWuWu", "SuSuSuSu"];
+            items.unshift(
+                ...shapes.reverse().map(key => this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key))
+            );
+        }
+
+        if (this.root.gameMode.hasHub()) {
+            items.push(
+                this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                    this.root.hubGoals.currentGoal.definition
+                )
+            );
+        }
+
+        if (this.root.hud.parts.pinnedShapes) {
+            items.push(
+                ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
+                    this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
+                )
+            );
+        }
 
         const itemInput = new FormElementItemChooser({
             id: "signalItem",
             label: null,
-            items: [
-                BOOL_FALSE_SINGLETON,
-                BOOL_TRUE_SINGLETON,
-                ...Object.values(COLOR_ITEM_SINGLETONS),
-                this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                    this.root.hubGoals.currentGoal.definition
-                ),
-                this.root.shapeDefinitionMgr.getShapeItemFromShortKey(
-                    this.root.gameMode.getBlueprintShapeKey()
-                ),
-                ...this.root.hud.parts.pinnedShapes.pinnedShapes.map(key =>
-                    this.root.shapeDefinitionMgr.getShapeItemFromShortKey(key)
-                ),
-            ],
+            items,
         });
 
         const dialog = new DialogWithForm({
             app: this.root.app,
-            title: T.dialogs.editSignal.title,
+            title: T.dialogs.editConstantProducer.title,
             desc: T.dialogs.editSignal.descItems,
             formElements: [itemInput, signalValueInput],
             buttons: ["cancel:bad:escape", "ok:good:enter"],
@@ -103,15 +126,19 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             }
 
             if (itemInput.chosenItem) {
-                console.log(itemInput.chosenItem);
                 constantComp.signal = itemInput.chosenItem;
             } else {
-                constantComp.signal = this.parseSignalCode(signalValueInput.getValue());
+                constantComp.signal = this.parseSignalCode(entity, signalValueInput.getValue());
             }
         };
 
-        dialog.buttonSignals.ok.add(closeHandler);
-        dialog.valueChosen.add(closeHandler);
+        dialog.buttonSignals.ok.add(() => {
+            closeHandler();
+        });
+        dialog.valueChosen.add(() => {
+            dialog.closeRequested.dispatch();
+            closeHandler();
+        });
 
         // When cancelled, destroy the entity again
         if (deleteOnCancel) {
@@ -140,10 +167,11 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
 
     /**
      * Tries to parse a signal code
+     * @param {Entity} entity
      * @param {string} code
      * @returns {BaseItem}
      */
-    parseSignalCode(code) {
+    parseSignalCode(entity, code) {
         if (!this.root || !this.root.shapeDefinitionMgr) {
             // Stale reference
             return null;
@@ -155,12 +183,15 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
         if (enumColors[codeLower]) {
             return COLOR_ITEM_SINGLETONS[codeLower];
         }
-        if (code === "1" || codeLower === "true") {
-            return BOOL_TRUE_SINGLETON;
-        }
 
-        if (code === "0" || codeLower === "false") {
-            return BOOL_FALSE_SINGLETON;
+        if (entity.components.WiredPins) {
+            if (code === "1" || codeLower === "true") {
+                return BOOL_TRUE_SINGLETON;
+            }
+
+            if (code === "0" || codeLower === "false") {
+                return BOOL_FALSE_SINGLETON;
+            }
         }
 
         if (ShapeDefinition.isValidShortKey(code)) {
