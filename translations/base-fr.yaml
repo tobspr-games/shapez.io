@@ -1231,7 +1231,7 @@ puzzleMenu:
     edit: Éditer
     title: Mode Puzzle
     createPuzzle: Créer un Puzzle
-    loadPuzzle: cherger
+    loadPuzzle: charger
     reviewPuzzle: Revoir & Publier
     validatingPuzzle: Validation du Puzzle
     submittingPuzzle: Publication du Puzzle
@@ -1269,13 +1269,13 @@ backendErrors:
     not-found: Le puzzle donné n'a pas pu être trouvé.
     bad-category: La catégorie donnée n'a pas pu être trouvée.
     bad-short-key: La clé courte donnée n'est pas valide.
-    profane-title: Le titre de votre puzzle contient des mots profanes.
+    profane-title: Le titre de votre puzzle contient des mots interdits.
     bad-title-too-many-spaces: Le titre de votre puzzle est trop court.
     bad-shape-key-in-emitter: Un producteur constant a un élément invalide.
     bad-shape-key-in-goal: Un accepteur de but a un élément invalide.
     no-emitters: Votre puzzle ne contient aucun producteur constant.
     no-goals: Votre puzzle ne contient aucun accepteur de but.
-    short-key-already-taken: Cette touche courte est déjà prise, veuillez en utiliser une autre.
+    short-key-already-taken: Cette clé courte est déjà prise, veuillez en utiliser une autre.
     can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
     bad-payload: La demande contient des données invalides.
     bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
