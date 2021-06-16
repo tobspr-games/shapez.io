@@ -16,7 +16,6 @@ export class Blueprint {
      */
     constructor(entities) {
         this.entities = entities;
-        this.serializer = new SerializerInternal();
     }
 
     /**
@@ -34,7 +33,7 @@ export class Blueprint {
      * Serialize
      */
     serialize() {
-        let data = this.serializer.serializeEntityArray(this.entities);
+        let data = new SerializerInternal().serializeEntityArray(this.entities);
         // Remove unneeded fields
         for (let i = 0; i < data.length; ++i) {
             const entry = data[i];
@@ -58,6 +57,8 @@ export class Blueprint {
             if (!Array.isArray(json)) {
                 return;
             }
+
+            const serializer = new SerializerInternal();
             /** @type {Array<Entity>} */
             const entityArray = [];
             for (let i = 0; i < json.length; ++i) {
@@ -70,7 +71,7 @@ export class Blueprint {
                 if (staticData.code == undefined || staticData.origin == undefined) {
                     return;
                 }
-                const result = new SerializerInternal().deserializeEntity(root, value);
+                const result = serializer.deserializeEntity(root, value);
                 if (typeof result === "string") {
                     throw new Error(result);
                 }
