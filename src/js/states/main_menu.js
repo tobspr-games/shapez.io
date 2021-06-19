@@ -95,7 +95,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    !G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc
+                    (!G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc) || G_IS_DEV
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(

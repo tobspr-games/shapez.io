@@ -140,11 +140,22 @@ puzzleMenu:
         levels: Levels
         new: New
         top-rated: Top Rated
-        mine: My Puzzles
+        mine: Created
         short: Short
         easy: Easy
+        medium: Medium
         hard: Hard
         completed: Completed
+        official: Official
+        trending: Trending today
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 
     validation:
         title: Invalid Puzzle
