@@ -73,7 +73,7 @@ mainMenu:
     savegameUnnamed: Sans titre
     puzzleMode: Puzzle Mode
     back: Back
-    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC 
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC
         sur Steam dés maintenant pour encore plus d'amusement !
     puzzleDlcWishlist: Wishlist now!
 dialogs:
@@ -1251,12 +1251,13 @@ puzzleMenu:
         noGoalAcceptors: Veuillez placer un accepteur d'objectif !
         goalAcceptorNoItem: Un ou plusieurs accepteurs d'objectif n'ont pas encore attribué d'élément.
             Donnez-leur une forme pour fixer un objectif.
-        goalAcceptorRateNotMet:Un ou plusieurs accepteurs d'objectifs n'obtiennent pas assez d'articles.
+        goalAcceptorRateNotMet: Un ou plusieurs accepteurs d'objectifs n'obtiennent pas assez d'articles.
             Assurez-vous que les indicateurs sont verts pour tous les accepteurs.
         buildingOutOfBounds: Un ou plusieurs bâtiments se trouvent en dehors de la zone constructible.
             Augmentez la surface ou supprimez-les.
-        autoComplete: Votre puzzle se complète automatiquement ! Veuillez vous assurer que vos producteurs constants
-             ne livrent pas directement à vos accepteurs d'objectifs.
+        autoComplete:
+            Votre puzzle se complète automatiquement ! Veuillez vous assurer que vos producteurs constants
+            ne livrent pas directement à vos accepteurs d'objectifs.
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu s'il vous plait.
     invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
