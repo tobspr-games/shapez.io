@@ -17,7 +17,7 @@ steamPage:
     what_others_say: Lo que otras personas dicen sobre shapez.io
     nothernlion_comment: Este juego es estupendo - Estoy teniendo un tiempo
         maravolloso jugano, y el tiempo ha pasado volando.
-    notch_comment: Miercoles. Verdaderamente debería dormir, pero creo que acabo de
+    notch_comment: Miércoles. Verdaderamente debería dormir, pero creo que acabo de
         descubrir como hacer un ordenador en shapez.io
     steam_review_comment: Este juego ha robado mi vida y no la quiero de vuelta. Muy
         relajante juego de fábrica que no me dejará hacer mis lineas más
@@ -73,11 +73,11 @@ mainMenu:
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
     savegameUnnamed: Sin nombre
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Modo Puzle
+    back: Atrás
+    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas?
+        ¡Consigue ahora el DLC de Puzles en Steam para aún más diversión!
+    puzzleDlcWishlist: Añádelo ahora a tu lista de deseos!
 dialogs:
     buttons:
         ok: OK
@@ -91,9 +91,9 @@ dialogs:
         viewUpdate: Ver actualización
         showUpgrades: Ver mejoras
         showKeybindings: Ver atajos de teclado
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Reintentar
+        continue: Continuar
+        playOffline: Jugar Offline
     importSavegameError:
         title: Error de importación
         text: "Fallo al importar tu partida guardada:"
@@ -105,7 +105,7 @@ dialogs:
         text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: ¿Estás seguro de querér borrar el siguiente guardado?<br><br>
+        text: ¿Estás seguro de que quieres borrar el siguiente guardado?<br><br>
             '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto
             no se puede deshacer!
     savegameDeletionError:
@@ -183,7 +183,7 @@ dialogs:
             crashear tu juego!
     editSignal:
         title: Establecer señal
-        descItems: "Elige un item pre-definido:"
+        descItems: "Elige un item predefinido:"
         descShortKey: ... o escribe la <strong>clave</strong> de una forma (La cual
             puedes generar <link>aquí</link>)
     renameSavegame:
@@ -199,64 +199,63 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Fallo al cargar los Puzles
+        desc: "Desafortunadamente, no se pudieron cargar los puzles."
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Enviar Puzzle
+        descName: "Nombra tu puzle:"
+        descIcon: "Por favor ingresa una clave única, que será el icono de
+            tu puzle (Puedes generarlas <link>aquí</link>, o escoger una
+            de las formas sugeridas de forma aleatoria, aquí abajo):"
+        placeholderName: Título del Puzle
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: No es posible cambiar el tamaño
+        desc: No puedes hacer el área más pequeña, puesto que algunos edificios estarían fuera de esta.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Fallo al cargar el puzle
+        desc: "No se pudo cargar el puzle:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        title: Modo sin conexión
+        desc: No pudimos conectar con los servidores, y por ello el juego debe funcionar en el modo sin conexión.
+            Por favor asegúrate de que tu conexión a internet funciona correctamente.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Fallo al descargar
+        desc: "Fallo al descargar el puzle:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Error al enviar
+        desc: "No pudimos enviar tu puzle:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzle Publicado
+        desc: ¡Enhorabuena! Tu puzle ha sido publicado y ahora pueden jugarlo otros. Puedes encontrarlo
+            en la sección "Mis puzles".
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Modo sin conexión
+        desc: Puesto que estás sin conexión, no podrás guardar y/o publicar tu
+            puzle. ¿Quieres continuar igualmente?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Recomendación
+        desc: Te recomiendo <strong>fuertemente</strong> jugar el juego normal hasta el nivel 12
+            antes de intentar el DLC de puzles, de otra manera puede que te encuentres con
+            mecánicas que aún no hemos introducido. ¿Quieres continuar igualmente?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Clave Copiada
+        desc: Hemos copiado la clave de tu puzle (<key>) a tu portapapeles! Puedes
+            ponerlo en el menú de puzles para acceder al puzle.
     puzzleReport:
-        title: Report Puzzle
+        title: Reportar Puzle
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: Lenguaje soez
+            unsolvable: Imposible de resolver
+            trolling: Troll
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: ¡Gracias por tu aporte!
+        desc: El puzle ha sido marcado como abuso.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: No se pudo reportar
+        desc: "No pudimos procesar tu informe:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Introducir clave
+        desc: Introduce la clave del puzle para cargarlo.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -391,7 +390,7 @@ ingame:
             21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y
                 conéctalo con cables!
             21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una
-                señal verdadera</strong> lo cual activa el pintador.<br><br> PD:
+                señal</strong> lo cual activa el pintador.<br><br> PD:
                 ¡No necesitas conectar todas las entradas! Intenta conectando
                 sólo dos."
     connectedMiners:
@@ -431,43 +430,43 @@ ingame:
                 title: Logros
                 desc: Atrapalos a todos!
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        zoneTitle: Área
+        zoneWidth: Anchura
+        zoneHeight: Altura
+        trimZone: Área de recorte
+        clearItems: Eliminar todos los elementos
+        share: Compartir
+        report: Reportar
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Editor de Puzles
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Pon <strong>Productores Constantes</strong> para proveer al jugador
+              de formas y colores.
+            - 2. Construye una o más formas que quieres que el jugador construya más tarde y
+              llévalo hacia uno o más <strong>Aceptadores de Objetivos</strong>.
+            - 3. Cuando un Aceptador de Objetivos recibe una forma por cierto tiempo,
+              <strong>la guarda como un objetivo</strong> que el jugador debe producir
+              más tarde (Lo sabrás por el <strong>indicador verde</strong>).
+            - 4. Haz clic en el <strong>candado</strong> de un edificio para
+              desactivarlo.
+            - 5. Una vez hagas clic en "revisar", tu puzle será validado y podrás
+              publicarlo.
+            - 6. Una vez publicado, <strong>todos los edificios serán eliminados</strong>
+              excepto los Productores and Aceptadores de Objetivo - Esa es la parte que
+              el jugador debe averiguar por sí mismo, después de todo :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
+        title: Puzle Completado!
+        titleLike: "Haz click en el corazón si te gustó el puzle:"
+        titleRating: ¿Cuánta dificultad tuviste al resolver el puzle?
+        titleRatingDesc: Tu puntuación me ayudará a hacerte mejores sugerencias en el futuro
+        continueBtn: Continuar Jugando
+        menuBtn: Menú
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Autor
+        shortKey: Clave
+        rating: Puntuación de dificultad
+        averageDuration: Duración media
+        completionRate: Índice de finalización
 shopUpgrades:
     belt:
         name: Cintas transportadoras, Distribuidores y Túneles
@@ -486,7 +485,7 @@ buildings:
         deliver: Entregar
         toUnlock: para desbloquear
         levelShortcut: Nivel
-        endOfDemo: Final de la demo
+        endOfDemo: Fin de la demo
     belt:
         default:
             name: Cinta Transportadora
@@ -535,7 +534,7 @@ buildings:
             name: Rotador (Inverso)
             description: Rota las figuras en sentido antihorario 90 grados.
         rotate180:
-            name: Rotador (180)
+            name: Rotador (180º)
             description: Rota formas en 180 grados.
     stacker:
         default:
@@ -570,7 +569,7 @@ buildings:
             description: Acepta formas desde todos los lados y las destruye. Para siempre.
     balancer:
         default:
-            name: Balanceador
+            name: Equlibrador
             description: Multifuncional - Distribuye igualmente todas las entradas en las
                 salidas.
         merger:
@@ -593,11 +592,11 @@ buildings:
                 desbordamiento.
     wire_tunnel:
         default:
-            name: Cruze de cables
+            name: Cruce de cables
             description: Permite que dos cables se cruzen sin conectarse.
     constant_signal:
         default:
-            name: Señal costante
+            name: Señal constante
             description: Emite una señal constante, que puede ser una forma, color o valor
                 booleano (1 / 0).
     lever:
@@ -682,20 +681,20 @@ buildings:
     item_producer:
         default:
             name: Productor de items
-            description: Solo disponible en modo libre, envía la señal recivida de la capa
+            description: Solo disponible en modo libre, envía la señal recibida de la capa
                 de cables en la capa regular.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Productor de una sola pieza
+            description: Da constantemente la figura o el color especificados.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Aceptador de objetivos
+            description: Tranporta figuras al aceptador de objetivos para ponerlas como objetivo.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Bloque
+            description: Permite bloquear una celda.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortador de figuras
@@ -768,15 +767,15 @@ storyRewards:
             como una <strong>puerta de desbordamiento</strong>!
     reward_freeplay:
         title: Juego libre
-        desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>!
+        desc: ¡Lo hiciste! Has desbloqueado el <strong>modo de juego libre</strong>!
             ¡Esto significa que las formas ahora son
-            <strong>aleatoriamente</strong> generadas!<br><br> Debído a que
-            desde ahora de adelante el Centro pedrirá una cantidad especifica de
-            formas <strong>por segundo</strong> ¡Te recomiendo encarecidamente
-            que construyas una maquina que automáticamente envíe la forma
+            <strong>aleatoriamente</strong> generadas!<br><br> Debido a que
+            desde ahora de adelante el Centro pedirá una cantidad específica de
+            formas <strong>por segundo</strong>, ¡Te recomiendo encarecidamente
+            que construyas una máquina que automáticamente envíe la forma
             pedida!<br><br> El Centro emite la forma pedida en la capa de
             cables, así que todo lo que tienes que hacer es analizarla y
-            automaticamente configurar tu fabrica basada en ello.
+            automáticamente configurar tu fábrica basada en ello.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -1219,56 +1218,57 @@ tips:
       cámara.
     - Puedes hacer clic en una forma fijada en el lado izquierdo para desfijarla.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Jugar
+    edit: Editar
+    title: Puzles
+    createPuzzle: Crear Puzle
+    loadPuzzle: Cargar
+    reviewPuzzle: Revisar y Publicar
+    validatingPuzzle: Validando Puzle
+    submittingPuzzle: Enviando Puzzle
+    noPuzzles: Ahora mismo no hay puzles en esta sección.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        levels: Niveles
+        new: Nuevos
+        top-rated: Los mejor valorados
+        mine: Mis Puzles
+        short: Breves
+        easy: Fáciles
+        hard: Difíciles
+        completed: Completados
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Puzle no válido
+        noProducers: Por favor, ¡pon un Productor de una sola pieza!
+        noGoalAcceptors: Por favor , ¡pon un Aceptador de objetivos!
+        goalAcceptorNoItem: Uno o más aceptadores de objetivos no tienen asignado un elemento.
+            Transporta una forma hacia ellos para poner un objetivo.
+        goalAcceptorRateNotMet: Uno o más aceptadores de objetivos no están recibiendo suficientes
+            elementos. Asegúrate de que los indicadores están verdes para todos los aceptadores.
+        buildingOutOfBounds: Uno o más edificios están fuera del área en la que puedes construir.
+            Aumenta el área o quítalos.
+        autoComplete: ¡Tu puzle se completa solo! Asegúrate de que tus productores de un solo elemento
+            no están conectados directamente a tus aceptadores de objetivos.
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Estás haciendo tus acciones con demasiada frecuencia. Por favor, espera un poco.
+    invalid-api-key: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Key de API Inválida).
+    unauthorized: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Sin Autorización).
+    bad-token: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Mal Token).
+
+    bad-id: El identificador del puzle no es válido.
+    not-found: No pudimos encontrar ese puzle.
+    bad-category: No pudimos encontar esa categoría.
+    bad-short-key: La clave que nos diste no es válida.
+    profane-title: El título de tu puzle contiene lenguaje soez.
+    bad-title-too-many-spaces: El título de tu puzle es demasiado breve.
+    bad-shape-key-in-emitter: Un productor de un solo elemento tiene un elemento no válido.
+    bad-shape-key-in-goal: Un aceptador de objetivos tiene un elemento no válido.
+    no-emitters: Tu puzle no contiene ningún productor de un solo item.
+    no-goals: Tu puzle no contiene ningún aceptador de objetivos.
+    short-key-already-taken: Esta clave ya está siendo usada, por favor usa otra.
+    can-not-report-your-own-puzzle: No pudes reportar tu propio puzle.
+    bad-payload: La petición contiene datos no válidos.
+    bad-building-placement: Tu puzle contiene edificios en posiciones no válidas.
+    timeout: El tiempo para la solicitud ha expirado.

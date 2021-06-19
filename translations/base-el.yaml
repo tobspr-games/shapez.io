@@ -71,14 +71,13 @@ mainMenu:
     savegameLevelUnknown: Άγνωστο Επίπεδο
     continue: Συνέχεια
     newGame: Καινούριο παιχνίδι
-    madeBy: Made by <author-link>
+    madeBy: Κατασκευασμένο απο <author-link>
     subreddit: Reddit
     savegameUnnamed: Unnamed
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Λειτουργία παζλ
+    back: Πίσω
+    puzzleDlcText: Σε αρέσει να συμπάγης και να βελτιστοποίεις εργοστάσια; Πάρε την λειτουργεία παζλ στο Steam για ακόμη περισσότερη πλάκα!
+    puzzleDlcWishlist: Βαλτε το στην λίστα επιθυμιών τώρα!
 dialogs:
     buttons:
         ok: OK
@@ -186,13 +185,14 @@ dialogs:
         desc: Δεν έχεις τους πόρους να επικολλήσεις αυτήν την περιοχή! Είσαι βέβαιος/η
             ότι θέλεις να την αποκόψεις;
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: Βάλε σήμα
+        descItems: "Διάλεξε ενα προκαθορισμένο αντικείμενο:"
+        descShortKey:
+            ... ή εισάγετε ενα <strong>ενα μικρό κλειδι</strong> απο ένα σχήμα (Που μπορείς να παράγεις
+            <link>εδώ</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: Μετανόμασε το αποθηκευμένου παιχνιδι.
+        desc: Μπορείς να μετανομάσεις το αποθηκευμένο σου παιχνίδι εδω.
     tutorialVideoAvailable:
         title: Tutorial Available
         desc: There is a tutorial video available for this level! Would you like to
@@ -204,36 +204,36 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Απέτυχε να φορτώσει το παζλ.
+        desc: "Δυστυχώς το παζλ δεν μπορούσε να φορτωθεί:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Υπόβαλε παζλ
+        descName: "Δώσε όνομα στο παζλ:"
+        descIcon: "Παρακαλούμε εισάγετε ενα μικρό κλειδι, που θα προβληθεί εως το εικονίδιο
+            για το παζλ (Μπορείς να το παράγεις <link>εδώ</link>, ή διάλεξε ενα
+            ενα από τα παρακάτω τυχαία προτεινόμενα σχήματα):"
+        placeholderName: Τίτλος παζλ
     puzzleResizeBadBuildings:
         title: Resize not possible
         desc: You can't make the zone any smaller, because then some buildings would be
             outside the zone.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Κακό παζλ
+        desc: "Το πάζλ απέτυχε να φορτώθει:"
     offlineMode:
         title: Offline Mode
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Σφάλμα λήψης
+        desc: "Απέτυχε να κατεβαθεί το πάζλ:"
     puzzleSubmitError:
         title: Submission Error
         desc: "Failed to submit your puzzle:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Δημοσίευτηκε το παζλ
+        desc: Συγχαρητήρια! Το παζλ σας έχει δημοσιευτεί και μπορείτε τώρα να το παίξουν
+            οι υπολοιποι. Τώρα μπορείτε να το βρείτε στην ενότητα "Τα παζλ μου".
     puzzleCreateOffline:
         title: Offline Mode
         desc: Since you are offline, you will not be able to save and/or publish your
@@ -244,9 +244,9 @@ dialogs:
             before attempting the puzzle DLC, otherwise you may encounter
             mechanics not yet introduced. Do you still want to continue?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Μικρό κλειδι αντιγράφηκε
+        desc: Το μικρο κλειδή απο το παζλ (<key>) αντιγράφηκε στο πρόχειρο! Το
+            μπορεί να εισαχθεί στο μενού παζλ για πρόσβαση στο παζλ.
     puzzleReport:
         title: Report Puzzle
         options:
@@ -443,22 +443,21 @@ ingame:
         share: Share
         report: Report
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Κατασκευαστείς παζλ.
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Τοποθετήστε τους <strong> σταθερούς παραγωγούς </strong> για να δώσετε σχήματα και
+              χρώματα στον
+            - 2. Δημιουργήστε ένα ή περισσότερα σχήματα που θέλετε να δημιουργήσει ο παίκτης αργότερα και
+              παραδώστε το σε έναν ή περισσότερους <strong> Αποδέκτες στόχων </strong>
+            - 3. Μόλις ένας Αποδέκτης Στόχου λάβει ένα σχήμα για ένα ορισμένο ποσό
+              χρόνο, <strong> το αποθηκεύει ως στόχο </strong> που πρέπει να κάνει ο παίκτης
+              παράγει αργότερα (Υποδεικνύεται από το <strong> πράσινο σήμα </strong>).
+            - 4. Κάντε κλικ στο <strong> κουμπί κλειδώματος </strong> σε ένα κτίριο για να το απενεργοποίησετε.
+            - 5. Μόλις κάνετε κλικ στην κριτική, το παζλ σας θα επικυρωθεί και εσείς
+              μπορεί να το δημοσιεύσει.
+            - 6. Μετά την κυκλοφόρηση του παζλ, <strong> όλα τα κτίρια θα αφαιρεθούν </strong>
+              εκτός από τους παραγωγούς και τους αποδέκτες στόχων - Αυτό είναι το μέρος που
+              ο παίκτης υποτίθεται ότι θα καταλάβει μόνοι του :)
     puzzleCompletion:
         title: Puzzle Completed!
         titleLike: "Click the heart if you liked the puzzle:"

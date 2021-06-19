@@ -118,10 +118,10 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
 
             // LED indicator
 
-            parameters.context.lineWidth = 1;
+            parameters.context.lineWidth = 1.2;
             parameters.context.strokeStyle = "#64666e";
             parameters.context.fillStyle = isValid ? "#8de255" : "#ff666a";
-            parameters.context.beginCircle(10, 11.8, 3);
+            parameters.context.beginCircle(10, 11.8, 5);
             parameters.context.fill();
             parameters.context.stroke();
 

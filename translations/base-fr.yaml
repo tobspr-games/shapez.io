@@ -11,6 +11,7 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
+ <<<<<<< patch-2
     what_others_say: Ce que les gens pensent de Shapez.io
     nothernlion_comment: Ce jeu est génial - Je passe un merveilleux moment à jouer,
         et le temps s'est envolé.
@@ -19,6 +20,16 @@ steamPage:
     steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer.
         Jeu d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes plus 
         efficaces.
+=======
+    what_others_say: Ce que les gens pensent de shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai trouvé
+        comment faire un ordinateur dans shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
+ >>>>>>> master
 global:
     loading: Chargement
     error: Erreur
@@ -71,11 +82,19 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
     savegameUnnamed: Sans titre
+ <<<<<<< patch-2
     puzzleMode: Mode Puzzle
     back: Retour
     puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC 
         sur Steam dès maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
+=======
+    puzzleMode: Puzzle Mode
+    back: Back
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC
+        sur Steam dés maintenant pour encore plus d'amusement !
+    puzzleDlcWishlist: Wishlist now!
+ >>>>>>> master
 dialogs:
     buttons:
         ok: OK
@@ -89,7 +108,11 @@ dialogs:
         viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
+ <<<<<<< patch-2
         retry: Réessayer
+=======
+        retry: Réesayer
+ >>>>>>> master
         continue: Continuer
         playOffline: Jouer Hors-ligne
     importSavegameError:
@@ -196,19 +219,28 @@ dialogs:
         title: Définir l'objet
     puzzleLoadFailed:
         title: Le chargement du Puzzle à échoué
-        desc: "Malheuresement, le puzzle n'a pas pu être chargé:"
+        desc: "Malheuresement, le puzzle n'a pas pu être chargé :"
     submitPuzzle:
         title: Envoyer le Puzzle
+ <<<<<<< patch-2
         descName: "Donnez un nom à votre puzzle:"
         descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme icône de 
             votre puzzle (Vous pouvez générer le raccourci d'une forme <link>ici</link>, ou en choisir une
             parmi les formes suggérées alétoirement ci-dessous):"
         placeholderName: Titre du Puzzle
+=======
+        descName: "Donnez un nom à votre puzzle :"
+        descIcon: "Please enter a unique short key, which will be shown as the icon of
+            your puzzle (You can generate them <link>here</link>, or choose one
+            of the randomly suggested shapes below):"
+        placeholderName: Puzzle Title
+ >>>>>>> master
     puzzleResizeBadBuildings:
         title: Impossible de redimensionner
         desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en dehors de la zone
     puzzleLoadError:
         title: Mauvais Puzzle
+ <<<<<<< patch-2
         desc: "Le chargement du puzzle a échoué:"
     offlineMode:
         title: Mode hors-ligne
@@ -223,6 +255,22 @@ dialogs:
     puzzleSubmitOk:
         title: Puzzle envoyé
         desc: Félicitations ! Votre puzzle a été envoyé et peut maintenant être joué.
+=======
+        desc: "Le chargement du puzzle a échoué :"
+    offlineMode:
+        title: Mode hors-ligne
+        desc: We couldn't reach the servers, so the game has to run in offline mode.
+            Please make sure you have an active internet connection.
+    puzzleDownloadError:
+        title: Erreur de téléchargment
+        desc: "Le téléchargement à échoué :"
+    puzzleSubmitError:
+        title: Erreur d'envoi
+        desc: "L'envoi à échoué :"
+    puzzleSubmitOk:
+        title: Puzzle envoyé
+        desc: Félicitation ! Votre puzzle à été envoyé et peut maintenant être joué.
+ >>>>>>> master
             Vous pouvez maintenant le retrouver dans la section "Mes Puzzles".
     puzzleCreateOffline:
         title: Mode Hors-ligne
@@ -243,7 +291,11 @@ dialogs:
             unsolvable: Irrésolvable
             trolling: Troll
     puzzleReportComplete:
+ <<<<<<< patch-2
         title: Merci pour votre retour!
+=======
+        title: Merci pour votre retour !
+ >>>>>>> master
         desc: Le puzzle a été marqué.
     puzzleReportError:
         title: Échec du signalement
@@ -1229,6 +1281,7 @@ puzzleMenu:
     edit: Éditer
     title: Mode Puzzle
     createPuzzle: Créer un Puzzle
+ <<<<<<< patch-2
     loadPuzzle: Charger
     reviewPuzzle: Revoir et Publier
     validatingPuzzle: Validation du Puzzle
@@ -1277,4 +1330,55 @@ backendErrors:
     can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
     bad-payload: The request contains invalid data.
     bad-building-placement: Votre puzzle contient des bâtiments mal placés.
+=======
+    loadPuzzle: charger
+    reviewPuzzle: Revoir & Publier
+    validatingPuzzle: Validation du Puzzle
+    submittingPuzzle: Publication du Puzzle
+    noPuzzles: Il n'y a actuellement aucun puzzle dans cette section.
+    categories:
+        levels: Niveaux
+        new: Nouveau
+        top-rated: Les-mieux notés
+        mine: Mes puzzles
+        short: Court
+        easy: Facile
+        hard: Difficile
+        completed: Complété
+    validation:
+        title: Puzzle invalide
+        noProducers: Veuillez placer un producteur constant !
+        noGoalAcceptors: Veuillez placer un accepteur d'objectif !
+        goalAcceptorNoItem: Un ou plusieurs accepteurs d'objectif n'ont pas encore attribué d'élément.
+            Donnez-leur une forme pour fixer un objectif.
+        goalAcceptorRateNotMet: Un ou plusieurs accepteurs d'objectifs n'obtiennent pas assez d'articles.
+            Assurez-vous que les indicateurs sont verts pour tous les accepteurs.
+        buildingOutOfBounds: Un ou plusieurs bâtiments se trouvent en dehors de la zone constructible.
+            Augmentez la surface ou supprimez-les.
+        autoComplete:
+            Votre puzzle se complète automatiquement ! Veuillez vous assurer que vos producteurs constants
+            ne livrent pas directement à vos accepteurs d'objectifs.
+backendErrors:
+    ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu s'il vous plait.
+    invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (clé Api invalide).
+    unauthorized: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (non autorisé).
+    bad-token: Échec de la communication avec le backend, veuillez essayer de mettre à jour/redémarrer
+        le jeu (Mauvais jeton).
+    bad-id: Identifiant de puzzle non valide.
+    not-found: Le puzzle donné n'a pas pu être trouvé.
+    bad-category: La catégorie donnée n'a pas pu être trouvée.
+    bad-short-key: La clé courte donnée n'est pas valide.
+    profane-title: Le titre de votre puzzle contient des mots interdits.
+    bad-title-too-many-spaces: Le titre de votre puzzle est trop court.
+    bad-shape-key-in-emitter: Un producteur constant a un élément invalide.
+    bad-shape-key-in-goal: Un accepteur de but a un élément invalide.
+    no-emitters: Votre puzzle ne contient aucun producteur constant.
+    no-goals: Votre puzzle ne contient aucun accepteur de but.
+    short-key-already-taken: Cette clé courte est déjà prise, veuillez en utiliser une autre.
+    can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
+    bad-payload: La demande contient des données invalides.
+    bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
+ >>>>>>> master
     timeout: La demande a expiré.
