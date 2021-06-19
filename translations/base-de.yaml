@@ -70,11 +70,11 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Puzzlemodus
+    back: Zurück
+    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter zu machen?
+        Hol dir den Puzzle DLC auf Steam für noch mehr Spaß!
+    puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
 dialogs:
     buttons:
         ok: OK
@@ -88,9 +88,9 @@ dialogs:
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
         showKeybindings: Kürzel anzeigen
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Erneut versuchen
+        continue: Fortsetzen
+        playOffline: Offline spielen
     importSavegameError:
         title: Importfehler
         text: "Fehler beim Importieren deines Speicherstands:"
