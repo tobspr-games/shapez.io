@@ -187,7 +187,8 @@ dialogs:
     editSignal:
         title: Βάλε σήμα
         descItems: "Διάλεξε ενα προκαθορισμένο αντικείμενο:"
-        descShortKey: ... ή εισάγετε ενα <strong>ενα μικρό κλειδι</strong> απο ένα σχήμα (Που μπορείς να παράγεις 
+        descShortKey:
+            ... ή εισάγετε ενα <strong>ενα μικρό κλειδι</strong> απο ένα σχήμα (Που μπορείς να παράγεις
             <link>εδώ</link>)
     renameSavegame:
         title: Μετανόμασε το αποθηκευμένου παιχνιδι.
@@ -222,7 +223,7 @@ dialogs:
     offlineMode:
         title: Offline Mode
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
         title: Σφάλμα λήψης
         desc: "Απέτυχε να κατεβαθεί το πάζλ:"
@@ -445,7 +446,7 @@ ingame:
         title: Κατασκευαστείς παζλ.
         instructions:
             - 1. Τοποθετήστε τους <strong> σταθερούς παραγωγούς </strong> για να δώσετε σχήματα και
-              χρώματα στον 
+              χρώματα στον
             - 2. Δημιουργήστε ένα ή περισσότερα σχήματα που θέλετε να δημιουργήσει ο παίκτης αργότερα και
               παραδώστε το σε έναν ή περισσότερους <strong> Αποδέκτες στόχων </strong>
             - 3. Μόλις ένας Αποδέκτης Στόχου λάβει ένα σχήμα για ένα ορισμένο ποσό

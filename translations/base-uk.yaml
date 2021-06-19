@@ -215,7 +215,7 @@ dialogs:
     offlineMode:
         title: Offline Mode
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
         title: Download Error
         desc: "Failed to download the puzzle:"
@@ -387,10 +387,10 @@ ingame:
                 вводи</strong> фарбувальника за допомогою проводу!
             21_3_place_button: Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та
                 з'єднайте їх дротом!
-            21_4_press_button: "Натисніть вимикач, аби він почав <strong>видавати сигнал
-                \"Істина\" </strong> активувавши таким чином
-                фарбувальник.<br><br> PS: Не обов'язково підключати всі входи!
-                Спробуйте підключити лише два."
+            21_4_press_button: 'Натисніть вимикач, аби він почав <strong>видавати сигнал
+                "Істина" </strong> активувавши таким чином
+                фарбувальник.<br><br> PS: Не обов''язково підключати всі входи!
+                Спробуйте підключити лише два.'
     connectedMiners:
         one_miner: 1 Екстрактор
         n_miners: <amount> Екстракторів

@@ -214,7 +214,7 @@ dialogs:
     offlineMode:
         title: Mode hors-ligne
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
         title: Erreur de téléchargment
         desc: "Le téléchargement à échoué :"
