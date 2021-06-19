@@ -88,8 +88,12 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
+
         &[data-columns="1"] {
             grid-template-columns: 1fr;
+        }
+        &[data-columns="2"] {
+            grid-template-columns: 1fr 1fr;
         }
 
         .standaloneBanner {
