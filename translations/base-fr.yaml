@@ -12,13 +12,13 @@ steamPage:
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
     what_others_say: Ce que les gens pensent de Shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
+    nothernlion_comment: Ce jeu est génial - Je passe un merveilleux moment à jouer,
+        et le temps s'est envolé.
     notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai trouvé
         comment faire un ordinateur dans Shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer.
+        Jeu d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes plus 
+        efficaces.
 global:
     loading: Chargement
     error: Erreur
@@ -75,7 +75,7 @@ mainMenu:
     back: Retour
     puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC 
         sur Steam dès maintenant pour encore plus d'amusement!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
 dialogs:
     buttons:
         ok: OK
@@ -200,7 +200,8 @@ dialogs:
     submitPuzzle:
         title: Envoyer le Puzzle
         descName: "Donnez un nom à votre puzzle:"
-        descIcon: "Veuillez entrer un unique raccourci d'une forme, qui sera affichée comme icône de votre puzzle (Vous pouvez générer le raccourci d'une forme <link>ici</link>, ou en choisir une
+        descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme icône de 
+            votre puzzle (Vous pouvez générer le raccourci d'une forme <link>ici</link>, ou en choisir une
             parmi les formes suggérées alétoirement ci-dessous):"
         placeholderName: Titre du Puzzle
     puzzleResizeBadBuildings:
@@ -232,24 +233,24 @@ dialogs:
             avant d'essayer le Puzzle DLC, sinon vous risqez de rencontrer
             des méchanismes pas encore introduits. Voulez-vous toujours continuer ?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Code copié
+        desc: Le code du puzzle (<key>) a été copié dans ton presse-papiers ! Il
+            peut être entré dans le menu des puzzles pour accéder au puzzle.
     puzzleReport:
         title: Signaler le Puzzle
         options:
             profane: Profane
             unsolvable: Irrésolvable
-            trolling: Trolling
+            trolling: Troll
     puzzleReportComplete:
         title: Merci pour votre retour!
-        desc: Le puzzle à été marqué.
+        desc: Le puzzle a été marqué.
     puzzleReportError:
         title: Échec du signalement
-        desc: "Your report could not get processed:"
+        desc: "Votre signalement n'a pas pu être effectué:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Entrer un code
+        desc: Entrer le code du puzzle pour le charger.
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -429,20 +430,20 @@ ingame:
         zoneTitle: Zone
         zoneWidth: Largeur
         zoneHeight: Hauteur
-        trimZone: Trim
+        trimZone: Optimiser la taille
         clearItems: Supprimer les objets
         share: Partager
         report: Signaler
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Créateur de Puzzles
         instructions:
             - 1. Placez des <strong>Producteurs Constants</strong> pour fournir des formes et
               des couleurs au joueur
             - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur fabrique plus tard et
               délivrez-la/les à un ou plusieurs <strong>Récepteurs d'Objectif</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
+            - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un certain
+              temps, il <strong>l'enregistre zn tant qu'objectif</strong> que le joueur devra
+              produire plus tard (Indiqué par le <strong>badge vert</strong>).
             - 4. Click the <strong>lock button</strong> on a building to disable
               it.
             - 5. Once you click review, your puzzle will be validated and you
