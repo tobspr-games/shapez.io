@@ -393,6 +393,11 @@ dialogs:
         desc: >-
             Enter the short key of the puzzle to load it.
 
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: >-
+            Are you sure you want to delete '<title>'? This can not be undone!
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -1400,6 +1405,8 @@ backendErrors:
     bad-payload: The request contains invalid data.
     bad-building-placement: Your puzzle contains invalid placed buildings.
     timeout: The request timed out.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.
 
 tips:
     - The hub will accept any input, not just the current shape!
