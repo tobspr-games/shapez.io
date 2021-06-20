@@ -140,11 +140,23 @@ puzzleMenu:
         levels: Levels
         new: New
         top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
+        mine: Created
         easy: Easy
+        medium: Medium
         hard: Hard
         completed: Completed
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 
     validation:
         title: Invalid Puzzle
@@ -327,7 +339,7 @@ dialogs:
     offlineMode:
         title: Offline Mode
         desc: >-
-            We couldn't reach the servers, so the game has to run in offline mode. Please make sure you have an active internect connection.
+            We couldn't reach the servers, so the game has to run in offline mode. Please make sure you have an active internet connection.
 
     puzzleDownloadError:
         title: Download Error

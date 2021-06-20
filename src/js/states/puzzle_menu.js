@@ -1,4 +1,3 @@
-import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
@@ -10,48 +9,15 @@ import { MUSIC } from "../platform/sound";
 import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
-const categories = ["top-rated", "new", "easy", "short", "hard", "completed", "mine"];
-
-/**
- * @type {import("../savegame/savegame_typedefs").PuzzleMetadata}
- */
-const SAMPLE_PUZZLE = {
-    id: 1,
-    shortKey: "CuCuCuCu",
-    downloads: 0,
-    likes: 0,
-    averageTime: 1,
-    completions: 1,
-    difficulty: null,
-    title: "Level 1",
-    author: "verylongsteamnamewhichbreaks",
-    completed: false,
+const navigation = {
+    categories: ["official", "top-rated", "trending", "trending-weekly", "new"],
+    difficulties: ["easy", "medium", "hard"],
+    account: ["mine", "completed"],
 };
-
-/**
- * @type {import("../savegame/savegame_typedefs").PuzzleMetadata[]}
- */
-const BUILTIN_PUZZLES = G_IS_DEV
-    ? [
-          //   { ...SAMPLE_PUZZLE, completed: true },
-          //   { ...SAMPLE_PUZZLE, completed: true },
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-          //   SAMPLE_PUZZLE,
-      ]
-    : [];
 
 const logger = createLogger("puzzle-menu");
 
-let lastCategory = categories[0];
+let lastCategory = "official";
 
 export class PuzzleMenuState extends TextualGameState {
     constructor() {
@@ -79,6 +45,7 @@ export class PuzzleMenuState extends TextualGameState {
                     <button class="styledButton loadPuzzle">${T.puzzleMenu.loadPuzzle}</button>
                     <button class="styledButton createPuzzle">+ ${T.puzzleMenu.createPuzzle}</button>
                 </div>
+
             </div>`;
 
         return `
@@ -91,17 +58,22 @@ export class PuzzleMenuState extends TextualGameState {
 
     getMainContentHTML() {
         let html = `
-
-
                 <div class="categoryChooser">
-                    ${categories
+
+                    <div class="categories rootCategories">
+                    ${Object.keys(navigation)
                         .map(
-                            category => `
-                             <button data-category="${category}" class="styledButton category">${T.puzzleMenu.categories[category]}</button>
-                        `
+                            rootCategory =>
+                                `<button data-root-category="${rootCategory}" class="styledButton category root">${T.puzzleMenu.categories[rootCategory]}</button>`
                         )
                         .join("")}
+                    </div>
+
+                    <div class="categories subCategories">
+                    </div>
+
                 </div>
+
 
                 <div class="puzzles" id="mainContainer"></div>
         `;
@@ -155,6 +127,52 @@ export class PuzzleMenuState extends TextualGameState {
     }
 
     /**
+     * Selects a root category
+     * @param {string} rootCategory
+     * @param {string=} category
+     */
+    selectRootCategory(rootCategory, category) {
+        const subCategory = category || navigation[rootCategory][0];
+        console.warn("Select root category", rootCategory, category, "->", subCategory);
+
+        if (this.loading) {
+            return;
+        }
+        if (this.activeCategory === subCategory) {
+            return;
+        }
+
+        const activeCategory = this.htmlElement.querySelector(".active[data-root-category]");
+        if (activeCategory) {
+            activeCategory.classList.remove("active");
+        }
+
+        const newActiveCategory = this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`);
+        if (newActiveCategory) {
+            newActiveCategory.classList.add("active");
+        }
+
+        // Rerender buttons
+
+        const subContainer = this.htmlElement.querySelector(".subCategories");
+        while (subContainer.firstChild) {
+            subContainer.removeChild(subContainer.firstChild);
+        }
+
+        const children = navigation[rootCategory];
+        for (const category of children) {
+            const button = document.createElement("button");
+            button.setAttribute("data-category", category);
+            button.classList.add("styledButton", "category", "child");
+            button.innerText = T.puzzleMenu.categories[category];
+            this.trackClicks(button, () => this.selectCategory(category));
+            subContainer.appendChild(button);
+        }
+
+        this.selectCategory(subCategory);
+    }
+
+    /**
      *
      * @param {import("../savegame/savegame_typedefs").PuzzleMetadata[]} puzzles
      */
@@ -167,7 +185,10 @@ export class PuzzleMenuState extends TextualGameState {
         for (const puzzle of puzzles) {
             const elem = document.createElement("div");
             elem.classList.add("puzzle");
-            elem.classList.toggle("completed", puzzle.completed);
+
+            if (this.activeCategory !== "mine") {
+                elem.classList.toggle("completed", puzzle.completed);
+            }
 
             if (puzzle.title) {
                 const title = document.createElement("div");
@@ -176,7 +197,7 @@ export class PuzzleMenuState extends TextualGameState {
                 elem.appendChild(title);
             }
 
-            if (puzzle.author) {
+            if (puzzle.author && !["official", "mine"].includes(this.activeCategory)) {
                 const author = document.createElement("div");
                 author.classList.add("author");
                 author.innerText = "by " + puzzle.author;
@@ -187,7 +208,10 @@ export class PuzzleMenuState extends TextualGameState {
             stats.classList.add("stats");
             elem.appendChild(stats);
 
-            if (puzzle.downloads > 0) {
+            if (
+                puzzle.downloads > 3 &&
+                !["official", "easy", "medium", "hard"].includes(this.activeCategory)
+            ) {
                 const difficulty = document.createElement("div");
                 difficulty.classList.add("difficulty");
 
@@ -198,14 +222,15 @@ export class PuzzleMenuState extends TextualGameState {
                 difficulty.innerText = completionPercentage + "%";
                 stats.appendChild(difficulty);
 
-                if (completionPercentage < 10) {
+                if (completionPercentage < 40) {
                     difficulty.classList.add("stage--hard");
-                } else if (completionPercentage < 30) {
+                    difficulty.innerText = T.puzzleMenu.difficulties.hard;
+                } else if (completionPercentage < 80) {
                     difficulty.classList.add("stage--medium");
-                } else if (completionPercentage < 60) {
-                    difficulty.classList.add("stage--normal");
+                    difficulty.innerText = T.puzzleMenu.difficulties.medium;
                 } else {
                     difficulty.classList.add("stage--easy");
+                    difficulty.innerText = T.puzzleMenu.difficulties.easy;
                 }
             }
 
@@ -249,10 +274,6 @@ export class PuzzleMenuState extends TextualGameState {
      * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]>}
      */
     getPuzzlesForCategory(category) {
-        if (category === "levels") {
-            return Promise.resolve(BUILTIN_PUZZLES);
-        }
-
         const result = this.app.clientApi.apiListPuzzles(category);
         return result.catch(err => {
             logger.error("Failed to get", category, ":", err);
@@ -300,24 +321,28 @@ export class PuzzleMenuState extends TextualGameState {
     }
 
     onEnter(payload) {
-        this.selectCategory(lastCategory);
+        // Find old category
+        let rootCategory = "categories";
+        for (const [id, children] of Object.entries(navigation)) {
+            if (children.includes(lastCategory)) {
+                rootCategory = id;
+                break;
+            }
+        }
+
+        this.selectRootCategory(rootCategory, lastCategory);
 
         if (payload && payload.error) {
             this.dialogs.showWarning(payload.error.title, payload.error.desc);
         }
 
-        for (const category of categories) {
-            const button = this.htmlElement.querySelector(`[data-category="${category}"]`);
-            this.trackClicks(button, () => this.selectCategory(category));
+        for (const rootCategory of Object.keys(navigation)) {
+            const button = this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`);
+            this.trackClicks(button, () => this.selectRootCategory(rootCategory));
         }
 
         this.trackClicks(this.htmlElement.querySelector("button.createPuzzle"), () => this.createNewPuzzle());
         this.trackClicks(this.htmlElement.querySelector("button.loadPuzzle"), () => this.loadPuzzle());
-
-        if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
-            // this.createNewPuzzle();
-            this.playPuzzle(SAMPLE_PUZZLE);
-        }
     }
 
     createEmptySavegame() {
