@@ -53,7 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: ESPACIO
-    loggingIn: Logging in
+    loggingIn: Iniciando sesión
 demoBanners:
     title: Versión de prueba
     intro: ¡Obtén el juego completo para desbloquear todas las características!
