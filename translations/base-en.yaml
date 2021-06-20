@@ -141,16 +141,17 @@ puzzleMenu:
         new: New
         top-rated: Top Rated
         mine: Created
-        short: Short
         easy: Easy
         medium: Medium
         hard: Hard
         completed: Completed
         official: Official
         trending: Trending today
+        trending-weekly: Trending weekly
         categories: Categories
         difficulties: By Difficulty
         account: My Puzzles
+        search: Search
 
     difficulties:
         easy: Easy

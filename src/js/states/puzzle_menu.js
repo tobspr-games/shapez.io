@@ -1,4 +1,3 @@
-import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
@@ -11,8 +10,8 @@ import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
 const navigation = {
-    categories: ["official", "top-rated", "trending", "new"],
-    difficulties: ["easy", "medium", "hard", "short"],
+    categories: ["official", "top-rated", "trending", "trending-weekly", "new"],
+    difficulties: ["easy", "medium", "hard"],
     account: ["mine", "completed"],
 };
 
@@ -72,6 +71,7 @@ export class PuzzleMenuState extends TextualGameState {
 
                     <div class="categories subCategories">
                     </div>
+
                 </div>
 
 
@@ -147,7 +147,10 @@ export class PuzzleMenuState extends TextualGameState {
             activeCategory.classList.remove("active");
         }
 
-        this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`).classList.add("active");
+        const newActiveCategory = this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`);
+        if (newActiveCategory) {
+            newActiveCategory.classList.add("active");
+        }
 
         // Rerender buttons
 
@@ -206,7 +209,7 @@ export class PuzzleMenuState extends TextualGameState {
             elem.appendChild(stats);
 
             if (
-                puzzle.downloads > 0 &&
+                puzzle.downloads > 3 &&
                 !["official", "easy", "medium", "hard"].includes(this.activeCategory)
             ) {
                 const difficulty = document.createElement("div");
