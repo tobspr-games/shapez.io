@@ -225,6 +225,9 @@ dialogs:
     puzzleLoadShortKey:
         title: 짧은 키 입력
         desc: 불러올 퍼즐의 짧은 키를 입력해 주세요.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -1099,3 +1102,6 @@ backendErrors:
     bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
     bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
     timeout: 요청 시간이 초과되었습니다.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

@@ -248,6 +248,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Vložte krátký klíč
         desc: Vložte krátký klíč pro načtení příslušného puzzlu.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -1230,3 +1233,6 @@ backendErrors:
     bad-payload: Žádost obsahuje neplatná data.
     bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
     timeout: Žádost vypršela.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

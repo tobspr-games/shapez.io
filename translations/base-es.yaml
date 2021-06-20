@@ -75,8 +75,8 @@ mainMenu:
     savegameUnnamed: Sin nombre
     puzzleMode: Modo Puzle
     back: Atrás
-    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas?
-        ¡Consigue ahora el DLC de Puzles en Steam para aún más diversión!
+    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas? ¡Consigue ahora el
+        DLC de Puzles en Steam para aún más diversión!
     puzzleDlcWishlist: ¡Añádelo ahora a tu lista de deseos!
 dialogs:
     buttons:
@@ -259,6 +259,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Introducir clave
         desc: Introduce la clave del puzle para cargarlo.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1292,3 +1295,6 @@ backendErrors:
     bad-payload: La petición contiene datos no válidos.
     bad-building-placement: Tu puzle contiene edificios en posiciones no válidas.
     timeout: El tiempo para la solicitud ha expirado.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

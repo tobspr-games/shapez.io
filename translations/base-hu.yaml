@@ -253,6 +253,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Gyorskód Beillesztése
         desc: Illeszd be a gyorskódot, hogy betöltsd a Fejtörőt.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -1259,3 +1262,6 @@ backendErrors:
     bad-payload: A kérés helytelen adatot tartalmaz.
     bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
     timeout: A kérés időtúllépésbe került.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

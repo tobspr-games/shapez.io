@@ -220,6 +220,9 @@ dialogs:
     puzzleLoadShortKey:
         title: 输入短代码
         desc: 输入此谜题的短代码以载入。
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -1051,3 +1054,6 @@ backendErrors:
     bad-payload: 此请求包含无效数据。
     bad-building-placement: 您的谜题包含放置错误的设施。
     timeout: 请求超时。
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

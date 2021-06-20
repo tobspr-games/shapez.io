@@ -253,6 +253,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1274,3 +1277,6 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

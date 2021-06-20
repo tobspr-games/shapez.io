@@ -256,6 +256,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Skriv inn kort kode
         desc: Skriv inn korte koden til puslespillet for å laste den inn.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Beveg
@@ -1253,3 +1256,6 @@ backendErrors:
     bad-payload: Forespørselen inneholder ugyldig data.
     bad-building-placement: Ditt puslespill inneholder ugyldig plasserte bygninger.
     timeout: Forespørselen timet ut.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

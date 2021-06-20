@@ -260,6 +260,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Voer een vorm sleutel in
         desc: Voer de vorm sleutel van de puzzel in om deze te laden.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -1274,3 +1277,6 @@ backendErrors:
     bad-payload: Het verzoek bevat ongeldige gegevens.
     bad-building-placement: Je puzzel bevat ongeldig geplaatste gebouwen.
     timeout: Het verzoek is verlopen.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

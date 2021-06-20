@@ -253,6 +253,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Kısa anahtar gir
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -1259,3 +1262,6 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.
