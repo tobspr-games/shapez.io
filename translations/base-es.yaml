@@ -997,8 +997,8 @@ settings:
             description: Deshabilitar la grilla puede ayudar con el rendimiento. ¡También
                 hace que el juego se vea más limpio!
         clearCursorOnDeleteWhilePlacing:
-            title: Limpiar el cursos al apretar click derecho
-            description: Activado por defecto, Limpia el cursor al hacer click derecho
+            title: Limpiar el cursor al apretar click derecho
+            description: Activado por defecto, limpia el cursor al hacer click derecho
                 mientras tengas un un edificio seleccionado. Si se deshabilita,
                 puedes eliminar edificios al hacer click derecho mientras pones
                 un edificio.
@@ -1011,14 +1011,14 @@ settings:
             description: Este juego está dividido en chunks de 16x16 cuadrados, si esta
                 opción es habilitada los bordes de cada chunk serán mostrados.
         pickMinerOnPatch:
-            title: Elegír el minero en la veta de recursos
-            description: Activado pir defecto, selecciona el minero si usas el cuentagotas
+            title: Elegir el minero en la veta de recursos
+            description: Activado por defecto, selecciona el minero si usas el cuentagotas
                 sobre una veta de recursos.
         simplifiedBelts:
             title: Cintas trasportadoras simplificadas (Feo)
             description: No rederiza los items en las cintas trasportadoras exceptuando al
                 pasar el cursor sobre la cinta para mejorar el rendimiento. No
-                recomiendo jugar con esta opcion activada a menos que necesites
+                recomiendo jugar con esta opción activada a menos que necesites
                 fuertemente mejorar el rendimiento.
         enableMousePan:
             title: Habilitar movimiento con mouse
@@ -1031,8 +1031,8 @@ settings:
                 diferencia de hacer zoom en el centro de la pantalla.
         mapResourcesScale:
             title: Tamaño de recursos en el mapa
-            description: Controla el tamaño de los recursos en la vista de aerea del mapa
-                (Al hacer zoom minimo).
+            description: Controla el tamaño de los recursos en la vista de aérea del mapa
+                (Al hacer zoom mínimo).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado
