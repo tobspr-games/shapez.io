@@ -74,7 +74,8 @@ mainMenu:
     puzzleMode: Yapboz Modu
     back: Geri
     puzzleDlcText: Fabrikaları küçültmeyi ve verimli hale getirmekten keyif mi
-        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif katabilirsin!
+        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
+        katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
 dialogs:
     buttons:
@@ -198,14 +199,14 @@ dialogs:
     submitPuzzle:
         title: Yapboz Yayınla
         descName: "Yapbozuna bir isim ver:"
-        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir.
-            (Anahtarı <link>buradan</link> oluşturabilirsin, yada aşagıdaki
-            şekillerden rastgele birini seçebilirsin):"
+        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir. (Anahtarı
+            <link>buradan</link> oluşturabilirsin, yada aşagıdaki şekillerden
+            rastgele birini seçebilirsin):"
         placeholderName: Yapboz İsmi
     puzzleResizeBadBuildings:
         title: Yeniden boyutlandırma mümkün değil
-        desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın
-            dışında kalabilir.
+        desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın dışında
+            kalabilir.
     puzzleLoadError:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
@@ -221,8 +222,8 @@ dialogs:
         desc: "Yapboz yayınlanamadı:"
     puzzleSubmitOk:
         title: Yapboz Yayınlandı
-        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından oynanabilecek.
-            Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
+        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından
+            oynanabilecek. Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
     puzzleCreateOffline:
         title: Çevrimdışı Modu
         desc: Çevrimdışı olduğundan yapbozunu kayıt edemeyecek veya yayınlayamayacaksın.
@@ -230,12 +231,13 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Öneri
         desc: Ben <strong>muhakkak</strong> yapboz moduna başlamadan önce normal oyunu
-            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz sunulmamış
-            mekaniklerle (yapılar ve oynanış şekilleri) karşılaşabilirsiniz.
+            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz
+            sunulmamış mekaniklerle (yapılar ve oynanış şekilleri)
+            karşılaşabilirsiniz.
     puzzleShare:
         title: Kısa Anahtar Kopyalandı
-        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı!
-            Bu anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
+        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı! Bu
+            anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
     puzzleReport:
         title: Yapbozu Şikayet Et
         options:
@@ -433,20 +435,22 @@ ingame:
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
-            - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit Üreticileri</strong>
-              yerleştir.
-            - 2. Oyuncuların üretmesi ve bir veya birden fazla <strong>Hedef Merkezine</strong>
-              teslim edebilmeleri için bir veya birden fazla şekil oluştur.
-            - 3. Bir Hedef Merkezine belirli bir zaman içinde şekil teslim edilirse,
-              Hedef Merkezi bunu oyuncuların tekrardan üreteceği bir
-              <strong>hedef olarak kabul eder</strong> (<strong>Yeşil rozetle</strong> gösterilmiş).
-            - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit butonuna</strong>
-              basınız.
-            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve sonra onu
-              yayınlayabileceksiniz.
-            - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri dışındaki
-              <strong>bütün yapılar silinecektir</strong> - Bu kısmı oyuncuların
-              kendisi çözmesi gerekecek sonuçta :)
+            - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit
+              Üreticileri</strong> yerleştir.
+            - 2. Oyuncuların üretmesi ve bir veya birden fazla <strong>Hedef
+              Merkezine</strong> teslim edebilmeleri için bir veya birden fazla
+              şekil oluştur.
+            - 3. Bir Hedef Merkezine belirli bir zaman içinde şekil teslim
+              edilirse, Hedef Merkezi bunu oyuncuların tekrardan üreteceği bir
+              <strong>hedef olarak kabul eder</strong> (<strong>Yeşil
+              rozetle</strong> gösterilmiş).
+            - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit
+              butonuna</strong> basınız.
+            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve
+              sonra onu yayınlayabileceksiniz.
+            - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri
+              dışındaki <strong>bütün yapılar silinecektir</strong> - Bu kısmı
+              oyuncuların kendisi çözmesi gerekecek sonuçta :)
     puzzleCompletion:
         title: Yapboz Tamamlandı!
         titleLike: "Yapbozu beğendiyseniz kalbe tıklayınız:"
@@ -1204,30 +1208,42 @@ puzzleMenu:
         new: Yeni
         top-rated: En İyi Değerlendirilen
         mine: Yapbozlarım
-        short: Kısa
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Geçersiz Yapboz
         noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
         noGoalAcceptors: Lütfen bir Hedef Merkezi yerleştiriniz!
         goalAcceptorNoItem: Bir veya birden fazla Hedef Merkezine şekil gönderilmedi.
             Hedef belirlemek için onlara şekil gönderiniz.
-        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya almıyor.
-            Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan emin olunuz.
+        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya
+            almıyor. Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan
+            emin olunuz.
         buildingOutOfBounds: Bir veya birden fazla yapı inşa edilebilir alanın dışında.
             Alanı azaltınız veya yapıları siliniz.
-        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef merkezlerine
-            direkt olarak şekil göndermediğinden emin olunuz.
+        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef
+            merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
         güncellemeyi/yeniden başlatmayı deneyiniz (Geçersiz Api Anahtarı).
     unauthorized: Arka tarafla iletişim kurulamadı, lütfen oyunu
         güncellemeyi/yeniden başlatmayı deneyiniz (Yetkisiz erişim).
-    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu
-        güncellemeyi/yeniden başlatmayı deneyiniz (Kötü Anahtar).
+    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu güncellemeyi/yeniden
+        başlatmayı deneyiniz (Kötü Anahtar).
     bad-id: Geçersiz Yapboz tanımlayıcısı (ID).
     not-found: İstenilen Yapboz bulunamadı.
     bad-category: İstenilen kategori bulunamadı.

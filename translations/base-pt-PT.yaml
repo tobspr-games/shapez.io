@@ -76,8 +76,8 @@ mainMenu:
     savegameUnnamed: Sem Nome
     puzzleMode: Modo Puzzle
     back: Voltar
-    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC Puzzle
-        na Steam para ainda mais diversão!
+    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
+        Puzzle na Steam para ainda mais diversão!
     puzzleDlcWishlist: Lista de desejos agora!
 dialogs:
     buttons:
@@ -207,20 +207,21 @@ dialogs:
         title: Submeter Puzzle
         descName: "Dá um nome ao teu puzzle:"
         descIcon: "Por favor insere um pequeno código único que será a imagem do ícone
-            da teu puzzle (Podes gerar o código <link>aqui</link>, ou escolher uma
-            das seguintes sugestões aleatoriamente geradas.):"
+            da teu puzzle (Podes gerar o código <link>aqui</link>, ou escolher
+            uma das seguintes sugestões aleatoriamente geradas.):"
         placeholderName: Título do Puzzle
     puzzleResizeBadBuildings:
         title: Não é possível alterar o tamanho
-        desc: Não podes tornar a zona mais pequena, assim algumas das construções ficariam
-            fora da zona.
+        desc: Não podes tornar a zona mais pequena, assim algumas das construções
+            ficariam fora da zona.
     puzzleLoadError:
         title: Mau puzzle
         desc: "O puzzle falhou ao carregar:"
     offlineMode:
         title: Modo Offline
-        desc: Não conseguimos correr os servidores, sendo assim o jogo tem de ser jogado em modo offline.
-            Por favor assegura-te de que tens uma boa conexão de internet.
+        desc: Não conseguimos correr os servidores, sendo assim o jogo tem de ser jogado
+            em modo offline. Por favor assegura-te de que tens uma boa conexão
+            de internet.
     puzzleDownloadError:
         title: Falha no Download
         desc: "Falha ao fazer o download do puzzle:"
@@ -229,21 +230,24 @@ dialogs:
         desc: "Falha ao submeter o teu puzzle:"
     puzzleSubmitOk:
         title: Puzzle Publicado
-        desc: Parabéns! O teu puzzle foi publicado e agora pode ser jogado
-            por outros jogadores. Agora podes encontrar o teu puzzle na zona "Meus puzzles".
+        desc: Parabéns! O teu puzzle foi publicado e agora pode ser jogado por outros
+            jogadores. Agora podes encontrar o teu puzzle na zona "Meus
+            puzzles".
     puzzleCreateOffline:
         title: Modo Offline
-        desc: Como estás no modo offline, tu não poderás salvar e/ou publicar o
-            teu puzzle. Mesmo assim queres continuar?
+        desc: Como estás no modo offline, tu não poderás salvar e/ou publicar o teu
+            puzzle. Mesmo assim queres continuar?
     puzzlePlayRegularRecommendation:
         title: Recomendação
-        desc: Eu recomendo <strong>fortemente</strong> a jogares no modo normal até ao nível 12
-            antes de tentares o "puzzle DLC", caso contrário poderás encontrar
-            mecanicas às quais ainda não foste introduzido. Mesmo assim queres continuar?
+        desc: Eu recomendo <strong>fortemente</strong> a jogares no modo normal até ao
+            nível 12 antes de tentares o "puzzle DLC", caso contrário poderás
+            encontrar mecanicas às quais ainda não foste introduzido. Mesmo
+            assim queres continuar?
     puzzleShare:
         title: Pequeno código copiado
-        desc: O pequeno código do puzzle (<key>) foi copiado para a tua área de transferências!
-            Poderá ser introduzido no menu puzzle para teres acesso ao puzzle.
+        desc: O pequeno código do puzzle (<key>) foi copiado para a tua área de
+            transferências! Poderá ser introduzido no menu puzzle para teres
+            acesso ao puzzle.
     puzzleReport:
         title: Reportar Puzzle
         options:
@@ -442,20 +446,23 @@ ingame:
     puzzleEditorControls:
         title: Criador de Puzzle
         instructions:
-            - 1. Coloca um <strong>Produtor Constante</strong> para fornecer formas e
-              cores ao jogador
-            - 2. Constrói uma ou mais formas que queiras que o jogador tenha de contruir mais tarde
-               e a tenha de entregar a um ou mais <strong>Recetor de Objetivo</strong>
-            - 3. Assim que o Recetor de Objetivo receba uma forma durante um certo espaço
-              de tempo, ele <strong>guarda-a num objetivo</strong> que o jogador terá
-              de produzir mais tarde (Indicatdo pelo <strong>distintivo verde</strong>).
-            - 4. Clcica no <strong>botão de bloqueio</strong> numa construção para
-              desátiva-lo.
-            - 5. Assim que clicares em analisar, o teu puzzle será validado e poderás
-              publicá-lo.
-            - 6. Após publicado, <strong>todas as construções serão removidas</strong>
-              excepto os Produtores e Recetores de Objetivo - Esta é a parte em que
-              é suposto o jogador tentar descobrir como resolver o teu Puzzle :)
+            - 1. Coloca um <strong>Produtor Constante</strong> para fornecer
+              formas e cores ao jogador
+            - 2. Constrói uma ou mais formas que queiras que o jogador tenha de
+              contruir mais tarde e a tenha de entregar a um ou mais
+              <strong>Recetor de Objetivo</strong>
+            - 3. Assim que o Recetor de Objetivo receba uma forma durante um
+              certo espaço de tempo, ele <strong>guarda-a num objetivo</strong>
+              que o jogador terá de produzir mais tarde (Indicatdo pelo
+              <strong>distintivo verde</strong>).
+            - 4. Clcica no <strong>botão de bloqueio</strong> numa construção
+              para desátiva-lo.
+            - 5. Assim que clicares em analisar, o teu puzzle será validado e
+              poderás publicá-lo.
+            - 6. Após publicado, <strong>todas as construções serão
+              removidas</strong> excepto os Produtores e Recetores de Objetivo -
+              Esta é a parte em que é suposto o jogador tentar descobrir como
+              resolver o teu Puzzle :)
     puzzleCompletion:
         title: Puzzle Completo!
         titleLike: "Clica no coração se gostaste do puzzle:"
@@ -692,7 +699,8 @@ buildings:
     goal_acceptor:
         default:
             name: Recetor de Objetivo
-            description: Entrega formas ao recetor de objetivo para defini-las como um objetivo.
+            description: Entrega formas ao recetor de objetivo para defini-las como um
+                objetivo.
     block:
         default:
             name: Bloqueador
@@ -1225,30 +1233,43 @@ puzzleMenu:
         new: Novo
         top-rated: Melhor Avaliado
         mine: Meus Puzzles
-        short: Pequeno
         easy: Fácil
         hard: Difícil
         completed: Completo
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Puzzle Inválido
         noProducers: Por favor coloca um Produtor Constante!
         noGoalAcceptors: Por favor coloca um Recetor de Objetivo!
-        goalAcceptorNoItem: Um ou mais Recetores de Objetivo ainda não tem itens atrbuídos.
-            Entrega uma forma nele para definires um objetivo.
-        goalAcceptorRateNotMet: Um ou mais Recetores de Objetivo não está a receber itens suficientes.
-            Assegura-te de que tens o indicador verde em todos os Recetores.
-        buildingOutOfBounds: Uma ou mais formas estão fora da área de construção.
-            Ou aumentas a área ou removes esses itens.
-        autoComplete: O teu Puzzle completa-se sozinho! Por favor assegura-te de que os teus
-            Produtores Constantes não estão automaticamente direcionados para os Recetores de Objetivo.
+        goalAcceptorNoItem: Um ou mais Recetores de Objetivo ainda não tem itens
+            atrbuídos. Entrega uma forma nele para definires um objetivo.
+        goalAcceptorRateNotMet: Um ou mais Recetores de Objetivo não está a receber
+            itens suficientes. Assegura-te de que tens o indicador verde em
+            todos os Recetores.
+        buildingOutOfBounds: Uma ou mais formas estão fora da área de construção. Ou
+            aumentas a área ou removes esses itens.
+        autoComplete: O teu Puzzle completa-se sozinho! Por favor assegura-te de que os
+            teus Produtores Constantes não estão automaticamente direcionados
+            para os Recetores de Objetivo.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
     invalid-api-key: Falha ao cominucar com o backend, por favor tenta
         atualizar/resetar o Jogo (Chave Api inválida).
-    unauthorized: Falha ao cominucar com o backend, or favor tenta
-        atualizar/resetar o Jogo (Não autorizado).
-    bad-token: Falha ao cominucar com o backend, por favor tenta atualizar/resetar
-        o Jogo (Mau Token).
+    unauthorized: Falha ao cominucar com o backend, or favor tenta atualizar/resetar
+        o Jogo (Não autorizado).
+    bad-token: Falha ao cominucar com o backend, por favor tenta atualizar/resetar o
+        Jogo (Mau Token).
     bad-id: Identificador de Puzzle inválido.
     not-found: O Puzzle pedido não foi encontrado.
     bad-category: A categoria pedida não foi encontrada.

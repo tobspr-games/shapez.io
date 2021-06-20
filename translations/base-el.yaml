@@ -76,7 +76,8 @@ mainMenu:
     savegameUnnamed: Unnamed
     puzzleMode: Λειτουργία παζλ
     back: Πίσω
-    puzzleDlcText: Σε αρέσει να συμπάγης και να βελτιστοποίεις εργοστάσια; Πάρε την λειτουργεία παζλ στο Steam για ακόμη περισσότερη πλάκα!
+    puzzleDlcText: Σε αρέσει να συμπάγης και να βελτιστοποίεις εργοστάσια; Πάρε την
+        λειτουργεία παζλ στο Steam για ακόμη περισσότερη πλάκα!
     puzzleDlcWishlist: Βαλτε το στην λίστα επιθυμιών τώρα!
 dialogs:
     buttons:
@@ -187,9 +188,8 @@ dialogs:
     editSignal:
         title: Βάλε σήμα
         descItems: "Διάλεξε ενα προκαθορισμένο αντικείμενο:"
-        descShortKey:
-            ... ή εισάγετε ενα <strong>ενα μικρό κλειδι</strong> απο ένα σχήμα (Που μπορείς να παράγεις
-            <link>εδώ</link>)
+        descShortKey: ... ή εισάγετε ενα <strong>ενα μικρό κλειδι</strong> απο ένα σχήμα
+            (Που μπορείς να παράγεις <link>εδώ</link>)
     renameSavegame:
         title: Μετανόμασε το αποθηκευμένου παιχνιδι.
         desc: Μπορείς να μετανομάσεις το αποθηκευμένο σου παιχνίδι εδω.
@@ -209,9 +209,9 @@ dialogs:
     submitPuzzle:
         title: Υπόβαλε παζλ
         descName: "Δώσε όνομα στο παζλ:"
-        descIcon: "Παρακαλούμε εισάγετε ενα μικρό κλειδι, που θα προβληθεί εως το εικονίδιο
-            για το παζλ (Μπορείς να το παράγεις <link>εδώ</link>, ή διάλεξε ενα
-            ενα από τα παρακάτω τυχαία προτεινόμενα σχήματα):"
+        descIcon: "Παρακαλούμε εισάγετε ενα μικρό κλειδι, που θα προβληθεί εως το
+            εικονίδιο για το παζλ (Μπορείς να το παράγεις <link>εδώ</link>, ή
+            διάλεξε ενα ενα από τα παρακάτω τυχαία προτεινόμενα σχήματα):"
         placeholderName: Τίτλος παζλ
     puzzleResizeBadBuildings:
         title: Resize not possible
@@ -245,8 +245,8 @@ dialogs:
             mechanics not yet introduced. Do you still want to continue?
     puzzleShare:
         title: Μικρό κλειδι αντιγράφηκε
-        desc: Το μικρο κλειδή απο το παζλ (<key>) αντιγράφηκε στο πρόχειρο! Το
-            μπορεί να εισαχθεί στο μενού παζλ για πρόσβαση στο παζλ.
+        desc: Το μικρο κλειδή απο το παζλ (<key>) αντιγράφηκε στο πρόχειρο! Το μπορεί να
+            εισαχθεί στο μενού παζλ για πρόσβαση στο παζλ.
     puzzleReport:
         title: Report Puzzle
         options:
@@ -445,19 +445,23 @@ ingame:
     puzzleEditorControls:
         title: Κατασκευαστείς παζλ.
         instructions:
-            - 1. Τοποθετήστε τους <strong> σταθερούς παραγωγούς </strong> για να δώσετε σχήματα και
-              χρώματα στον
-            - 2. Δημιουργήστε ένα ή περισσότερα σχήματα που θέλετε να δημιουργήσει ο παίκτης αργότερα και
-              παραδώστε το σε έναν ή περισσότερους <strong> Αποδέκτες στόχων </strong>
-            - 3. Μόλις ένας Αποδέκτης Στόχου λάβει ένα σχήμα για ένα ορισμένο ποσό
-              χρόνο, <strong> το αποθηκεύει ως στόχο </strong> που πρέπει να κάνει ο παίκτης
-              παράγει αργότερα (Υποδεικνύεται από το <strong> πράσινο σήμα </strong>).
-            - 4. Κάντε κλικ στο <strong> κουμπί κλειδώματος </strong> σε ένα κτίριο για να το απενεργοποίησετε.
-            - 5. Μόλις κάνετε κλικ στην κριτική, το παζλ σας θα επικυρωθεί και εσείς
-              μπορεί να το δημοσιεύσει.
-            - 6. Μετά την κυκλοφόρηση του παζλ, <strong> όλα τα κτίρια θα αφαιρεθούν </strong>
-              εκτός από τους παραγωγούς και τους αποδέκτες στόχων - Αυτό είναι το μέρος που
-              ο παίκτης υποτίθεται ότι θα καταλάβει μόνοι του :)
+            - 1. Τοποθετήστε τους <strong> σταθερούς παραγωγούς </strong> για να
+              δώσετε σχήματα και χρώματα στον
+            - 2. Δημιουργήστε ένα ή περισσότερα σχήματα που θέλετε να
+              δημιουργήσει ο παίκτης αργότερα και παραδώστε το σε έναν ή
+              περισσότερους <strong> Αποδέκτες στόχων </strong>
+            - 3. Μόλις ένας Αποδέκτης Στόχου λάβει ένα σχήμα για ένα ορισμένο
+              ποσό χρόνο, <strong> το αποθηκεύει ως στόχο </strong> που πρέπει
+              να κάνει ο παίκτης παράγει αργότερα (Υποδεικνύεται από το <strong>
+              πράσινο σήμα </strong>).
+            - 4. Κάντε κλικ στο <strong> κουμπί κλειδώματος </strong> σε ένα
+              κτίριο για να το απενεργοποίησετε.
+            - 5. Μόλις κάνετε κλικ στην κριτική, το παζλ σας θα επικυρωθεί και
+              εσείς μπορεί να το δημοσιεύσει.
+            - 6. Μετά την κυκλοφόρηση του παζλ, <strong> όλα τα κτίρια θα
+              αφαιρεθούν </strong> εκτός από τους παραγωγούς και τους αποδέκτες
+              στόχων - Αυτό είναι το μέρος που ο παίκτης υποτίθεται ότι θα
+              καταλάβει μόνοι του :)
     puzzleCompletion:
         title: Puzzle Completed!
         titleLike: "Click the heart if you liked the puzzle:"
@@ -1217,10 +1221,17 @@ puzzleMenu:
         new: New
         top-rated: Top Rated
         mine: My Puzzles
-        short: Short
         easy: Easy
         hard: Hard
         completed: Completed
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Invalid Puzzle
         noProducers: Please place a Constant Producer!
@@ -1233,6 +1244,10 @@ puzzleMenu:
             Either increase the area or remove them.
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to

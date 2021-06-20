@@ -15,13 +15,13 @@ steamPage:
 
         Ved å kjøpe spillet på Steam får du tilgang til fullversjonen, men du kan også spille en demo på shapez.io først og bestemme deg senere!
     what_others_say: Hva sier andre om shapez.io
-    nothernlion_comment: Dette er et fantastisk spill - Jeg storkoser meg når jeg spiller det,
-        og tiden bare flyr avgårde.
+    nothernlion_comment: Dette er et fantastisk spill - Jeg storkoser meg når jeg
+        spiller det, og tiden bare flyr avgårde.
     notch_comment: Oops. Jeg burde egentlig sove, men jeg tror jeg nettop fant ut
         hvordan man lager en PC i shapez.io
-    steam_review_comment: Dette spillet har sjålet livet mitt, og jeg vil ikke ha det tilbake.
-        Veldig avslappende fabrikkspill som ikke stopper meg fra å lage båndene mere
-        effektive.
+    steam_review_comment: Dette spillet har sjålet livet mitt, og jeg vil ikke ha
+        det tilbake. Veldig avslappende fabrikkspill som ikke stopper meg fra å
+        lage båndene mere effektive.
 global:
     loading: Laster
     error: Feil
@@ -76,8 +76,8 @@ mainMenu:
     savegameUnnamed: Ingen Navn
     puzzleMode: Puzzle Modus
     back: Tilbake
-    puzzleDlcText: Liker du å bygge kompate og optimaliserte fabrikker? Skaff deg Puzzle
-        tilleggspakken nå på Steam for mere moro!
+    puzzleDlcText: Liker du å bygge kompate og optimaliserte fabrikker? Skaff deg
+        Puzzle tilleggspakken nå på Steam for mere moro!
     puzzleDlcWishlist: Legg i ønskeliste nå!
 dialogs:
     buttons:
@@ -106,9 +106,8 @@ dialogs:
         text: "Kunne ikke laste inn lagringsfilen:"
     confirmSavegameDelete:
         title: Bekreft sletting
-        text: Er du sikker på at du vil slette følgende spill?<br><br>
-            '<savegameName>' på nivå <savegameLevel><br><br> Handlinge kan ikke
-            reversjeres!
+        text: Er du sikker på at du vil slette følgende spill?<br><br> '<savegameName>'
+            på nivå <savegameLevel><br><br> Handlinge kan ikke reversjeres!
     savegameDeletionError:
         title: Kunne ikke slette
         text: "Kunne ikke slette lagringsfilen:"
@@ -182,19 +181,19 @@ dialogs:
     editSignal:
         title: Velg Signal
         descItems: "Velg en forhåndsvalgt gjenstand:"
-        descShortKey: ... eller skriv inn <strong>korte koden</strong> av en form (Som du
-            kan generere <link>her</link>)
+        descShortKey: ... eller skriv inn <strong>korte koden</strong> av en form (Som
+            du kan generere <link>her</link>)
     renameSavegame:
         title: Bytt Spillnavn
         desc: Du kan bytte navn på ditt lagrede spill her.
     tutorialVideoAvailable:
         title: Introduksjon tilgjengelig
-        desc: Det er en introduksjonsvideo tilgjengelig for dette nivået! Ønsker du
-            å ta en titt?
+        desc: Det er en introduksjonsvideo tilgjengelig for dette nivået! Ønsker du å ta
+            en titt?
     tutorialVideoAvailableForeignLanguage:
         title: Introduksjon tilgjengelig
-        desc: Det er en introduksjonsvideo tilgjengelig, men den er kun
-            tilgjengelig på Engelsk. Ønsker du å ta en titt?
+        desc: Det er en introduksjonsvideo tilgjengelig, men den er kun tilgjengelig på
+            Engelsk. Ønsker du å ta en titt?
     editConstantProducer:
         title: Velg Gjenstand
     puzzleLoadFailed:
@@ -203,21 +202,21 @@ dialogs:
     submitPuzzle:
         title: Send inn Puslespill
         descName: "Gi ditt puslespill et navn:"
-        descIcon: "Vennligst skriv en kort, unik gjenkjenner, som vil bli vist som et ikon av
-            ditt brett (Du kan lage dem <link>her</link>, eller velge en
+        descIcon: "Vennligst skriv en kort, unik gjenkjenner, som vil bli vist som et
+            ikon av ditt brett (Du kan lage dem <link>her</link>, eller velge en
             av de tilfeldigve genererte nedenfor):"
         placeholderName: Puslespilltittel
     puzzleResizeBadBuildings:
         title: Omgjøring av størrelse ikke mulig
-        desc: Du kan ikke gjøre sonen noe mindre, for da vil noen bygninger være
-            utenfor sonen.
+        desc: Du kan ikke gjøre sonen noe mindre, for da vil noen bygninger være utenfor
+            sonen.
     puzzleLoadError:
         title: Feil i puslespillet
         desc: "Puslespillet kunne ikke laste inn:"
     offlineMode:
         title: Offline Modus
-        desc: Fikk ikke kontakt med serveren, så spillet må kjøres i offline modus.
-            Sørg for at du har en fungerende internett tilkobling.
+        desc: Fikk ikke kontakt med serveren, så spillet må kjøres i offline modus. Sørg
+            for at du har en fungerende internett tilkobling.
     puzzleDownloadError:
         title: Nedlastningsfeil
         desc: "Kunne ikke laste ned puslespillet:"
@@ -234,13 +233,14 @@ dialogs:
             puslespill. Ønsker du å fortsette?
     puzzlePlayRegularRecommendation:
         title: Anbefalinger
-        desc: Jeg anbefaler på det <strong>sterkeste</strong> å spille hovedspillet til nivå 12
-            før du prøver Puzzle tillegspakken, ellers kan du oppleve
+        desc: Jeg anbefaler på det <strong>sterkeste</strong> å spille hovedspillet til
+            nivå 12 før du prøver Puzzle tillegspakken, ellers kan du oppleve
             mekanikk som du ikke har prøvd før. Ønsker du å fortsette?
     puzzleShare:
         title: Kort kode kopiert
-        desc: Korte koden av puslespillet (<key>) har blitt kopiert til din utklippstavle! Den
-            kan skrives inn i puslespillmenyen for å få tilgang til puslespillet.
+        desc: Korte koden av puslespillet (<key>) har blitt kopiert til din
+            utklippstavle! Den kan skrives inn i puslespillmenyen for å få
+            tilgang til puslespillet.
     puzzleReport:
         title: Rapporter Puslespill
         options:
@@ -351,27 +351,27 @@ ingame:
                 og belter for å nå målet raskere.<br><br>Tips: Hold
                 <strong>SHIFT</strong> for å plassere flere utdragere, og bruk
                 <strong>R</strong> for å rotere dem."
-            2_1_place_cutter: "Nå plasser en <strong>kutter</strong> for å kutte sirklene i to
-                halve biter!<br><br> NB: Kutteren kutter alltid fra <strong>toppen til
-                bunnen</strong> uansett orienteringen."
+            2_1_place_cutter: "Nå plasser en <strong>kutter</strong> for å kutte sirklene i
+                to halve biter!<br><br> NB: Kutteren kutter alltid fra
+                <strong>toppen til bunnen</strong> uansett orienteringen."
             2_2_place_trash: Kutteren kan <strong>tette og lage kø</strong>!<br><br> Bruk en
                 <strong>søppelbøtte</strong> for å bli kvitt nåværende (!) ikke
                 nødvendige rester.
-            2_3_more_cutters: "Godt jobba! Nå plasser <strong>2 flere kuttere</strong> for å øke
-                hastigheten på denne prosessen!<br><br> NB: Bruk <strong>0-9
+            2_3_more_cutters: "Godt jobba! Nå plasser <strong>2 flere kuttere</strong> for å
+                øke hastigheten på denne prosessen!<br><br> NB: Bruk <strong>0-9
                 hurtigtastene</strong> for å velge bygning raskere!"
             3_1_rectangles: "Nå la oss fremvinne noen rektangler! <strong>Bygg 4
                 utvinnere</strong> og koble de til hovedbygningen.<br><br> NB:
-                Hold inne <strong>SHIFT</strong> mens du drar beltet for å aktivere
-                belteplanleggeren!"
+                Hold inne <strong>SHIFT</strong> mens du drar beltet for å
+                aktivere belteplanleggeren!"
             21_1_place_quad_painter: Plasser <strong>4veis maleren</strong> og få noen
                 <strong>sirkler</strong>, <strong>hvite</strong> og
                 <strong>rød</strong> farget!
             21_2_switch_to_wires: Bytt til kabelnivået ved å trykke
                 <strong>E</strong>!<br><br> Deretter <strong>koble alle fire
                 inngangene</strong> til 4veis malerene med kabler!
-            21_3_place_button: Flott! Nå plasser en <strong>bryter</strong> og koble den
-                med kabler!
+            21_3_place_button: Flott! Nå plasser en <strong>bryter</strong> og koble den med
+                kabler!
             21_4_press_button: "Trykk på bryteren for å <strong>utgi et gyldig
                 signal</strong> som deretter aktiverer malerene.<br><br> NB: Du
                 må ikke koble til alle inngangene! Prøv bare med to."
@@ -436,25 +436,26 @@ ingame:
     puzzleEditorControls:
         title: Puslespill lager
         instructions:
-            - 1. Plasser <strong>konstante produseringer</strong> for å gi former og
-              farger til spilleren
-            - 2. Bygg en eller flere former du vil at spilleren skal bygge senere og
-              lever det til en eller fler <strong>Mål mottak</strong>
-            - 3. Når et målmottak mottar en form over en viss
-              periode, vil den <strong>lagres som et mål</strong> som spilleren må
-              produsere senere (Indikert av <strong>grønne skiltet</strong>).
-            - 4. Trykk <strong>låse knappen</strong> på en bygning for å deaktivere
-              den.
-            - 5. Så fort du trykker gjennomgå, vil ditt puslespill bli validert og du
-              kan publisere det.
-            - 6. Når det er publisert, <strong>vil alle bygningene bli fjernet</strong>
-              utenom produseringene og mål mottakene - Det er delen som
-              spilleren skal finne ut av dem selv, tross alt :)
+            - 1. Plasser <strong>konstante produseringer</strong> for å gi
+              former og farger til spilleren
+            - 2. Bygg en eller flere former du vil at spilleren skal bygge
+              senere og lever det til en eller fler <strong>Mål mottak</strong>
+            - 3. Når et målmottak mottar en form over en viss periode, vil den
+              <strong>lagres som et mål</strong> som spilleren må produsere
+              senere (Indikert av <strong>grønne skiltet</strong>).
+            - 4. Trykk <strong>låse knappen</strong> på en bygning for å
+              deaktivere den.
+            - 5. Så fort du trykker gjennomgå, vil ditt puslespill bli validert
+              og du kan publisere det.
+            - 6. Når det er publisert, <strong>vil alle bygningene bli
+              fjernet</strong> utenom produseringene og mål mottakene - Det er
+              delen som spilleren skal finne ut av dem selv, tross alt :)
     puzzleCompletion:
         title: Puslespill Fullført!
         titleLike: "Trykk på hjertet hvis du likte puslespillet:"
         titleRating: Hvor vanskelig syntes du det var?
-        titleRatingDesc: Ditt omdømme vil hjelpe hjelpe meg med å gi deg bedre forslag i fremtiden
+        titleRatingDesc: Ditt omdømme vil hjelpe hjelpe meg med å gi deg bedre forslag i
+            fremtiden
         continueBtn: Fortsett å spill
         menuBtn: Meny
     puzzleMetadata:
@@ -544,9 +545,8 @@ buildings:
                 inngang.
         quad:
             name: Maler (Firedobbel)
-            description: Lar deg male hver del av en form individuelt. Kun
-                innganger med et <strong>ekte signal</strong> på kabel nivået
-                vil bli malt!
+            description: Lar deg male hver del av en form individuelt. Kun innganger med et
+                <strong>ekte signal</strong> på kabel nivået vil bli malt!
         mirrored:
             name: Maler
             description: Maler hele formen på venstre inngang med fargen fra øverste
@@ -562,8 +562,9 @@ buildings:
             description: Lar deg transportere energi.
         second:
             name: Kabel
-            description: Overfører signaler, som kan være gjenstander, farger eller booleanere (1 / 0).
-                Forskjellige fargede kabler kobler seg ikke sammen.
+            description: Overfører signaler, som kan være gjenstander, farger eller
+                booleanere (1 / 0). Forskjellige fargede kabler kobler seg ikke
+                sammen.
     balancer:
         default:
             name: Balanserer
@@ -583,8 +584,8 @@ buildings:
     storage:
         default:
             name: Lager
-            description: Lagre overflødige gjenstander, opp til en viss antall. Prioriterer venstre
-                utgang og kan bli brukt som en overløpsventil.
+            description: Lagre overflødige gjenstander, opp til en viss antall. Prioriterer
+                venstre utgang og kan bli brukt som en overløpsventil.
     wire_tunnel:
         default:
             name: Kabelkryss
@@ -597,21 +598,21 @@ buildings:
     lever:
         default:
             name: Bryter
-            description: Kan skru av/på et booleaner signal (1 / 0) på kabel nivået,
-                som igjen kan brukes for å kontrolere for eksempel filtrering.
+            description: Kan skru av/på et booleaner signal (1 / 0) på kabel nivået, som
+                igjen kan brukes for å kontrolere for eksempel filtrering.
     logic_gate:
         default:
             name: AND Gate
-            description: Utgir en booleaner "1" hvis begge innganger er sanne. (Sanne betyr form,
-                farge eller booleaner "1")
+            description: Utgir en booleaner "1" hvis begge innganger er sanne. (Sanne betyr
+                form, farge eller booleaner "1")
         not:
             name: NOT Gate
-            description: Utgir en booleaner "1" hvis begge innganger ikke er sanne. (Sanne betyr
-                form, farge eller booleaner "1")
+            description: Utgir en booleaner "1" hvis begge innganger ikke er sanne. (Sanne
+                betyr form, farge eller booleaner "1")
         xor:
             name: XOR Gate
-            description: Utgir en booleaner "1" hvis en av inngangene er sanne, men ikke begge.
-                (Sanne betyr form, farge eller booleaner "1")
+            description: Utgir en booleaner "1" hvis en av inngangene er sanne, men ikke
+                begge. (Sanne betyr form, farge eller booleaner "1")
         or:
             name: OR Gate
             description: Utgir en booleaner "1" hvis en av inngangene er sanne. (Sanne betyr
@@ -619,23 +620,23 @@ buildings:
     transistor:
         default:
             name: Transistorer
-            description: Vidresender nedre inngang om sideinngangen er sann (en form,
-                farge eller "1").
+            description: Vidresender nedre inngang om sideinngangen er sann (en form, farge
+                eller "1").
         mirrored:
             name: Transistorer
-            description: Vidresender nedre inngang om sideinngangen er sann (en form,
-                farge eller "1").
+            description: Vidresender nedre inngang om sideinngangen er sann (en form, farge
+                eller "1").
     filter:
         default:
             name: Filter
-            description: Koble til et signal for å rute alle tilsvarende gjenstander til toppen og
-                gjenværende til høyre. Kan bli kontroller med booleaner signaler
-                også.
+            description: Koble til et signal for å rute alle tilsvarende gjenstander til
+                toppen og gjenværende til høyre. Kan bli kontroller med
+                booleaner signaler også.
     display:
         default:
             name: Skjerm
-            description: Koble til et signal for å vise det på skjermen - Det kan være en form,
-                farge eller booleaner.
+            description: Koble til et signal for å vise det på skjermen - Det kan være en
+                form, farge eller booleaner.
     reader:
         default:
             name: Belteleser
@@ -644,13 +645,13 @@ buildings:
     analyzer:
         default:
             name: Form Analyserer
-            description: Analyserer øverst i høyre av det laveste nivået på en form
-                og returnerer dens form og farge.
+            description: Analyserer øverst i høyre av det laveste nivået på en form og
+                returnerer dens form og farge.
     comparator:
         default:
             name: Sammenlign
-            description: Returnerer booleaner "1" hvis begge signalene er like. Kan sammenligne
-                former, gjenstander og booleaner.
+            description: Returnerer booleaner "1" hvis begge signalene er like. Kan
+                sammenligne former, gjenstander og booleaner.
     virtual_processor:
         default:
             name: Virituell Kutter
@@ -660,8 +661,8 @@ buildings:
             description: Virituelt roterer formen, både med klokken og mot klokken.
         unstacker:
             name: Virituell Avstabler
-            description: Virituelt separerer øverste nivået på høyre utgang og
-                gjenværende nede på venstre.
+            description: Virituelt separerer øverste nivået på høyre utgang og gjenværende
+                nede på venstre.
         stacker:
             name: Virituell Stabler
             description: Virituelt stabler formen på høyre med den på venstre.
@@ -672,8 +673,8 @@ buildings:
     item_producer:
         default:
             name: Gjenstands lager
-            description: Tilgjengelig kun i in sandbox modus, returnerer det gitte signalet fra
-                kabel nivået på det vanlige nivået.
+            description: Tilgjengelig kun i in sandbox modus, returnerer det gitte signalet
+                fra kabel nivået på det vanlige nivået.
     constant_producer:
         default:
             name: Konstante Produseringer
@@ -689,12 +690,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Kutt Objekter
-        desc: Du åpnet nettop <strong>kutteren</strong>, som kutter former i to
-            fra toppen til bunnen <strong>uavhengig av dens
-            orientasjon</strong>!<br><br>Sørg for å bli kvitt søppel,
-            ellers <strong>vil det samle seg og tette</strong> - For dette formålet
-            så har jeg gitt deg en <strong>søppelkasse</strong>, som ødelegger
-            alt du kaster i den!
+        desc: Du åpnet nettop <strong>kutteren</strong>, som kutter former i to fra
+            toppen til bunnen <strong>uavhengig av dens
+            orientasjon</strong>!<br><br>Sørg for å bli kvitt søppel, ellers
+            <strong>vil det samle seg og tette</strong> - For dette formålet så
+            har jeg gitt deg en <strong>søppelkasse</strong>, som ødelegger alt
+            du kaster i den!
     reward_rotater:
         title: Rotering
         desc: <strong>Rotereren</strong> har blitt tilgjengelig! Den roterer objekter
@@ -719,8 +720,7 @@ storyRewards:
     reward_splitter:
         title: Fordeler
         desc: Du har åpnet opp <strong>fordler</strong> varianten av
-            <strong>balansereren</strong> - Den godtar en inn og deler
-            dem i to!
+            <strong>balansereren</strong> - Den godtar en inn og deler dem i to!
     reward_tunnel:
         title: Tunnel
         desc: <strong>Tunnelen</strong> har blitt tilgjengelig - Du kan nå transportere
@@ -732,10 +732,10 @@ storyRewards:
             <strong>trykk 'T' for å veksle mellom variantene</strong>!
     reward_miner_chainable:
         title: Kjedeutdrager
-        desc: "Du har åpnet <strong>kjedeutdrageren</strong>! Den kan
-            <strong>vidresende sine ressursser</strong> til andre utdragere så du kan
-            mer effektivt hente ut ressursser!<br><br> NB: Gamle
-            utdrageren har blitt byttet ut på din hurtigbar nå!"
+        desc: "Du har åpnet <strong>kjedeutdrageren</strong>! Den kan <strong>vidresende
+            sine ressursser</strong> til andre utdragere så du kan mer effektivt
+            hente ut ressursser!<br><br> NB: Gamle utdrageren har blitt byttet
+            ut på din hurtigbar nå!"
     reward_underground_belt_tier_2:
         title: Tunnel Nivå II
         desc: Du har åpnet en ny variant av <strong>tunnelen</strong> - Den har
@@ -752,18 +752,19 @@ storyRewards:
             konsumerer bare en farge istedenfor to!
     reward_storage:
         title: Lagringsbuffer
-        desc: Du har åpnet <strong>lagringsbuffer</strong> bygningen - Den lar deg
-            lagre gjenstander opp til et gitt antall!<br><br> Den prioriterer venstre
-            utgangen, så du kan også bruke det som en <strong>overløpsventil</strong>!
+        desc: Du har åpnet <strong>lagringsbuffer</strong> bygningen - Den lar deg lagre
+            gjenstander opp til et gitt antall!<br><br> Den prioriterer venstre
+            utgangen, så du kan også bruke det som en
+            <strong>overløpsventil</strong>!
     reward_freeplay:
         title: Frispill
         desc: Du klarte det! Du låste opp <strong>frispill modus</strong>! Dette betyr
-            at former er nå <strong>tilfeldige</strong> generert!<br><br>
-            Siden hovedbygningen nå krever en <strong>gjennomgang</strong> fra nå
-            av, anbefaler jeg å bygge en maskin som automatisk
-            leverer ønskede formen!<br><br> Hovedbygningen utgir den forespurte
-            formen på kabel nivået, så alt du må gjøre er å analysere det og
-            automatisk konfigerer din fabrikk basert på det.
+            at former er nå <strong>tilfeldige</strong> generert!<br><br> Siden
+            hovedbygningen nå krever en <strong>gjennomgang</strong> fra nå av,
+            anbefaler jeg å bygge en maskin som automatisk leverer ønskede
+            formen!<br><br> Hovedbygningen utgir den forespurte formen på kabel
+            nivået, så alt du må gjøre er å analysere det og automatisk
+            konfigerer din fabrikk basert på det.
     reward_blueprints:
         title: Blåkopier
         desc: Du kan nå <strong>kopiere og lime inn</strong> deler av fabrikken din!
@@ -783,67 +784,68 @@ storyRewards:
             versjonen!
     reward_balancer:
         title: Balanserer
-        desc: Den multifunksjonible <strong>balansereren</strong> har blitt tilgjengelig - Den kan
-            bli brukt for å bygge større fabrikker ved å <strong>dele opp og slå sammen
-            gjenstander</strong> på flere belter!
+        desc: Den multifunksjonible <strong>balansereren</strong> har blitt tilgjengelig
+            - Den kan bli brukt for å bygge større fabrikker ved å <strong>dele
+            opp og slå sammen gjenstander</strong> på flere belter!
     reward_merger:
         title: Kompakt Sammenslåer
         desc: Du har åpnet opp en <strong>sammenslåer</strong> variant av
-            <strong>balansereren</strong> - Den godtar to innganger og slår de sammen
-            til ett belte!
+            <strong>balansereren</strong> - Den godtar to innganger og slår de
+            sammen til ett belte!
     reward_belt_reader:
         title: Belte Leser
-        desc: Du har låst opp <strong>belte leseren</strong>! Den lar deg
-            måle trafikken på et belte.<br><br>Og vent til du låser opp
-            kabler - da blir den veldig nyttig!
+        desc: Du har låst opp <strong>belte leseren</strong>! Den lar deg måle trafikken
+            på et belte.<br><br>Og vent til du låser opp kabler - da blir den
+            veldig nyttig!
     reward_rotater_180:
         title: Roterer (180 grader)
-        desc: Du åpnet opp 180 graders <strong>rotereren</strong>! - Den lar
-            deg rotere en form 180 grader (Overraskelse! :D)
+        desc: Du åpnet opp 180 graders <strong>rotereren</strong>! - Den lar deg rotere
+            en form 180 grader (Overraskelse! :D)
     reward_display:
         title: Skjerm
-        desc: "Du har åpnet opp <strong>Skjermen</strong> - Koble til et signal
-            på kabel nivået for å visualisere det!<br><br> NB: La du merke til belte
-            leseren og lagringsbygningen utgir siste gjenstanden de så? Prøv å vis det på en
-            skjerm!"
+        desc: "Du har åpnet opp <strong>Skjermen</strong> - Koble til et signal på kabel
+            nivået for å visualisere det!<br><br> NB: La du merke til belte
+            leseren og lagringsbygningen utgir siste gjenstanden de så? Prøv å
+            vis det på en skjerm!"
     reward_constant_signal:
         title: Konstant Signal
-        desc: Du åpnet opp <strong>konstant signal</strong> bygningen på kabel
-            nivået! Denne er brukbar for å koble til <strong>gjenstandsfilter</strong>
+        desc: Du åpnet opp <strong>konstant signal</strong> bygningen på kabel nivået!
+            Denne er brukbar for å koble til <strong>gjenstandsfilter</strong>
             for eksempel.<br><br> Det konstante signalet kan utgi en
             <strong>form</strong>, <strong>farge</strong> eller
             <strong>booleaner</strong> (1 / 0).
     reward_logic_gates:
         title: Logic Gates
-        desc: Du åpnet opp <strong>logic gates</strong>! Du trenger ikke være så overlykkelig
-            for dette, men det er faktisk super kult!<br><br> Med disse
-            kan du nå utregne AND, OR, XOR og NOT operasjoner.<br><br> Som en
-            bonus på toppen, ga jeg deg også <strong>transistorer</strong>!
+        desc: Du åpnet opp <strong>logic gates</strong>! Du trenger ikke være så
+            overlykkelig for dette, men det er faktisk super kult!<br><br> Med
+            disse kan du nå utregne AND, OR, XOR og NOT operasjoner.<br><br> Som
+            en bonus på toppen, ga jeg deg også <strong>transistorer</strong>!
     reward_virtual_processing:
         title: Virtuell Prosessering
-        desc: Du fikk nettop en hel del av bygninger som lar deg
-            <strong>simulere prosessen av former</strong>!<br><br> Du kan
-            nå simulere kutting, rotering, stabling og mer på kabel nivået!
-            Med dette har du nå tre muligheter for å fortsette spillet:<br><br> -
-            Bygg en <strong>automatisert maskin</strong> som lager alle mulige
-            former forespurt av hovedbygningen (Jeg anbefaler deg å prøve dette!).<br><br> - Bygg
-            noe kult med kabler.<br><br> - Fortsett å spill
-            vanlig.<br><br> Hva nå enn du velger, husk å ha det gøy!
+        desc: Du fikk nettop en hel del av bygninger som lar deg <strong>simulere
+            prosessen av former</strong>!<br><br> Du kan nå simulere kutting,
+            rotering, stabling og mer på kabel nivået! Med dette har du nå tre
+            muligheter for å fortsette spillet:<br><br> - Bygg en
+            <strong>automatisert maskin</strong> som lager alle mulige former
+            forespurt av hovedbygningen (Jeg anbefaler deg å prøve
+            dette!).<br><br> - Bygg noe kult med kabler.<br><br> - Fortsett å
+            spill vanlig.<br><br> Hva nå enn du velger, husk å ha det gøy!
     reward_wires_painter_and_levers:
         title: Kabler & 4veis Fargelegger
-        desc: "Du åpnet nettop <strong>kabel nivået</strong>: Det er et
-            separat nivå på toppen av det vanlige som introduserer mye nye
-            mekanismer!<br><br> I begynnelsen åpnet du <strong>4 veis
-            fargeleggeren</strong> - Koble til inngangene du vil male med på
-            kabel nivået!<br><br> For å bytte til kabel nivået, trykk
-            <strong>E</strong>. <br><br> NB: <strong>Skru på tips</strong> på
-            instillinger for å aktivere kabel nivå introduksjonen!"
+        desc: "Du åpnet nettop <strong>kabel nivået</strong>: Det er et separat nivå på
+            toppen av det vanlige som introduserer mye nye mekanismer!<br><br> I
+            begynnelsen åpnet du <strong>4 veis fargeleggeren</strong> - Koble
+            til inngangene du vil male med på kabel nivået!<br><br> For å bytte
+            til kabel nivået, trykk <strong>E</strong>. <br><br> NB:
+            <strong>Skru på tips</strong> på instillinger for å aktivere kabel
+            nivå introduksjonen!"
     reward_filter:
         title: Gjenstandsfilter
-        desc: Du åpnet opp <strong>Gjenstandsfilter</strong>! Den vil rute gjenstander enten
-            til toppen eller høyre utgang avhengig av om de matcher
-            signalet fra kabel nivået eller ikke.<br><br> Du kan også legge inn et
-            booleaner signal (1 / 0) for å aktivere eller deaktivere den i sin helhet.
+        desc: Du åpnet opp <strong>Gjenstandsfilter</strong>! Den vil rute gjenstander
+            enten til toppen eller høyre utgang avhengig av om de matcher
+            signalet fra kabel nivået eller ikke.<br><br> Du kan også legge inn
+            et booleaner signal (1 / 0) for å aktivere eller deaktivere den i
+            sin helhet.
     reward_demo_end:
         title: Slutt på Demo
         desc: Du har nådd slutten på demoversjonen!
@@ -971,40 +973,41 @@ settings:
             description: Sett volumet på musikk
         lowQualityMapResources:
             title: Lavkvalitets Kart Ressursser
-            description: Simplifiserer fremvisningen av ressursser på kartet når zoomet inn for å
-                forbedre ytelsen. Det ser også renere ut, så sørg for å sjekke det
-                ut!
+            description: Simplifiserer fremvisningen av ressursser på kartet når zoomet inn
+                for å forbedre ytelsen. Det ser også renere ut, så sørg for å
+                sjekke det ut!
         disableTileGrid:
             title: Deaktiver Rutenett
-            description: Deaktiver rutenettet kan hjelpe på ytelse. Dette vil også
-                få spillet til å se renere ut!
+            description: Deaktiver rutenettet kan hjelpe på ytelse. Dette vil også få
+                spillet til å se renere ut!
         clearCursorOnDeleteWhilePlacing:
             title: Fjern musepil ved høyreklikk
-            description: Skrudd på standard, fjerner hva enn du har ved musen når du høyreklikker
-                mens du har en bygning valgt for plassering. Hvis deaktivert,
-                så kan du slette bytninger ved å høyreklikke mens du plasserer en
-                bytgning.
+            description: Skrudd på standard, fjerner hva enn du har ved musen når du
+                høyreklikker mens du har en bygning valgt for plassering. Hvis
+                deaktivert, så kan du slette bytninger ved å høyreklikke mens du
+                plasserer en bytgning.
         lowQualityTextures:
             title: Lavkvalitets teksturer (Stygt)
             description: Bruker lavkvalitets teksturer for å forbedre ytelsen. Dette vil få
                 spillet til å se veldig sygt ut!
         displayChunkBorders:
             title: Vis Sektor Rammer
-            description: Spillet er delt inn i sektorer på 16x16 ruter, hvis denne instillingen er
-                skrudd på, vil kantene i hver sektor vises.
+            description: Spillet er delt inn i sektorer på 16x16 ruter, hvis denne
+                instillingen er skrudd på, vil kantene i hver sektor vises.
         pickMinerOnPatch:
             title: Velg utdrager på ressurss felt
             description: Aktivert standard, velger utdrageren hvis du bruker pipette når du
                 holder over et ressurss felt.
         simplifiedBelts:
             title: Simplifiserte Belter (Sygt)
-            description: Fremviser ikke ting på belter forutenom når du holder musen over beltet for å forbedre
-                ytelsen. Jeg anbefaler ikke å spille med dette med mindre
-                du absolutt trenger ytelsen.
+            description: Fremviser ikke ting på belter forutenom når du holder musen over
+                beltet for å forbedre ytelsen. Jeg anbefaler ikke å spille med
+                dette med mindre du absolutt trenger ytelsen.
         enableMousePan:
             title: Aktiver Musebeveget Kart
             description: Lar deg flytte rundt på kartet ved å bevege musen til kanten av
-                skjermen. Hastigheten avgjøres av Bevegelses Hastighet instillingen.
+                skjermen. Hastigheten avgjøres av Bevegelses Hastighet
+                instillingen.
         zoomToCursor:
             title: Forstørr mot musepekeren
             description: Hvis aktivert, vil forstørring skje mot der du har musepekeren
@@ -1126,7 +1129,8 @@ tips:
     - Hvis stabling ikke funker, prøv å bytt inngangene.
     - Du kan veksle mellom belteplanleggerens orienterinv ved å trykke <b>R</b>.
     - Hold nede <b>CTRL</b> for å dra belter uten auto orientering.
-    - Fordelingen forblir det samme, så lenge alle oppgraderingene er på samme nivå.
+    - Fordelingen forblir det samme, så lenge alle oppgraderingene er på samme
+      nivå.
     - Seriell utføring er mer effektivt enn paralell utføring.
     - Du vil låse opp flere varianter av bygninger senere i spillet!
     - Du kan bruke <b>T</b> for å bytte mellom forskjellige varianter.
@@ -1138,14 +1142,15 @@ tips:
     - På maks nivå, vil 5 utdragere fylle et eget belte.
     - Ikke glem tunneller!
     - Du trenger ikke å dele opp gjenstander jent for maks effektivitet.
-    - Holdt nede <b>SHIFT</b> for å aktivere belte planleggeren, den lar deg plassere
-      lange linjer med belter veldig lett.
+    - Holdt nede <b>SHIFT</b> for å aktivere belte planleggeren, den lar deg
+      plassere lange linjer med belter veldig lett.
     - Kutteren vil alltid kutte vertikalt, uavhengig av orientasjonen.
     - For hvit farge, kombiner alle tre fargene.
     - Lagringbygningen prioriterer første utgangen.
     - Sett av tid til å bygge repeterbare løsninger - det er verdt det!
     - Hold nede <b>CTRL</b> for å plassere flere av samme bygning.
-    - Du kan holde nede <b>ALT</b> for å reversjere plasseringen av plasserte belter.
+    - Du kan holde nede <b>ALT</b> for å reversjere plasseringen av plasserte
+      belter.
     - Effektivitet er nøkkelen!
     - Form feltene som er lengt unna fra hovedbygget er mer avanserte.
     - Bygninger har en begrenset hastighet. Del de opp for maksimum effektivitet.
@@ -1161,21 +1166,24 @@ tips:
       stablere.
     - Fulle vindmøller / pinnehjul finnes ikke naturlig.
     - Fargelegg dine former før du kutter de for maks effektivitet.
-    - Med moduler er plass bare en oppfatning; en bekymring for dødelige mennesker.
+    - Med moduler er plass bare en oppfatning; en bekymring for dødelige
+      mennesker.
     - Lag en separat blueprint fabrikk. De er viktig for moduler.
     - Sjekk ut fargeblanderen, og dine spørsmål vil bli besvart.
     - Bruk <b>CTRL</b> + Trykk for å velge et område.
     - Bygge for nære hovedbygnignen kan sette en stopper for senere prosjekter.
-    - Tegnestift ikonet ved siden av hver form i oppgraderingslisten låser det fast til skjermen.
+    - Tegnestift ikonet ved siden av hver form i oppgraderingslisten låser det
+      fast til skjermen.
     - Bland alle primærfargene sammen for å lage hvis farge!
     - Du har et evit kart. Ikke tett sammen fabrikken, utvid!
     - Sjekk også ut Factorio! Det er mitt favorittspill.
     - 4veis Kutteren kutter med klokken, starter fra øverst i høyre!
     - Du kan laste ned dine lagrede spill på hovedmenyen!
-    - Dette spillet har mange fornuftige hurtigtaster! Sjekk de ut
-      på instillinger.
+    - Dette spillet har mange fornuftige hurtigtaster! Sjekk de ut på
+      instillinger.
     - Dette spillet har masse instillinger, sørg for å sjekke de ut!
-    - Markøren på hjovedbygningen har et lite kompass for å indikere retningen til den!
+    - Markøren på hjovedbygningen har et lite kompass for å indikere retningen
+      til den!
     - For å tømme belter, kutt området også lim det inn igjen på samme område.
     - Trykk F4 for å vise din FPS og Tick Rate.
     - Trykk F4 to ganger for å vise ruten til din mus og kamera.
@@ -1195,30 +1203,41 @@ puzzleMenu:
         new: Ny
         top-rated: Høyest Rangert
         mine: Mine Puslespill
-        short: Kort
         easy: Lett
         hard: Vanskelig
         completed: Fullført
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Ugyldig Puslespill
         noProducers: Venligst plasser en Konstant Produserer!
         noGoalAcceptors: Vennligst plasser en Mål Mottaker!
-        goalAcceptorNoItem: En eller flere Mål Mottakere har ikke blitt tildelt en gjenstand.
-            Lever en form til dem for å sette målet.
+        goalAcceptorNoItem: En eller flere Mål Mottakere har ikke blitt tildelt en
+            gjenstand. Lever en form til dem for å sette målet.
         goalAcceptorRateNotMet: En eller flere Mål Mottakere får ikke nok gjenstander.
             Sørg for at indikatorene er grønn for alle mottakerene.
         buildingOutOfBounds: En eller flere bygninger er utenfor det byggbare området.
             Enten øk området eller fjern dem.
-        autoComplete: Ditt puslespill fullførte seg selv automatisk! Sørg for at dine Konstant Pr
-            Produserere ikke leverer direkte til dine Mål Mottakere.
+        autoComplete: Ditt puslespill fullførte seg selv automatisk! Sørg for at dine
+            Konstant Pr Produserere ikke leverer direkte til dine Mål Mottakere.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: Du gjør en handling for ofte. Vennligst vent litt.
     invalid-api-key: Kunne ikke kommunisere med kjernen, vennligst prøv å
         oppdater/start spillet på nytt (Ugyldig Api Nøkkel).
     unauthorized: Kunne ikke kommunisere med kjernen, vennligst prøv å
         oppdater/start spillet på nytt (Uautorisert).
-    bad-token: Kunne ikke kommunisere med kjernen, vennligst prøv å oppdater/
-        start spillet på nytt (Ugyldig token).
+    bad-token: Kunne ikke kommunisere med kjernen, vennligst prøv å oppdater/ start
+        spillet på nytt (Ugyldig token).
     bad-id: Ugyldig Puslespill identifikator.
     not-found: Det gitte puslespillet kunne ikke bli funnet.
     bad-category: Den gitte kategorien kunne ikke bli funnet.

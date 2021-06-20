@@ -72,8 +72,8 @@ mainMenu:
     savegameUnnamed: Unbenannt
     puzzleMode: Puzzlemodus
     back: Zurück
-    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter zu machen?
-        Hol dir den Puzzle DLC auf Steam für noch mehr Spaß!
+    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter
+        zu machen? Hol dir das Puzzle DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
 dialogs:
     buttons:
@@ -1235,26 +1235,40 @@ puzzleMenu:
         new: Neu
         top-rated: Am besten bewertet
         mine: Meine Puzzles
-        short: Kurz
         easy: Einfach
         hard: Schwierig
         completed: Abgeschlossen
+        medium: Mittel
+        official: Vorgestellt
+        trending: Trend - Heute
+        trending-weekly: Trend - Woche
+        categories: Kategorien
+        difficulties: Nach Schwierigkeit
+        account: Meine Puzzle
+        search: Suche
     validation:
         title: Ungültiges Puzzle
         noProducers: Bitte plaziere einen Item-Produzent!
         noGoalAcceptors: Bitte plaziere einen Ziel-Akzeptor!
-        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein zugewiesenes Item.
-            Liefere eine Form zu diesen, um ein Ziel zu setzen.
-        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht genügend Items.
-            Stelle sicher, dass alle Akzeptatorindikatoren grün sind.
-        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des beabauren Bereichs.
-            Vergrößere den Bereich oder entferene die Gebäude.
-        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass deine Item-Produzent
-            nicht direkt an deine Ziel-Akzeptoren lieferen.
+        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein
+            zugewiesenes Item. Liefere eine Form zu diesen, um ein Ziel zu
+            setzen.
+        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht
+            genügend Items. Stelle sicher, dass alle Akzeptatorindikatoren grün
+            sind.
+        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des
+            beabauren Bereichs. Vergrößere den Bereich oder entferene die
+            Gebäude.
+        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
+            deine Item-Produzent nicht direkt an deine Ziel-Akzeptoren lieferen.
+    difficulties:
+        easy: Einfach
+        medium: Mittel
+        hard: Schwer
 backendErrors:
     ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
-    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
-        neustarten oder zu updaten (Ungültiger Api-Schlüssel).
+    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das
+        Spiel neuzustarten oder zu updaten (Ungültiger Api-Schlüssel).
     unauthorized: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
         neustarten oder zu updaten (Nicht autorisiert).
     bad-token: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
