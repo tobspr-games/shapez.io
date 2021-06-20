@@ -53,7 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: ESPACIO
-    loggingIn: Logging in
+    loggingIn: Iniciando sesión
 demoBanners:
     title: Versión de prueba
     intro: ¡Obtén el juego completo para desbloquear todas las características!
@@ -75,9 +75,9 @@ mainMenu:
     savegameUnnamed: Sin nombre
     puzzleMode: Modo Puzle
     back: Atrás
-    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas? ¡Consigue ahora el
-        DLC de Puzles en Steam para aún más diversión!
-    puzzleDlcWishlist: Añádelo ahora a tu lista de deseos!
+    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas?
+        ¡Consigue ahora el DLC de Puzles en Steam para aún más diversión!
+    puzzleDlcWishlist: ¡Añádelo ahora a tu lista de deseos!
 dialogs:
     buttons:
         ok: OK

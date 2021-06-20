@@ -71,11 +71,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${
-                    G_WEGAME_VERSION
-                        ? ""
-                        : `<span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>`
-                }
+                ${G_WEGAME_VERSION ? "" : `<span class="updateLabel">v${G_BUILD_VERSION}!</span>`}
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
