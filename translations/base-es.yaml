@@ -77,7 +77,7 @@ mainMenu:
     back: Atrás
     puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas?
         ¡Consigue ahora el DLC de Puzles en Steam para aún más diversión!
-    puzzleDlcWishlist: Añádelo ahora a tu lista de deseos!
+    puzzleDlcWishlist: ¡Añádelo ahora a tu lista de deseos!
 dialogs:
     buttons:
         ok: OK
