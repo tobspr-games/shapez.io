@@ -683,12 +683,12 @@ buildings:
                 проводами сигнал на обычном слое.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Постоянный производитель
+            description: Постоянно выводит указанную фигуру или цвет.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Приемник цели
+            description: Доставьте фигуру в приемник, чтобы установить их в качестве цели.
     block:
         default:
             name: Block
