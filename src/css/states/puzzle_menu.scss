@@ -171,6 +171,7 @@
                         @include S(height, 20px);
                         padding: 0;
                         opacity: 0.7;
+                        @include DarkThemeInvert;
 
                         & {
                             /* @load-async */
