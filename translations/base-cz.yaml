@@ -249,8 +249,8 @@ dialogs:
         title: Vložte krátký klíč
         desc: Vložte krátký klíč pro načtení příslušného puzzlu.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Smazat puzzle?
+        desc: Jste si jisti, že chcete smazat '<title>'? Tato akce je nevratná!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -438,7 +438,7 @@ ingame:
             - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
               doručte to do jednoho či více <strong>příjemců cílů</strong>.
             - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
-              úsek, <strong>uloží se jako cíl</strong>, který hráč musí pozdeji
+              úsek, <strong>uloží se jako cíl</strong>, který hráč musí později
               vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
             - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově
               dojde k její deaktivaci.
@@ -1185,14 +1185,14 @@ puzzleMenu:
         easy: Lehké
         hard: Těžké
         completed: Dokončeno
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Střední
+        official: Oficiální
+        trending: Populární denně
+        trending-weekly: Populární týdně
+        categories: Kategorie
+        difficulties: Dle obtížnosti
+        account: Moje puzzly
+        search: Vyhledávání
     validation:
         title: Neplatný puzzle
         noProducers: Prosím umístěte výrobník!
@@ -1207,9 +1207,9 @@ puzzleMenu:
         autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že
             vyrobníky nedodávají své tvary přímo do přijemců cílů.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: Lehká
+        medium: Střední
+        hard: Těžká
 backendErrors:
     ratelimit: Provádíte své akce příliš často. Počkejte prosím.
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
@@ -1233,6 +1233,6 @@ backendErrors:
     bad-payload: Žádost obsahuje neplatná data.
     bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
     timeout: Žádost vypršela.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej přesto chcete
+        odstranit, kontaktujte nás prosím na support@shapez.io!
+    no-permission: K provedení této akce nemáte oprávnění.
