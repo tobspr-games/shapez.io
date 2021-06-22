@@ -120,6 +120,9 @@ export class MainMenuState extends GameState {
                         <button class="styledButton puzzleDlcGetButton">${
                             T.mainMenu.puzzleDlcViewNow
                         }</button>
+                        <span class="hint">
+                            ${T.puzzleMenu.dlcHint}
+                        </span>
                     </div>`
                         : ""
                 }

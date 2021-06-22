@@ -136,6 +136,7 @@ puzzleMenu:
     validatingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
     noPuzzles: There are currently no puzzles in this section.
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking the shapez.io in your library, selecting Properties > DLCs.
 
     categories:
         levels: Levels

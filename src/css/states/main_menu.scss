@@ -256,6 +256,12 @@
             }
         }
 
+        > .hint {
+            @include SuperDuperSmallText;
+            @include S(margin-top, 10px);
+            @include S(width, 200px);
+        }
+
         > .dlcLogo {
             @include S(width, 190px);
         }
