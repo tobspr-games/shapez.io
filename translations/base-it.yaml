@@ -694,16 +694,16 @@ buildings:
                 livello elettrico come oggetti sul livello normale.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Produttore costante
+            description: Produce costantemente una forma o un colore specificati.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Accettore di obiettivi.
+            description: Consegna forme all'accettore di obiettivi per impostarli come obiettivo.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Blocco
+            description: Blocca una casella.
 storyRewards:
     reward_cutter_and_trash:
         title: Taglio forme
