@@ -175,7 +175,7 @@ dialogs:
         title: 아이템 설정
     puzzleLoadFailed:
         title: 퍼즐 불러오기 실패
-        desc: "Unfortunately the puzzles could not be loaded:"
+        desc: "불행히도 이 퍼즐은 불러오는데 실패하였습니다:"
     submitPuzzle:
         title: 퍼즐 보내기
         descName: "퍼즐에 이름을 지어 주세요:"
@@ -226,8 +226,8 @@ dialogs:
         title: 짧은 키 입력
         desc: 불러올 퍼즐의 짧은 키를 입력해 주세요.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: 퍼즐을 지우시겠습니까?
+        desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -956,14 +956,14 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "위로 향하게 회전"
+        rotateToDown: "아래로 향하게 회전"
+        rotateToRight: "오른쪽으로 향하게 회전"
+        rotateToLeft: "아래쪽으로 향하게 회전"
         constant_producer: 일정 생성기
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        goal_acceptor: 목표 수집기
+        block: 블록
+        massSelectClear: 밸트를 클리어합니다
 about:
     title: 게임 정보
     body: >-
@@ -1062,14 +1062,14 @@ puzzleMenu:
         easy: 쉬움
         hard: 어러움
         completed: 완료함
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: 중간
+        official: 공식
+        trending: 오늘의 인기
+        trending-weekly: 이 주의 인기
+        categories: 카테고리
+        difficulties: 어려운 순서로
+        account: 내 퍼즐들
+        search: 검색
     validation:
         title: 잘못된 퍼즐
         noProducers: 일정 생성기를 배치해주세요!
@@ -1079,9 +1079,9 @@ puzzleMenu:
         buildingOutOfBounds: 하나 이상의 건물이 지을 수 있는 영역 밖에 존재합니다. 영역을 늘리거나 건물을 제거하세요.
         autoComplete: 퍼즐이 스스로 완료됩니다! 일정 생성기가 만든 모양이 목표 수집기로 바로 들어가고 있는건 아닌지 확인해주세요.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: 쉬움
+        medium: 중간
+        hard: 어려움
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
@@ -1102,6 +1102,5 @@ backendErrors:
     bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
     bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
     timeout: 요청 시간이 초과되었습니다.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 부족하다면 support@shapez.io로 문의하세요!
+    no-permission: 이 작업을 할 권한이 없습니다
