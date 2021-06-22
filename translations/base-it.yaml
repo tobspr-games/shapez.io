@@ -262,8 +262,8 @@ dialogs:
         title: Inserisci codice
         desc: Inserisci il codice del puzzle per caricarlo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Cancellare il puzzle?
+        desc: Sei sicuro di voler cancellare '<title>'? Questa azione non può essere annullata!
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -1241,14 +1241,14 @@ puzzleMenu:
         easy: Facili
         hard: Difficili
         completed: Completati
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Medi
+        official: Ufficiali
+        trending: Più popolari di oggi
+        trending-weekly: Più popolari della settimana
+        categories: Categorie
+        difficulties: Per difficoltà
+        account: I miei puzzle
+        search: Cerca
     validation:
         title: Puzzle non valido
         noProducers: Per favore posiziona un Produttore costante!
@@ -1264,9 +1264,9 @@ puzzleMenu:
             produttori costanti non consegnino direttamente agli accettori di
             obiettivi.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: Facile
+        medium: Medio
+        hard: Difficile
 backendErrors:
     ratelimit: Stai facendo troppe azioni velocemente. Per favore attendi un attimo.
     invalid-api-key: Comunicazione con il backend fallita, per favore prova ad
@@ -1290,6 +1290,6 @@ backendErrors:
     bad-payload: La richiesta contiene dati non validi.
     bad-building-placement: Il tuo puzzle contiene edifici non validi.
     timeout: La richiesta è scaduta.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Questo puzzle ha già ricevuto troppi "mi piace". Se vuoi ancora
+        rimuoverlo, per favore contatta support@shapez.io!
+    no-permission: Non hai i permessi per eseguire questa azione.
