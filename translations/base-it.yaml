@@ -829,7 +829,7 @@ storyRewards:
             letto? Prova a mostrarlo su di un display!"
     reward_constant_signal:
         title: Sengale costante
-        desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello
+        desc: Hai sbloccato l'edificio <strong>segnale costante</strong> sul livello
             elettrico! È utile collegarlo ai <strong>filtri di oggetti</strong>
             per esempio.<br><br> Il segnale costante può emettere una
             <strong>forma</strong>, un <strong>colore</strong> o un
@@ -1123,7 +1123,7 @@ keybindings:
         rotateToLeft: "Ruota: punta a sinistra"
         constant_producer: Produttore costante
         goal_acceptor: Accettore di obiettivi
-        block: Bloca
+        block: Blocco
         massSelectClear: Sgombra nastri
 about:
     title: Riguardo questo gioco
