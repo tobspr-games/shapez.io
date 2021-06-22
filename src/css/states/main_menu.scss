@@ -230,11 +230,32 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background: #4cc98a;
+        background: $colorBlueBright;
         grid-row: 1 / 2;
         grid-column: 2 / 3;
+        position: relative;
         @include S(padding, 20px);
         @include S(border-radius, $globalBorderRadius);
+
+        > .badge {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            position: absolute;
+            @include S(top, 10px);
+            @include S(right, 10px);
+
+            transform: translateX(50%) rotate(10deg);
+            @include Heading;
+            font-weight: bold;
+
+            @include InlineAnimation(1.3s ease-in-out infinite) {
+                50% {
+                    transform: translateX(50%) rotate(12deg) scale(1.1);
+                }
+            }
+        }
+
         > .dlcLogo {
             @include S(width, 190px);
         }

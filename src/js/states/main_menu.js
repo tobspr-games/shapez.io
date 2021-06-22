@@ -108,6 +108,9 @@ export class MainMenuState extends GameState {
                     !G_WEGAME_VERSION && G_IS_STANDALONE && !puzzleDlc
                         ? `
                     <div class="puzzleContainer notOwned">
+                        <span class="badge">
+                            ${T.puzzleMenu.categories.new}
+                        </span>
                         <img class="dlcLogo" src="${cachebust(
                             G_CHINA_VERSION || G_WEGAME_VERSION
                                 ? "res/puzzle_dlc_logo_china.png"
@@ -115,7 +118,7 @@ export class MainMenuState extends GameState {
                         )}" alt="shapez.io Logo">
                         <p>${T.mainMenu.puzzleDlcText}</p>
                         <button class="styledButton puzzleDlcGetButton">${
-                            T.mainMenu.puzzleDlcWishlist
+                            T.mainMenu.puzzleDlcViewNow
                         }</button>
                     </div>`
                         : ""
