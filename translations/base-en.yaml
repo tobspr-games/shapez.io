@@ -147,7 +147,7 @@ puzzleMenu:
         medium: Medium
         hard: Hard
         completed: Completed
-        official: Official
+        official: Tutorial
         trending: Trending today
         trending-weekly: Trending weekly
         categories: Categories
