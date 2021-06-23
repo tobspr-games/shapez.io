@@ -211,7 +211,7 @@ dialogs:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Çevrimdışı Modu
+        title: Çevrİmdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
             Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
@@ -255,7 +255,7 @@ dialogs:
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
     puzzleDelete:
         title: Yapboz silinsin mi?
-        desc: '<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri alınamaz!
+        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri alınamaz!"
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -677,11 +677,11 @@ buildings:
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Sabit Üretici
+            name: Sabİt Üretİcİ
             description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Hedef Merkezi
+            name: Hedef Merkezİ
             description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
@@ -1208,17 +1208,17 @@ puzzleMenu:
     noPuzzles: Bu kısımda yapboz yok.
     categories:
         levels: Seviyeler
-        new: Yeni
-        top-rated: En İyi Değerlendirilen
+        new: Yenİ
+        top-rated: En İyİ Değerlendirilen
         mine: Yapbozlarım
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
         medium: Orta
-        official: Resmi
+        official: Resmİ
         trending: Bugün öne çıkan
         trending-weekly: Haftalık öne çıkan
-        categories: Kategoriler
+        categories: Kategorİler
         difficulties: Zorluğa göre
         account: Yapbozlarım
         search: Ara
