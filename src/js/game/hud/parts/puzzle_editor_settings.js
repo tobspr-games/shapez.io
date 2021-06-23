@@ -9,6 +9,8 @@ import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { BaseHUDPart } from "../base_hud_part";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
+import { MetaBlockBuilding } from "../../buildings/block";
 
 const logger = createLogger("puzzle-editor");
 
@@ -43,8 +45,13 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
                     <div class="buttonBar">
                         <button class="styledButton trim">${T.ingame.puzzleEditorSettings.trimZone}</button>
-                        <button class="styledButton clear">${T.ingame.puzzleEditorSettings.clearItems}</button>
+                        <button class="styledButton clear items">${T.ingame.puzzleEditorSettings.clearItems}</button>
                     </div>
+
+                    <div class="buildingsButton">
+                        <button class="styledButton clear buildings">clear buildings</button>
+                    </div>
+
                 </div>`
             );
 
@@ -53,12 +60,33 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .minus", () => this.modifyZone(0, -1));
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
-            bind("button.clear", this.clear);
+            bind("button.items", this.clearItems);
+            bind("button.buildings", this.clearBuildings);
         }
     }
 
-    clear() {
+    clearItems() {
         this.root.logic.clearAllBeltsAndItems();
+    }
+
+    clearBuildings() {
+        for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+            const signalComp = entity.components.ConstantSignal;
+            const goalComp = entity.components.GoalAcceptor;
+
+            if (
+                signalComp ||
+                goalComp ||
+                staticComp.getMetaBuilding().id === gMetaBuildingRegistry.findByClass(MetaBlockBuilding).id
+            ) {
+                continue;
+            }
+
+            this.root.map.removeStaticEntity(entity);
+            this.root.entityMgr.destroyEntity(entity);
+        }
+        this.root.entityMgr.processDestroyList();
     }
 
     trim() {
