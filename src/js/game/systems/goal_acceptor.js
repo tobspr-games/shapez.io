@@ -24,13 +24,22 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
             const entity = this.allEntities[i];
             const goalComp = entity.components.GoalAcceptor;
 
-            // filter the ones which are no longer active, or which are not the same
-            goalComp.deliveryHistory = goalComp.deliveryHistory.filter(
-                d =>
-                    now - d.time < globalConfig.goalAcceptorMinimumDurationSeconds && d.item === goalComp.item
-            );
+            if (!goalComp.lastDelivery) {
+                continue;
+            }
 
-            if (goalComp.deliveryHistory.length < goalComp.getRequiredDeliveryHistorySize()) {
+            if (now - goalComp.lastDelivery.time > goalComp.getRequiredItemsPerSecond()) {
+                goalComp.lastDelivery = null;
+                goalComp.currentDeliveredItems = 0;
+            }
+
+            //// filter the ones which are no longer active, or which are not the same
+            //goalComp.deliveryHistory = goalComp.deliveryHistory.filter(
+            //    d =>
+            //        now - d.time < globalConfig.goalAcceptorMinimumDurationSeconds && d.item === goalComp.item
+            //);
+
+            if (goalComp.currentDeliveredItems < globalConfig.goalAcceptorItemsRequired) {
                 allAccepted = false;
             }
         }
@@ -64,8 +73,8 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
             const staticComp = contents[i].components.StaticMapEntity;
             const item = goalComp.item;
 
-            const requiredItemsForSuccess = goalComp.getRequiredDeliveryHistorySize();
-            const percentage = clamp(goalComp.deliveryHistory.length / requiredItemsForSuccess, 0, 1);
+            const requiredItemsForSuccess = globalConfig.goalAcceptorItemsRequired;
+            const percentage = clamp(goalComp.currentDeliveredItems / requiredItemsForSuccess, 0, 1);
 
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
             if (item) {
@@ -78,7 +87,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
                 );
             }
 
-            const isValid = item && goalComp.deliveryHistory.length >= requiredItemsForSuccess;
+            const isValid = item && goalComp.currentDeliveredItems >= requiredItemsForSuccess;
 
             parameters.context.translate(center.x, center.y);
             parameters.context.rotate((staticComp.rotation / 180) * Math.PI);
@@ -90,7 +99,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
 
             // progress arc
 
-            goalComp.displayPercentage = lerp(goalComp.displayPercentage, percentage, 0.3);
+            goalComp.displayPercentage = lerp(goalComp.displayPercentage, percentage, 0.2);
 
             const startAngle = Math.PI * 0.595;
             const maxAngle = Math.PI * 1.82;
