@@ -33,12 +33,6 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
                 goalComp.currentDeliveredItems = 0;
             }
 
-            //// filter the ones which are no longer active, or which are not the same
-            //goalComp.deliveryHistory = goalComp.deliveryHistory.filter(
-            //    d =>
-            //        now - d.time < globalConfig.goalAcceptorMinimumDurationSeconds && d.item === goalComp.item
-            //);
-
             if (goalComp.currentDeliveredItems < globalConfig.goalAcceptorItemsRequired) {
                 allAccepted = false;
             }

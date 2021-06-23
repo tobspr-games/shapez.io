@@ -578,12 +578,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             globalConfig.goalAcceptorItemsRequired
         );
 
+        if (goalComp.item && !item.equals(goalComp.item)) {
+            goalComp.clearItems();
+        }
+
         if (this.root.gameMode.getIsEditor()) {
             // while playing in editor, assign the item
             goalComp.item = payload.items[0].item;
-        } else if (!item.equals(goalComp.item)) {
-            // if the inputted item isn't the same, clear the acceptor
-            goalComp.clear();
         }
 
         goalComp.lastDelivery = {

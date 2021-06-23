@@ -40,6 +40,13 @@ export class GoalAcceptorComponent extends Component {
         this.displayPercentage = 0;
     }
 
+    // clears items but doesn't instantly reset the progress bar
+    clearItems() {
+        this.lastDelivery = null;
+
+        this.currentDeliveredItems = 0;
+    }
+
     getRequiredItemsPerSecond() {
         return (
             globalConfig.goalAcceptorsPerProducer /
