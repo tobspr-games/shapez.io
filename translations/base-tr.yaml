@@ -254,8 +254,8 @@ dialogs:
         title: Kısa anahtar gir
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Yapboz silinsin mi?
+        desc: '<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri alınamaz!
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -1214,14 +1214,14 @@ puzzleMenu:
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Orta
+        official: Resmi
+        trending: Bugün öne çıkan
+        trending-weekly: Haftalık öne çıkan
+        categories: Kategoriler
+        difficulties: Zorluğa göre
+        account: Yapbozlarım
+        search: Ara
     validation:
         title: Geçersiz Yapboz
         noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
@@ -1236,9 +1236,9 @@ puzzleMenu:
         autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef
             merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: Kolay
+        medium: Orta
+        hard: Zor
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
@@ -1262,6 +1262,6 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek istiyorsanız
+        support@shapez.io ile iletişime geçiniz!
+    no-permission: Bu işlemi yapmak için izniniz yok.
