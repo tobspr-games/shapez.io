@@ -75,7 +75,7 @@ function listen() {
     });
 
     ipcMain.handle("steam:check-app-ownership", (event, appId) => {
-        return Promise.resolve(greenworks.isSubscribedApp(appId));
+        return Promise.resolve(greenworks.isDLCInstalled(appId));
     });
 }
 

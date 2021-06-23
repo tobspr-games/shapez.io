@@ -101,9 +101,15 @@ export class ClientAPI {
      */
     apiTryLogin() {
         if (!G_IS_STANDALONE) {
-            const token = window.prompt(
-                "Please enter the auth token for the puzzle DLC (If you have none, you can't login):"
-            );
+            let token = window.localStorage.getItem("dev_api_auth_token");
+            if (!token) {
+                token = window.prompt(
+                    "Please enter the auth token for the puzzle DLC (If you have none, you can't login):"
+                );
+            }
+            if (token) {
+                window.localStorage.setItem("dev_api_auth_token", token);
+            }
             return Promise.resolve({ token });
         }
 
@@ -146,6 +152,20 @@ export class ClientAPI {
             return Promise.reject("not-logged-in");
         }
         return this._request("/v1/puzzles/download/" + puzzleId, {});
+    }
+
+    /**
+     * @param {number} puzzleId
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
+     */
+    apiDeletePuzzle(puzzleId) {
+        if (!this.isLoggedIn()) {
+            return Promise.reject("not-logged-in");
+        }
+        return this._request("/v1/puzzles/delete/" + puzzleId, {
+            method: "POST",
+            body: {},
+        });
     }
 
     /**
