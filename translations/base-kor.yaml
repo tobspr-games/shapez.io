@@ -963,7 +963,7 @@ keybindings:
         constant_producer: 일정 생성기
         goal_acceptor: 목표 수집기
         block: 블록
-        massSelectClear: 밸트를 클리어합니다
+        massSelectClear: 벨트 초기화
 about:
     title: 게임 정보
     body: >-
@@ -1067,7 +1067,7 @@ puzzleMenu:
         trending: 오늘의 인기
         trending-weekly: 이 주의 인기
         categories: 카테고리
-        difficulties: 어려운 순서로
+        difficulties: 난이도순
         account: 내 퍼즐들
         search: 검색
     validation:
@@ -1102,5 +1102,5 @@ backendErrors:
     bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
     bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
     timeout: 요청 시간이 초과되었습니다.
-    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 부족하다면 support@shapez.io로 문의하세요!
-    no-permission: 이 작업을 할 권한이 없습니다
+    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 제거하고 싶다면 support@shapez.io로 문의하세요!
+    no-permission: 이 작업을 할 권한이 없습니다.
