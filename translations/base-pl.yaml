@@ -218,7 +218,7 @@ dialogs:
     offlineMode:
         title: Offline Mode
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
         title: Download Error
         desc: "Failed to download the puzzle:"
@@ -257,6 +257,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Enter short key
         desc: Enter the short key of the puzzle to load it.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -1218,10 +1221,17 @@ puzzleMenu:
         new: New
         top-rated: Top Rated
         mine: My Puzzles
-        short: Short
         easy: Easy
         hard: Hard
         completed: Completed
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Invalid Puzzle
         noProducers: Please place a Constant Producer!
@@ -1234,6 +1244,10 @@ puzzleMenu:
             Either increase the area or remove them.
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to
@@ -1257,3 +1271,6 @@ backendErrors:
     bad-payload: The request contains invalid data.
     bad-building-placement: Your puzzle contains invalid placed buildings.
     timeout: The request timed out.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

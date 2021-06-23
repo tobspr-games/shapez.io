@@ -11,12 +11,12 @@ steamPage:
 
         Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
     what_others_say: Co o shapez.io říkají lidé
-    nothernlion_comment: Tato hra je úžasná - Užívám si čas strávený hraním této hry,
-        jen strašně rychle utekl.
-    notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna přišel na to,
-        jak v shapez.io vytvořit počítač.
-    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět.
-        Odpočinková factory hra, která mi nedovolí přestat dělat mé výrobní linky více
+    nothernlion_comment: Tato hra je úžasná - Užívám si čas strávený hraním této
+        hry, jen strašně rychle utekl.
+    notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna
+        přišel na to, jak v shapez.io vytvořit počítač.
+    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět. Odpočinková
+        factory hra, která mi nedovolí přestat dělat mé výrobní linky více
         efektivní.
 global:
     loading: Načítání
@@ -72,8 +72,8 @@ mainMenu:
     savegameUnnamed: Nepojmenovaný
     puzzleMode: Puzzle mód
     back: Zpět
-    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní Puzzle
-        DLC na Steamu pro ještě více zábavy!
+    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní
+        Puzzle DLC na Steamu pro ještě více zábavy!
     puzzleDlcWishlist: Přidejte si nyní na seznam přání!
 dialogs:
     buttons:
@@ -196,20 +196,19 @@ dialogs:
         title: Odeslat puzzle
         descName: "Pojmenujte svůj puzzle:"
         descIcon: "Prosím zadejte unikátní krátký klíč, který bude zobrazen jako ikona
-            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte jeden
-            z níže náhodně vybraných tvarů):"
+            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte
+            jeden z níže náhodně vybraných tvarů):"
         placeholderName: Název puzzlu
     puzzleResizeBadBuildings:
         title: Změna velikosti není možná
-        desc: Zónu není možné více zmenšit, protože by některé budovy byly
-            mimo zónu.
+        desc: Zónu není možné více zmenšit, protože by některé budovy byly mimo zónu.
     puzzleLoadError:
         title: Špatný puzzle
         desc: "Načítání puzzlu selhalo:"
     offlineMode:
         title: Offline mód
-        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline módu.
-            Ujistěte se, že máte aktivní připojení k internetu.
+        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline
+            módu. Ujistěte se, že máte aktivní připojení k internetu.
     puzzleDownloadError:
         title: Chyba stahování
         desc: "Stažení puzzlu selhalo:"
@@ -217,37 +216,41 @@ dialogs:
         title: Chyba odeslání
         desc: "Odeslání puzzlu selhalo:"
     puzzleSubmitOk:
-        title: Puzzle zveřejněno
-        desc: Gratuluji! Vaše puzzle bylo zvěřejněno a je dostupné pro
-            ostatní hráče. Můžete ho najít v sekci "Má puzzle".
+        title: Puzzle publikováno
+        desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro ostatní hráče.
+            Můžete ho najít v sekci "Moje puzzly".
     puzzleCreateOffline:
         title: Offline mód
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše puzzle.
+            Chcete přesto pokračovat?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Doporučení
+        desc: <strong>Důrazně</strong> doporučujeme průchod základní hrou nejméně do
+            úrovně 12 před vstupem do puzzle DLC, jinak můžete narazit na
+            mechaniku hry, se kterou jste se ještě nesetkali. Chcete přesto
+            pokračovat?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Krátký klíč zkopírován
+        desc: Krátký klíč tohoto puzzlu (<key>) byl zkopírován do vaší schránky! Může
+            být vložen v puzzle menu pro přístup k danému puzzlu.
     puzzleReport:
-        title: Report Puzzle
+        title: Nahlásit puzzle
         options:
-            profane: Profane
-            unsolvable: Not solvable
+            profane: Rouhavý
+            unsolvable: Nelze vyřešit
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Děkujeme za vaši zpětnou vazbu!
+        desc: Toto puzzle bylo označeno.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Nahlášení selhalo
+        desc: "Vaše nahlášení nemohlo být zpracováno:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Vložte krátký klíč
+        desc: Vložte krátký klíč pro načtení příslušného puzzlu.
+    puzzleDelete:
+        title: Smazat puzzle?
+        desc: Jste si jisti, že chcete smazat '<title>'? Tato akce je nevratná!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -423,40 +426,40 @@ ingame:
         zoneTitle: Zóna
         zoneWidth: Šířka
         zoneHeight: Výška
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        trimZone: Upravit zónu
+        clearItems: Vymazat tvary
+        share: Sdílet
+        report: Nahlásit
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Puzzle editor
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Umístěte <strong>výrobníky</strong>, které poskytnou hráči
+              tvary a barvy.
+            - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
+              doručte to do jednoho či více <strong>příjemců cílů</strong>.
+            - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
+              úsek, <strong>uloží se jako cíl</strong>, který hráč musí později
+              vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
+            - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově
+              dojde k její deaktivaci.
+            - 5. Jakmile kliknete na ověření, vaše puzzle bude ověřeno a můžete
+              ho publikovat.
+            - 6. Během publikace budou kromě výrobníků a příjemců cílů
+              <strong>všechny budovy odstraněny</strong> - To je ta část, na
+              kterou má koneckonců každý hráč přijít sám. :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        title: Puzzle dokončeno!
+        titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
+        titleRating: Jak obtížný ti tento puzzle přišel?
+        titleRatingDesc: Vaše hodnocení nám pomůže podat vám v budoucnu lepší návrhy
+        continueBtn: Hrát dál
         menuBtn: Menu
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Autor
+        shortKey: Krátký klíč
+        rating: Úrověn obtížnosti
+        averageDuration: Prům. doba trvání
+        completionRate: Míra dokončení
 shopUpgrades:
     belt:
         name: Pásy, distribuce a tunely
@@ -657,16 +660,16 @@ buildings:
                 kabelů na běžnou vrstvu.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Výrobník
+            description: Neustále vydává zadaný tvar či barvu.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Příjemce cílů
+            description: Doručte tvary příjemci cílů, abyste je nastavili jako cíl.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Blok
+            description: Umožňuje zablokovat políčko.
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
@@ -1062,14 +1065,14 @@ keybindings:
         comparator: Porovnávač
         item_producer: Výrobník předmětů (Sandbox)
         copyWireValue: "Kabely: Zkopírovat hodnotu pod kurzorem"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        rotateToUp: "Otočit: Nahoru"
+        rotateToDown: "Otočit: Dolů"
+        rotateToRight: "Otočit: Doprava"
+        rotateToLeft: "Otočit: Doleva"
+        constant_producer: Výrobník
+        goal_acceptor: Přijemce cílů
+        block: Blok
+        massSelectClear: Vymazat pásy
 about:
     title: O hře
     body: >-
@@ -1165,56 +1168,71 @@ tips:
     - Stisknutím F4 dvakrát zobrazíte souřadnici myši a kamery.
     - Můžete kliknout na připínáček vlevo vedle připnutého tvaru k jeho odepnutí.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Hrát
+    edit: Upravit
+    title: Puzzle mód
+    createPuzzle: Vytvořit puzzle
+    loadPuzzle: Načíst
+    reviewPuzzle: Ověření a publikace
+    validatingPuzzle: Ověřování puzzlu
+    submittingPuzzle: Odesílání puzzlu
+    noPuzzles: V této sekci momentálně nejsou žádné puzzly.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        levels: Úrovně
+        new: Nové
+        top-rated: Nejlépe hodnocené
+        mine: Moje puzzly
+        easy: Lehké
+        hard: Těžké
+        completed: Dokončeno
+        medium: Střední
+        official: Oficiální
+        trending: Populární denně
+        trending-weekly: Populární týdně
+        categories: Kategorie
+        difficulties: Dle obtížnosti
+        account: Moje puzzly
+        search: Vyhledávání
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Neplatný puzzle
+        noProducers: Prosím umístěte výrobník!
+        noGoalAcceptors: Prosím umístěte příjemce cílů!
+        goalAcceptorNoItem: Jeden nebo více příjemců cílů ještě nemají nastavený tvar.
+            Doručte jim tvar, abyste jej nastavili jako cíl.
+        goalAcceptorRateNotMet: Jeden nebo více příjemců cílů nedostávají dostatečný
+            počet tvarů. Ujistěte se, že indikátory jsou zelené pro všechny
+            příjemce.
+        buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast. Buď
+            zvětšete plochu, nebo je odstraňte.
+        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že
+            vyrobníky nedodávají své tvary přímo do přijemců cílů.
+    difficulties:
+        easy: Lehká
+        medium: Střední
+        hard: Těžká
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Provádíte své akce příliš často. Počkejte prosím.
+    invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Neplatný API klíč).
+    unauthorized: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Bez autorizace).
+    bad-token: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Špatný token).
+    bad-id: Neplatný identifikátor puzzlu.
+    not-found: Daný puzzle nebyl nalezen.
+    bad-category: Daná kategorie nebyla nalezena.
+    bad-short-key: Krátký klíč je neplatný.
+    profane-title: Název vašeho puzzlu obsahuje rouhavá slova.
+    bad-title-too-many-spaces: Název vašeho puzzlu je příliš krátký.
+    bad-shape-key-in-emitter: Výrobník má nastaven neplatný tvar.
+    bad-shape-key-in-goal: Příjemce cílů má nastaven neplatný tvar.
+    no-emitters: Váš puzzle neobsahuje žádné výrobníky.
+    no-goals: Váš puzzle neobsahuje žádné příjemce cílů.
+    short-key-already-taken: Tento krátký klíč je již používán, zadejte prosím jiný.
+    can-not-report-your-own-puzzle: Nemůžete nahlásit vlastní puzzle.
+    bad-payload: Žádost obsahuje neplatná data.
+    bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
+    timeout: Žádost vypršela.
+    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej přesto chcete
+        odstranit, kontaktujte nás prosím na support@shapez.io!
+    no-permission: K provedení této akce nemáte oprávnění.

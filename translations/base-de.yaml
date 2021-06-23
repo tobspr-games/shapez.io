@@ -70,11 +70,11 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Puzzlemodus
+    back: Zurück
+    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter
+        zu machen? Hol dir das Puzzle DLC auf Steam für noch mehr Spaß!
+    puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
 dialogs:
     buttons:
         ok: OK
@@ -88,9 +88,9 @@ dialogs:
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
         showKeybindings: Kürzel anzeigen
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Erneut versuchen
+        continue: Fortsetzen
+        playOffline: Offline spielen
     importSavegameError:
         title: Importfehler
         text: "Fehler beim Importieren deines Speicherstands:"
@@ -212,7 +212,7 @@ dialogs:
     offlineMode:
         title: Offline Mode
         desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+            Please make sure you have an active internet connection.
     puzzleDownloadError:
         title: Download Error
         desc: "Failed to download the puzzle:"
@@ -251,6 +251,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Enter short key
         desc: Enter the short key of the puzzle to load it.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -1235,26 +1238,40 @@ puzzleMenu:
         new: Neu
         top-rated: Am besten bewertet
         mine: Meine Puzzles
-        short: Kurz
         easy: Einfach
         hard: Schwierig
         completed: Abgeschlossen
+        medium: Mittel
+        official: Vorgestellt
+        trending: Trend - Heute
+        trending-weekly: Trend - Woche
+        categories: Kategorien
+        difficulties: Nach Schwierigkeit
+        account: Meine Puzzle
+        search: Suche
     validation:
         title: Ungültiges Puzzle
         noProducers: Bitte plaziere einen Item-Produzent!
         noGoalAcceptors: Bitte plaziere einen Ziel-Akzeptor!
-        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein zugewiesenes Item.
-            Liefere eine Form zu diesen, um ein Ziel zu setzen.
-        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht genügend Items.
-            Stelle sicher, dass alle Akzeptatorindikatoren grün sind.
-        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des beabauren Bereichs.
-            Vergrößere den Bereich oder entferene die Gebäude.
-        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass deine Item-Produzent
-            nicht direkt an deine Ziel-Akzeptoren lieferen.
+        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein
+            zugewiesenes Item. Liefere eine Form zu diesen, um ein Ziel zu
+            setzen.
+        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht
+            genügend Items. Stelle sicher, dass alle Akzeptatorindikatoren grün
+            sind.
+        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des
+            beabauren Bereichs. Vergrößere den Bereich oder entferene die
+            Gebäude.
+        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
+            deine Item-Produzent nicht direkt an deine Ziel-Akzeptoren lieferen.
+    difficulties:
+        easy: Einfach
+        medium: Mittel
+        hard: Schwer
 backendErrors:
     ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
-    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
-        neustarten oder zu updaten (Ungültiger Api-Schlüssel).
+    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das
+        Spiel neuzustarten oder zu updaten (Ungültiger Api-Schlüssel).
     unauthorized: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
         neustarten oder zu updaten (Nicht autorisiert).
     bad-token: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
@@ -1274,3 +1291,6 @@ backendErrors:
     bad-payload: Die Anfrage beinhaltet ungültige Daten.
     bad-building-placement: Dein Puzzle beinhaltet Gebäude, die sich an ungültigen Stellen befinden.
     timeout: Es kam zu einer Zeitüberschreitung bei der Anfrage.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

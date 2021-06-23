@@ -51,7 +51,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-    loggingIn: Logging in
+    loggingIn: Giriş yapılıyor
 demoBanners:
     title: Deneme Sürümü
     intro: Bütün özellikleri açmak için tam sürümü satın alın!
@@ -71,11 +71,12 @@ mainMenu:
     madeBy: <author-link> tarafından yapıldı
     subreddit: Reddit
     savegameUnnamed: İsimsiz
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: Yapboz Modu
+    back: Geri
+    puzzleDlcText: Fabrikaları küçültmeyi ve verimli hale getirmekten keyif mi
+        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
+        katabilirsin!
+    puzzleDlcWishlist: İstek listene ekle!
 dialogs:
     buttons:
         ok: OK
@@ -89,8 +90,8 @@ dialogs:
         viewUpdate: Güncellemeleri Görüntüle
         showUpgrades: Geliştirmeleri Göster
         showKeybindings: Tuş Kısayollarını Göster
-        retry: Retry
-        continue: Continue
+        retry: Yeniden Dene
+        continue: Devam Et
         playOffline: Play Offline
     importSavegameError:
         title: Kayıt yükleme hatası
@@ -191,66 +192,70 @@ dialogs:
         desc: Bu seviye için eğitim videosu mevcut, ama İngilizce dilinde. İzlemek ister
             misin?
     editConstantProducer:
-        title: Set Item
+        title: Eşya Seç
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Yapbozlar yüklenirken hata oluştu
+        desc: "Malesef yapbozlar yüklenemedi:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Yapboz Yayınla
+        descName: "Yapbozuna bir isim ver:"
+        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir. (Anahtarı
+            <link>buradan</link> oluşturabilirsin, yada aşagıdaki şekillerden
+            rastgele birini seçebilirsin):"
+        placeholderName: Yapboz İsmi
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Yeniden boyutlandırma mümkün değil
+        desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın dışında
+            kalabilir.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Kötü Yapboz
+        desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internect connection.
+        title: Çevrimdışı Modu
+        desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
+            Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: İndirme Hatası
+        desc: "Yapboz indirilemedi:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Yayınlama Hatası
+        desc: "Yapboz yayınlanamadı:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Yapboz Yayınlandı
+        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından
+            oynanabilecek. Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Çevrimdışı Modu
+        desc: Çevrimdışı olduğundan yapbozunu kayıt edemeyecek veya yayınlayamayacaksın.
+            Devam etmek istediğinize emin misiniz?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Öneri
+        desc: Ben <strong>muhakkak</strong> yapboz moduna başlamadan önce normal oyunu
+            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz
+            sunulmamış mekaniklerle (yapılar ve oynanış şekilleri)
+            karşılaşabilirsiniz.
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Kısa Anahtar Kopyalandı
+        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı! Bu
+            anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
     puzzleReport:
-        title: Report Puzzle
+        title: Yapbozu Şikayet Et
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: Ayrımcılık (din, dil, ırk)
+            unsolvable: Çözülemez Yapboz
+            trolling: Trolleme
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Geri bildiriminiz için teşekkürler!
+        desc: Yapboz işaretlendi.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Şikayet edilemedi
+        desc: "Şikayetiniz iletilemedi:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Kısa anahtar gir
+        desc: Yapbozu yüklemek için kısa anahtarı giriniz
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -272,7 +277,7 @@ ingame:
         clearSelection: Seçimi temİzle
         pipette: Pipet
         switchLayers: Katman değiştir
-        clearBelts: Clear belts
+        clearBelts: Bantları temizle
     buildingPlacement:
         cycleBuildingVariants: Yapının farklı türlerine geçmek için <key> tuşuna bas.
         hotkeyLabel: "Kısayol: <key>"
@@ -423,43 +428,45 @@ ingame:
                 title: Başarımlar
                 desc: Bütün başarımları açmaya çalış!
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        zoneTitle: Alan
+        zoneWidth: Genişlik
+        zoneHeight: Yükseklik
+        trimZone: Alanı Sınırlandır
+        clearItems: Eşyaları temizle
+        share: Paylaş
+        report: Şikayet et
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Yapboz Oluşturucu
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit
+              Üreticileri</strong> yerleştir.
+            - 2. Oyuncuların üretmesi ve bir veya birden fazla <strong>Hedef
+              Merkezine</strong> teslim edebilmeleri için bir veya birden fazla
+              şekil oluştur.
+            - 3. Bir Hedef Merkezine belirli bir zaman içinde şekil teslim
+              edilirse, Hedef Merkezi bunu oyuncuların tekrardan üreteceği bir
+              <strong>hedef olarak kabul eder</strong> (<strong>Yeşil
+              rozetle</strong> gösterilmiş).
+            - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit
+              butonuna</strong> basınız.
+            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve
+              sonra onu yayınlayabileceksiniz.
+            - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri
+              dışındaki <strong>bütün yapılar silinecektir</strong> - Bu kısmı
+              oyuncuların kendisi çözmesi gerekecek sonuçta :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
+        title: Yapboz Tamamlandı!
+        titleLike: "Yapbozu beğendiyseniz kalbe tıklayınız:"
+        titleRating: Yapbozu ne kadar zor buldunuz?
+        titleRatingDesc: Değerlendirmeniz size daha iyi öneriler sunmamda yardımcı olacaktır
+        continueBtn: Oynamaya Devam Et
+        menuBtn: Menü
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Yapımcı
+        shortKey: Kısa Anahtar
+        rating: Zorluk
+        averageDuration: Ortamala Süre
+        completionRate: Tamamlama Süresi
 shopUpgrades:
     belt:
         name: Taşıma Bandı, Dağıtıcılar & Tüneller
@@ -670,16 +677,16 @@ buildings:
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Sabit Üretici
+            description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Hedef Merkezi
+            description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Engel
+            description: Bir karoyu kullanıma kapatmayı sağlar.
 storyRewards:
     reward_cutter_and_trash:
         title: Şekilleri Kesmek
@@ -847,7 +854,7 @@ settings:
     categories:
         general: Genel
         userInterface: Kullanıcı Arayüzü
-        advanced: Gelişmİş
+        advanced: Gelİşmİş
         performance: Performans
     versionBadges:
         dev: Geliştirme
@@ -1087,10 +1094,10 @@ keybindings:
         rotateToDown: Aşağı Döndür
         rotateToRight: Sağa Döndür
         rotateToLeft: Sola Döndür
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        constant_producer: Sabit Üretici
+        goal_acceptor: Hedef Merkezi
+        block: Engel
+        massSelectClear: Bantları temizle
 about:
     title: Oyun Hakkında
     body: >-
@@ -1190,56 +1197,71 @@ tips:
     - Sol tarafta sabitlenmiş bir şekle tıklayarak sabitlemesini
       kaldırabilirsiniz.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Oyna
+    edit: Düzenle
+    title: Yapboz Modu
+    createPuzzle: Yapboz Oluştur
+    loadPuzzle: Yükle
+    reviewPuzzle: Gözat & Yayınla
+    validatingPuzzle: Yapboz onaylanıyor
+    submittingPuzzle: Yapboz yayınlanıyor
+    noPuzzles: Bu kısımda yapboz yok.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        short: Short
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        levels: Seviyeler
+        new: Yeni
+        top-rated: En İyi Değerlendirilen
+        mine: Yapbozlarım
+        easy: Kolay
+        hard: Zor
+        completed: Tamamlanan
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Geçersiz Yapboz
+        noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
+        noGoalAcceptors: Lütfen bir Hedef Merkezi yerleştiriniz!
+        goalAcceptorNoItem: Bir veya birden fazla Hedef Merkezine şekil gönderilmedi.
+            Hedef belirlemek için onlara şekil gönderiniz.
+        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya
+            almıyor. Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan
+            emin olunuz.
+        buildingOutOfBounds: Bir veya birden fazla yapı inşa edilebilir alanın dışında.
+            Alanı azaltınız veya yapıları siliniz.
+        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef
+            merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
+    ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
+    invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
+        güncellemeyi/yeniden başlatmayı deneyiniz (Geçersiz Api Anahtarı).
+    unauthorized: Arka tarafla iletişim kurulamadı, lütfen oyunu
+        güncellemeyi/yeniden başlatmayı deneyiniz (Yetkisiz erişim).
+    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu güncellemeyi/yeniden
+        başlatmayı deneyiniz (Kötü Anahtar).
+    bad-id: Geçersiz Yapboz tanımlayıcısı (ID).
+    not-found: İstenilen Yapboz bulunamadı.
+    bad-category: İstenilen kategori bulunamadı.
+    bad-short-key: Girilen kısa anahtar geçersiz.
+    profane-title: Yapboz ismi ayrımcı kelimeler(din,dil,ırk) içeriyor.
+    bad-title-too-many-spaces: Yapboz ismi çok kısa.
+    bad-shape-key-in-emitter: Bir sabit üreticide geçersiz bir eşya mevcut.
+    bad-shape-key-in-goal: Bir hedef merkezinde geçersiz bir eşya mevcut.
+    no-emitters: Yapbozda hiç sabit üretici yok.
+    no-goals: Yapbozda hiç hedef merkezi yok.
+    short-key-already-taken: Bu kısa anahtar kullanılıyor, lütfen başka bir tane kullanınız.
+    can-not-report-your-own-puzzle: Kendi yapbozunuzu şikayet edemezsiniz.
+    bad-payload: İstek geçersiz veri içeriyor.
+    bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
+    timeout: İstek zaman aşımına uğradı.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

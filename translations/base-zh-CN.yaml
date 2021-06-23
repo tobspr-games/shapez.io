@@ -174,29 +174,27 @@ dialogs:
         title: 设置项目
     puzzleLoadFailed:
         title: 谜题载入失败
-        desc: "很遗憾，谜题未能载入："
+        desc: 很遗憾，谜题未能载入：
     submitPuzzle:
         title: 提交谜题
-        descName: "给您的谜题设定名称："
-        descIcon:
-            "请输入唯一的短代码，它将显示为标志您的谜题的图标（ <link>在此</link>生成，或者从以下随机推荐的图形中选择一个）：
-            "
+        descName: 给您的谜题设定名称：
+        descIcon: "请输入唯一的短代码，它将显示为标志您的谜题的图标（ <link>在此</link>生成，或者从以下随机推荐的图形中选择一个）： "
         placeholderName: 谜题标题
     puzzleResizeBadBuildings:
         title: 无法调整大小
         desc: 您无法使这块区域变得更小，否则有些设施将会超出区域范围。
     puzzleLoadError:
         title: 谜题出错
-        desc: "谜题载入失败："
+        desc: 谜题载入失败：
     offlineMode:
         title: 离线模式
         desc: 访问服务器失败，游戏只能在离线模式下进行。请确认您的网络连接正常。
     puzzleDownloadError:
         title: 下载出错
-        desc: "无法下载谜题："
+        desc: 无法下载谜题：
     puzzleSubmitError:
         title: 提交出错
-        desc: "无法提交您的谜题："
+        desc: 无法提交您的谜题：
     puzzleSubmitOk:
         title: 谜题已发布
         desc: 恭喜！您所创造的谜题已成功发布，别的玩家已经可以对您的谜题发起挑战！您可以在"我的谜题"部分找到您发布的谜题。
@@ -220,10 +218,13 @@ dialogs:
         desc: 此谜题已标记！
     puzzleReportError:
         title: 上报失败
-        desc: "无法处理您的上报："
+        desc: 无法处理您的上报：
     puzzleLoadShortKey:
         title: 输入短代码
         desc: 输入此谜题的短代码以载入。
+    puzzleDelete:
+        title: 删除谜题?
+        desc: 您是否确认删除 '<title>'？ 删除后不可恢复！
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -396,7 +397,7 @@ ingame:
             - 6.谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
     puzzleCompletion:
         title: 谜题挑战成功！
-        titleLike: "喜欢此谜题的话，请为它点赞："
+        titleLike: 喜欢此谜题的话，请为它点赞：
         titleRating: 您觉得此谜题难度如何？
         titleRatingDesc: 您的评分将帮助作者在未来创作出更好的谜题！
         continueBtn: 继续游戏
@@ -1022,10 +1023,17 @@ puzzleMenu:
         new: 最新
         top-rated: 最受好评
         mine: 我的谜题
-        short: 速通
         easy: 简单
         hard: 困难
         completed: 完成
+        medium: 普通
+        official: 官方
+        trending: 本日趋势
+        trending-weekly: 本周趋势
+        categories: 分类
+        difficulties: 根据难度
+        account: 我的谜题
+        search: 查找
     validation:
         title: 无效谜题
         noProducers: 请放置<strong>常量生成器</strong>！
@@ -1034,6 +1042,10 @@ puzzleMenu:
         goalAcceptorRateNotMet: 一个或多个目标接收器没有获得足够数量的图形。请确保所有接收器的充能条指示器均为绿色。
         buildingOutOfBounds: 一个或多个设施位于可建造区域之外。请增加区域面积，或将超出区域的设施移除。
         autoComplete: 请确保您的常量生成器不会直接向目标接收器传递目标图形。否则您的谜题会自动完成。
+    difficulties:
+        easy: 简单
+        medium: 普通
+        hard: 困难
 backendErrors:
     ratelimit: 你的操作太频繁了。请稍等。
     invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏(无效的Api密钥)。
@@ -1054,3 +1066,5 @@ backendErrors:
     bad-payload: 此请求包含无效数据。
     bad-building-placement: 您的谜题包含放置错误的设施。
     timeout: 请求超时。
+    too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
+    no-permission: 您没有执行此操作的权限。
