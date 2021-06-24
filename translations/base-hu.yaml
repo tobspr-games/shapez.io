@@ -75,6 +75,7 @@ mainMenu:
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
         Szerezd meg a Puzzle DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -435,6 +436,8 @@ ingame:
         clearItems: Elemek eltávolítása
         share: Megosztás
         report: Jelentés
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Fejtörő Készítő
         instructions:
@@ -1239,6 +1242,8 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
     invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy

@@ -101,8 +101,12 @@ export class Blueprint {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
 
+            // Actually keeping this in as an easter egg to rotate the trash can
+            // if (staticComp.getMetaBuilding().getIsRotateable()) {
             staticComp.rotation = (staticComp.rotation + 90) % 360;
             staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
+            // }
+
             staticComp.origin = staticComp.origin.rotateFastMultipleOf90(90);
         }
     }
@@ -139,6 +143,9 @@ export class Blueprint {
      * @param {GameRoot} root
      */
     canAfford(root) {
+        if (root.gameMode.getHasFreeCopyPaste()) {
+            return true;
+        }
         return root.hubGoals.getShapesStoredByKey(root.gameMode.getBlueprintShapeKey()) >= this.getCost();
     }
 

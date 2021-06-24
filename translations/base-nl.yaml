@@ -79,6 +79,7 @@ mainMenu:
     puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken?
         Verkrijg de puzzel DLC nu op Steam voor nog meer plezier!
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -262,7 +263,8 @@ dialogs:
         desc: Voer de vorm sleutel van de puzzel in om deze te laden.
     puzzleDelete:
         title: Puzzel verwijderen?
-        desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan gemaakt worden!
+        desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan
+            gemaakt worden!
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -443,6 +445,8 @@ ingame:
         clearItems: Items leeg maken
         share: Delen
         report: Rapporteren
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzel Maker
         instructions:
@@ -1222,7 +1226,9 @@ puzzleMenu:
     validatingPuzzle: Puzzel Valideren
     submittingPuzzle: Puzzel Indienen
     noPuzzles: Er zijn momenteel geen puzzels in deze sectie.
-    dlcHint: Heb je de DLC al gekocht? Zorg ervoor dat het is geactiveerd door met de rechtermuisknop op shapez.io in uw bibliotheek te klikken, Eigenschappen > DLC's te selecteren.
+    dlcHint: Heb je de DLC al gekocht? Zorg ervoor dat het is geactiveerd door met
+        de rechtermuisknop op shapez.io in uw bibliotheek te klikken,
+        Eigenschappen > DLC's te selecteren.
     categories:
         levels: Levels
         new: Nieuw
@@ -1278,5 +1284,6 @@ backendErrors:
     bad-payload: Het verzoek bevat ongeldige gegevens.
     bad-building-placement: Je puzzel bevat ongeldig geplaatste gebouwen.
     timeout: Het verzoek is verlopen.
-    too-many-likes-already: De puzzel heeft al te veel likes. Als je het nog steeds wilt verwijderen, neem dan contact op support@shapez.io!
+    too-many-likes-already: De puzzel heeft al te veel likes. Als je het nog steeds
+        wilt verwijderen, neem dan contact op support@shapez.io!
     no-permission: Je bent niet gemachtigd om deze actie uit te voeren.

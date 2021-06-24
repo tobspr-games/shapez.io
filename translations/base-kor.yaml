@@ -71,6 +71,7 @@ mainMenu:
     back: Back
     puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: 확인
@@ -395,6 +396,8 @@ ingame:
         clearItems: 아이템 초기화
         share: 공유
         report: 신고
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: 퍼즐 생성기
         instructions:
@@ -956,14 +959,14 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
-        rotateToUp: "위로 향하게 회전"
-        rotateToDown: "아래로 향하게 회전"
-        rotateToRight: "오른쪽으로 향하게 회전"
-        rotateToLeft: "아래쪽으로 향하게 회전"
+        rotateToUp: 위로 향하게 회전
+        rotateToDown: 아래로 향하게 회전
+        rotateToRight: 오른쪽으로 향하게 회전
+        rotateToLeft: 아래쪽으로 향하게 회전
         constant_producer: 일정 생성기
         goal_acceptor: 목표 수집기
         block: 블록
-        massSelectClear: 밸트를 클리어합니다
+        massSelectClear: 벨트 초기화
 about:
     title: 게임 정보
     body: >-
@@ -1067,7 +1070,7 @@ puzzleMenu:
         trending: 오늘의 인기
         trending-weekly: 이 주의 인기
         categories: 카테고리
-        difficulties: 어려운 순서로
+        difficulties: 난이도순
         account: 내 퍼즐들
         search: 검색
     validation:
@@ -1082,6 +1085,8 @@ puzzleMenu:
         easy: 쉬움
         medium: 중간
         hard: 어려움
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
@@ -1102,5 +1107,5 @@ backendErrors:
     bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
     bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
     timeout: 요청 시간이 초과되었습니다.
-    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 부족하다면 support@shapez.io로 문의하세요!
-    no-permission: 이 작업을 할 권한이 없습니다
+    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 제거하고 싶다면 support@shapez.io로 문의하세요!
+    no-permission: 이 작업을 할 권한이 없습니다.

@@ -79,6 +79,7 @@ mainMenu:
     puzzleDlcText: Liker du å bygge kompate og optimaliserte fabrikker? Skaff deg
         Puzzle tilleggspakken nå på Steam for mere moro!
     puzzleDlcWishlist: Legg i ønskeliste nå!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -436,6 +437,8 @@ ingame:
         clearItems: Fjern gjenstander
         share: Del
         report: Rapporter
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puslespill lager
         instructions:
@@ -1233,6 +1236,8 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Du gjør en handling for ofte. Vennligst vent litt.
     invalid-api-key: Kunne ikke kommunisere med kjernen, vennligst prøv å

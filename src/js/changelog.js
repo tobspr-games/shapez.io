@@ -1,5 +1,15 @@
 export const CHANGELOG = [
     {
+        version: "1.4.2",
+        date: "24.06.2021",
+        entries: [
+            "Puzzle DLC: Goal acceptors now reset after getting no items for a while (This should prevent being able to 'cheat' puzzles) (by Sense101)",
+            "Puzzle DLC: Added button to clear all buildings / reset the puzzle (by Sense101)",
+            "Puzzle DLC: Allow copy-paste in puzzle mode (by Sense101)",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.4.1",
         date: "22.06.2021",
         entries: [

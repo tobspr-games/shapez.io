@@ -632,6 +632,8 @@ ingame:
         zoneHeight: Height
         trimZone: Trim
         clearItems: Clear Items
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
         share: Share
         report: Report
 

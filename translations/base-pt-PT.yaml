@@ -79,6 +79,7 @@ mainMenu:
     puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
         Puzzle na Steam para ainda mais diversão!
     puzzleDlcWishlist: Lista de desejos agora!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -264,8 +265,8 @@ dialogs:
         title: Introduzir pequeno código
         desc: Introduz um pequeno código para o puzzle carregar.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Apagar Puzzle?
+        desc: Tens a certeza de que queres apagar '<title>'? Isto não pode ser anulado!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -446,6 +447,8 @@ ingame:
         clearItems: Limpar Itens
         share: Partilhar
         report: Reportar
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Criador de Puzzle
         instructions:
@@ -1239,14 +1242,14 @@ puzzleMenu:
         easy: Fácil
         hard: Difícil
         completed: Completo
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Médio
+        official: Oficial
+        trending: Tendências de Hoje
+        trending-weekly: Tendências da Semana
+        categories: Categorias
+        difficulties: Por Dificuldade
+        account: Os meus Puzzles
+        search: Procurar
     validation:
         title: Puzzle Inválido
         noProducers: Por favor coloca um Produtor Constante!
@@ -1262,9 +1265,11 @@ puzzleMenu:
             teus Produtores Constantes não estão automaticamente direcionados
             para os Recetores de Objetivo.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: Fácil
+        medium: Médio
+        hard: Difícil
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
     invalid-api-key: Falha ao cominucar com o backend, por favor tenta
@@ -1288,6 +1293,6 @@ backendErrors:
     bad-payload: O pedido contém informção inválida.
     bad-building-placement: O teu Puzzle contém construções posicionadas de forma inválida.
     timeout: O tempo do pedido esgotou.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: O puzzle já tem imensos gostos. Se ainda o quiseres
+        remover, por favor contacta support@shapez.io!
+    no-permission: Não tens permissão para realizar esta ação.

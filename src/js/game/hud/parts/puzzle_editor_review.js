@@ -216,8 +216,8 @@ export class HUDPuzzleEditorReview extends BaseHUDPart {
             if (!goalComp.item) {
                 return T.puzzleMenu.validation.goalAcceptorNoItem;
             }
-            const required = goalComp.getRequiredDeliveryHistorySize();
-            if (goalComp.deliveryHistory.length < required) {
+            const required = globalConfig.goalAcceptorItemsRequired;
+            if (goalComp.currentDeliveredItems < required) {
                 return T.puzzleMenu.validation.goalAcceptorRateNotMet;
             }
         }
