@@ -25,7 +25,7 @@ export class ClientAPI {
 
     getEndpoint() {
         if (G_IS_DEV) {
-            return "http://localhost:15001";
+            return "https://api.shapez.io";
         }
         if (window.location.host === "beta.shapez.io") {
             return "https://api-staging.shapez.io";
