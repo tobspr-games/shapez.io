@@ -78,6 +78,7 @@ mainMenu:
     puzzleDlcText: Ti piace miniaturizzare e ottimizzare le tue fabbriche? Ottini il
         Puzzle DLC ora su steam per un divertimento ancora maggiore!
     puzzleDlcWishlist: Aggiungi alla lista dei desideri ora!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -263,7 +264,8 @@ dialogs:
         desc: Inserisci il codice del puzzle per caricarlo.
     puzzleDelete:
         title: Cancellare il puzzle?
-        desc: Sei sicuro di voler cancellare '<title>'? Questa azione non può essere annullata!
+        desc: Sei sicuro di voler cancellare '<title>'? Questa azione non può essere
+            annullata!
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -445,6 +447,8 @@ ingame:
         clearItems: Elimina oggetti
         share: Condividi
         report: Segnala
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Creazione puzzle
         instructions:
@@ -699,7 +703,8 @@ buildings:
     goal_acceptor:
         default:
             name: Accettore di obiettivi.
-            description: Consegna forme all'accettore di obiettivi per impostarli come obiettivo.
+            description: Consegna forme all'accettore di obiettivi per impostarli come
+                obiettivo.
     block:
         default:
             name: Blocco
@@ -1138,8 +1143,7 @@ about:
 
         La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank"> Peppsen</a> - È un grande.<br><br>
 
-        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
-        Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
+        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
     title: Registro modifiche
 demo:
@@ -1268,6 +1272,8 @@ puzzleMenu:
         easy: Facile
         medium: Medio
         hard: Difficile
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Stai facendo troppe azioni velocemente. Per favore attendi un attimo.
     invalid-api-key: Comunicazione con il backend fallita, per favore prova ad
@@ -1291,6 +1297,6 @@ backendErrors:
     bad-payload: La richiesta contiene dati non validi.
     bad-building-placement: Il tuo puzzle contiene edifici non validi.
     timeout: La richiesta è scaduta.
-    too-many-likes-already: Questo puzzle ha già ricevuto troppi "mi piace". Se vuoi ancora
-        rimuoverlo, per favore contatta support@shapez.io!
+    too-many-likes-already: Questo puzzle ha già ricevuto troppi "mi piace". Se vuoi
+        ancora rimuoverlo, per favore contatta support@shapez.io!
     no-permission: Non hai i permessi per eseguire questa azione.

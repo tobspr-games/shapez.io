@@ -79,6 +79,7 @@ mainMenu:
     puzzleDlcText: Σε αρέσει να συμπάγης και να βελτιστοποίεις εργοστάσια; Πάρε την
         λειτουργεία παζλ στο Steam για ακόμη περισσότερη πλάκα!
     puzzleDlcWishlist: Βαλτε το στην λίστα επιθυμιών τώρα!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -445,6 +446,8 @@ ingame:
         clearItems: Clear Items
         share: Share
         report: Report
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Κατασκευαστείς παζλ.
         instructions:
@@ -1251,6 +1254,8 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to

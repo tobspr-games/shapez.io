@@ -30,20 +30,23 @@ export class GoalAcceptorComponent extends Component {
     }
 
     clear() {
-        // the last items we delivered
-        /** @type {{ item: BaseItem; time: number; }} */
+        /**
+         * The last item we delivered
+         * @type {{ item: BaseItem; time: number; } | null} */
         this.lastDelivery = null;
 
+        // The amount of items we delivered so far
         this.currentDeliveredItems = 0;
 
         // Used for animations
         this.displayPercentage = 0;
     }
 
-    // clears items but doesn't instantly reset the progress bar
+    /**
+     * Clears items but doesn't instantly reset the progress bar
+     */
     clearItems() {
         this.lastDelivery = null;
-
         this.currentDeliveredItems = 0;
     }
 
