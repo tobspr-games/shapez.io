@@ -191,69 +191,69 @@ dialogs:
         desc: Für dieses Level ist ein Tutorial-Video verfügbar, allerdings nur auf
             Englisch. Willst du es trotzdem anschauen?
     editConstantProducer:
-        title: Set Item
+        title: Item setzen
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Puzzle konnten nicht geladen werden
+        desc: "Leider konnten die Puzzle nicht geladen werden:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Puzzle veröffentlichen
+        descName: "Gib deinem Puzzle einen Namen:"
+        descIcon: "Bitte gib einen eindeutigen Kurzschlüssel ein, der als Symbol für
+            dein Puzzle genutzt wird (Du kannst diesen auch <link>hier</link> generieren, oder wähle
+            unten einen der zufällig generierten Vorschläge):"
+        placeholderName: Puzzle Name
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Größenänderung nicht möglich
+        desc: Du kannst die Zone nicht weiter verkleinern, da ansonsten einige Gebäude
+            außerhalb der Zone liegen würden.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Schlechtes Puzzle
+        desc: "Das Puzzle konnte nicht geladen werden:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: Offline Modus
+        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im Offline Modus.
+            Bitte sorge dafür, dass du eine aktive Internetverbindung hast.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Download Fehler
+        desc: "Der Download des Puzzles ist fehlgeschlagen:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Übertragungsfehler
+        desc: "Das Puzzle konnte nicht übertragen werden:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzzle veröffentlicht
+        desc: Herzlichen Glückwunsch! Dein Rätsel wurde veröffentlicht und kann nun von
+            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine Puzzle" finden.
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Offline Modus
+        desc: Da du offline bist, bist du nicht in der Lage dei Puzzle zu speichern und/oder
+            zu veröffentlichen. Möchtest du trotzdem fortfahren?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Empfehlung
+        desc: ch empfehle <strong>stark</strong>, das normale Spiel bis Level 12 zu spielen,
+            bevor du dich an das Puzzle DLC wagst, sonst stößt du möglicherweise
+            auf noch nicht eingeführte Mechaniken. Möchtest du trotzdem fortfahren?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Kurzschlüssel kopiert
+        desc: Der Kurzschlüssel des Puzzles (<key>) wurde in die Zwischenablage kopiert! Dieser
+            kann im Puzzle Menü genutzt werden, um das Puzzle zu laden.
     puzzleReport:
-        title: Report Puzzle
+        title: Puzzle Melden
         options:
-            profane: Profane
-            unsolvable: Not solvable
+            profane: Profan
+            unsolvable: Nicht lösbar
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Danke für das Feedback!
+        desc: Das Puzzle wurde markiert.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Melden fehlgeschlagen
+        desc: "Deine Meldung konnte nicht verarbeitet werden:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Kurzschlüssel eingeben
+        desc: Trage einen Kurzschlüssel ein um das Puzzle zu laden.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Puzzle löschen?
+        desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht rückgängig gemacht werden!
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -426,42 +426,42 @@ ingame:
                 desc: Hol sie dir alle!
     puzzleEditorSettings:
         zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
+        zoneWidth: Breite
+        zoneHeight: Höhe
+        trimZone: Zuschneiden
+        clearItems: Items löschen
+        share: Teilen
+        report: Melden
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: Puzzle Editor
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Plaziere einen <strong>Item-Produzent</strong> um Shapes und
+              Farben für den Spieler bereitzustellen
+            - 2. Produziere ein oder mehrere Shapes, die der Spieler herstellen soll
+              und liefere dieze zu einem oder mehreren <strong>Ziel-Akzeptoren</strong>
+            - 3. Sobald ein Ziel-Akzeptor ein Shape für eine gewisse Zeit erhällt,
+              <strong>speichert dieser es als Ziel</strong>, welches der Spieler
+              später herstellen muss (Angezeigt durch den <strong>grünen Punkt</strong>).
+            - 4. Klicke den <strong>sperren Button</strong> um die Gebäude zu
+              sperren.
+            - 5. Sobald du auf Überprüfen gedrückt hast, wird dei Puzzel geprüft
+              und du kannst es veröffentlichen.
+            - 6. Bei der Freigabe werden <strong>alle Gebäude entfernt</strong>.
+              Ausgenommen sind die Produzenten und Akzeptoren - Das ist schließlich der
+              Teil, den die Spieler selbst herausfinden sollen :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
+        title: Puzzle abgeschlossen!
+        titleLike: "Klicke auf das Herz, wenn dier das Puzzle gefallen hat:"
+        titleRating: Wie schwierig fandest du das Puzzle?
+        titleRatingDesc: Deine Bewertung wird mir helfen, in Zukunft bessere Vorschläge zu machen
+        continueBtn: Weiter spielen
+        menuBtn: Menü
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Ersteller
+        shortKey: Kurzschlüssel
+        rating: Schwierigkeitsgrad
+        averageDuration: Durchschnittliche Dauer 
+        completionRate: Abschlussrate
 shopUpgrades:
     belt:
         name: Fließbänder, Verteiler & Tunnel
@@ -680,16 +680,16 @@ buildings:
                 Wires-Ebene als Item aus.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Item-Produzent
+            description: Gibt dauerhaft ein Shape oder eine Farbe aus.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Ziel Akzeptor
+            description: Liefere ein Shape an, um dieses als Ziel festzulegen.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Sperre
+            description: Ermöglicht das Blockieren einer Kachel. 
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
@@ -1291,6 +1291,6 @@ backendErrors:
     bad-payload: Die Anfrage beinhaltet ungültige Daten.
     bad-building-placement: Dein Puzzle beinhaltet Gebäude, die sich an ungültigen Stellen befinden.
     timeout: Es kam zu einer Zeitüberschreitung bei der Anfrage.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Dieses Puzzle hat schon zu viele Likes erhalten. Wenn du es trotzdem 
+        löschen möchtest, wende dich an support@shapez.io!
+    no-permission: Du hast nicht die Berechtigung diese Aktion auszuführen.
