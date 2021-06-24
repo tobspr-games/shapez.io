@@ -31,19 +31,26 @@ export class GoalAcceptorComponent extends Component {
 
     clear() {
         // the last items we delivered
-        /** @type {{ item: BaseItem; time: number; }[]} */
-        this.deliveryHistory = [];
+        /** @type {{ item: BaseItem; time: number; }} */
+        this.lastDelivery = null;
+
+        this.currentDeliveredItems = 0;
 
         // Used for animations
         this.displayPercentage = 0;
     }
 
-    getRequiredDeliveryHistorySize() {
+    // clears items but doesn't instantly reset the progress bar
+    clearItems() {
+        this.lastDelivery = null;
+
+        this.currentDeliveredItems = 0;
+    }
+
+    getRequiredSecondsPerItem() {
         return (
-            (globalConfig.puzzleModeSpeed *
-                globalConfig.goalAcceptorMinimumDurationSeconds *
-                globalConfig.beltSpeedItemsPerSecond) /
-            globalConfig.goalAcceptorsPerProducer
+            globalConfig.goalAcceptorsPerProducer /
+            (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond)
         );
     }
 }

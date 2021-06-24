@@ -57,6 +57,15 @@
                     }
                 }
             }
+
+            > .buildingsButton {
+                display: grid;
+                align-items: center;
+                @include S(margin-top, 4px);
+                > button {
+                    @include SuperSmallText;
+                }
+            }
         }
     }
 }

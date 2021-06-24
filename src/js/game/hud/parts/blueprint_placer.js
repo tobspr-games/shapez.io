@@ -27,6 +27,8 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     initialize() {
+        this.isCopyPasteFree = this.root.gameMode.getHasFreeCopyPaste();
+
         this.root.hud.signals.buildingsSelectedForCopy.add(this.createBlueprintFromBuildings, this);
 
         /** @type {TypedTrackedState<Blueprint?>} */
@@ -82,7 +84,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     update() {
         const currentBlueprint = this.currentBlueprint.get();
-        this.domAttach.update(currentBlueprint && currentBlueprint.getCost() > 0);
+        this.domAttach.update(!this.isCopyPasteFree && currentBlueprint && currentBlueprint.getCost() > 0);
         this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
@@ -114,7 +116,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 return;
             }
 
-            if (!blueprint.canAfford(this.root)) {
+            if (!this.isCopyPasteFree && !blueprint.canAfford(this.root)) {
                 this.root.soundProxy.playUiError();
                 return;
             }
@@ -122,8 +124,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             const worldPos = this.root.camera.screenToWorld(pos);
             const tile = worldPos.toTileSpace();
             if (blueprint.tryPlace(this.root, tile)) {
-                const cost = blueprint.getCost();
-                this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                if (!this.isCopyPasteFree) {
+                    const cost = blueprint.getCost();
+                    this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                }
                 this.root.soundProxy.playUi(SOUNDS.placeBuilding);
             }
             return STOP_PROPAGATION;
@@ -131,7 +135,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
-     * Mose move handler
+     * Mouse move handler
      */
     onMouseMove() {
         // Prevent movement while blueprint is selected

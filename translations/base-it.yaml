@@ -262,8 +262,8 @@ dialogs:
         title: Inserisci codice
         desc: Inserisci il codice del puzzle per caricarlo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Cancellare il puzzle?
+        desc: Sei sicuro di voler cancellare '<title>'? Questa azione non può essere annullata!
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -455,7 +455,7 @@ ingame:
               obiettivi</strong>
             - 3. Una volta che un accettore di obiettivi riceve una forma per un
               certo lasso di tempo, lo <strong>salva come obiettivo</strong> che
-              il giocatore dovrà poi produrre (Indicato dal <strong>aimbolo
+              il giocatore dovrà poi produrre (Indicato dal <strong>simbolo
               verde</strong>).
             - 4. Clicca il <strong>bottone di blocco</strong> su un edificio per
               disabilitarlo.
@@ -694,16 +694,16 @@ buildings:
                 livello elettrico come oggetti sul livello normale.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Produttore costante
+            description: Produce costantemente una forma o un colore specificati.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Accettore di obiettivi.
+            description: Consegna forme all'accettore di obiettivi per impostarli come obiettivo.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Blocco
+            description: Blocca una casella.
 storyRewards:
     reward_cutter_and_trash:
         title: Taglio forme
@@ -829,7 +829,7 @@ storyRewards:
             letto? Prova a mostrarlo su di un display!"
     reward_constant_signal:
         title: Sengale costante
-        desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello
+        desc: Hai sbloccato l'edificio <strong>segnale costante</strong> sul livello
             elettrico! È utile collegarlo ai <strong>filtri di oggetti</strong>
             per esempio.<br><br> Il segnale costante può emettere una
             <strong>forma</strong>, un <strong>colore</strong> o un
@@ -1123,7 +1123,7 @@ keybindings:
         rotateToLeft: "Ruota: punta a sinistra"
         constant_producer: Produttore costante
         goal_acceptor: Accettore di obiettivi
-        block: Bloca
+        block: Blocco
         massSelectClear: Sgombra nastri
 about:
     title: Riguardo questo gioco
@@ -1138,7 +1138,8 @@ about:
 
         La colonna sonora è stata composta da<a href="https://soundcloud.com/pettersumelius" target="_blank"> Peppsen</a> - È un grande.<br><br>
 
-        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
+        Per finire, grazie di cuore al mio migliore amico <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> -
+        Senza le nostre sessioni su factorio questo gioco non sarebbe mai esistito.
 changelog:
     title: Registro modifiche
 demo:
@@ -1241,14 +1242,14 @@ puzzleMenu:
         easy: Facili
         hard: Difficili
         completed: Completati
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Medi
+        official: Ufficiali
+        trending: Più popolari di oggi
+        trending-weekly: Più popolari della settimana
+        categories: Categorie
+        difficulties: Per difficoltà
+        account: I miei puzzle
+        search: Cerca
     validation:
         title: Puzzle non valido
         noProducers: Per favore posiziona un Produttore costante!
@@ -1264,9 +1265,9 @@ puzzleMenu:
             produttori costanti non consegnino direttamente agli accettori di
             obiettivi.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
+        easy: Facile
+        medium: Medio
+        hard: Difficile
 backendErrors:
     ratelimit: Stai facendo troppe azioni velocemente. Per favore attendi un attimo.
     invalid-api-key: Comunicazione con il backend fallita, per favore prova ad
@@ -1290,6 +1291,6 @@ backendErrors:
     bad-payload: La richiesta contiene dati non validi.
     bad-building-placement: Il tuo puzzle contiene edifici non validi.
     timeout: La richiesta è scaduta.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Questo puzzle ha già ricevuto troppi "mi piace". Se vuoi ancora
+        rimuoverlo, per favore contatta support@shapez.io!
+    no-permission: Non hai i permessi per eseguire questa azione.

@@ -207,7 +207,7 @@ dialogs:
         title: Puzzel indienen
         descName: "Geef je puzzel een naam:"
         descIcon: "Voer een unieke vorm sleutel in, die wordt weergegeven als het icoon
-            van uw puzzel (je kunt ze <link>hier</link> genereren, of je kunt er
+            van je puzzel (je kunt ze <link>hier</link> genereren, of je kunt er
             een kiezen van de willekeurig voorgestelde vormen hieronder):"
         placeholderName: Puzzel Naam
     puzzleResizeBadBuildings:
@@ -256,13 +256,13 @@ dialogs:
         desc: De puzzel is gemarkeerd.
     puzzleReportError:
         title: Melden mislukt
-        desc: "Uw melding kan niet worden verwerkt:"
+        desc: "Je melding kan niet worden verwerkt:"
     puzzleLoadShortKey:
         title: Voer een vorm sleutel in
         desc: Voer de vorm sleutel van de puzzel in om deze te laden.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Puzzel verwijderen?
+        desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan gemaakt worden!
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -1137,7 +1137,7 @@ demo:
     settingNotAvailable: Niet beschikbaar in de demo.
 tips:
     - De HUB accepteert elke vorm van invoer, niet alleen de huidige vorm!
-    - Zorg ervoor dat uw fabrieken modulair zijn - het loont!
+    - Zorg ervoor dat je fabrieken modulair zijn - het loont!
     - Bouw niet te dicht bij de HUB, anders wordt het een enorme chaos!
     - Als het stapelen niet werkt, probeer dan de invoeren om te wisselen.
     - Je kunt de richting van de lopende band planner wijzigen door op <b>R</b>
@@ -1173,25 +1173,25 @@ tips:
     - Vormontginningen die verder van de HUB verwijderd zijn, zijn complexer.
     - Machines hebben een beperkte snelheid, verdeel ze voor maximale
       efficiëntie.
-    - Gebruik verdelers om uw efficiëntie te maximaliseren.
+    - Gebruik verdelers om je efficiëntie te maximaliseren.
     - Organisatie is belangrijk. Probeer de lopende banden niet te veel over te
       steken.
     - Plan van tevoren, anders wordt het een enorme chaos!
-    - Verwijder uw oude fabrieken niet! Je hebt ze nodig om upgrades te
+    - Verwijder je oude fabrieken niet! Je hebt ze nodig om upgrades te
       ontgrendelen.
     - Probeer in je eentje level 20 te verslaan voordat je hulp zoekt!
     - Maak de dingen niet ingewikkeld, probeer eenvoudig te blijven en je zult
       ver komen.
-    - Mogelijk zul je later in het spel fabrieken moeten hergebruiken. Plan uw
+    - Mogelijk zul je later in het spel fabrieken moeten hergebruiken. Plan je
       fabrieken zodat ze herbruikbaar zijn.
     - Soms kun je een gewenste vorm op de kaart vinden zonder deze met
       stapelaars te maken.
     - Volle windmolens kunnen nooit op natuurlijke wijze spawnen.
-    - Kleur uw vormen voordat je ze knipt voor maximale efficiëntie.
+    - Kleur je vormen voordat je ze knipt voor maximale efficiëntie.
     - Bij modules is ruimte slechts een beleving; een zorg voor sterfelijke
       mannen.
     - Maak een aparte blueprint fabriek. Ze zijn belangrijk voor modules.
-    - Bekijk de kleurenmixer eens wat beter, en uw vragen worden beantwoord.
+    - Bekijk de kleurenmixer eens wat beter, en je vragen worden beantwoord.
     - Gebruik <b>CTRL</b> + klik om een gebied te selecteren.
     - Te dicht bij de HUB bouwen kan latere projecten in de weg staan.
     - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op
@@ -1204,11 +1204,11 @@ tips:
     - Dit spel heeft veel handige sneltoetsen! Bekijk zeker de
       instellingenpagina.
     - Dit spel heeft veel instellingen, bekijk ze zeker!
-    - De markering naar uw HUB heeft een klein kompas om de richting aan te
+    - De markering naar je HUB heeft een klein kompas om de richting aan te
       geven!
     - Om de lopende banden leeg te maken, kun je een gebied kopiëren en plakken
       op dezelfde locatie.
-    - Druk op F4 om uw FPS en Tick Rate weer te geven.
+    - Druk op F4 om je FPS en Tick Rate weer te geven.
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
@@ -1222,6 +1222,7 @@ puzzleMenu:
     validatingPuzzle: Puzzel Valideren
     submittingPuzzle: Puzzel Indienen
     noPuzzles: Er zijn momenteel geen puzzels in deze sectie.
+    dlcHint: Heb je de DLC al gekocht? Zorg ervoor dat het is geactiveerd door met de rechtermuisknop op shapez.io in uw bibliotheek te klikken, Eigenschappen > DLC's te selecteren.
     categories:
         levels: Levels
         new: Nieuw
@@ -1231,13 +1232,13 @@ puzzleMenu:
         hard: Moeilijk
         completed: Voltooid
         medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        official: Officieell
+        trending: Trending vandaag
+        trending-weekly: Trending wekelijks
+        categories: Categorieën
+        difficulties: Op Moeilijkheidsgraad
+        account: Mijn Puzzels
+        search: Zoeken
     validation:
         title: Ongeldige Puzzel
         noProducers: Plaats alstublieft een Constante Producent!
@@ -1251,9 +1252,9 @@ puzzleMenu:
         autoComplete: Je puzzel voltooit zichzelf automatisch! Zorg ervoor dat je
             Constante Producenten niet rechtstreeks aan je Ontvangers leveren.
     difficulties:
-        easy: Easy
+        easy: Makkelijk
         medium: Medium
-        hard: Hard
+        hard: Moeilijk
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
     invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het
@@ -1277,6 +1278,5 @@ backendErrors:
     bad-payload: Het verzoek bevat ongeldige gegevens.
     bad-building-placement: Je puzzel bevat ongeldig geplaatste gebouwen.
     timeout: Het verzoek is verlopen.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: De puzzel heeft al te veel likes. Als je het nog steeds wilt verwijderen, neem dan contact op support@shapez.io!
+    no-permission: Je bent niet gemachtigd om deze actie uit te voeren.
