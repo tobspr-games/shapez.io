@@ -77,6 +77,7 @@ mainMenu:
         alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -255,7 +256,8 @@ dialogs:
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
     puzzleDelete:
         title: Yapboz silinsin mi?
-        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri alınamaz!"
+        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
+            alınamaz!"
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -435,6 +437,8 @@ ingame:
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
@@ -1239,6 +1243,8 @@ puzzleMenu:
         easy: Kolay
         medium: Orta
         hard: Zor
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
@@ -1262,6 +1268,6 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
-    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek istiyorsanız
-        support@shapez.io ile iletişime geçiniz!
+    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
+        istiyorsanız support@shapez.io ile iletişime geçiniz!
     no-permission: Bu işlemi yapmak için izniniz yok.

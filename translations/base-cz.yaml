@@ -75,6 +75,7 @@ mainMenu:
     puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní
         Puzzle DLC na Steamu pro ještě více zábavy!
     puzzleDlcWishlist: Přidejte si nyní na seznam přání!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -430,6 +431,8 @@ ingame:
         clearItems: Vymazat tvary
         share: Sdílet
         report: Nahlásit
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzle editor
         instructions:
@@ -1210,6 +1213,8 @@ puzzleMenu:
         easy: Lehká
         medium: Střední
         hard: Těžká
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Provádíte své akce příliš často. Počkejte prosím.
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
@@ -1233,6 +1238,6 @@ backendErrors:
     bad-payload: Žádost obsahuje neplatná data.
     bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
     timeout: Žádost vypršela.
-    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej přesto chcete
-        odstranit, kontaktujte nás prosím na support@shapez.io!
+    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej
+        přesto chcete odstranit, kontaktujte nás prosím na support@shapez.io!
     no-permission: K provedení této akce nemáte oprávnění.

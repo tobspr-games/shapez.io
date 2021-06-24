@@ -79,6 +79,7 @@ mainMenu:
     puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
         Puzzle na Steam para ainda mais diversão!
     puzzleDlcWishlist: Lista de desejos agora!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -446,6 +447,8 @@ ingame:
         clearItems: Limpar Itens
         share: Partilhar
         report: Reportar
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Criador de Puzzle
         instructions:
@@ -1265,6 +1268,8 @@ puzzleMenu:
         easy: Fácil
         medium: Médio
         hard: Difícil
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
     invalid-api-key: Falha ao cominucar com o backend, por favor tenta

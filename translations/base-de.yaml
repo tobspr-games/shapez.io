@@ -75,6 +75,7 @@ mainMenu:
     puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter
         zu machen? Hol dir das Puzzle DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -199,8 +200,9 @@ dialogs:
         title: Puzzle veröffentlichen
         descName: "Gib deinem Puzzle einen Namen:"
         descIcon: "Bitte gib einen eindeutigen Kurzschlüssel ein, der als Symbol für
-            dein Puzzle genutzt wird (Du kannst diesen auch <link>hier</link> generieren, oder wähle
-            unten einen der zufällig generierten Vorschläge):"
+            dein Puzzle genutzt wird (Du kannst diesen auch <link>hier</link>
+            generieren, oder wähle unten einen der zufällig generierten
+            Vorschläge):"
         placeholderName: Puzzle Name
     puzzleResizeBadBuildings:
         title: Größenänderung nicht möglich
@@ -211,8 +213,9 @@ dialogs:
         desc: "Das Puzzle konnte nicht geladen werden:"
     offlineMode:
         title: Offline Modus
-        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im Offline Modus.
-            Bitte sorge dafür, dass du eine aktive Internetverbindung hast.
+        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im Offline
+            Modus. Bitte sorge dafür, dass du eine aktive Internetverbindung
+            hast.
     puzzleDownloadError:
         title: Download Fehler
         desc: "Der Download des Puzzles ist fehlgeschlagen:"
@@ -222,20 +225,22 @@ dialogs:
     puzzleSubmitOk:
         title: Puzzle veröffentlicht
         desc: Herzlichen Glückwunsch! Dein Rätsel wurde veröffentlicht und kann nun von
-            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine Puzzle" finden.
+            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine
+            Puzzle" finden.
     puzzleCreateOffline:
         title: Offline Modus
-        desc: Da du offline bist, bist du nicht in der Lage dei Puzzle zu speichern und/oder
-            zu veröffentlichen. Möchtest du trotzdem fortfahren?
+        desc: Da du offline bist, bist du nicht in der Lage dei Puzzle zu speichern
+            und/oder zu veröffentlichen. Möchtest du trotzdem fortfahren?
     puzzlePlayRegularRecommendation:
         title: Empfehlung
-        desc: ch empfehle <strong>stark</strong>, das normale Spiel bis Level 12 zu spielen,
-            bevor du dich an das Puzzle DLC wagst, sonst stößt du möglicherweise
-            auf noch nicht eingeführte Mechaniken. Möchtest du trotzdem fortfahren?
+        desc: ch empfehle <strong>stark</strong>, das normale Spiel bis Level 12 zu
+            spielen, bevor du dich an das Puzzle DLC wagst, sonst stößt du
+            möglicherweise auf noch nicht eingeführte Mechaniken. Möchtest du
+            trotzdem fortfahren?
     puzzleShare:
         title: Kurzschlüssel kopiert
-        desc: Der Kurzschlüssel des Puzzles (<key>) wurde in die Zwischenablage kopiert! Dieser
-            kann im Puzzle Menü genutzt werden, um das Puzzle zu laden.
+        desc: Der Kurzschlüssel des Puzzles (<key>) wurde in die Zwischenablage kopiert!
+            Dieser kann im Puzzle Menü genutzt werden, um das Puzzle zu laden.
     puzzleReport:
         title: Puzzle Melden
         options:
@@ -253,7 +258,8 @@ dialogs:
         desc: Trage einen Kurzschlüssel ein um das Puzzle zu laden.
     puzzleDelete:
         title: Puzzle löschen?
-        desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht rückgängig gemacht werden!
+        desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht
+            rückgängig gemacht werden!
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -432,35 +438,41 @@ ingame:
         clearItems: Items löschen
         share: Teilen
         report: Melden
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzle Editor
         instructions:
             - 1. Plaziere einen <strong>Item-Produzent</strong> um Shapes und
               Farben für den Spieler bereitzustellen
-            - 2. Produziere ein oder mehrere Shapes, die der Spieler herstellen soll
-              und liefere dieze zu einem oder mehreren <strong>Ziel-Akzeptoren</strong>
-            - 3. Sobald ein Ziel-Akzeptor ein Shape für eine gewisse Zeit erhällt,
-              <strong>speichert dieser es als Ziel</strong>, welches der Spieler
-              später herstellen muss (Angezeigt durch den <strong>grünen Punkt</strong>).
+            - 2. Produziere ein oder mehrere Shapes, die der Spieler herstellen
+              soll und liefere dieze zu einem oder mehreren
+              <strong>Ziel-Akzeptoren</strong>
+            - 3. Sobald ein Ziel-Akzeptor ein Shape für eine gewisse Zeit
+              erhällt, <strong>speichert dieser es als Ziel</strong>, welches
+              der Spieler später herstellen muss (Angezeigt durch den
+              <strong>grünen Punkt</strong>).
             - 4. Klicke den <strong>sperren Button</strong> um die Gebäude zu
               sperren.
             - 5. Sobald du auf Überprüfen gedrückt hast, wird dei Puzzel geprüft
               und du kannst es veröffentlichen.
             - 6. Bei der Freigabe werden <strong>alle Gebäude entfernt</strong>.
-              Ausgenommen sind die Produzenten und Akzeptoren - Das ist schließlich der
-              Teil, den die Spieler selbst herausfinden sollen :)
+              Ausgenommen sind die Produzenten und Akzeptoren - Das ist
+              schließlich der Teil, den die Spieler selbst herausfinden sollen
+              :)
     puzzleCompletion:
         title: Puzzle abgeschlossen!
         titleLike: "Klicke auf das Herz, wenn dier das Puzzle gefallen hat:"
         titleRating: Wie schwierig fandest du das Puzzle?
-        titleRatingDesc: Deine Bewertung wird mir helfen, in Zukunft bessere Vorschläge zu machen
+        titleRatingDesc: Deine Bewertung wird mir helfen, in Zukunft bessere Vorschläge
+            zu machen
         continueBtn: Weiter spielen
         menuBtn: Menü
     puzzleMetadata:
         author: Ersteller
         shortKey: Kurzschlüssel
         rating: Schwierigkeitsgrad
-        averageDuration: Durchschnittliche Dauer 
+        averageDuration: Durchschnittliche Dauer
         completionRate: Abschlussrate
 shopUpgrades:
     belt:
@@ -689,7 +701,7 @@ buildings:
     block:
         default:
             name: Sperre
-            description: Ermöglicht das Blockieren einer Kachel. 
+            description: Ermöglicht das Blockieren einer Kachel.
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
@@ -1268,6 +1280,8 @@ puzzleMenu:
         easy: Einfach
         medium: Mittel
         hard: Schwer
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
     invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das
@@ -1291,6 +1305,6 @@ backendErrors:
     bad-payload: Die Anfrage beinhaltet ungültige Daten.
     bad-building-placement: Dein Puzzle beinhaltet Gebäude, die sich an ungültigen Stellen befinden.
     timeout: Es kam zu einer Zeitüberschreitung bei der Anfrage.
-    too-many-likes-already: Dieses Puzzle hat schon zu viele Likes erhalten. Wenn du es trotzdem 
-        löschen möchtest, wende dich an support@shapez.io!
+    too-many-likes-already: Dieses Puzzle hat schon zu viele Likes erhalten. Wenn du
+        es trotzdem löschen möchtest, wende dich an support@shapez.io!
     no-permission: Du hast nicht die Berechtigung diese Aktion auszuführen.
