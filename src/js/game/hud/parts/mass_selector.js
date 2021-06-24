@@ -1,5 +1,6 @@
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { formatBigNumberFull } from "../../../core/utils";
@@ -7,6 +8,8 @@ import { Vector } from "../../../core/vector";
 import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { enumMouseButton } from "../../camera";
 import { Component } from "../../component";
 import { Entity } from "../../entity";
@@ -260,7 +263,14 @@ export class HUDMassSelector extends BaseHUDPart {
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
+
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
+                        const staticComp = contents.components.StaticMapEntity;
+
+                        if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                            continue;
+                        }
+
                         this.selectedUids.add(contents.uid);
                     }
                 }
@@ -320,6 +330,11 @@ export class HUDMassSelector extends BaseHUDPart {
                         renderedUids.add(uid);
 
                         const staticComp = contents.components.StaticMapEntity;
+
+                        if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                            continue;
+                        }
+
                         const bounds = staticComp.getTileSpaceBounds();
                         parameters.context.beginRoundedRect(
                             bounds.x * globalConfig.tileSize + boundsBorder,
