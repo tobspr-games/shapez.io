@@ -166,8 +166,8 @@ export class GameMode extends BasicSerializableObject {
     }
 
     /** @returns {boolean} */
-    getSupportsCopyPaste() {
-        return true;
+    getHasFreeCopyPaste() {
+        return false;
     }
 
     /** @returns {boolean} */

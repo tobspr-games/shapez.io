@@ -76,6 +76,7 @@ mainMenu:
     puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
         Steam dés maintenant pour encore plus d'amusement !
     puzzleDlcWishlist: Wishlist now!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -439,6 +440,8 @@ ingame:
         clearItems: Clear Items
         share: Share
         report: Report
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzle Creator
         instructions:
@@ -1273,6 +1276,8 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
         s'il vous plait.

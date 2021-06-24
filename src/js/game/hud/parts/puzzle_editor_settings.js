@@ -1,13 +1,16 @@
 /* typehints:start */
-import { PuzzleGameMode } from "../../modes/puzzle";
 /* typehints:end */
-
 import { globalConfig } from "../../../core/config";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { PuzzleGameMode } from "../../modes/puzzle";
 import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("puzzle-editor");
@@ -43,8 +46,13 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
                     <div class="buttonBar">
                         <button class="styledButton trim">${T.ingame.puzzleEditorSettings.trimZone}</button>
-                        <button class="styledButton clear">${T.ingame.puzzleEditorSettings.clearItems}</button>
+                        <button class="styledButton clearItems">${T.ingame.puzzleEditorSettings.clearItems}</button>
                     </div>
+
+                    <div class="buildingsButton">
+                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
+                    </div>
+
                 </div>`
             );
 
@@ -53,12 +61,31 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .minus", () => this.modifyZone(0, -1));
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
-            bind("button.clear", this.clear);
+            bind("button.clearItems", this.clearItems);
+            bind("button.clearBuildings", this.clearBuildings);
         }
     }
 
-    clear() {
+    clearItems() {
         this.root.logic.clearAllBeltsAndItems();
+    }
+
+    clearBuildings() {
+        for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+
+            if (
+                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
+                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                    .includes(staticComp.getMetaBuilding().id)
+            ) {
+                continue;
+            }
+
+            this.root.map.removeStaticEntity(entity);
+            this.root.entityMgr.destroyEntity(entity);
+        }
+        this.root.entityMgr.processDestroyList();
     }
 
     trim() {

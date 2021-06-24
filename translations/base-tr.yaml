@@ -77,6 +77,7 @@ mainMenu:
         alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -211,7 +212,7 @@ dialogs:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Çevrimdışı Modu
+        title: Çevrİmdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
             Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
@@ -254,8 +255,9 @@ dialogs:
         title: Kısa anahtar gir
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
     puzzleDelete:
-        title: Yapbozu Sil?
-        desc: Silmek istediğine emin misin '<title>'? Bu eylem geri alınamaz!
+        title: Yapboz silinsin mi?
+        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
+            alınamaz!"
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -435,6 +437,8 @@ ingame:
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
@@ -677,11 +681,11 @@ buildings:
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Sabit Üretici
+            name: Sabİt Üretİcİ
             description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Hedef Merkezi
+            name: Hedef Merkezİ
             description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
@@ -1206,19 +1210,20 @@ puzzleMenu:
     noPuzzles: Bu kısımda yapboz yok.
     categories:
         levels: Seviyeler
-        new: Yeni
-        top-rated: En İyi Değerlendirilen
+        new: Yenİ
+        top-rated: En İyİ Değerlendirilen
         mine: Yapbozlarım
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
-        medium: Ortam
-        official: Resmi
-        trending: Bugün Trend Olan
-        trending-weekly: Haftalık Trend Olan
-        categories: Kategoriler
-        difficulties: Zorluklar
-        account: Yapbozlarım 
+
+        medium: Orta
+        official: Resmİ
+        trending: Bugün öne çıkan
+        trending-weekly: Haftalık öne çıkan
+        categories: Kategorİler
+        difficulties: Zorluğa göre
+        account: Yapbozlarım
         search: Ara
     validation:
         title: Geçersiz Yapboz
@@ -1237,6 +1242,9 @@ puzzleMenu:
         easy: Kolay
         medium: Orta
         hard: Zor
+
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
@@ -1260,5 +1268,7 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
-    too-many-likes-already: Bulmaca zaten çok fazla beğeni aldı. Hala kaldırmak istiyorsan, lütfen iletişime geç support@shapez.io!
-    no-permission: Bu eylem için iznin yok.
+
+    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
+        istiyorsanız support@shapez.io ile iletişime geçiniz!
+    no-permission: Bu işlemi yapmak için izniniz yok.
