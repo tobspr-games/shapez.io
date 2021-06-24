@@ -101,11 +101,8 @@ export class Blueprint {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
 
-            if (staticComp.getMetaBuilding().getIsRotateable()) {
-                staticComp.rotation = (staticComp.rotation + 90) % 360;
-                staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
-            }
-
+            staticComp.rotation = (staticComp.rotation + 90) % 360;
+            staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
             staticComp.origin = staticComp.origin.rotateFastMultipleOf90(90);
         }
     }
