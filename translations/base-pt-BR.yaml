@@ -74,8 +74,8 @@ mainMenu:
     savegameUnnamed: Sem nome
     puzzleMode: Modo Puzzle
     back: Voltar
-    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle
-        DLC já disponível na Steam para se divertir ainda mais!
+    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
+        já disponível na Steam para se divertir ainda mais!
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
 dialogs:
     buttons:
@@ -198,9 +198,9 @@ dialogs:
     submitPuzzle:
         title: Enviar desafio
         descName: "Dê um nome ao seu desafio:"
-        descIcon: "Por favor crie um código exclusivo, o qual será o ícone
-            do seu Desafio (Você pode gera-los <link>aqui</link>, ou escolha um
-            dos gerados aleatoriamente abaixo):"
+        descIcon: "Por favor crie um código exclusivo, o qual será o ícone do seu
+            Desafio (Você pode gera-los <link>aqui</link>, ou escolha um dos
+            gerados aleatoriamente abaixo):"
         placeholderName: Nome do desafio
     puzzleResizeBadBuildings:
         title: Mudar o tamanho não é possível
@@ -211,8 +211,9 @@ dialogs:
         desc: "O desafio não pôde ser carregado:"
     offlineMode:
         title: Modo Offline
-        desc: Não conseguimos nos conectar aos servidores, então o jogo terá que ser jogado no Modo Offline.
-            Por favor garanta que você tenha uma conexão ativa com a internet.
+        desc: Não conseguimos nos conectar aos servidores, então o jogo terá que ser
+            jogado no Modo Offline. Por favor garanta que você tenha uma conexão
+            ativa com a internet.
     puzzleDownloadError:
         title: Erro no download
         desc: "Falha ao baixar o desafio:"
@@ -221,21 +222,22 @@ dialogs:
         desc: "Erro ao enviar seu desafio:"
     puzzleSubmitOk:
         title: Desafio publicado
-        desc: Parabéns! Seu desafio foi publicado e pode ser acessado por
-            outros jogadores. Você pode acha-lo na categoria "Meus Desafios".
+        desc: Parabéns! Seu desafio foi publicado e pode ser acessado por outros
+            jogadores. Você pode acha-lo na categoria "Meus Desafios".
     puzzleCreateOffline:
         title: Modo Offline
-        desc: Como você está no Modo Offline, não será possível salvar e/ou publicar seus
-            desafios. Você deseja continuar?
+        desc: Como você está no Modo Offline, não será possível salvar e/ou publicar
+            seus desafios. Você deseja continuar?
     puzzlePlayRegularRecommendation:
         title: Recomendação
-        desc: Eu <strong>fortemente</strong> recomendo jogar o jogo normal até o nível 12
-            antes de se aventurar na Puzzle DLC, senão você poderá encontrar
-           mecânicas que ainda não foram introduzidas. Você ainda deseja continuar?
+        desc: Eu <strong>fortemente</strong> recomendo jogar o jogo normal até o nível
+            12 antes de se aventurar na Puzzle DLC, senão você poderá encontrar
+            mecânicas que ainda não foram introduzidas. Você ainda deseja
+            continuar?
     puzzleShare:
         title: Código copiado
-        desc: O código do desafio (<key>) foi copiado para sua área de transferência! Ele
-            pode ser inserido no menu de desafios para acessar o desafio.
+        desc: O código do desafio (<key>) foi copiado para sua área de transferência!
+            Ele pode ser inserido no menu de desafios para acessar o desafio.
     puzzleReport:
         title: Denunciar Desafio
         options:
@@ -249,8 +251,11 @@ dialogs:
         title: Falha ao denunciar
         desc: "Sua denúncia não pôde ser processada:"
     puzzleLoadShortKey:
-        title: Insira código 
+        title: Insira código
         desc: Insira o código do desafio para carrega-lo.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -435,19 +440,22 @@ ingame:
     puzzleEditorControls:
         title: Criador de Desafios
         instructions:
-            - 1. Coloque <strong>Produtores Constantes</strong> para gerar itens e
-              cores ao jogador
+            - 1. Coloque <strong>Produtores Constantes</strong> para gerar itens
+              e cores ao jogador
             - 2. Monte uma ou mais itens que você quer que o jogador produza e
               entregue em um ou mais <strong>Receptores de Objetivo</strong>
-            - 3. Uma vez que um Receptor de Objetivo recebe uma item por uma certa quantidade de
-              tempo, ele <strong>a salva como seu objetivo</strong> , o qual o jogador terá
-              que produzir depois (Indicato pela <strong>insígnia verde</strong>).
-            - 4. Clique no <strong>botao de travar</strong> de uma construção para desabilita-la.
-            - 5. Uma vez que você clicou em revisar, seu desafio será validado e você
-              poderá publica-lo.
-            - 6. Quando seu desafio for publicado, <strong>todas as construções serão removidas</strong>
-              exceto os Produtores Constantes e Receptores de Objetivo - Essa é a parte que
-              o jogador terá que descobrir sozinho, por isso se chama desafio :)
+            - 3. Uma vez que um Receptor de Objetivo recebe uma item por uma
+              certa quantidade de tempo, ele <strong>a salva como seu
+              objetivo</strong> , o qual o jogador terá que produzir depois
+              (Indicato pela <strong>insígnia verde</strong>).
+            - 4. Clique no <strong>botao de travar</strong> de uma construção
+              para desabilita-la.
+            - 5. Uma vez que você clicou em revisar, seu desafio será validado e
+              você poderá publica-lo.
+            - 6. Quando seu desafio for publicado, <strong>todas as construções
+              serão removidas</strong> exceto os Produtores Constantes e
+              Receptores de Objetivo - Essa é a parte que o jogador terá que
+              descobrir sozinho, por isso se chama desafio :)
     puzzleCompletion:
         title: Desafio Completo!
         titleLike: "Clique no coração se você gostou do desafio:"
@@ -457,7 +465,7 @@ ingame:
         menuBtn: Menu
     puzzleMetadata:
         author: Autor
-        shortKey: Código 
+        shortKey: Código
         rating: Dificuldade
         averageDuration: Duração média
         completionRate: Taxa de sucesso
@@ -684,7 +692,8 @@ buildings:
     goal_acceptor:
         default:
             name: Receptor de Objetivo
-            description: Entregue itens ao Receptor de Objetivo para os definir como o objetivo.
+            description: Entregue itens ao Receptor de Objetivo para os definir como o
+                objetivo.
     block:
         default:
             name: Bloco
@@ -1216,30 +1225,43 @@ puzzleMenu:
         new: Novo
         top-rated: Melhor Avaliados
         mine: Meus Desafios
-        short: Curto
         easy: Fácil
         hard: Difícil
         completed: Completados
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
         noGoalAcceptors: Por favor coloque um Receptor de Objetivo!
-        goalAcceptorNoItem: Um ou mais Receptores de Objetivo ainda não tiveram um item determinado.
-            Entregue um item a ele para definir seu objetivo.
-        goalAcceptorRateNotMet: Um ou mais Receptores de Objetivo não estão recebendo itens suficientes.
-            Garanta que os indicadores estejam verdes para todos os Receptores.
+        goalAcceptorNoItem: Um ou mais Receptores de Objetivo ainda não tiveram um item
+            determinado. Entregue um item a ele para definir seu objetivo.
+        goalAcceptorRateNotMet: Um ou mais Receptores de Objetivo não estão recebendo
+            itens suficientes. Garanta que os indicadores estejam verdes para
+            todos os Receptores.
         buildingOutOfBounds: Uma ou mais construções estão fora da área construível.
             Você pode aumentar a área ou removê-los.
-        autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus Produtores
-            Constantes não estão entregando diretamente aos seus Receptores de Objetivo.
+        autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus
+            Produtores Constantes não estão entregando diretamente aos seus
+            Receptores de Objetivo.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
         atualizar/reiniciar o jogo (Chave API Inválida).
     unauthorized: Falha ao comunicar com o backend, por favor tente
         atualizar/reiniciar o jogo (Não autorizado).
-    bad-token: Falha ao comunicar com o backend, por favor tente
-        atualizar/reiniciar o jogo (Bad Token).
+    bad-token: Falha ao comunicar com o backend, por favor tente atualizar/reiniciar
+        o jogo (Bad Token).
     bad-id: Indentificador de desafio inválido.
     not-found: O desafio não pôde ser achado.
     bad-category: A categoria não pôde ser achada.
@@ -1255,3 +1277,6 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.
