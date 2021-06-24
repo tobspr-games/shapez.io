@@ -12,6 +12,7 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
+import { enumMouseButton } from "../../camera";
 
 const logger = createLogger("hud/mass_selector");
 
@@ -139,13 +140,12 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     clearBelts() {
-        for (const uid of this.selectedUids) {
-            const entity = this.root.entityMgr.findByUid(uid);
+        for (const entity of this.selectedEntities) {
             for (const component of Object.values(entity.components)) {
                 /** @type {Component} */ (component).clear();
             }
         }
-        this.selectedUids = new Set();
+        this.selectedEntities = new Set();
     }
 
     confirmCut() {

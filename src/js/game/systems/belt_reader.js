@@ -12,14 +12,9 @@ export class BeltReaderSystem extends GameSystemWithFilter {
         const now = this.root.time.now();
         const minimumTime = now - globalConfig.readerAnalyzeIntervalSeconds;
         const minimumTimeForThroughput = now - 1;
-<<<<<<< HEAD
 
         for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
             const entity = this.allEntitiesArray[i];
-=======
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
->>>>>>> 5074727efa4910acdb298bbed28c9e7bd1d7849d
             const readerComp = entity.components.BeltReader;
             const pinsComp = entity.components.WiredPins;
 
