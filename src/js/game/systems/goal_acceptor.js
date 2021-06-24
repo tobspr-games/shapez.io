@@ -69,11 +69,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
 
             const requiredItems = globalConfig.goalAcceptorItemsRequired;
 
-            const fillPercentage = clamp(
-                goalComp.currentDeliveredItems / globalConfig.goalAcceptorItemsToFill,
-                0,
-                1
-            );
+            const fillPercentage = clamp(requiredItems, 0, 1);
 
             const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
             if (item) {

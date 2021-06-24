@@ -72,7 +72,6 @@ export const globalConfig = {
 
     readerAnalyzeIntervalSeconds: 10,
 
-    goalAcceptorItemsToFill: 10,
     goalAcceptorItemsRequired: 13,
     goalAcceptorsPerProducer: 5,
     puzzleModeSpeed: 3,
