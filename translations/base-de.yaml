@@ -75,7 +75,7 @@ mainMenu:
     puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter
         zu machen? Hol dir das Puzzle DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
-    puzzleDlcViewNow: Dlc zeigen
+    puzzleDlcViewNow: Dlc anzeigen
 dialogs:
     buttons:
         ok: OK
@@ -195,7 +195,7 @@ dialogs:
         title: Item setzen
     puzzleLoadFailed:
         title: Puzzle konnten nicht geladen werden
-        desc: "Leider konnten das Puzzle nicht geladen werden:"
+        desc: "Leider konnten die Puzzle nicht geladen werden:"
     submitPuzzle:
         title: Puzzle veröffentlichen
         descName: "Gib deinem Puzzle einen Namen:"
@@ -229,7 +229,7 @@ dialogs:
             Puzzle" finden.
     puzzleCreateOffline:
         title: Offline Modus
-        desc: Da du offline bist, bist du nicht in der Lage dein Puzzle zu speichern
+        desc: Da du offline bist, kannst du dein Puzzle nicht speichern
             und/oder zu veröffentlichen. Möchtest du trotzdem fortfahren?
     puzzlePlayRegularRecommendation:
         title: Empfehlung
@@ -700,7 +700,7 @@ buildings:
             description: Liefere ein Shape an, um dieses als Ziel festzulegen.
     block:
         default:
-            name: Sperre
+            name: Sperrblock
             description: Ermöglicht das Blockieren einer Kachel.
 storyRewards:
     reward_cutter_and_trash:
@@ -1044,9 +1044,9 @@ settings:
                 Mauszeiger am Bildschirmrand platzierst. Die Geschwindigkeit
                 stimmt dabei mit den Tasten überein.
         zoomToCursor:
-            title: Zum Cursor zoomen
-            description: Wenn aktiviert, erfolgt der Zoom in Richtung deiner Maus
-                Position, ansonsten in die Mitte des Bildschirms.
+            title: In Richtung Cursor zoomen
+            description: Wenn aktiviert, erfolgt der Zoom in Richtung deiner Mausposition,
+                statt in die Mitte des Bildschirms.
         mapResourcesScale:
             title: Größe der Ressourcen auf der Karte
             description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen)
@@ -1130,7 +1130,7 @@ keybindings:
         rotateToLeft: "Rotieren: Nach links zeigend"
         constant_producer: Item-Produzent
         goal_acceptor: Ziel Akzeptor
-        block: Sperre
+        block: Sperrblock
         massSelectClear: Fließbänder räumen
 about:
     title: Über dieses Spiel
@@ -1280,8 +1280,8 @@ puzzleMenu:
         easy: Einfach
         medium: Mittel
         hard: Schwer
-    dlcHint: DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in der Steam Bibliothek
-        einen Rechtsklick auf shapez.io ausführst und es unter Eigenschaften > Zusatzinhalte (DLC) aktivierst.
+    dlcHint: DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in der Steam-Bibliothek
+        shapez.io rechtsklickst und es unter Eigenschaften > Zusatzinhalte (DLC) aktivierst.
 backendErrors:
     ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
     invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das
