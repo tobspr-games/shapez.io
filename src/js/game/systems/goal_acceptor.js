@@ -25,6 +25,7 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
             const goalComp = entity.components.GoalAcceptor;
 
             if (!goalComp.lastDelivery) {
+                allAccepted = false;
                 continue;
             }
 

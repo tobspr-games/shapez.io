@@ -1,16 +1,17 @@
 /* typehints:start */
-import { PuzzleGameMode } from "../../modes/puzzle";
 /* typehints:end */
-
 import { globalConfig } from "../../../core/config";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
-import { BaseHUDPart } from "../base_hud_part";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { PuzzleGameMode } from "../../modes/puzzle";
+import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("puzzle-editor");
 
@@ -72,13 +73,11 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
     clearBuildings() {
         for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
-            const signalComp = entity.components.ConstantSignal;
-            const goalComp = entity.components.GoalAcceptor;
 
             if (
-                signalComp ||
-                goalComp ||
-                staticComp.getMetaBuilding().id === gMetaBuildingRegistry.findByClass(MetaBlockBuilding).id
+                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
+                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                    .includes(staticComp.getMetaBuilding().id)
             ) {
                 continue;
             }

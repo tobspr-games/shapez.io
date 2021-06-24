@@ -27,8 +27,6 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     initialize() {
-        this.isCopyPasteFree = this.root.gameMode.getHasFreeCopyPaste();
-
         this.root.hud.signals.buildingsSelectedForCopy.add(this.createBlueprintFromBuildings, this);
 
         /** @type {TypedTrackedState<Blueprint?>} */
@@ -50,6 +48,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
         this.domAttach = new DynamicDomAttach(this.root, this.costDisplayParent);
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
+    }
+
+    getHasFreeCopyPaste() {
+        return this.root.gameMode.getHasFreeCopyPaste();
     }
 
     abortPlacement() {
@@ -84,7 +86,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     update() {
         const currentBlueprint = this.currentBlueprint.get();
-        this.domAttach.update(!this.isCopyPasteFree && currentBlueprint && currentBlueprint.getCost() > 0);
+        this.domAttach.update(
+            !this.getHasFreeCopyPaste() && currentBlueprint && currentBlueprint.getCost() > 0
+        );
         this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
@@ -116,7 +120,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 return;
             }
 
-            if (!this.isCopyPasteFree && !blueprint.canAfford(this.root)) {
+            if (!this.getHasFreeCopyPaste() && !blueprint.canAfford(this.root)) {
                 this.root.soundProxy.playUiError();
                 return;
             }
@@ -124,7 +128,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             const worldPos = this.root.camera.screenToWorld(pos);
             const tile = worldPos.toTileSpace();
             if (blueprint.tryPlace(this.root, tile)) {
-                if (!this.isCopyPasteFree) {
+                if (!this.getHasFreeCopyPaste()) {
                     const cost = blueprint.getCost();
                     this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
                 }

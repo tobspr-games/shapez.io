@@ -3,6 +3,8 @@ import { createLogger } from "../../../core/logging";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { BaseHUDPart } from "../base_hud_part";
 
@@ -21,7 +23,7 @@ export class HUDPuzzlePlaySettings extends BaseHUDPart {
                 ["section"],
                 `
                         <button class="styledButton clearItems">${T.ingame.puzzleEditorSettings.clearItems}</button>
-                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
+                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.resetPuzzle}</button>
 
                 `
             );
@@ -38,13 +40,11 @@ export class HUDPuzzlePlaySettings extends BaseHUDPart {
     clearBuildings() {
         for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
-            const signalComp = entity.components.ConstantSignal;
-            const goalComp = entity.components.GoalAcceptor;
 
             if (
-                signalComp ||
-                goalComp ||
-                staticComp.getMetaBuilding().id === gMetaBuildingRegistry.findByClass(MetaBlockBuilding).id
+                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
+                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                    .includes(staticComp.getMetaBuilding().id)
             ) {
                 continue;
             }
