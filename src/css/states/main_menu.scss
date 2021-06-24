@@ -88,9 +88,11 @@
 
         @include S(grid-column-gap, 10px);
         display: grid;
-        grid-template-columns: 1fr;
 
-        &.demo {
+        &[data-columns="1"] {
+            grid-template-columns: 1fr;
+        }
+        &[data-columns="2"] {
             grid-template-columns: 1fr 1fr;
         }
 
@@ -183,7 +185,7 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: #3291e9;
+            color: #ff590b;
             @include Heading;
             font-weight: bold;
             @include S(right, 40px);
@@ -223,9 +225,75 @@
         }
     }
 
+    .puzzleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: $colorBlueBright;
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        position: relative;
+        @include S(padding, 20px);
+        @include S(border-radius, $globalBorderRadius);
+
+        > .badge {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            position: absolute;
+            @include S(top, 10px);
+            @include S(right, 10px);
+
+            transform: translateX(50%) rotate(10deg);
+            @include Heading;
+            font-weight: bold;
+
+            @include InlineAnimation(1.3s ease-in-out infinite) {
+                50% {
+                    transform: translateX(50%) rotate(12deg) scale(1.1);
+                }
+            }
+        }
+
+        > .hint {
+            @include SuperDuperSmallText;
+            @include S(margin-top, 10px);
+            @include S(width, 200px);
+        }
+
+        > .dlcLogo {
+            @include S(width, 190px);
+        }
+
+        > button {
+            @include S(margin-top, 20px);
+            @include Heading;
+            @include S(padding, 10px, 30px);
+            background-color: #333;
+            color: #fff;
+        }
+
+        &.notOwned {
+            p {
+                @include PlainText;
+                color: #333;
+                @include S(margin-top, 10px);
+                @include S(width, 190px);
+            }
+            > button {
+                box-sizing: border-box;
+                @include S(margin-top, 10px);
+                @include S(width, 190px);
+                @include S(padding, 10px, 20px);
+            }
+        }
+    }
+
     .mainContainer {
         display: flex;
         align-items: center;
+        grid-row: 1 / 2;
         justify-content: center;
         flex-direction: column;
         background: #fafafa;
@@ -240,6 +308,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .modeButtons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include S(grid-column-gap, 10px);
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .browserWarning {
@@ -280,6 +358,18 @@
         }
 
         .newGameButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .playModeButton {
+            @include IncreasedClickArea(0px);
+            @include S(margin-top, 15px);
+            @include S(margin-left, 15px);
+        }
+
+        .editModeButton {
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
             @include S(margin-left, 15px);
@@ -436,6 +526,27 @@
                     }
                 }
             }
+        }
+    }
+
+    .bottomContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        @include S(padding-top, 10px);
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include S(grid-column-gap, 10px);
+            align-items: start;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 

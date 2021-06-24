@@ -1,3 +1,4 @@
+import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
 import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
@@ -16,6 +17,7 @@ import {
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
 
@@ -40,10 +42,15 @@ export class MainMenuState extends GameState {
 
         const showDemoBadges = this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
+        const puzzleDlc =
+            G_IS_STANDALONE &&
+            /** @type { PlatformWrapperImplElectron
+        }*/ (this.app.platformWrapper).dlcs.puzzle;
+
         return `
             <div class="topButtons">
                 ${
-                    G_CHINA_VERSION
+                    G_CHINA_VERSION || G_WEGAME_VERSION
                         ? ""
                         : `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
                 }
@@ -63,28 +70,69 @@ export class MainMenuState extends GameState {
             </video>
 
             <div class="logo">
-                <img src="${cachebust(
-                    G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
-                )}" alt="shapez.io Logo">
-                <span class="updateLabel">v${G_BUILD_VERSION} - Achievements!</span>
+                <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
+                ${G_WEGAME_VERSION ? "" : `<span class="updateLabel">v${G_BUILD_VERSION}!</span>`}
             </div>
 
-            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}">
+            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
+            G_IS_STANDALONE ? 2 : showDemoBadges ? 2 : 1
+        }">
                 <div class="sideContainer">
                     ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
                     ${
-                        isSupportedBrowser()
+                        G_IS_STANDALONE || isSupportedBrowser()
                             ? ""
                             : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
                     }
                     <div class="buttons"></div>
                 </div>
+
+                ${
+                    (!G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc) || G_IS_DEV
+                        ? `
+                    <div class="puzzleContainer">
+                        <img class="dlcLogo" src="${cachebust(
+                            G_CHINA_VERSION || G_WEGAME_VERSION
+                                ? "res/puzzle_dlc_logo_china.png"
+                                : "res/puzzle_dlc_logo.png"
+                        )}" alt="shapez.io Logo">
+                        <button class="styledButton puzzleDlcPlayButton">${T.mainMenu.play}</button>
+                    </div>`
+                        : ""
+                }
+
+                ${
+                    !G_WEGAME_VERSION && G_IS_STANDALONE && !puzzleDlc
+                        ? `
+                    <div class="puzzleContainer notOwned">
+                        <span class="badge">
+                            ${T.puzzleMenu.categories.new}
+                        </span>
+                        <img class="dlcLogo" src="${cachebust(
+                            G_CHINA_VERSION || G_WEGAME_VERSION
+                                ? "res/puzzle_dlc_logo_china.png"
+                                : "res/puzzle_dlc_logo.png"
+                        )}" alt="shapez.io Logo">
+                        <p>${T.mainMenu.puzzleDlcText}</p>
+                        <button class="styledButton puzzleDlcGetButton">${
+                            T.mainMenu.puzzleDlcViewNow
+                        }</button>
+                        <span class="hint">
+                            ${T.puzzleMenu.dlcHint}
+                        </span>
+                    </div>`
+                        : ""
+                }
             </div>
 
-            <div class="footer ${G_CHINA_VERSION ? "china" : ""}">
+            ${
+                G_WEGAME_VERSION
+                    ? "<div class='footer wegame'></div>"
+                    : `
+            <div class="footer ${G_CHINA_VERSION ? "china" : ""} ">
 
                 ${
                     G_CHINA_VERSION
@@ -115,6 +163,8 @@ export class MainMenuState extends GameState {
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
             </div>
+            `
+            }
         `;
     }
 
@@ -203,6 +253,11 @@ export class MainMenuState extends GameState {
 
         const qs = this.htmlElement.querySelector.bind(this.htmlElement);
 
+        if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
+            this.onPuzzleModeButtonClicked(true);
+            return;
+        }
+
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
@@ -223,7 +278,7 @@ export class MainMenuState extends GameState {
 
         this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
 
-        if (!G_CHINA_VERSION) {
+        if (!G_CHINA_VERSION && !G_WEGAME_VERSION) {
             this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
             this.trackClicks(qs(".redditLink"), this.onRedditClicked);
             this.trackClicks(qs(".changelog"), this.onChangelogClicked);
@@ -243,14 +298,16 @@ export class MainMenuState extends GameState {
         }
 
         const discordLink = this.htmlElement.querySelector(".discordLink");
-        this.trackClicks(
-            discordLink,
-            () => {
-                this.app.analytics.trackUiClick("main_menu_link_discord");
-                this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
-            },
-            { preventClick: true }
-        );
+        if (discordLink) {
+            this.trackClicks(
+                discordLink,
+                () => {
+                    this.app.analytics.trackUiClick("main_menu_link_discord");
+                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
+                },
+                { preventClick: true }
+            );
+        }
 
         const githubLink = this.htmlElement.querySelector(".githubLink");
         if (githubLink) {
@@ -265,9 +322,25 @@ export class MainMenuState extends GameState {
         }
 
         const producerLink = this.htmlElement.querySelector(".producerLink");
-        this.trackClicks(producerLink, () => this.app.platformWrapper.openExternalLink("https://tobspr.io"), {
-            preventClick: true,
-        });
+        if (producerLink) {
+            this.trackClicks(
+                producerLink,
+                () => this.app.platformWrapper.openExternalLink("https://tobspr.io"),
+                {
+                    preventClick: true,
+                }
+            );
+        }
+
+        const puzzleModeButton = qs(".puzzleDlcPlayButton");
+        if (puzzleModeButton) {
+            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
+        }
+
+        const puzzleWishlistButton = qs(".puzzleDlcGetButton");
+        if (puzzleWishlistButton) {
+            this.trackClicks(puzzleWishlistButton, () => this.onPuzzleWishlistButtonClicked());
+        }
     }
 
     renderMainMenu() {
@@ -304,6 +377,35 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
+    }
+
+    onPuzzleModeButtonClicked(force = false) {
+        const hasUnlockedBlueprints = this.app.savegameMgr.getSavegamesMetaData().some(s => s.level >= 12);
+        console.log(hasUnlockedBlueprints);
+        if (!force && !hasUnlockedBlueprints) {
+            const { ok } = this.dialogs.showWarning(
+                T.dialogs.puzzlePlayRegularRecommendation.title,
+                T.dialogs.puzzlePlayRegularRecommendation.desc,
+                ["cancel:good", "ok:bad:timeout"]
+            );
+            ok.add(() => this.onPuzzleModeButtonClicked(true));
+            return;
+        }
+
+        this.moveToState("LoginState", {
+            nextStateId: "PuzzleMenuState",
+        });
+    }
+
+    onPuzzleWishlistButtonClicked() {
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.puzzleDlcStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
+        );
+    }
+
+    onBackButtonClicked() {
+        this.renderMainMenu();
+        this.renderSavegames();
     }
 
     onSteamLinkClicked() {

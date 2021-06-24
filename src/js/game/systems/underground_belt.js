@@ -223,13 +223,17 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
     update() {
         this.staleAreaWatcher.update();
+
+        const sender = enumUndergroundBeltMode.sender;
+        const now = this.root.time.now();
+
         for (let i = this.allEntitiesArray.length - 1; i >= 0; --i) {
             const entity = this.allEntitiesArray[i];
             const undergroundComp = entity.components.UndergroundBelt;
-            if (undergroundComp.mode === enumUndergroundBeltMode.sender) {
+            if (undergroundComp.mode === sender) {
                 this.handleSender(entity);
             } else {
-                this.handleReceiver(entity);
+                this.handleReceiver(entity, now);
             }
         }
     }
@@ -326,14 +330,15 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     /**
      *
      * @param {Entity} entity
+     * @param {number} now
      */
-    handleReceiver(entity) {
+    handleReceiver(entity, now) {
         const undergroundComp = entity.components.UndergroundBelt;
 
         // Try to eject items, we only check the first one because it is sorted by remaining time
         const nextItemAndDuration = undergroundComp.pendingItems[0];
         if (nextItemAndDuration) {
-            if (this.root.time.now() > nextItemAndDuration[1]) {
+            if (now > nextItemAndDuration[1]) {
                 const ejectorComp = entity.components.ItemEjector;
 
                 const nextSlotIndex = ejectorComp.getFirstFreeSlot();

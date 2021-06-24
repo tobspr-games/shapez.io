@@ -49,6 +49,7 @@ global:
         escape: ESC
         shift: UMSCH
         space: LEER
+    loggingIn: Logging in
 demoBanners:
     title: Demo-Version
     intro: Kauf die Vollversion für alle Features!
@@ -69,6 +70,12 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
+    puzzleMode: Puzzlemodus
+    back: Zurück
+    puzzleDlcText: Du hast Spaß daran, deine Fabriken zu optimieren und effizienter
+        zu machen? Hol dir das Puzzle DLC auf Steam für noch mehr Spaß!
+    puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -82,6 +89,9 @@ dialogs:
         viewUpdate: Update anzeigen
         showUpgrades: Upgrades anzeigen
         showKeybindings: Kürzel anzeigen
+        retry: Erneut versuchen
+        continue: Fortsetzen
+        playOffline: Offline spielen
     importSavegameError:
         title: Importfehler
         text: "Fehler beim Importieren deines Speicherstands:"
@@ -181,6 +191,75 @@ dialogs:
         title: Tutorial verfügbar
         desc: Für dieses Level ist ein Tutorial-Video verfügbar, allerdings nur auf
             Englisch. Willst du es trotzdem anschauen?
+    editConstantProducer:
+        title: Item setzen
+    puzzleLoadFailed:
+        title: Puzzle konnten nicht geladen werden
+        desc: "Leider konnten die Puzzle nicht geladen werden:"
+    submitPuzzle:
+        title: Puzzle veröffentlichen
+        descName: "Gib deinem Puzzle einen Namen:"
+        descIcon: "Bitte gib einen eindeutigen Kurzschlüssel ein, der als Symbol für
+            dein Puzzle genutzt wird (Du kannst diesen auch <link>hier</link>
+            generieren, oder wähle unten einen der zufällig generierten
+            Vorschläge):"
+        placeholderName: Puzzle Name
+    puzzleResizeBadBuildings:
+        title: Größenänderung nicht möglich
+        desc: Du kannst die Zone nicht weiter verkleinern, da ansonsten einige Gebäude
+            außerhalb der Zone liegen würden.
+    puzzleLoadError:
+        title: Schlechtes Puzzle
+        desc: "Das Puzzle konnte nicht geladen werden:"
+    offlineMode:
+        title: Offline Modus
+        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im Offline
+            Modus. Bitte sorge dafür, dass du eine aktive Internetverbindung
+            hast.
+    puzzleDownloadError:
+        title: Download Fehler
+        desc: "Der Download des Puzzles ist fehlgeschlagen:"
+    puzzleSubmitError:
+        title: Übertragungsfehler
+        desc: "Das Puzzle konnte nicht übertragen werden:"
+    puzzleSubmitOk:
+        title: Puzzle veröffentlicht
+        desc: Herzlichen Glückwunsch! Dein Rätsel wurde veröffentlicht und kann nun von
+            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine
+            Puzzle" finden.
+    puzzleCreateOffline:
+        title: Offline Modus
+        desc: Da du offline bist, bist du nicht in der Lage dei Puzzle zu speichern
+            und/oder zu veröffentlichen. Möchtest du trotzdem fortfahren?
+    puzzlePlayRegularRecommendation:
+        title: Empfehlung
+        desc: ch empfehle <strong>stark</strong>, das normale Spiel bis Level 12 zu
+            spielen, bevor du dich an das Puzzle DLC wagst, sonst stößt du
+            möglicherweise auf noch nicht eingeführte Mechaniken. Möchtest du
+            trotzdem fortfahren?
+    puzzleShare:
+        title: Kurzschlüssel kopiert
+        desc: Der Kurzschlüssel des Puzzles (<key>) wurde in die Zwischenablage kopiert!
+            Dieser kann im Puzzle Menü genutzt werden, um das Puzzle zu laden.
+    puzzleReport:
+        title: Puzzle Melden
+        options:
+            profane: Profan
+            unsolvable: Nicht lösbar
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Danke für das Feedback!
+        desc: Das Puzzle wurde markiert.
+    puzzleReportError:
+        title: Melden fehlgeschlagen
+        desc: "Deine Meldung konnte nicht verarbeitet werden:"
+    puzzleLoadShortKey:
+        title: Kurzschlüssel eingeben
+        desc: Trage einen Kurzschlüssel ein um das Puzzle zu laden.
+    puzzleDelete:
+        title: Puzzle löschen?
+        desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht
+            rückgängig gemacht werden!
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -202,6 +281,7 @@ ingame:
         clearSelection: Auswahl aufheben
         pipette: Pipette
         switchLayers: Ebenen wechseln
+        clearBelts: Clear belts
     colors:
         red: Rot
         green: Grün
@@ -350,6 +430,50 @@ ingame:
             achievements:
                 title: Errungenschaften
                 desc: Hol sie dir alle!
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Breite
+        zoneHeight: Höhe
+        trimZone: Zuschneiden
+        clearItems: Items löschen
+        share: Teilen
+        report: Melden
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Puzzle Editor
+        instructions:
+            - 1. Plaziere einen <strong>Item-Produzent</strong> um Shapes und
+              Farben für den Spieler bereitzustellen
+            - 2. Produziere ein oder mehrere Shapes, die der Spieler herstellen
+              soll und liefere dieze zu einem oder mehreren
+              <strong>Ziel-Akzeptoren</strong>
+            - 3. Sobald ein Ziel-Akzeptor ein Shape für eine gewisse Zeit
+              erhällt, <strong>speichert dieser es als Ziel</strong>, welches
+              der Spieler später herstellen muss (Angezeigt durch den
+              <strong>grünen Punkt</strong>).
+            - 4. Klicke den <strong>sperren Button</strong> um die Gebäude zu
+              sperren.
+            - 5. Sobald du auf Überprüfen gedrückt hast, wird dei Puzzel geprüft
+              und du kannst es veröffentlichen.
+            - 6. Bei der Freigabe werden <strong>alle Gebäude entfernt</strong>.
+              Ausgenommen sind die Produzenten und Akzeptoren - Das ist
+              schließlich der Teil, den die Spieler selbst herausfinden sollen
+              :)
+    puzzleCompletion:
+        title: Puzzle abgeschlossen!
+        titleLike: "Klicke auf das Herz, wenn dier das Puzzle gefallen hat:"
+        titleRating: Wie schwierig fandest du das Puzzle?
+        titleRatingDesc: Deine Bewertung wird mir helfen, in Zukunft bessere Vorschläge
+            zu machen
+        continueBtn: Weiter spielen
+        menuBtn: Menü
+    puzzleMetadata:
+        author: Ersteller
+        shortKey: Kurzschlüssel
+        rating: Schwierigkeitsgrad
+        averageDuration: Durchschnittliche Dauer
+        completionRate: Abschlussrate
 shopUpgrades:
     belt:
         name: Fließbänder, Verteiler & Tunnel
@@ -566,6 +690,18 @@ buildings:
             name: Item-Produzent
             description: Nur im Sandkastenmodus verfügbar. Gibt das Signal aus der
                 Wires-Ebene als Item aus.
+    constant_producer:
+        default:
+            name: Item-Produzent
+            description: Gibt dauerhaft ein Shape oder eine Farbe aus.
+    goal_acceptor:
+        default:
+            name: Ziel Akzeptor
+            description: Liefere ein Shape an, um dieses als Ziel festzulegen.
+    block:
+        default:
+            name: Sperre
+            description: Ermöglicht das Blockieren einer Kachel.
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
@@ -913,7 +1049,8 @@ settings:
                 position, otherwise in the middle of the screen.
         mapResourcesScale:
             title: Größe der Ressourcen auf der Karte
-            description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen) fest.
+            description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen)
+                fest.
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
@@ -991,6 +1128,10 @@ keybindings:
         rotateToDown: "Rotieren: Nach unten zeigend"
         rotateToRight: "Rotieren: Nach rechts zeigend"
         rotateToLeft: "Rotieren: Nach links zeigend"
+        constant_producer: Constant Producer
+        goal_acceptor: Goal Acceptor
+        block: Block
+        massSelectClear: Clear belts
 about:
     title: Über dieses Spiel
     body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a
@@ -1094,3 +1235,76 @@ tips:
     - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu
       bestimmen.
     - Du kannst die angehefteten Formen am linken Rand wieder entfernen.
+puzzleMenu:
+    play: Spielen
+    edit: bearbeiten
+    title: Puzzle Modus
+    createPuzzle: Puzzle erstellen
+    loadPuzzle: Laden
+    reviewPuzzle: Überprüfen & Veröffentlichen
+    validatingPuzzle: Puzzle wird überprüft
+    submittingPuzzle: Puzzle wird veröffentlicht
+    noPuzzles: Hier gibt es bisher noch keine Puzzles.
+    categories:
+        levels: Levels
+        new: Neu
+        top-rated: Am besten bewertet
+        mine: Meine Puzzles
+        easy: Einfach
+        hard: Schwierig
+        completed: Abgeschlossen
+        medium: Mittel
+        official: Vorgestellt
+        trending: Trend - Heute
+        trending-weekly: Trend - Woche
+        categories: Kategorien
+        difficulties: Nach Schwierigkeit
+        account: Meine Puzzle
+        search: Suche
+    validation:
+        title: Ungültiges Puzzle
+        noProducers: Bitte plaziere einen Item-Produzent!
+        noGoalAcceptors: Bitte plaziere einen Ziel-Akzeptor!
+        goalAcceptorNoItem: Einer oder mehrere Ziel-Akzeptoren haben noch kein
+            zugewiesenes Item. Liefere eine Form zu diesen, um ein Ziel zu
+            setzen.
+        goalAcceptorRateNotMet: Einer oder mehrere Ziel-Aktzeptoren bekommen nicht
+            genügend Items. Stelle sicher, dass alle Akzeptatorindikatoren grün
+            sind.
+        buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des
+            beabauren Bereichs. Vergrößere den Bereich oder entferene die
+            Gebäude.
+        autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
+            deine Item-Produzent nicht direkt an deine Ziel-Akzeptoren lieferen.
+    difficulties:
+        easy: Einfach
+        medium: Mittel
+        hard: Schwer
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: Du führst Aktionen zu schnell aus. Bitte warte kurz.
+    invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen, veruche das
+        Spiel neuzustarten oder zu updaten (Ungültiger Api-Schlüssel).
+    unauthorized: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
+        neustarten oder zu updaten (Nicht autorisiert).
+    bad-token: Kommunikation mit dem Back-End fehlgeschlagen, veruche das Spiel
+        neustarten oder zu updaten (Ungültiger Token).
+    bad-id: Ungültige Puzzle Identifikation.
+    not-found: Das gegebene Puzzle konnte nicht gefunden werden.
+    bad-category: Die gegebene Kategorie konnte nicht gefunden werden.
+    bad-short-key: Der gegebene Kurzschlüssel ist ungültig.
+    profane-title: Dein Puzzletitel enthält ungültige Wörter.
+    bad-title-too-many-spaces: Dein Puzzletitel ist zu kurz.
+    bad-shape-key-in-emitter: Einem konstanten Produzenten wurde ein ungültiges Item zugewiesen.
+    bad-shape-key-in-goal: Einem Ziel-Akzeptor wurde ein ungültiges Item zugewiesen.
+    no-emitters: Dein Puzzle enthält keine konstanten Produzenten.
+    no-goals: Dein Puzzle enthält keine Ziel-Akzeptoren.
+    short-key-already-taken: Dieser Kurzschlüssel ist bereits vergeben, bitte wähle einen anderen.
+    can-not-report-your-own-puzzle: Du kannst nicht dein eigenes Puzzle melden.
+    bad-payload: Die Anfrage beinhaltet ungültige Daten.
+    bad-building-placement: Dein Puzzle beinhaltet Gebäude, die sich an ungültigen Stellen befinden.
+    timeout: Es kam zu einer Zeitüberschreitung bei der Anfrage.
+    too-many-likes-already: Dieses Puzzle hat schon zu viele Likes erhalten. Wenn du
+        es trotzdem löschen möchtest, wende dich an support@shapez.io!
+    no-permission: Du hast nicht die Berechtigung diese Aktion auszuführen.

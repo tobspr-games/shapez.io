@@ -1,4 +1,5 @@
 import { CHANGELOG } from "../changelog";
+import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
@@ -19,7 +20,7 @@ export class PreloadState extends GameState {
         return `
             <div class="loadingImage"></div>
             <div class="loadingStatus">
-                <span class="desc">${G_CHINA_VERSION ? "加载中" : "Booting"}</span>
+                <span class="desc">${G_CHINA_VERSION || G_WEGAME_VERSION ? "加载中" : "Booting"}</span>
                 </div>
             </div>
             <span class="prefab_GameHint"></span>
@@ -56,8 +57,6 @@ export class PreloadState extends GameState {
         this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
-
-        this.currentStatus = "booting";
 
         this.startLoading();
     }
@@ -114,7 +113,7 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Initializing language"))
             .then(() => {
-                if (G_CHINA_VERSION) {
+                if (G_CHINA_VERSION || G_WEGAME_VERSION) {
                     return this.app.settings.updateLanguage("zh-CN");
                 }
 
@@ -166,7 +165,7 @@ export class PreloadState extends GameState {
                     return;
                 }
 
-                if (G_CHINA_VERSION) {
+                if (G_CHINA_VERSION || G_WEGAME_VERSION) {
                     return;
                 }
 
@@ -229,7 +228,7 @@ export class PreloadState extends GameState {
     }
 
     update() {
-        if (G_CHINA_VERSION) {
+        if (G_CHINA_VERSION || G_WEGAME_VERSION) {
             return;
         }
         const now = performance.now();
@@ -262,7 +261,7 @@ export class PreloadState extends GameState {
      */
     setStatus(text) {
         logger.log("✅ " + text);
-        if (G_CHINA_VERSION) {
+        if (G_CHINA_VERSION || G_WEGAME_VERSION) {
             return Promise.resolve();
         }
         this.currentStatus = text;
@@ -280,9 +279,7 @@ export class PreloadState extends GameState {
 
         subElement.innerHTML = `
                 <div class="logo">
-                    <img src="${cachebust(
-                        G_CHINA_VERSION ? "res/logo_cn.png" : "res/logo.png"
-                    )}" alt="Shapez.io Logo">
+                    <img src="${cachebust("res/" + getLogoSprite())}" alt="Shapez.io Logo">
                 </div>
                 <div class="failureInner">
                     <div class="errorHeader">

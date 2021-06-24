@@ -1,54 +1,22 @@
-/* typehints:start */
-import { GameRoot } from "../root";
-/* typehints:end */
-
-/* dev:start */
-import { TrailerMaker } from "./trailer_maker";
-/* dev:end */
-
-import { Signal } from "../../core/signal";
+import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
+import { Signal } from "../../core/signal";
+import { KEYMAPPINGS } from "../key_action_mapper";
+import { MetaBuilding } from "../meta_building";
+import { GameRoot } from "../root";
+import { ShapeDefinition } from "../shape_definition";
+import { HUDBetaOverlay } from "./parts/beta_overlay";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
-import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
-import { HUDKeybindingOverlay } from "./parts/keybinding_overlay";
-import { HUDUnlockNotification } from "./parts/unlock_notification";
-import { HUDGameMenu } from "./parts/game_menu";
-import { HUDShop } from "./parts/shop";
-import { IS_MOBILE, globalConfig } from "../../core/config";
-import { HUDMassSelector } from "./parts/mass_selector";
-import { HUDVignetteOverlay } from "./parts/vignette_overlay";
-import { HUDStatistics } from "./parts/statistics";
-import { MetaBuilding } from "../meta_building";
-import { HUDPinnedShapes } from "./parts/pinned_shapes";
-import { ShapeDefinition } from "../shape_definition";
-import { HUDNotifications, enumNotificationType } from "./parts/notifications";
-import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDColorBlindHelper } from "./parts/color_blind_helper";
+import { HUDChangesDebugger } from "./parts/debug_changes";
 import { HUDDebugInfo } from "./parts/debug_info";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
-import { KEYMAPPINGS } from "../key_action_mapper";
-import { HUDWatermark } from "./parts/watermark";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
-import { HUDPartTutorialHints } from "./parts/tutorial_hints";
-import { HUDWaypoints } from "./parts/waypoints";
-import { HUDInteractiveTutorial } from "./parts/interactive_tutorial";
-import { HUDScreenshotExporter } from "./parts/screenshot_exporter";
-import { HUDColorBlindHelper } from "./parts/color_blind_helper";
-import { HUDShapeViewer } from "./parts/shape_viewer";
-import { HUDWiresOverlay } from "./parts/wires_overlay";
-import { HUDChangesDebugger } from "./parts/debug_changes";
-import { queryParamOptions } from "../../core/query_parameters";
-import { HUDSandboxController } from "./parts/sandbox_controller";
-import { HUDWiresToolbar } from "./parts/wires_toolbar";
-import { HUDWireInfo } from "./parts/wire_info";
-import { HUDLeverToggle } from "./parts/lever_toggle";
-import { HUDLayerPreview } from "./parts/layer_preview";
-import { HUDMinerHighlight } from "./parts/miner_highlight";
-import { HUDBetaOverlay } from "./parts/beta_overlay";
-import { HUDStandaloneAdvantages } from "./parts/standalone_advantages";
-import { HUDCatMemes } from "./parts/cat_memes";
-import { HUDTutorialVideoOffer } from "./parts/tutorial_video_offer";
-import { HUDConstantSignalEdit } from "./parts/constant_signal_edit";
+import { enumNotificationType } from "./parts/notifications";
+import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDVignetteOverlay } from "./parts/vignette_overlay";
+import { TrailerMaker } from "./trailer_maker";
 
 export class GameHUD {
     /**
@@ -76,33 +44,12 @@ export class GameHUD {
 
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
-            wiresToolbar: new HUDWiresToolbar(this.root),
-            blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
-            unlockNotification: new HUDUnlockNotification(this.root),
-            gameMenu: new HUDGameMenu(this.root),
-            massSelector: new HUDMassSelector(this.root),
-            shop: new HUDShop(this.root),
-            statistics: new HUDStatistics(this.root),
-            waypoints: new HUDWaypoints(this.root),
-            wireInfo: new HUDWireInfo(this.root),
-            leverToggle: new HUDLeverToggle(this.root),
-            constantSignalEdit: new HUDConstantSignalEdit(this.root),
 
             // Must always exist
-            pinnedShapes: new HUDPinnedShapes(this.root),
-            notifications: new HUDNotifications(this.root),
             settingsMenu: new HUDSettingsMenu(this.root),
             debugInfo: new HUDDebugInfo(this.root),
             dialogs: new HUDModalDialogs(this.root),
-            screenshotExporter: new HUDScreenshotExporter(this.root),
-            shapeViewer: new HUDShapeViewer(this.root),
-
-            wiresOverlay: new HUDWiresOverlay(this.root),
-            layerPreview: new HUDLayerPreview(this.root),
-
-            minerHighlight: new HUDMinerHighlight(this.root),
-            tutorialVideoOffer: new HUDTutorialVideoOffer(this.root),
 
             // Typing hints
             /* typehints:start */
@@ -111,27 +58,12 @@ export class GameHUD {
             /* typehints:end */
         };
 
-        if (!IS_MOBILE) {
-            this.parts.keybindingOverlay = new HUDKeybindingOverlay(this.root);
-        }
-
         if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
-        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
-            this.parts.watermark = new HUDWatermark(this.root);
-            this.parts.standaloneAdvantages = new HUDStandaloneAdvantages(this.root);
-            this.parts.catMemes = new HUDCatMemes(this.root);
-        }
-
         if (G_IS_DEV && globalConfig.debug.renderChanges) {
             this.parts.changesDebugger = new HUDChangesDebugger(this.root);
-        }
-
-        if (this.root.app.settings.getAllSettings().offerHints) {
-            this.parts.tutorialHints = new HUDPartTutorialHints(this.root);
-            this.parts.interactiveTutorial = new HUDInteractiveTutorial(this.root);
         }
 
         if (this.root.app.settings.getAllSettings().vignette) {
@@ -142,12 +74,13 @@ export class GameHUD {
             this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
         }
 
-        if (queryParamOptions.sandboxMode || G_IS_DEV) {
-            this.parts.sandboxController = new HUDSandboxController(this.root);
-        }
-
         if (!G_IS_RELEASE && !G_IS_DEV) {
             this.parts.betaOverlay = new HUDBetaOverlay(this.root);
+        }
+
+        const additionalParts = this.root.gameMode.additionalHudParts;
+        for (const [partId, part] of Object.entries(additionalParts)) {
+            this.parts[partId] = new part(this.root);
         }
 
         const frag = document.createDocumentFragment();

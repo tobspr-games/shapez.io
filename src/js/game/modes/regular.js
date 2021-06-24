@@ -1,19 +1,77 @@
+/* typehints:start */
+import { GameRoot } from "../root";
+import { MetaBuilding } from "../meta_building";
+/* typehints:end */
+
 import { findNiceIntegerValue } from "../../core/utils";
-import { GameMode } from "../game_mode";
+import { MetaConstantProducerBuilding } from "../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../buildings/goal_acceptor";
+import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
+import { HUDWiresToolbar } from "../hud/parts/wires_toolbar";
+import { HUDBlueprintPlacer } from "../hud/parts/blueprint_placer";
+import { HUDUnlockNotification } from "../hud/parts/unlock_notification";
+import { HUDMassSelector } from "../hud/parts/mass_selector";
+import { HUDShop } from "../hud/parts/shop";
+import { HUDWaypoints } from "../hud/parts/waypoints";
+import { HUDStatistics } from "../hud/parts/statistics";
+import { HUDWireInfo } from "../hud/parts/wire_info";
+import { HUDLeverToggle } from "../hud/parts/lever_toggle";
+import { HUDPinnedShapes } from "../hud/parts/pinned_shapes";
+import { HUDNotifications } from "../hud/parts/notifications";
+import { HUDScreenshotExporter } from "../hud/parts/screenshot_exporter";
+import { HUDWiresOverlay } from "../hud/parts/wires_overlay";
+import { HUDShapeViewer } from "../hud/parts/shape_viewer";
+import { HUDLayerPreview } from "../hud/parts/layer_preview";
+import { HUDTutorialVideoOffer } from "../hud/parts/tutorial_video_offer";
+import { HUDMinerHighlight } from "../hud/parts/miner_highlight";
+import { HUDGameMenu } from "../hud/parts/game_menu";
+import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
+import { IS_MOBILE } from "../../core/config";
+import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
+import { HUDWatermark } from "../hud/parts/watermark";
+import { HUDStandaloneAdvantages } from "../hud/parts/standalone_advantages";
+import { HUDCatMemes } from "../hud/parts/cat_memes";
+import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
+import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
+import { HUDSandboxController } from "../hud/parts/sandbox_controller";
+import { queryParamOptions } from "../../core/query_parameters";
+import { MetaBlockBuilding } from "../buildings/block";
+import { MetaItemProducerBuilding } from "../buildings/item_producer";
 
-const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
-const finalGameShape = "RuCw--Cw:----Ru--";
+/** @typedef {{
+ *   shape: string,
+ *   amount: number
+ * }} UpgradeRequirement */
+
+/** @typedef {{
+ *   required: Array<UpgradeRequirement>
+ *   improvement?: number,
+ *   excludePrevious?: boolean
+ * }} TierRequirement */
+
+/** @typedef {Array<TierRequirement>} UpgradeTiers */
+
+/** @typedef {{
+ *   shape: string,
+ *   required: number,
+ *   reward: enumHubGoalRewards,
+ *   throughputOnly?: boolean
+ * }} LevelDefinition */
+
+export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+export const finalGameShape = "RuCw--Cw:----Ru--";
 const preparementShape = "CpRpCp--:SwSwSwSw";
-const blueprintShape = "CbCbCbRb:CwCwCwCw";
 
 // Tiers need % of the previous tier as requirement too
 const tierGrowth = 2.5;
 
+const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
+
 /**
  * Generates all upgrades
- * @returns {Object<string, import("../game_mode").UpgradeTiers>} */
+ * @returns {Object<string, UpgradeTiers>} */
 function generateUpgrades(limitedVersion = false) {
     const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
     const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
@@ -87,7 +145,14 @@ function generateUpgrades(limitedVersion = false) {
                 required: [{ shape: "CwCwCwCw:WbWbWbWb", amount: 23000 }],
             },
             {
-                required: [{ shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", amount: 50000 }],
+                required: [
+                    {
+                        shape: chinaShapes
+                            ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
+                            : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                        amount: 50000,
+                    },
+                ],
             },
             {
                 required: [{ shape: preparementShape, amount: 25000 }],
@@ -141,7 +206,12 @@ function generateUpgrades(limitedVersion = false) {
                 required: [{ shape: "WrWrWrWr", amount: 3800 }],
             },
             {
-                required: [{ shape: "RpRpRpRp:CwCwCwCw", amount: 6500 }],
+                required: [
+                    {
+                        shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
+                        amount: 6500,
+                    },
+                ],
             },
             {
                 required: [{ shape: "WpWpWpWp:CwCwCwCw:WpWpWpWp", amount: 25000 }],
@@ -315,7 +385,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
         // 13
         // Tunnel Tier 2
         {
-            shape: "RpRpRpRp:CwCwCwCw", // painting t3
+            shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", // painting t3
             required: 3800,
             reward: enumHubGoalRewards.reward_underground_belt_tier_2,
         },
@@ -324,7 +394,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
         ...(limitedVersion
             ? [
                   {
-                      shape: "RpRpRpRp:CwCwCwCw",
+                      shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
                       required: 0,
                       reward: enumHubGoalRewards.reward_demo_end,
                   },
@@ -358,7 +428,9 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 17
                   // Double painter
                   {
-                      shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
+                      shape: chinaShapes
+                          ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
+                          : "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
                       required: 20000,
                       reward: enumHubGoalRewards.reward_painter_double,
                   },
@@ -398,7 +470,9 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 22
                   // Constant signal
                   {
-                      shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                      shape: chinaShapes
+                          ? "RrSySrSy:RyCrCwCr:CyCyRyCy"
+                          : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_constant_signal,
                   },
@@ -406,14 +480,18 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 23
                   // Display
                   {
-                      shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                      shape: chinaShapes
+                          ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr"
+                          : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_display,
                   },
 
                   // 24 Logic gates
                   {
-                      shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                      shape: chinaShapes
+                          ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
+                          : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
                       required: 25000,
                       reward: enumHubGoalRewards.reward_logic_gates,
                   },
@@ -454,27 +532,100 @@ const fullVersionLevels = generateLevelDefinitions(false);
 const demoVersionLevels = generateLevelDefinitions(true);
 
 export class RegularGameMode extends GameMode {
-    constructor(root) {
-        super(root);
+    static getId() {
+        return enumGameModeIds.regular;
     }
 
+    static getType() {
+        return enumGameModeTypes.default;
+    }
+
+    /** @param {GameRoot} root */
+    constructor(root) {
+        super(root);
+
+        this.additionalHudParts = {
+            wiresToolbar: HUDWiresToolbar,
+            blueprintPlacer: HUDBlueprintPlacer,
+            unlockNotification: HUDUnlockNotification,
+            massSelector: HUDMassSelector,
+            shop: HUDShop,
+            statistics: HUDStatistics,
+            waypoints: HUDWaypoints,
+            wireInfo: HUDWireInfo,
+            leverToggle: HUDLeverToggle,
+            pinnedShapes: HUDPinnedShapes,
+            notifications: HUDNotifications,
+            screenshotExporter: HUDScreenshotExporter,
+            wiresOverlay: HUDWiresOverlay,
+            shapeViewer: HUDShapeViewer,
+            layerPreview: HUDLayerPreview,
+            minerHighlight: HUDMinerHighlight,
+            tutorialVideoOffer: HUDTutorialVideoOffer,
+            gameMenu: HUDGameMenu,
+            constantSignalEdit: HUDConstantSignalEdit,
+        };
+
+        if (!IS_MOBILE) {
+            this.additionalHudParts.keybindingOverlay = HUDKeybindingOverlay;
+        }
+
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
+            this.additionalHudParts.watermark = HUDWatermark;
+            this.additionalHudParts.standaloneAdvantages = HUDStandaloneAdvantages;
+            this.additionalHudParts.catMemes = HUDCatMemes;
+        }
+
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
+        }
+
+        // @ts-ignore
+        if (queryParamOptions.sandboxMode || window.sandboxMode || G_IS_DEV) {
+            this.additionalHudParts.sandboxController = HUDSandboxController;
+        }
+
+        /** @type {(typeof MetaBuilding)[]} */
+        this.hiddenBuildings = [
+            MetaConstantProducerBuilding,
+            MetaGoalAcceptorBuilding,
+            MetaBlockBuilding,
+            MetaItemProducerBuilding,
+        ];
+    }
+
+    /**
+     * Should return all available upgrades
+     * @returns {Object<string, UpgradeTiers>}
+     */
     getUpgrades() {
         return this.root.app.restrictionMgr.getHasExtendedUpgrades()
             ? fullVersionUpgrades
             : demoVersionUpgrades;
     }
 
-    getIsFreeplayAvailable() {
-        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
-    }
-
-    getBlueprintShapeKey() {
-        return blueprintShape;
-    }
-
+    /**
+     * Returns the goals for all levels including their reward
+     * @returns {Array<LevelDefinition>}
+     */
     getLevelDefinitions() {
         return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay()
             ? fullVersionLevels
             : demoVersionLevels;
+    }
+
+    /**
+     * Should return whether free play is available or if the game stops
+     * after the predefined levels
+     * @returns {boolean}
+     */
+    getIsFreeplayAvailable() {
+        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay();
+    }
+
+    /** @returns {boolean} */
+    hasAchievements() {
+        return true;
     }
 }

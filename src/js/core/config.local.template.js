@@ -62,6 +62,9 @@ export default {
     // Allows unlocked achievements to be logged to console in the local build
     // testAchievements: true,
     // -----------------------------------------------------------------------------------
+    // Enables use of (some) existing flags within the puzzle mode context
+    // testPuzzleMode: true,
+    // -----------------------------------------------------------------------------------
     // Disables the automatic switch to an overview when zooming out
     // disableMapOverview: true,
     // -----------------------------------------------------------------------------------

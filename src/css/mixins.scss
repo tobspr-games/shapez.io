@@ -15,15 +15,15 @@ $hardwareAcc: null;
 // ----------------------------------------
 /** Increased click area for this element, helpful on mobile */
 @mixin IncreasedClickArea($size) {
-    &::after {
-        content: "";
-        position: absolute;
-        top: #{D(-$size)};
-        bottom: #{D(-$size)};
-        left: #{D(-$size)};
-        right: #{D(-$size)};
-        // background: rgba(255, 0, 0, 0.3);
-    }
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     top: #{D(-$size)};
+    //     bottom: #{D(-$size)};
+    //     left: #{D(-$size)};
+    //     right: #{D(-$size)};
+    //     // background: rgba(255, 0, 0, 0.3);
+    // }
 }
 button,
 .increasedClickArea {

@@ -13,17 +13,19 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         this.menuElement = makeDiv(this.background, null, ["menuElement"]);
 
-        this.statsElement = makeDiv(
-            this.background,
-            null,
-            ["statsElement"],
-            `
+        if (this.root.gameMode.hasHub()) {
+            this.statsElement = makeDiv(
+                this.background,
+                null,
+                ["statsElement"],
+                `
             <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
             <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
             <strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>
 
             `
-        );
+            );
+        }
 
         this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
 
@@ -94,23 +96,25 @@ export class HUDSettingsMenu extends BaseHUDPart {
 
         const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
 
-        /** @type {HTMLElement} */
-        const playtimeElement = this.statsElement.querySelector(".playtime");
-        /** @type {HTMLElement} */
-        const buildingsPlacedElement = this.statsElement.querySelector(".buildingsPlaced");
-        /** @type {HTMLElement} */
-        const beltsPlacedElement = this.statsElement.querySelector(".beltsPlaced");
+        if (this.root.gameMode.hasHub()) {
+            /** @type {HTMLElement} */
+            const playtimeElement = this.statsElement.querySelector(".playtime");
+            /** @type {HTMLElement} */
+            const buildingsPlacedElement = this.statsElement.querySelector(".buildingsPlaced");
+            /** @type {HTMLElement} */
+            const beltsPlacedElement = this.statsElement.querySelector(".beltsPlaced");
 
-        playtimeElement.innerText = T.global.time.xMinutes.replace("<x>", `${totalMinutesPlayed}`);
+            playtimeElement.innerText = T.global.time.xMinutes.replace("<x>", `${totalMinutesPlayed}`);
 
-        buildingsPlacedElement.innerText = formatBigNumberFull(
-            this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+            buildingsPlacedElement.innerText = formatBigNumberFull(
+                this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+                    this.root.entityMgr.getAllWithComponent(BeltComponent).length
+            );
+
+            beltsPlacedElement.innerText = formatBigNumberFull(
                 this.root.entityMgr.getAllWithComponent(BeltComponent).length
-        );
-
-        beltsPlacedElement.innerText = formatBigNumberFull(
-            this.root.entityMgr.getAllWithComponent(BeltComponent).length
-        );
+            );
+        }
     }
 
     close() {

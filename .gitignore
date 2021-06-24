@@ -47,6 +47,7 @@ res_built
 gulp/runnable-texturepacker.jar
 tmp_standalone_files
 tmp_standalone_files_china
+tmp_standalone_files_wegame
 
 # Local config
 config.local.js

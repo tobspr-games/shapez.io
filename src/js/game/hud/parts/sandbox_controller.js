@@ -1,3 +1,4 @@
+import { queryParamOptions } from "../../../core/query_parameters";
 import { makeDiv } from "../../../core/utils";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -19,25 +20,25 @@ export class HUDSandboxController extends BaseHUDPart {
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesBelt plusMinus">
                     <label>Upgrades &rarr; Belt</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesExtraction plusMinus">
                     <label>Upgrades &rarr; Extraction</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesProcessing plusMinus">
                     <label>Upgrades &rarr; Processing</label>
                     <button class="styledButton minus">-</button>
                     <button class="styledButton plus">+</button>
                 </div>
-                
+
                 <div class="upgradesPainting plusMinus">
                     <label>Upgrades &rarr; Painting</label>
                     <button class="styledButton minus">-</button>
@@ -117,7 +118,9 @@ export class HUDSandboxController extends BaseHUDPart {
         // Clear all shapes of this level
         hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
 
-        this.root.hud.parts.pinnedShapes.rerenderFull();
+        if (this.root.hud.parts.pinnedShapes) {
+            this.root.hud.parts.pinnedShapes.rerenderFull();
+        }
 
         // Compute gained rewards
         hubGoals.gainedRewards = {};
@@ -144,7 +147,7 @@ export class HUDSandboxController extends BaseHUDPart {
             }
         });
 
-        this.visible = !G_IS_DEV;
+        this.visible = false;
         this.domAttach = new DynamicDomAttach(this.root, this.element);
     }
 

@@ -2,6 +2,8 @@ import { ExplainedResult } from "../core/explained_result";
 import { createLogger } from "../core/logging";
 import { gComponentRegistry } from "../core/global_registries";
 import { SerializerInternal } from "./serializer_internal";
+import { HUDPinnedShapes } from "../game/hud/parts/pinned_shapes";
+import { HUDWaypoints } from "../game/hud/parts/waypoints";
 
 /**
  * @typedef {import("../game/component").Component} Component
@@ -33,12 +35,13 @@ export class SavegameSerializer {
             camera: root.camera.serialize(),
             time: root.time.serialize(),
             map: root.map.serialize(),
+            gameMode: root.gameMode.serialize(),
             entityMgr: root.entityMgr.serialize(),
             hubGoals: root.hubGoals.serialize(),
-            pinnedShapes: root.hud.parts.pinnedShapes.serialize(),
-            waypoints: root.hud.parts.waypoints.serialize(),
             entities: this.internal.serializeEntityArray(root.entityMgr.entities),
             beltPaths: root.systemMgr.systems.belt.serializePaths(),
+            pinnedShapes: root.hud.parts.pinnedShapes ? root.hud.parts.pinnedShapes.serialize() : null,
+            waypoints: root.hud.parts.waypoints ? root.hud.parts.waypoints.serialize() : null,
         };
 
         if (G_IS_DEV) {
@@ -131,12 +134,18 @@ export class SavegameSerializer {
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);
         errorReason = errorReason || root.map.deserialize(savegame.map);
+        errorReason = errorReason || root.gameMode.deserialize(savegame.gameMode);
         errorReason = errorReason || root.hubGoals.deserialize(savegame.hubGoals, root);
-        errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
-        errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
-        errorReason =
-            errorReason || this.internal.deserializeEntityArray(root, [...savegame.entities.values()]);
+        errorReason = errorReason || this.internal.deserializeEntityArray(root, savegame.entities);
         errorReason = errorReason || root.systemMgr.systems.belt.deserializePaths(savegame.beltPaths);
+
+        if (root.hud.parts.pinnedShapes) {
+            errorReason = errorReason || root.hud.parts.pinnedShapes.deserialize(savegame.pinnedShapes);
+        }
+
+        if (root.hud.parts.waypoints) {
+            errorReason = errorReason || root.hud.parts.waypoints.deserialize(savegame.waypoints);
+        }
 
         // Check for errors
         if (errorReason) {

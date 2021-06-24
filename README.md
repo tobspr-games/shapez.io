@@ -5,11 +5,11 @@
 This is the source code for shapez.io, an open source base building game inspired by Factorio.
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
 
--   [Trello Board & Roadmap](https://trello.com/b/ISQncpJP/shapezio)
--   [Free web version](https://shapez.io)
--   [itch.io Page](https://tobspr.itch.io/shapezio)
 -   [Steam Page](https://steam.shapez.io)
 -   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
+-   [Trello Board & Roadmap](https://trello.com/b/ISQncpJP/shapezio)
+-   [itch.io Page](https://tobspr.itch.io/shapezio)
+-   [Free web version](https://shapez.io)
 
 ## Reporting issues, suggestions, feedback, bugs
 
@@ -35,9 +35,9 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 
 You can use [Gitpod](https://www.gitpod.io/) (an Online Open Source VS Code-like IDE which is free for Open Source) for working on issues and making PRs to this project. With a single click it will start a workspace and automatically:
 
-- clone the `shapez.io` repo.
-- install all of the dependencies.
-- start `gulp` in `gulp/` directory.
+-   clone the `shapez.io` repo.
+-   install all of the dependencies.
+-   start `gulp` in `gulp/` directory.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 

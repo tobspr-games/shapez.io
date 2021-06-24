@@ -45,6 +45,15 @@ export class Rectangle {
     }
 
     /**
+     *
+     * @param {number} width
+     * @param {number} height
+     */
+    static centered(width, height) {
+        return new Rectangle(-Math.ceil(width / 2), -Math.ceil(height / 2), width, height);
+    }
+
+    /**
      * Returns if a intersects b
      * @param {Rectangle} a
      * @param {Rectangle} b
@@ -72,7 +81,7 @@ export class Rectangle {
     /**
      * Returns if this rectangle is equal to the other while taking an epsilon into account
      * @param {Rectangle} other
-     * @param {number} epsilon
+     * @param {number} [epsilon]
      */
     equalsEpsilon(other, epsilon) {
         return (
@@ -285,6 +294,15 @@ export class Rectangle {
         }
 
         return Rectangle.fromTRBL(top, right, bottom, left);
+    }
+
+    /**
+     * Returns whether the rectangle fully intersects the given rectangle
+     * @param {Rectangle} rect
+     */
+    intersectsFully(rect) {
+        const intersection = this.getIntersection(rect);
+        return intersection && Math.abs(intersection.w * intersection.h - rect.w * rect.h) < 0.001;
     }
 
     /**

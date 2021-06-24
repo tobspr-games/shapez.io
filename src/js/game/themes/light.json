@@ -48,6 +48,11 @@
             "textColor": "#fff",
             "textColorCapped": "#ef5072",
             "background": "rgba(40, 50, 60, 0.8)"
+        },
+
+        "zone": {
+            "borderSolid": "rgba(23, 192, 255, 1)",
+            "outerColor": "rgba(240, 240, 255, 0.5)"
         }
     },
 

@@ -40,6 +40,10 @@ export class FilterComponent extends Component {
     constructor() {
         super();
 
+        this.clear();
+    }
+
+    clear() {
         /**
          * Items in queue to leave through
          * @type {Array<PendingFilterItem>}

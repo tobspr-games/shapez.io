@@ -7,6 +7,24 @@ const logger = createLogger("electron-storage");
 export class StorageImplElectron extends StorageInterface {
     constructor(app) {
         super(app);
+
+        /** @type {Object.<number, {resolve:Function, reject: Function}>} */
+        this.jobs = {};
+        this.jobId = 0;
+
+        getIPCRenderer().on("fs-response", (event, arg) => {
+            const id = arg.id;
+            if (!this.jobs[id]) {
+                logger.warn("Got unhandled FS response, job not known:", id);
+                return;
+            }
+            const { resolve, reject } = this.jobs[id];
+            if (arg.result.success) {
+                resolve(arg.result.data);
+            } else {
+                reject(arg.result.error);
+            }
+        });
     }
 
     initialize() {
@@ -15,53 +33,43 @@ export class StorageImplElectron extends StorageInterface {
 
     writeFileAsync(filename, contents) {
         return new Promise((resolve, reject) => {
-            getIPCRenderer()
-                .invoke("fs-job", {
-                    type: "write",
-                    filename,
-                    contents,
-                })
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data);
-                    } else {
-                        reject(result.error);
-                    }
-                });
+            // ipcMain
+            const jobId = ++this.jobId;
+            this.jobs[jobId] = { resolve, reject };
+
+            getIPCRenderer().send("fs-job", {
+                type: "write",
+                filename,
+                contents,
+                id: jobId,
+            });
         });
     }
 
     readFileAsync(filename) {
         return new Promise((resolve, reject) => {
-            getIPCRenderer()
-                .invoke("fs-job", {
-                    type: "read",
-                    filename,
-                })
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data);
-                    } else {
-                        reject(result.error);
-                    }
-                });
+            // ipcMain
+            const jobId = ++this.jobId;
+            this.jobs[jobId] = { resolve, reject };
+
+            getIPCRenderer().send("fs-job", {
+                type: "read",
+                filename,
+                id: jobId,
+            });
         });
     }
 
     deleteFileAsync(filename) {
         return new Promise((resolve, reject) => {
-            getIPCRenderer()
-                .invoke("fs-job", {
-                    type: "delete",
-                    filename,
-                })
-                .then(result => {
-                    if (result.success) {
-                        resolve(result.data);
-                    } else {
-                        reject(result.error);
-                    }
-                });
+            // ipcMain
+            const jobId = ++this.jobId;
+            this.jobs[jobId] = { resolve, reject };
+            getIPCRenderer().send("fs-job", {
+                type: "delete",
+                filename,
+                id: jobId,
+            });
         });
     }
 }

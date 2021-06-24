@@ -5,7 +5,6 @@ import { STOP_PROPAGATION } from "../../../core/signal";
 import { formatBigNumberFull } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
-import { enumMouseButton } from "../../camera";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
 import { Entity } from "../../entity";
@@ -33,12 +32,13 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
 
-        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.onBack, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).addToTop(this.onBack, this);
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .add(this.confirmDelete, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCut).add(this.confirmCut, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCopy).add(this.startCopy, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectClear).add(this.clearBelts, this);
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
         this.root.signals.editModeChanged.add(this.clearSelection, this);
@@ -136,6 +136,16 @@ export class HUDMassSelector extends BaseHUDPart {
         } else {
             this.root.soundProxy.playUiError();
         }
+    }
+
+    clearBelts() {
+        for (const uid of this.selectedUids) {
+            const entity = this.root.entityMgr.findByUid(uid);
+            for (const component of Object.values(entity.components)) {
+                /** @type {Component} */ (component).clear();
+            }
+        }
+        this.selectedUids = new Set();
     }
 
     confirmCut() {
@@ -246,7 +256,13 @@ export class HUDMassSelector extends BaseHUDPart {
             for (let x = realTileStart.x; x <= realTileEnd.x; ++x) {
                 for (let y = realTileStart.y; y <= realTileEnd.y; ++y) {
                     const contents = this.root.map.getLayerContentXY(x, y, this.root.currentLayer);
+
                     if (contents && this.root.logic.canDeleteBuilding(contents)) {
+                        const staticComp = contents.components.StaticMapEntity;
+
+                        if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                            continue;
+                        }
                         this.selectedEntities.add(contents);
                     }
                 }
@@ -306,6 +322,11 @@ export class HUDMassSelector extends BaseHUDPart {
                         renderedUids.add(uid);
 
                         const staticComp = contents.components.StaticMapEntity;
+
+                        if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                            continue;
+                        }
+
                         const bounds = staticComp.getTileSpaceBounds();
                         parameters.context.beginRoundedRect(
                             bounds.x * globalConfig.tileSize + boundsBorder,

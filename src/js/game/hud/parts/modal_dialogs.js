@@ -29,11 +29,14 @@ export class HUDModalDialogs extends BaseHUDPart {
     }
 
     shouldPauseRendering() {
-        return this.dialogStack.length > 0;
+        // return this.dialogStack.length > 0;
+        // @todo: Check if change this affects anything
+        return false;
     }
 
     shouldPauseGame() {
-        return this.shouldPauseRendering();
+        // @todo: Check if this change affects anything
+        return false;
     }
 
     createElements(parent) {
@@ -139,8 +142,8 @@ export class HUDModalDialogs extends BaseHUDPart {
     }
 
     // Returns method to be called when laoding finishd
-    showLoadingDialog() {
-        const dialog = new DialogLoading(this.app);
+    showLoadingDialog(text = "") {
+        const dialog = new DialogLoading(this.app, text);
         this.internalShowDialog(dialog);
         return this.closeDialog.bind(this, dialog);
     }

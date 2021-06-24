@@ -14,19 +14,19 @@ steamPage:
         Mientras que sólo procesas formas al principio, tienes que colorearlas después - ¡para ello tienes que extraer y mezclar colores!
 
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Lo que otras personas dicen sobre shapez.io
+    nothernlion_comment: Este juego es estupendo - Estoy teniendo un tiempo
+        maravolloso jugano, y el tiempo ha pasado volando.
+    notch_comment: Miércoles. Verdaderamente debería dormir, pero creo que acabo de
+        descubrir como hacer un ordenador en shapez.io
+    steam_review_comment: Este juego ha robado mi vida y no la quiero de vuelta. Muy
+        relajante juego de fábrica que no me dejará hacer mis lineas más
+        eficientes.
 global:
     loading: Cargando
     error: Error
-    thousandsDivider: .
-    decimalSeparator: ","
+    thousandsDivider: ","
+    decimalSeparator: .
     suffix:
         thousands: k
         millions: M
@@ -53,6 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: ESPACIO
+    loggingIn: Iniciando sesión
 demoBanners:
     title: Versión de prueba
     intro: ¡Obtén el juego completo para desbloquear todas las características!
@@ -72,6 +73,12 @@ mainMenu:
     savegameLevel: Nivel <x>
     savegameLevelUnknown: Nivel desconocido
     savegameUnnamed: Sin nombre
+    puzzleMode: Modo Puzle
+    back: Atrás
+    puzzleDlcText: ¿Disfrutas compactando y optimizando fábricas? ¡Consigue ahora el
+        DLC de Puzles en Steam para aún más diversión!
+    puzzleDlcWishlist: ¡Añádelo ahora a tu lista de deseos!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -85,6 +92,9 @@ dialogs:
         viewUpdate: Ver actualización
         showUpgrades: Ver mejoras
         showKeybindings: Ver atajos de teclado
+        retry: Reintentar
+        continue: Continuar
+        playOffline: Jugar Offline
     importSavegameError:
         title: Error de importación
         text: "Fallo al importar tu partida guardada:"
@@ -96,7 +106,7 @@ dialogs:
         text: "No se ha podido cargar la partida guardada:"
     confirmSavegameDelete:
         title: Confirmar borrado
-        text: ¿Estás seguro de querér borrar el siguiente guardado?<br><br>
+        text: ¿Estás seguro de que quieres borrar el siguiente guardado?<br><br>
             '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto
             no se puede deshacer!
     savegameDeletionError:
@@ -174,7 +184,7 @@ dialogs:
             crashear tu juego!
     editSignal:
         title: Establecer señal
-        descItems: "Elige un item pre-definido:"
+        descItems: "Elige un item predefinido:"
         descShortKey: ... o escribe la <strong>clave</strong> de una forma (La cual
             puedes generar <link>aquí</link>)
     renameSavegame:
@@ -187,6 +197,72 @@ dialogs:
         title: Tutorial Disponible
         desc: Hay un video tutorial disponible para este nivel, pero solo está
             disponible en inglés ¿Te gustaría verlo?
+    editConstantProducer:
+        title: Set Item
+    puzzleLoadFailed:
+        title: Fallo al cargar los Puzles
+        desc: Desafortunadamente, no se pudieron cargar los puzles.
+    submitPuzzle:
+        title: Enviar Puzzle
+        descName: "Nombra tu puzle:"
+        descIcon: "Por favor ingresa una clave única, que será el icono de tu puzle
+            (Puedes generarlas <link>aquí</link>, o escoger una de las formas
+            sugeridas de forma aleatoria, aquí abajo):"
+        placeholderName: Título del Puzle
+    puzzleResizeBadBuildings:
+        title: No es posible cambiar el tamaño
+        desc: No puedes hacer el área más pequeña, puesto que algunos edificios estarían
+            fuera de esta.
+    puzzleLoadError:
+        title: Fallo al cargar el puzle
+        desc: "No se pudo cargar el puzle:"
+    offlineMode:
+        title: Modo sin conexión
+        desc: No pudimos conectar con los servidores, y por ello el juego debe funcionar
+            en el modo sin conexión. Por favor asegúrate de que tu conexión a
+            internet funciona correctamente.
+    puzzleDownloadError:
+        title: Fallo al descargar
+        desc: "Fallo al descargar el puzle:"
+    puzzleSubmitError:
+        title: Error al enviar
+        desc: "No pudimos enviar tu puzle:"
+    puzzleSubmitOk:
+        title: Puzle Publicado
+        desc: ¡Enhorabuena! Tu puzle ha sido publicado y ahora pueden jugarlo otros.
+            Puedes encontrarlo en la sección "Mis puzles".
+    puzzleCreateOffline:
+        title: Modo sin conexión
+        desc: Puesto que estás sin conexión, no podrás guardar y/o publicar tu puzle.
+            ¿Quieres continuar igualmente?
+    puzzlePlayRegularRecommendation:
+        title: Recomendación
+        desc: Te recomiendo <strong>fuertemente</strong> jugar el juego normal hasta el
+            nivel 12 antes de intentar el DLC de puzles, de otra manera puede
+            que te encuentres con mecánicas que aún no hemos introducido.
+            ¿Quieres continuar igualmente?
+    puzzleShare:
+        title: Clave Copiada
+        desc: Hemos copiado la clave de tu puzle (<key>) a tu portapapeles! Puedes
+            ponerlo en el menú de puzles para acceder al puzle.
+    puzzleReport:
+        title: Reportar Puzle
+        options:
+            profane: Lenguaje soez
+            unsolvable: Imposible de resolver
+            trolling: Troll
+    puzzleReportComplete:
+        title: ¡Gracias por tu aporte!
+        desc: El puzle ha sido marcado como abuso.
+    puzzleReportError:
+        title: No se pudo reportar
+        desc: "No pudimos procesar tu informe:"
+    puzzleLoadShortKey:
+        title: Introducir clave
+        desc: Introduce la clave del puzle para cargarlo.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -196,7 +272,7 @@ ingame:
         placeMultiple: Colocar varios
         reverseOrientation: Invertir la orientación
         disableAutoOrientation: Desactivar la autoorientación
-        toggleHud: Habilitar el HUD
+        toggleHud: Habilitar la interfaz
         placeBuilding: Colocar edificio
         createMarker: Crear marcador
         delete: Destruir
@@ -208,6 +284,7 @@ ingame:
         clearSelection: Limpiar selección
         pipette: Cuentagotas
         switchLayers: Cambiar capas
+        clearBelts: Clear belts
     colors:
         red: Rojo
         green: Verde
@@ -217,7 +294,7 @@ ingame:
         cyan: Cian
         white: Blanco
         black: Negro
-        uncolored: Gris
+        uncolored: Incoloro
     buildingPlacement:
         cycleBuildingVariants: Pulsa <key> para rotar por las distintas variantes.
         hotkeyLabel: "Tecla: <key>"
@@ -248,18 +325,18 @@ ingame:
         dataSources:
             stored:
                 title: Almacenado
-                description: Muestra la cantidad de figuras guardadas en tu HUB.
+                description: Muestra la cantidad de figuras guardadas en tu Centro.
             produced:
                 title: Producido
                 description: Muestra todas las figuras que tu fábrica al completo produce,
                     incluyendo productos intermedios.
             delivered:
                 title: Entregados
-                description: Muestra las figuras que son entregadas a tu HUB.
+                description: Muestra las figuras que son entregadas a tu Centro.
         noShapesProduced: Todavía no se han producido figuras.
         shapesDisplayUnits:
             second: <shapes> / s
-            minute: <shapes> / m
+            minute: <shapes> / min
             hour: <shapes> / h
     settingsMenu:
         playtime: Tiempo de juego
@@ -273,7 +350,7 @@ ingame:
         cost: Coste
     waypoints:
         waypoints: Marcadores
-        hub: HUB
+        hub: Centro
         description: Click izquierdo sobre un marcador para ir ahí, click derecho para
             borrarlo. <br><br> Pulsa <keybinding> para crear un marcador de la
             vista actual o <strong>click derecho</strong> para crear un marcador
@@ -289,8 +366,9 @@ ingame:
             1_1_extractor: ¡Coloca un <strong>extractor</strong> encima de un
                 <strong>círculo</strong> para extraerlo!
             1_2_conveyor: "¡Conecta el extractor con una <strong>cinta
-                transportadora</strong> a tu HUB!<br><br> Pista: ¡<strong>Pulsa
-                y arrastra</strong> la cinta transportadora con el ratón!"
+                transportadora</strong> a tu Centro!<br><br> Pista:
+                ¡<strong>Pulsa y arrastra</strong> la cinta transportadora con
+                el ratón!"
             1_3_expand: '¡Esto <strong>NO</strong> es un "juego de esperar"! Construye más
                 extractores y cintas transportadoras para completar el objetivo
                 más rápido.<br><br> Pista: Mantén pulsado <strong>SHIFT</strong>
@@ -307,8 +385,8 @@ ingame:
                 para acelerar este lento proceso!<br><br> PD: Usa las teclas
                 <strong>0-9 </strong> para acceder a los edificios más rápido!"
             3_1_rectangles: "¡Ahora consigamos unos rectangulos! <strong>construye 4
-                extractores</strong> y conectalos a el HUB.<br><br> PD: Manten
-                apretado <strong>SHIFT</strong> mientrás pones cintas
+                extractores</strong> y conectalos a el Centro.<br><br> PD:
+                Manten apretado <strong>SHIFT</strong> mientrás pones cintas
                 transportadoras para activar el planeador de cintas!"
             21_1_place_quad_painter: ¡Pon el <strong>pintador cuádruple</strong> y consigue
                 unos <strong>círculos</strong>, el color <strong>blanco</strong>
@@ -319,9 +397,9 @@ ingame:
             21_3_place_button: ¡Genial! ¡Ahora pon un <strong>Interruptor</strong> y
                 conéctalo con cables!
             21_4_press_button: "Presiona el interruptor para hacer que <strong>emita una
-                señal verdadera</strong> lo cual activa el pintador.<br><br>
-                PD: ¡No necesitas conectar todas las entradas! Intenta
-                conectando sólo dos."
+                señal</strong> lo cual activa el pintador.<br><br> PD: ¡No
+                necesitas conectar todas las entradas! Intenta conectando sólo
+                dos."
     connectedMiners:
         one_miner: 1 Minero
         n_miners: <amount> Mineros
@@ -356,8 +434,51 @@ ingame:
                 title: Apoyame
                 desc: ¡Desarrollo este juego en mi tiempo libre!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Logros
+                desc: Atrapalos a todos!
+    puzzleEditorSettings:
+        zoneTitle: Área
+        zoneWidth: Anchura
+        zoneHeight: Altura
+        trimZone: Área de recorte
+        clearItems: Eliminar todos los elementos
+        share: Compartir
+        report: Reportar
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Editor de Puzles
+        instructions:
+            - 1. Pon <strong>Productores Constantes</strong> para proveer al
+              jugador de formas y colores.
+            - 2. Construye una o más formas que quieres que el jugador construya
+              más tarde y llévalo hacia uno o más <strong>Aceptadores de
+              Objetivos</strong>.
+            - 3. Cuando un Aceptador de Objetivos recibe una forma por cierto
+              tiempo, <strong>la guarda como un objetivo</strong> que el jugador
+              debe producir más tarde (Lo sabrás por el <strong>indicador
+              verde</strong>).
+            - 4. Haz clic en el <strong>candado</strong> de un edificio para
+              desactivarlo.
+            - 5. Una vez hagas clic en "revisar", tu puzle será validado y
+              podrás publicarlo.
+            - 6. Una vez publicado, <strong>todos los edificios serán
+              eliminados</strong> excepto los Productores and Aceptadores de
+              Objetivo - Esa es la parte que el jugador debe averiguar por sí
+              mismo, después de todo :)
+    puzzleCompletion:
+        title: Puzle Completado!
+        titleLike: "Haz click en el corazón si te gustó el puzle:"
+        titleRating: ¿Cuánta dificultad tuviste al resolver el puzle?
+        titleRatingDesc: Tu puntuación me ayudará a hacerte mejores sugerencias en el futuro
+        continueBtn: Continuar Jugando
+        menuBtn: Menú
+    puzzleMetadata:
+        author: Autor
+        shortKey: Clave
+        rating: Puntuación de dificultad
+        averageDuration: Duración media
+        completionRate: Índice de finalización
 shopUpgrades:
     belt:
         name: Cintas transportadoras, Distribuidores y Túneles
@@ -375,8 +496,8 @@ buildings:
     hub:
         deliver: Entregar
         toUnlock: para desbloquear
-        levelShortcut: LVL
-        endOfDemo: End of Demo
+        levelShortcut: Nivel
+        endOfDemo: Fin de la demo
     belt:
         default:
             name: Cinta Transportadora
@@ -425,7 +546,7 @@ buildings:
             name: Rotador (Inverso)
             description: Rota las figuras en sentido antihorario 90 grados.
         rotate180:
-            name: Rotador (180)
+            name: Rotador (180º)
             description: Rota formas en 180 grados.
     stacker:
         default:
@@ -460,7 +581,7 @@ buildings:
             description: Acepta formas desde todos los lados y las destruye. Para siempre.
     balancer:
         default:
-            name: Balanceador
+            name: Equlibrador
             description: Multifuncional - Distribuye igualmente todas las entradas en las
                 salidas.
         merger:
@@ -483,11 +604,11 @@ buildings:
                 desbordamiento.
     wire_tunnel:
         default:
-            name: Cruze de cables
+            name: Cruce de cables
             description: Permite que dos cables se cruzen sin conectarse.
     constant_signal:
         default:
-            name: Señal costante
+            name: Señal constante
             description: Emite una señal constante, que puede ser una forma, color o valor
                 booleano (1 / 0).
     lever:
@@ -572,8 +693,21 @@ buildings:
     item_producer:
         default:
             name: Productor de items
-            description: Solo disponible en modo libre, envía la señal recivida de la capa
+            description: Solo disponible en modo libre, envía la señal recibida de la capa
                 de cables en la capa regular.
+    constant_producer:
+        default:
+            name: Productor de una sola pieza
+            description: Da constantemente la figura o el color especificados.
+    goal_acceptor:
+        default:
+            name: Aceptador de objetivos
+            description: Tranporta figuras al aceptador de objetivos para ponerlas como
+                objetivo.
+    block:
+        default:
+            name: Bloque
+            description: Permite bloquear una celda.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortador de figuras
@@ -646,15 +780,15 @@ storyRewards:
             como una <strong>puerta de desbordamiento</strong>!
     reward_freeplay:
         title: Juego libre
-        desc: ¡Lo hiciste! Haz desbloqueado el <strong>modo de juego libre</strong>!
+        desc: ¡Lo hiciste! Has desbloqueado el <strong>modo de juego libre</strong>!
             ¡Esto significa que las formas ahora son
-            <strong>aleatoriamente</strong> generadas!<br><br> Debído a que
-            desde ahora de adelante el HUB pedrirá una cantidad especifica de
-            formas <strong>por segundo</strong> ¡Te recomiendo encarecidamente
-            que construyas una maquina que automáticamente envíe la forma
-            pedida!<br><br> El HUB emite la forma pedida en la capa de cables,
-            así que todo lo que tienes que hacer es analizarla y automaticamente
-            configurar tu fabrica basada en ello.
+            <strong>aleatoriamente</strong> generadas!<br><br> Debido a que
+            desde ahora de adelante el Centro pedirá una cantidad específica de
+            formas <strong>por segundo</strong>, ¡Te recomiendo encarecidamente
+            que construyas una máquina que automáticamente envíe la forma
+            pedida!<br><br> El Centro emite la forma pedida en la capa de
+            cables, así que todo lo que tienes que hacer es analizarla y
+            automáticamente configurar tu fábrica basada en ello.
     reward_blueprints:
         title: Planos
         desc: ¡Ahora puedes <strong>copiar y pegar</strong> partes de tu fábrica!
@@ -719,9 +853,9 @@ storyRewards:
             ¡Ahora puedes simular un cortador, rotador, apilador y más dentro de
             la capa de cables! Con esto ahora tienes tres opciones para
             continuar el juego:<br><br> - Construir una <strong>maquina
-            automatizada</strong> para crear cualquier forma que te pida el HUB
-            (¡Te recomiendo que lo intentes!).<br><br> - Construir algo genial
-            con los cables.<br><br> - Continuar jugando de la manera
+            automatizada</strong> para crear cualquier forma que te pida el
+            Centro (¡Te recomiendo que lo intentes!).<br><br> - Construir algo
+            genial con los cables.<br><br> - Continuar jugando de la manera
             regular.<br><br> ¡Cualquiera que eligas, recuerda divertirte!
     reward_wires_painter_and_levers:
         title: Cables y pintor cuádruple
@@ -876,8 +1010,8 @@ settings:
             description: Deshabilitar la grilla puede ayudar con el rendimiento. ¡También
                 hace que el juego se vea más limpio!
         clearCursorOnDeleteWhilePlacing:
-            title: Limpiar el cursos al apretar click derecho
-            description: Activado por defecto, Limpia el cursor al hacer click derecho
+            title: Limpiar el cursor al apretar click derecho
+            description: Activado por defecto, limpia el cursor al hacer click derecho
                 mientras tengas un un edificio seleccionado. Si se deshabilita,
                 puedes eliminar edificios al hacer click derecho mientras pones
                 un edificio.
@@ -890,14 +1024,14 @@ settings:
             description: Este juego está dividido en chunks de 16x16 cuadrados, si esta
                 opción es habilitada los bordes de cada chunk serán mostrados.
         pickMinerOnPatch:
-            title: Elegír el minero en la veta de recursos
-            description: Activado pir defecto, selecciona el minero si usas el cuentagotas
+            title: Elegir el minero en la veta de recursos
+            description: Activado por defecto, selecciona el minero si usas el cuentagotas
                 sobre una veta de recursos.
         simplifiedBelts:
             title: Cintas trasportadoras simplificadas (Feo)
             description: No rederiza los items en las cintas trasportadoras exceptuando al
                 pasar el cursor sobre la cinta para mejorar el rendimiento. No
-                recomiendo jugar con esta opcion activada a menos que necesites
+                recomiendo jugar con esta opción activada a menos que necesites
                 fuertemente mejorar el rendimiento.
         enableMousePan:
             title: Habilitar movimiento con mouse
@@ -910,8 +1044,8 @@ settings:
                 diferencia de hacer zoom en el centro de la pantalla.
         mapResourcesScale:
             title: Tamaño de recursos en el mapa
-            description: Controla el tamaño de los recursos en la vista de aerea del mapa
-                (Al hacer zoom minimo).
+            description: Controla el tamaño de los recursos en la vista de aérea del mapa
+                (Al hacer zoom mínimo).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Atajos de teclado
@@ -941,7 +1075,7 @@ keybindings:
         menuOpenShop: Mejoras
         menuOpenStats: Estadísticas
         menuClose: Cerrar menú
-        toggleHud: Activar HUD
+        toggleHud: Activar Interfaz
         toggleFPSInfo: Activar FPS e información de depurado
         switchLayers: Cambiar capas
         exportScreenshot: Exportar la base completa como imagen
@@ -963,7 +1097,7 @@ keybindings:
         pasteLastBlueprint: Pegar último plano
         cycleBuildings: Ciclar edificios
         lockBeltDirection: Activar planificador de cintas transportadoras
-        switchDirectionLockSide: "Planner: Cambiar sentido"
+        switchDirectionLockSide: "Planificador: Cambiar sentido"
         massSelectStart: Mantén pulsado y arrastra para empezar
         massSelectSelectMultiple: Seleccionar múltiples áreas
         massSelectCopy: Copiar área
@@ -986,10 +1120,14 @@ keybindings:
         comparator: Comparador
         item_producer: Productor de items (Sandbox)
         copyWireValue: "Cables: Copiar valor bajo el cursos"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotar: Apuntar hacia arriba"
+        rotateToDown: "Rotar: Apuntar hacia abajo"
+        rotateToRight: "Rotar: Apuntar hacia la derecha"
+        rotateToLeft: "Rotar: Apuntar hacia la izquierda"
+        constant_producer: Constant Producer
+        goal_acceptor: Goal Acceptor
+        block: Block
+        massSelectClear: Clear belts
 about:
     title: Sobre el juego
     body: >-
@@ -1015,9 +1153,9 @@ demo:
         exportingBase: Exportando la base completa como imagen
     settingNotAvailable: No disponible en la versión de prueba.
 tips:
-    - El HUB acepta entradas de cualquier tipo ¡No solo la forma actual!
+    - El Centro acepta entradas de cualquier tipo ¡No solo la forma actual!
     - Trata de que tus fábricas sean modulares - ¡Te servirá en el futuro!
-    - No construyas muy cerca del HUB ¡O se volverá todo un caos!
+    - No construyas muy cerca del Centro ¡O se volverá todo un caos!
     - Si apilar las formas no funciona, intenta intercambiar las entradas.
     - Puedes activar la dirección del planeador de cintas apretando  <b>R</b>.
     - Mantener apretado <b>CTRL</b> te permite poner cintas sin auto-orientación.
@@ -1047,7 +1185,7 @@ tips:
     - Puedes apretar <b>ALT</b> para invertir la dirección a la que van las
       cintas.
     - ¡La eficiencia es la clave!
-    - Mientras más lejos del HUB estés más complejas serán las formas que te
+    - Mientras más lejos del Centro estés más complejas serán las formas que te
       encuentres.
     - Las máquinas tienen una velocidad limitada, divídelas para una máxima
       eficiencia.
@@ -1071,7 +1209,7 @@ tips:
     - Echa un vistazo más de cerca al mezclador de colores, y tus preguntas
       serán respondidas.
     - Usa <b>CTRL</b> + Click izquierdo para seleccionar un área.
-    - Construir demasiado cerca del HUB puede interponerse en el camino de
+    - Construir demasiado cerca del Centro puede interponerse en el camino de
       proyectos a futuro.
     - El icono del alfiler junto a cada forma de la lista de mejoras lo fija a
       la pantalla.
@@ -1084,10 +1222,84 @@ tips:
     - ¡Este juego tiene un montón de atajos útiles! Asegúrate de revisar la
       página de ajustes.
     - Este juego tiene muchos ajustes, ¡asegúrate de revisarlos!
-    - ¡El marcador de tu HUB tiene una pequeña brújula para indicar su dirección!
+    - ¡El marcador de tu Centro tiene una pequeña brújula para indicar su
+      dirección!
     - Para despejar las cintas transportadoras, corta el área y luego pégala en
       el mismo lugar.
     - Presiona F4 para mostrar tu FPS y Tick Rate.
     - Presiona F4 dos veces para mostrar las coordenadas de tu ratón y de la
       cámara.
     - Puedes hacer clic en una forma fijada en el lado izquierdo para desfijarla.
+puzzleMenu:
+    play: Jugar
+    edit: Editar
+    title: Puzles
+    createPuzzle: Crear Puzle
+    loadPuzzle: Cargar
+    reviewPuzzle: Revisar y Publicar
+    validatingPuzzle: Validando Puzle
+    submittingPuzzle: Enviando Puzzle
+    noPuzzles: Ahora mismo no hay puzles en esta sección.
+    categories:
+        levels: Niveles
+        new: Nuevos
+        top-rated: Los mejor valorados
+        mine: Mis Puzles
+        easy: Fáciles
+        hard: Difíciles
+        completed: Completados
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+    validation:
+        title: Puzle no válido
+        noProducers: Por favor, ¡pon un Productor de una sola pieza!
+        noGoalAcceptors: Por favor , ¡pon un Aceptador de objetivos!
+        goalAcceptorNoItem: Uno o más aceptadores de objetivos no tienen asignado un
+            elemento. Transporta una forma hacia ellos para poner un objetivo.
+        goalAcceptorRateNotMet: Uno o más aceptadores de objetivos no están recibiendo
+            suficientes elementos. Asegúrate de que los indicadores están verdes
+            para todos los aceptadores.
+        buildingOutOfBounds: Uno o más edificios están fuera del área en la que puedes
+            construir. Aumenta el área o quítalos.
+        autoComplete: ¡Tu puzle se completa solo! Asegúrate de que tus productores de un
+            solo elemento no están conectados directamente a tus aceptadores de
+            objetivos.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: Estás haciendo tus acciones con demasiada frecuencia. Por favor,
+        espera un poco.
+    invalid-api-key: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Key de API Inválida).
+    unauthorized: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Sin Autorización).
+    bad-token: No pudimos conectar con el servidor, por favor intenta
+        actualizar/reiniciar el juego (Mal Token).
+    bad-id: El identificador del puzle no es válido.
+    not-found: No pudimos encontrar ese puzle.
+    bad-category: No pudimos encontar esa categoría.
+    bad-short-key: La clave que nos diste no es válida.
+    profane-title: El título de tu puzle contiene lenguaje soez.
+    bad-title-too-many-spaces: El título de tu puzle es demasiado breve.
+    bad-shape-key-in-emitter: Un productor de un solo elemento tiene un elemento no válido.
+    bad-shape-key-in-goal: Un aceptador de objetivos tiene un elemento no válido.
+    no-emitters: Tu puzle no contiene ningún productor de un solo item.
+    no-goals: Tu puzle no contiene ningún aceptador de objetivos.
+    short-key-already-taken: Esta clave ya está siendo usada, por favor usa otra.
+    can-not-report-your-own-puzzle: No pudes reportar tu propio puzle.
+    bad-payload: La petición contiene datos no válidos.
+    bad-building-placement: Tu puzle contiene edificios en posiciones no válidas.
+    timeout: El tiempo para la solicitud ha expirado.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.
