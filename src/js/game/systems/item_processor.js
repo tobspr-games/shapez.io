@@ -573,13 +573,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const item = payload.items[0].item;
         const now = this.root.time.now();
 
-        goalComp.currentDeliveredItems = Math.min(
-            goalComp.currentDeliveredItems + 1,
-            globalConfig.goalAcceptorItemsRequired
-        );
-
         if (goalComp.item && !item.equals(goalComp.item)) {
             goalComp.clearItems();
+        } else {
+            goalComp.currentDeliveredItems = Math.min(
+                goalComp.currentDeliveredItems + 1,
+                globalConfig.goalAcceptorItemsRequired
+            );
         }
 
         if (this.root.gameMode.getIsEditor()) {

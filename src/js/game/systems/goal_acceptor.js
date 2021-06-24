@@ -28,9 +28,8 @@ export class GoalAcceptorSystem extends GameSystemWithFilter {
                 continue;
             }
 
-            if (now - goalComp.lastDelivery.time > goalComp.getRequiredItemsPerSecond()) {
-                goalComp.lastDelivery = null;
-                goalComp.currentDeliveredItems = 0;
+            if (now - goalComp.lastDelivery.time > goalComp.getRequiredSecondsPerItem()) {
+                goalComp.clearItems();
             }
 
             if (goalComp.currentDeliveredItems < globalConfig.goalAcceptorItemsRequired) {

@@ -47,7 +47,7 @@ export class GoalAcceptorComponent extends Component {
         this.currentDeliveredItems = 0;
     }
 
-    getRequiredItemsPerSecond() {
+    getRequiredSecondsPerItem() {
         return (
             globalConfig.goalAcceptorsPerProducer /
             (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond)
