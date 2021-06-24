@@ -20,14 +20,14 @@ export class HUDPuzzlePlaySettings extends BaseHUDPart {
                 null,
                 ["section"],
                 `
-                        <button class="styledButton clear items">${T.ingame.puzzleEditorSettings.clearItems}</button>
-                        <button class="styledButton clear buildings">Clear Buildings</button>
+                        <button class="styledButton clearItems">${T.ingame.puzzleEditorSettings.clearItems}</button>
+                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
 
                 `
             );
 
-            bind("button.items", this.clearItems);
-            bind("button.buildings", this.clearBuildings);
+            bind("button.clearItems", this.clearItems);
+            bind("button.clearBuildings", this.clearBuildings);
         }
     }
 

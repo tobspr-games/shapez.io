@@ -632,6 +632,7 @@ ingame:
         zoneHeight: Height
         trimZone: Trim
         clearItems: Clear Items
+        clearBuildings: Clear Buildings
         share: Share
         report: Report
 

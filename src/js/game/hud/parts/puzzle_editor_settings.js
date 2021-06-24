@@ -45,11 +45,11 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
                     <div class="buttonBar">
                         <button class="styledButton trim">${T.ingame.puzzleEditorSettings.trimZone}</button>
-                        <button class="styledButton clear items">${T.ingame.puzzleEditorSettings.clearItems}</button>
+                        <button class="styledButton clearItems">${T.ingame.puzzleEditorSettings.clearItems}</button>
                     </div>
 
                     <div class="buildingsButton">
-                        <button class="styledButton clear buildings">clear buildings</button>
+                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
                     </div>
 
                 </div>`
@@ -60,8 +60,8 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .minus", () => this.modifyZone(0, -1));
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
-            bind("button.items", this.clearItems);
-            bind("button.buildings", this.clearBuildings);
+            bind("button.clearItems", this.clearItems);
+            bind("button.clearBuildings", this.clearBuildings);
         }
     }
 
