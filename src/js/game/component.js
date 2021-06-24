@@ -23,6 +23,11 @@ export class Component extends BasicSerializableObject {
      */
     copyAdditionalStateTo(otherComponent) {}
 
+    /**
+     * Clears all items and state
+     */
+    clear() {}
+
     /* dev:start */
 
     /**

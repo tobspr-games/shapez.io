@@ -32,6 +32,9 @@ import { SettingsState } from "./states/settings";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { RestrictionManager } from "./core/restriction_manager";
 import { AchievementsState } from "./states/achievements";
+import { PuzzleMenuState } from "./states/puzzle_menu";
+import { ClientAPI } from "./platform/api";
+import { LoginState } from "./states/login";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -73,6 +76,7 @@ export class Application {
         this.savegameMgr = new SavegameManager(this);
         this.inputMgr = new InputDistributor(this);
         this.backgroundResourceLoader = new BackgroundResourcesLoader(this);
+        this.clientApi = new ClientAPI(this);
 
         // Restrictions (Like demo etc)
         this.restrictionMgr = new RestrictionManager(this);
@@ -161,6 +165,8 @@ export class Application {
             AboutState,
             ChangelogState,
             AchievementsState,
+            PuzzleMenuState,
+            LoginState,
         ];
 
         for (let i = 0; i < states.length; ++i) {

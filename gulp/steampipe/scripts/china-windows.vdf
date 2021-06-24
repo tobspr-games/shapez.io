@@ -1,7 +1,7 @@
 "DepotBuildConfig"
 {
 	"DepotID" "1318694"
-	"contentroot" "C:\work\shapez.io\tmp_standalone_files_china\shapez.io-standalonechina-win32-x64"
+	"contentroot" "C:\work\shapez\shapez.io\tmp_standalone_files_china\shapez.io-standalonechina-win32-x64"
 	"FileMapping"
 	{
 		"LocalPath" "*"

@@ -1,0 +1,1187 @@
+steamPage:
+    shortText: shapez.io הוא משחק בנוגע לבניית מפעלים אוטמטים ליצירה של צורת מסובכות
+        יותר ויותר במפה אין סופית.
+    discordLinkShort: דיסקורד רשמי
+    intro: >-
+        אתה אוהב משחקי אוטומציה? אתה במקום הנכון!
+
+        shapez.io הוא משחק שלווה שבו אתה בונה מפעל בשביל ליצור צורות גאומטריות אוטומטית. ככל שמתקדמים השלבים, הצורות נהיות יותר ויותר מסובכות, ואתה צריך להפתח על המפה האין סופית.
+
+        ואם זה לא היה מספיק, אתה צריך ליצור יותר ויותר צורות  בשביל לספק את הדרישה - הדבר היחיד שיכול לעזור זה להגדיל את המפעל! בזמן שבהתחלה אתה רק צריך לערוך צורות, בהמשך אתה צריך לצבוע אותם בעזרת צבעים שאתה מערבב.
+
+        קניית המשחק בsteam תתן לך גישה למשחק המלא, אבל אתה יכול לשחק משחק דמו בhttps://shapez.io/ ולהחליט אחר כך.
+    what_others_say: What people say about shapez.io
+    nothernlion_comment: This game is great - I'm having a wonderful time playing,
+        and time has flown by.
+    notch_comment: Oh crap. I really should sleep, but I think I just figured out
+        how to make a computer in shapez.io
+    steam_review_comment: This game has stolen my life and I don't want it back.
+        Very chill factory game that won't let me stop making my lines more
+        efficient.
+global:
+    loading: טוען
+    error: שגיאה
+    thousandsDivider: ","
+    decimalSeparator: .
+    suffix:
+        thousands: k
+        millions: M
+        billions: B
+        trillions: T
+    infinite: ∞
+    time:
+        oneSecondAgo: לפני שנייה אחת
+        xSecondsAgo: לפני <x> שניות
+        oneMinuteAgo: לפני דקה אחת
+        xMinutesAgo: לפני <x> דקות
+        oneHourAgo: לפני שעה אחת
+        xHoursAgo: לפני <x> שעות
+        oneDayAgo: לפני יום אחד
+        xDaysAgo: לפני <x> ימים
+        secondsShort: <seconds>s
+        minutesAndSecondsShort: <minutes>m <seconds>s
+        hoursAndMinutesShort: <hours>h <minutes>m
+        xMinutes: <x> דקות
+    keys:
+        tab: TAB
+        control: CTRL
+        alt: ALT
+        escape: ESC
+        shift: SHIFT
+        space: SPACE
+    loggingIn: Logging in
+demoBanners:
+    title: גרסאת דמו
+    intro: תשיג את המשחק המלא כדי לפתוח את כל הפיצ'רים
+mainMenu:
+    play: שחק
+    continue: המשך
+    newGame: משחק חדש
+    changelog: עדכונים
+    subreddit: רדיט
+    importSavegame: יבוא
+    openSourceHint: המשחק הזה הוא עם קוד פתוח!
+    discordLink: שרת הדסקורד הרשמי
+    helpTranslate: תעזור לתרגם!
+    madeBy: <author-link> :יוצר המשחק
+    browserWarning: מצטערים, אבל המשחק רק באיטיות על הדפדפן שלך! תשיג את הגרסא
+        להורדה או שתוריד גוגל לחוויה המלאה.
+    savegameLevel: שלב <x>
+    savegameLevelUnknown: שלב לא ידוע
+    savegameUnnamed: ללא שם
+    puzzleMode: Puzzle Mode
+    back: Back
+    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
+        DLC now on Steam for even more fun!
+    puzzleDlcWishlist: Wishlist now!
+    puzzleDlcViewNow: View Dlc
+dialogs:
+    buttons:
+        ok: אישור
+        delete: מחיקה
+        cancel: ביטול
+        later: מאוחר יותר
+        restart: פתיחה מחדש
+        reset: אפס
+        getStandalone: השג את הגרסא להורדה
+        deleteGame: אני יודע מה אני עושה
+        viewUpdate: צפה בעדכון
+        showUpgrades: הצג שדרוגים
+        showKeybindings: הצג מקשים
+        retry: Retry
+        continue: Continue
+        playOffline: Play Offline
+    importSavegameError:
+        title: שגיאה ביבוא
+        text: "לא הצליח ליבא את השמירה שלך:"
+    importSavegameSuccess:
+        title: המשחק יובא
+        text: ייבא את המשחק שלך בהצלחה.
+    gameLoadFailure:
+        title: השמיררה שבורה
+        text: לא הצליח לטעון את השמירה.
+    confirmSavegameDelete:
+        title: אימות המחיקה
+        text: אתה בטוח שאתה רוצה למחוק את השמירה הבאה?<br><br> '<savegameName>' בשלב
+            <savegameLevel><br><br> פעולה זו אינה הפיכה!
+    savegameDeletionError:
+        title: נכשל למחוק
+        text: "נכשל למחוק רת השמיקה:"
+    restartRequired:
+        title: איתחול נדרש
+        text: אתה צריך לסגור ולפתוח את המשחק כדי לישם הגדרה זו.
+    editKeybinding:
+        title: שינוי מקשים
+        desc: תלחץ על מקש או על כפתור בעכבר שאתה רוצה להשתמש, או escape בשביל לבטל.
+    resetKeybindingsConfirmation:
+        title: אפס את המקשים
+        desc: זה יחזיר את כל המקשים להגדרה המקורית. בבקשה תאמת.
+    keybindingsResetOk:
+        title: אפס את המקשים
+        desc: זה יחזיר את כל המקשים להגדרה המקורית!
+    featureRestriction:
+        title: גראת דמו
+        desc: ניסית להשתמש בפיצ'ר (<feature>) שהוא לא זמין בדמו. תשיג את הגרסה להורדה
+            בשביל החוויה המלאה!
+    oneSavegameLimit:
+        title: הגבלת שמירה
+        desc: אתה יכול לשמור רק שמירה אחת בכל זמן נתון בגרסת הדמו. אתה יכול למחוק את
+            האחד הנוכחי או להשיג את הגרסה להורדה!
+    updateSummary:
+        title: עדכון חדש!
+        desc: "כאן כל השינויים מאז ששיחקת לאחרונה:"
+    upgradesIntroduction:
+        title: נפתח השדרוגים
+        desc: כל הצורות שייצרת יכולים עכשיו לשמש אותך בשביל לפתוח שדרוגים - <strong>אל
+            תהרוס את המפעלים הישנים שלך!</strong> אתה יכול לגשת לשדרוגים בפינה
+            העליונה ימנית של המסך.
+    massDeleteConfirm:
+        title: אישור מחיקה
+        desc: אתה מוחק הרבה מבנים (<count> בשביל להיות מדוייק)! אתה בטוח שאתה רוצה לעשות
+            את זה?
+    massCutConfirm:
+        title: אישור הזזה
+        desc: אתה מזיז הרבה מבנים (<count> בשביל להיות מדוייק)! אתה בטוח שאתה רוצה לעשות
+            את זה?
+    massCutInsufficientConfirm:
+        title: איזור הזזה
+        desc: אתה לא תוכל להדביק את האיזור הזה, אתה בטוח שאתה רוצה לחתוך אותו?
+    blueprintsNotUnlocked:
+        title: עדיין לא נפתח
+        desc: תסיים את שלב 12 בשביל לפתוח תבניות
+    keybindingsIntroduction:
+        title: מקשים שימושיים
+        desc: "במשחק הזה ישנם המון מקשים בשביל להקל כל בניית מפעלים גדולים. הנה כמה מהם,
+            אבל כדאי לך <strong>להסתכל על הגדרות המקשים</strong>!<br><br> <code
+            class='keybinding'>CTRL</code> + לגרור את העכבר: לבחוק שטח.<br>
+            <code class='keybinding'>SHIFT</code>: החזק בשביל לבנות כמה מאותו
+            מבנה.<br> <code class='keybinding'>ALT</code>: הפוך כיוון של
+            המסוע.<br>"
+    createMarker:
+        title: סימון חדש
+        titleEdit: עריכת סימון
+        desc: תן לזה שם, אתה יכול גם לרשום <strong>קוד קצר</strong> של צורה (שאתה יכול
+            לייצר <link>כאן</link>)
+    editSignal:
+        title: קבע ערך
+        descItems: "תבחר מההבאים:"
+        descShortKey: ... או שתשתמש ב <strong>קוד קצר</strong> של צורה (שאתה יכול לייצר
+            <link>כאן</link>)
+    markerDemoLimit:
+        desc: אתה יכול ליצור רק שני סימונים בגרסאת הדמו. תשיג את הגרסה להורדה בשביל כמול
+            לא מוגבלת של סימונים!
+    exportScreenshotWarning:
+        title: יצוא צילום מסך
+        desc: אתה ביקשת לייצא את המפעל שלך כצילום מסך. בבקשה תהיה מודע שזה יכול להיות די
+            איטי למפעלים גדולים ויכול להיות שזה יקריס לך את המשחק!
+    renameSavegame:
+        title: שנה שם לשמירה
+        desc: אתה יכול לשנות את שם השמירה כאן.
+    tutorialVideoAvailable:
+        title: הדרכה זמינה
+        desc: יש סרטון הדרכה זמין לשלב הזה! תרצה לצפות בזה?
+    tutorialVideoAvailableForeignLanguage:
+        title: הדרכה זמינה
+        desc: יש סרטון הדרכה לשלב הזה אבל הוא באנגלית. תרצה לצפות בו?
+    editConstantProducer:
+        title: Set Item
+    puzzleLoadFailed:
+        title: Puzzles failed to load
+        desc: "Unfortunately the puzzles could not be loaded:"
+    submitPuzzle:
+        title: Submit Puzzle
+        descName: "Give your puzzle a name:"
+        descIcon: "Please enter a unique short key, which will be shown as the icon of
+            your puzzle (You can generate them <link>here</link>, or choose one
+            of the randomly suggested shapes below):"
+        placeholderName: Puzzle Title
+    puzzleResizeBadBuildings:
+        title: Resize not possible
+        desc: You can't make the zone any smaller, because then some buildings would be
+            outside the zone.
+    puzzleLoadError:
+        title: Bad Puzzle
+        desc: "The puzzle failed to load:"
+    offlineMode:
+        title: Offline Mode
+        desc: We couldn't reach the servers, so the game has to run in offline mode.
+            Please make sure you have an active internet connection.
+    puzzleDownloadError:
+        title: Download Error
+        desc: "Failed to download the puzzle:"
+    puzzleSubmitError:
+        title: Submission Error
+        desc: "Failed to submit your puzzle:"
+    puzzleSubmitOk:
+        title: Puzzle Published
+        desc: Congratulations! Your puzzle has been published and can now be played by
+            others. You can now find it in the "My puzzles" section.
+    puzzleCreateOffline:
+        title: Offline Mode
+        desc: Since you are offline, you will not be able to save and/or publish your
+            puzzle. Would you still like to continue?
+    puzzlePlayRegularRecommendation:
+        title: Recommendation
+        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
+            before attempting the puzzle DLC, otherwise you may encounter
+            mechanics not yet introduced. Do you still want to continue?
+    puzzleShare:
+        title: Short Key Copied
+        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
+            can be entered in the puzzle menu to access the puzzle.
+    puzzleReport:
+        title: Report Puzzle
+        options:
+            profane: Profane
+            unsolvable: Not solvable
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Thank you for your feedback!
+        desc: The puzzle has been flagged.
+    puzzleReportError:
+        title: Failed to report
+        desc: "Your report could not get processed:"
+    puzzleLoadShortKey:
+        title: Enter short key
+        desc: Enter the short key of the puzzle to load it.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
+ingame:
+    keybindingsOverlay:
+        moveMap: הזזה
+        selectBuildings: בחירת שטח
+        stopPlacement: הפסק השמה
+        rotateBuilding: סיבוב מבנה
+        placeMultiple: מקם כמה
+        reverseOrientation: כיוון הפוך
+        disableAutoOrientation: ביטול כיוון אוטומטי
+        toggleHud: הסתר/הצג תפריטים
+        placeBuilding: שים מבנה
+        createMarker: שים סימון
+        delete: מחיקה
+        pasteLastBlueprint: הדבקת התבנית האחרונה
+        lockBeltDirection: הנחת מסוע מהיר
+        plannerSwitchSide: הפוך צד המסוע
+        cutSelection: חיתוח
+        copySelection: העתקה
+        clearSelection: ביטול הבחירה
+        pipette: דגימה
+        switchLayers: החלפת שכבה
+        clearBelts: Clear belts
+    colors:
+        red: אדום
+        green: ירוק
+        blue: כחול
+        yellow: צהוב
+        purple: ורוד
+        cyan: תכלת
+        white: לבן
+        black: שחור
+        uncolored: אפור
+    buildingPlacement:
+        cycleBuildingVariants: לחץ <key> בשביל להחליף סוג.
+        hotkeyLabel: "מקש: <key>"
+        infoTexts:
+            speed: מהירות
+            range: אורך
+            storage: אחסון
+            oneItemPerSecond: חפץ 1 / second
+            itemsPerSecond: <x> חפצים / s
+            itemsPerSecondDouble: (x2)
+            tiles: <x> משבצות
+    levelCompleteNotification:
+        levelTitle: שלב <level>
+        completed: הסתיים
+        unlockText: נפתח <reward>!
+        buttonNextLevel: שלב הבא
+    notifications:
+        newUpgrade: עדכון חדש זמין!
+        gameSaved: המשחק שלך נשמר.
+        freeplayLevelComplete: שלב <level> הסתיים!
+    shop:
+        title: שדרוגים
+        buttonUnlock: שדרג
+        tier: רמה <x>
+        maximumLevel: רמה מקסימלית (מהירות x<currentMult>)
+    statistics:
+        title: סטטיסטיקה
+        dataSources:
+            stored:
+                title: מאוכסן
+                description: .כל הצורות שמאוכסנות בהאב
+            produced:
+                title: מיוצר
+                description: .כל הצורות שנוצרות בתוך המפעל שלך, כולל צורות בשביל צורות אחרות
+            delivered:
+                title: מגיע
+                description: .צורות שמגיעות להאב ברגע זה
+        noShapesProduced: .עדיין לא נוצרו צורות
+        shapesDisplayUnits:
+            second: <shapes> / s
+            minute: <shapes> / m
+            hour: <shapes> / h
+    settingsMenu:
+        playtime: זמן משחק
+        buildingsPlaced: מבנים
+        beltsPlaced: מסועים
+    tutorialHints:
+        title: צריך עזרה?
+        showHint: הצג רמז
+        hideHint: סגור
+    blueprintPlacer:
+        cost: מחיר
+    waypoints:
+        waypoints: סימונים
+        hub: האב
+        description: מקש שמאלי על סימון בשביל להגיע אליו, מקש ימני בשביל למחוק
+            אותו.<br><br>לחץ <keybinding> בשביל ליצור סימון במרכז המסך, או
+            <strong>מקש-ימני</strong> בשביל ליצור סימון במקום של העכבר.
+        creationSuccessNotification: הסימון נוצר.
+    shapeViewer:
+        title: שכבות
+        empty: ריק
+        copyKey: העתק קוד
+    interactiveTutorial:
+        title: מדריך
+        hints:
+            1_1_extractor: שים <strong>חוצב</strong> מעל <strong>צורת עיגול</strong> בשביל
+                להשיג אותה!
+            1_2_conveyor: "חבר את החוצב עם <strong>מסועים</strong> להאב שלך!<br><br>טיפ:
+                <strong>לחץ וגרור</strong> את המסוע עם העכבר שלך!"
+            1_3_expand: "זה <strong>לא</strong> משחק שמחכים בו הרבה! בנה עוד חוצבים ומסועים
+                בשביל לסיים את המשימה מהר יותר.<br><br>טיפ: החזק
+                <strong>SHIFT</strong> בשביל לשים כמה חוצבים, והשתמש
+                ב<strong>R</strong> בשביל לסובב אותם."
+            2_1_place_cutter: "עכשיו שים <strong>חותך</strong> בשביל לחתוך את העיגולים לשני
+                חצאים!<br><br> נ.ב: החותך תמיד חותך <strong>אנכית</strong> לא
+                משנה הכיוון שלו."
+            2_2_place_trash: החותך יכול <strong>להסתם ולהתקע</strong>!<br><br> השתמש
+                ב<strong>פח</strong> בשביל להפתר מהשארית הלא שימושית (בינתיים).
+            2_3_more_cutters: "עבודה טובה! עכשיו שים <strong>עוד 2 חותכים</strong> בשביל
+                להאיץ את התהליך!<br><br> נ.ב: השתמש <strong>במקשים 0-9</strong>
+                בשביל לבחור מבנים מהר יותר!"
+            3_1_rectangles: "עכשיו בוא נחצוב כמה מלבנים! <strong>בנה 4 חוצבים</strong> וחבר
+                אותם עם מסועים להאב.<br><br> נ.ב: החזק <strong>SHIFT</strong>
+                בזמן שאתה גורר מסוע בשביל לבנות מסועים מהר יותר!"
+            21_1_place_quad_painter: שים את ה<strong>צובע המרובע</strong> והשיג כמה
+                <strong>עיגולים</strong>, צבע <strong>לבן</strong> וצבע
+                <strong>אדום</strong>!
+            21_2_switch_to_wires: החלף לשכבת הכבלים ע"י לחיצה על <strong>E</strong>!<br><br>
+                לאחר מכן <strong>חבר את כל ארבעת הכניסות</strong> של הצובע
+                לכבלים!
+            21_3_place_button: נהדר! עכשיו שים <strong>מפסק</strong> ותחבק אותו לכבלים!
+            21_4_press_button: "חלץ על המפסק כדי שהוא<strong>יפיק אות חיובי</strong> וזה
+                יפעיל את הצובע המרובע.<br><br> נ.ב: אתה לא צריך לחבר את כל
+                הכניסות! נסה לחבר רק 2."
+    connectedMiners:
+        one_miner: חוצב 1
+        n_miners: <amount> חוצבים
+        limited_items: מוגבל ל<max_throughput>
+    watermark:
+        title: גרסת דמו
+        desc: לחץ פה בשביל לראות את היתרונות של הגרסה להורדה!
+        get_on_steam: Steamהשג ב
+    standaloneAdvantages:
+        title: "!השג את הגרסה המלאה"
+        no_thanks: "!לא, תודה"
+        points:
+            levels:
+                title: 12 שלבים חדשים
+                desc: '!סה"כ  26 שלבים'
+            buildings:
+                title: 18 מבנים חדשים
+                desc: "!אפשרות להפוך את המפעל לאוטומטי לגמרי"
+            achievements:
+                title: הישגים
+                desc: "!השג את כולם"
+            upgrades:
+                title: רמות לשדרוגים ∞
+                desc: "!לגרסת הדמו הזאת יש רק 5"
+            markers:
+                title: סימונים ∞
+                desc: "!אף פעם לא תלך לאיבוד במפעל שלך"
+            wires:
+                title: כבלים
+                desc: "!מימד חדש לגמרי"
+            darkmode:
+                title: תצוגה כהה
+                desc: "!תפסיק להכאיב לעיניים שלך"
+            support:
+                title: תמוך בי
+                desc: "!אני יצרתי רת המשחק הזה בזמני החופשי"
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Width
+        zoneHeight: Height
+        trimZone: Trim
+        clearItems: Clear Items
+        share: Share
+        report: Report
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Puzzle Creator
+        instructions:
+            - 1. Place <strong>Constant Producers</strong> to provide shapes and
+              colors to the player
+            - 2. Build one or more shapes you want the player to build later and
+              deliver it to one or more <strong>Goal Acceptors</strong>
+            - 3. Once a Goal Acceptor receives a shape for a certain amount of
+              time, it <strong>saves it as a goal</strong> that the player must
+              produce later (Indicated by the <strong>green badge</strong>).
+            - 4. Click the <strong>lock button</strong> on a building to disable
+              it.
+            - 5. Once you click review, your puzzle will be validated and you
+              can publish it.
+            - 6. Upon release, <strong>all buildings will be removed</strong>
+              except for the Producers and Goal Acceptors - That's the part that
+              the player is supposed to figure out for themselves, after all :)
+    puzzleCompletion:
+        title: Puzzle Completed!
+        titleLike: "Click the heart if you liked the puzzle:"
+        titleRating: How difficult did you find the puzzle?
+        titleRatingDesc: Your rating will help me to make you better suggestions in the future
+        continueBtn: Keep Playing
+        menuBtn: Menu
+    puzzleMetadata:
+        author: Author
+        shortKey: Short Key
+        rating: Difficulty score
+        averageDuration: Avg. Duration
+        completionRate: Completion rate
+shopUpgrades:
+    belt:
+        name: מסועים, מסדרים & מנהרות
+        description: מהירות x<currentMult> → x<newMult>
+    miner:
+        name: חציבה
+        description: מהירות x<currentMult> → x<newMult>
+    processors:
+        name: חיתוך, סיבוב & חיבור
+        description: מהירות x<currentMult> → x<newMult>
+    painting:
+        name: ערבוב & צביעה
+        description: מהירות x<currentMult> → x<newMult>
+buildings:
+    hub:
+        deliver: ספק
+        toUnlock: בשביל
+        levelShortcut: שלב
+        endOfDemo: סוף הדמו
+    belt:
+        default:
+            name: מסוע
+            description: מעביר חפצים, לחץ וגרור בשביל לשים כמה.
+    miner:
+        default:
+            name: חוצב
+            description: שים מעל צורה או צבע בשביל להשיג אותם.
+        chainable:
+            name: חוצב (מתחבר)
+            description: שים מעל צורה או צבע בשביל להשיג אותם. יכול להתחבר.
+    underground_belt:
+        default:
+            name: מנהרה
+            description: מאפשר לך להעביר חפצים מתחת למבנים ומסועים.
+        tier2:
+            name: מנהרה רמה II
+            description: מאפשר לך להעביר חפצים מתחת למבנים ומסועים.
+    balancer:
+        default:
+            name: מאזן
+            description: רב שימישי- מחלק את כל הדברים שנכנסים באופן שווה לכל היציאות.
+        merger:
+            name: ממזג (קומפקטי)
+            description: מחבר שני מסועים לאחד.
+        merger-inverse:
+            name: ממזג (קומפקטי)
+            description: מחבר שני מסועים לאחד.
+        splitter:
+            name: מפצל (קומפקטי)
+            description: מפצל מסוע אחד לשניים.
+        splitter-inverse:
+            name: מפצל (קומפקטי)
+            description: מפצל מסוע אחד לשניים.
+    cutter:
+        default:
+            name: חותך
+            description: חותך את הצורות אנכית ומוציא את שני החלקים. <strong>אם אתה משתמש רק
+                בחלק אחד, תוודא שאתה הורס את החלק השני או שיווצר סתימה!</strong>
+        quad:
+            name: חותך (מרובע)
+            description: חותך את הצורות לארבעה חלקים. <strong>אם אתה משתמש רק בחלק אחד,
+                תוודא שאתה הורס את השאר החלקים או שיווצר סתימה!</strong>
+    rotater:
+        default:
+            name: מסובב
+            description: מסובב חלקים עם כיוון השעון ב90 מעלות.
+        ccw:
+            name: מסובב (נגד כיוון השעון)
+            description: מסובב חלקים נגד כיוון השעון ב90 מעלות.
+        rotate180:
+            name: מסובב (180°)
+            description: מסובב חלקים ב180 מעלות.
+    stacker:
+        default:
+            name: מחבר
+            description: מחבר את מה שנכנס, באותה שכבה אם אפשרי, אחרת הימני מוערם מעל השמאלי.
+    mixer:
+        default:
+            name: מערבב
+            description: מערבב את שני הצבעים לפי צבעי האור.
+    painter:
+        default:
+            name: צובע
+            description: צובע את הצורות מנכנסות הצד השמאלי בצבע שנכנס מלמעלה.
+        mirrored:
+            name: צובע
+            description: צובע את הצורות מנכנסות הצד השמאלי בצבע שנכנס מלמטה.
+        double:
+            name: צובע (כפול)
+            description: צובע את הצורות מנכנסות הצד השמאלי בצבע שנכנס מלמעלה.
+        quad:
+            name: צובע (מרובע)
+            description: מאפשר לצבוע כל רבע בצורה בנפרד. רק מקומות עם <strong>ערך
+                חיובי</strong> בשכבת הכבלים יצבעו!
+    trash:
+        default:
+            name: פח
+            description: הורס כל מה שנכנס אליו לנצח.
+    storage:
+        default:
+            name: אחסון
+            description: מאחסן חפצים שנשארו עד גבול מסויים. הוא מוציא בעדיפות לצד השמאלי, אז
+                אתה יכול להשתמש בצד הימני כשער הצפה.
+    wire:
+        default:
+            name: כבל
+            description: מעביר מידע, שהוא יכול להיות צורה, צבע, או בולאיני (0 או 1). כבלים
+                בצבים שונים לא יתחברו אחד לשני.
+        second:
+            name: כבל
+            description: מעביר מידע, שהוא יכול להיות צורה, צבע, או בולאיני (0 או 1). כבלים
+                בצבים שונים לא יתחברו אחד לשני.
+    wire_tunnel:
+        default:
+            name: הצלבת כבלים
+            description: מאפשר שני כבלים לחצות אחד את השני בלי להתחבר.
+    constant_signal:
+        default:
+            name: אות קבוע
+            description: מיצר אות קבוע, שהוא יכול להיות צורה, צבע, או בולאיני (0 או 1).
+    lever:
+        default:
+            name: מפסק
+            description: ניתן להפעיל או להפסיק אותו בשביל ליצור אות בולאיני (0 או 1) בשכבת
+                הכבלים, וכך יכול לשלוט על פעולה של מבנים כמו לדוגמה מסנן.
+    logic_gate:
+        default:
+            name: שער לוגי גם
+            description: פולט את הבוליאני "1" אם שני הכניסות הם ערך חיובי (ערך חיובי הוא כל
+                צורה, צבע או הבוליאני "1").
+        not:
+            name: שער לוגי לא
+            description: פולט את הבוליאני "1" אם הכניסה הוא אינו ערך חיובי (ערך חיובי הוא כל
+                צורה, צבע או הבוליאני "1").
+        xor:
+            name: שער לוגי קסור
+            description: Emits a boolean "1" if one of the inputs is truthy, but not both.
+                (Truthy means shape, color or boolean "1")
+        or:
+            name: שער לוגי או
+            description: פולט את הבוליאני "1" אם אחד מהכניסות הוא ערך חיובי (ערך חיובי הוא
+                כל צורה, צבע או הבוליאני "1").
+    transistor:
+        default:
+            name: טרנזיסטור
+            description: מעביר את האינפורמציה מלמטה ללמעלה אם הכניסה מהצד היא ערך
+                חיובי  (ערך חיובי הוא כל צורה, צבע או הבוליאני "1").
+        mirrored:
+            name: טרנזיסטור
+            description: מעביר את האינפורמציה מלמטה ללמעלה אם הכניסה מהצד היא ערך
+                חיובי  (ערך חיובי הוא כל צורה, צבע או הבוליאני "1").
+    filter:
+        default:
+            name: מסנן
+            description: חבר לאות בשביל לסנן שרק משהו אחד יצא מלמעלה והשאר מהצד. יכול גם
+                לקבל ערכים בוליאנים (0 או 1).
+    display:
+        default:
+            name: מסך
+            description: חבר אות בשביל להציג אותו על המסך, האות יכול להיות צורה, צבע או
+                בוליאני.
+    reader:
+        default:
+            name: מסוע מדידה
+            description: מאפשר מדידה של הממוצע של כמה חפצים עוברים במסוע, מפיץ אות של החפץ
+                האחרון שעבר לשכבת הכבלים (מתי שנפתח).
+    analyzer:
+        default:
+            name: מנתח צורות
+            description: מנתח את הרבע העליון שמאלי של השכבה התחתונה של הצורה ומחזיר את הצורה
+                והצבע שלה.
+    comparator:
+        default:
+            name: משווה
+            description: מחזיר את הבולאיני "1" אם שני האותות הם שווים בדיוק. יכול להשוות
+                צורות צבעים ובוליאנים.
+    virtual_processor:
+        default:
+            name: חותך וירטואלי
+            description: חותך באופן וירטואלי את הצורה לשני חצאים.
+        rotater:
+            name: מסובב וירטואלי
+            description: מסובב באופן וירטואלי את הצורה עם כיוון השעון.
+        unstacker:
+            name: פורש וירטואלי
+            description: מוציא באופן וירטואלי את השכבה העליונה לצד ימין ואת השאר לצד שמאל.
+        stacker:
+            name: מחבר וירטואלי
+            description: מחבר באופן וירטואלי את הצורה בצד ימין על הצורה בצד שמאל.
+        painter:
+            name: צובע וירטואלי
+            description: צובע באופן וירטואלי את הצורה מלמטה בצבע מימין.
+    item_producer:
+        default:
+            name: מייצר חפצים
+            description: זמין רק במצב ארגז חול, מוצא את האות מהכבלים לשכבה הרגילה.
+    constant_producer:
+        default:
+            name: Constant Producer
+            description: Constantly outputs a specified shape or color.
+    goal_acceptor:
+        default:
+            name: Goal Acceptor
+            description: Deliver shapes to the goal acceptor to set them as a goal.
+    block:
+        default:
+            name: Block
+            description: Allows you to block a tile.
+storyRewards:
+    reward_cutter_and_trash:
+        title: חיתוך צורות
+        desc: אתה בדיוק קיבלת גישה ל<strong>חותך</strong>, שחותך צורות לחצי אנכית
+            <strong>לא משנה איזה כיוון הוא</strong>!<br><br>וודא שאתה נפתר
+            מהשאריות, אחרת <strong>הוא יסתם ויתקע</strong> - בשביל המטרה הזאת
+            אני הבאתי לך את ה<strong>פח</strong>, שהורס כל מה שאתה מכניס אליו!
+    reward_rotater:
+        title: סיבוב
+        desc: קיבלת גישה ל<strong>מסובב</strong> ! הוא מסובב צורות עם כיוון השעון ב90
+            מעלות.
+    reward_painter:
+        title: צביעה
+        desc: "קיבלת גישה ל<strong>צובע</strong>  - תשיג צבעים (בדיוק כמו שאתה משיג
+            צורות) ותחבר אותם עם הצורות בעזרת הצובע בשביל לצבוע
+            אותם!<br><br>נ.ב: אם אתה עיוור צבעים, יש <strong>מצב עיוור
+            צבעים</strong> בהגדרות!"
+    reward_mixer:
+        title: ערבוב צבעים
+        desc: קיבלת גישה ל<strong>מערבב</strong> - הוא מערבב שני צבעים לפי <strong>צבעי
+            האור</strong>!
+    reward_stacker:
+        title: חיבור
+        desc: עכשיו אתה יכול לחבר צורות עם ה<strong>מחבר</strong>! שני הצורות שנכנסות
+            מתחברות. אם הם יכולים להיות אחד ליד השני הם <strong>יודבקו</strong>,
+            אחרת, הימני <strong>יודבק מעל</strong> השמאלי!
+    reward_balancer:
+        title: מאזן
+        desc: קיבלת גישה ל<strong>מאזן</strong> הרב שימושי - הוא יכול לשמש בשביל לבנות
+            מפעלים גדולים יותר ע"י <strong>פיצול וחיבור חפצים</strong> על מספר
+            מסועים!
+    reward_tunnel:
+        title: מנהרה
+        desc: קיבלת גישה ל<strong>מנהרה</strong> - אתה יכול עכשיו להעביר חפצים מתחת
+            למסועים ומבנים עם זה!
+    reward_rotater_ccw:
+        title: סיבוב נגד כיוון השעון
+        desc: קיבלת גישה לצורה נוספת של <strong>מסובב</strong> - זה מאפשר לך לסובב צורות
+            נגד כיוון השעון! בשביל לבנות את זה, תבחר מסובב, ו<strong>תלחץ 'T'
+            בשיל לחליף בין הסוגים שלו</strong>!
+    reward_miner_chainable:
+        title: חוצב מתחבר
+        desc: "קיבלת גישה ל <strong>חוצב מתחבר</strong>! הוא יכול <strong>להעביר את
+            החומרים קדימה</strong> לחוצבים האחרים, אז אתה יכול לחצוב חומרים יותר
+            ביעילות!<br><br> נ.ב: החוצבים הישנים הוחלפו עכשיו ברצועת הכלים שלך!"
+    reward_underground_belt_tier_2:
+        title: מהנרות רמה II
+        desc: קיבלת גישה לצורה נוספת של <strong>מנהרות</strong> - יש לו <strong>יותר
+            אורך</strong>, ואתה יכול גם לערבב ולהתאים את המנהרות האלו עכשיו!
+    reward_merger:
+        title: ממזג קומפקטי
+        desc: קיבלת גישה ל<strong>ממזג</strong>, צורה של <strong>מאזן</strong> - הוא
+            יכול למזג שני מסועים למסוע אחד!
+    reward_splitter:
+        title: מפצל קומפקטי
+        desc: קיבלת גישה ל<strong>מפצל</strong>, צורה של <strong>מאזן</strong> - הוא
+            יכול לפצל מסוע אחד לשני מסועים!
+    reward_belt_reader:
+        title: Belt reader
+        desc: קיבלת גישה ל<strong>מסוע מדידה</strong>! זה מאפשר לך למדוד כמה חפצים
+            עוברים במסוע.<br><br>וחכה עד שתפתח את הכבלים - אז זה יהיה ממש
+            שימושי!
+    reward_cutter_quad:
+        title: חותך מרובע
+        desc: קיבלת גישה לצורה נוספת של <strong>חותך</strong> - זה מאפשר לך לחתוך צורה
+            לארבעה ל<strong>ארבעה חלקים</strong> במקום רק שניים!
+    reward_painter_double:
+        title: צובע כפול
+        desc: קיבלת גישה לצורה נוספת של <strong>צובע</strong> - זה עובד דומה לצובע רגיל,
+            אבל מאפשר לך לצבוע <strong>שני צורות בבת אחת</strong>, משתמש בצבע
+            אחד במקום שניים!
+    reward_storage:
+        title: אחסון
+        desc: קיבלת גישה ל<strong>אחסון</strong> - זה מאפשר לך לאחסן חפצים עד כמות
+            מסויימת!<br><br> הוא מוציא בעדיפות לצד השמאלי, אז אתה יכול להשתמש
+            בצד הימני כ<strong>שער הצפה</strong>!
+    reward_blueprints:
+        title: תבניות
+        desc: אתה יכול עכשיו <strong>להעתיק ולהדביק</strong> חלקים מהמפעל שלך! תבחר שטח
+            (החזק CTRL, וגרור עם העכבר), ואז לחץ 'C' בשביל להעתיק את
+            זה.<br><br>הדבקה זה <strong>לא חינם</strong>, אתה צריך ליצר
+            <strong>צורת תבנית</strong> בשביל לקנות את זה! (אלו שבדיוק יצרת).
+    reward_rotater_180:
+        title: מסובב (180°)
+        desc: קיבלת גישה <strong>מסובב</strong> 180 מעלות! - זה מאפשר לך לסובב צורה ב
+            180 מעולות (הפתעה! :D)
+    reward_wires_painter_and_levers:
+        title: כבלים & צובע מרובע
+        desc: "קיבלת גישה ל<strong>שכבת הכבלים</strong>: זה שכבה נפרדת מעל השכבה הרגילה
+            שמאפשרת לך הרבה מכניקות חדשות!<br><br> בשביל להתחיל, אני נתתי לך
+            גישה ל<strong>צובע המרובע</strong> - חבר את הכבלים למקומות שאתה רוצה
+            לצבוע בשכבת הכבלים!<br><br> בשביל להחליף לשכבת הכבלים, לחץ
+            <strong>E</strong>. <br><br> נ.ב: <strong>תפעיל רמזים</strong>
+            בהגדרות כדי להפעיל את המדריך של הכבלים!"
+    reward_filter:
+        title: מסנן
+        desc: קיבלת גישה ל<strong>מסנן</strong>! זה יאפשר לך לסנן חפצים לפי האותות משכבת
+            הכבלים.<br><br> אתה יכול גם לתת לו אות בולאיני (1 או 0) בשביל להפעיל
+            או לכבות אותו לגמרי.
+    reward_display:
+        title: מסך
+        desc: "קיבלת גישה ל<strong>מסך</strong> - חבר אות בשכבת הכבלים בשביל להציג
+            אותו!<br><br> נ.ב: שמת לב שמסועים ואחסון מוציאים את החפץ האחרון שהיה
+            בהם? נסה להציג את זה על מסך!"
+    reward_constant_signal:
+        title: אות קבוע
+        desc: קיבלת גישה ל<strong>אות קבוע</strong> לשכבת הכבלים! זה שימושי בשביל לחבר
+            אותו ל<strong>מסננים</strong> לדוגמה.<br><br> האות הקבוע יכול ליצור
+            <strong>צורה</strong>, <strong>צבע</strong> או
+            <strong>בוליאני</strong> (1 או 0).
+    reward_logic_gates:
+        title: שערים לוגים
+        desc: "קיבלת גישה ל<strong>שערים לוגים</strong>! אתה לא צריך להתרגש מזה, אבל זה
+            די מגניב!<br><br> עם שערים לוגים אתה יכול לחשב את הפעולות: וגם, או,
+            קסור ולא.<br><br> כבונוס אני גם הבאתי לך גם את
+            ה<strong>טרנזיסטור</strong>!"
+    reward_virtual_processing:
+        title: עיבוד וירטואלי
+        desc: אני הבאתי לך המון מבנים שמאפשרים לך <strong>לדמות עיבוד שלך
+            צורות</strong>!<br><br> אתה יכול לדמות בשכבת הכבלים חיתוך, סיבוב,
+            חיבור ועוד! עם זה יש לך עכשיו שלושה אפשרויות להמשיך את
+            המשחק:<br><br> - לבנות <strong>מכונה אוטומטית</strong> שתייצר כל
+            צורה אפשרית שההאב מבקש (אני ממליץ לנסות את זה!).<br><br> - לבנות
+            משהו מגניב עם הכבלים.<br><br> - להמשיך לשחק רגיל.<br><br> עם כל מה
+            שתבחר, תזכור להנות!
+    no_reward:
+        title: שלב הבא
+        desc: "השלב הזה לא הביא לך פרסים, אבל ההבא יביא! <br><br> נ.ב: עדיף לא להרוס את
+            המפעלים הקיימים שלך - אתה תצטרך את <strong>כל</strong> הצורות האלו
+            מאוחר יותר בשביל <strong>לפתוח שדרוגים</strong>!"
+    no_reward_freeplay:
+        title: שלב הבא
+        desc: כל הכבוד!
+    reward_freeplay:
+        title: משחק חופשי
+        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
+            that shapes are now <strong>randomly</strong> generated!<br><br>
+            Since the hub will require a <strong>throughput</strong> from now
+            on, I highly recommend to build a machine which automatically
+            delivers the requested shape!<br><br> The HUB outputs the requested
+            shape on the wires layer, so all you have to do is to analyze it and
+            automatically configure your factory based on that.
+    reward_demo_end:
+        title: סוף הדמו
+        desc: הגעת לסוף גרסת הדמו
+settings:
+    title: הגדרות
+    categories:
+        general: כללי
+        userInterface: תפריטים
+        advanced: מתקדם
+        performance: ביצועים
+    versionBadges:
+        dev: Development
+        staging: Staging
+        prod: Production
+    buildDate: Built <at-date>
+    rangeSliderPercentage: <amount> %
+    labels:
+        uiScale:
+            title: גודל תפריטים
+            description: שנה את הגודל של התפריטים
+            scales:
+                super_small: זעיר
+                small: קטן
+                regular: רגיל
+                large: גדול
+                huge: עצום
+        autosaveInterval:
+            title: זמן בין שמירות אוטומטיות
+            description: .משפיע על תדירות השמירה האוטומטית. אתה יכול גם לבטל את זה לגמרי
+            intervals:
+                one_minute: דקה
+                two_minutes: שתי דקות
+                five_minutes: חמש דקות
+                ten_minutes: עשר דקות
+                twenty_minutes: עשרים דקות
+                disabled: אף פעם
+        scrollWheelSensitivity:
+            title: רגישות זום
+            description: משפיע על  כמה רגיש הזום (גם הגלגלת וגם משטח הנגיעה)
+            sensitivity:
+                super_slow: ממש לאט
+                slow: לאט
+                regular: רגיל
+                fast: מהר
+                super_fast: ממש מהר
+        movementSpeed:
+            title: מהירות תנועה
+            description: משנה כמה מהר התצוגה זזה כשמשתמשים במקלדת או שמים את העכבר בגבולות
+                המסך.
+            speeds:
+                super_slow: ממש לאט
+                slow: לאט
+                regular: רגיל
+                fast: מהר
+                super_fast: קצת מהר
+                extremely_fast: ממש מהר
+        language:
+            title: שפה
+            description: '!שנה את השפה. כל השפות נוצרו ע"י משתמשים ולכן אולי לא יהיו מלאים'
+        enableColorBlindHelper:
+            title: מצב עיוורי צבעים
+            description: .הפעלת כלים שונים שמאפשרים לך לשחק אם אתה עיוור צבעים
+        fullscreen:
+            title: מסך מלא
+            description: .זה מומלץ לשחק את המשחק במסך מלא השהיל החוויה המיטבית. זמין רק
+                בגרסה להורדה
+        soundsMuted:
+            title: השתקת צלילים
+            description: .אם מופעל, משתיק את כל הצלילים
+        musicMuted:
+            title: השתקת מוזיקה
+            description: .אם מופעל, משתיק את המוזיקה
+        soundVolume:
+            title: ווליום
+            description: .משפיע על הווליום של הצלילים
+        musicVolume:
+            title: מוזיקה
+            description: .משפיע על הווליום של המוזיקה
+        theme:
+            title: תצוגה
+            description: .שנה תצוגה לכהה או בהירה
+            themes:
+                dark: כהה
+                light: בהיר
+        refreshRate:
+            title: Tick Rate
+            description: .ים יהיו בכל שנייהtick זה משפיע כמה
+        alwaysMultiplace:
+            title: השמה מרובה
+            description: .באופן קבוע SHIFT אם מופעל, כל המבנים ישארו נבחרים גם אחרי ששמים
+                אותם עד שאתה מבטל את זה. זה זהה ללחיצת
+        offerHints:
+            title: רמזים ומדריכים
+            description: .האם להציג רמזים ומדריכים. בנוסף מסתיר חלק מהתפריטים עד לשלב מסויים
+                בשביל להקל על הכניסה למשחק
+        enableTunnelSmartplace:
+            title: מנהרות חכמות
+            description: .מתי שמופעל, מקום מנהרות ימחק באופן אוטומטי מסועים לא שימושיים. זה
+                גם ימחק מנהרות מיותרות
+        vignette:
+            title: הצללה
+            description: .מפעיל הצללה, שמכהה את הקצבות של המסך ועושה שיהיה יותר קל לקרוא את
+                הטקסט
+        rotationByBuilding:
+            title: סיבוב ע"י סוג מבנה
+            description: .כל מבנה זוכר את הכיוון ששמת אותו פעם אחרונה. זה יכול להיות נוח אם
+                אתה מחליף בין מבנים שונים הרבה פעמים
+        compactBuildingInfo:
+            title: אינפורמצית מבנים קומפקטית
+            description: .מקצר את קופסת האינפורמציה של המבנים שיציג רק את המהירות שלו. אחרת
+                הסבר ותמונה יופיעו
+        disableCutDeleteWarnings:
+            title: ביטול אזהרה בעת חיתוך ומחיקה
+            description: .ביטול ההזהרה שמופיעה מתי שחותכים/מוחקים יותר מ1000 מבנים
+        lowQualityMapResources:
+            title: איכות ירודה של מאגרים
+            description: .מפשט את הרנדור של המשאבים על המפה מתי שמסתכלים מקרוב בשביל לשפר את
+                הביצועים !זה אפילו נראה נקי יותר, אז תנסה את זה
+        disableTileGrid:
+            title: הסתר את רשת
+            description: "!הסתרת הרשת יכולה לשפר את הביצועים. זה גם יכול לגרום למשחק להראות
+                נקי יותר"
+        clearCursorOnDeleteWhilePlacing:
+            title: נקה את הסמן בלחיצה על מקש ימני
+            description: .מופעל בברירת המחדל, מנקה את הסמן מתי שאתה לוחץ מקש ימני. אם זה
+                כבוי אתה יכול למחוק מבנים עם מקש ימני מתי שאתה מחזיק מבנה
+        lowQualityTextures:
+            title: טקסטורה באכות ירודה (מכוער)
+            description: "!משתמש בטקסטורה באיכות ירודה בשביל לשפר את הביצועים. זה גורם למשחק
+                להראות ממש מכוער"
+        displayChunkBorders:
+            title: מציג גבולות צ'נקים
+            description: .המשחק מחולק לצ'נקים של 16 על 16 משבצות, אם ההגדרה הזאת מופעלת,
+                הגבולות של הצ'נקים יופיעו
+        pickMinerOnPatch:
+            title: בחר חוצב על מאגר
+            description: .מופעל בברירת המחדל, בוחר את החוצב אם אתה דוגם כשהעכבר מעל מאגר
+        simplifiedBelts:
+            title: מסועים פשוטים (מכוער)
+            description: .לא מציג חומרים על מסועים חוץ ממתי שמעבירים את הסמן מעליהם בשביל
+                לשפר ביצועים. אני לא ממליץ לשחק עם ההגדרה הזאת ממש צריך את
+                הביצועים האלו
+        enableMousePan:
+            title: תנועה בנגיעה בקצה המסך
+            description: .מאפשר לזוז ע"י הצמדת העכבר לקצה המסך. המהירות נקבעת ע"י המהירות של
+                התנועה עם המקשים
+        zoomToCursor:
+            title: הגדלה לכיוון הסמן
+            description: .אם מופעל, הזום יהיה לכיוון הסמן של העכבר, אחרת למרכז המסך
+        mapResourcesScale:
+            title: גודל המשאבים במפה
+            description: .שולט על הגודל של הצורות על המפה (בתצוגה המוקטנת)
+keybindings:
+    title: מקשים
+    hint: ".הם מאפשרים הרבה אפשרויות השמה !ALTו SHIFT ,CTRLטיפ: השתמש ב"
+    resetKeybindings: אפס
+    categoryLabels:
+        general: תוכנה
+        ingame: משחק
+        navigation: תנועה
+        placement: השמה
+        massSelect: בחירה
+        buildings: קיצורים למבנים
+        placementModifiers: תוספי השמה
+    mappings:
+        confirm: אישור
+        back: חזרה
+        mapMoveUp: לזוז למעלה
+        mapMoveRight: לזוז ימינה
+        mapMoveDown: לזוז למטה
+        mapMoveLeft: לזוז שמאלה
+        mapMoveFaster: לזוז מהר
+        centerMap: לזוז למרכז
+        mapZoomIn: הגדלת תצוגה
+        mapZoomOut: הקטנת תצוגה
+        createMarker: צור סימון
+        menuOpenShop: שדרוגים
+        menuOpenStats: סטטיסטיקה
+        menuClose: סגירת תפריט
+        toggleHud: הצג/הסתר תפריטים
+        toggleFPSInfo: ואיפורמציה לפתרון באגים FPS הצג/הסתר
+        switchLayers: החלף שכבות
+        exportScreenshot: צור צילום מסך של כל המפעל
+        belt: מסוע
+        balancer: מאזן
+        underground_belt: מנהרה
+        miner: חוצב
+        cutter: חותך
+        rotater: מסובב
+        stacker: מחבר
+        mixer: מערבב
+        painter: צובע
+        trash: פח
+        storage: אחסון
+        wire: כבל
+        constant_signal: אות קבוע
+        logic_gate: שער לוגי
+        lever: מפסק
+        filter: ממיין
+        wire_tunnel: הצלבת כבלים
+        display: מסך
+        reader: מסוע מדידה
+        virtual_processor: מעבד וירטואלי
+        transistor: טרנזיסטור
+        analyzer: מנתח צורות
+        comparator: משווה
+        item_producer: מייצר חפצים (ארגז חול)
+        pipette: דגימה
+        rotateWhilePlacing: סיבוב
+        rotateInverseModifier: "Modifier: סיבוב נגד כיוון השעון במקום"
+        rotateToUp: "לסובב: למעלה"
+        rotateToDown: "לסובב: למטה"
+        rotateToRight: "לסובב: ימינה"
+        rotateToLeft: "לסובב: שמאלה"
+        cycleBuildingVariants: החלפת סוגים של מבנה
+        confirmMassDelete: מחיקת שטח
+        pasteLastBlueprint: הדבקת התבנית האחרונה
+        cycleBuildings: החלפת מבנה
+        lockBeltDirection: הפעלת בנייה מהירה של מסועים
+        switchDirectionLockSide: "בנייה מהירה של מסועים: החלפת צד"
+        copyWireValue: "כבלים: העתקת ערך מתחת לעכבר"
+        massSelectStart: החזק וגרור כדי להתחיל
+        massSelectSelectMultiple: בחר כמה איזורים
+        massSelectCopy: העתקת איזור
+        massSelectCut: חיתוך איזור
+        placementDisableAutoOrientation: ביטול כיוון אוטומטי
+        placeMultiple: השאר במצב השמה
+        placeInverse: הפוך כיוון מסוע
+        constant_producer: Constant Producer
+        goal_acceptor: Goal Acceptor
+        block: Block
+        massSelectClear: Clear belts
+about:
+    title: בנוגע למשחק הזה
+    body: >-
+        .(זה אני) <a href="https://github.com/tobspr" target="_blank">Tobias
+        Springer</a> המשחק הזה הוא עם קוד פתוח ויוצר ע"י <br><br>
+
+        .<a href="<githublink>" target="_blank">shapez.io on GitHub</a>-אם אתה רוצה לתרום, כנס ל<br><br>
+
+        המשחק הזה לא היה אפשרי בלי קהילת הדיסקורד המופלאה מסביב למשחקים שלי - באמת כדאי לך להצטרף ל<a href="<discordlink>" target="_blank">שרת הדיסקורד</a>!<br><br>
+
+        .הוא מדהים - <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> הסאונד נוצר ע"י<br><br>
+
+        .המשחק הזה לא היה קיים Factorio אם לא היינו משחקים -  <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> לבסוף, תודה ענקית לחבר הכי טוב שלי
+changelog:
+    title: עדכונים
+demo:
+    features:
+        restoringGames: שחזור משחקים שמורים
+        importingGames: יבוא משחקים שמורים
+        oneGameLimit: מוגבל לשמירה אחת
+        customizeKeybindings: מקשים בהתאמה אישית
+        exportingBase: יצוא כל המפעל כתמונה
+    settingNotAvailable: .הגדרה לא זמינה בדמו
+tips:
+    - "!ההאב יקבל כל צורה, לא רק את הצורה הנדרשת עכשיו"
+    - "!וודא שהמפעלים שלך מחולקים - זה יהיה לך יותר קל"
+    - "!אל תבנה יותר מדיי קרוב להאב, זה יהפוך לבלגן"
+    - .אם החיבור לא עובד, תנסה להחליף את מה נכנס לאיזה צד
+    - .<b>R</b> אתה יכול לשנות את הכיוון של בניית המסועים המהירה ע"י ללחוץ על
+    - .תאפשר לבנות הרבה מסילות באותו כיוון <b>CTRL</b> החזקת
+    - .היחס של המהירויות של המבנים ישאר זהה אם השדרוגים הם באותו רמה
+    - .לשים חפצים במסוע אחת מאשר כמה יהיה יותר יעיל במקום
+    - "!אתה תשיג עוד צורות של מבנים בהמשך המשחק"
+    - .בשביל להחליף בין צורות שונות של מבנים <b>T</b>אתה יכול להשתמש ב
+    - "!סימטריה זה המפתח"
+    - .אתה יכול לשים סוגים שונים של מנהרות על אותו קו לסרוגין
+    - "!נסה לבנות מפעלים קומפקטים, זה ישתלם"
+    - <b>T</b> לצובע יש סוג הפוך שאתה יכול לבחור ע"י
+    - .אם יש לך את היחס הנכון בין כמות המבנים, יהיה לך את האיכות המיטבית
+    - .ברמה המקסימלית, 5 חוצבים ימלאו מסוע אחד
+    - "!אל תשכח בקשר למנהרות"
+    - .אתה לא צריך לחלק חפצים באופן שווה בשביל יעילות המיטבית
+    - .תפעיל את מצב בנייה מהירה של מסועים, שתתן לך לשים מסועים ארוכים בקלות
+      <b>SHIFT</b> החזקת
+    - .חותכים תמיד חותכים לגובה, לא משנה מה הכיוון שלהם
+    - .ערבב את כל שלושת הצבעים הבסיסיים בשביל להשיג את הצבע לבן
+    - .לאכסון יש העדפה להוציא רק מהצד השמאלי
+    - "!הכן לך עיצוב של מבנה שתוכל להשתמש בו כשתצטרך - זה שווה את זה"
+    - .תתן לך לבנות כמה מבנים באותו זמן <b>SHIFT</b> החזקת
+    - .בשביל להפוך את הכיוון של המסועים שאתה שם <b>ALT</b> אתה יכול להחזיק
+    - "!יעילות זה המפתח"
+    - .מאגרי צורות שיותר רחוקות מההאב הן יותר מסובכות
+    - .למכונות יש מהירות מוגבלת, חלק את החומרים בשביל היעילות המיטבית
+    - .התשמש במאזנים בשביל למקסם את היעילות
+    - .כיוון זה לא חשוב. נסה לא לחצות מסועים יותא מידי
+    - "!תכנן מראש, אחרת יהיה לך בלאגן"
+    - .אל תמחק את המפעלים הישנים שלך! אתה תצתרך אותם בשביל לפתוח שדרוגים
+    - "!נסה לפתור את השלבים 20 ו26 בעצמך לפני שאתה מחפש פתרונות"
+    - .אל תסבך דברים, נסה להשאר פשוט ותגיע רחוק
+    - .אתה כנראה תצטרך להשתמש במפעלים שלך שוב בהמשך המשחק. תבנה את המפעלים שלך
+      בצורה שתוכל להשתמש בהם שוב בהמשך
+    - .לפעמים אתה יכול למצוא צורה שאתה צריך במפה בלי להתחיל לבנות אותה עם חותכים
+      ומחברים
+    - .צורת תחנת רוח שלמה לעולם לא תופיע בטבעיות במפה
+    - .צבע את הצורות לפני שאתה חותך אותם בשביל האיכות המיטבית
+    - .אם תפצל את המפעל שלך, לא יהיה לך חסר מקום
+    - .הכן תבניות נפרדות למפעל שלך. הם יהיו חשובים בשביל החלקים של המפעל שלך
+    - .הסתכל על המערבב צבעים מקרוב יותר והשאלות שלך יפתרו
+    - .גרירה בשביל לבחור שטח + <b>CTRL</b>השתמש ב
+    - .בנייה קרובה מידי להאב יכולה להפריע בדרך של פרוייקטים מאוחרים יותר
+    - .סימן הסיכה ליד כל צורה בשדרוגים תצמיד אותה לצד שמאל של המסך
+    - .ערבב את כל שלושת הצבעים הבסיסיים בשביל להשיג את הצבע לבן
+    - "!יש לך מפה אין סופית. אל תשים את המפעל שלך רק צמוד להאב, תרחיב אותו"
+    - .זה המשחק האהוב עליי !Factorio נסה גם את את
+    - .החותך המרובע חותך עם כיוון השעון, מתחיל מלמעלה ימין.
+    - "!אתה יכול להוריד את השמירות שלך בתפריט הראשי!"
+    - .למשחק הזה יש הרבה מקשים שימושיים! חפש אותם בהגדרות.
+    - "!למשחק הזה יש הרבה הגדרות, חפש אותם"
+    - "!לסימון של ההאב שלך יש חץ שמסמן באיזה כיוון הוא"
+    - .בשביל לנקות מסוע, חתוך את האיזור ואז תדביק באותו מקום
+    - .לחץ F4 בשביל להציג את הFPS ואת הTickRate
+    - .לחץ F4 פעמיים בשביל להציג את המשבצת שהעכבר והמצלמה בהם
+    - .אתה יכול ללחוץ על צורה מוצמדת בצד שמאל בשביל לבטל את ההצמדה
+puzzleMenu:
+    play: Play
+    edit: Edit
+    title: Puzzle Mode
+    createPuzzle: Create Puzzle
+    loadPuzzle: Load
+    reviewPuzzle: Review & Publish
+    validatingPuzzle: Validating Puzzle
+    submittingPuzzle: Submitting Puzzle
+    noPuzzles: There are currently no puzzles in this section.
+    categories:
+        levels: Levels
+        new: New
+        top-rated: Top Rated
+        mine: My Puzzles
+        easy: Easy
+        hard: Hard
+        completed: Completed
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+    validation:
+        title: Invalid Puzzle
+        noProducers: Please place a Constant Producer!
+        noGoalAcceptors: Please place a Goal Acceptor!
+        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
+            Deliver a shape to them to set a goal.
+        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
+            Make sure that the indicators are green for all acceptors.
+        buildingOutOfBounds: One or more buildings are outside of the buildable area.
+            Either increase the area or remove them.
+        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
+            producers are not directly delivering to your goal acceptors.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: You are performing your actions too frequent. Please wait a bit.
+    invalid-api-key: Failed to communicate with the backend, please try to
+        update/restart the game (Invalid Api Key).
+    unauthorized: Failed to communicate with the backend, please try to
+        update/restart the game (Unauthorized).
+    bad-token: Failed to communicate with the backend, please try to update/restart
+        the game (Bad Token).
+    bad-id: Invalid puzzle identifier.
+    not-found: The given puzzle could not be found.
+    bad-category: The given category could not be found.
+    bad-short-key: The given short key is invalid.
+    profane-title: Your puzzle title contains profane words.
+    bad-title-too-many-spaces: Your puzzle title is too short.
+    bad-shape-key-in-emitter: A constant producer has an invalid item.
+    bad-shape-key-in-goal: A goal acceptor has an invalid item.
+    no-emitters: Your puzzle does not contain any constant producers.
+    no-goals: Your puzzle does not contain any goal acceptors.
+    short-key-already-taken: This short key is already taken, please use another one.
+    can-not-report-your-own-puzzle: You can not report your own puzzle.
+    bad-payload: The request contains invalid data.
+    bad-building-placement: Your puzzle contains invalid placed buildings.
+    timeout: The request timed out.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

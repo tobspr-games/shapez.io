@@ -14,7 +14,7 @@ steamPage:
         All'inizio lavorerai solo con le forme, ma in seguito dovrai colorarle; a questo scopo dovrai estrarre e mescolare i colori!
 
         Comprare il gioco su Steam ti garantirà l'accesso alla versone completa, ma puoi anche giocare una demo su shapez.io e decidere in seguito!
-    what_others_say: What people say about shapez.io
+    what_others_say: "Hanno detto di shapez.io:"
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -53,6 +53,7 @@ global:
         escape: ESC
         shift: MAIUSC
         space: SPAZIO
+    loggingIn: Logging in
 demoBanners:
     title: Versione Demo
     intro: Ottieni la versione completa per sbloccare tutte le funzioni!
@@ -72,6 +73,12 @@ mainMenu:
     madeBy: Creato da <author-link>
     subreddit: Reddit
     savegameUnnamed: Senza nome
+    puzzleMode: Modalità puzzle
+    back: Back
+    puzzleDlcText: Ti piace miniaturizzare e ottimizzare le tue fabbriche? Ottini il
+        Puzzle DLC ora su steam per un divertimento ancora maggiore!
+    puzzleDlcWishlist: Aggiungi alla lista dei desideri ora!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -85,6 +92,9 @@ dialogs:
         viewUpdate: Mostra aggiornamento
         showUpgrades: Mostra miglioramenti
         showKeybindings: Mostra scorciatoie
+        retry: Riprova
+        continue: Continua
+        playOffline: Gioca offline
     importSavegameError:
         title: Errore di importazione
         text: "Impossibile caricare il salvataggio:"
@@ -189,6 +199,73 @@ dialogs:
         title: Tutorial Disponibile
         desc: C'è un video tutorial per questo livello, ma è disponibile solo in
             Inglese. Vorresti dargli un'occhiata?
+    editConstantProducer:
+        title: Imposta oggetto
+    puzzleLoadFailed:
+        title: Impossibile caricare i puzzle
+        desc: "Sfortunatamente non è stato possibile caricare i puzzle:"
+    submitPuzzle:
+        title: Pubblica il puzzle
+        descName: "Dai un nome al tuo puzzle:"
+        descIcon: "Per favore inserisci un codice per la forma identificativa, che sarà
+            mostrata come icona del tuo puzzle (Pui generarla <link>qui</link>,
+            oppure sceglierne una tra quelle casuali qui sotto):"
+        placeholderName: Nome puzzle
+    puzzleResizeBadBuildings:
+        title: Impossibile ridimensionare
+        desc: Non è possibile ridurre la zona ulteriormente, dato che alcuni edifici
+            sarebbero fuori dalla zona.
+    puzzleLoadError:
+        title: Caricamento fallito
+        desc: "Impossibile caricare il puzzle:"
+    offlineMode:
+        title: Modalità offline
+        desc: Non siamo risciti a contattare i server, quindi il gioco è in modalità
+            offline. Per favore assicurati di avere una connessione internet
+            attiva.
+    puzzleDownloadError:
+        title: Errore di download
+        desc: "Il download del puzzle è fallito:"
+    puzzleSubmitError:
+        title: Errore di pubblicazione
+        desc: "La pubblicazione del puzzle è fallita:"
+    puzzleSubmitOk:
+        title: Puzzle pubblicato
+        desc: Congratulazioni! Il tuo puzzle è stato pubblicato e ora può essere giocato
+            da altri. Puoi trovarlo nella sezione "I miei puzzle".
+    puzzleCreateOffline:
+        title: Modalità offline
+        desc: Dato che sei offline, non potrai salvare e/o pubblicare il tuo puzzle. Sei
+            sicuro di voler contnuare?
+    puzzlePlayRegularRecommendation:
+        title: Raccomandazione
+        desc: Ti raccomando <strong>fortemente</strong> di giocare nella modalità
+            normale fino al livello 12 prima di cimentarti nel puzzle DLC,
+            altrimenti potresti incontrare meccaniche non ancora introdotte. Sei
+            sicuro di voler continuare?
+    puzzleShare:
+        title: Codice copiato
+        desc: Il codice del puzzle (<key>) è stato copiato negli appunti! Può essere
+            inserito nel menù dei puzzle per accedere al puzzle.
+    puzzleReport:
+        title: Segnala puzzle
+        options:
+            profane: Volgare
+            unsolvable: Senza soluzione
+            trolling: Troll
+    puzzleReportComplete:
+        title: Grazie per il tuo feedback!
+        desc: Il puzzle è stato segnalato.
+    puzzleReportError:
+        title: Segnalazione fallita
+        desc: "Non è stato possibile elaborare la tua segnalazione:"
+    puzzleLoadShortKey:
+        title: Inserisci codice
+        desc: Inserisci il codice del puzzle per caricarlo.
+    puzzleDelete:
+        title: Cancellare il puzzle?
+        desc: Sei sicuro di voler cancellare '<title>'? Questa azione non può essere
+            annullata!
 ingame:
     keybindingsOverlay:
         moveMap: Sposta
@@ -210,6 +287,7 @@ ingame:
         clearSelection: Annulla selezione
         pipette: Contagocce
         switchLayers: Cambia livello
+        clearBelts: Clear belts
     buildingPlacement:
         cycleBuildingVariants: Premi <key> per cambiare variante.
         hotkeyLabel: "Hotkey: <key>"
@@ -359,8 +437,52 @@ ingame:
                 title: Sostienimi
                 desc: Lo sviluppo nel tempo libero!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Achievement
+                desc: Collezionali tutti!
+    puzzleEditorSettings:
+        zoneTitle: Zona
+        zoneWidth: Larghezza
+        zoneHeight: Altezza
+        trimZone: Riduci
+        clearItems: Elimina oggetti
+        share: Condividi
+        report: Segnala
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Creazione puzzle
+        instructions:
+            - 1. Posiziona dei <strong>produttori costanti</strong> per fornire
+              forme e colori al giocatore
+            - 2. Costruisci una o più forme che vuoi che il giocatore costruisca
+              e consegni a uno o più degli <strong>Accettori di
+              obiettivi</strong>
+            - 3. Una volta che un accettore di obiettivi riceve una forma per un
+              certo lasso di tempo, lo <strong>salva come obiettivo</strong> che
+              il giocatore dovrà poi produrre (Indicato dal <strong>simbolo
+              verde</strong>).
+            - 4. Clicca il <strong>bottone di blocco</strong> su un edificio per
+              disabilitarlo.
+            - 5. Una volta che cliccherai verifica, il tuo puzzle sarà
+              convalidato e potrai pubblicarlo.
+            - 6. Una volta rilasciato, <strong>tutti gli edifici saranno
+              rimossi</strong> ad eccezione di produttori e accettori di
+              obiettivi. Quella è la parte che il giocatore deve capire da solo,
+              dopo tutto :)
+    puzzleCompletion:
+        title: Puzzle completato!
+        titleLike: "Clicca il cuore se ti è piaciuto:"
+        titleRating: Quanto è stato difficile il puzzle?
+        titleRatingDesc: La tua valutazione mi aiuterà a darti raccomandazioni migliori
+            in futuro
+        continueBtn: Continua a giocare
+        menuBtn: Menù
+    puzzleMetadata:
+        author: Autore
+        shortKey: Codice
+        rating: Punteggio difficoltà
+        averageDuration: Durata media
+        completionRate: Tasso di completamento
 shopUpgrades:
     belt:
         name: Nastri, distribuzione e tunnel
@@ -574,15 +696,28 @@ buildings:
             name: Generatore di oggetti
             description: Disponibile solo nella modalità sandbox, emette il segnale dal
                 livello elettrico come oggetti sul livello normale.
+    constant_producer:
+        default:
+            name: Produttore costante
+            description: Produce costantemente una forma o un colore specificati.
+    goal_acceptor:
+        default:
+            name: Accettore di obiettivi.
+            description: Consegna forme all'accettore di obiettivi per impostarli come
+                obiettivo.
+    block:
+        default:
+            name: Blocco
+            description: Blocca una casella.
 storyRewards:
     reward_cutter_and_trash:
         title: Taglio forme
-        desc: Il <strong>taglierino</strong> è stato bloccato! Taglia le forme a metà da
-            sopra a sotto <strong>indipendentemente dal suo
+        desc: Il <strong>taglierino</strong> è stato sbloccato! Taglia le forme a metà
+            da sopra a sotto <strong>indipendentemente dal suo
             orientamento</strong>!<br><br> Assicurati di buttare via lo scarto,
-            sennò <strong>si intaserà e andrà in stallo </strong> - Per questo
-            ti ho dato il <strong>certino</strong>, che distrugge tutto quello
-            che riceve!
+            altrimenti <strong>si intaserà e andrà in stallo </strong> - Per
+            questo ti ho dato il <strong>cestino</strong>, che distrugge tutto
+            quello che riceve!
     reward_rotater:
         title: Rotazione
         desc: Il <strong>ruotatore</strong> è stato sbloccato! Ruota le forme di 90
@@ -699,7 +834,7 @@ storyRewards:
             letto? Prova a mostrarlo su di un display!"
     reward_constant_signal:
         title: Sengale costante
-        desc: Hai sblocatto l'edificio <strong>segnale costante</strong> sul livello
+        desc: Hai sbloccato l'edificio <strong>segnale costante</strong> sul livello
             elettrico! È utile collegarlo ai <strong>filtri di oggetti</strong>
             per esempio.<br><br> Il segnale costante può emettere una
             <strong>forma</strong>, un <strong>colore</strong> o un
@@ -987,10 +1122,14 @@ keybindings:
         comparator: Comparatore
         item_producer: Generatore di oggetti (Sandbox)
         copyWireValue: "Cavi: Copia valore sotto il cursore"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Ruota: punta in alto"
+        rotateToDown: "Ruota: punta in basso"
+        rotateToRight: "Ruota: punta a destra"
+        rotateToLeft: "Ruota: punta a sinistra"
+        constant_producer: Produttore costante
+        goal_acceptor: Accettore di obiettivi
+        block: Blocco
+        massSelectClear: Sgombra nastri
 about:
     title: Riguardo questo gioco
     body: >-
@@ -1089,3 +1228,75 @@ tips:
     - Premi F4 due volte per mostrare la casella del cursore e della telecamera.
     - Puoi cliccare a sinistra di una forma fermata a schermo per rimuoverla
       dalla lista.
+puzzleMenu:
+    play: Gioca
+    edit: Modifica
+    title: Modalità puzzle
+    createPuzzle: Crea puzzle
+    loadPuzzle: Carica
+    reviewPuzzle: Verifica e pubblica
+    validatingPuzzle: Convalidazione puzzle
+    submittingPuzzle: Pubblicazione puzzle
+    noPuzzles: Al momento non ci sono puzzle in questa sezione.
+    categories:
+        levels: Livelli
+        new: Nuovo
+        top-rated: Più votati
+        mine: I miei puzzle
+        easy: Facili
+        hard: Difficili
+        completed: Completati
+        medium: Medi
+        official: Ufficiali
+        trending: Più popolari di oggi
+        trending-weekly: Più popolari della settimana
+        categories: Categorie
+        difficulties: Per difficoltà
+        account: I miei puzzle
+        search: Cerca
+    validation:
+        title: Puzzle non valido
+        noProducers: Per favore posiziona un Produttore costante!
+        noGoalAcceptors: Per favore posiziona un accettore di obiettivi!
+        goalAcceptorNoItem: Uno o più degli accettori di obiettivi non hanno un oggetto
+            assegnato. Consgnagli una forma per impostare l'obiettivo.
+        goalAcceptorRateNotMet: Uno o più degli accettori di obiettivi non ricevono
+            abbastanza oggetti. Assicurati che gli indicatori siano verdi per
+            tutti gli accettori.
+        buildingOutOfBounds: Uno o più edifici sono fuori dalla zona di costruzione.
+            Ingrandisci l'area o rimuovili.
+        autoComplete: Il tuo puzzle si autocompleta! Per favore assicurati che i tuoi
+            produttori costanti non consegnino direttamente agli accettori di
+            obiettivi.
+    difficulties:
+        easy: Facile
+        medium: Medio
+        hard: Difficile
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: Stai facendo troppe azioni velocemente. Per favore attendi un attimo.
+    invalid-api-key: Comunicazione con il backend fallita, per favore prova ad
+        aggiornare o riavviare il gioco (Invalid Api Key).
+    unauthorized: Comunicazione con il backend fallita, per favore prova ad
+        aggiornare o riavviare il gioco (Unauthorized).
+    bad-token: Comunicazione con il backend fallita, per favore prova ad aggiornare
+        o riavviare il gioco (Bad Token).
+    bad-id: Identificativo puzzle non valido.
+    not-found: Non è stato possibile trovare il puzzle.
+    bad-category: Non è stato possibile trovare la categoria.
+    bad-short-key: Il codice non è valido.
+    profane-title: Il titolo del tuo puzzle contiene volgarità.
+    bad-title-too-many-spaces: Il titolo del tuo puzzle è troppo breve.
+    bad-shape-key-in-emitter: Un produttore costante ha un oggetto non valido.
+    bad-shape-key-in-goal: Un accettore di obiettivi ha un oggetto non valido.
+    no-emitters: Il tuo puzzle non contiente alcun produttore costante.
+    no-goals: Il tuo puzzle non contiene alcun accettore di obiettivi.
+    short-key-already-taken: Queesto codice forma è già in uso, per favore scegline un altro.
+    can-not-report-your-own-puzzle: Non puoi segnlare il tuo puzzle.
+    bad-payload: La richiesta contiene dati non validi.
+    bad-building-placement: Il tuo puzzle contiene edifici non validi.
+    timeout: La richiesta è scaduta.
+    too-many-likes-already: Questo puzzle ha già ricevuto troppi "mi piace". Se vuoi
+        ancora rimuoverlo, per favore contatta support@shapez.io!
+    no-permission: Non hai i permessi per eseguire questa azione.

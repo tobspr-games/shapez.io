@@ -17,6 +17,7 @@ module.exports = ({
     isBrowser = true,
     mobileApp = false,
     chineseVersion = false,
+    wegameVersion = false,
 }) => {
     const globalDefs = {
         assert: enableAssert ? "window.assert" : "false && window.assert",
@@ -25,6 +26,7 @@ module.exports = ({
         G_IS_DEV: "false",
 
         G_CHINA_VERSION: JSON.stringify(chineseVersion),
+        G_WEGAME_VERSION: JSON.stringify(wegameVersion),
         G_IS_RELEASE: environment === "prod" ? "true" : "false",
         G_IS_STANDALONE: standalone ? "true" : "false",
         G_IS_BROWSER: isBrowser ? "true" : "false",
@@ -40,7 +42,7 @@ module.exports = ({
         G_ALL_UI_IMAGES: JSON.stringify(getAllResourceImages()),
     };
 
-    const minifyNames = environment === "prod";
+    const minifyNames = false;
 
     return {
         mode: "production",

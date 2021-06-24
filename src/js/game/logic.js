@@ -4,6 +4,7 @@ import { STOP_PROPAGATION } from "../core/signal";
 import { round2Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "./building_codes";
+import { Component } from "./component";
 import { enumWireVariant } from "./components/wire";
 import { Entity } from "./entity";
 import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
@@ -162,12 +163,33 @@ export class GameLogic {
     }
 
     /**
+     * Performs a immutable operation, causing no recalculations
+     * @param {function} operation
+     */
+    performImmutableOperation(operation) {
+        logger.warn("Running immutable operation ...");
+        assert(!this.root.immutableOperationRunning, "Can not run two immutalbe operations twice");
+        this.root.immutableOperationRunning = true;
+        const now = performance.now();
+        const returnValue = operation();
+        const duration = performance.now() - now;
+        logger.log("Done in", round2Digits(duration), "ms");
+        assert(
+            this.root.immutableOperationRunning,
+            "Immutable operation = false while immutable operation was running"
+        );
+        this.root.immutableOperationRunning = false;
+        this.root.signals.immutableOperationFinished.dispatch();
+        return returnValue;
+    }
+
+    /**
      * Returns whether the given building can get removed
      * @param {Entity} building
      */
     canDeleteBuilding(building) {
         const staticComp = building.components.StaticMapEntity;
-        return staticComp.getMetaBuilding().getIsRemovable();
+        return staticComp.getMetaBuilding().getIsRemovable(this.root);
     }
 
     /**
@@ -342,8 +364,6 @@ export class GameLogic {
         return !!overlayMatrix[localPosition.x + localPosition.y * 3];
     }
 
-    g(tile, edge) {}
-
     /**
      * Returns the acceptors and ejectors which affect the current tile
      * @param {Vector} tile
@@ -424,5 +444,16 @@ export class GameLogic {
             }
         }
         return { ejectors, acceptors };
+    }
+
+    /**
+     * Clears all belts and items
+     */
+    clearAllBeltsAndItems() {
+        for (const entity of this.root.entityMgr.entities) {
+            for (const component of Object.values(entity.components)) {
+                /** @type {Component} */ (component).clear();
+            }
+        }
     }
 }

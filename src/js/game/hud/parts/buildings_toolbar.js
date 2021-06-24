@@ -15,23 +15,28 @@ import { MetaUndergroundBeltBuilding } from "../../buildings/underground_belt";
 import { HUDBaseToolbar } from "./base_toolbar";
 import { MetaStorageBuilding } from "../../buildings/storage";
 import { MetaItemProducerBuilding } from "../../buildings/item_producer";
-import { queryParamOptions } from "../../../core/query_parameters";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
+import { MetaBlockBuilding } from "../../buildings/block";
 
 export class HUDBuildingsToolbar extends HUDBaseToolbar {
     constructor(root) {
         super(root, {
             primaryBuildings: [
+                MetaConstantProducerBuilding,
+                MetaGoalAcceptorBuilding,
                 MetaBeltBuilding,
                 MetaBalancerBuilding,
                 MetaUndergroundBeltBuilding,
                 MetaMinerBuilding,
+                MetaBlockBuilding,
                 MetaCutterBuilding,
                 MetaRotaterBuilding,
                 MetaStackerBuilding,
                 MetaMixerBuilding,
                 MetaPainterBuilding,
                 MetaTrashBuilding,
-                ...(queryParamOptions.sandboxMode || G_IS_DEV ? [MetaItemProducerBuilding] : []),
+                MetaItemProducerBuilding,
             ],
             secondaryBuildings: [
                 MetaStorageBuilding,

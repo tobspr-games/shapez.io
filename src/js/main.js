@@ -9,6 +9,7 @@ import { initComponentRegistry } from "./game/component_registry";
 import { initDrawUtils } from "./core/draw_utils";
 import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
+import { initGameModeRegistry } from "./game/game_mode_registry";
 import { initGameSpeedRegistry } from "./game/game_speed_registry";
 
 const logger = createLogger("main");
@@ -81,6 +82,7 @@ initDrawUtils();
 initComponentRegistry();
 initItemRegistry();
 initMetaBuildingRegistry();
+initGameModeRegistry();
 initGameSpeedRegistry();
 
 let app = null;

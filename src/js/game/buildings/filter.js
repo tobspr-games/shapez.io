@@ -40,6 +40,9 @@ export class MetaFilterBuilding extends MetaBuilding {
      * @returns {Array<[string, string]>}
      */
     getAdditionalStatistics(root, variant) {
+        if (root.gameMode.throughputDoesNotMatter()) {
+            return [];
+        }
         const beltSpeed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }

@@ -1,11 +1,49 @@
 export const CHANGELOG = [
     {
-        version: "1.3.1",
-        date: "beta",
+        version: "1.4.2",
+        date: "24.06.2021",
         entries: [
-            "Fixed savegames getting corrupt in rare conditions",
-            "Fixed game crashing sometimes since the achievements update",
+            "Puzzle DLC: Goal acceptors now reset after getting no items for a while (This should prevent being able to 'cheat' puzzles) (by Sense101)",
+            "Puzzle DLC: Added button to clear all buildings / reset the puzzle (by Sense101)",
+            "Puzzle DLC: Allow copy-paste in puzzle mode (by Sense101)",
+            "Updated translations",
         ],
+    },
+    {
+        version: "1.4.1",
+        date: "22.06.2021",
+        entries: [
+            "The <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog' target='_blank'>Puzzle DLC</a> is now available on Steam!",
+            "The <a href='https://store.steampowered.com/app/1573840/shapezio_Soundtrack/?utm_medium=changelog' target='_blank'>Soundtrack</a> is now also available to wishlist and will be released within the next days, including the new music from the Puzzle DLC!",
+        ],
+    },
+    {
+        version: "1.4.0",
+        date: "04.06.2021",
+        entries: [
+            "Belts in blueprints should now always paste correctly",
+            "You can now clear belts by selecting them and then pressing 'B'",
+            "Preparations for the <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog2' target='_blank'>Puzzle DLC</a>, coming June 22nd!",
+        ],
+    },
+    {
+        version: "1.3.1",
+        date: "16.04.2021",
+        entries: G_CHINA_VERSION
+            ? [
+                  "第13关的交付目标更改为：中国古代指南针。（感谢玩家：凯风入心 创作并提供",
+                  "第17关的交付目标更改为：永乐通宝。（感谢玩家：金天赐 创作并提供",
+                  "第22关的交付目标更改为：凤凰。（感谢玩家：我没得眼镜 创作并提供",
+                  "第23关的交付目标更改为：古代车轮。（感谢玩家：我没得眼镜 创作并提供",
+                  "第24关的交付目标更改为：大熊猫。（感谢玩家：窝囸倪现任 创作并提供",
+
+                  "修复了一些特定情况下偶尔会发生的存档损坏问题",
+                  "修复了成就更新后有时候游戏崩溃的问题",
+              ]
+            : [
+                  "Fixed savegames getting corrupt in rare conditions",
+                  "Fixed game crashing sometimes since the achievements update",
+              ],
     },
     {
         version: "1.3.0",

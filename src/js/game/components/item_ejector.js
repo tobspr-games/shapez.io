@@ -48,6 +48,13 @@ export class ItemEjectorComponent extends Component {
         this.renderFloatingItems = renderFloatingItems;
     }
 
+    clear() {
+        for (const slot of this.slots) {
+            slot.item = null;
+            slot.progress = 0;
+        }
+    }
+
     /**
      * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
      */

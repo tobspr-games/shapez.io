@@ -11,14 +11,14 @@ steamPage:
         És ha ez nem lenne elég, exponenciálisan többet kell termelned az igények kielégítése érdekében - az egyetlen dolog, ami segít, az a termelés mennyisége! Az alakzatokat a játék elején csak feldolgoznod kell, később azonban színezned is kell őket - ehhez bányászni és keverni kell a színeket!
 
         A játék Steamen történő megvásárlása hozzáférést biztosít a teljes verzióhoz, de kipróbálhatod a játékot a shapez.io oldalon, és később dönthetsz!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Mit mondanak mások a shapez.io-ról
+    nothernlion_comment: Ez a játék nagyszerű - Csodás élmény vele játszani, az idő
+        meg csak repül.
+    notch_comment: Basszus... aludnom kéne, de épp most jöttem rá, hogyan tudok
+        számítógépet építeni a shapez.io-ban!
+    steam_review_comment: Ez a játék ellopta az életemet, de nem kérem vissza!
+        Nagyon nyugis gyárépítős játék, amiben nem győzöm a futószalagjaimat
+        optimalizálni.
 global:
     loading: Betöltés
     error: Hiba
@@ -50,6 +50,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SZÓKÖZ
+    loggingIn: Bejelentkezés
 demoBanners:
     title: Demó verzió
     intro: Vásárold meg az Önálló Verziót a teljes játékélményért!
@@ -69,6 +70,12 @@ mainMenu:
     savegameLevel: <x>. szint
     savegameLevelUnknown: Ismeretlen szint
     savegameUnnamed: Névtelen
+    puzzleMode: Fejtörő Mód
+    back: Vissza
+    puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
+        Szerezd meg a Puzzle DLC-t a Steamen most!
+    puzzleDlcWishlist: Kívánságlistára vele!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -82,6 +89,9 @@ dialogs:
         viewUpdate: Frissítés Megtekintése
         showUpgrades: Fejlesztések
         showKeybindings: Irányítás
+        retry: Újra
+        continue: Folytatás
+        playOffline: Offline Játék
     importSavegameError:
         title: Importálás Hiba
         text: "Nem sikerült importálni a mentésedet:"
@@ -182,6 +192,71 @@ dialogs:
         title: Oktatás Elérhető
         desc: Elérhető egy oktatóvideó ehhez a szinthez, de csak angol nyelven.
             Szeretnéd megnézni?
+    editConstantProducer:
+        title: Elem beállítása
+    puzzleLoadFailed:
+        title: Fejtörő betöltése sikertelen
+        desc: "Sajnos a fejtörőt nem sikerült betölteni:"
+    submitPuzzle:
+        title: Fejtörő Beküldése
+        descName: "Adj nevet a fejtörődnek:"
+        descIcon: "Írj be egy egyedi gyorskódot, ami a fejtörőd ikonja lesz
+            (<link>itt</link> tudod legenerálni, vagy válassz egyet az alábbi
+            random generált alakzatok közül):"
+        placeholderName: Fejtörő Neve
+    puzzleResizeBadBuildings:
+        title: Átméretezés nem lehetséges
+        desc: Nem tudod tovább csökkenteni a zóna méretét, mert bizonyos épületek
+            kilógnának a zónából.
+    puzzleLoadError:
+        title: Hibás Fejtörő
+        desc: "A fejtörőt nem sikerült betölteni:"
+    offlineMode:
+        title: Offline Mód
+        desc: Nem tudjuk elérni a szervereket, így a játék Offline módban fut. Kérlek
+            győződj meg róla, hogy megfelelő az internetkapcsolatod.
+    puzzleDownloadError:
+        title: Letöltési Hiba
+        desc: "Nem sikerült letölteni a fejtörőt:"
+    puzzleSubmitError:
+        title: Beküldési Hiba
+        desc: "Nem sikerült beküldeni a fejtörőt:"
+    puzzleSubmitOk:
+        title: Fejtörő Közzétéve
+        desc: Gratulálunk! A fejtörődet közzétettük, így mások által is játszhatóvá
+            vált. A fejtörőidet a "Fejtörőim" ablakban találod.
+    puzzleCreateOffline:
+        title: Offline Mód
+        desc: Offline módban nem lehet elmenteni és közzétenni a fejtörődet. Szeretnéd
+            így is folytatni?
+    puzzlePlayRegularRecommendation:
+        title: Javaslat
+        desc: A Puzzle DLC előtt <strong>erősen</strong> ajánlott az alapjátékot
+            legalább a 12-dik Szintig kijátszani. Ellenekző esetben olyan
+            mechanikákkal találkozhatsz, amelyeket még nem ismersz. Szeretnéd
+            így is folytatni?
+    puzzleShare:
+        title: Gyorskód Másolva a Vágólapra
+        desc: A fejtörő gyorskódját (<key>) kimásoltad a vágólapra! A Fejtörők menüben
+            beillesztve betöltheted vele a fejtörőt.
+    puzzleReport:
+        title: Fejtörő Jelentése
+        options:
+            profane: Durva
+            unsolvable: Nem megoldható
+            trolling: Trollkodás
+    puzzleReportComplete:
+        title: Köszönjük a visszajelzésedet!
+        desc: A fejtörőt sikeresen jelentetted.
+    puzzleReportError:
+        title: Nem sikerült jelenteni
+        desc: "A jelentésedet nem tudtuk feldolgozni:"
+    puzzleLoadShortKey:
+        title: Gyorskód Beillesztése
+        desc: Illeszd be a gyorskódot, hogy betöltsd a Fejtörőt.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -203,6 +278,7 @@ ingame:
         clearSelection: Kijelölés megszüntetése
         pipette: Pipetta
         switchLayers: Réteg váltás
+        clearBelts: Futószalagok Kiürítése
     colors:
         red: Piros
         green: Zöld
@@ -350,8 +426,50 @@ ingame:
                 title: Támogass
                 desc: A játékot továbbfejlesztem szabadidőmben
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Steam Achievementek
+                desc: Szerezd meg mindet!
+    puzzleEditorSettings:
+        zoneTitle: Zóna
+        zoneWidth: Szélesség
+        zoneHeight: Magasság
+        trimZone: Üres szegélyek levásága
+        clearItems: Elemek eltávolítása
+        share: Megosztás
+        report: Jelentés
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Fejtörő Készítő
+        instructions:
+            - 1. Helyezz le <strong>Termelőket</strong>, amelyek alakzatokat és
+              színeket generálnak a játékosoknak.
+            - 2. Készíts el egy vagy több alakzatot, amit szeretnél, hogy a
+              játékos később legyártson, és szállítsd el egy vagy több
+              <strong>Elfogadóba</strong>.
+            - 3. Amint az Elfogadóba folyamatosan érkeznek az alakzatok,
+              <strong>elmenti, mint célt</strong>, amit a játékosnak később
+              teljesítenie kell (Ezt a <strong>zöld jelölő</strong> mutatja).
+            - 4. Kattints a <strong>Lezárás gombra</strong> egy épületen, hogy
+              felfüggeszd azt.
+            - 5. A fejtörőd beküldésekor átnézzük azt, majd lehetőséged lesz
+              közzétenni.
+            - 6. A fejtörő kiadásakor, <strong>minden épület törlődik</strong>,
+              kivéve a Termelők és az Elfogadók - a többit ugyebár a játékosnak
+              kell majd kitalálnia :)
+    puzzleCompletion:
+        title: Fejtörő Teljesítve!
+        titleLike: "Kattins a ♥ gombra, ha tetszett a fejtörő:"
+        titleRating: Mennyire találtad nehéznek a fejtörőt?
+        titleRatingDesc: Az értékelésed lehetővé teszi, hogy okosabb javaslatokat kapj a
+            jövőben
+        continueBtn: Játék Folytatása
+        menuBtn: Menü
+    puzzleMetadata:
+        author: Szerző
+        shortKey: Gyorskód
+        rating: Nehézség
+        averageDuration: Átlagos Időtartam
+        completionRate: Teljesítési Arány
 shopUpgrades:
     belt:
         name: Futószalagok, Elosztók & Alagutak
@@ -561,6 +679,19 @@ buildings:
             name: Létrehozó
             description: Csak Homokozó módban elérhető. Létrehozza a Vezeték rétegen
                 beállított jelet a normál rétegen.
+    constant_producer:
+        default:
+            name: Termelő
+            description: Folyamatosan termeli a beállított alakzatot vagy színt.
+    goal_acceptor:
+        default:
+            name: Elfogadó
+            description: Szállíts alakzatoakt az Elfogadóba, hogy beállítsd egy Fejtörő
+                céljaként.
+    block:
+        default:
+            name: Blokkolás
+            description: Lehetővé teszi, hogy leblokkolj egy csempét.
 storyRewards:
     reward_cutter_and_trash:
         title: Alakzatok Vágása
@@ -968,10 +1099,14 @@ keybindings:
         placementDisableAutoOrientation: Automatikus irány kikapcsolása
         placeMultiple: Több lehelyezése
         placeInverse: Futószalag irányának megfordítása
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Forgatás: Felfelé"
+        rotateToDown: "Forgatás: Lefelé"
+        rotateToRight: "Forgatás: Jobbra"
+        rotateToLeft: "Forgatás: Balra"
+        constant_producer: Termelő
+        goal_acceptor: Elfogadó
+        block: Blokkolás
+        massSelectClear: Futószalagok Kiürítése
 about:
     title: A Játékról
     body: >-
@@ -1007,7 +1142,7 @@ tips:
     - Serial execution is more efficient than parallel.
     - A szimmetria kulcsfontosságú!
     - You can use <b>T</b> to switch between different variants.
-    - Symmetry is key!
+    - A szimmetria kulcsfontosságú!
     - Az épületek megfelelő arányban való építésével maximalizálható a
       hatékonyság.
     - A legmagasabb szinten 5 Bánya teljesen megtölt egy Futószalagot.
@@ -1043,7 +1178,7 @@ tips:
     - A Fejlesztések lapon a gombostű ikon megnyomásával kitűzheted a képernyőre
       az aktuális alakzatot.
     - Keverd össze mind a három alapszínt, hogy Fehéret csinálj!
-    - A pálya végtelen méretű; ne nyomorgasd sösze a gyáraidat, terjeszkedj!
+    - A pálya végtelen méretű; ne nyomorgasd össze a gyáraidat, terjeszkedj!
     - Próbáld ki a Factorio-t is! Az a kedvenc játékom.
     - A Negyedelő az alakzat jobb felső negyedétől kezd vágni, az óramutató
       járásával megegyező irányban!
@@ -1062,6 +1197,76 @@ tips:
     - This game has a lot of settings, be sure to check them out!
     - Your hub marker has a small compass that shows which direction it is in!
     - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
+    - You can click a pinned shape on the left side to unpin it.
     - Press F4 twice to show the tile of your mouse and camera.
     - You can click a pinned shape on the left side to unpin it.
+puzzleMenu:
+    play: Játék
+    edit: Szerkesztés
+    title: Fejtörő Mód
+    createPuzzle: Új Fejtörő
+    loadPuzzle: Betöltés
+    reviewPuzzle: Beküldés & Publikálás
+    validatingPuzzle: Fejtörő Validálása
+    submittingPuzzle: Fejtörő Beküldése
+    noPuzzles: Jelenleg nincs fejtörő ebben a szekcióban.
+    categories:
+        levels: Szintek
+        new: Új
+        top-rated: Legjobbra Értékelt
+        mine: Az Én Fejtörőim
+        easy: Könnyű
+        hard: Nehéz
+        completed: Teljesítve
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+    validation:
+        title: Hibás Fejtörő
+        noProducers: Helyezz le egy Termelőt!
+        noGoalAcceptors: Helyezz le egy Elfogadót!
+        goalAcceptorNoItem: Egy vagy több Elfogadónál nincs beállítva célként alakzat.
+            Szállíts le egy alazkatot a cél beállításához.
+        goalAcceptorRateNotMet: Egy vagy több Elfogadó nem kap elegendő alakzatot.
+            Győződj meg róla, hogy a jelölő minden Elfogadónál zölden világít.
+        buildingOutOfBounds: Egy vagy több épület kívül esik a beépíthető területen.
+            Növeld meg a terület méretét, vagy távolíts el épületeket.
+        autoComplete: A fejtörő automatikusan megoldja magát! Győződj meg róla, hogy a
+            Termelők nem közvetlenül az Elfogadóba termelnek.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
+    invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+        újraindítani. (HIBA - Invalid Api Key).
+    unauthorized: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+        újraindítani. (HIBA - Unauthorized).
+    bad-token: Valami nem oké a játékkal. Próbáld meg frissíteni vagy újraindítani.
+        (HIBA - Bad Token).
+    bad-id: Helytelen Fejtörő azonosító.
+    not-found: A megadott fejtörőt nem találjuk.
+    bad-category: A megadott kategóriát nem találjuk.
+    bad-short-key: A megadott gyorskód helytelen.
+    profane-title: A fejtörő címe csúnya szavakat tartalmaz.
+    bad-title-too-many-spaces: A fejtörő címe túl rövid.
+    bad-shape-key-in-emitter: Egy Termelőnek helytelen alakzat van beállítva.
+    bad-shape-key-in-goal: Egy Elfogadónak helytelen alakzat van beállítva.
+    no-emitters: A fejtörődben nem szerepel Termelő.
+    no-goals: A fejtörődben nem szerepel Elfogadó.
+    short-key-already-taken: Ez a gyorskód már foglalt, kérlek válassz másikat.
+    can-not-report-your-own-puzzle: Nem jelentheted a saját fejtörődet.
+    bad-payload: A kérés helytelen adatot tartalmaz.
+    bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
+    timeout: A kérés időtúllépésbe került.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

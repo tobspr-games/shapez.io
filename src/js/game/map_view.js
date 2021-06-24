@@ -186,7 +186,7 @@ export class MapView extends BaseMap {
      */
     drawBackground(parameters) {
         // Render tile grid
-        if (!this.root.app.settings.getAllSettings().disableTileGrid) {
+        if (!this.root.app.settings.getAllSettings().disableTileGrid || !this.root.gameMode.hasResources()) {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
 

@@ -8,7 +8,7 @@ steamPage:
         심지어 그것만으로는 충분하지 않을 겁니다. 수요는 기하급수적으로 늘어나게 될 것이고, 더욱 복잡한 도형을 더욱 많이 생산하여야 하므로, 유일하게 도움이 되는 것은 끊임없이 확장을 하는 것입니다! 처음에는 단순한 도형만을 만들지만, 나중에는 색소를 추출하고 혼합하여 도형에 색칠을 해야 합니다!
 
         Steam에서 게임을 구매하여 정식 버전의 콘텐츠를 사용하실 수 있지만, 먼저 Shapez.io의 체험판 버전을 플레이해보시고 구매를 고려하셔도 됩니다!
-    what_others_say: What people say about shapez.io
+    what_others_say: shapez.io에 대한 의견들
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -47,6 +47,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+    loggingIn: 로그인 중
 demoBanners:
     title: 체험판 버전
     intro: 정식 버전을 구매해서 모든 콘텐츠를 사용해 보세요!
@@ -66,6 +67,11 @@ mainMenu:
     madeBy: 제작 <author-link>
     subreddit: Reddit
     savegameUnnamed: 이름 없음
+    puzzleMode: 퍼즐 모드
+    back: Back
+    puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
+    puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: 확인
@@ -79,6 +85,9 @@ dialogs:
         viewUpdate: 업데이트 보기
         showUpgrades: 업그레이드 보기
         showKeybindings: 조작법 보기
+        retry: 재시작
+        continue: 계속하기
+        playOffline: 오프라인 플레이
     importSavegameError:
         title: 가져오기 오류
         text: "세이브 파일을 가져오지 못했습니다:"
@@ -163,6 +172,63 @@ dialogs:
     tutorialVideoAvailableForeignLanguage:
         title: 활성화된 튜토리얼
         desc: 현재 레벨에서 사용할 수 있는 튜토리얼 비디오가 있습니다! 허나 영어로만 제공될 것입니다. 보시겠습니까?
+    editConstantProducer:
+        title: 아이템 설정
+    puzzleLoadFailed:
+        title: 퍼즐 불러오기 실패
+        desc: "불행히도 이 퍼즐은 불러오는데 실패하였습니다:"
+    submitPuzzle:
+        title: 퍼즐 보내기
+        descName: "퍼즐에 이름을 지어 주세요:"
+        descIcon: "퍼즐의 아이콘으로 보여지게 될 짧은 단어를 지정해 주세요. (<link>이곳</link>에서 생성하시거나, 아래 랜덤한 모양
+            중 하나를 선택하세요):"
+        placeholderName: 퍼즐 제목
+    puzzleResizeBadBuildings:
+        title: 크기 조절 불가능
+        desc: 몇몇 건물이 구역 밖으로 벗어나게 되므로 크기를 조절할 수 없습니다.
+    puzzleLoadError:
+        title: 잘못된 퍼즐
+        desc: "퍼즐을 불러올 수 없었습니다:"
+    offlineMode:
+        title: 오프라인 모드
+        desc: 서버에 접속할 수 없었으므로 오프라인 모드로 게임이 시작되었습니다. 인터넷 연결 상태를 다시 한번 확인해 주세요.
+    puzzleDownloadError:
+        title: 다운로드 오류
+        desc: "퍼즐을 다운로드할 수 없습니다:"
+    puzzleSubmitError:
+        title: 전송 오류
+        desc: "퍼즐을 전송할 수 없습니다:"
+    puzzleSubmitOk:
+        title: 퍼즐 공개됨
+        desc: 축하합니다! 퍼즐이 업로드되었고 이제 다른 사람이 플레이할 수 있습니다. "내 퍼즐" 섹션에서 찾으실 수 있습니다.
+    puzzleCreateOffline:
+        title: 오프라인 모드
+        desc: 오프라인 모드임으로 퍼즐을 저장하거나 업로드할 수 없습니다. 그래도 계속하시겠습니까?
+    puzzlePlayRegularRecommendation:
+        title: 권장 사항
+        desc: 퍼즐 DLC 플레이시 소개되지 않은 요소를 접하시게 될 수 있으므로, 적어도 일반 게임을 12레벨까지 플레이하시는것을
+            <strong>강력히</strong> 권장드립니다. 그래도 계속하시겠습니까?
+    puzzleShare:
+        title: 짧은 키 복사됨
+        desc: 퍼즐의 짧은 키 (<key>) 가 클립보드에 복사되었습니다! 메인 메뉴에서 퍼즐 접근 시 사용할 수 있습니다.
+    puzzleReport:
+        title: 퍼즐 신고
+        options:
+            profane: 부적절함
+            unsolvable: 풀 수 없음
+            trolling: 낚시성
+    puzzleReportComplete:
+        title: 피드백을 보내주셔서 감사드립니다!
+        desc: 퍼즐이 신고되었습니다.
+    puzzleReportError:
+        title: 신고 실패
+        desc: "오류로 신고가 처리되지 못했습니다:"
+    puzzleLoadShortKey:
+        title: 짧은 키 입력
+        desc: 불러올 퍼즐의 짧은 키를 입력해 주세요.
+    puzzleDelete:
+        title: 퍼즐을 지우시겠습니까?
+        desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -184,6 +250,7 @@ ingame:
         clearSelection: 지우기
         pipette: 피펫
         switchLayers: 레이어 전환
+        clearBelts: Clear belts
     buildingPlacement:
         cycleBuildingVariants: <key> 키를 눌러 변형 전환
         hotkeyLabel: "단축키: <key>"
@@ -269,9 +336,8 @@ ingame:
             21_2_switch_to_wires: <strong>E 키</strong>를 눌러 전선 레이어 로 전환하세요!<br><br> 그 후 색칠기의
                 <strong>네 입력 부분</strong>을 모두 케이블로 연결하세요!
             21_3_place_button: 훌륭해요! 이제 <strong>스위치</strong>를 배치하고 전선으로 연결하세요!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            21_4_press_button: "스위치를 눌러서 색칠기에 <strong>참 신호를 보내</strong> 활성화해보세요.<br><br> 추신:
+                모든 입력을 연결할 필요는 없습니다! 두개만 연결해 보세요."
     colors:
         red: 빨간색
         green: 초록색
@@ -320,8 +386,42 @@ ingame:
                 title: 저를 지원해주세요
                 desc: 저는 여가 시간에 게임을 개발합니다!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: 도전 과제
+                desc: 모두 잡아 보세요!
+    puzzleEditorSettings:
+        zoneTitle: 구역
+        zoneWidth: 너비
+        zoneHeight: 높이
+        trimZone: 자르기
+        clearItems: 아이템 초기화
+        share: 공유
+        report: 신고
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: 퍼즐 생성기
+        instructions:
+            - 1. <strong>일정 생성기</strong>를 배치해 플레이어가 사용할 색깔과 모양 을 생성하세요
+            - 2. 플레이어가 나중에 만들 모양을 하나 이상 만들어 <strong>목표 수집기</strong> 로 배달하도록 만드세요
+            - 3. 목표 수집기가 모양을 일정 양 이상 수집하면 그것은 플레이어가 반드시 <strong>생산해야 할 목표
+              모양</strong>으로 저장합니다 (<strong>초록색 뱃지</strong> 로 표시됨)
+            - 4. 건물의 <strong>잠금 버튼</strong>을 눌러서 비활성화하세요
+            - 5. 리뷰 버튼을 누르면 퍼즐이 검증되고 업로드할수 있게 됩니다.
+            - 6. 공개시, 생성기와 목표 수집기를 제외한 <strong>모든 건물이</strong> 제거됩니다 - 그 부분이 바로
+              플레이어가 스스로 알아내야 하는 것들이죠 :)
+    puzzleCompletion:
+        title: 퍼즐 완료됨!
+        titleLike: "퍼즐이 좋았다면 하트를 눌러주세요:"
+        titleRating: 퍼즐의 난이도는 어땠나요?
+        titleRatingDesc: 당신의 평가는 제가 미래에 더 나은 평가를 만들수 있도록 도울 수 있습니다.
+        continueBtn: 계속 플레이하기
+        menuBtn: 메뉴
+    puzzleMetadata:
+        author: 제작자
+        shortKey: 짧은 키
+        rating: 난이도
+        averageDuration: 평균 플레이 시간
+        completionRate: 완료율
 shopUpgrades:
     belt:
         name: 벨트, 밸런서, 터널
@@ -439,7 +539,7 @@ buildings:
     constant_signal:
         default:
             name: 일정 신호기
-            description: 모양, 색상, 또는 불 값 (1 또는 0) 상수 신호를 방출합니다.
+            description: 모양, 색상, 또는 불 값 (1 또는 0)이 될 수 있는 일정한 신호를 방출합니다.
     lever:
         default:
             name: 스위치
@@ -506,6 +606,18 @@ buildings:
         default:
             name: 아이템 생성기
             description: 샌드박스 모드에서만 사용할 수 있는 아이템으로, 일반 레이어 위에 있는 전선 레이어에서 주어진 신호를 출력합니다.
+    constant_producer:
+        default:
+            name: 일정 생성기
+            description: 지정한 모양이나 색깔을 일정하게 생성합니다.
+    goal_acceptor:
+        default:
+            name: 목표 수집기
+            description: 목표 수집기로 모양을 보내 목표로 설정하세요.
+    block:
+        default:
+            name: 차단기
+            description: 타일을 사용하지 못하게 차단합니다.
 storyRewards:
     reward_cutter_and_trash:
         title: 절단기
@@ -622,13 +734,11 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: " 방금 <strong>전선 레이어</strong>를 활성화하셨습니다: 이것은 일반 레이어 위에 존재하는 별개의 레이어로 수많은
+            새로운 요소를 사용할 수 있습니다!<br><br> <strong>4단 색칠기</strong>를 활성화해 드리겠습니다 -
+            전선 레이어에서 색을 칠할 부분에 연결해 보세요!<br><br> 전선 레이어로 전환하시려면
+            <strong>E</strong>키를 눌러주세요.<br><br> 추신: <strong>힌트를 활성화</strong>해서
+            전선 튜토리얼을 활성화해 보세요!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -765,8 +875,8 @@ settings:
             description: 기본적으로 활성화되어 있으며, 자원 패치에서 피펫 기능을 사용 시 즉시 추출기를 선택합니다.
         simplifiedBelts:
             title: 벨트 단순화 (못생김)
-            description: 성능 향상을 위해 벨트를 가리킬 때를 제외한 모든 상황에서 벨트 아이템을 렌더링하지 않습니다. 이 기능을 사용할 할
-                정도로 심각한 성능 문제가 일어나지 않는 한, 이 설정을 사용할 필요는 없습니다.
+            description: 성능 향상을 위해 벨트를 가리킬 때를 제외한 모든 상황에서 벨트 아이템을 렌더링하지 않습니다. 이 기능을 사용할 정도로
+                심각한 성능 문제가 일어나지 않는 한, 이 설정을 사용할 필요는 없습니다.
         enableMousePan:
             title: 화면 가장자리 패닝
             description: 커서를 화면 가장자리로 옮기면 스크롤되어 지도를 이동할 수 있습니다. 스크롤 속도는 이동 속도 설정에 따릅니다.
@@ -849,10 +959,14 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: 위로 향하게 회전
+        rotateToDown: 아래로 향하게 회전
+        rotateToRight: 오른쪽으로 향하게 회전
+        rotateToLeft: 아래쪽으로 향하게 회전
+        constant_producer: 일정 생성기
+        goal_acceptor: 목표 수집기
+        block: 블록
+        massSelectClear: 벨트 초기화
 about:
     title: 게임 정보
     body: >-
@@ -922,7 +1036,7 @@ tips:
     - 공장을 허브에 가까이 지으면 나중에 거대한 프로젝트에 방해가 될 수 있습니다.
     - 업그레이드 목록에 나타나는 도형 옆의 핀 아이콘을 누르면 화면에 고정됩니다.
     - 세 가지의 기본 색상을 모두 섞어서 흰색을 만드세요!
-    - 당신에겐 무한한 땅이 있습니다. 굳이 공간을 적게 쓸 필요는 없으니, 맘껏 확장하세요!
+    - 당신에겐 무한한 땅이 있습니다. 굳이 공간을 적게 쓸 필요는 없으니, 마음껏 확장하세요!
     - Factorio도 플레이 해보세요! 제가 가장 좋아하는 게임입니다.
     - 4단 절단기는 오른쪽 상단부터 시계 방향으로 차례로 절단합니다.
     - 메인 메뉴에서 세이브 파일을 다운로드 할 수 있습니다.
@@ -933,3 +1047,65 @@ tips:
     - F4 키를 누르면 FPS와 틱 비율을 표시합니다.
     - F4 키를 두번 누르면 마우스와 카메라의 타일을 표시합니다.
     - 왼쪽에 고정된 도형을 클릭하여 고정을 해제할 수 있습니다.
+puzzleMenu:
+    play: 플레이
+    edit: 편집
+    title: 퍼즐 모드
+    createPuzzle: 퍼즐 만들기
+    loadPuzzle: 불러오기
+    reviewPuzzle: 리뷰 & 공개
+    validatingPuzzle: 퍼즐 검증중
+    submittingPuzzle: 퍼즐 전송중
+    noPuzzles: 이 섹션에 퍼즐이 없습니다.
+    categories:
+        levels: 레벨순
+        new: 최신순
+        top-rated: 등급순
+        mine: 내 퍼즐
+        easy: 쉬움
+        hard: 어러움
+        completed: 완료함
+        medium: 중간
+        official: 공식
+        trending: 오늘의 인기
+        trending-weekly: 이 주의 인기
+        categories: 카테고리
+        difficulties: 난이도순
+        account: 내 퍼즐들
+        search: 검색
+    validation:
+        title: 잘못된 퍼즐
+        noProducers: 일정 생성기를 배치해주세요!
+        noGoalAcceptors: 목표 수집기를 배치해주세요!
+        goalAcceptorNoItem: 하나 이상의 목표 수집기에 아이템이 지정되지 않았습니다. 모양을 운반해서 목표를 지정해 주세요.
+        goalAcceptorRateNotMet: 하나 이상의 목표 수집기에 아이템이 충분하지 않습니다. 모든 수집기의 표시가 초록색인지 확인해주세요.
+        buildingOutOfBounds: 하나 이상의 건물이 지을 수 있는 영역 밖에 존재합니다. 영역을 늘리거나 건물을 제거하세요.
+        autoComplete: 퍼즐이 스스로 완료됩니다! 일정 생성기가 만든 모양이 목표 수집기로 바로 들어가고 있는건 아닌지 확인해주세요.
+    difficulties:
+        easy: 쉬움
+        medium: 중간
+        hard: 어려움
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+backendErrors:
+    ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
+    invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
+    unauthorized: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (인증되지 않음).
+    bad-token: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 토큰).
+    bad-id: 잘못된 퍼즐 구분자.
+    not-found: 해당하는 퍼즐을 찾을 수 없습니다.
+    bad-category: 해당하는 분류를 찾을 수 없습니다.
+    bad-short-key: 입력한 짧은 키가 올바르지 않습니다.
+    profane-title: 퍼즐 제목에 부적절한 단어가 포함되어 있습니다.
+    bad-title-too-many-spaces: 퍼즐 제목이 너무 짧습니다.
+    bad-shape-key-in-emitter: 일정 생성기에 잘못된 아이템이 지정되어 있습니다.
+    bad-shape-key-in-goal: 목표 수집기에 잘못된 아이템이 지정되어 있습니다.
+    no-emitters: 퍼즐에 일정 생성기가 하나도 존재하지 않습니다.
+    no-goals: 퍼즐에 목표 생성기가 하나도 존재하지 않습니다.
+    short-key-already-taken: 이 짧은 키는 이미 사용중입니다. 다른 것을 이용해 주세요.
+    can-not-report-your-own-puzzle: 자신이 만든 퍼즐을 신고할 수 없습니다.
+    bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
+    bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
+    timeout: 요청 시간이 초과되었습니다.
+    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 제거하고 싶다면 support@shapez.io로 문의하세요!
+    no-permission: 이 작업을 할 권한이 없습니다.

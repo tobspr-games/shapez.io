@@ -1,3 +1,4 @@
+import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults, enumColors } from "../colors";
 import {
@@ -59,6 +60,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.painterQuad]: this.process_PAINTER_QUAD,
             [enumItemProcessorTypes.hub]: this.process_HUB,
             [enumItemProcessorTypes.reader]: this.process_READER,
+            [enumItemProcessorTypes.goal]: this.process_GOAL,
         };
 
         // Bind all handlers
@@ -561,5 +563,33 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const item = /** @type {ShapeItem} */ (payload.items[i].item);
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
         }
+    }
+
+    /**
+     * @param {ProcessorImplementationPayload} payload
+     */
+    process_GOAL(payload) {
+        const goalComp = payload.entity.components.GoalAcceptor;
+        const item = payload.items[0].item;
+        const now = this.root.time.now();
+
+        if (goalComp.item && !item.equals(goalComp.item)) {
+            goalComp.clearItems();
+        } else {
+            goalComp.currentDeliveredItems = Math.min(
+                goalComp.currentDeliveredItems + 1,
+                globalConfig.goalAcceptorItemsRequired
+            );
+        }
+
+        if (this.root.gameMode.getIsEditor()) {
+            // while playing in editor, assign the item
+            goalComp.item = payload.items[0].item;
+        }
+
+        goalComp.lastDelivery = {
+            item,
+            time: now,
+        };
     }
 }
