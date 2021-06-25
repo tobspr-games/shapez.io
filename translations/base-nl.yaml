@@ -79,7 +79,7 @@ mainMenu:
     puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken?
         Verkrijg de puzzel DLC nu op Steam voor nog meer plezier!
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Bekijk DLC
 dialogs:
     buttons:
         ok: OK
@@ -445,8 +445,8 @@ ingame:
         clearItems: Items leeg maken
         share: Delen
         report: Rapporteren
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Verwijder Gebouwen
+        resetPuzzle: Reset Puzzel
     puzzleEditorControls:
         title: Puzzel Maker
         instructions:
@@ -1238,7 +1238,7 @@ puzzleMenu:
         hard: Moeilijk
         completed: Voltooid
         medium: Medium
-        official: Officieell
+        official: Officieel
         trending: Trending vandaag
         trending-weekly: Trending wekelijks
         categories: Categorieën
