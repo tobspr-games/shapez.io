@@ -98,13 +98,6 @@ export class HUDWiresOverlay extends BaseHUDPart {
             if (network && network.hasValue()) {
                 value = network.currentValue;
             }
-        } else if (contents.components.Display) {
-            const pinsComp = contents.components.WiredPins;
-            const network = pinsComp.slots[0].linkedNetwork;
-
-            if (network && network.hasValue()) {
-                value = network.currentValue;
-            }
         }
         // else if (contents.components.ConstantSignal) {
         // value = contents.components.ConstantSignal.signal;
@@ -131,6 +124,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
                 const effectiveRotation = Math.radians(
                     staticComp.rotation + enumDirectionToAngle[slot.direction]
                 );
+                // -9.1 comes from systems > wired_pins.js > line 207
                 const valueSpritePos = slotPos.add(new Vector(0, -9.1).rotated(effectiveRotation));
                 const length = mouseTilePos.sub(valueSpritePos).length();
 
