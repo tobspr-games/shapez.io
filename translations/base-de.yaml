@@ -398,7 +398,7 @@ ingame:
         waypoints: Markierungen
         hub: Hub
         description: Linksklick auf eine Markierung, um dort hinzugelangen. Rechtsklick, um
-            die zu löschen.<br><br>Drücke <keybinding>, um eine Markierung aus
+            sie zu löschen.<br><br>Drücke <keybinding>, um eine Markierung aus
             deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um eine
             Markierung auf der ausgewählten Position zu erschaffen.
         creationSuccessNotification: Markierung wurde erstellt.
@@ -503,7 +503,7 @@ ingame:
         titleLike: "Klicke auf das Herz, wenn dir das Puzzle gefallen hat:"
         titleRating: Wie schwierig fandest du das Puzzle?
         titleRatingDesc: Deine Bewertung hilft mir, in Zukunft bessere Vorschläge zu machen
-        continueBtn: Weiter spielen
+        continueBtn: Weiterspielen
         menuBtn: Menü
     puzzleMetadata:
         author: Ersteller
@@ -910,7 +910,7 @@ storyRewards:
             jetzt einen bestimmten <strong>Durchsatz</strong> benötigt, empfehle
             ich dringend, eine Maschine zu bauen, die automatisch die gewünschte
             Form liefert!<br><br> Der Hub gibt die gewünschte Form auf der
-            Wires-Ebene aus. Also musst du sie nur analysieren und deine Fabrik dementsprechend zu konfigurieren.
+            Wires-Ebene aus, also musst du sie nur analysieren und deine Fabrik dementsprechend konfigurieren (lassen).
     reward_demo_end:
         title: Ende der Demo
         desc: Du bist am Ende der Demo angekommen!
@@ -1290,7 +1290,7 @@ tips:
     - Mische alle drei Grundfarben, um Weiß zu erhalten!
     - Du hast eine unendlich große Karte, nutze den Platz und expandiere!
     - Probier auch mal Factorio! Es ist mein Lieblingsspiel.
-    - Der vierfache schneider schneidet im Uhrzeigersinn von oben rechts beginnend!
+    - Der vierfache Schneider schneidet im Uhrzeigersinn von oben rechts beginnend!
     - Du kannst deine Speicherstände im Hauptmenü herunterladen!
     - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den
       Einstellungen an.
