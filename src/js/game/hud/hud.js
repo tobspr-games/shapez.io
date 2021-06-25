@@ -44,7 +44,6 @@ export class GameHUD {
 
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
-            buildingPlacer: new HUDBuildingPlacer(this.root),
 
             // Must always exist
             settingsMenu: new HUDSettingsMenu(this.root),
@@ -82,6 +81,8 @@ export class GameHUD {
         for (const [partId, part] of Object.entries(additionalParts)) {
             this.parts[partId] = new part(this.root);
         }
+
+        this.parts.buildingPlacer = new HUDBuildingPlacer(this.root);
 
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
