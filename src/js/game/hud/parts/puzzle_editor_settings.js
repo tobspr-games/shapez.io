@@ -1,5 +1,3 @@
-/* typehints:start */
-/* typehints:end */
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
@@ -50,7 +48,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                     </div>
 
                     <div class="buildingsButton">
-                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
+                        <button class="styledButton resetPuzzle">${T.ingame.puzzleEditorSettings.resetPuzzle}</button>
                     </div>
 
                 </div>`
@@ -62,7 +60,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
             bind("button.clearItems", this.clearItems);
-            bind("button.clearBuildings", this.clearBuildings);
+            bind("button.resetPuzzle", this.resetPuzzle);
         }
     }
 
@@ -70,9 +68,14 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         this.root.logic.clearAllBeltsAndItems();
     }
 
-    clearBuildings() {
+    resetPuzzle() {
         for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
+            const goalComp = entity.components.GoalAcceptor;
+
+            if (goalComp) {
+                goalComp.clear();
+            }
 
             if (
                 [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
