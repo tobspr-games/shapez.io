@@ -23,14 +23,6 @@ export class MetaBlockBuilding extends MetaBuilding {
     }
 
     /**
-     * @param {import("../../savegame/savegame_serializer").GameRoot} root
-     * @returns {boolean}
-     */
-    getIsPuzzleRemovable(root) {
-        return false;
-    }
-
-    /**
      * Creates the entity at the given location
      * @param {Entity} entity
      */

@@ -1,10 +1,14 @@
 /* typehints:start */
 /* typehints:end */
 import { globalConfig } from "../../../core/config";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { PuzzleGameMode } from "../../modes/puzzle";
 import { BaseHUDPart } from "../base_hud_part";
@@ -58,7 +62,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
             bind("button.clearItems", this.clearItems);
-            bind("button.resetPuzzle", this.resetPuzzle);
+            bind("button.clearBuildings", this.clearBuildings);
         }
     }
 
@@ -66,15 +70,15 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         this.root.logic.clearAllBeltsAndItems();
     }
 
-    resetPuzzle() {
+    clearBuildings() {
         for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
-            const goalComp = entity.components.GoalAcceptor;
 
-            if (!staticComp.getMetaBuilding().getIsPuzzleRemovable(this.root)) {
-                if (goalComp) {
-                    goalComp.clear();
-                }
+            if (
+                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
+                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                    .includes(staticComp.getMetaBuilding().id)
+            ) {
                 continue;
             }
 
