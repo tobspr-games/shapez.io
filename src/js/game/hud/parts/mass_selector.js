@@ -1,6 +1,5 @@
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { formatBigNumberFull } from "../../../core/utils";
@@ -8,8 +7,6 @@ import { Vector } from "../../../core/vector";
 import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
-import { MetaBlockBuilding } from "../../buildings/block";
-import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { enumMouseButton } from "../../camera";
 import { Component } from "../../component";
 import { Entity } from "../../entity";

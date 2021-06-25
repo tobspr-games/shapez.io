@@ -116,6 +116,15 @@ export class MetaBuilding {
     }
 
     /**
+     * Returns whether this building is removable in puzzle mode
+     * @param {GameRoot} root
+     * @returns {boolean}
+     */
+    getIsPuzzleRemovable(root) {
+        return true;
+    }
+
+    /**
      * Returns the placement sound
      * @returns {string}
      */

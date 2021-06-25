@@ -1,14 +1,10 @@
 /* typehints:start */
 /* typehints:end */
 import { globalConfig } from "../../../core/config";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
-import { MetaBlockBuilding } from "../../buildings/block";
-import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
-import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { PuzzleGameMode } from "../../modes/puzzle";
 import { BaseHUDPart } from "../base_hud_part";
@@ -50,7 +46,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                     </div>
 
                     <div class="buildingsButton">
-                        <button class="styledButton clearBuildings">${T.ingame.puzzleEditorSettings.clearBuildings}</button>
+                        <button class="styledButton resetPuzzle">${T.ingame.puzzleEditorSettings.resetPuzzle}</button>
                     </div>
 
                 </div>`
@@ -62,7 +58,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
             bind("button.clearItems", this.clearItems);
-            bind("button.clearBuildings", this.clearBuildings);
+            bind("button.resetPuzzle", this.resetPuzzle);
         }
     }
 
@@ -70,15 +66,15 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         this.root.logic.clearAllBeltsAndItems();
     }
 
-    clearBuildings() {
+    resetPuzzle() {
         for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
             const staticComp = entity.components.StaticMapEntity;
+            const goalComp = entity.components.GoalAcceptor;
 
-            if (
-                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
-                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
-                    .includes(staticComp.getMetaBuilding().id)
-            ) {
+            if (!staticComp.getMetaBuilding().getIsPuzzleRemovable(this.root)) {
+                if (goalComp) {
+                    goalComp.clear();
+                }
                 continue;
             }
 
