@@ -38,7 +38,7 @@ export class HUDPuzzlePlaySettings extends BaseHUDPart {
             const staticComp = entity.components.StaticMapEntity;
             const goalComp = entity.components.GoalAcceptor;
 
-            if (!staticComp.getMetaBuilding().getIsPuzzleRemovable(this.root)) {
+            if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
                 if (goalComp) {
                     goalComp.clear();
                 }
