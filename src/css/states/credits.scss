@@ -1,0 +1,40 @@
+#state_CreditsState {
+    .container .content {
+        text-align: center;
+
+        .section {
+            @include S(margin-top, 10px);
+            @include S(padding, 5px);
+            background-color: #f8f8f8;
+            @include DarkThemeOverride {
+                background: rgba(0, 10, 20, 0.1);
+            }
+
+            .title {
+                @include Heading;
+            }
+
+            .people {
+                .entry {
+                }
+
+                .flex-entry {
+                    display: flex;
+
+                    .entry {
+                        display: inline-block;
+                        width: min-content;
+                    }
+                }
+            }
+
+            .people-flex {
+                display: flex;
+
+                .entry {
+                    display: flex;
+                }
+            }
+        }
+    }
+}
