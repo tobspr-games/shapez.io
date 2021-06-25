@@ -398,9 +398,7 @@ export class MainMenuState extends GameState {
     }
 
     onPuzzleWishlistButtonClicked() {
-        this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.puzzleDlcStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
-        );
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage + "?utm_medium=mmsl2");
     }
 
     onBackButtonClicked() {
@@ -410,9 +408,7 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
-        this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
-        );
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu");
 
         return false;
     }
@@ -641,7 +637,9 @@ export class MainMenuState extends GameState {
         );
         getStandalone.add(() => {
             this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
-            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?reF=ssll");
+            this.app.platformWrapper.openExternalLink(
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_slotlimit"
+            );
         });
     }
 

@@ -427,7 +427,7 @@ export class AchievementCollection {
     createLevelOptions(level) {
         return {
             init: ({ key }) => this.unlock(key, this.root.hubGoals.level),
-            isValid: currentLevel => currentLevel >= level,
+            isValid: currentLevel => currentLevel > level,
             signal: "storyGoalCompleted",
         };
     }

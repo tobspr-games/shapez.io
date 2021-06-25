@@ -6,6 +6,7 @@ import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { ShapeDefinition } from "../shape_definition";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
@@ -44,6 +45,8 @@ export class GameHUD {
 
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
+
+            blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
 
             // Must always exist
