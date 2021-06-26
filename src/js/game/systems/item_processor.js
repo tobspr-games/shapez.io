@@ -1,3 +1,4 @@
+import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults, enumColors } from "../colors";
 import {
@@ -572,23 +573,23 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const item = payload.items[0].item;
         const now = this.root.time.now();
 
+        if (goalComp.item && !item.equals(goalComp.item)) {
+            goalComp.clearItems();
+        } else {
+            goalComp.currentDeliveredItems = Math.min(
+                goalComp.currentDeliveredItems + 1,
+                globalConfig.goalAcceptorItemsRequired
+            );
+        }
+
         if (this.root.gameMode.getIsEditor()) {
             // while playing in editor, assign the item
             goalComp.item = payload.items[0].item;
-            goalComp.deliveryHistory.push({
-                item,
-                time: now,
-            });
-        } else {
-            // otherwise, make sure it is the same, otherwise reset
-            if (item.equals(goalComp.item)) {
-                goalComp.deliveryHistory.push({
-                    item,
-                    time: now,
-                });
-            } else {
-                goalComp.deliveryHistory = [];
-            }
         }
+
+        goalComp.lastDelivery = {
+            item,
+            time: now,
+        };
     }
 }

@@ -12,10 +12,10 @@ steamPage:
 
         A játék Steamen történő megvásárlása hozzáférést biztosít a teljes verzióhoz, de kipróbálhatod a játékot a shapez.io oldalon, és később dönthetsz!
     what_others_say: Mit mondanak mások a shapez.io-ról
-    nothernlion_comment: Ez a játék nagyszerű - Csodás élmény vele játszani,
-        az idő meg csak repül.
-    notch_comment: Basszus... aludnom kéne, de épp most jöttem rá,
-        hogyan tudok számítógépet építeni a shapez.io-ban!
+    nothernlion_comment: Ez a játék nagyszerű - Csodás élmény vele játszani, az idő
+        meg csak repül.
+    notch_comment: Basszus... aludnom kéne, de épp most jöttem rá, hogyan tudok
+        számítógépet építeni a shapez.io-ban!
     steam_review_comment: Ez a játék ellopta az életemet, de nem kérem vissza!
         Nagyon nyugis gyárépítős játék, amiben nem győzöm a futószalagjaimat
         optimalizálni.
@@ -72,9 +72,10 @@ mainMenu:
     savegameUnnamed: Névtelen
     puzzleMode: Fejtörő Mód
     back: Vissza
-    puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát? Szerezd meg a Puzzle
-        DLC-t a Steamen most!
+    puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
+        Szerezd meg a Puzzle DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -212,8 +213,8 @@ dialogs:
         desc: "A fejtörőt nem sikerült betölteni:"
     offlineMode:
         title: Offline Mód
-        desc: Nem tudjuk elérni a szervereket, így a játék Offline módban fut.
-            Kérlek győződj meg róla, hogy megfelelő az internetkapcsolatod.
+        desc: Nem tudjuk elérni a szervereket, így a játék Offline módban fut. Kérlek
+            győződj meg róla, hogy megfelelő az internetkapcsolatod.
     puzzleDownloadError:
         title: Letöltési Hiba
         desc: "Nem sikerült letölteni a fejtörőt:"
@@ -226,13 +227,14 @@ dialogs:
             vált. A fejtörőidet a "Fejtörőim" ablakban találod.
     puzzleCreateOffline:
         title: Offline Mód
-        desc: Offline módban nem lehet elmenteni és közzétenni a fejtörődet.
-            Szeretnéd így is folytatni?
+        desc: Offline módban nem lehet elmenteni és közzétenni a fejtörődet. Szeretnéd
+            így is folytatni?
     puzzlePlayRegularRecommendation:
         title: Javaslat
-        desc: A Puzzle DLC előtt <strong>erősen</strong> ajánlott az alapjátékot legalább
-            a 12-dik Szintig kijátszani. Ellenekző esetben olyan mechanikákkal találkozhatsz,
-            amelyeket még nem ismersz. Szeretnéd így is folytatni?
+        desc: A Puzzle DLC előtt <strong>erősen</strong> ajánlott az alapjátékot
+            legalább a 12-dik Szintig kijátszani. Ellenekző esetben olyan
+            mechanikákkal találkozhatsz, amelyeket még nem ismersz. Szeretnéd
+            így is folytatni?
     puzzleShare:
         title: Gyorskód Másolva a Vágólapra
         desc: A fejtörő gyorskódját (<key>) kimásoltad a vágólapra! A Fejtörők menüben
@@ -252,6 +254,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Gyorskód Beillesztése
         desc: Illeszd be a gyorskódot, hogy betöltsd a Fejtörőt.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -431,13 +436,16 @@ ingame:
         clearItems: Elemek eltávolítása
         share: Megosztás
         report: Jelentés
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Fejtörő Készítő
         instructions:
-            - 1. Helyezz le <strong>Termelőket</strong>, amelyek alakzatokat és színeket
-              generálnak a játékosoknak.
-            - 2. Készíts el egy vagy több alakzatot, amit szeretnél, hogy a játékos később legyártson,
-              és szállítsd el egy vagy több <strong>Elfogadóba</strong>.
+            - 1. Helyezz le <strong>Termelőket</strong>, amelyek alakzatokat és
+              színeket generálnak a játékosoknak.
+            - 2. Készíts el egy vagy több alakzatot, amit szeretnél, hogy a
+              játékos később legyártson, és szállítsd el egy vagy több
+              <strong>Elfogadóba</strong>.
             - 3. Amint az Elfogadóba folyamatosan érkeznek az alakzatok,
               <strong>elmenti, mint célt</strong>, amit a játékosnak később
               teljesítenie kell (Ezt a <strong>zöld jelölő</strong> mutatja).
@@ -452,7 +460,8 @@ ingame:
         title: Fejtörő Teljesítve!
         titleLike: "Kattins a ♥ gombra, ha tetszett a fejtörő:"
         titleRating: Mennyire találtad nehéznek a fejtörőt?
-        titleRatingDesc: Az értékelésed lehetővé teszi, hogy okosabb javaslatokat kapj a jövőben
+        titleRatingDesc: Az értékelésed lehetővé teszi, hogy okosabb javaslatokat kapj a
+            jövőben
         continueBtn: Játék Folytatása
         menuBtn: Menü
     puzzleMetadata:
@@ -677,7 +686,8 @@ buildings:
     goal_acceptor:
         default:
             name: Elfogadó
-            description: Szállíts alakzatoakt az Elfogadóba, hogy beállítsd egy Fejtörő céljaként.
+            description: Szállíts alakzatoakt az Elfogadóba, hogy beállítsd egy Fejtörő
+                céljaként.
     block:
         default:
             name: Blokkolás
@@ -1188,6 +1198,8 @@ tips:
     - Your hub marker has a small compass that shows which direction it is in!
     - To clear belts, cut the area and then paste it at the same location.
     - You can click a pinned shape on the left side to unpin it.
+    - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
     play: Játék
     edit: Szerkesztés
@@ -1203,10 +1215,17 @@ puzzleMenu:
         new: Új
         top-rated: Legjobbra Értékelt
         mine: Az Én Fejtörőim
-        short: Rövid
         easy: Könnyű
         hard: Nehéz
         completed: Teljesítve
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
     validation:
         title: Hibás Fejtörő
         noProducers: Helyezz le egy Termelőt!
@@ -1219,12 +1238,18 @@ puzzleMenu:
             Növeld meg a terület méretét, vagy távolíts el épületeket.
         autoComplete: A fejtörő automatikusan megoldja magát! Győződj meg róla, hogy a
             Termelők nem közvetlenül az Elfogadóba termelnek.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
-    invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy újraindítani.
-        (HIBA - Invalid Api Key).
-    unauthorized: Valami nem oké a játékkal. Próbáld meg frissíteni vagy újraindítani.
-        (HIBA - Unauthorized).
+    invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+        újraindítani. (HIBA - Invalid Api Key).
+    unauthorized: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+        újraindítani. (HIBA - Unauthorized).
     bad-token: Valami nem oké a játékkal. Próbáld meg frissíteni vagy újraindítani.
         (HIBA - Bad Token).
     bad-id: Helytelen Fejtörő azonosító.
@@ -1242,3 +1267,6 @@ backendErrors:
     bad-payload: A kérés helytelen adatot tartalmaz.
     bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
     timeout: A kérés időtúllépésbe került.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

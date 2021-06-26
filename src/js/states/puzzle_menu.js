@@ -1,4 +1,3 @@
-import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
@@ -11,8 +10,8 @@ import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
 const navigation = {
-    categories: ["official", "top-rated", "trending", "new"],
-    difficulties: ["easy", "medium", "hard", "short"],
+    categories: ["official", "top-rated", "trending", "trending-weekly", "new"],
+    difficulties: ["easy", "medium", "hard"],
     account: ["mine", "completed"],
 };
 
@@ -72,6 +71,7 @@ export class PuzzleMenuState extends TextualGameState {
 
                     <div class="categories subCategories">
                     </div>
+
                 </div>
 
 
@@ -147,7 +147,10 @@ export class PuzzleMenuState extends TextualGameState {
             activeCategory.classList.remove("active");
         }
 
-        this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`).classList.add("active");
+        const newActiveCategory = this.htmlElement.querySelector(`[data-root-category="${rootCategory}"]`);
+        if (newActiveCategory) {
+            newActiveCategory.classList.add("active");
+        }
 
         // Rerender buttons
 
@@ -182,6 +185,7 @@ export class PuzzleMenuState extends TextualGameState {
         for (const puzzle of puzzles) {
             const elem = document.createElement("div");
             elem.classList.add("puzzle");
+            elem.setAttribute("data-puzzle-id", String(puzzle.id));
 
             if (this.activeCategory !== "mine") {
                 elem.classList.toggle("completed", puzzle.completed);
@@ -206,7 +210,7 @@ export class PuzzleMenuState extends TextualGameState {
             elem.appendChild(stats);
 
             if (
-                puzzle.downloads > 0 &&
+                puzzle.downloads > 3 &&
                 !["official", "easy", "medium", "hard"].includes(this.activeCategory)
             ) {
                 const difficulty = document.createElement("div");
@@ -252,6 +256,23 @@ export class PuzzleMenuState extends TextualGameState {
             icon.appendChild(canvas);
             elem.appendChild(icon);
 
+            if (this.activeCategory === "mine") {
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("styledButton", "delete");
+                this.trackClicks(
+                    deleteButton,
+                    () => {
+                        this.tryDeletePuzzle(puzzle);
+                    },
+                    {
+                        consumeEvents: true,
+                        preventClick: true,
+                        preventDefault: true,
+                    }
+                );
+                elem.appendChild(deleteButton);
+            }
+
             container.appendChild(elem);
 
             this.trackClicks(elem, () => this.playPuzzle(puzzle));
@@ -263,6 +284,33 @@ export class PuzzleMenuState extends TextualGameState {
             elem.innerText = T.puzzleMenu.noPuzzles;
             container.appendChild(elem);
         }
+    }
+
+    /**
+     * @param {import("../savegame/savegame_typedefs").PuzzleMetadata} puzzle
+     */
+    tryDeletePuzzle(puzzle) {
+        const signals = this.dialogs.showWarning(
+            T.dialogs.puzzleDelete.title,
+            T.dialogs.puzzleDelete.desc.replace("<title>", puzzle.title),
+            ["delete:bad", "cancel:good"]
+        );
+        signals.delete.add(() => {
+            const closeLoading = this.dialogs.showLoadingDialog();
+
+            this.asyncChannel
+                .watch(this.app.clientApi.apiDeletePuzzle(puzzle.id))
+                .then(() => {
+                    const element = this.htmlElement.querySelector("[data-puzzle-id='" + puzzle.id + "']");
+                    if (element) {
+                        element.remove();
+                    }
+                })
+                .catch(err => {
+                    this.dialogs.showWarning(T.global.error, String(err));
+                })
+                .then(closeLoading);
+        });
     }
 
     /**

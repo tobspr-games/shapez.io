@@ -11,12 +11,12 @@ steamPage:
 
         Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
     what_others_say: Co o shapez.io říkají lidé
-    nothernlion_comment: Tato hra je úžasná - Užívám si čas strávený hraním této hry,
-        jen strašně rychle utekl.
-    notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna přišel na to,
-        jak v shapez.io vytvořit počítač.
-    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět.
-        Odpočinková factory hra, která mi nedovolí přestat dělat mé výrobní linky více
+    nothernlion_comment: Tato hra je úžasná - Užívám si čas strávený hraním této
+        hry, jen strašně rychle utekl.
+    notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna
+        přišel na to, jak v shapez.io vytvořit počítač.
+    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět. Odpočinková
+        factory hra, která mi nedovolí přestat dělat mé výrobní linky více
         efektivní.
 global:
     loading: Načítání
@@ -72,9 +72,10 @@ mainMenu:
     savegameUnnamed: Nepojmenovaný
     puzzleMode: Puzzle mód
     back: Zpět
-    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní Puzzle
-        DLC na Steamu pro ještě více zábavy!
+    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní
+        Puzzle DLC na Steamu pro ještě více zábavy!
     puzzleDlcWishlist: Přidejte si nyní na seznam přání!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -196,20 +197,19 @@ dialogs:
         title: Odeslat puzzle
         descName: "Pojmenujte svůj puzzle:"
         descIcon: "Prosím zadejte unikátní krátký klíč, který bude zobrazen jako ikona
-            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte jeden
-            z níže náhodně vybraných tvarů):"
+            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte
+            jeden z níže náhodně vybraných tvarů):"
         placeholderName: Název puzzlu
     puzzleResizeBadBuildings:
         title: Změna velikosti není možná
-        desc: Zónu není možné více zmenšit, protože by některé budovy byly
-            mimo zónu.
+        desc: Zónu není možné více zmenšit, protože by některé budovy byly mimo zónu.
     puzzleLoadError:
         title: Špatný puzzle
         desc: "Načítání puzzlu selhalo:"
     offlineMode:
         title: Offline mód
-        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline módu.
-            Ujistěte se, že máte aktivní připojení k internetu.
+        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline
+            módu. Ujistěte se, že máte aktivní připojení k internetu.
     puzzleDownloadError:
         title: Chyba stahování
         desc: "Stažení puzzlu selhalo:"
@@ -218,17 +218,18 @@ dialogs:
         desc: "Odeslání puzzlu selhalo:"
     puzzleSubmitOk:
         title: Puzzle publikováno
-        desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro
-            ostatní hráče. Můžete ho najít v sekci "Moje puzzly".
+        desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro ostatní hráče.
+            Můžete ho najít v sekci "Moje puzzly".
     puzzleCreateOffline:
         title: Offline mód
-        desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše
-            puzzle. Chcete přesto pokračovat?
+        desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše puzzle.
+            Chcete přesto pokračovat?
     puzzlePlayRegularRecommendation:
         title: Doporučení
-        desc: <strong>Důrazně</strong> doporučujeme průchod základní hrou nejméně do úrovně 12
-            před vstupem do puzzle DLC, jinak můžete narazit na
-            mechaniku hry, se kterou jste se ještě nesetkali. Chcete přesto pokračovat?
+        desc: <strong>Důrazně</strong> doporučujeme průchod základní hrou nejméně do
+            úrovně 12 před vstupem do puzzle DLC, jinak můžete narazit na
+            mechaniku hry, se kterou jste se ještě nesetkali. Chcete přesto
+            pokračovat?
     puzzleShare:
         title: Krátký klíč zkopírován
         desc: Krátký klíč tohoto puzzlu (<key>) byl zkopírován do vaší schránky! Může
@@ -248,6 +249,9 @@ dialogs:
     puzzleLoadShortKey:
         title: Vložte krátký klíč
         desc: Vložte krátký klíč pro načtení příslušného puzzlu.
+    puzzleDelete:
+        title: Smazat puzzle?
+        desc: Jste si jisti, že chcete smazat '<title>'? Tato akce je nevratná!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -427,6 +431,8 @@ ingame:
         clearItems: Vymazat tvary
         share: Sdílet
         report: Nahlásit
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzle editor
         instructions:
@@ -435,15 +441,15 @@ ingame:
             - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
               doručte to do jednoho či více <strong>příjemců cílů</strong>.
             - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
-              úsek, <strong>uloží se jako cíl</strong>, který hráč musí
-              pozdeji vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
-            - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově dojde k její
-              deaktivaci.
+              úsek, <strong>uloží se jako cíl</strong>, který hráč musí později
+              vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
+            - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově
+              dojde k její deaktivaci.
             - 5. Jakmile kliknete na ověření, vaše puzzle bude ověřeno a můžete
               ho publikovat.
             - 6. Během publikace budou kromě výrobníků a příjemců cílů
-              <strong>všechny budovy odstraněny</strong> - To je ta část,
-              na kterou má koneckonců každý hráč přijít sám. :)
+              <strong>všechny budovy odstraněny</strong> - To je ta část, na
+              kterou má koneckonců každý hráč přijít sám. :)
     puzzleCompletion:
         title: Puzzle dokončeno!
         titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
@@ -1179,22 +1185,36 @@ puzzleMenu:
         new: Nové
         top-rated: Nejlépe hodnocené
         mine: Moje puzzly
-        short: Krátké
         easy: Lehké
         hard: Těžké
         completed: Dokončeno
+        medium: Střední
+        official: Oficiální
+        trending: Populární denně
+        trending-weekly: Populární týdně
+        categories: Kategorie
+        difficulties: Dle obtížnosti
+        account: Moje puzzly
+        search: Vyhledávání
     validation:
         title: Neplatný puzzle
         noProducers: Prosím umístěte výrobník!
         noGoalAcceptors: Prosím umístěte příjemce cílů!
         goalAcceptorNoItem: Jeden nebo více příjemců cílů ještě nemají nastavený tvar.
             Doručte jim tvar, abyste jej nastavili jako cíl.
-        goalAcceptorRateNotMet: Jeden nebo více příjemců cílů nedostávají dostatečný počet tvarů.
-            Ujistěte se, že indikátory jsou zelené pro všechny příjemce.
-        buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast.
-            Buď zvětšete plochu, nebo je odstraňte.
-        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že vyrobníky
-            nedodávají své tvary přímo do přijemců cílů.
+        goalAcceptorRateNotMet: Jeden nebo více příjemců cílů nedostávají dostatečný
+            počet tvarů. Ujistěte se, že indikátory jsou zelené pro všechny
+            příjemce.
+        buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast. Buď
+            zvětšete plochu, nebo je odstraňte.
+        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že
+            vyrobníky nedodávají své tvary přímo do přijemců cílů.
+    difficulties:
+        easy: Lehká
+        medium: Střední
+        hard: Těžká
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Provádíte své akce příliš často. Počkejte prosím.
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
@@ -1218,3 +1238,6 @@ backendErrors:
     bad-payload: Žádost obsahuje neplatná data.
     bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
     timeout: Žádost vypršela.
+    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej
+        přesto chcete odstranit, kontaktujte nás prosím na support@shapez.io!
+    no-permission: K provedení této akce nemáte oprávnění.

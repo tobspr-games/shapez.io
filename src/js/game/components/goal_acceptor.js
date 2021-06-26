@@ -30,20 +30,38 @@ export class GoalAcceptorComponent extends Component {
     }
 
     clear() {
-        // the last items we delivered
-        /** @type {{ item: BaseItem; time: number; }[]} */
-        this.deliveryHistory = [];
+        /**
+         * The last item we delivered
+         * @type {{ item: BaseItem; time: number; } | null} */
+        this.lastDelivery = null;
+
+        // The amount of items we delivered so far
+        this.currentDeliveredItems = 0;
 
         // Used for animations
         this.displayPercentage = 0;
     }
 
-    getRequiredDeliveryHistorySize() {
+    /**
+     * Clears items but doesn't instantly reset the progress bar
+     */
+    clearItems() {
+        this.lastDelivery = null;
+        this.currentDeliveredItems = 0;
+    }
+
+    getRequiredSecondsPerItem() {
         return (
-            (globalConfig.puzzleModeSpeed *
-                globalConfig.goalAcceptorMinimumDurationSeconds *
-                globalConfig.beltSpeedItemsPerSecond) /
-            globalConfig.goalAcceptorsPerProducer
+            globalConfig.goalAcceptorsPerProducer /
+            (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond)
         );
+    }
+
+    /**
+     * Copy the current state to another component
+     * @param {GoalAcceptorComponent} otherComponent
+     */
+    copyAdditionalStateTo(otherComponent) {
+        otherComponent.item = this.item;
     }
 }

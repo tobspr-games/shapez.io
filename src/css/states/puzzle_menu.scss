@@ -159,6 +159,26 @@
                         }
                     }
 
+                    > button.delete {
+                        position: absolute;
+                        @include S(top, 5px);
+                        @include S(right, 5px);
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: 70%;
+                        background-color: transparent !important;
+                        @include S(width, 20px);
+                        @include S(height, 20px);
+                        padding: 0;
+                        opacity: 0.7;
+                        @include DarkThemeInvert;
+
+                        & {
+                            /* @load-async */
+                            background-image: uiResource("icons/delete.png") !important;
+                        }
+                    }
+
                     > .stats {
                         grid-column: 2 / 3;
                         grid-row: 3 / 4;

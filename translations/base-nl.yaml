@@ -4,8 +4,8 @@ steamPage:
         grote wereld.
     discordLinkShort: Officiële Discord server
     intro: >-
-        Shapez.io is een spel waarin je fabrieken bouwt voor de
-        automatische productie van geometrische vormen.
+        Shapez.io is een spel waarin je fabrieken bouwt voor de automatische
+        productie van geometrische vormen.
 
         Naarmate het spel vordert, worden de vormen complexer, en zul je moeten uitbreiden in de oneindige wereld.
 
@@ -65,7 +65,8 @@ mainMenu:
     discordLink: Officiële Discord-server (Engelstalig)
     helpTranslate: Help ons met vertalen!
     browserWarning: Sorry, maar dit spel draait langzaam in je huidige browser! Koop
-        de standalone versie of download Google Chrome voor de volledige ervaring.
+        de standalone versie of download Google Chrome voor de volledige
+        ervaring.
     savegameLevel: Level <x>
     savegameLevelUnknown: Level onbekend
     continue: Ga verder
@@ -75,9 +76,10 @@ mainMenu:
     savegameUnnamed: Naamloos
     puzzleMode: Puzzel Modus
     back: Terug
-    puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken? Verkrijg de puzzel
-        DLC nu op Steam voor nog meer plezier!
+    puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken?
+        Verkrijg de puzzel DLC nu op Steam voor nog meer plezier!
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
+    puzzleDlcViewNow: Bekijk DLC
 dialogs:
     buttons:
         ok: OK
@@ -162,8 +164,8 @@ dialogs:
             van lopende banden om te draaien wanneer je ze plaatst.<br>"
     createMarker:
         title: Nieuwe markering
-        desc: Geef het een nuttige naam, Je kan ook een <strong>sleutel</strong> van
-            een vorm gebruiken (die je <link>hier</link> kunt genereren).
+        desc: Geef het een nuttige naam, Je kan ook een <strong>sleutel</strong> van een
+            vorm gebruiken (die je <link>hier</link> kunt genereren).
         titleEdit: Bewerk markering
     markerDemoLimit:
         desc: Je kunt maar twee markeringen plaatsen in de demo. Koop de standalone voor
@@ -205,19 +207,21 @@ dialogs:
     submitPuzzle:
         title: Puzzel indienen
         descName: "Geef je puzzel een naam:"
-        descIcon: "Voer een unieke vorm sleutel in, die wordt weergegeven als het icoon van
-            uw puzzel (je kunt ze <link>hier</link> genereren, of je kunt er een kiezen
-            van de willekeurig voorgestelde vormen hieronder):"
+        descIcon: "Voer een unieke vorm sleutel in, die wordt weergegeven als het icoon
+            van je puzzel (je kunt ze <link>hier</link> genereren, of je kunt er
+            een kiezen van de willekeurig voorgestelde vormen hieronder):"
         placeholderName: Puzzel Naam
     puzzleResizeBadBuildings:
         title: Formaat wijzigen niet mogelijk
-        desc: Je kunt het gebied niet kleiner maken, want dan zouden sommige gebouwen buiten het gebied zijn.
+        desc: Je kunt het gebied niet kleiner maken, want dan zouden sommige gebouwen
+            buiten het gebied zijn.
     puzzleLoadError:
         title: Foute Puzzel
         desc: "De puzzel kon niet geladen worden:"
     offlineMode:
         title: Offline Modus
-        desc: We konden de server niet bereiken, het spel draait nu in de offline modus. Zorg ervoor dat je een actieve internetverbinding heeft.
+        desc: We konden de server niet bereiken, het spel draait nu in de offline modus.
+            Zorg ervoor dat je een actieve internetverbinding heeft.
     puzzleDownloadError:
         title: Download fout
         desc: "Downloaden van de puzzel is mislukt:"
@@ -230,13 +234,18 @@ dialogs:
             anderen. Je kunt het nu vinden in het gedeelte "Mijn puzzels".
     puzzleCreateOffline:
         title: Offline Modus
-        desc: Aangezien je offline bent, kun je je puzzels niet opslaan of publiceren. Wil je nog steeds doorgaan?
+        desc: Aangezien je offline bent, kun je je puzzels niet opslaan of publiceren.
+            Wil je nog steeds doorgaan?
     puzzlePlayRegularRecommendation:
         title: Aanbeveling
-        desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te spelen voordat je de puzzel-DLC probeert, anders kan je mechanica tegenkomen die je nog niet kent. Wil je toch doorgaan?
+        desc: Ik raad <strong>sterk</strong> aan om het normale spel tot niveau 12 te
+            spelen voordat je de puzzel-DLC probeert, anders kan je mechanica
+            tegenkomen die je nog niet kent. Wil je toch doorgaan?
     puzzleShare:
         title: Vorm Sleutel Gekopieerd
-        desc: De vorm sleutel van de puzzel (<key>) is naar je klembord gekopieerd! Het kan in het puzzelmenu worden ingevoerd om toegang te krijgen tot de puzzel.
+        desc: De vorm sleutel van de puzzel (<key>) is naar je klembord gekopieerd! Het
+            kan in het puzzelmenu worden ingevoerd om toegang te krijgen tot de
+            puzzel.
     puzzleReport:
         title: Puzzel Rapporteren
         options:
@@ -248,10 +257,14 @@ dialogs:
         desc: De puzzel is gemarkeerd.
     puzzleReportError:
         title: Melden mislukt
-        desc: "Uw melding kan niet worden verwerkt:"
+        desc: "Je melding kan niet worden verwerkt:"
     puzzleLoadShortKey:
         title: Voer een vorm sleutel in
         desc: Voer de vorm sleutel van de puzzel in om deze te laden.
+    puzzleDelete:
+        title: Puzzel verwijderen?
+        desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan
+            gemaakt worden!
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -331,10 +344,10 @@ ingame:
         waypoints: Markeringen
         hub: HUB
         description: Klik met de linkermuisknop op een markering om hier naartoe te
-            gaan, klik met de rechtermuisknop om hem te
-            verwijderen.<br><br>Druk op <keybinding> om een markering te maken
-            in het huidige zicht, of <strong>rechtermuisknop</strong> om een
-            markering te maken bij het geselecteerde gebied.
+            gaan, klik met de rechtermuisknop om hem te verwijderen.<br><br>Druk
+            op <keybinding> om een markering te maken in het huidige zicht, of
+            <strong>rechtermuisknop</strong> om een markering te maken bij het
+            geselecteerde gebied.
         creationSuccessNotification: Markering is gemaakt.
     interactiveTutorial:
         title: Tutorial
@@ -348,19 +361,20 @@ ingame:
                 en lopende banden om het doel sneller te behalen.<br><br>Tip:
                 Houd <strong>SHIFT</strong> ingedrukt om meerdere ontginners te
                 plaatsen en gebruik <strong>R</strong> om ze te draaien."
-            2_1_place_cutter: "Plaats nu een <strong>Knipper</strong> om de cirkels in twee helften te
-                knippen<br><br> PS: De knipper knipt altijd van
+            2_1_place_cutter: "Plaats nu een <strong>Knipper</strong> om de cirkels in twee
+                helften te knippen<br><br> PS: De knipper knipt altijd van
                 <strong>boven naar onder</strong> ongeacht zijn oriëntatie."
             2_2_place_trash: De knipper kan vormen <strong>verstoppen en
-                bijhouden</strong>!<br><br> Gebruik een <strong>vuilnisbak</strong>
-                om van het momenteel (!) niet nodige afval af te geraken.
+                bijhouden</strong>!<br><br> Gebruik een
+                <strong>vuilnisbak</strong> om van het momenteel (!) niet nodige
+                afval af te geraken.
             2_3_more_cutters: "Goed gedaan! Plaats nu <strong>2 extra knippers</strong> om
                 dit trage process te versnellen! <br><br> PS: Gebruik de
                 <strong>0-9 sneltoetsen</strong> om gebouwen sneller te
                 selecteren."
             3_1_rectangles: "Laten we nu rechthoeken ontginnen! <strong>Bouw 4
-                ontginners</strong> en verbind ze met de schakelaar.<br><br> PS: Houd
-                <strong>SHIFT</strong> Ingedrukt terwijl je lopende banden
+                ontginners</strong> en verbind ze met de schakelaar.<br><br> PS:
+                Houd <strong>SHIFT</strong> Ingedrukt terwijl je lopende banden
                 plaats om ze te plannen!"
             21_1_place_quad_painter: Plaats de <strong>quad painter</strong> en krijg een
                 paar <strong>cirkels</strong> in <strong>witte</strong> en
@@ -371,8 +385,8 @@ ingame:
             21_3_place_button: Mooi! Plaats nu een <strong>schakelaar</strong> en verbind
                 het met draden!
             21_4_press_button: "Druk op de schakelaar om het een <strong>Juist signaal door
-                te geven</strong> en de verver te activeren.<br><br> PS: Verbind niet alle
-                inputs! Probeer er eens 2."
+                te geven</strong> en de verver te activeren.<br><br> PS: Verbind
+                niet alle inputs! Probeer er eens 2."
     colors:
         red: Rood
         green: Groen
@@ -431,21 +445,34 @@ ingame:
         clearItems: Items leeg maken
         share: Delen
         report: Rapporteren
+        clearBuildings: Verwijder Gebouwen
+        resetPuzzle: Reset Puzzel
     puzzleEditorControls:
         title: Puzzel Maker
         instructions:
             - 1. Plaats <strong>Constante Producenten</strong> om vormen en
               kleuren aan de speler te bieden.
-            - 2. Bouw een of meer vormen waarvan je wil dat de speler ze later maakt en lever het aan een of meerdere <strong>Ontvangers</strong>.
-            - 3. Wanneer een Ontvanger voor een bepaalde tijd lang een vorm ontvangt, <strong>wordt het opgeslagen als een doel</strong> dat de speler later moet produceren (Aangegeven door de <strong>groene indicator</strong>).
-            - 4. Klik de <strong>vergrendelknop</strong> om een gebouw uit te schakelen.
-            - 5. Zodra je op review klikt, wordt je puzzel gevalideerd en kun je het publiceren.
-            - 6. Bij publicatie, <strong>worden alle gebouwen verwijderd</strong> behalve de Muren, Constante Producenten en Ontvangers - Dat is het deel dat de speler tenslotte voor zichzelf moet uitzoeken :)
+            - 2. Bouw een of meer vormen waarvan je wil dat de speler ze later
+              maakt en lever het aan een of meerdere
+              <strong>Ontvangers</strong>.
+            - 3. Wanneer een Ontvanger voor een bepaalde tijd lang een vorm
+              ontvangt, <strong>wordt het opgeslagen als een doel</strong> dat
+              de speler later moet produceren (Aangegeven door de <strong>groene
+              indicator</strong>).
+            - 4. Klik de <strong>vergrendelknop</strong> om een gebouw uit te
+              schakelen.
+            - 5. Zodra je op review klikt, wordt je puzzel gevalideerd en kun je
+              het publiceren.
+            - 6. Bij publicatie, <strong>worden alle gebouwen
+              verwijderd</strong> behalve de Muren, Constante Producenten en
+              Ontvangers - Dat is het deel dat de speler tenslotte voor zichzelf
+              moet uitzoeken :)
     puzzleCompletion:
         title: Puzzel Voltooid!
         titleLike: "Klik op het hartje als je de puzzel leuk vond:"
         titleRating: Hoe moeilijk vond je de puzzel?
-        titleRatingDesc: Je beoordeling helpt me om je in de toekomst betere suggesties te geven
+        titleRatingDesc: Je beoordeling helpt me om je in de toekomst betere suggesties
+            te geven
         continueBtn: Blijf Spelen
         menuBtn: Menu
     puzzleMetadata:
@@ -623,8 +650,8 @@ buildings:
     reader:
         default:
             name: Lopende band lezer
-            description: Meet de gemiddelde doorvoer op de lopende band. Geeft het laatste gelezen
-                item door aan de kabel.
+            description: Meet de gemiddelde doorvoer op de lopende band. Geeft het laatste
+                gelezen item door aan de kabel.
     analyzer:
         default:
             name: Vorm Analyse
@@ -633,8 +660,8 @@ buildings:
     comparator:
         default:
             name: Vergelijker
-            description: Zendt 1 uit als beiden invoeren gelijk zijn, dat kunnen vormen, kleuren
-                of booleans (1/0) zijn
+            description: Zendt 1 uit als beiden invoeren gelijk zijn, dat kunnen vormen,
+                kleuren of booleans (1/0) zijn
     virtual_processor:
         default:
             name: Virtuele Knipper
@@ -677,24 +704,22 @@ storyRewards:
             helft kan knippen van boven naar onder <strong>ongeacht zijn rotatie
             </strong>!<br><br>Wees zeker dat je het afval weggooit, want anders
             <strong>zal het vastlopen</strong> - Daarom heb ik je de
-            <strong>vuilnisbak</strong> gegeven, die alles vernietigt wat je erin
-            laat stromen!
+            <strong>vuilnisbak</strong> gegeven, die alles vernietigt wat je
+            erin laat stromen!
     reward_rotater:
         title: Roteren
         desc: De <strong>roteerder</strong> is ontgrendeld - Het draait vormen 90 graden
             met de klok mee.
     reward_painter:
         title: Verven
-        desc: "De <strong>verver</strong> is ontgrendeld - Ontgin wat kleur (op
-            dezelfde manier hoe je vormen ontgint) en combineer het met een
-            vorm in de verver om ze te kleuren!<br><br>PS: Als je kleurenblind
-            bent, is er een <strong>kleurenblind-modus</strong> in de
-            instellingen!"
+        desc: "De <strong>verver</strong> is ontgrendeld - Ontgin wat kleur (op dezelfde
+            manier hoe je vormen ontgint) en combineer het met een vorm in de
+            verver om ze te kleuren!<br><br>PS: Als je kleurenblind bent, is er
+            een <strong>kleurenblind-modus</strong> in de instellingen!"
     reward_mixer:
         title: Kleuren mengen
-        desc: De <strong>menger</strong> is ontgrendeld - Gebruik deze om twee
-            kleuren te mengen met behulp van <strong>additieve
-            kleurmenging</strong>!
+        desc: De <strong>menger</strong> is ontgrendeld - Gebruik deze om twee kleuren
+            te mengen met behulp van <strong>additieve kleurmenging</strong>!
     reward_stacker:
         title: Stapelaar
         desc: Je kunt nu vormen combineren met de <strong>stapelaar</strong>! De inputs
@@ -720,9 +745,9 @@ storyRewards:
     reward_miner_chainable:
         title: Ketting-ontginner
         desc: "Je hebt de <strong>Ketting-ontginner</strong> ontgrendeld! Je kunt hem
-            <strong>koppelen aan andere ontginners</strong>
-            zodat je meer materialen tegelijkertijd kunt ontginnen!<br><br> PS:
-            De oude ontginner is vervangen in je toolbar!"
+            <strong>koppelen aan andere ontginners</strong> zodat je meer
+            materialen tegelijkertijd kunt ontginnen!<br><br> PS: De oude
+            ontginner is vervangen in je toolbar!"
     reward_underground_belt_tier_2:
         title: Tunnel Niveau II
         desc: Je hebt een nieuwe variant van de <strong>tunnel</strong> ontgrendeld. -
@@ -750,9 +775,9 @@ storyRewards:
             gegenereerd worden!<br><br> Omdat de HUB vanaf nu een
             <strong>bepaald aantal vormen per seconden</strong> nodig heeft,
             Raad ik echt aan een machine te maken die automatisch de juiste
-            vormen genereert!<br><br> De HUB geeft de vorm die je nodig hebt door op
-            de draden-laag, dus je hoeft dat alleen te analyseren en
-            je fabriek dat automatisch te laten maken op basis daarvan.
+            vormen genereert!<br><br> De HUB geeft de vorm die je nodig hebt
+            door op de draden-laag, dus je hoeft dat alleen te analyseren en je
+            fabriek dat automatisch te laten maken op basis daarvan.
     reward_blueprints:
         title: Blauwdrukken
         desc: Je kunt nu delen van je fabriek <strong>kopiëren en plakken</strong>!
@@ -817,8 +842,8 @@ storyRewards:
             kunt nu de knipper, draaier, stapelaar en meer op de dradenlaag
             stimuleren! Daarmee heb je nu 3 opties om verder te gaan met het
             spel:<br><br> - Bouw een <strong>automatische fabriek</strong> om
-            elke mogelijke vorm te maken gevraagd door de HUB (Ik raad
-            aan dit te proberen!).<br><br> - Bouw iets cool met de draden-laag.<br><br>
+            elke mogelijke vorm te maken gevraagd door de HUB (Ik raad aan dit
+            te proberen!).<br><br> - Bouw iets cool met de draden-laag.<br><br>
             - Ga verder met normaal spelen.<br><br> Wat je ook kiest, onthoud
             dat je plezier blijft hebben!
     reward_wires_painter_and_levers:
@@ -992,9 +1017,9 @@ settings:
                 met de pipet boven het vakje van een resource staat.
         simplifiedBelts:
             title: Versimpelde lopende banden
-            description: Toont geen items op de lopende band tenzij je over de lopende band beweegt
-                met je muis. De functie wordt niet aangeraden tenzij het wat je
-                computer betreft echt niet anders kan!
+            description: Toont geen items op de lopende band tenzij je over de lopende band
+                beweegt met je muis. De functie wordt niet aangeraden tenzij het
+                wat je computer betreft echt niet anders kan!
         enableMousePan:
             title: Schakel bewegen met muis in
             description: Schakel deze functie in om met je muis het veld te kunnen bewegen.
@@ -1116,15 +1141,15 @@ demo:
     settingNotAvailable: Niet beschikbaar in de demo.
 tips:
     - De HUB accepteert elke vorm van invoer, niet alleen de huidige vorm!
-    - Zorg ervoor dat uw fabrieken modulair zijn - het loont!
+    - Zorg ervoor dat je fabrieken modulair zijn - het loont!
     - Bouw niet te dicht bij de HUB, anders wordt het een enorme chaos!
     - Als het stapelen niet werkt, probeer dan de invoeren om te wisselen.
     - Je kunt de richting van de lopende band planner wijzigen door op <b>R</b>
       te drukken.
     - Door <b>CTRL</b> ingedrukt te houden, kunnen lopende banden worden
       gesleept zonder automatische oriëntatie.
-    - Verhoudingen van gebouw-snelheden blijven hetzelfde, zolang alle upgrades zich op hetzelfde
-      niveau bevinden.
+    - Verhoudingen van gebouw-snelheden blijven hetzelfde, zolang alle upgrades
+      zich op hetzelfde niveau bevinden.
     - Opeenvolgende uitvoering is efficiënter dan parallele uitvoering.
     - Je ontgrendelt later in het spel meer varianten van gebouwen!
     - Je kunt <b>T</b> gebruiken om tussen verschillende varianten te schakelen.
@@ -1146,35 +1171,35 @@ tips:
     - Investeer tijd om herhaalbare ontwerpen te maken - het is het waard!
     - Door <b>SHIFT</b> ingedrukt te houden, kunnen meerdere gebouwen worden
       geplaatst.
-    - Je kunt <b>ALT</b> ingedrukt houden om de richting van de geplaatste lopende banden
-      om te keren.
+    - Je kunt <b>ALT</b> ingedrukt houden om de richting van de geplaatste
+      lopende banden om te keren.
     - Efficiëntie is de sleutel!
     - Vormontginningen die verder van de HUB verwijderd zijn, zijn complexer.
     - Machines hebben een beperkte snelheid, verdeel ze voor maximale
       efficiëntie.
-    - Gebruik verdelers om uw efficiëntie te maximaliseren.
+    - Gebruik verdelers om je efficiëntie te maximaliseren.
     - Organisatie is belangrijk. Probeer de lopende banden niet te veel over te
       steken.
     - Plan van tevoren, anders wordt het een enorme chaos!
-    - Verwijder uw oude fabrieken niet! Je hebt ze nodig om upgrades te
+    - Verwijder je oude fabrieken niet! Je hebt ze nodig om upgrades te
       ontgrendelen.
     - Probeer in je eentje level 20 te verslaan voordat je hulp zoekt!
     - Maak de dingen niet ingewikkeld, probeer eenvoudig te blijven en je zult
       ver komen.
-    - Mogelijk zul je later in het spel fabrieken moeten hergebruiken. Plan uw
+    - Mogelijk zul je later in het spel fabrieken moeten hergebruiken. Plan je
       fabrieken zodat ze herbruikbaar zijn.
     - Soms kun je een gewenste vorm op de kaart vinden zonder deze met
       stapelaars te maken.
     - Volle windmolens kunnen nooit op natuurlijke wijze spawnen.
-    - Kleur uw vormen voordat je ze knipt voor maximale efficiëntie.
+    - Kleur je vormen voordat je ze knipt voor maximale efficiëntie.
     - Bij modules is ruimte slechts een beleving; een zorg voor sterfelijke
       mannen.
     - Maak een aparte blueprint fabriek. Ze zijn belangrijk voor modules.
-    - Bekijk de kleurenmixer eens wat beter, en uw vragen worden beantwoord.
+    - Bekijk de kleurenmixer eens wat beter, en je vragen worden beantwoord.
     - Gebruik <b>CTRL</b> + klik om een gebied te selecteren.
     - Te dicht bij de HUB bouwen kan latere projecten in de weg staan.
-    - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op het
-      scherm.
+    - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op
+      het scherm.
     - Meng alle primaire kleuren door elkaar om wit te maken!
     - Je hebt een oneindige wereld, verkramp je fabriek niet, breid uit!
     - Probeer ook Factorio! Het is mijn favoriete spel.
@@ -1183,10 +1208,11 @@ tips:
     - Dit spel heeft veel handige sneltoetsen! Bekijk zeker de
       instellingenpagina.
     - Dit spel heeft veel instellingen, bekijk ze zeker!
-    - De markering naar uw HUB heeft een klein kompas om de richting aan te
+    - De markering naar je HUB heeft een klein kompas om de richting aan te
       geven!
-    - Om de lopende banden leeg te maken, kun je een gebied kopiëren en plakken op dezelfde locatie.
-    - Druk op F4 om uw FPS en Tick Rate weer te geven.
+    - Om de lopende banden leeg te maken, kun je een gebied kopiëren en plakken
+      op dezelfde locatie.
+    - Druk op F4 om je FPS en Tick Rate weer te geven.
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
@@ -1200,30 +1226,49 @@ puzzleMenu:
     validatingPuzzle: Puzzel Valideren
     submittingPuzzle: Puzzel Indienen
     noPuzzles: Er zijn momenteel geen puzzels in deze sectie.
+    dlcHint: Heb je de DLC al gekocht? Zorg ervoor dat het is geactiveerd door met
+        de rechtermuisknop op shapez.io in uw bibliotheek te klikken,
+        Eigenschappen > DLC's te selecteren.
     categories:
         levels: Levels
         new: Nieuw
         top-rated: Best Beoordeeld
         mine: Mijn Puzzels
-        short: Kort
         easy: Makkelijk
         hard: Moeilijk
         completed: Voltooid
+        medium: Medium
+        official: Officieel
+        trending: Trending vandaag
+        trending-weekly: Trending wekelijks
+        categories: Categorieën
+        difficulties: Op Moeilijkheidsgraad
+        account: Mijn Puzzels
+        search: Zoeken
     validation:
         title: Ongeldige Puzzel
         noProducers: Plaats alstublieft een Constante Producent!
         noGoalAcceptors: Plaats alstublieft een Ontvanger!
-        goalAcceptorNoItem: Een of meer Ontvangers hebben nog geen item toegewezen.
-            Geef ze een vorm om een doel te stellen.
+        goalAcceptorNoItem: Een of meer Ontvangers hebben nog geen item toegewezen. Geef
+            ze een vorm om een doel te stellen.
         goalAcceptorRateNotMet: Een of meerdere Ontvangers krijgen niet genoeg items.
             Zorg ervoor dat de indicatoren groen zijn voor alle acceptanten.
-        buildingOutOfBounds: Een of meer gebouwen bevinden zich buiten het bebouwbare gebied. Vergroot het gebied of verwijder ze.
-        autoComplete: Je puzzel voltooit zichzelf automatisch! Zorg ervoor dat je Constante Producenten niet rechtstreeks aan je Ontvangers leveren.
+        buildingOutOfBounds: Een of meer gebouwen bevinden zich buiten het bebouwbare
+            gebied. Vergroot het gebied of verwijder ze.
+        autoComplete: Je puzzel voltooit zichzelf automatisch! Zorg ervoor dat je
+            Constante Producenten niet rechtstreeks aan je Ontvangers leveren.
+    difficulties:
+        easy: Makkelijk
+        medium: Medium
+        hard: Moeilijk
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
-    invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (ongeldige API-sleutel).
-    unauthorized: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (Onbevoegd).
-    bad-token: Kan niet communiceren met de servers, probeer alstublieft het spel te updaten/herstarten (Ongeldige Token).
+    invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het
+        spel te updaten/herstarten (ongeldige API-sleutel).
+    unauthorized: Kan niet communiceren met de servers, probeer alstublieft het spel
+        te updaten/herstarten (Onbevoegd).
+    bad-token: Kan niet communiceren met de servers, probeer alstublieft het spel te
+        updaten/herstarten (Ongeldige Token).
     bad-id: Ongeldige puzzel-ID.
     not-found: De opgegeven puzzel is niet gevonden.
     bad-category: De opgegeven categorie is niet gevonden.
@@ -1239,3 +1284,6 @@ backendErrors:
     bad-payload: Het verzoek bevat ongeldige gegevens.
     bad-building-placement: Je puzzel bevat ongeldig geplaatste gebouwen.
     timeout: Het verzoek is verlopen.
+    too-many-likes-already: De puzzel heeft al te veel likes. Als je het nog steeds
+        wilt verwijderen, neem dan contact op support@shapez.io!
+    no-permission: Je bent niet gemachtigd om deze actie uit te voeren.

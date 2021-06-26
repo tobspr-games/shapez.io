@@ -10,7 +10,6 @@ import { enumGameModeIds, enumGameModeTypes, GameMode } from "../game_mode";
 import { ShapeDefinition } from "../shape_definition";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { HUDWiresToolbar } from "../hud/parts/wires_toolbar";
-import { HUDBlueprintPlacer } from "../hud/parts/blueprint_placer";
 import { HUDUnlockNotification } from "../hud/parts/unlock_notification";
 import { HUDMassSelector } from "../hud/parts/mass_selector";
 import { HUDShop } from "../hud/parts/shop";
@@ -38,6 +37,7 @@ import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
 import { HUDSandboxController } from "../hud/parts/sandbox_controller";
 import { queryParamOptions } from "../../core/query_parameters";
 import { MetaBlockBuilding } from "../buildings/block";
+import { MetaItemProducerBuilding } from "../buildings/item_producer";
 
 /** @typedef {{
  *   shape: string,
@@ -545,7 +545,6 @@ export class RegularGameMode extends GameMode {
 
         this.additionalHudParts = {
             wiresToolbar: HUDWiresToolbar,
-            blueprintPlacer: HUDBlueprintPlacer,
             unlockNotification: HUDUnlockNotification,
             massSelector: HUDMassSelector,
             shop: HUDShop,
@@ -586,7 +585,12 @@ export class RegularGameMode extends GameMode {
         }
 
         /** @type {(typeof MetaBuilding)[]} */
-        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
+        this.hiddenBuildings = [
+            MetaConstantProducerBuilding,
+            MetaGoalAcceptorBuilding,
+            MetaBlockBuilding,
+            MetaItemProducerBuilding,
+        ];
     }
 
     /**

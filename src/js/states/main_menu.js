@@ -71,11 +71,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${
-                    G_WEGAME_VERSION
-                        ? ""
-                        : `<span class="updateLabel">v${G_BUILD_VERSION} - Puzzle DLC!</span>`
-                }
+                ${G_WEGAME_VERSION ? "" : `<span class="updateLabel">v${G_BUILD_VERSION}!</span>`}
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
@@ -112,6 +108,9 @@ export class MainMenuState extends GameState {
                     !G_WEGAME_VERSION && G_IS_STANDALONE && !puzzleDlc
                         ? `
                     <div class="puzzleContainer notOwned">
+                        <span class="badge">
+                            ${T.puzzleMenu.categories.new}
+                        </span>
                         <img class="dlcLogo" src="${cachebust(
                             G_CHINA_VERSION || G_WEGAME_VERSION
                                 ? "res/puzzle_dlc_logo_china.png"
@@ -119,8 +118,11 @@ export class MainMenuState extends GameState {
                         )}" alt="shapez.io Logo">
                         <p>${T.mainMenu.puzzleDlcText}</p>
                         <button class="styledButton puzzleDlcGetButton">${
-                            T.mainMenu.puzzleDlcWishlist
+                            T.mainMenu.puzzleDlcViewNow
                         }</button>
+                        <span class="hint">
+                            ${T.puzzleMenu.dlcHint}
+                        </span>
                     </div>`
                         : ""
                 }
@@ -396,9 +398,7 @@ export class MainMenuState extends GameState {
     }
 
     onPuzzleWishlistButtonClicked() {
-        this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.puzzleDlcStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
-        );
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage + "?utm_medium=mmsl2");
     }
 
     onBackButtonClicked() {
@@ -408,9 +408,7 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
-        this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.standaloneStorePage + "?ref=mmsl2&prc=" + A_B_TESTING_LINK_TYPE
-        );
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu");
 
         return false;
     }
@@ -639,7 +637,9 @@ export class MainMenuState extends GameState {
         );
         getStandalone.add(() => {
             this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
-            this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneStorePage + "?reF=ssll");
+            this.app.platformWrapper.openExternalLink(
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_slotlimit"
+            );
         });
     }
 

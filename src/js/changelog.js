@@ -1,11 +1,31 @@
 export const CHANGELOG = [
     {
+        version: "1.4.2",
+        date: "24.06.2021",
+        entries: [
+            "Puzzle DLC: Goal acceptors now reset after getting no items for a while (This should prevent being able to 'cheat' puzzles) (by Sense101)",
+            "Puzzle DLC: Added button to clear all buildings / reset the puzzle (by Sense101)",
+            "Puzzle DLC: Allow copy-paste in puzzle mode (by Sense101)",
+            "Fixed level achievements being given on the wrong level (by DJ1TJOO)",
+            "Fixed blueprint not properly clearing on right click",
+            "Updated translations",
+        ],
+    },
+    {
+        version: "1.4.1",
+        date: "22.06.2021",
+        entries: [
+            "The <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog' target='_blank'>Puzzle DLC</a> is now available on Steam!",
+            "The <a href='https://store.steampowered.com/app/1573840/shapezio_Soundtrack/?utm_medium=changelog' target='_blank'>Soundtrack</a> is now also available to wishlist and will be released within the next days, including the new music from the Puzzle DLC!",
+        ],
+    },
+    {
         version: "1.4.0",
         date: "04.06.2021",
         entries: [
             "Belts in blueprints should now always paste correctly",
             "You can now clear belts by selecting them and then pressing 'B'",
-            "Preparations for the <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/' target='_blank'>Puzzle DLC</a>, coming June 22nd!",
+            "Preparations for the <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog2' target='_blank'>Puzzle DLC</a>, coming June 22nd!",
         ],
     },
     {

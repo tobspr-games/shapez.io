@@ -69,9 +69,9 @@ mainMenu:
     savegameUnnamed: 이름 없음
     puzzleMode: 퍼즐 모드
     back: Back
-    puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를
-        구입하세요!
+    puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: 확인
@@ -176,13 +176,12 @@ dialogs:
         title: 아이템 설정
     puzzleLoadFailed:
         title: 퍼즐 불러오기 실패
-        desc: "Unfortunately the puzzles could not be loaded:"
+        desc: "불행히도 이 퍼즐은 불러오는데 실패하였습니다:"
     submitPuzzle:
         title: 퍼즐 보내기
         descName: "퍼즐에 이름을 지어 주세요:"
-        descIcon: "퍼즐의 아이콘으로 보여지게 될 짧은 단어를 지정해 주세요.
-            (<link>이곳</link>에서 생성하시거나, 아래 랜덤한 모양 중
-            하나를 선택하세요):"
+        descIcon: "퍼즐의 아이콘으로 보여지게 될 짧은 단어를 지정해 주세요. (<link>이곳</link>에서 생성하시거나, 아래 랜덤한 모양
+            중 하나를 선택하세요):"
         placeholderName: 퍼즐 제목
     puzzleResizeBadBuildings:
         title: 크기 조절 불가능
@@ -192,8 +191,7 @@ dialogs:
         desc: "퍼즐을 불러올 수 없었습니다:"
     offlineMode:
         title: 오프라인 모드
-        desc: 서버에 접속할 수 없었으므로 오프라인 모드로 게임이 시작되었습니다.
-            인터넷 연결 상태를 다시 한번 확인해 주세요.
+        desc: 서버에 접속할 수 없었으므로 오프라인 모드로 게임이 시작되었습니다. 인터넷 연결 상태를 다시 한번 확인해 주세요.
     puzzleDownloadError:
         title: 다운로드 오류
         desc: "퍼즐을 다운로드할 수 없습니다:"
@@ -202,21 +200,17 @@ dialogs:
         desc: "퍼즐을 전송할 수 없습니다:"
     puzzleSubmitOk:
         title: 퍼즐 공개됨
-        desc: 축하합니다! 퍼즐이 업로드되었고 이제 다른 사람이 플레이할 수 있습니다.
-            "내 퍼즐" 섹션에서 찾으실 수 있습니다.
+        desc: 축하합니다! 퍼즐이 업로드되었고 이제 다른 사람이 플레이할 수 있습니다. "내 퍼즐" 섹션에서 찾으실 수 있습니다.
     puzzleCreateOffline:
         title: 오프라인 모드
-        desc: 오프라인 모드임으로 퍼즐을 저장하거나 업로드할 수 없습니다.
-            그래도 계속하시겠습니까?
+        desc: 오프라인 모드임으로 퍼즐을 저장하거나 업로드할 수 없습니다. 그래도 계속하시겠습니까?
     puzzlePlayRegularRecommendation:
         title: 권장 사항
-        desc: 퍼즐 DLC 플레이시 소개되지 않은 요소를 접하시게 될 수 있으므로, 적어도
-            일반 게임을 12레벨까지 플레이하시는것을 <strong>강력히</strong> 권장드립니다.
-            그래도 계속하시겠습니까?
+        desc: 퍼즐 DLC 플레이시 소개되지 않은 요소를 접하시게 될 수 있으므로, 적어도 일반 게임을 12레벨까지 플레이하시는것을
+            <strong>강력히</strong> 권장드립니다. 그래도 계속하시겠습니까?
     puzzleShare:
         title: 짧은 키 복사됨
-        desc: 퍼즐의 짧은 키 (<key>) 가 클립보드에 복사되었습니다!
-            메인 메뉴에서 퍼즐 접근 시 사용할 수 있습니다.
+        desc: 퍼즐의 짧은 키 (<key>) 가 클립보드에 복사되었습니다! 메인 메뉴에서 퍼즐 접근 시 사용할 수 있습니다.
     puzzleReport:
         title: 퍼즐 신고
         options:
@@ -232,6 +226,9 @@ dialogs:
     puzzleLoadShortKey:
         title: 짧은 키 입력
         desc: 불러올 퍼즐의 짧은 키를 입력해 주세요.
+    puzzleDelete:
+        title: 퍼즐을 지우시겠습니까?
+        desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -323,9 +320,9 @@ ingame:
             1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
                 달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
                 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
-            2_1_place_cutter: "<strong>절단기</strong>를 배치해서 원을 절반으로 나눠 보세요!
-                <br><br> 추신: 절단기는 방향에 상관없이 모양을 <strong>위에서부터
-                아래로 자릅니다."
+            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
+                halves!<br><br> PS: The cutter always cuts from <strong>top to
+                bottom</strong> regardless of its orientation."
             2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
                 <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을 제거하세요.
             2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong> 이상
@@ -399,20 +396,19 @@ ingame:
         clearItems: 아이템 초기화
         share: 공유
         report: 신고
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: 퍼즐 생성기
         instructions:
-            - 1. <strong>일정 생성기</strong>를 배치해 플레이어가 사용할 색깔과 모양
-              을 생성하세요
-            - 2. 플레이어가 나중에 만들 모양을 하나 이상 만들어 <strong>목표 수집기</strong>
-              로 배달하도록 만드세요
-            - 3. 목표 수집기가 모양을 일정 양 이상 수집하면 그것은 플레이어가 반드시
-              <strong>생산해야 할 목표 모양</strong>으로 저장합니다 (<strong>초록색 뱃지</strong>
-              로 표시됨)
+            - 1. <strong>일정 생성기</strong>를 배치해 플레이어가 사용할 색깔과 모양 을 생성하세요
+            - 2. 플레이어가 나중에 만들 모양을 하나 이상 만들어 <strong>목표 수집기</strong> 로 배달하도록 만드세요
+            - 3. 목표 수집기가 모양을 일정 양 이상 수집하면 그것은 플레이어가 반드시 <strong>생산해야 할 목표
+              모양</strong>으로 저장합니다 (<strong>초록색 뱃지</strong> 로 표시됨)
             - 4. 건물의 <strong>잠금 버튼</strong>을 눌러서 비활성화하세요
             - 5. 리뷰 버튼을 누르면 퍼즐이 검증되고 업로드할수 있게 됩니다.
-            - 6. 공개시, 생성기와 목표 수집기를 제외한 <strong>모든 건물이</strong>
-              제거됩니다 - 그 부분이 바로 플레이어가 스스로 알아내야 하는 것들이죠 :)
+            - 6. 공개시, 생성기와 목표 수집기를 제외한 <strong>모든 건물이</strong> 제거됩니다 - 그 부분이 바로
+              플레이어가 스스로 알아내야 하는 것들이죠 :)
     puzzleCompletion:
         title: 퍼즐 완료됨!
         titleLike: "퍼즐이 좋았다면 하트를 눌러주세요:"
@@ -738,12 +734,11 @@ storyRewards:
             - 평소처럼 게임을 진행합니다.<br><br> 어떤 방식으로든, 재미있게 게임을 플레이해주시길 바랍니다!
     reward_wires_painter_and_levers:
         title: 전선과 4단 색칠기
-        desc: " 방금 <strong>전선 레이어</strong>를 활성화하셨습니다: 이것은 일반
-            레이어 위에 존재하는 별개의 레이어로 수많은 새로운 요소를 사용할 수
-            있습니다!<br><br> <strong>4단 색칠기</strong>를 활성화해 드리겠습니다 - 
-            전선 레이어에서 색을 칠할 부분에 연결해 보세요!<br><br> 전선 레이어로
-            전환하시려면 <strong>E</strong>키를 눌러주세요.<br><br> 추신: <strong>힌트를
-            활성화</strong>해서 전선 튜토리얼을 활성화해 보세요!"
+        desc: " 방금 <strong>전선 레이어</strong>를 활성화하셨습니다: 이것은 일반 레이어 위에 존재하는 별개의 레이어로 수많은
+            새로운 요소를 사용할 수 있습니다!<br><br> <strong>4단 색칠기</strong>를 활성화해 드리겠습니다 -
+            전선 레이어에서 색을 칠할 부분에 연결해 보세요!<br><br> 전선 레이어로 전환하시려면
+            <strong>E</strong>키를 눌러주세요.<br><br> 추신: <strong>힌트를 활성화</strong>해서
+            전선 튜토리얼을 활성화해 보세요!"
     reward_filter:
         title: 아이템 선별기
         desc: <strong>아이템 선별기</strong>가 잠금 해제되었습니다! 전선 레이어의 신호와 일치하는지에 대한 여부로 아이템을 위쪽
@@ -964,14 +959,14 @@ keybindings:
         comparator: 비교기
         item_producer: 아이템 생성기 (샌드박스)
         copyWireValue: "전선: 커서 아래 값 복사"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: 위로 향하게 회전
+        rotateToDown: 아래로 향하게 회전
+        rotateToRight: 오른쪽으로 향하게 회전
+        rotateToLeft: 아래쪽으로 향하게 회전
         constant_producer: 일정 생성기
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        goal_acceptor: 목표 수집기
+        block: 블록
+        massSelectClear: 벨트 초기화
 about:
     title: 게임 정보
     body: >-
@@ -1067,30 +1062,36 @@ puzzleMenu:
         new: 최신순
         top-rated: 등급순
         mine: 내 퍼즐
-        short: 짧음
         easy: 쉬움
         hard: 어러움
         completed: 완료함
+        medium: 중간
+        official: 공식
+        trending: 오늘의 인기
+        trending-weekly: 이 주의 인기
+        categories: 카테고리
+        difficulties: 난이도순
+        account: 내 퍼즐들
+        search: 검색
     validation:
         title: 잘못된 퍼즐
         noProducers: 일정 생성기를 배치해주세요!
         noGoalAcceptors: 목표 수집기를 배치해주세요!
-        goalAcceptorNoItem: 하나 이상의 목표 수집기에 아이템이 지정되지 않았습니다.
-            모양을 운반해서 목표를 지정해 주세요.
-        goalAcceptorRateNotMet: 하나 이상의 목표 수집기에 아이템이 충분하지 않습니다.
-            모든 수집기의 표시가 초록색인지 확인해주세요.
-        buildingOutOfBounds: 하나 이상의 건물이 지을 수 있는 영역 밖에 존재합니다.
-            영역을 늘리거나 건물을 제거하세요.
-        autoComplete: 퍼즐이 스스로 완료됩니다! 일정 생성기가 만든 모양이 목표 수집기로
-            바로 들어가고 있는건 아닌지 확인해주세요.
+        goalAcceptorNoItem: 하나 이상의 목표 수집기에 아이템이 지정되지 않았습니다. 모양을 운반해서 목표를 지정해 주세요.
+        goalAcceptorRateNotMet: 하나 이상의 목표 수집기에 아이템이 충분하지 않습니다. 모든 수집기의 표시가 초록색인지 확인해주세요.
+        buildingOutOfBounds: 하나 이상의 건물이 지을 수 있는 영역 밖에 존재합니다. 영역을 늘리거나 건물을 제거하세요.
+        autoComplete: 퍼즐이 스스로 완료됩니다! 일정 생성기가 만든 모양이 목표 수집기로 바로 들어가고 있는건 아닌지 확인해주세요.
+    difficulties:
+        easy: 쉬움
+        medium: 중간
+        hard: 어려움
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
-    invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나
-        재시작해 주세요 (잘못된 API 키).
-    unauthorized: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나
-        재시작해 주세요 (인증되지 않음).
-    bad-token: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나
-        재시작해 주세요 (잘못된 토큰).
+    invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
+    unauthorized: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (인증되지 않음).
+    bad-token: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 토큰).
     bad-id: 잘못된 퍼즐 구분자.
     not-found: 해당하는 퍼즐을 찾을 수 없습니다.
     bad-category: 해당하는 분류를 찾을 수 없습니다.
@@ -1106,3 +1107,5 @@ backendErrors:
     bad-payload: 요청이 잘못된 데이터를 포함하고 있습니다.
     bad-building-placement: 퍼즐에 잘못된 곳에 위치한 건물이 있습니다.
     timeout: 요청 시간이 초과되었습니다.
+    too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 제거하고 싶다면 support@shapez.io로 문의하세요!
+    no-permission: 이 작업을 할 권한이 없습니다.

@@ -18,6 +18,7 @@ export const THIRDPARTY_URLS = {
     shapeViewer: "https://viewer.shapez.io",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
+    stanaloneCampaignLink: "https://get.shapez.io",
     puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",
 
     levelTutorialVideos: {
@@ -72,8 +73,8 @@ export const globalConfig = {
 
     readerAnalyzeIntervalSeconds: 10,
 
-    goalAcceptorMinimumDurationSeconds: 5,
-    goalAcceptorsPerProducer: 4.5,
+    goalAcceptorItemsRequired: 12,
+    goalAcceptorsPerProducer: 5,
     puzzleModeSpeed: 3,
     puzzleMinBoundsSize: 2,
     puzzleMaxBoundsSize: 20,

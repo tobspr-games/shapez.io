@@ -155,6 +155,20 @@ export class ClientAPI {
     }
 
     /**
+     * @param {number} puzzleId
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
+     */
+    apiDeletePuzzle(puzzleId) {
+        if (!this.isLoggedIn()) {
+            return Promise.reject("not-logged-in");
+        }
+        return this._request("/v1/puzzles/delete/" + puzzleId, {
+            method: "POST",
+            body: {},
+        });
+    }
+
+    /**
      * @param {number} shortKey
      * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
      */

@@ -21,7 +21,7 @@ steamPage:
         hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir fabrika
         oyunu.
 global:
-    loading: Yüklenİyor
+    loading: Yükleniyor
     error: Hata
     thousandsDivider: ","
     decimalSeparator: .
@@ -57,11 +57,11 @@ demoBanners:
     intro: Bütün özellikleri açmak için tam sürümü satın alın!
 mainMenu:
     play: Oyna
-    changelog: Değİşİklİk Günlüğü
+    changelog: Değişiklik Günlüğü
     importSavegame: Kayıt Yükle
     openSourceHint: Bu oyun açık kaynak kodlu!
-    discordLink: Resmİ Discord Sunucusu
-    helpTranslate: Çevİrİye yardım et!
+    discordLink: Resmi Discord Sunucusu
+    helpTranslate: Çeviriye yardım et!
     browserWarning: Üzgünüz, bu oyunun tarayıcınızda yavaş çalıştığı biliniyor! Tam
         sürümü satın alın veya iyi performans için Chrome tarayıcısını kullanın.
     savegameLevel: Seviye <x>
@@ -74,8 +74,10 @@ mainMenu:
     puzzleMode: Yapboz Modu
     back: Geri
     puzzleDlcText: Fabrikaları küçültmeyi ve verimli hale getirmekten keyif mi
-        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif katabilirsin!
+        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
+        katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -91,7 +93,7 @@ dialogs:
         showKeybindings: Tuş Kısayollarını Göster
         retry: Yeniden Dene
         continue: Devam Et
-        playOffline: Play Offline
+        playOffline: Çevrimdışı Oyna
     importSavegameError:
         title: Kayıt yükleme hatası
         text: "Oyun kaydı yükleme başarısız:"
@@ -102,7 +104,7 @@ dialogs:
         title: Oyun bozuk
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
-        title: Sİlme İşlemİnİ onayla
+        title: Silme İşlemini onayla
         text: Bu kaydı silmek istediğinize emin misiniz?<br><br> '<savegameName>'
             seviyesi <savegameLevel><br><br> Bu işlem geri alınamaz!
     savegameDeletionError:
@@ -198,19 +200,19 @@ dialogs:
     submitPuzzle:
         title: Yapboz Yayınla
         descName: "Yapbozuna bir isim ver:"
-        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir.
-            (Anahtarı <link>buradan</link> oluşturabilirsin, yada aşagıdaki
-            şekillerden rastgele birini seçebilirsin):"
+        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir. (Anahtarı
+            <link>buradan</link> oluşturabilirsin, yada aşagıdaki şekillerden
+            rastgele birini seçebilirsin):"
         placeholderName: Yapboz İsmi
     puzzleResizeBadBuildings:
         title: Yeniden boyutlandırma mümkün değil
-        desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın
-            dışında kalabilir.
+        desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın dışında
+            kalabilir.
     puzzleLoadError:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Çevrimdışı Modu
+        title: Çevrİmdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
             Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
@@ -221,8 +223,8 @@ dialogs:
         desc: "Yapboz yayınlanamadı:"
     puzzleSubmitOk:
         title: Yapboz Yayınlandı
-        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından oynanabilecek.
-            Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
+        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından
+            oynanabilecek. Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
     puzzleCreateOffline:
         title: Çevrimdışı Modu
         desc: Çevrimdışı olduğundan yapbozunu kayıt edemeyecek veya yayınlayamayacaksın.
@@ -230,12 +232,13 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Öneri
         desc: Ben <strong>muhakkak</strong> yapboz moduna başlamadan önce normal oyunu
-            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz sunulmamış
-            mekaniklerle (yapılar ve oynanış şekilleri) karşılaşabilirsiniz.
+            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz
+            sunulmamış mekaniklerle (yapılar ve oynanış şekilleri)
+            karşılaşabilirsiniz.
     puzzleShare:
         title: Kısa Anahtar Kopyalandı
-        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı!
-            Bu anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
+        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı! Bu
+            anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
     puzzleReport:
         title: Yapbozu Şikayet Et
         options:
@@ -251,11 +254,15 @@ dialogs:
     puzzleLoadShortKey:
         title: Kısa anahtar gir
         desc: Yapbozu yüklemek için kısa anahtarı giriniz
+    puzzleDelete:
+        title: Yapboz silinsin mi?
+        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
+            alınamaz!"
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
         selectBuildings: Alan seç
-        stopPlacement: Yerleştİrmeyİ durdur
+        stopPlacement: Yerleştirmeyi durdur
         rotateBuilding: Yapıyı döndür
         placeMultiple: Çoklu yerleştir
         reverseOrientation: Yönünü ters çevir
@@ -269,7 +276,7 @@ ingame:
         plannerSwitchSide: Planlayıcıyı ters çevir
         cutSelection: Kes
         copySelection: Kopyala
-        clearSelection: Seçimi temİzle
+        clearSelection: Seçimi temizle
         pipette: Pipet
         switchLayers: Katman değiştir
         clearBelts: Bantları temizle
@@ -326,7 +333,7 @@ ingame:
     blueprintPlacer:
         cost: Bedel
     waypoints:
-        waypoints: Yer imler
+        waypoints: Yer imleri
         hub: MERKEZ
         description: Sol-tık ile Yer imlerine git, sağ-tık ile yer imini
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
@@ -430,23 +437,27 @@ ingame:
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
-            - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit Üreticileri</strong>
-              yerleştir.
-            - 2. Oyuncuların üretmesi ve bir veya birden fazla <strong>Hedef Merkezine</strong>
-              teslim edebilmeleri için bir veya birden fazla şekil oluştur.
-            - 3. Bir Hedef Merkezine belirli bir zaman içinde şekil teslim edilirse,
-              Hedef Merkezi bunu oyuncuların tekrardan üreteceği bir
-              <strong>hedef olarak kabul eder</strong> (<strong>Yeşil rozetle</strong> gösterilmiş).
-            - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit butonuna</strong>
-              basınız.
-            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve sonra onu
-              yayınlayabileceksiniz.
-            - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri dışındaki
-              <strong>bütün yapılar silinecektir</strong> - Bu kısmı oyuncuların
-              kendisi çözmesi gerekecek sonuçta :)
+            - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit
+              Üreticileri</strong> yerleştir.
+            - 2. Oyuncuların üretmesi ve bir veya birden fazla <strong>Hedef
+              Merkezine</strong> teslim edebilmeleri için bir veya birden fazla
+              şekil oluştur.
+            - 3. Bir Hedef Merkezine belirli bir zaman içinde şekil teslim
+              edilirse, Hedef Merkezi bunu oyuncuların tekrardan üreteceği bir
+              <strong>hedef olarak kabul eder</strong> (<strong>Yeşil
+              rozetle</strong> gösterilmiş).
+            - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit
+              butonuna</strong> basınız.
+            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve
+              sonra onu yayınlayabileceksiniz.
+            - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri
+              dışındaki <strong>bütün yapılar silinecektir</strong> - Bu kısmı
+              oyuncuların kendisi çözmesi gerekecek sonuçta :)
     puzzleCompletion:
         title: Yapboz Tamamlandı!
         titleLike: "Yapbozu beğendiyseniz kalbe tıklayınız:"
@@ -489,7 +500,7 @@ buildings:
             name: Üretici
             description: Bir şekli veya rengi üretmek için üzerine yerleştir.
         chainable:
-            name: Üretici (Zİncİrleme)
+            name: Üretici (Zincirleme)
             description: Bir şekli veya rengi üretmek için üzerine yerleştir. Zincirleme
                 bağlanabilir.
     underground_belt:
@@ -573,10 +584,10 @@ buildings:
             name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         splitter:
-            name: Ayırıcı (tekİl)
+            name: Ayırıcı (tekil)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
         splitter-inverse:
-            name: Ayırıcı (tekİl)
+            name: Ayırıcı (tekil)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
     storage:
         default:
@@ -670,11 +681,11 @@ buildings:
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Sabit Üretici
+            name: Sabİt Üretİcİ
             description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Hedef Merkezi
+            name: Hedef Merkezİ
             description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
@@ -709,7 +720,7 @@ storyRewards:
             <strong>birleştirilir</strong>, yoksa sol girişteki şeklin
             <strong>üzerine kaynaştırılır</strong>!
     reward_splitter:
-        title: Ayırıcı/Bİrleştİrİcİ
+        title: Ayırıcı/Birleştirici
         desc: <strong>Ayırıcıyı</strong> açtın! <strong>dengeleyicin</strong> başka bir
             türü - Tek giriş alıp ikiye ayırır
     reward_tunnel:
@@ -717,7 +728,7 @@ storyRewards:
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
             altından geçirebilirsiniz!
     reward_rotater_ccw:
-        title: Saat yönünün tersİnde Döndürme
+        title: Saat yönünün tersinde Döndürme
         desc: <strong>Döndürücünün</strong> farklı bir türünü açtın - Şekiller artık
             saat yönünün tersinde döndürülebilir! İnşa etmek için döndürücüyü
             seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna
@@ -734,7 +745,7 @@ storyRewards:
             <strong>daha yüksek</strong> ve tünel türlerini artık içiçe
             kullanabilirsin!
     reward_cutter_quad:
-        title: Çeyreğİnİ Kesme
+        title: Çeyreğini Kesme
         desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki
             parça yerine <strong>dört parçaya</strong> ayırabilir!
     reward_painter_double:
@@ -829,13 +840,11 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın : 
+            Normal katmanın üzerinde ayrı bir katman ve yeni mekanikler sunmakta!<br><br> 
+            Başlangıç için sana <strong>Quad
+            Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin yuvaları bağla !<br><br> Tel katmanına geçmek için
+            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -935,7 +944,7 @@ settings:
                 twenty_minutes: 20 Dakika
                 disabled: Devredışı
         compactBuildingInfo:
-            title: Derlİ Toplu Yapı Bİlgİlerİ
+            title: Derli Toplu Yapı Bilgileri
             description: Yapıların bilgi kutularını sadece oranlarını göstecek şekilde
                 kısaltır. Aksi takdirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
@@ -965,24 +974,24 @@ settings:
             title: Ses Ayarı
             description: Ses efektlerinin seviyesini ayarlar
         musicVolume:
-            title: Müzİk Ayarı
+            title: Müzik Ayarı
             description: Müzik seviyesini ayarlar
         lowQualityMapResources:
-            title: Düşük Kalİte Harİta Kaynakları
+            title: Düşük Kalite Harİta Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
                 kalitesini sadeleştirir. Hatta daha net bir görüntü sağlar, bu
                 yüzden bir dene!
         disableTileGrid:
-            title: Harİta Çİzgİlerİnİ Gİzle
+            title: Harita Çizgilerini Gizle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
                 Aynı zamanda oyunun daha net görünmesini sağlar!
         clearCursorOnDeleteWhilePlacing:
-            title: Sağ Tık İnşa İptalİ
+            title: Sağ Tık İnşa İptali
             description: Varsayılan olarak açık. Özellik açıksa, inşa modundayken sağ yık
                 yapıldığında inşa modundan çıkar. Eğer özellik kapalıysa, inşa
                 modundan çıkmadan var olan yapıları sağ tık ile silebilirsiniz.
         lowQualityTextures:
-            title: Düşük Kalİte Görüntü (Çİrkİn)
+            title: Düşük Kalite Görüntü (Çirkin)
             description: Performans için düşük kalite görüntü kullanır. Bu oyunun daha
                 çirkin görünmesine sebep olur!
         displayChunkBorders:
@@ -990,11 +999,11 @@ settings:
             description: Oyun 16'ya 16 alanlardan oluşur. Bu seçenek aktif olduğunda alan
                 sınırları görüntülenir.
         pickMinerOnPatch:
-            title: Kaynak Üzerinde Üretİcİ Seç
+            title: Kaynak Üzerinde Üretici Seç
             description: Varsayılan olarak açık. Eğer pipet bir kaynağın üzerinde
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
-            title: Sadeleştİrİlmİş Bantlar (Çİrkİn)
+            title: Sadeleştirilmiş Bantlar (Çirkin)
             description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse
                 görüntülenmez. Eğer gerçekten performansa ihtiyacınız yoksa bu
                 ayarla oynamanız tavsiye edilmez.
@@ -1106,7 +1115,7 @@ about:
 
         Son olarak, en iyi arkadaşım <a href="https://github.com/niklas-dahl" target="_blank">Niklas'a</a> büyük teşekkürler. Factorio oyunlarımız olmasaydı bu oyun hiç var olmamış olacaktı.
 changelog:
-    title: Değİşİklİk Günlüğü
+    title: Değişiklik Günlüğü
 demo:
     features:
         restoringGames: Oyun kayıtlarını yükleme
@@ -1201,33 +1210,49 @@ puzzleMenu:
     noPuzzles: Bu kısımda yapboz yok.
     categories:
         levels: Seviyeler
-        new: Yeni
-        top-rated: En İyi Değerlendirilen
+        new: Yenİ
+        top-rated: En İyİ Değerlendirilen
         mine: Yapbozlarım
-        short: Kısa
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
+
+        medium: Orta
+        official: Resmİ
+        trending: Bugün öne çıkan
+        trending-weekly: Haftalık öne çıkan
+        categories: Kategorİler
+        difficulties: Zorluğa göre
+        account: Yapbozlarım
+        search: Ara
     validation:
         title: Geçersiz Yapboz
         noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
         noGoalAcceptors: Lütfen bir Hedef Merkezi yerleştiriniz!
         goalAcceptorNoItem: Bir veya birden fazla Hedef Merkezine şekil gönderilmedi.
             Hedef belirlemek için onlara şekil gönderiniz.
-        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya almıyor.
-            Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan emin olunuz.
+        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya
+            almıyor. Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan
+            emin olunuz.
         buildingOutOfBounds: Bir veya birden fazla yapı inşa edilebilir alanın dışında.
             Alanı azaltınız veya yapıları siliniz.
-        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef merkezlerine
-            direkt olarak şekil göndermediğinden emin olunuz.
+        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef
+            merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
+    difficulties:
+        easy: Kolay
+        medium: Orta
+        hard: Zor
+
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
         güncellemeyi/yeniden başlatmayı deneyiniz (Geçersiz Api Anahtarı).
     unauthorized: Arka tarafla iletişim kurulamadı, lütfen oyunu
         güncellemeyi/yeniden başlatmayı deneyiniz (Yetkisiz erişim).
-    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu
-        güncellemeyi/yeniden başlatmayı deneyiniz (Kötü Anahtar).
+    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu güncellemeyi/yeniden
+        başlatmayı deneyiniz (Kötü Anahtar).
     bad-id: Geçersiz Yapboz tanımlayıcısı (ID).
     not-found: İstenilen Yapboz bulunamadı.
     bad-category: İstenilen kategori bulunamadı.
@@ -1243,3 +1268,7 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
+
+    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
+        istiyorsanız support@shapez.io ile iletişime geçiniz!
+    no-permission: Bu işlemi yapmak için izniniz yok.
