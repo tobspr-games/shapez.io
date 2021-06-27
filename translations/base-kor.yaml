@@ -69,9 +69,9 @@ mainMenu:
     savegameUnnamed: 이름 없음
     puzzleMode: 퍼즐 모드
     back: Back
-    puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
+    puzzleDlcText: 공장의 크기를 줄이고 최적화하는 데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: DLC 보러 가기
 dialogs:
     buttons:
         ok: 확인
@@ -1084,8 +1084,8 @@ puzzleMenu:
         easy: 쉬움
         medium: 중간
         hard: 어려움
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: DLC를 이미 구입하셨나요? 라이브러리에서 shapez.io를 오른쪽 클릭한 다음
+      속성… > DLC 메뉴를 선택해서 활성화되었는지 확인해주세요.
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
