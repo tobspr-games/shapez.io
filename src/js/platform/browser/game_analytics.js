@@ -96,6 +96,15 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     }
 
     /**
+     * Makes sure a DLC is activated on steam
+     * @param {string} dlc
+     */
+    activateDlc(dlc) {
+        logger.log("Activating dlc:", dlc);
+        return this.sendToApi("/v1/activate-dlc/" + dlc, {});
+    }
+
+    /**
      * Sends a request to the api
      * @param {string} endpoint Endpoint without base url
      * @param {object} data payload
