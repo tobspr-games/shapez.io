@@ -61,7 +61,7 @@ function PRIsTranslation(link) {
                 console.log("GITHUB HAS RATE-LIMITED THIS MACHINE, PLEASE WAIT ABOUT AN HOUR");
                 throw new Error("rate-limit reached");
             }
-            console.log(res);
+
             for (let file of res) {
                 if (!file.filename.startsWith("translations/")) return false;
             }
