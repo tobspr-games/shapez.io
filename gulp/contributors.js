@@ -1,12 +1,19 @@
 const fs = require("fs");
 const fsp = require("fs/promises");
 const path = require("path");
-const fetch = require("node-fetch");
+const nodeFetch = require("node-fetch");
 
 const APILink = "https://api.github.com/repos/tobspr/shapez.io";
 const numOfReqPerPage = 100; // Max is 100, change to something lower if loads are too long
+const personalAccessToken = "<INSERT_YOU_P.A.T_HERE";
 
 const JSONFileLocation = path.join(__dirname, "..", "contributors.json");
+
+function fetch(url) {
+    return nodeFetch(url, {
+        headers: [["Authorization", "token " + personalAccessToken]],
+    });
+}
 
 function JSONFileExists() {
     return fs.existsSync(JSONFileLocation);
@@ -46,7 +53,6 @@ function shouldDownloadPRs() {
 }
 
 function PRIsTranslation(link) {
-    // return true;
     // We just say that if a PR only edits translation files, its a translation, all others are something else
     return fetch(link + "/files")
         .then(res => res.json())
@@ -55,6 +61,7 @@ function PRIsTranslation(link) {
                 console.log("GITHUB HAS RATE-LIMITED THIS MACHINE, PLEASE WAIT ABOUT AN HOUR");
                 throw new Error("rate-limit reached");
             }
+            console.log(res);
             for (let file of res) {
                 if (!file.filename.startsWith("translations/")) return false;
             }
@@ -89,16 +96,16 @@ function reqPage(page) {
         .then(async res => {
             const prs = [];
 
-            for (let i = 0; i < res.length - 1; i++) {
-                if (!res[i].merged_at) continue; // Skip files that were never merged
+            for (let i = 0; i < res.length; i++) {
+                if (!res[i].merged_at) {
+                    continue;
+                } // Skip files that were never merged
 
                 const prInfo = {
                     username: res[i].user.login,
                     html_url: res[i].html_url,
                     url: res[i].url,
-                    user_avatar: res[i].user.avatar_url,
                     title: res[i].title,
-                    time: res[i].createdAt,
                 };
 
                 prs.push(prInfo);
@@ -119,7 +126,7 @@ async function downloadAllPrs() {
 
     const prs = [];
 
-    for (let i = 0; i < numOfPageReqs; i++) {
+    for (let i = 1; i < numOfPageReqs + 1; i++) {
         prs.push(...(await reqPage(i))); // Yes promise.all would be good, but I wanna keep them in order (at least for now)
     }
 
@@ -149,6 +156,12 @@ async function updateContributors() {
 function gulpTaskContributors($, gulp) {
     gulp.task("contributors.build", cb => tryToUpdateContributors().then(() => cb));
     gulp.task("contributors.build.force", cb => updateContributors().then(() => cb));
+
+    gulp.task("fetch.test", cb => {
+        fetch(APILink)
+            .then(res => console.log(res.headers.get("x-ratelimit-remaining")))
+            .then(cb);
+    });
 }
 
 module.exports = {

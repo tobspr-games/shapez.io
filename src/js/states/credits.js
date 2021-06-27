@@ -35,7 +35,9 @@ export class CreditsState extends TextualGameState {
             </div>
             <div class="contributors section">
                 <div class="title">Contributors: </div>
-                <div id="loading">Loading... <div>
+                <div class="flex-people">
+                    ${this.getContributorsHTML()}
+                </div>
             </div>
         `;
     }

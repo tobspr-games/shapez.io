@@ -254,7 +254,6 @@ gulp.task(
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
-        "contributors.build",
         "css.dev",
         "html.dev"
     )
@@ -273,17 +272,13 @@ gulp.task(
         "imgres.copyImageResources",
         "imgres.copyNonImageResources",
         "translations.fullBuild",
-        "contributors.build",
         "css.dev",
         "html.standalone-dev"
     )
 );
 
 // Builds everything (staging)
-gulp.task(
-    "step.staging.code",
-    gulp.series("sounds.fullbuild", "translations.fullBuild", "contributors.build", "js.staging")
-);
+gulp.task("step.staging.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.staging"));
 gulp.task(
     "step.staging.mainbuild",
     gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code")
@@ -292,10 +287,7 @@ gulp.task("step.staging.all", gulp.series("step.staging.mainbuild", "css.prod", 
 gulp.task("build.staging", gulp.series("utils.cleanup", "step.staging.all", "step.postbuild"));
 
 // Builds everything (prod)
-gulp.task(
-    "step.prod.code",
-    gulp.series("sounds.fullbuild", "translations.fullBuild", "contributors.build", "js.prod")
-);
+gulp.task("step.prod.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.prod"));
 gulp.task(
     "step.prod.mainbuild",
     gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code")
@@ -306,7 +298,7 @@ gulp.task("build.prod", gulp.series("utils.cleanup", "step.prod.all", "step.post
 // Builds everything (standalone-beta)
 gulp.task(
     "step.standalone-beta.code",
-    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "contributors.build", "js.standalone-beta")
+    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "js.standalone-beta")
 );
 gulp.task("step.standalone-beta.mainbuild", gulp.parallel("step.baseResources", "step.standalone-beta.code"));
 gulp.task(
@@ -323,12 +315,7 @@ gulp.task(
 for (const prefix of ["", "china.", "wegame."]) {
     gulp.task(
         prefix + "step.standalone-prod.code",
-        gulp.series(
-            "sounds.fullbuildHQ",
-            "translations.fullBuild",
-            "contributors.build",
-            prefix + "js.standalone-prod"
-        )
+        gulp.series("sounds.fullbuildHQ", "translations.fullBuild", prefix + "js.standalone-prod")
     );
 
     gulp.task(
