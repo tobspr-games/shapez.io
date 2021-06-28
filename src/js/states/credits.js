@@ -13,10 +13,12 @@ export class CreditsState extends TextualGameState {
 
     getMainContentHTML() {
         return `
-            <div class="section tobspr"><div class="title">${this.linkify(
-                "https://github.com/tobspr",
-                "Tobias Springer"
-            )} - ${T.credits.tobspr}</div></div>
+            <div class="section tobspr">
+                <button class="title">${T.credits.tobspr}</button>
+                <div class="people">
+                    <div class="entry">${this.linkify("https://github.com/tobspr", "Tobias Springer")}</div>
+                </div>
+            </div>
             <div class="special-shout-out section">
                 <button class="title">${T.credits.specialThanks.title}:</button>
                 <div class="people">
@@ -57,7 +59,7 @@ export class CreditsState extends TextualGameState {
                 i
             ].value
                 .map(pr => {
-                    return `<a href=${pr.html_url} target="_blank">${this.getGoodTitle(pr.title)}</a>, `;
+                    return `${this.linkify(pr.html_url, this.getGoodTitle(pr.title))}, `;
                 })
                 .reduce((p, c) => p + c)
                 .slice(0, -2)}

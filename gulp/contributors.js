@@ -5,7 +5,7 @@ const nodeFetch = require("node-fetch");
 
 const APILink = "https://api.github.com/repos/tobspr/shapez.io";
 const numOfReqPerPage = 100; // Max is 100, change to something lower if loads are too long
-const personalAccessToken = "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";
+const personalAccessToken = "PUT TOKEN HERE";
 
 const JSONFileLocation = path.join(__dirname, "..", "contributors.json");
 
@@ -91,8 +91,8 @@ async function sortPRs(prs) {
         if (i !== 0) clearLine();
         console.log(`PR's Downloaded: ${i} out of ${prs.length} (${prs.length - i} left)`);
     }
-    clearLine();
 
+    clearLine();
     console.log("Downloaded All PR's");
 
     return {
@@ -173,21 +173,6 @@ async function updateContributors() {
 function gulpTaskContributors($, gulp) {
     gulp.task("contributors.build", cb => tryToUpdateContributors().then(() => cb));
     gulp.task("contributors.build.force", cb => updateContributors().then(() => cb));
-
-    gulp.task("contributors.test", async cb => {
-        const people = [];
-        for (let i = 0; i < 100; i++) people.push(i);
-
-        console.log("Starting");
-        for (let i = 0; i < 100; i++) {
-            console.log(`PR's Downloaded: ${i} out of ${people.length} (${people.length - i} left)`);
-            await new Promise(res => setTimeout(res, 100));
-        }
-
-        process.stdout.moveCursor(0, -1); // up one line
-        process.stdout.clearLine(1);
-        console.log("Finished");
-    });
 }
 
 module.exports = {

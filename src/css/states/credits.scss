@@ -3,7 +3,6 @@
         text-align: center;
 
         .tobspr .title {
-            @include S(margin-top, 10px);
         }
 
         .section {
@@ -16,7 +15,6 @@
 
             .title {
                 @include Heading;
-                @include S(margin-bottom, 8px);
 
                 color: #555;
                 @include DarkThemeOverride {
@@ -28,6 +26,9 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.5s ease-out;
+            }
+            .people > :first-child {
+                @include S(margin-top, 8px);
             }
         }
     }
