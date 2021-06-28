@@ -103,4 +103,8 @@ export class CreditsState extends TextualGameState {
             );
         });
     }
+
+    getDefaultPreviousState() {
+        return "AboutState";
+    }
 }
