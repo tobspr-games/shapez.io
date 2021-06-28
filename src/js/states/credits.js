@@ -1,76 +1,61 @@
 import { TextualGameState } from "../core/textual_game_state";
 import { contributors, translators } from "../../../contributors.json";
-const APILink = "https://api.github.com/repos/tobspr/shapez.io"; // Should use THRIDPARY_URLS, but it is really hard to read.
-const numOfReqPerPage = 100; // Max is 100, change to something lower if loads are too long
+import { T } from "../translations";
 
 export class CreditsState extends TextualGameState {
     constructor() {
         super("CreditsState");
-        this.state = "Credits";
     }
 
     getStateHeaderTitle() {
-        return this.state;
+        return T.credits.title;
     }
 
     getMainContentHTML() {
         return `
-            <div class="section"><div class="title">Tobias Springer - Main Programer and Artist</div></div>
+            <div class="section tobspr"><div class="title">${this.linkify(
+                "https://github.com/tobspr",
+                "Tobias Springer"
+            )} - ${T.credits.tobspr}</div></div>
             <div class="special-shout-out section">
-                <div class="title">A Special Thanks To:</div>
+                <button class="title">${T.credits.specialThanks.title}:</button>
                 <div class="people">
-                    <div class="entry">Pepsin - Created the soundtrack</div>
-                    <div class="entry">Sense 101 - Designed the Puzzle DLC's official puzzles</div>
-                    <div class="entry">SargeanTravis - Created an achievement by whining a lot</div>
-                    <div class="entry">Bagel03 - Was an absolute CHAD</div>
-                    <div class="entry">Dengr - Wouldn't tell me what to put here</div>
-                    <div class="entry">Block of Emerald - Also wouldn't tell me what to put here</div>
+                    <div class="entry">${this.linkify(
+                        "https://soundcloud.com/pettersumelius",
+                        "Peppsen"
+                    )} - ${T.credits.specialThanks.descriptions.peppsen}</div>
+                    <div class="entry">Add some other people here (Whoever you think deserves it)</div>
+
                 </div>
             </div>
             <div class="translators section">
-                <div class="title">Translators: </div>
-                <div class="flex-people">
-                    ${this.getTranslatorsHTML()}
+                <button class="title">Translators:</button>
+                <div class="people">
+                    ${this.getGithubHTML(translators)}
                 </div>
             </div>
             <div class="contributors section">
-                <div class="title">Contributors: </div>
-                <div class="flex-people">
-                    ${this.getContributorsHTML()}
+                <button class="title">Contributors:</button>
+                <div class="people">
+                    ${this.getGithubHTML(contributors)}
                 </div>
             </div>
         `;
     }
 
-    getTranslatorsHTML() {
-        let html = "";
-        for (let i = 0; i < translators.length; i++) {
-            html += `
-            <br>
-            <div class="entry">
-                    <a href="${translators[i].username}" target="_blank">${
-                translators[i].username
-            }</a>: <br> ${translators[i].value
-                .map(pr => {
-                    return `<a href=${pr.html_url} target="_blank">${this.getGoodTitle(pr.title)}</a>, `;
-                })
-                .reduce((p, c) => p + c)
-                .slice(0, -2)}
-            </div>
-            `;
-        }
-        return html;
+    linkify(href, text) {
+        return `<a href="${href}" target="_blank">${text}</a>`;
     }
 
-    getContributorsHTML() {
+    getGithubHTML(list) {
         let html = "";
-        for (let i = 0; i < contributors.length; i++) {
+        for (let i = 0; i < list.length; i++) {
             html += `
-            <br>
+            ${i === 0 ? "" : "<br>"}
             <div class="entry">
-                    <a href="${contributors[i].username}" target="_blank">${
-                contributors[i].username
-            }</a>: <br> ${contributors[i].value
+                    ${this.linkify(`https://github.com/${list[i].username}`, list[i].username)}: <br> ${list[
+                i
+            ].value
                 .map(pr => {
                     return `<a href=${pr.html_url} target="_blank">${this.getGoodTitle(pr.title)}</a>, `;
                 })
@@ -89,6 +74,33 @@ export class CreditsState extends TextualGameState {
     }
 
     onEnter() {
-        // this.setPRInnerHTML();
+        // Allow the user to close any section by clicking on the title
+        const buttons = this.htmlElement.querySelectorAll("button.title");
+        buttons.forEach(button => {
+            /** @type {HTMLElement} */
+            //@ts-ignore
+            const people = button.nextElementSibling;
+
+            button.addEventListener("click", e => {
+                if (people.style.maxHeight) {
+                    people.style.maxHeight = null;
+                } else {
+                    people.style.maxHeight = people.scrollHeight + "px";
+                }
+            });
+
+            // Set them to open at the start
+            people.style.maxHeight = people.scrollHeight + "px";
+        });
+
+        // Link stuff
+        const links = this.htmlElement.querySelectorAll("a[href]");
+        links.forEach(link => {
+            this.trackClicks(
+                link,
+                () => this.app.platformWrapper.openExternalLink(link.getAttribute("href")),
+                { preventClick: true }
+            );
+        });
     }
 }

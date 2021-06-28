@@ -1381,6 +1381,18 @@ about:
 changelog:
     title: Changelog
 
+credits:
+    title: Credits
+    tobspr: Main Programer and Artist
+    specialThanks:
+        title: Special Thanks To
+        descriptions:
+            peppsen: Created the awesome soundtrack
+    translators:
+        title: Translators
+    contributors:
+        title: Contributors
+
 demo:
     features:
         restoringGames: Restoring savegames

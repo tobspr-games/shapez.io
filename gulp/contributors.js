@@ -5,7 +5,7 @@ const nodeFetch = require("node-fetch");
 
 const APILink = "https://api.github.com/repos/tobspr/shapez.io";
 const numOfReqPerPage = 100; // Max is 100, change to something lower if loads are too long
-const personalAccessToken = "<INSERT_YOU_P.A.T_HERE";
+const personalAccessToken = "PUT TOKEN HERE";
 
 const JSONFileLocation = path.join(__dirname, "..", "contributors.json");
 
@@ -156,12 +156,6 @@ async function updateContributors() {
 function gulpTaskContributors($, gulp) {
     gulp.task("contributors.build", cb => tryToUpdateContributors().then(() => cb));
     gulp.task("contributors.build.force", cb => updateContributors().then(() => cb));
-
-    gulp.task("fetch.test", cb => {
-        fetch(APILink)
-            .then(res => console.log(res.headers.get("x-ratelimit-remaining")))
-            .then(cb);
-    });
 }
 
 module.exports = {

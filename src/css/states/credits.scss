@@ -2,6 +2,10 @@
     .container .content {
         text-align: center;
 
+        .tobspr .title {
+            @include S(margin-top, 10px);
+        }
+
         .section {
             @include S(margin-top, 10px);
             @include S(padding, 5px);
@@ -12,28 +16,18 @@
 
             .title {
                 @include Heading;
+                @include S(margin-bottom, 8px);
+
+                color: #555;
+                @include DarkThemeOverride {
+                    color: #eee;
+                }
             }
 
             .people {
-                .entry {
-                }
-
-                .flex-entry {
-                    display: flex;
-
-                    .entry {
-                        display: inline-block;
-                        width: min-content;
-                    }
-                }
-            }
-
-            .people-flex {
-                display: flex;
-
-                .entry {
-                    display: flex;
-                }
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
             }
         }
     }
