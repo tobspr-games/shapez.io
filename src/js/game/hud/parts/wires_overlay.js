@@ -104,6 +104,8 @@ export class HUDWiresOverlay extends BaseHUDPart {
             const pinComp = contents.components.WiredPins;
             const staticComp = contents.components.StaticMapEntity;
 
+            const mouseTilePos = this.root.camera.screenToWorld(mousePos);
+
             // Go over all slots and see if they are close to mouse or not
             const pinSlots = pinComp.slots;
             for (let i = 0; i < pinSlots.length; ++i) {
@@ -115,8 +117,6 @@ export class HUDWiresOverlay extends BaseHUDPart {
                 }
 
                 // Check if slot is close to mouse
-                const mouseTilePos = this.root.camera.screenToWorld(mousePos);
-
                 // Dirty math that I don't like the look of
                 const slotPos = staticComp.localTileToWorld(slot.pos).toWorldSpaceCenterOfTile();
                 const effectiveRotation = Math.radians(
