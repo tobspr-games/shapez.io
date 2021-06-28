@@ -35,7 +35,7 @@ export class CreditsState extends TextualGameState {
                 </div>
             </div>
             <div class="contributors section">
-                <button class="title">${T.credits.translators.title}:</button>
+                <button class="title">${T.credits.contributors.title}:</button>
                 <div class="people">
                     ${this.getGithubHTML(contributors)}
                 </div>
