@@ -39,12 +39,14 @@ import { queryParamOptions } from "../../core/query_parameters";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
 
-/** @typedef {{
+/**
+ * @typedef {{
  *   shape: string,
  *   amount: number
  * }} UpgradeRequirement */
 
-/** @typedef {{
+/**
+ * @typedef {{
  *   required: Array<UpgradeRequirement>
  *   improvement?: number,
  *   excludePrevious?: boolean
@@ -52,11 +54,14 @@ import { MetaItemProducerBuilding } from "../buildings/item_producer";
 
 /** @typedef {Array<TierRequirement>} UpgradeTiers */
 
-/** @typedef {{
- *   shape: string,
- *   required: number,
- *   reward: enumHubGoalRewards,
- *   throughputOnly?: boolean
+/**
+ * @typedef {{
+ *  shapes: String[],
+ *  requires: Array<{
+ *      throughputOnly?: Boolean,
+ *      amount: Number,
+ *  }>,
+ *  reward: enumHubGoalRewards,
  * }} LevelDefinition */
 
 export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
@@ -287,105 +292,108 @@ function generateUpgrades(limitedVersion = false) {
  * @param {boolean} limitedVersion
  */
 export function generateLevelDefinitions(limitedVersion = false) {
+    /**
+     * @type {Array<LevelDefinition>}
+     */
     const levelDefinitions = [
         // 1
         // Circle
         {
-            shape: "CuCuCuCu", // belts t1
-            required: 30,
+            shapes: ["CuCuCuCu"], // belts t1
+            requires: [{ amount: 30 }],
             reward: enumHubGoalRewards.reward_cutter_and_trash,
         },
 
         // 2
         // Cutter
         {
-            shape: "----CuCu", //
-            required: 40,
+            shapes: ["----CuCu"], //
+            requires: [{ amount: 40 }],
             reward: enumHubGoalRewards.no_reward,
         },
 
         // 3
         // Rectangle
         {
-            shape: "RuRuRuRu", // miners t1
-            required: 70,
+            shapes: ["RuRuRuRu"], // miners t1
+            requires: [{ amount: 70 }],
             reward: enumHubGoalRewards.reward_balancer,
         },
 
         // 4
         {
-            shape: "RuRu----", // processors t2
-            required: 70,
+            shapes: ["RuRu----"], // processors t2
+            requires: [{ amount: 70 }],
             reward: enumHubGoalRewards.reward_rotater,
         },
 
         // 5
         // Rotater
         {
-            shape: "Cu----Cu", // belts t2
-            required: 170,
+            shapes: ["Cu----Cu"], // belts t2
+            requires: [{ amount: 170 }],
             reward: enumHubGoalRewards.reward_tunnel,
         },
 
         // 6
         {
-            shape: "Cu------", // miners t2
-            required: 270,
+            shapes: ["Cu------"], // miners t2
+            requires: [{ amount: 270 }],
             reward: enumHubGoalRewards.reward_painter,
         },
 
         // 7
         // Painter
         {
-            shape: "CrCrCrCr", // unused
-            required: 300,
+            shapes: ["CrCrCrCr"], // unused
+            requires: [{ amount: 300 }],
             reward: enumHubGoalRewards.reward_rotater_ccw,
         },
 
         // 8
         {
-            shape: "RbRb----", // painter t2
-            required: 480,
+            shapes: ["RbRb----"], // painter t2
+            requires: [{ amount: 480 }],
             reward: enumHubGoalRewards.reward_mixer,
         },
 
         // 9
         // Mixing (purple)
         {
-            shape: "CpCpCpCp", // belts t3
-            required: 600,
+            shapes: ["CpCpCpCp"], // belts t3
+            requires: [{ amount: 600 }],
             reward: enumHubGoalRewards.reward_merger,
         },
 
         // 10
-        // STACKER: Star shape + cyan
+        // STACKER: Star shapes + cyan
         {
-            shape: "ScScScSc", // miners t3
-            required: 800,
+            shapes: ["ScScScSc"], // miners t3
+            requires: [{ amount: 800 }],
             reward: enumHubGoalRewards.reward_stacker,
         },
 
         // 11
         // Chainable miner
         {
-            shape: "CgScScCg", // processors t3
-            required: 1000,
+            shapes: ["CgScScCg"], // processors t3
+            requires: [{ amount: 1000 }],
             reward: enumHubGoalRewards.reward_miner_chainable,
         },
 
         // 12
         // Blueprints
         {
-            shape: "CbCbCbRb:CwCwCwCw",
-            required: 1000,
+            shapes: ["CbCbCbRb:CwCwCwCw"],
+            requires: [{ amount: 1000 }],
             reward: enumHubGoalRewards.reward_blueprints,
         },
 
         // 13
         // Tunnel Tier 2
         {
-            shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", // painting t3
-            required: 3800,
+            shapes: [chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw"], // painting t3
+            requires: [{ amount: 3800 }],
             reward: enumHubGoalRewards.reward_underground_belt_tier_2,
         },
 
@@ -393,8 +401,8 @@ export function generateLevelDefinitions(limitedVersion = false) {
         ...(limitedVersion
             ? [
                   {
-                      shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
-                      required: 0,
+                      shapes: [chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw"],
+                      requires: [{ amount: 0 }],
                       reward: enumHubGoalRewards.reward_demo_end,
                   },
               ]
@@ -402,122 +410,173 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 14
                   // Belt reader
                   {
-                      shape: "--Cg----:--Cr----", // unused
-                      required: 8, // Per second!
+                      shapes: ["--Cg----:--Cr----"], // unused
+                      requires: [{ amount: 8, throughputOnly: true }], // Per second!
                       reward: enumHubGoalRewards.reward_belt_reader,
-                      throughputOnly: true,
                   },
 
                   // 15
                   // Storage
                   {
-                      shape: "SrSrSrSr:CyCyCyCy", // unused
-                      required: 10000,
+                      shapes: ["SrSrSrSr:CyCyCyCy"], // unused
+                      requires: [{ amount: 10000 }],
                       reward: enumHubGoalRewards.reward_storage,
                   },
 
                   // 16
                   // Quad Cutter
                   {
-                      shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-                      required: 6000,
+                      shapes: ["SrSrSrSr:CyCyCyCy:SwSwSwSw"], // belts t4 (two variants)
+                      requires: [{ amount: 6000 }],
                       reward: enumHubGoalRewards.reward_cutter_quad,
                   },
 
                   // 17
                   // Double painter
                   {
-                      shape: chinaShapes
-                          ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
-                          : "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-                      required: 20000,
+                      shapes: [
+                          chinaShapes ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu" : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                      ], // miner t4 (two variants)
+                      requires: [{ amount: 20000 }],
                       reward: enumHubGoalRewards.reward_painter_double,
                   },
 
                   // 18
                   // Rotater (180deg)
                   {
-                      shape: "Sg----Sg:CgCgCgCg:--CyCy--", // unused
-                      required: 20000,
+                      shapes: ["Sg----Sg:CgCgCgCg:--CyCy--"], // unused
+                      requires: [{ amount: 20000 }],
                       reward: enumHubGoalRewards.reward_rotater_180,
                   },
 
                   // 19
                   // Compact splitter
                   {
-                      shape: "CpRpCp--:SwSwSwSw",
-                      required: 25000,
+                      shapes: ["CpRpCp--:SwSwSwSw"],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_splitter,
                   },
 
                   // 20
                   // WIRES
                   {
-                      shape: finalGameShape,
-                      required: 25000,
+                      shapes: [finalGameShape],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_wires_painter_and_levers,
                   },
 
                   // 21
                   // Filter
                   {
-                      shape: "CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr",
-                      required: 25000,
+                      shapes: ["CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr"],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_filter,
                   },
 
                   // 22
                   // Constant signal
                   {
-                      shape: chinaShapes
-                          ? "RrSySrSy:RyCrCwCr:CyCyRyCy"
-                          : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
-                      required: 25000,
+                      shapes: [
+                          chinaShapes ? "RrSySrSy:RyCrCwCr:CyCyRyCy" : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                      ],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_constant_signal,
                   },
 
                   // 23
                   // Display
                   {
-                      shape: chinaShapes
-                          ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr"
-                          : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
-                      required: 25000,
+                      shapes: [
+                          chinaShapes ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr" : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                      ],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_display,
                   },
 
                   // 24 Logic gates
                   {
-                      shape: chinaShapes
-                          ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
-                          : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
-                      required: 25000,
+                      shapes: [
+                          chinaShapes
+                              ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
+                              : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                      ],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_logic_gates,
                   },
 
                   // 25 Virtual Processing
                   {
-                      shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-                      required: 25000,
+                      shapes: ["Rg--Rg--:CwRwCwRw:--Rg--Rg"],
+                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_virtual_processing,
                   },
 
                   // 26 Freeplay
                   {
-                      shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-                      required: 50000,
+                      shapes: ["CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw"],
+                      requires: [{ amount: 50000 }],
+                      reward: enumHubGoalRewards.reward_freeplay,
+                  },
+
+                  // 27 Random
+                  {
+                      shapes: null,
+                      requires: null,
+                      reward: null,
+                  },
+
+                  // 28 More shapes
+                  {
+                      shapes: ["CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", "Rg--Rg--:CwRwCwRw:--Rg--Rg"],
+                      requires: [{ amount: 50000 }, { amount: 30000, throughputOnly: true }],
+                      reward: enumHubGoalRewards.reward_freeplay,
+                  },
+
+                  // 29 More shapes
+                  {
+                      shapes: [
+                          "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
+                          "Rg--Rg--:CwRwCwRw:--Rg--Rg",
+                          "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
+                      ],
+                      requires: [
+                          { amount: 50000 },
+                          { amount: 30000, throughputOnly: true },
+                          { amount: 70000, throughputOnly: true },
+                      ],
+                      reward: enumHubGoalRewards.reward_freeplay,
+                  },
+
+                  // 30 More shapes
+                  {
+                      shapes: [
+                          "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
+                          "Rg--Rg--:CwRwCwRw:--Rg--Rg",
+                          "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
+                          "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr",
+                      ],
+                      requires: [
+                          { amount: 50000 },
+                          { amount: 30000, throughputOnly: true },
+                          { amount: 70000, throughputOnly: true },
+                          { amount: 90000 },
+                      ],
                       reward: enumHubGoalRewards.reward_freeplay,
                   },
               ]),
     ];
 
     if (G_IS_DEV) {
-        levelDefinitions.forEach(({ shape }) => {
-            try {
-                ShapeDefinition.fromShortKey(shape);
-            } catch (ex) {
-                throw new Error("Invalid tutorial goal: '" + ex + "' for shape" + shape);
-            }
+        levelDefinitions.forEach(({ shapes }) => {
+            if (!shapes) return;
+
+            shapes.forEach(shape => {
+                try {
+                    ShapeDefinition.fromShortKey(shape);
+                } catch (ex) {
+                    throw new Error("Invalid tutorial goal: '" + ex + "' for shape" + shape);
+                }
+            });
         });
     }
 

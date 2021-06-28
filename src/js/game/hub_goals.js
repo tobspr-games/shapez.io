@@ -105,6 +105,18 @@ export class HubGoals extends BasicSerializableObject {
             this.upgradeImprovements[key] = 1;
         }
 
+        /**
+         * @type {{
+         *  definitions: ShapeDefinition[],
+         *  requires: Array<{
+         *      throughputOnly?: Boolean,
+         *      amount: Number,
+         *  }>,
+         *  reward: enumHubGoalRewards,
+         * }}
+         */
+        this.currentGoal = null;
+
         this.computeNextGoal();
 
         // Allow quickly switching goals in dev mode
@@ -167,16 +179,34 @@ export class HubGoals extends BasicSerializableObject {
      * Returns how much of the current goal was already delivered
      */
     getCurrentGoalDelivered() {
-        if (this.currentGoal.throughputOnly) {
-            return (
-                this.root.productionAnalytics.getCurrentShapeRateRaw(
-                    enumAnalyticsDataSource.delivered,
-                    this.currentGoal.definition
-                ) / globalConfig.analyticsSliceDurationSeconds
-            );
+        const currentGoalDeliverd = [];
+
+        for (let i = 0; i < this.currentGoal.definitions.length; i++) {
+            if (this.currentGoal.requires[i].throughputOnly) {
+                currentGoalDeliverd.push(
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(
+                        enumAnalyticsDataSource.delivered,
+                        this.currentGoal.definitions[i]
+                    ) / globalConfig.analyticsSliceDurationSeconds
+                );
+            } else {
+                currentGoalDeliverd.push(this.getShapesStored(this.currentGoal.definitions[i]));
+            }
+        }
+        return currentGoalDeliverd;
+    }
+
+    /**
+     * Returns if the current goal is completed
+     */
+    isGoalCompleted() {
+        const delivered = this.getCurrentGoalDelivered();
+
+        for (let i = 0; i < delivered.length; i++) {
+            if (delivered[i] < this.currentGoal.requires[i].amount) return false;
         }
 
-        return this.getShapesStored(this.currentGoal.definition);
+        return true;
     }
 
     /**
@@ -214,10 +244,7 @@ export class HubGoals extends BasicSerializableObject {
         this.root.signals.shapeDelivered.dispatch(definition);
 
         // Check if we have enough for the next level
-        if (
-            this.getCurrentGoalDelivered() >= this.currentGoal.required ||
-            (G_IS_DEV && globalConfig.debug.rewardsInstant)
-        ) {
+        if (this.isGoalCompleted() || (G_IS_DEV && globalConfig.debug.rewardsInstant)) {
             if (!this.isEndOfDemoReached()) {
                 this.onGoalCompleted();
             }
@@ -231,24 +258,23 @@ export class HubGoals extends BasicSerializableObject {
         const storyIndex = this.level - 1;
         const levels = this.root.gameMode.getLevelDefinitions();
         if (storyIndex < levels.length) {
-            const { shape, required, reward, throughputOnly } = levels[storyIndex];
-            this.currentGoal = {
-                /** @type {ShapeDefinition} */
-                definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape),
-                required,
-                reward,
-                throughputOnly,
-            };
-            return;
+            const { shapes, requires, reward } = levels[storyIndex];
+            if (shapes) {
+                this.currentGoal = {
+                    definitions: shapes.map(code => this.root.shapeDefinitionMgr.getShapeFromShortKey(code)),
+                    requires: requires,
+                    reward,
+                };
+                return;
+            }
         }
 
         //Floor Required amount to remove confusion
         const required = Math.min(200, Math.floor(4 + (this.level - 27) * 0.25));
         this.currentGoal = {
-            definition: this.computeFreeplayShape(this.level),
-            required,
+            definitions: [this.computeFreeplayShape(this.level)],
+            requires: [{ throughputOnly: true, amount: required }],
             reward: enumHubGoalRewards.no_reward_freeplay,
-            throughputOnly: true,
         };
     }
 

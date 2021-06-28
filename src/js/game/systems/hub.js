@@ -35,13 +35,20 @@ export class HubSystem extends GameSystemWithFilter {
             // Set hub goal
             const entity = this.allEntities[i];
             const pinsComp = entity.components.WiredPins;
-            pinsComp.slots[0].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                this.root.hubGoals.currentGoal.definition
-            );
+            for (let i = 0; i < pinsComp.slots.length; i++) {
+                if (!this.root.hubGoals.currentGoal.definitions[i]) {
+                    pinsComp.slots[i].value = null;
+                    continue;
+                }
+
+                pinsComp.slots[i].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
+                    this.root.hubGoals.currentGoal.definitions[i]
+                );
+            }
         }
     }
+
     /**
-     *
      * @param {HTMLCanvasElement} canvas
      * @param {CanvasRenderingContext2D} context
      * @param {number} w
@@ -49,7 +56,7 @@ export class HubSystem extends GameSystemWithFilter {
      * @param {number} dpi
      */
     redrawHubBaseTexture(canvas, context, w, h, dpi) {
-        // This method is quite ugly, please ignore it!
+        // This method is quite ugly, please ignore it! It's more ugly now
 
         context.scale(dpi, dpi);
 
@@ -76,45 +83,151 @@ export class HubSystem extends GameSystemWithFilter {
             return;
         }
 
-        const definition = this.root.hubGoals.currentGoal.definition;
-        definition.drawCentered(45, 58, parameters, 36);
-
         const goals = this.root.hubGoals.currentGoal;
-
-        const textOffsetX = 70;
-        const textOffsetY = 61;
-
-        if (goals.throughputOnly) {
-            // Throughput
-            const deliveredText = T.ingame.statistics.shapesDisplayUnits.second.replace(
-                "<shapes>",
-                formatBigNumber(goals.required)
+        const delivered = this.root.hubGoals.getCurrentGoalDelivered();
+        for (let i = 0; i < goals.definitions.length; i++) {
+            const x =
+                45 +
+                (goals.definitions.length > 3
+                    ? 22 * i - 14
+                    : goals.definitions.length > 2
+                    ? 28 * i - 8
+                    : goals.definitions.length > 1
+                    ? 43 * i
+                    : 0);
+            const y = 58 + (goals.definitions.length > 1 ? -3 : 0);
+            goals.definitions[i].drawCentered(
+                x,
+                y,
+                parameters,
+                goals.definitions.length > 3
+                    ? 20
+                    : goals.definitions.length > 2
+                    ? 26
+                    : goals.definitions.length > 1
+                    ? 32
+                    : 36
             );
 
-            context.font = "bold 12px GameFont";
-            context.fillStyle = "#64666e";
-            context.textAlign = "left";
-            context.fillText(deliveredText, textOffsetX, textOffsetY);
-        } else {
-            // Deliver count
-            const delivered = this.root.hubGoals.getCurrentGoalDelivered();
-            const deliveredText = "" + formatBigNumber(delivered);
+            const textOffsetX = 0;
+            const textOffsetY = 24;
 
-            if (delivered > 9999) {
-                context.font = "bold 16px GameFont";
-            } else if (delivered > 999) {
-                context.font = "bold 20px GameFont";
+            if (goals.requires[i].throughputOnly) {
+                // Throughput
+                const deliveredText = T.ingame.statistics.shapesDisplayUnits.second.replace(
+                    "<shapes>",
+                    formatBigNumber(goals.requires[i].amount)
+                );
+                if (goals.definitions.length > 3) {
+                    context.font = "bold 6px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.textAlign = "left";
+                    const offset = context.measureText(deliveredText).width;
+                    context.fillText(deliveredText, textOffsetX + x - offset / 2, textOffsetY + y - 6);
+                } else if (goals.definitions.length > 2) {
+                    context.font = "bold 6px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.textAlign = "left";
+                    const offset = context.measureText(deliveredText).width;
+                    context.fillText(deliveredText, textOffsetX + x - offset / 2, textOffsetY + y - 4);
+                } else if (goals.definitions.length > 1) {
+                    context.font = "bold 8px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.textAlign = "left";
+                    const offset = context.measureText(deliveredText).width;
+                    context.fillText(deliveredText, textOffsetX + x - offset / 2, textOffsetY + y);
+                } else {
+                    context.font = "bold 12px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.textAlign = "left";
+                    const offset = context.measureText(deliveredText).width;
+                    context.fillText(deliveredText, textOffsetX + 86 - offset / 2, textOffsetY + 40);
+                }
             } else {
-                context.font = "bold 25px GameFont";
-            }
-            context.fillStyle = "#64666e";
-            context.textAlign = "left";
-            context.fillText(deliveredText, textOffsetX, textOffsetY);
+                const textRequired = "/" + formatBigNumber(goals.requires[i].amount);
+                const textDelivered = formatBigNumber(delivered[i]);
+                if (goals.definitions.length > 3) {
+                    context.font = "6px GameFont";
+                    const offsetRequired = context.measureText(textRequired).width;
 
-            // Required
-            context.font = "13px GameFont";
-            context.fillStyle = "#a4a6b0";
-            context.fillText("/ " + formatBigNumber(goals.required), textOffsetX, textOffsetY + 13);
+                    context.font = "bold 6px GameFont";
+                    const offsetDelivered = context.measureText(textDelivered).width;
+
+                    const totalOffset = offsetDelivered + offsetRequired;
+
+                    // Delivered
+                    context.fillStyle = "#64666e";
+                    context.fillText(textDelivered, textOffsetX + x - totalOffset / 2, textOffsetY + y - 6);
+
+                    // Required
+                    context.font = "6px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.fillText(
+                        textRequired,
+                        textOffsetX + x + offsetDelivered - totalOffset / 2,
+                        textOffsetY + y - 6
+                    );
+                } else if (goals.definitions.length > 2) {
+                    context.font = "6px GameFont";
+                    const offsetRequired = context.measureText(textRequired).width;
+
+                    context.font = "bold 6px GameFont";
+                    const offsetDelivered = context.measureText(textDelivered).width;
+
+                    const totalOffset = offsetDelivered + offsetRequired;
+
+                    // Delivered
+                    context.fillStyle = "#64666e";
+                    context.fillText(textDelivered, textOffsetX + x - totalOffset / 2, textOffsetY + y - 4);
+
+                    // Required
+                    context.font = "6px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.fillText(
+                        textRequired,
+                        textOffsetX + x + offsetDelivered - totalOffset / 2,
+                        textOffsetY + y - 4
+                    );
+                } else if (goals.definitions.length > 1) {
+                    context.font = "8px GameFont";
+                    const offsetRequired = context.measureText(textRequired).width;
+
+                    context.font = "bold 8px GameFont";
+                    const offsetDelivered = context.measureText(textDelivered).width;
+
+                    const totalOffset = offsetDelivered + offsetRequired;
+
+                    // Delivered
+                    context.fillStyle = "#64666e";
+                    context.fillText(textDelivered, textOffsetX + x - totalOffset / 2, textOffsetY + y);
+
+                    // Required
+                    context.font = "8px GameFont";
+                    context.fillStyle = "#64666e";
+                    context.fillText(
+                        textRequired,
+                        textOffsetX + x + offsetDelivered - totalOffset / 2,
+                        textOffsetY + y
+                    );
+                } else {
+                    // Delivered
+                    if (delivered[i] > 9999) {
+                        context.font = "bold 16px GameFont";
+                    } else if (delivered[i] > 999) {
+                        context.font = "bold 20px GameFont";
+                    } else {
+                        context.font = "bold 25px GameFont";
+                    }
+                    context.fillStyle = "#64666e";
+                    context.textAlign = "left";
+                    context.fillText(textDelivered, textOffsetX + 70, textOffsetY + 37);
+
+                    // Required
+                    context.font = "13px GameFont";
+                    context.fillStyle = "#a4a6b0";
+                    context.fillText(textRequired, textOffsetX + 70, textOffsetY + 37 + 13);
+                }
+            }
         }
 
         // Reward
@@ -169,7 +282,7 @@ export class HubSystem extends GameSystemWithFilter {
 
         // Deliver count
         const delivered = this.root.hubGoals.getCurrentGoalDelivered();
-        const deliveredText = "" + formatBigNumber(delivered);
+        const deliveredText = delivered.map(value => formatBigNumber(value));
 
         const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
         const canvas = parameters.root.buffers.getForKey({

@@ -116,7 +116,9 @@ export class HUDSandboxController extends BaseHUDPart {
         hubGoals.computeNextGoal();
 
         // Clear all shapes of this level
-        hubGoals.storedShapes[hubGoals.currentGoal.definition.getHash()] = 0;
+        for (let i = 0; i < hubGoals.currentGoal.definitions.length; i++) {
+            hubGoals.storedShapes[hubGoals.currentGoal.definitions[i].getHash()] = 0;
+        }
 
         if (this.root.hud.parts.pinnedShapes) {
             this.root.hud.parts.pinnedShapes.rerenderFull();
