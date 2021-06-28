@@ -98,11 +98,9 @@ export class HUDWiresOverlay extends BaseHUDPart {
             if (network && network.hasValue()) {
                 value = network.currentValue;
             }
-        }
-        // else if (contents.components.ConstantSignal) {
-        // value = contents.components.ConstantSignal.signal;
-        // }
-        else if (contents.components.WiredPins) {
+        } else if (contents.components.ConstantSignal) {
+            value = contents.components.ConstantSignal.signal;
+        } else if (contents.components.WiredPins) {
             const pinComp = contents.components.WiredPins;
             const staticComp = contents.components.StaticMapEntity;
 
