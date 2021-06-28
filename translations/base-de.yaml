@@ -71,7 +71,7 @@ mainMenu:
     helpTranslate: Hilf beim Übersetzen!
     madeBy: Ein Spiel von <author-link>
     browserWarning: Sorry, aber das Spiel wird in deinem Browser langsamer laufen!
-        Kaufe die Vollversion oder verwende Google Chrome für die beste Erfahrung.
+        Kaufe die Vollversion oder verwende einen Chromium-basierten Browser für die beste Erfahrung (Google Chrome, Microsoft Edge).
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
