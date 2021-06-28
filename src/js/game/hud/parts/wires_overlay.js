@@ -108,6 +108,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
 
             // Go over all slots and see if they are close to mouse or not
             const pinSlots = pinComp.slots;
+            let minLength = Infinity;
             for (let i = 0; i < pinSlots.length; ++i) {
                 const slot = pinSlots[i];
 
@@ -127,7 +128,8 @@ export class HUDWiresOverlay extends BaseHUDPart {
                 const length = mouseTilePos.sub(valueSpritePos).length();
 
                 // If it is closer than 8 we can copy that value
-                if (length <= 8) {
+                if (length < minLength) {
+                    minLength = length;
                     value = slot.value;
                 }
             }
