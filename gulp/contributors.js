@@ -134,6 +134,12 @@ async function downloadAllPrs() {
 }
 
 async function tryToUpdateContributors() {
+    if (personalAccessToken === "PUT TOKEN HERE") {
+        console.log("A github token was not provided, writing default contributors.json");
+        await writeJSONFile([], []);
+        return;
+    }
+
     if (!(await shouldDownloadPRs())) {
         console.log("Not updating contributors to prevent github API from rate-limiting this computer");
         console.log("If you wish to force a contributors update, use contributors.build.force");
