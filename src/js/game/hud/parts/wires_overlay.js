@@ -119,11 +119,11 @@ export class HUDWiresOverlay extends BaseHUDPart {
                 // Check if slot is close to mouse
                 // Dirty math that I don't like the look of
                 const slotPos = staticComp.localTileToWorld(slot.pos).toWorldSpaceCenterOfTile();
-                const effectiveRotation = Math.radians(
-                    staticComp.rotation + enumDirectionToAngle[slot.direction]
-                );
+                const effectiveRotation = (staticComp.rotation + enumDirectionToAngle[slot.direction]) % 360;
                 // -9.1 comes from systems > wired_pins.js > line 207
-                const valueSpritePos = slotPos.add(new Vector(0, -9.1).rotated(effectiveRotation));
+                const valueSpritePos = slotPos.add(
+                    new Vector(0, -9.1).rotateInplaceFastMultipleOf90(effectiveRotation)
+                );
                 const length = mouseTilePos.sub(valueSpritePos).length();
 
                 // If it is closer than 8 we can copy that value
