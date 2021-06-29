@@ -514,57 +514,6 @@ export function generateLevelDefinitions(limitedVersion = false) {
                       shapes: [{ key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 50000 }],
                       reward: enumHubGoalRewards.reward_freeplay,
                   },
-
-                  // 27 Random
-                  {
-                      shapes: null,
-                      reward: null,
-                  },
-
-                  // 28 More shapes
-                  {
-                      shapes: [
-                          { key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 50000 },
-                          { key: "Rg--Rg--:CwRwCwRw:--Rg--Rg", amount: 50000 },
-                      ],
-                      reward: enumHubGoalRewards.no_reward_freeplay,
-                      inOrder: true,
-                  },
-
-                  // 29 More shapes
-                  {
-                      shapes: [
-                          { key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 100, throughputOnly: true },
-                          { key: "Rg--Rg--:CwRwCwRw:--Rg--Rg", amount: 100, throughputOnly: true },
-                          { key: "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw", amount: 100, throughputOnly: true },
-                      ],
-                      reward: enumHubGoalRewards.no_reward_freeplay,
-                  },
-
-                  // 30 More shapes
-                  {
-                      shapes: [
-                          {
-                              key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-                              amount: 50000,
-                          },
-                          {
-                              key: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-                              amount: 30000,
-                              throughputOnly: true,
-                          },
-                          {
-                              key: "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
-                              amount: 70000,
-                              throughputOnly: true,
-                          },
-                          {
-                              key: "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr",
-                              amount: 90000,
-                          },
-                      ],
-                      reward: enumHubGoalRewards.no_reward_freeplay,
-                  },
               ]),
     ];
 
