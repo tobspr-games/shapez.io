@@ -107,15 +107,18 @@ export class HubGoals extends BasicSerializableObject {
 
         /**
          * @type {{
-         *  definitions: ShapeDefinition[],
-         *  requires: Array<{
-         *      throughputOnly?: Boolean,
+         *  definitions:  Array<{
+         *      shape: ShapeDefinition,
          *      amount: Number,
+         *      throughputOnly?: Boolean,
          *  }>,
          *  reward: enumHubGoalRewards,
+         *  inOrder?: Boolean,
          * }}
          */
         this.currentGoal = null;
+
+        this.deliverOrder = [];
 
         this.computeNextGoal();
 
@@ -182,15 +185,15 @@ export class HubGoals extends BasicSerializableObject {
         const currentGoalDeliverd = [];
 
         for (let i = 0; i < this.currentGoal.definitions.length; i++) {
-            if (this.currentGoal.requires[i].throughputOnly) {
+            if (this.currentGoal.definitions[i].throughputOnly) {
                 currentGoalDeliverd.push(
                     this.root.productionAnalytics.getCurrentShapeRateRaw(
                         enumAnalyticsDataSource.delivered,
-                        this.currentGoal.definitions[i]
+                        this.currentGoal.definitions[i].shape
                     ) / globalConfig.analyticsSliceDurationSeconds
                 );
             } else {
-                currentGoalDeliverd.push(this.getShapesStored(this.currentGoal.definitions[i]));
+                currentGoalDeliverd.push(this.getShapesStored(this.currentGoal.definitions[i].shape));
             }
         }
         return currentGoalDeliverd;
@@ -203,7 +206,7 @@ export class HubGoals extends BasicSerializableObject {
         const delivered = this.getCurrentGoalDelivered();
 
         for (let i = 0; i < delivered.length; i++) {
-            if (delivered[i] < this.currentGoal.requires[i].amount) return false;
+            if (delivered[i] < this.currentGoal.definitions[i].amount) return false;
         }
 
         return true;
@@ -239,9 +242,52 @@ export class HubGoals extends BasicSerializableObject {
      */
     handleDefinitionDelivered(definition) {
         const hash = definition.getHash();
-        this.storedShapes[hash] = (this.storedShapes[hash] || 0) + 1;
 
-        this.root.signals.shapeDelivered.dispatch(definition);
+        const definitions = this.currentGoal.definitions;
+        // In order and shape is goal shape
+        if (this.currentGoal.inOrder && definitions.some(goal => goal.shape.getHash() === hash)) {
+            // Add to delivered order
+            this.deliverOrder.push(hash);
+
+            if (this.deliverOrder.length === definitions.length) {
+                // Check if order is correct
+                const startIndex = this.deliverOrder.findIndex(
+                    hash => hash === definitions[0].shape.getHash()
+                );
+
+                if (startIndex > -1) {
+                    for (let i = 0; i < definitions.length; i++) {
+                        // Offset order to first shape
+                        let currentOrder = startIndex + i;
+                        if (currentOrder >= this.deliverOrder.length)
+                            currentOrder = currentOrder - this.deliverOrder.length;
+
+                        // Wrong order clear order
+                        if (this.deliverOrder[currentOrder] !== definitions[i].shape.getHash()) {
+                            this.deliverOrder = [];
+                            break;
+                        }
+                    }
+                } else {
+                    this.deliverOrder = [];
+                }
+
+                // Add to stored shapes
+                for (let i = 0; i < this.deliverOrder.length; i++) {
+                    this.storedShapes[this.deliverOrder[i]] =
+                        (this.storedShapes[this.deliverOrder[i]] || 0) + 1;
+                    this.root.signals.shapeDelivered.dispatch(
+                        ShapeDefinition.fromShortKey(this.deliverOrder[i])
+                    );
+                }
+
+                this.deliverOrder = [];
+            }
+        } else {
+            this.storedShapes[hash] = (this.storedShapes[hash] || 0) + 1;
+
+            this.root.signals.shapeDelivered.dispatch(definition);
+        }
 
         // Check if we have enough for the next level
         if (this.isGoalCompleted() || (G_IS_DEV && globalConfig.debug.rewardsInstant)) {
@@ -258,12 +304,18 @@ export class HubGoals extends BasicSerializableObject {
         const storyIndex = this.level - 1;
         const levels = this.root.gameMode.getLevelDefinitions();
         if (storyIndex < levels.length) {
-            const { shapes, requires, reward } = levels[storyIndex];
+            const { shapes, reward, inOrder } = levels[storyIndex];
             if (shapes) {
                 this.currentGoal = {
-                    definitions: shapes.map(code => this.root.shapeDefinitionMgr.getShapeFromShortKey(code)),
-                    requires: requires,
+                    definitions: shapes.map(shape => {
+                        return {
+                            ...shape,
+                            shape: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape.key),
+                            key: null,
+                        };
+                    }),
                     reward,
+                    inOrder,
                 };
                 return;
             }
@@ -272,8 +324,9 @@ export class HubGoals extends BasicSerializableObject {
         //Floor Required amount to remove confusion
         const required = Math.min(200, Math.floor(4 + (this.level - 27) * 0.25));
         this.currentGoal = {
-            definitions: [this.computeFreeplayShape(this.level)],
-            requires: [{ throughputOnly: true, amount: required }],
+            definitions: [
+                { shape: this.computeFreeplayShape(this.level), throughputOnly: true, amount: required },
+            ],
             reward: enumHubGoalRewards.no_reward_freeplay,
         };
     }

@@ -78,7 +78,7 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
             for (let i = 0; i < this.root.hubGoals.currentGoal.definitions.length; i++) {
                 items.push(
                     this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                        this.root.hubGoals.currentGoal.definitions[i]
+                        this.root.hubGoals.currentGoal.definitions[i].shape
                     )
                 );
             }

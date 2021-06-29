@@ -104,10 +104,10 @@ export class HUDPinnedShapes extends BaseHUDPart {
      */
     findGoalValueForShape(key) {
         const goalIndex = this.root.hubGoals.currentGoal.definitions.findIndex(
-            shape => shape.getHash() === key
+            goal => goal.shape.getHash() === key
         );
         if (goalIndex > -1) {
-            return this.root.hubGoals.currentGoal.requires[goalIndex].amount;
+            return this.root.hubGoals.currentGoal.definitions[goalIndex].amount;
         }
         if (key === this.root.gameMode.getBlueprintShapeKey()) {
             return null;
@@ -142,7 +142,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
      */
     isShapePinned(key) {
         const goalIndex = this.root.hubGoals.currentGoal.definitions.findIndex(
-            shape => shape.getHash() === key
+            goal => goal.shape.getHash() === key
         );
         if (goalIndex > -1 || key === this.root.gameMode.getBlueprintShapeKey()) {
             // This is a "special" shape which is always pinned
@@ -174,12 +174,11 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         // Pin story goal
         for (let i = 0; i < currentGoal.definitions.length; i++) {
-            console.log(currentGoal);
             this.internalPinShape({
-                key: currentGoal.definitions[i].getHash(),
+                key: currentGoal.definitions[i].shape.getHash(),
                 canUnpin: false,
                 className: "goal",
-                throughputOnly: currentGoal.requires[i].throughputOnly,
+                throughputOnly: currentGoal.definitions[i].throughputOnly,
             });
         }
 
@@ -195,7 +194,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
         // Pin manually pinned shapes
         for (let i = 0; i < this.pinnedShapes.length; ++i) {
             const key = this.pinnedShapes[i];
-            const goalIndex = currentGoal.definitions.findIndex(shape => shape.getHash() === key);
+            const goalIndex = currentGoal.definitions.findIndex(goal => goal.shape.getHash() === key);
             if (goalIndex < 0) {
                 this.internalPinShape({ key });
             }
@@ -315,7 +314,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
     pinNewShape(definition) {
         const key = definition.getHash();
         const goalIndex = this.root.hubGoals.currentGoal.definitions.findIndex(
-            shape => shape.getHash() === key
+            goal => goal.shape.getHash() === key
         );
         if (goalIndex > -1) {
             // Can not pin current goal

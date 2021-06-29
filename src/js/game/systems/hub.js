@@ -42,7 +42,7 @@ export class HubSystem extends GameSystemWithFilter {
                 }
 
                 pinsComp.slots[i].value = this.root.shapeDefinitionMgr.getShapeItemFromDefinition(
-                    this.root.hubGoals.currentGoal.definitions[i]
+                    this.root.hubGoals.currentGoal.definitions[i].shape
                 );
             }
         }
@@ -84,53 +84,50 @@ export class HubSystem extends GameSystemWithFilter {
         }
 
         const goals = this.root.hubGoals.currentGoal;
+        const goalsLength = goals.definitions.length;
         const delivered = this.root.hubGoals.getCurrentGoalDelivered();
-        for (let i = 0; i < goals.definitions.length; i++) {
-            const x =
-                45 +
-                (goals.definitions.length > 3
-                    ? 22 * i - 14
-                    : goals.definitions.length > 2
-                    ? 28 * i - 8
-                    : goals.definitions.length > 1
-                    ? 43 * i
-                    : 0);
-            const y = 58 + (goals.definitions.length > 1 ? -3 : 0);
-            goals.definitions[i].drawCentered(
-                x,
-                y,
-                parameters,
-                goals.definitions.length > 3
-                    ? 20
-                    : goals.definitions.length > 2
-                    ? 26
-                    : goals.definitions.length > 1
-                    ? 32
-                    : 36
-            );
+
+        let x = 45;
+        let y = 58 + (goalsLength > 1 ? -3 : 0);
+
+        if (goalsLength > 3) x += -36;
+        else if (goalsLength > 2) x += -36;
+        else if (goalsLength > 1) x += -44;
+
+        let size = 36;
+        if (goalsLength > 3) size = 20;
+        else if (goalsLength > 2) size = 26;
+        else if (goalsLength > 1) size = 32;
+
+        for (let i = 0; i < goalsLength; i++) {
+            if (goalsLength > 3) x += 22;
+            else if (goalsLength > 2) x += 28;
+            else if (goalsLength > 1) x += 43;
+
+            goals.definitions[i].shape.drawCentered(x, y, parameters, size);
 
             const textOffsetX = 0;
             const textOffsetY = 24;
 
-            if (goals.requires[i].throughputOnly) {
+            if (goals.definitions[i].throughputOnly) {
                 // Throughput
                 const deliveredText = T.ingame.statistics.shapesDisplayUnits.second.replace(
                     "<shapes>",
-                    formatBigNumber(goals.requires[i].amount)
+                    formatBigNumber(goals.definitions[i].amount)
                 );
-                if (goals.definitions.length > 3) {
+                if (goalsLength > 3) {
                     context.font = "bold 6px GameFont";
                     context.fillStyle = "#64666e";
                     context.textAlign = "left";
                     const offset = context.measureText(deliveredText).width;
                     context.fillText(deliveredText, textOffsetX + x - offset / 2, textOffsetY + y - 6);
-                } else if (goals.definitions.length > 2) {
+                } else if (goalsLength > 2) {
                     context.font = "bold 6px GameFont";
                     context.fillStyle = "#64666e";
                     context.textAlign = "left";
                     const offset = context.measureText(deliveredText).width;
                     context.fillText(deliveredText, textOffsetX + x - offset / 2, textOffsetY + y - 4);
-                } else if (goals.definitions.length > 1) {
+                } else if (goalsLength > 1) {
                     context.font = "bold 8px GameFont";
                     context.fillStyle = "#64666e";
                     context.textAlign = "left";
@@ -144,9 +141,9 @@ export class HubSystem extends GameSystemWithFilter {
                     context.fillText(deliveredText, textOffsetX + 86 - offset / 2, textOffsetY + 40);
                 }
             } else {
-                const textRequired = "/" + formatBigNumber(goals.requires[i].amount);
+                const textRequired = "/" + formatBigNumber(goals.definitions[i].amount);
                 const textDelivered = formatBigNumber(delivered[i]);
-                if (goals.definitions.length > 3) {
+                if (goalsLength > 3) {
                     context.font = "6px GameFont";
                     const offsetRequired = context.measureText(textRequired).width;
 
@@ -167,7 +164,7 @@ export class HubSystem extends GameSystemWithFilter {
                         textOffsetX + x + offsetDelivered - totalOffset / 2,
                         textOffsetY + y - 6
                     );
-                } else if (goals.definitions.length > 2) {
+                } else if (goalsLength > 2) {
                     context.font = "6px GameFont";
                     const offsetRequired = context.measureText(textRequired).width;
 
@@ -188,7 +185,7 @@ export class HubSystem extends GameSystemWithFilter {
                         textOffsetX + x + offsetDelivered - totalOffset / 2,
                         textOffsetY + y - 4
                     );
-                } else if (goals.definitions.length > 1) {
+                } else if (goalsLength > 1) {
                     context.font = "8px GameFont";
                     const offsetRequired = context.measureText(textRequired).width;
 

@@ -124,7 +124,7 @@ export class HUDShop extends BaseHUDPart {
                 container.appendChild(viewInfoButton);
 
                 const goalIndex = this.root.hubGoals.currentGoal.definitions.findIndex(
-                    goal => goal.getHash() === shape
+                    goal => goal.shape.getHash() === shape
                 );
                 if (goalIndex > -1) {
                     pinButton.classList.add("isGoal");

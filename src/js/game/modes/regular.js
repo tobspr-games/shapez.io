@@ -56,12 +56,13 @@ import { MetaItemProducerBuilding } from "../buildings/item_producer";
 
 /**
  * @typedef {{
- *  shapes: String[],
- *  requires: Array<{
- *      throughputOnly?: Boolean,
+ *  shapes: String[] | Array<{
+ *      key: String,
  *      amount: Number,
+ *      throughputOnly?: Boolean,
  *  }>,
  *  reward: enumHubGoalRewards,
+ *  inOrder?: Boolean,
  * }} LevelDefinition */
 
 export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
@@ -299,101 +300,88 @@ export function generateLevelDefinitions(limitedVersion = false) {
         // 1
         // Circle
         {
-            shapes: ["CuCuCuCu"], // belts t1
-            requires: [{ amount: 30 }],
+            shapes: [{ key: "CuCuCuCu", amount: 30 }], // belts t1
             reward: enumHubGoalRewards.reward_cutter_and_trash,
         },
 
         // 2
         // Cutter
         {
-            shapes: ["----CuCu"], //
-            requires: [{ amount: 40 }],
+            shapes: [{ key: "----CuCu", amount: 40 }], //
             reward: enumHubGoalRewards.no_reward,
         },
 
         // 3
         // Rectangle
         {
-            shapes: ["RuRuRuRu"], // miners t1
-            requires: [{ amount: 70 }],
+            shapes: [{ key: "RuRuRuRu", amount: 70 }], // miners t1
             reward: enumHubGoalRewards.reward_balancer,
         },
 
         // 4
         {
-            shapes: ["RuRu----"], // processors t2
-            requires: [{ amount: 70 }],
+            shapes: [{ key: "RuRu----", amount: 70 }], // processors t2
             reward: enumHubGoalRewards.reward_rotater,
         },
 
         // 5
         // Rotater
         {
-            shapes: ["Cu----Cu"], // belts t2
-            requires: [{ amount: 170 }],
+            shapes: [{ key: "Cu----Cu", amount: 170 }], // belts t2
             reward: enumHubGoalRewards.reward_tunnel,
         },
 
         // 6
         {
-            shapes: ["Cu------"], // miners t2
-            requires: [{ amount: 270 }],
+            shapes: [{ key: "Cu------", amount: 270 }], // miners t2
             reward: enumHubGoalRewards.reward_painter,
         },
 
         // 7
         // Painter
         {
-            shapes: ["CrCrCrCr"], // unused
-            requires: [{ amount: 300 }],
+            shapes: [{ key: "CrCrCrCr", amount: 300 }], // unused
             reward: enumHubGoalRewards.reward_rotater_ccw,
         },
 
         // 8
         {
-            shapes: ["RbRb----"], // painter t2
-            requires: [{ amount: 480 }],
+            shapes: [{ key: "RbRb----", amount: 480 }], // painter t2
             reward: enumHubGoalRewards.reward_mixer,
         },
 
         // 9
         // Mixing (purple)
         {
-            shapes: ["CpCpCpCp"], // belts t3
-            requires: [{ amount: 600 }],
+            shapes: [{ key: "CpCpCpCp", amount: 600 }], // belts t3
             reward: enumHubGoalRewards.reward_merger,
         },
 
         // 10
         // STACKER: Star shapes + cyan
         {
-            shapes: ["ScScScSc"], // miners t3
-            requires: [{ amount: 800 }],
+            shapes: [{ key: "ScScScSc", amount: 800 }], // miners t3
             reward: enumHubGoalRewards.reward_stacker,
         },
 
         // 11
         // Chainable miner
         {
-            shapes: ["CgScScCg"], // processors t3
-            requires: [{ amount: 1000 }],
+            shapes: [{ key: "CgScScCg", amount: 1000 }], // processors t3
             reward: enumHubGoalRewards.reward_miner_chainable,
         },
 
         // 12
         // Blueprints
         {
-            shapes: ["CbCbCbRb:CwCwCwCw"],
-            requires: [{ amount: 1000 }],
+            shapes: [{ key: "CbCbCbRb:CwCwCwCw", amount: 1000 }],
             reward: enumHubGoalRewards.reward_blueprints,
         },
 
         // 13
         // Tunnel Tier 2
         {
-            shapes: [chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw"], // painting t3
-            requires: [{ amount: 3800 }],
+            shapes: [{ key: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", amount: 3800 }], // painting t3
             reward: enumHubGoalRewards.reward_underground_belt_tier_2,
         },
 
@@ -401,8 +389,12 @@ export function generateLevelDefinitions(limitedVersion = false) {
         ...(limitedVersion
             ? [
                   {
-                      shapes: [chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw"],
-                      requires: [{ amount: 0 }],
+                      shapes: [
+                          {
+                              key: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
+                              amount: 0,
+                          },
+                      ],
                       reward: enumHubGoalRewards.reward_demo_end,
                   },
               ]
@@ -410,24 +402,21 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 14
                   // Belt reader
                   {
-                      shapes: ["--Cg----:--Cr----"], // unused
-                      requires: [{ amount: 8, throughputOnly: true }], // Per second!
+                      shapes: [{ key: "--Cg----:--Cr----", amount: 8, throughputOnly: true }], // unused
                       reward: enumHubGoalRewards.reward_belt_reader,
                   },
 
                   // 15
                   // Storage
                   {
-                      shapes: ["SrSrSrSr:CyCyCyCy"], // unused
-                      requires: [{ amount: 10000 }],
+                      shapes: [{ key: "SrSrSrSr:CyCyCyCy", amount: 10000 }], // unused
                       reward: enumHubGoalRewards.reward_storage,
                   },
 
                   // 16
                   // Quad Cutter
                   {
-                      shapes: ["SrSrSrSr:CyCyCyCy:SwSwSwSw"], // belts t4 (two variants)
-                      requires: [{ amount: 6000 }],
+                      shapes: [{ key: "SrSrSrSr:CyCyCyCy:SwSwSwSw", amount: 6000 }], // belts t4 (two variants)
                       reward: enumHubGoalRewards.reward_cutter_quad,
                   },
 
@@ -435,41 +424,41 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // Double painter
                   {
                       shapes: [
-                          chinaShapes ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu" : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                          {
+                              key: chinaShapes
+                                  ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
+                                  : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                              amount: 20000,
+                          },
                       ], // miner t4 (two variants)
-                      requires: [{ amount: 20000 }],
                       reward: enumHubGoalRewards.reward_painter_double,
                   },
 
                   // 18
                   // Rotater (180deg)
                   {
-                      shapes: ["Sg----Sg:CgCgCgCg:--CyCy--"], // unused
-                      requires: [{ amount: 20000 }],
+                      shapes: [{ key: "Sg----Sg:CgCgCgCg:--CyCy--", amount: 20000 }], // unused
                       reward: enumHubGoalRewards.reward_rotater_180,
                   },
 
                   // 19
                   // Compact splitter
                   {
-                      shapes: ["CpRpCp--:SwSwSwSw"],
-                      requires: [{ amount: 25000 }],
+                      shapes: [{ key: "CpRpCp--:SwSwSwSw", amount: 25000 }],
                       reward: enumHubGoalRewards.reward_splitter,
                   },
 
                   // 20
                   // WIRES
                   {
-                      shapes: [finalGameShape],
-                      requires: [{ amount: 25000 }],
+                      shapes: [{ key: finalGameShape, amount: 25000 }],
                       reward: enumHubGoalRewards.reward_wires_painter_and_levers,
                   },
 
                   // 21
                   // Filter
                   {
-                      shapes: ["CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr"],
-                      requires: [{ amount: 25000 }],
+                      shapes: [{ key: "CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr", amount: 25000 }],
                       reward: enumHubGoalRewards.reward_filter,
                   },
 
@@ -477,9 +466,13 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // Constant signal
                   {
                       shapes: [
-                          chinaShapes ? "RrSySrSy:RyCrCwCr:CyCyRyCy" : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                          {
+                              key: chinaShapes
+                                  ? "RrSySrSy:RyCrCwCr:CyCyRyCy"
+                                  : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+                              amount: 25000,
+                          },
                       ],
-                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_constant_signal,
                   },
 
@@ -487,62 +480,63 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // Display
                   {
                       shapes: [
-                          chinaShapes ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr" : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                          {
+                              key: chinaShapes
+                                  ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr"
+                                  : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+                              amount: 25000,
+                          },
                       ],
-                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_display,
                   },
 
                   // 24 Logic gates
                   {
                       shapes: [
-                          chinaShapes
-                              ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
-                              : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                          {
+                              key: chinaShapes
+                                  ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
+                                  : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+                              amount: 25000,
+                          },
                       ],
-                      requires: [{ amount: 25000 }],
                       reward: enumHubGoalRewards.reward_logic_gates,
                   },
 
                   // 25 Virtual Processing
                   {
-                      shapes: ["Rg--Rg--:CwRwCwRw:--Rg--Rg"],
-                      requires: [{ amount: 25000 }],
+                      shapes: [{ key: "Rg--Rg--:CwRwCwRw:--Rg--Rg", amount: 25000 }],
                       reward: enumHubGoalRewards.reward_virtual_processing,
                   },
 
                   // 26 Freeplay
                   {
-                      shapes: ["CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw"],
-                      requires: [{ amount: 50000 }],
+                      shapes: [{ key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 50000 }],
                       reward: enumHubGoalRewards.reward_freeplay,
                   },
 
                   // 27 Random
                   {
                       shapes: null,
-                      requires: null,
                       reward: null,
                   },
 
                   // 28 More shapes
                   {
-                      shapes: ["CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", "Rg--Rg--:CwRwCwRw:--Rg--Rg"],
-                      requires: [{ amount: 50000 }, { amount: 30000, throughputOnly: true }],
+                      shapes: [
+                          { key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 50000 },
+                          { key: "Rg--Rg--:CwRwCwRw:--Rg--Rg", amount: 30000, throughputOnly: true },
+                      ],
                       reward: enumHubGoalRewards.reward_freeplay,
+                      inOrder: true,
                   },
 
                   // 29 More shapes
                   {
                       shapes: [
-                          "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-                          "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-                          "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
-                      ],
-                      requires: [
-                          { amount: 50000 },
-                          { amount: 30000, throughputOnly: true },
-                          { amount: 70000, throughputOnly: true },
+                          { key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw", amount: 50000 },
+                          { key: "Rg--Rg--:CwRwCwRw:--Rg--Rg", amount: 30000, throughputOnly: true },
+                          { key: "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw", amount: 70000, throughputOnly: true },
                       ],
                       reward: enumHubGoalRewards.reward_freeplay,
                   },
@@ -550,16 +544,24 @@ export function generateLevelDefinitions(limitedVersion = false) {
                   // 30 More shapes
                   {
                       shapes: [
-                          "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-                          "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-                          "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
-                          "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr",
-                      ],
-                      requires: [
-                          { amount: 50000 },
-                          { amount: 30000, throughputOnly: true },
-                          { amount: 70000, throughputOnly: true },
-                          { amount: 90000 },
+                          {
+                              key: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
+                              amount: 50000,
+                          },
+                          {
+                              key: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
+                              amount: 30000,
+                              throughputOnly: true,
+                          },
+                          {
+                              key: "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw",
+                              amount: 70000,
+                              throughputOnly: true,
+                          },
+                          {
+                              key: "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr",
+                              amount: 90000,
+                          },
                       ],
                       reward: enumHubGoalRewards.reward_freeplay,
                   },
@@ -570,11 +572,11 @@ export function generateLevelDefinitions(limitedVersion = false) {
         levelDefinitions.forEach(({ shapes }) => {
             if (!shapes) return;
 
-            shapes.forEach(shape => {
+            shapes.forEach(goal => {
                 try {
-                    ShapeDefinition.fromShortKey(shape);
+                    ShapeDefinition.fromShortKey(goal.key);
                 } catch (ex) {
-                    throw new Error("Invalid tutorial goal: '" + ex + "' for shape" + shape);
+                    throw new Error("Invalid tutorial goal: '" + ex + "' for shape" + goal.key);
                 }
             });
         });
