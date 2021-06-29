@@ -82,7 +82,6 @@ export class HubSystem extends GameSystemWithFilter {
 
             return;
         }
-
         const goals = this.root.hubGoals.currentGoal;
         const goalsLength = goals.definitions.length;
         const delivered = this.root.hubGoals.getCurrentGoalDelivered();
@@ -99,10 +98,13 @@ export class HubSystem extends GameSystemWithFilter {
         else if (goalsLength > 2) size = 26;
         else if (goalsLength > 1) size = 32;
 
+        let gap = 0;
+        if (goalsLength > 3) gap = 22;
+        else if (goalsLength > 2) gap = 28;
+        else if (goalsLength > 1) gap = 43;
+
         for (let i = 0; i < goalsLength; i++) {
-            if (goalsLength > 3) x += 22;
-            else if (goalsLength > 2) x += 28;
-            else if (goalsLength > 1) x += 43;
+            x += gap;
 
             goals.definitions[i].shape.drawCentered(x, y, parameters, size);
 
@@ -227,6 +229,20 @@ export class HubSystem extends GameSystemWithFilter {
             }
         }
 
+        // Add arrows
+        if (goals.inOrder) {
+            if (goalsLength > 3) {
+                this.drawArrow(context, x - size * 3 + gap * 0.13, y - gap * 0.1, 0.8);
+                this.drawArrow(context, x - size * 2 + gap * 0.25, y - gap * 0.1, 0.8);
+                this.drawArrow(context, x - size * 1 + gap * 0.33, y - gap * 0.1, 0.8);
+            } else if (goalsLength > 2) {
+                this.drawArrow(context, x - size * 2 + gap * 0.3, y - gap * 0.1, 0.8);
+                this.drawArrow(context, x - size * 1 + gap * 0.37, y - gap * 0.1, 0.8);
+            } else if (goalsLength > 1) {
+                this.drawArrow(context, x - size * 1 + gap * 0.19, y - gap * 0.1, 1.2);
+            }
+        }
+
         // Reward
         const rewardText = T.storyRewards[goals.reward].title.toUpperCase();
         if (rewardText.length > 12) {
@@ -265,6 +281,72 @@ export class HubSystem extends GameSystemWithFilter {
         context.fillText(T.buildings.hub.toUnlock.toUpperCase(), HUB_SIZE_PIXELS / 2, 92);
 
         context.textAlign = "left";
+    }
+
+    /**
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} x
+     * @param {number} y
+     * @param {number} size
+     */
+    drawArrow(context, x, y, size) {
+        this.rounedPolly(
+            context,
+            [
+                { x: 0 + x, y: 0 + y },
+                { x: 5.5 * size + x, y: 3.75 * size + y },
+                { x: 0 + x, y: 7.5 * size + y },
+            ],
+            1.4
+        );
+    }
+
+    /**
+     * Draws a polygon with rounded corners
+     * @param {CanvasRenderingContext2D} context The canvas context
+     * @param {Array} points A list of `{x, y}` points
+     * @param {Number} radius how much to round the corners
+     */
+    rounedPolly(context, points, radius) {
+        const distance = (p1, p2) => Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+
+        const lerp = (a, b, x) => a + (b - a) * x;
+
+        const lerp2D = (p1, p2, t) => ({
+            x: lerp(p1.x, p2.x, t),
+            y: lerp(p1.y, p2.y, t),
+        });
+
+        const numPoints = points.length;
+
+        let corners = [];
+        for (let i = 0; i < numPoints; i++) {
+            let lastPoint = points[i];
+            let thisPoint = points[(i + 1) % numPoints];
+            let nextPoint = points[(i + 2) % numPoints];
+
+            let lastEdgeLength = distance(lastPoint, thisPoint);
+            let lastOffsetDistance = Math.min(lastEdgeLength / 2, radius);
+            let start = lerp2D(thisPoint, lastPoint, lastOffsetDistance / lastEdgeLength);
+
+            let nextEdgeLength = distance(nextPoint, thisPoint);
+            let nextOffsetDistance = Math.min(nextEdgeLength / 2, radius);
+            let end = lerp2D(thisPoint, nextPoint, nextOffsetDistance / nextEdgeLength);
+
+            corners.push([start, thisPoint, end]);
+        }
+        context.beginPath();
+
+        context.moveTo(corners[0][0].x, corners[0][0].y);
+        for (let [start, ctrl, end] of corners) {
+            context.lineTo(start.x, start.y);
+            context.quadraticCurveTo(ctrl.x, ctrl.y, end.x, end.y);
+        }
+
+        context.closePath();
+
+        context.fillStyle = "#797A7F";
+        context.fill();
     }
 
     /**
