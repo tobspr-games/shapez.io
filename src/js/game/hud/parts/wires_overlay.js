@@ -127,7 +127,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
                 );
                 const length = mouseTilePos.sub(valueSpritePos).length();
 
-                // If it is closer than 8 we can copy that value
+                // If it is closer than current minimum length we can copy that value
                 if (length < minLength) {
                     minLength = length;
                     value = slot.value;
