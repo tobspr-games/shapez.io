@@ -7,7 +7,6 @@ import { types } from "../../savegame/serialization";
 import { enumGameModeTypes, GameMode } from "../game_mode";
 import { HUDPuzzleBackToMenu } from "../hud/parts/puzzle_back_to_menu";
 import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
-import { HUDBlueprintPlacer } from "../hud/parts/blueprint_placer";
 import { HUDMassSelector } from "../hud/parts/mass_selector";
 
 export class PuzzleGameMode extends GameMode {
@@ -32,7 +31,6 @@ export class PuzzleGameMode extends GameMode {
         this.additionalHudParts = {
             puzzleBackToMenu: HUDPuzzleBackToMenu,
             puzzleDlcLogo: HUDPuzzleDLCLogo,
-            blueprintPlacer: HUDBlueprintPlacer,
             massSelector: HUDMassSelector,
         };
 
