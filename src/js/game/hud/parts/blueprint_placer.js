@@ -157,7 +157,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         if (entities.length === 0) {
             return;
         }
-        this.currentBlueprint.set(Blueprint.fromEntities(this.root, entities));
+        this.currentBlueprint.set(Blueprint.fromEntities(entities));
     }
 
     /**
