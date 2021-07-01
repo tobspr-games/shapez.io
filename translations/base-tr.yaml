@@ -21,7 +21,7 @@ steamPage:
         hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir fabrika
         oyunu.
 global:
-    loading: Yüklenİyor
+    loading: Yükleniyor
     error: Hata
     thousandsDivider: ","
     decimalSeparator: .
@@ -57,11 +57,11 @@ demoBanners:
     intro: Bütün özellikleri açmak için tam sürümü satın alın!
 mainMenu:
     play: Oyna
-    changelog: Değİşİklİk Günlüğü
+    changelog: Değişiklik Günlüğü
     importSavegame: Kayıt Yükle
     openSourceHint: Bu oyun açık kaynak kodlu!
-    discordLink: Resmİ Discord Sunucusu
-    helpTranslate: Çevİrİye yardım et!
+    discordLink: Resmi Discord Sunucusu
+    helpTranslate: Çeviriye yardım et!
     browserWarning: Üzgünüz, bu oyunun tarayıcınızda yavaş çalıştığı biliniyor! Tam
         sürümü satın alın veya iyi performans için Chrome tarayıcısını kullanın.
     savegameLevel: Seviye <x>
@@ -93,7 +93,7 @@ dialogs:
         showKeybindings: Tuş Kısayollarını Göster
         retry: Yeniden Dene
         continue: Devam Et
-        playOffline: Play Offline
+        playOffline: Çevrimdışı Oyna
     importSavegameError:
         title: Kayıt yükleme hatası
         text: "Oyun kaydı yükleme başarısız:"
@@ -104,7 +104,7 @@ dialogs:
         title: Oyun bozuk
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
-        title: Sİlme İşlemİnİ onayla
+        title: Silme İşlemini onayla
         text: Bu kaydı silmek istediğinize emin misiniz?<br><br> '<savegameName>'
             seviyesi <savegameLevel><br><br> Bu işlem geri alınamaz!
     savegameDeletionError:
@@ -262,7 +262,7 @@ ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
         selectBuildings: Alan seç
-        stopPlacement: Yerleştİrmeyİ durdur
+        stopPlacement: Yerleştirmeyi durdur
         rotateBuilding: Yapıyı döndür
         placeMultiple: Çoklu yerleştir
         reverseOrientation: Yönünü ters çevir
@@ -276,7 +276,7 @@ ingame:
         plannerSwitchSide: Planlayıcıyı ters çevir
         cutSelection: Kes
         copySelection: Kopyala
-        clearSelection: Seçimi temİzle
+        clearSelection: Seçimi temizle
         pipette: Pipet
         switchLayers: Katman değiştir
         clearBelts: Bantları temizle
@@ -333,7 +333,7 @@ ingame:
     blueprintPlacer:
         cost: Bedel
     waypoints:
-        waypoints: Yer imler
+        waypoints: Yer imleri
         hub: MERKEZ
         description: Sol-tık ile Yer imlerine git, sağ-tık ile yer imini
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
@@ -500,7 +500,7 @@ buildings:
             name: Üretici
             description: Bir şekli veya rengi üretmek için üzerine yerleştir.
         chainable:
-            name: Üretici (Zİncİrleme)
+            name: Üretici (Zincirleme)
             description: Bir şekli veya rengi üretmek için üzerine yerleştir. Zincirleme
                 bağlanabilir.
     underground_belt:
@@ -584,10 +584,10 @@ buildings:
             name: Birleştirici (tekil)
             description: İki taşıma bandını bir çıktı verecek şekilde birleştirir.
         splitter:
-            name: Ayırıcı (tekİl)
+            name: Ayırıcı (tekil)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
         splitter-inverse:
-            name: Ayırıcı (tekİl)
+            name: Ayırıcı (tekil)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
     storage:
         default:
@@ -720,7 +720,7 @@ storyRewards:
             <strong>birleştirilir</strong>, yoksa sol girişteki şeklin
             <strong>üzerine kaynaştırılır</strong>!
     reward_splitter:
-        title: Ayırıcı/Bİrleştİrİcİ
+        title: Ayırıcı/Birleştirici
         desc: <strong>Ayırıcıyı</strong> açtın! <strong>dengeleyicin</strong> başka bir
             türü - Tek giriş alıp ikiye ayırır
     reward_tunnel:
@@ -728,7 +728,7 @@ storyRewards:
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
             altından geçirebilirsiniz!
     reward_rotater_ccw:
-        title: Saat yönünün tersİnde Döndürme
+        title: Saat yönünün tersinde Döndürme
         desc: <strong>Döndürücünün</strong> farklı bir türünü açtın - Şekiller artık
             saat yönünün tersinde döndürülebilir! İnşa etmek için döndürücüyü
             seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna
@@ -745,7 +745,7 @@ storyRewards:
             <strong>daha yüksek</strong> ve tünel türlerini artık içiçe
             kullanabilirsin!
     reward_cutter_quad:
-        title: Çeyreğİnİ Kesme
+        title: Çeyreğini Kesme
         desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki
             parça yerine <strong>dört parçaya</strong> ayırabilir!
     reward_painter_double:
@@ -840,13 +840,11 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın :
+            Normal katmanın üzerinde ayrı bir katman ve yeni mekanikler sunmakta!<br><br>
+            Başlangıç için sana <strong>Quad
+            Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin yuvaları bağla !<br><br> Tel katmanına geçmek için
+            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -946,7 +944,7 @@ settings:
                 twenty_minutes: 20 Dakika
                 disabled: Devredışı
         compactBuildingInfo:
-            title: Derlİ Toplu Yapı Bİlgİlerİ
+            title: Derli Toplu Yapı Bilgileri
             description: Yapıların bilgi kutularını sadece oranlarını göstecek şekilde
                 kısaltır. Aksi takdirde yapının açıklaması ve resmi gösterilir.
         disableCutDeleteWarnings:
@@ -976,24 +974,24 @@ settings:
             title: Ses Ayarı
             description: Ses efektlerinin seviyesini ayarlar
         musicVolume:
-            title: Müzİk Ayarı
+            title: Müzik Ayarı
             description: Müzik seviyesini ayarlar
         lowQualityMapResources:
-            title: Düşük Kalİte Harİta Kaynakları
+            title: Düşük Kalite Harİta Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
                 kalitesini sadeleştirir. Hatta daha net bir görüntü sağlar, bu
                 yüzden bir dene!
         disableTileGrid:
-            title: Harİta Çİzgİlerİnİ Gİzle
+            title: Harita Çizgilerini Gizle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
                 Aynı zamanda oyunun daha net görünmesini sağlar!
         clearCursorOnDeleteWhilePlacing:
-            title: Sağ Tık İnşa İptalİ
+            title: Sağ Tık İnşa İptali
             description: Varsayılan olarak açık. Özellik açıksa, inşa modundayken sağ yık
                 yapıldığında inşa modundan çıkar. Eğer özellik kapalıysa, inşa
                 modundan çıkmadan var olan yapıları sağ tık ile silebilirsiniz.
         lowQualityTextures:
-            title: Düşük Kalİte Görüntü (Çİrkİn)
+            title: Düşük Kalite Görüntü (Çirkin)
             description: Performans için düşük kalite görüntü kullanır. Bu oyunun daha
                 çirkin görünmesine sebep olur!
         displayChunkBorders:
@@ -1001,11 +999,11 @@ settings:
             description: Oyun 16'ya 16 alanlardan oluşur. Bu seçenek aktif olduğunda alan
                 sınırları görüntülenir.
         pickMinerOnPatch:
-            title: Kaynak Üzerinde Üretİcİ Seç
+            title: Kaynak Üzerinde Üretici Seç
             description: Varsayılan olarak açık. Eğer pipet bir kaynağın üzerinde
                 kullanılırsa, üreteç yapısı inşa için seçilir.
         simplifiedBelts:
-            title: Sadeleştİrİlmİş Bantlar (Çİrkİn)
+            title: Sadeleştirilmiş Bantlar (Çirkin)
             description: Taşıma bandı üzerindeki eşyalar fare imleci üzerinde değilse
                 görüntülenmez. Eğer gerçekten performansa ihtiyacınız yoksa bu
                 ayarla oynamanız tavsiye edilmez.
@@ -1117,7 +1115,7 @@ about:
 
         Son olarak, en iyi arkadaşım <a href="https://github.com/niklas-dahl" target="_blank">Niklas'a</a> büyük teşekkürler. Factorio oyunlarımız olmasaydı bu oyun hiç var olmamış olacaktı.
 changelog:
-    title: Değİşİklİk Günlüğü
+    title: Değişiklik Günlüğü
 demo:
     features:
         restoringGames: Oyun kayıtlarını yükleme
@@ -1218,6 +1216,7 @@ puzzleMenu:
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
+
         medium: Orta
         official: Resmİ
         trending: Bugün öne çıkan
@@ -1243,6 +1242,7 @@ puzzleMenu:
         easy: Kolay
         medium: Orta
         hard: Zor
+
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
 backendErrors:
@@ -1268,6 +1268,7 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
+
     too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
         istiyorsanız support@shapez.io ile iletişime geçiniz!
     no-permission: Bu işlemi yapmak için izniniz yok.

@@ -56,4 +56,12 @@ export class GoalAcceptorComponent extends Component {
             (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond)
         );
     }
+
+    /**
+     * Copy the current state to another component
+     * @param {GoalAcceptorComponent} otherComponent
+     */
+    copyAdditionalStateTo(otherComponent) {
+        otherComponent.item = this.item;
+    }
 }

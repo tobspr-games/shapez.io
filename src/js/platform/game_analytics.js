@@ -39,4 +39,13 @@ export class GameAnalyticsInterface {
      * @param {number} level
      */
     handleUpgradeUnlocked(id, level) {}
+
+    /**
+     * Activates a DLC
+     * @param {string} dlc
+     */
+    activateDlc(dlc) {
+        abstract;
+        return Promise.resolve();
+    }
 }
