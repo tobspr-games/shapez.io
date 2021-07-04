@@ -174,7 +174,7 @@ dialogs:
     confirmSavegameDelete:
         title: Підтвердження видалення
         text: >-
-            Ви справді бажаєте видалити цю збережену гру?<br><br> '<savegameName>' 
+            Ви справді бажаєте видалити цю збережену гру?<br><br> '<savegameName>'
             <savegameLevel>-ого рівня<br><br>?
             Цю дію неможливо буде скасувати!
 
@@ -243,7 +243,7 @@ dialogs:
             вирізати її?
 
     blueprintsNotUnlocked:
-        title:  Ще не розблоковано
+        title: Ще не розблоковано
         desc: >-
             Досягніть 12-го рівня для розблокування креслень!
 
