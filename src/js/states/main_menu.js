@@ -75,7 +75,7 @@ export class MainMenuState extends GameState {
             </div>
 
             <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
-            G_IS_STANDALONE ? 2 : showDemoBadges ? 2 : 1
+            G_IS_STANDALONE && !G_WEGAME_VERSION ? 2 : showDemoBadges ? 2 : 1
         }">
                 <div class="sideContainer">
                     ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
