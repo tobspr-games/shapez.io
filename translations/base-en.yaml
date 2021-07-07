@@ -1368,6 +1368,8 @@ about:
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
 
+        Have a look at the <a state="CreditsState">Credits</a> to see every who has helped out by translating or contributing.<br><br>
+
         If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
 
         This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
@@ -1378,6 +1380,18 @@ about:
 
 changelog:
     title: Changelog
+
+credits:
+    title: Credits
+    tobspr: Main Programer and Artist
+    specialThanks:
+        title: Special Thanks To
+        descriptions:
+            peppsen: Created the awesome soundtrack
+    translators:
+        title: Translators
+    contributors:
+        title: Contributors
 
 demo:
     features:

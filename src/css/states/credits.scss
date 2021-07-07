@@ -1,0 +1,35 @@
+#state_CreditsState {
+    .container .content {
+        text-align: center;
+
+        .tobspr .title {
+        }
+
+        .section {
+            @include S(margin-top, 10px);
+            @include S(padding, 5px);
+            background-color: #f8f8f8;
+            @include DarkThemeOverride {
+                background: rgba(0, 10, 20, 0.1);
+            }
+
+            .title {
+                @include Heading;
+
+                color: #555;
+                @include DarkThemeOverride {
+                    color: #eee;
+                }
+            }
+
+            .people {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+            .people > :first-child {
+                @include S(margin-top, 8px);
+            }
+        }
+    }
+}

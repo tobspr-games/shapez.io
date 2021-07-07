@@ -74,6 +74,8 @@ releaseUploader.gulptasksReleaseUploader($, gulp, buildFolder);
 const translations = require("./translations");
 translations.gulptasksTranslations($, gulp, buildFolder);
 
+const contributors = require("./contributors");
+contributors.gulpTaskContributors($, gulp, buildFolder);
 /////////////////////  BUILD TASKS  /////////////////////
 
 // Cleans up everything

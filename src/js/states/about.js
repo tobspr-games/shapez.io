@@ -35,6 +35,14 @@ export class AboutState extends TextualGameState {
                 { preventClick: true }
             );
         });
+
+        const stateChangers = this.htmlElement.querySelectorAll("a[state]");
+        console.log(stateChangers);
+        stateChangers.forEach(element => {
+            this.trackClicks(element, () => this.moveToState(element.getAttribute("state")), {
+                preventClick: true,
+            });
+        });
     }
 
     getDefaultPreviousState() {

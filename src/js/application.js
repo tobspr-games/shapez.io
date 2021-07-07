@@ -34,6 +34,7 @@ import { RestrictionManager } from "./core/restriction_manager";
 import { PuzzleMenuState } from "./states/puzzle_menu";
 import { ClientAPI } from "./platform/api";
 import { LoginState } from "./states/login";
+import { CreditsState } from "./states/credits";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -165,6 +166,7 @@ export class Application {
             ChangelogState,
             PuzzleMenuState,
             LoginState,
+            CreditsState,
         ];
 
         for (let i = 0; i < states.length; ++i) {
