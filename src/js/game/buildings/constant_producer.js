@@ -36,7 +36,7 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
                 slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
             })
         );
-        entity.addComponent(new ItemProducerComponent({}));
+        entity.addComponent(new ItemProducerComponent());
         entity.addComponent(new ConstantSignalComponent({}));
     }
 }

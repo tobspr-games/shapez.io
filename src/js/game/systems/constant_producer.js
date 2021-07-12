@@ -11,17 +11,30 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
     /** @param {GameRoot} root */
     constructor(root) {
         super(root, [ConstantSignalComponent, ItemProducerComponent]);
+
+        this.root = root;
     }
 
     update() {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const signalComp = entity.components.ConstantSignal;
             const ejectorComp = entity.components.ItemEjector;
+            const signalComp = entity.components.ConstantSignal;
+
             if (!ejectorComp) {
                 continue;
             }
-            ejectorComp.tryEject(0, signalComp.signal);
+
+            const now = this.root.time.now();
+            const secondsPerItem = 1 / (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond);
+
+            const producerComp = entity.components.ItemProducer;
+
+            if (now - producerComp.lastOutputTime > secondsPerItem) {
+                if (ejectorComp.tryEject(0, signalComp.signal)) {
+                    producerComp.lastOutputTime = now;
+                }
+            }
         }
     }
 
