@@ -1,4 +1,4 @@
-#commit:1
+#commit:1.1
 steamPage:
     shortText: Shapez.io handler om at bygge fabrikker på en grænseløs spilleflade
         for automatisk at skabe og kombinere figurer, der i stigende grad bliver
@@ -272,7 +272,7 @@ ingame:
         disableAutoOrientation: Slå automatisk retning fra
         toggleHud: Slå HUD til/fra
         placeBuilding: Placer bygning
-        createMarker: Lav Stednavn
+        createMarker: Lav Markør
         delete: Slet
         pasteLastBlueprint: Sæt sidste skabelon ind
         lockBeltDirection: Aktiver båndplanlægger
@@ -466,16 +466,16 @@ ingame:
         title: Pusle løst!
         titleLike: >-
             Klik på hjertet hvis du kunne lide puslet:
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        titleRating: Hvor svært var pusket for dig?
+        titleRatingDesc: Din vurdering vil hjælpe mig i bedre anbefalinger i fremtiden
+        continueBtn: Fortsæt spillet
         menuBtn: Menu
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: Forfatter
+        shortKey: Kort nøgle
+        rating: Sværhedsgrad
+        averageDuration: Gnms. varighed
+        completionRate: Løsnings grad
 shopUpgrades:
     belt:
         name: Bånd, Fordelere & Tuneller
@@ -493,7 +493,8 @@ buildings:
     hub:
         deliver: Aflever
         toUnlock: for at få adgang til
-        levelShortcut: NIV
+#	  Denne er også hvad vises i øverste højre hjørne i NAV bygningen
+        levelShortcut: niveau
         endOfDemo: Demo er slut
     belt:
         default:
@@ -949,7 +950,7 @@ settings:
                 teksten nemmere at læse.
         rotationByBuilding:
             title: Rotation baseret på bygningstype
-            description: Hver bygningstype husker den rotation du sidst satte den til.
+            description: Hver bygningstype husker den rotation du sidst satte den til. 
                 Dette kan være komfortabelt hvis du ofte skifter mellem at placere forskellige bygninger.
         compactBuildingInfo:
             title: Kompakt Bygningsinfo
@@ -968,6 +969,7 @@ settings:
         lowQualityMapResources:
             title: Lav kvalitets kort ressource
             description: Forenkler fremtoningen af figurer på kortet når zommet tæt for at øge spillets ydelse. Det ser også renere ud, så prøv det!
+
         disableTileGrid:
             title: Slå net fra
             description: Slå flise stregerne fra kan øge spillets ydelse. Det gør fremtoningen renere!
@@ -1028,7 +1030,7 @@ keybindings:
         centerMap: Centrer kortet
         mapZoomIn: Zoom ind
         mapZoomOut: Zoom ud
-        createMarker: Lav Stednavn
+        createMarker: Lav Markør
         menuOpenShop: Opgraderinger
         menuOpenStats: Statistikker
         toggleHud: Slå HUD til/fra
