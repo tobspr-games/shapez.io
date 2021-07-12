@@ -1,4 +1,4 @@
-#v1
+#commit:1
 steamPage:
     shortText: Shapez.io handler om at bygge fabrikker på en grænseløs spilleflade
         for automatisk at skabe og kombinere figurer, der i stigende grad bliver
@@ -159,11 +159,11 @@ dialogs:
             class='keybinding'>ALT</code>: Vend retningen af placerede
             transportbånd.<br>"
     createMarker:
-        title: Nyt Stednavn
-        titleEdit: Rediger Stednavn
+        title: Ny Markør
+        titleEdit: Rediger Markør
         desc: "Giv det et meningsfyldt navn. Du kan også inkludere en <strong> kort nøgle</strong> af en figur (som du kan lave <link>her</link>)"
     markerDemoLimit:
-        desc: Du kan kun lave to stednavne i demoen. Køb spillet for uendeligt mange stednavne!
+        desc: Du kan kun lave to markører i demoen. Køb spillet for uendeligt mange markører!
     exportScreenshotWarning:
         title: Eksporter skærmbillede
         desc: Du bad om at eksportere din fabrik som et skærmbillede. Bemærk at dette
@@ -271,17 +271,17 @@ ingame:
         disableAutoOrientation: Slå automatisk retning fra
         toggleHud: Slå HUD til/fra
         placeBuilding: Placer bygning
-        createMarker: Lav Stednavn
+        createMarker: Lav Markør
         delete: Slet
         pasteLastBlueprint: Sæt sidste skabelon ind
-        lockBeltDirection: Aktiver bælteplanlægger
+        lockBeltDirection: Aktiver båndplanlægger
         plannerSwitchSide: Vend planlægsningsside
         cutSelection: Klip
         copySelection: Kopier
         clearSelection: Ryd Selektion
         pipette: Pipette
         switchLayers: Skift Lag
-        clearBelts: Ryd bælter
+        clearBelts: Ryd bånd
     colors:
         red: Rød
         green: Grøn
@@ -339,7 +339,7 @@ ingame:
     settingsMenu:
         playtime: Spilletid
         buildingsPlaced: Bygninger
-        beltsPlaced: Bælter
+        beltsPlaced: Bånd
     tutorialHints:
         title: Har du brug for hjælp?
         showHint: Vis hint
@@ -349,11 +349,11 @@ ingame:
     waypoints:
         waypoints: Markører
         hub: NAV
-        description: Venstreklik et stednavn for at hoppe til det, højreklik for at slette
-            det.<br><br>Tryk <keybinding> for at lave et stednavn på det nuværende
-            sted, eller <strong>højreklik</strong> for at lave et stednavn på det
+        description: Venstreklik på Markøren for at hoppe til det, højreklik for at slette
+            den.<br><br>Tryk <keybinding> for at lave en Markør på det nuværende
+            sted, eller <strong>højreklik</strong> for at lave en Markør på det
             valgte sted.
-        creationSuccessNotification: Stednavn er sat.
+        creationSuccessNotification: Markøren er sat.
     shapeViewer:
         title: Lag
         empty: Tom
@@ -363,14 +363,14 @@ ingame:
         hints:
             1_1_extractor: >-
                 Sæt en <strong>udvinder</strong> på toppen af
-                en<strong>cirkelfigur</strong> for at begynde produktion af den!
+                en <strong>cirkelfigur</strong> for at begynde produktion af den!
             1_2_conveyor: >-
                 Forbind udvinderen til dit NAV med et
-                <strong>transportbælte</strong>!<br><br>Tip: <strong>Tryk og
-                træk</strong> bæltet med din mus!
+                <strong>transportbånd</strong>!<br><br>Tip: <strong>Tryk og
+                træk</strong> båndet med din mus!
             1_3_expand: >-
                 Dette er <strong>IKKE</strong> et tomgangs spil! Byg flere udvindere og
-                bælter for at færdiggøre målet hurtigere.<br><br>Tip: Hold
+                transportbånd for at færdiggøre målet hurtigere.<br><br>Tip: Hold
                 <strong>SKIFT</strong> for at sætte flere udvindere, og tryk
                 <strong>R</strong> for at rotere dem.
             2_1_place_cutter: >-
@@ -385,7 +385,7 @@ ingame:
             3_1_rectangles: >-
                 Nu skal vi have fat i firkanter! <strong>Byg 4
                 udvindere</strong> og forbind dem til dit NAV.<br><br>
-                Bemærk: Hold <strong>SKIFT</strong> mens du trækker bælte - det aktiverer bælteplanlæggeren!
+                Bemærk: Hold <strong>SKIFT</strong> mens du trækker bånd - det aktiverer båndplanlæggeren!
             21_1_place_quad_painter: Placer <strong>quad painter</strong> and get some
                 <strong>circles</strong>, <strong>white</strong> and
                 <strong>red</strong> color!
@@ -464,7 +464,7 @@ ingame:
     puzzleCompletion:
         title: Pusle løst!
         titleLike: >-
-            Klik på hjertet hvis du kunne lide puzzle:
+            Klik på hjertet hvis du kunne lide puslet:
         titleRating: How difficult did you find the puzzle?
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
         continueBtn: Keep Playing
@@ -477,7 +477,7 @@ ingame:
         completionRate: Completion rate
 shopUpgrades:
     belt:
-        name: Bælter, Fordelere & Tuneller
+        name: Bånd, Fordelere & Tuneller
         description: Fart x<currentMult> → x<newMult>
     miner:
         name: Udvinding
@@ -496,8 +496,8 @@ buildings:
         endOfDemo: Demo er slut
     belt:
         default:
-            name: Transportbælte
-            description: Transporterer figurer, hold og træk for at sætte flere.
+            name: Transportbånd
+            description: Transporterer figurer. Hold og træk for at placere flere.
     miner:
         default:
             name: Udvinder
@@ -508,10 +508,10 @@ buildings:
     underground_belt:
         default:
             name: Tunnel
-            description: Laver tunneller under bygninger og bælter.
+            description: Laver tunneller under bygninger og bånd.
         tier2:
             name: Tunnel Trin II
-            description: Laver tunneller under bygninger og bælter.
+            description: Laver tunneller under bygninger og bånd.
     cutter:
         default:
             name: Klipper
@@ -688,7 +688,7 @@ storyRewards:
         desc: Du har lige fået tilgang til <strong>Klipper</strong>, som skærer figurene
             over i midten, fra top til bund, <strong>uanset hvordan klipperen ligger</strong>!
             <br><br>Husk at fjerne uønskede rester fra den anden side, ellers vil den <strong>tilstoppe
-            og gå i stå</strong> - Derfor har du nu også fået strong>skraldespanden</strong>, som fjerner
+            og gå i stå</strong> - Derfor har du nu også fået <strong>skraldespanden</strong>, som fjerner
             alt der kommer i den.
     reward_rotater:
         title: Drejning
@@ -720,7 +720,7 @@ storyRewards:
     reward_tunnel:
         title: Tunnel
         desc: <strong>Tunnellen</strong> er nu tilgængelig - Du kan nu lave tuneller
-            under bælter og bygninger!
+            under bånd og bygninger!
     reward_rotater_ccw:
         title: Rotation mod uret
         desc: Du har fået adgang til en variant af <strong>drejeren</strong> - Den lader
@@ -776,20 +776,20 @@ storyRewards:
             opgraderinger</strong>!
     no_reward_freeplay:
         title: Næste niveau
-        desc: Tillykke! Forresten er mere indhold planlagt for den betalte version!
+        desc: Tillykke!
     reward_balancer:
         title: Balancer
         desc: Denne multifunktionelle <strong>Balancer</strong> er nu tilgænglig - Du kan bygge større fabrikker fordi den kan både <strong>
-         fordele og samle</strong> figurer mellem flere bælter!
+         fordele og samle</strong> figurer mellem flere transportbånd!
 
     reward_merger:
         title: Samler(kompakt)
         desc: Du har nu fået tilgang til <strong>kompakt samler</strong> variationen
-          af <strong>Balancer</strong>. Den tager figurene fra to bælter og samler på et!
+          af <strong>Balancer</strong>. Den tager figurene fra to bånd og samler på et!
 
     reward_belt_reader:
-        title: Bæltelæser
-        desc: Du har nu åbnet op for <strong>Bæltelæseren</strong>. Den måler gennemstrømning af et bælte. <br><br>Bare vent til du har Ledninger - så bliver den meget nyttig!
+        title: Båndlæser
+        desc: Du har nu åbnet op for <strong>Båndlæseren</strong>. Den måler gennemstrømning på et bånd. <br><br>Bare vent til du har Ledninger - så bliver den meget nyttig!
     reward_rotater_180:
         title: Rotater (180 degrees)
         desc: Du har nu åbnet op for <strong>Drejeren med 180°</strong>! - Nu kan du dreje dine figurer med 180 grader (Overraskelse! :D)
@@ -940,7 +940,7 @@ settings:
         enableTunnelSmartplace:
             title: Smarte Tunneller
             description: Aktiver for at placering af tunneller automatisk fjerner unødige
-                bælter. Dette gør igså at du kan trække tunneller så
+                båndfliser. Dette gør også at du kan trække tunneller så
                 overskydende tunneller fjernes.
         vignette:
             title: Vignette
@@ -948,13 +948,12 @@ settings:
                 teksten nemmere at læse.
         rotationByBuilding:
             title: Rotation baseret på bygningstype
-            description: Hver bygningstype husker den rotation du sidst satte den til. Dette
-                kan være komfortabelt hvis du ofte skifter mellem at placere
-                forskellige bygninger.
+            description: Hver bygningstype husker den rotation du sidst satte den til.
+                Dette kan være komfortabelt hvis du ofte skifter mellem at placere forskellige bygninger.
         compactBuildingInfo:
             title: Kompakt Bygningsinfo
             description: Forkorter infobokse til bygninger ved kun at vise deres forhold.
-                Ellers er en beskrivelse og et billede også vist.
+                Ellers vises også en beskrivelse og et billede.
         disableCutDeleteWarnings:
             title: Slå klip/slet advarsler fra
             description: Slå advarselsboksene, der dukker op når mere end 100 ting slettes,
@@ -968,8 +967,6 @@ settings:
         lowQualityMapResources:
             title: Lav kvalitets kort ressource
             description: Forenkler fremtoningen af figurer på kortet når zommet tæt for at øge spillets ydelse. Det ser også renere ud, så prøv det!
-
-
         disableTileGrid:
             title: Slå net fra
             description: Slå flise stregerne fra kan øge spillets ydelse. Det gør fremtoningen renere!
@@ -977,8 +974,6 @@ settings:
         clearCursorOnDeleteWhilePlacing:
             title: Ryd Cursor med højre klik
             description: Normalt slået til. Rydder cursorens indhold hvis du har en bygning parat til placering. Hvis slået fra, så sletter den bygning med højreclick også hvis noget er i cursoren.
-
-
 
         lowQualityTextures:
             title: Lav kvalitets texturer (Gremt)
@@ -993,12 +988,12 @@ settings:
             description: Normalt slået til. Hvis du bruger pipette mens du er på en resurseområde, vælges en Udvinder.
 
         simplifiedBelts:
-            title: Forenklede bælter (Gremt)
-            description: Skjuler enheder på bælter, med mindre du holder musen over dem, for at øge spillets ydelse. Jeg anbefaler at ikke bruge dette, med mindre din maskines ydelse kræver det.
+            title: Forenklede bånd (Gremt)
+            description: Skjuler enheder på bånd, med mindre du holder musen over dem, for at øge spillets ydelse. Jeg anbefaler at ikke bruge dette, med mindre din maskines ydelse kræver det.
 
         enableMousePan:
             title: Tilvælg mus panorering
-            description: Muliggør at flytte kortet ved føre musen ti skærmens kanter. Hastigheden afhænger af anden indstilling.
+            description: Muliggør at flytte kortet ved føre musen til skærmens kanter. Hastigheden afhænger af anden indstilling.
 
         zoomToCursor:
             title: Zoom mod cursor
@@ -1032,14 +1027,14 @@ keybindings:
         centerMap: Centrer kortet
         mapZoomIn: Zoom ind
         mapZoomOut: Zoom ud
-        createMarker: Lav Stednavn
+        createMarker: Lav Markør
         menuOpenShop: Opgraderinger
         menuOpenStats: Statistikker
         toggleHud: Slå HUD til/fra
         toggleFPSInfo: Slå FPS og Debug Info til/fra
         switchLayers: Skift lag
         exportScreenshot: Eksporter hele basen som et billede
-        belt: Transportbælte
+        belt: Transportbånd
         underground_belt: Tunnel
         miner: Udvinder
         cutter: Klipper
@@ -1055,7 +1050,7 @@ keybindings:
         confirmMassDelete: Slet område
         pasteLastBlueprint: Sæt sidste skabelon ind
         cycleBuildings: Gennemgå bygninger
-        lockBeltDirection: Slå bælteplanlægger til
+        lockBeltDirection: Slå båndplanlægger til
         switchDirectionLockSide: "Planner: Skift side"
         massSelectStart: Hold og træk for at starte
         massSelectSelectMultiple: Vælg flere områder
@@ -1063,7 +1058,7 @@ keybindings:
         massSelectCut: Klip område
         placementDisableAutoOrientation: Slå automatisk rotation fra
         placeMultiple: Bliv i placeringstilstand
-        placeInverse: Spejlvend automatisk bælteorientering
+        placeInverse: Spejlvend automatisk båndorientering
         menuClose: Luk Menu
         wire: Energiledning
         balancer: Balancer
@@ -1118,8 +1113,8 @@ tips:
     - Anstreng dig at fabrikker er modulære - det betaler sig!
     - Undgå at bygge for tæt på navet - det bliver hurtigt rodet!
     - Hvis stablingen ikke virker, så prøv at bytte de to indgange.
-    - Du kan vende bæltplanlæggerens retning ved at trykke <b>R</b>.
-    - At holde <b>CTRL</b> muliggør trækning af bælter uden auto retningsændring.
+    - Du kan vende båndplanlæggerens retning ved at trykke <b>R</b>.
+    - At holde <b>CTRL</b> muliggør trækning af bånd uden auto retningsændring.
     - Forhold forbiver uændred hvis alle foredringer er nået samme niveau.
     - Serial udførelse er mere effektive end parallel.
     - Der vil låses op for endnu flere varianter af bygninger senere i spillet!
@@ -1129,17 +1124,17 @@ tips:
     - Prøv at lave dine fabrikker kompakte - det lønner sig i længden!
     - Male værktøjet har en spejlversion - skift mellem dem med <b>T</b>
     - Maksimum affektivitet opnås produktions forhold er afstemt.
-    - Ved højeste niveau vil 5 udvindere lige fylde et transportbælte.
+    - Ved højeste niveau vil 5 udvindere lige fylde et transportbånd.
     - Glem ikke tuneller!
     - Der er ikke behov for en lige fordeling for maksimum effektivitet.
-    - Hvis <b>SHIFT</b> holdes nede, aktiveres bælte planlæggeren, som gør det
-      meget nemmere at placere lange bælter.
+    - Hvis <b>SHIFT</b> holdes nede, aktiveres båndplanlæggeren, som gør det
+      meget nemmere at placere lange bånd.
     - Klipperen skærer altid lodret, uanset placering.
     - For at lave hvis skal alle tre farver blandes sammen.
     - Opbevaringsbufferen fortrækker venstre udgang.
     - Invester lidt tid i genbrugbare designs - det lønner sig!
     - Ved at holde <b>CTRL</b> kan du placere placere flere bygninger.
-    - Med <b>ALT</b> holdt nede, vendes retning af bæltet ved placering.
+    - Med <b>ALT</b> holdt nede, vendes retning af båndet ved placering.
     - Effektivitet er nøglen!
     - Figure-felterne bliver mere komplex længere væk fra Centralen.
     - Maskinerne har begrænset fart - del arbejdet op for effektivitet.
