@@ -585,10 +585,15 @@ export class RegularGameMode extends GameMode {
         }
 
         /** @type {(typeof MetaBuilding)[]} */
-        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
-        if (!G_IS_DEV) {
-            this.hiddenBuildings.push(MetaItemProducerBuilding);
-        }
+        this.hiddenBuildings = [
+            MetaConstantProducerBuilding,
+            MetaGoalAcceptorBuilding,
+            MetaBlockBuilding,
+            // @ts-ignore
+            ...(!queryParamOptions.sandboxMode && !window.sandboxMode && !G_IS_DEV
+                ? [MetaItemProducerBuilding]
+                : []),
+        ];
     }
 
     /**
