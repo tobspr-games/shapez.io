@@ -589,7 +589,10 @@ export class RegularGameMode extends GameMode {
             MetaConstantProducerBuilding,
             MetaGoalAcceptorBuilding,
             MetaBlockBuilding,
-            MetaItemProducerBuilding,
+            // @ts-ignore
+            ...(!queryParamOptions.sandboxMode && !window.sandboxMode && !G_IS_DEV
+                ? [MetaItemProducerBuilding]
+                : []),
         ];
     }
 
