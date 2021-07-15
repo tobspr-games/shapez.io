@@ -1,5 +1,5 @@
 const railsdk = require("./wegame_sdk/railsdk.js");
-const { dialog } = require("electron");
+const { dialog, remote } = require("electron");
 
 function init(isDev) {
     console.log("Step 1: wegame: init");
