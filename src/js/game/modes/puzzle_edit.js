@@ -55,7 +55,10 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
             MetaTransistorBuilding,
         ];
 
-        this.additionalHudParts.puzzleEditorControls = HUDPuzzleEditorControls;
+        if (this.root.app.settings.getAllSettings().offerHints) {
+            this.additionalHudParts.puzzleEditorControls = HUDPuzzleEditorControls;
+        }
+
         this.additionalHudParts.puzzleEditorReview = HUDPuzzleEditorReview;
         this.additionalHudParts.puzzleEditorSettings = HUDPuzzleEditorSettings;
     }
