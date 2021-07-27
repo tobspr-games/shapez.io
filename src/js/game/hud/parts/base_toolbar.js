@@ -123,7 +123,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
             });
 
             //lock icon for puzzle editor
-            if (this.root.gameMode.getIsEditor()) {
+            const settings = this.root.hud.parts.puzzleEditorSettings;
+            if (settings && !settings.getIsTestMode()) {
                 itemContainer.classList.toggle("editor", true);
                 if (!this.inRequiredBuildings(metaBuilding)) {
                     const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
@@ -260,7 +261,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
 
         const handle = this.buildingHandles[metaBuilding.getId()];
         if (handle.puzzleLocked) {
-            if (this.root.gameMode.getIsEditor()) {
+            const settings = this.root.hud.parts.puzzleEditorSettings;
+            if (settings && !settings.getIsTestMode()) {
                 handle.puzzleLocked = false;
                 handle.element.classList.toggle("unlocked", false);
                 this.root.soundProxy.playUiClick();

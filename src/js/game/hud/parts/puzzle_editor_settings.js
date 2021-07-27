@@ -116,7 +116,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                 this.root.entityMgr.destroyEntity(entity);
             }
             this.root.entityMgr.processDestroyList();
-        } else if (this.storedSolution.length) {
+        } else if (this.storedSolution.length > 0) {
             this.root.logic.performBulkOperation(() => {
                 this.root.logic.performImmutableOperation(() => {
                     for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
@@ -274,5 +274,9 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
         this.element.querySelector(".zoneWidth > .value").textContent = String(mode.zoneWidth);
         this.element.querySelector(".zoneHeight > .value").textContent = String(mode.zoneHeight);
+    }
+
+    getIsTestMode() {
+        return this.testMode;
     }
 }

@@ -23,7 +23,8 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
      * @returns
      */
     getIsRemovable(root) {
-        return root.gameMode.getIsEditor();
+        const settings = root.hud.parts.puzzleEditorSettings;
+        return settings ? !settings.getIsTestMode() : false;
     }
 
     /**

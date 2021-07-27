@@ -68,8 +68,6 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
     }
 
     getIsEditor() {
-        /** @type {HUDPuzzleEditorSettings} */
-        const editSettings = this.root.hud.parts.puzzleEditorSettings;
-        return !editSettings.testMode;
+        return true;
     }
 }
