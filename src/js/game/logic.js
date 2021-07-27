@@ -80,14 +80,16 @@ export class GameLogic {
         }
 
         // Perform additional placement checks
-        if (this.root.signals.prePlacementCheck.dispatch(entity, offset) === STOP_PROPAGATION) {
-            return false;
+        if (this.root.gameMode.getIsEditor()) {
+            const toolbar = this.root.hud.parts.buildingsToolbar;
+            const id = entity.components.StaticMapEntity.getMetaBuilding().getId();
+
+            if (toolbar.buildingHandles[id].puzzleLocked) {
+                return false;
+            }
         }
 
-        const toolbar = this.root.hud.parts.buildingsToolbar;
-        const id = entity.components.StaticMapEntity.getMetaBuilding().getId();
-
-        if (toolbar.buildingHandles[id].puzzleLocked) {
+        if (this.root.signals.prePlacementCheck.dispatch(entity, offset) === STOP_PROPAGATION) {
             return false;
         }
 
