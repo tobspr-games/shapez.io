@@ -84,6 +84,13 @@ export class GameLogic {
             return false;
         }
 
+        const toolbar = this.root.hud.parts.buildingsToolbar;
+        const id = entity.components.StaticMapEntity.getMetaBuilding().getId();
+
+        if (toolbar.buildingHandles[id].puzzleLocked) {
+            return false;
+        }
+
         return true;
     }
 
