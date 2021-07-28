@@ -34,13 +34,11 @@
         }
 
         &.import {
-            /* @load-async */
-            background: uiResource("icons/upload.png") center center / D(15px) no-repeat;
+            background: uiResource("icons/upload.png") center center / D(15px) no-repeat !important;
         }
 
         &.export {
-            /* @load-async */
-            background: uiResource("icons/download.png") center center / D(15px) no-repeat;
+            background: uiResource("icons/download.png") center center / D(15px) no-repeat !important;
         }
     }
 }

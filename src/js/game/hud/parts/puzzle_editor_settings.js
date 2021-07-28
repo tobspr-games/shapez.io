@@ -5,6 +5,7 @@ import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { MetaBlockBuilding } from "../../buildings/block";
 import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { Entity } from "../../entity";
 import { PuzzleGameMode } from "../../modes/puzzle";
@@ -94,47 +95,41 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         }, 140);
 
         if (this.testMode) {
+            const newSolution = [];
             for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
-                this.storedSolution.push(entity.clone());
-
-                const metaBuilding = entity.components.StaticMapEntity.getMetaBuilding();
-                const goalComp = entity.components.GoalAcceptor;
-                if (goalComp) {
-                    goalComp.clear();
+                if (this.isExcludedEntity(entity)) {
                     continue;
                 }
 
-                if (
-                    [MetaConstantProducerBuilding, MetaBlockBuilding]
-                        .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
-                        .includes(metaBuilding.id)
-                ) {
-                    continue;
-                }
+                newSolution.push(entity.clone());
 
                 this.root.map.removeStaticEntity(entity);
                 this.root.entityMgr.destroyEntity(entity);
             }
+
             this.root.entityMgr.processDestroyList();
-        } else if (this.storedSolution.length > 0) {
+            this.storedSolution = newSolution;
+        } else if (this.storedSolution.length) {
             this.root.logic.performBulkOperation(() => {
-                this.root.logic.performImmutableOperation(() => {
-                    for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
-                        this.root.map.removeStaticEntity(entity);
-                        this.root.entityMgr.destroyEntity(entity);
-                    }
-                    this.root.entityMgr.processDestroyList();
+                for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+                    if (this.isExcludedEntity(entity)) continue;
 
-                    for (const entity of this.storedSolution) {
-                        const placedEntity = this.root.logic.tryPlaceEntity(entity);
+                    this.root.map.removeStaticEntity(entity);
+                    this.root.entityMgr.destroyEntity(entity);
+                }
+                this.root.entityMgr.processDestroyList();
 
-                        for (const key in entity.components) {
-                            /** @type {import("../../../core/global_registries").Component} */ (entity
-                                .components[key]).copyAdditionalStateTo(placedEntity.components[key]);
-                        }
+                for (let i = 0; i < this.storedSolution.length; ++i) {
+                    const entity = this.storedSolution[i];
+                    const placedEntity = this.root.logic.tryPlaceEntity(entity);
+
+                    for (const key in entity.components) {
+                        /** @type {import("../../../core/global_registries").Component} */ (entity.components[
+                            key
+                        ]).copyAdditionalStateTo(placedEntity.components[key]);
                     }
-                    this.storedSolution = [];
-                });
+                }
+                this.storedSolution = [];
             });
         }
     }
@@ -278,5 +273,18 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
     getIsTestMode() {
         return this.testMode;
+    }
+
+    isExcludedEntity(entity) {
+        const metaBuilding = entity.components.StaticMapEntity.getMetaBuilding();
+
+        if (
+            [MetaConstantProducerBuilding, MetaBlockBuilding, MetaGoalAcceptorBuilding]
+                .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                .includes(metaBuilding.id)
+        ) {
+            return true;
+        }
+        return false;
     }
 }
