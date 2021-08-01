@@ -7,7 +7,7 @@ steamPage:
         proizvodnje geometrijskih oblika.
 
         Kako se nivo povećava, oblici postaju sve složeniji, tako da morate da proširite fabriku na beskonačno velikoj mapi.
-        
+
         I ako sve to nije dovoljno, moraćete da proizvodite sve više i više oblika kako bi zadovoljili zahteve proizvodnje - jedina stvar koja pomaže je skaliranje!
 
         Na početku je dovoljno samo da prerađujete oblike, ali kasnije morate da ih farbate - za ovaj posao morate da vadite i mešate boje!
@@ -394,7 +394,7 @@ ingame:
         n_miners: <amount> Rudara
         limited_items: Ograničeno na <max_throughput>
     watermark:
-        title: Probna Verzija 
+        title: Probna Verzija
         desc: Kliknite ovde da pogledate prednosti Steam verzije!
         get_on_steam: Nabavite na Steam-u
     standaloneAdvantages:
@@ -439,11 +439,15 @@ ingame:
         title: Kreator Slagalica
         instructions:
             - 1. Postavite <strong>Stalni Proizvođač</strong> kako bi kasnije pružili oblike i boje igraču
-            - 2. Napravite jedan ili više oblika koje želite da igrač napravi i dostavite ga jednom ili više <strong>Ciljnih Blokova</strong>
-            - 3. Nakon što Ciljni Blok primi određeni oblik na određeno vreme, on taj oblik <strong>sačuva kao njegov cilj</strong> koji igrač mora da proizvede kasnije (Naznačeno <strong>zelenom značkom</strong>).
+            - 2. Napravite jedan ili više oblika koje želite da igrač napravi i dostavite ga jednom
+                ili više <strong>Ciljnih Blokova</strong>
+            - 3. Nakon što Ciljni Blok primi određeni oblik na određeno vreme,
+                on taj oblik <strong>sačuva kao njegov cilj</strong>
+                koji igrač mora da proizvede kasnije (Naznačeno <strong>zelenom značkom</strong>).
             - 4. Klikom na <strong>dugme za zaključavanje</strong> na građevini je onemogućujete.
             - 5. Kada kliknete na oceni, slagalica će biti proverena i onda je možete objaviti.
-            - 6. Nakon objavljivanja, <strong>sve građevine će biti obrisane</strong> osim Stalnih Proizvođača i Ciljnih Blokova - To je deo koji igrač treba samostalno da otkrije :)
+            - 6. Nakon objavljivanja, <strong>sve građevine će biti obrisane</strong>
+                osim Stalnih Proizvođača i Ciljnih Blokova - To je deo koji igrač treba samostalno da reši :)
     puzzleCompletion:
         title: Završena Slagalica!
         titleLike: "Klikni na srce ako ti se svidela slagalica:"
@@ -495,7 +499,7 @@ buildings:
         chainable:
             name: Rudar (Lančani)
             description: Postavite ga na oblik koji želite da iskopate. Mogu se lančano povezati
-            jedan za drugim.
+                jedan za drugim.
     underground_belt:
         default:
             name: Tunel
@@ -979,7 +983,7 @@ settings:
                 biti odabran.
         simplifiedBelts:
             title: Pojednostavljene Pokretne Trake (Ružno)
-            description: Ne prikazuje predmete na pokretnoj traci. Predmete možete videti ako pređete mišem preko trake. 
+            description: Ne prikazuje predmete na pokretnoj traci. Predmete možete videti ako pređete mišem preko trake.
                 Ova opcija povećava persormans, ali nije preporučljivo da igrate igru sa ovom opcijom omogućenom,
                 osim ako vam je performans prejako potreban.
         enableMousePan:
@@ -989,11 +993,11 @@ settings:
         zoomToCursor:
             title: Zumiraj prema kursoru/strelici
             description: Ako je ova opcija odabrana, zumiranje će se vršiti u smeru kursora/strelice,
-            u suprotnom vrši se prema centru ekrana.
+                u suprotnom vrši se prema centru ekrana.
         mapResourcesScale:
             title: Veličina simbola na mapi
             description: Kontroliše veličinu simbola na mapi
-            (kada se vrši odzumiranje mape).
+                (kada se vrši odzumiranje mape).
     rangeSliderPercentage: <amount> %
 keybindings:
     title: Tasteri
@@ -1025,7 +1029,7 @@ keybindings:
         menuOpenShop: Nadogradnje
         menuOpenStats: Statistika
         menuClose: Zatvori Meni
-        
+
         toggleHud: Uključi/Isključi Interfejs
         toggleFPSInfo: Uključi/Isključi FPS i infomacije o traženju grešaka u kodu
         switchLayers: Promeni Sloj
@@ -1061,7 +1065,7 @@ keybindings:
         #constant_producer: *constant_producer
         #goal_acceptor: *goal_acceptor
         #block: *block
-        
+
         belt: Pokretna traka
         underground_belt: Tunel
         miner: Rudar
