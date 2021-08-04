@@ -48,9 +48,12 @@ function init(isDev) {
 function listen() {
     console.log("wegame: listen");
     ipcMain.handle("profanity-check", async (event, data) => {
+        if (data.length === 0) {
+            return "";
+        }
         const result = railsdk.RailUtils.DirtyWordsFilter(data, true);
         if (result.check_result.dirty_type !== 0 /** kRailDirtyWordsTypeNormalAllowWords */) {
-            return result.check_result;
+            return result.check_result.replace_string;
         }
 
         return data;
