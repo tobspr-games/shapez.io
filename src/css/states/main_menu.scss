@@ -565,6 +565,40 @@
             grid-template-columns: auto 1fr;
         }
 
+        &.wegameDisclaimer {
+            @include SuperSmallText;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 1fr auto 1fr;
+
+            > .disclaimer {
+                grid-column: 2 / 3;
+
+                @include DarkThemeOverride {
+                    color: #fff;
+                }
+            }
+
+            > .rating {
+                grid-column: 3 / 4;
+                justify-self: end;
+                align-self: end;
+
+                @include S(width, 32px);
+                @include S(height, 40px);
+                background: green;
+                cursor: pointer !important;
+                pointer-events: all;
+                @include S(border-radius, 4px);
+                overflow: hidden;
+
+                & {
+                    /* @load-async */
+                    background: #fff uiResource("wegame_isbn_rating.jpg") center center / contain no-repeat;
+                }
+            }
+        }
+
         .author {
             flex-grow: 1;
             text-align: right;

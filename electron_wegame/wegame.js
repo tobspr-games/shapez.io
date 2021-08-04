@@ -1,5 +1,5 @@
 const railsdk = require("./wegame_sdk/railsdk.js");
-const { dialog, app } = require("electron");
+const { dialog, app, remote, ipcMain } = require("electron");
 
 function init(isDev) {
     console.log("Step 1: wegame: init");
@@ -47,6 +47,14 @@ function init(isDev) {
 
 function listen() {
     console.log("wegame: listen");
+    ipcMain.handle("profanity-check", async (event, data) => {
+        const result = railsdk.RailUtils.DirtyWordsFilter(data, true);
+        if (result.check_result.dirty_type !== 0 /** kRailDirtyWordsTypeNormalAllowWords */) {
+            return result.check_result;
+        }
+
+        return data;
+    });
 }
 
 module.exports = { init, listen };

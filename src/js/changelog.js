@@ -1,5 +1,16 @@
 export const CHANGELOG = [
     {
+        version: "1.4.3",
+        date: "unreleased",
+        entries: [
+            "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
+            "Further performance improvements (Thanks to PFedak)",
+            "Improved puzzle validation (Thanks to Sense101)",
+            "Input fields in dialogs should now automatically focus",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.4.2",
         date: "24.06.2021",
         entries: [
