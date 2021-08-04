@@ -73,6 +73,12 @@ export class ItemProcessorComponent extends Component {
         // Type of processing requirement
         this.processingRequirement = processingRequirement;
 
+        /**
+         * Our current inputs
+         * @type {Map<number, BaseItem>}
+         */
+        this.inputSlots = new Map();
+
         this.clear();
     }
 
@@ -82,11 +88,7 @@ export class ItemProcessorComponent extends Component {
         // sure the outputs always match
         this.nextOutputSlot = 0;
 
-        /**
-         * Our current inputs
-         * @type {Array<BaseItem?>}
-         */
-        this.inputSlots = [];
+        this.inputSlots.clear();
 
         /**
          * Current input count
@@ -121,15 +123,16 @@ export class ItemProcessorComponent extends Component {
             this.type === enumItemProcessorTypes.goal
         ) {
             // Hub has special logic .. not really nice but efficient.
-            this.inputSlots.push(item);
+            this.inputSlots.set(this.inputCount, item);
             this.inputCount++;
             return true;
         }
 
         // Check that we only take one item per slot
-        if (this.inputSlots[sourceSlot]) return false;
-
-        this.inputSlots[sourceSlot] = item;
+        if (this.inputSlots.has(sourceSlot)) {
+            return false;
+        }
+        this.inputSlots.set(sourceSlot, item);
         this.inputCount++;
         return true;
     }
