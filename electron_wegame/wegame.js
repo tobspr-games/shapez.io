@@ -1,5 +1,5 @@
 const railsdk = require("./wegame_sdk/railsdk.js");
-const { dialog, remote } = require("electron");
+const { dialog, app } = require("electron");
 
 function init(isDev) {
     console.log("Step 1: wegame: init");
@@ -39,7 +39,7 @@ function init(isDev) {
                 event.state === railsdk.RailSystemState.kSystemStatePlatformExit ||
                 event.state === railsdk.RailSystemState.kSystemStateGameExitByAntiAddiction
             ) {
-                remote.app.exit();
+                app.exit();
             }
         }
     });
