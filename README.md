@@ -39,7 +39,7 @@ You can use [Gitpod](https://www.gitpod.io/) (an Online Open Source VS Code-like
 -   install all of the dependencies.
 -   start `gulp` in `gulp/` directory.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/tobspr/shapez.io)
 
 ## Helping translate
 
