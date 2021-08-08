@@ -12,7 +12,7 @@ export class HUDTutorialVideoOffer extends BaseHUDPart {
         this.root.hud.signals.unlockNotificationFinished.add(() => {
             const level = this.root.hubGoals.level;
             const tutorialVideoLink = THIRDPARTY_URLS.levelTutorialVideos[level];
-            if (tutorialVideoLink) {
+            if (tutorialVideoLink && this.root.app.settings.getAllSettings().offerHints) {
                 const isForeign = this.root.app.settings.getLanguage() !== "en";
                 const dialogData = isForeign
                     ? T.dialogs.tutorialVideoAvailableForeignLanguage

@@ -154,6 +154,8 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.element, { trackHover: true });
         this.currentHintId = new TrackedState(this.onHintChanged, this);
+        this.lastLevelHinted = this.root.hubGoals.level;
+        this.lastHintShown = 0;
     }
 
     onHintChanged(hintId) {
@@ -167,17 +169,21 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
     update() {
         // Compute current hint
         const thisLevelHints = tutorialsByLevel[this.root.hubGoals.level - 1];
+        if (this.root.hubGoals.level != this.lastLevelHinted) this.lastHintShown = 0;
         let targetHintId = null;
 
         if (thisLevelHints) {
-            for (let i = 0; i < thisLevelHints.length; ++i) {
+            for (let i = this.lastHintShown; i < thisLevelHints.length; ++i) {
                 const hint = thisLevelHints[i];
                 if (hint.condition(this.root)) {
                     targetHintId = hint.id;
+                    this.lastHintShown = i;
                     break;
                 }
             }
         }
+
+        if (targetHintId === null) this.lastHintShown = thisLevelHints.length;
 
         this.currentHintId.set(targetHintId);
         this.domAttach.update(!!targetHintId);
