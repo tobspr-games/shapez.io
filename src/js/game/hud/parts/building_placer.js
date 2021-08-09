@@ -235,14 +235,17 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      */
     draw(parameters) {
         if (this.root.camera.getIsMapOverlayActive()) {
-            // Dont allow placing in overview mode
             this.domAttach.update(false);
             this.variantsAttach.update(false);
-            return;
-        }
 
-        this.domAttach.update(!!this.currentMetaBuilding.get());
-        this.variantsAttach.update(!!this.currentMetaBuilding.get());
+            if (!this.isDirectionLockActive) {
+                // only draw preview in overlay if this is a belt or wire
+                return;
+            }
+        } else {
+            this.domAttach.update(!!this.currentMetaBuilding.get());
+            this.variantsAttach.update(!!this.currentMetaBuilding.get());
+        }
         const metaBuilding = this.currentMetaBuilding.get();
 
         if (!metaBuilding) {
@@ -430,28 +433,32 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.beginCircle(endLine.x, endLine.y, 5);
             parameters.context.fill();
 
-            // Draw arrow
-            const arrowSprite = this.lockIndicatorSprites[this.root.currentLayer];
-            const path = this.computeDirectionLockPath();
-            for (let i = 0; i < path.length - 1; i += 1) {
-                const { rotation, tile } = path[i];
-                const worldPos = tile.toWorldSpaceCenterOfTile();
-                const angle = Math.radians(rotation);
+            if (!this.root.camera.getIsMapOverlayActive()) {
+                // Draw arrow
+                const arrowSprite = this.lockIndicatorSprites[this.root.currentLayer];
+                const path = this.computeDirectionLockPath();
+                for (let i = 0; i < path.length - 1; i += 1) {
+                    const { rotation, tile } = path[i];
+                    const worldPos = tile.toWorldSpaceCenterOfTile();
+                    const angle = Math.radians(rotation);
 
-                parameters.context.translate(worldPos.x, worldPos.y);
-                parameters.context.rotate(angle);
-                parameters.context.drawImage(
-                    arrowSprite,
-                    -6,
-                    -globalConfig.halfTileSize -
-                        clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
-                        globalConfig.halfTileSize -
-                        6,
-                    12,
-                    12
-                );
-                parameters.context.rotate(-angle);
-                parameters.context.translate(-worldPos.x, -worldPos.y);
+                    parameters.context.translate(worldPos.x, worldPos.y);
+                    parameters.context.rotate(angle);
+                    parameters.context.drawImage(
+                        arrowSprite,
+                        -6,
+                        -globalConfig.halfTileSize -
+                            clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) *
+                                1 *
+                                globalConfig.tileSize +
+                            globalConfig.halfTileSize -
+                            6,
+                        12,
+                        12
+                    );
+                    parameters.context.rotate(-angle);
+                    parameters.context.translate(-worldPos.x, -worldPos.y);
+                }
             }
         }
     }
