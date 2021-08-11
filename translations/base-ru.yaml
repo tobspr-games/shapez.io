@@ -1108,10 +1108,10 @@ keybindings:
         placementDisableAutoOrientation: Отключить автоопределение направления
         placeMultiple: Оставаться в режиме размещения
         placeInverse: Инвертировать автоопределение направления конвейеров
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        constant_producer: Постоянный генератор
+        goal_acceptor: Приёмник предметов
+        block: Блок
+        massSelectClear: Очистить конвейеры
 about:
     title: Об игре
     body: >-
@@ -1245,11 +1245,11 @@ puzzleMenu:
             постоянные производители не доставляют фигуры напрямую приемникам
             цели.
     difficulties:
-        easy: Лего
+        easy: Легко
         medium: Средне
         hard: Сложно
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: Уже купили DLC? Проверьте, что оно активировано, нажав правый клик на
+        shapez.io в своей библиотеке, и далее Свойства > Доп. Контент
 backendErrors:
     ratelimit: Вы слишком часто выполняете свои действия. Подождите немного.
     invalid-api-key: Не удалось связаться с сервером, попробуйте

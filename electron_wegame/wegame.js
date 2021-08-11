@@ -1,5 +1,5 @@
 const railsdk = require("./wegame_sdk/railsdk.js");
-const { dialog, remote, ipcMain } = require("electron");
+const { dialog, app, remote, ipcMain } = require("electron");
 
 function init(isDev) {
     console.log("Step 1: wegame: init");
@@ -39,7 +39,7 @@ function init(isDev) {
                 event.state === railsdk.RailSystemState.kSystemStatePlatformExit ||
                 event.state === railsdk.RailSystemState.kSystemStateGameExitByAntiAddiction
             ) {
-                remote.app.exit();
+                app.exit();
             }
         }
     });
@@ -48,9 +48,12 @@ function init(isDev) {
 function listen() {
     console.log("wegame: listen");
     ipcMain.handle("profanity-check", async (event, data) => {
+        if (data.length === 0) {
+            return "";
+        }
         const result = railsdk.RailUtils.DirtyWordsFilter(data, true);
         if (result.check_result.dirty_type !== 0 /** kRailDirtyWordsTypeNormalAllowWords */) {
-            return result.check_result;
+            return result.check_result.replace_string;
         }
 
         return data;
