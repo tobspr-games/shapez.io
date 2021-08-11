@@ -178,7 +178,7 @@ export class MainMenuState extends GameState {
                 G_IS_STANDALONE
                     ? ""
                     : `
-                    <iframe id="crosspromo" src="https://crosspromo.tobspr.io"></iframe>
+                    <iframe id="crosspromo" src="https://crosspromo.tobspr.io?src=shapez_web"></iframe>
 
                 `
             }
