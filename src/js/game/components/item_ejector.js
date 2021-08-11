@@ -52,6 +52,7 @@ export class ItemEjectorComponent extends Component {
     clear() {
         for (const slot of this.slots) {
             slot.item = null;
+            slot.lastItem = null;
             slot.progress = 0;
         }
     }
