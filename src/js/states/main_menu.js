@@ -173,6 +173,15 @@ export class MainMenuState extends GameState {
                     '<a class="producerLink" target="_blank">Tobias Springer</a>'
                 )}</div>
             </div>
+
+            ${
+                G_IS_STANDALONE
+                    ? ""
+                    : `
+                    <iframe id="crosspromo" src="https://crosspromo.tobspr.io"></iframe>
+
+                `
+            }
             `
             }
         `;

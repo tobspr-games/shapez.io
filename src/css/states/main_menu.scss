@@ -550,6 +550,16 @@
         }
     }
 
+    #crosspromo {
+        position: absolute;
+        @include S(bottom, 50px);
+        @include S(right, 20px);
+        @include S(width, 190px);
+        @include S(height, 100px);
+        pointer-events: all;
+        border: 0;
+    }
+
     .footer {
         display: grid;
         flex-grow: 1;
