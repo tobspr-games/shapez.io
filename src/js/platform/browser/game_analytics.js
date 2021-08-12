@@ -111,6 +111,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @returns {Promise<any>}
      */
     sendToApi(endpoint, data) {
+        if (G_WEGAME_VERSION) {
+            return Promise.resolve();
+        }
+
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
 
