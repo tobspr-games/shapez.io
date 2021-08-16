@@ -272,7 +272,7 @@ export const allApplicationSettings = [
     new EnumSetting("refreshRate", {
         options: refreshRateOptions,
         valueGetter: rate => rate,
-        textGetter: rate => rate + " Hz",
+        textGetter: rate => T.settings.tickrateHz.replace("<amount>", rate),
         category: enumCategories.performance,
         restartRequired: false,
         changeCb: (app, id) => {},

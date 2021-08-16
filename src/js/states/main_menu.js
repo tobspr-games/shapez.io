@@ -91,7 +91,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    (!G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc) || G_IS_DEV
+                    (!G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc) || (G_IS_DEV && !G_WEGAME_VERSION)
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -535,9 +535,12 @@ export class MainMenuState extends GameState {
                 downloadButton.classList.add("styledButton", "downloadGame");
                 elem.appendChild(downloadButton);
 
-                const renameButton = document.createElement("button");
-                renameButton.classList.add("styledButton", "renameGame");
-                name.appendChild(renameButton);
+                if (!G_WEGAME_VERSION) {
+                    const renameButton = document.createElement("button");
+                    renameButton.classList.add("styledButton", "renameGame");
+                    name.appendChild(renameButton);
+                    this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
+                }
 
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
@@ -546,7 +549,6 @@ export class MainMenuState extends GameState {
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
-                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
             }
         }
     }
@@ -703,14 +705,23 @@ export class MainMenuState extends GameState {
         this.dialogs.showInfo(
             "",
             `
-        1）本游戏是一款休闲建造类单机游戏，适用于年满8周岁及以上的用户。<br>
-        2）本游戏模拟简单的生产流水线，剧情简单且积极向上，没有基于真实
-        历史和现实事件的改编内容。游戏玩法为摆放简单的部件，完成生产目标。
-        游戏为单机作品，没有基于文字和语音的陌生人社交系统。<br>
-        3）游戏中有用户实名认证系统，认证为未成年人的用户将接受以下管理：
-        游戏为买断制，不存在后续充值付费内容。未成年人用户每日22点到次日
-        8点不得使用，法定节假日每天不得使用超过3小时，其它时间每天使用游
-        戏不得超过1.5小时。
+            提示说明:<br>
+            1) 本游戏是一款休闲建造类单机游戏,画面简洁而乐趣充足。适用于年
+            满8周岁及以上的用户,建议未成年人在家长监护下使用游戏产品。<br>
+            2) 本游戏模拟简单的生产流水线,剧情简单且积极向上,没有基于真实
+            历史和现实事件的改编内容。游戏玩法为摆放简单的部件,完成生产目标。
+            游戏为单机作品,没有基于文字和语音的陌生人社交系统。<br>
+            3) 本游戏中有用户实名认证系统,认证为未成年人的用户将接受以下管
+            理:未满8周岁的用户不能付费;8周岁以上未满16周岁的未成年人用户,
+            单次充值金额不得超过50元人民币,每月充值金额累计不得超过200元人
+            民币;16周岁以上的未成年人用户,单次充值金额不得超过100元人民币,
+            每月充值金额累计不得超过400元人民币。<br>
+            未成年人用户每日22点到次日8点不得使用,法定节假日每天不得使用超
+            过3小时,其他时间每天不得使用超过1.5小时。<br>
+            4) 游戏功能说明:一款关于传送带自动化生产特定形状产品的工厂流水
+            线模拟游戏,画面简洁而乐趣充足,可以让玩家在轻松愉快的氛围下获得
+            各种游戏乐趣,体验完成目标的成就感。游戏没有失败功能,自动存档,
+            不存在较强的挫折体验。
         `
         );
     }

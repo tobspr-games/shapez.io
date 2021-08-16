@@ -1080,7 +1080,7 @@ settings:
         staging: Staging
         prod: Production
     buildDate: Built <at-date>
-
+    tickrateHz: <amount> Hz
     rangeSliderPercentage: <amount> %
 
     labels:
