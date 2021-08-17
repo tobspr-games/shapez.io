@@ -17,6 +17,7 @@ import {
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
@@ -34,35 +35,56 @@ export class MainMenuState extends GameState {
     }
 
     getInnerHTML() {
+        const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
+        const showExitAppButton = G_IS_STANDALONE;
+        const showUpdateLabel = !G_WEGAME_VERSION;
+        const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
+        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE;
+        const showWegameFooter = G_WEGAME_VERSION;
+
+        let showExternalLinks = true;
+
+        if (G_IS_STANDALONE) {
+            if (G_WEGAME_VERSION || G_CHINA_VERSION) {
+                showExternalLinks = false;
+            }
+        } else {
+            const wrapper = /** @type {PlatformWrapperImplBrowser} */ (this.app.platformWrapper);
+            if (!wrapper.embedProvider.externalLinks) {
+                showExternalLinks = false;
+            }
+        }
+
+        let showDiscordLink = showExternalLinks;
+        if (G_CHINA_VERSION) {
+            showDiscordLink = true;
+        }
+
+        const showCrosspromo = !G_IS_STANDALONE && showExternalLinks;
+        const showDemoAdvertisement =
+            showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
+
+        const ownsPuzzleDLC =
+            G_IS_STANDALONE &&
+            /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle;
+
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
-            <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
+
+                    <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
         `;
-
-        const showDemoBadges = this.app.restrictionMgr.getIsStandaloneMarketingActive();
-
-        const puzzleDlc =
-            G_IS_STANDALONE &&
-            /** @type { PlatformWrapperImplElectron
-        }*/ (this.app.platformWrapper).dlcs.puzzle;
 
         return `
             <div class="topButtons">
                 ${
-                    G_CHINA_VERSION || G_WEGAME_VERSION
-                        ? ""
-                        : `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
+                    showLanguageIcon
+                        ? `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
+                        : ""
                 }
 
                 <button class="settingsButton"></button>
-            ${
-                G_IS_STANDALONE || G_IS_DEV
-                    ? `
-                <button class="exitAppButton"></button>
-            `
-                    : ""
-            }
+                ${showExitAppButton ? `<button class="exitAppButton"></button>` : ""}
             </div>
 
             <video autoplay muted loop class="fullscreenBackgroundVideo">
@@ -71,27 +93,25 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${G_WEGAME_VERSION ? "" : `<span class="updateLabel">v${G_BUILD_VERSION}!</span>`}
+                ${showUpdateLabel ? `<span class="updateLabel">v${G_BUILD_VERSION}!</span>` : ""}
             </div>
 
-            <div class="mainWrapper ${showDemoBadges ? "demo" : "noDemo"}" data-columns="${
-            G_IS_STANDALONE && !G_WEGAME_VERSION ? 2 : showDemoBadges ? 2 : 1
-        }">
+            <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
                 <div class="sideContainer">
-                    ${showDemoBadges ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
+                    ${showDemoAdvertisement ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
                 <div class="mainContainer">
                     ${
-                        G_IS_STANDALONE || isSupportedBrowser()
-                            ? ""
-                            : `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
+                        showBrowserWarning
+                            ? `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
+                            : ""
                     }
                     <div class="buttons"></div>
                 </div>
 
                 ${
-                    (!G_WEGAME_VERSION && G_IS_STANDALONE && puzzleDlc) || (G_IS_DEV && !G_WEGAME_VERSION)
+                    showPuzzleDLC && ownsPuzzleDLC
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -105,7 +125,7 @@ export class MainMenuState extends GameState {
                 }
 
                 ${
-                    !G_WEGAME_VERSION && G_IS_STANDALONE && !puzzleDlc
+                    showPuzzleDLC && !ownsPuzzleDLC
                         ? `
                     <div class="puzzleContainer notOwned">
                         <span class="badge">
@@ -129,8 +149,9 @@ export class MainMenuState extends GameState {
             </div>
 
             ${
-                G_WEGAME_VERSION
-                    ? `<div class='footer wegameDisclaimer'>
+                showWegameFooter
+                    ? `
+                <div class='footer wegameDisclaimer'>
                         <div class="disclaimer">
                             健康游戏忠告
                             <br>
@@ -142,46 +163,46 @@ export class MainMenuState extends GameState {
                     </div>
                     `
                     : `
-            <div class="footer ${G_CHINA_VERSION ? "china" : ""} ">
 
-                ${
-                    G_CHINA_VERSION
-                        ? ""
-                        : `
-                <a class="githubLink boxLink" target="_blank">
-                    ${T.mainMenu.openSourceHint}
-                    <span class="thirdpartyLogo githubLogo"></span>
-                </a>`
-                }
+                <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
+                    ${
+                        showExternalLinks
+                            ? `
+                        <a class="githubLink boxLink" target="_blank">
+                            ${T.mainMenu.openSourceHint}
+                            <span class="thirdpartyLogo githubLogo"></span>
+                        </a>`
+                            : ""
+                    }
 
-                <a class="discordLink boxLink" target="_blank">
-                    ${T.mainMenu.discordLink}
-                    <span class="thirdpartyLogo  discordLogo"></span>
-                </a>
+                    ${
+                        showDiscordLink
+                            ? `<a class="discordLink boxLink" target="_blank">
 
-                <div class="sidelinks">
-                    ${G_CHINA_VERSION ? "" : `<a class="redditLink">${T.mainMenu.subreddit}</a>`}
+                        ${T.mainMenu.discordLink}
+                        <span class="thirdpartyLogo  discordLogo"></span>
+                    </a>`
+                            : ""
+                    }
 
-                    ${G_CHINA_VERSION ? "" : `<a class="changelog">${T.changelog.title}</a>`}
+                    <div class="sidelinks">
+                        ${showExternalLinks ? `<a class="redditLink">${T.mainMenu.subreddit}</a>` : ""}
 
-                    ${G_CHINA_VERSION ? "" : `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>`}
+                        ${showExternalLinks ? `<a class="changelog">${T.changelog.title}</a>` : ""}
+
+                        ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
+                    </div>
+                    <div class="author">${T.mainMenu.madeBy.replace(
+                        "<author-link>",
+                        '<a class="producerLink" target="_blank">Tobias Springer</a>'
+                    )}</div>
                 </div>
 
-
-                <div class="author">${T.mainMenu.madeBy.replace(
-                    "<author-link>",
-                    '<a class="producerLink" target="_blank">Tobias Springer</a>'
-                )}</div>
-            </div>
-
-            ${
-                G_IS_STANDALONE
-                    ? ""
-                    : `
-                    <iframe id="crosspromo" src="https://crosspromo.tobspr.io?src=shapez_web"></iframe>
-
-                `
-            }
+                ${
+                    showCrosspromo
+                        ? `<iframe id="crosspromo" src="https://crosspromo.tobspr.io?src=shapez_web"></iframe>`
+                        : ""
+                }
             `
             }
         `;
@@ -270,8 +291,6 @@ export class MainMenuState extends GameState {
             );
         }
 
-        const qs = this.htmlElement.querySelector.bind(this.htmlElement);
-
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
             this.onPuzzleModeButtonClicked(true);
             return;
@@ -295,76 +314,38 @@ export class MainMenuState extends GameState {
             }
         });
 
-        this.trackClicks(qs(".settingsButton"), this.onSettingsButtonClicked);
+        const clickHandling = {
+            ".settingsButton": this.onSettingsButtonClicked,
+            ".languageChoose": this.onLanguageChooseClicked,
+            ".redditLink": this.onRedditClicked,
+            ".changelog": this.onChangelogClicked,
+            ".helpTranslate": this.onTranslationHelpLinkClicked,
+            ".exitAppButton": this.onExitAppButtonClicked,
+            ".steamLink": this.onSteamLinkClicked,
+            ".discordLink": () => {
+                this.app.analytics.trackUiClick("main_menu_link_discord");
+                this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
+            },
+            ".githubLink": () => {
+                this.app.analytics.trackUiClick("main_menu_link_github");
+                this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github);
+            },
+            ".producerLink": () => this.app.platformWrapper.openExternalLink("https://tobspr.io"),
+            ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
+            ".puzzleDlcGetButton": this.onPuzzleWishlistButtonClicked,
+            ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
+        };
 
-        if (!G_CHINA_VERSION && !G_WEGAME_VERSION) {
-            this.trackClicks(qs(".languageChoose"), this.onLanguageChooseClicked);
-            this.trackClicks(qs(".redditLink"), this.onRedditClicked);
-            this.trackClicks(qs(".changelog"), this.onChangelogClicked);
-            this.trackClicks(qs(".helpTranslate"), this.onTranslationHelpLinkClicked);
-        }
-
-        if (G_IS_STANDALONE) {
-            this.trackClicks(qs(".exitAppButton"), this.onExitAppButtonClicked);
+        for (const key in clickHandling) {
+            const handler = clickHandling[key];
+            const element = this.htmlElement.querySelector(key);
+            if (element) {
+                this.trackClicks(element, handler, { preventClick: true });
+            }
         }
 
         this.renderMainMenu();
         this.renderSavegames();
-
-        const steamLink = this.htmlElement.querySelector(".steamLink");
-        if (steamLink) {
-            this.trackClicks(steamLink, () => this.onSteamLinkClicked(), { preventClick: true });
-        }
-
-        const discordLink = this.htmlElement.querySelector(".discordLink");
-        if (discordLink) {
-            this.trackClicks(
-                discordLink,
-                () => {
-                    this.app.analytics.trackUiClick("main_menu_link_discord");
-                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
-                },
-                { preventClick: true }
-            );
-        }
-
-        const githubLink = this.htmlElement.querySelector(".githubLink");
-        if (githubLink) {
-            this.trackClicks(
-                githubLink,
-                () => {
-                    this.app.analytics.trackUiClick("main_menu_link_github");
-                    this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github);
-                },
-                { preventClick: true }
-            );
-        }
-
-        const producerLink = this.htmlElement.querySelector(".producerLink");
-        if (producerLink) {
-            this.trackClicks(
-                producerLink,
-                () => this.app.platformWrapper.openExternalLink("https://tobspr.io"),
-                {
-                    preventClick: true,
-                }
-            );
-        }
-
-        const puzzleModeButton = qs(".puzzleDlcPlayButton");
-        if (puzzleModeButton) {
-            this.trackClicks(puzzleModeButton, () => this.onPuzzleModeButtonClicked());
-        }
-
-        const puzzleWishlistButton = qs(".puzzleDlcGetButton");
-        if (puzzleWishlistButton) {
-            this.trackClicks(puzzleWishlistButton, () => this.onPuzzleWishlistButtonClicked());
-        }
-
-        const wegameRating = qs(".wegameDisclaimer > .rating");
-        if (wegameRating) {
-            this.trackClicks(wegameRating, () => this.onWegameRatingClicked());
-        }
     }
 
     renderMainMenu() {
@@ -737,11 +718,14 @@ export class MainMenuState extends GameState {
         });
 
         const savegame = this.app.savegameMgr.getSavegameById(latestInternalId);
-        savegame.readAsync().then(() => {
-            this.moveToState("InGameState", {
-                savegame,
+        savegame
+            .readAsync()
+            .then(() => this.app.adProvider.showVideoAd())
+            .then(() => {
+                this.moveToState("InGameState", {
+                    savegame,
+                });
             });
-        });
     }
 
     onLeave() {

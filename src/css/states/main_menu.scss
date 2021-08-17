@@ -571,7 +571,7 @@
         box-sizing: border-box;
         @include S(grid-gap, 4px);
 
-        &.china {
+        &.noLinks {
             grid-template-columns: auto 1fr;
         }
 
