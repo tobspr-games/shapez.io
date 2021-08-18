@@ -575,7 +575,9 @@ export class RegularGameMode extends GameMode {
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {
-            this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            if (!G_WEGAME_VERSION) {
+                this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            }
             this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
         }
 
