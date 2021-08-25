@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.4.3",
-        date: "preview",
+        date: "28.08.2021",
         entries: [
             "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101)",
             "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
