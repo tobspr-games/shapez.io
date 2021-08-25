@@ -1,7 +1,8 @@
 import { DrawParameters } from "../../../core/draw_parameters";
-import { Vector } from "../../../core/vector";
+import { enumDirectionToVector, Vector } from "../../../core/vector";
 import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
+import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDShapeTooltip extends BaseHUDPart {
@@ -68,6 +69,8 @@ export class HUDShapeTooltip extends BaseHUDPart {
             const ejectorComp = this.currentEntity.components.ItemEjector;
             const staticComp = this.currentEntity.components.StaticMapEntity;
 
+            const context = parameters.context;
+
             for (let i = 0; i < ejectorComp.slots.length; ++i) {
                 const slot = ejectorComp.slots[i];
 
@@ -75,15 +78,34 @@ export class HUDShapeTooltip extends BaseHUDPart {
                     continue;
                 }
 
-                /** @type {Vector} */
-                let drawPos = null;
-                if (ejectorComp.slots.length == 1) {
-                    drawPos = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-                } else {
-                    drawPos = staticComp.localTileToWorld(slot.pos).toWorldSpaceCenterOfTile();
-                }
+                const drawPos = staticComp
+                    .localTileToWorld(slot.pos.add(enumDirectionToVector[slot.direction].multiplyScalar(1)))
+                    .toWorldSpaceCenterOfTile();
 
-                slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 25);
+                const slotCenterPos = staticComp
+                    .localTileToWorld(slot.pos.add(enumDirectionToVector[slot.direction].multiplyScalar(0.2)))
+                    .toWorldSpaceCenterOfTile();
+
+                context.fillStyle = THEME.shapeTooltip.outline;
+                context.strokeStyle = THEME.shapeTooltip.outline;
+
+                context.lineWidth = 1.5;
+                context.beginPath();
+                context.moveTo(slotCenterPos.x, slotCenterPos.y);
+                context.lineTo(drawPos.x, drawPos.y);
+                context.stroke();
+
+                context.beginCircle(slotCenterPos.x, slotCenterPos.y, 3.5);
+                context.fill();
+
+                context.fillStyle = THEME.shapeTooltip.background;
+                context.strokeStyle = THEME.shapeTooltip.outline;
+
+                context.lineWidth = 1.2;
+                context.beginCircle(drawPos.x, drawPos.y, 11 + 1.2 / 2);
+                context.fill();
+                context.stroke();
+                slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 22);
             }
         }
     }

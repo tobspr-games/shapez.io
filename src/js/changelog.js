@@ -1,9 +1,9 @@
 export const CHANGELOG = [
-    // Not finished yet
     {
         version: "1.4.3",
         date: "preview",
         entries: [
+            "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101)",
             "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
             "Further performance improvements (Thanks to PFedak)",
             "Improved puzzle validation (Thanks to Sense101)",

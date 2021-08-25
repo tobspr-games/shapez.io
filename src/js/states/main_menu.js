@@ -39,7 +39,7 @@ export class MainMenuState extends GameState {
         const showExitAppButton = G_IS_STANDALONE;
         const showUpdateLabel = !G_WEGAME_VERSION;
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
-        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE;
+        const showPuzzleDLC = !G_WEGAME_VERSION && (G_IS_STANDALONE || G_IS_DEV);
         const showWegameFooter = G_WEGAME_VERSION;
 
         let showExternalLinks = true;
@@ -65,8 +65,9 @@ export class MainMenuState extends GameState {
             showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
         const ownsPuzzleDLC =
-            G_IS_STANDALONE &&
-            /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle;
+            G_IS_DEV ||
+            (G_IS_STANDALONE &&
+                /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>

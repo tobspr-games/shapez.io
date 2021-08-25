@@ -59,5 +59,10 @@
         "outline": "#111418",
         "outlineWidth": 0.75,
         "circleBackground": "rgba(20, 30, 40, 0.3)"
+    },
+
+    "shapeTooltip": {
+        "background": "rgba(242, 245, 254, 0.9)",
+        "outline": "#44464e"
     }
 }
