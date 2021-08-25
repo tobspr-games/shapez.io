@@ -5,6 +5,8 @@ export const CHANGELOG = [
         entries: [
             "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101)",
             "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
+            "Puzzle DLC: There is now a 'next puzzle' button!",
+            "Puzzle DLC: There is now a search function!",
             "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
             "Further performance improvements (Thanks to PFedak)",
             "Improved puzzle validation (Thanks to Sense101)",
