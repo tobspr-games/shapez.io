@@ -126,17 +126,25 @@ export class MapChunkAggregate {
         const resourcesScale = this.root.app.settings.getAllSettings().mapResourcesScale;
 
         // Draw patch items
-        if (this.root.currentLayer === "regular" && resourcesScale > 0.05) {
+        if (
+            this.root.currentLayer === "regular" &&
+            resourcesScale > 0.05 &&
+            this.root.camera.zoomLevel > 0.1
+        ) {
             const diameter = (70 / Math.pow(parameters.zoomLevel, 0.35)) * (0.2 + 2 * resourcesScale);
 
             for (let x = 0; x < globalConfig.chunkAggregateSize; x++) {
                 for (let y = 0; y < globalConfig.chunkAggregateSize; y++) {
                     this.root.map
-                        .getChunk(this.x + x, this.y + y, true)
+                        .getChunk(
+                            this.x * globalConfig.chunkAggregateSize + x,
+                            this.y * globalConfig.chunkAggregateSize + y,
+                            true
+                        )
                         .drawOverlayPatches(
                             parameters,
-                            this.x * dims + x * globalConfig.mapChunkSize * CHUNK_OVERLAY_RES,
-                            this.y * dims + y * globalConfig.mapChunkSize * CHUNK_OVERLAY_RES,
+                            this.x * dims + x * globalConfig.mapChunkWorldSize,
+                            this.y * dims + y * globalConfig.mapChunkWorldSize,
                             diameter
                         );
                 }

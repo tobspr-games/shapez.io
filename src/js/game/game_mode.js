@@ -119,7 +119,7 @@ export class GameMode extends BasicSerializableObject {
 
     /** @returns {number} */
     getMinimumZoom() {
-        return 0.1;
+        return 0.06;
     }
 
     /** @returns {number} */

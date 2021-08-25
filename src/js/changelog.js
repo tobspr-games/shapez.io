@@ -4,10 +4,12 @@ export const CHANGELOG = [
         date: "preview",
         entries: [
             "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101)",
+            "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
             "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
             "Further performance improvements (Thanks to PFedak)",
             "Improved puzzle validation (Thanks to Sense101)",
             "Input fields in dialogs should now automatically focus",
+            "Fix selected building being deselected at level up (Thanks to EmeraldBlock)",
             "Updated translations",
         ],
     },
