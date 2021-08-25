@@ -137,16 +137,20 @@
 
                 button.continue {
                     background: #555;
-                    @include S(margin-right, 10px);
                 }
 
                 button.menu {
+                    background: #555;
+                }
+
+                button.nextPuzzle {
                     background-color: $colorGreenBright;
                 }
 
                 > button {
                     @include S(min-width, 100px);
-                    @include S(padding, 10px, 20px);
+                    @include S(padding, 8px, 16px);
+                    @include S(margin, 0, 6px);
                     @include IncreasedClickArea(0px);
                 }
             }

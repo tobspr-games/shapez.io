@@ -6,13 +6,8 @@ import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { SOUNDS } from "../../../platform/sound";
 import { T } from "../../../translations";
-import { enumColors } from "../../colors";
-import { ColorItem } from "../../items/color_item";
-import { finalGameShape, rocketShape } from "../../modes/regular";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { ShapeItem } from "../../items/shape_item";
-import { ShapeDefinition } from "../../shape_definition";
 
 export class HUDPuzzleCompleteNotification extends BaseHUDPart {
     initialize() {
@@ -68,10 +63,21 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.menuBtn.classList.add("menu", "styledButton");
         this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
         buttonBar.appendChild(this.menuBtn);
-
         this.trackClicks(this.menuBtn, () => {
             this.close(true);
         });
+
+        const gameMode = /** @type {PuzzlePlayGameMode} */ (this.root.gameMode);
+        if (gameMode.nextPuzzles.length > 0) {
+            this.nextPuzzleBtn = document.createElement("button");
+            this.nextPuzzleBtn.classList.add("nextPuzzle", "styledButton");
+            this.nextPuzzleBtn.innerText = T.ingame.puzzleCompletion.nextPuzzle;
+            buttonBar.appendChild(this.nextPuzzleBtn);
+
+            this.trackClicks(this.nextPuzzleBtn, () => {
+                this.nextPuzzle();
+            });
+        }
     }
 
     updateState() {
@@ -91,6 +97,15 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
 
     isBlockingOverlay() {
         return this.visible;
+    }
+
+    nextPuzzle() {
+        const gameMode = /** @type {PuzzlePlayGameMode} */ (this.root.gameMode);
+        gameMode.trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion)).then(() => {
+            this.root.gameState.moveToState("PuzzleMenuState", {
+                continueQueue: gameMode.nextPuzzles,
+            });
+        });
     }
 
     close(toMenu) {

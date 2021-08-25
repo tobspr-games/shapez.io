@@ -334,14 +334,19 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
 
+        const ejectorComp = payload.entity.components.ItemEjector;
         for (let i = 0; i < cutDefinitions.length; ++i) {
             const definition = cutDefinitions[i];
-            if (!definition.isEntirelyEmpty()) {
-                payload.outItems.push({
-                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
-                    requiredSlot: i,
-                });
+
+            if (definition.isEntirelyEmpty()) {
+                ejectorComp.slots[i].lastItem = null;
+                continue;
             }
+
+            payload.outItems.push({
+                item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                requiredSlot: i,
+            });
         }
     }
 
@@ -355,14 +360,19 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
 
+        const ejectorComp = payload.entity.components.ItemEjector;
         for (let i = 0; i < cutDefinitions.length; ++i) {
             const definition = cutDefinitions[i];
-            if (!definition.isEntirelyEmpty()) {
-                payload.outItems.push({
-                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
-                    requiredSlot: i,
-                });
+
+            if (definition.isEntirelyEmpty()) {
+                ejectorComp.slots[i].lastItem = null;
+                continue;
             }
+
+            payload.outItems.push({
+                item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                requiredSlot: i,
+            });
         }
     }
 

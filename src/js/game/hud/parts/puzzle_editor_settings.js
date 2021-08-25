@@ -192,8 +192,9 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                         assertAlways(false, "Failed to re-place building in trim");
                     }
 
-                    if (building.components.ConstantSignal) {
-                        result.components.ConstantSignal.signal = building.components.ConstantSignal.signal;
+                    for (const key in building.components) {
+                        /** @type {import("../../../core/global_registries").Component} */ (building
+                            .components[key]).copyAdditionalStateTo(result.components[key]);
                     }
                 }
             });

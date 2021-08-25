@@ -734,6 +734,10 @@ const romanLiteralsCache = ["0"];
  * @returns {string}
  */
 export function getRomanNumber(number) {
+    if (G_WEGAME_VERSION) {
+        return String(number);
+    }
+
     number = Math.max(0, Math.round(number));
     if (romanLiteralsCache[number]) {
         return romanLiteralsCache[number];

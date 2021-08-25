@@ -155,6 +155,23 @@ puzzleMenu:
         account: My Puzzles
         search: Search
 
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+
     difficulties:
         easy: Easy
         medium: Medium
@@ -671,6 +688,7 @@ ingame:
 
         continueBtn: Keep Playing
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
 
     puzzleMetadata:
         author: Author
@@ -1094,7 +1112,7 @@ settings:
         staging: Staging
         prod: Production
     buildDate: Built <at-date>
-
+    tickrateHz: <amount> Hz
     rangeSliderPercentage: <amount> %
 
     labels:
@@ -1376,6 +1394,8 @@ keybindings:
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
+
+        showShapeTooltip: Show shape output tooltip
 
 about:
     title: About this Game

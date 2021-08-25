@@ -12,7 +12,7 @@ export class WegameSplashState extends GameState {
             <div>抵制不良游戏,拒绝盗版游戏。</div>
             <div>注意自我保护,谨防受骗上当。</div>
             <div>适度游戏益脑,沉迷游戏伤身。</div>
-            <div>适度游戏益脑,沉迷游戏伤身。</div>
+            <div>合理安排时间,享受健康生活。</div>
         </div>
 `;
     }
