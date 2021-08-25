@@ -17,6 +17,8 @@ export const THIRDPARTY_URLS = {
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
 
+    privacyPolicy: "https://tobspr.io/privacy.html",
+
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
     stanaloneCampaignLink: "https://get.shapez.io",
     puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",

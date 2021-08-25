@@ -30,6 +30,7 @@ import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaBuilding } from "../meta_building";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
+import { HUDPuzzleNextPuzzle } from "../hud/parts/HUDPuzzleNextPuzzle";
 
 const logger = createLogger("puzzle-play");
 const copy = require("clipboard-copy");
@@ -43,8 +44,9 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
      * @param {GameRoot} root
      * @param {object} payload
      * @param {import("../../savegame/savegame_typedefs").PuzzleFullData} payload.puzzle
+     * @param {Array<number> | undefined} payload.nextPuzzles
      */
-    constructor(root, { puzzle }) {
+    constructor(root, { puzzle, nextPuzzles }) {
         super(root);
 
         /** @type {Array<typeof MetaBuilding>} */
@@ -95,6 +97,15 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         root.signals.postLoadHook.add(this.loadPuzzle, this);
 
         this.puzzle = puzzle;
+
+        /**
+         * @type {Array<number>}
+         */
+        this.nextPuzzles = nextPuzzles || [];
+
+        if (this.nextPuzzles.length > 0) {
+            this.additionalHudParts.puzzleNext = HUDPuzzleNextPuzzle;
+        }
     }
 
     loadPuzzle() {

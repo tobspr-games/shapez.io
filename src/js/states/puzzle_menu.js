@@ -13,17 +13,30 @@ const navigation = {
     categories: ["official", "top-rated", "trending", "trending-weekly", "new"],
     difficulties: ["easy", "medium", "hard"],
     account: ["mine", "completed"],
+    search: ["search"],
 };
 
 const logger = createLogger("puzzle-menu");
 
 let lastCategory = "official";
 
+let lastSearchOptions = {
+    searchTerm: "",
+    difficulty: "any",
+    duration: "any",
+    includeCompleted: false,
+};
+
 export class PuzzleMenuState extends TextualGameState {
     constructor() {
         super("PuzzleMenuState");
         this.loading = false;
         this.activeCategory = "";
+
+        /**
+         * @type {Array<import("../savegame/savegame_typedefs").PuzzleMetadata>}
+         */
+        this.puzzles = [];
     }
 
     getThemeMusic() {
@@ -99,11 +112,21 @@ export class PuzzleMenuState extends TextualGameState {
             activeCategory.classList.remove("active");
         }
 
-        this.htmlElement.querySelector(`[data-category="${category}"]`).classList.add("active");
+        const categoryElement = this.htmlElement.querySelector(`[data-category="${category}"]`);
+        if (categoryElement) {
+            categoryElement.classList.add("active");
+        }
 
         const container = this.htmlElement.querySelector("#mainContainer");
         while (container.firstChild) {
             container.removeChild(container.firstChild);
+        }
+
+        if (category === "search") {
+            this.loading = false;
+
+            this.startSearch();
+            return;
         }
 
         const loadingElement = document.createElement("div");
@@ -160,16 +183,139 @@ export class PuzzleMenuState extends TextualGameState {
         }
 
         const children = navigation[rootCategory];
-        for (const category of children) {
-            const button = document.createElement("button");
-            button.setAttribute("data-category", category);
-            button.classList.add("styledButton", "category", "child");
-            button.innerText = T.puzzleMenu.categories[category];
-            this.trackClicks(button, () => this.selectCategory(category));
-            subContainer.appendChild(button);
+        if (children.length > 1) {
+            for (const category of children) {
+                const button = document.createElement("button");
+                button.setAttribute("data-category", category);
+                button.classList.add("styledButton", "category", "child");
+                button.innerText = T.puzzleMenu.categories[category];
+                this.trackClicks(button, () => this.selectCategory(category));
+                subContainer.appendChild(button);
+            }
+        }
+
+        if (rootCategory === "search") {
+            this.renderSearchForm(subContainer);
         }
 
         this.selectCategory(subCategory);
+    }
+
+    renderSearchForm(parent) {
+        const container = document.createElement("form");
+        container.classList.add("searchForm");
+
+        // Search
+        const searchField = document.createElement("input");
+        searchField.value = lastSearchOptions.searchTerm;
+        searchField.classList.add("search");
+        searchField.setAttribute("type", "text");
+        searchField.setAttribute("placeholder", T.puzzleMenu.search.placeholder);
+        searchField.addEventListener("input", () => {
+            lastSearchOptions.searchTerm = searchField.value.trim();
+        });
+        container.appendChild(searchField);
+
+        // Difficulty
+        const difficultyFilter = document.createElement("select");
+        for (const difficulty of ["any", "easy", "medium", "hard"]) {
+            const option = document.createElement("option");
+            option.value = difficulty;
+            option.innerText = T.puzzleMenu.search.difficulties[difficulty];
+            if (option.value === lastSearchOptions.difficulty) {
+                option.setAttribute("selected", "selected");
+            }
+            difficultyFilter.appendChild(option);
+        }
+        difficultyFilter.addEventListener("change", () => {
+            const option = difficultyFilter.value;
+            lastSearchOptions.difficulty = option;
+        });
+        container.appendChild(difficultyFilter);
+
+        // Duration
+        const durationFilter = document.createElement("select");
+        for (const duration of ["any", "short", "medium", "long"]) {
+            const option = document.createElement("option");
+            option.value = duration;
+            option.innerText = T.puzzleMenu.search.durations[duration];
+            if (option.value === lastSearchOptions.duration) {
+                option.setAttribute("selected", "selected");
+            }
+            durationFilter.appendChild(option);
+        }
+        durationFilter.addEventListener("change", () => {
+            const option = durationFilter.value;
+            lastSearchOptions.duration = option;
+        });
+        container.appendChild(durationFilter);
+
+        // Include completed
+        const labelCompleted = document.createElement("label");
+        labelCompleted.classList.add("filterCompleted");
+
+        const inputCompleted = document.createElement("input");
+        inputCompleted.setAttribute("type", "checkbox");
+        if (lastSearchOptions.includeCompleted) {
+            inputCompleted.setAttribute("checked", "checked");
+        }
+        inputCompleted.addEventListener("change", () => {
+            lastSearchOptions.includeCompleted = inputCompleted.checked;
+        });
+
+        labelCompleted.appendChild(inputCompleted);
+
+        const text = document.createTextNode(T.puzzleMenu.search.includeCompleted);
+        labelCompleted.appendChild(text);
+
+        container.appendChild(labelCompleted);
+
+        // Submit
+        const submitButton = document.createElement("button");
+        submitButton.classList.add("styledButton");
+        submitButton.setAttribute("type", "submit");
+        submitButton.innerText = T.puzzleMenu.search.action;
+        container.appendChild(submitButton);
+
+        container.addEventListener("submit", event => {
+            event.preventDefault();
+            console.log("Search:", searchField.value.trim());
+            this.startSearch();
+        });
+
+        parent.appendChild(container);
+    }
+
+    startSearch() {
+        if (this.loading) {
+            return;
+        }
+
+        this.loading = true;
+
+        const container = this.htmlElement.querySelector("#mainContainer");
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        const loadingElement = document.createElement("div");
+        loadingElement.classList.add("loader");
+        loadingElement.innerText = T.global.loading + "...";
+        container.appendChild(loadingElement);
+
+        this.asyncChannel
+            .watch(this.app.clientApi.apiSearchPuzzles(lastSearchOptions))
+            .then(
+                puzzles => this.renderPuzzles(puzzles),
+                error => {
+                    this.dialogs.showWarning(
+                        T.dialogs.puzzleLoadFailed.title,
+                        T.dialogs.puzzleLoadFailed.desc + " " + error
+                    );
+                    this.renderPuzzles([]);
+                }
+            )
+            .then(() => (this.loading = false));
     }
 
     /**
@@ -177,6 +323,8 @@ export class PuzzleMenuState extends TextualGameState {
      * @param {import("../savegame/savegame_typedefs").PuzzleMetadata[]} puzzles
      */
     renderPuzzles(puzzles) {
+        this.puzzles = puzzles;
+
         const container = this.htmlElement.querySelector("#mainContainer");
         while (container.firstChild) {
             container.removeChild(container.firstChild);
@@ -223,15 +371,15 @@ export class PuzzleMenuState extends TextualGameState {
                 difficulty.innerText = completionPercentage + "%";
                 stats.appendChild(difficulty);
 
-                if (completionPercentage < 40) {
-                    difficulty.classList.add("stage--hard");
-                    difficulty.innerText = T.puzzleMenu.difficulties.hard;
-                } else if (completionPercentage < 80) {
-                    difficulty.classList.add("stage--medium");
-                    difficulty.innerText = T.puzzleMenu.difficulties.medium;
-                } else {
+                if (puzzle.difficulty < 0.2) {
                     difficulty.classList.add("stage--easy");
                     difficulty.innerText = T.puzzleMenu.difficulties.easy;
+                } else if (puzzle.difficulty > 0.6) {
+                    difficulty.classList.add("stage--hard");
+                    difficulty.innerText = T.puzzleMenu.difficulties.hard;
+                } else {
+                    difficulty.classList.add("stage--medium");
+                    difficulty.innerText = T.puzzleMenu.difficulties.medium;
                 }
             }
 
@@ -275,7 +423,7 @@ export class PuzzleMenuState extends TextualGameState {
 
             container.appendChild(elem);
 
-            this.trackClicks(elem, () => this.playPuzzle(puzzle));
+            this.trackClicks(elem, () => this.playPuzzle(puzzle.id));
         }
 
         if (puzzles.length === 0) {
@@ -328,20 +476,26 @@ export class PuzzleMenuState extends TextualGameState {
 
     /**
      *
-     * @param {import("../savegame/savegame_typedefs").PuzzleMetadata} puzzle
+     * @param {number} puzzleId
+     * @param {Array<number>=} nextPuzzles
      */
-    playPuzzle(puzzle) {
+    playPuzzle(puzzleId, nextPuzzles) {
         const closeLoading = this.dialogs.showLoadingDialog();
 
-        this.app.clientApi.apiDownloadPuzzle(puzzle.id).then(
+        this.asyncChannel.watch(this.app.clientApi.apiDownloadPuzzle(puzzleId)).then(
             puzzleData => {
                 closeLoading();
-                logger.log("Got puzzle:", puzzleData);
-                this.startLoadedPuzzle(puzzleData);
+
+                nextPuzzles =
+                    nextPuzzles || this.puzzles.filter(puzzle => !puzzle.completed).map(puzzle => puzzle.id);
+                nextPuzzles = nextPuzzles.filter(id => id !== puzzleId);
+
+                logger.log("Got puzzle:", puzzleData, "next puzzles:", nextPuzzles);
+                this.startLoadedPuzzle(puzzleData, nextPuzzles);
             },
             err => {
                 closeLoading();
-                logger.error("Failed to download puzzle", puzzle.id, ":", err);
+                logger.error("Failed to download puzzle", puzzleId, ":", err);
                 this.dialogs.showWarning(
                     T.dialogs.puzzleDownloadError.title,
                     T.dialogs.puzzleDownloadError.desc + " " + err
@@ -354,18 +508,24 @@ export class PuzzleMenuState extends TextualGameState {
      *
      * @param {import("../savegame/savegame_typedefs").PuzzleFullData} puzzle
      */
-    startLoadedPuzzle(puzzle) {
-        const savegame = this.createEmptySavegame();
+    startLoadedPuzzle(puzzle, nextPuzzles) {
+        const savegame = Savegame.createPuzzleSavegame(this.app);
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzlePlay,
             gameModeParameters: {
                 puzzle,
+                nextPuzzles,
             },
             savegame,
         });
     }
 
     onEnter(payload) {
+        if (payload.continueQueue) {
+            logger.log("Continuing puzzle queue:", payload);
+            this.playPuzzle(payload.continueQueue[0], payload.continueQueue.slice(1));
+        }
+
         // Find old category
         let rootCategory = "categories";
         for (const [id, children] of Object.entries(navigation)) {
@@ -390,26 +550,13 @@ export class PuzzleMenuState extends TextualGameState {
         this.trackClicks(this.htmlElement.querySelector("button.loadPuzzle"), () => this.loadPuzzle());
     }
 
-    createEmptySavegame() {
-        return new Savegame(this.app, {
-            internalId: "puzzle",
-            metaDataRef: {
-                internalId: "puzzle",
-                lastUpdate: 0,
-                version: 0,
-                level: 0,
-                name: "puzzle",
-            },
-        });
-    }
-
     loadPuzzle() {
         const shortKeyInput = new FormElementInput({
             id: "shortKey",
             label: null,
             placeholder: "",
             defaultValue: "",
-            validator: val => ShapeDefinition.isValidShortKey(val),
+            validator: val => ShapeDefinition.isValidShortKey(val) || val.startsWith("/"),
         });
 
         const dialog = new DialogWithForm({
@@ -422,9 +569,16 @@ export class PuzzleMenuState extends TextualGameState {
         this.dialogs.internalShowDialog(dialog);
 
         dialog.buttonSignals.ok.add(() => {
+            const searchTerm = shortKeyInput.getValue();
+
+            if (searchTerm === "/apikey") {
+                alert("Your api key is: " + this.app.clientApi.token);
+                return;
+            }
+
             const closeLoading = this.dialogs.showLoadingDialog();
 
-            this.app.clientApi.apiDownloadPuzzleByKey(shortKeyInput.getValue()).then(
+            this.app.clientApi.apiDownloadPuzzleByKey(searchTerm).then(
                 puzzle => {
                     closeLoading();
                     this.startLoadedPuzzle(puzzle);
@@ -451,7 +605,7 @@ export class PuzzleMenuState extends TextualGameState {
             return;
         }
 
-        const savegame = this.createEmptySavegame();
+        const savegame = Savegame.createPuzzleSavegame(this.app);
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzleEdit,
             savegame,

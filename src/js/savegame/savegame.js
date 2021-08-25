@@ -65,6 +65,24 @@ export class Savegame extends ReadWriteProxy {
     }
 
     /**
+     *
+     * @param {Application} app
+     * @returns
+     */
+    static createPuzzleSavegame(app) {
+        return new Savegame(app, {
+            internalId: "puzzle",
+            metaDataRef: {
+                internalId: "puzzle",
+                lastUpdate: 0,
+                version: 0,
+                level: 0,
+                name: "puzzle",
+            },
+        });
+    }
+
+    /**
      * @returns {number}
      */
     getCurrentVersion() {
