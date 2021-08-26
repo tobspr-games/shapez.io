@@ -69,43 +69,27 @@ export class HUDShapeTooltip extends BaseHUDPart {
             const ejectorComp = this.currentEntity.components.ItemEjector;
             const staticComp = this.currentEntity.components.StaticMapEntity;
 
-            const context = parameters.context;
+            const bounds = staticComp.getTileSize();
+            const totalArea = bounds.x * bounds.y;
+            const maxSlots = totalArea < 2 ? 1 : 1e10;
+
+            let slotsDrawn = 0;
 
             for (let i = 0; i < ejectorComp.slots.length; ++i) {
                 const slot = ejectorComp.slots[i];
 
-                if (!slot.lastItem || slot.lastItem._type != "shape") {
+                if (!slot.lastItem) {
                     continue;
                 }
 
-                const drawPos = staticComp
-                    .localTileToWorld(slot.pos.add(enumDirectionToVector[slot.direction].multiplyScalar(1)))
-                    .toWorldSpaceCenterOfTile();
+                if (++slotsDrawn > maxSlots) {
+                    continue;
+                }
 
-                const slotCenterPos = staticComp
-                    .localTileToWorld(slot.pos.add(enumDirectionToVector[slot.direction].multiplyScalar(0.2)))
-                    .toWorldSpaceCenterOfTile();
+                /** @type {Vector} */
+                const drawPos = staticComp.localTileToWorld(slot.pos).toWorldSpaceCenterOfTile();
 
-                context.fillStyle = THEME.shapeTooltip.outline;
-                context.strokeStyle = THEME.shapeTooltip.outline;
-
-                context.lineWidth = 1.5;
-                context.beginPath();
-                context.moveTo(slotCenterPos.x, slotCenterPos.y);
-                context.lineTo(drawPos.x, drawPos.y);
-                context.stroke();
-
-                context.beginCircle(slotCenterPos.x, slotCenterPos.y, 3.5);
-                context.fill();
-
-                context.fillStyle = THEME.shapeTooltip.background;
-                context.strokeStyle = THEME.shapeTooltip.outline;
-
-                context.lineWidth = 1.2;
-                context.beginCircle(drawPos.x, drawPos.y, 11 + 1.2 / 2);
-                context.fill();
-                context.stroke();
-                slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 22);
+                slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 25);
             }
         }
     }
