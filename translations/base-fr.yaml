@@ -14,11 +14,11 @@ steamPage:
     what_others_say: Ce que les gens pensent de Shapez.io
     nothernlion_comment: Ce jeu est génial - Je passe un merveilleux moment à jouer,
         et le temps s'est envolé.
-    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai trouvé
-        comment faire un ordinateur dans Shapez.io
-    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer.
-        Jeu d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes plus 
-        efficaces.
+    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai
+        trouvé comment faire un ordinateur dans Shapez.io
+    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer. Jeu
+        d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes
+        plus efficaces.
 global:
     loading: Chargement
     error: Erreur
@@ -73,8 +73,8 @@ mainMenu:
     savegameUnnamed: Sans titre
     puzzleMode: Mode Puzzle
     back: Retour
-    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC 
-        sur Steam dès maintenant pour encore plus d'amusement!
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
+        Steam dès maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
     puzzleDlcViewNow: View Dlc
 dialogs:
@@ -201,20 +201,23 @@ dialogs:
     submitPuzzle:
         title: Envoyer le Puzzle
         descName: "Donnez un nom à votre puzzle:"
-        descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme icône de 
-            votre puzzle (Vous pouvez générer le raccourci d'une forme <link>ici</link>, ou en choisir une
-            parmi les formes suggérées alétoirement ci-dessous):"
+        descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme
+            icône de votre puzzle (Vous pouvez générer le raccourci d'une forme
+            <link>ici</link>, ou en choisir une parmi les formes suggérées
+            alétoirement ci-dessous):"
         placeholderName: Titre du Puzzle
     puzzleResizeBadBuildings:
         title: Impossible de redimensionner
-        desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en dehors de la zone
+        desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en
+            dehors de la zone
     puzzleLoadError:
         title: Mauvais Puzzle
         desc: "Le chargement du puzzle a échoué:"
     offlineMode:
         title: Mode hors-ligne
-        desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en mode hors ligne.
-            Veuillez vous assurez que vous disposez d'une connexion Internet active.
+        desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en
+            mode hors ligne. Veuillez vous assurez que vous disposez d'une
+            connexion Internet active.
     puzzleDownloadError:
         title: Erreur de téléchargment
         desc: "Le téléchargement a échoué:"
@@ -227,16 +230,18 @@ dialogs:
             Vous pouvez maintenant le retrouver dans la section "Mes Puzzles".
     puzzleCreateOffline:
         title: Mode Hors-ligne
-        desc: Puisque vous êtes hors ligne, vous ne pourrez pas enregistrer et/ou publier votre puzzle. Souhaitez-vous toujours continuer ?
+        desc: Puisque vous êtes hors ligne, vous ne pourrez pas enregistrer et/ou
+            publier votre puzzle. Souhaitez-vous toujours continuer ?
     puzzlePlayRegularRecommendation:
         title: Recommandation
-        desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au niveau 12
-            avant d'essayer le Puzzle DLC, sinon vous risqez de rencontrer
-            des méchanismes pas encore introduits. Voulez-vous toujours continuer ?
+        desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au
+            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risqez de
+            rencontrer des méchanismes pas encore introduits. Voulez-vous
+            toujours continuer ?
     puzzleShare:
         title: Code copié
-        desc: Le code du puzzle (<key>) a été copié dans ton presse-papiers ! Il
-            peut être entré dans le menu des puzzles pour accéder au puzzle.
+        desc: Le code du puzzle (<key>) a été copié dans ton presse-papiers ! Il peut
+            être entré dans le menu des puzzles pour accéder au puzzle.
     puzzleReport:
         title: Signaler le Puzzle
         options:
@@ -438,16 +443,20 @@ ingame:
         clearItems: Supprimer les objets
         share: Partager
         report: Signaler
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
-            - 1. Placez des <strong>Producteurs Constants</strong> pour fournir des formes et
-              des couleurs au joueur
-            - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur fabrique plus tard et
-              délivrez-la/les à un ou plusieurs <strong>Récepteurs d'Objectif</strong>
-            - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un certain
-              temps, il <strong>l'enregistre zn tant qu'objectif</strong> que le joueur devra
-              produire plus tard (Indiqué par le <strong>badge vert</strong>).
+            - 1. Placez des <strong>Producteurs Constants</strong> pour fournir
+              des formes et des couleurs au joueur
+            - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur
+              fabrique plus tard et délivrez-la/les à un ou plusieurs
+              <strong>Récepteurs d'Objectif</strong>
+            - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un
+              certain temps, il <strong>l'enregistre zn tant
+              qu'objectif</strong> que le joueur devra produire plus tard
+              (Indiqué par le <strong>badge vert</strong>).
             - 4. Click the <strong>lock button</strong> on a building to disable
               it.
             - 5. Once you click review, your puzzle will be validated and you
@@ -462,6 +471,7 @@ ingame:
         titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
         continueBtn: Continuer à jouer
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Auteur
         shortKey: Short Key
@@ -692,7 +702,8 @@ buildings:
     goal_acceptor:
         default:
             name: Récepteur d'Objetcif
-            description: Délivrez des formes au récepteur d'objectif pour les définir comme objectif.
+            description: Délivrez des formes au récepteur d'objectif pour les définir comme
+                objectif.
     block:
         default:
             name: Bloc
@@ -700,12 +711,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous venez de déverrouiller le <strong>découpeur</strong>, qui coupe les formes en deux
-            de haut en bas <strong>indépendamment de son
-            orientation</strong>!<br><br>Assurez-vous de vous débarrasser des déchets, ou
-            sinon <strong>il se bouchera et se bloquera</strong> - À cet effet,
-            Je vous ai donné la <strong>poubelle</strong>, qui détruit
-            tout ce que vous mettez dedans !
+        desc: Vous venez de déverrouiller le <strong>découpeur</strong>, qui coupe les
+            formes en deux de haut en bas <strong>indépendamment de son
+            orientation</strong>!<br><br>Assurez-vous de vous débarrasser des
+            déchets, ou sinon <strong>il se bouchera et se bloquera</strong> - À
+            cet effet, Je vous ai donné la <strong>poubelle</strong>, qui
+            détruit tout ce que vous mettez dedans !
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -732,8 +743,9 @@ storyRewards:
     reward_balancer:
         title: Répartiteur
         desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut
-            être utilisé pour construire de plus grandes usines en <strong>divisant et en rassemblant
-            des objets</strong> sur plusieurs convoyeurs !
+            être utilisé pour construire de plus grandes usines en
+            <strong>divisant et en rassemblant des objets</strong> sur plusieurs
+            convoyeurs !
     reward_tunnel:
         title: Tunnel
         desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
@@ -839,14 +851,17 @@ storyRewards:
             gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous permettent de
-            <strong>simuler le traitement des formes</strong>!<br><br> Vous pouvez
-            maintenant simuler un découpeur, un pivoteur, un assembleur et plus encore sur la couche des fils !
-            Avec cela vous avez maintenant trois options pour continuer le jeu:<br><br> -
-            Construire une <strong>machine automatique</strong> pour créer toute forme
-            possible demandée par le HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
+        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
+            permettent de <strong>simuler le traitement des
+            formes</strong>!<br><br> Vous pouvez maintenant simuler un
+            découpeur, un pivoteur, un assembleur et plus encore sur la couche
+            des fils ! Avec cela vous avez maintenant trois options pour
+            continuer le jeu:<br><br> - Construire une <strong>machine
+            automatique</strong> pour créer toute forme possible demandée par le
+            HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
             quelque chose de cool avec les fils.<br><br> - Continuer à jouer
-            normalement.<br><br> Quoi que vous choisissiez, n'oubliez pas de vous amuser !
+            normalement.<br><br> Quoi que vous choisissiez, n'oubliez pas de
+            vous amuser !
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -1045,6 +1060,11 @@ settings:
             title: Taille des ressources sur la carte
             description: Contrôle la taille des formes sur la vue d’ensemble de la carte
                 visible en dézoomant.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1127,6 +1147,7 @@ keybindings:
         goal_acceptor: Récepteur d'Objectif
         block: Bloc
         massSelectClear: Vider les convoyeurs
+        showShapeTooltip: Show shape output tooltip
 about:
     title: À propos de ce jeu
     body: >-
@@ -1272,8 +1293,23 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
         s'il vous plait.

@@ -476,6 +476,7 @@ ingame:
         titleRatingDesc: A tua avaliação ajudar-me-á a fazer melhores sugestões no futuro
         continueBtn: Continua a Jogar
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Pequeno Código
@@ -1047,7 +1048,12 @@ settings:
             title: Tamanho de Recursos no Mapa
             description: Controla o tamanho das formas na visão geral do mapa (aplicando
                 zoom out).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Atalhos
     hint: "Dica: Utiliza o CTRL, o SHIFT e o ALT! Eles permitem diferentes opções de
@@ -1129,6 +1135,7 @@ keybindings:
         goal_acceptor: Recetor de Objetivo
         block: Bloqueador
         massSelectClear: Limpar tapetes rolante
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Sobre o Jogo
     body: >-
@@ -1268,8 +1275,23 @@ puzzleMenu:
         easy: Fácil
         medium: Médio
         hard: Difícil
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
     invalid-api-key: Falha ao cominucar com o backend, por favor tenta

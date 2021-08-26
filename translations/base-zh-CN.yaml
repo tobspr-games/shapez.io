@@ -399,6 +399,7 @@ ingame:
         titleRatingDesc: 您的评分将帮助作者在未来创作出更好的谜题！
         continueBtn: 继续游戏
         menuBtn: 菜单
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: 作者
         shortKey: 短代码
@@ -837,7 +838,12 @@ settings:
         mapResourcesScale:
             title: 地图资源图形尺寸
             description: 控制地图总览时图形的尺寸（指缩小视野时）。
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: 按键设定
     hint: 提示：使用 CTRL、SHIFT、ALT！这些键在放置设施时有不同的效果。
@@ -918,6 +924,7 @@ keybindings:
         goal_acceptor: 目标接收器
         block: 方块
         massSelectClear: 清除传送带
+        showShapeTooltip: Show shape output tooltip
 about:
     title: 关于游戏
     body: >-
@@ -1036,8 +1043,23 @@ puzzleMenu:
         easy: 简单
         medium: 普通
         hard: 困难
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: 你的操作太频繁了。请稍等。
     invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的Api密钥）。

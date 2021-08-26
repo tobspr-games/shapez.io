@@ -25,7 +25,7 @@ steamPage:
 global:
     loading: Cargando
     error: Error
-    thousandsDivider: "."
+    thousandsDivider: .
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -473,6 +473,7 @@ ingame:
         titleRatingDesc: Tu puntuación me ayudará a hacerte mejores sugerencias en el futuro
         continueBtn: Continuar Jugando
         menuBtn: Menú
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Clave
@@ -629,8 +630,8 @@ buildings:
         xor:
             name: Puerta XOR
             description: Emite el valor booleano "1" si una de las entradas es verdadera,
-                pero no si ambas lo son. (Verdaderas significa una forma, color o
-                valor booleano "1")
+                pero no si ambas lo son. (Verdaderas significa una forma, color
+                o valor booleano "1")
         or:
             name: Puerta OR
             description: Emite el valor booleano "1" Si una de las entradas es verdadera.
@@ -1046,7 +1047,12 @@ settings:
             title: Tamaño de recursos en el mapa
             description: Controla el tamaño de los recursos en la vista de aérea del mapa
                 (Al hacer zoom mínimo).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Atajos de teclado
     hint: "Pista: ¡Asegúrate de usar CTRL, SHIFT y ALT! Habilitan distintas opciones
@@ -1128,6 +1134,7 @@ keybindings:
         goal_acceptor: Goal Acceptor
         block: Block
         massSelectClear: Clear belts
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Sobre el juego
     body: >-
@@ -1274,8 +1281,23 @@ puzzleMenu:
         easy: Fácil
         medium: Medio
         hard: Dificil
-    dlcHint: ¿Ya compraste el DLC? Asegurate de tenerlo activado haciendo click derecho a
-        shapez.io en tu biblioteca, selecionando propiedades > DLCs.
+        unknown: Unrated
+    dlcHint: ¿Ya compraste el DLC? Asegurate de tenerlo activado haciendo click
+        derecho a shapez.io en tu biblioteca, selecionando propiedades > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Estás haciendo tus acciones con demasiada frecuencia. Por favor,
         espera un poco.
@@ -1300,6 +1322,7 @@ backendErrors:
     bad-payload: La petición contiene datos no válidos.
     bad-building-placement: Tu puzle contiene edificios en posiciones no válidas.
     timeout: El tiempo para la solicitud ha expirado.
-    too-many-likes-already: El puzle ha recibido demasiados me gusta ¡Si todavía quieres
-        eliminarlo, por favor contacta a support@shapez.io! (Solo inglés)
+    too-many-likes-already: El puzle ha recibido demasiados me gusta ¡Si todavía
+        quieres eliminarlo, por favor contacta a support@shapez.io! (Solo
+        inglés)
     no-permission: No tienes los permisos necesarios para llevar a cabo esta acción.
