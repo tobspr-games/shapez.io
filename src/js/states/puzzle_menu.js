@@ -507,6 +507,7 @@ export class PuzzleMenuState extends TextualGameState {
     /**
      *
      * @param {import("../savegame/savegame_typedefs").PuzzleFullData} puzzle
+     * @param {Array<number>=} nextPuzzles
      */
     startLoadedPuzzle(puzzle, nextPuzzles) {
         const savegame = Savegame.createPuzzleSavegame(this.app);
