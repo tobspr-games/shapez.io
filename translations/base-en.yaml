@@ -1286,6 +1286,11 @@ settings:
             description: >-
                 Controls the size of the shapes on the map overview (when zooming out).
 
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: >-
+                Whether to always show the shape tooltip when hovering buildings, instead of having to hold 'ALT'.
+
 keybindings:
     title: Keybindings
     hint: >-

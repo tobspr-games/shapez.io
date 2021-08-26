@@ -257,6 +257,7 @@ export const allApplicationSettings = [
     }),
 
     new BoolSetting("enableMousePan", enumCategories.advanced, (app, value) => {}),
+    new BoolSetting("shapeTooltipAlwaysOn", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("zoomToCursor", enumCategories.advanced, (app, value) => {}),
     new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
@@ -307,6 +308,7 @@ class SettingsStorage {
         this.autosaveInterval = "two_minutes";
 
         this.alwaysMultiplace = false;
+        this.shapeTooltipAlwaysOn = false;
         this.offerHints = true;
         this.enableTunnelSmartplace = true;
         this.vignette = true;
@@ -536,7 +538,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 30;
+        return 31;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -681,6 +683,11 @@ export class ApplicationSettings extends ReadWriteProxy {
             data.settings.offerHints = true;
 
             data.version = 30;
+        }
+
+        if (data.version < 31) {
+            data.settings.shapeTooltipAlwaysOn = false;
+            data.version = 31;
         }
 
         return ExplainedResult.good();
