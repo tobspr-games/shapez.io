@@ -176,6 +176,7 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
 
     validation:
         title: Invalid Puzzle

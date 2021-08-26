@@ -26,6 +26,10 @@
             @include S(border-radius, $globalBorderRadius);
             flex-wrap: wrap;
 
+            @include DarkThemeOverride {
+                background: $accentColorDark;
+            }
+
             input.search {
                 color: #333;
                 margin: 0;
@@ -59,6 +63,10 @@
                 text-transform: uppercase;
                 @include PlainText;
                 @include S(margin-right, 10px);
+
+                @include DarkThemeOverride {
+                    color: #bbbbc4;
+                }
 
                 input {
                     @include S(width, 15px);
@@ -310,6 +318,9 @@
                             }
                             &.stage--hard {
                                 color: $colorRedBright;
+                            }
+                            &.stage--unknown {
+                                color: #888;
                             }
                         }
                     }
