@@ -1,8 +1,8 @@
 import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
-import { MapChunk } from "./map_chunk";
-import { GameRoot } from "./root";
 import { drawSpriteClipped } from "../core/draw_utils";
+import { safeModulo } from "../core/utils";
+import { GameRoot } from "./root";
 
 export const CHUNK_OVERLAY_RES = 3;
 
@@ -34,8 +34,8 @@ export class MapChunkAggregate {
      * @param {number} chunkY
      */
     markDirty(chunkX, chunkY) {
-        const relX = chunkX % globalConfig.chunkAggregateSize;
-        const relY = chunkY % globalConfig.chunkAggregateSize;
+        const relX = safeModulo(chunkX, globalConfig.chunkAggregateSize);
+        const relY = safeModulo(chunkY, globalConfig.chunkAggregateSize);
         this.dirtyList[relY * globalConfig.chunkAggregateSize + relX] = true;
         if (this.dirty) {
             return;
