@@ -38,7 +38,7 @@ global:
         xDaysAgo: <x>天前
         secondsShort: <seconds>秒
         minutesAndSecondsShort: <minutes>分 <seconds>秒
-        hoursAndMinutesShort: <hours>小時 <minutes>秒
+        hoursAndMinutesShort: <hours>小時 <minutes>分
         xMinutes: <x>分鐘
     keys:
         tab: TAB
@@ -464,7 +464,7 @@ buildings:
             name: 切割機
             description: 將圖形從上到下切開並輸出。 <strong>如果你只需要其中一半，記得把另一半銷毀掉，否則切割機會停止運作！ </strong>
         quad:
-            name: 切割機（四分）
+            name: 四分切割機
             description: 將輸入的圖形切成四塊。 <strong>如果你只需要其中一塊，記得把其他的銷毀掉，否則切割機會停止運作！ </strong>
     rotater:
         default:
@@ -493,7 +493,7 @@ buildings:
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
         quad:
             name: 上色機（四向）
-            description: 分別為圖形的四個部分上色。 只有 <strong>truthy signal</strong> 的格子會被上色。
+            description: 分別為圖形的四個部分上色。 只有 <strong>有「真」訊號輸入</strong> 的格子會被上色。
         mirrored:
             name: 上色機
             description: 將整個圖形塗上輸入的顏色。
@@ -548,25 +548,24 @@ buildings:
     logic_gate:
         default:
             name: AND 邏輯閘
-            description: 當輸入均為「真」時，輸出才為1。（「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當輸入均為「真」訊號時，輸出1（真值）。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
         not:
             name: NOT 邏輯閘
-            description: 當輸入之ㄧ為「假」時，輸出才為1。（「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入為「假」訊號時，輸出1（真值）。（「假」訊號代表：沒有訊號或布林值為0）
         xor:
             name: XOR 邏輯閘
-            description: 當輸入均為「假」時，輸出才為1。（「假」值代表：形狀不正確、顏色不正確或布林值為0）
+            description: 當輸入為一個「真」訊號和一個「假」訊號時，輸出1（真值）。（「假」訊號代表：沒有訊號或布林值為0）
         or:
             name: OR 邏輯閘
-            description: 當輸入之ㄧ為「真」時，輸出才為1。（「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: 當其中一個輸入為「真」時，輸出1（真值）。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
     transistor:
         default:
             name: 電晶體
-            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+            description: &transistor_desc 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
                 （「真」值代表：形狀正確、顏色正確或布林值為1）
         mirrored:
             name: 電晶體
-            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+            description: *transistor_desc
     filter:
         default:
             name: 物件分類器
@@ -593,7 +592,7 @@ buildings:
             description: 虛擬地將圖形從上到下切開並輸出。
         rotater:
             name: 虛擬旋轉機
-            description: 虛擬地將圖形順時針或逆時針旋轉。
+            description: 虛擬地將圖形順時針旋轉。
         unstacker:
             name: 虛擬提取機
             description: 虛擬地提取最上層的圖形到右方輸出，剩下的圖形由左方輸出。
@@ -623,7 +622,7 @@ storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
         desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
-            <br><br>記得把不需要的部分處理掉，否則這個這個建築會<strong>停止運作</strong>。
+            <br><br>記得把不需要的部分處理掉，否則這個這個建築會<strong>因為堵塞而停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
