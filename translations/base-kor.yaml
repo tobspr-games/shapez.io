@@ -250,7 +250,7 @@ ingame:
         clearSelection: 지우기
         pipette: 피펫
         switchLayers: 레이어 전환
-        clearBelts: Clear belts
+        clearBelts: 벨트 청소하기
     buildingPlacement:
         cycleBuildingVariants: <key> 키를 눌러 변형 전환
         hotkeyLabel: "단축키: <key>"
