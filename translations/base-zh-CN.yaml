@@ -49,7 +49,7 @@ global:
         escape: ESC键
         shift: SHIFT键
         space: 空格键
-    loggingIn: Logging in
+    loggingIn: 登录
 demoBanners:
     title: 试玩版
     intro: 购买完整版以解锁所有游戏内容！
@@ -72,7 +72,7 @@ mainMenu:
     back: 返回
     puzzleDlcText: 持续优化，追求极致效率。在限定空间内使用有限的设施来创造图形！《异形工厂》（Shapez.io）的首个DLC“谜题挑战者”将会给大家带来更烧脑、更自由的全新挑战！
     puzzleDlcWishlist: 添加愿望单！
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: 查看DLC
 dialogs:
     buttons:
         ok: 确认
@@ -381,8 +381,8 @@ ingame:
         clearItems: 清除项目
         share: 共享
         report: 上报
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: 清除设施
+        resetPuzzle: 重设谜题
     puzzleEditorControls:
         title: 谜题编辑器
         instructions:
@@ -399,7 +399,7 @@ ingame:
         titleRatingDesc: 您的评分将帮助作者在未来创作出更好的谜题！
         continueBtn: 继续游戏
         menuBtn: 菜单
-        nextPuzzle: Next Puzzle
+        nextPuzzle: 下一个谜题
     puzzleMetadata:
         author: 作者
         shortKey: 短代码
@@ -839,11 +839,10 @@ settings:
             title: 地图资源图形尺寸
             description: 控制地图总览时图形的尺寸（指缩小视野时）。
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: 图形工具提示-始终显示
+            description: 在设施上悬停时是否始终显示图形工具提示， 而不是必须按住“Alt”键。
     rangeSliderPercentage: <amount> %
-    tickrateHz: <amount> Hz
+    tickrateHz: <amount> 赫兹
 keybindings:
     title: 按键设定
     hint: 提示：使用 CTRL、SHIFT、ALT！这些键在放置设施时有不同的效果。
@@ -924,7 +923,7 @@ keybindings:
         goal_acceptor: 目标接收器
         block: 方块
         massSelectClear: 清除传送带
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: 显示图形输出提示
 about:
     title: 关于游戏
     body: >-
@@ -1043,23 +1042,22 @@ puzzleMenu:
         easy: 简单
         medium: 普通
         hard: 困难
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: 未定级
+    dlcHint: 如尚未购买DLC，请在您的Steam库中右键点击异形工厂， DLCs.然后选择属性-DLC。
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: 搜索
+        placeholder: 输入谜题或作者名称
+        includeCompleted: 包括已完成
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: 任何难度
+            easy: 简单
+            medium: 普通
+            hard: 困难
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: 任何挑战时间
+            short: 快速 (< 2 分钟)
+            medium: 正常
+            long: 较长 (> 10 分钟)
 backendErrors:
     ratelimit: 你的操作太频繁了。请稍等。
     invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的Api密钥）。
