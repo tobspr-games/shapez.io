@@ -266,14 +266,14 @@ ingame:
             itemsPerSecondDouble: （2倍）
             tiles: <x>格
     levelCompleteNotification:
-        levelTitle: 第<level>級
+        levelTitle: 第<level>關
         completed: 完成
         unlockText: 解鎖<reward>！
         buttonNextLevel: 下一關
     notifications:
         newUpgrade: 有新的更新啦！
         gameSaved: 遊戲已保存。
-        freeplayLevelComplete: 已完成第<level>級！
+        freeplayLevelComplete: 已完成第<level>關！
     shop:
         title: 建築升級
         buttonUnlock: 升級
@@ -305,7 +305,7 @@ ingame:
         showHint: 顯示
         hideHint: 關閉
     blueprintPlacer:
-        cost: 需要
+        cost: 消耗
     waypoints:
         waypoints: 地圖標記
         hub: 基地
@@ -341,7 +341,7 @@ ingame:
         green: 綠
         blue: 藍
         yellow: 黃
-        purple: 紫
+        purple: 洋紅（紫）
         cyan: 青
         white: 白
         uncolored: 無顏色
@@ -349,7 +349,7 @@ ingame:
     shapeViewer:
         title: 層
         empty: 空
-        copyKey: 複製鍵
+        copyKey: 複製圖形代碼
     connectedMiners:
         one_miner: 1 個開採機
         n_miners: <amount> 個開採機
@@ -450,25 +450,25 @@ buildings:
             name: &miner 開採機
             description: &miner_desc 在圖形礦脈或者顏色礦脈上放置開採機來開採。
         chainable:
-            name: &chainable_miner 鏈式開採機
-            description: *miner_desc （鏈式開採機可以鏈結）
+            name: 鏈式開採機
+            description: *miner_desc （鏈式開採機可以以頭接尾或側鏈結）
     underground_belt:
         default:
-            name: 隧道
+            name: &underground_belt 隧道
             description: 可以從其他輸送帶或建築底下方運送物品。
         tier2:
             name: 二級隧道
-            description: 可以從其他輸送帶或建築底下方運送物品。
+            description: 可以從其他輸送帶或建築底下方運送物品，運送距離更長。
     cutter:
         default:
-            name: 切割機
+            name: &cutter 切割機
             description: 將圖形從上到下切開並輸出。 <strong>如果你只需要其中一半，記得把另一半銷毀掉，否則切割機會停止運作！ </strong>
         quad:
             name: 四分切割機
             description: 將輸入的圖形切成四塊。 <strong>如果你只需要其中一塊，記得把其他的銷毀掉，否則切割機會停止運作！ </strong>
     rotater:
         default:
-            name: 旋轉機
+            name: &rotator 旋轉機
             description: 將圖形順時針旋轉90度。
         ccw:
             name: 旋轉機（逆時針）
@@ -478,29 +478,29 @@ buildings:
             description: 將圖形旋轉180度。
     stacker:
         default:
-            name: 混合機
-            description: 將輸入的圖形拼貼在一起。如果不能被直接拼貼，右邊的圖形會被疊在左邊的圖形上面.
+            name: &stacker 圖形拼貼機
+            description: 將輸入的圖形拼貼在一起。如果不能在同一圖層直接拼貼，右邊的圖形會被堆疊在左邊的圖形上面.
     mixer:
         default:
-            name: 混色機
-            description: 將兩個顏色加在一起。
+            name: &mixer 混色機
+            description: 將兩個顏料<strong>加在一起</strong>。
     painter:
         default:
-            name: 上色機
-            description: 將整個圖形塗上輸入的顏色。
+            name: &painter 上色機
+            description: &painter_desc 將整個圖形塗上輸入的顏料。
         double:
-            name: 上色機（雙倍）
+            name: 雙倍上色機
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏色塗料。
         quad:
-            name: 上色機（四向）
-            description: 分別為圖形的四個部分上色。 只有 <strong>有「真」訊號輸入</strong> 的格子會被上色。
+            name: 四分上色機
+            description: 分別為圖形的四個部分上色。 只有從 <strong>有「真」訊號輸入</strong> 的顏料輸入端輸入的顏料會用來為相對的四分位上色。
         mirrored:
-            name: 上色機
-            description: 將整個圖形塗上輸入的顏色。
+            name: *painter
+            description: *painter_desc
     trash:
         default:
-            name: 垃圾桶
-            description: 從所有四個方向上輸入物品並永遠銷毀它們。
+            name: &trash 垃圾桶
+            description: 從所有從四個方向輸入的物品銷毀。
     hub:
         deliver: 交付
         toUnlock: 來解鎖
@@ -509,38 +509,38 @@ buildings:
     wire:
         default:
             name: &wire 電線
-            description: &wire_desc 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。 不同顏色的電線無法互相連接。
+            description: &wire_desc 傳輸訊號，訊號可以是圖形，顏料或布林值（0或1）。 不同顏色的電線無法互相連接。
         second:
             name: *wire
             description: *wire_desc
     balancer:
         default:
             name: &balancer 平衡機
-            description: 多功能——將所有輸入平均分配到所有輸出。
+            description: 多功能 —— 將單一輸入平均分配到所有輸出；及將多個輸入集合到一個輸出。
         merger:
             name: 合流機（右）
-            description: 將兩個輸送帶整合成一個。
+            description: 將兩條輸送帶（底部和右側）整合成一條（頂部）。
         merger-inverse:
             name: 合流機（左）
-            description: 將兩個輸送帶整合成一個。
+            description: 將兩條輸送帶（底部和左側）整合成一條（頂部）。
         splitter:
             name: 分流機（右）
-            description: 將單個輸送帶分流成兩個。
+            description: 將底部的輸送帶輸入分流成兩個（頂部和右側）。
         splitter-inverse:
             name: 分流機（左）
-            description: 將單個輸送帶分流成兩個
+            description: 將底部的輸送帶輸入分流成兩個（頂部和左側）。
     storage:
         default:
-            name: 倉庫
+            name: &storage 倉庫
             description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，可以被用來作為溢流門。
     wire_tunnel:
         default:
-            name: 電線交叉
+            name: &wire_tunnel 電線交叉
             description: 電線彼此交叉但不互相連接。
     constant_signal:
         default:
-            name: &constant_signal 固定信號
-            description: 輸出固定信號，可以是形狀、顏料或布林值（1或0）。
+            name: &constant_signal 固定訊號
+            description: 輸出固定訊號，可以是形狀、顏料或布林值（1或0）。
     lever:
         default:
             name: &lever 信號切換器
@@ -580,7 +580,7 @@ buildings:
             description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
-            name: &analyzer 形狀分析機
+            name: &analyzer 圖形分析機
             description: 分析輸入的圖形訊號中最底層右上角的圖形並輸出其形狀和顏色。
     comparator:
         default:
@@ -589,7 +589,7 @@ buildings:
     virtual_processor:
         default:
             name: 虛擬切割機
-            description: 虛擬地將圖形訊號從上到下切開並輸出。
+            description: 虛擬地將圖形訊號從上到下切開。
         rotater:
             name: 虛擬旋轉機
             description: 虛擬地將圖形訊號順時針旋轉。
@@ -608,21 +608,21 @@ buildings:
             description: 沙盒模式專有，將電路層的輸入轉化成一般層的輸出。
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: &constant_producer 恆定生產機
+            description: 持續輸出圖形或顏料。
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: &goal_acceptor 目標接收機
+            description: 交付接收機所示圖形以完成目標。
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: &block 障礙物
+            description: 用來禁止在障礙物處放置物件。
 storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
         desc: <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
-            <br><br>記得把不需要的部分處理掉，否則這個這個建築會<strong>因為堵塞而停止運作</strong>。
+            <br><br>記得把不需要的部分處理掉，否則切割機會<strong>因為堵塞而停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
@@ -634,8 +634,8 @@ storyRewards:
         title: 混色
         desc: <strong>混色器</strong>已解鎖-在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
     reward_stacker:
-        title: 混合
-        desc: <strong>混合機</strong>已解鎖。如果沒有重疊的部分，混合機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
+        title: 拼貼
+        desc: <strong>圖形拼貼機</strong>已解鎖。如果沒有重疊的部分，圖形拼貼機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
         desc: <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。 - 它將單個輸送帶分流成兩個。
@@ -717,7 +717,7 @@ storyRewards:
             利用電路層蓋一些很酷建築<br><br> - 繼續用原本的方式破關。<br><br> 不論你的選擇是什麼，祝你玩得開心！
     reward_wires_painter_and_levers:
         title: 電路層 & 四角上色機
-        desc: "You just unlocked the <strong>電路層</strong>已解鎖。
+        desc: "<strong>電路層</strong>已解鎖。
             它是一個獨立於一般層之外的存在，將帶給你更多玩法！<br><br> 首先，我為你解鎖<strong>四角上色機</strong>。
             想要上色的角落記得在電路層通電！<br><br> 按<strong>E</strong>切換至電路層。<br><br> PS:
             設定裡<strong>開啟提示</strong>來啟動教學！"
@@ -804,8 +804,8 @@ settings:
             title: 暈映
             description: 啟用暈映，將螢幕角落裡的顏色變深，更容易閱讀文字。
         autosaveInterval:
-            title: 自動刷新時間
-            description: 控制遊戲自動刷新的頻率。您也可以停用它。
+            title: 自動存檔時間
+            description: 控制遊戲自動存檔的頻率。您也可以停用它。
             intervals:
                 one_minute: 1 分鐘
                 two_minutes: 2 分鐘
@@ -897,14 +897,14 @@ keybindings:
         toggleHud: 開關基地
         toggleFPSInfo: 開關幀數與除錯信息
         belt: *belt
-        underground_belt: 隧道
-        miner: 開採機
-        cutter: 切割機
-        rotater: 旋轉機
-        stacker: 混合機
-        mixer: 混色機
-        painter: 上色機
-        trash: 垃圾桶
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
         rotateWhilePlacing: 順時針旋轉
         rotateInverseModifier: "修飾鍵: 改為逆時針旋轉"
         cycleBuildingVariants: 選擇建築變體
@@ -924,31 +924,31 @@ keybindings:
         switchDirectionLockSide: 規劃器：換邊
         pipette: 滴管
         menuClose: 關閉選單
-        switchLayers: 更換層
-        wire: 電線
-        balancer: 平衡機
-        storage: 倉庫
-        constant_signal: 固定信號
+        switchLayers: 切換實體層／電路層
+        wire: *wire
+        balancer: *balancer
+        storage: *storage
+        constant_signal: *constant_signal
         logic_gate: 邏輯閘
-        lever: 開關（一般）
-        filter: 過濾器
-        wire_tunnel: 電線交叉
-        display: Display
-        reader: 輸送帶讀取機
-        virtual_processor: 虛擬切割機
-        transistor: 電晶體
-        analyzer: 形狀分析機
-        comparator: 比對機
+        lever: *lever
+        filter: *filter
+        wire_tunnel: *wire_tunnel
+        display: *display
+        reader: *reader
+        virtual_processor: 虛擬處理
+        transistor: *transistor
+        analyzer: *analyzer
+        comparator: *comparator
         item_producer: 物品生產機（沙盒模式）
         copyWireValue: 電路：複製數值於游標底下
         rotateToUp: "轉動: 向上"
         rotateToDown: "轉動: 向下"
         rotateToRight: "轉動: 向右"
         rotateToLeft: "轉動: 向左"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        constant_producer: *constant_producer
+        goal_acceptor: *goal_acceptor
+        block: *block
+        massSelectClear: 清空輸送帶
         showShapeTooltip: Show shape output tooltip
 about:
     title: 關於遊戲
