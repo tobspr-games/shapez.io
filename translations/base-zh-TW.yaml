@@ -443,15 +443,15 @@ shopUpgrades:
 buildings:
     belt:
         default:
-            name: 輸送帶
+            name: &belt 輸送帶
             description: 運送物品，按住並拖曳來放置多個。
     miner:
         default:
-            name: 開採機
-            description: 在圖形或者顏色上放置來開採他們。
+            name: &miner 開採機
+            description: &miner_desc 在圖形礦脈或者顏色礦脈上放置開採機來開採。
         chainable:
-            name: 鏈式開採機
-            description: 在圖形或者顏色上放置來開採他們。可以被鏈接在一起。
+            name: &chainable_miner 鏈式開採機
+            description: *miner_desc （鏈式開採機可以鏈結）
     underground_belt:
         default:
             name: 隧道
@@ -508,14 +508,14 @@ buildings:
         endOfDemo: 試玩結束
     wire:
         default:
-            name: 能量電線
-            description: 傳輸能量。
+            name: &wire 電線
+            description: &wire_desc 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。 不同顏色的電線無法互相連接。
         second:
-            name: 電線
-            description: 傳輸訊號，訊號可以是物件，顏色或布林值（0或1）。 不同顏色的電線無法互相連接。
+            name: *wire
+            description: *wire_desc
     balancer:
         default:
-            name: 平衡機
+            name: &balancer 平衡機
             description: 多功能——將所有輸入平均分配到所有輸出。
         merger:
             name: 合流機（右）
@@ -539,63 +539,63 @@ buildings:
             description: 電線彼此交叉但不互相連接。
     constant_signal:
         default:
-            name: 固定信號
-            description: 輸出固定信號，可以是形狀、顏色或布林值（1或0）。
+            name: &constant_signal 固定信號
+            description: 輸出固定信號，可以是形狀、顏料或布林值（1或0）。
     lever:
         default:
-            name: 信號切換器
-            description: 切換電路層的輸出布林值（1或0），舉例來說，它可以操控物件分類器。
+            name: &lever 信號切換器
+            description: 切換「1（真值）」或「0（假值）」輸出，舉例來說，它可以操控物件分類器。
     logic_gate:
         default:
             name: AND 邏輯閘
-            description: 當輸入均為「真」訊號時，輸出1（真值）。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
+            description: 當輸入均為「真」訊號時，輸出「1（真值）」。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
         not:
             name: NOT 邏輯閘
-            description: 當輸入為「假」訊號時，輸出1（真值）。（「假」訊號代表：沒有訊號或布林值為0）
+            description: 當輸入為「假」訊號時，輸出「1（真值）」。（「假」訊號代表：沒有訊號或布林值為0）
         xor:
             name: XOR 邏輯閘
-            description: 當輸入為一個「真」訊號和一個「假」訊號時，輸出1（真值）。（「假」訊號代表：沒有訊號或布林值為0）
+            description: 當輸入為一個「真」訊號和一個「假」訊號時，輸出「1（真值）」。（「假」訊號代表：沒有訊號或布林值為0）
         or:
             name: OR 邏輯閘
-            description: 當其中一個輸入為「真」時，輸出1（真值）。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
+            description: 當其中一個輸入為「真」訊號時，輸出「1（真值）」。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
     transistor:
         default:
-            name: 電晶體
+            name: &transistor 電晶體
             description: &transistor_desc 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
-                （「真」值代表：形狀正確、顏色正確或布林值為1）
+                （「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
         mirrored:
-            name: 電晶體
+            name: *transistor
             description: *transistor_desc
     filter:
         default:
-            name: 物件分類器
-            description: 它會依據電路層收到的訊號分類，符合的會到上方，不符合的到右方。 它也可以被布林值訊號控制。
+            name: &filter 物件分類器
+            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。 它也可以被布林值訊號控制，「1（真值）」時全部輸出到。
     display:
         default:
-            name: 顯示器
-            description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、物件或布林值。
+            name: &display 顯示器
+            description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、顏料或布林值。
     reader:
         default:
-            name: 輸送帶讀取機
+            name: &reader 輸送帶讀取機
             description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
-            name: 形狀分析機
-            description: 分析最底層右上角的圖形並輸出他的形狀跟顏色。
+            name: &analyzer 形狀分析機
+            description: 分析輸入的圖形訊號中最底層右上角的圖形並輸出其形狀和顏色。
     comparator:
         default:
-            name: 比較機
+            name: &comparator 比較機
             description: 當兩個輸入訊號完全相等時，輸出布林值「1」。它可以比較形狀、物件或布林值。
     virtual_processor:
         default:
             name: 虛擬切割機
-            description: 虛擬地將圖形從上到下切開並輸出。
+            description: 虛擬地將圖形訊號從上到下切開並輸出。
         rotater:
             name: 虛擬旋轉機
-            description: 虛擬地將圖形順時針旋轉。
+            description: 虛擬地將圖形訊號順時針旋轉。
         unstacker:
             name: 虛擬提取機
-            description: 虛擬地提取最上層的圖形到右方輸出，剩下的圖形由左方輸出。
+            description: 虛擬地提取圖形訊號最上層的圖形到右方輸出，剩下的圖形由左方輸出。
         stacker:
             name: 虛擬堆疊機
             description: 虛擬地將輸入的圖形拼貼在一起。如果不能被直接拼貼，右邊的圖形會被疊在左邊的圖形上面。
@@ -896,7 +896,7 @@ keybindings:
         menuOpenStats: 統計選單
         toggleHud: 開關基地
         toggleFPSInfo: 開關幀數與除錯信息
-        belt: 輸送帶
+        belt: *belt
         underground_belt: 隧道
         miner: 開採機
         cutter: 切割機
