@@ -113,7 +113,7 @@ puzzleMenu:
         easy: Einfach
         medium: Mittel
         hard: Schwer
-        unknown: Unrated
+        unknown: Unbewertet
     validation:
         title: Ungültiges Puzzle
         noProducers: Bitte platziere einen Itemproduzent!
@@ -128,19 +128,19 @@ puzzleMenu:
         autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
             deine Itemproduzenten nicht direkt an deine Zielakzeptoren liefern.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Suchen
+        placeholder: Gib einen Puzzle- oder Autorennamen ein
+        includeCompleted: Gelöst einbeziehen
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Beliebiger Schwierigkeitsgrad
+            easy: Einfach
+            medium: Mittel
+            hard: Schwierig
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Beliebige Dauer
+            short: Kurz (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Lang (> 10 min)
 dialogs:
     buttons:
         ok: OK
@@ -531,7 +531,7 @@ ingame:
         titleRatingDesc: Deine Bewertung hilft mir, in Zukunft bessere Vorschläge zu machen
         continueBtn: Weiterspielen
         menuBtn: Menü
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Nächstes Puzzle
     puzzleMetadata:
         author: Ersteller
         shortKey: Kurzschlüssel
@@ -1119,9 +1119,9 @@ settings:
             description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen)
                 fest.
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Shape Tooltip - Immer anzeigen
+            description: Zeigt den Shape Tooltip immer an, wenn sich der Mauszeiger über
+                einem Gebäude befindet, anstatt 'ALT' drücken zu müssen.
     tickrateHz: <amount> Hz
 keybindings:
     title: Tastenbelegung
@@ -1204,7 +1204,7 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platzierungsmodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Zeige Shape Ausgabe Tooltip
 about:
     title: Über dieses Spiel
     body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a
