@@ -307,9 +307,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const availableSlots = payload.entity.components.ItemEjector.slots.length;
         const processorComp = payload.entity.components.ItemProcessor;
 
-        const nextSlot = processorComp.nextOutputSlot++ % availableSlots;
-
-        // Hardcoded to 2, to avoid accessing the length
         for (let i = 0; i < 2; ++i) {
             const item = payload.items.get(i);
             if (!item) {
@@ -317,7 +314,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
             payload.outItems.push({
                 item,
-                preferredSlot: (nextSlot + i) % availableSlots,
+                preferredSlot: processorComp.nextOutputSlot++ % availableSlots,
                 doNotTrack: true,
             });
         }
