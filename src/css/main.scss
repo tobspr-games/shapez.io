@@ -65,8 +65,8 @@
 @import "ingame_hud/puzzle_play_settings";
 @import "ingame_hud/puzzle_play_metadata";
 @import "ingame_hud/puzzle_complete_notification";
-@import "ingame_hud/puzzle_import_export";
 @import "ingame_hud/puzzle_next";
+@import "ingame_hud/puzzle_import_export";
 
 // prettier-ignore
 $elements:
@@ -85,6 +85,7 @@ ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
 ingame_HUD_PuzzleBackToMenu,
+ingame_HUD_PuzzleNextPuzzle,
 ingame_HUD_PuzzleEditorReview,
 ingame_HUD_PuzzleImportExport,
 ingame_HUD_PuzzleNextPuzzle,

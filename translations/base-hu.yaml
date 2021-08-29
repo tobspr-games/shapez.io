@@ -464,6 +464,7 @@ ingame:
             jövőben
         continueBtn: Játék Folytatása
         menuBtn: Menü
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Szerző
         shortKey: Gyorskód
@@ -1025,7 +1026,12 @@ settings:
             title: Erőforrások Mérete a Térképen
             description: Kizoomolt állapotban a térképen megjelenő erőforrások (alakzatok és
                 színek) méretét állítja.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Gyorsbillentyűk
     hint: "Tipp: Használd ki a CTRL, SHIFT és ALT billentyűket, amelyek különféle
@@ -1107,6 +1113,7 @@ keybindings:
         goal_acceptor: Elfogadó
         block: Blokkolás
         massSelectClear: Futószalagok Kiürítése
+        showShapeTooltip: Show shape output tooltip
 about:
     title: A Játékról
     body: >-
@@ -1242,8 +1249,23 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
     invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy

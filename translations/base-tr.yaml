@@ -465,6 +465,7 @@ ingame:
         titleRatingDesc: Değerlendirmeniz size daha iyi öneriler sunmamda yardımcı olacaktır
         continueBtn: Oynamaya Devam Et
         menuBtn: Menü
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Yapımcı
         shortKey: Kısa Anahtar
@@ -840,11 +841,13 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın :
-            Normal katmanın üzerinde ayrı bir katman ve yeni mekanikler sunmakta!<br><br>
-            Başlangıç için sana <strong>Quad
-            Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin yuvaları bağla !<br><br> Tel katmanına geçmek için
-            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
+        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın : Normal
+            katmanın üzerinde ayrı bir katman ve yeni mekanikler
+            sunmakta!<br><br> Başlangıç için sana <strong>Quad
+            Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin
+            yuvaları bağla !<br><br> Tel katmanına geçmek için
+            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini
+            aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
     reward_filter:
         title: Eşya Filtresi
         desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
@@ -1019,6 +1022,11 @@ settings:
             title: Uzak Bakışta Kaynakların Büyüklüğü
             description: Haritaya uzaktan bakıldığında, haritadaki şekillerin büyüklüğünü
                 ayarlar.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
@@ -1100,6 +1108,7 @@ keybindings:
         goal_acceptor: Hedef Merkezi
         block: Engel
         massSelectClear: Bantları temizle
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Oyun Hakkında
     body: >-
@@ -1216,7 +1225,6 @@ puzzleMenu:
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
-
         medium: Orta
         official: Resmİ
         trending: Bugün öne çıkan
@@ -1242,9 +1250,23 @@ puzzleMenu:
         easy: Kolay
         medium: Orta
         hard: Zor
-
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
@@ -1268,7 +1290,6 @@ backendErrors:
     bad-payload: İstek geçersiz veri içeriyor.
     bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
     timeout: İstek zaman aşımına uğradı.
-
     too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
         istiyorsanız support@shapez.io ile iletişime geçiniz!
     no-permission: Bu işlemi yapmak için izniniz yok.

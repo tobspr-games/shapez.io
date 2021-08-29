@@ -444,6 +444,7 @@ ingame:
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
         continueBtn: Keep Playing
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Author
         shortKey: Short Key
@@ -952,6 +953,11 @@ settings:
         mapResourcesScale:
             title: גודל המשאבים במפה
             description: .שולט על הגודל של הצורות על המפה (בתצוגה המוקטנת)
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: מקשים
     hint: ".הם מאפשרים הרבה אפשרויות השמה !ALTו SHIFT ,CTRLטיפ: השתמש ב"
@@ -1032,6 +1038,7 @@ keybindings:
         goal_acceptor: Goal Acceptor
         block: Block
         massSelectClear: Clear belts
+        showShapeTooltip: Show shape output tooltip
 about:
     title: בנוגע למשחק הזה
     body: >-
@@ -1157,8 +1164,23 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to

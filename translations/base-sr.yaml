@@ -14,13 +14,12 @@ steamPage:
 
         Kupovinom ove igre na Steam-u dobijate pristup punoj verziji igre, ali prvo možete da odigrate probnu verziju na shapez.io pa onda da se odlučite kasnije!
     what_others_say: Šta pričaju ljudi o shapez.io
-    nothernlion_comment: Igra je sjajna - vreme je proletelo,
-        divno sam se proveo igrajući.
-    notch_comment: Dođavola. Stvarno bi trebao da spavam, ali mislim da sam upravo shvatio
-        kako da napravim računar u shapez.io
+    nothernlion_comment: Igra je sjajna - vreme je proletelo, divno sam se proveo igrajući.
+    notch_comment: Dođavola. Stvarno bi trebao da spavam, ali mislim da sam upravo
+        shvatio kako da napravim računar u shapez.io
     steam_review_comment: Ova igra mi je ukrala život i više ga ne želim nazad.
-        Veoma opuštena igra o građenju fabrika, koja me stalno tera da prerađujem
-        fabrike kako bi bile efikasnije.
+        Veoma opuštena igra o građenju fabrika, koja me stalno tera da
+        prerađujem fabrike kako bi bile efikasnije.
 global:
     loading: Učitavanje
     error: Greška
@@ -75,8 +74,8 @@ mainMenu:
     savegameUnnamed: Neimenovano
     puzzleMode: Slagalice
     back: Nazad
-    puzzleDlcText: Uživate u optimizovanju i minimizovanju fabrika? Nabavite ekspanziju sa Slagalicama
-        na Steam-u, za još više zabave!
+    puzzleDlcText: Uživate u optimizovanju i minimizovanju fabrika? Nabavite
+        ekspanziju sa Slagalicama na Steam-u, za još više zabave!
     puzzleDlcWishlist: Dodaj na listu želja!
     puzzleDlcViewNow: Pogledaj ekspanziju
 dialogs:
@@ -132,8 +131,8 @@ dialogs:
             verziji. Za puno iskustvo, nabavite samostalnu igru!
     oneSavegameLimit:
         title: Ograničen broj sačuvanih igara
-        desc: Možete imati samo jednu sačuvanu igru u probnoj verziji. Izbrišite postojeću
-            ili nabavite samostalnu igru!
+        desc: Možete imati samo jednu sačuvanu igru u probnoj verziji. Izbrišite
+            postojeću ili nabavite samostalnu igru!
     updateSummary:
         title: Novo ažuriranje!
         desc: "Ovo su promene od zadnjeg igranja:"
@@ -179,8 +178,8 @@ dialogs:
     editSignal:
         title: Postavi Signal
         descItems: "Odaberite unapred definisan predmet:"
-        descShortKey: ... ili unesite <strong>kratak kod</strong> oblika
-            (Koji možete da generišete <link>ovde</link>)
+        descShortKey: ... ili unesite <strong>kratak kod</strong> oblika (Koji možete da
+            generišete <link>ovde</link>)
     renameSavegame:
         title: Preimenujte Sačuvanu igru
         desc: Ovde možete preimenovati sačuvanu igru.
@@ -189,8 +188,8 @@ dialogs:
         desc: Za ovaj nivo je dostupan video tutorijal! Da li želite da ga pogledate?
     tutorialVideoAvailableForeignLanguage:
         title: Tutoijal je dostupan
-        desc: Za ovaj nivo je dostupan video tutorijal, ali je na engleskom.
-            Da li želite da ga pogledate?
+        desc: Za ovaj nivo je dostupan video tutorijal, ali je na engleskom. Da li
+            želite da ga pogledate?
     editConstantProducer:
         title: Postavi Predmet
     puzzleLoadFailed:
@@ -199,14 +198,14 @@ dialogs:
     submitPuzzle:
         title: Podnesite Slagalicu
         descName: "Dajte ime slagalici:"
-        descIcon: "Molimo da unesete kratak kod, koji će biti ikonica slagalice
-            (Možete generisati kod <link>ovde</link>, ili možete i da odaberete
-            jedan od nasumičnih preloženih oblika ispod):"
+        descIcon: "Molimo da unesete kratak kod, koji će biti ikonica slagalice (Možete
+            generisati kod <link>ovde</link>, ili možete i da odaberete jedan od
+            nasumičnih preloženih oblika ispod):"
         placeholderName: Naslov Slagalice
     puzzleResizeBadBuildings:
         title: Promena veličine nije moguća
-        desc: Ne možete da učinite zonu manjom, zato što će onda neke građevine
-            biti van zone.
+        desc: Ne možete da učinite zonu manjom, zato što će onda neke građevine biti van
+            zone.
     puzzleLoadError:
         title: Loša Slagalica
         desc: "Učitavanje Slagalice nije uspelo:"
@@ -230,14 +229,14 @@ dialogs:
             slagalice. Da li ipak želite da nastavite?
     puzzlePlayRegularRecommendation:
         title: Preporuka
-        desc: <strong>Strogo</strong> preporučujemo da prvo odigrate normalnu igru do nivoa 12
-            pre nego što krenete ekspanziju sa slagalicama, u protivnom
-            srešćete se nekim delovima igre koje niste videli do sad.
-            Da li ipak želite da nastavite?
+        desc: <strong>Strogo</strong> preporučujemo da prvo odigrate normalnu igru do
+            nivoa 12 pre nego što krenete ekspanziju sa slagalicama, u protivnom
+            srešćete se nekim delovima igre koje niste videli do sad. Da li ipak
+            želite da nastavite?
     puzzleShare:
         title: Kratak kod je iskopiran
-        desc: Kratak kod ove slagalice (<key>) je iskopiran!
-            Možete ga uneti u meni slagalica da bi pristupili slagalici.
+        desc: Kratak kod ove slagalice (<key>) je iskopiran! Možete ga uneti u meni
+            slagalica da bi pristupili slagalici.
     puzzleReport:
         title: Prijavi Slagalicu
         options:
@@ -255,7 +254,8 @@ dialogs:
         desc: Unesite kratak kod slagalice kako bi je učitali.
     puzzleDelete:
         title: Izbrišite Slagalicu?
-        desc: Da li sigurno želite da obrišete '<title>'? Ne možete da je vratite kasnije!
+        desc: Da li sigurno želite da obrišete '<title>'? Ne možete da je vratite
+            kasnije!
 ingame:
     keybindingsOverlay:
         moveMap: Kretanje
@@ -366,29 +366,30 @@ ingame:
                 <strong>SHIFT</strong> za postavljanje više rudara istovremeno,
                 a pritisni <strong>R</strong> za okretanje."
             2_1_place_cutter: "Postavi <strong>Rezača</strong> kako bi presekao krug na dve
-                polovine!<br><br> PS: Rezač uvek reže od <strong>vrha ka dnu</strong>
-                bez obzira na njegovu orijentaciju."
-            2_2_place_trash: Rezač može da se <strong>začepi i stane sa radom</strong>!<br><br> Koristite
-                <strong>smeće</strong> kako bi se rešili trenutno (!) neželjenog otpada.
-            2_3_more_cutters: "Super! Postavi još <strong>2 rezača</strong> kako bi
-                ubrzali ovaj ovaj spor proces!<br><br> PS: Koristite <strong>prečice 0-9</strong>
-                koje brže pristupaju građevinama!"
+                polovine!<br><br> PS: Rezač uvek reže od <strong>vrha ka
+                dnu</strong> bez obzira na njegovu orijentaciju."
+            2_2_place_trash: Rezač može da se <strong>začepi i stane sa
+                radom</strong>!<br><br> Koristite <strong>smeće</strong> kako bi
+                se rešili trenutno (!) neželjenog otpada.
+            2_3_more_cutters: "Super! Postavi još <strong>2 rezača</strong> kako bi ubrzali
+                ovaj ovaj spor proces!<br><br> PS: Koristite <strong>prečice
+                0-9</strong> koje brže pristupaju građevinama!"
             3_1_rectangles: "Hajdemo sada da iskopamo pravougaonike! <strong>Postavi 4
-                rudara</strong> i poveži ih na središte.<br><br> PS:
-                Zadrži <strong>SHIFT</strong> dok prevlačiš pokretne trake kako bi aktivirao
-                planiranje traka!"
+                rudara</strong> i poveži ih na središte.<br><br> PS: Zadrži
+                <strong>SHIFT</strong> dok prevlačiš pokretne trake kako bi
+                aktivirao planiranje traka!"
             21_1_place_quad_painter: Postavi <strong>četvorostrukog farbača</strong> i oboji
                 <strong>krugove</strong> u <strong>belu</strong> and
                 <strong>crvenu</strong> boju!
-            21_2_switch_to_wires: Pritisni strong>E</strong> kako bi promenio sloj
-                na sloj žica!<br><br> Zicama <strong>poveži sva četiri
-                ulaza</strong> farbača!
+            21_2_switch_to_wires: Switch to the wires layer by pressing
+                <strong>E</strong>!<br><br> Then <strong>connect all four
+                inputs</strong> of the painter with cables!
             21_3_place_button: Fenomenalno! Sada postavi <strong>Prekidač</strong> i poveži
                 ga žicama!
-            21_4_press_button: "Kako bi aktivirao farbača, pritisni prekidač i on
-                <strong>će emitovati tačan signal</strong>
-                i tim signalom će pokrenuti farbanje.<br><br> PS: Ne
-                morate da povežete sve ulaze! Za sada probajte samo dva."
+            21_4_press_button: "Kako bi aktivirao farbača, pritisni prekidač i on <strong>će
+                emitovati tačan signal</strong> i tim signalom će pokrenuti
+                farbanje.<br><br> PS: Ne morate da povežete sve ulaze! Za sada
+                probajte samo dva."
     connectedMiners:
         one_miner: 1 Rudar
         n_miners: <amount> Rudara
@@ -438,16 +439,21 @@ ingame:
     puzzleEditorControls:
         title: Kreator Slagalica
         instructions:
-            - 1. Postavite <strong>Stalni Proizvođač</strong> kako bi kasnije pružili oblike i boje igraču
-            - 2. Napravite jedan ili više oblika koje želite da igrač napravi i dostavite ga jednom
-                ili više <strong>Ciljnih Blokova</strong>
+            - 1. Postavite <strong>Stalni Proizvođač</strong> kako bi kasnije
+              pružili oblike i boje igraču
+            - 2. Napravite jedan ili više oblika koje želite da igrač napravi i
+              dostavite ga jednom ili više <strong>Ciljnih Blokova</strong>
             - 3. Nakon što Ciljni Blok primi određeni oblik na određeno vreme,
-                on taj oblik <strong>sačuva kao njegov cilj</strong>
-                koji igrač mora da proizvede kasnije (Naznačeno <strong>zelenom značkom</strong>).
-            - 4. Klikom na <strong>dugme za zaključavanje</strong> na građevini je onemogućujete.
-            - 5. Kada kliknete na oceni, slagalica će biti proverena i onda je možete objaviti.
-            - 6. Nakon objavljivanja, <strong>sve građevine će biti obrisane</strong>
-                osim Stalnih Proizvođača i Ciljnih Blokova - To je deo koji igrač treba samostalno da reši :)
+              on taj oblik <strong>sačuva kao njegov cilj</strong> koji igrač
+              mora da proizvede kasnije (Naznačeno <strong>zelenom
+              značkom</strong>).
+            - 4. Klikom na <strong>dugme za zaključavanje</strong> na građevini
+              je onemogućujete.
+            - 5. Kada kliknete na oceni, slagalica će biti proverena i onda je
+              možete objaviti.
+            - 6. Nakon objavljivanja, <strong>sve građevine će biti
+              obrisane</strong> osim Stalnih Proizvođača i Ciljnih Blokova - To
+              je deo koji igrač treba samostalno da reši :)
     puzzleCompletion:
         title: Završena Slagalica!
         titleLike: "Klikni na srce ako ti se svidela slagalica:"
@@ -455,6 +461,7 @@ ingame:
         titleRatingDesc: Vaša ocena nam pomaže u boljem preporučivanju slagalica
         continueBtn: Nastavi da igraš
         menuBtn: Meni
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Kratak kod
@@ -498,8 +505,8 @@ buildings:
             description: Postavite ga na oblik koji želite da iskopate.
         chainable:
             name: Rudar (Lančani)
-            description: Postavite ga na oblik koji želite da iskopate. Mogu se lančano povezati
-                jedan za drugim.
+            description: Postavite ga na oblik koji želite da iskopate. Mogu se lančano
+                povezati jedan za drugim.
     underground_belt:
         default:
             name: Tunel
@@ -511,8 +518,8 @@ buildings:
         default:
             name: Rezač
             description: Reže oblike od vrha prema dnu i na izlaze daje obe polovine.
-                <strong>Ako se koristi samo jedan deo, drugi se mora uništiti kako
-                bi sprečili zastoj!</strong>
+                <strong>Ako se koristi samo jedan deo, drugi se mora uništiti
+                kako bi sprečili zastoj!</strong>
         quad:
             name: Rezač (četvorostruki)
             description: Reže oblike na četiri dela. <strong>Ako se koristi samo jedan deo,
@@ -548,9 +555,9 @@ buildings:
             description: Farba ceo oblik na levom ulazu bojom sa gornjeg ulaza.
         quad:
             name: Farbač (četvorostruki)
-            description: Omoćugava da ofarbate svaku četvrtinu oblika zasebno. Samo
-                delovi sa <strong>tačnim signalom</strong> na sloju žica
-                će biti ofarbati!
+            description: Omoćugava da ofarbate svaku četvrtinu oblika zasebno. Samo delovi
+                sa <strong>tačnim signalom</strong> na sloju žica će biti
+                ofarbati!
     trash:
         default:
             name: Smeće
@@ -574,8 +581,9 @@ buildings:
     storage:
         default:
             name: Skladište
-            description: Skladišti višak predmeta dok ne dostigne maksimalni kapacitet. Prioritet daje levom izlazu
-                i može se koristiti kao kapija za prelivanje.
+            description: Skladišti višak predmeta dok ne dostigne maksimalni kapacitet.
+                Prioritet daje levom izlazu i može se koristiti kao kapija za
+                prelivanje.
     wire_tunnel:
         default:
             name: Žičani Preklopnik
@@ -583,7 +591,8 @@ buildings:
     constant_signal:
         default:
             name: Konstantan Signal
-            description: Emituje konstantan signal, koji može bili ili oblik ili boja ili da/ne vrednost (1 / 0).
+            description: Emituje konstantan signal, koji može bili ili oblik ili boja ili
+                da/ne vrednost (1 / 0).
     lever:
         default:
             name: Prekidač
@@ -592,49 +601,50 @@ buildings:
     logic_gate:
         default:
             name: I Kapija
-            description: Emituje da/ne vrednost "1" ako su oba ulaza tačna. (Tačno znači oblik,
-                boja or da/ne vrednost "1")
+            description: Emituje da/ne vrednost "1" ako su oba ulaza tačna. (Tačno znači
+                oblik, boja or da/ne vrednost "1")
         not:
             name: NE Kapija
-            description: Emituje da/ne vrednost "1" ako ulaz nije tačan. (Tačan znači
-                oblik, boja ili da/ne vrednost "1")
+            description: Emituje da/ne vrednost "1" ako ulaz nije tačan. (Tačan znači oblik,
+                boja ili da/ne vrednost "1")
         xor:
             name: EKSILI Kapija
             description: Emituje da/ne vrednost "1" ako je jedan od ulaza tačan, ali ne oba.
                 (Tačan znači oblik, boja ili da/ne vrednost "1")
         or:
             name: ILI Kapija
-            description: Emituje da/ne vrednost "1" ako je jedan od ulaza tačan. (Tačan znači
-                oblik, boja ili da/ne vrednost "1")
+            description: Emituje da/ne vrednost "1" ako je jedan od ulaza tačan. (Tačan
+                znači oblik, boja ili da/ne vrednost "1")
     transistor:
         default:
             name: Tranzistor
-            description: Prosleđuje donji ulaz ako je ulaz sa strane tačan (oblik,
-                boja ili "1").
+            description: Prosleđuje donji ulaz ako je ulaz sa strane tačan (oblik, boja ili
+                "1").
         mirrored:
             name: Tranzistor
-            description: Prosleđuje donji ulaz ako je ulaz sa strane tačan (oblik,
-                boja ili "1").
+            description: Prosleđuje donji ulaz ako je ulaz sa strane tačan (oblik, boja ili
+                "1").
     filter:
         default:
             name: Filter
-            description: Povežite signal kako bi usmerili sve predmete koji se poklapaju na gornji izlaz,
-                a ostatak odlazi na desni izlaz. Može biti kontrolisano preko da/ne signala.
+            description: Povežite signal kako bi usmerili sve predmete koji se poklapaju na
+                gornji izlaz, a ostatak odlazi na desni izlaz. Može biti
+                kontrolisano preko da/ne signala.
     display:
         default:
             name: Displej
-            description: Povežite signal na displej i on će biti prikazan na njemu - Signal može biti
-                oblik, boja ili da/ne vrednost.
+            description: Povežite signal na displej i on će biti prikazan na njemu - Signal
+                može biti oblik, boja ili da/ne vrednost.
     reader:
         default:
             name: Čitač Trake
             description: Meri propusnost pokretne trake. Na žičanom sloju, na izlaz šalje
-                 poslednje pročitani predmet (tek kada se otključa).
+                poslednje pročitani predmet (tek kada se otključa).
     analyzer:
         default:
             name: Analizator Oblika
-            description: Analizira gornju desnu četvrtinu najnižeg sloja oblika
-                i vraća njegov oblik i boju.
+            description: Analizira gornju desnu četvrtinu najnižeg sloja oblika i vraća
+                njegov oblik i boju.
     comparator:
         default:
             name: Upoređivač
@@ -646,23 +656,23 @@ buildings:
             description: Virtuelno reže oblik na dve polovine.
         rotater:
             name: Virtuelni Obrtač
-            description: Virtuelno okreće oblike, i u smeru kazaljke na satu i suprotno od smera kazaljke na satu.
+            description: Virtuelno okreće oblike, i u smeru kazaljke na satu i suprotno od
+                smera kazaljke na satu.
         unstacker:
             name: Virtuelni Razlagač
-            description: Virtuelno razlaže najviši sloj oblika i šalje ga desni izlaz, a ostatak
-                šalje na levi izlaz.
+            description: Virtuelno razlaže najviši sloj oblika i šalje ga desni izlaz, a
+                ostatak šalje na levi izlaz.
         stacker:
             name: Virtualni Slagač
             description: Virtuelno slaže oblik sa desnog ulaza na oblik sa levog ulaza.
         painter:
             name: Virtual Farbač
-            description: Virtuelno farba oblik sa donjeg ulaza sa oblikom
-                sa desnog ulaza.
+            description: Virtuelno farba oblik sa donjeg ulaza sa oblikom sa desnog ulaza.
     item_producer:
         default:
             name: Proizvođač predmeta
-            description: Dostupan samo u Sandbox režimu, na izlaz šalje ulazni signal
-                sa žičanog sloja na običan sloj.
+            description: Dostupan samo u Sandbox režimu, na izlaz šalje ulazni signal sa
+                žičanog sloja na običan sloj.
     constant_producer:
         default:
             name: Stalni Proizvođač
@@ -678,12 +688,12 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: Rezanje Oblika
-        desc: <strong>Rezač</strong> je otključan, on reže oblike na dva dela
-            od vrha prema dnu <strong>bez obzira na njegovu
-            orijentaciju</strong>!<br><br>Obavezno se rešite ostatka, ili će
-            u suprotnom će se<strong>začepiti i stati sa radom</strong> - Baš zbog toga
-            imate <strong>Smeće</strong>, koje uništava
-            sve što uđe u njega!
+        desc: <strong>Rezač</strong> je otključan, on reže oblike na dva dela od vrha
+            prema dnu <strong>bez obzira na njegovu
+            orijentaciju</strong>!<br><br>Obavezno se rešite ostatka, ili će u
+            suprotnom će se<strong>začepiti i stati sa radom</strong> - Baš zbog
+            toga imate <strong>Smeće</strong>, koje uništava sve što uđe u
+            njega!
     reward_rotater:
         title: Obrtanje
         desc: <strong>Obrtač</strong> je otključan! On okreće oblike za 90 stepeni u
@@ -739,9 +749,9 @@ storyRewards:
             odjednom</strong> po ceni jedne boje umesto dve!
     reward_storage:
         title: Skladište
-        desc: <strong>Skladište</strong> je otključano - Omogućava skadištenje
-            predmeta dok ne dostigne maksimalni kapacitet!<br><br> Prioritet daje
-            levom izlazu, može se koristiti kao <strong>kapija za prelivanje</strong>!
+        desc: <strong>Skladište</strong> je otključano - Omogućava skadištenje predmeta
+            dok ne dostigne maksimalni kapacitet!<br><br> Prioritet daje levom
+            izlazu, može se koristiti kao <strong>kapija za prelivanje</strong>!
     reward_freeplay:
         title: Slobodna Igra
         desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
@@ -770,28 +780,28 @@ storyRewards:
         desc: Svaka čast! Više sadržaja je u planu za samostalnu igru!
     reward_balancer:
         title: Balanser
-        desc: <strong>Balanser</strong> je otključan - Može da
-            se koristi pri izgradnji većih fabrika tako što
-            <strong>deli i spaja predmete</strong> na više traka!
+        desc: <strong>Balanser</strong> je otključan - Može da se koristi pri izgradnji
+            većih fabrika tako što <strong>deli i spaja predmete</strong> na
+            više traka!
     reward_merger:
         title: Kompaktni Spajač
-        desc: Varijacija <strong>balansera</strong>, odnosno <strong>spajač</strong>
-            je otključan! On prima dva ulaza i spaja ih u jednu traku!
+        desc: Varijacija <strong>balansera</strong>, odnosno <strong>spajač</strong> je
+            otključan! On prima dva ulaza i spaja ih u jednu traku!
     reward_belt_reader:
         title: Čitač Trake
-        desc: <strong>Čitač Trake</strong> je otključan! On meri propusnost
-            pokretne trake.<br><br>Biće vam od velike pomoći, samo se stripite
-            dok ne otključate žice!
+        desc: <strong>Čitač Trake</strong> je otključan! On meri propusnost pokretne
+            trake.<br><br>Biće vam od velike pomoći, samo se stripite dok ne
+            otključate žice!
     reward_rotater_180:
         title: Obrtač (180 stepeni)
-        desc: Otključali ste <strong>obrtač</strong> od 180 stepeni! - On može
-            da okreće oblike za 180 stepeni (Iznenađenje! :D)
+        desc: Otključali ste <strong>obrtač</strong> od 180 stepeni! - On može da okreće
+            oblike za 180 stepeni (Iznenađenje! :D)
     reward_display:
         title: Displej
-        desc: "<strong>Displej</strong> je otključan - Povežite signal na žičanom
-            sloju kako bi ga displej prikazao!<br><br> PS: Da li ste primetili da čitač trake
-            i skladište na izlaz šalju poslednje prošitani predmet? Probajte da ih prikažete
-            na displeju!"
+        desc: "<strong>Displej</strong> je otključan - Povežite signal na žičanom sloju
+            kako bi ga displej prikazao!<br><br> PS: Da li ste primetili da
+            čitač trake i skladište na izlaz šalju poslednje prošitani predmet?
+            Probajte da ih prikažete na displeju!"
     reward_constant_signal:
         title: Constant Signal
         desc: You unlocked the <strong>constant signal</strong> building on the wires
@@ -801,10 +811,10 @@ storyRewards:
             <strong>boolean</strong> (1 / 0).
     reward_logic_gates:
         title: Logičke Kapije
-        desc: <strong>Logičke Kapije</strong> su otključane! You don't have to be excited
-            about this, but it's actually super cool!<br><br> Pomoću ovih kapija
-            možete da radite I, ILI, NE i EKSILI operacije.<br><br> Kao šlag
-            na tortu, dobijate i <strong>Tranzistor</strong>!
+        desc: <strong>Logičke Kapije</strong> su otključane! You don't have to be
+            excited about this, but it's actually super cool!<br><br> Pomoću
+            ovih kapija možete da radite I, ILI, NE i EKSILI operacije.<br><br>
+            Kao šlag na tortu, dobijate i <strong>Tranzistor</strong>!
     reward_virtual_processing:
         title: Virtual Processing
         desc: I just gave a whole bunch of new buildings which allow you to
@@ -913,12 +923,11 @@ settings:
                 dark: Tamna
                 light: Svetla
         refreshRate:
-            #Simulacija na 144 Hz
             title: Brzina Otkucaja
-            #Opcija za monitore visoke frekvencije osvežavanja. Ovo može
-            #   smanjiti FPS ako je vaš računar prespor.
-            description: Podešava koliko se otkucaja u igri dešavaju u jednoj sekundi. Uglavnom, veći broj otkucaja znači veća preciznost ali gori performans. Kod manjeg broja otkucaja
-                propusnost ne mora biti tačna.
+            description: Podešava koliko se otkucaja u igri dešavaju u jednoj sekundi.
+                Uglavnom, veći broj otkucaja znači veća preciznost ali gori
+                performans. Kod manjeg broja otkucaja propusnost ne mora biti
+                tačna.
         alwaysMultiplace:
             title: Višestruko Postavljanje
             description: Ako je omogućeno, sve građevine će ostati odabrane nakon što su
@@ -958,47 +967,55 @@ settings:
             description: Podesite jačinu muzike.
         lowQualityMapResources:
             title: Mapa Manjeg Kvaliteta
-            description: Ova opcija pojednostavljuje simbole na mapi kada su zumirani kako bi
-                poboljšala performanse. Nekima izgledaju lepše, tako da slobodno možete
-                da probate!
+            description: Ova opcija pojednostavljuje simbole na mapi kada su zumirani kako
+                bi poboljšala performanse. Nekima izgledaju lepše, tako da
+                slobodno možete da probate!
         disableTileGrid:
             title: Onemogući Mrežu
-            description: Ova opcija onemogućuje mrežu sa poljima i može poboljšati performans. Nekima
-                ovo izgleda lepše!
+            description: Ova opcija onemogućuje mrežu sa poljima i može poboljšati
+                performans. Nekima ovo izgleda lepše!
         clearCursorOnDeleteWhilePlacing:
             title: Očistite kursor/strelicu desnim klikom
-            description: Uobičajeno je omogućena ova opcija, briše sa kursora/strelice trenutno odabranu građevinu.
-                Ako je ova opcija onemogućena, možete očistiti kursor/strelicu desnim klikom dok postavljate građevinu.
+            description: Uobičajeno je omogućena ova opcija, briše sa kursora/strelice
+                trenutno odabranu građevinu. Ako je ova opcija onemogućena,
+                možete očistiti kursor/strelicu desnim klikom dok postavljate
+                građevinu.
         lowQualityTextures:
             title: Teksture niskog kvaliteta (Ružno)
-            description: Da bi poboljšala performanse igra će koristiti teksture niskog kvaliteta.
-                Zbog ovoga će igra izgledati baš ružno!
+            description: Da bi poboljšala performanse igra će koristiti teksture niskog
+                kvaliteta. Zbog ovoga će igra izgledati baš ružno!
         displayChunkBorders:
             title: Prikazati Ivice Regija
             description: Igra je podeljena u regije od 16x16 polja, ako uključite ovu opciju
                 ivice ovih regija postaće vidljive.
         pickMinerOnPatch:
             title: Odaberi rudara na rudama
-            description: Uobičajeno je omogućena ova opcija, kada pipetom odaberete neku rudu, rudar će automatski
-                biti odabran.
+            description: Uobičajeno je omogućena ova opcija, kada pipetom odaberete neku
+                rudu, rudar će automatski biti odabran.
         simplifiedBelts:
             title: Pojednostavljene Pokretne Trake (Ružno)
-            description: Ne prikazuje predmete na pokretnoj traci. Predmete možete videti ako pređete mišem preko trake.
-                Ova opcija povećava persormans, ali nije preporučljivo da igrate igru sa ovom opcijom omogućenom,
-                osim ako vam je performans prejako potreban.
+            description: Ne prikazuje predmete na pokretnoj traci. Predmete možete videti
+                ako pređete mišem preko trake. Ova opcija povećava persormans,
+                ali nije preporučljivo da igrate igru sa ovom opcijom
+                omogućenom, osim ako vam je performans prejako potreban.
         enableMousePan:
             title: Omogučite kretanje po mapi mišem
-            description: Omogućava kreatanje po mapi pomeranjem kursora/strelice ivicama ekrana.
-                Brzina kretanja zavisi od opcije Brzina kretanja.
+            description: Omogućava kreatanje po mapi pomeranjem kursora/strelice ivicama
+                ekrana. Brzina kretanja zavisi od opcije Brzina kretanja.
         zoomToCursor:
             title: Zumiraj prema kursoru/strelici
-            description: Ako je ova opcija odabrana, zumiranje će se vršiti u smeru kursora/strelice,
-                u suprotnom vrši se prema centru ekrana.
+            description: Ako je ova opcija odabrana, zumiranje će se vršiti u smeru
+                kursora/strelice, u suprotnom vrši se prema centru ekrana.
         mapResourcesScale:
             title: Veličina simbola na mapi
-            description: Kontroliše veličinu simbola na mapi
-                (kada se vrši odzumiranje mape).
+            description: Kontroliše veličinu simbola na mapi (kada se vrši odzumiranje
+                mape).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Tasteri
     hint: "Savet: Koristite CTRL, SHIFT i ALT! Oni omogućuju razne opcije
@@ -1021,51 +1038,16 @@ keybindings:
         mapMoveLeft: Idi Levo
         mapMoveFaster: Brže kretanje
         centerMap: Centar mape
-
         mapZoomIn: Zumiraj
         mapZoomOut: Odzumiraj
         createMarker: Napravi Putokaz
-
         menuOpenShop: Nadogradnje
         menuOpenStats: Statistika
         menuClose: Zatvori Meni
-
         toggleHud: Uključi/Isključi Interfejs
         toggleFPSInfo: Uključi/Isključi FPS i infomacije o traženju grešaka u kodu
         switchLayers: Promeni Sloj
         exportScreenshot: Izvoz slike cele fabrike kao snimak ekrana
-
-        #this version didn't have references or pointers
-        #so this won't work
-        #
-        #belt: *belt
-        #balancer: *balancer
-        #underground_belt: *underground_belt
-        #miner: *miner
-        #cutter: *cutter
-        #rotater: *rotater
-        #stacker: *stacker
-        #mixer: *mixer
-        #painter: *painter
-        #trash: *trash
-        #storage: *storage
-        #wire: *wire
-        #constant_signal: *constant_signal
-        #logic_gate: Logic Gate
-        #lever: *lever
-        #filter: *filter
-        #wire_tunnel: *wire_tunnel
-        #display: *display
-        #reader: *reader
-        #virtual_processor: *virtual_processor
-        #transistor: *transistor
-        #analyzer: *analyzer
-        #comparator: *comparator
-        #item_producer: Item Producer (Sandbox)
-        #constant_producer: *constant_producer
-        #goal_acceptor: *goal_acceptor
-        #block: *block
-
         belt: Pokretna traka
         underground_belt: Tunel
         miner: Rudar
@@ -1093,7 +1075,6 @@ keybindings:
         constant_producer: Stalni Proizvođač
         goal_acceptor: Ciljni Blok
         block: Blok
-
         pipette: Pipeta
         rotateWhilePlacing: Okreni građevinu
         rotateInverseModifier: "Modifikator: Rotiraj u smeru suprotnom od kazaljke na satu"
@@ -1116,6 +1097,7 @@ keybindings:
         rotateToRight: "Obrtač: Gleda Desno"
         rotateToLeft: "Obrtač: Gleda Levo"
         massSelectClear: Očisti trake
+        showShapeTooltip: Show shape output tooltip
 about:
     title: O Igri
     body: >-
@@ -1142,15 +1124,18 @@ demo:
     settingNotAvailable: Nije dostupno u demo verziji.
 tips:
     - Središte prihvata oblike bilo koje vrste, ne samo trenutni oblik!
-    - Pravite modularne fabrike koje se mogu lako proširiti - isplatiće se kasnije!
+    - Pravite modularne fabrike koje se mogu lako proširiti - isplatiće se
+      kasnije!
     - Izbegavajte gradnju fabrike u blizini središta ili će biti vrlo gusto!
     - Ako slaganje oblika ne radi funkcioniše, probajte da zamenite ulaze.
     - Možete da promenite smer planera pritiskom na <b>R</b>.
-    - Držanjem tastera <b>CTRL</b> omogućava prevlačenje trakama bez automatske orijentacije.
+    - Držanjem tastera <b>CTRL</b> omogućava prevlačenje trakama bez automatske
+      orijentacije.
     - Odnosi ostaju isti, sve dok su sve nadogradnje na istom nivou.
     - Serijsko izvršavanje je efikasnije od paralelnog.
     - Kasnije u igri ćete otključati još varijanti građevina!
-    - Možete koristiti <b>T</b> za menjanje izmežu različitih varijanti građevina.
+    - Možete koristiti <b>T</b> za menjanje izmežu različitih varijanti
+      građevina.
     - Simetrija je ključna!
     - Možete izmešati tunele različitih redova u jednu liniju.
     - Pokušajte da gradite kompaktne fabrike - isplatiće se kasnije!
@@ -1159,13 +1144,14 @@ tips:
     - Na maksimalnom nivou, 5 rudara su dovoljna da napune jednu traku.
     - Ne zaboravite tunele!
     - Ne morate ravnomerno da delite predmete za potpunu efikasnost.
-    - Držanjem tastera <b>SHIFT</b> aktiviraćete planer traka, koji omogućava postavljanje
-      dugačkih linija traka sa lakoćom.
+    - Držanjem tastera <b>SHIFT</b> aktiviraćete planer traka, koji omogućava
+      postavljanje dugačkih linija traka sa lakoćom.
     - Rezači uvek seku vertikalno, bez obzira na njihovu orijentaciju.
     - Bela boja je mešavina svih boja.
     - Bafer skladišta daje prioritet prvom izlazu.
     - Uložite vreme u izgradnju dizajna koji se ponavljaju - vredeće!
-    - Držanjem tastera <b>CTRL</b> možete postavljati veći broj građevina odjednom.
+    - Držanjem tastera <b>CTRL</b> možete postavljati veći broj građevina
+      odjednom.
     - Držanjem tastera <b>ALT</b> možete promeniti smer postavljenih traka.
     - Efikasnost je ključna!
     - Rude koje dalje od središta su komplikovanije.
@@ -1173,12 +1159,14 @@ tips:
     - Koristite balansere kako bi povećali efikasnost.
     - Organizacija je bitna. Pokušajte da smanjite ukrštanje pokretnih traka.
     - Planirajte unapred ili će sve postati gusto!
-    - Ne uklanjajte stare fabrike! Biće vam potrebne za otključavanje nadogradnji.
+    - Ne uklanjajte stare fabrike! Biće vam potrebne za otključavanje
+      nadogradnji.
     - Pokušajte da samostalno završite 20-ti nivo, pre nego što zatražite pomoć!
     - Ne komplikujte stvari, pokušajte da pravite što jednostavnije fabrike.
-    - Možda ćete kasnije morati ponovo da koristite fabrike. Isplanirajte ih tako da budu
-      ponovo upotrebljive.
-    - Ponekad možete da nađete potreban oblik na mapi, bez da ga pravite slagačima.
+    - Možda ćete kasnije morati ponovo da koristite fabrike. Isplanirajte ih
+      tako da budu ponovo upotrebljive.
+    - Ponekad možete da nađete potreban oblik na mapi, bez da ga pravite
+      slagačima.
     - Kompletne vetrenjače se ne mogu naći na mapi.
     - Obojite oblike pre rezanja za maksimalnu efikasnost.
     - Koristite module!
@@ -1186,11 +1174,14 @@ tips:
     - Pažljivo pogledajte sličicu na mešalici boja, ako imate problema sa bojama.
     - Držite taster <b>CTRL</b> i prevucite klikom miša kako bi izabrali oblast.
     - Izgradnja blizu središta može smetati kasnijim fabrikama.
-    - Špenadla pored svakog oblika u listi nadogradnji će taj oblik zakačiti na ekran.
+    - Špenadla pored svakog oblika u listi nadogradnji će taj oblik zakačiti na
+      ekran.
     - Pomešajte sve osnovne boje kako bi dobili belu boju!
-    - Mapa je beskonačno velika, izbegavajte pravljenje skučenih fabrika, proširite se!
+    - Mapa je beskonačno velika, izbegavajte pravljenje skučenih fabrika,
+      proširite se!
     - Takođe probajte Factorio! To mi je omiljena igra.
-    - Četvorostruki rezač reže u smeru kazaljke na satu počevši od gornje deve četvrtine!
+    - Četvorostruki rezač reže u smeru kazaljke na satu počevši od gornje deve
+      četvrtine!
     - Možete da preuzmete sačuvane igre u glavnom meniju!
     - Ova igra ima dosta korisnih prečica! Obavezno pogledajte podešavanja.
     - Ova igra ima dosta podešavanja, obavezno bacite pogled na njih!
@@ -1229,20 +1220,36 @@ puzzleMenu:
         title: Slagalica nije validna!
         noProducers: Postavite Stalnog Proizvođača!
         noGoalAcceptors: Postavite Ciljni Blok!
-        goalAcceptorNoItem: Jedan ili više Ciljnih Blokova još uvek nemaju dodeljen predmet.
-            Dostavite oblik kako bi ga postavili kao cilj.
-        goalAcceptorRateNotMet: Jedan ili više Ciljnih Blokova ne dobijaju dovoljno predmeta.
-            Budite sigurni da su indikatori zeleni za sve ove blokove.
-        buildingOutOfBounds: Jedna ili više građevina su van zone izgradnje.
-            Ili povećajte zonu ili uklonite te građevine.
+        goalAcceptorNoItem: Jedan ili više Ciljnih Blokova još uvek nemaju dodeljen
+            predmet. Dostavite oblik kako bi ga postavili kao cilj.
+        goalAcceptorRateNotMet: Jedan ili više Ciljnih Blokova ne dobijaju dovoljno
+            predmeta. Budite sigurni da su indikatori zeleni za sve ove blokove.
+        buildingOutOfBounds: Jedna ili više građevina su van zone izgradnje. Ili
+            povećajte zonu ili uklonite te građevine.
         autoComplete: Vaša slagalica se završava automatski! Uverite se da stalni
             proizvođači ne isporučuju direktno ciljnim blokovima.
     difficulties:
         easy: Lako
         medium: Srednje
         hard: Teško
-    dlcHint: Već imate kupljenu ekspanziju? Desnim klikom na shapez.io u vašoj biblioteci,
-        nakon toga na Properties > DLCs, proverite da li je aktivirana.
+        unknown: Unrated
+    dlcHint: Već imate kupljenu ekspanziju? Desnim klikom na shapez.io u vašoj
+        biblioteci, nakon toga na Properties > DLCs, proverite da li je
+        aktivirana.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Previše često pokušavate nešto. Sačekajte malo.
     invalid-api-key: Komunikacija sa pozadinskim serverom nije uspela, pokušajte da
@@ -1266,6 +1273,6 @@ backendErrors:
     bad-payload: Zahtev sadrži nevažeće podatke.
     bad-building-placement: Slagalica sadrži nevažeće postavljene građevine.
     timeout: Vreme za izvršenje zahteva je isteklo.
-    too-many-likes-already: Slagalica ima dosta lajkova. Ako i dalje želite
-        da je uklonite, molimo da kontaktirate support@shapez.io!
+    too-many-likes-already: Slagalica ima dosta lajkova. Ako i dalje želite da je
+        uklonite, molimo da kontaktirate support@shapez.io!
     no-permission: Nemate dozvolu za izvršenje ove radnje.

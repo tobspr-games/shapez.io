@@ -29,9 +29,13 @@ export class HUDShapeTooltip extends BaseHUDPart {
     isActive() {
         const hudParts = this.root.hud.parts;
 
+        const active =
+            this.root.app.settings.getSetting("shapeTooltipAlwaysOn") ||
+            this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.showShapeTooltip).pressed;
+
         // return false if any other placer is active
         return (
-            this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.showShapeTooltip).pressed &&
+            active &&
             !this.isPlacingBuilding &&
             !hudParts.massSelector.currentSelectionStartWorld &&
             hudParts.massSelector.selectedUids.size < 1 &&
@@ -69,11 +73,20 @@ export class HUDShapeTooltip extends BaseHUDPart {
             const ejectorComp = this.currentEntity.components.ItemEjector;
             const staticComp = this.currentEntity.components.StaticMapEntity;
 
+<<<<<<< HEAD
             const context = parameters.context;
+=======
+            const bounds = staticComp.getTileSize();
+            const totalArea = bounds.x * bounds.y;
+            const maxSlots = totalArea < 2 ? 1 : 1e10;
+
+            let slotsDrawn = 0;
+>>>>>>> master
 
             for (let i = 0; i < ejectorComp.slots.length; ++i) {
                 const slot = ejectorComp.slots[i];
 
+<<<<<<< HEAD
                 if (!slot.lastItem || slot.lastItem._type != "shape") {
                     continue;
                 }
@@ -106,6 +119,20 @@ export class HUDShapeTooltip extends BaseHUDPart {
                 context.fill();
                 context.stroke();
                 slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 22);
+=======
+                if (!slot.lastItem) {
+                    continue;
+                }
+
+                if (++slotsDrawn > maxSlots) {
+                    continue;
+                }
+
+                /** @type {Vector} */
+                const drawPos = staticComp.localTileToWorld(slot.pos).toWorldSpaceCenterOfTile();
+
+                slot.lastItem.drawItemCenteredClipped(drawPos.x, drawPos.y, parameters, 25);
+>>>>>>> master
             }
         }
     }

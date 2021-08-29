@@ -464,6 +464,7 @@ ingame:
             fremtiden
         continueBtn: Fortsett å spill
         menuBtn: Meny
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Laget av
         shortKey: Kort Kode
@@ -1022,7 +1023,12 @@ settings:
             title: Kart Ressursser Størrelse
             description: Kontrollerer størrelsen på former på kartoversikten (når zoomet
                 ut).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Hurtigtaster
     hint: "Tips: Husk å bruke CTRL, SHIFT and ALT! De gir deg flere
@@ -1104,6 +1110,7 @@ keybindings:
         goal_acceptor: Mål Mottaker
         block: Blokker
         massSelectClear: Tøm Belter
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Om dette spillet
     body: >-
@@ -1236,8 +1243,23 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Du gjør en handling for ofte. Vennligst vent litt.
     invalid-api-key: Kunne ikke kommunisere med kjernen, vennligst prøv å

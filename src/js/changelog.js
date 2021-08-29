@@ -1,9 +1,9 @@
 export const CHANGELOG = [
     {
         version: "1.4.3",
-        date: "preview",
+        date: "28.08.2021",
         entries: [
-            "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101)",
+            "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101) (PS: There is now a setting to have it always on!)",
             "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
             "Puzzle DLC: There is now a 'next puzzle' button!",
             "Puzzle DLC: There is now a search function!",
