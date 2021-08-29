@@ -451,7 +451,7 @@ buildings:
             description: &miner_desc 在圖形礦脈或者顏色礦脈上放置開採機來開採。
         chainable:
             name: 鏈式開採機
-            description: *miner_desc （鏈式開採機可以以頭接尾或側鏈結）
+            description: *miner_desc
     underground_belt:
         default:
             name: &underground_belt 隧道
@@ -525,14 +525,14 @@ buildings:
             description: 將兩條輸送帶（底部和左側）整合成一條（頂部）。
         splitter:
             name: 分流機（右）
-            description: 將底部的輸送帶輸入分流成兩個（頂部和右側）。
+            description: 將底部的輸送帶輸入分流成兩個輸出（頂部和右側）。
         splitter-inverse:
             name: 分流機（左）
-            description: 將底部的輸送帶輸入分流成兩個（頂部和左側）。
+            description: 將底部的輸送帶輸入分流成兩個輸出（頂部和左側）。
     storage:
         default:
             name: &storage 倉庫
-            description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，可以被用來作為溢流門。
+            description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，右側輸出可以被用來作為溢流門。
     wire_tunnel:
         default:
             name: &wire_tunnel 電線交叉
@@ -569,7 +569,7 @@ buildings:
     filter:
         default:
             name: &filter 物件分類器
-            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。 它也可以被布林值訊號控制，「1（真值）」時全部輸出到。
+            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。 它也可以被布林值訊號控制。
     display:
         default:
             name: &display 顯示器
@@ -577,7 +577,7 @@ buildings:
     reader:
         default:
             name: &reader 輸送帶讀取機
-            description: 它會讀取輸送帶的平均流量，（解鎖後）在電路層輸出最後讀取的物件。
+            description: 它會讀取輸送帶的平均流量，（電路層解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
             name: &analyzer 圖形分析機
@@ -585,7 +585,7 @@ buildings:
     comparator:
         default:
             name: &comparator 比較機
-            description: 當兩個輸入訊號完全相等時，輸出布林值「1」。它可以比較形狀、物件或布林值。
+            description: 當兩個輸入訊號完全相等時，輸出布林值「1（真值）」。它可以比較形狀、物件或布林值。
     virtual_processor:
         default:
             name: 虛擬切割機
@@ -622,53 +622,62 @@ storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
         desc: >-
-            <strong>切割機</strong>已解鎖。不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。
-            <br><br>記得把不需要的部分處理掉，否則切割機會<strong>因為堵塞而停止運作</strong>。
+            <strong>切割機</strong>已解鎖！不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。<br><br>
+            記得把不需要的部分處理掉，否則切割機會<strong>因為堵塞而停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
         desc: >-
-            <strong>順時針旋轉機</strong>已解鎖。它會順時針旋轉輸入的圖形90度。
+            <strong>順時針旋轉機</strong>已解鎖！
+            它會順時針旋轉輸入的圖形90度。
     reward_painter:
         title: 上色
         desc: >-
-            <strong>上色機</strong>已解鎖。開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設定中有<strong>色盲模式</strong>可以選。
+            <strong>上色機</strong>已解鎖！
+            開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設定中有<strong>色盲模式</strong>可以選。
     reward_mixer:
         title: 混色
         desc: >-
-            <strong>混色器</strong>已解鎖-在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
+            <strong>混色器</strong>已解鎖！
+            在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
     reward_stacker:
         title: 拼貼
         desc: >-
-            <strong>圖形拼貼機</strong>已解鎖。如果沒有重疊的部分，圖形拼貼機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
+            <strong>圖形拼貼機</strong>已解鎖！
+            如果沒有重疊的部分，圖形拼貼機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
         desc: >-
-            <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖。 - 它將單個輸送帶分流成兩個。
+            <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖！
+             - 它將單個輸送帶分流成兩個。
     reward_tunnel:
         title: 隧道
         desc: >-
-            <strong>隧道</strong>已解鎖。你現在可以從其他輸送帶或建築底下運送物品了！
+            <strong>隧道</strong>已解鎖！
+            你現在可以在其他輸送帶或建築底下運送物品了！
     reward_rotater_ccw:
         title: 逆時針旋轉
         desc: >-
-            <strong>逆時針旋轉機</strong>已解鎖。它會逆時針旋轉輸入的圖形90度。
-            逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能建立。
+            <strong>逆時針旋轉機</strong>已解鎖！
+            它會逆時針旋轉輸入的圖形90度。
+            逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能使用。
     reward_miner_chainable:
         title: 鏈式開採
         desc: >-
-            <strong>鏈式開採機</strong>已解鎖。它是開採機的一個變體。
+            <strong>鏈式開採機</strong>已解鎖！
+            它是開採機的一個變體。
             它可以將開採出來的資源<strong>傳遞</strong>給其他的開採機，使得資源提取更加高效！<br><br>
-            PS: 工具列中舊的開採機已被取代。
+            備註：工具列中舊的開採機已被取代。
     reward_underground_belt_tier_2:
         title: 二級隧道
         desc: >-
-            <strong>二級隧道</strong>已解鎖。這個隧道變體有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
+            <strong>二級隧道</strong>已解鎖！
+            這個隧道變體有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
     reward_cutter_quad:
         title: 四分切割
         desc: >-
             您已解鎖了<strong>切割機</strong>的變體：四分切割機。
-            它允許您將形狀直接切割為<strong>四個部分</strong>，而不是兩個！
+            它允許您將直接切割出形狀的<strong>四個邊角</strong>，而不是分成兩半！
     reward_painter_double:
         title: 雙倍上色
         desc: >-
@@ -676,13 +685,16 @@ storyRewards:
             它的運作方式跟上色機類似，但一次能處理<strong>兩個形狀</strong>，而且只消耗一種顏色而不是兩種顏色！
     reward_storage:
         title: 倉庫
-        desc: <strong>倉庫</strong> 已解鎖：
-            可以儲存多餘的物品，有一定儲存上限。<br><br>優先從左側輸出，可以被用來作為<strong>溢流門</strong>。
+        desc: >-
+            <strong>倉庫</strong> 已解鎖：
+            它可以儲存多餘的物品，但有一定儲存上限。<br><br>
+            物品優先從左側輸出，它也可以被用來作為<strong>溢流門</strong>。
     reward_freeplay:
         title: 自由模式
-        desc: 你做到了！你解鎖了<strong>自由模式</strong>！現在圖形將會是<strong>隨機</strong>生成的！<br><br>
+        desc: >-
+            你做到了！你解鎖了<strong>自由模式</strong>！現在圖形將會是<strong>隨機</strong>生成的！<br><br>
             從現在開始，基地會有<strong>交付速率下限</strong>的要求，因此我強烈建議你建造全自動化的生產線。<br><br>
-            基地會在電路層輸出他需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
+            基地會在電路層輸出它需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
         desc: >-
@@ -691,42 +703,46 @@ storyRewards:
     no_reward:
         title: 下一關
         desc: >-
-            這一關沒有獎勵，但是下一關有！ <br><br>
+            這一關沒有獎勵，但是下一關會有！ <br><br>
             備註：你生產過的<strong>所有</strong>圖形都會被用來<strong>升級建築</strong>。
     no_reward_freeplay:
         title: 下一關
-        desc: 恭喜你！另外，我們已經計劃在單機版中加入更多內容！
+        desc: >-
+            恭喜你！另外，我們已經計劃在單機版中加入更多內容！
     reward_balancer:
         title: 平衡物流
-        desc: <strong>平衡機</strong>已解鎖。在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
+        desc: >-
+            <strong>平衡機</strong>已解鎖！
+            在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
     reward_merger:
         title: 合流
         desc: >-
-            <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖。 - 它會將兩個輸送帶整合成一個。
+            <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖！
+             - 它會將兩個輸送帶整合成一個。
     reward_belt_reader:
         title: 讀取輸送帶
         desc: >-
-            <strong>輸送帶讀取機</strong>已解鎖。 它會讀取輸送帶的流量。<br><br>
+            <strong>輸送帶讀取機</strong>已解鎖！ 它會讀取輸送帶的流量。<br><br>
             當你解鎖電路層時，它會變得超有用！
     reward_rotater_180:
         title: 180度旋轉
         desc: >-
-            180度<strong>旋轉機</strong>已解鎖。 - 它可以180度旋轉物件（驚喜！:D）
+            <strong>180度旋轉機</strong>已解鎖！ - 它可以180度旋轉物件（驚喜！:D）
     reward_display:
         title: 顯示器
         desc: >-
-            <strong>顯示器</strong> 已解鎖。 - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
+            <strong>顯示器</strong> 已解鎖！ - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
             備註：你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？ 試試看在顯示器上顯示它吧！"
     reward_constant_signal:
         title: 固定信號
-        desc: 電路層上的<strong>固定信號</strong>已解鎖。
+        desc: 電路層上的<strong>固定信號</strong>已解鎖！
             舉例，將<strong>物件分類器</strong>連上固定信號會很有用。<br><br>
             固定信號可以輸出<strong>形狀</strong>、<strong>顏色</strong>或是
             <strong>布林值</strong>（1或0）。
     reward_logic_gates:
         title: 邏輯閘
         desc: >-
-            <strong>邏輯閘</strong>已解鎖。 你可以覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
+            <strong>邏輯閘</strong>已解鎖！你可能覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
             有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT 邏輯。<br><br>
             錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
@@ -749,7 +765,7 @@ storyRewards:
             備註：設定裡<strong>開啟提示</strong>來啟動教學！"
     reward_filter:
         title: 物件分類器
-        desc: <strong>物件分類器</strong>已解鎖。 它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
+        desc: <strong>物件分類器</strong>已解鎖！ 它會依據電路層收到的訊號決定輸出端（右方或上方）。<br><br>
             你也可以輸入布林值（1或0）來徹底啟用或不啟用此機器。
     reward_demo_end:
         title: 試玩結束
