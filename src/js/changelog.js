@@ -1,5 +1,12 @@
 export const CHANGELOG = [
     {
+        version: "1.4.4",
+        date: "29.08.2021",
+        entries: [
+            "Hotfix: Fixed the balancer not distributing items evenly, caused by the 1.4.3 update. Sorry for any inconveniences!",
+        ],
+    },
+    {
         version: "1.4.3",
         date: "28.08.2021",
         entries: [
