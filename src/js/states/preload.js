@@ -81,9 +81,11 @@ export class PreloadState extends GameState {
                     } catch (ex) {
                         logger.error("Failed to read/write local storage:", ex);
                         return new Promise(() => {
-                            alert(`Your brower does not support thirdparty cookies or you have disabled it in your security settings.\n\n
-                                In Chrome this setting is called "Block third-party cookies and site data".\n\n
-                                Please allow third party cookies and then reload the page.`);
+                            alert(
+                                "Your brower does not support thirdparty cookies or you have disabled it in your security settings.\n\n" +
+                                    "In Chrome this setting is called 'Block third-party cookies and site data'.\n\n" +
+                                    "Please allow third party cookies and then reload the page."
+                            );
                             // Never return
                         });
                     }

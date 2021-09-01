@@ -123,6 +123,4 @@ function catchErrors(message, source, lineno, colno, error) {
     return true;
 }
 
-if (!G_IS_DEV) {
-    window.onerror = catchErrors;
-}
+window.onerror = catchErrors;

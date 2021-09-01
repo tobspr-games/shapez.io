@@ -69,9 +69,9 @@ mainMenu:
     savegameUnnamed: 이름 없음
     puzzleMode: 퍼즐 모드
     back: Back
-    puzzleDlcText: 공장의 크기를 줄이고 최적화하는데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
+    puzzleDlcText: 공장의 크기를 줄이고 최적화하는 데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: DLC 보러 가기
 dialogs:
     buttons:
         ok: 확인
@@ -250,7 +250,7 @@ ingame:
         clearSelection: 지우기
         pipette: 피펫
         switchLayers: 레이어 전환
-        clearBelts: Clear belts
+        clearBelts: 벨트 청소하기
     buildingPlacement:
         cycleBuildingVariants: <key> 키를 눌러 변형 전환
         hotkeyLabel: "단축키: <key>"
@@ -320,9 +320,8 @@ ingame:
             1_3_expand: "이 게임은 방치형 게임이 <strong>아닙니다</strong>! 더 많은 추출기와 벨트를 만들어 지정된 목표를 빨리
                 달성하세요.<br><br> 팁: <strong>SHIFT</strong> 키를 누른 상태에서는 빠르게 배치할 수
                 있고, <strong>R</strong> 키를 눌러 회전할 수 있습니다."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
+            2_1_place_cutter: "이제 <strong>절단기</strong>를 배치해 원형 도형을 반으로 잘라보세요!<br><br> 참고:
+                절단기는 놓는 방향에 상관없이 항상 <strong>위에서 아래로만</strong> 자릅니다."
             2_2_place_trash: 절단기가 <strong>막히거나 멈출 수 있습니다</strong>!<br><br>
                 <strong>휴지통</strong>을 사용하여 현재 필요없는 쓰레기 도형 (!)을 제거하세요.
             2_3_more_cutters: "잘하셨습니다! 느린 처리 속도를 보완하기 위해 <strong>절단기를 두 개</strong> 이상
@@ -416,6 +415,7 @@ ingame:
         titleRatingDesc: 당신의 평가는 제가 미래에 더 나은 평가를 만들수 있도록 도울 수 있습니다.
         continueBtn: 계속 플레이하기
         menuBtn: 메뉴
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: 제작자
         shortKey: 짧은 키
@@ -886,7 +886,12 @@ settings:
         mapResourcesScale:
             title: 지도 자원 크기
             description: 지도를 축소할 때 나타나는 도형의 크기를 제어합니다.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: 조작법
     hint: "팁: CTRL, SHIFT, ALT를 적절히 사용하세요! 건물을 배치할 때 유용합니다."
@@ -967,6 +972,7 @@ keybindings:
         goal_acceptor: 목표 수집기
         block: 블록
         massSelectClear: 벨트 초기화
+        showShapeTooltip: Show shape output tooltip
 about:
     title: 게임 정보
     body: >-
@@ -1085,8 +1091,23 @@ puzzleMenu:
         easy: 쉬움
         medium: 중간
         hard: 어려움
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Unrated
+    dlcHint: DLC를 이미 구입하셨나요? 라이브러리에서 shapez.io를 오른쪽 클릭한 다음 속성… > DLC 메뉴를 선택해서
+        활성화되었는지 확인해주세요.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).

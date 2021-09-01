@@ -14,7 +14,7 @@ steamPage:
         Ondanks het feit dat je in het begin alleen vormen maakt, komt er een punt waarop je ze gaat kleuren. Deze kleuren kun je vinden en mengen!
 
         Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen om over te schakelen zonder voortgang te verliezen.
-    what_others_say: What people say about shapez.io
+    what_others_say: Wat anderen vinden van shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -79,7 +79,7 @@ mainMenu:
     puzzleDlcText: Houd je van het comprimeren en optimaliseren van fabrieken?
         Verkrijg de puzzel DLC nu op Steam voor nog meer plezier!
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Bekijk DLC
 dialogs:
     buttons:
         ok: OK
@@ -445,8 +445,8 @@ ingame:
         clearItems: Items leeg maken
         share: Delen
         report: Rapporteren
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Verwijder Gebouwen
+        resetPuzzle: Reset Puzzel
     puzzleEditorControls:
         title: Puzzel Maker
         instructions:
@@ -475,6 +475,7 @@ ingame:
             te geven
         continueBtn: Blijf Spelen
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Auteur
         shortKey: Vorm Sleutel
@@ -1033,7 +1034,12 @@ settings:
             title: Kaartbronnen schaal
             description: Controleert de grootte van de vormen op het map overzicht (wanneer
                 je uitzoomt).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Sneltoetsen
     hint: "Tip: Maak gebruik van CTRL, SHIFT en ALT! Hiermee kun je dingen anders en
@@ -1115,6 +1121,7 @@ keybindings:
         goal_acceptor: Ontvanger
         block: Blokkade
         massSelectClear: Lopende banden leeg maken
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Over dit spel
     body: >-
@@ -1166,14 +1173,12 @@ tips:
       wordt de planner geactiveerd, zodat je gemakkelijk lange rijen kunt
       plaatsen.
     - Knippers knippen altijd verticaal, ongeacht hun oriëntatie.
-    - Meng alle drie de kleuren om wit te krijgen.
     - De opslagbuffer geeft prioriteit aan de eerste uitvoer.
     - Investeer tijd om herhaalbare ontwerpen te maken - het is het waard!
-    - Door <b>SHIFT</b> ingedrukt te houden, kunnen meerdere gebouwen worden
-      geplaatst.
+    - Invest time to build repeatable designs - it's worth it!
     - Je kunt <b>ALT</b> ingedrukt houden om de richting van de geplaatste
       lopende banden om te keren.
-    - Efficiëntie is de sleutel!
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Vormontginningen die verder van de HUB verwijderd zijn, zijn complexer.
     - Machines hebben een beperkte snelheid, verdeel ze voor maximale
       efficiëntie.
@@ -1196,8 +1201,8 @@ tips:
       mannen.
     - Maak een aparte blueprint fabriek. Ze zijn belangrijk voor modules.
     - Bekijk de kleurenmixer eens wat beter, en je vragen worden beantwoord.
-    - Gebruik <b>CTRL</b> + klik om een gebied te selecteren.
-    - Te dicht bij de HUB bouwen kan latere projecten in de weg staan.
+    - Have a closer look at the color mixer, and your questions will be answered.
+    - Use <b>CTRL</b> + Click to select an area.
     - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op
       het scherm.
     - Meng alle primaire kleuren door elkaar om wit te maken!
@@ -1216,6 +1221,7 @@ tips:
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
+    - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
     play: Spelen
     edit: Bewerken
@@ -1238,7 +1244,7 @@ puzzleMenu:
         hard: Moeilijk
         completed: Voltooid
         medium: Medium
-        official: Officieell
+        official: Officieel
         trending: Trending vandaag
         trending-weekly: Trending wekelijks
         categories: Categorieën
@@ -1261,6 +1267,21 @@ puzzleMenu:
         easy: Makkelijk
         medium: Medium
         hard: Moeilijk
+        unknown: Unrated
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
     invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het

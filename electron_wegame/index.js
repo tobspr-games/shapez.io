@@ -51,8 +51,9 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             webSecurity: false,
+            contextIsolation: false,
         },
-        // allowRunningInsecureContent: false,
+        allowRunningInsecureContent: false,
     });
 
     if (isLocal) {

@@ -7,6 +7,7 @@ import { GameRoot } from "../root";
 import { ShapeDefinition } from "../shape_definition";
 import { HUDAchievements } from "./parts/achievements";
 import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
 import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
 import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
@@ -20,6 +21,7 @@ import { HUDMassSelector } from "./parts/mass_selector";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDShapeTooltip } from "./parts/shape_tooltip";
 import { HUDShop } from "./parts/shop";
 import { HUDStatistics } from "./parts/statistics";
 import { HUDUnlockNotification } from "./parts/unlock_notification";
@@ -54,6 +56,8 @@ export class GameHUD {
 
         this.parts = {
             buildingsToolbar: new HUDBuildingsToolbar(this.root),
+
+            blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
             unlockNotification: new HUDUnlockNotification(this.root),
             gameMenu: new HUDGameMenu(this.root),
@@ -65,6 +69,8 @@ export class GameHUD {
             wireInfo: new HUDWireInfo(this.root),
             leverToggle: new HUDLeverToggle(this.root),
             constantSignalEdit: new HUDConstantSignalEdit(this.root),
+
+            shapeTooltip: new HUDShapeTooltip(this.root),
 
             // Must always exist
             settingsMenu: new HUDSettingsMenu(this.root),
@@ -206,6 +212,7 @@ export class GameHUD {
             "colorBlindHelper",
             "changesDebugger",
             "minerHighlight",
+            "shapeTooltip",
         ];
 
         for (let i = 0; i < partsOrder.length; ++i) {

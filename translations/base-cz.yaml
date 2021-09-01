@@ -75,7 +75,7 @@ mainMenu:
     puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní
         Puzzle DLC na Steamu pro ještě více zábavy!
     puzzleDlcWishlist: Přidejte si nyní na seznam přání!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Zobrazit DLC
 dialogs:
     buttons:
         ok: OK
@@ -431,8 +431,8 @@ ingame:
         clearItems: Vymazat tvary
         share: Sdílet
         report: Nahlásit
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Vymazat budovy
+        resetPuzzle: Resetovat puzzle
     puzzleEditorControls:
         title: Puzzle editor
         instructions:
@@ -457,6 +457,7 @@ ingame:
         titleRatingDesc: Vaše hodnocení nám pomůže podat vám v budoucnu lepší návrhy
         continueBtn: Hrát dál
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Krátký klíč
@@ -994,7 +995,12 @@ settings:
         mapResourcesScale:
             title: Velikost zdrojů na mapě
             description: Určuje velikost ikon tvarů na náhledu mapy (při oddálení).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Klávesové zkratky
     hint: "Tip: Nezapomeňte používat CTRL, SHIFT a ALT! Díky nim můžete měnit způsob
@@ -1076,6 +1082,7 @@ keybindings:
         goal_acceptor: Přijemce cílů
         block: Blok
         massSelectClear: Vymazat pásy
+        showShapeTooltip: Show shape output tooltip
 about:
     title: O hře
     body: >-
@@ -1213,8 +1220,24 @@ puzzleMenu:
         easy: Lehká
         medium: Střední
         hard: Těžká
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Unrated
+    dlcHint: Již jste toto DLC zakoupili? Ujistěte se, že je aktivováno kliknutím
+        pravého tlačítka na shapez.io ve své knihovně, vybráním Vlastnosti >
+        DLC.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Provádíte své akce příliš často. Počkejte prosím.
     invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste

@@ -50,7 +50,8 @@
             }
 
             button.categoryButton,
-            button.about {
+            button.about,
+            button.privacy {
                 background-color: $colorCategoryButton;
                 color: #777a7f;
 
@@ -66,6 +67,10 @@
                 &.pressed {
                     transform: none !important;
                 }
+            }
+
+            button.privacy {
+                @include S(margin-top, 4px);
             }
 
             .versionbar {
@@ -180,7 +185,8 @@
         .container .content {
             .sidebar {
                 button.categoryButton,
-                button.about {
+                button.about,
+                button.privacy {
                     color: #ccc;
                     background-color: darken($darkModeControlsBackground, 5);
 

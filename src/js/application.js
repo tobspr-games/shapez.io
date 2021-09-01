@@ -35,6 +35,7 @@ import { AchievementsState } from "./states/achievements";
 import { PuzzleMenuState } from "./states/puzzle_menu";
 import { ClientAPI } from "./platform/api";
 import { LoginState } from "./states/login";
+import { WegameSplashState } from "./states/wegame_splash";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -156,6 +157,7 @@ export class Application {
     registerStates() {
         /** @type {Array<typeof GameState>} */
         const states = [
+            WegameSplashState,
             PreloadState,
             MobileWarningState,
             MainMenuState,
@@ -332,8 +334,12 @@ export class Application {
 
         Loader.linkAppAfterBoot(this);
 
+        if (G_WEGAME_VERSION) {
+            this.stateMgr.moveToState("WegameSplashState");
+        }
+
         // Check for mobile
-        if (IS_MOBILE) {
+        else if (IS_MOBILE) {
             this.stateMgr.moveToState("MobileWarningState");
         } else {
             this.stateMgr.moveToState("PreloadState");

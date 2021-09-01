@@ -144,6 +144,20 @@ export class ClientAPI {
     }
 
     /**
+     * @param {{ searchTerm: string; difficulty: string; duration: string }} searchOptions
+     * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleMetadata[]>}
+     */
+    apiSearchPuzzles(searchOptions) {
+        if (!this.isLoggedIn()) {
+            return Promise.reject("not-logged-in");
+        }
+        return this._request("/v1/puzzles/search", {
+            method: "POST",
+            body: searchOptions,
+        });
+    }
+
+    /**
      * @param {number} puzzleId
      * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
      */
@@ -169,7 +183,7 @@ export class ClientAPI {
     }
 
     /**
-     * @param {number} shortKey
+     * @param {string} shortKey
      * @returns {Promise<import("../savegame/savegame_typedefs").PuzzleFullData>}
      */
     apiDownloadPuzzleByKey(shortKey) {

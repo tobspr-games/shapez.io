@@ -96,12 +96,25 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     }
 
     /**
+     * Makes sure a DLC is activated on steam
+     * @param {string} dlc
+     */
+    activateDlc(dlc) {
+        logger.log("Activating dlc:", dlc);
+        return this.sendToApi("/v1/activate-dlc/" + dlc, {});
+    }
+
+    /**
      * Sends a request to the api
      * @param {string} endpoint Endpoint without base url
      * @param {object} data payload
      * @returns {Promise<any>}
      */
     sendToApi(endpoint, data) {
+        if (G_WEGAME_VERSION) {
+            return Promise.resolve();
+        }
+
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
 
