@@ -77,7 +77,7 @@ mainMenu:
         alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Paketi (DLC) görüntüle
 dialogs:
     buttons:
         ok: OK
@@ -1024,7 +1024,7 @@ settings:
                 ayarlar.
         shapeTooltipAlwaysOn:
             title: Şekil İpucu - Her Zaman Göster
-            description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine 
+            description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine
                 her zaman gösterir.
     tickrateHz: <amount> Hz
 keybindings:
@@ -1251,8 +1251,8 @@ puzzleMenu:
         medium: Orta
         hard: Zor
         unknown: Değerlendirilmemiş
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: Paketi (DLC) çoktan aldın mı? Kütüphanende oyuna sağ tıklayarak,
+        Özellikler > DLC, paketi etkileştirmeyi unutma.
     search:
         action: Arama
         placeholder: Bir yapboz veya tasarımcı adı giriniz.
