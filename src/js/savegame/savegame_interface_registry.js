@@ -9,6 +9,7 @@ import { SavegameInterface_V1005 } from "./schemas/1005";
 import { SavegameInterface_V1006 } from "./schemas/1006";
 import { SavegameInterface_V1007 } from "./schemas/1007";
 import { SavegameInterface_V1008 } from "./schemas/1008";
+import { SavegameInterface_V1009 } from "./schemas/1009";
 
 /** @type {Object.<number, typeof BaseSavegameInterface>} */
 export const savegameInterfaces = {
@@ -21,6 +22,7 @@ export const savegameInterfaces = {
     1006: SavegameInterface_V1006,
     1007: SavegameInterface_V1007,
     1008: SavegameInterface_V1008,
+    1009: SavegameInterface_V1009,
 };
 
 const logger = createLogger("savegame_interface_registry");

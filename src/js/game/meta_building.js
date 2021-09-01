@@ -108,9 +108,10 @@ export class MetaBuilding {
 
     /**
      * Returns whether this building is removable
+     * @param {GameRoot} root
      * @returns {boolean}
      */
-    getIsRemovable() {
+    getIsRemovable(root) {
         return true;
     }
 
@@ -157,10 +158,9 @@ export class MetaBuilding {
 
     /**
      * Returns whether this building is rotateable
-     * @param {string} variant
      * @returns {boolean}
      */
-    getIsRotateable(variant) {
+    getIsRotateable() {
         return true;
     }
 
@@ -242,7 +242,7 @@ export class MetaBuilding {
      * @return {{ rotation: number, rotationVariant: number, connectedEntities?: Array<Entity> }}
      */
     computeOptimalDirectionAndRotationVariantAtTile({ root, tile, rotation, variant, layer }) {
-        if (!this.getIsRotateable(variant)) {
+        if (!this.getIsRotateable()) {
             return {
                 rotation: 0,
                 rotationVariant: 0,

@@ -92,26 +92,6 @@ export class GameState {
     }
 
     /**
-     *
-     * @param {string} nextStateId
-     * @param {object=} nextStatePayload
-     */
-    watchAdAndMoveToState(nextStateId, nextStatePayload = {}) {
-        if (this.app.adProvider.getCanShowVideoAd() && this.app.isRenderable()) {
-            this.moveToState(
-                "WatchAdState",
-                {
-                    nextStateId,
-                    nextStatePayload,
-                },
-                true
-            );
-        } else {
-            this.moveToState(nextStateId, nextStatePayload);
-        }
-    }
-
-    /**
      * Tracks clicks on a given element and calls the given callback *on this state*.
      * If you want to call another function wrap it inside a lambda.
      * @param {Element} element The element to track clicks on

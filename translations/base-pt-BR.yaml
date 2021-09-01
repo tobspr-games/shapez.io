@@ -13,14 +13,14 @@ steamPage:
         Enquanto no começo você apenas processa as formas, mais a frente você deve pintá-las - para isso você deve extrair e misturar cores!
 
         Comprar o jogo na Steam te garante acesso à versão completa, mas você pode jogar a versão demo em shapez.io primeiro e decidir depois!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: O que as pessoas dizem sobre o shapez.io
+    nothernlion_comment: Este jogo é ótimo - estou me divertindo muito jogando e o
+        tempo passou voando.
+    notch_comment: Droga. Eu realmente deveria dormir, mas eu acho que acabei de
+        descobrir como fazer um computador no shapez.io
+    steam_review_comment: Este jogo roubou minha vida e eu não a quero de volta.
+        Jogo de fábrica muito descontraído que não me deixa parar de fazer
+        linhas mais eficientes.
 global:
     loading: Carregando
     error: Erro
@@ -52,6 +52,7 @@ global:
         escape: ESC
         shift: Shift
         space: Espaço
+    loggingIn: Entrando
 demoBanners:
     title: Versão Demo
     intro: Compre a versão completa para desbloquear todos os recursos!
@@ -71,6 +72,12 @@ mainMenu:
     savegameLevel: Nível <x>
     savegameLevelUnknown: Nível desconhecido
     savegameUnnamed: Sem nome
+    puzzleMode: Modo Puzzle
+    back: Voltar
+    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
+        já disponível na Steam para se divertir ainda mais!
+    puzzleDlcWishlist: Adicione já a sua lista de desejos!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -84,6 +91,9 @@ dialogs:
         viewUpdate: Atualizações
         showUpgrades: Melhorias
         showKeybindings: Controles
+        retry: Tentar novamente
+        continue: Continue
+        playOffline: Jogar Offline
     importSavegameError:
         title: Erro de importação
         text: "Houve uma falha ao importar seu jogo salvo:"
@@ -181,6 +191,72 @@ dialogs:
         title: Tutorial disponível
         desc: Existe um tutorial em vídeo para esse nível, mas está disponível apenas em
             Inglês. Gostaria de assistí-lo?
+    editConstantProducer:
+        title: Selecionar Item
+    puzzleLoadFailed:
+        title: O carregamento dos desafios falhou
+        desc: "Infelizmente os desafios não puderam ser carregados:"
+    submitPuzzle:
+        title: Enviar desafio
+        descName: "Dê um nome ao seu desafio:"
+        descIcon: "Por favor crie um código exclusivo, o qual será o ícone do seu
+            Desafio (Você pode gera-los <link>aqui</link>, ou escolha um dos
+            gerados aleatoriamente abaixo):"
+        placeholderName: Nome do desafio
+    puzzleResizeBadBuildings:
+        title: Mudar o tamanho não é possível
+        desc: Você não pode deixar a zona menor, porque algumas construções ficariam
+            fora dela.
+    puzzleLoadError:
+        title: Desafio Ruim
+        desc: "O desafio não pôde ser carregado:"
+    offlineMode:
+        title: Modo Offline
+        desc: Não conseguimos nos conectar aos servidores, então o jogo terá que ser
+            jogado no Modo Offline. Por favor garanta que você tenha uma conexão
+            ativa com a internet.
+    puzzleDownloadError:
+        title: Erro no download
+        desc: "Falha ao baixar o desafio:"
+    puzzleSubmitError:
+        title: Erro no envio
+        desc: "Erro ao enviar seu desafio:"
+    puzzleSubmitOk:
+        title: Desafio publicado
+        desc: Parabéns! Seu desafio foi publicado e pode ser acessado por outros
+            jogadores. Você pode acha-lo na categoria "Meus Desafios".
+    puzzleCreateOffline:
+        title: Modo Offline
+        desc: Como você está no Modo Offline, não será possível salvar e/ou publicar
+            seus desafios. Você deseja continuar?
+    puzzlePlayRegularRecommendation:
+        title: Recomendação
+        desc: Eu <strong>fortemente</strong> recomendo jogar o jogo normal até o nível
+            12 antes de se aventurar na Puzzle DLC, senão você poderá encontrar
+            mecânicas que ainda não foram introduzidas. Você ainda deseja
+            continuar?
+    puzzleShare:
+        title: Código copiado
+        desc: O código do desafio (<key>) foi copiado para sua área de transferência!
+            Ele pode ser inserido no menu de desafios para acessar o desafio.
+    puzzleReport:
+        title: Denunciar Desafio
+        options:
+            profane: Ofensivo
+            unsolvable: Impossível
+            trolling: Antijogo
+    puzzleReportComplete:
+        title: Obrigado pelo seu feedback!
+        desc: O desafio foi marcado.
+    puzzleReportError:
+        title: Falha ao denunciar
+        desc: "Sua denúncia não pôde ser processada:"
+    puzzleLoadShortKey:
+        title: Insira código
+        desc: Insira o código do desafio para carrega-lo.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -202,6 +278,7 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
+        clearBelts: Clear belts
     colors:
         red: Vermelho
         green: Verde
@@ -214,7 +291,7 @@ ingame:
         uncolored: Sem cor
     buildingPlacement:
         cycleBuildingVariants: Aperte <key> para variações.
-        hotkeyLabel: "Hotkey: <key>"
+        hotkeyLabel: "Tecla: <key>"
         infoTexts:
             speed: Velocidade
             range: Distância
@@ -299,7 +376,7 @@ ingame:
                 não for necessário.
             2_3_more_cutters: "Bom trabalho! Agora coloque <strong>mais 2
                 cortadores</strong> para acelerar este processo lento!<br><br>
-                PS: Use as <strong> hotkeys 0-9 </strong> para acessar as
+                PS: Use as <strong> teclas 0-9 </strong> para acessar as
                 construções mais rápido!"
             3_1_rectangles: "Vamos extrair alguns retângulos! <strong>Construa 4
                 extratores</strong> e conecte-os ao hub.<br><br> PS: Segure
@@ -351,8 +428,51 @@ ingame:
                 title: Me ajuda
                 desc: Eu desenvolvo o jogo no meu tempo livre!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Conquistas
+                desc: Consiga todas elas!
+    puzzleEditorSettings:
+        zoneTitle: Zona
+        zoneWidth: Largura
+        zoneHeight: Altura
+        trimZone: Cortar
+        clearItems: Limpar Items
+        share: Compartilhar
+        report: Denunciar
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Criador de Desafios
+        instructions:
+            - 1. Coloque <strong>Produtores Constantes</strong> para gerar itens
+              e cores ao jogador
+            - 2. Monte uma ou mais itens que você quer que o jogador produza e
+              entregue em um ou mais <strong>Receptores de Objetivo</strong>
+            - 3. Uma vez que um Receptor de Objetivo recebe uma item por uma
+              certa quantidade de tempo, ele <strong>a salva como seu
+              objetivo</strong> , o qual o jogador terá que produzir depois
+              (Indicato pela <strong>insígnia verde</strong>).
+            - 4. Clique no <strong>botao de travar</strong> de uma construção
+              para desabilita-la.
+            - 5. Uma vez que você clicou em revisar, seu desafio será validado e
+              você poderá publica-lo.
+            - 6. Quando seu desafio for publicado, <strong>todas as construções
+              serão removidas</strong> exceto os Produtores Constantes e
+              Receptores de Objetivo - Essa é a parte que o jogador terá que
+              descobrir sozinho, por isso se chama desafio :)
+    puzzleCompletion:
+        title: Desafio Completo!
+        titleLike: "Clique no coração se você gostou do desafio:"
+        titleRating: O qual difícil foi esse desafio?
+        titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
+        continueBtn: Continuar jogando
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Autor
+        shortKey: Código
+        rating: Dificuldade
+        averageDuration: Duração média
+        completionRate: Taxa de sucesso
 shopUpgrades:
     belt:
         name: Esteiras, Distribuidores e Túneis
@@ -569,6 +689,19 @@ buildings:
             name: Fabricante de Itens
             description: Disponível no modo sandbox apenas, envia o sinal recebido do plano
                 de fios para o plano regular.
+    constant_producer:
+        default:
+            name: Produtor Constante
+            description: Produz constantemente um item ou cor específica.
+    goal_acceptor:
+        default:
+            name: Receptor de Objetivo
+            description: Entregue itens ao Receptor de Objetivo para os definir como o
+                objetivo.
+    block:
+        default:
+            name: Bloco
+            description: Te permite bloquear um espaço.
 storyRewards:
     reward_cutter_and_trash:
         title: Cortando formas
@@ -906,7 +1039,12 @@ settings:
             title: Tamanho do Mapa de Recursos
             description: Controla o tamanho das formas no mapa de panorama (quando afasta o
                 zoom).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Controles
     hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
@@ -980,10 +1118,15 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copiar valor abaixo do cursor"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotação: Para cima"
+        rotateToDown: "Rotação: Para baixo"
+        rotateToRight: "Rotação: Para direita"
+        rotateToLeft: "Rotação: Para esquerda"
+        constant_producer: Produtor Constante
+        goal_acceptor: Receptor de Objetivo
+        block: Bloco
+        massSelectClear: Limpar esteiras
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Sobre o jogo
     body: >-
@@ -1077,3 +1220,90 @@ tips:
     - Pressione F4 para mostrar seu FPS e taxa de tiques.
     - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
     - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
+puzzleMenu:
+    play: Jogar
+    edit: Editar
+    title: Modo Puzzle
+    createPuzzle: Criar Desafio
+    loadPuzzle: Carregar
+    reviewPuzzle: Revisar e Publicar
+    validatingPuzzle: Validando Desafio
+    submittingPuzzle: Enviando Desafio
+    noPuzzles: Não existem desafios nesta categoria atualmente.
+    categories:
+        levels: Níveis
+        new: Novo
+        top-rated: Melhor Avaliados
+        mine: Meus Desafios
+        easy: Fácil
+        hard: Difícil
+        completed: Completados
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+    validation:
+        title: Desafio inválido
+        noProducers: Por favor coloque um Produtor Constante!
+        noGoalAcceptors: Por favor coloque um Receptor de Objetivo!
+        goalAcceptorNoItem: Um ou mais Receptores de Objetivo ainda não tiveram um item
+            determinado. Entregue um item a ele para definir seu objetivo.
+        goalAcceptorRateNotMet: Um ou mais Receptores de Objetivo não estão recebendo
+            itens suficientes. Garanta que os indicadores estejam verdes para
+            todos os Receptores.
+        buildingOutOfBounds: Uma ou mais construções estão fora da área construível.
+            Você pode aumentar a área ou removê-los.
+        autoComplete: Seu desafio se completa sozinho! Por favor garanta que seus
+            Produtores Constantes não estão entregando diretamente aos seus
+            Receptores de Objetivo.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+        unknown: Unrated
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
+    invalid-api-key: Falha ao comunicar com o backend, por favor tente
+        atualizar/reiniciar o jogo (Chave API Inválida).
+    unauthorized: Falha ao comunicar com o backend, por favor tente
+        atualizar/reiniciar o jogo (Não autorizado).
+    bad-token: Falha ao comunicar com o backend, por favor tente atualizar/reiniciar
+        o jogo (Bad Token).
+    bad-id: Indentificador de desafio inválido.
+    not-found: O desafio não pôde ser achado.
+    bad-category: A categoria não pôde ser achada.
+    bad-short-key: O código é inválido.
+    profane-title: O nome do seu desafio contém palavras proibidas.
+    bad-title-too-many-spaces: O nome do seu desafio é muito curto.
+    bad-shape-key-in-emitter: Um Produtor Constante contém um item inválido.
+    bad-shape-key-in-goal: Um Receptor de Objetivo contém um item inválido.
+    no-emitters: Seu desafio não contém nenhum Produtor Constante.
+    no-goals: Seu desafio não contém nenhum Receptor de Objetivo.
+    short-key-already-taken: Esse código já está sendo usado, por favor escolha outro.
+    can-not-report-your-own-puzzle: Você não pode denunciar seu próprio desafio.
+    bad-payload: O pedido contém dados inválidos.
+    bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
+    timeout: Acabou o tempo do pedido.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

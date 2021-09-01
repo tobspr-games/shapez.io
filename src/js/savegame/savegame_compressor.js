@@ -13,15 +13,20 @@ function compressInt(i) {
     // Zero value breaks
     i += 1;
 
-    if (compressionCache[i]) {
-        return compressionCache[i];
+    // save `i` as the cache key
+    // to avoid it being modified by the
+    // rest of the function.
+    const cache_key = i;
+
+    if (compressionCache[cache_key]) {
+        return compressionCache[cache_key];
     }
     let result = "";
     do {
         result += charmap[i % charmap.length];
         i = Math.floor(i / charmap.length);
     } while (i > 0);
-    return (compressionCache[i] = result);
+    return (compressionCache[cache_key] = result);
 }
 
 /**

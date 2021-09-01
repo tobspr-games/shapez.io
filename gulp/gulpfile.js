@@ -139,7 +139,12 @@ gulp.task("main.webserver", () => {
     );
 });
 
-function serve({ standalone, chineseVersion = false }) {
+/**
+ *
+ * @param {object} param0
+ * @param {"web"|"standalone"|"china"|"wegame"} param0.version
+ */
+function serve({ version = "web" }) {
     browserSync.init({
         server: buildFolder,
         port: 3005,
@@ -163,7 +168,7 @@ function serve({ standalone, chineseVersion = false }) {
     gulp.watch(["../src/**/*.scss"], gulp.series("css.dev"));
 
     // Watch .html files, those trigger a html rebuild
-    gulp.watch("../src/**/*.html", gulp.series(standalone ? "html.standalone-dev" : "html.dev"));
+    gulp.watch("../src/**/*.html", gulp.series(version === "web" ? "html.dev" : "html.standalone-dev"));
 
     // Watch sound files
     // gulp.watch(["../res_raw/sounds/**/*.mp3", "../res_raw/sounds/**/*.wav"], gulp.series("sounds.dev"));
@@ -199,14 +204,25 @@ function serve({ standalone, chineseVersion = false }) {
         return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
-    // Start the webpack watching server (Will never return)
-    if (standalone) {
-        gulp.series("js.standalone-dev.watch")(() => true);
-    } else {
-        if (chineseVersion) {
-            gulp.series("china.js.dev.watch")(() => true);
-        } else {
+    switch (version) {
+        case "web": {
             gulp.series("js.dev.watch")(() => true);
+            break;
+        }
+        case "standalone": {
+            gulp.series("js.standalone-dev.watch")(() => true);
+            break;
+        }
+        case "china": {
+            gulp.series("china.js.dev.watch")(() => true);
+            break;
+        }
+        case "wegame": {
+            gulp.series("wegame.js.dev.watch")(() => true);
+            break;
+        }
+        default: {
+            throw new Error("Unknown version " + version);
         }
     }
 }
@@ -294,7 +310,7 @@ gulp.task(
 
 // Builds everything (standalone-prod)
 
-for (const prefix of ["", "china."]) {
+for (const prefix of ["", "china.", "wegame."]) {
     gulp.task(
         prefix + "step.standalone-prod.code",
         gulp.series("sounds.fullbuildHQ", "translations.fullBuild", prefix + "js.standalone-prod")
@@ -327,25 +343,45 @@ gulp.task(
 );
 gulp.task("main.deploy.prod", gulp.series("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
 gulp.task("main.deploy.all", gulp.series("main.deploy.staging", "main.deploy.prod"));
+
+// steam
 gulp.task("regular.main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+
+// china
 gulp.task(
     "china.main.standalone",
     gulp.series("china.build.standalone-prod", "china.standalone.package.prod")
 );
-gulp.task("standalone.all", gulp.series("regular.main.standalone", "china.main.standalone"));
+
+// wegame
+gulp.task(
+    "wegame.main.standalone",
+    gulp.series("wegame.build.standalone-prod", "wegame.standalone.package.prod")
+);
+
+// all (except wegame)
+gulp.task("standalone.steam", gulp.series("regular.main.standalone", "china.main.standalone"));
+gulp.task(
+    "standalone.all",
+    gulp.series("regular.main.standalone", "china.main.standalone", "wegame.main.standalone")
+);
 
 // Live-development
 gulp.task(
     "main.serveDev",
-    gulp.series("build.dev", () => serve({ standalone: false }))
+    gulp.series("build.dev", () => serve({ version: "web" }))
 );
 gulp.task(
     "main.serveStandalone",
-    gulp.series("build.standalone.dev", () => serve({ standalone: true }))
+    gulp.series("build.standalone.dev", () => serve({ version: "standalone" }))
 );
 gulp.task(
     "china.main.serveDev",
-    gulp.series("build.dev", () => serve({ standalone: false, chineseVersion: true }))
+    gulp.series("build.dev", () => serve({ version: "china" }))
+);
+gulp.task(
+    "wegame.main.serveDev",
+    gulp.series("build.dev", () => serve({ version: "wegame" }))
 );
 
 gulp.task("default", gulp.series("main.serveDev"));

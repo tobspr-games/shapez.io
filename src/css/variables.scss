@@ -18,8 +18,10 @@ $textLineHeight: 21px;
 $plainTextFontSize: 13px;
 $plainTextLineHeight: 17px;
 
-$supersmallTextFontSize: 10px;
-$supersmallTextLineHeight: 13px;
+$superDuperSmallTextFontSize: 8px;
+$superDuperSmallTextLineHeight: 9px;
+$superSmallTextFontSize: 10px;
+$superSmallTextLineHeight: 13px;
 $buttonFontSize: 14px;
 $buttonLineHeight: 18px;
 
@@ -33,6 +35,7 @@ $accentColorDark: #7d808a;
 $colorGreenBright: #66bb6a;
 $colorBlueBright: rgb(74, 151, 223);
 $colorRedBright: #ef5072;
+$colorOrangeBright: #ef9d50;
 $themeColor: #393747;
 $ingameHudBg: rgba(#333438, 0.9);
 
@@ -76,8 +79,16 @@ $mainFontScale: 1;
     // }
 }
 
+@mixin SuperDuperSmallText {
+    @include ScaleFont($superDuperSmallTextFontSize, $superDuperSmallTextLineHeight);
+    font-weight: $mainFontWeight;
+    font-family: $mainFont;
+    letter-spacing: $mainFontSpacing;
+    @include DebugText(green);
+}
+
 @mixin SuperSmallText {
-    @include ScaleFont($supersmallTextFontSize, $supersmallTextLineHeight);
+    @include ScaleFont($superSmallTextFontSize, $superSmallTextLineHeight);
     font-weight: $mainFontWeight;
     font-family: $mainFont;
     letter-spacing: $mainFontSpacing;

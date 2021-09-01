@@ -52,6 +52,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+    loggingIn: Logging in
 demoBanners:
     title: Demo Version
     intro: Get the standalone to unlock all features!
@@ -71,6 +72,12 @@ mainMenu:
     madeBy: Made by <author-link>
     subreddit: Reddit
     savegameUnnamed: Unnamed
+    puzzleMode: Puzzle Mode
+    back: Back
+    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
+        DLC now on Steam for even more fun!
+    puzzleDlcWishlist: Wishlist now!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -84,6 +91,9 @@ dialogs:
         viewUpdate: View Update
         showUpgrades: Show Upgrades
         showKeybindings: Show Keybindings
+        retry: Retry
+        continue: Continue
+        playOffline: Play Offline
     importSavegameError:
         title: Import Error
         text: "Failed to import your savegame:"
@@ -180,6 +190,70 @@ dialogs:
         title: Tutorial Available
         desc: There is a tutorial video available for this level, but it is only
             available in English. Would you like to watch it?
+    editConstantProducer:
+        title: Set Item
+    puzzleLoadFailed:
+        title: Puzzles failed to load
+        desc: "Unfortunately the puzzles could not be loaded:"
+    submitPuzzle:
+        title: Submit Puzzle
+        descName: "Give your puzzle a name:"
+        descIcon: "Please enter a unique short key, which will be shown as the icon of
+            your puzzle (You can generate them <link>here</link>, or choose one
+            of the randomly suggested shapes below):"
+        placeholderName: Puzzle Title
+    puzzleResizeBadBuildings:
+        title: Resize not possible
+        desc: You can't make the zone any smaller, because then some buildings would be
+            outside the zone.
+    puzzleLoadError:
+        title: Bad Puzzle
+        desc: "The puzzle failed to load:"
+    offlineMode:
+        title: Offline Mode
+        desc: We couldn't reach the servers, so the game has to run in offline mode.
+            Please make sure you have an active internet connection.
+    puzzleDownloadError:
+        title: Download Error
+        desc: "Failed to download the puzzle:"
+    puzzleSubmitError:
+        title: Submission Error
+        desc: "Failed to submit your puzzle:"
+    puzzleSubmitOk:
+        title: Puzzle Published
+        desc: Congratulations! Your puzzle has been published and can now be played by
+            others. You can now find it in the "My puzzles" section.
+    puzzleCreateOffline:
+        title: Offline Mode
+        desc: Since you are offline, you will not be able to save and/or publish your
+            puzzle. Would you still like to continue?
+    puzzlePlayRegularRecommendation:
+        title: Recommendation
+        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
+            before attempting the puzzle DLC, otherwise you may encounter
+            mechanics not yet introduced. Do you still want to continue?
+    puzzleShare:
+        title: Short Key Copied
+        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
+            can be entered in the puzzle menu to access the puzzle.
+    puzzleReport:
+        title: Report Puzzle
+        options:
+            profane: Profane
+            unsolvable: Not solvable
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Thank you for your feedback!
+        desc: The puzzle has been flagged.
+    puzzleReportError:
+        title: Failed to report
+        desc: "Your report could not get processed:"
+    puzzleLoadShortKey:
+        title: Enter short key
+        desc: Enter the short key of the puzzle to load it.
+    puzzleDelete:
+        title: Delete Puzzle?
+        desc: Are you sure you want to delete '<title>'? This can not be undone!
 ingame:
     keybindingsOverlay:
         moveMap: Move
@@ -201,6 +275,7 @@ ingame:
         clearSelection: Clear Selection
         pipette: Pipette
         switchLayers: Switch layers
+        clearBelts: Clear belts
     buildingPlacement:
         cycleBuildingVariants: Press <key> to cycle variants.
         hotkeyLabel: "Hotkey: <key>"
@@ -348,6 +423,47 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Hunt them all!
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Width
+        zoneHeight: Height
+        trimZone: Trim
+        clearItems: Clear Items
+        share: Share
+        report: Report
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Puzzle Creator
+        instructions:
+            - 1. Place <strong>Constant Producers</strong> to provide shapes and
+              colors to the player
+            - 2. Build one or more shapes you want the player to build later and
+              deliver it to one or more <strong>Goal Acceptors</strong>
+            - 3. Once a Goal Acceptor receives a shape for a certain amount of
+              time, it <strong>saves it as a goal</strong> that the player must
+              produce later (Indicated by the <strong>green badge</strong>).
+            - 4. Click the <strong>lock button</strong> on a building to disable
+              it.
+            - 5. Once you click review, your puzzle will be validated and you
+              can publish it.
+            - 6. Upon release, <strong>all buildings will be removed</strong>
+              except for the Producers and Goal Acceptors - That's the part that
+              the player is supposed to figure out for themselves, after all :)
+    puzzleCompletion:
+        title: Puzzle Completed!
+        titleLike: "Click the heart if you liked the puzzle:"
+        titleRating: How difficult did you find the puzzle?
+        titleRatingDesc: Your rating will help me to make you better suggestions in the future
+        continueBtn: Keep Playing
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Author
+        shortKey: Short Key
+        rating: Difficulty score
+        averageDuration: Avg. Duration
+        completionRate: Completion rate
 shopUpgrades:
     belt:
         name: Belts, Distributor & Tunnels
@@ -554,6 +670,18 @@ buildings:
             name: Item Producer
             description: Available in sandbox mode only, outputs the given signal from the
                 wires layer on the regular layer.
+    constant_producer:
+        default:
+            name: Constant Producer
+            description: Constantly outputs a specified shape or color.
+    goal_acceptor:
+        default:
+            name: Goal Acceptor
+            description: Deliver shapes to the goal acceptor to set them as a goal.
+    block:
+        default:
+            name: Block
+            description: Allows you to block a tile.
 storyRewards:
     reward_cutter_and_trash:
         title: Cutting Shapes
@@ -876,7 +1004,12 @@ settings:
             title: Map Resources Size
             description: Controls the size of the shapes on the map overview (when zooming
                 out).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Keybindings
     hint: "Tip: Be sure to make use of CTRL, SHIFT and ALT! They enable different
@@ -954,6 +1087,11 @@ keybindings:
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
+        constant_producer: Constant Producer
+        goal_acceptor: Goal Acceptor
+        block: Block
+        massSelectClear: Clear belts
+        showShapeTooltip: Show shape output tooltip
 about:
     title: About this Game
     body: >-
@@ -1039,3 +1177,88 @@ tips:
     - Press F4 to show your FPS and Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
     - You can click a pinned shape on the left side to unpin it.
+puzzleMenu:
+    play: Play
+    edit: Edit
+    title: Puzzle Mode
+    createPuzzle: Create Puzzle
+    loadPuzzle: Load
+    reviewPuzzle: Review & Publish
+    validatingPuzzle: Validating Puzzle
+    submittingPuzzle: Submitting Puzzle
+    noPuzzles: There are currently no puzzles in this section.
+    categories:
+        levels: Levels
+        new: New
+        top-rated: Top Rated
+        mine: My Puzzles
+        easy: Easy
+        hard: Hard
+        completed: Completed
+        medium: Medium
+        official: Official
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Categories
+        difficulties: By Difficulty
+        account: My Puzzles
+        search: Search
+    validation:
+        title: Invalid Puzzle
+        noProducers: Please place a Constant Producer!
+        noGoalAcceptors: Please place a Goal Acceptor!
+        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
+            Deliver a shape to them to set a goal.
+        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
+            Make sure that the indicators are green for all acceptors.
+        buildingOutOfBounds: One or more buildings are outside of the buildable area.
+            Either increase the area or remove them.
+        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
+            producers are not directly delivering to your goal acceptors.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+        unknown: Unrated
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: You are performing your actions too frequent. Please wait a bit.
+    invalid-api-key: Failed to communicate with the backend, please try to
+        update/restart the game (Invalid Api Key).
+    unauthorized: Failed to communicate with the backend, please try to
+        update/restart the game (Unauthorized).
+    bad-token: Failed to communicate with the backend, please try to update/restart
+        the game (Bad Token).
+    bad-id: Invalid puzzle identifier.
+    not-found: The given puzzle could not be found.
+    bad-category: The given category could not be found.
+    bad-short-key: The given short key is invalid.
+    profane-title: Your puzzle title contains profane words.
+    bad-title-too-many-spaces: Your puzzle title is too short.
+    bad-shape-key-in-emitter: A constant producer has an invalid item.
+    bad-shape-key-in-goal: A goal acceptor has an invalid item.
+    no-emitters: Your puzzle does not contain any constant producers.
+    no-goals: Your puzzle does not contain any goal acceptors.
+    short-key-already-taken: This short key is already taken, please use another one.
+    can-not-report-your-own-puzzle: You can not report your own puzzle.
+    bad-payload: The request contains invalid data.
+    bad-building-placement: Your puzzle contains invalid placed buildings.
+    timeout: The request timed out.
+    too-many-likes-already: The puzzle alreay got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

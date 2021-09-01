@@ -10,6 +10,10 @@ const logger = createLogger("electron-wrapper");
 
 export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     initialize() {
+        this.dlcs = {
+            puzzle: false,
+        };
+
         this.steamOverlayCanvasFix = document.createElement("canvas");
         this.steamOverlayCanvasFix.width = 1;
         this.steamOverlayCanvasFix.height = 1;
@@ -23,9 +27,9 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
         this.app.storage = new StorageImplElectron(this);
         this.app.achievementProvider = new SteamAchievementProvider(this.app);
 
-        return this.initializeAchievementProvider().then(() =>
-            PlatformWrapperInterface.prototype.initialize.call(this)
-        );
+        return this.initializeAchievementProvider()
+            .then(() => this.initializeDlcStatus())
+            .then(() => PlatformWrapperInterface.prototype.initialize.call(this));
     }
 
     steamOverlayFixRedrawCanvas() {
@@ -64,6 +68,37 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
 
             this.app.achievementProvider = new NoAchievementProvider(this.app);
         });
+    }
+
+    initializeDlcStatus() {
+        const renderer = getIPCRenderer();
+
+        if (G_WEGAME_VERSION) {
+            return Promise.resolve();
+        }
+
+        logger.log("Checking DLC ownership ...");
+        // @todo: Don't hardcode the app id
+        return renderer.invoke("steam:check-app-ownership", 1625400).then(
+            res => {
+                logger.log("Got DLC ownership:", res);
+                this.dlcs.puzzle = Boolean(res);
+
+                if (this.dlcs.puzzle && !G_IS_DEV) {
+                    this.app.gameAnalytics.activateDlc("puzzle").then(
+                        () => {
+                            logger.log("Puzzle DLC successfully activated");
+                        },
+                        error => {
+                            logger.error("Failed to activate puzzle DLC:", error);
+                        }
+                    );
+                }
+            },
+            err => {
+                logger.error("Failed to get DLC ownership:", err);
+            }
+        );
     }
 
     getSupportsFullscreen() {

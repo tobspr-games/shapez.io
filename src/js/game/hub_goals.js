@@ -110,7 +110,7 @@ export class HubGoals extends BasicSerializableObject {
         // Allow quickly switching goals in dev mode
         if (G_IS_DEV) {
             window.addEventListener("keydown", ev => {
-                if (ev.key === "b") {
+                if (ev.key === "p") {
                     // root is not guaranteed to exist within ~0.5s after loading in
                     if (this.root && this.root.app && this.root.app.gameAnalytics) {
                         if (!this.isEndOfDemoReached()) {
@@ -193,6 +193,10 @@ export class HubGoals extends BasicSerializableObject {
      */
     isRewardUnlocked(reward) {
         if (G_IS_DEV && globalConfig.debug.allBuildingsUnlocked) {
+            return true;
+        }
+        if (this.root.gameMode.getLevelDefinitions().length < 1) {
+            // no story, so always unlocked
             return true;
         }
         return !!this.gainedRewards[reward];
@@ -472,6 +476,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getBeltBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 
@@ -480,6 +487,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getUndergroundBeltBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
         return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
     }
 
@@ -488,6 +498,9 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getMinerBaseSpeed() {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.minerSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
         return globalConfig.minerSpeedItemsPerSecond * this.upgradeImprovements.miner;
     }
 
@@ -497,9 +510,14 @@ export class HubGoals extends BasicSerializableObject {
      * @returns {number} items / sec
      */
     getProcessorBaseSpeed(processorType) {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed * 10;
+        }
+
         switch (processorType) {
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
+            case enumItemProcessorTypes.goal:
                 return 1e30;
             case enumItemProcessorTypes.balancer:
                 return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;

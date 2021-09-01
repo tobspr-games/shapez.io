@@ -128,7 +128,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
         this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
-        this.root.signals.storyGoalCompleted.add(() => this.currentMetaBuilding.set(null));
         this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
 
@@ -366,7 +365,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             if (
                 tileBelow &&
                 this.root.app.settings.getAllSettings().pickMinerOnPatch &&
-                this.root.currentLayer === "regular"
+                this.root.currentLayer === "regular" &&
+                this.root.gameMode.hasResources()
             ) {
                 this.currentMetaBuilding.set(gMetaBuildingRegistry.findByClass(MetaMinerBuilding));
 
@@ -386,6 +386,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Disable pipetting the hub
         if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
+            this.currentMetaBuilding.set(null);
+            return;
+        }
+
+        // Disallow picking excluded buildings
+        if (this.root.gameMode.isBuildingExcluded(extracted.metaClass)) {
             this.currentMetaBuilding.set(null);
             return;
         }
@@ -430,7 +436,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @param {Vector} tile
      */
     tryPlaceCurrentBuildingAt(tile) {
-        if (this.root.camera.zoomLevel < globalConfig.mapChunkOverviewMinZoom) {
+        if (this.root.camera.getIsMapOverlayActive()) {
             // Dont allow placing in overview mode
             return;
         }

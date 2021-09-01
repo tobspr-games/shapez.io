@@ -46,14 +46,6 @@ export class StorageImplElectron extends StorageInterface {
         });
     }
 
-    writeFileSyncIfSupported(filename, contents) {
-        return getIPCRenderer().sendSync("fs-sync-job", {
-            type: "write",
-            filename,
-            contents,
-        });
-    }
-
     readFileAsync(filename) {
         return new Promise((resolve, reject) => {
             // ipcMain

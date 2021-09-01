@@ -13,6 +13,7 @@ import { SavegameInterface_V1005 } from "./schemas/1005";
 import { SavegameInterface_V1006 } from "./schemas/1006";
 import { SavegameInterface_V1007 } from "./schemas/1007";
 import { SavegameInterface_V1008 } from "./schemas/1008";
+import { SavegameInterface_V1009 } from "./schemas/1009";
 
 const logger = createLogger("savegame");
 
@@ -53,7 +54,7 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1008;
+        return 1009;
     }
 
     /**
@@ -61,6 +62,24 @@ export class Savegame extends ReadWriteProxy {
      */
     static getReaderClass() {
         return savegameInterfaces[Savegame.getCurrentVersion()];
+    }
+
+    /**
+     *
+     * @param {Application} app
+     * @returns
+     */
+    static createPuzzleSavegame(app) {
+        return new Savegame(app, {
+            internalId: "puzzle",
+            metaDataRef: {
+                internalId: "puzzle",
+                lastUpdate: 0,
+                version: 0,
+                level: 0,
+                name: "puzzle",
+            },
+        });
     }
 
     /**
@@ -134,6 +153,11 @@ export class Savegame extends ReadWriteProxy {
         if (data.version === 1007) {
             SavegameInterface_V1008.migrate1007to1008(data);
             data.version = 1008;
+        }
+
+        if (data.version === 1008) {
+            SavegameInterface_V1009.migrate1008to1009(data);
+            data.version = 1009;
         }
 
         return ExplainedResult.good();

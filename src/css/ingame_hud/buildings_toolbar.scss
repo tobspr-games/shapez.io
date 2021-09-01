@@ -37,7 +37,7 @@
 
             .building {
                 @include S(width, 30px);
-                @include S(height, 22px);
+                @include S(height, 30px);
                 background-size: 45%;
 
                 &:not(.unlocked) {
@@ -49,63 +49,96 @@
         }
 
         .building {
-            color: $accentColorDark;
             display: flex;
-            flex-direction: column;
+            @include S(width, 40px);
             position: relative;
-            align-items: center;
-            justify-content: center;
-            @include S(padding, 5px);
-            @include S(padding-bottom, 1px);
-            @include S(width, 35px);
             @include S(height, 40px);
+            .icon {
+                color: $accentColorDark;
+                display: flex;
+                flex-direction: column-reverse;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                @include S(border-radius, $globalBorderRadius);
 
-            background: center center / 70% no-repeat;
+                background: center center / 70% no-repeat;
+            }
 
             &:not(.unlocked) {
-                @include S(width, 20px);
-                opacity: 0.15;
-                background-image: none !important;
-
-                &::before {
-                    content: " ";
-
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    z-index: 4;
-                    & {
-                        /* @load-async */
-                        background: uiResource("locked_building.png") center center / #{D(20px)} #{D(20px)}
-                            no-repeat;
+                @include S(width, 25px);
+                .icon {
+                    opacity: 0.15;
+                }
+                &.editor {
+                    .icon {
+                        pointer-events: all;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: rgba(22, 30, 68, 0.1);
+                        }
+                    }
+                }
+                &:not(.editor) {
+                    .icon {
+                        background-image: uiResource("locked_building.png") !important;
                     }
                 }
             }
 
-            @include S(border-radius, $globalBorderRadius);
-
             &.unlocked {
-                pointer-events: all;
-                transition: all 50ms ease-in-out;
-                transition-property: background-color, transform;
+                .icon {
+                    pointer-events: all;
+                    transition: all 50ms ease-in-out;
+                    transition-property: background-color, transform;
+                    cursor: pointer;
 
-                cursor: pointer;
-                &:hover {
-                    background-color: rgba(30, 40, 90, 0.1);
+                    &:hover {
+                        background-color: rgba(30, 40, 90, 0.1);
+                    }
+
+                    &.pressed {
+                        transform: scale(0.9) !important;
+                    }
                 }
-
-                &.pressed {
-                    transform: scale(0.9) !important;
-                }
-
                 &.selected {
                     // transform: scale(1.05);
                     background-color: rgba(lighten($colorBlueBright, 9), 0.4);
+                    @include S(border-radius, 2px);
 
                     .keybinding {
                         color: #111;
+                    }
+                }
+
+                .puzzle-lock {
+                    & {
+                        /* @load-async */
+                        background: uiResource("locked_building.png") center center / 90% no-repeat;
+                    }
+
+                    display: grid;
+                    grid-auto-flow: column;
+
+                    position: absolute;
+                    @include S(top, -15px);
+                    left: 50%;
+                    transform: translateX(-50%) !important;
+                    transition: all 0.12s ease-in-out;
+                    transition-property: opacity, transform;
+
+                    cursor: pointer;
+                    pointer-events: all;
+
+                    @include S(width, 12px);
+                    @include S(height, 12px);
+
+                    &:hover {
+                        opacity: 0.5;
                     }
                 }
             }

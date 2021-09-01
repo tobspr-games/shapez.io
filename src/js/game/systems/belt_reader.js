@@ -14,7 +14,6 @@ export class BeltReaderSystem extends GameSystemWithFilter {
         const minimumTimeForThroughput = now - 1;
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-
             const readerComp = entity.components.BeltReader;
             const pinsComp = entity.components.WiredPins;
 
@@ -23,12 +22,14 @@ export class BeltReaderSystem extends GameSystemWithFilter {
                 readerComp.lastItemTimes.shift();
             }
 
-            pinsComp.slots[1].value = readerComp.lastItem;
-            pinsComp.slots[0].value =
-                (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
-                minimumTimeForThroughput
-                    ? BOOL_TRUE_SINGLETON
-                    : BOOL_FALSE_SINGLETON;
+            if (pinsComp) {
+                pinsComp.slots[1].value = readerComp.lastItem;
+                pinsComp.slots[0].value =
+                    (readerComp.lastItemTimes[readerComp.lastItemTimes.length - 1] || 0) >
+                    minimumTimeForThroughput
+                        ? BOOL_TRUE_SINGLETON
+                        : BOOL_FALSE_SINGLETON;
+            }
 
             if (now - readerComp.lastThroughputComputation > 0.5) {
                 // Compute throughput

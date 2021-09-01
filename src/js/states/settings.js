@@ -1,3 +1,4 @@
+import { THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
 import { allApplicationSettings, enumCategories } from "../profile/application_settings";
@@ -30,10 +31,12 @@ export class SettingsState extends TextualGameState {
             <div class="other">
 
             ${
-                G_CHINA_VERSION
+                G_CHINA_VERSION || G_WEGAME_VERSION
                     ? ""
                     : `
                 <button class="styledButton about">${T.about.title}</button>
+                <button class="styledButton privacy">Privacy Policy</button>
+
 `
             }
                 <div class="versionbar">
@@ -74,7 +77,7 @@ export class SettingsState extends TextualGameState {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
 
-            if (G_CHINA_VERSION && setting.id === "language") {
+            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
                 continue;
             }
 
@@ -105,8 +108,11 @@ export class SettingsState extends TextualGameState {
     onEnter(payload) {
         this.renderBuildText();
 
-        if (!G_CHINA_VERSION) {
+        if (!G_CHINA_VERSION && !G_WEGAME_VERSION) {
             this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
+                preventDefault: false,
+            });
+            this.trackClicks(this.htmlElement.querySelector(".privacy"), this.onPrivacyClicked, {
                 preventDefault: false,
             });
         }
@@ -144,7 +150,7 @@ export class SettingsState extends TextualGameState {
 
     initSettings() {
         allApplicationSettings.forEach(setting => {
-            if (G_CHINA_VERSION && setting.id === "language") {
+            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
                 return;
             }
 
@@ -178,6 +184,10 @@ export class SettingsState extends TextualGameState {
 
     onAboutClicked() {
         this.moveToStateAddGoBack("AboutState");
+    }
+
+    onPrivacyClicked() {
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.privacyPolicy);
     }
 
     onKeybindingsClicked() {

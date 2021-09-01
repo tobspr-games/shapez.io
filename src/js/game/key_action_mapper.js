@@ -33,6 +33,8 @@ export const KEYMAPPINGS = {
 
         switchLayers: { keyCode: key("E") },
 
+        showShapeTooltip: { keyCode: 18 }, // ALT
+
         shapeViewer: { keyCode: 119 }, // F8
     },
 
@@ -51,6 +53,11 @@ export const KEYMAPPINGS = {
     },
 
     buildings: {
+        // Puzzle buildings
+        constant_producer: { keyCode: key("H") },
+        goal_acceptor: { keyCode: key("N") },
+        block: { keyCode: key("4") },
+
         // Primary Toolbar
         belt: { keyCode: key("1") },
         balancer: { keyCode: key("2") },
@@ -104,6 +111,7 @@ export const KEYMAPPINGS = {
         massSelectSelectMultiple: { keyCode: 16 }, // SHIFT
         massSelectCopy: { keyCode: key("C") },
         massSelectCut: { keyCode: key("X") },
+        massSelectClear: { keyCode: key("B") },
         confirmMassDelete: { keyCode: 46 }, // DEL
         pasteLastBlueprint: { keyCode: key("V") },
     },
@@ -264,6 +272,8 @@ export function getStringForKeyCode(code) {
             return ".";
         case 191:
             return "/";
+        case 192:
+            return "`";
         case 219:
             return "[";
         case 220:
@@ -322,6 +332,15 @@ export class Keybinding {
      */
     add(receiver, scope = null) {
         this.signal.add(receiver, scope);
+    }
+
+    /**
+     * Adds an event listener
+     * @param {function() : void} receiver
+     * @param {object=} scope
+     */
+    addToTop(receiver, scope = null) {
+        this.signal.addToTop(receiver, scope);
     }
 
     /**

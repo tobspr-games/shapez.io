@@ -7,7 +7,7 @@ export const IS_DEBUG =
 
 export const SUPPORT_TOUCH = false;
 
-export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0;
+export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0 && !G_IS_DEV;
 
 const smoothCanvas = true;
 
@@ -17,7 +17,11 @@ export const THIRDPARTY_URLS = {
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
 
+    privacyPolicy: "https://tobspr.io/privacy.html",
+
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
+    stanaloneCampaignLink: "https://get.shapez.io",
+    puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",
 
     levelTutorialVideos: {
         21: "https://www.youtube.com/watch?v=0nUfRLMCcgo&",
@@ -53,6 +57,7 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
+    chunkAggregateSize: 4,
     mapChunkOverviewMinZoom: 0.9,
     mapChunkWorldSize: null, // COMPUTED
 
@@ -70,6 +75,13 @@ export const globalConfig = {
     undergroundBeltMaxTilesByTier: [5, 9],
 
     readerAnalyzeIntervalSeconds: 10,
+
+    goalAcceptorItemsRequired: 12,
+    goalAcceptorsPerProducer: 5,
+    puzzleModeSpeed: 3,
+    puzzleMinBoundsSize: 2,
+    puzzleMaxBoundsSize: 20,
+    puzzleValidationDurationSeconds: 30,
 
     buildingSpeeds: {
         cutter: 1 / 4,
@@ -93,7 +105,7 @@ export const globalConfig = {
     gameSpeed: 1,
 
     warmupTimeSecondsFast: 0.5,
-    warmupTimeSecondsRegular: 3,
+    warmupTimeSecondsRegular: 1.5,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,
