@@ -1,0 +1,38 @@
+#state_WegameSplashState {
+    background: #000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapper {
+        opacity: 0;
+        @include InlineAnimation(5.9s ease-in-out) {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        text-align: center;
+        color: #fff;
+        @include Heading;
+
+        strong {
+            display: block;
+            @include SuperHeading;
+            @include S(margin-bottom, 20px);
+        }
+
+        div {
+            @include S(margin-bottom, 10px);
+        }
+    }
+}

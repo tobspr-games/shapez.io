@@ -16,6 +16,7 @@ import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { enumNotificationType } from "./parts/notifications";
 import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDShapeTooltip } from "./parts/shape_tooltip";
 import { HUDVignetteOverlay } from "./parts/vignette_overlay";
 import { TrailerMaker } from "./trailer_maker";
 
@@ -48,6 +49,8 @@ export class GameHUD {
 
             blueprintPlacer: new HUDBlueprintPlacer(this.root),
             buildingPlacer: new HUDBuildingPlacer(this.root),
+
+            shapeTooltip: new HUDShapeTooltip(this.root),
 
             // Must always exist
             settingsMenu: new HUDSettingsMenu(this.root),
@@ -189,6 +192,7 @@ export class GameHUD {
             "colorBlindHelper",
             "changesDebugger",
             "minerHighlight",
+            "shapeTooltip",
         ];
 
         for (let i = 0; i < partsOrder.length; ++i) {

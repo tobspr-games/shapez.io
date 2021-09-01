@@ -7,7 +7,7 @@ export const IS_DEBUG =
 
 export const SUPPORT_TOUCH = false;
 
-export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0;
+export const IS_MAC = navigator.platform.toLowerCase().indexOf("mac") >= 0 && !G_IS_DEV;
 
 const smoothCanvas = true;
 
@@ -16,6 +16,8 @@ export const THIRDPARTY_URLS = {
     github: "https://github.com/tobspr/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
+
+    privacyPolicy: "https://tobspr.io/privacy.html",
 
     standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
     stanaloneCampaignLink: "https://get.shapez.io",
@@ -55,6 +57,7 @@ export const globalConfig = {
 
     // Map
     mapChunkSize: 16,
+    chunkAggregateSize: 4,
     mapChunkOverviewMinZoom: 0.9,
     mapChunkWorldSize: null, // COMPUTED
 

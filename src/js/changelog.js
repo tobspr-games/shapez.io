@@ -1,5 +1,28 @@
 export const CHANGELOG = [
     {
+        version: "1.4.4",
+        date: "29.08.2021",
+        entries: [
+            "Hotfix: Fixed the balancer not distributing items evenly, caused by the 1.4.3 update. Sorry for any inconveniences!",
+        ],
+    },
+    {
+        version: "1.4.3",
+        date: "28.08.2021",
+        entries: [
+            "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101) (PS: There is now a setting to have it always on!)",
+            "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
+            "Puzzle DLC: There is now a 'next puzzle' button!",
+            "Puzzle DLC: There is now a search function!",
+            "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
+            "Further performance improvements (Thanks to PFedak)",
+            "Improved puzzle validation (Thanks to Sense101)",
+            "Input fields in dialogs should now automatically focus",
+            "Fix selected building being deselected at level up (Thanks to EmeraldBlock)",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.4.2",
         date: "24.06.2021",
         entries: [

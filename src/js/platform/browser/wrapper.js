@@ -135,15 +135,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
     openExternalLink(url, force = false) {
         logger.log("Opening external:", url);
-        if (force || this.embedProvider.externalLinks) {
-            window.open(url);
-        } else {
-            // Do nothing
-            alert(
-                "This platform does not allow opening external links. You can play on https://shapez.io directly to open them.\n\nClicked Link: " +
-                    url
-            );
-        }
+        window.open(url);
     }
 
     performRestart() {

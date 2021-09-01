@@ -32,8 +32,8 @@ const MAX_QUEUED_CHARGES = 2;
  * Type of a processor implementation
  * @typedef {{
  *   entity: Entity,
- *   items: Array<{ item: BaseItem, sourceSlot: number }>,
- *   itemsBySlot: Object<number, BaseItem>,
+ *   items: Map<number, BaseItem>,
+ *   inputCount: number,
  *   outItems: Array<ProducedItem>
  *   }} ProcessorImplementationPayload
  */
@@ -189,7 +189,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // DEFAULT
             // By default, we can start processing once all inputs are there
             case null: {
-                return processorComp.inputSlots.length >= processorComp.inputsPerCharge;
+                return processorComp.inputCount >= processorComp.inputsPerCharge;
             }
 
             // QUAD PAINTER
@@ -197,18 +197,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             case enumItemProcessorRequirements.painterQuad: {
                 const pinsComp = entity.components.WiredPins;
 
-                /** @type {Object.<number, { item: BaseItem, sourceSlot: number }>} */
-                const itemsBySlot = {};
-                for (let i = 0; i < processorComp.inputSlots.length; ++i) {
-                    itemsBySlot[processorComp.inputSlots[i].sourceSlot] = processorComp.inputSlots[i];
-                }
-
                 // First slot is the shape, so if it's not there we can't do anything
-                if (!itemsBySlot[0]) {
+                const shapeItem = /** @type {ShapeItem} */ (processorComp.inputSlots.get(0));
+                if (!shapeItem) {
                     return false;
                 }
 
-                const shapeItem = /** @type {ShapeItem} */ (itemsBySlot[0].item);
                 const slotStatus = [];
 
                 // Check which slots are enabled
@@ -233,7 +227,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check if all colors of the enabled slots are there
                 for (let i = 0; i < slotStatus.length; ++i) {
-                    if (slotStatus[i] && !itemsBySlot[1 + i]) {
+                    if (slotStatus[i] && !processorComp.inputSlots.get(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
                         for (let j = 0; j < 4; ++j) {
@@ -262,13 +256,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         // First, take items
         const items = processorComp.inputSlots;
-        processorComp.inputSlots = [];
-
-        /** @type {Object<string, BaseItem>} */
-        const itemsBySlot = {};
-        for (let i = 0; i < items.length; ++i) {
-            itemsBySlot[items[i].sourceSlot] = items[i].item;
-        }
 
         /** @type {Array<ProducedItem>} */
         const outItems = [];
@@ -281,8 +268,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         handler({
             entity,
             items,
-            itemsBySlot,
             outItems,
+            inputCount: processorComp.inputCount,
         });
 
         // Track produced items
@@ -304,6 +291,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             items: outItems,
             remainingTime: timeToProcess,
         });
+
+        processorComp.inputSlots.clear();
+        processorComp.inputCount = 0;
     }
 
     /**
@@ -317,12 +307,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const availableSlots = payload.entity.components.ItemEjector.slots.length;
         const processorComp = payload.entity.components.ItemProcessor;
 
-        const nextSlot = processorComp.nextOutputSlot++ % availableSlots;
-
-        for (let i = 0; i < payload.items.length; ++i) {
+        for (let i = 0; i < 2; ++i) {
+            const item = payload.items.get(i);
+            if (!item) {
+                continue;
+            }
             payload.outItems.push({
-                item: payload.items[i].item,
-                preferredSlot: (nextSlot + i) % availableSlots,
+                item,
+                preferredSlot: processorComp.nextOutputSlot++ % availableSlots,
                 doNotTrack: true,
             });
         }
@@ -333,20 +325,25 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_CUTTER(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
         const inputDefinition = inputItem.definition;
 
         const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
 
+        const ejectorComp = payload.entity.components.ItemEjector;
         for (let i = 0; i < cutDefinitions.length; ++i) {
             const definition = cutDefinitions[i];
-            if (!definition.isEntirelyEmpty()) {
-                payload.outItems.push({
-                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
-                    requiredSlot: i,
-                });
+
+            if (definition.isEntirelyEmpty()) {
+                ejectorComp.slots[i].lastItem = null;
+                continue;
             }
+
+            payload.outItems.push({
+                item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                requiredSlot: i,
+            });
         }
     }
 
@@ -354,20 +351,25 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_CUTTER_QUAD(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
         const inputDefinition = inputItem.definition;
 
         const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
 
+        const ejectorComp = payload.entity.components.ItemEjector;
         for (let i = 0; i < cutDefinitions.length; ++i) {
             const definition = cutDefinitions[i];
-            if (!definition.isEntirelyEmpty()) {
-                payload.outItems.push({
-                    item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
-                    requiredSlot: i,
-                });
+
+            if (definition.isEntirelyEmpty()) {
+                ejectorComp.slots[i].lastItem = null;
+                continue;
             }
+
+            payload.outItems.push({
+                item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                requiredSlot: i,
+            });
         }
     }
 
@@ -375,7 +377,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -389,7 +391,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER_CCW(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -403,7 +405,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_ROTATER_180(payload) {
-        const inputItem = /** @type {ShapeItem} */ (payload.items[0].item);
+        const inputItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
         const inputDefinition = inputItem.definition;
 
@@ -417,8 +419,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_STACKER(payload) {
-        const lowerItem = /** @type {ShapeItem} */ (payload.itemsBySlot[0]);
-        const upperItem = /** @type {ShapeItem} */ (payload.itemsBySlot[1]);
+        const lowerItem = /** @type {ShapeItem} */ (payload.items.get(0));
+        const upperItem = /** @type {ShapeItem} */ (payload.items.get(1));
 
         assert(lowerItem instanceof ShapeItem, "Input for lower stack is not a shape");
         assert(upperItem instanceof ShapeItem, "Input for upper stack is not a shape");
@@ -444,8 +446,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_MIXER(payload) {
         // Find both colors and combine them
-        const item1 = /** @type {ColorItem} */ (payload.items[0].item);
-        const item2 = /** @type {ColorItem} */ (payload.items[1].item);
+        const item1 = /** @type {ColorItem} */ (payload.items.get(0));
+        const item2 = /** @type {ColorItem} */ (payload.items.get(1));
         assert(item1 instanceof ColorItem, "Input for color mixer is not a color");
         assert(item2 instanceof ColorItem, "Input for color mixer is not a color");
 
@@ -467,8 +469,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_PAINTER(payload) {
-        const shapeItem = /** @type {ShapeItem} */ (payload.itemsBySlot[0]);
-        const colorItem = /** @type {ColorItem} */ (payload.itemsBySlot[1]);
+        const shapeItem = /** @type {ShapeItem} */ (payload.items.get(0));
+        const colorItem = /** @type {ColorItem} */ (payload.items.get(1));
 
         const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(
             shapeItem.definition,
@@ -484,9 +486,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_PAINTER_DOUBLE(payload) {
-        const shapeItem1 = /** @type {ShapeItem} */ (payload.itemsBySlot[0]);
-        const shapeItem2 = /** @type {ShapeItem} */ (payload.itemsBySlot[1]);
-        const colorItem = /** @type {ColorItem} */ (payload.itemsBySlot[2]);
+        const shapeItem1 = /** @type {ShapeItem} */ (payload.items.get(0));
+        const shapeItem2 = /** @type {ShapeItem} */ (payload.items.get(1));
+        const colorItem = /** @type {ColorItem} */ (payload.items.get(2));
 
         assert(shapeItem1 instanceof ShapeItem, "Input for painter is not a shape");
         assert(shapeItem2 instanceof ShapeItem, "Input for painter is not a shape");
@@ -514,14 +516,15 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_PAINTER_QUAD(payload) {
-        const shapeItem = /** @type {ShapeItem} */ (payload.itemsBySlot[0]);
+        const shapeItem = /** @type {ShapeItem} */ (payload.items.get(0));
         assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
 
         /** @type {Array<enumColors>} */
         const colors = [null, null, null, null];
         for (let i = 0; i < 4; ++i) {
-            if (payload.itemsBySlot[i + 1]) {
-                colors[i] = /** @type {ColorItem} */ (payload.itemsBySlot[i + 1]).color;
+            const colorItem = /** @type {ColorItem} */ (payload.items.get(i + 1));
+            if (colorItem) {
+                colors[i] = colorItem.color;
             }
         }
 
@@ -540,7 +543,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_READER(payload) {
         // Pass through the item
-        const item = payload.itemsBySlot[0];
+        const item = payload.items.get(0);
         payload.outItems.push({
             item,
             doNotTrack: true,
@@ -559,8 +562,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const hubComponent = payload.entity.components.Hub;
         assert(hubComponent, "Hub item processor has no hub component");
 
-        for (let i = 0; i < payload.items.length; ++i) {
-            const item = /** @type {ShapeItem} */ (payload.items[i].item);
+        // Hardcoded
+        for (let i = 0; i < payload.inputCount; ++i) {
+            const item = /** @type {ShapeItem} */ (payload.items.get(i));
+            if (!item) {
+                continue;
+            }
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
         }
     }
@@ -570,7 +577,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_GOAL(payload) {
         const goalComp = payload.entity.components.GoalAcceptor;
-        const item = payload.items[0].item;
+        const item = payload.items.get(0);
         const now = this.root.time.now();
 
         if (goalComp.item && !item.equals(goalComp.item)) {
@@ -584,7 +591,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         if (this.root.gameMode.getIsEditor()) {
             // while playing in editor, assign the item
-            goalComp.item = payload.items[0].item;
+            goalComp.item = item;
         }
 
         goalComp.lastDelivery = {

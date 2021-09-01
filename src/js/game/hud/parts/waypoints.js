@@ -45,7 +45,7 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     createElements(parent) {
         // Create the helper box on the lower right when zooming out
-        if (this.root.app.settings.getAllSettings().offerHints) {
+        if (this.root.app.settings.getAllSettings().offerHints && !G_WEGAME_VERSION) {
             this.hintElement = makeDiv(
                 parent,
                 "ingame_HUD_Waypoints_Hint",
@@ -121,10 +121,12 @@ export class HUDWaypoints extends BaseHUDPart {
         }
 
         // Catch mouse and key events
-        this.root.camera.downPreHandler.add(this.onMouseDown, this);
-        this.root.keyMapper
-            .getBinding(KEYMAPPINGS.navigation.createMarker)
-            .add(() => this.requestSaveMarker({}));
+        if (!G_WEGAME_VERSION) {
+            this.root.camera.downPreHandler.add(this.onMouseDown, this);
+            this.root.keyMapper
+                .getBinding(KEYMAPPINGS.navigation.createMarker)
+                .add(() => this.requestSaveMarker({}));
+        }
 
         /**
          * Stores at how much opacity the markers should be rendered on the map.

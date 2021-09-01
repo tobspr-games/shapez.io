@@ -447,7 +447,7 @@ ingame:
         clearItems: Elimina oggetti
         share: Condividi
         report: Segnala
-        clearBuildings: Clear Buildings
+        clearBuildings: Cancella edifici
         resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Creazione puzzle
@@ -477,6 +477,7 @@ ingame:
             in futuro
         continueBtn: Continua a giocare
         menuBtn: Menù
+        nextPuzzle: Puzzle successivo
     puzzleMetadata:
         author: Autore
         shortKey: Codice
@@ -745,7 +746,7 @@ storyRewards:
     reward_rotater_ccw:
         title: Rotazione antioraria
         desc: Hai sbloccato una variante del <strong>ruotatore</strong>! Consente di
-            ruotare in senso antiorario! Per costruirla, seleziona la ruotatrice
+            ruotare in senso antiorario! Per costruirla, seleziona il ruotatore
             e <strong>premi 'T' per cambiare variante</strong>!
     reward_miner_chainable:
         title: Estrattore a catena
@@ -823,7 +824,7 @@ storyRewards:
             la portata di un nastro.<br><br>E aspetta di sbloccare i cavi,
             allora sì che sarà molto utile!
     reward_rotater_180:
-        title: Ruotatrice (180 gradi)
+        title: Ruotatore (180 gradi)
         desc: Hai appena sbloccato il <strong>ruotatore</strong> a 180 gradi! Consente
             di ruotare una forma di 180 gradi (Sorpresa! :D)
     reward_display:
@@ -833,7 +834,7 @@ storyRewards:
             lettore di nastri e il magazzino mostrano l'ultimo oggetto da loro
             letto? Prova a mostrarlo su di un display!"
     reward_constant_signal:
-        title: Sengale costante
+        title: Segnale costante
         desc: Hai sbloccato l'edificio <strong>segnale costante</strong> sul livello
             elettrico! È utile collegarlo ai <strong>filtri di oggetti</strong>
             per esempio.<br><br> Il segnale costante può emettere una
@@ -859,7 +860,7 @@ storyRewards:
             normalmente. <br><br> Qualsiasi cosa tu scelga, ricordati di
             divertirti!
     reward_wires_painter_and_levers:
-        title: Cavi e Verniciatrice quadrupla
+        title: Cavi e Verniciatore quadruplo
         desc: "Hai appena sbloccato il <strong>Livello Elettrico</strong>: è un livello
             separato dal livelo normale e introduce molte altre meccaniche di
             gioco!<br><br> Per il momento ti ho sbloccato il
@@ -1048,7 +1049,12 @@ settings:
             title: Grandezza delle Risorse sulla Mappa
             description: Controlla la grandezza delle forme visualizzate sulla mappa (quando
                 si fa lo zoom indietro).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Determina se mostrare sempre la forma in uscita da un edificio quando si passa sopra di esso col cursore,
+                invece di dover premere 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Comandi
     hint: "Suggerimento: Usa spesso CTRL, MAIUSC e ALT! Abilitano opzioni di
@@ -1065,7 +1071,7 @@ keybindings:
     mappings:
         confirm: Conferma
         back: Indietro
-        mapMoveUp: Spostati sù
+        mapMoveUp: Spostati su
         mapMoveRight: Spostati a destra
         mapMoveDown: Spostati giù
         mapMoveLeft: Spostati a sinistra
@@ -1130,6 +1136,7 @@ keybindings:
         goal_acceptor: Accettore di obiettivi
         block: Blocco
         massSelectClear: Sgombra nastri
+        showShapeTooltip: Mostra forma di uscita di un edificio
 about:
     title: Riguardo questo gioco
     body: >-
@@ -1272,8 +1279,23 @@ puzzleMenu:
         easy: Facile
         medium: Medio
         hard: Difficile
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Non classificato
+    dlcHint: Hai già acquistato il DLC? Assicurati che sia attivo facendo clic destro
+         su shapez.io nella tua libreria e selezionando Proprietà > DLC.
+    search:
+        action: Cerca
+        placeholder: Inserisci il nome di un puzzle o di un autore
+        includeCompleted: Include Completed
+        difficulties:
+            any: Qualsiasi difficoltà
+            easy: Facile
+            medium: Medio
+            hard: Difficile
+        durations:
+            any: Qualsiasi durata
+            short: Breve (< 2 minuti)
+            medium: Normale
+            long: Lunga (> 10 minuti)
 backendErrors:
     ratelimit: Stai facendo troppe azioni velocemente. Per favore attendi un attimo.
     invalid-api-key: Comunicazione con il backend fallita, per favore prova ad

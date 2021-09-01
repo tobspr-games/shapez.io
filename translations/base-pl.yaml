@@ -465,6 +465,7 @@ ingame:
         titleRatingDesc: Your rating will help me to make you better suggestions in the future
         continueBtn: Keep Playing
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Author
         shortKey: Short Key
@@ -1029,7 +1030,12 @@ settings:
             title: Rozmiar mapy zasobów
             description: Steruje rozmiarem kształtów w przeglądzie mapy (podczas
                 pomniejszenia).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Klawiszologia
     hint: "Wskazówka: Upewnij się, że wykorzystujesz CTRL, SHIFT i ALT! Pozwalają na
@@ -1111,6 +1117,7 @@ keybindings:
         goal_acceptor: Goal Acceptor
         block: Block
         massSelectClear: Clear belts
+        showShapeTooltip: Show shape output tooltip
 about:
     title: O Grze
     body: 'Ta gra jest open-source. Rozwijana jest przez <a
@@ -1251,8 +1258,23 @@ puzzleMenu:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to

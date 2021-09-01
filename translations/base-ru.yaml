@@ -468,6 +468,7 @@ ingame:
         titleRatingDesc: Ваша оценка поможет мне в будущем делать вам лучшие предложения
         continueBtn: Продолжить игру
         menuBtn: Меню
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Автор
         shortKey: Короткий ключ
@@ -1031,6 +1032,11 @@ settings:
         mapResourcesScale:
             title: Размер ресурсов на карте
             description: Устанавливает размер фигур на карте (когда вид достаточно отдалён).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Настройки управления
     hint: "Подсказка: Обязательно используйте CTRL, SHIFT и ALT! Они дают разные
@@ -1108,10 +1114,11 @@ keybindings:
         placementDisableAutoOrientation: Отключить автоопределение направления
         placeMultiple: Оставаться в режиме размещения
         placeInverse: Инвертировать автоопределение направления конвейеров
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
+        constant_producer: Постоянный генератор
+        goal_acceptor: Приёмник предметов
+        block: Блок
+        massSelectClear: Очистить конвейеры
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Об игре
     body: >-
@@ -1245,11 +1252,26 @@ puzzleMenu:
             постоянные производители не доставляют фигуры напрямую приемникам
             цели.
     difficulties:
-        easy: Лего
+        easy: Легко
         medium: Средне
         hard: Сложно
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Unrated
+    dlcHint: Уже купили DLC? Проверьте, что оно активировано, нажав правый клик на
+        shapez.io в своей библиотеке, и далее Свойства > Доп. Контент
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 backendErrors:
     ratelimit: Вы слишком часто выполняете свои действия. Подождите немного.
     invalid-api-key: Не удалось связаться с сервером, попробуйте

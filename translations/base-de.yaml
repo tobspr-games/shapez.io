@@ -22,7 +22,6 @@ steamPage:
     steam_review_comment: This game has stolen my life and I don't want it back.
         Very chill factory game that won't let me stop making my lines more
         efficient.
-
 global:
     loading: Laden
     error: Fehler
@@ -55,7 +54,6 @@ global:
         escape: ESC
         shift: UMSCH
         space: LEER
-
 demoBanners:
     title: Demoversion
     intro: Kauf die Vollversion für alle Features!
@@ -71,7 +69,8 @@ mainMenu:
     helpTranslate: Hilf beim Übersetzen!
     madeBy: Ein Spiel von <author-link>
     browserWarning: Sorry, aber das Spiel wird in deinem Browser langsamer laufen!
-        Kaufe die Vollversion oder verwende Google Chrome für die beste Erfahrung.
+        Kaufe die Vollversion oder verwende Google Chrome für die beste
+        Erfahrung.
     savegameLevel: Level <x>
     savegameLevelUnknown: Unbekanntes Level
     savegameUnnamed: Unbenannt
@@ -81,7 +80,6 @@ mainMenu:
         zu machen? Hol dir das Puzzle-DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
     puzzleDlcViewNow: DLC anzeigen
-
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -92,9 +90,9 @@ puzzleMenu:
     validatingPuzzle: Puzzle wird überprüft
     submittingPuzzle: Puzzle wird veröffentlicht
     noPuzzles: Hier gibt es bisher noch keine Puzzles.
-    dlcHint: DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in der Steam-Bibliothek
-        shapez.io rechtsklickst und es unter Eigenschaften > Zusatzinhalte (DLC) aktivierst.
-
+    dlcHint: DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in
+        der Steam-Bibliothek shapez.io rechtsklickst und es unter Eigenschaften
+        > Zusatzinhalte (DLC) aktivierst.
     categories:
         levels: Levels
         new: Neu
@@ -111,26 +109,38 @@ puzzleMenu:
         difficulties: Nach Schwierigkeit
         account: Meine Puzzles
         search: Suche
-
     difficulties:
         easy: Einfach
         medium: Mittel
         hard: Schwer
-
+        unknown: Unrated
     validation:
         title: Ungültiges Puzzle
         noProducers: Bitte platziere einen Itemproduzent!
         noGoalAcceptors: Bitte platziere einen Zielakzeptor!
-        goalAcceptorNoItem: Ein oder mehrere Zielakzeptoren haben noch kein
-            zugewiesenes Item. Beliefere sie mit einer Form, um ein Ziel zu
-            setzen.
-        goalAcceptorRateNotMet: Ein oder mehrere Zielakzeptoren bekommen nicht
-            genügend Items. Stelle sicher, dass alle ihre Indikatoren grün leuchten.
+        goalAcceptorNoItem: Ein oder mehrere Zielakzeptoren haben noch kein zugewiesenes
+            Item. Beliefere sie mit einer Form, um ein Ziel zu setzen.
+        goalAcceptorRateNotMet: Ein oder mehrere Zielakzeptoren bekommen nicht genügend
+            Items. Stelle sicher, dass alle ihre Indikatoren grün leuchten.
         buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des
-            bebaubaren Bereichs. Vergrößere den Bereich oder entferne die Gebäude.
+            bebaubaren Bereichs. Vergrößere den Bereich oder entferne die
+            Gebäude.
         autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
             deine Itemproduzenten nicht direkt an deine Zielakzeptoren liefern.
-
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
 dialogs:
     buttons:
         ok: OK
@@ -190,9 +200,10 @@ dialogs:
         desc: "Hier sind die Änderungen, seitdem du das letzte Mal gespielt hast:"
     upgradesIntroduction:
         title: Upgrades freischalten
-        desc: Viele deiner Formen können noch benutzt werden, um Upgrades freizuschalten, also
-            <strong>zerstöre deine alten Fabriken nicht!</strong> Den
-            Upgrade-Tab findest du oben rechts im Bildschirm.
+        desc: Viele deiner Formen können noch benutzt werden, um Upgrades
+            freizuschalten, also <strong>zerstöre deine alten Fabriken
+            nicht!</strong> Den Upgrade-Tab findest du oben rechts im
+            Bildschirm.
     massDeleteConfirm:
         title: Löschen bestätigen
         desc: Du löscht viele Gebäude (<count> um genau zu sein)! Bist du dir sicher?
@@ -212,7 +223,8 @@ dialogs:
         desc: >-
             Dieses Spiel hat viele Hotkeys, die den Bau von Fabriken
             vereinfachen und beschleunigen. Hier sind ein paar Beispiele, aber
-            prüfe am besten die <strong>Tastenbelegung</strong> in den Einstellungen!<br><br>
+            prüfe am besten die <strong>Tastenbelegung</strong> in den
+            Einstellungen!<br><br>
              <code class='keybinding'>STRG</code> + Ziehen: Wähle Bereich aus.<br>
              <code class='keybinding'>UMSCH</code>: Halten, um mehrere Gebäude zu platzieren.<br>
              <code class='keybinding'>ALT</code>: Invertiere die Platzierungsrichtung der Fließbänder.<br>
@@ -220,16 +232,18 @@ dialogs:
         title: Neue Markierung
         titleEdit: Markierung bearbeiten
         desc: Gib ihm einen griffigen Namen. Du kannst auch den
-            <strong>Kurzschlüssel</strong> einer Form eingeben (<link>Hier</link> geht es zum Generator).
+            <strong>Kurzschlüssel</strong> einer Form eingeben
+            (<link>Hier</link> geht es zum Generator).
     editSignal:
         title: Signal setzen
         descItems: "Wähle ein vordefiniertes Item:"
-        descShortKey: ... oder gib den <strong>Kurzschlüssel</strong> einer Form an (<link>Hier</link> geht es zum Generator).
+        descShortKey: ... oder gib den <strong>Kurzschlüssel</strong> einer Form an
+            (<link>Hier</link> geht es zum Generator).
     editConstantProducer:
         title: Item wählen
     markerDemoLimit:
-        desc: Du kannst nur 2 Markierungen in der Demo benutzen. Hole dir die Vollversion, um
-            unbegrenzt viele Markierungen zu setzen!
+        desc: Du kannst nur 2 Markierungen in der Demo benutzen. Hole dir die
+            Vollversion, um unbegrenzt viele Markierungen zu setzen!
     exportScreenshotWarning:
         title: Bildschirmfoto exportieren
         desc: Hier kannst du ein Bildschirmfoto von deiner ganzen Fabrik erstellen. Für
@@ -240,7 +254,8 @@ dialogs:
         desc: Hier kannst du deinen Speicherstand umbenennen.
     tutorialVideoAvailable:
         title: Tutorial verfügbar
-        desc: Für dieses Level ist ein Anleitungsvideo verfügbar. Willst du es anschauen?
+        desc: Für dieses Level ist ein Anleitungsvideo verfügbar. Willst du es
+            anschauen?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial verfügbar
         desc: Für dieses Level ist ein Anleitungsvideo verfügbar, allerdings nur auf
@@ -264,8 +279,9 @@ dialogs:
         desc: "Das Puzzle konnte nicht geladen werden:"
     offlineMode:
         title: Offlinemodus
-        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im Offlinemodus.
-            Bitte stelle sicher, dass du eine aktive Internetverbindung hast.
+        desc: Die Server konnten nicht erreicht werden, daher läuft das Spiel im
+            Offlinemodus. Bitte stelle sicher, dass du eine aktive
+            Internetverbindung hast.
     puzzleDownloadError:
         title: Downloadfehler
         desc: "Der Download des Puzzles ist fehlgeschlagen:"
@@ -275,17 +291,17 @@ dialogs:
     puzzleSubmitOk:
         title: Puzzle veröffentlicht
         desc: Herzlichen Glückwunsch! Dein Puzzle wurde veröffentlicht und kann nun von
-            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine Puzzles" finden.
+            anderen gespielt werden. Du kannst es jetzt im Bereich "Meine
+            Puzzles" finden.
     puzzleCreateOffline:
         title: Offlinemodus
-        desc: Da du offline bist, kannst du dein Puzzle nicht speichern
-            und/oder veröffentlichen. Möchtest du trotzdem fortfahren?
+        desc: Da du offline bist, kannst du dein Puzzle nicht speichern und/oder
+            veröffentlichen. Möchtest du trotzdem fortfahren?
     puzzlePlayRegularRecommendation:
         title: Empfehlung
-        desc: Ich empfehle dir <strong>sehr</strong>, bis Level 12 zu
-            spielen, bevor du dich an das Puzzle-DLC wagst. Du stößt sonst
-            möglicherweise auf dir noch nicht bekannte Mechaniken. Möchtest du
-            trotzdem fortfahren?
+        desc: Ich empfehle dir <strong>sehr</strong>, bis Level 12 zu spielen, bevor du
+            dich an das Puzzle-DLC wagst. Du stößt sonst möglicherweise auf dir
+            noch nicht bekannte Mechaniken. Möchtest du trotzdem fortfahren?
     puzzleShare:
         title: Kurzschlüssel kopiert
         desc: Der Kurzschlüssel des Puzzles (<key>) wurde in die Zwischenablage kopiert!
@@ -309,7 +325,6 @@ dialogs:
         title: Puzzle löschen?
         desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht
             rückgängig gemacht werden!
-
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -397,9 +412,9 @@ ingame:
     waypoints:
         waypoints: Markierungen
         hub: Hub
-        description: Linksklick auf eine Markierung, um dort hinzugelangen. Rechtsklick, um
-            sie zu löschen.<br><br>Drücke <keybinding>, um eine Markierung aus
-            deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um eine
+        description: Linksklick auf eine Markierung, um dort hinzugelangen. Rechtsklick,
+            um sie zu löschen.<br><br>Drücke <keybinding>, um eine Markierung
+            aus deinem Blickwinkel, oder <strong>rechtsklicke</strong>, um eine
             Markierung auf der ausgewählten Position zu erschaffen.
         creationSuccessNotification: Markierung wurde erstellt.
     shapeViewer:
@@ -419,15 +434,16 @@ ingame:
                 Halte <strong>UMSCH</strong>, um mehrere Gebäude zu platzieren
                 und nutze <strong>R</strong>, um sie zu rotieren."
             2_1_place_cutter: "Platziere nun einen <strong>Schneider</strong>, um die Kreise
-                zu halbieren.<br><br> Übrigens: Der Schneider
-                teilt Items immer von <strong>oben nach unten</strong>, unabhängig von
-                seiner Orientierung!"
+                zu halbieren.<br><br> Übrigens: Der Schneider teilt Items immer
+                von <strong>oben nach unten</strong>, unabhängig von seiner
+                Orientierung!"
             2_2_place_trash: Der Schneider kann <strong>verstopfen</strong>!<br><br>Benutze
                 einen <strong>Mülleimer</strong> um den aktuell (!) nicht
                 benötigten Rest loszuwerden.
-            2_3_more_cutters: "Gut gemacht! Platziere noch <strong>zwei andere Schneider</strong>
-                um das Ganze zu beschleunigen.<br><br> Übrigens: Benutze die
-                <strong>Hotkeys 0-9</strong> um Gebäude schneller auszuwählen!"
+            2_3_more_cutters: "Gut gemacht! Platziere noch <strong>zwei andere
+                Schneider</strong> um das Ganze zu beschleunigen.<br><br>
+                Übrigens: Benutze die <strong>Hotkeys 0-9</strong> um Gebäude
+                schneller auszuwählen!"
             3_1_rectangles: "Lass uns ein paar Quadrate extrahieren! <strong>Baue vier
                 Extraktoren</strong> und verbinde sie mit deinem Hub.<br><br>
                 PS: Halte <strong>SHIFT</strong>, während du ein Fließband
@@ -441,8 +457,9 @@ ingame:
             21_3_place_button: Perfekt! Platziere jetzt einen <strong>Schalter</strong> und
                 verbinde ihn mit Signalkabeln.
             21_4_press_button: "Drücke den Schalter, damit er ein <strong>wahres
-                Signal</strong> ausgibt und den Färber aktiviert.<br><br>
-                PS: Du musst nicht alle Eingänge verbinden! Probiere es auch mal mit zwei."
+                Signal</strong> ausgibt und den Färber aktiviert.<br><br> PS: Du
+                musst nicht alle Eingänge verbinden! Probiere es auch mal mit
+                zwei."
     connectedMiners:
         one_miner: Ein Extraktor
         n_miners: <amount> Extraktoren
@@ -492,12 +509,21 @@ ingame:
     puzzleEditorControls:
         title: Puzzle-Editor
         instructions:
-            - 1. Platziere einen <strong>Itemproduzenten</strong> um Formen und Farben für den Spieler bereitzustellen
-            - 2. Produziere eine oder mehrere Formen, die der Spieler herstellen soll und liefere diese zu einem oder mehreren <strong>Zielakzeptoren</strong>
-            - 3. Sobald ein Zielakzeptor eine Form für eine gewisse Zeit erhält, <strong>speichert dieser sie als Ziel</strong> (Angezeigt durch den <strong>grünen Punkt</strong>).
-            - 4. Klicke auf das <strong>Schloss</strong>, um ein Gebäude für den Spieler zu sperren.
-            - 5. Sobald du auf Überprüfen gedrückt hast, wird dein Puzzle `validiert und du kannst es veröffentlichen.
-            - 6. Bei der Freigabe werden <strong>alle Gebäude entfernt</strong>. Ausgenommen sind die Produzenten und Akzeptoren. Den Rest soll der Spieler schließlich selbst herausfinden :)
+            - 1. Platziere einen <strong>Itemproduzenten</strong> um Formen und
+              Farben für den Spieler bereitzustellen
+            - 2. Produziere eine oder mehrere Formen, die der Spieler herstellen
+              soll und liefere diese zu einem oder mehreren
+              <strong>Zielakzeptoren</strong>
+            - 3. Sobald ein Zielakzeptor eine Form für eine gewisse Zeit erhält,
+              <strong>speichert dieser sie als Ziel</strong> (Angezeigt durch
+              den <strong>grünen Punkt</strong>).
+            - 4. Klicke auf das <strong>Schloss</strong>, um ein Gebäude für den
+              Spieler zu sperren.
+            - 5. Sobald du auf Überprüfen gedrückt hast, wird dein Puzzle
+              `validiert und du kannst es veröffentlichen.
+            - 6. Bei der Freigabe werden <strong>alle Gebäude entfernt</strong>.
+              Ausgenommen sind die Produzenten und Akzeptoren. Den Rest soll der
+              Spieler schließlich selbst herausfinden :)
     puzzleCompletion:
         title: Puzzle geschafft!
         titleLike: "Klicke auf das Herz, wenn dir das Puzzle gefallen hat:"
@@ -505,13 +531,13 @@ ingame:
         titleRatingDesc: Deine Bewertung hilft mir, in Zukunft bessere Vorschläge zu machen
         continueBtn: Weiterspielen
         menuBtn: Menü
+        nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Ersteller
         shortKey: Kurzschlüssel
         rating: Schwierigkeitsgrad
         averageDuration: Durchschnittliche Dauer
         completionRate: Abschlussrate
-
 shopUpgrades:
     belt:
         name: Fließbänder, Verteiler & Tunnel
@@ -525,7 +551,6 @@ shopUpgrades:
     painting:
         name: Mischer & Färber
         description: Geschw. x<currentMult> → x<newMult>
-
 buildings:
     hub:
         deliver: Liefere
@@ -693,9 +718,9 @@ buildings:
     reader:
         default:
             name: Fließbandkontrolle
-            description: Misst den gemittelten Durchsatz des Fließbandes. Gibt zusätzlich den
-                zuletzt passierten Gegenstand auf der Wires-Ebene aus (sobald
-                freigeschaltet).
+            description: Misst den gemittelten Durchsatz des Fließbandes. Gibt zusätzlich
+                den zuletzt passierten Gegenstand auf der Wires-Ebene aus
+                (sobald freigeschaltet).
     analyzer:
         default:
             name: Formanalyse
@@ -741,13 +766,15 @@ buildings:
         default:
             name: Sperrblock
             description: Ermöglicht das Blockieren einer Kachel.
-
 storyRewards:
     reward_cutter_and_trash:
         title: Formen zerschneiden
-        desc: Du hast gerade den <strong>Schneider</strong> freigeschaltet, der Formen vertikal halbiert, <b>unabhängig von seiner Orientierung</b>!<br><br>
-            Achte darauf, die Überreste loszuwerden, sonst <b>verstopft und blockiert er</b> - Zu diesem Zweck habe ich
-            dir den <strong>Mülleimer</strong> gegeben. Er entsorgt alles, was du ihm fütterst!
+        desc: Du hast gerade den <strong>Schneider</strong> freigeschaltet, der Formen
+            vertikal halbiert, <b>unabhängig von seiner
+            Orientierung</b>!<br><br> Achte darauf, die Überreste loszuwerden,
+            sonst <b>verstopft und blockiert er</b> - Zu diesem Zweck habe ich
+            dir den <strong>Mülleimer</strong> gegeben. Er entsorgt alles, was
+            du ihm fütterst!
     reward_rotater:
         title: Rotieren
         desc: Der <strong>Rotierer</strong> wurde freigeschaltet! Er rotiert Formen im
@@ -772,8 +799,8 @@ storyRewards:
     reward_balancer:
         title: Verteiler
         desc: Der multifunktionale <strong>Verteiler</strong> wurde freigeschaltet!
-            Damit kannst du nun endlich größere Fabriken bauen. Er kann Fließbänder
-            <strong>aufteilen oder zusammenlegen</strong>!
+            Damit kannst du nun endlich größere Fabriken bauen. Er kann
+            Fließbänder <strong>aufteilen oder zusammenlegen</strong>!
     reward_tunnel:
         title: Tunnel
         desc: Der <strong>Tunnel</strong> wurde freigeschaltet! Du kannst Items nun
@@ -787,9 +814,9 @@ storyRewards:
     reward_miner_chainable:
         title: Extraktor (Kette)
         desc: "Du hast den <strong>Kettenextraktor</strong> freigeschaltet! Er kann
-            seine Ressourcen an andere Extraktoren
-            <strong>weitergeben</strong>. <br><br> PS: Der alte Extraktor
-            wurde jetzt in deiner Symbolleiste ersetzt!"
+            seine Ressourcen an andere Extraktoren <strong>weitergeben</strong>.
+            <br><br> PS: Der alte Extraktor wurde jetzt in deiner Symbolleiste
+            ersetzt!"
     reward_underground_belt_tier_2:
         title: Tunnel Stufe II
         desc: Du hast eine neue Variante des <strong>Tunnels</strong> freigeschaltet!
@@ -848,8 +875,8 @@ storyRewards:
             <strong>vierfachen Färber</strong>. Schließe die Eingänge, mit denen
             du die Quadranten färben möchtest, an ein Signalkabel auf der
             Wires-Ebene an!<br><br> Mit <strong>E</strong> wechselst du zwischen
-            den Ebenen. <br><br>PS: <strong>Aktiviere die Hinweise</strong> in den
-            Einstellungen, um das Tutorial anzuzeigen!"
+            den Ebenen. <br><br>PS: <strong>Aktiviere die Hinweise</strong> in
+            den Einstellungen, um das Tutorial anzuzeigen!"
     reward_filter:
         title: Itemfilter
         desc: Du hast den <strong>Itemfilter</strong> freigeschaltet! Items, die dem
@@ -910,11 +937,11 @@ storyRewards:
             jetzt einen bestimmten <strong>Durchsatz</strong> benötigt, empfehle
             ich dringend, eine Maschine zu bauen, die automatisch die gewünschte
             Form liefert!<br><br> Der Hub gibt die gewünschte Form auf der
-            Wires-Ebene aus, also musst du sie nur analysieren und deine Fabrik dementsprechend konfigurieren (lassen).
+            Wires-Ebene aus, also musst du sie nur analysieren und deine Fabrik
+            dementsprechend konfigurieren (lassen).
     reward_demo_end:
         title: Ende der Demo
         desc: Du bist am Ende der Demo angekommen!
-
 settings:
     title: Einstellungen
     categories:
@@ -1022,11 +1049,13 @@ settings:
             title: Intelligente Tunnel
             description: Aktiviert das automatische Entfernen von überflüssigen Fließbändern
                 bei der Platzierung von Tunneln. Außerdem funktioniert das
-                Ziehen von Tunneln und überschüssige Tunnel werden ebenfalls entfernt.
+                Ziehen von Tunneln und überschüssige Tunnel werden ebenfalls
+                entfernt.
         vignette:
             title: Vignette
             description: Aktiviert den Vignetteneffekt, der den Rand des Bildschirms
-                zunehmend verdunkelt und damit das Lesen der Textfelder vereinfacht.
+                zunehmend verdunkelt und damit das Lesen der Textfelder
+                vereinfacht.
         rotationByBuilding:
             title: Rotation pro Gebäudetyp
             description: Jeder Gebäudetyp merkt sich eigenständig, in welche Richtung er
@@ -1052,10 +1081,10 @@ settings:
                 Außerdem vereinfacht es die Darstellung!
         clearCursorOnDeleteWhilePlacing:
             title: Abwählen mit Rechtsklick
-            description: Ist standardmäßig eingeschaltet und wählt das aktuell
-                ausgewählte Gebäude ab, wenn du die rechte Maustaste drückst.
-                Wenn du es abschaltest, kannst du mit der rechten Maustaste
-                Gebäude löschen, während du im Platzierungsmodus bist.
+            description: Ist standardmäßig eingeschaltet und wählt das aktuell ausgewählte
+                Gebäude ab, wenn du die rechte Maustaste drückst. Wenn du es
+                abschaltest, kannst du mit der rechten Maustaste Gebäude
+                löschen, während du im Platzierungsmodus bist.
         lowQualityTextures:
             title: Niedrige Texturqualität (Unschön)
             description: Das Spiel verwendet eine niedrigere Auflösung bei den Texturen.
@@ -1067,8 +1096,9 @@ settings:
                 anzeigen.
         pickMinerOnPatch:
             title: Automatisch Extraktor auswählen
-            description: Ist standardmäßig eingeschaltet und du wählst automatisch den Extraktor,
-                wenn du mit der Pipette auf einen Ressourcenfleck zeigst.
+            description: Ist standardmäßig eingeschaltet und du wählst automatisch den
+                Extraktor, wenn du mit der Pipette auf einen Ressourcenfleck
+                zeigst.
         simplifiedBelts:
             title: Minimalistische Fließbänder (Unschön)
             description: Zur Verbesserung der Leistung werden die Items auf Fließbändern nur
@@ -1088,7 +1118,11 @@ settings:
             title: Größe der Ressourcen auf der Karte
             description: Legt die Größe der Ressourcen auf der Karte (beim Herauszoomen)
                 fest.
-
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
@@ -1170,10 +1204,11 @@ keybindings:
         placementDisableAutoOrientation: Automatische Orientierung deaktivieren
         placeMultiple: Im Platzierungsmodus bleiben
         placeInverse: Automatische Fließbandorientierung invertieren
-
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Über dieses Spiel
-    body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
+    body: Dieses Spiel ist quelloffen (Open Source) und wurde von <a
+        href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (das bin ich!) entwickelt.<br><br> Wenn du etwas zum Spiel beitragen
         möchtest, dann schaue dir <a href="<githublink>"
         target="_blank">shapez.io auf GitHub</a> an.<br><br> Das Spiel wurde
@@ -1185,10 +1220,8 @@ about:
         möchte ich meinem Kumpel <a href="https://github.com/niklas-dahl"
         target="_blank">Niklas</a> danken! Ohne unsere etlichen gemeinsamen
         Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
-
 changelog:
     title: Änderungsprotokoll
-
 demo:
     features:
         restoringGames: Spielstände wiederherstellen
@@ -1197,15 +1230,14 @@ demo:
         customizeKeybindings: Tastenbelegung anpassen
         exportingBase: Ganze Fabrik als Foto exportieren
     settingNotAvailable: Nicht verfügbar in der Demo.
-
 backendErrors:
     ratelimit: Du führst deine Aktionen zu schnell aus. Bitte warte kurz.
     invalid-api-key: Kommunikation mit dem Back-End fehlgeschlagen. Versuche das
         Spiel neu zu starten oder zu updaten (Ungültiger Api-Schlüssel).
     unauthorized: Kommunikation mit dem Back-End fehlgeschlagen. Versuche das Spiel
         neu zu starten oder zu updaten (Nicht autorisiert).
-    bad-token: Kommunikation mit dem Back-End fehlgeschlagen. Versuche das Spiel
-        neu zu starten oder zu updaten (Ungültiger Token).
+    bad-token: Kommunikation mit dem Back-End fehlgeschlagen. Versuche das Spiel neu
+        zu starten oder zu updaten (Ungültiger Token).
     bad-id: Ungültige Puzzle-ID.
     not-found: Das Puzzle konnte nicht gefunden werden.
     bad-category: Die Kategorie konnte nicht gefunden werden.
@@ -1224,7 +1256,6 @@ backendErrors:
     too-many-likes-already: Dieses Puzzle ist in der Community sehr beliebt. Wenn du
         es trotzdem löschen möchtest, wende dich bitte an support@shapez.io!
     no-permission: Dir fehlt die Berechtigung, um diese Aktion auszuführen.
-
 tips:
     - Der Hub akzeptiert alle Formen, nicht nur die aktuell geforderten!
     - Stelle sicher, dass deine Fabriken modular sind. Es zahlt sich irgendwann
@@ -1290,7 +1321,8 @@ tips:
     - Mische alle drei Grundfarben, um Weiß zu erhalten!
     - Du hast eine unendlich große Karte, nutze den Platz und expandiere!
     - Probier auch mal Factorio! Es ist mein Lieblingsspiel.
-    - Der vierfache Schneider schneidet im Uhrzeigersinn von oben rechts beginnend!
+    - Der vierfache Schneider schneidet im Uhrzeigersinn von oben rechts
+      beginnend!
     - Du kannst deine Speicherstände im Hauptmenü herunterladen!
     - Diese Spiel hat viele nützliche Tastenbelegungen! Schau sie dir in den
       Einstellungen an.

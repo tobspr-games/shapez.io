@@ -344,61 +344,61 @@ export function generateLevelDefinitions(limitedVersion = false) {
             reward: enumHubGoalRewards.reward_rotater_ccw,
         },
 
-        // 8
-        {
-            shapes: [{ key: "RbRb----", amount: 480 }], // painter t2
-            reward: enumHubGoalRewards.reward_mixer,
-        },
-
-        // 9
-        // Mixing (purple)
-        {
-            shapes: [{ key: "CpCpCpCp", amount: 600 }], // belts t3
-            reward: enumHubGoalRewards.reward_merger,
-        },
-
-        // 10
-        // STACKER: Star shapes + cyan
-        {
-            shapes: [{ key: "ScScScSc", amount: 800 }], // miners t3
-            reward: enumHubGoalRewards.reward_stacker,
-        },
-
-        // 11
-        // Chainable miner
-        {
-            shapes: [{ key: "CgScScCg", amount: 1000 }], // processors t3
-            reward: enumHubGoalRewards.reward_miner_chainable,
-        },
-
-        // 12
-        // Blueprints
-        {
-            shapes: [{ key: "CbCbCbRb:CwCwCwCw", amount: 1000 }],
-            reward: enumHubGoalRewards.reward_blueprints,
-        },
-
-        // 13
-        // Tunnel Tier 2
-        {
-            shapes: [{ key: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", amount: 3800 }], // painting t3
-            reward: enumHubGoalRewards.reward_underground_belt_tier_2,
-        },
-
         // DEMO STOPS HERE
         ...(limitedVersion
             ? [
                   {
-                      shapes: [
-                          {
-                              key: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
-                              amount: 0,
-                          },
-                      ],
+                      shapes: [{ key: "CrCrCrCr", amount: 0 }],
                       reward: enumHubGoalRewards.reward_demo_end,
                   },
               ]
             : [
+                  // 8
+                  {
+                      shapes: [{ key: "RbRb----", amount: 480 }], // painter t2
+                      reward: enumHubGoalRewards.reward_mixer,
+                  },
+
+                  // 9
+                  // Mixing (purple)
+                  {
+                      shapes: [{ key: "CpCpCpCp", amount: 600 }], // belts t3
+                      reward: enumHubGoalRewards.reward_merger,
+                  },
+
+                  // 10
+                  // STACKER: Star shapes + cyan
+                  {
+                      shapes: [{ key: "ScScScSc", amount: 800 }], // miners t3
+                      reward: enumHubGoalRewards.reward_stacker,
+                  },
+
+                  // 11
+                  // Chainable miner
+                  {
+                      shapes: [{ key: "CgScScCg", amount: 1000 }], // processors t3
+                      reward: enumHubGoalRewards.reward_miner_chainable,
+                  },
+
+                  // 12
+                  // Blueprints
+                  {
+                      shapes: [{ key: "CbCbCbRb:CwCwCwCw", amount: 1000 }],
+                      reward: enumHubGoalRewards.reward_blueprints,
+                  },
+
+                  // 13
+                  // Tunnel Tier 2
+                  {
+                      shapes: [
+                          {
+                              key: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
+                              amount: 3800,
+                          },
+                      ], // painting t3
+                      reward: enumHubGoalRewards.reward_underground_belt_tier_2,
+                  },
+
                   // 14
                   // Belt reader
                   {
@@ -585,7 +585,9 @@ export class RegularGameMode extends GameMode {
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {
-            this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            if (!G_WEGAME_VERSION) {
+                this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
+            }
             this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
         }
 
@@ -595,12 +597,12 @@ export class RegularGameMode extends GameMode {
         }
 
         /** @type {(typeof MetaBuilding)[]} */
-        this.hiddenBuildings = [
-            MetaConstantProducerBuilding,
-            MetaGoalAcceptorBuilding,
-            MetaBlockBuilding,
-            MetaItemProducerBuilding,
-        ];
+        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
+
+        // @ts-expect-error
+        if (!(G_IS_DEV || window.sandboxMode || queryParamOptions.sandboxMode)) {
+            this.hiddenBuildings.push(MetaItemProducerBuilding);
+        }
     }
 
     /**

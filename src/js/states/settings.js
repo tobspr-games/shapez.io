@@ -1,3 +1,4 @@
+import { THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
 import { allApplicationSettings, enumCategories } from "../profile/application_settings";
@@ -34,6 +35,8 @@ export class SettingsState extends TextualGameState {
                     ? ""
                     : `
                 <button class="styledButton about">${T.about.title}</button>
+                <button class="styledButton privacy">Privacy Policy</button>
+
 `
             }
                 <div class="versionbar">
@@ -109,6 +112,9 @@ export class SettingsState extends TextualGameState {
             this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
                 preventDefault: false,
             });
+            this.trackClicks(this.htmlElement.querySelector(".privacy"), this.onPrivacyClicked, {
+                preventDefault: false,
+            });
         }
 
         const keybindingsButton = this.htmlElement.querySelector(".editKeybindings");
@@ -178,6 +184,10 @@ export class SettingsState extends TextualGameState {
 
     onAboutClicked() {
         this.moveToStateAddGoBack("AboutState");
+    }
+
+    onPrivacyClicked() {
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.privacyPolicy);
     }
 
     onKeybindingsClicked() {

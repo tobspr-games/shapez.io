@@ -21,6 +21,7 @@
 @import "adinplay";
 @import "changelog_skins";
 
+@import "states/wegame_splash";
 @import "states/preload";
 @import "states/main_menu";
 @import "states/ingame";
@@ -64,6 +65,7 @@
 @import "ingame_hud/puzzle_play_settings";
 @import "ingame_hud/puzzle_play_metadata";
 @import "ingame_hud/puzzle_complete_notification";
+@import "ingame_hud/puzzle_next";
 
 // prettier-ignore
 $elements:
@@ -82,6 +84,7 @@ ingame_HUD_PinnedShapes,
 ingame_HUD_GameMenu,
 ingame_HUD_KeybindingOverlay,
 ingame_HUD_PuzzleBackToMenu,
+ingame_HUD_PuzzleNextPuzzle,
 ingame_HUD_PuzzleEditorReview,
 ingame_HUD_PuzzleEditorControls,
 ingame_HUD_PuzzleEditorTitle,
@@ -133,6 +136,7 @@ body.uiHidden {
     #ingame_HUD_GameMenu,
     #ingame_HUD_PinnedShapes,
     #ingame_HUD_PuzzleBackToMenu,
+    #ingame_HUD_PuzzleNextPuzzle,
     #ingame_HUD_PuzzleEditorReview,
     #ingame_HUD_Notifications,
     #ingame_HUD_TutorialHints,

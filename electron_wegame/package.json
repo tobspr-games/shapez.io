@@ -10,7 +10,7 @@
         "start": "electron --disable-direct-composition --in-process-gpu ."
     },
     "devDependencies": {
-        "electron": "3.1.13"
+        "electron": "^13.1.6"
     },
     "dependencies": {
         "async-lock": "^1.2.8"

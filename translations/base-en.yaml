@@ -155,10 +155,28 @@ puzzleMenu:
         account: My Puzzles
         search: Search
 
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+
     difficulties:
         easy: Easy
         medium: Medium
         hard: Hard
+        unknown: Unrated
 
     validation:
         title: Invalid Puzzle
@@ -657,6 +675,7 @@ ingame:
 
         continueBtn: Keep Playing
         menuBtn: Menu
+        nextPuzzle: Next Puzzle
 
     puzzleMetadata:
         author: Author
@@ -1080,7 +1099,7 @@ settings:
         staging: Staging
         prod: Production
     buildDate: Built <at-date>
-
+    tickrateHz: <amount> Hz
     rangeSliderPercentage: <amount> %
 
     labels:
@@ -1267,6 +1286,11 @@ settings:
             description: >-
                 Controls the size of the shapes on the map overview (when zooming out).
 
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: >-
+                Whether to always show the shape tooltip when hovering buildings, instead of having to hold 'ALT'.
+
 keybindings:
     title: Keybindings
     hint: >-
@@ -1362,6 +1386,8 @@ keybindings:
         placementDisableAutoOrientation: Disable automatic orientation
         placeMultiple: Stay in placement mode
         placeInverse: Invert automatic belt orientation
+
+        showShapeTooltip: Show shape output tooltip
 
 about:
     title: About this Game

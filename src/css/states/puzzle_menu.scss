@@ -15,8 +15,81 @@
     }
 
     > .container {
+        .searchForm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #333;
+            background: $accentColorBright;
+            @include S(padding, 5px);
+            @include S(border-radius, $globalBorderRadius);
+            flex-wrap: wrap;
+
+            @include DarkThemeOverride {
+                background: $accentColorDark;
+            }
+
+            input.search {
+                color: #333;
+                margin: 0;
+                display: inline-block;
+                flex-grow: 1;
+                @include S(padding, 5px, 10px);
+                @include S(min-width, 50px);
+
+                &::placeholder {
+                    color: #aaa;
+                }
+            }
+
+            select {
+                color: #333;
+                border: 0;
+                @include S(padding, 5px);
+                @include S(border-radius, $globalBorderRadius);
+                @include S(padding, 7px, 10px);
+                @include S(margin-left, 5px);
+                @include PlainText;
+            }
+
+            .filterCompleted {
+                @include S(margin-left, 20px);
+                pointer-events: all;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                @include PlainText;
+                @include S(margin-right, 10px);
+
+                @include DarkThemeOverride {
+                    color: #bbbbc4;
+                }
+
+                input {
+                    @include S(width, 15px);
+                    @include S(height, 15px);
+                    @include S(margin-right, 5px);
+                    @include S(border-radius, $globalBorderRadius);
+                    border: 0;
+                }
+            }
+
+            button[type="submit"] {
+                @include S(padding, 7px, 10px, 5px);
+                @include S(margin-left, 20px);
+                @include S(margin-top, 4px);
+                @include S(margin-bottom, 4px);
+                margin-left: auto;
+            }
+        }
+
         > .mainContent {
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
 
             > .categoryChooser {
                 > .categories {
@@ -79,8 +152,8 @@
                 @include S(grid-gap, 7px);
                 @include S(margin-top, 10px);
                 @include S(padding-right, 4px);
-                @include S(height, 320px);
                 overflow-y: scroll;
+                flex-grow: 1;
                 pointer-events: all;
                 position: relative;
 
@@ -245,6 +318,9 @@
                             }
                             &.stage--hard {
                                 color: $colorRedBright;
+                            }
+                            &.stage--unknown {
+                                color: #888;
                             }
                         }
                     }
