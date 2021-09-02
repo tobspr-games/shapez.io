@@ -77,7 +77,7 @@ mainMenu:
         alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Paketi (DLC) görüntüle
 dialogs:
     buttons:
         ok: OK
@@ -465,7 +465,7 @@ ingame:
         titleRatingDesc: Değerlendirmeniz size daha iyi öneriler sunmamda yardımcı olacaktır
         continueBtn: Oynamaya Devam Et
         menuBtn: Menü
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Sonraki Yapboz
     puzzleMetadata:
         author: Yapımcı
         shortKey: Kısa Anahtar
@@ -1023,9 +1023,9 @@ settings:
             description: Haritaya uzaktan bakıldığında, haritadaki şekillerin büyüklüğünü
                 ayarlar.
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Şekil İpucu - Her Zaman Göster
+            description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine
+                her zaman gösterir.
     tickrateHz: <amount> Hz
 keybindings:
     title: Tuş Atamaları
@@ -1108,7 +1108,7 @@ keybindings:
         goal_acceptor: Hedef Merkezi
         block: Engel
         massSelectClear: Bantları temizle
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Şekil çıkış ipucunu göster
 about:
     title: Oyun Hakkında
     body: >-
@@ -1250,23 +1250,23 @@ puzzleMenu:
         easy: Kolay
         medium: Orta
         hard: Zor
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Değerlendirilmemiş
+    dlcHint: Paketi (DLC) çoktan aldın mı? Kütüphanende oyuna sağ tıklayarak,
+        Özellikler > DLC, paketi etkileştirmeyi unutma.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Arama
+        placeholder: Bir yapboz veya tasarımcı adı giriniz.
+        includeCompleted: Tamamlananları Göster
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Hepsi
+            easy: Kolay
+            medium: Orta
+            hard: Zor
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Hepsi
+            short: Kısa (< 2 dk)
             medium: Normal
-            long: Long (> 10 min)
+            long: Uzun (> 10 dk)
 backendErrors:
     ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
     invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
