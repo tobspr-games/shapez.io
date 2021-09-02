@@ -90,7 +90,8 @@ puzzleMenu:
     validatingPuzzle: Puzzle wird überprüft
     submittingPuzzle: Puzzle wird veröffentlicht
     noPuzzles: Hier gibt es bisher noch keine Puzzles.
-    dlcHint: DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in
+    dlcHint: >
+        DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in
         der Steam-Bibliothek shapez.io rechtsklickst und es unter Eigenschaften
         > Zusatzinhalte (DLC) aktivierst.
     categories:
@@ -132,15 +133,15 @@ puzzleMenu:
         placeholder: Gib einen Puzzle- oder Autorennamen ein
         includeCompleted: Gelöst einbeziehen
         difficulties:
-            any: Beliebiger Schwierigkeitsgrad
+            any: Beliebige Schwierigkeit
             easy: Einfach
             medium: Mittel
             hard: Schwierig
         durations:
             any: Beliebige Dauer
-            short: Kurz (< 2 min)
+            short: Kurz (< 2 Min)
             medium: Normal
-            long: Lang (> 10 min)
+            long: Lang (> 10 Min)
 dialogs:
     buttons:
         ok: OK
