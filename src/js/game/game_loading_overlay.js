@@ -42,7 +42,6 @@ export class GameLoadingOverlay {
      */
     showBasic(gameModeId) {
         assert(!this.element, "Loading overlay already visible, cant show again");
-        console.log(gameModeId);
         this.element = document.createElement("div");
         this.element.classList.add("gameLoadingOverlay");
         this.parent.appendChild(this.element);
