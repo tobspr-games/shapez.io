@@ -1,6 +1,9 @@
+/* typehints:start */
+import { PuzzlePlayGameMode } from "../../modes/puzzle_play";
+/* typehints:end */
+
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
-import { PuzzlePlayGameMode } from "../../modes/puzzle_play";
 import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDPuzzleNextPuzzle extends BaseHUDPart {

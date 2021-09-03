@@ -371,7 +371,7 @@ export class InGameState extends GameState {
         this.gameModeId = payload.gameModeId;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
-        this.loadingOverlay.showBasic();
+        this.loadingOverlay.showBasic(this.gameModeId);
 
         // Remove unneded default element
         document.body.querySelector(".modalDialogParent").remove();
@@ -418,7 +418,7 @@ export class InGameState extends GameState {
             this.loadingOverlay.removeIfAttached();
         } else {
             if (!this.loadingOverlay.isAttached()) {
-                this.loadingOverlay.showBasic();
+                this.loadingOverlay.showBasic(this.gameModeId);
             }
         }
     }

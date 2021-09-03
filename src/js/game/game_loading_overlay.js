@@ -38,14 +38,16 @@ export class GameLoadingOverlay {
 
     /**
      * Shows a super basic overlay
+     * @param {string} gameModeId
      */
-    showBasic() {
+    showBasic(gameModeId) {
         assert(!this.element, "Loading overlay already visible, cant show again");
+        console.log(gameModeId);
         this.element = document.createElement("div");
         this.element.classList.add("gameLoadingOverlay");
         this.parent.appendChild(this.element);
         this.internalAddSpinnerAndText(this.element);
-        this.internalAddHint(this.element);
+        this.internalAddHint(this.element, gameModeId);
     }
 
     /**
@@ -61,10 +63,16 @@ export class GameLoadingOverlay {
     /**
      * Adds a random hint
      * @param {HTMLElement} element
+     * @param {string} gameModeId
      */
-    internalAddHint(element) {
+    internalAddHint(element, gameModeId) {
         const hint = document.createElement("span");
-        hint.innerHTML = randomChoice(T.tips);
+        let tips;
+        if (!gameModeId) tips = T.tips;
+        else if (gameModeId.includes("Edit")) tips = T.createPuzzleTips;
+        else tips = T.playPuzzleTips;
+
+        hint.innerHTML = randomChoice(tips);
         hint.classList.add("prefab_GameHint");
         element.appendChild(hint);
     }
