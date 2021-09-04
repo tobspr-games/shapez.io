@@ -4,6 +4,7 @@ import { Application } from "../application";
 
 import { randomChoice } from "../core/utils";
 import { T } from "../translations";
+import { enumGameModeIds } from "./game_mode";
 
 export class GameLoadingOverlay {
     /**
@@ -65,12 +66,11 @@ export class GameLoadingOverlay {
      * @param {string} gameModeId
      */
     internalAddHint(element, gameModeId) {
-        const hint = document.createElement("span");
-        let tips;
-        if (!gameModeId) tips = T.tips;
-        else if (gameModeId.includes("Edit")) tips = T.createPuzzleTips;
-        else tips = T.playPuzzleTips;
+        let tips = T.tips;
+        if (gameModeId === enumGameModeIds.puzzleEdit) tips = T.createPuzzleTips;
+        else if (gameModeId === enumGameModeIds.puzzlePlay) tips = T.playPuzzleTips;
 
+        const hint = document.createElement("span");
         hint.innerHTML = randomChoice(tips);
         hint.classList.add("prefab_GameHint");
         element.appendChild(hint);
