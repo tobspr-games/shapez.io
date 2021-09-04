@@ -1517,6 +1517,7 @@ playPuzzleTips:
     - Producers may have more than one purpose, keep that in mind when modifying their output.
     - Some puzzles may only have one place that each building fits, use that.
     - Make use of all building variants.
+    - One quad cutter is worth 1,000 windmills.
 
 createPuzzleTips:
     - Be careful, making a big puzzle might scare future players.
@@ -1526,3 +1527,8 @@ createPuzzleTips:
     - Using complex shapes that don't impact the gameplay of your puzzle could be annoying.
     - Misdirecting the player is often the best way to increase difficulty.
     - An easy puzzle can be fun too!
+    - If you disable belts, remember to disable splitters as well.
+    - Play a few puzzles to get a feel for what makes a puzzle fun.
+    - Once you publish, have people playtest and give you feedback.
+    - If you are using a lot of blockers, make sure you're not making the solution obvious.
+    - Think about what makes your puzzle different, and focus on that.
