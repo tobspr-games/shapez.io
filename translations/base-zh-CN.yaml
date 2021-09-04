@@ -1004,6 +1004,7 @@ tips:
     - 按两次F4显示您鼠标和镜头所在的块。
     - 您可以点击被固定在屏幕左侧的图形来解除固定。
     - 您可以单击左侧的固定形状将其取消固定。
+    - If you belts are too fast, press <b>ALT<b> to bring up the shape tooltip
 puzzleMenu:
     play: 游戏
     edit: 编辑
@@ -1080,3 +1081,48 @@ backendErrors:
     timeout: 请求超时。
     too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
     no-permission: 您没有执行此操作的权限。
+playPuzzleTips:
+    - The double painter can be used to combine belts.
+    - Working through puzzles one part at a time often works.
+    - When starting a puzzle, find out where different buildings fit.
+    - In puzzles without belts, pressing <b>ALT</b> will let you see shapes more
+      easily.
+    - Don't get worked up! Try looking at things from a different angle.
+    - If a puzzle has a throughput requirement, remember to split belts in a
+      tree like fashion.
+    - Think about what order you can create your shapes in.
+    - Don't get scared by big puzzles, try working through them before giving up.
+    - Play the tutorial puzzles to find some useful and easy-to-use tricks.
+    - Remember, staring at a puzzle won't help! Place some blocks and see where
+      you end up.
+    - Don't forget to like a puzzle if you enjoy it.
+    - If you run into a puzzle you know is 100% not possible, make sure to
+      report it.
+    - Been playing a lot of puzzles? If so try creating your own for others to
+      enjoy.
+    - A unwise man once said "It's been so long, this puzzle is not possible".
+    - Remember, it is not a speedrun. Take your time and solve the puzzle
+      methodically.
+    - Remember to take a break every once in a while.
+    - Producers may have more than one purpose, keep that in mind when modifying
+      their output.
+    - Some puzzles may only have one place that each building fits, use that.
+    - Make use of all building variants.
+    - One quad cutter is worth 1,000 windmills.
+createPuzzleTips:
+    - Be careful, making a big puzzle might scare future players.
+    - Remember to disable buildings that aren't useful, unless you're trying to
+      be sneaky.
+    - Most good puzzles have a "trick" to them, try coming up with one when
+      creating your own
+    - Once you finish you puzzle, don't publish right away. Always playtest.
+    - Using complex shapes that don't impact the gameplay of your puzzle could
+      be annoying.
+    - Misdirecting the player is often the best way to increase difficulty.
+    - An easy puzzle can be fun too!
+    - If you disable belts, remember to disable splitters as well.
+    - Play a few puzzles to get a feel for what makes a puzzle fun.
+    - Once you publish, have people playtest and give you feedback.
+    - If you are using a lot of blockers, make sure you're not making the
+      solution obvious.
+    - Think about what makes your puzzle different, and focus on that.
