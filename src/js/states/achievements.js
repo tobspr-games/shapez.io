@@ -20,6 +20,53 @@ export class AchievementsState extends TextualGameState {
         ]);
         this.contentDiv = makeDiv(this.parent, null, ["content"]);
 
+        this.resetElement = {};
+
+        // Wrapper
+        this.resetElement.elem = makeDiv(this.contentDiv, null, ["achievement", "reset", "unlocked"]);
+
+        // Icon
+        this.resetElement.icon = makeDiv(this.resetElement.elem, null, ["icon"]);
+        this.resetElement.icon.setAttribute("data-icon", "achievements/reset.png");
+
+        // Info
+        this.resetElement.info = makeDiv(this.resetElement.elem, null, ["info"]);
+
+        // Title
+        this.resetElement.title = makeDiv(
+            this.resetElement.info,
+            null,
+            ["title"],
+            T.achievements.reset.title
+        );
+
+        // Description
+        this.resetElement.description = makeDiv(
+            this.resetElement.info,
+            null,
+            ["description"],
+            T.achievements.reset.description
+        );
+
+        // Reset button
+        this.resetElement.resetButton = document.createElement("button");
+        this.resetElement.resetButton.classList.add("reset", "styledButton");
+        this.resetElement.resetButton.innerText = T.ingame.achievements.buttonReset;
+        this.resetElement.elem.appendChild(this.resetElement.resetButton);
+        this.trackClicks(this.resetElement.resetButton, () => {
+            const signals = this.dialogs.showWarning(
+                T.dialogs.resetAchievements.title,
+                T.dialogs.resetAchievements.description,
+                ["cancel:bad:escape", "ok:good:enter"]
+            );
+            signals.ok.add(() => {
+                for (const achievementKey in ACHIEVEMENTS) {
+                    if (!this.app.achievementProvider.collection.map.has(achievementKey))
+                        this.app.achievementProvider.collection.lock(ACHIEVEMENTS[achievementKey]);
+                }
+            });
+        });
+
         this.achievementToElements = {};
 
         // ACHIEVEMENTS
@@ -46,6 +93,16 @@ export class AchievementsState extends TextualGameState {
                 ["description"],
                 T.achievements[achievementKey].description
             );
+
+            // Reset button
+            handle.resetButton = document.createElement("button");
+            handle.resetButton.classList.add("reset", "styledButton");
+            handle.resetButton.innerText = T.ingame.achievements.buttonReset;
+            handle.elem.appendChild(handle.resetButton);
+
+            this.trackClicks(handle.resetButton, () => {
+                this.app.achievementProvider.collection.lock(ACHIEVEMENTS[achievementKey]);
+            });
 
             // Assign handle
             this.achievementToElements[achievementKey] = handle;
@@ -104,5 +161,11 @@ export class AchievementsState extends TextualGameState {
             "<amountHidden>",
             hidden + ""
         );
+
+        if (unlocked > 0) {
+            if (!this.resetElement.elem.classList.contains("unlocked"))
+                this.resetElement.elem.classList.add("unlocked");
+        } else if (this.resetElement.elem.classList.contains("unlocked"))
+            this.resetElement.elem.classList.remove("unlocked");
     }
 }
