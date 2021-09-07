@@ -90,14 +90,14 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {[ShapeDefinition, ShapeDefinition]}
      */
     shapeActionCutHalf(definition) {
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.cutShape, null);
+
         const key = "cut/" + definition.getHash();
         if (this.operationCache[key]) {
             return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key]);
         }
         const rightSide = definition.cloneFilteredByQuadrants([2, 3]);
         const leftSide = definition.cloneFilteredByQuadrants([0, 1]);
-
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.cutShape, null);
 
         return /** @type {[ShapeDefinition, ShapeDefinition]} */ (this.operationCache[key] = [
             this.registerOrReturnHandle(rightSide),
@@ -133,14 +133,14 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionRotateCW(definition) {
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.rotateShape, null);
+
         const key = "rotate-cw/" + definition.getHash();
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
 
         const rotated = definition.cloneRotateCW();
-
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.rotateShape, null);
 
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
             rotated
@@ -190,12 +190,12 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionStack(lowerDefinition, upperDefinition) {
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.stackShape, null);
+
         const key = "stack/" + lowerDefinition.getHash() + "/" + upperDefinition.getHash();
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
-
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.stackShape, null);
 
         const stacked = lowerDefinition.cloneAndStackWith(upperDefinition);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
@@ -210,12 +210,12 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     shapeActionPaintWith(definition, color) {
+        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.paintShape, null);
+
         const key = "paint/" + definition.getHash() + "/" + color;
         if (this.operationCache[key]) {
             return /** @type {ShapeDefinition} */ (this.operationCache[key]);
         }
-
-        this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.paintShape, null);
 
         const colorized = definition.cloneAndPaintWith(color);
         return /** @type {ShapeDefinition} */ (this.operationCache[key] = this.registerOrReturnHandle(
