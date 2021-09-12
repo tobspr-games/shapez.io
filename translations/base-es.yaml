@@ -871,8 +871,8 @@ storyRewards:
     reward_filter:
         title: Filtro de items
         desc: Has desbloqueado el <strong>Filtro de Items</strong>! Este enviará los
-            items tanto arriaba como a la derecha dependiendo en si coinciden
-            con la señal de la capa de cables o no.<br><br> Tambien puedes
+            items tanto arriba como a la derecha dependiendo en si coinciden
+            con la señal de la capa de cables o no.<br><br> También puedes
             enviar una señal booleana (1 / 0) para activarlo o desactivarlo
             completamente.
     reward_demo_end:
