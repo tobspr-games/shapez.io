@@ -91,9 +91,9 @@ puzzleMenu:
     submittingPuzzle: Puzzle wird veröffentlicht
     noPuzzles: Hier gibt es bisher noch keine Puzzles.
     dlcHint: >
-        DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in
-        der Steam-Bibliothek shapez.io rechtsklickst und es unter Eigenschaften
-        > Zusatzinhalte (DLC) aktivierst.
+        DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in der
+        Steam-Bibliothek shapez.io rechtsklickst und es unter Eigenschaften >
+        Zusatzinhalte (DLC) aktivierst.
     categories:
         levels: Levels
         new: Neu

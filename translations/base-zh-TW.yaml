@@ -135,15 +135,13 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc:
-            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
+        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
             <code class='keybinding'>CTRL</code> + 拖曳：選擇區域以複製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
             class='keybinding'>ALT</code>: 反向放置輸送帶。 <br>"
     createMarker:
         title: 建立標記
-        desc:
-            給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
+        desc: 給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
             建立簡短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
@@ -320,18 +318,15 @@ ingame:
             1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來採集圓形！
             1_2_conveyor: 用<strong>輸送帶</strong>將你的開採機連接到基地上！
                 <br><br>提示：用你的游標<strong>按下並拖曳</strong>輸送帶！
-            1_3_expand:
-                這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
+            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
             2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半！<br><br> PS:
                 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
             2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>！<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters:
-                "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br> PS:
+            2_3_more_cutters: "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br> PS:
                 使用<strong>0-9快捷鍵</strong>可以更快選取建築 ！"
-            3_1_rectangles:
-                "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
+            3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
                 選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
             21_1_place_quad_painter: 放置一個<strong>上色機（四向）</strong>並取得一些
                 <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
@@ -448,32 +443,32 @@ shopUpgrades:
 buildings:
     belt:
         default:
-            name: &belt 輸送帶
+            name: 輸送帶
             description: 運送物品，按住並拖曳來放置多個。
     miner:
         default:
-            name: &miner 開採機
-            description: &miner_desc 在圖形礦脈或者顏色礦脈上放置開採機來開採。
+            name: 開採機
+            description: 在圖形礦脈或者顏色礦脈上放置開採機來開採。
         chainable:
             name: 鏈式開採機
-            description: *miner_desc
+            description: 在圖形礦脈或者顏色礦脈上放置開採機來開採。
     underground_belt:
         default:
-            name: &underground_belt 隧道
+            name: 隧道
             description: 可以從其他輸送帶或建築底下方運送物品。
         tier2:
             name: 二級隧道
             description: 可以從其他輸送帶或建築底下方運送物品。
     cutter:
         default:
-            name: &cutter 切割機
+            name: 切割機
             description: 將圖形從上到下切開並輸出。 <strong>如果你只需要其中一半，記得把另一半銷毀掉，否則切割機會停止運作！ </strong>
         quad:
             name: 四分切割機
             description: 將輸入的圖形切成四塊。 <strong>如果你只需要其中一塊，記得把其他的銷毀掉，否則切割機會停止運作！ </strong>
     rotater:
         default:
-            name: &rotator 旋轉機
+            name: 旋轉機
             description: 將圖形順時針旋轉90度。
         ccw:
             name: 旋轉機（逆時針）
@@ -483,28 +478,29 @@ buildings:
             description: 將圖形旋轉180度。
     stacker:
         default:
-            name: &stacker 圖形拼貼機
+            name: 圖形拼貼機
             description: 將輸入的圖形拼貼在一起。如果不能在同一圖層直接拼貼，右邊的圖形會被堆疊在左邊的圖形上面.
     mixer:
         default:
-            name: &mixer 混色機
-            description: 將兩個顏料<strong>加在一起</strong>。
+            name: 混色機
+            description: Mixes two colors using additive blending.
     painter:
         default:
-            name: &painter 上色機
-            description: &painter_desc 將整個圖形塗上輸入的顏料。
+            name: 上色機
+            description: 將整個圖形塗上輸入的顏料。
         double:
             name: 雙倍上色機
             description: 同時為兩個輸入的圖形上色，每次上色只消耗一份顏料。
         quad:
             name: 四分上色機
-            description: 分別為圖形的四個部分上色。 只有從 <strong>有「真」訊號輸入</strong> 的顏料輸入端輸入的顏料會用來為相對的四分位上色。
+            description: 分別為圖形的四個部分上色。 只有從 <strong>有「真」訊號輸入</strong>
+                的顏料輸入端輸入的顏料會用來為相對的四分位上色。
         mirrored:
-            name: *painter
-            description: *painter_desc
+            name: 上色機
+            description: 將整個圖形塗上輸入的顏料。
     trash:
         default:
-            name: &trash 垃圾桶
+            name: 垃圾桶
             description: 從所有從四個方向輸入的物品銷毀。
     hub:
         deliver: 交付
@@ -513,14 +509,14 @@ buildings:
         endOfDemo: 試玩結束
     wire:
         default:
-            name: &wire 電線
-            description: &wire_desc 傳輸訊號，訊號可以是圖形，顏料或布林值（0或1）。 不同顏色的電線無法互相連接。
+            name: 電線
+            description: 傳輸訊號，訊號可以是圖形，顏料或布林值（0或1）。 不同顏色的電線無法互相連接。
         second:
-            name: *wire
-            description: *wire_desc
+            name: 電線
+            description: 傳輸訊號，訊號可以是圖形，顏料或布林值（0或1）。 不同顏色的電線無法互相連接。
     balancer:
         default:
-            name: &balancer 平衡機
+            name: 平衡機
             description: 多功能 —— 將單一輸入平均分配到所有輸出；及將多個輸入集合到一個輸出。
         merger:
             name: 合流機（右）
@@ -536,19 +532,19 @@ buildings:
             description: 將底部的輸送帶輸入分流成兩個輸出（頂部和左側）。
     storage:
         default:
-            name: &storage 倉庫
+            name: 倉庫
             description: 儲存多餘的物品，有一定儲存上限。優先從左側輸出，右側輸出可以被用來作為溢流門。
     wire_tunnel:
         default:
-            name: &wire_tunnel 電線交叉
+            name: 電線交叉
             description: 電線彼此交叉但不互相連接。
     constant_signal:
         default:
-            name: &constant_signal 固定訊號
+            name: 固定訊號
             description: 輸出固定訊號，可以是形狀、顏料或布林值（1或0）。
     lever:
         default:
-            name: &lever 信號切換器
+            name: 信號切換器
             description: 切換「1（真值）」或「0（假值）」輸出，舉例來說，它可以操控物件分類器。
     logic_gate:
         default:
@@ -565,48 +561,49 @@ buildings:
             description: 當其中一個輸入為「真」訊號時，輸出「1（真值）」。（「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
     transistor:
         default:
-            name: &transistor 電晶體
-            description:
-                &transistor_desc 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+            name: 電晶體
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
                 （「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
         mirrored:
-            name: *transistor
-            description: *transistor_desc
+            name: 電晶體
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+                （「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
     filter:
         default:
-            name: &filter 物件分類器
-            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。 它也可以被布林值訊號控制。
+            name: 物件分類器
+            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。
+                它也可以被布林值訊號控制。
     display:
         default:
-            name: &display 顯示器
+            name: 顯示器
             description: 連接一個訊號到顯示器上顯示，訊號可以是形狀、顏料或布林值。
     reader:
         default:
-            name: &reader 輸送帶讀取機
+            name: 輸送帶讀取機
             description: 它會讀取輸送帶的平均流量，（電路層解鎖後）在電路層輸出最後讀取的物件。
     analyzer:
         default:
-            name: &analyzer 圖形分析機
+            name: 圖形分析機
             description: 分析輸入的圖形訊號中最底層右上角的圖形並輸出其形狀和顏色。
     comparator:
         default:
-            name: &comparator 比較機
+            name: 比較機
             description: 當兩個輸入訊號完全相等時，輸出布林值「1（真值）」。它可以比較形狀、物件或布林值。
     virtual_processor:
         default:
-            name: &virtual_processor 虛擬切割機
+            name: 虛擬切割機
             description: 虛擬地將圖形訊號從上到下切開。
         rotater:
-            name: &rotater 虛擬旋轉機
+            name: 虛擬旋轉機
             description: 虛擬地將圖形訊號順時針旋轉。
         unstacker:
-            name: &unstacker 虛擬提取機
+            name: 虛擬提取機
             description: 虛擬地提取圖形訊號最上層的圖形到右方輸出，剩下的圖形由左方輸出。
         stacker:
-            name: &stacker 虛擬堆疊機
+            name: 虛擬堆疊機
             description: 虛擬地將輸入的圖形拼貼在一起。如果不能被直接拼貼，右邊的圖形會被疊在左邊的圖形上面。
         painter:
-            name: &painter 虛擬上色機
+            name: 虛擬上色機
             description: 虛擬地將整個圖形塗上輸入的顏色。
     item_producer:
         default:
@@ -614,130 +611,102 @@ buildings:
             description: 沙盒模式專有，將電路層的輸入轉化成實體層的輸出。
     constant_producer:
         default:
-            name: &constant_producer 恆定生產機
+            name: 恆定生產機
             description: 持續輸出圖形或顏料。
     goal_acceptor:
         default:
-            name: &goal_acceptor 目標接收機
+            name: 目標接收機
             description: 交付接收機所示圖形以完成目標。
     block:
         default:
-            name: &block 障礙物
+            name: 障礙物
             description: 用來禁止在障礙物處放置物件。
 storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
-        desc: >-
-            <strong>切割機</strong>已解鎖！不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。<br><br>
+        desc: <strong>切割機</strong>已解鎖！不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。<br><br>
             記得把不需要的部分處理掉，否則切割機會<strong>因為堵塞而停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
         title: 順時針旋轉
-        desc: >-
-            <strong>順時針旋轉機</strong>已解鎖！
-            它會順時針旋轉輸入的圖形90度。
+        desc: <strong>順時針旋轉機</strong>已解鎖！ 它會順時針旋轉輸入的圖形90度。
     reward_painter:
         title: 上色
-        desc: >-
-            <strong>上色機</strong>已解鎖！
+        desc: <strong>上色機</strong>已解鎖！
             開採一些顏色，用上色機把顏色和圖形混合，就可以為圖形著色。<br><br>備註：如果你是色盲，設定中有<strong>色盲模式</strong>可以選。
     reward_mixer:
         title: 混色
-        desc: >-
-            <strong>混色器</strong>已解鎖！
-            在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
+        desc: <strong>混色器</strong>已解鎖！ 在此建築物中使用<strong>附加混合</strong>結合兩種顏色！
     reward_stacker:
         title: 拼貼
-        desc: >-
-            <strong>圖形拼貼機</strong>已解鎖！
+        desc: <strong>圖形拼貼機</strong>已解鎖！
             如果沒有重疊的部分，圖形拼貼機會嘗試把兩個輸入的圖形<strong>拼貼</strong>在一起。如果有重疊的部分，右邊的輸入會被<strong>疊</strong>到左邊的輸入上方！
     reward_splitter:
         title: 分流
-        desc: >-
+        desc: |-
             <strong>分流機</strong>（<strong>平衡機</strong>的變體）已解鎖！
              - 它將單個輸送帶分流成兩個。
     reward_tunnel:
         title: 隧道
-        desc: >-
-            <strong>隧道</strong>已解鎖！
-            你現在可以在其他輸送帶或建築底下運送物品了！
+        desc: <strong>隧道</strong>已解鎖！ 你現在可以在其他輸送帶或建築底下運送物品了！
     reward_rotater_ccw:
         title: 逆時針旋轉
-        desc: >-
-            <strong>逆時針旋轉機</strong>已解鎖！
-            它會逆時針旋轉輸入的圖形90度。
+        desc: <strong>逆時針旋轉機</strong>已解鎖！ 它會逆時針旋轉輸入的圖形90度。
             逆時針旋轉機是順時針旋轉機的變體。選擇「順時針旋轉機」並<strong>按「T」來切換變體</strong>就能使用。
     reward_miner_chainable:
         title: 鏈式開採
-        desc: >-
-            <strong>鏈式開採機</strong>已解鎖！
-            它是開採機的一個變體。
+        desc: <strong>鏈式開採機</strong>已解鎖！ 它是開採機的一個變體。
             它可以將開採出來的資源<strong>傳遞</strong>給其他的開採機，使得資源提取更加高效！<br><br>
             備註：工具列中舊的開採機已被取代。
     reward_underground_belt_tier_2:
         title: 二級隧道
-        desc: >-
-            <strong>二級隧道</strong>已解鎖！
-            這個隧道變體有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
+        desc: <strong>二級隧道</strong>已解鎖！ 這個隧道變體有<strong>更長的傳輸距離</strong>。你還可以混用不同的隧道變體！
     reward_cutter_quad:
         title: 四分切割
-        desc: >-
-            您已解鎖了<strong>切割機</strong>的變體：四分切割機。
+        desc: 您已解鎖了<strong>切割機</strong>的變體：四分切割機。
             它允許您將直接切割出形狀的<strong>四個邊角</strong>，而不是分成兩半！
     reward_painter_double:
         title: 雙倍上色
-        desc: >-
-            您已經解鎖了<strong>上色機</strong>的變體：雙倍上色機。
+        desc: 您已經解鎖了<strong>上色機</strong>的變體：雙倍上色機。
             它的運作方式跟上色機類似，但一次能處理<strong>兩個形狀</strong>，而且只消耗一種顏色而不是兩種顏色！
     reward_storage:
         title: 倉庫
-        desc: >-
-            <strong>倉庫</strong> 已解鎖：
-            它可以儲存多餘的物品，但有一定儲存上限。<br><br>
+        desc: <strong>倉庫</strong> 已解鎖： 它可以儲存多餘的物品，但有一定儲存上限。<br><br>
             物品優先從左側輸出，它也可以被用來作為<strong>溢流門</strong>。
     reward_freeplay:
         title: 自由模式
-        desc: >-
-            你做到了！你解鎖了<strong>自由模式</strong>！現在圖形將會是<strong>隨機</strong>生成的！<br><br>
+        desc: 你做到了！你解鎖了<strong>自由模式</strong>！現在圖形將會是<strong>隨機</strong>生成的！<br><br>
             從現在開始，基地會有<strong>交付速率下限</strong>的要求，因此我強烈建議你建造全自動化的生產線。<br><br>
             基地會在電路層輸出它需要的形狀，你只需要分析這些訊號，然後依照需求自動調整你的工廠。
     reward_blueprints:
         title: 藍圖
-        desc: >-
-            你現在可以<strong>複製貼上</strong>你的工廠某些區域。 選擇一個區域（按住 CTRL 並拖曳滑鼠），再按「C」來複製。<br><br>
+        desc: 你現在可以<strong>複製貼上</strong>你的工廠某些區域。 選擇一個區域（按住 CTRL
+            並拖曳滑鼠），再按「C」來複製。<br><br>
             貼上藍圖<strong>不是免費的</strong>，你必須製造（剛才生成的）<strong>藍圖形狀</strong>來給付。
     no_reward:
         title: 下一關
-        desc: >-
-            這一關沒有獎勵，但是下一關會有！ <br><br>
+        desc: 這一關沒有獎勵，但是下一關會有！ <br><br>
             備註：你生產過的<strong>所有</strong>圖形都會被用來<strong>升級建築</strong>。
     no_reward_freeplay:
         title: 下一關
-        desc: >-
-            恭喜你！另外，我們已經計劃在單機版中加入更多內容！
+        desc: 恭喜你！另外，我們已經計劃在單機版中加入更多內容！
     reward_balancer:
         title: 平衡物流
-        desc: >-
-            <strong>平衡機</strong>已解鎖！
-            在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
+        desc: <strong>平衡機</strong>已解鎖！ 在大型工廠中，平衡機負責<strong>合流或分流</strong>多個輸送帶上的物品。
     reward_merger:
         title: 合流
-        desc: >-
+        desc: |-
             <strong>合流機</strong>（<strong>平衡機</strong>的變體）已解鎖！
              - 它會將兩個輸送帶整合成一個。
     reward_belt_reader:
         title: 讀取輸送帶
-        desc: >-
-            <strong>輸送帶讀取機</strong>已解鎖！ 它會讀取輸送帶的流量。<br><br>
-            當你解鎖電路層時，它會變得超有用！
+        desc: <strong>輸送帶讀取機</strong>已解鎖！ 它會讀取輸送帶的流量。<br><br> 當你解鎖電路層時，它會變得超有用！
     reward_rotater_180:
         title: 180度旋轉
-        desc: >-
-            <strong>180度旋轉機</strong>已解鎖！ - 它可以180度旋轉物件（驚喜！:D）
+        desc: <strong>180度旋轉機</strong>已解鎖！ - 它可以180度旋轉物件（驚喜！:D）
     reward_display:
         title: 顯示器
-        desc: >-
-            <strong>顯示器</strong> 已解鎖！ - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
+        desc: <strong>顯示器</strong> 已解鎖！ - 在電路層上連接一個訊號到顯示器上顯示！<br><br>
             備註：你有注意到輸送帶讀取機跟倉庫都會輸出它們最後讀取的物件嗎？ 試試看在顯示器上顯示它吧！"
     reward_constant_signal:
         title: 固定信號
@@ -747,25 +716,21 @@ storyRewards:
             <strong>布林值</strong>（1或0）。
     reward_logic_gates:
         title: 邏輯閘
-        desc: >-
-            <strong>邏輯閘</strong>已解鎖！你可能覺得無所謂，但其實邏輯閘其實超酷的！<br><br>
-            有了這些邏輯閘，你可以運算 AND, OR, XOR 與 NOT 邏輯。<br><br>
-            錦上添花，我再送你<strong>電晶體</strong>！
+        desc: <strong>邏輯閘</strong>已解鎖！你可能覺得無所謂，但其實邏輯閘其實超酷的！<br><br> 有了這些邏輯閘，你可以運算 AND,
+            OR, XOR 與 NOT 邏輯。<br><br> 錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
         title: 虛擬操作
-        desc: >-
-            <strong>虛擬操作</strong>已解鎖！
-            我已為您帶來很多原有建築的虛擬版，有切割機、旋轉機、拼貼機還有更多電路層上的虛擬建築。
-            有了虛擬操作的你現在有三個繼續玩下去的方向：<br><br>
-            - 蓋一個自動生成任何基地要求圖形的<strong>自動工廠</strong>（推薦！）。<br><br>
-            - 利用電路層蓋一些很酷建築<br><br>
-            - 繼續用原本的方式破關。<br><br>
-            不論你的選擇是什麼，祝你玩得開心！
+        desc: I just gave a whole bunch of new buildings which allow you to
+            <strong>simulate the processing of shapes</strong>!<br><br> You can
+            now simulate a cutter, rotator, stacker and more on the wires layer!
+            With this you now have three options to continue the game:<br><br> -
+            Build an <strong>automated machine</strong> to create any possible
+            shape requested by the HUB (I recommend to try it!).<br><br> - Build
+            something cool with wires.<br><br> - Continue to play
+            normally.<br><br> Whatever you choose, remember to have fun!
     reward_wires_painter_and_levers:
         title: 電路層 & 四角上色機
-        desc: >-
-            <strong>電路層</strong>已解鎖！
-            它是一個獨立於實體層之外的存在，將帶給你更多玩法！<br><br>
+        desc: <strong>電路層</strong>已解鎖！ 它是一個獨立於實體層之外的存在，將帶給你更多玩法！<br><br>
             首先，我為你解鎖<strong>四角上色機</strong>。記得先在電路層為想要上色的角落通電！<br><br>
             按<strong>E</strong>切換至電路層。<br><br>
             備註：設定裡<strong>開啟提示</strong>來啟動教學！"
@@ -943,15 +908,15 @@ keybindings:
         menuOpenStats: 統計選單
         toggleHud: 開關基地
         toggleFPSInfo: 開關幀數與除錯信息
-        belt: *belt
-        underground_belt: *underground_belt
-        miner: *miner
-        cutter: *cutter
-        rotater: *rotater
-        stacker: *stacker
-        mixer: *mixer
-        painter: *painter
-        trash: *trash
+        belt: 輸送帶
+        underground_belt: 隧道
+        miner: 開採機
+        cutter: 切割機
+        rotater: 虛擬旋轉機
+        stacker: 虛擬堆疊機
+        mixer: 混色機
+        painter: 虛擬上色機
+        trash: 垃圾桶
         rotateWhilePlacing: 順時針旋轉
         rotateInverseModifier: "修飾鍵: 改為逆時針旋轉"
         cycleBuildingVariants: 選擇建築變體
@@ -972,29 +937,29 @@ keybindings:
         pipette: 滴管
         menuClose: 關閉選單
         switchLayers: 切換實體層／電路層
-        wire: *wire
-        balancer: *balancer
-        storage: *storage
-        constant_signal: *constant_signal
+        wire: 電線
+        balancer: 平衡機
+        storage: 倉庫
+        constant_signal: 固定訊號
         logic_gate: 邏輯閘
-        lever: *lever
-        filter: *filter
-        wire_tunnel: *wire_tunnel
-        display: *display
-        reader: *reader
+        lever: 信號切換器
+        filter: 物件分類器
+        wire_tunnel: 電線交叉
+        display: 顯示器
+        reader: 輸送帶讀取機
         virtual_processor: 虛擬處理
-        transistor: *transistor
-        analyzer: *analyzer
-        comparator: *comparator
+        transistor: 電晶體
+        analyzer: 圖形分析機
+        comparator: 比較機
         item_producer: 物品生產機（沙盒模式）
         copyWireValue: 電路：複製數值於游標底下
         rotateToUp: "轉動: 向上"
         rotateToDown: "轉動: 向下"
         rotateToRight: "轉動: 向右"
         rotateToLeft: "轉動: 向左"
-        constant_producer: *constant_producer
-        goal_acceptor: *goal_acceptor
-        block: *block
+        constant_producer: 恆定生產機
+        goal_acceptor: 目標接收機
+        block: 障礙物
         massSelectClear: 清空輸送帶
         showShapeTooltip: 顯示建築物輸出提示
 about:

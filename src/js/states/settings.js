@@ -40,7 +40,7 @@ export class SettingsState extends TextualGameState {
 `
             }
                 <div class="versionbar">
-                    <div class="buildVersion">${T.global.loading} ...</div>
+                    ${G_WEGAME_VERSION ? "" : `<div class="buildVersion">${T.global.loading} ...</div>`}
                 </div>
             </div>
         </div>
@@ -91,6 +91,9 @@ export class SettingsState extends TextualGameState {
 
     renderBuildText() {
         const labelVersion = this.htmlElement.querySelector(".buildVersion");
+        if (!labelVersion) {
+            return;
+        }
         const lastBuildMs = new Date().getTime() - G_BUILD_TIME;
         const lastBuildText = formatSecondsToTimeAgo(lastBuildMs / 1000.0);
 

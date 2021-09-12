@@ -1024,8 +1024,8 @@ settings:
                 ayarlar.
         shapeTooltipAlwaysOn:
             title: Şekil İpucu - Her Zaman Göster
-            description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine
-                her zaman gösterir.
+            description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine her zaman
+                gösterir.
     tickrateHz: <amount> Hz
 keybindings:
     title: Tuş Atamaları

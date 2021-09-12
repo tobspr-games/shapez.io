@@ -1051,8 +1051,9 @@ settings:
                 si fa lo zoom indietro).
         shapeTooltipAlwaysOn:
             title: Shape Tooltip - Show Always
-            description: Determina se mostrare sempre la forma in uscita da un edificio quando si passa sopra di esso col cursore,
-                invece di dover premere 'ALT'.
+            description: Determina se mostrare sempre la forma in uscita da un edificio
+                quando si passa sopra di esso col cursore, invece di dover
+                premere 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
 keybindings:
@@ -1280,8 +1281,8 @@ puzzleMenu:
         medium: Medio
         hard: Difficile
         unknown: Non classificato
-    dlcHint: Hai già acquistato il DLC? Assicurati che sia attivo facendo clic destro
-         su shapez.io nella tua libreria e selezionando Proprietà > DLC.
+    dlcHint: Hai già acquistato il DLC? Assicurati che sia attivo facendo clic
+        destro su shapez.io nella tua libreria e selezionando Proprietà > DLC.
     search:
         action: Cerca
         placeholder: Inserisci il nome di un puzzle o di un autore
