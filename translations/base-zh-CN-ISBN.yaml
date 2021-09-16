@@ -49,7 +49,7 @@ global:
         escape: ESC键
         shift: SHIFT键
         space: 空格键
-    loggingIn: Logging in
+    loggingIn: 登录
 demoBanners:
     title: 试玩版
     intro: 购买完整版以解锁所有游戏内容！
@@ -60,7 +60,7 @@ mainMenu:
     openSourceHint: 本游戏已开源！
     discordLink: 官方Discord服务器
     helpTranslate: 帮助我们翻译！
-    browserWarning: 很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用 Chrome 或者购买完整版以得到更好的体验。
+    browserWarning: 很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用 谷歌浏览器 或者购买完整版以得到更好的体验。
     savegameLevel: 第<x>关
     savegameLevelUnknown: 未知关卡
     continue: 继续游戏
@@ -68,11 +68,10 @@ mainMenu:
     madeBy: 作者：<author-link>
     subreddit: Reddit
     savegameUnnamed: 存档未命名
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
+    puzzleMode: 谜题模式
+    back: 返回
+    puzzleDlcText: 新增谜题模式将带给您更多的游戏乐趣！
+    puzzleDlcWishlist: 添加心愿单！
     puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
@@ -87,9 +86,9 @@ dialogs:
         viewUpdate: 查看更新
         showUpgrades: 显示设施升级
         showKeybindings: 显示按键设置
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: 重试
+        continue: 继续
+        playOffline: 离线游戏
     importSavegameError:
         title: 读取错误
         text: 未能读取您的存档：
@@ -137,15 +136,13 @@ dialogs:
         desc: 您还没有解锁蓝图功能！通过第12关的挑战后可解锁蓝图。
     keybindingsIntroduction:
         title: 实用快捷键
-        desc:
-            "这个游戏有很多有用的快捷键设定。 以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
+        desc: "这个游戏有很多有用的快捷键设定。 以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
             <code class='keybinding'>CTRL键</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT键</code>: 按住以放置多个同一种设施。<br> <code
             class='keybinding'>ALT键</code>: 反向放置传送带。<br>"
     createMarker:
         title: 创建地图标记
-        desc:
-            填写一个有意义的名称, 还可以同时包含一个形状的 <strong>短代码</strong> (您可以 <link>点击这里</link>
+        desc: 填写一个有意义的名称, 还可以同时包含一个形状的 <strong>短代码</strong> (您可以 <link>点击这里</link>
             生成短代码)
         titleEdit: 编辑地图标记
     markerDemoLimit:
@@ -173,69 +170,60 @@ dialogs:
         title: 教程
         desc: 这个关卡有英语版本的视频攻略! 您想查看这个视频攻略吗??
     editConstantProducer:
-        title: Set Item
+        title: 设置项目
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: 谜题载入失败
+        desc: 谜题未能载入：
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: 提交谜题
+        descName: 为您的谜题命名：
+        descIcon: 请输入唯一的短代码，它将作为您的谜题图标显示（您可以在<link>这里</link>生成,或者从以下随机推荐的图形中选择一个）：
+        placeholderName: 谜题标题
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: 无法重新定义尺寸
+        desc: 由于某些设施将会超出区域范围，因此您无法将区域变得更小。
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: 谜题出错！
+        desc: 谜题未能载入：
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: 离线模式
+        desc: 无法访问服务器，所以游戏以离线模式进行。请确认您的互联网访问正常。
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: 下载出错！
+        desc: 无法下载谜题：
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: 提交出错！
+        desc: 无法提交谜题：
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: 谜题成功发布！
+        desc: 恭喜！您的谜题已经成功发布，其他玩家已经可以玩到。您可以在“我的谜题”中找到自己已发布的谜题。
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: 离线模式
+        desc: 由于您处在离线模式，所以无法保存或发布您的谜题，您是否还要继续？
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: 游戏建议
+        desc: <strong>强烈</strong>建议您至少完成游戏本体第12关以后再尝试挑战《谜题挑战者》，否则您在游戏过程中可能遇到困难，是否仍要继续？
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: 短代码已复制
+        desc: 谜题（<key>）的短代码已复制到剪贴板！您可以在谜题菜单中输入它以访问谜题。
     puzzleReport:
-        title: Report Puzzle
+        title: 上报谜题
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: 污言秽语
+            unsolvable: 无法完成
+            trolling: 恶意设计
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: 感谢您的反馈！
+        desc: 此谜已被标记！
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: 上报失败
+        desc: 无法处理您的上报：
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: 输入短代码
+        desc: 输入谜题的短代码并载入。
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: 删除谜题吗？
+        desc: 您是否确认删除 '<title>'？删除谜题后将无法恢复！
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -257,7 +245,7 @@ ingame:
         clearSelection: 取消选择
         pipette: 吸取器
         switchLayers: 切换层
-        clearBelts: Clear belts
+        clearBelts: 清除传送带
     buildingPlacement:
         cycleBuildingVariants: 按 <key> 键以选择设施的变型体。
         hotkeyLabel: "快捷键: <key>"
@@ -321,18 +309,15 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
             1_2_conveyor: 用<strong>传送带</strong>将您的开采器连接到中心基地上！<br><br>提示：选中<strong>传送带</strong>后<strong>按下鼠标左键可拖动</strong>布置传送带！
-            1_3_expand:
-                您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
+            1_3_expand: 您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
                 提示：按住 <strong>SHIFT</strong>
                 键可放置多个<strong>开采器</strong>，注意用<strong>R</strong>
                 键可旋转<strong>开采器</strong>的出口方向，确保开采的图形可以顺利传送。
             2_1_place_cutter: 现在放置一个<strong>切割器</strong>，这个设施可把<strong>圆形</strong>切成两半！<br><br>注意：无论如何放置，切割机总是<strong>从上到下</strong>切割。
-            2_2_place_trash:
-                使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
+            2_2_place_trash: 使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
                 (!) 不需要的废物。
             2_3_more_cutters: 干的好！现在放置<strong>2个以上的切割机</strong>来加快当前缓慢的过程！<br><br>提示：用<strong>快捷键0-9</strong>可以快速选择各项设施！
-            3_1_rectangles:
-                现在让我们开采一些矩形！找到<strong>矩形地带</strong>并<strong>放置4个开采器</strong>并将它们用<strong>传送带</strong>连接到中心基地。<br><br>
+            3_1_rectangles: 现在让我们开采一些矩形！找到<strong>矩形地带</strong>并<strong>放置4个开采器</strong>并将它们用<strong>传送带</strong>连接到中心基地。<br><br>
                 提示：选中<strong>传送带</strong>后按住<strong>SHIFT键</strong>可快速准确地规划<strong>传送带路线！</strong>
             21_1_place_quad_painter: 放置<strong>四口上色器</strong>并且获取一些<strong>圆形</strong>，<strong>白色</strong>和<strong>红色</strong>！
             21_2_switch_to_wires: 按 <strong>E</strong> 键选择<strong>电线层</strong>！<br><br>
@@ -390,46 +375,38 @@ ingame:
                 title: 成就
                 desc: 挑战全成就解锁!
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
-        share: Share
-        report: Report
+        zoneTitle: 区域
+        zoneWidth: 宽度
+        zoneHeight: 高度
+        trimZone: 整理
+        clearItems: 清除项目
+        clearBuildings: 清除设施
+        resetPuzzle: 重设谜题
+        share: 共享
+        report: 上报
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: 谜题编辑器
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1.放置<strong>常量生成器</strong>，为玩家提供此谜题的初始图形和颜色。
+            - 2.建造您希望玩家建造的一个或多个图形，并将其交付给一个或多个<strong>目标接收器</strong>。
+            - 3.当一个目标接收器接收到一个图形一段时间后，会<strong>将其保存为此玩家必须建造的目标</strong>（由<strong>绿色充能条</strong>表示）。
+            - 4.单击设施上的<strong>锁定按钮</strong>即可将其禁用。
+            - 5.单击审阅后，您的谜题将通过验证，您可以正式发布它。
+            - 6.谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        title: 谜题挑战成功！
+        titleLike: 喜欢此谜题的话，请为它点赞：
+        titleRating: 您觉得此谜题难度如何？
+        titleRatingDesc: 您的评分将帮助作者在未来创作出更好的谜题！
+        continueBtn: 继续游戏
+        menuBtn: 菜单
+        nextPuzzle: 下一个谜题
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: 作者
+        shortKey: 短代码
+        rating: 难度评分
+        averageDuration: 平均挑战时间
+        completionRate: 挑战完成率
 shopUpgrades:
     belt:
         name: 传送、分发、隧道
@@ -613,16 +590,16 @@ buildings:
             description: 仅在沙盒模式下可用，在常规层上输出<strong>电线层</strong>给定的<strong>信号</strong>。
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: 常量生成器
+            description: 不断输出指定的图形或颜色。
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: 目标接收器
+            description: 将图形传递给目标接收器，并将它们设置为谜题挑战目标。
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: 方块
+            description: 放置了方块的格子将无法再进行其他放置。
 storyRewards:
     reward_cutter_and_trash:
         title: 切割图形
@@ -634,8 +611,7 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>旋转机</strong>。它会顺时针将输入的<strong>图形旋转90度</strong>。
     reward_painter:
         title: 上色
-        desc:
-            恭喜！您解锁了<strong>上色器</strong>。开采一些颜色 (就像您开采图形一样)，将其在上色器中与图形结合来将图形上色！
+        desc: 恭喜！您解锁了<strong>上色器</strong>。开采一些颜色 (就像您开采图形一样)，将其在上色器中与图形结合来将图形上色！
             <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>
     reward_mixer:
         title: 混合颜色
@@ -652,13 +628,11 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>隧道</strong>。它可放置在<strong>传送带</strong>或<strong>设施</strong>下方以运送物品。
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc:
-            恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
+        desc: 恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
             <br>选择<strong>旋转机</strong>然后按"T"键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采器
-        desc:
-            您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
+        desc: 您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
             注意：新的开采器已替换了工具栏里旧的开采器！
     reward_underground_belt_tier_2:
         title: 二级隧道
@@ -675,14 +649,12 @@ storyRewards:
             <br>它<strong>优先从左边</strong>输出，这样您就可以用它做一个<strong>溢流门</strong>了！
     reward_freeplay:
         title: 自由模式
-        desc:
-            成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
+        desc: 成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
             从现在起，中心基地最为需要的是<strong>产量</strong>，我强烈建议您去制造一台能够自动交付所需图形的机器！<br><br>
             基地会在<strong>电线层</strong>输出需要的图形，您需要去分析图形并在此基础上自动配置您的工厂。
     reward_blueprints:
         title: 蓝图
-        desc:
-            您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL键并拖动鼠标来选择一块区域，然后按C键复制。
+        desc: 您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL键并拖动鼠标来选择一块区域，然后按C键复制。
             <br><br>粘贴并<strong>不是免费的</strong>，您需要制造<strong>蓝图图形</strong>来负担。蓝图图形是您刚刚交付的图形。
     no_reward:
         title: 下一关
@@ -703,15 +675,14 @@ storyRewards:
             <br><br>等您解锁了<strong>电线层</strong>后，它将会极其有用！
     reward_rotater_180:
         title: 旋转机（180度）
-        desc: 恭喜！您解锁了<strong>旋转器（180度）</strong>！它能帮您把一个图形旋转180度(Surprise! :D)
+        desc: 恭喜！您解锁了<strong>旋转器（180度）</strong>！它能帮您把一个图形旋转180度(惊喜! :D)
     reward_display:
         title: 显示器
         desc: 恭喜！您已经解锁了<strong>显示器</strong>，它可以显示一个在<strong>电线层上连接的信号</strong>！
             <br>注意：您注意到<strong>传送读取器</strong>和<strong>存储器</strong>输出的他们最后读取的物品了吗？试着在显示屏上展示一下！"
     reward_constant_signal:
         title: 恒定信号
-        desc:
-            恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
+        desc: 恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
             <br>比如，它能发出图形、颜色、开关值（1 / 0）的固定信号。
     reward_logic_gates:
         title: 逻辑门
@@ -730,8 +701,7 @@ storyRewards:
             <strong>提示</strong>：可在设置中打开电线层教程！"
     reward_filter:
         title: 物品过滤器
-        desc:
-            恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
+        desc: 恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
             您也可以输入开关值（1 / 0）信号来激活或者禁用它。
     reward_demo_end:
         title: 试玩结束
@@ -871,9 +841,8 @@ settings:
             title: 地图资源图形尺寸
             description: 控制地图总览时图形的尺寸（指缩小视野时）。
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: 图形工具提示-始终显示
+            description: 在设施上悬停时是否始终显示图形工具提示，而不是必须按住“Alt”键。
     rangeSliderPercentage: <amount> %
 keybindings:
     title: 按键设定
@@ -951,11 +920,11 @@ keybindings:
         rotateToDown: 向下旋转
         rotateToRight: 向右旋转
         rotateToLeft: 向左旋转
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
-        showShapeTooltip: Show shape output tooltip
+        constant_producer: 常量生成器
+        goal_acceptor: 目标接收器
+        block: 方块
+        massSelectClear: 清除传送带
+        showShapeTooltip: 显示图形输出提示
 about:
     title: 关于游戏
     body: >-
@@ -1025,7 +994,7 @@ tips:
     - 设施建得离基地太近很可能会妨碍以后的工作。
     - 使用升级列表中每个形状旁边的固定图标将其固定到屏幕上。
     - 地图无限，放飞想象，尽情创造。
-    - 向您推荐Factorio！这是我最喜欢的游戏。向神作致敬！
+    - 向您推荐《异星工厂》！这是我最喜欢的游戏。向神作致敬！
     - 四向切割机从右上开始进行顺时针切割!
     - 在主界面您可以下载您的游戏存档文件!
     - 这个游戏有很多有用的快捷键！一定要到快捷键页面看看。
@@ -1037,87 +1006,78 @@ tips:
     - 您可以点击被固定在屏幕左侧的图形来解除固定。
     - 您可以点击被固定在屏幕左侧的图形来解除固定。
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    play: 游戏
+    edit: 编辑
+    title: 谜题模式
+    createPuzzle: 创建谜题
+    loadPuzzle: 载入
+    reviewPuzzle: 审阅 & 发布
+    validatingPuzzle: 验证谜题
+    submittingPuzzle: 提交谜题
+    noPuzzles: 暂无满足此部分条件的谜题。
+    dlcHint: 如已购买DLC，请在您的Steam库中右键点击异形工厂，然后选择属性-DLC。
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: Created
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        completed: Completed
-        official: Tutorial
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        levels: 关卡
+        new: 最新
+        top-rated: 最受好评
+        mine: 已创建
+        easy: 简单
+        medium: 普通
+        hard: 困难
+        completed: 已完成
+        official: 官方教程
+        trending: 本日趋势
+        trending-weekly: 本周趋势
+        categories: 分类
+        difficulties: 根据难度
+        account: 我的谜题
+        search: 查找
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: 查找
+        placeholder: 输入谜题或作者名称
+        includeCompleted: 包括已完成
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: 任何难度
+            easy: 简单
+            medium: 普通
+            hard: 困难
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: 任何挑战时间
+            short: 快速 (< 2 分钟)
+            medium: 正常
+            long: 较长 (> 10 分钟)
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
+        easy: 简单
+        medium: 普通
+        hard: 困难
+        unknown: 未评分
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: 无效谜题
+        noProducers: 请放置一个常量生成器！
+        noGoalAcceptors: 请放置一个目标接收器！
+        goalAcceptorNoItem: 一或者多个目标接收器尚未分配目标图形，请传送一个图形以设定目标！
+        goalAcceptorRateNotMet: 一或者多个目标接收器尚未被传送足够数量的目标图形，请确认所有目标接收器的指示器都已显示绿色。
+        buildingOutOfBounds: 一个或多个设施处于可建造区域范围外，扩大建造区域或者移除当前范围外的设施。
+        autoComplete: 您的谜题已自动完成！请确认您的常量生成器没有直接向您的目标接收器进行传送。
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle already got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: 您的操作太频繁了。请稍等。
+    invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的Api密钥）。
+    unauthorized: 与后台通信失败，请尝试更新或重新启动游戏（未经授权）。
+    bad-token: 与后台通信失败，请尝试更新或重新启动游戏（令牌错误）。
+    bad-id: 谜题标识符无效。
+    not-found: 找不到给定的谜题。
+    bad-category: 找不到给定的类别。
+    bad-short-key: 给定的短代码错误。
+    profane-title: 您的谜题标题包含污言秽语。
+    bad-title-too-many-spaces: 您的谜题标题过短。
+    bad-shape-key-in-emitter: 常量生成器包含无效项目。
+    bad-shape-key-in-goal: 目标接收器包含无效项目。
+    no-emitters: 您的谜题没有任何常量生成器。
+    no-goals: 您的谜题没有任何目标接收器。
+    short-key-already-taken: 此短代码已被使用，请使用其他短代码。
+    can-not-report-your-own-puzzle: 您无法上报您自己的谜题问题。
+    bad-payload: 此请求包含无效数据。
+    bad-building-placement: 您的谜题包含放置错误的设施。
+    timeout: 请求超时。
+    too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
+    no-permission: 您没有执行此操作的权限。
