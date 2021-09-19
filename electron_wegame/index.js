@@ -43,7 +43,7 @@ function createWindow() {
         useContentSize: true,
         minWidth: 800,
         minHeight: 600,
-        title: "shapez.io Standalone",
+        title: "图形工厂",
         transparent: false,
         icon: path.join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,

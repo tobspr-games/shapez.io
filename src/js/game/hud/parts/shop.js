@@ -77,7 +77,9 @@ export class HUDShop extends BaseHUDPart {
                 const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
-                requiredHandle.infoDetector.cleanup();
+                if (requiredHandle.infoDetector) {
+                    requiredHandle.infoDetector.cleanup();
+                }
             }
 
             // Cleanup
@@ -119,9 +121,19 @@ export class HUDShop extends BaseHUDPart {
                 pinButton.classList.add("pin");
                 container.appendChild(pinButton);
 
-                const viewInfoButton = document.createElement("button");
-                viewInfoButton.classList.add("showInfo");
-                container.appendChild(viewInfoButton);
+                let infoDetector;
+                if (!G_WEGAME_VERSION) {
+                    const viewInfoButton = document.createElement("button");
+                    viewInfoButton.classList.add("showInfo");
+                    container.appendChild(viewInfoButton);
+                    infoDetector = new ClickDetector(viewInfoButton, {
+                        consumeEvents: true,
+                        preventDefault: true,
+                    });
+                    infoDetector.click.add(() =>
+                        this.root.hud.signals.viewShapeDetailsRequested.dispatch(shapeDef)
+                    );
+                }
 
                 const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
                 if (shape === currentGoalShape) {
@@ -145,14 +157,6 @@ export class HUDShop extends BaseHUDPart {
                         pinButton.classList.remove("unpinned");
                     }
                 });
-
-                const infoDetector = new ClickDetector(viewInfoButton, {
-                    consumeEvents: true,
-                    preventDefault: true,
-                });
-                infoDetector.click.add(() =>
-                    this.root.hud.signals.viewShapeDetailsRequested.dispatch(shapeDef)
-                );
 
                 handle.requireIndexToElement.push({
                     container,
@@ -211,7 +215,9 @@ export class HUDShop extends BaseHUDPart {
                 const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
-                requiredHandle.infoDetector.cleanup();
+                if (requiredHandle.infoDetector) {
+                    requiredHandle.infoDetector.cleanup();
+                }
             }
             handle.requireIndexToElement = [];
         }
