@@ -46,6 +46,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         this.currentMetaBuilding = new TrackedState(this.onSelectedMetaBuildingChanged, this);
 
         /**
+         * The building selected before being interrupted by an overlay
+         * @type {MetaBuilding}
+         */
+        this.prevMetaBuilding = null;
+
+        /**
          * The current rotation
          * @type {number}
          */
@@ -250,7 +256,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Aborts any dragging
      */
     abortDragging() {
-        this.currentlyDragging = true;
+        this.currentlyDragging = false;
         this.currentlyDeleting = false;
         this.initialPlacementVector = null;
         this.lastDragTile = null;
@@ -262,6 +268,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     update() {
         // Abort placement if a dialog was shown in the meantime
         if (this.root.hud.hasBlockingOverlayOpen()) {
+            if (this.currentMetaBuilding.get()) {
+                this.prevMetaBuilding = this.currentMetaBuilding.get();
+            }
             this.abortPlacement();
             return;
         }
@@ -274,9 +283,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
 
         // Make sure we have nothing selected while in overview mode
         if (this.root.camera.getIsMapOverlayActive()) {
-            if (this.currentMetaBuilding.get()) {
+            const drawingPath = this.currentlyDragging && this.isDirectionLockActive;
+            if (this.currentMetaBuilding.get() && !drawingPath) {
+                this.prevMetaBuilding = this.currentMetaBuilding.get();
                 this.currentMetaBuilding.set(null);
             }
+        } else if (this.prevMetaBuilding && !this.currentMetaBuilding.get()) {
+            this.currentMetaBuilding.set(this.prevMetaBuilding);
+            this.prevMetaBuilding = null;
         }
     }
 
@@ -436,8 +450,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * @param {Vector} tile
      */
     tryPlaceCurrentBuildingAt(tile) {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            // Dont allow placing in overview mode
+        if (this.root.camera.getIsMapOverlayActive() && !this.isDirectionLockActive) {
+            // Only allow placing belt and wire plans in overlay mode
             return;
         }
 
@@ -825,10 +839,6 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Mouse up handler
      */
     onMouseUp() {
-        if (this.root.camera.getIsMapOverlayActive()) {
-            return;
-        }
-
         // Check for direction lock
         if (this.lastDragTile && this.currentlyDragging && this.isDirectionLockActive) {
             this.executeDirectionLockedPlacement();
