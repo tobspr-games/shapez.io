@@ -70,8 +70,7 @@ export class Blueprint {
 
         // First, create a copy
         for (let i = 0; i < entities.length; ++i) {
-			
-            const entity = entities[i];//root.entityMgr.findByUid(uids[i]);
+            const entity = entities[i]; //root.entityMgr.findByUid(uids[i]);
             // assert(entity, "Entity for blueprint not found:" + uids[i]);
 
             const clone = entity.clone();

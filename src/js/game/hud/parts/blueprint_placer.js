@@ -183,9 +183,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 this.root.soundProxy.playUiError();
                 return;
             }
-
-			this.root.hud.signals.pasteBlueprintRequested.dispatch();
-			
+            this.root.hud.signals.pasteBlueprintRequested.dispatch();
             this.currentBlueprint.set(this.lastBlueprintUsed);
         } else {
             this.root.soundProxy.playUiError();

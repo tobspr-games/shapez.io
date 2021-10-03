@@ -24,7 +24,7 @@ import { BaseHUDPart } from "../base_hud_part";
 const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
-    createElements(parent) { }
+    createElements(parent) {}
 
     initialize() {
         this.multiLayerSelect = false;
@@ -62,8 +62,7 @@ export class HUDMassSelector extends BaseHUDPart {
             return;
         }
         const index = this.selectedEntities.indexOf(entity);
-        if (index != -1)
-            this.selectedEntities.splice(index, 1);
+        if (index != -1) this.selectedEntities.splice(index, 1);
     }
 
     /**
