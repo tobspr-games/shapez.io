@@ -425,7 +425,12 @@ export class GameCore {
 
         root.camera.transform(context);
 
-        assert(context.globalAlpha === 1.0, "Global alpha not 1 on frame start");
+        if (context.globalAlpha !== 1.0) {
+            console.warn("Global Alpha not set back to 1 on Frame Begin");
+            context.globalAlpha = 1;
+        }
+
+        // assert(context.globalAlpha === 1.0, "Global alpha not 1 on frame start");
 
         // Update hud
         root.hud.update();

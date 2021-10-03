@@ -1,24 +1,17 @@
-import { globalConfig } from "../../../core/config";
-import { makeDiv, formatBigNumber, formatBigNumberFull } from "../../../core/utils";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
-import { MapChunkView } from "../../map_chunk_view";
+import { formatBigNumberFull } from "../../../core/utils";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { Vector } from "../../../core/vector";
 import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
-import { MetaBlockBuilding } from "../../buildings/block";
-import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { enumMouseButton } from "../../camera";
 import { Component } from "../../component";
 import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("hud/mass_selector");
@@ -155,13 +148,12 @@ export class HUDMassSelector extends BaseHUDPart {
     }
 
     clearBelts() {
-        for (const uid of this.selectedUids) {
-            const entity = this.root.entityMgr.findByUid(uid);
+        for (const entity of this.selectedEntities) {
             for (const component of Object.values(entity.components)) {
                 /** @type {Component} */ (component).clear();
             }
         }
-        this.selectedUids = new Set();
+        this.selectedEntities = [];
     }
 
     confirmCut() {
@@ -363,7 +355,7 @@ export class HUDMassSelector extends BaseHUDPart {
                             }
 
                             renderedUids.add(uid);
-                            this.RenderSelectonPreviewTile(parameters, entity);
+                            this.renderSelectonPreviewTile(parameters, entity);
                         }
                     }
                 }
@@ -373,13 +365,8 @@ export class HUDMassSelector extends BaseHUDPart {
         //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
         for (let i = 0; i < this.selectedEntities.length; ++i) {
             const entity = this.selectedEntities[i];
-            this.RenderSelectonPreviewTile(parameters, entity);
+            this.renderSelectonPreviewTile(parameters, entity);
         }
-        // this.selectedUids.forEach(uid => {
-        //     const entity = this.root.entityMgr.findByUid(uid);
-
-        //     this.RenderSelectonPreviewTile(parameters, entity);
-        // });
 
         parameters.context.globalAlpha = 1;
     }
@@ -388,7 +375,7 @@ export class HUDMassSelector extends BaseHUDPart {
      * @param {DrawParameters} parameters
      * @param {Entity} entity
      */
-    RenderSelectonPreviewTile(parameters, entity) {
+    renderSelectonPreviewTile(parameters, entity) {
         const staticComp = entity.components.StaticMapEntity;
 
         parameters.context.globalAlpha = entity.layer == this.root.currentLayer ? 1 : 0.7;

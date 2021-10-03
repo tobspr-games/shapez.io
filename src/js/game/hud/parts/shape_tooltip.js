@@ -38,7 +38,7 @@ export class HUDShapeTooltip extends BaseHUDPart {
             active &&
             !this.isPlacingBuilding &&
             !hudParts.massSelector.currentSelectionStartWorld &&
-            hudParts.massSelector.selectedUids.size < 1 &&
+            hudParts.massSelector.selectedEntities.length < 1 &&
             !hudParts.blueprintPlacer.currentBlueprint.get()
         );
     }

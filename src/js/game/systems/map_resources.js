@@ -118,5 +118,6 @@ export class MapResourcesSystem extends GameSystem {
             context.fillRect(0, 0, w, 1);
             context.fillRect(0, 1, 1, h);
         }
+        context.globalAlpha = 1;
     }
 }
