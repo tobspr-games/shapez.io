@@ -36,6 +36,11 @@ export class ItemAcceptorComponent extends Component {
     constructor({ slots = [] }) {
         super();
 
+        this.setSlots(slots);
+        this.clear();
+    }
+
+    clear() {
         /**
          * Fixes belt animations
          * @type {Array<{
@@ -46,8 +51,6 @@ export class ItemAcceptorComponent extends Component {
          * }>}
          */
         this.itemConsumptionAnimations = [];
-
-        this.setSlots(slots);
     }
 
     /**
@@ -71,6 +74,8 @@ export class ItemAcceptorComponent extends Component {
 
     /**
      * Returns if this acceptor can accept a new item at slot N
+     *
+     * NOTICE: The belt path ignores this for performance reasons and does his own check
      * @param {number} slotIndex
      * @param {BaseItem=} item
      */

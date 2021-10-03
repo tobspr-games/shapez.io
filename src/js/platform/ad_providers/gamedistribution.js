@@ -95,6 +95,10 @@ export class GamedistributionAdProvider extends AdProviderInterface {
 
         document.body.classList.add("externalAdOpen");
 
+        logger.log("Set sound volume to 0");
+        this.app.sound.setMusicVolume(0);
+        this.app.sound.setSoundVolume(0);
+
         return new Promise(resolve => {
             // So, wait for the remove call but also remove after N seconds
             this.videoAdResolveFunction = () => {
@@ -119,6 +123,11 @@ export class GamedistributionAdProvider extends AdProviderInterface {
             })
             .then(() => {
                 document.body.classList.remove("externalAdOpen");
+
+                logger.log("Restored sound volume");
+
+                this.app.sound.setMusicVolume(this.app.settings.getSetting("musicVolume"));
+                this.app.sound.setSoundVolume(this.app.settings.getSetting("soundVolume"));
             });
     }
 }

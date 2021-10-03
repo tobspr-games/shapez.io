@@ -1,33 +1,37 @@
-import { BaseHUDPart } from "../base_hud_part";
-import { Vector } from "../../../core/vector";
-import { STOP_PROPAGATION } from "../../../core/signal";
-import { DrawParameters } from "../../../core/draw_parameters";
-import { Entity } from "../../entity";
-import { Loader } from "../../../core/loader";
 import { globalConfig } from "../../../core/config";
 import { makeDiv, formatBigNumber, formatBigNumberFull } from "../../../core/utils";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { MapChunkView } from "../../map_chunk_view";
+import { DrawParameters } from "../../../core/draw_parameters";
+import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
-import { enumMouseButton } from "../../camera";
+import { STOP_PROPAGATION } from "../../../core/signal";
+import { Vector } from "../../../core/vector";
+import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
+import { Blueprint } from "../../blueprint";
+import { MetaBlockBuilding } from "../../buildings/block";
+import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
+import { enumMouseButton } from "../../camera";
+import { Component } from "../../component";
+import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
-import { Blueprint } from "../../blueprint";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { BaseHUDPart } from "../base_hud_part";
 
 const logger = createLogger("hud/mass_selector");
 
 export class HUDMassSelector extends BaseHUDPart {
-    createElements(parent) {}
+    createElements(parent) { }
 
     initialize() {
         this.multiLayerSelect = false;
         this.currentSelectionStartWorld = null;
-		this.currentSelectionEnd = null;
+        this.currentSelectionEnd = null;
 
-		/**@type {Array<Entity>} */
+        /**@type {Array<Entity>} */
         this.selectedEntities = [];
 
         this.root.signals.entityQueuedForDestroy.add(this.onEntityDestroyed, this);
@@ -37,12 +41,13 @@ export class HUDMassSelector extends BaseHUDPart {
         this.root.camera.movePreHandler.add(this.onMouseMove, this);
         this.root.camera.upPostHandler.add(this.onMouseUp, this);
 
-        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.onBack, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).addToTop(this.onBack, this);
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.massSelect.confirmMassDelete)
             .add(this.confirmDelete, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCut).add(this.confirmCut, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectCopy).add(this.startCopy, this);
+        this.root.keyMapper.getBinding(KEYMAPPINGS.massSelect.massSelectClear).add(this.clearBelts, this);
 
         this.root.hud.signals.selectedPlacementBuildingChanged.add(this.clearSelection, this);
         this.root.signals.editModeChanged.add(this.clearSelection, this);
@@ -55,10 +60,10 @@ export class HUDMassSelector extends BaseHUDPart {
     onEntityDestroyed(entity) {
         if (this.root.bulkOperationRunning) {
             return;
-		}
-		const index = this.selectedEntities.indexOf(entity);
-		if(index != -1)
-        	this.selectedEntities.splice(index, 1);
+        }
+        const index = this.selectedEntities.indexOf(entity);
+        if (index != -1)
+            this.selectedEntities.splice(index, 1);
     }
 
     /**
@@ -107,6 +112,7 @@ export class HUDMassSelector extends BaseHUDPart {
          */
         const mapUidToEntity = this.root.entityMgr.getFrozenUidSearchMap();
 
+        let count = 0;
         this.root.logic.performBulkOperation(() => {
             for (let i = 0; i < entities.length; ++i) {
                 const entity = mapUidToEntity.get(entities[i].uid);
@@ -118,8 +124,12 @@ export class HUDMassSelector extends BaseHUDPart {
 
                 if (!this.root.logic.tryDeleteBuilding(entity)) {
                     logger.error("Error in mass delete, could not remove building");
+                } else {
+                    count++;
                 }
             }
+
+            this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.destroy1000, count);
         });
 
         // Clear uids later
@@ -134,15 +144,25 @@ export class HUDMassSelector extends BaseHUDPart {
                     T.dialogs.blueprintsNotUnlocked.desc
                 );
                 return;
-			}
+            }
 
-			this.root.hud.signals.buildingsSelectedForCopy.dispatch(this.selectedEntities);
-			
+            this.root.hud.signals.buildingsSelectedForCopy.dispatch(this.selectedEntities);
+
             this.selectedEntities = [];
             this.root.soundProxy.playUiClick();
         } else {
             this.root.soundProxy.playUiError();
         }
+    }
+
+    clearBelts() {
+        for (const uid of this.selectedUids) {
+            const entity = this.root.entityMgr.findByUid(uid);
+            for (const component of Object.values(entity.components)) {
+                /** @type {Component} */ (component).clear();
+            }
+        }
+        this.selectedUids = new Set();
     }
 
     confirmCut() {
@@ -171,7 +191,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
     doCut() {
         if (this.selectedEntities.length > 0) {
-			const entities = Array.from(this.selectedEntities);
+            const entities = Array.from(this.selectedEntities);
             const cutAction = () => {
                 // copy code relies on entities still existing, so must copy before deleting.
                 this.root.hud.signals.buildingsSelectedForCopy.dispatch(entities);
@@ -263,8 +283,15 @@ export class HUDMassSelector extends BaseHUDPart {
 
                     for (let i = 0; i < entities.length; ++i) {
                         let entity = entities[i];
-                        if (entity && this.root.logic.canDeleteBuilding(entity))
+                        if (entity && this.root.logic.canDeleteBuilding(entity)) {
+                            const staticComp = entity.components.StaticMapEntity;
+
+                            if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                                continue;
+                            }
+
                             this.selectedEntities.push(entity);
+                        }
                     }
                 }
             }
@@ -322,14 +349,21 @@ export class HUDMassSelector extends BaseHUDPart {
 
                     for (let i = 0; i < entities.length; ++i) {
                         let entity = entities[i];
+
                         if (entity && this.root.logic.canDeleteBuilding(entity)) {
+                            const staticComp = entity.components.StaticMapEntity;
+
+                            if (!staticComp.getMetaBuilding().getIsRemovable(this.root)) {
+                                continue;
+                            }
+
                             // Prevent rendering the overlay twice
                             const uid = entity.uid;
                             if (renderedUids.has(uid)) {
                                 continue;
                             }
-                            renderedUids.add(uid);
 
+                            renderedUids.add(uid);
                             this.RenderSelectonPreviewTile(parameters, entity);
                         }
                     }
@@ -337,11 +371,11 @@ export class HUDMassSelector extends BaseHUDPart {
             }
         }
 
-		//EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
-		for(let i = 0; i < this.selectedEntities.length; ++ i){
-			const entity = this.selectedEntities[i];
-			this.RenderSelectonPreviewTile(parameters, entity);
-		}
+        //EXTREMELY SLOW. There must be a better way. (Possibly use a Array)
+        for (let i = 0; i < this.selectedEntities.length; ++i) {
+            const entity = this.selectedEntities[i];
+            this.RenderSelectonPreviewTile(parameters, entity);
+        }
         // this.selectedUids.forEach(uid => {
         //     const entity = this.root.entityMgr.findByUid(uid);
 

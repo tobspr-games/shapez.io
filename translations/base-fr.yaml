@@ -6,50 +6,23 @@ steamPage:
     intro: >-
         Vous aimez les jeux d’automatisation ? Ce jeu est pour vous !
 
-        shapez.io est un jeu calme où vous devrez construire des usines pour produire automatiquement des formes géométriques. À mesure que le niveau augmente, les formes deviennent de plus en plus
-        complexes, et vous devrez vous étendre sur la carte infinie.
+        shapez.io est un jeu calme où vous devrez construire des usines pour produire automatiquement des formes géométriques. À mesure que le niveau augmente, les formes deviennent de plus en plus complexes, et vous devrez vous étendre sur la carte infinie.
 
-        Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais
-        plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
+        Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    title_advantages: Avantages de la version complète
-    advantages:
-        - <b>12 nouveaux niveaux</b> avec 26 niveaux en tout
-        - <b>18 nouveaux bâtiments</b> pour automatiser entièrement votre usine !
-        - <b>20 niveaux d’amélioration</b> pour s’amuser pendant des heures !
-        - <b>Les câbles</b> ouvrent une toute nouvelle dimension !
-        - <b>Mode sombre</b> !
-        - Sauvegardes illimitées
-        - Balises illimitées
-        - Me soutenir ! ❤️
-    title_future: Prévu
-    planned:
-        - Bibliothèque de patrons
-        - Succès sur Steam
-        - Mode réflexion
-        - Mini-carte
-        - Mods
-        - Mode bac à sable
-        - …et bien plus !
-    title_open_source: Ce jeu est open source !
-    text_open_source: >-
-        Tout le monde peut contribuer. Je suis très impliqué dans la communauté
-        et j’essaie de lire toutes les suggestions et de prendre en compte vos
-        retours quand c’est possible.
-
-        N’oubliez pas de consulter mon tableau Trello pour voir tout le plan de développement !
-    title_links: Liens
-    links:
-        discord: Discord officiel
-        roadmap: Plan de développement
-        subreddit: Reddit
-        source_code: Code source (GitHub)
-        translate: Aidez à traduire
+    what_others_say: Ce que les gens pensent de Shapez.io
+    nothernlion_comment: Ce jeu est génial - Je passe un merveilleux moment à jouer,
+        et le temps s'est envolé.
+    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai
+        trouvé comment faire un ordinateur dans Shapez.io
+    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer. Jeu
+        d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes
+        plus efficaces.
 global:
     loading: Chargement
     error: Erreur
-    thousandsDivider:
+    thousandsDivider: ","
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -77,6 +50,7 @@ global:
         escape: ESC
         shift: MAJ
         space: ESPACE
+    loggingIn: Logging in
 demoBanners:
     title: Version de démo
     intro: Achetez la version complète pour débloquer toutes les fonctionnalités !
@@ -97,6 +71,12 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
     savegameUnnamed: Sans titre
+    puzzleMode: Mode Puzzle
+    back: Retour
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
+        Steam dès maintenant pour encore plus d'amusement!
+    puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -110,6 +90,9 @@ dialogs:
         viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
+        retry: Réessayer
+        continue: Continuer
+        playOffline: Jouer Hors-ligne
     importSavegameError:
         title: Erreur d’importation
         text: "Impossible d’importer votre sauvegarde :"
@@ -153,9 +136,9 @@ dialogs:
         desc: "Voici les changements depuis votre dernière session de jeu :"
     upgradesIntroduction:
         title: Débloquer les améliorations
-        desc: Toutes les formes que vous produisez peuvent être utilisées pour débloquer
-            des améliorations — <strong>Ne détruisez pas vos anciennes
-            usines !</strong> L’onglet des améliorations se trouve dans le coin
+        desc: <strong>Ne détruisez pas vos anciennes usines !</strong> Toutes les formes
+            que vous produisez peuvent être utilisées pour débloquer des
+            améliorations. L’onglet des améliorations se trouve dans le coin
             supérieur droit de l’écran.
     massDeleteConfirm:
         title: Confirmer la suppression
@@ -171,7 +154,7 @@ dialogs:
             la couper ?
     blueprintsNotUnlocked:
         title: Pas encore débloqué
-        desc: Terminez le niveau 12 pour avoir accès aux patrons !
+        desc: Terminez le niveau 12 pour avoir accès aux plans !
     keybindingsIntroduction:
         title: Raccourcis utiles
         desc: 'Le jeu a de nombreux raccourcis facilitant la construction de grandes
@@ -210,6 +193,73 @@ dialogs:
         title: Tutoriel disponible
         desc: Il y a un tutoriel vidéo pour ce niveau, mais il n’est disponible qu’en
             anglais. Voulez-vous le regarder ?
+    editConstantProducer:
+        title: Définir l'objet
+    puzzleLoadFailed:
+        title: Le chargement du Puzzle à échoué
+        desc: "Malheuresement, le puzzle n'a pas pu être chargé :"
+    submitPuzzle:
+        title: Envoyer le Puzzle
+        descName: "Donnez un nom à votre puzzle:"
+        descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme
+            icône de votre puzzle (Vous pouvez générer le raccourci d'une forme
+            <link>ici</link>, ou en choisir une parmi les formes suggérées
+            alétoirement ci-dessous):"
+        placeholderName: Titre du Puzzle
+    puzzleResizeBadBuildings:
+        title: Impossible de redimensionner
+        desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en
+            dehors de la zone
+    puzzleLoadError:
+        title: Mauvais Puzzle
+        desc: "Le chargement du puzzle a échoué:"
+    offlineMode:
+        title: Mode hors-ligne
+        desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en
+            mode hors ligne. Veuillez vous assurez que vous disposez d'une
+            connexion Internet active.
+    puzzleDownloadError:
+        title: Erreur de téléchargment
+        desc: "Le téléchargement a échoué:"
+    puzzleSubmitError:
+        title: Erreur d'envoi
+        desc: "L'envoi a échoué:"
+    puzzleSubmitOk:
+        title: Puzzle envoyé
+        desc: Félicitations ! Votre puzzle a été envoyé et peut maintenant être joué.
+            Vous pouvez maintenant le retrouver dans la section "Mes Puzzles".
+    puzzleCreateOffline:
+        title: Mode Hors-ligne
+        desc: Puisque vous êtes hors ligne, vous ne pourrez pas enregistrer et/ou
+            publier votre puzzle. Souhaitez-vous toujours continuer ?
+    puzzlePlayRegularRecommendation:
+        title: Recommandation
+        desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au
+            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risqez de
+            rencontrer des méchanismes pas encore introduits. Voulez-vous
+            toujours continuer ?
+    puzzleShare:
+        title: Code copié
+        desc: Le code du puzzle (<key>) a été copié dans ton presse-papiers ! Il peut
+            être entré dans le menu des puzzles pour accéder au puzzle.
+    puzzleReport:
+        title: Signaler le Puzzle
+        options:
+            profane: Profane
+            unsolvable: Irrésolvable
+            trolling: Troll
+    puzzleReportComplete:
+        title: Merci pour votre retour!
+        desc: Le puzzle a été marqué.
+    puzzleReportError:
+        title: Échec du signalement
+        desc: "Votre signalement n'a pas pu être effectué:"
+    puzzleLoadShortKey:
+        title: Entrer un code
+        desc: Entrer le code du puzzle pour le charger.
+    puzzleDelete:
+        title: Supprimer le puzzle ?
+        desc: Êtes-vous sûr de vouloir supprimer '<title>' ? Cela sera irréversible !
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -223,7 +273,7 @@ ingame:
         placeBuilding: Placer un bâtiment
         createMarker: Créer une balise
         delete: Supprimer
-        pasteLastBlueprint: Copier le dernier patron
+        pasteLastBlueprint: Copier le dernier plan
         lockBeltDirection: Utiliser le planificateur de convoyeurs
         plannerSwitchSide: Inverser la direction du planificateur
         cutSelection: Couper
@@ -231,6 +281,7 @@ ingame:
         clearSelection: Effacer la sélection
         pipette: Pipette
         switchLayers: Changer de calque
+        clearBelts: Supprimer les rails
     colors:
         red: Rouge
         green: Vert
@@ -248,8 +299,8 @@ ingame:
             speed: Vitesse
             range: Portée
             storage: Espace de stockage
-            oneItemPerSecond: 1 forme ⁄ s
-            itemsPerSecond: <x> formes ⁄ s
+            oneItemPerSecond: 1 objet ⁄ s
+            itemsPerSecond: <x> objets ⁄ s
             itemsPerSecondDouble: (×2)
             tiles: <x> cases
     levelCompleteNotification:
@@ -259,8 +310,8 @@ ingame:
         buttonNextLevel: Niveau suivant
     notifications:
         newUpgrade: Une nouvelle amélioration est disponible !
-        gameSaved: Votre partie a été sauvegardée.
-        freeplayLevelComplete: Niveau <level> complet !
+        gameSaved: Votre partie a bien été sauvegardée.
+        freeplayLevelComplete: Niveau <level> terminé !
     shop:
         title: Améliorations
         buttonUnlock: Améliorer
@@ -270,14 +321,14 @@ ingame:
         title: Statistiques
         dataSources:
             stored:
-                title: Stocké
+                title: Stock
                 description: Affiche le nombre de formes stockées dans votre bâtiment central.
             produced:
-                title: Produit
+                title: Production
                 description: Affiche toutes les formes que votre usine produit, y compris les
                     formes intermédiaires.
             delivered:
-                title: Livré
+                title: Arrivage
                 description: Affiche les formes qui ont été livrées dans votre bâtiment central.
         noShapesProduced: Aucune forme produite pour le moment.
         shapesDisplayUnits:
@@ -319,32 +370,35 @@ ingame:
                 plus vite votre but.<br><br> Astuce : Gardez
                 <strong>MAJ</strong> enfoncé pour placer plusieurs extracteurs,
                 et utilisez <strong>R</strong> pour les faire pivoter."
-            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour
-                couper les cercles en deux.<br><br> PS : Le découpeur coupe toujours
-                <strong>de haut en bas</strong> quelle que soit son orientation."
+            2_1_place_cutter: "Maintenant, placez un <strong>découpeur</strong> pour couper
+                les cercles en deux.<br><br> PS : Le découpeur coupe toujours
+                <strong>de haut en bas</strong> quelle que soit son
+                orientation."
             2_2_place_trash: Le découpeur peut se <strong>bloquer</strong> !<br><br>
-                Utilisez la <strong>poubelle</strong> pour vous débarrasser des déchets
-                dont vous n’avez pas (encore) besoin.
+                Utilisez la <strong>poubelle</strong> pour vous débarrasser des
+                déchets dont vous n’avez pas (encore) besoin.
             2_3_more_cutters: "Bravo ! Maintenant ajoutez <strong>deux découpeurs de
-                plus</strong> pour accélérer le processus !<br><br>
-                PS : Utilisez les <strong>raccourcis clavier 0–9</strong> pour accéder
-                plus rapidement aux bâtiments."
-            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez
-                quatre extracteurs</strong> et connectez-les au centre.<br><br>
-                PS : Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
+                plus</strong> pour accélérer le processus !<br><br> PS :
+                Utilisez les <strong>raccourcis clavier 0–9</strong> pour
+                accéder plus rapidement aux bâtiments."
+            3_1_rectangles: "Maintenant, extrayez des rectangles.<strong>Construisez quatre
+                extracteurs</strong> et connectez-les au centre.<br><br> PS :
+                Gardez <strong>MAJ</strong> enfoncé en plaçant un convoyeur pour
                 activer le planificateur."
-            21_1_place_quad_painter: Placez un <strong>quadruple peintre</strong> et
-                connectez des <strong>cercles</strong> et des couleurs
-                <strong>blanche</strong> et <strong>rouge</strong> !
+            21_1_place_quad_painter: Placez une <strong>station de peinture
+                quadruple</strong> et connectez des <strong>cercles</strong> et
+                des couleurs <strong>blanche</strong> et
+                <strong>rouge</strong> !
             21_2_switch_to_wires: Basculez sur le calque de câblage en appuyant sur
                 <strong>E</strong>.<br><br> Puis <strong>connectez les quatre
-                entrées</strong> du peintre avec des câbles !
-            21_3_place_button: Génial ! Maintenant, placez un
-                <strong>interrupteur</strong> et connectez-le avec des câbles !
-            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un
-                <strong>signal vrai</strong> et active le peintre.<br><br> PS : Vous
-                n’êtes pas obligé de connecter toutes les entrées ! Essayez d’en brancher
-                seulement deux."
+                entrées</strong> de la station de peinture quadruple avec des
+                câbles !
+            21_3_place_button: Génial ! Maintenant, placez un <strong>interrupteur</strong>
+                et connectez-le avec des câbles !
+            21_4_press_button: "Appuyez sur le bouton pour qu’il émette un <strong>signal
+                vrai</strong> et active la station de peinture
+                quadruple.<br><br> PS : Vous n’êtes pas obligé de connecter
+                toutes les entrées ! Essayez d’en brancher seulement deux."
     connectedMiners:
         one_miner: 1 extracteur
         n_miners: <amount> extracteurs
@@ -363,9 +417,6 @@ ingame:
             buildings:
                 title: 18 nouveaux bâtiments
                 desc: Automatisez entièrement votre usine !
-            savegames:
-                title: Sauvegardes ∞
-                desc: Autant que votre cœur le désire !
             upgrades:
                 title: ∞ niveaux d’amélioration
                 desc: Cette version de démonstration n’en a que 5 !
@@ -381,6 +432,52 @@ ingame:
             support:
                 title: Me soutenir
                 desc: Je le développe pendant mon temps libre !
+            achievements:
+                title: Succès
+                desc: Débloquez-les tous !
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Largeur
+        zoneHeight: Hauteur
+        trimZone: Optimiser la taille
+        clearItems: Supprimer les objets
+        share: Partager
+        report: Signaler
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Créateur de Puzzles
+        instructions:
+            - 1. Placez des <strong>Producteurs Constants</strong> pour fournir
+              des formes et des couleurs au joueur
+            - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur
+              fabrique plus tard et délivrez-la/les à un ou plusieurs
+              <strong>Récepteurs d'Objectif</strong>
+            - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un
+              certain temps, il <strong>l'enregistre zn tant
+              qu'objectif</strong> que le joueur devra produire plus tard
+              (Indiqué par le <strong>badge vert</strong>).
+            - 4. Click the <strong>lock button</strong> on a building to disable
+              it.
+            - 5. Once you click review, your puzzle will be validated and you
+              can publish it.
+            - 6. Upon release, <strong>all buildings will be removed</strong>
+              except for the Producers and Goal Acceptors - That's the part that
+              the player is supposed to figure out for themselves, after all :)
+    puzzleCompletion:
+        title: Puzzle Résolu !
+        titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
+        titleRating: À quel point avez-vous trouvé le puzzle diffcile ?
+        titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
+        continueBtn: Continuer à jouer
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Auteur
+        shortKey: Short Key
+        rating: Niveau de difficulté
+        averageDuration: Durée moyenne
+        completionRate: Taux de réussite
 shopUpgrades:
     belt:
         name: Convoyeurs, distributeurs et tunnels
@@ -398,7 +495,7 @@ buildings:
     hub:
         deliver: Livrez
         toUnlock: pour débloquer
-        levelShortcut: NV
+        levelShortcut: Niv
         endOfDemo: Fin de la démo
     belt:
         default:
@@ -419,9 +516,9 @@ buildings:
             description: Permet de faire passer des ressources sous les bâtiments et les
                 convoyeurs.
         tier2:
-            name: Tunnel niveau II
+            name: Tunnel Niv II
             description: Permet de faire passer des ressources sous les bâtiments et les
-                convoyeurs.
+                convoyeurs deux fois plus loin qu'un tunnel simple.
     balancer:
         default:
             name: Répartiteur
@@ -462,9 +559,9 @@ buildings:
             description: Tourne une forme de 180 degrés.
     stacker:
         default:
-            name: Combineur
-            description: Combine deux formes. Si elles ne peuvent pas être combinées, la
-                forme de droite est placée sur la forme de gauche.
+            name: Assembleur
+            description: Assemble les formes à l'entrée, de préférence sur la même couche.
+                Sinon, la forme de droite sera placée sur la forme de gauche
     mixer:
         default:
             name: Mélangeur de couleur
@@ -472,20 +569,20 @@ buildings:
                 couleurs.
     painter:
         default:
-            name: Peintre
-            description: Colorie entièrement la forme venant de gauche avec la couleur
-                entrant en haut.
+            name: Station de peinture
+            description: Peint entièrement la forme venant de gauche avec la couleur entrant
+                en haut.
         mirrored:
-            name: Peintre
-            description: Colorie entièrement la forme venant de gauche avec la couleur
-                entrant en bas.
+            name: Station de peinture
+            description: Peint entièrement la forme venant de gauche avec la couleur entrant
+                en bas.
         double:
-            name: Peintre (double)
-            description: Colorie les deux formes venant de gauche avec la couleur entrant en
-                haut.
+            name: Station de peinture (double)
+            description: Peint entièrement les deux formes venant de gauche avec la couleur
+                entrant en haut.
         quad:
-            name: Peintre (quadruple)
-            description: Colorie chaque quadrant d’une forme avec une couleur différente.
+            name: Station de peinture (quadruple)
+            description: Peint chaque quadrant d’une forme avec une couleur différente.
                 Seules les entrées recevant un <strong>signal vrai</strong> sur
                 le calque de câblage seront peintes !
     trash:
@@ -515,7 +612,7 @@ buildings:
             description: Permet de croiser deux câbles sans les connecter entre eux.
     constant_signal:
         default:
-            name: Constante
+            name: Générateur constant
             description: Émet un signal constant, qui peut être une forme, une couleur ou un
                 booléen (1 / 0).
     lever:
@@ -530,7 +627,7 @@ buildings:
             description: Émet un “1” booléen si les deux entrées sont vraies (une forme,
                 couleur ou “1”).
         not:
-            name: Porte INVERSEUR
+            name: Porte NON
             description: Émet un “1” booléen si l’entrée n’est pas vraie (une forme, couleur
                 ou “1”).
         xor:
@@ -574,8 +671,8 @@ buildings:
     comparator:
         default:
             name: Comparateur
-            description: Émet un “1” booléen si les deux entrées sont exactement les mêmes.
-                Peut comparer des formes, des couleurs, et des booléens.
+            description: Émet “1” si les deux entrées sont exactement les mêmes, sinon émet
+                “0”. Peut comparer des formes, des couleurs, et des booléens.
     virtual_processor:
         default:
             name: Découpeur virtuel
@@ -588,53 +685,67 @@ buildings:
             description: Renvoie la couche supérieure à droite, et les couches restantes à
                 gauche.
         stacker:
-            name: Combineur virtuel
-            description: Combine virtuellement la forme de droite sur celle de gauche.
+            name: Assembleur virtuel
+            description: Assemble virtuellement la forme de droite sur celle de gauche.
         painter:
-            name: Peintre virtuel
+            name: Station de peinture virtuelle
             description: Peint virtuellement la forme du bas avec la couleur de droite.
     item_producer:
         default:
             name: Générateur d’objet
             description: Seulement disponible en mode bac à sable. Renvoie le signal du
                 calque de câblage sur le calque normal.
+    constant_producer:
+        default:
+            name: Producteur Constabnt
+            description: Sort constamment une forme ou une couleur spécifiée.
+    goal_acceptor:
+        default:
+            name: Récepteur d'Objetcif
+            description: Délivrez des formes au récepteur d'objectif pour les définir comme
+                objectif.
+    block:
+        default:
+            name: Bloc
+            description: Permet de bloquer une case.
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: Vous avez débloqué le <strong>découpeur</strong>. Il coupe des formes en
-            deux <strong>de haut en bas</strong> quelle que soit son
-            orientation !<br><br> Assurez-vous de vous débarrasser des déchets,
-            sinon <strong>gare au blocage</strong>. À cet effet, je mets à votre
-            disposition la poubelle, qui détruit tout ce que vous y mettez !
+        desc: Vous venez de déverrouiller le <strong>découpeur</strong>, qui coupe les
+            formes en deux de haut en bas <strong>indépendamment de son
+            orientation</strong>!<br><br>Assurez-vous de vous débarrasser des
+            déchets, ou sinon <strong>il se bouchera et se bloquera</strong> - À
+            cet effet, Je vous ai donné la <strong>poubelle</strong>, qui
+            détruit tout ce que vous mettez dedans !
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
             degrés vers la droite.
     reward_painter:
-        title: Peintre
-        desc: "Le <strong>peintre</strong> a été débloqué. Extrayez des pigments de
-            couleur (comme vous le faites avec les formes) et combinez-les avec
-            une forme dans un peintre pour les colorier !<br><br>PS : Si vous
-            êtes daltonien, il y a un <strong>mode daltonien</strong>
-            paramétrable dans les préférences !"
+        title: Peinture
+        desc: "La <strong>station de peinture</strong> a été débloquée. Extrayez des
+            pigments de couleur (comme vous le faites avec les formes) et
+            combinez-les avec une forme dans une station pour les peindre !
+            <br><br>PS : Si vous êtes daltonien, il y a un <strong>mode
+            daltonien</strong> paramétrable dans les préférences !"
     reward_mixer:
         title: Mélangeur de couleurs
         desc: Le <strong>mélangeur</strong> a été débloqué. Combinez deux couleurs en
             utilisant <strong>la synthèse additive des couleurs</strong> avec ce
             bâtiment !
     reward_stacker:
-        title: Combineur
-        desc: Vous pouvez maintenant combiner deux formes avec le
-            <strong>combineur</strong> ! Les deux entrées sont combinées et si
+        title: Assembleur
+        desc: Vous pouvez maintenant assemblées deux formes avec le
+            <strong>combineur</strong> ! Les deux entrées sont assemblées,si
             elles peuvent être mises l’une à côté de l’autre, elles sont
-            <strong>fusionnées</strong>. Sinon, la forme de droite est
+            <strong>fusionnées</strong>, sinon, la forme de droite est
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
-        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué. Il peut
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut
             être utilisé pour construire de plus grandes usines en
-            <strong>distribuant équitablement et rassemblant les formes</strong>
-            entre plusieurs convoyeurs !<br><br>
+            <strong>divisant et en rassemblant des objets</strong> sur plusieurs
+            convoyeurs !
     reward_tunnel:
         title: Tunnel
         desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
@@ -659,12 +770,13 @@ storyRewards:
     reward_merger:
         title: Fusionneur compact
         desc: Vous avez débloqué le <strong>fusionneur</strong>, une variante du
-            <strong>répartiteur</strong>. Il accepte deux entrées et les fusionne en un
-            seul convoyeur !
+            <strong>répartiteur</strong>. Il accepte deux entrées et les
+            fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
-        desc: Vous avez débloqué une variante compacte du <strong>répartiteur</strong> —
-            Il accepte une seule entrée et la divise en deux sorties !
+        desc: You have unlocked a <strong>splitter</strong> variant of the
+            <strong>balancer</strong> - It accepts one input and splits them
+            into two!
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -676,39 +788,39 @@ storyRewards:
             permet de découper les formes en <strong>quatre parties</strong>
             plutôt que seulement deux !
     reward_painter_double:
-        title: Double peintre
-        desc: Vous avez débloqué une variante du <strong>peintre</strong> — Elle
-            fonctionne comme le peintre de base, mais elle permet de traiter
-            <strong>deux formes à la fois</strong> en ne consommant qu’une
-            couleur au lieu de deux !
+        title: Station de peinture double
+        desc: Vous avez débloqué une variante de la  <strong>station de
+            peinture</strong> — Elle fonctionne comme la station de peinture de
+            base, mais elle permet de traiter <strong>deux formes à la
+            fois</strong> en ne consommant qu’une couleur au lieu de deux !
     reward_storage:
-        title: Tampon de stockage
+        title: Stockage
         desc: Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de
             stocker des objets jusqu’à une certaine limite !<br><br> Il priorise
             la sortie gauche, vous pouvez donc aussi l’utiliser comme
             <strong>drain de débordement</strong> !
     reward_blueprints:
-        title: Patrons
+        title: Plans
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de
             votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et
             sélectionnez avec votre souris), et appuyez sur “C” pour la
             copier.<br><br> Coller n’est <strong>pas gratuit</strong>, vous
-            devez produire <strong>des formes de patrons</strong> pour vous le
+            devez produire <strong>des formes de plans</strong> pour vous le
             payer (les mêmes que celles que vous venez de livrer).
     reward_rotater_180:
         title: Retourneur
         desc: Vous avez débloqué le <strong>retourneur</strong> ! Il permet de faire
             pivoter une forme de 180 degrés (Surprise ! :D)
     reward_wires_painter_and_levers:
-        title: Câbles & quadruple peintre
+        title: Câbles & station de peinture quadruple
         desc: "Vous avez débloqué le <strong>calque de câblage</strong> : C’est un
             calque au-dessus du calque normal, qui introduit beaucoup de
             nouvelles mécaniques de jeu !<br><br> Pour commencer, je vous
-            débloque le <strong>quadruple peintre</strong>. Connectez les
-            entrées à peindre sur le calque de câblage.<br><br> Pour voir le
-            calque de câblage, appuyez sur <strong>E</strong>.<br><br>PS : Activez
-            les <strong>indices</strong> dans les paramètres pour voir un tutoriel
-            sur le câblage."
+            débloque la <strong>station de peinture quadruple</strong>.
+            Connectez les entrées à peindre sur le calque de câblage.<br><br>
+            Pour voir le calque de câblage, appuyez sur
+            <strong>E</strong>.<br><br>PS : Activez les <strong>indices</strong>
+            dans les paramètres pour voir un tutoriel sur le câblage."
     reward_filter:
         title: Filtre à objets
         desc: Vous avez débloqué le <strong>filtre à objets</strong> ! Il dirige les
@@ -724,7 +836,7 @@ storyRewards:
             le stockage émettent le dernier objet vu ? Essayez de le montrer sur
             un écran !"
     reward_constant_signal:
-        title: Constante
+        title: Générateur constant
         desc: Vous avez débloqué l’émetteur de <strong>constante</strong> sur le calque
             de câblage ! Vous pouvez par exemple la connecter à des
             <strong>filtres à objets</strong>.<br><br> La constante peut émettre
@@ -735,22 +847,21 @@ storyRewards:
         desc: "Vous avez débloqué les <strong>portes logiques</strong> ! Vous n’êtes pas
             obligé de trouver ça génial, mais en fait c’est super cool !<br><br>
             Avec ces portes, vous pouvez maintenant faire les opérations
-            booléennes ET, OU, OU-EXCLUSIF et INVERSEUR !<br><br> Et la cerise
-            sur le gâteau : je vous donne aussi le
-            <strong>transistor</strong> !"
+            booléennes ET, OU, OU-EXCLUSIF et NON !<br><br> Et la cerise sur le
+            gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
         desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
             permettent de <strong>simuler le traitement des
-            formes</strong> !<br><br> Vous pouvez maintenant simuler un
-            découpeur, un pivoteur, un combineur et plus encore sur le calque de
-            câblage !<br><br> Avec ça, vous avez trois possibilités pour
-            continuer le jeu :<br><br> - Construire une <strong>machine
-            automatisée</strong> pour fabriquer n’importe quelle forme demandée
-            par le centre (je conseille d’essayer !).<br><br> - Construire
-            quelque chose de cool avec des câbles.<br><br> - Continuer à jouer
-            normalement.<br><br> Dans tous les cas, l’important c’est de
-            s’amuser !
+            formes</strong>!<br><br> Vous pouvez maintenant simuler un
+            découpeur, un pivoteur, un assembleur et plus encore sur la couche
+            des fils ! Avec cela vous avez maintenant trois options pour
+            continuer le jeu:<br><br> - Construire une <strong>machine
+            automatique</strong> pour créer toute forme possible demandée par le
+            HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
+            quelque chose de cool avec les fils.<br><br> - Continuer à jouer
+            normalement.<br><br> Quoi que vous choisissiez, n'oubliez pas de
+            vous amuser !
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -943,10 +1054,17 @@ settings:
                 déplacement.
         zoomToCursor:
             title: Zoomer vers le curseur
-            description: Si activé, zoome vers la position de la souris ; sinon, vers le centre de l’écran.
+            description: Si activé, zoome vers la position de la souris ; sinon, vers le
+                centre de l’écran.
         mapResourcesScale:
             title: Taille des ressources sur la carte
-            description: Contrôle la taille des formes sur la vue d’ensemble de la carte visible en dézoomant.
+            description: Contrôle la taille des formes sur la vue d’ensemble de la carte
+                visible en dézoomant.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -986,9 +1104,9 @@ keybindings:
         miner: Extracteur
         cutter: Découpeur
         rotater: Pivoteur
-        stacker: Combineur
+        stacker: Assembleur
         mixer: Mélangeur de couleur
-        painter: Peintre
+        painter: Station de peinture
         trash: Poubelle
         storage: Stockage
         wire: Câble
@@ -1009,7 +1127,7 @@ keybindings:
         rotateInverseModifier: "Variante : Pivote à gauche"
         cycleBuildingVariants: Alterner entre les variantes
         confirmMassDelete: Confirmer la suppression de la sélection
-        pasteLastBlueprint: Copier le dernier patron
+        pasteLastBlueprint: Copier le dernier plan
         cycleBuildings: Alterner entre les bâtiments
         lockBeltDirection: Utiliser le planificateur de convoyeurs
         switchDirectionLockSide: "Planificateur : changer de côté"
@@ -1021,6 +1139,15 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser l’orientation des convoyeurs
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
+        constant_producer: Producteur Constant
+        goal_acceptor: Récepteur d'Objectif
+        block: Bloc
+        massSelectClear: Vider les convoyeurs
+        showShapeTooltip: Show shape output tooltip
 about:
     title: À propos de ce jeu
     body: >-
@@ -1030,8 +1157,7 @@ about:
 
         Si vous souhaitez contribuer, allez voir <a href="<githublink>" target="_blank">shapez.io sur GitHub</a>.<br><br>
 
-        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le
-        <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
+        Ce jeu n’aurait pas pu être réalisé sans la précieuse communauté Discord autour de mes jeux — Vous devriez vraiment rejoindre le <a href="<discordlink>" target="_blank">serveur Discord</a> !<br><br>
 
         La bande son a été créée par <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> — Il est génial !<br><br>
 
@@ -1047,7 +1173,7 @@ demo:
         exportingBase: Exporter une image de toute la base
     settingNotAvailable: Indisponible dans la démo.
 tips:
-    - Le centre n’importe quelle forme, pas seulement la forme actuelle !
+    - Le centre accepte n’importe quelle forme, pas seulement la forme actuelle !
     - Assurez-vous que vos usines soient modulaires, cela paiera !
     - Ne construisez pas trop près du centre, ou ce sera un énorme chaos !
     - Si l’empilement ne fonctionne pas, essayez d’échanger les entrées.
@@ -1063,8 +1189,8 @@ tips:
     - La symétrie est la clé !
     - Vous pouvez entrelacer différents niveaux de tunnels.
     - Essayez de construire des usines compactes, cela paiera !
-    - Le peintre a une variante en miroir que vous pouvez sélectionner avec
-      <b>T</b>
+    - La station de peinture a une variante en miroir que vous pouvez
+      sélectionner avec <b>T</b>
     - Avoir les bons ratios de construction maximisera l’efficacité.
     - Au niveau maximum, 5 extracteurs rempliront un seul convoyeur.
     - N’oubliez pas les tunnels !
@@ -1076,8 +1202,7 @@ tips:
       orientation.
     - Pour obtenir du blanc, mélangez les trois couleurs.
     - Le stockage priorise la première sortie.
-    - Investissez du temps pour créer des patrons reproductibles, ça vaut le
-      coup !
+    - Investissez du temps pour créer des plans reproductibles, ça vaut le coup !
     - Maintenir <b>CTRL</b> permet de placer plusieurs bâtiments.
     - Vous pouvez maintenir <b>ALT</b> pour inverser la direction des convoyeurs
       placés.
@@ -1101,7 +1226,7 @@ tips:
     - Colorez vos formes avant de les découper pour une efficacité maximale.
     - Avec les modules, l’espace n’est qu’une perception ; une préoccupation
       pour les hommes mortels.
-    - Créez une usine de patrons à part. Ils sont importants pour les modules.
+    - Créez une usine de plans à part. Ils sont importants pour les modules.
     - Regardez de plus près le mélangeur de couleur et vous aurez la réponse à
       vos questions.
     - Utilisez <b>CTRL</b> + clic pour sélectionner une zone.
@@ -1124,3 +1249,91 @@ tips:
     - Appuyez sur F4 pour voir vos IPS et votre fréquence de rafraîchissement.
     - Appuyez deux fois sur F4 pour voir les coordonnées.
     - Cliquez sur une forme épinglée à gauche pour l’enlever.
+puzzleMenu:
+    play: Jouer
+    edit: Éditer
+    title: Mode Puzzle
+    createPuzzle: Créer un Puzzle
+    loadPuzzle: Charger
+    reviewPuzzle: Revoir & Publier
+    validatingPuzzle: Validation du Puzzle
+    submittingPuzzle: Publication du Puzzle
+    noPuzzles: Il n'y a actuellement aucun puzzle dans cette section.
+    categories:
+        levels: Niveaux
+        new: Nouveau
+        top-rated: Les mieux notés
+        mine: Mes puzzles
+        easy: Facile
+        hard: Difficile
+        completed: Complété
+        medium: Medium
+        official: Officiel
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Catégories
+        difficulties: Par Difficulté
+        account: Mes Puzzles
+        search: Rechercher
+    validation:
+        title: Puzzle invalide
+        noProducers: Veuillez placer un producteur constant !
+        noGoalAcceptors: Veuillez placer un accepteur d'objectif !
+        goalAcceptorNoItem: Un ou plusieurs accepteurs d'objectif n'ont pas encore
+            attribué d'élément. Donnez-leur une forme pour fixer un objectif.
+        goalAcceptorRateNotMet: Un ou plusieurs accepteurs d'objectifs n'obtiennent pas
+            assez d'articles. Assurez-vous que les indicateurs sont verts pour
+            tous les accepteurs.
+        buildingOutOfBounds: Un ou plusieurs bâtiments se trouvent en dehors de la zone
+            constructible. Augmentez la surface ou supprimez-les.
+        autoComplete: Votre puzzle se complète automatiquement ! Veuillez vous assurer
+            que vos producteurs constants ne livrent pas directement à vos
+            accepteurs d'objectifs.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+        unknown: Unrated
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
+        s'il vous plait.
+    invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (clé Api invalide).
+    unauthorized: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (non autorisé).
+    bad-token: Échec de la communication avec le backend, veuillez essayer de mettre
+        à jour/redémarrer le jeu (Mauvais jeton).
+    bad-id: Identifiant de puzzle non valide.
+    not-found: Le puzzle donné n'a pas pu être trouvé.
+    bad-category: La catégorie donnée n'a pas pu être trouvée.
+    bad-short-key: La clé courte donnée n'est pas valide.
+    profane-title: Le titre de votre puzzle contient des mots interdits.
+    bad-title-too-many-spaces: Le titre de votre puzzle est trop court.
+    bad-shape-key-in-emitter: Un producteur constant a un élément invalide.
+    bad-shape-key-in-goal: Un accepteur de but a un élément invalide.
+    no-emitters: Votre puzzle ne contient aucun producteur constant.
+    no-goals: Votre puzzle ne contient aucun accepteur de but.
+    short-key-already-taken: Cette clé courte est déjà prise, veuillez en utiliser une autre.
+    can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
+    bad-payload: La demande contient des données invalides.
+    bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
+    timeout: La demande a expiré.
+    too-many-likes-already: The puzzle already got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.

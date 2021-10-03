@@ -2,6 +2,7 @@ import { TextualGameState } from "../core/textual_game_state";
 import { T } from "../translations";
 import { THIRDPARTY_URLS } from "../core/config";
 import { cachebust } from "../core/cachebust";
+import { getLogoSprite } from "../core/background_resources_loader";
 
 export class AboutState extends TextualGameState {
     constructor() {
@@ -15,7 +16,7 @@ export class AboutState extends TextualGameState {
     getMainContentHTML() {
         return `
             <div class="head">
-                <img src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
+                <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
             </div>
             <div class="text">
             ${T.about.body

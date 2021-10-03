@@ -5,7 +5,7 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
-const showIntervalSeconds = 30 * 60;
+const showIntervalSeconds = 9 * 60;
 
 export class HUDStandaloneAdvantages extends BaseHUDPart {
     createElements(parent) {
@@ -25,7 +25,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
                         ([key, trans]) => `
                 <div class="point ${key}">
                     <strong>${trans.title}</strong>
-                    <p>${trans.desc}</p> 
+                    <p>${trans.desc}</p>
                 </div>`
                     )
                     .join("")}
@@ -42,7 +42,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
             this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.standaloneStorePage + "?ref=savs&prc=" + A_B_TESTING_LINK_TYPE
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg"
             );
             this.close();
         });
@@ -60,7 +60,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.inputReciever = new InputReceiver("standalone-advantages");
         this.close();
 
-        this.lastShown = this.root.gameIsFresh ? this.root.time.now() : 0;
+        this.lastShown = -1e10;
     }
 
     show() {

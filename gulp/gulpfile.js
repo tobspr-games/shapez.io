@@ -50,6 +50,9 @@ css.gulptasksCSS($, gulp, buildFolder, browserSync);
 const sounds = require("./sounds");
 sounds.gulptasksSounds($, gulp, buildFolder);
 
+const localConfig = require("./local-config");
+localConfig.gulptasksLocalConfig($, gulp);
+
 const js = require("./js");
 js.gulptasksJS($, gulp, buildFolder, browserSync);
 
@@ -136,7 +139,12 @@ gulp.task("main.webserver", () => {
     );
 });
 
-function serve({ standalone }) {
+/**
+ *
+ * @param {object} param0
+ * @param {"web"|"standalone"|"china"|"wegame"} param0.version
+ */
+function serve({ version = "web" }) {
     browserSync.init({
         server: buildFolder,
         port: 3005,
@@ -160,7 +168,7 @@ function serve({ standalone }) {
     gulp.watch(["../src/**/*.scss"], gulp.series("css.dev"));
 
     // Watch .html files, those trigger a html rebuild
-    gulp.watch("../src/**/*.html", gulp.series(standalone ? "html.standalone-dev" : "html.dev"));
+    gulp.watch("../src/**/*.html", gulp.series(version === "web" ? "html.dev" : "html.standalone-dev"));
 
     // Watch sound files
     // gulp.watch(["../res_raw/sounds/**/*.mp3", "../res_raw/sounds/**/*.wav"], gulp.series("sounds.dev"));
@@ -196,11 +204,26 @@ function serve({ standalone }) {
         return gulp.src(path).pipe(browserSync.reload({ stream: true }));
     });
 
-    // Start the webpack watching server (Will never return)
-    if (standalone) {
-        gulp.series("js.standalone-dev.watch")(() => true);
-    } else {
-        gulp.series("js.dev.watch")(() => true);
+    switch (version) {
+        case "web": {
+            gulp.series("js.dev.watch")(() => true);
+            break;
+        }
+        case "standalone": {
+            gulp.series("js.standalone-dev.watch")(() => true);
+            break;
+        }
+        case "china": {
+            gulp.series("china.js.dev.watch")(() => true);
+            break;
+        }
+        case "wegame": {
+            gulp.series("wegame.js.dev.watch")(() => true);
+            break;
+        }
+        default: {
+            throw new Error("Unknown version " + version);
+        }
     }
 }
 
@@ -221,6 +244,7 @@ gulp.task(
     gulp.series(
         "utils.cleanup",
         "utils.copyAdditionalBuildFiles",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",
@@ -238,6 +262,7 @@ gulp.task(
     "build.standalone.dev",
     gulp.series(
         "utils.cleanup",
+        "localConfig.findOrCreate",
         "imgres.buildAtlas",
         "imgres.atlasToJson",
         "imgres.atlas",
@@ -284,30 +309,28 @@ gulp.task(
 );
 
 // Builds everything (standalone-prod)
-gulp.task(
-    "step.standalone-prod.code",
-    gulp.series("sounds.fullbuildHQ", "translations.fullBuild", "js.standalone-prod")
-);
-gulp.task("step.standalone-prod.mainbuild", gulp.parallel("step.baseResources", "step.standalone-prod.code"));
-gulp.task(
-    "step.standalone-prod.all",
-    gulp.series("step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
-);
-gulp.task(
-    "build.standalone-prod",
-    gulp.series("utils.cleanup", "step.standalone-prod.all", "step.postbuild")
-);
 
-// OS X build and release upload
-gulp.task(
-    "build.darwin64-prod",
-    gulp.series(
-        "build.standalone-prod",
-        "standalone.prepare",
-        "standalone.package.prod.darwin64",
-        "standalone.uploadRelease.darwin64"
-    )
-);
+for (const prefix of ["", "china.", "wegame."]) {
+    gulp.task(
+        prefix + "step.standalone-prod.code",
+        gulp.series("sounds.fullbuildHQ", "translations.fullBuild", prefix + "js.standalone-prod")
+    );
+
+    gulp.task(
+        prefix + "step.standalone-prod.mainbuild",
+        gulp.parallel("step.baseResources", prefix + "step.standalone-prod.code")
+    );
+
+    gulp.task(
+        prefix + "step.standalone-prod.all",
+        gulp.series(prefix + "step.standalone-prod.mainbuild", "css.prod-standalone", "html.standalone-prod")
+    );
+
+    gulp.task(
+        prefix + "build.standalone-prod",
+        gulp.series("utils.cleanup", prefix + "step.standalone-prod.all", "step.postbuild")
+    );
+}
 
 // Deploying!
 gulp.task(
@@ -320,16 +343,45 @@ gulp.task(
 );
 gulp.task("main.deploy.prod", gulp.series("utils.requireCleanWorkingTree", "build.prod", "ftp.upload.prod"));
 gulp.task("main.deploy.all", gulp.series("main.deploy.staging", "main.deploy.prod"));
-gulp.task("main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+
+// steam
+gulp.task("regular.main.standalone", gulp.series("build.standalone-prod", "standalone.package.prod"));
+
+// china
+gulp.task(
+    "china.main.standalone",
+    gulp.series("china.build.standalone-prod", "china.standalone.package.prod")
+);
+
+// wegame
+gulp.task(
+    "wegame.main.standalone",
+    gulp.series("wegame.build.standalone-prod", "wegame.standalone.package.prod")
+);
+
+// all (except wegame)
+gulp.task("standalone.steam", gulp.series("regular.main.standalone", "china.main.standalone"));
+gulp.task(
+    "standalone.all",
+    gulp.series("regular.main.standalone", "china.main.standalone", "wegame.main.standalone")
+);
 
 // Live-development
 gulp.task(
     "main.serveDev",
-    gulp.series("build.dev", () => serve({ standalone: false }))
+    gulp.series("build.dev", () => serve({ version: "web" }))
 );
 gulp.task(
     "main.serveStandalone",
-    gulp.series("build.standalone.dev", () => serve({ standalone: true }))
+    gulp.series("build.standalone.dev", () => serve({ version: "standalone" }))
+);
+gulp.task(
+    "china.main.serveDev",
+    gulp.series("build.dev", () => serve({ version: "china" }))
+);
+gulp.task(
+    "wegame.main.serveDev",
+    gulp.series("build.dev", () => serve({ version: "wegame" }))
 );
 
 gulp.task("default", gulp.series("main.serveDev"));

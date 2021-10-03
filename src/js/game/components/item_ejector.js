@@ -11,6 +11,7 @@ import { typeItemSingleton } from "../item_resolver";
  *    pos: Vector,
  *    direction: enumDirection,
  *    item: BaseItem,
+ *    lastItem: BaseItem,
  *    progress: number?,
  *    cachedDestSlot?: import("./item_acceptor").ItemAcceptorLocatedSlot,
  *    cachedBeltPath?: BeltPath,
@@ -48,6 +49,14 @@ export class ItemEjectorComponent extends Component {
         this.renderFloatingItems = renderFloatingItems;
     }
 
+    clear() {
+        for (const slot of this.slots) {
+            slot.item = null;
+            slot.lastItem = null;
+            slot.progress = 0;
+        }
+    }
+
     /**
      * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
      */
@@ -60,6 +69,7 @@ export class ItemEjectorComponent extends Component {
                 pos: slot.pos,
                 direction: slot.direction,
                 item: null,
+                lastItem: null,
                 progress: 0,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
@@ -124,6 +134,7 @@ export class ItemEjectorComponent extends Component {
             return false;
         }
         this.slots[slotIndex].item = item;
+        this.slots[slotIndex].lastItem = item;
         this.slots[slotIndex].progress = 0;
         return true;
     }

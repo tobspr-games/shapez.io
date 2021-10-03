@@ -1,6 +1,7 @@
 import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
 import { Signal } from "./signal";
+import { getIPCRenderer } from "./utils";
 
 /*
  * ***************************************************
@@ -107,6 +108,19 @@ export class FormElementInput extends FormElement {
 
     updateErrorState() {
         this.element.classList.toggle("errored", !this.isValid());
+
+        // profanity filter
+        if (G_WEGAME_VERSION) {
+            const value = String(this.element.value);
+
+            getIPCRenderer()
+                .invoke("profanity-check", value)
+                .then(newValue => {
+                    if (value !== newValue && this.element) {
+                        this.element.value = newValue;
+                    }
+                });
+        }
     }
 
     isValid() {
@@ -117,8 +131,14 @@ export class FormElementInput extends FormElement {
         return this.element.value;
     }
 
+    setValue(value) {
+        this.element.value = value;
+        this.updateErrorState();
+    }
+
     focus() {
         this.element.focus();
+        this.element.select();
     }
 }
 

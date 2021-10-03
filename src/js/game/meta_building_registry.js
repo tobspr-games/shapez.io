@@ -4,11 +4,14 @@ import { T } from "../translations";
 import { MetaAnalyzerBuilding } from "./buildings/analyzer";
 import { enumBalancerVariants, MetaBalancerBuilding } from "./buildings/balancer";
 import { MetaBeltBuilding } from "./buildings/belt";
+import { MetaBlockBuilding } from "./buildings/block";
 import { MetaComparatorBuilding } from "./buildings/comparator";
+import { MetaConstantProducerBuilding } from "./buildings/constant_producer";
 import { MetaConstantSignalBuilding } from "./buildings/constant_signal";
 import { enumCutterVariants, MetaCutterBuilding } from "./buildings/cutter";
 import { MetaDisplayBuilding } from "./buildings/display";
 import { MetaFilterBuilding } from "./buildings/filter";
+import { MetaGoalAcceptorBuilding } from "./buildings/goal_acceptor";
 import { MetaHubBuilding } from "./buildings/hub";
 import { MetaItemProducerBuilding } from "./buildings/item_producer";
 import { MetaLeverBuilding } from "./buildings/lever";
@@ -45,6 +48,7 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaStorageBuilding);
     gMetaBuildingRegistry.register(MetaBeltBuilding);
     gMetaBuildingRegistry.register(MetaUndergroundBeltBuilding);
+    gMetaBuildingRegistry.register(MetaGoalAcceptorBuilding);
     gMetaBuildingRegistry.register(MetaHubBuilding);
     gMetaBuildingRegistry.register(MetaWireBuilding);
     gMetaBuildingRegistry.register(MetaConstantSignalBuilding);
@@ -59,6 +63,8 @@ export function initMetaBuildingRegistry() {
     gMetaBuildingRegistry.register(MetaAnalyzerBuilding);
     gMetaBuildingRegistry.register(MetaComparatorBuilding);
     gMetaBuildingRegistry.register(MetaItemProducerBuilding);
+    gMetaBuildingRegistry.register(MetaConstantProducerBuilding);
+    gMetaBuildingRegistry.register(MetaBlockBuilding);
 
     // Belt
     registerBuildingVariant(1, MetaBeltBuilding, defaultBuildingVariant, 0);
@@ -164,6 +170,15 @@ export function initMetaBuildingRegistry() {
 
     // Item producer
     registerBuildingVariant(61, MetaItemProducerBuilding);
+
+    // Constant producer
+    registerBuildingVariant(62, MetaConstantProducerBuilding);
+
+    // Goal acceptor
+    registerBuildingVariant(63, MetaGoalAcceptorBuilding);
+
+    // Block
+    registerBuildingVariant(64, MetaBlockBuilding);
 
     // Propagate instances
     for (const key in gBuildingVariants) {

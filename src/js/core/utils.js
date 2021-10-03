@@ -573,12 +573,14 @@ export function round1DigitLocalized(speed, separator = T.global.decimalSeparato
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
  */
 export function formatItemsPerSecond(speed, double = false, separator = T.global.decimalSeparator) {
-    return speed === 1.0
-        ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
-        : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
-              "<x>",
-              round2Digits(speed).toString().replace(".", separator)
-          ) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "");
+    return (
+        (speed === 1.0
+            ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
+            : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
+                  "<x>",
+                  round2Digits(speed).toString().replace(".", separator)
+              )) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "")
+    );
 }
 
 /**
@@ -723,29 +725,8 @@ export function startFileChoose(acceptedType = ".bin") {
     });
 }
 
-const romanLiterals = [
-    "0", // NULL
-    "I",
-    "II",
-    "III",
-    "IV",
-    "V",
-    "VI",
-    "VII",
-    "VIII",
-    "IX",
-    "X",
-    "XI",
-    "XII",
-    "XIII",
-    "XIV",
-    "XV",
-    "XVI",
-    "XVII",
-    "XVIII",
-    "XIX",
-    "XX",
-];
+const MAX_ROMAN_NUMBER = 49;
+const romanLiteralsCache = ["0"];
 
 /**
  *
@@ -753,9 +734,57 @@ const romanLiterals = [
  * @returns {string}
  */
 export function getRomanNumber(number) {
-    number = Math.max(0, Math.round(number));
-    if (number < romanLiterals.length) {
-        return romanLiterals[number];
+    if (G_WEGAME_VERSION) {
+        return String(number);
     }
-    return String(number);
+
+    number = Math.max(0, Math.round(number));
+    if (romanLiteralsCache[number]) {
+        return romanLiteralsCache[number];
+    }
+
+    if (number > MAX_ROMAN_NUMBER) {
+        return String(number);
+    }
+
+    function formatDigit(digit, unit, quintuple, decuple) {
+        switch (digit) {
+            case 0:
+                return "";
+            case 1: // I
+                return unit;
+            case 2: // II
+                return unit + unit;
+            case 3: // III
+                return unit + unit + unit;
+            case 4: // IV
+                return unit + quintuple;
+            case 9: // IX
+                return unit + decuple;
+            default:
+                // V, VI, VII, VIII
+                return quintuple + formatDigit(digit - 5, unit, quintuple, decuple);
+        }
+    }
+
+    let thousands = Math.floor(number / 1000);
+    let thousandsPart = "";
+    while (thousands > 0) {
+        thousandsPart += "M";
+        thousands -= 1;
+    }
+
+    const hundreds = Math.floor((number % 1000) / 100);
+    const hundredsPart = formatDigit(hundreds, "C", "D", "M");
+
+    const tens = Math.floor((number % 100) / 10);
+    const tensPart = formatDigit(tens, "X", "L", "C");
+
+    const units = number % 10;
+    const unitsPart = formatDigit(units, "I", "V", "X");
+
+    const formatted = thousandsPart + hundredsPart + tensPart + unitsPart;
+
+    romanLiteralsCache[number] = formatted;
+    return formatted;
 }

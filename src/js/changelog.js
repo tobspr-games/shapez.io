@@ -1,7 +1,108 @@
 export const CHANGELOG = [
     {
+        version: "1.4.4",
+        date: "29.08.2021",
+        entries: [
+            "Hotfix: Fixed the balancer not distributing items evenly, caused by the 1.4.3 update. Sorry for any inconveniences!",
+        ],
+    },
+    {
+        version: "1.4.3",
+        date: "28.08.2021",
+        entries: [
+            "You can now hold 'ALT' while hovering a building to see its output! (Thanks to Sense101) (PS: There is now a setting to have it always on!)",
+            "The map overview should now be much more performant! As a consequence, you can now zoom out farther! (Thanks to PFedak)",
+            "Puzzle DLC: There is now a 'next puzzle' button!",
+            "Puzzle DLC: There is now a search function!",
+            "Edit signal dialog now has the previous signal filled (Thanks to EmeraldBlock)",
+            "Further performance improvements (Thanks to PFedak)",
+            "Improved puzzle validation (Thanks to Sense101)",
+            "Input fields in dialogs should now automatically focus",
+            "Fix selected building being deselected at level up (Thanks to EmeraldBlock)",
+            "Updated translations",
+        ],
+    },
+    {
+        version: "1.4.2",
+        date: "24.06.2021",
+        entries: [
+            "Puzzle DLC: Goal acceptors now reset after getting no items for a while (This should prevent being able to 'cheat' puzzles) (by Sense101)",
+            "Puzzle DLC: Added button to clear all buildings / reset the puzzle (by Sense101)",
+            "Puzzle DLC: Allow copy-paste in puzzle mode (by Sense101)",
+            "Fixed level achievements being given on the wrong level (by DJ1TJOO)",
+            "Fixed blueprint not properly clearing on right click",
+            "Updated translations",
+        ],
+    },
+    {
+        version: "1.4.1",
+        date: "22.06.2021",
+        entries: [
+            "The <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog' target='_blank'>Puzzle DLC</a> is now available on Steam!",
+            "The <a href='https://store.steampowered.com/app/1573840/shapezio_Soundtrack/?utm_medium=changelog' target='_blank'>Soundtrack</a> is now also available to wishlist and will be released within the next days, including the new music from the Puzzle DLC!",
+        ],
+    },
+    {
+        version: "1.4.0",
+        date: "04.06.2021",
+        entries: [
+            "Belts in blueprints should now always paste correctly",
+            "You can now clear belts by selecting them and then pressing 'B'",
+            "Preparations for the <a href='https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC/?utm_medium=changelog2' target='_blank'>Puzzle DLC</a>, coming June 22nd!",
+        ],
+    },
+    {
+        version: "1.3.1",
+        date: "16.04.2021",
+        entries: G_CHINA_VERSION
+            ? [
+                  "第13关的交付目标更改为：中国古代指南针。（感谢玩家：凯风入心 创作并提供",
+                  "第17关的交付目标更改为：永乐通宝。（感谢玩家：金天赐 创作并提供",
+                  "第22关的交付目标更改为：凤凰。（感谢玩家：我没得眼镜 创作并提供",
+                  "第23关的交付目标更改为：古代车轮。（感谢玩家：我没得眼镜 创作并提供",
+                  "第24关的交付目标更改为：大熊猫。（感谢玩家：窝囸倪现任 创作并提供",
+
+                  "修复了一些特定情况下偶尔会发生的存档损坏问题",
+                  "修复了成就更新后有时候游戏崩溃的问题",
+              ]
+            : [
+                  "Fixed savegames getting corrupt in rare conditions",
+                  "Fixed game crashing sometimes since the achievements update",
+              ],
+    },
+    {
+        version: "1.3.0",
+        date: "12.03.2020",
+        skin: "achievements",
+        entries: [
+            "There are now <strong>45 Steam Achievements!</strong>",
+            "Fixed constant signals being editable from the regular layer",
+            "Fixed items still overlapping sometimes between buildings and belts",
+            "The game is now available in finnish, italian, romanian and ukrainian! (Thanks to all contributors!)",
+            "Updated translations (Thanks to all contributors!)",
+        ],
+    },
+    {
+        version: "1.2.2",
+        date: "07.12.2020",
+        entries: [
+            "Fix item readers and some other buildings slowing up belts, especially if they stalled (inspired by Keterr's fix)",
+            "Added the ability to edit constant signals by left clicking them",
+            "Prevent items from being rendered on each other when a belt stalls (inspired by Keterr)",
+            "You can now add markers in the wire layer (partially by daanbreur)",
+            "Allow to cycle backwards in the toolbar with SHIFT + Tab (idea by EmeraldBlock)",
+            "Allow to cycle variants backwards with SHIFT + T",
+            "Upgrade numbers now use roman numerals until tier 50 (by LeopoldTal)",
+            "Add button to unpin shapes from the left side (by artemisSystem)",
+            "Fix middle mouse button also placing blueprints (by Eiim)",
+            "Hide wires grid when using the 'Disable Grid' setting (by EmeraldBlock)",
+            "Fix UI using multiple different save icons",
+            "Updated translations (Thanks to all contributors!)",
+        ],
+    },
+    {
         version: "1.2.1",
-        date: "unreleased",
+        date: "31.10.2020",
         entries: [
             "Fixed stacking bug for level 26 which required restarting the game",
             "Fix reward notification being too long sometimes (by LeopoldTal)",

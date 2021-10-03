@@ -14,39 +14,14 @@ steamPage:
         Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
 
         Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
-    title_advantages: Vantagens da versão completa
-    advantages:
-        - <b>12 Novos Níveis</b> para um total de 26 Níves
-        - <b>18 Novas Construções</b> para uma fábrica totalmente automatizada!
-        - <b>20 Níveis de Melhoria</b> para muitas horas de diversão!
-        - <b>Atualização de Fios</b> para uma dimensão totalmente nova!
-        - <b>Modo escuro</b>!
-        - Savegames ilimitados
-        - Marcos ilimitados
-        - Ajuda-me! ❤️
-    title_future: Conteúdo Planeado
-    planned:
-        - Biblioteca Blueprint (Exclusivo na versão Completa)
-        - Conquistas na Steam
-        - Modo Puzzle
-        - Minimapa
-        - Modos
-        - Modo Sandbox
-        - ... e Muito Mais!
-    title_open_source: Este jogo é open source (código aberto)!
-    title_links: Links
-    links:
-        discord: Discord Oficial
-        roadmap: Roteiro de desenvolvimento
-        subreddit: Subreddit
-        source_code: Código Fonte (GitHub)
-        translate: Ajuda a Traduzir
-    text_open_source: >-
-        Qualquer um pode contribuir, estou ativamente envolvido na comunidade e
-        tento ver todas as sugestões e ter em consideração o feedback recebido
-        assim que possível.
-
-        Segue o meu trello board para veres todo o roteiro de desenvolvimento!
+    what_others_say: O que dizem sobre o shapez.io
+    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado
+        enquanto o jogo, e o tempo parece que voa.
+    notch_comment: Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir
+        como criar computorizar no shapez.io
+    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta. Jogo
+        de fábrica relaxante que não me deixa parar de fazer as minhas linhas
+        cada vez mais eficientes.
 global:
     loading: A Carregar
     error: Erro
@@ -78,6 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+    loggingIn: Logging in
 demoBanners:
     title: Versão Demo
     intro: Compra a versão completa para desbloqueares todas as funcionalidades!
@@ -98,6 +74,12 @@ mainMenu:
     madeBy: Criado por <author-link>
     subreddit: Reddit
     savegameUnnamed: Sem Nome
+    puzzleMode: Modo Puzzle
+    back: Voltar
+    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
+        Puzzle na Steam para ainda mais diversão!
+    puzzleDlcWishlist: Lista de desejos agora!
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -111,6 +93,9 @@ dialogs:
         viewUpdate: Ver Update
         showUpgrades: Mostrar Upgrades
         showKeybindings: Mostrar Atalhos
+        retry: Tentar novamente
+        continue: Continuar
+        playOffline: Jogar Offline
     importSavegameError:
         title: Erro de importação
         text: "Erro ao importar o teu savegame:"
@@ -208,12 +193,80 @@ dialogs:
         desc: Podes renomear o teu savegame aqui.
     tutorialVideoAvailable:
         title: Tutorial Disponível
-        desc: Existe um vídeo de tutorial disponível para este nível! Gostarias de
-            o ver?
+        desc: Existe um vídeo de tutorial disponível para este nível! Gostarias de o
+            ver?
     tutorialVideoAvailableForeignLanguage:
         title: Tutorial Disponível
-        desc: Existe um vídeo de tutorial disponível para este nível, mas apenas
-            está disponível em Inglês. Gostarias de o ver?
+        desc: Existe um vídeo de tutorial disponível para este nível, mas apenas está
+            disponível em Inglês. Gostarias de o ver?
+    editConstantProducer:
+        title: Selecionar Item
+    puzzleLoadFailed:
+        title: Puzzles falharam a carregar
+        desc: "Infelizmente os puzzles não podem ser carregados:"
+    submitPuzzle:
+        title: Submeter Puzzle
+        descName: "Dá um nome ao teu puzzle:"
+        descIcon: "Por favor insere um pequeno código único que será a imagem do ícone
+            da teu puzzle (Podes gerar o código <link>aqui</link>, ou escolher
+            uma das seguintes sugestões aleatoriamente geradas.):"
+        placeholderName: Título do Puzzle
+    puzzleResizeBadBuildings:
+        title: Não é possível alterar o tamanho
+        desc: Não podes tornar a zona mais pequena, assim algumas das construções
+            ficariam fora da zona.
+    puzzleLoadError:
+        title: Mau puzzle
+        desc: "O puzzle falhou ao carregar:"
+    offlineMode:
+        title: Modo Offline
+        desc: Não conseguimos correr os servidores, sendo assim o jogo tem de ser jogado
+            em modo offline. Por favor assegura-te de que tens uma boa conexão
+            de internet.
+    puzzleDownloadError:
+        title: Falha no Download
+        desc: "Falha ao fazer o download do puzzle:"
+    puzzleSubmitError:
+        title: Erro ao submeter
+        desc: "Falha ao submeter o teu puzzle:"
+    puzzleSubmitOk:
+        title: Puzzle Publicado
+        desc: Parabéns! O teu puzzle foi publicado e agora pode ser jogado por outros
+            jogadores. Agora podes encontrar o teu puzzle na zona "Meus
+            puzzles".
+    puzzleCreateOffline:
+        title: Modo Offline
+        desc: Como estás no modo offline, tu não poderás salvar e/ou publicar o teu
+            puzzle. Mesmo assim queres continuar?
+    puzzlePlayRegularRecommendation:
+        title: Recomendação
+        desc: Eu recomendo <strong>fortemente</strong> a jogares no modo normal até ao
+            nível 12 antes de tentares o "puzzle DLC", caso contrário poderás
+            encontrar mecanicas às quais ainda não foste introduzido. Mesmo
+            assim queres continuar?
+    puzzleShare:
+        title: Pequeno código copiado
+        desc: O pequeno código do puzzle (<key>) foi copiado para a tua área de
+            transferências! Poderá ser introduzido no menu puzzle para teres
+            acesso ao puzzle.
+    puzzleReport:
+        title: Reportar Puzzle
+        options:
+            profane: Inapropriado
+            unsolvable: Não solucionável
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Obrigado pelo teu feedback!
+        desc: O puzzle foi sinalizado.
+    puzzleReportError:
+        title: Falha ao reportar
+        desc: "Não foi possível proceder com o ter reporte:"
+    puzzleLoadShortKey:
+        title: Introduzir pequeno código
+        desc: Introduz um pequeno código para o puzzle carregar.
+    puzzleDelete:
+        title: Apagar Puzzle?
+        desc: Tens a certeza de que queres apagar '<title>'? Isto não pode ser anulado!
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -235,6 +288,7 @@ ingame:
         clearSelection: Cancelar
         pipette: Pipeta
         switchLayers: Troca de camadas
+        clearBelts: Limpar tapetes rolantes
     buildingPlacement:
         cycleBuildingVariants: Pressionar <key> para obter variações.
         hotkeyLabel: "Atalho: <key>"
@@ -308,30 +362,33 @@ ingame:
                 e tapetes para atingir o objetivo mais rapidamente.<br><br>Dica:
                 Pressiona <strong>SHIFT</strong> para colocar vários extratores,
                 e usa <strong>R</strong> para os rodar."
-            2_1_place_cutter: "Agora coloca um <strong>Cortador</strong> para cortares os circulos
-                em duas metades!<br><br> PS: O cortador corta sempre <strong>de cima para
-                baixo</strong> independentemente da sua orientação"
+            2_1_place_cutter: "Agora coloca um <strong>Cortador</strong> para cortares os
+                circulos em duas metades!<br><br> PS: O cortador corta sempre
+                <strong>de cima para baixo</strong> independentemente da sua
+                orientação"
             2_2_place_trash: O cortador pode <strong>encravar e parar</strong>!<br><br> Usa
-                um <strong>lixo</strong> para de livrares do atual (!) não
-                é necessário desperdício.
-            2_3_more_cutters: "Bom trabalho! Agora coloca<strong>mais 2 cortadores</strong> para acelerades
-                este progresso lento!<br><br> PS: Usa os <strong>atalhos
-                0-9</strong> para acederes às contruções mais rapidamente!"
+                um <strong>lixo</strong> para te livrares do atual (!) não é
+                necessário desperdício.
+            2_3_more_cutters: "Bom trabalho! Agora coloca<strong>mais 2 cortadores</strong>
+                para acelerades este progresso lento!<br><br> PS: Usa os
+                <strong>atalhos 0-9</strong> para acederes às contruções mais
+                rapidamente!"
             3_1_rectangles: "Agora vamos extrair alguns retângulos! <strong>Constrói 4
-                extratores</strong> e conecta-os ao edifício central.<br><br> PS:
-                Pressiona <strong>SHIFT</strong> enquanto arrastas um tapete rolante
-                para ativares o planeador de tapetes!"
-            21_1_place_quad_painter: Coloca o <strong>pintor quádruplo</strong> e arranja alguns
-                <strong>círculos</strong>, cores <strong>branca</strong> e
-                <strong>vermelha</strong>!
+                extratores</strong> e conecta-os ao edifício central.<br><br>
+                PS: Pressiona <strong>SHIFT</strong> enquanto arrastas um tapete
+                rolante para ativares o planeador de tapetes!"
+            21_1_place_quad_painter: Coloca o <strong>pintor quádruplo</strong> e arranja
+                alguns <strong>círculos</strong>, cores <strong>branca</strong>
+                e <strong>vermelha</strong>!
             21_2_switch_to_wires: Troca para a camada de fios pressionando
-                <strong>E</strong>!<br><br> A seguir <strong>conecta todas as quatro
-                entradas</strong> do pintor com fios!
-            21_3_place_button: Fantástico! Agora coloca o <strong>Interruptor</strong> e conecta-o
-                com os fios!
-            21_4_press_button: "Pressiona o interruptor para que ele <strong>emita um
-                sinal verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
-                não tens de conectar todas as entradas! Tenta conectar apenas duas."
+                <strong>E</strong>!<br><br> A seguir <strong>conecta todas as
+                quatro entradas</strong> do pintor com fios!
+            21_3_place_button: Fantástico! Agora coloca o <strong>Interruptor</strong> e
+                conecta-o com os fios!
+            21_4_press_button: "Pressiona o interruptor para que ele <strong>emita um sinal
+                verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
+                não tens de conectar todas as entradas! Tenta conectar apenas
+                duas."
     colors:
         red: Vermelho
         green: Verde
@@ -364,9 +421,6 @@ ingame:
             buildings:
                 title: 18 Novas contruções
                 desc: Para uma fábrica totalmente automatizada!
-            savegames:
-                title: Savegames ∞
-                desc: Tantos quanto o teu corção desejar!
             upgrades:
                 title: ∞ Níveis de melhoria
                 desc: Nesta versão demo apenas tens 5!
@@ -382,6 +436,53 @@ ingame:
             support:
                 title: Ajuda-me
                 desc: Eu desenvolvo este jogo no meu tempo livre!
+            achievements:
+                title: Conquistas
+                desc: Tenta obtê-las todas!
+    puzzleEditorSettings:
+        zoneTitle: Zona
+        zoneWidth: Largura
+        zoneHeight: Altura
+        trimZone: Aparar
+        clearItems: Limpar Itens
+        share: Partilhar
+        report: Reportar
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Criador de Puzzle
+        instructions:
+            - 1. Coloca um <strong>Produtor Constante</strong> para fornecer
+              formas e cores ao jogador
+            - 2. Constrói uma ou mais formas que queiras que o jogador tenha de
+              contruir mais tarde e a tenha de entregar a um ou mais
+              <strong>Recetor de Objetivo</strong>
+            - 3. Assim que o Recetor de Objetivo receba uma forma durante um
+              certo espaço de tempo, ele <strong>guarda-a num objetivo</strong>
+              que o jogador terá de produzir mais tarde (Indicatdo pelo
+              <strong>distintivo verde</strong>).
+            - 4. Clcica no <strong>botão de bloqueio</strong> numa construção
+              para desátiva-lo.
+            - 5. Assim que clicares em analisar, o teu puzzle será validado e
+              poderás publicá-lo.
+            - 6. Após publicado, <strong>todas as construções serão
+              removidas</strong> excepto os Produtores e Recetores de Objetivo -
+              Esta é a parte em que é suposto o jogador tentar descobrir como
+              resolver o teu Puzzle :)
+    puzzleCompletion:
+        title: Puzzle Completo!
+        titleLike: "Clica no coração se gostaste do puzzle:"
+        titleRating: Quão difícil achaste que foi o puzzle?
+        titleRatingDesc: A tua avaliação ajudar-me-á a fazer melhores sugestões no futuro
+        continueBtn: Continua a Jogar
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Autor
+        shortKey: Pequeno Código
+        rating: Grau de dificuldade
+        averageDuration: Média de duração
+        completionRate: Taxa de conclusão
 shopUpgrades:
     belt:
         name: Tapetes, Distribuidores e Túneis
@@ -477,11 +578,11 @@ buildings:
         default:
             name: Fio Elétrico
             description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
-                ou 0). Fios de cores diferestes não se conectam.
+                ou 0). Fios de cores diferentes não se conectam.
         second:
             name: Fio Elétrico
             description: Tranfere sinais, que podem ser itens, cores ou um sinal binário (1
-                ou 0). Fios de cores diferestes não se conectam.
+                ou 0). Fios de cores diferentes não se conectam.
     balancer:
         default:
             name: Distribuidor
@@ -598,6 +699,19 @@ buildings:
             name: Produtor de Itens
             description: Disponível apenas no modo sandbox, produz o sinal dado na camada de
                 fios na camada normal.
+    constant_producer:
+        default:
+            name: Produtor Constante
+            description: Produz constantemente uma forma ou cor específica.
+    goal_acceptor:
+        default:
+            name: Recetor de Objetivo
+            description: Entrega formas ao recetor de objetivo para defini-las como um
+                objetivo.
+    block:
+        default:
+            name: Bloqueador
+            description: Permite-te bloquear uma quadrícula.
 storyRewards:
     reward_cutter_and_trash:
         title: Corte de formas
@@ -630,8 +744,8 @@ storyRewards:
             esquerda!
     reward_splitter:
         title: Divisor
-        desc: Desbloqueaste o <strong>dvisor</strong> uma variante do
-            <strong>distribuidor</strong> - Aceita uma entradae divide-a em
+        desc: Desbloqueaste o <strong>divisor</strong> uma variante do
+            <strong>distribuidor</strong> - Aceita uma entrada e divide-a em
             duas!
     reward_tunnel:
         title: Túnel
@@ -699,9 +813,9 @@ storyRewards:
         desc: Parabéns! Já agora, está planeado mais conteúdo para o jogo completo!
     reward_balancer:
         title: Distribuidor
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: O <strong>Distribuidor</strong> foi desbloqueado - Pode ser usado para
+            construir fábricas maiores ao <strong>dividir e misturar
+            itens</strong> para vários tapetes!
     reward_merger:
         title: Misturador (compacto)
         desc: Desbloqueaste um <strong>misturador</strong>, uma variante do
@@ -731,15 +845,15 @@ storyRewards:
             binário</strong> (1 ou 0).
     reward_logic_gates:
         title: Portões Lógicos
-        desc: Desbloqueaste os <strong>portões lógicos</strong>! N tens de te excitar
+        desc: Desbloqueaste os <strong>portões lógicos</strong>! Não tens de te excitar
             com isto, mas é realmente super fixe!<br><br> Com estes portões
             agora podes realizar operações AND, OR, XOR and NOT.<br><br> Como um
-            bónus anteriormente já de dei um <strong>transístor</strong>!
+            bónus anteriormente já te dei um <strong>transístor</strong>!
     reward_virtual_processing:
         title: Processamento Virtual
         desc: Acadei de te dar um monte de novas construções, que te vão permitir
             <strong>simular o processamento de formas</strong>!<br><br> Agora
-            podes simular um cortador,um rodador, um empilhador e muito mais na
+            podes simular um cortador, um rodador, um empilhador e muito mais na
             camada de fios! Com isto, agora tens três opções para continuares o
             jogo:<br><br> - Construir uma <strong>máquina automática</strong>
             para criar qualquer forma possível pedida pelo Edifício Central
@@ -753,14 +867,14 @@ storyRewards:
             mecânicas!<br><br> Para o inicio eu dei-te o <strong>Pintor
             Quádruplo</strong> - Conecta as entradas que queres pintar na camada
             de fios!<br><br> Para trocares para a camada de fios, pressiona a
-            tecla <strong>E</strong>. <br><br> PS: <strong>Ativa as dicas</strong> nas
-            definições para ativares o tutorial de fios!"
+            tecla <strong>E</strong>. <br><br> PS: <strong>Ativa as
+            dicas</strong> nas definições para ativares o tutorial de fios!"
     reward_filter:
         title: Filtro de Itens
         desc: Desbloquaste o <strong>Filtro de Itens</strong>! Vai mandar itens ou para
             o topo ou para a saída da esquerda dependendo depending se são
             iguais ao sinal da camada de fios ou não.<br><br> Também podes
-            passar um sinal binário (1 ou 0) para ativa-lo ou desativa-lo
+            passar um sinal binário (1 ou 0) para ativá-lo ou desativá-lo
             totalmente.
     reward_demo_end:
         title: Fim da Demo
@@ -895,7 +1009,7 @@ settings:
                 lembra-te de experimentares!
         disableTileGrid:
             title: Desativar Grelha
-            description: Desativar a grelha pode ajudar com o desempenho. Isto também fazz o
+            description: Desativar a grelha pode ajudar com o desempenho. Isto também faz o
                 jogo parecer mais limpo!
         clearCursorOnDeleteWhilePlacing:
             title: Limpar Cursor com Clique Direito
@@ -905,12 +1019,12 @@ settings:
                 direito do rato enquanto colocas um edifício.
         lowQualityTextures:
             title: Texturas de baixa qualidade (Feio)
-            description: sa texturas de baixa qualidade para melhorar o desempenho. sto vai
-                tornar o jogo parecer muito feio!
+            description: Usa texturas de baixa qualidade para melhorar o desempenho. Isto
+                vai tornar o jogo parecer muito feio!
         displayChunkBorders:
             title: Mostrar bordas de limites (chunk borders)
             description: O jogo está dividido em partes de 16x16 quadrados, se esta
-                dedinição estiver ativada as bordas de cada limitece são
+                definição estiver ativada as bordas de cada limite são
                 mostradas.
         pickMinerOnPatch:
             title: Selecionar extrator num quadrado de recurso
@@ -927,14 +1041,19 @@ settings:
             description: Permite-te mover o mapa movento o rato nos cantos do ecrâ. A
                 velociade depende da definição de velocidade de movimentação.
         zoomToCursor:
-            title: Zoom towards Cursor
-            description: If activated the zoom will happen in the direction of your mouse
-                position, otherwise in the middle of the screen.
+            title: Aproximar no cursor
+            description: Se ativado o zoom será na direção da posição do teu rato, de outra
+                forma será para o centro do ecrã.
         mapResourcesScale:
-            title: Map Resources Size
-            description: Controls the size of the shapes on the map overview (when zooming
-                out).
+            title: Tamanho de Recursos no Mapa
+            description: Controla o tamanho das formas na visão geral do mapa (aplicando
+                zoom out).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Atalhos
     hint: "Dica: Utiliza o CTRL, o SHIFT e o ALT! Eles permitem diferentes opções de
@@ -1008,6 +1127,15 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copia o valor debaixo do cursor"
+        rotateToUp: "Rotate: Point Up"
+        rotateToDown: "Rotate: Point Down"
+        rotateToRight: "Rotate: Point Right"
+        rotateToLeft: "Rotate: Point Left"
+        constant_producer: Produtor Constante
+        goal_acceptor: Recetor de Objetivo
+        block: Bloqueador
+        massSelectClear: Limpar tapetes rolante
+        showShapeTooltip: Show shape output tooltip
 about:
     title: Sobre o Jogo
     body: >-
@@ -1039,7 +1167,8 @@ tips:
     - Se empilhar não funciona, tenta trocar as entradas.
     - Podes alternar a direção do planeador de tapete rolante ao pressionar
       <b>R</b>.
-    - Ao pressionares <b>CTRL</b> podes arrastar tapetes rolantes sem auto-orientação.
+    - Ao pressionares <b>CTRL</b> podes arrastar tapetes rolantes sem
+      auto-orientação.
     - Os rácios continuam os mesmos, desde que todos os upgrades estejam no
       mesmo Nível.
     - Execução em série é mais eficiente que em paralelo.
@@ -1068,12 +1197,12 @@ tips:
     - Usa balanceadores para maximizar a tua eficiência.
     - Organização é importante. Tenta não cruzar demasiados tapetes.
     - Planeia antecipadamente, ou vai ser um grande caos!
-    - Não removas as tuas fábricas antigas! Vais precisar delas para desbloqueares
-      upgrades.
+    - Não removas as tuas fábricas antigas! Vais precisar delas para
+      desbloqueares upgrades.
     - Tenta superar o nível 20 sozinho sem procurar ajuda!
     - Não complicas as coisas, tenta continuar simples e irás muito longe.
-    - Talvez precises de reutilizar fábricas, mais tarde no jogo. Planeia as tuas
-      fábricas para serem reutilizáveis.
+    - Talvez precises de reutilizar fábricas, mais tarde no jogo. Planeia as
+      tuas fábricas para serem reutilizáveis.
     - Às vezes, podes encontrar uma forma necessária no mapa sem criar-la com
       empilhadoras.
     - Moinhos de vento e cataventos completos nunca aparecem naturalmente.
@@ -1090,8 +1219,8 @@ tips:
     - Junta todas as cores primárias para fazeres branco!
     - Tu tens um mapa infinito, não limites a tua fábrica, expande!
     - Tenta também Factorio! É o meu jogo favorito.
-    - O cortador quádruplo corta no sentido dos ponteiros do relógio começando no canto
-      superior direito!
+    - O cortador quádruplo corta no sentido dos ponteiros do relógio começando
+      no canto superior direito!
     - Podes fazer download dos teus savegames no menu principal!
     - Este jogo tem muitos atalhos de teclado úteis! Não te esqueças de
       verificar a página de configurações.
@@ -1102,3 +1231,90 @@ tips:
     - Pressiona F4 para mostrar os teus FPS e Tick Rate.
     - Pressiona F4 duas vezes para mostrar a tile do teu rato e câmara.
     - Podes clicar numa forma afixada no lado direito para desafixa-la.
+puzzleMenu:
+    play: Jogar
+    edit: Editar
+    title: Modo Puzzle
+    createPuzzle: Criar Puzzle
+    loadPuzzle: Carregar
+    reviewPuzzle: Analisar e Publicar
+    validatingPuzzle: A validar Puzzle
+    submittingPuzzle: A submeter Puzzle
+    noPuzzles: Não há atualmente puzzles nesta secção.
+    categories:
+        levels: Nivéis
+        new: Novo
+        top-rated: Melhor Avaliado
+        mine: Meus Puzzles
+        easy: Fácil
+        hard: Difícil
+        completed: Completo
+        medium: Médio
+        official: Oficial
+        trending: Tendências de Hoje
+        trending-weekly: Tendências da Semana
+        categories: Categorias
+        difficulties: Por Dificuldade
+        account: Os meus Puzzles
+        search: Procurar
+    validation:
+        title: Puzzle Inválido
+        noProducers: Por favor coloca um Produtor Constante!
+        noGoalAcceptors: Por favor coloca um Recetor de Objetivo!
+        goalAcceptorNoItem: Um ou mais Recetores de Objetivo ainda não tem itens
+            atrbuídos. Entrega uma forma nele para definires um objetivo.
+        goalAcceptorRateNotMet: Um ou mais Recetores de Objetivo não está a receber
+            itens suficientes. Assegura-te de que tens o indicador verde em
+            todos os Recetores.
+        buildingOutOfBounds: Uma ou mais formas estão fora da área de construção. Ou
+            aumentas a área ou removes esses itens.
+        autoComplete: O teu Puzzle completa-se sozinho! Por favor assegura-te de que os
+            teus Produtores Constantes não estão automaticamente direcionados
+            para os Recetores de Objetivo.
+    difficulties:
+        easy: Fácil
+        medium: Médio
+        hard: Difícil
+        unknown: Unrated
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
+    invalid-api-key: Falha ao cominucar com o backend, por favor tenta
+        atualizar/resetar o Jogo (Chave Api inválida).
+    unauthorized: Falha ao cominucar com o backend, or favor tenta atualizar/resetar
+        o Jogo (Não autorizado).
+    bad-token: Falha ao cominucar com o backend, por favor tenta atualizar/resetar o
+        Jogo (Mau Token).
+    bad-id: Identificador de Puzzle inválido.
+    not-found: O Puzzle pedido não foi encontrado.
+    bad-category: A categoria pedida não foi encontrada.
+    bad-short-key: O pequeno código inserido não é válido.
+    profane-title: O título do teu Puzzle contém palavras impróprias.
+    bad-title-too-many-spaces: O título do teu Puzzle é demasiado pequeno.
+    bad-shape-key-in-emitter: Um Produtor Constante tem um item inválido.
+    bad-shape-key-in-goal: Um Recetor de Objetivo tem um item inválido.
+    no-emitters: O teu Puzzle não contém nenhum Produtor Constante.
+    no-goals: O teu Puzzle não contém nenhum Recetor de Objetivo.
+    short-key-already-taken: Este pequeno código já foi utilizado, por favor tenta outro.
+    can-not-report-your-own-puzzle: Não podes reportar o teu próprio puzzle.
+    bad-payload: O pedido contém informção inválida.
+    bad-building-placement: O teu Puzzle contém construções posicionadas de forma inválida.
+    timeout: O tempo do pedido esgotou.
+    too-many-likes-already: O puzzle já tem imensos gostos. Se ainda o quiseres
+        remover, por favor contacta support@shapez.io!
+    no-permission: Não tens permissão para realizar esta ação.

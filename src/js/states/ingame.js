@@ -8,6 +8,7 @@ import { KeyActionMapper } from "../game/key_action_mapper";
 import { Savegame } from "../savegame/savegame";
 import { GameCore } from "../game/core";
 import { MUSIC } from "../platform/sound";
+import { enumGameModeIds } from "../game/game_mode";
 
 const logger = createLogger("state/ingame");
 
@@ -39,8 +40,14 @@ export class GameCreationPayload {
         /** @type {boolean|undefined} */
         this.fastEnter;
 
+        /** @type {string} */
+        this.gameModeId;
+
         /** @type {Savegame} */
         this.savegame;
+
+        /** @type {object|undefined} */
+        this.gameModeParameters;
     }
 }
 
@@ -97,6 +104,9 @@ export class InGameState extends GameState {
     }
 
     getThemeMusic() {
+        if (this.creationPayload.gameModeId && this.creationPayload.gameModeId.includes("puzzle")) {
+            return MUSIC.puzzle;
+        }
         return MUSIC.theme;
     }
 
@@ -147,7 +157,11 @@ export class InGameState extends GameState {
      * Goes back to the menu state
      */
     goBackToMenu() {
-        this.saveThenGoToState("MainMenuState");
+        if ([enumGameModeIds.puzzleEdit, enumGameModeIds.puzzlePlay].includes(this.gameModeId)) {
+            this.saveThenGoToState("PuzzleMenuState");
+        } else {
+            this.saveThenGoToState("MainMenuState");
+        }
     }
 
     /**
@@ -220,7 +234,7 @@ export class InGameState extends GameState {
             logger.log("Creating new game core");
             this.core = new GameCore(this.app);
 
-            this.core.initializeRoot(this, this.savegame);
+            this.core.initializeRoot(this, this.savegame, this.gameModeId);
 
             if (this.savegame.hasGameDump()) {
                 this.stage4bResumeGame();
@@ -354,6 +368,7 @@ export class InGameState extends GameState {
 
         this.creationPayload = payload;
         this.savegame = payload.savegame;
+        this.gameModeId = payload.gameModeId;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
         this.loadingOverlay.showBasic();
@@ -361,7 +376,13 @@ export class InGameState extends GameState {
         // Remove unneded default element
         document.body.querySelector(".modalDialogParent").remove();
 
-        this.asyncChannel.watch(waitNextFrame()).then(() => this.stage3CreateCore());
+        this.asyncChannel
+            .watch(waitNextFrame())
+            .then(() => this.stage3CreateCore())
+            .catch(ex => {
+                logger.error(ex);
+                throw ex;
+            });
     }
 
     /**
@@ -433,6 +454,11 @@ export class InGameState extends GameState {
             logger.warn("Skipping double save and returning same promise");
             return this.currentSavePromise;
         }
+
+        if (!this.core.root.gameMode.getIsSaveable()) {
+            return Promise.resolve();
+        }
+
         logger.log("Starting to save game ...");
         this.savegame.updateData(this.core.root);
 

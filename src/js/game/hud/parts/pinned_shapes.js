@@ -55,7 +55,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
      */
     deserialize(data) {
         if (!data || !data.shapes || !Array.isArray(data.shapes)) {
-            return "Invalid pinned shapes data";
+            return "Invalid pinned shapes data: " + JSON.stringify(data);
         }
         this.pinnedShapes = data.shapes;
     }
@@ -217,11 +217,14 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         let detector = null;
         if (canUnpin) {
+            const unpinButton = document.createElement("button");
+            unpinButton.classList.add("unpinButton");
+            element.appendChild(unpinButton);
             element.classList.add("removable");
-            detector = new ClickDetector(element, {
+            detector = new ClickDetector(unpinButton, {
                 consumeEvents: true,
                 preventDefault: true,
-                targetOnly: false,
+                targetOnly: true,
             });
             detector.click.add(() => this.unpinShape(key));
         } else {
@@ -229,15 +232,20 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
 
         // Show small info icon
-        const infoButton = document.createElement("button");
-        infoButton.classList.add("infoButton");
-        element.appendChild(infoButton);
-        const infoDetector = new ClickDetector(infoButton, {
-            consumeEvents: true,
-            preventDefault: true,
-            targetOnly: true,
-        });
-        infoDetector.click.add(() => this.root.hud.signals.viewShapeDetailsRequested.dispatch(definition));
+        let infoDetector;
+        if (!G_WEGAME_VERSION) {
+            const infoButton = document.createElement("button");
+            infoButton.classList.add("infoButton");
+            element.appendChild(infoButton);
+            infoDetector = new ClickDetector(infoButton, {
+                consumeEvents: true,
+                preventDefault: true,
+                targetOnly: true,
+            });
+            infoDetector.click.add(() =>
+                this.root.hud.signals.viewShapeDetailsRequested.dispatch(definition)
+            );
+        }
 
         const amountLabel = makeDiv(element, null, ["amountLabel"], "");
 
@@ -270,7 +278,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
             if (handle.throughputOnly) {
                 currentValue =
-                    this.root.productionAnalytics.getCurrentShapeRate(
+                    this.root.productionAnalytics.getCurrentShapeRateRaw(
                         enumAnalyticsDataSource.delivered,
                         handle.definition
                     ) / globalConfig.analyticsSliceDurationSeconds;

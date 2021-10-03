@@ -51,6 +51,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
     }
 
+    getHasFreeCopyPaste() {
+        return this.root.gameMode.getHasFreeCopyPaste();
+    }
+
     abortPlacement() {
         if (this.currentBlueprint.get()) {
             this.currentBlueprint.set(null);
@@ -83,7 +87,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     update() {
         const currentBlueprint = this.currentBlueprint.get();
-        this.domAttach.update(currentBlueprint && currentBlueprint.getCost() > 0);
+        this.domAttach.update(
+            !this.getHasFreeCopyPaste() && currentBlueprint && currentBlueprint.getCost() > 0
+        );
         this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
@@ -109,29 +115,32 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 this.abortPlacement();
                 return STOP_PROPAGATION;
             }
-        }
+        } else if (button === enumMouseButton.left) {
+            const blueprint = this.currentBlueprint.get();
+            if (!blueprint) {
+                return;
+            }
 
-        const blueprint = this.currentBlueprint.get();
-        if (!blueprint) {
-            return;
-        }
+            if (!this.getHasFreeCopyPaste() && !blueprint.canAfford(this.root)) {
+                this.root.soundProxy.playUiError();
+                return;
+            }
 
-        if (!blueprint.canAfford(this.root)) {
-            this.root.soundProxy.playUiError();
-            return;
-        }
-
-        const worldPos = this.root.camera.screenToWorld(pos);
-        const tile = worldPos.toTileSpace();
-        if (blueprint.tryPlace(this.root, tile)) {
-            const cost = blueprint.getCost();
-            this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
-            this.root.soundProxy.playUi(SOUNDS.placeBuilding);
+            const worldPos = this.root.camera.screenToWorld(pos);
+            const tile = worldPos.toTileSpace();
+            if (blueprint.tryPlace(this.root, tile)) {
+                if (!this.getHasFreeCopyPaste()) {
+                    const cost = blueprint.getCost();
+                    this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                }
+                this.root.soundProxy.playUi(SOUNDS.placeBuilding);
+            }
+            return STOP_PROPAGATION;
         }
     }
 
     /**
-     * Mose move handler
+     * Mouse move handler
      */
     onMouseMove() {
         // Prevent movement while blueprint is selected

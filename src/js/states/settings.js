@@ -1,3 +1,4 @@
+import { THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
 import { allApplicationSettings, enumCategories } from "../profile/application_settings";
@@ -28,10 +29,18 @@ export class SettingsState extends TextualGameState {
             }
 
             <div class="other">
-                <button class="styledButton about">${T.about.title}</button>
 
+            ${
+                G_CHINA_VERSION || G_WEGAME_VERSION
+                    ? ""
+                    : `
+                <button class="styledButton about">${T.about.title}</button>
+                <button class="styledButton privacy">Privacy Policy</button>
+
+`
+            }
                 <div class="versionbar">
-                    <div class="buildVersion">${T.global.loading} ...</div>
+                    ${G_WEGAME_VERSION ? "" : `<div class="buildVersion">${T.global.loading} ...</div>`}
                 </div>
             </div>
         </div>
@@ -68,6 +77,10 @@ export class SettingsState extends TextualGameState {
         for (let i = 0; i < allApplicationSettings.length; ++i) {
             const setting = allApplicationSettings[i];
 
+            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
+                continue;
+            }
+
             categoriesHTML[setting.categoryId] += setting.getHtml(this.app);
         }
 
@@ -78,6 +91,9 @@ export class SettingsState extends TextualGameState {
 
     renderBuildText() {
         const labelVersion = this.htmlElement.querySelector(".buildVersion");
+        if (!labelVersion) {
+            return;
+        }
         const lastBuildMs = new Date().getTime() - G_BUILD_TIME;
         const lastBuildText = formatSecondsToTimeAgo(lastBuildMs / 1000.0);
 
@@ -94,9 +110,15 @@ export class SettingsState extends TextualGameState {
 
     onEnter(payload) {
         this.renderBuildText();
-        this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
-            preventDefault: false,
-        });
+
+        if (!G_CHINA_VERSION && !G_WEGAME_VERSION) {
+            this.trackClicks(this.htmlElement.querySelector(".about"), this.onAboutClicked, {
+                preventDefault: false,
+            });
+            this.trackClicks(this.htmlElement.querySelector(".privacy"), this.onPrivacyClicked, {
+                preventDefault: false,
+            });
+        }
 
         const keybindingsButton = this.htmlElement.querySelector(".editKeybindings");
 
@@ -131,6 +153,10 @@ export class SettingsState extends TextualGameState {
 
     initSettings() {
         allApplicationSettings.forEach(setting => {
+            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
+                return;
+            }
+
             /** @type {HTMLElement} */
             const element = this.htmlElement.querySelector("[data-setting='" + setting.id + "']");
             setting.bind(this.app, element, this.dialogs);
@@ -161,6 +187,10 @@ export class SettingsState extends TextualGameState {
 
     onAboutClicked() {
         this.moveToStateAddGoBack("AboutState");
+    }
+
+    onPrivacyClicked() {
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.privacyPolicy);
     }
 
     onKeybindingsClicked() {

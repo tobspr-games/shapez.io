@@ -31,10 +31,11 @@ import { KeyActionMapper } from "./key_action_mapper";
 import { GameLogic } from "./logic";
 import { MapView } from "./map_view";
 import { defaultBuildingVariant } from "./meta_building";
-import { RegularGameMode } from "./modes/regular";
+import { GameMode } from "./game_mode";
 import { ProductionAnalytics } from "./production_analytics";
 import { GameRoot } from "./root";
 import { ShapeDefinitionManager } from "./shape_definition_manager";
+import { AchievementProxy } from "./achievement_proxy";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
 
@@ -81,7 +82,9 @@ export class GameCore {
      * @param {import("../states/ingame").InGameState} parentState
      * @param {Savegame} savegame
      */
-    initializeRoot(parentState, savegame) {
+    initializeRoot(parentState, savegame, gameModeId) {
+        logger.log("initializing root");
+
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
         this.root.gameState = parentState;
@@ -99,11 +102,11 @@ export class GameCore {
         // This isn't nice, but we need it right here
         root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
 
+        // Init game mode
+        root.gameMode = GameMode.create(root, gameModeId, parentState.creationPayload.gameModeParameters);
+
         // Needs to come first
         root.dynamicTickrate = new DynamicTickrate(root);
-
-        // Init game mode
-        root.gameMode = new RegularGameMode(root);
 
         // Init classes
         root.camera = new Camera(root);
@@ -111,6 +114,7 @@ export class GameCore {
         root.logic = new GameLogic(root);
         root.hud = new GameHUD(root);
         root.time = new GameTime(root);
+        root.achievementProxy = new AchievementProxy(root);
         root.automaticSave = new AutomaticSave(root);
         root.soundProxy = new SoundProxy(root);
 
@@ -149,9 +153,14 @@ export class GameCore {
 
                     // Update analytics
                     root.productionAnalytics.update();
+
+                    // Check achievements
+                    root.achievementProxy.update();
                 }
             });
         }
+
+        logger.log("root initialized");
     }
 
     /**
@@ -162,6 +171,10 @@ export class GameCore {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = randomInt(0, 100000);
+
+        if (!this.root.gameMode.hasHub()) {
+            return;
+        }
 
         // Place the hub
         const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
@@ -274,6 +287,9 @@ export class GameCore {
 
             // Update analytics
             root.productionAnalytics.update();
+
+            // Check achievements
+            root.achievementProxy.update();
         }
 
         // Update automatic save after everything finished
@@ -439,7 +455,9 @@ export class GameCore {
             systems.hub.draw(params);
 
             // Green wires overlay
-            root.hud.parts.wiresOverlay.draw(params);
+            if (root.hud.parts.wiresOverlay) {
+                root.hud.parts.wiresOverlay.draw(params);
+            }
 
             if (this.root.currentLayer === "wires") {
                 // Static map entities

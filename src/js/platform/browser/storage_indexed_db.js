@@ -94,12 +94,6 @@ export class StorageImplBrowserIndexedDB extends StorageInterface {
         });
     }
 
-    writeFileSyncIfSupported(filename, contents) {
-        // Not supported
-        this.writeFileAsync(filename, contents);
-        return true;
-    }
-
     readFileAsync(filename) {
         if (!this.database) {
             return Promise.reject("Storage not ready");

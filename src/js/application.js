@@ -12,6 +12,7 @@ import { getPlatformName, waitNextFrame } from "./core/utils";
 import { Vector } from "./core/vector";
 import { AdProviderInterface } from "./platform/ad_provider";
 import { NoAdProvider } from "./platform/ad_providers/no_ad_provider";
+import { NoAchievementProvider } from "./platform/browser/no_achievement_provider";
 import { AnalyticsInterface } from "./platform/analytics";
 import { GoogleAnalyticsImpl } from "./platform/browser/google_analytics";
 import { SoundImplBrowser } from "./platform/browser/sound";
@@ -30,8 +31,13 @@ import { PreloadState } from "./states/preload";
 import { SettingsState } from "./states/settings";
 import { ShapezGameAnalytics } from "./platform/browser/game_analytics";
 import { RestrictionManager } from "./core/restriction_manager";
+import { PuzzleMenuState } from "./states/puzzle_menu";
+import { ClientAPI } from "./platform/api";
+import { LoginState } from "./states/login";
+import { WegameSplashState } from "./states/wegame_splash";
 
 /**
+ * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
  * @typedef {import("./platform/game_analytics").GameAnalyticsInterface} GameAnalyticsInterface
  * @typedef {import("./platform/sound").SoundInterface} SoundInterface
  * @typedef {import("./platform/storage").StorageInterface} StorageInterface
@@ -70,6 +76,7 @@ export class Application {
         this.savegameMgr = new SavegameManager(this);
         this.inputMgr = new InputDistributor(this);
         this.backgroundResourceLoader = new BackgroundResourcesLoader(this);
+        this.clientApi = new ClientAPI(this);
 
         // Restrictions (Like demo etc)
         this.restrictionMgr = new RestrictionManager(this);
@@ -84,6 +91,9 @@ export class Application {
 
         /** @type {PlatformWrapperInterface} */
         this.platformWrapper = null;
+
+        /** @type {AchievementProviderInterface} */
+        this.achievementProvider = null;
 
         /** @type {AdProviderInterface} */
         this.adProvider = null;
@@ -137,6 +147,7 @@ export class Application {
         this.sound = new SoundImplBrowser(this);
         this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
+        this.achievementProvider = new NoAchievementProvider(this);
     }
 
     /**
@@ -145,6 +156,7 @@ export class Application {
     registerStates() {
         /** @type {Array<typeof GameState>} */
         const states = [
+            WegameSplashState,
             PreloadState,
             MobileWarningState,
             MainMenuState,
@@ -153,6 +165,8 @@ export class Application {
             KeybindingsState,
             AboutState,
             ChangelogState,
+            PuzzleMenuState,
+            LoginState,
         ];
 
         for (let i = 0; i < states.length; ++i) {
@@ -318,8 +332,12 @@ export class Application {
 
         Loader.linkAppAfterBoot(this);
 
+        if (G_WEGAME_VERSION) {
+            this.stateMgr.moveToState("WegameSplashState");
+        }
+
         // Check for mobile
-        if (IS_MOBILE) {
+        else if (IS_MOBILE) {
             this.stateMgr.moveToState("MobileWarningState");
         } else {
             this.stateMgr.moveToState("PreloadState");
