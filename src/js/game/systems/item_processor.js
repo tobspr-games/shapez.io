@@ -589,7 +589,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             );
         }
 
-        if (this.root.gameMode.getIsEditor()) {
+        const settings = this.root.hud.parts.puzzleEditorSettings;
+        if (settings && !settings.getIsTestMode()) {
             // while playing in editor, assign the item
             goalComp.item = item;
         }

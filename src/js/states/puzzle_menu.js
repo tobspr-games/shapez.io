@@ -609,6 +609,7 @@ export class PuzzleMenuState extends TextualGameState {
         const savegame = Savegame.createPuzzleSavegame(this.app);
         this.moveToState("InGameState", {
             gameModeId: enumGameModeIds.puzzleEdit,
+            gameModeParameters: {},
             savegame,
         });
     }

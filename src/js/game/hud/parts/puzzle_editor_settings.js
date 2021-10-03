@@ -1,6 +1,5 @@
 import { globalConfig } from "../../../core/config";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
-import { createLogger } from "../../../core/logging";
 import { Rectangle } from "../../../core/rectangle";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
@@ -8,10 +7,9 @@ import { MetaBlockBuilding } from "../../buildings/block";
 import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { Entity } from "../../entity";
 import { PuzzleGameMode } from "../../modes/puzzle";
 import { BaseHUDPart } from "../base_hud_part";
-
-const logger = createLogger("puzzle-editor");
 
 export class HUDPuzzleEditorSettings extends BaseHUDPart {
     createElements(parent) {
@@ -27,7 +25,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                 `
                 <label>${T.ingame.puzzleEditorSettings.zoneTitle}</label>
 
-                <div class="buttons">
+                <div class="mainButtons">
                     <div class="zoneWidth plusMinus">
                         <label>${T.ingame.puzzleEditorSettings.zoneWidth}</label>
                         <button class="styledButton minus">-</button>
@@ -35,7 +33,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                         <button class="styledButton plus">+</button>
                     </div>
 
-                     <div class="zoneHeight plusMinus">
+                    <div class="zoneHeight plusMinus">
                         <label>${T.ingame.puzzleEditorSettings.zoneHeight}</label>
                         <button class="styledButton minus">-</button>
                         <span class="value"></span>
@@ -47,10 +45,10 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                         <button class="styledButton clearItems">${T.ingame.puzzleEditorSettings.clearItems}</button>
                     </div>
 
-                    <div class="buildingsButton">
-                        <button class="styledButton resetPuzzle">${T.ingame.puzzleEditorSettings.resetPuzzle}</button>
-                    </div>
+                </div>
 
+                <div class="testToggle">
+                    <button class="styledButton testPuzzle">${T.ingame.puzzleEditorSettings.enableTestMode}</button>
                 </div>`
             );
 
@@ -60,7 +58,12 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
             bind("button.clearItems", this.clearItems);
-            bind("button.resetPuzzle", this.resetPuzzle);
+            bind("button.testPuzzle", this.toggleTestMode);
+
+            this.testMode = false;
+
+            /** @type {Entity[]} */
+            this.storedSolution = [];
         }
     }
 
@@ -68,27 +71,67 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         this.root.logic.clearAllBeltsAndItems();
     }
 
-    resetPuzzle() {
-        for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
-            const staticComp = entity.components.StaticMapEntity;
-            const goalComp = entity.components.GoalAcceptor;
+    toggleTestMode() {
+        this.testMode = !this.testMode;
 
-            if (goalComp) {
-                goalComp.clear();
+        this.element.querySelector(".section > label").classList.toggle("disabled", this.testMode);
+        this.element.querySelector(".mainButtons").classList.toggle("disabled", this.testMode);
+        const testButton = this.element.querySelector(".testToggle > .testPuzzle");
+        testButton.textContent = this.testMode
+            ? T.ingame.puzzleEditorSettings.disableTestMode
+            : T.ingame.puzzleEditorSettings.enableTestMode;
+
+        testButton.classList.toggle("disabled", true);
+
+        const buildingsToolbar = this.root.hud.parts.buildingsToolbar;
+        buildingsToolbar.switchingTestMode = true;
+        this.root.signals.testModeChanged.dispatch(this.testMode);
+
+        setTimeout(() => {
+            buildingsToolbar.switchingTestMode = false;
+            buildingsToolbar.toggleTestMode(this.testMode);
+
+            testButton.classList.toggle("disabled", false);
+        }, 140);
+
+        if (this.testMode) {
+            const newSolution = [];
+            for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+                if (this.isExcludedEntity(entity)) {
+                    continue;
+                }
+
+                newSolution.push(entity.clone());
+
+                this.root.map.removeStaticEntity(entity);
+                this.root.entityMgr.destroyEntity(entity);
             }
 
-            if (
-                [MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
-                    .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
-                    .includes(staticComp.getMetaBuilding().id)
-            ) {
-                continue;
-            }
+            this.root.entityMgr.processDestroyList();
+            this.storedSolution = newSolution;
+        } else if (this.storedSolution.length) {
+            this.root.logic.performBulkOperation(() => {
+                for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+                    if (this.isExcludedEntity(entity)) continue;
 
-            this.root.map.removeStaticEntity(entity);
-            this.root.entityMgr.destroyEntity(entity);
+                    this.root.map.removeStaticEntity(entity);
+                    this.root.entityMgr.destroyEntity(entity);
+                }
+                this.root.entityMgr.processDestroyList();
+
+                for (let i = 0; i < this.storedSolution.length; ++i) {
+                    const entity = this.storedSolution[i];
+                    const placedEntity = this.root.logic.tryPlaceEntity(entity);
+
+                    for (const key in entity.components) {
+                        /** @type {import("../../../core/global_registries").Component} */ (entity.components[
+                            key
+                        ]).copyAdditionalStateTo(placedEntity.components[key]);
+                    }
+                }
+                this.storedSolution = [];
+            });
         }
-        this.root.entityMgr.processDestroyList();
     }
 
     trim() {
@@ -227,5 +270,22 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
         this.element.querySelector(".zoneWidth > .value").textContent = String(mode.zoneWidth);
         this.element.querySelector(".zoneHeight > .value").textContent = String(mode.zoneHeight);
+    }
+
+    getIsTestMode() {
+        return this.testMode;
+    }
+
+    isExcludedEntity(entity) {
+        const metaBuilding = entity.components.StaticMapEntity.getMetaBuilding();
+
+        if (
+            [MetaConstantProducerBuilding, MetaBlockBuilding, MetaGoalAcceptorBuilding]
+                .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
+                .includes(metaBuilding.id)
+        ) {
+            return true;
+        }
+        return false;
     }
 }
