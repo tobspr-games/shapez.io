@@ -74,10 +74,9 @@ mainMenu:
     savegameUnnamed: Без названия
     puzzleMode: Puzzle Mode
     back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcText: Вам нравится оптимизировать фабрики и делать их компактнее? В магазине Steam появилось DLC с головоломками для ещё большего веселья.
+    puzzleDlcWishlist: Добавляйте в список желаемого!
+    puzzleDlcViewNow: Перейти к DLC
 dialogs:
     buttons:
         ok: OK
@@ -91,9 +90,9 @@ dialogs:
         viewUpdate: Посмотреть Обновление
         showUpgrades: Показать Улучшения
         showKeybindings: Показать Управление (Привязку клавиш)
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Заново
+        continue: Подолжить
+        playOffline: Играть оффлайн
     importSavegameError:
         title: Ошибка импортирования
         text: Не удалось импортировать сохранение игры.
@@ -241,7 +240,7 @@ dialogs:
     puzzleShare:
         title: Короткий ключ скопирован
         desc: Короткий ключ головоломки (<key>) был скопирован в буфер обмена! Он может
-            быть введен в меню головолом для доступа к головоломке.
+            быть введен в меню головоломок для доступа к головоломке.
     puzzleReport:
         title: Жалоба на головоломку
         options:
@@ -281,7 +280,7 @@ ingame:
         clearSelection: Отменить
         pipette: Пипетка
         switchLayers: Переключить слои
-        clearBelts: Clear belts
+        clearBelts: Очистить конвейеры
     colors:
         red: Красный
         green: Зеленый
@@ -440,8 +439,8 @@ ingame:
         clearItems: Очистить предметы
         share: Поделиться
         report: Пожаловаться
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Очистить постройки
+        resetPuzzle: Сброс головоломки
     puzzleEditorControls:
         title: Редактор головоломок
         instructions:
@@ -468,7 +467,7 @@ ingame:
         titleRatingDesc: Ваша оценка поможет мне в будущем делать вам лучшие предложения
         continueBtn: Продолжить игру
         menuBtn: Меню
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Следующая головоломка
     puzzleMetadata:
         author: Автор
         shortKey: Короткий ключ
@@ -698,8 +697,8 @@ buildings:
             description: Доставьте фигуру в приемник, чтобы установить их в качестве цели.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Блок
+            description: Блокирует это место от установки чего-либо
 storyRewards:
     reward_cutter_and_trash:
         title: Разрезание Фигур
@@ -1033,10 +1032,9 @@ settings:
             title: Размер ресурсов на карте
             description: Устанавливает размер фигур на карте (когда вид достаточно отдалён).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
-    tickrateHz: <amount> Hz
+            title: Показывать подсказку фигуры
+            description: Показывать ли подсказку фигуры всегда или только при удержании 'ALT'.
+    tickrateHz: <amount> Гц
 keybindings:
     title: Настройки управления
     hint: "Подсказка: Обязательно используйте CTRL, SHIFT и ALT! Они дают разные
@@ -1118,7 +1116,7 @@ keybindings:
         goal_acceptor: Приёмник предметов
         block: Блок
         massSelectClear: Очистить конвейеры
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Показывать подсказку фигуры на выходе
 about:
     title: Об игре
     body: >-
@@ -1259,19 +1257,19 @@ puzzleMenu:
     dlcHint: Уже купили DLC? Проверьте, что оно активировано, нажав правый клик на
         shapez.io в своей библиотеке, и далее Свойства > Доп. Контент
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Поиск
+        placeholder: Введите название головоломки или имя автора
+        includeCompleted: Показывать завершённые
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Любая сложность
+            easy: Легко
+            medium: Средне
+            hard: Сложно
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Любая длительность
+            short: Короткие (< 2 мин.)
+            medium: Средние
+            long: Долгие (> 10 мин.)
 backendErrors:
     ratelimit: Вы слишком часто выполняете свои действия. Подождите немного.
     invalid-api-key: Не удалось связаться с сервером, попробуйте
