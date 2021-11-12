@@ -72,8 +72,8 @@ mainMenu:
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
     savegameUnnamed: Без названия
-    puzzleMode: Puzzle Mode
-    back: Back
+    puzzleMode: Режим головоломок
+    back: Назад
     puzzleDlcText: Вам нравится оптимизировать фабрики и делать их компактнее? В магазине Steam появилось DLC с головоломками для ещё большего веселья.
     puzzleDlcWishlist: Добавляйте в список желаемого!
     puzzleDlcViewNow: Перейти к DLC
