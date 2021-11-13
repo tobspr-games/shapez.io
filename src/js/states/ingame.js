@@ -48,6 +48,9 @@ export class GameCreationPayload {
 
         /** @type {object|undefined} */
         this.gameModeParameters;
+
+        /** @type {number} */
+        this.seed;
     }
 }
 
@@ -72,6 +75,9 @@ export class InGameState extends GameState {
 
         /** @type {Savegame} */
         this.savegame = null;
+
+        /** @type {number} */
+        this.seed = null;
 
         this.boundInputFilter = this.filterInput.bind(this);
 
