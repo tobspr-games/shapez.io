@@ -375,6 +375,7 @@ export class InGameState extends GameState {
         this.creationPayload = payload;
         this.savegame = payload.savegame;
         this.gameModeId = payload.gameModeId;
+        this.seed = payload.seed;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
         this.loadingOverlay.showBasic();
