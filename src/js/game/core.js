@@ -173,7 +173,14 @@ export class GameCore {
     initNewGame({ seed }) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
-        this.root.map.seed = randomInt(0, 100000);
+
+        if (seed === undefined) {
+            this.root.map.seed = randomInt(0, 100000);
+        } else {
+            this.root.map.seed = seed;
+        }
+
+        logger.log("this.root.map.seed: ", this.root.map.seed);
 
         if (!this.root.gameMode.hasHub()) {
             return;
