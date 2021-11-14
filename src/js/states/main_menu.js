@@ -12,6 +12,7 @@ import {
     makeButton,
     makeButtonElement,
     makeDiv,
+    randomInt,
     removeAllChildren,
     startFileChoose,
     waitNextFrame,
@@ -672,14 +673,53 @@ export class MainMenuState extends GameState {
             return;
         }
 
-        this.app.analytics.trackUiClick("startgame");
-        this.app.adProvider.showVideoAd().then(() => {
-            const savegame = this.app.savegameMgr.createNewSavegame();
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
 
-            this.moveToState("InGameState", {
-                savegame,
+        const nameInput = new FormElementInput({
+            id: "nameInput",
+            // label: T.dialogs.newSavegame.nameInputLabel,
+            label: "Name:",
+            placeholder: "",
+            defaultValue: "",
+            validator: val => val.match(regex) && trim(val).length > 0,
+        });
+
+        const seedInput = new FormElementInput({
+            id: "seedInput",
+            // label: T.dialogs.newSavegame.seedInputLabel,
+            label: "Seed:",
+            placeholder: "",
+            defaultValue: randomInt(0, 100000).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100000,
+        });
+
+        const dialog = new DialogWithForm({
+            app: this.app,
+            // title: T.dialogs.newSavegame.title,
+            // desc: T.dialogs.newSavegame.desc,
+            title: "New Game Options",
+            desc: "Configure your new savegame",
+            formElements: [nameInput, seedInput],
+            buttons: ["ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        dialog.buttonSignals.ok.add(() => {
+            this.app.analytics.trackUiClick("startgame");
+            this.app.adProvider.showVideoAd().then(async () => {
+                const savegame = this.app.savegameMgr.createNewSavegame();
+                const savegameMetadata = this.app.savegameMgr.getGameMetaDataByInternalId(
+                    savegame.internalId
+                );
+                savegameMetadata.name = trim(nameInput.getValue());
+                await this.app.savegameMgr.writeAsync();
+
+                this.moveToState("InGameState", {
+                    savegame,
+                    seed: Number(seedInput.getValue()),
+                });
+                this.app.analytics.trackUiClick("startgame_adcomplete");
             });
-            this.app.analytics.trackUiClick("startgame_adcomplete");
         });
     }
 
