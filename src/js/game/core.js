@@ -174,11 +174,7 @@ export class GameCore {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
 
-        if (seed === undefined) {
-            this.root.map.seed = randomInt(0, 100000);
-        } else {
-            this.root.map.seed = seed;
-        }
+        this.root.map.seed = seed;
 
         logger.log("this.root.map.seed: ", this.root.map.seed);
 
