@@ -256,7 +256,7 @@ export class InGameState extends GameState {
      */
     stage4aInitEmptyGame() {
         if (this.switchStage(stages.s4_A_initEmptyGame)) {
-            this.core.initNewGame();
+            this.core.initNewGame({ seed: this.seed });
             this.stage5FirstUpdate();
         }
     }
