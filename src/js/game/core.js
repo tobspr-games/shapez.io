@@ -173,10 +173,9 @@ export class GameCore {
     initNewGame({ seed }) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
-
         this.root.map.seed = seed;
 
-        logger.log("this.root.map.seed: ", this.root.map.seed);
+        logger.log("Initializing newGame with seed: ", this.root.map.seed);
 
         if (!this.root.gameMode.hasHub()) {
             return;
@@ -214,6 +213,7 @@ export class GameCore {
             return false;
         }
         this.root.gameIsFresh = false;
+        logger.log("Initializing existingGame with seed: ", this.root.map.seed);
         return true;
     }
 
