@@ -47,6 +47,51 @@ export class FormElement {
     }
 }
 
+export class FormElementDetails extends FormElement {
+    /**
+     *
+     * @param {object} param0
+     * @param {string} param0.id
+     * @param {string} param0.label
+     * @param {Array<FormElement>} param0.formElements
+     */
+    constructor({ id, label, formElements }) {
+        super(id, label);
+        this.formElements = formElements;
+
+        this.element = null;
+    }
+
+    getHtml() {
+        return `<div class="formElement detailsFormElem"><details class='object'>
+            ${this.label ? `<summary>${this.label}</summary>` : ""}
+            <div>
+                ${this.formElements.map(e => e.getHtml()).join("")}
+            </div></details></div>`;
+    }
+
+    bindEvents(parent, clickTrackers) {
+        this.element = this.getFormElement(parent);
+
+        for (let i = 0; i < this.formElements.length; ++i) {
+            const elem = this.formElements[i];
+            elem.bindEvents(parent, clickTrackers);
+            elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
+        }
+    }
+
+    getValue() {
+        let formElementValues = {};
+        for (let i = 0; i < this.formElements.length; ++i) {
+            const elem = this.formElements[i];
+            formElementValues[elem.id] = elem.getValue();
+        }
+        return formElementValues;
+    }
+
+    focus(parent) {}
+}
+
 export class FormElementInput extends FormElement {
     constructor({ id, label = null, placeholder, defaultValue = "", inputType = "text", validator = null }) {
         super(id, label);
