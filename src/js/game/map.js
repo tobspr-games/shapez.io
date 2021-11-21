@@ -15,6 +15,7 @@ export class BaseMap extends BasicSerializableObject {
     static getSchema() {
         return {
             seed: types.uint,
+            allowNonPrimaryColors: types.bool,
         };
     }
 
@@ -27,6 +28,7 @@ export class BaseMap extends BasicSerializableObject {
         this.root = root;
 
         this.seed = 0;
+        this.allowNonPrimaryColors = false;
 
         /**
          * Mapping of 'X|Y' to chunk
