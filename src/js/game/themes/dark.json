@@ -28,7 +28,10 @@
             "shape": "#5d5f6a",
             "red": "#854f56",
             "green": "#667964",
-            "blue": "#5e7ca4"
+            "blue": "#5e7ca4",
+            "purple": "#8776bc",
+            "yellow": "#cab57d",
+            "cyan": "#00b5b8"
         },
         "chunkOverview": {
             "empty": "#444856",
