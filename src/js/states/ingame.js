@@ -51,6 +51,9 @@ export class GameCreationPayload {
 
         /** @type {number} */
         this.seed;
+
+        /** @type {boolean} */
+        this.allowNonPrimaryColors;
     }
 }
 
@@ -78,6 +81,9 @@ export class InGameState extends GameState {
 
         /** @type {number} */
         this.seed = null;
+
+        /** @type {boolean} */
+        this.allowNonPrimaryColors = null;
 
         this.boundInputFilter = this.filterInput.bind(this);
 
@@ -256,7 +262,7 @@ export class InGameState extends GameState {
      */
     stage4aInitEmptyGame() {
         if (this.switchStage(stages.s4_A_initEmptyGame)) {
-            this.core.initNewGame({ seed: this.seed });
+            this.core.initNewGame({ seed: this.seed, allowNonPrimaryColors: this.allowNonPrimaryColors });
             this.stage5FirstUpdate();
         }
     }
@@ -376,6 +382,7 @@ export class InGameState extends GameState {
         this.savegame = payload.savegame;
         this.gameModeId = payload.gameModeId;
         this.seed = payload.seed;
+        this.allowNonPrimaryColors = payload.allowNonPrimaryColors;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
         this.loadingOverlay.showBasic();
