@@ -169,11 +169,13 @@ export class GameCore {
      *
      * @param {object} param1
      * @param {number} param1.seed
+     * @param {boolean} param1.allowNonPrimaryColors
      * */
-    initNewGame({ seed }) {
+    initNewGame({ seed, allowNonPrimaryColors }) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = seed;
+        this.root.map.allowNonPrimaryColors = allowNonPrimaryColors;
 
         logger.log("Initializing newGame with seed: ", this.root.map.seed);
 
