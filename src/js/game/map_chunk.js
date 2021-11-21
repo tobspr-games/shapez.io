@@ -168,6 +168,11 @@ export class MapChunk {
         let availableColors = [enumColors.red, enumColors.green];
         if (distanceToOriginInChunks > 2) {
             availableColors.push(enumColors.blue);
+            if (this.root.map.allowNonPrimaryColors) {
+                availableColors.push(enumColors.yellow);
+                availableColors.push(enumColors.purple);
+                availableColors.push(enumColors.cyan);
+            }
         }
         this.internalGeneratePatch(rng, colorPatchSize, COLOR_ITEM_SINGLETONS[rng.choice(availableColors)]);
     }
