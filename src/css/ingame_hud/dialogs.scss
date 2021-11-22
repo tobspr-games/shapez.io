@@ -215,7 +215,17 @@
                 }
             }
 
-            > .detailsFormElem {
+            .inline {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                > * {
+                    @include S(margin-right, 7.5px);
+                }
+            }
+
+            .detailsFormElem {
                 > .object {
                     pointer-events: all;
 

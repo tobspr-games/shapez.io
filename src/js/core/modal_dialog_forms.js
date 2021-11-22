@@ -93,12 +93,21 @@ export class FormElementDetails extends FormElement {
 }
 
 export class FormElementInput extends FormElement {
-    constructor({ id, label = null, placeholder, defaultValue = "", inputType = "text", validator = null }) {
+    constructor({
+        id,
+        label = null,
+        placeholder,
+        defaultValue = "",
+        inputType = "text",
+        validator = null,
+        inline = false,
+    }) {
         super(id, label);
         this.placeholder = placeholder;
         this.defaultValue = defaultValue;
         this.inputType = inputType;
         this.validator = validator;
+        this.inline = inline;
 
         this.element = null;
     }
@@ -128,7 +137,7 @@ export class FormElementInput extends FormElement {
         }
 
         return `
-            <div class="formElement input">
+            <div class="formElement input ${this.inline ? "inline" : ""}">
                 ${this.label ? `<label>${this.label}</label>` : ""}
                 <input
                     type="${inputType}"
@@ -188,21 +197,22 @@ export class FormElementInput extends FormElement {
 }
 
 export class FormElementCheckbox extends FormElement {
-    constructor({ id, label, defaultValue = true }) {
+    constructor({ id, label, defaultValue = true, inline = false }) {
         super(id, label);
         this.defaultValue = defaultValue;
         this.value = this.defaultValue;
+        this.inline = inline;
 
         this.element = null;
     }
 
     getHtml() {
         return `
-            <div class="formElement checkBoxFormElem">
+            <div class="formElement checkBoxFormElem ${this.inline ? "inline" : ""}">
             ${this.label ? `<label>${this.label}</label>` : ""}
                 <div class="checkbox ${this.defaultValue ? "checked" : ""}" data-formId='${this.id}'>
-                    <span class="knob"></span >
-                </div >
+                    <span class="knob"></span>
+                </div>
             </div>
         `;
     }
