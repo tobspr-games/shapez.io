@@ -65,7 +65,7 @@ export class FormElementDetails extends FormElement {
     getHtml() {
         return `<div class="formElement detailsFormElem"><details class='object'>
             ${this.label ? `<summary>${this.label}</summary>` : ""}
-            <div>
+            <div class="content">
                 ${this.formElements.map(e => e.getHtml()).join("")}
             </div></details></div>`;
     }
