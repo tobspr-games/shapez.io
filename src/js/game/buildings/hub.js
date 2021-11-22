@@ -5,6 +5,7 @@ import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/it
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
+import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 export class MetaHubBuilding extends MetaBuilding {
     constructor() {
@@ -133,6 +134,53 @@ export class MetaHubBuilding extends MetaBuilding {
                         pos: new Vector(3, 3),
                         directions: [enumDirection.right],
                         filter: "shape",
+                    },
+                ],
+            })
+        );
+
+        entity.addComponent(
+            new BeltUnderlaysComponent({
+                underlays: [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        direction: enumDirection.right,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(0, 3),
+                        direction: enumDirection.top,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(3, 0),
+                        direction: enumDirection.left,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(3, 0),
+                        direction: enumDirection.bottom,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        direction: enumDirection.left,
+                        corner: true,
+                    },
+                    {
+                        pos: new Vector(3, 3),
+                        direction: enumDirection.top,
+                        corner: true,
                     },
                 ],
             })

@@ -29,6 +29,8 @@ const enumUnderlayTypeToClipRect = {
     [enumClippedBeltUnderlayType.full]: FULL_CLIP_RECT,
     [enumClippedBeltUnderlayType.topOnly]: new Rectangle(0, 0, 1, 0.5),
     [enumClippedBeltUnderlayType.bottomOnly]: new Rectangle(0, 0.5, 1, 0.5),
+    [enumClippedBeltUnderlayType.topCorner]: new Rectangle(0, 0, 1, 0.04),
+    [enumClippedBeltUnderlayType.bottomCorner]: new Rectangle(0, 0.96, 1, 0.04),
 };
 
 export class BeltUnderlaysSystem extends GameSystemWithFilter {
@@ -208,9 +210,13 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         if (connectedTop && connectedBottom) {
             flag = enumClippedBeltUnderlayType.full;
         } else if (connectedTop) {
-            flag = enumClippedBeltUnderlayType.topOnly;
+            flag = underlayTile.corner
+                ? enumClippedBeltUnderlayType.topCorner
+                : enumClippedBeltUnderlayType.topOnly;
         } else if (connectedBottom) {
-            flag = enumClippedBeltUnderlayType.bottomOnly;
+            flag = underlayTile.corner
+                ? enumClippedBeltUnderlayType.bottomCorner
+                : enumClippedBeltUnderlayType.bottomOnly;
         }
 
         return (underlayTile.cachedType = flag);

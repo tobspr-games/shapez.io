@@ -197,6 +197,14 @@ export class MetaBalancerBuilding extends MetaBuilding {
 
                 entity.components.BeltUnderlays.underlays = [
                     { pos: new Vector(0, 0), direction: enumDirection.top },
+                    {
+                        pos: new Vector(0, 0),
+                        direction:
+                            variant === enumBalancerVariants.mergerInverse
+                                ? enumDirection.right
+                                : enumDirection.left,
+                        corner: true,
+                    },
                 ];
 
                 break;
@@ -226,6 +234,14 @@ export class MetaBalancerBuilding extends MetaBuilding {
 
                 entity.components.BeltUnderlays.underlays = [
                     { pos: new Vector(0, 0), direction: enumDirection.top },
+                    {
+                        pos: new Vector(0, 0),
+                        direction:
+                            variant === enumBalancerVariants.splitterInverse
+                                ? enumDirection.left
+                                : enumDirection.right,
+                        corner: true,
+                    },
                 ];
 
                 break;

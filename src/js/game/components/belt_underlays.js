@@ -14,6 +14,8 @@ export const enumClippedBeltUnderlayType = {
     full: "full",
     bottomOnly: "bottomOnly",
     topOnly: "topOnly",
+    topCorner: "topCorner",
+    bottomCorner: "bottomCorner",
     none: "none",
 };
 
@@ -21,6 +23,7 @@ export const enumClippedBeltUnderlayType = {
  * @typedef {{
  *   pos: Vector,
  *   direction: enumDirection,
+ *   corner?: boolean,
  *   cachedType?: enumClippedBeltUnderlayType
  * }} BeltUnderlayTile
  */
