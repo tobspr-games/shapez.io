@@ -6,7 +6,7 @@ export class HUDBetaOverlay extends BaseHUDPart {
         this.element = makeDiv(
             parent,
             "ingame_HUD_BetaOverlay",
-            [],
+            this.root.app.restrictionMgr.isLimitedVersion() ? ["demo"] : [],
             "<h2>UNSTABLE BETA VERSION</h2><span>Unfinalized & potential buggy content!</span>"
         );
     }
