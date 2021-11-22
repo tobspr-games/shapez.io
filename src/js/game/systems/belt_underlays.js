@@ -224,6 +224,11 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
     drawChunk(parameters, chunk) {
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+        // SYNC with systems/belt.js:drawChunk!
+        const animationIndex = Math.floor(
+            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
+                globalConfig.itemSpacingOnBelts
+        );
 
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
@@ -275,16 +280,9 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 const y = destY + globalConfig.halfTileSize;
                 const angleRadians = Math.radians(angle);
 
-                // SYNC with systems/belt.js:drawSingleEntity!
-                const animationIndex = Math.floor(
-                    ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                        globalConfig.itemSpacingOnBelts
-                );
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
-                this.underlayBeltSprites[
-                    animationIndex % this.underlayBeltSprites.length
-                ].drawCachedWithClipRect(
+                this.underlayBeltSprites[animationIndex % BELT_ANIM_COUNT].drawCachedWithClipRect(
                     parameters,
                     -globalConfig.halfTileSize,
                     -globalConfig.halfTileSize,
