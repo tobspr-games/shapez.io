@@ -89,7 +89,7 @@ export class FormElementDetails extends FormElement {
         return formElementValues;
     }
 
-    focus(parent) {}
+    focus() {}
 }
 
 export class FormElementInput extends FormElement {
@@ -236,7 +236,7 @@ export class FormElementCheckbox extends FormElement {
         this.element.classList.toggle("checked", this.value);
     }
 
-    focus(parent) {}
+    focus() {}
 }
 
 export class FormElementItemChooser extends FormElement {
