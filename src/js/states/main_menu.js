@@ -682,6 +682,7 @@ export class MainMenuState extends GameState {
             placeholder: "",
             defaultValue: "Unnamed",
             validator: val => val.match(regex) && trim(val).length > 0,
+            inline: true,
         });
 
         const seedInput = new FormElementInput({
@@ -691,13 +692,15 @@ export class MainMenuState extends GameState {
             placeholder: "",
             defaultValue: randomInt(0, 100000).toString(),
             validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100000,
+            inline: true,
         });
 
         const allowColorsCheckbox = new FormElementCheckbox({
             id: "allowColorsCheckbox",
             // @TODO: Add translation (T.dialogs.newSavegame.allowColorsCheckboxLabel)
-            label: "Allow non-primarycolors",
+            label: "Allow non-primarycolors: ",
             defaultValue: false,
+            inline: true,
         });
 
         const advancedContainer = new FormElementDetails({
