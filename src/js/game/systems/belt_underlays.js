@@ -31,6 +31,7 @@ const enumUnderlayTypeToClipRect = {
     [enumClippedBeltUnderlayType.bottomOnly]: new Rectangle(0, 0.5, 1, 0.5),
     [enumClippedBeltUnderlayType.topCorner]: new Rectangle(0, 0, 1, 0.04),
     [enumClippedBeltUnderlayType.bottomCorner]: new Rectangle(0, 0.96, 1, 0.04),
+    [enumClippedBeltUnderlayType.cornerFull]: new Rectangle(0, 0, 0, 0),
 };
 
 export class BeltUnderlaysSystem extends GameSystemWithFilter {
@@ -194,21 +195,36 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         const worldDirectionVector = enumDirectionToVector[worldDirection];
 
         // Figure out if there is anything connected at the top
-        const connectedTop = this.checkIsAcceptorConnected(
+        let connectedTop = this.checkIsAcceptorConnected(
             transformedPos.add(worldDirectionVector),
             enumInvertedDirections[worldDirection]
         );
+        const ejectorComp = entity.components.ItemEjector;
+        if (ejectorComp) {
+            const ejectorSlot = ejectorComp.findMatchingSlot(
+                underlayTile.pos,
+                enumInvertedDirections[underlayTile.direction]
+            );
+            if (!ejectorSlot) connectedTop = false;
+        }
 
         // Figure out if there is anything connected at the bottom
-        const connectedBottom = this.checkIsEjectorConnected(
+        let connectedBottom = this.checkIsEjectorConnected(
             transformedPos.sub(worldDirectionVector),
             worldDirection
         );
+        const acceptorComp = entity.components.ItemAcceptor;
+        if (acceptorComp) {
+            const acceptorSlot = acceptorComp.findMatchingSlot(underlayTile.pos, underlayTile.direction);
+            if (!acceptorSlot) connectedBottom = false;
+        }
 
         let flag = enumClippedBeltUnderlayType.none;
 
         if (connectedTop && connectedBottom) {
-            flag = enumClippedBeltUnderlayType.full;
+            flag = underlayTile.corner
+                ? enumClippedBeltUnderlayType.cornerFull
+                : enumClippedBeltUnderlayType.full;
         } else if (connectedTop) {
             flag = underlayTile.corner
                 ? enumClippedBeltUnderlayType.topCorner
@@ -288,16 +304,39 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 );
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
-                this.underlayBeltSprites[
-                    animationIndex % this.underlayBeltSprites.length
-                ].drawCachedWithClipRect(
-                    parameters,
-                    -globalConfig.halfTileSize,
-                    -globalConfig.halfTileSize,
-                    globalConfig.tileSize,
-                    globalConfig.tileSize,
-                    clipRect
-                );
+                if (underlayType === enumClippedBeltUnderlayType.cornerFull) {
+                    this.underlayBeltSprites[
+                        animationIndex % this.underlayBeltSprites.length
+                    ].drawCachedWithClipRect(
+                        parameters,
+                        -globalConfig.halfTileSize,
+                        -globalConfig.halfTileSize,
+                        globalConfig.tileSize,
+                        globalConfig.tileSize,
+                        enumUnderlayTypeToClipRect[enumClippedBeltUnderlayType.topCorner]
+                    );
+                    this.underlayBeltSprites[
+                        animationIndex % this.underlayBeltSprites.length
+                    ].drawCachedWithClipRect(
+                        parameters,
+                        -globalConfig.halfTileSize,
+                        -globalConfig.halfTileSize,
+                        globalConfig.tileSize,
+                        globalConfig.tileSize,
+                        enumUnderlayTypeToClipRect[enumClippedBeltUnderlayType.bottomCorner]
+                    );
+                } else {
+                    this.underlayBeltSprites[
+                        animationIndex % this.underlayBeltSprites.length
+                    ].drawCachedWithClipRect(
+                        parameters,
+                        -globalConfig.halfTileSize,
+                        -globalConfig.halfTileSize,
+                        globalConfig.tileSize,
+                        globalConfig.tileSize,
+                        clipRect
+                    );
+                }
                 parameters.context.rotate(-angleRadians);
                 parameters.context.translate(-x, -y);
             }

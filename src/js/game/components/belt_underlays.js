@@ -16,6 +16,7 @@ export const enumClippedBeltUnderlayType = {
     topOnly: "topOnly",
     topCorner: "topCorner",
     bottomCorner: "bottomCorner",
+    cornerFull: "cornerFull",
     none: "none",
 };
 

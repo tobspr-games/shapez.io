@@ -1,4 +1,4 @@
-import { enumDirection, enumDirectionToVector, Vector } from "../../core/vector";
+import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { BeltPath } from "../belt_path";
@@ -150,5 +150,34 @@ export class ItemEjectorComponent extends Component {
         slot.item = null;
         slot.progress = 0.0;
         return item;
+    }
+
+    /**
+     * Tries to find a slot which ejects the current item
+     * @param {Vector} targetLocalTile
+     * @param {enumDirection} fromLocalDirection
+     * @returns {ItemEjectorSlot|null}
+     */
+    findMatchingSlot(targetLocalTile, fromLocalDirection) {
+        // We need to invert our direction since the ejector specifies *from* which direction
+        // it ejects items, but the acceptor specifies *into* which direction it accepts items.
+        // E.g.: Acceptor ejects into "right" direction but ejector accepts from "left" direction.
+        const desiredDirection = enumInvertedDirections[fromLocalDirection];
+
+        // Go over all slots and try to find a target slot
+        for (let slotIndex = 0; slotIndex < this.slots.length; ++slotIndex) {
+            const slot = this.slots[slotIndex];
+
+            // Make sure the acceptor slot is on the right position
+            if (!slot.pos.equals(targetLocalTile)) {
+                continue;
+            }
+
+            if (desiredDirection === slot.direction) {
+                return slot;
+            }
+        }
+
+        return null;
     }
 }
