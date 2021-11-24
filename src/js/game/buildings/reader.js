@@ -75,6 +75,7 @@ export class MetaReaderBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        beltLength: 0.5,
                     },
                 ],
             })
@@ -86,6 +87,7 @@ export class MetaReaderBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         direction: enumDirection.top,
+                        beltLength: 0.5,
                     },
                 ],
             })
