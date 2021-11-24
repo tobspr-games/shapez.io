@@ -494,9 +494,9 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        // SYNC with systems/acceptor_belt.js:drawChunk and systems/ejector_belt.js:drawChunk!
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
-        // SYNC with systems/belt_underlays.js:drawChunk!
         // 126 / 42 is the exact animation speed of the png animation
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *

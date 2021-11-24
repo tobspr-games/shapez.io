@@ -8,6 +8,7 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { BELT_ANIM_COUNT } from "./belt";
 
+// nearly identical to systems/acceptor_belt.js
 export class EjectorBeltSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
@@ -25,9 +26,8 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        // Limit speed to avoid belts going backwards
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
         // SYNC with systems/belt.js:drawChunk!
+        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
         const animationIndex = Math.floor(
             ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
                 globalConfig.itemSpacingOnBelts
