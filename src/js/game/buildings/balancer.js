@@ -8,7 +8,6 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
-import { BeltUnderlaysComponent } from "../components/belt_underlays";
 
 /** @enum {string} */
 export const enumBalancerVariants = {
@@ -138,8 +137,6 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 renderFloatingItems: false,
             })
         );
-
-        entity.addComponent(new BeltUnderlaysComponent({ underlays: [] }));
     }
 
     /**
@@ -167,11 +164,6 @@ export class MetaBalancerBuilding extends MetaBuilding {
                     { pos: new Vector(1, 0), direction: enumDirection.top },
                 ]);
 
-                entity.components.BeltUnderlays.underlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(1, 0), direction: enumDirection.top },
-                ];
-
                 break;
             }
             case enumBalancerVariants.merger:
@@ -194,10 +186,6 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(0, 0), direction: enumDirection.top },
                 ]);
-
-                entity.components.BeltUnderlays.underlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                ];
 
                 break;
             }
@@ -223,10 +211,6 @@ export class MetaBalancerBuilding extends MetaBuilding {
                                 : enumDirection.right,
                     },
                 ]);
-
-                entity.components.BeltUnderlays.underlays = [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                ];
 
                 break;
             }

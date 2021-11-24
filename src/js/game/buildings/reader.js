@@ -6,7 +6,6 @@ import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
-import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { generateMatrixRotations } from "../../core/utils";
@@ -96,17 +95,6 @@ export class MetaReaderBuilding extends MetaBuilding {
             new ItemProcessorComponent({
                 processorType: enumItemProcessorTypes.reader,
                 inputsPerCharge: 1,
-            })
-        );
-
-        entity.addComponent(
-            new BeltUnderlaysComponent({
-                underlays: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top,
-                    },
-                ],
             })
         );
 

@@ -2,24 +2,11 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { Rectangle } from "../../core/rectangle";
-import { FULL_CLIP_RECT } from "../../core/sprites";
 import { enumDirectionToAngle } from "../../core/vector";
-import { enumClippedBeltUnderlayType } from "../components/belt_underlays";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { BELT_ANIM_COUNT } from "./belt";
-
-/**
- * Mapping from underlay type to clip rect
- * @type {Object<enumClippedBeltUnderlayType, Rectangle>}
- */
-const enumUnderlayTypeToClipRect = {
-    [enumClippedBeltUnderlayType.none]: null,
-    [enumClippedBeltUnderlayType.full]: FULL_CLIP_RECT,
-    [enumClippedBeltUnderlayType.topOnly]: new Rectangle(0, 0, 1, 0.5),
-    [enumClippedBeltUnderlayType.bottomOnly]: new Rectangle(0, 0.5, 1, 0.5),
-};
 
 export class EjectorBeltSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -83,12 +70,7 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
                 const worldDirection = staticComp.localDirectionToWorld(direction);
                 const angle = enumDirectionToAngle[worldDirection];
 
-                const underlayType = enumClippedBeltUnderlayType.topOnly;
-                const clipRect = enumUnderlayTypeToClipRect[underlayType];
-                if (!clipRect) {
-                    // Empty
-                    continue;
-                }
+                const clipRect = new Rectangle(0, 0, 1, 0.5);
 
                 // Actually draw the sprite
                 const x = destX + globalConfig.halfTileSize;
