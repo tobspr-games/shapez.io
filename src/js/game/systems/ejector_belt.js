@@ -33,6 +33,8 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
                 globalConfig.itemSpacingOnBelts
         );
 
+        const simplifiedBelts = this.root.app.settings.getAllSettings().simplifiedBelts;
+
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
@@ -90,7 +92,9 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
 
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
-                this.underlayBeltSprites[animationIndex % BELT_ANIM_COUNT].drawCachedWithClipRect(
+                this.underlayBeltSprites[
+                    !simplifiedBelts ? animationIndex % BELT_ANIM_COUNT : 0
+                ].drawCachedWithClipRect(
                     parameters,
                     -globalConfig.halfTileSize,
                     -globalConfig.halfTileSize,
