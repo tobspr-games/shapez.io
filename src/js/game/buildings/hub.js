@@ -115,22 +115,12 @@ export class MetaHubBuilding extends MetaBuilding {
                         filter: "shape",
                     },
                     {
-                        pos: new Vector(0, 3),
-                        directions: [enumDirection.left],
-                        filter: "shape",
-                    },
-                    {
                         pos: new Vector(3, 1),
                         directions: [enumDirection.right],
                         filter: "shape",
                     },
                     {
                         pos: new Vector(3, 2),
-                        directions: [enumDirection.right],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 3),
                         directions: [enumDirection.right],
                         filter: "shape",
                     },
