@@ -65,11 +65,13 @@ export class MetaStackerBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        beltLength: 0.5,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
+                        beltLength: 0.5,
                         filter: "shape",
                     },
                 ],

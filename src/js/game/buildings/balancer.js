@@ -8,6 +8,7 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
+import { BELT_BORDER } from "../systems/belt";
 
 /** @enum {string} */
 export const enumBalancerVariants = {
@@ -183,9 +184,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
                                 ? enumDirection.left
                                 : enumDirection.right,
                         ],
-                        // distance to edge of perpendicular belt, ignoring border width
-                        // see generate_belt_sprites.js
-                        beltLength: 23.5 / 192,
+                        beltLength: BELT_BORDER,
                     },
                 ]);
 
@@ -217,7 +216,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
                             variant === enumBalancerVariants.splitterInverse
                                 ? enumDirection.left
                                 : enumDirection.right,
-                        beltLength: 23.5 / 192,
+                        beltLength: BELT_BORDER,
                     },
                 ]);
 

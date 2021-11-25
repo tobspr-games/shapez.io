@@ -17,6 +17,10 @@ import { defaultBuildingVariant } from "../meta_building";
 
 export const BELT_ANIM_COUNT = 14;
 
+// width of the empty space to the side of the belt sprite, ignoring border width, in tiles
+// see generate_belt_sprites.js
+export const BELT_BORDER = 23.5 / 192;
+
 const logger = createLogger("belt");
 
 /**

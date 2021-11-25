@@ -231,6 +231,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.left],
+                        beltLength: 0.5,
                         filter: "shape",
                     },
                     {
