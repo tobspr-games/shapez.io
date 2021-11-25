@@ -2,7 +2,13 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { Rectangle } from "../../core/rectangle";
-import { enumDirectionToAngle, enumInvertedDirections } from "../../core/vector";
+import {
+    enumDirection,
+    enumDirectionToAngle,
+    enumDirectionToVector,
+    enumInvertedDirections,
+    Vector,
+} from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
@@ -18,6 +24,50 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
         for (let i = 0; i < BELT_ANIM_COUNT; ++i) {
             this.underlayBeltSprites.push(Loader.getSprite("sprites/belt/built/forward_" + i + ".png"));
         }
+    }
+
+    /**
+     * Checks if a given tile is connected and has an ejector
+     * @param {Vector} tile
+     * @param {enumDirection} toDirection
+     * @returns {boolean}
+     */
+    checkIsEjectorConnected(tile, toDirection) {
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
+        if (!contents) {
+            return false;
+        }
+
+        const staticComp = contents.components.StaticMapEntity;
+
+        // Check if its a belt, since then its simple
+        const beltComp = contents.components.Belt;
+        if (beltComp) {
+            return staticComp.localDirectionToWorld(beltComp.direction) === toDirection;
+        }
+
+        // Check for an ejector
+        const ejectorComp = contents.components.ItemEjector;
+        if (ejectorComp) {
+            // Check each slot to see if its connected
+            for (let i = 0; i < ejectorComp.slots.length; ++i) {
+                const slot = ejectorComp.slots[i];
+                const slotTile = staticComp.localTileToWorld(slot.pos);
+
+                // Step 1: Check if the tile matches
+                if (!slotTile.equals(tile)) {
+                    continue;
+                }
+
+                // Step 2: Check if the direction matches
+                const slotDirection = staticComp.localDirectionToWorld(slot.direction);
+                if (slotDirection === toDirection) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -76,8 +126,20 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
                     const direction = directions[j];
 
                     // Extract direction and angle
-                    const worldDirection = staticComp.localDirectionToWorld(direction);
-                    const angle = enumDirectionToAngle[enumInvertedDirections[worldDirection]];
+                    const worldDirection =
+                        enumInvertedDirections[staticComp.localDirectionToWorld(direction)];
+                    const worldDirectionVector = enumDirectionToVector[worldDirection];
+                    const angle = enumDirectionToAngle[worldDirection];
+
+                    // check if connected
+                    if (
+                        !this.checkIsEjectorConnected(
+                            transformedPos.sub(worldDirectionVector),
+                            worldDirection
+                        )
+                    ) {
+                        continue;
+                    }
 
                     const clipRect = new Rectangle(0, 1 - beltLength, 1, beltLength);
 
