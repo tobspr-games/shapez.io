@@ -44,10 +44,15 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
             const staticComp = entity.components.StaticMapEntity;
             for (let i = 0; i < ejectorComp.slots.length; ++i) {
                 // Extract underlay parameters
-                const { pos, direction, beltLength } = ejectorComp.slots[i];
+                const { pos, direction, beltLength, cachedTargetEntity } = ejectorComp.slots[i];
 
                 // skips both missing and 0 belt lengths
                 if (!beltLength) {
+                    continue;
+                }
+
+                // check if connected
+                if (!cachedTargetEntity) {
                     continue;
                 }
 
