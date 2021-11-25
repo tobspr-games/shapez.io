@@ -85,6 +85,26 @@ export class MetaHubBuilding extends MetaBuilding {
                         filter: "shape",
                     },
                     {
+                        pos: new Vector(0, 1),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 1),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(0, 2),
+                        directions: [enumDirection.left],
+                        filter: "shape",
+                    },
+                    {
+                        pos: new Vector(3, 2),
+                        directions: [enumDirection.right],
+                        filter: "shape",
+                    },
+                    {
                         pos: new Vector(0, 3),
                         directions: [enumDirection.bottom, enumDirection.left],
                         filter: "shape",
@@ -102,26 +122,6 @@ export class MetaHubBuilding extends MetaBuilding {
                     {
                         pos: new Vector(3, 3),
                         directions: [enumDirection.bottom, enumDirection.right],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 1),
-                        directions: [enumDirection.left],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 2),
-                        directions: [enumDirection.left],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 1),
-                        directions: [enumDirection.right],
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 2),
-                        directions: [enumDirection.right],
                         filter: "shape",
                     },
                 ],
