@@ -43,13 +43,14 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
 
             const staticComp = entity.components.StaticMapEntity;
             for (let i = 0; i < acceptorComp.slots.length; ++i) {
+                // Extract underlay parameters
+                const { pos, directions, beltLength } = acceptorComp.slots[i];
+
                 // skips both missing and 0 belt lengths
-                if (!acceptorComp.slots[i].beltLength) {
+                if (!beltLength) {
                     continue;
                 }
 
-                // Extract underlay parameters
-                const { pos, directions, beltLength } = acceptorComp.slots[i];
                 const transformedPos = staticComp.localTileToWorld(pos);
                 const destX = transformedPos.x * globalConfig.tileSize;
                 const destY = transformedPos.y * globalConfig.tileSize;
