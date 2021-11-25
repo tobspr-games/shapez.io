@@ -496,16 +496,42 @@ export class BeltSystem extends GameSystemWithFilter {
      * Draws a given chunk
      * @param {DrawParameters} parameters
      * @param {MapChunkView} chunk
+     * @param {object} param0
+     * @param {number} param0.animationIndex
+     * @param {boolean} param0.simplifiedBelts
+     * @param {BeltPath} param0.hoveredBeltPath
+     *
+     */
+    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts, hoveredBeltPath }) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            if (entity.components.Belt) {
+                const { direction, assignedPath } = entity.components.Belt;
+                const sprite = this.beltAnimations[direction][
+                    !simplifiedBelts || assignedPath === hoveredBeltPath ? animationIndex : 0
+                ];
+
+                // Culling happens within the static map entity component
+                entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite, 0);
+            }
+        }
+    }
+
+    /**
+     * Draws a given chunk, including acceptor/ejector belts
+     * @param {DrawParameters} parameters
+     * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
-        // SYNC with systems/acceptor_belt.js:drawChunk and systems/ejector_belt.js:drawChunk!
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
         // 126 / 42 is the exact animation speed of the png animation
-        const animationIndex = Math.floor(
-            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
-        );
+        const animationIndex =
+            Math.floor(
+                ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
+                    globalConfig.itemSpacingOnBelts
+            ) % BELT_ANIM_COUNT;
 
         const simplifiedBelts = this.root.app.settings.getAllSettings().simplifiedBelts;
 
@@ -522,21 +548,15 @@ export class BeltSystem extends GameSystemWithFilter {
             }
         }
 
-        const contents = chunk.containedEntitiesByLayer.regular;
-        for (let i = 0; i < contents.length; ++i) {
-            const entity = contents[i];
-            if (entity.components.Belt) {
-                const { direction, assignedPath } = entity.components.Belt;
-                const sprite = this.beltAnimations[direction][
-                    !simplifiedBelts || assignedPath === hoveredBeltPath
-                        ? animationIndex % BELT_ANIM_COUNT
-                        : 0
-                ];
-
-                // Culling happens within the static map entity component
-                entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite, 0);
-            }
-        }
+        this.internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts, hoveredBeltPath });
+        this.root.systemMgr.systems.acceptorBelt.internalDrawChunk(parameters, chunk, {
+            animationIndex,
+            simplifiedBelts,
+        });
+        this.root.systemMgr.systems.ejectorBelt.internalDrawChunk(parameters, chunk, {
+            animationIndex,
+            simplifiedBelts,
+        });
     }
 
     /**

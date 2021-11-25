@@ -50,8 +50,6 @@ export class MapChunkView extends MapChunk {
             systems.mapResources.drawChunk(parameters, this);
         }
 
-        systems.acceptorBelt.drawChunk(parameters, this);
-        systems.ejectorBelt.drawChunk(parameters, this);
         systems.belt.drawChunk(parameters, this);
     }
 

@@ -74,17 +74,11 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
      * Draws a given chunk
      * @param {DrawParameters} parameters
      * @param {MapChunkView} chunk
+     * @param {object} param0
+     * @param {number} param0.animationIndex
+     * @param {boolean} param0.simplifiedBelts
      */
-    drawChunk(parameters, chunk) {
-        // SYNC with systems/belt.js:drawChunk!
-        const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
-        const animationIndex = Math.floor(
-            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
-        );
-
-        const simplifiedBelts = this.root.app.settings.getAllSettings().simplifiedBelts;
-
+    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts }) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
