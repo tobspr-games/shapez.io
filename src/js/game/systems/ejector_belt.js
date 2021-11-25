@@ -3,6 +3,7 @@ import { DrawParameters } from "../../core/draw_parameters";
 import { Loader } from "../../core/loader";
 import { Rectangle } from "../../core/rectangle";
 import { enumDirectionToAngle } from "../../core/vector";
+import { BeltPath } from "../belt_path";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
@@ -27,8 +28,9 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
      * @param {object} param0
      * @param {number} param0.animationIndex
      * @param {boolean} param0.simplifiedBelts
+     * @param {BeltPath} param0.hoveredBeltPath
      */
-    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts }) {
+    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts, hoveredBeltPath }) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
@@ -40,7 +42,9 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
             const staticComp = entity.components.StaticMapEntity;
             for (let i = 0; i < ejectorComp.slots.length; ++i) {
                 // Extract underlay parameters
-                const { pos, direction, beltLength, cachedTargetEntity } = ejectorComp.slots[i];
+                const { pos, direction, beltLength, cachedTargetEntity, cachedBeltPath } = ejectorComp.slots[
+                    i
+                ];
 
                 // skips both missing and 0 belt lengths
                 if (!beltLength) {
@@ -87,7 +91,9 @@ export class EjectorBeltSystem extends GameSystemWithFilter {
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
                 this.underlayBeltSprites[
-                    !simplifiedBelts ? animationIndex % BELT_ANIM_COUNT : 0
+                    !simplifiedBelts || (cachedBeltPath && cachedBeltPath === hoveredBeltPath)
+                        ? animationIndex % BELT_ANIM_COUNT
+                        : 0
                 ].drawCachedWithClipRect(
                     parameters,
                     -globalConfig.halfTileSize,
