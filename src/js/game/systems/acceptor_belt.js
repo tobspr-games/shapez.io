@@ -9,7 +9,9 @@ import {
     enumInvertedDirections,
     Vector,
 } from "../../core/vector";
+import { BeltPath } from "../belt_path";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { BELT_ANIM_COUNT } from "./belt";
@@ -27,15 +29,18 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
     }
 
     /**
-     * Checks if a given tile is connected and has an ejector
-     * @param {Vector} tile
+     * Gets the adjacent entity that ejects to a tile
+     * @param {Vector} toTile
      * @param {enumDirection} toDirection
-     * @returns {boolean}
+     * @returns {Entity}
      */
-    checkIsEjectorConnected(tile, toDirection) {
+    getSourceEntity(toTile, toDirection) {
+        const toDirectionVector = enumDirectionToVector[toDirection];
+        const tile = toTile.sub(toDirectionVector);
+
         const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
         if (!contents) {
-            return false;
+            return null;
         }
 
         const staticComp = contents.components.StaticMapEntity;
@@ -43,7 +48,7 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
         // Check if its a belt, since then its simple
         const beltComp = contents.components.Belt;
         if (beltComp) {
-            return staticComp.localDirectionToWorld(beltComp.direction) === toDirection;
+            return staticComp.localDirectionToWorld(beltComp.direction) === toDirection ? contents : null;
         }
 
         // Check for an ejector
@@ -62,12 +67,12 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
                 // Step 2: Check if the direction matches
                 const slotDirection = staticComp.localDirectionToWorld(slot.direction);
                 if (slotDirection === toDirection) {
-                    return true;
+                    return contents;
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -77,8 +82,9 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
      * @param {object} param0
      * @param {number} param0.animationIndex
      * @param {boolean} param0.simplifiedBelts
+     * @param {BeltPath} param0.hoveredBeltPath
      */
-    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts }) {
+    internalDrawChunk(parameters, chunk, { animationIndex, simplifiedBelts, hoveredBeltPath }) {
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
             const entity = contents[i];
@@ -128,14 +134,13 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
                     const angle = enumDirectionToAngle[worldDirection];
 
                     // check if connected
-                    if (
-                        !this.checkIsEjectorConnected(
-                            transformedPos.sub(worldDirectionVector),
-                            worldDirection
-                        )
-                    ) {
+                    const sourceEntity = this.getSourceEntity(transformedPos, worldDirection);
+                    if (!sourceEntity) {
                         continue;
                     }
+
+                    const sourceBeltComp = sourceEntity.components.Belt;
+                    const sourceBeltPath = sourceBeltComp ? sourceBeltComp.assignedPath : null;
 
                     const clipRect = new Rectangle(0, 1 - beltLength, 1, beltLength);
 
@@ -147,7 +152,9 @@ export class AcceptorBeltSystem extends GameSystemWithFilter {
                     parameters.context.translate(x, y);
                     parameters.context.rotate(angleRadians);
                     this.underlayBeltSprites[
-                        !simplifiedBelts ? animationIndex % BELT_ANIM_COUNT : 0
+                        !simplifiedBelts || (sourceBeltPath && sourceBeltPath === hoveredBeltPath)
+                            ? animationIndex % BELT_ANIM_COUNT
+                            : 0
                     ].drawCachedWithClipRect(
                         parameters,
                         -globalConfig.halfTileSize,

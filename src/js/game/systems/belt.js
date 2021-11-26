@@ -552,6 +552,7 @@ export class BeltSystem extends GameSystemWithFilter {
         this.root.systemMgr.systems.acceptorBelt.internalDrawChunk(parameters, chunk, {
             animationIndex,
             simplifiedBelts,
+            hoveredBeltPath,
         });
         this.root.systemMgr.systems.ejectorBelt.internalDrawChunk(parameters, chunk, {
             animationIndex,
