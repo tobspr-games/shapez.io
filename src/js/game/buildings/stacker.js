@@ -7,6 +7,7 @@ import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/it
 import { Entity } from "../entity";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
+import { BELT_BORDER } from "../systems/belt";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaStackerBuilding extends MetaBuilding {
@@ -65,11 +66,13 @@ export class MetaStackerBuilding extends MetaBuilding {
                     {
                         pos: new Vector(0, 0),
                         directions: [enumDirection.bottom],
+                        beltLength: BELT_BORDER,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
                         directions: [enumDirection.bottom],
+                        beltLength: BELT_BORDER,
                         filter: "shape",
                     },
                 ],

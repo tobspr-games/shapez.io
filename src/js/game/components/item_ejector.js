@@ -10,6 +10,7 @@ import { typeItemSingleton } from "../item_resolver";
  * @typedef {{
  *    pos: Vector,
  *    direction: enumDirection,
+ *    beltLength?: number,
  *    item: BaseItem,
  *    lastItem: BaseItem,
  *    progress: number?,
@@ -39,7 +40,7 @@ export class ItemEjectorComponent extends Component {
     /**
      *
      * @param {object} param0
-     * @param {Array<{pos: Vector, direction: enumDirection }>=} param0.slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection, beltLength?: number }>=} param0.slots The slots to eject on
      * @param {boolean=} param0.renderFloatingItems Whether to render items even if they are not connected
      */
     constructor({ slots = [], renderFloatingItems = true }) {
@@ -58,7 +59,7 @@ export class ItemEjectorComponent extends Component {
     }
 
     /**
-     * @param {Array<{pos: Vector, direction: enumDirection }>} slots The slots to eject on
+     * @param {Array<{pos: Vector, direction: enumDirection, beltLength?: number }>} slots The slots to eject on
      */
     setSlots(slots) {
         /** @type {Array<ItemEjectorSlot>} */
@@ -68,6 +69,7 @@ export class ItemEjectorComponent extends Component {
             this.slots.push({
                 pos: slot.pos,
                 direction: slot.direction,
+                beltLength: slot.beltLength,
                 item: null,
                 lastItem: null,
                 progress: 0,

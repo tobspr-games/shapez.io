@@ -6,6 +6,7 @@ import { Component } from "../component";
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
+ * beltLength?: number,
  * filter?: ItemType
  * }} ItemAcceptorSlot */
 
@@ -20,6 +21,7 @@ import { Component } from "../component";
 /** @typedef {{
  * pos: Vector,
  * directions: enumDirection[],
+ * beltLength?: number,
  * filter?: ItemType
  * }} ItemAcceptorSlotConfig */
 
@@ -65,6 +67,7 @@ export class ItemAcceptorComponent extends Component {
             this.slots.push({
                 pos: slot.pos,
                 directions: slot.directions,
+                beltLength: slot.beltLength,
 
                 // Which type of item to accept (shape | color | all) @see ItemType
                 filter: slot.filter,

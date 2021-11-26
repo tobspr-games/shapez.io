@@ -9,7 +9,6 @@ import { UndergroundBeltComponent } from "./components/underground_belt";
 import { HubComponent } from "./components/hub";
 import { StorageComponent } from "./components/storage";
 import { WiredPinsComponent } from "./components/wired_pins";
-import { BeltUnderlaysComponent } from "./components/belt_underlays";
 import { WireComponent } from "./components/wire";
 import { ConstantSignalComponent } from "./components/constant_signal";
 import { LogicGateComponent } from "./components/logic_gate";
@@ -32,7 +31,6 @@ export function initComponentRegistry() {
     gComponentRegistry.register(HubComponent);
     gComponentRegistry.register(StorageComponent);
     gComponentRegistry.register(WiredPinsComponent);
-    gComponentRegistry.register(BeltUnderlaysComponent);
     gComponentRegistry.register(WireComponent);
     gComponentRegistry.register(ConstantSignalComponent);
     gComponentRegistry.register(LogicGateComponent);

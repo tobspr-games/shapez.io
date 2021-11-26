@@ -1,6 +1,5 @@
 /* typehints:start */
 import { BeltComponent } from "./components/belt";
-import { BeltUnderlaysComponent } from "./components/belt_underlays";
 import { HubComponent } from "./components/hub";
 import { ItemAcceptorComponent } from "./components/item_acceptor";
 import { ItemEjectorComponent } from "./components/item_ejector";
@@ -59,9 +58,6 @@ export class EntityComponentStorage {
 
         /** @type {WiredPinsComponent} */
         this.WiredPins;
-
-        /** @type {BeltUnderlaysComponent} */
-        this.BeltUnderlays;
 
         /** @type {WireComponent} */
         this.Wire;

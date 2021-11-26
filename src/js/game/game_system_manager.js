@@ -14,7 +14,6 @@ import { StaticMapEntitySystem } from "./systems/static_map_entity";
 import { ItemAcceptorSystem } from "./systems/item_acceptor";
 import { StorageSystem } from "./systems/storage";
 import { WiredPinsSystem } from "./systems/wired_pins";
-import { BeltUnderlaysSystem } from "./systems/belt_underlays";
 import { WireSystem } from "./systems/wire";
 import { ConstantSignalSystem } from "./systems/constant_signal";
 import { LogicGateSystem } from "./systems/logic_gate";
@@ -27,6 +26,8 @@ import { ItemProducerSystem } from "./systems/item_producer";
 import { ConstantProducerSystem } from "./systems/constant_producer";
 import { GoalAcceptorSystem } from "./systems/goal_acceptor";
 import { ZoneSystem } from "./systems/zone";
+import { AcceptorBeltSystem } from "./systems/acceptor_belt";
+import { EjectorBeltSystem } from "./systems/ejector_belt";
 
 const logger = createLogger("game_system_manager");
 
@@ -73,8 +74,11 @@ export class GameSystemManager {
             /** @type {WiredPinsSystem} */
             wiredPins: null,
 
-            /** @type {BeltUnderlaysSystem} */
-            beltUnderlays: null,
+            /** @type {AcceptorBeltSystem} */
+            acceptorBelt: null,
+
+            /** @type {EjectorBeltSystem} */
+            ejectorBelt: null,
 
             /** @type {WireSystem} */
             wire: null,
@@ -160,7 +164,9 @@ export class GameSystemManager {
 
         add("wiredPins", WiredPinsSystem);
 
-        add("beltUnderlays", BeltUnderlaysSystem);
+        add("acceptorBelt", AcceptorBeltSystem);
+
+        add("ejectorBelt", EjectorBeltSystem);
 
         add("constantSignal", ConstantSignalSystem);
 
