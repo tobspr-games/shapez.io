@@ -203,6 +203,8 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
                 enumInvertedDirections[underlayTile.direction]
             );
             if (!ejectorSlot) connectedTop = false;
+        } else {
+            connectedTop = false;
         }
 
         // Figure out if there is anything connected at the bottom
@@ -214,6 +216,8 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         if (acceptorComp) {
             const acceptorSlot = acceptorComp.findMatchingSlot(underlayTile.pos, underlayTile.direction);
             if (!acceptorSlot) connectedBottom = false;
+        } else {
+            connectedBottom = false;
         }
 
         let flag = enumClippedBeltUnderlayType.none;
