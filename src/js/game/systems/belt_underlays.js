@@ -192,32 +192,34 @@ export class BeltUnderlaysSystem extends GameSystemWithFilter {
         const worldDirectionVector = enumDirectionToVector[worldDirection];
 
         // Figure out if there is anything connected at the top
-        let connectedTop = this.checkIsAcceptorConnected(
-            transformedPos.add(worldDirectionVector),
-            enumInvertedDirections[worldDirection]
-        );
+        let connectedTop = false;
         const ejectorComp = entity.components.ItemEjector;
         if (ejectorComp) {
             const ejectorSlot = ejectorComp.findMatchingSlot(
                 underlayTile.pos,
                 enumInvertedDirections[underlayTile.direction]
             );
-            if (!ejectorSlot) connectedTop = false;
-        } else {
-            connectedTop = false;
+
+            if (ejectorSlot) {
+                connectedTop = this.checkIsAcceptorConnected(
+                    transformedPos.add(worldDirectionVector),
+                    enumInvertedDirections[worldDirection]
+                );
+            }
         }
 
         // Figure out if there is anything connected at the bottom
-        let connectedBottom = this.checkIsEjectorConnected(
-            transformedPos.sub(worldDirectionVector),
-            worldDirection
-        );
+        let connectedBottom = false;
         const acceptorComp = entity.components.ItemAcceptor;
         if (acceptorComp) {
             const acceptorSlot = acceptorComp.findMatchingSlot(underlayTile.pos, underlayTile.direction);
-            if (!acceptorSlot) connectedBottom = false;
-        } else {
-            connectedBottom = false;
+
+            if (acceptorSlot) {
+                connectedBottom = this.checkIsEjectorConnected(
+                    transformedPos.sub(worldDirectionVector),
+                    worldDirection
+                );
+            }
         }
 
         let flag = enumClippedBeltUnderlayType.none;
