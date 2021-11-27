@@ -166,11 +166,22 @@ export class GameCore {
     /**
      * Initializes a new game, this means creating a new map and centering on the
      * playerbase
+     *
+     * @param {object} param1
+     * @param {number} param1.seed
+     * @param {boolean} param1.allowNonPrimaryColors
+     * @param {number} param1.fullShapePercentage
+     * @param {number} param1.wierdShapePercentage
      * */
-    initNewGame() {
+    initNewGame({ seed, allowNonPrimaryColors, fullShapePercentage, wierdShapePercentage }) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
-        this.root.map.seed = randomInt(0, 100000);
+        this.root.map.seed = seed;
+        this.root.map.allowNonPrimaryColors = allowNonPrimaryColors;
+        this.root.map.fullShapePercentage = fullShapePercentage;
+        this.root.map.wierdShapePercentage = wierdShapePercentage;
+
+        logger.log("Initializing newGame with seed: ", this.root.map.seed);
 
         if (!this.root.gameMode.hasHub()) {
             return;
@@ -208,6 +219,7 @@ export class GameCore {
             return false;
         }
         this.root.gameIsFresh = false;
+        logger.log("Initializing existingGame with seed: ", this.root.map.seed);
         return true;
     }
 

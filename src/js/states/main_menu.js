@@ -3,7 +3,7 @@ import { cachebust } from "../core/cachebust";
 import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
 import { DialogWithForm } from "../core/modal_dialog_elements";
-import { FormElementInput } from "../core/modal_dialog_forms";
+import { FormElementCheckbox, FormElementDetails, FormElementInput } from "../core/modal_dialog_forms";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
     formatSecondsToTimeAgo,
@@ -12,6 +12,7 @@ import {
     makeButton,
     makeButtonElement,
     makeDiv,
+    randomInt,
     removeAllChildren,
     startFileChoose,
     waitNextFrame,
@@ -672,14 +673,96 @@ export class MainMenuState extends GameState {
             return;
         }
 
-        this.app.analytics.trackUiClick("startgame");
-        this.app.adProvider.showVideoAd().then(() => {
-            const savegame = this.app.savegameMgr.createNewSavegame();
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
 
-            this.moveToState("InGameState", {
-                savegame,
+        const nameInput = new FormElementInput({
+            id: "nameInput",
+            // @TODO: Add translation (T.dialogs.newSavegame.nameInputLabel)
+            label: "Name:",
+            placeholder: "",
+            defaultValue: "Unnamed",
+            validator: val => val.match(regex) && trim(val).length > 0,
+            inline: true,
+        });
+
+        const seedInput = new FormElementInput({
+            id: "seedInput",
+            // @TODO: Add translation (T.dialogs.newSavegame.seedInputLabel)
+            label: "Seed:",
+            placeholder: "",
+            defaultValue: randomInt(0, 100000).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100000,
+            inline: true,
+        });
+
+        const allowColorsCheckbox = new FormElementCheckbox({
+            id: "allowColorsCheckbox",
+            // @TODO: Add translation (T.dialogs.newSavegame.allowColorsCheckboxLabel)
+            label: "Allow non-primarycolors: ",
+            defaultValue: false,
+            inline: true,
+        });
+
+        const fullShapePercentageInput = new FormElementInput({
+            id: "fullShapePercentageInput",
+            label: "fullShape %:",
+            placeholder: "",
+            defaultValue: Number(0).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100,
+            inline: true,
+        });
+
+        const wierdShapePercentageInput = new FormElementInput({
+            id: "wierdShapePercentageInput",
+            label: "wierdShape %:",
+            placeholder: "",
+            defaultValue: Number(0).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100,
+            inline: true,
+        });
+
+        const advancedContainer = new FormElementDetails({
+            id: "advancedContainer",
+            // @TODO Add translation (T.dialogs.newSavegame.advanced)
+            label: "Advanced Options",
+            formElements: [
+                seedInput,
+                allowColorsCheckbox,
+                fullShapePercentageInput,
+                wierdShapePercentageInput,
+            ],
+        });
+
+        const dialog = new DialogWithForm({
+            app: this.app,
+            // @TODO: Add translation (T.dialogs.newSavegame.title)
+            title: "New Game Options",
+            // @TODO: Add translation (T.dialogs.newSavegame.desc)
+            desc: "Configure your new savegame",
+            formElements: [nameInput, advancedContainer],
+            buttons: ["ok:good:enter"],
+        });
+        this.dialogs.internalShowDialog(dialog);
+
+        dialog.buttonSignals.ok.add(() => {
+            this.app.analytics.trackUiClick("startgame");
+            this.app.adProvider.showVideoAd().then(async () => {
+                const savegame = this.app.savegameMgr.createNewSavegame();
+                const savegameMetadata = this.app.savegameMgr.getGameMetaDataByInternalId(
+                    savegame.internalId
+                );
+                savegameMetadata.name = trim(nameInput.getValue());
+                await this.app.savegameMgr.writeAsync();
+
+                this.moveToState("InGameState", {
+                    savegame,
+                    seed: Number(seedInput.getValue()),
+                    allowNonPrimaryColors: allowColorsCheckbox.getValue(),
+                    fullShapePercentage: Number(fullShapePercentageInput.getValue()),
+                    wierdShapePercentage: Number(wierdShapePercentageInput.getValue()),
+                });
+                this.app.analytics.trackUiClick("startgame_adcomplete");
             });
-            this.app.analytics.trackUiClick("startgame_adcomplete");
         });
     }
 

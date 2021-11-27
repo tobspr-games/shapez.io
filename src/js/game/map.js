@@ -15,6 +15,9 @@ export class BaseMap extends BasicSerializableObject {
     static getSchema() {
         return {
             seed: types.uint,
+            allowNonPrimaryColors: types.bool,
+            fullShapePercentage: types.uint,
+            wierdShapePercentage: types.uint,
         };
     }
 
@@ -27,6 +30,9 @@ export class BaseMap extends BasicSerializableObject {
         this.root = root;
 
         this.seed = 0;
+        this.allowNonPrimaryColors = false;
+        this.fullShapePercentage = 0;
+        this.wierdShapePercentage = 0;
 
         /**
          * Mapping of 'X|Y' to chunk

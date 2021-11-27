@@ -214,6 +214,35 @@
                     }
                 }
             }
+
+            .inline {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                > * {
+                    @include S(margin-right, 7.5px);
+                }
+            }
+
+            .detailsFormElem {
+                > .object {
+                    pointer-events: all;
+
+                    > summary {
+                        transition: opacity 0.1s ease-in-out;
+                        cursor: pointer;
+                        pointer-events: all;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                    > div {
+                        @include S(margin-left, 4px);
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         > .buttons {

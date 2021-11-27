@@ -47,13 +47,67 @@ export class FormElement {
     }
 }
 
+export class FormElementDetails extends FormElement {
+    /**
+     *
+     * @param {object} param0
+     * @param {string} param0.id
+     * @param {string} param0.label
+     * @param {Array<FormElement>} param0.formElements
+     */
+    constructor({ id, label, formElements }) {
+        super(id, label);
+        this.formElements = formElements;
+
+        this.element = null;
+    }
+
+    getHtml() {
+        return `<div class="formElement detailsFormElem"><details class='object'>
+            ${this.label ? `<summary>${this.label}</summary>` : ""}
+            <div class="content">
+                ${this.formElements.map(e => e.getHtml()).join("")}
+            </div></details></div>`;
+    }
+
+    bindEvents(parent, clickTrackers) {
+        this.element = this.getFormElement(parent);
+
+        for (let i = 0; i < this.formElements.length; ++i) {
+            const elem = this.formElements[i];
+            elem.bindEvents(parent, clickTrackers);
+            elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
+        }
+    }
+
+    getValue() {
+        let formElementValues = {};
+        for (let i = 0; i < this.formElements.length; ++i) {
+            const elem = this.formElements[i];
+            formElementValues[elem.id] = elem.getValue();
+        }
+        return formElementValues;
+    }
+
+    focus() {}
+}
+
 export class FormElementInput extends FormElement {
-    constructor({ id, label = null, placeholder, defaultValue = "", inputType = "text", validator = null }) {
+    constructor({
+        id,
+        label = null,
+        placeholder,
+        defaultValue = "",
+        inputType = "text",
+        validator = null,
+        inline = false,
+    }) {
         super(id, label);
         this.placeholder = placeholder;
         this.defaultValue = defaultValue;
         this.inputType = inputType;
         this.validator = validator;
+        this.inline = inline;
 
         this.element = null;
     }
@@ -83,7 +137,7 @@ export class FormElementInput extends FormElement {
         }
 
         return `
-            <div class="formElement input">
+            <div class="formElement input ${this.inline ? "inline" : ""}">
                 ${this.label ? `<label>${this.label}</label>` : ""}
                 <input
                     type="${inputType}"
@@ -143,21 +197,22 @@ export class FormElementInput extends FormElement {
 }
 
 export class FormElementCheckbox extends FormElement {
-    constructor({ id, label, defaultValue = true }) {
+    constructor({ id, label, defaultValue = true, inline = false }) {
         super(id, label);
         this.defaultValue = defaultValue;
         this.value = this.defaultValue;
+        this.inline = inline;
 
         this.element = null;
     }
 
     getHtml() {
         return `
-            <div class="formElement checkBoxFormElem">
+            <div class="formElement checkBoxFormElem ${this.inline ? "inline" : ""}">
             ${this.label ? `<label>${this.label}</label>` : ""}
                 <div class="checkbox ${this.defaultValue ? "checked" : ""}" data-formId='${this.id}'>
-                    <span class="knob"></span >
-                </div >
+                    <span class="knob"></span>
+                </div>
             </div>
         `;
     }
@@ -181,7 +236,7 @@ export class FormElementCheckbox extends FormElement {
         this.element.classList.toggle("checked", this.value);
     }
 
-    focus(parent) {}
+    focus() {}
 }
 
 export class FormElementItemChooser extends FormElement {

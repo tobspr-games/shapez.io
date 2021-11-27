@@ -14,6 +14,7 @@ import { SavegameInterface_V1006 } from "./schemas/1006";
 import { SavegameInterface_V1007 } from "./schemas/1007";
 import { SavegameInterface_V1008 } from "./schemas/1008";
 import { SavegameInterface_V1009 } from "./schemas/1009";
+import { SavegameInterface_V1010 } from "./schemas/1010";
 
 const logger = createLogger("savegame");
 
@@ -54,7 +55,7 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1009;
+        return 1010;
     }
 
     /**
@@ -158,6 +159,11 @@ export class Savegame extends ReadWriteProxy {
         if (data.version === 1008) {
             SavegameInterface_V1009.migrate1008to1009(data);
             data.version = 1009;
+        }
+
+        if (data.version === 1009) {
+            SavegameInterface_V1010.migrate1009to1010(data);
+            data.version = 1010;
         }
 
         return ExplainedResult.good();
