@@ -170,12 +170,16 @@ export class GameCore {
      * @param {object} param1
      * @param {number} param1.seed
      * @param {boolean} param1.allowNonPrimaryColors
+     * @param {number} param1.fullShapePercentage
+     * @param {number} param1.wierdShapePercentage
      * */
-    initNewGame({ seed, allowNonPrimaryColors }) {
+    initNewGame({ seed, allowNonPrimaryColors, fullShapePercentage, wierdShapePercentage }) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = seed;
         this.root.map.allowNonPrimaryColors = allowNonPrimaryColors;
+        this.root.map.fullShapePercentage = fullShapePercentage;
+        this.root.map.wierdShapePercentage = wierdShapePercentage;
 
         logger.log("Initializing newGame with seed: ", this.root.map.seed);
 
