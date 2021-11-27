@@ -54,6 +54,12 @@ export class GameCreationPayload {
 
         /** @type {boolean} */
         this.allowNonPrimaryColors;
+
+        /** @type {number} */
+        this.fullShapePercentage;
+
+        /** @type {number} */
+        this.wierdShapePercentage;
     }
 }
 
@@ -84,6 +90,12 @@ export class InGameState extends GameState {
 
         /** @type {boolean} */
         this.allowNonPrimaryColors = null;
+
+        /** @type {number} */
+        this.fullShapePercentage = null;
+
+        /** @type {number} */
+        this.wierdShapePercentage = null;
 
         this.boundInputFilter = this.filterInput.bind(this);
 
@@ -262,7 +274,12 @@ export class InGameState extends GameState {
      */
     stage4aInitEmptyGame() {
         if (this.switchStage(stages.s4_A_initEmptyGame)) {
-            this.core.initNewGame({ seed: this.seed, allowNonPrimaryColors: this.allowNonPrimaryColors });
+            this.core.initNewGame({
+                seed: this.seed,
+                allowNonPrimaryColors: this.allowNonPrimaryColors,
+                fullShapePercentage: this.fullShapePercentage,
+                wierdShapePercentage: this.wierdShapePercentage,
+            });
             this.stage5FirstUpdate();
         }
     }
@@ -383,6 +400,8 @@ export class InGameState extends GameState {
         this.gameModeId = payload.gameModeId;
         this.seed = payload.seed;
         this.allowNonPrimaryColors = payload.allowNonPrimaryColors;
+        this.fullShapePercentage = payload.fullShapePercentage;
+        this.wierdShapePercentage = payload.wierdShapePercentage;
 
         this.loadingOverlay = new GameLoadingOverlay(this.app, this.getDivElement());
         this.loadingOverlay.showBasic();
