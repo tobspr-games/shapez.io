@@ -703,11 +703,34 @@ export class MainMenuState extends GameState {
             inline: true,
         });
 
+        const fullShapePercentageInput = new FormElementInput({
+            id: "fullShapePercentageInput",
+            label: "fullShape %:",
+            placeholder: "",
+            defaultValue: Number(0).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100,
+            inline: true,
+        });
+
+        const wierdShapePercentageInput = new FormElementInput({
+            id: "wierdShapePercentageInput",
+            label: "wierdShape %:",
+            placeholder: "",
+            defaultValue: Number(0).toString(),
+            validator: val => Number.isInteger(Number(val)) && Number(val) >= 0 && Number(val) <= 100,
+            inline: true,
+        });
+
         const advancedContainer = new FormElementDetails({
             id: "advancedContainer",
             // @TODO Add translation (T.dialogs.newSavegame.advanced)
             label: "Advanced Options",
-            formElements: [seedInput, allowColorsCheckbox],
+            formElements: [
+                seedInput,
+                allowColorsCheckbox,
+                fullShapePercentageInput,
+                wierdShapePercentageInput,
+            ],
         });
 
         const dialog = new DialogWithForm({
@@ -735,6 +758,8 @@ export class MainMenuState extends GameState {
                     savegame,
                     seed: Number(seedInput.getValue()),
                     allowNonPrimaryColors: allowColorsCheckbox.getValue(),
+                    fullShapePercentage: Number(fullShapePercentageInput.getValue()),
+                    wierdShapePercentage: Number(wierdShapePercentageInput.getValue()),
                 });
                 this.app.analytics.trackUiClick("startgame_adcomplete");
             });
