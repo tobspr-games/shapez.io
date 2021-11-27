@@ -16,6 +16,8 @@ export class BaseMap extends BasicSerializableObject {
         return {
             seed: types.uint,
             allowNonPrimaryColors: types.bool,
+            fullShapePercentage: types.uint,
+            wierdShapePercentage: types.uint,
         };
     }
 
@@ -29,6 +31,8 @@ export class BaseMap extends BasicSerializableObject {
 
         this.seed = 0;
         this.allowNonPrimaryColors = false;
+        this.fullShapePercentage = 0;
+        this.wierdShapePercentage = 0;
 
         /**
          * Mapping of 'X|Y' to chunk

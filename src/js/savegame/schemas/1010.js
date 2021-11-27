@@ -26,5 +26,13 @@ export class SavegameInterface_V1010 extends SavegameInterface_V1009 {
         if (!dump.map.hasOwnProperty("allowNonPrimaryColors")) {
             dump.map.allowNonPrimaryColors = false;
         }
+
+        if (!dump.map.hasOwnProperty("fullShapePercentage")) {
+            dump.map.fullShapePercentage = 0;
+        }
+
+        if (!dump.map.hasOwnProperty("wierdShapePercentage")) {
+            dump.map.wierdShapePercentage = 0;
+        }
     }
 }
