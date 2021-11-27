@@ -203,7 +203,19 @@ export class MapChunk {
             weights[enumSubShape.windmill] = 0;
         }
 
-        if (distanceToOriginInChunks < 10) {
+        if (rng.nextRange(0, 100) <= this.root.map.fullShapePercentage) {
+            // Spawn full shape based on percentage.
+            const subShape = this.internalGenerateRandomSubShape(rng, weights);
+            subShapes = [subShape, subShape, subShape, subShape];
+        } else if (rng.nextRange(0, 100) <= this.root.map.wierdShapePercentage) {
+            // Spawn wierd shape based on percentage.
+            subShapes = [
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+                this.internalGenerateRandomSubShape(rng, weights),
+            ];
+        } else if (distanceToOriginInChunks < 10) {
             // Initial chunk patches always have the same shape
             const subShape = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShape, subShape, subShape, subShape];
