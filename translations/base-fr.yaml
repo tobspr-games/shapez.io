@@ -76,7 +76,7 @@ mainMenu:
     puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
         Steam dès maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Voir le Dlc
 dialogs:
     buttons:
         ok: OK
@@ -249,7 +249,7 @@ dialogs:
             unsolvable: Irrésolvable
             trolling: Troll
     puzzleReportComplete:
-        title: Merci pour votre retour!
+        title: Merci pour votre commentaires!
         desc: Le puzzle a été marqué.
     puzzleReportError:
         title: Échec du signalement
@@ -443,8 +443,8 @@ ingame:
         clearItems: Supprimer les objets
         share: Partager
         report: Signaler
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Retirer les bâtiments
+        resetPuzzle: Réinitialiser le puzzle
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
@@ -457,13 +457,9 @@ ingame:
               certain temps, il <strong>l'enregistre zn tant
               qu'objectif</strong> que le joueur devra produire plus tard
               (Indiqué par le <strong>badge vert</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 4. Cliquez sur le <strong>bouton verrouillage</strong> sur un bâtiment pour le désactiver.
+            - 5. Une fois que vous aurez cliqué sur "réviser", votre puzzle sera validé et vous pourrez le publier.
+            - 6. A la publication, <strong>tous les bâtiments seront retirés</strong> excepté les Producteurs et les Récépteur d'Objectif - C'est la partie que le joueur est censé découvrir par lui-même, après tout :)
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -474,7 +470,7 @@ ingame:
         nextPuzzle: Next Puzzle
     puzzleMetadata:
         author: Auteur
-        shortKey: Short Key
+        shortKey: Code
         rating: Niveau de difficulté
         averageDuration: Durée moyenne
         completionRate: Taux de réussite
@@ -1061,9 +1057,9 @@ settings:
             description: Contrôle la taille des formes sur la vue d’ensemble de la carte
                 visible en dézoomant.
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Toujours afficher - l'Info-bulle de la forme
+            description: Si vous souhaitez toujours afficher l'infobulle de la forme lors du survol des bâtiments,
+                au lieu de devoir maintenir la touche 'ALT' enfoncée.
     tickrateHz: <amount> Hz
 keybindings:
     title: Contrôles
@@ -1147,7 +1143,7 @@ keybindings:
         goal_acceptor: Récepteur d'Objectif
         block: Bloc
         massSelectClear: Vider les convoyeurs
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Afficher l'infobulle pour la sortie de la forme
 about:
     title: À propos de ce jeu
     body: >-
@@ -1290,25 +1286,25 @@ puzzleMenu:
             que vos producteurs constants ne livrent pas directement à vos
             accepteurs d'objectifs.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Facile
+        medium: Moyen
+        hard: Difficile
+        unknown: Non évalué
+    dlcHint: Vous avez déjà acheté le DLC ? Assurez-vous qu'il est activé en faisant un clic droit sur
+        shapez.io dans votre bibliothèque, puis sélectionnez Propriétés > DLC.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Recherchez
+        placeholder: Entrez un puzzle ou un nom d'auteur
+        includeCompleted: Inclusion compléter
         difficulties:
-            any: Any Difficulty
-            easy: Easy
+            any: N'importe quelle difficulté
+            easy: Facile
             medium: Medium
-            hard: Hard
+            hard: Difficile
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
+            any: Toute durée
+            short: Court (< 2 min)
+            medium: Normale
             long: Long (> 10 min)
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
@@ -1334,6 +1330,6 @@ backendErrors:
     bad-payload: La demande contient des données invalides.
     bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
     timeout: La demande a expiré.
-    too-many-likes-already: The puzzle already got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Ce puzzle a déjà reçu trop de likes. Si vous voulez toujours
+        le supprimer, veuillez contacter support@shapez.io !"
+    no-permission: Vous n'avez pas la permission d'effectuer cette action.
