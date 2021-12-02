@@ -70,15 +70,7 @@ export class RandomNumberGenerator {
      * @param {number|string=} seed
      */
     constructor(seed) {
-        this.reseed(seed);
-    }
-
-    /**
-     * Re-seeds the generator
-     * @param {number|string} seed
-     */
-    reseed(seed) {
-        this.internalRng = makeNewRng(seed || Math.random());
+        this.internalRng = makeNewRng(seed);
     }
 
     /**
