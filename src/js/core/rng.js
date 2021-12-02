@@ -118,12 +118,4 @@ export class RandomNumberGenerator {
         assert(max > min, "rng: max <= min");
         return this.next() * (max - min) + min;
     }
-
-    /**
-     * Updates the seed
-     * @param {number} seed
-     */
-    setSeed(seed) {
-        this.internalRng = makeNewRng(seed);
-    }
 }
