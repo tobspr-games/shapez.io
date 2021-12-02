@@ -70,7 +70,7 @@ export class RandomNumberGenerator {
      * @param {number|string=} seed
      */
     constructor(seed) {
-        reseed(seed);
+        this.reseed(seed);
     }
 
     /**
