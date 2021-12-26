@@ -1303,7 +1303,7 @@ puzzleMenu:
             any: Any Difficulty
             easy: Facile
             medium: Moyen
-            hard: Dur
+            hard: Difficle
         durations:
             any: Any Duration
             short: Court (< 2 min)
