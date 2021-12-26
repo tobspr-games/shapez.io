@@ -1267,10 +1267,10 @@ puzzleMenu:
         easy: Facile
         hard: Difficile
         completed: Complété
-        medium: Medium
+        medium: Moyen
         official: Officiel
-        trending: Trending today
-        trending-weekly: Trending weekly
+        trending: En tendance aujourd'hui
+        trending-weekly: En tendance cette semaine
         categories: Catégories
         difficulties: Par Difficulté
         account: Mes Puzzles
@@ -1290,24 +1290,23 @@ puzzleMenu:
             que vos producteurs constants ne livrent pas directement à vos
             accepteurs d'objectifs.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Facile
+        medium: Moyen
+        hard: Difficile
+        unknown: Non noté
+    dlcHint: Vous avez déjà acheté ce DLC ? Verifiez qu'il est activé en faisant un clic droit sur shapez.io dans votre bibliothèque, puis en selectionnant Propriétés > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
+        action: Rechercher
+        placeholder: Entrez le nom d'un puzzle ou d'un auteur.
         includeCompleted: Include Completed
         difficulties:
             any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            easy: Facile
+            medium: Moyen
+            hard: Dur
         durations:
             any: Any Duration
-            short: Short (< 2 min)
+            short: Court (< 2 min)
             medium: Normal
             long: Long (> 10 min)
 backendErrors:
@@ -1334,6 +1333,5 @@ backendErrors:
     bad-payload: La demande contient des données invalides.
     bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
     timeout: La demande a expiré.
-    too-many-likes-already: The puzzle already got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Le puzzle a déjà reçu trop de j'aime. Si vous souhaitez tout de même le retirer, contactez support@shapez.io.
+    no-permission: Vous n'avez pas les droits pour effectuer cette action.
