@@ -55,7 +55,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
      */
     deserialize(data) {
         if (!data || !data.shapes || !Array.isArray(data.shapes)) {
-            return "Invalid pinned shapes data";
+            return "Invalid pinned shapes data: " + JSON.stringify(data);
         }
         this.pinnedShapes = data.shapes;
     }
@@ -232,15 +232,20 @@ export class HUDPinnedShapes extends BaseHUDPart {
         }
 
         // Show small info icon
-        const infoButton = document.createElement("button");
-        infoButton.classList.add("infoButton");
-        element.appendChild(infoButton);
-        const infoDetector = new ClickDetector(infoButton, {
-            consumeEvents: true,
-            preventDefault: true,
-            targetOnly: true,
-        });
-        infoDetector.click.add(() => this.root.hud.signals.viewShapeDetailsRequested.dispatch(definition));
+        let infoDetector;
+        if (!G_WEGAME_VERSION) {
+            const infoButton = document.createElement("button");
+            infoButton.classList.add("infoButton");
+            element.appendChild(infoButton);
+            infoDetector = new ClickDetector(infoButton, {
+                consumeEvents: true,
+                preventDefault: true,
+                targetOnly: true,
+            });
+            infoDetector.click.add(() =>
+                this.root.hud.signals.viewShapeDetailsRequested.dispatch(definition)
+            );
+        }
 
         const amountLabel = makeDiv(element, null, ["amountLabel"], "");
 

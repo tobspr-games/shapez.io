@@ -10,14 +10,14 @@ steamPage:
         A jako by to nestačilo, musíte také produkovat exponenciálně více, abyste uspokojili požadavky - jediná věc, která pomáhá, je škálování! Zatímco na začátku tvary pouze zpracováváte, později je musíte obarvit - těžbou a mícháním barev!
 
         Koupením hry na platformě Steam získáte přístup k plné verzi hry, ale také můžete nejdříve hrát demo verzi na shapez.io a až potom se rozhodnout!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Co o shapez.io říkají lidé
+    nothernlion_comment: Tato hra je úžasná - Užívám si čas strávený hraním této
+        hry, jen strašně rychle utekl.
+    notch_comment: Sakra. Opravdu bych měl jít spát, ale myslím si, že jsem zrovna
+        přišel na to, jak v shapez.io vytvořit počítač.
+    steam_review_comment: Tato hra mi ukradla život a já ho nechci zpět. Odpočinková
+        factory hra, která mi nedovolí přestat dělat mé výrobní linky více
+        efektivní.
 global:
     loading: Načítání
     error: Chyba
@@ -49,6 +49,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
+    loggingIn: Přihlašuji
 demoBanners:
     title: Demo verze
     intro: Získejte plnou verzi pro odemknutí všech funkcí a obsahu!
@@ -69,6 +70,12 @@ mainMenu:
     savegameLevel: Úroveň <x>
     savegameLevelUnknown: Neznámá úroveň
     savegameUnnamed: Nepojmenovaný
+    puzzleMode: Puzzle mód
+    back: Zpět
+    puzzleDlcText: Baví vás zmenšování a optimalizace továren? Pořiďte si nyní
+        Puzzle DLC na Steamu pro ještě více zábavy!
+    puzzleDlcWishlist: Přidejte si nyní na seznam přání!
+    puzzleDlcViewNow: Zobrazit DLC
 dialogs:
     buttons:
         ok: OK
@@ -82,6 +89,9 @@ dialogs:
         viewUpdate: Zobrazit aktualizaci
         showUpgrades: Zobrazit vylepšení
         showKeybindings: Zobrazit klávesové zkratky
+        retry: Opakovat
+        continue: Pokračovat
+        playOffline: Hrát offline
     importSavegameError:
         title: Chyba Importu
         text: "Nepovedlo se importovat vaši uloženou hru:"
@@ -178,6 +188,70 @@ dialogs:
         title: Dostupný tutoriál
         desc: Pro tuto úroveň je k dispozici tutoriál, ale je dostupný pouze v
             angličtině. Chtěli byste se na něj podívat?
+    editConstantProducer:
+        title: Nastavte tvar
+    puzzleLoadFailed:
+        title: Načítání puzzle selhalo
+        desc: "Bohužel nebylo možné puzzle načíst:"
+    submitPuzzle:
+        title: Odeslat puzzle
+        descName: "Pojmenujte svůj puzzle:"
+        descIcon: "Prosím zadejte unikátní krátký klíč, který bude zobrazen jako ikona
+            vašeho puzzle (Ten můžete vygenerovat <link>zde</link>, nebo vyberte
+            jeden z níže náhodně vybraných tvarů):"
+        placeholderName: Název puzzlu
+    puzzleResizeBadBuildings:
+        title: Změna velikosti není možná
+        desc: Zónu není možné více zmenšit, protože by některé budovy byly mimo zónu.
+    puzzleLoadError:
+        title: Špatný puzzle
+        desc: "Načítání puzzlu selhalo:"
+    offlineMode:
+        title: Offline mód
+        desc: Nebylo možné kontaktovat herní servery, proto musí hra běžet v offline
+            módu. Ujistěte se, že máte aktivní připojení k internetu.
+    puzzleDownloadError:
+        title: Chyba stahování
+        desc: "Stažení puzzlu selhalo:"
+    puzzleSubmitError:
+        title: Chyba odeslání
+        desc: "Odeslání puzzlu selhalo:"
+    puzzleSubmitOk:
+        title: Puzzle publikováno
+        desc: Gratuluji! Vaše puzzle bylo publikováno a je dostupné pro ostatní hráče.
+            Můžete ho najít v sekci "Moje puzzly".
+    puzzleCreateOffline:
+        title: Offline mód
+        desc: Jelikož jste offline, nebudete moci ukládat a/nebo publikovat vaše puzzle.
+            Chcete přesto pokračovat?
+    puzzlePlayRegularRecommendation:
+        title: Doporučení
+        desc: <strong>Důrazně</strong> doporučujeme průchod základní hrou nejméně do
+            úrovně 12 před vstupem do puzzle DLC, jinak můžete narazit na
+            mechaniku hry, se kterou jste se ještě nesetkali. Chcete přesto
+            pokračovat?
+    puzzleShare:
+        title: Krátký klíč zkopírován
+        desc: Krátký klíč tohoto puzzlu (<key>) byl zkopírován do vaší schránky! Může
+            být vložen v puzzle menu pro přístup k danému puzzlu.
+    puzzleReport:
+        title: Nahlásit puzzle
+        options:
+            profane: Rouhavý
+            unsolvable: Nelze vyřešit
+            trolling: Trolling
+    puzzleReportComplete:
+        title: Děkujeme za vaši zpětnou vazbu!
+        desc: Toto puzzle bylo označeno.
+    puzzleReportError:
+        title: Nahlášení selhalo
+        desc: "Vaše nahlášení nemohlo být zpracováno:"
+    puzzleLoadShortKey:
+        title: Vložte krátký klíč
+        desc: Vložte krátký klíč pro načtení příslušného puzzlu.
+    puzzleDelete:
+        title: Smazat puzzle?
+        desc: Jste si jisti, že chcete smazat '<title>'? Tato akce je nevratná!
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -199,6 +273,7 @@ ingame:
         clearSelection: Zrušit výběr
         pipette: Kapátko
         switchLayers: Změnit vrstvy
+        clearBelts: Clear belts
     buildingPlacement:
         cycleBuildingVariants: Zmáčkněte <key> pro přepínání mezi variantami.
         hotkeyLabel: "Klávesová zkratka: <key>"
@@ -347,7 +422,48 @@ ingame:
                 desc: Vyvíjím to ve svém volném čase!
             achievements:
                 title: Achievements
-                desc: Hunt them all!
+                desc: Získejte je všechny!
+    puzzleEditorSettings:
+        zoneTitle: Zóna
+        zoneWidth: Šířka
+        zoneHeight: Výška
+        trimZone: Upravit zónu
+        clearItems: Vymazat tvary
+        share: Sdílet
+        report: Nahlásit
+        clearBuildings: Vymazat budovy
+        resetPuzzle: Resetovat puzzle
+    puzzleEditorControls:
+        title: Puzzle editor
+        instructions:
+            - 1. Umístěte <strong>výrobníky</strong>, které poskytnou hráči
+              tvary a barvy.
+            - 2. Sestavte jeden či více tvarů, které chcete, aby hráč vytvořil a
+              doručte to do jednoho či více <strong>příjemců cílů</strong>.
+            - 3. Jakmile příjemce cílů dostane určitý tvar za určitý časový
+              úsek, <strong>uloží se jako cíl</strong>, který hráč musí později
+              vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
+            - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově
+              dojde k její deaktivaci.
+            - 5. Jakmile kliknete na ověření, vaše puzzle bude ověřeno a můžete
+              ho publikovat.
+            - 6. Během publikace budou kromě výrobníků a příjemců cílů
+              <strong>všechny budovy odstraněny</strong> - To je ta část, na
+              kterou má koneckonců každý hráč přijít sám. :)
+    puzzleCompletion:
+        title: Puzzle dokončeno!
+        titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
+        titleRating: Jak obtížný ti tento puzzle přišel?
+        titleRatingDesc: Vaše hodnocení nám pomůže podat vám v budoucnu lepší návrhy
+        continueBtn: Hrát dál
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Autor
+        shortKey: Krátký klíč
+        rating: Úrověn obtížnosti
+        averageDuration: Prům. doba trvání
+        completionRate: Míra dokončení
 shopUpgrades:
     belt:
         name: Pásy, distribuce a tunely
@@ -403,7 +519,7 @@ buildings:
             name: Rotor
             description: Otáčí tvary o 90 stupňů po směru hodinových ručiček.
         ccw:
-            name: Rotor (opačný)
+            name: Rotor (Opačný)
             description: Otáčí tvary o 90 stupňů proti směru hodinových ručiček.
         rotate180:
             name: Rotor (180°)
@@ -546,6 +662,18 @@ buildings:
             name: Výrobník předmětů
             description: Dostupný pouze v sandboxovém módu, vydává daný signál z vrstvy
                 kabelů na běžnou vrstvu.
+    constant_producer:
+        default:
+            name: Výrobník
+            description: Neustále vydává zadaný tvar či barvu.
+    goal_acceptor:
+        default:
+            name: Příjemce cílů
+            description: Doručte tvary příjemci cílů, abyste je nastavili jako cíl.
+    block:
+        default:
+            name: Blok
+            description: Umožňuje zablokovat políčko.
 storyRewards:
     reward_cutter_and_trash:
         title: Řezání tvarů
@@ -867,7 +995,12 @@ settings:
         mapResourcesScale:
             title: Velikost zdrojů na mapě
             description: Určuje velikost ikon tvarů na náhledu mapy (při oddálení).
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
+    tickrateHz: <amount> Hz
 keybindings:
     title: Klávesové zkratky
     hint: "Tip: Nezapomeňte používat CTRL, SHIFT a ALT! Díky nim můžete měnit způsob
@@ -941,10 +1074,15 @@ keybindings:
         comparator: Porovnávač
         item_producer: Výrobník předmětů (Sandbox)
         copyWireValue: "Kabely: Zkopírovat hodnotu pod kurzorem"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Otočit: Nahoru"
+        rotateToDown: "Otočit: Dolů"
+        rotateToRight: "Otočit: Doprava"
+        rotateToLeft: "Otočit: Doleva"
+        constant_producer: Výrobník
+        goal_acceptor: Přijemce cílů
+        block: Blok
+        massSelectClear: Vymazat pásy
+        showShapeTooltip: Show shape output tooltip
 about:
     title: O hře
     body: >-
@@ -1039,3 +1177,90 @@ tips:
     - Stisknutím F4 zobrazíte FPS a rychlost ticků.
     - Stisknutím F4 dvakrát zobrazíte souřadnici myši a kamery.
     - Můžete kliknout na připínáček vlevo vedle připnutého tvaru k jeho odepnutí.
+puzzleMenu:
+    play: Hrát
+    edit: Upravit
+    title: Puzzle mód
+    createPuzzle: Vytvořit puzzle
+    loadPuzzle: Načíst
+    reviewPuzzle: Ověření a publikace
+    validatingPuzzle: Ověřování puzzlu
+    submittingPuzzle: Odesílání puzzlu
+    noPuzzles: V této sekci momentálně nejsou žádné puzzly.
+    categories:
+        levels: Úrovně
+        new: Nové
+        top-rated: Nejlépe hodnocené
+        mine: Moje puzzly
+        easy: Lehké
+        hard: Těžké
+        completed: Dokončeno
+        medium: Střední
+        official: Oficiální
+        trending: Populární denně
+        trending-weekly: Populární týdně
+        categories: Kategorie
+        difficulties: Dle obtížnosti
+        account: Moje puzzly
+        search: Vyhledávání
+    validation:
+        title: Neplatný puzzle
+        noProducers: Prosím umístěte výrobník!
+        noGoalAcceptors: Prosím umístěte příjemce cílů!
+        goalAcceptorNoItem: Jeden nebo více příjemců cílů ještě nemají nastavený tvar.
+            Doručte jim tvar, abyste jej nastavili jako cíl.
+        goalAcceptorRateNotMet: Jeden nebo více příjemců cílů nedostávají dostatečný
+            počet tvarů. Ujistěte se, že indikátory jsou zelené pro všechny
+            příjemce.
+        buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast. Buď
+            zvětšete plochu, nebo je odstraňte.
+        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že
+            vyrobníky nedodávají své tvary přímo do přijemců cílů.
+    difficulties:
+        easy: Lehká
+        medium: Střední
+        hard: Těžká
+        unknown: Unrated
+    dlcHint: Již jste toto DLC zakoupili? Ujistěte se, že je aktivováno kliknutím
+        pravého tlačítka na shapez.io ve své knihovně, vybráním Vlastnosti >
+        DLC.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: Provádíte své akce příliš často. Počkejte prosím.
+    invalid-api-key: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Neplatný API klíč).
+    unauthorized: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Bez autorizace).
+    bad-token: Komunikace s back-endem se nezdařila, prosím zkuste
+        aktualizovat/restartovat hru (Špatný token).
+    bad-id: Neplatný identifikátor puzzlu.
+    not-found: Daný puzzle nebyl nalezen.
+    bad-category: Daná kategorie nebyla nalezena.
+    bad-short-key: Krátký klíč je neplatný.
+    profane-title: Název vašeho puzzlu obsahuje rouhavá slova.
+    bad-title-too-many-spaces: Název vašeho puzzlu je příliš krátký.
+    bad-shape-key-in-emitter: Výrobník má nastaven neplatný tvar.
+    bad-shape-key-in-goal: Příjemce cílů má nastaven neplatný tvar.
+    no-emitters: Váš puzzle neobsahuje žádné výrobníky.
+    no-goals: Váš puzzle neobsahuje žádné příjemce cílů.
+    short-key-already-taken: Tento krátký klíč je již používán, zadejte prosím jiný.
+    can-not-report-your-own-puzzle: Nemůžete nahlásit vlastní puzzle.
+    bad-payload: Žádost obsahuje neplatná data.
+    bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
+    timeout: Žádost vypršela.
+    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej
+        přesto chcete odstranit, kontaktujte nás prosím na support@shapez.io!
+    no-permission: K provedení této akce nemáte oprávnění.

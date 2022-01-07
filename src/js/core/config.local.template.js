@@ -53,7 +53,7 @@ export default {
     // Replace all translations with emojis to see which texts are translateable
     // testTranslations: true,
     // -----------------------------------------------------------------------------------
-    // Enables an inspector which shows information about the entity below the curosr
+    // Enables an inspector which shows information about the entity below the cursor
     // enableEntityInspector: true,
     // -----------------------------------------------------------------------------------
     // Enables ads in the local build (normally they are deactivated there)
@@ -61,6 +61,9 @@ export default {
     // -----------------------------------------------------------------------------------
     // Allows unlocked achievements to be logged to console in the local build
     // testAchievements: true,
+    // -----------------------------------------------------------------------------------
+    // Enables use of (some) existing flags within the puzzle mode context
+    // testPuzzleMode: true,
     // -----------------------------------------------------------------------------------
     // Disables the automatic switch to an overview when zooming out
     // disableMapOverview: true,

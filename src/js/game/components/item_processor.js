@@ -19,6 +19,7 @@ export const enumItemProcessorTypes = {
     hub: "hub",
     filter: "filter",
     reader: "reader",
+    goal: "goal",
 };
 
 /** @enum {string} */
@@ -63,10 +64,8 @@ export class ItemProcessorComponent extends Component {
     }) {
         super();
 
-        // Which slot to emit next, this is only a preference and if it can't emit
-        // it will take the other one. Some machines ignore this (e.g. the balancer) to make
-        // sure the outputs always match
-        this.nextOutputSlot = 0;
+        // How many inputs we need for one charge
+        this.inputsPerCharge = inputsPerCharge;
 
         // Type of the processor
         this.type = processorType;
@@ -74,14 +73,28 @@ export class ItemProcessorComponent extends Component {
         // Type of processing requirement
         this.processingRequirement = processingRequirement;
 
-        // How many inputs we need for one charge
-        this.inputsPerCharge = inputsPerCharge;
-
         /**
          * Our current inputs
-         * @type {Array<{ item: BaseItem, sourceSlot: number }>}
+         * @type {Map<number, BaseItem>}
          */
-        this.inputSlots = [];
+        this.inputSlots = new Map();
+
+        this.clear();
+    }
+
+    clear() {
+        // Which slot to emit next, this is only a preference and if it can't emit
+        // it will take the other one. Some machines ignore this (e.g. the balancer) to make
+        // sure the outputs always match
+        this.nextOutputSlot = 0;
+
+        this.inputSlots.clear();
+
+        /**
+         * Current input count
+         * @type {number}
+         */
+        this.inputCount = 0;
 
         /**
          * What we are currently processing, empty if we don't produce anything rn
@@ -104,21 +117,23 @@ export class ItemProcessorComponent extends Component {
      * @param {number} sourceSlot
      */
     tryTakeItem(item, sourceSlot) {
-        if (this.type === enumItemProcessorTypes.hub || this.type === enumItemProcessorTypes.trash) {
+        if (
+            this.type === enumItemProcessorTypes.hub ||
+            this.type === enumItemProcessorTypes.trash ||
+            this.type === enumItemProcessorTypes.goal
+        ) {
             // Hub has special logic .. not really nice but efficient.
-            this.inputSlots.push({ item, sourceSlot });
+            this.inputSlots.set(this.inputCount, item);
+            this.inputCount++;
             return true;
         }
 
         // Check that we only take one item per slot
-        for (let i = 0; i < this.inputSlots.length; ++i) {
-            const slot = this.inputSlots[i];
-            if (slot.sourceSlot === sourceSlot) {
-                return false;
-            }
+        if (this.inputSlots.has(sourceSlot)) {
+            return false;
         }
-
-        this.inputSlots.push({ item, sourceSlot });
+        this.inputSlots.set(sourceSlot, item);
+        this.inputCount++;
         return true;
     }
 }

@@ -146,10 +146,10 @@ duplexer3@^0.1.4:
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
-electron@10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-10.4.0.tgz#018385914474b56110a5a43087a53c114b67c08d"
-  integrity sha512-qK8OOCWuNvEFWThmjkukkqDwIpBqULlDuMXVC9MC/2P4UaWJEjIYvBmBuTyxtFcKoE3kWvcWyeRDUuvzVxxXjA==
+electron@10.4.3:
+  version "10.4.3"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-10.4.3.tgz#8d1c0f5e562d1b78dcec8074c0d59e58137fd508"
+  integrity sha512-qL8XZBII9KQHr1+YmVMj1AqyTR2I8/lxozvKEWoKKSkF8Hl6GzzxrLXRfISP7aDAvsJEyyhc6b2/42ME8hG5JA==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
@@ -503,9 +503,9 @@ serialize-error@^7.0.1:
   dependencies:
     type-fest "^0.13.1"
 
-"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v85":
+"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v82":
   version "0.1.0"
-  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#63adf7e0ea4b90c2a29053ce1f0ec9d573b3ac0a"
+  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#8aa3bfd3b569eb5695fc8a585a3f2ee3ed2db290"
 
 sprintf-js@^1.1.2:
   version "1.1.2"

@@ -18,6 +18,17 @@ export class Signal {
     }
 
     /**
+     * Adds a new signal listener
+     * @param {function} receiver
+     * @param {object} scope
+     */
+    addToTop(receiver, scope = null) {
+        assert(receiver, "receiver is null");
+        this.receivers.unshift({ receiver, scope });
+        ++this.modifyCount;
+    }
+
+    /**
      * Dispatches the signal
      * @param  {...any} payload
      */

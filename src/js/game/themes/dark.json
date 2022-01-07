@@ -47,6 +47,11 @@
             "textColor": "#fff",
             "textColorCapped": "#ef5072",
             "background": "rgba(40, 50, 60, 0.8)"
+        },
+
+        "zone": {
+            "borderSolid": "rgba(23, 192, 255, 1)",
+            "outerColor": "rgba(20 , 20, 25, 0.5)"
         }
     },
 
@@ -54,5 +59,10 @@
         "outline": "#111418",
         "outlineWidth": 0.75,
         "circleBackground": "rgba(20, 30, 40, 0.3)"
+    },
+
+    "shapeTooltip": {
+        "background": "rgba(242, 245, 254, 0.9)",
+        "outline": "#44464e"
     }
 }

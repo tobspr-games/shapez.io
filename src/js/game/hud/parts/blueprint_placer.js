@@ -58,6 +58,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
         this.trackedCanAfford = new TrackedState(this.onCanAffordChanged, this);
     }
 
+    getHasFreeCopyPaste() {
+        return this.root.gameMode.getHasFreeCopyPaste();
+    }
+
     abortPlacement() {
         if (this.currentBlueprint.get()) {
             this.currentBlueprint.set(null);
@@ -90,7 +94,9 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
 
     update() {
         const currentBlueprint = this.currentBlueprint.get();
-        this.domAttach.update(currentBlueprint && currentBlueprint.getCost() > 0);
+        this.domAttach.update(
+            !this.getHasFreeCopyPaste() && currentBlueprint && currentBlueprint.getCost() > 0
+        );
         this.trackedCanAfford.set(currentBlueprint && currentBlueprint.canAfford(this.root));
     }
 
@@ -122,7 +128,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
                 return;
             }
 
-            if (!blueprint.canAfford(this.root)) {
+            if (!this.getHasFreeCopyPaste() && !blueprint.canAfford(this.root)) {
                 this.root.soundProxy.playUiError();
                 return;
             }
@@ -130,8 +136,10 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
             const worldPos = this.root.camera.screenToWorld(pos);
             const tile = worldPos.toTileSpace();
             if (blueprint.tryPlace(this.root, tile)) {
-                const cost = blueprint.getCost();
-                this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                if (!this.getHasFreeCopyPaste()) {
+                    const cost = blueprint.getCost();
+                    this.root.hubGoals.takeShapeByKey(this.root.gameMode.getBlueprintShapeKey(), cost);
+                }
                 this.root.soundProxy.playUi(SOUNDS.placeBuilding);
             }
             return STOP_PROPAGATION;
@@ -139,7 +147,7 @@ export class HUDBlueprintPlacer extends BaseHUDPart {
     }
 
     /**
-     * Mose move handler
+     * Mouse move handler
      */
     onMouseMove() {
         // Prevent movement while blueprint is selected

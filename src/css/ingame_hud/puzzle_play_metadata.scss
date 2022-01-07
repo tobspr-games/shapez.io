@@ -1,0 +1,129 @@
+#ingame_HUD_PuzzlePlayMetadata {
+    position: absolute;
+
+    @include S(top, 70px);
+    @include S(left, 10px);
+
+    display: flex;
+    flex-direction: column;
+    @include S(width, 200px);
+
+    > .info {
+        display: flex;
+        flex-direction: column;
+        @include SuperSmallText;
+        @include S(margin-bottom, 5px);
+
+        > label {
+            text-transform: uppercase;
+            @include SuperDuperSmallText;
+            color: $accentColorDark;
+        }
+        > span {
+            display: flex;
+            color: darken($accentColorDark, 25);
+            @include SuperSmallText;
+            @include DarkThemeOverride {
+                color: lighten($accentColorDark, 15);
+            }
+        }
+    }
+
+    > .plays {
+        display: flex;
+        align-items: center;
+        justify-self: end;
+        align-self: end;
+        flex-direction: row;
+        @include S(margin-bottom, 10px);
+        opacity: 0.8;
+        @include DarkThemeInvert;
+        @include DarkThemeOverride {
+            opacity: 0.8;
+        }
+
+        > .downloads {
+            @include SuperSmallText;
+            color: #000;
+            align-self: start;
+            justify-self: start;
+            font-weight: bold;
+            @include S(margin-right, 10px);
+            @include S(padding-left, 14px);
+            opacity: 0.7;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            & {
+                /* @load-async */
+                background: uiResource("icons/puzzle_plays.png") #{D(2px)} center / #{D(8px)} #{D(8px)} no-repeat;
+            }
+        }
+
+        > .likes {
+            @include SuperSmallText;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            align-self: start;
+            justify-self: start;
+            font-weight: bold;
+            @include S(padding-left, 14px);
+            opacity: 0.7;
+            & {
+                /* @load-async */
+                background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} center / #{D(8px)} #{D(8px)} no-repeat;
+            }
+        }
+    }
+
+    > .key {
+        button {
+            @include S(margin-top, 2px);
+        }
+    }
+
+    button {
+        @include SuperSmallText;
+        align-self: start;
+        @include S(min-width, 50px);
+
+        &.report {
+            background-color: $accentColorDark;
+            @include SuperDuperSmallText;
+        }
+    }
+
+    > .buttons {
+        display: flex;
+        flex-direction: column;
+
+        > button {
+            @include S(margin-bottom, 4px);
+        }
+    }
+}
+
+#ingame_HUD_PuzzlePlayTitle {
+    position: absolute;
+
+    @include S(top, 18px);
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    @include Heading;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    > .name {
+        @include PlainText;
+        opacity: 0.5;
+    }
+
+    @include DarkThemeOverride {
+        color: #eee;
+    }
+}

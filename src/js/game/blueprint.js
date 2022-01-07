@@ -159,8 +159,12 @@ export class Blueprint {
             const entity = this.entities[i];
             const staticComp = entity.components.StaticMapEntity;
 
+            // Actually keeping this in as an easter egg to rotate the trash can
+            // if (staticComp.getMetaBuilding().getIsRotateable()) {
             staticComp.rotation = (staticComp.rotation + 90) % 360;
             staticComp.originalRotation = (staticComp.originalRotation + 90) % 360;
+            // }
+
             staticComp.origin = staticComp.origin.rotateFastMultipleOf90(90);
         }
     }
@@ -197,6 +201,9 @@ export class Blueprint {
      * @param {GameRoot} root
      */
     canAfford(root) {
+        if (root.gameMode.getHasFreeCopyPaste()) {
+            return true;
+        }
         return root.hubGoals.getShapesStoredByKey(root.gameMode.getBlueprintShapeKey()) >= this.getCost();
     }
 
@@ -207,29 +214,31 @@ export class Blueprint {
      */
     tryPlace(root, tile) {
         return root.logic.performBulkOperation(() => {
-            let count = 0;
-            for (let i = 0; i < this.entities.length; ++i) {
-                const entity = this.entities[i];
-                if (!root.logic.checkCanPlaceEntity(entity, tile)) {
-                    continue;
+            return root.logic.performImmutableOperation(() => {
+                let count = 0;
+                for (let i = 0; i < this.entities.length; ++i) {
+                    const entity = this.entities[i];
+                    if (!root.logic.checkCanPlaceEntity(entity, tile)) {
+                        continue;
+                    }
+
+                    const clone = entity.clone();
+                    clone.components.StaticMapEntity.origin.addInplace(tile);
+                    root.logic.freeEntityAreaBeforeBuild(clone);
+                    root.map.placeStaticEntity(clone);
+                    root.entityMgr.registerEntity(clone);
+                    count++;
                 }
 
-                const clone = entity.clone();
-                clone.components.StaticMapEntity.origin.addInplace(tile);
-                root.logic.freeEntityAreaBeforeBuild(clone);
-                root.map.placeStaticEntity(clone);
-                root.entityMgr.registerEntity(clone);
-                count++;
-            }
+                root.signals.bulkAchievementCheck.dispatch(
+                    ACHIEVEMENTS.placeBlueprint,
+                    count,
+                    ACHIEVEMENTS.placeBp1000,
+                    count
+                );
 
-            root.signals.bulkAchievementCheck.dispatch(
-                ACHIEVEMENTS.placeBlueprint,
-                count,
-                ACHIEVEMENTS.placeBp1000,
-                count
-            );
-
-            return count !== 0;
+                return count !== 0;
+            });
         });
     }
 }

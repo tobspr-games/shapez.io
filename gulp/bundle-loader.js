@@ -54,8 +54,11 @@
 
         document.documentElement.appendChild(element);
     }
-    window.addEventListener("error", errorHandler);
-    window.addEventListener("unhandledrejection", errorHandler);
+
+    if (window.location.host.indexOf("localhost") < 0) {
+        window.addEventListener("error", errorHandler);
+        window.addEventListener("unhandledrejection", errorHandler);
+    }
 
     function makeJsTag(src, integrity) {
         var script = document.createElement("script");

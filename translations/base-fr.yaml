@@ -11,14 +11,14 @@ steamPage:
         Et en plus, vous devrez aussi produire de plus en plus pour satisfaire la demande. La seule solution est de construire en plus grand ! Au début vous ne ferez que découper les formes, mais plus tard vous devrez les peindre — et pour ça vous devrez extraire et mélanger des couleurs !
 
         En achetant le jeu sur Steam, vous aurez accès à la version complète, mais vous pouvez aussi jouer à une démo sur shapez.io et vous décider ensuite !
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: Ce que les gens pensent de Shapez.io
+    nothernlion_comment: Ce jeu est génial - Je passe un merveilleux moment à jouer,
+        et le temps s'est envolé.
+    notch_comment: Mince ! Je devrais vraiment me coucher, mais je crois que j'ai
+        trouvé comment faire un ordinateur dans Shapez.io
+    steam_review_comment: Ce jeu a volé ma vie et je ne veux pas la récupérer. Jeu
+        d'usine très cool qui ne me laissera pas arrêter de rendre mes lignes
+        plus efficaces.
 global:
     loading: Chargement
     error: Erreur
@@ -50,6 +50,7 @@ global:
         escape: ESC
         shift: MAJ
         space: ESPACE
+    loggingIn: Logging in
 demoBanners:
     title: Version de démo
     intro: Achetez la version complète pour débloquer toutes les fonctionnalités !
@@ -70,6 +71,12 @@ mainMenu:
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Niveau inconnu
     savegameUnnamed: Sans titre
+    puzzleMode: Mode Puzzle
+    back: Retour
+    puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
+        Steam dès maintenant pour encore plus d'amusement!
+    puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
+    puzzleDlcViewNow: View Dlc
 dialogs:
     buttons:
         ok: OK
@@ -83,6 +90,9 @@ dialogs:
         viewUpdate: Voir les mises à jour
         showUpgrades: Montrer les améliorations
         showKeybindings: Montrer les raccourcis
+        retry: Réessayer
+        continue: Continuer
+        playOffline: Jouer Hors-ligne
     importSavegameError:
         title: Erreur d’importation
         text: "Impossible d’importer votre sauvegarde :"
@@ -183,6 +193,73 @@ dialogs:
         title: Tutoriel disponible
         desc: Il y a un tutoriel vidéo pour ce niveau, mais il n’est disponible qu’en
             anglais. Voulez-vous le regarder ?
+    editConstantProducer:
+        title: Définir l'objet
+    puzzleLoadFailed:
+        title: Le chargement du Puzzle à échoué
+        desc: "Malheuresement, le puzzle n'a pas pu être chargé :"
+    submitPuzzle:
+        title: Envoyer le Puzzle
+        descName: "Donnez un nom à votre puzzle:"
+        descIcon: "Veuillez entrer un raccourci de forme unique, qui sera affichée comme
+            icône de votre puzzle (Vous pouvez générer le raccourci d'une forme
+            <link>ici</link>, ou en choisir une parmi les formes suggérées
+            alétoirement ci-dessous):"
+        placeholderName: Titre du Puzzle
+    puzzleResizeBadBuildings:
+        title: Impossible de redimensionner
+        desc: Vous ne pouvez pas rétrécir la zone, car certains bâtiments seraient en
+            dehors de la zone
+    puzzleLoadError:
+        title: Mauvais Puzzle
+        desc: "Le chargement du puzzle a échoué:"
+    offlineMode:
+        title: Mode hors-ligne
+        desc: Nous n'avons pas pu atteindre les serveurs, donc le jeu doit être mis en
+            mode hors ligne. Veuillez vous assurez que vous disposez d'une
+            connexion Internet active.
+    puzzleDownloadError:
+        title: Erreur de téléchargment
+        desc: "Le téléchargement a échoué:"
+    puzzleSubmitError:
+        title: Erreur d'envoi
+        desc: "L'envoi a échoué:"
+    puzzleSubmitOk:
+        title: Puzzle envoyé
+        desc: Félicitations ! Votre puzzle a été envoyé et peut maintenant être joué.
+            Vous pouvez maintenant le retrouver dans la section "Mes Puzzles".
+    puzzleCreateOffline:
+        title: Mode Hors-ligne
+        desc: Puisque vous êtes hors ligne, vous ne pourrez pas enregistrer et/ou
+            publier votre puzzle. Souhaitez-vous toujours continuer ?
+    puzzlePlayRegularRecommendation:
+        title: Recommandation
+        desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au
+            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risqez de
+            rencontrer des méchanismes pas encore introduits. Voulez-vous
+            toujours continuer ?
+    puzzleShare:
+        title: Code copié
+        desc: Le code du puzzle (<key>) a été copié dans ton presse-papiers ! Il peut
+            être entré dans le menu des puzzles pour accéder au puzzle.
+    puzzleReport:
+        title: Signaler le Puzzle
+        options:
+            profane: Profane
+            unsolvable: Irrésolvable
+            trolling: Troll
+    puzzleReportComplete:
+        title: Merci pour votre retour!
+        desc: Le puzzle a été marqué.
+    puzzleReportError:
+        title: Échec du signalement
+        desc: "Votre signalement n'a pas pu être effectué:"
+    puzzleLoadShortKey:
+        title: Entrer un code
+        desc: Entrer le code du puzzle pour le charger.
+    puzzleDelete:
+        title: Supprimer le puzzle ?
+        desc: Êtes-vous sûr de vouloir supprimer '<title>' ? Cela sera irréversible !
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -204,6 +281,7 @@ ingame:
         clearSelection: Effacer la sélection
         pipette: Pipette
         switchLayers: Changer de calque
+        clearBelts: Supprimer les rails
     colors:
         red: Rouge
         green: Vert
@@ -355,8 +433,51 @@ ingame:
                 title: Me soutenir
                 desc: Je le développe pendant mon temps libre !
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Succès
+                desc: Débloquez-les tous !
+    puzzleEditorSettings:
+        zoneTitle: Zone
+        zoneWidth: Largeur
+        zoneHeight: Hauteur
+        trimZone: Optimiser la taille
+        clearItems: Supprimer les objets
+        share: Partager
+        report: Signaler
+        clearBuildings: Clear Buildings
+        resetPuzzle: Reset Puzzle
+    puzzleEditorControls:
+        title: Créateur de Puzzles
+        instructions:
+            - 1. Placez des <strong>Producteurs Constants</strong> pour fournir
+              des formes et des couleurs au joueur
+            - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur
+              fabrique plus tard et délivrez-la/les à un ou plusieurs
+              <strong>Récepteurs d'Objectif</strong>
+            - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un
+              certain temps, il <strong>l'enregistre zn tant
+              qu'objectif</strong> que le joueur devra produire plus tard
+              (Indiqué par le <strong>badge vert</strong>).
+            - 4. Click the <strong>lock button</strong> on a building to disable
+              it.
+            - 5. Once you click review, your puzzle will be validated and you
+              can publish it.
+            - 6. Upon release, <strong>all buildings will be removed</strong>
+              except for the Producers and Goal Acceptors - That's the part that
+              the player is supposed to figure out for themselves, after all :)
+    puzzleCompletion:
+        title: Puzzle Résolu !
+        titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
+        titleRating: À quel point avez-vous trouvé le puzzle diffcile ?
+        titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
+        continueBtn: Continuer à jouer
+        menuBtn: Menu
+        nextPuzzle: Next Puzzle
+    puzzleMetadata:
+        author: Auteur
+        shortKey: Short Key
+        rating: Niveau de difficulté
+        averageDuration: Durée moyenne
+        completionRate: Taux de réussite
 shopUpgrades:
     belt:
         name: Convoyeurs, distributeurs et tunnels
@@ -574,15 +695,28 @@ buildings:
             name: Générateur d’objet
             description: Seulement disponible en mode bac à sable. Renvoie le signal du
                 calque de câblage sur le calque normal.
+    constant_producer:
+        default:
+            name: Producteur Constabnt
+            description: Sort constamment une forme ou une couleur spécifiée.
+    goal_acceptor:
+        default:
+            name: Récepteur d'Objetcif
+            description: Délivrez des formes au récepteur d'objectif pour les définir comme
+                objectif.
+    block:
+        default:
+            name: Bloc
+            description: Permet de bloquer une case.
 storyRewards:
     reward_cutter_and_trash:
         title: Découpage de formes
-        desc: You just unlocked the <strong>cutter</strong>, which cuts shapes in half
-            from top to bottom <strong>regardless of its
-            orientation</strong>!<br><br>Be sure to get rid of the waste, or
-            otherwise <strong>it will clog and stall</strong> - For this purpose
-            I have given you the <strong>trash</strong>, which destroys
-            everything you put into it!
+        desc: Vous venez de déverrouiller le <strong>découpeur</strong>, qui coupe les
+            formes en deux de haut en bas <strong>indépendamment de son
+            orientation</strong>!<br><br>Assurez-vous de vous débarrasser des
+            déchets, ou sinon <strong>il se bouchera et se bloquera</strong> - À
+            cet effet, Je vous ai donné la <strong>poubelle</strong>, qui
+            détruit tout ce que vous mettez dedans !
     reward_rotater:
         title: Rotation
         desc: Le <strong>pivoteur</strong> a été débloqué ! Il pivote les formes de 90
@@ -608,9 +742,10 @@ storyRewards:
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
-        desc: The multifunctional <strong>balancer</strong> has been unlocked - It can
-            be used to build bigger factories by <strong>splitting and merging
-            items</strong> onto multiple belts!
+        desc: Le <strong>répartiteur</strong> multifonctionnel a été débloqué - Il peut
+            être utilisé pour construire de plus grandes usines en
+            <strong>divisant et en rassemblant des objets</strong> sur plusieurs
+            convoyeurs !
     reward_tunnel:
         title: Tunnel
         desc: Le <strong>tunnel</strong> a été débloqué. Vous pouvez maintenant faire
@@ -716,14 +851,17 @@ storyRewards:
             gâteau : je vous donne aussi le <strong>transistor</strong> !"
     reward_virtual_processing:
         title: Traitement virtuel
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotator, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            normally.<br><br> Whatever you choose, remember to have fun!
+        desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
+            permettent de <strong>simuler le traitement des
+            formes</strong>!<br><br> Vous pouvez maintenant simuler un
+            découpeur, un pivoteur, un assembleur et plus encore sur la couche
+            des fils ! Avec cela vous avez maintenant trois options pour
+            continuer le jeu:<br><br> - Construire une <strong>machine
+            automatique</strong> pour créer toute forme possible demandée par le
+            HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
+            quelque chose de cool avec les fils.<br><br> - Continuer à jouer
+            normalement.<br><br> Quoi que vous choisissiez, n'oubliez pas de
+            vous amuser !
     no_reward:
         title: Niveau suivant
         desc: "Ce niveau n’a pas de récompense mais le prochain, si !<br><br> PS : Ne
@@ -922,6 +1060,11 @@ settings:
             title: Taille des ressources sur la carte
             description: Contrôle la taille des formes sur la vue d’ensemble de la carte
                 visible en dézoomant.
+        shapeTooltipAlwaysOn:
+            title: Shape Tooltip - Show Always
+            description: Whether to always show the shape tooltip when hovering buildings,
+                instead of having to hold 'ALT'.
+    tickrateHz: <amount> Hz
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1000,6 +1143,11 @@ keybindings:
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
+        constant_producer: Producteur Constant
+        goal_acceptor: Récepteur d'Objectif
+        block: Bloc
+        massSelectClear: Vider les convoyeurs
+        showShapeTooltip: Show shape output tooltip
 about:
     title: À propos de ce jeu
     body: >-
@@ -1025,7 +1173,7 @@ demo:
         exportingBase: Exporter une image de toute la base
     settingNotAvailable: Indisponible dans la démo.
 tips:
-    - Le centre n’importe quelle forme, pas seulement la forme actuelle !
+    - Le centre accepte n’importe quelle forme, pas seulement la forme actuelle !
     - Assurez-vous que vos usines soient modulaires, cela paiera !
     - Ne construisez pas trop près du centre, ou ce sera un énorme chaos !
     - Si l’empilement ne fonctionne pas, essayez d’échanger les entrées.
@@ -1101,3 +1249,91 @@ tips:
     - Appuyez sur F4 pour voir vos IPS et votre fréquence de rafraîchissement.
     - Appuyez deux fois sur F4 pour voir les coordonnées.
     - Cliquez sur une forme épinglée à gauche pour l’enlever.
+puzzleMenu:
+    play: Jouer
+    edit: Éditer
+    title: Mode Puzzle
+    createPuzzle: Créer un Puzzle
+    loadPuzzle: Charger
+    reviewPuzzle: Revoir & Publier
+    validatingPuzzle: Validation du Puzzle
+    submittingPuzzle: Publication du Puzzle
+    noPuzzles: Il n'y a actuellement aucun puzzle dans cette section.
+    categories:
+        levels: Niveaux
+        new: Nouveau
+        top-rated: Les mieux notés
+        mine: Mes puzzles
+        easy: Facile
+        hard: Difficile
+        completed: Complété
+        medium: Medium
+        official: Officiel
+        trending: Trending today
+        trending-weekly: Trending weekly
+        categories: Catégories
+        difficulties: Par Difficulté
+        account: Mes Puzzles
+        search: Rechercher
+    validation:
+        title: Puzzle invalide
+        noProducers: Veuillez placer un producteur constant !
+        noGoalAcceptors: Veuillez placer un accepteur d'objectif !
+        goalAcceptorNoItem: Un ou plusieurs accepteurs d'objectif n'ont pas encore
+            attribué d'élément. Donnez-leur une forme pour fixer un objectif.
+        goalAcceptorRateNotMet: Un ou plusieurs accepteurs d'objectifs n'obtiennent pas
+            assez d'articles. Assurez-vous que les indicateurs sont verts pour
+            tous les accepteurs.
+        buildingOutOfBounds: Un ou plusieurs bâtiments se trouvent en dehors de la zone
+            constructible. Augmentez la surface ou supprimez-les.
+        autoComplete: Votre puzzle se complète automatiquement ! Veuillez vous assurer
+            que vos producteurs constants ne livrent pas directement à vos
+            accepteurs d'objectifs.
+    difficulties:
+        easy: Easy
+        medium: Medium
+        hard: Hard
+        unknown: Unrated
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        shapez.io in your library, selecting Properties > DLCs.
+    search:
+        action: Search
+        placeholder: Enter a puzzle or author name
+        includeCompleted: Include Completed
+        difficulties:
+            any: Any Difficulty
+            easy: Easy
+            medium: Medium
+            hard: Hard
+        durations:
+            any: Any Duration
+            short: Short (< 2 min)
+            medium: Normal
+            long: Long (> 10 min)
+backendErrors:
+    ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
+        s'il vous plait.
+    invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (clé Api invalide).
+    unauthorized: Échec de la communication avec le backend, veuillez essayer de
+        mettre à jour/redémarrer le jeu (non autorisé).
+    bad-token: Échec de la communication avec le backend, veuillez essayer de mettre
+        à jour/redémarrer le jeu (Mauvais jeton).
+    bad-id: Identifiant de puzzle non valide.
+    not-found: Le puzzle donné n'a pas pu être trouvé.
+    bad-category: La catégorie donnée n'a pas pu être trouvée.
+    bad-short-key: La clé courte donnée n'est pas valide.
+    profane-title: Le titre de votre puzzle contient des mots interdits.
+    bad-title-too-many-spaces: Le titre de votre puzzle est trop court.
+    bad-shape-key-in-emitter: Un producteur constant a un élément invalide.
+    bad-shape-key-in-goal: Un accepteur de but a un élément invalide.
+    no-emitters: Votre puzzle ne contient aucun producteur constant.
+    no-goals: Votre puzzle ne contient aucun accepteur de but.
+    short-key-already-taken: Cette clé courte est déjà prise, veuillez en utiliser une autre.
+    can-not-report-your-own-puzzle: Vous ne pouvez pas signaler votre propre puzzle.
+    bad-payload: La demande contient des données invalides.
+    bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
+    timeout: La demande a expiré.
+    too-many-likes-already: The puzzle already got too many likes. If you still want
+        to remove it, please contact support@shapez.io!
+    no-permission: You do not have the permission to perform this action.
