@@ -17,7 +17,6 @@ import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
-import { SerializerInternal } from "../../../savegame/serializer_internal";
 
 const logger = createLogger("hud/mass_selector");
 
