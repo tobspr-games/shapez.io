@@ -5,7 +5,6 @@ import { ModLoader } from "./modloader";
 
 import { createLogger } from "../core/logging";
 import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
-import { Mod } from "./mod";
 import { enumShortcodeToSubShape, enumSubShape, enumSubShapeToShortcode } from "../game/shape_definition";
 import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
@@ -89,9 +88,9 @@ export class ModInterface {
      * @param {string} param0.id
      * @param {string} param0.shortCode
      * @param {(distanceToOriginInChunks: number) => number} param0.weightComputation
-     * @param {(options: SubShapeDrawOptions) => void} param0.shapeDrawer
+     * @param {(options: SubShapeDrawOptions) => void} param0.draw
      */
-    registerSubShapeType({ id, shortCode, weightComputation, shapeDrawer }) {
+    registerSubShapeType({ id, shortCode, weightComputation, draw }) {
         if (shortCode.length !== 1) {
             throw new Error("Bad short code: " + shortCode);
         }
@@ -100,7 +99,7 @@ export class ModInterface {
         enumShortcodeToSubShape[shortCode] = id;
 
         MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[id] = weightComputation;
-        MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[id] = shapeDrawer;
+        MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[id] = draw;
     }
 
     registerTranslations(language, translations) {

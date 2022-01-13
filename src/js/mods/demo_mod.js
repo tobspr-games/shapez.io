@@ -35,7 +35,7 @@ export class DemoMod extends Mod {
             weightComputation: distanceToOriginInChunks =>
                 Math.round(20 + Math.max(Math.min(distanceToOriginInChunks, 30), 0)),
 
-            shapeDrawer: ({ context, quadrantSize, layerScale }) => {
+            draw: ({ context, quadrantSize, layerScale }) => {
                 const quadrantHalfSize = quadrantSize / 2;
                 context.beginPath();
                 context.moveTo(-quadrantHalfSize, quadrantHalfSize);
