@@ -38,6 +38,7 @@ import { HUDSandboxController } from "../hud/parts/sandbox_controller";
 import { queryParamOptions } from "../../core/query_parameters";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
+import { MODS } from "../../mods/modloader";
 
 /** @typedef {{
  *   shape: string,
@@ -520,6 +521,8 @@ export function generateLevelDefinitions(limitedVersion = false) {
             }
         });
     }
+
+    MODS.callHook("modifyLevelDefinitions", levelDefinitions);
 
     return levelDefinitions;
 }

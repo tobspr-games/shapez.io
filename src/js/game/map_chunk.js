@@ -10,6 +10,7 @@ import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
+import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../mods/mod_interface";
 
 const logger = createLogger("map_chunk");
 
@@ -191,6 +192,10 @@ export class MapChunk {
             [enumSubShape.star]: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
             [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
+
+        for (const key in MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS) {
+            weights[key] = MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[key](distanceToOriginInChunks);
+        }
 
         if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff

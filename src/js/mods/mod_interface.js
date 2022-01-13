@@ -6,8 +6,27 @@ import { ModLoader } from "./modloader";
 import { createLogger } from "../core/logging";
 import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
 import { Mod } from "./mod";
+import { enumShortcodeToSubShape, enumSubShape, enumSubShapeToShortcode } from "../game/shape_definition";
 
 const LOG = createLogger("mod-interface");
+
+/**
+ * @type {Object<string, (distanceToOriginInChunks: number) => number>}
+ */
+export const MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS = {};
+
+/**
+ * @typedef {{
+ *   context: CanvasRenderingContext2D,
+ *   quadrantSize: number,
+ *   layerScale: number,
+ * }} SubShapeDrawOptions
+ */
+
+/**
+ * @type {Object<string, (options: SubShapeDrawOptions) => void>}
+ */
+export const MODS_ADDITIONAL_SUB_SHAPE_DRAWERS = {};
 
 export class ModInterface {
     /**
@@ -73,5 +92,25 @@ export class ModInterface {
             );
         }
         this.modLoader.lazySprites.set(spriteId, sprite);
+    }
+
+    /**
+     *
+     * @param {object} param0
+     * @param {string} param0.id
+     * @param {string} param0.shortCode
+     * @param {(distanceToOriginInChunks: number) => number} param0.weightComputation
+     * @param {(options: SubShapeDrawOptions) => void} param0.shapeDrawer
+     */
+    registerSubShapeType({ id, shortCode, weightComputation, shapeDrawer }) {
+        if (shortCode.length !== 1) {
+            throw new Error("Bad short code: " + shortCode);
+        }
+        enumSubShape[id] = id;
+        enumSubShapeToShortcode[id] = shortCode;
+        enumShortcodeToSubShape[shortCode] = id;
+
+        MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[id] = weightComputation;
+        MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[id] = shapeDrawer;
     }
 }
