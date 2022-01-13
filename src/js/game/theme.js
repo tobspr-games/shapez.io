@@ -9,5 +9,5 @@ export let THEME = THEMES.light;
 
 export function applyGameTheme(id) {
     THEME = THEMES[id];
-    MODS.callHook("preprocessTheme", { id, theme: THEME });
+    MODS.signals.preprocessTheme.dispatch({ id, theme: THEME });
 }

@@ -2,6 +2,8 @@ import "./core/polyfills";
 import "./core/assert";
 import "./core/error_handler";
 
+import "./mods/modloader";
+
 import { createLogger, logSection } from "./core/logging";
 import { Application } from "./application";
 import { IS_DEBUG } from "./core/config";
@@ -11,7 +13,6 @@ import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
 import { initGameModeRegistry } from "./game/game_mode_registry";
 import { initGameSpeedRegistry } from "./game/game_speed_registry";
-import { MODS } from "./mods/modloader";
 
 const logger = createLogger("main");
 
@@ -19,8 +20,6 @@ if (window.coreThreadLoadedCb) {
     logger.log("Javascript parsed, calling html thread");
     window.coreThreadLoadedCb();
 }
-
-MODS.hook_init();
 
 // Logrocket
 // if (!G_IS_DEV && !G_IS_STANDALONE) {

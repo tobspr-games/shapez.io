@@ -7,6 +7,7 @@ import { createLogger } from "../core/logging";
 import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
 import { Mod } from "./mod";
 import { enumShortcodeToSubShape, enumSubShape, enumSubShapeToShortcode } from "../game/shape_definition";
+import { Loader } from "../core/loader";
 
 const LOG = createLogger("mod-interface");
 
@@ -32,23 +33,22 @@ export class ModInterface {
     /**
      *
      * @param {ModLoader} modLoader
-     * @param {Mod} mod
      */
-    constructor(modLoader, mod) {
+    constructor(modLoader) {
         /**
          * @param {Application} app
          */
         this.app = undefined;
 
         this.modLoader = modLoader;
-        this.mod = mod;
+
+        /** @type {Map<string, AtlasSprite>} */
+        this.lazySprites = new Map();
     }
 
     registerCss(cssString) {
         const element = document.createElement("style");
         element.textContent = cssString;
-        element.setAttribute("data-mod-id", this.mod.metadata.id);
-        element.setAttribute("data-mod-name", this.mod.metadata.name);
         document.head.appendChild(element);
     }
 
@@ -75,23 +75,15 @@ export class ModInterface {
         sprite.linksByResolution["0.5"] = link;
         sprite.linksByResolution["0.75"] = link;
 
-        // @ts-ignore
-        sprite.modSource = this.mod;
+        this.lazySprites.set(spriteId, sprite);
+    }
 
-        const oldSprite = this.modLoader.lazySprites.get(spriteId);
-        if (oldSprite) {
-            LOG.error(
-                "Sprite '" +
-                    spriteId +
-                    "' is provided twice, once by mod '" +
-                    // @ts-ignore
-                    oldSprite.modSource.metadata.name +
-                    "' and once by mod '" +
-                    this.mod.metadata.name +
-                    "'. This could cause artifacts."
-            );
-        }
-        this.modLoader.lazySprites.set(spriteId, sprite);
+    injectSprites() {
+        LOG.log("inject sprites");
+        this.lazySprites.forEach((sprite, key) => {
+            Loader.sprites.set(key, sprite);
+            console.log("override", key);
+        });
     }
 
     /**

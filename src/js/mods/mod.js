@@ -1,5 +1,5 @@
 /* typehints:start */
-import { ModInterface } from "./mod_interface";
+import { ModLoader } from "./modloader";
 /* typehints:end */
 
 export class Mod {
@@ -11,40 +11,13 @@ export class Mod {
      * @param {string} metadata.authorName
      * @param {string} metadata.authorContact
      * @param {string} metadata.id
+     *
+     * @param {ModLoader} modLoader
      */
-    constructor(metadata) {
+    constructor(metadata, modLoader) {
         this.metadata = metadata;
-
-        /**
-         * @type {ModInterface}
-         */
-        this.interface = undefined;
+        this.modLoader = modLoader;
     }
 
-    hook_init() {}
-
-    executeGuarded(taskName, task) {
-        try {
-            return task();
-        } catch (ex) {
-            console.error(ex);
-            alert(
-                "Mod " +
-                    this.metadata.name +
-                    " (version " +
-                    this.metadata.version +
-                    ")" +
-                    " failed to execute '" +
-                    taskName +
-                    "':\n\n" +
-                    ex +
-                    "\n\nPlease forward this to the mod author:\n\n" +
-                    this.metadata.authorName +
-                    " (" +
-                    this.metadata.authorContact +
-                    ")"
-            );
-            throw ex;
-        }
-    }
+    init() {}
 }

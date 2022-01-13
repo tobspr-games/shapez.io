@@ -233,7 +233,7 @@ export class BackgroundResourcesLoader {
                     this.numAssetsToLoadTotal = 0;
                     this.numAssetsLoaded = 0;
                 })
-                .then(MODS.hook_injectSprites.bind(MODS))
+                .then(MODS.modInterface.injectSprites.bind(MODS))
         );
     }
 }

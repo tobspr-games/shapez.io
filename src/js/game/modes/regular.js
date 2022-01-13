@@ -512,6 +512,8 @@ export function generateLevelDefinitions(limitedVersion = false) {
               ]),
     ];
 
+    MODS.signals.modifyLevelDefinitions.dispatch(levelDefinitions);
+
     if (G_IS_DEV) {
         levelDefinitions.forEach(({ shape }) => {
             try {
@@ -521,8 +523,6 @@ export function generateLevelDefinitions(limitedVersion = false) {
             }
         });
     }
-
-    MODS.callHook("modifyLevelDefinitions", levelDefinitions);
 
     return levelDefinitions;
 }
