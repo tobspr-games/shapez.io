@@ -60,5 +60,16 @@ export class DemoMod extends Mod {
         this.modLoader.signals.modifyLevelDefinitions.add(definitions => {
             definitions[0].shape = "LuCuLuCu";
         });
+
+        this.modLoader.modInterface.registerTranslations("en", {
+            ingame: {
+                interactiveTutorial: {
+                    title: "Hello",
+                    hints: {
+                        "1_1_extractor": "World!",
+                    },
+                },
+            },
+        });
     }
 }

@@ -8,6 +8,8 @@ import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
 import { Mod } from "./mod";
 import { enumShortcodeToSubShape, enumSubShape, enumSubShapeToShortcode } from "../game/shape_definition";
 import { Loader } from "../core/loader";
+import { LANGUAGES } from "../languages";
+import { matchDataRecursive, T } from "../translations";
 
 const LOG = createLogger("mod-interface");
 
@@ -35,11 +37,6 @@ export class ModInterface {
      * @param {ModLoader} modLoader
      */
     constructor(modLoader) {
-        /**
-         * @param {Application} app
-         */
-        this.app = undefined;
-
         this.modLoader = modLoader;
 
         /** @type {Map<string, AtlasSprite>} */
@@ -104,5 +101,17 @@ export class ModInterface {
 
         MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[id] = weightComputation;
         MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[id] = shapeDrawer;
+    }
+
+    registerTranslations(language, translations) {
+        const data = LANGUAGES[language];
+        if (!data) {
+            throw new Error("Unknown language: " + language);
+        }
+
+        matchDataRecursive(data.data, translations, true);
+        if (language === "en") {
+            matchDataRecursive(T, translations, true);
+        }
     }
 }

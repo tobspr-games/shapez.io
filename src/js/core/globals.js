@@ -16,5 +16,5 @@ export let GLOBAL_APP = null;
 export function setGlobalApp(app) {
     assert(!GLOBAL_APP, "Create application twice!");
     GLOBAL_APP = app;
-    MODS.linkApp(app);
+    MODS.app = app;
 }
