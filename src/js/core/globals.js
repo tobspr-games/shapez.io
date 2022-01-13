@@ -2,6 +2,8 @@
 import { Application } from "../application";
 /* typehints:end */
 
+import { MODS } from "../mods/modloader";
+
 /**
  * Used for the bug reporter, and the click detector which both have no handles to this.
  * It would be nicer to have no globals, but this is the only one. I promise!
@@ -14,4 +16,5 @@ export let GLOBAL_APP = null;
 export function setGlobalApp(app) {
     assert(!GLOBAL_APP, "Create application twice!");
     GLOBAL_APP = app;
+    MODS.linkApp(app);
 }
