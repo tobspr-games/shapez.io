@@ -35,9 +35,15 @@ export class ModLoader {
     async initMods() {
         LOG.log("hook:init");
 
-        if (G_IS_STANDALONE) {
+        if (G_IS_STANDALONE || G_IS_DEV) {
             try {
-                const mods = await getIPCRenderer().invoke("get-mods");
+                let mods = [];
+                if (G_IS_STANDALONE) {
+                    mods = await getIPCRenderer().invoke("get-mods");
+                } else if (G_IS_DEV && globalConfig.debug.loadDevMod) {
+                    // @ts-expect-error
+                    mods = [require("!!raw-loader!./dev_mod")];
+                }
 
                 mods.forEach(modCode => {
                     window.registerMod = mod => {
@@ -49,10 +55,6 @@ export class ModLoader {
                 });
             } catch (ex) {
                 alert("Failed to load mods: " + ex);
-            }
-        } else if (G_IS_DEV) {
-            if (globalConfig.debug.loadDevMod) {
-                this.modLoadQueue.push(/** @type {any} */ (require("./dev_mod").default));
             }
         }
 
