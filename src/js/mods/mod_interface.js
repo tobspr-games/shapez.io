@@ -63,6 +63,7 @@ export class ModInterface {
         sprite.linksByResolution["0.75"] = link;
 
         this.lazySprites.set(spriteId, sprite);
+        Loader.sprites.set(spriteId, sprite);
     }
 
     injectSprites() {
