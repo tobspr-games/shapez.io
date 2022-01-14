@@ -1,4 +1,22 @@
 registerMod(shapez => {
+    class DemoModComponent extends shapez.Component {
+        static getId() {
+            return "DemoMod";
+        }
+
+        static getSchema() {
+            return {
+                magicNumber: shapez.types.uint,
+            };
+        }
+
+        constructor(magicNumber) {
+            super();
+
+            this.magicNumber = magicNumber;
+        }
+    }
+
     class MetaDemoModBuilding extends shapez.MetaBuilding {
         constructor() {
             super("demoModBuilding");
@@ -8,7 +26,58 @@ registerMod(shapez => {
             return "red";
         }
 
-        setupEntityComponents(entity) {}
+        setupEntityComponents(entity) {
+            entity.addComponent(new DemoModComponent(Math.floor(Math.random() * 100.0)));
+        }
+    }
+
+    class DemoModSystem extends shapez.GameSystemWithFilter {
+        constructor(root) {
+            super(root, [DemoModComponent]);
+        }
+
+        update() {
+            // nothing to do here
+        }
+
+        drawChunk(parameters, chunk) {
+            const contents = chunk.containedEntitiesByLayer.regular;
+            for (let i = 0; i < contents.length; ++i) {
+                const entity = contents[i];
+                const demoComp = entity.components.DemoMod;
+                if (!demoComp) {
+                    continue;
+                }
+
+                const staticComp = entity.components.StaticMapEntity;
+
+                const context = parameters.context;
+                const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+
+                // Culling for better performance
+                if (parameters.visibleRect.containsCircle(center.x, center.y, 40)) {
+                    // Circle
+                    context.fillStyle = "#53cf47";
+                    context.strokeStyle = "#000";
+                    context.lineWidth = 2;
+
+                    const timeFactor = 5.23 * this.root.time.now();
+                    context.beginCircle(
+                        center.x + Math.cos(timeFactor) * 10,
+                        center.y + Math.sin(timeFactor) * 10,
+                        7
+                    );
+                    context.fill();
+                    context.stroke();
+
+                    // Text
+                    context.fillStyle = "#fff";
+                    context.textAlign = "center";
+                    context.font = "12px GameFont";
+                    context.fillText(demoComp.magicNumber, center.x, center.y + 4);
+                }
+            }
+        }
     }
 
     return class ModImpl extends shapez.Mod {
@@ -85,6 +154,17 @@ registerMod(shapez => {
                         },
                     },
                 },
+            });
+
+            // Register a new component
+            this.modInterface.registerComponent(DemoModComponent);
+
+            // Register a new game system which can update and draw stuff
+            this.modInterface.registerGameSystem({
+                id: "demo_mod",
+                systemClass: DemoModSystem,
+                before: "belt",
+                drawHooks: ["staticAfter"],
             });
 
             // Register the new building

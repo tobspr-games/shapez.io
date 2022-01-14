@@ -1,5 +1,6 @@
 /* typehints:start */
 import { ModLoader } from "./modloader";
+import { GameSystem } from "../game/game_system";
 import { Component } from "../game/component";
 import { MetaBuilding } from "../game/meta_building";
 /* typehints:end */
@@ -19,6 +20,8 @@ import { matchDataRecursive, T } from "../translations";
 import { gBuildingVariants, registerBuildingVariant } from "../game/building_codes";
 import { gComponentRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
+import { MODS_ADDITIONAL_SYSTEMS } from "../game/game_system_manager";
+import { MOD_CHUNK_DRAW_HOOKS } from "../game/map_chunk_view";
 
 const LOG = createLogger("mod-interface");
 
@@ -113,6 +116,40 @@ export class ModInterface {
      */
     registerComponent(component) {
         gComponentRegistry.register(component);
+    }
+
+    /**
+     *
+     * @param {Object} param0
+     * @param {string} param0.id
+     * @param {new (any) => GameSystem} param0.systemClass
+     * @param {string=} param0.before
+     * @param {string[]=} param0.drawHooks
+     */
+    registerGameSystem({ id, systemClass, before, drawHooks }) {
+        const key = before || "key";
+        const payload = { id, systemClass };
+
+        if (MODS_ADDITIONAL_SYSTEMS[key]) {
+            MODS_ADDITIONAL_SYSTEMS[key].push(payload);
+        } else {
+            MODS_ADDITIONAL_SYSTEMS[key] = [payload];
+        }
+        if (drawHooks) {
+            drawHooks.forEach(hookId => this.registerGameSystemDrawHook(hookId, id));
+        }
+    }
+
+    /**
+     *
+     * @param {string} hookId
+     * @param {string} systemId
+     */
+    registerGameSystemDrawHook(hookId, systemId) {
+        if (!MOD_CHUNK_DRAW_HOOKS[hookId]) {
+            throw new Error("bad game system draw hook: " + hookId);
+        }
+        MOD_CHUNK_DRAW_HOOKS[hookId].push(systemId);
     }
 
     /**
