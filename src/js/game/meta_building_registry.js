@@ -205,18 +205,15 @@ export function initMetaBuildingRegistry() {
             const id = metaBuilding.getId();
             if (!["hub"].includes(id)) {
                 if (!KEYMAPPINGS.buildings[id]) {
-                    assertAlways(
-                        false,
+                    console.error(
                         "Building " + id + " has no keybinding assigned! Add it to key_action_mapper.js"
                     );
                 }
 
                 if (!T.buildings[id]) {
-                    assertAlways(false, "Translation for building " + id + " missing!");
-                }
-
-                if (!T.buildings[id].default) {
-                    assertAlways(false, "Translation for building " + id + " missing (default variant)!");
+                    console.error("Translation for building " + id + " missing!");
+                } else if (!T.buildings[id].default) {
+                    console.error("Translation for building " + id + " missing (default variant)!");
                 }
             }
         });

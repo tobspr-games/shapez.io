@@ -3,6 +3,7 @@ import { Signal } from "../core/signal";
 import { DemoMod } from "./demo_mod";
 import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
+import { BaseHUDPart } from "../game/hud/base_hud_part";
 
 const LOG = createLogger("mods");
 
@@ -25,6 +26,9 @@ export class ModLoader {
             injectSprites: new Signal(),
             preprocessTheme: /** @type {TypedSignal<[Object]>} */ (new Signal()),
             modifyLevelDefinitions: /** @type {TypedSignal<[Array[Object]]>} */ (new Signal()),
+
+            hudElementInitialized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
+            hudElementFinalized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
         };
 
         this.registerMod(DemoMod);

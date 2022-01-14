@@ -1,6 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Signal } from "../../core/signal";
+import { MODS } from "../../mods/modloader";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -91,6 +92,7 @@ export class GameHUD {
 
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
+            MODS.signals.hudElementInitialized.dispatch(this.parts[key]);
             this.parts[key].createElements(frag);
         }
 
@@ -98,6 +100,7 @@ export class GameHUD {
 
         for (const key in this.parts) {
             this.parts[key].initialize();
+            MODS.signals.hudElementFinalized.dispatch(this.parts[key]);
         }
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
