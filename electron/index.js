@@ -7,15 +7,17 @@ const fs = require("fs");
 const steam = require("./steam");
 const asyncLock = require("async-lock");
 
-const isDev = process.argv.indexOf("--dev") >= 0;
-const isLocal = process.argv.indexOf("--local") >= 0;
-const safeMode = process.argv.indexOf("--safe-mode") >= 0;
+const isDev = app.commandLine.hasSwitch("dev");
+const isLocal = app.commandLine.hasSwitch("local");
+const safeMode = app.commandLine.hasSwitch("safe-mode");
+const externalMod = app.commandLine.getSwitchValue("load-mod");
 
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
+
 let storePath = path.join(roamingFolder, "shapez.io", "saves");
 let modsPath = path.join(roamingFolder, "shapez.io", "mods");
 
@@ -122,7 +124,7 @@ function createWindow() {
 if (!app.requestSingleInstanceLock()) {
     app.exit(0);
 } else {
-    app.on("second-instance", (event, commandLine, workingDirectory) => {
+    app.on("second-instance", () => {
         // Someone tried to run a second instance, we should focus
         if (win) {
             if (win.isMinimized()) {
@@ -144,7 +146,7 @@ ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);
 });
 
-ipcMain.on("exit-app", (event, flag) => {
+ipcMain.on("exit-app", () => {
     win.close();
     app.quit();
 });
@@ -175,14 +177,14 @@ async function writeFileSafe(filename, contents) {
         if (!fs.existsSync(filename)) {
             // this one is easy
             console.log(prefix, "Writing file instantly because it does not exist:", niceFileName(filename));
-            await fs.promises.writeFile(filename, contents, { encoding: "utf8" });
+            await fs.promises.writeFile(filename, contents, "utf8");
             return;
         }
 
         // first, write a temporary file (.tmp-XXX)
         const tempName = filename + ".tmp-" + transactionId;
         console.log(prefix, "Writing temporary file", niceFileName(tempName));
-        await fs.promises.writeFile(tempName, contents, { encoding: "utf8" });
+        await fs.promises.writeFile(tempName, contents, "utf8");
 
         // now, rename the original file to (.backup-XXX)
         const oldTemporaryName = filename + ".backup-" + transactionId;
@@ -237,7 +239,7 @@ async function performFsJob(job) {
             }
 
             try {
-                const data = await fs.promises.readFile(fname, { encoding: "utf8" });
+                const data = await fs.promises.readFile(fname, "utf8");
                 return {
                     success: true,
                     data,
@@ -278,7 +280,7 @@ async function performFsJob(job) {
         }
 
         default:
-            throw new Error("Unkown fs job: " + job.type);
+            throw new Error("Unknown fs job: " + job.type);
     }
 }
 
@@ -291,20 +293,25 @@ ipcMain.on("open-mods-folder", async () => {
     shell.openPath(modsPath);
 });
 
-ipcMain.handle("get-mods", async (event, arg) => {
+ipcMain.handle("get-mods", async () => {
     if (safeMode) {
-        console.warn("Not loading mods due to safe mode");
-        return [];
+        console.log("Safe Mode enabled for mods, skipping mod search");
     }
-    if (!fs.existsSync(modsPath)) {
-        console.warn("Mods folder not found:", modsPath);
-        return [];
-    }
+
     try {
         console.log("Loading mods from", modsPath);
-        let entries = fs.readdirSync(modsPath);
-        entries = entries.filter(entry => entry.endsWith(".js"));
-        return entries.map(filename => fs.readFileSync(path.join(modsPath, filename), { encoding: "utf8" }));
+        let modFiles = safeMode
+            ? []
+            : fs
+                  .readdirSync(modsPath)
+                  .filter(filename => filename.endsWith(".js"))
+                  .map(filename => path.join(modsPath, filename));
+        if (externalMod) {
+            console.log("Adding external mod source:", externalMod);
+            modFiles.push(externalMod);
+        }
+
+        return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
     } catch (ex) {
         throw new Error(ex);
     }

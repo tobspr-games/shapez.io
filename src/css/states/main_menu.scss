@@ -304,6 +304,7 @@
         position: relative;
         text-align: left;
         align-items: flex-start;
+        @include S(width, 250px);
         @include S(padding, 15px);
         @include S(padding-bottom, 10px);
         @include S(border-radius, $globalBorderRadius);
@@ -337,7 +338,7 @@
         .dlcHint {
             @include SuperSmallText;
             @include S(margin-top, 10px);
-            @include S(width, 300px);
+            width: 100%;
 
             display: grid;
             grid-template-columns: 1fr auto;

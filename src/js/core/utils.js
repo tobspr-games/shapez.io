@@ -395,7 +395,7 @@ export function clamp(v, minimum = 0, maximum = 1) {
  * @param {Array<string>=} classes
  * @param {string=} innerHTML
  */
-function makeDivElement(id = null, classes = [], innerHTML = "") {
+export function makeDivElement(id = null, classes = [], innerHTML = "") {
     const div = document.createElement("div");
     if (id) {
         div.id = id;

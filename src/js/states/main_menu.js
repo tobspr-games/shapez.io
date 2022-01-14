@@ -8,11 +8,10 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
     formatSecondsToTimeAgo,
     generateFileDownload,
-    getIPCRenderer,
     isSupportedBrowser,
     makeButton,
-    makeButtonElement,
     makeDiv,
+    makeDivElement,
     removeAllChildren,
     startFileChoose,
     waitNextFrame,
@@ -386,44 +385,41 @@ export class MainMenuState extends GameState {
         const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
         removeAllChildren(buttonContainer);
 
+        const outerDiv = makeDivElement(null, ["outer"], null);
+
         // Import button
-        const importButtonElement = makeButtonElement(
-            ["importButton", "styledButton"],
-            T.mainMenu.importSavegame
+        this.trackClicks(
+            makeButton(outerDiv, ["importButton", "styledButton"], T.mainMenu.importSavegame),
+            this.requestImportSavegame
         );
-        this.trackClicks(importButtonElement, this.requestImportSavegame);
 
         if (this.savedGames.length > 0) {
             // Continue game
-            const continueButton = makeButton(
-                buttonContainer,
-                ["continueButton", "styledButton"],
-                T.mainMenu.continue
+            this.trackClicks(
+                makeButton(buttonContainer, ["continueButton", "styledButton"], T.mainMenu.continue),
+                this.onContinueButtonClicked
             );
-            this.trackClicks(continueButton, this.onContinueButtonClicked);
 
-            const outerDiv = makeDiv(buttonContainer, null, ["outer"], null);
-            outerDiv.appendChild(importButtonElement);
-            const newGameButton = makeButton(
-                this.htmlElement.querySelector(".mainContainer .outer"),
-                ["newGameButton", "styledButton"],
-                T.mainMenu.newGame
+            // New game
+            this.trackClicks(
+                makeButton(outerDiv, ["newGameButton", "styledButton"], T.mainMenu.newGame),
+                this.onPlayButtonClicked
             );
-            this.trackClicks(newGameButton, this.onPlayButtonClicked);
+
+            // Mods
+            this.trackClicks(
+                makeButton(outerDiv, ["modsButton", "styledButton"], "&nbsp;"),
+                this.onModsClicked
+            );
         } else {
             // New game
-            const playBtn = makeButton(buttonContainer, ["playButton", "styledButton"], T.mainMenu.play);
-            this.trackClicks(playBtn, this.onPlayButtonClicked);
-            buttonContainer.appendChild(importButtonElement);
+            this.trackClicks(
+                makeButton(buttonContainer, ["playButton", "styledButton"], T.mainMenu.play),
+                this.onPlayButtonClicked
+            );
         }
 
-        // Mods
-        const modsBtn = makeButton(
-            this.htmlElement.querySelector(".mainContainer .outer"),
-            ["modsButton", "styledButton"],
-            "&nbsp;"
-        );
-        this.trackClicks(modsBtn, this.onModsClicked);
+        buttonContainer.appendChild(outerDiv);
     }
 
     onPuzzleModeButtonClicked(force = false) {
