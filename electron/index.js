@@ -9,6 +9,7 @@ const asyncLock = require("async-lock");
 
 const isDev = process.argv.indexOf("--dev") >= 0;
 const isLocal = process.argv.indexOf("--local") >= 0;
+const safeMode = process.argv.indexOf("--safe-mode") >= 0;
 
 const roamingFolder =
     process.env.APPDATA ||
@@ -16,6 +17,7 @@ const roamingFolder =
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
 let storePath = path.join(roamingFolder, "shapez.io", "saves");
+let modsPath = path.join(app.getAppPath(), "mods");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
@@ -78,6 +80,8 @@ function createWindow() {
 
     if (isDev) {
         menu = new Menu();
+
+        win.toggleDevTools();
 
         const mainItem = new MenuItem({
             label: "Toggle Dev Tools",
@@ -277,6 +281,29 @@ async function performFsJob(job) {
 ipcMain.on("fs-job", async (event, arg) => {
     const result = await performFsJob(arg);
     event.reply("fs-response", { id: arg.id, result });
+});
+
+ipcMain.on("open-mods-folder", async () => {
+    shell.openPath(modsPath);
+});
+
+ipcMain.handle("get-mods", async (event, arg) => {
+    if (safeMode) {
+        console.warn("Not loading mods due to safe mode");
+        return [];
+    }
+    if (!fs.existsSync(modsPath)) {
+        console.warn("Mods folder not found:", modsPath);
+        return [];
+    }
+    try {
+        console.log("Loading mods from", modsPath);
+        let entries = fs.readdirSync(modsPath);
+        entries = entries.filter(entry => entry.endsWith(".js"));
+        return entries.map(filename => fs.readFileSync(path.join(modsPath, filename), { encoding: "utf8" }));
+    } catch (ex) {
+        throw new Error(ex);
+    }
 });
 
 steam.init(isDev);

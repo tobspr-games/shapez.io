@@ -1,4 +1,6 @@
+import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
+import { getIPCRenderer } from "../core/utils";
 import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
 import { MOD_SIGNALS } from "./mod_signals";
@@ -20,16 +22,38 @@ export class ModLoader {
         this.initialized = false;
 
         this.signals = MOD_SIGNALS;
-
-        this.registerMod(/** @type {any} */ (require("./demo_mod").default));
     }
 
     linkApp(app) {
         this.app = app;
     }
 
-    initMods() {
+    anyModsActive() {
+        return this.mods.length > 0;
+    }
+
+    async initMods() {
         LOG.log("hook:init");
+
+        if (G_IS_STANDALONE) {
+            try {
+                const mods = await getIPCRenderer().invoke("get-mods");
+
+                mods.forEach(modCode => {
+                    const registerMod = mod => {
+                        this.modLoadQueue.push(mod);
+                    };
+                    // ugh
+                    eval(modCode);
+                });
+            } catch (ex) {
+                alert("Failed to load mods: " + ex);
+            }
+        } else if (G_IS_DEV) {
+            if (globalConfig.debug.loadDevMod) {
+                this.modLoadQueue.push(/** @type {any} */ (require("./dev_mod").default));
+            }
+        }
 
         let exports = {};
 
@@ -66,17 +90,6 @@ export class ModLoader {
         });
         this.modLoadQueue = [];
         this.signals.postInit.dispatch();
-    }
-
-    /**
-     *
-     * @param {(Object) => (new (Application, ModLoader) => Mod)} mod
-     */
-    registerMod(mod) {
-        if (this.initialized) {
-            throw new Error("Mods are already initialized, can not add mod afterwards.");
-        }
-        this.modLoadQueue.push(mod);
     }
 }
 

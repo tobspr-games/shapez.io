@@ -1,7 +1,3 @@
-/* typehints:start */
-import { Entity } from "../game/entity";
-/* typehints:end */
-
 export default function (shapez) {
     class MetaDemoModBuilding extends shapez.MetaBuilding {
         constructor() {
@@ -12,10 +8,6 @@ export default function (shapez) {
             return "red";
         }
 
-        /**
-         * Creates the entity at the given location
-         * @param {Entity} entity
-         */
         setupEntityComponents(entity) {}
     }
 
@@ -36,11 +28,11 @@ export default function (shapez) {
 
         init() {
             // Add some custom css
-            this.modInterface.registerCss(`
-                * {
-                    font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
-                }
-            `);
+            // this.modInterface.registerCss(`
+            //     button {
+            //         font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
+            //     }
+            // `);
 
             // Replace a builtin sprite
             this.modInterface.registerSprite("sprites/colors/red.png", RESOURCES["red.png"]);

@@ -8,6 +8,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
     formatSecondsToTimeAgo,
     generateFileDownload,
+    getIPCRenderer,
     isSupportedBrowser,
     makeButton,
     makeButtonElement,
@@ -17,6 +18,7 @@ import {
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { MODS } from "../mods/modloader";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
 import { getApplicationSettingById } from "../profile/application_settings";
@@ -41,6 +43,7 @@ export class MainMenuState extends GameState {
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
         const showPuzzleDLC = !G_WEGAME_VERSION && (G_IS_STANDALONE || G_IS_DEV);
         const showWegameFooter = G_WEGAME_VERSION;
+        const hasMods = MODS.anyModsActive();
 
         let showExternalLinks = true;
 
@@ -94,7 +97,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${showUpdateLabel ? `<span class="updateLabel">v${G_BUILD_VERSION}!</span>` : ""}
+                ${showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""}
             </div>
 
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
@@ -112,7 +115,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    showPuzzleDLC && ownsPuzzleDLC
+                    showPuzzleDLC && ownsPuzzleDLC && !hasMods
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -126,7 +129,7 @@ export class MainMenuState extends GameState {
                 }
 
                 ${
-                    showPuzzleDLC && !ownsPuzzleDLC
+                    showPuzzleDLC && !ownsPuzzleDLC && !hasMods
                         ? `
                     <div class="puzzleContainer notOwned">
                         <span class="badge">
@@ -147,6 +150,49 @@ export class MainMenuState extends GameState {
                     </div>`
                         : ""
                 }
+                ${
+                    hasMods
+                        ? `
+
+                        <div class="modsList">
+                            <h3>${T.mainMenu.mods.title}
+
+                            </h3>
+
+                            <div class="modsList">
+                            ${MODS.mods
+                                .map(mod => {
+                                    return `
+                                    <div class="mod">
+                                        <span class="name">${mod.metadata.name}</span>
+                                        <span class="version">${T.mainMenu.mods.version.replace(
+                                            "<version>",
+                                            mod.metadata.version
+                                        )}</span>
+                                        <span class="author">${T.mainMenu.mods.author.replace(
+                                            "<author>",
+                                            mod.metadata.authorName
+                                        )}</span>
+                                    </div>
+                                `;
+                                })
+                                .join("")}
+                            </div>
+
+                            <div class="dlcHint">
+                                ${T.mainMenu.modsWarningPuzzleDLC}
+                                <button class="styledButton modsOpenFolder">${
+                                    T.mainMenu.mods.openFolder
+                                }</button>
+
+                            </div>
+
+
+                        </div>
+                        `
+                        : ""
+                }
+
             </div>
 
             ${
@@ -335,6 +381,7 @@ export class MainMenuState extends GameState {
             ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
             ".puzzleDlcGetButton": this.onPuzzleWishlistButtonClicked,
             ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
+            ".modsOpenFolder": this.openModsFolder,
         };
 
         for (const key in clickHandling) {
@@ -714,6 +761,14 @@ export class MainMenuState extends GameState {
                     savegame,
                 });
             });
+    }
+
+    openModsFolder() {
+        if (!G_IS_STANDALONE) {
+            this.dialogs.showWarning(T.global.error, T.mainMenu.mods.folderOnlyStandalone);
+            return;
+        }
+        getIPCRenderer().send("open-mods-folder");
     }
 
     onLeave() {

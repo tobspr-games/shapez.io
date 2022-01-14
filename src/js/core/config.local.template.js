@@ -116,5 +116,8 @@ export default {
     // Disables slow asserts, useful for debugging performance
     // disableSlowAsserts: true,
     // -----------------------------------------------------------------------------------
+    // Loads the dev_mod.js for developing new mods
+    // loadDevMod: true,
+    // -----------------------------------------------------------------------------------
     /* dev:end */
 };

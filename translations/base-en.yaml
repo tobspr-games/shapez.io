@@ -126,6 +126,16 @@ mainMenu:
     puzzleDlcWishlist: Wishlist now!
     puzzleDlcViewNow: View Dlc
 
+    modsWarningPuzzleDLC: >-
+        Playing the Puzzle DLC is not possible with mods. Please disable all mods to play the DLC.
+
+    mods:
+        title: Active Mods
+        author: by <author>
+        version: v<version>
+        openFolder: Open Folder
+        folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+
 puzzleMenu:
     play: Play
     edit: Edit

@@ -130,8 +130,6 @@ export class Application {
         // Store the mouse position, or null if not available
         /** @type {Vector|null} */
         this.mousePosition = null;
-
-        MODS.initMods();
     }
 
     /**
@@ -331,8 +329,11 @@ export class Application {
     /**
      * Boots the application
      */
-    boot() {
+    async boot() {
         console.log("Booting ...");
+
+        await MODS.initMods();
+
         this.registerStates();
         this.registerEventListeners();
 
