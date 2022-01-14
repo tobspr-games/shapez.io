@@ -40,11 +40,12 @@ export class ModLoader {
                 const mods = await getIPCRenderer().invoke("get-mods");
 
                 mods.forEach(modCode => {
-                    const registerMod = mod => {
+                    window.registerMod = mod => {
                         this.modLoadQueue.push(mod);
                     };
                     // ugh
                     eval(modCode);
+                    delete window.registerMod;
                 });
             } catch (ex) {
                 alert("Failed to load mods: " + ex);
