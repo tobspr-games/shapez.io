@@ -185,11 +185,14 @@
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
-            color: #300bff;
-            @include Heading;
+            color: #fff;
+            @include PlainText;
             font-weight: bold;
             @include S(right, 40px);
             @include S(bottom, 20px);
+            background: $modsColor;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(padding, 0, 5px, 1px, 5px);
 
             @include InlineAnimation(1.3s ease-in-out infinite) {
                 50% {
@@ -305,14 +308,36 @@
         @include S(padding-bottom, 10px);
         @include S(border-radius, $globalBorderRadius);
 
-        h3 {
+        .header {
+            display: flex;
+            width: 100%;
+            align-items: center;
             @include S(margin-bottom, 10px);
+
+            .editMods {
+                margin-left: auto;
+                @include S(width, 20px);
+                @include S(height, 20px);
+                padding: 0;
+                opacity: 0.5;
+                background: transparent center center/ 80% no-repeat;
+                & {
+                    /* @load-async */
+                    background-image: uiResource("icons/edit_key.png") !important;
+                }
+            }
+        }
+
+        h3 {
             @include Heading;
+            color: $modsColor;
+            margin: 0;
         }
 
         .dlcHint {
             @include SuperSmallText;
             @include S(margin-top, 10px);
+            @include S(width, 300px);
 
             display: grid;
             grid-template-columns: 1fr auto;
@@ -326,6 +351,7 @@
             @include S(border-radius, $globalBorderRadius);
             @include S(padding, 5px);
             box-sizing: border-box;
+            @include PlainText;
             @include S(margin-bottom, 5px);
             display: grid;
             grid-template-columns: 1fr auto auto;
@@ -375,6 +401,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .modeButtons {
@@ -419,27 +446,33 @@
             }
         }
 
-        .importButton {
+        .outer {
             @include S(margin-top, 15px);
+        }
+
+        .importButton {
             @include IncreasedClickArea(0px);
         }
 
         .newGameButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-top, 15px);
             @include S(margin-left, 15px);
         }
 
-        .playModeButton {
+        .modsButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-top, 15px);
             @include S(margin-left, 15px);
-        }
 
-        .editModeButton {
-            @include IncreasedClickArea(0px);
-            @include S(margin-top, 15px);
-            @include S(margin-left, 15px);
+            @include S(width, 20px);
+
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/mods_white.png") !important;
+            }
+            background-position: center center;
+            background-size: D(15px);
+            background-color: $modsColor !important;
+            background-repeat: no-repeat;
         }
 
         .savegames {

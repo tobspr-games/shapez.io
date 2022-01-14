@@ -16,11 +16,12 @@ registerMod(shapez => {
             super(
                 app,
                 {
-                    authorContact: "tobias@tobspr.io",
-                    authorName: "tobspr",
+                    website: "https://tobspr.io",
+                    author: "tobspr",
                     name: "Demo Mod",
                     version: "1",
                     id: "demo-mod",
+                    description: "A simple mod to demonstrate the capatibilities of the mod loader.",
                 },
                 modLoader
             );
@@ -28,11 +29,11 @@ registerMod(shapez => {
 
         init() {
             // Add some custom css
-            this.modInterface.registerCss(`
-                * {
-                    font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
-                }
-            `);
+            // this.modInterface.registerCss(`
+            //     * {
+            //         font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
+            //     }
+            // `);
 
             // Replace a builtin sprite
             ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {

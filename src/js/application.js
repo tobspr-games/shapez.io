@@ -37,6 +37,7 @@ import { LoginState } from "./states/login";
 import { WegameSplashState } from "./states/wegame_splash";
 import { MODS } from "./mods/modloader";
 import { MOD_SIGNALS } from "./mods/mod_signals";
+import { ModsState } from "./states/mods";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -171,6 +172,7 @@ export class Application {
             ChangelogState,
             PuzzleMenuState,
             LoginState,
+            ModsState,
         ];
 
         for (let i = 0; i < states.length; ++i) {

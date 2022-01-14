@@ -155,36 +155,22 @@ export class MainMenuState extends GameState {
                         ? `
 
                         <div class="modsList">
-                            <h3>${T.mainMenu.mods.title}
-
-                            </h3>
-
+                            <div class="header">
+                                <h3>${T.mods.title}</h3>
+                                <button class="styledButton editMods"></button>
+                            </div>
                             <div class="modsList">
                             ${MODS.mods
                                 .map(mod => {
                                     return `
-                                    <div class="mod">
-                                        <span class="name">${mod.metadata.name}</span>
-                                        <span class="version">${T.mainMenu.mods.version.replace(
-                                            "<version>",
-                                            mod.metadata.version
-                                        )}</span>
-                                        <span class="author">${T.mainMenu.mods.author.replace(
-                                            "<author>",
-                                            mod.metadata.authorName
-                                        )}</span>
-                                    </div>
+                                    <div class="mod">${mod.metadata.name} @ v${mod.metadata.version}</div>
                                 `;
                                 })
                                 .join("")}
                             </div>
 
                             <div class="dlcHint">
-                                ${T.mainMenu.modsWarningPuzzleDLC}
-                                <button class="styledButton modsOpenFolder">${
-                                    T.mainMenu.mods.openFolder
-                                }</button>
-
+                                ${T.mainMenu.mods.warningPuzzleDLC}
                             </div>
 
 
@@ -381,7 +367,7 @@ export class MainMenuState extends GameState {
             ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
             ".puzzleDlcGetButton": this.onPuzzleWishlistButtonClicked,
             ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
-            ".modsOpenFolder": this.openModsFolder,
+            ".editMods": this.onModsClicked,
         };
 
         for (const key in clickHandling) {
@@ -430,6 +416,14 @@ export class MainMenuState extends GameState {
             this.trackClicks(playBtn, this.onPlayButtonClicked);
             buttonContainer.appendChild(importButtonElement);
         }
+
+        // Mods
+        const modsBtn = makeButton(
+            this.htmlElement.querySelector(".mainContainer .outer"),
+            ["modsButton", "styledButton"],
+            "&nbsp;"
+        );
+        this.trackClicks(modsBtn, this.onModsClicked);
     }
 
     onPuzzleModeButtonClicked(force = false) {
@@ -742,6 +736,12 @@ export class MainMenuState extends GameState {
         );
     }
 
+    onModsClicked() {
+        this.moveToState("ModsState", {
+            backToStateId: "MainMenuState",
+        });
+    }
+
     onContinueButtonClicked() {
         let latestLastUpdate = 0;
         let latestInternalId;
@@ -761,14 +761,6 @@ export class MainMenuState extends GameState {
                     savegame,
                 });
             });
-    }
-
-    openModsFolder() {
-        if (!G_IS_STANDALONE) {
-            this.dialogs.showWarning(T.global.error, T.mainMenu.mods.folderOnlyStandalone);
-            return;
-        }
-        getIPCRenderer().send("open-mods-folder");
     }
 
     onLeave() {

@@ -126,15 +126,10 @@ mainMenu:
     puzzleDlcWishlist: Wishlist now!
     puzzleDlcViewNow: View Dlc
 
-    modsWarningPuzzleDLC: >-
-        Playing the Puzzle DLC is not possible with mods. Please disable all mods to play the DLC.
-
     mods:
         title: Active Mods
-        author: by <author>
-        version: v<version>
-        openFolder: Open Folder
-        folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+        warningPuzzleDLC: >-
+            Playing the Puzzle DLC is not possible with mods. Please disable all mods to play the DLC.
 
 puzzleMenu:
     play: Play
@@ -1096,6 +1091,22 @@ storyRewards:
         desc: >-
             You have reached the end of the demo version!
 
+mods:
+    title: Mods
+
+    author: Author
+    version: Version
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+
+    modsInfo: >-
+        To install and manage mods, copy them to the mods folder within the game directory. You can also use the 'Open Mods Folder' button on the top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying the mod file from or to the mods/ folder. However, being able to toggle them here is planned for a future update!
+
 settings:
     title: Settings
     categories:
@@ -1111,6 +1122,7 @@ settings:
     buildDate: Built <at-date>
     tickrateHz: <amount> Hz
     rangeSliderPercentage: <amount> %
+    newBadge: New!
 
     labels:
         uiScale:
