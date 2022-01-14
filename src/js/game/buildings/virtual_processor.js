@@ -19,7 +19,7 @@ export const enumVirtualProcessorVariants = {
 };
 
 /** @enum {string} */
-export const enumVariantToGate = {
+const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.cutter,
     [enumVirtualProcessorVariants.rotater]: enumLogicGateType.rotater,
     [enumVirtualProcessorVariants.unstacker]: enumLogicGateType.unstacker,

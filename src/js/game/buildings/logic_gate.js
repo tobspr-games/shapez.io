@@ -15,7 +15,7 @@ export const enumLogicGateVariants = {
 };
 
 /** @enum {string} */
-export const enumVariantToGate = {
+const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.and,
     [enumLogicGateVariants.not]: enumLogicGateType.not,
     [enumLogicGateVariants.xor]: enumLogicGateType.xor,

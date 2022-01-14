@@ -1,7 +1,6 @@
 import { createLogger } from "../core/logging";
 import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
-import { MetaBuilding } from "../game/meta_building";
 import { MOD_SIGNALS } from "./mod_signals";
 
 const LOG = createLogger("mods");
@@ -45,7 +44,7 @@ export class ModLoader {
                         continue;
                     }
                     if (exports[member]) {
-                        continue;
+                        throw new Error("Duplicate export of " + member);
                     }
                     Object.defineProperty(exports, member, {
                         get() {
