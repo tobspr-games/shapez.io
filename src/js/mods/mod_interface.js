@@ -83,6 +83,41 @@ export class ModInterface {
 
     /**
      *
+     * @param {string} imageBase64
+     * @param {string} jsonTextData
+     */
+    registerAtlas(imageBase64, jsonTextData) {
+        const atlasData = JSON.parse(jsonTextData);
+        const img = new Image();
+        img.src = imageBase64;
+
+        const sourceData = atlasData.frames;
+        for (const spriteName in sourceData) {
+            const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
+
+            const sprite = new AtlasSprite(spriteName);
+            Loader.sprites.set(spriteName, sprite);
+            sprite.frozen = true;
+
+            const link = new SpriteAtlasLink({
+                packedX: frame.x,
+                packedY: frame.y,
+                packedW: frame.w,
+                packedH: frame.h,
+                packOffsetX: spriteSourceSize.x,
+                packOffsetY: spriteSourceSize.y,
+                atlas: img,
+                w: sourceSize.w,
+                h: sourceSize.h,
+            });
+            sprite.linksByResolution["0.25"] = link;
+            sprite.linksByResolution["0.5"] = link;
+            sprite.linksByResolution["0.75"] = link;
+        }
+    }
+
+    /**
+     *
      * @param {object} param0
      * @param {string} param0.id
      * @param {string} param0.shortCode
