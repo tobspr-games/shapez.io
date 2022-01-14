@@ -19,7 +19,7 @@ export class StaticMapEntityComponent extends Component {
             originalRotation: types.float,
 
             // See building_codes.js
-            code: types.uint,
+            code: types.uintOrString,
         };
     }
 
@@ -99,7 +99,7 @@ export class StaticMapEntityComponent extends Component {
      * @param {Vector=} param0.tileSize Size of the entity in tiles
      * @param {number=} param0.rotation Rotation in degrees. Must be multiple of 90
      * @param {number=} param0.originalRotation Original Rotation in degrees. Must be multiple of 90
-     * @param {number=} param0.code Building code
+     * @param {number|string=} param0.code Building code
      */
     constructor({
         origin = new Vector(),
