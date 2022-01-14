@@ -6,7 +6,6 @@ import { MetaBuilding } from "../game/meta_building";
 /* typehints:end */
 
 import { defaultBuildingVariant } from "../game/meta_building";
-import { createLogger } from "../core/logging";
 import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
 import {
     enumShortcodeToSubShape,
@@ -22,8 +21,8 @@ import { gComponentRegistry, gMetaBuildingRegistry } from "../core/global_regist
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 import { MODS_ADDITIONAL_SYSTEMS } from "../game/game_system_manager";
 import { MOD_CHUNK_DRAW_HOOKS } from "../game/map_chunk_view";
-
-const LOG = createLogger("mod-interface");
+import { KEYMAPPINGS } from "../game/key_action_mapper";
+import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 
 export class ModInterface {
     /**
@@ -32,9 +31,6 @@ export class ModInterface {
      */
     constructor(modLoader) {
         this.modLoader = modLoader;
-
-        /** @type {Map<string, AtlasSprite>} */
-        this.lazySprites = new Map();
     }
 
     registerCss(cssString) {
@@ -247,6 +243,66 @@ export class ModInterface {
         if (buildingIconBase64) {
             this.setBuildingToolbarIcon(id, buildingIconBase64);
         }
+    }
+
+    /**
+     *
+     * @param {Object} param0
+     * @param {string} param0.id
+     * @param {number} param0.keyCode
+     * @param {string} param0.translation
+     * @param {boolean=} param0.repeated
+     * @param {((GameRoot) => void)=} param0.handler
+     * @param {{shift?: boolean; alt?: boolean; ctrl?: boolean}=} param0.modifiers
+     * @param {boolean=} param0.builtin
+     */
+    registerIngameKeybinding({
+        id,
+        keyCode,
+        translation,
+        modifiers = {},
+        repeated = false,
+        builtin = false,
+        handler = null,
+    }) {
+        if (!KEYMAPPINGS.mods) {
+            KEYMAPPINGS.mods = {};
+        }
+        const binding = (KEYMAPPINGS.mods[id] = {
+            keyCode,
+            id,
+            repeated,
+            modifiers,
+            builtin,
+        });
+        this.registerTranslations("en", {
+            keybindings: {
+                mappings: {
+                    [id]: translation,
+                },
+            },
+        });
+
+        if (handler) {
+            this.modLoader.signals.gameStarted.add(root => {
+                root.keyMapper.getBindingById(id).addToTop(handler.bind(null, root));
+            });
+        }
+
+        return binding;
+    }
+
+    /**
+     * @returns {HUDModalDialogs}
+     */
+    get dialogs() {
+        const state = this.modLoader.app.stateMgr.currentState;
+        // @ts-ignore
+        if (state.dialogs) {
+            // @ts-ignore
+            return state.dialogs;
+        }
+        throw new Error("Tried to access dialogs but current state doesn't support it");
     }
 
     setBuildingToolbarIcon(buildingId, iconBase64) {

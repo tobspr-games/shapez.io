@@ -194,6 +194,20 @@ registerMod(shapez => {
                     element.primaryBuildings.push(MetaDemoModBuilding);
                 }
             });
+
+            // Register keybinding
+            this.modInterface.registerIngameKeybinding({
+                id: "demo_mod_binding",
+                keyCode: shapez.keyToKeyCode("F"),
+                translation: "mymod: Do something (always with SHIFT)",
+                modifiers: {
+                    shift: true,
+                },
+                handler: root => {
+                    this.dialogs.showInfo("Mod Message", "It worked!");
+                    return shapez.STOP_PROPAGATION;
+                },
+            });
         }
     };
 });

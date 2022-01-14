@@ -211,6 +211,7 @@ export class InputDistributor {
                 keyCode: keyCode,
                 shift: event.shiftKey,
                 alt: event.altKey,
+                ctrl: event.ctrlKey,
                 initial: isInitial,
                 event,
             }) === STOP_PROPAGATION

@@ -1328,6 +1328,7 @@ keybindings:
         massSelect: Mass Select
         buildings: Building Shortcuts
         placementModifiers: Placement Modifiers
+        mods: Provided by Mods
 
     mappings:
         confirm: Confirm

@@ -89,10 +89,10 @@
             @include S(border-radius, $globalBorderRadius);
             background: $accentColorBright;
             @include S(margin-bottom, 4px);
-            @include S(padding, 7px);
-            @include S(grid-gap, 5px);
+            @include S(padding, 7px, 10px);
+            @include S(grid-gap, 15px);
             display: grid;
-            grid-template-columns: 1fr D(100px) D(100px) D(100px);
+            grid-template-columns: 1fr D(100px) D(80px) D(50px);
 
             .checkbox {
                 align-self: center;
@@ -120,6 +120,7 @@
             .author {
                 display: flex;
                 flex-direction: column;
+                align-self: center;
                 strong {
                     text-transform: uppercase;
                     color: $accentColorDark;

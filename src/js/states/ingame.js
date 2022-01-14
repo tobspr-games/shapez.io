@@ -9,6 +9,7 @@ import { Savegame } from "../savegame/savegame";
 import { GameCore } from "../game/core";
 import { MUSIC } from "../platform/sound";
 import { enumGameModeIds } from "../game/game_mode";
+import { MOD_SIGNALS } from "../mods/mod_signals";
 
 const logger = createLogger("state/ingame");
 
@@ -80,6 +81,10 @@ export class InGameState extends GameState {
          * @TODO: This doesn't realy fit here
          */
         this.currentSavePromise = null;
+    }
+
+    get dialogs() {
+        return this.core.root.hud.parts.dialogs;
     }
 
     /**
@@ -318,6 +323,8 @@ export class InGameState extends GameState {
 
             // Initial resize, might have changed during loading (this is possible)
             this.core.resize(this.app.screenWidth, this.app.screenHeight);
+
+            MOD_SIGNALS.gameStarted.dispatch(this.core.root);
         }
     }
 

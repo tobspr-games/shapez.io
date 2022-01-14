@@ -1,3 +1,7 @@
+/* typehints:start */
+import { Application } from "../application";
+/* typehints:end */
+
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { getIPCRenderer } from "../core/utils";
@@ -10,6 +14,11 @@ const LOG = createLogger("mods");
 export class ModLoader {
     constructor() {
         LOG.log("modloader created");
+
+        /**
+         * @type {Application}
+         */
+        this.app = undefined;
 
         /** @type {Mod[]} */
         this.mods = [];

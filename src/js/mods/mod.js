@@ -29,4 +29,8 @@ export class Mod {
     }
 
     init() {}
+
+    get dialogs() {
+        return this.modInterface.dialogs;
+    }
 }

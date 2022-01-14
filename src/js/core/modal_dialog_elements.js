@@ -90,8 +90,9 @@ export class Dialog {
      * @param {number} param0.keyCode
      * @param {boolean} param0.shift
      * @param {boolean} param0.alt
+     * @param {boolean} param0.ctrl
      */
-    handleKeydown({ keyCode, shift, alt }) {
+    handleKeydown({ keyCode, shift, alt, ctrl }) {
         if (keyCode === kbEnter && this.enterHandler) {
             this.internalButtonHandler(this.enterHandler);
             return STOP_PROPAGATION;
