@@ -1,28 +1,29 @@
 /* eslint-disable quotes,no-undef */
 
 const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell } = require("electron");
-const path = require("path");
+const { join, dirname, resolve } = require("path");
 const url = require("url");
 const fs = require("fs");
+
 const steam = require("./steam");
 const asyncLock = require("async-lock");
 
-const isDev = process.argv.indexOf("--dev") >= 0;
-const isLocal = process.argv.indexOf("--local") >= 0;
-const safeMode = process.argv.indexOf("--safe-mode") >= 0;
+const isDev = app.commandLine.hasSwitch("dev");
+const isLocal = app.commandLine.hasSwitch("local");
+const temporaryMod = app.commandLine.getSwitchValue("load-mod");
+const safeMode = app.commandLine.hasSwitch("safe-mode");
 
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
-let storePath = path.join(roamingFolder, "shapez.io", "saves");
-let modsPath = path.join(path.dirname(app.getPath("exe")), "mods");
 
-if (!fs.existsSync(storePath)) {
-    // No try-catch by design
-    fs.mkdirSync(storePath, { recursive: true });
-}
+const storePath = join(roamingFolder, "shapez.io", "saves");
+const modsPath = join(dirname(app.getPath("exe")), "mods");
+
+// No try-catch by design
+fs.mkdirSync(storePath, { recursive: true });
 
 /** @type {BrowserWindow} */
 let win = null;
@@ -44,7 +45,7 @@ function createWindow() {
         minHeight: 600,
         title: "shapez.io Standalone",
         transparent: false,
-        icon: path.join(__dirname, "favicon" + faviconExtension),
+        icon: join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,
         autoHideMenuBar: true,
         webPreferences: {
@@ -59,7 +60,7 @@ function createWindow() {
     } else {
         win.loadURL(
             url.format({
-                pathname: path.join(__dirname, "index.html"),
+                pathname: join(__dirname, "index.html"),
                 protocol: "file:",
                 slashes: true,
             })
@@ -136,11 +137,11 @@ app.on("window-all-closed", () => {
     app.quit();
 });
 
-ipcMain.on("set-fullscreen", (event, flag) => {
+ipcMain.on("set-fullscreen", (_event, flag) => {
     win.setFullScreen(flag);
 });
 
-ipcMain.on("exit-app", (event, flag) => {
+ipcMain.on("exit-app", (_event, _flag) => {
     win.close();
     app.quit();
 });
@@ -171,14 +172,14 @@ async function writeFileSafe(filename, contents) {
         if (!fs.existsSync(filename)) {
             // this one is easy
             console.log(prefix, "Writing file instantly because it does not exist:", niceFileName(filename));
-            await fs.promises.writeFile(filename, contents, { encoding: "utf8" });
+            await fs.promises.writeFile(filename, contents, "utf-8");
             return;
         }
 
         // first, write a temporary file (.tmp-XXX)
         const tempName = filename + ".tmp-" + transactionId;
         console.log(prefix, "Writing temporary file", niceFileName(tempName));
-        await fs.promises.writeFile(tempName, contents, { encoding: "utf8" });
+        await fs.promises.writeFile(tempName, contents, "utf-8");
 
         // now, rename the original file to (.backup-XXX)
         const oldTemporaryName = filename + ".backup-" + transactionId;
@@ -221,7 +222,7 @@ async function writeFileSafe(filename, contents) {
 }
 
 async function performFsJob(job) {
-    const fname = path.join(storePath, job.filename);
+    const fname = join(storePath, job.filename);
 
     switch (job.type) {
         case "read": {
@@ -233,7 +234,7 @@ async function performFsJob(job) {
             }
 
             try {
-                const data = await fs.promises.readFile(fname, { encoding: "utf8" });
+                const data = await fs.promises.readFile(fname, "utf-8");
                 return {
                     success: true,
                     data,
@@ -274,7 +275,7 @@ async function performFsJob(job) {
         }
 
         default:
-            throw new Error("Unkown fs job: " + job.type);
+            throw new Error("Unknown fs job: " + job.type);
     }
 }
 
@@ -287,20 +288,49 @@ ipcMain.on("open-mods-folder", async () => {
     shell.openPath(modsPath);
 });
 
-ipcMain.handle("get-mods", async (event, arg) => {
-    if (safeMode) {
-        console.warn("Not loading mods due to safe mode");
-        return [];
-    }
-    if (!fs.existsSync(modsPath)) {
-        console.warn("Mods folder not found:", modsPath);
-        return [];
-    }
+async function searchForMods() {
+    const files = [];
+    console.log("Searching for mods in %s", modsPath);
+
     try {
-        console.log("Loading mods from", modsPath);
-        let entries = fs.readdirSync(modsPath);
-        entries = entries.filter(entry => entry.endsWith(".js"));
-        return entries.map(filename => fs.readFileSync(path.join(modsPath, filename), { encoding: "utf8" }));
+        for (const file of await fs.promises.readdir(modsPath)) {
+            if (file.endsWith(".js")) {
+                modFiles.push(resolve(modsPath, file));
+            }
+        }
+    } catch (err) {
+        // Most likely, the directory does not exist (ENOENT)
+        console.warn("Failed to load mods from %s:", modsPath, err);
+    }
+
+    return files;
+}
+
+ipcMain.handle("get-mods", async (_event, _arg) => {
+    const modFiles = [];
+
+    if (temporaryMod) {
+        // Load mod specified on the command line.
+        // Together with --safe-mode, it's possible to load only
+        // this mod.
+        modFiles.push(resolve(temporaryMod));
+    }
+
+    if (!safeMode) {
+        modFiles.push(...(await searchForMods()));
+    } else {
+        console.log("Safe mode is turned on, skipping mod search");
+    }
+
+    try {
+        const modContents = [];
+        console.log("Loading %d mod(s)", modFiles.length);
+
+        for (const modFile of modFiles) {
+            modContents.push(await fs.promises.readFile(modFile, "utf-8"));
+        }
+
+        return modContents;
     } catch (ex) {
         throw new Error(ex);
     }
