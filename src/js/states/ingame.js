@@ -96,6 +96,7 @@ export class InGameState extends GameState {
         if (stage !== this.stage) {
             this.stage = stage;
             logger.log(this.stage);
+            MOD_SIGNALS.gameLoadingStageEntered.dispatch(this, stage);
             return true;
         } else {
             // log(this, "Re entering", stage);

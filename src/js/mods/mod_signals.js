@@ -1,6 +1,8 @@
 /* typehints:start */
 import { BaseHUDPart } from "../game/hud/base_hud_part";
 import { GameRoot } from "../game/root";
+import { GameState } from "../core/game_state";
+import { InGameState } from "../states/ingame";
 /* typehints:end */
 
 import { Signal } from "../core/signal";
@@ -18,5 +20,10 @@ export const MOD_SIGNALS = {
     hudElementInitialized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
     hudElementFinalized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
 
+    gameInitialized: /** @type {TypedSignal<[GameRoot]>} */ (new Signal()),
+    gameLoadingStageEntered: /** @type {TypedSignal<[InGameState, string]>} */ (new Signal()),
+
     gameStarted: /** @type {TypedSignal<[GameRoot]>} */ (new Signal()),
+
+    stateEntered: /** @type {TypedSignal<[GameState]>} */ (new Signal()),
 };

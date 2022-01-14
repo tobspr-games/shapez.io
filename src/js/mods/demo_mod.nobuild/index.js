@@ -208,6 +208,28 @@ registerMod(shapez => {
                     return shapez.STOP_PROPAGATION;
                 },
             });
+
+            // Add fancy sign to main menu
+            this.signals.stateEntered.add(state => {
+                if (state.key === "MainMenuState") {
+                    const element = document.createElement("div");
+                    element.innerText = "Hello World from mod!";
+                    element.id = "demo_mod_hello_world_element";
+                    document.body.appendChild(element);
+                }
+            });
+
+            this.modInterface.registerCss(`
+                #demo_mod_hello_world_element {
+                    position: fixed;
+                    top: 10px;
+                    left: 10px;
+                    color: red;
+                    z-index: 999;
+                    font-size: 50px;
+                }
+
+            `);
         }
     };
 });
