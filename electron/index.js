@@ -18,12 +18,12 @@ const roamingFolder =
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
-
-const storePath = join(roamingFolder, "shapez.io", "saves");
-const modsPath = join(dirname(app.getPath("exe")), "mods");
+let storePath = join(roamingFolder, "shapez.io", "saves");
+let modsPath = join(roamingFolder, "shapez.io", "mods");
 
 // No try-catch by design
 fs.mkdirSync(storePath, { recursive: true });
+fs.mkdirSync(modsPath, { recursive: true });
 
 /** @type {BrowserWindow} */
 let win = null;
