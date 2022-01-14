@@ -69,6 +69,7 @@ export class Application {
         assert(!GLOBAL_APP, "Tried to construct application twice");
         logger.log("Creating application, platform =", getPlatformName());
         setGlobalApp(this);
+        MODS.app = this;
 
         this.unloaded = false;
 
