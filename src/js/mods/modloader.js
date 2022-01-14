@@ -41,8 +41,12 @@ export class ModLoader {
                 if (G_IS_STANDALONE) {
                     mods = await getIPCRenderer().invoke("get-mods");
                 } else if (G_IS_DEV && globalConfig.debug.loadDevMod) {
-                    // @ts-expect-error
-                    mods = [require("!!raw-loader!./dev_mod")];
+                    const mod = await (
+                        await fetch("http://localhost:3005/mods/demo_mod.nobuild/index.js", {
+                            method: "GET",
+                        })
+                    ).text();
+                    mods.push(mod);
                 }
 
                 mods.forEach(modCode => {

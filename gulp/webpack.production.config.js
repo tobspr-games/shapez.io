@@ -177,6 +177,7 @@ module.exports = ({
                     type: "javascript/auto",
                 },
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
+                { test: /\.nobuild/, loader: "ignore-loader" },
                 {
                     test: /\.js$/,
                     enforce: "pre",

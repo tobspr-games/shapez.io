@@ -146,7 +146,7 @@ gulp.task("main.webserver", () => {
  */
 function serve({ version = "web" }) {
     browserSync.init({
-        server: buildFolder,
+        server: [buildFolder, path.join(baseDir, "src", "js")],
         port: 3005,
         ghostMode: {
             clicks: false,

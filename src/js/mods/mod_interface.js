@@ -1,5 +1,6 @@
 /* typehints:start */
 import { ModLoader } from "./modloader";
+import { Component } from "../game/component";
 import { MetaBuilding } from "../game/meta_building";
 /* typehints:end */
 
@@ -16,7 +17,7 @@ import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
 import { matchDataRecursive, T } from "../translations";
 import { gBuildingVariants, registerBuildingVariant } from "../game/building_codes";
-import { gMetaBuildingRegistry } from "../core/global_registries";
+import { gComponentRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 
 const LOG = createLogger("mod-interface");
@@ -104,6 +105,14 @@ export class ModInterface {
         if (language === "en") {
             matchDataRecursive(T, translations, true);
         }
+    }
+
+    /**
+     *
+     * @param {typeof Component} component
+     */
+    registerComponent(component) {
+        gComponentRegistry.register(component);
     }
 
     /**
