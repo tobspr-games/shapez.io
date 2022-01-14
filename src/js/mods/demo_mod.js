@@ -20,8 +20,9 @@ export default function ({ Mod, MetaBuilding }) {
     }
 
     return class ModImpl extends Mod {
-        constructor(modLoader) {
+        constructor(app, modLoader) {
             super(
+                app,
                 {
                     authorContact: "tobias@tobspr.io",
                     authorName: "tobspr",
@@ -37,7 +38,7 @@ export default function ({ Mod, MetaBuilding }) {
             // Add some custom css
             this.modInterface.registerCss(`
                 * {
-                    color: red !important;
+                    font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
                 }
             `);
 

@@ -69,10 +69,16 @@ const tierGrowth = 2.5;
 
 const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
 
+const upgradesCache = {};
+
 /**
  * Generates all upgrades
  * @returns {Object<string, UpgradeTiers>} */
 function generateUpgrades(limitedVersion = false) {
+    if (upgradesCache[limitedVersion]) {
+        return upgradesCache[limitedVersion];
+    }
+
     const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
     const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
 
@@ -265,6 +271,8 @@ function generateUpgrades(limitedVersion = false) {
         }
     }
 
+    MOD_SIGNALS.modifyUpgrades.dispatch(upgrades);
+
     // VALIDATE
     if (G_IS_DEV) {
         for (const upgradeId in upgrades) {
@@ -280,14 +288,20 @@ function generateUpgrades(limitedVersion = false) {
         }
     }
 
+    upgradesCache[limitedVersion] = upgrades;
     return upgrades;
 }
+
+const levelDefinitionsCache = {};
 
 /**
  * Generates the level definitions
  * @param {boolean} limitedVersion
  */
 export function generateLevelDefinitions(limitedVersion = false) {
+    if (levelDefinitionsCache[limitedVersion]) {
+        return levelDefinitionsCache[limitedVersion];
+    }
     const levelDefinitions = [
         // 1
         // Circle
@@ -524,14 +538,10 @@ export function generateLevelDefinitions(limitedVersion = false) {
         });
     }
 
+    levelDefinitionsCache[limitedVersion] = levelDefinitions;
+
     return levelDefinitions;
 }
-
-const fullVersionUpgrades = generateUpgrades(false);
-const demoVersionUpgrades = generateUpgrades(true);
-
-const fullVersionLevels = generateLevelDefinitions(false);
-const demoVersionLevels = generateLevelDefinitions(true);
 
 export class RegularGameMode extends GameMode {
     static getId() {
@@ -603,9 +613,7 @@ export class RegularGameMode extends GameMode {
      * @returns {Object<string, UpgradeTiers>}
      */
     getUpgrades() {
-        return this.root.app.restrictionMgr.getHasExtendedUpgrades()
-            ? fullVersionUpgrades
-            : demoVersionUpgrades;
+        return generateUpgrades(!this.root.app.restrictionMgr.getHasExtendedUpgrades());
     }
 
     /**
@@ -613,9 +621,7 @@ export class RegularGameMode extends GameMode {
      * @returns {Array<LevelDefinition>}
      */
     getLevelDefinitions() {
-        return this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay()
-            ? fullVersionLevels
-            : demoVersionLevels;
+        return generateLevelDefinitions(!this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay());
     }
 
     /**

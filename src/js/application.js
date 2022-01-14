@@ -35,6 +35,8 @@ import { PuzzleMenuState } from "./states/puzzle_menu";
 import { ClientAPI } from "./platform/api";
 import { LoginState } from "./states/login";
 import { WegameSplashState } from "./states/wegame_splash";
+import { MODS } from "./mods/modloader";
+import { MOD_SIGNALS } from "./mods/mod_signals";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -128,6 +130,8 @@ export class Application {
         // Store the mouse position, or null if not available
         /** @type {Vector|null} */
         this.mousePosition = null;
+
+        MODS.initMods();
     }
 
     /**
@@ -148,6 +152,8 @@ export class Application {
         this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
         this.achievementProvider = new NoAchievementProvider(this);
+
+        MOD_SIGNALS.platformInstancesInitialized.dispatch();
     }
 
     /**

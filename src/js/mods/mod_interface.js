@@ -15,7 +15,7 @@ import {
 import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
 import { matchDataRecursive, T } from "../translations";
-import { registerBuildingVariant } from "../game/building_codes";
+import { gBuildingVariants, registerBuildingVariant } from "../game/building_codes";
 import { gMetaBuildingRegistry } from "../core/global_registries";
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 
@@ -126,11 +126,15 @@ export class ModInterface {
             throw new Error("Tried to register building twice: " + id);
         }
         gMetaBuildingRegistry.register(metaClass);
+        const metaInstance = gMetaBuildingRegistry.findByClass(metaClass);
 
         T.buildings[id] = {};
         variantsAndRotations.forEach(payload => {
             const actualVariant = payload.variant || defaultBuildingVariant;
             registerBuildingVariant(id, metaClass, actualVariant, payload.rotationVariant || 0);
+
+            gBuildingVariants[id].metaInstance = metaInstance;
+
             T.buildings[id][actualVariant] = {
                 name: payload.name,
                 description: payload.description,

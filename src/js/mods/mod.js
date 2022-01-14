@@ -1,4 +1,5 @@
 /* typehints:start */
+import { Application } from "../application";
 import { ModLoader } from "./modloader";
 /* typehints:end */
 
@@ -7,6 +8,7 @@ import { MOD_SIGNALS } from "./mod_signals";
 export class Mod {
     /**
      *
+     * @param {Application} app
      * @param {object} metadata
      * @param {string} metadata.name
      * @param {string} metadata.version
@@ -16,7 +18,8 @@ export class Mod {
      *
      * @param {ModLoader} modLoader
      */
-    constructor(metadata, modLoader) {
+    constructor(app, metadata, modLoader) {
+        this.app = app;
         this.metadata = metadata;
         this.modLoader = modLoader;
 

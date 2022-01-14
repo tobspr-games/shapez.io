@@ -15,20 +15,14 @@ export class ModLoader {
 
         this.modInterface = new ModInterface(this);
 
-        /** @type {(new (ModLoader) => Mod)[]} */
+        /** @type {((Object) => (new (Application, ModLoader) => Mod))[]} */
         this.modLoadQueue = [];
 
         this.initialized = false;
 
         this.signals = MOD_SIGNALS;
 
-        this.registerMod(
-            /** @type {any} */ (require("./demo_mod").default({
-                Mod,
-                MetaBuilding,
-            }))
-        );
-        this.initMods();
+        this.registerMod(/** @type {any} */ (require("./demo_mod").default));
     }
 
     linkApp(app) {
@@ -39,7 +33,10 @@ export class ModLoader {
         LOG.log("hook:init");
         this.initialized = true;
         this.modLoadQueue.forEach(modClass => {
-            const mod = new modClass(this);
+            const mod = new (modClass({
+                Mod,
+                MetaBuilding,
+            }))(this.app, this);
             mod.init();
             this.mods.push(mod);
         });
@@ -49,7 +46,7 @@ export class ModLoader {
 
     /**
      *
-     * @param {new (ModLoader) => Mod} mod
+     * @param {(Object) => (new (Application, ModLoader) => Mod)} mod
      */
     registerMod(mod) {
         if (this.initialized) {
