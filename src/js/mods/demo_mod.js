@@ -2,8 +2,8 @@
 import { Entity } from "../game/entity";
 /* typehints:end */
 
-export default function ({ Mod, MetaBuilding }) {
-    class MetaDemoModBuilding extends MetaBuilding {
+export default function (shapez) {
+    class MetaDemoModBuilding extends shapez.MetaBuilding {
         constructor() {
             super("demoModBuilding");
         }
@@ -19,7 +19,7 @@ export default function ({ Mod, MetaBuilding }) {
         setupEntityComponents(entity) {}
     }
 
-    return class ModImpl extends Mod {
+    return class ModImpl extends shapez.Mod {
         constructor(app, modLoader) {
             super(
                 app,

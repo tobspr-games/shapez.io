@@ -31,12 +31,37 @@ export class ModLoader {
 
     initMods() {
         LOG.log("hook:init");
+
+        let exports = {};
+
+        if (G_IS_DEV || G_IS_STANDALONE) {
+            const modules = require.context("../", true, /\.js$/);
+
+            Array.from(modules.keys()).forEach(key => {
+                // @ts-ignore
+                const module = modules(key);
+                for (const member in module) {
+                    if (member === "default") {
+                        continue;
+                    }
+                    if (exports[member]) {
+                        continue;
+                    }
+                    Object.defineProperty(exports, member, {
+                        get() {
+                            return module[member];
+                        },
+                        set(v) {
+                            module[member] = v;
+                        },
+                    });
+                }
+            });
+        }
+
         this.initialized = true;
         this.modLoadQueue.forEach(modClass => {
-            const mod = new (modClass({
-                Mod,
-                MetaBuilding,
-            }))(this.app, this);
+            const mod = new (modClass(exports))(this.app, this);
             mod.init();
             this.mods.push(mod);
         });
