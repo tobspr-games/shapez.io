@@ -169,6 +169,9 @@ class LoaderImpl {
                 sprite = new AtlasSprite(spriteName);
                 this.sprites.set(spriteName, sprite);
             }
+            if (sprite.frozen) {
+                continue;
+            }
 
             const link = new SpriteAtlasLink({
                 packedX: frame.x,
@@ -181,10 +184,7 @@ class LoaderImpl {
                 w: sourceSize.w,
                 h: sourceSize.h,
             });
-            if (sprite.linksByResolution[scale]) {
-                // Seems data is already present, might have been replaced by a mod
-                continue;
-            }
+
             sprite.linksByResolution[scale] = link;
         }
     }

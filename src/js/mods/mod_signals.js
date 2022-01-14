@@ -9,7 +9,6 @@ export const MOD_SIGNALS = {
     postInit: new Signal(),
     platformInstancesInitialized: new Signal(),
 
-    injectSprites: new Signal(),
     preprocessTheme: /** @type {TypedSignal<[Object]>} */ (new Signal()),
     modifyLevelDefinitions: /** @type {TypedSignal<[Array[Object]]>} */ (new Signal()),
     modifyUpgrades: /** @type {TypedSignal<[Object]>} */ (new Signal()),

@@ -46,18 +46,30 @@ export class ModInterface {
     registerSprite(spriteId, base64string) {
         assert(base64string.startsWith("data:image"));
         const img = new Image();
-        img.src = base64string;
 
         const sprite = new AtlasSprite(spriteId);
+        sprite.frozen = true;
+
+        img.addEventListener("load", () => {
+            for (const resolution in sprite.linksByResolution) {
+                const link = sprite.linksByResolution[resolution];
+                link.w = img.width;
+                link.h = img.height;
+                link.packedW = img.width;
+                link.packedH = img.height;
+            }
+        });
+
+        img.src = base64string;
 
         const link = new SpriteAtlasLink({
-            w: img.width,
-            h: img.height,
+            w: 1,
+            h: 1,
             atlas: img,
             packOffsetX: 0,
             packOffsetY: 0,
-            packedW: img.width,
-            packedH: img.height,
+            packedW: 1,
+            packedH: 1,
             packedX: 0,
             packedY: 0,
         });
@@ -66,16 +78,7 @@ export class ModInterface {
         sprite.linksByResolution["0.5"] = link;
         sprite.linksByResolution["0.75"] = link;
 
-        this.lazySprites.set(spriteId, sprite);
         Loader.sprites.set(spriteId, sprite);
-    }
-
-    injectSprites() {
-        LOG.log("inject sprites");
-        this.lazySprites.forEach((sprite, key) => {
-            Loader.sprites.set(key, sprite);
-            console.log("override", key);
-        });
     }
 
     /**
