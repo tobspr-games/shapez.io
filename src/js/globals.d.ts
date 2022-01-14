@@ -22,6 +22,8 @@ declare const G_IS_RELEASE: boolean;
 declare const G_CHINA_VERSION: boolean;
 declare const G_WEGAME_VERSION: boolean;
 
+declare const shapez: any;
+
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;
@@ -94,6 +96,8 @@ declare interface Window {
     // Mods
     registerMod: any;
     anyModLoaded: any;
+
+    shapez: any;
 
     webkitRequestAnimationFrame();
 

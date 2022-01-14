@@ -1,4 +1,4 @@
-registerMod(shapez => {
+registerMod(() => {
     class DemoModComponent extends shapez.Component {
         static getId() {
             return "DemoMod";

@@ -41,8 +41,40 @@ export class ModLoader {
         return this.mods.length > 0;
     }
 
+    exposeExports() {
+        if (G_IS_DEV || G_IS_STANDALONE) {
+            let exports = {};
+            const modules = require.context("../", true, /\.js$/);
+
+            Array.from(modules.keys()).forEach(key => {
+                // @ts-ignore
+                const module = modules(key);
+                for (const member in module) {
+                    if (member === "default") {
+                        continue;
+                    }
+                    if (exports[member]) {
+                        throw new Error("Duplicate export of " + member);
+                    }
+                    Object.defineProperty(exports, member, {
+                        get() {
+                            return module[member];
+                        },
+                        set(v) {
+                            module[member] = v;
+                        },
+                    });
+                }
+            });
+
+            window.shapez = exports;
+        }
+    }
+
     async initMods() {
         LOG.log("hook:init");
+
+        this.exposeExports();
 
         if (G_IS_STANDALONE || G_IS_DEV) {
             try {
@@ -71,36 +103,9 @@ export class ModLoader {
             }
         }
 
-        let exports = {};
-
-        if (G_IS_DEV || G_IS_STANDALONE) {
-            const modules = require.context("../", true, /\.js$/);
-
-            Array.from(modules.keys()).forEach(key => {
-                // @ts-ignore
-                const module = modules(key);
-                for (const member in module) {
-                    if (member === "default") {
-                        continue;
-                    }
-                    if (exports[member]) {
-                        throw new Error("Duplicate export of " + member);
-                    }
-                    Object.defineProperty(exports, member, {
-                        get() {
-                            return module[member];
-                        },
-                        set(v) {
-                            module[member] = v;
-                        },
-                    });
-                }
-            });
-        }
-
         this.initialized = true;
         this.modLoadQueue.forEach(modClass => {
-            const mod = new (modClass(exports))(this.app, this);
+            const mod = new (modClass())(this.app, this);
             mod.init();
             this.mods.push(mod);
         });
