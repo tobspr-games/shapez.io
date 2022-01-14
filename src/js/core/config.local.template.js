@@ -116,8 +116,8 @@ export default {
     // Disables slow asserts, useful for debugging performance
     // disableSlowAsserts: true,
     // -----------------------------------------------------------------------------------
-    // Loads the dev_mod.js for developing new mods
-    // loadDevMod: true,
+    // Allows to load a mod from an external source for developing it
+    // externalModUrl: "http://localhost:3005/mods/demo_mod.nobuild/index.js",
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

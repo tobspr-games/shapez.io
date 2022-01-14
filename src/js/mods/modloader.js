@@ -40,9 +40,9 @@ export class ModLoader {
                 let mods = [];
                 if (G_IS_STANDALONE) {
                     mods = await getIPCRenderer().invoke("get-mods");
-                } else if (G_IS_DEV && globalConfig.debug.loadDevMod) {
+                } else if (G_IS_DEV && globalConfig.debug.externalModUrl) {
                     const mod = await (
-                        await fetch("http://localhost:3005/mods/demo_mod.nobuild/index.js", {
+                        await fetch(globalConfig.debug.externalModUrl, {
                             method: "GET",
                         })
                     ).text();
