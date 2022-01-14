@@ -2,6 +2,8 @@
 import { ModLoader } from "./modloader";
 /* typehints:end */
 
+import { MOD_SIGNALS } from "./mod_signals";
+
 export class Mod {
     /**
      *
@@ -17,6 +19,9 @@ export class Mod {
     constructor(metadata, modLoader) {
         this.metadata = metadata;
         this.modLoader = modLoader;
+
+        this.signals = MOD_SIGNALS;
+        this.modInterface = modLoader.modInterface;
     }
 
     init() {}

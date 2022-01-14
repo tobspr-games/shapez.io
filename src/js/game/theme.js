@@ -1,4 +1,4 @@
-import { MODS } from "../mods/modloader";
+import { MOD_SIGNALS } from "../mods/mod_signals";
 
 export const THEMES = {
     dark: require("./themes/dark.json"),
@@ -9,5 +9,5 @@ export let THEME = THEMES.light;
 
 export function applyGameTheme(id) {
     THEME = THEMES[id];
-    MODS.signals.preprocessTheme.dispatch({ id, theme: THEME });
+    MOD_SIGNALS.preprocessTheme.dispatch({ id, theme: THEME });
 }

@@ -2,119 +2,118 @@
 import { Entity } from "../game/entity";
 /* typehints:end */
 
-import { Mod } from "./mod";
-import { MetaBuilding } from "../game/meta_building";
+export default function ({ Mod, MetaBuilding }) {
+    class MetaDemoModBuilding extends MetaBuilding {
+        constructor() {
+            super("demoModBuilding");
+        }
 
-export class MetaDemoModBuilding extends MetaBuilding {
-    constructor() {
-        super("demoModBuilding");
+        getSilhouetteColor() {
+            return "red";
+        }
+
+        /**
+         * Creates the entity at the given location
+         * @param {Entity} entity
+         */
+        setupEntityComponents(entity) {}
     }
 
-    getSilhouetteColor() {
-        return "red";
-    }
+    return class ModImpl extends Mod {
+        constructor(modLoader) {
+            super(
+                {
+                    authorContact: "tobias@tobspr.io",
+                    authorName: "tobspr",
+                    name: "Demo Mod",
+                    version: "1",
+                    id: "demo-mod",
+                },
+                modLoader
+            );
+        }
 
-    /**
-     * Creates the entity at the given location
-     * @param {Entity} entity
-     */
-    setupEntityComponents(entity) {}
-}
+        init() {
+            // Add some custom css
+            this.modInterface.registerCss(`
+                * {
+                    color: red !important;
+                }
+            `);
 
-export class DemoMod extends Mod {
-    constructor(modLoader) {
-        super(
-            {
-                authorContact: "tobias@tobspr.io",
-                authorName: "tobspr",
-                name: "Demo Mod",
-                version: "1",
-                id: "demo-mod",
-            },
-            modLoader
-        );
-    }
+            // Replace a builtin sprite
+            this.modInterface.registerSprite("sprites/colors/red.png", RESOURCES["red.png"]);
 
-    init() {
-        // Add some custom css
-        this.modLoader.modInterface.registerCss(`
-            * {
-                color: red !important;
-            }
-        `);
+            // Add a new type of sub shape ("Line", short code "L")
+            this.modInterface.registerSubShapeType({
+                id: "line",
+                shortCode: "L",
+                weightComputation: distanceToOriginInChunks =>
+                    Math.round(20 + Math.max(Math.min(distanceToOriginInChunks, 30), 0)),
 
-        // Replace a builtin sprite
-        this.modLoader.modInterface.registerSprite("sprites/colors/red.png", RESOURCES["red.png"]);
+                draw: ({ context, quadrantSize, layerScale }) => {
+                    const quadrantHalfSize = quadrantSize / 2;
+                    context.beginPath();
+                    context.moveTo(-quadrantHalfSize, quadrantHalfSize);
+                    context.arc(
+                        -quadrantHalfSize,
+                        quadrantHalfSize,
+                        quadrantSize * layerScale,
+                        -Math.PI * 0.25,
+                        0
+                    );
+                    context.closePath();
+                },
+            });
 
-        // Add a new type of sub shape ("Line", short code "L")
-        this.modLoader.modInterface.registerSubShapeType({
-            id: "line",
-            shortCode: "L",
-            weightComputation: distanceToOriginInChunks =>
-                Math.round(20 + Math.max(Math.min(distanceToOriginInChunks, 30), 0)),
+            // Modify the theme colors
+            this.signals.preprocessTheme.add(({ theme }) => {
+                theme.map.background = "#eee";
+                theme.items.outline = "#000";
+            });
 
-            draw: ({ context, quadrantSize, layerScale }) => {
-                const quadrantHalfSize = quadrantSize / 2;
-                context.beginPath();
-                context.moveTo(-quadrantHalfSize, quadrantHalfSize);
-                context.arc(
-                    -quadrantHalfSize,
-                    quadrantHalfSize,
-                    quadrantSize * layerScale,
-                    -Math.PI * 0.25,
-                    0
-                );
-                context.closePath();
-            },
-        });
+            // Modify the goal of the first level
+            this.signals.modifyLevelDefinitions.add(definitions => {
+                definitions[0].shape = "LuCuLuCu";
+            });
 
-        // Modify the theme colors
-        this.modLoader.signals.preprocessTheme.add(({ theme }) => {
-            theme.map.background = "#eee";
-            theme.items.outline = "#000";
-        });
-
-        // Modify the goal of the first level
-        this.modLoader.signals.modifyLevelDefinitions.add(definitions => {
-            definitions[0].shape = "LuCuLuCu";
-        });
-
-        this.modLoader.modInterface.registerTranslations("en", {
-            ingame: {
-                interactiveTutorial: {
-                    title: "Hello",
-                    hints: {
-                        "1_1_extractor": "World!",
+            this.modInterface.registerTranslations("en", {
+                ingame: {
+                    interactiveTutorial: {
+                        title: "Hello",
+                        hints: {
+                            "1_1_extractor": "World!",
+                        },
                     },
                 },
-            },
-        });
+            });
 
-        // Register the new building
-        this.modLoader.modInterface.registerNewBuilding({
-            metaClass: MetaDemoModBuilding,
-            buildingIconBase64: RESOURCES["demoBuilding.png"],
+            // Register the new building
+            this.modInterface.registerNewBuilding({
+                metaClass: MetaDemoModBuilding,
+                buildingIconBase64: RESOURCES["demoBuilding.png"],
 
-            variantsAndRotations: [
-                {
-                    description: "A test building",
-                    name: "A test name",
+                variantsAndRotations: [
+                    {
+                        description: "A test building",
+                        name: "A test name",
 
-                    regularImageBase64: RESOURCES["demoBuilding.png"],
-                    blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                    tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                },
-            ],
-        });
+                        regularImageBase64: RESOURCES["demoBuilding.png"],
+                        blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                        tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                    },
+                ],
+            });
 
-        // Add it to the regular toolbar
-        this.modLoader.signals.hudElementInitialized.add(element => {
-            if (element.constructor.name === "HUDBuildingsToolbar") {
-                // @ts-ignore
-                element.primaryBuildings.push(MetaDemoModBuilding);
-            }
-        });
-    }
+            // Add it to the regular toolbar
+            this.signals.hudElementInitialized.add(element => {
+                if (element.constructor.name === "HUDBuildingsToolbar") {
+                    // @ts-ignore
+                    element.primaryBuildings.push(MetaDemoModBuilding);
+                }
+            });
+        }
+    };
 }
 
 ////////////////////////////////////////////////////////////////////////

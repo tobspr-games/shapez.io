@@ -10,9 +10,13 @@ import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
-import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../mods/mod_interface";
 
 const logger = createLogger("map_chunk");
+
+/**
+ * @type {Object<string, (distanceToOriginInChunks: number) => number>}
+ */
+export const MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS = {};
 
 export class MapChunk {
     /**

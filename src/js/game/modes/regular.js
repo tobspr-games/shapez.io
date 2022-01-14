@@ -38,7 +38,7 @@ import { HUDSandboxController } from "../hud/parts/sandbox_controller";
 import { queryParamOptions } from "../../core/query_parameters";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
-import { MODS } from "../../mods/modloader";
+import { MOD_SIGNALS } from "../../mods/mod_signals";
 
 /** @typedef {{
  *   shape: string,
@@ -512,7 +512,7 @@ export function generateLevelDefinitions(limitedVersion = false) {
               ]),
     ];
 
-    MODS.signals.modifyLevelDefinitions.dispatch(levelDefinitions);
+    MOD_SIGNALS.modifyLevelDefinitions.dispatch(levelDefinitions);
 
     if (G_IS_DEV) {
         levelDefinitions.forEach(({ shape }) => {

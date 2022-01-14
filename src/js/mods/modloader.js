@@ -1,9 +1,8 @@
 import { createLogger } from "../core/logging";
-import { Signal } from "../core/signal";
-import { DemoMod } from "./demo_mod";
 import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
-import { BaseHUDPart } from "../game/hud/base_hud_part";
+import { MetaBuilding } from "../game/meta_building";
+import { MOD_SIGNALS } from "./mod_signals";
 
 const LOG = createLogger("mods");
 
@@ -21,17 +20,14 @@ export class ModLoader {
 
         this.initialized = false;
 
-        this.signals = {
-            postInit: new Signal(),
-            injectSprites: new Signal(),
-            preprocessTheme: /** @type {TypedSignal<[Object]>} */ (new Signal()),
-            modifyLevelDefinitions: /** @type {TypedSignal<[Array[Object]]>} */ (new Signal()),
+        this.signals = MOD_SIGNALS;
 
-            hudElementInitialized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
-            hudElementFinalized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
-        };
-
-        this.registerMod(DemoMod);
+        this.registerMod(
+            /** @type {any} */ (require("./demo_mod").default({
+                Mod,
+                MetaBuilding,
+            }))
+        );
         this.initMods();
     }
 

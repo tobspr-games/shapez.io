@@ -3,10 +3,22 @@ import { globalConfig } from "../core/config";
 import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { Vector } from "../core/vector";
-import { MODS_ADDITIONAL_SUB_SHAPE_DRAWERS } from "../mods/mod_interface";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { enumColors, enumColorsToHexCode, enumColorToShortcode, enumShortcodeToColor } from "./colors";
 import { THEME } from "./theme";
+
+/**
+ * @typedef {{
+ *   context: CanvasRenderingContext2D,
+ *   quadrantSize: number,
+ *   layerScale: number,
+ * }} SubShapeDrawOptions
+ */
+
+/**
+ * @type {Object<string, (options: SubShapeDrawOptions) => void>}
+ */
+export const MODS_ADDITIONAL_SUB_SHAPE_DRAWERS = {};
 
 /**
  * @typedef {{

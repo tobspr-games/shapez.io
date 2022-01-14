@@ -6,32 +6,20 @@ import { MetaBuilding } from "../game/meta_building";
 import { defaultBuildingVariant } from "../game/meta_building";
 import { createLogger } from "../core/logging";
 import { AtlasSprite, SpriteAtlasLink } from "../core/sprites";
-import { enumShortcodeToSubShape, enumSubShape, enumSubShapeToShortcode } from "../game/shape_definition";
+import {
+    enumShortcodeToSubShape,
+    enumSubShape,
+    enumSubShapeToShortcode,
+    MODS_ADDITIONAL_SUB_SHAPE_DRAWERS,
+} from "../game/shape_definition";
 import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
 import { matchDataRecursive, T } from "../translations";
 import { registerBuildingVariant } from "../game/building_codes";
 import { gMetaBuildingRegistry } from "../core/global_registries";
+import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 
 const LOG = createLogger("mod-interface");
-
-/**
- * @type {Object<string, (distanceToOriginInChunks: number) => number>}
- */
-export const MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS = {};
-
-/**
- * @typedef {{
- *   context: CanvasRenderingContext2D,
- *   quadrantSize: number,
- *   layerScale: number,
- * }} SubShapeDrawOptions
- */
-
-/**
- * @type {Object<string, (options: SubShapeDrawOptions) => void>}
- */
-export const MODS_ADDITIONAL_SUB_SHAPE_DRAWERS = {};
 
 export class ModInterface {
     /**
@@ -91,7 +79,7 @@ export class ModInterface {
      * @param {string} param0.id
      * @param {string} param0.shortCode
      * @param {(distanceToOriginInChunks: number) => number} param0.weightComputation
-     * @param {(options: SubShapeDrawOptions) => void} param0.draw
+     * @param {(options: import("../game/shape_definition").SubShapeDrawOptions) => void} param0.draw
      */
     registerSubShapeType({ id, shortCode, weightComputation, draw }) {
         if (shortCode.length !== 1) {
