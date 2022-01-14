@@ -1,6 +1,6 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog } = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
@@ -306,9 +306,42 @@ ipcMain.handle("get-mods", async () => {
                   .readdirSync(modsPath)
                   .filter(filename => filename.endsWith(".js"))
                   .map(filename => path.join(modsPath, filename));
+
         if (externalMod) {
             console.log("Adding external mod source:", externalMod);
             modFiles.push(externalMod);
+        }
+
+        if (modFiles.length > 0 && !isDev) {
+            let confirmed = false;
+            while (!confirmed) {
+                const response = await dialog.showMessageBox(win, {
+                    message:
+                        "You have installed one or more mods for shapez.io. Please confirm that you are aware of the risks and install mods only from trusted sources.",
+                    buttons: ["Exit Game", "Continue"],
+                    type: "warning",
+                    defaultId: 0,
+
+                    checkboxLabel:
+                        "I understand that mods have access to my file system and can be potentially harmful",
+                    checkboxChecked: false,
+                    cancelId: 0,
+                });
+                if (response.response === 1) {
+                    if (response.checkboxChecked) {
+                        break;
+                    } else {
+                        await dialog.showMessageBox(win, {
+                            message:
+                                "Please confirm that you have understood the risks by checking the checkbox in the next dialog.",
+                        });
+                    }
+                }
+                if (response.response === 0) {
+                    process.exit(0);
+                    return;
+                }
+            }
         }
 
         return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
