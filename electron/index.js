@@ -17,7 +17,7 @@ const roamingFolder =
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
 let storePath = path.join(roamingFolder, "shapez.io", "saves");
-let modsPath = path.join(app.getAppPath(), "mods");
+let modsPath = path.join(path.dirname(app.getPath("exe")), "mods");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
