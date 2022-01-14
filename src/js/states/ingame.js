@@ -14,20 +14,20 @@ import { MOD_SIGNALS } from "../mods/mod_signals";
 const logger = createLogger("state/ingame");
 
 // Different sub-states
-const stages = {
-    s3_createCore: "🌈 3: Create core",
-    s4_A_initEmptyGame: "🌈 4/A: Init empty game",
-    s4_B_resumeGame: "🌈 4/B: Resume game",
+export const GAME_LOADING_STATES = {
+    s3_createCore: "s3_createCore",
+    s4_A_initEmptyGame: "s4_A_initEmptyGame",
+    s4_B_resumeGame: "s4_B_resumeGame",
 
-    s5_firstUpdate: "🌈 5: First game update",
-    s6_postLoadHook: "🌈 6: Post load hook",
-    s7_warmup: "🌈 7: Warmup",
+    s5_firstUpdate: "s5_firstUpdate",
+    s6_postLoadHook: "s6_postLoadHook",
+    s7_warmup: "s7_warmup",
 
-    s10_gameRunning: "🌈 10: Game finally running",
+    s10_gameRunning: "s10_gameRunning",
 
-    leaving: "🌈 Saving, then leaving the game",
-    destroyed: "🌈 DESTROYED: Core is empty and waits for state leave",
-    initFailed: "🌈 ERROR: Initialization failed!",
+    leaving: "leaving",
+    destroyed: "destroyed",
+    initFailed: "initFailed",
 };
 
 export const gameCreationAction = {
@@ -152,7 +152,7 @@ export class InGameState extends GameState {
 
     onResized(w, h) {
         super.onResized(w, h);
-        if (this.stage === stages.s10_gameRunning) {
+        if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
             this.core.resize(w, h);
         }
     }
@@ -196,7 +196,7 @@ export class InGameState extends GameState {
      * @param {any=} payload
      */
     saveThenGoToState(stateId, payload) {
-        if (this.stage === stages.leaving || this.stage === stages.destroyed) {
+        if (this.stage === GAME_LOADING_STATES.leaving || this.stage === GAME_LOADING_STATES.destroyed) {
             logger.warn(
                 "Tried to leave game twice or during destroy:",
                 this.stage,
@@ -223,7 +223,7 @@ export class InGameState extends GameState {
      * @param {string} err
      */
     onInitializationFailure(err) {
-        if (this.switchStage(stages.initFailed)) {
+        if (this.switchStage(GAME_LOADING_STATES.initFailed)) {
             logger.error("Init failure:", err);
             this.stageDestroyed();
             this.moveToState("MainMenuState", { loadError: err });
@@ -236,7 +236,7 @@ export class InGameState extends GameState {
      * Creates the game core instance, and thus the root
      */
     stage3CreateCore() {
-        if (this.switchStage(stages.s3_createCore)) {
+        if (this.switchStage(GAME_LOADING_STATES.s3_createCore)) {
             logger.log("Creating new game core");
             this.core = new GameCore(this.app);
 
@@ -255,7 +255,7 @@ export class InGameState extends GameState {
      * Initializes a new empty game
      */
     stage4aInitEmptyGame() {
-        if (this.switchStage(stages.s4_A_initEmptyGame)) {
+        if (this.switchStage(GAME_LOADING_STATES.s4_A_initEmptyGame)) {
             this.core.initNewGame();
             this.stage5FirstUpdate();
         }
@@ -265,7 +265,7 @@ export class InGameState extends GameState {
      * Resumes an existing game
      */
     stage4bResumeGame() {
-        if (this.switchStage(stages.s4_B_resumeGame)) {
+        if (this.switchStage(GAME_LOADING_STATES.s4_B_resumeGame)) {
             if (!this.core.initExistingGame()) {
                 this.onInitializationFailure("Savegame is corrupt and can not be restored.");
                 return;
@@ -279,7 +279,7 @@ export class InGameState extends GameState {
      * Performs the first game update on the game which initializes most caches
      */
     stage5FirstUpdate() {
-        if (this.switchStage(stages.s5_firstUpdate)) {
+        if (this.switchStage(GAME_LOADING_STATES.s5_firstUpdate)) {
             this.core.root.logicInitialized = true;
             this.core.updateLogic();
             this.stage6PostLoadHook();
@@ -291,7 +291,7 @@ export class InGameState extends GameState {
      * can operate and start to work now.
      */
     stage6PostLoadHook() {
-        if (this.switchStage(stages.s6_postLoadHook)) {
+        if (this.switchStage(GAME_LOADING_STATES.s6_postLoadHook)) {
             logger.log("Post load hook");
             this.core.postLoadHook();
             this.stage7Warmup();
@@ -304,7 +304,7 @@ export class InGameState extends GameState {
      * are in the VRAM and we have a smooth experience once we start.
      */
     stage7Warmup() {
-        if (this.switchStage(stages.s7_warmup)) {
+        if (this.switchStage(GAME_LOADING_STATES.s7_warmup)) {
             if (this.creationPayload.fastEnter) {
                 this.warmupTimeSeconds = globalConfig.warmupTimeSecondsFast;
             } else {
@@ -317,7 +317,7 @@ export class InGameState extends GameState {
      * The final stage where this game is running and updating regulary.
      */
     stage10GameRunning() {
-        if (this.switchStage(stages.s10_gameRunning)) {
+        if (this.switchStage(GAME_LOADING_STATES.s10_gameRunning)) {
             this.core.root.signals.readyToRender.dispatch();
 
             logSection("GAME STARTED", "#26a69a");
@@ -333,7 +333,7 @@ export class InGameState extends GameState {
      * This stage destroys the whole game, used to cleanup
      */
     stageDestroyed() {
-        if (this.switchStage(stages.destroyed)) {
+        if (this.switchStage(GAME_LOADING_STATES.destroyed)) {
             // Cleanup all api calls
             this.cancelAllAsyncOperations();
 
@@ -354,7 +354,7 @@ export class InGameState extends GameState {
      * When leaving the game
      */
     stageLeavingGame() {
-        if (this.switchStage(stages.leaving)) {
+        if (this.switchStage(GAME_LOADING_STATES.leaving)) {
             // ...
         }
     }
@@ -365,7 +365,7 @@ export class InGameState extends GameState {
      * Filters the input (keybindings)
      */
     filterInput() {
-        return this.stage === stages.s10_gameRunning;
+        return this.stage === GAME_LOADING_STATES.s10_gameRunning;
     }
 
     /**
@@ -403,7 +403,7 @@ export class InGameState extends GameState {
             return;
         }
 
-        if (this.stage === stages.s7_warmup) {
+        if (this.stage === GAME_LOADING_STATES.s7_warmup) {
             this.core.draw();
             this.warmupTimeSeconds -= dt / 1000.0;
             if (this.warmupTimeSeconds < 0) {
@@ -412,12 +412,12 @@ export class InGameState extends GameState {
             }
         }
 
-        if (this.stage === stages.s10_gameRunning) {
+        if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
             this.core.tick(dt);
         }
 
         // If the stage is still active (This might not be the case if tick() moved us to game over)
-        if (this.stage === stages.s10_gameRunning) {
+        if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
             // Only draw if page visible
             if (this.app.pageVisible) {
                 this.core.draw();
@@ -450,9 +450,9 @@ export class InGameState extends GameState {
         }
 
         if (
-            this.stage !== stages.s10_gameRunning &&
-            this.stage !== stages.s7_warmup &&
-            this.stage !== stages.leaving
+            this.stage !== GAME_LOADING_STATES.s10_gameRunning &&
+            this.stage !== GAME_LOADING_STATES.s7_warmup &&
+            this.stage !== GAME_LOADING_STATES.leaving
         ) {
             logger.warn("Skipping save because game is not ready");
             return Promise.resolve();
