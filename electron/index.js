@@ -55,8 +55,8 @@ function createWindow() {
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: false,
-            webSecurity: false,
-            // sandbox: true,
+            webSecurity: true,
+            sandbox: true,
             contextIsolation: true,
             preload: path.join(__dirname, "preload.js"),
         },
@@ -229,70 +229,33 @@ async function writeFileSafe(filename, contents) {
     });
 }
 
-async function performFsJob(job) {
-    const fname = path.join(storePath, job.filename);
-
+ipcMain.handle("fs-job", async (event, job) => {
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "");
+    const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {
             if (!fs.existsSync(fname)) {
-                return {
-                    // Special FILE_NOT_FOUND error code
-                    error: "file_not_found",
-                };
+                // Special FILE_NOT_FOUND error code
+                return { error: "file_not_found" };
             }
-
-            try {
-                const data = await fs.promises.readFile(fname, "utf8");
-                return {
-                    success: true,
-                    data,
-                };
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
+            return await fs.promises.readFile(fname, "utf8");
         }
         case "write": {
-            try {
-                await writeFileSafe(fname, job.contents);
-                return {
-                    success: true,
-                    data: job.contents,
-                };
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
+            await writeFileSafe(fname, job.contents);
+            return job.contents;
         }
 
         case "delete": {
-            try {
-                await fs.promises.unlink(fname);
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
-
-            return {
-                success: true,
-                data: null,
-            };
+            await fs.promises.unlink(fname);
+            return;
         }
 
         default:
             throw new Error("Unknown fs job: " + job.type);
     }
-}
-
-ipcMain.on("fs-job", async (event, arg) => {
-    const result = await performFsJob(arg);
-    event.reply("fs-response", { id: arg.id, result });
 });
 
-ipcMain.on("open-mods-folder", async () => {
+ipcMain.handle("open-mods-folder", async () => {
     shell.openPath(modsPath);
 });
 

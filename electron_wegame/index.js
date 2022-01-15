@@ -49,9 +49,12 @@ function createWindow() {
         // fullscreen: true,
         autoHideMenuBar: true,
         webPreferences: {
-            nodeIntegration: true,
-            webSecurity: false,
-            contextIsolation: false,
+            nodeIntegration: false,
+            webSecurity: true,
+            sandbox: true,
+
+            contextIsolation: true,
+            preload: path.join(__dirname, "preload.js"),
         },
         allowRunningInsecureContent: false,
     });
@@ -165,20 +168,20 @@ async function writeFileSafe(filename, contents) {
         console.warn(prefix, "Concurrent write process on", filename);
     }
 
-    await fileLock.acquire(filename, async () => {
+    fileLock.acquire(filename, async () => {
         console.log(prefix, "Starting write on", niceFileName(filename), "in transaction", transactionId);
 
         if (!fs.existsSync(filename)) {
             // this one is easy
             console.log(prefix, "Writing file instantly because it does not exist:", niceFileName(filename));
-            fs.writeFileSync(filename, contents, { encoding: "utf8" });
+            await fs.promises.writeFile(filename, contents, "utf8");
             return;
         }
 
         // first, write a temporary file (.tmp-XXX)
         const tempName = filename + ".tmp-" + transactionId;
         console.log(prefix, "Writing temporary file", niceFileName(tempName));
-        fs.writeFileSync(tempName, contents, { encoding: "utf8" });
+        await fs.promises.writeFile(tempName, contents, "utf8");
 
         // now, rename the original file to (.backup-XXX)
         const oldTemporaryName = filename + ".backup-" + transactionId;
@@ -189,7 +192,7 @@ async function writeFileSafe(filename, contents) {
             "to",
             niceFileName(oldTemporaryName)
         );
-        fs.renameSync(filename, oldTemporaryName);
+        await fs.promises.rename(filename, oldTemporaryName);
 
         // now, rename the temporary file (.tmp-XXX) to the target
         console.log(
@@ -199,7 +202,7 @@ async function writeFileSafe(filename, contents) {
             "to the original",
             niceFileName(filename)
         );
-        fs.renameSync(tempName, filename);
+        await fs.promises.rename(tempName, filename);
 
         // we are done now, try to create a backup, but don't fail if the backup fails
         try {
@@ -208,82 +211,43 @@ async function writeFileSafe(filename, contents) {
             if (fs.existsSync(backupFileName)) {
                 console.log(prefix, "Deleting old backup file", niceFileName(backupFileName));
                 // delete the old backup
-                fs.unlinkSync(backupFileName);
+                await fs.promises.unlink(backupFileName);
             }
 
             // rename the old file to the new backup file
             console.log(prefix, "Moving", niceFileName(oldTemporaryName), "to the backup file location");
-            fs.renameSync(oldTemporaryName, backupFileName);
+            await fs.promises.rename(oldTemporaryName, backupFileName);
         } catch (ex) {
             console.error(prefix, "Failed to switch backup files:", ex);
         }
     });
 }
 
-async function performFsJob(job) {
-    const fname = path.join(storePath, job.filename);
-
+ipcMain.handle("fs-job", async (event, job) => {
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "");
+    const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {
             if (!fs.existsSync(fname)) {
-                return {
-                    // Special FILE_NOT_FOUND error code
-                    error: "file_not_found",
-                };
+                // Special FILE_NOT_FOUND error code
+                return { error: "file_not_found" };
             }
-
-            try {
-                const data = fs.readFileSync(fname, { encoding: "utf8" });
-                return {
-                    success: true,
-                    data,
-                };
-            } catch (ex) {
-                console.error(ex);
-                return {
-                    error: ex,
-                };
-            }
+            return await fs.promises.readFile(fname, "utf8");
         }
         case "write": {
-            try {
-                writeFileSafe(fname, job.contents);
-                return {
-                    success: true,
-                    data: job.contents,
-                };
-            } catch (ex) {
-                console.error(ex);
-                return {
-                    error: ex,
-                };
-            }
+            await writeFileSafe(fname, job.contents);
+            return job.contents;
         }
 
         case "delete": {
-            try {
-                fs.unlinkSync(fname);
-            } catch (ex) {
-                console.error(ex);
-                return {
-                    error: ex,
-                };
-            }
-
-            return {
-                success: true,
-                data: null,
-            };
+            await fs.promises.unlink(fname);
+            return;
         }
 
         default:
-            throw new Error("Unkown fs job: " + job.type);
+            throw new Error("Unknown fs job: " + job.type);
     }
-}
-
-ipcMain.on("fs-job", async (event, arg) => {
-    const result = await performFsJob(arg);
-    event.sender.send("fs-response", { id: arg.id, result });
 });
+
 wegame.init(isDev);
 wegame.listen();

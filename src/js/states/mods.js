@@ -116,7 +116,7 @@ export class ModsState extends TextualGameState {
             this.dialogs.showWarning(T.global.error, T.mods.folderOnlyStandalone);
             return;
         }
-        ipcRenderer.send("open-mods-folder");
+        ipcRenderer.invoke("open-mods-folder");
     }
 
     onSteamLinkClicked() {
