@@ -26,6 +26,8 @@ declare const shapez: any;
 
 declare const ipcRenderer: any;
 
+declare const registerMod: any;
+
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;

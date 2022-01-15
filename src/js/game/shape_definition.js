@@ -27,6 +27,11 @@ export const MODS_ADDITIONAL_SUB_SHAPE_DRAWERS = {};
  * }} ShapeLayerItem
  */
 
+export const TOP_RIGHT = 0;
+export const BOTTOM_RIGHT = 1;
+export const BOTTOM_LEFT = 2;
+export const TOP_LEFT = 3;
+
 /**
  * Order is Q1 (tr), Q2(br), Q3(bl), Q4(tl)
  * @typedef {[ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?, ShapeLayerItem?]} ShapeLayer
@@ -64,7 +69,7 @@ for (const key in enumSubShapeToShortcode) {
 /**
  * Converts the given parameters to a valid shape definition
  * @param {*} layers
- * @returns {Array<import("./shape_definition").ShapeLayer>}
+ * @returns {Array<ShapeLayer>}
  */
 export function createSimpleShape(layers) {
     layers.forEach(layer => {
@@ -242,7 +247,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * Internal method to clone the shape definition
      * @returns {Array<ShapeLayer>}
      */
-    internalCloneLayers() {
+    getClonedLayers() {
         return JSON.parse(JSON.stringify(this.layers));
     }
 
@@ -460,7 +465,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     cloneFilteredByQuadrants(includeQuadrants) {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
             let anyContents = false;
@@ -486,7 +491,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     cloneRotateCW() {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
             quadrants.unshift(quadrants[3]);
@@ -500,7 +505,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     cloneRotateCCW() {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
             quadrants.push(quadrants[0]);
@@ -514,7 +519,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @returns {ShapeDefinition}
      */
     cloneRotate180() {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
             quadrants.push(quadrants.shift(), quadrants.shift());
@@ -572,7 +577,7 @@ export class ShapeDefinition extends BasicSerializableObject {
         // Can't merge at a layer lower than 0
         const layerToMergeAt = Math.max(1 - smallestGapBetweenShapes, 0);
 
-        const mergedLayers = this.internalCloneLayers();
+        const mergedLayers = this.getClonedLayers();
         for (let layer = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
             mergedLayers.push([null, null, null, null]);
         }
@@ -598,7 +603,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {enumColors} color
      */
     cloneAndPaintWith(color) {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
 
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];
@@ -617,7 +622,7 @@ export class ShapeDefinition extends BasicSerializableObject {
      * @param {[enumColors, enumColors, enumColors, enumColors]} colors
      */
     cloneAndPaintWith4Colors(colors) {
-        const newLayers = this.internalCloneLayers();
+        const newLayers = this.getClonedLayers();
 
         for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
             const quadrants = newLayers[layerIndex];

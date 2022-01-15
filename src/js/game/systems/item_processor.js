@@ -8,7 +8,7 @@ import {
 } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { isTruthyItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -38,6 +38,11 @@ const MAX_QUEUED_CHARGES = 2;
  *   }} ProcessorImplementationPayload
  */
 
+/**
+ * @type {Object<string, (ProcessorImplementationPayload) => void>}
+ */
+export const MOD_ITEM_PROCESSOR_HANDLERS = {};
+
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
@@ -61,6 +66,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.hub]: this.process_HUB,
             [enumItemProcessorTypes.reader]: this.process_READER,
             [enumItemProcessorTypes.goal]: this.process_GOAL,
+            ...MOD_ITEM_PROCESSOR_HANDLERS,
         };
 
         // Bind all handlers
