@@ -10,10 +10,9 @@ import { Signal } from "../core/signal";
 // Single file to avoid circular deps
 
 export const MOD_SIGNALS = {
-    postInit: new Signal(),
-    platformInstancesInitialized: new Signal(),
+    // Called when the application has booted and instances like the app settings etc are available
+    appBooted: new Signal(),
 
-    preprocessTheme: /** @type {TypedSignal<[Object]>} */ (new Signal()),
     modifyLevelDefinitions: /** @type {TypedSignal<[Array[Object]]>} */ (new Signal()),
     modifyUpgrades: /** @type {TypedSignal<[Object]>} */ (new Signal()),
 

@@ -65,11 +65,19 @@ if (typeof document.hidden !== "undefined") {
 }
 
 export class Application {
-    constructor() {
+    /**
+     * Boots the application
+     */
+    async boot() {
+        console.log("Booting ...");
+
         assert(!GLOBAL_APP, "Tried to construct application twice");
         logger.log("Creating application, platform =", getPlatformName());
         setGlobalApp(this);
         MODS.app = this;
+
+        // MODS
+        await MODS.initMods();
 
         this.unloaded = false;
 
@@ -132,6 +140,31 @@ export class Application {
         // Store the mouse position, or null if not available
         /** @type {Vector|null} */
         this.mousePosition = null;
+
+        this.registerStates();
+        this.registerEventListeners();
+
+        Loader.linkAppAfterBoot(this);
+
+        if (G_WEGAME_VERSION) {
+            this.stateMgr.moveToState("WegameSplashState");
+        }
+
+        // Check for mobile
+        else if (IS_MOBILE) {
+            this.stateMgr.moveToState("MobileWarningState");
+        } else {
+            this.stateMgr.moveToState("PreloadState");
+        }
+
+        // Starting rendering
+        this.ticker.frameEmitted.add(this.onFrameEmitted, this);
+        this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
+        this.ticker.start();
+
+        window.focus();
+
+        MOD_SIGNALS.appBooted.dispatch();
     }
 
     /**
@@ -152,8 +185,6 @@ export class Application {
         this.analytics = new GoogleAnalyticsImpl(this);
         this.gameAnalytics = new ShapezGameAnalytics(this);
         this.achievementProvider = new NoAchievementProvider(this);
-
-        MOD_SIGNALS.platformInstancesInitialized.dispatch();
     }
 
     /**
@@ -327,38 +358,6 @@ export class Application {
                 event.returnValue = "Are you sure you want to exit?";
             }
         }
-    }
-
-    /**
-     * Boots the application
-     */
-    async boot() {
-        console.log("Booting ...");
-
-        await MODS.initMods();
-
-        this.registerStates();
-        this.registerEventListeners();
-
-        Loader.linkAppAfterBoot(this);
-
-        if (G_WEGAME_VERSION) {
-            this.stateMgr.moveToState("WegameSplashState");
-        }
-
-        // Check for mobile
-        else if (IS_MOBILE) {
-            this.stateMgr.moveToState("MobileWarningState");
-        } else {
-            this.stateMgr.moveToState("PreloadState");
-        }
-
-        // Starting rendering
-        this.ticker.frameEmitted.add(this.onFrameEmitted, this);
-        this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
-        this.ticker.start();
-
-        window.focus();
     }
 
     /**

@@ -1,7 +1,7 @@
 import { THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { formatSecondsToTimeAgo } from "../core/utils";
-import { allApplicationSettings, enumCategories } from "../profile/application_settings";
+import { enumCategories } from "../profile/application_settings";
 import { T } from "../translations";
 
 export class SettingsState extends TextualGameState {
@@ -88,8 +88,8 @@ export class SettingsState extends TextualGameState {
             categoriesHTML[catName] = `<div class="category" data-category="${catName}">`;
         });
 
-        for (let i = 0; i < allApplicationSettings.length; ++i) {
-            const setting = allApplicationSettings[i];
+        for (let i = 0; i < this.app.settings.settingHandles.length; ++i) {
+            const setting = this.app.settings.settingHandles[i];
 
             if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
                 continue;
@@ -171,7 +171,7 @@ export class SettingsState extends TextualGameState {
     }
 
     initSettings() {
-        allApplicationSettings.forEach(setting => {
+        this.app.settings.settingHandles.forEach(setting => {
             if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
                 return;
             }

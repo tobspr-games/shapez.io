@@ -23,6 +23,7 @@ import { MODS_ADDITIONAL_SYSTEMS } from "../game/game_system_manager";
 import { MOD_CHUNK_DRAW_HOOKS } from "../game/map_chunk_view";
 import { KEYMAPPINGS } from "../game/key_action_mapper";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { THEMES } from "../game/theme";
 
 export class ModInterface {
     /**
@@ -321,5 +322,26 @@ export class ModInterface {
                     background-image: url('${imageBase64}') !important;
             }
         `);
+    }
+
+    /**
+     * @param {Object} param0
+     * @param {string} param0.id
+     * @param {string} param0.name
+     * @param {Object} param0.theme
+     */
+    registerGameTheme({ id, name, theme }) {
+        THEMES[id] = theme;
+        this.registerTranslations("en", {
+            settings: {
+                labels: {
+                    theme: {
+                        themes: {
+                            [id]: name,
+                        },
+                    },
+                },
+            },
+        });
     }
 }

@@ -20,7 +20,6 @@ import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { MODS } from "../mods/modloader";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
-import { getApplicationSettingById } from "../profile/application_settings";
 import { T } from "../translations";
 
 const trim = require("trim");
@@ -468,7 +467,7 @@ export class MainMenuState extends GameState {
 
     onLanguageChooseClicked() {
         this.app.analytics.trackUiClick("choose_language");
-        const setting = /** @type {EnumSetting} */ (getApplicationSettingById("language"));
+        const setting = /** @type {EnumSetting} */ (this.app.settings.getSettingHandleById("language"));
 
         const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
             active: this.app.settings.getLanguage(),

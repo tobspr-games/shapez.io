@@ -95,7 +95,7 @@ export class ModLoader {
                 mods.forEach(modCode => {
                     try {
                         const func = new Function(modCode);
-                        const response = func();
+                        func();
                     } catch (ex) {
                         console.error(ex);
                         alert("Failed to parse mod (launch with --dev for more info): " + ex);
@@ -118,7 +118,6 @@ export class ModLoader {
             }
         });
         this.modLoadQueue = [];
-        this.signals.postInit.dispatch();
 
         delete window.registerMod;
     }

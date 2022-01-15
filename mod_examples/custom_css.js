@@ -1,6 +1,5 @@
 /**
- * This example shows how to replace builtin sprites, in this case
- * the color sprites
+ * This example shows how to add custom css
  */
 registerMod(() => {
     return class ModImpl extends shapez.Mod {
