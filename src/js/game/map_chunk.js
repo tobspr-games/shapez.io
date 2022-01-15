@@ -433,7 +433,7 @@ export class MapChunk {
      * Sets the chunks contents
      * @param {number} tileX
      * @param {number} tileY
-     * @param {Entity=} contents
+     * @param {Entity} contents
      * @param {Layer} layer
      */
     setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
