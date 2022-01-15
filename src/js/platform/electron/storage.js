@@ -1,5 +1,4 @@
 import { StorageInterface } from "../storage";
-import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 
 const logger = createLogger("electron-storage");
@@ -12,7 +11,7 @@ export class StorageImplElectron extends StorageInterface {
         this.jobs = {};
         this.jobId = 0;
 
-        getIPCRenderer().on("fs-response", (event, arg) => {
+        ipcRenderer.on("fs-response", (event, arg) => {
             const id = arg.id;
             if (!this.jobs[id]) {
                 logger.warn("Got unhandled FS response, job not known:", id);
@@ -37,7 +36,7 @@ export class StorageImplElectron extends StorageInterface {
             const jobId = ++this.jobId;
             this.jobs[jobId] = { resolve, reject };
 
-            getIPCRenderer().send("fs-job", {
+            ipcRenderer.send("fs-job", {
                 type: "write",
                 filename,
                 contents,
@@ -52,7 +51,7 @@ export class StorageImplElectron extends StorageInterface {
             const jobId = ++this.jobId;
             this.jobs[jobId] = { resolve, reject };
 
-            getIPCRenderer().send("fs-job", {
+            ipcRenderer.send("fs-job", {
                 type: "read",
                 filename,
                 id: jobId,
@@ -65,7 +64,7 @@ export class StorageImplElectron extends StorageInterface {
             // ipcMain
             const jobId = ++this.jobId;
             this.jobs[jobId] = { resolve, reject };
-            getIPCRenderer().send("fs-job", {
+            ipcRenderer.send("fs-job", {
                 type: "delete",
                 filename,
                 id: jobId,

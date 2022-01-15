@@ -24,6 +24,8 @@ declare const G_WEGAME_VERSION: boolean;
 
 declare const shapez: any;
 
+declare const ipcRenderer: any;
+
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;

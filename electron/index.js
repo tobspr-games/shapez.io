@@ -54,8 +54,11 @@ function createWindow() {
         // fullscreen: true,
         autoHideMenuBar: true,
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false,
             webSecurity: false,
+            // sandbox: true,
+            contextIsolation: true,
+            preload: path.join(__dirname, "preload.js"),
         },
         allowRunningInsecureContent: false,
     });

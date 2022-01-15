@@ -405,12 +405,6 @@ export class MainMenuState extends GameState {
                 makeButton(outerDiv, ["newGameButton", "styledButton"], T.mainMenu.newGame),
                 this.onPlayButtonClicked
             );
-
-            // Mods
-            this.trackClicks(
-                makeButton(outerDiv, ["modsButton", "styledButton"], "&nbsp;"),
-                this.onModsClicked
-            );
         } else {
             // New game
             this.trackClicks(
@@ -418,6 +412,9 @@ export class MainMenuState extends GameState {
                 this.onPlayButtonClicked
             );
         }
+
+        // Mods
+        this.trackClicks(makeButton(outerDiv, ["modsButton", "styledButton"], "&nbsp;"), this.onModsClicked);
 
         buttonContainer.appendChild(outerDiv);
     }

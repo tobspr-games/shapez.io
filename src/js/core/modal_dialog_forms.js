@@ -1,7 +1,6 @@
 import { BaseItem } from "../game/base_item";
 import { ClickDetector } from "./click_detector";
 import { Signal } from "./signal";
-import { getIPCRenderer } from "./utils";
 
 /*
  * ***************************************************
@@ -113,13 +112,11 @@ export class FormElementInput extends FormElement {
         if (G_WEGAME_VERSION) {
             const value = String(this.element.value);
 
-            getIPCRenderer()
-                .invoke("profanity-check", value)
-                .then(newValue => {
-                    if (value !== newValue && this.element) {
-                        this.element.value = newValue;
-                    }
-                });
+            ipcRenderer.invoke("profanity-check", value).then(newValue => {
+                if (value !== newValue && this.element) {
+                    this.element.value = newValue;
+                }
+            });
         }
     }
 

@@ -1,6 +1,5 @@
 import { THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
-import { getIPCRenderer } from "../core/utils";
 import { MODS } from "../mods/modloader";
 import { T } from "../translations";
 
@@ -117,7 +116,7 @@ export class ModsState extends TextualGameState {
             this.dialogs.showWarning(T.global.error, T.mods.folderOnlyStandalone);
             return;
         }
-        getIPCRenderer().send("open-mods-folder");
+        ipcRenderer.send("open-mods-folder");
     }
 
     onSteamLinkClicked() {

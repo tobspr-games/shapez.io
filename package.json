@@ -19,7 +19,8 @@
         "publishStandalone": "yarn publishOnItch && yarn publishOnSteam",
         "publishWeb": "cd gulp && yarn main.deploy.prod",
         "publish": "yarn publishStandalone && yarn publishWeb",
-        "syncTranslations": "node sync-translations.js"
+        "syncTranslations": "node sync-translations.js",
+        "buildTypes": "tsc src/js/application.js --declaration --allowJs --emitDeclarationOnly --skipLibCheck --out types.js"
     },
     "dependencies": {
         "@babel/core": "^7.5.4",

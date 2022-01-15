@@ -1,10 +1,8 @@
 /* typehints:start */
 import { Application } from "../application";
 /* typehints:end */
-
 import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
-import { getIPCRenderer } from "../core/utils";
 import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
 import { MOD_SIGNALS } from "./mod_signals";
@@ -76,12 +74,17 @@ export class ModLoader {
 
         this.exposeExports();
 
+        window.registerMod = mod => {
+            this.modLoadQueue.push(mod);
+        };
+
         if (G_IS_STANDALONE || G_IS_DEV) {
             try {
                 let mods = [];
                 if (G_IS_STANDALONE) {
-                    mods = await getIPCRenderer().invoke("get-mods");
-                } else if (G_IS_DEV && globalConfig.debug.externalModUrl) {
+                    mods = await ipcRenderer.invoke("get-mods");
+                }
+                if (G_IS_DEV && globalConfig.debug.externalModUrl) {
                     const mod = await (
                         await fetch(globalConfig.debug.externalModUrl, {
                             method: "GET",
@@ -91,12 +94,8 @@ export class ModLoader {
                 }
 
                 mods.forEach(modCode => {
-                    window.registerMod = mod => {
-                        this.modLoadQueue.push(mod);
-                    };
-                    // ugh
-                    eval(modCode);
-                    delete window.registerMod;
+                    const func = new Function(modCode);
+                    func();
                 });
             } catch (ex) {
                 alert("Failed to load mods: " + ex);
@@ -111,6 +110,8 @@ export class ModLoader {
         });
         this.modLoadQueue = [];
         this.signals.postInit.dispatch();
+
+        delete window.registerMod;
     }
 }
 
