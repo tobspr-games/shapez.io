@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/tobspr/shapez.io",
-    "author": "Tobias Springer <tobias.springer1@gmail.com>",
+    "author": "tobspr Games <hello@tobspr.io>",
     "license": "MIT",
     "private": true,
     "scripts": {

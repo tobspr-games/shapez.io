@@ -153,7 +153,7 @@ export class MainMenuState extends GameState {
                     hasMods
                         ? `
 
-                        <div class="modsList">
+                        <div class="modsOverview">
                             <div class="header">
                                 <h3>${T.mods.title}</h3>
                                 <button class="styledButton editMods"></button>
@@ -226,7 +226,7 @@ export class MainMenuState extends GameState {
                     </div>
                     <div class="author">${T.mainMenu.madeBy.replace(
                         "<author-link>",
-                        '<a class="producerLink" target="_blank">Tobias Springer</a>'
+                        '<a class="producerLink" target="_blank">tobspr Games</a>'
                     )}</div>
                 </div>
 

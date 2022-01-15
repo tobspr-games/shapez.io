@@ -117,7 +117,7 @@ export default {
     // disableSlowAsserts: true,
     // -----------------------------------------------------------------------------------
     // Allows to load a mod from an external source for developing it
-    // externalModUrl: "http://localhost:3005/mods/demo_mod.nobuild/index.js",
+    // externalModUrl: "http://localhost:3005/combined.js",
     // -----------------------------------------------------------------------------------
     /* dev:end */
 };

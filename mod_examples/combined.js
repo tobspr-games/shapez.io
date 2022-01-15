@@ -213,20 +213,26 @@ registerMod(() => {
             this.signals.stateEntered.add(state => {
                 if (state.key === "MainMenuState") {
                     const element = document.createElement("div");
-                    element.innerText = "Hello World from mod!";
                     element.id = "demo_mod_hello_world_element";
                     document.body.appendChild(element);
+
+                    const button = document.createElement("button");
+                    button.classList.add("styledButton");
+                    button.innerText = "Hello!";
+                    button.addEventListener("click", () => {
+                        this.dialogs.showInfo("Mod Message", "Button clicked!");
+                    });
+                    element.appendChild(button);
                 }
             });
 
             this.modInterface.registerCss(`
                 #demo_mod_hello_world_element {
-                    position: fixed;
-                    top: 10px;
-                    left: 10px;
+                    position: absolute;
+                    top: calc(10px * var(--ui-scale));
+                    left: calc(10px * var(--ui-scale));
                     color: red;
-                    z-index: 999;
-                    font-size: 50px;
+                    z-index: 0;
                 }
 
             `);
