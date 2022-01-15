@@ -351,21 +351,10 @@ ipcMain.handle("get-mods", async () => {
                     buttons: ["Exit Game", "Continue"],
                     type: "warning",
                     defaultId: 0,
-
-                    checkboxLabel:
-                        "I understand that mods have access to my file system and can be potentially harmful",
-                    checkboxChecked: false,
                     cancelId: 0,
                 });
                 if (response.response === 1) {
-                    if (response.checkboxChecked) {
-                        break;
-                    } else {
-                        await dialog.showMessageBox(win, {
-                            message:
-                                "Please confirm that you have understood the risks by checking the checkbox in the next dialog.",
-                        });
-                    }
+                    break;
                 }
                 if (response.response === 0) {
                     process.exit(0);

@@ -93,19 +93,29 @@ export class ModLoader {
                 }
 
                 mods.forEach(modCode => {
-                    const func = new Function(modCode);
-                    func();
+                    try {
+                        const func = new Function(modCode);
+                        const response = func();
+                    } catch (ex) {
+                        console.error(ex);
+                        alert("Failed to parse mod (launch with --dev for more info): " + ex);
+                    }
                 });
             } catch (ex) {
-                alert("Failed to load mods: " + ex);
+                alert("Failed to load mods (launch with --dev for more info): " + ex);
             }
         }
 
         this.initialized = true;
         this.modLoadQueue.forEach(modClass => {
-            const mod = new (modClass())(this.app, this);
-            mod.init();
-            this.mods.push(mod);
+            try {
+                const mod = new (modClass())(this.app, this);
+                mod.init();
+                this.mods.push(mod);
+            } catch (ex) {
+                console.error(ex);
+                alert("Failed to initialize mods (launch with --dev for more info): " + ex);
+            }
         });
         this.modLoadQueue = [];
         this.signals.postInit.dispatch();
