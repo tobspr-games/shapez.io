@@ -1,6 +1,6 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog, session } = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
@@ -55,10 +55,16 @@ function createWindow() {
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: false,
+            nodeIntegrationInWorker: false,
+            nodeIntegrationInSubFrames: false,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            disableBlinkFeatures: "Auxclick",
+
             webSecurity: true,
             sandbox: true,
-            contextIsolation: true,
             preload: path.join(__dirname, "preload.js"),
+            experimentalFeatures: false,
         },
         allowRunningInsecureContent: false,
     });
@@ -77,9 +83,67 @@ function createWindow() {
     win.webContents.session.clearCache();
     win.webContents.session.clearStorageData();
 
+    ////// SECURITY
+
+    // Disable permission requests
+    win.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+    session.fromPartition("default").setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+
+    app.on("web-contents-created", (event, contents) => {
+        // Disable vewbiew
+        contents.on("will-attach-webview", (event, webPreferences, params) => {
+            event.preventDefault();
+        });
+        // Disable navigation
+        contents.on("will-navigate", (event, navigationUrl) => {
+            event.preventDefault();
+        });
+    });
+
+    win.webContents.on("will-redirect", (contentsEvent, navigationUrl) => {
+        // Log and prevent the app from redirecting to a new page
+        console.error(
+            `The application tried to redirect to the following address: '${navigationUrl}'. This attempt was blocked.`
+        );
+        contentsEvent.preventDefault();
+    });
+
+    // Filter loading any module via remote;
+    // you shouldn't be using remote at all, though
+    // https://electronjs.org/docs/tutorial/security#16-filter-the-remote-module
+    app.on("remote-require", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    // built-ins are modules such as "app"
+    app.on("remote-get-builtin", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-global", (event, webContents, globalName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-window", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-web-contents", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    //// END SECURITY
+
     win.webContents.on("new-window", (event, pth) => {
         event.preventDefault();
-        shell.openExternal(pth);
+
+        if (pth.startsWith("https://")) {
+            shell.openExternal(pth);
+        }
     });
 
     win.on("closed", () => {
@@ -90,11 +154,11 @@ function createWindow() {
     if (isDev) {
         menu = new Menu();
 
-        win.toggleDevTools();
+        win.webContents.toggleDevTools();
 
         const mainItem = new MenuItem({
             label: "Toggle Dev Tools",
-            click: () => win.toggleDevTools(),
+            click: () => win.webContents.toggleDevTools(),
             accelerator: "F12",
         });
         menu.append(mainItem);
