@@ -33,7 +33,6 @@ class ItemProcessorStatusGameSystem extends shapez.GameSystem {
                 context.strokeStyle = "#000";
                 context.lineWidth = 1;
 
-                const timeFactor = 15.23 * this.root.time.now();
                 context.beginCircle(center.x + 5, center.y + 5, 4);
                 context.fill();
                 context.stroke();
