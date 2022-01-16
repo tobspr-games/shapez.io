@@ -40,6 +40,31 @@ export class MetaVirtualProcessorBuilding extends MetaBuilding {
         super("virtual_processor");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 42,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 44,
+                variant: enumVirtualProcessorVariants.rotater,
+            },
+            {
+                internalId: 45,
+                variant: enumVirtualProcessorVariants.unstacker,
+            },
+            {
+                internalId: 50,
+                variant: enumVirtualProcessorVariants.stacker,
+            },
+            {
+                internalId: 51,
+                variant: enumVirtualProcessorVariants.painter,
+            },
+        ];
+    }
+
     getSilhouetteColor(variant) {
         return colors[variant];
     }

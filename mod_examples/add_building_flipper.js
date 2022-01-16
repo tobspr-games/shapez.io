@@ -35,9 +35,23 @@ registerMod(() => {
     };
 
     // Create the building
-    class MetaModFlipperBuilding extends shapez.MetaBuilding {
+    class MetaModFlipperBuilding extends shapez.ModMetaBuilding {
         constructor() {
             super("modFlipperBuilding");
+        }
+
+        static getAllVariantCombinations() {
+            return [
+                {
+                    name: "Flipper",
+                    description: "Flipps/Mirrors shapez from top to bottom",
+                    variant: shapez.defaultBuildingVariant,
+
+                    regularImageBase64: RESOURCES["flipper.png"],
+                    blueprintImageBase64: RESOURCES["flipper.png"],
+                    tutorialImageBase64: RESOURCES["flipper.png"],
+                },
+            ];
         }
 
         getSilhouetteColor() {
@@ -106,18 +120,6 @@ registerMod(() => {
             this.modInterface.registerNewBuilding({
                 metaClass: MetaModFlipperBuilding,
                 buildingIconBase64: RESOURCES["flipper.png"],
-
-                variantsAndRotations: [
-                    {
-                        name: "Flipper",
-                        description: "Flipps/Mirrors shapez from top to bottom",
-                        variant: shapez.defaultBuildingVariant,
-
-                        regularImageBase64: RESOURCES["flipper.png"],
-                        blueprintImageBase64: RESOURCES["flipper.png"],
-                        tutorialImageBase64: RESOURCES["flipper.png"],
-                    },
-                ],
             });
 
             // Add it to the regular toolbar

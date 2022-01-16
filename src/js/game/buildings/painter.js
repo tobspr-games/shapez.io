@@ -22,6 +22,27 @@ export class MetaPainterBuilding extends MetaBuilding {
         super("painter");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 16,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 17,
+                variant: enumPainterVariants.mirrored,
+            },
+            {
+                internalId: 18,
+                variant: enumPainterVariants.double,
+            },
+            {
+                internalId: 19,
+                variant: enumPainterVariants.quad,
+            },
+        ];
+    }
+
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:

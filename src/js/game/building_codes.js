@@ -4,6 +4,8 @@ import { AtlasSprite } from "../core/sprites";
 import { Vector } from "../core/vector";
 /* typehints:end */
 
+import { gMetaBuildingRegistry } from "../core/global_registries";
+
 /**
  * @typedef {{
  *   metaClass: typeof MetaBuilding,
@@ -47,6 +49,7 @@ export function registerBuildingVariant(
     assert(!gBuildingVariants[code], "Duplicate id: " + code);
     gBuildingVariants[code] = {
         metaClass: meta,
+        metaInstance: gMetaBuildingRegistry.findByClass(meta),
         variant,
         rotationVariant,
         // @ts-ignore

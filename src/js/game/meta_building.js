@@ -19,6 +19,16 @@ export class MetaBuilding {
     }
 
     /**
+     * Should return all possible variants of this building, no matter
+     * if they are already available or will be unlocked later on
+     *
+     * @returns {Array<{ variant: string, rotationVariant?: number, internalId?: number|string }>}
+     */
+    static getAllVariantCombinations() {
+        throw new Error("implement getAllVariantCombinations");
+    }
+
+    /**
      * Returns the id of this building
      */
     getId() {

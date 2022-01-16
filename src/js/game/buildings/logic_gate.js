@@ -41,6 +41,27 @@ export class MetaLogicGateBuilding extends MetaBuilding {
         super("logic_gate");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 32,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 34,
+                variant: enumLogicGateVariants.not,
+            },
+            {
+                internalId: 35,
+                variant: enumLogicGateVariants.xor,
+            },
+            {
+                internalId: 36,
+                variant: enumLogicGateVariants.or,
+            },
+        ];
+    }
+
     getSilhouetteColor(variant) {
         return colors[variant];
     }

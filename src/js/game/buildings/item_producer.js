@@ -3,11 +3,20 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { ItemProducerComponent } from "../components/item_producer";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 
 export class MetaItemProducerBuilding extends MetaBuilding {
     constructor() {
         super("item_producer");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 61,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

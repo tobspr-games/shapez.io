@@ -6,13 +6,22 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaFilterBuilding extends MetaBuilding {
     constructor() {
         super("filter");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 37,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

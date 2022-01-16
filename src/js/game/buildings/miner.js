@@ -21,6 +21,19 @@ export class MetaMinerBuilding extends MetaBuilding {
         super("miner");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 7,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 8,
+                variant: enumMinerVariants.chainable,
+            },
+        ];
+    }
+
     getSilhouetteColor() {
         return "#b37dcd";
     }

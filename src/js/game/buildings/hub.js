@@ -3,12 +3,21 @@ import { HubComponent } from "../components/hub";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 
 export class MetaHubBuilding extends MetaBuilding {
     constructor() {
         super("hub");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 26,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getDimensions() {

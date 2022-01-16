@@ -4,9 +4,23 @@
  * the advanced example
  */
 registerMod(() => {
-    class MetaDemoModBuilding extends shapez.MetaBuilding {
+    class MetaDemoModBuilding extends shapez.ModMetaBuilding {
         constructor() {
             super("demoModBuilding");
+        }
+
+        static getAllVariantCombinations() {
+            return [
+                {
+                    variant: shapez.defaultBuildingVariant,
+                    name: "A test name",
+                    description: "A test building",
+
+                    regularImageBase64: RESOURCES["demoBuilding.png"],
+                    blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                    tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                },
+            ];
         }
 
         getSilhouetteColor() {
@@ -41,18 +55,6 @@ registerMod(() => {
             this.modInterface.registerNewBuilding({
                 metaClass: MetaDemoModBuilding,
                 buildingIconBase64: RESOURCES["demoBuilding.png"],
-
-                variantsAndRotations: [
-                    {
-                        name: "A test name",
-                        description: "A test building",
-                        variant: shapez.defaultBuildingVariant,
-
-                        regularImageBase64: RESOURCES["demoBuilding.png"],
-                        blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                        tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                    },
-                ],
             });
 
             // Add it to the regular toolbar

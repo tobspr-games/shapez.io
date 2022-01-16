@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { LeverComponent } from "../components/lever";
 import { enumHubGoalRewards } from "../tutorial_goals";
@@ -9,6 +9,15 @@ import { enumHubGoalRewards } from "../tutorial_goals";
 export class MetaLeverBuilding extends MetaBuilding {
     constructor() {
         super("lever");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 33,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

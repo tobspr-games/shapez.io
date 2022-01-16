@@ -22,6 +22,19 @@ export class MetaTransistorBuilding extends MetaBuilding {
         super("transistor");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 38,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 60,
+                variant: enumTransistorVariants.mirrored,
+            },
+        ];
+    }
+
     getSilhouetteColor() {
         return "#bc3a61";
     }

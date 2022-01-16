@@ -31,6 +31,31 @@ export class MetaBalancerBuilding extends MetaBuilding {
         super("balancer");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 4,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 5,
+                variant: enumBalancerVariants.merger,
+            },
+            {
+                internalId: 6,
+                variant: enumBalancerVariants.mergerInverse,
+            },
+            {
+                internalId: 47,
+                variant: enumBalancerVariants.splitter,
+            },
+            {
+                internalId: 48,
+                variant: enumBalancerVariants.splitterInverse,
+            },
+        ];
+    }
+
     getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:

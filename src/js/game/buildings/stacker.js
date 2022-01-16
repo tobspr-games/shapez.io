@@ -5,13 +5,22 @@ import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export class MetaStackerBuilding extends MetaBuilding {
     constructor() {
         super("stacker");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 14,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {
