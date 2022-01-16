@@ -30,7 +30,7 @@ import { HUDPuzzlePlaySettings } from "../hud/parts/puzzle_play_settings";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaBuilding } from "../meta_building";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
-import { HUDPuzzleNextPuzzle } from "../hud/parts/HUDPuzzleNextPuzzle";
+import { HUDPuzzleNextPuzzle } from "../hud/parts/next_puzzle";
 
 const logger = createLogger("puzzle-play");
 const copy = require("clipboard-copy");

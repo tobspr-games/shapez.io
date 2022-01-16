@@ -84,12 +84,21 @@ export class ModLoader {
                     mods = await ipcRenderer.invoke("get-mods");
                 }
                 if (G_IS_DEV && globalConfig.debug.externalModUrl) {
-                    const mod = await (
-                        await fetch(globalConfig.debug.externalModUrl, {
-                            method: "GET",
-                        })
-                    ).text();
-                    mods.push(mod);
+                    const response = await fetch(globalConfig.debug.externalModUrl, {
+                        method: "GET",
+                    });
+                    if (response.status !== 200) {
+                        throw new Error(
+                            "Failed to load " +
+                                globalConfig.debug.externalModUrl +
+                                ": " +
+                                response.status +
+                                " " +
+                                response.statusText
+                        );
+                    }
+
+                    mods.push(await response.text());
                 }
 
                 mods.forEach(modCode => {

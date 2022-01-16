@@ -36,6 +36,10 @@ export class ModInterface {
     }
 
     registerCss(cssString) {
+        // Preprocess css
+        cssString = cssString.replace(/\$scaled\(([^\)]*)\)/gim, (substr, expression) => {
+            return "calc((" + expression + ") * var(--ui-scale))";
+        });
         const element = document.createElement("style");
         element.textContent = cssString;
         document.head.appendChild(element);
@@ -360,6 +364,26 @@ export class ModInterface {
      * Patches a method on a given object
      */
     replaceMethod(classHandle, methodName, override) {
-        classHandle.prototype[methodName] = override;
+        const oldMethod = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
+            return override.call(this, oldMethod.bind(this), arguments);
+        };
+    }
+
+    runBeforeMethod(classHandle, methodName, executeBefore) {
+        const oldHandle = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
+            executeBefore.apply(this, arguments);
+            return oldHandle.apply(this, arguments);
+        };
+    }
+
+    runAfterMethod(classHandle, methodName, executeAfter) {
+        const oldHandle = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
+            const returnValue = oldHandle.apply(this, arguments);
+            executeAfter.apply(this, arguments);
+            return returnValue;
+        };
     }
 }
