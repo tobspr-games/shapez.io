@@ -6,6 +6,7 @@ const url = require("url");
 const fs = require("fs");
 const steam = require("./steam");
 const asyncLock = require("async-lock");
+const windowStateKeeper = require("electron-window-state");
 
 const isDev = app.commandLine.hasSwitch("dev");
 const isLocal = app.commandLine.hasSwitch("local");
@@ -40,12 +41,19 @@ function createWindow() {
         faviconExtension = ".ico";
     }
 
+    const mainWindowState = windowStateKeeper({
+        defaultWidth: 1000,
+        defaultHeight: 800,
+    });
+
     win = new BrowserWindow({
-        width: 1280,
-        height: 800,
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
         show: false,
         backgroundColor: "#222428",
-        useContentSize: true,
+        useContentSize: false,
         minWidth: 800,
         minHeight: 600,
         title: "shapez.io Standalone",
@@ -68,6 +76,8 @@ function createWindow() {
         },
         allowRunningInsecureContent: false,
     });
+
+    mainWindowState.manage(win);
 
     if (isLocal) {
         win.loadURL("http://localhost:3005");
