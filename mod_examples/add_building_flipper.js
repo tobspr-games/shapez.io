@@ -2,135 +2,127 @@
  * This shows how to add a new extended building (A building which flips shapes).
  * Be sure to check out the "add_building_basic" example first
  */
-registerMod(() => {
-    // Declare a new type of item processor
-    shapez.enumItemProcessorTypes.flipper = "flipper";
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Add a flipper building",
+    version: "1",
+    id: "add-building-extended",
+    description:
+        "Shows how to add a new building with logic, in this case it flips/mirrors shapez from top to down",
+};
 
-    // For now, flipper always has the same speed
-    shapez.MOD_ITEM_PROCESSOR_SPEEDS.flipper = () => 10;
+// Declare a new type of item processor
+shapez.enumItemProcessorTypes.flipper = "flipper";
 
-    // Declare a handler for the processor so we define the "flip" operation
-    shapez.MOD_ITEM_PROCESSOR_HANDLERS.flipper = function (payload) {
-        const shapeDefinition = payload.items.get(0).definition;
+// For now, flipper always has the same speed
+shapez.MOD_ITEM_PROCESSOR_SPEEDS.flipper = () => 10;
 
-        // Flip bottom with top on a new, cloned item (NEVER modify the incoming item!)
-        const newLayers = shapeDefinition.getClonedLayers();
-        newLayers.forEach(layer => {
-            const tr = layer[shapez.TOP_RIGHT];
-            const br = layer[shapez.BOTTOM_RIGHT];
-            const bl = layer[shapez.BOTTOM_LEFT];
-            const tl = layer[shapez.TOP_LEFT];
+// Declare a handler for the processor so we define the "flip" operation
+shapez.MOD_ITEM_PROCESSOR_HANDLERS.flipper = function (payload) {
+    const shapeDefinition = payload.items.get(0).definition;
 
-            layer[shapez.BOTTOM_LEFT] = tl;
-            layer[shapez.BOTTOM_RIGHT] = tr;
+    // Flip bottom with top on a new, cloned item (NEVER modify the incoming item!)
+    const newLayers = shapeDefinition.getClonedLayers();
+    newLayers.forEach(layer => {
+        const tr = layer[shapez.TOP_RIGHT];
+        const br = layer[shapez.BOTTOM_RIGHT];
+        const bl = layer[shapez.BOTTOM_LEFT];
+        const tl = layer[shapez.TOP_LEFT];
 
-            layer[shapez.TOP_LEFT] = bl;
-            layer[shapez.TOP_RIGHT] = br;
-        });
+        layer[shapez.BOTTOM_LEFT] = tl;
+        layer[shapez.BOTTOM_RIGHT] = tr;
 
-        const newDefinition = new shapez.ShapeDefinition({ layers: newLayers });
-        payload.outItems.push({
-            item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(newDefinition),
-        });
-    };
+        layer[shapez.TOP_LEFT] = bl;
+        layer[shapez.TOP_RIGHT] = br;
+    });
 
-    // Create the building
-    class MetaModFlipperBuilding extends shapez.ModMetaBuilding {
-        constructor() {
-            super("modFlipperBuilding");
-        }
+    const newDefinition = new shapez.ShapeDefinition({ layers: newLayers });
+    payload.outItems.push({
+        item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(newDefinition),
+    });
+};
 
-        static getAllVariantCombinations() {
-            return [
-                {
-                    name: "Flipper",
-                    description: "Flipps/Mirrors shapez from top to bottom",
-                    variant: shapez.defaultBuildingVariant,
-
-                    regularImageBase64: RESOURCES["flipper.png"],
-                    blueprintImageBase64: RESOURCES["flipper.png"],
-                    tutorialImageBase64: RESOURCES["flipper.png"],
-                },
-            ];
-        }
-
-        getSilhouetteColor() {
-            return "red";
-        }
-
-        getAdditionalStatistics(root) {
-            const speed = root.hubGoals.getProcessorBaseSpeed(shapez.enumItemProcessorTypes.flipper);
-            return [[shapez.T.ingame.buildingPlacement.infoTexts.speed, shapez.formatItemsPerSecond(speed)]];
-        }
-
-        getIsUnlocked(root) {
-            return true;
-        }
-
-        setupEntityComponents(entity) {
-            // Accept shapes from the bottom
-            entity.addComponent(
-                new shapez.ItemAcceptorComponent({
-                    slots: [
-                        {
-                            pos: new shapez.Vector(0, 0),
-                            directions: [shapez.enumDirection.bottom],
-                            filter: "shape",
-                        },
-                    ],
-                })
-            );
-
-            // Process those shapes with tye processor type "flipper" (which we added above)
-            entity.addComponent(
-                new shapez.ItemProcessorComponent({
-                    inputsPerCharge: 1,
-                    processorType: shapez.enumItemProcessorTypes.flipper,
-                })
-            );
-
-            // Eject the result to the top
-            entity.addComponent(
-                new shapez.ItemEjectorComponent({
-                    slots: [{ pos: new shapez.Vector(0, 0), direction: shapez.enumDirection.top }],
-                })
-            );
-        }
+// Create the building
+class MetaModFlipperBuilding extends shapez.ModMetaBuilding {
+    constructor() {
+        super("modFlipperBuilding");
     }
 
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Add a flipper building",
-                    version: "1",
-                    id: "add-building-extended",
-                    description:
-                        "Shows how to add a new building with logic, in this case it flips/mirrors shapez from top to down",
-                },
-                modLoader
-            );
-        }
+    static getAllVariantCombinations() {
+        return [
+            {
+                name: "Flipper",
+                description: "Flipps/Mirrors shapez from top to bottom",
+                variant: shapez.defaultBuildingVariant,
 
-        init() {
-            // Register the new building
-            this.modInterface.registerNewBuilding({
-                metaClass: MetaModFlipperBuilding,
-                buildingIconBase64: RESOURCES["flipper.png"],
-            });
+                regularImageBase64: RESOURCES["flipper.png"],
+                blueprintImageBase64: RESOURCES["flipper.png"],
+                tutorialImageBase64: RESOURCES["flipper.png"],
+            },
+        ];
+    }
 
-            // Add it to the regular toolbar
-            this.modInterface.addNewBuildingToToolbar({
-                toolbar: "regular",
-                location: "primary",
-                metaClass: MetaModFlipperBuilding,
-            });
-        }
-    };
-});
+    getSilhouetteColor() {
+        return "red";
+    }
+
+    getAdditionalStatistics(root) {
+        const speed = root.hubGoals.getProcessorBaseSpeed(shapez.enumItemProcessorTypes.flipper);
+        return [[shapez.T.ingame.buildingPlacement.infoTexts.speed, shapez.formatItemsPerSecond(speed)]];
+    }
+
+    getIsUnlocked(root) {
+        return true;
+    }
+
+    setupEntityComponents(entity) {
+        // Accept shapes from the bottom
+        entity.addComponent(
+            new shapez.ItemAcceptorComponent({
+                slots: [
+                    {
+                        pos: new shapez.Vector(0, 0),
+                        directions: [shapez.enumDirection.bottom],
+                        filter: "shape",
+                    },
+                ],
+            })
+        );
+
+        // Process those shapes with tye processor type "flipper" (which we added above)
+        entity.addComponent(
+            new shapez.ItemProcessorComponent({
+                inputsPerCharge: 1,
+                processorType: shapez.enumItemProcessorTypes.flipper,
+            })
+        );
+
+        // Eject the result to the top
+        entity.addComponent(
+            new shapez.ItemEjectorComponent({
+                slots: [{ pos: new shapez.Vector(0, 0), direction: shapez.enumDirection.top }],
+            })
+        );
+    }
+}
+
+class Mod extends shapez.Mod {
+    init() {
+        // Register the new building
+        this.modInterface.registerNewBuilding({
+            metaClass: MetaModFlipperBuilding,
+            buildingIconBase64: RESOURCES["flipper.png"],
+        });
+
+        // Add it to the regular toolbar
+        this.modInterface.addNewBuildingToToolbar({
+            toolbar: "regular",
+            location: "primary",
+            metaClass: MetaModFlipperBuilding,
+        });
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////
 

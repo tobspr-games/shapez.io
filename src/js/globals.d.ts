@@ -26,8 +26,6 @@ declare const shapez: any;
 
 declare const ipcRenderer: any;
 
-declare const registerMod: any;
-
 // Polyfills
 declare interface String {
     replaceAll(search: string, replacement: string): string;
@@ -98,7 +96,7 @@ declare interface Window {
     cpmstarAPI: any;
 
     // Mods
-    registerMod: any;
+    $shapez_registerMod: any;
     anyModLoaded: any;
 
     shapez: any;

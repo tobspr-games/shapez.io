@@ -9,6 +9,17 @@ import { MOD_SIGNALS } from "./mod_signals";
 
 const LOG = createLogger("mods");
 
+/**
+ * @typedef {{
+ *   name: string;
+ *   version: string;
+ *   author: string;
+ *   website: string;
+ *   description: string;
+ *   id: string;
+ * }} ModMetadata
+ */
+
 export class ModLoader {
     constructor() {
         LOG.log("modloader created");
@@ -23,7 +34,7 @@ export class ModLoader {
 
         this.modInterface = new ModInterface(this);
 
-        /** @type {((Object) => (new (Application, ModLoader) => Mod))[]} */
+        /** @type {({ meta: ModMetadata, modClass: typeof Mod})[]} */
         this.modLoadQueue = [];
 
         this.initialized = false;
@@ -73,8 +84,11 @@ export class ModLoader {
 
         this.exposeExports();
 
-        window.registerMod = mod => {
-            this.modLoadQueue.push(mod);
+        window.$shapez_registerMod = (modClass, meta) => {
+            this.modLoadQueue.push({
+                modClass,
+                meta,
+            });
         };
 
         if (G_IS_STANDALONE || G_IS_DEV) {
@@ -103,6 +117,7 @@ export class ModLoader {
 
                 mods.forEach(modCode => {
                     try {
+                        modCode += "\n;window.$shapez_registerMod(Mod, METADATA);";
                         const func = new Function(modCode);
                         func();
                     } catch (ex) {
@@ -116,9 +131,9 @@ export class ModLoader {
         }
 
         this.initialized = true;
-        this.modLoadQueue.forEach(modClass => {
+        this.modLoadQueue.forEach(({ modClass, meta }) => {
             try {
-                const mod = new (modClass())(this.app, this);
+                const mod = new modClass(this.app, this, meta);
                 mod.init();
                 this.mods.push(mod);
             } catch (ex) {
@@ -128,7 +143,7 @@ export class ModLoader {
         });
         this.modLoadQueue = [];
 
-        delete window.registerMod;
+        delete window.$shapez_registerMod;
     }
 }
 

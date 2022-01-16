@@ -3,69 +3,62 @@
  * If you are interested in adding more logic to the game, you should also check out
  * the advanced example
  */
-registerMod(() => {
-    class MetaDemoModBuilding extends shapez.ModMetaBuilding {
-        constructor() {
-            super("demoModBuilding");
-        }
 
-        static getAllVariantCombinations() {
-            return [
-                {
-                    variant: shapez.defaultBuildingVariant,
-                    name: "A test name",
-                    description: "A test building",
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Add new basic building",
+    version: "1",
+    id: "add-building-basic",
+    description: "Shows how to add a new basic building",
+};
 
-                    regularImageBase64: RESOURCES["demoBuilding.png"],
-                    blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                    tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                },
-            ];
-        }
-
-        getSilhouetteColor() {
-            return "red";
-        }
-
-        setupEntityComponents(entity) {
-            // Here you can add components, for example an ItemProcessorComponent.
-            // To get an idea what you can do with the builtin components, have a look
-            // at the builtin buildings in <src/js/game/buildings/>
-        }
+class MetaDemoModBuilding extends shapez.ModMetaBuilding {
+    constructor() {
+        super("demoModBuilding");
     }
 
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Add new basic building",
-                    version: "1",
-                    id: "add-building-basic",
-                    description: "Shows how to add a new basic building",
-                },
-                modLoader
-            );
-        }
+    static getAllVariantCombinations() {
+        return [
+            {
+                variant: shapez.defaultBuildingVariant,
+                name: "A test name",
+                description: "A test building",
 
-        init() {
-            // Register the new building
-            this.modInterface.registerNewBuilding({
-                metaClass: MetaDemoModBuilding,
-                buildingIconBase64: RESOURCES["demoBuilding.png"],
-            });
+                regularImageBase64: RESOURCES["demoBuilding.png"],
+                blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+            },
+        ];
+    }
 
-            // Add it to the regular toolbar
-            this.modInterface.addNewBuildingToToolbar({
-                toolbar: "regular",
-                location: "primary",
-                metaClass: MetaDemoModBuilding,
-            });
-        }
-    };
-});
+    getSilhouetteColor() {
+        return "red";
+    }
+
+    setupEntityComponents(entity) {
+        // Here you can add components, for example an ItemProcessorComponent.
+        // To get an idea what you can do with the builtin components, have a look
+        // at the builtin buildings in <src/js/game/buildings/>
+    }
+}
+
+class Mod extends shapez.Mod {
+    init() {
+        // Register the new building
+        this.modInterface.registerNewBuilding({
+            metaClass: MetaDemoModBuilding,
+            buildingIconBase64: RESOURCES["demoBuilding.png"],
+        });
+
+        // Add it to the regular toolbar
+        this.modInterface.addNewBuildingToToolbar({
+            toolbar: "regular",
+            location: "primary",
+            metaClass: MetaDemoModBuilding,
+        });
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////
 
