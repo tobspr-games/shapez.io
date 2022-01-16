@@ -84,13 +84,6 @@ export class ModLoader {
 
         this.exposeExports();
 
-        window.$shapez_registerMod = (modClass, meta) => {
-            this.modLoadQueue.push({
-                modClass,
-                meta,
-            });
-        };
-
         if (G_IS_STANDALONE || G_IS_DEV) {
             try {
                 let mods = [];
@@ -115,18 +108,42 @@ export class ModLoader {
                     mods.push(await response.text());
                 }
 
+                window.$shapez_registerMod = (modClass, meta) => {
+                    if (this.modLoadQueue.some(entry => entry.meta.id === meta.id)) {
+                        console.warn(
+                            "Not registering mod",
+                            meta,
+                            "since a mod with the same id is already loaded"
+                        );
+                        return;
+                    }
+                    this.modLoadQueue.push({
+                        modClass,
+                        meta,
+                    });
+                };
+
                 mods.forEach(modCode => {
+                    modCode += `
+                        if (typeof Mod !== 'undefined') {
+                            if (typeof METADATA !== 'object') {
+                                throw new Error("No METADATA variable found");
+                            }
+                            window.$shapez_registerMod(Mod, METADATA);
+                        }
+                    `;
                     try {
-                        modCode += "\n;window.$shapez_registerMod(Mod, METADATA);";
                         const func = new Function(modCode);
                         func();
                     } catch (ex) {
                         console.error(ex);
-                        alert("Failed to parse mod (launch with --dev for more info): " + ex);
+                        alert("Failed to parse mod (launch with --dev for more info): \n\n" + ex);
                     }
                 });
+
+                delete window.$shapez_registerMod;
             } catch (ex) {
-                alert("Failed to load mods (launch with --dev for more info): " + ex);
+                alert("Failed to load mods (launch with --dev for more info): \n\n" + ex);
             }
         }
 
@@ -138,12 +155,10 @@ export class ModLoader {
                 this.mods.push(mod);
             } catch (ex) {
                 console.error(ex);
-                alert("Failed to initialize mods (launch with --dev for more info): " + ex);
+                alert("Failed to initialize mods (launch with --dev for more info): \n\n" + ex);
             }
         });
         this.modLoadQueue = [];
-
-        delete window.$shapez_registerMod;
     }
 }
 
