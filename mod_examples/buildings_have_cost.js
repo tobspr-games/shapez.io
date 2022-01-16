@@ -59,7 +59,6 @@ registerMod(() => {
 
             // Make the player start with some currency
             this.modInterface.runAfterMethod(shapez.GameCore, "initNewGame", function () {
-                console.log("Giving player start currency");
                 this.root.hubGoals.storedShapes[CURRENCY] = 100;
             });
 
@@ -86,8 +85,6 @@ registerMod(() => {
             this.modInterface.replaceMethod(shapez.GameLogic, "tryPlaceBuilding", function ($original, args) {
                 const result = $original(...args);
                 if (result && result.components.Belt) {
-                    console.log("BELT PLACED");
-
                     this.root.hubGoals.storedShapes[CURRENCY]--;
                 }
                 return result;

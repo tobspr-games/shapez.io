@@ -19,6 +19,9 @@ registerMod(() => {
         }
 
         init() {
+            // Notice that, since the UI is scaled dynamically, every pixel value
+            // should be wrapped in '$scaled()' (see below)
+
             this.modInterface.registerCss(`
                 * {
                     font-family: "Comic Sans", "Comic Sans MS", "ComicSans", Tahoma !important;
@@ -33,7 +36,7 @@ registerMod(() => {
                 }
 
                 #state_MainMenuState .mainContainer, #state_MainMenuState .modsOverview {
-                    border: 5px solid #000 !important;
+                    border: $scaled(5px) solid #000 !important;
                 }
             `);
         }
