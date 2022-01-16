@@ -355,4 +355,11 @@ export class ModInterface {
             }
         });
     }
+
+    /**
+     * Patches a method on a given object
+     */
+    replaceMethod(classHandle, methodName, override) {
+        classHandle.prototype[methodName] = override;
+    }
 }
