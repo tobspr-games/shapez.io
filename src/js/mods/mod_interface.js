@@ -388,4 +388,19 @@ export class ModInterface {
             return returnValue;
         };
     }
+
+    extendClass(classHandle, extensionClass) {
+        const extendPrototype = function (base, extension) {
+            const properties = Array.from(Object.getOwnPropertyNames(extension));
+            base.$super = base.$super || {};
+            properties.forEach(propertyName => {
+                if (["constructor", "name", "length", "prototype"].includes(propertyName)) {
+                    return;
+                }
+                base.$super[propertyName] = base.$super[propertyName] || base[propertyName];
+                base[propertyName] = extension[propertyName];
+            });
+        };
+        extendPrototype(classHandle.prototype, extensionClass);
+    }
 }
