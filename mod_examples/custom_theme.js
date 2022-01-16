@@ -1,32 +1,24 @@
 /**
  * This example shows how to add a new theme to the game
  */
-registerMod(() => {
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Custom Game Theme",
-                    version: "1",
-                    id: "custom-theme",
-                    description: "Shows how to add a custom game theme",
-                },
-                modLoader
-            );
-        }
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Custom Game Theme",
+    version: "1",
+    id: "custom-theme",
+    description: "Shows how to add a custom game theme",
+};
 
-        init() {
-            this.modInterface.registerGameTheme({
-                id: "my-theme",
-                name: "My fancy theme",
-                theme: RESOURCES["my-theme.json"],
-            });
-        }
-    };
-});
+class Mod extends shapez.Mod {
+    init() {
+        this.modInterface.registerGameTheme({
+            id: "my-theme",
+            name: "My fancy theme",
+            theme: RESOURCES["my-theme.json"],
+        });
+    }
+}
 
 const RESOURCES = {
     "my-theme.json": {

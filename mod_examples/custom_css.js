@@ -1,28 +1,21 @@
 /**
  * This example shows how to add custom css
  */
-registerMod(() => {
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Add custom CSS",
-                    version: "1",
-                    id: "custom-css",
-                    description: "Shows how to add custom css",
-                },
-                modLoader
-            );
-        }
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Add custom CSS",
+    version: "1",
+    id: "custom-css",
+    description: "Shows how to add custom css",
+};
 
-        init() {
-            // Notice that, since the UI is scaled dynamically, every pixel value
-            // should be wrapped in '$scaled()' (see below)
+class Mod extends shapez.Mod {
+    init() {
+        // Notice that, since the UI is scaled dynamically, every pixel value
+        // should be wrapped in '$scaled()' (see below)
 
-            this.modInterface.registerCss(`
+        this.modInterface.registerCss(`
                 * {
                     font-family: "Comic Sans", "Comic Sans MS", "ComicSans", Tahoma !important;
                 }
@@ -39,9 +32,8 @@ registerMod(() => {
                     border: $scaled(5px) solid #000 !important;
                 }
             `);
-        }
-    };
-});
+    }
+}
 
 const RESOURCES = {
     "cat.png":

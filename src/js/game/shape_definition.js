@@ -384,74 +384,78 @@ export class ShapeDefinition extends BasicSerializableObject {
                 context.strokeStyle = THEME.items.outline;
                 context.lineWidth = THEME.items.outlineWidth;
 
-                switch (subShape) {
-                    case enumSubShape.rect: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
-                        context.rect(-quadrantHalfSize, quadrantHalfSize - dims, dims, dims);
+                if (MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[subShape]) {
+                    MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[subShape]({
+                        context,
+                        layerScale,
+                        quadrantSize,
+                    });
+                } else {
+                    switch (subShape) {
+                        case enumSubShape.rect: {
+                            context.beginPath();
+                            const dims = quadrantSize * layerScale;
+                            context.rect(-quadrantHalfSize, quadrantHalfSize - dims, dims, dims);
+                            context.fill();
+                            context.stroke();
+                            break;
+                        }
+                        case enumSubShape.star: {
+                            context.beginPath();
+                            const dims = quadrantSize * layerScale;
 
-                        break;
-                    }
-                    case enumSubShape.star: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
+                            let originX = -quadrantHalfSize;
+                            let originY = quadrantHalfSize - dims;
 
-                        let originX = -quadrantHalfSize;
-                        let originY = quadrantHalfSize - dims;
+                            const moveInwards = dims * 0.4;
+                            context.moveTo(originX, originY + moveInwards);
+                            context.lineTo(originX + dims, originY);
+                            context.lineTo(originX + dims - moveInwards, originY + dims);
+                            context.lineTo(originX, originY + dims);
+                            context.closePath();
+                            context.fill();
+                            context.stroke();
+                            break;
+                        }
 
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims - moveInwards, originY + dims);
-                        context.lineTo(originX, originY + dims);
-                        context.closePath();
-                        break;
-                    }
+                        case enumSubShape.windmill: {
+                            context.beginPath();
+                            const dims = quadrantSize * layerScale;
 
-                    case enumSubShape.windmill: {
-                        context.beginPath();
-                        const dims = quadrantSize * layerScale;
+                            let originX = -quadrantHalfSize;
+                            let originY = quadrantHalfSize - dims;
+                            const moveInwards = dims * 0.4;
+                            context.moveTo(originX, originY + moveInwards);
+                            context.lineTo(originX + dims, originY);
+                            context.lineTo(originX + dims, originY + dims);
+                            context.lineTo(originX, originY + dims);
+                            context.closePath();
+                            context.fill();
+                            context.stroke();
+                            break;
+                        }
 
-                        let originX = -quadrantHalfSize;
-                        let originY = quadrantHalfSize - dims;
-                        const moveInwards = dims * 0.4;
-                        context.moveTo(originX, originY + moveInwards);
-                        context.lineTo(originX + dims, originY);
-                        context.lineTo(originX + dims, originY + dims);
-                        context.lineTo(originX, originY + dims);
-                        context.closePath();
-                        break;
-                    }
+                        case enumSubShape.circle: {
+                            context.beginPath();
+                            context.moveTo(-quadrantHalfSize, quadrantHalfSize);
+                            context.arc(
+                                -quadrantHalfSize,
+                                quadrantHalfSize,
+                                quadrantSize * layerScale,
+                                -Math.PI * 0.5,
+                                0
+                            );
+                            context.closePath();
+                            context.fill();
+                            context.stroke();
+                            break;
+                        }
 
-                    case enumSubShape.circle: {
-                        context.beginPath();
-                        context.moveTo(-quadrantHalfSize, quadrantHalfSize);
-                        context.arc(
-                            -quadrantHalfSize,
-                            quadrantHalfSize,
-                            quadrantSize * layerScale,
-                            -Math.PI * 0.5,
-                            0
-                        );
-                        context.closePath();
-                        break;
-                    }
-
-                    default: {
-                        if (MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[subShape]) {
-                            MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[subShape]({
-                                context,
-                                layerScale,
-                                quadrantSize,
-                            });
-                        } else {
+                        default: {
                             throw new Error("Unkown sub shape: " + subShape);
                         }
                     }
                 }
-
-                context.fill();
-                context.stroke();
 
                 context.rotate(-rotation);
                 context.translate(-centerQuadrantX, -centerQuadrantY);

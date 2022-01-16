@@ -1,39 +1,32 @@
 /**
  * This shows how to patch existing methods by making belts have a cost
  */
-registerMod(() => {
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Patch Methods",
-                    version: "1",
-                    id: "patch-methods",
-                    description:
-                        "Shows how to patch existing methods to change the game by making the belts cost shapes",
-                },
-                modLoader
-            );
-        }
 
-        init() {
-            // Define our currency
-            const CURRENCY = "CyCyCyCy:--------:CuCuCuCu";
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Patch Methods",
+    version: "1",
+    id: "patch-methods",
+    description: "Shows how to patch existing methods to change the game by making the belts cost shapes",
+};
 
-            // Make sure the currency is always pinned
-            this.modInterface.runAfterMethod(shapez.HUDPinnedShapes, "rerenderFull", function () {
-                this.internalPinShape({
-                    key: CURRENCY,
-                    canUnpin: false,
-                    className: "currency",
-                });
+class Mod extends shapez.Mod {
+    init() {
+        // Define our currency
+        const CURRENCY = "CyCyCyCy:--------:CuCuCuCu";
+
+        // Make sure the currency is always pinned
+        this.modInterface.runAfterMethod(shapez.HUDPinnedShapes, "rerenderFull", function () {
+            this.internalPinShape({
+                key: CURRENCY,
+                canUnpin: false,
+                className: "currency",
             });
+        });
 
-            // Style it
-            this.modInterface.registerCss(`
+        // Style it
+        this.modInterface.registerCss(`
                 #ingame_HUD_PinnedShapes .shape.currency::after {
                     content: " ";
                     position: absolute;
@@ -57,41 +50,40 @@ registerMod(() => {
                 }
             `);
 
-            // Make the player start with some currency
-            this.modInterface.runAfterMethod(shapez.GameCore, "initNewGame", function () {
-                this.root.hubGoals.storedShapes[CURRENCY] = 100;
-            });
+        // Make the player start with some currency
+        this.modInterface.runAfterMethod(shapez.GameCore, "initNewGame", function () {
+            this.root.hubGoals.storedShapes[CURRENCY] = 100;
+        });
 
-            // Make belts have a cost
-            this.modInterface.replaceMethod(shapez.MetaBeltBuilding, "getAdditionalStatistics", function (
-                $original,
-                [root, variant]
-            ) {
-                const oldStats = $original(root, variant);
-                oldStats.push(["Cost", "1 x <span class='currencyIcon small'></span>"]);
-                return oldStats;
-            });
+        // Make belts have a cost
+        this.modInterface.replaceMethod(shapez.MetaBeltBuilding, "getAdditionalStatistics", function (
+            $original,
+            [root, variant]
+        ) {
+            const oldStats = $original(root, variant);
+            oldStats.push(["Cost", "1 x <span class='currencyIcon small'></span>"]);
+            return oldStats;
+        });
 
-            // Only allow placing an entity when there is enough currency
-            this.modInterface.replaceMethod(shapez.GameLogic, "checkCanPlaceEntity", function (
-                $original,
-                [entity, offset]
-            ) {
-                const storedCurrency = this.root.hubGoals.storedShapes[CURRENCY] || 0;
-                return storedCurrency > 0 && $original(entity, offset);
-            });
+        // Only allow placing an entity when there is enough currency
+        this.modInterface.replaceMethod(shapez.GameLogic, "checkCanPlaceEntity", function (
+            $original,
+            [entity, offset]
+        ) {
+            const storedCurrency = this.root.hubGoals.storedShapes[CURRENCY] || 0;
+            return storedCurrency > 0 && $original(entity, offset);
+        });
 
-            // Take shapes when placing a building
-            this.modInterface.replaceMethod(shapez.GameLogic, "tryPlaceBuilding", function ($original, args) {
-                const result = $original(...args);
-                if (result && result.components.Belt) {
-                    this.root.hubGoals.storedShapes[CURRENCY]--;
-                }
-                return result;
-            });
-        }
-    };
-});
+        // Take shapes when placing a building
+        this.modInterface.replaceMethod(shapez.GameLogic, "tryPlaceBuilding", function ($original, args) {
+            const result = $original(...args);
+            if (result && result.components.Belt) {
+                this.root.hubGoals.storedShapes[CURRENCY]--;
+            }
+            return result;
+        });
+    }
+}
 
 const RESOURCES = {
     "currency.png":

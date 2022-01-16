@@ -2,34 +2,24 @@
  * This example shows how to replace builtin sprites, in this case
  * the color sprites
  */
-registerMod(() => {
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
-                {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Mod Example: Replace builtin sprites",
-                    version: "1",
-                    id: "replace-builtin-sprites",
-                    description: "Shows how to replace builtin sprites",
-                },
-                modLoader
-            );
-        }
 
-        init() {
-            // Replace a builtin sprite
-            ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {
-                this.modInterface.registerSprite(
-                    "sprites/colors/" + color + ".png",
-                    RESOURCES[color + ".png"]
-                );
-            });
-        }
-    };
-});
+const METADATA = {
+    website: "https://tobspr.io",
+    author: "tobspr",
+    name: "Mod Example: Replace builtin sprites",
+    version: "1",
+    id: "replace-builtin-sprites",
+    description: "Shows how to replace builtin sprites",
+};
+
+class Mod extends shapez.Mod {
+    init() {
+        // Replace a builtin sprite
+        ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {
+            this.modInterface.registerSprite("sprites/colors/" + color + ".png", RESOURCES[color + ".png"]);
+        });
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////
 

@@ -229,18 +229,20 @@ export class ModInterface {
         T.buildings[id] = {};
 
         metaClass.getAllVariantCombinations().forEach(combination => {
-            const actualVariant = combination.variant || defaultBuildingVariant;
-            registerBuildingVariant(id, metaClass, actualVariant, combination.rotationVariant || 0);
+            const variant = combination.variant || defaultBuildingVariant;
+            const rotationVariant = combination.rotationVariant || 0;
+
+            const buildingIdentifier = id + (variant === defaultBuildingVariant ? "" : "-" + variant);
+
+            const uniqueTypeId = buildingIdentifier + (rotationVariant === 0 ? "" : "-" + rotationVariant);
+            registerBuildingVariant(uniqueTypeId, metaClass, variant, rotationVariant);
 
             gBuildingVariants[id].metaInstance = metaInstance;
 
-            T.buildings[id][actualVariant] = {
+            T.buildings[id][variant] = {
                 name: combination.name || "Name",
                 description: combination.description || "Description",
             };
-
-            const buildingIdentifier =
-                id + (actualVariant === defaultBuildingVariant ? "" : "-" + actualVariant);
 
             if (combination.regularImageBase64) {
                 this.registerSprite(
@@ -256,7 +258,7 @@ export class ModInterface {
                 );
             }
             if (combination.tutorialImageBase64) {
-                this.setBuildingTutorialImage(id, actualVariant, combination.tutorialImageBase64);
+                this.setBuildingTutorialImage(id, variant, combination.tutorialImageBase64);
             }
         });
 

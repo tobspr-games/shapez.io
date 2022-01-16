@@ -1,231 +1,189 @@
-registerMod(() => {
-    class DemoModComponent extends shapez.Component {
-        static getId() {
-            return "DemoMod";
-        }
-
-        static getSchema() {
-            return {
-                magicNumber: shapez.types.uint,
-            };
-        }
-
-        constructor(magicNumber) {
-            super();
-
-            this.magicNumber = magicNumber;
-        }
+class DemoModComponent extends shapez.Component {
+    static getId() {
+        return "DemoMod";
     }
 
-    class MetaDemoModBuilding extends shapez.MetaBuilding {
-        constructor() {
-            super("demoModBuilding");
-        }
-
-        getSilhouetteColor() {
-            return "red";
-        }
-
-        setupEntityComponents(entity) {
-            entity.addComponent(new DemoModComponent(Math.floor(Math.random() * 100.0)));
-        }
+    static getSchema() {
+        return {
+            magicNumber: shapez.types.uint,
+        };
     }
 
-    class DemoModSystem extends shapez.GameSystemWithFilter {
-        constructor(root) {
-            super(root, [DemoModComponent]);
-        }
+    constructor(magicNumber) {
+        super();
 
-        update() {
-            // nothing to do here
-        }
+        this.magicNumber = magicNumber;
+    }
+}
 
-        drawChunk(parameters, chunk) {
-            const contents = chunk.containedEntitiesByLayer.regular;
-            for (let i = 0; i < contents.length; ++i) {
-                const entity = contents[i];
-                const demoComp = entity.components.DemoMod;
-                if (!demoComp) {
-                    continue;
-                }
+class MetaDemoModBuilding extends shapez.MetaBuilding {
+    constructor() {
+        super("demoModBuilding");
+    }
 
-                const staticComp = entity.components.StaticMapEntity;
+    getSilhouetteColor() {
+        return "red";
+    }
 
-                const context = parameters.context;
-                const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+    setupEntityComponents(entity) {
+        entity.addComponent(new DemoModComponent(Math.floor(Math.random() * 100.0)));
+    }
+}
 
-                // Culling for better performance
-                if (parameters.visibleRect.containsCircle(center.x, center.y, 40)) {
-                    // Circle
-                    context.fillStyle = "#53cf47";
-                    context.strokeStyle = "#000";
-                    context.lineWidth = 2;
+class DemoModSystem extends shapez.GameSystemWithFilter {
+    constructor(root) {
+        super(root, [DemoModComponent]);
+    }
 
-                    const timeFactor = 5.23 * this.root.time.now();
-                    context.beginCircle(
-                        center.x + Math.cos(timeFactor) * 10,
-                        center.y + Math.sin(timeFactor) * 10,
-                        7
-                    );
-                    context.fill();
-                    context.stroke();
+    update() {
+        // nothing to do here
+    }
 
-                    // Text
-                    context.fillStyle = "#fff";
-                    context.textAlign = "center";
-                    context.font = "12px GameFont";
-                    context.fillText(demoComp.magicNumber, center.x, center.y + 4);
-                }
+    drawChunk(parameters, chunk) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const demoComp = entity.components.DemoMod;
+            if (!demoComp) {
+                continue;
+            }
+
+            const staticComp = entity.components.StaticMapEntity;
+
+            const context = parameters.context;
+            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+
+            // Culling for better performance
+            if (parameters.visibleRect.containsCircle(center.x, center.y, 40)) {
+                // Circle
+                context.fillStyle = "#53cf47";
+                context.strokeStyle = "#000";
+                context.lineWidth = 2;
+
+                const timeFactor = 5.23 * this.root.time.now();
+                context.beginCircle(
+                    center.x + Math.cos(timeFactor) * 10,
+                    center.y + Math.sin(timeFactor) * 10,
+                    7
+                );
+                context.fill();
+                context.stroke();
+
+                // Text
+                context.fillStyle = "#fff";
+                context.textAlign = "center";
+                context.font = "12px GameFont";
+                context.fillText(demoComp.magicNumber, center.x, center.y + 4);
             }
         }
     }
+}
 
-    return class ModImpl extends shapez.Mod {
-        constructor(app, modLoader) {
-            super(
-                app,
+class Mod extends shapez.Mod {
+    constructor(app, modLoader) {
+        super(
+            app,
+            {
+                website: "https://tobspr.io",
+                author: "tobspr",
+                name: "Demo Mod",
+                version: "1",
+                id: "demo-mod",
+                description: "A simple mod to demonstrate the capatibilities of the mod loader.",
+            },
+            modLoader
+        );
+    }
+
+    init() {
+        // Add some custom css
+        // this.modInterface.registerCss(`
+        //     * {
+        //         font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
+        //     }
+        // `);
+
+        // Add an atlas
+        this.modInterface.registerAtlas(RESOURCES["demoAtlas.png"], RESOURCES["demoAtlas.json"]);
+
+        this.modInterface.registerTranslations("en", {
+            ingame: {
+                interactiveTutorial: {
+                    title: "Hello",
+                    hints: {
+                        "1_1_extractor": "World!",
+                    },
+                },
+            },
+        });
+
+        // Register a new component
+        this.modInterface.registerComponent(DemoModComponent);
+
+        // Register a new game system which can update and draw stuff
+        this.modInterface.registerGameSystem({
+            id: "demo_mod",
+            systemClass: DemoModSystem,
+            before: "belt",
+            drawHooks: ["staticAfter"],
+        });
+
+        // Register the new building
+        this.modInterface.registerNewBuilding({
+            metaClass: MetaDemoModBuilding,
+            buildingIconBase64: RESOURCES["demoBuilding.png"],
+
+            variantsAndRotations: [
                 {
-                    website: "https://tobspr.io",
-                    author: "tobspr",
-                    name: "Demo Mod",
-                    version: "1",
-                    id: "demo-mod",
-                    description: "A simple mod to demonstrate the capatibilities of the mod loader.",
+                    description: "A test building",
+                    name: "A test name",
+
+                    regularImageBase64: RESOURCES["demoBuilding.png"],
+                    blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+                    tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
                 },
-                modLoader
-            );
-        }
+            ],
+        });
 
-        init() {
-            // Add some custom css
-            // this.modInterface.registerCss(`
-            //     * {
-            //         font-family: "Comic Sans", "Comic Sans MS", Tahoma !important;
-            //     }
-            // `);
+        // Add it to the regular toolbar
+        this.modInterface.addNewBuildingToToolbar({
+            toolbar: "regular",
+            location: "primary",
+            metaClass: MetaDemoModBuilding,
+        });
 
-            // Replace a builtin sprite
-            ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {
-                this.modInterface.registerSprite(
-                    "sprites/colors/" + color + ".png",
-                    RESOURCES[color + ".png"]
-                );
-            });
+        // Register keybinding
+        this.modInterface.registerIngameKeybinding({
+            id: "demo_mod_binding",
+            keyCode: shapez.keyToKeyCode("F"),
+            translation: "mymod: Do something (always with SHIFT)",
+            modifiers: {
+                shift: true,
+            },
+            handler: root => {
+                this.dialogs.showInfo("Mod Message", "It worked!");
+                return shapez.STOP_PROPAGATION;
+            },
+        });
 
-            // Add an atlas
-            this.modInterface.registerAtlas(RESOURCES["demoAtlas.png"], RESOURCES["demoAtlas.json"]);
+        // Add fancy sign to main menu
+        this.signals.stateEntered.add(state => {
+            if (state.key === "MainMenuState") {
+                const element = document.createElement("div");
+                element.id = "demo_mod_hello_world_element";
+                document.body.appendChild(element);
 
-            // Add a new type of sub shape ("Line", short code "L")
-            this.modInterface.registerSubShapeType({
-                id: "line",
-                shortCode: "L",
-                weightComputation: distanceToOriginInChunks =>
-                    Math.round(20 + Math.max(Math.min(distanceToOriginInChunks, 30), 0)),
+                const button = document.createElement("button");
+                button.classList.add("styledButton");
+                button.innerText = "Hello!";
+                button.addEventListener("click", () => {
+                    this.dialogs.showInfo("Mod Message", "Button clicked!");
+                });
+                element.appendChild(button);
+            }
+        });
 
-                draw: ({ context, quadrantSize, layerScale }) => {
-                    const quadrantHalfSize = quadrantSize / 2;
-                    context.beginPath();
-                    context.moveTo(-quadrantHalfSize, quadrantHalfSize);
-                    context.arc(
-                        -quadrantHalfSize,
-                        quadrantHalfSize,
-                        quadrantSize * layerScale,
-                        -Math.PI * 0.25,
-                        0
-                    );
-                    context.closePath();
-                },
-            });
-
-            // Modify the theme colors
-            this.signals.preprocessTheme.add(({ theme }) => {
-                theme.map.background = "#eee";
-                theme.items.outline = "#000";
-            });
-
-            // Modify the goal of the first level
-            this.signals.modifyLevelDefinitions.add(definitions => {
-                definitions[0].shape = "LuCuLuCu";
-            });
-
-            this.modInterface.registerTranslations("en", {
-                ingame: {
-                    interactiveTutorial: {
-                        title: "Hello",
-                        hints: {
-                            "1_1_extractor": "World!",
-                        },
-                    },
-                },
-            });
-
-            // Register a new component
-            this.modInterface.registerComponent(DemoModComponent);
-
-            // Register a new game system which can update and draw stuff
-            this.modInterface.registerGameSystem({
-                id: "demo_mod",
-                systemClass: DemoModSystem,
-                before: "belt",
-                drawHooks: ["staticAfter"],
-            });
-
-            // Register the new building
-            this.modInterface.registerNewBuilding({
-                metaClass: MetaDemoModBuilding,
-                buildingIconBase64: RESOURCES["demoBuilding.png"],
-
-                variantsAndRotations: [
-                    {
-                        description: "A test building",
-                        name: "A test name",
-
-                        regularImageBase64: RESOURCES["demoBuilding.png"],
-                        blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                        tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                    },
-                ],
-            });
-
-            // Add it to the regular toolbar
-            this.modInterface.addNewBuildingToToolbar({
-                toolbar: "regular",
-                location: "primary",
-                metaClass: MetaDemoModBuilding,
-            });
-
-            // Register keybinding
-            this.modInterface.registerIngameKeybinding({
-                id: "demo_mod_binding",
-                keyCode: shapez.keyToKeyCode("F"),
-                translation: "mymod: Do something (always with SHIFT)",
-                modifiers: {
-                    shift: true,
-                },
-                handler: root => {
-                    this.dialogs.showInfo("Mod Message", "It worked!");
-                    return shapez.STOP_PROPAGATION;
-                },
-            });
-
-            // Add fancy sign to main menu
-            this.signals.stateEntered.add(state => {
-                if (state.key === "MainMenuState") {
-                    const element = document.createElement("div");
-                    element.id = "demo_mod_hello_world_element";
-                    document.body.appendChild(element);
-
-                    const button = document.createElement("button");
-                    button.classList.add("styledButton");
-                    button.innerText = "Hello!";
-                    button.addEventListener("click", () => {
-                        this.dialogs.showInfo("Mod Message", "Button clicked!");
-                    });
-                    element.appendChild(button);
-                }
-            });
-
-            this.modInterface.registerCss(`
+        this.modInterface.registerCss(`
                 #demo_mod_hello_world_element {
                     position: absolute;
                     top: calc(10px * var(--ui-scale));
@@ -235,9 +193,8 @@ registerMod(() => {
                 }
 
             `);
-        }
-    };
-});
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // @notice: Later this part will be autogenerated
