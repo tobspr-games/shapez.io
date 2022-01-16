@@ -52,7 +52,7 @@ function createWindow() {
         transparent: false,
         icon: path.join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,
-        autoHideMenuBar: true,
+        autoHideMenuBar: !isDev,
         webPreferences: {
             nodeIntegration: false,
             nodeIntegrationInWorker: false,
@@ -164,7 +164,7 @@ function createWindow() {
         menu.append(mainItem);
 
         const reloadItem = new MenuItem({
-            label: "Restart",
+            label: "Reload",
             click: () => win.reload(),
             accelerator: "F5",
         });
@@ -177,7 +177,15 @@ function createWindow() {
         });
         menu.append(fullscreenItem);
 
-        Menu.setApplicationMenu(menu);
+        const mainMenu = new Menu();
+        mainMenu.append(
+            new MenuItem({
+                label: "shapez.io",
+                submenu: menu,
+            })
+        );
+
+        Menu.setApplicationMenu(mainMenu);
     } else {
         Menu.setApplicationMenu(null);
     }
