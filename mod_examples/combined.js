@@ -188,11 +188,10 @@ registerMod(() => {
             });
 
             // Add it to the regular toolbar
-            this.signals.hudElementInitialized.add(element => {
-                if (element.constructor.name === "HUDBuildingsToolbar") {
-                    // @ts-ignore
-                    element.primaryBuildings.push(MetaDemoModBuilding);
-                }
+            this.modInterface.addNewBuildingToToolbar({
+                toolbar: "regular",
+                location: "primary",
+                metaClass: MetaDemoModBuilding,
             });
 
             // Register keybinding

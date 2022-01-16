@@ -344,4 +344,21 @@ export class ModInterface {
             },
         });
     }
+
+    /**
+     * @param {object} param0
+     * @param {"regular"|"wires"} param0.toolbar
+     * @param {"primary"|"secondary"} param0.location
+     * @param {typeof MetaBuilding} param0.metaClass
+     */
+    addNewBuildingToToolbar({ toolbar, location, metaClass }) {
+        const hudElementName = toolbar === "wires" ? "HUDWiresToolbar" : "HUDBuildingsToolbar";
+        const property = location === "secondary" ? "secondaryBuildings" : "primaryBuildings";
+
+        this.modLoader.signals.hudElementInitialized.add(element => {
+            if (element.constructor.name === hudElementName) {
+                element[property].push(metaClass);
+            }
+        });
+    }
 }

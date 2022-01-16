@@ -19,7 +19,6 @@ registerMod(() => {
         }
 
         init() {
-            console.log("CUSTOM GAME THEME NOW");
             this.modInterface.registerGameTheme({
                 id: "my-theme",
                 name: "My fancy theme",
