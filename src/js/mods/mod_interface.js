@@ -402,7 +402,7 @@ export class ModInterface {
     }
 
     /**
-     * Patches a method on a given class
+     * Runs before a method on a given class
      * @template {constructable} C  the class
      * @template {C["prototype"]} P  the prototype of said class
      * @template {keyof P} M  the name of the method we are overriding
@@ -421,7 +421,7 @@ export class ModInterface {
     }
 
     /**
-     * Patches a method on a given class
+     * Runs after a method on a given class
      * @template {constructable} C  the class
      * @template {C["prototype"]} P  the prototype of said class
      * @template {keyof P} M  the name of the method we are overriding
