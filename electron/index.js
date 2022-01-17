@@ -316,7 +316,7 @@ async function writeFileSafe(filename, contents) {
 }
 
 ipcMain.handle("fs-job", async (event, job) => {
-    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "");
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "_");
     const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {

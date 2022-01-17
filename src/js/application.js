@@ -77,7 +77,12 @@ export class Application {
         MODS.app = this;
 
         // MODS
-        await MODS.initMods();
+
+        try {
+            await MODS.initMods();
+        } catch (ex) {
+            alert("Failed to load mods (launch with --dev for more info): \n\n" + ex);
+        }
 
         this.unloaded = false;
 
