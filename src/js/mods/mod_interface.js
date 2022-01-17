@@ -389,18 +389,24 @@ export class ModInterface {
         };
     }
 
-    extendClass(classHandle, extensionClass) {
-        const extendPrototype = function (base, extension) {
-            const properties = Array.from(Object.getOwnPropertyNames(extension));
-            base.$super = base.$super || {};
-            properties.forEach(propertyName => {
-                if (["constructor", "name", "length", "prototype"].includes(propertyName)) {
-                    return;
-                }
-                base.$super[propertyName] = base.$super[propertyName] || base[propertyName];
-                base[propertyName] = extension[propertyName];
-            });
-        };
-        extendPrototype(classHandle.prototype, extensionClass);
+    /**
+     *
+     * @param {typeof Object} classHandle
+     * @param {({ $super, $old }) => any} extender
+     */
+    extendClass(classHandle, extender) {
+        const prototype = classHandle.prototype;
+
+        const $super = Object.getPrototypeOf(prototype);
+        const $old = {};
+        const extensionMethods = extender({ $super, $old });
+        const properties = Array.from(Object.getOwnPropertyNames(extensionMethods));
+        properties.forEach(propertyName => {
+            if (["constructor", "prototype"].includes(propertyName)) {
+                return;
+            }
+            $old[propertyName] = prototype[propertyName];
+            prototype[propertyName] = extensionMethods[propertyName];
+        });
     }
 }
