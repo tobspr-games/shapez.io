@@ -12,12 +12,15 @@ export class InputReceiver {
 
         // Dispatched on destroy
         this.destroyed = new Signal();
+
+        this.paste = new Signal();
     }
 
     cleanup() {
         this.backButton.removeAll();
         this.keydown.removeAll();
         this.keyup.removeAll();
+        this.paste.removeAll();
 
         this.destroyed.dispatch();
     }

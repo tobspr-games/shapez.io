@@ -8,6 +8,10 @@ const steam = require("./steam");
 const asyncLock = require("async-lock");
 const windowStateKeeper = require("electron-window-state");
 
+// Disable hardware key handling, i.e. being able to pause/resume the game music
+// with hardware keys
+app.commandLine.appendSwitch("disable-features", "HardwareMediaKeyHandling");
+
 const isDev = app.commandLine.hasSwitch("dev");
 const isLocal = app.commandLine.hasSwitch("local");
 const safeMode = app.commandLine.hasSwitch("safe-mode");

@@ -149,6 +149,8 @@ export class InputDistributor {
         window.addEventListener("mouseup", this.handleKeyMouseUp.bind(this));
 
         window.addEventListener("blur", this.handleBlur.bind(this));
+
+        document.addEventListener("paste", this.handlePaste.bind(this));
     }
 
     forwardToReceiver(eventId, payload = null) {
@@ -184,6 +186,13 @@ export class InputDistributor {
     handleBlur() {
         this.forwardToReceiver("pageBlur", {});
         this.keysDown.clear();
+    }
+
+    /**
+     *
+     */
+    handlePaste(ev) {
+        this.forwardToReceiver("paste", ev);
     }
 
     /**

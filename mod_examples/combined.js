@@ -106,17 +106,6 @@ class Mod extends shapez.Mod {
         // Add an atlas
         this.modInterface.registerAtlas(RESOURCES["demoAtlas.png"], RESOURCES["demoAtlas.json"]);
 
-        this.modInterface.registerTranslations("en", {
-            ingame: {
-                interactiveTutorial: {
-                    title: "Hello",
-                    hints: {
-                        "1_1_extractor": "World!",
-                    },
-                },
-            },
-        });
-
         // Register a new component
         this.modInterface.registerComponent(DemoModComponent);
 
@@ -128,29 +117,29 @@ class Mod extends shapez.Mod {
             drawHooks: ["staticAfter"],
         });
 
-        // Register the new building
-        this.modInterface.registerNewBuilding({
-            metaClass: MetaDemoModBuilding,
-            buildingIconBase64: RESOURCES["demoBuilding.png"],
+        // // Register the new building
+        // this.modInterface.registerNewBuilding({
+        //     metaClass: MetaDemoModBuilding,
+        //     buildingIconBase64: RESOURCES["demoBuilding.png"],
 
-            variantsAndRotations: [
-                {
-                    description: "A test building",
-                    name: "A test name",
+        //     variantsAndRotations: [
+        //         {
+        //             description: "A test building",
+        //             name: "A test name",
 
-                    regularImageBase64: RESOURCES["demoBuilding.png"],
-                    blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                    tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
-                },
-            ],
-        });
+        //             regularImageBase64: RESOURCES["demoBuilding.png"],
+        //             blueprintImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+        //             tutorialImageBase64: RESOURCES["demoBuildingBlueprint.png"],
+        //         },
+        //     ],
+        // });
 
         // Add it to the regular toolbar
-        this.modInterface.addNewBuildingToToolbar({
-            toolbar: "regular",
-            location: "primary",
-            metaClass: MetaDemoModBuilding,
-        });
+        // this.modInterface.addNewBuildingToToolbar({
+        //     toolbar: "regular",
+        //     location: "primary",
+        //     metaClass: MetaDemoModBuilding,
+        // });
 
         // Register keybinding
         this.modInterface.registerIngameKeybinding({
