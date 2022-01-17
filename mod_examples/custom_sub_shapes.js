@@ -1,7 +1,3 @@
-/**
- * This shows how to add custom sub shapes
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

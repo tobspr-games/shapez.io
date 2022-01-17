@@ -1,7 +1,3 @@
-/**
- * This example shows how to modify the builtin themes. If you want to create your own theme,
- * be sure to check out the "custom_theme" example
- */
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

@@ -1,8 +1,3 @@
-/**
- * This example shows how to replace builtin sprites, in this case
- * the color sprites
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

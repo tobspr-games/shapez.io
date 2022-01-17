@@ -1,7 +1,3 @@
-/**
- * Shows to add new translations
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

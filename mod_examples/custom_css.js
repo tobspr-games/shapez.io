@@ -1,6 +1,3 @@
-/**
- * This example shows how to add custom css
- */
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

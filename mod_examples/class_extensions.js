@@ -1,7 +1,3 @@
-/**
- * Shows how to extend builtin classes
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

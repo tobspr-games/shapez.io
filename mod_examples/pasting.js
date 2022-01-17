@@ -1,7 +1,3 @@
-/**
- * This is the minimal structure of a mod
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

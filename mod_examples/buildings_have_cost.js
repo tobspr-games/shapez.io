@@ -1,7 +1,3 @@
-/**
- * This shows how to patch existing methods by making belts have a cost
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

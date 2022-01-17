@@ -1,7 +1,3 @@
-/**
- * Shows how to draw overlays by visualizing which item processors are working
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

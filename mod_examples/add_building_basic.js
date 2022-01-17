@@ -1,9 +1,3 @@
-/**
- * This shows how to add a new (currently useless) building.
- * If you are interested in adding more logic to the game, you should also check out
- * the advanced example
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

@@ -1,7 +1,3 @@
-/**
- * This shows how to modify an existing building
- */
-
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

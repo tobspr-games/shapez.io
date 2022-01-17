@@ -1,7 +1,3 @@
-/**
- * This shows how to add a new extended building (A building which flips shapes).
- * Be sure to check out the "add_building_basic" example first
- */
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",

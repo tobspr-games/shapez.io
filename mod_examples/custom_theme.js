@@ -1,6 +1,3 @@
-/**
- * This example shows how to add a new theme to the game
- */
 const METADATA = {
     website: "https://tobspr.io",
     author: "tobspr",
