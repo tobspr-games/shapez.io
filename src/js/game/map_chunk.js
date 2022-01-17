@@ -283,6 +283,17 @@ export class MapChunk {
         const chunkCenter = new Vector(this.x, this.y).addScalar(0.5);
         const distanceToOriginInChunks = Math.round(chunkCenter.length());
 
+        this.generatePatches({ rng, chunkCenter, distanceToOriginInChunks });
+    }
+
+    /**
+     *
+     * @param {object} param0
+     * @param {RandomNumberGenerator} param0.rng
+     * @param {Vector} param0.chunkCenter
+     * @param {number} param0.distanceToOriginInChunks
+     */
+    generatePatches({ rng, chunkCenter, distanceToOriginInChunks }) {
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
 

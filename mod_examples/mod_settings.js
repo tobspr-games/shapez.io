@@ -4,7 +4,7 @@ const METADATA = {
     author: "tobspr",
     name: "Mod Example: Mod Settings",
     version: "1",
-    id: "base",
+    id: "mod-settings",
     description: "Shows how to add settings to your mod",
 
     settings: {
@@ -18,7 +18,7 @@ class Mod extends shapez.Mod {
         this.settings.timesLaunched++;
         this.saveSettings();
 
-        // Show a dialog in the main menu wit the settings
+        // Show a dialog in the main menu with the settings
         this.signals.stateEntered.add(state => {
             if (state instanceof shapez.MainMenuState) {
                 this.dialogs.showInfo(
