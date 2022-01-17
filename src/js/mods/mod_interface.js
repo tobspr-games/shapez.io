@@ -391,11 +391,11 @@ export class ModInterface {
 
     /**
      *
-     * @param {typeof Object} classHandle
+     * @param {Object} obj
      * @param {({ $super, $old }) => any} extender
      */
-    extendClass(classHandle, extender) {
-        const prototype = classHandle.prototype;
+    extendObject(obj, extender) {
+        const prototype = obj.prototype;
 
         const $super = Object.getPrototypeOf(prototype);
         const $old = {};
@@ -408,5 +408,14 @@ export class ModInterface {
             $old[propertyName] = prototype[propertyName];
             prototype[propertyName] = extensionMethods[propertyName];
         });
+    }
+
+    /**
+     *
+     * @param {typeof Object} classHandle
+     * @param {({ $super, $old }) => any} extender
+     */
+    extendClass(classHandle, extender) {
+        this.extendObject(classHandle.prototype, extender);
     }
 }

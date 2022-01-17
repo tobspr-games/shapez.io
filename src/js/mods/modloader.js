@@ -121,6 +121,9 @@ export class ModLoader {
         }
 
         window.$shapez_registerMod = (modClass, meta) => {
+            if (this.initialized) {
+                throw new Error("Can't register mod after modloader is initialized");
+            }
             if (this.modLoadQueue.some(entry => entry.meta.id === meta.id)) {
                 console.warn("Not registering mod", meta, "since a mod with the same id is already loaded");
                 return;
@@ -150,8 +153,6 @@ export class ModLoader {
         });
 
         delete window.$shapez_registerMod;
-
-        this.initialized = true;
 
         for (let i = 0; i < this.modLoadQueue.length; i++) {
             const { modClass, meta } = this.modLoadQueue[i];
@@ -190,6 +191,7 @@ export class ModLoader {
         }
 
         this.modLoadQueue = [];
+        this.initialized = true;
     }
 }
 
