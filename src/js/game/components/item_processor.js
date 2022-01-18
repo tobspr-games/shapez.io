@@ -27,16 +27,23 @@ export const enumItemProcessorRequirements = {
     painterQuad: "painterQuad",
 };
 
-/** @typedef {{
+/**
+ * @typedef {{
  *  item: BaseItem,
  *  requiredSlot?: number,
  *  preferredSlot?: number
- * }} EjectorItemToEject */
-
-/** @typedef {{
+ * }} EjectorItemToEject
+ *
+ * @typedef {{
  *  remainingTime: number,
  *  items: Array<EjectorItemToEject>,
- * }} EjectorCharge */
+ * }} EjectorCharge
+ *
+ * @typedef {{
+ * item: BaseItem
+ * extraProgress: number
+ * }} ItemProcessorInput
+ */
 
 export class ItemProcessorComponent extends Component {
     static getId() {
@@ -75,9 +82,9 @@ export class ItemProcessorComponent extends Component {
 
         /**
          * Our current inputs
-         * @type {Map<number, BaseItem>}
+         * @type {Map<number, ItemProcessorInput>}
          */
-        this.inputSlots = new Map();
+        this.inputs = new Map();
 
         this.clear();
     }
@@ -88,13 +95,7 @@ export class ItemProcessorComponent extends Component {
         // sure the outputs always match
         this.nextOutputSlot = 0;
 
-        this.inputSlots.clear();
-
-        /**
-         * Current input count
-         * @type {number}
-         */
-        this.inputCount = 0;
+        this.inputs.clear();
 
         /**
          * What we are currently processing, empty if we don't produce anything rn
@@ -109,31 +110,5 @@ export class ItemProcessorComponent extends Component {
          * @type {number}
          */
         this.bonusTime = 0;
-    }
-
-    /**
-     * Tries to take the item
-     * @param {BaseItem} item
-     * @param {number} sourceSlot
-     */
-    tryTakeItem(item, sourceSlot) {
-        if (
-            this.type === enumItemProcessorTypes.hub ||
-            this.type === enumItemProcessorTypes.trash ||
-            this.type === enumItemProcessorTypes.goal
-        ) {
-            // Hub has special logic .. not really nice but efficient.
-            this.inputSlots.set(this.inputCount, item);
-            this.inputCount++;
-            return true;
-        }
-
-        // Check that we only take one item per slot
-        if (this.inputSlots.has(sourceSlot)) {
-            return false;
-        }
-        this.inputSlots.set(sourceSlot, item);
-        this.inputCount++;
-        return true;
     }
 }

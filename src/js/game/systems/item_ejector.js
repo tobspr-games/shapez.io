@@ -139,167 +139,74 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     update() {
         this.staleAreaDetector.update();
 
-        // Precompute effective belt speed
-        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
-
-        if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            progressGrowth = 1;
-        }
+        // * 2 because its only a half tile - (same code as acceptor)
+        const progressGrowth =
+            2 *
+            this.root.dynamicTickrate.deltaSeconds *
+            this.root.hubGoals.getBeltBaseSpeed() *
+            globalConfig.itemSpacingOnBelts;
 
         // Go over all cache entries
         for (let i = 0; i < this.allEntities.length; ++i) {
-            const sourceEntity = this.allEntities[i];
-            const sourceEjectorComp = sourceEntity.components.ItemEjector;
+            const entity = this.allEntities[i];
+            const ejectorComp = entity.components.ItemEjector;
+            const slots = ejectorComp.slots;
 
-            const slots = sourceEjectorComp.slots;
             for (let j = 0; j < slots.length; ++j) {
-                const sourceSlot = slots[j];
-                const item = sourceSlot.item;
+                const slot = slots[j];
+                const item = slot.item;
                 if (!item) {
-                    // No item available to be ejected
+                    // No output in progress
                     continue;
                 }
 
                 // Advance items on the slot
-                sourceSlot.progress = Math.min(
-                    1,
-                    sourceSlot.progress +
-                        progressGrowth *
-                            this.root.hubGoals.getBeltBaseSpeed() *
-                            globalConfig.itemSpacingOnBelts
-                );
+                // @SENSETODO do we really want to cap it at one, or should the excess get passed on?
+                slot.progress = Math.min(1, slot.progress + progressGrowth);
 
                 if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                    sourceSlot.progress = 1.0;
+                    slot.progress = 1;
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < 1.0) {
+                if (slot.progress < 1) {
                     continue;
                 }
 
                 // Check if we are ejecting to a belt path
-                const destPath = sourceSlot.cachedBeltPath;
+                const destPath = slot.cachedBeltPath;
                 if (destPath) {
                     // Try passing the item over
                     if (destPath.tryAcceptItem(item)) {
-                        sourceSlot.item = null;
+                        slot.item = null;
                     }
 
-                    // Always stop here, since there can *either* be a belt path *or*
-                    // a slot
+                    // Always stop here, since there can *either* be a belt path *or* an acceptor
                     continue;
                 }
 
                 // Check if the target acceptor can actually accept this item
-                const destEntity = sourceSlot.cachedTargetEntity;
-                const destSlot = sourceSlot.cachedDestSlot;
-                if (destSlot) {
+                const destEntity = slot.cachedTargetEntity;
+                const destSlot = slot.cachedDestSlot;
+                if (destEntity && destSlot) {
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
-                    if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
-                        continue;
-                    }
-
-                    // Try to hand over the item
-                    if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
+                    const extraProgress = slot.progress - 1;
+                    if (
+                        targetAcceptorComp.tryAcceptItem(
+                            destSlot.index,
+                            destSlot.acceptedDirection,
+                            item,
+                            extraProgress
+                        )
+                    ) {
                         // Handover successful, clear slot
-                        if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
-                            targetAcceptorComp.onItemAccepted(
-                                destSlot.index,
-                                destSlot.acceptedDirection,
-                                item
-                            );
-                        }
-                        sourceSlot.item = null;
-                        continue;
+                        slot.item = null;
                     }
                 }
+
+                //@SENSETODO deal with other buildings - acceptor code on them needs to be different!
             }
         }
-    }
-
-    /**
-     *
-     * @param {BaseItem} item
-     * @param {Entity} receiver
-     * @param {number} slotIndex
-     */
-    tryPassOverItem(item, receiver, slotIndex) {
-        // Try figuring out how what to do with the item
-        // @TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
-
-        const beltComp = receiver.components.Belt;
-        if (beltComp) {
-            const path = beltComp.assignedPath;
-            assert(path, "belt has no path");
-            if (path.tryAcceptItem(item)) {
-                return true;
-            }
-            // Belt can have nothing else
-            return false;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-        //
-        // NOTICE ! THIS CODE IS DUPLICATED IN THE BELT PATH FOR PERFORMANCE REASONS
-        //
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-
-        const itemProcessorComp = receiver.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Check for potential filters
-            if (!this.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
-                return false;
-            }
-
-            // Its an item processor ..
-            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
-                return true;
-            }
-            // Item processor can have nothing else
-            return false;
-        }
-
-        const undergroundBeltComp = receiver.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            if (
-                undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    this.root.hubGoals.getUndergroundBeltBaseSpeed()
-                )
-            ) {
-                return true;
-            }
-
-            // Underground belt can have nothing else
-            return false;
-        }
-
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
-
-            // Storage can't have anything else
-            return false;
-        }
-
-        const filterComp = receiver.components.Filter;
-        if (filterComp) {
-            // It's a filter! Unfortunately the filter has to know a lot about it's
-            // surrounding state and components, so it can't be within the component itself.
-            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -390,11 +297,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     progress = Math.min(maxProgress, progress);
                 }
 
-                // Skip if the item would barely be visible
-                if (progress < 0.05) {
-                    continue;
-                }
-
                 const realPosition = staticComp.localTileToWorld(slot.pos);
                 if (!chunk.tileSpaceRectangle.containsPoint(realPosition.x, realPosition.y)) {
                     // Not within this chunk
@@ -418,5 +320,91 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 );
             }
         }
+    }
+
+    /////////////////////////////////////////////////////// OBSOLETE
+
+    /**
+     *
+     * @param {BaseItem} item
+     * @param {Entity} receiver
+     * @param {number} slotIndex
+     */
+    tryPassOverItem(item, receiver, slotIndex) {
+        // Try figuring out how what to do with the item
+        // @TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
+
+        const beltComp = receiver.components.Belt;
+        if (beltComp) {
+            const path = beltComp.assignedPath;
+            assert(path, "belt has no path");
+            if (path.tryAcceptItem(item)) {
+                return true;
+            }
+            // Belt can have nothing else
+            return false;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //
+        // NOTICE ! THIS CODE IS DUPLICATED IN THE BELT PATH FOR PERFORMANCE REASONS
+        //
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+        const itemProcessorComp = receiver.components.ItemProcessor;
+        if (itemProcessorComp) {
+            // Check for potential filters
+            if (!this.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
+                return false;
+            }
+
+            // Its an item processor ..
+            //if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
+            //    return true;
+            //}
+            // Item processor can have nothing else
+            return false;
+        }
+
+        const undergroundBeltComp = receiver.components.UndergroundBelt;
+        if (undergroundBeltComp) {
+            // Its an underground belt. yay.
+            if (
+                undergroundBeltComp.tryAcceptExternalItem(
+                    item,
+                    this.root.hubGoals.getUndergroundBeltBaseSpeed()
+                )
+            ) {
+                return true;
+            }
+
+            // Underground belt can have nothing else
+            return false;
+        }
+
+        const storageComp = receiver.components.Storage;
+        if (storageComp) {
+            // It's a storage
+            if (storageComp.canAcceptItem(item)) {
+                storageComp.takeItem(item);
+                return true;
+            }
+
+            // Storage can't have anything else
+            return false;
+        }
+
+        const filterComp = receiver.components.Filter;
+        if (filterComp) {
+            // It's a filter! Unfortunately the filter has to know a lot about it's
+            // surrounding state and components, so it can't be within the component itself.
+            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

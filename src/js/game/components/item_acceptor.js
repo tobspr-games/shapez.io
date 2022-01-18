@@ -1,27 +1,52 @@
 import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
-import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
-
-/** @typedef {{
- * pos: Vector,
- * directions: enumDirection[],
- * filter?: ItemType
- * }} ItemAcceptorSlot */
+import { Entity } from "../entity";
+import { GameRoot } from "../root";
 
 /**
+ * @typedef {{
+ * pos: Vector,
+ * direction: enumDirection,
+ * filter?: ItemType
+ * }} ItemAcceptorSlot
+ *
  * Contains information about a slot plus its location
  * @typedef {{
- *  slot: ItemAcceptorSlot,
- *  index: number,
- *  acceptedDirection: enumDirection
- * }} ItemAcceptorLocatedSlot */
-
-/** @typedef {{
+ * slot: ItemAcceptorSlot,
+ * index: number,
+ * acceptedDirection: enumDirection
+ * }} ItemAcceptorLocatedSlot
+ *
+ * @typedef {{
  * pos: Vector,
- * directions: enumDirection[],
+ * direction: enumDirection,
  * filter?: ItemType
- * }} ItemAcceptorSlotConfig */
+ * }} ItemAcceptorSlotConfig
+ *
+ * @typedef {Map<number, {
+ * item: BaseItem,
+ * animProgress: number,
+ * direction: enumDirection
+ * }>} ItemAcceptorInput
+ *
+ * @typedef {{
+ * root: GameRoot,
+ * entity: Entity,
+ * item: BaseItem,
+ * slotIndex: number,
+ * extraProgress: number
+ * }} InputCompletedArgs
+ */
+
+/** @enum {string} */
+export const enumItemAcceptorTypes = {
+    itemProcessor: "itemProcessor",
+    hub: "hub",
+    storage: "storage",
+    trash: "trash",
+    undergroundBelt: "undergroundBelt",
+};
 
 export class ItemAcceptorComponent extends Component {
     static getId() {
@@ -32,25 +57,15 @@ export class ItemAcceptorComponent extends Component {
      *
      * @param {object} param0
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
+     * @param {enumItemAcceptorTypes=} param0.type Function that gets called when the input of an item is completed
      */
-    constructor({ slots = [] }) {
+    constructor({ slots = [], type = enumItemAcceptorTypes.itemProcessor }) {
         super();
 
+        /** @type {ItemAcceptorInput} */
+        this.currentInputs = new Map(); // @SENSETODO does this need to be saved?
+        this.type = type;
         this.setSlots(slots);
-        this.clear();
-    }
-
-    clear() {
-        /**
-         * Fixes belt animations
-         * @type {Array<{
-         *  item: BaseItem,
-         * slotIndex: number,
-         * animProgress: number,
-         * direction: enumDirection
-         * }>}
-         */
-        this.itemConsumptionAnimations = [];
     }
 
     /**
@@ -64,7 +79,7 @@ export class ItemAcceptorComponent extends Component {
             const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
-                directions: slot.directions,
+                direction: slot.direction,
 
                 // Which type of item to accept (shape | color | all) @see ItemType
                 filter: slot.filter,
@@ -73,31 +88,28 @@ export class ItemAcceptorComponent extends Component {
     }
 
     /**
-     * Returns if this acceptor can accept a new item at slot N
-     *
-     * NOTICE: The belt path ignores this for performance reasons and does his own check
-     * @param {number} slotIndex
-     * @param {BaseItem=} item
-     */
-    canAcceptItem(slotIndex, item) {
-        const slot = this.slots[slotIndex];
-        return !slot.filter || slot.filter === item.getItemType();
-    }
-
-    /**
-     * Called when an item has been accepted so that
+     * Called when trying to input a new item
      * @param {number} slotIndex
      * @param {enumDirection} direction
      * @param {BaseItem} item
-     * @param {number} remainingProgress World space remaining progress, can be set to set the start position of the item
+     * @param {number} startProgress World space remaining progress, can be set to set the start position of the item
+     * @returns {boolean} if the input was succesful
      */
-    onItemAccepted(slotIndex, direction, item, remainingProgress = 0.0) {
-        this.itemConsumptionAnimations.push({
+    tryAcceptItem(slotIndex, direction, item, startProgress = 0.0) {
+        const slot = this.slots[slotIndex];
+
+        //@SENSETODO see if this works for buildings like hub
+
+        if (this.currentInputs.has(slotIndex) || (slot.filter && slot.filter != item.getItemType())) {
+            return false;
+        }
+
+        this.currentInputs.set(slotIndex, {
             item,
-            slotIndex,
             direction,
-            animProgress: Math.min(1, remainingProgress * 2),
+            animProgress: Math.min(1, startProgress),
         });
+        return true;
     }
 
     /**
@@ -121,16 +133,12 @@ export class ItemAcceptorComponent extends Component {
                 continue;
             }
 
-            // Check if the acceptor slot accepts items from our direction
-            for (let i = 0; i < slot.directions.length; ++i) {
-                // const localDirection = targetStaticComp.localDirectionToWorld(slot.directions[l]);
-                if (desiredDirection === slot.directions[i]) {
-                    return {
-                        slot,
-                        index: slotIndex,
-                        acceptedDirection: desiredDirection,
-                    };
-                }
+            if (desiredDirection === slot.direction) {
+                return {
+                    slot,
+                    index: slotIndex,
+                    acceptedDirection: desiredDirection,
+                };
             }
         }
 

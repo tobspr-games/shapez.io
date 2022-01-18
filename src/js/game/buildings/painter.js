@@ -128,12 +128,12 @@ export class MetaPainterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        direction: enumDirection.left,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        direction: enumDirection.top,
                         filter: "color",
                     },
                 ],
@@ -160,14 +160,13 @@ export class MetaPainterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        direction: enumDirection.left,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [
+                        direction:
                             variant === defaultBuildingVariant ? enumDirection.top : enumDirection.bottom,
-                        ],
                         filter: "color",
                     },
                 ]);
@@ -193,17 +192,17 @@ export class MetaPainterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        direction: enumDirection.left,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.left],
+                        direction: enumDirection.left,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.top],
+                        direction: enumDirection.top,
                         filter: "color",
                     },
                 ]);
@@ -251,27 +250,27 @@ export class MetaPainterBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.left],
+                        direction: enumDirection.left,
                         filter: "shape",
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "color",
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "color",
                     },
                     {
                         pos: new Vector(2, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "color",
                     },
                     {
                         pos: new Vector(3, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "color",
                     },
                 ]);

@@ -1,7 +1,7 @@
 import { formatBigNumber } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumItemAcceptorTypes, ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { StorageComponent } from "../components/storage";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
@@ -74,13 +74,14 @@ export class MetaStorageBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ],
+                type: enumItemAcceptorTypes.storage,
             })
         );
 

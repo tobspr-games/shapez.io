@@ -431,22 +431,20 @@ export class GameLogic {
                         }
                     }
 
-                    for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
-                        const slot = acceptorSlots[acceptorSlot];
+                    for (let i = 0; i < acceptorSlots.length; ++i) {
+                        const slot = acceptorSlots[i];
                         const wsTile = staticComp.localTileToWorld(slot.pos);
-                        for (let k = 0; k < slot.directions.length; ++k) {
-                            const direction = slot.directions[k];
-                            const wsDirection = staticComp.localDirectionToWorld(direction);
+                        const direction = slot.direction;
+                        const wsDirection = staticComp.localDirectionToWorld(direction);
 
-                            const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
-                            if (sourceTile.equals(tile)) {
-                                acceptors.push({
-                                    entity,
-                                    slot,
-                                    toTile: wsTile,
-                                    fromDirection: wsDirection,
-                                });
-                            }
+                        const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                        if (sourceTile.equals(tile)) {
+                            acceptors.push({
+                                entity,
+                                slot,
+                                toTile: wsTile,
+                                fromDirection: wsDirection,
+                            });
                         }
                     }
                 }

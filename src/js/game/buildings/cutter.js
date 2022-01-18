@@ -96,7 +96,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "shape",
                     },
                 ],

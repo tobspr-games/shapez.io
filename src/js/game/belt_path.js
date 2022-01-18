@@ -132,14 +132,14 @@ export class BeltPath extends BasicSerializableObject {
     tryAcceptItem(item) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
             // So, since we already need one tick to accept this item we will add this directly.
-            const beltProgressPerTick =
+            const progressGrowth =
                 this.root.hubGoals.getBeltBaseSpeed() *
                 this.root.dynamicTickrate.deltaSeconds *
                 globalConfig.itemSpacingOnBelts;
 
             // First, compute how much progress we can make *at max*
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
-            const initialProgress = Math.min(maxProgress, beltProgressPerTick);
+            const initialProgress = Math.min(maxProgress, progressGrowth);
 
             this.items.unshift([this.spacingToFirstItem - initialProgress, item]);
             this.spacingToFirstItem = initialProgress;
@@ -272,31 +272,10 @@ export class BeltPath extends BasicSerializableObject {
         }
 
         const matchingSlotIndex = matchingSlot.index;
-        const passOver = this.computePassOverFunctionWithoutBelts(targetEntity, matchingSlotIndex);
-        if (!passOver) {
-            return;
-        }
-
         const matchingDirection = enumInvertedDirections[ejectingDirection];
-        const filter = matchingSlot.slot.filter;
 
-        return function (item, remainingProgress = 0.0) {
-            // Check if the acceptor has a filter
-            if (filter && item._type !== filter) {
-                return false;
-            }
-
-            // Try to pass over
-            if (passOver(item, matchingSlotIndex)) {
-                // Trigger animation on the acceptor comp
-                if (noSimplifiedBelts) {
-                    targetAcceptorComp.onItemAccepted(
-                        matchingSlotIndex,
-                        matchingDirection,
-                        item,
-                        remainingProgress
-                    );
-                }
+        return function (item, startProgress = 0.0) {
+            if (targetAcceptorComp.tryAcceptItem(matchingSlotIndex, matchingDirection, item, startProgress)) {
                 return true;
             }
             return false;
@@ -313,7 +292,7 @@ export class BeltPath extends BasicSerializableObject {
         const systems = this.root.systemMgr.systems;
         const hubGoals = this.root.hubGoals;
 
-        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PEROFMANCE REASONS
+        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PERFORMANCE REASONS
 
         const itemProcessorComp = entity.components.ItemProcessor;
         if (itemProcessorComp) {
@@ -323,7 +302,7 @@ export class BeltPath extends BasicSerializableObject {
                 if (!systems.itemProcessor.checkRequirements(entity, item, matchingSlotIndex)) {
                     return;
                 }
-                return itemProcessorComp.tryTakeItem(item, matchingSlotIndex);
+                //return itemProcessorComp.tryTakeItem(item, matchingSlotIndex);
             };
         }
 

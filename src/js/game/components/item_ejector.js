@@ -70,7 +70,7 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 lastItem: null,
-                progress: 0,
+                progress: 0, //@SENSETODO needs to be started off with extra time
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
@@ -127,28 +127,16 @@ export class ItemEjectorComponent extends Component {
      * Tries to eject a given item
      * @param {number} slotIndex
      * @param {BaseItem} item
+     * @param {number} startingProgress
      * @returns {boolean}
      */
-    tryEject(slotIndex, item) {
+    tryEject(slotIndex, item, startingProgress = 0.0) {
         if (!this.canEjectOnSlot(slotIndex)) {
             return false;
         }
         this.slots[slotIndex].item = item;
         this.slots[slotIndex].lastItem = item;
-        this.slots[slotIndex].progress = 0;
+        this.slots[slotIndex].progress = startingProgress;
         return true;
-    }
-
-    /**
-     * Clears the given slot and returns the item it had
-     * @param {number} slotIndex
-     * @returns {BaseItem|null}
-     */
-    takeSlotItem(slotIndex) {
-        const slot = this.slots[slotIndex];
-        const item = slot.item;
-        slot.item = null;
-        slot.progress = 0.0;
-        return item;
     }
 }
