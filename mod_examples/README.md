@@ -9,6 +9,10 @@ Currently there are two options to develop mods for shapez.io:
 
 Since the `create-shapezio-mod` package is still in development, the current recommended way is to write single file mods, which I'll explain now.
 
+## Mod Developer Discord
+
+A great place to get help with mod development is the official [shapez.io modloader discord]https://discord.gg/xq5v8uyMue).
+
 ## Setting up your development environment
 
 The simplest way of developing mods is by just creating a `mymod.js` file and putting it in the `mods/` folder of the standalone (You can find the `mods/` folder by clicking "Open Mods Folder" in the shapez.io Standalone).
