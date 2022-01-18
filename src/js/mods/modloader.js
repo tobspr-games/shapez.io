@@ -116,8 +116,24 @@ export class ModLoader {
                         response.statusText
                 );
             }
+            
+            let json;
+            try {
+                json = await response.json();
+            } catch (e) {
+                throw new Error(
+                    "Failed to parse JSON object from " +
+                        globalConfig.debug.externalModUrl +
+                        ": " +
+                        e
+                );
+            }
+            
+            if(json.mods === undefined) {
+                throw new Error("Failed to load " + globalConfig.debug.externalModUrl + ": No 'mods' field in json object");
+            }
 
-            mods.push(await response.text());
+            mods = mods.concat(json.mods);
         }
 
         window.$shapez_registerMod = (modClass, meta) => {
