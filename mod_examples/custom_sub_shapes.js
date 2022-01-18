@@ -32,6 +32,8 @@ class Mod extends shapez.Mod {
                     0
                 );
                 context.closePath();
+                context.fill();
+                context.stroke();
             },
         });
 
