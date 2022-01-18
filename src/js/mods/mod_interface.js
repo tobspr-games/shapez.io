@@ -368,6 +368,14 @@ export class ModInterface {
     }
 
     /**
+     * Registers a new state class, should be a GameState derived class
+     * @param {typeof GameState} stateClass
+     */
+    registerGameState(stateClass) {
+        this.modLoader.app.stateMgr.register(stateClass);
+    }
+
+    /**
      * @param {object} param0
      * @param {"regular"|"wires"} param0.toolbar
      * @param {"primary"|"secondary"} param0.location
