@@ -25,6 +25,7 @@ import { KEYMAPPINGS } from "../game/key_action_mapper";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { THEMES } from "../game/theme";
 import { ModMetaBuilding } from "./mod_meta_building";
+import { BaseHUDPart } from "../game/hud/base_hud_part";
 
 export class ModInterface {
     /**
@@ -415,5 +416,16 @@ export class ModInterface {
      */
     extendClass(classHandle, extender) {
         this.extendObject(classHandle.prototype, extender);
+    }
+
+    /**
+     *
+     * @param {string} id
+     * @param {new (...args) => BaseHUDPart} element
+     */
+    registerHudElement(id, element) {
+        this.modLoader.signals.hudInitializer.add(root => {
+            root.hud.parts[id] = new element(root);
+        });
     }
 }

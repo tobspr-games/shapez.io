@@ -7,6 +7,9 @@ export const enumNotificationType = {
     saved: "saved",
     upgrade: "upgrade",
     success: "success",
+    info: "info",
+    warning: "warning",
+    error: "error",
 };
 
 const notificationDuration = 3;
@@ -17,14 +20,14 @@ export class HUDNotifications extends BaseHUDPart {
     }
 
     initialize() {
-        this.root.hud.signals.notification.add(this.onNotification, this);
+        this.root.hud.signals.notification.add(this.internalShowNotification, this);
 
         /** @type {Array<{ element: HTMLElement, expireAt: number}>} */
         this.notificationElements = [];
 
         // Automatic notifications
         this.root.signals.gameSaved.add(() =>
-            this.onNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
+            this.internalShowNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
         );
     }
 
@@ -32,7 +35,7 @@ export class HUDNotifications extends BaseHUDPart {
      * @param {string} message
      * @param {enumNotificationType} type
      */
-    onNotification(message, type) {
+    internalShowNotification(message, type) {
         const element = makeDiv(this.element, null, ["notification", "type-" + type], message);
         element.setAttribute("data-icon", "icons/notification_" + type + ".png");
 
