@@ -15,7 +15,7 @@ A great place to get help with mod development is the official [shapez.io modloa
 
 ## Setting up your development environment
 
-The simplest way of developing mods is by just creating a `mymod.js` file and putting it in the `mods/` folder of the standalone (You can find the `mods/` folder by clicking "Open Mods Folder" in the shapez.io Standalone).
+The simplest way of developing mods is by just creating a `mymod.js` file and putting it in the `mods/` folder of the standalone (You can find the `mods/` folder by clicking "Open Mods Folder" in the shapez.io Standalone, be sure to select the 1.5.0-modloader branch on Steam).
 
 You can then add `--dev` to the launch options on Steam. This adds an application menu where you can click "Restart" to reload your mod, and will also show the developer console where you can see any potential errors.
 
