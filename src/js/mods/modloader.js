@@ -103,37 +103,25 @@ export class ModLoader {
             mods = await ipcRenderer.invoke("get-mods");
         }
         if (G_IS_DEV && globalConfig.debug.externalModUrl) {
-            const response = await fetch(globalConfig.debug.externalModUrl, {
-                method: "GET",
-            });
-            if (response.status !== 200) {
-                throw new Error(
-                    "Failed to load " +
-                        globalConfig.debug.externalModUrl +
-                        ": " +
-                        response.status +
-                        " " +
-                        response.statusText
-                );
-            }
+            let modURLs = Array.isArray(globalConfig.debug.externalModUrl) ? 
+                globalConfig.debug.externalModUrl : [globalConfig.debug.externalModUrl];
             
-            let json;
-            try {
-                json = await response.json();
-            } catch (e) {
-                throw new Error(
-                    "Failed to parse JSON object from " +
-                        globalConfig.debug.externalModUrl +
-                        ": " +
-                        e
-                );
+            for(let i = 0; i < modURLs.length; i++) {
+                const response = await fetch(modURLs[i], {
+                    method: "GET",
+                });
+                if (response.status !== 200) {
+                    throw new Error(
+                        "Failed to load " +
+                            modURLs[i] +
+                            ": " +
+                            response.status +
+                            " " +
+                            response.statusText
+                    );
+                }
+                mods.push(await response.text());
             }
-            
-            if(json.mods === undefined) {
-                throw new Error("Failed to load " + globalConfig.debug.externalModUrl + ": No 'mods' field in json object");
-            }
-
-            mods = mods.concat(json.mods);
         }
 
         window.$shapez_registerMod = (modClass, meta) => {
