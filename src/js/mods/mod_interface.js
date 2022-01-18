@@ -372,7 +372,7 @@ export class ModInterface {
      * @param {typeof GameState} stateClass
      */
     registerGameState(stateClass) {
-        this.modManager.app.stateMgr.register(stateClass);
+        this.modLoader.app.stateMgr.register(stateClass);
     }
 
     /**
