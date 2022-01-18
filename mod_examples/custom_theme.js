@@ -40,6 +40,10 @@ const RESOURCES = {
                     color: "rgb(74, 237, 134)",
                     background: "rgba(74, 237, 134, 0.2)",
                 },
+                error: {
+                    color: "rgb(255, 137, 137)",
+                    background: "rgba(255, 137, 137, 0.2)",
+                },
             },
 
             colorBlindPickerTile: "rgba(50, 50, 50, 0.4)",

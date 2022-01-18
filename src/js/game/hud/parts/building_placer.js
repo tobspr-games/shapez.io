@@ -61,7 +61,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.currentInterpolatedCornerTile = new Vector();
 
         this.lockIndicatorSprites = {};
-        layers.forEach(layer => {
+        [...layers, "error"].forEach(layer => {
             this.lockIndicatorSprites[layer] = this.makeLockIndicatorSprite(layer);
         });
 
@@ -76,7 +76,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
     /**
      * Makes the lock indicator sprite for the given layer
-     * @param {Layer} layer
+     * @param {string} layer
      */
     makeLockIndicatorSprite(layer) {
         const dims = 48;
@@ -358,7 +358,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             rotationVariant
         );
 
-        const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity);
+        const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity, {});
 
         // Fade in / out
         parameters.context.lineWidth = 1;
@@ -398,6 +398,42 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     }
 
     /**
+     * Checks if there are any entities in the way, returns true if there are
+     * @param {Vector} from
+     * @param {Vector} to
+     * @returns
+     */
+    checkForObstales(from, to) {
+        assert(from.x === to.x || from.y === to.y, "Must be a straight line");
+
+        const prop = from.x === to.x ? "y" : "x";
+        const current = from.copy();
+
+        const metaBuilding = this.currentMetaBuilding.get();
+        this.fakeEntity.layer = metaBuilding.getLayer();
+        const staticComp = this.fakeEntity.components.StaticMapEntity;
+        staticComp.origin = current;
+        staticComp.rotation = 0;
+        metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
+        staticComp.code = getCodeFromBuildingData(
+            this.currentMetaBuilding.get(),
+            this.currentVariant.get(),
+            0
+        );
+
+        const start = Math.min(from[prop], to[prop]);
+        const end = Math.max(from[prop], to[prop]);
+
+        for (let i = start; i <= end; i++) {
+            current[prop] = i;
+            if (!this.root.logic.checkCanPlaceEntity(this.fakeEntity, { allowReplaceBuildings: false })) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * @param {DrawParameters} parameters
      */
     drawDirectionLock(parameters) {
@@ -407,55 +443,73 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             return;
         }
 
+        const applyStyles = look => {
+            parameters.context.fillStyle = THEME.map.directionLock[look].color;
+            parameters.context.strokeStyle = THEME.map.directionLock[look].background;
+            parameters.context.lineWidth = 10;
+        };
+
+        if (!this.lastDragTile) {
+            // Not dragging yet
+            applyStyles(this.root.currentLayer);
+            const mouseWorld = this.root.camera.screenToWorld(mousePosition);
+            parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
+            parameters.context.fill();
+            return;
+        }
+
         const mouseWorld = this.root.camera.screenToWorld(mousePosition);
         const mouseTile = mouseWorld.toTileSpace();
-        parameters.context.fillStyle = THEME.map.directionLock[this.root.currentLayer].color;
-        parameters.context.strokeStyle = THEME.map.directionLock[this.root.currentLayer].background;
-        parameters.context.lineWidth = 10;
+        const startLine = this.lastDragTile.toWorldSpaceCenterOfTile();
+        const endLine = mouseTile.toWorldSpaceCenterOfTile();
+        const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
+        const anyObstacle =
+            this.checkForObstales(this.lastDragTile, this.currentDirectionLockCorner) ||
+            this.checkForObstales(this.currentDirectionLockCorner, mouseTile);
+
+        if (anyObstacle) {
+            applyStyles("error");
+        } else {
+            applyStyles(this.root.currentLayer);
+        }
 
         parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
         parameters.context.fill();
 
-        if (this.lastDragTile) {
-            const startLine = this.lastDragTile.toWorldSpaceCenterOfTile();
-            const endLine = mouseTile.toWorldSpaceCenterOfTile();
-            const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
+        parameters.context.beginCircle(startLine.x, startLine.y, 8);
+        parameters.context.fill();
 
-            parameters.context.beginCircle(startLine.x, startLine.y, 8);
-            parameters.context.fill();
+        parameters.context.beginPath();
+        parameters.context.moveTo(startLine.x, startLine.y);
+        parameters.context.lineTo(midLine.x, midLine.y);
+        parameters.context.lineTo(endLine.x, endLine.y);
+        parameters.context.stroke();
 
-            parameters.context.beginPath();
-            parameters.context.moveTo(startLine.x, startLine.y);
-            parameters.context.lineTo(midLine.x, midLine.y);
-            parameters.context.lineTo(endLine.x, endLine.y);
-            parameters.context.stroke();
+        parameters.context.beginCircle(endLine.x, endLine.y, 5);
+        parameters.context.fill();
 
-            parameters.context.beginCircle(endLine.x, endLine.y, 5);
-            parameters.context.fill();
+        // Draw arrow
+        const arrowSprite = this.lockIndicatorSprites[anyObstacle ? "error" : this.root.currentLayer];
+        const path = this.computeDirectionLockPath();
+        for (let i = 0; i < path.length - 1; i += 1) {
+            const { rotation, tile } = path[i];
+            const worldPos = tile.toWorldSpaceCenterOfTile();
+            const angle = Math.radians(rotation);
 
-            // Draw arrow
-            const arrowSprite = this.lockIndicatorSprites[this.root.currentLayer];
-            const path = this.computeDirectionLockPath();
-            for (let i = 0; i < path.length - 1; i += 1) {
-                const { rotation, tile } = path[i];
-                const worldPos = tile.toWorldSpaceCenterOfTile();
-                const angle = Math.radians(rotation);
-
-                parameters.context.translate(worldPos.x, worldPos.y);
-                parameters.context.rotate(angle);
-                parameters.context.drawImage(
-                    arrowSprite,
-                    -6,
-                    -globalConfig.halfTileSize -
-                        clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
-                        globalConfig.halfTileSize -
-                        6,
-                    12,
-                    12
-                );
-                parameters.context.rotate(-angle);
-                parameters.context.translate(-worldPos.x, -worldPos.y);
-            }
+            parameters.context.translate(worldPos.x, worldPos.y);
+            parameters.context.rotate(angle);
+            parameters.context.drawImage(
+                arrowSprite,
+                -6,
+                -globalConfig.halfTileSize -
+                    clamp((this.root.time.realtimeNow() * 1.5) % 1.0, 0, 1) * 1 * globalConfig.tileSize +
+                    globalConfig.halfTileSize -
+                    6,
+                12,
+                12
+            );
+            parameters.context.rotate(-angle);
+            parameters.context.translate(-worldPos.x, -worldPos.y);
         }
     }
 

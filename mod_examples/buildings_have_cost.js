@@ -65,10 +65,10 @@ class Mod extends shapez.Mod {
         // Only allow placing an entity when there is enough currency
         this.modInterface.replaceMethod(shapez.GameLogic, "checkCanPlaceEntity", function (
             $original,
-            [entity, offset]
+            [entity, options]
         ) {
             const storedCurrency = this.root.hubGoals.storedShapes[CURRENCY] || 0;
-            return storedCurrency > 0 && $original(entity, offset);
+            return storedCurrency > 0 && $original(entity, options);
         });
 
         // Take shapes when placing a building
