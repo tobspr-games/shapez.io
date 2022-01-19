@@ -182,7 +182,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 // First slot is the shape, so if it's not there we can't do anything
                 const shapeItem = /** @type {ShapeItem} */ (input.item);
                 if (!shapeItem) {
-                    console.log("not got shape");
                     return false;
                 }
 
@@ -216,7 +215,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         for (let j = 0; j < 4; ++j) {
                             const layer = shapeItem.definition.layers[j];
                             if (layer && layer[i]) {
-                                console.log("other error");
                                 return false;
                             }
                         }

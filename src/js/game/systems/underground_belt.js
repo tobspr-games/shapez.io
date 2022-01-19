@@ -285,7 +285,6 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 break;
             }
 
-            console.log("distance: " + searchOffset);
             // make sure to link the other way as well
             receiverUndergroundComp.cachedLinkedEntity = { entity: null, distance: searchOffset };
             return { entity: potentialReceiver, distance: searchOffset };
@@ -317,7 +316,6 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         const input = acceptorComp.completedInputs.get(0);
         if (input) {
-            console.log("found input");
             // Check if the receiver can accept it
             if (
                 cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
