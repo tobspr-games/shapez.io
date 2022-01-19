@@ -102,86 +102,55 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     }
                 }
 
-                // Check if it finished
-                if (currentCharge.remainingTime <= 0.0) {
+                // Check if it finished - but don't finish another charge if there are still items queued to eject, or we might keep backing up
+                if (currentCharge.remainingTime <= 0.0 && processorComp.queuedEjects.length < 1) {
                     const itemsToEject = currentCharge.items;
 
                     // Go over all items and try to eject them
                     for (let j = 0; j < itemsToEject.length; ++j) {
-                        const { item, requiredSlot, preferredSlot, extraProgress = 0 } = itemsToEject[j];
-
-                        assert(ejectorComp, "To eject items, the building needs to have an ejector");
-
-                        let slot = null;
-                        if (requiredSlot !== null && requiredSlot !== undefined) {
-                            // We have a slot override, check if that is free
-                            if (ejectorComp.canEjectOnSlot(requiredSlot)) {
-                                slot = requiredSlot;
-                            }
-                        } else if (preferredSlot !== null && preferredSlot !== undefined) {
-                            // We have a slot preference, try using it but otherwise use a free slot
-                            if (ejectorComp.canEjectOnSlot(preferredSlot)) {
-                                slot = preferredSlot;
-                            } else {
-                                slot = ejectorComp.getFirstFreeSlot();
-                            }
-                        } else {
-                            // We can eject on any slot
-                            slot = ejectorComp.getFirstFreeSlot();
-                        }
-
-                        if (slot !== null) {
-                            // Alright, we can actually eject
-                            if (!ejectorComp.tryEject(slot, item, extraProgress)) {
-                                assert(false, "Failed to eject");
-                            } else {
-                                itemsToEject.splice(j, 1);
-                                j -= 1;
-                            }
-                        }
+                        processorComp.queuedEjects.push(itemsToEject[j]);
                     }
 
-                    // If the charge was entirely emptied to the outputs, start the next charge
-                    if (itemsToEject.length === 0) {
-                        processorComp.ongoingCharges.shift();
+                    processorComp.ongoingCharges.shift();
+                }
+            }
+
+            // Go over all items and try to eject them
+            for (let j = 0; j < processorComp.queuedEjects.length; ++j) {
+                const { item, requiredSlot, preferredSlot, extraProgress = 0 } = processorComp.queuedEjects[
+                    j
+                ];
+
+                assert(ejectorComp, "To eject items, the building needs to have an ejector");
+
+                let slot = null;
+                if (requiredSlot !== null && requiredSlot !== undefined) {
+                    // We have a slot override, check if that is free
+                    if (ejectorComp.canEjectOnSlot(requiredSlot)) {
+                        slot = requiredSlot;
+                    }
+                } else if (preferredSlot !== null && preferredSlot !== undefined) {
+                    // We have a slot preference, try using it but otherwise use a free slot
+                    if (ejectorComp.canEjectOnSlot(preferredSlot)) {
+                        slot = preferredSlot;
+                    } else {
+                        slot = ejectorComp.getFirstFreeSlot();
+                    }
+                } else {
+                    // We can eject on any slot
+                    slot = ejectorComp.getFirstFreeSlot();
+                }
+
+                if (slot !== null) {
+                    // Alright, we can actually eject
+                    if (!ejectorComp.tryEject(slot, item, extraProgress)) {
+                        assert(false, "Failed to eject");
+                    } else {
+                        processorComp.queuedEjects.splice(j, 1);
+                        j -= 1;
                     }
                 }
             }
-        }
-    }
-
-    /**
-     * Returns true if the entity should accept the given item on the given slot.
-     * This should only be called with matching items! I.e. if a color item is expected
-     * on the given slot, then only a color item must be passed.
-     * @param {Entity} entity
-     * @param {BaseItem} item The item to accept
-     * @param {number} slotIndex The slot index
-     * @returns {boolean}
-     */
-    checkRequirements(entity, item, slotIndex) {
-        const itemProcessorComp = entity.components.ItemProcessor;
-        const pinsComp = entity.components.WiredPins;
-
-        switch (itemProcessorComp.processingRequirement) {
-            case enumItemProcessorRequirements.painterQuad: {
-                if (slotIndex === 0) {
-                    // Always accept the shape
-                    return true;
-                }
-
-                // Check the network value at the given slot
-                const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
-                const slotIsEnabled = network && network.hasValue() && isTruthyItem(network.currentValue);
-                if (!slotIsEnabled) {
-                    return false;
-                }
-                return true;
-            }
-
-            // By default, everything is accepted
-            default:
-                return true;
         }
     }
 
@@ -205,7 +174,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             case enumItemProcessorRequirements.painterQuad: {
                 const pinsComp = entity.components.WiredPins;
 
-                const input = acceptorComp.inputs.get(0);
+                const input = acceptorComp.completedInputs.get(0);
                 if (!input) {
                     return false;
                 }
@@ -213,6 +182,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 // First slot is the shape, so if it's not there we can't do anything
                 const shapeItem = /** @type {ShapeItem} */ (input.item);
                 if (!shapeItem) {
+                    console.log("not got shape");
                     return false;
                 }
 
@@ -240,12 +210,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check if all colors of the enabled slots are there
                 for (let i = 0; i < slotStatus.length; ++i) {
-                    if (slotStatus[i] && !acceptorComp.inputs.get(1 + i)) {
+                    if (slotStatus[i] && !acceptorComp.completedInputs.get(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
                         for (let j = 0; j < 4; ++j) {
                             const layer = shapeItem.definition.layers[j];
                             if (layer && layer[i]) {
+                                console.log("other error");
                                 return false;
                             }
                         }
@@ -291,7 +262,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
         }
 
-        // Queue Charge
+        // Queue Charge - but not if we have no outItems
         const originalTime = this.root.hubGoals.getProcessingTime(processorComp.type);
 
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
@@ -558,9 +529,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         /** @type {Array<enumColors>} */
         const colors = [null, null, null, null];
         for (let i = 0; i < 4; ++i) {
-            const colorItem = /** @type {ColorItem} */ (payload.inputs.get(i + 1).item);
-            if (colorItem) {
-                colors[i] = colorItem.color;
+            const colorInput = payload.inputs.get(i + 1);
+            if (colorInput) {
+                colors[i] = /** @type {ColorItem} */ (colorInput.item).color;
             }
         }
 
