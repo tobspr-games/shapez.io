@@ -34,7 +34,7 @@ const MAX_QUEUED_CHARGES = 2;
  * Type of a processor implementation
  * @typedef {{
  *   entity: Entity,
- *   inputs: Map<number, import("../components/item_processor").ItemProcessorInput>,
+ *   inputs: import("../components/item_acceptor").ItemAcceptorCompletedInputs,
  *   outItems: Array<ProducedItem>
  *   }} ProcessorImplementationPayload
  */
@@ -83,8 +83,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const processorComp = entity.components.ItemProcessor;
             const ejectorComp = entity.components.ItemEjector;
 
-            const currentCharge = processorComp.ongoingCharges[0];
+            // Check if we have an empty queue and can start a new charge - do this first so we don't waste a tick
+            if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
+                if (this.canProcess(entity)) {
+                    this.startNewCharge(entity);
+                }
+            }
 
+            const currentCharge = processorComp.ongoingCharges[0];
             if (currentCharge) {
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
@@ -101,7 +107,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                     // Go over all items and try to eject them
                     for (let j = 0; j < itemsToEject.length; ++j) {
-                        const { item, requiredSlot, preferredSlot } = itemsToEject[j];
+                        const { item, requiredSlot, preferredSlot, extraProgress = 0 } = itemsToEject[j];
 
                         assert(ejectorComp, "To eject items, the building needs to have an ejector");
 
@@ -125,7 +131,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                         if (slot !== null) {
                             // Alright, we can actually eject
-                            if (!ejectorComp.tryEject(slot, item)) {
+                            if (!ejectorComp.tryEject(slot, item, extraProgress)) {
                                 assert(false, "Failed to eject");
                             } else {
                                 itemsToEject.splice(j, 1);
@@ -140,13 +146,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     if (itemsToEject.length === 0) {
                         processorComp.ongoingCharges.shift();
                     }
-                }
-            }
-
-            // Check if we have an empty queue and can start a new charge
-            if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
-                if (this.canProcess(entity)) {
-                    this.startNewCharge(entity);
                 }
             }
         }
@@ -192,13 +191,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      */
     canProcess(entity) {
+        const acceptorComp = entity.components.ItemAcceptor;
         const processorComp = entity.components.ItemProcessor;
 
         switch (processorComp.processingRequirement) {
             // DEFAULT
             // By default, we can start processing once all inputs are there
             case null: {
-                return processorComp.inputs.size >= processorComp.inputsPerCharge;
+                return acceptorComp.completedInputs.size >= processorComp.inputsPerCharge;
             }
 
             // QUAD PAINTER
@@ -207,7 +207,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 const pinsComp = entity.components.WiredPins;
 
                 // First slot is the shape, so if it's not there we can't do anything
-                const shapeItem = /** @type {ShapeItem} */ (processorComp.inputs.get(0).item);
+                const shapeItem = /** @type {ShapeItem} */ (acceptorComp.inputs.get(0).item);
                 if (!shapeItem) {
                     return false;
                 }
@@ -236,7 +236,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check if all colors of the enabled slots are there
                 for (let i = 0; i < slotStatus.length; ++i) {
-                    if (slotStatus[i] && !processorComp.inputs.get(1 + i)) {
+                    if (slotStatus[i] && !acceptorComp.inputs.get(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
                         for (let j = 0; j < 4; ++j) {
@@ -261,12 +261,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {Entity} entity
      */
     startNewCharge(entity) {
+        const acceptorComp = entity.components.ItemAcceptor;
         const processorComp = entity.components.ItemProcessor;
 
-        // First, take inputs
-        const inputs = processorComp.inputs;
+        // First, take inputs - but only ones that are completed
+        const inputs = acceptorComp.completedInputs;
+        console.log("processor added charge");
 
-        /** @type {Array<ProducedItem>} */
         const outItems = [];
 
         /** @type {function(ProcessorImplementationPayload) : void} */
@@ -276,7 +277,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         // Call implementation
         handler({
             entity,
-            inputs: inputs,
+            inputs,
             outItems,
         });
 
@@ -289,7 +290,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         // Queue Charge
         const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        const originalTime = 1 / baseSpeed;
+        const originalTime = 0;
 
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
         const timeToProcess = originalTime - bonusTimeToApply;
@@ -300,8 +301,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             remainingTime: timeToProcess,
         });
 
-        processorComp.inputs.clear(); //@SENSETODO temp, will completely replace processorcomp.inputs with acceptor inputs later
-        entity.components.ItemAcceptor.currentInputs.clear();
+        acceptorComp.completedInputs.clear();
     }
 
     /**
@@ -322,6 +322,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             }
             payload.outItems.push({
                 item: input.item,
+                extraProgress: input.extraProgress,
                 preferredSlot: processorComp.nextOutputSlot++ % availableSlots,
                 doNotTrack: true,
             });
@@ -351,6 +352,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             payload.outItems.push({
                 item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                extraProgress: input.extraProgress,
                 requiredSlot: i,
             });
         }
@@ -378,6 +380,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             payload.outItems.push({
                 item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition),
+                extraProgress: input.extraProgress,
                 requiredSlot: i,
             });
         }
@@ -395,6 +398,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
+            extraProgress: input.extraProgress,
         });
     }
 

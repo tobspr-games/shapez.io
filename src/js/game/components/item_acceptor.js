@@ -28,7 +28,12 @@ import { GameRoot } from "../root";
  * item: BaseItem,
  * animProgress: number,
  * direction: enumDirection
- * }>} ItemAcceptorInput
+ * }>} ItemAcceptorInputs
+ *
+ * @typedef {Map<number, {
+ * item: BaseItem,
+ * extraProgress: number
+ * }>} ItemAcceptorCompletedInputs
  *
  * @typedef {{
  * root: GameRoot,
@@ -62,8 +67,10 @@ export class ItemAcceptorComponent extends Component {
     constructor({ slots = [], type = enumItemAcceptorTypes.itemProcessor }) {
         super();
 
-        /** @type {ItemAcceptorInput} */
-        this.currentInputs = new Map(); // @SENSETODO does this need to be saved?
+        /** @type {ItemAcceptorInputs} */
+        this.inputs = new Map();
+        /** @type {ItemAcceptorCompletedInputs} */
+        this.completedInputs = new Map(); // @SENSETODO does this need to be saved?
         this.type = type;
         this.setSlots(slots);
     }
@@ -100,11 +107,11 @@ export class ItemAcceptorComponent extends Component {
 
         //@SENSETODO see if this works for buildings like hub
 
-        if (this.currentInputs.has(slotIndex) || (slot.filter && slot.filter != item.getItemType())) {
+        if (this.completedInputs.has(slotIndex) || (slot.filter && slot.filter != item.getItemType())) {
             return false;
         }
 
-        this.currentInputs.set(slotIndex, {
+        this.inputs.set(slotIndex, {
             item,
             direction,
             animProgress: Math.min(1, startProgress),

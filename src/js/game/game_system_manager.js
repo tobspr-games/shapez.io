@@ -145,7 +145,7 @@ export class GameSystemManager {
         // Order is important!
 
         // IMPORTANT: Item acceptor must be before the belt, because it may not tick after the belt
-        // has put in the item into the acceptor animation, otherwise its off
+        // has put in the item into the acceptor animqation, otherwise its off
         add("itemAcceptor", ItemAcceptorSystem);
 
         add("belt", BeltSystem);
@@ -156,13 +156,13 @@ export class GameSystemManager {
 
         add("storage", StorageSystem);
 
+        add("itemEjector", ItemEjectorSystem);
+
         add("itemProcessor", ItemProcessorSystem);
 
         add("filter", FilterSystem);
 
         add("itemProducer", ItemProducerSystem);
-
-        add("itemEjector", ItemEjectorSystem);
 
         if (this.root.gameMode.hasResources()) {
             add("mapResources", MapResourcesSystem);

@@ -160,24 +160,25 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                // Advance items on the slot
-                // @SENSETODO do we really want to cap it at one, or should the excess get passed on?
-                slot.progress = Math.min(1, slot.progress + progressGrowth);
+                if (slot.progress < 1) {
+                    // Advance items on the slot
+                    slot.progress += progressGrowth;
 
-                if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                    slot.progress = 1;
+                    if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
+                        slot.progress = 1;
+                    }
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (slot.progress < 1) {
-                    continue;
-                }
+                if (slot.progress < 1) continue;
+
+                const extraProgress = slot.progress - 1;
 
                 // Check if we are ejecting to a belt path
                 const destPath = slot.cachedBeltPath;
                 if (destPath) {
-                    // Try passing the item over
-                    if (destPath.tryAcceptItem(item)) {
+                    // Try passing the item over - extraProgress / 2 because the progress there is for double the distance
+                    if (destPath.tryAcceptItem(item, extraProgress / 2)) {
                         slot.item = null;
                     }
 
@@ -190,7 +191,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const destSlot = slot.cachedDestSlot;
                 if (destEntity && destSlot) {
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
-                    const extraProgress = slot.progress - 1;
                     if (
                         targetAcceptorComp.tryAcceptItem(
                             destSlot.index,
@@ -245,7 +245,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Limit the progress to the maximum available space on the next belt (also see #1000)
-                let progress = slot.progress;
+                let progress = Math.min(1, slot.progress);
                 const nextBeltPath = slot.cachedBeltPath;
                 if (nextBeltPath) {
                     /*
@@ -320,91 +320,5 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 );
             }
         }
-    }
-
-    /////////////////////////////////////////////////////// OBSOLETE
-
-    /**
-     *
-     * @param {BaseItem} item
-     * @param {Entity} receiver
-     * @param {number} slotIndex
-     */
-    tryPassOverItem(item, receiver, slotIndex) {
-        // Try figuring out how what to do with the item
-        // @TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
-
-        const beltComp = receiver.components.Belt;
-        if (beltComp) {
-            const path = beltComp.assignedPath;
-            assert(path, "belt has no path");
-            if (path.tryAcceptItem(item)) {
-                return true;
-            }
-            // Belt can have nothing else
-            return false;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-        //
-        // NOTICE ! THIS CODE IS DUPLICATED IN THE BELT PATH FOR PERFORMANCE REASONS
-        //
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-
-        const itemProcessorComp = receiver.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Check for potential filters
-            if (!this.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
-                return false;
-            }
-
-            // Its an item processor ..
-            //if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
-            //    return true;
-            //}
-            // Item processor can have nothing else
-            return false;
-        }
-
-        const undergroundBeltComp = receiver.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            if (
-                undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    this.root.hubGoals.getUndergroundBeltBaseSpeed()
-                )
-            ) {
-                return true;
-            }
-
-            // Underground belt can have nothing else
-            return false;
-        }
-
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
-
-            // Storage can't have anything else
-            return false;
-        }
-
-        const filterComp = receiver.components.Filter;
-        if (filterComp) {
-            // It's a filter! Unfortunately the filter has to know a lot about it's
-            // surrounding state and components, so it can't be within the component itself.
-            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

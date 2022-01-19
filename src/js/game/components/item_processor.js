@@ -30,6 +30,7 @@ export const enumItemProcessorRequirements = {
 /**
  * @typedef {{
  *  item: BaseItem,
+ *  extraProgress?: number,
  *  requiredSlot?: number,
  *  preferredSlot?: number
  * }} EjectorItemToEject
@@ -84,7 +85,6 @@ export class ItemProcessorComponent extends Component {
          * Our current inputs
          * @type {Map<number, ItemProcessorInput>}
          */
-        this.inputs = new Map();
 
         this.clear();
     }
@@ -94,8 +94,6 @@ export class ItemProcessorComponent extends Component {
         // it will take the other one. Some machines ignore this (e.g. the balancer) to make
         // sure the outputs always match
         this.nextOutputSlot = 0;
-
-        this.inputs.clear();
 
         /**
          * What we are currently processing, empty if we don't produce anything rn

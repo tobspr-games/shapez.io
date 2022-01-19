@@ -134,6 +134,7 @@ export class ItemEjectorComponent extends Component {
         if (!this.canEjectOnSlot(slotIndex)) {
             return false;
         }
+        if (startingProgress > 0) console.log("starting with progress: " + startingProgress);
         this.slots[slotIndex].item = item;
         this.slots[slotIndex].lastItem = item;
         this.slots[slotIndex].progress = startingProgress;

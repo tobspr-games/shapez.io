@@ -1,6 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { enumDirectionToVector } from "../../core/vector";
+import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import {
     enumItemAcceptorTypes,
     ItemAcceptorComponent,
@@ -40,14 +41,18 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const acceptorComp = entity.components.ItemAcceptor;
-            const inputs = acceptorComp.currentInputs;
+            const inputs = acceptorComp.inputs;
 
             inputs.forEach((values, index) => {
-                if (values.animProgress >= 1) return; // items which are inputted already
-
                 values.animProgress += progressGrowth;
 
                 if (values.animProgress < 1) return;
+
+                inputs.delete(index);
+                acceptorComp.completedInputs.set(index, {
+                    item: values.item,
+                    extraProgress: values.animProgress - 1,
+                }); // will be handled on the SAME frame due to processor being afterwards
 
                 /** @type {function(InputCompletedArgs) : string} */
                 const handler = this.handlers[acceptorComp.type];
@@ -84,9 +89,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             }
 
             const staticComp = entity.components.StaticMapEntity;
-            acceptorComp.currentInputs.forEach((values, index) => {
+            acceptorComp.inputs.forEach((values, index) => {
                 const { item, animProgress, direction } = values;
-                if (animProgress >= 1) return; // items which are inputted already
 
                 const slotData = acceptorComp.slots[index];
                 const realSlotPos = staticComp.localTileToWorld(slotData.pos);
@@ -115,17 +119,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     /**
      * @param {InputCompletedArgs} args
      */
-    input_ITEMPROCESSOR(args) {
-        const entity = args.entity;
-
-        const itemProcessorComp = entity.components.ItemProcessor;
-        assert(itemProcessorComp, "No item processor to input item to");
-
-        itemProcessorComp.inputs.set(args.slotIndex, {
-            item: args.item,
-            extraProgress: args.extraProgress,
-        }); // in the future the item processor will not need a list of items
-    }
+    input_ITEMPROCESSOR(args) {}
     //@SENSETODO this isn't set up like it should be yet
 
     /**
@@ -138,7 +132,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
         this.root.hubGoals.handleDefinitionDelivered(item.definition);
 
         const acceptorComp = args.entity.components.ItemAcceptor;
-        acceptorComp.currentInputs.delete(args.slotIndex);
+        acceptorComp.inputs.delete(args.slotIndex);
     }
 
     /**
@@ -147,7 +141,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
     input_TRASH(args) {
         // just remove the item
         const acceptorComp = args.entity.components.ItemAcceptor;
-        acceptorComp.currentInputs.delete(args.slotIndex);
+        acceptorComp.inputs.delete(args.slotIndex);
+        args.entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
     }
 
     //storage
