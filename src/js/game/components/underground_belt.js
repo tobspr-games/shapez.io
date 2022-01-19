@@ -56,9 +56,8 @@ export class UndergroundBeltComponent extends Component {
         this.consumptionAnimations = [];
 
         /**
-         * Used only on reciever
-         * Reciever: Used to store which items are currently "travelling"
-         * @type {Array<[BaseItem, number]>} Format is [Item, ingame time to eject the item]
+         * Used only on reciever to store which items are currently "travelling"
+         * @type {Array<[BaseItem, number]>} Format is [Item, Tile progress]
          */
         this.pendingItems = [];
     }
@@ -66,30 +65,22 @@ export class UndergroundBeltComponent extends Component {
     /**
      * Tries to accept a tunneled item
      * @param {BaseItem} item
-     * @param {number} travelDistance How many tiles this item has to travel
-     * @param {number} beltSpeed How fast this item travels
-     * @param {number} now Current ingame time
+     * @param {number} travelDistance
+     * @param {number} startProgress The starting tile progress
      */
-    tryAcceptTunneledItem(item, travelDistance, beltSpeed, now) {
+    tryAcceptTunneledItem(item, travelDistance, startProgress = 0) {
         if (this.mode !== enumUndergroundBeltMode.receiver) {
             // Only receivers can accept tunneled items
             return false;
         }
-
         // Notice: We assume that for all items the travel distance is the same
-        const maxItemsInTunnel = (2 + travelDistance) / globalConfig.itemSpacingOnBelts;
+        const maxItemsInTunnel = travelDistance / globalConfig.itemSpacingOnBelts;
         if (this.pendingItems.length >= maxItemsInTunnel) {
             // Simulate a real belt which gets full at some point
             return false;
         }
 
-        // NOTICE:
-        // This corresponds to the item ejector - it needs 0.5 additional tiles to eject the item.
-        // So instead of adding 1 we add 0.5 only.
-        // Additionally it takes 1 tile for the acceptor which we just add on top.
-        const travelDuration = (travelDistance + 1.5) / beltSpeed / globalConfig.itemSpacingOnBelts;
-
-        this.pendingItems.push([item, now + travelDuration]);
+        this.pendingItems.push([item, startProgress]);
         return true;
     }
 }
