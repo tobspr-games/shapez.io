@@ -205,8 +205,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             case enumItemProcessorRequirements.painterQuad: {
                 const pinsComp = entity.components.WiredPins;
 
+                const input = acceptorComp.inputs.get(0);
+                if (!input) {
+                    return false;
+                }
+
                 // First slot is the shape, so if it's not there we can't do anything
-                const shapeItem = /** @type {ShapeItem} */ (acceptorComp.inputs.get(0).item);
+                const shapeItem = /** @type {ShapeItem} */ (input.item);
                 if (!shapeItem) {
                     return false;
                 }

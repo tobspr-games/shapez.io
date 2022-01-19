@@ -81,6 +81,7 @@ export class MetaStorageBuilding extends MetaBuilding {
                         direction: enumDirection.bottom,
                     },
                 ],
+                lengthMultiplier: 3, // make progress 1.5 to reach the ejector
             })
         );
 

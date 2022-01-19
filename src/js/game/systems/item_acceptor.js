@@ -18,13 +18,12 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             this.root.dynamicTickrate.deltaSeconds *
             this.root.hubGoals.getBeltBaseSpeed() *
             globalConfig.itemSpacingOnBelts;
-        // it's only half a belt
-        const maxProgress = 0.5;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const acceptorComp = entity.components.ItemAcceptor;
             const inputs = acceptorComp.inputs;
+            const maxProgress = acceptorComp.progressLength;
 
             inputs.forEach((values, index) => {
                 values.animProgress += progressGrowth;

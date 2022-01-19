@@ -44,14 +44,6 @@ import { GameRoot } from "../root";
  * }} InputCompletedArgs
  */
 
-/** @enum {string} */
-const enumItemAcceptorTypes = {
-    hub: "hub",
-    storage: "storage",
-    trash: "trash",
-    undergroundBelt: "undergroundBelt",
-};
-
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
@@ -61,9 +53,9 @@ export class ItemAcceptorComponent extends Component {
      *
      * @param {object} param0
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
-     * @param {enumItemAcceptorTypes=} param0.type Function that gets called when the input of an item is completed
+     * @param {number=} param0.lengthMultiplier Whether the acceptor is double the usual length
      */
-    constructor({ slots = [] }) {
+    constructor({ slots = [], lengthMultiplier = 1 }) {
         super();
 
         /** @type {ItemAcceptorInputs} */
@@ -71,6 +63,7 @@ export class ItemAcceptorComponent extends Component {
         /** @type {ItemAcceptorCompletedInputs} */
         this.completedInputs = new Map(); // @SENSETODO does this need to be saved?
         this.setSlots(slots);
+        this.progressLength = 0.5 * lengthMultiplier;
     }
 
     /**
@@ -110,7 +103,7 @@ export class ItemAcceptorComponent extends Component {
         this.inputs.set(slotIndex, {
             item,
             direction,
-            animProgress: Math.min(1, startProgress),
+            animProgress: Math.min(this.progressLength, startProgress),
         });
         return true;
     }
