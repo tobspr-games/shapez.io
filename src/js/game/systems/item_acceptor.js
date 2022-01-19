@@ -85,37 +85,4 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             });
         }
     }
-
-    /**
-     * @param {InputCompletedArgs} args
-     */
-    input_ITEMPROCESSOR(args) {}
-    //@SENSETODO this isn't set up like it should be yet
-
-    /**
-     * @param {InputCompletedArgs} args
-     */
-    input_HUB(args) {
-        const item = /** @type {ShapeItem} */ (args.item);
-        assert(item instanceof ShapeItem, "Input for hub is not a shape");
-
-        this.root.hubGoals.handleDefinitionDelivered(item.definition);
-
-        const acceptorComp = args.entity.components.ItemAcceptor;
-        acceptorComp.inputs.delete(args.slotIndex);
-    }
-
-    /**
-     * @param {InputCompletedArgs} args
-     */
-    input_TRASH(args) {
-        // just remove the item
-        const acceptorComp = args.entity.components.ItemAcceptor;
-        acceptorComp.inputs.delete(args.slotIndex);
-        args.entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
-    }
-
-    //storage
-
-    //underground belt
 }

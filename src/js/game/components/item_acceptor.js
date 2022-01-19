@@ -103,8 +103,6 @@ export class ItemAcceptorComponent extends Component {
     tryAcceptItem(slotIndex, direction, item, startProgress = 0.0) {
         const slot = this.slots[slotIndex];
 
-        //@SENSETODO see if this works for buildings like hub
-
         if (this.completedInputs.has(slotIndex) || (slot.filter && slot.filter != item.getItemType())) {
             return false;
         }
