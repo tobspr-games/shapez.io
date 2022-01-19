@@ -191,6 +191,12 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const destEntity = slot.cachedTargetEntity;
                 const destSlot = slot.cachedDestSlot;
                 if (destEntity && destSlot) {
+                    // storage has to have its own duplicated logic, as it's the ONLY building which the acceptor can't filter for it
+                    const storageComp = destEntity.components.Storage;
+                    if (storageComp && !storageComp.canAcceptItem(item)) {
+                        continue;
+                    }
+
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
                     if (
                         targetAcceptorComp.tryAcceptItem(

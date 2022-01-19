@@ -16,7 +16,7 @@ import { ShapeItem } from "../items/shape_item";
 /**
  * We need to allow queuing charges, otherwise the throughput will stalls
  */
-//@SENSETODO not sure if this is true anymore
+//@SENSETODO not sure if this needs to be two anymore
 const MAX_QUEUED_CHARGES = 1;
 
 /**
@@ -140,8 +140,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                             }
                         }
                     }
-
-                    //@SENSETODO add code in here that handles queued outputs -rearrange where this is too
 
                     // If the charge was entirely emptied to the outputs, start the next charge
                     if (itemsToEject.length === 0) {

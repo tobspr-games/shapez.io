@@ -56,32 +56,11 @@ export class UndergroundBeltComponent extends Component {
         this.consumptionAnimations = [];
 
         /**
-         * Used on both receiver and sender.
-         * Reciever: Used to store the next item to transfer, and to block input while doing this
-         * Sender: Used to store which items are currently "travelling"
+         * Used only on reciever
+         * Reciever: Used to store which items are currently "travelling"
          * @type {Array<[BaseItem, number]>} Format is [Item, ingame time to eject the item]
          */
         this.pendingItems = [];
-    }
-
-    /**
-     * Tries to accept an item from an external source like a regular belt or building
-     * @param {BaseItem} item
-     * @param {number} beltSpeed How fast this item travels
-     */
-    tryAcceptExternalItem(item, beltSpeed) {
-        if (this.mode !== enumUndergroundBeltMode.sender) {
-            // Only senders accept external items
-            return false;
-        }
-
-        if (this.pendingItems.length > 0) {
-            // We currently have a pending item
-            return false;
-        }
-
-        this.pendingItems.push([item, 0]);
-        return true;
     }
 
     /**

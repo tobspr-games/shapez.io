@@ -308,22 +308,18 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        // Check if we have any items to eject
-        const nextItemAndDuration = undergroundComp.pendingItems[0];
-        if (nextItemAndDuration) {
-            assert(undergroundComp.pendingItems.length === 1, "more than 1 pending");
-
+        const input = acceptorComp.completedInputs.get(0);
+        if (input) {
             // Check if the receiver can accept it
             if (
                 cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
-                    nextItemAndDuration[0],
+                    input.item,
                     cacheEntry.distance,
                     this.root.hubGoals.getUndergroundBeltBaseSpeed(),
                     this.root.time.now()
                 )
             ) {
-                // Drop this item
-                fastArrayDelete(undergroundComp.pendingItems, 0);
+                acceptorComp.completedInputs.delete(0);
             }
         }
     }

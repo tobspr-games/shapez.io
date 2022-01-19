@@ -220,8 +220,6 @@ export class BeltPath extends BasicSerializableObject {
             return;
         }
 
-        const noSimplifiedBelts = !this.root.app.settings.getAllSettings().simplifiedBelts;
-
         DEBUG && !debug_Silent && logger.log("  Found target entity", targetEntity.uid);
         const targetStaticComp = targetEntity.components.StaticMapEntity;
         const targetBeltComp = targetEntity.components.Belt;
@@ -270,6 +268,11 @@ export class BeltPath extends BasicSerializableObject {
         const matchingDirection = enumInvertedDirections[ejectingDirection];
 
         return function (item, startProgress = 0.0) {
+            // storage has to have its own duplicated logic, as it's the ONLY building which the acceptor can't filter for it
+            const storageComp = targetEntity.components.Storage;
+            if (storageComp && !storageComp.canAcceptItem(item)) {
+                return false;
+            }
             if (targetAcceptorComp.tryAcceptItem(matchingSlotIndex, matchingDirection, item, startProgress)) {
                 return true;
             }

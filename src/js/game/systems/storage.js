@@ -30,6 +30,21 @@ export class StorageSystem extends GameSystemWithFilter {
             const entity = this.allEntities[i];
             const storageComp = entity.components.Storage;
             const pinsComp = entity.components.WiredPins;
+            const acceptorComp = entity.components.ItemAcceptor;
+
+            // Take items from acceptor
+            const input1 = acceptorComp.completedInputs.get(0);
+            const input2 = acceptorComp.completedInputs.get(1);
+            if (input1) {
+                storageComp.storedItem = input1.item;
+                storageComp.storedCount++;
+                acceptorComp.completedInputs.delete(0);
+            }
+            if (input2) {
+                storageComp.storedItem = input2.item;
+                storageComp.storedCount++;
+                acceptorComp.completedInputs.delete(1);
+            }
 
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
