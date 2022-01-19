@@ -2,11 +2,7 @@ import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { enumDirectionToVector } from "../../core/vector";
 import { ACHIEVEMENTS } from "../../platform/achievement_provider";
-import {
-    enumItemAcceptorTypes,
-    ItemAcceptorComponent,
-    InputCompletedArgs,
-} from "../components/item_acceptor";
+import { ItemAcceptorComponent, InputCompletedArgs } from "../components/item_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { ShapeItem } from "../items/shape_item";
 import { MapChunkView } from "../map_chunk_view";
@@ -14,29 +10,16 @@ import { MapChunkView } from "../map_chunk_view";
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemAcceptorComponent]);
-
-        /**
-         * @type {Object<enumItemAcceptorTypes, function(InputCompletedArgs) : string>}
-         */
-        this.handlers = {
-            [enumItemAcceptorTypes.itemProcessor]: this.input_ITEMPROCESSOR,
-            [enumItemAcceptorTypes.hub]: this.input_HUB,
-            [enumItemAcceptorTypes.trash]: this.input_TRASH,
-        };
-
-        // Bind all handlers
-        for (const key in this.handlers) {
-            this.handlers[key] = this.handlers[key].bind(this);
-        }
     }
 
     update() {
-        // * 2 because its only a half tile - (same code as ejector)
+        // same code for belts, acceptors and ejectors - add helper method???
         const progressGrowth =
-            2 *
             this.root.dynamicTickrate.deltaSeconds *
             this.root.hubGoals.getBeltBaseSpeed() *
             globalConfig.itemSpacingOnBelts;
+        // it's only half a belt
+        const maxProgress = 0.5;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -46,26 +29,13 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             inputs.forEach((values, index) => {
                 values.animProgress += progressGrowth;
 
-                if (values.animProgress < 1) return;
+                if (values.animProgress < maxProgress) return;
 
                 inputs.delete(index);
                 acceptorComp.completedInputs.set(index, {
                     item: values.item,
-                    extraProgress: values.animProgress - 1,
-                }); // will be handled on the SAME frame due to processor being afterwards
-
-                /** @type {function(InputCompletedArgs) : string} */
-                const handler = this.handlers[acceptorComp.type];
-                assert(handler, "No handler for acceptor type defined: " + acceptorComp.type);
-
-                // Call implementation
-                handler({
-                    root: this.root,
-                    entity,
-                    item: values.item,
-                    slotIndex: index,
-                    extraProgress: values.animProgress - 1,
-                });
+                    extraProgress: values.animProgress - maxProgress,
+                }); // will be handled on the SAME frame due to processor system being afterwards
             });
         }
     }
@@ -102,8 +72,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
 
                 const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
                 const finalTile = realSlotPos.subScalars(
-                    fadeOutDirection.x * (animProgress / 2 - 0.5),
-                    fadeOutDirection.y * (animProgress / 2 - 0.5)
+                    fadeOutDirection.x * (animProgress - 0.5),
+                    fadeOutDirection.y * (animProgress - 0.5)
                 );
 
                 item.drawItemCenteredClipped(

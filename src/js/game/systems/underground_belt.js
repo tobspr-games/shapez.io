@@ -294,6 +294,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
      */
     handleSender(entity) {
         const undergroundComp = entity.components.UndergroundBelt;
+        const acceptorComp = entity.components.ItemAcceptor;
 
         // Find the current receiver
         let cacheEntry = undergroundComp.cachedLinkedEntity;

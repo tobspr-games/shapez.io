@@ -70,7 +70,7 @@ export class ItemEjectorComponent extends Component {
                 direction: slot.direction,
                 item: null,
                 lastItem: null,
-                progress: 0, //@SENSETODO needs to be started off with extra time
+                progress: 0,
                 cachedDestSlot: null,
                 cachedTargetEntity: null,
             });
@@ -134,7 +134,6 @@ export class ItemEjectorComponent extends Component {
         if (!this.canEjectOnSlot(slotIndex)) {
             return false;
         }
-        if (startingProgress > 0) console.log("starting with progress: " + startingProgress);
         this.slots[slotIndex].item = item;
         this.slots[slotIndex].lastItem = item;
         this.slots[slotIndex].progress = startingProgress;

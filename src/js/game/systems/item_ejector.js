@@ -139,12 +139,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     update() {
         this.staleAreaDetector.update();
 
-        // * 2 because its only a half tile - (same code as acceptor)
+        // same code for belts, acceptors and ejectors - add helper method???
         const progressGrowth =
-            2 *
             this.root.dynamicTickrate.deltaSeconds *
             this.root.hubGoals.getBeltBaseSpeed() *
             globalConfig.itemSpacingOnBelts;
+        // it's only half a belt
+        const maxProgress = 0.5;
 
         // Go over all cache entries
         for (let i = 0; i < this.allEntities.length; ++i) {
@@ -160,25 +161,25 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                if (slot.progress < 1) {
+                if (slot.progress < maxProgress) {
                     // Advance items on the slot
                     slot.progress += progressGrowth;
 
                     if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                        slot.progress = 1;
+                        slot.progress = maxProgress;
                     }
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (slot.progress < 1) continue;
+                if (slot.progress < maxProgress) continue;
 
-                const extraProgress = slot.progress - 1;
+                const extraProgress = slot.progress - maxProgress;
 
                 // Check if we are ejecting to a belt path
                 const destPath = slot.cachedBeltPath;
                 if (destPath) {
-                    // Try passing the item over - extraProgress / 2 because the progress there is for double the distance
-                    if (destPath.tryAcceptItem(item, extraProgress / 2)) {
+                    // Try passing the item over
+                    if (destPath.tryAcceptItem(item, extraProgress)) {
                         slot.item = null;
                     }
 
@@ -203,8 +204,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                         slot.item = null;
                     }
                 }
-
-                //@SENSETODO deal with other buildings - acceptor code on them needs to be different!
             }
         }
     }
@@ -244,8 +243,13 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
+                // don't render items at the start of output
+                if (slot.progress < 0.05) {
+                    continue;
+                }
+
                 // Limit the progress to the maximum available space on the next belt (also see #1000)
-                let progress = Math.min(1, slot.progress);
+                let progress = Math.min(0.5, slot.progress);
                 const nextBeltPath = slot.cachedBeltPath;
                 if (nextBeltPath) {
                     /*
@@ -281,7 +285,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                                     ^ max progress = 0.3
 
                     Because now our range actually only goes to the end of the building, and not towards the center of the building, we need to multiply
-                    all values by 2:
+                    all values by 2: <--------- except max progress is now 0.5 rather than 1, so this isn't needed anymore
 
                     Building              Belt
                     |         X         |         X         |
@@ -293,7 +297,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     */
 
                     const maxProgress =
-                        (0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts) * 2;
+                        0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts;
                     progress = Math.min(maxProgress, progress);
                 }
 
@@ -306,8 +310,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const realDirection = staticComp.localDirectionToWorld(slot.direction);
                 const realDirectionVector = enumDirectionToVector[realDirection];
 
-                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * progress;
-                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * progress;
+                const tileX = realPosition.x + 0.5 + realDirectionVector.x * progress;
+                const tileY = realPosition.y + 0.5 + realDirectionVector.y * progress;
 
                 const worldX = tileX * globalConfig.tileSize;
                 const worldY = tileY * globalConfig.tileSize;

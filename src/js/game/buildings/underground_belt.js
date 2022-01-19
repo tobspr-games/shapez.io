@@ -1,6 +1,6 @@
 import { Loader } from "../../core/loader";
 import { enumDirection, Vector, enumAngleToDirection, enumDirectionToVector } from "../../core/vector";
-import { enumItemAcceptorTypes, ItemAcceptorComponent } from "../components/item_acceptor";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
@@ -184,7 +184,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        // Required, since the item processor needs this.
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [],
@@ -195,7 +194,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemAcceptorComponent({
                 slots: [],
-                type: enumItemAcceptorTypes.undergroundBelt,
             })
         );
     }

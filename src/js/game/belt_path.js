@@ -132,12 +132,6 @@ export class BeltPath extends BasicSerializableObject {
      */
     tryAcceptItem(item, startProgress = 0) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
-            // So, since we already need one tick to accept this item we will add this directly.
-            const progressGrowth =
-                this.root.hubGoals.getBeltBaseSpeed() *
-                this.root.dynamicTickrate.deltaSeconds *
-                globalConfig.itemSpacingOnBelts;
-
             // First, compute how much progress we can make *at max*
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
             const initialProgress = Math.min(maxProgress, startProgress);
@@ -281,64 +275,6 @@ export class BeltPath extends BasicSerializableObject {
             }
             return false;
         };
-    }
-
-    /**
-     * Computes a method to pass over the item to the entity
-     * @param {Entity} entity
-     * @param {number} matchingSlotIndex
-     * @returns {(item: BaseItem, slotIndex: number) => boolean | void}
-     */
-    computePassOverFunctionWithoutBelts(entity, matchingSlotIndex) {
-        const systems = this.root.systemMgr.systems;
-        const hubGoals = this.root.hubGoals;
-
-        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PERFORMANCE REASONS
-
-        const itemProcessorComp = entity.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Its an item processor ..
-            return function (item) {
-                // Check for potential filters
-                if (!systems.itemProcessor.checkRequirements(entity, item, matchingSlotIndex)) {
-                    return;
-                }
-                //return itemProcessorComp.tryTakeItem(item, matchingSlotIndex);
-            };
-        }
-
-        const undergroundBeltComp = entity.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            return function (item) {
-                return undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    hubGoals.getUndergroundBeltBaseSpeed()
-                );
-            };
-        }
-
-        const storageComp = entity.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            return function (item) {
-                if (storageComp.canAcceptItem(item)) {
-                    storageComp.takeItem(item);
-                    return true;
-                }
-            };
-        }
-
-        const filterComp = entity.components.Filter;
-        if (filterComp) {
-            // It's a filter! Unfortunately the filter has to know a lot about it's
-            // surrounding state and components, so it can't be within the component itself.
-            return function (item) {
-                if (systems.filter.tryAcceptItem(entity, matchingSlotIndex, item)) {
-                    return true;
-                }
-            };
-        }
     }
 
     // Following code will be compiled out outside of dev versions

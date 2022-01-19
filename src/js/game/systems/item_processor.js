@@ -1,4 +1,5 @@
 import { globalConfig } from "../../core/config";
+import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { BaseItem } from "../base_item";
 import { enumColorMixingResults, enumColors } from "../colors";
 import {
@@ -13,10 +14,10 @@ import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
 /**
- * We need to allow queuing charges, otherwise the throughput will stall
+ * We need to allow queuing charges, otherwise the throughput will stalls
  */
 //@SENSETODO not sure if this is true anymore
-const MAX_QUEUED_CHARGES = 2;
+const MAX_QUEUED_CHARGES = 1;
 
 /**
  * Whole data for a produced item
@@ -266,7 +267,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         // First, take inputs - but only ones that are completed
         const inputs = acceptorComp.completedInputs;
-        console.log("processor added charge");
 
         const outItems = [];
 
@@ -289,8 +289,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Queue Charge
-        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        const originalTime = 0;
+        const originalTime = this.root.hubGoals.getProcessingTime(processorComp.type);
 
         const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
         const timeToProcess = originalTime - bonusTimeToApply;
@@ -414,6 +413,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
+            extraProgress: input.extraProgress,
         });
     }
 
@@ -429,6 +429,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotate180(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
+            extraProgress: input.extraProgress,
         });
     }
 
@@ -437,7 +438,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_STACKER(payload) {
         const lowerInput = payload.inputs.get(0);
-        const upperInput = payload.inputs.get(0);
+        const upperInput = payload.inputs.get(1);
         const lowerItem = /** @type {ShapeItem} */ (lowerInput.item);
         const upperItem = /** @type {ShapeItem} */ (upperInput.item);
 
@@ -450,6 +451,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         );
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(stackedDefinition),
+            extraProgress: lowerInput.extraProgress,
         });
     }
 
@@ -457,7 +459,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_TRASH(payload) {
-        // Do nothing ..
+        payload.entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
     }
 
     /**
@@ -483,6 +485,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
         payload.outItems.push({
             item: COLOR_ITEM_SINGLETONS[resultColor],
+            extraProgress: input1.extraProgress,
         });
     }
 
@@ -502,6 +505,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
+            extraProgress: input1.extraProgress,
         });
     }
 
@@ -509,8 +513,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_PAINTER_DOUBLE(payload) {
-        const shapeItem1 = /** @type {ShapeItem} */ (payload.inputs.get(0).item);
-        const shapeItem2 = /** @type {ShapeItem} */ (payload.inputs.get(1).item);
+        const input1 = payload.inputs.get(0);
+        const input2 = payload.inputs.get(1);
+
+        const shapeItem1 = /** @type {ShapeItem} */ (input1.item);
+        const shapeItem2 = /** @type {ShapeItem} */ (input2.item);
         const colorItem = /** @type {ColorItem} */ (payload.inputs.get(2).item);
 
         assert(shapeItem1 instanceof ShapeItem, "Input for painter is not a shape");
@@ -528,10 +535,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         );
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition1),
+            extraProgress: input1.extraProgress,
         });
 
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition2),
+            extraProgress: input2.extraProgress,
         });
     }
 
@@ -559,6 +568,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
+            extraProgress: input.extraProgress,
         });
     }
 
@@ -567,33 +577,34 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     process_READER(payload) {
         // Pass through the item
-        const item = payload.inputs.get(0).item;
+        const input = payload.inputs.get(0);
         payload.outItems.push({
-            item,
+            item: input.item,
             doNotTrack: true,
+            extraProgress: input.extraProgress,
         });
 
         // Track the item
         const readerComp = payload.entity.components.BeltReader;
         readerComp.lastItemTimes.push(this.root.time.now());
-        readerComp.lastItem = item;
+        readerComp.lastItem = input.item;
     }
 
     /**
      * @param {ProcessorImplementationPayload} payload
      */
     process_HUB(payload) {
-        //const input = payload.inputs.get(i);
-        //const hubComponent = payload.entity.components.Hub;
-        //assert(hubComponent, "Hub item processor has no hub component");
-        //// Hardcoded
-        //for (let i = 0; i < payload.inputCount; ++i) {
-        //    const item = /** @type {ShapeItem} */ (payload.inputs.get(i));
-        //    if (!item) {
-        //        continue;
-        //    }
-        //    this.root.hubGoals.handleDefinitionDelivered(item.definition);
-        //}
+        const hubComponent = payload.entity.components.Hub;
+        assert(hubComponent, "Hub item processor has no hub component");
+        // Hardcoded
+        for (let i = 0; i < payload.inputs.size; ++i) {
+            const input = payload.inputs.get(i);
+            if (!input) continue;
+            const item = /** @type {ShapeItem} */ (input.item);
+            if (!item) continue;
+
+            this.root.hubGoals.handleDefinitionDelivered(item.definition);
+        }
     }
 
     /**

@@ -507,55 +507,39 @@ export class HubGoals extends BasicSerializableObject {
     }
 
     /**
-     * Processor speed
+     * Processor time to process
      * @param {enumItemProcessorTypes} processorType
-     * @returns {number} items / sec
+     * @returns {number} process time in seconds
      */
-    getProcessorBaseSpeed(processorType) {
+    getProcessingTime(processorType) {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed * 10;
+            return 0;
         }
 
         switch (processorType) {
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
             case enumItemProcessorTypes.goal:
-                return 1e30;
             case enumItemProcessorTypes.balancer:
-                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
             case enumItemProcessorTypes.reader:
-                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
+            case enumItemProcessorTypes.rotater:
+            case enumItemProcessorTypes.rotaterCCW:
+            case enumItemProcessorTypes.rotater180:
+                return 0;
 
             case enumItemProcessorTypes.mixer:
             case enumItemProcessorTypes.painter:
             case enumItemProcessorTypes.painterDouble:
             case enumItemProcessorTypes.painterQuad: {
-                assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
-                );
-                return (
-                    globalConfig.beltSpeedItemsPerSecond *
-                    this.upgradeImprovements.painting *
-                    globalConfig.buildingSpeeds[processorType]
-                );
+                return this.getProcessorTimeWithUpgrades(this.upgradeImprovements.painting, processorType);
+                // b2 + 4 = 4
+                // b2 + 8 = 8
             }
 
             case enumItemProcessorTypes.cutter:
             case enumItemProcessorTypes.cutterQuad:
-            case enumItemProcessorTypes.rotater:
-            case enumItemProcessorTypes.rotaterCCW:
-            case enumItemProcessorTypes.rotater180:
             case enumItemProcessorTypes.stacker: {
-                assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
-                );
-                return (
-                    globalConfig.beltSpeedItemsPerSecond *
-                    this.upgradeImprovements.processors *
-                    globalConfig.buildingSpeeds[processorType]
-                );
+                return this.getProcessorTimeWithUpgrades(this.upgradeImprovements.processors, processorType);
             }
             default:
                 if (MOD_ITEM_PROCESSOR_SPEEDS[processorType]) {
@@ -564,6 +548,33 @@ export class HubGoals extends BasicSerializableObject {
                 assertAlways(false, "invalid processor type: " + processorType);
         }
 
-        return 1 / globalConfig.beltSpeedItemsPerSecond;
+        return 0;
+    }
+
+    /**
+     * @param {number} upgrade
+     * @param {number} upgrade
+     */
+    getProcessorTimeWithUpgrades(upgrade, processorType) {
+        assert(
+            globalConfig.buildingAmountsToBelt[processorType],
+            "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+        );
+
+        const processorTime =
+            globalConfig.buildingAmountsToBelt[processorType] / globalConfig.beltSpeedItemsPerSecond;
+        return processorTime / upgrade;
+    }
+    /**
+     * Processor speed
+     * @param {enumItemProcessorTypes} processorType
+     * @returns {number} process time in seconds
+     */
+    getProcessingSpeed(processorType) {
+        const time = this.getProcessingTime(processorType);
+        if (time == 0) {
+            return time;
+        }
+        return 1 / time;
     }
 }

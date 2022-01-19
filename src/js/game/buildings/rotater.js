@@ -70,15 +70,15 @@ export class MetaRotaterBuilding extends MetaBuilding {
         }
         switch (variant) {
             case defaultBuildingVariant: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater);
+                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.rotater);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumRotaterVariants.ccw: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotaterCCW);
+                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.rotaterCCW);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumRotaterVariants.rotate180: {
-                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.rotater180);
+                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.rotater180);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }

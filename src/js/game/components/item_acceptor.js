@@ -45,8 +45,7 @@ import { GameRoot } from "../root";
  */
 
 /** @enum {string} */
-export const enumItemAcceptorTypes = {
-    itemProcessor: "itemProcessor",
+const enumItemAcceptorTypes = {
     hub: "hub",
     storage: "storage",
     trash: "trash",
@@ -64,14 +63,13 @@ export class ItemAcceptorComponent extends Component {
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
      * @param {enumItemAcceptorTypes=} param0.type Function that gets called when the input of an item is completed
      */
-    constructor({ slots = [], type = enumItemAcceptorTypes.itemProcessor }) {
+    constructor({ slots = [] }) {
         super();
 
         /** @type {ItemAcceptorInputs} */
         this.inputs = new Map();
         /** @type {ItemAcceptorCompletedInputs} */
         this.completedInputs = new Map(); // @SENSETODO does this need to be saved?
-        this.type = type;
         this.setSlots(slots);
     }
 

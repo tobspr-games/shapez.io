@@ -164,7 +164,6 @@ export class MetaHubBuilding extends MetaBuilding {
                         filter: "shape",
                     },
                 ],
-                type: enumItemAcceptorTypes.hub,
             })
         );
     }
