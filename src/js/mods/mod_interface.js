@@ -424,8 +424,8 @@ export class ModInterface {
         const oldHandle = classHandle.prototype[methodName];
         classHandle.prototype[methodName] = function () {
             //@ts-ignore Same as above
-            executeBefore.apply(this, ...arguments);
-            return oldHandle.apply(this, ...arguments);
+            executeBefore.apply(this, arguments);
+            return oldHandle.apply(this, arguments);
         };
     }
 
@@ -442,9 +442,9 @@ export class ModInterface {
     runAfterMethod(classHandle, methodName, executeAfter) {
         const oldHandle = classHandle.prototype[methodName];
         classHandle.prototype[methodName] = function () {
-            const returnValue = oldHandle.apply(this, ...arguments);
+            const returnValue = oldHandle.apply(this, arguments);
             //@ts-ignore
-            executeAfter.apply(this, ...arguments);
+            executeAfter.apply(this, arguments);
             return returnValue;
         };
     }
