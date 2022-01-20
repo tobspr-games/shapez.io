@@ -1505,7 +1505,7 @@ export class BeltPath extends BasicSerializableObject {
                 currentItemPos += nextItemDistance;
                 ++currentItemIndex;
 
-                if (nextItemDistance > globalConfig.itemSpacingOnBelts + 0.002 || drawStack.length > 20) {
+                if (nextItemDistance > globalConfig.itemSpacingOnBelts + 0.001 || drawStack.length > 20) {
                     // If next item is not directly following, abort drawing
                     this.drawDrawStack(drawStack, parameters, drawStackProp);
                     drawStack = [];
@@ -1541,8 +1541,8 @@ export class BeltPath extends BasicSerializableObject {
      */
     drawShapesInARow(canvas, context, w, h, dpi, { direction, stack, root, zoomLevel }) {
         context.scale(dpi, dpi);
-        context.fillStyle = "rgba(0, 0, 255, 0.1)";
-        context.fillRect(1, 1, w - 2, h - 2);
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fillRect(0, 0, w, h);
 
         const parameters = new DrawParameters({
             context,
@@ -1554,6 +1554,7 @@ export class BeltPath extends BasicSerializableObject {
 
         const itemSize = globalConfig.itemSpacingOnBelts * globalConfig.tileSize;
         const item = stack[0];
+        console.log(w, h, dpi, direction, item[1].serialize());
         const pos = new Vector(itemSize / 2, itemSize / 2);
 
         for (let i = 0; i < stack.length; i++) {
