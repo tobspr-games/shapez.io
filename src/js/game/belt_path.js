@@ -1460,52 +1460,69 @@ export class BeltPath extends BasicSerializableObject {
                 const item = distanceAndItem[1 /* item */];
                 const nextItemDistance = distanceAndItem[0 /* nextDistance */];
 
-                if (drawStack.length > 1) {
-                    // Check if we can append to the stack, since its already a stack of two same items
-                    const referenceItem = drawStack[0];
-                    if (Math.abs(referenceItem[0][drawStackProp] - worldPos[drawStackProp]) < 0.001) {
-                        // Will continue stack
-                    } else {
-                        // Start a new stack, since item doesn't follow in row
-                        this.drawDrawStack(drawStack, parameters, drawStackProp);
-                        drawStack = [];
-                        drawStackProp = "";
-                    }
-                } else if (drawStack.length === 1) {
-                    const firstItem = drawStack[0];
-
-                    // Check if we can make it a stack
-                    if (firstItem[1 /* item */].equals(item)) {
-                        // Same item, check if it is either horizontal or vertical
-                        const startPos = firstItem[0 /* pos */];
-
-                        if (Math.abs(startPos.x - worldPos.x) < 0.001) {
-                            drawStackProp = "x";
-                        } else if (Math.abs(startPos.y - worldPos.y) < 0.001) {
-                            drawStackProp = "y";
+                if (
+                    !parameters.visibleRect.containsCircle(
+                        worldPos.x,
+                        worldPos.y,
+                        globalConfig.defaultItemDiameter
+                    )
+                ) {
+                    // this one isn't visible, do not  append it
+                    // Start a new stack
+                    this.drawDrawStack(drawStack, parameters, drawStackProp);
+                    drawStack = [];
+                    drawStackProp = "";
+                } else {
+                    if (drawStack.length > 1) {
+                        // Check if we can append to the stack, since its already a stack of two same items
+                        const referenceItem = drawStack[0];
+                        if (Math.abs(referenceItem[0][drawStackProp] - worldPos[drawStackProp]) < 0.001) {
+                            // Will continue stack
                         } else {
-                            // Start a new stack
+                            // Start a new stack, since item doesn't follow in row
+                            this.drawDrawStack(drawStack, parameters, drawStackProp);
+                            drawStack = [];
+                            drawStackProp = "";
+                        }
+                    } else if (drawStack.length === 1) {
+                        const firstItem = drawStack[0];
+
+                        // Check if we can make it a stack
+                        if (firstItem[1 /* item */].equals(item)) {
+                            // Same item, check if it is either horizontal or vertical
+                            const startPos = firstItem[0 /* pos */];
+
+                            if (Math.abs(startPos.x - worldPos.x) < 0.001) {
+                                drawStackProp = "x";
+                            } else if (Math.abs(startPos.y - worldPos.y) < 0.001) {
+                                drawStackProp = "y";
+                            } else {
+                                // Start a new stack
+                                this.drawDrawStack(drawStack, parameters, drawStackProp);
+                                drawStack = [];
+                                drawStackProp = "";
+                            }
+                        } else {
+                            // Start a new stack, since item doesn't equal
                             this.drawDrawStack(drawStack, parameters, drawStackProp);
                             drawStack = [];
                             drawStackProp = "";
                         }
                     } else {
-                        // Start a new stack, since item doesn't equal
-                        this.drawDrawStack(drawStack, parameters, drawStackProp);
-                        drawStack = [];
-                        drawStackProp = "";
+                        // First item of stack, do nothing
                     }
-                } else {
-                    // First item of stack, do nothing
-                }
 
-                drawStack.push([worldPos, item]);
+                    drawStack.push([worldPos, item]);
+                }
 
                 // Check for the next item
                 currentItemPos += nextItemDistance;
                 ++currentItemIndex;
 
-                if (nextItemDistance > globalConfig.itemSpacingOnBelts + 0.001 || drawStack.length > 20) {
+                if (
+                    nextItemDistance > globalConfig.itemSpacingOnBelts + 0.001 ||
+                    drawStack.length > globalConfig.maxBeltShapeBundleSize
+                ) {
                     // If next item is not directly following, abort drawing
                     this.drawDrawStack(drawStack, parameters, drawStackProp);
                     drawStack = [];
@@ -1541,8 +1558,11 @@ export class BeltPath extends BasicSerializableObject {
      */
     drawShapesInARow(canvas, context, w, h, dpi, { direction, stack, root, zoomLevel }) {
         context.scale(dpi, dpi);
-        context.fillStyle = "rgba(0, 0, 255, 0.5)";
-        context.fillRect(0, 0, w, h);
+
+        if (G_IS_DEV && globalConfig.debug.showShapeGrouping) {
+            context.fillStyle = "rgba(0, 0, 255, 0.5)";
+            context.fillRect(0, 0, w, h);
+        }
 
         const parameters = new DrawParameters({
             context,
@@ -1554,7 +1574,6 @@ export class BeltPath extends BasicSerializableObject {
 
         const itemSize = globalConfig.itemSpacingOnBelts * globalConfig.tileSize;
         const item = stack[0];
-        console.log(w, h, dpi, direction, item[1].serialize());
         const pos = new Vector(itemSize / 2, itemSize / 2);
 
         for (let i = 0; i < stack.length; i++) {

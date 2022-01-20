@@ -42,7 +42,7 @@ export const globalConfig = {
     // Which dpi the assets have
     assetsDpi: 192 / 32,
     assetsSharpness: 1.5,
-    shapesSharpness: 1.4,
+    shapesSharpness: 1.3,
 
     // Achievements
     achievementSliceDuration: 10, // Seconds
@@ -58,8 +58,10 @@ export const globalConfig = {
     // Map
     mapChunkSize: 16,
     chunkAggregateSize: 4,
-    mapChunkOverviewMinZoom: 0.9,
+    mapChunkOverviewMinZoom: 0,
     mapChunkWorldSize: null, // COMPUTED
+
+    maxBeltShapeBundleSize: 20,
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!
