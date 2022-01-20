@@ -369,7 +369,7 @@ export class ModInterface {
 
     /**
      * Registers a new state class, should be a GameState derived class
-     * @param {typeof GameState} stateClass
+     * @param {typeof import("../core/game_state").GameState} stateClass
      */
     registerGameState(stateClass) {
         this.modLoader.app.stateMgr.register(stateClass);
@@ -470,7 +470,7 @@ export class ModInterface {
 
     /**
      *
-     * @param {typeof Object} classHandle
+     * @param {Class} classHandle
      * @param {({ $super, $old }) => any} extender
      */
     extendClass(classHandle, extender) {
