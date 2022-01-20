@@ -4,8 +4,6 @@ import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
-import { ACHIEVEMENTS } from "../../platform/achievement_provider";
-import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";

@@ -1,10 +1,8 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { enumDirectionToVector } from "../../core/vector";
-import { ACHIEVEMENTS } from "../../platform/achievement_provider";
-import { ItemAcceptorComponent, InputCompletedArgs } from "../components/item_acceptor";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { ShapeItem } from "../items/shape_item";
 import { MapChunkView } from "../map_chunk_view";
 
 export class ItemAcceptorSystem extends GameSystemWithFilter {
@@ -23,7 +21,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             const entity = this.allEntities[i];
             const acceptorComp = entity.components.ItemAcceptor;
             const inputs = acceptorComp.inputs;
-            const maxProgress = acceptorComp.progressLength;
+            const maxProgress = 0.5;
 
             inputs.forEach((values, index) => {
                 values.animProgress += progressGrowth;

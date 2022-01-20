@@ -1,4 +1,3 @@
-import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { FilterComponent } from "../components/filter";
 import { Entity } from "../entity";

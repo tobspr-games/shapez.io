@@ -3,7 +3,6 @@ import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
-import { fastArrayDelete } from "../../core/utils";
 import {
     enumAngleToDirection,
     enumDirection,

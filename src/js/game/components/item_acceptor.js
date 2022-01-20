@@ -53,9 +53,8 @@ export class ItemAcceptorComponent extends Component {
      *
      * @param {object} param0
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
-     * @param {number=} param0.lengthMultiplier Whether the acceptor is double the usual length
      */
-    constructor({ slots = [], lengthMultiplier = 1 }) {
+    constructor({ slots = [] }) {
         super();
 
         /** @type {ItemAcceptorInputs} */
@@ -63,7 +62,6 @@ export class ItemAcceptorComponent extends Component {
         /** @type {ItemAcceptorCompletedInputs} */
         this.completedInputs = new Map(); // @SENSETODO does this need to be saved?
         this.setSlots(slots);
-        this.progressLength = 0.5 * lengthMultiplier;
     }
 
     /**
@@ -103,7 +101,7 @@ export class ItemAcceptorComponent extends Component {
         this.inputs.set(slotIndex, {
             item,
             direction,
-            animProgress: Math.min(this.progressLength, startProgress),
+            animProgress: Math.min(0.5, startProgress),
         });
         return true;
     }

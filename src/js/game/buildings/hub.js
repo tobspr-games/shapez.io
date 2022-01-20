@@ -1,6 +1,6 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { HubComponent } from "../components/hub";
-import { enumItemAcceptorTypes, ItemAcceptorComponent } from "../components/item_acceptor";
+import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";

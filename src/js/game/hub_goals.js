@@ -532,8 +532,6 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.painterDouble:
             case enumItemProcessorTypes.painterQuad: {
                 return this.getProcessorTimeWithUpgrades(this.upgradeImprovements.painting, processorType);
-                // b2 + 4 = 4
-                // b2 + 8 = 8
             }
 
             case enumItemProcessorTypes.cutter:
@@ -561,6 +559,7 @@ export class HubGoals extends BasicSerializableObject {
             "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
         );
 
+        // super complicated maths here, but it works
         const processorTime =
             globalConfig.buildingAmountsToBelt[processorType] / globalConfig.beltSpeedItemsPerSecond;
         return processorTime / upgrade;
@@ -573,7 +572,7 @@ export class HubGoals extends BasicSerializableObject {
     getProcessingSpeed(processorType) {
         const time = this.getProcessingTime(processorType);
         if (time == 0) {
-            return time;
+            return this.getBeltBaseSpeed();
         }
         return 1 / time;
     }
