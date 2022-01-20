@@ -58,7 +58,7 @@ export class GameLogic {
      * @param {Vector=} param0.offset Optional, move the entity by the given offset first
      * @returns {boolean} true if the entity could be placed there
      */
-    checkCanPlaceEntity(entity, { allowReplaceBuildings = false, offset = null }) {
+    checkCanPlaceEntity(entity, { allowReplaceBuildings = true, offset = null } = {}) {
         // Compute area of the building
         const rect = entity.components.StaticMapEntity.getTileSpaceBounds();
         if (offset) {
