@@ -26,7 +26,9 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             inputs.forEach((values, index) => {
                 values.animProgress += progressGrowth;
 
-                if (values.animProgress < maxProgress) return;
+                if (values.animProgress < maxProgress) {
+                    return;
+                }
 
                 inputs.delete(index);
                 acceptorComp.completedInputs.set(index, {

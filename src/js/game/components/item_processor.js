@@ -99,9 +99,9 @@ export class ItemProcessorComponent extends Component {
          * What we are currently processing, empty if we don't produce anything rn
          * requiredSlot: Item *must* be ejected on this slot
          * preferredSlot: Item *can* be ejected on this slot, but others are fine too if the one is not usable
-         * @type {Array<EjectorCharge>}
+         * @type {EjectorCharge|null}
          */
-        this.ongoingCharges = [];
+        this.currentCharge = null;
 
         /**
          * How much processing time we have left from the last tick

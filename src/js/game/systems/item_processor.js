@@ -14,12 +14,6 @@ import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
 /**
- * We need to allow queuing charges, otherwise the throughput will stalls
- */
-//@SENSETODO not sure if this needs to be two anymore
-const MAX_QUEUED_CHARGES = 1;
-
-/**
  * Whole data for a produced item
  *
  * @typedef {{
@@ -85,13 +79,13 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             const ejectorComp = entity.components.ItemEjector;
 
             // Check if we have an empty queue and can start a new charge - do this first so we don't waste a tick
-            if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
+            if (!processorComp.currentCharge) {
                 if (this.canProcess(entity)) {
                     this.startNewCharge(entity);
                 }
             }
 
-            const currentCharge = processorComp.ongoingCharges[0];
+            const currentCharge = processorComp.currentCharge;
             if (currentCharge) {
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
@@ -111,7 +105,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         processorComp.queuedEjects.push(itemsToEject[j]);
                     }
 
-                    processorComp.ongoingCharges.shift();
+                    processorComp.currentCharge = null;
                 }
             }
 
@@ -267,10 +261,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const timeToProcess = originalTime - bonusTimeToApply;
 
         processorComp.bonusTime -= bonusTimeToApply;
-        processorComp.ongoingCharges.push({
+        processorComp.currentCharge = {
             items: outItems,
             remainingTime: timeToProcess,
-        });
+        };
 
         acceptorComp.completedInputs.clear();
     }

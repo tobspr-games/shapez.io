@@ -20,7 +20,7 @@ export class FilterSystem extends GameSystemWithFilter {
 
             // Take items from acceptor
             const input = acceptorComp.completedInputs.get(0);
-            if (input && this.tryAcceptItem(entity, input)) {
+            if (input && this.tryAcceptItem(entity, input.item, input.extraProgress)) {
                 acceptorComp.completedInputs.delete(0);
             }
 
@@ -42,11 +42,10 @@ export class FilterSystem extends GameSystemWithFilter {
     /**
      *
      * @param {Entity} entity
-     * @param {Object} param0
-     * @param {BaseItem} param0.item
-     * @param {number} param0.extraProgress
+     * @param {BaseItem} item
+     * @param {number} extraProgress
      */
-    tryAcceptItem(entity, { item, extraProgress }) {
+    tryAcceptItem(entity, item, extraProgress) {
         const network = entity.components.WiredPins.slots[0].linkedNetwork;
         if (!network || !network.hasValue()) {
             // Filter is not connected

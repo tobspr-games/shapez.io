@@ -300,15 +300,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                                     ^           ^ item @ 0.9
                                     ^ max progress = 0.3
 
-                    Because now our range actually only goes to the end of the building, and not towards the center of the building, we need to multiply
-                    all values by 2: <--------- except max progress is now 0.5 rather than 1, so this isn't needed anymore
-
-                    Building              Belt
-                    |         X         |         X         |
-                    |         0.........1.........2         |
-                                    ^           ^ item @ 1.8
-                                    ^ max progress = 0.6
-
                     And that's it! If you summarize the calculations from above into a formula, you get the one below.
                     */
 
