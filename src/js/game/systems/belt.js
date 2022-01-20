@@ -497,6 +497,10 @@ export class BeltSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
+            return;
+        }
+
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 
