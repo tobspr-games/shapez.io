@@ -145,7 +145,7 @@ export class GameSystemManager {
         // Order is important!
 
         // IMPORTANT: Item acceptor must be before the belt, because it may not tick after the belt
-        // has put in the item into the acceptor animqation, otherwise its off
+        // has put in the item into the acceptor animation, otherwise its off
         add("itemAcceptor", ItemAcceptorSystem);
 
         add("belt", BeltSystem);

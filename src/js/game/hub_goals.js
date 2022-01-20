@@ -571,7 +571,7 @@ export class HubGoals extends BasicSerializableObject {
      */
     getProcessingSpeed(processorType) {
         const time = this.getProcessingTime(processorType);
-        if (time == 0) {
+        if (!time) {
             return this.getBeltBaseSpeed();
         }
         return 1 / time;
