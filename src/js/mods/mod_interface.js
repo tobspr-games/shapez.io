@@ -470,7 +470,7 @@ export class ModInterface {
 
     /**
      *
-     * @param {typeof Object} classHandle
+     * @param {Class} classHandle
      * @param {({ $super, $old }) => any} extender
      */
     extendClass(classHandle, extender) {
