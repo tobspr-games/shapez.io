@@ -361,7 +361,8 @@ ipcMain.handle("get-mods", async () => {
 
         if (externalMod) {
             console.log("Adding external mod source:", externalMod);
-            modFiles.push(externalMod);
+            const externalModPaths = externalMod.split(",");
+            modFiles = modFiles.concat(externalModPaths);
         }
 
         if (modFiles.length > 0 && !isDev) {
