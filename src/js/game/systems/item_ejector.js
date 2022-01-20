@@ -181,7 +181,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (slot.progress < maxProgress) continue;
+                if (slot.progress < maxProgress) {
+                    continue;
+                }
 
                 const extraProgress = slot.progress - maxProgress;
 
