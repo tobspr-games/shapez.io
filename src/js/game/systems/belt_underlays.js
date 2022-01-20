@@ -16,7 +16,7 @@ import { BeltUnderlaysComponent, enumClippedBeltUnderlayType } from "../componen
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
-import { GameSystemWithFilter } from "../game_system_with_filter";
+import { GameSystem } from "../game_system";
 import { MapChunkView } from "../map_chunk_view";
 import { BELT_ANIM_COUNT } from "./belt";
 
@@ -31,9 +31,9 @@ const enumUnderlayTypeToClipRect = {
     [enumClippedBeltUnderlayType.bottomOnly]: new Rectangle(0, 0.5, 1, 0.5),
 };
 
-export class BeltUnderlaysSystem extends GameSystemWithFilter {
+export class BeltUnderlaysSystem extends GameSystem {
     constructor(root) {
-        super(root, [BeltUnderlaysComponent]);
+        super(root);
 
         this.underlayBeltSprites = [];
 

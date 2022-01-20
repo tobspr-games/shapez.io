@@ -5,10 +5,8 @@ import { ConstantSignalComponent } from "../components/constant_signal";
 import { ItemProducerComponent } from "../components/item_producer";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunk } from "../map_chunk";
-import { GameRoot } from "../root";
 
 export class ConstantProducerSystem extends GameSystemWithFilter {
-    /** @param {GameRoot} root */
     constructor(root) {
         super(root, [ConstantSignalComponent, ItemProducerComponent]);
     }
