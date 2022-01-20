@@ -43,9 +43,9 @@ export class FilterSystem extends GameSystemWithFilter {
      *
      * @param {Entity} entity
      * @param {BaseItem} item
-     * @param {number} extraProgress
+     * @param {number} startProgress
      */
-    tryAcceptItem(entity, item, extraProgress) {
+    tryAcceptItem(entity, item, startProgress) {
         const network = entity.components.WiredPins.slots[0].linkedNetwork;
         if (!network || !network.hasValue()) {
             // Filter is not connected
@@ -72,7 +72,7 @@ export class FilterSystem extends GameSystemWithFilter {
         // Actually accept item
         listToCheck.push({
             item,
-            extraProgress,
+            extraProgress: startProgress,
         });
         return true;
     }

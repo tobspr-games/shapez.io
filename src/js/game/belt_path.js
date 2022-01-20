@@ -134,12 +134,15 @@ export class BeltPath extends BasicSerializableObject {
      */
     tryAcceptItem(item, startProgress = 0) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
-            // First, compute how much progress we can make *at max*
+            // *Never* cap start progress, or if an item moves more than a belt in a tick, it breaks
+            // instead return false if the start progress is too much
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
-            const initialProgress = Math.min(maxProgress, startProgress);
+            if (startProgress > maxProgress) {
+                return false;
+            }
 
-            this.items.unshift([this.spacingToFirstItem - initialProgress, item]);
-            this.spacingToFirstItem = initialProgress;
+            this.items.unshift([this.spacingToFirstItem - startProgress, item]);
+            this.spacingToFirstItem = startProgress;
 
             if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
                 this.debug_checkIntegrity("accept-item");

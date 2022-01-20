@@ -98,10 +98,11 @@ export class ItemAcceptorComponent extends Component {
             return false;
         }
 
+        // if the start progress is bigger than 0.5, the remainder should get passed on to the ejector
         this.inputs.set(slotIndex, {
             item,
             direction,
-            animProgress: Math.min(0.5, startProgress),
+            animProgress: startProgress,
         });
         return true;
     }
