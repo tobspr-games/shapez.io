@@ -21,6 +21,7 @@ import { enumWireType, enumWireVariant, WireComponent } from "../components/wire
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
+import { GameSystem } from "../game_system";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { isTruthyItem } from "../items/boolean_item";
 import { MapChunkView } from "../map_chunk_view";
@@ -90,9 +91,9 @@ export class WireNetwork {
     }
 }
 
-export class WireSystem extends GameSystemWithFilter {
+export class WireSystem extends GameSystem {
     constructor(root) {
-        super(root, [WireComponent]);
+        super(root);
 
         /**
          * @type {Object<enumWireVariant, Object<enumWireType, AtlasSprite>>}

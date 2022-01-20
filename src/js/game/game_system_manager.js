@@ -187,6 +187,7 @@ export class GameSystemManager {
         // IMPORTANT: We have 2 phases: In phase 1 we compute the output values of all gates,
         // processors etc. In phase 2 we propagate it through the wires network
         add("logicGate", LogicGateSystem);
+
         add("beltReader", BeltReaderSystem);
 
         add("display", DisplaySystem);

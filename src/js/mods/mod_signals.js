@@ -19,6 +19,8 @@ export const MOD_SIGNALS = {
     hudElementInitialized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
     hudElementFinalized: /** @type {TypedSignal<[BaseHUDPart]>} */ (new Signal()),
 
+    hudInitializer: /** @type {TypedSignal<[GameRoot]>} */ (new Signal()),
+
     gameInitialized: /** @type {TypedSignal<[GameRoot]>} */ (new Signal()),
     gameLoadingStageEntered: /** @type {TypedSignal<[InGameState, string]>} */ (new Signal()),
 

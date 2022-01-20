@@ -119,5 +119,8 @@ export default {
     // Allows to load a mod from an external source for developing it
     // externalModUrl: "http://localhost:3005/combined.js",
     // -----------------------------------------------------------------------------------
+    // Visualizes the shape grouping on belts
+    // showShapeGrouping: true
+    // -----------------------------------------------------------------------------------
     /* dev:end */
 };

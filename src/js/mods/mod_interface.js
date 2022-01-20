@@ -25,6 +25,28 @@ import { KEYMAPPINGS } from "../game/key_action_mapper";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { THEMES } from "../game/theme";
 import { ModMetaBuilding } from "./mod_meta_building";
+import { BaseHUDPart } from "../game/hud/base_hud_part";
+
+/**
+ * @typedef {{new(...args: any[]): any, prototype: any}} constructable
+ */
+
+/**
+ * @template {(...args: any[]) => any} F
+ * @template P
+ * @typedef {(...args: [P, Parameters<F>]) => ReturnType<F>} beforePrams IMPORTANT: this puts the original parameters into an array
+ */
+
+/**
+ * @template {(...args: any[]) => any} F
+ * @template P
+ * @typedef {(...args: [...Parameters<F>, P]) => ReturnType<F>} afterPrams
+ */
+
+/**
+ * @template {(...args: any[]) => any} F
+ * @typedef {(...args: [...Parameters<F>, ...any]) => ReturnType<F>} extendsPrams
+ */
 
 export class ModInterface {
     /**
@@ -37,7 +59,7 @@ export class ModInterface {
 
     registerCss(cssString) {
         // Preprocess css
-        cssString = cssString.replace(/\$scaled\(([^\)]*)\)/gim, (substr, expression) => {
+        cssString = cssString.replace(/\$scaled\(([^)]*)\)/gim, (substr, expression) => {
             return "calc((" + expression + ") * var(--ui-scale))";
         });
         const element = document.createElement("style");
@@ -346,6 +368,14 @@ export class ModInterface {
     }
 
     /**
+     * Registers a new state class, should be a GameState derived class
+     * @param {typeof GameState} stateClass
+     */
+    registerGameState(stateClass) {
+        this.modLoader.app.stateMgr.register(stateClass);
+    }
+
+    /**
      * @param {object} param0
      * @param {"regular"|"wires"} param0.toolbar
      * @param {"primary"|"secondary"} param0.location
@@ -363,27 +393,57 @@ export class ModInterface {
     }
 
     /**
-     * Patches a method on a given object
+     * Patches a method on a given class
+     * @template {constructable} C  the class
+     * @template {C["prototype"]} P  the prototype of said class
+     * @template {keyof P} M  the name of the method we are overriding
+     * @template {extendsPrams<P[M]>} O the method that will override the old one
+     * @param {C} classHandle
+     * @param {M} methodName
+     * @param {beforePrams<O, P[M]>} override
      */
     replaceMethod(classHandle, methodName, override) {
         const oldMethod = classHandle.prototype[methodName];
         classHandle.prototype[methodName] = function () {
+            //@ts-ignore This is true I just cant tell it that arguments will be Arguments<O>
             return override.call(this, oldMethod.bind(this), arguments);
         };
     }
 
+    /**
+     * Runs before a method on a given class
+     * @template {constructable} C  the class
+     * @template {C["prototype"]} P  the prototype of said class
+     * @template {keyof P} M  the name of the method we are overriding
+     * @template {extendsPrams<P[M]>} O the method that will run before the old one
+     * @param {C} classHandle
+     * @param {M} methodName
+     * @param {O} executeBefore
+     */
     runBeforeMethod(classHandle, methodName, executeBefore) {
         const oldHandle = classHandle.prototype[methodName];
         classHandle.prototype[methodName] = function () {
+            //@ts-ignore Same as above
             executeBefore.apply(this, arguments);
             return oldHandle.apply(this, arguments);
         };
     }
 
+    /**
+     * Runs after a method on a given class
+     * @template {constructable} C  the class
+     * @template {C["prototype"]} P  the prototype of said class
+     * @template {keyof P} M  the name of the method we are overriding
+     * @template {extendsPrams<P[M]>} O the method that will run before the old one
+     * @param {C} classHandle
+     * @param {M} methodName
+     * @param {O} executeAfter
+     */
     runAfterMethod(classHandle, methodName, executeAfter) {
         const oldHandle = classHandle.prototype[methodName];
         classHandle.prototype[methodName] = function () {
             const returnValue = oldHandle.apply(this, arguments);
+            //@ts-ignore
             executeAfter.apply(this, arguments);
             return returnValue;
         };
@@ -415,5 +475,16 @@ export class ModInterface {
      */
     extendClass(classHandle, extender) {
         this.extendObject(classHandle.prototype, extender);
+    }
+
+    /**
+     *
+     * @param {string} id
+     * @param {new (...args) => BaseHUDPart} element
+     */
+    registerHudElement(id, element) {
+        this.modLoader.signals.hudInitializer.add(root => {
+            root.hud.parts[id] = new element(root);
+        });
     }
 }

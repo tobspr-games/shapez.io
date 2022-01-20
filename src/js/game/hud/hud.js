@@ -90,6 +90,8 @@ export class GameHUD {
             this.parts[partId] = new part(this.root);
         }
 
+        MOD_SIGNALS.hudInitializer.dispatch(this.root);
+
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
             MOD_SIGNALS.hudElementInitialized.dispatch(this.parts[key]);

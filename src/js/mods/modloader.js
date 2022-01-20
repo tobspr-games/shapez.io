@@ -103,21 +103,25 @@ export class ModLoader {
             mods = await ipcRenderer.invoke("get-mods");
         }
         if (G_IS_DEV && globalConfig.debug.externalModUrl) {
-            const response = await fetch(globalConfig.debug.externalModUrl, {
-                method: "GET",
-            });
-            if (response.status !== 200) {
-                throw new Error(
-                    "Failed to load " +
-                        globalConfig.debug.externalModUrl +
-                        ": " +
-                        response.status +
-                        " " +
-                        response.statusText
-                );
+            let modURLs = Array.isArray(globalConfig.debug.externalModUrl) ? 
+                globalConfig.debug.externalModUrl : [globalConfig.debug.externalModUrl];
+            
+            for(let i = 0; i < modURLs.length; i++) {
+                const response = await fetch(modURLs[i], {
+                    method: "GET",
+                });
+                if (response.status !== 200) {
+                    throw new Error(
+                        "Failed to load " +
+                            modURLs[i] +
+                            ": " +
+                            response.status +
+                            " " +
+                            response.statusText
+                    );
+                }
+                mods.push(await response.text());
             }
-
-            mods.push(await response.text());
         }
 
         window.$shapez_registerMod = (modClass, meta) => {
