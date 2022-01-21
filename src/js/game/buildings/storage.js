@@ -74,11 +74,11 @@ export class MetaStorageBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ],
             })

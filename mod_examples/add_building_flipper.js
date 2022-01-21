@@ -80,7 +80,7 @@ class MetaModFlipperBuilding extends shapez.ModMetaBuilding {
                 slots: [
                     {
                         pos: new shapez.Vector(0, 0),
-                        directions: [shapez.enumDirection.bottom],
+                        direction: shapez.enumDirection.bottom,
                         filter: "shape",
                     },
                 ],

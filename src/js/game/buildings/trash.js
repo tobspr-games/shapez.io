@@ -76,12 +76,19 @@ export class MetaTrashBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
                     },
                 ],
             })

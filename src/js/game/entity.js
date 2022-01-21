@@ -197,20 +197,18 @@ export class Entity extends BasicSerializableObject {
                 for (let i = 0; i < acceptorComp.slots.length; ++i) {
                     const slot = acceptorComp.slots[i];
                     const slotTile = staticComp.localTileToWorld(slot.pos);
-                    for (let k = 0; k < slot.directions.length; ++k) {
-                        const direction = staticComp.localDirectionToWorld(slot.directions[k]);
-                        const directionVector = enumDirectionToVector[direction];
-                        const angle = Math.radians(enumDirectionToAngle[direction] + 180);
-                        context.globalAlpha = 0.4;
-                        drawRotatedSprite({
-                            parameters,
-                            sprite: acceptorSprite,
-                            x: (slotTile.x + 0.5 + directionVector.x * 0.37) * globalConfig.tileSize,
-                            y: (slotTile.y + 0.5 + directionVector.y * 0.37) * globalConfig.tileSize,
-                            angle,
-                            size: globalConfig.tileSize * 0.25,
-                        });
-                    }
+                    const direction = staticComp.localDirectionToWorld(slot.direction);
+                    const directionVector = enumDirectionToVector[direction];
+                    const angle = Math.radians(enumDirectionToAngle[direction] + 180);
+                    context.globalAlpha = 0.4;
+                    drawRotatedSprite({
+                        parameters,
+                        sprite: acceptorSprite,
+                        x: (slotTile.x + 0.5 + directionVector.x * 0.37) * globalConfig.tileSize,
+                        y: (slotTile.y + 0.5 + directionVector.y * 0.37) * globalConfig.tileSize,
+                        angle,
+                        size: globalConfig.tileSize * 0.25,
+                    });
                 }
             }
 

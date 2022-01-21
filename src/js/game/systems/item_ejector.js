@@ -203,11 +203,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
                         // Handover successful, clear slot
                         if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
-                            targetAcceptorComp.onItemAccepted(
-                                destSlot.index,
-                                destSlot.acceptedDirection,
-                                item
-                            );
+                            targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.slot.direction, item);
                         }
                         sourceSlot.item = null;
                         continue;

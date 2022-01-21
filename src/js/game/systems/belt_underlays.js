@@ -113,12 +113,10 @@ export class BeltUnderlaysSystem extends GameSystem {
                     continue;
                 }
 
-                // Step 2: Check if any of the directions matches
-                for (let j = 0; j < slot.directions.length; ++j) {
-                    const slotDirection = staticComp.localDirectionToWorld(slot.directions[j]);
-                    if (slotDirection === fromDirection) {
-                        return true;
-                    }
+                // Step 2: Check if the direction matches
+                const slotDirection = staticComp.localDirectionToWorld(slot.direction);
+                if (slotDirection === fromDirection) {
+                    return true;
                 }
             }
         }

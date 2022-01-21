@@ -8,7 +8,7 @@ export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 /** @type {import("./item_acceptor").ItemAcceptorSlot} */
 export const FAKE_BELT_ACCEPTOR_SLOT = {
     pos: new Vector(0, 0),
-    directions: [enumDirection.bottom],
+    direction: enumDirection.bottom,
 };
 
 /** @type {Object<enumDirection, import("./item_ejector").ItemEjectorSlot>} */

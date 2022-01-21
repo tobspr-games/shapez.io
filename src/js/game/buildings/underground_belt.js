@@ -277,7 +277,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ]);
                 return;

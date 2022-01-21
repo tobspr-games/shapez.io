@@ -179,11 +179,11 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                     {
                         pos: new Vector(1, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ]);
 
@@ -204,15 +204,14 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [
+                        direction:
                             variant === enumBalancerVariants.mergerInverse
                                 ? enumDirection.left
                                 : enumDirection.right,
-                        ],
                     },
                 ]);
 
@@ -231,7 +230,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ]);
 
