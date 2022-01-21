@@ -75,7 +75,7 @@ class FluidItem extends shapez.BaseItem {
      */
     drawFullSizeOnCanvas(context, size) {
         if (!this.cachedSprite) {
-            this.cachedSprite = shapez.Loader.getSprite("sprites/fluids/" + this.fluidType + ".png");
+            this.cachedSprite = shapez.Loader.getSprite(`sprites/fluids/${this.fluidType}.png`);
         }
         this.cachedSprite.drawCentered(context, size / 2, size / 2, size);
     }
@@ -89,7 +89,7 @@ class FluidItem extends shapez.BaseItem {
     drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         const realDiameter = diameter * 0.6;
         if (!this.cachedSprite) {
-            this.cachedSprite = shapez.Loader.getSprite("sprites/fluids/" + this.fluidType + ".png");
+            this.cachedSprite = shapez.Loader.getSprite(`sprites/fluids/${this.fluidType}.png`);
         }
         this.cachedSprite.drawCachedCentered(parameters, x, y, realDiameter);
     }

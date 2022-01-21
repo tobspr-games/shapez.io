@@ -12,7 +12,7 @@ class Mod extends shapez.Mod {
     init() {
         // Replace a builtin sprite
         ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {
-            this.modInterface.registerSprite("sprites/colors/" + color + ".png", RESOURCES[color + ".png"]);
+            this.modInterface.registerSprite(`sprites/colors/${color}.png`, RESOURCES[color + ".png"]);
         });
     }
 }

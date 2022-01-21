@@ -23,7 +23,7 @@ class Mod extends shapez.Mod {
             if (state instanceof shapez.MainMenuState) {
                 this.dialogs.showInfo(
                     "Welcome back",
-                    "You have launched this mod " + this.settings.timesLaunched + " times"
+                    `You have launched this mod ${this.settings.timesLaunched} times`
                 );
             }
         });
