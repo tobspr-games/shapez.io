@@ -76,6 +76,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     }
 
     update() {
+        const progressGrowth =
+            this.root.dynamicTickrate.deltaSeconds *
+            globalConfig.beltSpeedItemsPerSecond *
+            globalConfig.itemSpacingOnBelts;
+
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
 
@@ -86,16 +91,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             if (currentCharge) {
                 // Process next charge
-                if (currentCharge.remainingTime > 0.0) {
-                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
-                    if (currentCharge.remainingTime < 0.0) {
-                        // Add bonus time, this is the time we spent too much
-                        processorComp.bonusTime += -currentCharge.remainingTime;
-                    }
+                if (currentCharge.remainingProgress > 0.0) {
+                    currentCharge.remainingProgress -= progressGrowth;
                 }
 
                 // Check if it finished
-                if (currentCharge.remainingTime <= 0.0) {
+                if (currentCharge.remainingProgress <= 0.0) {
                     const itemsToEject = currentCharge.items;
 
                     // Go over all items and try to eject them
@@ -286,16 +287,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Queue Charge
-        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        const originalTime = 1 / baseSpeed;
-
-        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
-        const timeToProcess = originalTime - bonusTimeToApply;
-
-        processorComp.bonusTime -= bonusTimeToApply;
+        const progress = this.root.hubGoals.getProcessingProgress(processorComp.type);
         processorComp.ongoingCharges.push({
             items: outItems,
-            remainingTime: timeToProcess,
+            remainingProgress: progress, // + Math.min(extra progress' of inputs)
         });
 
         processorComp.inputSlots.clear();

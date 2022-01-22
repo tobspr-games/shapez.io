@@ -327,7 +327,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Limit the progress to the maximum available space on the next belt (also see #1000)
-                let progress = slot.progress;
+                let progress = Math.min(0.5, slot.progress);
                 const nextBeltPath = slot.cachedBeltPath;
                 if (nextBeltPath) {
                     /*

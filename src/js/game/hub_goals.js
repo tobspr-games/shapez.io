@@ -560,7 +560,7 @@ export class HubGoals extends BasicSerializableObject {
         );
 
         const progress = globalConfig.buildingRatios[processorType] - 1;
-        return progress / upgrade;
+        return progress + 0.5 / upgrade;
     }
 
     /**
