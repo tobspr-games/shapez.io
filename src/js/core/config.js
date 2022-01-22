@@ -87,17 +87,14 @@ export const globalConfig = {
     puzzleMaxBoundsSize: 20,
     puzzleValidationDurationSeconds: 30,
 
-    buildingSpeeds: {
-        cutter: 1 / 4,
-        cutterQuad: 1 / 4,
-        rotater: 1 / 1,
-        rotaterCCW: 1 / 1,
-        rotater180: 1 / 1,
-        painter: 1 / 6,
-        painterDouble: 1 / 8,
-        painterQuad: 1 / 2,
-        mixer: 1 / 5,
-        stacker: 1 / 8,
+    buildingRatios: {
+        cutter: 4,
+        cutterQuad: 4,
+        painter: 6,
+        painterDouble: 8,
+        painterQuad: 2,
+        mixer: 5,
+        stacker: 8,
     },
 
     // Zooming

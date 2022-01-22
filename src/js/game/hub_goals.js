@@ -507,55 +507,37 @@ export class HubGoals extends BasicSerializableObject {
     }
 
     /**
-     * Processor speed
+     * Processor time to process
      * @param {enumItemProcessorTypes} processorType
-     * @returns {number} items / sec
+     * @returns {number} progress in tiles
      */
-    getProcessorBaseSpeed(processorType) {
+    getProcessingProgress(processorType) {
         if (this.root.gameMode.throughputDoesNotMatter()) {
-            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed * 10;
+            return 0;
         }
 
         switch (processorType) {
             case enumItemProcessorTypes.trash:
             case enumItemProcessorTypes.hub:
             case enumItemProcessorTypes.goal:
-                return 1e30;
             case enumItemProcessorTypes.balancer:
-                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
             case enumItemProcessorTypes.reader:
-                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
+            case enumItemProcessorTypes.rotater:
+            case enumItemProcessorTypes.rotaterCCW:
+            case enumItemProcessorTypes.rotater180:
+                return 0;
 
             case enumItemProcessorTypes.mixer:
             case enumItemProcessorTypes.painter:
             case enumItemProcessorTypes.painterDouble:
             case enumItemProcessorTypes.painterQuad: {
-                assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
-                );
-                return (
-                    globalConfig.beltSpeedItemsPerSecond *
-                    this.upgradeImprovements.painting *
-                    globalConfig.buildingSpeeds[processorType]
-                );
+                return this.getProgressWithUpgrades(this.upgradeImprovements.painting, processorType);
             }
 
             case enumItemProcessorTypes.cutter:
             case enumItemProcessorTypes.cutterQuad:
-            case enumItemProcessorTypes.rotater:
-            case enumItemProcessorTypes.rotaterCCW:
-            case enumItemProcessorTypes.rotater180:
             case enumItemProcessorTypes.stacker: {
-                assert(
-                    globalConfig.buildingSpeeds[processorType],
-                    "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
-                );
-                return (
-                    globalConfig.beltSpeedItemsPerSecond *
-                    this.upgradeImprovements.processors *
-                    globalConfig.buildingSpeeds[processorType]
-                );
+                return this.getProgressWithUpgrades(this.upgradeImprovements.processors, processorType);
             }
             default:
                 if (MOD_ITEM_PROCESSOR_SPEEDS[processorType]) {
@@ -564,6 +546,33 @@ export class HubGoals extends BasicSerializableObject {
                 assertAlways(false, "invalid processor type: " + processorType);
         }
 
-        return 1 / globalConfig.beltSpeedItemsPerSecond;
+        return 0;
+    }
+
+    /**
+     * @param {number} upgrade
+     * @param {number} upgrade
+     */
+    getProgressWithUpgrades(upgrade, processorType) {
+        assert(
+            globalConfig.buildingRatios[processorType],
+            "Processor type has no speed set in globalConfig.buildingRatios: " + processorType
+        );
+
+        const progress = globalConfig.buildingRatios[processorType] - 1;
+        return progress / upgrade;
+    }
+
+    /**
+     * Processor speed
+     * @param {enumItemProcessorTypes} processorType
+     * @returns {number} items/sec
+     */
+    getProcessorBaseSpeed(processorType) {
+        const progress = this.getProcessingProgress(processorType);
+        if (!progress) {
+            return this.getBeltBaseSpeed();
+        }
+        return globalConfig.beltSpeedItemsPerSecond / (progress + 1);
     }
 }
