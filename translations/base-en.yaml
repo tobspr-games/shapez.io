@@ -1098,6 +1098,7 @@ mods:
     version: Version
     openFolder: Open Mods Folder
     folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
 
     modsInfo: >-
         To install and manage mods, copy them to the mods folder within the game directory. You can also use the 'Open Mods Folder' button on the top right.

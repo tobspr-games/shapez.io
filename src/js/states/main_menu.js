@@ -161,7 +161,10 @@ export class MainMenuState extends GameState {
                             ${MODS.mods
                                 .map(mod => {
                                     return `
-                                    <div class="mod">${mod.metadata.name} @ v${mod.metadata.version}</div>
+                                    <div class="mod">
+                                        <div class="name">${mod.metadata.name}</div>
+                                        <div class="author">by ${mod.metadata.author}</div>
+                                    </div>
                                 `;
                                 })
                                 .join("")}
@@ -413,7 +416,10 @@ export class MainMenuState extends GameState {
         }
 
         // Mods
-        this.trackClicks(makeButton(outerDiv, ["modsButton", "styledButton"], "&nbsp;"), this.onModsClicked);
+        this.trackClicks(
+            makeButton(outerDiv, ["modsButton", "styledButton"], T.mods.title),
+            this.onModsClicked
+        );
 
         buttonContainer.appendChild(outerDiv);
     }
