@@ -6,7 +6,7 @@ const METADATA = {
     version: "1",
     id: "custom-sub-shapes",
     description: "Shows how to add custom sub shapes",
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

@@ -6,7 +6,7 @@ const METADATA = {
     version: "1",
     id: "custom-theme",
     description: "Shows how to add a custom game theme",
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

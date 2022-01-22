@@ -8,7 +8,7 @@ const METADATA = {
     description:
         "Adds a new building to the wires layer, 'Notification Blocks' which show a custom notification when they get a truthy signal.",
 
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 ////////////////////////////////////////////////////////////////////////

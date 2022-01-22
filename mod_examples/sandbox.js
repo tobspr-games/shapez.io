@@ -6,7 +6,7 @@ const METADATA = {
     version: "1",
     id: "sandbox",
     description: "Blueprints are always unlocked and cost no money, also all buildings are unlocked",
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

@@ -6,7 +6,7 @@ const METADATA = {
     version: "1",
     id: "class-extensions",
     description: "Shows how to extend builtin classes",
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 const BeltExtension = ({ $super, $old }) => ({

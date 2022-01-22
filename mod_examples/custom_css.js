@@ -6,7 +6,7 @@ const METADATA = {
     version: "1",
     id: "custom-css",
     description: "Shows how to add custom css",
-    minimumGameVersion: "^1.5.0",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {
