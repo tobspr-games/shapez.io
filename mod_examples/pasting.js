@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "pasting",
     description: "Shows how to properly receive paste events ingame",
+    minimumGameVersion: "^1.5.0",
 };
 
 class Mod extends shapez.Mod {

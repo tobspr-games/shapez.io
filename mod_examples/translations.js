@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "translations",
     description: "Shows how to add and modify translations",
+    minimumGameVersion: "^1.5.0",
 };
 
 class Mod extends shapez.Mod {

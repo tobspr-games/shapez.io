@@ -7,6 +7,8 @@ const METADATA = {
     id: "notification-blocks",
     description:
         "Adds a new building to the wires layer, 'Notification Blocks' which show a custom notification when they get a truthy signal.",
+
+    minimumGameVersion: "^1.5.0",
 };
 
 ////////////////////////////////////////////////////////////////////////

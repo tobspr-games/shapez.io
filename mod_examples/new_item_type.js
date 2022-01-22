@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "new-item-type",
     description: "Shows how to add a new item type (fluid)",
+    minimumGameVersion: "^1.5.0",
 };
 
 // Define which fluid types there are

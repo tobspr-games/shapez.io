@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "mod-settings",
     description: "Shows how to add settings to your mod",
+    minimumGameVersion: "^1.5.0",
 
     settings: {
         timesLaunched: 0,

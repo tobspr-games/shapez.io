@@ -7,6 +7,8 @@ const METADATA = {
     id: "usage-statistics",
     description:
         "Shows how to add a new component to the game, how to save additional data and how to add custom logic and drawings",
+
+    minimumGameVersion: "^1.5.0",
 };
 
 /**

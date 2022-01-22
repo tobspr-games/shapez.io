@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "base",
     description: "Displays an indicator on every item processing building when its working",
+    minimumGameVersion: "^1.5.0",
 };
 
 class ItemProcessorStatusGameSystem extends shapez.GameSystem {

@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "base",
     description: "Shows how to add a new keybinding",
+    minimumGameVersion: "^1.5.0",
 };
 
 class Mod extends shapez.Mod {
