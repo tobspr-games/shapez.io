@@ -135,14 +135,18 @@ export class ModLoader {
         };
 
         mods.forEach(modCode => {
-            modCode += `
-                        if (typeof Mod !== 'undefined') {
-                            if (typeof METADATA !== 'object') {
-                                throw new Error("No METADATA variable found");
-                            }
-                            window.$shapez_registerMod(Mod, METADATA);
+            modCode += modCode.includes("window.$shapez_registerMod")
+                ? ""
+                : `
+                    if (typeof Mod !== 'undefined') {
+                        if (typeof METADATA !== 'object') {
+                            throw new Error("No METADATA variable found");
                         }
-                    `;
+                        window.$shapez_registerMod(Mod, METADATA);
+                    } else {
+                        throw new Error('No "Mod" class found')
+                    }
+                `;
             try {
                 const func = new Function(modCode);
                 func();
