@@ -138,13 +138,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
     update() {
         this.staleAreaDetector.update();
 
-        // Precompute effective belt speed
-        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
-
-        if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            progressGrowth = 1;
-        }
-
         // Go over all cache entries
         for (let i = 0; i < this.allEntities.length; ++i) {
             const sourceEntity = this.allEntities[i];
@@ -154,26 +147,27 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             for (let j = 0; j < slots.length; ++j) {
                 const sourceSlot = slots[j];
                 const item = sourceSlot.item;
+                const maxProgress = 0.5;
+
                 if (!item) {
                     // No item available to be ejected
                     continue;
                 }
 
-                // Advance items on the slot
-                sourceSlot.progress = Math.min(
-                    1,
-                    sourceSlot.progress +
-                        progressGrowth *
-                            this.root.hubGoals.getBeltBaseSpeed() *
-                            globalConfig.itemSpacingOnBelts
-                );
+                if (sourceSlot.progress < maxProgress) {
+                    // Advance items on the slot
+                    sourceSlot.progress +=
+                        this.root.dynamicTickrate.deltaSeconds *
+                        this.root.hubGoals.getBeltBaseSpeed() *
+                        globalConfig.itemSpacingOnBelts;
+                }
 
                 if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                    sourceSlot.progress = 1.0;
+                    sourceSlot.progress = maxProgress;
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < 1.0) {
+                if (sourceSlot.progress < maxProgress) {
                     continue;
                 }
 
@@ -368,20 +362,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                                     ^           ^ item @ 0.9
                                     ^ max progress = 0.3
 
-                    Because now our range actually only goes to the end of the building, and not towards the center of the building, we need to multiply
-                    all values by 2:
-
-                    Building              Belt
-                    |         X         |         X         |
-                    |         0.........1.........2         |
-                                    ^           ^ item @ 1.8
-                                    ^ max progress = 0.6
-
                     And that's it! If you summarize the calculations from above into a formula, you get the one below.
                     */
 
                     const maxProgress =
-                        (0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts) * 2;
+                        0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts;
                     progress = Math.min(maxProgress, progress);
                 }
 
@@ -399,8 +384,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const realDirection = staticComp.localDirectionToWorld(slot.direction);
                 const realDirectionVector = enumDirectionToVector[realDirection];
 
-                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * progress;
-                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * progress;
+                const tileX = realPosition.x + 0.5 + realDirectionVector.x * progress;
+                const tileY = realPosition.y + 0.5 + realDirectionVector.y * progress;
 
                 const worldX = tileX * globalConfig.tileSize;
                 const worldY = tileY * globalConfig.tileSize;
