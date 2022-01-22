@@ -571,11 +571,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             let isConnected = false;
 
             // Find all entities which are on that tile
-            const sourceEntities = this.root.map.getLayersContentsMultipleXY(sourceTile.x, sourceTile.y);
+            const sourceEntity = this.root.map.getLayerContentXY(
+                sourceTile.x,
+                sourceTile.y,
+                this.fakeEntity.layer
+            );
 
-            // Check for every entity:
-            for (let j = 0; j < sourceEntities.length; ++j) {
-                const sourceEntity = sourceEntities[j];
+            if (sourceEntity) {
                 const sourceEjector = sourceEntity.components.ItemEjector;
                 const sourceBeltComp = sourceEntity.components.Belt;
                 const sourceStaticComp = sourceEntity.components.StaticMapEntity;
