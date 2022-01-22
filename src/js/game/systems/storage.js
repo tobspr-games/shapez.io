@@ -50,8 +50,13 @@ export class StorageSystem extends GameSystemWithFilter {
             let targetAlpha = storageComp.storedCount > 0 ? 1 : 0;
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
 
-            pinsComp.slots[0].value = storageComp.storedItem;
-            pinsComp.slots[1].value = storageComp.getIsFull() ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
+            // a wired pins component is not guaranteed, but if its there, set the value
+            if (pinsComp) {
+                pinsComp.slots[0].value = storageComp.storedItem;
+                pinsComp.slots[1].value = storageComp.getIsFull()
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
+            }
         }
     }
 
