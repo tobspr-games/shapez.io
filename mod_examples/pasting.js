@@ -16,7 +16,7 @@ class Mod extends shapez.Mod {
                 event.preventDefault();
 
                 const data = event.clipboardData.getData("text");
-                this.dialogs.showInfo("Pasted", "You pasted: '" + data + "'");
+                this.dialogs.showInfo("Pasted", `You pasted: '${data}'`);
             });
         });
     }
