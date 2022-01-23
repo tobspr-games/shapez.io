@@ -1,7 +1,9 @@
 import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector";
+import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { Entity } from "../entity";
+import { typeItemSingleton } from "../item_resolver";
 import { GameRoot } from "../root";
 
 /**
@@ -48,6 +50,25 @@ import { GameRoot } from "../root";
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
+    }
+
+    static getSchema() {
+        return {
+            inputs: types.array(
+                types.structured({
+                    slotIndex: types.uint,
+                    item: typeItemSingleton,
+                    animProgress: types.ufloat,
+                })
+            ),
+            completedInputs: types.array(
+                types.structured({
+                    slotIndex: types.uint,
+                    item: typeItemSingleton,
+                    extraProgress: types.ufloat,
+                })
+            ),
+        };
     }
 
     /**
