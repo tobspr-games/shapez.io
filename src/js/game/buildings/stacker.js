@@ -40,7 +40,7 @@ export class MetaStackerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.stacker);
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.stacker);
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 

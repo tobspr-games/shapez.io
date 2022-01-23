@@ -73,15 +73,15 @@ export class MetaPainterBuilding extends MetaBuilding {
         switch (variant) {
             case defaultBuildingVariant:
             case enumPainterVariants.mirrored: {
-                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.painter);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumPainterVariants.double: {
-                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.painterDouble);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed, true)]];
             }
             case enumPainterVariants.quad: {
-                const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.painterQuad);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }

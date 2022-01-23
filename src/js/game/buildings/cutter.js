@@ -54,7 +54,7 @@ export class MetaCutterBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed = root.hubGoals.getProcessingSpeed(
+        const speed = root.hubGoals.getProcessorBaseSpeed(
             variant === enumCutterVariants.quad
                 ? enumItemProcessorTypes.cutterQuad
                 : enumItemProcessorTypes.cutter

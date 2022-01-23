@@ -47,7 +47,7 @@ export class MetaMixerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.mixer);
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer);
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 

@@ -134,15 +134,12 @@ export class BeltPath extends BasicSerializableObject {
      */
     tryAcceptItem(item, startProgress = 0) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
-            // *Never* cap start progress, or if an item moves more than a belt in a tick, it breaks
-            // instead return false if the start progress is too much
+            // First, compute how much progress we can make *at max*
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
-            if (startProgress > maxProgress) {
-                return false;
-            }
+            const initialProgress = Math.min(maxProgress, startProgress);
 
-            this.items.unshift([this.spacingToFirstItem - startProgress, item]);
-            this.spacingToFirstItem = startProgress;
+            this.items.unshift([this.spacingToFirstItem - initialProgress, item]);
+            this.spacingToFirstItem = initialProgress;
 
             if (G_IS_DEV && globalConfig.debug.checkBeltPaths) {
                 this.debug_checkIntegrity("accept-item");
@@ -273,11 +270,6 @@ export class BeltPath extends BasicSerializableObject {
         const matchingDirection = enumInvertedDirections[ejectingDirection];
 
         return function (item, startProgress = 0.0) {
-            // storage has to have its own duplicated logic, as it's the ONLY building which the acceptor can't filter for it
-            const storageComp = targetEntity.components.Storage;
-            if (storageComp && !storageComp.canAcceptItem(item)) {
-                return false;
-            }
             if (targetAcceptorComp.tryAcceptItem(matchingSlotIndex, matchingDirection, item, startProgress)) {
                 return true;
             }

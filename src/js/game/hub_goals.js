@@ -555,13 +555,13 @@ export class HubGoals extends BasicSerializableObject {
      */
     getProcessorTimeWithUpgrades(upgrade, processorType) {
         assert(
-            globalConfig.buildingAmountsToBelt[processorType],
+            globalConfig.buildingRatios[processorType],
             "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
         );
 
         // super complicated maths here, but it works
         const processorTime =
-            globalConfig.buildingAmountsToBelt[processorType] / globalConfig.beltSpeedItemsPerSecond;
+            globalConfig.buildingRatios[processorType] / globalConfig.beltSpeedItemsPerSecond;
         return processorTime / upgrade;
     }
     /**
@@ -569,7 +569,7 @@ export class HubGoals extends BasicSerializableObject {
      * @param {enumItemProcessorTypes} processorType
      * @returns {number} process time in seconds
      */
-    getProcessingSpeed(processorType) {
+    getProcessorBaseSpeed(processorType) {
         const time = this.getProcessingTime(processorType);
         if (!time) {
             return this.getBeltBaseSpeed();

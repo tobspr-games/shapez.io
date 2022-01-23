@@ -104,7 +104,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
                 speedMultiplier = 1;
         }
 
-        const speed = root.hubGoals.getProcessingSpeed(enumItemProcessorTypes.balancer) * speedMultiplier;
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer) * speedMultiplier;
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
 

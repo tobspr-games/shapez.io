@@ -87,7 +87,7 @@ export const globalConfig = {
     puzzleMaxBoundsSize: 20,
     puzzleValidationDurationSeconds: 30,
 
-    buildingAmountsToBelt: {
+    buildingRatios: {
         cutter: 4,
         cutterQuad: 4,
         painter: 6,
