@@ -23,19 +23,22 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             const inputs = acceptorComp.inputs;
             const maxProgress = 0.5;
 
-            inputs.forEach((values, index) => {
-                values.animProgress += progressGrowth;
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i];
+                input.animProgress += progressGrowth;
 
-                if (values.animProgress < maxProgress) {
-                    return;
+                if (input.animProgress < maxProgress) {
+                    continue;
                 }
 
-                inputs.delete(index);
-                acceptorComp.completedInputs.set(index, {
-                    item: values.item,
-                    extraProgress: values.animProgress - maxProgress,
+                inputs.splice(i, 1);
+                i--;
+                acceptorComp.completedInputs.push({
+                    slotIndex: input.slotIndex,
+                    item: input.item,
+                    extraProgress: input.animProgress - maxProgress,
                 }); // will be handled on the SAME frame due to processor system being afterwards
-            });
+            }
         }
     }
 
@@ -58,10 +61,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             }
 
             const staticComp = entity.components.StaticMapEntity;
-            acceptorComp.inputs.forEach((values, index) => {
-                const { item, animProgress, direction } = values;
+            for (let i = 0; i < acceptorComp.inputs.length; i++) {
+                const input = acceptorComp.inputs[i];
+                const { item, animProgress, slotIndex } = input;
 
-                const slotData = acceptorComp.slots[index];
+                const slotData = acceptorComp.slots[slotIndex];
                 const realSlotPos = staticComp.localTileToWorld(slotData.pos);
 
                 if (!chunk.tileSpaceRectangle.containsPoint(realSlotPos.x, realSlotPos.y)) {
@@ -69,7 +73,8 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                     return;
                 }
 
-                const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
+                const fadeOutDirection =
+                    enumDirectionToVector[staticComp.localDirectionToWorld(slotData.direction)];
                 const finalTile = realSlotPos.subScalars(
                     fadeOutDirection.x * (animProgress - 0.5),
                     fadeOutDirection.y * (animProgress - 0.5)
@@ -81,7 +86,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                     parameters,
                     globalConfig.defaultItemDiameter
                 );
-            });
+            }
         }
     }
 }

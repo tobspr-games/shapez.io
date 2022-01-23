@@ -152,47 +152,36 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             const slots = ejectorComp.slots;
 
             for (let j = 0; j < slots.length; ++j) {
-                const slot = slots[j];
-                const item = slot.item;
+                const sourceSlot = slots[j];
+                const item = sourceSlot.item;
+
                 if (!item) {
                     // No output in progress
                     continue;
                 }
 
-                if (slot.progress < maxProgress) {
+                if (sourceSlot.progress < maxProgress) {
                     // Advance items on the slot
-                    slot.progress += progressGrowth;
+                    sourceSlot.progress += progressGrowth;
+                }
 
-                    // limit the progress to stop items being too close
-                    if (slot.cachedTargetEntity && slot.cachedDestSlot) {
-                        const acceptorComp = slot.cachedTargetEntity.components.ItemAcceptor;
-                        const acceptorInput = acceptorComp.inputs.get(slot.cachedDestSlot.index);
-
-                        if (acceptorInput) {
-                            const maxProgress =
-                                0.5 + acceptorInput.animProgress - globalConfig.itemSpacingOnBelts;
-                            slot.progress = Math.min(maxProgress, slot.progress);
-                        }
-                    }
-
-                    if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                        slot.progress = maxProgress;
-                    }
+                if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
+                    sourceSlot.progress = maxProgress;
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (slot.progress < maxProgress) {
+                if (sourceSlot.progress < maxProgress) {
                     continue;
                 }
 
-                const extraProgress = slot.progress - maxProgress;
+                const extraProgress = sourceSlot.progress - maxProgress;
 
                 // Check if we are ejecting to a belt path
-                const destPath = slot.cachedBeltPath;
+                const destPath = sourceSlot.cachedBeltPath;
                 if (destPath) {
                     // Try passing the item over
                     if (destPath.tryAcceptItem(item, extraProgress)) {
-                        slot.item = null;
+                        sourceSlot.item = null;
                     }
 
                     // Always stop here, since there can *either* be a belt path *or* an acceptor
@@ -200,26 +189,22 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Check if the target acceptor can actually accept this item
-                const destEntity = slot.cachedTargetEntity;
-                const destSlot = slot.cachedDestSlot;
+                const destEntity = sourceSlot.cachedTargetEntity;
+                const destSlot = sourceSlot.cachedDestSlot;
                 if (destEntity && destSlot) {
-                    // storage has to have its own duplicated logic, as it's the ONLY building which the acceptor can't filter for it
-                    const storageComp = destEntity.components.Storage;
-                    if (storageComp && !storageComp.canAcceptItem(item)) {
-                        continue;
-                    }
-
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
+                    const storageComp = destEntity.components.Storage;
                     if (
-                        targetAcceptorComp.tryAcceptItem(
-                            destSlot.index,
-                            destSlot.acceptedDirection,
-                            item,
-                            extraProgress
-                        )
+                        storageComp &&
+                        storageComp.tryAcceptItem(item) &&
+                        targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)
                     ) {
+                        // unique duplicated code for storage - hacky :(
+                        return true;
+                    }
+                    if (targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)) {
                         // Handover successful, clear slot
-                        slot.item = null;
+                        sourceSlot.item = null;
                     }
                 }
             }
@@ -258,11 +243,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 if (!ejectorComp.renderFloatingItems && !slot.cachedTargetEntity) {
                     // Not connected to any building
-                    continue;
-                }
-
-                // don't render items at the start of output
-                if (slot.progress < 0.05) {
                     continue;
                 }
 

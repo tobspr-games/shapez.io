@@ -33,10 +33,10 @@ export const enumItemProcessorRequirements = {
  *  extraProgress?: number,
  *  requiredSlot?: number,
  *  preferredSlot?: number
- * }} EjectorItemToEject
- *
- * @typedef {{
- *  remainingTime: number,
+ * }} EjectorItemToEject */
+
+/** @typedef {{
+ *  remainingProgress: number,
  *  items: Array<EjectorItemToEject>,
  * }} EjectorCharge
  *
@@ -102,12 +102,6 @@ export class ItemProcessorComponent extends Component {
          * @type {EjectorCharge|null}
          */
         this.currentCharge = null;
-
-        /**
-         * How much processing time we have left from the last tick
-         * @type {number}
-         */
-        this.bonusTime = 0;
 
         /**
          * @type {Array<EjectorItemToEject>}

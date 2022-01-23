@@ -313,7 +313,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        const input = acceptorComp.completedInputs.get(0);
+        const input = acceptorComp.completedInputs[0];
         if (input) {
             // Check if the receiver can accept it
             if (
@@ -323,7 +323,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     input.extraProgress
                 )
             ) {
-                acceptorComp.completedInputs.delete(0);
+                acceptorComp.completedInputs = [];
             }
         }
     }

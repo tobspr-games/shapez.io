@@ -24,13 +24,14 @@ import { GameRoot } from "../root";
  * filter?: ItemType
  * }} ItemAcceptorSlotConfig
  *
- * @typedef {Map<number, {
+ * @typedef {Array<{
+ * slotIndex: number,
  * item: BaseItem,
  * animProgress: number,
- * direction: enumDirection
  * }>} ItemAcceptorInputs
  *
- * @typedef {Map<number, {
+ * @typedef {Array<{
+ * slotIndex: number,
  * item: BaseItem,
  * extraProgress: number
  * }>} ItemAcceptorCompletedInputs
@@ -58,9 +59,9 @@ export class ItemAcceptorComponent extends Component {
         super();
 
         /** @type {ItemAcceptorInputs} */
-        this.inputs = new Map();
+        this.inputs = [];
         /** @type {ItemAcceptorCompletedInputs} */
-        this.completedInputs = new Map(); // @SENSETODO does this need to be saved?
+        this.completedInputs = []; // @SENSETODO does this need to be saved?
         this.setSlots(slots);
     }
 
@@ -86,22 +87,27 @@ export class ItemAcceptorComponent extends Component {
     /**
      * Called when trying to input a new item
      * @param {number} slotIndex
-     * @param {enumDirection} direction
      * @param {BaseItem} item
      * @param {number} startProgress World space remaining progress, can be set to set the start position of the item
      * @returns {boolean} if the input was succesful
      */
-    tryAcceptItem(slotIndex, direction, item, startProgress = 0.0) {
+    tryAcceptItem(slotIndex, item, startProgress = 0.0) {
         const slot = this.slots[slotIndex];
 
-        if (this.completedInputs.has(slotIndex) || (slot.filter && slot.filter != item.getItemType())) {
+        for (let i = 0; i < this.completedInputs.length; i++) {
+            if (this.completedInputs[i].slotIndex == slotIndex) {
+                return false;
+            }
+        }
+
+        if (slot.filter && slot.filter != item.getItemType()) {
             return false;
         }
 
         // if the start progress is bigger than 0.5, the remainder should get passed on to the ejector
-        this.inputs.set(slotIndex, {
+        this.inputs.push({
+            slotIndex,
             item,
-            direction,
             animProgress: startProgress,
         });
         return true;
