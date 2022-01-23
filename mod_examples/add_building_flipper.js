@@ -7,6 +7,7 @@ const METADATA = {
     id: "add-building-extended",
     description:
         "Shows how to add a new building with logic, in this case it flips/mirrors shapez from top to down",
+    minimumGameVersion: ">=1.5.0",
 };
 
 // Declare a new type of item processor
@@ -80,7 +81,7 @@ class MetaModFlipperBuilding extends shapez.ModMetaBuilding {
                 slots: [
                     {
                         pos: new shapez.Vector(0, 0),
-                        directions: [shapez.enumDirection.bottom],
+                        direction: shapez.enumDirection.bottom,
                         filter: "shape",
                     },
                 ],

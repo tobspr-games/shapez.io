@@ -55,10 +55,22 @@ export class MetaTrashBuilding extends MetaBuilding {
         entity.addComponent(
             new ItemAcceptorComponent({
                 slots: [
-                    { pos: new Vector(0, 0), direction: enumDirection.top },
-                    { pos: new Vector(0, 0), direction: enumDirection.left },
-                    { pos: new Vector(0, 0), direction: enumDirection.right },
-                    { pos: new Vector(0, 0), direction: enumDirection.bottom },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                    },
                 ],
             })
         );

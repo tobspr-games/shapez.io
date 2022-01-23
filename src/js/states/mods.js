@@ -19,6 +19,11 @@ export class ModsState extends TextualGameState {
 
                 <div class="actions">
                    ${
+                       (G_IS_STANDALONE || G_IS_DEV) && MODS.mods.length > 0
+                           ? `<button class="styledButton browseMods">${T.mods.browseMods}</button>`
+                           : ""
+                   }
+                   ${
                        G_IS_STANDALONE || G_IS_DEV
                            ? `<button class="styledButton openModsFolder">${T.mods.openFolder}</button>`
                            : ""
@@ -53,8 +58,9 @@ export class ModsState extends TextualGameState {
             return `
 
             <div class="modsStats noMods">
-
                 ${T.mods.modsInfo}
+
+                <button class="styledButton browseMods">${T.mods.browseMods}</button>
             </div>
 
             `;
@@ -100,6 +106,10 @@ export class ModsState extends TextualGameState {
         if (openModsFolder) {
             this.trackClicks(openModsFolder, this.openModsFolder);
         }
+        const browseMods = this.htmlElement.querySelector(".browseMods");
+        if (browseMods) {
+            this.trackClicks(browseMods, this.openBrowseMods);
+        }
 
         const checkboxes = this.htmlElement.querySelectorAll(".checkbox");
         Array.from(checkboxes).forEach(checkbox => {
@@ -117,6 +127,11 @@ export class ModsState extends TextualGameState {
             return;
         }
         ipcRenderer.invoke("open-mods-folder");
+    }
+
+    openBrowseMods() {
+        this.app.analytics.trackUiClick("mods_sbrowse_link");
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.modBrowser);
     }
 
     onSteamLinkClicked() {

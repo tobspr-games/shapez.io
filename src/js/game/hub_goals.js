@@ -435,7 +435,7 @@ export class HubGoals extends BasicSerializableObject {
         }
 
         const randomColor = () => rng.choice(colors);
-        const randomShape = () => rng.choice(Object.values(enumSubShape));
+        const randomShape = () => rng.choice(availableShapes);
 
         let anyIsMissingTwo = false;
 

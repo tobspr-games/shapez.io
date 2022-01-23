@@ -530,7 +530,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         const offsetShift = 10;
 
+        /**
+         * @type {Array<import("../../components/item_acceptor").ItemAcceptorSlot>}
+         */
         let acceptorSlots = [];
+        /**
+         * @type {Array<import("../../components/item_ejector").ItemEjectorSlot>}
+         */
         let ejectorSlots = [];
 
         if (ejectorComp) {
@@ -548,8 +554,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             acceptorSlots.push(fakeAcceptorSlot);
         }
 
-        for (let acceptorSlotIndex = 0; acceptorSlotIndex < acceptorSlots.length; ++acceptorSlotIndex) {
-            const slot = acceptorSlots[acceptorSlotIndex];
+        // Go over all slots
+        for (let i = 0; i < acceptorSlots.length; ++i) {
+            const slot = acceptorSlots[i];
 
             const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
             const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
@@ -567,8 +574,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             const sourceEntities = this.root.map.getLayersContentsMultipleXY(sourceTile.x, sourceTile.y);
 
             // Check for every entity:
-            for (let i = 0; i < sourceEntities.length; ++i) {
-                const sourceEntity = sourceEntities[i];
+            for (let j = 0; j < sourceEntities.length; ++j) {
+                const sourceEntity = sourceEntities[j];
                 const sourceEjector = sourceEntity.components.ItemEjector;
                 const sourceBeltComp = sourceEntity.components.Belt;
                 const sourceStaticComp = sourceEntity.components.StaticMapEntity;

@@ -10,6 +10,9 @@ import { Mod } from "./mod";
 import { ModInterface } from "./mod_interface";
 import { MOD_SIGNALS } from "./mod_signals";
 
+import semverValidRange from "semver/ranges/valid";
+import semverSatisifies from "semver/functions/satisfies";
+
 const LOG = createLogger("mods");
 
 /**
@@ -20,6 +23,7 @@ const LOG = createLogger("mods");
  *   website: string;
  *   description: string;
  *   id: string;
+ *   minimumGameVersion?: string;
  *   settings: []
  * }} ModMetadata
  */
@@ -103,21 +107,17 @@ export class ModLoader {
             mods = await ipcRenderer.invoke("get-mods");
         }
         if (G_IS_DEV && globalConfig.debug.externalModUrl) {
-            let modURLs = Array.isArray(globalConfig.debug.externalModUrl) ? 
-                globalConfig.debug.externalModUrl : [globalConfig.debug.externalModUrl];
-            
-            for(let i = 0; i < modURLs.length; i++) {
+            const modURLs = Array.isArray(globalConfig.debug.externalModUrl)
+                ? globalConfig.debug.externalModUrl
+                : [globalConfig.debug.externalModUrl];
+
+            for (let i = 0; i < modURLs.length; i++) {
                 const response = await fetch(modURLs[i], {
                     method: "GET",
                 });
                 if (response.status !== 200) {
                     throw new Error(
-                        "Failed to load " +
-                            modURLs[i] +
-                            ": " +
-                            response.status +
-                            " " +
-                            response.statusText
+                        "Failed to load " + modURLs[i] + ": " + response.status + " " + response.statusText
                     );
                 }
                 mods.push(await response.text());
@@ -161,6 +161,27 @@ export class ModLoader {
         for (let i = 0; i < this.modLoadQueue.length; i++) {
             const { modClass, meta } = this.modLoadQueue[i];
             const modDataFile = "modsettings_" + meta.id + "__" + meta.version + ".json";
+
+            if (meta.minimumGameVersion) {
+                console.warn(meta.minimumGameVersion, G_BUILD_VERSION);
+                const minimumGameVersion = meta.minimumGameVersion;
+                if (!semverValidRange(minimumGameVersion)) {
+                    alert("Mod " + meta.id + " has invalid minimumGameVersion: " + minimumGameVersion);
+                    continue;
+                }
+                if (!semverSatisifies(G_BUILD_VERSION, minimumGameVersion)) {
+                    alert(
+                        "Mod  '" +
+                            meta.id +
+                            "' is incompatible with this version of the game: \n\n" +
+                            "Mod requires version " +
+                            minimumGameVersion +
+                            " but this game has version " +
+                            G_BUILD_VERSION
+                    );
+                    continue;
+                }
+            }
 
             let settings = meta.settings;
 

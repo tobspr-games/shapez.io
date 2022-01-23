@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "add-building-basic",
     description: "Shows how to add a new basic building",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class MetaDemoModBuilding extends shapez.ModMetaBuilding {

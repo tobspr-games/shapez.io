@@ -13,11 +13,11 @@ import { GameRoot } from "../root";
  *
  * Contains information about a slot plus its location
  * @typedef {{
- * slot: ItemAcceptorSlot,
- * index: number,
- * acceptedDirection: enumDirection
- * }} ItemAcceptorLocatedSlot
- *
+ *  slot: ItemAcceptorSlot,
+ *  index: number,
+ * }} ItemAcceptorLocatedSlot */
+
+/**
  * @typedef {{
  * pos: Vector,
  * direction: enumDirection,
@@ -128,11 +128,11 @@ export class ItemAcceptorComponent extends Component {
                 continue;
             }
 
+            // Check if the acceptor slot accepts items from our direction
             if (desiredDirection === slot.direction) {
                 return {
                     slot,
                     index: slotIndex,
-                    acceptedDirection: desiredDirection,
                 };
             }
         }

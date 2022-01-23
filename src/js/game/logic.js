@@ -395,7 +395,14 @@ export class GameLogic {
 
                 const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, "regular");
                 if (entity) {
+                    /**
+                     * @type {Array<import("./components/item_ejector").ItemEjectorSlot>}
+                     */
                     let ejectorSlots = [];
+
+                    /**
+                     * @type {Array<import("./components/item_acceptor").ItemAcceptorSlot>}
+                     */
                     let acceptorSlots = [];
 
                     const staticComp = entity.components.StaticMapEntity;
@@ -438,7 +445,6 @@ export class GameLogic {
                         const wsTile = staticComp.localTileToWorld(slot.pos);
                         const direction = slot.direction;
                         const wsDirection = staticComp.localDirectionToWorld(direction);
-
                         const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
                         if (sourceTile.equals(tile)) {
                             acceptors.push({

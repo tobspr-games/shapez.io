@@ -70,100 +70,22 @@ export class MetaHubBuilding extends MetaBuilding {
             })
         );
 
+        /**
+         * @type {Array<import("../components/item_acceptor").ItemAcceptorSlotConfig>}
+         */
+        const slots = [];
+        for (let i = 0; i < 4; ++i) {
+            slots.push(
+                { pos: new Vector(i, 0), direction: enumDirection.top, filter: "shape" },
+                { pos: new Vector(i, 3), direction: enumDirection.bottom, filter: "shape" },
+                { pos: new Vector(0, i), direction: enumDirection.left, filter: "shape" },
+                { pos: new Vector(3, i), direction: enumDirection.right, filter: "shape" }
+            );
+        }
+
         entity.addComponent(
             new ItemAcceptorComponent({
-                slots: [
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.top,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 0),
-                        direction: enumDirection.left,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(1, 0),
-                        direction: enumDirection.top,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(2, 0),
-                        direction: enumDirection.top,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 0),
-                        direction: enumDirection.top,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 0),
-                        direction: enumDirection.right,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 3),
-                        direction: enumDirection.left,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 3),
-                        direction: enumDirection.bottom,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(1, 3),
-                        direction: enumDirection.bottom,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(2, 3),
-                        direction: enumDirection.bottom,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 3),
-                        direction: enumDirection.bottom,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 3),
-                        direction: enumDirection.right,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 1),
-                        direction: enumDirection.left,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 2),
-                        direction: enumDirection.left,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(0, 3),
-                        direction: enumDirection.left,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 1),
-                        direction: enumDirection.right,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 2),
-                        direction: enumDirection.right,
-                        filter: "shape",
-                    },
-                    {
-                        pos: new Vector(3, 3),
-                        direction: enumDirection.right,
-                        filter: "shape",
-                    },
-                ],
+                slots,
             })
         );
     }

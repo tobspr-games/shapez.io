@@ -5,7 +5,7 @@
 Currently there are two options to develop mods for shapez.io:
 
 1. Writing single file mods, which doesn't require any additional tools and can be loaded directly in the game
-2. Using the `create-shapezio-mod` package. This package is still in development but allows you to pack multiple files and images into a single mod file, so you don't have to base64 encode your images etc.
+2. Using the [create-shapezio-mod](https://www.npmjs.com/package/create-shapezio-mod) package. This package is still in development but allows you to pack multiple files and images into a single mod file, so you don't have to base64 encode your images etc.
 
 Since the `create-shapezio-mod` package is still in development, the current recommended way is to write single file mods, which I'll explain now.
 
@@ -41,6 +41,7 @@ To get into shapez.io modding, I highly recommend checking out all of the exampl
 | [modify_existing_building.js](modify_existing_building.js) | Makes the rotator building always unlocked and adds a new statistic to the building panel         | Modifying a builtin building, replacing builtin methods                                         |
 | [modify_ui.js](modify_ui.js)                               | Shows how to add custom IU elements to builtin game states (the Main Menu in this case)           | Extending builtin UI states, Adding CSS                                                         |
 | [pasting.js](pasting.js)                                   | Shows a dialog when pasting text in the game                                                      | Listening to paste events                                                                       |
+| [sandbox.js](sandbox.js)                                   | Makes blueprints free and always unlocked                                                         | Overriding builtin methods                                                                      |
 
 ### Advanced Examples
 
@@ -50,3 +51,7 @@ To get into shapez.io modding, I highly recommend checking out all of the exampl
 | [usage_statistics.js](usage_statistics.js)       | Displays a percentage on every building showing its utilization                                            | Adding a new component, Adding a new GameSystem, Drawing within a GameSystem, Modifying builtin buildings, Adding custom game logic                                 |
 | [new_item_type.js](new_item_type.js)             | Adds a new type of items to the map (fluids)                                                               | Adding a new item type, modifying map generation                                                                                                                    |
 | [buildings_have_cost.js](buildings_have_cost.js) | Adds a new currency, and belts cost 1 of that currency                                                     | Extending and replacing builtin methods, Adding CSS and custom sprites                                                                                              |
+
+### Creating new sprites
+
+If you want to add new buildings and create sprites for them, you can download the original Photoshop PSD files here: https://static.shapez.io/building-psds.zip

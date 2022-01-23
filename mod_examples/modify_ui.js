@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "modify-ui",
     description: "Shows how to modify a builtin game state, in this case the main menu",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

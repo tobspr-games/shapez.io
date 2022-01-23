@@ -6,13 +6,14 @@ const METADATA = {
     version: "1",
     id: "replace-builtin-sprites",
     description: "Shows how to replace builtin sprites",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {
     init() {
         // Replace a builtin sprite
         ["red", "green", "blue", "yellow", "purple", "cyan", "white"].forEach(color => {
-            this.modInterface.registerSprite("sprites/colors/" + color + ".png", RESOURCES[color + ".png"]);
+            this.modInterface.registerSprite(`sprites/colors/${color}.png`, RESOURCES[color + ".png"]);
         });
     }
 }
