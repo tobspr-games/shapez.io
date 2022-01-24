@@ -62,6 +62,11 @@
             @include S(margin-top, 100px);
             color: lighten($accentColorDark, 15);
 
+            button {
+                @include S(margin-top, 10px);
+                @include S(padding, 10px, 20px);
+            }
+
             &::before {
                 @include S(margin-bottom, 15px);
                 content: "";
@@ -93,6 +98,10 @@
             @include S(grid-gap, 15px);
             display: grid;
             grid-template-columns: 1fr D(100px) D(80px) D(50px);
+
+            @include DarkThemeOverride {
+                background: darken($darkModeControlsBackground, 5);
+            }
 
             .checkbox {
                 align-self: center;

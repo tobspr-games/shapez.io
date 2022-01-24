@@ -94,11 +94,12 @@ export class HUDEntityDebugger extends BaseHUDPart {
                             <div>`;
 
             for (const property in val) {
-                const isRoot = val[property] == this.root;
-                const isRecursive = recursion.includes(val[property]);
-
-                let hiddenValue = isRoot ? "<root>" : null;
-                if (isRecursive) {
+                let hiddenValue = null;
+                if (val[property] == this.root) {
+                    hiddenValue = "<root>";
+                } else if (val[property] instanceof Node) {
+                    hiddenValue = `<${val[property].constructor.name}>`;
+                } else if (recursion.includes(val[property])) {
                     // Avoid recursion by not "expanding" object more than once
                     hiddenValue = "<recursion>";
                 }

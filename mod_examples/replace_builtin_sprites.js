@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "replace-builtin-sprites",
     description: "Shows how to replace builtin sprites",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

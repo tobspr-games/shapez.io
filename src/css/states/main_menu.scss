@@ -199,10 +199,6 @@
                     transform: translateX(50%) rotate(-7deg) scale(1.1);
                 }
             }
-
-            @include DarkThemeOverride {
-                color: $colorBlueBright;
-            }
         }
     }
 
@@ -326,6 +322,7 @@
                     /* @load-async */
                     background-image: uiResource("icons/edit_key.png") !important;
                 }
+                @include DarkThemeInvert;
             }
         }
 
@@ -354,13 +351,14 @@
             box-sizing: border-box;
             @include PlainText;
             @include S(margin-bottom, 5px);
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            @include S(grid-gap, 5px);
+            display: flex;
+            flex-direction: column;
 
             .author,
             .version {
                 @include SuperSmallText;
+                align-self: end;
+                opacity: 0.4;
             }
             .name {
                 overflow: hidden;
@@ -457,19 +455,19 @@
 
         .newGameButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-left, 15px);
+            @include S(margin-left, 10px);
         }
 
         .modsButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-left, 15px);
+            @include S(margin-left, 10px);
 
-            @include S(width, 20px);
+            // @include S(width, 20px);
 
-            & {
-                /* @load-async */
-                background-image: uiResource("res/ui/icons/mods_white.png") !important;
-            }
+            // & {
+            //     /* @load-async */
+            //     background-image: uiResource("res/ui/icons/mods_white.png") !important;
+            // }
             background-position: center center;
             background-size: D(15px);
             background-color: $modsColor !important;
@@ -834,6 +832,23 @@
             .savegames .savegame {
                 background: darken($darkModeControlsBackground, 5);
                 color: white;
+            }
+        }
+
+        .modsOverview {
+            background: $darkModeControlsBackground;
+
+            .modsList {
+                border-color: darken($darkModeControlsBackground, 5);
+
+                .mod {
+                    background: darken($darkModeControlsBackground, 5);
+                    color: white;
+                }
+            }
+
+            .dlcHint {
+                color: $accentColorBright;
             }
         }
 

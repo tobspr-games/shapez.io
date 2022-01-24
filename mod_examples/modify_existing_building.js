@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "modify-existing-building",
     description: "Shows how to modify an existing building",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {

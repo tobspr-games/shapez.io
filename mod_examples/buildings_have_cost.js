@@ -6,6 +6,7 @@ const METADATA = {
     version: "1",
     id: "patch-methods",
     description: "Shows how to patch existing methods to change the game by making the belts cost shapes",
+    minimumGameVersion: ">=1.5.0",
 };
 
 class Mod extends shapez.Mod {
