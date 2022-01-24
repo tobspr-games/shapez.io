@@ -423,7 +423,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * @param {ProcessorImplementationPayload} payload
      */
     process_TRASH(payload) {
-        payload.entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
+        // Hardcoded - 4 inputs
+        for (let i = 0; i < 4; ++i) {
+            const item = /** @type {ShapeItem} */ (payload.items.get(i));
+            if (!item) {
+                continue;
+            }
+            payload.entity.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.trash1000, 1);
+        }
     }
 
     /**
@@ -547,7 +554,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const hubComponent = payload.entity.components.Hub;
         assert(hubComponent, "Hub item processor has no hub component");
 
-        // Hardcoded
+        // Hardcoded - 16 inputs
         for (let i = 0; i < 16; ++i) {
             const item = /** @type {ShapeItem} */ (payload.items.get(i));
             if (!item) {
