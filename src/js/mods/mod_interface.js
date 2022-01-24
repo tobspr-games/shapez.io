@@ -484,6 +484,22 @@ export class ModInterface {
     }
 
     /**
+     * Creates a new class that extends another class (DOES NOT OVERWRITE)
+     *
+     * @template {constructable} C
+     * @param {C} classHandle
+     * @param {bindThis<(...args: ConstructorParameters<C>) => any, InstanceType<C>>} constructor
+     */
+    extendConstructor(classHandle, constructor) {
+        return function (...args) {
+            const obj = new classHandle();
+            //@ts-ignore
+            constructor.apply(obj, args);
+            return obj;
+        };
+    }
+
+    /**
      *
      * @param {string} id
      * @param {new (...args) => BaseHUDPart} element
