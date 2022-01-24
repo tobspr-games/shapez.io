@@ -492,6 +492,7 @@ export class ModInterface {
      * @returns {C}
      */
     extendConstructor(classHandle, constructor) {
+        //@ts-ignore
         return function (...args) {
             const obj = new classHandle();
             //@ts-ignore
