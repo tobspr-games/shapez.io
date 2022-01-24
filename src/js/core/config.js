@@ -115,7 +115,10 @@ export const globalConfig = {
     },
 
     rendering: {},
+    // @ts-ignore
     debug: require("./config.local").default,
+
+    enableEntityInspector: true,
 
     // Secret vars
     info: {
