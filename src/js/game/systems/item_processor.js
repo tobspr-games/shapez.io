@@ -91,16 +91,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             const currentCharge = processorComp.currentCharge;
             if (currentCharge) {
+                const targetProgress = currentCharge.targetProgress;
                 // Process next charge
-                if (currentCharge.remainingProgress > 0.0) {
-                    currentCharge.remainingProgress -= progressGrowth;
+                if (currentCharge.progress < targetProgress) {
+                    currentCharge.progress += progressGrowth;
                 }
 
                 // Check if it finished - but don't finish another charge if there are still items queued to eject, or we might keep backing up
-                if (currentCharge.remainingProgress <= 0.0 && processorComp.queuedEjects.length < 1) {
+                if (currentCharge.progress >= targetProgress && processorComp.queuedEjects.length < 1) {
                     const itemsToEject = currentCharge.items;
-                    const extraProgress = -currentCharge.remainingProgress;
-                    console.log(extraProgress);
+                    const extraProgress = currentCharge.progress - targetProgress;
 
                     // Go over all items and try to eject them
                     for (let j = 0; j < itemsToEject.length; ++j) {
@@ -270,10 +270,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Queue Charge
-        const progress = this.root.hubGoals.getProcessingProgress(processorComp.type);
+        const targetProgress = this.root.hubGoals.getProcessingProgress(processorComp.type);
+        //console.log("target progress:" + targetProgress + ", type: " + processorComp.type);
         processorComp.currentCharge = {
             items: outItems,
-            remainingProgress: progress - extraProgress,
+            targetProgress,
+            progress: extraProgress,
         };
 
         acceptorComp.completedInputs = [];
@@ -546,7 +548,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         assert(hubComponent, "Hub item processor has no hub component");
 
         // Hardcoded
-        for (let i = 0; i < payload.items.size; ++i) {
+        for (let i = 0; i < 16; ++i) {
             const item = /** @type {ShapeItem} */ (payload.items.get(i));
             if (!item) {
                 continue;

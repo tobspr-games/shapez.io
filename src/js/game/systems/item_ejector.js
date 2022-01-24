@@ -180,7 +180,9 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const destPath = sourceSlot.cachedBeltPath;
                 if (destPath) {
                     // Try passing the item over
-                    if (destPath.tryAcceptItem(item, extraProgress)) {
+                    // note - no extra progress is relevant here, as we have to push items up to the ones in front to ensure minimum spacing
+                    // it's close enough though, and doesn't break at high speeds
+                    if (destPath.tryAcceptItem(item)) {
                         sourceSlot.item = null;
                     }
 
@@ -200,7 +202,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                         targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)
                     ) {
                         // unique duplicated code for storage - hacky :(
-                        return true;
+                        sourceSlot.item = null;
+                        return;
                     }
                     if (targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)) {
                         // Handover successful, clear slot

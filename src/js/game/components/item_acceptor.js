@@ -115,6 +115,11 @@ export class ItemAcceptorComponent extends Component {
     tryAcceptItem(slotIndex, item, startProgress = 0.0) {
         const slot = this.slots[slotIndex];
 
+        for (let i = 0; i < this.inputs.length; i++) {
+            if (this.inputs[i].slotIndex == slotIndex) {
+                return false;
+            }
+        }
         for (let i = 0; i < this.completedInputs.length; i++) {
             if (this.completedInputs[i].slotIndex == slotIndex) {
                 return false;
