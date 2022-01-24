@@ -489,6 +489,7 @@ export class ModInterface {
      * @template {constructable} C
      * @param {C} classHandle
      * @param {bindThis<(...args: ConstructorParameters<C>) => any, InstanceType<C>>} constructor
+     * @returns {C}
      */
     extendConstructor(classHandle, constructor) {
         return function (...args) {
