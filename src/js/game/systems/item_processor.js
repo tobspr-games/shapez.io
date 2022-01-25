@@ -18,6 +18,7 @@ import { ShapeItem } from "../items/shape_item";
  *
  * @typedef {{
  *   item: BaseItem,
+ *   extraProgress?: number,
  *   preferredSlot?: number,
  *   requiredSlot?: number,
  *   doNotTrack?: boolean
@@ -89,22 +90,19 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
                     currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
+                    if (currentCharge.remainingTime < 0.0) {
+                        // Add bonus time, this is the time we spent too much
+                        processorComp.bonusTime += -currentCharge.remainingTime;
+                    }
                 }
 
                 // Check if it finished
                 if (currentCharge.remainingTime <= 0.0 && processorComp.queuedEjects.length < 1) {
                     const itemsToEject = currentCharge.items;
-                    //@SENSETODO not sure this is correct
-                    const extraProgress =
-                        -currentCharge.remainingTime *
-                        globalConfig.beltSpeedItemsPerSecond *
-                        globalConfig.itemSpacingOnBelts;
 
                     // Go over all items and try to eject them
                     for (let j = 0; j < itemsToEject.length; ++j) {
-                        const items = itemsToEject[j];
-                        items.extraProgress = extraProgress;
-                        processorComp.queuedEjects.push(items);
+                        processorComp.queuedEjects.push(itemsToEject[j]);
                     }
 
                     processorComp.currentCharge = null;
@@ -247,10 +245,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             extraProgress = Math.max(extraProgress, input.extraProgress);
         }
 
-        //@SENSETODO not sure if this is right
-        const extraTime =
-            extraProgress / (globalConfig.beltSpeedItemsPerSecond * globalConfig.itemSpacingOnBelts);
-
+        /** @type {Array<ProducedItem>} */
         const outItems = [];
 
         /** @type {function(ProcessorImplementationPayload) : void} */
@@ -269,11 +264,18 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             if (!outItems[i].doNotTrack) {
                 this.root.signals.itemProduced.dispatch(outItems[i].item);
             }
+
+            // also set extra progress
+            outItems[i].extraProgress = extraProgress;
         }
 
         // Queue Charge
         const originalTime = this.root.hubGoals.getProcessingTime(processorComp.type);
-        const timeToProcess = originalTime - extraTime;
+
+        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
+        const timeToProcess = originalTime - bonusTimeToApply;
+
+        processorComp.bonusTime -= bonusTimeToApply;
 
         processorComp.currentCharge = {
             items: outItems,

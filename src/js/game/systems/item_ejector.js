@@ -163,24 +163,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 if (sourceSlot.progress < maxProgress) {
                     // Advance items on the slot
                     sourceSlot.progress += progressGrowth;
-
-                    // limit the progress to stop items being too close
-                    if (sourceSlot.cachedTargetEntity && sourceSlot.cachedDestSlot) {
-                        const acceptorComp = sourceSlot.cachedTargetEntity.components.ItemAcceptor;
-                        let acceptorInput = null;
-                        for (let i = 0; i < acceptorComp.inputs.length; i++) {
-                            const input = acceptorComp.inputs[i];
-                            if (input.slotIndex == sourceSlot.cachedDestSlot.index) {
-                                acceptorInput = input;
-                            }
-                        }
-
-                        if (acceptorInput) {
-                            const maxProgress =
-                                0.5 + acceptorInput.animProgress - globalConfig.itemSpacingOnBelts;
-                            sourceSlot.progress = Math.min(maxProgress, sourceSlot.progress);
-                        }
-                    }
                 }
 
                 if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {

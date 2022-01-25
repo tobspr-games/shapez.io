@@ -105,6 +105,12 @@ export class ItemProcessorComponent extends Component {
         this.currentCharge = null;
 
         /**
+         * How much processing time we have left from the last tick
+         * @type {number}
+         */
+        this.bonusTime = 0;
+
+        /**
          * @type {Array<EjectorItemToEject>}
          */
         this.queuedEjects = [];
