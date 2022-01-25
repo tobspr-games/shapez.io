@@ -4,8 +4,6 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 
-const MAX_ITEMS_IN_QUEUE = 2;
-
 export class FilterSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [FilterComponent]);
@@ -21,7 +19,8 @@ export class FilterSystem extends GameSystemWithFilter {
             // Take items from acceptor
             const input = acceptorComp.completedInputs[0];
             if (input && this.tryAcceptItem(entity, input.item, input.extraProgress)) {
-                acceptorComp.completedInputs = [];
+                // only remove one
+                acceptorComp.completedInputs.splice(0);
             }
 
             // Output to ejector
@@ -64,7 +63,7 @@ export class FilterSystem extends GameSystemWithFilter {
             listToCheck = filterComp.pendingItemsToReject;
         }
 
-        if (listToCheck.length >= MAX_ITEMS_IN_QUEUE) {
+        if (!listToCheck.length) {
             // Busy
             return false;
         }
