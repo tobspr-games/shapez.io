@@ -323,7 +323,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     input.extraProgress
                 )
             ) {
-                acceptorComp.completedInputs.splice(0);
+                acceptorComp.completedInputs.shift();
             }
         }
     }

@@ -19,8 +19,7 @@ export class FilterSystem extends GameSystemWithFilter {
             // Take items from acceptor
             const input = acceptorComp.completedInputs[0];
             if (input && this.tryAcceptItem(entity, input.item, input.extraProgress)) {
-                // only remove one
-                acceptorComp.completedInputs.splice(0);
+                acceptorComp.completedInputs.shift();
             }
 
             // Output to ejector
