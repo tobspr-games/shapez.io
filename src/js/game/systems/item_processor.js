@@ -232,7 +232,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const acceptorComp = entity.components.ItemAcceptor;
         const processorComp = entity.components.ItemProcessor;
 
-        // First, take inputs - but only ones that are completed
+        // First, take inputs - but only one from each
         const inputs = acceptorComp.completedInputs;
 
         // split inputs efficiently
@@ -282,7 +282,17 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             remainingTime: timeToProcess,
         };
 
-        acceptorComp.completedInputs = [];
+        // only remove one item from each slot - we don't want to delete extra items!
+        let usedSlots = [];
+        for (let i = 0; i < acceptorComp.completedInputs.length; i++) {
+            const slot = acceptorComp.completedInputs[i].slotIndex;
+
+            if (!usedSlots.includes(slot)) {
+                usedSlots.push(slot);
+                acceptorComp.completedInputs.splice(i);
+                i--;
+            }
+        }
     }
 
     /**

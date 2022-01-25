@@ -130,8 +130,9 @@ export class BeltPath extends BasicSerializableObject {
     /**
      * Tries to accept the item
      * @param {BaseItem} item
+     * @param {number} extraProgress
      */
-    tryAcceptItem(item) {
+    tryAcceptItem(item, extraProgress = 0) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
             // So, since we already need one tick to accept this item we will add this directly.
             // this means we are moving it forwards twice in one tick, but otherwise belts won't be full :(
@@ -142,7 +143,7 @@ export class BeltPath extends BasicSerializableObject {
 
             // First, compute how much progress we can make *at max*
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
-            const initialProgress = Math.min(maxProgress, beltProgressPerTick);
+            const initialProgress = Math.min(maxProgress, beltProgressPerTick + extraProgress);
 
             this.items.unshift([this.spacingToFirstItem - initialProgress, item]);
             this.spacingToFirstItem = initialProgress;
