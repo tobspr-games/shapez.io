@@ -71,11 +71,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const progressGrowth =
-            this.root.dynamicTickrate.deltaSeconds *
-            globalConfig.beltSpeedItemsPerSecond *
-            globalConfig.itemSpacingOnBelts;
-
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
 
@@ -91,16 +86,19 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
             const currentCharge = processorComp.currentCharge;
             if (currentCharge) {
-                const targetProgress = currentCharge.targetProgress;
                 // Process next charge
-                if (currentCharge.progress < targetProgress) {
-                    currentCharge.progress += progressGrowth;
+                if (currentCharge.remainingTime > 0.0) {
+                    currentCharge.remainingTime -= this.root.dynamicTickrate.deltaSeconds;
                 }
 
-                // Check if it finished - but don't finish another charge if there are still items queued to eject, or we might keep backing up
-                if (currentCharge.progress >= targetProgress && processorComp.queuedEjects.length < 1) {
+                // Check if it finished
+                if (currentCharge.remainingTime <= 0.0 && processorComp.queuedEjects.length < 1) {
                     const itemsToEject = currentCharge.items;
-                    const extraProgress = currentCharge.progress - targetProgress;
+                    //@SENSETODO not sure this is correct
+                    const extraProgress =
+                        -currentCharge.remainingTime *
+                        globalConfig.beltSpeedItemsPerSecond *
+                        globalConfig.itemSpacingOnBelts;
 
                     // Go over all items and try to eject them
                     for (let j = 0; j < itemsToEject.length; ++j) {
@@ -249,6 +247,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             extraProgress = Math.max(extraProgress, input.extraProgress);
         }
 
+        //@SENSETODO not sure if this is right
+        const extraTime =
+            extraProgress / (globalConfig.beltSpeedItemsPerSecond * globalConfig.itemSpacingOnBelts);
+
         const outItems = [];
 
         /** @type {function(ProcessorImplementationPayload) : void} */
@@ -270,12 +272,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
 
         // Queue Charge
-        const targetProgress = this.root.hubGoals.getProcessingProgress(processorComp.type);
-        //console.log("target progress:" + targetProgress + ", type: " + processorComp.type);
+        const originalTime = this.root.hubGoals.getProcessingTime(processorComp.type);
+        const timeToProcess = originalTime - extraTime;
+
         processorComp.currentCharge = {
             items: outItems,
-            targetProgress,
-            progress: extraProgress,
+            remainingTime: timeToProcess,
         };
 
         acceptorComp.completedInputs = [];

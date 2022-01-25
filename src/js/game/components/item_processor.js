@@ -30,16 +30,16 @@ export const enumItemProcessorRequirements = {
 /**
  * @typedef {{
  *  item: BaseItem,
- *  extraProgress?: number,
+ *  extraProgress?: number
  *  requiredSlot?: number,
  *  preferredSlot?: number
  * }} EjectorItemToEject */
 
 /** @typedef {{
- *  progress: number,
- *  targetProgress: number,
+ *  remainingTime: number,
  *  items: Array<EjectorItemToEject>,
  * }} EjectorCharge
+ *
  *
  * @typedef {{
  * item: BaseItem

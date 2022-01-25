@@ -82,7 +82,7 @@ export class ItemAcceptorComponent extends Component {
         /** @type {ItemAcceptorInputs} */
         this.inputs = [];
         /** @type {ItemAcceptorCompletedInputs} */
-        this.completedInputs = []; // @SENSETODO does this need to be saved?
+        this.completedInputs = [];
         this.setSlots(slots);
     }
 

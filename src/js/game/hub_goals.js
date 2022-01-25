@@ -509,9 +509,9 @@ export class HubGoals extends BasicSerializableObject {
     /**
      * Processor time to process
      * @param {enumItemProcessorTypes} processorType
-     * @returns {number} progress in tiles
+     * @returns {number} process time in seconds
      */
-    getProcessingProgress(processorType) {
+    getProcessingTime(processorType) {
         if (this.root.gameMode.throughputDoesNotMatter()) {
             return 0;
         }
@@ -531,20 +531,12 @@ export class HubGoals extends BasicSerializableObject {
             case enumItemProcessorTypes.painter:
             case enumItemProcessorTypes.painterDouble:
             case enumItemProcessorTypes.painterQuad: {
-                assert(
-                    globalConfig.buildingRatios[processorType],
-                    "Processor type has no speed set in globalConfig.buildingRatios: " + processorType
-                );
-                return (globalConfig.buildingRatios[processorType] - 1) / this.upgradeImprovements.painting;
+                return this.getProcessorTimeWithUpgrades(this.upgradeImprovements.painting, processorType);
             }
             case enumItemProcessorTypes.cutter:
             case enumItemProcessorTypes.cutterQuad:
             case enumItemProcessorTypes.stacker: {
-                assert(
-                    globalConfig.buildingRatios[processorType],
-                    "Processor type has no speed set in globalConfig.buildingRatios: " + processorType
-                );
-                return (globalConfig.buildingRatios[processorType] - 1) / this.upgradeImprovements.processors;
+                return this.getProcessorTimeWithUpgrades(this.upgradeImprovements.processors, processorType);
             }
             default:
                 if (MOD_ITEM_PROCESSOR_SPEEDS[processorType]) {
@@ -557,15 +549,30 @@ export class HubGoals extends BasicSerializableObject {
     }
 
     /**
+     * @param {number} upgrade
+     * @param {enumItemProcessorTypes} processorType
+     */
+    getProcessorTimeWithUpgrades(upgrade, processorType) {
+        assert(
+            globalConfig.buildingRatios[processorType],
+            "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType
+        );
+
+        const processorTime =
+            globalConfig.buildingRatios[processorType] / globalConfig.beltSpeedItemsPerSecond;
+        return processorTime / upgrade;
+    }
+
+    /**
      * Processor speed
      * @param {enumItemProcessorTypes} processorType
      * @returns {number} items/sec
      */
     getProcessorBaseSpeed(processorType) {
-        const progress = this.getProcessingProgress(processorType);
-        if (!progress) {
+        const time = this.getProcessingTime(processorType);
+        if (!time) {
             return this.getBeltBaseSpeed();
         }
-        return globalConfig.beltSpeedItemsPerSecond / (progress + 1);
+        return 1 / time;
     }
 }
