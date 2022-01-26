@@ -70,7 +70,7 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
 
                 if (!chunk.tileSpaceRectangle.containsPoint(realSlotPos.x, realSlotPos.y)) {
                     // Not within this chunk
-                    return;
+                    continue;
                 }
 
                 const fadeOutDirection =

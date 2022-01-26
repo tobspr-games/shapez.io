@@ -4,6 +4,8 @@ import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 
+const MAX_ITEMS_IN_QUEUE = 2;
+
 export class FilterSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [FilterComponent]);
@@ -62,7 +64,7 @@ export class FilterSystem extends GameSystemWithFilter {
             listToCheck = filterComp.pendingItemsToReject;
         }
 
-        if (!listToCheck.length) {
+        if (listToCheck.length >= MAX_ITEMS_IN_QUEUE) {
             // Busy
             return false;
         }

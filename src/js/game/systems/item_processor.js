@@ -285,11 +285,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         // only remove one item from each slot - we don't want to delete extra items!
         let usedSlots = [];
         for (let i = 0; i < acceptorComp.completedInputs.length; i++) {
-            const slot = acceptorComp.completedInputs[i].slotIndex;
+            const index = acceptorComp.completedInputs[i].slotIndex;
 
-            if (!usedSlots.includes(slot)) {
-                usedSlots.push(slot);
-                acceptorComp.completedInputs.splice(i);
+            if (!usedSlots.includes(index)) {
+                usedSlots.push(index);
+                acceptorComp.completedInputs.splice(i, 1);
                 i--;
             }
         }
