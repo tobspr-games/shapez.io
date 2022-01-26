@@ -11,7 +11,7 @@ Since the `create-shapezio-mod` package is still in development, the current rec
 
 ## Mod Developer Discord
 
-A great place to get help with mod development is the official [shapez.io modloader discord]https://discord.gg/xq5v8uyMue).
+A great place to get help with mod development is the official [shapez.io modloader discord](https://discord.gg/xq5v8uyMue).
 
 ## Setting up your development environment
 
