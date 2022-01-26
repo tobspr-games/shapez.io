@@ -32,6 +32,11 @@ import { BaseHUDPart } from "../game/hud/base_hud_part";
  */
 
 /**
+ * @template O, T
+ * @typedef {{[P in keyof O as O[P] extends T ? P : never]: O[P] }} withOnlyType
+ */
+
+/**
  * @template {(...args: any) => any} F The function
  * @template {object} T  The value of this
  * @typedef {(this: T, ...args: Parameters<F>) => ReturnType<F>} bindThis
@@ -484,19 +489,24 @@ export class ModInterface {
     }
 
     /**
-     * Creates a new class that extends another class (DOES NOT OVERWRITE)
+     * @template {any} S Scope
+     * @template {withOnlyType<S, constructable>} T
+     * @template {keyof T} C Original constructor name
+     * @template {Extract<T[C], constructable>} M the method
      *
-     * @template {constructable} C
      * @param {C} classHandle
-     * @param {bindThis<(...args: ConstructorParameters<C>) => any, InstanceType<C>>} constructor
-     * @returns {C}
+     * @param {bindThis<extendsPrams<(...args: ConstructorParameters<M>) => any>, InstanceType<M>>} constructor
+     * @param {S} scope
      */
-    extendConstructor(classHandle, constructor) {
-        //@ts-ignore
-        return function (...args) {
-            const obj = new classHandle();
-            //@ts-ignore
-            constructor.apply(obj, args);
+    extendConstructor(scope, classHandle, constructor) {
+        //@ts-ignore Holy crap guys so get this TSC IS A DUMBASS LMAO
+        const old = scope[classHandle];
+        //@ts-ignore lmao (2)
+        scope[classHandle] = function () {
+            const obj = new old(...arguments);
+            //@ts-ignore lmao (3)
+            constructor.apply(obj, arguments);
+
             return obj;
         };
     }
