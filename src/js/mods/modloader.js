@@ -86,7 +86,6 @@ export class ModLoader {
             });
 
             window.shapez = exports;
-            console.log(shapez);
         }
     }
 
