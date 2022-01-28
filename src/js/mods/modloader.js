@@ -66,24 +66,27 @@ export class ModLoader {
                 // @ts-ignore
                 const module = modules(key);
                 for (const member in module) {
-                    if (member === "default") {
+                    if (member === "default" || member === "$s") {
+                        // Setter
                         continue;
                     }
                     if (exports[member]) {
                         throw new Error("Duplicate export of " + member);
                     }
+
                     Object.defineProperty(exports, member, {
                         get() {
                             return module[member];
                         },
                         set(v) {
-                            module[member] = v;
+                            module["$s"](member, v);
                         },
                     });
                 }
             });
 
             window.shapez = exports;
+            console.log(shapez);
         }
     }
 
