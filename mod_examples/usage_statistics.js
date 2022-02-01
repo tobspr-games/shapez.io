@@ -121,8 +121,7 @@ class Mod extends shapez.Mod {
         this.modInterface.registerComponent(UsageStatisticsComponent);
 
         // Add our new component to all item processor buildings so we can see how many items it processed.
-        // You can also inspect the entity with F8 after enabling `enableEntityInspector` to see
-        // the new component
+        // You can also inspect the entity with F8
         const buildings = [
             shapez.MetaBalancerBuilding,
             shapez.MetaCutterBuilding,

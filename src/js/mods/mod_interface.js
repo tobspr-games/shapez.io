@@ -26,6 +26,8 @@ import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { THEMES } from "../game/theme";
 import { ModMetaBuilding } from "./mod_meta_building";
 import { BaseHUDPart } from "../game/hud/base_hud_part";
+import { Vector } from "../core/vector";
+import { GameRoot } from "../game/root";
 
 /**
  * @typedef {{new(...args: any[]): any, prototype: any}} constructable
@@ -246,10 +248,16 @@ export class ModInterface {
 
             gBuildingVariants[id].metaInstance = metaInstance;
 
-            T.buildings[id][variant] = {
-                name: combination.name || "Name",
-                description: combination.description || "Description",
-            };
+            this.registerTranslations("en", {
+                buildings: {
+                    [id]: {
+                        [variant]: {
+                            name: combination.name || "Name",
+                            description: combination.description || "Description",
+                        },
+                    },
+                },
+            });
 
             if (combination.regularImageBase64) {
                 this.registerSprite(
@@ -342,8 +350,18 @@ export class ModInterface {
         `);
     }
 
-    setBuildingTutorialImage(buildingId, variant, imageBase64) {
-        const buildingIdentifier = buildingId + (variant === defaultBuildingVariant ? "" : "-" + variant);
+    /**
+     *
+     * @param {string | (new () => MetaBuilding)} buildingIdOrClass
+     * @param {*} variant
+     * @param {*} imageBase64
+     */
+    setBuildingTutorialImage(buildingIdOrClass, variant, imageBase64) {
+        if (typeof buildingIdOrClass === "function") {
+            buildingIdOrClass = new buildingIdOrClass().id;
+        }
+        const buildingIdentifier =
+            buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant);
 
         this.registerCss(`
             [data-icon="building_tutorials/${buildingIdentifier}.png"] {
@@ -492,5 +510,149 @@ export class ModInterface {
         this.modLoader.signals.hudInitializer.add(root => {
             root.hud.parts[id] = new element(root);
         });
+    }
+
+    /**
+     *
+     * @param {string | (new () => MetaBuilding)} buildingIdOrClass
+     * @param {string} variant
+     * @param {object} param0
+     * @param {string} param0.name
+     * @param {string} param0.description
+     * @param {string=} param0.language
+     */
+    registerBuildingTranslation(buildingIdOrClass, variant, { name, description, language = "en" }) {
+        if (typeof buildingIdOrClass === "function") {
+            buildingIdOrClass = new buildingIdOrClass().id;
+        }
+        this.registerTranslations(language, {
+            buildings: {
+                [buildingIdOrClass]: {
+                    [variant]: {
+                        name,
+                        description,
+                    },
+                },
+            },
+        });
+    }
+
+    /**
+     *
+     * @param {string | (new () => MetaBuilding)} buildingIdOrClass
+     * @param {string} variant
+     * @param {object} param2
+     * @param {string=} param2.regularBase64
+     * @param {string=} param2.blueprintBase64
+     */
+    registerBuildingSprites(buildingIdOrClass, variant, { regularBase64, blueprintBase64 }) {
+        if (typeof buildingIdOrClass === "function") {
+            buildingIdOrClass = new buildingIdOrClass().id;
+        }
+
+        const spriteId =
+            buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant) + ".png";
+
+        if (regularBase64) {
+            this.registerSprite("sprites/buildings/" + spriteId, regularBase64);
+        }
+
+        if (blueprintBase64) {
+            this.registerSprite("sprites/blueprints/" + spriteId, blueprintBase64);
+        }
+    }
+
+    /**
+     * @param {new () => MetaBuilding} metaClass
+     * @param {string} variant
+     * @param {object} payload
+     * @param {number[]=} payload.rotationVariants
+     * @param {string=} payload.tutorialImageBase64
+     * @param {string=} payload.regularSpriteBase64
+     * @param {string=} payload.blueprintSpriteBase64
+     * @param {string=} payload.name
+     * @param {string=} payload.description
+     * @param {Vector=} payload.dimensions
+     * @param {(root: GameRoot) => [string, string][]} payload.additionalStatistics
+     * @param {(root: GameRoot) => boolean[]} payload.isUnlocked
+     */
+    addVariantToExistingBuilding(metaClass, variant, payload) {
+        if (!payload.rotationVariants) {
+            payload.rotationVariants = [0];
+        }
+
+        if (payload.tutorialImageBase64) {
+            this.setBuildingTutorialImage(metaClass, variant, payload.tutorialImageBase64);
+        }
+        if (payload.regularSpriteBase64) {
+            this.registerBuildingSprites(metaClass, variant, { regularBase64: payload.regularSpriteBase64 });
+        }
+        if (payload.blueprintSpriteBase64) {
+            this.registerBuildingSprites(metaClass, variant, {
+                blueprintBase64: payload.blueprintSpriteBase64,
+            });
+        }
+        if (payload.name && payload.description) {
+            this.registerBuildingTranslation(metaClass, variant, {
+                name: payload.name,
+                description: payload.description,
+            });
+        }
+
+        const internalId = new metaClass().getId() + "-" + variant;
+
+        // Extend static methods
+        this.extendObject(metaClass, ({ $old }) => ({
+            getAllVariantCombinations() {
+                return [
+                    ...$old.bind(this).getAllVariantCombinations(),
+                    ...payload.rotationVariants.map(rotationVariant => ({
+                        internalId,
+                        variant,
+                        rotationVariant,
+                    })),
+                ];
+            },
+        }));
+
+        // Dimensions
+        const $variant = variant;
+        if (payload.dimensions) {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getDimensions(variant) {
+                    if (variant === $variant) {
+                        return payload.dimensions;
+                    }
+                    return $old.getDimensions.bind(this)(...arguments);
+                },
+            }));
+        }
+
+        if (payload.additionalStatistics) {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getAdditionalStatistics(root, variant) {
+                    if (variant === $variant) {
+                        return payload.additionalStatistics(root);
+                    }
+                    return $old.getAdditionalStatistics.bind(this)(root, variant);
+                },
+            }));
+        }
+
+        if (payload.isUnlocked) {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getAvailableVariants(root) {
+                    if (payload.isUnlocked(root)) {
+                        return [...$old.getAvailableVariants.bind(this)(root), $variant];
+                    }
+                    return $old.getAvailableVariants.bind(this)(root);
+                },
+            }));
+        }
+
+        // Register our variant finally
+        payload.rotationVariants.forEach(rotationVariant =>
+            shapez.registerBuildingVariant(internalId, metaClass, variant, rotationVariant)
+        );
     }
 }

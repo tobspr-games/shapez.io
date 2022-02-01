@@ -65,7 +65,7 @@ export class GameHUD {
             /* typehints:end */
         };
 
-        if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
+        if (G_IS_DEV) {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 

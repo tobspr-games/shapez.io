@@ -211,7 +211,6 @@ export class ModLoader {
             const modDataFile = "modsettings_" + meta.id + "__" + meta.version + ".json";
 
             if (meta.minimumGameVersion) {
-                console.warn(meta.minimumGameVersion, G_BUILD_VERSION);
                 const minimumGameVersion = meta.minimumGameVersion;
                 if (!semverValidRange(minimumGameVersion)) {
                     alert("Mod " + meta.id + " has invalid minimumGameVersion: " + minimumGameVersion);
