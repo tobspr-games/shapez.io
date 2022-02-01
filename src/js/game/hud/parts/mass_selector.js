@@ -315,6 +315,7 @@ export class HUDMassSelector extends BaseHUDPart {
             parameters.context.stroke();
 
             parameters.context.fillStyle = THEME.map.selectionOverlay;
+            parameters.context.beginPath();
 
             const renderedUids = new Set();
 
@@ -336,32 +337,31 @@ export class HUDMassSelector extends BaseHUDPart {
                         }
 
                         const bounds = staticComp.getTileSpaceBounds();
-                        parameters.context.beginRoundedRect(
+                        parameters.context.rect(
                             bounds.x * globalConfig.tileSize + boundsBorder,
                             bounds.y * globalConfig.tileSize + boundsBorder,
                             bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                            bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                            2
+                            bounds.h * globalConfig.tileSize - 2 * boundsBorder
                         );
-                        parameters.context.fill();
                     }
                 }
             }
+            parameters.context.fill();
         }
 
         parameters.context.fillStyle = THEME.map.selectionOverlay;
+        parameters.context.beginPath();
         this.selectedUids.forEach(uid => {
             const entity = this.root.entityMgr.findByUid(uid);
             const staticComp = entity.components.StaticMapEntity;
             const bounds = staticComp.getTileSpaceBounds();
-            parameters.context.beginRoundedRect(
+            parameters.context.rect(
                 bounds.x * globalConfig.tileSize + boundsBorder,
                 bounds.y * globalConfig.tileSize + boundsBorder,
                 bounds.w * globalConfig.tileSize - 2 * boundsBorder,
-                bounds.h * globalConfig.tileSize - 2 * boundsBorder,
-                2
+                bounds.h * globalConfig.tileSize - 2 * boundsBorder
             );
-            parameters.context.fill();
         });
+        parameters.context.fill();
     }
 }
