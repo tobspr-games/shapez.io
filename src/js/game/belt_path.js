@@ -1476,7 +1476,11 @@ export class BeltPath extends BasicSerializableObject {
                     if (drawStack.length > 1) {
                         // Check if we can append to the stack, since its already a stack of two same items
                         const referenceItem = drawStack[0];
-                        if (Math.abs(referenceItem[0][drawStackProp] - worldPos[drawStackProp]) < 0.001) {
+
+                        if (
+                            referenceItem[1].equals(item) &&
+                            Math.abs(referenceItem[0][drawStackProp] - worldPos[drawStackProp]) < 0.001
+                        ) {
                             // Will continue stack
                         } else {
                             // Start a new stack, since item doesn't follow in row
