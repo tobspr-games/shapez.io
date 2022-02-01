@@ -2,7 +2,7 @@ import { generateMatrixRotations } from "../../core/utils";
 import { Vector } from "../../core/vector";
 import { WireTunnelComponent } from "../components/wire_tunnel";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -11,6 +11,15 @@ const wireTunnelOverlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1,
 export class MetaWireTunnelBuilding extends MetaBuilding {
     constructor() {
         super("wire_tunnel");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 39,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

@@ -22,31 +22,34 @@ import { ItemProducerComponent } from "./components/item_producer";
 import { GoalAcceptorComponent } from "./components/goal_acceptor";
 
 export function initComponentRegistry() {
-    gComponentRegistry.register(StaticMapEntityComponent);
-    gComponentRegistry.register(BeltComponent);
-    gComponentRegistry.register(ItemEjectorComponent);
-    gComponentRegistry.register(ItemAcceptorComponent);
-    gComponentRegistry.register(MinerComponent);
-    gComponentRegistry.register(ItemProcessorComponent);
-    gComponentRegistry.register(UndergroundBeltComponent);
-    gComponentRegistry.register(HubComponent);
-    gComponentRegistry.register(StorageComponent);
-    gComponentRegistry.register(WiredPinsComponent);
-    gComponentRegistry.register(BeltUnderlaysComponent);
-    gComponentRegistry.register(WireComponent);
-    gComponentRegistry.register(ConstantSignalComponent);
-    gComponentRegistry.register(LogicGateComponent);
-    gComponentRegistry.register(LeverComponent);
-    gComponentRegistry.register(WireTunnelComponent);
-    gComponentRegistry.register(DisplayComponent);
-    gComponentRegistry.register(BeltReaderComponent);
-    gComponentRegistry.register(FilterComponent);
-    gComponentRegistry.register(ItemProducerComponent);
-    gComponentRegistry.register(GoalAcceptorComponent);
+    const components = [
+        StaticMapEntityComponent,
+        BeltComponent,
+        ItemEjectorComponent,
+        ItemAcceptorComponent,
+        MinerComponent,
+        ItemProcessorComponent,
+        UndergroundBeltComponent,
+        HubComponent,
+        StorageComponent,
+        WiredPinsComponent,
+        BeltUnderlaysComponent,
+        WireComponent,
+        ConstantSignalComponent,
+        LogicGateComponent,
+        LeverComponent,
+        WireTunnelComponent,
+        DisplayComponent,
+        BeltReaderComponent,
+        FilterComponent,
+        ItemProducerComponent,
+        GoalAcceptorComponent,
+    ];
+    components.forEach(component => gComponentRegistry.register(component));
 
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
 
-    // Sanity check - If this is thrown, you (=me, lol) forgot to add a new component here
+    // Sanity check - If this is thrown, you forgot to add a new component here
 
     assert(
         // @ts-ignore

@@ -23,6 +23,23 @@ export class MetaRotaterBuilding extends MetaBuilding {
         super("rotater");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 11,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 12,
+                variant: enumRotaterVariants.ccw,
+            },
+            {
+                internalId: 13,
+                variant: enumRotaterVariants.rotate180,
+            },
+        ];
+    }
+
     getSilhouetteColor() {
         return "#7dc6cd";
     }
@@ -111,7 +128,7 @@ export class MetaRotaterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "shape",
                     },
                 ],

@@ -79,7 +79,7 @@ mainMenu:
     puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
         Puzzle na Steam para ainda mais diversão!
     puzzleDlcWishlist: Lista de desejos agora!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Ver Dlc
 dialogs:
     buttons:
         ok: OK
@@ -447,8 +447,8 @@ ingame:
         clearItems: Limpar Itens
         share: Partilhar
         report: Reportar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Apagar Construções
+        resetPuzzle: Recomeçar Puzzle
     puzzleEditorControls:
         title: Criador de Puzzle
         instructions:
@@ -476,7 +476,7 @@ ingame:
         titleRatingDesc: A tua avaliação ajudar-me-á a fazer melhores sugestões no futuro
         continueBtn: Continua a Jogar
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Próximo Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Pequeno Código
@@ -1049,7 +1049,7 @@ settings:
             description: Controla o tamanho das formas na visão geral do mapa (aplicando
                 zoom out).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
+            title: Shape Tooltip - Mostrar Sempre
             description: Whether to always show the shape tooltip when hovering buildings,
                 instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
@@ -1275,23 +1275,23 @@ puzzleMenu:
         easy: Fácil
         medium: Médio
         hard: Difícil
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        unknown: Sem Classificação
+    dlcHint: Já compraste o DLC? Certifica-te de que o ativaste clicando no botãoo direito
+        de shapez.io na tua biblioteca, selecionar Properties > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Procurar
+        placeholder: Introduzir um puzzle ou nome de autor
+        includeCompleted: Inclusão Completa
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Qualquer Dificuldade
+            easy: Fácil
+            medium: Médio
+            hard: Difícil
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Qualquer duração
+            short: Curta (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longa (> 10 min)
 backendErrors:
     ratelimit: Estás a realizar as tuas ações demasiado rápido. Aguarda um pouco.
     invalid-api-key: Falha ao cominucar com o backend, por favor tenta

@@ -73,6 +73,9 @@ mainMenu:
     puzzleDlcText: 持续优化，追求极致效率。在限定空间内使用有限的设施来创造图形！《异形工厂》（Shapez.io）的首个DLC“谜题挑战者”将会给大家带来更烧脑、更自由的全新挑战！
     puzzleDlcWishlist: 添加愿望单！
     puzzleDlcViewNow: 查看DLC
+    mods:
+        title: 激活游戏模组（Mods）
+        warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者”DLC，请关闭所有游戏模组（Mods）。
 dialogs:
     buttons:
         ok: 确认
@@ -223,6 +226,13 @@ dialogs:
     puzzleDelete:
         title: 删除谜题？
         desc: 您是否确认删除 '<title>'？删除后不可恢复！
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -843,6 +853,7 @@ settings:
             description: 在设施上悬停时是否始终显示图形工具提示， 而不是必须按住“Alt”键。
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> 赫兹
+    newBadge: 新的！
 keybindings:
     title: 按键设定
     hint: 提示：使用 CTRL、SHIFT、ALT！这些键在放置设施时有不同的效果。
@@ -855,6 +866,7 @@ keybindings:
         massSelect: 批量选择
         buildings: 设施快捷键
         placementModifiers: 放置设施修饰键
+        mods: 由游戏模组（Mods）提供
     mappings:
         confirm: 确认
         back: 返回
@@ -1080,3 +1092,17 @@ backendErrors:
     timeout: 请求超时。
     too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
     no-permission: 您没有执行此操作的权限。
+mods:
+    title: 游戏模组（Mods）
+    author: 作者
+    version: 版本
+    openFolder: 打开游戏模组（Mods）文件夹
+    folderOnlyStandalone: 只有完整版才可以打开游戏模组（Mods）文件夹。
+    browseMods: 浏览游戏模组（Mods）
+    modsInfo: 要安装和管理游戏模组（Mods），请将它们复制到游戏目录中的mods文件夹。您也可以使用右上角的“打开Mods文件夹”按钮。
+    noModSupport: 您需要在Steam平台获得完整版才可以安装游戏模组（Mods）。
+    togglingComingSoon:
+        title: 即将开放
+        description: 当前只能通过将游戏模组（Mods）文件复制到mods文件夹或从mods文件夹移除来启用或禁用游戏模组（Mods）。
+            但是，可以切换游戏模组（Mods）已经计划在之后的更新中实现！
+    modWebsite: Website

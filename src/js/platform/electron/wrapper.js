@@ -1,6 +1,5 @@
 import { NoAchievementProvider } from "../browser/no_achievement_provider";
 import { PlatformWrapperImplBrowser } from "../browser/wrapper";
-import { getIPCRenderer } from "../../core/utils";
 import { createLogger } from "../../core/logging";
 import { StorageImplElectron } from "./storage";
 import { SteamAchievementProvider } from "./steam_achievement_provider";
@@ -71,15 +70,13 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     }
 
     initializeDlcStatus() {
-        const renderer = getIPCRenderer();
-
         if (G_WEGAME_VERSION) {
             return Promise.resolve();
         }
 
         logger.log("Checking DLC ownership ...");
         // @todo: Don't hardcode the app id
-        return renderer.invoke("steam:check-app-ownership", 1625400).then(
+        return ipcRenderer.invoke("steam:check-app-ownership", 1625400).then(
             res => {
                 logger.log("Got DLC ownership:", res);
                 this.dlcs.puzzle = Boolean(res);
@@ -106,7 +103,7 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     }
 
     setFullscreen(flag) {
-        getIPCRenderer().send("set-fullscreen", flag);
+        ipcRenderer.send("set-fullscreen", flag);
     }
 
     getSupportsAppExit() {
@@ -115,6 +112,6 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
 
     exitApp() {
         logger.log(this, "Sending app exit signal");
-        getIPCRenderer().send("exit-app");
+        ipcRenderer.send("exit-app");
     }
 }

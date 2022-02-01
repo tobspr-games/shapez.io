@@ -4,6 +4,8 @@ import { AtlasSprite } from "../core/sprites";
 import { Vector } from "../core/vector";
 /* typehints:end */
 
+import { gMetaBuildingRegistry } from "../core/global_registries";
+
 /**
  * @typedef {{
  *   metaClass: typeof MetaBuilding,
@@ -19,7 +21,7 @@ import { Vector } from "../core/vector";
 
 /**
  * Stores a lookup table for all building variants (for better performance)
- * @type {Object<number, BuildingVariantIdentifier>}
+ * @type {Object<number|string, BuildingVariantIdentifier>}
  */
 export const gBuildingVariants = {
     // Set later
@@ -27,13 +29,13 @@ export const gBuildingVariants = {
 
 /**
  * Mapping from 'metaBuildingId/variant/rotationVariant' to building code
- * @type {Map<string, number>}
+ * @type {Map<string, number|string>}
  */
 const variantsCache = new Map();
 
 /**
  * Registers a new variant
- * @param {number} code
+ * @param {number|string} code
  * @param {typeof MetaBuilding} meta
  * @param {string} variant
  * @param {number} rotationVariant
@@ -47,6 +49,7 @@ export function registerBuildingVariant(
     assert(!gBuildingVariants[code], "Duplicate id: " + code);
     gBuildingVariants[code] = {
         metaClass: meta,
+        metaInstance: gMetaBuildingRegistry.findByClass(meta),
         variant,
         rotationVariant,
         // @ts-ignore
@@ -55,8 +58,19 @@ export function registerBuildingVariant(
 }
 
 /**
+ * Hashes the combination of buildng, variant and rotation variant
+ * @param {string} buildingId
+ * @param {string} variant
+ * @param {number} rotationVariant
+ * @returns
+ */
+function generateBuildingHash(buildingId, variant, rotationVariant) {
+    return buildingId + "/" + variant + "/" + rotationVariant;
+}
+
+/**
  *
- * @param {number} code
+ * @param {string|number} code
  * @returns {BuildingVariantIdentifier}
  */
 export function getBuildingDataFromCode(code) {
@@ -70,8 +84,8 @@ export function getBuildingDataFromCode(code) {
 export function buildBuildingCodeCache() {
     for (const code in gBuildingVariants) {
         const data = gBuildingVariants[code];
-        const hash = data.metaInstance.getId() + "/" + data.variant + "/" + data.rotationVariant;
-        variantsCache.set(hash, +code);
+        const hash = generateBuildingHash(data.metaInstance.getId(), data.variant, data.rotationVariant);
+        variantsCache.set(hash, isNaN(+code) ? code : +code);
     }
 }
 
@@ -80,10 +94,10 @@ export function buildBuildingCodeCache() {
  * @param {MetaBuilding} metaBuilding
  * @param {string} variant
  * @param {number} rotationVariant
- * @returns {number}
+ * @returns {number|string}
  */
 export function getCodeFromBuildingData(metaBuilding, variant, rotationVariant) {
-    const hash = metaBuilding.getId() + "/" + variant + "/" + rotationVariant;
+    const hash = generateBuildingHash(metaBuilding.getId(), variant, rotationVariant);
     const result = variantsCache.get(hash);
     if (G_IS_DEV) {
         if (!result) {

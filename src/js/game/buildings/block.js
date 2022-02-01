@@ -2,11 +2,20 @@
 import { Entity } from "../entity";
 /* typehints:end */
 
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 
 export class MetaBlockBuilding extends MetaBuilding {
     constructor() {
         super("block");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 64,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

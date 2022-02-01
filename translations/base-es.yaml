@@ -444,8 +444,8 @@ ingame:
         clearItems: Eliminar todos los elementos
         share: Compartir
         report: Reportar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Borrar Edificios
+        resetPuzzle: Reiniciar Puzzle
     puzzleEditorControls:
         title: Editor de Puzles
         instructions:
@@ -473,7 +473,7 @@ ingame:
         titleRatingDesc: Tu puntuación me ayudará a hacerte mejores sugerencias en el futuro
         continueBtn: Continuar Jugando
         menuBtn: Menú
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Siguiente Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Clave
@@ -820,9 +820,8 @@ storyRewards:
             sola cinta!
     reward_belt_reader:
         title: Lector de cinta
-        desc: You have now unlocked the <strong>belt reader</strong>! It allows you to
-            measure the throughput of a belt.<br><br>And wait until you unlock
-            wires - then it gets really useful!
+        desc: Has desbloqueado el <strong>Lector de cinta</strong>! Este te permite medir el rendimiento de una cinta.
+        <br><br>Y espera a desbloquear los cables... Se vuelve súper útil!
     reward_rotater_180:
         title: Rotador (180 grados)
         desc: ¡Has desbloqueado el <strong>rotador</strong> de 180 grados! - Te permite
@@ -1048,9 +1047,9 @@ settings:
             description: Controla el tamaño de los recursos en la vista de aérea del mapa
                 (Al hacer zoom mínimo).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Descripción de la forma - Mostrar siempre
+            description: Mostrar siempre la descripción de la forma cuando pasas por encima de los edificios
+            en vez de tener que pulsar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
 keybindings:
@@ -1130,11 +1129,11 @@ keybindings:
         rotateToDown: "Rotar: Apuntar hacia abajo"
         rotateToRight: "Rotar: Apuntar hacia la derecha"
         rotateToLeft: "Rotar: Apuntar hacia la izquierda"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
-        showShapeTooltip: Show shape output tooltip
+        constant_producer: Productor constante
+        goal_acceptor: Aceptador de meta
+        block: Bloque
+        massSelectClear: Limpiar cintas
+        showShapeTooltip: Mostrar información de salida de forma
 about:
     title: Sobre el juego
     body: >-
@@ -1178,7 +1177,7 @@ tips:
       <b>T</b>
     - Tener una buena proporción entre edificion maximizará su eficiencia
     - A su máximo nivel, 5 extractores llenarán por completo una cinta
-      trasnportadora.
+      transportadora.
     - ¡No te olvides de utilizár túneles!
     - No es necesario dividir los items de manera uniforme para conseguír la
       mayor eficiencia.
@@ -1285,19 +1284,19 @@ puzzleMenu:
     dlcHint: ¿Ya compraste el DLC? Asegurate de tenerlo activado haciendo click
         derecho a shapez.io en tu biblioteca, selecionando propiedades > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Buscar
+        placeholder: Escribe un nombre de puzzle o autor
+        includeCompleted: Incluir completado
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Cualquier dificultad
+            easy: Fácil
+            medium: Medio
+            hard: Difícil
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Cualquier duración
+            short: Corta (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Larga (> 10 min)
 backendErrors:
     ratelimit: Estás haciendo tus acciones con demasiada frecuencia. Por favor,
         espera un poco.
@@ -1315,7 +1314,7 @@ backendErrors:
     bad-title-too-many-spaces: El título de tu puzle es demasiado breve.
     bad-shape-key-in-emitter: Un productor de un solo elemento tiene un elemento no válido.
     bad-shape-key-in-goal: Un aceptador de objetivos tiene un elemento no válido.
-    no-emitters: Tu puzle no contiene ningún productor de un solo item.
+    no-emitters: Tu puzle no contiene ningún productor de un solo objeto.
     no-goals: Tu puzle no contiene ningún aceptador de objetivos.
     short-key-already-taken: Esta clave ya está siendo usada, por favor usa otra.
     can-not-report-your-own-puzzle: No pudes reportar tu propio puzle.

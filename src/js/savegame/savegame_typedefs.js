@@ -2,6 +2,14 @@
  * @typedef {import("../game/entity").Entity} Entity
  *
  * @typedef {{
+ *   id: string;
+ *   version: string;
+ *   website: string;
+ *   name: string;
+ *   author: string;
+ * }[]} SavegameStoredMods
+ *
+ * @typedef {{
  *   failedMam: boolean,
  *   trashedCount: number,
  *   usedInverseRotater: boolean
@@ -17,7 +25,8 @@
  *   pinnedShapes: any,
  *   waypoints: any,
  *   entities: Array<Entity>,
- *   beltPaths: Array<any>
+ *   beltPaths: Array<any>,
+ *   modExtraData: Object
  * }} SerializedGame
  *
  * @typedef {{
@@ -25,6 +34,7 @@
  *   dump: SerializedGame,
  *   stats: SavegameStats,
  *   lastUpdate: number,
+ *   mods: SavegameStoredMods
  * }} SavegameData
  *
  * @typedef {{

@@ -15,7 +15,7 @@ export const enumLogicGateVariants = {
 };
 
 /** @enum {string} */
-export const enumVariantToGate = {
+const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.and,
     [enumLogicGateVariants.not]: enumLogicGateType.not,
     [enumLogicGateVariants.xor]: enumLogicGateType.xor,
@@ -39,6 +39,27 @@ const colors = {
 export class MetaLogicGateBuilding extends MetaBuilding {
     constructor() {
         super("logic_gate");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 32,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 34,
+                variant: enumLogicGateVariants.not,
+            },
+            {
+                internalId: 35,
+                variant: enumLogicGateVariants.xor,
+            },
+            {
+                internalId: 36,
+                variant: enumLogicGateVariants.or,
+            },
+        ];
     }
 
     getSilhouetteColor(variant) {

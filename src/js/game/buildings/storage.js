@@ -6,7 +6,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { StorageComponent } from "../components/storage";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -15,6 +15,15 @@ const storageSize = 5000;
 export class MetaStorageBuilding extends MetaBuilding {
     constructor() {
         super("storage");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 21,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {
@@ -65,11 +74,11 @@ export class MetaStorageBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                     {
                         pos: new Vector(1, 1),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ],
             })

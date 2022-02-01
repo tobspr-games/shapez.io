@@ -145,7 +145,7 @@ module.exports = ({
                             braces: false,
                             ecma: es6 ? 6 : 5,
                             preamble:
-                                "/* shapez.io Codebase - Copyright 2020 Tobias Springer - " +
+                                "/* shapez.io Codebase - Copyright 2022 tobspr Games - " +
                                 getVersion() +
                                 " @ " +
                                 getRevision() +
@@ -177,6 +177,7 @@ module.exports = ({
                     type: "javascript/auto",
                 },
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
+                { test: /\.nobuild/, loader: "ignore-loader" },
                 {
                     test: /\.js$/,
                     enforce: "pre",

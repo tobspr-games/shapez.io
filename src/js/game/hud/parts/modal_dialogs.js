@@ -150,7 +150,7 @@ export class HUDModalDialogs extends BaseHUDPart {
 
     internalShowDialog(dialog) {
         const elem = dialog.createElement();
-        dialog.setIndex(this.dialogStack.length);
+        dialog.setIndex(1000 + this.dialogStack.length);
 
         // Hide last dialog in queue
         if (this.dialogStack.length > 0) {

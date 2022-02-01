@@ -2,15 +2,14 @@ import { globalConfig } from "../../core/config";
 import { Loader } from "../../core/loader";
 import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
-import { DisplayComponent } from "../components/display";
-import { GameSystemWithFilter } from "../game_system_with_filter";
+import { GameSystem } from "../game_system";
 import { isTrueItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
 
-export class DisplaySystem extends GameSystemWithFilter {
+export class DisplaySystem extends GameSystem {
     constructor(root) {
-        super(root, [DisplayComponent]);
+        super(root);
 
         /** @type {Object<string, import("../../core/draw_utils").AtlasSprite>} */
         this.displaySprites = {};

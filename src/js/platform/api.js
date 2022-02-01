@@ -3,7 +3,6 @@ import { Application } from "../application";
 /* typehints:end */
 import { createLogger } from "../core/logging";
 import { compressX64 } from "../core/lzstring";
-import { getIPCRenderer } from "../core/utils";
 import { T } from "../translations";
 
 const logger = createLogger("puzzle-api");
@@ -113,9 +112,7 @@ export class ClientAPI {
             return Promise.resolve({ token });
         }
 
-        const renderer = getIPCRenderer();
-
-        return renderer.invoke("steam:get-ticket").then(
+        return ipcRenderer.invoke("steam:get-ticket").then(
             ticket => {
                 logger.log("Got auth ticket:", ticket);
                 return this._request("/v1/public/login", {

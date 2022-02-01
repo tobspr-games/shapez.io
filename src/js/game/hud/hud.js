@@ -1,6 +1,7 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { Signal } from "../../core/signal";
+import { MOD_SIGNALS } from "../../mods/mod_signals";
 import { KEYMAPPINGS } from "../key_action_mapper";
 import { MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
@@ -64,7 +65,7 @@ export class GameHUD {
             /* typehints:end */
         };
 
-        if (G_IS_DEV && globalConfig.debug.enableEntityInspector) {
+        if (G_IS_DEV) {
             this.parts.entityDebugger = new HUDEntityDebugger(this.root);
         }
 
@@ -89,8 +90,11 @@ export class GameHUD {
             this.parts[partId] = new part(this.root);
         }
 
+        MOD_SIGNALS.hudInitializer.dispatch(this.root);
+
         const frag = document.createDocumentFragment();
         for (const key in this.parts) {
+            MOD_SIGNALS.hudElementInitialized.dispatch(this.parts[key]);
             this.parts[key].createElements(frag);
         }
 
@@ -98,6 +102,7 @@ export class GameHUD {
 
         for (const key in this.parts) {
             this.parts[key].initialize();
+            MOD_SIGNALS.hudElementFinalized.dispatch(this.parts[key]);
         }
 
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);

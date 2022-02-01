@@ -3,7 +3,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -12,6 +12,15 @@ const overlayMatrix = generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 0]);
 export class MetaAnalyzerBuilding extends MetaBuilding {
     constructor() {
         super("analyzer");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 43,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

@@ -71,6 +71,7 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false, w
                     type: "javascript/auto",
                 },
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
+                { test: /\.nobuild/, loader: "ignore-loader" },
                 {
                     test: /\.md$/,
                     use: [
@@ -91,6 +92,9 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false, w
                                 start: "typehints:start",
                                 end: "typehints:end",
                             },
+                        },
+                        {
+                            loader: path.resolve(__dirname, "mod.js"),
                         },
                     ],
                 },

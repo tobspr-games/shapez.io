@@ -2,9 +2,6 @@ import { globalConfig } from "../core/config";
 import { DrawParameters } from "../core/draw_parameters";
 import { BasicSerializableObject } from "../savegame/serialization";
 
-/** @type {ItemType[]} **/
-export const itemTypes = ["shape", "color", "boolean"];
-
 /**
  * Class for items on belts etc. Not an entity for performance reasons
  */

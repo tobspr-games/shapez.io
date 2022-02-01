@@ -1,7 +1,9 @@
 import { globalConfig } from "../core/config";
+import { smoothenDpi } from "../core/dpi_manager";
 import { DrawParameters } from "../core/draw_parameters";
 import { createLogger } from "../core/logging";
 import { Rectangle } from "../core/rectangle";
+import { ORIGINAL_SPRITE_SCALE } from "../core/sprites";
 import { clamp, epsilonCompare, round4Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
@@ -1430,6 +1432,12 @@ export class BeltPath extends BasicSerializableObject {
 
         let trackPos = 0.0;
 
+        /**
+         * @type {Array<[Vector, BaseItem]>}
+         */
+        let drawStack = [];
+        let drawStackProp = "";
+
         // Iterate whole track and check items
         for (let i = 0; i < this.entityPath.length; ++i) {
             const entity = this.entityPath[i];
@@ -1449,25 +1457,189 @@ export class BeltPath extends BasicSerializableObject {
                 const worldPos = staticComp.localTileToWorld(localPos).toWorldSpaceCenterOfTile();
 
                 const distanceAndItem = this.items[currentItemIndex];
+                const item = distanceAndItem[1 /* item */];
+                const nextItemDistance = distanceAndItem[0 /* nextDistance */];
 
-                distanceAndItem[1 /* item */].drawItemCenteredClipped(
-                    worldPos.x,
-                    worldPos.y,
-                    parameters,
-                    globalConfig.defaultItemDiameter
-                );
+                if (
+                    !parameters.visibleRect.containsCircle(
+                        worldPos.x,
+                        worldPos.y,
+                        globalConfig.defaultItemDiameter
+                    )
+                ) {
+                    // this one isn't visible, do not  append it
+                    // Start a new stack
+                    this.drawDrawStack(drawStack, parameters, drawStackProp);
+                    drawStack = [];
+                    drawStackProp = "";
+                } else {
+                    if (drawStack.length > 1) {
+                        // Check if we can append to the stack, since its already a stack of two same items
+                        const referenceItem = drawStack[0];
+
+                        if (
+                            referenceItem[1].equals(item) &&
+                            Math.abs(referenceItem[0][drawStackProp] - worldPos[drawStackProp]) < 0.001
+                        ) {
+                            // Will continue stack
+                        } else {
+                            // Start a new stack, since item doesn't follow in row
+                            this.drawDrawStack(drawStack, parameters, drawStackProp);
+                            drawStack = [];
+                            drawStackProp = "";
+                        }
+                    } else if (drawStack.length === 1) {
+                        const firstItem = drawStack[0];
+
+                        // Check if we can make it a stack
+                        if (firstItem[1 /* item */].equals(item)) {
+                            // Same item, check if it is either horizontal or vertical
+                            const startPos = firstItem[0 /* pos */];
+
+                            if (Math.abs(startPos.x - worldPos.x) < 0.001) {
+                                drawStackProp = "x";
+                            } else if (Math.abs(startPos.y - worldPos.y) < 0.001) {
+                                drawStackProp = "y";
+                            } else {
+                                // Start a new stack
+                                this.drawDrawStack(drawStack, parameters, drawStackProp);
+                                drawStack = [];
+                                drawStackProp = "";
+                            }
+                        } else {
+                            // Start a new stack, since item doesn't equal
+                            this.drawDrawStack(drawStack, parameters, drawStackProp);
+                            drawStack = [];
+                            drawStackProp = "";
+                        }
+                    } else {
+                        // First item of stack, do nothing
+                    }
+
+                    drawStack.push([worldPos, item]);
+                }
 
                 // Check for the next item
-                currentItemPos += distanceAndItem[0 /* nextDistance */];
+                currentItemPos += nextItemDistance;
                 ++currentItemIndex;
+
+                if (
+                    nextItemDistance > globalConfig.itemSpacingOnBelts + 0.001 ||
+                    drawStack.length > globalConfig.maxBeltShapeBundleSize
+                ) {
+                    // If next item is not directly following, abort drawing
+                    this.drawDrawStack(drawStack, parameters, drawStackProp);
+                    drawStack = [];
+                    drawStackProp = "";
+                }
 
                 if (currentItemIndex >= this.items.length) {
                     // We rendered all items
+
+                    this.drawDrawStack(drawStack, parameters, drawStackProp);
                     return;
                 }
             }
 
             trackPos += beltLength;
         }
+
+        this.drawDrawStack(drawStack, parameters, drawStackProp);
+    }
+
+    /**
+     *
+     * @param {HTMLCanvasElement} canvas
+     * @param {CanvasRenderingContext2D} context
+     * @param {number} w
+     * @param {number} h
+     * @param {number} dpi
+     * @param {object} param0
+     * @param {string} param0.direction
+     * @param {Array<[Vector, BaseItem]>} param0.stack
+     * @param {GameRoot} param0.root
+     * @param {number} param0.zoomLevel
+     */
+    drawShapesInARow(canvas, context, w, h, dpi, { direction, stack, root, zoomLevel }) {
+        context.scale(dpi, dpi);
+
+        if (G_IS_DEV && globalConfig.debug.showShapeGrouping) {
+            context.fillStyle = "rgba(0, 0, 255, 0.5)";
+            context.fillRect(0, 0, w, h);
+        }
+
+        const parameters = new DrawParameters({
+            context,
+            desiredAtlasScale: ORIGINAL_SPRITE_SCALE,
+            root,
+            visibleRect: new Rectangle(-1000, -1000, 2000, 2000),
+            zoomLevel,
+        });
+
+        const itemSize = globalConfig.itemSpacingOnBelts * globalConfig.tileSize;
+        const item = stack[0];
+        const pos = new Vector(itemSize / 2, itemSize / 2);
+
+        for (let i = 0; i < stack.length; i++) {
+            item[1].drawItemCenteredClipped(pos.x, pos.y, parameters, globalConfig.defaultItemDiameter);
+            pos[direction] += globalConfig.itemSpacingOnBelts * globalConfig.tileSize;
+        }
+    }
+
+    /**
+     * @param {Array<[Vector, BaseItem]>} stack
+     * @param {DrawParameters} parameters
+     */
+    drawDrawStack(stack, parameters, directionProp) {
+        if (stack.length === 0) {
+            return;
+        }
+
+        const firstItem = stack[0];
+        const firstItemPos = firstItem[0];
+        if (stack.length === 1) {
+            firstItem[1].drawItemCenteredClipped(
+                firstItemPos.x,
+                firstItemPos.y,
+                parameters,
+                globalConfig.defaultItemDiameter
+            );
+            return;
+        }
+
+        const itemSize = globalConfig.itemSpacingOnBelts * globalConfig.tileSize;
+        const inverseDirection = directionProp === "x" ? "y" : "x";
+
+        const dimensions = new Vector(itemSize, itemSize);
+        dimensions[inverseDirection] *= stack.length;
+
+        const directionVector = firstItemPos.copy().sub(stack[1][0]);
+
+        const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
+
+        const sprite = this.root.buffers.getForKey({
+            key: "beltpaths",
+            subKey: "stack-" + directionProp + "-" + dpi + "-" + stack.length + firstItem[1].serialize(),
+            dpi,
+            w: dimensions.x,
+            h: dimensions.y,
+            redrawMethod: this.drawShapesInARow.bind(this),
+            additionalParams: {
+                direction: inverseDirection,
+                stack,
+                root: this.root,
+                zoomLevel: parameters.zoomLevel,
+            },
+        });
+
+        const anchor = directionVector[inverseDirection] < 0 ? firstItem : stack[stack.length - 1];
+
+        parameters.context.drawImage(
+            sprite,
+            anchor[0].x - itemSize / 2,
+            anchor[0].y - itemSize / 2,
+            dimensions.x,
+            dimensions.y
+        );
     }
 }

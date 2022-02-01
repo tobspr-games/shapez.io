@@ -10,16 +10,17 @@ import {
     generateFileDownload,
     isSupportedBrowser,
     makeButton,
-    makeButtonElement,
     makeDiv,
+    makeDivElement,
     removeAllChildren,
     startFileChoose,
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { MODS } from "../mods/modloader";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
-import { getApplicationSettingById } from "../profile/application_settings";
+import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
 const trim = require("trim");
@@ -41,6 +42,7 @@ export class MainMenuState extends GameState {
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
         const showPuzzleDLC = !G_WEGAME_VERSION && (G_IS_STANDALONE || G_IS_DEV);
         const showWegameFooter = G_WEGAME_VERSION;
+        const hasMods = MODS.anyModsActive();
 
         let showExternalLinks = true;
 
@@ -94,7 +96,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${showUpdateLabel ? `<span class="updateLabel">v${G_BUILD_VERSION}!</span>` : ""}
+                ${showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""}
             </div>
 
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
@@ -112,7 +114,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 ${
-                    showPuzzleDLC && ownsPuzzleDLC
+                    showPuzzleDLC && ownsPuzzleDLC && !hasMods
                         ? `
                     <div class="puzzleContainer">
                         <img class="dlcLogo" src="${cachebust(
@@ -126,7 +128,7 @@ export class MainMenuState extends GameState {
                 }
 
                 ${
-                    showPuzzleDLC && !ownsPuzzleDLC
+                    showPuzzleDLC && !ownsPuzzleDLC && !hasMods
                         ? `
                     <div class="puzzleContainer notOwned">
                         <span class="badge">
@@ -147,6 +149,38 @@ export class MainMenuState extends GameState {
                     </div>`
                         : ""
                 }
+                ${
+                    hasMods
+                        ? `
+
+                        <div class="modsOverview">
+                            <div class="header">
+                                <h3>${T.mods.title}</h3>
+                                <button class="styledButton editMods"></button>
+                            </div>
+                            <div class="modsList">
+                            ${MODS.mods
+                                .map(mod => {
+                                    return `
+                                    <div class="mod">
+                                        <div class="name">${mod.metadata.name}</div>
+                                        <div class="author">by ${mod.metadata.author}</div>
+                                    </div>
+                                `;
+                                })
+                                .join("")}
+                            </div>
+
+                            <div class="dlcHint">
+                                ${T.mainMenu.mods.warningPuzzleDLC}
+                            </div>
+
+
+                        </div>
+                        `
+                        : ""
+                }
+
             </div>
 
             ${
@@ -195,7 +229,7 @@ export class MainMenuState extends GameState {
                     </div>
                     <div class="author">${T.mainMenu.madeBy.replace(
                         "<author-link>",
-                        '<a class="producerLink" target="_blank">Tobias Springer</a>'
+                        '<a class="producerLink" target="_blank">tobspr Games</a>'
                     )}</div>
                 </div>
 
@@ -335,6 +369,7 @@ export class MainMenuState extends GameState {
             ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
             ".puzzleDlcGetButton": this.onPuzzleWishlistButtonClicked,
             ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
+            ".editMods": this.onModsClicked,
         };
 
         for (const key in clickHandling) {
@@ -353,36 +388,41 @@ export class MainMenuState extends GameState {
         const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
         removeAllChildren(buttonContainer);
 
+        const outerDiv = makeDivElement(null, ["outer"], null);
+
         // Import button
-        const importButtonElement = makeButtonElement(
-            ["importButton", "styledButton"],
-            T.mainMenu.importSavegame
+        this.trackClicks(
+            makeButton(outerDiv, ["importButton", "styledButton"], T.mainMenu.importSavegame),
+            this.requestImportSavegame
         );
-        this.trackClicks(importButtonElement, this.requestImportSavegame);
 
         if (this.savedGames.length > 0) {
             // Continue game
-            const continueButton = makeButton(
-                buttonContainer,
-                ["continueButton", "styledButton"],
-                T.mainMenu.continue
+            this.trackClicks(
+                makeButton(buttonContainer, ["continueButton", "styledButton"], T.mainMenu.continue),
+                this.onContinueButtonClicked
             );
-            this.trackClicks(continueButton, this.onContinueButtonClicked);
 
-            const outerDiv = makeDiv(buttonContainer, null, ["outer"], null);
-            outerDiv.appendChild(importButtonElement);
-            const newGameButton = makeButton(
-                this.htmlElement.querySelector(".mainContainer .outer"),
-                ["newGameButton", "styledButton"],
-                T.mainMenu.newGame
+            // New game
+            this.trackClicks(
+                makeButton(outerDiv, ["newGameButton", "styledButton"], T.mainMenu.newGame),
+                this.onPlayButtonClicked
             );
-            this.trackClicks(newGameButton, this.onPlayButtonClicked);
         } else {
             // New game
-            const playBtn = makeButton(buttonContainer, ["playButton", "styledButton"], T.mainMenu.play);
-            this.trackClicks(playBtn, this.onPlayButtonClicked);
-            buttonContainer.appendChild(importButtonElement);
+            this.trackClicks(
+                makeButton(buttonContainer, ["playButton", "styledButton"], T.mainMenu.play),
+                this.onPlayButtonClicked
+            );
         }
+
+        // Mods
+        this.trackClicks(
+            makeButton(outerDiv, ["modsButton", "styledButton"], T.mods.title),
+            this.onModsClicked
+        );
+
+        buttonContainer.appendChild(outerDiv);
     }
 
     onPuzzleModeButtonClicked(force = false) {
@@ -434,7 +474,7 @@ export class MainMenuState extends GameState {
 
     onLanguageChooseClicked() {
         this.app.analytics.trackUiClick("choose_language");
-        const setting = /** @type {EnumSetting} */ (getApplicationSettingById("language"));
+        const setting = /** @type {EnumSetting} */ (this.app.settings.getSettingHandleById("language"));
 
         const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
             active: this.app.settings.getLanguage(),
@@ -576,17 +616,70 @@ export class MainMenuState extends GameState {
             const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
             savegame
                 .readAsync()
+                .then(() => this.checkForModDifferences(savegame))
                 .then(() => {
                     this.moveToState("InGameState", {
                         savegame,
                     });
                 })
+
                 .catch(err => {
                     this.dialogs.showWarning(
                         T.dialogs.gameLoadFailure.title,
                         T.dialogs.gameLoadFailure.text + "<br><br>" + err
                     );
                 });
+        });
+    }
+
+    /**
+     * @param {Savegame} savegame
+     */
+    checkForModDifferences(savegame) {
+        const difference = MODS.computeModDifference(savegame.currentData.mods);
+
+        if (difference.missing.length === 0 && difference.extra.length === 0) {
+            return Promise.resolve();
+        }
+
+        let dialogHtml = T.dialogs.modsDifference.desc;
+
+        /**
+         *
+         * @param {import("../savegame/savegame_typedefs").SavegameStoredMods[0]} mod
+         */
+        function formatMod(mod) {
+            return `
+                <div class="dialogModsMod">
+                    <div class="name">${mod.name}</div>
+                    <div class="version">${T.mods.version} ${mod.version}</div>
+                    <button class="website styledButton" onclick="window.open('${mod.website.replace(
+                        /"'/,
+                        ""
+                    )}')">${T.mods.modWebsite}
+            </button>
+
+                </div>
+            `;
+        }
+
+        if (difference.missing.length > 0) {
+            dialogHtml += "<h3>" + T.dialogs.modsDifference.missingMods + "</h3>";
+            dialogHtml += difference.missing.map(formatMod).join("<br>");
+        }
+
+        if (difference.extra.length > 0) {
+            dialogHtml += "<h3>" + T.dialogs.modsDifference.newMods + "</h3>";
+            dialogHtml += difference.extra.map(formatMod).join("<br>");
+        }
+
+        const signals = this.dialogs.showWarning(T.dialogs.modsDifference.title, dialogHtml, [
+            "cancel:good",
+            "continue:bad",
+        ]);
+
+        return new Promise(resolve => {
+            signals.continue.add(resolve);
         });
     }
 
@@ -695,6 +788,12 @@ export class MainMenuState extends GameState {
         );
     }
 
+    onModsClicked() {
+        this.moveToState("ModsState", {
+            backToStateId: "MainMenuState",
+        });
+    }
+
     onContinueButtonClicked() {
         let latestLastUpdate = 0;
         let latestInternalId;
@@ -709,6 +808,7 @@ export class MainMenuState extends GameState {
         savegame
             .readAsync()
             .then(() => this.app.adProvider.showVideoAd())
+            .then(() => this.checkForModDifferences(savegame))
             .then(() => {
                 this.moveToState("InGameState", {
                     savegame,

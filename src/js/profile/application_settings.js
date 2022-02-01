@@ -122,7 +122,7 @@ export const autosaveIntervals = [
     },
 ];
 
-const refreshRateOptions = ["30", "60", "120", "180", "240"];
+export const refreshRateOptions = ["30", "60", "120", "180", "240"];
 
 if (G_IS_DEV) {
     refreshRateOptions.unshift("10");
@@ -133,163 +133,161 @@ if (G_IS_DEV) {
     refreshRateOptions.push("10000");
 }
 
-/** @type {Array<BaseSetting>} */
-export const allApplicationSettings = [
-    new EnumSetting("language", {
-        options: Object.keys(LANGUAGES),
-        valueGetter: key => key,
-        textGetter: key => LANGUAGES[key].name,
-        category: enumCategories.general,
-        restartRequired: true,
-        changeCb: (app, id) => null,
-        magicValue: "auto-detect",
-    }),
+/** @returns {Array<BaseSetting>} */
+function initializeSettings() {
+    return [
+        new EnumSetting("language", {
+            options: Object.keys(LANGUAGES),
+            valueGetter: key => key,
+            textGetter: key => LANGUAGES[key].name,
+            category: enumCategories.general,
+            restartRequired: true,
+            changeCb: (app, id) => null,
+            magicValue: "auto-detect",
+        }),
 
-    new EnumSetting("uiScale", {
-        options: uiScales.sort((a, b) => a.size - b.size),
-        valueGetter: scale => scale.id,
-        textGetter: scale => T.settings.labels.uiScale.scales[scale.id],
-        category: enumCategories.userInterface,
-        restartRequired: false,
-        changeCb:
+        new EnumSetting("uiScale", {
+            options: uiScales.sort((a, b) => a.size - b.size),
+            valueGetter: scale => scale.id,
+            textGetter: scale => T.settings.labels.uiScale.scales[scale.id],
+            category: enumCategories.userInterface,
+            restartRequired: false,
+            changeCb:
+                /**
+                 * @param {Application} app
+                 */
+                (app, id) => app.updateAfterUiScaleChanged(),
+        }),
+
+        new RangeSetting(
+            "soundVolume",
+            enumCategories.general,
             /**
              * @param {Application} app
              */
-            (app, id) => app.updateAfterUiScaleChanged(),
-    }),
-
-    new RangeSetting(
-        "soundVolume",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setSoundVolume(value)
-    ),
-    new RangeSetting(
-        "musicVolume",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => app.sound.setMusicVolume(value)
-    ),
-
-    new BoolSetting(
-        "fullscreen",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => {
-            if (app.platformWrapper.getSupportsFullscreen()) {
-                app.platformWrapper.setFullscreen(value);
-            }
-        },
-        /**
-         * @param {Application} app
-         */ app => app.restrictionMgr.getHasExtendedSettings()
-    ),
-
-    new BoolSetting(
-        "enableColorBlindHelper",
-        enumCategories.general,
-        /**
-         * @param {Application} app
-         */
-        (app, value) => null
-    ),
-
-    new BoolSetting("offerHints", enumCategories.userInterface, (app, value) => {}),
-
-    new EnumSetting("theme", {
-        options: Object.keys(THEMES),
-        valueGetter: theme => theme,
-        textGetter: theme => T.settings.labels.theme.themes[theme],
-        category: enumCategories.userInterface,
-        restartRequired: false,
-        changeCb:
+            (app, value) => app.sound.setSoundVolume(value)
+        ),
+        new RangeSetting(
+            "musicVolume",
+            enumCategories.general,
             /**
              * @param {Application} app
              */
-            (app, id) => {
-                applyGameTheme(id);
-                document.documentElement.setAttribute("data-theme", id);
+            (app, value) => app.sound.setMusicVolume(value)
+        ),
+
+        new BoolSetting(
+            "fullscreen",
+            enumCategories.general,
+            /**
+             * @param {Application} app
+             */
+            (app, value) => {
+                if (app.platformWrapper.getSupportsFullscreen()) {
+                    app.platformWrapper.setFullscreen(value);
+                }
             },
-        enabledCb: /**
-         * @param {Application} app
-         */ app => app.restrictionMgr.getHasExtendedSettings(),
-    }),
+            /**
+             * @param {Application} app
+             */ app => app.restrictionMgr.getHasExtendedSettings()
+        ),
 
-    new EnumSetting("autosaveInterval", {
-        options: autosaveIntervals,
-        valueGetter: interval => interval.id,
-        textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
-        category: enumCategories.advanced,
-        restartRequired: false,
-        changeCb:
+        new BoolSetting(
+            "enableColorBlindHelper",
+            enumCategories.general,
             /**
              * @param {Application} app
              */
-            (app, id) => null,
-    }),
+            (app, value) => null
+        ),
 
-    new EnumSetting("scrollWheelSensitivity", {
-        options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
-        valueGetter: scale => scale.id,
-        textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
-        category: enumCategories.advanced,
-        restartRequired: false,
-        changeCb:
-            /**
+        new BoolSetting("offerHints", enumCategories.userInterface, (app, value) => {}),
+
+        new EnumSetting("theme", {
+            options: Object.keys(THEMES),
+            valueGetter: theme => theme,
+            textGetter: theme => T.settings.labels.theme.themes[theme],
+            category: enumCategories.userInterface,
+            restartRequired: false,
+            changeCb:
+                /**
+                 * @param {Application} app
+                 */
+                (app, id) => {
+                    applyGameTheme(id);
+                    document.documentElement.setAttribute("data-theme", id);
+                },
+            enabledCb: /**
              * @param {Application} app
-             */
-            (app, id) => app.updateAfterUiScaleChanged(),
-    }),
+             */ app => app.restrictionMgr.getHasExtendedSettings(),
+        }),
 
-    new EnumSetting("movementSpeed", {
-        options: movementSpeeds.sort((a, b) => a.multiplier - b.multiplier),
-        valueGetter: multiplier => multiplier.id,
-        textGetter: multiplier => T.settings.labels.movementSpeed.speeds[multiplier.id],
-        category: enumCategories.advanced,
-        restartRequired: false,
-        changeCb: (app, id) => {},
-    }),
+        new EnumSetting("autosaveInterval", {
+            options: autosaveIntervals,
+            valueGetter: interval => interval.id,
+            textGetter: interval => T.settings.labels.autosaveInterval.intervals[interval.id],
+            category: enumCategories.advanced,
+            restartRequired: false,
+            changeCb:
+                /**
+                 * @param {Application} app
+                 */
+                (app, id) => null,
+        }),
 
-    new BoolSetting("enableMousePan", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("shapeTooltipAlwaysOn", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("zoomToCursor", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("vignette", enumCategories.userInterface, (app, value) => {}),
-    new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),
-    new BoolSetting("disableCutDeleteWarnings", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
-    new BoolSetting("pickMinerOnPatch", enumCategories.advanced, (app, value) => {}),
-    new RangeSetting("mapResourcesScale", enumCategories.advanced, () => null),
+        new EnumSetting("scrollWheelSensitivity", {
+            options: scrollWheelSensitivities.sort((a, b) => a.scale - b.scale),
+            valueGetter: scale => scale.id,
+            textGetter: scale => T.settings.labels.scrollWheelSensitivity.sensitivity[scale.id],
+            category: enumCategories.advanced,
+            restartRequired: false,
+            changeCb:
+                /**
+                 * @param {Application} app
+                 */
+                (app, id) => app.updateAfterUiScaleChanged(),
+        }),
 
-    new EnumSetting("refreshRate", {
-        options: refreshRateOptions,
-        valueGetter: rate => rate,
-        textGetter: rate => T.settings.tickrateHz.replace("<amount>", rate),
-        category: enumCategories.performance,
-        restartRequired: false,
-        changeCb: (app, id) => {},
-        enabledCb: /**
-         * @param {Application} app
-         */ app => app.restrictionMgr.getHasExtendedSettings(),
-    }),
+        new EnumSetting("movementSpeed", {
+            options: movementSpeeds.sort((a, b) => a.multiplier - b.multiplier),
+            valueGetter: multiplier => multiplier.id,
+            textGetter: multiplier => T.settings.labels.movementSpeed.speeds[multiplier.id],
+            category: enumCategories.advanced,
+            restartRequired: false,
+            changeCb: (app, id) => {},
+        }),
 
-    new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
-    new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
-    new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
-    new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
-];
+        new BoolSetting("enableMousePan", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("shapeTooltipAlwaysOn", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("alwaysMultiplace", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("zoomToCursor", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("clearCursorOnDeleteWhilePlacing", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("enableTunnelSmartplace", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("vignette", enumCategories.userInterface, (app, value) => {}),
+        new BoolSetting("compactBuildingInfo", enumCategories.userInterface, (app, value) => {}),
+        new BoolSetting("disableCutDeleteWarnings", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("rotationByBuilding", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("displayChunkBorders", enumCategories.advanced, (app, value) => {}),
+        new BoolSetting("pickMinerOnPatch", enumCategories.advanced, (app, value) => {}),
+        new RangeSetting("mapResourcesScale", enumCategories.advanced, () => null),
 
-export function getApplicationSettingById(id) {
-    return allApplicationSettings.find(setting => setting.id === id);
+        new EnumSetting("refreshRate", {
+            options: refreshRateOptions,
+            valueGetter: rate => rate,
+            textGetter: rate => T.settings.tickrateHz.replace("<amount>", rate),
+            category: enumCategories.performance,
+            restartRequired: false,
+            changeCb: (app, id) => {},
+            enabledCb: /**
+             * @param {Application} app
+             */ app => app.restrictionMgr.getHasExtendedSettings(),
+        }),
+
+        new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
+        new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
+        new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
+        new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
+    ];
 }
 
 class SettingsStorage {
@@ -339,6 +337,8 @@ class SettingsStorage {
 export class ApplicationSettings extends ReadWriteProxy {
     constructor(app) {
         super(app, "app_settings.bin");
+
+        this.settingHandles = initializeSettings();
     }
 
     initialize() {
@@ -347,8 +347,8 @@ export class ApplicationSettings extends ReadWriteProxy {
             .then(() => {
                 // Apply default setting callbacks
                 const settings = this.getAllSettings();
-                for (let i = 0; i < allApplicationSettings.length; ++i) {
-                    const handle = allApplicationSettings[i];
+                for (let i = 0; i < this.settingHandles.length; ++i) {
+                    const handle = this.settingHandles[i];
                     handle.apply(this.app, settings[handle.id]);
                 }
             })
@@ -358,6 +358,10 @@ export class ApplicationSettings extends ReadWriteProxy {
 
     save() {
         return this.writeAsync();
+    }
+
+    getSettingHandleById(id) {
+        return this.settingHandles.find(setting => setting.id === id);
     }
 
     // Getters
@@ -457,20 +461,18 @@ export class ApplicationSettings extends ReadWriteProxy {
      * @param {string|boolean|number} value
      */
     updateSetting(key, value) {
-        for (let i = 0; i < allApplicationSettings.length; ++i) {
-            const setting = allApplicationSettings[i];
-            if (setting.id === key) {
-                if (!setting.validate(value)) {
-                    assertAlways(false, "Bad setting value: " + key);
-                }
-                this.getAllSettings()[key] = value;
-                if (setting.changeCb) {
-                    setting.changeCb(this.app, value);
-                }
-                return this.writeAsync();
-            }
+        const setting = this.getSettingHandleById(key);
+        if (!setting) {
+            assertAlways(false, "Unknown setting: " + key);
         }
-        assertAlways(false, "Unknown setting: " + key);
+        if (!setting.validate(value)) {
+            assertAlways(false, "Bad setting value: " + key);
+        }
+        this.getAllSettings()[key] = value;
+        if (setting.changeCb) {
+            setting.changeCb(this.app, value);
+        }
+        return this.writeAsync();
     }
 
     /**
@@ -510,8 +512,15 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         const settings = data.settings;
-        for (let i = 0; i < allApplicationSettings.length; ++i) {
-            const setting = allApplicationSettings[i];
+
+        // MODS
+        if (!THEMES[settings.theme]) {
+            console.warn("Resetting theme because its no longer available: " + settings.theme);
+            settings.theme = "light";
+        }
+
+        for (let i = 0; i < this.settingHandles.length; ++i) {
+            const setting = this.settingHandles[i];
             const storedValue = settings[setting.id];
             if (!setting.validate(storedValue)) {
                 return ExplainedResult.bad(
@@ -688,6 +697,12 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 31) {
             data.settings.shapeTooltipAlwaysOn = false;
             data.version = 31;
+        }
+
+        // MODS
+        if (!THEMES[data.settings.theme]) {
+            console.warn("Resetting theme because its no longer available: " + data.settings.theme);
+            data.settings.theme = "light";
         }
 
         return ExplainedResult.good();

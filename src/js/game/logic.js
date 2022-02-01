@@ -53,10 +53,12 @@ export class GameLogic {
     /**
      * Checks if the given entity can be placed
      * @param {Entity} entity
-     * @param {Vector=} offset Optional, move the entity by the given offset first
+     * @param {Object} param0
+     * @param {boolean=} param0.allowReplaceBuildings
+     * @param {Vector=} param0.offset Optional, move the entity by the given offset first
      * @returns {boolean} true if the entity could be placed there
      */
-    checkCanPlaceEntity(entity, offset = null) {
+    checkCanPlaceEntity(entity, { allowReplaceBuildings = true, offset = null }) {
         // Compute area of the building
         const rect = entity.components.StaticMapEntity.getTileSpaceBounds();
         if (offset) {
@@ -71,7 +73,7 @@ export class GameLogic {
                 const otherEntity = this.root.map.getLayerContentXY(x, y, entity.layer);
                 if (otherEntity) {
                     const metaClass = otherEntity.components.StaticMapEntity.getMetaBuilding();
-                    if (!metaClass.getIsReplaceable()) {
+                    if (!allowReplaceBuildings || !metaClass.getIsReplaceable()) {
                         // This one is a direct blocker
                         return false;
                     }
@@ -116,7 +118,7 @@ export class GameLogic {
             rotationVariant,
             variant,
         });
-        if (this.checkCanPlaceEntity(entity)) {
+        if (this.checkCanPlaceEntity(entity, {})) {
             this.freeEntityAreaBeforeBuild(entity);
             this.root.map.placeStaticEntity(entity);
             this.root.entityMgr.registerEntity(entity);
@@ -393,7 +395,14 @@ export class GameLogic {
 
                 const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, "regular");
                 if (entity) {
+                    /**
+                     * @type {Array<import("./components/item_ejector").ItemEjectorSlot>}
+                     */
                     let ejectorSlots = [];
+
+                    /**
+                     * @type {Array<import("./components/item_acceptor").ItemAcceptorSlot>}
+                     */
                     let acceptorSlots = [];
 
                     const staticComp = entity.components.StaticMapEntity;
@@ -434,19 +443,16 @@ export class GameLogic {
                     for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
                         const slot = acceptorSlots[acceptorSlot];
                         const wsTile = staticComp.localTileToWorld(slot.pos);
-                        for (let k = 0; k < slot.directions.length; ++k) {
-                            const direction = slot.directions[k];
-                            const wsDirection = staticComp.localDirectionToWorld(direction);
-
-                            const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
-                            if (sourceTile.equals(tile)) {
-                                acceptors.push({
-                                    entity,
-                                    slot,
-                                    toTile: wsTile,
-                                    fromDirection: wsDirection,
-                                });
-                            }
+                        const direction = slot.direction;
+                        const wsDirection = staticComp.localDirectionToWorld(direction);
+                        const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
+                        if (sourceTile.equals(tile)) {
+                            acceptors.push({
+                                entity,
+                                slot,
+                                toTile: wsTile,
+                                fromDirection: wsDirection,
+                            });
                         }
                     }
                 }

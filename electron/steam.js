@@ -13,7 +13,6 @@ try {
     // greenworks is not installed
     console.warn("Failed to load steam api:", err);
 }
-
 function init(isDev) {
     if (!greenworks) {
         return;

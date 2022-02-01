@@ -6,11 +6,20 @@ import { enumDirection, Vector } from "../../core/vector";
 import { GoalAcceptorComponent } from "../components/goal_acceptor";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 
 export class MetaGoalAcceptorBuilding extends MetaBuilding {
     constructor() {
         super("goal_acceptor");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 63,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {
@@ -36,7 +45,7 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "shape",
                     },
                 ],
