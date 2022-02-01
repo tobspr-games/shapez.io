@@ -79,7 +79,9 @@ export class ModLoader {
                             return module[member];
                         },
                         set(v) {
-                            module["$s"](member, v);
+                            let fun = module["$S_" + member];
+                            if (!fun) throw new TypeError(`Assignment to constant shapez export "${member}"`);
+                            fun(v);
                         },
                     });
                 }
