@@ -345,52 +345,44 @@ ipcMain.handle("open-mods-folder", async () => {
     shell.openPath(modsPath);
 });
 
-ipcMain.handle("get-mods", async () => {
+console.log("Loading mods ...");
+
+function loadMods() {
     if (safeMode) {
         console.log("Safe Mode enabled for mods, skipping mod search");
     }
+    console.log("Loading mods from", modsPath);
+    let modFiles = safeMode
+        ? []
+        : fs
+              .readdirSync(modsPath)
+              .filter(filename => filename.endsWith(".js"))
+              .map(filename => path.join(modsPath, filename));
 
-    try {
-        console.log("Loading mods from", modsPath);
-        let modFiles = safeMode
-            ? []
-            : fs
-                  .readdirSync(modsPath)
-                  .filter(filename => filename.endsWith(".js"))
-                  .map(filename => path.join(modsPath, filename));
-
-        if (externalMod) {
-            console.log("Adding external mod source:", externalMod);
-            const externalModPaths = externalMod.split(",");
-            modFiles = modFiles.concat(externalModPaths);
-        }
-
-        if (modFiles.length > 0 && !isDev) {
-            let confirmed = false;
-            while (!confirmed) {
-                const response = await dialog.showMessageBox(win, {
-                    message:
-                        "You have installed one or more mods for shapez.io. Please confirm that you are aware of the risks and install mods only from trusted sources.",
-                    buttons: ["Exit Game", "Continue"],
-                    type: "warning",
-                    defaultId: 0,
-                    cancelId: 0,
-                });
-                if (response.response === 1) {
-                    break;
-                }
-                if (response.response === 0) {
-                    process.exit(0);
-                    return;
-                }
-            }
-        }
-
-        return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
-    } catch (ex) {
-        throw new Error(ex);
+    if (externalMod) {
+        console.log("Adding external mod source:", externalMod);
+        const externalModPaths = externalMod.split(",");
+        modFiles = modFiles.concat(externalModPaths);
     }
+
+    return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
+}
+
+let mods = [];
+try {
+    mods = loadMods();
+    console.log("Loaded", mods.length, "mods");
+} catch (ex) {
+    console.error("Failed ot load mods");
+    dialog.showErrorBox("Failed to load mods:", ex);
+}
+
+ipcMain.handle("get-mods", async () => {
+    return mods;
 });
 
 steam.init(isDev);
-steam.listen();
+
+if (mods) {
+    steam.listen();
+}
