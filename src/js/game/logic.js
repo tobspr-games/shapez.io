@@ -440,8 +440,8 @@ export class GameLogic {
                         }
                     }
 
-                    for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
-                        const slot = acceptorSlots[acceptorSlot];
+                    for (let i = 0; i < acceptorSlots.length; ++i) {
+                        const slot = acceptorSlots[i];
                         const wsTile = staticComp.localTileToWorld(slot.pos);
                         const direction = slot.direction;
                         const wsDirection = staticComp.localDirectionToWorld(direction);

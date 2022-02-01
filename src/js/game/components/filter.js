@@ -6,7 +6,7 @@ import { typeItemSingleton } from "../item_resolver";
 /**
  * @typedef {{
  *   item: BaseItem,
- *   progress: number
+ *   extraProgress: number
  * }} PendingFilterItem
  */
 
@@ -24,14 +24,14 @@ export class FilterComponent extends Component {
             pendingItemsToLeaveThrough: types.array(
                 types.structured({
                     item: typeItemSingleton,
-                    progress: types.ufloat,
+                    extraProgress: types.ufloat,
                 })
             ),
 
             pendingItemsToReject: types.array(
                 types.structured({
                     item: typeItemSingleton,
-                    progress: types.ufloat,
+                    extraProgress: types.ufloat, //@SENSETODO will need save migration
                 })
             ),
         };

@@ -3,7 +3,6 @@ import { Loader } from "../../core/loader";
 import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
-import { fastArrayDelete } from "../../core/utils";
 import {
     enumAngleToDirection,
     enumDirection,
@@ -225,7 +224,11 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         this.staleAreaWatcher.update();
 
         const sender = enumUndergroundBeltMode.sender;
-        const now = this.root.time.now();
+
+        const progressGrowth =
+            this.root.dynamicTickrate.deltaSeconds *
+            this.root.hubGoals.getBeltBaseSpeed() *
+            globalConfig.itemSpacingOnBelts;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
@@ -233,7 +236,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             if (undergroundComp.mode === sender) {
                 this.handleSender(entity);
             } else {
-                this.handleReceiver(entity, now);
+                this.handleReceiver(entity, progressGrowth);
             }
         }
     }
@@ -253,8 +256,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
 
         // Search in the direction of the tunnel
         for (
-            let searchOffset = 0;
-            searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier];
+            let searchOffset = 1;
+            searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier] + 1;
             ++searchOffset
         ) {
             currentTile = currentTile.add(searchVector);
@@ -281,6 +284,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                 break;
             }
 
+            // make sure to link the other way as well
+            receiverUndergroundComp.cachedLinkedEntity = { entity: null, distance: searchOffset };
             return { entity: potentialReceiver, distance: searchOffset };
         }
 
@@ -294,6 +299,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
      */
     handleSender(entity) {
         const undergroundComp = entity.components.UndergroundBelt;
+        const acceptorComp = entity.components.ItemAcceptor;
 
         // Find the current receiver
         let cacheEntry = undergroundComp.cachedLinkedEntity;
@@ -307,22 +313,17 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             return;
         }
 
-        // Check if we have any items to eject
-        const nextItemAndDuration = undergroundComp.pendingItems[0];
-        if (nextItemAndDuration) {
-            assert(undergroundComp.pendingItems.length === 1, "more than 1 pending");
-
+        const input = acceptorComp.completedInputs[0];
+        if (input) {
             // Check if the receiver can accept it
             if (
                 cacheEntry.entity.components.UndergroundBelt.tryAcceptTunneledItem(
-                    nextItemAndDuration[0],
+                    input.item,
                     cacheEntry.distance,
-                    this.root.hubGoals.getUndergroundBeltBaseSpeed(),
-                    this.root.time.now()
+                    input.extraProgress
                 )
             ) {
-                // Drop this item
-                fastArrayDelete(undergroundComp.pendingItems, 0);
+                acceptorComp.completedInputs.shift();
             }
         }
     }
@@ -330,20 +331,28 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     /**
      *
      * @param {Entity} entity
-     * @param {number} now
+     * @param {number} progressGrowth
      */
-    handleReceiver(entity, now) {
+    handleReceiver(entity, progressGrowth) {
         const undergroundComp = entity.components.UndergroundBelt;
 
-        // Try to eject items, we only check the first one because it is sorted by remaining time
-        const nextItemAndDuration = undergroundComp.pendingItems[0];
-        if (nextItemAndDuration) {
-            if (now > nextItemAndDuration[1]) {
+        if (!undergroundComp.cachedLinkedEntity) return;
+        const distance = undergroundComp.cachedLinkedEntity.distance;
+
+        // Move items along
+        for (let i = 0; i < undergroundComp.pendingItems.length; i++) {
+            const itemAndProgress = undergroundComp.pendingItems[i];
+            if (itemAndProgress[1] < distance) {
+                itemAndProgress[1] += progressGrowth;
+            }
+
+            if (itemAndProgress[1] >= distance) {
                 const ejectorComp = entity.components.ItemEjector;
 
                 const nextSlotIndex = ejectorComp.getFirstFreeSlot();
                 if (nextSlotIndex !== null) {
-                    if (ejectorComp.tryEject(nextSlotIndex, nextItemAndDuration[0])) {
+                    const extraProgress = itemAndProgress[1] - distance;
+                    if (ejectorComp.tryEject(nextSlotIndex, itemAndProgress[0], extraProgress)) {
                         undergroundComp.pendingItems.shift();
                     }
                 }
