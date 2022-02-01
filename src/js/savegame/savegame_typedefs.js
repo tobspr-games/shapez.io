@@ -25,7 +25,8 @@
  *   pinnedShapes: any,
  *   waypoints: any,
  *   entities: Array<Entity>,
- *   beltPaths: Array<any>
+ *   beltPaths: Array<any>,
+ *   modExtraData: Object
  * }} SerializedGame
  *
  * @typedef {{

@@ -20,5 +20,9 @@ export class SavegameInterface_V1010 extends SavegameInterface_V1009 {
         logger.log("Migrating 1009 to 1010");
 
         data.mods = [];
+
+        if (data.dump) {
+            data.dump.modExtraData = {};
+        }
     }
 }

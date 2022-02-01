@@ -162,6 +162,7 @@ export class Savegame extends ReadWriteProxy {
             SavegameInterface_V1009.migrate1008to1009(data);
             data.version = 1009;
         }
+
         if (data.version === 1009) {
             SavegameInterface_V1010.migrate1009to1010(data);
             data.version = 1010;
