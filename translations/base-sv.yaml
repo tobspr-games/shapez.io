@@ -13,7 +13,7 @@ steamPage:
         I början skapar man bara former, men senare behöver du även färga dem - för att uppnå detta behöver du samla och blanda färger!
 
         På Steam kan du köpa den fulla versionen av spelet, men du kan även spela demot på shapez.io först och bestämma dig senare!
-    what_others_say: What people say about shapez.io
+    what_others_say: Vad folk säger om shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -60,7 +60,7 @@ mainMenu:
     play: Spela
     changelog: Ändringslogg
     importSavegame: Importera
-    openSourceHint: Detta spelet har öppen kod!
+    openSourceHint: Detta spelet har öppen källkod!
     discordLink: Officiell Discord Server
     helpTranslate: Hjälp till att översätta!
     browserWarning: Förlåt, men det är känt att spelet spelar långsamt i din
@@ -73,28 +73,28 @@ mainMenu:
     madeBy: Skapad av <author-link>
     subreddit: Reddit
     savegameUnnamed: Namnlöst
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: Pusselläge
+    back: Tillbaka
+    puzzleDlcText: Tycker du om att komprimera och optimera fabriker? 
+    Skaffa pussel-DLCn nu på Steam för ännu mer kul!
+    puzzleDlcWishlist: Önskelista nu!
+    puzzleDlcViewNow: Se DLC
 dialogs:
     buttons:
         ok: OK
         delete: Radera
         cancel: Avbryt
         later: Senare
-        restart: Starta om
+        restart: Starta Om
         reset: Återställ
-        getStandalone: Skaffa fristående
-        deleteGame: Jag vet vad jag måste göra
-        viewUpdate: Se uppdateringar
-        showUpgrades: Visa uppgraderingar
-        showKeybindings: Visa tangentbindingar
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        getStandalone: Skaffa Fristående
+        deleteGame: Jag vet vad jag gör
+        viewUpdate: Se Uppdatering
+        showUpgrades: Visa Uppgraderingar
+        showKeybindings: Visa Tangentbindingar
+        retry: Försök Igen
+        continue: Fortsätt
+        playOffline: Spela Offline
     importSavegameError:
         title: Importfel
         text: "Kunde inte importera sparfil:"
@@ -102,7 +102,7 @@ dialogs:
         title: Sparfil importerad
         text: Din sparfil har blivit importerad.
     gameLoadFailure:
-        title: Spel är brutet
+        title: Spel är trasigt
         text: "Kunde inte ladda sparfil:"
     confirmSavegameDelete:
         title: Bekräfta radering
@@ -113,27 +113,27 @@ dialogs:
         text: "Kunde inte radera sparfil:"
     restartRequired:
         title: Omstart krävs
-        text: Du behöver starta om spelet för att applicera inställningar.
+        text: Du behöver starta om spelet för att tillämpa inställningarna.
     editKeybinding:
-        title: Ändra snabbtangenter
-        desc: Tryck ned tangenten eller musknappen du vill använda, eller escape för att
+        title: Ändra tangentbindning
+        desc: Tryck på tangenten eller musknappen du vill tilldela, eller escape för att
             avbryta.
     resetKeybindingsConfirmation:
-        title: Återställ snabbtangenter
+        title: Återställ tangentbindningar
         desc: Detta kommer att återställa alla tangentbindningar till deras
-            standardtangenter. Var snäll och bekräfta.
+            standardvärden. Vänligen bekräfta.
     keybindingsResetOk:
-        title: Återställning av snabbtangenter
-        desc: Snabbtangenterna har återställts!
+        title: Tangentbindningarna återställts
+        desc: Alla tangentbindningar har återställts till sina standardvärden!
     featureRestriction:
         title: Demoversion
-        desc: Du försökte nå en funktion (<feature>) som inte är tillgänglig i
+        desc: Du försökte komma åt en funktion (<feature>) som inte är tillgänglig i
             demoversionen. Överväg att skaffa den fristående versionen för den
             fulla upplevelsen!
     oneSavegameLimit:
         title: Begränsad mängd sparfiler
         desc: Du kan bara ha en sparfil åt gången i demoversionen. Var snäll och ta bort
-            den nuvarande eller skaffa den fristående versionen!
+            den befintliga eller skaffa den fristående versionen!
     updateSummary:
         title: Ny uppdatering!
         desc: "Här är ändringarna sen du senast spelade:"
@@ -141,51 +141,51 @@ dialogs:
         title: Lås upp Uppgraderingar
         desc: Alla former du producerar kan användas för att låsa upp uppgraderingar -
             <strong>Förstör inte dina gamla fabriker!</strong>
-            Uppgraderingsmenyn finns i det övre högra hörnet på skärmen.
+            Uppgraderingsmenyn finns i det övre högra hörnet av skärmen.
     massDeleteConfirm:
-        title: Bekräfta borttagning
-        desc: Du tar bort ganska många byggnader (<count> för att vara exakt)! Är du
+        title: Bekräfta radering
+        desc: Du tar bort många byggnader (<count> för att vara exakt)! Är du
             säker på att du vill göra detta?
     blueprintsNotUnlocked:
         title: Inte upplåst än
-        desc: Nå level 12 för att låsa upp Ritningar.
+        desc: Slutför nivå 12 för att låsa upp Ritningar!
     keybindingsIntroduction:
         title: Användbara tangentbindningar
-        desc: "Detta spel använder en stor mängd tangentbindningar som gör det lättare
+        desc: "Detta spel använder många tangentbindningar som gör det lättare
             att bygga stora fabriker. Här är några, men se till att
-            <strong>kolla in tangentbindningarna</strong>!<br><br> <code
-            class='keybinding'>CTRL</code> + Dra: Välj en yta att kopiera /
-            radera.<br> <code class='keybinding'>SHIFT</code>: Håll ned för att
-            placera flera  av samma byggnad.<br> <code
-            class='keybinding'>ALT</code>: Invertera orientationen av placerade
+            <strong>kolla in tangentbindningarna</strong>!<br><br>
+            <code class='keybinding'>CTRL</code> + Dra: Välj ett område.<br> 
+            <code class='keybinding'>SHIFT</code>: Håll ned för att
+            placera flera av samma byggnad.<br> 
+            <code class='keybinding'>ALT</code>: Invertera orientationen av placerade
             rullband.<br>"
     createMarker:
         title: Ny Markör
         desc: Ge det ett meningsfullt namn, du kan också inkludera ett
-            <strong>kortkommando</strong> av en form (som du kan generera
+            <strong>kortkommando</strong> av en form (som du kan skapa
             <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
-        desc: Du kan endast ha två markörer i demoversionen. Skaffa den fristående
-            versionen för ett obegränsat antal!
+        desc: Du kan endast skapa två anpassade markörer i demoversionen. Skaffa den fristående
+            versionen för obegränsade markörer!
     massCutConfirm:
-        title: Bekräfta Klipp
-        desc: Du klipper en stor mängd byggnader (<count> för att vara exakt)! Är du
+        title: Bekräfta Klippning
+        desc: Du klipper många byggnader (<count> för att vara exakt)! Är du
             säker på att du vill göra detta?
     exportScreenshotWarning:
         title: Exportera skärmdump
-        desc: Du efterfrågade att exportera din fabrik som en skärmdump. Vänligen notera
-            att detta kan ta ett tag för en stor bas och i vissa fall till och
-            med krascha ditt spel!
+        desc: Du begärde att exportera din fabrik som en skärmdump. Vänligen notera
+            att detta kan ta ett tag för en stor fabrik och kan potentiellt
+            krascha ditt spel!
     massCutInsufficientConfirm:
-        title: Bekräfta Klipp
-        desc: Du har inte råd att placera detta område! Är du säker att du vill klippa
+        title: Bekräfta Klippning
+        desc: Du har inte råd att klistra in detta område! Är du säker att du vill klippa
             det?
     editSignal:
-        title: Sätt singal
+        title: Sätt Signal
         descItems: "Välj en förvald sak:"
-        descShortKey: ... eller skriv in <strong>kortkommando</strong> av en form (Som
-            du kan generera <link>här</link>)
+        descShortKey: ... eller ange <strong>kortkommando</strong> för en form (Som
+            du kan skapa <link>här</link>)
     renameSavegame:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
@@ -194,101 +194,101 @@ dialogs:
         desc: Det finns en handledningsvideo tillgänglig för denna nivå! Vill du se den?
     tutorialVideoAvailableForeignLanguage:
         title: Handledning Tillgänglig
-        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men den är bara
+        desc: Det finns en handledningsvideo tillgänglig för denna nivå, men bara
             tillgänglig på engelska. Vill du se den?
     editConstantProducer:
-        title: Set Item
+        title: Sätt Sak
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Pusslen misslyckades att ladda in
+        desc: "Tyvärr kunde pusslen inte laddas:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Skicka in Pussel
+        descName: "Ge ditt pussel ett namn:"
+        descIcon: "Ange ett unikt kortkommando, som kommer att visas som ikonen för
+            ditt pussel (du kan skapa dem <link>här</link>, eller välj en
+            av de slumpmässigt föreslagna formerna nedan):"
+        placeholderName: Pusseltitel
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Det går inte att ändra storlek
+        desc: Du kan inte göra zonen mindre, för då skulle vissa byggnader ligga 
+            utanför zonen.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Dåligt pussel
+        desc: "Pusslet kunde inte laddas:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: Offlineläge
+        desc: Vi kunde inte nå servrarna, så spelet måste köras i offlineläge. 
+            Se till att du har en aktiv internetanslutning.
     puzzleDownloadError:
-        title: Download Error
+        title: Nedladdningsfel
         desc: "Failed to download the puzzle:"
     puzzleSubmitError:
         title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        desc: "Det gick inte att ladda ner pusslet:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Pussel publicerat
+        desc: Grattis! Ditt pussel har publicerats och kan nu spelas av andra. 
+            Du kan nu hitta det i "Mina pussel" sektionen.
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Offlineläge
+        desc: Eftersom du är offline kommer du inte att kunna spara och/eller publicera ditt
+            pussel. Skulle du fortfarande vilja fortsätta?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Rekommendation
+        desc: Jag rekommenderar <strong>starkt</strong> att spela det vanliga spelet till nivå 12
+            innan du försöker med pussel-DLCn, annars kan du stöta på mekaniker som ännu inte
+            introducerats. Vill du fortfarande fortsätta?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Kortkommando Kopierad
+        desc: Korttangenten i pusslet (<key>) har kopierats till ditt urklipp! Det 
+            kan anges i pusselmenyn för att komma åt pusslet.
     puzzleReport:
-        title: Report Puzzle
+        title: Anmäl Pussel
         options:
-            profane: Profane
-            unsolvable: Not solvable
+            profane: Vanhelga
+            unsolvable: Inte lösbart
             trolling: Trolling
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Tack för din feedback!
+        desc: Pusslet har flaggats.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Rapporteringen misslyckades
+        desc: "Din rapport kunde inte behandlas:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Ange kortkommando
+        desc: Ange kortkommando för pusslet för att ladda det.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Radera Pussel?
+        desc: Är du säker på att du vill ta bort '<title>'? Detta kan inte ångras!
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
-        selectBuildings: Välj yta
+        selectBuildings: Välj område
         stopPlacement: Avsluta placering
-        rotateBuilding: Rotera byggnader
+        rotateBuilding: Rotera byggnaden
         placeMultiple: Placera flera
-        reverseOrientation: Vänd orientation
-        disableAutoOrientation: Stäng av automatisk orientation
+        reverseOrientation: Omvänd orientering
+        disableAutoOrientation: Inaktivera automatisk orientering
         toggleHud: Växla HUD
-        placeBuilding: Placera Byggnad
-        createMarker: Skapa Markör
-        delete: Ta bort
-        pasteLastBlueprint: Klistra in ritning
+        placeBuilding: Placera byggnad
+        createMarker: Skapa markör
+        delete: Radera
+        pasteLastBlueprint: Klistra in senaste ritningen
         lockBeltDirection: Aktivera rullbandsplanerare
         plannerSwitchSide: Vänd planerarsidan
         cutSelection: Klipp
         copySelection: Kopiera
-        clearSelection: Rensa vald
+        clearSelection: Rensa val
         pipette: Pipett
         switchLayers: Byt lager
-        clearBelts: Clear belts
+        clearBelts: Rensa rullband
     buildingPlacement:
-        cycleBuildingVariants: Tryck ned <key> För att bläddra igenom varianter.
+        cycleBuildingVariants: Tryck på <key> för att växla varianter.
         hotkeyLabel: "Snabbtangent: <key>"
         infoTexts:
             speed: Hastighet
             range: Räckvidd
-            storage: Förvaring
+            storage: Kapacitet
             oneItemPerSecond: 1 objekt / sekund
             itemsPerSecond: <x> objekt / s
             itemsPerSecondDouble: (x2)
@@ -311,16 +311,15 @@ ingame:
         title: Statistik
         dataSources:
             stored:
-                title: Förvarade
-                description: Visar mängd förvarade former i din centrala byggnad.
+                title: Lagrat
+                description: Alla former lagrade i hubben.
             produced:
                 title: Producerade
-                description: Visar alla former din fabrik producerar, detta inkluderar
-                    mellanhandsprodukter.
+                description: Alla former producerade inom din fabrik, inklusive mellanprodukter.
             delivered:
                 title: Levererade
-                description: Visar former som levereras till din centrala byggnad.
-        noShapesProduced: Inga former har producerats än.
+                description: Former som levereras till hubben.
+        noShapesProduced: Inga former har producerats hittills.
         shapesDisplayUnits:
             second: <shapes> / s
             minute: <shapes> / m
@@ -330,55 +329,55 @@ ingame:
         buildingsPlaced: Byggnader
         beltsPlaced: Rullband
     tutorialHints:
-        title: Behöver hjälp?
-        showHint: Visa tips
+        title: Behövs hjälp?
+        showHint: Visa ledtråd
         hideHint: Stäng
     blueprintPlacer:
-        cost: Kostnad
+        cost: Kostar
     waypoints:
         waypoints: Markörer
-        hub: HUB
-        description: Vänsterklicka en markör för att hoppa till den, högerklicka för att
-            ta bort den.<br><br>Tryck <keybinding> för att skapa en markör från
-            nuvarande position, eller <strong>högerklicka</strong> för att skapa
-            en markör vid vald plats.
+        hub: HUBB
+        description: Vänsterklicka på en markör för att hoppa till den, högerklicka för att
+            ta bort den.<br><br>Tryck på <keybinding> för att skapa en markör från
+            den aktuella vyn, eller <strong>högerklicka</strong> för att skapa
+            en markör på den valda platsen.
         creationSuccessNotification: Markör har skapats.
     interactiveTutorial:
-        title: Tutorial
+        title: Handledning
         hints:
-            1_1_extractor: Placera en <strong>extraktor</strong> över en
-                <strong>cirkel</strong> för att extrahera den!
-            1_2_conveyor: "Koppla extraktorn med ett<strong>rullband</strong> till din
-                hub!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet med
+            1_1_extractor: Placera en <strong>extraktor</strong> ovanpå en
+                <strong>cirkelform</strong> för att extrahera den!
+            1_2_conveyor: "Anslut extraktorn med ett<strong>rullband</strong> till din
+                hubb!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet med
                 musen!"
             1_3_expand: "Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer
-                för att klara målet snabbare.<br><br>Tips: Håll
+                och rullband för att klara målet snabbare.<br><br>Tips: Håll ned
                 <strong>SKIFT</strong> för att placera flera extraktörer, och
                 använd <strong>R</strong> för att rotera dem."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
+            2_1_place_cutter: "Placera nu en <strong>Fräs</strong> för att skära cirklarna i två
+                halvor!<br><br> PS: Fräsen skär alltid <strong>uppifrån och
+                ned</strong> oavsett dess orientering."
+            2_2_place_trash: Fräsen kan <strong>täppas till och stanna</strong>!<br><br> Använd en
+                <strong>soptunna</strong> för att bli av med det avfall som för närvarande (!)
+                inte behövs.
+            2_3_more_cutters: "Bra jobbat! Placera nu <strong>2 fler fräsare</strong> för att
+                påskynda denna långsamma process!<br><br> PS: Använd <strong>snabbtangenterna
+                0-9 </strong> för att komma åt byggnader snabbare!"
+            3_1_rectangles: "Låt oss nu extrahera några rektanglar! <strong>Bygg 4
+                extraktörer</strong> och anslut dem till hubben.<br><br> PS:
+                Håll ned <strong>SHIFT</strong> medan du drar ett rullband för att aktivera
+                rullbandsplaneraren!"
+            21_1_place_quad_painter: Placera <strong>quad-målaren</strong> och få några
+                <strong>cirklar</strong>, <strong>vita</strong> och
+                <strong>röda</strong> färger!
+            21_2_switch_to_wires: Byt till trådlagret genom att trycka på
+                <strong>E</strong>!<br><br> Sedan <strong>anslut alla fyra
+                ingångar</strong> på målaren med kablar!
+            21_3_place_button: Grymt! Placera nu en <strong>Strömbrytare</strong> och anslut den
+                med kablar!
+            21_4_press_button: "Tryck på strömbrytaren för att få den att <strong>avge en
+                signal</strong> och på så sätt aktivera målaren.<br><br> PS: Du
+                behöver inte ansluta alla ingångar! Prova att bara koppla två."
     colors:
         red: Röd
         green: Grön
@@ -395,10 +394,10 @@ ingame:
         copyKey: Kopiera nyckel
     connectedMiners:
         one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        n_miners: <amount> Extraktor
+        limited_items: Begränsad till <max_throughput>
     watermark:
-        title: Demo-version
+        title: Demoversion
         desc: Klicka här för att se fördelarna med Steam-versionen!
         get_on_steam: Skaffa på Steam
     standaloneAdvantages:
@@ -410,7 +409,7 @@ ingame:
                 desc: Totalt 26 nivåer!
             buildings:
                 title: 18 nya byggnader!
-                desc: Automatisera din fabrik fullkomligt!
+                desc: Helautomatisera din fabrik!
             upgrades:
                 title: 1000 uppgraderingsnivåer
                 desc: This demo version has only 5!
