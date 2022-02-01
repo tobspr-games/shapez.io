@@ -127,8 +127,13 @@ export class ModInterface {
         for (const spriteName in sourceData) {
             const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
 
-            const sprite = new AtlasSprite(spriteName);
-            Loader.sprites.set(spriteName, sprite);
+            let sprite = /** @type {AtlasSprite} */ (Loader.sprites.get(spriteName));
+
+            if (!sprite) {
+                sprite = new AtlasSprite(spriteName);
+                Loader.sprites.set(spriteName, sprite);
+            }
+
             sprite.frozen = true;
 
             const link = new SpriteAtlasLink({
@@ -142,9 +147,14 @@ export class ModInterface {
                 w: sourceSize.w,
                 h: sourceSize.h,
             });
-            sprite.linksByResolution["0.25"] = link;
-            sprite.linksByResolution["0.5"] = link;
-            sprite.linksByResolution["0.75"] = link;
+
+            if (atlasData.meta && atlasData.meta.scale) {
+                sprite.linksByResolution[atlasData.meta.scale] = link;
+            } else {
+                sprite.linksByResolution["0.25"] = link;
+                sprite.linksByResolution["0.5"] = link;
+                sprite.linksByResolution["0.75"] = link;
+            }
         }
     }
 
