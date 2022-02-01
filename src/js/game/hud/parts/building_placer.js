@@ -401,9 +401,10 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      * Checks if there are any entities in the way, returns true if there are
      * @param {Vector} from
      * @param {Vector} to
+     * @param {Vector[]=} ignorePositions
      * @returns
      */
-    checkForObstales(from, to) {
+    checkForObstales(from, to, ignorePositions = []) {
         assert(from.x === to.x || from.y === to.y, "Must be a straight line");
 
         const prop = from.x === to.x ? "y" : "x";
@@ -426,6 +427,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
 
         for (let i = start; i <= end; i++) {
             current[prop] = i;
+            if (ignorePositions.some(p => p.distanceSquare(current) < 0.1)) {
+                continue;
+            }
             if (!this.root.logic.checkCanPlaceEntity(this.fakeEntity, { allowReplaceBuildings: false })) {
                 return true;
             }
@@ -464,8 +468,11 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         const endLine = mouseTile.toWorldSpaceCenterOfTile();
         const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
         const anyObstacle =
-            this.checkForObstales(this.lastDragTile, this.currentDirectionLockCorner) ||
-            this.checkForObstales(this.currentDirectionLockCorner, mouseTile);
+            this.checkForObstales(this.lastDragTile, this.currentDirectionLockCorner, [
+                this.lastDragTile,
+                mouseTile,
+            ]) ||
+            this.checkForObstales(this.currentDirectionLockCorner, mouseTile, [this.lastDragTile, mouseTile]);
 
         if (anyObstacle) {
             applyStyles("error");
