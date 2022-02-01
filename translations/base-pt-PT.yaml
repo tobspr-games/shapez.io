@@ -80,6 +80,10 @@ mainMenu:
         Puzzle na Steam para ainda mais diversão!
     puzzleDlcWishlist: Lista de desejos agora!
     puzzleDlcViewNow: Ver Dlc
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -267,6 +271,13 @@ dialogs:
     puzzleDelete:
         title: Apagar Puzzle?
         desc: Tens a certeza de que queres apagar '<title>'? Isto não pode ser anulado!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1054,6 +1065,7 @@ settings:
                 instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Atalhos
     hint: "Dica: Utiliza o CTRL, o SHIFT e o ALT! Eles permitem diferentes opções de
@@ -1067,6 +1079,7 @@ keybindings:
         massSelect: Seleção em massa
         buildings: Atalhos de construções
         placementModifiers: Modificadores de posicionamento
+        mods: Provided by Mods
     mappings:
         confirm: Confirmar
         back: Retroceder
@@ -1276,8 +1289,8 @@ puzzleMenu:
         medium: Médio
         hard: Difícil
         unknown: Sem Classificação
-    dlcHint: Já compraste o DLC? Certifica-te de que o ativaste clicando no botãoo direito
-        de shapez.io na tua biblioteca, selecionar Properties > DLCs.
+    dlcHint: Já compraste o DLC? Certifica-te de que o ativaste clicando no botãoo
+        direito de shapez.io na tua biblioteca, selecionar Properties > DLCs.
     search:
         action: Procurar
         placeholder: Introduzir um puzzle ou nome de autor
@@ -1318,3 +1331,20 @@ backendErrors:
     too-many-likes-already: O puzzle já tem imensos gostos. Se ainda o quiseres
         remover, por favor contacta support@shapez.io!
     no-permission: Não tens permissão para realizar esta ação.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

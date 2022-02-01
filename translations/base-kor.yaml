@@ -72,6 +72,10 @@ mainMenu:
     puzzleDlcText: 공장의 크기를 줄이고 최적화하는 데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!
     puzzleDlcViewNow: DLC 보러 가기
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: 확인
@@ -229,6 +233,13 @@ dialogs:
     puzzleDelete:
         title: 퍼즐을 지우시겠습니까?
         desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -892,6 +903,7 @@ settings:
                 instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: 조작법
     hint: "팁: CTRL, SHIFT, ALT를 적절히 사용하세요! 건물을 배치할 때 유용합니다."
@@ -904,6 +916,7 @@ keybindings:
         massSelect: 대량 선택
         buildings: 건물 단축키
         placementModifiers: 배치 설정
+        mods: Provided by Mods
     mappings:
         confirm: 확인
         back: 취소
@@ -1130,3 +1143,20 @@ backendErrors:
     timeout: 요청 시간이 초과되었습니다.
     too-many-likes-already: 이 퍼즐은 이미 너무 많은 하트를 받았습니다. 그래도 제거하고 싶다면 support@shapez.io로 문의하세요!
     no-permission: 이 작업을 할 권한이 없습니다.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

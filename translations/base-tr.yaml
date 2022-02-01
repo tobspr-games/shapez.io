@@ -78,6 +78,10 @@ mainMenu:
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
     puzzleDlcViewNow: Paketi (DLC) görüntüle
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -258,6 +262,13 @@ dialogs:
         title: Yapboz silinsin mi?
         desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
             alınamaz!"
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -1027,6 +1038,7 @@ settings:
             description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine her zaman
                 gösterir.
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
@@ -1040,6 +1052,7 @@ keybindings:
         massSelect: Çoklu Seçİm
         buildings: Yapı Kısayolları
         placementModifiers: Yerleştİrme Özellİklerİ
+        mods: Provided by Mods
     mappings:
         confirm: Kabul
         back: Geri
@@ -1293,3 +1306,20 @@ backendErrors:
     too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
         istiyorsanız support@shapez.io ile iletişime geçiniz!
     no-permission: Bu işlemi yapmak için izniniz yok.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!
