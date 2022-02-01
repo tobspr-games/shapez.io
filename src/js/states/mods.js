@@ -74,7 +74,7 @@ export class ModsState extends TextualGameState {
                     <div class="mainInfo">
                         <span class="name">${mod.metadata.name}</span>
                         <span class="description">${mod.metadata.description}</span>
-                        <a class="website" href="${mod.metadata.website}" target="_blank">Website</a>
+                        <a class="website" href="${mod.metadata.website}" target="_blank">${T.mods.modWebsite}</a>
                     </div>
                     <span class="version"><strong>${T.mods.version}</strong>${mod.metadata.version}</span>
                     <span class="author"><strong>${T.mods.author}</strong>${mod.metadata.author}</span>

@@ -24,7 +24,8 @@ const LOG = createLogger("mods");
  *   description: string;
  *   id: string;
  *   minimumGameVersion?: string;
- *   settings: []
+ *   settings: [];
+ *   doesNotAffectSavegame?: boolean
  * }} ModMetadata
  */
 
@@ -56,6 +57,51 @@ export class ModLoader {
 
     anyModsActive() {
         return this.mods.length > 0;
+    }
+
+    /**
+     *
+     * @returns {import("../savegame/savegame_typedefs").SavegameStoredMods}
+     */
+    getModsListForSavegame() {
+        return this.mods
+            .filter(mod => !mod.metadata.doesNotAffectSavegame)
+            .map(mod => ({
+                id: mod.metadata.id,
+                version: mod.metadata.version,
+                website: mod.metadata.website,
+                name: mod.metadata.name,
+                author: mod.metadata.author,
+            }));
+    }
+
+    /**
+     *
+     * @param {import("../savegame/savegame_typedefs").SavegameStoredMods} originalMods
+     */
+    computeModDifference(originalMods) {
+        /**
+         * @type {import("../savegame/savegame_typedefs").SavegameStoredMods}
+         */
+        let missing = [];
+
+        const current = this.getModsListForSavegame();
+
+        originalMods.forEach(mod => {
+            for (let i = 0; i < current.length; ++i) {
+                const currentMod = current[i];
+                if (currentMod.id === mod.id && currentMod.version === mod.version) {
+                    current.splice(i, 1);
+                    return;
+                }
+            }
+            missing.push(mod);
+        });
+
+        return {
+            missing,
+            extra: current,
+        };
     }
 
     exposeExports() {

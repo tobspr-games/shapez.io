@@ -7,6 +7,10 @@ const METADATA = {
     id: "modify-theme",
     description: "Shows how to modify builtin themes",
     minimumGameVersion: ">=1.5.0",
+
+    // You can specify this parameter if savegames will still work
+    // after your mod has been uninstalled
+    doesNotAffectSavegame: true,
 };
 
 class Mod extends shapez.Mod {

@@ -7,6 +7,10 @@ const METADATA = {
     id: "modify-ui",
     description: "Shows how to modify a builtin game state, in this case the main menu",
     minimumGameVersion: ">=1.5.0",
+
+    // You can specify this parameter if savegames will still work
+    // after your mod has been uninstalled
+    doesNotAffectSavegame: true,
 };
 
 class Mod extends shapez.Mod {

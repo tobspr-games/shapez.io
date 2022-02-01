@@ -20,6 +20,7 @@ import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { MODS } from "../mods/modloader";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
+import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
 
 const trim = require("trim");
@@ -615,17 +616,70 @@ export class MainMenuState extends GameState {
             const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
             savegame
                 .readAsync()
+                .then(() => this.checkForModDifferences(savegame))
                 .then(() => {
                     this.moveToState("InGameState", {
                         savegame,
                     });
                 })
+
                 .catch(err => {
                     this.dialogs.showWarning(
                         T.dialogs.gameLoadFailure.title,
                         T.dialogs.gameLoadFailure.text + "<br><br>" + err
                     );
                 });
+        });
+    }
+
+    /**
+     * @param {Savegame} savegame
+     */
+    checkForModDifferences(savegame) {
+        const difference = MODS.computeModDifference(savegame.currentData.mods);
+
+        if (difference.missing.length === 0 && difference.extra.length === 0) {
+            return Promise.resolve();
+        }
+
+        let dialogHtml = T.dialogs.modsDifference.desc;
+
+        /**
+         *
+         * @param {import("../savegame/savegame_typedefs").SavegameStoredMods[0]} mod
+         */
+        function formatMod(mod) {
+            return `
+                <div class="dialogModsMod">
+                    <div class="name">${mod.name}</div>
+                    <div class="version">${T.mods.version} ${mod.version}</div>
+                    <button class="website styledButton" onclick="window.open('${mod.website.replace(
+                        /"'/,
+                        ""
+                    )}')">${T.mods.modWebsite}
+            </button>
+
+                </div>
+            `;
+        }
+
+        if (difference.missing.length > 0) {
+            dialogHtml += "<h3>" + T.dialogs.modsDifference.missingMods + "</h3>";
+            dialogHtml += difference.missing.map(formatMod).join("<br>");
+        }
+
+        if (difference.extra.length > 0) {
+            dialogHtml += "<h3>" + T.dialogs.modsDifference.newMods + "</h3>";
+            dialogHtml += difference.extra.map(formatMod).join("<br>");
+        }
+
+        const signals = this.dialogs.showWarning(T.dialogs.modsDifference.title, dialogHtml, [
+            "cancel:good",
+            "continue:bad",
+        ]);
+
+        return new Promise(resolve => {
+            signals.continue.add(resolve);
         });
     }
 
@@ -754,6 +808,7 @@ export class MainMenuState extends GameState {
         savegame
             .readAsync()
             .then(() => this.app.adProvider.showVideoAd())
+            .then(() => this.checkForModDifferences(savegame))
             .then(() => {
                 this.moveToState("InGameState", {
                     savegame,

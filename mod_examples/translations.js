@@ -7,6 +7,10 @@ const METADATA = {
     id: "translations",
     description: "Shows how to add and modify translations",
     minimumGameVersion: ">=1.5.0",
+
+    // You can specify this parameter if savegames will still work
+    // after your mod has been uninstalled
+    doesNotAffectSavegame: true,
 };
 
 class Mod extends shapez.Mod {

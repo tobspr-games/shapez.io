@@ -2,6 +2,14 @@
  * @typedef {import("../game/entity").Entity} Entity
  *
  * @typedef {{
+ *   id: string;
+ *   version: string;
+ *   website: string;
+ *   name: string;
+ *   author: string;
+ * }[]} SavegameStoredMods
+ *
+ * @typedef {{
  *   failedMam: boolean,
  *   trashedCount: number,
  *   usedInverseRotater: boolean
@@ -25,6 +33,7 @@
  *   dump: SerializedGame,
  *   stats: SavegameStats,
  *   lastUpdate: number,
+ *   mods: SavegameStoredMods
  * }} SavegameData
  *
  * @typedef {{
