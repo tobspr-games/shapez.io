@@ -32,6 +32,12 @@ import { BaseHUDPart } from "../game/hud/base_hud_part";
  */
 
 /**
+ * @template {(...args: any) => any} F The function
+ * @template {object} T  The value of this
+ * @typedef {(this: T, ...args: Parameters<F>) => ReturnType<F>} bindThis
+ */
+
+/**
  * @template {(...args: any[]) => any} F
  * @template P
  * @typedef {(...args: [P, Parameters<F>]) => ReturnType<F>} beforePrams IMPORTANT: this puts the original parameters into an array
@@ -400,7 +406,7 @@ export class ModInterface {
      * @template {extendsPrams<P[M]>} O the method that will override the old one
      * @param {C} classHandle
      * @param {M} methodName
-     * @param {beforePrams<O, P[M]>} override
+     * @param {bindThis<beforePrams<O, P[M]>, InstanceType<C>>} override
      */
     replaceMethod(classHandle, methodName, override) {
         const oldMethod = classHandle.prototype[methodName];
@@ -418,7 +424,7 @@ export class ModInterface {
      * @template {extendsPrams<P[M]>} O the method that will run before the old one
      * @param {C} classHandle
      * @param {M} methodName
-     * @param {O} executeBefore
+     * @param {bindThis<O, InstanceType<C>>} executeBefore
      */
     runBeforeMethod(classHandle, methodName, executeBefore) {
         const oldHandle = classHandle.prototype[methodName];
@@ -437,7 +443,7 @@ export class ModInterface {
      * @template {extendsPrams<P[M]>} O the method that will run before the old one
      * @param {C} classHandle
      * @param {M} methodName
-     * @param {O} executeAfter
+     * @param {bindThis<O, InstanceType<C>>} executeAfter
      */
     runAfterMethod(classHandle, methodName, executeAfter) {
         const oldHandle = classHandle.prototype[methodName];
