@@ -7,6 +7,10 @@ const METADATA = {
     id: "base",
     description: "Displays an indicator on every item processing building when its working",
     minimumGameVersion: ">=1.5.0",
+
+    // You can specify this parameter if savegames will still work
+    // after your mod has been uninstalled
+    doesNotAffectSavegame: true,
 };
 
 class ItemProcessorStatusGameSystem extends shapez.GameSystem {

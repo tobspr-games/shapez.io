@@ -205,7 +205,7 @@ export class GameSystemManager {
         addBefore("end");
 
         for (const key in MODS_ADDITIONAL_SYSTEMS) {
-            if (!this.systems[key]) {
+            if (!this.systems[key] && key !== "end") {
                 logger.error("Mod system not attached due to invalid 'before': ", key);
             }
         }

@@ -1,9 +1,8 @@
 import { ExplainedResult } from "../core/explained_result";
-import { createLogger } from "../core/logging";
 import { gComponentRegistry } from "../core/global_registries";
+import { createLogger } from "../core/logging";
+import { MOD_SIGNALS } from "../mods/mod_signals";
 import { SerializerInternal } from "./serializer_internal";
-import { HUDPinnedShapes } from "../game/hud/parts/pinned_shapes";
-import { HUDWaypoints } from "../game/hud/parts/waypoints";
 
 /**
  * @typedef {import("../game/component").Component} Component
@@ -42,7 +41,11 @@ export class SavegameSerializer {
             beltPaths: root.systemMgr.systems.belt.serializePaths(),
             pinnedShapes: root.hud.parts.pinnedShapes ? root.hud.parts.pinnedShapes.serialize() : null,
             waypoints: root.hud.parts.waypoints ? root.hud.parts.waypoints.serialize() : null,
+
+            modExtraData: {},
         };
+
+        MOD_SIGNALS.gameSerialized.dispatch(root, data);
 
         if (G_IS_DEV) {
             if (sanityChecks) {
@@ -150,6 +153,9 @@ export class SavegameSerializer {
         if (errorReason) {
             return ExplainedResult.bad(errorReason);
         }
+
+        // Mods
+        MOD_SIGNALS.gameDeserialized.dispatch(root, savegame);
 
         return ExplainedResult.good();
     }

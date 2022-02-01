@@ -423,6 +423,14 @@ dialogs:
         desc: >-
             Are you sure you want to delete '<title>'? This can not be undone!
 
+    modsDifference:
+        title: Mod Warning
+        desc: >-
+            The currently installed mods differ from the mods the savegame was created with.
+            This might cause the savegame to break or not load at all. Are you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
+
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
     # every situation
@@ -1096,6 +1104,7 @@ mods:
 
     author: Author
     version: Version
+    modWebsite: Website
     openFolder: Open Mods Folder
     folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
     browseMods: Browse Mods

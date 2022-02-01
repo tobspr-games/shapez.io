@@ -96,11 +96,11 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     }
                 }
 
-                // Check if it finished
-                if (currentCharge.remainingTime <= 0.0 && processorComp.queuedEjects.length < 1) {
+                // Check if it finished and we don't already have queued ejects
+                if (currentCharge.remainingTime <= 0.0 && !processorComp.queuedEjects.length) {
                     const itemsToEject = currentCharge.items;
 
-                    // Go over all items and try to eject them
+                    // Go over all items and add them to the queue
                     for (let j = 0; j < itemsToEject.length; ++j) {
                         processorComp.queuedEjects.push(itemsToEject[j]);
                     }
@@ -112,6 +112,39 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // Go over all items and try to eject them
             for (let j = 0; j < processorComp.queuedEjects.length; ++j) {
                 const { item, requiredSlot, preferredSlot, extraProgress } = processorComp.queuedEjects[j];
+
+                assert(ejectorComp, "To eject items, the building needs to have an ejector");
+
+                let slot = null;
+                if (requiredSlot !== null && requiredSlot !== undefined) {
+                    // We have a slot override, check if that is free
+                    if (ejectorComp.canEjectOnSlot(requiredSlot)) {
+                        slot = requiredSlot;
+                    }
+                } else if (preferredSlot !== null && preferredSlot !== undefined) {
+                    // We have a slot preference, try using it but otherwise use a free slot
+                    if (ejectorComp.canEjectOnSlot(preferredSlot)) {
+                        slot = preferredSlot;
+                    } else {
+                        slot = ejectorComp.getFirstFreeSlot();
+                    }
+                } else {
+                    // We can eject on any slot
+                    slot = ejectorComp.getFirstFreeSlot();
+                }
+
+                if (slot !== null) {
+                    // Alright, we can actually eject
+                    if (!ejectorComp.tryEject(slot, item)) {
+                        assert(false, "Failed to eject");
+                    } else {
+                        processorComp.queuedEjects.splice(j, 1);
+                        j -= 1;
+                    }
+                }
+            }
+        }
+    }
 
                 assert(ejectorComp, "To eject items, the building needs to have an ejector");
 

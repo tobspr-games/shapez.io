@@ -27,4 +27,7 @@ export const MOD_SIGNALS = {
     gameStarted: /** @type {TypedSignal<[GameRoot]>} */ (new Signal()),
 
     stateEntered: /** @type {TypedSignal<[GameState]>} */ (new Signal()),
+
+    gameSerialized: /** @type {TypedSignal<[GameRoot, import("../savegame/savegame_typedefs").SerializedGame]>} */ (new Signal()),
+    gameDeserialized: /** @type {TypedSignal<[GameRoot, import("../savegame/savegame_typedefs").SerializedGame]>} */ (new Signal()),
 };
