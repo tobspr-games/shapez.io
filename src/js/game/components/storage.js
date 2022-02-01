@@ -46,32 +46,19 @@ export class StorageComponent extends Component {
      * Returns whether this storage can accept the item
      * @param {BaseItem} item
      */
-    canAcceptItem(item) {
+    tryAcceptItem(item) {
         if (this.storedCount >= this.maximumStorage) {
             return false;
         }
-        if (!this.storedItem || this.storedCount === 0) {
-            return true;
-        }
-
         const itemType = item.getItemType();
-
-        // Check type matches
-        if (itemType !== this.storedItem.getItemType()) {
+        if (this.storedCount > 0 && this.storedItem && itemType !== this.storedItem.getItemType()) {
             return false;
         }
 
-        if (itemType === "color") {
-            return /** @type {ColorItem} */ (this.storedItem).color === /** @type {ColorItem} */ (item).color;
-        }
+        this.storedItem = item;
+        this.storedCount++;
 
-        if (itemType === "shape") {
-            return (
-                /** @type {ShapeItem} */ (this.storedItem).definition.getHash() ===
-                /** @type {ShapeItem} */ (item).definition.getHash()
-            );
-        }
-        return false;
+        return true;
     }
 
     /**

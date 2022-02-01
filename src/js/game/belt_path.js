@@ -130,10 +130,12 @@ export class BeltPath extends BasicSerializableObject {
     /**
      * Tries to accept the item
      * @param {BaseItem} item
+     * @param {number} extraProgress
      */
-    tryAcceptItem(item) {
+    tryAcceptItem(item, extraProgress = 0) {
         if (this.spacingToFirstItem >= globalConfig.itemSpacingOnBelts) {
             // So, since we already need one tick to accept this item we will add this directly.
+            // this means we are moving it forwards twice in one tick, but otherwise belts won't be full :(
             const beltProgressPerTick =
                 this.root.hubGoals.getBeltBaseSpeed() *
                 this.root.dynamicTickrate.deltaSeconds *
@@ -141,7 +143,7 @@ export class BeltPath extends BasicSerializableObject {
 
             // First, compute how much progress we can make *at max*
             const maxProgress = Math.max(0, this.spacingToFirstItem - globalConfig.itemSpacingOnBelts);
-            const initialProgress = Math.min(maxProgress, beltProgressPerTick);
+            const initialProgress = Math.min(maxProgress, beltProgressPerTick + extraProgress);
 
             this.items.unshift([this.spacingToFirstItem - initialProgress, item]);
             this.spacingToFirstItem = initialProgress;
@@ -227,8 +229,6 @@ export class BeltPath extends BasicSerializableObject {
             return;
         }
 
-        const noSimplifiedBelts = !this.root.app.settings.getAllSettings().simplifiedBelts;
-
         DEBUG && !debug_Silent && logger.log("  Found target entity", targetEntity.uid);
         const targetStaticComp = targetEntity.components.StaticMapEntity;
         const targetBeltComp = targetEntity.components.Belt;
@@ -274,93 +274,22 @@ export class BeltPath extends BasicSerializableObject {
         }
 
         const matchingSlotIndex = matchingSlot.index;
-        const passOver = this.computePassOverFunctionWithoutBelts(targetEntity, matchingSlotIndex);
-        if (!passOver) {
-            return;
-        }
 
-        const matchingDirection = enumInvertedDirections[ejectingDirection];
-        const filter = matchingSlot.slot.filter;
-
-        return function (item, remainingProgress = 0.0) {
-            // Check if the acceptor has a filter
-            if (filter && item._type !== filter) {
-                return false;
+        return function (item, startProgress = 0.0) {
+            const storageComp = targetEntity.components.Storage;
+            if (
+                storageComp &&
+                storageComp.tryAcceptItem(item) &&
+                targetAcceptorComp.tryAcceptItem(matchingSlotIndex, item, startProgress)
+            ) {
+                // unique duplicated code for storage
+                return true;
             }
-
-            // Try to pass over
-            if (passOver(item, matchingSlotIndex)) {
-                // Trigger animation on the acceptor comp
-                if (noSimplifiedBelts) {
-                    targetAcceptorComp.onItemAccepted(
-                        matchingSlotIndex,
-                        matchingDirection,
-                        item,
-                        remainingProgress
-                    );
-                }
+            if (targetAcceptorComp.tryAcceptItem(matchingSlotIndex, item, startProgress)) {
                 return true;
             }
             return false;
         };
-    }
-
-    /**
-     * Computes a method to pass over the item to the entity
-     * @param {Entity} entity
-     * @param {number} matchingSlotIndex
-     * @returns {(item: BaseItem, slotIndex: number) => boolean | void}
-     */
-    computePassOverFunctionWithoutBelts(entity, matchingSlotIndex) {
-        const systems = this.root.systemMgr.systems;
-        const hubGoals = this.root.hubGoals;
-
-        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PEROFMANCE REASONS
-
-        const itemProcessorComp = entity.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Its an item processor ..
-            return function (item) {
-                // Check for potential filters
-                if (!systems.itemProcessor.checkRequirements(entity, item, matchingSlotIndex)) {
-                    return;
-                }
-                return itemProcessorComp.tryTakeItem(item, matchingSlotIndex);
-            };
-        }
-
-        const undergroundBeltComp = entity.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            return function (item) {
-                return undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    hubGoals.getUndergroundBeltBaseSpeed()
-                );
-            };
-        }
-
-        const storageComp = entity.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            return function (item) {
-                if (storageComp.canAcceptItem(item)) {
-                    storageComp.takeItem(item);
-                    return true;
-                }
-            };
-        }
-
-        const filterComp = entity.components.Filter;
-        if (filterComp) {
-            // It's a filter! Unfortunately the filter has to know a lot about it's
-            // surrounding state and components, so it can't be within the component itself.
-            return function (item) {
-                if (systems.filter.tryAcceptItem(entity, matchingSlotIndex, item)) {
-                    return true;
-                }
-            };
-        }
     }
 
     // Following code will be compiled out outside of dev versions

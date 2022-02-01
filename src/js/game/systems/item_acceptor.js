@@ -1,6 +1,5 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
-import { fastArrayDelete } from "../../core/utils";
 import { enumDirectionToVector } from "../../core/vector";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -9,49 +8,36 @@ import { MapChunkView } from "../map_chunk_view";
 export class ItemAcceptorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemAcceptorComponent]);
-
-        // Well ... it's better to be verbose I guess?
-        this.accumulatedTicksWhileInMapOverview = 0;
     }
 
     update() {
-        if (this.root.app.settings.getAllSettings().simplifiedBelts) {
-            // Disabled in potato mode
-            return;
-        }
-
-        // This system doesn't render anything while in map overview,
-        // so simply accumulate ticks
-        if (this.root.camera.getIsMapOverlayActive()) {
-            ++this.accumulatedTicksWhileInMapOverview;
-            return;
-        }
-
-        // Compute how much ticks we missed
-        const numTicks = 1 + this.accumulatedTicksWhileInMapOverview;
-        const progress =
+        // same code for belts, acceptors and ejectors - add helper method???
+        const progressGrowth =
             this.root.dynamicTickrate.deltaSeconds *
-            2 *
             this.root.hubGoals.getBeltBaseSpeed() *
-            globalConfig.itemSpacingOnBelts * // * 2 because its only a half tile
-            numTicks;
-
-        // Reset accumulated ticks
-        this.accumulatedTicksWhileInMapOverview = 0;
+            globalConfig.itemSpacingOnBelts;
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
-            const aceptorComp = entity.components.ItemAcceptor;
-            const animations = aceptorComp.itemConsumptionAnimations;
+            const acceptorComp = entity.components.ItemAcceptor;
+            const inputs = acceptorComp.inputs;
+            const maxProgress = 0.5;
 
-            // Process item consumption animations to avoid items popping from the belts
-            for (let animIndex = 0; animIndex < animations.length; ++animIndex) {
-                const anim = animations[animIndex];
-                anim.animProgress += progress;
-                if (anim.animProgress > 1) {
-                    fastArrayDelete(animations, animIndex);
-                    animIndex -= 1;
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i];
+                input.animProgress += progressGrowth;
+
+                if (input.animProgress < maxProgress) {
+                    continue;
                 }
+
+                inputs.splice(i, 1);
+                i--;
+                acceptorComp.completedInputs.push({
+                    slotIndex: input.slotIndex,
+                    item: input.item,
+                    extraProgress: input.animProgress - maxProgress,
+                }); // will be handled on the SAME frame due to processor system being afterwards
             }
         }
     }
@@ -75,10 +61,9 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
             }
 
             const staticComp = entity.components.StaticMapEntity;
-            for (let animIndex = 0; animIndex < acceptorComp.itemConsumptionAnimations.length; ++animIndex) {
-                const { item, slotIndex, animProgress, direction } = acceptorComp.itemConsumptionAnimations[
-                    animIndex
-                ];
+            for (let i = 0; i < acceptorComp.inputs.length; i++) {
+                const input = acceptorComp.inputs[i];
+                const { item, animProgress, slotIndex } = input;
 
                 const slotData = acceptorComp.slots[slotIndex];
                 const realSlotPos = staticComp.localTileToWorld(slotData.pos);
@@ -88,10 +73,11 @@ export class ItemAcceptorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                const fadeOutDirection = enumDirectionToVector[staticComp.localDirectionToWorld(direction)];
+                const fadeOutDirection =
+                    enumDirectionToVector[staticComp.localDirectionToWorld(slotData.direction)];
                 const finalTile = realSlotPos.subScalars(
-                    fadeOutDirection.x * (animProgress / 2 - 0.5),
-                    fadeOutDirection.y * (animProgress / 2 - 0.5)
+                    fadeOutDirection.x * (animProgress - 0.5),
+                    fadeOutDirection.y * (animProgress - 0.5)
                 );
 
                 item.drawItemCenteredClipped(

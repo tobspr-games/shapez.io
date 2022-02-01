@@ -31,6 +31,9 @@ export class StorageSystem extends GameSystemWithFilter {
             const storageComp = entity.components.Storage;
             const pinsComp = entity.components.WiredPins;
 
+            // storage needs to delete completed inputs, since the items are already added
+            entity.components.ItemAcceptor.completedInputs = [];
+
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
                 const ejectorComp = entity.components.ItemEjector;
