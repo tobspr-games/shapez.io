@@ -75,10 +75,14 @@ mainMenu:
     savegameUnnamed: Namnlöst
     puzzleMode: Pusselläge
     back: Tillbaka
-    puzzleDlcText: Tycker du om att komprimera och optimera fabriker? 
-    Skaffa pussel-DLCn nu på Steam för ännu mer kul!
+    puzzleDlcText: Tycker du om att komprimera och optimera fabriker? Skaffa
+        pussel-DLCn nu på Steam för ännu mer kul!
     puzzleDlcWishlist: Önskelista nu!
     puzzleDlcViewNow: Se DLC
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -144,21 +148,20 @@ dialogs:
             Uppgraderingsmenyn finns i det övre högra hörnet av skärmen.
     massDeleteConfirm:
         title: Bekräfta radering
-        desc: Du tar bort många byggnader (<count> för att vara exakt)! Är du
-            säker på att du vill göra detta?
+        desc: Du tar bort många byggnader (<count> för att vara exakt)! Är du säker på
+            att du vill göra detta?
     blueprintsNotUnlocked:
         title: Inte upplåst än
         desc: Slutför nivå 12 för att låsa upp Ritningar!
     keybindingsIntroduction:
         title: Användbara tangentbindningar
-        desc: "Detta spel använder många tangentbindningar som gör det lättare
-            att bygga stora fabriker. Här är några, men se till att
-            <strong>kolla in tangentbindningarna</strong>!<br><br>
-            <code class='keybinding'>CTRL</code> + Dra: Välj ett område.<br> 
-            <code class='keybinding'>SHIFT</code>: Håll ned för att
-            placera flera av samma byggnad.<br> 
-            <code class='keybinding'>ALT</code>: Invertera orientationen av placerade
-            rullband.<br>"
+        desc: "Detta spel använder många tangentbindningar som gör det lättare att bygga
+            stora fabriker. Här är några, men se till att <strong>kolla in
+            tangentbindningarna</strong>!<br><br> <code
+            class='keybinding'>CTRL</code> + Dra: Välj ett område.<br> <code
+            class='keybinding'>SHIFT</code>: Håll ned för att placera flera av
+            samma byggnad.<br> <code class='keybinding'>ALT</code>: Invertera
+            orientationen av placerade rullband.<br>"
     createMarker:
         title: Ny Markör
         desc: Ge det ett meningsfullt namn, du kan också inkludera ett
@@ -166,26 +169,26 @@ dialogs:
             <link>här</link>)
         titleEdit: Ändra Markör
     markerDemoLimit:
-        desc: Du kan endast skapa två anpassade markörer i demoversionen. Skaffa den fristående
-            versionen för obegränsade markörer!
+        desc: Du kan endast skapa två anpassade markörer i demoversionen. Skaffa den
+            fristående versionen för obegränsade markörer!
     massCutConfirm:
         title: Bekräfta Klippning
-        desc: Du klipper många byggnader (<count> för att vara exakt)! Är du
-            säker på att du vill göra detta?
+        desc: Du klipper många byggnader (<count> för att vara exakt)! Är du säker på
+            att du vill göra detta?
     exportScreenshotWarning:
         title: Exportera skärmdump
-        desc: Du begärde att exportera din fabrik som en skärmdump. Vänligen notera
-            att detta kan ta ett tag för en stor fabrik och kan potentiellt
-            krascha ditt spel!
+        desc: Du begärde att exportera din fabrik som en skärmdump. Vänligen notera att
+            detta kan ta ett tag för en stor fabrik och kan potentiellt krascha
+            ditt spel!
     massCutInsufficientConfirm:
         title: Bekräfta Klippning
-        desc: Du har inte råd att klistra in detta område! Är du säker att du vill klippa
-            det?
+        desc: Du har inte råd att klistra in detta område! Är du säker att du vill
+            klippa det?
     editSignal:
         title: Sätt Signal
         descItems: "Välj en förvald sak:"
-        descShortKey: ... eller ange <strong>kortkommando</strong> för en form (Som
-            du kan skapa <link>här</link>)
+        descShortKey: ... eller ange <strong>kortkommando</strong> för en form (Som du
+            kan skapa <link>här</link>)
     renameSavegame:
         title: Byt namn på sparfil
         desc: Du kan byta namn på din sparfil här.
@@ -204,21 +207,21 @@ dialogs:
     submitPuzzle:
         title: Skicka in Pussel
         descName: "Ge ditt pussel ett namn:"
-        descIcon: "Ange ett unikt kortkommando, som kommer att visas som ikonen för
-            ditt pussel (du kan skapa dem <link>här</link>, eller välj en
-            av de slumpmässigt föreslagna formerna nedan):"
+        descIcon: "Ange ett unikt kortkommando, som kommer att visas som ikonen för ditt
+            pussel (du kan skapa dem <link>här</link>, eller välj en av de
+            slumpmässigt föreslagna formerna nedan):"
         placeholderName: Pusseltitel
     puzzleResizeBadBuildings:
         title: Det går inte att ändra storlek
-        desc: Du kan inte göra zonen mindre, för då skulle vissa byggnader ligga 
-            utanför zonen.
+        desc: Du kan inte göra zonen mindre, för då skulle vissa byggnader ligga utanför
+            zonen.
     puzzleLoadError:
         title: Dåligt pussel
         desc: "Pusslet kunde inte laddas:"
     offlineMode:
         title: Offlineläge
-        desc: Vi kunde inte nå servrarna, så spelet måste köras i offlineläge. 
-            Se till att du har en aktiv internetanslutning.
+        desc: Vi kunde inte nå servrarna, så spelet måste köras i offlineläge. Se till
+            att du har en aktiv internetanslutning.
     puzzleDownloadError:
         title: Nedladdningsfel
         desc: "Failed to download the puzzle:"
@@ -227,21 +230,22 @@ dialogs:
         desc: "Det gick inte att ladda ner pusslet:"
     puzzleSubmitOk:
         title: Pussel publicerat
-        desc: Grattis! Ditt pussel har publicerats och kan nu spelas av andra. 
-            Du kan nu hitta det i "Mina pussel" sektionen.
+        desc: Grattis! Ditt pussel har publicerats och kan nu spelas av andra. Du kan nu
+            hitta det i "Mina pussel" sektionen.
     puzzleCreateOffline:
         title: Offlineläge
-        desc: Eftersom du är offline kommer du inte att kunna spara och/eller publicera ditt
-            pussel. Skulle du fortfarande vilja fortsätta?
+        desc: Eftersom du är offline kommer du inte att kunna spara och/eller publicera
+            ditt pussel. Skulle du fortfarande vilja fortsätta?
     puzzlePlayRegularRecommendation:
         title: Rekommendation
-        desc: Jag rekommenderar <strong>starkt</strong> att spela det vanliga spelet till nivå 12
-            innan du försöker med pussel-DLCn, annars kan du stöta på mekaniker som ännu inte
-            introducerats. Vill du fortfarande fortsätta?
+        desc: Jag rekommenderar <strong>starkt</strong> att spela det vanliga spelet
+            till nivå 12 innan du försöker med pussel-DLCn, annars kan du stöta
+            på mekaniker som ännu inte introducerats. Vill du fortfarande
+            fortsätta?
     puzzleShare:
         title: Kortkommando Kopierad
-        desc: Korttangenten i pusslet (<key>) har kopierats till ditt urklipp! Det 
-            kan anges i pusselmenyn för att komma åt pusslet.
+        desc: Korttangenten i pusslet (<key>) har kopierats till ditt urklipp! Det kan
+            anges i pusselmenyn för att komma åt pusslet.
     puzzleReport:
         title: Anmäl Pussel
         options:
@@ -260,6 +264,13 @@ dialogs:
     puzzleDelete:
         title: Radera Pussel?
         desc: Är du säker på att du vill ta bort '<title>'? Detta kan inte ångras!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Flytta
@@ -337,10 +348,10 @@ ingame:
     waypoints:
         waypoints: Markörer
         hub: HUBB
-        description: Vänsterklicka på en markör för att hoppa till den, högerklicka för att
-            ta bort den.<br><br>Tryck på <keybinding> för att skapa en markör från
-            den aktuella vyn, eller <strong>högerklicka</strong> för att skapa
-            en markör på den valda platsen.
+        description: Vänsterklicka på en markör för att hoppa till den, högerklicka för
+            att ta bort den.<br><br>Tryck på <keybinding> för att skapa en
+            markör från den aktuella vyn, eller <strong>högerklicka</strong> för
+            att skapa en markör på den valda platsen.
         creationSuccessNotification: Markör har skapats.
     interactiveTutorial:
         title: Handledning
@@ -348,33 +359,34 @@ ingame:
             1_1_extractor: Placera en <strong>extraktor</strong> ovanpå en
                 <strong>cirkelform</strong> för att extrahera den!
             1_2_conveyor: "Anslut extraktorn med ett<strong>rullband</strong> till din
-                hubb!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet med
-                musen!"
+                hubb!<br><br>Tips: <strong>Klicka och dra</strong> rullbandet
+                med musen!"
             1_3_expand: "Detta är <strong>INTE</strong> ett idle-spel! Bygg fler extraktörer
                 och rullband för att klara målet snabbare.<br><br>Tips: Håll ned
                 <strong>SKIFT</strong> för att placera flera extraktörer, och
                 använd <strong>R</strong> för att rotera dem."
-            2_1_place_cutter: "Placera nu en <strong>Fräs</strong> för att skära cirklarna i två
-                halvor!<br><br> PS: Fräsen skär alltid <strong>uppifrån och
+            2_1_place_cutter: "Placera nu en <strong>Fräs</strong> för att skära cirklarna i
+                två halvor!<br><br> PS: Fräsen skär alltid <strong>uppifrån och
                 ned</strong> oavsett dess orientering."
-            2_2_place_trash: Fräsen kan <strong>täppas till och stanna</strong>!<br><br> Använd en
-                <strong>soptunna</strong> för att bli av med det avfall som för närvarande (!)
-                inte behövs.
-            2_3_more_cutters: "Bra jobbat! Placera nu <strong>2 fler fräsare</strong> för att
-                påskynda denna långsamma process!<br><br> PS: Använd <strong>snabbtangenterna
-                0-9 </strong> för att komma åt byggnader snabbare!"
+            2_2_place_trash: Fräsen kan <strong>täppas till och stanna</strong>!<br><br>
+                Använd en <strong>soptunna</strong> för att bli av med det
+                avfall som för närvarande (!) inte behövs.
+            2_3_more_cutters: "Bra jobbat! Placera nu <strong>2 fler fräsare</strong> för
+                att påskynda denna långsamma process!<br><br> PS: Använd
+                <strong>snabbtangenterna 0-9 </strong> för att komma åt
+                byggnader snabbare!"
             3_1_rectangles: "Låt oss nu extrahera några rektanglar! <strong>Bygg 4
                 extraktörer</strong> och anslut dem till hubben.<br><br> PS:
-                Håll ned <strong>SHIFT</strong> medan du drar ett rullband för att aktivera
-                rullbandsplaneraren!"
+                Håll ned <strong>SHIFT</strong> medan du drar ett rullband för
+                att aktivera rullbandsplaneraren!"
             21_1_place_quad_painter: Placera <strong>quad-målaren</strong> och få några
                 <strong>cirklar</strong>, <strong>vita</strong> och
                 <strong>röda</strong> färger!
             21_2_switch_to_wires: Byt till trådlagret genom att trycka på
                 <strong>E</strong>!<br><br> Sedan <strong>anslut alla fyra
                 ingångar</strong> på målaren med kablar!
-            21_3_place_button: Grymt! Placera nu en <strong>Strömbrytare</strong> och anslut den
-                med kablar!
+            21_3_place_button: Grymt! Placera nu en <strong>Strömbrytare</strong> och anslut
+                den med kablar!
             21_4_press_button: "Tryck på strömbrytaren för att få den att <strong>avge en
                 signal</strong> och på så sätt aktivera målaren.<br><br> PS: Du
                 behöver inte ansluta alla ingångar! Prova att bara koppla två."
@@ -1020,6 +1032,7 @@ settings:
                 instead of having to hold 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Snabbtangenter
     hint: "Tips: Se till att använda CTRL, SKIFT, och ALT! De låter dig använda
@@ -1033,6 +1046,7 @@ keybindings:
         massSelect: Massval
         buildings: Snabbtangenter
         placementModifiers: Placeringsmodifierare
+        mods: Provided by Mods
     mappings:
         confirm: Godkänn
         back: Tillbaka
@@ -1272,3 +1286,20 @@ backendErrors:
     too-many-likes-already: The puzzle alreay got too many likes. If you still want
         to remove it, please contact support@shapez.io!
     no-permission: You do not have the permission to perform this action.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

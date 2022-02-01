@@ -80,6 +80,10 @@ mainMenu:
         zu machen? Hol dir das Puzzle-DLC auf Steam für noch mehr Spaß!
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
     puzzleDlcViewNow: DLC anzeigen
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -326,6 +330,13 @@ dialogs:
         title: Puzzle löschen?
         desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht
             rückgängig gemacht werden!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -1124,6 +1135,7 @@ settings:
             description: Zeigt den Shape Tooltip immer an, wenn sich der Mauszeiger über
                 einem Gebäude befindet, anstatt 'ALT' drücken zu müssen.
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
@@ -1137,6 +1149,7 @@ keybindings:
         massSelect: Bereichsauswahl
         buildings: Gebäude
         placementModifiers: Platzierungsmodifikatoren
+        mods: Provided by Mods
     mappings:
         confirm: Bestätigen
         back: Zurück
@@ -1336,3 +1349,20 @@ tips:
     - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu
       bestimmen.
     - Du kannst die angehefteten Formen am linken Rand wieder entfernen.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

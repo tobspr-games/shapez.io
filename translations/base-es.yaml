@@ -79,6 +79,10 @@ mainMenu:
         DLC de Puzles en Steam para aún más diversión!
     puzzleDlcWishlist: ¡Añádelo ahora a tu lista de deseos!
     puzzleDlcViewNow: Ver Dlc
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -263,6 +267,13 @@ dialogs:
     puzzleDelete:
         title: ¿Eliminar Puzle?
         desc: ¿Estas seguro de querer eliminar '<title>'? ¡Esto no se puede deshacer!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -820,8 +831,9 @@ storyRewards:
             sola cinta!
     reward_belt_reader:
         title: Lector de cinta
-        desc: Has desbloqueado el <strong>Lector de cinta</strong>! Este te permite medir el rendimiento de una cinta.
-        <br><br>Y espera a desbloquear los cables... Se vuelve súper útil!
+        desc: Has desbloqueado el <strong>Lector de cinta</strong>! Este te permite
+            medir el rendimiento de una cinta. <br><br>Y espera a desbloquear
+            los cables... Se vuelve súper útil!
     reward_rotater_180:
         title: Rotador (180 grados)
         desc: ¡Has desbloqueado el <strong>rotador</strong> de 180 grados! - Te permite
@@ -1048,10 +1060,11 @@ settings:
                 (Al hacer zoom mínimo).
         shapeTooltipAlwaysOn:
             title: Descripción de la forma - Mostrar siempre
-            description: Mostrar siempre la descripción de la forma cuando pasas por encima de los edificios
-            en vez de tener que pulsar 'ALT'.
+            description: Mostrar siempre la descripción de la forma cuando pasas por encima
+                de los edificios en vez de tener que pulsar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Atajos de teclado
     hint: "Pista: ¡Asegúrate de usar CTRL, SHIFT y ALT! Habilitan distintas opciones
@@ -1065,6 +1078,7 @@ keybindings:
         massSelect: Selección masiva
         buildings: Atajos de edificios
         placementModifiers: Modificadores de colocación
+        mods: Provided by Mods
     mappings:
         confirm: Confirmar
         back: Atrás
@@ -1325,3 +1339,20 @@ backendErrors:
         quieres eliminarlo, por favor contacta a support@shapez.io! (Solo
         inglés)
     no-permission: No tienes los permisos necesarios para llevar a cabo esta acción.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

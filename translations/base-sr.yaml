@@ -78,6 +78,10 @@ mainMenu:
         ekspanziju sa Slagalicama na Steam-u, za još više zabave!
     puzzleDlcWishlist: Dodaj na listu želja!
     puzzleDlcViewNow: Pogledaj ekspanziju
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -256,6 +260,13 @@ dialogs:
         title: Izbrišite Slagalicu?
         desc: Da li sigurno želite da obrišete '<title>'? Ne možete da je vratite
             kasnije!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Kretanje
@@ -382,8 +393,8 @@ ingame:
                 <strong>krugove</strong> u <strong>belu</strong> and
                 <strong>crvenu</strong> boju!
             21_2_switch_to_wires: Prebacite se na žičani sloj pritiskom na taster
-                <strong>E</strong>!<br><br> Kablovima <strong>povežite sva četiri ulaza</strong>
-                farbača!
+                <strong>E</strong>!<br><br> Kablovima <strong>povežite sva
+                četiri ulaza</strong> farbača!
             21_3_place_button: Fenomenalno! Sada postavi <strong>Prekidač</strong> i poveži
                 ga žicama!
             21_4_press_button: "Kako bi aktivirao farbača, pritisni prekidač i on <strong>će
@@ -716,7 +727,8 @@ storyRewards:
     reward_splitter:
         title: Kompaktni Delilac
         desc: Otključali ste <strong>delioca</strong>, on predstavlja varijaciju
-            <strong>balansera</strong> - Prihvata jedan ulaz i razdvaja ih na dva!
+            <strong>balansera</strong> - Prihvata jedan ulaz i razdvaja ih na
+            dva!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> je otključan - Omogućava prenos stvari ispod traka
@@ -753,13 +765,14 @@ storyRewards:
             izlazu, može se koristiti kao <strong>kapija za prelivanje</strong>!
     reward_freeplay:
         title: Slobodna Igra
-        desc: Uspeli sve! Otključali ste <strong>slobodnu igru</strong>! Ovo znači da
-            će oblici biti <strong>nasumično</strong> kreirani!<br><br>
-            Od sad, pa nadalje središte će zahtevati određenu <strong>propusnost</strong>,
-            Topla preporuka jeste da napravite mašinu koja će automatski isporučivati
-            traženi oblik!<br><br> Na žičanom sloju, središte emituje, na svom izlazu,
-            traženi oblik, kako bi mogao biti analiziran i pomogao da automatski podesite
-            fabriku u odnosu na taj oblik.
+        desc: Uspeli sve! Otključali ste <strong>slobodnu igru</strong>! Ovo znači da će
+            oblici biti <strong>nasumično</strong> kreirani!<br><br> Od sad, pa
+            nadalje središte će zahtevati određenu <strong>propusnost</strong>,
+            Topla preporuka jeste da napravite mašinu koja će automatski
+            isporučivati traženi oblik!<br><br> Na žičanom sloju, središte
+            emituje, na svom izlazu, traženi oblik, kako bi mogao biti
+            analiziran i pomogao da automatski podesite fabriku u odnosu na taj
+            oblik.
     reward_blueprints:
         title: Nacrti
         desc: Sada možete da <strong>kopirate i nalepljujete</strong> delove fabrike!
@@ -806,8 +819,8 @@ storyRewards:
         desc: Otključali ste <strong>konstantan signal</strong>, građevinu žičanog
             sloja! Na primer, on može biti povezan na <strong>filter</strong>.
             <br><br> Konstantan signal može emitovati signal koji može
-            <strong>oblik</strong>, <strong>boja</strong> ili
-            <strong>da/ne vrednost</strong> (1 / 0).
+            <strong>oblik</strong>, <strong>boja</strong> ili <strong>da/ne
+            vrednost</strong> (1 / 0).
     reward_logic_gates:
         title: Logičke Kapije
         desc: <strong>Logičke Kapije</strong> su otključane! You don't have to be
@@ -816,31 +829,30 @@ storyRewards:
             Kao šlag na tortu, dobijate i <strong>Tranzistor</strong>!
     reward_virtual_processing:
         title: Virtuelna Građevine
-        desc: Dali smo vam gomilu novih građevina koje omogućavaju da
-            <strong>simulirate obradu oblika</strong>!<br><br> Možete simulirati
-            rezač, obrtač, slagač i još mnogo toga na žičanom sloju!
-            Sada imate tri opcije za nastavak igre:<br><br>-
-            Napravite <strong>automatsku mašinu</strong> koja kreira sve
-            moguće oblike koje središte zahteva (Preporučujem da probate!).
-            <br><br> - Napravite nešto strava koristeći žice.
-            <br><br> - Nastavite sa igrom, regulatno, kao i dosad.
-            <br><br> Ne zaboravite da se zabavljate, šta god odabrali!
+        desc: Dali smo vam gomilu novih građevina koje omogućavaju da <strong>simulirate
+            obradu oblika</strong>!<br><br> Možete simulirati rezač, obrtač,
+            slagač i još mnogo toga na žičanom sloju! Sada imate tri opcije za
+            nastavak igre:<br><br>- Napravite <strong>automatsku mašinu</strong>
+            koja kreira sve moguće oblike koje središte zahteva (Preporučujem da
+            probate!). <br><br> - Napravite nešto strava koristeći žice.
+            <br><br> - Nastavite sa igrom, regulatno, kao i dosad. <br><br> Ne
+            zaboravite da se zabavljate, šta god odabrali!
     reward_wires_painter_and_levers:
         title: Žice & Četvorostruki Farbač
-        desc: "Otključali ste <strong>Žičani Sloj</strong>: To je poseban sloj koji
-            se nalazi preko regularnog sloja i sa sobom donosi nove mogućnosti!
-            <br><br> Za početak, takođe je otključan
-            <strong>Četvorostruki Farbač</strong> - Na žičanom sloju povežite
-            koje delove želite da ofarbate!<br><br> Kako bi se prebacili na
-            žičani sloj pritisnite taster <strong>E</strong>.
-            <br><br> PS: <strong>Uključite savete</strong> u podešavanjima
-            kako bi aktivirali prateći tutorijal za korišćenje žica!"
+        desc: "Otključali ste <strong>Žičani Sloj</strong>: To je poseban sloj koji se
+            nalazi preko regularnog sloja i sa sobom donosi nove mogućnosti!
+            <br><br> Za početak, takođe je otključan <strong>Četvorostruki
+            Farbač</strong> - Na žičanom sloju povežite koje delove želite da
+            ofarbate!<br><br> Kako bi se prebacili na žičani sloj pritisnite
+            taster <strong>E</strong>. <br><br> PS: <strong>Uključite
+            savete</strong> u podešavanjima kako bi aktivirali prateći tutorijal
+            za korišćenje žica!"
     reward_filter:
         title: Filter
-        desc: Otključali ste <strong>Filter</strong>! On može usmeravati sve
-            predmete koji se poklapaju sa signalom na žičanom sloju na gornji
-            ili desni izlaz.<br><br> Takođe, može primiti i da/ne signal koji
-            može da omogući/onemogući rad filtera.
+        desc: Otključali ste <strong>Filter</strong>! On može usmeravati sve predmete
+            koji se poklapaju sa signalom na žičanom sloju na gornji ili desni
+            izlaz.<br><br> Takođe, može primiti i da/ne signal koji može da
+            omogući/onemogući rad filtera.
     reward_demo_end:
         title: Kraj probne verzije
         desc: Došli ste do kraja probne verzije!
@@ -1013,10 +1025,11 @@ settings:
                 mape).
         shapeTooltipAlwaysOn:
             title: Opis alata oblika - Uvek Prikaži
-            description: Uvek prikazuje opis oblika kad pređete kursorom/strelicom
-                preko građevine, umesto da držite taster 'ALT'.
+            description: Uvek prikazuje opis oblika kad pređete kursorom/strelicom preko
+                građevine, umesto da držite taster 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Tasteri
     hint: "Savet: Koristite CTRL, SHIFT i ALT! Oni omogućuju razne opcije
@@ -1030,6 +1043,7 @@ keybindings:
         massSelect: Masovno Odabiranje
         buildings: Prečice za građevine
         placementModifiers: Modifikatori Postavljanja
+        mods: Provided by Mods
     mappings:
         confirm: Potvrdi
         back: Nazad
@@ -1277,3 +1291,20 @@ backendErrors:
     too-many-likes-already: Slagalica ima dosta lajkova. Ako i dalje želite da je
         uklonite, molimo da kontaktirate support@shapez.io!
     no-permission: Nemate dozvolu za izvršenje ove radnje.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!
