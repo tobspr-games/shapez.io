@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "This version adds an official modloader! You can now load mods by placing it in the mods/ folder of the game.",
             "When holding shift while placing a belt, the indicator now becomes red when crossing buildings",
+            "Lots of performance improvements, leading to up to 50% more FPS",
         ],
     },
     {
