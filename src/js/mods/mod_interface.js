@@ -134,9 +134,7 @@ export class ModInterface {
                 Loader.sprites.set(spriteName, sprite);
             }
 
-            if (sprite.frozen) {
-                continue;
-            }
+            sprite.frozen = true;
 
             const link = new SpriteAtlasLink({
                 packedX: frame.x,
