@@ -143,7 +143,7 @@ function gulptasksStandalone($, gulp) {
 
             packager({
                 dir: tempDestBuildDir,
-                appCopyright: "Tobias Springer",
+                appCopyright: "tobspr Games",
                 appVersion: getVersion(),
                 buildVersion: "1.0.0",
                 arch,

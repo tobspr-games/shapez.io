@@ -1,4 +1,5 @@
 /* typehints:start */
+import { GameSystem } from "./game_system";
 import { GameRoot } from "./root";
 /* typehints:end */
 
@@ -29,6 +30,11 @@ import { GoalAcceptorSystem } from "./systems/goal_acceptor";
 import { ZoneSystem } from "./systems/zone";
 
 const logger = createLogger("game_system_manager");
+
+/**
+ * @type {Object<string, Array<{ id: string; systemClass: new (any) => GameSystem}>>}
+ */
+export const MODS_ADDITIONAL_SYSTEMS = {};
 
 export class GameSystemManager {
     /**
@@ -123,7 +129,15 @@ export class GameSystemManager {
      * Initializes all systems
      */
     internalInitSystems() {
+        const addBefore = id => {
+            const systems = MODS_ADDITIONAL_SYSTEMS[id];
+            if (systems) {
+                systems.forEach(({ id, systemClass }) => add(id, systemClass));
+            }
+        };
+
         const add = (id, systemClass) => {
+            addBefore(id);
             this.systems[id] = new systemClass(this.root);
             this.systemUpdateOrder.push(id);
         };
@@ -173,6 +187,7 @@ export class GameSystemManager {
         // IMPORTANT: We have 2 phases: In phase 1 we compute the output values of all gates,
         // processors etc. In phase 2 we propagate it through the wires network
         add("logicGate", LogicGateSystem);
+
         add("beltReader", BeltReaderSystem);
 
         add("display", DisplaySystem);
@@ -185,6 +200,14 @@ export class GameSystemManager {
 
         if (this.root.gameMode.getBuildableZones()) {
             add("zone", ZoneSystem);
+        }
+
+        addBefore("end");
+
+        for (const key in MODS_ADDITIONAL_SYSTEMS) {
+            if (!this.systems[key] && key !== "end") {
+                logger.error("Mod system not attached due to invalid 'before': ", key);
+            }
         }
 
         logger.log("📦 There are", this.systemUpdateOrder.length, "game systems");

@@ -9,6 +9,7 @@ import { SOUNDS, MUSIC } from "../platform/sound";
 import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
 import { initBuildingCodesAfterResourcesLoaded } from "../game/meta_building_registry";
 import { cachebust } from "./cachebust";
+import { MODS } from "../mods/modloader";
 
 const logger = createLogger("background_loader");
 

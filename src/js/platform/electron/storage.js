@@ -1,30 +1,8 @@
-import { StorageInterface } from "../storage";
-import { getIPCRenderer } from "../../core/utils";
-import { createLogger } from "../../core/logging";
-
-const logger = createLogger("electron-storage");
+import { FILE_NOT_FOUND, StorageInterface } from "../storage";
 
 export class StorageImplElectron extends StorageInterface {
     constructor(app) {
         super(app);
-
-        /** @type {Object.<number, {resolve:Function, reject: Function}>} */
-        this.jobs = {};
-        this.jobId = 0;
-
-        getIPCRenderer().on("fs-response", (event, arg) => {
-            const id = arg.id;
-            if (!this.jobs[id]) {
-                logger.warn("Got unhandled FS response, job not known:", id);
-                return;
-            }
-            const { resolve, reject } = this.jobs[id];
-            if (arg.result.success) {
-                resolve(arg.result.data);
-            } else {
-                reject(arg.result.error);
-            }
-        });
     }
 
     initialize() {
@@ -32,44 +10,32 @@ export class StorageImplElectron extends StorageInterface {
     }
 
     writeFileAsync(filename, contents) {
-        return new Promise((resolve, reject) => {
-            // ipcMain
-            const jobId = ++this.jobId;
-            this.jobs[jobId] = { resolve, reject };
-
-            getIPCRenderer().send("fs-job", {
-                type: "write",
-                filename,
-                contents,
-                id: jobId,
-            });
+        return ipcRenderer.invoke("fs-job", {
+            type: "write",
+            filename,
+            contents,
         });
     }
 
     readFileAsync(filename) {
-        return new Promise((resolve, reject) => {
-            // ipcMain
-            const jobId = ++this.jobId;
-            this.jobs[jobId] = { resolve, reject };
-
-            getIPCRenderer().send("fs-job", {
+        return ipcRenderer
+            .invoke("fs-job", {
                 type: "read",
                 filename,
-                id: jobId,
+            })
+            .then(res => {
+                if (res && res.error === FILE_NOT_FOUND) {
+                    throw FILE_NOT_FOUND;
+                }
+
+                return res;
             });
-        });
     }
 
     deleteFileAsync(filename) {
-        return new Promise((resolve, reject) => {
-            // ipcMain
-            const jobId = ++this.jobId;
-            this.jobs[jobId] = { resolve, reject };
-            getIPCRenderer().send("fs-job", {
-                type: "delete",
-                filename,
-                id: jobId,
-            });
+        return ipcRenderer.invoke("fs-job", {
+            type: "delete",
+            filename,
         });
     }
 }

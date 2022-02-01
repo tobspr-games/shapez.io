@@ -4,7 +4,6 @@ import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
-import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
@@ -204,11 +203,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
                         // Handover successful, clear slot
                         if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
-                            targetAcceptorComp.onItemAccepted(
-                                destSlot.index,
-                                destSlot.acceptedDirection,
-                                item
-                            );
+                            targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.slot.direction, item);
                         }
                         sourceSlot.item = null;
                         continue;

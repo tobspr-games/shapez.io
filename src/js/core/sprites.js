@@ -71,6 +71,8 @@ export class AtlasSprite extends BaseSprite {
         /** @type {Object.<string, SpriteAtlasLink>} */
         this.linksByResolution = {};
         this.spriteName = spriteName;
+
+        this.frozen = false;
     }
 
     getRawTexture() {

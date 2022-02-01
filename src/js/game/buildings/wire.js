@@ -37,6 +37,51 @@ export class MetaWireBuilding extends MetaBuilding {
         super("wire");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 27,
+                variant: defaultBuildingVariant,
+                rotationVariant: 0,
+            },
+            {
+                internalId: 28,
+                variant: defaultBuildingVariant,
+                rotationVariant: 1,
+            },
+            {
+                internalId: 29,
+                variant: defaultBuildingVariant,
+                rotationVariant: 2,
+            },
+            {
+                internalId: 30,
+                variant: defaultBuildingVariant,
+                rotationVariant: 3,
+            },
+            {
+                internalId: 52,
+                variant: enumWireVariant.second,
+                rotationVariant: 0,
+            },
+            {
+                internalId: 53,
+                variant: enumWireVariant.second,
+                rotationVariant: 1,
+            },
+            {
+                internalId: 54,
+                variant: enumWireVariant.second,
+                rotationVariant: 2,
+            },
+            {
+                internalId: 55,
+                variant: enumWireVariant.second,
+                rotationVariant: 3,
+            },
+        ];
+    }
+
     getHasDirectionLockAvailable() {
         return true;
     }

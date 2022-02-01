@@ -1,12 +1,7 @@
-/* typehints:start */
-import { GameRoot } from "../root";
-/* typehints:end */
-
 import { ItemProducerComponent } from "../components/item_producer";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 
 export class ItemProducerSystem extends GameSystemWithFilter {
-    /** @param {GameRoot} root */
     constructor(root) {
         super(root, [ItemProducerComponent]);
         this.item = null;

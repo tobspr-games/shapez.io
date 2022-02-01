@@ -4,7 +4,7 @@ import { ItemEjectorComponent } from "../components/item_ejector";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
@@ -16,6 +16,15 @@ const overlayMatrix = generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]);
 export class MetaReaderBuilding extends MetaBuilding {
     constructor() {
         super("reader");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 49,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {
@@ -75,7 +84,7 @@ export class MetaReaderBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ],
             })

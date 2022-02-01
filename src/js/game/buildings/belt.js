@@ -5,7 +5,7 @@ import { SOUNDS } from "../../platform/sound";
 import { T } from "../../translations";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { THEME } from "../theme";
 
@@ -20,6 +20,26 @@ export const beltOverlayMatrices = {
 export class MetaBeltBuilding extends MetaBuilding {
     constructor() {
         super("belt");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 1,
+                variant: defaultBuildingVariant,
+                rotationVariant: 0,
+            },
+            {
+                internalId: 2,
+                variant: defaultBuildingVariant,
+                rotationVariant: 1,
+            },
+            {
+                internalId: 3,
+                variant: defaultBuildingVariant,
+                rotationVariant: 2,
+            },
+        ];
     }
 
     getSilhouetteColor() {

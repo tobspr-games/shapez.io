@@ -35,6 +35,9 @@ import { PuzzleMenuState } from "./states/puzzle_menu";
 import { ClientAPI } from "./platform/api";
 import { LoginState } from "./states/login";
 import { WegameSplashState } from "./states/wegame_splash";
+import { MODS } from "./mods/modloader";
+import { MOD_SIGNALS } from "./mods/mod_signals";
+import { ModsState } from "./states/mods";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
@@ -62,10 +65,24 @@ if (typeof document.hidden !== "undefined") {
 }
 
 export class Application {
-    constructor() {
+    /**
+     * Boots the application
+     */
+    async boot() {
+        console.log("Booting ...");
+
         assert(!GLOBAL_APP, "Tried to construct application twice");
         logger.log("Creating application, platform =", getPlatformName());
         setGlobalApp(this);
+        MODS.app = this;
+
+        // MODS
+
+        try {
+            await MODS.initMods();
+        } catch (ex) {
+            alert("Failed to load mods (launch with --dev for more info): \n\n" + ex);
+        }
 
         this.unloaded = false;
 
@@ -128,6 +145,31 @@ export class Application {
         // Store the mouse position, or null if not available
         /** @type {Vector|null} */
         this.mousePosition = null;
+
+        this.registerStates();
+        this.registerEventListeners();
+
+        Loader.linkAppAfterBoot(this);
+
+        if (G_WEGAME_VERSION) {
+            this.stateMgr.moveToState("WegameSplashState");
+        }
+
+        // Check for mobile
+        else if (IS_MOBILE) {
+            this.stateMgr.moveToState("MobileWarningState");
+        } else {
+            this.stateMgr.moveToState("PreloadState");
+        }
+
+        // Starting rendering
+        this.ticker.frameEmitted.add(this.onFrameEmitted, this);
+        this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
+        this.ticker.start();
+
+        window.focus();
+
+        MOD_SIGNALS.appBooted.dispatch();
     }
 
     /**
@@ -167,6 +209,7 @@ export class Application {
             ChangelogState,
             PuzzleMenuState,
             LoginState,
+            ModsState,
         ];
 
         for (let i = 0; i < states.length; ++i) {
@@ -320,35 +363,6 @@ export class Application {
                 event.returnValue = "Are you sure you want to exit?";
             }
         }
-    }
-
-    /**
-     * Boots the application
-     */
-    boot() {
-        console.log("Booting ...");
-        this.registerStates();
-        this.registerEventListeners();
-
-        Loader.linkAppAfterBoot(this);
-
-        if (G_WEGAME_VERSION) {
-            this.stateMgr.moveToState("WegameSplashState");
-        }
-
-        // Check for mobile
-        else if (IS_MOBILE) {
-            this.stateMgr.moveToState("MobileWarningState");
-        } else {
-            this.stateMgr.moveToState("PreloadState");
-        }
-
-        // Starting rendering
-        this.ticker.frameEmitted.add(this.onFrameEmitted, this);
-        this.ticker.bgFrameEmitted.add(this.onBackgroundFrame, this);
-        this.ticker.start();
-
-        window.focus();
     }
 
     /**

@@ -5,10 +5,8 @@ import { Vector } from "../../core/vector";
 import { GoalAcceptorComponent } from "../components/goal_acceptor";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunk } from "../map_chunk";
-import { GameRoot } from "../root";
 
 export class GoalAcceptorSystem extends GameSystemWithFilter {
-    /** @param {GameRoot} root */
     constructor(root) {
         super(root, [GoalAcceptorComponent]);
 

@@ -43,21 +43,6 @@ export function getPlatformName() {
 }
 
 /**
- * Returns the IPC renderer, or null if not within the standalone
- * @returns {object|null}
- */
-let ipcRenderer = null;
-export function getIPCRenderer() {
-    if (!G_IS_STANDALONE) {
-        return null;
-    }
-    if (!ipcRenderer) {
-        ipcRenderer = eval("require")("electron").ipcRenderer;
-    }
-    return ipcRenderer;
-}
-
-/**
  * Makes a new 2D array with undefined contents
  * @param {number} w
  * @param {number} h
@@ -395,7 +380,7 @@ export function clamp(v, minimum = 0, maximum = 1) {
  * @param {Array<string>=} classes
  * @param {string=} innerHTML
  */
-function makeDivElement(id = null, classes = [], innerHTML = "") {
+export function makeDivElement(id = null, classes = [], innerHTML = "") {
     const div = document.createElement("div");
     if (id) {
         div.id = id;

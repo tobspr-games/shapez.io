@@ -109,6 +109,11 @@ export class ItemProcessorComponent extends Component {
          * @type {number}
          */
         this.bonusTime = 0;
+
+        /**
+         * @type {Array<EjectorItemToEject>}
+         */
+        this.queuedEjects = [];
     }
 
     /**

@@ -28,6 +28,8 @@ export const THIRDPARTY_URLS = {
         25: "https://www.youtube.com/watch?v=7OCV1g40Iew&",
         26: "https://www.youtube.com/watch?v=gfm6dS1dCoY",
     },
+
+    modBrowser: "https://shapez.mod.io/?preview=f55f6304ca4873d9a25f3b575571b948",
 };
 
 // export const A_B_TESTING_LINK_TYPE = Math.random() > 0.95 ? "steam_1_pr" : "steam_2_npr";
@@ -42,7 +44,7 @@ export const globalConfig = {
     // Which dpi the assets have
     assetsDpi: 192 / 32,
     assetsSharpness: 1.5,
-    shapesSharpness: 1.4,
+    shapesSharpness: 1.3,
 
     // Achievements
     achievementSliceDuration: 10, // Seconds
@@ -60,6 +62,8 @@ export const globalConfig = {
     chunkAggregateSize: 4,
     mapChunkOverviewMinZoom: 0.9,
     mapChunkWorldSize: null, // COMPUTED
+
+    maxBeltShapeBundleSize: 20,
 
     // Belt speeds
     // NOTICE: Update webpack.production.config too!

@@ -22,6 +22,7 @@ import {
     TypeString,
     TypeStructuredObject,
     TypeVector,
+    TypePositiveIntegerOrString,
 } from "./serialization_data_types";
 
 const logger = createLogger("serialization");
@@ -38,6 +39,7 @@ export const types = {
     vector: new TypeVector(),
     tileVector: new TypeVector(),
     bool: new TypeBoolean(),
+    uintOrString: new TypePositiveIntegerOrString(),
 
     /**
      * @param {BaseDataType} wrapped
@@ -136,7 +138,7 @@ export const types = {
 
 /**
  * A full schema declaration
- * @typedef {Object.<string, BaseDataType>} Schema
+ * @typedef {Object.<string, BaseDataType> | object} Schema
  */
 
 const globalSchemaCache = {};

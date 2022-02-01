@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "1.5.0",
+        date: "unreleased",
+        entries: [
+            "This version adds an official modloader! You can now load mods by placing it in the mods/ folder of the game.",
+            "When holding shift while placing a belt, the indicator now becomes red when crossing buildings",
+        ],
+    },
+    {
         version: "1.4.4",
         date: "29.08.2021",
         entries: [

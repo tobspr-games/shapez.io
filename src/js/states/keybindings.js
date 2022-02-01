@@ -19,7 +19,7 @@ export class KeybindingsState extends TextualGameState {
             <div class="topEntries">
                 <span class="hint">${T.keybindings.hint}</span>
                 <button class="styledButton resetBindings">${T.keybindings.resetKeybindings}</button>
-            
+
             </div>
 
             <div class="keybindings">
@@ -34,6 +34,10 @@ export class KeybindingsState extends TextualGameState {
         this.trackClicks(this.htmlElement.querySelector(".resetBindings"), this.resetBindings);
 
         for (const category in KEYMAPPINGS) {
+            if (Object.keys(KEYMAPPINGS[category]).length === 0) {
+                continue;
+            }
+
             const categoryDiv = document.createElement("div");
             categoryDiv.classList.add("category");
             keybindingsElem.appendChild(categoryDiv);
@@ -138,7 +142,19 @@ export class KeybindingsState extends TextualGameState {
                 }
 
                 const mappingDiv = container.querySelector(".mapping");
-                mappingDiv.innerHTML = getStringForKeyCode(keyCode);
+                let modifiers = "";
+
+                if (mapped.modifiers && mapped.modifiers.shift) {
+                    modifiers += "⇪ ";
+                }
+                if (mapped.modifiers && mapped.modifiers.alt) {
+                    modifiers += T.global.keys.alt + " ";
+                }
+                if (mapped.modifiers && mapped.modifiers.ctrl) {
+                    modifiers += T.global.keys.control + " ";
+                }
+
+                mappingDiv.innerHTML = modifiers + getStringForKeyCode(keyCode);
                 mappingDiv.classList.toggle("changed", !!overrides[keybindingId]);
 
                 const resetBtn = container.querySelector("button.resetKeybinding");

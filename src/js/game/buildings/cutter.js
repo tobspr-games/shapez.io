@@ -17,6 +17,19 @@ export class MetaCutterBuilding extends MetaBuilding {
         super("cutter");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 9,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 10,
+                variant: enumCutterVariants.quad,
+            },
+        ];
+    }
+
     getSilhouetteColor() {
         return "#7dcda2";
     }
@@ -83,7 +96,7 @@ export class MetaCutterBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                         filter: "shape",
                     },
                 ],

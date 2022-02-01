@@ -13,6 +13,11 @@ import { Rectangle } from "../core/rectangle";
 
 const logger = createLogger("map_chunk");
 
+/**
+ * @type {Object<string, (distanceToOriginInChunks: number) => number>}
+ */
+export const MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS = {};
+
 export class MapChunk {
     /**
      *
@@ -192,6 +197,10 @@ export class MapChunk {
             [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
 
+        for (const key in MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS) {
+            weights[key] = MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[key](distanceToOriginInChunks);
+        }
+
         if (distanceToOriginInChunks < 7) {
             // Initial chunks can not spawn the good stuff
             weights[enumSubShape.star] = 0;
@@ -274,6 +283,17 @@ export class MapChunk {
         const chunkCenter = new Vector(this.x, this.y).addScalar(0.5);
         const distanceToOriginInChunks = Math.round(chunkCenter.length());
 
+        this.generatePatches({ rng, chunkCenter, distanceToOriginInChunks });
+    }
+
+    /**
+     *
+     * @param {object} param0
+     * @param {RandomNumberGenerator} param0.rng
+     * @param {Vector} param0.chunkCenter
+     * @param {number} param0.distanceToOriginInChunks
+     */
+    generatePatches({ rng, chunkCenter, distanceToOriginInChunks }) {
         // Determine how likely it is that there is a color patch
         const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
 
@@ -424,7 +444,7 @@ export class MapChunk {
      * Sets the chunks contents
      * @param {number} tileX
      * @param {number} tileY
-     * @param {Entity=} contents
+     * @param {Entity} contents
      * @param {Layer} layer
      */
     setLayerContentFromWorldCords(tileX, tileY, contents, layer) {
