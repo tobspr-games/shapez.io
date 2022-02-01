@@ -66,8 +66,7 @@ export class ModLoader {
                 // @ts-ignore
                 const module = modules(key);
                 for (const member in module) {
-                    if (member === "default" || member === "$s") {
-                        // Setter
+                    if (member === "default") {
                         continue;
                     }
                     if (exports[member]) {
