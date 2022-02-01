@@ -78,9 +78,8 @@ mainMenu:
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
     puzzleDlcViewNow: Voir le DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Mods Actifs
+        warningPuzzleDLC: Il n'est pas possible de jouer au DLC puzzle avec des mods, veuillez désactiver les mods pour jouer au DLC.
 dialogs:
     buttons:
         ok: OK
@@ -265,12 +264,10 @@ dialogs:
         title: Supprimer le puzzle ?
         desc: Êtes-vous sûr de vouloir supprimer '<title>' ? Cela sera irréversible !
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Avertissement des Mods
+        desc: Les mods installés sont différents de ceux présents dans votre sauvegarde. Cela peut casser la sauvegarde, ou elle ne pourrait même pas se charger. Êtes vous sûr de vouloir la charger ?
+        missingMods: Mods manquants
+        newMods: Mods récemment installés
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -787,7 +784,7 @@ storyRewards:
         title: Répartiteur compact
         desc: Vous avez débloqué le <strong>répartiteur compact</strong> une variante du
             <strong>répartiteur</strong> - Il accepte une entrée et la divise en
-            deux !
+            deux !
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -1076,7 +1073,7 @@ settings:
             description: Si activé une info-bule s'affiche quand vous survolez un batiment
                 sinon il faut maintenir 'ALT'.
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Nouveau!
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1090,7 +1087,7 @@ keybindings:
         massSelect: Sélection de zone
         buildings: Raccourcis bâtiment
         placementModifiers: Modificateurs de placement
-        mods: Provided by Mods
+        mods: Ajouté par des Mods
     mappings:
         confirm: Confirmer
         back: Retour
@@ -1349,22 +1346,18 @@ backendErrors:
     bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
     timeout: La demande a expiré.
     too-many-likes-already: Le puzzle a déjà eu trop de j'aimes. Si vous voulez
-        quand même le supprimer, veuillez contacter support@shapez.io !
+        quand même le supprimer, veuillez contacter support@shapez.io !
     no-permission: Vous n'êtes pas autorisé à effectuer cette action.
 mods:
     title: Mods
-    author: Author
+    author: Auteur
     version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    modWebsite: Site
+    openFolder: Ouvrir le dossier des mods
+    folderOnlyStandalone: Cette action n'est possible que dans la version standalone.
+    browseMods: Parcourir les Mods
+    modsInfo: Pour installer et gérer des mods, copier les dans le dossier mods dans le dossier du jeu. Vous pouvez aussi utiliser le bouton 'Ouvrir le dossier des mods' en haut à droite.
+    noModSupport: Il vous faut la version standalone pour installer des mods.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Bientôt...
+        description: Activer ou désactiver des mods et seulement possible en ajoutant ou en enlevant le mod du dossier mods pour l'instant. Mais ce sera possible autrement dans une mise à jour future!
