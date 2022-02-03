@@ -17,7 +17,7 @@ import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
 import { matchDataRecursive, T } from "../translations";
 import { gBuildingVariants, registerBuildingVariant } from "../game/building_codes";
-import { gComponentRegistry, gMetaBuildingRegistry } from "../core/global_registries";
+import { gComponentRegistry, gItemRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 import { MODS_ADDITIONAL_SYSTEMS } from "../game/game_system_manager";
 import { MOD_CHUNK_DRAW_HOOKS } from "../game/map_chunk_view";
@@ -28,6 +28,8 @@ import { ModMetaBuilding } from "./mod_meta_building";
 import { BaseHUDPart } from "../game/hud/base_hud_part";
 import { Vector } from "../core/vector";
 import { GameRoot } from "../game/root";
+import { BaseItem } from "../game/base_item";
+import { MODS_ADDITIONAL_ITEMS } from "../game/item_resolver";
 
 /**
  * @typedef {{new(...args: any[]): any, prototype: any}} constructable
@@ -188,6 +190,15 @@ export class ModInterface {
         if (language === "en") {
             matchDataRecursive(T, translations, true);
         }
+    }
+
+    /**
+     * @param {typeof BaseItem} item
+     * @param {(itemData: any) => BaseItem} resolver
+     */
+    registerItem(item, resolver) {
+        gItemRegistry.register(item);
+        MODS_ADDITIONAL_ITEMS[item.getId()] = resolver;
     }
 
     /**
