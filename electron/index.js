@@ -373,7 +373,7 @@ try {
     mods = loadMods();
     console.log("Loaded", mods.length, "mods");
 } catch (ex) {
-    console.error("Failed ot load mods");
+    console.error("Failed to load mods");
     dialog.showErrorBox("Failed to load mods:", ex);
 }
 
