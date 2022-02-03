@@ -15,7 +15,7 @@ export class BaseItem extends BasicSerializableObject {
         return "base_item";
     }
 
-    /** @returns {object} */
+    /** @returns {import("../savegame/serialization").Schema} */
     static getSchema() {
         return {};
     }

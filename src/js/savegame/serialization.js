@@ -192,7 +192,7 @@ export class BasicSerializableObject {
         return schema;
     }
 
-    /** @returns {object} */
+    /** @returns {object | string | number} */
     serialize() {
         return serializeSchema(
             this,
