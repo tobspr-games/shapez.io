@@ -93,9 +93,6 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false, w
                                 end: "typehints:end",
                             },
                         },
-                        {
-                            loader: path.resolve(__dirname, "mod.js"),
-                        },
                     ],
                 },
                 {

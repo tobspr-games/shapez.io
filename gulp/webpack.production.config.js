@@ -230,9 +230,6 @@ module.exports = ({
                                 { pattern: /globalConfig\.debug/g, replacement: () => "''" },
                             ],
                         }),
-                        {
-                            loader: path.resolve(__dirname, "mod.js"),
-                        },
                     ],
                 },
                 {
