@@ -1,3 +1,3 @@
 module.exports = function (source, map) {
-    return source + `\nexport let $s=(n,v)=>eval(n+"=v")`;
+    return source + `\nexport const __$S__=(n,v)=>eval("function(v){" + n + "=v}")(v)`;
 };
