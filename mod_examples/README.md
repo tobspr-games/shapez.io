@@ -7,8 +7,6 @@ Currently there are two options to develop mods for shapez.io:
 1. Writing single file mods, which doesn't require any additional tools and can be loaded directly in the game
 2. Using the [create-shapezio-mod](https://www.npmjs.com/package/create-shapezio-mod) package. This package is still in development but allows you to pack multiple files and images into a single mod file, so you don't have to base64 encode your images etc.
 
-Since the `create-shapezio-mod` package is still in development, the current recommended way is to write single file mods, which I'll explain now.
-
 ## Mod Developer Discord
 
 A great place to get help with mod development is the official [shapez.io modloader discord](https://discord.gg/xq5v8uyMue).
