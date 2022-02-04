@@ -383,6 +383,7 @@ ipcMain.handle("get-mods", async () => {
 
 steam.init(isDev);
 
-if (mods) {
+// Only allow achievements and puzzle DLC if no mods are loaded
+if (mods.length === 0) {
     steam.listen();
 }
