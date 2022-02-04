@@ -131,6 +131,7 @@ module.exports = ({
                             warnings: true,
                         },
                         mangle: {
+                            reserved: ["__$S__"],
                             eval: true,
                             keep_classnames: !minifyNames,
                             keep_fnames: !minifyNames,
