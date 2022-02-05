@@ -178,7 +178,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const pinsComp = entity.components.WiredPins;
 
         if (MOD_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement]) {
-            return MOD_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement]({
+            return MOD_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement].bind(this)({
                 entity,
                 item,
                 slotIndex,
