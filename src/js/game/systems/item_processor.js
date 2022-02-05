@@ -55,7 +55,7 @@ export const MOD_ITEM_PROCESSOR_HANDLERS = {};
 /**
  * @type {Object<string, (ProccessingRequirementsImplementationPayload) => boolean>}
  */
-export const MOD_PROCESSING_REQUIREMENTS = {};
+export const MODS_PROCESSING_REQUIREMENTS = {};
 
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -177,8 +177,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         const itemProcessorComp = entity.components.ItemProcessor;
         const pinsComp = entity.components.WiredPins;
 
-        if (MOD_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement]) {
-            return MOD_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement].bind(this)({
+        if (MODS_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement]) {
+            return MODS_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement].bind(this)({
                 entity,
                 item,
                 slotIndex,
