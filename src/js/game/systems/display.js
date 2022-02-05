@@ -7,6 +7,15 @@ import { isTrueItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { MapChunkView } from "../map_chunk_view";
 
+/** @type {{
+ * [x: string]: (item: BaseItem) => BaseItem
+ * }} */
+export const MODS_ADDITIONAL_DISPLAY_ITEM_RESOLVER = {};
+
+/** @type {{
+ * [x: string]: (parameters: import("../../core/draw_parameters").DrawParameters, entity: import("../entity").Entity, item: BaseItem) => BaseItem
+ * }} */
+export const MODS_ADDITIONAL_DISPLAY_ITEM_DRAW = {};
 export class DisplaySystem extends GameSystem {
     constructor(root) {
         super(root);
@@ -30,6 +39,10 @@ export class DisplaySystem extends GameSystem {
     getDisplayItem(value) {
         if (!value) {
             return null;
+        }
+
+        if (MODS_ADDITIONAL_DISPLAY_ITEM_RESOLVER[value.getItemType()]) {
+            return MODS_ADDITIONAL_DISPLAY_ITEM_RESOLVER[value.getItemType()].apply(this, [value]);
         }
 
         switch (value.getItemType()) {
@@ -72,6 +85,14 @@ export class DisplaySystem extends GameSystem {
 
                 if (!value) {
                     continue;
+                }
+
+                if (MODS_ADDITIONAL_DISPLAY_ITEM_DRAW[value.getItemType()]) {
+                    return MODS_ADDITIONAL_DISPLAY_ITEM_DRAW[value.getItemType()].apply(this, [
+                        parameters,
+                        entity,
+                        value,
+                    ]);
                 }
 
                 const origin = entity.components.StaticMapEntity.origin;
