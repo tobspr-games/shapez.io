@@ -60,13 +60,13 @@ export class StorageComponent extends Component {
 
         const itemType = item.getItemType();
 
-        if (MODS_ADDITIONAL_STORAGE_ITEM_RESOLVER[itemType]) {
-            return MODS_ADDITIONAL_STORAGE_ITEM_RESOLVER[itemType].apply(this, [item]);
-        }
-
         if (itemType !== this.storedItem.getItemType()) {
             // Check type matches
             return false;
+        }
+
+        if (MODS_ADDITIONAL_STORAGE_ITEM_RESOLVER[itemType]) {
+            return MODS_ADDITIONAL_STORAGE_ITEM_RESOLVER[itemType].apply(this, [item]);
         }
 
         if (itemType === "color") {
