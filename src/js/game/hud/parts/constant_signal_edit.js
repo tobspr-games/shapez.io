@@ -196,7 +196,7 @@ export class HUDConstantSignalEdit extends BaseHUDPart {
         const codeLower = code.toLowerCase();
 
         if (MODS_ADDITIONAL_CONSTANT_SIGNAL_RESOLVER[codeLower]) {
-            return MODS_ADDITIONAL_CONSTANT_SIGNAL_RESOLVER[codeLower](entity);
+            return MODS_ADDITIONAL_CONSTANT_SIGNAL_RESOLVER[codeLower].apply(this, [entity]);
         }
 
         if (enumColors[codeLower]) {
