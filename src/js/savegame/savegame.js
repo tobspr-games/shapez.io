@@ -16,6 +16,7 @@ import { SavegameInterface_V1008 } from "./schemas/1008";
 import { SavegameInterface_V1009 } from "./schemas/1009";
 import { MODS } from "../mods/modloader";
 import { SavegameInterface_V1010 } from "./schemas/1010";
+import { SavegameInterface_V1011 } from "./schemas/1011";
 
 const logger = createLogger("savegame");
 
@@ -56,7 +57,7 @@ export class Savegame extends ReadWriteProxy {
      * @returns {number}
      */
     static getCurrentVersion() {
-        return 1010;
+        return 1011;
     }
 
     /**
@@ -166,6 +167,11 @@ export class Savegame extends ReadWriteProxy {
         if (data.version === 1009) {
             SavegameInterface_V1010.migrate1009to1010(data);
             data.version = 1010;
+        }
+
+        if (data.version === 1010) {
+            SavegameInterface_V1011.migrate1010to1011(data);
+            data.version = 1011;
         }
 
         return ExplainedResult.good();

@@ -1,6 +1,8 @@
 import { types } from "../../savegame/serialization";
+import { TypeString } from "../../savegame/serialization_data_types";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { typeItemSingleton } from "../item_resolver";
 
 /** @enum {string} */
 export const enumItemProcessorTypes = {
@@ -54,6 +56,19 @@ export class ItemProcessorComponent extends Component {
     static getSchema() {
         return {
             nextOutputSlot: types.uint,
+            currentCharge: types.nullable(
+                types.structured({
+                    remainingTime: types.ufloat,
+                    items: types.array(
+                        types.structured({
+                            item: typeItemSingleton,
+                            extraProgress: types.nullable(types.float),
+                            requiredSlot: types.nullable(types.uint),
+                            preferredSlot: types.nullable(types.uint),
+                        })
+                    ),
+                })
+            ),
         };
     }
 
