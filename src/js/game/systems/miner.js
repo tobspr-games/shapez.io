@@ -76,11 +76,13 @@ export class MinerSystem extends GameSystemWithFilter {
                 const exitEntity = minerComp.cachedExitMiner;
                 if (exitEntity) {
                     const exitMinerComp = exitEntity.components.Miner;
-                    exitMinerComp.progress += progressGrowth;
+                    if (exitMinerComp.progress < targetProgress + 0.5) {
+                        // we can add on some extra progress
+                        exitMinerComp.progress += progressGrowth;
+                    }
                     continue;
                 }
             }
-            //console.log(minerComp.progress);
 
             if (minerComp.progress >= targetProgress) {
                 // We can try to eject
