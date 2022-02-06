@@ -1,7 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { DrawParameters } from "../../core/draw_parameters";
 import { enumDirectionToVector } from "../../core/vector";
-import { BaseItem } from "../base_item";
 import { MinerComponent } from "../components/miner";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
@@ -31,19 +30,17 @@ export class MinerSystem extends GameSystemWithFilter {
     }
 
     update() {
-        let miningSpeed = this.root.hubGoals.getMinerBaseSpeed();
+        let progressGrowth = this.root.dynamicTickrate.deltaSeconds * this.root.hubGoals.getMinerBaseSpeed();
+
+        const targetProgress = 1;
+
         if (G_IS_DEV && globalConfig.debug.instantMiners) {
-            miningSpeed *= 100;
+            progressGrowth = targetProgress;
         }
 
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const minerComp = entity.components.Miner;
-
-            // Reset everything on recompute
-            if (this.needsRecompute) {
-                minerComp.cachedChainedMiner = null;
-            }
 
             // Check if miner is above an actual tile
             if (!minerComp.cachedMinedItem) {
@@ -58,25 +55,60 @@ export class MinerSystem extends GameSystemWithFilter {
                 minerComp.cachedMinedItem = tileBelow;
             }
 
-            // First, try to get rid of chained items
-            if (minerComp.itemChainBuffer.length > 0) {
-                if (this.tryPerformMinerEject(entity, minerComp.itemChainBuffer[0])) {
-                    minerComp.itemChainBuffer.shift();
+            // Reset everything on recompute
+            if (this.needsRecompute) {
+                minerComp.cachedChainedMiner = null;
+                minerComp.cachedExitMiner = null;
+            }
+
+            // Check if we are a chained miner
+            if (minerComp.chainable) {
+                if (!minerComp.cachedChainedMiner) {
+                    minerComp.cachedChainedMiner = this.findChainedMiner(entity);
+                }
+
+                // don't calculate on the same tick as recompute, or so miners wont have caches yet
+                if (minerComp.cachedChainedMiner && !minerComp.cachedExitMiner && !this.needsRecompute) {
+                    minerComp.cachedExitMiner = this.findExitMiner(entity);
+                }
+
+                // Check if we now have a target at the end of the chain - if so, that's what we will progress
+                const exitEntity = minerComp.cachedExitMiner;
+                if (exitEntity) {
+                    const exitMinerComp = exitEntity.components.Miner;
+                    exitMinerComp.progress += progressGrowth;
                     continue;
                 }
             }
+            //console.log(minerComp.progress);
 
-            const mineDuration = 1 / miningSpeed;
-            const timeSinceMine = this.root.time.now() - minerComp.lastMiningTime;
-            if (timeSinceMine > mineDuration) {
-                // Store how much we overflowed
-                const buffer = Math.min(timeSinceMine - mineDuration, this.root.dynamicTickrate.deltaSeconds);
+            if (minerComp.progress >= targetProgress) {
+                // We can try to eject
+                const extraProgress = minerComp.progress - targetProgress;
 
-                if (this.tryPerformMinerEject(entity, minerComp.cachedMinedItem)) {
+                const ejectorComp = entity.components.ItemEjector;
+                if (ejectorComp.tryEject(0, minerComp.cachedMinedItem, extraProgress)) {
                     // Analytics hook
                     this.root.signals.itemProduced.dispatch(minerComp.cachedMinedItem);
-                    // Store mining time
-                    minerComp.lastMiningTime = this.root.time.now() - buffer;
+
+                    minerComp.progress -= targetProgress;
+                }
+            }
+
+            if (minerComp.progress < targetProgress) {
+                minerComp.progress += progressGrowth;
+            }
+
+            if (minerComp.progress >= targetProgress) {
+                // We can try to eject
+                const extraProgress = minerComp.progress - targetProgress;
+
+                const ejectorComp = entity.components.ItemEjector;
+                if (ejectorComp.tryEject(0, minerComp.cachedMinedItem, extraProgress)) {
+                    // Analytics hook
+                    this.root.signals.itemProduced.dispatch(minerComp.cachedMinedItem);
+
+                    minerComp.progress -= targetProgress;
                 }
             }
         }
@@ -93,6 +125,7 @@ export class MinerSystem extends GameSystemWithFilter {
     findChainedMiner(entity) {
         const ejectComp = entity.components.ItemEjector;
         const staticComp = entity.components.StaticMapEntity;
+        const minedItem = entity.components.Miner.cachedMinedItem;
         const contentsBelow = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
         if (!contentsBelow) {
             // This miner has no contents
@@ -109,7 +142,11 @@ export class MinerSystem extends GameSystemWithFilter {
         // Check if we are connected to another miner and thus do not eject directly
         if (targetContents) {
             const targetMinerComp = targetContents.components.Miner;
-            if (targetMinerComp && targetMinerComp.chainable) {
+            if (
+                targetMinerComp &&
+                targetMinerComp.chainable &&
+                targetMinerComp.cachedMinedItem == minedItem
+            ) {
                 const targetLowerLayer = this.root.map.getLowerLayerContentXY(targetTile.x, targetTile.y);
                 if (targetLowerLayer) {
                     return targetContents;
@@ -121,39 +158,37 @@ export class MinerSystem extends GameSystemWithFilter {
     }
 
     /**
-     *
+     * Finds the target exit miner for a given entity
      * @param {Entity} entity
-     * @param {BaseItem} item
+     * @returns {Entity|false} The exit miner entity or null if not found
      */
-    tryPerformMinerEject(entity, item) {
+    findExitMiner(entity) {
         const minerComp = entity.components.Miner;
-        const ejectComp = entity.components.ItemEjector;
+        // Recompute exit miner if we are not at the front
+        let targetEntity = minerComp.cachedChainedMiner;
 
-        // Check if we are a chained miner
-        if (minerComp.chainable) {
-            const targetEntity = minerComp.cachedChainedMiner;
+        const ourPosition = entity.components.StaticMapEntity.origin;
 
-            // Check if the cache has to get recomputed
-            if (targetEntity === null) {
-                minerComp.cachedChainedMiner = this.findChainedMiner(entity);
+        /** @type {Entity|null|false} */
+        let nextTarget = targetEntity;
+        while (nextTarget) {
+            targetEntity = nextTarget;
+            if (targetEntity.components.StaticMapEntity.origin == ourPosition) {
+                // we are in a loop, do nothing
+                targetEntity = null;
+                break;
             }
-
-            // Check if we now have a target
-            if (targetEntity) {
-                const targetMinerComp = targetEntity.components.Miner;
-                if (targetMinerComp.tryAcceptChainedItem(item)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            const targetMinerComp = targetEntity.components.Miner;
+            nextTarget = targetMinerComp.cachedChainedMiner;
         }
 
-        // Seems we are a regular miner or at the end of a row, try actually ejecting
-        if (ejectComp.tryEject(0, item)) {
-            return true;
+        if (targetEntity) {
+            const targetMinerComp = targetEntity.components.Miner;
+            if (targetMinerComp.cachedMinedItem == minerComp.cachedMinedItem) {
+                // only chain the same items
+                return targetEntity;
+            }
         }
-
         return false;
     }
 

@@ -134,6 +134,7 @@ export class HUDMinerHighlight extends BaseHUDPart {
     findConnectedMiners(entity, seenUids = new Set()) {
         let results = [];
         const origin = entity.components.StaticMapEntity.origin;
+        const originMinerComp = entity.components.Miner;
 
         if (!seenUids.has(entity.uid)) {
             seenUids.add(entity.uid);
@@ -157,7 +158,11 @@ export class HUDMinerHighlight extends BaseHUDPart {
                 );
                 if (contents) {
                     const minerComp = contents.components.Miner;
-                    if (minerComp && minerComp.chainable) {
+                    if (
+                        minerComp &&
+                        minerComp.chainable &&
+                        originMinerComp.cachedMinedItem == minerComp.cachedMinedItem
+                    ) {
                         // Found a miner connected to this entity
                         if (!seenUids.has(contents.uid)) {
                             if (this.root.systemMgr.systems.miner.findChainedMiner(contents) === entity) {

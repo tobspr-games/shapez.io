@@ -150,11 +150,11 @@ export class GameSystemManager {
 
         add("belt", BeltSystem);
 
-        add("miner", MinerSystem);
-
         add("storage", StorageSystem);
 
         add("itemEjector", ItemEjectorSystem);
+
+        add("miner", MinerSystem);
 
         add("undergroundBelt", UndergroundBeltSystem);
 

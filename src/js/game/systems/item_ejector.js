@@ -163,7 +163,14 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                if (sourceSlot.progress < maxProgress) {
+                // Limit progress here as well
+                let progressLimit = maxProgress;
+                const destPath = sourceSlot.cachedBeltPath;
+                if (destPath) {
+                    progressLimit += destPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts;
+                }
+
+                if (sourceSlot.progress < progressLimit) {
                     // Advance items on the slot
                     sourceSlot.progress += progressGrowth;
                 }
@@ -179,8 +186,6 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
                 const extraProgress = sourceSlot.progress - maxProgress;
 
-                // Check if we are ejecting to a belt path
-                const destPath = sourceSlot.cachedBeltPath;
                 if (destPath) {
                     // Try passing the item over
                     if (destPath.tryAcceptItem(item, extraProgress)) {

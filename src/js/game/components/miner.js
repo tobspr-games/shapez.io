@@ -2,9 +2,13 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { Entity } from "../entity";
-import { typeItemSingleton } from "../item_resolver";
 
-const chainBufferSize = 6;
+/**
+ * @typedef {{
+ * item: BaseItem,
+ * extraProgress?: number,
+ * }} MinerItem
+ */
 
 export class MinerComponent extends Component {
     static getId() {
@@ -14,17 +18,17 @@ export class MinerComponent extends Component {
     static getSchema() {
         // cachedMinedItem is not serialized.
         return {
-            lastMiningTime: types.ufloat,
-            itemChainBuffer: types.array(typeItemSingleton),
+            progress: types.ufloat,
         };
     }
 
     constructor({ chainable = false }) {
         super();
-        this.lastMiningTime = 0;
+        this.progress = 0;
         this.chainable = chainable;
 
         /**
+         * The item we are mining beneath us
          * @type {BaseItem}
          */
         this.cachedMinedItem = null;
@@ -35,30 +39,11 @@ export class MinerComponent extends Component {
          * @type {Entity|null|false}
          */
         this.cachedChainedMiner = null;
-
-        this.clear();
-    }
-
-    clear() {
         /**
-         * Stores items from other miners which were chained to this
-         * miner.
-         * @type {Array<BaseItem>}
+         * The miner at the end of the chain, which actually ejects the items
+         * If the value is false, it means there is no entity, and we don't have to re-check
+         * @type {Entity|null|false}
          */
-        this.itemChainBuffer = [];
-    }
-
-    /**
-     *
-     * @param {BaseItem} item
-     */
-    tryAcceptChainedItem(item) {
-        if (this.itemChainBuffer.length > chainBufferSize) {
-            // Well, this one is full
-            return false;
-        }
-
-        this.itemChainBuffer.push(item);
-        return true;
+        this.cachedExitMiner = null;
     }
 }
