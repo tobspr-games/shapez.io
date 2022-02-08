@@ -302,16 +302,14 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
 
         // it could be a custom mod case
         // let's check if it is any of them
-        var any = false; // so that all matching components can process it
         for (let id in MOD_ITEM_FILTERS) {
             if (receiver.components[id]) {
                 let handler = MOD_ITEM_FILTERS[id];
-                if (handler(item, receiver, slotIndex)) any = true;
-                else return false;
+                if (handler(item, receiver, slotIndex)) return true;
             }
         }
 
-        return any;
+        return false;
     }
 
     /**

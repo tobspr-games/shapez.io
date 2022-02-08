@@ -366,16 +366,14 @@ export class BeltPath extends BasicSerializableObject {
         return function (item) {
             // it could be a custom mod case
             // let's check if it is any of them
-            var any = false; // so that all matching components can process it
             for (let id in MOD_ITEM_FILTERS) {
                 if (entity.components[id]) {
                     let handler = MOD_ITEM_FILTERS[id];
-                    if (handler(item, entity, matchingSlotIndex)) any = true;
-                    else return false;
+                    if (handler(item, entity, matchingSlotIndex)) return true;
                 }
             }
 
-            return any;
+            return false;
         };
     }
 
