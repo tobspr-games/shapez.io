@@ -56,6 +56,8 @@ export const enumInputRequirements = {
     storage: "storage",
 };
 
+export const MOD_INPUT_REQUIREMENTS = [];
+
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
@@ -138,6 +140,14 @@ export class ItemAcceptorComponent extends Component {
 
         // make sure there is a slot and we match the filter
         if (slot && !(slot.filter && slot.filter != item.getItemType())) {
+            if (MOD_INPUT_REQUIREMENTS[this.inputRequirement]) {
+                return MOD_INPUT_REQUIREMENTS[this.inputRequirement].bind(this)({
+                    entity,
+                    item,
+                    slotIndex,
+                });
+            }
+
             switch (this.inputRequirement) {
                 case null: {
                     return true;
