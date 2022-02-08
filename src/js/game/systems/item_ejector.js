@@ -202,17 +202,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const destSlot = sourceSlot.cachedDestSlot;
                 if (destEntity && destSlot) {
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
-                    const storageComp = destEntity.components.Storage;
-                    if (
-                        storageComp &&
-                        storageComp.tryAcceptItem(item) &&
-                        targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)
-                    ) {
-                        // unique duplicated code for storage - hacky :(
-                        sourceSlot.item = null;
-                        return;
-                    }
-                    if (targetAcceptorComp.tryAcceptItem(destSlot.index, item, extraProgress)) {
+                    if (targetAcceptorComp.tryAcceptItem(destEntity, destSlot.index, item, extraProgress)) {
                         // Handover successful, clear slot
                         sourceSlot.item = null;
                     }

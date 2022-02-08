@@ -1,7 +1,7 @@
 import { formatItemsPerSecond } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumInputRequirements, ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import {
     enumItemProcessorTypes,
@@ -274,6 +274,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                         filter: "color",
                     },
                 ]);
+                entity.components.ItemAcceptor.inputRequirement = enumInputRequirements.quadPainter;
 
                 entity.components.ItemEjector.setSlots([
                     { pos: new Vector(0, 0), direction: enumDirection.top },

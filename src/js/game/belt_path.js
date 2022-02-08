@@ -263,16 +263,7 @@ export class BeltPath extends BasicSerializableObject {
         const matchingSlotIndex = matchingSlot.index;
 
         return function (item, startProgress = 0.0) {
-            const storageComp = targetEntity.components.Storage;
-            if (
-                storageComp &&
-                storageComp.tryAcceptItem(item) &&
-                targetAcceptorComp.tryAcceptItem(matchingSlotIndex, item, startProgress)
-            ) {
-                // unique duplicated code for storage
-                return true;
-            }
-            if (targetAcceptorComp.tryAcceptItem(matchingSlotIndex, item, startProgress)) {
+            if (targetAcceptorComp.tryAcceptItem(targetEntity, matchingSlotIndex, item, startProgress)) {
                 return true;
             }
             return false;

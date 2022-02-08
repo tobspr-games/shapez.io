@@ -146,7 +146,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
     }
 
-    // requirements are no longer needed as items will always be accepted, only the next method is.
+    // input requirements are now handled in the item acceptor, which also fits better with what the acceptor is supposed to do
 
     /**
      * Checks whether it's possible to process something
@@ -160,21 +160,35 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // DEFAULT
             // By default, we can start processing once all inputs are there
             case null: {
-                return acceptorComp.completedInputs.length >= processorComp.inputsPerCharge;
+                // Since each slot might have more than one input, don't check each slot more than once
+                let usedSlots = [];
+                for (let i = 0; i < acceptorComp.completedInputs.length; i++) {
+                    const index = acceptorComp.completedInputs[i].slotIndex;
+                    if (!usedSlots.includes(index)) {
+                        usedSlots.push(index);
+                    }
+                }
+                return usedSlots.length >= processorComp.inputsPerCharge;
             }
 
             // QUAD PAINTER
             // For the quad painter, it might be possible to start processing earlier
             case enumItemProcessorRequirements.painterQuad: {
                 const pinsComp = entity.components.WiredPins;
+                const inputs = acceptorComp.completedInputs;
 
-                const input = acceptorComp.completedInputs[0];
-                if (!input) {
-                    return false;
+                // split inputs efficiently
+                let items = new Map();
+                for (let i = 0; i < inputs.length; i++) {
+                    const input = inputs[i];
+
+                    if (!items.get(input.slotIndex)) {
+                        items.set(input.slotIndex, input.item);
+                    }
                 }
 
                 // First slot is the shape, so if it's not there we can't do anything
-                const shapeItem = /** @type {ShapeItem} */ (input.item);
+                const shapeItem = /** @type {ShapeItem} */ (items.get(0));
                 if (!shapeItem) {
                     return false;
                 }
@@ -203,10 +217,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
 
                 // Check if all colors of the enabled slots are there
                 for (let i = 0; i < slotStatus.length; ++i) {
-                    if (
-                        slotStatus[i] &&
-                        !acceptorComp.completedInputs.find(input => input.slotIndex == i + 1) // @TODO this is slow
-                    ) {
+                    if (slotStatus[i] && !items.get(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
                         for (let j = 0; j < 4; ++j) {
@@ -217,7 +228,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                         }
                     }
                 }
-
                 return true;
             }
 
@@ -243,8 +253,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         for (let i = 0; i < inputs.length; i++) {
             const input = inputs[i];
 
-            items.set(input.slotIndex, input.item);
-            extraProgress = Math.max(extraProgress, input.extraProgress);
+            if (!items.get(input.slotIndex)) {
+                items.set(input.slotIndex, input.item);
+                extraProgress = Math.max(extraProgress, input.extraProgress);
+                inputs.splice(i, 1);
+                i--;
+            }
         }
 
         /** @type {Array<ProducedItem>} */
@@ -283,18 +297,6 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             items: outItems,
             remainingTime: timeToProcess,
         };
-
-        // only remove one item from each slot - we don't want to delete extra items!
-        let usedSlots = [];
-        for (let i = 0; i < acceptorComp.completedInputs.length; i++) {
-            const index = acceptorComp.completedInputs[i].slotIndex;
-
-            if (!usedSlots.includes(index)) {
-                usedSlots.push(index);
-                acceptorComp.completedInputs.splice(i, 1);
-                i--;
-            }
-        }
     }
 
     /**

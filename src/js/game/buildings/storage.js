@@ -1,7 +1,7 @@
 import { formatBigNumber } from "../../core/utils";
 import { enumDirection, Vector } from "../../core/vector";
 import { T } from "../../translations";
-import { ItemAcceptorComponent } from "../components/item_acceptor";
+import { enumInputRequirements, ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { StorageComponent } from "../components/storage";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
@@ -81,6 +81,7 @@ export class MetaStorageBuilding extends MetaBuilding {
                         direction: enumDirection.bottom,
                     },
                 ],
+                inputRequirement: enumInputRequirements.storage,
             })
         );
 
