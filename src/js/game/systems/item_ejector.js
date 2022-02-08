@@ -14,6 +14,12 @@ import { MapChunkView } from "../map_chunk_view";
 
 const logger = createLogger("systems/ejector");
 
+/**
+ * Key is component id, value is function to handle whether or not item can enter.
+ * @type {Object<string, (item: BaseItem, reciever: Entity, slot: number) => boolean>}
+ */
+export const MOD_ITEM_FILTERS = {};
+
 export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemEjectorComponent]);
@@ -294,7 +300,18 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
 
-        return false;
+        // it could be a custom mod case
+        // let's check if it is any of them
+        var any = false; // so that all matching components can process it
+        for (let id in MOD_ITEM_FILTERS) {
+            if (receiver.components[id]) {
+                let handler = MOD_ITEM_FILTERS[id];
+                if (handler(item, receiver, slotIndex)) any = true;
+                else return false;
+            }
+        }
+
+        return any;
     }
 
     /**

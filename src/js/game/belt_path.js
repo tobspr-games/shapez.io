@@ -11,6 +11,7 @@ import { BaseItem } from "./base_item";
 import { Entity } from "./entity";
 import { typeItemSingleton } from "./item_resolver";
 import { GameRoot } from "./root";
+import { MOD_ITEM_FILTERS } from "./systems/item_ejector";
 
 const logger = createLogger("belt_path");
 
@@ -315,7 +316,7 @@ export class BeltPath extends BasicSerializableObject {
         const systems = this.root.systemMgr.systems;
         const hubGoals = this.root.hubGoals;
 
-        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PEROFMANCE REASONS
+        // NOTICE: THIS IS COPIED FROM THE ITEM EJECTOR SYSTEM FOR PERFORMANCE REASONS
 
         const itemProcessorComp = entity.components.ItemProcessor;
         if (itemProcessorComp) {
@@ -361,6 +362,21 @@ export class BeltPath extends BasicSerializableObject {
                 }
             };
         }
+
+        return function (item) {
+            // it could be a custom mod case
+            // let's check if it is any of them
+            var any = false; // so that all matching components can process it
+            for (let id in MOD_ITEM_FILTERS) {
+                if (entity.components[id]) {
+                    let handler = MOD_ITEM_FILTERS[id];
+                    if (handler(item, entity, matchingSlotIndex)) any = true;
+                    else return false;
+                }
+            }
+
+            return any;
+        };
     }
 
     // Following code will be compiled out outside of dev versions
