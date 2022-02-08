@@ -84,6 +84,8 @@ export class MinerSystem extends GameSystemWithFilter {
                 }
             }
 
+            //make sure progress never gets out of control
+            minerComp.progress = Math.min(minerComp.progress, targetProgress + 0.5);
             if (minerComp.progress >= targetProgress) {
                 // We can try to eject
                 const extraProgress = minerComp.progress - targetProgress;
