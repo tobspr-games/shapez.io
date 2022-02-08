@@ -6,6 +6,7 @@ import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
 import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
+import { inputFilterId } from "../components/input_filter";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
 import { Entity } from "../entity";
@@ -13,12 +14,6 @@ import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 
 const logger = createLogger("systems/ejector");
-
-/**
- * Key is component id, value is function to handle whether or not item can enter.
- * @type {Object<string, (item: BaseItem, reciever: Entity, slot: number) => boolean>}
- */
-export const MOD_ITEM_FILTERS = {};
 
 export class ItemEjectorSystem extends GameSystemWithFilter {
     constructor(root) {
@@ -300,13 +295,10 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
             }
         }
 
-        // it could be a custom mod case
-        // let's check if it is any of them
-        for (let id in MOD_ITEM_FILTERS) {
-            if (receiver.components[id]) {
-                let handler = MOD_ITEM_FILTERS[id];
-                if (handler(item, receiver, slotIndex)) return true;
-            }
+        const inputFilterComp = receiver.components[inputFilterId];
+        if (inputFilterComp) {
+            // it's a custom filter
+            if (inputFilterComp.canAcceptItem(item, receiver, slotIndex)) return true;
         }
 
         return false;

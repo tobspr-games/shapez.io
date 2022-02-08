@@ -8,10 +8,10 @@ import { clamp, epsilonCompare, round4Digits } from "../core/utils";
 import { enumDirection, enumDirectionToVector, enumInvertedDirections, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { BaseItem } from "./base_item";
+import { inputFilterId } from "./components/input_filter";
 import { Entity } from "./entity";
 import { typeItemSingleton } from "./item_resolver";
 import { GameRoot } from "./root";
-import { MOD_ITEM_FILTERS } from "./systems/item_ejector";
 
 const logger = createLogger("belt_path");
 
@@ -364,13 +364,10 @@ export class BeltPath extends BasicSerializableObject {
         }
 
         return function (item) {
-            // it could be a custom mod case
-            // let's check if it is any of them
-            for (let id in MOD_ITEM_FILTERS) {
-                if (entity.components[id]) {
-                    let handler = MOD_ITEM_FILTERS[id];
-                    if (handler(item, entity, matchingSlotIndex)) return true;
-                }
+            const inputFilterComp = entity.components[inputFilterId];
+            if (inputFilterComp) {
+                // it's a custom filter
+                if (inputFilterComp.canAcceptItem(item, entity, matchingSlotIndex)) return true;
             }
 
             return false;
