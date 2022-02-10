@@ -4,7 +4,6 @@ import { GameRoot } from "../../game/root";
 /* typehints:end */
 
 import { createLogger } from "../../core/logging";
-import { getIPCRenderer } from "../../core/utils";
 import { ACHIEVEMENTS, AchievementCollection, AchievementProviderInterface } from "../achievement_provider";
 
 const logger = createLogger("achievements/steam");
@@ -109,9 +108,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
             return Promise.resolve();
         }
 
-        this.ipc = getIPCRenderer();
-
-        return this.ipc.invoke("steam:is-initialized").then(initialized => {
+        return ipcRenderer.invoke("steam:is-initialized").then(initialized => {
             this.initialized = initialized;
 
             if (!this.initialized) {
@@ -136,7 +133,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         if (!this.initialized) {
             promise = Promise.resolve();
         } else {
-            promise = this.ipc.invoke("steam:activate-achievement", ACHIEVEMENT_IDS[key]);
+            promise = ipcRenderer.invoke("steam:activate-achievement", ACHIEVEMENT_IDS[key]);
         }
 
         return promise

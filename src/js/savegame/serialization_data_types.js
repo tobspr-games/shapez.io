@@ -213,6 +213,53 @@ export class TypePositiveInteger extends BaseDataType {
     }
 }
 
+export class TypePositiveIntegerOrString extends BaseDataType {
+    serialize(value) {
+        if (Number.isInteger(value)) {
+            assert(value >= 0, "type integer got negative value: " + value);
+        } else if (typeof value === "string") {
+            // all good
+        } else {
+            assertAlways(false, "Type integer|string got non integer or string for serialize: " + value);
+        }
+        return value;
+    }
+
+    /**
+     * @see BaseDataType.deserialize
+     * @param {any} value
+     * @param {GameRoot} root
+     * @param {object} targetObject
+     * @param {string|number} targetKey
+     * @returns {string|void} String error code or null on success
+     */
+    deserialize(value, targetObject, targetKey, root) {
+        targetObject[targetKey] = value;
+    }
+
+    getAsJsonSchemaUncached() {
+        return {
+            oneOf: [{ type: "integer", minimum: 0 }, { type: "string" }],
+        };
+    }
+
+    verifySerializedValue(value) {
+        if (Number.isInteger(value)) {
+            if (value < 0) {
+                return "Negative value for positive integer";
+            }
+        } else if (typeof value === "string") {
+            // all good
+        } else {
+            return "Not a valid number or string: " + value;
+        }
+    }
+
+    getCacheKey() {
+        return "uint_str";
+    }
+}
+
 export class TypeBoolean extends BaseDataType {
     serialize(value) {
         assert(value === true || value === false, "Type bool got non bool for serialize: " + value);

@@ -40,6 +40,31 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
         super("underground_belt");
     }
 
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 22,
+                variant: defaultBuildingVariant,
+                rotationVariant: 0,
+            },
+            {
+                internalId: 23,
+                variant: defaultBuildingVariant,
+                rotationVariant: 1,
+            },
+            {
+                internalId: 24,
+                variant: enumUndergroundBeltVariants.tier2,
+                rotationVariant: 0,
+            },
+            {
+                internalId: 25,
+                variant: enumUndergroundBeltVariants.tier2,
+                rotationVariant: 1,
+            },
+        ];
+    }
+
     getSilhouetteColor(variant, rotationVariant) {
         return colorsByRotationVariant[rotationVariant];
     }
@@ -252,7 +277,7 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
-                        directions: [enumDirection.bottom],
+                        direction: enumDirection.bottom,
                     },
                 ]);
                 return;

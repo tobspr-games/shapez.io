@@ -1,0 +1,141 @@
+#state_ModsState {
+    .mainContent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    > .headerBar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+
+        > h1 {
+            justify-self: start;
+        }
+
+        .openModsFolder {
+            background-color: $modsColor;
+        }
+    }
+
+    .noModSupport {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        flex-direction: column;
+
+        .steamLink {
+            @include S(height, 50px);
+            @include S(width, 220px);
+            background: #171a23 center center / contain no-repeat;
+            overflow: hidden;
+            display: block;
+            text-indent: -999em;
+            cursor: pointer;
+            @include S(margin-top, 30px);
+            pointer-events: all;
+            transition: all 0.12s ease-in;
+            transition-property: opacity, transform;
+
+            @include S(border-radius, $globalBorderRadius);
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+
+    .modsStats {
+        @include PlainText;
+        color: $accentColorDark;
+
+        &.noMods {
+            @include S(width, 400px);
+            align-self: center;
+            justify-self: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @include Text;
+            @include S(margin-top, 100px);
+            color: lighten($accentColorDark, 15);
+
+            button {
+                @include S(margin-top, 10px);
+                @include S(padding, 10px, 20px);
+            }
+
+            &::before {
+                @include S(margin-bottom, 15px);
+                content: "";
+                @include S(width, 50px);
+                @include S(height, 50px);
+                background-position: center center;
+                background-size: contain;
+                opacity: 0.2;
+            }
+            &::before {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/mods.png") !important;
+            }
+        }
+    }
+
+    .modsList {
+        @include S(margin-top, 10px);
+        overflow-y: scroll;
+        pointer-events: all;
+        @include S(padding-right, 5px);
+        flex-grow: 1;
+
+        .mod {
+            @include S(border-radius, $globalBorderRadius);
+            background: $accentColorBright;
+            @include S(margin-bottom, 4px);
+            @include S(padding, 7px, 10px);
+            @include S(grid-gap, 15px);
+            display: grid;
+            grid-template-columns: 1fr D(100px) D(80px) D(50px);
+
+            @include DarkThemeOverride {
+                background: darken($darkModeControlsBackground, 5);
+            }
+
+            .checkbox {
+                align-self: center;
+                justify-self: center;
+            }
+
+            .mainInfo {
+                display: flex;
+                flex-direction: column;
+
+                .description {
+                    @include SuperSmallText;
+                    @include S(margin-top, 5px);
+                    color: $accentColorDark;
+                }
+                .website {
+                    text-transform: uppercase;
+                    align-self: start;
+                    @include SuperSmallText;
+                    @include S(margin-top, 5px);
+                }
+            }
+
+            .version,
+            .author {
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                strong {
+                    text-transform: uppercase;
+                    color: $accentColorDark;
+                    @include SuperSmallText;
+                }
+            }
+        }
+    }
+}

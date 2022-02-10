@@ -77,6 +77,10 @@ mainMenu:
         Steam dès maintenant pour encore plus d'amusement!
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
     puzzleDlcViewNow: Voir le DLC
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -181,8 +185,8 @@ dialogs:
     exportScreenshotWarning:
         title: Exporter une capture d’écran
         desc: Vous avez demandé à exporter une capture d’écran de votre base. Soyez
-            conscient que cela peut s’avérer passablement lent pour une grande
-            base, voire faire planter votre jeu !
+            conscient que cela peut s’avérer très long pour une grande base,
+            voire faire planter votre jeu !
     renameSavegame:
         title: Renommer la sauvegarde
         desc: Vous pouvez renommer la sauvegarde ici.
@@ -260,6 +264,13 @@ dialogs:
     puzzleDelete:
         title: Supprimer le puzzle ?
         desc: Êtes-vous sûr de vouloir supprimer '<title>' ? Cela sera irréversible !
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Déplacer
@@ -445,6 +456,7 @@ ingame:
         report: Signaler
         clearBuildings: Effacer les Constructions
         resetPuzzle: Réinitialiser le Puzzle
+
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
@@ -452,17 +464,19 @@ ingame:
               des formes et des couleurs au joueur
             - 2. Fabriquez une ou plusieurs formes que vous voulez que le joueur
               fabrique plus tard et délivrez-la/les à un ou plusieurs
-              <strong>Récepteurs d'Objectif</strong>
+              <strong>Récepteurs</strong>
             - 3. Une fois qu'un Récépteur d'Objectif a reçu une forme pendant un
               certain temps, il <strong>l'enregistre zn tant
               qu'objectif</strong> que le joueur devra produire plus tard
               (Indiqué par le <strong>badge vert</strong>).
-            - 4. Cliquez sur le <strong>bouton de verrouillage</strong> d'un objet pour le désactiver.
-            - 5. Une fois que vous avez cliqué sur vérification, votre puzzle sera validé et vous
-               peut le publier.
-            - 6. Apres la vérification, <strong>tous les objets seront supprimés</strong>
-               sauf pour les producteurs et les accepteurs d'objectifs - C'est la partie où
-               le joueur est censé se débrouiller par lui-même, après tout :) 
+            - 4. Cliquez sur le <strong>bouton de verrouillage</strong> sur un
+              batiment pour le désactiver.
+            - 5. Une fois que vous aurez cliqué sur vérifier, votre puzzle sera
+              validé et vous pourrez le publier.
+            - 6. Une fois publié <strong>tous les batiments seront
+              supprimés</strong> sauf les générateurs et les récepteurs - C'est
+              la partie ou le joueur est censé se débrouiller seul :)
+              
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -470,7 +484,7 @@ ingame:
         titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
         continueBtn: Continuer à jouer
         menuBtn: Menu
-        nextPuzzle: Prochain Puzzle
+        nextPuzzle: Puzzle suivant
     puzzleMetadata:
         author: Auteur
         shortKey: Raccourci clavier
@@ -714,7 +728,7 @@ storyRewards:
             formes en deux de haut en bas <strong>indépendamment de son
             orientation</strong>!<br><br>Assurez-vous de vous débarrasser des
             déchets, ou sinon <strong>il se bouchera et se bloquera</strong> - À
-            cet effet, Je vous ai donné la <strong>poubelle</strong>, qui
+            cet effet, je vous ai donné la <strong>poubelle</strong>, qui
             détruit tout ce que vous mettez dedans !
     reward_rotater:
         title: Rotation
@@ -773,9 +787,9 @@ storyRewards:
             fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
-        desc: Vous avez débloqué un <strong>séparateur</strong> une variante du
-            <strong>répartiteur</strong> - Il accepte une entrée et les divise
-            en deux !
+        desc: Vous avez débloqué le <strong>répartiteur compact</strong> une variante du
+            <strong>répartiteur</strong> - Il accepte une entrée et la divise en
+            deux !
     reward_belt_reader:
         title: Lecteur de débit
         desc: Vous avez débloqué le <strong>lecteur de débit</strong> ! Il vous permet
@@ -1061,9 +1075,10 @@ settings:
                 visible en dézoomant.
         shapeTooltipAlwaysOn:
             title: Info-bulle de forme - Toujours afficher
-            description: Toujours afficher l'info-bulle de forme lors du survol des bâtiments,
-                au lieu d'avoir à appuyer sur 'ALT'.
+            description: Si activé, une info-bule s'affiche quand vous survolez un batiment
+                sinon il faut maintenir 'ALT'.
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Contrôles
     hint: "Astuce : N’oubliez pas d’utiliser CTRL, MAJ et ALT ! Ces touches activent
@@ -1077,6 +1092,7 @@ keybindings:
         massSelect: Sélection de zone
         buildings: Raccourcis bâtiment
         placementModifiers: Modificateurs de placement
+        mods: Provided by Mods
     mappings:
         confirm: Confirmer
         back: Retour
@@ -1143,10 +1159,10 @@ keybindings:
         rotateToRight: "Rotation : pointer vers le droite"
         rotateToLeft: "Rotation : pointer vers le gauche"
         constant_producer: Producteur Constant
-        goal_acceptor: Récepteur d'Objectif
+        goal_acceptor: Récepteur
         block: Bloc
         massSelectClear: Vider les convoyeurs
-        showShapeTooltip: Afficher l'info-bulle de sortie de forme
+        showShapeTooltip: Afficher l'info-bulle de forme
 about:
     title: À propos de ce jeu
     body: >-
@@ -1266,10 +1282,10 @@ puzzleMenu:
         easy: Facile
         hard: Difficile
         completed: Complété
-        medium: Medium
+        medium: Moyen
         official: Officiel
-        trending: Trending today
-        trending-weekly: Trending weekly
+        trending: Tendance aujourd'hui
+        trending-weekly: Tendance cette semaine
         categories: Catégories
         difficulties: Par Difficulté
         account: Mes Puzzles
@@ -1290,11 +1306,12 @@ puzzleMenu:
             accepteurs d'objectifs.
     difficulties:
         easy: Facile
-        medium: Medium
+        medium: Moyen
         hard: Difficile
         unknown: Non classé
-    dlcHint: Vous avez déjà acheté le DLC ? Assurez-vous qu'il est activé par un clic droit
-        sur shapez.io dans votre bibliothèque, en sélectionnant Propriétés > DLC.
+    dlcHint: Vous avez déjà acheté le DLC ? Assurez-vous qu'il est activé en faisant
+        un clic droit sur shapez.io dans votre bibliothèque, en sélectionnant
+        Propriétés > DLC.
     search:
         action: Recherche
         placeholder: Entrez un puzzle ou un nom d'auteur
@@ -1333,6 +1350,23 @@ backendErrors:
     bad-payload: La demande contient des données invalides.
     bad-building-placement: Votre puzzle contient des bâtiments placés non valides.
     timeout: La demande a expiré.
-    too-many-likes-already: Le puzzle a déjà eu trop de likes. Si tu veux toujours
-        le supprimer, veille à contacter support@shapez.io !
+    too-many-likes-already: Le puzzle a déjà eu trop de j'aimes. Si vous voulez
+        quand même le supprimer, veuillez contacter support@shapez.io !
     no-permission: Vous n'êtes pas autorisé à effectuer cette action.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

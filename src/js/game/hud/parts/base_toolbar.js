@@ -1,4 +1,5 @@
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
+import { globalWarn } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { makeDiv, safeModulo } from "../../../core/utils";
 import { MetaBlockBuilding } from "../../buildings/block";
@@ -101,7 +102,12 @@ export class HUDBaseToolbar extends BaseHUDPart {
                 rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
             }
 
-            const binding = actionMapper.getBinding(rawBinding);
+            if (rawBinding) {
+                const binding = actionMapper.getBinding(rawBinding);
+                binding.add(() => this.selectBuildingForPlacement(metaBuilding));
+            } else {
+                globalWarn("Building has no keybinding:", metaBuilding.getId());
+            }
 
             const itemContainer = makeDiv(
                 this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary,
@@ -110,7 +116,6 @@ export class HUDBaseToolbar extends BaseHUDPart {
             );
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-            binding.add(() => this.selectBuildingForPlacement(metaBuilding));
 
             const icon = makeDiv(itemContainer, null, ["icon"]);
 

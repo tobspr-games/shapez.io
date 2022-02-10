@@ -3,9 +3,10 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 
-/** @typedef {{
+/**
+ * @typedef {{
  * pos: Vector,
- * directions: enumDirection[],
+ * direction: enumDirection,
  * filter?: ItemType
  * }} ItemAcceptorSlot */
 
@@ -14,12 +15,12 @@ import { Component } from "../component";
  * @typedef {{
  *  slot: ItemAcceptorSlot,
  *  index: number,
- *  acceptedDirection: enumDirection
  * }} ItemAcceptorLocatedSlot */
 
-/** @typedef {{
+/**
+ * @typedef {{
  * pos: Vector,
- * directions: enumDirection[],
+ * direction: enumDirection,
  * filter?: ItemType
  * }} ItemAcceptorSlotConfig */
 
@@ -64,7 +65,7 @@ export class ItemAcceptorComponent extends Component {
             const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
-                directions: slot.directions,
+                direction: slot.direction,
 
                 // Which type of item to accept (shape | color | all) @see ItemType
                 filter: slot.filter,
@@ -122,15 +123,11 @@ export class ItemAcceptorComponent extends Component {
             }
 
             // Check if the acceptor slot accepts items from our direction
-            for (let i = 0; i < slot.directions.length; ++i) {
-                // const localDirection = targetStaticComp.localDirectionToWorld(slot.directions[l]);
-                if (desiredDirection === slot.directions[i]) {
-                    return {
-                        slot,
-                        index: slotIndex,
-                        acceptedDirection: desiredDirection,
-                    };
-                }
+            if (desiredDirection === slot.direction) {
+                return {
+                    slot,
+                    index: slotIndex,
+                };
             }
         }
 

@@ -46,6 +46,7 @@
         "postcss": ">=5.0.0",
         "promise-polyfill": "^8.1.0",
         "query-string": "^6.8.1",
+        "raw-loader": "^4.0.2",
         "rusha": "^0.8.13",
         "serialize-error": "^3.0.0",
         "stream-browserify": "^3.0.0",

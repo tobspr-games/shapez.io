@@ -6,6 +6,7 @@ import { GameState } from "./game_state";
 import { createLogger } from "./logging";
 import { APPLICATION_ERROR_OCCURED } from "./error_handler";
 import { waitNextFrame, removeAllChildren } from "./utils";
+import { MOD_SIGNALS } from "../mods/mod_signals";
 
 const logger = createLogger("state_manager");
 
@@ -108,6 +109,8 @@ export class StateManager {
             },
             key
         );
+
+        MOD_SIGNALS.stateEntered.dispatch(this.currentState);
 
         waitNextFrame().then(() => {
             document.body.classList.add("arrived");

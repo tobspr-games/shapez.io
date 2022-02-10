@@ -8,7 +8,7 @@ import {
 } from "../components/item_processor";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-import { BOOL_TRUE_SINGLETON, isTruthyItem } from "../items/boolean_item";
+import { isTruthyItem } from "../items/boolean_item";
 import { ColorItem, COLOR_ITEM_SINGLETONS } from "../items/color_item";
 import { ShapeItem } from "../items/shape_item";
 
@@ -38,6 +38,11 @@ const MAX_QUEUED_CHARGES = 2;
  *   }} ProcessorImplementationPayload
  */
 
+/**
+ * @type {Object<string, (ProcessorImplementationPayload) => void>}
+ */
+export const MOD_ITEM_PROCESSOR_HANDLERS = {};
+
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
@@ -61,6 +66,7 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             [enumItemProcessorTypes.hub]: this.process_HUB,
             [enumItemProcessorTypes.reader]: this.process_READER,
             [enumItemProcessorTypes.goal]: this.process_GOAL,
+            ...MOD_ITEM_PROCESSOR_HANDLERS,
         };
 
         // Bind all handlers
@@ -88,49 +94,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     }
                 }
 
-                // Check if it finished
-                if (currentCharge.remainingTime <= 0.0) {
+                // Check if it finished and we don't already have queued ejects
+                if (currentCharge.remainingTime <= 0.0 && !processorComp.queuedEjects.length) {
                     const itemsToEject = currentCharge.items;
 
-                    // Go over all items and try to eject them
+                    // Go over all items and add them to the queue
                     for (let j = 0; j < itemsToEject.length; ++j) {
-                        const { item, requiredSlot, preferredSlot } = itemsToEject[j];
-
-                        assert(ejectorComp, "To eject items, the building needs to have an ejector");
-
-                        let slot = null;
-                        if (requiredSlot !== null && requiredSlot !== undefined) {
-                            // We have a slot override, check if that is free
-                            if (ejectorComp.canEjectOnSlot(requiredSlot)) {
-                                slot = requiredSlot;
-                            }
-                        } else if (preferredSlot !== null && preferredSlot !== undefined) {
-                            // We have a slot preference, try using it but otherwise use a free slot
-                            if (ejectorComp.canEjectOnSlot(preferredSlot)) {
-                                slot = preferredSlot;
-                            } else {
-                                slot = ejectorComp.getFirstFreeSlot();
-                            }
-                        } else {
-                            // We can eject on any slot
-                            slot = ejectorComp.getFirstFreeSlot();
-                        }
-
-                        if (slot !== null) {
-                            // Alright, we can actually eject
-                            if (!ejectorComp.tryEject(slot, item)) {
-                                assert(false, "Failed to eject");
-                            } else {
-                                itemsToEject.splice(j, 1);
-                                j -= 1;
-                            }
-                        }
+                        processorComp.queuedEjects.push(itemsToEject[j]);
                     }
 
-                    // If the charge was entirely emptied to the outputs, start the next charge
-                    if (itemsToEject.length === 0) {
-                        processorComp.ongoingCharges.shift();
-                    }
+                    processorComp.ongoingCharges.shift();
                 }
             }
 
@@ -138,6 +111,40 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             if (processorComp.ongoingCharges.length < MAX_QUEUED_CHARGES) {
                 if (this.canProcess(entity)) {
                     this.startNewCharge(entity);
+                }
+            }
+
+            for (let j = 0; j < processorComp.queuedEjects.length; ++j) {
+                const { item, requiredSlot, preferredSlot } = processorComp.queuedEjects[j];
+
+                assert(ejectorComp, "To eject items, the building needs to have an ejector");
+
+                let slot = null;
+                if (requiredSlot !== null && requiredSlot !== undefined) {
+                    // We have a slot override, check if that is free
+                    if (ejectorComp.canEjectOnSlot(requiredSlot)) {
+                        slot = requiredSlot;
+                    }
+                } else if (preferredSlot !== null && preferredSlot !== undefined) {
+                    // We have a slot preference, try using it but otherwise use a free slot
+                    if (ejectorComp.canEjectOnSlot(preferredSlot)) {
+                        slot = preferredSlot;
+                    } else {
+                        slot = ejectorComp.getFirstFreeSlot();
+                    }
+                } else {
+                    // We can eject on any slot
+                    slot = ejectorComp.getFirstFreeSlot();
+                }
+
+                if (slot !== null) {
+                    // Alright, we can actually eject
+                    if (!ejectorComp.tryEject(slot, item)) {
+                        assert(false, "Failed to eject");
+                    } else {
+                        processorComp.queuedEjects.splice(j, 1);
+                        j -= 1;
+                    }
                 }
             }
         }

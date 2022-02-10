@@ -73,6 +73,10 @@ mainMenu:
     puzzleDlcText: 新增谜题模式将带给您更多的游戏乐趣！
     puzzleDlcWishlist: 添加心愿单！
     puzzleDlcViewNow: View Dlc
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: 确认
@@ -224,6 +228,13 @@ dialogs:
     puzzleDelete:
         title: 删除谜题吗？
         desc: 您是否确认删除 '<title>'？删除谜题后将无法恢复！
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -844,6 +855,7 @@ settings:
             title: 图形工具提示-始终显示
             description: 在设施上悬停时是否始终显示图形工具提示，而不是必须按住“Alt”键。
     rangeSliderPercentage: <amount> %
+    newBadge: New!
 keybindings:
     title: 按键设定
     hint: 提示：使用 CTRL、SHIFT、ALT！这些键在放置设施时有不同的效果。
@@ -856,6 +868,7 @@ keybindings:
         massSelect: 批量选择
         buildings: 设施快捷键
         placementModifiers: 放置设施修饰键
+        mods: Provided by Mods
     mappings:
         confirm: 确认
         back: 返回
@@ -1081,3 +1094,20 @@ backendErrors:
     timeout: 请求超时。
     too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
     no-permission: 您没有执行此操作的权限。
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

@@ -19,7 +19,7 @@ export const enumVirtualProcessorVariants = {
 };
 
 /** @enum {string} */
-export const enumVariantToGate = {
+const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.cutter,
     [enumVirtualProcessorVariants.rotater]: enumLogicGateType.rotater,
     [enumVirtualProcessorVariants.unstacker]: enumLogicGateType.unstacker,
@@ -38,6 +38,31 @@ const colors = {
 export class MetaVirtualProcessorBuilding extends MetaBuilding {
     constructor() {
         super("virtual_processor");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 42,
+                variant: defaultBuildingVariant,
+            },
+            {
+                internalId: 44,
+                variant: enumVirtualProcessorVariants.rotater,
+            },
+            {
+                internalId: 45,
+                variant: enumVirtualProcessorVariants.unstacker,
+            },
+            {
+                internalId: 50,
+                variant: enumVirtualProcessorVariants.stacker,
+            },
+            {
+                internalId: 51,
+                variant: enumVirtualProcessorVariants.painter,
+            },
+        ];
     }
 
     getSilhouetteColor(variant) {

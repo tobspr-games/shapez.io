@@ -13,13 +13,12 @@ steamPage:
 
         Приобретение игры в Steam предоставляет доступ к полной версии игры, но вы можете опробовать демоверсию игры на shapez.io и принять решение позже!
     what_others_say: Что говорят люди о shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    nothernlion_comment: Отличная игра, в которой теряешь ход времени.
+    notch_comment: Ох! Мне определенно нужно поспать, но я узнал как собрать
+        компьютер в shapez.io !
+    steam_review_comment: Игра похитила меня из реальной жизни, но я не хочу
+        обратно! Спокойная игра про строительство фабрик. Постоянно думаю о том
+        как эффективно настроить линии.
 global:
     loading: Загрузка
     error: Ошибка
@@ -72,12 +71,17 @@ mainMenu:
     savegameLevel: Уровень <x>
     savegameLevelUnknown: Неизвестный уровень
     savegameUnnamed: Без названия
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: Головоломка
+    back: Назад
+    puzzleDlcText: Нравится оптимизировать фабрики и делать их меньше? Купите
+        обновление "Головоломка" в Steam сейчас и получите еще больше
+        удовольствия!
+    puzzleDlcWishlist: Добавь в список желаемого!
+    puzzleDlcViewNow: Посмотреть
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -260,6 +264,13 @@ dialogs:
     puzzleDelete:
         title: Удалить головоломку?
         desc: Вы уверены, что хотите удалить '<title>'? Это действие нельзя отменить!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Передвижение
@@ -1037,6 +1048,7 @@ settings:
             description: Whether to always show the shape tooltip when hovering buildings,
                 instead of having to hold 'ALT'.
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Настройки управления
     hint: "Подсказка: Обязательно используйте CTRL, SHIFT и ALT! Они дают разные
@@ -1050,6 +1062,7 @@ keybindings:
         massSelect: Множественный Выбор
         buildings: Постройки
         placementModifiers: Модификаторы Размещения
+        mods: Provided by Mods
     mappings:
         confirm: Подтвердить
         back: Назад
@@ -1298,3 +1311,20 @@ backendErrors:
     too-many-likes-already: Головоломка уже заработала слишком много лайков. Если вы
         все еще хотите удалить ее, обратитесь в support@shapez.io!
     no-permission: У вас нет прав на выполнение этого действия.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

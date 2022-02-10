@@ -24,15 +24,6 @@ if (G_IS_DEV && globalConfig.debug.testTranslations) {
     mapTranslations(T);
 }
 
-export function applyLanguage(languageCode) {
-    logger.log("Applying language:", languageCode);
-    const data = LANGUAGES[languageCode];
-    if (!data) {
-        logger.error("Language not found:", languageCode);
-        return false;
-    }
-}
-
 // Language key is something like de-DE or en or en-US
 function mapLanguageCodeToId(languageKey) {
     const key = languageKey.toLowerCase();
@@ -97,8 +88,11 @@ export function autoDetectLanguageId() {
     return "en";
 }
 
-function matchDataRecursive(dest, src) {
+export function matchDataRecursive(dest, src, addNewKeys = false) {
     if (typeof dest !== "object" || typeof src !== "object") {
+        return;
+    }
+    if (dest === null || src === null) {
         return;
     }
 
@@ -107,12 +101,20 @@ function matchDataRecursive(dest, src) {
             // console.log("copy", key);
             const data = dest[key];
             if (typeof data === "object") {
-                matchDataRecursive(dest[key], src[key]);
+                matchDataRecursive(dest[key], src[key], addNewKeys);
             } else if (typeof data === "string" || typeof data === "number") {
                 // console.log("match string", key);
                 dest[key] = src[key];
             } else {
                 logger.log("Unknown type:", typeof data, "in key", key);
+            }
+        }
+    }
+
+    if (addNewKeys) {
+        for (const key in src) {
+            if (!dest[key]) {
+                dest[key] = JSON.parse(JSON.stringify(src[key]));
             }
         }
     }

@@ -1,9 +1,9 @@
-import { GameSystemWithFilter } from "../game_system_with_filter";
-import { StorageComponent } from "../components/storage";
 import { DrawParameters } from "../../core/draw_parameters";
-import { formatBigNumber, lerp } from "../../core/utils";
 import { Loader } from "../../core/loader";
-import { BOOL_TRUE_SINGLETON, BOOL_FALSE_SINGLETON } from "../items/boolean_item";
+import { formatBigNumber, lerp } from "../../core/utils";
+import { StorageComponent } from "../components/storage";
+import { GameSystemWithFilter } from "../game_system_with_filter";
+import { BOOL_FALSE_SINGLETON, BOOL_TRUE_SINGLETON } from "../items/boolean_item";
 import { MapChunkView } from "../map_chunk_view";
 
 export class StorageSystem extends GameSystemWithFilter {
@@ -50,8 +50,13 @@ export class StorageSystem extends GameSystemWithFilter {
             let targetAlpha = storageComp.storedCount > 0 ? 1 : 0;
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
 
-            pinsComp.slots[0].value = storageComp.storedItem;
-            pinsComp.slots[1].value = storageComp.getIsFull() ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
+            // a wired pins component is not guaranteed, but if its there, set the value
+            if (pinsComp) {
+                pinsComp.slots[0].value = storageComp.storedItem;
+                pinsComp.slots[1].value = storageComp.getIsFull()
+                    ? BOOL_TRUE_SINGLETON
+                    : BOOL_FALSE_SINGLETON;
+            }
         }
     }
 

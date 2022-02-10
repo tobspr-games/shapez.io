@@ -15,20 +15,21 @@
         }
 
         .sidebar {
-            display: grid;
+            display: flex;
             @include S(min-width, 210px);
             @include S(max-width, 320px);
-            @include S(grid-gap, 3px);
-            grid-template-rows: auto auto auto auto auto 1fr;
+            flex-direction: column;
 
             @include StyleBelowWidth($layoutBreak) {
-                grid-template-rows: 1fr 1fr;
-                grid-template-columns: auto auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                @include S(grid-gap, 5px);
                 max-width: unset !important;
             }
 
             button {
                 text-align: left;
+                @include S(margin-bottom, 3px);
                 &::after {
                     content: unset;
                 }
@@ -37,15 +38,26 @@
 
                 @include StyleBelowWidth($layoutBreak) {
                     text-align: center;
+                    height: D(30px) !important;
+                    padding: D(5px) !important;
                 }
             }
 
             .other {
-                @include S(margin-top, 10px);
                 align-self: end;
+                margin-top: auto;
 
                 @include StyleBelowWidth($layoutBreak) {
                     margin-top: 0;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    @include S(grid-gap, 5px);
+                    max-width: unset !important;
+                    grid-column: 1 / 3;
+
+                    button {
+                        margin: 0 !important;
+                    }
                 }
             }
 
@@ -69,8 +81,28 @@
                 }
             }
 
-            button.privacy {
-                @include S(margin-top, 4px);
+            button.manageMods {
+                background-color: lighten($modsColor, 38);
+                color: $modsColor;
+                display: flex;
+                @include S(padding-right, 5px);
+                .newBadge {
+                    color: #fff;
+                    @include S(border-radius, $globalBorderRadius);
+                    background: $modsColor;
+                    margin-left: auto;
+                    @include S(padding, 0, 3px, 0, 3px);
+
+                    @include InlineAnimation(1.3s ease-in-out infinite) {
+                        50% {
+                            transform: rotate(0deg) scale(1.1);
+                        }
+                    }
+                }
+
+                &.active {
+                    background-color: $colorGreenBright;
+                }
             }
 
             .versionbar {

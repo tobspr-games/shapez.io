@@ -11,6 +11,7 @@ import { arrayBeltVariantToRotation, MetaBeltBuilding } from "../buildings/belt"
 import { getCodeFromBuildingData } from "../building_codes";
 import { BeltComponent } from "../components/belt";
 import { Entity } from "../entity";
+import { GameSystem } from "../game_system";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { MapChunkView } from "../map_chunk_view";
 import { defaultBuildingVariant } from "../meta_building";
@@ -22,9 +23,9 @@ const logger = createLogger("belt");
 /**
  * Manages all belts
  */
-export class BeltSystem extends GameSystemWithFilter {
+export class BeltSystem extends GameSystem {
     constructor(root) {
-        super(root, [BeltComponent]);
+        super(root);
         /**
          * @type {Object.<enumDirection, Array<AtlasSprite>>}
          */
@@ -425,8 +426,10 @@ export class BeltSystem extends GameSystemWithFilter {
 
         const result = [];
 
-        for (let i = 0; i < this.allEntities.length; ++i) {
-            const entity = this.allEntities[i];
+        const beltEntities = this.root.entityMgr.getAllWithComponent(BeltComponent);
+
+        for (let i = 0; i < beltEntities.length; ++i) {
+            const entity = beltEntities[i];
             if (visitedUids.has(entity.uid)) {
                 continue;
             }
@@ -494,6 +497,10 @@ export class BeltSystem extends GameSystemWithFilter {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
+            return;
+        }
+
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
 

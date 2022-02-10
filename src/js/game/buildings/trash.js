@@ -4,7 +4,7 @@ import { ACHIEVEMENTS } from "../../platform/achievement_provider";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { enumItemProcessorTypes, ItemProcessorComponent } from "../components/item_processor";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -13,6 +13,15 @@ const overlayMatrix = generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 1]);
 export class MetaTrashBuilding extends MetaBuilding {
     constructor() {
         super("trash");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 20,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getIsRotateable() {
@@ -67,12 +76,19 @@ export class MetaTrashBuilding extends MetaBuilding {
                 slots: [
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            enumDirection.top,
-                            enumDirection.right,
-                            enumDirection.bottom,
-                            enumDirection.left,
-                        ],
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.bottom,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
                     },
                 ],
             })

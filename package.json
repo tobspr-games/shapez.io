@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/tobspr/shapez.io",
-    "author": "Tobias Springer <tobias.springer1@gmail.com>",
+    "author": "tobspr Games <hello@tobspr.io>",
     "license": "MIT",
     "private": true,
     "scripts": {
@@ -19,7 +19,8 @@
         "publishStandalone": "yarn publishOnItch && yarn publishOnSteam",
         "publishWeb": "cd gulp && yarn main.deploy.prod",
         "publish": "yarn publishStandalone && yarn publishWeb",
-        "syncTranslations": "node sync-translations.js"
+        "syncTranslations": "node sync-translations.js",
+        "buildTypes": "tsc src/js/application.js --declaration --allowJs --emitDeclarationOnly --skipLibCheck --out types.js"
     },
     "dependencies": {
         "@babel/core": "^7.5.4",
@@ -55,6 +56,7 @@
         "promise-polyfill": "^8.1.0",
         "query-string": "^6.8.1",
         "rusha": "^0.8.13",
+        "semver": "^7.3.5",
         "serialize-error": "^3.0.0",
         "strictdom": "^1.0.1",
         "string-replace-webpack-plugin": "^0.1.3",

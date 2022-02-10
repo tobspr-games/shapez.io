@@ -78,6 +78,10 @@ mainMenu:
         ekspanziju sa Slagalicama na Steam-u, za još više zabave!
     puzzleDlcWishlist: Dodaj na listu želja!
     puzzleDlcViewNow: Pogledaj ekspanziju
+    mods:
+        title: Active Mods
+        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
+            disable all mods to play the DLC.
 dialogs:
     buttons:
         ok: OK
@@ -200,7 +204,7 @@ dialogs:
         descName: "Dajte ime slagalici:"
         descIcon: "Molimo da unesete kratak kod, koji će biti ikonica slagalice (Možete
             generisati kod <link>ovde</link>, ili možete i da odaberete jedan od
-            nasumičnih preloženih oblika ispod):"
+            nasumičnih predloženih oblika ispod):"
         placeholderName: Naslov Slagalice
     puzzleResizeBadBuildings:
         title: Promena veličine nije moguća
@@ -256,6 +260,13 @@ dialogs:
         title: Izbrišite Slagalicu?
         desc: Da li sigurno želite da obrišete '<title>'? Ne možete da je vratite
             kasnije!
+    modsDifference:
+        title: Mod Warning
+        desc: The currently installed mods differ from the mods the savegame was created
+            with. This might cause the savegame to break or not load at all. Are
+            you sure you want to continue?
+        missingMods: Missing Mods
+        newMods: Newly installed Mods
 ingame:
     keybindingsOverlay:
         moveMap: Kretanje
@@ -381,9 +392,9 @@ ingame:
             21_1_place_quad_painter: Postavi <strong>četvorostrukog farbača</strong> i oboji
                 <strong>krugove</strong> u <strong>belu</strong> and
                 <strong>crvenu</strong> boju!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
+            21_2_switch_to_wires: Prebacite se na žičani sloj pritiskom na taster
+                <strong>E</strong>!<br><br> Kablovima <strong>povežite sva
+                četiri ulaza</strong> farbača!
             21_3_place_button: Fenomenalno! Sada postavi <strong>Prekidač</strong> i poveži
                 ga žicama!
             21_4_press_button: "Kako bi aktivirao farbača, pritisni prekidač i on <strong>će
@@ -591,7 +602,7 @@ buildings:
     constant_signal:
         default:
             name: Konstantan Signal
-            description: Emituje konstantan signal, koji može bili ili oblik ili boja ili
+            description: Emituje konstantan signal, koji može biti ili oblik ili boja ili
                 da/ne vrednost (1 / 0).
     lever:
         default:
@@ -629,12 +640,12 @@ buildings:
             name: Filter
             description: Povežite signal kako bi usmerili sve predmete koji se poklapaju na
                 gornji izlaz, a ostatak odlazi na desni izlaz. Može biti
-                kontrolisano preko da/ne signala.
+                kontrolisano preko vrednosti da/ne (1 / 0) signala .
     display:
         default:
             name: Displej
             description: Povežite signal na displej i on će biti prikazan na njemu - Signal
-                može biti oblik, boja ili da/ne vrednost.
+                može biti oblik, boja ili da/ne vrednost (1 / 0).
     reader:
         default:
             name: Čitač Trake
@@ -649,7 +660,7 @@ buildings:
         default:
             name: Upoređivač
             description: Vraća da/ne vrednost "1" ako su oba ulazna signala jednaka. Mogu se
-                porediti oblici, predmeti i da/ne vrednosti.
+                porediti oblici, predmeti i da/ne vrednosti (1 / 0).
     virtual_processor:
         default:
             name: Virtuelni Rezač
@@ -714,10 +725,10 @@ storyRewards:
             <strong>spojeni</strong>. Ako ne, desni ulaz se slaže <strong>na
             vrh</strong> levog!
     reward_splitter:
-        title: Deljenje/Spajanje
-        desc: You have unlocked a <strong>splitter</strong> variant of the
-            <strong>balancer</strong> - It accepts one input and splits them
-            into two!
+        title: Kompaktni Delilac
+        desc: Otključali ste <strong>delioca</strong>, on predstavlja varijaciju
+            <strong>balansera</strong> - Prihvata jedan ulaz i razdvaja ih na
+            dva!
     reward_tunnel:
         title: Tunel
         desc: <strong>Tunel</strong> je otključan - Omogućava prenos stvari ispod traka
@@ -729,10 +740,10 @@ storyRewards:
             <strong>pritisni 'T' za menjanje njegove varijacije</strong>!
     reward_miner_chainable:
         title: Lančani rudar
-        desc: "You have unlocked the <strong>chained extractor</strong>! It can
-            <strong>forward its resources</strong> to other extractors so you
-            can more efficiently extract resources!<br><br> PS: The old
-            extractor has been replaced in your toolbar now!"
+        desc: "Otključali ste <strong>lančanog rudara</strong>! On ume da
+            <strong>prosledi svoje resurse</strong> drugim rudarima, kako bi
+            bili efikasniji i manje zauzimali prostor!<br><br> PS: Stari rudar
+            je zamenjen lančanim u meniju za odabir građevina!"
     reward_underground_belt_tier_2:
         title: Tunel II Reda
         desc: Otključana je nova varijacija <strong>tunela</strong> - On ima
@@ -754,13 +765,14 @@ storyRewards:
             izlazu, može se koristiti kao <strong>kapija za prelivanje</strong>!
     reward_freeplay:
         title: Slobodna Igra
-        desc: You did it! You unlocked the <strong>free-play mode</strong>! This means
-            that shapes are now <strong>randomly</strong> generated!<br><br>
-            Since the hub will require a <strong>throughput</strong> from now
-            on, I highly recommend to build a machine which automatically
-            delivers the requested shape!<br><br> The HUB outputs the requested
-            shape on the wires layer, so all you have to do is to analyze it and
-            automatically configure your factory based on that.
+        desc: Uspeli sve! Otključali ste <strong>slobodnu igru</strong>! Ovo znači da će
+            oblici biti <strong>nasumično</strong> kreirani!<br><br> Od sad, pa
+            nadalje središte će zahtevati određenu <strong>propusnost</strong>,
+            Topla preporuka jeste da napravite mašinu koja će automatski
+            isporučivati traženi oblik!<br><br> Na žičanom sloju, središte
+            emituje, na svom izlazu, traženi oblik, kako bi mogao biti
+            analiziran i pomogao da automatski podesite fabriku u odnosu na taj
+            oblik.
     reward_blueprints:
         title: Nacrti
         desc: Sada možete da <strong>kopirate i nalepljujete</strong> delove fabrike!
@@ -803,12 +815,12 @@ storyRewards:
             čitač trake i skladište na izlaz šalju poslednje prošitani predmet?
             Probajte da ih prikažete na displeju!"
     reward_constant_signal:
-        title: Constant Signal
-        desc: You unlocked the <strong>constant signal</strong> building on the wires
-            layer! This is useful to connect it to <strong>item filters</strong>
-            for example.<br><br> The constant signal can emit a
-            <strong>shape</strong>, <strong>color</strong> or
-            <strong>boolean</strong> (1 / 0).
+        title: Konstantan Signal
+        desc: Otključali ste <strong>konstantan signal</strong>, građevinu žičanog
+            sloja! Na primer, on može biti povezan na <strong>filter</strong>.
+            <br><br> Konstantan signal može emitovati signal koji može
+            <strong>oblik</strong>, <strong>boja</strong> ili <strong>da/ne
+            vrednost</strong> (1 / 0).
     reward_logic_gates:
         title: Logičke Kapije
         desc: <strong>Logičke Kapije</strong> su otključane! You don't have to be
@@ -816,30 +828,31 @@ storyRewards:
             ovih kapija možete da radite I, ILI, NE i EKSILI operacije.<br><br>
             Kao šlag na tortu, dobijate i <strong>Tranzistor</strong>!
     reward_virtual_processing:
-        title: Virtual Processing
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotater, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            regulary.<br><br> Whatever you choose, remember to have fun!
+        title: Virtuelna Građevine
+        desc: Dali smo vam gomilu novih građevina koje omogućavaju da <strong>simulirate
+            obradu oblika</strong>!<br><br> Možete simulirati rezač, obrtač,
+            slagač i još mnogo toga na žičanom sloju! Sada imate tri opcije za
+            nastavak igre:<br><br>- Napravite <strong>automatsku mašinu</strong>
+            koja kreira sve moguće oblike koje središte zahteva (Preporučujem da
+            probate!). <br><br> - Napravite nešto strava koristeći žice.
+            <br><br> - Nastavite sa igrom, regulatno, kao i dosad. <br><br> Ne
+            zaboravite da se zabavljate, šta god odabrali!
     reward_wires_painter_and_levers:
-        title: Wires & Quad Painter
-        desc: "You just unlocked the <strong>Wires Layer</strong>: It is a separate
-            layer on top of the regular layer and introduces a lot of new
-            mechanics!<br><br> For the beginning I unlocked you the <strong>Quad
-            Painter</strong> - Connect the slots you would like to paint with on
-            the wires layer!<br><br> To switch to the wires layer, press
-            <strong>E</strong>. <br><br> PS: <strong>Enable hints</strong> in
-            the settings to activate the wires tutorial!"
+        title: Žice & Četvorostruki Farbač
+        desc: "Otključali ste <strong>Žičani Sloj</strong>: To je poseban sloj koji se
+            nalazi preko regularnog sloja i sa sobom donosi nove mogućnosti!
+            <br><br> Za početak, takođe je otključan <strong>Četvorostruki
+            Farbač</strong> - Na žičanom sloju povežite koje delove želite da
+            ofarbate!<br><br> Kako bi se prebacili na žičani sloj pritisnite
+            taster <strong>E</strong>. <br><br> PS: <strong>Uključite
+            savete</strong> u podešavanjima kako bi aktivirali prateći tutorijal
+            za korišćenje žica!"
     reward_filter:
-        title: Item Filter
-        desc: You unlocked the <strong>Item Filter</strong>! It will route items either
-            to the top or the right output depending on whether they match the
-            signal from the wires layer or not.<br><br> You can also pass in a
-            boolean signal (1 / 0) to entirely activate or disable it.
+        title: Filter
+        desc: Otključali ste <strong>Filter</strong>! On može usmeravati sve predmete
+            koji se poklapaju sa signalom na žičanom sloju na gornji ili desni
+            izlaz.<br><br> Takođe, može primiti i da/ne signal koji može da
+            omogući/onemogući rad filtera.
     reward_demo_end:
         title: Kraj probne verzije
         desc: Došli ste do kraja probne verzije!
@@ -1011,11 +1024,12 @@ settings:
             description: Kontroliše veličinu simbola na mapi (kada se vrši odzumiranje
                 mape).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Opis alata oblika - Uvek Prikaži
+            description: Uvek prikazuje opis oblika kad pređete kursorom/strelicom preko
+                građevine, umesto da držite taster 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
+    newBadge: New!
 keybindings:
     title: Tasteri
     hint: "Savet: Koristite CTRL, SHIFT i ALT! Oni omogućuju razne opcije
@@ -1029,6 +1043,7 @@ keybindings:
         massSelect: Masovno Odabiranje
         buildings: Prečice za građevine
         placementModifiers: Modifikatori Postavljanja
+        mods: Provided by Mods
     mappings:
         confirm: Potvrdi
         back: Nazad
@@ -1067,7 +1082,7 @@ keybindings:
         wire_tunnel: Žičani Preklopnik
         display: Displej
         reader: Čitač Trake
-        virtual_processor: Virtuelni Rezač
+        virtual_processor: Virtuelna građevina
         transistor: Transistor
         analyzer: Analizator Oblika
         comparator: Upoređivač
@@ -1097,7 +1112,7 @@ keybindings:
         rotateToRight: "Obrtač: Gleda Desno"
         rotateToLeft: "Obrtač: Gleda Levo"
         massSelectClear: Očisti trake
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Prikaži opis alata izlaznog oblika
 about:
     title: O Igri
     body: >-
@@ -1232,24 +1247,24 @@ puzzleMenu:
         easy: Lako
         medium: Srednje
         hard: Teško
-        unknown: Unrated
+        unknown: Nije navedeno
     dlcHint: Već imate kupljenu ekspanziju? Desnim klikom na shapez.io u vašoj
         biblioteci, nakon toga na Properties > DLCs, proverite da li je
         aktivirana.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Pretraga
+        placeholder: Unesite ime autora ili slagalice
+        includeCompleted: Uključi već završene slagalice
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Bilo koja težina
+            easy: Lako
+            medium: Srednje
+            hard: Teško
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Bilo koje vreme trajanja
+            short: Kratko (< 2 min)
+            medium: Normalno
+            long: Dugačko (> 10 min)
 backendErrors:
     ratelimit: Previše često pokušavate nešto. Sačekajte malo.
     invalid-api-key: Komunikacija sa pozadinskim serverom nije uspela, pokušajte da
@@ -1276,3 +1291,20 @@ backendErrors:
     too-many-likes-already: Slagalica ima dosta lajkova. Ako i dalje želite da je
         uklonite, molimo da kontaktirate support@shapez.io!
     no-permission: Nemate dozvolu za izvršenje ove radnje.
+mods:
+    title: Mods
+    author: Author
+    version: Version
+    modWebsite: Website
+    openFolder: Open Mods Folder
+    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    browseMods: Browse Mods
+    modsInfo: To install and manage mods, copy them to the mods folder within the
+        game directory. You can also use the 'Open Mods Folder' button on the
+        top right.
+    noModSupport: You need the standalone version on Steam to install mods.
+    togglingComingSoon:
+        title: Coming Soon
+        description: Enabling or disabling mods is currently only possible by copying
+            the mod file from or to the mods/ folder. However, being able to
+            toggle them here is planned for a future update!

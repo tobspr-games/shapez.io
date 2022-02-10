@@ -1,25 +1,38 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog, session } = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
 const steam = require("./steam");
 const asyncLock = require("async-lock");
+const windowStateKeeper = require("electron-window-state");
 
-const isDev = process.argv.indexOf("--dev") >= 0;
-const isLocal = process.argv.indexOf("--local") >= 0;
+// Disable hardware key handling, i.e. being able to pause/resume the game music
+// with hardware keys
+app.commandLine.appendSwitch("disable-features", "HardwareMediaKeyHandling");
+
+const isDev = app.commandLine.hasSwitch("dev");
+const isLocal = app.commandLine.hasSwitch("local");
+const safeMode = app.commandLine.hasSwitch("safe-mode");
+const externalMod = app.commandLine.getSwitchValue("load-mod");
 
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
+
 let storePath = path.join(roamingFolder, "shapez.io", "saves");
+let modsPath = path.join(roamingFolder, "shapez.io", "mods");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
     fs.mkdirSync(storePath, { recursive: true });
+}
+
+if (!fs.existsSync(modsPath)) {
+    fs.mkdirSync(modsPath, { recursive: true });
 }
 
 /** @type {BrowserWindow} */
@@ -32,25 +45,43 @@ function createWindow() {
         faviconExtension = ".ico";
     }
 
+    const mainWindowState = windowStateKeeper({
+        defaultWidth: 1000,
+        defaultHeight: 800,
+    });
+
     win = new BrowserWindow({
-        width: 1280,
-        height: 800,
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
         show: false,
         backgroundColor: "#222428",
-        useContentSize: true,
+        useContentSize: false,
         minWidth: 800,
         minHeight: 600,
         title: "shapez.io Standalone",
         transparent: false,
         icon: path.join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,
-        autoHideMenuBar: true,
+        autoHideMenuBar: !isDev,
         webPreferences: {
-            nodeIntegration: true,
-            webSecurity: false,
+            nodeIntegration: false,
+            nodeIntegrationInWorker: false,
+            nodeIntegrationInSubFrames: false,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            disableBlinkFeatures: "Auxclick",
+
+            webSecurity: true,
+            sandbox: true,
+            preload: path.join(__dirname, "preload.js"),
+            experimentalFeatures: false,
         },
         allowRunningInsecureContent: false,
     });
+
+    mainWindowState.manage(win);
 
     if (isLocal) {
         win.loadURL("http://localhost:3005");
@@ -66,9 +97,67 @@ function createWindow() {
     win.webContents.session.clearCache();
     win.webContents.session.clearStorageData();
 
+    ////// SECURITY
+
+    // Disable permission requests
+    win.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+    session.fromPartition("default").setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+
+    app.on("web-contents-created", (event, contents) => {
+        // Disable vewbiew
+        contents.on("will-attach-webview", (event, webPreferences, params) => {
+            event.preventDefault();
+        });
+        // Disable navigation
+        contents.on("will-navigate", (event, navigationUrl) => {
+            event.preventDefault();
+        });
+    });
+
+    win.webContents.on("will-redirect", (contentsEvent, navigationUrl) => {
+        // Log and prevent the app from redirecting to a new page
+        console.error(
+            `The application tried to redirect to the following address: '${navigationUrl}'. This attempt was blocked.`
+        );
+        contentsEvent.preventDefault();
+    });
+
+    // Filter loading any module via remote;
+    // you shouldn't be using remote at all, though
+    // https://electronjs.org/docs/tutorial/security#16-filter-the-remote-module
+    app.on("remote-require", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    // built-ins are modules such as "app"
+    app.on("remote-get-builtin", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-global", (event, webContents, globalName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-window", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-web-contents", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    //// END SECURITY
+
     win.webContents.on("new-window", (event, pth) => {
         event.preventDefault();
-        shell.openExternal(pth);
+
+        if (pth.startsWith("https://")) {
+            shell.openExternal(pth);
+        }
     });
 
     win.on("closed", () => {
@@ -79,15 +168,17 @@ function createWindow() {
     if (isDev) {
         menu = new Menu();
 
+        win.webContents.toggleDevTools();
+
         const mainItem = new MenuItem({
             label: "Toggle Dev Tools",
-            click: () => win.toggleDevTools(),
+            click: () => win.webContents.toggleDevTools(),
             accelerator: "F12",
         });
         menu.append(mainItem);
 
         const reloadItem = new MenuItem({
-            label: "Restart",
+            label: "Reload",
             click: () => win.reload(),
             accelerator: "F5",
         });
@@ -100,7 +191,15 @@ function createWindow() {
         });
         menu.append(fullscreenItem);
 
-        Menu.setApplicationMenu(menu);
+        const mainMenu = new Menu();
+        mainMenu.append(
+            new MenuItem({
+                label: "shapez.io",
+                submenu: menu,
+            })
+        );
+
+        Menu.setApplicationMenu(mainMenu);
     } else {
         Menu.setApplicationMenu(null);
     }
@@ -114,7 +213,7 @@ function createWindow() {
 if (!app.requestSingleInstanceLock()) {
     app.exit(0);
 } else {
-    app.on("second-instance", (event, commandLine, workingDirectory) => {
+    app.on("second-instance", () => {
         // Someone tried to run a second instance, we should focus
         if (win) {
             if (win.isMinimized()) {
@@ -136,7 +235,7 @@ ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);
 });
 
-ipcMain.on("exit-app", (event, flag) => {
+ipcMain.on("exit-app", () => {
     win.close();
     app.quit();
 });
@@ -167,14 +266,14 @@ async function writeFileSafe(filename, contents) {
         if (!fs.existsSync(filename)) {
             // this one is easy
             console.log(prefix, "Writing file instantly because it does not exist:", niceFileName(filename));
-            await fs.promises.writeFile(filename, contents, { encoding: "utf8" });
+            await fs.promises.writeFile(filename, contents, "utf8");
             return;
         }
 
         // first, write a temporary file (.tmp-XXX)
         const tempName = filename + ".tmp-" + transactionId;
         console.log(prefix, "Writing temporary file", niceFileName(tempName));
-        await fs.promises.writeFile(tempName, contents, { encoding: "utf8" });
+        await fs.promises.writeFile(tempName, contents, "utf8");
 
         // now, rename the original file to (.backup-XXX)
         const oldTemporaryName = filename + ".backup-" + transactionId;
@@ -216,68 +315,75 @@ async function writeFileSafe(filename, contents) {
     });
 }
 
-async function performFsJob(job) {
-    const fname = path.join(storePath, job.filename);
-
+ipcMain.handle("fs-job", async (event, job) => {
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "_");
+    const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {
             if (!fs.existsSync(fname)) {
-                return {
-                    // Special FILE_NOT_FOUND error code
-                    error: "file_not_found",
-                };
+                // Special FILE_NOT_FOUND error code
+                return { error: "file_not_found" };
             }
-
-            try {
-                const data = await fs.promises.readFile(fname, { encoding: "utf8" });
-                return {
-                    success: true,
-                    data,
-                };
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
+            return await fs.promises.readFile(fname, "utf8");
         }
         case "write": {
-            try {
-                await writeFileSafe(fname, job.contents);
-                return {
-                    success: true,
-                    data: job.contents,
-                };
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
+            await writeFileSafe(fname, job.contents);
+            return job.contents;
         }
 
         case "delete": {
-            try {
-                await fs.promises.unlink(fname);
-            } catch (ex) {
-                return {
-                    error: ex,
-                };
-            }
-
-            return {
-                success: true,
-                data: null,
-            };
+            await fs.promises.unlink(fname);
+            return;
         }
 
         default:
-            throw new Error("Unkown fs job: " + job.type);
+            throw new Error("Unknown fs job: " + job.type);
     }
+});
+
+ipcMain.handle("open-mods-folder", async () => {
+    shell.openPath(modsPath);
+});
+
+console.log("Loading mods ...");
+
+function loadMods() {
+    if (safeMode) {
+        console.log("Safe Mode enabled for mods, skipping mod search");
+    }
+    console.log("Loading mods from", modsPath);
+    let modFiles = safeMode
+        ? []
+        : fs
+              .readdirSync(modsPath)
+              .filter(filename => filename.endsWith(".js"))
+              .map(filename => path.join(modsPath, filename));
+
+    if (externalMod) {
+        console.log("Adding external mod source:", externalMod);
+        const externalModPaths = externalMod.split(",");
+        modFiles = modFiles.concat(externalModPaths);
+    }
+
+    return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
 }
 
-ipcMain.on("fs-job", async (event, arg) => {
-    const result = await performFsJob(arg);
-    event.reply("fs-response", { id: arg.id, result });
+let mods = [];
+try {
+    mods = loadMods();
+    console.log("Loaded", mods.length, "mods");
+} catch (ex) {
+    console.error("Failed to load mods");
+    dialog.showErrorBox("Failed to load mods:", ex);
+}
+
+ipcMain.handle("get-mods", async () => {
+    return mods;
 });
 
 steam.init(isDev);
-steam.listen();
+
+// Only allow achievements and puzzle DLC if no mods are loaded
+if (mods.length === 0) {
+    steam.listen();
+}

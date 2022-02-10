@@ -1,7 +1,7 @@
 import { enumDirection, Vector } from "../../core/vector";
 import { enumPinSlotType, WiredPinsComponent } from "../components/wired_pins";
 import { Entity } from "../entity";
-import { MetaBuilding } from "../meta_building";
+import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { ConstantSignalComponent } from "../components/constant_signal";
 import { generateMatrixRotations } from "../../core/utils";
@@ -12,6 +12,15 @@ const overlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]);
 export class MetaConstantSignalBuilding extends MetaBuilding {
     constructor() {
         super("constant_signal");
+    }
+
+    static getAllVariantCombinations() {
+        return [
+            {
+                internalId: 31,
+                variant: defaultBuildingVariant,
+            },
+        ];
     }
 
     getSilhouetteColor() {

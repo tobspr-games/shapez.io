@@ -71,6 +71,7 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false, w
                     type: "javascript/auto",
                 },
                 { test: /\.(png|jpe?g|svg)$/, loader: "ignore-loader" },
+                { test: /\.nobuild/, loader: "ignore-loader" },
                 {
                     test: /\.md$/,
                     use: [
