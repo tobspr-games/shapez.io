@@ -141,7 +141,7 @@ export class ItemAcceptorComponent extends Component {
         // make sure there is a slot and we match the filter
         if (slot && !(slot.filter && slot.filter != item.getItemType())) {
             if (MOD_INPUT_REQUIREMENTS[this.inputRequirement]) {
-                return MOD_INPUT_REQUIREMENTS[this.inputRequirement].bind(this)({
+                return MOD_INPUT_REQUIREMENTS[this.inputRequirement].call(this, {
                     entity,
                     item,
                     slotIndex,
