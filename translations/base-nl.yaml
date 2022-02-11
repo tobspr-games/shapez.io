@@ -81,9 +81,9 @@ mainMenu:
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
     puzzleDlcViewNow: Bekijk DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Actieve Mods
+        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods. Schakel 
+            alsjeblieft alle mods uit om de DLC te spelen.
 dialogs:
     buttons:
         ok: OK
@@ -270,12 +270,12 @@ dialogs:
         desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan
             gemaakt worden!
     modsDifference:
-        title: Mod Warning
+        title: Mod Waarschuwing
         desc: The currently installed mods differ from the mods the savegame was created
             with. This might cause the savegame to break or not load at all. Are
             you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        missingMods: Missende Mods
+        newMods: Nieuw geïnstalleerde Mods
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -1279,8 +1279,8 @@ puzzleMenu:
         unknown: Onbeoordeeld
     search:
         action: Zoeken
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        placeholder: Voer een puzzel- of auteursnaam in
+        includeCompleted: Inclusief Voltooide
         difficulties:
             any: Elke Moeilijkheidsgraad
             easy: Makkelijk
@@ -1324,12 +1324,12 @@ mods:
     modWebsite: Website
     openFolder: Open Mods Map
     folderOnlyStandalone: Het openen van de mod map is alleen mogelijk bij het gebruiken van de zelfstandige versie.
-    browseMods: Browse Mods
+    browseMods: Door mods bladeren
     modsInfo: Om mods te installeren en te beheren, kopieert u ze naar de map mods in de
          spel map. U kunt ook de knop 'Open Mods Map' gebruiken rechtsboven.
     noModSupport: Je hebt de zelfstandige versie op Steam nodig om mods te installeren.
     togglingComingSoon:
         title: Binnenkort Beschikbaar
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        description: Mods in- of uitschakelen is momenteel alleen mogelijk door
+            het mod-bestand van of naar de mods map te kopiëren. Echter, in staat zijn om
+            ze hier in- of uitteschakelen is gepland voor een toekomstige update!
