@@ -82,7 +82,7 @@ mainMenu:
     puzzleDlcViewNow: Bekijk DLC
     mods:
         title: Actieve Mods
-        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods. Schakel 
+        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods. Schakel
             alsjeblieft alle mods uit om de DLC te spelen.
 dialogs:
     buttons:
