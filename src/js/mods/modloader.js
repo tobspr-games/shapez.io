@@ -112,7 +112,8 @@ export class ModLoader {
                 // @ts-ignore
                 const module = modules(key);
                 for (const member in module) {
-                    if (member === "default") {
+                    if (member === "default" || member === "__$S__") {
+                        // Setter
                         continue;
                     }
                     if (exports[member]) {
@@ -124,7 +125,7 @@ export class ModLoader {
                             return module[member];
                         },
                         set(v) {
-                            throw new Error("Overriding the shapez exports is currently not possible");
+                            module.__$S__(member, v);
                         },
                     });
                 }
