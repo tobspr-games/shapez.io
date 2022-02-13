@@ -79,9 +79,9 @@ mainMenu:
     puzzleDlcWishlist: İstek listene ekle!
     puzzleDlcViewNow: Paketi (DLC) görüntüle
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Aktif Modlar
+        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen
+            Yapboz DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
 dialogs:
     buttons:
         ok: OK
@@ -263,12 +263,12 @@ dialogs:
         desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
             alınamaz!"
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Mod Uyarısı
+        desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan farklıdır.
+            Bu işlem kayıtlı oyunun bozulmasına veya hiç yüklenmemesine neden olabilir. Devam
+            etmek istediğinize emin misiniz?
+        missingMods: Eksik Modlar
+        newMods: Yeni yüklenen Modlar
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -1038,7 +1038,7 @@ settings:
             description: Şekil ipuçlarını 'ALT' tuşuna basarak göstermek yerine her zaman
                 gösterir.
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Yeni!
 keybindings:
     title: Tuş Atamaları
     hint: "İpucu: CTRL, SHIFT ve ALT tuşlarından yararlanın! Farklı yerleştirme
@@ -1052,7 +1052,7 @@ keybindings:
         massSelect: Çoklu Seçİm
         buildings: Yapı Kısayolları
         placementModifiers: Yerleştİrme Özellİklerİ
-        mods: Provided by Mods
+        mods: Modlar tarafından sağlandı
     mappings:
         confirm: Kabul
         back: Geri
@@ -1307,19 +1307,19 @@ backendErrors:
         istiyorsanız support@shapez.io ile iletişime geçiniz!
     no-permission: Bu işlemi yapmak için izniniz yok.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: Modlar
+    author: Sahibi
+    version: Sürüm
+    modWebsite: İnternet sitesi
+    openFolder: Mod Klasörünü Aç
+    folderOnlyStandalone: Mod klasörünü açmak sadece tam sürümü çalıştırıyorken mümkün.
+    browseMods: Modlara Gözat
+    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki Modlar
+        klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç' düğmesini de
+        kullanabilirsiniz.
+    noModSupport: Mod yükleyebilmek için tam sürümü çalıştırmalısınız.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Yakında Gelecek
+        description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
+            dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
+            değiştirmek gelecekteki bir güncelleme için planlanmıştır!
