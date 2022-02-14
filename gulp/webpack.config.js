@@ -97,6 +97,7 @@ module.exports = ({ watch = false, standalone = false, chineseVersion = false, w
                             loader: path.resolve(__dirname, "mod.js"),
                         },
                     ],
+                    ],
                 },
                 {
                     test: /\.worker\.js$/,

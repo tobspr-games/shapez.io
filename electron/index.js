@@ -316,7 +316,7 @@ async function writeFileSafe(filename, contents) {
 }
 
 ipcMain.handle("fs-job", async (event, job) => {
-    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "_");
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/gi, "_");
     const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {
@@ -373,7 +373,7 @@ try {
     mods = loadMods();
     console.log("Loaded", mods.length, "mods");
 } catch (ex) {
-    console.error("Failed ot load mods");
+    console.error("Failed to load mods");
     dialog.showErrorBox("Failed to load mods:", ex);
 }
 
@@ -383,6 +383,7 @@ ipcMain.handle("get-mods", async () => {
 
 steam.init(isDev);
 
-if (mods) {
+// Only allow achievements and puzzle DLC if no mods are loaded
+if (mods.length === 0) {
     steam.listen();
 }

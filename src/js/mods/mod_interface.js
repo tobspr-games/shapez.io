@@ -17,7 +17,7 @@ import { Loader } from "../core/loader";
 import { LANGUAGES } from "../languages";
 import { matchDataRecursive, T } from "../translations";
 import { gBuildingVariants, registerBuildingVariant } from "../game/building_codes";
-import { gComponentRegistry, gMetaBuildingRegistry } from "../core/global_registries";
+import { gComponentRegistry, gItemRegistry, gMetaBuildingRegistry } from "../core/global_registries";
 import { MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS } from "../game/map_chunk";
 import { MODS_ADDITIONAL_SYSTEMS } from "../game/game_system_manager";
 import { MOD_CHUNK_DRAW_HOOKS } from "../game/map_chunk_view";
@@ -28,6 +28,8 @@ import { ModMetaBuilding } from "./mod_meta_building";
 import { BaseHUDPart } from "../game/hud/base_hud_part";
 import { Vector } from "../core/vector";
 import { GameRoot } from "../game/root";
+import { BaseItem } from "../game/base_item";
+import { MODS_ADDITIONAL_ITEMS } from "../game/item_resolver";
 
 /**
  * @typedef {{new(...args: any[]): any, prototype: any}} constructable
@@ -188,6 +190,15 @@ export class ModInterface {
         if (language === "en") {
             matchDataRecursive(T, translations, true);
         }
+    }
+
+    /**
+     * @param {typeof BaseItem} item
+     * @param {(itemData: any) => BaseItem} resolver
+     */
+    registerItem(item, resolver) {
+        gItemRegistry.register(item);
+        MODS_ADDITIONAL_ITEMS[item.getId()] = resolver;
     }
 
     /**
@@ -583,8 +594,8 @@ export class ModInterface {
      * @param {string=} payload.name
      * @param {string=} payload.description
      * @param {Vector=} payload.dimensions
-     * @param {(root: GameRoot) => [string, string][]} payload.additionalStatistics
-     * @param {(root: GameRoot) => boolean[]} payload.isUnlocked
+     * @param {(root: GameRoot) => [string, string][]=} payload.additionalStatistics
+     * @param {(root: GameRoot) => boolean[]=} payload.isUnlocked
      */
     addVariantToExistingBuilding(metaClass, variant, payload) {
         if (!payload.rotationVariants) {
@@ -660,9 +671,14 @@ export class ModInterface {
             }));
         }
 
-        // Register our variant finally
+        // Register our variant finally, with rotation variants
         payload.rotationVariants.forEach(rotationVariant =>
-            shapez.registerBuildingVariant(internalId, metaClass, variant, rotationVariant)
+            shapez.registerBuildingVariant(
+                rotationVariant ? internalId + "-" + rotationVariant : internalId,
+                metaClass,
+                variant,
+                rotationVariant
+            )
         );
     }
 }

@@ -7,8 +7,6 @@ Currently there are two options to develop mods for shapez.io:
 1. Writing single file mods, which doesn't require any additional tools and can be loaded directly in the game
 2. Using the [create-shapezio-mod](https://www.npmjs.com/package/create-shapezio-mod) package. This package is still in development but allows you to pack multiple files and images into a single mod file, so you don't have to base64 encode your images etc.
 
-Since the `create-shapezio-mod` package is still in development, the current recommended way is to write single file mods, which I'll explain now.
-
 ## Mod Developer Discord
 
 A great place to get help with mod development is the official [shapez.io modloader discord](https://discord.gg/xq5v8uyMue).
@@ -40,7 +38,7 @@ To get into shapez.io modding, I highly recommend checking out all of the exampl
 | [mod_settings.js](mod_settings.js)                         | Shows a dialog counting how often the mod has been launched                                       | Reading and storing mod settings                                                                |
 | [storing_data_in_savegame.js](storing_data_in_savegame.js) | Shows how to store custom (structured) data in the savegame                                       | Storing custom data in savegame                                                                 |
 | [modify_existing_building.js](modify_existing_building.js) | Makes the rotator building always unlocked and adds a new statistic to the building panel         | Modifying a builtin building, replacing builtin methods                                         |
-| [modify_ui.js](modify_ui.js)                               | Shows how to add custom IU elements to builtin game states (the Main Menu in this case)           | Extending builtin UI states, Adding CSS                                                         |
+| [modify_ui.js](modify_ui.js)                               | Shows how to add custom UI elements to builtin game states (the Main Menu in this case)           | Extending builtin UI states, Adding CSS                                                         |
 | [pasting.js](pasting.js)                                   | Shows a dialog when pasting text in the game                                                      | Listening to paste events                                                                       |
 | [sandbox.js](sandbox.js)                                   | Makes blueprints free and always unlocked                                                         | Overriding builtin methods                                                                      |
 

@@ -112,7 +112,7 @@ export class ModLoader {
                 // @ts-ignore
                 const module = modules(key);
                 for (const member in module) {
-                    if (member === "default" || member === "$s") {
+                    if (member === "default" || member === "__$S__") {
                         // Setter
                         continue;
                     }
@@ -125,7 +125,7 @@ export class ModLoader {
                             return module[member];
                         },
                         set(v) {
-                            module["$s"](member, v);
+                            module.__$S__(member, v);
                         },
                     });
                 }
