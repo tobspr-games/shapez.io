@@ -11,6 +11,7 @@ export class GameAnalyticsInterface {
     /**
      * Initializes the analytics
      * @returns {Promise<void>}
+     * @abstract
      */
     initialize() {
         abstract;
@@ -43,6 +44,7 @@ export class GameAnalyticsInterface {
     /**
      * Activates a DLC
      * @param {string} dlc
+     * @abstract
      */
     activateDlc(dlc) {
         abstract;

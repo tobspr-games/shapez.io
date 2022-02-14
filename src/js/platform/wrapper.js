@@ -81,6 +81,7 @@ export class PlatformWrapperInterface {
      * Attempt to open an external url
      * @param {string} url
      * @param {boolean=} force Whether to always open the url even if not allowed
+     * @abstract
      */
     openExternalLink(url, force = false) {
         abstract;
@@ -88,6 +89,7 @@ export class PlatformWrapperInterface {
 
     /**
      * Attempt to restart the app
+     * @abstract
      */
     performRestart() {
         abstract;
@@ -103,6 +105,7 @@ export class PlatformWrapperInterface {
     /**
      * Should set the apps fullscreen state to the desired state
      * @param {boolean} flag
+     * @abstract
      */
     setFullscreen(flag) {
         abstract;
@@ -117,6 +120,7 @@ export class PlatformWrapperInterface {
 
     /**
      * Attempts to quit the app
+     * @abstract
      */
     exitApp() {
         abstract;

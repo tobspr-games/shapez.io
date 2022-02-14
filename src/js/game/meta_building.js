@@ -278,6 +278,7 @@ export class MetaBuilding {
      * Should setup the entity components
      * @param {Entity} entity
      * @param {GameRoot} root
+     * @abstract
      */
     setupEntityComponents(entity, root) {
         abstract;
