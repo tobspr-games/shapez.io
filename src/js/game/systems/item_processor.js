@@ -57,6 +57,11 @@ export const MOD_ITEM_PROCESSOR_HANDLERS = {};
  */
 export const MODS_PROCESSING_REQUIREMENTS = {};
 
+/**
+ * @type {Object<string, ({entity: Entity}) => boolean>}
+ */
+export const MODS_CAN_PROCESS = {};
+
 export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
@@ -213,6 +218,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      */
     canProcess(entity) {
         const processorComp = entity.components.ItemProcessor;
+
+        if (MODS_CAN_PROCESS[processorComp.processingRequirement]) {
+            return MODS_CAN_PROCESS[processorComp.processingRequirement].bind(this)({
+                entity,
+            });
+        }
 
         switch (processorComp.processingRequirement) {
             // DEFAULT
