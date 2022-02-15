@@ -3,7 +3,7 @@
 <img src="https://i.imgur.com/Y5Z2iqQ.png" alt="shapez.io Logo">
 
 This is the source code for shapez.io, an open source base building game inspired by Factorio.
-Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
+Your goal is to produce shapes by cutting, rotating, merging, and painting parts of shapes.
 
 -   [Steam Page](https://get.shapez.io/ghr)
 -   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
@@ -47,9 +47,9 @@ Please checkout the [Translations readme](translations/).
 
 ## Contributing
 
-Since this game is in the more or less early development, I will only accept pull requests which add an immediate benefit. Please understand that low quality PR's might be closed by me with a short comment explaining why.
+Since this game is in more or less early development, I will only accept pull requests which add an immediate benefit. Please understand that low-quality PR's might be closed by me with a short comment explaining why.
 
-**If you want to add a new building, please understand that I can not simply add every building to the game!** I recommend to talk to me before implementing anything, to make sure its actually useful. Otherwise there is a high chance of your PR not getting merged.
+**If you want to add a new building, please understand that I can not simply add every building to the game!** I recommend you to talk to me before implementing anything, to make sure it's useful. Otherwise, there is a high chance of your PR not getting merged.
 
 If you want to add a new feature or in generally contribute I recommend to get in touch with me on Discord:
 
@@ -60,9 +60,9 @@ If you want to add a new feature or in generally contribute I recommend to get i
 ### Code
 
 The game is based on a custom engine which itself is based on the YORG.io 3 game engine (Actually it shares almost the same core).
-The code within the engine is relatively clean with some code for the actual game on top being hacky.
+The code within the engine is relatively clean with some code for the actual game on top of being hacky.
 
-This project is based on ES5. Some ES2015 features are used but most of them are too slow, especially when polyfilled. For example, `Array.prototype.forEach` is only used within non-critical loops since its slower than a plain for loop.
+This project is based on ES5. Some ES2015 features are used but most of them are too slow, especially when polyfilled. For example, `Array.prototype.forEach` is only used within non-critical loops since it's slower than a plain for a loop.
 
 #### Adding a new component
 
@@ -88,7 +88,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 6. Add the building to the right toolbar, e.g. `src/js/game/hud/parts/buildings_toolbar.js`:`supportedBuildings`
 7. Add a keybinding for the building in `src/js/game/key_action_mapper.js` in `KEYMAPPINGS.buildings`
 8. In `translations/base-en.yaml` add it to two sections: `buildings.[my_building].XXX` (See other buildings) and also `keybindings.mappings.[my_building]`. Be sure to do it the same way as other buildings do!
-9. Create a icon (128x128, [prefab](https://github.com/tobspr/shapez.io-artwork/blob/master/ui/toolbar-icons.psd)) for your building and save it in `res/ui/buildings_icons` with the id of your building
+9. Create an icon (128x128, [prefab](https://github.com/tobspr/shapez.io-artwork/blob/master/ui/toolbar-icons.psd)) for your building and save it in `res/ui/buildings_icons` with the id of your building
 10. Create a tutorial image (600x600) for your building and save it in `res/ui/building_tutorials`
 11. In `src/css/resources.scss` add your building to `$buildings` as well as `$buildingAndVariants`
 12. Done! Optional: Add a new reward for unlocking your building at some point.
@@ -103,7 +103,7 @@ This project is based on ES5. Some ES2015 features are used but most of them are
 
 #### Checklist for a new building / testing it
 
-This is a quick checklist, if a new building is added this points should be fulfilled:
+This is a quick checklist, if a new building is added these points should be fulfilled:
 
 2. The translation for all variants is done and finalized
 3. The artwork (regular sprite) is finalized
@@ -114,12 +114,12 @@ This is a quick checklist, if a new building is added this points should be fulf
 8. The reward for the building has a proper translation
 9. The reward for the building has a proper image
 10. The building has a proper tutorial image assigned
-11. The buliding has a proper toolbar icon
+11. The building has a proper toolbar icon
 12. The reward requires a proper shape
 13. The building has a proper silhouette color
 14. The building has a proper matrix for being rendered on the minimap
 15. The building has proper statistics in the dialog
-16. The building properly contributes to the shapes produced analytics
+16. The building properly contributes to the shapes produced by analytics
 17. The building is properly persisted in the savegame
 18. The building is explained properly, ideally via an interactive tutorial
 
