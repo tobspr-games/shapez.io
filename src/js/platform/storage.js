@@ -13,6 +13,7 @@ export class StorageInterface {
     /**
      * Initializes the storage
      * @returns {Promise<void>}
+     * @abstract
      */
     initialize() {
         abstract;
@@ -24,6 +25,7 @@ export class StorageInterface {
      * @param {string} filename
      * @param {string} contents
      * @returns {Promise<void>}
+     * @abstract
      */
     writeFileAsync(filename, contents) {
         abstract;
@@ -34,6 +36,7 @@ export class StorageInterface {
      * Reads a string asynchronously. Returns Promise<FILE_NOT_FOUND> if file was not found.
      * @param {string} filename
      * @returns {Promise<string>}
+     * @abstract
      */
     readFileAsync(filename) {
         abstract;

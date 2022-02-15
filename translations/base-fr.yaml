@@ -454,8 +454,9 @@ ingame:
         clearItems: Supprimer les objets
         share: Partager
         report: Signaler
-        clearBuildings: Effacer les batiments
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Effacer les Constructions
+        resetPuzzle: Réinitialiser le Puzzle
+
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
@@ -475,6 +476,7 @@ ingame:
             - 6. Une fois publié <strong>tous les batiments seront
               supprimés</strong> sauf les générateurs et les récepteurs - C'est
               la partie ou le joueur est censé se débrouiller seul :)
+              
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -485,7 +487,7 @@ ingame:
         nextPuzzle: Puzzle suivant
     puzzleMetadata:
         author: Auteur
-        shortKey: Clée courte
+        shortKey: Raccourci clavier
         rating: Niveau de difficulté
         averageDuration: Durée moyenne
         completionRate: Taux de réussite
@@ -1073,7 +1075,7 @@ settings:
                 visible en dézoomant.
         shapeTooltipAlwaysOn:
             title: Info-bulle de forme - Toujours afficher
-            description: Si activé une info-bule s'affiche quand vous survolez un batiment
+            description: Si activé, une info-bule s'affiche quand vous survolez un batiment
                 sinon il faut maintenir 'ALT'.
     tickrateHz: <amount> Hz
     newBadge: New!
@@ -1152,10 +1154,10 @@ keybindings:
         placementDisableAutoOrientation: Désactiver l’orientation automatique
         placeMultiple: Rester en mode placement
         placeInverse: Inverser l’orientation des convoyeurs
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotation : pointer vers le haut"
+        rotateToDown: "Rotation : pointer vers le bas"
+        rotateToRight: "Rotation : pointer vers le droite"
+        rotateToLeft: "Rotation : pointer vers le gauche"
         constant_producer: Producteur Constant
         goal_acceptor: Récepteur
         block: Bloc
@@ -1311,16 +1313,16 @@ puzzleMenu:
         un clic droit sur shapez.io dans votre bibliothèque, en sélectionnant
         Propriétés > DLC.
     search:
-        action: Chercher
+        action: Recherche
         placeholder: Entrez un puzzle ou un nom d'auteur
-        includeCompleted: Inclure les puzzles terminés
+        includeCompleted: Inclure terminé
         difficulties:
-            any: Toutes difficultés
+            any: Toute difficulté
             easy: Facile
-            medium: Moyen
-            hard: Difficile
+            medium: Medium
+            hard: Dificile
         durations:
-            any: Toutes durées
+            any: Toute durée
             short: Court (< 2 min)
             medium: Normal
             long: Long (> 10 min)
@@ -1353,18 +1355,17 @@ backendErrors:
     no-permission: Vous n'êtes pas autorisé à effectuer cette action.
 mods:
     title: Mods
-    author: Author
+    author: Auteur
     version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    modWebsite: Page web
+    openFolder: Ouvrir le dossier des mods
+    folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la version complète
+    browseMods: Chercher les Mods
+    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans le répertoire du jeu. 
+        Vous pouvez aussi utiliser le bouton 'Ouvrir le dossier des Mods' en haut à droite
+    noModSupport: Vous avez besoin de la version complète sur Steam pour installer des mods.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Bientôt disponible
+        description: Activer ou désactiver un mod est pour le moment possible qu'en 
+            copiant le fichier du mod depuis ou vers le dossier des mods. Cependant,
+            activer ou désactiver un mod est prévu pour une mise à jour future !

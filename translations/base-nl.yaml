@@ -81,9 +81,9 @@ mainMenu:
     puzzleDlcWishlist: Voeg nu toe aan je verlanglijst!
     puzzleDlcViewNow: Bekijk DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Actieve Mods
+        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods. Schakel
+            alsjeblieft alle mods uit om de DLC te spelen.
 dialogs:
     buttons:
         ok: OK
@@ -270,12 +270,12 @@ dialogs:
         desc: Weet je zeker dat je '<title>' wilt verwijderen? Dit kan niet ongedaan
             gemaakt worden!
     modsDifference:
-        title: Mod Warning
+        title: Mod Waarschuwing
         desc: The currently installed mods differ from the mods the savegame was created
             with. This might cause the savegame to break or not load at all. Are
             you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        missingMods: Missende Mods
+        newMods: Nieuw geïnstalleerde Mods
 ingame:
     keybindingsOverlay:
         moveMap: Beweeg rond de wereld
@@ -1188,10 +1188,8 @@ tips:
     - Knippers knippen altijd verticaal, ongeacht hun oriëntatie.
     - De opslagbuffer geeft prioriteit aan de eerste uitvoer.
     - Investeer tijd om herhaalbare ontwerpen te maken - het is het waard!
-    - Invest time to build repeatable designs - it's worth it!
     - Je kunt <b>ALT</b> ingedrukt houden om de richting van de geplaatste
       lopende banden om te keren.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Vormontginningen die verder van de HUB verwijderd zijn, zijn complexer.
     - Machines hebben een beperkte snelheid, verdeel ze voor maximale
       efficiëntie.
@@ -1214,7 +1212,6 @@ tips:
       mannen.
     - Maak een aparte blueprint fabriek. Ze zijn belangrijk voor modules.
     - Bekijk de kleurenmixer eens wat beter, en je vragen worden beantwoord.
-    - Have a closer look at the color mixer, and your questions will be answered.
     - Use <b>CTRL</b> + Click to select an area.
     - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op
       het scherm.
@@ -1234,7 +1231,6 @@ tips:
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
-    - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
     play: Spelen
     edit: Bewerken
@@ -1280,21 +1276,21 @@ puzzleMenu:
         easy: Makkelijk
         medium: Medium
         hard: Moeilijk
-        unknown: Unrated
+        unknown: Onbeoordeeld
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Zoeken
+        placeholder: Voer een puzzel- of auteursnaam in
+        includeCompleted: Inclusief Voltooide
         difficulties:
-            any: Any Difficulty
-            easy: Easy
+            any: Elke Moeilijkheidsgraad
+            easy: Makkelijk
             medium: Medium
-            hard: Hard
+            hard: Moeilijk
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Elke Tijd
+            short: Kort (< 2 min)
+            medium: Normaal
+            long: Lang (> 10 min)
 backendErrors:
     ratelimit: Je voert je handelingen te vaak uit. Wacht alstublieft even.
     invalid-api-key: Kan niet communiceren met de servers, probeer alstublieft het
@@ -1323,18 +1319,17 @@ backendErrors:
     no-permission: Je bent niet gemachtigd om deze actie uit te voeren.
 mods:
     title: Mods
-    author: Author
-    version: Version
+    author: Auteur
+    version: Versie
     modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    openFolder: Open Mods Map
+    folderOnlyStandalone: Het openen van de mod map is alleen mogelijk bij het gebruiken van de zelfstandige versie.
+    browseMods: Door mods bladeren
+    modsInfo: Om mods te installeren en te beheren, kopieert u ze naar de map mods in de
+         spel map. U kunt ook de knop 'Open Mods Map' gebruiken rechtsboven.
+    noModSupport: Je hebt de zelfstandige versie op Steam nodig om mods te installeren.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Binnenkort Beschikbaar
+        description: Mods in- of uitschakelen is momenteel alleen mogelijk door
+            het mod-bestand van of naar de mods map te kopiëren. Echter, in staat zijn om
+            ze hier in- of uitteschakelen is gepland voor een toekomstige update!

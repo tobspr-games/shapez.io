@@ -594,8 +594,8 @@ export class ModInterface {
      * @param {string=} payload.name
      * @param {string=} payload.description
      * @param {Vector=} payload.dimensions
-     * @param {(root: GameRoot) => [string, string][]} payload.additionalStatistics
-     * @param {(root: GameRoot) => boolean[]} payload.isUnlocked
+     * @param {(root: GameRoot) => [string, string][]=} payload.additionalStatistics
+     * @param {(root: GameRoot) => boolean[]=} payload.isUnlocked
      */
     addVariantToExistingBuilding(metaClass, variant, payload) {
         if (!payload.rotationVariants) {
@@ -671,9 +671,14 @@ export class ModInterface {
             }));
         }
 
-        // Register our variant finally
+        // Register our variant finally, with rotation variants
         payload.rotationVariants.forEach(rotationVariant =>
-            shapez.registerBuildingVariant(internalId, metaClass, variant, rotationVariant)
+            shapez.registerBuildingVariant(
+                rotationVariant ? internalId + "-" + rotationVariant : internalId,
+                metaClass,
+                variant,
+                rotationVariant
+            )
         );
     }
 }
