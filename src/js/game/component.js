@@ -4,6 +4,7 @@ export class Component extends BasicSerializableObject {
     /**
      * Returns the components unique id
      * @returns {string}
+     * @abstract
      */
     static getId() {
         abstract;

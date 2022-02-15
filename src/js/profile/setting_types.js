@@ -64,6 +64,7 @@ export class BaseSetting {
     /**
      * Returns the HTML for this setting
      * @param {Application} app
+     * @abstract
      */
     getHtml(app) {
         abstract;
@@ -84,6 +85,7 @@ export class BaseSetting {
 
     /**
      * Attempts to modify the setting
+     * @abstract
      */
     modify() {
         abstract;
@@ -107,6 +109,7 @@ export class BaseSetting {
      * Validates the set value
      * @param {any} value
      * @returns {boolean}
+     * @abstract
      */
     validate(value) {
         abstract;

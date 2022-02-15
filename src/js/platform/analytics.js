@@ -11,6 +11,7 @@ export class AnalyticsInterface {
     /**
      * Initializes the analytics
      * @returns {Promise<void>}
+     * @abstract
      */
     initialize() {
         abstract;

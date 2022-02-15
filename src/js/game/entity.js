@@ -224,6 +224,7 @@ export class Entity extends BasicSerializableObject {
     /**
      * override, should draw the entity
      * @param {DrawParameters} parameters
+     * @abstract
      */
     drawImpl(parameters) {
         abstract;

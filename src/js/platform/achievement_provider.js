@@ -92,6 +92,7 @@ export class AchievementProviderInterface {
     /**
      * Initializes the achievement provider.
      * @returns {Promise<void>}
+     * @abstract
      */
     initialize() {
         abstract;
@@ -102,6 +103,7 @@ export class AchievementProviderInterface {
      * Opportunity to do additional initialization work with the GameRoot.
      * @param {GameRoot} root
      * @returns {Promise<void>}
+     * @abstract
      */
     onLoad(root) {
         abstract;
@@ -118,6 +120,7 @@ export class AchievementProviderInterface {
      * Call to activate an achievement with the provider
      * @param {string} key - Maps to an Achievement
      * @returns {Promise<void>}
+     * @abstract
      */
     activate(key) {
         abstract;
@@ -127,6 +130,7 @@ export class AchievementProviderInterface {
     /**
      * Checks if achievements are supported in the current build
      * @returns {boolean}
+     * @abstract
      */
     hasAchievements() {
         abstract;

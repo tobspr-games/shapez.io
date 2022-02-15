@@ -19,6 +19,7 @@ export class AdProviderInterface {
     /**
      * Returns if this provider serves ads at all
      * @returns {boolean}
+     * @abstract
      */
     getHasAds() {
         abstract;
@@ -29,6 +30,7 @@ export class AdProviderInterface {
      * Returns if it would be possible to show a video ad *now*. This can be false if for
      * example the last video ad is
      * @returns {boolean}
+     * @abstract
      */
     getCanShowVideoAd() {
         abstract;

@@ -29,6 +29,7 @@ export class BaseItem extends BasicSerializableObject {
     /**
      * Returns a string id of the item
      * @returns {string}
+     * @abstract
      */
     getAsCopyableKey() {
         abstract;
@@ -49,9 +50,9 @@ export class BaseItem extends BasicSerializableObject {
 
     /**
      * Override for custom comparison
-     * @abstract
      * @param {BaseItem} other
      * @returns {boolean}
+     * @abstract
      */
     equalsImpl(other) {
         abstract;
@@ -62,6 +63,7 @@ export class BaseItem extends BasicSerializableObject {
      * Draws the item to a canvas
      * @param {CanvasRenderingContext2D} context
      * @param {number} size
+     * @abstract
      */
     drawFullSizeOnCanvas(context, size) {
         abstract;
@@ -86,6 +88,7 @@ export class BaseItem extends BasicSerializableObject {
      * @param {number} y
      * @param {DrawParameters} parameters
      * @param {number=} diameter
+     * @abstract
      */
     drawItemCenteredImpl(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
         abstract;

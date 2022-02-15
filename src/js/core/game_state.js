@@ -211,6 +211,7 @@ export class GameState {
     /**
      * Should return the html code of the state.
      * @returns {string}
+     * @abstract
      */
     getInnerHTML() {
         abstract;
