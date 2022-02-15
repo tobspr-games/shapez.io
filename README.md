@@ -62,7 +62,7 @@ If you want to add a new feature or in generally contribute I recommend to get i
 The game is based on a custom engine which itself is based on the YORG.io 3 game engine (Actually it shares almost the same core).
 The code within the engine is relatively clean with some code for the actual game on top of being hacky.
 
-This project is based on ES5. Some ES2015 features are used but most of them are too slow, especially when polyfilled. For example, `Array.prototype.forEach` is only used within non-critical loops since it's slower than a plain for a loop.
+This project is based on ES5. Some ES2015 features are used but most of them are too slow, especially when polyfilled. For example, `Array.prototype.forEach` is only used within non-critical loops since it's slower than a plain for loop.
 
 #### Adding a new component
 
