@@ -56,6 +56,7 @@ export const MOD_ITEM_PROCESSOR_HANDLERS = {};
  * @type {Object<string, (ProccessingRequirementsImplementationPayload) => boolean>}
  */
 export const MODS_PROCESSING_REQUIREMENTS = {};
+
 /**
  * @type {Object<string, ({entity: Entity}) => boolean>}
  */
