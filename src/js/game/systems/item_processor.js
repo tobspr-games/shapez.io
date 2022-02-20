@@ -106,6 +106,18 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     }
 
                     processorComp.currentCharge = null;
+
+                    // now that the charge is complete, empty the inputs now
+                    let usedSlots = [];
+                    const acceptorComp = entity.components.ItemAcceptor;
+                    for (let i = 0; i < acceptorComp.completedInputs.length; i++) {
+                        const index = acceptorComp.completedInputs[i].slotIndex;
+                        if (!usedSlots.includes(index)) {
+                            usedSlots.push(index);
+                            acceptorComp.completedInputs.splice(i, 1);
+                            i--;
+                        }
+                    }
                 }
             }
 
@@ -256,8 +268,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             if (!items.get(input.slotIndex)) {
                 items.set(input.slotIndex, input.item);
                 extraProgress = Math.max(extraProgress, input.extraProgress);
-                inputs.splice(i, 1);
-                i--;
+                //inputs.splice(i, 1);
+                //i--;
             }
         }
 

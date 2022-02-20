@@ -186,7 +186,7 @@ export class ItemAcceptorComponent extends Component {
                     return true;
                 }
                 default: {
-                    assertAlways(false, "Input requirement is not recognised: " + slot.filter);
+                    assertAlways(false, "Input requirement is not recognised: " + this.inputRequirement);
                     break;
                 }
             }

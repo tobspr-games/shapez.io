@@ -41,25 +41,6 @@ export class StorageComponent extends Component {
     }
 
     /**
-     * Returns whether this storage can accept the item
-     * @param {BaseItem} item
-     */
-    tryAcceptItem(item) {
-        if (this.storedCount >= this.maximumStorage) {
-            return false;
-        }
-        const itemType = item.getItemType();
-        if (this.storedCount > 0 && this.storedItem && itemType !== this.storedItem.getItemType()) {
-            return false;
-        }
-
-        this.storedItem = item;
-        this.storedCount++;
-
-        return true;
-    }
-
-    /**
      * Returns whether the storage is full
      * @returns {boolean}
      */
