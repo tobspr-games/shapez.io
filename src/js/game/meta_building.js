@@ -88,8 +88,10 @@ export class MetaBuilding {
 
     /**
      * Returns whether this building can get replaced
+     * @param {string} variant
+     * @param {number} rotationVariant
      */
-    getIsReplaceable() {
+    getIsReplaceable(variant, rotationVariant) {
         return false;
     }
 

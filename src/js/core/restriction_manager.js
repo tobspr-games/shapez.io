@@ -84,11 +84,6 @@ export class RestrictionManager extends ReadWriteProxy {
             return false;
         }
 
-        if (queryParamOptions.fullVersion) {
-            // Full version is activated via flag
-            return false;
-        }
-
         if (queryParamOptions.embedProvider === "gamedistribution") {
             // also full version on gamedistribution
             return false;
