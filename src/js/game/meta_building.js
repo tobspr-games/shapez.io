@@ -52,8 +52,9 @@ export class MetaBuilding {
 
     /**
      * Returns whether the building has the direction lock switch available
+     * @param {string} variant
      */
-    getHasDirectionLockAvailable() {
+    getHasDirectionLockAvailable(variant) {
         return false;
     }
 
