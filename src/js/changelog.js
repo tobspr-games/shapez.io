@@ -1,6 +1,6 @@
 export const CHANGELOG = [
     {
-        version: "1.5.0",
+        version: "1.5.1",
         date: "unreleased",
         entries: [
             "This version adds an official modloader! You can now load mods by placing it in the mods/ folder of the game.",
