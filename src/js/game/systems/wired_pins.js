@@ -147,7 +147,7 @@ export class WiredPinsSystem extends GameSystemWithFilter {
             const worldPos = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
             const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
             if (collidingEntity) {
-                const staticComp = entity.components.StaticMapEntity;
+                const staticComp = collidingEntity.components.StaticMapEntity;
                 assertAlways(
                     staticComp
                         .getMetaBuilding()
