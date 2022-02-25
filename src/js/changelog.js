@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "1.5.1",
-        date: "26.02.2022",
+        date: "25.02.2022",
         entries: [
             "This version adds an official modloader! You can now load mods by extracting them and placing the .js file in the mods/ folder of the game.",
             "Mods can be found <a href='https://shapez.mod.io'>here</a>",
