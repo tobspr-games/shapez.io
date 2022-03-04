@@ -268,7 +268,7 @@ export class Rectangle {
     }
 
     /**
-     * Returns if hte rectangle contains the given point
+     * Returns if the rectangle contains the given point
      * @param {number} x
      * @param {number} y
      * @returns {boolean}
