@@ -50,7 +50,7 @@ To get into shapez.io modding, I highly recommend checking out all of the exampl
 | [usage_statistics.js](usage_statistics.js)       | Displays a percentage on every building showing its utilization                                            | Adding a new component, Adding a new GameSystem, Drawing within a GameSystem, Modifying builtin buildings, Adding custom game logic                                 |
 | [new_item_type.js](new_item_type.js)             | Adds a new type of items to the map (fluids)                                                               | Adding a new item type, modifying map generation                                                                                                                    |
 | [buildings_have_cost.js](buildings_have_cost.js) | Adds a new currency, and belts cost 1 of that currency                                                     | Extending and replacing builtin methods, Adding CSS and custom sprites                                                                                              |
-| [mirrored_cutter.js](mirrored_cutter.js)         | Adds a mirorred variant of the cutter                                                                      | Adding a new variant to existing buildings                                                                                                                          |
+| [mirrored_cutter.js](mirrored_cutter.js)         | Adds a mirrored variant of the cutter                                                                      | Adding a new variant to existing buildings                                                                                                                          |
 
 ### Creating new sprites
 
