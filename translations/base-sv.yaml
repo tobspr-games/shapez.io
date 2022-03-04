@@ -52,7 +52,7 @@ global:
         escape: ESC
         shift: SKIFT
         space: MELLANSLAG
-    loggingIn: Logging in
+    loggingIn: Loggar in
 demoBanners:
     title: Demo-version
     intro: Skaffa den fristående versionen för att låsa upp alla funktioner!
