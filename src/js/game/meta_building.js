@@ -52,8 +52,9 @@ export class MetaBuilding {
 
     /**
      * Returns whether the building has the direction lock switch available
+     * @param {string} variant
      */
-    getHasDirectionLockAvailable() {
+    getHasDirectionLockAvailable(variant) {
         return false;
     }
 
@@ -88,8 +89,10 @@ export class MetaBuilding {
 
     /**
      * Returns whether this building can get replaced
+     * @param {string} variant
+     * @param {number} rotationVariant
      */
-    getIsReplaceable() {
+    getIsReplaceable(variant, rotationVariant) {
         return false;
     }
 
@@ -278,6 +281,7 @@ export class MetaBuilding {
      * Should setup the entity components
      * @param {Entity} entity
      * @param {GameRoot} root
+     * @abstract
      */
     setupEntityComponents(entity, root) {
         abstract;

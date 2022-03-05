@@ -11,6 +11,7 @@ export class BaseSprite {
     /**
      * Returns the raw handle
      * @returns {HTMLImageElement|HTMLCanvasElement}
+     * @abstract
      */
     getRawTexture() {
         abstract;

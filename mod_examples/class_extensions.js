@@ -15,9 +15,9 @@ const BeltExtension = ({ $super, $old }) => ({
         return !$old.getShowWiresLayerPreview();
     },
 
-    getIsReplaceable() {
+    getIsReplaceable(variant, rotationVariant) {
         // Instead of super, use $super
-        return $super.getIsReplaceable.call(this);
+        return $super.getIsReplaceable.call(this, variant, rotationVariant);
     },
 
     getIsRemoveable() {

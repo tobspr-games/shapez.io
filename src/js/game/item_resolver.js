@@ -16,7 +16,7 @@ export function itemResolverSingleton(root, data) {
     const itemData = data.data;
 
     if (MODS_ADDITIONAL_ITEMS[itemType]) {
-        return MODS_ADDITIONAL_ITEMS[itemType](itemData);
+        return MODS_ADDITIONAL_ITEMS[itemType](itemData, root);
     }
 
     switch (itemType) {

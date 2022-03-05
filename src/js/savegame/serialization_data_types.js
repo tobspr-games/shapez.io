@@ -48,6 +48,7 @@ export class BaseDataType {
     /**
      * Serializes a given raw value
      * @param {any} value
+     * @abstract
      */
     serialize(value) {
         abstract;
@@ -68,6 +69,7 @@ export class BaseDataType {
      * @param {object} targetObject
      * @param {string|number} targetKey
      * @returns {string|void} String error code or null on success
+     * @abstract
      */
     deserialize(value, targetObject, targetKey, root) {
         abstract;
@@ -92,6 +94,7 @@ export class BaseDataType {
 
     /**
      * INTERNAL Should return the json schema representation
+     * @abstract
      */
     getAsJsonSchemaUncached() {
         abstract;
@@ -131,6 +134,7 @@ export class BaseDataType {
 
     /**
      * Should return a cacheable key
+     * @abstract
      */
     getCacheKey() {
         abstract;

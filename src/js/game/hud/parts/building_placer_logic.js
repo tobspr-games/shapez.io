@@ -192,7 +192,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         const metaBuilding = this.currentMetaBuilding.get();
         return (
             metaBuilding &&
-            metaBuilding.getHasDirectionLockAvailable() &&
+            metaBuilding.getHasDirectionLockAvailable(this.currentVariant.get()) &&
             this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed
         );
     }

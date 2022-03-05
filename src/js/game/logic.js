@@ -72,8 +72,13 @@ export class GameLogic {
                 // Check if there is any direct collision
                 const otherEntity = this.root.map.getLayerContentXY(x, y, entity.layer);
                 if (otherEntity) {
-                    const metaClass = otherEntity.components.StaticMapEntity.getMetaBuilding();
-                    if (!allowReplaceBuildings || !metaClass.getIsReplaceable()) {
+                    const staticComp = otherEntity.components.StaticMapEntity;
+                    if (
+                        !allowReplaceBuildings ||
+                        !staticComp
+                            .getMetaBuilding()
+                            .getIsReplaceable(staticComp.getVariant(), staticComp.getRotationVariant())
+                    ) {
                         // This one is a direct blocker
                         return false;
                     }
@@ -140,8 +145,11 @@ export class GameLogic {
             for (let y = rect.y; y < rect.y + rect.h; ++y) {
                 const contents = this.root.map.getLayerContentXY(x, y, entity.layer);
                 if (contents) {
+                    const staticComp = contents.components.StaticMapEntity;
                     assertAlways(
-                        contents.components.StaticMapEntity.getMetaBuilding().getIsReplaceable(),
+                        staticComp
+                            .getMetaBuilding()
+                            .getIsReplaceable(staticComp.getVariant(), staticComp.getRotationVariant()),
                         "Tried to replace non-repleaceable entity"
                     );
                     if (!this.tryDeleteBuilding(contents)) {

@@ -25,6 +25,7 @@ export class BaseHUDPart {
 
     /**
      * Should initialize the element, called *after* the elements have been created
+     * @abstract
      */
     initialize() {
         abstract;

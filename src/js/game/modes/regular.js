@@ -594,18 +594,13 @@ export class RegularGameMode extends GameMode {
             this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
         }
 
-        // @ts-ignore
-        if (queryParamOptions.sandboxMode || window.sandboxMode || G_IS_DEV) {
-            this.additionalHudParts.sandboxController = HUDSandboxController;
-        }
-
         /** @type {(typeof MetaBuilding)[]} */
-        this.hiddenBuildings = [MetaConstantProducerBuilding, MetaGoalAcceptorBuilding, MetaBlockBuilding];
-
-        // @ts-ignore
-        if (!(G_IS_DEV || window.sandboxMode || queryParamOptions.sandboxMode)) {
-            this.hiddenBuildings.push(MetaItemProducerBuilding);
-        }
+        this.hiddenBuildings = [
+            MetaConstantProducerBuilding,
+            MetaGoalAcceptorBuilding,
+            MetaBlockBuilding,
+            MetaItemProducerBuilding,
+        ];
     }
 
     /**

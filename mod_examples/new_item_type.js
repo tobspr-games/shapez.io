@@ -87,7 +87,7 @@ class FluidItem extends shapez.BaseItem {
      * @param {number} diameter
      * @param {DrawParameters} parameters
      */
-    drawItemCenteredClipped(x, y, parameters, diameter = globalConfig.defaultItemDiameter) {
+    drawItemCenteredClipped(x, y, parameters, diameter = shapez.globalConfig.defaultItemDiameter) {
         const realDiameter = diameter * 0.6;
         if (!this.cachedSprite) {
             this.cachedSprite = shapez.Loader.getSprite(`sprites/fluids/${this.fluidType}.png`);
@@ -120,19 +120,19 @@ class Mod extends shapez.Mod {
         this.modInterface.registerSprite("sprites/fluids/water.png", RESOURCES["water.png"]);
 
         // Make the item spawn on the map
-        this.modInterface.runAfterMethod(
-            shapez.MapChunk,
-            "generatePatches",
-            function ({ rng, chunkCenter, distanceToOriginInChunks }) {
-                // Generate a simple patch
-                // ALWAYS use rng and NEVER use Math.random() otherwise the map will look different
-                // every time you resume the game
-                if (rng.next() > 0.8) {
-                    const fluidType = rng.choice(Array.from(Object.keys(enumFluidType)));
-                    this.internalGeneratePatch(rng, 4, FLUID_ITEM_SINGLETONS[fluidType]);
-                }
+        this.modInterface.runAfterMethod(shapez.MapChunk, "generatePatches", function ({
+            rng,
+            chunkCenter,
+            distanceToOriginInChunks,
+        }) {
+            // Generate a simple patch
+            // ALWAYS use rng and NEVER use Math.random() otherwise the map will look different
+            // every time you resume the game
+            if (rng.next() > 0.8) {
+                const fluidType = rng.choice(Array.from(Object.keys(enumFluidType)));
+                this.internalGeneratePatch(rng, 4, FLUID_ITEM_SINGLETONS[fluidType]);
             }
-        );
+        });
 
         this.modInterface.registerItem(FluidItem, itemData => FLUID_ITEM_SINGLETONS[itemData]);
     }

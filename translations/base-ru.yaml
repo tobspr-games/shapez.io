@@ -50,7 +50,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: ПРОБЕЛ
-    loggingIn: Logging in
+    loggingIn: Вход
 demoBanners:
     title: Демоверсия
     intro: Приобретите полную версию, чтобы разблокировать все возможности!
@@ -74,14 +74,14 @@ mainMenu:
     puzzleMode: Головоломка
     back: Назад
     puzzleDlcText: Нравится оптимизировать фабрики и делать их меньше? Купите
-        обновление "Головоломка" в Steam сейчас и получите еще больше
+        обновление «Головоломка» в Steam сейчас и получите еще больше
         удовольствия!
     puzzleDlcWishlist: Добавь в список желаемого!
     puzzleDlcViewNow: Посмотреть
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Активные моды
+        warningPuzzleDLC: Обновление «Головоломка» невозможна с модами. Пожалуйста,
+            отключите все моды, чтобы играть в DLC.
 dialogs:
     buttons:
         ok: OK
@@ -230,8 +230,8 @@ dialogs:
         desc: "Не удалось отправить вашу головоломку:"
     puzzleSubmitOk:
         title: Головоломка опубликована
-        desc: Поздравляю! Ваша головоломка была опубликована, и теперь в нее могут
-            играть остальные. Теперь вы можете найти ее в разделе "Мои
+        desc: Поздравляю! Ваша головоломка была опубликована, и теперь в неё могут
+            играть остальные. Теперь вы можете найти её в разделе "Мои
             головоломки".
     puzzleCreateOffline:
         title: Оффлайн режим
@@ -265,12 +265,13 @@ dialogs:
         title: Удалить головоломку?
         desc: Вы уверены, что хотите удалить '<title>'? Это действие нельзя отменить!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Предупреждение Мода
+        desc: Установленные в данный момент моды отличаются от модов, с которыми была 
+            создана игра сохранения с ним. Это может привести к тому, что сохранение
+            не загрузится или вообще ничего не загрузится. Вы вы уверены, что хотите 
+            продолжить?
+        missingMods: Отсутствуют Моды
+        newMods: Недавно установленные Моды
 ingame:
     keybindingsOverlay:
         moveMap: Передвижение
@@ -1312,19 +1313,19 @@ backendErrors:
         все еще хотите удалить ее, обратитесь в support@shapez.io!
     no-permission: У вас нет прав на выполнение этого действия.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: Моды
+    author: Автор
+    version: Версия
+    modWebsite: Веб-сайт
+    openFolder: Открыть папку с Модами
+    folderOnlyStandalone: Открытие папки Модов возможно только при запуске автономного режима.
+    browseMods: Просмотреть Моды
+    modsInfo: Чтобы установить и управлять модами, скопируйте их в папку модов в
+        директории игры. Вы также можете воспользоваться кнопкой "Открыть папку модов" в
+        справа вверху.
+    noModSupport: Для установки модов вам нужна автономная версия в Steam.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Совсем скоро
+        description: Включение или отключение модов в настоящее время возможно только 
+            путем копирования файла мода из/в папку mods/. Однако, возможность
+            управлять ими здесь планируется в будущем обновлении!

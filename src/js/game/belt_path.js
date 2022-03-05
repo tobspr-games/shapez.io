@@ -1526,7 +1526,17 @@ export class BeltPath extends BasicSerializableObject {
 
         const sprite = this.root.buffers.getForKey({
             key: "beltpaths",
-            subKey: "stack-" + directionProp + "-" + dpi + "-" + stack.length + firstItem[1].serialize(),
+            subKey:
+                "stack-" +
+                directionProp +
+                "-" +
+                dpi +
+                "#" +
+                stack.length +
+                "#" +
+                firstItem[1].getItemType() +
+                "#" +
+                firstItem[1].serialize(),
             dpi,
             w: dimensions.x,
             h: dimensions.y,
