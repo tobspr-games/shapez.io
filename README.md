@@ -23,7 +23,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 ## Building
 
 -   Make sure `ffmpeg` is on your path
--   Install Node.js and Yarn
+-   Install Node.js (v16.0 or earlier) and Yarn
 -   Install Java (required for textures)
 -   Run `yarn` in the root folder
 -   Cd into `gulp` folder
