@@ -2,6 +2,10 @@ import { enumDirection, enumInvertedDirections, Vector } from "../../core/vector
 import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
+import { Entity } from "../entity";
+import { isTruthyItem } from "../items/boolean_item";
+import { typeItemSingleton } from "../item_resolver";
+import { GameRoot } from "../root";
 
 /**
  * @typedef {{
@@ -24,34 +28,85 @@ import { Component } from "../component";
  * filter?: ItemType
  * }} ItemAcceptorSlotConfig */
 
+/**
+ * @typedef {Array<{
+ * slotIndex: number,
+ * item: BaseItem,
+ * animProgress: number,
+ * }>} ItemAcceptorInputs
+ *
+ * @typedef {Array<{
+ * slotIndex: number,
+ * item: BaseItem,
+ * extraProgress: number
+ * }>} ItemAcceptorCompletedInputs
+ *
+ * @typedef {{
+ * root: GameRoot,
+ * entity: Entity,
+ * item: BaseItem,
+ * slotIndex: number,
+ * extraProgress: number
+ * }} InputCompletedArgs
+ */
+
+/** @enum {string} */
+export const enumInputRequirements = {
+    quadPainter: "quadPainter",
+    storage: "storage",
+};
+
+export const MOD_INPUT_REQUIREMENTS = [];
+
 export class ItemAcceptorComponent extends Component {
     static getId() {
         return "ItemAcceptor";
+    }
+
+    static getSchema() {
+        return {
+            inputs: types.array(
+                types.structured({
+                    slotIndex: types.uint,
+                    item: typeItemSingleton,
+                    animProgress: types.ufloat,
+                })
+            ),
+            completedInputs: types.array(
+                types.structured({
+                    slotIndex: types.uint,
+                    item: typeItemSingleton,
+                    extraProgress: types.ufloat,
+                })
+            ),
+        };
     }
 
     /**
      *
      * @param {object} param0
      * @param {Array<ItemAcceptorSlotConfig>} param0.slots The slots from which we accept items
+     * @param {number=} param0.maxSlotInputs The maximum amount of items one slot can accept before it is full
+     * @param {string|null=} param0.inputRequirement The requirement to accept items
      */
-    constructor({ slots = [] }) {
+    constructor({ slots = [], maxSlotInputs = 2, inputRequirement = null }) {
         super();
 
         this.setSlots(slots);
+
+        this.inputRequirement = inputRequirement;
+
+        // setting this to 1 will cause throughput issues at very high speeds
+        this.maxSlotInputs = maxSlotInputs;
+
         this.clear();
     }
 
     clear() {
-        /**
-         * Fixes belt animations
-         * @type {Array<{
-         *  item: BaseItem,
-         * slotIndex: number,
-         * animProgress: number,
-         * direction: enumDirection
-         * }>}
-         */
-        this.itemConsumptionAnimations = [];
+        /** @type {ItemAcceptorInputs} */
+        this.inputs = [];
+        /** @type {ItemAcceptorCompletedInputs} */
+        this.completedInputs = [];
     }
 
     /**
@@ -74,31 +129,107 @@ export class ItemAcceptorComponent extends Component {
     }
 
     /**
-     * Returns if this acceptor can accept a new item at slot N
      *
-     * NOTICE: The belt path ignores this for performance reasons and does his own check
+     * @param {Entity} entity
+     * @param {BaseItem} item
      * @param {number} slotIndex
-     * @param {BaseItem=} item
+     * @returns
      */
-    canAcceptItem(slotIndex, item) {
+    canAcceptItem(entity, item, slotIndex) {
         const slot = this.slots[slotIndex];
-        return !slot.filter || slot.filter === item.getItemType();
+
+        // make sure there is a slot and we match the filter
+        if (slot && !(slot.filter && slot.filter != item.getItemType())) {
+            if (MOD_INPUT_REQUIREMENTS[this.inputRequirement]) {
+                return MOD_INPUT_REQUIREMENTS[this.inputRequirement].call(this, {
+                    entity,
+                    item,
+                    slotIndex,
+                });
+            }
+
+            switch (this.inputRequirement) {
+                case null: {
+                    return true;
+                }
+                case enumInputRequirements.quadPainter: {
+                    const pinsComp = entity.components.WiredPins;
+
+                    if (slotIndex === 0) {
+                        // Always accept the shape
+                        return true;
+                    }
+
+                    // Check the network value at the given slot
+                    const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
+                    const slotIsEnabled = network && network.hasValue() && isTruthyItem(network.currentValue);
+                    if (!slotIsEnabled) {
+                        return false;
+                    }
+                    return true;
+                }
+                case enumInputRequirements.storage: {
+                    const storageComp = entity.components.Storage;
+
+                    if (storageComp.storedCount >= storageComp.maximumStorage) {
+                        return false;
+                    }
+                    const itemType = item.getItemType();
+                    if (storageComp.storedItem && itemType !== storageComp.storedItem.getItemType()) {
+                        return false;
+                    }
+
+                    // set the item straight away - this way different kinds of items can't be inq the acceptor
+                    storageComp.storedItem = item;
+                    storageComp.storedCount++;
+
+                    return true;
+                }
+                default: {
+                    assertAlways(false, "Input requirement is not recognised: " + this.inputRequirement);
+                    break;
+                }
+            }
+        }
+        return false;
     }
 
     /**
-     * Called when an item has been accepted so that
+     * Called when trying to input a new item
+     * @param {Entity} entity
      * @param {number} slotIndex
-     * @param {enumDirection} direction
      * @param {BaseItem} item
-     * @param {number} remainingProgress World space remaining progress, can be set to set the start position of the item
+     * @param {number} startProgress World space remaining progress, can be set to set the start position of the item
+     * @returns {boolean} if the input was succesful
      */
-    onItemAccepted(slotIndex, direction, item, remainingProgress = 0.0) {
-        this.itemConsumptionAnimations.push({
-            item,
+    tryAcceptItem(entity, slotIndex, item, startProgress = 0.0) {
+        // make sure we have space to actually accept
+        let existingInputs = 0;
+        for (let i = 0; i < this.inputs.length; i++) {
+            if (this.inputs[i].slotIndex == slotIndex) {
+                existingInputs++;
+            }
+        }
+        for (let i = 0; i < this.completedInputs.length; i++) {
+            if (this.completedInputs[i].slotIndex == slotIndex) {
+                existingInputs++;
+            }
+        }
+
+        if (existingInputs >= this.maxSlotInputs) {
+            return false;
+        }
+        if (!this.canAcceptItem(entity, item, slotIndex)) {
+            return false;
+        }
+
+        // if the start progress is bigger than 0.5, the remainder should get passed on to the ejector
+        this.inputs.push({
             slotIndex,
-            direction,
-            animProgress: Math.min(1, remainingProgress * 2),
+            item,
+            animProgress: startProgress,
         });
+        return true;
     }
 
     /**

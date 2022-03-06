@@ -150,19 +150,19 @@ export class GameSystemManager {
 
         add("belt", BeltSystem);
 
-        add("undergroundBelt", UndergroundBeltSystem);
+        add("storage", StorageSystem);
+
+        add("itemEjector", ItemEjectorSystem);
 
         add("miner", MinerSystem);
 
-        add("storage", StorageSystem);
+        add("undergroundBelt", UndergroundBeltSystem);
 
         add("itemProcessor", ItemProcessorSystem);
 
         add("filter", FilterSystem);
 
         add("itemProducer", ItemProducerSystem);
-
-        add("itemEjector", ItemEjectorSystem);
 
         if (this.root.gameMode.hasResources()) {
             add("mapResources", MapResourcesSystem);

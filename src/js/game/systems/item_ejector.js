@@ -4,7 +4,6 @@ import { createLogger } from "../../core/logging";
 import { Rectangle } from "../../core/rectangle";
 import { StaleAreaDetector } from "../../core/stale_area_detector";
 import { enumDirection, enumDirectionToVector } from "../../core/vector";
-import { BaseItem } from "../base_item";
 import { BeltComponent } from "../components/belt";
 import { ItemAcceptorComponent } from "../components/item_acceptor";
 import { ItemEjectorComponent } from "../components/item_ejector";
@@ -139,10 +138,15 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
         this.staleAreaDetector.update();
 
         // Precompute effective belt speed
-        let progressGrowth = 2 * this.root.dynamicTickrate.deltaSeconds;
+        let progressGrowth =
+            this.root.dynamicTickrate.deltaSeconds *
+            this.root.hubGoals.getBeltBaseSpeed() *
+            globalConfig.itemSpacingOnBelts;
+        // it's only half a belt
+        const maxProgress = 0.5;
 
         if (G_IS_DEV && globalConfig.debug.instantBelts) {
-            progressGrowth = 1;
+            progressGrowth = maxProgress;
         }
 
         // Go over all cache entries
@@ -159,29 +163,32 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                     continue;
                 }
 
-                // Advance items on the slot
-                sourceSlot.progress = Math.min(
-                    1,
-                    sourceSlot.progress +
-                        progressGrowth *
-                            this.root.hubGoals.getBeltBaseSpeed() *
-                            globalConfig.itemSpacingOnBelts
-                );
+                // Limit progress here as well
+                let progressLimit = maxProgress;
+                const destPath = sourceSlot.cachedBeltPath;
+                if (destPath) {
+                    progressLimit += destPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts;
+                }
+
+                if (sourceSlot.progress < progressLimit) {
+                    // Advance items on the slot
+                    sourceSlot.progress += progressGrowth;
+                }
 
                 if (G_IS_DEV && globalConfig.debug.disableEjectorProcessing) {
-                    sourceSlot.progress = 1.0;
+                    sourceSlot.progress = maxProgress;
                 }
 
                 // Check if we are still in the process of ejecting, can't proceed then
-                if (sourceSlot.progress < 1.0) {
+                if (sourceSlot.progress < maxProgress) {
                     continue;
                 }
 
-                // Check if we are ejecting to a belt path
-                const destPath = sourceSlot.cachedBeltPath;
+                const extraProgress = sourceSlot.progress - maxProgress;
+
                 if (destPath) {
                     // Try passing the item over
-                    if (destPath.tryAcceptItem(item)) {
+                    if (destPath.tryAcceptItem(item, extraProgress)) {
                         sourceSlot.item = null;
                     }
 
@@ -193,108 +200,15 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 // Check if the target acceptor can actually accept this item
                 const destEntity = sourceSlot.cachedTargetEntity;
                 const destSlot = sourceSlot.cachedDestSlot;
-                if (destSlot) {
+                if (destEntity && destSlot) {
                     const targetAcceptorComp = destEntity.components.ItemAcceptor;
-                    if (!targetAcceptorComp.canAcceptItem(destSlot.index, item)) {
-                        continue;
-                    }
-
-                    // Try to hand over the item
-                    if (this.tryPassOverItem(item, destEntity, destSlot.index)) {
+                    if (targetAcceptorComp.tryAcceptItem(destEntity, destSlot.index, item, extraProgress)) {
                         // Handover successful, clear slot
-                        if (!this.root.app.settings.getAllSettings().simplifiedBelts) {
-                            targetAcceptorComp.onItemAccepted(destSlot.index, destSlot.slot.direction, item);
-                        }
                         sourceSlot.item = null;
-                        continue;
                     }
                 }
             }
         }
-    }
-
-    /**
-     *
-     * @param {BaseItem} item
-     * @param {Entity} receiver
-     * @param {number} slotIndex
-     */
-    tryPassOverItem(item, receiver, slotIndex) {
-        // Try figuring out how what to do with the item
-        // @TODO: Kinda hacky. How to solve this properly? Don't want to go through inheritance hell.
-
-        const beltComp = receiver.components.Belt;
-        if (beltComp) {
-            const path = beltComp.assignedPath;
-            assert(path, "belt has no path");
-            if (path.tryAcceptItem(item)) {
-                return true;
-            }
-            // Belt can have nothing else
-            return false;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-        //
-        // NOTICE ! THIS CODE IS DUPLICATED IN THE BELT PATH FOR PERFORMANCE REASONS
-        //
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-
-        const itemProcessorComp = receiver.components.ItemProcessor;
-        if (itemProcessorComp) {
-            // Check for potential filters
-            if (!this.root.systemMgr.systems.itemProcessor.checkRequirements(receiver, item, slotIndex)) {
-                return false;
-            }
-
-            // Its an item processor ..
-            if (itemProcessorComp.tryTakeItem(item, slotIndex)) {
-                return true;
-            }
-            // Item processor can have nothing else
-            return false;
-        }
-
-        const undergroundBeltComp = receiver.components.UndergroundBelt;
-        if (undergroundBeltComp) {
-            // Its an underground belt. yay.
-            if (
-                undergroundBeltComp.tryAcceptExternalItem(
-                    item,
-                    this.root.hubGoals.getUndergroundBeltBaseSpeed()
-                )
-            ) {
-                return true;
-            }
-
-            // Underground belt can have nothing else
-            return false;
-        }
-
-        const storageComp = receiver.components.Storage;
-        if (storageComp) {
-            // It's a storage
-            if (storageComp.canAcceptItem(item)) {
-                storageComp.takeItem(item);
-                return true;
-            }
-
-            // Storage can't have anything else
-            return false;
-        }
-
-        const filterComp = receiver.components.Filter;
-        if (filterComp) {
-            // It's a filter! Unfortunately the filter has to know a lot about it's
-            // surrounding state and components, so it can't be within the component itself.
-            if (this.root.systemMgr.systems.filter.tryAcceptItem(receiver, slotIndex, item)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -333,7 +247,7 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 }
 
                 // Limit the progress to the maximum available space on the next belt (also see #1000)
-                let progress = slot.progress;
+                let progress = Math.min(0.5, slot.progress);
                 const nextBeltPath = slot.cachedBeltPath;
                 if (nextBeltPath) {
                     /*
@@ -368,20 +282,11 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                                     ^           ^ item @ 0.9
                                     ^ max progress = 0.3
 
-                    Because now our range actually only goes to the end of the building, and not towards the center of the building, we need to multiply
-                    all values by 2:
-
-                    Building              Belt
-                    |         X         |         X         |
-                    |         0.........1.........2         |
-                                    ^           ^ item @ 1.8
-                                    ^ max progress = 0.6
-
                     And that's it! If you summarize the calculations from above into a formula, you get the one below.
                     */
 
                     const maxProgress =
-                        (0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts) * 2;
+                        0.5 + nextBeltPath.spacingToFirstItem - globalConfig.itemSpacingOnBelts;
                     progress = Math.min(maxProgress, progress);
                 }
 
@@ -399,8 +304,8 @@ export class ItemEjectorSystem extends GameSystemWithFilter {
                 const realDirection = staticComp.localDirectionToWorld(slot.direction);
                 const realDirectionVector = enumDirectionToVector[realDirection];
 
-                const tileX = realPosition.x + 0.5 + realDirectionVector.x * 0.5 * progress;
-                const tileY = realPosition.y + 0.5 + realDirectionVector.y * 0.5 * progress;
+                const tileX = realPosition.x + 0.5 + realDirectionVector.x * progress;
+                const tileY = realPosition.y + 0.5 + realDirectionVector.y * progress;
 
                 const worldX = tileX * globalConfig.tileSize;
                 const worldY = tileY * globalConfig.tileSize;

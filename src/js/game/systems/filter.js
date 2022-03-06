@@ -1,4 +1,3 @@
-import { globalConfig } from "../../core/config";
 import { BaseItem } from "../base_item";
 import { FilterComponent } from "../components/filter";
 import { Entity } from "../entity";
@@ -13,32 +12,27 @@ export class FilterSystem extends GameSystemWithFilter {
     }
 
     update() {
-        const progress =
-            this.root.dynamicTickrate.deltaSeconds *
-            this.root.hubGoals.getBeltBaseSpeed() *
-            globalConfig.itemSpacingOnBelts;
-
-        const requiredProgress = 1 - progress;
-
         for (let i = 0; i < this.allEntities.length; ++i) {
             const entity = this.allEntities[i];
             const filterComp = entity.components.Filter;
+            const acceptorComp = entity.components.ItemAcceptor;
             const ejectorComp = entity.components.ItemEjector;
 
-            // Process payloads
+            // Take items from acceptor
+            const input = acceptorComp.completedInputs[0];
+            if (input && this.tryAcceptItem(entity, input.item, input.extraProgress)) {
+                acceptorComp.completedInputs.shift();
+            }
+
+            // Output to ejector
             const slotsAndLists = [filterComp.pendingItemsToLeaveThrough, filterComp.pendingItemsToReject];
             for (let slotIndex = 0; slotIndex < slotsAndLists.length; ++slotIndex) {
                 const pendingItems = slotsAndLists[slotIndex];
 
                 for (let j = 0; j < pendingItems.length; ++j) {
                     const nextItem = pendingItems[j];
-                    // Advance next item
-                    nextItem.progress = Math.min(requiredProgress, nextItem.progress + progress);
-                    // Check if it's ready to eject
-                    if (nextItem.progress >= requiredProgress - 1e-5) {
-                        if (ejectorComp.tryEject(slotIndex, nextItem.item)) {
-                            pendingItems.shift();
-                        }
+                    if (ejectorComp.tryEject(slotIndex, nextItem.item)) {
+                        pendingItems.shift();
                     }
                 }
             }
@@ -48,10 +42,10 @@ export class FilterSystem extends GameSystemWithFilter {
     /**
      *
      * @param {Entity} entity
-     * @param {number} slot
      * @param {BaseItem} item
+     * @param {number} startProgress
      */
-    tryAcceptItem(entity, slot, item) {
+    tryAcceptItem(entity, item, startProgress) {
         const network = entity.components.WiredPins.slots[0].linkedNetwork;
         if (!network || !network.hasValue()) {
             // Filter is not connected
@@ -78,7 +72,7 @@ export class FilterSystem extends GameSystemWithFilter {
         // Actually accept item
         listToCheck.push({
             item,
-            progress: 0.0,
+            extraProgress: startProgress,
         });
         return true;
     }

@@ -184,7 +184,6 @@ export class MetaUndergroundBeltBuilding extends MetaBuilding {
      * @param {Entity} entity
      */
     setupEntityComponents(entity) {
-        // Required, since the item processor needs this.
         entity.addComponent(
             new ItemEjectorComponent({
                 slots: [],
