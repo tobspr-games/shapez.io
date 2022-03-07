@@ -28,7 +28,7 @@ export class HUDWatermark extends BaseHUDPart {
         this.trackClicks(this.linkElement, () => {
             this.root.app.analytics.trackUiClick("watermark_click_2_direct");
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_watermark"
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_watermark_steam"
             );
         });
     }

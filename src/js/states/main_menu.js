@@ -445,7 +445,9 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu");
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu_steam"
+        );
 
         return false;
     }
@@ -730,7 +732,7 @@ export class MainMenuState extends GameState {
         getStandalone.add(() => {
             this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
             this.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_slotlimit"
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_slotlimit_steam"
             );
         });
     }

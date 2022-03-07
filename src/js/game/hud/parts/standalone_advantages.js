@@ -42,7 +42,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
             this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg"
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg_steam"
             );
             this.close();
         });
