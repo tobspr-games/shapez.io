@@ -63,7 +63,6 @@ export class RestrictionManager extends ReadWriteProxy {
     onHasLegacySavegamesChanged(has119Savegames = false) {
         if (has119Savegames && !this.currentData.savegameV1119Imported) {
             this.currentData.savegameV1119Imported = true;
-            console.warn("Current user now has access to all levels due to 1119 savegame");
             return this.writeAsync();
         }
         return Promise.resolve();
@@ -74,25 +73,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     isLimitedVersion() {
-        if (IS_MAC) {
-            // On mac, the full version is always active
-            return false;
-        }
-
-        if (G_IS_STANDALONE) {
-            // Standalone is never limited
-            return false;
-        }
-
-        if (queryParamOptions.embedProvider === "gamedistribution") {
-            // also full version on gamedistribution
-            return false;
-        }
-
-        if (G_IS_DEV) {
-            return typeof window !== "undefined" && window.location.search.indexOf("demo") >= 0;
-        }
-
         return true;
     }
 
@@ -101,7 +81,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getIsStandaloneMarketingActive() {
-        return this.isLimitedVersion();
+        return true;
     }
 
     /**
@@ -109,7 +89,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getIsExportingScreenshotsPossible() {
-        return !this.isLimitedVersion();
+        return false;
     }
 
     /**
@@ -117,7 +97,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {number}
      */
     getMaximumWaypoints() {
-        return this.isLimitedVersion() ? 2 : 1e20;
+        return 2;
     }
 
     /**
@@ -125,7 +105,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasUnlimitedSavegames() {
-        return !this.isLimitedVersion();
+        return false;
     }
 
     /**
@@ -133,7 +113,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasExtendedSettings() {
-        return !this.isLimitedVersion();
+        return false;
     }
 
     /**
@@ -141,7 +121,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasExtendedUpgrades() {
-        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
+        return false;
     }
 
     /**
@@ -149,6 +129,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasExtendedLevelsAndFreeplay() {
-        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
+        return false;
     }
 }

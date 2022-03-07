@@ -151,10 +151,10 @@ function gulptasksStandalone($, gulp) {
                 asar: asar,
                 executableName: "shapezio",
                 icon: path.join(electronBaseDir, "favicon"),
-                name: "shapez.io-standalone" + suffix,
+                name: "shapez.io-demo" + suffix,
                 out: tempDestDir,
                 overwrite: true,
-                appBundleId: "io.shapez.standalone",
+                appBundleId: "io.shapez.demo",
                 appCategoryType: "public.app-category.games",
             }).then(
                 appPaths => {

@@ -38,16 +38,15 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        const showUpdateLabel = !G_WEGAME_VERSION;
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
-        const showPuzzleDLC = !G_WEGAME_VERSION && (G_IS_STANDALONE || G_IS_DEV);
+        const showPuzzleDLC = false;
         const showWegameFooter = G_WEGAME_VERSION;
-        const hasMods = MODS.anyModsActive();
+        const hasMods = false;
 
         let showExternalLinks = true;
 
         if (G_IS_STANDALONE) {
-            if (G_WEGAME_VERSION || G_CHINA_VERSION) {
+            if (G_WEGAME_VERSION) {
                 showExternalLinks = false;
             }
         } else {
@@ -58,19 +57,12 @@ export class MainMenuState extends GameState {
         }
 
         let showDiscordLink = showExternalLinks;
-        if (G_CHINA_VERSION) {
-            showDiscordLink = true;
-        }
 
-        const showCrosspromo = !G_IS_STANDALONE && showExternalLinks;
+        const showCrosspromo = false;
         const showDemoAdvertisement =
             showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
-        const ownsPuzzleDLC =
-            G_IS_DEV ||
-            (G_IS_STANDALONE &&
-                /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
-
+        const ownsPuzzleDLC = false;
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
@@ -96,7 +88,6 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""}
             </div>
 
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">

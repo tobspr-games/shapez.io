@@ -186,10 +186,7 @@ function initializeSettings() {
                 if (app.platformWrapper.getSupportsFullscreen()) {
                     app.platformWrapper.setFullscreen(value);
                 }
-            },
-            /**
-             * @param {Application} app
-             */ app => app.restrictionMgr.getHasExtendedSettings()
+            }
         ),
 
         new BoolSetting(

@@ -18,23 +18,7 @@ const analyticsLocalFile = "shapez_token_123.bin";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     get environment() {
-        if (G_IS_DEV) {
-            return "dev";
-        }
-
-        if (G_IS_STANDALONE) {
-            return "steam";
-        }
-
-        if (G_IS_RELEASE) {
-            return "prod";
-        }
-
-        if (window.location.host.indexOf("alpha") >= 0) {
-            return "alpha";
-        } else {
-            return "beta";
-        }
+        return "steam-demo";
     }
 
     /**

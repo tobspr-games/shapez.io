@@ -31,13 +31,9 @@ export const SOUNDS = {
 export const MUSIC = {
     // The theme always depends on the standalone only, even if running the full
     // version in the browser
-    theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
+    theme: "theme-short",
     menu: "menu",
 };
-
-if (G_IS_STANDALONE || G_IS_DEV) {
-    MUSIC.puzzle = "puzzle-full";
-}
 
 export class SoundInstanceInterface {
     constructor(key, url) {
