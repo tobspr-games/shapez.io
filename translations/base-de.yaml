@@ -11,9 +11,9 @@ steamPage:
 
         Das ist noch nicht alles, denn du musst exponentiell mehr produzieren, um die Anforderungen zu erfüllen - Da hilft nur skalieren!
 
-        Während du am Anfang nur Formen verarbeitest, müssen diese später auch eingefärbt werden. Dafür musst du Farben extrahieren und mischen!
+        Während du am Anfang nur Formen verarbeitest, müssen diese später auch eingefärbt werden. Die benötigten Farben können extrahiert und gemischt werden.
 
-        Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst auch zuerst die Demo auf shapez.io spielen und dich später entscheiden!
+        Der Kauf des Spiels auf Steam gibt dir Zugriff auf die Vollversion, aber du kannst die Demo auf shapez.io auch zuerst ausprobieren und dich später entscheiden!
     what_others_say: Was andere über shapez.io sagen
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
@@ -26,7 +26,7 @@ global:
     loading: Laden
     error: Fehler
     loggingIn: Einloggen
-    thousandsDivider: .
+    thousandsDivider: "."
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -81,9 +81,8 @@ mainMenu:
     puzzleDlcWishlist: Jetzt zur Wunschliste hinzufügen!
     puzzleDlcViewNow: DLC anzeigen
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Aktive Mods
+        warningPuzzleDLC: Das Puzzle-DLC und Mods sind nicht kompatibel. Bitte deaktiviere zuerst alle Mods, um das DLC zu spielen.
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -96,8 +95,8 @@ puzzleMenu:
     noPuzzles: Hier gibt es bisher noch keine Puzzles.
     dlcHint: >
         DLC schon gekauft? Stelle sicher, dass es aktiviert ist, indem du in der
-        Steam-Bibliothek shapez.io rechtsklickst und es unter Eigenschaften >
-        Zusatzinhalte (DLC) aktivierst.
+        Steam-Bibliothek shapez.io rechtsklickst und unter Eigenschaften >
+        Zusatzinhalte (DLC) nachschaust.
     categories:
         levels: Levels
         new: Neu
@@ -114,6 +113,20 @@ puzzleMenu:
         difficulties: Nach Schwierigkeit
         account: Meine Puzzles
         search: Suche
+    search:
+        action: Suchen
+        placeholder: Gib einen Puzzle- oder Autorennamen ein
+        includeCompleted: Gelöste einbeziehen
+        difficulties:
+            any: Beliebige Schwierigkeit
+            easy: Einfach
+            medium: Mittel
+            hard: Schwierig
+        durations:
+            any: Beliebige Dauer
+            short: Kurz (< 2 Min)
+            medium: Normal
+            long: Lang (> 10 Min)
     difficulties:
         easy: Einfach
         medium: Mittel
@@ -128,24 +141,9 @@ puzzleMenu:
         goalAcceptorRateNotMet: Ein oder mehrere Zielakzeptoren bekommen nicht genügend
             Items. Stelle sicher, dass alle ihre Indikatoren grün leuchten.
         buildingOutOfBounds: Ein oder mehrere Gebäude befinden sich außerhalb des
-            bebaubaren Bereichs. Vergrößere den Bereich oder entferne die
-            Gebäude.
+            Baubereichs. Vergrößere den Bereich oder entferne die Gebäude.
         autoComplete: Dein Puzzle schließt sich selbst ab! Bitte stelle sicher, dass
             deine Itemproduzenten nicht direkt an deine Zielakzeptoren liefern.
-    search:
-        action: Suchen
-        placeholder: Gib einen Puzzle- oder Autorennamen ein
-        includeCompleted: Gelöst einbeziehen
-        difficulties:
-            any: Beliebige Schwierigkeit
-            easy: Einfach
-            medium: Mittel
-            hard: Schwierig
-        durations:
-            any: Beliebige Dauer
-            short: Kurz (< 2 Min)
-            medium: Normal
-            long: Lang (> 10 Min)
 dialogs:
     buttons:
         ok: OK
@@ -274,7 +272,7 @@ dialogs:
         descIcon: "Bitte gib einen eindeutigen Kurzschlüssel ein, der als Symbol für
             dein Puzzle genutzt wird (<link>Hier</link> geht es zum Generator
             oder wähle unten einen der zufälligen Vorschläge):"
-        placeholderName: Puzzlename
+        placeholderName: Name des Puzzles
     puzzleResizeBadBuildings:
         title: Größenänderung nicht möglich
         desc: Du kannst die Zone nicht weiter verkleinern, da ansonsten einige Gebäude
@@ -331,12 +329,11 @@ dialogs:
         desc: Bist du sicher, dass du '<title>' löschen möchtest? Dies kann nicht
             rückgängig gemacht werden!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Geänderte Mods
+        desc: Zwischen den derzeit und bei der Erstellung des Spielstands installierten Mods wurde ein Unterschied festgestellt.
+            Das kann dazu führen, dass dein Spielstand zerstört wird, oder gar nicht erst lädt. Willst du ihn wirklich laden?
+        missingMods: Fehlende Mods
+        newMods: Neu installierte Mods
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -820,7 +817,7 @@ storyRewards:
     reward_rotater_ccw:
         title: Gegen den UZS rotieren
         desc: Du hast eine zweite Variante des <strong>Rotierers</strong>
-            freigeschaltet! Damit können Items gegen den Uhrzeigensinn gedreht
+            freigeschaltet! Damit können Items gegen den Uhrzeigersinn gedreht
             werden. Wähle den Rotierer aus und <strong>drücke 'T', um auf
             verschiedene Varianten zuzugreifen</strong>.
     reward_miner_chainable:
@@ -954,6 +951,21 @@ storyRewards:
     reward_demo_end:
         title: Ende der Demo
         desc: Du bist am Ende der Demo angekommen!
+mods:
+    title: Mods
+    author: Autor
+    version: Version
+    modWebsite: Webseite
+    openFolder: Modordner öffnen
+    folderOnlyStandalone: Du kannst den Modordner nur in der Vollversion öffnen.
+    browseMods: Mods durchsuchen
+    modsInfo: Um Mods zu installieren und zu verwalten, kopiere sie in den Modordner im Spielverzeichnis.
+        Diesen kannst du auch mit dem 'Modordner öffnen'-Knopf oben rechts aufrufen.
+    noModSupport: Du brauchst die Steam-Vollversion, um Mods zu installieren.
+    togglingComingSoon:
+        title: Demnächst
+        description: Du kannst Mods aktuell nur (de-)aktivieren, indem du die entsprechende Datei in den Modordner einfügst, oder löschst.
+            Das (De-)Aktivieren der Mods in diesem Menü ist allerdings schon für ein späteres Update geplant!
 settings:
     title: Einstellungen
     categories:
@@ -967,6 +979,7 @@ settings:
         prod: Produktion
     buildDate: Gebaut am <at-date>
     rangeSliderPercentage: <amount> %
+    newBadge: Neu!
     labels:
         uiScale:
             title: HUD Größe
@@ -1135,7 +1148,6 @@ settings:
             description: Zeigt den Shape Tooltip immer an, wenn sich der Mauszeiger über
                 einem Gebäude befindet, anstatt 'ALT' drücken zu müssen.
     tickrateHz: <amount> Hz
-    newBadge: New!
 keybindings:
     title: Tastenbelegung
     hint: "Tipp: Benutze STRG, UMSCH and ALT! Sie aktivieren verschiedene
@@ -1149,7 +1161,7 @@ keybindings:
         massSelect: Bereichsauswahl
         buildings: Gebäude
         placementModifiers: Platzierungsmodifikatoren
-        mods: Provided by Mods
+        mods: Von Mods hinzugefügt
     mappings:
         confirm: Bestätigen
         back: Zurück
@@ -1349,20 +1361,3 @@ tips:
     - Drücke doppelt F4 um den Standort des Mauszeigers und der Kamera zu
       bestimmen.
     - Du kannst die angehefteten Formen am linken Rand wieder entfernen.
-mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
-    togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
