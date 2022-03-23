@@ -1319,7 +1319,7 @@ puzzleMenu:
         difficulties:
             any: Toute difficulté
             easy: Facile
-            medium: Medium
+            medium: Intermédiaire
             hard: Difficile
         durations:
             any: Toute durée
@@ -1329,7 +1329,7 @@ puzzleMenu:
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
         s'il vous plait.
-    invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
+    invalid-api-key: Échec de la communication avec le serveur, veuillez essayer de
         mettre à jour/redémarrer le jeu (clé Api invalide).
     unauthorized: Échec de la communication avec le backend, veuillez essayer de
         mettre à jour/redémarrer le jeu (non autorisé).
