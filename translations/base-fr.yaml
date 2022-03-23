@@ -239,7 +239,7 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Recommandation
         desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au
-            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risqez de
+            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risquez de
             rencontrer des méchanismes pas encore introduits. Voulez-vous
             toujours continuer ?
     puzzleShare:
@@ -253,7 +253,7 @@ dialogs:
             unsolvable: Irrésolvable
             trolling: Troll
     puzzleReportComplete:
-        title: Merci pour votre retour!
+        title: Merci pour votre retour !
         desc: Le puzzle a été marqué.
     puzzleReportError:
         title: Échec du signalement
@@ -480,7 +480,7 @@ ingame:
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
-        titleRating: À quel point avez-vous trouvé le puzzle diffcile ?
+        titleRating: À quel point avez-vous trouvé le puzzle difficile ?
         titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
         continueBtn: Continuer à jouer
         menuBtn: Menu
@@ -710,7 +710,7 @@ buildings:
                 calque de câblage sur le calque normal.
     constant_producer:
         default:
-            name: Producteur Constabnt
+            name: Producteur Constant
             description: Sort constamment une forme ou une couleur spécifiée.
     goal_acceptor:
         default:
@@ -1320,7 +1320,7 @@ puzzleMenu:
             any: Toute difficulté
             easy: Facile
             medium: Medium
-            hard: Dificile
+            hard: Difficile
         durations:
             any: Toute durée
             short: Court (< 2 min)
@@ -1361,11 +1361,11 @@ mods:
     openFolder: Ouvrir le dossier des mods
     folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la version complète
     browseMods: Chercher les Mods
-    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans le répertoire du jeu. 
+    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans le répertoire du jeu.
         Vous pouvez aussi utiliser le bouton 'Ouvrir le dossier des Mods' en haut à droite
     noModSupport: Vous avez besoin de la version complète sur Steam pour installer des mods.
     togglingComingSoon:
         title: Bientôt disponible
-        description: Activer ou désactiver un mod est pour le moment possible qu'en 
+        description: Activer ou désactiver un mod est pour le moment possible qu'en
             copiant le fichier du mod depuis ou vers le dossier des mods. Cependant,
             activer ou désactiver un mod est prévu pour une mise à jour future !
