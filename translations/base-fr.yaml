@@ -470,13 +470,13 @@ ingame:
               qu'objectif</strong> que le joueur devra produire plus tard
               (Indiqué par le <strong>badge vert</strong>).
             - 4. Cliquez sur le <strong>bouton de verrouillage</strong> sur un
-              batiment pour le désactiver.
+              bâtiment pour le désactiver.
             - 5. Une fois que vous aurez cliqué sur vérifier, votre puzzle sera
               validé et vous pourrez le publier.
-            - 6. Une fois publié <strong>tous les batiments seront
+            - 6. Une fois publié <strong>tous les bâtiments seront
               supprimés</strong> sauf les générateurs et les récepteurs - C'est
               la partie ou le joueur est censé se débrouiller seul :)
-              
+
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -1075,7 +1075,7 @@ settings:
                 visible en dézoomant.
         shapeTooltipAlwaysOn:
             title: Info-bulle de forme - Toujours afficher
-            description: Si activé, une info-bule s'affiche quand vous survolez un batiment
+            description: Si activé, une info-bulle s'affiche quand vous survolez un bâtiment
                 sinon il faut maintenir 'ALT'.
     tickrateHz: <amount> Hz
     newBadge: New!
