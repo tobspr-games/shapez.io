@@ -1,4 +1,4 @@
-FROM node:12 as base
+FROM node:16
 
 EXPOSE 3001 3005
 
