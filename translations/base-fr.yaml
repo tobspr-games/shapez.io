@@ -748,7 +748,7 @@ storyRewards:
             bâtiment !
     reward_stacker:
         title: Assembleur
-        desc: Vous pouvez maintenant assemblées deux formes avec le
+        desc: Vous pouvez maintenant assembler deux formes avec le
             <strong>combineur</strong> ! Les deux entrées sont assemblées,si
             elles peuvent être mises l’une à côté de l’autre, elles sont
             <strong>fusionnées</strong>, sinon, la forme de droite est
