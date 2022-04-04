@@ -108,7 +108,7 @@ dialogs:
         text: "Impossible de charger votre sauvegarde :"
     confirmSavegameDelete:
         title: Confirmez la suppression
-        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br> “<savegameName>”
+        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br> « <savegameName> »
             au niveau <savegameLevel><br><br> Ce sera définitif !
     savegameDeletionError:
         title: Impossible de supprimer
@@ -127,7 +127,7 @@ dialogs:
         desc: Les contrôles ont été remis à défaut !
     featureRestriction:
         title: Version de démo
-        desc: Vous avez essayé d’accéder à la fonction “<feature>” qui n’est pas
+        desc: Vous avez essayé d’accéder à la fonction « <feature> » qui n’est pas
             disponible dans la démo. Pensez à acheter la version complète pour
             une expérience optimale !
     oneSavegameLimit:
@@ -239,7 +239,7 @@ dialogs:
     puzzlePlayRegularRecommendation:
         title: Recommandation
         desc: Je recommande <strong>fortement</strong> de jouer au jeu normal jusqu'au
-            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risqez de
+            niveau 12 avant d'essayer le Puzzle DLC, sinon vous risquez de
             rencontrer des méchanismes pas encore introduits. Voulez-vous
             toujours continuer ?
     puzzleShare:
@@ -253,7 +253,7 @@ dialogs:
             unsolvable: Irrésolvable
             trolling: Troll
     puzzleReportComplete:
-        title: Merci pour votre retour!
+        title: Merci pour votre retour !
         desc: Le puzzle a été marqué.
     puzzleReportError:
         title: Échec du signalement
@@ -470,17 +470,17 @@ ingame:
               qu'objectif</strong> que le joueur devra produire plus tard
               (Indiqué par le <strong>badge vert</strong>).
             - 4. Cliquez sur le <strong>bouton de verrouillage</strong> sur un
-              batiment pour le désactiver.
+              bâtiment pour le désactiver.
             - 5. Une fois que vous aurez cliqué sur vérifier, votre puzzle sera
               validé et vous pourrez le publier.
-            - 6. Une fois publié <strong>tous les batiments seront
+            - 6. Une fois publié <strong>tous les bâtiments seront
               supprimés</strong> sauf les générateurs et les récepteurs - C'est
               la partie ou le joueur est censé se débrouiller seul :)
 
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
-        titleRating: À quel point avez-vous trouvé le puzzle diffcile ?
+        titleRating: À quel point avez-vous trouvé le puzzle difficile ?
         titleRatingDesc: Votre note m'aidera à vous faire de meilleures suggestions à l'avenir
         continueBtn: Continuer à jouer
         menuBtn: Menu
@@ -637,29 +637,29 @@ buildings:
     logic_gate:
         default:
             name: Porte ET
-            description: Émet un “1” booléen si les deux entrées sont vraies (une forme,
-                couleur ou “1”).
+            description: Émet un « 1 » booléen si les deux entrées sont vraies (une forme,
+                couleur ou « 1 »).
         not:
             name: Porte NON
-            description: Émet un “1” booléen si l’entrée n’est pas vraie (une forme, couleur
-                ou “1”).
+            description: Émet un « 1 » booléen si l’entrée n’est pas vraie (une forme, couleur
+                ou « 1 »).
         xor:
             name: Porte OU-EXCLUSIF
-            description: Émet un “1” booléen si une des entrées est vraie (une forme,
-                couleur ou “1”), mais pas les deux.
+            description: Émet un « 1 » booléen si une des entrées est vraie (une forme,
+                couleur ou « 1 »), mais pas les deux.
         or:
             name: Porte OU
-            description: Émet un “1” booléen si une des entrées est vraie (une forme,
-                couleur ou “1”).
+            description: Émet un « 1 » booléen si une des entrées est vraie (une forme,
+                couleur ou « 1 »).
     transistor:
         default:
             name: Transistor
             description: Transmet l’entrée du bas si l’entrée du côté est vraie (une forme,
-                couleur ou “1”).
+                couleur ou « 1 »).
         mirrored:
             name: Transistor
             description: Transmet l’entrée du bas si l’entrée du côté est vraie (une forme,
-                couleur ou “1”).
+                couleur ou « 1 »).
     filter:
         default:
             name: Filtre
@@ -684,8 +684,8 @@ buildings:
     comparator:
         default:
             name: Comparateur
-            description: Émet “1” si les deux entrées sont exactement les mêmes, sinon émet
-                “0”. Peut comparer des formes, des couleurs, et des booléens.
+            description: Émet « 1 » si les deux entrées sont exactement les mêmes, sinon émet
+                « 0 ». Peut comparer des formes, des couleurs, et des booléens.
     virtual_processor:
         default:
             name: Découpeur virtuel
@@ -710,7 +710,7 @@ buildings:
                 calque de câblage sur le calque normal.
     constant_producer:
         default:
-            name: Producteur Constabnt
+            name: Producteur Constant
             description: Sort constamment une forme ou une couleur spécifiée.
     goal_acceptor:
         default:
@@ -767,7 +767,7 @@ storyRewards:
         title: Pivoteur inversé
         desc: Vous avez débloqué une variante du <strong>pivoteur</strong>. Elle permet
             de faire pivoter vers la gauche ! Pour le construire, sélectionnez
-            le pivoteur et <strong>appuyez sur “T” pour alterner entre les
+            le pivoteur et <strong>appuyez sur « T » pour alterner entre les
             variantes</strong> !
     reward_miner_chainable:
         title: Extracteur en série
@@ -816,7 +816,7 @@ storyRewards:
         title: Plans
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de
             votre usine ! Sélectionnez une zone (Appuyez sur CTRL, et
-            sélectionnez avec votre souris), et appuyez sur “C” pour la
+            sélectionnez avec votre souris), et appuyez sur « C » pour la
             copier.<br><br> Coller n’est <strong>pas gratuit</strong>, vous
             devez produire <strong>des formes de plans</strong> pour vous le
             payer (les mêmes que celles que vous venez de livrer).
@@ -1000,7 +1000,7 @@ settings:
                 en permanence.
         offerHints:
             title: Indices
-            description: Affiche ou non le bouton “Afficher un indice” dans le coin
+            description: Affiche ou non le bouton « Afficher un indice » dans le coin
                 inférieur gauche.
         enableTunnelSmartplace:
             title: Tunnels intelligents
@@ -1075,7 +1075,7 @@ settings:
                 visible en dézoomant.
         shapeTooltipAlwaysOn:
             title: Info-bulle de forme - Toujours afficher
-            description: Si activé, une info-bule s'affiche quand vous survolez un batiment
+            description: Si activé, une info-bulle s'affiche quand vous survolez un bâtiment
                 sinon il faut maintenir 'ALT'.
     tickrateHz: <amount> Hz
     newBadge: New!
@@ -1319,8 +1319,8 @@ puzzleMenu:
         difficulties:
             any: Toute difficulté
             easy: Facile
-            medium: Medium
-            hard: Dificile
+            medium: Intermédiaire
+            hard: Difficile
         durations:
             any: Toute durée
             short: Court (< 2 min)
@@ -1329,7 +1329,7 @@ puzzleMenu:
 backendErrors:
     ratelimit: Vous effectuez vos actions trop fréquemment. Veuillez attendre un peu
         s'il vous plait.
-    invalid-api-key: Échec de la communication avec le backend, veuillez essayer de
+    invalid-api-key: Échec de la communication avec le serveur, veuillez essayer de
         mettre à jour/redémarrer le jeu (clé Api invalide).
     unauthorized: Échec de la communication avec le backend, veuillez essayer de
         mettre à jour/redémarrer le jeu (non autorisé).
