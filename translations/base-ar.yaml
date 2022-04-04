@@ -31,9 +31,9 @@ global:
         trillions: T
     infinite: inf
     time:
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
+        oneSecondAgo: قبل ثانية واحدة
+        xSecondsAgo: قبل <x> ثانية
+        oneMinuteAgo: قبل دقيقة واحدة
         xMinutesAgo: <x> minutes ago
         oneHourAgo: one hour ago
         xHoursAgo: <x> hours ago
