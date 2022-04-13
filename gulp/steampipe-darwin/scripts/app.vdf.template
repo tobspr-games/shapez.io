@@ -1,0 +1,14 @@
+"appbuild"
+{
+	"appid" "1318690"
+	"desc" "$DESC$"
+	"buildoutput" "/Users/tobiasspringer/work/shapez.io/gulp/steampipe-darwin/steamtmp"
+	"contentroot" ""
+	"setlive" ""
+	"preview" "0"
+	"local"	""
+	"depots"
+	{
+		"1318693"	"/Users/tobiasspringer/work/shapez.io/gulp/steampipe-darwin/scripts/darwin.vdf"
+	}
+}

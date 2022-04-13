@@ -332,6 +332,16 @@ for (const prefix of ["", "china.", "wegame."]) {
     );
 }
 
+// OS X build and release upload
+gulp.task(
+    "build.darwin64-prod",
+    gulp.series(
+        "build.standalone-prod",
+        "standalone.prepare",
+        "standalone.package.prod.darwin64.signManually"
+    )
+);
+
 // Deploying!
 gulp.task(
     "main.deploy.alpha",

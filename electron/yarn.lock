@@ -507,7 +507,7 @@ serialize-error@^7.0.1:
 
 "shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v99":
   version "0.1.0"
-  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#b638501e81bba324923fc1b9d9aadc925da9b2c6"
+  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#3293b20be26060fd36e9f00ded9ab5d0bdf57338"
 
 sprintf-js@^1.1.2:
   version "1.1.2"

@@ -56,3 +56,6 @@ config.local.js
 # Editor artifacts
 *.*.swp
 *.*.swo
+app.vdf
+
+steamtmp
