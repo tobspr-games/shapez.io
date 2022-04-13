@@ -1,7 +1,6 @@
 /* typehints:start */
 import { Application } from "../application";
 /* typehints:end */
-import { IS_MAC } from "./config";
 import { ExplainedResult } from "./explained_result";
 import { queryParamOptions } from "./query_parameters";
 import { ReadWriteProxy } from "./read_write_proxy";
@@ -74,11 +73,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     isLimitedVersion() {
-        if (IS_MAC) {
-            // On mac, the full version is always active
-            return false;
-        }
-
         if (G_IS_STANDALONE) {
             // Standalone is never limited
             return false;
