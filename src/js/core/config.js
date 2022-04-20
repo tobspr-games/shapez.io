@@ -169,4 +169,5 @@ if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
     globalConfig.warmupTimeSecondsRegular = 0;
 }
 
-globalConfig.currentDiscount.active = new Date().getTime() < globalConfig.currentDiscount.until;
+globalConfig.currentDiscount.active =
+    !G_IS_STANDALONE && new Date().getTime() < globalConfig.currentDiscount.until;
