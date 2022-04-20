@@ -83,12 +83,6 @@ $languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW
 /*
 PRICE
 */
-
-.steam_1_pr {
-    /* @load-async */
-    background-image: uiResource("get_on_steam_with_price.png") !important;
-}
-
 .steam_2_npr {
     /* @load-async */
     background-image: uiResource("get_on_steam.png") !important;

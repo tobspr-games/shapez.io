@@ -74,8 +74,14 @@ export class MainMenuState extends GameState {
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
+            <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">
+                ${
+                    globalConfig.currentDiscount.active
+                        ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                        : ""
+                }
 
-                    <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
+            </a>
         `;
 
         return `
@@ -96,7 +102,7 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
-                ${showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""}
+                ${/*showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""*/ ""}
             </div>
 
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
@@ -131,9 +137,6 @@ export class MainMenuState extends GameState {
                     showPuzzleDLC && !ownsPuzzleDLC && !hasMods
                         ? `
                     <div class="puzzleContainer notOwned">
-                        <span class="badge">
-                            ${T.puzzleMenu.categories.new}
-                        </span>
                         <img class="dlcLogo" src="${cachebust(
                             G_CHINA_VERSION || G_WEGAME_VERSION
                                 ? "res/puzzle_dlc_logo_china.png"
@@ -454,7 +457,12 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu");
+        const discount = globalConfig.currentDiscount.active
+            ? "_discount" + globalConfig.currentDiscount.amount
+            : "";
+        this.app.platformWrapper.openExternalLink(
+            THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu" + discount
+        );
 
         return false;
     }

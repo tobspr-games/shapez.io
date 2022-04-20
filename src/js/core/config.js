@@ -117,6 +117,13 @@ export const globalConfig = {
     rendering: {},
     debug: require("./config.local").default,
 
+    currentDiscount: {
+        amount: 50,
+        until: Date.parse("April 25 2022 23:59 +2:00"),
+
+        active: false, // computed later
+    },
+
     // Secret vars
     info: {
         // Binary file salt
@@ -161,3 +168,5 @@ if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
     globalConfig.warmupTimeSecondsFast = 0;
     globalConfig.warmupTimeSecondsRegular = 0;
 }
+
+globalConfig.currentDiscount.active = new Date().getTime() < globalConfig.currentDiscount.until;

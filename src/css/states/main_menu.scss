@@ -140,19 +140,36 @@
                 @include S(height, 40px);
                 @include S(width, 180px);
                 background: #171a23 center center / contain no-repeat;
-                overflow: hidden;
+                // overflow: hidden;
                 display: block;
-                text-indent: -999em;
                 cursor: pointer;
                 @include S(margin-top, 30px);
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
-
+                position: relative;
                 @include S(border-radius, $globalBorderRadius);
 
                 &:hover {
                     opacity: 0.9;
+                }
+
+                > .discount {
+                    position: absolute;
+                    @include S(top, -7px);
+                    @include S(right, -5px);
+                    background: #4c6b22;
+                    color: #c5ea3f;
+                    @include S(border-radius, $globalBorderRadius);
+                    @include S(padding, 1px, 3px, 1px, 4px);
+                    @include SuperSmallText;
+                    text-transform: uppercase;
+                    transform: rotate(1deg);
+                    @include InlineAnimation(1.3s ease-in-out infinite) {
+                        50% {
+                            transform: rotate(4deg) scale(1.1);
+                        }
+                    }
                 }
             }
         }

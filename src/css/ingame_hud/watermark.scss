@@ -82,4 +82,26 @@
             background-image: uiResource("res/ui/icons/demo_steam_link_indicator.png");
         }
     }
+
+    &.withDiscount {
+        color: #4c6b22;
+    }
+
+    > .discount {
+        // position: absolute;
+        @include S(margin, 0, 5px);
+
+        background: rgba(#4c6b22, 1);
+        color: #c5ea3f;
+        @include S(border-radius, $globalBorderRadius);
+        @include S(padding, 0px, 2px, 0px, 3px);
+        @include SuperSmallText;
+        text-transform: uppercase;
+        transform: rotate(0deg);
+        @include InlineAnimation(1.3s ease-in-out infinite) {
+            50% {
+                transform: rotate(0.5deg) scale(1.05);
+            }
+        }
+    }
 }

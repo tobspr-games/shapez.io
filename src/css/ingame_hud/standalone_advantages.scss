@@ -23,7 +23,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
 
         > button {
             transition: opacity 0.12s ease-in-out;
@@ -40,7 +39,7 @@
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
 
-            @include InlineAnimation(5s ease-in-out) {
+            @include InlineAnimation(1s ease-in-out) {
                 0% {
                     opacity: 0.05;
                 }
@@ -60,7 +59,26 @@
             @include S(height, 40px);
             background: #171a23 center center / contain no-repeat;
 
+            overflow: visible;
             @include S(border-radius, $globalBorderRadius);
+
+            > .discount {
+                position: absolute;
+                @include S(top, -7px);
+                @include S(right, -5px);
+                background: #4c6b22;
+                color: #c5ea3f;
+                @include S(border-radius, $globalBorderRadius);
+                @include S(padding, 1px, 3px, 1px, 4px);
+                @include SuperSmallText;
+                text-transform: uppercase;
+                transform: rotate(1deg);
+                @include InlineAnimation(1.3s ease-in-out infinite) {
+                    50% {
+                        transform: rotate(4deg) scale(1.1);
+                    }
+                }
+            }
         }
     }
 

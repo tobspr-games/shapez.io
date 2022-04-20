@@ -1,4 +1,4 @@
-import { A_B_TESTING_LINK_TYPE, THIRDPARTY_URLS } from "../../../core/config";
+import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
@@ -33,16 +33,26 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             </div>
 
             <div class="lowerBar">
-            <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}"></button>
+            <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}">
+            ${
+                globalConfig.currentDiscount && globalConfig.currentDiscount.until > new Date().getTime()
+                    ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                    : ""
+            }
+            </button>
             <button class="otherCloseButton">${T.ingame.standaloneAdvantages.no_thanks}</button>
             </div>
         `
         );
 
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
+            const discount = globalConfig.currentDiscount.active
+                ? "_discount" + globalConfig.currentDiscount.amount
+                : "";
+
             this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg"
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg" + discount
             );
             this.close();
         });

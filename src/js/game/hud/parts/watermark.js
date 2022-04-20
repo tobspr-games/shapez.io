@@ -1,4 +1,4 @@
-import { THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
@@ -15,20 +15,30 @@ export class HUDWatermark extends BaseHUDPart {
             [],
             `
             <strong>${T.ingame.watermark.title}</strong>
-            <p>${T.ingame.watermark.desc}</p>
+            <p>${T.ingame.watermark.desc}
+            </p>
+
+
         `
         );
 
         this.linkElement = makeDiv(
             parent,
             "ingame_HUD_WatermarkClicker",
-            [],
-            T.ingame.watermark.get_on_steam
+            globalConfig.currentDiscount ? ["withDiscount"] : [""],
+            T.ingame.watermark.get_on_steam +
+                (globalConfig.currentDiscount && globalConfig.currentDiscount.until > new Date().getTime()
+                    ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                    : "")
         );
         this.trackClicks(this.linkElement, () => {
             this.root.app.analytics.trackUiClick("watermark_click_2_direct");
+            const discount = globalConfig.currentDiscount.active
+                ? "_discount" + globalConfig.currentDiscount.amount
+                : "";
+
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_watermark"
+                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_watermark" + discount
             );
         });
     }
