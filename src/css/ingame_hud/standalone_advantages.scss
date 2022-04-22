@@ -39,7 +39,7 @@
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
 
-            @include InlineAnimation(1s ease-in-out) {
+            @include InlineAnimation(5s ease-in-out) {
                 0% {
                     opacity: 0.05;
                 }
