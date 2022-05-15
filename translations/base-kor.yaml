@@ -74,8 +74,8 @@ mainMenu:
     puzzleDlcViewNow: DLC 보러 가기
     mods:
         title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        warningPuzzleDLC: Puzzle DLC를 모드와 함게 플레이하는것은 안됩니다.
+            모든 모드를 비활성화 해주세요.
 dialogs:
     buttons:
         ok: 확인
