@@ -1153,7 +1153,7 @@ mods:
     browseMods: Browse Mods
     modsInfo: 모드를 설치하기위해 모드폴더에 모드 파일을 넣으세요.
         오른쪽 위에있는 '모드폴더 열기' 버튼으로 모드폴더를 열수 있습니다.
-    noModSupport: 모드
+    noModSupport: 모드를 사용하기 위해 정식버전이 필요합니다.
     togglingComingSoon:
         title: 곧 업데이트 됩니다!
         description: 현재로서 모드를 활성화/비활성화 하는것은 모드파일을
