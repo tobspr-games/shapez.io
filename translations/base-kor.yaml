@@ -1145,18 +1145,17 @@ backendErrors:
     no-permission: 이 작업을 할 권한이 없습니다.
 mods:
     title: Mods
-    author: Author
+    author: 제작자
     version: Version
     modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    openFolder: 모드폴더 열기
+    folderOnlyStandalone: 모드폴더를 여는것은 정식버전에서만 가능합니다.
     browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    modsInfo: 모드를 설치하기위해 모드폴더에 모드 파일을 넣으세요.
+        오른쪽 위에있는 '모드폴더 열기' 버튼으로 모드폴더를 열수 있습니다.
+    noModSupport: 모드
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: 곧 업데이트 됩니다!
+        description: 현재로서 모드를 활성화/비활성화 하는것은 모드파일을
+            모드폴더에 넣고/빼는것으로 할수있습니다.
+            모드를 토글하는 기능은 곧 업데이트 됩니다!
