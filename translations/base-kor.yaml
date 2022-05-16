@@ -241,11 +241,11 @@ dialogs:
         desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
     modsDifference:
         title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        desc: 현재 설치된 모드가 이 파일이 사용중인 모드와 다릅니다.
+            사용하는 모드를 다르게 할 경우 이 파일이 고장날수 있습니다.
+            모드가 다른 상태로 로드하실래요?
+        missingMods: 사라진 모드
+        newMods: 새로운 모드
 ingame:
     keybindingsOverlay:
         moveMap: 이동
@@ -1155,19 +1155,19 @@ puzzleMenu:
         DLC를 이미 구입하셨나요? 라이브러리에서 shapez.io를 오른쪽 클릭한 다음 속성… > DLC 메뉴를 선택해서
         활성화되었는지 확인해주세요.
     search:
-        action: Search
+        action: 검색
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
             any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            easy: 쉬음
+            medium: 보통
+            hard: 어려움
         durations:
             any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            short: 짧음 (2분 이하)
+            medium: 보통
+            long: 김 (10분 이상)
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
