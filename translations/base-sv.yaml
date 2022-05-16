@@ -99,6 +99,7 @@ dialogs:
         retry: Försök Igen
         continue: Fortsätt
         playOffline: Spela Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Importfel
         text: "Kunde inte importera sparfil:"

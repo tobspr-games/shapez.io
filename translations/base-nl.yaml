@@ -82,8 +82,8 @@ mainMenu:
     puzzleDlcViewNow: Bekijk DLC
     mods:
         title: Actieve Mods
-        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods. Schakel
-            alsjeblieft alle mods uit om de DLC te spelen.
+        warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods.
+            Schakel alsjeblieft alle mods uit om de DLC te spelen.
 dialogs:
     buttons:
         ok: OK
@@ -100,6 +100,7 @@ dialogs:
         retry: Opnieuw Proberen
         continue: Ga Verder
         playOffline: Offline Spelen
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Importeerfout
         text: "Het importeren van je savegame is mislukt:"
@@ -1188,11 +1189,9 @@ tips:
     - Knippers knippen altijd verticaal, ongeacht hun oriëntatie.
     - De opslagbuffer geeft prioriteit aan de eerste uitvoer.
     - Investeer tijd om herhaalbare ontwerpen te maken - het is het waard!
-    - Je kunt <b>ALT</b> ingedrukt houden om de richting van de geplaatste
-      lopende banden om te keren.
-    - Vormontginningen die verder van de HUB verwijderd zijn, zijn complexer.
-    - Machines hebben een beperkte snelheid, verdeel ze voor maximale
-      efficiëntie.
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - Gebruik verdelers om je efficiëntie te maximaliseren.
     - Organisatie is belangrijk. Probeer de lopende banden niet te veel over te
       steken.
@@ -1212,11 +1211,11 @@ tips:
       mannen.
     - Maak een aparte blueprint fabriek. Ze zijn belangrijk voor modules.
     - Bekijk de kleurenmixer eens wat beter, en je vragen worden beantwoord.
-    - Use <b>CTRL</b> + Click to select an area.
+    - With modules, space is merely a perception; a concern for mortal men.
     - Met het speldpictogram naast elke vorm in de upgradelijst zet deze vast op
       het scherm.
     - Meng alle primaire kleuren door elkaar om wit te maken!
-    - Je hebt een oneindige wereld, verkramp je fabriek niet, breid uit!
+    - Use <b>CTRL</b> + Click to select an area.
     - Probeer ook Factorio! Het is mijn favoriete spel.
     - De quad-knipper knipt met de klok mee vanaf de rechterbovenhoek!
     - Je kunt je savegames downloaden in het hoofdmenu!
@@ -1231,6 +1230,10 @@ tips:
     - Druk twee keer op F4 om de tegel van je muis en camera weer te geven.
     - Je kan aan de linkerkant op een vastgezette vorm klikken om deze los te
       maken.
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
     play: Spelen
     edit: Bewerken
@@ -1323,13 +1326,16 @@ mods:
     version: Versie
     modWebsite: Website
     openFolder: Open Mods Map
-    folderOnlyStandalone: Het openen van de mod map is alleen mogelijk bij het gebruiken van de zelfstandige versie.
+    folderOnlyStandalone: Het openen van de mod map is alleen mogelijk bij het
+        gebruiken van de zelfstandige versie.
     browseMods: Door mods bladeren
-    modsInfo: Om mods te installeren en te beheren, kopieert u ze naar de map mods in de
-         spel map. U kunt ook de knop 'Open Mods Map' gebruiken rechtsboven.
+    modsInfo: Om mods te installeren en te beheren, kopieert u ze naar de map mods
+        in de spel map. U kunt ook de knop 'Open Mods Map' gebruiken
+        rechtsboven.
     noModSupport: Je hebt de zelfstandige versie op Steam nodig om mods te installeren.
     togglingComingSoon:
         title: Binnenkort Beschikbaar
-        description: Mods in- of uitschakelen is momenteel alleen mogelijk door
-            het mod-bestand van of naar de mods map te kopiëren. Echter, in staat zijn om
-            ze hier in- of uitteschakelen is gepland voor een toekomstige update!
+        description: Mods in- of uitschakelen is momenteel alleen mogelijk door het
+            mod-bestand van of naar de mods map te kopiëren. Echter, in staat
+            zijn om ze hier in- of uitteschakelen is gepland voor een
+            toekomstige update!

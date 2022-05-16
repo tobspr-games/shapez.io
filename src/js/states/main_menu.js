@@ -683,11 +683,13 @@ export class MainMenuState extends GameState {
 
         const signals = this.dialogs.showWarning(T.dialogs.modsDifference.title, dialogHtml, [
             "cancel:good",
+            "backUpAndPlay:good",
             "continue:bad",
         ]);
 
         return new Promise(resolve => {
             signals.continue.add(resolve);
+            signals.backUpAndPlay.add(resolve);
         });
     }
 

@@ -80,8 +80,8 @@ mainMenu:
     puzzleDlcViewNow: Paketi (DLC) görüntüle
     mods:
         title: Aktif Modlar
-        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen
-            Yapboz DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
+        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
+            DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
 dialogs:
     buttons:
         ok: OK
@@ -98,6 +98,7 @@ dialogs:
         retry: Yeniden Dene
         continue: Devam Et
         playOffline: Çevrimdışı Oyna
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Kayıt yükleme hatası
         text: "Oyun kaydı yükleme başarısız:"
@@ -264,9 +265,10 @@ dialogs:
             alınamaz!"
     modsDifference:
         title: Mod Uyarısı
-        desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan farklıdır.
-            Bu işlem kayıtlı oyunun bozulmasına veya hiç yüklenmemesine neden olabilir. Devam
-            etmek istediğinize emin misiniz?
+        desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan
+            farklıdır. Bu işlem kayıtlı oyunun bozulmasına veya hiç
+            yüklenmemesine neden olabilir. Devam etmek istediğinize emin
+            misiniz?
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
 ingame:
@@ -1314,9 +1316,9 @@ mods:
     openFolder: Mod Klasörünü Aç
     folderOnlyStandalone: Mod klasörünü açmak sadece tam sürümü çalıştırıyorken mümkün.
     browseMods: Modlara Gözat
-    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki Modlar
-        klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç' düğmesini de
-        kullanabilirsiniz.
+    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki
+        Modlar klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç'
+        düğmesini de kullanabilirsiniz.
     noModSupport: Mod yükleyebilmek için tam sürümü çalıştırmalısınız.
     togglingComingSoon:
         title: Yakında Gelecek

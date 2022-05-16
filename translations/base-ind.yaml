@@ -96,6 +96,7 @@ dialogs:
         retry: Retry
         continue: Continue
         playOffline: Play Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Kesalahan pada Impor
         text: "Gagal memasukkan data simpanan kamu:"

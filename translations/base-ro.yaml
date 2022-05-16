@@ -100,6 +100,7 @@ dialogs:
         retry: Reîncearcă
         continue: Continue
         playOffline: Joacă Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Eroare la Importare
         text: "Încercarea de importare a eșuat:"

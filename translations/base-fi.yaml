@@ -99,6 +99,7 @@ dialogs:
         retry: Retry
         continue: Continue
         playOffline: Play Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Tuontivirhe
         text: "Tallennuksen tuonti epäonnistui:"

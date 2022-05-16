@@ -78,8 +78,8 @@ mainMenu:
     puzzleDlcViewNow: Zobrazit DLC
     mods:
         title: Aktivní módy
-        warningPuzzleDLC: Nelze hrát Puzzle DLC společně s módy. Prosím
-            deaktivujte všechny módy, abyste mohli hrát DLC.
+        warningPuzzleDLC: Nelze hrát Puzzle DLC společně s módy. Prosím deaktivujte
+            všechny módy, abyste mohli hrát DLC.
 dialogs:
     buttons:
         ok: OK
@@ -96,6 +96,7 @@ dialogs:
         retry: Opakovat
         continue: Pokračovat
         playOffline: Hrát offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Chyba Importu
         text: "Nepovedlo se importovat vaši uloženou hru:"
@@ -259,8 +260,8 @@ dialogs:
     modsDifference:
         title: Varování o módech
         desc: Aktuálně nainstalované módy se liší od módů, se kterými byla uložená hra
-            vytvořena. To může způsobit, že se uložená hra rozbije nebo se vůbec nenačte.
-            Jste si jisti, že chcete pokračovat?
+            vytvořena. To může způsobit, že se uložená hra rozbije nebo se vůbec
+            nenačte. Jste si jisti, že chcete pokračovat?
         missingMods: Chybějící módy
         newMods: Nově nainstalované módy
 ingame:
@@ -1008,8 +1009,8 @@ settings:
             description: Určuje velikost ikon tvarů na náhledu mapy (při oddálení).
         shapeTooltipAlwaysOn:
             title: Popisek tvaru – Zobrazit vždy
-            description: Určuje, zda se má vždy zobrazovat nápověda tvaru při najetí na budovy,
-                místo toho, abyste museli držet „ALT“.
+            description: Určuje, zda se má vždy zobrazovat nápověda tvaru při najetí na
+                budovy, místo toho, abyste museli držet „ALT“.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: Nové!
@@ -1291,6 +1292,6 @@ mods:
     noModSupport: K instalaci módů potřebujete samostatnou verzi hry na Steamu.
     togglingComingSoon:
         title: Již brzy
-        description: Aktivace či deaktivace módů je v současné době možná pouze kopírováním
-            souboru módu z nebo do mods/ složky. Nicméně, možnost správy módů přímo
-            ze hry je plánována pro budoucí aktualizaci!
+        description: Aktivace či deaktivace módů je v současné době možná pouze
+            kopírováním souboru módu z nebo do mods/ složky. Nicméně, možnost
+            správy módů přímo ze hry je plánována pro budoucí aktualizaci!

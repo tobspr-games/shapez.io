@@ -96,6 +96,7 @@ dialogs:
         retry: Újra
         continue: Folytatás
         playOffline: Offline Játék
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Importálás Hiba
         text: "Nem sikerült importálni a mentésedet:"

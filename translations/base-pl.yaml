@@ -99,6 +99,7 @@ dialogs:
         retry: Retry
         continue: Continue
         playOffline: Play Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Błąd importowania
         text: "Nie udało się zaimportować twojego zapisu gry:"

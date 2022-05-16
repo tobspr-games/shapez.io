@@ -97,6 +97,7 @@ dialogs:
         retry: Genprøv
         continue: Fortsæt
         playOffline: Spil Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Import Fejl
         text: "Importering af gemt spil fejlede:"

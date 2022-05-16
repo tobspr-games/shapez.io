@@ -92,6 +92,7 @@ dialogs:
         retry: Retry
         continue: Continue
         playOffline: Play Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: 匯入錯誤
         text: 存檔匯入失敗：

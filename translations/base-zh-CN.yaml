@@ -92,6 +92,7 @@ dialogs:
         retry: 重试
         continue: 继续
         playOffline: 离线游戏
+        backUpAndPlay: play after backup
     importSavegameError:
         title: 读取错误
         text: 未能读取您的存档：

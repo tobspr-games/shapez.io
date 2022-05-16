@@ -99,6 +99,7 @@ dialogs:
         retry: Riprova
         continue: Continua
         playOffline: Gioca offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Errore di importazione
         text: "Impossibile caricare il salvataggio:"

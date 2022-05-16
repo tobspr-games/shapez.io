@@ -97,6 +97,7 @@ dialogs:
         retry: Réessayer
         continue: Continuer
         playOffline: Jouer Hors-ligne
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Erreur d’importation
         text: "Impossible d’importer votre sauvegarde :"
@@ -108,8 +109,9 @@ dialogs:
         text: "Impossible de charger votre sauvegarde :"
     confirmSavegameDelete:
         title: Confirmez la suppression
-        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br> « <savegameName> »
-            au niveau <savegameLevel><br><br> Ce sera définitif !
+        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br>
+            « <savegameName> » au niveau <savegameLevel><br><br> Ce sera
+            définitif !
     savegameDeletionError:
         title: Impossible de supprimer
         text: "Impossible de supprimer votre sauvegarde :"
@@ -456,7 +458,6 @@ ingame:
         report: Signaler
         clearBuildings: Effacer les Constructions
         resetPuzzle: Réinitialiser le Puzzle
-
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
@@ -476,7 +477,6 @@ ingame:
             - 6. Une fois publié <strong>tous les bâtiments seront
               supprimés</strong> sauf les générateurs et les récepteurs - C'est
               la partie ou le joueur est censé se débrouiller seul :)
-
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -641,8 +641,8 @@ buildings:
                 couleur ou « 1 »).
         not:
             name: Porte NON
-            description: Émet un « 1 » booléen si l’entrée n’est pas vraie (une forme, couleur
-                ou « 1 »).
+            description: Émet un « 1 » booléen si l’entrée n’est pas vraie (une forme,
+                couleur ou « 1 »).
         xor:
             name: Porte OU-EXCLUSIF
             description: Émet un « 1 » booléen si une des entrées est vraie (une forme,
@@ -684,8 +684,9 @@ buildings:
     comparator:
         default:
             name: Comparateur
-            description: Émet « 1 » si les deux entrées sont exactement les mêmes, sinon émet
-                « 0 ». Peut comparer des formes, des couleurs, et des booléens.
+            description: Émet « 1 » si les deux entrées sont exactement les mêmes, sinon
+                émet « 0 ». Peut comparer des formes, des couleurs, et des
+                booléens.
     virtual_processor:
         default:
             name: Découpeur virtuel
@@ -1359,13 +1360,17 @@ mods:
     version: Version
     modWebsite: Page web
     openFolder: Ouvrir le dossier des mods
-    folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la version complète
+    folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la
+        version complète
     browseMods: Chercher les Mods
-    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans le répertoire du jeu.
-        Vous pouvez aussi utiliser le bouton 'Ouvrir le dossier des Mods' en haut à droite
-    noModSupport: Vous avez besoin de la version complète sur Steam pour installer des mods.
+    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans
+        le répertoire du jeu. Vous pouvez aussi utiliser le bouton 'Ouvrir le
+        dossier des Mods' en haut à droite
+    noModSupport: Vous avez besoin de la version complète sur Steam pour installer
+        des mods.
     togglingComingSoon:
         title: Bientôt disponible
         description: Activer ou désactiver un mod est pour le moment possible qu'en
-            copiant le fichier du mod depuis ou vers le dossier des mods. Cependant,
-            activer ou désactiver un mod est prévu pour une mise à jour future !
+            copiant le fichier du mod depuis ou vers le dossier des mods.
+            Cependant, activer ou désactiver un mod est prévu pour une mise à
+            jour future !

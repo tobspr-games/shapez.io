@@ -99,6 +99,7 @@ dialogs:
         retry: Reintentar
         continue: Continuar
         playOffline: Jugar Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Error de importación
         text: "Fallo al importar tu partida guardada:"

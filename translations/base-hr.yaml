@@ -98,6 +98,7 @@ dialogs:
         retry: Retry
         continue: Continue
         playOffline: Play Offline
+        backUpAndPlay: play after backup
     importSavegameError:
         title: Greška prilikom uvoza
         text: "Neuspješan uvoz spremljene igre:"
