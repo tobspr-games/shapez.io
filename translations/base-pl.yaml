@@ -1230,33 +1230,33 @@ tips:
     - Naciśnij F4 dwa razy, by zobaczyć kratkę twojej myszy i kamery.
     - Możesz kliknąć przypięty kształt po lewej stronie, by go odpiąć.
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: Graj
+    edit: Edytuj
+    title: Tryb Puzli
+    createPuzzle: Stwórz zagadkę
+    loadPuzzle: Załaduj
+    reviewPuzzle: Oceń i opublikuj
+    validatingPuzzle: Sprawdzanie Puzzli
+    submittingPuzzle: Publikowanie Puzzli
+    noPuzzles: Nie ma żadnych puzli w tej kategori.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        levels: Levele
+        new: Nowe
+        top-rated: Najlepiej Ocenianie
+        mine: Moje Puzle
+        easy: Łatwe
+        hard: Trudne
+        completed: Skończone
+        medium: Średnie
+        official: Oficiale
+        trending: Popularne dzisiaj
+        trending-weekly: Popularne w tym tygodni
+        categories: Kategorie
+        difficulties: Po Trudności
+        account: Moje Puzle
+        search: Szukaj
     validation:
-        title: Invalid Puzzle
+        title: Niepoprawny Puzel
         noProducers: Please place a Constant Producer!
         noGoalAcceptors: Please place a Goal Acceptor!
         goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
@@ -1268,26 +1268,26 @@ puzzleMenu:
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
+        easy: Łatwy
+        medium: Średni
+        hard: Trudny
+        unknown: Nieznany
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
+        action: Szukaj
+        placeholder: Podaj nazwę zagadki lub autora
         includeCompleted: Include Completed
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Dowolna trudność
+            easy: Łatwy
+            medium: Średni
+            hard: Długi
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Dowolna długość
+            short: Krótki (< 2 min)
+            medium: Normalny
+            long: Długi (> 10 min)
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to
@@ -1315,13 +1315,13 @@ backendErrors:
         to remove it, please contact support@shapez.io!
     no-permission: You do not have the permission to perform this action.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
+    title: Mody
+    author: Autor
+    version: Wersja
+    modWebsite: Strona
+    openFolder: Otwórz folder modów
     folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
+    browseMods: Szukaj Modów
     modsInfo: To install and manage mods, copy them to the mods folder within the
         game directory. You can also use the 'Open Mods Folder' button on the
         top right.
