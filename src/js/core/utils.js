@@ -334,7 +334,7 @@ export function waitNextFrame() {
  * @returns {number}
  */
 export function round1Digit(n) {
-    return Math.floor(n * 10.0) / 10.0;
+    return Math.round(n * 10.0) / 10.0;
 }
 
 /**
@@ -343,7 +343,7 @@ export function round1Digit(n) {
  * @returns {number}
  */
 export function round2Digits(n) {
-    return Math.floor(n * 100.0) / 100.0;
+    return Math.round(n * 100.0) / 100.0;
 }
 
 /**
@@ -352,7 +352,7 @@ export function round2Digits(n) {
  * @returns {number}
  */
 export function round3Digits(n) {
-    return Math.floor(n * 1000.0) / 1000.0;
+    return Math.round(n * 1000.0) / 1000.0;
 }
 
 /**
@@ -361,7 +361,7 @@ export function round3Digits(n) {
  * @returns {number}
  */
 export function round4Digits(n) {
-    return Math.floor(n * 10000.0) / 10000.0;
+    return Math.round(n * 10000.0) / 10000.0;
 }
 
 /**
