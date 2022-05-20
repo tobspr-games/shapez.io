@@ -1,5 +1,5 @@
 import { globalConfig } from "../../../core/config";
-import { formatItemsPerSecond, round2Digits } from "../../../core/utils";
+import { formatItemsPerSecond, round4Digits } from "../../../core/utils";
 import { Vector } from "../../../core/vector";
 import { T } from "../../../translations";
 import { Entity } from "../../entity";
@@ -69,7 +69,7 @@ export class HUDMinerHighlight extends BaseHUDPart {
             parameters.context.fill();
         }
 
-        const throughput = round2Digits(connectedEntities.length * this.root.hubGoals.getMinerBaseSpeed());
+        const throughput = round4Digits(connectedEntities.length * this.root.hubGoals.getMinerBaseSpeed());
 
         const maxThroughput = this.root.hubGoals.getBeltBaseSpeed();
 
@@ -84,7 +84,7 @@ export class HUDMinerHighlight extends BaseHUDPart {
         parameters.context.beginRoundedRect(
             tooltipLocation.x + 5 * scale,
             tooltipLocation.y - 3 * scale,
-            (isCapped ? 100 : 65) * scale,
+            (isCapped ? 100 : 75) * scale,
             (isCapped ? 45 : 30) * scale,
             2
         );

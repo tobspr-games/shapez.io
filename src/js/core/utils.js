@@ -543,6 +543,15 @@ export function formatSeconds(secs) {
 }
 
 /**
+ * Formats a number like 2.51 to "2.51"
+ * @param {number} speed
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ */
+export function formatNumber(speed, separator = T.global.decimalSeparator) {
+    return speed.toString().replace(".", separator);
+}
+
+/**
  * Formats a number like 2.51 to "2.5"
  * @param {number} speed
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
@@ -563,7 +572,7 @@ export function formatItemsPerSecond(speed, double = false, separator = T.global
             ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
             : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
                   "<x>",
-                  round2Digits(speed).toString().replace(".", separator)
+                  speed.toString().replace(".", separator)
               )) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "")
     );
 }
