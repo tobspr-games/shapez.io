@@ -35,7 +35,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             <div class="lowerBar">
             <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}">
             ${
-                globalConfig.currentDiscount && globalConfig.currentDiscount.until > new Date().getTime()
+                globalConfig.currentDiscount.active
                     ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
                     : ""
             }

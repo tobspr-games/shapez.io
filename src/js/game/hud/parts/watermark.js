@@ -25,9 +25,9 @@ export class HUDWatermark extends BaseHUDPart {
         this.linkElement = makeDiv(
             parent,
             "ingame_HUD_WatermarkClicker",
-            globalConfig.currentDiscount ? ["withDiscount"] : [""],
+            globalConfig.currentDiscount.active ? ["withDiscount"] : [""],
             T.ingame.watermark.get_on_steam +
-                (globalConfig.currentDiscount && globalConfig.currentDiscount.until > new Date().getTime()
+                (globalConfig.currentDiscount.active
                     ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
                     : "")
         );
