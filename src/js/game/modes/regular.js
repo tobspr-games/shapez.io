@@ -79,7 +79,8 @@ function generateUpgrades(limitedVersion = false) {
         return upgradesCache[limitedVersion];
     }
 
-    const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
+    // 10x actual amount so all numbers are exact
+    const fixedImprovements = [5, 5, 10, 10, 20, 10, 10];
     const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
 
     function generateInfiniteUnlocks() {
@@ -96,13 +97,13 @@ function generateUpgrades(limitedVersion = false) {
     // Fill in endgame upgrades
     for (let i = 0; i < numEndgameUpgrades; ++i) {
         if (i < 20) {
-            fixedImprovements.push(0.1);
+            fixedImprovements.push(1);
         } else if (i < 50) {
-            fixedImprovements.push(0.05);
+            fixedImprovements.push(0.5);
         } else if (i < 100) {
-            fixedImprovements.push(0.025);
+            fixedImprovements.push(0.25);
         } else {
-            fixedImprovements.push(0.0125);
+            fixedImprovements.push(0.125);
         }
     }
 

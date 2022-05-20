@@ -98,11 +98,12 @@ export class HUDSandboxController extends BaseHUDPart {
         );
 
         // Compute improvement
-        let improvement = 1;
+        let improvement = 10;
         for (let i = 0; i < this.root.hubGoals.upgradeLevels[id]; ++i) {
             improvement += upgradeTiers[i].improvement;
         }
-        this.root.hubGoals.upgradeImprovements[id] = improvement;
+        this.root.hubGoals.upgradeImprovements[id] =
+            (this.root.hubGoals.upgradeImprovementsExact[id] = improvement) / 10;
         this.root.signals.upgradePurchased.dispatch(id);
         this.root.hud.signals.notification.dispatch(
             "Upgrade '" + id + "' is now at tier " + (this.root.hubGoals.upgradeLevels[id] + 1),

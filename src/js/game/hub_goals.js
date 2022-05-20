@@ -55,11 +55,12 @@ export class HubGoals extends BasicSerializableObject {
         for (const upgradeId in upgrades) {
             const tiers = upgrades[upgradeId];
             const level = this.upgradeLevels[upgradeId] || 0;
-            let totalImprovement = 1;
+            let totalImprovement = 10;
             for (let i = 0; i < level; ++i) {
                 totalImprovement += tiers[i].improvement;
             }
-            this.upgradeImprovements[upgradeId] = totalImprovement;
+            this.upgradeImprovements[upgradeId] =
+                (this.upgradeImprovementsExact[upgradeId] = totalImprovement) / 10;
         }
 
         // Compute current goal
@@ -100,11 +101,18 @@ export class HubGoals extends BasicSerializableObject {
          */
         this.upgradeImprovements = {};
 
+        /**
+         * Stores 10x the improvements for all upgrades, to be exact
+         * @type {Object<string, number>}
+         */
+        this.upgradeImprovementsExact = {};
+
         // Reset levels first
         const upgrades = this.root.gameMode.getUpgrades();
         for (const key in upgrades) {
             this.upgradeLevels[key] = 0;
             this.upgradeImprovements[key] = 1;
+            this.upgradeImprovementsExact[key] = 10;
         }
 
         this.computeNextGoal();
@@ -347,7 +355,8 @@ export class HubGoals extends BasicSerializableObject {
         }
 
         this.upgradeLevels[upgradeId] = (this.upgradeLevels[upgradeId] || 0) + 1;
-        this.upgradeImprovements[upgradeId] += tierData.improvement;
+        this.upgradeImprovements[upgradeId] =
+            (this.upgradeImprovementsExact[upgradeId] += tierData.improvement) / 10;
 
         this.root.signals.upgradePurchased.dispatch(upgradeId);
 

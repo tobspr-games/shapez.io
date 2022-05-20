@@ -99,7 +99,7 @@ export class HUDShop extends BaseHUDPart {
             // Set description
             handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
                 .replace("<currentMult>", formatBigNumber(currentTierMultiplier))
-                .replace("<newMult>", formatBigNumber(currentTierMultiplier + tierHandle.improvement));
+                .replace("<newMult>", formatBigNumber(currentTierMultiplier + tierHandle.improvement / 10));
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
