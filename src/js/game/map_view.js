@@ -225,6 +225,12 @@ export class MapView extends BaseMap {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
 
+            // @ts-ignore
+            if (this.cachedBackgroundCanvas._contextLost) {
+                freeCanvas(this.cachedBackgroundCanvas);
+                this.internalInitializeCachedBackgroundCanvases();
+            }
+
             parameters.context.fillStyle = parameters.context.createPattern(
                 this.cachedBackgroundCanvas,
                 "repeat"

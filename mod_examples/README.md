@@ -40,6 +40,7 @@ To get into shapez.io modding, I highly recommend checking out all of the exampl
 | [modify_existing_building.js](modify_existing_building.js) | Makes the rotator building always unlocked and adds a new statistic to the building panel         | Modifying a builtin building, replacing builtin methods                                         |
 | [modify_ui.js](modify_ui.js)                               | Shows how to add custom UI elements to builtin game states (the Main Menu in this case)           | Extending builtin UI states, Adding CSS                                                         |
 | [pasting.js](pasting.js)                                   | Shows a dialog when pasting text in the game                                                      | Listening to paste events                                                                       |
+| [smooth_zooming.js](smooth_zooming.js)                     | Allows to smoothly zoom in and out                                                                | Keybindings, overriding methods                                                                 |
 | [sandbox.js](sandbox.js)                                   | Makes blueprints free and always unlocked                                                         | Overriding builtin methods                                                                      |
 
 ### Advanced Examples

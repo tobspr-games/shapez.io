@@ -119,7 +119,8 @@ export const globalConfig = {
 
     currentDiscount: {
         amount: 50,
-        until: Date.parse("April 25 2022 23:59 +2:00"),
+        from: Date.parse("May 23 2022 17:00 +2:00"),
+        until: Date.parse("May 30 2022 23:59 +2:00"),
 
         active: false, // computed later
     },
@@ -170,4 +171,6 @@ if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
 }
 
 globalConfig.currentDiscount.active =
-    !G_IS_STANDALONE && new Date().getTime() < globalConfig.currentDiscount.until;
+    !G_IS_STANDALONE &&
+    new Date().getTime() < globalConfig.currentDiscount.until &&
+    new Date().getTime() > globalConfig.currentDiscount.from;

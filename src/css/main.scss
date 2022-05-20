@@ -132,17 +132,7 @@ $zindex: 100;
 }
 
 body.uiHidden {
-    .ingame_buildingsToolbar,
-    #ingame_HUD_PlacementHints,
-    #ingame_HUD_GameMenu,
-    #ingame_HUD_PinnedShapes,
-    #ingame_HUD_PuzzleBackToMenu,
-    #ingame_HUD_PuzzleNextPuzzle,
-    #ingame_HUD_PuzzleEditorReview,
-    #ingame_HUD_Notifications,
-    #ingame_HUD_TutorialHints,
-    #ingame_HUD_Waypoints,
-    #ingame_HUD_Waypoints_Hint {
+    > div {
         display: none !important;
     }
 }

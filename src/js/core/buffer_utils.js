@@ -161,7 +161,20 @@ export function makeOffscreenBuffer(w, h, { smooth = true, reusable = true, labe
 
         // Initial state
         context.save();
+
+        canvas.addEventListener("webglcontextlost", () => {
+            console.warn("canvas::webglcontextlost", canvas);
+            // @ts-ignore
+            canvas._contextLost = true;
+        });
+        canvas.addEventListener("contextlost", () => {
+            console.warn("canvas::contextlost", canvas);
+            // @ts-ignore
+            canvas._contextLost = true;
+        });
     }
+    // @ts-ignore
+    canvas._contextLost = false;
 
     // @ts-ignore
     canvas.label = label;

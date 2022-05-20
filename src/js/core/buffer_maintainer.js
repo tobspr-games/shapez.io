@@ -68,7 +68,11 @@ export class BufferMaintainer {
 
             // Filter sub cache
             subCache.forEach((cacheEntry, subKey) => {
-                if (cacheEntry.lastUse < minIteration) {
+                if (
+                    cacheEntry.lastUse < minIteration ||
+                    // @ts-ignore
+                    cacheEntry.canvas._contextLost
+                ) {
                     unusedSubKeys.push(subKey);
                     freeCanvas(cacheEntry.canvas);
                     ++deletedKeys;
