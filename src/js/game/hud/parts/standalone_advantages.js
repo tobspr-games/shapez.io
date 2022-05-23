@@ -5,7 +5,7 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
-const showIntervalSeconds = 9 * 60;
+const showIntervalSeconds = 10 * 60;
 
 export class HUDStandaloneAdvantages extends BaseHUDPart {
     createElements(parent) {
@@ -60,7 +60,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.inputReciever = new InputReceiver("standalone-advantages");
         this.close();
 
-        this.lastShown = -1e10;
+        this.lastShown = 0;
     }
 
     show() {
