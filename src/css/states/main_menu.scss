@@ -97,10 +97,10 @@
         }
 
         .standaloneBanner {
-            background: rgb(255, 75, 84);
+            background: #e61b71;
             @include S(border-radius, $globalBorderRadius + 4);
             box-sizing: border-box;
-            border: solid rgba(#fff, 0.15);
+            // border: solid rgba(#fff, 0.15);
             @include S(border-width, 4px);
             @include S(padding, 15px);
 

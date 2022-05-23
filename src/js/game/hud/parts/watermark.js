@@ -60,7 +60,7 @@ export class HUDWatermark extends BaseHUDPart {
     drawOverlays(parameters) {
         const w = this.root.gameWidth;
 
-        parameters.context.fillStyle = "rgba(230, 230, 230, 0.9)";
+        parameters.context.fillStyle = "rgba(20, 30, 40, 0.25)";
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 40 + "px GameFont";
         parameters.context.textAlign = "center";
         parameters.context.fillText(

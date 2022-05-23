@@ -64,7 +64,6 @@ export class MainMenuState extends GameState {
 
         const ownsPuzzleDLC = false;
         const bannerHtml = `
-            <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
 
                     <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">Get the shapez.io standalone!</a>
