@@ -154,6 +154,16 @@
             }
         }
 
+        &.mods {
+            & {
+                /* @load-async */
+                background-image: uiResource("res/ui/icons/advantage_mods.png");
+            }
+            > strong {
+                color: #8a00ff;
+            }
+        }
+
         &.savegames {
             & {
                 /* @load-async */
