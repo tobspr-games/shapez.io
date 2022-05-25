@@ -18,7 +18,7 @@ const nonImageResourcesGlobs = ["../res/**/*.woff2", "../res/*.ico", "../res/**/
 const imageResourcesGlobs = ["../res/**/*.png", "../res/**/*.svg", "../res/**/*.jpg", "../res/**/*.gif"];
 
 // Link to download LibGDX runnable-texturepacker.jar
-const runnableTPSource = "https://libgdx.badlogicgames.com/ci/nightlies/runnables/runnable-texturepacker.jar";
+const runnableTPSource = "https://libgdx-nightlies.s3.eu-central-1.amazonaws.com/libgdx-runnables/runnable-texturepacker.jar";
 
 function gulptasksImageResources($, gulp, buildFolder) {
     // Lossless options
