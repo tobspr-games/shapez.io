@@ -117,7 +117,7 @@ function gulptasksStandalone($, gulp) {
         });
 
         gulp.task(taskPrefix + "standalone.prepare.minifyCode", () => {
-            return gulp.src(path.join(electronBaseDir, "*.js")).pipe(gulp.dest(tempDestBuildDir));
+            return gulp.src(path.join(electronBaseDir, "**/*.js")).pipe(gulp.dest(tempDestBuildDir));
         });
 
         gulp.task(taskPrefix + "standalone.prepare.copyGamefiles", () => {

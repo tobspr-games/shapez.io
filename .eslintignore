@@ -1,6 +1,5 @@
 artwork/*
 build/*
-electron/*
 gulp/*
 node_modules/*
 res/*

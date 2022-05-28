@@ -120,6 +120,8 @@ function catchErrors(message, source, lineno, colno, error) {
         }, 200);
     }
 
+    ipcRenderer.send("write-crash-log", (error && error.stack) || message);
+
     return true;
 }
 
