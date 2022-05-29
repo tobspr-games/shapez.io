@@ -1,5 +1,5 @@
 const { dialog, ipcMain } = require("electron");
-const { readdirSync, readFileSync } = require("fs");
+const { readdirSync, readFileSync, existsSync } = require("fs");
 const { basename, join } = require("path");
 const { modsDir } = require("./folders");
 const { externalModList, isSafeMode, isDev } = require("./switches");
