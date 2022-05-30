@@ -8,7 +8,13 @@ const fse = require("fs-extra");
 const buildutils = require("./buildutils");
 const execSync = require("child_process").execSync;
 const electronNotarize = require("electron-notarize");
-const { signAsync } = require("tobspr-osx-sign");
+
+let signAsync;
+try {
+    signAsync = require("tobspr-osx-sign").signAsync;
+} catch (ex) {
+    console.warn("tobspr-osx-sign not installed, can not create osx builds");
+}
 
 function gulptasksStandalone($, gulp) {
     const targets = [

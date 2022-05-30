@@ -12342,7 +12342,6 @@ to-through@^2.0.0:
     through2 "^2.0.3"
 
 tobspr-osx-sign@^1.0.1:
-  name electron-osx-sign
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tobspr-osx-sign/-/tobspr-osx-sign-1.0.1.tgz#5cca32185d813357b556a6a839305558656c45d5"
   integrity sha512-jXSw9n/ivAnHwwpImvHnTkhbeI06ZDvLKLP3rryZLBoAt1nfljoIEgdPz7vNlOUBGwVEYOl2VauViNOmZPNZ7A==
