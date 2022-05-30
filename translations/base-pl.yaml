@@ -76,7 +76,7 @@ mainMenu:
     savegameUnnamed: Zapis bez nazwy
     puzzleMode: Tryb Układanek
     back: Wróć
-    puzzleDlcText: Czy lubisz kompaktować i optymalizować fabryki? Zainstaluj DLC 
+    puzzleDlcText: Czy lubisz kompaktować i optymalizować fabryki? Zainstaluj DLC
         układanek na Steamie, aby mieć jeszcze więcej zabawy!
     puzzleDlcWishlist: Ustaw jako wyczekiwane!
     puzzleDlcViewNow: Zobacz Dlc
@@ -233,7 +233,7 @@ dialogs:
         desc: "Nie udało się opublikować Twojej układanki:"
     puzzleSubmitOk:
         title: Układanka Opublikowana
-        desc: Gratulacje! Twoja układanka została opublikowana, i teraz inne osoby mogą w nią 
+        desc: Gratulacje! Twoja układanka została opublikowana, i teraz inne osoby mogą w nią
             grać. Teraz ją znajdziesz w zakładce "Moje układanki".
     puzzleCreateOffline:
         title: Tryb Offline
@@ -245,7 +245,7 @@ dialogs:
             przed zaczęcięm grania w DLC układanek, jeśli tak nie zrobisz
             możesz nie znać różnych mechanik. Chcesz kontynuować pomimo tego?
     puzzleShare:
-        title: Skopiowano Skrót Klawiszowy 
+        title: Skopiowano Skrót Klawiszowy
         desc: Skrot klawiszowy dla tej układanki (<key>) został skopiowany do schowka! Możesz
             wpisać go w menu układanek, aby otworzyć tą układankę.
     puzzleReport:
@@ -1272,7 +1272,7 @@ puzzleMenu:
         medium: Średni
         hard: Trudny
         unknown: Nieznany
-    dlcHint: Kupiłeś/aś już DLC? Upewnij się że aktywowałeś/aś shapez.io 
+    dlcHint: Kupiłeś/aś już DLC? Upewnij się że aktywowałeś/aś shapez.io
         w swojej bibliotece, wybierając Właściwości > DLC.
     search:
         action: Szukaj
@@ -1328,5 +1328,5 @@ mods:
     togglingComingSoon:
         title: Już wkrótce
         description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez kopiowanie
-            pliku modów do folderu "mods/". Jednak w przyszłej aktualizacji 
+            pliku modów do folderu "mods/". Jednak w przyszłej aktualizacji
             będziesz/asz mógł zmieniać ich status tutaj!
