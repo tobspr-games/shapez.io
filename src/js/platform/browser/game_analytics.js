@@ -5,6 +5,7 @@ import { StaticMapEntityComponent } from "../../game/components/static_map_entit
 import { RegularGameMode } from "../../game/modes/regular";
 import { GameRoot } from "../../game/root";
 import { InGameState } from "../../states/ingame";
+import { SteamAchievementProvider } from "../electron/steam_achievement_provider";
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
 
@@ -63,6 +64,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                     // Perform call to get a new key from the API
                     this.sendToApi("/v1/register", {
                         environment: this.environment,
+                        standalone:
+                            G_IS_STANDALONE &&
+                            this.app.achievementProvider instanceof SteamAchievementProvider,
                     })
                         .then(res => {
                             // Try to read and parse the key from the api
