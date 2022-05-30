@@ -77,7 +77,7 @@ mainMenu:
     puzzleMode: Tryb Układanek
     back: Wróć
     puzzleDlcText: Czy lubisz kompaktować i optymalizować fabryki? Zainstaluj DLC 
-         układanek na Steamie, aby mieć jeszcze więcej zabawy!
+        układanek na Steamie, aby mieć jeszcze więcej zabawy!
     puzzleDlcWishlist: Ustaw jako wyczekiwane!
     puzzleDlcViewNow: Zobacz Dlc
     mods:
@@ -234,7 +234,7 @@ dialogs:
     puzzleSubmitOk:
         title: Układanka Opublikowana
         desc: Gratulacje! Twoja układanka została opublikowana, i teraz inne osoby mogą w nią 
-           grać. Teraz ją znajdziesz w zakładce "Moje układanki".
+            grać. Teraz ją znajdziesz w zakładce "Moje układanki".
     puzzleCreateOffline:
         title: Tryb Offline
         desc: Ponieważ jesteś w trybie offline, więc nie możesz zapisać lub opublikować Twojej
@@ -1328,5 +1328,5 @@ mods:
     togglingComingSoon:
         title: Już wkrótce
         description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez kopiowanie
-             pliku modów do folderu "mods/". Jednak w przyszłej aktualizacji 
-             będziesz/asz mógł zmieniać ich status tutaj!
+            pliku modów do folderu "mods/". Jednak w przyszłej aktualizacji 
+            będziesz/asz mógł zmieniać ich status tutaj!
