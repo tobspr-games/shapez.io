@@ -126,7 +126,7 @@ export class ModsState extends TextualGameState {
             this.dialogs.showWarning(T.global.error, T.mods.folderOnlyStandalone);
             return;
         }
-        ipcRenderer.invoke("open-mods-folder");
+        ipcRenderer.invoke("open-folder", "mods");
     }
 
     openBrowseMods() {
