@@ -1,6 +1,6 @@
 import { ClickDetector } from "../../../core/click_detector";
 import { InputReceiver } from "../../../core/input_receiver";
-import { formatBigNumber, getRomanNumber, makeDiv } from "../../../core/utils";
+import { formatBigNumber, formatNumber, getRomanNumber, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
@@ -91,15 +91,15 @@ export class HUDShop extends BaseHUDPart {
                 // Max level
                 handle.elemDescription.innerText = T.ingame.shop.maximumLevel.replace(
                     "<currentMult>",
-                    formatBigNumber(currentTierMultiplier)
+                    formatNumber(currentTierMultiplier)
                 );
                 continue;
             }
 
             // Set description
             handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
-                .replace("<currentMult>", formatBigNumber(currentTierMultiplier))
-                .replace("<newMult>", formatBigNumber(currentTierMultiplier + tierHandle.improvement));
+                .replace("<currentMult>", formatNumber(currentTierMultiplier))
+                .replace("<newMult>", formatNumber(currentTierMultiplier + tierHandle.improvement / 10));
 
             tierHandle.required.forEach(({ shape, amount }) => {
                 const container = makeDiv(handle.elemRequirements, null, ["requirement"]);

@@ -334,7 +334,7 @@ export function waitNextFrame() {
  * @returns {number}
  */
 export function round1Digit(n) {
-    return Math.floor(n * 10.0) / 10.0;
+    return Math.round(n * 10.0) / 10.0;
 }
 
 /**
@@ -343,7 +343,7 @@ export function round1Digit(n) {
  * @returns {number}
  */
 export function round2Digits(n) {
-    return Math.floor(n * 100.0) / 100.0;
+    return Math.round(n * 100.0) / 100.0;
 }
 
 /**
@@ -352,7 +352,7 @@ export function round2Digits(n) {
  * @returns {number}
  */
 export function round3Digits(n) {
-    return Math.floor(n * 1000.0) / 1000.0;
+    return Math.round(n * 1000.0) / 1000.0;
 }
 
 /**
@@ -361,7 +361,7 @@ export function round3Digits(n) {
  * @returns {number}
  */
 export function round4Digits(n) {
-    return Math.floor(n * 10000.0) / 10000.0;
+    return Math.round(n * 10000.0) / 10000.0;
 }
 
 /**
@@ -543,6 +543,15 @@ export function formatSeconds(secs) {
 }
 
 /**
+ * Formats a number like 2.51 to "2.51"
+ * @param {number} speed
+ * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
+ */
+export function formatNumber(speed, separator = T.global.decimalSeparator) {
+    return speed.toString().replace(".", separator);
+}
+
+/**
  * Formats a number like 2.51 to "2.5"
  * @param {number} speed
  * @param {string=} separator The decimal separator for numbers like 50.1 (separator='.')
@@ -563,7 +572,7 @@ export function formatItemsPerSecond(speed, double = false, separator = T.global
             ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
             : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace(
                   "<x>",
-                  round2Digits(speed).toString().replace(".", separator)
+                  speed.toString().replace(".", separator)
               )) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : "")
     );
 }
