@@ -8,10 +8,11 @@
 
     @include PlainText;
     @include S(width, 150px);
-    background: rgba(0, 10, 20, 0.5);
-    @include S(padding, 5px);
+    background: $ingameHudBg;
+    @include S(padding, 7px);
 
     color: #eee;
+    @include S(border-radius, $globalBorderRadius);
 
     .desc {
         @include SuperSmallText;

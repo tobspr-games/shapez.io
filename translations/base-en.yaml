@@ -112,7 +112,7 @@ mainMenu:
 
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
-        Sorry, but the game is known to run slowly on your browser! Get the standalone version or download Google Chrome for the full experience.
+        Sorry, but the game is known to run slowly on your browser! Get the full version or download Google Chrome for the full experience.
 
     savegameLevel: Level <x>
     savegameLevelUnknown: Unknown Level
@@ -204,7 +204,7 @@ dialogs:
         later: Later
         restart: Restart
         reset: Reset
-        getStandalone: Get Standalone
+        getStandalone: Get on Steam
         deleteGame: I know what I am doing
         viewUpdate: View Update
         showUpgrades: Show Upgrades
@@ -259,11 +259,11 @@ dialogs:
 
     featureRestriction:
         title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the standalone version for the full experience!
+        desc: You tried to access a feature (<feature>) which is not available in the demo. Consider getting the full version on Steam for the best experience!
 
     oneSavegameLimit:
         title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the standalone version!
+        desc: You can only have one savegame at a time in the demo version. Please remove the existing one or get the full version on Steam!
 
     updateSummary:
         title: New update!
@@ -320,7 +320,7 @@ dialogs:
         title: Set Item
 
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for unlimited markers!
+        desc: You can only create two custom markers in the demo. Get the full version on Steam for unlimited markers!
 
     exportScreenshotWarning:
         title: Export screenshot
@@ -616,7 +616,7 @@ ingame:
     # Pops up in the demo every few minutes
     watermark:
         title: Demo version
-        desc: Click here to see the advantages of the standalone version!
+        desc: Click here to see the advantages of the full version!
         get_on_steam: Get on Steam
 
     standaloneAdvantages:
@@ -1106,12 +1106,12 @@ mods:
     version: Version
     modWebsite: Website
     openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
+    folderOnlyStandalone: Opening the mod folder is only possible when running the full version on Steam.
     browseMods: Browse Mods
 
     modsInfo: >-
         To install and manage mods, copy them to the mods folder within the game directory. You can also use the 'Open Mods Folder' button on the top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    noModSupport: You need the full version on Steam to install mods.
 
     togglingComingSoon:
         title: Coming Soon
@@ -1195,7 +1195,7 @@ settings:
         fullscreen:
             title: Fullscreen
             description: >-
-                It is recommended to play the game in fullscreen to get the best experience. Only available in the standalone.
+                It is recommended to play the game in fullscreen to get the best experience. Only available in the full version.
 
         soundsMuted:
             title: Mute Sounds

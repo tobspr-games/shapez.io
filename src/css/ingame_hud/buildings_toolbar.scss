@@ -7,6 +7,7 @@
     display: grid;
     grid-template-rows: auto auto;
     justify-items: center;
+    @include S(grid-gap, 4px);
 
     background: transparent;
     transition: transform 120ms ease-in-out;
@@ -32,8 +33,6 @@
 
         &.secondary {
             grid-row: 1 / 2;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
 
             .building {
                 @include S(width, 30px);
@@ -108,7 +107,7 @@
                 &.selected {
                     // transform: scale(1.05);
                     background-color: rgba(lighten($colorBlueBright, 9), 0.4);
-                    @include S(border-radius, 2px);
+                    @include S(border-radius, $globalBorderRadius);
 
                     .keybinding {
                         color: #111;

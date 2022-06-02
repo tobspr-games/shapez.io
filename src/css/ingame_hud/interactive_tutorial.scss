@@ -10,7 +10,7 @@
     @include S(width, 150px);
 
     background: $ingameHudBg;
-    @include S(padding, 4px);
+    @include S(padding, 7px);
     color: #eee;
     display: flex;
     flex-direction: column;
@@ -60,5 +60,6 @@
         @include S(height, 150px);
         background: center center / cover no-repeat;
         transition: opacity 0.1s ease-out;
+        @include S(border-radius, $globalBorderRadius);
     }
 }

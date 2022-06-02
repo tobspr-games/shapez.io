@@ -18,12 +18,12 @@ export class MobileWarningState extends GameState {
                 There is also no estimate when this will change, but feel to make a contribution! It's
                 &nbsp;<a href="https://github.com/tobspr/shapez.io" target="_blank">open source</a>!</p>
 
-            <p>If you want to play on your computer, you can also get the standalone on Steam:</p>
+            <p>If you want to play on your computer, you can also get the game on Steam:</p>
 
 
             <a href="${
                 THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mobile"
-            }" class="standaloneLink" target="_blank">Get the shapez.io standalone!</a>
+            }" class="standaloneLink" target="_blank">Get on Steam!</a>
         `;
     }
 

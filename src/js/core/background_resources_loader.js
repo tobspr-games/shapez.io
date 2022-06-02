@@ -21,6 +21,10 @@ export function getLogoSprite() {
         return "logo_cn.png";
     }
 
+    if (G_IS_STANDALONE) {
+        return "logo.png";
+    }
+
     if (G_IS_BROWSER) {
         return "logo_demo.png";
     }

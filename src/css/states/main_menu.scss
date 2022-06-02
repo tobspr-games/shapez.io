@@ -63,9 +63,9 @@
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
-        filter: blur(D(3px));
+        filter: blur(D(7px));
 
-        $opacity: 0.07;
+        $opacity: 0.4;
         &.loaded {
             display: block;
             opacity: $opacity;
@@ -241,6 +241,7 @@
         position: relative;
         @include S(padding, 20px);
         @include S(border-radius, $globalBorderRadius);
+        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
 
         > .badge {
             color: #fff;
@@ -398,6 +399,8 @@
         @include S(padding, 20px);
         @include S(border-radius, $globalBorderRadius);
         // border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
+
+        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
         height: 100%;
         width: 100%;
         box-sizing: border-box;
@@ -716,18 +719,31 @@
         }
 
         .author {
-            flex-grow: 1;
+            margin-left: auto;
             text-align: right;
             @include PlainText;
-            color: #888a8f;
+            color: #000;
+
             a {
-                color: #333438;
+                &:hover {
+                    opacity: 0.8;
+                }
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    @include S(margin-left, 5px);
+                    @include S(margin-top, 3px);
+                    @include S(width, 50px);
+                    filter: invert(100%);
+                }
             }
         }
 
         @include S(padding, 15px);
 
-        $linkBg: #fdfdff;
+        $linkBg: rgba(#fdfdff, 0.5);
         $linkBgHover: darken($linkBg, 2);
         $linkColor: #55586a;
 
@@ -737,11 +753,9 @@
             grid-template-columns: 1fr auto;
 
             justify-content: center;
+            backdrop-filter: blur(5px);
+            background: $linkBg;
 
-            & {
-                /* @load-async */
-                background: $linkBg uiResource("icons/link.png") top D(3px) right D(3px) / D(9px) no-repeat;
-            }
             @include S(padding, 5px);
             @include S(padding-left, 10px);
             @include S(border-radius, $globalBorderRadius);
@@ -830,7 +844,7 @@
     }
 
     @include DarkThemeOverride {
-        background: $darkModeGameBackground center center / cover !important;
+        background: rgba($darkModeGameBackground, 0.5) center center / cover !important;
 
         .mainContainer {
             background: $darkModeControlsBackground;
@@ -861,19 +875,11 @@
         .footer {
             > a,
             .sidelinks > a {
-                background-color: $darkModeControlsBackground;
+                background-color: rgba($darkModeControlsBackground, 0.3);
                 color: #eee;
 
                 &:hover {
-                    background-color: darken($darkModeControlsBackground, 5);
-                }
-            }
-
-            .author {
-                color: #bdbdbd;
-
-                > a {
-                    color: white;
+                    background-color: rgba(darken($darkModeControlsBackground, 5), 0.5);
                 }
             }
 

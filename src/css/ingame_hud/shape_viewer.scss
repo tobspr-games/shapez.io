@@ -51,6 +51,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @include S(border-radius, $globalBorderRadius);
 
             > canvas {
                 @include S(width, 50px);

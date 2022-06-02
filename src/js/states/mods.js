@@ -47,7 +47,7 @@ export class ModsState extends TextualGameState {
 
                     <p>${T.mods.noModSupport}</p>
 
-                    <a href="#" class="steamLink steam_2_npr" target="_blank">Get the shapez.io standalone!</a>
+                    <a href="#" class="steamLink steam_2_npr" target="_blank">Get on Steam!</a>
 
 
                 </div>

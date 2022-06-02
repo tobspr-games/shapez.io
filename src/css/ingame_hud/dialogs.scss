@@ -96,6 +96,8 @@
                 @include S(grid-gap, 5px);
                 grid-template-columns: 1fr 1fr;
                 .option {
+                    @include S(border-radius, $globalBorderRadius);
+
                     pointer-events: all;
                     cursor: pointer;
                     @include S(padding, 10px);

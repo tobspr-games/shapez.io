@@ -40,7 +40,7 @@ export class MainMenuState extends GameState {
         const showExitAppButton = G_IS_STANDALONE;
         const showUpdateLabel = !G_WEGAME_VERSION;
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
-        const showPuzzleDLC = !G_WEGAME_VERSION && (G_IS_STANDALONE || G_IS_DEV);
+        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -146,9 +146,6 @@ export class MainMenuState extends GameState {
                         <button class="styledButton puzzleDlcGetButton">${
                             T.mainMenu.puzzleDlcViewNow
                         }</button>
-                        <span class="hint">
-                            ${T.puzzleMenu.dlcHint}
-                        </span>
                     </div>`
                         : ""
                 }
@@ -230,10 +227,10 @@ export class MainMenuState extends GameState {
 
                         ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
                     </div>
-                    <div class="author">${T.mainMenu.madeBy.replace(
+                    <div class="author"><a class="producerLink" target="_blank">${T.mainMenu.madeBy.replace(
                         "<author-link>",
-                        '<a class="producerLink" target="_blank">tobspr Games</a>'
-                    )}</div>
+                        `<img src="${cachebust("res/logo-tobspr-games.svg")}">`
+                    )}</a></div>
                 </div>
 
                 ${

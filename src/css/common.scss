@@ -195,6 +195,7 @@ button {
     border: 0;
     background: $colorBlueBright;
     color: #fff;
+
     @include S(border-radius, $globalBorderRadius);
     // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
@@ -673,7 +674,7 @@ input.rangeInput {
     text-transform: uppercase;
     @include S(padding, 1.5px, 3px, 2px);
     @include PlainText;
-    @include S(border-radius, $globalBorderRadius);
+    @include S(border-radius, 0.5 * $globalBorderRadius);
     &,
     > span {
         @include S(font-size, 9px);
@@ -682,6 +683,7 @@ input.rangeInput {
         text-shadow: none !important;
         // font-family: Arial, sans-serif !important;
     }
+
     font-weight: bold;
     color: $accentColorDark;
     text-align: center;

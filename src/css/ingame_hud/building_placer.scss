@@ -14,9 +14,9 @@
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
 
-    @include DarkThemeOverride {
-        background-color: #55585a;
-    }
+    // @include DarkThemeOverride {
+    //     // background-color: #55585a;
+    // }
 
     transition: opacity 0.1s ease-out;
     &.hovered {
@@ -133,7 +133,7 @@
 
             grid-row: 2 / 3;
             @include S(border-radius, $globalBorderRadius);
-            background: rgba($ingameHudBg, 0.3);
+            background: rgba($ingameHudBg, 0.5);
             opacity: 0.5;
             display: inline-flex;
             vertical-align: top;

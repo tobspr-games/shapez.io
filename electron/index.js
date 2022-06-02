@@ -60,7 +60,7 @@ function createWindow() {
         useContentSize: false,
         minWidth: 800,
         minHeight: 600,
-        title: "shapez.io Standalone",
+        title: "shapez",
         transparent: false,
         icon: path.join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,
