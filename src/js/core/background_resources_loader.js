@@ -9,13 +9,23 @@ import { SOUNDS, MUSIC } from "../platform/sound";
 import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
 import { initBuildingCodesAfterResourcesLoaded } from "../game/meta_building_registry";
 import { cachebust } from "./cachebust";
-import { MODS } from "../mods/modloader";
 
 const logger = createLogger("background_loader");
 
 export function getLogoSprite() {
-    // @todo: ugh, in a hurry
-    return G_WEGAME_VERSION ? "logo_wegame.png" : G_CHINA_VERSION ? "logo_cn.png" : "logo.png";
+    if (G_WEGAME_VERSION) {
+        return "logo_wegame.png";
+    }
+
+    if (G_CHINA_VERSION) {
+        return "logo_cn.png";
+    }
+
+    if (G_IS_BROWSER) {
+        return "logo_demo.png";
+    }
+
+    return "logo.png";
 }
 
 const essentialMainMenuSprites = [

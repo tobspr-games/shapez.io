@@ -184,18 +184,7 @@
         flex-direction: column;
         @include S(padding-top, 20px);
         img {
-            @include S(width, 350px);
-        }
-
-        .demoBadge {
-            @include S(margin, 10px, 0);
-            @include S(width, 100px);
-            @include S(height, 30px);
-            & {
-                /* @load-async */
-                background: uiResource("demo_badge.png") center center / contain no-repeat;
-            }
-            display: inline-block;
+            @include S(width, 300px);
         }
 
         position: relative;
