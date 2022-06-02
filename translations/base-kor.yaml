@@ -75,7 +75,7 @@ mainMenu:
     puzzleDlcViewNow: DLC 보러 가기
     mods:
         title: Active Mods
-        warningPuzzleDLC: Puzzle DLC를 모드와 함게 플레이하는것은 안됩니다.
+        warningPuzzleDLC: 퍼즐 DLC는 모드와 호환되지 않습니다. DLC 플레이 전 모든 모드를 비활성화해 주세요.
             모든 모드를 비활성화 해주세요.
 dialogs:
     buttons:
