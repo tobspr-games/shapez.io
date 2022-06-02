@@ -97,16 +97,14 @@
         }
 
         .standaloneBanner {
-            background: rgb(255, 75, 84);
-            @include S(border-radius, $globalBorderRadius + 4);
+            background: rgb(216, 79, 76);
+            @include S(border-radius, $globalBorderRadius);
             box-sizing: border-box;
-            border: solid rgba(#fff, 0.15);
-            @include S(border-width, 4px);
             @include S(padding, 15px);
+            box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
 
             display: flex;
             flex-direction: column;
-
             strong {
                 font-weight: bold;
                 @include S(margin, 0, 4px);
@@ -116,6 +114,7 @@
                 @include Heading;
                 font-weight: bold;
                 @include S(margin-bottom, 20px);
+                display: none;
                 text-transform: uppercase;
                 color: #fff;
             }
@@ -137,13 +136,13 @@
                 align-self: center;
                 justify-self: center;
                 width: 100%;
-                @include S(height, 40px);
-                @include S(width, 180px);
+                @include S(height, 40px * 1.2);
+                @include S(width, 180px * 1.2);
                 background: #171a23 center center / contain no-repeat;
                 // overflow: hidden;
                 display: block;
                 cursor: pointer;
-                @include S(margin-top, 30px);
+                @include S(margin-top, 15px);
                 pointer-events: all;
                 transition: all 0.12s ease-in;
                 transition-property: opacity, transform;
