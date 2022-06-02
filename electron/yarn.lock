@@ -505,9 +505,9 @@ serialize-error@^7.0.1:
   dependencies:
     type-fest "^0.13.1"
 
-"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v99":
+"shapez.io-private-artifacts@github:tobspr/shapez.io-private-artifacts#abi-v103":
   version "0.1.0"
-  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#3293b20be26060fd36e9f00ded9ab5d0bdf57338"
+  resolved "git+ssh://git@github.com/tobspr/shapez.io-private-artifacts.git#88f0375572dadc17e966369484be7c2596ea7124"
 
 sprintf-js@^1.1.2:
   version "1.1.2"
