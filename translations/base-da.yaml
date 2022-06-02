@@ -7,11 +7,11 @@ steamPage:
         Shapez.io er et afslappet spil hvor du skal bygge fabrikker for at
         automatisere productionen af geometriske figurer.
 
-        Jo længere du når, jo mere kompliceret bliver figurerne, og du bliver nød til at sprede dig ud på den grænseløse spilleflade.
+        Jo længere du når, jo mere kompliceret bliver figurerne, og du bliver nødt til at sprede dig ud på den grænseløse spilleflade.
 
         Og, hvis det ikke var nok, så skal du også producere eksponentielt flere figurer for at møde behovene spillet giver dig - det eneste der virker er skalering! Mens du i starten kun laver former, skal du senere farvelægge dem - for at gøre dette skal du udvinde og blande farver!
 
-        Køb spillet på Steam, det giver dig adgang til det fulde spil, men du kan også spille en demo version på shapez.io og vælge senere!
+        Køb spillet på Steam, det giver dig adgang til det fulde spil, men du kan også spille en demoversion på shapez.io og vælge senere!
     what_others_say: Hvad andre siger om shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
@@ -53,7 +53,7 @@ global:
         space: MELLEMRUM
     loggingIn: Logging in
 demoBanners:
-    title: Demo Version
+    title: Demoversion
     intro: Køb spillet for at få den fulde oplevelse!
 mainMenu:
     play: Spil
@@ -63,24 +63,24 @@ mainMenu:
     subreddit: Reddit
     importSavegame: Importér
     openSourceHint: Dette spil er open source!
-    discordLink: Officiel Discord Server
+    discordLink: Officiel Discordserver
     helpTranslate: Hjælp med at oversætte!
     madeBy: Lavet af <author-link>
     browserWarning: Undskyld, men spillet er kendt for at køre langsomt på denne
-        browser! Køb spillet eller download chrome for den fulde oplevelse.
+        browser! Køb spillet eller download Chrome for den fulde oplevelse.
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Ukendt Niveau
     savegameUnnamed: Uden Navn
-    puzzleMode: Puzzle Tilstand
+    puzzleMode: Puzzle-tilstand
     back: Tilbage
     puzzleDlcText: Synes du det er det sjovt at gøre maskinerne mindre og mere
-        optimal? Få fat i DLC på Steam nu for mere sjov!
+        optimale? Få fat i DLC på Steam nu for mere sjov!
     puzzleDlcWishlist: Wishlist den nu!
     puzzleDlcViewNow: Se DLC
     mods:
         title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        warningPuzzleDLC: Det er ikke muligt at spille Puzzle DLC med mods. Slå
+            alle mods fra for at spille DLC.
 dialogs:
     buttons:
         ok: OK
@@ -91,10 +91,10 @@ dialogs:
         reset: Nulstil
         getStandalone: Køb spillet
         deleteGame: Jeg ved hvad jeg laver
-        viewUpdate: Se Opdatering
-        showUpgrades: Vis Opgraderinger
+        viewUpdate: Se opdatering
+        showUpgrades: Vis opgraderinger
         showKeybindings: Vis tastefunktioner
-        retry: Genprøv
+        retry: Prøv igen
         continue: Fortsæt
         playOffline: Spil Offline
     importSavegameError:
@@ -465,7 +465,7 @@ ingame:
     puzzleCompletion:
         title: Pusle løst!
         titleLike: "Klik på hjertet hvis du kunne lide puslet:"
-        titleRating: Hvor svært var pusket for dig?
+        titleRating: Hvor svært var puslet for dig?
         titleRatingDesc: Din vurdering vil hjælpe mig i bedre anbefalinger i fremtiden
         continueBtn: Fortsæt spillet
         menuBtn: Menu
@@ -475,7 +475,7 @@ ingame:
         shortKey: Kort nøgle
         rating: Sværhedsgrad
         averageDuration: Gnms. varighed
-        completionRate: Løsnings grad
+        completionRate: Løsningsgrad
 shopUpgrades:
     belt:
         name: Bånd, Fordelere & Tuneller
@@ -533,7 +533,7 @@ buildings:
             description: Drejer figurer 90 grader mod uret.
         rotate180:
             name: Rotate (180)
-            description: Drejer figurer 180 grader med uret.
+            description: Drejer figurer 180 grader.
     stacker:
         default:
             name: Stabler
@@ -597,7 +597,7 @@ buildings:
     constant_signal:
         default:
             name: Konstant Signal
-            description: Sender et konstant signal, som kan være en figure, farve eller
+            description: Sender et konstant signal, som kan være en figur, farve eller
                 Sand/Falsk (1/0).
     lever:
         default:
@@ -801,7 +801,7 @@ storyRewards:
             gennemstrømning på et bånd. <br><br>Bare vent til du har Ledninger -
             så bliver den meget nyttig!
     reward_rotater_180:
-        title: Rotater (180 degrees)
+        title: Drejer (180 grader)
         desc: Du har nu åbnet op for <strong>Drejeren med 180°</strong>! - Nu kan du
             dreje dine figurer med 180 grader (Overraskelse! :D)
     reward_display:
@@ -819,10 +819,10 @@ storyRewards:
             <strong>boolean</strong> (1 / 0).
     reward_logic_gates:
         title: Logic Gates
-        desc: You unlocked <strong>logic gates</strong>! You don't have to be excited
-            about this, but it's actually super cool!<br><br> With those gates
-            you can now compute AND, OR, XOR and NOT operations.<br><br> As a
-            bonus on top I also just gave you a <strong>transistor</strong>!
+        desc: Du har oplåst <strong>logiske porte</strong>! Du behøver ikke være
+            ellevild over dette, men det er faktisk virkelig sejt!<br><br> Med de porte
+            kan du beregne AND-, OR-, XOR- og NOT-operationer.<br><br> Og som
+            en bonus har jeg også gived dig <strong>transistoren</strong>!
     reward_virtual_processing:
         title: Virtual Processing
         desc: I just gave a whole bunch of new buildings which allow you to
@@ -857,7 +857,7 @@ settings:
         general: Generelt
         userInterface: Brugerflade
         advanced: Avanceret
-        performance: Performance
+        performance: Ydeevne
     versionBadges:
         dev: Udvikling
         staging: Iscenesættelse
@@ -865,7 +865,7 @@ settings:
     buildDate: Bygget <at-date>
     labels:
         uiScale:
-            title: Grænseflade størrelse
+            title: Grænsefladens størrelse
             description: Ændrer størrelsen på brugerfladen. Den vil stadig skalere baseret
                 på opløsningen af din skærm, men denne indstilling bestemmer
                 hvor meget den skalerer.
@@ -873,7 +873,7 @@ settings:
                 super_small: Meget lille
                 small: Lille
                 regular: Normal
-                large: Store
+                large: Stor
                 huge: Kæmpe
         autosaveInterval:
             title: Autogem Interval
@@ -887,7 +887,7 @@ settings:
                 twenty_minutes: 20 Minutter
                 disabled: Slået fra
         scrollWheelSensitivity:
-            title: Zoom følsomhed
+            title: Følsomhed af zoom
             description: Ændrer hvor følsomt zoomet er (Enten musehjulet eller trackpad).
             sensitivity:
                 super_slow: Meget langsom
@@ -953,7 +953,7 @@ settings:
                 overskydende tunneller fjernes.
         vignette:
             title: Vignette
-            description: Aktiverer vignette hvilket mørkner kanterne af skærmen og gør
+            description: Aktiverer vignette, hvilket mørkner kanterne af skærmen og gør
                 teksten nemmere at læse.
         rotationByBuilding:
             title: Rotation baseret på bygningstype
@@ -979,20 +979,20 @@ settings:
             description: Forenkler fremtoningen af figurer på kortet når zommet tæt for at
                 øge spillets ydelse. Det ser også renere ud, så prøv det!
         disableTileGrid:
-            title: Slå net fra
-            description: Slå flise stregerne fra kan øge spillets ydelse. Det gør
+            title: Slå gitter fra
+            description: At slå flisestregerne fra kan øge spillets ydelse. Det gør
                 fremtoningen renere!
         clearCursorOnDeleteWhilePlacing:
-            title: Ryd Cursor med højre klik
+            title: Ryd Cursor med højreklik
             description: Normalt slået til. Rydder cursorens indhold hvis du har en bygning
                 parat til placering. Hvis slået fra, så sletter den bygning med
-                højreclick også hvis noget er i cursoren.
+                højreklik også hvis noget er i cursoren.
         lowQualityTextures:
-            title: Lav kvalitets texturer (Gremt)
-            description: Bruger lav kvalitet for at forbedre spillets ydelse. Det får
-                spillet at se gremt ud!
+            title: Lav kvalitet af teksturer (Grimt)
+            description: Bruger lav kvalitet for at forbedre spillets ydeevne. Det får
+                spillet at se grimt ud!
         displayChunkBorders:
-            title: Vis klynge grænser
+            title: Vis klyngegrænser
             description: Spillet er inddelt i klynger á 16x16 fliser. Dette viser grænsen af
                 hver klynge.
         pickMinerOnPatch:
@@ -1000,12 +1000,12 @@ settings:
             description: Normalt slået til. Hvis du bruger pipette mens du er på en
                 resurseområde, vælges en Udvinder.
         simplifiedBelts:
-            title: Forenklede bånd (Gremt)
+            title: Forenklede bånd (Grimt)
             description: Skjuler enheder på bånd, med mindre du holder musen over dem, for
-                at øge spillets ydelse. Jeg anbefaler at ikke bruge dette, med
-                mindre din maskines ydelse kræver det.
+                at øge spillets ydeevne. Jeg anbefaler ikke at bruge dette, med
+                mindre din maskines ydeevne kræver det.
         enableMousePan:
-            title: Tilvælg mus panorering
+            title: Tilvælg panorering med mus
             description: Muliggør at flytte kortet ved føre musen til skærmens kanter.
                 Hastigheden afhænger af anden indstilling.
         zoomToCursor:
@@ -1085,7 +1085,7 @@ keybindings:
         balancer: Balancer
         storage: Opbevaring
         constant_signal: Constant Signal
-        logic_gate: Logic Gate
+        logic_gate: Logisk Port
         lever: Switch (regular)
         filter: Filter
         wire_tunnel: Wire Crossing
@@ -1102,7 +1102,7 @@ keybindings:
         rotateToRight: "Drejning: Peg Højre"
         rotateToLeft: "Drejning: Peg Venster"
         constant_producer: Konstant udgiver
-        goal_acceptor: Mål kontrollant
+        goal_acceptor: Målkontrollant
         block: Blok
         massSelectClear: Ryd bånd
         showShapeTooltip: Show shape output tooltip
@@ -1113,13 +1113,13 @@ about:
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (det er mig).<br><br>
 
-        Hvis du vil bidrage, tjek <a href="<githublink>" target="_blank">shapez.io på github</a>.<br><br>
+        Hvis du vil bidrage, tjek <a href="<githublink>" target="_blank">shapez.io på GitHub</a>.<br><br>
 
         Dette spil ville ikke have været muligt uden det fremragende Discord-fælleskab omkring mine spil - Du burde virkelig deltage på <a href="<discordlink>" target="_blank">Discordserveren</a>!<br><br>
 
         Lydsporet er lavet af <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Han er fantastisk.<br><br>
 
-        Endelig, tusind tak til min bedste ven <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Uden vi havde spillet factorio sammen ville dette spil aldrig have eksisteret.
+        Endelig, tusind tak til min bedste ven <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Uden vi havde spillet Factorio sammen ville dette spil aldrig have eksisteret.
 changelog:
     title: Changelog
 demo:
@@ -1128,11 +1128,11 @@ demo:
         importingGames: Importerer gemte spil
         oneGameLimit: Afgrænset til et gem
         customizeKeybindings: Tilpasse Tastaturfunktioner
-        exportingBase: Eksportere hele basen som et billede
+        exportingBase: Eksporterer hele basen som et billede
     settingNotAvailable: Ikke tilgængelig i demoen.
 tips:
     - Det central NAV modtager alle figurer, ikke kun den aktuelle figur!
-    - Anstreng dig at fabrikker er modulære - det betaler sig!
+    - Anstreng dig for at fabrikker er modulære - det betaler sig!
     - Undgå at bygge for tæt på navet - det bliver hurtigt rodet!
     - Hvis stablingen ikke virker, så prøv at bytte de to indgange.
     - Du kan vende båndplanlæggerens retning ved at trykke <b>R</b>.
@@ -1152,18 +1152,18 @@ tips:
     - Hvis <b>SHIFT</b> holdes nede, aktiveres båndplanlæggeren, som gør det
       meget nemmere at placere lange bånd.
     - Klipperen skærer altid lodret, uanset placering.
-    - For at lave hvis skal alle tre farver blandes sammen.
-    - Opbevaringsbufferen fortrækker venstre udgang.
-    - Invester lidt tid i genbrugbare designs - det lønner sig!
-    - Ved at holde <b>CTRL</b> kan du placere placere flere bygninger.
+    - For at lave hvid skal alle tre farver blandes sammen.
+    - Opbevaringsbufferen prioriterer venstre udgang.
+    - Invester lidt tid i genbrugbare designs - det betaler sig!
+    - Ved at holde <b>CTRL</b> kan du placere flere bygninger.
     - Med <b>ALT</b> holdt nede, vendes retning af båndet ved placering.
     - Effektivitet er nøglen!
-    - Figure-felterne bliver mere komplex længere væk fra Centralen.
+    - Figur-felterne bliver mere komplekse længere væk fra Centralen.
     - Maskinerne har begrænset fart - del arbejdet op for effektivitet.
     - Brug Fordeleren for at øge effektiviteten.
     - Organisation er vigtig. Undgå for mange bånd der krydser hinanden.
     - Plan i forvejen, eller det bliver en gang rod!
-    - undlad at slette dine gamle maskiner! Du behover dem for figurer til
+    - Undlad at slette dine gamle maskiner! Du har brug for figurer til
       Forbedringer.
     - Prøv at komme til niveau 20 inden du søger om hjælp!
     - Undgå at gøre det kompliceret - enkelhed kan komme langt.
@@ -1172,52 +1172,52 @@ tips:
     - Nogle gange kan du finde en ønsket figur på kortet, uden at behove lave
       den med stackere.
     - En fuld vindmølle-figur findes ikke på kortet.
-    - Fervelæg figurere inden du skærer dem op for bedre effektivitet.
+    - Farvelæg figurere inden du skærer dem op for bedre effektivitet.
     - With modules, space is merely a perception; a concern for mortal men.
     - Lav en seperat maskine for skabelon-figuren. De er vigtige for moduler.
     - Kig tæt på Farveblander ikonet. Det svarer på farve spørgsmål.
     - Husk <b>CTRL</b> + museklick for at indvælge et område.
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
-    - Mix all primary colors together to make white!
-    - You have an infinite map, don't cramp your factory, expand!
-    - Also try Factorio! It's my favorite game.
+    - Bland alle grundfarverne for at lave hvid farve!
+    - Du har en uendeligt stor verden, lad være med at kramme fabrikken sammen. Udvid!
+    - Prøv også Factorio. Det er mit yndlingsspil!
     - The quad cutter cuts clockwise starting from the top right!
-    - You can download your savegames in the main menu!
+    - Du kan downloade dine gemte spil i hovedmenuen!
     - This game has a lot of useful keybindings! Be sure to check out the
       settings page.
-    - This game has a lot of settings, be sure to check them out!
+    - Dette spil har en masse indstillinger. Tjek dem ud!
     - The marker to your hub has a small compass to indicate its direction!
     - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
+    - Tryk F4 for at se din FPS og Tick Rate.
     - Press F4 twice to show the tile of your mouse and camera.
     - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
-    play: Play
-    edit: Edit
+    play: Spil
+    edit: Rediger
     title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
+    createPuzzle: Lav Puzzle
+    loadPuzzle: Indlæs
+    reviewPuzzle: Gennemgå & Udgiv
+    validatingPuzzle: Validerer Puzzle
+    submittingPuzzle: Indsender Puzzle
     noPuzzles: There are currently no puzzles in this section.
     categories:
-        levels: Levels
-        new: New
+        levels: Niveauer
+        new: Ny
         top-rated: Top Rated
-        mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
+        mine: Mine Puzzles
+        easy: Let
+        hard: Svær
+        completed: Gennemført
         medium: Medium
-        official: Official
+        official: Officiel
         trending: Trending today
         trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        categories: Kategorier
+        difficulties: Efter Sværhedsgrad
+        account: Mine Puzzles
+        search: Søg
     validation:
         title: Invalid Puzzle
         noProducers: Please place a Constant Producer!
@@ -1231,34 +1231,34 @@ puzzleMenu:
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
     difficulties:
-        easy: Easy
+        easy: Let
         medium: Medium
-        hard: Hard
+        hard: Svær
         unknown: Unrated
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
     search:
-        action: Search
+        action: Søg
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
-            any: Any Difficulty
-            easy: Easy
+            any: Alle Sværhedsgrader
+            easy: Let
             medium: Medium
-            hard: Hard
+            hard: Svær
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Alle Længder
+            short: Kort (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Lang (> 10 min)
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
+    invalid-api-key: Kunne ikke forbinde til backend. Vær venlig at prøve igen eller
+        at opdatere/genstarte dit spil (Invalid Api Key).
+    unauthorized: Kunne ikke forbinde til backend. Vær venlig at prøve igen eller
+        at opdatere/genstarte dit spil (Unauthorized).
+    bad-token: Kunne ikke forbinde til backend. Vær venlig at opdatere/genstarte
+        dit spil (Bad Token).
     bad-id: Invalid puzzle identifier.
     not-found: The given puzzle could not be found.
     bad-category: The given category could not be found.
