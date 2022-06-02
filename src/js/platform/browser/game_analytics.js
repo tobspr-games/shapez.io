@@ -67,6 +67,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                         standalone:
                             G_IS_STANDALONE &&
                             this.app.achievementProvider instanceof SteamAchievementProvider,
+                        commit: G_BUILD_COMMIT_HASH,
                     })
                         .then(res => {
                             // Try to read and parse the key from the api
