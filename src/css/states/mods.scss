@@ -92,7 +92,7 @@
 
         .mod {
             @include S(border-radius, $globalBorderRadius);
-            background: $accentColorBright;
+            background: #eeeff4;
             @include S(margin-bottom, 4px);
             @include S(padding, 7px, 10px);
             @include S(grid-gap, 15px);
@@ -113,14 +113,14 @@
                 flex-direction: column;
 
                 .description {
-                    @include SuperSmallText;
+                    @include PlainText;
                     @include S(margin-top, 5px);
                     color: $accentColorDark;
                 }
                 .website {
                     text-transform: uppercase;
                     align-self: start;
-                    @include SuperSmallText;
+                    @include PlainText;
                     @include S(margin-top, 5px);
                 }
             }

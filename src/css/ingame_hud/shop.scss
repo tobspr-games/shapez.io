@@ -131,7 +131,7 @@
 
                         @include DarkThemeInvert;
 
-                        $disabledOpacity: 0.2;
+                        $disabledOpacity: 0.6;
                         $enabledOpacity: 0.6;
 
                         &:hover {
@@ -157,6 +157,12 @@
 
                         &.pinned {
                             opacity: $disabledOpacity;
+
+                            & {
+                                /* @load-async */
+                                background: uiResource("icons/unpin_shape.png") center center / 75% no-repeat !important;
+                            }
+
                             @include InlineAnimation(0.3s ease-in-out) {
                                 0% {
                                     opacity: 1;

@@ -10,8 +10,9 @@
         .hint {
             display: block;
             background: #eee;
-            @include S(padding, 4px);
+            @include S(padding, 6px, 10px);
             @include PlainText;
+            @include S(border-radius, $globalBorderRadius);
         }
 
         .category {

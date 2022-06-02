@@ -227,10 +227,9 @@ export class MainMenuState extends GameState {
 
                         ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
                     </div>
-                    <div class="author"><a class="producerLink" target="_blank">${T.mainMenu.madeBy.replace(
-                        "<author-link>",
-                        `<img src="${cachebust("res/logo-tobspr-games.svg")}">`
-                    )}</a></div>
+                    <div class="author"><a class="producerLink" target="_blank" title="tobspr Games" rel="follow">
+                        <img src="${cachebust("res/logo-tobspr-games.svg")}">
+                    </a></div>
                 </div>
 
                 ${

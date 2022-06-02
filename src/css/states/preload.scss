@@ -7,14 +7,15 @@
     }
 
     .changelogDialogEntry {
-        margin-top: 10px;
+        @include S(margin-top, 10px);
+
         width: 100%;
         flex-direction: column;
         text-align: left;
         padding: 10px;
         box-sizing: border-box;
         background: #eef1f4;
-        @include S(border-radius, 3px);
+        @include S(border-radius, $globalBorderRadius);
 
         @include DarkThemeOverride {
             background: #33343c;
@@ -34,6 +35,7 @@
         .changes {
             @include PlainText;
             @include S(padding-left, 15px);
+            @include S(margin-top, 10px);
             strong {
                 background: $colorBlueBright;
                 color: #fff;
@@ -46,7 +48,7 @@
             }
             li {
                 @include SuperSmallText;
-                @include S(margin-bottom, 10px);
+                @include S(margin-bottom, 5px);
             }
         }
     }

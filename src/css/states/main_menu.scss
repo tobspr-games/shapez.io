@@ -183,11 +183,14 @@
 
         flex-direction: column;
         @include S(padding-top, 20px);
+
         img {
             @include S(width, 300px);
         }
 
         position: relative;
+        @include S(left, -22px);
+
         .updateLabel {
             position: absolute;
             transform: translateX(50%) rotate(-5deg);
@@ -311,11 +314,14 @@
         @include S(padding, 15px);
         @include S(padding-bottom, 10px);
         @include S(border-radius, $globalBorderRadius);
+        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
 
         .header {
             display: flex;
             width: 100%;
             align-items: center;
+            text-transform: uppercase;
+
             @include S(margin-bottom, 10px);
 
             .editMods {
@@ -330,6 +336,9 @@
                     background-image: uiResource("icons/edit_key.png") !important;
                 }
                 @include DarkThemeInvert;
+                &:hover {
+                    opacity: 0.6;
+                }
             }
         }
 
@@ -437,7 +446,7 @@
             @include SuperHeading;
             @include S(min-width, 130px);
             @include S(padding, 15px, 20px);
-            letter-spacing: 0.3em !important;
+            letter-spacing: 0.2em !important;
             @include IncreasedClickArea(0px);
             font-weight: bold;
             color: #fff;
@@ -720,12 +729,9 @@
 
         .author {
             margin-left: auto;
-            text-align: right;
-            @include PlainText;
-            color: #000;
 
             a {
-                &:hover {
+                &:hover img {
                     opacity: 0.8;
                 }
                 display: flex;
@@ -733,10 +739,10 @@
                 justify-content: center;
 
                 img {
-                    @include S(margin-left, 5px);
-                    @include S(margin-top, 3px);
-                    @include S(width, 50px);
+                    transition: opacity 0.12s ease-in-out;
+                    @include S(width, 80px);
                     filter: invert(100%);
+                    opacity: 0.6;
                 }
             }
         }
@@ -744,7 +750,7 @@
         @include S(padding, 15px);
 
         $linkBg: rgba(#fdfdff, 0.5);
-        $linkBgHover: darken($linkBg, 2);
+        $linkBgHover: darken($linkBg, 5);
         $linkColor: #55586a;
 
         > .boxLink {

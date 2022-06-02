@@ -37,7 +37,7 @@ $colorBlueBright: rgb(74, 151, 223);
 $colorRedBright: #ef5072;
 $colorOrangeBright: #ef9d50;
 $themeColor: #393747;
-$ingameHudBg: rgba(#333438, 0.9);
+$ingameHudBg: rgba(#33343b, 0.9);
 $modsColor: rgb(214, 60, 228);
 
 $text3dColor: #f4ffff;
@@ -69,7 +69,7 @@ $numberFont: $mainFont;
 $textFont: $mainFont;
 
 $mainFontWeight: 400;
-$mainFontSpacing: 0.04em;
+$mainFontSpacing: 0.01em;
 $mainFontScale: 1;
 
 @mixin DebugText($color) {

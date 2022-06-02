@@ -1110,7 +1110,7 @@ mods:
     browseMods: Browse Mods
 
     modsInfo: >-
-        To install and manage mods, copy them to the mods folder within the game directory. You can also use the 'Open Mods Folder' button on the top right.
+        To install and manage mods, copy them to the mods folder (use the 'Open Mods Folder' button). Be sure to restart the game afterwards, otherwise the mods will not show up.
     noModSupport: You need the full version on Steam to install mods.
 
     togglingComingSoon:
@@ -1229,7 +1229,7 @@ settings:
             title: Tick Rate
             description: >-
                 This determines how many game ticks happen per second. In general, a higher tick rate means better precision but also worse performance. On lower tickrates, the throughput may not be
-                exact.
+                exact. Anything above 60 Hz is expected to be laggy!
 
         alwaysMultiplace:
             title: Multiplace

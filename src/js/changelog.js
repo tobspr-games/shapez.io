@@ -1,5 +1,18 @@
 export const CHANGELOG = [
     {
+        version: "1.5.2",
+        date: "02.06.2022",
+        entries: [
+            "Attempted to fix the 'vram glitch', where the map background would not redraw anymore, especially in fullscreen. If the issue still persists, please let me know in the discord server!",
+            "The game has been renamed from 'shapez.io' to 'shapez', since it is not really an .io game",
+            "Various performance improvements",
+            "Upgrades should now show the full precision",
+            "UI Polishing & Cleanup",
+            "Updated translations",
+            "PS: We are already working on shapez 2, more information will follow in the <a href='https://discord.com/invite/HN7EVzV' target='_blank'>discord</a> soon!",
+        ],
+    },
+    {
         version: "1.5.1",
         date: "25.02.2022",
         entries: [

@@ -1,6 +1,6 @@
 .ingame_buildingsToolbar {
     position: absolute;
-    @include S(bottom, 5px);
+    @include S(bottom, 10px);
     left: 50%;
     transform: translateX(-50%);
 
@@ -22,10 +22,12 @@
         grid-auto-flow: column;
         justify-items: center;
         align-self: center;
+        grid-gap: D(2px);
         grid-row: 2 / 3;
 
-        background-color: rgba(240, 241, 243, 0.5);
         @include S(border-radius, $globalBorderRadius);
+        @include S(padding, 2px);
+        background-color: rgba($ingameHudBg, 0.07);
 
         @include DarkThemeOverride {
             background-color: rgba(darken($darkModeGameBackground, 15), 0.95);
@@ -51,6 +53,7 @@
             display: flex;
             @include S(width, 40px);
             position: relative;
+            overflow: hidden;
             @include S(height, 40px);
             .icon {
                 color: $accentColorDark;
@@ -63,7 +66,6 @@
                 height: 100%;
                 padding: 0;
                 margin: 0;
-                @include S(border-radius, $globalBorderRadius);
 
                 background: center center / 70% no-repeat;
             }
@@ -90,14 +92,20 @@
             }
 
             &.unlocked {
+                @include S(border-radius, $globalBorderRadius * 0.9);
+
                 .icon {
                     pointer-events: all;
-                    transition: all 50ms ease-in-out;
+                    transition: all 0.12s ease-in-out;
                     transition-property: background-color, transform;
                     cursor: pointer;
 
                     &:hover {
                         background-color: rgba(30, 40, 90, 0.1);
+
+                        @include DarkThemeOverride {
+                            background-color: rgba(255, 255, 255, 0.07);
+                        }
                     }
 
                     &.pressed {
@@ -107,7 +115,7 @@
                 &.selected {
                     // transform: scale(1.05);
                     background-color: rgba(lighten($colorBlueBright, 9), 0.4);
-                    @include S(border-radius, $globalBorderRadius);
+                    // @include S(border-radius, $globalBorderRadius);
 
                     .keybinding {
                         color: #111;

@@ -196,11 +196,11 @@ button {
     background: $colorBlueBright;
     color: #fff;
 
-    @include S(border-radius, $globalBorderRadius);
+    @include S(border-radius, 0.8 * $globalBorderRadius);
     // border: #{D(1px)} solid rgba(0, 10, 20, 0.2);
     @include S(border-bottom-width, 2px);
     // color: $accentColorDark;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0em !important;
     // box-shadow: 0 #{D(1px)} #{D(2px)} 0 rgba(0, 10, 20, 0.2);
     .keybinding {
         @include S(bottom, -2.5px);
