@@ -761,7 +761,7 @@ settings:
                 light: 浅色
         refreshRate:
             title: 模拟频率、刷新频率
-            description: 如果您的显示器刷新频率是 144Hz，请在这里更改刷新频率，这样游戏可以正确地根据您的屏幕进行模拟。但是如果您的电脑性能不佳，提高刷新频率可能降低帧数。
+            description: 在这里更改刷新频率，这样游戏可以正确地根据您的屏幕进行模拟。但是如果您的电脑性能不佳，提高刷新频率可能降低帧数。注意，60Hz 以上的任何频率都会导致游戏卡顿！
         alwaysMultiplace:
             title: 多重放置
             description: 开启这个选项之后放下设施将不会取消设施选择。等同于一直按下 SHIFT 键。
@@ -1093,7 +1093,7 @@ mods:
     openFolder: 打开游戏模组（Mods）文件夹
     folderOnlyStandalone: 只有完整版才可以打开游戏模组（Mods）文件夹。
     browseMods: 浏览游戏模组（Mods）
-    modsInfo: 要安装和管理游戏模组（Mods），请将它们复制到游戏目录中的mods文件夹。您也可以使用右上角的“打开游戏模组（Mods）文件夹”按钮。
+    modsInfo: 要安装和管理游戏模组（Mods），请将它们复制到游戏模组文件夹（使用右上角的“打开游戏模组（Mods）文件夹”按钮）。记住在管理完游戏模组（Mods）后，请务必重启游戏，否则游戏模组（Mods）是不会出现的。
     noModSupport: 您需要在 Steam 平台获得完整版才可以安装游戏模组（Mods）。
     togglingComingSoon:
         title: 即将开放
