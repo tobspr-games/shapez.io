@@ -355,14 +355,14 @@ ingame:
         no_thanks: 不需要，谢谢
         points:
             levels:
-                title: 12 个全新关卡！
+                title: 19 个全新关卡！
                 desc: 总共 26 个不同关卡！
             buildings:
-                title: 18 个全新设施！
+                title: 22 个全新设施！
                 desc: 呈现完全体的全自动工厂！
-            upgrades:
-                title: 20个等级升级
-                desc: 试玩版只有5个等级！
+            mods:
+                title: 支持游戏模组（Mods）！
+                desc: 超过 80 个游戏模组可供下载！
             markers:
                 title: 无限数量地图标记
                 desc: 地图再大，不会迷路！
