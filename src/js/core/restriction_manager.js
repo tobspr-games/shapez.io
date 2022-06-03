@@ -29,7 +29,6 @@ export class RestrictionManager extends ReadWriteProxy {
     getDefaultData() {
         return {
             version: this.getCurrentVersion(),
-            savegameV1119Imported: false,
         };
     }
 
@@ -47,32 +46,20 @@ export class RestrictionManager extends ReadWriteProxy {
     }
 
     initialize() {
-        return this.readAsync().then(() => {
-            if (this.currentData.savegameV1119Imported) {
-                console.warn("Levelunlock is granted to current user due to past savegame");
-            }
-        });
+        return this.readAsync();
     }
 
     // -- End RW Proxy Impl
-
-    /**
-     * Checks if there are any savegames from the 1.1.19 version
-     */
-    onHasLegacySavegamesChanged(has119Savegames = false) {
-        if (has119Savegames && !this.currentData.savegameV1119Imported) {
-            this.currentData.savegameV1119Imported = true;
-            console.warn("Current user now has access to all levels due to 1119 savegame");
-            return this.writeAsync();
-        }
-        return Promise.resolve();
-    }
 
     /**
      * Returns if the app is currently running as the limited version
      * @returns {boolean}
      */
     isLimitedVersion() {
+        if (G_IS_STEAM_DEMO) {
+            return true;
+        }
+
         if (G_IS_STANDALONE) {
             // Standalone is never limited
             return false;
@@ -135,7 +122,7 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasExtendedUpgrades() {
-        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
+        return !this.isLimitedVersion();
     }
 
     /**
@@ -143,6 +130,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     getHasExtendedLevelsAndFreeplay() {
-        return !this.isLimitedVersion() || this.currentData.savegameV1119Imported;
+        return !this.isLimitedVersion();
     }
 }

@@ -90,14 +90,6 @@ export class SavegameManager extends ReadWriteProxy {
     }
 
     /**
-     * Returns if this manager has any savegame of a 1.1.19 version, which
-     * enables all levels
-     */
-    getHasAnyLegacySavegames() {
-        return this.currentData.savegames.some(savegame => savegame.version === 1005 || savegame.level > 14);
-    }
-
-    /**
      * Deletes a savegame
      * @param {SavegameMetadata} game
      */
@@ -167,9 +159,6 @@ export class SavegameManager extends ReadWriteProxy {
     importSavegame(data) {
         const savegame = this.createNewSavegame();
 
-        // Track legacy savegames
-        const isOldSavegame = data.version < 1006;
-
         const migrationResult = savegame.migrate(data);
         if (migrationResult.isBad()) {
             return Promise.reject("Failed to migrate: " + migrationResult.reason);
@@ -181,19 +170,14 @@ export class SavegameManager extends ReadWriteProxy {
             return Promise.reject("Verification failed: " + verification.result);
         }
 
-        return savegame
-            .writeSavegameAndMetadata()
-            .then(() => this.updateAfterSavegamesChanged())
-            .then(() => this.app.restrictionMgr.onHasLegacySavegamesChanged(isOldSavegame));
+        return savegame.writeSavegameAndMetadata().then(() => this.updateAfterSavegamesChanged());
     }
 
     /**
      * Hook after the savegames got changed
      */
     updateAfterSavegamesChanged() {
-        return this.sortSavegames()
-            .then(() => this.writeAsync())
-            .then(() => this.app.restrictionMgr.onHasLegacySavegamesChanged(this.getHasAnyLegacySavegames()));
+        return this.sortSavegames().then(() => this.writeAsync());
     }
 
     /**
