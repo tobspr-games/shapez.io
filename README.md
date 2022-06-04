@@ -1,17 +1,17 @@
-# shapez.io
+# shapez
 
-<a href="https://get.shapez.io/ghi" title="shapez.io on Steam">
-    <img src="https://i.imgur.com/Y5Z2iqQ.png" alt="shapez.io Logo">
+<a href="https://get.shapez.io/ghi" title="shapez on Steam">
+    <img src="https://i.imgur.com/ihW2bUE.png" alt="shapez Logo">
 </a>
 
-This is the source code for shapez.io, an open source base building game inspired by Factorio.
+<hr>
+This is the source code for shapez, an open source base building game inspired by Factorio.
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
 
--   [Steam Page](https://get.shapez.io/ghr)
+-   [Play on Steam](https://get.shapez.io/ghr)
+-   [Online Demo](https://shapez.io)
 -   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
 -   [Trello Board & Roadmap](https://trello.com/b/ISQncpJP/shapezio)
--   [itch.io Page](https://tobspr.itch.io/shapezio)
--   [Online Demo](https://shapez.io)
 
 ## Reporting issues, suggestions, feedback, bugs
 
@@ -25,7 +25,7 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 ## Building
 
 -   Make sure `ffmpeg` is on your path
--   Install Node.js (v16 or earlier) and Yarn
+-   Install Node.js 16 and Yarn
 -   Install Java (required for texture packer)
 -   Run `yarn` in the root folder
 -   `cd` into `gulp` folder
@@ -70,11 +70,11 @@ This project is based on ES5 (If I would develop it again, I would definitely us
 
 ### Assets
 
-For most assets I use Adobe Photoshop, you can find them <a href="//github.com/tobspr/shapez.io-artwork" target="_blank">here</a>.
+You can find most assets <a href="//github.com/tobspr/shapez.io-artwork" target="_blank">here</a>.
 
 All assets will be automatically rebuilt into the atlas once changed (Thanks to dengr1065!)
 
-<img src="https://i.imgur.com/W25Fkl0.png" alt="shapez.io Screenshot">
+<img src="https://i.imgur.com/W25Fkl0.png" alt="shapez Screenshot">
 
 <br>
 
