@@ -1,5 +1,14 @@
 export const CHANGELOG = [
     {
+        version: "1.5.3",
+        date: "05.06.2022",
+        entries: [
+            "Fixed buildings not being lockable in the Puzzle DLC Editor",
+            "Fixed issues launching the game with proton",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.5.2",
         date: "02.06.2022",
         entries: [
