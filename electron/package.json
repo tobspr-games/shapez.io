@@ -11,11 +11,11 @@
     },
     "devDependencies": {},
     "optionalDependencies": {
-        "shapez.io-private-artifacts": "github:tobspr/shapez.io-private-artifacts#abi-v103"
+        "shapez.io-private-artifacts": "github:tobspr/shapez.io-private-artifacts#abi-v99"
     },
     "dependencies": {
         "async-lock": "^1.2.8",
-        "electron": "18.3.0",
+        "electron": "16.2.8",
         "electron-window-state": "^5.0.3"
     }
 }
