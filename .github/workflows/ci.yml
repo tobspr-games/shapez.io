@@ -24,7 +24,7 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v2-beta
               with:
-                  node-version: 10.x
+                  node-version: 16.x
 
             - name: Checkout repo
               uses: actions/checkout@v2
