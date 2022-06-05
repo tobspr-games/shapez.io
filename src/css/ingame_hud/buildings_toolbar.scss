@@ -53,8 +53,8 @@
             display: flex;
             @include S(width, 40px);
             position: relative;
-            overflow: hidden;
             @include S(height, 40px);
+
             .icon {
                 color: $accentColorDark;
                 display: flex;
@@ -92,9 +92,9 @@
             }
 
             &.unlocked {
-                @include S(border-radius, $globalBorderRadius * 0.9);
-
                 .icon {
+                    @include S(border-radius, $globalBorderRadius * 0.9);
+
                     pointer-events: all;
                     transition: all 0.12s ease-in-out;
                     transition-property: background-color, transform;
@@ -113,8 +113,10 @@
                     }
                 }
                 &.selected {
+                    .icon {
+                        background-color: rgba(lighten($colorBlueBright, 9), 0.4);
+                    }
                     // transform: scale(1.05);
-                    background-color: rgba(lighten($colorBlueBright, 9), 0.4);
                     // @include S(border-radius, $globalBorderRadius);
 
                     .keybinding {
