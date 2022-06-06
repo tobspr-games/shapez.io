@@ -1,5 +1,5 @@
 steamPage:
-    shortText: “唯一能限制您的，只有您的想象力！” 《异形工厂》（Shapez）
+    shortText: “唯一能限制您的，只有您的想象力！”《异形工厂》（Shapez）
         是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
@@ -225,7 +225,7 @@ dialogs:
         desc: 输入此谜题的短代码以载入。
     puzzleDelete:
         title: 删除谜题？
-        desc: 您是否确认删除 “<title>”？删除后不可恢复！
+        desc: 您是否确认删除“<title>”？删除后不可恢复！
     modsDifference:
         title: 模组警告
         desc: 当前已安装的游戏模组（Mods）与该存档创建时所安装的游戏模组（Mods）不同！这可能会导致存档损坏，甚至无法加载。你确定要继续加载吗？
@@ -942,7 +942,7 @@ about:
 
         本游戏的音乐由 <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> 制作——他是个很棒的伙伴。<br><br>
 
-        最后，我想感谢我最好的朋友 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> ——如果没有他的《异星工厂》（factorio）带给我的体验和启发，《异形工厂》（shapez.io）将不会存在。
+        最后，我想感谢我最好的朋友 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> ——如果没有他的《异星工厂》（factorio）带给我的体验和启发，《异形工厂》（Shapez）将不会存在。
 changelog:
     title: 更新日志
 demo:
@@ -1049,7 +1049,7 @@ puzzleMenu:
         medium: 普通
         hard: 困难
         unknown: 未定级
-    dlcHint: 如尚未购买 DLC，请在您的 Steam 库中右键点击异形工厂， DLCs。然后选择属性 - DLC。
+    dlcHint: 如尚未购买 DLC，请在您的 Steam 库中右键点击异形工厂，DLCs。然后选择属性 - DLC。
     search:
         action: 搜索
         placeholder: 输入谜题或作者名称
