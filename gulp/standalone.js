@@ -329,21 +329,6 @@ function gulptasksStandalone($, gulp) {
 
             fs.writeFileSync(path.join(templatesDest, file), content, { encoding: "utf8" });
         }
-
-        // for (const buildVariant of ["app", "app-demo"]) {
-        //     const templateContents = fs
-        //         .readFileSync(path.join(steampipeDir, buildVariant + ".vdf.template"), {
-        //             encoding: "utf-8",
-        //         })
-        //         .toString();
-
-        //     const convertedContents = templateContents.replace(
-        //         "$DESC$",
-        //         platform + " " + buildVariant + " version " + version + ", commit " + hash
-        //     );
-        //     fs.writeFileSync(path.join(steampipeDir, buildVariant + ".vdf"), convertedContents);
-        // }
-        // }
         cb();
     });
 }
