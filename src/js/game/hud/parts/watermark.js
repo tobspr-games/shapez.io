@@ -2,66 +2,35 @@ import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
-import { DynamicDomAttach } from "../dynamic_dom_attach";
-
-const watermarkShowIntervalSeconds = G_IS_DEV ? 120 : 7 * 60;
-const watermarkShowDuration = 5;
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
-        this.element = makeDiv(
-            parent,
-            "ingame_HUD_Watermark",
-            [],
-            `
-            <strong>${T.ingame.watermark.title}</strong>
-            <p>${T.ingame.watermark.desc}
-            </p>
-
-
-        `
-        );
-
         this.linkElement = makeDiv(
             parent,
             "ingame_HUD_WatermarkClicker",
-            globalConfig.currentDiscount.active ? ["withDiscount"] : [],
+            globalConfig.currentDiscount > 0 ? ["withDiscount"] : [],
             T.ingame.watermark.get_on_steam +
-                (globalConfig.currentDiscount.active
-                    ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                (globalConfig.currentDiscount > 0
+                    ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
                     : "")
         );
         this.trackClicks(this.linkElement, () => {
             this.root.app.analytics.trackUiClick("watermark_click_2_direct");
-            const discount = globalConfig.currentDiscount.active
-                ? "_discount" + globalConfig.currentDiscount.amount
-                : "";
+            const discount =
+                globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
 
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_watermark" + discount
+                THIRDPARTY_URLS.stanaloneCampaignLink +
+                    "/shapez_watermark" +
+                    discount +
+                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
             );
         });
     }
 
-    initialize() {
-        this.trackClicks(this.element, this.onWatermarkClick);
+    initialize() {}
 
-        this.domAttach = new DynamicDomAttach(this.root, this.element, {
-            attachClass: "visible",
-            timeToKeepSeconds: 0.5,
-        });
-    }
-
-    update() {
-        this.domAttach.update(
-            this.root.time.realtimeNow() % watermarkShowIntervalSeconds < watermarkShowDuration
-        );
-    }
-
-    onWatermarkClick() {
-        this.root.app.analytics.trackUiClick("watermark_click_2_new");
-        this.root.hud.parts.standaloneAdvantages.show();
-    }
+    update() {}
 
     /**
      *
@@ -70,7 +39,7 @@ export class HUDWatermark extends BaseHUDPart {
     drawOverlays(parameters) {
         const w = this.root.gameWidth;
 
-        parameters.context.fillStyle = "rgba(230, 230, 230, 0.9)";
+        parameters.context.fillStyle = "rgba(20, 30, 40, 0.25)";
         parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 40 + "px GameFont";
         parameters.context.textAlign = "center";
         parameters.context.fillText(

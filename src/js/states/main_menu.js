@@ -38,9 +38,8 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        const showUpdateLabel = !G_WEGAME_VERSION;
         const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
-        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE;
+        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -69,15 +68,17 @@ export class MainMenuState extends GameState {
         const ownsPuzzleDLC =
             G_IS_DEV ||
             (G_IS_STANDALONE &&
+                !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
+            <span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>
             <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">
                 ${
-                    globalConfig.currentDiscount.active
-                        ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                    globalConfig.currentDiscount > 0
+                        ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
                         : ""
                 }
 
@@ -201,7 +202,7 @@ export class MainMenuState extends GameState {
 
                 <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
                     ${
-                        showExternalLinks
+                        showExternalLinks && !G_IS_STEAM_DEMO
                             ? `
                         <a class="githubLink boxLink" target="_blank">
                             ${T.mainMenu.openSourceHint}
@@ -453,11 +454,12 @@ export class MainMenuState extends GameState {
 
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
-        const discount = globalConfig.currentDiscount.active
-            ? "_discount" + globalConfig.currentDiscount.amount
-            : "";
+        const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
         this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mainmenu" + discount
+            THIRDPARTY_URLS.stanaloneCampaignLink +
+                "/shapez_mainmenu" +
+                discount +
+                (G_IS_STEAM_DEMO ? "_steamdemo" : "")
         );
 
         return false;
@@ -743,7 +745,9 @@ export class MainMenuState extends GameState {
         getStandalone.add(() => {
             this.app.analytics.trackUiClick("visit_steampage_from_slot_limit");
             this.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_slotlimit"
+                THIRDPARTY_URLS.stanaloneCampaignLink +
+                    "/shapez_slotlimit" +
+                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
             );
         });
     }

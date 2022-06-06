@@ -1,15 +1,25 @@
-#ingame_HUD_CatMemes {
+#ingame_HUD_SteamCapsule {
     position: absolute;
     @include S(width, 150px);
-    @include S(height, 150px);
-    background: transparent center center / contain no-repeat;
+    @include S(height, 119px);
+    background: transparent center center / cover no-repeat;
 
-    right: 0;
+    pointer-events: all;
+    overflow: hidden;
+    @include S(right, 10px);
+
+    border: D(2px) solid #000;
+    @include S(border-radius, $globalBorderRadius);
+    cursor: pointer;
     @include S(bottom, 150px);
 
     & {
         /* @load-async */
         background-image: uiResource("res/ui/memes/cat1.png") !important;
+    }
+
+    &:hover {
+        opacity: 0.95;
     }
 
     @include InlineAnimation(0.5s ease-in-out) {

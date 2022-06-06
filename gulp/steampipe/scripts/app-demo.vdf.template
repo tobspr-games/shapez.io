@@ -1,0 +1,17 @@
+"appbuild"
+{
+	"appid" "1930750"
+	"desc" "$DESC$"
+	"buildoutput" "$STEAMPIPE_DIR$\steamtemp"
+	"contentroot" ""
+	"setlive" ""
+	"preview" "0"
+	"local"	""
+	"depots"
+	{
+		"1930753"	"$STEAMPIPE_DIR$\scripts\demo-windows.vdf"
+		"1930754"	"$STEAMPIPE_DIR$\scripts\demo-china-windows.vdf"
+		"1930752"	"$STEAMPIPE_DIR$\scripts\demo-linux.vdf"
+		"1930755"	"$STEAMPIPE_DIR$\scripts\demo-china-linux.vdf"
+	}
+}

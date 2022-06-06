@@ -3,24 +3,24 @@
 const path = require("path");
 const webpack = require("webpack");
 const { getRevision, getVersion, getAllResourceImages } = require("./buildutils");
-const lzString = require("lz-string");
 
 const TerserPlugin = require("terser-webpack-plugin");
 const StringReplacePlugin = require("string-replace-webpack-plugin");
 const UnusedFilesPlugin = require("unused-files-webpack-plugin").UnusedFilesWebpackPlugin;
 
 module.exports = ({
-    enableAssert = false,
     environment,
     es6 = false,
+
     standalone = false,
     isBrowser = true,
-    mobileApp = false,
+
     chineseVersion = false,
     wegameVersion = false,
+    steamDemo = false,
 }) => {
     const globalDefs = {
-        assert: enableAssert ? "window.assert" : "false && window.assert",
+        assert: "false && window.assert",
         assertAlways: "window.assert",
         abstract: "window.assert(false, 'abstract method called');",
         G_IS_DEV: "false",
@@ -29,13 +29,10 @@ module.exports = ({
         G_WEGAME_VERSION: JSON.stringify(wegameVersion),
         G_IS_RELEASE: environment === "prod" ? "true" : "false",
         G_IS_STANDALONE: standalone ? "true" : "false",
+        G_IS_STEAM_DEMO: JSON.stringify(steamDemo),
         G_IS_BROWSER: isBrowser ? "true" : "false",
-        G_IS_MOBILE_APP: mobileApp ? "true" : "false",
-        G_TRACKING_ENDPOINT: JSON.stringify(
-            lzString.compressToEncodedURIComponent("https://tracking.shapez.io/v1")
-        ),
         G_APP_ENVIRONMENT: JSON.stringify(environment),
-        G_HAVE_ASSERT: enableAssert ? "true" : "false",
+        G_HAVE_ASSERT: "false",
         G_BUILD_TIME: "" + new Date().getTime(),
         G_BUILD_COMMIT_HASH: JSON.stringify(getRevision()),
         G_BUILD_VERSION: JSON.stringify(getVersion()),

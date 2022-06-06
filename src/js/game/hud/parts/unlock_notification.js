@@ -75,7 +75,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
         <div class="rewardName">
             ${T.ingame.levelCompleteNotification.unlockText.replace("<reward>", rewardName)}
         </div>
-        
+
         <div class="rewardDesc">
             ${T.storyRewards[reward].desc}
         </div>
@@ -130,6 +130,13 @@ export class HUDUnlockNotification extends BaseHUDPart {
             this.close();
 
             this.root.hud.signals.unlockNotificationFinished.dispatch();
+
+            if (
+                this.root.hubGoals.level === 7 &&
+                this.root.app.restrictionMgr.getIsStandaloneMarketingActive()
+            ) {
+                this.root.hud.parts.standaloneAdvantages.show();
+            }
 
             if (!this.root.app.settings.getAllSettings().offerHints) {
                 return;

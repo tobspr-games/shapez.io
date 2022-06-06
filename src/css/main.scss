@@ -57,7 +57,7 @@
 @import "ingame_hud/shape_viewer";
 @import "ingame_hud/sandbox_controller";
 @import "ingame_hud/standalone_advantages";
-@import "ingame_hud/cat_memes";
+@import "ingame_hud/steam_capsule";
 @import "ingame_hud/puzzle_back_to_menu";
 @import "ingame_hud/puzzle_editor_review";
 @import "ingame_hud/puzzle_dlc_logo";
@@ -105,6 +105,7 @@ ingame_HUD_Waypoints_Hint,
 ingame_HUD_WatermarkClicker,
 ingame_HUD_Watermark,
 ingame_HUD_ColorBlindBelowTileHelper,
+ingame_HUD_SteamCapsule,
 ingame_HUD_SandboxController,
 
 // Overlays
@@ -118,8 +119,7 @@ ingame_HUD_StandaloneAdvantages,
 ingame_HUD_UnlockNotification,
 ingame_HUD_PuzzleCompleteNotification,
 ingame_HUD_SettingsMenu,
-ingame_HUD_ModalDialogs,
-ingame_HUD_CatMemes;
+ingame_HUD_ModalDialogs;
 
 $zindex: 100;
 
@@ -132,7 +132,7 @@ $zindex: 100;
 }
 
 body.uiHidden {
-    > div {
+    > div:not(.ingameDialog):not(#ingame_HUD_SettingsMenu):not(#ingame_HUD_ModalDialogs):not(#ingame_HUD_UnlockNotification):not(#ingame_HUD_PuzzleCompleteNotification) {
         display: none !important;
     }
 }

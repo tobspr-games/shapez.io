@@ -61,6 +61,26 @@ export class PreloadState extends GameState {
         this.startLoading();
     }
 
+    async fetchDiscounts() {
+        await Promise.race([
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject("Failed to resolve steam discounts within timeout");
+                }, 2000);
+            }),
+            fetch("https://analytics.shapez.io/v1/discounts")
+                .then(res => res.json())
+                .then(data => {
+                    globalConfig.currentDiscount = Number(
+                        data["1318690"].data.price_overview.discount_percent
+                    );
+                    logger.log("Fetched current discount:", globalConfig.currentDiscount);
+                }),
+        ]).catch(err => {
+            logger.warn("Failed to fetch current discount:", err);
+        });
+    }
+
     onLeave() {
         // this.dialogs.cleanup();
     }
@@ -100,6 +120,9 @@ export class PreloadState extends GameState {
             .then(() => this.setStatus("Initializing libraries"))
             .then(() => this.app.analytics.initialize())
             .then(() => this.app.gameAnalytics.initialize())
+
+            .then(() => this.setStatus("Connecting to api"))
+            .then(() => this.fetchDiscounts())
 
             .then(() => this.setStatus("Initializing settings"))
             .then(() => {

@@ -1,9 +1,0 @@
-[[actions]]
-name = "play"
-path = "shapezio.exe"
-platform = "windows"
-
-[[actions]]
-name = "play"
-path = "play.sh"
-platform = "linux"

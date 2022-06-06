@@ -17,6 +17,10 @@ export function getLogoSprite() {
         return "logo_wegame.png";
     }
 
+    if (G_IS_STEAM_DEMO) {
+        return "logo_demo.png";
+    }
+
     if (G_CHINA_VERSION) {
         return "logo_cn.png";
     }

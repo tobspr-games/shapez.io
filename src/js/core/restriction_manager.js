@@ -2,7 +2,6 @@
 import { Application } from "../application";
 /* typehints:end */
 import { ExplainedResult } from "./explained_result";
-import { queryParamOptions } from "./query_parameters";
 import { ReadWriteProxy } from "./read_write_proxy";
 
 export class RestrictionManager extends ReadWriteProxy {
@@ -56,13 +55,12 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     isLimitedVersion() {
-        if (G_IS_STANDALONE) {
-            // Standalone is never limited
-            return false;
+        if (G_IS_STEAM_DEMO) {
+            return true;
         }
 
-        if (queryParamOptions.embedProvider === "gamedistribution") {
-            // also full version on gamedistribution
+        if (G_IS_STANDALONE) {
+            // Standalone is never limited
             return false;
         }
 
