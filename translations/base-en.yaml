@@ -22,7 +22,7 @@
 ---
 steamPage:
     # This is the short text appearing on the steam page
-    shortText: shapez.io is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
+    shortText: shapez is a game about building factories to automate the creation and processing of increasingly complex shapes across an infinitely expanding map.
 
     # This is the text shown above the Discord link
     discordLinkShort: Official Discord
@@ -30,18 +30,18 @@ steamPage:
     intro: >-
         Do you like automation games? Then you are in the right place!
 
-        shapez.io is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        shapez is a relaxed game in which you have to build factories for the automated production of geometric shapes. As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
 
         And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling! While you only have to process shapes at the beginning, you will later have to color them - by extracting and mixing colors!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez.io first and decide later!
+        Buying the game on Steam gives you access to the full version, but you can also play a demo at shapez first and decide later!
 
-    what_others_say: What people say about shapez.io
+    what_others_say: What people say about shapez
 
     nothernlion_comment: >-
         This game is great - I'm having a wonderful time playing, and time has flown by.
     notch_comment: >-
-        Oh crap. I really should sleep, but I think I just figured out how to make a computer in shapez.io
+        Oh crap. I really should sleep, but I think I just figured out how to make a computer in shapez
     steam_review_comment: >-
         This game has stolen my life and I don't want it back. Very chill factory game that won't let me stop making my lines more efficient.
 
@@ -94,9 +94,18 @@ global:
 
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
-    title: Demo Version
+    title: Demo
     intro: >-
-        Get the full game to unlock all features and content!
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: >-
+        The full version contains more than <strong>24 hours of content</strong>.
 
 mainMenu:
     play: Play
@@ -141,7 +150,7 @@ puzzleMenu:
     validatingPuzzle: Validating Puzzle
     submittingPuzzle: Submitting Puzzle
     noPuzzles: There are currently no puzzles in this section.
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking shapez in your library, selecting Properties > DLCs.
 
     categories:
         levels: Levels
@@ -654,7 +663,7 @@ ingame:
 
             support:
                 title: Support me
-                desc: I develop the game in my spare time!
+                desc: I develop shapez in my spare time!
 
     # puzzle mode
     puzzleEditorSettings:
@@ -1111,7 +1120,7 @@ mods:
 
     modsInfo: >-
         To install and manage mods, copy them to the mods folder (use the 'Open Mods Folder' button). Be sure to restart the game afterwards, otherwise the mods will not show up.
-    noModSupport: You need the full version on Steam to install mods.
+    noModSupport: Get the full version on Steam to install mods!
 
     togglingComingSoon:
         title: Coming Soon
@@ -1427,7 +1436,7 @@ about:
     body: >-
         This game is open source and developed by <a href="https://github.com/tobspr" target="_blank">Tobias Springer</a> (this is me).<br><br>
 
-        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez.io on GitHub</a>.<br><br>
+        If you want to contribute, check out <a href="<githublink>" target="_blank">shapez on GitHub</a>.<br><br>
 
         This game wouldn't have been possible without the great Discord community around my games - You should really join the <a href="<discordlink>" target="_blank">Discord server</a>!<br><br>
 

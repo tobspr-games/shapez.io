@@ -56,7 +56,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: Demoversio
-    intro: Hanki pelin täysversio avataksesi kaikki ominaisuudet!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Pelaa
     continue: Jatka
@@ -417,9 +426,6 @@ ingame:
             buildings:
                 title: 18 Uutta laitetta
                 desc: Automatisoi tehtaasi täysin!
-            upgrades:
-                title: ∞ päivitystasoa
-                desc: Kokeiluversiossa on vain viisi!
             markers:
                 title: ∞ Merkit
                 desc: Älä koskaan eksy tehtaassasi!
@@ -435,6 +441,9 @@ ingame:
             achievements:
                 title: Saavutukset
                 desc: Metsästä kaikki!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

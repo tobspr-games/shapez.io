@@ -1,5 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { randomInt } from "../../core/utils";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
 import { RegularGameMode } from "../../game/modes/regular";
@@ -13,14 +14,24 @@ const logger = createLogger("game_analytics");
 
 const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
 
-// Be sure to increment the ID whenever it changes to make sure all
-// users are tracked
-const analyticsLocalFile = "shapez_token_123.bin";
+// Be sure to increment the ID whenever it changes
+const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
+
+const currentABT = "abt_sa_si";
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
+    constructor(app) {
+        super(app);
+        this.abtVariant = "0";
+    }
+
     get environment() {
         if (G_IS_DEV) {
             return "dev";
+        }
+
+        if (G_IS_STEAM_DEMO) {
+            return "steam-demo";
         }
 
         if (G_IS_STANDALONE) {
@@ -38,6 +49,22 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
     }
 
+    fetchABVariant() {
+        return this.app.storage.readFileAsync("shapez_" + currentABT + ".bin").then(
+            abt => {
+                this.abtVariant = abt;
+                logger.log("Got abtVariant:", abt);
+            },
+            err => {
+                if (err === FILE_NOT_FOUND) {
+                    this.abtVariant = String(randomInt(0, 4));
+                    logger.log("Determing abt variant to", this.abtVariant);
+                    this.app.storage.writeFileAsync("shapez_" + currentABT + ".bin", this.abtVariant);
+                }
+            }
+        );
+    }
+
     /**
      * @returns {Promise<void>}
      */
@@ -48,46 +75,67 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             return;
         }
 
-        setInterval(() => this.sendTimePoints(), 60 * 1000);
-
         // Retrieve sync key from player
-        return this.app.storage.readFileAsync(analyticsLocalFile).then(
-            syncKey => {
-                this.syncKey = syncKey;
-                logger.log("Player sync key read:", this.syncKey);
-            },
-            error => {
-                // File was not found, retrieve new key
-                if (error === FILE_NOT_FOUND) {
-                    logger.log("Retrieving new player key");
+        return this.fetchABVariant().then(() => {
+            setInterval(() => this.sendTimePoints(), 60 * 1000);
 
-                    // Perform call to get a new key from the API
-                    this.sendToApi("/v1/register", {
-                        environment: this.environment,
-                        standalone:
-                            G_IS_STANDALONE &&
-                            this.app.achievementProvider instanceof SteamAchievementProvider,
-                        commit: G_BUILD_COMMIT_HASH,
-                    })
-                        .then(res => {
-                            // Try to read and parse the key from the api
-                            if (res.key && typeof res.key === "string" && res.key.length === 40) {
-                                this.syncKey = res.key;
-                                logger.log("Key retrieved:", this.syncKey);
-                                this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
-                            } else {
-                                throw new Error("Bad response from analytics server: " + res);
-                            }
-                        })
-                        .catch(err => {
-                            logger.error("Failed to register on analytics api:", err);
-                        });
-                } else {
-                    logger.error("Failed to read ga key:", error);
-                }
-                return;
+            if (this.app.restrictionMgr.isLimitedVersion()) {
+                fetch(
+                    "https://play.shapez.io/shapez_launch_" +
+                        this.environment +
+                        "_" +
+                        currentABT +
+                        "_" +
+                        this.abtVariant,
+                    {
+                        method: "GET",
+                        mode: "no-cors",
+                        cache: "no-cache",
+                        referrer: "no-referrer",
+                        credentials: "omit",
+                    }
+                ).catch(err => {});
             }
-        );
+
+            return this.app.storage.readFileAsync(analyticsLocalFile).then(
+                syncKey => {
+                    this.syncKey = syncKey;
+                    logger.log("Player sync key read:", this.syncKey);
+                },
+                error => {
+                    // File was not found, retrieve new key
+                    if (error === FILE_NOT_FOUND) {
+                        logger.log("Retrieving new player key");
+
+                        // Perform call to get a new key from the API
+                        this.sendToApi("/v1/register", {
+                            environment: this.environment,
+                            standalone:
+                                G_IS_STANDALONE &&
+                                !G_IS_STEAM_DEMO &&
+                                this.app.achievementProvider instanceof SteamAchievementProvider,
+                            commit: G_BUILD_COMMIT_HASH,
+                        })
+                            .then(res => {
+                                // Try to read and parse the key from the api
+                                if (res.key && typeof res.key === "string" && res.key.length === 40) {
+                                    this.syncKey = res.key;
+                                    logger.log("Key retrieved:", this.syncKey);
+                                    this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
+                                } else {
+                                    throw new Error("Bad response from analytics server: " + res);
+                                }
+                            })
+                            .catch(err => {
+                                logger.error("Failed to register on analytics api:", err);
+                            });
+                    } else {
+                        logger.error("Failed to read ga key:", error);
+                    }
+                    return;
+                }
+            );
+        });
     }
 
     /**

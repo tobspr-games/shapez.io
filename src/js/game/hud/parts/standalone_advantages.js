@@ -5,8 +5,6 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 
-const showIntervalSeconds = 9 * 60;
-
 export class HUDStandaloneAdvantages extends BaseHUDPart {
     createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_StandaloneAdvantages", ["ingameDialog"]);
@@ -33,10 +31,11 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             </div>
 
             <div class="lowerBar">
+            <div class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</div>
             <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}">
             ${
-                globalConfig.currentDiscount.active
-                    ? `<span class='discount'>${globalConfig.currentDiscount.amount}% off!</span>`
+                globalConfig.currentDiscount > 0
+                    ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
                     : ""
             }
             </button>
@@ -46,13 +45,15 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         );
 
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
-            const discount = globalConfig.currentDiscount.active
-                ? "_discount" + globalConfig.currentDiscount.amount
-                : "";
+            const discount =
+                globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
 
             this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
             this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_std_advg" + discount
+                THIRDPARTY_URLS.stanaloneCampaignLink +
+                    "/shapez_std_advg" +
+                    discount +
+                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
             );
             this.close();
         });
@@ -60,6 +61,22 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             this.root.app.analytics.trackUiClick("standalone_advantage_no_thanks");
             this.close();
         });
+    }
+
+    get showIntervalSeconds() {
+        switch (this.root.app.gameAnalytics.abtVariant) {
+            case "0":
+                return 5 * 60;
+            case "1":
+                return 10 * 60;
+            case "2":
+            default:
+                return 15 * 60;
+            case "3":
+                return 20 * 60;
+            case "4":
+                return 1e14;
+        }
     }
 
     initialize() {
@@ -86,7 +103,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
     }
 
     update() {
-        if (!this.visible && this.root.time.now() - this.lastShown > showIntervalSeconds) {
+        if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
             this.show();
         }
 

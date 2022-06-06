@@ -53,6 +53,7 @@ global:
 demoBanners:
     title: 试玩版
     intro: 购买完整版以解锁所有游戏内容！
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -367,9 +368,6 @@ ingame:
             buildings:
                 title: 18 个全新设施！
                 desc: 呈现完全体的全自动工厂！
-            upgrades:
-                title: 20个等级升级
-                desc: 试玩版只有5个等级！
             markers:
                 title: 无限数量地图标记
                 desc: 地图再大，不会迷路！
@@ -385,6 +383,9 @@ ingame:
             achievements:
                 title: 成就
                 desc: 挑战全成就解锁!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: 区域
         zoneWidth: 宽度

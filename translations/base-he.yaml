@@ -52,7 +52,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: גרסאת דמו
-    intro: תשיג את המשחק המלא כדי לפתוח את כל הפיצ'רים
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: שחק
     continue: המשך
@@ -406,9 +415,6 @@ ingame:
             achievements:
                 title: הישגים
                 desc: "!השג את כולם"
-            upgrades:
-                title: רמות לשדרוגים ∞
-                desc: "!לגרסת הדמו הזאת יש רק 5"
             markers:
                 title: סימונים ∞
                 desc: "!אף פעם לא תלך לאיבוד במפעל שלך"
@@ -421,6 +427,9 @@ ingame:
             support:
                 title: תמוך בי
                 desc: "!אני יצרתי רת המשחק הזה בזמני החופשי"
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

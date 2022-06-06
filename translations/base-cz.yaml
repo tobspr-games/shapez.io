@@ -52,7 +52,16 @@ global:
     loggingIn: Přihlašuji
 demoBanners:
     title: Demo verze
-    intro: Získejte plnou verzi pro odemknutí všech funkcí a obsahu!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Hrát
     continue: Pokračovat
@@ -78,8 +87,8 @@ mainMenu:
     puzzleDlcViewNow: Zobrazit DLC
     mods:
         title: Aktivní módy
-        warningPuzzleDLC: Nelze hrát Puzzle DLC společně s módy. Prosím
-            deaktivujte všechny módy, abyste mohli hrát DLC.
+        warningPuzzleDLC: Nelze hrát Puzzle DLC společně s módy. Prosím deaktivujte
+            všechny módy, abyste mohli hrát DLC.
 dialogs:
     buttons:
         ok: OK
@@ -259,8 +268,8 @@ dialogs:
     modsDifference:
         title: Varování o módech
         desc: Aktuálně nainstalované módy se liší od módů, se kterými byla uložená hra
-            vytvořena. To může způsobit, že se uložená hra rozbije nebo se vůbec nenačte.
-            Jste si jisti, že chcete pokračovat?
+            vytvořena. To může způsobit, že se uložená hra rozbije nebo se vůbec
+            nenačte. Jste si jisti, že chcete pokračovat?
         missingMods: Chybějící módy
         newMods: Nově nainstalované módy
 ingame:
@@ -416,9 +425,6 @@ ingame:
             buildings:
                 title: 18 Nových budov
                 desc: Plně automatizujte svou továrnu!
-            upgrades:
-                title: ∞ vylepšení
-                desc: Tato demo verze má pouze 5!
             markers:
                 title: ∞ Značek
                 desc: Nikdy se neztraťte ve své továrně!
@@ -434,6 +440,9 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Získejte je všechny!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Šířka
@@ -1008,8 +1017,8 @@ settings:
             description: Určuje velikost ikon tvarů na náhledu mapy (při oddálení).
         shapeTooltipAlwaysOn:
             title: Popisek tvaru – Zobrazit vždy
-            description: Určuje, zda se má vždy zobrazovat nápověda tvaru při najetí na budovy,
-                místo toho, abyste museli držet „ALT“.
+            description: Určuje, zda se má vždy zobrazovat nápověda tvaru při najetí na
+                budovy, místo toho, abyste museli držet „ALT“.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: Nové!
@@ -1291,6 +1300,6 @@ mods:
     noModSupport: K instalaci módů potřebujete samostatnou verzi hry na Steamu.
     togglingComingSoon:
         title: Již brzy
-        description: Aktivace či deaktivace módů je v současné době možná pouze kopírováním
-            souboru módu z nebo do mods/ složky. Nicméně, možnost správy módů přímo
-            ze hry je plánována pro budoucí aktualizaci!
+        description: Aktivace či deaktivace módů je v současné době možná pouze
+            kopírováním souboru módu z nebo do mods/ složky. Nicméně, možnost
+            správy módů přímo ze hry je plánována pro budoucí aktualizaci!

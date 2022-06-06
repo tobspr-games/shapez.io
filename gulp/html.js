@@ -2,6 +2,7 @@ const buildUtils = require("./buildutils");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const { BUILD_VARIANTS } = require("./build_variants");
 
 function computeIntegrityHash(fullPath, algorithm = "sha256") {
     const file = fs.readFileSync(fullPath);
@@ -9,12 +10,20 @@ function computeIntegrityHash(fullPath, algorithm = "sha256") {
     return algorithm + "-" + hash;
 }
 
+/**
+ * PROVIDES (per <variant>)
+ *
+ * html.<variant>.dev
+ * html.<variant>.prod
+ */
 function gulptasksHTML($, gulp, buildFolder) {
     const commitHash = buildUtils.getRevision();
-    async function buildHtml(
-        apiUrl,
-        { analytics = false, standalone = false, app = false, integrity = true, enableCachebust = true }
-    ) {
+    async function buildHtml({
+        googleAnalytics = false,
+        standalone = false,
+        integrity = true,
+        enableCachebust = true,
+    }) {
         function cachebust(url) {
             if (enableCachebust) {
                 return buildUtils.cachebust(url, commitHash);
@@ -22,7 +31,7 @@ function gulptasksHTML($, gulp, buildFolder) {
             return url;
         }
 
-        const hasLocalFiles = standalone || app;
+        const hasLocalFiles = standalone;
 
         return gulp
             .src("../src/html/" + (standalone ? "index.standalone.html" : "index.html"))
@@ -30,13 +39,6 @@ function gulptasksHTML($, gulp, buildFolder) {
                 $.dom(
                     /** @this {Document} **/ function () {
                         const document = this;
-
-                        // Preconnect to api
-                        const prefetchLink = document.createElement("link");
-                        prefetchLink.rel = "preconnect";
-                        prefetchLink.href = apiUrl;
-                        prefetchLink.setAttribute("crossorigin", "anonymous");
-                        document.head.appendChild(prefetchLink);
 
                         // Append css
                         const css = document.createElement("link");
@@ -53,31 +55,8 @@ function gulptasksHTML($, gulp, buildFolder) {
                         }
                         document.head.appendChild(css);
 
-                        // Append async css
-                        // const asyncCss = document.createElement("link");
-                        // asyncCss.rel = "stylesheet";
-                        // asyncCss.type = "text/css";
-                        // asyncCss.media = "none";
-                        // asyncCss.setAttribute("onload", "this.media='all'");
-                        // asyncCss.href = cachebust("async-resources.css");
-                        // if (integrity) {
-                        //     asyncCss.setAttribute(
-                        //         "integrity",
-                        //         computeIntegrityHash(path.join(buildFolder, "async-resources.css"))
-                        //     );
-                        // }
-                        // document.head.appendChild(asyncCss);
-
-                        if (app) {
-                            // Append cordova link
-                            const cdv = document.createElement("script");
-                            cdv.src = "cordova.js";
-                            cdv.type = "text/javascript";
-                            document.head.appendChild(cdv);
-                        }
-
                         // Google analytics
-                        if (analytics) {
+                        if (googleAnalytics) {
                             const tagManagerScript = document.createElement("script");
                             tagManagerScript.src =
                                 "https://www.googletagmanager.com/gtag/js?id=UA-165342524-1";
@@ -92,14 +71,6 @@ function gulptasksHTML($, gulp, buildFolder) {
                         gtag('config', 'UA-165342524-1', { anonymize_ip: true });
                         `;
                             document.head.appendChild(initScript);
-
-                            const abTestingScript = document.createElement("script");
-                            abTestingScript.setAttribute(
-                                "src",
-                                "https://www.googleoptimize.com/optimize.js?id=OPT-M5NHCV7"
-                            );
-                            abTestingScript.setAttribute("async", "");
-                            document.head.appendChild(abTestingScript);
                         }
 
                         // Do not need to preload in app or standalone
@@ -250,50 +221,25 @@ function gulptasksHTML($, gulp, buildFolder) {
             .pipe(gulp.dest(buildFolder));
     }
 
-    gulp.task("html.dev", () => {
-        return buildHtml("http://localhost:5005", {
-            analytics: false,
-            integrity: false,
-            enableCachebust: false,
+    for (const variant in BUILD_VARIANTS) {
+        const data = BUILD_VARIANTS[variant];
+        gulp.task("html." + variant + ".dev", () => {
+            return buildHtml({
+                googleAnalytics: false,
+                standalone: data.standalone,
+                integrity: false,
+                enableCachebust: false,
+            });
         });
-    });
-
-    gulp.task("html.staging", () => {
-        return buildHtml("https://api-staging.shapez.io", {
-            analytics: true,
+        gulp.task("html." + variant + ".prod", () => {
+            return buildHtml({
+                googleAnalytics: !data.standalone,
+                standalone: data.standalone,
+                integrity: true,
+                enableCachebust: !data.standalone,
+            });
         });
-    });
-
-    gulp.task("html.prod", () => {
-        return buildHtml("https://analytics.shapez.io", {
-            analytics: true,
-        });
-    });
-
-    gulp.task("html.standalone-dev", () => {
-        return buildHtml("https://localhost:5005", {
-            analytics: false,
-            standalone: true,
-            integrity: false,
-            enableCachebust: false,
-        });
-    });
-
-    gulp.task("html.standalone-beta", () => {
-        return buildHtml("https://api-staging.shapez.io", {
-            analytics: false,
-            standalone: true,
-            enableCachebust: false,
-        });
-    });
-
-    gulp.task("html.standalone-prod", () => {
-        return buildHtml("https://analytics.shapez.io", {
-            analytics: false,
-            standalone: true,
-            enableCachebust: false,
-        });
-    });
+    }
 }
 
 module.exports = {

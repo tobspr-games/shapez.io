@@ -117,13 +117,7 @@ export const globalConfig = {
     rendering: {},
     debug: require("./config.local").default,
 
-    currentDiscount: {
-        amount: 50,
-        from: Date.parse("May 23 2022 17:00 +2:00"),
-        until: Date.parse("May 30 2022 23:59 +2:00"),
-
-        active: false, // computed later
-    },
+    currentDiscount: 0,
 
     // Secret vars
     info: {
@@ -169,8 +163,3 @@ if (G_IS_DEV && globalConfig.debug.noArtificialDelays) {
     globalConfig.warmupTimeSecondsFast = 0;
     globalConfig.warmupTimeSecondsRegular = 0;
 }
-
-globalConfig.currentDiscount.active =
-    !G_IS_STANDALONE &&
-    new Date().getTime() < globalConfig.currentDiscount.until &&
-    new Date().getTime() > globalConfig.currentDiscount.from;

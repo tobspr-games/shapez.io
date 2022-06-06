@@ -47,6 +47,10 @@
                 align-self: end;
                 margin-top: auto;
 
+                &.noabout {
+                    align-self: start;
+                }
+
                 @include StyleBelowWidth($layoutBreak) {
                     margin-top: 0;
                     display: grid;

@@ -125,7 +125,11 @@ export class HUDModalDialogs extends BaseHUDPart {
 
         dialog.buttonSignals.getStandalone.add(() => {
             this.app.analytics.trackUiClick("demo_dialog_click");
-            window.open(THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_demo_dialog");
+            window.open(
+                THIRDPARTY_URLS.stanaloneCampaignLink +
+                    "/shapez_demo_dialog" +
+                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
+            );
         });
 
         return dialog.buttonSignals;

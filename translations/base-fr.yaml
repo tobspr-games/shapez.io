@@ -53,7 +53,16 @@ global:
     loggingIn: Se connecter
 demoBanners:
     title: Version de démo
-    intro: Achetez la version complète pour débloquer toutes les fonctionnalités !
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Jouer
     continue: Continuer
@@ -108,8 +117,9 @@ dialogs:
         text: "Impossible de charger votre sauvegarde :"
     confirmSavegameDelete:
         title: Confirmez la suppression
-        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br> « <savegameName> »
-            au niveau <savegameLevel><br><br> Ce sera définitif !
+        text: Êtes-vous sûr de vouloir supprimer cette partie ?<br><br>
+            « <savegameName> » au niveau <savegameLevel><br><br> Ce sera
+            définitif !
     savegameDeletionError:
         title: Impossible de supprimer
         text: "Impossible de supprimer votre sauvegarde :"
@@ -428,9 +438,6 @@ ingame:
             buildings:
                 title: 18 nouveaux bâtiments
                 desc: Automatisez entièrement votre usine !
-            upgrades:
-                title: ∞ niveaux d’amélioration
-                desc: Cette version de démonstration n’en a que 5 !
             markers:
                 title: Balises ∞
                 desc: Ne vous perdez plus jamais dans votre usine !
@@ -446,6 +453,9 @@ ingame:
             achievements:
                 title: Succès
                 desc: Débloquez-les tous !
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Largeur
@@ -456,7 +466,6 @@ ingame:
         report: Signaler
         clearBuildings: Effacer les Constructions
         resetPuzzle: Réinitialiser le Puzzle
-
     puzzleEditorControls:
         title: Créateur de Puzzles
         instructions:
@@ -476,7 +485,6 @@ ingame:
             - 6. Une fois publié <strong>tous les bâtiments seront
               supprimés</strong> sauf les générateurs et les récepteurs - C'est
               la partie ou le joueur est censé se débrouiller seul :)
-
     puzzleCompletion:
         title: Puzzle Résolu !
         titleLike: "Cliquez sur le cœur si vous avez aimé le Puzzle:"
@@ -641,8 +649,8 @@ buildings:
                 couleur ou « 1 »).
         not:
             name: Porte NON
-            description: Émet un « 1 » booléen si l’entrée n’est pas vraie (une forme, couleur
-                ou « 1 »).
+            description: Émet un « 1 » booléen si l’entrée n’est pas vraie (une forme,
+                couleur ou « 1 »).
         xor:
             name: Porte OU-EXCLUSIF
             description: Émet un « 1 » booléen si une des entrées est vraie (une forme,
@@ -684,8 +692,9 @@ buildings:
     comparator:
         default:
             name: Comparateur
-            description: Émet « 1 » si les deux entrées sont exactement les mêmes, sinon émet
-                « 0 ». Peut comparer des formes, des couleurs, et des booléens.
+            description: Émet « 1 » si les deux entrées sont exactement les mêmes, sinon
+                émet « 0 ». Peut comparer des formes, des couleurs, et des
+                booléens.
     virtual_processor:
         default:
             name: Découpeur virtuel
@@ -1359,13 +1368,17 @@ mods:
     version: Version
     modWebsite: Page web
     openFolder: Ouvrir le dossier des mods
-    folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la version complète
+    folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la
+        version complète
     browseMods: Chercher les Mods
-    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans le répertoire du jeu.
-        Vous pouvez aussi utiliser le bouton 'Ouvrir le dossier des Mods' en haut à droite
-    noModSupport: Vous avez besoin de la version complète sur Steam pour installer des mods.
+    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans
+        le répertoire du jeu. Vous pouvez aussi utiliser le bouton 'Ouvrir le
+        dossier des Mods' en haut à droite
+    noModSupport: Vous avez besoin de la version complète sur Steam pour installer
+        des mods.
     togglingComingSoon:
         title: Bientôt disponible
         description: Activer ou désactiver un mod est pour le moment possible qu'en
-            copiant le fichier du mod depuis ou vers le dossier des mods. Cependant,
-            activer ou désactiver un mod est prévu pour une mise à jour future !
+            copiant le fichier du mod depuis ou vers le dossier des mods.
+            Cependant, activer ou désactiver un mod est prévu pour une mise à
+            jour future !

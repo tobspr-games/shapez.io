@@ -54,7 +54,16 @@ global:
     loggingIn: Giriş yapılıyor
 demoBanners:
     title: Deneme Sürümü
-    intro: Bütün özellikleri açmak için tam sürümü satın alın!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Oyna
     changelog: Değişiklik Günlüğü
@@ -80,8 +89,8 @@ mainMenu:
     puzzleDlcViewNow: Paketi (DLC) görüntüle
     mods:
         title: Aktif Modlar
-        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen
-            Yapboz DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
+        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
+            DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
 dialogs:
     buttons:
         ok: OK
@@ -264,9 +273,10 @@ dialogs:
             alınamaz!"
     modsDifference:
         title: Mod Uyarısı
-        desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan farklıdır.
-            Bu işlem kayıtlı oyunun bozulmasına veya hiç yüklenmemesine neden olabilir. Devam
-            etmek istediğinize emin misiniz?
+        desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan
+            farklıdır. Bu işlem kayıtlı oyunun bozulmasına veya hiç
+            yüklenmemesine neden olabilir. Devam etmek istediğinize emin
+            misiniz?
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
 ingame:
@@ -422,9 +432,6 @@ ingame:
             buildings:
                 title: 18 Yeni Yapı
                 desc: Fabrikanı tamamen otomatikleştir!
-            upgrades:
-                title: ∞ Geliştirme Aşaması
-                desc: Bu deneme sürümünde sadece 5 tane var!
             markers:
                 title: ∞ Yer imleri
                 desc: Fabrikanda asla kaybolma!
@@ -440,6 +447,9 @@ ingame:
             achievements:
                 title: Başarımlar
                 desc: Bütün başarımları açmaya çalış!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Alan
         zoneWidth: Genişlik
@@ -1314,9 +1324,9 @@ mods:
     openFolder: Mod Klasörünü Aç
     folderOnlyStandalone: Mod klasörünü açmak sadece tam sürümü çalıştırıyorken mümkün.
     browseMods: Modlara Gözat
-    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki Modlar
-        klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç' düğmesini de
-        kullanabilirsiniz.
+    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki
+        Modlar klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç'
+        düğmesini de kullanabilirsiniz.
     noModSupport: Mod yükleyebilmek için tam sürümü çalıştırmalısınız.
     togglingComingSoon:
         title: Yakında Gelecek

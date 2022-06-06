@@ -3,6 +3,8 @@ import { TextualGameState } from "../core/textual_game_state";
 import { MODS } from "../mods/modloader";
 import { T } from "../translations";
 
+const MODS_SUPPORTED = !G_IS_STEAM_DEMO && (G_IS_STANDALONE || G_IS_DEV);
+
 export class ModsState extends TextualGameState {
     constructor() {
         super("ModsState");
@@ -19,12 +21,12 @@ export class ModsState extends TextualGameState {
 
                 <div class="actions">
                    ${
-                       (G_IS_STANDALONE || G_IS_DEV) && MODS.mods.length > 0
+                       MODS_SUPPORTED && MODS.mods.length > 0
                            ? `<button class="styledButton browseMods">${T.mods.browseMods}</button>`
                            : ""
                    }
                    ${
-                       G_IS_STANDALONE || G_IS_DEV
+                       MODS_SUPPORTED
                            ? `<button class="styledButton openModsFolder">${T.mods.openFolder}</button>`
                            : ""
                    }
@@ -41,7 +43,7 @@ export class ModsState extends TextualGameState {
     }
 
     getMainContentHTML() {
-        if (!G_IS_STANDALONE && !G_IS_DEV) {
+        if (!MODS_SUPPORTED) {
             return `
                 <div class="noModSupport">
 
@@ -137,7 +139,9 @@ export class ModsState extends TextualGameState {
     onSteamLinkClicked() {
         this.app.analytics.trackUiClick("mods_steam_link");
         this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_modsettings"
+            THIRDPARTY_URLS.stanaloneCampaignLink +
+                "/shapez_modsettings" +
+                (G_IS_STEAM_DEMO ? "_steamdemo" : "")
         );
 
         return false;

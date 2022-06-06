@@ -31,11 +31,9 @@ import { IS_MOBILE } from "../../core/config";
 import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
 import { HUDWatermark } from "../hud/parts/watermark";
 import { HUDStandaloneAdvantages } from "../hud/parts/standalone_advantages";
-import { HUDCatMemes } from "../hud/parts/cat_memes";
+import { HUDSteamCapsule } from "../hud/parts/steam_capsule";
 import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
 import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
-import { HUDSandboxController } from "../hud/parts/sandbox_controller";
-import { queryParamOptions } from "../../core/query_parameters";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { MOD_SIGNALS } from "../../mods/mod_signals";
@@ -584,7 +582,7 @@ export class RegularGameMode extends GameMode {
         if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
             this.additionalHudParts.watermark = HUDWatermark;
             this.additionalHudParts.standaloneAdvantages = HUDStandaloneAdvantages;
-            this.additionalHudParts.catMemes = HUDCatMemes;
+            this.additionalHudParts.catMemes = HUDSteamCapsule;
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {

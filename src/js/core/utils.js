@@ -3,29 +3,6 @@ import { T } from "../translations";
 const bigNumberSuffixTranslationKeys = ["thousands", "millions", "billions", "trillions"];
 
 /**
- * Returns if this platform is android
- * @returns {boolean}
- */
-export function isAndroid() {
-    if (!G_IS_MOBILE_APP) {
-        return false;
-    }
-    const platform = window.device.platform;
-    return platform === "Android" || platform === "amazon-fireos";
-}
-
-/**
- * Returns if this platform is iOs
- * @returns {boolean}
- */
-export function isIos() {
-    if (!G_IS_MOBILE_APP) {
-        return false;
-    }
-    return window.device.platform === "iOS";
-}
-
-/**
  * Returns a platform name
  * @returns {"android" | "browser" | "ios" | "standalone" | "unknown"}
  */
@@ -34,10 +11,6 @@ export function getPlatformName() {
         return "standalone";
     } else if (G_IS_BROWSER) {
         return "browser";
-    } else if (G_IS_MOBILE_APP && isAndroid()) {
-        return "android";
-    } else if (G_IS_MOBILE_APP && isIos()) {
-        return "ios";
     }
     return "unknown";
 }
@@ -456,7 +429,7 @@ export function isSupportedBrowser() {
     // and if not iOS Chrome check
     // so use the below updated condition
 
-    if (G_IS_MOBILE_APP || G_IS_STANDALONE) {
+    if (G_IS_STANDALONE) {
         return true;
     }
 

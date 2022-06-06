@@ -1,7 +1,7 @@
 "DepotBuildConfig"
 {
 	"DepotID" "1318693"
-	"contentroot" "/Users/tobiasspringer/work/shapez.io/tmp_standalone_files/shapez.io-standalone-darwin-x64"
+	"contentroot" "$PROJECT_DIR$/tmp_standalone_files/shapez.io-standalone-darwin-x64"
 	"FileMapping"
 	{
 		"LocalPath" "*"

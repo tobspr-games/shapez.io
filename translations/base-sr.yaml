@@ -54,7 +54,16 @@ global:
     loggingIn: Prijavljivanje
 demoBanners:
     title: Probna Verzija
-    intro: Nabavite punu igru kako biste otključali sve funkcije!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Igraj
     continue: Nastavi
@@ -419,9 +428,6 @@ ingame:
             buildings:
                 title: 18 Novih Građevina
                 desc: U potpunosti automatizujte fabriku!
-            upgrades:
-                title: ∞ Redova Nadogradnje
-                desc: Probna verzija ima samo 5!
             markers:
                 title: ∞ Putokaza
                 desc: Nikada se nećete izgubiti u fabrici!
@@ -437,6 +443,9 @@ ingame:
             achievements:
                 title: Dostignuća
                 desc: Osvojite ih sve!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Širina

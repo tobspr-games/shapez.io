@@ -52,6 +52,11 @@
             }
         }
 
+        .playtimeDisclaimer {
+            @include S(margin-bottom, 10px);
+            @include PlainText;
+        }
+
         .steamLinkButton {
             @include IncreasedClickArea(5px);
             @include S(margin, 0);

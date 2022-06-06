@@ -189,7 +189,7 @@ function initializeSettings() {
             },
             /**
              * @param {Application} app
-             */ app => app.restrictionMgr.getHasExtendedSettings()
+             */ app => G_IS_STANDALONE
         ),
 
         new BoolSetting(
@@ -514,7 +514,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         const settings = data.settings;
 
         // MODS
-        if (!THEMES[settings.theme]) {
+        if (!THEMES[settings.theme] || !this.app.restrictionMgr.getHasExtendedSettings()) {
             console.warn("Resetting theme because its no longer available: " + settings.theme);
             settings.theme = "light";
         }
@@ -700,7 +700,7 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         // MODS
-        if (!THEMES[data.settings.theme]) {
+        if (!THEMES[data.settings.theme] || !this.app.restrictionMgr.getHasExtendedSettings()) {
             console.warn("Resetting theme because its no longer available: " + data.settings.theme);
             data.settings.theme = "light";
         }

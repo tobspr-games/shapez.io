@@ -41,7 +41,6 @@ import { ModsState } from "./states/mods";
 
 /**
  * @typedef {import("./platform/achievement_provider").AchievementProviderInterface} AchievementProviderInterface
- * @typedef {import("./platform/game_analytics").GameAnalyticsInterface} GameAnalyticsInterface
  * @typedef {import("./platform/sound").SoundInterface} SoundInterface
  * @typedef {import("./platform/storage").StorageInterface} StorageInterface
  */
@@ -118,7 +117,7 @@ export class Application {
         /** @type {AnalyticsInterface} */
         this.analytics = null;
 
-        /** @type {GameAnalyticsInterface} */
+        /** @type {ShapezGameAnalytics} */
         this.gameAnalytics = null;
 
         this.initPlatformDependentInstances();
@@ -227,12 +226,10 @@ export class Application {
         window.addEventListener("resize", () => this.checkResize(), true);
         window.addEventListener("orientationchange", () => this.checkResize(), true);
 
-        if (!G_IS_MOBILE_APP && !IS_MOBILE) {
-            window.addEventListener("mousemove", this.handleMousemove.bind(this));
-            window.addEventListener("mouseout", this.handleMousemove.bind(this));
-            window.addEventListener("mouseover", this.handleMousemove.bind(this));
-            window.addEventListener("mouseleave", this.handleMousemove.bind(this));
-        }
+        window.addEventListener("mousemove", this.handleMousemove.bind(this));
+        window.addEventListener("mouseout", this.handleMousemove.bind(this));
+        window.addEventListener("mouseover", this.handleMousemove.bind(this));
+        window.addEventListener("mouseleave", this.handleMousemove.bind(this));
 
         // Unload events
         window.addEventListener("beforeunload", this.onBeforeUnload.bind(this), true);

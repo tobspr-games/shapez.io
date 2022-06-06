@@ -36,13 +36,11 @@ export class SettingsState extends TextualGameState {
                     : `
                 <button class="styledButton categoryButton manageMods">${T.mods.title}
                     <span class="newBadge">${T.settings.newBadge}</span>
-                </button>
-
-`
+                </button>`
             }
 
 
-            <div class="other">
+            <div class="other ${G_CHINA_VERSION || G_WEGAME_VERSION ? "noabout" : ""}">
 
             ${
                 G_CHINA_VERSION || G_WEGAME_VERSION

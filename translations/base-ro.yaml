@@ -56,7 +56,16 @@ global:
     loggingIn: Logare
 demoBanners:
     title: Versiunea Demo
-    intro: Instalează versiunea Standalone pentru a debloca toate funcțiile!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Joacă
     changelog: Jurnalul schimbărilor
@@ -429,9 +438,6 @@ ingame:
             buildings:
                 title: 18 construcții noi
                 desc: Automatizează-ti complet fabrica!
-            upgrades:
-                title: Nivele de Upgrade Infinite
-                desc: Acest demo are doar 5!
             markers:
                 title: Marcatoare infinite
                 desc: Nu te rătăci niciodată în fabrică!
@@ -447,6 +453,9 @@ ingame:
             achievements:
                 title: Realizări
                 desc: Vânează-le pe toate!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zonă
         zoneWidth: Lățime

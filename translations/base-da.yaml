@@ -54,7 +54,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: Demoversion
-    intro: Køb spillet for at få den fulde oplevelse!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Spil
     continue: Fortsæt
@@ -79,8 +88,8 @@ mainMenu:
     puzzleDlcViewNow: Se DLC
     mods:
         title: Active Mods
-        warningPuzzleDLC: Det er ikke muligt at spille Puzzle DLC med mods. Slå
-            alle mods fra for at spille DLC.
+        warningPuzzleDLC: Det er ikke muligt at spille Puzzle DLC med mods. Slå alle
+            mods fra for at spille DLC.
 dialogs:
     buttons:
         ok: OK
@@ -417,9 +426,6 @@ ingame:
             buildings:
                 title: 18 Nye Bygninger
                 desc: Fully automate your factory!
-            upgrades:
-                title: ∞ Upgrade Tiers
-                desc: This demo version has only 5!
             markers:
                 title: ∞ Markers
                 desc: Never get lost in your factory!
@@ -435,6 +441,9 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Hunt them all!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width
@@ -820,9 +829,10 @@ storyRewards:
     reward_logic_gates:
         title: Logic Gates
         desc: Du har oplåst <strong>logiske porte</strong>! Du behøver ikke være
-            ellevild over dette, men det er faktisk virkelig sejt!<br><br> Med de porte
-            kan du beregne AND-, OR-, XOR- og NOT-operationer.<br><br> Og som
-            en bonus har jeg også gived dig <strong>transistoren</strong>!
+            ellevild over dette, men det er faktisk virkelig sejt!<br><br> Med
+            de porte kan du beregne AND-, OR-, XOR- og NOT-operationer.<br><br>
+            Og som en bonus har jeg også gived dig
+            <strong>transistoren</strong>!
     reward_virtual_processing:
         title: Virtual Processing
         desc: I just gave a whole bunch of new buildings which allow you to
@@ -1180,7 +1190,8 @@ tips:
     - Building too close to the hub can get in the way of later projects.
     - The pin icon next to each shape in the upgrade list pins it to the screen.
     - Bland alle grundfarverne for at lave hvid farve!
-    - Du har en uendeligt stor verden, lad være med at kramme fabrikken sammen. Udvid!
+    - Du har en uendeligt stor verden, lad være med at kramme fabrikken sammen.
+      Udvid!
     - Prøv også Factorio. Det er mit yndlingsspil!
     - The quad cutter cuts clockwise starting from the top right!
     - Du kan downloade dine gemte spil i hovedmenuen!
@@ -1255,10 +1266,10 @@ backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Kunne ikke forbinde til backend. Vær venlig at prøve igen eller
         at opdatere/genstarte dit spil (Invalid Api Key).
-    unauthorized: Kunne ikke forbinde til backend. Vær venlig at prøve igen eller
-        at opdatere/genstarte dit spil (Unauthorized).
-    bad-token: Kunne ikke forbinde til backend. Vær venlig at opdatere/genstarte
-        dit spil (Bad Token).
+    unauthorized: Kunne ikke forbinde til backend. Vær venlig at prøve igen eller at
+        opdatere/genstarte dit spil (Unauthorized).
+    bad-token: Kunne ikke forbinde til backend. Vær venlig at opdatere/genstarte dit
+        spil (Bad Token).
     bad-id: Invalid puzzle identifier.
     not-found: The given puzzle could not be found.
     bad-category: The given category could not be found.

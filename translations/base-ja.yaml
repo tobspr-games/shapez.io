@@ -48,7 +48,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: デモ版
-    intro: スタンドアローン版を手に入れ、すべての機能をアンロックしましょう！
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: プレイ
     continue: 続きから
@@ -381,9 +390,6 @@ ingame:
             buildings:
                 title: 新しい18個の設置物
                 desc: あなたの工場を完全自動化しましょう！
-            upgrades:
-                title: 無限のアップグレード段階
-                desc: このデモバージョンでは5段階のみです！
             markers:
                 title: 無限個のマップマーカー
                 desc: これでもうあなたの工場を見失いません！
@@ -399,6 +405,9 @@ ingame:
             achievements:
                 title: アチーブメント
                 desc: 取り尽くせ！
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width
@@ -1014,9 +1023,9 @@ tips:
     - 切断機は配置された向きを考慮せず、常に垂直に切断します。
     - ストレージは左側の出力を優先します。
     - 増築可能なデザインを目指してみましょう。それだけの価値があります！
-    - <b>ALT</b>を押しながらベルトを設置すると、向きを逆転できます。
-    - ハブから遠くに離れるほど、形状資源はより複雑な形になります。
-    - 機械の速度には上限があるので、最大効率を得るためには入力を分割してください。
+    - Invest time to build repeatable designs - it's worth it!
+    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
+    - You can hold <b>ALT</b> to invert the direction of placed belts.
     - 効率を最大化するために分配機/合流機を使用できます。
     - 構成が重要です。ベルトを交差させすぎないようにしてください。
     - 事前設計が重要です。さもないとぐちゃぐちゃになりますよ！
@@ -1030,10 +1039,10 @@ tips:
     - モジュールがあれば、空間はただの認識に過ぎなくなる――生ある人間に対する気遣いだ。
     - 設計図としての工場を別に作っておくと、工場のモジュール化において重要な役割を果たします。
     - 混色機をよく見ると、色の混ぜ方が解ります。
-    - <b>CTRL</b>を押したままクリックすると、領域を選択できます。
+    - With modules, space is merely a perception; a concern for mortal men.
     - アップグレードリストの各形状の横にあるピンのアイコンは、その形状を画面左に固定表示します。
     - 三原色全てを混ぜ合わせると白になります！
-    - マップは無限の広さがあります。臆せずに拡張してください。
+    - Use <b>CTRL</b> + Click to select an area.
     - Factorioもプレイしてみてください！　私のお気に入りのゲームです。
     - 切断機(四分割)は右上から時計回りに切断します。
     - メインメニューからセーブデータを保存できます！
@@ -1044,6 +1053,10 @@ tips:
     - F4を押すことで、FPSとTickレートを表示できます。
     - F4を2回押すと、マウスとカメラの座標を表示できます。
     - 左のピン留めされた図形をクリックすると、ピン留めを解除できます。
+    - To clear belts, cut the area and then paste it at the same location.
+    - Press F4 to show your FPS and Tick Rate.
+    - Press F4 twice to show the tile of your mouse and camera.
+    - You can click a pinned shape on the left side to unpin it.
 puzzleMenu:
     play: Play
     edit: Edit

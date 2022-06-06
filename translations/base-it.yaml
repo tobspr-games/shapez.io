@@ -56,7 +56,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: Versione Demo
-    intro: Ottieni la versione completa per sbloccare tutte le funzioni!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Gioca
     changelog: Registro modifiche
@@ -432,9 +441,6 @@ ingame:
             buildings:
                 title: 18 nuovi edifici
                 desc: Automatizza completamente la tua fabbrica!
-            upgrades:
-                title: ∞ gradi di miglioramenti
-                desc: Questa demo ne ha solo 5!
             markers:
                 title: ∞ etichette
                 desc: Non perderti nella tua fabbrica!
@@ -450,6 +456,9 @@ ingame:
             achievements:
                 title: Achievement
                 desc: Collezionali tutti!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Larghezza
