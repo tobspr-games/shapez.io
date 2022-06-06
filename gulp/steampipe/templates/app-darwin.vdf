@@ -1,0 +1,14 @@
+"appbuild"
+{
+	"appid" "1318690"
+	"desc" "$BUILD_DESC$"
+	"buildoutput" "$TMP_DIR$"
+	"contentroot" ""
+	"setlive" ""
+	"preview" "0"
+	"local"	""
+	"depots"
+	{
+		"1318693"	"$VDF_DIR$/standalone-darwin.vdf"
+	}
+}

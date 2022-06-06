@@ -119,7 +119,7 @@ function gulptasksStandalone($, gulp) {
                 asar: asar,
                 executableName: "shapezio",
                 icon: path.join(electronBaseDir, "favicon"),
-                name: "shapez-" + variant,
+                name: "shapez",
                 out: tempDestDir,
                 overwrite: true,
                 appBundleId: "tobspr.shapezio." + variant,
@@ -175,7 +175,7 @@ function gulptasksStandalone($, gulp) {
                                     fs.writeFileSync(
                                         path.join(
                                             appPath,
-                                            "shapez.io-standalone.app",
+                                            "shapez.app",
                                             "Contents",
                                             "MacOS",
                                             "steam_appid.txt"
@@ -202,14 +202,14 @@ function gulptasksStandalone($, gulp) {
                 "darwin",
                 "x64",
                 () => {
-                    const appFile = path.join(tempDestDir, "shapez.io-standalone-darwin-x64");
-                    const appFileInner = path.join(appFile, "shapez.io-standalone.app");
+                    const appFile = path.join(tempDestDir, "shapez-darwin-x64");
+                    const appFileInner = path.join(appFile, "shapez.app");
                     const appIdDest = path.join(
                         path.join(appFileInner, "Contents", "MacOS"),
                         "steam_appid.txt"
                     );
-                    console.warn("++ Preparing ++");
-                    fse.copySync(path.join(tempDestBuildDir, "steam_appid.txt"), appIdDest);
+                    // console.warn("++ Preparing ++");
+                    // fse.copySync(path.join(tempDestBuildDir, "steam_appid.txt"), appIdDest);
 
                     console.warn("++ Signing ++");
                     console.warn("Signing steam_appid.txt");
@@ -241,17 +241,14 @@ function gulptasksStandalone($, gulp) {
                             };
                         },
                     }).then(() => {
-                        execSync(
-                            `codesign --verify --verbose ${path.join(appFile, "shapez.io-standalone.app")}`,
-                            {
-                                cwd: appFile,
-                            }
-                        );
+                        execSync(`codesign --verify --verbose ${path.join(appFile, "shapez.app")}`, {
+                            cwd: appFile,
+                        });
 
                         console.warn("++ Notarizing ++");
                         electronNotarize
                             .notarize({
-                                appPath: path.join(appFile, "shapez.io-standalone.app"),
+                                appPath: path.join(appFile, "shapez.app"),
                                 tool: "legacy",
                                 appBundleId: "tobspr.shapezio.standalone",
 
@@ -289,22 +286,53 @@ function gulptasksStandalone($, gulp) {
         const hash = buildutils.getRevision();
         const version = buildutils.getVersion();
 
-        for (const platform of ["steampipe", "steampipe-darwin"]) {
-            const steampipeDir = path.join(__dirname, platform, "scripts");
-            for (const buildVariant of ["app", "app-demo"]) {
-                const templateContents = fs
-                    .readFileSync(path.join(steampipeDir, buildVariant + ".vdf.template"), {
-                        encoding: "utf-8",
-                    })
-                    .toString();
+        // for (const platform of ["steampipe", "steampipe-darwin"]) {
+        const templatesSource = path.join(__dirname, "steampipe", "templates");
+        const templatesDest = path.join(__dirname, "steampipe", "built_vdfs");
 
-                const convertedContents = templateContents.replace(
-                    "$DESC$",
-                    platform + " " + buildVariant + " version " + version + ", commit " + hash
-                );
-                fs.writeFileSync(path.join(steampipeDir, buildVariant + ".vdf"), convertedContents);
+        const variables = {
+            PROJECT_DIR: path.resolve(path.join(__dirname, "..")).replace(/\\/g, "/"),
+            BUNDLE_DIR: path.resolve(path.join(__dirname, "..", "build_output")).replace(/\\/g, "/"),
+
+            TMP_DIR: path.resolve(path.join(__dirname, "steampipe", "tmp")).replace(/\\/g, "/"),
+            // BUILD_DESC: "v" + version + " @ " + hash,
+            VDF_DIR: path.resolve(path.join(__dirname, "steampipe", "built_vdfs")).replace(/\\/g, "/"),
+        };
+
+        const files = fs.readdirSync(templatesSource);
+        for (const file of files) {
+            if (!file.endsWith(".vdf")) {
+                continue;
             }
+
+            variables.BUILD_DESC = file.replace(".vdf", "") + " - v" + version + " @ " + hash;
+
+            let content = fs.readFileSync(path.join(templatesSource, file)).toString("utf-8");
+            content = content.replace(/\$([^$]+)\$/gi, (_, variable) => {
+                if (!variables[variable]) {
+                    throw new Error("Unknown variable " + variable + " in " + file);
+                }
+
+                return variables[variable];
+            });
+
+            fs.writeFileSync(path.join(templatesDest, file), content, { encoding: "utf8" });
         }
+
+        // for (const buildVariant of ["app", "app-demo"]) {
+        //     const templateContents = fs
+        //         .readFileSync(path.join(steampipeDir, buildVariant + ".vdf.template"), {
+        //             encoding: "utf-8",
+        //         })
+        //         .toString();
+
+        //     const convertedContents = templateContents.replace(
+        //         "$DESC$",
+        //         platform + " " + buildVariant + " version " + version + ", commit " + hash
+        //     );
+        //     fs.writeFileSync(path.join(steampipeDir, buildVariant + ".vdf"), convertedContents);
+        // }
+        // }
         cb();
     });
 }

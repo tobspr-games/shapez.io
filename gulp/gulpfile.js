@@ -200,8 +200,6 @@ function serveHTML({ version = "web-dev" }) {
     gulp.series("js." + version + ".dev.watch")(() => true);
 }
 
-/////////////////////  RUNNABLE TASKS  /////////////////////
-
 // Pre and postbuild
 gulp.task("step.baseResources", gulp.series("imgres.allOptimized"));
 gulp.task("step.deleteEmpty", cb => {
@@ -211,7 +209,9 @@ gulp.task("step.deleteEmpty", cb => {
 
 gulp.task("step.postbuild", gulp.series("imgres.cleanupUnusedCssInlineImages", "step.deleteEmpty"));
 
-// // Builds everything (dev)
+/////////////////////  RUNNABLE TASKS  /////////////////////
+
+// Builds everything (dev)
 gulp.task(
     "build.prepare.dev",
     gulp.series(
@@ -229,29 +229,12 @@ gulp.task(
     )
 );
 
-// // Builds everything (staging)
-// gulp.task("step.staging.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.staging"));
-// gulp.task(
-//     "step.staging.mainbuild",
-//     gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.staging.code")
-// );
-// gulp.task("step.staging.all", gulp.series("step.staging.mainbuild", "css.prod", "html.staging"));
-// gulp.task("build.staging", gulp.series("utils.cleanup", "step.staging.all", "step.postbuild"));
-
-// // Builds everything (prod)
-// gulp.task("step.prod.code", gulp.series("sounds.fullbuild", "translations.fullBuild", "js.prod"));
-// gulp.task(
-//     "step.prod.mainbuild",
-//     gulp.parallel("utils.copyAdditionalBuildFiles", "step.baseResources", "step.prod.code")
-// );
-// gulp.task("step.prod.all", gulp.series("step.prod.mainbuild", "css.prod", "html.prod"));
-// gulp.task("build.prod", gulp.series("utils.cleanup", "step.prod.all", "step.postbuild"));
-
 // Builds everything for every variant
 for (const variant in BUILD_VARIANTS) {
     const data = BUILD_VARIANTS[variant];
     const buildName = "build." + variant;
 
+    // build
     gulp.task(
         buildName + ".code",
         gulp.series(
@@ -270,22 +253,24 @@ for (const variant in BUILD_VARIANTS) {
 
     gulp.task(buildName, gulp.series("utils.cleanup", buildName + ".all", "step.postbuild"));
 
+    // bundle
+    if (data.standalone) {
+        gulp.task(
+            "bundle." + variant + ".from-windows",
+            gulp.series(buildName, "standalone." + variant + ".build-from-windows")
+        );
+        gulp.task(
+            "bundle." + variant + ".from-darwin",
+            gulp.series(buildName, "standalone." + variant + ".build-from-darwin")
+        );
+    }
+
     // serve
     gulp.task(
         "serve." + variant,
         gulp.series("build.prepare.dev", "html." + variant + ".dev", () => serveHTML({ version: variant }))
     );
 }
-
-// OS X build and release upload
-// gulp.task(
-//     "build.darwin64-prod",
-//     gulp.series(
-//         "build.standalone-prod",
-//         "standalone.prepare",
-//         "standalone.package.prod.darwin64.signManually"
-//     )
-// );
 
 // Deploying!
 gulp.task(
@@ -297,23 +282,26 @@ gulp.task(
     gulp.series("utils.requireCleanWorkingTree", "build.web-shapezio", "ftp.upload.prod")
 );
 
-// // china
-// gulp.task(
-//     "china.main.standalone",
-//     gulp.series("china.build.standalone-prod", "china.standalone.package.prod")
-// );
+// Bundling (pre upload)
+gulp.task(
+    "bundle.steam.from-darwin",
+    gulp.series("bundle.standalone-steam.from-darwin", "bundle.standalone-steam-china.from-darwin")
+);
+gulp.task(
+    "bundle.steam.from-windows",
+    gulp.series("bundle.standalone-steam.from-windows", "bundle.standalone-steam-china.from-windows")
+);
+gulp.task(
+    "bundle.steam-demo.from-darwin",
+    gulp.series("bundle.standalone-steam-demo.from-darwin", "bundle.standalone-steam-china-demo.from-darwin")
+);
+gulp.task(
+    "bundle.steam-demo.from-windows",
+    gulp.series(
+        "bundle.standalone-steam-demo.from-windows",
+        "bundle.standalone-steam-china-demo.from-windows"
+    )
+);
 
-// // wegame
-// gulp.task(
-//     "wegame.main.standalone",
-//     gulp.series("wegame.build.standalone-prod", "wegame.standalone.package.prod")
-// );
-
-// // all (except wegame)
-// gulp.task("standalone.steam", gulp.series("regular.main.standalone", "china.main.standalone"));
-// gulp.task(
-//     "standalone.all",
-//     gulp.series("regular.main.standalone", "china.main.standalone", "wegame.main.standalone")
-// );
-
+// Default task (dev, localhost)
 gulp.task("default", gulp.series("serve.web-localhost"));
