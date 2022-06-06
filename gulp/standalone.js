@@ -43,6 +43,16 @@ function gulptasksStandalone($, gulp) {
             return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));
         });
 
+        gulp.task(taskPrefix + ".prepare.writeAppId", cb => {
+            if (variantData.steamAppId) {
+                fs.writeFileSync(
+                    path.join(tempDestBuildDir, "steam_appid.txt"),
+                    String(variantData.steamAppId)
+                );
+            }
+            cb();
+        });
+
         gulp.task(taskPrefix + ".prepare.writePackageJson", cb => {
             const packageJsonString = JSON.stringify(
                 {
@@ -87,7 +97,8 @@ function gulptasksStandalone($, gulp) {
                 taskPrefix + ".prepare.copyPrefab",
                 taskPrefix + ".prepare.writePackageJson",
                 taskPrefix + ".prepare.minifyCode",
-                taskPrefix + ".prepare.copyGamefiles"
+                taskPrefix + ".prepare.copyGamefiles",
+                taskPrefix + ".prepare.writeAppId"
             )
         );
 
