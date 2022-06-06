@@ -53,6 +53,19 @@ global:
 demoBanners:
     title: 试玩版
     intro: 购买完整版以解锁所有游戏内容！
+demoBanners:
+    title: 试玩版
+    intro: >-
+        <strong>现在</strong>购买完整版以解锁<ul>
+            <li>所有 26 个关卡 + 无限可能的自由模式</li>
+            <li>22 个新建筑物</li>
+            <li>游戏模组（Mods）支持</li>
+            <li>成就</li>
+            <li>深色模式</li>
+            <li>……以及更多！</li>
+        </ul>
+    playtimeDisclaimer: >-
+        完整版包括多达<strong>24小时的新内容</strong>
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
