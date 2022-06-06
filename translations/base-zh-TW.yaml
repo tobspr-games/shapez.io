@@ -50,7 +50,16 @@ global:
     loggingIn: Logging in
 demoBanners:
     title: 試玩版
-    intro: 取得單機版以解鎖所有功能！
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: 開始遊戲
     changelog: 更新日誌
@@ -379,9 +388,6 @@ ingame:
             buildings:
                 title: 18 個新建築
                 desc: 邁向完全自動化！
-            upgrades:
-                title: 20 個等級
-                desc: 試玩版只有 5 個。
             markers:
                 title: ∞ 個地圖標記
                 desc: 再也不會迷失在一望無際的地圖裡！
@@ -397,6 +403,9 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Hunt them all!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

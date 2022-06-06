@@ -26,7 +26,7 @@ global:
     loading: Laden
     error: Fehler
     loggingIn: Einloggen
-    thousandsDivider: "."
+    thousandsDivider: .
     decimalSeparator: ","
     suffix:
         thousands: k
@@ -56,7 +56,16 @@ global:
         space: LEER
 demoBanners:
     title: Demoversion
-    intro: Kauf die Vollversion für alle Features!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Spielen
     continue: Fortsetzen
@@ -82,7 +91,8 @@ mainMenu:
     puzzleDlcViewNow: DLC anzeigen
     mods:
         title: Aktive Mods
-        warningPuzzleDLC: Das Puzzle-DLC und Mods sind nicht kompatibel. Bitte deaktiviere zuerst alle Mods, um das DLC zu spielen.
+        warningPuzzleDLC: Das Puzzle-DLC und Mods sind nicht kompatibel. Bitte
+            deaktiviere zuerst alle Mods, um das DLC zu spielen.
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -330,8 +340,10 @@ dialogs:
             rückgängig gemacht werden!
     modsDifference:
         title: Geänderte Mods
-        desc: Zwischen den derzeit und bei der Erstellung des Spielstands installierten Mods wurde ein Unterschied festgestellt.
-            Das kann dazu führen, dass dein Spielstand zerstört wird, oder gar nicht erst lädt. Willst du ihn wirklich laden?
+        desc: Zwischen den derzeit und bei der Erstellung des Spielstands installierten
+            Mods wurde ein Unterschied festgestellt. Das kann dazu führen, dass
+            dein Spielstand zerstört wird, oder gar nicht erst lädt. Willst du
+            ihn wirklich laden?
         missingMods: Fehlende Mods
         newMods: Neu installierte Mods
 ingame:
@@ -490,9 +502,6 @@ ingame:
             achievements:
                 title: Errungenschaften
                 desc: Hol sie dir alle!
-            upgrades:
-                title: ∞ Upgrade-Stufen
-                desc: Diese Demo hat nur 5!
             markers:
                 title: ∞ Markierungen
                 desc: Verliere nie den Überblick!
@@ -505,6 +514,9 @@ ingame:
             support:
                 title: Unterstütze Mich
                 desc: Ich entwickle das Spiel in meiner Freizeit!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Breite
@@ -959,13 +971,16 @@ mods:
     openFolder: Modordner öffnen
     folderOnlyStandalone: Du kannst den Modordner nur in der Vollversion öffnen.
     browseMods: Mods durchsuchen
-    modsInfo: Um Mods zu installieren und zu verwalten, kopiere sie in den Modordner im Spielverzeichnis.
-        Diesen kannst du auch mit dem 'Modordner öffnen'-Knopf oben rechts aufrufen.
+    modsInfo: Um Mods zu installieren und zu verwalten, kopiere sie in den Modordner
+        im Spielverzeichnis. Diesen kannst du auch mit dem 'Modordner
+        öffnen'-Knopf oben rechts aufrufen.
     noModSupport: Du brauchst die Steam-Vollversion, um Mods zu installieren.
     togglingComingSoon:
         title: Demnächst
-        description: Du kannst Mods aktuell nur (de-)aktivieren, indem du die entsprechende Datei in den Modordner einfügst, oder löschst.
-            Das (De-)Aktivieren der Mods in diesem Menü ist allerdings schon für ein späteres Update geplant!
+        description: Du kannst Mods aktuell nur (de-)aktivieren, indem du die
+            entsprechende Datei in den Modordner einfügst, oder löschst. Das
+            (De-)Aktivieren der Mods in diesem Menü ist allerdings schon für ein
+            späteres Update geplant!
 settings:
     title: Einstellungen
     categories:

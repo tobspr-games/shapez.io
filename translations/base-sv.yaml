@@ -55,7 +55,16 @@ global:
     loggingIn: Loggar in
 demoBanners:
     title: Demo-version
-    intro: Skaffa den fristående versionen för att låsa upp alla funktioner!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Spela
     changelog: Ändringslogg
@@ -422,9 +431,6 @@ ingame:
             buildings:
                 title: 18 nya byggnader!
                 desc: Helautomatisera din fabrik!
-            upgrades:
-                title: 1000 uppgraderingsnivåer
-                desc: This demo version has only 5!
             markers:
                 title: ∞ med markeringar!
                 desc: Tappa aldrig bort dig i din fabrik längre!
@@ -440,6 +446,9 @@ ingame:
             achievements:
                 title: Achievements
                 desc: Hunt them all!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

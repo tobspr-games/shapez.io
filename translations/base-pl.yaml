@@ -15,14 +15,13 @@ steamPage:
 
         Kupienie gry w serwisie Steam przyznaje Ci dostęp do pełnej wersji, ale możesz również skorzystać z wersji demonstracyjnej na stronie shapez.io i rozważyć zakup później!
     what_others_say: Co inni ludzie mówią o shapez.io
-    nothernlion_comment: Ta gra jest świetna - świetnie się bawię grając,
-         a czas minął bardzo szybko.
-    notch_comment: O kurcze. Naprawdę powinienem spać, ale chyba właśnie się wymyśliłem
-        jak stworzyć komputer w shapez.io
-    steam_review_comment: Ta gra skradła mi życie i nie chce go z powrotem!
-        Bardzo luźna gra o fabrykach która nie pozwoli mi robić moich lini bardziej
+    nothernlion_comment: Ta gra jest świetna - świetnie się bawię grając, a czas
+        minął bardzo szybko.
+    notch_comment: O kurcze. Naprawdę powinienem spać, ale chyba właśnie się
+        wymyśliłem jak stworzyć komputer w shapez.io
+    steam_review_comment: Ta gra skradła mi życie i nie chce go z powrotem! Bardzo
+        luźna gra o fabrykach która nie pozwoli mi robić moich lini bardziej
         wydajnych.
-
 global:
     loading: Ładowanie
     error: Wystąpił błąd
@@ -57,7 +56,16 @@ global:
     loggingIn: Logowanie
 demoBanners:
     title: Wersja demonstracyjna
-    intro: Kup pełną wersję gry, aby odblokować więcej funkcji!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Rozpocznij
     continue: Kontynuuj
@@ -83,7 +91,7 @@ mainMenu:
     mods:
         title: Aktywne Mody
         warningPuzzleDLC: Granie w DLC Układanek nie jest możliwe z modami. Proszę
-             wyłącz wszystkie mody, aby otworzyć DLC.
+            wyłącz wszystkie mody, aby otworzyć DLC.
 dialogs:
     buttons:
         ok: Ok
@@ -210,21 +218,21 @@ dialogs:
     submitPuzzle:
         title: Prześlij układankę
         descName: "Podaj nazwę układanki:"
-        descIcon: "Wprowadź unikalny skrót klawiszowy, który będzie wyświetlany jako ikona
-             Twojej układanki (możesz je wygenerować <link>tutaj</link>) lub wybrać jedną
-             z losowo wybranych kształtów poniżej:"
+        descIcon: "Wprowadź unikalny skrót klawiszowy, który będzie wyświetlany jako
+            ikona Twojej układanki (możesz je wygenerować <link>tutaj</link>)
+            lub wybrać jedną z losowo wybranych kształtów poniżej:"
         placeholderName: Nazwa Układanki
     puzzleResizeBadBuildings:
         title: Zmiana rozmiaru jest nie możliwa
-        desc: Nie możesz zmniejszyć rozmiaru układanki, bo wtedy niektóre budowle
-            będą poza obszarem.
+        desc: Nie możesz zmniejszyć rozmiaru układanki, bo wtedy niektóre budowle będą
+            poza obszarem.
     puzzleLoadError:
         title: Zła Układanka
         desc: "Tych układanek nie udało się załadować:"
     offlineMode:
         title: Tryb bez Internetu
-        desc: Nie udało nam się połączyć z serwerami, więc gra jest teraz w trybie offline.
-            Upewnij się że masz aktywne połączenie z internetem.
+        desc: Nie udało nam się połączyć z serwerami, więc gra jest teraz w trybie
+            offline. Upewnij się że masz aktywne połączenie z internetem.
     puzzleDownloadError:
         title: Błąd pobierania
         desc: "Nie udało się pobrać tych układanek:"
@@ -233,21 +241,21 @@ dialogs:
         desc: "Nie udało się opublikować Twojej układanki:"
     puzzleSubmitOk:
         title: Układanka Opublikowana
-        desc: Gratulacje! Twoja układanka została opublikowana, i teraz inne osoby mogą w nią
-            grać. Teraz ją znajdziesz w zakładce "Moje układanki".
+        desc: Gratulacje! Twoja układanka została opublikowana, i teraz inne osoby mogą
+            w nią grać. Teraz ją znajdziesz w zakładce "Moje układanki".
     puzzleCreateOffline:
         title: Tryb Offline
-        desc: Ponieważ jesteś w trybie offline, więc nie możesz zapisać lub opublikować Twojej
-            układanki. Chciałbyś kontynuować pomimo tego?
+        desc: Ponieważ jesteś w trybie offline, więc nie możesz zapisać lub opublikować
+            Twojej układanki. Chciałbyś kontynuować pomimo tego?
     puzzlePlayRegularRecommendation:
         title: Polecane
-        desc: <strong>Bardzo</strong> polecamy zagrać w normalnę grę do poziomu 12
-            przed zaczęcięm grania w DLC układanek, jeśli tak nie zrobisz
-            możesz nie znać różnych mechanik. Chcesz kontynuować pomimo tego?
+        desc: <strong>Bardzo</strong> polecamy zagrać w normalnę grę do poziomu 12 przed
+            zaczęcięm grania w DLC układanek, jeśli tak nie zrobisz możesz nie
+            znać różnych mechanik. Chcesz kontynuować pomimo tego?
     puzzleShare:
         title: Skopiowano Skrót Klawiszowy
-        desc: Skrot klawiszowy dla tej układanki (<key>) został skopiowany do schowka! Możesz
-            wpisać go w menu układanek, aby otworzyć tą układankę.
+        desc: Skrot klawiszowy dla tej układanki (<key>) został skopiowany do schowka!
+            Możesz wpisać go w menu układanek, aby otworzyć tą układankę.
     puzzleReport:
         title: Zgłoś Układankę
         options:
@@ -265,12 +273,13 @@ dialogs:
         desc: Wpisz skrót klawiszowy układanki, aby go załadować.
     puzzleDelete:
         title: Chcesz usunąć układankę?
-        desc: Jesteś pewny że chcesz usunąć układankę '<title>'? To nie może być cofnięte!
+        desc: Jesteś pewny że chcesz usunąć układankę '<title>'? To nie może być
+            cofnięte!
     modsDifference:
         title: Ostrzeżenie o modyfikacjach
-        desc: Aktualnie zainstalowane mody różnią się od tych, które zostały utworzone w zapisie gry.
-             Może to spowodować, że zapis gry się zepsuje lub w ogóle się nie załaduje. Czy
-             na pewno chcesz kontynuować?
+        desc: Aktualnie zainstalowane mody różnią się od tych, które zostały utworzone w
+            zapisie gry. Może to spowodować, że zapis gry się zepsuje lub w
+            ogóle się nie załaduje. Czy na pewno chcesz kontynuować?
         missingMods: Missing Mods
         newMods: Ostatnio zainstalowane Mody
 ingame:
@@ -425,9 +434,6 @@ ingame:
             buildings:
                 title: 18 Nowych Budynków
                 desc: W pełni zautomatyzuj produkcję!
-            upgrades:
-                title: ∞ Poziomów Ulepszeń
-                desc: To demo posiada tylko 5!
             markers:
                 title: ∞ Znaczników
                 desc: Nigdy nie zgub się w swojej fabryce!
@@ -443,6 +449,9 @@ ingame:
             achievements:
                 title: Osiągnięcia
                 desc: Zbierz je wszystkie!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Obszar
         zoneWidth: Wysokość
@@ -457,18 +466,20 @@ ingame:
         title: Edytor Układanek
         instructions:
             - 1. Rozmieść <strong>generatory</strong>, aby zapewnić kształty i
-               kolory dla gracza
-            - 2. Zbuduj jeden lub więcej kształtów, które gracz ma zbudować później i
-               dostarczyć go do co najmniej jednego <strong>skupu</strong>
-            - 3. Gdy skup otrzyma kształt za określoną kwotę
-               czasu, <strong>zapisuje to jako cel</strong>, który gracz musi
-               produkować później (wskazywane przez <strong>zieloną plakietkę</strong>).
-            - 4. Kliknij <strong>przycisk blokady</strong> na budynku, aby go wyłączyć.
-            - 5. Gdy klikniesz recenzję, twoja łamigłówka zostanie zatwierdzona, a ty
-               może to opublikować.
-            - 6. Po premierze <strong>wszystkie budynki zostaną usunięte</strong>
-               z wyjątkiem Producentów i Askupów – to jest ta część, która
-               gracz ma się przecież sam rozgryźć :)
+              kolory dla gracza
+            - 2. Zbuduj jeden lub więcej kształtów, które gracz ma zbudować
+              później i dostarczyć go do co najmniej jednego
+              <strong>skupu</strong>
+            - 3. Gdy skup otrzyma kształt za określoną kwotę czasu,
+              <strong>zapisuje to jako cel</strong>, który gracz musi produkować
+              później (wskazywane przez <strong>zieloną plakietkę</strong>).
+            - 4. Kliknij <strong>przycisk blokady</strong> na budynku, aby go
+              wyłączyć.
+            - 5. Gdy klikniesz recenzję, twoja łamigłówka zostanie zatwierdzona,
+              a ty może to opublikować.
+            - 6. Po premierze <strong>wszystkie budynki zostaną
+              usunięte</strong> z wyjątkiem Producentów i Askupów – to jest ta
+              część, która gracz ma się przecież sam rozgryźć :)
     puzzleCompletion:
         title: Układanka Rozwiązana!
         titleLike: "Kliknij w serce jeśli podobała Ci się ta układanka:"
@@ -1043,8 +1054,8 @@ settings:
                 pomniejszenia).
         shapeTooltipAlwaysOn:
             title: Pokazuj zawsze etykietę kształtus
-            description: Czy zawsze wyświetlać etykietkę kształtu podczas najeżdżania na budynki,
-                 zamiast trzymać „ALT”.
+            description: Czy zawsze wyświetlać etykietkę kształtu podczas najeżdżania na
+                budynki, zamiast trzymać „ALT”.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: Nowe!
@@ -1122,10 +1133,10 @@ keybindings:
         comparator: Porównywacz
         item_producer: Producent Przedmiotów (Tryb Piaskownicy)
         copyWireValue: "Przewody: Skopiuj wartość pod kursorem"
-        rotateToUp: "Obróć w góre"
-        rotateToDown: "Obróć w dół"
-        rotateToRight: "Obróć w prawo"
-        rotateToLeft: "Obróć w lewo"
+        rotateToUp: Obróć w góre
+        rotateToDown: Obróć w dół
+        rotateToRight: Obróć w prawo
+        rotateToLeft: Obróć w lewo
         constant_producer: Stały producent
         goal_acceptor: Skup
         block: Blokuj
@@ -1259,21 +1270,22 @@ puzzleMenu:
         title: Niepoprawna układanka
         noProducers: Proszę połóż Stałego producent!
         noGoalAcceptors: Proszę połóż skup!
-        goalAcceptorNoItem: Co najmniej jeden akceptor celu nie przypisał jeszcze elementu.
-            Dostarcz im kształt, aby ustawić cel.
-        goalAcceptorRateNotMet: Co najmniej jeden akceptor celów nie otrzymuje wystarczającej liczby przedmiotów.
-             Upewnij się, że wskaźniki są zielone dla wszystkich akceptantów.
-        buildingOutOfBounds: Co najmniej jeden budynek znajduje się poza obszarem przeznaczonym do zbudowania.
-             Zwiększ obszar lub usuń je.
-        autoComplete: Twoja łamigłówka samoczynnie się uzupełnia! Upewnij się, że jesteś stały
-             producenci nie dostarczają bezpośrednio do akceptantów bramek.
+        goalAcceptorNoItem: Co najmniej jeden akceptor celu nie przypisał jeszcze
+            elementu. Dostarcz im kształt, aby ustawić cel.
+        goalAcceptorRateNotMet: Co najmniej jeden akceptor celów nie otrzymuje
+            wystarczającej liczby przedmiotów. Upewnij się, że wskaźniki są
+            zielone dla wszystkich akceptantów.
+        buildingOutOfBounds: Co najmniej jeden budynek znajduje się poza obszarem
+            przeznaczonym do zbudowania. Zwiększ obszar lub usuń je.
+        autoComplete: Twoja łamigłówka samoczynnie się uzupełnia! Upewnij się, że jesteś
+            stały producenci nie dostarczają bezpośrednio do akceptantów bramek.
     difficulties:
         easy: Łatwy
         medium: Średni
         hard: Trudny
         unknown: Nieznany
-    dlcHint: Kupiłeś/aś już DLC? Upewnij się że aktywowałeś/aś shapez.io
-        w swojej bibliotece, wybierając Właściwości > DLC.
+    dlcHint: Kupiłeś/aś już DLC? Upewnij się że aktywowałeś/aś shapez.io w swojej
+        bibliotece, wybierając Właściwości > DLC.
     search:
         action: Szukaj
         placeholder: Podaj nazwę układanki lub jej autora
@@ -1291,11 +1303,11 @@ puzzleMenu:
 backendErrors:
     ratelimit: Wykonujesz akcje za szybko. Poczekaj jakiś czas i spróbuj podobnie.
     invalid-api-key: Nie udało się skomunikować z backendem, spróbuj
-         zaktualizuj/zrestartuj grę (nieprawidłowy klucz API).
+        zaktualizuj/zrestartuj grę (nieprawidłowy klucz API).
     unauthorized: Nie udało się skomunikować z backendem, spróbuj
-         zaktualizuj/zrestartuj grę (nieautoryzowane).
-    bad-token: Nie udało się skomunikować z backendem, spróbuj zaktualizować/zrestartować
-         grę (zły token).
+        zaktualizuj/zrestartuj grę (nieautoryzowane).
+    bad-token: Nie udało się skomunikować z backendem, spróbuj
+        zaktualizować/zrestartować grę (zły token).
     bad-id: Nieprawidłowy identyfikator układanki.
     not-found: Nie znaleźliśmy szukanej układanki!
     bad-category: Nie znaleźliśmy podanej kategorii!
@@ -1311,7 +1323,8 @@ backendErrors:
     bad-payload: Żądanie zawiera nieprawidłowe dane.
     bad-building-placement: Twoja łamigłówka zawiera nieprawidłowo umieszczone budynki.
     timeout: Upłynął limit czasu żądania.
-    too-many-likes-already: Zagadka ma już za dużo polubień. Jeśli nadal chcesz ją usunąć, skontaktuj się z support@shapez.io!
+    too-many-likes-already: Zagadka ma już za dużo polubień. Jeśli nadal chcesz ją
+        usunąć, skontaktuj się z support@shapez.io!
     no-permission: Nie masz uprawnień, aby wykonać tą akcję.
 mods:
     title: Mody
@@ -1319,14 +1332,15 @@ mods:
     version: Wersja
     modWebsite: Strona
     openFolder: Otwórz folder modów
-    folderOnlyStandalone: Otwarcie folderu modów jest możliwe tylko podczas pracy w wersji samodzielnej.
+    folderOnlyStandalone: Otwarcie folderu modów jest możliwe tylko podczas pracy w
+        wersji samodzielnej.
     browseMods: Szukaj Modów
     modsInfo: Aby zainstalować i zarządzać modami, skopiuj je do folderu mods w
-         katalogu gry. Możesz także użyć przycisku „Otwórz folder modów” w
-         prawym górnym rogu.
+        katalogu gry. Możesz także użyć przycisku „Otwórz folder modów” w prawym
+        górnym rogu.
     noModSupport: Aby zainstalować mody, potrzebujesz osobną wersję na Steam.
     togglingComingSoon:
         title: Już wkrótce
-        description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez kopiowanie
-            pliku modów do folderu "mods/". Jednak w przyszłej aktualizacji
-            będziesz/asz mógł zmieniać ich status tutaj!
+        description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez
+            kopiowanie pliku modów do folderu "mods/". Jednak w przyszłej
+            aktualizacji będziesz/asz mógł zmieniać ich status tutaj!

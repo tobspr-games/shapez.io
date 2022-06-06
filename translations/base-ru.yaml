@@ -53,7 +53,16 @@ global:
     loggingIn: Вход
 demoBanners:
     title: Демоверсия
-    intro: Приобретите полную версию, чтобы разблокировать все возможности!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Играть
     continue: Продолжить
@@ -267,9 +276,9 @@ dialogs:
     modsDifference:
         title: Предупреждение Мода
         desc: Установленные в данный момент моды отличаются от модов, с которыми была
-            создана игра сохранения с ним. Это может привести к тому, что сохранение
-            не загрузится или вообще ничего не загрузится. Вы вы уверены, что хотите
-            продолжить?
+            создана игра сохранения с ним. Это может привести к тому, что
+            сохранение не загрузится или вообще ничего не загрузится. Вы вы
+            уверены, что хотите продолжить?
         missingMods: Отсутствуют Моды
         newMods: Недавно установленные Моды
 ingame:
@@ -429,9 +438,6 @@ ingame:
             achievements:
                 title: Достижения
                 desc: Получи их все!
-            upgrades:
-                title: ∞ стадий улучшений
-                desc: В демоверсии всего 5!
             markers:
                 title: ∞ Маркеров
                 desc: Никогда не теряйтесь в своей фабрике!
@@ -444,6 +450,9 @@ ingame:
             support:
                 title: Поддержите меня
                 desc: Я занимаюсь разработкой в свободное время!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Область
         zoneWidth: Ширина
@@ -1045,9 +1054,9 @@ settings:
             title: Размер ресурсов на карте
             description: Устанавливает размер фигур на карте (когда вид достаточно отдалён).
         shapeTooltipAlwaysOn:
-
             title: Показывать подсказку фигуры
-            description: Показывать ли подсказку фигуры всегда или только при удержании 'ALT'.
+            description: Показывать ли подсказку фигуры всегда или только при удержании
+                'ALT'.
     tickrateHz: <amount> Гц
     newBadge: Новое!
 keybindings:
@@ -1321,8 +1330,8 @@ mods:
     folderOnlyStandalone: Открытие папки Модов возможно только при запуске автономного режима.
     browseMods: Просмотреть Моды
     modsInfo: Чтобы установить и управлять модами, скопируйте их в папку модов в
-        директории игры. Вы также можете воспользоваться кнопкой "Открыть папку модов" в
-        справа вверху.
+        директории игры. Вы также можете воспользоваться кнопкой "Открыть папку
+        модов" в справа вверху.
     noModSupport: Для установки модов вам нужна автономная версия в Steam.
     togglingComingSoon:
         title: Совсем скоро

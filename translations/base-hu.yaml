@@ -53,7 +53,16 @@ global:
     loggingIn: Bejelentkezés
 demoBanners:
     title: Demó verzió
-    intro: Vásárold meg az Önálló Verziót a teljes játékélményért!
+    intro: |-
+        Get the full game <strong>now</strong> to unlock:<ul>
+            <li>All 26 levels + infinite Freeplay</li>
+            <li>22 new buildings</li>
+            <li>Mod support</li>
+            <li>Achievements</li>
+            <li>Dark Mode</li>
+            <li>... and a lot more!</li>
+        </ul>
+    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
 mainMenu:
     play: Játék
     continue: Folytatás
@@ -421,9 +430,6 @@ ingame:
             buildings:
                 title: 18 Új Épület
                 desc: Egy teljesen automatikus gyárhoz!
-            upgrades:
-                title: ∞ Fejlesztési Szint
-                desc: A Demó Verzió csak 5-öt tartalmaz!
             markers:
                 title: ∞ Jelölő
                 desc: Hogy mindig tudd, mi hol van!
@@ -439,6 +445,9 @@ ingame:
             achievements:
                 title: Steam Achievementek
                 desc: Szerezd meg mindet!
+            mods:
+                title: Modding support!
+                desc: Over 80 mods available!
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Szélesség
