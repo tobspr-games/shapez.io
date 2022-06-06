@@ -60,6 +60,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                         $.webpackStream(
                             requireUncached("./webpack.production.config.js")({
                                 es6: false,
+                                environment: data.environment,
                                 ...data.buildArgs,
                             })
                         )
@@ -75,6 +76,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                         $.webpackStream(
                             requireUncached("./webpack.production.config.js")({
                                 es6: true,
+                                environment: data.environment,
                                 ...data.buildArgs,
                             })
                         )
