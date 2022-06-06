@@ -106,8 +106,7 @@
             display: flex;
             flex-direction: column;
             strong {
-                font-weight: bold;
-                @include S(margin, 0, 4px);
+                font-weight: 700 !important;
             }
 
             h3 {
@@ -131,9 +130,6 @@
                     @include Text;
                     color: #fff;
                 }
-            }
-            strong {
-                margin: 0;
             }
 
             .playtimeDisclaimer {
