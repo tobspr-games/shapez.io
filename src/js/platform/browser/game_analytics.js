@@ -81,8 +81,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
             if (this.app.restrictionMgr.isLimitedVersion()) {
                 fetch(
-                    analyticsUrl +
-                        "/track/shapez_launch_" +
+                    "https://play.shapez.io/shapez_launch_" +
                         this.environment +
                         "_" +
                         currentABT +
