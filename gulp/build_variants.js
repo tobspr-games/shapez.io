@@ -33,7 +33,7 @@ const BUILD_VARIANTS = {
         steamAppId: 1318690,
         buildArgs: {},
     },
-    "standalone-steam-china": {n
+    "standalone-steam-china": {
         standalone: true,
         steamAppId: 1318690,
         buildArgs: {
