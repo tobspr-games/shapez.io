@@ -42,7 +42,7 @@ export function newEmptyMap() {
  * @param {number} end
  */
 export function randomInt(start, end) {
-    return start + Math.round(Math.random() * (end - start));
+    return Math.floor(Math.random() * (end - start + 1) + start);
 }
 
 /**
