@@ -65,7 +65,7 @@ demoBanners:
             <li>……以及更多！</li>
         </ul>
     playtimeDisclaimer: >-
-        完整版包括多达<strong>24小时的新内容</strong>
+        完整版包括多达 <strong>24 小时的新内容</strong>
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
