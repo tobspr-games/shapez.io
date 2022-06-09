@@ -1,5 +1,6 @@
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
+import { queryParamOptions } from "../../core/query_parameters";
 import { randomInt } from "../../core/utils";
 import { BeltComponent } from "../../game/components/belt";
 import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
@@ -58,8 +59,13 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             },
             err => {
                 if (err === FILE_NOT_FOUND) {
-                    this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
-                    logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
+                    if (typeof queryParamOptions.abtVariant === "string") {
+                        this.abtVariant = queryParamOptions.abtVariant;
+                        logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
+                    } else {
+                        this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
+                        logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
+                    }
                     this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", this.abtVariant);
                 }
             }
