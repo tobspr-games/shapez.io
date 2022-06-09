@@ -17,7 +17,8 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 // Be sure to increment the ID whenever it changes
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
-const currentABT = "abt_sa_si";
+const CURRENT_ABT = "abt_ilig";
+const CURRENT_ABT_COUNT = 4;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     constructor(app) {
@@ -50,16 +51,16 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     }
 
     fetchABVariant() {
-        return this.app.storage.readFileAsync("shapez_" + currentABT + ".bin").then(
+        return this.app.storage.readFileAsync("shapez_" + CURRENT_ABT + ".bin").then(
             abt => {
                 this.abtVariant = abt;
                 logger.log("Got abtVariant:", abt);
             },
             err => {
                 if (err === FILE_NOT_FOUND) {
-                    this.abtVariant = String(randomInt(0, 4));
-                    logger.log("Determing abt variant to", this.abtVariant);
-                    this.app.storage.writeFileAsync("shapez_" + currentABT + ".bin", this.abtVariant);
+                    this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
+                    logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
+                    this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", this.abtVariant);
                 }
             }
         );
@@ -84,7 +85,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                     "https://play.shapez.io/shapez_launch_" +
                         this.environment +
                         "_" +
-                        currentABT +
+                        CURRENT_ABT +
                         "_" +
                         this.abtVariant,
                     {

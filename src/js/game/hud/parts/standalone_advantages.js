@@ -64,19 +64,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
     }
 
     get showIntervalSeconds() {
-        switch (this.root.app.gameAnalytics.abtVariant) {
-            case "0":
-                return 5 * 60;
-            case "1":
-                return 10 * 60;
-            case "2":
-            default:
-                return 15 * 60;
-            case "3":
-                return 20 * 60;
-            case "4":
-                return 1e14;
+        if (G_IS_STANDALONE) {
+            return 20 * 60;
         }
+        return 5 * 60;
     }
 
     initialize() {
@@ -88,6 +79,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.close();
 
         this.lastShown = -1e10;
+
+        if (["1", "3"].includes(this.root.app.gameAnalytics.abtVariant)) {
+            this.lastShown = 0;
+        }
     }
 
     show() {

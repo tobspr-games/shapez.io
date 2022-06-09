@@ -106,8 +106,8 @@ export const globalConfig = {
     // Global game speed
     gameSpeed: 1,
 
-    warmupTimeSecondsFast: 0.5,
-    warmupTimeSecondsRegular: 1.5,
+    warmupTimeSecondsFast: 0.25,
+    warmupTimeSecondsRegular: 0.25,
 
     smoothing: {
         smoothMainCanvas: smoothCanvas && true,

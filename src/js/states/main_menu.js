@@ -25,6 +25,8 @@ import { T } from "../translations";
 
 const trim = require("trim");
 
+let firstPlayForwarded = false;
+
 /**
  * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
  * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
@@ -61,7 +63,6 @@ export class MainMenuState extends GameState {
             showDiscordLink = true;
         }
 
-        const showCrosspromo = !G_IS_STANDALONE && showExternalLinks;
         const showDemoAdvertisement =
             showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
@@ -233,11 +234,6 @@ export class MainMenuState extends GameState {
                     </a></div>
                 </div>
 
-                ${
-                    showCrosspromo
-                        ? `<iframe id="crosspromo" src="https://crosspromo.tobspr.io?src=shapez_web"></iframe>`
-                        : ""
-                }
             `
             }
         `;
@@ -382,6 +378,16 @@ export class MainMenuState extends GameState {
 
         this.renderMainMenu();
         this.renderSavegames();
+
+        if (
+            this.app.restrictionMgr.isLimitedVersion() &&
+            ["0", "1"].includes(this.app.gameAnalytics.abtVariant) &&
+            this.app.savegameMgr.getSavegamesMetaData().length === 0 &&
+            !firstPlayForwarded
+        ) {
+            firstPlayForwarded = true;
+            this.onPlayButtonClicked();
+        }
     }
 
     renderMainMenu() {
