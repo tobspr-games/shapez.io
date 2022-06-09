@@ -10,6 +10,6 @@ if (options.embed) {
     queryParamOptions.embedProvider = options.embed;
 }
 
-if (options.abt) {
+if (options.abtVariant) {
     queryParamOptions.abtVariant = options.abtVariant;
 }
