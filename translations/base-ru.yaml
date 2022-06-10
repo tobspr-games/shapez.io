@@ -54,15 +54,15 @@ global:
 demoBanners:
     title: Демоверсия
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Получите полную версию игры <strong>сейчас</strong> чтобы получить:<ul>
+            <li>Все 26 уровней + бесконечную Свободную игру</li>
+            <li>22 новых строения</li>
+            <li>Поддержку модификаций</li>
+            <li>Достижения</li>
+            <li>Темный Режим</li>
+            <li>... и многое другое!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Полная версия содержит более <strong>24 часов контента</strong>.
 mainMenu:
     play: Играть
     continue: Продолжить
@@ -89,7 +89,7 @@ mainMenu:
     puzzleDlcViewNow: Посмотреть
     mods:
         title: Активные моды
-        warningPuzzleDLC: Обновление «Головоломка» невозможна с модами. Пожалуйста,
+        warningPuzzleDLC: Обновление «Головоломка» несовместима с модами. Пожалуйста,
             отключите все моды, чтобы играть в DLC.
 dialogs:
     buttons:
@@ -105,10 +105,10 @@ dialogs:
         showUpgrades: Показать Улучшения
         showKeybindings: Показать Управление (Привязку клавиш)
         retry: Заново
-        continue: Подолжить
+        continue: Продолжить
         playOffline: Играть оффлайн
     importSavegameError:
-        title: Ошибка импортирования
+        title: Ошибка импорта
         text: Не удалось импортировать сохранение игры.
     importSavegameSuccess:
         title: Сохранение игры импортировано
@@ -161,7 +161,7 @@ dialogs:
             хотите сделать это?"
     massCutConfirm:
         title: Подтвердите вырезку
-        desc: "Вы собираетесь вырезать много зданий (точнее: <count>)! Вы уверены, что
+        desc: "Вы собираетесь вырезать много построек (точнее: <count>)! Вы уверены, что
             хотите это сделать?"
     massCutInsufficientConfirm:
         title: Подтвердите вырезку
@@ -172,7 +172,7 @@ dialogs:
         desc: Чертежи еще не открыты! Завершите больше уровней, чтобы открыть их.
     keybindingsIntroduction:
         title: Полезные горячие клавиши
-        desc: "В этой игре много горячих клавиш, которые облегчают строительство больших
+        desc: "В этой игре много горячих клавиш, которые облегчат строительство больших
             фабрик. Вот несколько, но обязательно <strong>проверьте настройки
             управления</strong>!<br><br> <code class='keybinding'>CTRL</code> +
             Потащить: Выбор области для копирования / удаления.<br> <code
@@ -225,7 +225,7 @@ dialogs:
         desc: Нельзя уменьшить область, потому что некоторые постройки будут вне
             области.
     puzzleLoadError:
-        title: Bad Puzzle
+        title: Ошибка паззла
         desc: "Не удалось загрузить головоломки:"
     offlineMode:
         title: Оффлайн режим
