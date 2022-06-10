@@ -1,11 +1,11 @@
 steamPage:
-    shortText: “唯一能限制您的，只有您的想象力！” 《异形工厂》（Shapez.io）
+    shortText: “唯一能限制您的，只有您的想象力！”《异形工厂》（shapez）
         是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
         “奇形怪状，放飞想象！”
         “自动生产，尽情创造！”
-        《异形工厂》（Shapez.io）是一款能让您尽情发挥创造力，充分享受思维乐趣的 IO 游戏。
+        《异形工厂》（shapez）是一款能让您尽情发挥创造力，充分享受思维乐趣的 IO 游戏。
         游戏很轻松，只需建造工厂，布好设施，无需操作即能自动创造出各种各样的几何图形。
         挑战很烧脑，随着等级提升，需要创造的图形将会越来越复杂，同时您还需要在无限扩展的地图中持续扩建优化您的工厂。
         以为这就是全部了吗？不！图形的生产需求将会指数性增长，持续的扩大规模和熵增带来的无序，将会是令人头痛的问题！
@@ -13,9 +13,9 @@ steamPage:
         然后，还有吗？当然，唯有思维，方能无限。
 
         欢迎免费体验试玩版：“让您的想象力插上翅膀！”
-        和最聪明的玩家一起挑战，请访问 Steam 游戏商城购买《异形工厂》（Shapez.io）的完整版，
-    what_others_say: 来看看玩家们对《异形工厂》（Shapez.io）的评价
-    nothernlion_comment: 非常棒的有游戏，我的游戏过程充满乐趣，不觉时间飞逝。
+        和最聪明的玩家一起挑战，请访问 Steam 游戏商城购买《异形工厂》（shapez）的完整版，
+    what_others_say: 来看看玩家们对《异形工厂》（shapez）的评价
+    nothernlion_comment: 非常棒的游戏，我的游戏过程充满乐趣，不觉时间飞逝。
     notch_comment: 哦，天哪！我真得该去睡了！但我想我刚刚搞定如何在游戏里面制造一台电脑出来。
     steam_review_comment: 这是一个不知不觉偷走你时间，但你并不会想要追回的游戏。非常烧脑的挑战，让我这样的完美主义者停不下来，总是希望可以再高效一些。
 global:
@@ -52,8 +52,17 @@ global:
     loggingIn: 登录
 demoBanners:
     title: 试玩版
-    intro: 购买完整版以解锁所有游戏内容！
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    intro: >-
+        <strong>现在</strong>购买完整版以解锁<ul>
+            <li>所有 26 个关卡 + 无限可能的自由模式</li>
+            <li>22 个全新设施</li>
+            <li>游戏模组（Mods）支持</li>
+            <li>成就</li>
+            <li>暗色模式</li>
+            <li>……以及更多！</li>
+        </ul>
+    playtimeDisclaimer: >-
+        完整版包括多达 <strong>24 小时的新内容</strong>
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -71,7 +80,8 @@ mainMenu:
     savegameUnnamed: 存档未命名
     puzzleMode: 谜题模式
     back: 返回
-    puzzleDlcText: 持续优化，追求极致效率。在限定空间内使用有限的设施来创造图形！《异形工厂》（Shapez.io）的首个 DLC
+    puzzleDlcText:
+        持续优化，追求极致效率。在限定空间内使用有限的设施来创造图形！《异形工厂》（Shapez）的首个 DLC
         “谜题挑战者”将会给大家带来更烧脑、更自由的全新挑战！
     puzzleDlcWishlist: 添加愿望单！
     puzzleDlcViewNow: 查看 DLC
@@ -105,7 +115,7 @@ dialogs:
         text: 未能读取您的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 您确定要删除这个游戏吗？<br><br> '<savegameName>' 等级 <savegameLevel><br><br> 该操作无法回退！
+        text: 您确定要删除这个游戏吗？<br><br> “<savegameName>” 等级 <savegameLevel><br><br> 该操作无法回退！
     savegameDeletionError:
         title: 删除失败
         text: 未能删除您的存档
@@ -123,7 +133,7 @@ dialogs:
         desc: 成功重置所有按键设定！
     featureRestriction:
         title: 试玩版
-        desc: 您尝试使用了<feature>一项功能。该功能在试玩版中不可用。请考虑购买完整版以获得更好的体验。
+        desc: 您尝试使用了 “<feature>” 一项功能。该功能在试玩版中不可用。请考虑购买完整版以获得更好的体验。
     oneSavegameLimit:
         title: 存档数量限制
         desc: 试玩版中只能保存一份存档。请删除旧存档或者购买完整版！
@@ -135,19 +145,20 @@ dialogs:
         desc: <strong>您生产过的所有图形都能被用来解锁升级。</strong> 所以不要销毁您之前建造的工厂！注意：升级菜单在屏幕右上角。
     massDeleteConfirm:
         title: 确认删除
-        desc: 您将要删除很多设施，准确来说有 <count> 种！您确定要这么做吗？
+        desc: 您将要删除很多设施，准确来说有 <count> 个！您确定要这么做吗？
     blueprintsNotUnlocked:
         title: 尚未解锁
         desc: 您还没有解锁蓝图功能！通过第 12 关的挑战后可解锁蓝图。
     keybindingsIntroduction:
         title: 实用快捷键
-        desc: 这个游戏有很多有用的快捷键设定。以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
+        desc:
+            这个游戏有很多有用的快捷键设定。以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
             <code class='keybinding'>CTRL 键</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT 键</code>： 按住以放置多个同一种设施。<br> <code
             class='keybinding'>ALT 键</code>：反向放置传送带。<br>
     createMarker:
         title: 创建地图标记
-        desc: 填写一个有意义的名称，还可以同时包含一个形状的 <strong>短代码</strong>（您可以 <link>点击这里</link> 生成短代码）
+        desc: 填写一个有意义的名称，还可以同时包含一个形状的<strong>短代码</strong>（您可以 <link>点击这里</link> 生成短代码）
         titleEdit: 编辑地图标记
     markerDemoLimit:
         desc: 在试玩版中您只能创建两个地图标记。请获取完整版以创建更多标记。
@@ -169,7 +180,7 @@ dialogs:
         desc: 您可以在此重命名游戏存档。
     tutorialVideoAvailable:
         title: 教程
-        desc: 这个关卡有视频攻略！您想查看这个视频攻略？
+        desc: 这个关卡有视频攻略！您想查看这个视频攻略吗？
     tutorialVideoAvailableForeignLanguage:
         title: 教程
         desc: 这个关卡有英语版本的视频攻略！您想查看这个视频攻略吗？
@@ -181,7 +192,7 @@ dialogs:
     submitPuzzle:
         title: 提交谜题
         descName: 给您的谜题设定名称：
-        descIcon: 请输入唯一的短代码，它将显示为标志您的谜题的图标（ <link>在此</link>生成，或者从以下随机推荐的图形中选择一个）：
+        descIcon: 请输入唯一的短代码，它将显示为标志您的谜题的图标（<link>在此</link>生成，或者从以下随机推荐的图形中选择一个）：
         placeholderName: 谜题标题
     puzzleResizeBadBuildings:
         title: 无法调整大小
@@ -228,7 +239,7 @@ dialogs:
         desc: 输入此谜题的短代码以载入。
     puzzleDelete:
         title: 删除谜题？
-        desc: 您是否确认删除 '<title>'？删除后不可恢复！
+        desc: 您是否确认删除“<title>”？删除后不可恢复！
     modsDifference:
         title: 模组警告
         desc: 当前已安装的游戏模组（Mods）与该存档创建时所安装的游戏模组（Mods）不同！这可能会导致存档损坏，甚至无法加载。你确定要继续加载吗？
@@ -319,11 +330,13 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
             1_2_conveyor: 用<strong>传送带</strong>将您的开采器连接到中心基地上！<br><br>提示：选中<strong>传送带</strong>后<strong>按下鼠标左键可拖动</strong>布置传送带！
-            1_3_expand: 您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
+            1_3_expand:
+                您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
                 提示：按住 <strong>SHIFT</strong> 键可放置多个<strong>开采器</strong>，注意用
                 <strong>R</strong> 键可旋转<strong>开采器</strong>的出口方向，确保开采的图形可以顺利传送。
             2_1_place_cutter: 现在放置一个<strong>切割器</strong>，这个设施可把<strong>圆形</strong>切成两半！<br><br>注意：无论如何放置，切割机总是<strong>从上到下</strong>切割。
-            2_2_place_trash: 使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
+            2_2_place_trash:
+                使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
                 (!) 不需要的废物。
             2_3_more_cutters: 干的好！现在放置 <strong>2
                 个以上的切割机</strong>来加快当前缓慢的过程！<br><br>提示：用<strong>快捷键 0 - 9
@@ -402,12 +415,10 @@ ingame:
         instructions:
             - 1. 放置<strong>常量生成器</strong>，为玩家提供此谜题的初始图形和颜色。
             - 2. 建造您希望玩家稍后建造的一个或多个图形，并将其交付给一个或多个<strong>目标接收器</strong>。
-            - 3.
-              当一个目标接收器接收到一个图形一段时间后，会<strong>将其保存为此玩家稍后必须建造的目标</strong>（由<strong>绿色充能条</strong>表示）。
+            - 3. 当一个目标接收器接收到一个图形一段时间后，会<strong>将其保存为此玩家稍后必须建造的目标</strong>（由<strong>绿色充能条</strong>表示）。
             - 4. 单击设施上的<strong>锁定按钮</strong>即可将其禁用。
             - 5. 单击审阅后，您的谜题将通过验证，您可以正式发布它。
-            - 6.
-              谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
+            - 6. 谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
     puzzleCompletion:
         title: 谜题挑战成功！
         titleLike: 喜欢此谜题的话，请为它点赞：
@@ -469,7 +480,7 @@ buildings:
             name: 旋转机（逆时针）
             description: 将<strong>图形</strong>逆时针旋转 90 度。
         rotate180:
-            name: 旋转机（180度）
+            name: 旋转机（180 度）
             description: 将<strong>图形</strong>旋转 180 度。
     stacker:
         default:
@@ -495,7 +506,7 @@ buildings:
     trash:
         default:
             name: 垃圾桶
-            description: 可以从所有四个方向上输入物品并永远清除它们。
+            description: 可以从所有四个方向上输入物品并永久清除它们。
     hub:
         deliver: 交付
         toUnlock: 解锁
@@ -585,7 +596,7 @@ buildings:
             description: 如果输入的两个<strong>信号</strong>一样将输出开（1）信号，可以比较图形，颜色，和开关值。
     virtual_processor:
         default:
-            name: 虚拟切割机
+            name: 模拟切割机
             description: 模拟将<strong>图形</strong>切割成两半。
         rotater:
             name: 模拟旋转机
@@ -626,7 +637,8 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>旋转机</strong>。它会顺时针将输入的<strong>图形旋转90度</strong>。
     reward_painter:
         title: 上色
-        desc: 恭喜！您解锁了<strong>上色器</strong>。开采一些颜色（就像您开采图形一样），将其在上色器中与图形结合来将图形上色！
+        desc:
+            恭喜！您解锁了<strong>上色器</strong>。开采一些颜色（就像您开采图形一样），将其在上色器中与图形结合来将图形上色！
             <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>
     reward_mixer:
         title: 混合颜色
@@ -643,11 +655,13 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>隧道</strong>。它可放置在<strong>传送带</strong>或<strong>设施</strong>下方以运送物品。
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc: 恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
+        desc:
+            恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
             <br>选择<strong>旋转机</strong>然后按 "T" 键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采器
-        desc: 您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
+        desc:
+            您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
             注意：新的开采器已替换了工具栏里旧的开采器！
     reward_underground_belt_tier_2:
         title: 二级隧道
@@ -664,12 +678,14 @@ storyRewards:
             <br>它<strong>优先从左边</strong>输出，这样您就可以用它做一个<strong>溢流门</strong>了！
     reward_freeplay:
         title: 自由模式
-        desc: 成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
-            从现在起，中心基地最为需要的是<strong>产量</strong>，我强烈建议您去制造一台能够自动交付所需图形的机器！<br><br>
+        desc:
+            成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
+            从现在起，中心基地最为需要的是<strong>产量</strong>，强烈建议您去制造一台能够自动交付所需图形的机器！<br><br>
             基地会在<strong>电线层</strong>输出需要的图形，您需要去分析图形并在此基础上自动配置您的工厂。
     reward_blueprints:
         title: 蓝图
-        desc: 您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL 键并拖动鼠标来选择一块区域，然后按 C 键复制。
+        desc:
+            您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL 键并拖动鼠标来选择一块区域，然后按 C 键复制。
             <br><br>粘贴并<strong>不是免费的</strong>，您需要制造<strong>蓝图图形</strong>来负担。蓝图图形是您刚刚交付的图形。
     no_reward:
         title: 下一关
@@ -677,7 +693,7 @@ storyRewards:
             注意：最高明的规划师都不会破坏原有的工厂设施，您生产过的<strong>所有图形</strong>都会被用于<strong>解锁升级</strong>。
     no_reward_freeplay:
         title: 下一关
-        desc: 恭喜您！另外，我们已经计划在完整版中加入更多内容！
+        desc: 恭喜您！
     reward_balancer:
         title: 平衡器
         desc: 恭喜！您解锁了多功能<strong>平衡器</strong>，它能够<strong>分割和合并</strong>多个传送带的资源，可以用来建造更大的工厂！
@@ -697,7 +713,8 @@ storyRewards:
             <br>注意：您注意到<strong>传送读取器</strong>和<strong>存储器</strong>输出的他们最后读取的物品了吗？试着在显示屏上展示一下！
     reward_constant_signal:
         title: 恒定信号
-        desc: 恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
+        desc:
+            恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
             <br>比如，它能发出图形、颜色、开关值（1 / 0）的固定信号。
     reward_logic_gates:
         title: 逻辑门
@@ -716,7 +733,8 @@ storyRewards:
             <strong>提示</strong>：可在设置中打开电线层教程！
     reward_filter:
         title: 物品过滤器
-        desc: 恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
+        desc:
+            恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
             您也可以输入开关值（1 / 0）信号来激活或者禁用它。
     reward_demo_end:
         title: 试玩结束
@@ -754,7 +772,7 @@ settings:
                 super_fast: 最高
         language:
             title: 语言
-            description: 改变语言。官方中文版已更新，欢迎玩家继续提供更好的翻译意见。
+            description: 更改语言。所有的翻译都由社区提供，欢迎玩家继续提供意见！
         fullscreen:
             title: 全屏
             description: 全屏可获得更好的游戏体验。仅在完整版中可用。
@@ -772,7 +790,8 @@ settings:
                 light: 浅色
         refreshRate:
             title: 模拟频率、刷新频率
-            description: 在这里更改刷新频率，这样游戏可以正确地根据您的屏幕进行模拟。但是如果您的电脑性能不佳，提高刷新频率可能降低帧数。注意，60Hz
+            description:
+                在这里更改刷新频率，这样游戏可以正确地根据您的屏幕进行模拟。但是如果您的电脑性能不佳，提高刷新频率可能降低帧数。注意，60Hz
                 以上的任何频率都会导致游戏卡顿！
         alwaysMultiplace:
             title: 多重放置
@@ -857,7 +876,7 @@ settings:
         shapeTooltipAlwaysOn:
             title: 图形工具提示-始终显示
             description: 在设施上悬停时是否始终显示图形工具提示， 而不是必须按住 “Alt” 键。
-    rangeSliderPercentage: <amount> %
+    rangeSliderPercentage: <amount>%
     tickrateHz: <amount> 赫兹
     newBadge: 新的！
 keybindings:
@@ -927,7 +946,7 @@ keybindings:
         wire_tunnel: 电线隧道
         display: 显示器
         reader: 传送带读取器
-        virtual_processor: 模拟切割机
+        virtual_processor: 模拟处理器
         transistor: 晶体管
         analyzer: 图形分析器
         comparator: 比较器
@@ -948,15 +967,15 @@ about:
         本游戏由 <a href="https://github.com/tobspr" target="_blank">Tobias
         Springer</a>（我）开发，并且已经开源。<br><br>
 
-        如果您想参与开发，请查看 <a href="<githublink>" target="_blank">GitHub 上的 shapez.io</a>。<br><br>
+        如果您想参与开发，请查看 <a href="<githublink>" target="_blank">GitHub 上的 shapez</a>。<br><br>
 
         这个游戏的开发获得了 Discord 社区内热情玩家的巨大支持。诚挚邀请您加入我们的 <a href="<discordlink>" target="_blank">Discord 服务器</a>！<br><br>
 
         本游戏的音乐由 <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> 制作——他是个很棒的伙伴。<br><br>
 
-        最后，我想感谢我最好的朋友 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> ——如果没有他的《异星工厂》（factorio）带给我的体验和启发，《异形工厂》（shapez.io）将不会存在。
+        最后，我想感谢我最好的朋友 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> ——如果没有他的《异星工厂》（factorio）带给我的体验和启发，《异形工厂》（shapez）将不会存在。
 changelog:
-    title: 版本日志
+    title: 更新日志
 demo:
     features:
         restoringGames: 恢复存档
@@ -1061,7 +1080,7 @@ puzzleMenu:
         medium: 普通
         hard: 困难
         unknown: 未定级
-    dlcHint: 如尚未购买 DLC，请在您的 Steam 库中右键点击异形工厂， DLCs。然后选择属性 - DLC。
+    dlcHint: 如尚未购买 DLC，请在您的 Steam 库中右键点击异形工厂，DLCs。然后选择属性 - DLC。
     search:
         action: 搜索
         placeholder: 输入谜题或作者名称
@@ -1109,6 +1128,7 @@ mods:
     noModSupport: 您需要在 Steam 平台获得完整版才可以安装游戏模组（Mods）。
     togglingComingSoon:
         title: 即将开放
-        description: 当前只能通过将游戏模组（Mods）文件复制到 mods 文件夹或从 mods 文件夹移除来启用或禁用游戏模组（Mods）。
+        description:
+            当前只能通过将游戏模组（Mods）文件复制到 mods 文件夹或从 mods 文件夹移除来启用或禁用游戏模组（Mods）。
             但是，可以切换游戏模组（Mods）已经计划在之后的更新中实现！
-    modWebsite: 网站
+    modWebsite: 模组网站
