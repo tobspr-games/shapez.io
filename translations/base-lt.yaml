@@ -1,29 +1,28 @@
 steamPage:
-    shortText: shapez.io is a game about building factories to automate the creation
-        and combination of increasingly complex shapes within an infinite map.
-    discordLinkShort: Official Discord
+    shortText: shapez.io yra gamyklų kūrimo žaidimas, kurio tikslas automatizuoti vis sudėtingesnių
+        formų gaminimą begaliniame žemėlapyje.
+    discordLinkShort: Nuoroda į oficialų Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Shapez.io tai raminantis žaidimas, kuriame jums reikia statyti gamyklas
+        geometrinių formų kūrimo automatizavimui.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Sunkėjant lygiams, geometrinės formos tampa sudėtingesnės, todėl jums reikės išsiplėsti begaliniame žemėlapyje.
 
-        And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
+        Ir jei to negana, jūs taip pat turite pagaminti eksponentiškai daugiau, tam, kad patenkintumėte poreikius, todėl vienintelis dalykas, kuris padeda yra padidinti gamybą!
 
-        While you only process shapes at the beginning, you have to color them later - for this you have to extract and mix colors!
+        Pradžioje jums reikės paruošti tik formas, tačiau vėliau jas taip pat reikės ir nudažyti, todėl pasiruoškite išgauti ir maišyti spalvas!
 
-        Buying the game on Steam gives you access to the full version, but you can also play a demo on shapez.io first and decide later!
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+        Perkant žaidimą Steam platformoje gausite prieigą prie pilnos žaidimo versijos, bet pirma galite išbandyti demo versiją shapez.io svetainėje ir nuspręsti vėliau!
+    what_others_say: Ką kiti sako apie shapez.io
+    nothernlion_comment: Šis žaidimas yra puikus - puikiai praleidžiu laiką
+        ir jis labai greitai pabėga.
+    notch_comment: Po velnių. Tikrai turėčiau miegoti, bet manau, kad ką tik supratau
+        kaip susikurti kompiuterį šiame žaidime.
+    steam_review_comment: Šis žaidimas pavogė mano gyvenimą ir aš nenoriu jo susigrąžinti.
+        Labai šaunus gamyklinis žaidimas, kuris neleis man nustoti tobulinti savo produkcijos linijas.
 global:
-    loading: Loading
-    error: Error
+    loading: Kraunasi
+    error: Klaida
     thousandsDivider: ","
     decimalSeparator: .
     suffix:
@@ -33,18 +32,18 @@ global:
         trillions: T
     infinite: inf
     time:
-        oneSecondAgo: one second ago
-        xSecondsAgo: <x> seconds ago
-        oneMinuteAgo: one minute ago
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
+        oneSecondAgo: prieš vieną sekundę
+        xSecondsAgo: prieš <x> sekundes/sekundžių
+        oneMinuteAgo: prieš vieną minutę
+        xMinutesAgo: prieš <x> minutes/minutę 
+        oneHourAgo: prieš vieną valandą
+        xHoursAgo: prieš <x> valandas/valandų
+        oneDayAgo: prieš vieną dieną
+        xDaysAgo: prieš <x> dienas/dienų
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
-        xMinutes: <x> minutes
+        xMinutes: <x> minutės
     keys:
         tab: TAB
         control: CTRL
@@ -52,26 +51,26 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-    loggingIn: Logging in
+    loggingIn: Prisijungiama
 demoBanners:
-    title: Demo Version
+    title: Demo Versija
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
+        Įsigykite pilną žaidimo versiją <strong>dabar</strong> atrakinti:<ul>
+            <li>Visus 26 lygius + neribotą Freeplay rėžimą </li>
+            <li>22 nauji pastatai</li>
+            <li>Modifikacijų palaikymas</li>
+            <li>Pasiekimai</li>
             <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+            <li>... ir daug daugiau!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Pilnoje žaidimo versijoje yra daugiau nei <strong>24 turinio valandos</strong>.
 mainMenu:
-    play: Play
-    changelog: Changelog
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
+    play: Pradėti
+    changelog: Pakeitimai
+    importSavegame: Įkelti
+    openSourceHint: Šis žaidimas yra atvirojo kodo!
+    discordLink: Nuoroda į oficialų Discord serverį
+    helpTranslate: Prisidėkite prie žaidimo vertimo!
     browserWarning: Sorry, but the game is known to run slow on your browser! Get
         the standalone version or download chrome for the full experience.
     savegameLevel: Level <x>
