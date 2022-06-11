@@ -67,7 +67,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         if (G_IS_STANDALONE) {
             return 20 * 60;
         }
-        return 5 * 60;
+        return 15 * 60;
     }
 
     initialize() {
