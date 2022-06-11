@@ -31,7 +31,7 @@ global:
     suffix:
         thousands: k
         millions: M
-        billions: G
+        billions: b
         trillions: T
     infinite: ∞
     time:
@@ -177,7 +177,7 @@ dialogs:
         title: Speicherstand importiert
         text: Dein Speicherstand wurde erfolgreich importiert.
     gameLoadFailure:
-        title: Der Speicherstand ist kaputt
+        title: Der Speicherstand ist kaputt oder fehlerhaft
         text: Der Speicherstand konnte nicht geladen werden. Sorry!
     confirmSavegameDelete:
         title: Löschen bestätigen
