@@ -1,4 +1,5 @@
 import { T } from "../translations";
+import { rando } from "@nastyox/rando.js";
 
 const bigNumberSuffixTranslationKeys = ["thousands", "millions", "billions", "trillions"];
 
@@ -42,7 +43,7 @@ export function newEmptyMap() {
  * @param {number} end
  */
 export function randomInt(start, end) {
-    return Math.floor(Math.random() * (end - start + 1) + start);
+    return rando(start, end);
 }
 
 /**

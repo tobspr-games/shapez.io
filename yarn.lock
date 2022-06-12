@@ -1000,6 +1000,11 @@
   dependencies:
     core-js "^2.5.7"
 
+"@nastyox/rando.js@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@nastyox/rando.js/-/rando.js-2.0.5.tgz#ecce9adb3251512016ae4d3baed6832679651a8a"
+  integrity sha512-a7s3h4vnpCVEYT+W+mBc4ykmwtO29DnFQQR/X6YSbJ+YenAvpYBRCeUgEoPEWGlUS1Hbw1IWIsiIFVXw0g2QLw==
+
 "@octokit/auth-token@^2.4.0":
   version "2.4.2"
   resolved "https://registry.npmjs.org/@octokit/auth-token/-/auth-token-2.4.2.tgz"
