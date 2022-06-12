@@ -1,4 +1,4 @@
-import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
@@ -32,7 +32,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
             <div class="lowerBar">
             <div class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</div>
-            <button class="steamLinkButton ${A_B_TESTING_LINK_TYPE}">
+            <button class="steamLinkButton steam_dlbtn_${this.root.app.gameAnalytics.abtVariant}">
             ${
                 globalConfig.currentDiscount > 0
                     ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
@@ -78,9 +78,12 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.inputReciever = new InputReceiver("standalone-advantages");
         this.close();
 
-        this.lastShown = -1e10;
-
-        if (["1", "3"].includes(this.root.app.gameAnalytics.abtVariant)) {
+        // On standalone, show popup instant - but don't do so on web
+        if (G_IS_STEAM_DEMO) {
+            // show instant
+            this.lastShown = -1e10;
+        } else {
+            // wait for next interval
             this.lastShown = 0;
         }
     }

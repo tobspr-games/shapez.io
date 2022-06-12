@@ -30,9 +30,6 @@ export const THIRDPARTY_URLS = {
     modBrowser: "https://shapez.mod.io/?preview=f55f6304ca4873d9a25f3b575571b948",
 };
 
-// export const A_B_TESTING_LINK_TYPE = Math.random() > 0.95 ? "steam_1_pr" : "steam_2_npr";
-export const A_B_TESTING_LINK_TYPE = "steam_2_npr";
-
 export const globalConfig = {
     // Size of a single tile in Pixels.
     // NOTICE: Update webpack.production.config too!

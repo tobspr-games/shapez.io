@@ -1,6 +1,6 @@
 import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
-import { A_B_TESTING_LINK_TYPE, globalConfig, THIRDPARTY_URLS } from "../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
@@ -76,7 +76,7 @@ export class MainMenuState extends GameState {
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
             <span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>
-            <a href="#" class="steamLink ${A_B_TESTING_LINK_TYPE}" target="_blank">
+            <a href="#" class="steamLink steam_dlbtn_${this.app.gameAnalytics.abtVariant}" target="_blank">
                 ${
                     globalConfig.currentDiscount > 0
                         ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
@@ -378,16 +378,6 @@ export class MainMenuState extends GameState {
 
         this.renderMainMenu();
         this.renderSavegames();
-
-        if (
-            this.app.restrictionMgr.isLimitedVersion() &&
-            ["0", "1"].includes(this.app.gameAnalytics.abtVariant) &&
-            this.app.savegameMgr.getSavegamesMetaData().length === 0 &&
-            !firstPlayForwarded
-        ) {
-            firstPlayForwarded = true;
-            this.onPlayButtonClicked();
-        }
     }
 
     renderMainMenu() {
@@ -459,7 +449,7 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("main_menu_steam_link_" + A_B_TESTING_LINK_TYPE);
+        this.app.analytics.trackUiClick("main_menu_steam_link");
         const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
         this.app.platformWrapper.openExternalLink(
             THIRDPARTY_URLS.stanaloneCampaignLink +

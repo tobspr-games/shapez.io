@@ -32,7 +32,7 @@
         min-height: 40px;
         & {
             /* @load-async */
-            background: uiResource("get_on_steam.png") center center / contain no-repeat;
+            background: uiResource("steam_link_btn/0.png") center center / contain no-repeat;
         }
         overflow: hidden;
         display: block;
