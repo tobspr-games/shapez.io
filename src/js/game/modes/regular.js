@@ -72,7 +72,7 @@ const upgradesCache = {};
 /**
  * Generates all upgrades
  * @returns {Object<string, UpgradeTiers>} */
-function generateUpgrades(limitedVersion = false) {
+function generateUpgrades(limitedVersion = false, difficulty = 1) {
     if (upgradesCache[limitedVersion]) {
         return upgradesCache[limitedVersion];
     }
@@ -246,6 +246,10 @@ function generateUpgrades(limitedVersion = false) {
         for (let i = 0; i < upgradeTiers.length; ++i) {
             const tierHandle = upgradeTiers[i];
             tierHandle.improvement = fixedImprovements[i];
+
+            tierHandle.required.forEach(required => {
+                required.amount = Math.round(required.amount * difficulty);
+            });
             const originalRequired = tierHandle.required.slice();
 
             for (let k = currentTierRequirements.length - 1; k >= 0; --k) {
@@ -296,7 +300,7 @@ const levelDefinitionsCache = {};
  * Generates the level definitions
  * @param {boolean} limitedVersion
  */
-export function generateLevelDefinitions(limitedVersion = false) {
+export function generateLevelDefinitions(limitedVersion = false, difficulty = 1) {
     if (levelDefinitionsCache[limitedVersion]) {
         return levelDefinitionsCache[limitedVersion];
     }
@@ -536,6 +540,10 @@ export function generateLevelDefinitions(limitedVersion = false) {
         });
     }
 
+    levelDefinitions.forEach(definition => {
+        definition.required = Math.round(definition.required * difficulty);
+    });
+
     levelDefinitionsCache[limitedVersion] = levelDefinitions;
 
     return levelDefinitions;
@@ -601,12 +609,32 @@ export class RegularGameMode extends GameMode {
         ];
     }
 
+    get difficultyMultiplicator() {
+        switch (this.root.app.gameAnalytics.abtVariant) {
+            case "0":
+                return 0.2;
+            case "1":
+                return 0.5;
+            case "2":
+                return 0.75;
+            case "3":
+                return 1;
+            case "4":
+                return 1.25;
+            case "5":
+                return 2;
+        }
+    }
+
     /**
      * Should return all available upgrades
      * @returns {Object<string, UpgradeTiers>}
      */
     getUpgrades() {
-        return generateUpgrades(!this.root.app.restrictionMgr.getHasExtendedUpgrades());
+        return generateUpgrades(
+            !this.root.app.restrictionMgr.getHasExtendedUpgrades(),
+            this.difficultyMultiplicator
+        );
     }
 
     /**
@@ -614,7 +642,10 @@ export class RegularGameMode extends GameMode {
      * @returns {Array<LevelDefinition>}
      */
     getLevelDefinitions() {
-        return generateLevelDefinitions(!this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay());
+        return generateLevelDefinitions(
+            !this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay(),
+            this.difficultyMultiplicator
+        );
     }
 
     /**

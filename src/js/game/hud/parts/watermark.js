@@ -5,21 +5,24 @@ import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
-        let linkText = "";
-        switch (this.root.app.gameAnalytics.abtVariant) {
-            case "0": {
-                linkText = "Get on Steam";
-                break;
-            }
-            case "1": {
-                linkText = "Play on Steam";
-                break;
-            }
-            case "2": {
-                linkText = T.ingame.watermark.get_on_steam;
-                break;
-            }
-        }
+        // To be continued later
+        // let linkText = "";
+        // switch (this.root.app.gameAnalytics.abtVariant) {
+        //     case "0": {
+        //         linkText = "Get on Steam";
+        //         break;
+        //     }
+        //     case "1": {
+        //         linkText = "Play on Steam";
+        //         break;
+        //     }
+        //     case "2": {
+        //         linkText = T.ingame.watermark.get_on_steam;
+        //         break;
+        //     }
+        // }
+
+        let linkText = T.ingame.watermark.get_on_steam;
 
         this.linkElement = makeDiv(
             parent,
