@@ -5,7 +5,21 @@ import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
-        let linkText = this.root.app.gameAnalytics.abtVariant === "0" ? "Get on Steam" : "Play on Steam";
+        let linkText = "";
+        switch (this.root.app.gameAnalytics.abtVariant) {
+            case "0": {
+                linkText = "Get on Steam";
+                break;
+            }
+            case "1": {
+                linkText = "Play on Steam";
+                break;
+            }
+            case "2": {
+                linkText = T.ingame.watermark.get_on_steam;
+                break;
+            }
+        }
 
         this.linkElement = makeDiv(
             parent,
