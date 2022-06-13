@@ -291,10 +291,7 @@ gulp.task(
     "bundle.steam.from-windows",
     gulp.series("bundle.standalone-steam.from-windows", "bundle.standalone-steam-china.from-windows")
 );
-gulp.task(
-    "bundle.steam-demo.from-darwin",
-    gulp.series("bundle.standalone-steam-demo.from-darwin", "bundle.standalone-steam-china-demo.from-darwin")
-);
+gulp.task("bundle.steam-demo.from-darwin", gulp.series("bundle.standalone-steam-demo.from-darwin"));
 gulp.task(
     "bundle.steam-demo.from-windows",
     gulp.series(
