@@ -5,11 +5,13 @@ import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
+        let linkText = this.root.app.gameAnalytics.abtVariant === "0" ? "Get on Steam" : "Play on Steam";
+
         this.linkElement = makeDiv(
             parent,
             "ingame_HUD_WatermarkClicker",
             globalConfig.currentDiscount > 0 ? ["withDiscount"] : [],
-            T.ingame.watermark.get_on_steam +
+            linkText +
                 (globalConfig.currentDiscount > 0
                     ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
                     : "")

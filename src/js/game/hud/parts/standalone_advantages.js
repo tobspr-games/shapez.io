@@ -32,7 +32,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
             <div class="lowerBar">
             <div class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</div>
-            <button class="steamLinkButton steam_dlbtn_${this.root.app.gameAnalytics.abtVariant}">
+            <button class="steamLinkButton steam_dlbtn_0">
             ${
                 globalConfig.currentDiscount > 0
                     ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
