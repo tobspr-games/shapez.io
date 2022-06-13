@@ -19,7 +19,7 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
 const CURRENT_ABT = "abt_dif";
-const CURRENT_ABT_COUNT = 5;
+const CURRENT_ABT_COUNT = 6;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     constructor(app) {

@@ -79,7 +79,7 @@ export class MainMenuState extends GameState {
             <a href="#" class="steamLink steam_dlbtn_0" target="_blank">
                 ${
                     globalConfig.currentDiscount > 0
-                        ? `<span class='discount'>${globalConfig.currentDiscount}% off!</span>`
+                        ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
                         : ""
                 }
 
