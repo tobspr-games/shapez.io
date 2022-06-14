@@ -54,15 +54,15 @@ global:
 demoBanners:
     title: Version de démo
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
+        Achetez la version complète <strong>maintenant</strong> et débloquez:<ul>
+            <li>Les 26 niveaux + jeu libre infini</li>
+            <li>22 nouveaux bâtiments</li>
+            <li>Mods autorisés</li>
             <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+            <li>Mode sombre</li>
+            <li>... et bien plus encore !</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: La version complète offre plus de <strong>24 heures de contenu</strong>.
 mainMenu:
     play: Jouer
     continue: Continuer
@@ -87,9 +87,8 @@ mainMenu:
     puzzleDlcWishlist: Ajoute à ta liste de souhaits maintenant !
     puzzleDlcViewNow: Voir le DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Mods Actifs
+        warningPuzzleDLC: Jouer au DLC Puzzle n'est pas possible avec des mods. Désactivez-les pour jouer au DLC.
 dialogs:
     buttons:
         ok: OK
