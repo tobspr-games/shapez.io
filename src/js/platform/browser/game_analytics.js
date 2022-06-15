@@ -126,15 +126,33 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                     if (error === FILE_NOT_FOUND) {
                         logger.log("Retrieving new player key");
 
-                        // Perform call to get a new key from the API
-                        this.sendToApi("/v1/register", {
-                            environment: this.environment,
-                            standalone:
-                                G_IS_STANDALONE &&
-                                !G_IS_STEAM_DEMO &&
-                                this.app.achievementProvider instanceof SteamAchievementProvider,
-                            commit: G_BUILD_COMMIT_HASH,
-                        })
+                        let authTicket = Promise.resolve(undefined);
+
+                        if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
+                            logger.log("Will send auth ticket");
+                            authTicket = Promise.all([
+                                ipcRenderer.invoke("steam:get-ticket"),
+                                new Promise((resolve, reject) => setTimeout(reject, 15000)),
+                            ]);
+                        }
+
+                        authTicket
+                            .catch(err => {
+                                logger.warn("Failed to get steam auth ticket for register:", err);
+                            })
+                            .then(
+                                // Perform call to get a new key from the API
+                                ticket =>
+                                    this.sendToApi("/v1/register", {
+                                        environment: this.environment,
+                                        standalone:
+                                            G_IS_STANDALONE &&
+                                            !G_IS_STEAM_DEMO &&
+                                            this.app.achievementProvider instanceof SteamAchievementProvider,
+                                        commit: G_BUILD_COMMIT_HASH,
+                                        ticket,
+                                    })
+                            )
                             .then(res => {
                                 // Try to read and parse the key from the api
                                 if (res.key && typeof res.key === "string" && res.key.length === 40) {
