@@ -1,3 +1,7 @@
+/* typehints:start */
+import { Application } from "../application";
+/* typehints:end */
+
 export const IS_DEBUG =
     G_IS_DEV &&
     typeof window !== "undefined" &&
@@ -17,7 +21,7 @@ export const THIRDPARTY_URLS = {
 
     privacyPolicy: "https://tobspr.io/privacy.html",
 
-    stanaloneCampaignLink: "https://get.shapez.io",
+    standaloneCampaignLink: "https://get.shapez.io/$campaign",
     puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",
 
     levelTutorialVideos: {
@@ -28,6 +32,18 @@ export const THIRDPARTY_URLS = {
 
     modBrowser: "https://shapez.mod.io/?preview=f55f6304ca4873d9a25f3b575571b948",
 };
+
+/**
+ * @param {Application} app
+ * @param {string} campaign
+ */
+export function openStandaloneLink(app, campaign) {
+    const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
+    const steamSuffix = G_IS_STEAM_DEMO ? "_steamdemo" : "";
+    app.platformWrapper.openExternalLink(
+        THIRDPARTY_URLS.standaloneCampaignLink.replace("$campaign", campaign + discount + steamSuffix)
+    );
+}
 
 export const globalConfig = {
     // Size of a single tile in Pixels.

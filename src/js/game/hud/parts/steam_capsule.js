@@ -1,4 +1,4 @@
-import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
+import { openStandaloneLink } from "../../../core/config";
 import { makeDiv } from "../../../core/utils";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -11,17 +11,10 @@ export class HUDSteamCapsule extends BaseHUDPart {
     }
 
     initialize() {
-        const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-
         this.domAttach = new DynamicDomAttach(this.root, this.element);
 
         this.trackClicks(this.element, () => {
-            this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink +
-                    "/shapez_steamcapsule" +
-                    discount +
-                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
-            );
+            openStandaloneLink(this.root.app, "shapez_steamcapsule");
         });
     }
 

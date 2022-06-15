@@ -21,9 +21,7 @@ export class MobileWarningState extends GameState {
             <p>If you want to play on your computer, you can also get the game on Steam:</p>
 
 
-            <a href="${
-                THIRDPARTY_URLS.stanaloneCampaignLink + "/shapez_mobile"
-            }" class="standaloneLink" target="_blank">Get on Steam!</a>
+            <a href="https://get.shapez.io/shapez_mobile" class="standaloneLink" target="_blank">Play on Steam!</a>
         `;
     }
 

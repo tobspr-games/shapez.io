@@ -1,4 +1,4 @@
-import { THIRDPARTY_URLS } from "../core/config";
+import { openStandaloneLink, THIRDPARTY_URLS } from "../core/config";
 import { TextualGameState } from "../core/textual_game_state";
 import { MODS } from "../mods/modloader";
 import { T } from "../translations";
@@ -132,18 +132,11 @@ export class ModsState extends TextualGameState {
     }
 
     openBrowseMods() {
-        this.app.analytics.trackUiClick("mods_sbrowse_link");
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.modBrowser);
     }
 
     onSteamLinkClicked() {
-        this.app.analytics.trackUiClick("mods_steam_link");
-        this.app.platformWrapper.openExternalLink(
-            THIRDPARTY_URLS.stanaloneCampaignLink +
-                "/shapez_modsettings" +
-                (G_IS_STEAM_DEMO ? "_steamdemo" : "")
-        );
-
+        openStandaloneLink(this.app, "shapez_modsettings");
         return false;
     }
 

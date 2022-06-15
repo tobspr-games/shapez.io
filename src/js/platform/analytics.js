@@ -25,12 +25,6 @@ export class AnalyticsInterface {
     setUserContext(userName) {}
 
     /**
-     * Tracks a click no an ui element
-     * @param {string} elementName
-     */
-    trackUiClick(elementName) {}
-
-    /**
      * Tracks when a new state is entered
      * @param {string} stateId
      */

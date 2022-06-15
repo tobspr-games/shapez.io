@@ -64,23 +64,6 @@ export class GoogleAnalyticsImpl extends AnalyticsInterface {
         }
     }
 
-    trackUiClick(elementName) {
-        const stateKey = this.app.stateMgr.getCurrentState().key;
-        const fullSelector = stateKey + ">" + elementName;
-
-        try {
-            if (window.gtag) {
-                logger.log("📊 Tracking click on:", fullSelector);
-                window.gtag("event", "click", {
-                    event_category: "ui",
-                    event_label: fullSelector,
-                });
-            }
-        } catch (ex) {
-            logger.warn("📊 Failed to track ui click:", ex);
-        }
-    }
-
     /**
      * Tracks an event so GA keeps track of the user
      */

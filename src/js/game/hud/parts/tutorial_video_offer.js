@@ -23,10 +23,8 @@ export class HUDTutorialVideoOffer extends BaseHUDPart {
                     "ok:good",
                 ]);
 
-                this.root.app.analytics.trackUiClick("ingame_video_link_show_" + level);
                 ok.add(() => {
                     this.root.app.platformWrapper.openExternalLink(tutorialVideoLink);
-                    this.root.app.analytics.trackUiClick("ingame_video_link_open_" + level);
                 });
             }
         });

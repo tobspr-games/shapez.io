@@ -1,4 +1,4 @@
-import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig, openStandaloneLink } from "../../../core/config";
 import { InputReceiver } from "../../../core/input_receiver";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
@@ -45,20 +45,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         );
 
         this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
-            const discount =
-                globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-
-            this.root.app.analytics.trackUiClick("standalone_advantage_visit_steam");
-            this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink +
-                    "/shapez_std_advg" +
-                    discount +
-                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
-            );
+            openStandaloneLink(this.root.app, "shapez_std_advg");
             this.close();
         });
         this.trackClicks(this.contentDiv.querySelector("button.otherCloseButton"), () => {
-            this.root.app.analytics.trackUiClick("standalone_advantage_no_thanks");
             this.close();
         });
     }

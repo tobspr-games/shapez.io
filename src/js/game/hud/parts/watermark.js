@@ -1,4 +1,4 @@
-import { globalConfig, THIRDPARTY_URLS } from "../../../core/config";
+import { globalConfig, openStandaloneLink } from "../../../core/config";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
@@ -34,16 +34,7 @@ export class HUDWatermark extends BaseHUDPart {
                     : "")
         );
         this.trackClicks(this.linkElement, () => {
-            this.root.app.analytics.trackUiClick("watermark_click_2_direct");
-            const discount =
-                globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-
-            this.root.app.platformWrapper.openExternalLink(
-                THIRDPARTY_URLS.stanaloneCampaignLink +
-                    "/shapez_watermark" +
-                    discount +
-                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
-            );
+            openStandaloneLink(this.root.app, "shapez_watermark");
         });
     }
 

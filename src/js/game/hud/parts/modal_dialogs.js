@@ -8,7 +8,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { Dialog, DialogLoading, DialogOptionChooser } from "../../../core/modal_dialog_elements";
 import { makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
-import { THIRDPARTY_URLS } from "../../../core/config";
+import { openStandaloneLink } from "../../../core/config";
 
 export class HUDModalDialogs extends BaseHUDPart {
     constructor(root, app) {
@@ -117,19 +117,8 @@ export class HUDModalDialogs extends BaseHUDPart {
             this.app.sound.playUiSound(SOUNDS.dialogOk);
         }
 
-        this.app.analytics.trackUiClick("demo_dialog_show");
-
-        dialog.buttonSignals.cancel.add(() => {
-            this.app.analytics.trackUiClick("demo_dialog_cancel");
-        });
-
         dialog.buttonSignals.getStandalone.add(() => {
-            this.app.analytics.trackUiClick("demo_dialog_click");
-            window.open(
-                THIRDPARTY_URLS.stanaloneCampaignLink +
-                    "/shapez_demo_dialog" +
-                    (G_IS_STEAM_DEMO ? "_steamdemo" : "")
-            );
+            openStandaloneLink(this.app, "shapez_demo_dialog");
         });
 
         return dialog.buttonSignals;
