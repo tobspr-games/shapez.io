@@ -155,7 +155,7 @@ function createWindow() {
     win.webContents.on("new-window", (event, pth) => {
         event.preventDefault();
 
-        if (pth.startsWith("https://")) {
+        if (pth.startsWith("https://") || pth.startsWith("steam://")) {
             shell.openExternal(pth);
         }
     });
