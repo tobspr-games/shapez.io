@@ -39,15 +39,63 @@
             @include IncreasedClickArea(0px);
             @include S(margin-top, 15px);
 
-            @include InlineAnimation(5s ease-in-out) {
-                0% {
-                    opacity: 0.05;
+            &[data-btn-variant="0"] {
+                // nothing
+            }
+
+            &[data-btn-variant="1"] {
+                @include InlineAnimation(1s ease-in-out) {
+                    0% {
+                        opacity: 0.05;
+                    }
+                    50% {
+                        opacity: 0.05;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
                 }
-                50% {
-                    opacity: 0.05;
+            }
+
+            &[data-btn-variant="2"] {
+                @include InlineAnimation(2.5s ease-in-out) {
+                    0% {
+                        opacity: 0.05;
+                    }
+                    50% {
+                        opacity: 0.05;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
                 }
-                100% {
-                    opacity: 1;
+            }
+
+            &[data-btn-variant="3"] {
+                @include InlineAnimation(5s ease-in-out) {
+                    0% {
+                        opacity: 0.05;
+                    }
+                    50% {
+                        opacity: 0.05;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &[data-btn-variant="4"] {
+                @include InlineAnimation(10s ease-in-out) {
+                    0% {
+                        opacity: 0.05;
+                    }
+                    80% {
+                        opacity: 0.05;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
                 }
             }
         }

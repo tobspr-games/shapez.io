@@ -39,7 +39,9 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
                     : ""
             }
             </button>
-            <button class="otherCloseButton">${T.ingame.standaloneAdvantages.no_thanks}</button>
+            <button class="otherCloseButton" data-btn-variant="${this.root.app.gameAnalytics.abtVariant}">${
+                T.ingame.standaloneAdvantages.no_thanks
+            }</button>
             </div>
         `
         );

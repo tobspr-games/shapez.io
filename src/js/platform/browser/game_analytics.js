@@ -18,8 +18,8 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 // Be sure to increment the ID whenever it changes
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
-const CURRENT_ABT = "abt_spl";
-const CURRENT_ABT_COUNT = 2;
+const CURRENT_ABT = "abt_sacb";
+const CURRENT_ABT_COUNT = 5;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     constructor(app) {
@@ -52,36 +52,29 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     }
 
     fetchABVariant() {
-        return this.app.storage
-            .readFileAsync("shapez_" + CURRENT_ABT + ".bin")
-            .then(
-                abt => {
+        return this.app.storage.readFileAsync("shapez_" + CURRENT_ABT + ".bin").then(
+            abt => {
+                if (typeof queryParamOptions.abtVariant === "string") {
+                    this.abtVariant = queryParamOptions.abtVariant;
+                    logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
+                } else {
+                    this.abtVariant = abt;
+                    logger.log("Read abtVariant:", abt);
+                }
+            },
+            err => {
+                if (err === FILE_NOT_FOUND) {
                     if (typeof queryParamOptions.abtVariant === "string") {
                         this.abtVariant = queryParamOptions.abtVariant;
                         logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
                     } else {
-                        this.abtVariant = abt;
-                        logger.log("Read abtVariant:", abt);
+                        this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
+                        logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
                     }
-                },
-                err => {
-                    if (err === FILE_NOT_FOUND) {
-                        if (typeof queryParamOptions.abtVariant === "string") {
-                            this.abtVariant = queryParamOptions.abtVariant;
-                            logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
-                        } else {
-                            this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
-                            logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
-                        }
-                        this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", this.abtVariant);
-                    }
+                    this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", this.abtVariant);
                 }
-            )
-            .then(() => {
-                if (this.abtVariant === "1") {
-                    THIRDPARTY_URLS.standaloneCampaignLink = "https://get.shapez.io/bundle/$campaign";
-                }
-            });
+            }
+        );
     }
 
     /**
