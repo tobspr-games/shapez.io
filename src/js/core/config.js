@@ -17,7 +17,6 @@ export const THIRDPARTY_URLS = {
 
     privacyPolicy: "https://tobspr.io/privacy.html",
 
-    standaloneStorePage: "https://store.steampowered.com/app/1318690/shapezio/",
     stanaloneCampaignLink: "https://get.shapez.io",
     puzzleDlcStorePage: "https://store.steampowered.com/app/1625400/shapezio__Puzzle_DLC",
 

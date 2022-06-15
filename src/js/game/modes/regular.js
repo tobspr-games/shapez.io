@@ -610,20 +610,13 @@ export class RegularGameMode extends GameMode {
     }
 
     get difficultyMultiplicator() {
-        switch (this.root.app.gameAnalytics.abtVariant) {
-            case "0":
-                return 0.2;
-            case "1":
-                return 0.5;
-            case "2":
+        if (G_IS_STANDALONE) {
+            if (G_IS_STEAM_DEMO) {
                 return 0.75;
-            case "3":
-                return 1;
-            case "4":
-                return 1.25;
-            case "5":
-                return 2;
+            }
+            return 1;
         }
+        return 0.5;
     }
 
     /**
