@@ -19,7 +19,7 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
 const CURRENT_ABT = "abt_spl";
-const CURRENT_ABT_COUNT = G_IS_STEAM_DEMO ? 3 : 2;
+const CURRENT_ABT_COUNT = 2;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     constructor(app) {
@@ -80,8 +80,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             .then(() => {
                 if (this.abtVariant === "1") {
                     THIRDPARTY_URLS.standaloneCampaignLink = "https://get.shapez.io/bundle/$campaign";
-                } else if (this.abtVariant === "2") {
-                    THIRDPARTY_URLS.standaloneCampaignLink = "steam://advertise/1318690";
                 }
             });
     }
