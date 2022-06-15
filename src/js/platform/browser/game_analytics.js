@@ -129,21 +129,17 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                         let authTicket = Promise.resolve(undefined);
 
                         if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
-                            logger.log("Will send auth ticket");
-                            authTicket = Promise.all([
-                                ipcRenderer.invoke("steam:get-ticket"),
-                                new Promise((resolve, reject) => setTimeout(reject, 15000)),
-                            ]);
+                            logger.log("Will retrieve auth ticket");
+                            authTicket = ipcRenderer.invoke("steam:get-ticket");
                         }
 
                         authTicket
-                            .catch(err => {
-                                logger.warn("Failed to get steam auth ticket for register:", err);
-                            })
                             .then(
-                                // Perform call to get a new key from the API
-                                ticket =>
-                                    this.sendToApi("/v1/register", {
+                                ticket => {
+                                    logger.log("Got ticket:", ticket);
+
+                                    // Perform call to get a new key from the API
+                                    return this.sendToApi("/v1/register", {
                                         environment: this.environment,
                                         standalone:
                                             G_IS_STANDALONE &&
@@ -151,7 +147,11 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                                             this.app.achievementProvider instanceof SteamAchievementProvider,
                                         commit: G_BUILD_COMMIT_HASH,
                                         ticket,
-                                    })
+                                    });
+                                },
+                                err => {
+                                    logger.warn("Failed to get steam auth ticket for register:", err);
+                                }
                             )
                             .then(res => {
                                 // Try to read and parse the key from the api
