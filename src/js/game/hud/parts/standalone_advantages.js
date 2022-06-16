@@ -39,7 +39,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
                     : ""
             }
             </button>
-            <button class="otherCloseButton" data-btn-variant="${this.root.app.gameAnalytics.abtVariant}">${
+            <button class="otherCloseButton" data-btn-variant="${G_IS_STEAM_DEMO ? "steam-demo" : "prod"}">${
                 T.ingame.standaloneAdvantages.no_thanks
             }</button>
             </div>

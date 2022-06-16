@@ -109,6 +109,14 @@
                 font-weight: 700 !important;
             }
 
+            .onlinePlayerCount {
+                color: #fff;
+                @include S(margin-top, 15px);
+                @include SuperSmallText;
+                @include S(height, 15px);
+                text-align: center;
+            }
+
             h3 {
                 @include Heading;
                 font-weight: bold;
@@ -422,6 +430,7 @@
         box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
         height: 100%;
         width: 100%;
+        position: relative;
         box-sizing: border-box;
 
         .buttons {

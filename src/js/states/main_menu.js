@@ -35,6 +35,8 @@ let firstPlayForwarded = false;
 export class MainMenuState extends GameState {
     constructor() {
         super("MainMenuState");
+
+        this.refreshInterval = null;
     }
 
     getInnerHTML() {
@@ -72,18 +74,25 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
+        let abtVariant = this.app.gameAnalytics.abtVariant;
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
-            <span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>
+            ${
+                abtVariant === "0"
+                    ? `<span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>`
+                    : ""
+            }
             <a href="#" class="steamLink steam_dlbtn_0" target="_blank">
-                ${
-                    globalConfig.currentDiscount > 0
-                        ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
-                        : ""
-                }
+            ${
+                globalConfig.currentDiscount > 0
+                    ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
+                    : ""
+            }
 
             </a>
+            ${abtVariant === "2" ? `<div class="onlinePlayerCount"></div>` : ""}
+
         `;
 
         return `
@@ -113,11 +122,7 @@ export class MainMenuState extends GameState {
                 </div>
 
                 <div class="mainContainer">
-                    ${
-                        showBrowserWarning
-                            ? `<div class="browserWarning">${T.mainMenu.browserWarning}</div>`
-                            : ""
-                    }
+                ${showBrowserWarning ? `<div class="browserWarning">${T.mainMenu.browserWarning}</div>` : ""}
                     <div class="buttons"></div>
                 </div>
 
@@ -373,6 +378,9 @@ export class MainMenuState extends GameState {
 
         this.renderMainMenu();
         this.renderSavegames();
+        this.fetchPlayerCount();
+
+        this.refreshInterval = setInterval(() => this.fetchPlayerCount(), 10000);
     }
 
     renderMainMenu() {
@@ -416,9 +424,27 @@ export class MainMenuState extends GameState {
         buttonContainer.appendChild(outerDiv);
     }
 
+    fetchPlayerCount() {
+        const element = this.htmlElement.querySelector(".onlinePlayerCount");
+        if (!element) {
+            return;
+        }
+        fetch("https://analytics.shapez.io/v1/player-count", {
+            cache: "no-cache",
+        })
+            .then(res => res.json())
+            .then(
+                count => {
+                    element.innerText = T.demoBanners.playerCount.replace("<playerCount>", String(count));
+                },
+                ex => {
+                    console.warn("Failed to get player count:", ex);
+                }
+            );
+    }
+
     onPuzzleModeButtonClicked(force = false) {
         const hasUnlockedBlueprints = this.app.savegameMgr.getSavegamesMetaData().some(s => s.level >= 12);
-        console.log(hasUnlockedBlueprints);
         if (!force && !hasUnlockedBlueprints) {
             const { ok } = this.dialogs.showWarning(
                 T.dialogs.puzzlePlayRegularRecommendation.title,
@@ -794,5 +820,6 @@ export class MainMenuState extends GameState {
 
     onLeave() {
         this.dialogs.cleanup();
+        clearInterval(this.refreshInterval);
     }
 }
