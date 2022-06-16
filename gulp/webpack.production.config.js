@@ -19,12 +19,6 @@ module.exports = ({
     wegameVersion = false,
     steamDemo = false,
 }) => {
-    const moduleExclusionResult = checkModules({
-        path: path.join(__dirname, ".."),
-        checkAllNodeModules: true,
-        ignoreBabelAndWebpackPackages: true,
-    });
-
     const globalDefs = {
         assert: "false && window.assert",
         assertAlways: "window.assert",
