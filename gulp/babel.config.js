@@ -24,12 +24,12 @@ module.exports = function (api) {
         "@babel/plugin-transform-arrow-functions",
         "closure-elimination",
         // var is faster than let and const!
-        [
-            "@babel/plugin-transform-block-scoping",
-            {
-                throwIfClosureRequired: true,
-            },
-        ],
+        // [
+        //     "@babel/plugin-transform-block-scoping",
+        //     {
+        //         throwIfClosureRequired: true,
+        //     },
+        // ],
         [
             "@babel/plugin-transform-classes",
             {
