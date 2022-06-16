@@ -8,8 +8,10 @@
     },
     "author": "tobspr",
     "license": "private",
+    "browserslist": "> 0.01%",
     "dependencies": {
         "@babel/core": "^7.9.0",
+        "@babel/plugin-transform-arrow-functions": "^7.17.12",
         "@babel/plugin-transform-block-scoping": "^7.4.4",
         "@babel/plugin-transform-classes": "^7.5.5",
         "@babel/preset-env": "^7.5.4",

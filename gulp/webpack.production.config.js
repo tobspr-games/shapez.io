@@ -8,8 +8,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const StringReplacePlugin = require("string-replace-webpack-plugin");
 const UnusedFilesPlugin = require("unused-files-webpack-plugin").UnusedFilesWebpackPlugin;
 
-const { checkModules, buildExcludeRegexp } = require("are-you-es5");
-
 module.exports = ({
     environment,
     es6 = false,
@@ -213,7 +211,6 @@ module.exports = ({
                 },
                 {
                     test: /\.js$/,
-                    exclude: buildExcludeRegexp(moduleExclusionResult.es6Modules),
                     use: [
                         // "thread-loader",
                         {
@@ -243,7 +240,6 @@ module.exports = ({
                 },
                 {
                     test: /\.worker\.js$/,
-                    exclude: buildExcludeRegexp(moduleExclusionResult.es6Modules),
                     use: [
                         {
                             loader: "worker-loader",

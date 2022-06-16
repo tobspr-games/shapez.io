@@ -4,7 +4,14 @@ module.exports = function (api) {
         [
             "@babel/preset-env",
             {
-                targets: "cover 99.5%",
+                // targets: ">0.01%",
+                targets: {
+                    edge: 10,
+                    firefox: 37,
+                    chrome: 24,
+                    safari: 10,
+                    ie: 10,
+                },
                 useBuiltIns: "usage",
                 corejs: 3,
                 loose: true,
@@ -14,12 +21,13 @@ module.exports = function (api) {
         ],
     ];
     const plugins = [
+        "@babel/plugin-transform-arrow-functions",
         "closure-elimination",
         // var is faster than let and const!
         [
             "@babel/plugin-transform-block-scoping",
             {
-                throwIfClosureRequired: false,
+                throwIfClosureRequired: true,
             },
         ],
         [
@@ -36,6 +44,7 @@ module.exports = function (api) {
         sourceType: "unambiguous",
         sourceMaps: false,
         parserOpts: {},
+        exclude: /(core-js|babel-core|babel-runtime)/,
         generatorOpts: {
             retainLines: false,
             compact: true,
