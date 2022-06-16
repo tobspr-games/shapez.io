@@ -40,7 +40,7 @@
             @include S(margin-top, 15px);
 
             &[data-btn-variant="prod"] {
-                @include InlineAnimation(8s ease-in-out) {
+                @include InlineAnimation(11s ease-in-out) {
                     0% {
                         opacity: 0.05;
                     }
