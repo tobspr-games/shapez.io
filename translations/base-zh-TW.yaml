@@ -392,7 +392,7 @@ ingame:
                 title: 12 個新關卡
                 desc: 總共26關！
             buildings:
-                title: 18 個新建築
+                title: 22 個新建築
                 desc: 邁向完全自動化！
             markers:
                 title: ∞ 個地圖標記
@@ -732,7 +732,7 @@ storyRewards:
         title: 讀取輸送帶
         desc: <strong>輸送帶讀取機</strong>已解鎖！ 它會讀取輸送帶的流量。<br><br> 當你解鎖電路層時，它會變得超有用！
     reward_rotater_180:
-        title: 180度旋轉
+        title: 220度旋轉
         desc: <strong>180度旋轉機</strong>已解鎖！ - 它可以180度旋轉物件（驚喜！:D）
     reward_display:
         title: 顯示器
