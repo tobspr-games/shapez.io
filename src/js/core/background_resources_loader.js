@@ -49,7 +49,7 @@ const essentialMainMenuSounds = [
 ];
 
 const essentialBareGameAtlases = atlasFiles;
-const essentialBareGameSprites = G_ALL_UI_IMAGES.filter(src => src.indexOf(".gif") < 0);
+const essentialBareGameSprites = [];
 const essentialBareGameSounds = [MUSIC.theme];
 
 const additionalGameSprites = [];
