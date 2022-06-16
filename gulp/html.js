@@ -168,19 +168,19 @@ function gulptasksHTML($, gulp, buildFolder) {
                             loadJs.type = "text/javascript";
                             let scriptContent = "";
                             scriptContent += `var bundleSrc = '${cachebust("bundle.js")}';\n`;
-                            scriptContent += `var bundleSrcTranspiled = '${cachebust(
-                                "bundle-transpiled.js"
-                            )}';\n`;
+                            // scriptContent += `var bundleSrcTranspiled = '${cachebust(
+                            //     "bundle-transpiled.js"
+                            // )}';\n`;
 
                             if (integrity) {
                                 scriptContent +=
                                     "var bundleIntegrity = '" +
                                     computeIntegrityHash(path.join(buildFolder, "bundle.js")) +
                                     "';\n";
-                                scriptContent +=
-                                    "var bundleIntegrityTranspiled = '" +
-                                    computeIntegrityHash(path.join(buildFolder, "bundle-transpiled.js")) +
-                                    "';\n";
+                                // scriptContent +=
+                                //     "var bundleIntegrityTranspiled = '" +
+                                //     computeIntegrityHash(path.join(buildFolder, "bundle-transpiled.js")) +
+                                //     "';\n";
                             } else {
                                 scriptContent += "var bundleIntegrity = null;\n";
                                 scriptContent += "var bundleIntegrityTranspiled = null;\n";
