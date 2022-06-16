@@ -147,7 +147,7 @@ body {
     width: 98%;
     background: #fff;
     display: inline-flex;
-    animation: LL_LoadingAnimation 40s ease-in-out infinite;
+    animation: LL_LoadingAnimation 60s ease-in-out infinite;
     position: relative;
     z-index: 10;
 }
@@ -182,7 +182,7 @@ body {
     margin-top: 20px;
     display: block;
     font-size: 16px;
-    animation: ShowStandaloneBannerAfterDelay 20s linear;
+    animation: ShowStandaloneBannerAfterDelay 30s linear;
 }
 
 #ll_standalone a {
