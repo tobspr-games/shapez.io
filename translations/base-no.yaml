@@ -57,16 +57,16 @@ global:
 demoBanners:
     title: Demo Versjon
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Få hele spillet <strong>nå</strong> for å låse opp:<ul>
+            <li>Alle 26 nivåer + uendelig Freeplay</li>
+            <li>22 nye bygg</li>
+            <li>Mod støtte</li>
+            <li>Prestasjoner</li>
+            <li>Mørk modus</li>
+            <li>... og mye mer!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
+    playtimeDisclaimer: Fullversjonen inneholder mer enn <strong>24 timer med innhold</strong>.
+    playerCount: <playerCount> spillere som deg spiller for øyeblikket shapez på Steam
 mainMenu:
     play: Spill
     changelog: Endringshistorikk

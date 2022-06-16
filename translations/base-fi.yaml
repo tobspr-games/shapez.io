@@ -57,16 +57,16 @@ global:
 demoBanners:
     title: Demoversio
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Hanki koko peli <strong>jatkossa</strong> avataksesi sen:<ul>
+            <li>Kaikki 26 tasoa + ääretön ilmaispeli</li>
+            <li>22 uutta rakennusta</li>
+            <li>Mod-tuki</li>
+            <li>Saavutukset</li>
+            <li>Tumma tila</li>
+            <li>... ja paljon muuta!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
+    playtimeDisclaimer: Täysversio sisältää yli <strong>24 tuntia sisältöä</strong>.
+    playerCount: <playerCount> kaltaisesi pelaajat pelaavat parhaillaan shapezia Steamissa.
 mainMenu:
     play: Pelaa
     continue: Jatka

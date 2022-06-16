@@ -58,20 +58,20 @@ demoBanners:
     title: Demoversion
     intro: |-
         Kaufe die Vollversion <strong>jetzt</strong> für:<ul>
-            <li>Alle 26 Level + weiterer Content</li>
+            <li>Alle 26 Level + unendlich Freeplay</li>
             <li>22 weitere Gebäude</li>
             <li>Mod Support</li>
             <li>Errungenschaften</li>
             <li>Dunkler-Modus</li>
-            <li>... und viel mehr!</li>
+            <li>... und noch viel mehr!</li>
         </ul>
     playtimeDisclaimer: Die Vollversion bietet mehr als <strong>24 Stunden Spielspaß</strong>.
-    playerCount: <playerCount> Spieler wie du spielen gerade shapez auf Steam.
+    playerCount: <playerCount> Spieler wie du spielen shapez gerade auf Steam
 mainMenu:
     play: Spielen
     continue: Fortsetzen
     newGame: Neues Spiel
-    changelog: Änderungsprotokoll
+    changelog: Änderungshistorie
     subreddit: Reddit
     importSavegame: Importieren
     openSourceHint: Dieses Spiel ist quelloffen!
@@ -1263,7 +1263,7 @@ about:
         target="_blank">Niklas</a> danken! Ohne unsere etlichen gemeinsamen
         Stunden in Factorio wäre dieses Projekt nie zustande gekommen.
 changelog:
-    title: Änderungsprotokoll
+    title: Änderungshistorie
 demo:
     features:
         restoringGames: Spielstände wiederherstellen

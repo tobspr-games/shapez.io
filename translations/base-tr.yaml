@@ -55,16 +55,16 @@ global:
 demoBanners:
     title: Deneme Sürümü
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Kilidi açmak için tam oyunu <strong>şimdi</strong> edinin:<ul>
+            <li>26 seviyenin tamamı + sonsuz Serbest Oynanış</li>
+            <li>22 yeni bina</li>
+            <li>Mod desteği</li>
+            <li>Başarılar</li>
+            <li>Karanlık Mod</li>
+            <li>... ve çok daha fazlası!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
+    playtimeDisclaimer: Tam sürüm <strong>24 saatten fazla içerik</strong> içerir.
+    playerCount: <playerCount> sizin gibi oyuncular şu anda Steam'de shapez oynuyor
 mainMenu:
     play: Oyna
     changelog: Değişiklik Günlüğü
