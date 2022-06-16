@@ -206,6 +206,10 @@ module.exports = ({
                 },
                 {
                     test: /\.js$/,
+                    exclude: {
+                        and: [/rusha/],
+                        //     // not: [/semver/, /query-string/, /yallist/],
+                    },
                     use: [
                         // "thread-loader",
                         {
@@ -235,6 +239,10 @@ module.exports = ({
                 },
                 {
                     test: /\.worker\.js$/,
+                    exclude: {
+                        and: [/rusha/],
+                        //     // not: [/semver/, /query-string/, /yallist/],
+                    },
                     use: [
                         {
                             loader: "worker-loader",

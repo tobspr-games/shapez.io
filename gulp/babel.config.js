@@ -36,7 +36,7 @@ module.exports = function (api) {
         sourceType: "module",
         sourceMaps: false,
         parserOpts: {},
-        only: ["../src/js"],
+        // only: ["../src/js"],
         generatorOpts: {
             retainLines: false,
             compact: true,

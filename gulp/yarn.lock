@@ -11182,11 +11182,6 @@ sequencify@~0.0.7:
   resolved "https://registry.npmjs.org/sequencify/-/sequencify-0.0.7.tgz"
   integrity sha1-kM/xnQLgcCf9dn9erT57ldHnOAw=
 
-serialize-error@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/serialize-error/-/serialize-error-3.0.0.tgz"
-  integrity sha512-+y3nkkG/go1Vdw+2f/+XUXM1DXX1XcxTl99FfiD/OEPUNw4uo0i6FKABfTAN5ZcgGtjTRZcEbxcE/jtXbEY19A==
-
 serialize-error@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-7.0.1.tgz#f1360b0447f61ffb483ec4157c737fab7d778e18"

@@ -85,7 +85,10 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
             });
             gulp.task(
                 "js." + variant + ".prod",
-                gulp.parallel("js." + variant + ".prod.transpiled", "js." + variant + ".prod.es6")
+
+                // ES6 Currently not used
+                // gulp.parallel("js." + variant + ".prod.transpiled", "js." + variant + ".prod.es6")
+                gulp.parallel("js." + variant + ".prod.transpiled")
             );
         } else {
             // STANDALONE
