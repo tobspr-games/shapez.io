@@ -108,8 +108,13 @@
         callbackDone = true;
     };
 
-    var scriptEs6 = makeJsTag(bundleSrc, bundleIntegrity);
-    scriptEs6.addEventListener("error", loadFallbackJs);
-    scriptEs6.addEventListener("load", onJsLoaded);
-    document.head.appendChild(scriptEs6);
+    // var scriptEs6 = makeJsTag(bundleSrc, bundleIntegrity);
+    // scriptEs6.addEventListener("error", loadFallbackJs);
+    // scriptEs6.addEventListener("load", onJsLoaded);
+    // document.head.appendChild(scriptEs6);
+
+    var scriptTransp = makeJsTag(bundleSrcTranspiled, bundleIntegrityTranspiled);
+    scriptTransp.addEventListener("error", scriptFail);
+    scriptTransp.addEventListener("load", onJsLoaded);
+    document.head.appendChild(scriptTransp);
 })();
