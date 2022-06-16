@@ -56,15 +56,16 @@ global:
 demoBanners:
     title: Демо-версія
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Отримайте повну гру <strong>зараз</strong>, щоб розблокувати:<ul>
+            <li>Усі 26 рівнів + нескінченна безкоштовна гра</li>
+            <li>22 новобудови</li>
+            <li>підтримка</li>
+            <li>досягнення</li>
+            <li>Темний режим</li>
+            <li>... та багато іншого!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Повна версія містить понад <strong>24 години вмісту</strong>.
+    playerCount: <playerCount> такі гравці, як ви, зараз грають у shapez у Steam
 mainMenu:
     play: Грати
     continue: Продовжити
@@ -414,10 +415,10 @@ ingame:
                 вводи</strong> фарбувальника за допомогою проводу!
             21_3_place_button: Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та
                 з'єднайте їх дротом!
-            21_4_press_button: "Натисніть вимикач, аби він почав <strong>видавати сигнал
-                \"Істина\" </strong> активувавши таким чином
-                фарбувальник.<br><br> PS: Не обов'язково підключати всі входи!
-                Спробуйте підключити лише два."
+            21_4_press_button: 'Натисніть вимикач, аби він почав <strong>видавати сигнал
+                "Істина" </strong> активувавши таким чином
+                фарбувальник.<br><br> PS: Не обов''язково підключати всі входи!
+                Спробуйте підключити лише два.'
     connectedMiners:
         one_miner: 1 Екстрактор
         n_miners: <amount> Екстракторів

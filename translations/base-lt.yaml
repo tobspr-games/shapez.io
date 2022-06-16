@@ -1,6 +1,6 @@
 steamPage:
-    shortText: shapez.io yra gamyklų kūrimo žaidimas, kurio tikslas automatizuoti vis sudėtingesnių
-        formų gaminimą begaliniame žemėlapyje.
+    shortText: shapez.io yra gamyklų kūrimo žaidimas, kurio tikslas automatizuoti
+        vis sudėtingesnių formų gaminimą begaliniame žemėlapyje.
     discordLinkShort: Nuoroda į oficialų Discord
     intro: >-
         Shapez.io tai raminantis žaidimas, kuriame jums reikia statyti gamyklas
@@ -14,12 +14,13 @@ steamPage:
 
         Perkant žaidimą Steam platformoje gausite prieigą prie pilnos žaidimo versijos, bet pirma galite išbandyti demo versiją shapez.io svetainėje ir nuspręsti vėliau!
     what_others_say: Ką kiti sako apie shapez.io
-    nothernlion_comment: Šis žaidimas yra puikus - puikiai praleidžiu laiką
-        ir jis labai greitai pabėga.
-    notch_comment: Po velnių. Tikrai turėčiau miegoti, bet manau, kad ką tik supratau
-        kaip susikurti kompiuterį šiame žaidime.
-    steam_review_comment: Šis žaidimas pavogė mano gyvenimą ir aš nenoriu jo susigrąžinti.
-        Labai šaunus gamyklinis žaidimas, kuris neleis man nustoti tobulinti savo produkcijos linijas.
+    nothernlion_comment: Šis žaidimas yra puikus - puikiai praleidžiu laiką ir jis
+        labai greitai pabėga.
+    notch_comment: Po velnių. Tikrai turėčiau miegoti, bet manau, kad ką tik
+        supratau kaip susikurti kompiuterį šiame žaidime.
+    steam_review_comment: Šis žaidimas pavogė mano gyvenimą ir aš nenoriu jo
+        susigrąžinti. Labai šaunus gamyklinis žaidimas, kuris neleis man nustoti
+        tobulinti savo produkcijos linijas.
 global:
     loading: Kraunasi
     error: Klaida
@@ -35,7 +36,7 @@ global:
         oneSecondAgo: prieš vieną sekundę
         xSecondsAgo: prieš <x> sekundes/sekundžių
         oneMinuteAgo: prieš vieną minutę
-        xMinutesAgo: prieš <x> minutes/minutę 
+        xMinutesAgo: prieš <x> minutes/minutę
         oneHourAgo: prieš vieną valandą
         xHoursAgo: prieš <x> valandas/valandų
         oneDayAgo: prieš vieną dieną
@@ -63,7 +64,9 @@ demoBanners:
             <li>Dark Mode</li>
             <li>... ir daug daugiau!</li>
         </ul>
-    playtimeDisclaimer: Pilnoje žaidimo versijoje yra daugiau nei <strong>24 turinio valandos</strong>.
+    playtimeDisclaimer: Pilnoje žaidimo versijoje yra daugiau nei <strong>24 turinio
+        valandos</strong>.
+    playerCount: <playerCount> players like you are currently playing shapez on Steam
 mainMenu:
     play: Pradėti
     changelog: Pakeitimai

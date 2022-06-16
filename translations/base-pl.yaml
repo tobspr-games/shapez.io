@@ -57,15 +57,16 @@ global:
 demoBanners:
     title: Wersja demonstracyjna
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Pobierz pełną wersję gry <strong>teraz</strong>, aby ją odblokować:<ul>
+            <li>Wszystkie 26 poziomów + nieskończona darmowa rozgrywka</li>
+            <li>22 nowe budynki</li>
+            <li>Obsługa modów</li>
+            <li>Osiągnięcia</li>
+            <li>Tryb ciemny</li>
+            <li>... i wiele innych!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Pełna wersja zawiera ponad <strong>24 godziny treści</strong>.
+    playerCount: <playerCount> gracze tacy jak Ty grają obecnie w shapez na Steamie
 mainMenu:
     play: Rozpocznij
     continue: Kontynuuj

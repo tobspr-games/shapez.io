@@ -57,15 +57,16 @@ global:
 demoBanners:
     title: Demoversie
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Haal het volledige spel <strong>nu</strong> om het vrij te spelen:<ul>
+            <li>Alle 26 levels + oneindige Freeplay</li>
+            <li>22 nieuwe gebouwen</li>
+            <li>Mod ondersteuning</li>
+            <li>Prestaties</li>
+            <li>Donkere modus</li>
+            <li>... en nog veel meer!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: De volledige versie bevat meer dan <strong>24 uur aan inhoud</strong>.
+    playerCount: <playerCount> spelers zoals jij spelen op dit moment shapez op Steam
 mainMenu:
     play: Spelen
     changelog: Wijzigingenlijst

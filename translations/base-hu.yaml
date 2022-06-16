@@ -54,15 +54,16 @@ global:
 demoBanners:
     title: Demó verzió
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Szerezd meg a teljes játékot <strong>most</strong> a feloldáshoz:<ul>
+            <li>Mind a 26 szint + végtelen szabadjáték</li>
+            <li>22 új épület</li>
+            <li>Mod támogatás</li>
+            <li>Eredmények</li>
+            <li>Sötét üzemmód</li>
+            <li>... és még sok más!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: A teljes verzió több mint <strong>24 órányi tartalmat</strong> tartalmaz.
+    playerCount: <playerCount> hozzád hasonló játékosok jelenleg shapez-t játszanak a Steamen
 mainMenu:
     play: Játék
     continue: Folytatás

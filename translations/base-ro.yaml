@@ -57,15 +57,16 @@ global:
 demoBanners:
     title: Versiunea Demo
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Obțineți jocul complet <strong>acum</strong> pentru a-l debloca:<ul>
+            <li>Toate cele 26 de nivele + Freeplay infinit</li>
+            <li>22 de clădiri noi</li>
+            <li>Suport pentru moduri</li>
+            <li>Realizări</li>
+            <li>Modul întunecat</li>
+            <li>...și multe altele!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Versiunea completă conține mai mult de <strong>24 de ore de conținut</strong>.
+    playerCount: <playerCount> jucători ca tine se joacă în prezent shapez pe Steam
 mainMenu:
     play: Joacă
     changelog: Jurnalul schimbărilor

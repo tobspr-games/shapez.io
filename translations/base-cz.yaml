@@ -53,15 +53,16 @@ global:
 demoBanners:
     title: Demo verze
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Získejte plnou hru <strong>teď</strong> a odemkněte ji:<ul>
+            <li>Všech 26 úrovní + nekonečná hra zdarma</li>
+            <li>22 nových budov</li>
+            <li>Podpora modifikací</li>
+            <li>Úspěchy</li>
+            <li>Tmavý režim</li>
+            <li>... a mnoho dalšího!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Plná verze obsahuje více než <strong>24 hodin obsahu</strong>.
+    playerCount: <playerCount> hráči jako vy právě hrají shapez ve službě Steam
 mainMenu:
     play: Hrát
     continue: Pokračovat

@@ -107,7 +107,7 @@ demoBanners:
     playtimeDisclaimer: >-
         The full version contains more than <strong>24 hours of content</strong>.
     playerCount: >-
-        <playerCount> players like you are currently playing shapez on Steam
+        <playerCount> players like you are playing shapez on Steam right now
 
 mainMenu:
     play: Play

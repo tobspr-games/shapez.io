@@ -53,8 +53,9 @@ global:
     loggingIn: Se connecter
 demoBanners:
     title: Version de démo
-    intro: |-
-        Achetez la version complète <strong>maintenant</strong> et débloquez:<ul>
+    intro: >-
+        Achetez la version complète <strong>maintenant</strong> et
+        débloquez:<ul>
             <li>Les 26 niveaux + jeu libre infini</li>
             <li>22 nouveaux bâtiments</li>
             <li>Mods autorisés</li>
@@ -63,6 +64,7 @@ demoBanners:
             <li>... et bien plus encore !</li>
         </ul>
     playtimeDisclaimer: La version complète offre plus de <strong>24 heures de contenu</strong>.
+    playerCount: <playerCount> joueurs comme vous jouent actuellement à shapez sur Steam
 mainMenu:
     play: Jouer
     continue: Continuer
@@ -88,7 +90,8 @@ mainMenu:
     puzzleDlcViewNow: Voir le DLC
     mods:
         title: Mods Actifs
-        warningPuzzleDLC: Jouer au DLC Puzzle n'est pas possible avec des mods. Désactivez-les pour jouer au DLC.
+        warningPuzzleDLC: Jouer au DLC Puzzle n'est pas possible avec des mods.
+            Désactivez-les pour jouer au DLC.
 dialogs:
     buttons:
         ok: OK

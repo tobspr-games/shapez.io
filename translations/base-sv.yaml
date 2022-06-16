@@ -56,15 +56,16 @@ global:
 demoBanners:
     title: Demo-version
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Skaffa hela spelet <strong>nu</strong> för att låsa upp:<ul>
+            <li>Alla 26 nivåer + oändligt Freeplay</li>
+            <li>22 nya byggnader</li>
+            <li>Mod-stöd</li>
+            <li>Resultat</li>
+            <li>Mörkt läge</li>
+            <li>... och mycket mer!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: Den fullständiga versionen innehåller mer än <strong>24 timmars innehåll</strong>.
+    playerCount: <playerCount> spelare som du spelar just nu shapez på Steam
 mainMenu:
     play: Spela
     changelog: Ändringslogg
