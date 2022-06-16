@@ -14,18 +14,18 @@ module.exports = function (api) {
         ],
     ];
     const plugins = [
-        // "closure-elimination",
+        "closure-elimination",
         // var is faster than let and const!
-        // [
-        //     "@babel/plugin-transform-block-scoping",
-        //     {
-        //         throwIfClosureRequired: false,
-        //     },
-        // ],
+        [
+            "@babel/plugin-transform-block-scoping",
+            {
+                throwIfClosureRequired: false,
+            },
+        ],
         [
             "@babel/plugin-transform-classes",
             {
-                loose: false,
+                loose: true,
             },
         ],
     ];
@@ -33,10 +33,9 @@ module.exports = function (api) {
         presets,
         plugins,
         highlightCode: true,
-        sourceType: "module",
+        sourceType: "unambiguous",
         sourceMaps: false,
         parserOpts: {},
-        // only: ["../src/js"],
         generatorOpts: {
             retainLines: false,
             compact: true,

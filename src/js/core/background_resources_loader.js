@@ -38,7 +38,6 @@ export function getLogoSprite() {
 
 const essentialMainMenuSprites = [getLogoSprite()];
 
-console.warn("UI: ", G_ALL_UI_IMAGES);
 const essentialMainMenuSounds = [
     SOUNDS.uiClick,
     SOUNDS.uiError,

@@ -8,6 +8,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 const StringReplacePlugin = require("string-replace-webpack-plugin");
 const UnusedFilesPlugin = require("unused-files-webpack-plugin").UnusedFilesWebpackPlugin;
 
+const { checkModules, buildExcludeRegexp } = require("are-you-es5");
+
 module.exports = ({
     environment,
     es6 = false,
@@ -19,6 +21,12 @@ module.exports = ({
     wegameVersion = false,
     steamDemo = false,
 }) => {
+    const moduleExclusionResult = checkModules({
+        path: path.join(__dirname, ".."),
+        checkAllNodeModules: true,
+        ignoreBabelAndWebpackPackages: true,
+    });
+
     const globalDefs = {
         assert: "false && window.assert",
         assertAlways: "window.assert",
@@ -60,7 +68,6 @@ module.exports = ({
             // Display bailout reasons
             optimizationBailout: true,
         },
-        // devtool: "source-map",
         devtool: false,
         resolve: {
             alias: {
@@ -206,10 +213,7 @@ module.exports = ({
                 },
                 {
                     test: /\.js$/,
-                    exclude: {
-                        and: [/rusha/],
-                        //     // not: [/semver/, /query-string/, /yallist/],
-                    },
+                    exclude: buildExcludeRegexp(moduleExclusionResult.es6Modules),
                     use: [
                         // "thread-loader",
                         {
@@ -239,10 +243,7 @@ module.exports = ({
                 },
                 {
                     test: /\.worker\.js$/,
-                    exclude: {
-                        and: [/rusha/],
-                        //     // not: [/semver/, /query-string/, /yallist/],
-                    },
+                    exclude: buildExcludeRegexp(moduleExclusionResult.es6Modules),
                     use: [
                         {
                             loader: "worker-loader",

@@ -17,6 +17,7 @@
         "@types/filesystem": "^0.0.29",
         "@types/node": "^12.7.5",
         "ajv": "^6.10.2",
+        "are-you-es5": "^2.1.2",
         "audiosprite": "^0.7.2",
         "babel-core": "^6.26.3",
         "babel-loader": "^8.1.0",
