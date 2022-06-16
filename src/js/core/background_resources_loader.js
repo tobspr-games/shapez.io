@@ -36,10 +36,9 @@ export function getLogoSprite() {
     return "logo.png";
 }
 
-const essentialMainMenuSprites = [
-    getLogoSprite(),
-    ...G_ALL_UI_IMAGES.filter(src => src.startsWith("ui/") && src.indexOf(".gif") < 0),
-];
+const essentialMainMenuSprites = [getLogoSprite()];
+
+console.warn("UI: ", G_ALL_UI_IMAGES);
 const essentialMainMenuSounds = [
     SOUNDS.uiClick,
     SOUNDS.uiError,

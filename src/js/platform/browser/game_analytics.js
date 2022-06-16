@@ -93,12 +93,13 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
             if (this.app.restrictionMgr.isLimitedVersion()) {
                 fetch(
-                    "https://play.shapez.io/shapez_launch_" +
+                    "https://analytics.shapez.io/campaign/" +
                         this.environment +
                         "_" +
                         CURRENT_ABT +
                         "_" +
-                        this.abtVariant,
+                        this.abtVariant +
+                        "?lpurl=nocontent",
                     {
                         method: "GET",
                         mode: "no-cors",
