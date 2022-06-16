@@ -35,26 +35,17 @@ export class PreloadState extends GameState {
         return false;
     }
 
+    getRemovePreviousContent() {
+        return false;
+    }
+
     onEnter() {
-        this.htmlElement.classList.add("prefab_LoadingState");
-
-        const elementsToRemove = ["#loadingPreload", "#fontPreload"];
-        for (let i = 0; i < elementsToRemove.length; ++i) {
-            const elem = document.querySelector(elementsToRemove[i]);
-            if (elem) {
-                elem.remove();
-            }
-        }
-
         this.dialogs = new HUDModalDialogs(null, this.app);
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
 
         /** @type {HTMLElement} */
-        this.statusText = this.htmlElement.querySelector(".loadingStatus > .desc");
-
-        /** @type {HTMLElement} */
-        this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
+        this.hintsText = this.htmlElement.querySelector("#preload_ll_text");
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
@@ -286,11 +277,12 @@ export class PreloadState extends GameState {
      */
     setStatus(text) {
         logger.log("✅ " + text);
+
         if (G_CHINA_VERSION || G_WEGAME_VERSION) {
             return Promise.resolve();
         }
         this.currentStatus = text;
-        this.statusText.innerText = text;
+        // this.statusText.innerText = text;
         return Promise.resolve();
     }
 

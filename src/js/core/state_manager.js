@@ -81,11 +81,16 @@ export class StateManager {
         this.currentState.internalRegisterCallback(this, this.app);
 
         // Clean up old elements
-        removeAllChildren(document.body);
+        if (this.currentState.getRemovePreviousContent()) {
+            removeAllChildren(document.body);
+        }
 
         document.body.className = "gameState " + (this.currentState.getHasFadeIn() ? "" : "arrived");
         document.body.id = "state_" + key;
-        document.body.innerHTML = this.currentState.internalGetFullHtml();
+
+        if (this.currentState.getRemovePreviousContent()) {
+            document.body.innerHTML = this.currentState.internalGetFullHtml();
+        }
 
         const dialogParent = document.createElement("div");
         dialogParent.classList.add("modalDialogParent");

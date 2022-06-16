@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    touch-action: pan-x pan-y !important;
+    pointer-events: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html {
+    position: fixed;
+    -ms-touch-action: pan-x, pan-y;
+    touch-action: pan-x, pan-y;
+    -ms-content-zooming: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #dee1ea;
+}
+
+body {
+    color: #555;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background: inherit !important;
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: break-word;
+    font-style: normal;
+    line-break: auto;
+    font-stretch: 100%;
+    text-rendering: optimizeLegibility;
+    text-decoration: none;
+    text-size-adjust: 100%;
+    letter-spacing: normal;
+    scrollbar-width: 6px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-touch-callout: none;
+    /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;
+    /* prevent webkit from resizing text to fit */
+    scrollbar-face-color: #888;
+    scrollbar-track-color: rgba(255, 255, 255, 0.1);
+}
+
+#ll_fp {
+    font-family: GameFont;
+    font-size: 14px;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.05;
+}
+
+#ll_p {
+    display: grid;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    background: #d5d8de;
+    grid-template-rows: 1fr 200px;
+    grid-gap: 40px;
+    padding: 20px;
+    font-size: 14px;
+}
+
+#ll_p * {
+    line-height: 1em;
+}
+
+#ll_loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: end;
+    justify-content: center;
+}
+
+#ll_loader > .ll_text {
+    text-align: center;
+    color: #777a7f;
+    font-family: "GameFont", sans-serif;
+    font-size: 24px;
+    line-height: 1.2em;
+}
+
+#ll_progressbar {
+    width: 80vw;
+    margin-top: 40px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+}
+
+@keyframes LL_LoadingAnimation {
+    0% {
+        width: 0%;
+        background-color: #67aeed;
+    }
+    19.99% {
+        width: 99.5%;
+        background-color: #67aeed;
+    }
+    20% {
+        width: 0%;
+        background-color: #a1c074;
+    }
+    49.99% {
+        width: 98%;
+        background-color: #a1c074;
+    }
+    50% {
+        width: 0%;
+        background-color: #74a8c0;
+    }
+    74.99% {
+        width: 98%;
+        background-color: #74a8c0;
+    }
+    75% {
+        width: 0%;
+        background-color: #8f74c0;
+    }
+    100% {
+        width: 98%;
+        background-color: #8f74c0;
+    }
+}
+
+#ll_progressbar > span {
+    height: 100%;
+    border-radius: 7px;
+    width: 98%;
+    background: #fff;
+    display: inline-flex;
+    animation: LL_LoadingAnimation 40s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+}
+
+#ll_progressbar > #ll_loadinglabel {
+    position: absolute;
+    z-index: 20;
+    top: 50%;
+    text-transform: uppercase;
+    border-radius: 7px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #33373f;
+}
+
+@keyframes ShowStandaloneBannerAfterDelay {
+    0% {
+        opacity: 0;
+    }
+    95% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#ll_standalone {
+    text-align: center;
+    color: #777a7f;
+    margin-top: 20px;
+    display: block;
+    font-size: 16px;
+    animation: ShowStandaloneBannerAfterDelay 20s linear;
+}
+
+#ll_standalone a {
+    color: #39f;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+#ll_logo {
+}
+
+#ll_logo > img {
+    width: 40vw;
+    max-width: 700px;
+    min-width: 150px;
+}
+
+#ll_loader > .ll_spinner {
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    background: center center / contain no-repeat;
+    display: none;
+}

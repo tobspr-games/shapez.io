@@ -234,6 +234,14 @@ export class GameState {
         return MUSIC.menu;
     }
 
+    /**
+     * Should return whether to clear the whole body content before entering the state.
+     * @returns {boolean}
+     */
+    getRemovePreviousContent() {
+        return true;
+    }
+
     ////////////////////
 
     //// INTERNAL ////
