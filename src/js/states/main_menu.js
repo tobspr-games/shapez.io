@@ -90,12 +90,12 @@ export class MainMenuState extends GameState {
             <div class="topButtons">
                 ${
                     showLanguageIcon
-                        ? `<button class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
+                        ? `<button aria-label="Choose Language" class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
                         : ""
                 }
 
-                <button class="settingsButton"></button>
-                ${showExitAppButton ? `<button class="exitAppButton"></button>` : ""}
+                <button class="settingsButton" aria-label="Settings"></button>
+                ${showExitAppButton ? `<button class="exitAppButton" aria-label="Exit App"></button>` : ""}
             </div>
 
             <video autoplay muted loop class="fullscreenBackgroundVideo">
@@ -229,8 +229,8 @@ export class MainMenuState extends GameState {
 
                         ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
                     </div>
-                    <div class="author"><a class="producerLink" target="_blank" title="tobspr Games" rel="follow">
-                        <img src="${cachebust("res/logo-tobspr-games.svg")}">
+                    <div class="author"><a class="producerLink" href="https://tobspr.io" target="_blank" title="tobspr Games" rel="follow">
+                        <img src="${cachebust("res/logo-tobspr-games.svg")}" alt="tobspr Games">
                     </a></div>
                 </div>
 
@@ -357,7 +357,6 @@ export class MainMenuState extends GameState {
             ".githubLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github);
             },
-            ".producerLink": () => this.app.platformWrapper.openExternalLink("https://tobspr.io"),
             ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
             ".puzzleDlcGetButton": this.onPuzzleWishlistButtonClicked,
             ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
