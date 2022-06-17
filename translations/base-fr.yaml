@@ -47,7 +47,7 @@ global:
         tab: TAB
         control: CTRL
         alt: ALT
-        escape: ESC
+        escape: ECHAP
         shift: MAJ
         space: ESPACE
     loggingIn: Se connecter
