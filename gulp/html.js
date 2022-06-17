@@ -78,8 +78,8 @@ function gulptasksHTML($, gulp, buildFolder) {
                             // Preload essentials
                             const preloads = [
                                 "res/fonts/GameFont.woff2",
-                                "async-resources.css",
-                                "res/sounds/music/theme-short.mp3",
+                                // "async-resources.css",
+                                // "res/sounds/music/theme-short.mp3",
                             ];
 
                             preloads.forEach(src => {
