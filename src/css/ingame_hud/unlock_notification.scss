@@ -18,6 +18,12 @@
         }
     }
 
+    &.withinDemo {
+        > .dialog {
+            @include S(padding-top, 60px);
+        }
+    }
+
     .dialog {
         // background: rgba(#222428, 0.5);
         @include S(border-radius, $globalBorderRadius);

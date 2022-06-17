@@ -31,6 +31,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", ["noBlur"]);
 
+        if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
+            this.element.classList.add("withinDemo");
+        }
+
         const dialog = makeDiv(this.element, null, ["dialog"]);
 
         this.elemTitle = makeDiv(dialog, null, ["title"]);
