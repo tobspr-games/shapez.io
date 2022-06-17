@@ -1102,6 +1102,18 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@openreplay/tracker-fetch@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@openreplay/tracker-fetch/-/tracker-fetch-3.5.3.tgz#f4a8308cfffc83918e8d34716bae771cb442b41b"
+  integrity sha512-09vcR1H8178uDpaA2U4u1GvzAQD94ASmvrWM8dVXY0SmZdQHTTmNdkb4xijhkUY99gtJdB8qFgnIr+dP3FsSbg==
+
+"@openreplay/tracker@^3.5.12":
+  version "3.5.12"
+  resolved "https://registry.yarnpkg.com/@openreplay/tracker/-/tracker-3.5.12.tgz#141205bfefa42c767eaad1938cd206e3d551e171"
+  integrity sha512-R8s87HevJRzC/yujzswll+UyF0kybEax9UJr2eu7Y2nf1QhioD589HwDPlsXb1SxkMDd2yDQYfhbF0FXpCEfQA==
+  dependencies:
+    error-stack-parser "^2.0.6"
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-0.7.0.tgz"
@@ -3335,6 +3347,13 @@ error-ex@^1.2.0, error-ex@^1.3.1:
   integrity sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==
   dependencies:
     is-arrayish "^0.2.1"
+
+error-stack-parser@^2.0.6:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/error-stack-parser/-/error-stack-parser-2.1.4.tgz#229cb01cdbfa84440bfa91876285b94680188286"
+  integrity sha512-Sk5V6wVazPhq5MhpO+AUxJn5x7XSXGl1R93Vn7i+zS15KDVxQijejNCrz8340/2bgLBjR9GtEG8ZVKONDjcqGQ==
+  dependencies:
+    stackframe "^1.3.4"
 
 es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.5:
   version "1.17.5"
@@ -7799,6 +7818,11 @@ stable@^0.1.8:
   version "0.1.8"
   resolved "https://registry.npmjs.org/stable/-/stable-0.1.8.tgz"
   integrity sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==
+
+stackframe@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.3.4.tgz#b881a004c8c149a5e8efef37d51b16e412943310"
+  integrity sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==
 
 static-extend@^0.1.1:
   version "0.1.2"

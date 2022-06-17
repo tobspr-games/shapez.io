@@ -11,6 +11,16 @@ import { SteamAchievementProvider } from "../electron/steam_achievement_provider
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
 
+import OR from "@openreplay/tracker";
+import OR_fetch from "@openreplay/tracker-fetch";
+
+let connector;
+if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
+    connector = new OR({ projectKey: "mhZgUFQBI6QAtt3PRLer" });
+    connector.start();
+    connector.use(OR_fetch({ overrideGlobal: true }));
+}
+
 const logger = createLogger("game_analytics");
 
 const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
@@ -77,6 +87,30 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         );
     }
 
+    note(action) {
+        if (this.app.restrictionMgr.isLimitedVersion()) {
+            fetch(
+                "https://analytics.shapez.io/campaign/" +
+                    "action_" +
+                    this.environment +
+                    "_" +
+                    action +
+                    "_" +
+                    CURRENT_ABT +
+                    "_" +
+                    this.abtVariant +
+                    "?lpurl=nocontent",
+                {
+                    method: "GET",
+                    mode: "no-cors",
+                    cache: "no-cache",
+                    referrer: "no-referrer",
+                    credentials: "omit",
+                }
+            ).catch(err => {});
+        }
+    }
+
     /**
      * @returns {Promise<void>}
      */
@@ -119,6 +153,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 syncKey => {
                     this.syncKey = syncKey;
                     logger.log("Player sync key read:", this.syncKey);
+                    if (connector) {
+                        connector.setUserID(connector);
+                    }
                 },
                 error => {
                     // File was not found, retrieve new key
@@ -158,6 +195,9 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                                     this.syncKey = res.key;
                                     logger.log("Key retrieved:", this.syncKey);
                                     this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
+                                    if (connector) {
+                                        connector.setUserID(connector);
+                                    }
                                 } else {
                                     throw new Error("Bad response from analytics server: " + res);
                                 }
