@@ -31,7 +31,6 @@
         height: 80px;
         min-height: 40px;
         & {
-            /* @load-async */
             background: uiResource("steam_link_btn/0.png") center center / contain no-repeat;
         }
         overflow: hidden;

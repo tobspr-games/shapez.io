@@ -76,15 +76,23 @@ function gulptasksHTML($, gulp, buildFolder) {
                         // Do not need to preload in app or standalone
                         if (!hasLocalFiles) {
                             // Preload essentials
-                            const preloads = ["fonts/GameFont.woff2"];
+                            const preloads = [
+                                "res/fonts/GameFont.woff2",
+                                "async-resources.css",
+                                "res/sounds/music/theme-short.mp3",
+                            ];
 
                             preloads.forEach(src => {
                                 const preloadLink = document.createElement("link");
                                 preloadLink.rel = "preload";
-                                preloadLink.href = cachebust("res/" + src);
+                                preloadLink.href = cachebust(src);
                                 if (src.endsWith(".woff2")) {
                                     preloadLink.setAttribute("crossorigin", "anonymous");
                                     preloadLink.setAttribute("as", "font");
+                                } else if (src.endsWith(".css")) {
+                                    preloadLink.setAttribute("as", "style");
+                                } else if (src.endsWith(".mp3")) {
+                                    preloadLink.setAttribute("as", "audio");
                                 } else {
                                     preloadLink.setAttribute("as", "image");
                                 }

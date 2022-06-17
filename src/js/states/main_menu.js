@@ -315,6 +315,9 @@ export class MainMenuState extends GameState {
     }
 
     onEnter(payload) {
+        const app = this.app;
+        setTimeout(() => app.backgroundResourceLoader.internalStartLoadingEssentialsForBareGame(), 10);
+
         this.dialogs = new HUDModalDialogs(null, this.app);
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);

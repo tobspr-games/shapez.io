@@ -237,17 +237,21 @@ export class InGameState extends GameState {
      */
     stage3CreateCore() {
         if (this.switchStage(GAME_LOADING_STATES.s3_createCore)) {
-            logger.log("Creating new game core");
-            this.core = new GameCore(this.app);
+            logger.log("Waiting for resources to load");
 
-            this.core.initializeRoot(this, this.savegame, this.gameModeId);
+            this.app.backgroundResourceLoader.getPromiseForBareGame().then(() => {
+                logger.log("Creating new game core");
+                this.core = new GameCore(this.app);
 
-            if (this.savegame.hasGameDump()) {
-                this.stage4bResumeGame();
-            } else {
-                this.app.gameAnalytics.handleGameStarted();
-                this.stage4aInitEmptyGame();
-            }
+                this.core.initializeRoot(this, this.savegame, this.gameModeId);
+
+                if (this.savegame.hasGameDump()) {
+                    this.stage4bResumeGame();
+                } else {
+                    this.app.gameAnalytics.handleGameStarted();
+                    this.stage4aInitEmptyGame();
+                }
+            });
         }
     }
 

@@ -202,7 +202,6 @@
                         @include S(padding-right, 15px);
 
                         & {
-                            /* @load-async */
                             background: #fff uiResource("icons/enum_selector.png") calc(100% - #{D(5px)})
                                 calc(50% + #{D(1px)}) / #{D(15px)} no-repeat;
                         }
@@ -244,7 +243,6 @@
                             background-color: $darkModeControlsBackground;
 
                             & {
-                                /* @load-async */
                                 background-image: uiResource("icons/enum_selector_white.png");
                             }
                             color: #ddd;

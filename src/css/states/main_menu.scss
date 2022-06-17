@@ -23,7 +23,6 @@
             pointer-events: all;
             cursor: pointer;
             & {
-                /* @load-async */
                 background: uiResource("icons/main_menu_settings.png") center center / contain no-repeat;
             }
             transition: opacity 0.12s ease-in-out;
@@ -35,7 +34,6 @@
         }
 
         .exitAppButton {
-            /* @load-async */
             background-image: uiResource("icons/main_menu_exit.png");
             background-size: 90%;
         }
@@ -350,7 +348,6 @@
                 opacity: 0.5;
                 background: transparent center center/ 80% no-repeat;
                 & {
-                    /* @load-async */
                     background-image: uiResource("icons/edit_key.png") !important;
                 }
                 @include DarkThemeInvert;
@@ -501,10 +498,6 @@
 
             // @include S(width, 20px);
 
-            // & {
-            //     /* @load-async */
-            //     background-image: uiResource("res/ui/icons/mods_white.png") !important;
-            // }
             background-position: center center;
             background-size: D(15px);
             background-color: $modsColor !important;
@@ -574,7 +567,6 @@
                 button.resumeGame {
                     background-color: #44484a;
                     & {
-                        /* @load-async */
                         background-image: uiResource("icons/play.png");
                     }
                 }
@@ -585,7 +577,6 @@
                     background-color: transparent;
 
                     & {
-                        /* @load-async */
                         background-image: uiResource("icons/download.png");
                     }
                     @include S(width, 15px);
@@ -609,7 +600,6 @@
                     @include IncreasedClickArea(0px);
 
                     & {
-                        /* @load-async */
                         background-image: uiResource("icons/delete.png");
                     }
                     @include S(width, 15px);
@@ -630,7 +620,6 @@
                     @include IncreasedClickArea(2px);
 
                     & {
-                        /* @load-async */
                         background-image: uiResource("icons/edit_key.png");
                     }
                     @include S(width, 10px);
@@ -724,7 +713,6 @@
                 overflow: hidden;
 
                 & {
-                    /* @load-async */
                     background: #fff uiResource("wegame_isbn_rating.jpg") center center / contain no-repeat;
                 }
             }
@@ -791,11 +779,9 @@
                 @include S(height, 50px);
                 background: center center / 80% no-repeat;
                 &.githubLogo {
-                    /* @load-async */
                     background-image: uiResource("main_menu/github.png");
                 }
                 &.discordLogo {
-                    /* @load-async */
                     background-image: uiResource("main_menu/discord.png");
                     background-size: 95%;
                 }
@@ -837,15 +823,12 @@
                 transition: background-color 0.12s ease-in-out;
 
                 &.redditLink {
-                    /* @load-async */
                     background-image: uiResource("main_menu/reddit.svg");
                 }
                 &.changelog {
-                    /* @load-async */
                     background-image: uiResource("main_menu/changelog.svg");
                 }
                 &.helpTranslate {
-                    /* @load-async */
                     background-image: uiResource("main_menu/translate.svg");
                 }
             }

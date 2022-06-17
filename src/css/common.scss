@@ -398,7 +398,6 @@ canvas {
         vertical-align: middle;
 
         & {
-            /* @load-async */
             background: uiResource("loading.svg") center center / contain no-repeat;
         }
     }
@@ -483,7 +482,6 @@ canvas {
         }
 
         & {
-            /* @load-async */
             background: uiResource("loading.svg") center center / #{D(40px)} no-repeat;
         }
     }

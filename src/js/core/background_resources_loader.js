@@ -78,6 +78,8 @@ export class BackgroundResourcesLoader {
         // Avoid loading stuff twice
         this.spritesLoaded = [];
         this.soundsLoaded = [];
+        this.atlasesLoaded = [];
+        this.cssLoaded = [];
     }
 
     getNumAssetsLoaded() {
@@ -122,7 +124,6 @@ export class BackgroundResourcesLoader {
                 logger.log("⏰ Finish load: main menu");
                 this.mainMenuReady = true;
                 this.signalMainMenuLoaded.dispatch();
-                this.internalStartLoadingEssentialsForBareGame();
             });
     }
 
@@ -161,6 +162,10 @@ export class BackgroundResourcesLoader {
     }
 
     internalPreloadCss(name) {
+        if (this.cssLoaded.includes(name)) {
+            return;
+        }
+        this.cssLoaded.push(name);
         return new Promise((resolve, reject) => {
             const link = document.createElement("link");
 
@@ -225,10 +230,16 @@ export class BackgroundResourcesLoader {
 
         for (let i = 0; i < atlases.length; ++i) {
             const atlas = atlases[i];
+            if (this.atlasesLoaded.includes(atlas)) {
+                // Already loaded
+                continue;
+            }
+            this.atlasesLoaded.push(atlas);
+
             promises.push(
                 Loader.preloadAtlas(atlas)
                     .catch(err => {
-                        logger.warn("Failed to load atlas:", atlas.sourceFileName);
+                        logger.warn("Failed to load atlas:", atlas.sourceFileName, err);
                     })
                     .then(() => {
                         this.numAssetsLoaded++;
@@ -236,19 +247,9 @@ export class BackgroundResourcesLoader {
             );
         }
 
-        return (
-            Promise.all(promises)
-
-                // // Remove some pressure by waiting a bit
-                // .then(() => {
-                //     return new Promise(resolve => {
-                //         setTimeout(resolve, 200);
-                //     });
-                // })
-                .then(() => {
-                    this.numAssetsToLoadTotal = 0;
-                    this.numAssetsLoaded = 0;
-                })
-        );
+        return Promise.all(promises).then(() => {
+            this.numAssetsToLoadTotal = 0;
+            this.numAssetsLoaded = 0;
+        });
     }
 }

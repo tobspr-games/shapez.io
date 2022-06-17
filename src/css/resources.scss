@@ -75,12 +75,10 @@ $languages: en, de, cs, da, et, es-419, fr, it, pt-BR, sv, tr, el, ru, uk, zh-TW
 
 @each $language in $languages {
     [data-languageicon="#{$language}"] {
-        /* @load-async */
         background-image: uiResource("languages/#{$language}.svg") !important;
     }
 }
 
 .steam_dlbtn_0 {
-    /* @load-async */
     background-image: uiResource("steam_link_btn/0.png") !important;
 }

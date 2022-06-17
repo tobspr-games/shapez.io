@@ -142,7 +142,6 @@
                     opacity: 0.4;
                 }
                 & {
-                    /* @load-async */
                     background: uiResource("icons/close.png") center center / 80% no-repeat;
                 }
             }
@@ -292,7 +291,7 @@
                         content: " ";
                         display: inline-block;
                         background: rgba(#fff, 0.6);
-                        @include InlineAnimation(3s linear) {
+                        @include InlineAnimation(1s linear) {
                             0% {
                                 width: 100%;
                             }

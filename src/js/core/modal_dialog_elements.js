@@ -178,7 +178,7 @@ export class Dialog {
                     const timeout = setTimeout(() => {
                         button.classList.remove("timedButton");
                         arrayDeleteValue(this.timeouts, timeout);
-                    }, 3000);
+                    }, 1000);
                     this.timeouts.push(timeout);
                 }
                 if (isEnter || isEscape) {

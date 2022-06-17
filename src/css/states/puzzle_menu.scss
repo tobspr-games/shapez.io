@@ -247,7 +247,6 @@
                         @include DarkThemeInvert;
 
                         & {
-                            /* @load-async */
                             background-image: uiResource("icons/delete.png") !important;
                         }
                     }
@@ -275,7 +274,6 @@
                             @include DarkThemeInvert;
 
                             & {
-                                /* @load-async */
                                 background: uiResource("icons/puzzle_plays.png") #{D(2px)} #{D(2.5px)} / #{D(
                                         8px
                                     )} #{D(8px)} no-repeat;
@@ -293,7 +291,6 @@
                             @include DarkThemeInvert;
 
                             & {
-                                /* @load-async */
                                 background: uiResource("icons/puzzle_upvotes.png") #{D(2px)} #{D(2.4px)} / #{D(
                                         9px
                                     )} #{D(9px)} no-repeat;
@@ -349,14 +346,12 @@
                             opacity: 0.1;
 
                             & {
-                                /* @load-async */
                                 background: uiResource("icons/puzzle_complete_indicator.png") center center /
                                     contain no-repeat;
                             }
                         }
                         @include DarkThemeOverride {
                             &::after {
-                                /* @load-async */
                                 background: uiResource("icons/puzzle_complete_indicator_inverse.png") center
                                     center / contain no-repeat;
                             }

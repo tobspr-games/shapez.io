@@ -32,10 +32,13 @@ export const MUSIC = {
     // The theme always depends on the standalone only, even if running the full
     // version in the browser
     theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
-    menu: "menu",
 };
 
-if (G_IS_STANDALONE || G_IS_DEV) {
+if (G_IS_STANDALONE) {
+    MUSIC.menu = "menu";
+}
+
+if (G_IS_STANDALONE) {
     MUSIC.puzzle = "puzzle-full";
 }
 
@@ -152,7 +155,7 @@ export class SoundInterface {
         } else if (this.music[key]) {
             return this.music[key].load();
         } else {
-            logger.error("Sound/Music by key not found:", key);
+            logger.warn("Sound/Music by key not found:", key);
             return Promise.resolve();
         }
     }

@@ -77,7 +77,6 @@
                 opacity: 0.2;
             }
             &::before {
-                /* @load-async */
                 background-image: uiResource("res/ui/icons/mods.png") !important;
             }
         }

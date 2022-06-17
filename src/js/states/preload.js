@@ -163,7 +163,7 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Downloading resources"))
             .then(() => {
-                return this.app.backgroundResourceLoader.getPromiseForBareGame();
+                return this.app.backgroundResourceLoader.getPromiseForMainMenu();
             })
 
             .then(() => this.setStatus("Checking changelog"))
