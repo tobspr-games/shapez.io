@@ -160,6 +160,7 @@
                 transition-property: opacity, transform;
                 position: relative;
                 @include S(border-radius, $globalBorderRadius);
+                color: transparent;
 
                 &:hover {
                     opacity: 0.9;
@@ -202,7 +203,8 @@
         @include S(padding-top, 20px);
 
         img {
-            @include S(width, 300px);
+            @include S(width, 710px / 2.2);
+            @include S(height, 180 / 2.2px);
         }
         position: relative;
         @include S(left, -8px);
@@ -731,7 +733,8 @@
 
                 img {
                     transition: opacity 0.12s ease-in-out;
-                    @include S(width, 80px);
+                    @include S(width, 82px);
+                    @include S(height, 25px);
                     filter: invert(100%);
                     opacity: 0.6;
                 }

@@ -131,6 +131,10 @@ export class PreloadState extends GameState {
                 }
             })
             .then(() => {
+                document.documentElement.setAttribute("lang", this.app.settings.getLanguage());
+            })
+
+            .then(() => {
                 const language = this.app.settings.getLanguage();
                 updateApplicationLanguage(language);
             })

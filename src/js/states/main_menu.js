@@ -25,8 +25,6 @@ import { T } from "../translations";
 
 const trim = require("trim");
 
-let firstPlayForwarded = false;
-
 /**
  * @typedef {import("../savegame/savegame_typedefs").SavegameMetadata} SavegameMetadata
  * @typedef {import("../profile/setting_types").EnumSetting} EnumSetting
@@ -88,7 +86,7 @@ export class MainMenuState extends GameState {
                     ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
                     : ""
             }
-
+                Play shapez on Steam
             </a>
             ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
 
@@ -111,7 +109,10 @@ export class MainMenuState extends GameState {
             </video>
 
             <div class="logo">
-                <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
+                <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo"
+                    width="${Math.round((710 / 2.2) * this.app.getEffectiveUiScale())}"
+                    height="${Math.round((180 / 2.2) * this.app.getEffectiveUiScale())}"
+                >
                 ${/*showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""*/ ""}
             </div>
 
@@ -234,7 +235,11 @@ export class MainMenuState extends GameState {
                         ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
                     </div>
                     <div class="author"><a class="producerLink" href="https://tobspr.io" target="_blank" title="tobspr Games" rel="follow">
-                        <img src="${cachebust("res/logo-tobspr-games.svg")}" alt="tobspr Games">
+                        <img src="${cachebust("res/logo-tobspr-games.svg")}" alt="tobspr Games"
+                        height="${25 * this.app.getEffectiveUiScale()}"
+                        width="${82 * this.app.getEffectiveUiScale()}"
+                        >
+
                     </a></div>
                 </div>
 
@@ -571,21 +576,25 @@ export class MainMenuState extends GameState {
 
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("styledButton", "deleteGame");
+                deleteButton.setAttribute("aria-label", "Delete");
                 elem.appendChild(deleteButton);
 
                 const downloadButton = document.createElement("button");
                 downloadButton.classList.add("styledButton", "downloadGame");
+                downloadButton.setAttribute("aria-label", "Download");
                 elem.appendChild(downloadButton);
 
                 if (!G_WEGAME_VERSION) {
                     const renameButton = document.createElement("button");
                     renameButton.classList.add("styledButton", "renameGame");
+                    renameButton.setAttribute("aria-label", "Rename Savegame");
                     name.appendChild(renameButton);
                     this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
                 }
 
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
+                resumeButton.setAttribute("aria-label", "Resumee");
                 elem.appendChild(resumeButton);
 
                 this.trackClicks(deleteButton, () => this.deleteGame(games[i]));

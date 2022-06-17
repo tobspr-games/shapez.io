@@ -130,11 +130,6 @@ export class GameState {
     onLeave() {}
 
     /**
-     * Callback before leaving the game state or when the page is unloaded
-     */
-    onBeforeExit() {}
-
-    /**
      * Callback when the app got paused (on android, this means in background)
      */
     onAppPause() {}
@@ -293,13 +288,6 @@ export class GameState {
         this.app.inputMgr.popReciever(this.inputReciever);
         this.internalCleanUpClickDetectors();
         this.asyncChannel.cancelAll();
-    }
-
-    /**
-     * Internal callback *before* the state is left. Also is called on page unload
-     */
-    internalOnBeforeExitCallback() {
-        this.onBeforeExit();
     }
 
     /**

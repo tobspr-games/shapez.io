@@ -233,7 +233,6 @@ export class Application {
 
         // Unload events
         window.addEventListener("beforeunload", this.onBeforeUnload.bind(this), true);
-        window.addEventListener("unload", this.onUnload.bind(this), true);
 
         document.addEventListener(pageVisibilityEventName, this.handleVisibilityChange.bind(this), false);
 
@@ -329,21 +328,6 @@ export class Application {
         }
 
         this.sound.onPageRenderableStateChanged(renderable);
-    }
-
-    /**
-     * Internal unload handler
-     */
-    onUnload(event) {
-        if (!this.unloaded) {
-            logSection("UNLOAD HANDLER", "#f77");
-            this.unloaded = true;
-            const currentState = this.stateMgr.getCurrentState();
-            if (currentState) {
-                currentState.onBeforeExit();
-            }
-            this.deinitialize();
-        }
     }
 
     /**
