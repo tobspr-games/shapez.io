@@ -67,6 +67,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: Fullversjonen inneholder mer enn <strong>20 timer med innhold</strong>.
     playerCount: <playerCount> spillere som deg spiller for øyeblikket shapez på Steam
+    untilEndOfDemo: Helt til slutten av demoen
 mainMenu:
     play: Spill
     changelog: Endringshistorikk

@@ -67,6 +67,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
     playerCount: <playerCount> jogadores como você estão jogando shapez no Steam
+    untilEndOfDemo: Até o final da demo
 mainMenu:
     play: Jogar
     changelog: Changelog

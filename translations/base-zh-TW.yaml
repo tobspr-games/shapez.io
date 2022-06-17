@@ -61,6 +61,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: 完整版包含超過 <strong>20 小時的內容</strong>。
     playerCount: <playerCount> 個像你一樣的玩家目前正在 Steam 上玩 shapez
+    untilEndOfDemo: 直到演示結束
 mainMenu:
     play: 開始遊戲
     changelog: 更新日誌

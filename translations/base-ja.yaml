@@ -59,6 +59,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: フルバージョンには、<strong>20時間以上のコンテンツ</strong>が含まれています。
     playerCount: <playerCount> あなたと同じようなプレイヤーがSteamでshapezをプレイしています。
+    untilEndOfDemo: デモ終了まで
 mainMenu:
     play: プレイ
     continue: 続きから

@@ -67,6 +67,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: De volledige versie bevat meer dan <strong>20 uur aan inhoud</strong>.
     playerCount: <playerCount> spelers zoals jij spelen op dit moment shapez op Steam
+    untilEndOfDemo: Tot het einde van de demo
 mainMenu:
     play: Spelen
     changelog: Wijzigingenlijst

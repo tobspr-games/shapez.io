@@ -63,7 +63,9 @@ demoBanners:
             <li>... és még sok más!</li>
         </ul>
     playtimeDisclaimer: A teljes verzió több mint <strong>20 órányi tartalmat</strong> tartalmaz.
-    playerCount: <playerCount> hozzád hasonló játékosok jelenleg shapez-t játszanak a Steamen
+    playerCount: <playerCount> hozzád hasonló játékosok jelenleg shapez-t játszanak
+        a Steamen
+    untilEndOfDemo: A demó végéig
 mainMenu:
     play: Játék
     continue: Folytatás

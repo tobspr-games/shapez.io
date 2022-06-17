@@ -64,8 +64,10 @@ demoBanners:
             <li>Dark Mod</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: A versão completa contém mais de <20 horas de conteúdo</strong>.
-    playerCount: <playerCount> Jogadores como você está jogando shapez on Steam agora mesmo.
+    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
+    playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
+        agora mesmo.
+    untilEndOfDemo: Até o final da demo
 mainMenu:
     play: Jogar
     continue: Continuar

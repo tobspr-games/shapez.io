@@ -67,6 +67,7 @@ demoBanners:
     playtimeDisclaimer: Pilnoje žaidimo versijoje yra daugiau nei <strong>20 turinio
         valandos</strong>.
     playerCount: <playerCount> players like you are currently playing shapez on Steam
+    untilEndOfDemo: Until end of demo
 mainMenu:
     play: Pradėti
     changelog: Pakeitimai

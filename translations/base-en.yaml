@@ -108,6 +108,7 @@ demoBanners:
         The full version contains more than <strong>20 hours of content</strong>.
     playerCount: >-
         <playerCount> players like you are playing shapez on Steam right now
+    untilEndOfDemo: Until end of demo
 
 mainMenu:
     play: Play

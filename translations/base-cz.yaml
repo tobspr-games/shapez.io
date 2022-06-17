@@ -63,6 +63,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: Plná verze obsahuje více než <strong>20 hodin obsahu</strong>.
     playerCount: <playerCount> hráči jako vy právě hrají shapez ve službě Steam
+    untilEndOfDemo: do konce ukázky
 mainMenu:
     play: Hrát
     continue: Pokračovat

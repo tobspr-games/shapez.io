@@ -61,6 +61,7 @@ demoBanners:
         </ul>
     playtimeDisclaimer: 정식 버전에는 <strong>20시간 이상의 콘텐츠</strong>가 포함되어 있습니다.
     playerCount: <playerCount>명의 플레이어가 현재 Steam에서 shapez를 플레이하고 있습니다.
+    untilEndOfDemo: 데모가 끝날 때까지
 mainMenu:
     play: 시작
     changelog: 버전 기록

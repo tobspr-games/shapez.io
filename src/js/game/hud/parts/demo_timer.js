@@ -1,4 +1,5 @@
 import { makeDiv } from "../../../core/utils";
+import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDDemoTimer extends BaseHUDPart {
@@ -6,7 +7,7 @@ export class HUDDemoTimer extends BaseHUDPart {
         this.mainElement = makeDiv(parent, "ingame_HUD_DemoTimer", [], "");
 
         this.timerElement = makeDiv(this.mainElement, null, ["timer"], "12:00");
-        this.descElement = makeDiv(this.mainElement, null, ["description"], "Until end of demo");
+        this.descElement = makeDiv(this.mainElement, null, ["description"], T.demoBanners.untilEndOfDemo);
 
         this.currentValue = "";
     }
