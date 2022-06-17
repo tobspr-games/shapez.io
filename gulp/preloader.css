@@ -96,11 +96,12 @@ body {
 
 #ll_progressbar {
     width: 80vw;
+    max-width: 800px;
     margin-top: 40px;
-    height: 30px;
-    overflow: hidden;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.03);
+    height: 14px;
+    border-radius: 20px;
+    background: rgba(0, 10, 40, 0.1);
+    border: 5px solid transparent;
     display: flex;
     position: relative;
     align-items: flex-start;
@@ -109,23 +110,23 @@ body {
 @keyframes LL_LoadingAnimation {
     0% {
         width: 0%;
-        background-color: #67aeed;
+        background-color: #777a7f;
     }
     19.99% {
         width: 99.5%;
-        background-color: #67aeed;
+        background-color: rgb(50, 197, 121);
     }
     20% {
         width: 0%;
-        background-color: #a1c074;
+        background-color: #777a7f;
     }
     49.99% {
         width: 98%;
-        background-color: #a1c074;
+        background-color: #4fbfce;
     }
     50% {
         width: 0%;
-        background-color: #74a8c0;
+        background-color: #777a7f;
     }
     74.99% {
         width: 98%;
@@ -133,21 +134,22 @@ body {
     }
     75% {
         width: 0%;
-        background-color: #8f74c0;
+        background-color: #777a7f;
     }
     100% {
         width: 98%;
-        background-color: #8f74c0;
+        background-color: #a186d4;
     }
 }
 
 #ll_progressbar > span {
+    border-radius: 20px;
+    position: absolute;
     height: 100%;
-    border-radius: 7px;
     width: 98%;
     background: #fff;
     display: inline-flex;
-    animation: LL_LoadingAnimation 60s ease-in-out infinite;
+    animation: LL_LoadingAnimation 90s ease-in-out infinite;
     position: relative;
     z-index: 10;
 }
@@ -206,4 +208,17 @@ body {
     display: inline-flex;
     background: center center / contain no-repeat;
     display: none;
+}
+
+#ll_preload_status {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    color: rgba(#000, 0.4);
+    opacity: 1 !important;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
 }

@@ -165,6 +165,7 @@ function gulptasksHTML($, gulp, buildFolder) {
                         } Game Files</div >
                         <div id="ll_progressbar">
                             <span></span>
+                            <div id="ll_preload_status">Downloading Bundle</div>
                         </div>
                         <div id="ll_standalone">
                             Page does not load? Try the <a href="https://get.shapez.io/slowpageload" target="_blank">Steam Version</a>!

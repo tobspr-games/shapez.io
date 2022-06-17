@@ -49,6 +49,8 @@ export class PreloadState extends GameState {
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
+        this.statusText = this.htmlElement.querySelector("#ll_preload_status");
+
         this.startLoading();
     }
 
@@ -282,7 +284,7 @@ export class PreloadState extends GameState {
             return Promise.resolve();
         }
         this.currentStatus = text;
-        // this.statusText.innerText = text;
+        this.statusText.innerText = text;
         return Promise.resolve();
     }
 

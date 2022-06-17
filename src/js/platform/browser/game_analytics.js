@@ -15,7 +15,7 @@ import OR from "@openreplay/tracker";
 import OR_fetch from "@openreplay/tracker-fetch";
 
 let connector;
-if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
+if ((G_IS_STEAM_DEMO || !G_IS_STANDALONE) && !G_IS_DEV) {
     connector = new OR({ projectKey: "mhZgUFQBI6QAtt3PRLer" });
     connector.start();
     connector.use(OR_fetch({ overrideGlobal: true }));

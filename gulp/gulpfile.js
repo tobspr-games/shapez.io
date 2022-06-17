@@ -165,6 +165,7 @@ function serveHTML({ version = "web-dev" }) {
 
     // Watch .html files, those trigger a html rebuild
     gulp.watch("../src/**/*.html", gulp.series("html." + version + ".dev"));
+    gulp.watch("./preloader.css", gulp.series("html." + version + ".dev"));
 
     // Watch translations
     gulp.watch("../translations/**/*.yaml", gulp.series("translations.convertToJson"));
