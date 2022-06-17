@@ -40,7 +40,8 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
+        // const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
+        const showBrowserWarning = false;
         const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
