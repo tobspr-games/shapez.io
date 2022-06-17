@@ -61,7 +61,7 @@ demoBanners:
             <li>暗色模式</li>
             <li>……以及更多！</li>
         </ul>
-    playtimeDisclaimer: 完整版包括多达 <strong>24 小时的新内容</strong>
+    playtimeDisclaimer: 完整版包括多达 <strong>20 小时的新内容</strong>
     playerCount: <playerCount> 个像你一样的玩家目前正在 Steam 上玩 shapez
 mainMenu:
     play: 开始游戏

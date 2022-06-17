@@ -50,6 +50,7 @@
 @import "ingame_hud/entity_debugger";
 @import "ingame_hud/tutorial_hints";
 @import "ingame_hud/watermark";
+@import "ingame_hud/demo_timer";
 @import "ingame_hud/blueprint_placer";
 @import "ingame_hud/waypoints";
 @import "ingame_hud/interactive_tutorial";
@@ -119,6 +120,7 @@ ingame_HUD_StandaloneAdvantages,
 ingame_HUD_UnlockNotification,
 ingame_HUD_PuzzleCompleteNotification,
 ingame_HUD_SettingsMenu,
+ingame_HUD_DemoTimer,
 ingame_HUD_ModalDialogs;
 
 $zindex: 100;

@@ -80,21 +80,30 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         }
     }
 
-    show() {
+    show(final = false) {
         this.lastShown = this.root.time.now();
         this.visible = true;
+        this.final = final;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
     }
 
     close() {
-        this.visible = false;
-        this.root.app.inputMgr.makeSureDetached(this.inputReciever);
-        this.update();
+        if (this.final) {
+            this.root.gameState.goBackToMenu();
+        } else {
+            this.visible = false;
+            this.root.app.inputMgr.makeSureDetached(this.inputReciever);
+
+            this.update();
+        }
     }
 
     update() {
-        if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
-            this.show();
+        if (this.root.app.gameAnalytics.abtVariant === "0") {
+            // only show in original variant
+            if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
+                this.show();
+            }
         }
 
         this.domAttach.update(this.visible);

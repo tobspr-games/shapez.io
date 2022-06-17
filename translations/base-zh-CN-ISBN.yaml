@@ -53,7 +53,7 @@ global:
 demoBanners:
     title: 试玩版
     intro: 购买完整版以解锁所有游戏内容！
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
+    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
     playerCount: <playerCount> players like you are currently playing shapez on Steam
 mainMenu:
     play: 开始游戏

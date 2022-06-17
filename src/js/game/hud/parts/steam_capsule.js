@@ -19,6 +19,9 @@ export class HUDSteamCapsule extends BaseHUDPart {
     }
 
     update() {
-        this.domAttach.update(this.root.time.now() > showCapsuleAfter);
+        if (this.root.app.gameAnalytics.abtVariant === "0") {
+            // only show in original variant
+            this.domAttach.update(this.root.time.now() > showCapsuleAfter);
+        }
     }
 }

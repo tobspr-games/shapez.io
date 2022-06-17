@@ -74,12 +74,11 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
-        let abtVariant = this.app.gameAnalytics.abtVariant;
         const bannerHtml = `
             <h3>${T.demoBanners.title}</h3>
             <p>${T.demoBanners.intro}</p>
             ${
-                abtVariant === "0"
+                G_IS_STEAM_DEMO
                     ? `<span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>`
                     : ""
             }
@@ -91,7 +90,7 @@ export class MainMenuState extends GameState {
             }
 
             </a>
-            ${abtVariant === "2" ? `<div class="onlinePlayerCount"></div>` : ""}
+            ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
 
         `;
 

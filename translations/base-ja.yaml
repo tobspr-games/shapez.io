@@ -57,7 +57,7 @@ demoBanners:
             <li>ダークモード</li>
             <li>...などなど、盛りだくさんです</li>
         </ul>
-    playtimeDisclaimer: フルバージョンには、<strong>24時間以上のコンテンツ</strong>が含まれています。
+    playtimeDisclaimer: フルバージョンには、<strong>20時間以上のコンテンツ</strong>が含まれています。
     playerCount: <playerCount> あなたと同じようなプレイヤーがSteamでshapezをプレイしています。
 mainMenu:
     play: プレイ

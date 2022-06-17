@@ -13,6 +13,7 @@ import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDChangesDebugger } from "./parts/debug_changes";
 import { HUDDebugInfo } from "./parts/debug_info";
+import { HUDDemoTimer } from "./parts/demo_timer";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { enumNotificationType } from "./parts/notifications";
@@ -83,6 +84,12 @@ export class GameHUD {
 
         if (!G_IS_RELEASE && !G_IS_DEV) {
             this.parts.betaOverlay = new HUDBetaOverlay(this.root);
+        }
+
+        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
+            if (["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)) {
+                this.parts.demoTimer = new HUDDemoTimer(this.root);
+            }
         }
 
         const additionalParts = this.root.gameMode.additionalHudParts;

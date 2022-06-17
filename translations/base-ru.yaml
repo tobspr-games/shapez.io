@@ -62,7 +62,7 @@ demoBanners:
             <li>Темный Режим</li>
             <li>... и многое другое!</li>
         </ul>
-    playtimeDisclaimer: Полная версия содержит более <strong>24 часов контента</strong>.
+    playtimeDisclaimer: Полная версия содержит более <strong>20 часов контента</strong>.
     playerCount: <playerCount> игроки, подобные вам, в настоящее время играют в shapez на Steam
 mainMenu:
     play: Играть

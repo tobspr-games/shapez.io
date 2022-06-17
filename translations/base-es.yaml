@@ -65,7 +65,7 @@ demoBanners:
             <li>Modo oscuro</li>
             <li>... ¡y mucho más!</li>
         </ul>
-    playtimeDisclaimer: La versión completa contiene más de <strong>24 horas de contenido</strong>.
+    playtimeDisclaimer: La versión completa contiene más de <strong>20 horas de contenido</strong>.
     playerCount: <playerCount> jugadores como tú están jugando actualmente a shapez en Steam
 mainMenu:
     play: Jugar

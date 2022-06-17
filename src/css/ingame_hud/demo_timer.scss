@@ -1,0 +1,28 @@
+#ingame_HUD_DemoTimer {
+    position: absolute;
+    @include S(top, 10px);
+    left: 50%;
+    text-align: center;
+    color: #fff;
+    transform: translateX(-50%);
+    color: rgb(248, 40, 106);
+
+    .timer {
+        @include Heading;
+        @include S(font-size, 40px);
+    }
+
+    &.expired .timer {
+        @include InlineAnimation(1s ease-in-out infinite) {
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .description {
+        @include SuperSmallText;
+        @include S(margin-top, 10px);
+        text-transform: uppercase;
+    }
+}

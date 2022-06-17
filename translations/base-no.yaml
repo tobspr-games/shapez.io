@@ -65,7 +65,7 @@ demoBanners:
             <li>Mørk modus</li>
             <li>... og mye mer!</li>
         </ul>
-    playtimeDisclaimer: Fullversjonen inneholder mer enn <strong>24 timer med innhold</strong>.
+    playtimeDisclaimer: Fullversjonen inneholder mer enn <strong>20 timer med innhold</strong>.
     playerCount: <playerCount> spillere som deg spiller for øyeblikket shapez på Steam
 mainMenu:
     play: Spill

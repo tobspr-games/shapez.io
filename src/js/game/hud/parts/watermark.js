@@ -47,6 +47,9 @@ export class HUDWatermark extends BaseHUDPart {
      * @param {import("../../../core/draw_utils").DrawParameters} parameters
      */
     drawOverlays(parameters) {
+        if (this.root.app.gameAnalytics.abtVariant !== "0") {
+            return;
+        }
         const w = this.root.gameWidth;
 
         parameters.context.fillStyle = "rgba(20, 30, 40, 0.25)";

@@ -65,7 +65,7 @@ demoBanners:
             <li>Tumma tila</li>
             <li>... ja paljon muuta!</li>
         </ul>
-    playtimeDisclaimer: Täysversio sisältää yli <strong>24 tuntia sisältöä</strong>.
+    playtimeDisclaimer: Täysversio sisältää yli <strong>20 tuntia sisältöä</strong>.
     playerCount: <playerCount> kaltaisesi pelaajat pelaavat parhaillaan shapezia Steamissa.
 mainMenu:
     play: Pelaa
