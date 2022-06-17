@@ -255,6 +255,8 @@ export class MainMenuState extends GameState {
             return;
         }
 
+        this.app.gameAnalytics.note("startimport");
+
         // Create a 'fake' file-input to accept savegames
         startFileChoose(".bin").then(file => {
             if (file) {
@@ -747,6 +749,8 @@ export class MainMenuState extends GameState {
         getStandalone.add(() => {
             openStandaloneLink(this.app, "shapez_slotlimit");
         });
+
+        this.app.gameAnalytics.note("slotlimit");
     }
 
     onSettingsButtonClicked() {

@@ -77,6 +77,30 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         );
     }
 
+    note(action) {
+        if (this.app.restrictionMgr.isLimitedVersion()) {
+            fetch(
+                "https://analytics.shapez.io/campaign/" +
+                    "action_" +
+                    this.environment +
+                    "_" +
+                    action +
+                    "_" +
+                    CURRENT_ABT +
+                    "_" +
+                    this.abtVariant +
+                    "?lpurl=nocontent",
+                {
+                    method: "GET",
+                    mode: "no-cors",
+                    cache: "no-cache",
+                    referrer: "no-referrer",
+                    credentials: "omit",
+                }
+            ).catch(err => {});
+        }
+    }
+
     /**
      * @returns {Promise<void>}
      */
