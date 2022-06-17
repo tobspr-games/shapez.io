@@ -1253,12 +1253,12 @@ puzzleMenu:
         completed: Teljesítve
         medium: Medium
         official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        trending: Mai felkapott
+        trending-weekly: Heti felkapott
+        categories: Kategóriák
+        difficulties: Nehézség szerint
+        account: Fejtörőim
+        search: Keresés
     validation:
         title: Hibás Fejtörő
         noProducers: Helyezz le egy Termelőt!
@@ -1272,14 +1272,14 @@ puzzleMenu:
         autoComplete: A fejtörő automatikusan megoldja magát! Győződj meg róla, hogy a
             Termelők nem közvetlenül az Elfogadóba termelnek.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Könnyű
+        medium: Közepes
+        hard: Nehéz
+        unknown: Besorolatlan
+    dlcHint: Már megvásároltad a DLCt? Győződj meg róla hogy aktiválva van úgy, hogy
+        jobb klikkelsz a shapez.io játékra a könyvtáradban, és kiválasztod a Tulajdonságok > DLC fület
     search:
-        action: Search
+        action: Keresés
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
@@ -1315,23 +1315,23 @@ backendErrors:
     bad-payload: A kérés helytelen adatot tartalmaz.
     bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
     timeout: A kérés időtúllépésbe került.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Ez a fejtörő már túl sok kedvelést kapott.
+        Ha még mindig szeretnéd törölni, akkor kérlek írj a support@shapez.io címre!
+    no-permission: Nincs jogod ehhez a művelethez!
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
+    title: Modok
+    author: Szerző
+    version: Verzió
+    modWebsite: Weboldal
+    openFolder: Modok mappa megnyitása
+    folderOnlyStandalone: Megnyitni a modok mappát csak egy különálló verzió futtatásakor lehetséges.
+    browseMods: Modok böngészése
     modsInfo: To install and manage mods, copy them to the mods folder within the
         game directory. You can also use the 'Open Mods Folder' button on the
         top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    noModSupport: Egy különálló verzióra van szükséged hogy modokat telepíthess.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
+        title: Hamarosan
+        description: Engedélyezni vagy letiltani modokat jelenleg csak úgy lehetséges
+            ha kimásolod vagy beilleszted őket a mods/ mappába. Azonban itt kezelni
+            modokat csak egy jövőbeli verzióban lesz elérhető.
