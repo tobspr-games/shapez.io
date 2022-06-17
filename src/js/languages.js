@@ -143,8 +143,8 @@ export const LANGUAGES = {
         // romanian
         name: "Română",
         data: require("./built-temp/base-ro.json"),
-        code: "pt",
-        region: "BR",
+        code: "ro",
+        region: "",
     },
 
     "ru": {
