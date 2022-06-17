@@ -187,6 +187,10 @@ export class PreloadState extends GameState {
                     return;
                 }
 
+                if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
+                    return;
+                }
+
                 return this.app.storage
                     .readFileAsync("lastversion.bin")
                     .catch(err => {
