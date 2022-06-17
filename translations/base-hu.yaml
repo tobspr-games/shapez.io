@@ -87,11 +87,11 @@ mainMenu:
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
         Szerezd meg a Puzzle DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Megnézem
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Aktív modok
+        warningPuzzleDLC: A Puzzle DLC-t nem lehetséges modokkal játszani.
+            Kérlek deaktiváld a modokat hogy játszhass a DLC-vel.
 dialogs:
     buttons:
         ok: OK
@@ -271,15 +271,15 @@ dialogs:
         title: Gyorskód Beillesztése
         desc: Illeszd be a gyorskódot, hogy betöltsd a Fejtörőt.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Törlöd a fejtörőt?
+        desc: Biztosan törölni szeretnéd ezt: '<title>'? Ez nem vonható vissza!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Figyelmeztetés
+        desc: A jelenleg telepített modok eltérnek azoktól a modoktól amikkel el lett
+        mentve ez a játék. Ennek végeredménye lehet, hogy a mentés összeomlik vagy be sem tölt.
+        Biztosan folytatni szeretnéd?
+        missingMods: Hiányzó Modok
+        newMods: Újonnan telepített modok
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -446,7 +446,7 @@ ingame:
                 title: Támogass
                 desc: A játékot továbbfejlesztem szabadidőmben
             achievements:
-                title: Steam Achievementek
+                title: Steam Teljesítmények
                 desc: Szerezd meg mindet!
             mods:
                 title: Modding support!
@@ -460,8 +460,8 @@ ingame:
         clearItems: Elemek eltávolítása
         share: Megosztás
         report: Jelentés
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Építmények törlése
+        resetPuzzle: Fejtörő Visszaállítása
     puzzleEditorControls:
         title: Fejtörő Készítő
         instructions:
@@ -1051,9 +1051,9 @@ settings:
             description: Kizoomolt állapotban a térképen megjelenő erőforrások (alakzatok és
                 színek) méretét állítja.
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Alakzat Leírása - Mindig Mutat
+            description: Mindig jelenjen meg az alakzat leírása mikor ráviszed a kurzort
+            az épületekre ahelyett, hogy az 'ALT' gombot kéne nyomnod.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: New!
@@ -1113,7 +1113,7 @@ keybindings:
         transistor: Tranzisztor
         analyzer: Alakzatvizsgáló
         comparator: Összehasonlító
-        item_producer: Item Producer (Sandbox)
+        item_producer: Tételgyártó (Homokozó)
         pipette: Pipetta
         rotateWhilePlacing: Forgatás
         rotateInverseModifier: "Módosító: Forgass ellenkező irányba"
@@ -1224,10 +1224,8 @@ tips:
       ugyanarra a helyre.
     - Az F4 megnyomásával láthatod az FPS-edet és a Tick/mp értéket.
     - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
+    - Le tudod tölteni a mentéseidet a menüben!
+    - A játék csomó hasznos billentyűparancsot tartalmaz! Ezeket a beállításokban találod.
     - Your hub marker has a small compass that shows which direction it is in!
     - To clear belts, cut the area and then paste it at the same location.
     - You can click a pinned shape on the left side to unpin it.
@@ -1251,8 +1249,8 @@ puzzleMenu:
         easy: Könnyű
         hard: Nehéz
         completed: Teljesítve
-        medium: Medium
-        official: Official
+        medium: Közepes
+        official: Hivatalos
         trending: Trending today
         trending-weekly: Trending weekly
         categories: Categories
