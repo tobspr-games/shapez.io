@@ -517,8 +517,8 @@ ingame:
                 title: Unterstütze Mich
                 desc: Ich entwickle das Spiel in meiner Freizeit!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
+                title: Mod-Support!
+                desc: Über 80 Mods verfügbar!
         title_expired: Demo Zeit abgelaufen
     puzzleEditorSettings:
         zoneTitle: Zone

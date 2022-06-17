@@ -20,6 +20,15 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
                 ? T.ingame.standaloneAdvantages.title_expired
                 : T.ingame.standaloneAdvantages.title
         );
+        if (["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)) {
+            this.subTitle = makeDiv(
+                this.dialogInner,
+                null,
+                ["subTitle"],
+                T.ingame.standaloneAdvantages.title
+            );
+        }
+
         this.contentDiv = makeDiv(
             this.dialogInner,
             null,

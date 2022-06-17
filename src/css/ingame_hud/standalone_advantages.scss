@@ -13,8 +13,23 @@
         @include S(grid-column-gap, 10px);
         @include S(grid-row-gap, 20px);
         @include S(margin, 10px, 0, 20px);
-        grid-template-rows: #{D(40px)};
+        grid-template-rows: #{D(30px)};
         align-items: center;
+        background: #eef1f4;
+        @include S(border-radius, $globalBorderRadius);
+        @include S(padding, 15px, 4px);
+    }
+
+    .title {
+        @include Heading;
+        text-transform: none;
+        text-align: center;
+        color: $colorRedBright;
+    }
+    .subTitle {
+        @include PlainText;
+        text-transform: none;
+        text-align: center;
     }
 
     .lowerBar {
@@ -106,7 +121,7 @@
     .point {
         display: grid;
         grid-template-columns: #{D(55px)} auto;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: D(20px) D(20px);
 
         > strong {
             grid-column: 2 / 3;
