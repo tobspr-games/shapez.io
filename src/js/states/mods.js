@@ -1,9 +1,11 @@
 import { openStandaloneLink, THIRDPARTY_URLS } from "../core/config";
+import { queryParamOptions } from "../core/query_parameters";
 import { TextualGameState } from "../core/textual_game_state";
 import { MODS } from "../mods/modloader";
 import { T } from "../translations";
 
-const MODS_SUPPORTED = !G_IS_STEAM_DEMO && (G_IS_STANDALONE || G_IS_DEV);
+const MODS_SUPPORTED =
+    !G_IS_STEAM_DEMO && (G_IS_STANDALONE || (G_IS_DEV && !window.location.href.includes("demo")));
 
 export class ModsState extends TextualGameState {
     constructor() {
@@ -48,8 +50,9 @@ export class ModsState extends TextualGameState {
                 <div class="noModSupport">
 
                     <p>${T.mods.noModSupport}</p>
-
-                    <a href="#" class="steamLink steam_2_npr" target="_blank">Get on Steam!</a>
+                    <br>
+                    <button class="styledButton browseMods">${T.mods.browseMods}</button>
+                    <a href="#" class="steamLink steam_dlbtn_0" target="_blank">Get on Steam!</a>
 
 
                 </div>

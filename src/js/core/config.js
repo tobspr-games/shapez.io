@@ -30,7 +30,7 @@ export const THIRDPARTY_URLS = {
         26: "https://www.youtube.com/watch?v=gfm6dS1dCoY",
     },
 
-    modBrowser: "https://shapez.mod.io/?preview=f55f6304ca4873d9a25f3b575571b948",
+    modBrowser: "https://shapez.mod.io/",
 };
 
 /**
