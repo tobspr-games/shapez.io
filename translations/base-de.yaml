@@ -492,7 +492,8 @@ ingame:
         desc: Klicke hier, um die Vorteile der Vollversion zu sehen!
         get_on_steam: Zur Vollversion
     standaloneAdvantages:
-        title: Vorteile der Vollversion
+        title: >-
+            Vorteile der Vollversion:
         no_thanks: Nein, danke!
         points:
             levels:

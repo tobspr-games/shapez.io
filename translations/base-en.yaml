@@ -632,7 +632,8 @@ ingame:
         get_on_steam: Get on Steam
 
     standaloneAdvantages:
-        title: Get the full version!
+        title: >-
+            Advantages of the full version:
         title_expired: Demo Time Expired
         no_thanks: No, thanks!
 
