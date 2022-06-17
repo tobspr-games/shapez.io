@@ -39,7 +39,7 @@ export const LANGUAGES = {
         // korean
         name: "한국어",
         data: require("./built-temp/base-kor.json"),
-        code: "kor",
+        code: "ko",
         region: "",
     },
 
