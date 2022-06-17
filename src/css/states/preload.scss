@@ -1,11 +1,4 @@
 #state_PreloadState {
-    &.failure {
-        .loadingImage,
-        .loadingStatus {
-            display: none;
-        }
-    }
-
     .changelogDialogEntry {
         @include S(margin-top, 10px);
 
@@ -54,6 +47,18 @@
     }
 
     .failureBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999999;
+        background: #d5d8de;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
         .logo {
             img {
                 @include S(width, 240px);

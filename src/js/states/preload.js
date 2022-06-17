@@ -16,17 +16,6 @@ export class PreloadState extends GameState {
         super("PreloadState");
     }
 
-    getInnerHTML() {
-        return `
-            <div class="loadingImage"></div>
-            <div class="loadingStatus">
-                <span class="desc">${G_CHINA_VERSION || G_WEGAME_VERSION ? "加载中" : "Booting"}</span>
-                </div>
-            </div>
-            <span class="prefab_GameHint"></span>
-        `;
-    }
-
     getThemeMusic() {
         return null;
     }
