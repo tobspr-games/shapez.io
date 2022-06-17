@@ -170,7 +170,7 @@
                 bottom: 0;
                 background: rgba(0, 10, 20, 0.8);
 
-                @include InlineAnimation(5s linear) {
+                @include InlineAnimation(1.5s linear) {
                     0% {
                         left: 0;
                     }
