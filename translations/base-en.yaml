@@ -633,6 +633,7 @@ ingame:
 
     standaloneAdvantages:
         title: Get the full version!
+        title_expired: Demo Time Expired
         no_thanks: No, thanks!
 
         points:

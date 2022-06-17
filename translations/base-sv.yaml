@@ -452,6 +452,7 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
+        title_expired: Demotiden har löpt ut
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

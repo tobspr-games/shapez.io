@@ -461,6 +461,7 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
+        title_expired: O tempo de demonstração expirou
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura

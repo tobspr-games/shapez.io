@@ -447,6 +447,7 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
+        title_expired: Demon aika päättynyt
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

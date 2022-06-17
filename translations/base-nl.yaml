@@ -459,6 +459,7 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
+        title_expired: Demo tijd verlopen
     puzzleEditorSettings:
         zoneTitle: Gebied
         zoneWidth: Breedte

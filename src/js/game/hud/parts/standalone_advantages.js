@@ -11,7 +11,15 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
-        this.title = makeDiv(this.dialogInner, null, ["title"], T.ingame.standaloneAdvantages.title);
+        this.title = makeDiv(
+            this.dialogInner,
+            null,
+            ["title"],
+
+            ["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)
+                ? T.ingame.standaloneAdvantages.title_expired
+                : T.ingame.standaloneAdvantages.title
+        );
         this.contentDiv = makeDiv(
             this.dialogInner,
             null,

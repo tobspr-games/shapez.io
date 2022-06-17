@@ -401,6 +401,7 @@ ingame:
             achievements:
                 title: 成就
                 desc: 挑战全成就解锁！
+        title_expired: 演示时间已过
     puzzleEditorSettings:
         zoneTitle: 区域
         zoneWidth: 宽度
