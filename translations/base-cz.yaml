@@ -50,6 +50,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Přihlašuji
+    loadingResources: Stahování dalších zdrojů (<percentage> %)
 demoBanners:
     title: Demo verze
     intro: |-
@@ -64,6 +65,8 @@ demoBanners:
     playtimeDisclaimer: Plná verze obsahuje více než <strong>20 hodin obsahu</strong>.
     playerCount: <playerCount> hráči jako vy právě hrají shapez ve službě Steam
     untilEndOfDemo: do konce ukázky
+    playtimeDisclaimerDownload: Ve hře můžete pokračovat v plné verzi!
+        Klikněte <strong>sem</strong> a stáhněte si uloženou hru.
 mainMenu:
     play: Hrát
     continue: Pokračovat
@@ -274,6 +277,17 @@ dialogs:
             nenačte. Jste si jisti, že chcete pokračovat?
         missingMods: Chybějící módy
         newMods: Nově nainstalované módy
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy

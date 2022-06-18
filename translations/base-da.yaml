@@ -52,6 +52,7 @@ global:
         shift: SKIFT/SHIFT
         space: MELLEMRUM
     loggingIn: Logging in
+    loadingResources: Downloader yderligere ressourcer (<percentage> %)
 demoBanners:
     title: Demoversion
     intro: |-
@@ -66,6 +67,8 @@ demoBanners:
     playtimeDisclaimer: Den fulde version indeholder mere end <strong>20 timers indhold</strong>.
     playerCount: <playerCount> spillere som dig spiller lige nu shapez på Steam
     untilEndOfDemo: Indtil afslutningen af demoen
+    playtimeDisclaimerDownload: Du kan fortsætte dit savegame i den fulde version!
+        Klik <strong>her</strong> for at downloade dit savegame.
 mainMenu:
     play: Spil
     continue: Fortsæt
@@ -276,6 +279,17 @@ dialogs:
             you sure you want to continue?
         missingMods: Missing Mods
         newMods: Newly installed Mods
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Bevæg dig

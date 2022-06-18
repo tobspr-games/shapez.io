@@ -50,6 +50,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Logging in
+    loadingResources: Downloading additional resources (<percentage> %)
 demoBanners:
     title: גרסאת דמו
     intro: |-
@@ -64,6 +65,8 @@ demoBanners:
     playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
     playerCount: <playerCount> players like you are currently playing shapez on Steam
     untilEndOfDemo: Until end of demo
+    playtimeDisclaimerDownload: You can continue your savegame in the full version!
+        Click <strong>here</strong> to download your savegame.
 mainMenu:
     play: שחק
     continue: המשך
@@ -269,6 +272,17 @@ dialogs:
             you sure you want to continue?
         missingMods: Missing Mods
         newMods: Newly installed Mods
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: הזזה

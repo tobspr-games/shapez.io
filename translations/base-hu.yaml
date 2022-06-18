@@ -51,6 +51,7 @@ global:
         shift: SHIFT
         space: SZÓKÖZ
     loggingIn: Bejelentkezés
+    loadingResources: Downloading additional resources (<percentage> %)
 demoBanners:
     title: Demó verzió
     intro: |-
@@ -66,6 +67,8 @@ demoBanners:
     playerCount: <playerCount> hozzád hasonló játékosok jelenleg shapez-t játszanak
         a Steamen
     untilEndOfDemo: A demó végéig
+    playtimeDisclaimerDownload: Folytathatja a mentést a teljes verzióban!
+        Kattintson <strong>ide</strong> a mentett játék letöltéséhez.
 mainMenu:
     play: Játék
     continue: Folytatás
@@ -280,6 +283,17 @@ dialogs:
             you sure you want to continue?
         missingMods: Missing Mods
         newMods: Newly installed Mods
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás

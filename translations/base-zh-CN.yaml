@@ -50,6 +50,7 @@ global:
         shift: SHIFT 键
         space: 空格键
     loggingIn: 登录
+    loadingResources: 下载其他资源 (<percentage> %)
 demoBanners:
     title: 试玩版
     intro: |-
@@ -64,6 +65,8 @@ demoBanners:
     playtimeDisclaimer: 完整版包括多达 <strong>20 小时的新内容</strong>
     playerCount: <playerCount> 个像你一样的玩家目前正在 Steam 上玩 shapez
     untilEndOfDemo: 直到演示结束
+    playtimeDisclaimerDownload: 您可以在完整版中继续您的存档游戏！
+        点击<strong>此处</strong>下载您的存档游戏。
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -246,6 +249,17 @@ dialogs:
         desc: 当前已安装的游戏模组（Mods）与该存档创建时所安装的游戏模组（Mods）不同！这可能会导致存档损坏，甚至无法加载。你确定要继续加载吗？
         missingMods: 缺失的游戏模组（Mods）
         newMods: 新安装的游戏模组（Mods）
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图

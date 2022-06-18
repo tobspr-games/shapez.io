@@ -53,6 +53,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Вхід у систему
+    loadingResources: Downloading additional resources (<percentage> %)
 demoBanners:
     title: Демо-версія
     intro: |-
@@ -67,6 +68,8 @@ demoBanners:
     playtimeDisclaimer: Повна версія містить понад <strong>20 години вмісту</strong>.
     playerCount: <playerCount> гравців як ви зараз грають у shapez на Steam
     untilEndOfDemo: До кінця демонстрації
+    playtimeDisclaimerDownload: Ви можете продовжити свою збережену гру в повній версії!
+        Натисніть <strong>тут</strong>, щоб завантажити збережену гру.
 mainMenu:
     play: Грати
     continue: Продовжити
@@ -283,6 +286,17 @@ dialogs:
             хочете продовжити?
         missingMods: Відсутні моди
         newMods: Нещодавно встановлені моди
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Рухатися

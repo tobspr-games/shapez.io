@@ -54,6 +54,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Logare
+    loadingResources: Downloading additional resources (<percentage> %)
 demoBanners:
     title: Versiunea Demo
     intro: |-
@@ -69,6 +70,8 @@ demoBanners:
         conținut</strong>.
     playerCount: <playerCount> jucători ca tine se joacă în prezent shapez pe Steam
     untilEndOfDemo: Până la sfârșitul demonstrației
+    playtimeDisclaimerDownload: Puteți continua salvarea în versiunea completă!
+        Faceți clic <strong>aici</strong> pentru a descărca jocul salvat.
 mainMenu:
     play: Joacă
     changelog: Jurnalul schimbărilor
@@ -287,6 +290,17 @@ dialogs:
             you sure you want to continue?
         missingMods: Missing Mods
         newMods: Newly installed Mods
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Mișcă-te

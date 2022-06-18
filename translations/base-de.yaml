@@ -54,6 +54,7 @@ global:
         escape: ESC
         shift: UMSCH
         space: LEER
+    loadingResources: Lade zusätzliche Ressourcen (<percentage> %)
 demoBanners:
     title: Demoversion
     intro: |-
@@ -68,6 +69,10 @@ demoBanners:
     playtimeDisclaimer: Die Vollversion bietet mehr als <strong>20 Stunden Spielspaß</strong>.
     playerCount: <playerCount> Spieler wie du spielen shapez gerade auf Steam
     untilEndOfDemo: Bis zum Ende der Demo
+    playtimeDisclaimerDownload: >-
+        Du kannst deinen Speicherstand in der Vollversion fortsetzen!
+        Klicke <strong>hier</strong> um ihn herunterzuladen.
+
 mainMenu:
     play: Spielen
     continue: Fortsetzen
@@ -348,6 +353,17 @@ dialogs:
             ihn wirklich laden?
         missingMods: Fehlende Mods
         newMods: Neu installierte Mods
+    resourceLoadFailed:
+        title: Resources failed to load
+        demoLinkText: shapez demo on Steam
+        descWeb: "One ore more resources could not be loaded. Make sure you have a
+            stable internet connection and try again. If this still doesn't
+            work, make sure to also disable any browser extensions (including
+            adblockers).<br><br> As an alternative, you can also play the
+            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
+            game - If that does not help, try reinstalling and verifying the
+            game files via Steam. <br><br> Error Message:"
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -492,8 +508,7 @@ ingame:
         desc: Klicke hier, um die Vorteile der Vollversion zu sehen!
         get_on_steam: Zur Vollversion
     standaloneAdvantages:
-        title: >-
-            Vorteile der Vollversion:
+        title: "Vorteile der Vollversion:"
         no_thanks: Nein, danke!
         points:
             levels:
