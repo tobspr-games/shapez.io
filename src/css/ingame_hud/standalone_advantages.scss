@@ -84,8 +84,31 @@
         }
 
         .playtimeDisclaimer {
-            @include S(margin-bottom, 10px);
+            @include S(margin-bottom, 15px);
             @include PlainText;
+        }
+
+        .playtimeDisclaimerDownload {
+            @include SuperSmallText;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            background: #b3f2c5;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(padding, 7px, 10px);
+            @include S(margin-bottom, 15px);
+            pointer-events: all;
+            transition: background-color 0.12s ease-in-out;
+            color: rgba(#000, 0.5);
+
+            &:hover {
+                background: darken(#b3f2c5, 3);
+            }
+            cursor: pointer;
+
+            strong {
+                color: #000;
+            }
         }
 
         .steamLinkButton {

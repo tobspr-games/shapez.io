@@ -13,7 +13,7 @@ export class HUDDemoTimer extends BaseHUDPart {
     }
 
     get totalTime() {
-        return this.root.app.gameAnalytics.abtVariant === "1" ? 15 : 30;
+        return G_IS_STEAM_DEMO ? 15 : 30;
     }
 
     initialize() {}

@@ -41,26 +41,4 @@ export class HUDWatermark extends BaseHUDPart {
     initialize() {}
 
     update() {}
-
-    /**
-     *
-     * @param {import("../../../core/draw_utils").DrawParameters} parameters
-     */
-    drawOverlays(parameters) {
-        if (this.root.app.gameAnalytics.abtVariant !== "0") {
-            return;
-        }
-        const w = this.root.gameWidth;
-
-        parameters.context.fillStyle = "rgba(20, 30, 40, 0.25)";
-        parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 40 + "px GameFont";
-        parameters.context.textAlign = "center";
-        parameters.context.fillText(
-            T.demoBanners.title.toUpperCase(),
-            w / 2,
-            this.root.app.getEffectiveUiScale() * 50
-        );
-
-        parameters.context.textAlign = "left";
-    }
 }

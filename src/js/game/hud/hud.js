@@ -87,9 +87,7 @@ export class GameHUD {
         }
 
         if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
-            if (["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)) {
-                this.parts.demoTimer = new HUDDemoTimer(this.root);
-            }
+            this.parts.demoTimer = new HUDDemoTimer(this.root);
         }
 
         const additionalParts = this.root.gameMode.additionalHudParts;
@@ -219,7 +217,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = ["waypoints", "watermark", "wireInfo"];
+        const partsOrder = ["waypoints", "wireInfo"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

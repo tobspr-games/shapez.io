@@ -1,6 +1,5 @@
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
-import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { createLogger } from "../../../core/logging";
 import { STOP_PROPAGATION } from "../../../core/signal";
 import { formatBigNumberFull } from "../../../core/utils";
@@ -8,10 +7,7 @@ import { Vector } from "../../../core/vector";
 import { ACHIEVEMENTS } from "../../../platform/achievement_provider";
 import { T } from "../../../translations";
 import { Blueprint } from "../../blueprint";
-import { MetaBlockBuilding } from "../../buildings/block";
-import { MetaConstantProducerBuilding } from "../../buildings/constant_producer";
 import { enumMouseButton } from "../../camera";
-import { Component } from "../../component";
 import { Entity } from "../../entity";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { THEME } from "../../theme";
@@ -128,13 +124,17 @@ export class HUDMassSelector extends BaseHUDPart {
         this.selectedUids = new Set();
     }
 
+    showBlueprintsNotUnlocked() {
+        this.root.hud.parts.dialogs.showInfo(
+            T.dialogs.blueprintsNotUnlocked.title,
+            T.dialogs.blueprintsNotUnlocked.desc
+        );
+    }
+
     startCopy() {
         if (this.selectedUids.size > 0) {
             if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
-                this.root.hud.parts.dialogs.showInfo(
-                    T.dialogs.blueprintsNotUnlocked.title,
-                    T.dialogs.blueprintsNotUnlocked.desc
-                );
+                this.showBlueprintsNotUnlocked();
                 return;
             }
             this.root.hud.signals.buildingsSelectedForCopy.dispatch(Array.from(this.selectedUids));
@@ -157,10 +157,7 @@ export class HUDMassSelector extends BaseHUDPart {
 
     confirmCut() {
         if (!this.root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_blueprints)) {
-            this.root.hud.parts.dialogs.showInfo(
-                T.dialogs.blueprintsNotUnlocked.title,
-                T.dialogs.blueprintsNotUnlocked.desc
-            );
+            this.showBlueprintsNotUnlocked();
         } else if (
             !this.root.app.settings.getAllSettings().disableCutDeleteWarnings &&
             this.selectedUids.size > 100

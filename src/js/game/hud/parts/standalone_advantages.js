@@ -1,6 +1,7 @@
 import { globalConfig, openStandaloneLink } from "../../../core/config";
 import { InputReceiver } from "../../../core/input_receiver";
-import { makeDiv } from "../../../core/utils";
+import { ReadWriteProxy } from "../../../core/read_write_proxy";
+import { generateFileDownload, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
@@ -11,23 +12,8 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
-        this.title = makeDiv(
-            this.dialogInner,
-            null,
-            ["title"],
-
-            ["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)
-                ? T.ingame.standaloneAdvantages.title_expired
-                : T.ingame.standaloneAdvantages.title
-        );
-        if (["1", "2"].includes(this.root.app.gameAnalytics.abtVariant)) {
-            this.subTitle = makeDiv(
-                this.dialogInner,
-                null,
-                ["subTitle"],
-                T.ingame.standaloneAdvantages.title
-            );
-        }
+        this.title = makeDiv(this.dialogInner, null, ["title"], T.ingame.standaloneAdvantages.title_expired);
+        this.subTitle = makeDiv(this.dialogInner, null, ["subTitle"], T.ingame.standaloneAdvantages.title);
 
         this.contentDiv = makeDiv(
             this.dialogInner,
@@ -49,6 +35,9 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
             <div class="lowerBar">
             <div class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</div>
+
+            <div class="playtimeDisclaimerDownload">${T.demoBanners.playtimeDisclaimerDownload}</div>
+
             <button class="steamLinkButton steam_dlbtn_0">
             ${
                 globalConfig.currentDiscount > 0
@@ -69,6 +58,13 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         });
         this.trackClicks(this.contentDiv.querySelector("button.otherCloseButton"), () => {
             this.close();
+        });
+
+        this.trackClicks(this.contentDiv.querySelector(".playtimeDisclaimerDownload"), () => {
+            this.root.gameState.savegame.updateData(this.root);
+            const data = ReadWriteProxy.serializeObject(this.root.gameState.savegame.currentData);
+            const filename = "shapez-demo-savegame.bin";
+            generateFileDownload(filename, data);
         });
     }
 
@@ -116,13 +112,6 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
     }
 
     update() {
-        if (this.root.app.gameAnalytics.abtVariant === "0") {
-            // only show in original variant
-            if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
-                this.show();
-            }
-        }
-
         this.domAttach.update(this.visible);
     }
 }

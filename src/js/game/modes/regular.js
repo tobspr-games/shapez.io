@@ -31,12 +31,12 @@ import { IS_MOBILE } from "../../core/config";
 import { HUDKeybindingOverlay } from "../hud/parts/keybinding_overlay";
 import { HUDWatermark } from "../hud/parts/watermark";
 import { HUDStandaloneAdvantages } from "../hud/parts/standalone_advantages";
-import { HUDSteamCapsule } from "../hud/parts/steam_capsule";
 import { HUDPartTutorialHints } from "../hud/parts/tutorial_hints";
 import { HUDInteractiveTutorial } from "../hud/parts/interactive_tutorial";
 import { MetaBlockBuilding } from "../buildings/block";
 import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { MOD_SIGNALS } from "../../mods/mod_signals";
+import { finalGameShape, generateLevelsForVariant, LevelSetVariant } from "./levels";
 
 /** @typedef {{
  *   shape: string,
@@ -59,7 +59,6 @@ import { MOD_SIGNALS } from "../../mods/mod_signals";
  * }} LevelDefinition */
 
 export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
-export const finalGameShape = "RuCw--Cw:----Ru--";
 const preparementShape = "CpRpCp--:SwSwSwSw";
 
 // Tiers need % of the previous tier as requirement too
@@ -298,235 +297,14 @@ const levelDefinitionsCache = {};
 
 /**
  * Generates the level definitions
- * @param {boolean} limitedVersion
+ * @param {keyof typeof LevelSetVariant} variant
  */
-export function generateLevelDefinitions(limitedVersion = false, difficulty = 1) {
-    if (levelDefinitionsCache[limitedVersion]) {
-        return levelDefinitionsCache[limitedVersion];
+export function generateLevelDefinitions(variant, difficulty = 1) {
+    if (levelDefinitionsCache[variant]) {
+        return levelDefinitionsCache[variant];
     }
-    const levelDefinitions = [
-        // 1
-        // Circle
-        {
-            shape: "CuCuCuCu", // belts t1
-            required: 30,
-            reward: enumHubGoalRewards.reward_cutter_and_trash,
-        },
 
-        // 2
-        // Cutter
-        {
-            shape: "----CuCu", //
-            required: 40,
-            reward: enumHubGoalRewards.no_reward,
-        },
-
-        // 3
-        // Rectangle
-        {
-            shape: "RuRuRuRu", // miners t1
-            required: 70,
-            reward: enumHubGoalRewards.reward_balancer,
-        },
-
-        // 4
-        {
-            shape: "RuRu----", // processors t2
-            required: 70,
-            reward: enumHubGoalRewards.reward_rotater,
-        },
-
-        // 5
-        // Rotater
-        {
-            shape: "Cu----Cu", // belts t2
-            required: 170,
-            reward: enumHubGoalRewards.reward_tunnel,
-        },
-
-        // 6
-        {
-            shape: "Cu------", // miners t2
-            required: 270,
-            reward: enumHubGoalRewards.reward_painter,
-        },
-
-        // 7
-        // Painter
-        {
-            shape: "CrCrCrCr", // unused
-            required: 300,
-            reward: enumHubGoalRewards.reward_rotater_ccw,
-        },
-
-        // DEMO STOPS HERE
-        ...(limitedVersion
-            ? [
-                  {
-                      shape: "CrCrCrCr",
-                      required: 0,
-                      reward: enumHubGoalRewards.reward_demo_end,
-                  },
-              ]
-            : [
-                  // 8
-                  {
-                      shape: "RbRb----", // painter t2
-                      required: 480,
-                      reward: enumHubGoalRewards.reward_mixer,
-                  },
-
-                  // 9
-                  // Mixing (purple)
-                  {
-                      shape: "CpCpCpCp", // belts t3
-                      required: 600,
-                      reward: enumHubGoalRewards.reward_merger,
-                  },
-
-                  // 10
-                  // STACKER: Star shape + cyan
-                  {
-                      shape: "ScScScSc", // miners t3
-                      required: 800,
-                      reward: enumHubGoalRewards.reward_stacker,
-                  },
-
-                  // 11
-                  // Chainable miner
-                  {
-                      shape: "CgScScCg", // processors t3
-                      required: 1000,
-                      reward: enumHubGoalRewards.reward_miner_chainable,
-                  },
-
-                  // 12
-                  // Blueprints
-                  {
-                      shape: "CbCbCbRb:CwCwCwCw",
-                      required: 1000,
-                      reward: enumHubGoalRewards.reward_blueprints,
-                  },
-
-                  // 13
-                  // Tunnel Tier 2
-                  {
-                      shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", // painting t3
-                      required: 3800,
-                      reward: enumHubGoalRewards.reward_underground_belt_tier_2,
-                  },
-
-                  // 14
-                  // Belt reader
-                  {
-                      shape: "--Cg----:--Cr----", // unused
-                      required: 8, // Per second!
-                      reward: enumHubGoalRewards.reward_belt_reader,
-                      throughputOnly: true,
-                  },
-
-                  // 15
-                  // Storage
-                  {
-                      shape: "SrSrSrSr:CyCyCyCy", // unused
-                      required: 10000,
-                      reward: enumHubGoalRewards.reward_storage,
-                  },
-
-                  // 16
-                  // Quad Cutter
-                  {
-                      shape: "SrSrSrSr:CyCyCyCy:SwSwSwSw", // belts t4 (two variants)
-                      required: 6000,
-                      reward: enumHubGoalRewards.reward_cutter_quad,
-                  },
-
-                  // 17
-                  // Double painter
-                  {
-                      shape: chinaShapes
-                          ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
-                          : "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
-                      required: 20000,
-                      reward: enumHubGoalRewards.reward_painter_double,
-                  },
-
-                  // 18
-                  // Rotater (180deg)
-                  {
-                      shape: "Sg----Sg:CgCgCgCg:--CyCy--", // unused
-                      required: 20000,
-                      reward: enumHubGoalRewards.reward_rotater_180,
-                  },
-
-                  // 19
-                  // Compact splitter
-                  {
-                      shape: "CpRpCp--:SwSwSwSw",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_splitter,
-                  },
-
-                  // 20
-                  // WIRES
-                  {
-                      shape: finalGameShape,
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_wires_painter_and_levers,
-                  },
-
-                  // 21
-                  // Filter
-                  {
-                      shape: "CrCwCrCw:CwCrCwCr:CrCwCrCw:CwCrCwCr",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_filter,
-                  },
-
-                  // 22
-                  // Constant signal
-                  {
-                      shape: chinaShapes
-                          ? "RrSySrSy:RyCrCwCr:CyCyRyCy"
-                          : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_constant_signal,
-                  },
-
-                  // 23
-                  // Display
-                  {
-                      shape: chinaShapes
-                          ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr"
-                          : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_display,
-                  },
-
-                  // 24 Logic gates
-                  {
-                      shape: chinaShapes
-                          ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw"
-                          : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_logic_gates,
-                  },
-
-                  // 25 Virtual Processing
-                  {
-                      shape: "Rg--Rg--:CwRwCwRw:--Rg--Rg",
-                      required: 25000,
-                      reward: enumHubGoalRewards.reward_virtual_processing,
-                  },
-
-                  // 26 Freeplay
-                  {
-                      shape: "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw",
-                      required: 50000,
-                      reward: enumHubGoalRewards.reward_freeplay,
-                  },
-              ]),
-    ];
+    const levelDefinitions = generateLevelsForVariant(variant);
 
     MOD_SIGNALS.modifyLevelDefinitions.dispatch(levelDefinitions);
 
@@ -544,7 +322,7 @@ export function generateLevelDefinitions(limitedVersion = false, difficulty = 1)
         definition.required = Math.round(definition.required * difficulty);
     });
 
-    levelDefinitionsCache[limitedVersion] = levelDefinitions;
+    levelDefinitionsCache[variant] = levelDefinitions;
 
     return levelDefinitions;
 }
@@ -590,7 +368,6 @@ export class RegularGameMode extends GameMode {
         if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
             this.additionalHudParts.watermark = HUDWatermark;
             this.additionalHudParts.standaloneAdvantages = HUDStandaloneAdvantages;
-            this.additionalHudParts.catMemes = HUDSteamCapsule;
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {
@@ -635,10 +412,14 @@ export class RegularGameMode extends GameMode {
      * @returns {Array<LevelDefinition>}
      */
     getLevelDefinitions() {
-        return generateLevelDefinitions(
-            !this.root.app.restrictionMgr.getHasExtendedLevelsAndFreeplay(),
-            this.difficultyMultiplicator
-        );
+        if (this.root.app.restrictionMgr.isLimitedVersion()) {
+            return generateLevelDefinitions(
+                this.root.app.gameAnalytics.abtVariant === "0" ? "LimitedLevel8" : "LimitedLevelBlueprints",
+                this.difficultyMultiplicator
+            );
+        } else {
+            return generateLevelDefinitions("NoRestrictions", this.difficultyMultiplicator);
+        }
     }
 
     /**

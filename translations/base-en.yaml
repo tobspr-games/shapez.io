@@ -108,6 +108,10 @@ demoBanners:
         </ul>
     playtimeDisclaimer: >-
         The full version contains more than <strong>20 hours of content</strong>.
+
+    playtimeDisclaimerDownload: >-
+        You can continue your savegame in the full version! Click <strong>here</strong> to download your savegame.
+
     playerCount: >-
         <playerCount> players like you are playing shapez on Steam right now
     untilEndOfDemo: Until end of demo

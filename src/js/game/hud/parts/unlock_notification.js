@@ -135,13 +135,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
             this.root.hud.signals.unlockNotificationFinished.dispatch();
 
-            if (
-                this.root.hubGoals.level === 7 &&
-                this.root.app.restrictionMgr.getIsStandaloneMarketingActive()
-            ) {
-                this.root.hud.parts.standaloneAdvantages.show();
-            }
-
             if (!this.root.app.settings.getAllSettings().offerHints) {
                 return;
             }
