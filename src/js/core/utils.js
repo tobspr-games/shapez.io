@@ -747,3 +747,42 @@ export function getRomanNumber(number) {
     romanLiteralsCache[number] = formatted;
     return formatted;
 }
+
+/**
+ * Returns the appropriate logo sprite path
+ */
+export function getLogoSprite() {
+    if (G_WEGAME_VERSION) {
+        return "logo_wegame.png";
+    }
+
+    if (G_IS_STEAM_DEMO) {
+        return "logo_demo.png";
+    }
+
+    if (G_CHINA_VERSION) {
+        return "logo_cn.png";
+    }
+
+    if (G_IS_STANDALONE) {
+        return "logo.png";
+    }
+
+    if (G_IS_BROWSER) {
+        return "logo_demo.png";
+    }
+
+    return "logo.png";
+}
+
+/**
+ * Rejects a promise after X ms
+ */
+export function timeoutPromise(promise, timeout = 30000) {
+    return Promise.race([
+        new Promise((resolve, reject) => {
+            setTimeout(() => reject("timeout of " + timeout + " ms exceeded"), timeout);
+        }),
+        promise,
+    ]);
+}

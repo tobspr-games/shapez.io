@@ -21,33 +21,28 @@ class SoundSpritesContainer {
         if (this.loadingPromise) {
             return this.loadingPromise;
         }
-        return (this.loadingPromise = Promise.race([
-            new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 500 : 5000);
-            }),
-            new Promise(resolve => {
-                this.howl = new Howl({
-                    src: cachebust("res/sounds/sfx.mp3"),
-                    sprite: sprites.sprite,
-                    autoplay: false,
-                    loop: false,
-                    volume: 0,
-                    preload: true,
-                    pool: 20,
-                    onload: () => {
-                        resolve();
-                    },
-                    onloaderror: (id, err) => {
-                        logger.warn("SFX failed to load:", id, err);
-                        this.howl = null;
-                        resolve();
-                    },
-                    onplayerror: (id, err) => {
-                        logger.warn("SFX failed to play:", id, err);
-                    },
-                });
-            }),
-        ]));
+        return (this.loadingPromise = new Promise(resolve => {
+            this.howl = new Howl({
+                src: cachebust("res/sounds/sfx.mp3"),
+                sprite: sprites.sprite,
+                autoplay: false,
+                loop: false,
+                volume: 0,
+                preload: true,
+                pool: 20,
+                onload: () => {
+                    resolve();
+                },
+                onloaderror: (id, err) => {
+                    logger.warn("SFX failed to load:", id, err);
+                    this.howl = null;
+                    resolve();
+                },
+                onplayerror: (id, err) => {
+                    logger.warn("SFX failed to play:", id, err);
+                },
+            });
+        }));
     }
 
     play(volume, key) {
@@ -98,41 +93,37 @@ class MusicInstance extends MusicInstanceInterface {
         this.playing = false;
     }
     load() {
-        return Promise.race([
-            new Promise((resolve, reject) => {
-                setTimeout(reject, G_IS_DEV ? 500 : 5000);
-            }),
-            new Promise((resolve, reject) => {
-                this.howl = new Howl({
-                    src: cachebust("res/sounds/music/" + this.url + ".mp3"),
-                    autoplay: false,
-                    loop: true,
-                    html5: true,
-                    volume: 1,
-                    preload: true,
-                    pool: 2,
+        return new Promise((resolve, reject) => {
+            this.howl = new Howl({
+                src: cachebust("res/sounds/music/" + this.url + ".mp3"),
+                autoplay: false,
+                loop: true,
+                html5: true,
+                volume: 1,
+                preload: true,
+                pool: 2,
 
-                    onunlock: () => {
-                        if (this.playing) {
-                            logger.log("Playing music after manual unlock");
-                            this.play();
-                        }
-                    },
+                onunlock: () => {
+                    if (this.playing) {
+                        logger.log("Playing music after manual unlock");
+                        this.play();
+                    }
+                },
 
-                    onload: () => {
-                        resolve();
-                    },
-                    onloaderror: (id, err) => {
-                        logger.warn(this, "Music", this.url, "failed to load:", id, err);
-                        this.howl = null;
-                        resolve();
-                    },
-                    onplayerror: (id, err) => {
-                        logger.warn(this, "Music", this.url, "failed to play:", id, err);
-                    },
-                });
-            }),
-        ]);
+                onload: () => {
+                    resolve();
+                },
+                onloaderror: (id, err) => {
+                    logger.warn(this, "Music", this.url, "failed to load:", id, err);
+                    this.howl = null;
+                    resolve();
+                },
+
+                onplayerror: (id, err) => {
+                    logger.warn(this, "Music", this.url, "failed to play:", id, err);
+                },
+            });
+        });
     }
 
     stop() {

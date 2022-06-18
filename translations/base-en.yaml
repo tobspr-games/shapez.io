@@ -50,6 +50,8 @@ global:
     error: Error
     loggingIn: Logging in
 
+    loadingResources: Downloading additional resources (<percentage> %)
+
     # How big numbers are rendered, e.g. "10,000"
     thousandsDivider: ","
 
@@ -442,6 +444,22 @@ dialogs:
             This might cause the savegame to break or not load at all. Are you sure you want to continue?
         missingMods: Missing Mods
         newMods: Newly installed Mods
+
+    resourceLoadFailed:
+        title: Resources failed to load
+
+        demoLinkText: shapez demo on Steam
+        descWeb: >-
+            One ore more resources could not be loaded. Make sure you have a stable internet connection and try again.
+            If this still doesn't work, make sure to also disable any browser extensions (including adblockers).<br><br>
+            As an alternative, you can also play the <demoOnSteamLinkText>.
+            <br><br>
+            Error Message:
+
+        descSteamDemo: >-
+            One ore more resources could not be loaded. Try restarting the game - If that does not help, try reinstalling and verifying the game files via Steam.
+            <br><br>
+            Error Message:
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in

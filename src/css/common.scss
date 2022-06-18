@@ -427,6 +427,16 @@ canvas {
     }
 }
 
+.prefab_LoadingProgressIndicator {
+    @include PlainText;
+    @include S(margin-top, 20px);
+    width: 100%;
+    color: #336c9f;
+    @include S(height, 20px);
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .prefab_FeatureComingSoon {
     position: relative;
     &::after {

@@ -2,58 +2,36 @@
 import { Application } from "../application";
 /* typehints:end */
 
+import { initSpriteCache } from "../game/meta_building_registry";
+import { MUSIC, SOUNDS } from "../platform/sound";
+import { T } from "../translations";
+import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
+import { cachebust } from "./cachebust";
 import { Loader } from "./loader";
 import { createLogger } from "./logging";
 import { Signal } from "./signal";
-import { SOUNDS, MUSIC } from "../platform/sound";
-import { AtlasDefinition, atlasFiles } from "./atlas_definitions";
-import { initBuildingCodesAfterResourcesLoaded } from "../game/meta_building_registry";
-import { cachebust } from "./cachebust";
+import { clamp, getLogoSprite, timeoutPromise } from "./utils";
 
 const logger = createLogger("background_loader");
 
-export function getLogoSprite() {
-    if (G_WEGAME_VERSION) {
-        return "logo_wegame.png";
-    }
+const MAIN_MENU_ASSETS = {
+    sprites: [getLogoSprite()],
+    sounds: [SOUNDS.uiClick, SOUNDS.uiError, SOUNDS.dialogError, SOUNDS.dialogOk],
+    atlas: [],
+    css: [],
+};
 
-    if (G_IS_STEAM_DEMO) {
-        return "logo_demo.png";
-    }
+const INGAME_ASSETS = {
+    sprites: [],
+    sounds: [
+        ...Array.from(Object.values(MUSIC)),
+        ...Array.from(Object.values(SOUNDS)).filter(sound => !MAIN_MENU_ASSETS.sounds.includes(sound)),
+    ],
+    atlas: atlasFiles,
+    css: ["async-resources.css"],
+};
 
-    if (G_CHINA_VERSION) {
-        return "logo_cn.png";
-    }
-
-    if (G_IS_STANDALONE) {
-        return "logo.png";
-    }
-
-    if (G_IS_BROWSER) {
-        return "logo_demo.png";
-    }
-
-    return "logo.png";
-}
-
-const essentialMainMenuSprites = [getLogoSprite()];
-
-const essentialMainMenuSounds = [
-    SOUNDS.uiClick,
-    SOUNDS.uiError,
-    SOUNDS.dialogError,
-    SOUNDS.dialogOk,
-    SOUNDS.swishShow,
-    SOUNDS.swishHide,
-];
-
-const essentialBareGameAtlases = atlasFiles;
-const essentialBareGameSprites = [];
-const essentialBareGameSounds = [MUSIC.theme];
-
-const additionalGameSprites = [];
-// @ts-ignore
-const additionalGameSounds = [...Object.values(SOUNDS), ...Object.values(MUSIC)];
+const LOADER_TIMEOUT_PER_RESOURCE = 180000;
 
 export class BackgroundResourcesLoader {
     /**
@@ -63,193 +41,199 @@ export class BackgroundResourcesLoader {
     constructor(app) {
         this.app = app;
 
-        this.registerReady = false;
-        this.mainMenuReady = false;
-        this.bareGameReady = false;
-        this.additionalReady = false;
+        this.mainMenuPromise = null;
+        this.ingamePromise = null;
 
-        this.signalMainMenuLoaded = new Signal();
-        this.signalBareGameLoaded = new Signal();
-        this.signalAdditionalLoaded = new Signal();
-
-        this.numAssetsLoaded = 0;
-        this.numAssetsToLoadTotal = 0;
-
-        // Avoid loading stuff twice
-        this.spritesLoaded = [];
-        this.soundsLoaded = [];
-        this.atlasesLoaded = [];
-        this.cssLoaded = [];
+        this.resourceStateChangedSignal = new Signal();
     }
 
-    getNumAssetsLoaded() {
-        return this.numAssetsLoaded;
-    }
-
-    getNumAssetsTotal() {
-        return this.numAssetsToLoadTotal;
-    }
-
-    getPromiseForMainMenu() {
-        if (this.mainMenuReady) {
-            return Promise.resolve();
+    getMainMenuPromise() {
+        if (this.mainMenuPromise) {
+            return this.mainMenuPromise;
         }
 
-        return new Promise(resolve => {
-            this.signalMainMenuLoaded.add(resolve);
-        });
+        logger.warn("⏰ Loading main menu assets");
+        return (this.mainMenuPromise = this.loadAssets(MAIN_MENU_ASSETS));
     }
 
-    getPromiseForBareGame() {
-        if (this.bareGameReady) {
-            return Promise.resolve();
+    getIngamePromise() {
+        if (this.ingamePromise) {
+            return this.ingamePromise;
         }
-
-        return new Promise(resolve => {
-            this.signalBareGameLoaded.add(resolve);
-        });
-    }
-
-    startLoading() {
-        this.internalStartLoadingEssentialsForMainMenu();
-    }
-
-    internalStartLoadingEssentialsForMainMenu() {
-        logger.log("⏰ Start load: main menu");
-        this.internalLoadSpritesAndSounds(essentialMainMenuSprites, essentialMainMenuSounds)
-            .catch(err => {
-                logger.warn("⏰ Failed to load essentials for main menu:", err);
-            })
-            .then(() => {
-                logger.log("⏰ Finish load: main menu");
-                this.mainMenuReady = true;
-                this.signalMainMenuLoaded.dispatch();
-            });
-    }
-
-    internalStartLoadingEssentialsForBareGame() {
-        logger.log("⏰ Start load: bare game");
-        this.internalLoadSpritesAndSounds(
-            essentialBareGameSprites,
-            essentialBareGameSounds,
-            essentialBareGameAtlases
-        )
-            .then(() => this.internalPreloadCss("async-resources.scss"))
-            .catch(err => {
-                logger.warn("⏰ Failed to load essentials for bare game:", err);
-            })
-            .then(() => {
-                logger.log("⏰ Finish load: bare game");
-                this.bareGameReady = true;
-                initBuildingCodesAfterResourcesLoaded();
-                this.signalBareGameLoaded.dispatch();
-                this.internalStartLoadingAdditionalGameAssets();
-            });
-    }
-
-    internalStartLoadingAdditionalGameAssets() {
-        const additionalAtlases = [];
-        logger.log("⏰ Start load: additional assets (", additionalAtlases.length, "images)");
-        this.internalLoadSpritesAndSounds(additionalGameSprites, additionalGameSounds, additionalAtlases)
-            .catch(err => {
-                logger.warn("⏰ Failed to load additional assets:", err);
-            })
-            .then(() => {
-                logger.log("⏰ Finish load: additional assets");
-                this.additionalReady = true;
-                this.signalAdditionalLoaded.dispatch();
-            });
-    }
-
-    internalPreloadCss(name) {
-        if (this.cssLoaded.includes(name)) {
-            return;
-        }
-        this.cssLoaded.push(name);
-        return new Promise((resolve, reject) => {
-            const link = document.createElement("link");
-
-            link.onload = resolve;
-            link.onerror = reject;
-
-            link.setAttribute("rel", "stylesheet");
-            link.setAttribute("media", "all");
-            link.setAttribute("type", "text/css");
-            link.setAttribute("href", cachebust("async-resources.css"));
-            document.head.appendChild(link);
-        });
+        logger.warn("⏰ Loading ingame assets");
+        const promise = this.loadAssets(INGAME_ASSETS).then(() => initSpriteCache());
+        return (this.ingamePromise = promise);
     }
 
     /**
-     * @param {Array<string>} sprites
-     * @param {Array<string>} sounds
-     * @param {Array<AtlasDefinition>} atlases
-     * @returns {Promise<void>}
+     *
+     * @param {object} param0
+     * @param {string[]} param0.sprites
+     * @param {string[]} param0.sounds
+     * @param {AtlasDefinition[]} param0.atlas
+     * @param {string[]} param0.css
      */
-    internalLoadSpritesAndSounds(sprites, sounds, atlases = []) {
-        this.numAssetsToLoadTotal = sprites.length + sounds.length + atlases.length;
-        this.numAssetsLoaded = 0;
+    async loadAssets({ sprites, sounds, atlas, css }) {
+        /**
+         * @type {((progressHandler: (progress: number) => void) => Promise<void>)[]}
+         */
+        let promiseFunctions = [];
 
-        let promises = [];
-
-        for (let i = 0; i < sounds.length; ++i) {
-            if (this.soundsLoaded.indexOf(sounds[i]) >= 0) {
-                // Already loaded
-                continue;
-            }
-
-            this.soundsLoaded.push(sounds[i]);
-            promises.push(
-                this.app.sound
-                    .loadSound(sounds[i])
-                    .catch(err => {
-                        logger.warn("Failed to load sound:", sounds[i]);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+        // CSS
+        for (let i = 0; i < css.length; ++i) {
+            promiseFunctions.push(progress =>
+                timeoutPromise(
+                    this.internalPreloadCss(cachebust(css[i]), progress),
+                    LOADER_TIMEOUT_PER_RESOURCE
+                ).catch(err => {
+                    logger.error("Failed to load css:", css[i], err);
+                    throw new Error("HUD Stylesheet " + css[i] + " failed to load: " + err);
+                })
             );
         }
 
+        // ATLAS FILES
+        for (let i = 0; i < atlas.length; ++i) {
+            promiseFunctions.push(progress =>
+                timeoutPromise(Loader.preloadAtlas(atlas[i], progress), LOADER_TIMEOUT_PER_RESOURCE).catch(
+                    err => {
+                        logger.error("Failed to load atlas:", atlas[i].sourceFileName, err);
+                        throw new Error("Atlas " + atlas[i].sourceFileName + " failed to load: " + err);
+                    }
+                )
+            );
+        }
+
+        // HUD Sprites
         for (let i = 0; i < sprites.length; ++i) {
-            if (this.spritesLoaded.indexOf(sprites[i]) >= 0) {
-                // Already loaded
-                continue;
-            }
-            this.spritesLoaded.push(sprites[i]);
-            promises.push(
-                Loader.preloadCSSSprite(sprites[i])
-                    .catch(err => {
-                        logger.warn("Failed to load css sprite:", sprites[i]);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+            promiseFunctions.push(progress =>
+                timeoutPromise(
+                    Loader.preloadCSSSprite(sprites[i], progress),
+                    LOADER_TIMEOUT_PER_RESOURCE
+                ).catch(err => {
+                    logger.error("Failed to load css sprite:", sprites[i], err);
+                    throw new Error("HUD Sprite " + sprites[i] + " failed to load: " + err);
+                })
             );
         }
 
-        for (let i = 0; i < atlases.length; ++i) {
-            const atlas = atlases[i];
-            if (this.atlasesLoaded.includes(atlas)) {
-                // Already loaded
-                continue;
-            }
-            this.atlasesLoaded.push(atlas);
-
-            promises.push(
-                Loader.preloadAtlas(atlas)
-                    .catch(err => {
-                        logger.warn("Failed to load atlas:", atlas.sourceFileName, err);
-                    })
-                    .then(() => {
-                        this.numAssetsLoaded++;
-                    })
+        // SFX & Music
+        for (let i = 0; i < sounds.length; ++i) {
+            promiseFunctions.push(progress =>
+                timeoutPromise(this.app.sound.loadSound(sounds[i]), LOADER_TIMEOUT_PER_RESOURCE).catch(
+                    err => {
+                        logger.warn("Failed to load sound, will not be available:", sounds[i], err);
+                    }
+                )
             );
         }
 
-        return Promise.all(promises).then(() => {
-            this.numAssetsToLoadTotal = 0;
-            this.numAssetsLoaded = 0;
+        const originalAmount = promiseFunctions.length;
+        const start = performance.now();
+
+        logger.log("⏰ Preloading", originalAmount, "assets");
+
+        let progress = 0;
+        this.resourceStateChangedSignal.dispatch({ progress });
+        let promises = [];
+        for (let i = 0; i < promiseFunctions.length; i++) {
+            let lastIndividualProgress = 0;
+            const progressHandler = individualProgress => {
+                const delta = clamp(individualProgress) - lastIndividualProgress;
+                lastIndividualProgress = individualProgress;
+                progress += delta / originalAmount;
+                this.resourceStateChangedSignal.dispatch({ progress });
+            };
+            promises.push(
+                promiseFunctions
+                    .shift()(progressHandler)
+                    .then(() => {
+                        progressHandler(1);
+                    })
+            );
+        }
+        await Promise.all(promises);
+
+        logger.log("⏰ Preloaded assets in", Math.round((performance.now() - start) / 1000.0), "ms");
+    }
+
+    /**
+     * Shows an error when a resource failed to load and allows to reload the game
+     */
+    showLoaderError(dialogs, err) {
+        if (G_IS_STANDALONE) {
+            dialogs
+                .showWarning(
+                    T.dialogs.resourceLoadFailed.title,
+                    T.dialogs.resourceLoadFailed.descSteamDemo + "<br>" + err,
+                    ["retry"]
+                )
+                .retry.add(() => window.location.reload());
+        } else {
+            dialogs
+                .showWarning(
+                    T.dialogs.resourceLoadFailed.title,
+                    T.dialogs.resourceLoadFailed.descWeb.replace(
+                        "<demoOnSteamLinkText>",
+                        `<a href="https://get.shapez.io/resource_timeout" target="_blank">${T.dialogs.resourceLoadFailed.demoLinkText}</a>`
+                    ) +
+                        "<br>" +
+                        err,
+                    ["retry"]
+                )
+                .retry.add(() => window.location.reload());
+        }
+    }
+
+    preloadWithProgress(src, progressHandler) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            let notifiedNotComputable = false;
+
+            xhr.open("GET", src, true);
+            xhr.responseType = "arraybuffer";
+            xhr.onprogress = function (ev) {
+                if (ev.lengthComputable) {
+                    progressHandler(ev.loaded / ev.total);
+                } else {
+                    if (!notifiedNotComputable) {
+                        notifiedNotComputable = true;
+                        console.warn("Progress not computable:", ev);
+                        progressHandler(0);
+                    }
+                }
+            };
+
+            xhr.onloadend = function () {
+                if (!xhr.status.toString().match(/^2/)) {
+                    reject(src + ": " + xhr.status + " " + xhr.statusText);
+                } else {
+                    if (!notifiedNotComputable) {
+                        progressHandler(1);
+                    }
+
+                    const options = {};
+                    const headers = xhr.getAllResponseHeaders();
+                    const contentType = headers.match(/^Content-Type\:\s*(.*?)$/im);
+                    if (contentType && contentType[1]) {
+                        options.type = contentType[1].split(";")[0];
+                    }
+                    const blob = new Blob([this.response], options);
+                    resolve(window.URL.createObjectURL(blob));
+                }
+            };
+            xhr.send();
+        });
+    }
+
+    internalPreloadCss(src, progressHandler) {
+        return this.preloadWithProgress(cachebust(src), progressHandler).then(blobSrc => {
+            var styleElement = document.createElement("link");
+            styleElement.href = blobSrc;
+            styleElement.rel = "stylesheet";
+            styleElement.setAttribute("media", "all");
+            styleElement.type = "text/css";
+            document.head.appendChild(styleElement);
         });
     }
 }

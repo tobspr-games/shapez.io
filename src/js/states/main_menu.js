@@ -1,4 +1,3 @@
-import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
 import { globalConfig, openStandaloneLink, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
@@ -8,7 +7,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import {
     formatSecondsToTimeAgo,
     generateFileDownload,
-    isSupportedBrowser,
+    getLogoSprite,
     makeButton,
     makeDiv,
     makeDivElement,
@@ -321,8 +320,9 @@ export class MainMenuState extends GameState {
     }
 
     onEnter(payload) {
+        // Start loading already
         const app = this.app;
-        setTimeout(() => app.backgroundResourceLoader.internalStartLoadingEssentialsForBareGame(), 10);
+        setTimeout(() => app.backgroundResourceLoader.getIngamePromise(), 10);
 
         this.dialogs = new HUDModalDialogs(null, this.app);
         const dialogsElement = document.body.querySelector(".modalDialogParent");

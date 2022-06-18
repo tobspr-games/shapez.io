@@ -46,6 +46,7 @@ export class GameLoadingOverlay {
         this.parent.appendChild(this.element);
         this.internalAddSpinnerAndText(this.element);
         this.internalAddHint(this.element);
+        this.internalAddProgressIndicator(this.element);
     }
 
     /**
@@ -67,5 +68,13 @@ export class GameLoadingOverlay {
         hint.innerHTML = randomChoice(T.tips);
         hint.classList.add("prefab_GameHint");
         element.appendChild(hint);
+    }
+
+    internalAddProgressIndicator(element) {
+        const indicator = document.createElement("span");
+        indicator.innerHTML = "";
+        indicator.classList.add("prefab_LoadingProgressIndicator");
+        element.appendChild(indicator);
+        this.loadingIndicator = indicator;
     }
 }

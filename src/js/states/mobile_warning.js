@@ -1,7 +1,6 @@
-import { GameState } from "../core/game_state";
 import { cachebust } from "../core/cachebust";
-import { THIRDPARTY_URLS } from "../core/config";
-import { getLogoSprite } from "../core/background_resources_loader";
+import { GameState } from "../core/game_state";
+import { getLogoSprite } from "../core/utils";
 
 export class MobileWarningState extends GameState {
     constructor() {

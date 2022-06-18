@@ -10,6 +10,8 @@ import { GameCore } from "../game/core";
 import { MUSIC } from "../platform/sound";
 import { enumGameModeIds } from "../game/game_mode";
 import { MOD_SIGNALS } from "../mods/mod_signals";
+import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { T } from "../translations";
 
 const logger = createLogger("state/ingame");
 
@@ -231,19 +233,42 @@ export class InGameState extends GameState {
         if (this.switchStage(GAME_LOADING_STATES.s3_createCore)) {
             logger.log("Waiting for resources to load");
 
-            this.app.backgroundResourceLoader.getPromiseForBareGame().then(() => {
-                logger.log("Creating new game core");
-                this.core = new GameCore(this.app);
-
-                this.core.initializeRoot(this, this.savegame, this.gameModeId);
-
-                if (this.savegame.hasGameDump()) {
-                    this.stage4bResumeGame();
-                } else {
-                    this.app.gameAnalytics.handleGameStarted();
-                    this.stage4aInitEmptyGame();
-                }
+            this.app.backgroundResourceLoader.resourceStateChangedSignal.add(({ progress }) => {
+                this.loadingOverlay.loadingIndicator.innerText = T.global.loadingResources.replace(
+                    "<percentage>",
+                    (progress * 100.0).toFixed(1)
+                );
             });
+
+            this.app.backgroundResourceLoader.getIngamePromise().then(
+                () => {
+                    this.loadingOverlay.loadingIndicator.innerText = "";
+                    this.app.backgroundResourceLoader.resourceStateChangedSignal.removeAll();
+
+                    logger.log("Creating new game core");
+                    this.core = new GameCore(this.app);
+
+                    this.core.initializeRoot(this, this.savegame, this.gameModeId);
+
+                    if (this.savegame.hasGameDump()) {
+                        this.stage4bResumeGame();
+                    } else {
+                        this.app.gameAnalytics.handleGameStarted();
+                        this.stage4aInitEmptyGame();
+                    }
+                },
+                err => {
+                    logger.error("Failed to preload resources:", err);
+                    const dialogs = new HUDModalDialogs(null, this.app);
+                    const dialogsElement = document.createElement("div");
+                    dialogsElement.id = "ingame_HUD_ModalDialogs";
+                    dialogsElement.style.zIndex = "999999";
+                    document.body.appendChild(dialogsElement);
+                    dialogs.initializeToElement(dialogsElement);
+
+                    this.app.backgroundResourceLoader.showLoaderError(dialogs, err);
+                }
+            );
         }
     }
 

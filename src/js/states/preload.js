@@ -1,9 +1,9 @@
 import { CHANGELOG } from "../changelog";
-import { getLogoSprite } from "../core/background_resources_loader";
 import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
+import { getLogoSprite } from "../core/utils";
 import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
@@ -39,6 +39,7 @@ export class PreloadState extends GameState {
         this.nextHintDuration = 0;
 
         this.statusText = this.htmlElement.querySelector("#ll_preload_status");
+        this.progressElement = this.htmlElement.querySelector("#ll_progressbar span");
 
         this.startLoading();
     }
@@ -70,10 +71,10 @@ export class PreloadState extends GameState {
     startLoading() {
         this.setStatus("Booting")
 
-            .then(() => this.setStatus("Creating platform wrapper"))
+            .then(() => this.setStatus("Creating platform wrapper", 3))
             .then(() => this.app.platformWrapper.initialize())
 
-            .then(() => this.setStatus("Initializing local storage"))
+            .then(() => this.setStatus("Initializing local storage", 6))
             .then(() => {
                 const wrapper = this.app.platformWrapper;
                 if (wrapper instanceof PlatformWrapperImplBrowser) {
@@ -94,19 +95,19 @@ export class PreloadState extends GameState {
                 }
             })
 
-            .then(() => this.setStatus("Creating storage"))
+            .then(() => this.setStatus("Creating storage", 9))
             .then(() => {
                 return this.app.storage.initialize();
             })
 
-            .then(() => this.setStatus("Initializing libraries"))
+            .then(() => this.setStatus("Initializing libraries", 12))
             .then(() => this.app.analytics.initialize())
             .then(() => this.app.gameAnalytics.initialize())
 
-            .then(() => this.setStatus("Connecting to api"))
+            .then(() => this.setStatus("Connecting to api", 15))
             .then(() => this.fetchDiscounts())
 
-            .then(() => this.setStatus("Initializing settings"))
+            .then(() => this.setStatus("Initializing settings", 20))
             .then(() => {
                 return this.app.settings.initialize();
             })
@@ -118,7 +119,7 @@ export class PreloadState extends GameState {
                 }
             })
 
-            .then(() => this.setStatus("Initializing language"))
+            .then(() => this.setStatus("Initializing language", 25))
             .then(() => {
                 if (G_CHINA_VERSION || G_WEGAME_VERSION) {
                     return this.app.settings.updateLanguage("zh-CN");
@@ -139,22 +140,17 @@ export class PreloadState extends GameState {
                 updateApplicationLanguage(language);
             })
 
-            .then(() => this.setStatus("Initializing sounds"))
+            .then(() => this.setStatus("Initializing sounds", 30))
             .then(() => {
-                // Notice: We don't await the sounds loading itself
                 return this.app.sound.initialize();
             })
 
-            .then(() => {
-                this.app.backgroundResourceLoader.startLoading();
-            })
-
-            .then(() => this.setStatus("Initializing restrictions"))
+            .then(() => this.setStatus("Initializing restrictions", 34))
             .then(() => {
                 return this.app.restrictionMgr.initialize();
             })
 
-            .then(() => this.setStatus("Initializing savegame"))
+            .then(() => this.setStatus("Initializing savegames", 38))
             .then(() => {
                 return this.app.savegameMgr.initialize().catch(err => {
                     logger.error("Failed to initialize savegames:", err);
@@ -165,12 +161,25 @@ export class PreloadState extends GameState {
                 });
             })
 
-            .then(() => this.setStatus("Downloading resources"))
+            .then(() => this.setStatus("Downloading resources", 40))
             .then(() => {
-                return this.app.backgroundResourceLoader.getPromiseForMainMenu();
+                this.app.backgroundResourceLoader.resourceStateChangedSignal.add(({ progress }) => {
+                    this.setStatus(
+                        "Downloading resources (" + (progress * 100.0).toFixed(1) + " %)",
+                        40 + progress * 50
+                    );
+                });
+                return this.app.backgroundResourceLoader.getMainMenuPromise().catch(err => {
+                    logger.error("Failed to load resources:", err);
+                    this.app.backgroundResourceLoader.showLoaderError(this.dialogs, err);
+                    return new Promise(() => null);
+                });
+            })
+            .then(() => {
+                this.app.backgroundResourceLoader.resourceStateChangedSignal.removeAll();
             })
 
-            .then(() => this.setStatus("Checking changelog"))
+            .then(() => this.setStatus("Checking changelog", 95))
             .then(() => {
                 if (G_IS_DEV && globalConfig.debug.disableUpgradeNotification) {
                     return;
@@ -231,7 +240,7 @@ export class PreloadState extends GameState {
                     });
             })
 
-            .then(() => this.setStatus("Launching"))
+            .then(() => this.setStatus("Launching", 99))
             .then(
                 () => {
                     this.moveToState("MainMenuState");
@@ -274,7 +283,7 @@ export class PreloadState extends GameState {
      *
      * @param {string} text
      */
-    setStatus(text) {
+    setStatus(text, progress) {
         logger.log("✅ " + text);
 
         if (G_CHINA_VERSION || G_WEGAME_VERSION) {
@@ -282,6 +291,7 @@ export class PreloadState extends GameState {
         }
         this.currentStatus = text;
         this.statusText.innerText = text;
+        this.progressElement.style.width = 80 + (progress / 100) * 20 + "%";
         return Promise.resolve();
     }
 

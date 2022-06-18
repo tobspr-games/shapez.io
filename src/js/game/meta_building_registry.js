@@ -113,7 +113,7 @@ export function initMetaBuildingRegistry() {
 /**
  * Once all sprites are loaded, propagates the cache
  */
-export function initBuildingCodesAfterResourcesLoaded() {
+export function initSpriteCache() {
     logger.log("Propagating sprite cache");
     for (const key in gBuildingVariants) {
         const variant = gBuildingVariants[key];

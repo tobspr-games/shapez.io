@@ -64,4 +64,4 @@ function bootApp() {
     app.boot();
 }
 
-window.addEventListener("load", bootApp);
+bootApp();
