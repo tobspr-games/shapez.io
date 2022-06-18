@@ -82,13 +82,12 @@ export class BackgroundResourcesLoader {
         // CSS
         for (let i = 0; i < css.length; ++i) {
             promiseFunctions.push(progress =>
-                timeoutPromise(
-                    this.internalPreloadCss(cachebust(css[i]), progress),
-                    LOADER_TIMEOUT_PER_RESOURCE
-                ).catch(err => {
-                    logger.error("Failed to load css:", css[i], err);
-                    throw new Error("HUD Stylesheet " + css[i] + " failed to load: " + err);
-                })
+                timeoutPromise(this.internalPreloadCss(css[i], progress), LOADER_TIMEOUT_PER_RESOURCE).catch(
+                    err => {
+                        logger.error("Failed to load css:", css[i], err);
+                        throw new Error("HUD Stylesheet " + css[i] + " failed to load: " + err);
+                    }
+                )
             );
         }
 
