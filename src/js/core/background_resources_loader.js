@@ -197,7 +197,7 @@ export class BackgroundResourcesLoader {
                 } else {
                     if (!notifiedNotComputable) {
                         notifiedNotComputable = true;
-                        console.warn("Progress not computable:", ev);
+                        console.warn("Progress not computable:", src, ev);
                         progressHandler(0);
                     }
                 }

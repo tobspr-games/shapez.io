@@ -81,13 +81,10 @@
         xhr.responseType = "arraybuffer";
         xhr.onprogress = function (ev) {
             if (ev.lengthComputable) {
+                console.log(ev.total);
                 progressHandler(ev.loaded / ev.total);
             } else {
-                if (!notifiedNotComputable) {
-                    notifiedNotComputable = true;
-                    console.warn("Progress not computable:", ev);
-                    progressHandler(0);
-                }
+                progressHandler(Math.min(1, ev.loaded / 1250000));
             }
         };
 
