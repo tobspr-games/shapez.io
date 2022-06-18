@@ -5,7 +5,32 @@
     // Catch load errors
 
     function errorHandler(event, source, lineno, colno, error) {
-        console.error("👀 Init Error:", event, source, lineno, colno, error);
+        if (("" + event).indexOf("Script error.") >= 0) {
+            console.warn("Thirdparty script error:", event);
+            return;
+        }
+
+        if (("" + event).indexOf("NS_ERROR_FAILURE") >= 0) {
+            console.warn("Firefox NS_ERROR_FAILURE error:", event);
+            return;
+        }
+
+        if (("" + event).indexOf("Cannot read property 'postMessage' of null") >= 0) {
+            console.warn("Safari can not read post message error:", event);
+            return;
+        }
+
+        if (("" + event).indexOf("Possible side-effect in debug-evaluate") >= 0) {
+            console.warn("Chrome debug-evaluate error:", event);
+            return;
+        }
+
+        if (("" + source).indexOf("shapez.io") < 0) {
+            console.warn("Thirdparty error:", event);
+            return;
+        }
+
+        console.error("👀 App Error:", event, source, lineno, colno, error);
         var element = document.createElement("div");
         element.id = "ll_preload_error";
 
@@ -38,9 +63,11 @@
         }
 
         document.documentElement.appendChild(element);
+
+        window.APP_ERROR_OCCURED = true;
     }
 
-    window.addEventListener("error", errorHandler);
+    window.onerror = errorHandler;
 
     function expectJsParsed() {
         if (!callbackDone) {
@@ -81,10 +108,10 @@
         xhr.responseType = "arraybuffer";
         xhr.onprogress = function (ev) {
             if (ev.lengthComputable) {
-                console.log(ev.total);
                 progressHandler(ev.loaded / ev.total);
             } else {
-                progressHandler(Math.min(1, ev.loaded / 1250000));
+                // Hardcoded length
+                progressHandler(Math.min(1, ev.loaded / 2349009));
             }
         };
 

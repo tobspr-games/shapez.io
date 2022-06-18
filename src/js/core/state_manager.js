@@ -4,7 +4,6 @@ import { Application } from "../application";
 
 import { GameState } from "./game_state";
 import { createLogger } from "./logging";
-import { APPLICATION_ERROR_OCCURED } from "./error_handler";
 import { waitNextFrame, removeAllChildren } from "./utils";
 import { MOD_SIGNALS } from "../mods/mod_signals";
 
@@ -56,7 +55,7 @@ export class StateManager {
      * @param {string} key State Key
      */
     moveToState(key, payload = {}) {
-        if (APPLICATION_ERROR_OCCURED) {
+        if (window.APP_ERROR_OCCURED) {
             console.warn("Skipping state transition because of application crash");
             return;
         }

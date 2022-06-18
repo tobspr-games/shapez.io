@@ -80,15 +80,13 @@ class LoaderImpl {
      * @returns {Promise<HTMLImageElement|null>}
      */
     internalPreloadImage(key, progressHandler) {
-        const url = cachebust("res/" + key);
-        const image = new Image();
-
         return this.app.backgroundResourceLoader
-            .preloadWithProgress(url, progress => {
+            .preloadWithProgress("res/" + key, progress => {
                 progressHandler(progress);
             })
             .then(url => {
                 return new Promise((resolve, reject) => {
+                    const image = new Image();
                     image.addEventListener("load", () => resolve(image));
                     image.addEventListener("error", err =>
                         reject("Failed to load sprite " + key + ": " + err)

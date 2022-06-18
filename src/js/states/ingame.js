@@ -1,4 +1,3 @@
-import { APPLICATION_ERROR_OCCURED } from "../core/error_handler";
 import { GameState } from "../core/game_state";
 import { logSection, createLogger } from "../core/logging";
 import { waitNextFrame } from "../core/utils";
@@ -419,7 +418,7 @@ export class InGameState extends GameState {
      * @param {number} dt
      */
     onRender(dt) {
-        if (APPLICATION_ERROR_OCCURED) {
+        if (window.APP_ERROR_OCCURED) {
             // Application somehow crashed, do not do anything
             return;
         }
@@ -465,7 +464,7 @@ export class InGameState extends GameState {
             return Promise.resolve();
         }
 
-        if (APPLICATION_ERROR_OCCURED) {
+        if (window.APP_ERROR_OCCURED) {
             logger.warn("skipping save because application crashed");
             return Promise.resolve();
         }

@@ -1,6 +1,5 @@
 import "./core/polyfills";
 import "./core/assert";
-import "./core/error_handler";
 
 import "./mods/modloader";
 

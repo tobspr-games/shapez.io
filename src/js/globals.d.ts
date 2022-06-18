@@ -100,6 +100,8 @@ declare interface Window {
 
     shapez: any;
 
+    APP_ERROR_OCCURED?: boolean;
+
     webkitRequestAnimationFrame();
 
     assert(condition: boolean, failureMessage: string);
