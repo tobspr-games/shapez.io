@@ -120,7 +120,9 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.final = final;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
 
-        if (this.final) {
+        if (this.root.time.now() < 120) {
+            this.title.innerText = "";
+        } else if (this.final) {
             this.title.innerText = T.ingame.standaloneAdvantages.titleExpiredV2;
         } else {
             this.title.innerText = T.ingame.standaloneAdvantages.titleEnjoyingDemo;
