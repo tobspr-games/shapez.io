@@ -29,6 +29,53 @@ function convert(srcDir) {
     }
 }
 
+function formatImageData(keywordArgs) {
+    let { name, rotate, xy, size, orig, offset, index } = keywordArgs;
+
+    // Convert to arrays because Node.js doesn't
+    // support latest JS features
+    xy = xy.split(",").map(v => Number(v));
+    size = size.split(",").map(v => Number(v));
+    orig = orig.split(",").map(v => Number(v));
+    offset = offset.split(",").map(v => Number(v));
+
+    // GDX TexturePacker removes index suffixes
+    let imageName = index === -1 ? `${name}.png` : `${name}_${index}.png`;
+
+
+    const frameInfo = {
+        // Bounds on atlas
+        frame: {
+            x: xy[0],
+            y: xy[1],
+            w: size[0],
+            h: size[1],
+        },
+
+        // Whether image was rotated
+        rotated: rotate === "true",
+
+        // If blank space was trimmed from the image
+        trimmed: size !== orig,
+
+        // How is the image trimmed
+        spriteSourceSize: {
+            x: offset[0],
+            y: (orig[1] - size[1]) - offset[1],
+            w: size[0],
+            h: size[1],
+        },
+
+        // Original image size
+        sourceSize: {
+            w: orig[0],
+            h: orig[1],
+        },
+    };
+
+    return [imageName, frameInfo];
+}
+
 function preformConversion(pathPrefix, atlasData) {
     // Read all text, split it into line array
     // and filter all empty lines
@@ -40,76 +87,50 @@ function preformConversion(pathPrefix, atlasData) {
     const image = lines.shift();
     const srcMeta = {};
 
-    // Read all metadata (supports only one page)
+    // Read all metadata
     while (true) {
-        const kv = lines.shift().split(":");
-        if (kv.length !== 2) {
-            lines.unshift(kv[0]);
+        const nextLine = lines.shift();
+
+        // If a line does not contain a colon, we have gone too far
+        if (!nextLine.includes(":")) {
+            lines.unshift(nextLine);
             break;
         }
 
-        srcMeta[kv[0]] = kv[1].trim();
+        // Append the parsed key value pair to our metadata map
+        const [key, value] = nextLine.split(":");
+        srcMeta[key] = value.trim();
     }
 
     const frames = {};
     let current = null;
 
-    lines.push("Dummy line to make it convert last frame");
-
     for (const line of lines) {
         if (!line.startsWith("  ")) {
             // New frame, convert previous if it exists
             if (current !== null) {
-                let { name, rotate, xy, size, orig, offset, index } = current;
-
-                // Convert to arrays because Node.js doesn't
-                // support latest JS features
-                xy = xy.split(",").map(v => Number(v));
-                size = size.split(",").map(v => Number(v));
-                orig = orig.split(",").map(v => Number(v));
-                offset = offset.split(",").map(v => Number(v));
-
-                // GDX TexturePacker removes index suffixes
-                const indexSuff = index != -1 ? `_${index}` : "";
-                const isTrimmed = size != orig;
-
-                frames[`${name}${indexSuff}.png`] = {
-                    // Bounds on atlas
-                    frame: {
-                        x: xy[0],
-                        y: xy[1],
-                        w: size[0],
-                        h: size[1],
-                    },
-
-                    // Whether image was rotated
-                    rotated: rotate == "true",
-                    trimmed: isTrimmed,
-
-                    // How is the image trimmed
-                    spriteSourceSize: {
-                        x: offset[0],
-                        y: (orig[1] - size[1]) - offset[1],
-                        w: size[0],
-                        h: size[1],
-                    },
-
-                    sourceSize: {
-                        w: orig[0],
-                        h: orig[1],
-                    },
-                };
+                // Add the previous image's frame info to the frame map
+                const [imageName, frameInfo] = formatImageData(current);
+                frames[imageName] = frameInfo;
             }
 
-            // Simple object that will hold other metadata
-            current = {
-                name: line,
-            };
+            // Reset the frame info with the new frame name.
+            current = { name: line };
         } else {
             // Read and set current image metadata
-            const kv = line.split(":").map(v => v.trim());
-            current[kv[0]] = isNaN(Number(kv[1])) ? kv[1] : Number(kv[1]);
+            const [key, value] = line.split(":").map(v => v.trim());
+
+            // Check if the value should be a number
+            const valueAsNum = Number(value);
+            current[key] = isNaN(valueAsNum) ? value : valueAsNum;
         }
+    }
+
+    // Assuming the image was not empty, there should be one last remaining entry that needs to be added.
+    if (current !== null) {
+        // Add the previous image's frame info to the frame map
+        const [imageName, frameInfo] = formatImageData(current);
+        frames[imageName] = frameInfo;
     }
 
     const atlasSize = srcMeta.size.split(",").map(v => Number(v));
@@ -128,15 +149,10 @@ function preformConversion(pathPrefix, atlasData) {
         },
     });
 
-
     const dstFile = join(pathPrefix, image.replace(".png", ".json"));
     writeFileSync(dstFile, result, {
         encoding: "utf-8",
     });
-}
-
-if (require.main == module) {
-    convert(process.argv[2]);
 }
 
 module.exports = { convert };
