@@ -13,7 +13,6 @@ import { HUDBuildingPlacer } from "./parts/building_placer";
 import { HUDColorBlindHelper } from "./parts/color_blind_helper";
 import { HUDChangesDebugger } from "./parts/debug_changes";
 import { HUDDebugInfo } from "./parts/debug_info";
-import { HUDDemoTimer } from "./parts/demo_timer";
 import { HUDEntityDebugger } from "./parts/entity_debugger";
 import { HUDModalDialogs } from "./parts/modal_dialogs";
 import { enumNotificationType } from "./parts/notifications";
@@ -84,10 +83,6 @@ export class GameHUD {
 
         if (!G_IS_RELEASE && !G_IS_DEV) {
             this.parts.betaOverlay = new HUDBetaOverlay(this.root);
-        }
-
-        if (this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
-            this.parts.demoTimer = new HUDDemoTimer(this.root);
         }
 
         const additionalParts = this.root.gameMode.additionalHudParts;
@@ -217,7 +212,7 @@ export class GameHUD {
      * @param {DrawParameters} parameters
      */
     drawOverlays(parameters) {
-        const partsOrder = ["waypoints", "wireInfo"];
+        const partsOrder = ["waypoints", "watermark", "wireInfo"];
 
         for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {

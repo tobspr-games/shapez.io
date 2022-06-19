@@ -69,10 +69,8 @@ demoBanners:
     playtimeDisclaimer: Die Vollversion bietet mehr als <strong>20 Stunden Spielspaß</strong>.
     playerCount: <playerCount> Spieler wie du spielen shapez gerade auf Steam
     untilEndOfDemo: Bis zum Ende der Demo
-    playtimeDisclaimerDownload: >-
-        Du kannst deinen Speicherstand in der Vollversion fortsetzen!
-        Klicke <strong>hier</strong> um ihn herunterzuladen.
-
+    playtimeDisclaimerDownload: Du kannst deinen Speicherstand in der Vollversion
+        fortsetzen! Klicke <strong>hier</strong> um ihn herunterzuladen.
 mainMenu:
     play: Spielen
     continue: Fortsetzen
@@ -508,34 +506,35 @@ ingame:
         desc: Klicke hier, um die Vorteile der Vollversion zu sehen!
         get_on_steam: Zur Vollversion
     standaloneAdvantages:
-        title: "Vorteile der Vollversion:"
         no_thanks: Nein, danke!
         points:
             levels:
-                title: 12 Neue Level
-                desc: Für insgesamt 26 Level!
-            buildings:
-                title: 22 Neue Gebäude
-                desc: Automatisiere deine Fabrik!
-            achievements:
-                title: Errungenschaften
-                desc: Hol sie dir alle!
-            markers:
-                title: ∞ Markierungen
-                desc: Verliere nie den Überblick!
+                title: 19 Neue Level
+                desc: Über 20 Stunden weitere Inhalte!
             wires:
                 title: Wires-Ebene
                 desc: Eine ganz neue Dimension!
             darkmode:
                 title: Dark-Mode
                 desc: Gönn deinen Augen eine Auszeit!
+            buildings:
+                title: 22 Neue Gebäude
+                desc: Automatisiere deine Fabrik!
+            achievements:
+                title: 45 Errungenschaften
+                desc: Hol sie dir alle!
+            markers:
+                title: ∞ Markierungen
+                desc: Verliere nie den Überblick!
             support:
                 title: Unterstütze Mich
                 desc: Ich entwickle das Spiel in meiner Freizeit!
             mods:
                 title: Mod-Support!
                 desc: Über 80 Mods verfügbar!
-        title_expired: Demo Zeit abgelaufen
+        titleV2: "Hol dir jetzt die Vollversion auf Steam für:"
+        titleExpiredV2: Demo abgeschlossen!
+        titleEnjoyingDemo: Gefällt dir die Demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Breite

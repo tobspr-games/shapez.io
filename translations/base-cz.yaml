@@ -65,8 +65,8 @@ demoBanners:
     playtimeDisclaimer: Plná verze obsahuje více než <strong>20 hodin obsahu</strong>.
     playerCount: <playerCount> hráči jako vy právě hrají shapez ve službě Steam
     untilEndOfDemo: do konce ukázky
-    playtimeDisclaimerDownload: Ve hře můžete pokračovat v plné verzi!
-        Klikněte <strong>sem</strong> a stáhněte si uloženou hru.
+    playtimeDisclaimerDownload: Ve hře můžete pokračovat v plné verzi! Klikněte
+        <strong>sem</strong> a stáhněte si uloženou hru.
 mainMenu:
     play: Hrát
     continue: Pokračovat
@@ -432,7 +432,6 @@ ingame:
         desc: Kliknutím sem zobrazíte výhody Steam verze!
         get_on_steam: Získejte na steamu
     standaloneAdvantages:
-        title: Získejte plnou verzi!
         no_thanks: Ne, děkuji!
         points:
             levels:
@@ -459,7 +458,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Čas demoverze vypršel
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Šířka

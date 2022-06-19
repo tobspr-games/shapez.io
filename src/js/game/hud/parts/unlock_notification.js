@@ -31,10 +31,6 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", ["noBlur"]);
 
-        if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
-            this.element.classList.add("withinDemo");
-        }
-
         const dialog = makeDiv(this.element, null, ["dialog"]);
 
         this.elemTitle = makeDiv(dialog, null, ["title"]);
@@ -134,6 +130,13 @@ export class HUDUnlockNotification extends BaseHUDPart {
             this.close();
 
             this.root.hud.signals.unlockNotificationFinished.dispatch();
+
+            if (
+                this.root.hubGoals.level > this.root.gameMode.getLevelDefinitions().length - 1 &&
+                this.root.app.restrictionMgr.getIsStandaloneMarketingActive()
+            ) {
+                this.root.hud.parts.standaloneAdvantages.show(true);
+            }
 
             if (!this.root.app.settings.getAllSettings().offerHints) {
                 return;

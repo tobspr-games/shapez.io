@@ -58,7 +58,7 @@ export class BackgroundResourcesLoader {
             return this.mainMenuPromise;
         }
 
-        logger.warn("⏰ Loading main menu assets");
+        logger.log("⏰ Loading main menu assets");
         return (this.mainMenuPromise = this.loadAssets(MAIN_MENU_ASSETS));
     }
 
@@ -66,7 +66,7 @@ export class BackgroundResourcesLoader {
         if (this.ingamePromise) {
             return this.ingamePromise;
         }
-        logger.warn("⏰ Loading ingame assets");
+        logger.log("⏰ Loading ingame assets");
         const promise = this.loadAssets(INGAME_ASSETS).then(() => initSpriteCache());
         return (this.ingamePromise = promise);
     }

@@ -26,6 +26,7 @@ export const SOUNDS = {
     placeBuilding: "place_building",
     placeBelt: "place_belt",
     copy: "copy",
+    unlockUpgrade: "unlock_upgrade",
 };
 
 export const MUSIC = {
@@ -150,6 +151,9 @@ export class SoundInterface {
      * @returns {Promise<void>}
      */
     loadSound(key) {
+        if (!key) {
+            return Promise.resolve();
+        }
         if (this.sounds[key]) {
             return this.sounds[key].load();
         } else if (this.music[key]) {
@@ -271,7 +275,7 @@ export class SoundInterface {
      */
     playThemeMusic(key) {
         const music = this.music[key];
-        if (key !== null && !music) {
+        if (key && !music) {
             logger.warn("Music", key, "not found");
         }
         if (this.currentMusic !== music) {

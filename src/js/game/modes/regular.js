@@ -293,21 +293,17 @@ function generateUpgrades(limitedVersion = false, difficulty = 1) {
     return upgrades;
 }
 
-const levelDefinitionsCache = {};
+let levelDefinitionsCache = null;
 
 /**
  * Generates the level definitions
- * @param {keyof typeof LevelSetVariant} variant
  */
-export function generateLevelDefinitions(variant, difficulty = 1) {
-    if (levelDefinitionsCache[variant]) {
-        return levelDefinitionsCache[variant];
+export function generateLevelDefinitions() {
+    if (levelDefinitionsCache) {
+        return levelDefinitionsCache;
     }
-
-    const levelDefinitions = generateLevelsForVariant(variant);
-
+    const levelDefinitions = generateLevelsForVariant();
     MOD_SIGNALS.modifyLevelDefinitions.dispatch(levelDefinitions);
-
     if (G_IS_DEV) {
         levelDefinitions.forEach(({ shape }) => {
             try {
@@ -317,13 +313,7 @@ export function generateLevelDefinitions(variant, difficulty = 1) {
             }
         });
     }
-
-    levelDefinitions.forEach(definition => {
-        definition.required = Math.round(definition.required * difficulty);
-    });
-
-    levelDefinitionsCache[variant] = levelDefinitions;
-
+    levelDefinitionsCache = levelDefinitions;
     return levelDefinitions;
 }
 
@@ -412,14 +402,7 @@ export class RegularGameMode extends GameMode {
      * @returns {Array<LevelDefinition>}
      */
     getLevelDefinitions() {
-        if (this.root.app.restrictionMgr.isLimitedVersion()) {
-            return generateLevelDefinitions(
-                this.root.app.gameAnalytics.abtVariant === "0" ? "LimitedLevel8" : "LimitedLevelBlueprints",
-                this.difficultyMultiplicator
-            );
-        } else {
-            return generateLevelDefinitions("NoRestrictions", this.difficultyMultiplicator);
-        }
+        return generateLevelDefinitions();
     }
 
     /**

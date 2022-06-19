@@ -446,7 +446,6 @@ ingame:
         desc: Apasă aici pentru a vedea avantajele versiunii Steam!
         get_on_steam: Ia pe Steam
     standaloneAdvantages:
-        title: Ia versiunea completă!
         no_thanks: Nu, mersi!
         points:
             levels:
@@ -473,7 +472,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Timpul demo a expirat
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zonă
         zoneWidth: Lățime

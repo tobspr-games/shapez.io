@@ -12,8 +12,8 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
-        this.title = makeDiv(this.dialogInner, null, ["title"], T.ingame.standaloneAdvantages.title_expired);
-        this.subTitle = makeDiv(this.dialogInner, null, ["subTitle"], T.ingame.standaloneAdvantages.title);
+        this.title = makeDiv(this.dialogInner, null, ["title"], "");
+        this.subTitle = makeDiv(this.dialogInner, null, ["subTitle"], T.ingame.standaloneAdvantages.titleV2);
 
         this.contentDiv = makeDiv(
             this.dialogInner,
@@ -34,7 +34,6 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             </div>
 
             <div class="lowerBar">
-            <div class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</div>
 
             <div class="playtimeDisclaimerDownload">${T.demoBanners.playtimeDisclaimerDownload}</div>
 
@@ -75,6 +74,18 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         return 15 * 60;
     }
 
+    shouldPauseGame() {
+        return this.visible;
+    }
+
+    shouldPauseRendering() {
+        return this.visible;
+    }
+
+    hasBlockingOverlayOpen() {
+        return this.visible;
+    }
+
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -83,7 +94,8 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.inputReciever = new InputReceiver("standalone-advantages");
         this.close();
 
-        // On standalone, show popup instant - but don't do so on web
+        // On standalone, show popup instant - but don't do so on web, since it increases
+        // the amount of clicks to get into the game
         if (G_IS_STEAM_DEMO) {
             // show instant
             this.lastShown = -1e10;
@@ -91,6 +103,15 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             // wait for next interval
             this.lastShown = 0;
         }
+
+        this.root.signals.gameRestored.add(() => {
+            if (
+                this.root.hubGoals.level >= this.root.gameMode.getLevelDefinitions().length - 1 &&
+                this.root.app.restrictionMgr.getIsStandaloneMarketingActive()
+            ) {
+                this.show(true);
+            }
+        });
     }
 
     show(final = false) {
@@ -98,6 +119,12 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.visible = true;
         this.final = final;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
+
+        if (this.final) {
+            this.title.innerText = T.ingame.standaloneAdvantages.titleExpiredV2;
+        } else {
+            this.title.innerText = T.ingame.standaloneAdvantages.titleEnjoyingDemo;
+        }
     }
 
     close() {
@@ -112,6 +139,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
     }
 
     update() {
+        if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
+            this.show();
+        }
+
         this.domAttach.update(this.visible);
     }
 }

@@ -443,7 +443,6 @@ ingame:
         desc: Нажмите сюда, чтобы узнать о преимуществах Steam версии!
         get_on_steam: Приобрести в Steam
     standaloneAdvantages:
-        title: Приобретите полную версию!
         no_thanks: Нет, спасибо!
         points:
             levels:
@@ -470,7 +469,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Истекло время демонстрации
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Область
         zoneWidth: Ширина

@@ -118,6 +118,10 @@ function gulptasksHTML($, gulp, buildFolder) {
                         style.textContent = loadingCss;
                         document.head.appendChild(style);
 
+                        let bodyContent = fs
+                            .readFileSync(path.join(__dirname, "preloader", "preloader.html"))
+                            .toString();
+
                         // Append loader, but not in standalone (directly include bundle there)
                         if (standalone) {
                             const bundleScript = document.createElement("script");
@@ -135,19 +139,12 @@ function gulptasksHTML($, gulp, buildFolder) {
                             loadJs.type = "text/javascript";
                             let scriptContent = "";
                             scriptContent += `var bundleSrc = '${cachebust("bundle.js")}';\n`;
-                            // scriptContent += `var bundleSrcTranspiled = '${cachebust(
-                            //     "bundle-transpiled.js"
-                            // )}';\n`;
 
                             if (integrity) {
                                 scriptContent +=
                                     "var bundleIntegrity = '" +
                                     computeIntegrityHash(path.join(buildFolder, "bundle.js")) +
                                     "';\n";
-                                // scriptContent +=
-                                //     "var bundleIntegrityTranspiled = '" +
-                                //     computeIntegrityHash(path.join(buildFolder, "bundle-transpiled.js")) +
-                                //     "';\n";
                             } else {
                                 scriptContent += "var bundleIntegrity = null;\n";
                                 scriptContent += "var bundleIntegrityTranspiled = null;\n";
@@ -158,11 +155,21 @@ function gulptasksHTML($, gulp, buildFolder) {
                                 .toString();
                             loadJs.textContent = scriptContent;
                             document.head.appendChild(loadJs);
-                        }
 
-                        const bodyContent = fs
-                            .readFileSync(path.join(__dirname, "preloader", "preloader.html"))
-                            .toString();
+                            // Click fraud prevention
+                            bodyContent =
+                                `
+                            <script type="text/javascript">
+                                var script = document.createElement("script");
+                                script.async = true;
+                                script.type = "text/javascript";
+                                var target = "https://www.clickcease.com/monitor/stat.js";
+                                script.src = target;
+                                var elem = document.head;
+                                elem.appendChild(script);
+                            </script>
+                            ` + bodyContent;
+                        }
 
                         document.body.innerHTML = bodyContent;
                     }

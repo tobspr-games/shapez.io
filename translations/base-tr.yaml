@@ -439,7 +439,6 @@ ingame:
         desc: Steam sürümü avantajlarını görmek için buraya tıklayın!
         get_on_steam: Steam'de al
     standaloneAdvantages:
-        title: Tam versiyonu al!
         no_thanks: Hayır, teşekkürler!
         points:
             levels:
@@ -466,7 +465,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo süresi sona erdi
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Alan
         zoneWidth: Genişlik

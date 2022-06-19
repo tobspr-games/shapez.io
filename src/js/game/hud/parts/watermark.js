@@ -5,23 +5,6 @@ import { BaseHUDPart } from "../base_hud_part";
 
 export class HUDWatermark extends BaseHUDPart {
     createElements(parent) {
-        // To be continued later
-        // let linkText = "";
-        // switch (this.root.app.gameAnalytics.abtVariant) {
-        //     case "0": {
-        //         linkText = "Get on Steam";
-        //         break;
-        //     }
-        //     case "1": {
-        //         linkText = "Play on Steam";
-        //         break;
-        //     }
-        //     case "2": {
-        //         linkText = T.ingame.watermark.get_on_steam;
-        //         break;
-        //     }
-        // }
-
         let linkText = T.ingame.watermark.get_on_steam;
 
         this.linkElement = makeDiv(
@@ -41,4 +24,23 @@ export class HUDWatermark extends BaseHUDPart {
     initialize() {}
 
     update() {}
+
+    /**
+     *
+     * @param {import("../../../core/draw_utils").DrawParameters} parameters
+     */
+    drawOverlays(parameters) {
+        const w = this.root.gameWidth;
+
+        parameters.context.fillStyle = "rgba(20, 30, 40, 0.25)";
+        parameters.context.font = "bold " + this.root.app.getEffectiveUiScale() * 40 + "px GameFont";
+        parameters.context.textAlign = "center";
+        parameters.context.fillText(
+            T.demoBanners.title.toUpperCase(),
+            w / 2,
+            this.root.app.getEffectiveUiScale() * 50
+        );
+
+        parameters.context.textAlign = "left";
+    }
 }

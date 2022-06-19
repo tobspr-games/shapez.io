@@ -107,7 +107,7 @@ demoBanners:
             <li>... and a lot more!</li>
         </ul>
     playtimeDisclaimer: >-
-        The full version contains more than <strong>20 hours of content</strong>.
+        The full version contains more than <strong>20 hours of additional content</strong>!
 
     playtimeDisclaimerDownload: >-
         You can continue your savegame in the full version! Click <strong>here</strong> to download your savegame.
@@ -654,22 +654,32 @@ ingame:
         get_on_steam: Get on Steam
 
     standaloneAdvantages:
-        title: >-
-            Advantages of the full version:
-        title_expired: Demo Time Expired
+        titleV2: >-
+            Get the full version now on Steam to unlock:
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoying the demo?
+
         no_thanks: No, thanks!
 
         points:
             levels:
                 title: 19 New Levels
-                desc: For a total of 26 levels!
+                desc: >-
+                    Over 20 hours of additional content!
+            wires:
+                title: Wires
+                desc: An entirely new dimension!
+
+            darkmode:
+                title: Dark Mode
+                desc: Stop hurting your eyes!
 
             buildings:
                 title: 22 New Buildings
                 desc: Fully automate your factory!
 
             achievements:
-                title: Achievements
+                title: 45 Achievements
                 desc: Hunt them all!
 
             mods:
@@ -679,14 +689,6 @@ ingame:
             markers:
                 title: ∞ Markers
                 desc: Never get lost in your factory!
-
-            wires:
-                title: Wires
-                desc: An entirely new dimension!
-
-            darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
 
             support:
                 title: Support me

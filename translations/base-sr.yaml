@@ -435,7 +435,6 @@ ingame:
         desc: Kliknite ovde da pogledate prednosti Steam verzije!
         get_on_steam: Nabavite na Steam-u
     standaloneAdvantages:
-        title: Nabavite punu verziju!
         no_thanks: Neka, hvala!
         points:
             levels:
@@ -462,7 +461,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo Time Expired
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Širina

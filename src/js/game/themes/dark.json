@@ -1,7 +1,9 @@
 {
     "map": {
         "background": "#3e3f47",
-        "grid": "rgba(255, 255, 255, 0.02)",
+        "gridRegular": "rgba(255, 255, 255, 0.02)",
+        "gridPlacing": "rgba(255, 255, 255, 0.06)",
+
         "gridLineWidth": 0.5,
 
         "selectionOverlay": "rgba(74, 163, 223, 0.7)",

@@ -438,7 +438,6 @@ ingame:
         desc: Kattints ide, hogy megnézd az Önálló Verzió előnyeit!
         get_on_steam: Megvásárlás Steamen
     standaloneAdvantages:
-        title: Vásárold meg a Teljes Verziót!
         no_thanks: Nem, köszönöm!
         points:
             levels:
@@ -465,7 +464,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo idő lejárt
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Szélesség

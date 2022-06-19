@@ -69,8 +69,8 @@ demoBanners:
         timmars innehåll</strong>.
     playerCount: <playerCount> spelare som du spelar just nu shapez på Steam
     untilEndOfDemo: Till slutet av demonstrationen
-    playtimeDisclaimerDownload: Du kan fortsätta ditt savegame i den fullständiga versionen!
-        Klicka <strong>här</strong> för att ladda ner ditt savegame.
+    playtimeDisclaimerDownload: Du kan fortsätta ditt savegame i den fullständiga
+        versionen! Klicka <strong>här</strong> för att ladda ner ditt savegame.
 mainMenu:
     play: Spela
     changelog: Ändringslogg
@@ -439,7 +439,6 @@ ingame:
         desc: Klicka här för att se fördelarna med Steam-versionen!
         get_on_steam: Skaffa på Steam
     standaloneAdvantages:
-        title: Skaffa den fulla versionen!
         no_thanks: Nej tack!
         points:
             levels:
@@ -466,7 +465,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demotiden har löpt ut
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

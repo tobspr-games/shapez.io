@@ -68,8 +68,8 @@ demoBanners:
     playtimeDisclaimer: Повна версія містить понад <strong>20 години вмісту</strong>.
     playerCount: <playerCount> гравців як ви зараз грають у shapez на Steam
     untilEndOfDemo: До кінця демонстрації
-    playtimeDisclaimerDownload: Ви можете продовжити свою збережену гру в повній версії!
-        Натисніть <strong>тут</strong>, щоб завантажити збережену гру.
+    playtimeDisclaimerDownload: Ви можете продовжити свою збережену гру в повній
+        версії! Натисніть <strong>тут</strong>, щоб завантажити збережену гру.
 mainMenu:
     play: Грати
     continue: Продовжити
@@ -430,10 +430,10 @@ ingame:
                 вводи</strong> фарбувальника за допомогою проводу!
             21_3_place_button: Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та
                 з'єднайте їх дротом!
-            21_4_press_button: 'Натисніть вимикач, аби він почав <strong>видавати сигнал
-                "Істина" </strong> активувавши таким чином
-                фарбувальник.<br><br> PS: Не обов''язково підключати всі входи!
-                Спробуйте підключити лише два.'
+            21_4_press_button: "Натисніть вимикач, аби він почав <strong>видавати сигнал
+                \"Істина\" </strong> активувавши таким чином
+                фарбувальник.<br><br> PS: Не обов'язково підключати всі входи!
+                Спробуйте підключити лише два."
     connectedMiners:
         one_miner: 1 Екстрактор
         n_miners: <amount> Екстракторів
@@ -443,7 +443,6 @@ ingame:
         desc: Натисніть сюди аби переглянути переваги Steam версії!
         get_on_steam: Отримати в Steam
     standaloneAdvantages:
-        title: Отримати повну версію!
         no_thanks: Ні, дякую!
         points:
             levels:
@@ -470,7 +469,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Час демонстрації закінчився
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Зона
         zoneWidth: Ширина

@@ -447,7 +447,6 @@ ingame:
         desc: Click here to see the Steam version advantages!
         get_on_steam: Get on steam
     standaloneAdvantages:
-        title: Get the full version!
         no_thanks: No, thanks!
         points:
             levels:
@@ -474,7 +473,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo Time Expired
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

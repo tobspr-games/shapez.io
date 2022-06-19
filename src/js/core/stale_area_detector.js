@@ -79,8 +79,8 @@ export class StaleAreaDetector {
      */
     update() {
         if (this.staleArea) {
-            logger.log(this.name, "is recomputing", this.staleArea.toString());
             if (G_IS_DEV && globalConfig.debug.renderChanges) {
+                logger.log(this.name, "is recomputing", this.staleArea.toString());
                 this.root.hud.parts.changesDebugger.renderChange(this.name, this.staleArea, "#fd145b");
             }
             this.recomputeMethod(this.staleArea);

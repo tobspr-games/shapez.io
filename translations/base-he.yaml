@@ -419,7 +419,6 @@ ingame:
         desc: לחץ פה בשביל לראות את היתרונות של הגרסה להורדה!
         get_on_steam: Steamהשג ב
     standaloneAdvantages:
-        title: "!השג את הגרסה המלאה"
         no_thanks: "!לא, תודה"
         points:
             levels:
@@ -446,7 +445,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo Time Expired
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

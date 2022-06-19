@@ -69,8 +69,8 @@ demoBanners:
     playtimeDisclaimer: De volledige versie bevat meer dan <strong>20 uur aan inhoud</strong>.
     playerCount: <playerCount> spelers zoals jij spelen op dit moment shapez op Steam
     untilEndOfDemo: Tot het einde van de demo
-    playtimeDisclaimerDownload: Je kunt doorgaan met je savegame in de volledige versie!
-        Klik <strong>hier</strong> om je savegame te downloaden.
+    playtimeDisclaimerDownload: Je kunt doorgaan met je savegame in de volledige
+        versie! Klik <strong>hier</strong> om je savegame te downloaden.
 mainMenu:
     play: Spelen
     changelog: Wijzigingenlijst
@@ -446,7 +446,6 @@ ingame:
         desc: Klik hier om het spel op Steam te kopen!
         get_on_steam: Krijg het op Steam
     standaloneAdvantages:
-        title: Koop de volledige versie!
         no_thanks: Nee, dankjewel!
         points:
             levels:
@@ -473,7 +472,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo tijd verlopen
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Gebied
         zoneWidth: Breedte

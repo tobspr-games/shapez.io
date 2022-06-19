@@ -70,8 +70,8 @@ demoBanners:
     playerCount: <playerCount> kaltaisesi pelaajat pelaavat parhaillaan shapezia
         Steamissa.
     untilEndOfDemo: Demon loppuun asti
-    playtimeDisclaimerDownload: Voit jatkaa tallentamistasi täysversiossa!
-        Lataa tallennettava peli napsauttamalla <strong>tätä</strong>.
+    playtimeDisclaimerDownload: Voit jatkaa tallentamistasi täysversiossa! Lataa
+        tallennettava peli napsauttamalla <strong>tätä</strong>.
 mainMenu:
     play: Pelaa
     continue: Jatka
@@ -434,7 +434,6 @@ ingame:
         desc: Napsauta tästä nähdäksesi Steam version edut!
         get_on_steam: Hanki Steamista
     standaloneAdvantages:
-        title: Hanki täysversio!
         no_thanks: Ei kiitos!
         points:
             levels:
@@ -461,7 +460,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demon aika päättynyt
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

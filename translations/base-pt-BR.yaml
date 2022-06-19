@@ -69,8 +69,8 @@ demoBanners:
     playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
-    playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão completa!
-        Clique <strong>aqui</strong> para baixar seu jogo salvo.
+    playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão
+        completa! Clique <strong>aqui</strong> para baixar seu jogo salvo.
 mainMenu:
     play: Jogar
     continue: Continuar
@@ -440,7 +440,6 @@ ingame:
         desc: Clique aqui para ver as vantagens da versão completa!
         get_on_steam: Adquira na Steam
     standaloneAdvantages:
-        title: Adquira a versão completa!
         no_thanks: Não, obrigado!
         points:
             levels:
@@ -467,7 +466,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: O tempo de demonstração expirou
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura

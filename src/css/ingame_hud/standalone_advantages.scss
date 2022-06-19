@@ -1,6 +1,6 @@
 #ingame_HUD_StandaloneAdvantages {
     .content {
-        @include S(width, 440px);
+        @include S(width, 500px);
         @include S(min-height, 300px);
     }
     p {
@@ -10,14 +10,10 @@
     .points {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        @include S(grid-column-gap, 10px);
-        @include S(grid-row-gap, 20px);
-        @include S(margin, 10px, 0, 20px);
-        grid-template-rows: #{D(30px)};
+        @include S(grid-column-gap, 5px);
+        @include S(grid-row-gap, 5px);
+        @include S(margin, 10px, 0, 10px);
         align-items: center;
-        background: #eef1f4;
-        @include S(border-radius, $globalBorderRadius);
-        @include S(padding, 15px, 4px);
     }
 
     .title {
@@ -90,20 +86,15 @@
 
         .playtimeDisclaimerDownload {
             @include SuperSmallText;
-            width: 100%;
             box-sizing: border-box;
             text-align: center;
-            background: #b3f2c5;
             @include S(border-radius, $globalBorderRadius);
-            @include S(padding, 7px, 10px);
+            @include S(padding, 4px, 4px);
             @include S(margin-bottom, 15px);
             pointer-events: all;
             transition: background-color 0.12s ease-in-out;
             color: rgba(#000, 0.5);
 
-            &:hover {
-                background: darken(#b3f2c5, 3);
-            }
             cursor: pointer;
 
             strong {
@@ -120,6 +111,12 @@
 
             overflow: visible;
             @include S(border-radius, $globalBorderRadius);
+
+            @include InlineAnimation(1s ease-in-out infinite) {
+                50% {
+                    transform: scale(1.02, 1.03);
+                }
+            }
 
             > .discount {
                 position: absolute;
@@ -143,8 +140,13 @@
 
     .point {
         display: grid;
-        grid-template-columns: #{D(55px)} auto;
+        grid-template-columns: #{D(50px)} auto;
         grid-template-rows: D(20px) D(20px);
+        background: #eff2f4 #{D(12px)} center / #{D(30px)} no-repeat;
+
+        @include S(border-radius, $globalBorderRadius);
+        @include S(padding, 10px, 4px, 4px);
+        @include S(height, 40px);
 
         > strong {
             grid-column: 2 / 3;
@@ -160,8 +162,6 @@
             @include SuperSmallText;
             opacity: 0.8;
         }
-
-        background: transparent #{D(10px)} center / #{D(30px)} no-repeat;
 
         &.levels {
             & {

@@ -513,12 +513,6 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         const settings = data.settings;
 
-        // MODS
-        if (!THEMES[settings.theme] || !this.app.restrictionMgr.getHasExtendedSettings()) {
-            console.warn("Resetting theme because its no longer available: " + settings.theme);
-            settings.theme = "light";
-        }
-
         for (let i = 0; i < this.settingHandles.length; ++i) {
             const setting = this.settingHandles[i];
             const storedValue = settings[setting.id];
@@ -701,7 +695,7 @@ export class ApplicationSettings extends ReadWriteProxy {
 
         // MODS
         if (!THEMES[data.settings.theme] || !this.app.restrictionMgr.getHasExtendedSettings()) {
-            console.warn("Resetting theme because its no longer available: " + data.settings.theme);
+            console.log("Resetting theme because its no longer available: " + data.settings.theme);
             data.settings.theme = "light";
         }
 

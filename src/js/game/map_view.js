@@ -22,8 +22,12 @@ export class MapView extends BaseMap {
 
         /**
          * The cached background sprite, containing the flat background
-         * @type {HTMLCanvasElement} */
-        this.cachedBackgroundCanvas = null;
+         * @type {Object<string, HTMLCanvasElement | null>}
+         */
+        this.cachedBackgroundCanvases = {
+            regular: null,
+            placing: null,
+        };
 
         /** @type {CanvasRenderingContext2D} */
         this.cachedBackgroundContext = null;
@@ -36,8 +40,10 @@ export class MapView extends BaseMap {
     }
 
     cleanup() {
-        freeCanvas(this.cachedBackgroundCanvas);
-        this.cachedBackgroundCanvas = null;
+        for (const key in this.cachedBackgroundCanvases) {
+            freeCanvas(this.cachedBackgroundCanvases[key]);
+            this.cachedBackgroundCanvases[key] = null;
+        }
     }
 
     /**
@@ -99,28 +105,29 @@ export class MapView extends BaseMap {
      * Initializes all canvases used for background rendering
      */
     internalInitializeCachedBackgroundCanvases() {
-        // Background canvas
-        const dims = globalConfig.tileSize;
-        const dpi = this.backgroundCacheDPI;
-        const [canvas, context] = makeOffscreenBuffer(dims * dpi, dims * dpi, {
-            smooth: false,
-            label: "map-cached-bg",
-        });
-        context.scale(dpi, dpi);
+        for (const key in this.cachedBackgroundCanvases) {
+            // Background canvas
+            const dims = globalConfig.tileSize;
+            const dpi = this.backgroundCacheDPI;
+            const [canvas, context] = makeOffscreenBuffer(dims * dpi, dims * dpi, {
+                smooth: false,
+                label: "map-cached-bg",
+            });
+            context.scale(dpi, dpi);
 
-        context.fillStyle = THEME.map.background;
-        context.fillRect(0, 0, dims, dims);
+            context.fillStyle = THEME.map.background;
+            context.fillRect(0, 0, dims, dims);
 
-        const borderWidth = THEME.map.gridLineWidth;
-        context.fillStyle = THEME.map.grid;
-        context.fillRect(0, 0, dims, borderWidth);
-        context.fillRect(0, borderWidth, borderWidth, dims);
+            const borderWidth = THEME.map.gridLineWidth;
+            context.fillStyle = THEME.map["grid" + key[0].toUpperCase() + key.substring(1)] || "red";
+            context.fillRect(0, 0, dims, borderWidth);
+            context.fillRect(0, borderWidth, borderWidth, dims);
 
-        context.fillRect(dims - borderWidth, borderWidth, borderWidth, dims - 2 * borderWidth);
-        context.fillRect(borderWidth, dims - borderWidth, dims, borderWidth);
+            context.fillRect(dims - borderWidth, borderWidth, borderWidth, dims - 2 * borderWidth);
+            context.fillRect(borderWidth, dims - borderWidth, dims, borderWidth);
 
-        this.cachedBackgroundCanvas = canvas;
-        this.cachedBackgroundContext = context;
+            this.cachedBackgroundCanvases[key] = canvas;
+        }
     }
 
     /**
@@ -225,14 +232,19 @@ export class MapView extends BaseMap {
             const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
 
-            // @ts-ignore
-            if (this.cachedBackgroundCanvas._contextLost) {
-                freeCanvas(this.cachedBackgroundCanvas);
+            let key = "regular";
+            if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get()) {
+                key = "placing";
+            }
+
+            // @ts-ignore`
+            if (this.cachedBackgroundCanvases[key]._contextLost) {
+                freeCanvas(this.cachedBackgroundCanvases[key]);
                 this.internalInitializeCachedBackgroundCanvases();
             }
 
             parameters.context.fillStyle = parameters.context.createPattern(
-                this.cachedBackgroundCanvas,
+                this.cachedBackgroundCanvases[key],
                 "repeat"
             );
             parameters.context.fillRect(

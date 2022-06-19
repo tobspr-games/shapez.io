@@ -442,7 +442,6 @@ ingame:
         desc: Klik disini untuk melihat keunggulan pada versi Steam!
         get_on_steam: Dapatkan di Steam
     standaloneAdvantages:
-        title: Dapatkan versi lengkap!
         no_thanks: Tidak, terima kasih!
         points:
             levels:
@@ -469,7 +468,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: Demo Time Expired
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width

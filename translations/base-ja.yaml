@@ -375,11 +375,9 @@ ingame:
                 切断機はそれの向きに関わらず、<strong>縦の線</strong>で切断します。"
             2_2_place_trash: 切断機は<strong>詰まる</strong>場合があります!<br><br>
                 <strong>ゴミ箱</strong>を利用して、不必要な部品を廃棄できます。
-            2_3_more_cutters:
-                "いいですね！　<strong>更に2つ以上の切断機</strong>を設置して処理をスピードアップさせましょう！<br>\
+            2_3_more_cutters: "いいですね！　<strong>更に2つ以上の切断機</strong>を設置して処理をスピードアップさせましょう！<br>\
                 <br> 追記: <strong>0から9 のホットキー</strong>を使用すると素早く部品にアクセスできます。"
-            3_1_rectangles:
-                "それでは四角形を抽出しましょう！　<strong>4つの抽出機を作成</strong>してそれをハブに接続します。<br><\
+            3_1_rectangles: "それでは四角形を抽出しましょう！　<strong>4つの抽出機を作成</strong>してそれをハブに接続します。<br><\
                 br> 追記: <strong>SHIFT</strong>を押しながらベルトを引くと ベルトプランナーが有効になります！"
             21_1_place_quad_painter: <strong>四色着色機</strong>を設置して、
                 <strong>円</strong>、<strong>白</strong>そして
@@ -399,7 +397,6 @@ ingame:
         desc: Steamバージョンの特典を確認するには、ここをクリックしてください！
         get_on_steam: steamで購入
     standaloneAdvantages:
-        title: フルバージョンを購入
         no_thanks: いいえ、結構です
         points:
             levels:
@@ -426,7 +423,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        title_expired: デモ時間終了
+        titleV2: "Get the full version now on Steam to unlock:"
+        titleExpiredV2: Demo completed!
+        titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Width
@@ -663,16 +662,14 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
-        desc:
-            <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します！　<br><br>利用しない側の出力に注意しましょう、破棄しなければ<strong>詰まって停止してしまいます。</strong>
+        desc: <strong>切断機</strong>が利用可能になりました。これは入力された形を、<strong>向きを考慮せず上下の直線で</strong>半分に切断します！　<br><br>利用しない側の出力に注意しましょう、破棄しなければ<strong>詰まって停止してしまいます。</strong>
             - このために<strong>ゴミ箱</strong>も用意しました。入力アイテムをすべて破棄できます！
     reward_rotater:
         title: 回転
         desc: <strong>回転機</strong>が利用可能になりました！　形を時計回り方向に90度回転させます。
     reward_painter:
         title: 着色
-        desc:
-            "<strong>着色機</strong>が利用可能になりました。（今まで形状でやってきた方法で）色を抽出し、形状と合成することで着色します！　<\
+        desc: "<strong>着色機</strong>が利用可能になりました。（今まで形状でやってきた方法で）色を抽出し、形状と合成することで着色します！　<\
             br><br>追伸: もし色覚特性をお持ちでしたら、 設定に<strong>色覚特性モード</strong>があります！"
     reward_mixer:
         title: 混色
@@ -691,8 +688,7 @@ storyRewards:
         desc: <strong>回転機</strong>のバリエーションが利用可能になりました。反時計回りの回転ができるようになります！　回転機を選択し、<strong>'T'キーを押すことで方向の切り替えができます。</strong>
     reward_miner_chainable:
         title: 連鎖抽出機
-        desc:
-            "<strong>連鎖抽出機</strong>が利用可能になりました！ 他の抽出機に<strong>出力を渡す</strong>ことができるので、
+        desc: "<strong>連鎖抽出機</strong>が利用可能になりました！ 他の抽出機に<strong>出力を渡す</strong>ことができるので、
             資源の抽出がより効率的になります！<br><br> 補足: ツールバーの 旧い抽出機が置き換えられました！"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
@@ -717,8 +713,7 @@ storyRewards:
             通常の着色機と同様に機能しますが、ひとつの色の消費で<strong>一度に2つの形</strong>を着色処理できます！
     reward_storage:
         title: ストレージ
-        desc:
-            <strong>ストレージ</strong>が利用可能になりました。 - 容量上限までアイテムを格納できます！<br><br>
+        desc: <strong>ストレージ</strong>が利用可能になりました。 - 容量上限までアイテムを格納できます！<br><br>
             左側の出力を優先するため、<strong>オーバーフローゲート</strong>としても使用できます！
     reward_blueprints:
         title: ブループリント
@@ -737,8 +732,7 @@ storyRewards:
             設定で<strong>ヒントを有効にする</strong>と、 ワイヤのチュートリアルが有効になります。"
     reward_filter:
         title: アイテムフィルタ
-        desc:
-            <strong>アイテムフィルタ</strong>が利用可能になりました！　ワイヤレイヤの信号と一致するかどうかに応じて、アイテムを上側または右側の出力に分離します。<br><br>
+        desc: <strong>アイテムフィルタ</strong>が利用可能になりました！　ワイヤレイヤの信号と一致するかどうかに応じて、アイテムを上側または右側の出力に分離します。<br><br>
             また、真偽値(0/1)信号を入力すれば全てのアイテムの通過・非通過を制御できます。
     reward_display:
         title: ディスプレイ
@@ -747,13 +741,11 @@ storyRewards:
             ベルトリーダーとストレージが最後に通過したアイテムを出力していることに気づきましたか？ それをディスプレイに表示してみてください！"
     reward_constant_signal:
         title: 定数信号
-        desc:
-            <strong>定数信号</strong>がワイヤレイヤで利用可能になりました！　これは例えば<strong>アイテムフィルタ</strong>に接続すると便利です。<br><br>
+        desc: <strong>定数信号</strong>がワイヤレイヤで利用可能になりました！　これは例えば<strong>アイテムフィルタ</strong>に接続すると便利です。<br><br>
             発信できる信号は<strong>形状</strong>、<strong>色</strong>、<strong>真偽値</strong>(1か0)です。
     reward_logic_gates:
         title: 論理ゲート
-        desc:
-            <strong>論理ゲート</strong>が利用可能になりました！　興奮する必要はありませんが、これは非常に優秀なんですよ！<br><br>
+        desc: <strong>論理ゲート</strong>が利用可能になりました！　興奮する必要はありませんが、これは非常に優秀なんですよ！<br><br>
             これでAND, OR, XOR, NOTを計算できます。<br><br>
             ボーナスとして<strong>トランジスタ</strong>も追加しました！
     reward_virtual_processing:
@@ -765,8 +757,7 @@ storyRewards:
             - ワイヤでイカしたものを作る。<br><br> - 今までのように工場を建設する。<br><br> いずれにしても、楽しんでください！
     no_reward:
         title: 次のレベル
-        desc:
-            "このレベルには報酬はありません。次はきっとありますよ！　<br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
+        desc: "このレベルには報酬はありません。次はきっとありますよ！　<br><br> 補足: すでに作った生産ラインは削除しないようにしましょう。 -
             生産された形は<strong>すべて</strong>、後で<strong>アップグレードの解除</strong>に必要になります！"
     no_reward_freeplay:
         title: 次のレベル
@@ -892,8 +883,7 @@ settings:
             description: 配置用のグリッドを無効にして、パフォーマンスを向上させます。 これにより、ゲームの見た目もすっきりします。
         clearCursorOnDeleteWhilePlacing:
             title: 右クリックで配置をキャンセル
-            description:
-                デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
+            description: デフォルトで有効です。建物を設置しているときに右クリックすると、選択中の建物がキャンセルされます。
                 無効にすると、建物の設置中に右クリックで建物を削除できます。
         lowQualityTextures:
             title: 低品質のテクスチャ(視認性低下)
