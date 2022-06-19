@@ -233,7 +233,9 @@ export class MapView extends BaseMap {
             parameters.context.scale(1 / dpi, 1 / dpi);
 
             let key = "regular";
-            if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get()) {
+
+            // Disabled rn because it can be really annoying
+            if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get() && false) {
                 key = "placing";
             }
 
