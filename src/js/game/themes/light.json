@@ -1,8 +1,8 @@
 {
     "map": {
-        "background": "#eceef6",
+        "background": "#eceef2",
 
-        "gridRegular": "#e3e7f4",
+        "gridRegular": "#e3e7ea",
         "gridPlacing": "#dadff0",
 
         "gridLineWidth": 0.5,
@@ -31,9 +31,9 @@
         "colorBlindPickerTile": "rgba(50, 50, 50, 0.4)",
 
         "resources": {
-            "shape": "#eaebec",
+            "shape": "#e0e2e8",
             "red": "#f3bcb6",
-            "green": "#ccf7a7",
+            "green": "#cfefa0",
             "blue": "#b2e0fa"
         },
 
