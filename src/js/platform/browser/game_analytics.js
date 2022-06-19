@@ -130,7 +130,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         return this.fetchABVariant().then(() => {
             setInterval(() => this.sendTimePoints(), 60 * 1000);
 
-            if (this.app.restrictionMgr.isLimitedVersion()) {
+            if (this.app.restrictionMgr.isLimitedVersion() && !G_IS_DEV) {
                 fetch(
                     "https://analytics.shapez.io/campaign/" +
                         this.environment +
@@ -273,6 +273,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      */
     sendGameEvent(category, value) {
         if (G_WEGAME_VERSION) {
+            return;
+        }
+
+        if (G_IS_DEV) {
             return;
         }
 
