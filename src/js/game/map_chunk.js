@@ -233,7 +233,8 @@ export class MapChunk {
                 ++windmillCount;
             }
         }
-        if (windmillCount > 1) {
+
+        if (windmillCount > 2) {
             subShapes[0] = enumSubShape.rect;
             subShapes[1] = enumSubShape.rect;
         }
