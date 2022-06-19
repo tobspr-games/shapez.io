@@ -155,20 +155,6 @@ function gulptasksHTML($, gulp, buildFolder) {
                                 .toString();
                             loadJs.textContent = scriptContent;
                             document.head.appendChild(loadJs);
-
-                            // Click fraud prevention
-                            bodyContent =
-                                `
-                            <script type="text/javascript">
-                                var script = document.createElement("script");
-                                script.async = true;
-                                script.type = "text/javascript";
-                                var target = "https://www.clickcease.com/monitor/stat.js";
-                                script.src = target;
-                                var elem = document.head;
-                                elem.appendChild(script);
-                            </script>
-                            ` + bodyContent;
                         }
 
                         document.body.innerHTML = bodyContent;
