@@ -93,12 +93,7 @@ gulp.task("utils.cleanImageBuildFolder", () => {
 
 gulp.task(
     "utils.cleanup",
-    gulp.series(
-        "utils.cleanBuildFolder",
-        "utils.cleanBuildOutputFolder",
-        "utils.cleanImageBuildFolder",
-        "utils.cleanBuildTempFolder"
-    )
+    gulp.series("utils.cleanBuildFolder", "utils.cleanImageBuildFolder", "utils.cleanBuildTempFolder")
 );
 
 // Requires no uncomitted files
@@ -295,16 +290,28 @@ gulp.task(
 // Bundling (pre upload)
 gulp.task(
     "bundle.steam.from-darwin",
-    gulp.series("bundle.standalone-steam.from-darwin", "bundle.standalone-steam-china.from-darwin")
+    gulp.series(
+        "utils.cleanBuildOutputFolder",
+        "bundle.standalone-steam.from-darwin",
+        "bundle.standalone-steam-china.from-darwin"
+    )
 );
 gulp.task(
     "bundle.steam.from-windows",
-    gulp.series("bundle.standalone-steam.from-windows", "bundle.standalone-steam-china.from-windows")
+    gulp.series(
+        "utils.cleanBuildOutputFolder",
+        "bundle.standalone-steam.from-windows",
+        "bundle.standalone-steam-china.from-windows"
+    )
 );
-gulp.task("bundle.steam-demo.from-darwin", gulp.series("bundle.standalone-steam-demo.from-darwin"));
+gulp.task(
+    "bundle.steam-demo.from-darwin",
+    gulp.series("utils.cleanBuildOutputFolder", "bundle.standalone-steam-demo.from-darwin")
+);
 gulp.task(
     "bundle.steam-demo.from-windows",
     gulp.series(
+        "utils.cleanBuildOutputFolder",
         "bundle.standalone-steam-demo.from-windows",
         "bundle.standalone-steam-china-demo.from-windows"
     )
