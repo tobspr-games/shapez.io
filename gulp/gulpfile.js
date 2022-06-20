@@ -38,6 +38,7 @@ for (let i = 0; i < envVars.length; ++i) {
 
 const baseDir = path.join(__dirname, "..");
 const buildFolder = path.join(baseDir, "build");
+const buildOuptutFolder = path.join(baseDir, "build_output");
 
 const imgres = require("./image-resources");
 imgres.gulptasksImageResources($, gulp, buildFolder);
@@ -76,6 +77,9 @@ translations.gulptasksTranslations($, gulp);
 gulp.task("utils.cleanBuildFolder", () => {
     return gulp.src(buildFolder, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
 });
+gulp.task("utils.cleanBuildOutputFolder", () => {
+    return gulp.src(buildOuptutFolder, { read: false, allowEmpty: true }).pipe($.clean({ force: true }));
+});
 gulp.task("utils.cleanBuildTempFolder", () => {
     return gulp
         .src(path.join(__dirname, "..", "src", "js", "built-temp"), { read: false, allowEmpty: true })
@@ -89,7 +93,12 @@ gulp.task("utils.cleanImageBuildFolder", () => {
 
 gulp.task(
     "utils.cleanup",
-    gulp.series("utils.cleanBuildFolder", "utils.cleanImageBuildFolder", "utils.cleanBuildTempFolder")
+    gulp.series(
+        "utils.cleanBuildFolder",
+        "utils.cleanBuildOutputFolder",
+        "utils.cleanImageBuildFolder",
+        "utils.cleanBuildTempFolder"
+    )
 );
 
 // Requires no uncomitted files
