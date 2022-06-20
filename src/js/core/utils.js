@@ -1,5 +1,6 @@
 import { T } from "../translations";
 import { rando } from "@nastyox/rando.js";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "./steam_sso";
 
 const bigNumberSuffixTranslationKeys = ["thousands", "millions", "billions", "trillions"];
 
@@ -764,7 +765,7 @@ export function getLogoSprite() {
         return "logo_cn.png";
     }
 
-    if (G_IS_STANDALONE) {
+    if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return "logo.png";
     }
 
@@ -777,6 +778,7 @@ export function getLogoSprite() {
 
 /**
  * Rejects a promise after X ms
+ * @param {Promise} promise
  */
 export function timeoutPromise(promise, timeout = 30000) {
     return Promise.race([

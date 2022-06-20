@@ -131,6 +131,10 @@ mainMenu:
     helpTranslate: Help translate!
     madeBy: Made by <author-link>
 
+    playFullVersion: Sign in to play the full version in your Browser!
+    playingFullVersion: You are now playing the full version! Not all features work yet, but I'm working on it!
+    logout: Logout
+
     # This is shown when using firefox and other browsers which are not supported.
     browserWarning: >-
         Sorry, but the game is known to run slowly on your browser! Get the full version or download Google Chrome for the full experience.
@@ -467,6 +471,19 @@ dialogs:
             One ore more resources could not be loaded. Try restarting the game - If that does not help, try reinstalling and verifying the game files via Steam.
             <br><br>
             Error Message:
+
+    steamSsoError:
+        title: Full Version Logout
+        desc: >-
+            You have been logged out from the Full Browser Version since either your network connection is unstable or you are playing on another device.<br><br>
+            Please make sure you don't have shapez open in any other browser tab or another computer with the same Steam account.<br><br>
+            You can login again in the main menu.
+
+    steamSsoNoOwnership:
+        title: Full Edition not owned
+        desc: >-
+            In order to play the Full Edition in your Browser, you need to own both the base game and the Puzzle DLC on your Steam account.<br><br>
+            Please make sure you own both, signed in with the correct Steam account and then try again.
 
 ingame:
     # This is shown in the top left corner and displays useful keybindings in
@@ -1155,6 +1172,7 @@ mods:
     modsInfo: >-
         To install and manage mods, copy them to the mods folder (use the 'Open Mods Folder' button). Be sure to restart the game afterwards, otherwise the mods will not show up.
     noModSupport: Get the full version on Steam to install mods!
+    browserNoSupport: Due to browser restrictions it is currently only possible to install mods in the Steam version - Sorry!
 
     togglingComingSoon:
         title: Coming Soon

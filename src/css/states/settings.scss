@@ -181,10 +181,16 @@
                             pointer-events: all;
                             display: flex;
                             align-items: center;
+                            z-index: 100;
                             justify-content: center;
                             background: rgba(#fff, 0.5);
                             text-transform: uppercase;
                             color: $colorRedBright;
+                            @include S(border-radius, $globalBorderRadius);
+
+                            @include DarkThemeOverride {
+                                background: rgba(#55585f, 0.95);
+                            }
                         }
                     }
 

@@ -2,6 +2,20 @@
     var loadTimeout = null;
     var callbackDone = false;
 
+    var searchString = window.location.search;
+    if (searchString.includes("steam_sso_auth_token=")) {
+        var pos = searchString.indexOf("steam_sso_auth_token");
+        const authToken = searchString.substring(pos + 21, pos + 57);
+        try {
+            window.localStorage.setItem("steam_sso_auth_token", authToken);
+            window.location.replace(window.location.protocol + "//" + window.location.host);
+        } catch (ex) {
+            alert("Failed to login via Steam SSO: " + ex);
+            window.location.replace("https://shapez.io");
+        }
+        return;
+    }
+
     // Catch load errors
 
     function errorHandler(event, source, lineno, colno, error) {

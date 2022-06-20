@@ -4,6 +4,7 @@ import { GameState } from "../core/game_state";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
 import { ReadWriteProxy } from "../core/read_write_proxy";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "../core/steam_sso";
 import {
     formatSecondsToTimeAgo,
     generateFileDownload,
@@ -39,7 +40,8 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE && !G_IS_STEAM_DEMO;
+        const showPuzzleDLC =
+            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -116,6 +118,26 @@ export class MainMenuState extends GameState {
                 <button class="settingsButton" aria-label="Settings"></button>
                 ${showExitAppButton ? `<button class="exitAppButton" aria-label="Exit App"></button>` : ""}
             </div>
+
+            ${
+                G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
+                    ? ""
+                    : `<div class="steamSso">
+                        ${T.mainMenu.playFullVersion}
+                        <a class="ssoSignIn" href="${
+                            this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
+                        }">Sign in</a>
+                    </div>`
+            }
+            ${
+                WEB_STEAM_SSO_AUTHENTICATED
+                    ? `
+                    <div class="steamSso">${T.mainMenu.playingFullVersion}
+                        <a href="?sso_logout_silent">${T.mainMenu.logout}</a>
+                    </div>
+                `
+                    : ""
+            }
 
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">

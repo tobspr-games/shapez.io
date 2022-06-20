@@ -1,6 +1,7 @@
 import { globalConfig, IS_MOBILE } from "../../core/config";
 import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { clamp } from "../../core/utils";
 import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
@@ -24,7 +25,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             iogLink: true,
         };
 
-        if (!G_IS_STANDALONE && queryParamOptions.embedProvider) {
+        if (!G_IS_STANDALONE && !WEB_STEAM_SSO_AUTHENTICATED && queryParamOptions.embedProvider) {
             const providerId = queryParamOptions.embedProvider;
             this.embedProvider.iframed = true;
             this.embedProvider.iogLink = false;

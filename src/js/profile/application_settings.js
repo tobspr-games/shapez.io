@@ -511,6 +511,12 @@ export class ApplicationSettings extends ReadWriteProxy {
             return ExplainedResult.bad("Bad settings object");
         }
 
+        // MODS
+        if (!THEMES[data.settings.theme] || !this.app.restrictionMgr.getHasExtendedSettings()) {
+            console.log("Resetting theme because its no longer available: " + data.settings.theme);
+            data.settings.theme = "light";
+        }
+
         const settings = data.settings;
 
         for (let i = 0; i < this.settingHandles.length; ++i) {

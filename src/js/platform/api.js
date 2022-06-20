@@ -3,6 +3,7 @@ import { Application } from "../application";
 /* typehints:end */
 import { createLogger } from "../core/logging";
 import { compressX64 } from "../core/lzstring";
+import { timeoutPromise } from "../core/utils";
 import { T } from "../translations";
 
 const logger = createLogger("puzzle-api");
@@ -53,23 +54,23 @@ export class ClientAPI {
             headers["x-token"] = this.token;
         }
 
-        return Promise.race([
+        return timeoutPromise(
             fetch(this.getEndpoint() + endpoint, {
                 cache: "no-cache",
                 mode: "cors",
                 headers,
                 method: options.method || "GET",
                 body: options.body ? JSON.stringify(options.body) : undefined,
+            }),
+            15000
+        )
+            .then(res => {
+                if (res.status !== 200) {
+                    throw "bad-status: " + res.status + " / " + res.statusText;
+                }
+                return res;
             })
-                .then(res => {
-                    if (res.status !== 200) {
-                        throw "bad-status: " + res.status + " / " + res.statusText;
-                    }
-                    return res;
-                })
-                .then(res => res.json()),
-            new Promise((resolve, reject) => setTimeout(() => reject("timeout"), 15000)),
-        ])
+            .then(res => res.json())
             .then(data => {
                 if (data && data.error) {
                     logger.warn("Got error from api:", data);
@@ -100,22 +101,17 @@ export class ClientAPI {
      */
     apiTryLogin() {
         if (!G_IS_STANDALONE) {
-            let token = window.localStorage.getItem("dev_api_auth_token");
-            if (!token) {
+            let token = window.localStorage.getItem("steam_sso_auth_token");
+            if (!token && G_IS_DEV) {
                 token = window.prompt(
                     "Please enter the auth token for the puzzle DLC (If you have none, you can't login):"
                 );
-            }
-            if (token) {
                 window.localStorage.setItem("dev_api_auth_token", token);
             }
             return Promise.resolve({ token });
         }
 
-        return Promise.race([
-            ipcRenderer.invoke("steam:get-ticket"),
-            new Promise((resolve, reject) => setTimeout(() => reject("timeout"), 15000)),
-        ]).then(
+        return timeoutPromise(ipcRenderer.invoke("steam:get-ticket"), 15000).then(
             ticket => {
                 logger.log("Got auth ticket:", ticket);
                 return this._request("/v1/public/login", {

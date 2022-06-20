@@ -3,7 +3,8 @@ import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
-import { getLogoSprite } from "../core/utils";
+import { authorizeViaSSOToken } from "../core/steam_sso";
+import { getLogoSprite, timeoutPromise } from "../core/utils";
 import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
@@ -45,12 +46,7 @@ export class PreloadState extends GameState {
     }
 
     async fetchDiscounts() {
-        await Promise.race([
-            new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    reject("Failed to resolve steam discounts within timeout");
-                }, 2000);
-            }),
+        await timeoutPromise(
             fetch("https://analytics.shapez.io/v1/discounts")
                 .then(res => res.json())
                 .then(data => {
@@ -59,7 +55,8 @@ export class PreloadState extends GameState {
                     );
                     logger.log("Fetched current discount:", globalConfig.currentDiscount);
                 }),
-        ]).catch(err => {
+            2000
+        ).catch(err => {
             logger.warn("Failed to fetch current discount:", err);
         });
     }
@@ -72,6 +69,8 @@ export class PreloadState extends GameState {
         this.setStatus("Booting")
 
             .then(() => this.setStatus("Creating platform wrapper", 3))
+            .then(() => authorizeViaSSOToken(this.app, this.dialogs))
+
             .then(() => this.app.platformWrapper.initialize())
 
             .then(() => this.setStatus("Initializing local storage", 6))

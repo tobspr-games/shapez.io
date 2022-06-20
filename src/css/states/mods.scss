@@ -24,6 +24,9 @@
         justify-content: center;
         height: 100%;
         flex-direction: column;
+        text-align: center;
+        max-width: 80%;
+        align-self: center;
 
         .steamLink {
             @include S(height, 50px);

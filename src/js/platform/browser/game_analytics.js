@@ -13,6 +13,7 @@ import { FILE_NOT_FOUND } from "../storage";
 
 import OR from "@openreplay/tracker";
 import OR_fetch from "@openreplay/tracker-fetch";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 
 let eventConnector;
 if (!G_IS_STANDALONE && !G_IS_DEV) {
@@ -55,6 +56,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
         if (G_IS_STANDALONE) {
             return "steam";
+        }
+
+        if (WEB_STEAM_SSO_AUTHENTICATED) {
+            return "prod-full";
         }
 
         if (G_IS_RELEASE) {

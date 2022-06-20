@@ -1,11 +1,8 @@
 import { openStandaloneLink, THIRDPARTY_URLS } from "../core/config";
-import { queryParamOptions } from "../core/query_parameters";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "../core/steam_sso";
 import { TextualGameState } from "../core/textual_game_state";
 import { MODS } from "../mods/modloader";
 import { T } from "../translations";
-
-const MODS_SUPPORTED =
-    !G_IS_STEAM_DEMO && (G_IS_STANDALONE || (G_IS_DEV && !window.location.href.includes("demo")));
 
 export class ModsState extends TextualGameState {
     constructor() {
@@ -16,6 +13,14 @@ export class ModsState extends TextualGameState {
         return T.mods.title;
     }
 
+    get modsSupported() {
+        return (
+            !WEB_STEAM_SSO_AUTHENTICATED &&
+            !G_IS_STEAM_DEMO &&
+            (G_IS_STANDALONE || (G_IS_DEV && !window.location.href.includes("demo")))
+        );
+    }
+
     internalGetFullHtml() {
         let headerHtml = `
             <div class="headerBar">
@@ -23,12 +28,12 @@ export class ModsState extends TextualGameState {
 
                 <div class="actions">
                    ${
-                       MODS_SUPPORTED && MODS.mods.length > 0
+                       this.modsSupported && MODS.mods.length > 0
                            ? `<button class="styledButton browseMods">${T.mods.browseMods}</button>`
                            : ""
                    }
                    ${
-                       MODS_SUPPORTED
+                       this.modsSupported
                            ? `<button class="styledButton openModsFolder">${T.mods.openFolder}</button>`
                            : ""
                    }
@@ -45,11 +50,11 @@ export class ModsState extends TextualGameState {
     }
 
     getMainContentHTML() {
-        if (!MODS_SUPPORTED) {
+        if (!this.modsSupported) {
             return `
                 <div class="noModSupport">
 
-                    <p>${T.mods.noModSupport}</p>
+                    <p>${WEB_STEAM_SSO_AUTHENTICATED ? T.mods.browserNoSupport : T.mods.noModSupport}</p>
                     <br>
                     <button class="styledButton browseMods">${T.mods.browseMods}</button>
                     <a href="#" class="steamLink steam_dlbtn_0" target="_blank">Get on Steam!</a>
