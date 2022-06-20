@@ -68,6 +68,7 @@ export class MainMenuState extends GameState {
 
         const ownsPuzzleDLC =
             G_IS_DEV ||
+            WEB_STEAM_SSO_AUTHENTICATED ||
             (G_IS_STANDALONE &&
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
