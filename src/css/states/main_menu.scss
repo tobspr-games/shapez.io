@@ -61,7 +61,7 @@
         opacity: 0;
         display: none;
         transform: translate(50%, 50%);
-        filter: blur(D(7px));
+        filter: blur(D(15px));
 
         $opacity: 0.4;
         &.loaded {
@@ -81,34 +81,41 @@
 
     .mainWrapper {
         @include S(padding, 0, 10px);
+        @include S(margin-top, 15px);
         align-items: start;
         justify-items: center;
 
         @include S(grid-column-gap, 10px);
         display: grid;
 
+        grid-template-rows: D(31px) 1fr D(93px);
+
         &[data-columns="1"] {
             grid-template-columns: 1fr;
         }
         &[data-columns="2"] {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: D(290px) 1fr;
         }
 
         .standaloneBanner {
-            background: rgba(12, 168, 93, 0.957);
+            background: transparent;
             @include S(border-radius, $globalBorderRadius);
+            // box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
+            @include S(width, 380px);
             box-sizing: border-box;
-            @include S(padding, 15px);
-            box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
+            @include S(padding, 0, 15px);
+            // backdrop-filter: blur(10px);
 
             display: flex;
             flex-direction: column;
+            margin: 0;
+
             strong {
                 font-weight: 700 !important;
             }
 
             .onlinePlayerCount {
-                color: #fff;
+                color: #333;
                 @include S(margin-top, 15px);
                 @include SuperSmallText;
                 @include S(height, 15px);
@@ -118,15 +125,14 @@
             h3 {
                 @include Heading;
                 font-weight: bold;
-                @include S(margin-bottom, 20px);
-                display: none;
-                text-transform: uppercase;
-                color: #fff;
+                @include S(margin-bottom, 10px);
+                text-align: center;
+                color: #44484f;
             }
 
             p {
                 @include Text;
-                color: #fff;
+                color: #333;
             }
 
             ul {
@@ -139,7 +145,7 @@
             }
 
             .playtimeDisclaimer {
-                color: #fff;
+                color: #333;
                 @include S(margin-top, 15px);
                 @include SuperSmallText;
             }
@@ -162,6 +168,7 @@
                 @include S(border-radius, $globalBorderRadius);
                 color: transparent;
 
+                box-shadow: 0 D(3px) D(10px) rgba(96, 163, 136, 0.5);
                 &:hover {
                     opacity: 0.9;
                 }
@@ -190,6 +197,151 @@
                     }
                 }
             }
+
+            .points {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+                @include S(grid-gap, 5px);
+            }
+
+            .point {
+                display: grid;
+                grid-template-columns: #{D(27px)} auto;
+                grid-template-rows: D(11px) D(10px);
+                background: #fff #{D(10px)} center / #{D(17px)} no-repeat;
+                @include S(grid-row-gap, 3px);
+                align-items: center;
+                @include S(padding, 6px);
+                @include S(border-radius, $globalBorderRadius);
+
+                box-shadow: 0 D(5px) D(10px) rgba(#000, 0.2);
+
+                > strong {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / 2;
+                    @include PlainText;
+                    @include S(font-size, 12px);
+                    line-height: 0.8em;
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    align-self: end;
+                }
+
+                > p {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    @include SuperSmallText;
+                    white-space: nowrap;
+                    @include BreakText;
+                    @include S(font-size, 8px);
+                    line-height: 1em;
+                    align-self: start;
+
+                    opacity: 0.8;
+                }
+
+                &.levels {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_new_levels.png");
+                    }
+                    > strong {
+                        color: #f13555;
+                    }
+                }
+
+                &.upgrades {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_upgrades.png");
+                    }
+                    > strong {
+                        color: #8a00ff;
+                    }
+                }
+
+                &.buildings {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_buildings.png");
+                    }
+                    > strong {
+                        color: #3fce8b;
+                    }
+                }
+
+                &.wires {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_wires.png");
+                    }
+                    > strong {
+                        color: #ef2fdb;
+                    }
+                }
+
+                &.markers {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_markers.png");
+                    }
+                    > strong {
+                        color: #4294ff;
+                    }
+                }
+
+                &.mods {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_mods.png");
+                    }
+                    > strong {
+                        color: #8a00ff;
+                    }
+                }
+
+                &.savegames {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_savegames.png");
+                    }
+                    > strong {
+                        color: #ff9500;
+                    }
+                }
+
+                &.darkmode {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_dark_mode.png");
+                    }
+                    > strong {
+                        color: #292c32;
+                    }
+                }
+
+                &.support {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_support.png");
+                    }
+                    > strong {
+                        color: #e72d2d;
+                    }
+                }
+
+                &.achievements {
+                    & {
+                        /* @load-async */
+                        background-image: uiResource("res/ui/icons/advantage_achievements.png");
+                    }
+                    > strong {
+                        color: #ffac0f;
+                    }
+                }
+            }
         }
     }
 
@@ -203,8 +355,8 @@
         @include S(padding-top, 20px);
 
         img {
-            @include S(width, 710px / 2.2);
-            @include S(height, 180 / 2.2px);
+            @include S(width, 710px / 2.5);
+            @include S(height, 180px / 2.5);
         }
         position: relative;
         @include S(left, -8px);
@@ -243,11 +395,12 @@
     .sideContainer {
         display: flex;
         flex-direction: column;
-        @include S(width, 300px);
+        width: 100%;
+        grid-row: 1 / 4;
+        grid-column: 2 / 3;
 
         .standaloneBanner {
             flex-grow: 1;
-            @include S(margin-bottom, 10px);
         }
     }
 
@@ -258,7 +411,6 @@
         flex-direction: column;
         background: $colorBlueBright;
         grid-row: 1 / 2;
-        grid-column: 2 / 3;
         position: relative;
         @include S(padding, 20px);
         @include S(border-radius, $globalBorderRadius);
@@ -324,7 +476,6 @@
         flex-direction: column;
         background: #fff;
         grid-row: 1 / 2;
-        grid-column: 2 / 3;
         position: relative;
         text-align: left;
         align-items: flex-start;
@@ -418,18 +569,24 @@
     .mainContainer {
         display: flex;
         align-items: center;
-        grid-row: 1 / 2;
         justify-content: center;
         flex-direction: column;
-        background: #fafafa;
-        @include S(padding, 20px);
+        background: rgba(#fff, 0.9);
+        @include S(padding, 15px);
         @include S(border-radius, $globalBorderRadius);
-        // border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
-
-        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
         height: 100%;
+        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
         width: 100%;
         position: relative;
+        align-self: center;
+        justify-self: center;
+        grid-row: 1 / 4;
+        grid-column: 1 / 2;
+
+        // &[data-savegames="0"] {
+        //     grid-row: 2 / 3;
+        // }
+
         box-sizing: border-box;
 
         .buttons {
@@ -483,6 +640,16 @@
 
         .outer {
             @include S(margin-top, 15px);
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 1fr;
+
+            @include S(grid-gap, 5px);
+            width: 100%;
+
+            > button {
+                @include S(padding, 3px, 6px);
+            }
         }
 
         .importButton {
@@ -491,14 +658,10 @@
 
         .newGameButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-left, 10px);
         }
 
         .modsButton {
             @include IncreasedClickArea(0px);
-            @include S(margin-left, 10px);
-
-            // @include S(width, 20px);
 
             background-position: center center;
             background-size: D(15px);
@@ -509,9 +672,11 @@
         .savegames {
             @include S(max-height, 105px);
             overflow-y: auto;
-            @include S(width, 250px);
+            @include S(min-width, 230px);
+            width: 100%;
             pointer-events: all;
             @include S(padding-right, 5px);
+            margin-right: D(-5px);
             display: grid;
             grid-auto-flow: row;
             @include S(grid-gap, 5px);
@@ -586,6 +751,7 @@
                     @include S(height, 15px);
                     background-size: 80%;
                     align-self: start;
+                    border-radius: 0;
                     opacity: 0.4;
 
                     &:hover {
@@ -608,6 +774,7 @@
                     @include S(height, 15px);
                     align-self: end;
                     background-size: 80%;
+                    border-radius: 0;
                     opacity: 0.4;
 
                     &:hover {
@@ -628,7 +795,7 @@
                     @include S(height, 10px);
                     align-self: center;
                     justify-self: center;
-
+                    border-radius: 0;
                     background-size: 90%;
                     opacity: 0.4;
                     @include S(margin-left, 4px);
@@ -725,7 +892,7 @@
 
             a {
                 &:hover img {
-                    opacity: 0.8;
+                    opacity: 0.85;
                 }
                 display: flex;
                 align-items: center;
@@ -736,7 +903,7 @@
                     @include S(width, 82px);
                     @include S(height, 25px);
                     filter: invert(100%);
-                    opacity: 0.6;
+                    opacity: 0.75;
                 }
             }
         }
@@ -744,7 +911,7 @@
         @include S(padding, 15px);
 
         $linkBg: rgba(#fdfdff, 0.5);
-        $linkBgHover: darken($linkBg, 5);
+        $linkBgHover: rgba(#fff, 0.7);
         $linkColor: #55586a;
 
         > .boxLink {

@@ -39,8 +39,6 @@ export class MainMenuState extends GameState {
     getInnerHTML() {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        // const showBrowserWarning = !G_IS_STANDALONE && !isSupportedBrowser();
-        const showBrowserWarning = false;
         const showPuzzleDLC = !G_WEGAME_VERSION && G_IS_STANDALONE && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
@@ -73,8 +71,23 @@ export class MainMenuState extends GameState {
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
         const bannerHtml = `
-            <h3>${T.demoBanners.title}</h3>
-            <p>${T.demoBanners.intro}</p>
+            <h3>${T.demoBanners.titleV2}</h3>
+
+
+            <div class="points">
+                ${Object.entries(T.ingame.standaloneAdvantages.points)
+                    .map(
+                        ([key, trans]) => `
+                <div class="point ${key}">
+                    <strong>${trans.title}</strong>
+                    <p>${trans.desc}</p>
+                </div>`
+                    )
+                    .join("")}
+
+            </div>
+
+
             ${
                 G_IS_STEAM_DEMO
                     ? `<span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>`
@@ -110,21 +123,21 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo"
-                    width="${Math.round((710 / 2.2) * this.app.getEffectiveUiScale())}"
-                    height="${Math.round((180 / 2.2) * this.app.getEffectiveUiScale())}"
+                    width="${Math.round((710 / 2.5) * this.app.getEffectiveUiScale())}"
+                    height="${Math.round((180 / 2.5) * this.app.getEffectiveUiScale())}"
                 >
                 ${/*showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""*/ ""}
             </div>
 
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
+                <div class="mainContainer">
+                    <div class="buttons"></div>
+                </div>
+
                 <div class="sideContainer">
                     ${showDemoAdvertisement ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
                 </div>
 
-                <div class="mainContainer">
-                ${showBrowserWarning ? `<div class="browserWarning">${T.mainMenu.browserWarning}</div>` : ""}
-                    <div class="buttons"></div>
-                </div>
 
                 ${
                     showPuzzleDLC && ownsPuzzleDLC && !hasMods
@@ -424,6 +437,10 @@ export class MainMenuState extends GameState {
                 this.onPlayButtonClicked
             );
         }
+
+        this.htmlElement
+            .querySelector(".mainContainer")
+            .setAttribute("data-savegames", String(this.savedGames.length));
 
         // Mods
         this.trackClicks(

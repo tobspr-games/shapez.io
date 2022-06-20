@@ -103,30 +103,6 @@ button,
 }
 
 // ----------------------------------------
-/* Define a style which is only applied in horizontal mode */
-@mixin HorizontalStyle {
-    @include AppendGlobal(".h") {
-        @content;
-    }
-}
-
-// ----------------------------------------
-/* Define a style which is only applied in vertical mode */
-@mixin VerticalStyle {
-    @include AppendGlobal(".v") {
-        @content;
-    }
-}
-
-// ----------------------------------------
-/* Define a style which is only while the hardware keyboard is open */
-@mixin AndroidHwKeyboardOpen {
-    @include AppendGlobal(".kb") {
-        @content;
-    }
-}
-
-// ----------------------------------------
 /* Automatically transforms the game state if a hardware keyboard is open */
 @mixin TransformToMatchKeyboard {
     transition: transform 0.2s ease-in-out;

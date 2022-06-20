@@ -57,6 +57,8 @@ global:
     loadingResources: Lade zusätzliche Ressourcen (<percentage> %)
 demoBanners:
     title: Demoversion
+    titleV2: >-
+        Spiele jetzt die Vollversion für:
     intro: |-
         Kaufe die Vollversion <strong>jetzt</strong> für:<ul>
             <li>Alle 26 Level + unendlich Freeplay</li>
@@ -77,7 +79,7 @@ mainMenu:
     newGame: Neues Spiel
     changelog: Änderungshistorie
     subreddit: Reddit
-    importSavegame: Importieren
+    importSavegame: Import
     openSourceHint: Dieses Spiel ist quelloffen!
     discordLink: Offizieller Discord Server
     helpTranslate: Hilf beim Übersetzen!
@@ -497,6 +499,7 @@ ingame:
                 Signal</strong> ausgibt und den Färber aktiviert.<br><br> PS: Du
                 musst nicht alle Eingänge verbinden! Probiere es auch mal mit
                 zwei."
+            1_2_hold_and_drag: Drücke und ziehe
     connectedMiners:
         one_miner: Ein Extraktor
         n_miners: <amount> Extraktoren

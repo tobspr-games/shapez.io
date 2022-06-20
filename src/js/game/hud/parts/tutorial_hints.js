@@ -6,7 +6,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
 
-const tutorialVideos = [2, 3, 4, 5, 6, 7, 9, 10, 11];
+const tutorialVideos = [3, 4, 5, 6, 7, 9, 10, 11];
 
 export class HUDPartTutorialHints extends BaseHUDPart {
     createElements(parent) {

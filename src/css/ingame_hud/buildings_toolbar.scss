@@ -55,6 +55,35 @@
             position: relative;
             @include S(height, 40px);
 
+            @at-root html[data-tutorial-step="1_1_extractor"] &[data-id="miner"]:not(.selected),
+                html[data-tutorial-step="1_2_conveyor"] &[data-id="belt"]:not(.selected),
+                html[data-tutorial-step="2_1_place_cutter"] &[data-id="cutter"]:not(.selected),
+                html[data-tutorial-step="2_2_place_trash"] &[data-id="trash"]:not(.selected) {
+                &::before {
+                    content: "";
+
+                    & {
+                        /* load-async */
+                        background: uiResource("icons/tutorial_arrow.png") center center / contain no-repeat;
+                    }
+
+                    @include S(width, 25px);
+                    @include S(height, 25px);
+                    position: absolute;
+                    left: 50%;
+                    bottom: 100%;
+                    transform: translateX(-50%);
+                    @include InlineAnimation(1s ease-in-out infinite) {
+                        50% {
+                            transform: translateX(-50%) translateY(20%);
+                        }
+                    }
+                }
+                @include S(border-radius, $globalBorderRadius);
+                box-shadow: 0 0 D(10px) D(5px) rgba(74, 237, 134, 0.5) !important;
+                background: rgba(74, 237, 134, 0.5) !important;
+            }
+
             .icon {
                 color: $accentColorDark;
                 display: flex;

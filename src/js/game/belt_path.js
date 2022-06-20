@@ -183,7 +183,7 @@ export class BeltPath extends BasicSerializableObject {
      * Recomputes cache variables once the path was changed
      */
     onPathChanged() {
-        this.boundAcceptor = this.computeAcceptingEntityAndSlot();
+        this.boundAcceptor = this.computeAcceptingEntityAndSlot().acceptor;
 
         /**
          * How many items past the first item are compressed
@@ -201,7 +201,7 @@ export class BeltPath extends BasicSerializableObject {
     /**
      * Finds the entity which accepts our items
      * @param {boolean=} debug_Silent Whether debug output should be silent
-     * @return { (BaseItem, number?) => boolean }
+     * @return { { acceptor?: (BaseItem, number?) => boolean, entity?: Entity } }
      */
     computeAcceptingEntityAndSlot(debug_Silent = false) {
         DEBUG && !debug_Silent && logger.log("Recomputing acceptor target");
@@ -224,7 +224,7 @@ export class BeltPath extends BasicSerializableObject {
         );
 
         if (!targetEntity) {
-            return;
+            return {};
         }
 
         const noSimplifiedBelts = !this.root.app.settings.getAllSettings().simplifiedBelts;
@@ -247,10 +247,13 @@ export class BeltPath extends BasicSerializableObject {
                     targetStaticComp.rotation
                 );
             if (ejectSlotWsDirection === beltAcceptingDirection) {
-                return item => {
-                    const path = targetBeltComp.assignedPath;
-                    assert(path, "belt has no path");
-                    return path.tryAcceptItem(item);
+                return {
+                    entity: targetEntity,
+                    acceptor: item => {
+                        const path = targetBeltComp.assignedPath;
+                        assert(path, "belt has no path");
+                        return path.tryAcceptItem(item);
+                    },
                 };
             }
         }
@@ -259,7 +262,7 @@ export class BeltPath extends BasicSerializableObject {
         const targetAcceptorComp = targetEntity.components.ItemAcceptor;
         if (!targetAcceptorComp) {
             // Entity doesn't accept items
-            return;
+            return {};
         }
 
         const ejectingDirection = targetStaticComp.worldDirectionToLocal(ejectSlotWsDirection);
@@ -270,38 +273,41 @@ export class BeltPath extends BasicSerializableObject {
 
         if (!matchingSlot) {
             // No matching slot found
-            return;
+            return {};
         }
 
         const matchingSlotIndex = matchingSlot.index;
         const passOver = this.computePassOverFunctionWithoutBelts(targetEntity, matchingSlotIndex);
         if (!passOver) {
-            return;
+            return {};
         }
 
         const matchingDirection = enumInvertedDirections[ejectingDirection];
         const filter = matchingSlot.slot.filter;
 
-        return function (item, remainingProgress = 0.0) {
-            // Check if the acceptor has a filter
-            if (filter && item._type !== filter) {
-                return false;
-            }
-
-            // Try to pass over
-            if (passOver(item, matchingSlotIndex)) {
-                // Trigger animation on the acceptor comp
-                if (noSimplifiedBelts) {
-                    targetAcceptorComp.onItemAccepted(
-                        matchingSlotIndex,
-                        matchingDirection,
-                        item,
-                        remainingProgress
-                    );
+        return {
+            entity: targetEntity,
+            acceptor: function (item, remainingProgress = 0.0) {
+                // Check if the acceptor has a filter
+                if (filter && item._type !== filter) {
+                    return false;
                 }
-                return true;
-            }
-            return false;
+
+                // Try to pass over
+                if (passOver(item, matchingSlotIndex)) {
+                    // Trigger animation on the acceptor comp
+                    if (noSimplifiedBelts) {
+                        targetAcceptorComp.onItemAccepted(
+                            matchingSlotIndex,
+                            matchingDirection,
+                            item,
+                            remainingProgress
+                        );
+                    }
+                    return true;
+                }
+                return false;
+            },
         };
     }
 
@@ -494,7 +500,7 @@ export class BeltPath extends BasicSerializableObject {
         }
 
         // Check acceptor
-        const acceptor = this.computeAcceptingEntityAndSlot(true);
+        const acceptor = this.computeAcceptingEntityAndSlot(true).acceptor;
         if (!!acceptor !== !!this.boundAcceptor) {
             return fail("Acceptor target mismatch, acceptor", !!acceptor, "vs stored", !!this.boundAcceptor);
         }

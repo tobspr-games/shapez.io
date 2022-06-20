@@ -178,34 +178,3 @@ $mainFontScale: 1;
 @function trim($string) {
     @return str-slice($string, _first-index($string, "left"), _first-index($string, "right"));
 }
-
-@mixin AppendGlobal($prefix) {
-    $strSelector: quote(&);
-    $selectors: str-split($strSelector, ",");
-
-    $builtSelector: null;
-
-    @if (& == null) {
-        $builtSelector: "html" + $prefix;
-    } @else {
-        $builtSelector: ();
-        // @debug ($strSelector, "->>>", $selectors);
-        @each $srcSelector in $selectors {
-            $srcSelector: trim($srcSelector);
-            // @debug ("___", $srcSelector);
-            $selector: "html" + $prefix + " " + $srcSelector;
-            @if str-index($srcSelector, "html.") {
-                $selector: "html" +
-                    $prefix +
-                    "." +
-                    str-slice($srcSelector, str-index($srcSelector, "html.") + 5);
-            }
-            // @debug ("_______", $selector);
-            $builtSelector: append($builtSelector, $selector, comma);
-        }
-    }
-
-    @at-root #{$builtSelector} {
-        @content;
-    }
-}

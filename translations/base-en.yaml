@@ -97,6 +97,9 @@ global:
 demoBanners:
     # This is the "advertisement" shown in the main menu and other various places
     title: Demo
+    titleV2: >-
+        Play the full version now for:
+
     intro: >-
         Get the full game <strong>now</strong> to unlock:<ul>
             <li>All 26 levels + infinite Freeplay</li>
@@ -641,6 +644,8 @@ ingame:
                 Press the switch to make it <strong>emit a truthy signal</strong> and thus activate the painter.<br><br>
                 PS: You don't have to connect all inputs! Try wiring only two.
 
+            1_2_hold_and_drag: Hold and drag
+
     # Connected miners
     connectedMiners:
         one_miner: 1 Extractor
@@ -655,7 +660,7 @@ ingame:
 
     standaloneAdvantages:
         titleV2: >-
-            Get the full version now on Steam to unlock:
+            Play the full version now on Steam to unlock:
         titleExpiredV2: Demo completed!
         titleEnjoyingDemo: Enjoying the demo?
 

@@ -32,12 +32,6 @@
     pointer-events: all;
 
     transition: opacity 0.1s ease-out;
-    &.hovered {
-        opacity: 10%;
-        .helperGif {
-            opacity: 0%;
-        }
-    }
 
     .title {
         color: #fff;

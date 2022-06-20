@@ -287,6 +287,7 @@ export class HubGoals extends BasicSerializableObject {
      * @param {string} upgradeId
      */
     canUnlockUpgrade(upgradeId) {
+        return true;
         const tiers = this.root.gameMode.getUpgrades()[upgradeId];
         const currentLevel = this.getUpgradeLevel(upgradeId);
 

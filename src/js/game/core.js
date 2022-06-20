@@ -189,6 +189,7 @@ export class GameCore {
         });
         this.root.map.placeStaticEntity(hub);
         this.root.entityMgr.registerEntity(hub);
+        this.root.camera.center = new Vector(-5, 2).multiplyScalar(globalConfig.tileSize);
     }
 
     /**

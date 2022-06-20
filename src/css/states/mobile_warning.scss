@@ -1,7 +1,7 @@
 #state_MobileWarningState {
     display: flex;
     align-items: center;
-    background: #333438 !important;
+    background: #555b75 !important;
     @include S(padding, 20px);
     box-sizing: border-box;
     justify-content: center;
@@ -14,7 +14,7 @@
     }
 
     p {
-        color: #aaacaf;
+        color: rgba(#fff, 0.5);
         display: block;
         margin-bottom: 13px;
         font-size: 16px;
@@ -28,12 +28,11 @@
 
     .standaloneLink {
         width: 200px;
-        height: 80px;
+        height: 48px;
         min-height: 40px;
         & {
-            background: uiResource("steam_link_btn/0.png") center center / contain no-repeat;
+            background: #000 uiResource("steam_link_btn/0.png") center center / contain no-repeat;
         }
-        overflow: hidden;
         display: block;
         text-indent: -999em;
         cursor: pointer;
@@ -41,7 +40,9 @@
         pointer-events: all;
         transition: all 0.12s ease-in;
         transition-property: opacity, transform;
-        transform: skewX(-0.5deg);
+        @include S(border-radius, $globalBorderRadius);
+        overflow: hidden;
+
         &:hover {
             transform: skewX(-1deg) scale(1.02);
             opacity: 0.9;

@@ -1,5 +1,14 @@
 export const CHANGELOG = [
     {
+        version: "1.5.5",
+        date: "20.06.2022",
+        entries: [
+            "Reworked the tutorial to be simpler and more interactive",
+            "General polishing",
+            "Updated translations",
+        ],
+    },
+    {
         version: "1.5.3",
         date: "05.06.2022",
         entries: [

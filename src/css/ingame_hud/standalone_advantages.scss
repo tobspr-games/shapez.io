@@ -126,6 +126,7 @@
             @include S(height, 40px);
             background: #171a23 center center / contain no-repeat;
 
+            box-shadow: 0 D(3px) D(10px) rgba(96, 163, 136, 0.5);
             overflow: visible;
             @include S(border-radius, $globalBorderRadius);
 
@@ -133,6 +134,10 @@
                 50% {
                     transform: scale(1.02, 1.03);
                 }
+            }
+
+            &:hover {
+                opacity: 0.94 !important;
             }
 
             > .discount {

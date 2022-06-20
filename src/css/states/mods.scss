@@ -38,6 +38,7 @@
             transition: all 0.12s ease-in;
             transition-property: opacity, transform;
 
+            box-shadow: 0 D(3px) D(10px) rgba(96, 163, 136, 0.5);
             @include S(border-radius, $globalBorderRadius);
 
             &:hover {

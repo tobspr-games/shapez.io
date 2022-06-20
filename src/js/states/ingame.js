@@ -110,13 +110,6 @@ export class InGameState extends GameState {
         return "";
     }
 
-    getThemeMusic() {
-        if (this.creationPayload.gameModeId && this.creationPayload.gameModeId.includes("puzzle")) {
-            return MUSIC.puzzle;
-        }
-        return MUSIC.theme;
-    }
-
     onAppPause() {
         // if (this.stage === stages.s10_gameRunning) {
         //     logger.log("Saving because app got paused");
@@ -241,6 +234,15 @@ export class InGameState extends GameState {
 
             this.app.backgroundResourceLoader.getIngamePromise().then(
                 () => {
+                    if (
+                        this.creationPayload.gameModeId &&
+                        this.creationPayload.gameModeId.includes("puzzle")
+                    ) {
+                        this.app.sound.playThemeMusic(MUSIC.puzzle);
+                    } else {
+                        this.app.sound.playThemeMusic(MUSIC.theme);
+                    }
+
                     this.loadingOverlay.loadingIndicator.innerText = "";
                     this.app.backgroundResourceLoader.resourceStateChangedSignal.removeAll();
 
