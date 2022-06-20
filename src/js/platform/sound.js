@@ -27,6 +27,7 @@ export const SOUNDS = {
     placeBelt: "place_belt",
     copy: "copy",
     unlockUpgrade: "unlock_upgrade",
+    tutorialStep: "tutorial_step",
 };
 
 export const MUSIC = {
