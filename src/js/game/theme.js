@@ -6,10 +6,16 @@ export const THEMES = {
 export let THEME = THEMES.light;
 let currentThemePreference = "light";
 
-THEMES.system = THEMES.light;
-ipcRenderer.on("system-theme-updated", detectSystemTheme);
+if (G_IS_STANDALONE) {
+    THEMES.system = THEMES.light;
+    ipcRenderer.on("system-theme-updated", detectSystemTheme);
+}
 
 export function detectSystemTheme() {
+    if (!G_IS_STANDALONE) {
+        return;
+    }
+
     return ipcRenderer
         .invoke("get-system-theme")
         .then(theme => (THEMES.system = THEMES[theme]))

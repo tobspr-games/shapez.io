@@ -291,7 +291,7 @@ class SettingsStorage {
         this.soundVolume = 1.0;
         this.musicVolume = 1.0;
 
-        this.theme = "system";
+        this.theme = G_IS_STANDALONE ? "system" : "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
