@@ -16,9 +16,9 @@ import { Vector } from "../../../core/vector";
 import { MetaMinerBuilding } from "../../buildings/miner";
 import { gMetaBuildingRegistry } from "../../../core/global_registries";
 import { MetaBeltBuilding } from "../../buildings/belt";
-import { BeltComponent } from "../../components/belt";
 import { MetaTrashBuilding } from "../../buildings/trash";
 import { SOUNDS } from "../../../platform/sound";
+import { THEME } from "../../theme";
 
 // @todo: Make dictionary
 const tutorialsByLevel = [
@@ -174,9 +174,15 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
         this.elementGif = makeDiv(this.element, null, ["helperGif"]);
     }
 
+    cleanup() {
+        document.documentElement.setAttribute("data-tutorial-step", "");
+    }
+
     initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.element, { trackHover: true });
         this.currentHintId = new TrackedState(this.onHintChanged, this);
+
+        document.documentElement.setAttribute("data-tutorial-step", "");
     }
 
     onHintChanged(hintId) {
@@ -376,7 +382,7 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
                         parameters.context.translate(-worldPos.x, -worldPos.y);
                     }
 
-                    parameters.context.fillStyle = "rgb(30, 40, 60)";
+                    parameters.context.fillStyle = THEME.map.tutorialDragText;
                     parameters.context.font = "15px GameFont";
 
                     if (staticComp.rotation === 0) {

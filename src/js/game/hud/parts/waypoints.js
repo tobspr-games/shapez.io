@@ -607,7 +607,8 @@ export class HUDWaypoints extends BaseHUDPart {
             // Render the background rectangle
             parameters.context.globalAlpha = this.currentMarkerOpacity * (isSelected ? 1 : 0.7);
             parameters.context.fillStyle = "rgba(255, 255, 255, 0.7)";
-            parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);
+            parameters.context.beginRoundedRect(bounds.x, bounds.y, bounds.w, bounds.h, 6);
+            parameters.context.fill();
 
             // Render the text
             if (waypointData.item) {

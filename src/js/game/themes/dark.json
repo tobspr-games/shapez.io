@@ -12,6 +12,8 @@
 
         "chunkBorders": "rgba(127, 190, 255, 0.04)",
 
+        "tutorialDragText": "rgb(74, 237, 134)",
+
         "directionLock": {
             "regular": {
                 "color": "rgb(74, 237, 134)",

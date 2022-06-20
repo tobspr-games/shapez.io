@@ -6,6 +6,7 @@ export const CHANGELOG = [
             "Reworked the tutorial to be simpler and more interactive",
             "General polishing",
             "Fix being unable to delete savegame when the savegame file was deleted externally",
+            "New sfx when unlocking upgrades",
             "Updated translations",
         ],
     },

@@ -112,7 +112,10 @@ export class ClientAPI {
             return Promise.resolve({ token });
         }
 
-        return ipcRenderer.invoke("steam:get-ticket").then(
+        return Promise.race([
+            ipcRenderer.invoke("steam:get-ticket"),
+            new Promise((resolve, reject) => setTimeout(() => reject("timeout"), 15000)),
+        ]).then(
             ticket => {
                 logger.log("Got auth ticket:", ticket);
                 return this._request("/v1/public/login", {
