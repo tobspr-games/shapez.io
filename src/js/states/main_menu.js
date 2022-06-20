@@ -239,7 +239,7 @@ export class MainMenuState extends GameState {
                         WEB_STEAM_SSO_AUTHENTICATED
                             ? `
                             <div class="steamSso boxLink">${T.mainMenu.playingFullVersion}
-                                <a href="?sso_logout_silent">${T.mainMenu.logout}</a>
+                                <a class="ssoSignOut" href="?sso_logout_silent">${T.mainMenu.logout}</a>
                             </div>
                         `
                             : ""

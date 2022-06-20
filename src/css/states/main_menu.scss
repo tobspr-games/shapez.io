@@ -965,6 +965,22 @@
                 @include S(margin-top, 3px);
                 overflow: hidden;
                 text-indent: -999em;
+                margin-top: auto;
+                &:hover {
+                    opacity: 0.95;
+                }
+            }
+            a.ssoSignOut {
+                width: 100%;
+                background: #171a23;
+                color: #fff !important;
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                justify-content: center;
+                margin-top: auto;
+                @include S(border-radius, $globalBorderRadius * 0.5);
+                @include S(padding, 1px, 3px);
                 &:hover {
                     opacity: 0.95;
                 }
