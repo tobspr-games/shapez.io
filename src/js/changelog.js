@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "1.5.5",
         date: "20.06.2022",
         entries: [
+            "You can now play the full version in your browser! <a href='https://store.steampowered.com/news/app/1318690/view/5974602444932155405' target='_blank'>Click here</a> to read all details.",
             "Reworked the tutorial to be simpler and more interactive",
             "General polishing",
             "Fix being unable to delete savegame when the savegame file was deleted externally",
