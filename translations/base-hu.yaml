@@ -96,6 +96,9 @@ mainMenu:
         title: Active Mods
         warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
             disable all mods to play the DLC.
+    playFullVersion: Play the full version in your Browser!
+    playingFullVersion: You are now playing the full version!
+    logout: Logout
 dialogs:
     buttons:
         ok: OK
@@ -295,6 +298,19 @@ dialogs:
         descSteamDemo: "One ore more resources could not be loaded. Try restarting the
             game - If that does not help, try reinstalling and verifying the
             game files via Steam. <br><br> Error Message:"
+    steamSsoError:
+        title: Full Version Logout
+        desc: You have been logged out from the Full Browser Version since either your
+            network connection is unstable or you are playing on another
+            device.<br><br> Please make sure you don't have shapez open in any
+            other browser tab or another computer with the same Steam
+            account.<br><br> You can login again in the main menu.
+    steamSsoNoOwnership:
+        title: Full Edition not owned
+        desc: In order to play the Full Edition in your Browser, you need to own both
+            the base game and the Puzzle DLC on your Steam account.<br><br>
+            Please make sure you own both, signed in with the correct Steam
+            account and then try again.
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -1352,3 +1368,5 @@ mods:
         description: Enabling or disabling mods is currently only possible by copying
             the mod file from or to the mods/ folder. However, being able to
             toggle them here is planned for a future update!
+    browserNoSupport: Due to browser restrictions it is currently only possible to
+        install mods in the Steam version - Sorry!

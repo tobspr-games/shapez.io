@@ -51,29 +51,37 @@ export async function authorizeViaSSOToken(app, dialogs) {
             return;
         }
 
-        const response = await Promise.race([
-            fetch(apiUrl + "/v1/sso/refresh", {
-                method: "POST",
-                body: token,
-                headers: {
-                    "x-api-key": "d5c54aaa491f200709afff082c153ef2",
-                },
-            }),
-            new Promise((resolve, reject) => {
-                setTimeout(() => reject("timeout exceeded"), 20000);
-            }),
-        ]);
-        const responseText = await response.json();
-        if (!responseText.token) {
-            console.warn("Failed to register");
-            window.localStorage.setItem("steam_sso_auth_token", "");
-            window.location.replace("?sso_logout");
-            return;
-        }
+        try {
+            const response = await Promise.race([
+                fetch(apiUrl + "/v1/sso/refresh", {
+                    method: "POST",
+                    body: token,
+                    headers: {
+                        "x-api-key": "d5c54aaa491f200709afff082c153ef2",
+                    },
+                }),
+                new Promise((resolve, reject) => {
+                    setTimeout(() => reject("timeout exceeded"), 20000);
+                }),
+            ]);
 
-        window.localStorage.setItem("steam_sso_auth_token", responseText.token);
-        app.clientApi.token = responseText.token;
-        WEB_STEAM_SSO_AUTHENTICATED = true;
+            const responseText = await response.json();
+            if (!responseText.token) {
+                console.warn("Failed to register");
+                window.localStorage.setItem("steam_sso_auth_token", "");
+                window.location.replace("?sso_logout");
+                return;
+            }
+
+            window.localStorage.setItem("steam_sso_auth_token", responseText.token);
+            app.clientApi.token = responseText.token;
+            WEB_STEAM_SSO_AUTHENTICATED = true;
+        } catch (ex) {
+            console.warn("Auth failure", ex);
+            window.localStorage.setItem("steam_sso_auth_token", "");
+            window.location.replace("/");
+            return new Promise(() => null);
+        }
     };
 
     await verify();

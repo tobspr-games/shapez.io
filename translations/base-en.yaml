@@ -131,8 +131,8 @@ mainMenu:
     helpTranslate: Help translate!
     madeBy: Made by <author-link>
 
-    playFullVersion: Sign in to play the full version in your Browser!
-    playingFullVersion: You are now playing the full version! Not all features work yet, but I'm working on it!
+    playFullVersion: Play the full version in your Browser!
+    playingFullVersion: You are now playing the full version!
     logout: Logout
 
     # This is shown when using firefox and other browsers which are not supported.

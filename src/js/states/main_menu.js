@@ -120,25 +120,6 @@ export class MainMenuState extends GameState {
                 ${showExitAppButton ? `<button class="exitAppButton" aria-label="Exit App"></button>` : ""}
             </div>
 
-            ${
-                G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
-                    ? ""
-                    : `<div class="steamSso">
-                        ${T.mainMenu.playFullVersion}
-                        <a class="ssoSignIn" href="${
-                            this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
-                        }">Sign in</a>
-                    </div>`
-            }
-            ${
-                WEB_STEAM_SSO_AUTHENTICATED
-                    ? `
-                    <div class="steamSso">${T.mainMenu.playingFullVersion}
-                        <a href="?sso_logout_silent">${T.mainMenu.logout}</a>
-                    </div>
-                `
-                    : ""
-            }
 
             <video autoplay muted loop class="fullscreenBackgroundVideo">
                 <source src="${cachebust("res/bg_render.webm")}" type="video/webm">
@@ -243,6 +224,27 @@ export class MainMenuState extends GameState {
                     : `
 
                 <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
+
+                    ${
+                        G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
+                            ? ""
+                            : `<div class="steamSso boxLink">
+                                ${T.mainMenu.playFullVersion}
+                                <a class="ssoSignIn" href="${
+                                    this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
+                                }">Sign in</a>
+                            </div>`
+                    }
+                    ${
+                        WEB_STEAM_SSO_AUTHENTICATED
+                            ? `
+                            <div class="steamSso boxLink">${T.mainMenu.playingFullVersion}
+                                <a href="?sso_logout_silent">${T.mainMenu.logout}</a>
+                            </div>
+                        `
+                            : ""
+                    }
+
                     ${
                         showExternalLinks && !G_IS_STEAM_DEMO
                             ? `
