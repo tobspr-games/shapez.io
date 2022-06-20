@@ -99,17 +99,22 @@ export class SavegameManager extends ReadWriteProxy {
             metaDataRef: game,
         });
 
-        return handle.deleteAsync().then(() => {
-            for (let i = 0; i < this.currentData.savegames.length; ++i) {
-                const potentialGame = this.currentData.savegames[i];
-                if (potentialGame.internalId === handle.internalId) {
-                    this.currentData.savegames.splice(i, 1);
-                    break;
+        return handle
+            .deleteAsync()
+            .catch(err => {
+                console.warn("Failed to unlink physical savegame file, still removing:", err);
+            })
+            .then(() => {
+                for (let i = 0; i < this.currentData.savegames.length; ++i) {
+                    const potentialGame = this.currentData.savegames[i];
+                    if (potentialGame.internalId === handle.internalId) {
+                        this.currentData.savegames.splice(i, 1);
+                        break;
+                    }
                 }
-            }
 
-            return this.writeAsync();
-        });
+                return this.writeAsync();
+            });
     }
 
     /**

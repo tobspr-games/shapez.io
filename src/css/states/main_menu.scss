@@ -148,6 +148,7 @@
                 color: #333;
                 @include S(margin-top, 15px);
                 @include SuperSmallText;
+                text-align: center;
             }
 
             .steamLink {

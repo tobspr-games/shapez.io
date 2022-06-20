@@ -5,6 +5,7 @@ export const CHANGELOG = [
         entries: [
             "Reworked the tutorial to be simpler and more interactive",
             "General polishing",
+            "Fix being unable to delete savegame when the savegame file was deleted externally",
             "Updated translations",
         ],
     },
