@@ -117,6 +117,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
     }
 
     show(final = false) {
+        if (!this.visible) {
+            this.root.app.gameAnalytics.noteMinor("game.std_advg.show");
+            this.root.app.gameAnalytics.noteMinor("game.std_advg.show-" + (final ? "final" : "nonfinal"));
+        }
         this.lastShown = this.root.time.now();
         this.visible = true;
         this.final = final;

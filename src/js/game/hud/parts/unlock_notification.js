@@ -24,6 +24,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
 
         this.buttonShowTimeout = null;
+
+        this.root.app.gameAnalytics.noteMinor("game.started");
     }
 
     createElements(parent) {
@@ -62,6 +64,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
             );
             return;
         }
+
+        this.root.app.gameAnalytics.noteMinor("game.level.complete-" + level);
 
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.elemTitle.innerText = T.ingame.levelCompleteNotification.levelTitle.replace(

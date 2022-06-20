@@ -404,6 +404,8 @@ export class MainMenuState extends GameState {
         this.fetchPlayerCount();
 
         this.refreshInterval = setInterval(() => this.fetchPlayerCount(), 10000);
+
+        this.app.gameAnalytics.noteMinor("menu.enter");
     }
 
     renderMainMenu() {
@@ -798,11 +800,13 @@ export class MainMenuState extends GameState {
             this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
             !this.app.restrictionMgr.getHasUnlimitedSavegames()
         ) {
+            this.app.gameAnalytics.noteMinor("menu.slotlimit");
             this.showSavegameSlotLimit();
             return;
         }
 
         this.app.adProvider.showVideoAd().then(() => {
+            this.app.gameAnalytics.noteMinor("menu.play");
             const savegame = this.app.savegameMgr.createNewSavegame();
 
             this.moveToState("InGameState", {
@@ -824,6 +828,7 @@ export class MainMenuState extends GameState {
     }
 
     onModsClicked() {
+        this.app.gameAnalytics.noteMinor("menu.mods");
         this.moveToState("ModsState", {
             backToStateId: "MainMenuState",
         });
@@ -845,6 +850,7 @@ export class MainMenuState extends GameState {
             return;
         }
 
+        this.app.gameAnalytics.noteMinor("menu.continue");
         savegame
             .readAsync()
             .then(() => this.app.adProvider.showVideoAd())
