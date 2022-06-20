@@ -35,7 +35,9 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
 
             <div class="lowerBar">
 
-            <div class="playtimeDisclaimerDownload">${T.demoBanners.playtimeDisclaimerDownload}</div>
+            <div class="playtimeDisclaimerDownload"><span class="inner">${
+                T.demoBanners.playtimeDisclaimerDownload
+            }</span></div>
 
             <button class="steamLinkButton steam_dlbtn_0">
             ${

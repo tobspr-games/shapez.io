@@ -823,6 +823,11 @@ export class MainMenuState extends GameState {
         });
 
         const savegame = this.app.savegameMgr.getSavegameById(latestInternalId);
+        if (!savegame) {
+            console.warn("No savegame to continue found:", this.app.savegameMgr.currentData.savegames);
+            return;
+        }
+
         savegame
             .readAsync()
             .then(() => this.app.adProvider.showVideoAd())

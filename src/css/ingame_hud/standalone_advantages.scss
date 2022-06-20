@@ -89,13 +89,30 @@
             box-sizing: border-box;
             text-align: center;
             @include S(border-radius, $globalBorderRadius);
-            @include S(padding, 4px, 4px);
+            @include S(padding, 8px, 10px, 8px, 20px);
             @include S(margin-bottom, 15px);
             pointer-events: all;
             transition: background-color 0.12s ease-in-out;
             color: rgba(#000, 0.5);
 
+            width: 100%;
+            background: rgba($colorGreenBright, 0.2);
             cursor: pointer;
+
+            display: grid;
+            grid-template-columns: auto 1fr;
+            @include S(grid-gap, 5px);
+
+            &::before {
+                content: "";
+                display: inline-flex;
+                @include S(width, 15px);
+                @include S(height, 15px);
+                & {
+                    /* load-async */
+                    background: uiResource("icons/savegame_correct.png") center center / contain no-repeat;
+                }
+            }
 
             strong {
                 color: #000;
@@ -145,6 +162,7 @@
         background: #eff2f4 #{D(12px)} center / #{D(30px)} no-repeat;
 
         @include S(border-radius, $globalBorderRadius);
+        align-items: center;
         @include S(padding, 10px, 4px, 4px);
         @include S(height, 40px);
 
@@ -160,6 +178,7 @@
             grid-column: 2 / 3;
             grid-row: 2 / 3;
             @include SuperSmallText;
+            line-height: 1em;
             opacity: 0.8;
         }
 

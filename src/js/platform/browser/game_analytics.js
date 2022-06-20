@@ -324,6 +324,8 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             version: G_BUILD_VERSION,
             level: root.hubGoals.level,
             gameDump: this.generateGameDump(root),
+        }).catch(err => {
+            console.warn("Request failed", err);
         });
     }
 
