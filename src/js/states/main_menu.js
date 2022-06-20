@@ -16,6 +16,7 @@ import {
     waitNextFrame,
 } from "../core/utils";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { detectSystemTheme } from "../game/theme";
 import { MODS } from "../mods/modloader";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
@@ -347,6 +348,9 @@ export class MainMenuState extends GameState {
                 T.dialogs.gameLoadFailure.text + "<br><br>" + payload.loadError
             );
         }
+
+        // Apply the system theme if returning from InGameState
+        detectSystemTheme();
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
             this.onPuzzleModeButtonClicked(true);

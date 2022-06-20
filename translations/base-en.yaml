@@ -1267,6 +1267,7 @@ settings:
             themes:
                 dark: Dark
                 light: Light
+                system: System
 
         refreshRate:
             title: Tick Rate
