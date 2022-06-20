@@ -57,8 +57,7 @@ global:
     loadingResources: Lade zusätzliche Ressourcen (<percentage> %)
 demoBanners:
     title: Demoversion
-    titleV2: >-
-        Spiele jetzt die Vollversion für:
+    titleV2: "Spiele jetzt die Vollversion für:"
     intro: |-
         Kaufe die Vollversion <strong>jetzt</strong> für:<ul>
             <li>Alle 26 Level + unendlich Freeplay</li>

@@ -67,6 +67,7 @@ demoBanners:
     untilEndOfDemo: Until end of demo
     playtimeDisclaimerDownload: You can continue your savegame in the full version!
         Click <strong>here</strong> to download your savegame.
+    titleV2: "Play the full version now for:"
 mainMenu:
     play: שחק
     continue: המשך
@@ -410,6 +411,7 @@ ingame:
             21_4_press_button: "חלץ על המפסק כדי שהוא<strong>יפיק אות חיובי</strong> וזה
                 יפעיל את הצובע המרובע.<br><br> נ.ב: אתה לא צריך לחבר את כל
                 הכניסות! נסה לחבר רק 2."
+            1_2_hold_and_drag: Hold and drag
     connectedMiners:
         one_miner: חוצב 1
         n_miners: <amount> חוצבים

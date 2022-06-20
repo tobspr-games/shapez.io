@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Tot het einde van de demo
     playtimeDisclaimerDownload: Je kunt doorgaan met je savegame in de volledige
         versie! Klik <strong>hier</strong> om je savegame te downloaden.
+    titleV2: "Speel de volledige versie nu voor:"
 mainMenu:
     play: Spelen
     changelog: Wijzigingenlijst
@@ -423,6 +424,7 @@ ingame:
             21_4_press_button: "Druk op de schakelaar om het een <strong>Juist signaal door
                 te geven</strong> en de verver te activeren.<br><br> PS: Verbind
                 niet alle inputs! Probeer er eens 2."
+            1_2_hold_and_drag: Vasthouden en slepen
     colors:
         red: Rood
         green: Groen

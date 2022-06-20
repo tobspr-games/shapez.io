@@ -73,6 +73,7 @@ demoBanners:
     playtimeDisclaimerDownload: Puoi continuare il tuo salvataggio nella versione
         completa! Fai clic <strong>qui</strong> per scaricare il tuo
         salvataggio.
+    titleV2: "Play the full version now for:"
 mainMenu:
     play: Gioca
     changelog: Registro modifiche
@@ -427,6 +428,7 @@ ingame:
                 di verità </strong> e fargli quindi attivare il
                 vernciatore.<br><br> PS: Non c'è bisogno che tu connetta tutti
                 gli imput! Prova a collegarne solo due."
+            1_2_hold_and_drag: Mantenere e trascinare
     colors:
         red: Rosso
         green: Verde

@@ -75,6 +75,7 @@ demoBanners:
     playtimeDisclaimerDownload: ¡Puedes continuar con tu partida guardada en la
         versión completa! Haz clic <strong>aquí</strong> para descargar tu
         partida guardada.
+    titleV2: "Juega la versión completa para:"
 mainMenu:
     play: Jugar
     continue: Continuar
@@ -440,6 +441,7 @@ ingame:
                 señal</strong> lo cual activa el pintador.<br><br> PD: ¡No
                 necesitas conectar todas las entradas! Intenta conectando sólo
                 dos."
+            1_2_hold_and_drag: Mantener y arrastrar
     connectedMiners:
         one_miner: 1 Minero
         n_miners: <amount> Mineros

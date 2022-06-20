@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Até o final da demo
     playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão
         completa! Clique <strong>aqui</strong> para baixar seu jogo salvo.
+    titleV2: "Reproduzir a versão completa agora para:"
 mainMenu:
     play: Jogar
     continue: Continuar
@@ -431,6 +432,7 @@ ingame:
                 verdadeiro</strong> o que ativará o pintor.<br><br> OBS: Você
                 não precisa conectar todas as entradas! Tente conectar somente
                 duas."
+            1_2_hold_and_drag: Segurar e arrastar
     connectedMiners:
         one_miner: 1 Extrator
         n_miners: <amount> Extratores

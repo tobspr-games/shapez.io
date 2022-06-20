@@ -70,6 +70,7 @@ demoBanners:
     playtimeDisclaimerDownload: Vous pouvez continuer votre sauvegarde dans la
         version complète ! Cliquez <strong>ici</strong> pour télécharger votre
         sauvegarde.
+    titleV2: "Jouez la version complète pour :"
 mainMenu:
     play: Jouer
     continue: Continuer
@@ -438,6 +439,7 @@ ingame:
                 vrai</strong> et active la station de peinture
                 quadruple.<br><br> PS : Vous n’êtes pas obligé de connecter
                 toutes les entrées ! Essayez d’en brancher seulement deux."
+            1_2_hold_and_drag: Maintenez et faites glisser
     connectedMiners:
         one_miner: 1 extracteur
         n_miners: <amount> extracteurs

@@ -69,6 +69,7 @@ demoBanners:
     untilEndOfDemo: Until end of demo
     playtimeDisclaimerDownload: You can continue your savegame in the full version!
         Click <strong>here</strong> to download your savegame.
+    titleV2: "Play the full version now for:"
 mainMenu:
     play: Igraj
     continue: Nastavi
@@ -426,6 +427,7 @@ ingame:
                 emitovati tačan signal</strong> i tim signalom će pokrenuti
                 farbanje.<br><br> PS: Ne morate da povežete sve ulaze! Za sada
                 probajte samo dva."
+            1_2_hold_and_drag: Hold and drag
     connectedMiners:
         one_miner: 1 Rudar
         n_miners: <amount> Rudara

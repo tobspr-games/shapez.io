@@ -59,6 +59,7 @@ demoBanners:
     untilEndOfDemo: Until end of demo
     playtimeDisclaimerDownload: You can continue your savegame in the full version!
         Click <strong>here</strong> to download your savegame.
+    titleV2: "Play the full version now for:"
 mainMenu:
     play: 开始游戏
     changelog: 更新日志
@@ -352,6 +353,7 @@ ingame:
                 然后用导线连接上色器的<strong>四个输入口</strong>！
             21_3_place_button: 很好！现在放置一个<strong>开关</strong>并连接导线！
             21_4_press_button: 按下<strong>开关</strong>来<strong>产生正信号</strong>以激活<strong>上色器</strong>。<br><br>注：您不用连上所有的输入口！试着只接两个。
+            1_2_hold_and_drag: Hold and drag
     colors:
         red: 红色
         green: 绿色

@@ -67,6 +67,7 @@ demoBanners:
     untilEndOfDemo: do konce ukázky
     playtimeDisclaimerDownload: Ve hře můžete pokračovat v plné verzi! Klikněte
         <strong>sem</strong> a stáhněte si uloženou hru.
+    titleV2: "Přehrajte si nyní plnou verzi pro:"
 mainMenu:
     play: Hrát
     continue: Pokračovat
@@ -409,6 +410,7 @@ ingame:
             21_4_press_button: "Stiskněte přepínač pro změnu <strong>vysílaného logického
                 signálu</strong> a tím aktivujte barvič.<br><br> PS: Nemusíte
                 připojit veškeré vstupy! Zkuste spojit pouze dva."
+            1_2_hold_and_drag: Podržení a přetažení
     colors:
         red: Červená
         green: Zelená

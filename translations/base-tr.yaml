@@ -69,6 +69,7 @@ demoBanners:
     untilEndOfDemo: Demo sonuna kadar
     playtimeDisclaimerDownload: Kayıtlı oyununuza tam sürümde devam edebilirsiniz!
         Kayıtlı oyununuzu indirmek için <strong>burayı</strong> tıklayın.
+    titleV2: "Tam sürümü şimdi oynayın:"
 mainMenu:
     play: Oyna
     changelog: Değişiklik Günlüğü
@@ -416,6 +417,7 @@ ingame:
                 gönderin</strong> ve bununla boyayıcıyı aktifleştirin.<br><br>
                 Not: Bütün girişleri bağlamanıza gerek yok! Sadece iki tanesini
                 kabloyla bağlamayı deneyin."
+            1_2_hold_and_drag: Tutun ve sürükleyin
     colors:
         red: Kırmızı
         green: Yeşil

@@ -72,6 +72,7 @@ demoBanners:
     untilEndOfDemo: Până la sfârșitul demonstrației
     playtimeDisclaimerDownload: Puteți continua salvarea în versiunea completă!
         Faceți clic <strong>aici</strong> pentru a descărca jocul salvat.
+    titleV2: "Joacă acum versiunea completă pentru:"
 mainMenu:
     play: Joacă
     changelog: Jurnalul schimbărilor
@@ -423,6 +424,7 @@ ingame:
                 ADEVĂRAT</strong> și pentru a activa vopsitorul.<br><br> PS: Nu
                 e necesar să conectezi toate cele 4 intrări! Încearcă să
                 conectezi doar 2."
+            1_2_hold_and_drag: Țineți apăsat și trageți
     colors:
         red: Roșu
         green: Verde

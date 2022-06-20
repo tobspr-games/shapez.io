@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Till slutet av demonstrationen
     playtimeDisclaimerDownload: Du kan fortsätta ditt savegame i den fullständiga
         versionen! Klicka <strong>här</strong> för att ladda ner ditt savegame.
+    titleV2: "Spela den fullständiga versionen nu för:"
 mainMenu:
     play: Spela
     changelog: Ändringslogg
@@ -416,6 +417,7 @@ ingame:
             21_4_press_button: "Tryck på strömbrytaren för att få den att <strong>avge en
                 signal</strong> och på så sätt aktivera målaren.<br><br> PS: Du
                 behöver inte ansluta alla ingångar! Prova att bara koppla två."
+            1_2_hold_and_drag: Håll och dra
     colors:
         red: Röd
         green: Grön

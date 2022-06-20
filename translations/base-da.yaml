@@ -69,6 +69,7 @@ demoBanners:
     untilEndOfDemo: Indtil afslutningen af demoen
     playtimeDisclaimerDownload: Du kan fortsætte dit savegame i den fulde version!
         Klik <strong>her</strong> for at downloade dit savegame.
+    titleV2: "Spil den fulde version nu for:"
 mainMenu:
     play: Spil
     continue: Fortsæt
@@ -424,6 +425,7 @@ ingame:
             21_4_press_button: "Press the switch to make it <strong>emit a truthy
                 signal</strong> and thus activate the painter.<br><br> PS: You
                 don't have to connect all inputs! Try wiring only two."
+            1_2_hold_and_drag: Hold og træk
     connectedMiners:
         one_miner: 1 Miner
         n_miners: <amount> Miners

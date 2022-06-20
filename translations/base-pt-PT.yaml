@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Até o final da demo
     playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão
         completa! Clique <strong>aqui</strong> para baixar seu jogo salvo.
+    titleV2: "Reproduzir a versão completa agora para:"
 mainMenu:
     play: Jogar
     changelog: Changelog
@@ -425,6 +426,7 @@ ingame:
                 verdadeiro</strong>, isso irá ativar o pintor.<br><br> PS: Tu
                 não tens de conectar todas as entradas! Tenta conectar apenas
                 duas."
+            1_2_hold_and_drag: Segurar e arrastar
     colors:
         red: Vermelho
         green: Verde

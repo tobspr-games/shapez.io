@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Do końca demonstracji
     playtimeDisclaimerDownload: Możesz kontynuować zapis stanu gry w pełnej wersji!
         Kliknij <strong>tutaj</strong>, aby pobrać zapisaną grę.
+    titleV2: "Zagraj teraz w pełną wersję gry:"
 mainMenu:
     play: Rozpocznij
     continue: Kontynuuj
@@ -432,6 +433,7 @@ ingame:
             21_4_press_button: "Wciśnij przełącznik aby <strong>emitował sygnał
                 Prawda</strong> i aktywował malarza.<br><br> PS: Nie musisz
                 łączyć wszystkich wejść! Spróbuj połączyć tylko dwa."
+            1_2_hold_and_drag: Przytrzymaj i przeciągnij
     connectedMiners:
         one_miner: 1 ekstraktor
         n_miners: <amount> ekstraktorów

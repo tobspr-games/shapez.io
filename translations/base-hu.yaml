@@ -69,6 +69,7 @@ demoBanners:
     untilEndOfDemo: A demó végéig
     playtimeDisclaimerDownload: Folytathatja a mentést a teljes verzióban!
         Kattintson <strong>ide</strong> a mentett játék letöltéséhez.
+    titleV2: "Játssz a teljes verzióval most:"
 mainMenu:
     play: Játék
     continue: Folytatás
@@ -429,6 +430,7 @@ ingame:
             21_4_press_button: "Nyomd meg a Kapcsolót, hogy <strong>igaz jelet</strong>
                 bocsásson ki, ezzel aktiválva a Festőt.<br><br> Tipp: Nem muszáj
                 mindegyik bemenetet bekötni! Próbálj bekötni csak kettőt."
+            1_2_hold_and_drag: Tartsa és húzza
     connectedMiners:
         one_miner: 1 Bánya
         n_miners: <amount> Bánya

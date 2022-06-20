@@ -72,6 +72,7 @@ demoBanners:
     untilEndOfDemo: Demon loppuun asti
     playtimeDisclaimerDownload: Voit jatkaa tallentamistasi täysversiossa! Lataa
         tallennettava peli napsauttamalla <strong>tätä</strong>.
+    titleV2: "Pelaa täysversiota nyt:"
 mainMenu:
     play: Pelaa
     continue: Jatka
@@ -425,6 +426,7 @@ ingame:
             21_4_press_button: "Paina kytkintä <strong>lähettääksesi tosi-
                 signaalin</strong> ja aktivoidaksesi maalaimen.<br><br> PS:
                 Kaikkia tuloja ei tarvitse kytkeä! Kokeile vaikka vain kahta."
+            1_2_hold_and_drag: Pidä ja vedä
     connectedMiners:
         one_miner: 1 poimija
         n_miners: <amount> poimijaa

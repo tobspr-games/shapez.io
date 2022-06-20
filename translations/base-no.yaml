@@ -71,6 +71,7 @@ demoBanners:
     untilEndOfDemo: Helt til slutten av demoen
     playtimeDisclaimerDownload: Du kan fortsette lagringsspillet i fullversjonen!
         Klikk <strong>her</strong> for å laste ned savegame.
+    titleV2: "Spill fullversjonen nå for:"
 mainMenu:
     play: Spill
     changelog: Endringshistorikk
@@ -415,6 +416,7 @@ ingame:
             21_4_press_button: "Trykk på bryteren for å <strong>utgi et gyldig
                 signal</strong> som deretter aktiverer malerene.<br><br> NB: Du
                 må ikke koble til alle inngangene! Prøv bare med to."
+            1_2_hold_and_drag: Hold og dra
     colors:
         red: Rød
         green: Grønn

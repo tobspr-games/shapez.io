@@ -68,6 +68,7 @@ demoBanners:
     untilEndOfDemo: Until end of demo
     playtimeDisclaimerDownload: You can continue your savegame in the full version!
         Click <strong>here</strong> to download your savegame.
+    titleV2: "Play the full version now for:"
 mainMenu:
     play: Mulai Permainan
     continue: Lanjutkan
@@ -433,6 +434,7 @@ ingame:
                 benar</strong> dan mengaktifkan pengecat.<br><br> NB: Kamu tidak
                 perlu menghubungkan semua input! Cobalah hanya menghubungkan
                 dua."
+            1_2_hold_and_drag: Hold and drag
     connectedMiners:
         one_miner: 1 Ekstraktor
         n_miners: <amount> Ekstraktor
