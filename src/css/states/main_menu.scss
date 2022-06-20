@@ -243,100 +243,70 @@
                 }
 
                 &.levels {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_new_levels.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_new_levels.png");
                     > strong {
                         color: #f13555;
                     }
                 }
 
                 &.upgrades {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_upgrades.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_upgrades.png");
                     > strong {
                         color: #8a00ff;
                     }
                 }
 
                 &.buildings {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_buildings.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_buildings.png");
                     > strong {
                         color: #3fce8b;
                     }
                 }
 
                 &.wires {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_wires.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_wires.png");
                     > strong {
                         color: #ef2fdb;
                     }
                 }
 
                 &.markers {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_markers.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_markers.png");
                     > strong {
                         color: #4294ff;
                     }
                 }
 
                 &.mods {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_mods.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_mods.png");
                     > strong {
                         color: #8a00ff;
                     }
                 }
 
                 &.savegames {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_savegames.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_savegames.png");
                     > strong {
                         color: #ff9500;
                     }
                 }
 
                 &.darkmode {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_dark_mode.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_dark_mode.png");
                     > strong {
                         color: #292c32;
                     }
                 }
 
                 &.support {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_support.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_support.png");
                     > strong {
                         color: #e72d2d;
                     }
                 }
 
                 &.achievements {
-                    & {
-                        /* @load-async */
-                        background-image: uiResource("res/ui/icons/advantage_achievements.png");
-                    }
+                    background-image: uiResource("res/ui/icons/advantage_achievements.png");
                     > strong {
                         color: #ffac0f;
                     }
