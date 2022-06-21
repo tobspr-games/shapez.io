@@ -38,6 +38,7 @@
 
         .exitAppButton {
             background-image: uiResource("icons/main_menu_exit.png");
+            background-size: 56%;
         }
 
         .languageChoose {
@@ -788,6 +789,9 @@
             .description {
                 @include SuperSmallText;
                 color: rgba(0, 10, 20, 0.5);
+                @include DarkThemeOverride {
+                    color: rgba(#fff, 0.7);
+                }
             }
             // &:hover {
             //     .tooltip {
@@ -854,6 +858,10 @@
                 text-align: center;
                 @include S(padding, 0, 20px);
                 opacity: 0.5;
+
+                @include DarkThemeOverride {
+                    color: #fff;
+                }
             }
 
             .savegames {
@@ -1231,23 +1239,6 @@
 
             .dlcHint {
                 color: $accentColorBright;
-            }
-        }
-
-        .footer {
-            > a,
-            .sidelinks > a {
-                background-color: rgba($darkModeControlsBackground, 0.3);
-                color: #333538;
-
-                &:hover {
-                    background-color: rgba(darken($darkModeControlsBackground, 5), 0.4);
-                }
-            }
-
-            .thirdpartyLogo.githubLogo {
-                // filter: invert(1);
-                opacity: 0.7;
             }
         }
     }

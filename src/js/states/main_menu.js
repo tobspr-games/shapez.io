@@ -41,8 +41,7 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            G_IS_DEV ||
-            (!G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO);
+            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -138,14 +137,18 @@ export class MainMenuState extends GameState {
                     <div class="buttons"></div>
                     <div class="savegamesMount"></div>
                     ${
-                        G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
-                            ? ""
-                            : `<div class="steamSso">
-                                <span class="description">${T.mainMenu.playFullVersionV2}</span>
-                                <a class="ssoSignIn" href="${
+                        G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED
+                            ? `<div class="steamSso">
+                                <span class="description">${
+                                    G_IS_STANDALONE
+                                        ? T.mainMenu.playFullVersionStandalone
+                                        : T.mainMenu.playFullVersionV2
+                                }</span>
+                                <a class="ssoSignIn" target="_blank" href="${
                                     this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
                                 }">Sign in</a>
                             </div>`
+                            : ""
                     }
                     ${
                         WEB_STEAM_SSO_AUTHENTICATED
@@ -258,7 +261,7 @@ export class MainMenuState extends GameState {
                     <div class="socialLinks">
 
                     ${
-                        showExternalLinks
+                        showExternalLinks && (!G_IS_STANDALONE || G_IS_STEAM_DEMO)
                             ? `<a class="steamLinkSocial boxLink" target="_blank">
                                     <span class="thirdpartyLogo steamLogo"></span>
                                     <span class="label">steam</span>

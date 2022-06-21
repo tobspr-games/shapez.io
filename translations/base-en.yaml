@@ -133,6 +133,7 @@ mainMenu:
     noActiveSavegames: No active savegames found - Click play to start a new game!
 
     playFullVersionV2: Bought shapez on Steam? Play the full version in your Browser!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
     playingFullVersion: You are now playing the full version!
     logout: Logout
 

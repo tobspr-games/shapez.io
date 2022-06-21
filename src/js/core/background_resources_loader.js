@@ -31,6 +31,11 @@ const INGAME_ASSETS = {
     css: ["async-resources.css"],
 };
 
+if (G_IS_STANDALONE) {
+    MAIN_MENU_ASSETS.sounds = [...Array.from(Object.values(MUSIC)), ...Array.from(Object.values(SOUNDS))];
+    INGAME_ASSETS.sounds = [];
+}
+
 const LOADER_TIMEOUT_PER_RESOURCE = 180000;
 
 // Cloudflare does not send content-length headers with brotli compression,
