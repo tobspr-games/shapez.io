@@ -39,7 +39,9 @@ export class PreloadState extends GameState {
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector("#ll_preload_status");
+        /** @type {HTMLElement} */
         this.progressElement = this.htmlElement.querySelector("#ll_progressbar span");
 
         this.startLoading();
@@ -66,7 +68,7 @@ export class PreloadState extends GameState {
     }
 
     startLoading() {
-        this.setStatus("Booting")
+        this.setStatus("Booting", 0)
 
             .then(() => this.setStatus("Creating platform wrapper", 3))
             .then(() => authorizeViaSSOToken(this.app, this.dialogs))
@@ -281,6 +283,7 @@ export class PreloadState extends GameState {
     /**
      *
      * @param {string} text
+     * @param {number} progress
      */
     setStatus(text, progress) {
         logger.log("✅ " + text);

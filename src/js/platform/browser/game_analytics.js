@@ -21,6 +21,7 @@ if (!G_IS_STANDALONE && !G_IS_DEV) {
         projectKey: "mhZgUFQBI6QAtt3PRLer",
         respectDoNotTrack: true,
         revID: G_BUILD_COMMIT_HASH,
+        // @ts-ignore
         heatmaps: false,
         verbose: false,
         captureIFrames: false,

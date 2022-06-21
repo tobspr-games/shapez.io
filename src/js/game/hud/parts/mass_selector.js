@@ -1,3 +1,7 @@
+/* typehints:start */
+import { Component } from "../../component";
+/* typehints:end */
+
 import { globalConfig } from "../../../core/config";
 import { DrawParameters } from "../../../core/draw_parameters";
 import { createLogger } from "../../../core/logging";

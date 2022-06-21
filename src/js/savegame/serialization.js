@@ -106,7 +106,7 @@ export const types = {
     },
 
     /**
-     * @param {SingletonFactoryTemplate<*>} innerType
+     * @param {SingletonFactoryTemplate<*>} registry
      */
     classRef(registry) {
         return new TypeMetaClass(registry);
