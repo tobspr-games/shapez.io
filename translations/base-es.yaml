@@ -231,7 +231,7 @@ dialogs:
         title: Fallo al cargar los Puzles
         desc: Desafortunadamente, no se pudieron cargar los puzles.
     submitPuzzle:
-        title: Enviar Puzzle
+        title: Enviar Puzle
         descName: "Nombra tu puzle:"
         descIcon: "Por favor ingresa una clave única, que será el icono de tu puzle
             (Puedes generarlas <link>aquí</link>, o escoger una de las formas
@@ -507,7 +507,7 @@ ingame:
         share: Compartir
         report: Reportar
         clearBuildings: Borrar Edificios
-        resetPuzzle: Reiniciar Puzzle
+        resetPuzzle: Reiniciar Puzle
     puzzleEditorControls:
         title: Editor de Puzles
         instructions:
@@ -535,7 +535,7 @@ ingame:
         titleRatingDesc: Tu puntuación me ayudará a hacerte mejores sugerencias en el futuro
         continueBtn: Continuar Jugando
         menuBtn: Menú
-        nextPuzzle: Siguiente Puzzle
+        nextPuzzle: Siguiente Puzle
     puzzleMetadata:
         author: Autor
         shortKey: Clave
@@ -1309,7 +1309,7 @@ puzzleMenu:
     loadPuzzle: Cargar
     reviewPuzzle: Revisar y Publicar
     validatingPuzzle: Validando Puzle
-    submittingPuzzle: Enviando Puzzle
+    submittingPuzzle: Enviando Puzle
     noPuzzles: Ahora mismo no hay puzles en esta sección.
     categories:
         levels: Niveles
@@ -1350,7 +1350,7 @@ puzzleMenu:
         derecho a shapez.io en tu biblioteca, selecionando propiedades > DLCs.
     search:
         action: Buscar
-        placeholder: Escribe un nombre de puzzle o autor
+        placeholder: Escribe un nombre de puzle o autor
         includeCompleted: Incluir completado
         difficulties:
             any: Cualquier dificultad
