@@ -235,6 +235,7 @@ export class MapView extends BaseMap {
             let key = "regular";
 
             // Disabled rn because it can be really annoying
+            // eslint-disable-next-line no-constant-condition
             if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get() && false) {
                 key = "placing";
             }
