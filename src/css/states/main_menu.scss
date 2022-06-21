@@ -169,27 +169,31 @@
         grid-column: 2 / 3;
         flex-direction: column;
         @include S(grid-gap, 20px);
-        height: 100%;
 
         .mainNews {
-            background: rgb(248, 232, 130);
+            background: linear-gradient(220deg, rgb(248, 232, 130), rgb(248, 171, 90));
             &::before {
                 background: uiResource("kiwi_clicker.png") center center / 100% no-repeat;
                 content: "";
-                @include S(width, 130px);
-                @include S(height, 130px);
+                @include S(width, 140px);
+                @include S(height, 140px);
                 position: absolute;
                 top: 50%;
                 right: -5%;
                 pointer-events: none;
                 transform: translateY(-50%);
+                transition: transform 0.5s ease-in-out;
+            }
+
+            &:hover::before {
+                transform: translate(0, -51%);
             }
             box-shadow: 0 D(9px) D(15px) rgba(#000, 0.2);
             width: 100%;
             display: flex;
             flex-direction: column;
-            @include S(min-height, 60px);
-            @include S(max-height, 150px);
+            @include S(height, 60px);
+
             pointer-events: all;
             flex-grow: 1;
             z-index: 100;
@@ -209,7 +213,7 @@
             .text {
                 @include SuperSmallText;
                 @include S(width, 120px);
-                color: rgba(0, 10, 20, 0.7);
+                color: rgba(#000, 0.8);
             }
         }
 
@@ -491,11 +495,19 @@
                 }
 
                 > button {
+                    pointer-events: all;
+                    @include S(padding, 4px, 10px);
                     margin: 0;
-                    @include S(padding, 2px, 10px);
+                    background: #47c599;
+                    box-sizing: border-box;
                     position: absolute;
                     @include S(top, 10px);
                     @include S(right, 10px);
+                    z-index: 100;
+                    @include PlainText;
+                    z-index: 200;
+                    color: #111215;
+                    box-shadow: 0 D(2px) D(9px) rgba(#000, 0.4);
                 }
             }
 
