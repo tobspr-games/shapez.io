@@ -117,13 +117,10 @@
         .standaloneBanner {
             background: transparent;
             @include S(border-radius, $globalBorderRadius);
-            // box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
-            @include S(min-width, 340px);
-            @include S(max-width, 380px);
+            @include S(min-width, 320px);
+            @include S(max-width, 370px);
             width: 100%;
             box-sizing: border-box;
-            @include S(padding, 0, 15px);
-            // backdrop-filter: blur(10px);
 
             display: flex;
             flex-direction: column;
@@ -938,6 +935,15 @@
         @include S(gap, 9px);
         @include S(top, 25px);
         @include S(left, 25px);
+
+        @media (max-aspect-ratio: 1460/1000) {
+            position: unset;
+            top: unset;
+            left: unset;
+            .label {
+                display: none;
+            }
+        }
 
         > .boxLink {
             pointer-events: all;

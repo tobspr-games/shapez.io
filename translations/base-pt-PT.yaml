@@ -69,8 +69,8 @@ demoBanners:
     playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
     playerCount: <playerCount> jogadores como tu estão a jogar shapez na Steam
     untilEndOfDemo: Até o final da demo
-    playtimeDisclaimerDownload: Podes continuar o teu savegame na versão
-        completa! Cliqua <strong>aqui</strong> para baixares o teu savegame.
+    playtimeDisclaimerDownload: Podes continuar o teu savegame na versão completa!
+        Cliqua <strong>aqui</strong> para baixares o teu savegame.
     titleV2: "Reproduzir a versão completa agora para:"
 mainMenu:
     play: Jogar
@@ -99,9 +99,10 @@ mainMenu:
         title: Modos Ativados
         warningPuzzleDLC: Jogar o DLC Modo Puzzle não é possível com modos. Por favor
             desativa todos os modos antes de jogares o DLC
-    playFullVersion: Joga a versão completa no teu Browser!
     playingFullVersion: Estás agora a jogar a versão completa!
     logout: Desconectar
+    noActiveSavegames: No active savegames found - Click play to start a new game!
+    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
 dialogs:
     buttons:
         ok: OK
@@ -291,35 +292,35 @@ dialogs:
         desc: Tens a certeza de que queres apagar '<title>'? Isto não pode ser anulado!
     modsDifference:
         title: Aviso de Modos
-        desc: Os modos instalados atualmente são diferentes dos modos utilizados no atual
-            savegame. Isto pode fazer com que o teu savegame falhe ou não carregue. Tens
-            a certeza que queres continuar?
+        desc: Os modos instalados atualmente são diferentes dos modos utilizados no
+            atual savegame. Isto pode fazer com que o teu savegame falhe ou não
+            carregue. Tens a certeza que queres continuar?
         missingMods: Modos em Falta
         newMods: Modos instalados recentemente
     resourceLoadFailed:
         title: Falha ao carregar recursos
         demoLinkText: Versão Shapez demo na Steam
-        descWeb: "Um ou mais recursos não carrega. Verifica se tens uma
-            conexão estável à internet e tenta de novo. Se mesmo assim não
-            funcionar, desativa extensões do browser (incluindo adblockers).
-            <br><br> Como alternativa, também podes jogar a
-            <demoOnSteamLinkText>. <br><br> Mensagem de Erro:"
-        descSteamDemo: "Um ou mais recursos não carrega. Tenta reiniciar o jogo
-             - Se isto não ajudar, tenta reinstalar e verifica os ficheiros do
-            jogo na Steam. <br><br> Mensagem de Erro:"
+        descWeb: "Um ou mais recursos não carrega. Verifica se tens uma conexão estável
+            à internet e tenta de novo. Se mesmo assim não funcionar, desativa
+            extensões do browser (incluindo adblockers). <br><br> Como
+            alternativa, também podes jogar a <demoOnSteamLinkText>. <br><br>
+            Mensagem de Erro:"
+        descSteamDemo: "Um ou mais recursos não carrega. Tenta reiniciar o jogo - Se
+            isto não ajudar, tenta reinstalar e verifica os ficheiros do jogo na
+            Steam. <br><br> Mensagem de Erro:"
     steamSsoError:
         title: Desconectar da Versão Completa
-        desc: Tu desconectaste da Versão Completa no Browser devido a uma
-            conexão instável ou devido a estares a jogar noutro dispositivo.
-            <br><br> Por favor garante que não tens o shapez aberto noutra
-            tab do teu Browser ou noutro computador com a mesma conta
-            Steam.<br><br> Podes fazer login novamente no menu principal.
+        desc: Tu desconectaste da Versão Completa no Browser devido a uma conexão
+            instável ou devido a estares a jogar noutro dispositivo. <br><br>
+            Por favor garante que não tens o shapez aberto noutra tab do teu
+            Browser ou noutro computador com a mesma conta Steam.<br><br> Podes
+            fazer login novamente no menu principal.
     steamSsoNoOwnership:
         title: Vesão completa não obtida
-        desc: Para jogares a versão completa no teu Browser, precisas de teres
-            tanto o jogo base como o DLC Puzzle na tua conta Steam.<br><br>
-            Por favor garante que tens ambos, conecta-te com a conta Steam
-            correta e tenta novamente.
+        desc: Para jogares a versão completa no teu Browser, precisas de teres tanto o
+            jogo base como o DLC Puzzle na tua conta Steam.<br><br> Por favor
+            garante que tens ambos, conecta-te com a conta Steam correta e tenta
+            novamente.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1382,16 +1383,18 @@ mods:
     version: Versão
     modWebsite: Website
     openFolder: Abrir a pasta dos Modos
-    folderOnlyStandalone: Abrir a pasta dos Modos apenas é possível quando estás a jogar a versão completa.
+    folderOnlyStandalone: Abrir a pasta dos Modos apenas é possível quando estás a
+        jogar a versão completa.
     browseMods: Pesquisar Modos
-    modsInfo: Para instalar e gerir os modos, copia-os para a pasta dos modos dentro da
-        pasta do jogo. Tu também podes usar o botão 'Abrir a pasta dos Modos' no canto
-        superior direito.
+    modsInfo: Para instalar e gerir os modos, copia-os para a pasta dos modos dentro
+        da pasta do jogo. Tu também podes usar o botão 'Abrir a pasta dos Modos'
+        no canto superior direito.
     noModSupport: Precisas da versão completa na Steam para instalar modos.
     togglingComingSoon:
         title: Brevemente
-        description: Ativar ou desativar modos atualmente apenas é possível copiando
-            o ficheiro do modo a partir de ou para a pasta dos modos. No entanto, ser possível
-            ativar ou desativar os modos está planeado para uma atualização futura!
+        description: Ativar ou desativar modos atualmente apenas é possível copiando o
+            ficheiro do modo a partir de ou para a pasta dos modos. No entanto,
+            ser possível ativar ou desativar os modos está planeado para uma
+            atualização futura!
     browserNoSupport: Devido a restrições no browser atualmente apenas é possível
         instalar modos na versão Steam - Desculpa!

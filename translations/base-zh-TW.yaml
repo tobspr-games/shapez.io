@@ -90,9 +90,10 @@ mainMenu:
         title: Active Mods
         warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
             disable all mods to play the DLC.
-    playFullVersion: Play the full version in your Browser!
     playingFullVersion: You are now playing the full version!
     logout: Logout
+    noActiveSavegames: No active savegames found - Click play to start a new game!
+    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
 dialogs:
     buttons:
         ok: 確認

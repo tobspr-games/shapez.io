@@ -99,9 +99,11 @@ mainMenu:
         title: Aktive Mods
         warningPuzzleDLC: Das Puzzle-DLC und Mods sind nicht kompatibel. Bitte
             deaktiviere zuerst alle Mods, um das DLC zu spielen.
-    playFullVersionV2: Du hast shapez schon auf Steam gekauft? Spiel jetzt die Vollversion im Browser!
+    playFullVersionV2: Du hast shapez schon auf Steam gekauft? Spiel jetzt die
+        Vollversion im Browser!
     playingFullVersion: Du spielst jetzt die Vollversion!
     logout: Ausloggen
+    noActiveSavegames: Keine Speicherstände gefunden - Klicke Spielen um ein neues Spiel zu starten!
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -368,18 +370,18 @@ dialogs:
             game files via Steam. <br><br> Error Message:"
     steamSsoError:
         title: Ausgeloggt aus Vollversion
-        desc:
-            Du wurdest aus der Browser-Vollversion ausgeloggt da entweder deine Internetverbindung instabil ist,
-            oder du auf einem anderen Gerät spielst.<br><br>
-            Bitte stelle sicher dass du shapez nicht in einem anderen Browser-Tab offen hast oder auf einem weiteren Computer mit demselben Steam-Account.
-            <br><br>
-            Du kannst dich dann erneut im Hauptmenü einloggen.
+        desc: Du wurdest aus der Browser-Vollversion ausgeloggt da entweder deine
+            Internetverbindung instabil ist, oder du auf einem anderen Gerät
+            spielst.<br><br> Bitte stelle sicher dass du shapez nicht in einem
+            anderen Browser-Tab offen hast oder auf einem weiteren Computer mit
+            demselben Steam-Account. <br><br> Du kannst dich dann erneut im
+            Hauptmenü einloggen.
     steamSsoNoOwnership:
         title: Vollversion nötig
-        desc:
-            Um die Vollversion im Browser zu spielen brauchst du sowohl das Basispiel als auch das Puzzle DLC auf deinem Steam Account.<br><br>
-            Bitte stelle sicher, dass du beide gekauft hast und den richtigen Steam Account verwendest. Danach kannst du es erneut versuchen.
-
+        desc: Um die Vollversion im Browser zu spielen brauchst du sowohl das Basispiel
+            als auch das Puzzle DLC auf deinem Steam Account.<br><br> Bitte
+            stelle sicher, dass du beide gekauft hast und den richtigen Steam
+            Account verwendest. Danach kannst du es erneut versuchen.
 ingame:
     keybindingsOverlay:
         moveMap: Bewegen
@@ -1018,7 +1020,8 @@ mods:
             entsprechende Datei in den Modordner einfügst, oder löschst. Das
             (De-)Aktivieren der Mods in diesem Menü ist allerdings schon für ein
             späteres Update geplant!
-    browserNoSupport: Aufgrund von Browser-Einschränkungen kannst du aktuell nur in der Steam-Version Mods installieren - Sorry!
+    browserNoSupport: Aufgrund von Browser-Einschränkungen kannst du aktuell nur in
+        der Steam-Version Mods installieren - Sorry!
 settings:
     title: Einstellungen
     categories:

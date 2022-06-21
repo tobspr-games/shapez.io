@@ -98,9 +98,10 @@ mainMenu:
         title: Активные моды
         warningPuzzleDLC: Обновление «Головоломка» несовместима с модами. Пожалуйста,
             отключите все моды, чтобы играть в DLC.
-    playFullVersion: Play the full version in your Browser!
     playingFullVersion: You are now playing the full version!
     logout: Logout
+    noActiveSavegames: No active savegames found - Click play to start a new game!
+    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
 dialogs:
     buttons:
         ok: OK
