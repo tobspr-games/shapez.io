@@ -290,11 +290,7 @@ gulp.task(
 // Bundling (pre upload)
 gulp.task(
     "bundle.steam.from-darwin",
-    gulp.series(
-        "utils.cleanBuildOutputFolder",
-        "bundle.standalone-steam.from-darwin",
-        "bundle.standalone-steam-china.from-darwin"
-    )
+    gulp.series("utils.cleanBuildOutputFolder", "bundle.standalone-steam.from-darwin")
 );
 gulp.task(
     "bundle.steam.from-windows",
