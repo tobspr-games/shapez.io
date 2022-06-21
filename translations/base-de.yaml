@@ -99,7 +99,7 @@ mainMenu:
         title: Aktive Mods
         warningPuzzleDLC: Das Puzzle-DLC und Mods sind nicht kompatibel. Bitte
             deaktiviere zuerst alle Mods, um das DLC zu spielen.
-    playFullVersion: Spiel die Vollversion im Browser!
+    playFullVersionV2: Du hast shapez schon auf Steam gekauft? Spiel jetzt die Vollversion im Browser!
     playingFullVersion: Du spielst jetzt die Vollversion!
     logout: Ausloggen
 puzzleMenu:

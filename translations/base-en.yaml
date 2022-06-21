@@ -130,8 +130,9 @@ mainMenu:
     discordLink: Official Discord Server
     helpTranslate: Help translate!
     madeBy: Made by <author-link>
+    noActiveSavegames: No active savegames found - Click play to start a new game!
 
-    playFullVersion: Play the full version in your Browser!
+    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
     playingFullVersion: You are now playing the full version!
     logout: Logout
 

@@ -127,8 +127,8 @@ export class MainMenuState extends GameState {
 
             <div class="logo">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo"
-                    width="${Math.round((710 / 2.5) * this.app.getEffectiveUiScale())}"
-                    height="${Math.round((180 / 2.5) * this.app.getEffectiveUiScale())}"
+                    width="${Math.round((710 / 3) * this.app.getEffectiveUiScale())}"
+                    height="${Math.round((180 / 3) * this.app.getEffectiveUiScale())}"
                 >
                 ${/*showUpdateLabel ? `<span class="updateLabel">MODS UPDATE!</span>` : ""*/ ""}
             </div>
@@ -136,6 +136,31 @@ export class MainMenuState extends GameState {
             <div class="mainWrapper" data-columns="${showDemoAdvertisement || showPuzzleDLC ? 2 : 1}">
                 <div class="mainContainer">
                     <div class="buttons"></div>
+                    <div class="savegamesMount"></div>
+                    ${
+                        G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
+                            ? ""
+                            : `<div class="steamSso">
+                                <span class="description">${T.mainMenu.playFullVersionV2}</span>
+                                <a class="ssoSignIn" href="${
+                                    this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
+                                }">Sign in</a>
+                            </div>`
+                    }
+                    ${
+                        WEB_STEAM_SSO_AUTHENTICATED
+                            ? `
+                            <div class="steamSso">
+                                <span class="description">${T.mainMenu.playingFullVersion}</span>
+                                <a class="ssoSignOut" href="?sso_logout_silent">${T.mainMenu.logout}</a>
+
+                            </div>
+                        `
+                            : ""
+                    }
+
+
+
                 </div>
 
                 <div class="sideContainer">
@@ -225,32 +250,22 @@ export class MainMenuState extends GameState {
 
                 <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
 
+                    <div class="socialLinks">
+
                     ${
-                        G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
-                            ? ""
-                            : `<div class="steamSso boxLink">
-                                ${T.mainMenu.playFullVersion}
-                                <a class="ssoSignIn" href="${
-                                    this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
-                                }">Sign in</a>
-                            </div>`
-                    }
-                    ${
-                        WEB_STEAM_SSO_AUTHENTICATED
-                            ? `
-                            <div class="steamSso boxLink">${T.mainMenu.playingFullVersion}
-                                <a class="ssoSignOut" href="?sso_logout_silent">${T.mainMenu.logout}</a>
-                            </div>
-                        `
+                        showExternalLinks
+                            ? `<a class="steamLinkSocial boxLink" target="_blank">
+                                    <span class="thirdpartyLogo steamLogo"></span>
+                                    <span class="label">steam</span>
+                                </a>`
                             : ""
                     }
-
                     ${
                         showExternalLinks && !G_IS_STEAM_DEMO
                             ? `
                         <a class="githubLink boxLink" target="_blank">
-                            ${T.mainMenu.openSourceHint}
                             <span class="thirdpartyLogo githubLogo"></span>
+                            <span class="label">GitHub</span>
                         </a>`
                             : ""
                     }
@@ -258,27 +273,47 @@ export class MainMenuState extends GameState {
                     ${
                         showDiscordLink
                             ? `<a class="discordLink boxLink" target="_blank">
-
-                        ${T.mainMenu.discordLink}
-                        <span class="thirdpartyLogo  discordLogo"></span>
-                    </a>`
+                                    <span class="thirdpartyLogo  discordLogo"></span>
+                                    <span class="label">Discord</span>
+                                </a>`
                             : ""
                     }
 
-                    <div class="sidelinks">
-                        ${showExternalLinks ? `<a class="redditLink">${T.mainMenu.subreddit}</a>` : ""}
+                    ${
+                        showExternalLinks
+                            ? `<a class="redditLink boxLink" target="_blank">
+                                    <span class="thirdpartyLogo redditLogo"></span>
+                                    <span class="label">Reddit</span>
+                                </a>`
+                            : ""
+                    }
 
+                    ${
+                        showExternalLinks
+                            ? `<a class="twitterLink boxLink" target="_blank">
+                                    <span class="thirdpartyLogo twitterLogo"></span>
+                                    <span class="label">Twitter</span>
+                                </a>`
+                            : ""
+                    }
+
+
+                    </div>
+
+                    <div class="footerGrow">
                         ${showExternalLinks ? `<a class="changelog">${T.changelog.title}</a>` : ""}
 
                         ${showExternalLinks ? `<a class="helpTranslate">${T.mainMenu.helpTranslate}</a>` : ""}
+
                     </div>
-                    <div class="author"><a class="producerLink" href="https://tobspr.io" target="_blank" title="tobspr Games" rel="follow">
+                        <div class="author"><a class="producerLink" href="https://tobspr.io" target="_blank" title="tobspr Games" rel="follow">
                         <img src="${cachebust("res/logo-tobspr-games.svg")}" alt="tobspr Games"
-                        height="${25 * this.app.getEffectiveUiScale()}"
-                        width="${82 * this.app.getEffectiveUiScale()}"
+                        height="${25 * 0.8 * this.app.getEffectiveUiScale()}"
+                        width="${82 * 0.8 * this.app.getEffectiveUiScale()}"
                         >
 
                     </a></div>
+
                 </div>
 
             `
@@ -400,10 +435,12 @@ export class MainMenuState extends GameState {
             ".settingsButton": this.onSettingsButtonClicked,
             ".languageChoose": this.onLanguageChooseClicked,
             ".redditLink": this.onRedditClicked,
+            ".twitterLink": this.onTwitterLinkClicked,
             ".changelog": this.onChangelogClicked,
             ".helpTranslate": this.onTranslationHelpLinkClicked,
             ".exitAppButton": this.onExitAppButtonClicked,
             ".steamLink": this.onSteamLinkClicked,
+            ".steamLinkSocial": this.onSteamLinkClickedSocial,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -524,10 +561,12 @@ export class MainMenuState extends GameState {
     }
 
     onSteamLinkClicked() {
-        const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-
         openStandaloneLink(this.app, "shapez_mainmenu");
+        return false;
+    }
 
+    onSteamLinkClickedSocial() {
+        openStandaloneLink(this.app, "shapez_mainmenu_social");
         return false;
     }
 
@@ -541,6 +580,10 @@ export class MainMenuState extends GameState {
 
     onRedditClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
+    }
+
+    onTwitterLinkClicked() {
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.twitter);
     }
 
     onLanguageChooseClicked() {
@@ -591,7 +634,9 @@ export class MainMenuState extends GameState {
         }
         const games = this.savedGames;
         if (games.length > 0) {
-            const parent = makeDiv(this.htmlElement.querySelector(".mainContainer"), null, ["savegames"]);
+            const parent = makeDiv(this.htmlElement.querySelector(".mainContainer .savegamesMount"), null, [
+                "savegames",
+            ]);
 
             for (let i = 0; i < games.length; ++i) {
                 const elem = makeDiv(parent, null, ["savegame"]);
@@ -646,6 +691,13 @@ export class MainMenuState extends GameState {
                 this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
                 this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
             }
+        } else {
+            const parent = makeDiv(
+                this.htmlElement.querySelector(".mainContainer .savegamesMount"),
+                null,
+                ["savegamesNone"],
+                T.mainMenu.noActiveSavegames
+            );
         }
     }
 

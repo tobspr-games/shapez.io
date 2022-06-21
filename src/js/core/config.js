@@ -19,6 +19,7 @@ export const THIRDPARTY_URLS = {
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
 
+    twitter: "https://twitter.com/tobspr",
     privacyPolicy: "https://tobspr.io/privacy.html",
 
     standaloneCampaignLink: G_IS_STANDALONE
