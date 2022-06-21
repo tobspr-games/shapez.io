@@ -105,7 +105,7 @@ mainMenu:
     playingFullVersion: ¡Estás jugando la versión completa!
     logout: Cerrar Sesión
     noActiveSavegames: No se encontraron partidas guardadas activas - ¡Haz click en Jugar para empezar una nueva partida!
-    playFullVersionV2: Has comprado shapz en Steam? ¡Juega la versión completa desde tu navegador!
+    playFullVersionV2: Has comprado shapez en Steam? ¡Juega la versión completa desde tu navegador!
     playFullVersionStandalone: ¡Ahora puedes jugar la versión completa desde tu navegador!
 dialogs:
     buttons:
