@@ -100,7 +100,7 @@
         justify-items: center;
         align-self: center;
         justify-self: center;
-        @include S(grid-column-gap, 10px);
+        @include S(grid-column-gap, 20px);
         display: grid;
 
         position: relative;
