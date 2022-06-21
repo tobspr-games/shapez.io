@@ -469,7 +469,7 @@ ingame:
         desc: Presiona aquí para ver que tiene la versión de Steam!
         get_on_steam: Consiguelo en Steam
     standaloneAdvantages:
-        no_thanks: ¡No grácias!
+        no_thanks: ¡No gracias!
         points:
             levels:
                 title: 12 nuevos niveles
