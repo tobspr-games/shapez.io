@@ -227,7 +227,7 @@ export class BackgroundResourcesLoader {
 
                     const options = {};
                     const headers = xhr.getAllResponseHeaders();
-                    const contentType = headers.match(/^Content-Type\:\s*(.*?)$/im);
+                    const contentType = headers.match(/^Content-Type:\s*(.*?)$/im);
                     if (contentType && contentType[1]) {
                         options.type = contentType[1].split(";")[0];
                     }
