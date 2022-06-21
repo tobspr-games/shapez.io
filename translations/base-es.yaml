@@ -54,7 +54,7 @@ global:
         shift: SHIFT
         space: ESPACIO
     loggingIn: Iniciando sesión
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Descargando recursos adicionales (<percentage> %)
 demoBanners:
     title: Versión de prueba
     intro: >-
