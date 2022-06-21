@@ -105,13 +105,112 @@
 
         position: relative;
         z-index: 10;
-        grid-template-rows: D(31px) 1fr D(93px);
+        grid-template-rows: 1fr;
 
         &[data-columns="1"] {
             grid-template-columns: 1fr;
         }
         &[data-columns="2"] {
             grid-template-columns: D(290px) 1fr;
+        }
+    }
+
+    .logo {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+
+        flex-direction: column;
+        @include S(padding-top, 0px);
+
+        img {
+            @include S(width, 710px / 3);
+            @include S(height, 180px / 3);
+        }
+        position: relative;
+        @include S(left, -8px);
+
+        .updateLabel {
+            position: absolute;
+            transform: translateX(50%) rotate(-5deg);
+            color: #fff;
+            @include PlainText;
+            font-weight: bold;
+            @include S(right, 40px);
+            @include S(bottom, 20px);
+            background: $modsColor;
+            @include S(border-radius, $globalBorderRadius);
+            @include S(padding, 0, 5px, 1px, 5px);
+
+            @include InlineAnimation(1.3s ease-in-out infinite) {
+                50% {
+                    transform: translateX(50%) rotate(-7deg) scale(1.1);
+                }
+            }
+        }
+    }
+
+    .betaWarning {
+        @include S(width, 400px);
+        @include PlainText;
+        background: $colorRedBright;
+        @include S(padding, 10px);
+        @include S(border-radius, $globalBorderRadius);
+        color: #fff;
+        @include S(margin-top, 10px);
+        border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
+    }
+
+    .sideContainer {
+        display: flex;
+        width: 100%;
+        grid-column: 2 / 3;
+        flex-direction: column;
+        @include S(grid-gap, 20px);
+        height: 100%;
+
+        .mainNews {
+            background: rgb(248, 232, 130);
+            &::before {
+                background: uiResource("kiwi_clicker.png") center center / 100% no-repeat;
+                content: "";
+                @include S(width, 130px);
+                @include S(height, 130px);
+                position: absolute;
+                top: 50%;
+                right: -5%;
+                pointer-events: none;
+                transform: translateY(-50%);
+            }
+            box-shadow: 0 D(9px) D(15px) rgba(#000, 0.2);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            @include S(min-height, 60px);
+            @include S(max-height, 150px);
+            pointer-events: all;
+            flex-grow: 1;
+            z-index: 100;
+            position: relative;
+            grid-row: 2 / 3;
+            @include S(border-radius, $globalBorderRadius);
+            justify-content: center;
+            @include S(padding, 10px);
+            @include S(padding-right, 100px);
+            box-sizing: border-box;
+
+            cursor: pointer;
+            &:hover {
+                opacity: 0.95;
+            }
+
+            .text {
+                @include SuperSmallText;
+                @include S(width, 120px);
+                color: rgba(0, 10, 20, 0.7);
+            }
         }
 
         .standaloneBanner {
@@ -121,6 +220,7 @@
             @include S(max-width, 370px);
             width: 100%;
             box-sizing: border-box;
+            grid-row: 1 / 3;
 
             display: flex;
             flex-direction: column;
@@ -329,230 +429,220 @@
                 }
             }
         }
-    }
 
-    .logo {
-        display: flex;
-        flex-grow: 1;
-        align-items: center;
-        justify-content: center;
-        z-index: 20;
-
-        flex-direction: column;
-        @include S(padding-top, 0px);
-
-        img {
-            @include S(width, 710px / 3);
-            @include S(height, 180px / 3);
-        }
-        position: relative;
-        @include S(left, -8px);
-
-        .updateLabel {
-            position: absolute;
-            transform: translateX(50%) rotate(-5deg);
-            color: #fff;
-            @include PlainText;
-            font-weight: bold;
-            @include S(right, 40px);
-            @include S(bottom, 20px);
-            background: $modsColor;
+        .puzzleContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: $colorBlueBright;
+            grid-row: 1 / 2;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
             @include S(border-radius, $globalBorderRadius);
-            @include S(padding, 0, 5px, 1px, 5px);
+            box-shadow: 0 D(5px) D(10px) rgba(#000, 0.4);
+            border: D(1px) solid rgba(#000, 0.1);
+            overflow: hidden;
 
-            @include InlineAnimation(1.3s ease-in-out infinite) {
-                50% {
-                    transform: translateX(50%) rotate(-7deg) scale(1.1);
+            > .badge {
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+                position: absolute;
+                @include S(top, 10px);
+                @include S(right, 10px);
+
+                transform: translateX(50%) rotate(10deg);
+                @include Heading;
+                font-weight: bold;
+
+                @include InlineAnimation(1.3s ease-in-out infinite) {
+                    50% {
+                        transform: translateX(50%) rotate(12deg) scale(1.1);
+                    }
                 }
             }
-        }
-    }
 
-    .betaWarning {
-        @include S(width, 400px);
-        @include PlainText;
-        background: $colorRedBright;
-        @include S(padding, 10px);
-        @include S(border-radius, $globalBorderRadius);
-        color: #fff;
-        @include S(margin-top, 10px);
-        border: #{D(2px)} solid rgba(0, 10, 20, 0.1);
-    }
-
-    .sideContainer {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        grid-row: 1 / 4;
-        grid-column: 2 / 3;
-
-        .standaloneBanner {
-            flex-grow: 1;
-        }
-    }
-
-    .puzzleContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: $colorBlueBright;
-        height: 100%;
-        grid-row: 1 / 4;
-        width: 100%;
-        box-sizing: border-box;
-        position: relative;
-        @include S(padding, 20px);
-        @include S(border-radius, $globalBorderRadius);
-        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
-
-        > .badge {
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            position: absolute;
-            @include S(top, 10px);
-            @include S(right, 10px);
-
-            transform: translateX(50%) rotate(10deg);
-            @include Heading;
-            font-weight: bold;
-
-            @include InlineAnimation(1.3s ease-in-out infinite) {
-                50% {
-                    transform: translateX(50%) rotate(12deg) scale(1.1);
-                }
-            }
-        }
-
-        > .hint {
-            @include SuperDuperSmallText;
-            @include S(margin-top, 10px);
-            @include S(width, 200px);
-        }
-
-        > .dlcLogo {
-            @include S(width, 190px);
-        }
-
-        > button {
-            @include S(margin-top, 20px);
-            @include Heading;
-            @include S(padding, 10px, 30px);
-            background-color: #333;
-            color: #fff;
-        }
-
-        &.notOwned {
-            p {
-                @include PlainText;
-                color: #333;
+            > .hint {
+                @include SuperDuperSmallText;
                 @include S(margin-top, 10px);
-                @include S(width, 190px);
+                @include S(width, 200px);
             }
+
+            > .dlcLogo {
+                @include S(width, 120px);
+            }
+
             > button {
-                box-sizing: border-box;
-                @include S(margin-top, 10px);
-                @include S(width, 190px);
-                @include S(padding, 10px, 20px);
+                @include S(margin-top, 20px);
+                @include Heading;
+                @include S(padding, 10px, 30px);
+                background-color: #333;
+                color: #fff;
             }
-        }
-    }
 
-    .modsOverview {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: #fff;
-        grid-row: 1 / 2;
-        position: relative;
-        text-align: left;
-        align-items: flex-start;
-        @include S(width, 250px);
-        @include S(padding, 15px);
-        @include S(padding-bottom, 10px);
-        @include S(border-radius, $globalBorderRadius);
-        box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
-
-        .header {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            text-transform: uppercase;
-
-            @include S(margin-bottom, 10px);
-
-            .editMods {
-                margin-left: auto;
-                @include S(width, 20px);
-                @include S(height, 20px);
-                padding: 0;
-                opacity: 0.5;
-                background: transparent center center/ 80% no-repeat;
-                & {
-                    background-image: uiResource("icons/edit_key.png") !important;
+            &.owned {
+                @include S(height, 118px);
+                @include S(width, 250px);
+                background: uiResource("puzzle_460x215_15.png") center D(-5px) / cover repeat;
+                .dlcLogo {
+                    display: none;
                 }
-                @include DarkThemeInvert;
-                &:hover {
-                    opacity: 0.6;
+
+                > button {
+                    margin: 0;
+                    @include S(padding, 2px, 10px);
+                    position: absolute;
+                    @include S(top, 10px);
+                    @include S(right, 10px);
                 }
             }
+
+            &.notOwned {
+                @include S(height, 200px);
+                @include S(width, 250px);
+                border: 0;
+                background: uiResource("puzzle_460x215_15.png") center D(-5px) / 100% repeat;
+                .dlcLogo {
+                    display: none;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background: linear-gradient(180deg, rgba(#222529, 0.1) 40%, rgba(#222529, 1) 70%);
+                }
+
+                p {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    @include S(bottom, 35px);
+                    z-index: 50;
+                    box-sizing: border-box;
+                    display: block;
+                    @include PlainText;
+                    color: rgba(#fff, 0.9);
+                    @include S(padding, 10px);
+                    @include SuperSmallText;
+                }
+                > button {
+                    pointer-events: all;
+                    @include S(padding, 4px, 10px);
+                    margin: 0;
+                    background: #47c599;
+                    box-sizing: border-box;
+                    position: absolute;
+                    @include S(bottom, 10px);
+                    @include S(right, 10px);
+                    z-index: 100;
+                    @include PlainText;
+                    z-index: 200;
+                    color: #111215;
+                    box-shadow: 0 D(2px) D(4px) rgba(#000, 1);
+                }
+            }
         }
 
-        h3 {
-            @include Heading;
-            color: $modsColor;
-            margin: 0;
-        }
-
-        .dlcHint {
-            @include SuperSmallText;
-            @include S(margin-top, 10px);
-            width: 100%;
-
-            display: grid;
-            grid-template-columns: 1fr auto;
-            grid-gap: 20px;
-            align-items: center;
-        }
-
-        .mod {
-            background: #eee;
-            width: 100%;
-            @include S(border-radius, $globalBorderRadius);
-            @include S(padding, 5px);
-            box-sizing: border-box;
-            @include PlainText;
-            @include S(margin-bottom, 5px);
+        .modsOverview {
             display: flex;
+            align-items: center;
+            justify-content: center;
             flex-direction: column;
+            background: #fff;
+            grid-row: 1 / 2;
+            position: relative;
+            text-align: left;
+            align-items: flex-start;
+            @include S(width, 250px);
+            @include S(padding, 15px);
+            @include S(padding-bottom, 10px);
+            @include S(border-radius, $globalBorderRadius);
+            box-shadow: 0 D(5px) D(15px) rgba(#000, 0.2);
 
-            .author,
-            .version {
+            .header {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                text-transform: uppercase;
+
+                @include S(margin-bottom, 10px);
+
+                .editMods {
+                    margin-left: auto;
+                    @include S(width, 20px);
+                    @include S(height, 20px);
+                    padding: 0;
+                    opacity: 0.5;
+                    background: transparent center center/ 80% no-repeat;
+                    & {
+                        background-image: uiResource("icons/edit_key.png") !important;
+                    }
+                    @include DarkThemeInvert;
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+            }
+
+            h3 {
+                @include Heading;
+                color: $modsColor;
+                margin: 0;
+            }
+
+            .dlcHint {
                 @include SuperSmallText;
-                align-self: end;
-                opacity: 0.4;
-            }
-            .name {
-                overflow: hidden;
-            }
-        }
+                @include S(margin-top, 10px);
+                width: 100%;
 
-        .modsList {
-            box-sizing: border-box;
-            @include S(height, 100px);
-            @include S(padding, 5px);
-            border: D(1px) solid #eee;
-            overflow-y: scroll;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            @include S(border-radius, $globalBorderRadius);
-            pointer-events: all;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-gap: 20px;
+                align-items: center;
+            }
 
-            :last-child {
-                margin-bottom: auto;
+            .mod {
+                background: #eee;
+                width: 100%;
+                @include S(border-radius, $globalBorderRadius);
+                @include S(padding, 5px);
+                box-sizing: border-box;
+                @include PlainText;
+                @include S(margin-bottom, 5px);
+                display: flex;
+                flex-direction: column;
+
+                .author,
+                .version {
+                    @include SuperSmallText;
+                    align-self: end;
+                    opacity: 0.4;
+                }
+                .name {
+                    overflow: hidden;
+                }
+            }
+
+            .modsList {
+                box-sizing: border-box;
+                @include S(height, 100px);
+                @include S(padding, 5px);
+                border: D(1px) solid #eee;
+                overflow-y: scroll;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                @include S(border-radius, $globalBorderRadius);
+                pointer-events: all;
+
+                :last-child {
+                    margin-bottom: auto;
+                }
             }
         }
     }
@@ -570,7 +660,6 @@
         position: relative;
         align-self: center;
         justify-self: center;
-        grid-row: 1 / 4;
         grid-column: 1 / 2;
         @include S(max-width, 400px);
         overflow: hidden;

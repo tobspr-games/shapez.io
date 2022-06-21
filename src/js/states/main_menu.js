@@ -41,7 +41,8 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
+            G_IS_DEV ||
+            (!G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO);
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -67,7 +68,6 @@ export class MainMenuState extends GameState {
             showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
         const ownsPuzzleDLC =
-            G_IS_DEV ||
             WEB_STEAM_SSO_AUTHENTICATED ||
             (G_IS_STANDALONE &&
                 !G_IS_STEAM_DEMO &&
@@ -165,39 +165,41 @@ export class MainMenuState extends GameState {
 
                 <div class="sideContainer">
                     ${showDemoAdvertisement ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
-                </div>
 
 
                 ${
-                    showPuzzleDLC && ownsPuzzleDLC && !hasMods
+                    showPuzzleDLC
                         ? `
-                    <div class="puzzleContainer">
-                        <img class="dlcLogo" src="${cachebust(
-                            G_CHINA_VERSION || G_WEGAME_VERSION
-                                ? "res/puzzle_dlc_logo_china.png"
-                                : "res/puzzle_dlc_logo.png"
-                        )}" alt="shapez.io Logo">
-                        <button class="styledButton puzzleDlcPlayButton">${T.mainMenu.play}</button>
-                    </div>`
+
+                        ${
+                            ownsPuzzleDLC && !hasMods
+                                ? `
+                            <div class="puzzleContainer owned">
+                                <button class="styledButton puzzleDlcPlayButton">${T.mainMenu.play}</button>
+                            </div>`
+                                : ""
+                        }
+
+                        ${
+                            !ownsPuzzleDLC && !hasMods
+                                ? `
+                            <div class="puzzleContainer notOwned">
+                                <p>${T.mainMenu.puzzleDlcText}</p>
+                                <button class="styledButton puzzleDlcGetButton">${T.mainMenu.puzzleDlcViewNow}</button>
+                            </div>`
+                                : ""
+                        }
+
+
+                        <div class="mainNews kiwiClicker">
+                            <div class="text">Check out this small side project I am working on right now!</div>
+
+                        </div>
+                `
                         : ""
                 }
 
-                ${
-                    showPuzzleDLC && !ownsPuzzleDLC && !hasMods
-                        ? `
-                    <div class="puzzleContainer notOwned">
-                        <img class="dlcLogo" src="${cachebust(
-                            G_CHINA_VERSION || G_WEGAME_VERSION
-                                ? "res/puzzle_dlc_logo_china.png"
-                                : "res/puzzle_dlc_logo.png"
-                        )}" alt="shapez.io Logo">
-                        <p>${T.mainMenu.puzzleDlcText}</p>
-                        <button class="styledButton puzzleDlcGetButton">${
-                            T.mainMenu.puzzleDlcViewNow
-                        }</button>
-                    </div>`
-                        : ""
-                }
+
                 ${
                     hasMods
                         ? `
@@ -229,6 +231,9 @@ export class MainMenuState extends GameState {
                         `
                         : ""
                 }
+
+                </div>
+
 
             </div>
 
@@ -441,6 +446,7 @@ export class MainMenuState extends GameState {
             ".exitAppButton": this.onExitAppButtonClicked,
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
+            ".kiwiClicker": this.onKiwiClickerClicked,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -552,7 +558,13 @@ export class MainMenuState extends GameState {
     }
 
     onPuzzleWishlistButtonClicked() {
-        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage + "?utm_medium=mmsl2");
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage);
+    }
+
+    onKiwiClickerClicked() {
+        this.app.platformWrapper.openExternalLink(
+            "https://store.steampowered.com/app/1980530/Kiwi_Clicker/?utm_medium=shapez"
+        );
     }
 
     onBackButtonClicked() {
