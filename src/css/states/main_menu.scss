@@ -572,7 +572,7 @@
         justify-self: center;
         grid-row: 1 / 4;
         grid-column: 1 / 2;
-
+        @include S(max-width, 400px);
         overflow: hidden;
         box-sizing: border-box;
 
@@ -704,28 +704,30 @@
 
                 display: inline-flex;
                 @include S(border-radius, $globalBorderRadius * 0.5);
+                transition: opacity 0.12s ease-in-out;
                 overflow: hidden;
                 text-indent: -999em;
                 &:hover {
-                    opacity: 0.95;
+                    opacity: 0.9;
                 }
 
-                box-shadow: 0 D(2px) D(4px) rgba(#000, 0.3);
+                box-shadow: 0 D(1.5px) D(4px) rgba(#000, 0.21);
             }
 
             a.ssoSignOut {
                 width: 100%;
-                background: #171a23;
+                background: $colorRedBright;
                 color: #fff !important;
                 display: flex;
                 align-items: center;
                 box-sizing: border-box;
                 justify-content: center;
-                @include PlainText;
+                @include SuperSmallText;
                 text-transform: uppercase;
 
                 @include S(border-radius, $globalBorderRadius * 0.5);
-                box-shadow: 0 D(1px) D(4px) rgba(#000, 0.3);
+
+                box-shadow: 0 D(1.5px) D(4px) rgba(#000, 0.21);
                 @include S(padding, 2px, 9px);
                 &:hover {
                     opacity: 0.95;
@@ -740,6 +742,7 @@
             flex-direction: column;
             @include S(padding, 10px);
             box-sizing: border-box;
+            @include S(min-height, 150px);
 
             .savegamesNone {
                 align-items: center;
@@ -753,13 +756,12 @@
             }
 
             .savegames {
-                @include S(max-height, 105px);
                 overflow-y: auto;
-                @include S(min-width, 230px);
                 width: 100%;
                 pointer-events: all;
                 @include S(padding-right, 5px);
                 margin-right: D(-5px);
+                @include S(max-height, 150px);
                 display: grid;
                 grid-auto-flow: row;
                 @include S(grid-gap, 5px);
