@@ -64,7 +64,8 @@ export class MainMenuState extends GameState {
         }
 
         const showDemoAdvertisement =
-            showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
+            (showExternalLinks || G_CHINA_VERSION) &&
+            this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
         const ownsPuzzleDLC =
             WEB_STEAM_SSO_AUTHENTICATED ||
