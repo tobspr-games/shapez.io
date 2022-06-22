@@ -42,7 +42,8 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
+            G_IS_DEV ||
+            (!G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO);
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -74,7 +75,7 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
-        const showKiwiClicker = window.localStorage.getItem("hide_kiwi_clicker") !== "1";
+        const showKiwiClicker = this.app.settings.getSetting("showKiwiClicker");
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
@@ -581,9 +582,9 @@ export class MainMenuState extends GameState {
     }
 
     hideKiwiClicker() {
-        window.localStorage.setItem("hide_kiwi_clicker", "1");
+        this.app.settings.updateSetting("showKiwiClicker", false);
+        this.app.settings.save();
         this.htmlElement.querySelector(".kiwiClicker").remove();
-
         return STOP_PROPAGATION;
     }
 

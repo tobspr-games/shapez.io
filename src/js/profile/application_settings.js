@@ -140,7 +140,7 @@ function initializeSettings() {
             options: Object.keys(LANGUAGES),
             valueGetter: key => key,
             textGetter: key => LANGUAGES[key].name,
-            category: enumCategories.general,
+            category: G_CHINA_VERSION || G_WEGAME_VERSION ? null : enumCategories.general,
             restartRequired: true,
             changeCb: (app, id) => null,
             magicValue: "auto-detect",
@@ -286,7 +286,10 @@ function initializeSettings() {
         new BoolSetting("lowQualityMapResources", enumCategories.performance, (app, value) => {}),
         new BoolSetting("disableTileGrid", enumCategories.performance, (app, value) => {}),
         new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
+
         new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
+
+        new BoolSetting("showKiwiClicker", null, (app, value) => {}),
     ];
 }
 
@@ -331,6 +334,8 @@ class SettingsStorage {
          * @type {Object.<string, number>}
          */
         this.keybindingOverrides = {};
+
+        this.showKiwiClicker = true;
     }
 }
 
@@ -547,7 +552,7 @@ export class ApplicationSettings extends ReadWriteProxy {
     }
 
     getCurrentVersion() {
-        return 31;
+        return 32;
     }
 
     /** @param {{settings: SettingsStorage, version: number}} data */
@@ -697,6 +702,11 @@ export class ApplicationSettings extends ReadWriteProxy {
         if (data.version < 31) {
             data.settings.shapeTooltipAlwaysOn = false;
             data.version = 31;
+        }
+
+        if (data.version < 32) {
+            data.settings.showKiwiClicker = true;
+            data.version = 32;
         }
 
         // MODS

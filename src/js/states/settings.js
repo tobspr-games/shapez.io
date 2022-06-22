@@ -88,8 +88,7 @@ export class SettingsState extends TextualGameState {
 
         for (let i = 0; i < this.app.settings.settingHandles.length; ++i) {
             const setting = this.app.settings.settingHandles[i];
-
-            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
+            if (!setting.categoryId) {
                 continue;
             }
 
@@ -170,7 +169,7 @@ export class SettingsState extends TextualGameState {
 
     initSettings() {
         this.app.settings.settingHandles.forEach(setting => {
-            if ((G_CHINA_VERSION || G_WEGAME_VERSION) && setting.id === "language") {
+            if (!setting.categoryId) {
                 return;
             }
 
