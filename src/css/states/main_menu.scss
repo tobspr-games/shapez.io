@@ -186,6 +186,23 @@
                 transition: transform 0.5s ease-in-out;
             }
 
+            .close {
+                position: absolute;
+                pointer-events: all;
+                background: uiResource("icons/main_menu_exit.png") center center / 50% no-repeat;
+                display: inline-flex;
+                @include S(width, 15px);
+                @include S(height, 15px);
+                @include S(top, 2px);
+                opacity: 0.3;
+                @include S(right, 2px);
+                z-index: 200;
+                transition: opacity 0.12s ease-in-out;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+
             &:hover::before {
                 transform: translate(0, -51%);
             }

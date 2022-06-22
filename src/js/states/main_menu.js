@@ -4,6 +4,7 @@ import { GameState } from "../core/game_state";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
 import { ReadWriteProxy } from "../core/read_write_proxy";
+import { STOP_PROPAGATION } from "../core/signal";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../core/steam_sso";
 import {
     formatSecondsToTimeAgo,
@@ -72,6 +73,8 @@ export class MainMenuState extends GameState {
             (G_IS_STANDALONE &&
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
+
+        const showKiwiClicker = window.localStorage.getItem("hide_kiwi_clicker") !== "1";
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
@@ -195,10 +198,15 @@ export class MainMenuState extends GameState {
                         }
 
 
-                        <div class="mainNews kiwiClicker">
+                        ${
+                            showKiwiClicker
+                                ? `<div class="mainNews kiwiClicker">
                             <div class="text">Check out this small side project I am working on right now!</div>
+                            <div class="close"></div>
 
-                        </div>
+                        </div>`
+                                : ""
+                        }
                 `
                         : ""
                 }
@@ -451,6 +459,7 @@ export class MainMenuState extends GameState {
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
             ".kiwiClicker": this.onKiwiClickerClicked,
+            ".kiwiClicker .close": this.hideKiwiClicker,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -569,6 +578,13 @@ export class MainMenuState extends GameState {
         this.app.platformWrapper.openExternalLink(
             "https://store.steampowered.com/app/1980530/Kiwi_Clicker/?utm_medium=shapez"
         );
+    }
+
+    hideKiwiClicker() {
+        window.localStorage.setItem("hide_kiwi_clicker", "1");
+        this.htmlElement.querySelector(".kiwiClicker").remove();
+
+        return STOP_PROPAGATION;
     }
 
     onBackButtonClicked() {
