@@ -228,39 +228,39 @@ dialogs:
             satunnaisesti ehdotetuista muodoista alta):"
         placeholderName: Pulman Nimi
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Koon muuttaminen ei ole mahdollista
+        desc: Et voi tehdä alueesta pienempää, koska jotkin rakennukset jäisivät
+            alueen ulkopuolelle.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Huono Pulma
+        desc: "Pulman lataus epäonnistui:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: Offline tila
+        desc: Emme pystyneet tavoittamaan palvelinta, joten pelin täytyy olla offline tilassa.
+            Tarkista että sinulla on aktiivinen internet-yhteys.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Latausvirhe
+        desc: "Pulman lataus epäonnistui:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Toimitusvirhe
+        desc: "Pulman toimitus epäonnistui:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Pulma Julkaistu
+        desc: Onnittelut! Pulmasi on nyt julkaistu ja muut voivat pelata sitä.
+            Voit nyt löytää sen "Omat pulmani" osiosta.
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Offline Tila
+        desc: Koska olet offline-tilassa, et voi tallentaa ja/tai julkaista pulmaasi.
+            Haluatko silti jatkaa?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Suositus
+        desc: Suosittelen <strong>suuresti</strong> pelata tavallista peliä tasolle 12
+            ennen pulma DLC:n yrittämistä, muuten voit kohdata
+            mekaniikkoja joita ei ole esitelty. Haluatko silti jatkaa?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Lyhyt Avain Kopioitu
+        desc: Pulman lyhyt avain (<key>) on kopioitu leikepöydällesi! Se
+            voidaan syöttää pulmavalikossa pulmaan pääsemiseksi.
     puzzleReport:
         title: Report Puzzle
         options:
