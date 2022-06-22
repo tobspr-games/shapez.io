@@ -89,21 +89,21 @@ mainMenu:
     savegameLevel: Taso <x>
     savegameLevelUnknown: Tuntematon taso
     savegameUnnamed: Nimetön
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: Pulmatila
+    back: Takaisin
+    puzzleDlcText: Nautitko tehtaiden pienentämisestä ja optimoinnista? Hanki pulma
+        DLC nyt Steamista lisähuviksi!
+    puzzleDlcWishlist: Lisää nyt toivelistallesi!
+    puzzleDlcViewNow: Katso DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Aktiiviset modit
+        warningPuzzleDLC: Pulma DLC:n pelaaminen ei ole mahdollista modien kanssa.
+            kytke kaikki modit pois päältä pelataksesi DLC:tä.
+    playingFullVersion: Pelaat nyt täyttä versiota!
+    logout: Kirjaudu ulos
+    noActiveSavegames: Aktiivisia pelitallennuksia ei löytynyt - Klikkaa pelaa aloittaaksesi uuden pelin!
+    playFullVersionV2: Ostitko Shapezin Steamista? Pelaa täyttä versiota selaimellasi!
+    playFullVersionStandalone: Voit nyt myös pelatatäyttä versiota selaimellasi!
 dialogs:
     buttons:
         ok: OK
@@ -117,9 +117,9 @@ dialogs:
         viewUpdate: Näytä päivitys
         showUpgrades: Näytä päivitykset
         showKeybindings: Näytä pikanäppäimet
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Yritä uudelleen
+        continue: Jatka
+        playOffline: Pelaa Offline-tilassa 
     importSavegameError:
         title: Tuontivirhe
         text: "Tallennuksen tuonti epäonnistui:"
@@ -216,17 +216,17 @@ dialogs:
         title: Ohjevideo saatavilla
         desc: Tästä tasosta on saatavilla ohjevideo! Haluaisitko katsoa sen?
     editConstantProducer:
-        title: Set Item
+        title: Aseta Muoto
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Pulman lataus epäonnistui 
+        desc: "Valitettavasti pulmaa ei pystytty lataamaan:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Toimita Pulma
+        descName: "Anna pulmallesi nimi:"
+        descIcon: "Syötä yksilöllinen lyhyt avain, joka tulee olemaan pulmasi kuvake
+            (Voit generoida sen <link>täällä</link>, tai valitse yksi
+            satunnaisesti ehdotetuista muodoista alta):"
+        placeholderName: Pulman Nimi
     puzzleResizeBadBuildings:
         title: Resize not possible
         desc: You can't make the zone any smaller, because then some buildings would be
