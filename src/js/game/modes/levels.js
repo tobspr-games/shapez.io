@@ -1,3 +1,6 @@
+/* typehints:start */
+import { Application } from "../../application";
+/* typehints:end */
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -7,73 +10,98 @@ const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-const WEB_DEMO_LEVELS = () => [
-    // 1
-    // Circle
-    {
-        shape: "CuCuCuCu", // belts t1
-        required: 10,
-        reward: enumHubGoalRewards.reward_cutter_and_trash,
-    },
+/**
+ *
+ * @param {Application} app
+ * @returns
+ */
+const WEB_DEMO_LEVELS = app => {
+    const variant = app.gameAnalytics.abtVariant;
 
-    // 2
-    // Cutter
-    {
-        shape: "----CuCu", //
-        required: 20,
-        reward: enumHubGoalRewards.no_reward,
-    },
+    const levels = [
+        // 1
+        // Circle
+        {
+            shape: "CuCuCuCu", // belts t1
+            required: 10,
+            reward: enumHubGoalRewards.reward_cutter_and_trash,
+        },
 
-    // 3
-    // Rectangle
-    {
-        shape: "RuRuRuRu", // miners t1
-        required: 50,
-        reward: enumHubGoalRewards.reward_balancer,
-    },
+        // 2
+        // Cutter
+        {
+            shape: "----CuCu", //
+            required: 20,
+            reward: enumHubGoalRewards.no_reward,
+        },
 
-    // 4
-    {
-        shape: "RuRu----", // processors t2
-        required: 30,
-        reward: enumHubGoalRewards.reward_rotater,
-    },
+        // 3
+        // Rectangle
+        {
+            shape: "RuRuRuRu", // miners t1
+            required: variant === "0" ? 50 : 30,
+            reward: enumHubGoalRewards.reward_balancer,
+        },
 
-    // 5
-    // Rotater
-    {
-        shape: "Cu----Cu", // belts t2
-        required: 75,
-        reward: enumHubGoalRewards.reward_tunnel,
-    },
+        // 4
+        {
+            shape: "RuRu----", // processors t2
+            required: 30,
+            reward: enumHubGoalRewards.reward_rotater,
+        },
 
-    // 6
-    {
-        shape: "Cu------", // miners t2
-        required: 75,
-        reward: enumHubGoalRewards.reward_painter,
-    },
+        // 5
+        // Rotater
+        {
+            shape: "Cu----Cu", // belts t2
+            required: 75,
+            reward: enumHubGoalRewards.reward_tunnel,
+        },
+    ];
 
-    // 7
-    // Painter
-    {
-        shape: "CrCrCrCr", // unused
-        required: 120,
-        reward: enumHubGoalRewards.reward_rotater_ccw,
-    },
-    // 8
-    {
-        shape: "RbRb----", // painter t2
-        required: 170,
-        reward: enumHubGoalRewards.reward_mixer,
-    },
+    if (["0", "1", "2", "3"].includes(variant)) {
+        levels.push(
+            // 6
+            // Painter
+            {
+                shape: "Cu------", // miners t2
+                required: variant === "0" ? 75 : 50,
+                reward: enumHubGoalRewards.reward_painter,
+            }
+        );
+    }
+
+    if (["0", "1", "2"].includes(variant)) {
+        levels.push(
+            // 7
+            {
+                shape: "CrCrCrCr", // unused
+                required: variant === "0" ? 120 : 85,
+                reward: enumHubGoalRewards.reward_rotater_ccw,
+            }
+        );
+    }
+
+    if (["0", "1"].includes(variant)) {
+        levels.push(
+            // 8
+            {
+                shape: "RbRb----", // painter t2
+                required: variant === "0" ? 170 : 100,
+                reward: enumHubGoalRewards.reward_mixer,
+            }
+        );
+    }
+
     // End of demo
-    {
-        shape: "RbRb----",
+    levels.push({
+        shape: levels[levels.length - 1].shape,
         required: 0,
         reward: enumHubGoalRewards.reward_demo_end,
-    },
-];
+    });
+
+    return levels;
+};
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -354,11 +382,11 @@ const STANDALONE_LEVELS = () => [
 /**
  * Generates the level definitions
  */
-export function generateLevelsForVariant() {
+export function generateLevelsForVariant(app) {
     if (G_IS_STEAM_DEMO) {
         return STEAM_DEMO_LEVELS();
     } else if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return STANDALONE_LEVELS();
     }
-    return WEB_DEMO_LEVELS();
+    return WEB_DEMO_LEVELS(app);
 }

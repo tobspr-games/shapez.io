@@ -299,11 +299,11 @@ let levelDefinitionsCache = null;
 /**
  * Generates the level definitions
  */
-export function generateLevelDefinitions() {
+export function generateLevelDefinitions(app) {
     if (levelDefinitionsCache) {
         return levelDefinitionsCache;
     }
-    const levelDefinitions = generateLevelsForVariant();
+    const levelDefinitions = generateLevelsForVariant(app);
     MOD_SIGNALS.modifyLevelDefinitions.dispatch(levelDefinitions);
     if (G_IS_DEV) {
         levelDefinitions.forEach(({ shape }) => {
@@ -403,7 +403,7 @@ export class RegularGameMode extends GameMode {
      * @returns {Array<LevelDefinition>}
      */
     getLevelDefinitions() {
-        return generateLevelDefinitions();
+        return generateLevelDefinitions(this.root.app);
     }
 
     /**
