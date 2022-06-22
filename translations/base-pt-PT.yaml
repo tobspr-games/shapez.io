@@ -53,7 +53,7 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-    loggingIn: Logging in
+    loggingIn: A conectar
     loadingResources: A Baixar recursos adicionais (<percentage> %)
 demoBanners:
     title: Versão Demo
@@ -101,8 +101,8 @@ mainMenu:
             desativa todos os modos antes de jogares o DLC
     playingFullVersion: Estás agora a jogar a versão completa!
     logout: Desconectar
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
+    noActiveSavegames: Não foram encontrados savegames - Clica para começar um jogo novo!
+    playFullVersionV2: Compraste o Shapez na Steam? Joga a versão completa no teu Browser!
 dialogs:
     buttons:
         ok: OK
@@ -180,7 +180,7 @@ dialogs:
         desc: "Este jogo tem vários Atalhos que tornarão mais fácil a construção de
             grandes fábricas. Aqui estão alguns, mas <strong>verifica os
             restantes Atalhos</strong>!<br><br> <code
-            class='keybinding'>CTRL</code> + Drag: Seleciona a área para copiar
+            class='keybinding'>CTRL</code> + Arrasta: Seleciona a área para copiar
             / eliminar.<br> <code class='keybinding'>SHIFT</code>: Mantém
             pressionado para colocar várias construções.<br> <code
             class='keybinding'>ALT</code>: Inverte as posições.<br>"
@@ -362,7 +362,7 @@ ingame:
     notifications:
         newUpgrade: Está disponível um novo upgrade!
         gameSaved: O teu jogo foi guardado.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Nível <level> completo!
     shop:
         title: Upgrades
         buttonUnlock: Upgrade
@@ -1107,8 +1107,8 @@ settings:
                 zoom out).
         shapeTooltipAlwaysOn:
             title: Shape Tooltip - Mostrar Sempre
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            description: Mostrar sempre a shape tooltip quando passar sobre construções,
+                em vez de pressionar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: Novo!
@@ -1186,10 +1186,10 @@ keybindings:
         comparator: Comparador
         item_producer: Produtor de Itens (Sandbox)
         copyWireValue: "Fios: Copia o valor debaixo do cursor"
-        rotateToUp: "Rotate: Point Up"
-        rotateToDown: "Rotate: Point Down"
-        rotateToRight: "Rotate: Point Right"
-        rotateToLeft: "Rotate: Point Left"
+        rotateToUp: "Rotação: Para cima"
+        rotateToDown: "Rotação: Para baixo"
+        rotateToRight: "Rotação: Para a diretia"
+        rotateToLeft: "Rotação: Para a esquerda"
         constant_producer: Produtor Constante
         goal_acceptor: Recetor de Objetivo
         block: Bloqueador
