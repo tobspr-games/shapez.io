@@ -104,8 +104,10 @@ mainMenu:
             desactiva todos los mods para jugar el DLC.
     playingFullVersion: ¡Estás jugando la versión completa!
     logout: Cerrar Sesión
-    noActiveSavegames: No se encontraron partidas guardadas activas - ¡Haz click en Jugar para empezar una nueva partida!
-    playFullVersionV2: Has comprado shapez en Steam? ¡Juega la versión completa desde tu navegador!
+    noActiveSavegames: No se encontraron partidas guardadas activas - ¡Haz click en
+        Jugar para empezar una nueva partida!
+    playFullVersionV2: Has comprado shapez en Steam? ¡Juega la versión completa
+        desde tu navegador!
     playFullVersionStandalone: ¡Ahora puedes jugar la versión completa desde tu navegador!
 dialogs:
     buttons:
@@ -293,36 +295,37 @@ dialogs:
         desc: ¿Estas seguro de querer eliminar '<title>'? ¡Esto no se puede deshacer!
     modsDifference:
         title: Advertencia por Mod
-        desc:
-            Los mods instalados actualmente difieren a los mods de la partida guardada en el momento de la creación.
-            Esto puede causar que la partida guardada se corrompa o no funcione. ¿Estás
-            seguro de querer consitnuar?
+        desc: Los mods instalados actualmente difieren a los mods de la partida guardada
+            en el momento de la creación. Esto puede causar que la partida
+            guardada se corrompa o no funcione. ¿Estás seguro de querer
+            consitnuar?
         missingMods: Mods Faltantes
         newMods: Mods Nuevos Instalados
     resourceLoadFailed:
         title: Recursos fallaron en cargar
         demoLinkText: Demo de shapez en Steam
-        descWeb: "Uno o más recrusos no pudieron cargar. Asegurate de tener una
-            conexión estable de internet y vuelve a intentar. Si todavía no funciona,
-            asegurate de tambien desactivar extensiones del navegador (incluyendo
-            adblockers).<br><br> Como alternativa, puedes tambien jugar el
-            <demoOnSteamLinkText>. <br><br> Mensaje de Error:"
-        descSteamDemo: "Uno o más recursos no puedieron cargar. Intenta reiniciar el juego
-            - Si eso no ayuda, intenta reinstalar y verificar los archivos del juego
-            en Steam. <br><br> Mensaje de Error:"
+        descWeb: "Uno o más recrusos no pudieron cargar. Asegurate de tener una conexión
+            estable de internet y vuelve a intentar. Si todavía no funciona,
+            asegurate de tambien desactivar extensiones del navegador
+            (incluyendo adblockers).<br><br> Como alternativa, puedes tambien
+            jugar el <demoOnSteamLinkText>. <br><br> Mensaje de Error:"
+        descSteamDemo: "Uno o más recursos no puedieron cargar. Intenta reiniciar el
+            juego - Si eso no ayuda, intenta reinstalar y verificar los archivos
+            del juego en Steam. <br><br> Mensaje de Error:"
     steamSsoError:
         title: Cierre de sesión de versión completa
-        desc: Se te ha cerrado sesión desde la versión completa por navegaador debido a que tu
-            conexión de internet es inestable o estás jugando desde otro
-            dispositivo.<br><br> Por favor asegurate de que no tienes shapez abierto en
-            otra pestaña del navegador o en otra computadora con la misma cuenta de
-            Steam.<br><br> Puedes iniciar sesión nuevamente desde el menú principal.
+        desc: Se te ha cerrado sesión desde la versión completa por navegaador debido a
+            que tu conexión de internet es inestable o estás jugando desde otro
+            dispositivo.<br><br> Por favor asegurate de que no tienes shapez
+            abierto en otra pestaña del navegador o en otra computadora con la
+            misma cuenta de Steam.<br><br> Puedes iniciar sesión nuevamente
+            desde el menú principal.
     steamSsoNoOwnership:
         title: No eres dueño de la Edición completa
         desc: En orden de poder jugar la versión completa en tu nevagador, debes comprar
-            el juego base y el DLC Puzzle desde tu cuenta de Steam.<br><br>
-            Por favor asegurate de tener ambos, iniciendo sesión con la cuenta correcta
-            de Steam y vuelve a intentar.
+            el juego base y el DLC Puzzle desde tu cuenta de Steam.<br><br> Por
+            favor asegurate de tener ambos, iniciendo sesión con la cuenta
+            correcta de Steam y vuelve a intentar.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1397,15 +1400,18 @@ mods:
     version: Versión
     modWebsite: Pagina Web
     openFolder: Abrir Carpeta de Mods
-    folderOnlyStandalone: Solo es posible abrir la carpeta de mods corriendo la versión de escritorio.
+    folderOnlyStandalone: Solo es posible abrir la carpeta de mods corriendo la
+        versión de escritorio.
     browseMods: Examinar Mods
-    modsInfo: Para instalar y manejar mods, copialos en la carpeta de mods dentro del directorio del juego.
-        Tambien puedes usar el boton 'Abrir Carpeta de Mods' en la esquina superior derecha.
+    modsInfo: Para instalar y manejar mods, copialos en la carpeta de mods dentro
+        del directorio del juego. Tambien puedes usar el boton 'Abrir Carpeta de
+        Mods' en la esquina superior derecha.
     noModSupport: Necesitas la versión de escritorio de Steam para instalar mods.
     togglingComingSoon:
         title: Proximamente
-        description: Solo es posible activar o desactivar mods copiando o removiendo
-            el archivo del mod desde o en la carpeta mods/. Sin embargo, la posibilidad de
-            activarlos o desactivarlos aquí está planeada para una actualización futura!
-    browserNoSupport: Debido a restricciones del navegador, solo es posible
-        instalar mods en la versión de Steam - Disculpas!
+        description: Solo es posible activar o desactivar mods copiando o removiendo el
+            archivo del mod desde o en la carpeta mods/. Sin embargo, la
+            posibilidad de activarlos o desactivarlos aquí está planeada para
+            una actualización futura!
+    browserNoSupport: Debido a restricciones del navegador, solo es posible instalar
+        mods en la versión de Steam - Disculpas!

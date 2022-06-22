@@ -103,6 +103,7 @@ mainMenu:
     logout: Desconectar
     noActiveSavegames: Não foram encontrados savegames - Clica para começar um jogo novo!
     playFullVersionV2: Compraste o Shapez na Steam? Joga a versão completa no teu Browser!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
 dialogs:
     buttons:
         ok: OK
@@ -180,8 +181,8 @@ dialogs:
         desc: "Este jogo tem vários Atalhos que tornarão mais fácil a construção de
             grandes fábricas. Aqui estão alguns, mas <strong>verifica os
             restantes Atalhos</strong>!<br><br> <code
-            class='keybinding'>CTRL</code> + Arrasta: Seleciona a área para copiar
-            / eliminar.<br> <code class='keybinding'>SHIFT</code>: Mantém
+            class='keybinding'>CTRL</code> + Arrasta: Seleciona a área para
+            copiar / eliminar.<br> <code class='keybinding'>SHIFT</code>: Mantém
             pressionado para colocar várias construções.<br> <code
             class='keybinding'>ALT</code>: Inverte as posições.<br>"
     createMarker:
@@ -1107,8 +1108,8 @@ settings:
                 zoom out).
         shapeTooltipAlwaysOn:
             title: Shape Tooltip - Mostrar Sempre
-            description: Mostrar sempre a shape tooltip quando passar sobre construções,
-                em vez de pressionar 'ALT'.
+            description: Mostrar sempre a shape tooltip quando passar sobre construções, em
+                vez de pressionar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: Novo!
