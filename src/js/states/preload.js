@@ -1,6 +1,6 @@
 import { CHANGELOG } from "../changelog";
 import { cachebust } from "../core/cachebust";
-import { globalConfig } from "../core/config";
+import { globalConfig, THIRDPARTY_URLS } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
 import { queryParamOptions } from "../core/query_parameters";
@@ -50,7 +50,7 @@ export class PreloadState extends GameState {
         // Summer sale specific
         const bundle = ["0", "1"].includes(this.app.gameAnalytics.abtVariant);
         globalConfig.currentDiscount = 60;
-        globalConfig.standaloneCampaignLink = bundle
+        THIRDPARTY_URLS.standaloneCampaignLink = bundle
             ? "https://get.shapez.io/bundle/$campaign"
             : "https://get.shapez.io/$campaign";
 
