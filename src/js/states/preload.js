@@ -3,6 +3,7 @@ import { cachebust } from "../core/cachebust";
 import { globalConfig } from "../core/config";
 import { GameState } from "../core/game_state";
 import { createLogger } from "../core/logging";
+import { queryParamOptions } from "../core/query_parameters";
 import { authorizeViaSSOToken } from "../core/steam_sso";
 import { getLogoSprite, timeoutPromise } from "../core/utils";
 import { getRandomHint } from "../game/hints";
@@ -64,6 +65,20 @@ export class PreloadState extends GameState {
         });
     }
 
+    async sendBeacon() {
+        if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
+            return;
+        }
+        if (!queryParamOptions.campaign) {
+            return;
+        }
+        fetch(
+            "https://analytics.shapez.io/campaign/" + queryParamOptions.campaign + "?lpurl=nocontent"
+        ).catch(err => {
+            console.warn("Failed to send beacon:", err);
+        });
+    }
+
     onLeave() {
         // this.dialogs.cleanup();
     }
@@ -72,6 +87,7 @@ export class PreloadState extends GameState {
         this.setStatus("Booting")
 
             .then(() => this.setStatus("Creating platform wrapper", 3))
+            .then(() => this.sendBeacon())
             .then(() => authorizeViaSSOToken(this.app, this.dialogs))
 
             .then(() => this.app.platformWrapper.initialize())
