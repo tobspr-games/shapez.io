@@ -54,6 +54,8 @@ global:
         space: MELLANSLAG
     loggingIn: Loggar in
     loadingResources: Downloading additional resources (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Demo-version
     intro: |-

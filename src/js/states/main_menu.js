@@ -42,8 +42,7 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            G_IS_DEV ||
-            (!G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO);
+            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -111,6 +110,11 @@ export class MainMenuState extends GameState {
             }
                 Play shapez on Steam
             </a>
+            ${
+                ["1", "3"].includes(this.app.gameAnalytics.abtVariant)
+                    ? `<span class="specialOffer">${T.global.discountSummerSale}</span>`
+                    : ""
+            }
             ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
 
         `;

@@ -332,6 +332,18 @@
                     transform: rotate(5deg);
                 }
             }
+            .specialOffer {
+                color: #000000;
+                @include PlainText;
+                align-self: center;
+                text-align: center;
+                @include S(margin-top, 5px);
+                @include InlineAnimation(1s ease-in-out infinite) {
+                    50% {
+                        transform: scale(1.02, 1.03) translateY(2%);
+                    }
+                }
+            }
 
             .points {
                 display: grid;

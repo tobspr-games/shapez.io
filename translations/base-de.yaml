@@ -55,6 +55,8 @@ global:
         shift: UMSCH
         space: LEER
     loadingResources: Lade zusätzliche Ressourcen (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SONDERANGEBOT! Angebot endet am 7. Juli
 demoBanners:
     title: Demoversion
     titleV2: "Spiele jetzt die Vollversion für:"

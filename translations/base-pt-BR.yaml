@@ -54,6 +54,8 @@ global:
         space: Espaço
     loggingIn: Entrando
     loadingResources: Downloading additional resources (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Versão Demo
     intro: |-

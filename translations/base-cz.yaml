@@ -51,6 +51,8 @@ global:
         space: SPACE
     loggingIn: Přihlašuji
     loadingResources: Stahování dalších zdrojů (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Demo verze
     intro: |-

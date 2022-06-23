@@ -47,22 +47,25 @@ export class PreloadState extends GameState {
     }
 
     async fetchDiscounts() {
-        // Bundle is always -10% off
-        let baseDiscount = this.app.gameAnalytics.abtVariant === "0" ? 1 : 0.9;
+        // Summer sale specific
+        const bundle = ["0", "1"].includes(this.app.gameAnalytics.abtVariant);
+        globalConfig.currentDiscount = 60;
+        globalConfig.standaloneCampaignLink = bundle
+            ? "https://get.shapez.io/bundle/$campaign"
+            : "https://get.shapez.io/$campaign";
 
-        await timeoutPromise(
-            fetch("https://analytics.shapez.io/v1/discounts")
-                .then(res => res.json())
-                .then(data => {
-                    globalConfig.currentDiscount =
-                        100 -
-                        baseDiscount * (100 - Number(data["1318690"].data.price_overview.discount_percent));
-                    logger.log("Fetched current discount:", globalConfig.currentDiscount);
-                }),
-            2000
-        ).catch(err => {
-            logger.warn("Failed to fetch current discount:", err);
-        });
+        // Regular
+        // await timeoutPromise(
+        //     fetch("https://analytics.shapez.io/v1/discounts")
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             globalConfig.currentDiscount = Number(data["1318690"].data.price_overview.discount_percent);
+        //             logger.log("Fetched current discount:", globalConfig.currentDiscount);
+        //         }),
+        //     2000
+        // ).catch(err => {
+        //     logger.warn("Failed to fetch current discount:", err);
+        // });
     }
 
     async sendBeacon() {

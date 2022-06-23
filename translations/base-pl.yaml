@@ -55,6 +55,8 @@ global:
         space: SPACJA
     loggingIn: Logowanie
     loadingResources: Pobieranie dodatkowych zasobów (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Wersja demonstracyjna
     intro: |-

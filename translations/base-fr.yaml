@@ -52,6 +52,8 @@ global:
         space: ESPACE
     loggingIn: Se connecter
     loadingResources: Chargement de ressources supplémentaires (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Version de démo
     intro: >-

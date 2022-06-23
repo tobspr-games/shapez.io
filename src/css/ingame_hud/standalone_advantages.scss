@@ -153,6 +153,14 @@
                 transform: rotate(3deg);
             }
         }
+
+        .specialOffer {
+            color: #000000;
+            @include PlainText;
+            align-self: center;
+            text-align: center;
+            @include S(margin-top, 5px);
+        }
     }
 
     .point {
