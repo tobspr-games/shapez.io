@@ -58,6 +58,8 @@ global:
     # What symbol to use to separate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: "."
 
+    discount: -<percentage>% off!
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k

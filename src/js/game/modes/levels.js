@@ -16,8 +16,6 @@ const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
  * @returns
  */
 const WEB_DEMO_LEVELS = app => {
-    const variant = app.gameAnalytics.abtVariant;
-
     const levels = [
         // 1
         // Circle
@@ -39,7 +37,7 @@ const WEB_DEMO_LEVELS = app => {
         // Rectangle
         {
             shape: "RuRuRuRu", // miners t1
-            required: variant === "0" ? 50 : 30,
+            required: 30,
             reward: enumHubGoalRewards.reward_balancer,
         },
 
@@ -57,48 +55,34 @@ const WEB_DEMO_LEVELS = app => {
             required: 75,
             reward: enumHubGoalRewards.reward_tunnel,
         },
+
+        // 6
+        // Painter
+        {
+            shape: "Cu------", // miners t2
+            required: 50,
+            reward: enumHubGoalRewards.reward_painter,
+        },
+
+        // 7
+        {
+            shape: "CrCrCrCr", // unused
+            required: 85,
+            reward: enumHubGoalRewards.reward_rotater_ccw,
+        },
+
+        // 8
+        {
+            shape: "RbRb----", // painter t2
+            required: 100,
+            reward: enumHubGoalRewards.reward_mixer,
+        },
+        {
+            shape: "RpRp----",
+            required: 0,
+            reward: enumHubGoalRewards.reward_demo_end,
+        },
     ];
-
-    if (["0", "1", "2", "3"].includes(variant)) {
-        levels.push(
-            // 6
-            // Painter
-            {
-                shape: "Cu------", // miners t2
-                required: variant === "0" ? 75 : 50,
-                reward: enumHubGoalRewards.reward_painter,
-            }
-        );
-    }
-
-    if (["0", "1", "2"].includes(variant)) {
-        levels.push(
-            // 7
-            {
-                shape: "CrCrCrCr", // unused
-                required: variant === "0" ? 120 : 85,
-                reward: enumHubGoalRewards.reward_rotater_ccw,
-            }
-        );
-    }
-
-    if (["0", "1"].includes(variant)) {
-        levels.push(
-            // 8
-            {
-                shape: "RbRb----", // painter t2
-                required: variant === "0" ? 170 : 100,
-                reward: enumHubGoalRewards.reward_mixer,
-            }
-        );
-    }
-
-    // End of demo
-    levels.push({
-        shape: levels[levels.length - 1].shape,
-        required: 0,
-        reward: enumHubGoalRewards.reward_demo_end,
-    });
 
     return levels;
 };
@@ -168,7 +152,7 @@ const STEAM_DEMO_LEVELS = () => [
     },
     // End of demo
     {
-        shape: "RbRb----",
+        shape: "CpCpCpCp",
         required: 0,
         reward: enumHubGoalRewards.reward_demo_end,
     },

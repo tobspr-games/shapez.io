@@ -42,7 +42,10 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             <button class="steamLinkButton steam_dlbtn_0">
             ${
                 globalConfig.currentDiscount > 0
-                    ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
+                    ? `<span class='discount'>${T.global.discount.replace(
+                          "<percentage>",
+                          String(globalConfig.currentDiscount)
+                      )}</span>`
                     : ""
             }
             </button>

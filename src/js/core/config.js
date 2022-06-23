@@ -22,9 +22,10 @@ export const THIRDPARTY_URLS = {
     twitter: "https://twitter.com/tobspr",
     privacyPolicy: "https://tobspr.io/privacy.html",
 
-    standaloneCampaignLink: G_IS_STANDALONE
-        ? "https://get.shapez.io/bundle/$campaign"
-        : "https://get.shapez.io/$campaign",
+    standaloneCampaignLink:
+        G_IS_STANDALONE || true
+            ? "https://get.shapez.io/bundle/$campaign"
+            : "https://get.shapez.io/$campaign",
     puzzleDlcStorePage: "https://get.shapez.io/mm_puzzle_dlc?target=dlc",
 
     levelTutorialVideos: {

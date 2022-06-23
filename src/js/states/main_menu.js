@@ -103,7 +103,10 @@ export class MainMenuState extends GameState {
             <a href="#" class="steamLink steam_dlbtn_0" target="_blank">
             ${
                 globalConfig.currentDiscount > 0
-                    ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
+                    ? `<span class='discount'>${T.global.discount.replace(
+                          "<percentage>",
+                          String(globalConfig.currentDiscount)
+                      )}</span>`
                     : ""
             }
                 Play shapez on Steam

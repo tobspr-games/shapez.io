@@ -13,7 +13,10 @@ export class HUDWatermark extends BaseHUDPart {
             globalConfig.currentDiscount > 0 ? ["withDiscount"] : [],
             linkText +
                 (globalConfig.currentDiscount > 0
-                    ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
+                    ? `<span class='discount'>${T.global.discount.replace(
+                          "<percentage>",
+                          String(globalConfig.currentDiscount)
+                      )}</span>`
                     : "")
         );
         this.trackClicks(this.linkElement, () => {

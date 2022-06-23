@@ -327,14 +327,9 @@
                     color: #c5ea3f;
                     @include S(border-radius, $globalBorderRadius);
                     @include S(padding, 1px, 3px, 1px, 4px);
-                    @include SuperSmallText;
+                    @include PlainText;
                     text-transform: uppercase;
-                    transform: rotate(1deg);
-                    @include InlineAnimation(1.3s ease-in-out infinite) {
-                        50% {
-                            transform: rotate(4deg) scale(1.1);
-                        }
-                    }
+                    transform: rotate(5deg);
                 }
             }
 
