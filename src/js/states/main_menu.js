@@ -74,7 +74,7 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
-        const showKiwiClicker = this.app.settings.getSetting("showKiwiClicker");
+        const showKiwiClicker = this.app.settings.getSetting("showKiwiClicker") && MODS.mods.length === 0;
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
