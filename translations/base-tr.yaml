@@ -52,7 +52,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Giriş yapılıyor
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Ek kaynaklar indiriliyor... (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
