@@ -36,8 +36,8 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 // Be sure to increment the ID whenever it changes
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
-const CURRENT_ABT = "abt_ssst";
-const CURRENT_ABT_COUNT = 4;
+const CURRENT_ABT = "abt_bsl2";
+const CURRENT_ABT_COUNT = 1;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     constructor(app) {

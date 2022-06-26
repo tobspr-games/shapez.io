@@ -48,11 +48,7 @@ export class PreloadState extends GameState {
 
     async fetchDiscounts() {
         // Summer sale specific
-        const bundle = ["0", "1"].includes(this.app.gameAnalytics.abtVariant);
         globalConfig.currentDiscount = 60;
-        THIRDPARTY_URLS.standaloneCampaignLink = bundle
-            ? "https://get.shapez.io/bundle/$campaign"
-            : "https://get.shapez.io/$campaign";
 
         // Regular
         // await timeoutPromise(
@@ -76,7 +72,12 @@ export class PreloadState extends GameState {
             return;
         }
         fetch(
-            "https://analytics.shapez.io/campaign/" + queryParamOptions.campaign + "?lpurl=nocontent"
+            "https://analytics.shapez.io/campaign/" +
+                queryParamOptions.campaign +
+                "?lpurl=nocontent&fbclid=" +
+                queryParamOptions.fbclid +
+                "&gclid=" +
+                queryParamOptions.gclid
         ).catch(err => {
             console.warn("Failed to send beacon:", err);
         });
