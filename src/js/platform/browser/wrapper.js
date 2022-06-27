@@ -3,6 +3,7 @@ import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { clamp } from "../../core/utils";
+import { CrazygamesAdProvider } from "../ad_providers/crazygames";
 import { GamedistributionAdProvider } from "../ad_providers/gamedistribution";
 import { NoAdProvider } from "../ad_providers/no_ad_provider";
 import { SteamAchievementProvider } from "../electron/steam_achievement_provider";
@@ -22,13 +23,11 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             adProvider: NoAdProvider,
             iframed: false,
             externalLinks: true,
-            iogLink: true,
         };
 
         if (!G_IS_STANDALONE && !WEB_STEAM_SSO_AUTHENTICATED && queryParamOptions.embedProvider) {
             const providerId = queryParamOptions.embedProvider;
             this.embedProvider.iframed = true;
-            this.embedProvider.iogLink = false;
 
             switch (providerId) {
                 case "armorgames": {
@@ -38,7 +37,6 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
                 case "iogames.space": {
                     this.embedProvider.id = "iogames.space";
-                    this.embedProvider.iogLink = true;
                     break;
                 }
 
@@ -61,6 +59,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
 
                 case "crazygames": {
                     this.embedProvider.id = "crazygames";
+                    this.embedProvider.adProvider = CrazygamesAdProvider;
                     break;
                 }
 

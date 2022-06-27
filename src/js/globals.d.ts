@@ -93,6 +93,7 @@ declare interface Window {
     grecaptcha: any;
     gtag: any;
     cpmstarAPI: any;
+    CrazyGames: any;
 
     // Mods
     $shapez_registerMod: any;

@@ -32,8 +32,6 @@ export class GamedistributionAdProvider extends AdProviderInterface {
          * When we showed the last video ad
          */
         this.lastVideoAdShowTime = -1e20;
-
-        console.error("X");
     }
 
     getHasAds() {

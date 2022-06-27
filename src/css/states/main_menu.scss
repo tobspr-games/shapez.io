@@ -52,14 +52,13 @@
         }
     }
 
-    &::before,
     &::after {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: uiResource("vignette.lossless.png") center center / cover no-repeat;
+        background: uiResource("vignette-strong.lossless.png") center center / cover no-repeat;
         pointer-events: none;
         z-index: 2;
         content: "";
