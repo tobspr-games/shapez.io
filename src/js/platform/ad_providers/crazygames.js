@@ -88,4 +88,12 @@ export class CrazygamesAdProvider extends AdProviderInterface {
                 this.app.sound.setSoundVolume(this.app.settings.getSetting("soundVolume"));
             });
     }
+    setPlayStatus(playing) {
+        console.log("crazygames::playing:", playing);
+        if (playing) {
+            this.sdkInstance.gameplayStart();
+        } else {
+            this.sdkInstance.gameplayStop();
+        }
+    }
 }

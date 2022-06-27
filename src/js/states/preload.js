@@ -68,19 +68,27 @@ export class PreloadState extends GameState {
         if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
             return;
         }
-        if (!queryParamOptions.campaign) {
-            return;
+        if (queryParamOptions.campaign) {
+            fetch(
+                "https://analytics.shapez.io/campaign/" +
+                    queryParamOptions.campaign +
+                    "?lpurl=nocontent&fbclid=" +
+                    queryParamOptions.fbclid +
+                    "&gclid=" +
+                    queryParamOptions.gclid
+            ).catch(err => {
+                console.warn("Failed to send beacon:", err);
+            });
         }
-        fetch(
-            "https://analytics.shapez.io/campaign/" +
-                queryParamOptions.campaign +
-                "?lpurl=nocontent&fbclid=" +
-                queryParamOptions.fbclid +
-                "&gclid=" +
-                queryParamOptions.gclid
-        ).catch(err => {
-            console.warn("Failed to send beacon:", err);
-        });
+        if (queryParamOptions.embedProvider) {
+            fetch(
+                "https://analytics.shapez.io/campaign/embed_" +
+                    queryParamOptions.embedProvider +
+                    "?lpurl=nocontent"
+            ).catch(err => {
+                console.warn("Failed to send beacon:", err);
+            });
+        }
     }
 
     onLeave() {

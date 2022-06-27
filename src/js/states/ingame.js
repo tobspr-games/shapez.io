@@ -203,6 +203,14 @@ export class InGameState extends GameState {
         // do nothing
     }
 
+    getIsIngame() {
+        return (
+            this.stage === GAME_LOADING_STATES.s10_gameRunning &&
+            this.core &&
+            !this.core.root.hud.shouldPauseGame()
+        );
+    }
+
     /**
      * Called when the game somehow failed to initialize. Resets everything to basic state and
      * then goes to the main menu, showing the error
