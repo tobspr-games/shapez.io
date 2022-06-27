@@ -168,7 +168,11 @@ export class Camera extends BasicSerializableObject {
      * Finds a good initial zoom level
      */
     findInitialZoom() {
-        const desiredWorldSpaceWidth = 18 * globalConfig.tileSize;
+        let desiredWorldSpaceWidth = 18 * globalConfig.tileSize;
+        if (window.innerWidth < 1000) {
+            desiredWorldSpaceWidth = 12 * globalConfig.tileSize;
+        }
+
         const zoomLevelX = this.root.gameWidth / desiredWorldSpaceWidth;
         const zoomLevelY = this.root.gameHeight / desiredWorldSpaceWidth;
 
