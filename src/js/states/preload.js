@@ -97,8 +97,17 @@ export class PreloadState extends GameState {
 
     startLoading() {
         this.setStatus("Booting")
-
+            .then(() => {
+                try {
+                    window.localStorage.setItem("local_storage_feature_detection", "1");
+                } catch (ex) {
+                    throw new Error(
+                        "Could not access local storage. Make sure you are not playing in incognito mode and allow thirdparty cookies!"
+                    );
+                }
+            })
             .then(() => this.setStatus("Creating platform wrapper", 3))
+
             .then(() => this.sendBeacon())
             .then(() => authorizeViaSSOToken(this.app, this.dialogs))
 
@@ -345,12 +354,6 @@ export class PreloadState extends GameState {
                         ${this.currentStatus} failed:<br/>
                         ${text}
                     </div>
-
-                    <div class="supportHelp">
-                    Please send me an email with steps to reproduce and what you did before this happened:
-                        <br /><a class="email" href="mailto:${email}?subject=App%20does%20not%20launch">${email}</a>
-                    </div>
-
                     <div class="lower">
                         <button class="resetApp styledButton">Reset App</button>
                         <i>Build ${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>
