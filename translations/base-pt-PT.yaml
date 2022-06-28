@@ -56,7 +56,7 @@ global:
     loggingIn: A conectar
     loadingResources: A Baixar recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOÇÃO ESPECIAL! A oferta acaba dia 7 de Julho
 demoBanners:
     title: Versão Demo
     intro: |-
@@ -105,7 +105,7 @@ mainMenu:
     logout: Desconectar
     noActiveSavegames: Não foram encontrados savegames - Clica para começar um jogo novo!
     playFullVersionV2: Compraste o Shapez na Steam? Joga a versão completa no teu Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: Também podes jogar a versão completa no teu Browser!
 dialogs:
     buttons:
         ok: OK
