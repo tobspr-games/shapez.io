@@ -73,9 +73,9 @@ export class PreloadState extends GameState {
                 "https://analytics.shapez.io/campaign/" +
                     queryParamOptions.campaign +
                     "?lpurl=nocontent&fbclid=" +
-                    queryParamOptions.fbclid +
+                    (queryParamOptions.fbclid || "") +
                     "&gclid=" +
-                    queryParamOptions.gclid
+                    (queryParamOptions.gclid || "")
             ).catch(err => {
                 console.warn("Failed to send beacon:", err);
             });
