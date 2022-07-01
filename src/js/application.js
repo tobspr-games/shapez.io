@@ -134,6 +134,9 @@ export class Application {
         /** @type {TypedTrackedState<boolean>} */
         this.trackedIsRenderable = new TrackedState(this.onAppRenderableStateChanged, this);
 
+        /** @type {TypedTrackedState<boolean>} */
+        this.trackedIsPlaying = new TrackedState(this.onAppPlayingStateChanged, this);
+
         // Dimensions
         this.screenWidth = 0;
         this.screenHeight = 0;
@@ -330,6 +333,14 @@ export class Application {
         this.sound.onPageRenderableStateChanged(renderable);
     }
 
+    onAppPlayingStateChanged(playing) {
+        try {
+            this.adProvider.setPlayStatus(playing);
+        } catch (ex) {
+            console.warn("Play status changed");
+        }
+    }
+
     /**
      * Internal before-unload handler
      */
@@ -386,6 +397,7 @@ export class Application {
         }
 
         const currentState = this.stateMgr.getCurrentState();
+        this.trackedIsPlaying.set(currentState && currentState.getIsIngame());
         if (currentState) {
             currentState.onRender(dt);
         }

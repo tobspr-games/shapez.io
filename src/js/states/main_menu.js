@@ -4,6 +4,7 @@ import { GameState } from "../core/game_state";
 import { DialogWithForm } from "../core/modal_dialog_elements";
 import { FormElementInput } from "../core/modal_dialog_forms";
 import { ReadWriteProxy } from "../core/read_write_proxy";
+import { STOP_PROPAGATION } from "../core/signal";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../core/steam_sso";
 import {
     formatSecondsToTimeAgo,
@@ -41,8 +42,7 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            G_IS_DEV ||
-            (!G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO);
+            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
 
@@ -65,13 +65,16 @@ export class MainMenuState extends GameState {
         }
 
         const showDemoAdvertisement =
-            showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
+            (showExternalLinks || G_CHINA_VERSION) &&
+            this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
         const ownsPuzzleDLC =
             WEB_STEAM_SSO_AUTHENTICATED ||
             (G_IS_STANDALONE &&
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
+
+        const showKiwiClicker = this.app.settings.getSetting("showKiwiClicker") && MODS.mods.length === 0;
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
@@ -99,11 +102,15 @@ export class MainMenuState extends GameState {
             <a href="#" class="steamLink steam_dlbtn_0" target="_blank">
             ${
                 globalConfig.currentDiscount > 0
-                    ? `<span class='discount'>-${globalConfig.currentDiscount}%!</span>`
+                    ? `<span class='discount'>${T.global.discount.replace(
+                          "<percentage>",
+                          String(globalConfig.currentDiscount)
+                      )}</span>`
                     : ""
             }
                 Play shapez on Steam
             </a>
+            ${!G_IS_STEAM_DEMO ? `<span class="specialOffer">${T.global.discountSummerSale}</span>` : ""}
             ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
 
         `;
@@ -138,14 +145,18 @@ export class MainMenuState extends GameState {
                     <div class="buttons"></div>
                     <div class="savegamesMount"></div>
                     ${
-                        G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED
-                            ? ""
-                            : `<div class="steamSso">
-                                <span class="description">${T.mainMenu.playFullVersionV2}</span>
-                                <a class="ssoSignIn" href="${
+                        G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED
+                            ? `<div class="steamSso">
+                                <span class="description">${
+                                    G_IS_STANDALONE
+                                        ? T.mainMenu.playFullVersionStandalone
+                                        : T.mainMenu.playFullVersionV2
+                                }</span>
+                                <a class="ssoSignIn" target="_blank" href="${
                                     this.app.clientApi.getEndpoint() + "/v1/noauth/steam-sso"
                                 }">Sign in</a>
                             </div>`
+                            : ""
                     }
                     ${
                         WEB_STEAM_SSO_AUTHENTICATED
@@ -191,10 +202,15 @@ export class MainMenuState extends GameState {
                         }
 
 
-                        <div class="mainNews kiwiClicker">
+                        ${
+                            showKiwiClicker
+                                ? `<div class="mainNews kiwiClicker">
                             <div class="text">Check out this small side project I am working on right now!</div>
+                            <div class="close"></div>
 
-                        </div>
+                        </div>`
+                                : ""
+                        }
                 `
                         : ""
                 }
@@ -258,7 +274,7 @@ export class MainMenuState extends GameState {
                     <div class="socialLinks">
 
                     ${
-                        showExternalLinks
+                        showExternalLinks && (!G_IS_STANDALONE || G_IS_STEAM_DEMO)
                             ? `<a class="steamLinkSocial boxLink" target="_blank">
                                     <span class="thirdpartyLogo steamLogo"></span>
                                     <span class="label">steam</span>
@@ -447,6 +463,7 @@ export class MainMenuState extends GameState {
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
             ".kiwiClicker": this.onKiwiClickerClicked,
+            ".kiwiClicker .close": this.hideKiwiClicker,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -566,6 +583,13 @@ export class MainMenuState extends GameState {
         this.app.platformWrapper.openExternalLink(
             "https://store.steampowered.com/app/1980530/Kiwi_Clicker/?utm_medium=shapez"
         );
+    }
+
+    hideKiwiClicker() {
+        this.app.settings.updateSetting("showKiwiClicker", false);
+        this.app.settings.save();
+        this.htmlElement.querySelector(".kiwiClicker").remove();
+        return STOP_PROPAGATION;
     }
 
     onBackButtonClicked() {

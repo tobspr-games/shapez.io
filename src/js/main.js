@@ -39,7 +39,7 @@ if (G_IS_DEV && IS_DEBUG) {
 
 /* typehints:start */
 // @ts-ignore
-assert(false, "typehints built in, this should never be the case!");
+throw new Error("typehints built in, this should never be the case!");
 /* typehints:end */
 
 /* dev:start */

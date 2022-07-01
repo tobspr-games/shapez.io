@@ -58,6 +58,9 @@ global:
     # What symbol to use to separate the integer part from the fractional part of a number, e.g. "0.4"
     decimalSeparator: "."
 
+    discount: -<percentage>%
+    discountSummerSale: "SPECIAL PROMOTION! Offer ends 7 July"
+
     # The suffix for large numbers, e.g. 1.3k, 400.2M, etc.
     suffix:
         thousands: k
@@ -133,6 +136,7 @@ mainMenu:
     noActiveSavegames: No active savegames found - Click play to start a new game!
 
     playFullVersionV2: Bought shapez on Steam? Play the full version in your Browser!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
     playingFullVersion: You are now playing the full version!
     logout: Logout
 

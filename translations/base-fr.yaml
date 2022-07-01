@@ -52,6 +52,8 @@ global:
         space: ESPACE
     loggingIn: Se connecter
     loadingResources: Chargement de ressources supplémentaires (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Version de démo
     intro: >-
@@ -102,6 +104,7 @@ mainMenu:
     logout: Logout
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
 dialogs:
     buttons:
         ok: OK

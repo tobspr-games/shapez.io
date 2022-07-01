@@ -35,4 +35,7 @@ export class AnalyticsInterface {
      * @param {string} name
      */
     trackDecision(name) {}
+
+    // LEGACY 1.5.3
+    trackUiClick() {}
 }

@@ -30,11 +30,6 @@ export class LoginState extends GameState {
             throw new Error("No next state id");
         }
 
-        if (this.app.clientApi.isLoggedIn()) {
-            this.finishLoading();
-            return;
-        }
-
         this.dialogs = new HUDModalDialogs(null, this.app);
         const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);

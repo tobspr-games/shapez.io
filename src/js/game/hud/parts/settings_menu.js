@@ -61,7 +61,9 @@ export class HUDSettingsMenu extends BaseHUDPart {
     }
 
     returnToMenu() {
-        this.root.gameState.goBackToMenu();
+        this.root.app.adProvider.showVideoAd().then(() => {
+            this.root.gameState.goBackToMenu();
+        });
     }
 
     goToSettings() {

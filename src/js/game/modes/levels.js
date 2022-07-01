@@ -1,3 +1,6 @@
+/* typehints:start */
+import { Application } from "../../application";
+/* typehints:end */
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
@@ -7,73 +10,82 @@ const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 
-const WEB_DEMO_LEVELS = () => [
-    // 1
-    // Circle
-    {
-        shape: "CuCuCuCu", // belts t1
-        required: 10,
-        reward: enumHubGoalRewards.reward_cutter_and_trash,
-    },
+/**
+ *
+ * @param {Application} app
+ * @returns
+ */
+const WEB_DEMO_LEVELS = app => {
+    const levels = [
+        // 1
+        // Circle
+        {
+            shape: "CuCuCuCu", // belts t1
+            required: 10,
+            reward: enumHubGoalRewards.reward_cutter_and_trash,
+        },
 
-    // 2
-    // Cutter
-    {
-        shape: "----CuCu", //
-        required: 20,
-        reward: enumHubGoalRewards.no_reward,
-    },
+        // 2
+        // Cutter
+        {
+            shape: "----CuCu", //
+            required: 20,
+            reward: enumHubGoalRewards.no_reward,
+        },
 
-    // 3
-    // Rectangle
-    {
-        shape: "RuRuRuRu", // miners t1
-        required: 50,
-        reward: enumHubGoalRewards.reward_balancer,
-    },
+        // 3
+        // Rectangle
+        {
+            shape: "RuRuRuRu", // miners t1
+            required: 30,
+            reward: enumHubGoalRewards.reward_balancer,
+        },
 
-    // 4
-    {
-        shape: "RuRu----", // processors t2
-        required: 30,
-        reward: enumHubGoalRewards.reward_rotater,
-    },
+        // 4
+        {
+            shape: "RuRu----", // processors t2
+            required: 30,
+            reward: enumHubGoalRewards.reward_rotater,
+        },
 
-    // 5
-    // Rotater
-    {
-        shape: "Cu----Cu", // belts t2
-        required: 75,
-        reward: enumHubGoalRewards.reward_tunnel,
-    },
+        // 5
+        // Rotater
+        {
+            shape: "Cu----Cu", // belts t2
+            required: 75,
+            reward: enumHubGoalRewards.reward_tunnel,
+        },
 
-    // 6
-    {
-        shape: "Cu------", // miners t2
-        required: 75,
-        reward: enumHubGoalRewards.reward_painter,
-    },
+        // 6
+        // Painter
+        {
+            shape: "Cu------", // miners t2
+            required: 50,
+            reward: enumHubGoalRewards.reward_painter,
+        },
 
-    // 7
-    // Painter
-    {
-        shape: "CrCrCrCr", // unused
-        required: 120,
-        reward: enumHubGoalRewards.reward_rotater_ccw,
-    },
-    // 8
-    {
-        shape: "RbRb----", // painter t2
-        required: 170,
-        reward: enumHubGoalRewards.reward_mixer,
-    },
-    // End of demo
-    {
-        shape: "RbRb----",
-        required: 0,
-        reward: enumHubGoalRewards.reward_demo_end,
-    },
-];
+        // 7
+        {
+            shape: "CrCrCrCr", // unused
+            required: 85,
+            reward: enumHubGoalRewards.reward_rotater_ccw,
+        },
+
+        // 8
+        {
+            shape: "RbRb----", // painter t2
+            required: 100,
+            reward: enumHubGoalRewards.reward_mixer,
+        },
+        {
+            shape: "RpRp----",
+            required: 0,
+            reward: enumHubGoalRewards.reward_demo_end,
+        },
+    ];
+
+    return levels;
+};
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -140,7 +152,7 @@ const STEAM_DEMO_LEVELS = () => [
     },
     // End of demo
     {
-        shape: "RbRb----",
+        shape: "CpCpCpCp",
         required: 0,
         reward: enumHubGoalRewards.reward_demo_end,
     },
@@ -354,11 +366,11 @@ const STANDALONE_LEVELS = () => [
 /**
  * Generates the level definitions
  */
-export function generateLevelsForVariant() {
+export function generateLevelsForVariant(app) {
     if (G_IS_STEAM_DEMO) {
         return STEAM_DEMO_LEVELS();
     } else if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return STANDALONE_LEVELS();
     }
-    return WEB_DEMO_LEVELS();
+    return WEB_DEMO_LEVELS(app);
 }

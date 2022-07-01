@@ -38,6 +38,7 @@
 
         .exitAppButton {
             background-image: uiResource("icons/main_menu_exit.png");
+            background-size: 56%;
         }
 
         .languageChoose {
@@ -51,14 +52,13 @@
         }
     }
 
-    &::before,
     &::after {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: uiResource("vignette.lossless.png") center center / cover no-repeat;
+        background: uiResource("vignette-strong.lossless.png") center center / cover no-repeat;
         pointer-events: none;
         z-index: 2;
         content: "";
@@ -185,6 +185,23 @@
                 transition: transform 0.5s ease-in-out;
             }
 
+            .close {
+                position: absolute;
+                pointer-events: all;
+                background: uiResource("icons/main_menu_exit.png") center center / 50% no-repeat;
+                display: inline-flex;
+                @include S(width, 15px);
+                @include S(height, 15px);
+                @include S(top, 2px);
+                opacity: 0.3;
+                @include S(right, 2px);
+                z-index: 200;
+                transition: opacity 0.12s ease-in-out;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+
             &:hover::before {
                 transform: translate(0, -51%);
             }
@@ -309,13 +326,20 @@
                     color: #c5ea3f;
                     @include S(border-radius, $globalBorderRadius);
                     @include S(padding, 1px, 3px, 1px, 4px);
-                    @include SuperSmallText;
+                    @include PlainText;
                     text-transform: uppercase;
-                    transform: rotate(1deg);
-                    @include InlineAnimation(1.3s ease-in-out infinite) {
-                        50% {
-                            transform: rotate(4deg) scale(1.1);
-                        }
+                    transform: rotate(5deg);
+                }
+            }
+            .specialOffer {
+                color: #000000;
+                @include PlainText;
+                align-self: center;
+                text-align: center;
+                @include S(margin-top, 5px);
+                @include InlineAnimation(1s ease-in-out infinite) {
+                    50% {
+                        transform: scale(1.02, 1.03) translateY(2%);
                     }
                 }
             }
@@ -788,6 +812,9 @@
             .description {
                 @include SuperSmallText;
                 color: rgba(0, 10, 20, 0.5);
+                @include DarkThemeOverride {
+                    color: rgba(#fff, 0.7);
+                }
             }
             // &:hover {
             //     .tooltip {
@@ -854,6 +881,10 @@
                 text-align: center;
                 @include S(padding, 0, 20px);
                 opacity: 0.5;
+
+                @include DarkThemeOverride {
+                    color: #fff;
+                }
             }
 
             .savegames {
@@ -1231,23 +1262,6 @@
 
             .dlcHint {
                 color: $accentColorBright;
-            }
-        }
-
-        .footer {
-            > a,
-            .sidelinks > a {
-                background-color: rgba($darkModeControlsBackground, 0.3);
-                color: #333538;
-
-                &:hover {
-                    background-color: rgba(darken($darkModeControlsBackground, 5), 0.4);
-                }
-            }
-
-            .thirdpartyLogo.githubLogo {
-                // filter: invert(1);
-                opacity: 0.7;
             }
         }
     }

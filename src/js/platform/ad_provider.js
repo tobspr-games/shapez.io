@@ -44,4 +44,6 @@ export class AdProviderInterface {
     showVideoAd() {
         return Promise.resolve();
     }
+
+    setPlayStatus(playing) {}
 }

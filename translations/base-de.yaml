@@ -55,6 +55,8 @@ global:
         shift: UMSCH
         space: LEER
     loadingResources: Lade zusätzliche Ressourcen (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SONDERANGEBOT! Angebot endet am 7. Juli
 demoBanners:
     title: Demoversion
     titleV2: "Spiele jetzt die Vollversion für:"
@@ -103,7 +105,9 @@ mainMenu:
         Vollversion im Browser!
     playingFullVersion: Du spielst jetzt die Vollversion!
     logout: Ausloggen
-    noActiveSavegames: Keine Speicherstände gefunden - Klicke Spielen um ein neues Spiel zu starten!
+    noActiveSavegames: Keine Speicherstände gefunden - Klicke Spielen um ein neues
+        Spiel zu starten!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten

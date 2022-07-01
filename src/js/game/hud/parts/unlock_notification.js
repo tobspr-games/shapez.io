@@ -28,6 +28,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.root.app.gameAnalytics.noteMinor("game.started");
     }
 
+    shouldPauseGame() {
+        return !G_IS_STANDALONE && this.visible;
+    }
+
     createElements(parent) {
         this.inputReciever = new InputReceiver("unlock-notification");
 

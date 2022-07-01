@@ -1,4 +1,4 @@
-import { globalConfig, THIRDPARTY_URLS } from "../../core/config";
+import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
 import { queryParamOptions } from "../../core/query_parameters";
 import { randomInt } from "../../core/utils";
@@ -10,25 +10,7 @@ import { InGameState } from "../../states/ingame";
 import { SteamAchievementProvider } from "../electron/steam_achievement_provider";
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
-
-import OR from "@openreplay/tracker";
-import OR_fetch from "@openreplay/tracker-fetch";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
-
-let eventConnector;
-if (!G_IS_STANDALONE && !G_IS_DEV) {
-    eventConnector = new OR({
-        projectKey: "mhZgUFQBI6QAtt3PRLer",
-        respectDoNotTrack: true,
-        revID: G_BUILD_COMMIT_HASH,
-        // @ts-ignore
-        heatmaps: false,
-        verbose: false,
-        captureIFrames: false,
-    });
-    eventConnector.start({});
-    eventConnector.use(OR_fetch({ overrideGlobal: true }));
-}
 
 const logger = createLogger("game_analytics");
 
@@ -37,7 +19,7 @@ const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.sha
 // Be sure to increment the ID whenever it changes
 const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
 
-const CURRENT_ABT = "abt_mmnd";
+const CURRENT_ABT = "abt_bsl2";
 const CURRENT_ABT_COUNT = 1;
 
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
@@ -124,15 +106,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         }
     }
 
-    noteMinor(action, payload = "") {
-        if (eventConnector) {
-            try {
-                eventConnector.event(action, payload);
-            } catch (ex) {
-                console.warn("Failed to note event:", ex);
-            }
-        }
-    }
+    noteMinor(action, payload = "") {}
 
     /**
      * @returns {Promise<void>}
@@ -176,9 +150,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 syncKey => {
                     this.syncKey = syncKey;
                     logger.log("Player sync key read:", this.syncKey);
-                    if (eventConnector) {
-                        eventConnector.setUserID(syncKey);
-                    }
                 },
                 error => {
                     // File was not found, retrieve new key
@@ -218,9 +189,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                                     this.syncKey = res.key;
                                     logger.log("Key retrieved:", this.syncKey);
                                     this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
-                                    if (eventConnector) {
-                                        eventConnector.setUserID(eventConnector);
-                                    }
                                 } else {
                                     throw new Error("Bad response from analytics server: " + res);
                                 }

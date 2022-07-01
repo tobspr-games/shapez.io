@@ -54,6 +54,8 @@ global:
         space: SPACE
     loggingIn: Вхід у систему
     loadingResources: Downloading additional resources (<percentage> %)
+    discount: -<percentage>%
+    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Демо-версія
     intro: |-
@@ -102,6 +104,7 @@ mainMenu:
     logout: Logout
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
+    playFullVersionStandalone: You can now also play the full version in your Browser!
 dialogs:
     buttons:
         ok: Гаразд
@@ -448,10 +451,10 @@ ingame:
                 вводи</strong> фарбувальника за допомогою проводу!
             21_3_place_button: Неймовірно! Тепер розмістіть <strong>Вимикач</strong> Та
                 з'єднайте їх дротом!
-            21_4_press_button: "Натисніть вимикач, аби він почав <strong>видавати сигнал
-                \"Істина\" </strong> активувавши таким чином
-                фарбувальник.<br><br> PS: Не обов'язково підключати всі входи!
-                Спробуйте підключити лише два."
+            21_4_press_button: 'Натисніть вимикач, аби він почав <strong>видавати сигнал
+                "Істина" </strong> активувавши таким чином
+                фарбувальник.<br><br> PS: Не обов''язково підключати всі входи!
+                Спробуйте підключити лише два.'
             1_2_hold_and_drag: Утримуйте і перетягніть
     connectedMiners:
         one_miner: 1 Екстрактор
