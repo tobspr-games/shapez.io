@@ -26,7 +26,7 @@ global:
     decimalSeparator: ","
     suffix:
         thousands: rb
-        millions: Jt
+        millions: jt
         billions: M
         trillions: T
     infinite: tak terhingga
@@ -50,27 +50,27 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-    loggingIn: Logging in
-    loadingResources: Downloading additional resources (<percentage> %)
+    loggingIn: Memuat
+    loadingResources: Mengunduh resources tambahan (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOSI SPESIAL! Tawaran ini akan berakhir pada 7 Juli
 demoBanners:
     title: Versi Demo
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Dapatkan versi lengkap game ini <strong>sekarang</strong> untuk membuka:<ul>
+            <li>Semua 26 level + bermain tanpa batas</li>
+            <li>22 bangunan baru</li>
+            <li>Mendukung penggunaan Mod</li>
+            <li>Pencapaian</li>
+            <li>Mode Gelap</li>
+            <li>... dan masih banyak lagi!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
-    untilEndOfDemo: Until end of demo
-    playtimeDisclaimerDownload: You can continue your savegame in the full version!
-        Click <strong>here</strong> to download your savegame.
-    titleV2: "Play the full version now for:"
+    playtimeDisclaimer: Versi lengkap game ini mempunyai lebih dari <strong>20 jam penuh akan konten</strong>.
+    playerCount: Sebanyak <playerCount> pemain sedang memainkan shapez di Steam saat ini
+    untilEndOfDemo: Sampai akhir dari versi demo
+    playtimeDisclaimerDownload: Kamu bisa lanjut memainkan data simpanan kamu pada versi lengkap game ini!
+        Klik <strong>di sini</strong> untuk mengunduh data simpanan kamu.
+    titleV2: "Mainkan versi lengkapnya sekarang untuk:"
 mainMenu:
     play: Mulai Permainan
     continue: Lanjutkan
@@ -87,37 +87,37 @@ mainMenu:
     savegameLevel: Level <x>
     savegameLevelUnknown: Level tidak diketahui
     savegameUnnamed: Tidak Dinamai
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: Mode Puzzle
+    back: Kembali
+    puzzleDlcText: Kamu menikmati proses pembuatan dan mengoptimalkan pabrik? Dapatkan DLC
+        Puzzle di Steam untuk mendapatkan keseruan lebih lanjut!
+    puzzleDlcWishlist: Wishlist sekarang!
+    puzzleDlcViewNow: Lihat DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
+        title: Mods aktif
+        warningPuzzleDLC: Memainkan DLC Puzzle tidak bisa sambil menggunakan mods. Harap
+            menonaktifkan semua mods untuk memainkan DLC ini.
+    playingFullVersion: Kamu sekarang sedang memainkan versi lengkap!
     logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: Tidak ada data simpanan aktif yang ditemukan - Klik Mulai Permainan untuk memulai!
+    playFullVersionV2: Sudah membeli shapez di Steam? Mainkan versi lengkapnya dengan menggunakan browser kamu!
+    playFullVersionStandalone: Kamu sekarang juga bisa memainkan versi lengkap menggunakan browser kamu!
 dialogs:
     buttons:
         ok: OK
         delete: Hapus
         cancel: Batal
         later: Nanti
-        restart: Mulai Ulang
-        reset: Setel Ulang
+        restart: Restart
+        reset: Reset
         getStandalone: Dapatkan Versi Lengkap
         deleteGame: Aku tahu apa yang aku lakukan
         viewUpdate: Tampilkan Update
-        showUpgrades: Tunjukkan Tingkatan
-        showKeybindings: Tunjukkan Tombol Pintas
+        showUpgrades: Tunjukkan Upgrade
+        showKeybindings: Tunjukkan Tombol Pintas (Keybinding)
         retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        continue: Lanjutkan
+        playOffline: Mainkan secara Offline
     importSavegameError:
         title: Kesalahan pada Impor
         text: "Gagal memasukkan data simpanan kamu:"
@@ -129,14 +129,14 @@ dialogs:
         text: "Gagal memuat data simpanan kamu:"
     confirmSavegameDelete:
         title: Konfirmasi Penghapusan
-        text: Apakah kamu yakin ingin menghapus game berikut?<br><br> '<savegameName>'
-            pada level <savegameLevel><br><br> Hal ini tak dapat diulang!
+        text: Apakah kamu yakin ingin menghapus data simpanan berikut?<br><br> '<savegameName>'
+            pada level <savegameLevel><br><br> Proses ini tak dapat diulang!
     savegameDeletionError:
         title: Gagal Menghapus
         text: "Gagal untuk menghapus data simpanan:"
     restartRequired:
-        title: Diperlukan untuk Memulai Kembali (Restart)
-        text: kamu harus memulai kembali permainan untuk menerapkan pengaturan.
+        title: Diperlukan untuk Restart
+        text: kamu harus restart permainan untuk menerapkan pengaturan.
     editKeybinding:
         title: Ganti Tombol Pintas (Keybinding)
         desc: Tekan tombol pada keyboard atau mouse yang ingin kamu ganti, atau tekan
@@ -151,28 +151,28 @@ dialogs:
     featureRestriction:
         title: Versi Demo
         desc: Kamu mencoba untuk mengakses fitur (<feature>) yang tidak tersedia pada
-            versi demo. Pertimbangkan untuk mendapatkan versi lengkap untuk
-            pengalaman sepenuhnya!
+            versi demo. Dapatkan versi lengkap untuk
+            mendapatkan pengalaman yang lebih menyenangkan!
     oneSavegameLimit:
         title: Penyimpanan Permainan Terbatas
         desc: Kamu hanya dapat memiliki satu data simpanan dalam versi demo. Harap hapus
-            yang telah ada atau dapatkan versi lengkap!
+            data yang telah ada atau dapatkan versi lengkap!
     updateSummary:
         title: Update Baru!
         desc: "Berikut perubahan-perubahan yang telah dibuat sejak kamu main terakhir
             kali:"
     upgradesIntroduction:
-        title: Buka Tingkatan-tingkatan
-        desc: Semua bentuk yang kamu produksi dapat digunakan untuk membuka tingkatan
-            baru - <strong>Jangan hancurkan pabrik-pabrik lama kamu!</strong>
-            Tab tingkatan dapat ditemukan di sudut kanan atas layar kamu.
+        title: Buka Upgrades
+        desc: Semua bentuk yang kamu produksi dapat digunakan untuk membuka upgrade
+            baru - <strong>Jangan hapus pabrik-pabrik lama kamu!</strong>
+            Tampilan upgrade dapat ditemukan di sudut kanan atas layar kamu.
     massDeleteConfirm:
         title: Konfirmasi Penghapusan
         desc: Kamu akan menghapus banyak bangunan (tepatnya <count>)! Apakah kamu yakin
-            untuk melakukannya?
+            untuk melakukan ini?
     massCutConfirm:
-        title: Konfirmasi Pemindahan (Cut)
-        desc: Kamu akan memindahkan (cut) banyak bangunan (tepatnya <count>)! Apakah
+        title: Konfirmasi Pemindahan
+        desc: Kamu akan memindahkan banyak bangunan (tepatnya <count>)! Apakah
             kamu yakin untuk melakukannya?
     massCutInsufficientConfirm:
         title: Tidak Mampu Memindahkan
@@ -182,33 +182,33 @@ dialogs:
         title: Belum Terbuka
         desc: Selesaikan level 12 untuk membuka Cetak Biru!
     keybindingsIntroduction:
-        title: Tombol Pintas (Keybindings) Berguna
+        title: Tombol Pintas (Keybindings)
         desc: "Permainan ini memiliki banyak tombol pintas yang membuatnya lebih mudah
             untuk membangun pabrik-pabrik besar. Berikut adalah beberapa, namun
             pastikan kamu <strong>perhatikan tombol-tombol
             pintasnya</strong>!<br><br> <code class='keybinding'>CTRL</code> +
-            Tarik: Pilih sebuah area.<br> <code class='keybinding'>SHIFT</code>:
-            Tahan untuk meletakkan beberapa bangunan sekaligus.<br> <code
-            class='keybinding'>ALT</code>: Ganti orientasi sabuk konveyor yang
+            Seret Mouse: Memilih sebuah area.<br> <code class='keybinding'>SHIFT</code>:
+            Tahan untuk meletakkan beberapa bangunan yang sama sekaligus.<br> <code
+            class='keybinding'>ALT</code>: Ganti orientasi konveyor yang
             telah diletakkan.<br>"
     createMarker:
         title: Penanda Baru
-        titleEdit: Sunting Penanda
+        titleEdit: Edit Penanda
         desc: Berikan nama yang berguna, kamu juga bisa memasukkan <strong>short key
             </strong> dari sebuah bentuk (Yang bisa kamu buat sendiri
-            <link>disini</link>)
+            <link>di sini</link>)
     markerDemoLimit:
         desc: Kamu hanya dapat membuat dua penanda pada versi demo. Dapatkan versi
             lengkap untuk penanda-penanda tak terbatas!
     exportScreenshotWarning:
         title: Ekspor Screenshot
-        desc: Kamu meminta untuk mengekspor pabrikmu sebagai screenshot. Harap ketahui
-            bahwa ini bisa menjadi lambat untuk pabrik yang besar dan bahkan
+        desc: Kamu ingin mengekspor pabrikmu dalam bentuk screenshot (foto). Harap ketahui
+            bahwa ini bisa menjadi proses yang lambat untuk pabrik yang besar dan bahkan
             dapat membuat permainanmu berhenti!
     editSignal:
         title: Atur Tanda
         descItems: "Pilih item yang telah ditentukan sebelumnya:"
-        descShortKey: ... atau masukkan <strong>shortkey</strong> dari bentuk (Yang bisa
+        descShortKey: ... atau masukkan <strong>short key</strong> dari bentuk (Yang bisa
             kamu buat sendiri <link>disini</link>)
     renameSavegame:
         title: Ganti Nama Data Simpanan
@@ -224,98 +224,98 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: Puzzle gagal untuk memuat
+        desc: "Sayangnya puzzle ini tidak dapat dimuat:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: Kirim Puzzle
+        descName: "Berikan puzzle-mu sebuah nama:"
+        descIcon: "Harap masukkan short key unik, yang mana akan ditampilkan sebagai ikon dari
+            puzzle kamu (Kamu dapat membuatnya <link>di sini</link>, atau pilih salah satu
+            dari beberapa sugesti bentuk yang ada di bawah ini):"
+        placeholderName: Judul Puzzle
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: Tidak dapat mengubah ukuran
+        desc: Kamu tidak dapat mengecilkan zona tersebut, karena nanti akan ada beberapa bangunan yang
+            berada di luar zona.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: Puzzle Jelek
+        desc: "Puzzlenya gagal untuk dimuat:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: Mode Offline
+        desc: Kami tidak dapat mencapai servernya, jadi permainannya harus berjalan secara offline.
+            Harap pastikan kamu terhubung ke internet aktif.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: Eror Pengunduhan
+        desc: "Gagal untuk mengunduh puzzle:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: Eror Pengiriman
+        desc: "Gagal untuk mengirim puzzle kamu:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: Puzzle Terkirim
+        desc: Selamat! Puzzle kamu sudah ter-upload dan sekarang sudah bisa dimainkan oleh
+            orang lain. Kamu dapat menemukannya di bagian "Puzzleku".
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: Mode Offline
+        desc: Karena kamu offline, kamu tidak akan bisa menyimpan dan/atau mengirim puzzle
+            kamu. Apakah kamu tetap ingin lanjut?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: Rekomendasi
+        desc: Saya menyarankan <strong>dengan sangat</strong> untuk memainkan game pada mode normal hingga level 12
+            sebelum mencoba memainkan DLC Puzzle. Jika tidak, kemungkinan kamu akan menemukan beberapa
+            mekanisme permainan yang belum kamu temui. Apakah kamu yakin tetap ingin lanjut?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: Short Key Telah Disalin
+        desc: Short key dari puzzle (<key>) telah disalin ke clipboard kamu! Ini
+            dapat kamu masukkan pada menu puzzle untuk mengakses puzzle tersebut.
     puzzleReport:
-        title: Report Puzzle
+        title: Laporkan Puzzle
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: Hal-hal kotor
+            unsolvable: Tidak dapat diselesaikan
+            trolling: Menipu
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: Terima kasih atas masukkan kamu!
+        desc: Puzzle ini telah ditandai.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: Gagal untuk melaporkan
+        desc: "Laporan kamu gagal untuk diproses:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: Masukkan short key
+        desc: Masukkan short key dari puzzle ini untuk memuat.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Hapus Puzzle?
+        desc: Apakah kamu yakin ingin menghapus '<title>'? Proses ini tak dapat diulang!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Peringatan Mod
+        desc: Mods yang saat ini terpasang berbeda dengan mods pada data simpanan.
+            Hal ini mungkin akan merusak data simpanan atau bahkan tidak dapat dimuat sama sekali.
+            Apakah kamu yakin ingin tetap melanjutkan?
+        missingMods: Mods tak dapat ditemukan
+        newMods: Mods yang baru dipasang
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Resources gagal untuk memuat
+        demoLinkText: shapez versi demo di Steam
+        descWeb: "Satu atau lebih resources tidak dapat dimuat. Harap pastikan kamu memiliki
+            koneksi internet yang stabil dan coba lagi. Jika proses ini tetap tidak berjalan,
+            pastikan untuk juga mennaktifkan ekstensi pada browser kamu (termasuk
+            adblocker).<br><br> Sebagai alternatif, kamu juga bisa memainkan
+            <demoOnSteamLinkText>. <br><br> Pesan Eror:"
+        descSteamDemo: "Satu atau lebih resources tidak dapat dimuat. Cobalah untuk me-restart
+            game - Jika itu tidak berhasil, coba unduh ulang game dan menyetujui files
+            lewat Steam. <br><br> Pesan Eror:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Logout Versi Lengkap
+        desc: Kamu telah keluar dari Versi Lengkap Browser dikarenakan koneksi
+            internet kamu yang kurang stabil atau karena kamu memainkan game pada
+            perangkat lain.<br><br> Harap pastikan kamu tidak membuka shapez
+            pada tab browser lain atau perangkat lain dengan akun Steam
+            yang sama.<br><br> Kamu dapat login kembali di menu utama.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Versi Lengkap tidak dimiliki
+        desc: Untuk memainkan Versi Lengkap di Browser kamu, kamu harus memiliki
+            game ini dan DLC Puzzle pada akun Steam kamu.<br><br>
+            Harap pastikan kamu memiliki keduanya, masuk dengan menggunakan akun
+            Steam yang tepat dan coba lagi.
 ingame:
     keybindingsOverlay:
         moveMap: Geser
@@ -329,15 +329,15 @@ ingame:
         placeBuilding: Letakan bangunan
         createMarker: Buat penanda
         delete: Hapus
-        pasteLastBlueprint: Tempel (paste) cetak biru terakhir
-        lockBeltDirection: Aktifkan perencana sabuk konveyor
+        pasteLastBlueprint: Paste cetak biru terakhir
+        lockBeltDirection: Aktifkan perencana konveyor
         plannerSwitchSide: Balikkan sisi perencana
         cutSelection: Pindahkan (Cut)
-        copySelection: Salin (Copy)
+        copySelection: Salin
         clearSelection: Hapus pilihan
         pipette: Pipet
         switchLayers: Ganti lapisan
-        clearBelts: Clear belts
+        clearBelts: Bersihkan konveyor
     colors:
         red: Merah
         green: Hijau
@@ -355,8 +355,8 @@ ingame:
             speed: Kecepatan
             range: Jangkauan
             storage: Penyimpanan
-            oneItemPerSecond: 1 item/dtk
-            itemsPerSecond: <x> item/dtk
+            oneItemPerSecond: 1 item / dtk
+            itemsPerSecond: <x> item / dtk
             itemsPerSecondDouble: (x2)
             tiles: <x> ubin
     levelCompleteNotification:
@@ -365,12 +365,12 @@ ingame:
         unlockText: <reward> terbuka!
         buttonNextLevel: Level Selanjutnya
     notifications:
-        newUpgrade: Tingkatan baru tersedia!
+        newUpgrade: Upgrade baru tersedia!
         gameSaved: Permainan kamu telah disimpan.
         freeplayLevelComplete: Level <level> telah selesai!
     shop:
-        title: Tingkatan-tingkatan
-        buttonUnlock: Tingkatkan
+        title: Upgrades
+        buttonUnlock: Upgrade
         tier: Tingkat <x>
         maximumLevel: LEVEL MAKSIMUM (Kecepatan x<currentMult>)
     statistics:
@@ -378,23 +378,23 @@ ingame:
         dataSources:
             stored:
                 title: Tersimpan
-                description: Menunjukan semua bentuk yang tersimpan pada bangunan pusatmu.
+                description: Menunjukan semua bentuk yang tersimpan pada Hub (Bangunan Pusat).
             produced:
                 title: Terproduksi
                 description: Menunjukkan semua bentuk yang diproduksi pabrikmu, termasuk
-                    produk-produk antara.
+                    produk-produk perantara.
             delivered:
                 title: Terkirim
-                description: Menunjukkan bentuk-bentuk yang sedang dikirim ke bangunan pusatmu.
-        noShapesProduced: Sejauh ini belum diproduksi.
+                description: Menunjukkan bentuk-bentuk yang sedang dikirim ke Hub (Bangunan Pusat).
+        noShapesProduced: Sejauh ini belum ada bentuk yang diproduksi.
         shapesDisplayUnits:
-            second: <shapes>/dtk
-            minute: <shapes>/m
-            hour: <shapes>/j
+            second: <shapes> / dtk
+            minute: <shapes> / m
+            hour: <shapes> / j
     settingsMenu:
         playtime: Waktu Bermain
         buildingsPlaced: Bangunan
-        beltsPlaced: Sabuk Konveyor
+        beltsPlaced: Konveyor
     tutorialHints:
         title: Butuh bantuan?
         showHint: Tampilkan petunjuk
@@ -403,72 +403,72 @@ ingame:
         cost: Biaya
     waypoints:
         waypoints: Penanda
-        hub: PUSAT
+        hub: HUB
         description: Klik tombol kiri mouse pada penanda untuk melompat ke penanda, klik
             tombol kanan untuk menghapusnya. <br><br>Tekan <keybinding> untuk
-            membuat penanda dari sudut pandang saat ini, atau <strong>klik
+            membuat penanda dari tampilan saat ini, atau <strong>klik
             tombol kanan</strong> untuk membuat penanda pada lokasi yang
             dipilih.
         creationSuccessNotification: Penanda telah dibuat.
     shapeViewer:
-        title: Lapisan-lapisan
+        title: Lapisan
         empty: Kosong
-        copyKey: Tombol Salin (Copy)
+        copyKey: Tombol Salin
     interactiveTutorial:
         title: Tutorial
         hints:
             1_1_extractor: Letakkan <strong>ekstraktor</strong> diatas <strong>bentuk
                 lingkaran</strong> untuk mengekstrak bentuk tersebut!
-            1_2_conveyor: "Hubungkan ekstraktor dengan <strong>sabuk konveyor</strong> ke
-                bangunan pusatmu!<br><br>Tip: <strong>Klik dan seret</strong>
-                sabuk konveyor dengan mouse!"
-            1_3_expand: "Ini <strong>BUKAN</strong> permainan menganggur! Bangun lebih
-                banyak ekstraktor dan sabuk konveyor untuk menyelesaikan
+            1_2_conveyor: "Hubungkan ekstraktor dengan <strong>konveyor</strong> ke
+                hub (bangunan pusat) kamu!<br><br>Tip: <strong>Klik dan seret</strong>
+                konveyor dengan mouse!"
+            1_3_expand: "Ini <strong>BUKAN</strong> permainan yang bisa didiamkan! Bangun lebih
+                banyak ekstraktor dan konveyor untuk menyelesaikan
                 objektif dengan lebih cepat. <br><br>Tip: Tahan tombol
                 <strong>SHIFT</strong> untuk meletakkan beberapa ekstraktor
-                sekaligus, dan gunakan tombol <strong>R</strong> untuk memutar."
+                sekaligus, dan gunakan tombol <strong>R</strong> untuk memutar orientasi."
             2_1_place_cutter: "Sekarang letakkan <strong>Pemotong</strong> untuk memotong
                 lingkaran menjadi 2 bagian!<br><br> NB: Pemotong akan selalu
-                memotong dari <strong>atas ke bawah</strong> apapun
+                memotong dari <strong>atas ke bawah</strong> bagaimanapun
                 orientasinya."
             2_2_place_trash: Pemotong dapat <strong>tersumbat dan macet</strong>!<br><br>
                 Gunakan <strong>tong sampah</strong> untuk membuang sisa (!)
                 yang saat ini tidak diperlukan.
-            2_3_more_cutters: "Kerja yang bagus! Sekarang letakkan <strong>2 pemotong
+            2_3_more_cutters: "Kerja bagus! Sekarang letakkan <strong>2 pemotong
                 lagi</strong> untuk mempercepat proses ini!<br><br> NB: Gunakan
-                <strong>tombol 0-9 </strong> untuk mengakses bangunan lebih
+                <strong>tombol 0-9 </strong> pada keyboard untuk memilih bangunan dengan lebih
                 cepat!"
-            3_1_rectangles: "Sekarang ekstrak beberapa persegi! <strong>Bangun 4
-                ekstraktor</strong> dan hubungkan mereka ke bangunan
-                pusat.<br><br> NB: Tahan <strong>SHIFT</strong> saat meletakkan
-                konveyor untuk mengaktifkan perencana sabuk konveyor!"
-            21_1_place_quad_painter: Letakkan <strong>pemotong empat bagian</strong> dan
+            3_1_rectangles: "Sekarang ayo ekstrak beberapa persegi! <strong>Bangun 4
+                ekstraktor</strong> dan hubungkan mereka ke hub (bangunan
+                pusat).<br><br> NB: Tahan <strong>SHIFT</strong> saat meletakkan
+                konveyor untuk mengaktifkan perencana konveyor!"
+            21_1_place_quad_painter: Letakkan <strong>pewarna empat-bagian</strong> dan
                 ekstrak beberapa <strong>lingkaran</strong>, warna
-                <strong>putih</strong> dan <strong>merah</strong>!
+                <strong>putih</strong> dan warna <strong>merah</strong>!
             21_2_switch_to_wires: Pindah ke lapisan kabel dengan menekan tombol
                 <strong>E</strong>!<br><br> Lalu <strong>hubungkan keempat
                 input</strong> dari pengecat dengan menggunakan kabel!
-            21_3_place_button: Mantap! Sekarang letakkan <strong>saklar</strong> dan
+            21_3_place_button: Mantap! Sekarang letakkan <strong>sakelar</strong> dan
                 hubungkan dengan menggunakan kabel!
-            21_4_press_button: "Tekan saklar untuk <strong>memancarkan sinyal yang
+            21_4_press_button: "Tekan sakelar untuk <strong>memancarkan sinyal
                 benar</strong> dan mengaktifkan pengecat.<br><br> NB: Kamu tidak
                 perlu menghubungkan semua input! Cobalah hanya menghubungkan
                 dua."
-            1_2_hold_and_drag: Hold and drag
+            1_2_hold_and_drag: Tahan dan seret
     connectedMiners:
         one_miner: 1 Ekstraktor
         n_miners: <amount> Ekstraktor
         limited_items: Terbatas hingga <max_throughput>
     watermark:
         title: Versi Demo
-        desc: Klik disini untuk melihat keunggulan pada versi Steam!
+        desc: Klik disini untuk melihat keunggulan pada versi lengkap!
         get_on_steam: Dapatkan di Steam
     standaloneAdvantages:
         no_thanks: Tidak, terima kasih!
         points:
             levels:
-                title: 12 Level Baru
-                desc: Dengan total 26 level!
+                title: 19 Level Baru
+                desc: Lebih dari 20 jam yang penuh dengan konten!
             buildings:
                 title: 22 Bangunan Baru
                 desc: Untuk membuat pabrik yang otomatis sepenuhnya!
@@ -485,58 +485,58 @@ ingame:
                 title: Dukung saya
                 desc: Saya membuat game ini di waktu luang!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: 45 Pencapaian
+                desc: Dapatkan semuanya!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Dukungan Modding!
+                desc: Tersedia lebih dari 80 mods!
+        titleV2: "Dapatkan versi lengkapnya sekarang di Steam untuk mendapatkan:"
+        titleExpiredV2: Demo selesai!
+        titleEnjoyingDemo: Menikmati versi demonya?
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
-        clearBuildings: Clear Buildings
+        zoneTitle: Zona
+        zoneWidth: Lebar
+        zoneHeight: Tinggi
+        trimZone: Kecilkan
+        clearItems: Bersihkan Item
+        share: Bagikan
+        report: Laporkan
+        clearBuildings: Bersihkan Bangunan
         resetPuzzle: Reset Puzzle
     puzzleEditorControls:
         title: Puzzle Creator
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. Letakkan <strong>Produsen Konstan</strong> untuk menyediakan bentuk dan
+              warna kepada pemain
+            - 2. Buat satu atau lebih bentuk yang nanti ingin kamu perintahkan kepada pemain
+              untuk dibuat dan dikirmkan ke satu atau lebih <strong>Akseptor Tujuan</strong>
+            - 3. Ketika sebuah Akseptor Tujuan menerima sebuah bentuk dalam sejumlah
+              waktu, ia akan <strong>menyimpannya sebagai sebuah tujuan</strong> yang harus diproduksi
+              oleh pemain nantinya (Ditandai dengan <strong>lencana hijau</strong>).
+            - 4. Klik <strong>tombol kunci</strong> pada sebuah bangunan untuk melarangnya
+              digunakan oleh pemain.
+            - 5. Ketika kamu meng-klik revisi, puzzle kamu akan divalidasi dan kamu
+              dapat menguploadnya.
+            - 6. Saat rilis, <strong>semua bangunan akan dihilangkan</strong>
+              kecuali bangunan Produsen dan Akseptor Tujuan - Ya, memang itulah bagian yang
+              harus dipecahkan oleh para pemain :)
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
+        title: Puzzle Selesai!
+        titleLike: "Klik tombol hati bila kamu menyukainya:"
+        titleRating: Seberapa sulit puzzle tersebut menurut kamu?
+        titleRatingDesc: Penilaian kamu akan membantuku untuk memberi saran yang lebih cocok bagimu nanti
+        continueBtn: Lanjut Bermain
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Puzzle Selanjutnya
     puzzleMetadata:
-        author: Author
+        author: Pembuat
         shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        rating: Skor kesulitan
+        averageDuration: Durasi rata-rata
+        completionRate: Persentase penyelesaian
 shopUpgrades:
     belt:
-        name: Sabuk konveyor, Pembagi Arus & Terowongan
+        name: Konveyor, Distributor & Terowongan
         description: Kecepatan x<currentMult> → x<newMult>
     miner:
         name: Ekstraksi
@@ -545,7 +545,7 @@ shopUpgrades:
         name: Memotong, Memutar & Menumpuk
         description: Kecepatan x<currentMult> → x<newMult>
     painting:
-        name: Mencampur & Mengecat
+        name: Mencampur & Mewarnai
         description: Kecepatan x<currentMult> → x<newMult>
 buildings:
     hub:
@@ -555,9 +555,9 @@ buildings:
         endOfDemo: Akhir dari Demo
     belt:
         default:
-            name: Sabuk Konveyor
+            name: Konveyor
             description: Mengangkut sumber daya, tahan dan seret untuk meletakkan beberapa
-                sekaligus.
+                konveyor sekaligus.
     wire:
         default:
             name: Kabel
@@ -575,28 +575,28 @@ buildings:
         chainable:
             name: Ekstraktor (Berantai)
             description: Letakkan di atas sumber bentuk atau warna untuk mengekstraksi
-                mereka. Dapat dirantai.
+                mereka. Dapat disambung.
     underground_belt:
         default:
             name: Terowongan
             description: Memungkinkan kamu untuk mengangkut sumber-sumber daya dibawah
-                bangunan-bangunan atau sabuk konveyor.
+                bangunan-bangunan atau konveyor.
         tier2:
             name: Terowongan Tingkat II
             description: Memungkinkan kamu untuk mengangkut sumber-sumber daya dibawah
-                bangunan-bangunan atau sabuk konveyor.
+                bangunan-bangunan atau konveyor.
     cutter:
         default:
             name: Pemotong
             description: Memotong bentuk-bentuk secara vertikal dan mengeluarkan kedua
                 bagian. <strong>Apabila kamu hanya menggunakan satu bagian,
-                pastikan kamu lenyapkan bagian lain atau mesin akan tersumbat
+                pastikan kamu buang bagian lain supaya mesin tidak tersumbat dan
                 macet!</strong>
         quad:
             name: Pemotong (Empat Bagian)
             description: Memotong bentuk-bentuk menjadi empat bagian. <strong> Apabila kamu
-                hanya menggunakan satu bagian, pastikan kamu lenyapkan
-                bagian-bagian lain atau mesin akan tersumbat dan macet!</strong>
+                hanya menggunakan satu bagian, pastikan kamu buang
+                bagian-bagian lain supaya mesin tidak tersumbat dan macet!</strong>
     rotater:
         default:
             name: Pemutar
@@ -610,8 +610,8 @@ buildings:
     stacker:
         default:
             name: Penumpuk
-            description: Menggabungkan kedua input. Apabila mereka tidak dapat digabungkan,
-                bentuk kanan akan diletakkan diatas bentuk kiri.
+            description: Menggabungkan input-inputnya, dalam satu lapisan apabila memungkinkan.
+                Apabila mereka tidak dapat digabungkan, maka bentuk kanan akan diletakkan diatas bentuk kiri.
     mixer:
         default:
             name: Pencampur Warna
@@ -619,20 +619,20 @@ buildings:
     painter:
         default:
             name: Pengecat
-            description: Mengecat keseluruhan bentuk dari input kiri dengan warna dari input
+            description: Mengecat keseluruhan dari bentuk pada input kiri dengan warna dari input
                 atas.
         mirrored:
             name: Pengecat
-            description: Mengecat keseluruhan bentuk dari input kiri dengan warna dari input
+            description: Mengecat keseluruhan dari bentuk pada input kiri dengan warna dari input
                 bawah.
         double:
             name: Pengecat (Ganda)
-            description: Mengecat bentuk-bentuk dari input kiri dengan warna dari input
+            description: Mengecat bentuk-bentuk dari input-input di kiri dengan warna dari input
                 atas.
         quad:
-            name: Pengecat (Empat Bagian)
-            description: Memungkinkan kamu untuk mengecat tiap kuadrannya masing - masing
-                pada bentuk. Hanya menyambung dengan <strong>sinyal yang
+            name: Pengecat (Empat-Bagian)
+            description: Memungkinkan kamu untuk mengecat tiap kuadrannya masing-masing
+                pada suatu bentuk. Hanya menyambung dengan <strong>sinyal
                 benar</strong> pada lapisan kabel yang akan dicat!
     trash:
         default:
@@ -644,27 +644,27 @@ buildings:
             description: Multifungsional - Mendistribusikan seluruh input secara merata ke
                 seluruh output.
         merger:
-            name: Penggabung Kompak
-            description: Menggabungkan dua sabuk konveyor menjadi satu.
+            name: Penggabung (Sederhana)
+            description: Menggabungkan dua konveyor menjadi satu.
         merger-inverse:
-            name: Penggabung Kompak
-            description: Menggabungkan dua sabuk konveyor menjadi satu.
+            name: Penggabung (Sederhana)
+            description: Menggabungkan dua konveyor menjadi satu.
         splitter:
-            name: Pemisah Kompak
-            description: Memisahkan satu sabuk konveyor menjadi dua.
+            name: Pemisah (Sederhana)
+            description: Memisahkan satu konveyor menjadi dua.
         splitter-inverse:
-            name: Pemisah Kompak
-            description: Memisahkan satu sabuk konveyor menjadi dua.
+            name: Pemisah (Sederhana)
+            description: Memisahkan satu konveyor menjadi dua.
     storage:
         default:
-            name: Tempat Penyimpanan
-            description: Menyimpan bentuk yang berlebihan, hingga kapasitas tertentu.
+            name: Penyimpanan
+            description: Menyimpan bentuk yang berlebihan, hingga suatu kapasitas tertentu.
                 Memprioritaskan output dari kiri dan dapat digunakan sebagai
                 gerbang luapan.
     wire_tunnel:
         default:
-            name: Terowongan Kabel
-            description: Memungkinkan untuk menyebrangkan 2 kabel tanpa menyambungkannya.
+            name: Persilangan Kabel
+            description: Memungkinkan untuk menyeberangkan dua kabel tanpa menyambungkannya.
     constant_signal:
         default:
             name: Sinyal Konstan
@@ -672,10 +672,10 @@ buildings:
                 boolean (1 atau 0).
     lever:
         default:
-            name: Saklar
+            name: Sakelar
             description: Dapat digunakan untuk mengeluarkan sinyal boolean (1 atau 0) pada
                 lapisan kabel, yang bisa digunakan untuk mengontrol komponen,
-                seperti filter item.
+                contohnya seperti filter item.
     logic_gate:
         default:
             name: Gerbang AND
@@ -683,16 +683,16 @@ buildings:
                 berarti sebuah bentuk, warna atau boolean "1")
         not:
             name: Gerbang NOT
-            description: Mengeluarkan  boolean "1" jika input adalah tidak benar. (Benar
+            description: Mengeluarkan  boolean "1" jika kedua input adalah tidak benar. (Benar
                 berarti sebuah bentuk, warna atau boolean "1")
         xor:
             name: Gerbang XOR
             description: Mengeluarkan boolean "1" jika salah satu input adalah benar, namun
-                bukan keduanya. (Benar berarti sebuah bentuk, warna atau boolean
+                tidak keduanya. (Benar berarti sebuah bentuk, warna atau boolean
                 "1")
         or:
             name: Gerbang OR
-            description: Mengeluarkan boolean "1" jika satu input adalah benar. (Benar
+            description: Mengeluarkan boolean "1" jika salah satu input adalah benar. (Benar
                 berarti sebuah bentuk, warna atau boolean "1")
     transistor:
         default:
@@ -707,8 +707,8 @@ buildings:
         default:
             name: Filter
             description: Hubungkan sebuah sinyal untuk merutekan semua benda yang cocok ke
-                atas dan sisanya ke kanan. Dapat juga dikontrol dengan sinyal
-                boolean.
+                sisi atas dan sisanya ke kanan. Dapat dikontrol dengan sinyal
+                boolean juga.
     display:
         default:
             name: Layar
@@ -716,15 +716,15 @@ buildings:
                 bentuk, warna atau boolean.
     reader:
         default:
-            name: Pembaca Sabuk Konveyor
-            description: Memungkinkan untuk mengukur rata-rata benda yang melewati sabuk
+            name: Pembaca Konveyor
+            description: Memungkinkan untuk mengukur rata-rata benda yang melewati
                 konveyor. Mengeluarkan output benda terakhir yang dilewati pada
                 lapisan kabel (Setelah terbuka).
     analyzer:
         default:
             name: Penganalisa bentuk
-            description: Menganalisa bentuk bagian kanan atas pada lapisan paling bawah lalu
-                mengeluarkan bentuk dan warnanya.
+            description: Menganalisa bagian kanan atas pada lapisan paling bawah dari suatu bentuk lalu
+                mengeluarkan output bentuk dan warnanya dalam wujud sinyal.
     comparator:
         default:
             name: Pembanding
@@ -750,30 +750,30 @@ buildings:
                 secara virtual.
     item_producer:
         default:
-            name: Pembuat Bentuk
+            name: Produsen Bentuk
             description: Hanya tersedia di dalam mode sandbox, mengeluarkan sinyal yang
                 diberikan dari lapisan kabel ke lapisan biasa.
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: Produsen Konstan
+            description: Mengeluarkan suatu benda atau warna spesifik secara konstan.
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: Akseptor Tujuan
+            description: Kirim bentuk yang telah di produksi ke akseptor tujuan untuk menetapkan mereka sebagai tujuan.
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: Blok
+            description: Memungkinkan kamu untuk memblokade suatu ubin.
 storyRewards:
     reward_cutter_and_trash:
         title: Memotong Bentuk
         desc: <strong>Pemotong</strong> telah dibuka, yang dapat memotong bentuk menjadi
             dua secara vertikal <strong>apapun
             orientasinya</strong>!<br><br>Pastikan untuk membuang sisanya, jika
-            tidak <strong>ini dapat tersumbat dan macet</strong> - Oleh karena
-            itu kamu diberikan <strong>tong sampah</strong>, yang menghapus
-            semua yang kamu masukkan!
+            tidak <strong>maka dapat tersumbat dan macet</strong> - Itulah mengapa
+            kamu diberikan <strong>tong sampah</strong>, yang menghapus
+            semua benda masuk!
     reward_rotater:
         title: Memutar
         desc: <strong>Pemutar</strong> telah dibuka! Ia memutar bentuk-bentuk searah
@@ -783,7 +783,7 @@ storyRewards:
         desc: "<strong>Pengecat</strong> telah dibuka – Ekstrak beberapa warna (seperti
             yang kamu lakukan dengan bentuk) dan kemudian kombinasikan dengan
             bentuk di dalam pengecat untuk mewarnai mereka!<br><br> NB: Apabila
-            kamu buta warna, terdapat <strong>mode buta warna</strong> di dalam
+            kamu buta warna, terdapat <strong>mode buta warna</strong> dalam
             pengaturan!"
     reward_mixer:
         title: Mencampur Warna
@@ -792,20 +792,20 @@ storyRewards:
     reward_stacker:
         title: Penumpuk
         desc: Kamu sekarang dapat mengombinasikan bentuk-bentuk dengan
-            <strong>penumpuk</strong>! Kedua input akan dikombinasikan, dan
-            apabila mereka dapat diletakan disebelah satu sama lain, mereka
-            akan  <strong>terpadukan</strong>. Apabila tidak bisa, maka input
+            <strong>penumpuk</strong>! Kedua input akan dikombinasikan,
+            apabila mereka dapat diletakan bersebelahan antara satu sama lain, mereka
+            akan <strong>tergabung</strong>. Apabila tidak bisa, maka input
             kanan akan <strong>diletakkan diatas</strong> input kiri!
     reward_splitter:
-        title: Pembagi Kompak
+        title: Pembagi (Sederhana)
         desc: Kamu telah membuka varian <strong>pembagi</strong> dari
             <strong>penyeimbang</strong> - Menerima satu input dan membaginya
             menjadi dua!
     reward_tunnel:
         title: Terowongan
         desc: <strong>Terowongan</strong> telah dibuka – Sekarang kamu dapat memindahkan
-            bentuk-bentuk melalui terowongan di bawah sabuk-sabuk konveyor dan
-            bangungan-bangunan dengannya!
+            bentuk-bentuk melalui terowongan di bawah konveyor-konveyor dan
+            bangungan-bangunan dengan bantuan terowongan!
     reward_rotater_ccw:
         title: Memutar Berlawanan Arah Jarum Jam
         desc: Kamu telah membuka varian dari <strong>Pemutar</strong> - Bangunan ini
@@ -825,7 +825,7 @@ storyRewards:
             memiliki <strong>jangkauan yang lebih panjang</strong>, dan sekarang
             kamu juga dapat memadukan terowongan-terowongan tersebut!
     reward_cutter_quad:
-        title: Pemotongan Empat Bagian
+        title: Pemotongan Empat-Bagian
         desc: Kamu telah membuka varian dari <strong>pemotong</strong> - Bangunan ini
             memungkinkan kamu untuk memotong bentuk-bentuk menjadi <strong>empat
             bagian</strong> daripada hanya dua bagian!
@@ -875,17 +875,17 @@ storyRewards:
         title: Penyeimbang
         desc: <strong>Penyeimbang</strong> multifungsional telah terbuka - Bangunan ini
             dapat digunakan untuk membuat pabrik yang lebih besar lagi dengan
-            <strong>memisahkan dan menggabungkan item</strong> ke beberapa sabuk
+            <strong>memisahkan dan menggabungkan item</strong> ke beberapa
             konveyor!
     reward_merger:
-        title: Penggabung Kompak
+        title: Penggabung (Sederhana)
         desc: Kamu telah membuka varian<strong>penggabung</strong> dari
             <strong>penyeimbang</strong> - Bangunan ini menerima dua input dan
-            menggabungkannya dalam satu sabuk konveyor!
+            menggabungkannya dalam satu konveyor!
     reward_belt_reader:
-        title: Pembaca Sabuk Konveyor
-        desc: Kamu telah membuka <strong>pembaca sabuk konveyor</strong>! Bangunan ini
-            memungkinkan kamu untuk mengukur penghasilan dalam sebuah sabuk
+        title: Pembaca Konveyor
+        desc: Kamu telah membuka <strong>pembaca konveyor</strong>! Bangunan ini
+            memungkinkan kamu untuk mengukur penghasilan dalam sebuah
             konveyor.<br><br> Dan tunggu sampai kamu membuka kabel - maka
             bangunan ini akan sangat berguna!
     reward_rotater_180:
@@ -897,7 +897,7 @@ storyRewards:
         title: Layar
         desc: "Kamu baru saja membuka <strong>Layar</strong> - Hubungkan sebuah sinyal
             dalam lapisan kabel untuk memvisualisasikannya!<br><br> NB: Apakah
-            kamu memperhatikan pembaca sabuk dan penyimpanan mengeluarkan item
+            kamu memperhatikan pembaca dan penyimpanan mengeluarkan item
             bacaan terakhir? Coba tampilkan pada layar!"
     reward_constant_signal:
         title: Sinyal Konstan
@@ -926,7 +926,7 @@ storyRewards:
             kabel.<br><br> - Melanjutkan permainan seperti biasa.<br><br> Apapun
             yang kamu pilih, ingatlah untuk bersenang-senang!
     reward_wires_painter_and_levers:
-        title: Kabel & Pengecat (Empat Bagian)
+        title: Kabel & Pengecat (Empat-Bagian)
         desc: "Kamu baru saja membuka <strong>Lapisan Kabel</strong>: Ini adalah sebuah
             lapisan terpisah diatas lapisan biasa dan memperkenalkan banyak
             mekanisme baru!<br><br> Untuk permulaan kamu telah membuka
@@ -949,7 +949,7 @@ settings:
     title: Pengaturan
     categories:
         general: Umum
-        userInterface: Antarmuka Pengguna
+        userInterface: User Interface (Antarmuka Pengguna)
         advanced: Terdepan
         performance: Performa
     versionBadges:
@@ -959,7 +959,7 @@ settings:
     buildDate: Dibangun <at-date>
     labels:
         uiScale:
-            title: Skala Antarmuka (User Interface)
+            title: Skala Antarmuka Pengguna
             description: Ganti ukuran antarmuka pengguna. Antarmuka tetap akan berskalakan
                 berdasar resolusi perangkatmu, tetapi pengaturan ini mengontrol
                 besar skala.
@@ -1100,8 +1100,8 @@ settings:
             description: Diaktifkan secara default, memilih ekstraktor apabila kamu
                 menggunakan pipet ketika mengarahkan pada tampungan sumber daya.
         simplifiedBelts:
-            title: Sabuk Sederhana (Jelek)
-            description: Tidak merender item pada sabuk konveyor kecuali ketika mengarahkan
+            title: Konveyor Sederhana (Jelek)
+            description: Tidak merender item pada konveyor kecuali ketika mengarahkan
                 ke konveyor untuk menyelamatkan performa. Saya tidak
                 merekomendasikan untuk bermain dengan pengaturan ini jika kamu
                 tidak benar-benar perlu performanya.
@@ -1119,16 +1119,16 @@ settings:
             description: Mengontrol ukuran bentuk-bentuk pada gambaran peta (ketika zoom
                 out).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Keterangan Bentuk - Selalu Aktif
+            description: Selalu menunjukan keterangan bentuk ketika meletakkan kursor diatas bangunan,
+                daripada harus menahan tombol 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Baru!
 keybindings:
-    title: Tombol Pintas
+    title: Tombol Pintas (Keybind)
     hint: "Petunjuk: Pastikan kamu menggunakan CTRL, SHIFT and ALT! Mereka
-        memungkinkan berbagai opsi penempatan."
+        dapat membantu kamu dalam berbagai opsi penempatan."
     resetKeybindings: Setel Ulang Tombol Pintas
     categoryLabels:
         general: Aplikasi
@@ -1138,7 +1138,7 @@ keybindings:
         massSelect: Pemilihan Massal
         buildings: Tombol Pintas Bangunan
         placementModifiers: Pengubah Penempatan
-        mods: Provided by Mods
+        mods: Disediakan oleh mods
     mappings:
         confirm: Konfirmasi
         back: Kembali
@@ -1151,14 +1151,14 @@ keybindings:
         mapZoomIn: Zoom in
         mapZoomOut: Zoom out
         createMarker: Buat penanda
-        menuOpenShop: Tingkatan-tingkatan
+        menuOpenShop: Upgrades
         menuOpenStats: Statistik
         menuClose: Tutup menu
         toggleHud: Aktifkan HUD
         toggleFPSInfo: Aktifkan FPS dan Informasi Debug
         switchLayers: Ganti lapisan
         exportScreenshot: Ekspor keseluruhan pabrik sebagai Screenshot
-        belt: Sabuk Konveyor
+        belt: Konveyor
         underground_belt: Terowongan
         miner: Ekstraktor
         cutter: Pemotong
@@ -1182,64 +1182,64 @@ keybindings:
         massSelectCopy: Salin (copy) area
         massSelectCut: Pindahkan (cut) area
         placementDisableAutoOrientation: Nonaktifkan orientasi otomatis
-        placeMultiple: Tinggal di mode penempatan
+        placeMultiple: Tetap di mode penempatan
         placeInverse: Balikkan orientasi otomatis konveyor
         balancer: Penyeimbang
         storage: Tempat Penyimpanan
         constant_signal: Sinyal Konstan
         logic_gate: Gerbang Logis
-        lever: Saklar
+        lever: Sakelar
         filter: Filter
         wire_tunnel: Terowongan Kabel
         display: Layar
-        reader: Pembaca Sabuk Konveyor
+        reader: Pembaca Konveyor
         virtual_processor: Pemotong Virtual
         transistor: Transistor
         analyzer: Penganalisa Bentuk
         comparator: Pembanding
-        item_producer: Pembuat Item
+        item_producer: Produsen Item
         copyWireValue: "Kabel: Salin nilai di bawah kursor"
         rotateToUp: "Rotate: Point Up"
         rotateToDown: "Rotate: Point Down"
         rotateToRight: "Rotate: Point Right"
         rotateToLeft: "Rotate: Point Left"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
-        showShapeTooltip: Show shape output tooltip
+        constant_producer: Produsen Konstan
+        goal_acceptor: Akseptor Tujuan
+        block: Blok
+        massSelectClear: Bersihkan konveyor
+        showShapeTooltip: Tunjukkan keterangan bentuk output
 about:
-    title: Tentang permainan ini
+    title: Tentang game ini
     body: >-
-        Permainan ini bekerja secara open source dan dikembangkan oleh <a
+        Game ini bekerja secara open source dan dikembangkan oleh <a
         href="https://github.com/tobspr" target="_blank">Tobias Springer</a>
         (ini adalah saya).<br><br>
 
         Apabila kamu ingin berkontribusi, periksa <a href="<githublink>" target="_blank">shapez.io di github</a>.<br><br>
 
-        Permainan ini tidak mungkin ada tanpa komunitas Discord di sekitar game saya – Kamu hendaknya bergabung <a href="<discordlink>" target="_blank">server Discord</a>!<br><br>
+        Game ini tidak mungkin ada tanpa komunitas Discord di sekitar game saya – Kamu hendaknya bergabung <a href="<discordlink>" target="_blank">server Discord</a>!<br><br>
 
         Lagunya dibuat oleh <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> - Dia mengagumkan.<br><br>
 
-        Akhir kata, banyak terima kasih kepada teman baik saya <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Tanpa sesi-sesi factorio kami, permainan ini tidak mungkin tercipta.
+        Akhir kata, banyak terima kasih kepada teman baik saya <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> - Tanpa sesi-sesi factorio kami, game ini tidak mungkin tercipta.
 changelog:
     title: Catatan Perubahan
 demo:
     features:
-        restoringGames: Mengembalikan simpanan permainan
-        importingGames: Memasukkan simpanan permainan
-        oneGameLimit: Terbatas pada satu simpanan permainan
+        restoringGames: Mengembalikan data simpanan game
+        importingGames: Memasukkan data simpanan game
+        oneGameLimit: Terbatas pada satu data simpanan game
         customizeKeybindings: Sesuaikan tombol-tombol pintas
         exportingBase: Mengekspor keseluruhan pangkalan pusat sebagai gambar
     settingNotAvailable: Tidak tersedia dalam versi demo.
 tips:
-    - Bangunan pusat akan menerima segala input, tidak hanya bentuk sekarang!
+    - Hub (Bangunan pusat) akan menerima segala input, tidak hanya bentuk sekarang!
     - Pastikan pabrikmu berbentuk modul - akan membantu!
     - Jangan membangun terlalu dekat PUSAT, atau akan menjadi berantakan!
     - Apabila penumpukkan tidak bekerja, cobalah tukar kedua input.
-    - Kamu bisa mengubah arah Perencana Sabuk Konveyor dengan menekan tombol
+    - Kamu bisa mengubah arah Perencana Konveyor dengan menekan tombol
       <b>R</b>.
-    - Menahan <b>CTRL</b> memungkinkan untuk menyeret sabuk konveyor tanpa
+    - Menahan <b>CTRL</b> memungkinkan untuk menyeret konveyor tanpa
       rotasi otomatis.
     - Rasio akan tetap sama, selama semua upgrade berada pada Tingkatan yang
       sama.
@@ -1252,12 +1252,12 @@ tips:
     - Pengecat memiliki varian lain yang bisa kamu pilih dengan menekan tombol
       <b>T</b>
     - Memiliki rasio bangunan yang tepat dapat memaksimalkan efektivitas.
-    - Pada level maksimum, 5 ekstraktor akan memenuhi 1 sabuk konveyor.
+    - Pada level maksimum, 5 ekstraktor akan memenuhi 1 konveyor.
     - Jangan lupa gunakan terowongan!
     - Kamu tidak perlu membagi item secara merata untuk meraih efisiensi
       maksimal.
-    - Menahan <b>SHIFT</b> akan mengaktifkan Perencana Sabuk Konveyor,
-      memungkinkan kamu untuk meletakkan sabuk konveyor yang panjang dengan
+    - Menahan <b>SHIFT</b> akan mengaktifkan Perencana Konveyor,
+      memungkinkan kamu untuk meletakkan konveyor yang panjang dengan
       mudah
     - Pemotong selalu memotong secara vertikal, bagaimanapun orientasinya.
     - Untuk mendapatkan warna putih, campurkan ketiga warna.
@@ -1266,7 +1266,7 @@ tips:
       berharga!
     - Menahan <b>SHIFT</b> memungkinkan kamu untuk meletakkan beberapa bangunan
       sekaligus.
-    - Kamu dapat menahan <b>ALT</b> untuk memutar arah pada sabuk konveyor yang
+    - Kamu dapat menahan <b>ALT</b> untuk memutar arah pada konveyor yang
       sudah diletakkan.
     - Efisiensi adalah kunci!
     - Tampungan bentuk yang semakin jauh dari pusat maka akan semakin kompleks.
@@ -1309,113 +1309,112 @@ tips:
       Pastikan untuk mengeceknya di pengaturan.
     - Game ini memiliki banyak pengaturan, Pastikan untuk mengeceknya!
     - Penanda bangunan pusatmu memiliki kompas yang menunjukkan lokasinya!
-    - Untuk membersihkan sabuk konveyor, pindahkan (cut) bagian dan tempel
+    - Untuk merapikan konveyor, pindahkan (cut) bagian dan tempel
       (paste) di lokasi yang sama.
     - Tekan F4 untuk menunjukkan FPS dan Tick Rate kamu.
     - Tekan F4 dua kali untuk menunjukkan ubin mouse dan kameramu.
     - Kamu bisa mengklik bentuk yang di-pin di sebelah kiri untuk tidak
       mem-pinnya lagi.
 puzzleMenu:
-    play: Play
+    play: Main
     edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    title: Mode Puzzle
+    createPuzzle: Buat Puzzle
+    loadPuzzle: Muat Puzzle
+    reviewPuzzle: Revisi & Upload
+    validatingPuzzle: Memvalidasi Puzzle
+    submittingPuzzle: Mengirim Puzzle
+    noPuzzles: Saat ini belum ada puzzle pada bagian ini.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        levels: Level
+        new: Baru
+        top-rated: Peringkat Tertinggi
+        mine: Puzzleku
+        easy: Mudah
+        hard: Sulit
+        completed: Telah diselesaikan
+        medium: Sedang
+        official: Resmi
+        trending: Tren hari ini
+        trending-weekly: Tren pekan ini
+        categories: Kategori
+        difficulties: Dengan Tingkatan Kesulitan
+        account: Puzzleku
+        search: Cari
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: Puzzle Tidak Valid
+        noProducers: Harap letakkan sebuah Produsen Konstan!
+        noGoalAcceptors: Harap letakkan sebuah Akseptor Tujuan!
+        goalAcceptorNoItem: Satu atau lebih Akseptor Tujuan masih belum diberikan bentuk.
+            Kirim sebuah bentuk ke bangunannya untuk menetapkan tujuan.
+        goalAcceptorRateNotMet: Satu atau lebih Akseptor Tujuan tidak mendapatkan bentuk yang cukup.
+            Pastikan indikator setiap akseptor adalah hijau.
+        buildingOutOfBounds: Satu atau lebih bangunan terletak di luar zona pembangunan.
+            Besarkan area pembangunan atau hapus bangunannya.
+        autoComplete: Puzzlemu selesai dengan sendirinya! Harap pastikan Produsen Konstanmu
+            tidak mengirimkan bentuk secara langsung ke Akseptor Tujuan.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Mudah
+        medium: Sedang
+        hard: Sulit
+        unknown: Belum dinilai
+    dlcHint: Sudah membeli DLCnya? Pastikan sudah diaktivasi dengan meng-klik kanan
+        shapez di library kamu, memilih Properties > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Cari
+        placeholder: Masukkan nama puzzle atau pembuat
+        includeCompleted: Termasuk Selesai
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Tingkat Kesulitan Apapun
+            easy: Mudah
+            medium: Sedang
+            hard: Sulit
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Durasi Berapapun
+            short: Pendek (< 2 mmt)
+            medium: Sedang
+            long: Panjang (> 10 mnt)
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: Kamu melakukan aksi dengan terlalu cepat. Harap tunggu sebentar.
+    invalid-api-key: Gagal menghubungkan komunikasi dengan backend, harap coba
+        update/restart gamenya (Invalid Api Key).
+    unauthorized: Gagal menghubungkan komunikasi dengan backend, harap coba
+        update/restart gamenya (Unauthorized).
+    bad-token: Gagal menghubungkan komunikasi dengan backend, harap coba update/restart
+        gamenya (Bad Token).
+    bad-id: Pengidentifikasi puzzle tidak valid.
+    not-found: Puzzle yang dicari tidak dapat ditemukan.
+    bad-category: Kategori yang dicari tidak dapat ditemukan.
+    bad-short-key: Short key yang diberikan tidak valid.
+    profane-title: Puzzle kamu mengandung kata-kata yang tidak layak.
+    bad-title-too-many-spaces: Puzzle kamu terlalu pendek.
+    bad-shape-key-in-emitter: Sebuah Produsen Konstan mengandung item tidak valid.
+    bad-shape-key-in-goal: Sebuah Akseptor Tujuan mengandung item tidak valid.
+    no-emitters: Puzzle kamu tidak memiliki Konstan Produsen sama sekali.
+    no-goals: Puzzle kamu tidak memiliki Akseptor Tujuan sama sekali.
+    short-key-already-taken: Short key ini sudah diambil, harap coba yang lain.
+    can-not-report-your-own-puzzle: Kamu tidak bisa melaporkan puzzle kamu sendiri.
+    bad-payload: Permintaannya mengandung data yang tidak valid.
+    bad-building-placement: Puzzle kamu mengandung bangunan yang diletakkan secara tidak valid.
+    timeout: Waktu permintaan sudah habis.
+    too-many-likes-already: Puzzle ini sudah terlanjur memiliki banyak like. Jika kamu tetap ingin
+        menghapusnya, harap kontak support@shapez.io!
+    no-permission: Kamu tidak memiliki izin untuk melakukan aksi ini.
 mods:
     title: Mods
-    author: Author
-    version: Version
+    author: Pembuat
+    version: Versi
     modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    openFolder: Buka Folder Mods
+    folderOnlyStandalone: Membuka folder mod hanya dapat dilakukan jika kamu memiliki Versi Lengkap.
+    browseMods: Cari Mods
+    modsInfo: Untuk mengunduh dan mengatur mods, salin mereka ke folder mods (gunakan tombol 'Buka Folder Mods').
+        Pastikan untuk me-restart game setelahnya. Jika tidak, maka mods tidak akan berjalan.
+    noModSupport: Kamu membutuhkan versi lengkap di Steam untuk mengunduh mods!
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Akan Datang
+        description: Mengaktifkan atau menonaktifkan mods saat ini hanya dapat dilakukan dengan menyalin
+            file mods dari atau menuju folder mods/. Namun, untuk bisa menyalakan dan mematikannya di sini
+            adalah rencana untuk update yang akan datang!
+    browserNoSupport: Dikarenakan batasan browser, saat ini hanya bisa mengunduh
+        mods pada versi Steam - Maaf!
