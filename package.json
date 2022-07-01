@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "cd gulp && yarn gulp main.serveDev",
         "devStandalone": "cd gulp && yarn gulp main.serveStandalone",
-        "tslint": "cd src/js && tsc",
+        "tslint": "tsc -p src/js",
         "lint": "eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
         "publishOnItchWindows": "butler push tmp_standalone_files/shapez.io-standalone-win32-x64 tobspr/shapezio:windows --userversion-file version",
