@@ -110,7 +110,6 @@ export class MainMenuState extends GameState {
             }
                 Play shapez on Steam
             </a>
-            ${!G_IS_STEAM_DEMO ? `<span class="specialOffer">${T.global.discountSummerSale}</span>` : ""}
             ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
 
         `;

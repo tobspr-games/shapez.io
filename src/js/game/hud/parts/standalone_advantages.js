@@ -49,7 +49,6 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
                     : ""
             }
             </button>
-            ${!G_IS_STEAM_DEMO ? `<span class="specialOffer">${T.global.discountSummerSale}</span>` : ""}
             <button class="otherCloseButton" data-btn-variant="${G_IS_STEAM_DEMO ? "steam-demo" : "prod"}">${
                 T.ingame.standaloneAdvantages.no_thanks
             }</button>
