@@ -97,14 +97,14 @@ mainMenu:
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
     puzzleDlcViewNow: View Dlc
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Mods Ativos
+        warningPuzzleDLC: Não é possível jogar a Puzzle DLC com mods. Por favor, 
+        desabilite todos os mods para jogar a DLC.
+    playingFullVersion: Agora você está jogando a versão completa!
+    logout: Sair
+    noActiveSavegames: Nenhum jogo salvo encontrado - Clique em jogar para iniciar um novo jogo!
+    playFullVersionV2: Comprou shapez no Steam? Jogue a versão completa em seu navegador!
+    playFullVersionStandalone: Agora você também pode jogar a versão completa em seu navegador!
 dialogs:
     buttons:
         ok: OK
@@ -282,15 +282,15 @@ dialogs:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Deletar Puzzle?
+        desc: Tem certeza que deseja excluir '<title>'? Isto não pode ser desfeito!
     modsDifference:
-        title: Mod Warning
+        title: Aviso de Mod
         desc: The currently installed mods differ from the mods the savegame was created
             with. This might cause the savegame to break or not load at all. Are
             you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        missingMods: Está faltando Mods
+        newMods: Mods recém-instalados
     resourceLoadFailed:
         title: Resources failed to load
         demoLinkText: shapez demo on Steam
@@ -336,7 +336,7 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
-        clearBelts: Clear belts
+        clearBelts: Limpar esteiras
     colors:
         red: Vermelho
         green: Verde
