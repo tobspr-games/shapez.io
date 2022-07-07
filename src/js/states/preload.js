@@ -47,21 +47,19 @@ export class PreloadState extends GameState {
     }
 
     async fetchDiscounts() {
-        // Summer sale specific
-        globalConfig.currentDiscount = 60;
-
-        // Regular
-        // await timeoutPromise(
-        //     fetch("https://analytics.shapez.io/v1/discounts")
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             globalConfig.currentDiscount = Number(data["1318690"].data.price_overview.discount_percent);
-        //             logger.log("Fetched current discount:", globalConfig.currentDiscount);
-        //         }),
-        //     2000
-        // ).catch(err => {
-        //     logger.warn("Failed to fetch current discount:", err);
-        // });
+        await timeoutPromise(
+            fetch("https://analytics.shapez.io/v1/discounts")
+                .then(res => res.json())
+                .then(data => {
+                    globalConfig.currentDiscount = Number(
+                        data["1318690"].data.price_overview.discount_percent
+                    );
+                    logger.log("Fetched current discount:", globalConfig.currentDiscount);
+                }),
+            2000
+        ).catch(err => {
+            logger.warn("Failed to fetch current discount:", err);
+        });
     }
 
     async sendBeacon() {
