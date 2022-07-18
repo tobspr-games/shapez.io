@@ -8,7 +8,8 @@
  *  buildArgs: {
  *      chineseVersion?: boolean,
  *      wegameVersion?: boolean,
- *      steamDemo?: boolean
+ *      steamDemo?: boolean,
+ *      gogVersion?: boolean
  * }}>}
  */
 const BUILD_VARIANTS = {
@@ -60,6 +61,13 @@ const BUILD_VARIANTS = {
         electronBaseDir: "electron_wegame",
         buildArgs: {
             wegameVersion: true,
+        },
+    },
+    "standalone-gog": {
+        standalone: true,
+        electronBaseDir: "electron_gog",
+        buildArgs: {
+            gogVersion: true,
         },
     },
 };

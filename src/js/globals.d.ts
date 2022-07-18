@@ -20,6 +20,7 @@ declare const G_IS_RELEASE: boolean;
 
 declare const G_CHINA_VERSION: boolean;
 declare const G_WEGAME_VERSION: boolean;
+declare const G_GOG_VERSION: boolean;
 
 declare const shapez: any;
 

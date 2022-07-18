@@ -11,6 +11,7 @@ module.exports = ({
     chineseVersion = false,
     wegameVersion = false,
     steamDemo = false,
+    gogVersion = false,
 }) => {
     return {
         mode: "development",
@@ -38,6 +39,7 @@ module.exports = ({
                 G_APP_ENVIRONMENT: JSON.stringify("dev"),
                 G_CHINA_VERSION: JSON.stringify(chineseVersion),
                 G_WEGAME_VERSION: JSON.stringify(wegameVersion),
+                G_GOG_VERSION: JSON.stringify(gogVersion),
                 G_IS_DEV: "true",
                 G_IS_RELEASE: "false",
                 G_IS_BROWSER: "true",

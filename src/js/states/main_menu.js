@@ -42,9 +42,13 @@ export class MainMenuState extends GameState {
         const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            !G_WEGAME_VERSION && (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) && !G_IS_STEAM_DEMO;
+            !G_WEGAME_VERSION &&
+            (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) &&
+            !G_IS_STEAM_DEMO &&
+            !G_GOG_VERSION;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
+        const hasSteamBridge = G_IS_STANDALONE && !G_GOG_VERSION;
 
         let showExternalLinks = true;
 
@@ -74,7 +78,8 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
-        const showKiwiClicker = this.app.settings.getSetting("showKiwiClicker") && MODS.mods.length === 0;
+        const showKiwiClicker =
+            showExternalLinks && this.app.settings.getSetting("showKiwiClicker") && MODS.mods.length === 0;
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
@@ -144,7 +149,7 @@ export class MainMenuState extends GameState {
                     <div class="buttons"></div>
                     <div class="savegamesMount"></div>
                     ${
-                        G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED
+                        hasSteamBridge && (G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED)
                             ? `<div class="steamSso">
                                 <span class="description">${
                                     G_IS_STANDALONE
@@ -158,7 +163,7 @@ export class MainMenuState extends GameState {
                             : ""
                     }
                     ${
-                        WEB_STEAM_SSO_AUTHENTICATED
+                        hasSteamBridge && WEB_STEAM_SSO_AUTHENTICATED
                             ? `
                             <div class="steamSso">
                                 <span class="description">${T.mainMenu.playingFullVersion}</span>
