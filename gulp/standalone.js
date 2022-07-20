@@ -215,24 +215,27 @@ function gulptasksStandalone($, gulp) {
                 () => {
                     const appFile = path.join(tempDestDir, "shapez-darwin-x64");
                     const appFileInner = path.join(appFile, "shapez.app");
-                    const appIdDest = path.join(
-                        path.join(appFileInner, "Contents", "MacOS"),
-                        "steam_appid.txt"
-                    );
-                    // console.warn("++ Preparing ++");
-                    // fse.copySync(path.join(tempDestBuildDir, "steam_appid.txt"), appIdDest);
-
                     console.warn("++ Signing ++");
-                    console.warn("Signing steam_appid.txt");
 
-                    execSync(
-                        `codesign --force --verbose --options runtime --timestamp --no-strict --sign "${
-                            process.env.SHAPEZ_CLI_APPLE_CERT_NAME
-                        }" --entitlements "${path.join(__dirname, "entitlements.plist")}" ${appIdDest}`,
-                        {
-                            cwd: appFile,
-                        }
-                    );
+                    if (variantData.steamAppId) {
+                        const appIdDest = path.join(
+                            path.join(appFileInner, "Contents", "MacOS"),
+                            "steam_appid.txt"
+                        );
+                        // console.warn("++ Preparing ++");
+                        // fse.copySync(path.join(tempDestBuildDir, "steam_appid.txt"), appIdDest);
+
+                        console.warn("Signing steam_appid.txt");
+
+                        execSync(
+                            `codesign --force --verbose --options runtime --timestamp --no-strict --sign "${
+                                process.env.SHAPEZ_CLI_APPLE_CERT_NAME
+                            }" --entitlements "${path.join(__dirname, "entitlements.plist")}" ${appIdDest}`,
+                            {
+                                cwd: appFile,
+                            }
+                        );
+                    }
 
                     console.warn("Base dir:", appFile);
 
