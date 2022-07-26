@@ -296,8 +296,8 @@ dialogs:
         demoLinkText: shapez demo na Steam
         descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de ter um
              conexão de internet estável e tente novamente. Se isso ainda não
-             funcionar, certifique-se de desativar também todas as extensões do navegador (incluindo
-             bloqueadores de anúncios).<br><br> Como alternativa, você também pode jogar o
+             funcionar, certifique-se de desativar também todas as extensões do navegador (
+             incluindo bloqueadores de anúncios).<br><br> Como alternativa, você também pode jogar o
              <demoOnSteamLinkText>. <br><br> Mensagem de erro:"
         descSteamDemo: "Um ou mais recursos não puderam ser carregados. Tente reiniciar o
              jogo - Se isso não ajudar, tente reinstalar e verificar o
@@ -1367,8 +1367,8 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: O quebra-cabeça já tem muitos likes. Se você ainda quiser removê-lo, 
-    entre em contato com support@shapez.io!
+    too-many-likes-already: O quebra-cabeça já tem muitos likes. Se você ainda quiser 
+        removê-lo, entre em contato com support@shapez.io!
     no-permission: Você não tem permissão para executar esta ação.
 mods:
     title: Mods
