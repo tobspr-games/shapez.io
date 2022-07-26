@@ -1367,7 +1367,7 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: O quebra-cabeça já tem muitos likes. Se você ainda quiser 
+    too-many-likes-already: O quebra-cabeça já tem muitos likes. Se você ainda quiser
         removê-lo, entre em contato com support@shapez.io!
     no-permission: Você não tem permissão para executar esta ação.
 mods:
