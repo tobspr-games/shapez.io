@@ -55,7 +55,7 @@ global:
     loggingIn: Entrando
     loadingResources: Fazend download de recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: PROMOÇÃO ESPECIAL: Oferta termina 7 de Julho.
+    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta termina 7 de Julho.
 demoBanners:
     title: Versão Demo
     intro: |-
