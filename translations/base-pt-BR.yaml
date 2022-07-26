@@ -53,7 +53,7 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Fazend download de recursos adicionais: (<percentage> %)
+    loadingResources: Fazend download de recursos adicionais (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: PROMOÇÃO ESPECIAL: Oferta termina 7 de Julho.
 demoBanners:
