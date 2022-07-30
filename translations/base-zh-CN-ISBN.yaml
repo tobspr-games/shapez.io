@@ -154,15 +154,13 @@ dialogs:
         desc: 您还没有解锁蓝图功能！通过第12关的挑战后可解锁蓝图。
     keybindingsIntroduction:
         title: 实用快捷键
-        desc:
-            "这个游戏有很多有用的快捷键设定。 以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
+        desc: "这个游戏有很多有用的快捷键设定。 以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
             <code class='keybinding'>CTRL键</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT键</code>: 按住以放置多个同一种设施。<br> <code
             class='keybinding'>ALT键</code>: 反向放置传送带。<br>"
     createMarker:
         title: 创建地图标记
-        desc:
-            填写一个有意义的名称, 还可以同时包含一个形状的 <strong>短代码</strong> (您可以 <link>点击这里</link>
+        desc: 填写一个有意义的名称, 还可以同时包含一个形状的 <strong>短代码</strong> (您可以 <link>点击这里</link>
             生成短代码)
         titleEdit: 编辑地图标记
     markerDemoLimit:
@@ -360,18 +358,15 @@ ingame:
         hints:
             1_1_extractor: 在<strong>圆形</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
             1_2_conveyor: 用<strong>传送带</strong>将您的开采器连接到中心基地上！<br><br>提示：选中<strong>传送带</strong>后<strong>按下鼠标左键可拖动</strong>布置传送带！
-            1_3_expand:
-                您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
+            1_3_expand: 您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
                 提示：按住 <strong>SHIFT</strong>
                 键可放置多个<strong>开采器</strong>，注意用<strong>R</strong>
                 键可旋转<strong>开采器</strong>的出口方向，确保开采的图形可以顺利传送。
             2_1_place_cutter: 现在放置一个<strong>切割器</strong>，这个设施可把<strong>圆形</strong>切成两半！<br><br>注意：无论如何放置，切割机总是<strong>从上到下</strong>切割。
-            2_2_place_trash:
-                使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
+            2_2_place_trash: 使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
                 (!) 不需要的废物。
             2_3_more_cutters: 干的好！现在放置<strong>2个以上的切割机</strong>来加快当前缓慢的过程！<br><br>提示：用<strong>快捷键0-9</strong>可以快速选择各项设施！
-            3_1_rectangles:
-                现在让我们开采一些矩形！找到<strong>矩形地带</strong>并<strong>放置4个开采器</strong>并将它们用<strong>传送带</strong>连接到中心基地。<br><br>
+            3_1_rectangles: 现在让我们开采一些矩形！找到<strong>矩形地带</strong>并<strong>放置4个开采器</strong>并将它们用<strong>传送带</strong>连接到中心基地。<br><br>
                 提示：选中<strong>传送带</strong>后按住<strong>SHIFT键</strong>可快速准确地规划<strong>传送带路线！</strong>
             21_1_place_quad_painter: 放置<strong>四口上色器</strong>并且获取一些<strong>圆形</strong>，<strong>白色</strong>和<strong>红色</strong>！
             21_2_switch_to_wires: 按 <strong>E</strong> 键选择<strong>电线层</strong>！<br><br>
@@ -668,8 +663,7 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>旋转机</strong>。它会顺时针将输入的<strong>图形旋转90度</strong>。
     reward_painter:
         title: 上色
-        desc:
-            恭喜！您解锁了<strong>上色器</strong>。开采一些颜色 (就像您开采图形一样)，将其在上色器中与图形结合来将图形上色！
+        desc: 恭喜！您解锁了<strong>上色器</strong>。开采一些颜色 (就像您开采图形一样)，将其在上色器中与图形结合来将图形上色！
             <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>
     reward_mixer:
         title: 混合颜色
@@ -686,13 +680,11 @@ storyRewards:
         desc: 恭喜！您解锁了<strong>隧道</strong>。它可放置在<strong>传送带</strong>或<strong>设施</strong>下方以运送物品。
     reward_rotater_ccw:
         title: 逆时针旋转
-        desc:
-            恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
+        desc: 恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
             <br>选择<strong>旋转机</strong>然后按"T"键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采器
-        desc:
-            您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
+        desc: 您已经解锁了<strong>链式开采器</strong>！它能<strong>转发资源</strong>给其他的开采器，这样您就能更有效率的开采各类资源了！<br><br>
             注意：新的开采器已替换了工具栏里旧的开采器！
     reward_underground_belt_tier_2:
         title: 二级隧道
@@ -709,14 +701,12 @@ storyRewards:
             <br>它<strong>优先从左边</strong>输出，这样您就可以用它做一个<strong>溢流门</strong>了！
     reward_freeplay:
         title: 自由模式
-        desc:
-            成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
+        desc: 成功了！您解锁了<strong>自由模式</strong>！挑战升级！这意味着现在将<strong>随机</strong>生成图形！
             从现在起，中心基地最为需要的是<strong>产量</strong>，我强烈建议您去制造一台能够自动交付所需图形的机器！<br><br>
             基地会在<strong>电线层</strong>输出需要的图形，您需要去分析图形并在此基础上自动配置您的工厂。
     reward_blueprints:
         title: 蓝图
-        desc:
-            您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL键并拖动鼠标来选择一块区域，然后按C键复制。
+        desc: 您现在可以<strong>复制粘贴</strong>您的工厂的一部分了！按住 CTRL键并拖动鼠标来选择一块区域，然后按C键复制。
             <br><br>粘贴并<strong>不是免费的</strong>，您需要制造<strong>蓝图图形</strong>来负担。蓝图图形是您刚刚交付的图形。
     no_reward:
         title: 下一关
@@ -744,8 +734,7 @@ storyRewards:
             <br>注意：您注意到<strong>传送读取器</strong>和<strong>存储器</strong>输出的他们最后读取的物品了吗？试着在显示屏上展示一下！"
     reward_constant_signal:
         title: 恒定信号
-        desc:
-            恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
+        desc: 恭喜！您解锁了生成于电线层之上的<strong>恒定信号</strong>，把它连接到<strong>过滤器</strong>时非常有用。
             <br>比如，它能发出图形、颜色、开关值（1 / 0）的固定信号。
     reward_logic_gates:
         title: 逻辑门
@@ -764,8 +753,7 @@ storyRewards:
             <strong>提示</strong>：可在设置中打开电线层教程！"
     reward_filter:
         title: 物品过滤器
-        desc:
-            恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
+        desc: 恭喜！您解锁了<strong>物品过滤器</strong>！它会根据在电线层上输入的信号决定是从上面还是右边输出物品。<br><br>
             您也可以输入开关值（1 / 0）信号来激活或者禁用它。
     reward_demo_end:
         title: 试玩结束

@@ -160,15 +160,13 @@ dialogs:
         desc: 你還沒有解鎖藍圖功能！完成更多的關卡來解鎖藍圖。
     keybindingsIntroduction:
         title: 實用按鍵
-        desc:
-            "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
+        desc: "這個遊戲有很多能幫助搭建工廠的使用按鍵。 以下是其中的一些，記得在<strong>按鍵設定</strong>中查看其他的！ <br><br>
             <code class='keybinding'>CTRL</code> + 拖曳：選擇區域以複製或刪除。 <br> <code
             class='keybinding'>SHIFT</code>: 按住以放置多個。 <br> <code
             class='keybinding'>ALT</code>: 反向放置輸送帶。 <br>"
     createMarker:
         title: 建立標記
-        desc:
-            給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
+        desc: 給地圖標記取一個名字。你可以在名字中加入一個<strong>簡短代碼</strong>以加入圖形。（你可以在<link>這裡</link>
             建立簡短代碼。）
         titleEdit: 修改標記
     markerDemoLimit:
@@ -376,18 +374,15 @@ ingame:
             1_1_extractor: 在<strong>圓形礦脈</strong>上放一個<strong>開採機</strong>來採集圓形！
             1_2_conveyor: 用<strong>輸送帶</strong>將你的開採機連接到基地上！
                 <br><br>提示：用你的游標<strong>按下並拖曳</strong>輸送帶！
-            1_3_expand:
-                這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
+            1_3_expand: 這<strong>不是</strong>一個放置型遊戲！建造更多的開採機和輸送帶來更快地完成目標。 <br><br>
                 提示：按住<strong>SHIFT</strong>鍵來放置多個開採機，用<strong>R</strong>鍵旋轉它們。
             2_1_place_cutter: "現在放置一個<strong>切割機</strong>並利用它把圓圈切成兩半！<br><br> PS:
                 不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。"
             2_2_place_trash: 切割機可能會<strong>堵塞並停止運作</strong>！<br><br>
                 用<strong>垃圾桶</strong>把「目前」不需要的部分處理掉。
-            2_3_more_cutters:
-                "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br> PS:
+            2_3_more_cutters: "做得好！ 現在，再放<strong>2個切割機</strong>來加速這個緩慢的生產線！<br><br> PS:
                 使用<strong>0-9快捷鍵</strong>可以更快選取建築 ！"
-            3_1_rectangles:
-                "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
+            3_1_rectangles: "現在來開採一些方形吧！<strong>蓋4座開採機</strong>，把形狀收集到基地。<br><br> PS:
                 選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
             21_1_place_quad_painter: 放置一個<strong>上色機（四向）</strong>並取得一些
                 <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
@@ -626,19 +621,16 @@ buildings:
     transistor:
         default:
             name: 電晶體
-            description:
-                如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
                 （「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
         mirrored:
             name: 電晶體
-            description:
-                如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
+            description: 如果基極（側面）的輸入訊號為「真」，則把射極（底部）輸入的真假值複製到集極（頂部）的輸出。
                 （「真」訊號代表：形狀訊號、顏色訊號或布林值為1）
     filter:
         default:
             name: 物件分類器
-            description:
-                它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。
+            description: 它會依據電路層收到的訊號，從分類器底部輸入的物件如符合輸入信號的會輸出到頂部，不符合的會從右方（交叉標記）排出。
                 它也可以被布林值訊號控制。
     display:
         default:
@@ -691,8 +683,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 切割圖形
-        desc:
-            <strong>切割機</strong>已解鎖！不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。<br><br>
+        desc: <strong>切割機</strong>已解鎖！不論切割機的方向，它都會把圖形<strong>垂直地</strong>切成兩半。<br><br>
             記得把不需要的部分處理掉，否則切割機會<strong>因為堵塞而停止運作</strong>。
             為此我給你準備了<strong>垃圾桶</strong>，它會把所有放進去的物品銷毀掉。
     reward_rotater:
@@ -784,8 +775,7 @@ storyRewards:
             <strong>布林值</strong>（1或0）。
     reward_logic_gates:
         title: 邏輯閘
-        desc:
-            <strong>邏輯閘</strong>已解鎖！你可能覺得無所謂，但其實邏輯閘其實超酷的！<br><br> 有了這些邏輯閘，你可以運算 AND,
+        desc: <strong>邏輯閘</strong>已解鎖！你可能覺得無所謂，但其實邏輯閘其實超酷的！<br><br> 有了這些邏輯閘，你可以運算 AND,
             OR, XOR 與 NOT 邏輯。<br><br> 錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
         title: 虛擬操作
