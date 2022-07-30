@@ -364,20 +364,20 @@ dialogs:
         title: Ressourcen können nicht geladen werden
         demoLinkText: shapez demo-Version auf Steam
         descWeb: "Eine oder mehrere Ressourcen konnten nicht geladen werden. Stellen Sie sicher, dass Sie eine
-            stabile Internetverbindung und versuchen Sie es erneut. Wenn dies immer noch nicht
+            stabile Internetverbindung haben und versuchen Sie es erneut. Wenn dies weiterhin nicht
             nicht funktioniert, deaktivieren Sie bitte auch alle Browsererweiterungen (einschließlich
             Werbeblocker).<br><br> Als Alternative können Sie auch die
-            <demoOnSteamLinkText>. <br><br> Fehlermeldung:"
+            <demoOnSteamLinkText> spielen. <br><br> Fehlermeldung:"
         descSteamDemo: Eine oder mehrere Ressourcen konnten nicht geladen werden. Versuchen Sie 
             einen Neustart des Spiels - Wenn das nicht hilft, versuchen Sie eine Neuinstallation und 
             Verifizierung der Spiel-Dateien auf Steam. <br><br>Fehlermeldung:"
     steamSsoError:
         title: Ausgeloggt aus Vollversion
-        desc: Du wurdest aus der Browser-Vollversion ausgeloggt da entweder deine
+        desc: Du wurdest aus der Browser-Vollversion ausgeloggt, da entweder deine
             Internetverbindung instabil ist, oder du auf einem anderen Gerät
-            spielst.<br><br> Bitte stelle sicher dass du shapez nicht in einem
-            anderen Browser-Tab offen hast oder auf einem weiteren Computer mit
-            demselben Steam-Account. <br><br> Du kannst dich dann erneut im
+            spielst.<br><br> Bitte stelle sicher, dass du shapez nicht in einem
+            anderen Browser-Tab oder auf einem anderen Computer mit demselben 
+            Steam-Account offen hast. <br><br> Du kannst dich dann erneut im
             Hauptmenü einloggen.
     steamSsoNoOwnership:
         title: Vollversion nötig
