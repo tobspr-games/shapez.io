@@ -73,7 +73,7 @@ demoBanners:
     untilEndOfDemo: Μέχρι το τέλος της επίδειξης
     playtimeDisclaimerDownload: Μπορείτε να συνεχίσετε το αποθηκευμένο παιχνίδι σου στην πλήρη έκδοση!
         Κάντε κλικ <strong>εδώ</strong> για να κατεβάσετε το αποθηκευμένο παιχνίδι σας.
-    titleV2: "Play the full version now for:"
+    titleV2: "Παίξτε την πλήρη έκδοση τώρα για:"
 mainMenu:
     play: Παίξε
     changelog: Changelog
