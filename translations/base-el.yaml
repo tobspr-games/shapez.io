@@ -60,13 +60,13 @@ global:
 demoBanners:
     title: Έκδοση επίδειξης
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Αποκτήστε ολόκληρο το παιχνίδι <strong>τώρα</strong> για να ξεκλειδώσεις:<ul>
+            <li>Και τα 26 επίπεδα + άπειρο ελεύθερο παιχνίδι</li>
+            <li>22 νέα κτίρια</li>
+            <li>Υποστήριξη Mod</li>
+            <li>Επιτεύγματα</li>
+            <li>Σκοτεινή λειτουργία</li>
+            <li>... και πολλά άλλα!</li>
         </ul>
     playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
     playerCount: <playerCount> players like you are currently playing shapez on Steam
