@@ -56,7 +56,7 @@ global:
     loggingIn: Γίνεται Είσοδος
     loadingResources: Λήψη πρόσθετων πόρων (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: ΕΙΔΙΚΉ ΠΡΟΣΦΟΡΆ! Η προσφορά λήγει στις 7 Ιουλίου
 demoBanners:
     title: Demo Version
     intro: |-
