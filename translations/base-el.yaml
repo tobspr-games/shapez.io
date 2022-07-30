@@ -58,7 +58,7 @@ global:
     discount: -<percentage>%
     discountSummerSale: ΕΙΔΙΚΉ ΠΡΟΣΦΟΡΆ! Η προσφορά λήγει στις 7 Ιουλίου
 demoBanners:
-    title: Demo Version
+    title: Έκδοση επίδειξης
     intro: |-
         Get the full game <strong>now</strong> to unlock:<ul>
             <li>All 26 levels + infinite Freeplay</li>
