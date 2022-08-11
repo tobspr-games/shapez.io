@@ -361,7 +361,7 @@ dialogs:
         missingMods: Fehlende Mods
         newMods: Neu installierte Mods
     resourceLoadFailed:
-        title: Ressourcen können nicht geladen werden
+        title: Ressourcen konnten nicht geladen werden
         demoLinkText: shapez demo-Version auf Steam
         descWeb: "Eine oder mehrere Ressourcen konnten nicht geladen werden. Stellen Sie sicher, dass Sie eine
             stabile Internetverbindung haben und versuchen Sie es erneut. Wenn dies weiterhin nicht
