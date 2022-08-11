@@ -17,8 +17,8 @@ steamPage:
     what_others_say: Was andere über shapez.io sagen
     nothernlion_comment: Dieses Spiel ist großartig - ich habe eine Menge Spaß beim Spielen,
         und die Zeit vergeht wie im Flug.
-    notch_comment: Ach, Mist. Ich sollte wirklich schlafen, aber ich glaube ich habe gerade herausgefunden
-        wie man in shapez.io einen Computer baut.
+    notch_comment: Ach, Mist. Ich sollte wirklich schlafen, aber ich glaube, ich habe gerade herausgefunden,
+        wie man in shapez einen Computer baut.
     steam_review_comment: Dieses Spiel stiehlt mein Leben und ich will es nicht zurück.
         Sehr cooles Fabrikspiel, das mich nicht aufhören lässt, meine Anlagen effizienter zu machen.
 global:
@@ -362,21 +362,21 @@ dialogs:
         newMods: Neu installierte Mods
     resourceLoadFailed:
         title: Ressourcen konnten nicht geladen werden
-        demoLinkText: shapez demo-Version auf Steam
-        descWeb: "Eine oder mehrere Ressourcen konnten nicht geladen werden. Stellen Sie sicher, dass Sie eine
-            stabile Internetverbindung haben und versuchen Sie es erneut. Wenn dies weiterhin nicht
-            funktioniert, deaktivieren Sie bitte auch alle Browsererweiterungen (einschließlich
-            Werbeblocker).<br><br> Als Alternative können Sie auch die
+        demoLinkText: shapez Demoversion auf Steam
+        descWeb: "Eine oder mehrere Ressourcen konnten nicht geladen werden. Stell sicher, dass du eine
+            stabile Internetverbindung haben und versuche es erneut. Wenn dies weiterhin nicht
+            funktioniert, deaktiviere bitte auch alle Browsererweiterungen (einschließlich
+            Werbeblocker).<br><br> Als Alternative kannst du auch die
             <demoOnSteamLinkText> spielen. <br><br> Fehlermeldung:"
-        descSteamDemo: Eine oder mehrere Ressourcen konnten nicht geladen werden. Versuchen Sie 
-            einen Neustart des Spiels - Wenn das nicht hilft, versuchen Sie eine Neuinstallation und 
-            Verifizierung der Spiel-Dateien auf Steam. <br><br>Fehlermeldung:"
+        descSteamDemo: Eine oder mehrere Ressourcen konnten nicht geladen werden. Versuche einen 
+            Neustart des Spiels - Wenn das nicht hilft, versuche eine Neuinstallation und 
+            Verifizierung der Spieldateien auf Steam. <br><br>Fehlermeldung:"
     steamSsoError:
         title: Ausgeloggt aus Vollversion
         desc: Du wurdest aus der Browser-Vollversion ausgeloggt, da entweder deine
             Internetverbindung instabil ist, oder du auf einem anderen Gerät
             spielst.<br><br> Bitte stelle sicher, dass du shapez nicht in einem
-            anderen Browser-Tab oder auf einem anderen Computer mit demselben 
+            anderen Browsertab oder auf einem anderen Computer mit demselben 
             Steam-Account offen hast. <br><br> Du kannst dich dann erneut im
             Hauptmenü einloggen.
     steamSsoNoOwnership:
