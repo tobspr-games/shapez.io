@@ -418,7 +418,7 @@ ingame:
             1_2_conveyor: "Kösd össze a bányát egy <strong>futószalag</strong> segítségével
                 a Központi épülettel!<br><br>Tipp: <strong>Kattints és
                 húzd</strong> a futószalagot az egérrel!"
-            1_3_expand: "A shapez.io <strong>NEM</strong> tétlen játék! Építs több bányát és
+            1_3_expand: "A shapez <strong>NEM</strong> tétlen játék! Építs több bányát és
                 futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd
                 lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát
                 helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz."
@@ -1181,7 +1181,7 @@ about:
         A játékot <a href="https://github.com/tobspr" target="_blank">Tobias
         Springer</a> készíti, és nyílt forráskódú.<br><br>
 
-        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez.io GitHub oldalára</a>.<br><br>
+        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez GitHub oldalára</a>.<br><br>
 
         Ez a játék nem jöhetett volna létre a játékaimat körülvevő nagyszerű Discord közösség nélkül - Csatlakozz Te is a <a href="<discordlink>" target="_blank">Discord szerverünkhöz</a>!<br><br>
 
