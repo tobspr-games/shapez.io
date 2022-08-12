@@ -100,7 +100,7 @@ mainMenu:
             kapcsold ki az össze modot hogy a DLC-vel játszhass.
     playingFullVersion: Te most a teljes verzióval játszol!
     logout: Kijelentkezés
-    noActiveSavegames: Nem található aktuális mentett játékállás - Kattint a Startra új játék kezdéséhez!
+    noActiveSavegames: Nem található aktuális mentett játékállás - Kattints a Startra új játék kezdéséhez!
     playFullVersionV2: Megvetted shapez-t a Steamen? A böngésződben is játszhatsz a teljes verzióval!
     playFullVersionStandalone: Te már a böngésződben is játszhatsz a teljes verzióval!
 dialogs:
@@ -285,7 +285,7 @@ dialogs:
         title: Fejtörő törlése?
         desc: Biztosan törölni szeretnéd a '<title>' Fejtörőt? Ezt nem lehet visszavonni!
     modsDifference:
-        title: Mod figyelmeztetés
+        title: Figyelmeztetés, modok
         desc: A jelenleg telepített modok különböznek attól amivel a Mentett játékállás
             készült. Ez a mentett játék tönkrementeléhez vezethet, vagy nem is lehet betölteni azt.
             Biztosan folytatni szeretnéd?
@@ -297,14 +297,14 @@ dialogs:
         descWeb: "Egy vagy több szükséges adatot nem sikerült betölteni. Bizonyosodj meg róla, 
             hogy megfelelő az internetkapcsolatod, majd próbáld újra. Ha ez sem oldja meg
             próbáld meg kikapcsolni a böngésződ bővítményeit (ide értve
-            az adblockereket).<br><br> Vagy kipróbálhatod itt is
+            a reklám tiltókat).<br><br> Vagy kipróbálhatod itt is
             <demoOnSteamLinkText>. <br><br> Hiba üzenet:"
         descSteamDemo: "Egy vagy több szükséges adatot nem sikerült betölteni. Próbáld
-            újra indítani a játékot - Ha ez sem oldja meg, próbáld újratelepíteni és ellenőriztetni a fájlokat (verifying the
+            újra indítani a játékot. Ha ez sem oldja meg, próbáld újratelepíteni vagy ellenőriztetni a fájlokat (verifying the
             game files) Steamben. <br><br> Hiba üzenet:"
     steamSsoError:
         title: Teljes verzióból kijelentkezve
-        desc: Kijelentkeztél a teljes bőngészős verzióból. Ennek oka lehet instabil internet kapcsolat
+        desc: Kijelentkeztél a teljes bőngészős verzióból. Ennek oka lehet az instabil internet kapcsolat
             vagy egy másik eszközön is bejelentkeztél.<br><br> Kérlek bizonyosodj meg róla, hogy nem vagy bejelentkezve a shapez-be 
             másik böngészőablakban, vagy eszközön ugyanezzel a Steam felhasználóval.
             <br><br> A Főmenüből újra bejelentkezhetsz.
@@ -477,7 +477,7 @@ ingame:
                 desc: Ha már fáj a szemed!
             support:
                 title: Támogass
-                desc: A játékot továbbfejlesztem szabadidőmben
+                desc: A játékot szabadidőmben fejlesztem
             achievements:
                 title: Steam eredmények
                 desc: Szerezd meg hát mindet!
@@ -1086,7 +1086,7 @@ settings:
             description: Kizoomolt állapotban a térképen megjelenő erőforrások (alakzatok és
                 színek) méretét állítja.
         shapeTooltipAlwaysOn:
-            title: Leírás Alakzatokhoz - mindig mutasd!
+            title: Leírás Alakzatokhoz - mindig mutasd
             description: Mindig mutassa az alakzat leírását ha az egeret az épület fölé viszed,
                 vagy csak ha nyomva tartod az 'ALT' billentyűt.
     rangeSliderPercentage: <amount> %
@@ -1174,7 +1174,7 @@ keybindings:
         goal_acceptor: Elfogadó
         block: Blokkolás
         massSelectClear: Futószalagok Kiürítése
-        showShapeTooltip: Mutassa a kimeneti elem leírását
+        showShapeTooltip: Mutassa a kimeneti alakzat leírását
 about:
     title: A Játékról
     body: >-
@@ -1312,11 +1312,11 @@ puzzleMenu:
         hard: Elgondolkodtató
         unknown: Nem értékelt
     dlcHint: Már megvásároltad a Fejtörő DLC-t? Bizonyosodj meg róla, hogy aktiválva van. Ehhez kattints jobb gombbal a
-        shapez.io ikonára Steamben, Majd válaszd a Properties > DLCs menüt.
+        shapez ikonára Steamben, Majd válaszd a Properties > DLCs menüt.
     search:
         action: Keresés
         placeholder: Írdd be a Fejtörő vagy szerzője nevét
-        includeCompleted: Beleértve a Teljesítettket
+        includeCompleted: Beleértve a Teljesítetteket
         difficulties:
             any: Bármilyen nehézségi szint
             easy: Egyszerű
@@ -1350,8 +1350,8 @@ backendErrors:
     bad-payload: A kérés helytelen adatot tartalmaz.
     bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
     timeout: A kérés időtúllépésbe került.
-    too-many-likes-already: Ez a Fejtörőt már sokan értékelték. Ha ennek ellenére is
-        elszeretnéd távolítani, kérlek vedd fel a kapcsolatot a support@shapez.io címen!
+    too-many-likes-already: Ez a Fejtörőt már sokan pozitívan értékelték. Ha ennek ellenére is
+        elszeretnéd távolítattni, kérlek vedd fel a kapcsolatot a support@shapez.io címen!
     no-permission: Nincs jogod végrehajtani a kívánt lépést.
 mods:
     title: Modok
