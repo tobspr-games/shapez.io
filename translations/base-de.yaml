@@ -364,7 +364,7 @@ dialogs:
         title: Ressourcen konnten nicht geladen werden
         demoLinkText: shapez Demoversion auf Steam
         descWeb: "Eine oder mehrere Ressourcen konnten nicht geladen werden. Stell sicher, dass du eine
-            stabile Internetverbindung haben und versuche es erneut. Wenn dies weiterhin nicht
+            stabile Internetverbindung hast und versuche es erneut. Wenn dies weiterhin nicht
             funktioniert, deaktiviere bitte auch alle Browsererweiterungen (einschließlich
             Werbeblocker).<br><br> Als Alternative kannst du auch die
             <demoOnSteamLinkText> spielen. <br><br> Fehlermeldung:"
