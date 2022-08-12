@@ -1203,31 +1203,31 @@ tips:
       alakzatot!
     - Igyekezz moduláris gyárakat építeni - megéri!
     - Igyekezz kompakt gyárakat építeni - megéri!
-    - Ne építs közvetlenül a Központ közelébe, mert óriási káoszt okozhat!
+    - Ne építs közvetlenül a Központ közelébe, mert később óriási káoszt okozhat!
     - A szalagtervező irányát az <b>R</b> billentyűvel állíthatod.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - A <b>CTRL</b> lenyomásával anáélkül húzhatsz Futószalagot, hogy azok változtatnának az irányukon.
     - A soros végrehajtás hatékonyabb, mint a párhuzamos.
-    - Serial execution is more efficient than parallel.
+    - A soros végrehajtás hatékonyabb, mint a párhuzamos.
     - A szimmetria kulcsfontosságú!
-    - You can use <b>T</b> to switch between different variants.
+    - A <b>T</b> gombbal válthatsz a különböző változatok között.
     - A szimmetria kulcsfontosságú!
     - Az épületek megfelelő arányban való építésével maximalizálható a
       hatékonyság.
     - A legmagasabb szinten 5 Bánya teljesen megtölt egy Futószalagot.
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
+    - A Festőnek van egy tükzözött változata melyet a <b>T</b> vel érhetsz el.
+    - A megfelelő aránnyal az Épületek között maximalizálni tudod hatékonyságodat.
     - A Vágók mindig függőleges irányban vágnak, mindegy, milyen irányban állnak.
     - A fehér szín előállításához keverd össze mindhárom színt.
-    - You don't need to divide up items evenly for full efficiency.
-    - Az <b>ALT</b> lenyomva tartásával megfordíthatod a lehelyezendú Futószalag
+    - Nem kell egyenlően elosztanot az alakzatokat a maximális hatékonysághoz.
+    - Az <b>ALT</b> nyomva tartásával megfordíthatod a lehelyezendő Futószalag
       irányát.
     - A hatékonyság kulcsfontosságú!
     - A Központtól távolabb eső bányászható alakzatok jóval összetettebbek.
     - A gépeknek korlátozott sebességük van, csinálj belőlük többet a maximális
       hatékonyságért.
     - Használj Elosztókat a maximális hatékonyságért.
-    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - A <b>SHIFT</b> nyomva tartása mellett több ugyanolyan Épületet helyezhetsz el egyszerre.
+    - Az <b>ALT</b> nyomva tartása mellet megfordíthatod a már lerakott Futószalag irányát.
     - Ne rombold le a régi gyáraidat! Szükséged lesz rájuk a Fejlesztésekhez.
     - Próbáld megdönteni a 20. Szintet, mielőtt segítséget kérnél!
     - Ne bonyolítsd túl a dolgokat; csináld egyszerűen és sokra viheted.
@@ -1240,8 +1240,6 @@ tips:
     - Színezd be az alakzatodat vágás előtt a maximális hatékonyság érdekében.
     - Ha modulárisan építkezel, akkor nem számít a hely.
     - Csinálj egy különálló Tervrajz-gyárat. A modulokhoz később hasznos lesz.
-    - You may need to reuse factories later in the game. Build your factories to
-      be reusable.
     - Ha közel építesz a Központhoz, útban lesz a következő projektjeidnek.
     - A Fejlesztések lapon a gombostű ikon megnyomásával kitűzheted a képernyőre
       az aktuális alakzatot.
@@ -1250,24 +1248,25 @@ tips:
     - Próbáld ki a Factorio-t is! Az a kedvenc játékom.
     - A Negyedelő az alakzat jobb felső negyedétől kezd vágni, az óramutató
       járásával megegyező irányban!
-    - Use <b>CTRL</b> + Click to select an area.
+    - Használd a <b>CTRL</b> + kettintást hogy egy területet kijelölj.
     - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
       Beállítások menüben.
-    - A játék nagyon sok beállítást tartalmaz, mindenképpen nézd meg őket!
+    - A játék nagyon sok Beállítást tartalmaz, mindenképpen nézd meg őket!
     - A képernyőn lévő Irányítű a Központ irányát mutatja!
     - A Futószalagok kiürítéséhez vágd ki a területet és illeszd be újra
       ugyanarra a helyre.
     - Az F4 megnyomásával láthatod az FPS-edet és a Tick/mp értéket.
     - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
     - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - Your hub marker has a small compass that shows which direction it is in!
-    - To clear belts, cut the area and then paste it at the same location.
-    - You can click a pinned shape on the left side to unpin it.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
+      Beállítások menüben.
+    - A játék nagyon sok Beállítást tartalmaz, mindenképpen nézd meg őket!
+    - A képernyőn lévő Irányítű a Központ irányát mutatja!
+    - A Futószalagok kiürítéséhez vágd ki a területet és illeszd be újra
+      ugyanarra a helyre.
+    - A kitűzött alakzatot bármikor eltüntetheted a képernyődről ha rákattintasz.
+    - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
+    - A kitűzött alakzatot bármikor eltüntetheted a képernyődről ha rákattintasz.
 puzzleMenu:
     play: Játék
     edit: Szerkesztés
