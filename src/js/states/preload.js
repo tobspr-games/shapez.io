@@ -346,24 +346,17 @@ export class PreloadState extends GameState {
                 </div>
                 <div class="failureInner">
                     <div class="errorHeader">
-                    Failed to initialize application!
+                    应用初始化失败！
                     </div>
-                    <div class="errorMessage">
-                        ${this.currentStatus} failed:<br/>
-                        ${text}
-                    </div>
+
                     <div class="lower">
-                        <button class="resetApp styledButton">Reset App</button>
-                        <i>Build ${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>
+                        <i>建造。${G_BUILD_VERSION} @ ${G_BUILD_COMMIT_HASH}</i>
                     </div>
                 </div>
         `;
 
         this.htmlElement.classList.add("failure");
         this.htmlElement.appendChild(subElement);
-
-        const resetBtn = subElement.querySelector("button.resetApp");
-        this.trackClicks(resetBtn, this.showResetConfirm);
 
         this.hintsText.remove();
     }
