@@ -1,11 +1,10 @@
 steamPage:
-    shortText: “唯一能限制您的，只有您的想象力！” 《异形工厂》（Shapez.io）
-        是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
-    discordLinkShort: 官方 Discord 服务器
+    shortText: “唯一能限制您的，只有您的想象力！” 《图形工厂》 是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
+    discordLinkShort: 官方讨论区
     intro: |-
         “奇形怪状，放飞想象！”
         “自动生产，尽情创造！”
-        《异形工厂》（Shapez.io）是一款能让您尽情发挥创造力，充分享受思维乐趣的IO游戏。
+        《图形工厂》是一款能让您尽情发挥创造力，充分享受思维乐趣的益智游戏。
         游戏很轻松，只需建造工厂，布好设施，无需操作即能自动创造出各种各样的几何图形。
         挑战很烧脑，随着等级提升，需要创造的图形将会越来越复杂，同时您还需要在无限扩展的地图中持续扩建优化您的工厂。
         以为这就是全部了吗？ 不！图形的生产需求将会指数性增长，持续的扩大规模和熵增带来的无序，将会是令人头痛的问题！
@@ -13,8 +12,8 @@ steamPage:
         然后，还有吗？ 当然，唯有思维，方能无限。
 
         欢迎免费体验试玩版：“让您的想象力插上翅膀！”
-        和最聪明的玩家一起挑战，请访问 Steam 游戏商城购买《异形工厂》（Shapez.io）的完整版,
-    what_others_say: 来看看玩家们对《异形工厂》（Shapez.io）的评价
+        和最聪明的玩家一起挑战，请购买《图形工厂》的完整版,
+    what_others_say: 来看看玩家们对《图形工厂》的评价
     nothernlion_comment: 非常棒的有游戏，我的游戏过程充满乐趣，不觉时间飞逝。
     notch_comment: 哦，天哪！我真得该去睡了！但我想我刚刚搞定如何在游戏里面制造一台电脑出来。
     steam_review_comment: 这是一个不知不觉偷走你时间，但你并不会想要追回的游戏。非常烧脑的挑战，让我这样的完美主义者停不下来，总是希望可以再高效一些。
@@ -24,7 +23,7 @@ global:
     thousandsDivider: ","
     decimalSeparator: .
     suffix:
-        thousands: 千
+        thousands: 万
         millions: 百万
         billions: 亿万
         trillions: 兆
@@ -58,7 +57,7 @@ mainMenu:
     changelog: 更新日志
     importSavegame: 读取存档
     openSourceHint: 本游戏已开源！
-    discordLink: 官方Discord服务器
+    discordLink: 官方讨论区
     helpTranslate: 帮助我们翻译！
     browserWarning: 很抱歉, 本游戏在当前浏览器上可能运行缓慢! 使用 谷歌浏览器 或者购买完整版以得到更好的体验。
     savegameLevel: 第<x>关
@@ -66,13 +65,13 @@ mainMenu:
     continue: 继续游戏
     newGame: 新游戏
     madeBy: 作者：<author-link>
-    subreddit: Reddit
+    subreddit: 讨论区
     savegameUnnamed: 存档未命名
     puzzleMode: 谜题模式
     back: 返回
     puzzleDlcText: 新增谜题模式将带给您更多的游戏乐趣！
     puzzleDlcWishlist: 添加心愿单！
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: 查看资料片！
 dialogs:
     buttons:
         ok: 确认
@@ -81,7 +80,7 @@ dialogs:
         later: 以后
         restart: 重新开始
         reset: 重置
-        getStandalone: 获取完整版
+        getStandalone: 获取完整版！
         deleteGame: 我没疯！我知道我在做什么！
         viewUpdate: 查看更新
         showUpgrades: 显示设施升级
@@ -91,19 +90,19 @@ dialogs:
         playOffline: 离线游戏
     importSavegameError:
         title: 读取错误
-        text: 未能读取您的存档：
+        text: 未能读取您的存档！
     importSavegameSuccess:
         title: 读取成功
-        text: 存档被成功读取
+        text: 存档被成功读取！
     gameLoadFailure:
         title: 存档损坏
-        text: 未能读取您的存档：
+        text: 未能读取您的存档！
     confirmSavegameDelete:
         title: 确认删除
         text: 您确定要删除这个游戏吗?<br><br> '<savegameName>' 等级 <savegameLevel><br><br> 该操作无法回退！
     savegameDeletionError:
         title: 删除失败
-        text: 未能删除您的存档
+        text: 未能删除您的存档！
     restartRequired:
         title: 需要重启游戏
         text: 您需要重启游戏以应用变更的设置。
@@ -143,7 +142,7 @@ dialogs:
     createMarker:
         title: 创建地图标记
         desc: 填写一个有意义的名称, 还可以同时包含一个形状的 <strong>短代码</strong> (您可以 <link>点击这里</link>
-            生成短代码)
+            生成短代码！)
         titleEdit: 编辑地图标记
     markerDemoLimit:
         desc: 在试玩版中您只能创建两个地图标记。请获取完整版以创建更多标记。
@@ -159,24 +158,24 @@ dialogs:
     editSignal:
         title: 设置信号
         descItems: "选择一个预定义的项目:"
-        descShortKey: ... 或者输入图形的 <strong>短代码</strong> (您可以 <link>点击这里</link> 生成短代码)
+        descShortKey: ... 或者输入图形的 <strong>短代码</strong> (您可以 <link>点击这里</link> 生成短代码！)
     renameSavegame:
         title: 重命名游戏存档
         desc: 您可以在此重命名游戏存档。
     tutorialVideoAvailable:
         title: 教程
-        desc: 这个关卡有视频攻略! 您想查看这个视频攻略?
+        desc: 这个关卡有视频攻略! 您想查看这个视频攻略吗?
     tutorialVideoAvailableForeignLanguage:
         title: 教程
-        desc: 这个关卡有英语版本的视频攻略! 您想查看这个视频攻略吗??
+        desc: 这个关卡有英语版本的视频攻略! 您想查看这个视频攻略吗?
     editConstantProducer:
         title: 设置项目
     puzzleLoadFailed:
         title: 谜题载入失败
-        desc: 谜题未能载入：
+        desc: 谜题未能载入！
     submitPuzzle:
         title: 提交谜题
-        descName: 为您的谜题命名：
+        descName: 为您的谜题命名！
         descIcon: 请输入唯一的短代码，它将作为您的谜题图标显示（您可以在<link>这里</link>生成,或者从以下随机推荐的图形中选择一个）：
         placeholderName: 谜题标题
     puzzleResizeBadBuildings:
@@ -184,16 +183,16 @@ dialogs:
         desc: 由于某些设施将会超出区域范围，因此您无法将区域变得更小。
     puzzleLoadError:
         title: 谜题出错！
-        desc: 谜题未能载入：
+        desc: 谜题未能载入！
     offlineMode:
         title: 离线模式
         desc: 无法访问服务器，所以游戏以离线模式进行。请确认您的互联网访问正常。
     puzzleDownloadError:
         title: 下载出错！
-        desc: 无法下载谜题：
+        desc: 无法下载谜题！
     puzzleSubmitError:
         title: 提交出错！
-        desc: 无法提交谜题：
+        desc: 无法提交谜题！
     puzzleSubmitOk:
         title: 谜题成功发布！
         desc: 恭喜！您的谜题已经成功发布，其他玩家已经可以玩到。您可以在“我的谜题”中找到自己已发布的谜题。
@@ -217,7 +216,7 @@ dialogs:
         desc: 此谜已被标记！
     puzzleReportError:
         title: 上报失败
-        desc: 无法处理您的上报：
+        desc: 无法处理您的上报！
     puzzleLoadShortKey:
         title: 输入短代码
         desc: 输入谜题的短代码并载入。
@@ -307,7 +306,8 @@ ingame:
     interactiveTutorial:
         title: 新手教程
         hints:
-            1_1_extractor: 在<strong>圆形</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
+            1_1_extractor: 亲爱的玩家，欢迎来到<strong>《图形工厂》<strong>！在这里你可以通过创造各种图形设施与传送带模拟流水线生产，尽情发挥创造力，创办属于自己的工厂！<br><br>
+                在<strong>圆形<strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
             1_2_conveyor: 用<strong>传送带</strong>将您的开采器连接到中心基地上！<br><br>提示：选中<strong>传送带</strong>后<strong>按下鼠标左键可拖动</strong>布置传送带！
             1_3_expand: 您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
                 提示：按住 <strong>SHIFT</strong>
@@ -345,7 +345,7 @@ ingame:
     watermark:
         title: 试玩版
         desc: 点击这里了解完整版内容
-        get_on_steam: 在Steam商城购买
+        get_on_steam: 购买完整版！
     standaloneAdvantages:
         title: 购买完整版！
         no_thanks: 不需要，谢谢
@@ -395,7 +395,7 @@ ingame:
             - 6.谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
     puzzleCompletion:
         title: 谜题挑战成功！
-        titleLike: 喜欢此谜题的话，请为它点赞：
+        titleLike: 喜欢此谜题的话，请为它点赞。
         titleRating: 您觉得此谜题难度如何？
         titleRatingDesc: 您的评分将帮助作者在未来创作出更好的谜题！
         continueBtn: 继续游戏
@@ -485,16 +485,16 @@ buildings:
         deliver: 交付
         toUnlock: 解锁
         levelShortcut: 关卡
-        endOfDemo: 试玩版结束
+        endOfDemo: 试玩版结束！
     wire:
         default:
             name: 电线
             description: 可用来传输<strong>信号<strong>，信号可以是物品，颜色或者开关值（0或1）。
-                不同颜色的<strong>电线</strong>不会互相连接
+                不同颜色的<strong>电线</strong>不会互相连接。
         second:
             name: 电线
             description: 可用来传输<strong>信号<strong>，信号可以是物品，颜色或者开关值（0或1）。
-                不同颜色的<strong>电线</strong>不会互相连接
+                不同颜色的<strong>电线</strong>不会互相连接。
     balancer:
         default:
             name: 平衡器
@@ -583,7 +583,7 @@ buildings:
             description: 模拟将右侧<strong>图形</strong>叠在左侧<strong>图形</strong>上。
         painter:
             name: 模拟上色器
-            description: 模拟使用右侧输入的<strong>颜色</strong>给底部输入的<strong>图形</strong>上色
+            description: 模拟使用右侧输入的<strong>颜色</strong>给底部输入的<strong>图形</strong>上色。
     item_producer:
         default:
             name: 物品生成器
@@ -612,7 +612,7 @@ storyRewards:
     reward_painter:
         title: 上色
         desc: 恭喜！您解锁了<strong>上色器</strong>。开采一些颜色 (就像您开采图形一样)，将其在上色器中与图形结合来将图形上色！
-            <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>
+            <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>。
     reward_mixer:
         title: 混合颜色
         desc: 恭喜！您解锁了<strong>混色器</strong>。它使用<strong>叠加混色法</strong>将两种颜色混合起来。
@@ -705,7 +705,7 @@ storyRewards:
             您也可以输入开关值（1 / 0）信号来激活或者禁用它。
     reward_demo_end:
         title: 试玩结束
-        desc: 恭喜！您已经通关了试玩版本！ <br>更多挑战，请至Steam商城购买完整版！谢谢支持！
+        desc: 恭喜！您已经通关了试玩版本！ <br>更多挑战，请购买完整版！谢谢支持！
 settings:
     title: 设置
     categories:
@@ -806,10 +806,10 @@ settings:
             description: 每一类设施都会记住各自上一次的旋转方向。如果您经常在不同设施类型之间切换，这个设置会让游戏操控更加便捷。
         soundVolume:
             title: 音效音量
-            description: 设置音效的音量
+            description: 设置音效的音量。
         musicVolume:
             title: 音乐音量
-            description: 设置音乐的音量
+            description: 设置音乐的音量。
         lowQualityMapResources:
             title: 低质量地图资源
             description: 放大时简化地图上资源的渲染以提高性能。开启甚至会让画面看起来更干净，低配置电脑玩家建议开启！
@@ -881,7 +881,7 @@ keybindings:
         painter: 上色器
         trash: 垃圾桶
         rotateWhilePlacing: 顺时针旋转
-        rotateInverseModifier: "修饰键: 改为逆时针旋转"
+        rotateInverseModifier: "修饰键: 改为逆时针旋转。"
         cycleBuildingVariants: 切换所选择设施变体
         confirmMassDelete: 确认批量删除
         cycleBuildings: 切换所选择设施
@@ -896,7 +896,7 @@ keybindings:
         exportScreenshot: 导出截图
         mapMoveFaster: 快速移动
         lockBeltDirection: 启用传送带规划
-        switchDirectionLockSide: 规划器：换边
+        switchDirectionLockSide: 规划器：换边。
         pipette: 吸取器
         menuClose: 关闭菜单
         switchLayers: 切换层
@@ -915,7 +915,7 @@ keybindings:
         analyzer: 图形分析器
         comparator: 比较器
         item_producer: 物品生产器 (沙盒模式)
-        copyWireValue: 电线：复制指定电线上的值
+        copyWireValue: 电线：复制指定电线上的值。
         rotateToUp: 向上旋转
         rotateToDown: 向下旋转
         rotateToRight: 向右旋转
@@ -924,20 +924,14 @@ keybindings:
         goal_acceptor: 目标接收器
         block: 方块
         massSelectClear: 清除传送带
-        showShapeTooltip: 显示图形输出提示
+        showShapeTooltip: 显示图形输出提示。
 about:
     title: 关于游戏
-    body: >-
-        本游戏由 <a href="https://github.com/tobspr" target="_blank">Tobias
-        Springer</a>（我）开发，并且已经开源。<br><br>
-
-        如果您想参与开发，请查看 <a href="<githublink>" target="_blank">shapez.io on github</a>。<br><br>
-
-        这个游戏的开发获得了 Discord 社区内热情玩家的巨大支持。诚挚邀请您加入我们的 <a href="<discordlink>" target="_blank">Discord 服务器</a>！<br><br>
-
-        本游戏的音乐由 <a href="https://soundcloud.com/pettersumelius" target="_blank">Peppsen</a> 制作——他是个很棒的伙伴。<br><br>
-
-        最后，我想感谢我最好的朋友 <a href="https://github.com/niklas-dahl" target="_blank">Niklas</a> ——如果没有他的《异星工厂》（factorio）带给我的体验和启发，《异形工厂》（shapez.io）将不会存在。
+    body: |-
+        本游戏由托比亚斯开发，并且已经开源。<br><br>
+        这个游戏的开发获得了热情玩家的巨大支持。非常感谢！<br><br>
+        本游戏的音乐由佩普森制作——他是个很棒的伙伴。<br><br>
+        最后，我想感谢我最好的朋友尼可拉斯——如果没有他的《异星工厂》带给我的体验和启发，《图形工厂》将不会存在。
 changelog:
     title: 版本日志
 demo:
@@ -1001,7 +995,7 @@ tips:
     - 这个游戏有很多设置可以提高游戏效率，请一定要了解一下！
     - 中心基地有个指向它所在方向的小指南指针！
     - 想清理传送带，可剪切那块区域然后将其在相同位置粘贴。
-    - 按F4显示FPS。
+    - 按F4显示帧数。
     - 按两次F4显示您鼠标和镜头所在的块。
     - 您可以点击被固定在屏幕左侧的图形来解除固定。
     - 您可以点击被固定在屏幕左侧的图形来解除固定。
@@ -1015,7 +1009,7 @@ puzzleMenu:
     validatingPuzzle: 验证谜题
     submittingPuzzle: 提交谜题
     noPuzzles: 暂无满足此部分条件的谜题。
-    dlcHint: 如已购买DLC，请在您的Steam库中右键点击异形工厂，然后选择属性-DLC。
+    dlcHint: 如已购买资料片，请在您的游戏库中右键点击图形工厂，然后选择属性-资料片。
     categories:
         levels: 关卡
         new: 最新
@@ -1061,7 +1055,7 @@ puzzleMenu:
         autoComplete: 您的谜题已自动完成！请确认您的常量生成器没有直接向您的目标接收器进行传送。
 backendErrors:
     ratelimit: 您的操作太频繁了。请稍等。
-    invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的Api密钥）。
+    invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的密钥）。
     unauthorized: 与后台通信失败，请尝试更新或重新启动游戏（未经授权）。
     bad-token: 与后台通信失败，请尝试更新或重新启动游戏（令牌错误）。
     bad-id: 谜题标识符无效。
@@ -1079,5 +1073,5 @@ backendErrors:
     bad-payload: 此请求包含无效数据。
     bad-building-placement: 您的谜题包含放置错误的设施。
     timeout: 请求超时。
-    too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系support@shapez.io!
+    too-many-likes-already: 您的谜题已经得到了许多玩家的赞赏。如果您仍然希望删除它，请联系客服！
     no-permission: 您没有执行此操作的权限。
