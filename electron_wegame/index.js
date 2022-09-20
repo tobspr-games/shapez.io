@@ -18,7 +18,7 @@ const roamingFolder =
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
-let storePath = path.join(roamingFolder, "shapez.io", "saves");
+let storePath = path.join(roamingFolder, "shapez-wegame", "saves");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
