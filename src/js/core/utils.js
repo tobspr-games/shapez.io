@@ -289,10 +289,10 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator) {
     } else {
         if (G_WEGAME_VERSION) {
             if (num < 1000000) {
-                if (num < 100000) {
+                if (num < 10000) {
                     return sign + String(num).replace(".0", "").replace(".", separator);
                 } else {
-                    return sign + Math.round(num / 10000.0) + T.global.suffix.thousands;
+                    return sign + round2Digits(num / 10000.0) + T.global.suffix.thousands;
                 }
             }
         }
