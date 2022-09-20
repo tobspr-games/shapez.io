@@ -247,6 +247,16 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator) {
     if (num < 1000) {
         return sign + "" + num;
     } else {
+        if (G_WEGAME_VERSION) {
+            if (num < 1000000) {
+                if (num < 100000) {
+                    return sign + String(num).replace(".0", "").replace(".", separator);
+                } else {
+                    return sign + Math.round(num / 10000.0) + T.global.suffix.thousands;
+                }
+            }
+        }
+
         let leadingDigits = num;
         let suffix = "";
         for (let suffixIndex = 0; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {

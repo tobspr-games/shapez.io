@@ -33,9 +33,9 @@ export class StorageImplBrowser extends StorageInterface {
                 window.localStorage.setItem("storage_availability_test", "1");
                 window.localStorage.removeItem("storage_availability_test");
             } catch (e) {
-                alert(
-                    "It seems we don't have permission to write to local storage! Please update your browsers settings or use a different browser!"
-                );
+                // alert(
+                //     "It seems we don't have permission to write to local storage! Please update your browsers settings or use a different browser!"
+                // );
                 reject(LOCAL_STORAGE_NO_WRITE_PERMISSION);
                 return;
             }

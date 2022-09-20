@@ -263,7 +263,6 @@ export class MainMenuState extends GameState {
                             适度游戏益脑,沉迷游戏伤身。合理安排时间,享受健康生活。
                         </div>
 
-                        <div class="rating"></div>
                     </div>
                     `
                     : `
@@ -382,7 +381,7 @@ export class MainMenuState extends GameState {
                             closeLoader();
                             this.dialogs.showWarning(
                                 T.dialogs.importSavegameError.title,
-                                T.dialogs.importSavegameError.text + "<br><br>" + err
+                                T.dialogs.importSavegameError.text
                             );
                             return;
                         }
@@ -402,7 +401,7 @@ export class MainMenuState extends GameState {
                                 closeLoader();
                                 this.dialogs.showWarning(
                                     T.dialogs.importSavegameError.title,
-                                    T.dialogs.importSavegameError.text + ":<br><br>" + err
+                                    T.dialogs.importSavegameError.text
                                 );
                             }
                         );
@@ -410,7 +409,7 @@ export class MainMenuState extends GameState {
                     reader.addEventListener("error", error => {
                         this.dialogs.showWarning(
                             T.dialogs.importSavegameError.title,
-                            T.dialogs.importSavegameError.text + ":<br><br>" + error
+                            T.dialogs.importSavegameError.text
                         );
                     });
                     reader.readAsText(file, "utf-8");
@@ -433,10 +432,7 @@ export class MainMenuState extends GameState {
         this.dialogs.initializeToElement(dialogsElement);
 
         if (payload.loadError) {
-            this.dialogs.showWarning(
-                T.dialogs.gameLoadFailure.title,
-                T.dialogs.gameLoadFailure.text + "<br><br>" + payload.loadError
-            );
+            this.dialogs.showWarning(T.dialogs.gameLoadFailure.title, T.dialogs.gameLoadFailure.text);
         }
 
         if (G_IS_DEV && globalConfig.debug.testPuzzleMode) {
@@ -788,10 +784,7 @@ export class MainMenuState extends GameState {
                 })
 
                 .catch(err => {
-                    this.dialogs.showWarning(
-                        T.dialogs.gameLoadFailure.title,
-                        T.dialogs.gameLoadFailure.text + "<br><br>" + err
-                    );
+                    this.dialogs.showWarning(T.dialogs.gameLoadFailure.title, T.dialogs.gameLoadFailure.text);
                 });
         });
     }
@@ -868,7 +861,7 @@ export class MainMenuState extends GameState {
                 err => {
                     this.dialogs.showWarning(
                         T.dialogs.savegameDeletionError.title,
-                        T.dialogs.savegameDeletionError.text + "<br><br>" + err
+                        T.dialogs.savegameDeletionError.text
                     );
                 }
             );
