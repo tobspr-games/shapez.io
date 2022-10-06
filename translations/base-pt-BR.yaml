@@ -1101,9 +1101,9 @@ settings:
             description: Controla o tamanho das formas no mapa de panorama (quando afasta o
                 zoom).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Dica de ferramente de forma - Mostrar sempre
+            description: Deve sempre mostrar a dica de ferramenta de forma ao pairar sobre
+	        construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: New!
