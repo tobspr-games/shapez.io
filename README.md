@@ -1,17 +1,17 @@
-# shapez
-
-<a href="https://get.shapez.io/ghi" title="shapez on Steam">
-    <img src="https://i.imgur.com/ihW2bUE.png" alt="shapez Logo">
-</a>
-
-<br>
-
-## NEW: Shapez 2 is coming 2023!
+## NEW: Shapez 2!
 
 We are currently working on a successor to shapez, with 3D Graphics, Exploration, Layers, Mass transport, New Shape Mechanics, Research and a lot more! Be sure to check it out:
 
 <a href="https://tobspr.io/shapez-2" title="shapez 2">
     <img src="https://i.imgur.com/6T7UP3p.png" alt="shapez 2 Announcement">
+</a>
+
+<br>
+
+# shapez
+
+<a href="https://get.shapez.io/ghi" title="shapez on Steam">
+    <img src="https://i.imgur.com/ihW2bUE.png" alt="shapez Logo">
 </a>
 
 <hr>

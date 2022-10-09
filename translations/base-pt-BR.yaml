@@ -1102,8 +1102,9 @@ settings:
                 zoom).
         shapeTooltipAlwaysOn:
             title: Dica de ferramente de forma - Mostrar sempre
-            description: Deve sempre mostrar a dica de ferramenta de forma ao pairar sobre
-	        construções em vez de ter que segurar 'ALT'.
+            description: >-
+                Deve sempre mostrar a dica de ferramenta de forma ao pairar sobre
+                construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
     newBadge: New!

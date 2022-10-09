@@ -171,40 +171,41 @@
         @include S(grid-gap, 20px);
 
         .mainNews {
-            background: linear-gradient(220deg, rgb(248, 232, 130), rgb(248, 171, 90));
+            background: linear-gradient(220deg, rgb(74, 93, 201), rgb(93, 255, 150));
             &::before {
-                background: uiResource("kiwi_clicker.png") center center / 100% no-repeat;
+                background: uiResource("shapez2.png") center center / 100% no-repeat;
                 content: "";
-                @include S(width, 140px);
-                @include S(height, 140px);
+                @include S(width, 100px);
+                @include S(height, 100px);
                 position: absolute;
-                top: 50%;
-                right: -5%;
+                top: 55%;
+                right: 8%;
                 pointer-events: none;
                 transform: translateY(-50%);
                 transition: transform 0.5s ease-in-out;
             }
 
-            .close {
-                position: absolute;
-                pointer-events: all;
-                background: uiResource("icons/main_menu_exit.png") center center / 50% no-repeat;
-                display: inline-flex;
-                @include S(width, 15px);
-                @include S(height, 15px);
-                @include S(top, 2px);
-                opacity: 0.3;
-                @include S(right, 2px);
-                z-index: 200;
-                transition: opacity 0.12s ease-in-out;
-                &:hover {
-                    opacity: 0.7;
-                }
-            }
+            // .close {
+            //     position: absolute;
+            //     pointer-events: all;
+            //     background: uiResource("icons/main_menu_exit.png") center center / 50% no-repeat;
+            //     display: inline-flex;
+            //     @include S(width, 15px);
+            //     @include S(height, 15px);
+            //     @include S(top, 2px);
+            //     opacity: 0.3;
+            //     @include S(right, 2px);
+            //     z-index: 200;
+            //     transition: opacity 0.12s ease-in-out;
+            //     &:hover {
+            //         opacity: 0.7;
+            //     }
+            // }
 
             &:hover::before {
                 transform: translate(0, -51%);
             }
+
             box-shadow: 0 D(9px) D(15px) rgba(#000, 0.2);
             width: 100%;
             display: flex;
@@ -221,16 +222,16 @@
             @include S(padding, 10px);
             @include S(padding-right, 100px);
             box-sizing: border-box;
-
+            transition: opacity 0.12s ease-in-out;
             cursor: pointer;
             &:hover {
-                opacity: 0.95;
+                opacity: 0.85;
             }
 
             .text {
                 @include SuperSmallText;
-                @include S(width, 120px);
-                color: rgba(#000, 0.8);
+                @include S(width, 100px);
+                color: rgba(#000, 1);
             }
         }
 
@@ -253,6 +254,7 @@
 
             .onlinePlayerCount {
                 color: #333;
+                display: none;
                 @include S(margin-top, 15px);
                 @include SuperSmallText;
                 @include S(height, 15px);

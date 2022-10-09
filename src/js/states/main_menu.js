@@ -48,7 +48,7 @@ export class MainMenuState extends GameState {
             !G_GOG_VERSION;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
-        const hasSteamBridge = G_IS_STANDALONE && !G_GOG_VERSION;
+        const hasSteamBridge = G_IS_STANDALONE && !G_GOG_VERSION && !G_IS_STEAM_DEMO;
 
         let showExternalLinks = true;
 
@@ -78,15 +78,15 @@ export class MainMenuState extends GameState {
                 !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
-        const showKiwiClicker =
-            showExternalLinks && this.app.settings.getSetting("showKiwiClicker") && MODS.mods.length === 0;
+        const showShapez2 = showExternalLinks && MODS.mods.length === 0;
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
 
 
             <div class="points">
-                ${Object.entries(T.ingame.standaloneAdvantages.points)
+                ${Array.from(Object.entries(T.ingame.standaloneAdvantages.points))
+                    .slice(0, 6)
                     .map(
                         ([key, trans]) => `
                 <div class="point ${key}">
@@ -99,11 +99,6 @@ export class MainMenuState extends GameState {
             </div>
 
 
-            ${
-                G_IS_STEAM_DEMO
-                    ? `<span class="playtimeDisclaimer">${T.demoBanners.playtimeDisclaimer}</span>`
-                    : ""
-            }
             <a href="#" class="steamLink steam_dlbtn_0" target="_blank">
             ${
                 globalConfig.currentDiscount > 0
@@ -181,6 +176,14 @@ export class MainMenuState extends GameState {
                 <div class="sideContainer">
                     ${showDemoAdvertisement ? `<div class="standaloneBanner">${bannerHtml}</div>` : ""}
 
+                    ${
+                        showShapez2
+                            ? `<div class="mainNews shapez2">
+                        <div class="text">Shapez 2 will be coming soon!</div>
+
+                    </div>`
+                            : ""
+                    }
 
                 ${
                     showPuzzleDLC
@@ -206,15 +209,7 @@ export class MainMenuState extends GameState {
                         }
 
 
-                        ${
-                            showKiwiClicker
-                                ? `<div class="mainNews kiwiClicker">
-                            <div class="text">Check out this small side project I am working on right now!</div>
-                            <div class="close"></div>
 
-                        </div>`
-                                : ""
-                        }
                 `
                         : ""
                 }
@@ -466,8 +461,7 @@ export class MainMenuState extends GameState {
             ".exitAppButton": this.onExitAppButtonClicked,
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
-            ".kiwiClicker": this.onKiwiClickerClicked,
-            ".kiwiClicker .close": this.hideKiwiClicker,
+            ".shapez2": this.onShapez2Clicked,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -582,17 +576,8 @@ export class MainMenuState extends GameState {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage);
     }
 
-    onKiwiClickerClicked() {
-        this.app.platformWrapper.openExternalLink(
-            "https://store.steampowered.com/app/1980530/Kiwi_Clicker/?utm_medium=shapez"
-        );
-    }
-
-    hideKiwiClicker() {
-        this.app.settings.updateSetting("showKiwiClicker", false);
-        this.app.settings.save();
-        this.htmlElement.querySelector(".kiwiClicker").remove();
-        return STOP_PROPAGATION;
+    onShapez2Clicked() {
+        this.app.platformWrapper.openExternalLink("https://tobspr.io/shapez-2?utm_medium=shapez");
     }
 
     onBackButtonClicked() {

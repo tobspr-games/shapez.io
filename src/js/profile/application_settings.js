@@ -288,8 +288,6 @@ function initializeSettings() {
         new BoolSetting("lowQualityTextures", enumCategories.performance, (app, value) => {}),
 
         new BoolSetting("simplifiedBelts", enumCategories.performance, (app, value) => {}),
-
-        new BoolSetting("showKiwiClicker", null, (app, value) => {}),
     ];
 }
 
@@ -334,8 +332,6 @@ class SettingsStorage {
          * @type {Object.<string, number>}
          */
         this.keybindingOverrides = {};
-
-        this.showKiwiClicker = true;
     }
 }
 
@@ -705,7 +701,6 @@ export class ApplicationSettings extends ReadWriteProxy {
         }
 
         if (data.version < 32) {
-            data.settings.showKiwiClicker = true;
             data.version = 32;
         }
 
