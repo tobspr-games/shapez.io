@@ -179,7 +179,7 @@ export class MainMenuState extends GameState {
                     ${
                         showShapez2
                             ? `<div class="mainNews shapez2">
-                        <div class="text">Shapez 2 will be coming soon!</div>
+                        <div class="text">We are currently prototyping Shapez 2!</div>
 
                     </div>`
                             : ""
