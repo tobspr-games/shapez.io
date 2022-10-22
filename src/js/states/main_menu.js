@@ -271,7 +271,14 @@ export class MainMenuState extends GameState {
                 <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
 
                     <div class="socialLinks">
-
+                    ${
+                        showExternalLinks && !G_IS_STEAM_DEMO
+                            ? `<a class="patreonLink boxLink" target="_blank">
+                                    <span class="thirdpartyLogo patreonLogo"></span>
+                                    <span class="label">Patreon</span>
+                                </a>`
+                            : ""
+                    }
                     ${
                         showExternalLinks && (!G_IS_STANDALONE || G_IS_STEAM_DEMO)
                             ? `<a class="steamLinkSocial boxLink" target="_blank">
@@ -289,6 +296,7 @@ export class MainMenuState extends GameState {
                         </a>`
                             : ""
                     }
+
 
                     ${
                         showDiscordLink
@@ -309,12 +317,15 @@ export class MainMenuState extends GameState {
                     }
 
                     ${
+                        /*
                         showExternalLinks
                             ? `<a class="twitterLink boxLink" target="_blank">
                                     <span class="thirdpartyLogo twitterLogo"></span>
                                     <span class="label">Twitter</span>
                                 </a>`
                             : ""
+                            */
+                        ""
                     }
 
 
@@ -456,6 +467,7 @@ export class MainMenuState extends GameState {
             ".languageChoose": this.onLanguageChooseClicked,
             ".redditLink": this.onRedditClicked,
             ".twitterLink": this.onTwitterLinkClicked,
+            ".patreonLink": this.onPatreonLinkClicked,
             ".changelog": this.onChangelogClicked,
             ".helpTranslate": this.onTranslationHelpLinkClicked,
             ".exitAppButton": this.onExitAppButtonClicked,
@@ -609,6 +621,10 @@ export class MainMenuState extends GameState {
 
     onTwitterLinkClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.twitter);
+    }
+
+    onPatreonLinkClicked() {
+        this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.patreon);
     }
 
     onLanguageChooseClicked() {
@@ -893,7 +909,7 @@ export class MainMenuState extends GameState {
 
     onTranslationHelpLinkClicked() {
         this.app.platformWrapper.openExternalLink(
-            "https://github.com/tobspr/shapez.io/blob/master/translations"
+            "https://github.com/tobspr-games/shapez.io/blob/master/translations"
         );
     }
 

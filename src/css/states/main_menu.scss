@@ -1140,6 +1140,13 @@
                     background-size: 60%;
                     background-position: 60% 58%;
                 }
+
+                &.patreonLogo {
+                    background-image: uiResource("main_menu/patreon.svg");
+                    background-size: 60%;
+                    background-position: 60% 60%;
+                }
+
                 &.steamLogo {
                     background-image: uiResource("main_menu/steam.svg");
                     background-size: 105%;

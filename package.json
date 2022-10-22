@@ -2,7 +2,7 @@
     "name": "shapez.io",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/tobspr/shapez.io",
+    "repository": "https://github.com/tobspr-games/shapez.io",
     "author": "tobspr Games <hello@tobspr.io>",
     "license": "MIT",
     "private": true,

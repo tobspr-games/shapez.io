@@ -28,8 +28,8 @@ Your goal is to produce shapes by cutting, rotating, merging and painting parts 
 1. Ask in `#bugs` / `#feedback` / `#questions` on the [Official Discord](https://discord.com/invite/HN7EVzV) if you are not entirely sure if it's a bug
 2. Check out the trello board: https://trello.com/b/ISQncpJP/shapezio
 3. See if it's already there - If so, vote for it, done. I will see it. (You have to be signed in on trello)
-4. If not, check if it's already reported here: https://github.com/tobspr/shapez.io/issues
-5. If not, file a new issue here: https://github.com/tobspr/shapez.io/issues/new
+4. If not, check if it's already reported here: https://github.com/tobspr-games/shapez.io/issues
+5. If not, file a new issue here: https://github.com/tobspr-games/shapez.io/issues/new
 6. I will then have a look (This can take days or weeks) and convert it to trello, and comment with the link. You can then vote there ;)
 
 ## Building
@@ -55,7 +55,7 @@ You can use [Gitpod](https://www.gitpod.io/) (an Online Open Source VS Code-like
 -   install all of the dependencies.
 -   start `gulp` in `gulp/` directory.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/tobspr/shapez.io)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/tobspr-games/shapez.io)
 
 ## Helping translate
 
@@ -80,7 +80,7 @@ This project is based on ES5 (If I would develop it again, I would definitely us
 
 ### Assets
 
-You can find most assets <a href="//github.com/tobspr/shapez.io-artwork" target="_blank">here</a>.
+You can find most assets <a href="//github.com/tobspr-games/shapez.io-artwork" target="_blank">here</a>.
 
 All assets will be automatically rebuilt into the atlas once changed (Thanks to dengr1065!)
 

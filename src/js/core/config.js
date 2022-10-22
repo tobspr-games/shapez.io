@@ -15,11 +15,12 @@ const smoothCanvas = true;
 
 export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
-    github: "https://github.com/tobspr/shapez.io",
+    github: "https://github.com/tobspr-games/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
     shapeViewer: "https://viewer.shapez.io",
 
     twitter: "https://twitter.com/tobspr",
+    patreon: "https://www.patreon.com/tobsprgames",
     privacyPolicy: "https://tobspr.io/privacy.html",
 
     standaloneCampaignLink: "https://get.shapez.io/bundle/$campaign",
