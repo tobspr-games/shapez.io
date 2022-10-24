@@ -56,7 +56,7 @@ function gulptasksHTML($, gulp, buildFolder) {
                         document.head.appendChild(css);
 
                         // Google analytics
-                        if (googleAnalytics) {
+                        if (googleAnalytics && false) {
                             const tagManagerScript = document.createElement("script");
                             tagManagerScript.src =
                                 "https://www.googletagmanager.com/gtag/js?id=UA-165342524-1";
