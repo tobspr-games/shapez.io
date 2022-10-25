@@ -755,7 +755,7 @@ storyRewards:
     reward_painter_double:
         title: 2단 색칠기
         desc:
-            새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여
+            새로운 종류의 <strong>색칠기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여
             <strong>동시에 두 개의 도형을 색칠</strong>할 수 있습니다!
     reward_storage:
         title: 저장고
@@ -799,7 +799,7 @@ storyRewards:
             <strong>벨트 판독기</strong>가 잠금 해제되었습니다! 이제 벨트의 처리량을 확인할 수 있습니다.<br><br>그리고,
             전선이 잠금 해제될 때 까지 기다리신다면 정말 유용하게 사용할 수 있을 겁니다!
     reward_rotater_180:
-        title: 220도 회전기
+        title: 180도 회전기
         desc:
             <strong>180도 회전기</strong>가 잠금 해제되었습니다! 이제 도형을 바로 180도로 회전시킬 수 있습니다. (짜잔!
             :D)
