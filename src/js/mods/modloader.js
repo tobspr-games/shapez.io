@@ -263,7 +263,7 @@ export class ModLoader {
                     settings,
                     saveSettings: () => storage.writeFileAsync(modDataFile, JSON.stringify(mod.settings)),
                 });
-                mod.init();
+                await mod.init();
                 this.mods.push(mod);
             } catch (ex) {
                 console.error(ex);
