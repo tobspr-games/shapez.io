@@ -52,4 +52,14 @@ export class StorageInterface {
         // Default implementation does not allow deleting files
         return Promise.reject();
     }
+
+    /**
+     * Reveals a file in the file manager
+     * @param {string} filename
+     * @returns {Promise<void>}
+     */
+    revealFileAsync(filename) {
+        // Default implementation does not allow revealing files
+        return Promise.reject();
+    }
 }
