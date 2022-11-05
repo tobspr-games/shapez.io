@@ -335,6 +335,11 @@ ipcMain.handle("fs-job", async (event, job) => {
             return;
         }
 
+        case "reveal": {
+            shell.showItemInFolder(fname);
+            return;
+        }
+
         default:
             throw new Error("Unknown fs job: " + job.type);
     }

@@ -38,4 +38,11 @@ export class StorageImplElectron extends StorageInterface {
             filename,
         });
     }
+
+    revealFileAsync(filename) {
+        return ipcRenderer.invoke("fs-job", {
+            type: "reveal",
+            filename,
+        });
+    }
 }
