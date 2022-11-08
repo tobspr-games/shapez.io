@@ -206,6 +206,20 @@ declare interface TypedSignal<T extends Array<any>> {
 declare type Layer = "regular" | "wires";
 declare type ItemType = "shape" | "color" | "boolean";
 
+/** Used for A/B testing */
+declare function setAbt(abt): void;
+
+declare interface Location {
+    /**
+     * Reloads the current page.
+     *
+     * @deprecated
+     * @param forceGet Non-standard parameter to bypass the cache,
+     *        only supported in some version of Firefox.
+     */
+    reload(forceGet: boolean): void;
+}
+
 declare module "worker-loader?inline=true&fallback=false!*" {
     class WebpackWorker extends Worker {
         constructor();

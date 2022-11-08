@@ -40,7 +40,9 @@ export class PreloadState extends GameState {
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector("#ll_preload_status");
+        /** @type {HTMLElement} */
         this.progressElement = this.htmlElement.querySelector("#ll_progressbar span");
 
         this.startLoading();
@@ -94,7 +96,7 @@ export class PreloadState extends GameState {
     }
 
     startLoading() {
-        this.setStatus("Booting")
+        this.setStatus("Booting", 0)
             .then(() => {
                 try {
                     window.localStorage.setItem("local_storage_feature_detection", "1");
@@ -319,6 +321,7 @@ export class PreloadState extends GameState {
     /**
      *
      * @param {string} text
+     * @param {number} progress
      */
     setStatus(text, progress) {
         logger.log("✅ " + text);
