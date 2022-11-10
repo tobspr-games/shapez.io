@@ -96,9 +96,9 @@ mainMenu:
         warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者” DLC，请关闭所有游戏模组（Mods）。
     playingFullVersion: 您正在玩完整版游戏！
     logout: 登出
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: 未找到存档 - 点击"开始游戏"开始新游戏!
+    playFullVersionV2: 在Steam上买了shapez? 在浏览器玩完整版!
+    playFullVersionStandalone: 你现在也可以在浏览器玩完整版!
 dialogs:
     buttons:
         ok: 确认
