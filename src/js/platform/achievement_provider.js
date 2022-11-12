@@ -58,6 +58,17 @@ export const ACHIEVEMENTS = {
     upgradesTier8: "upgradesTier8",
 };
 
+export const HIDDEN_ACHIEVEMENTS = [
+    ACHIEVEMENTS.placeBp1000,
+    ACHIEVEMENTS.darkMode,
+    ACHIEVEMENTS.irrelevantShape,
+    ACHIEVEMENTS.logoBefore18,
+    ACHIEVEMENTS.mapMarkers15,
+    ACHIEVEMENTS.produceMsLogo,
+    ACHIEVEMENTS.belt500Tiles,
+    ACHIEVEMENTS.oldLevel17,
+];
+
 /** @type {keyof typeof THEMES} */
 const DARK_MODE = "dark";
 
@@ -87,6 +98,7 @@ export class AchievementProviderInterface {
     /** @param {Application} app */
     constructor(app) {
         this.app = app;
+        this.storage = null;
     }
 
     /**
@@ -167,101 +179,14 @@ export class AchievementCollection {
     /**
      * @param {function} activate - Resolves when provider activation is complete
      */
-    constructor(activate) {
+    constructor(activate, deactivate) {
         this.map = new Map();
         this.activate = activate;
+        this.deactivate = deactivate;
 
-        this.add(ACHIEVEMENTS.belt500Tiles, {
-            isValid: this.isBelt500TilesValid,
-            signal: "entityAdded",
-        });
-        this.add(ACHIEVEMENTS.blueprint100k, this.createBlueprintOptions(100000));
-        this.add(ACHIEVEMENTS.blueprint1m, this.createBlueprintOptions(1000000));
-        this.add(ACHIEVEMENTS.completeLvl26, this.createLevelOptions(26));
-        this.add(ACHIEVEMENTS.cutShape);
-        this.add(ACHIEVEMENTS.darkMode, {
-            isValid: this.isDarkModeValid,
-        });
-        this.add(ACHIEVEMENTS.destroy1000, {
-            isValid: this.isDestroy1000Valid,
-        });
-        this.add(ACHIEVEMENTS.irrelevantShape, {
-            isValid: this.isIrrelevantShapeValid,
-            signal: "shapeDelivered",
-        });
-        this.add(ACHIEVEMENTS.level100, this.createLevelOptions(100));
-        this.add(ACHIEVEMENTS.level50, this.createLevelOptions(50));
-        this.add(ACHIEVEMENTS.logoBefore18, {
-            isValid: this.isLogoBefore18Valid,
-            signal: "itemProduced",
-        });
-        this.add(ACHIEVEMENTS.mam, {
-            isValid: this.isMamValid,
-        });
-        this.add(ACHIEVEMENTS.mapMarkers15, {
-            isValid: this.isMapMarkers15Valid,
-        });
-        this.add(ACHIEVEMENTS.noBeltUpgradesUntilBp, {
-            isValid: this.isNoBeltUpgradesUntilBpValid,
-            signal: "storyGoalCompleted",
-        });
-        this.add(ACHIEVEMENTS.noInverseRotater, {
-            init: this.initNoInverseRotater,
-            isValid: this.isNoInverseRotaterValid,
-            signal: "storyGoalCompleted",
-        });
-        this.add(ACHIEVEMENTS.oldLevel17, this.createShapeOptions(SHAPE_OLD_LEVEL_17));
-        this.add(ACHIEVEMENTS.openWires, {
-            isValid: this.isOpenWiresValid,
-            signal: "editModeChanged",
-        });
-        this.add(ACHIEVEMENTS.paintShape);
-        this.add(ACHIEVEMENTS.place5000Wires, {
-            isValid: this.isPlace5000WiresValid,
-        });
-        this.add(ACHIEVEMENTS.placeBlueprint, {
-            isValid: this.isPlaceBlueprintValid,
-        });
-        this.add(ACHIEVEMENTS.placeBp1000, {
-            isValid: this.isPlaceBp1000Valid,
-        });
-        this.add(ACHIEVEMENTS.play1h, this.createTimeOptions(HOUR_1));
-        this.add(ACHIEVEMENTS.play10h, this.createTimeOptions(HOUR_10));
-        this.add(ACHIEVEMENTS.play20h, this.createTimeOptions(HOUR_20));
-        this.add(ACHIEVEMENTS.produceLogo, this.createShapeOptions(SHAPE_LOGO));
-        this.add(ACHIEVEMENTS.produceRocket, this.createShapeOptions(SHAPE_ROCKET));
-        this.add(ACHIEVEMENTS.produceMsLogo, this.createShapeOptions(SHAPE_MS_LOGO));
-        this.add(ACHIEVEMENTS.rotateShape);
-        this.add(ACHIEVEMENTS.speedrunBp30, this.createSpeedOptions(12, MINUTE_30));
-        this.add(ACHIEVEMENTS.speedrunBp60, this.createSpeedOptions(12, MINUTE_60));
-        this.add(ACHIEVEMENTS.speedrunBp120, this.createSpeedOptions(12, MINUTE_120));
-        this.add(ACHIEVEMENTS.stack4Layers, {
-            isValid: this.isStack4LayersValid,
-            signal: "itemProduced",
-        });
-        this.add(ACHIEVEMENTS.stackShape);
-        this.add(ACHIEVEMENTS.store100Unique, {
-            init: this.initStore100Unique,
-            isValid: this.isStore100UniqueValid,
-            signal: "shapeDelivered",
-        });
-        this.add(ACHIEVEMENTS.storeShape, {
-            init: this.initStoreShape,
-            isValid: this.isStoreShapeValid,
-        });
-        this.add(ACHIEVEMENTS.throughputBp25, this.createRateOptions(SHAPE_BP, 25));
-        this.add(ACHIEVEMENTS.throughputBp50, this.createRateOptions(SHAPE_BP, 50));
-        this.add(ACHIEVEMENTS.throughputLogo25, this.createRateOptions(SHAPE_LOGO, 25));
-        this.add(ACHIEVEMENTS.throughputLogo50, this.createRateOptions(SHAPE_LOGO, 50));
-        this.add(ACHIEVEMENTS.throughputRocket10, this.createRateOptions(SHAPE_ROCKET, 10));
-        this.add(ACHIEVEMENTS.throughputRocket20, this.createRateOptions(SHAPE_ROCKET, 20));
-        this.add(ACHIEVEMENTS.trash1000, {
-            init: this.initTrash1000,
-            isValid: this.isTrash1000Valid,
-        });
-        this.add(ACHIEVEMENTS.unlockWires, this.createLevelOptions(20));
-        this.add(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
-        this.add(ACHIEVEMENTS.upgradesTier8, this.createUpgradeOptions(8));
+        for (const key in ACHIEVEMENTS) {
+            this.add(ACHIEVEMENTS[key], this.getAchievementOptions(ACHIEVEMENTS[key]));
+        }
     }
 
     /** @param {GameRoot} root */
@@ -271,14 +196,7 @@ export class AchievementCollection {
         this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
 
         for (let [key, achievement] of this.map.entries()) {
-            if (achievement.signal) {
-                achievement.receiver = this.unlock.bind(this, key);
-                this.root.signals[achievement.signal].add(achievement.receiver);
-            }
-
-            if (achievement.init) {
-                achievement.init();
-            }
+            this.initializeAchievement(key, achievement);
         }
 
         if (!this.hasDefaultReceivers()) {
@@ -342,11 +260,56 @@ export class AchievementCollection {
         achievement
             .unlock()
             .then(() => {
+                if (this.map.has(key)) this.root.signals.achievementCompleted.dispatch(key, data);
                 this.onActivate(null, key);
             })
             .catch(err => {
                 this.onActivate(err, key);
             });
+    }
+
+    /**
+     * @param {string} key - Maps to an Achievement
+     */
+    preUnlock(key) {
+        if (!this.map.has(key)) {
+            return;
+        }
+
+        const achievement = this.map.get(key);
+
+        achievement
+            .unlock()
+            .then(() => {
+                this.onActivate(null, key);
+            })
+            .catch(err => {
+                this.onActivate(err, key);
+            });
+    }
+
+    /**
+     * @param {string} key - Maps to an Achievement
+     */
+    lock(key) {
+        this.add(key, this.getAchievementOptions(key));
+        this.initializeAchievement(key, this.map.get(key));
+        this.deactivate(key);
+    }
+
+    /**
+     * @param {string} key - Maps to an Achievement
+     * @param {Achievement} achievement - Achievement
+     */
+    initializeAchievement(key, achievement) {
+        if (achievement.signal) {
+            achievement.receiver = this.unlock.bind(this, key);
+            this.root.signals[achievement.signal].add(achievement.receiver);
+        }
+
+        if (achievement.init) {
+            achievement.init();
+        }
     }
 
     /**
@@ -391,6 +354,103 @@ export class AchievementCollection {
         }
 
         return false;
+    }
+
+    getAchievementOptions(key) {
+        const enum_achievement_mappings = {
+            [ACHIEVEMENTS.belt500Tiles]: {
+                isValid: this.isBelt500TilesValid,
+                signal: "entityAdded",
+            },
+            [ACHIEVEMENTS.blueprint100k]: this.createBlueprintOptions(100000),
+            [ACHIEVEMENTS.blueprint1m]: this.createBlueprintOptions(1000000),
+            [ACHIEVEMENTS.completeLvl26]: this.createLevelOptions(26),
+            [ACHIEVEMENTS.cutShape]: {},
+            [ACHIEVEMENTS.darkMode]: {
+                isValid: this.isDarkModeValid,
+            },
+            [ACHIEVEMENTS.destroy1000]: {
+                isValid: this.isDestroy1000Valid,
+            },
+            [ACHIEVEMENTS.irrelevantShape]: {
+                isValid: this.isIrrelevantShapeValid,
+                signal: "shapeDelivered",
+            },
+            [ACHIEVEMENTS.level100]: this.createLevelOptions(100),
+            [ACHIEVEMENTS.level50]: this.createLevelOptions(50),
+            [ACHIEVEMENTS.logoBefore18]: {
+                isValid: this.isLogoBefore18Valid,
+                signal: "itemProduced",
+            },
+            [ACHIEVEMENTS.mam]: {
+                isValid: this.isMamValid,
+            },
+            [ACHIEVEMENTS.mapMarkers15]: {
+                isValid: this.isMapMarkers15Valid,
+            },
+            [ACHIEVEMENTS.noBeltUpgradesUntilBp]: {
+                isValid: this.isNoBeltUpgradesUntilBpValid,
+                signal: "storyGoalCompleted",
+            },
+            [ACHIEVEMENTS.noInverseRotater]: {
+                init: this.initNoInverseRotater,
+                isValid: this.isNoInverseRotaterValid,
+                signal: "storyGoalCompleted",
+            },
+            [ACHIEVEMENTS.oldLevel17]: this.createShapeOptions(SHAPE_OLD_LEVEL_17),
+            [ACHIEVEMENTS.openWires]: {
+                isValid: this.isOpenWiresValid,
+                signal: "editModeChanged",
+            },
+            [ACHIEVEMENTS.paintShape]: {},
+            [ACHIEVEMENTS.place5000Wires]: {
+                isValid: this.isPlace5000WiresValid,
+            },
+            [ACHIEVEMENTS.placeBlueprint]: {
+                isValid: this.isPlaceBlueprintValid,
+            },
+            [ACHIEVEMENTS.placeBp1000]: {
+                isValid: this.isPlaceBp1000Valid,
+            },
+            [ACHIEVEMENTS.play1h]: this.createTimeOptions(HOUR_1),
+            [ACHIEVEMENTS.play10h]: this.createTimeOptions(HOUR_10),
+            [ACHIEVEMENTS.play20h]: this.createTimeOptions(HOUR_20),
+            [ACHIEVEMENTS.produceLogo]: this.createShapeOptions(SHAPE_LOGO),
+            [ACHIEVEMENTS.produceRocket]: this.createShapeOptions(SHAPE_ROCKET),
+            [ACHIEVEMENTS.produceMsLogo]: this.createShapeOptions(SHAPE_MS_LOGO),
+            [ACHIEVEMENTS.rotateShape]: {},
+            [ACHIEVEMENTS.speedrunBp30]: this.createSpeedOptions(12, MINUTE_30),
+            [ACHIEVEMENTS.speedrunBp60]: this.createSpeedOptions(12, MINUTE_60),
+            [ACHIEVEMENTS.speedrunBp120]: this.createSpeedOptions(12, MINUTE_120),
+            [ACHIEVEMENTS.stack4Layers]: {
+                isValid: this.isStack4LayersValid,
+                signal: "itemProduced",
+            },
+            [ACHIEVEMENTS.stackShape]: {},
+            [ACHIEVEMENTS.store100Unique]: {
+                init: this.initStore100Unique,
+                isValid: this.isStore100UniqueValid,
+                signal: "shapeDelivered",
+            },
+            [ACHIEVEMENTS.storeShape]: {
+                init: this.initStoreShape,
+                isValid: this.isStoreShapeValid,
+            },
+            [ACHIEVEMENTS.throughputBp25]: this.createRateOptions(SHAPE_BP, 25),
+            [ACHIEVEMENTS.throughputBp50]: this.createRateOptions(SHAPE_BP, 50),
+            [ACHIEVEMENTS.throughputLogo25]: this.createRateOptions(SHAPE_LOGO, 25),
+            [ACHIEVEMENTS.throughputLogo50]: this.createRateOptions(SHAPE_LOGO, 50),
+            [ACHIEVEMENTS.throughputRocket10]: this.createRateOptions(SHAPE_ROCKET, 25),
+            [ACHIEVEMENTS.throughputRocket20]: this.createRateOptions(SHAPE_ROCKET, 50),
+            [ACHIEVEMENTS.trash1000]: {
+                init: this.initTrash1000,
+                isValid: this.isTrash1000Valid,
+            },
+            [ACHIEVEMENTS.unlockWires]: this.createLevelOptions(20),
+            [ACHIEVEMENTS.upgradesTier5]: this.createUpgradeOptions(5),
+            [ACHIEVEMENTS.upgradesTier8]: this.createUpgradeOptions(8),
+        };
+        return enum_achievement_mappings[key];
     }
 
     /*
