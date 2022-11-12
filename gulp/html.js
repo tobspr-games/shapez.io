@@ -18,12 +18,7 @@ function computeIntegrityHash(fullPath, algorithm = "sha256") {
  */
 function gulptasksHTML($, gulp, buildFolder) {
     const commitHash = buildUtils.getRevision();
-    async function buildHtml({
-        googleAnalytics = false,
-        standalone = false,
-        integrity = true,
-        enableCachebust = true,
-    }) {
+    async function buildHtml({ standalone = false, integrity = true, enableCachebust = true }) {
         function cachebust(url) {
             if (enableCachebust) {
                 return buildUtils.cachebust(url, commitHash);
@@ -165,7 +160,6 @@ function gulptasksHTML($, gulp, buildFolder) {
         const data = BUILD_VARIANTS[variant];
         gulp.task("html." + variant + ".dev", () => {
             return buildHtml({
-                googleAnalytics: false,
                 standalone: data.standalone,
                 integrity: false,
                 enableCachebust: false,
@@ -173,7 +167,6 @@ function gulptasksHTML($, gulp, buildFolder) {
         });
         gulp.task("html." + variant + ".prod", () => {
             return buildHtml({
-                googleAnalytics: !data.standalone,
                 standalone: data.standalone,
                 integrity: true,
                 enableCachebust: !data.standalone,
