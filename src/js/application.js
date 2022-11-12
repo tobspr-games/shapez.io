@@ -153,12 +153,8 @@ export class Application {
 
         Loader.linkAppAfterBoot(this);
 
-        if (G_WEGAME_VERSION) {
-            this.stateMgr.moveToState("WegameSplashState");
-        }
-
         // Check for mobile
-        else if (IS_MOBILE) {
+        if (IS_MOBILE) {
             this.stateMgr.moveToState("MobileWarningState");
         } else {
             this.stateMgr.moveToState("PreloadState");

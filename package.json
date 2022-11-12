@@ -7,7 +7,7 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cd gulp && yarn gulp main.serveDev",
+        "dev": "cd gulp && yarn gulp",
         "devStandalone": "cd gulp && yarn gulp main.serveStandalone",
         "tslint": "cd src/js && tsc",
         "lint": "eslint src/js",

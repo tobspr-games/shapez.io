@@ -55,24 +55,6 @@ function gulptasksHTML($, gulp, buildFolder) {
                         }
                         document.head.appendChild(css);
 
-                        // Google analytics
-                        if (googleAnalytics && false) {
-                            const tagManagerScript = document.createElement("script");
-                            tagManagerScript.src =
-                                "https://www.googletagmanager.com/gtag/js?id=UA-165342524-1";
-                            tagManagerScript.setAttribute("async", "");
-                            document.head.appendChild(tagManagerScript);
-
-                            const initScript = document.createElement("script");
-                            initScript.textContent = `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'UA-165342524-1', { anonymize_ip: true });
-                        `;
-                            document.head.appendChild(initScript);
-                        }
-
                         // Do not need to preload in app or standalone
                         if (!hasLocalFiles) {
                             // Preload essentials

@@ -41,8 +41,7 @@ export const THIRDPARTY_URLS = {
  */
 export function openStandaloneLink(app, campaign) {
     const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-    const steamSuffix = G_IS_STEAM_DEMO ? "_steamdemo" : "";
-    const event = campaign + discount + steamSuffix;
+    const event = campaign + discount;
     app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneCampaignLink.replace("$campaign", event));
     app.gameAnalytics.noteMinor("g.stdlink." + event);
 }

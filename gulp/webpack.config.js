@@ -5,14 +5,7 @@ const webpack = require("webpack");
 const { getRevision, getVersion, getAllResourceImages } = require("./buildutils");
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
-module.exports = ({
-    watch = false,
-    standalone = false,
-    chineseVersion = false,
-    wegameVersion = false,
-    steamDemo = false,
-    gogVersion = false,
-}) => {
+module.exports = ({ watch = false, standalone = false }) => {
     return {
         mode: "development",
         devtool: "cheap-source-map",
@@ -37,14 +30,10 @@ module.exports = ({
                     "window.assert(false, 'abstract method called of: ' + (this.name || (this.constructor && this.constructor.name)));",
                 G_HAVE_ASSERT: "true",
                 G_APP_ENVIRONMENT: JSON.stringify("dev"),
-                G_CHINA_VERSION: JSON.stringify(chineseVersion),
-                G_WEGAME_VERSION: JSON.stringify(wegameVersion),
-                G_GOG_VERSION: JSON.stringify(gogVersion),
                 G_IS_DEV: "true",
                 G_IS_RELEASE: "false",
                 G_IS_BROWSER: "true",
                 G_IS_STANDALONE: JSON.stringify(standalone),
-                G_IS_STEAM_DEMO: JSON.stringify(steamDemo),
                 G_BUILD_TIME: "" + new Date().getTime(),
                 G_BUILD_COMMIT_HASH: JSON.stringify(getRevision()),
                 G_BUILD_VERSION: JSON.stringify(getVersion()),

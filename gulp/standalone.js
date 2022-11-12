@@ -36,8 +36,6 @@ function gulptasksStandalone($, gulp) {
             const requiredFiles = [
                 path.join(electronBaseDir, "node_modules", "**", "*.*"),
                 path.join(electronBaseDir, "node_modules", "**", ".*"),
-                path.join(electronBaseDir, "wegame_sdk", "**", "*.*"),
-                path.join(electronBaseDir, "wegame_sdk", "**", ".*"),
                 path.join(electronBaseDir, "favicon*"),
             ];
             return gulp.src(requiredFiles, { base: electronBaseDir }).pipe(gulp.dest(tempDestBuildDir));

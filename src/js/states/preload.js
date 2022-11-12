@@ -40,7 +40,9 @@ export class PreloadState extends GameState {
         this.lastHintShown = -1000;
         this.nextHintDuration = 0;
 
+        /** @type {HTMLElement} */
         this.statusText = this.htmlElement.querySelector("#ll_preload_status");
+        /** @type {HTMLElement} */
         this.progressElement = this.htmlElement.querySelector("#ll_progressbar span");
 
         this.startLoading();
@@ -63,7 +65,7 @@ export class PreloadState extends GameState {
     }
 
     async sendBeacon() {
-        if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
+        if (G_IS_STANDALONE) {
             return;
         }
         if (queryParamOptions.campaign) {
@@ -158,10 +160,6 @@ export class PreloadState extends GameState {
 
             .then(() => this.setStatus("Initializing language", 25))
             .then(() => {
-                if (G_CHINA_VERSION || G_WEGAME_VERSION) {
-                    return this.app.settings.updateLanguage("zh-CN");
-                }
-
                 if (this.app.settings.getLanguage() === "auto-detect") {
                     const language = autoDetectLanguageId();
                     logger.log("Setting language to", language);
@@ -222,11 +220,7 @@ export class PreloadState extends GameState {
                     return;
                 }
 
-                if (G_CHINA_VERSION || G_WEGAME_VERSION) {
-                    return;
-                }
-
-                if (G_IS_STEAM_DEMO || !G_IS_STANDALONE) {
+                if (!G_IS_STANDALONE) {
                     return;
                 }
 
@@ -289,9 +283,6 @@ export class PreloadState extends GameState {
     }
 
     update() {
-        if (G_CHINA_VERSION || G_WEGAME_VERSION) {
-            return;
-        }
         const now = performance.now();
         if (now - this.lastHintShown > this.nextHintDuration) {
             this.lastHintShown = now;
@@ -323,9 +314,6 @@ export class PreloadState extends GameState {
     setStatus(text, progress) {
         logger.log("✅ " + text);
 
-        if (G_CHINA_VERSION || G_WEGAME_VERSION) {
-            return Promise.resolve();
-        }
         this.currentStatus = text;
         this.statusText.innerText = text;
         this.progressElement.style.width = 80 + (progress / 100) * 20 + "%";

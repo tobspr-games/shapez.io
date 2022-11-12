@@ -27,7 +27,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                 .pipe(
                     $.webpackStream(
                         requireUncached("./webpack.config.js")({
-                            ...data.buildArgs,
                             standalone: data.standalone,
                             watch: true,
                         })
@@ -43,13 +42,7 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
             gulp.task("js." + variant + ".dev", () => {
                 return gulp
                     .src("../src/js/main.js")
-                    .pipe(
-                        $.webpackStream(
-                            requireUncached("./webpack.config.js")({
-                                ...data.buildArgs,
-                            })
-                        )
-                    )
+                    .pipe($.webpackStream(requireUncached("./webpack.config.js")()))
                     .pipe(gulp.dest(buildFolder));
             });
 
@@ -61,7 +54,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                             requireUncached("./webpack.production.config.js")({
                                 es6: false,
                                 environment: data.environment,
-                                ...data.buildArgs,
                             })
                         )
                     )
@@ -77,7 +69,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                             requireUncached("./webpack.production.config.js")({
                                 es6: true,
                                 environment: data.environment,
-                                ...data.buildArgs,
                             })
                         )
                     )
@@ -98,7 +89,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     .pipe(
                         $.webpackStream(
                             requireUncached("./webpack.config.js")({
-                                ...data.buildArgs,
                                 standalone: true,
                             })
                         )
@@ -111,7 +101,6 @@ function gulptasksJS($, gulp, buildFolder, browserSync) {
                     .pipe(
                         $.webpackStream(
                             requireUncached("./webpack.production.config.js")({
-                                ...data.buildArgs,
                                 environment: "prod",
                                 es6: true,
                                 standalone: true,

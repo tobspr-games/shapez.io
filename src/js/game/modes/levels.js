@@ -5,7 +5,6 @@ import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export const finalGameShape = "RuCw--Cw:----Ru--";
-const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -255,7 +254,7 @@ const STANDALONE_LEVELS = () => [
     // 13
     // Tunnel Tier 2
     {
-        shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw", // painting t3
+        shape: "RpRpRpRp:CwCwCwCw", // painting t3
         required: 3800,
         reward: enumHubGoalRewards.reward_underground_belt_tier_2,
     },
@@ -288,7 +287,7 @@ const STANDALONE_LEVELS = () => [
     // 17
     // Double painter
     {
-        shape: chinaShapes ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu" : "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
+        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb", // miner t4 (two variants)
         required: 20000,
         reward: enumHubGoalRewards.reward_painter_double,
     },
@@ -328,7 +327,7 @@ const STANDALONE_LEVELS = () => [
     // 22
     // Constant signal
     {
-        shape: chinaShapes ? "RrSySrSy:RyCrCwCr:CyCyRyCy" : "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
+        shape: "Cg----Cr:Cw----Cw:Sy------:Cy----Cy",
         required: 25000,
         reward: enumHubGoalRewards.reward_constant_signal,
     },
@@ -336,14 +335,14 @@ const STANDALONE_LEVELS = () => [
     // 23
     // Display
     {
-        shape: chinaShapes ? "CrCrCrCr:CwCwCwCw:WwWwWwWw:CrCrCrCr" : "CcSyCcSy:SyCcSyCc:CcSyCcSy",
+        shape: "CcSyCcSy:SyCcSyCc:CcSyCcSy",
         required: 25000,
         reward: enumHubGoalRewards.reward_display,
     },
 
     // 24 Logic gates
     {
-        shape: chinaShapes ? "Su----Su:RwRwRwRw:Cu----Cu:CwCwCwCw" : "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
+        shape: "CcRcCcRc:RwCwRwCw:Sr--Sw--:CyCyCyCy",
         required: 25000,
         reward: enumHubGoalRewards.reward_logic_gates,
     },
@@ -367,9 +366,7 @@ const STANDALONE_LEVELS = () => [
  * Generates the level definitions
  */
 export function generateLevelsForVariant(app) {
-    if (G_IS_STEAM_DEMO) {
-        return STEAM_DEMO_LEVELS();
-    } else if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
+    if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return STANDALONE_LEVELS();
     }
     return WEB_DEMO_LEVELS(app);

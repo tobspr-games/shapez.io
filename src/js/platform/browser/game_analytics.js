@@ -17,7 +17,7 @@ const logger = createLogger("game_analytics");
 const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
 
 // Be sure to increment the ID whenever it changes
-const analyticsLocalFile = G_IS_STEAM_DEMO ? "shapez_token_steamdemo.bin" : "shapez_token_123.bin";
+const analyticsLocalFile = "shapez_token_123.bin";
 
 const CURRENT_ABT = "abt_bsl2";
 const CURRENT_ABT_COUNT = 1;
@@ -31,10 +31,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     get environment() {
         if (G_IS_DEV) {
             return "dev";
-        }
-
-        if (G_IS_STEAM_DEMO) {
-            return "steam-demo";
         }
 
         if (G_IS_STANDALONE) {
@@ -114,10 +110,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     initialize() {
         this.syncKey = null;
 
-        if (G_WEGAME_VERSION) {
-            return;
-        }
-
         window.setAbt = abt => {
             this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", String(abt));
             window.location.reload();
@@ -158,7 +150,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
 
                         let authTicket = Promise.resolve(undefined);
 
-                        if (G_IS_STANDALONE && !G_IS_STEAM_DEMO) {
+                        if (G_IS_STANDALONE) {
                             logger.log("Will retrieve auth ticket");
                             authTicket = ipcRenderer.invoke("steam:get-ticket");
                         }
@@ -173,7 +165,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                                         environment: this.environment,
                                         standalone:
                                             G_IS_STANDALONE &&
-                                            !G_IS_STEAM_DEMO &&
                                             this.app.achievementProvider instanceof SteamAchievementProvider,
                                         commit: G_BUILD_COMMIT_HASH,
                                         ticket,
@@ -221,10 +212,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @returns {Promise<any>}
      */
     sendToApi(endpoint, data) {
-        if (G_WEGAME_VERSION) {
-            return Promise.resolve();
-        }
-
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
 
@@ -263,10 +250,6 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @param {string} value
      */
     sendGameEvent(category, value) {
-        if (G_WEGAME_VERSION) {
-            return;
-        }
-
         if (G_IS_DEV) {
             return;
         }

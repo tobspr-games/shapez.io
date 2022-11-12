@@ -694,10 +694,6 @@ const romanLiteralsCache = ["0"];
  * @returns {string}
  */
 export function getRomanNumber(number) {
-    if (G_WEGAME_VERSION) {
-        return String(number);
-    }
-
     number = Math.max(0, Math.round(number));
     if (romanLiteralsCache[number]) {
         return romanLiteralsCache[number];
@@ -753,18 +749,6 @@ export function getRomanNumber(number) {
  * Returns the appropriate logo sprite path
  */
 export function getLogoSprite() {
-    if (G_WEGAME_VERSION) {
-        return "logo_wegame.png";
-    }
-
-    if (G_IS_STEAM_DEMO) {
-        return "logo_demo.png";
-    }
-
-    if (G_CHINA_VERSION) {
-        return "logo_cn.png";
-    }
-
     if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return "logo.png";
     }

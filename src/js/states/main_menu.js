@@ -39,43 +39,25 @@ export class MainMenuState extends GameState {
     }
 
     getInnerHTML() {
-        const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
-        const showPuzzleDLC =
-            !G_WEGAME_VERSION &&
-            (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) &&
-            !G_IS_STEAM_DEMO &&
-            !G_GOG_VERSION;
-        const showWegameFooter = G_WEGAME_VERSION;
+        const showPuzzleDLC = G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED;
         const hasMods = MODS.anyModsActive();
-        const hasSteamBridge = !G_GOG_VERSION && !G_IS_STEAM_DEMO;
 
         let showExternalLinks = true;
 
-        if (G_IS_STANDALONE) {
-            if (G_WEGAME_VERSION || G_CHINA_VERSION) {
-                showExternalLinks = false;
-            }
-        } else {
+        if (!G_IS_STANDALONE) {
             const wrapper = /** @type {PlatformWrapperImplBrowser} */ (this.app.platformWrapper);
             if (!wrapper.embedProvider.externalLinks) {
                 showExternalLinks = false;
             }
         }
 
-        let showDiscordLink = showExternalLinks;
-        if (G_CHINA_VERSION) {
-            showDiscordLink = true;
-        }
-
         const showDemoAdvertisement =
-            (showExternalLinks || G_CHINA_VERSION) &&
-            this.app.restrictionMgr.getIsStandaloneMarketingActive();
+            showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
 
         const ownsPuzzleDLC =
             WEB_STEAM_SSO_AUTHENTICATED ||
             (G_IS_STANDALONE &&
-                !G_IS_STEAM_DEMO &&
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
         const showShapez2 = showExternalLinks && MODS.mods.length === 0;
@@ -110,17 +92,12 @@ export class MainMenuState extends GameState {
             }
                 Play shapez on Steam
             </a>
-            ${!G_IS_STEAM_DEMO ? `<div class="onlinePlayerCount"></div>` : ""}
-
+            <div class="onlinePlayerCount"></div>
         `;
 
         return `
             <div class="topButtons">
-                ${
-                    showLanguageIcon
-                        ? `<button aria-label="Choose Language" class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>`
-                        : ""
-                }
+                <button aria-label="Choose Language" class="languageChoose" data-languageicon="${this.app.settings.getLanguage()}"></button>
 
                 <button class="settingsButton" aria-label="Settings"></button>
                 ${showExitAppButton ? `<button class="exitAppButton" aria-label="Exit App"></button>` : ""}
@@ -144,7 +121,7 @@ export class MainMenuState extends GameState {
                     <div class="buttons"></div>
                     <div class="savegamesMount"></div>
                     ${
-                        hasSteamBridge && (G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED)
+                        G_IS_STANDALONE || !WEB_STEAM_SSO_AUTHENTICATED
                             ? `<div class="steamSso">
                                 <span class="description">${
                                     G_IS_STANDALONE
@@ -158,7 +135,7 @@ export class MainMenuState extends GameState {
                             : ""
                     }
                     ${
-                        hasSteamBridge && WEB_STEAM_SSO_AUTHENTICATED
+                        WEB_STEAM_SSO_AUTHENTICATED
                             ? `
                             <div class="steamSso">
                                 <span class="description">${T.mainMenu.playingFullVersion}</span>
@@ -252,27 +229,11 @@ export class MainMenuState extends GameState {
 
             </div>
 
-            ${
-                showWegameFooter
-                    ? `
-                <div class='footer wegameDisclaimer'>
-                        <div class="disclaimer">
-                            健康游戏忠告
-                            <br>
-                            抵制不良游戏,拒绝盗版游戏。注意自我保护,谨防受骗上当。<br>
-                            适度游戏益脑,沉迷游戏伤身。合理安排时间,享受健康生活。
-                        </div>
-
-                        <div class="rating"></div>
-                    </div>
-                    `
-                    : `
-
                 <div class="footer ${showExternalLinks ? "" : "noLinks"} ">
 
                     <div class="socialLinks">
                     ${
-                        showExternalLinks && !G_IS_STEAM_DEMO
+                        showExternalLinks
                             ? `<a class="patreonLink boxLink" target="_blank">
                                     <span class="thirdpartyLogo patreonLogo"></span>
                                     <span class="label">Patreon</span>
@@ -280,7 +241,7 @@ export class MainMenuState extends GameState {
                             : ""
                     }
                     ${
-                        showExternalLinks && (!G_IS_STANDALONE || G_IS_STEAM_DEMO)
+                        showExternalLinks && !G_IS_STANDALONE
                             ? `<a class="steamLinkSocial boxLink" target="_blank">
                                     <span class="thirdpartyLogo steamLogo"></span>
                                     <span class="label">steam</span>
@@ -288,7 +249,7 @@ export class MainMenuState extends GameState {
                             : ""
                     }
                     ${
-                        showExternalLinks && !G_IS_STEAM_DEMO
+                        showExternalLinks
                             ? `
                         <a class="githubLink boxLink" target="_blank">
                             <span class="thirdpartyLogo githubLogo"></span>
@@ -299,7 +260,7 @@ export class MainMenuState extends GameState {
 
 
                     ${
-                        showDiscordLink
+                        showExternalLinks
                             ? `<a class="discordLink boxLink" target="_blank">
                                     <span class="thirdpartyLogo  discordLogo"></span>
                                     <span class="label">Discord</span>
@@ -346,9 +307,6 @@ export class MainMenuState extends GameState {
                     </a></div>
 
                 </div>
-
-            `
-            }
         `;
     }
 
@@ -549,6 +507,7 @@ export class MainMenuState extends GameState {
     }
 
     fetchPlayerCount() {
+        /** @type {HTMLDivElement} */
         const element = this.htmlElement.querySelector(".onlinePlayerCount");
         if (!element) {
             return;
@@ -715,13 +674,11 @@ export class MainMenuState extends GameState {
                 downloadButton.setAttribute("aria-label", "Download");
                 elem.appendChild(downloadButton);
 
-                if (!G_WEGAME_VERSION) {
-                    const renameButton = document.createElement("button");
-                    renameButton.classList.add("styledButton", "renameGame");
-                    renameButton.setAttribute("aria-label", "Rename Savegame");
-                    name.appendChild(renameButton);
-                    this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
-                }
+                const renameButton = document.createElement("button");
+                renameButton.classList.add("styledButton", "renameGame");
+                renameButton.setAttribute("aria-label", "Rename Savegame");
+                name.appendChild(renameButton);
+                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
 
                 const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");

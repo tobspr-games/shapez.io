@@ -105,25 +105,6 @@ export const CHANGELOG = [
         ],
     },
     {
-        version: "1.3.1",
-        date: "16.04.2021",
-        entries: G_CHINA_VERSION
-            ? [
-                  "第13关的交付目标更改为：中国古代指南针。（感谢玩家：凯风入心 创作并提供",
-                  "第17关的交付目标更改为：永乐通宝。（感谢玩家：金天赐 创作并提供",
-                  "第22关的交付目标更改为：凤凰。（感谢玩家：我没得眼镜 创作并提供",
-                  "第23关的交付目标更改为：古代车轮。（感谢玩家：我没得眼镜 创作并提供",
-                  "第24关的交付目标更改为：大熊猫。（感谢玩家：窝囸倪现任 创作并提供",
-
-                  "修复了一些特定情况下偶尔会发生的存档损坏问题",
-                  "修复了成就更新后有时候游戏崩溃的问题",
-              ]
-            : [
-                  "Fixed savegames getting corrupt in rare conditions",
-                  "Fixed game crashing sometimes since the achievements update",
-              ],
-    },
-    {
         version: "1.3.0",
         date: "12.03.2020",
         skin: "achievements",

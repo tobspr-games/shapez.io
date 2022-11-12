@@ -140,7 +140,7 @@ function initializeSettings() {
             options: Object.keys(LANGUAGES),
             valueGetter: key => key,
             textGetter: key => LANGUAGES[key].name,
-            category: G_CHINA_VERSION || G_WEGAME_VERSION ? null : enumCategories.general,
+            category: enumCategories.general,
             restartRequired: true,
             changeCb: (app, id) => null,
             magicValue: "auto-detect",

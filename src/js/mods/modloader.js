@@ -105,10 +105,6 @@ export class ModLoader {
     }
 
     exposeExports() {
-        if (G_IS_STEAM_DEMO) {
-            return;
-        }
-
         if (G_IS_DEV || G_IS_STANDALONE) {
             let exports = {};
             const modules = require.context("../", true, /\.js$/);
@@ -140,11 +136,6 @@ export class ModLoader {
     }
 
     async initMods() {
-        if (G_IS_STEAM_DEMO) {
-            this.initialized = true;
-            return;
-        }
-
         if (!G_IS_STANDALONE && !G_IS_DEV) {
             this.initialized = true;
             return;

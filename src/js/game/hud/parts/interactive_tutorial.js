@@ -188,12 +188,9 @@ export class HUDInteractiveTutorial extends BaseHUDPart {
     onHintChanged(hintId) {
         this.elementDescription.innerHTML = T.ingame.interactiveTutorial.hints[hintId];
         document.documentElement.setAttribute("data-tutorial-step", hintId);
-        const folder = G_WEGAME_VERSION
-            ? "interactive_tutorial.cn.noinline"
-            : "interactive_tutorial.noinline";
 
         this.elementGif.style.backgroundImage =
-            "url('" + cachebust("res/ui/" + folder + "/" + hintId + ".gif") + "')";
+            "url('" + cachebust("res/ui/interactive_tutorial.noinline/" + hintId + ".gif") + "')";
         this.element.classList.toggle("animEven");
         this.element.classList.toggle("animOdd");
         if (hintId) {

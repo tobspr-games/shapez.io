@@ -56,10 +56,6 @@ export class RestrictionManager extends ReadWriteProxy {
      * @returns {boolean}
      */
     isLimitedVersion() {
-        if (G_IS_STEAM_DEMO) {
-            return true;
-        }
-
         if (G_IS_STANDALONE) {
             // Standalone is never limited
             return false;

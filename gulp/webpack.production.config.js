@@ -14,11 +14,6 @@ module.exports = ({
 
     standalone = false,
     isBrowser = true,
-
-    chineseVersion = false,
-    wegameVersion = false,
-    steamDemo = false,
-    gogVersion = false,
 }) => {
     const globalDefs = {
         assert: "false && window.assert",
@@ -26,12 +21,8 @@ module.exports = ({
         abstract: "window.assert(false, 'abstract method called');",
         G_IS_DEV: "false",
 
-        G_CHINA_VERSION: JSON.stringify(chineseVersion),
-        G_WEGAME_VERSION: JSON.stringify(wegameVersion),
-        G_GOG_VERSION: JSON.stringify(gogVersion),
         G_IS_RELEASE: environment === "prod" ? "true" : "false",
         G_IS_STANDALONE: standalone ? "true" : "false",
-        G_IS_STEAM_DEMO: JSON.stringify(steamDemo),
         G_IS_BROWSER: isBrowser ? "true" : "false",
         G_APP_ENVIRONMENT: JSON.stringify(environment),
         G_HAVE_ASSERT: "false",

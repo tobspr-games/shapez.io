@@ -65,8 +65,6 @@ const preparementShape = "CpRpCp--:SwSwSwSw";
 // Tiers need % of the previous tier as requirement too
 const tierGrowth = 2.5;
 
-const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
-
 const upgradesCache = {};
 
 /**
@@ -151,9 +149,7 @@ function generateUpgrades(limitedVersion = false, difficulty = 1) {
             {
                 required: [
                     {
-                        shape: chinaShapes
-                            ? "CyCyCyCy:CyCyCyCy:RyRyRyRy:RuRuRuRu"
-                            : "CbRbRbCb:CwCwCwCw:WbWbWbWb",
+                        shape: "CbRbRbCb:CwCwCwCw:WbWbWbWb",
                         amount: 50000,
                     },
                 ],
@@ -212,7 +208,7 @@ function generateUpgrades(limitedVersion = false, difficulty = 1) {
             {
                 required: [
                     {
-                        shape: chinaShapes ? "CuCuCuCu:CwCwCwCw:Sb--Sr--" : "RpRpRpRp:CwCwCwCw",
+                        shape: "RpRpRpRp:CwCwCwCw",
                         amount: 6500,
                     },
                 ],
@@ -362,9 +358,7 @@ export class RegularGameMode extends GameMode {
         }
 
         if (this.root.app.settings.getAllSettings().offerHints) {
-            if (!G_WEGAME_VERSION) {
-                this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
-            }
+            this.additionalHudParts.tutorialHints = HUDPartTutorialHints;
             this.additionalHudParts.interactiveTutorial = HUDInteractiveTutorial;
         }
 
@@ -379,9 +373,6 @@ export class RegularGameMode extends GameMode {
 
     get difficultyMultiplicator() {
         if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
-            if (G_IS_STEAM_DEMO) {
-                return 0.75;
-            }
             return 1;
         }
         return 0.5;

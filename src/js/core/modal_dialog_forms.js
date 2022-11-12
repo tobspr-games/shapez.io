@@ -107,17 +107,6 @@ export class FormElementInput extends FormElement {
 
     updateErrorState() {
         this.element.classList.toggle("errored", !this.isValid());
-
-        // profanity filter
-        if (G_WEGAME_VERSION) {
-            const value = String(this.element.value);
-
-            ipcRenderer.invoke("profanity-check", value).then(newValue => {
-                if (value !== newValue && this.element) {
-                    this.element.value = newValue;
-                }
-            });
-        }
     }
 
     isValid() {
