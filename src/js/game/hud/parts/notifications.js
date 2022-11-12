@@ -10,6 +10,7 @@ export const enumNotificationType = {
     info: "info",
     warning: "warning",
     error: "error",
+    achievement: "achievement",
 };
 
 const notificationDuration = 3;
@@ -28,6 +29,10 @@ export class HUDNotifications extends BaseHUDPart {
         // Automatic notifications
         this.root.signals.gameSaved.add(() =>
             this.internalShowNotification(T.ingame.notifications.gameSaved, enumNotificationType.saved)
+        );
+
+        this.root.signals.achievementCompleted.add(key =>
+            this.internalShowNotification(T.achievements[key].title, enumNotificationType.achievement)
         );
     }
 

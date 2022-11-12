@@ -38,6 +38,7 @@ import { MetaItemProducerBuilding } from "../buildings/item_producer";
 import { MOD_SIGNALS } from "../../mods/mod_signals";
 import { finalGameShape, generateLevelsForVariant } from "./levels";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
+import { HUDAchievements } from "../hud/parts/achievements";
 
 /** @typedef {{
  *   shape: string,
@@ -350,6 +351,7 @@ export class RegularGameMode extends GameMode {
             tutorialVideoOffer: HUDTutorialVideoOffer,
             gameMenu: HUDGameMenu,
             constantSignalEdit: HUDConstantSignalEdit,
+            achievements: HUDAchievements,
         };
 
         if (!IS_MOBILE) {

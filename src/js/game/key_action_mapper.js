@@ -60,6 +60,7 @@ export const KEYMAPPINGS = {
     ingame: {
         menuOpenShop: { keyCode: keyToKeyCode("F") },
         menuOpenStats: { keyCode: keyToKeyCode("G") },
+        menuOpenAchievements: { keyCode: keyToKeyCode("H") },
         menuClose: { keyCode: keyToKeyCode("Q") },
 
         toggleHud: { keyCode: KEYCODES.F2 },
