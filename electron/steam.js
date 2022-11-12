@@ -52,7 +52,9 @@ function listen() {
     console.log("Adding listeners");
 
     ipcMain.handle("steam:get-achievement-names", getAchievementNames);
+    ipcMain.handle("steam:get-achievement", getAchievement);
     ipcMain.handle("steam:activate-achievement", activateAchievement);
+    ipcMain.handle("steam:deactivate-achievement", deactivateAchievement);
 
     function bufferToHex(buffer) {
         return Array.from(new Uint8Array(buffer))
@@ -96,9 +98,29 @@ function getAchievementNames(event) {
     });
 }
 
+function getAchievement(event, id) {
+    return new Promise((resolve, reject) => {
+        greenworks.getAchievement(
+            id,
+            () => resolve(),
+            err => reject(err)
+        );
+    });
+}
+
 function activateAchievement(event, id) {
     return new Promise((resolve, reject) => {
         greenworks.activateAchievement(
+            id,
+            () => resolve(),
+            err => reject(err)
+        );
+    });
+}
+
+function deactivateAchievement(event, id) {
+    return new Promise((resolve, reject) => {
+        greenworks.clearAchievement(
             id,
             () => resolve(),
             err => reject(err)
