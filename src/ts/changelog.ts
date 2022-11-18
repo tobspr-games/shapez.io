@@ -1,4 +1,9 @@
-export const CHANGELOG: any = [
+export const CHANGELOG: {
+    version: string,
+    date: string,
+    entries: string[],
+    skin?: string
+}[] = [
     {
         version: "1.5.6",
         date: "09.12.2022",
