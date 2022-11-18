@@ -1,0 +1,99 @@
+import { globalConfig } from "../core/config";
+import { DrawParameters } from "../core/draw_parameters";
+import { drawSpriteClipped } from "../core/draw_utils";
+import { safeModulo } from "../core/utils";
+import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
+import { GameRoot } from "./root";
+export class MapChunkAggregate {
+    public root = root;
+    public x = x;
+    public y = y;
+    public renderIteration = 0;
+    public dirty = false;
+    public dirtyList: Array<boolean> = new Array(globalConfig.chunkAggregateSize ** 2).fill(true);
+
+        constructor(root, x, y) {
+        this.markDirty(0, 0);
+    }
+    /**
+     * Marks this chunk as dirty, rerendering all caches
+     */
+    markDirty(chunkX: number, chunkY: number): any {
+        const relX: any = safeModulo(chunkX, globalConfig.chunkAggregateSize);
+        const relY: any = safeModulo(chunkY, globalConfig.chunkAggregateSize);
+        this.dirtyList[relY * globalConfig.chunkAggregateSize + relX] = true;
+        if (this.dirty) {
+            return;
+        }
+        this.dirty = true;
+        ++this.renderIteration;
+        this.renderKey = this.x + "/" + this.y + "@" + this.renderIteration;
+    }
+        generateOverlayBuffer(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, w: number, h: number, dpi: number): any {
+        const prevKey: any = this.x + "/" + this.y + "@" + (this.renderIteration - 1);
+        const prevBuffer: any = this.root.buffers.getForKeyOrNullNoUpdate({
+            key: "agg@" + this.root.currentLayer,
+            subKey: prevKey,
+        });
+        const overlaySize: any = globalConfig.mapChunkSize * CHUNK_OVERLAY_RES;
+        let onlyDirty: any = false;
+        if (prevBuffer) {
+            context.drawImage(prevBuffer, 0, 0);
+            onlyDirty = true;
+        }
+        for (let x: any = 0; x < globalConfig.chunkAggregateSize; x++) {
+            for (let y: any = 0; y < globalConfig.chunkAggregateSize; y++) {
+                if (onlyDirty && !this.dirtyList[globalConfig.chunkAggregateSize * y + x])
+                    continue;
+                this.root.map
+                    .getChunk(this.x * globalConfig.chunkAggregateSize + x, this.y * globalConfig.chunkAggregateSize + y, true)
+                    .generateOverlayBuffer(context, overlaySize, overlaySize, x * overlaySize, y * overlaySize);
+            }
+        }
+        this.dirty = false;
+        this.dirtyList.fill(false);
+    }
+    /**
+     * Overlay
+     */
+    drawOverlay(parameters: DrawParameters): any {
+        const aggregateOverlaySize: any = globalConfig.mapChunkSize * globalConfig.chunkAggregateSize * CHUNK_OVERLAY_RES;
+        const sprite: any = this.root.buffers.getForKey({
+            key: "agg@" + this.root.currentLayer,
+            subKey: this.renderKey,
+            w: aggregateOverlaySize,
+            h: aggregateOverlaySize,
+            dpi: 1,
+            redrawMethod: this.generateOverlayBuffer.bind(this),
+        });
+        const dims: any = globalConfig.mapChunkWorldSize * globalConfig.chunkAggregateSize;
+        const extrude: any = 0.05;
+        // Draw chunk "pixel" art
+        parameters.context.imageSmoothingEnabled = false;
+        drawSpriteClipped({
+            parameters,
+            sprite,
+            x: this.x * dims - extrude,
+            y: this.y * dims - extrude,
+            w: dims + 2 * extrude,
+            h: dims + 2 * extrude,
+            originalW: aggregateOverlaySize,
+            originalH: aggregateOverlaySize,
+        });
+        parameters.context.imageSmoothingEnabled = true;
+        const resourcesScale: any = this.root.app.settings.getAllSettings().mapResourcesScale;
+        // Draw patch items
+        if (this.root.currentLayer === "regular" &&
+            resourcesScale > 0.05 &&
+            this.root.camera.zoomLevel > 0.1) {
+            const diameter: any = (70 / Math.pow(parameters.zoomLevel, 0.35)) * (0.2 + 2 * resourcesScale);
+            for (let x: any = 0; x < globalConfig.chunkAggregateSize; x++) {
+                for (let y: any = 0; y < globalConfig.chunkAggregateSize; y++) {
+                    this.root.map
+                        .getChunk(this.x * globalConfig.chunkAggregateSize + x, this.y * globalConfig.chunkAggregateSize + y, true)
+                        .drawOverlayPatches(parameters, this.x * dims + x * globalConfig.mapChunkWorldSize, this.y * dims + y * globalConfig.mapChunkWorldSize, diameter);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,216 @@
+import { globalConfig } from "../../core/config";
+import { DrawParameters } from "../../core/draw_parameters";
+import { Signal } from "../../core/signal";
+import { MOD_SIGNALS } from "../../mods/mod_signals";
+import { KEYMAPPINGS } from "../key_action_mapper";
+import { MetaBuilding } from "../meta_building";
+import { GameRoot } from "../root";
+import { ShapeDefinition } from "../shape_definition";
+import { HUDBetaOverlay } from "./parts/beta_overlay";
+import { HUDBlueprintPlacer } from "./parts/blueprint_placer";
+import { HUDBuildingsToolbar } from "./parts/buildings_toolbar";
+import { HUDBuildingPlacer } from "./parts/building_placer";
+import { HUDColorBlindHelper } from "./parts/color_blind_helper";
+import { HUDChangesDebugger } from "./parts/debug_changes";
+import { HUDDebugInfo } from "./parts/debug_info";
+import { HUDEntityDebugger } from "./parts/entity_debugger";
+import { HUDModalDialogs } from "./parts/modal_dialogs";
+import { enumNotificationType } from "./parts/notifications";
+import { HUDSettingsMenu } from "./parts/settings_menu";
+import { HUDShapeTooltip } from "./parts/shape_tooltip";
+import { HUDVignetteOverlay } from "./parts/vignette_overlay";
+import { TrailerMaker } from "./trailer_maker";
+export class GameHUD {
+    public root = root;
+
+        constructor(root) {
+    }
+    /**
+     * Initializes the hud parts
+     */
+    initialize(): any {
+        this.signals = {
+            buildingSelectedForPlacement: new Signal() as TypedSignal<[
+                MetaBuilding | null
+            ]>),
+            selectedPlacementBuildingChanged: new Signal() as TypedSignal<[
+                MetaBuilding | null
+            ]>),
+            shapePinRequested: new Signal() as TypedSignal<[
+                ShapeDefinition
+            ]>),
+            shapeUnpinRequested: new Signal() as TypedSignal<[
+                string
+            ]>),
+            notification: new Signal() as TypedSignal<[
+                string,
+                enumNotificationType
+            ]>),
+            buildingsSelectedForCopy: new Signal() as TypedSignal<[
+                Array<number>
+            ]>),
+            pasteBlueprintRequested: new Signal() as TypedSignal<[
+            ]>),
+            viewShapeDetailsRequested: new Signal() as TypedSignal<[
+                ShapeDefinition
+            ]>),
+            unlockNotificationFinished: new Signal() as TypedSignal<[
+            ]>),
+        };
+        this.parts = {
+            buildingsToolbar: new HUDBuildingsToolbar(this.root),
+            blueprintPlacer: new HUDBlueprintPlacer(this.root),
+            buildingPlacer: new HUDBuildingPlacer(this.root),
+            shapeTooltip: new HUDShapeTooltip(this.root),
+            // Must always exist
+            settingsMenu: new HUDSettingsMenu(this.root),
+            debugInfo: new HUDDebugInfo(this.root),
+            dialogs: new HUDModalDialogs(this.root),
+            // Typing hints
+            /* typehints:start */
+                        changesDebugger: null,
+            /* typehints:end */
+        };
+        if (G_IS_DEV) {
+            this.parts.entityDebugger = new HUDEntityDebugger(this.root);
+        }
+        if (G_IS_DEV && globalConfig.debug.renderChanges) {
+            this.parts.changesDebugger = new HUDChangesDebugger(this.root);
+        }
+        if (this.root.app.settings.getAllSettings().vignette) {
+            this.parts.vignetteOverlay = new HUDVignetteOverlay(this.root);
+        }
+        if (this.root.app.settings.getAllSettings().enableColorBlindHelper) {
+            this.parts.colorBlindHelper = new HUDColorBlindHelper(this.root);
+        }
+        if (!G_IS_RELEASE && !G_IS_DEV) {
+            this.parts.betaOverlay = new HUDBetaOverlay(this.root);
+        }
+        const additionalParts: any = this.root.gameMode.additionalHudParts;
+        for (const [partId, part]: any of Object.entries(additionalParts)) {
+            this.parts[partId] = new part(this.root);
+        }
+        MOD_SIGNALS.hudInitializer.dispatch(this.root);
+        const frag: any = document.createDocumentFragment();
+        for (const key: any in this.parts) {
+            MOD_SIGNALS.hudElementInitialized.dispatch(this.parts[key]);
+            this.parts[key].createElements(frag);
+        }
+        document.body.appendChild(frag);
+        for (const key: any in this.parts) {
+            this.parts[key].initialize();
+            MOD_SIGNALS.hudElementFinalized.dispatch(this.parts[key]);
+        }
+        this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.toggleHud).add(this.toggleUi, this);
+        /* dev:start */
+        if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
+            this.trailerMaker = new TrailerMaker(this.root);
+        }
+        /* dev:end*/
+    }
+    /**
+     * Attempts to close all overlays
+     */
+    closeAllOverlays(): any {
+        for (const key: any in this.parts) {
+            this.parts[key].close();
+        }
+    }
+    /**
+     * Returns true if the game logic should be paused
+     */
+    shouldPauseGame(): any {
+        for (const key: any in this.parts) {
+            if (this.parts[key].shouldPauseGame()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Returns true if the rendering can be paused
+     */
+    shouldPauseRendering(): any {
+        for (const key: any in this.parts) {
+            if (this.parts[key].shouldPauseRendering()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Returns true if the rendering can be paused
+     */
+    hasBlockingOverlayOpen(): any {
+        for (const key: any in this.parts) {
+            if (this.parts[key].isBlockingOverlay()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Toggles the ui
+     */
+    toggleUi(): any {
+        document.body.classList.toggle("uiHidden");
+    }
+    /**
+     * Updates all parts
+     */
+    update(): any {
+        if (!this.root.gameInitialized) {
+            return;
+        }
+        for (const key: any in this.parts) {
+            this.parts[key].update();
+        }
+        /* dev:start */
+        if (this.trailerMaker) {
+            this.trailerMaker.update();
+        }
+        /* dev:end*/
+    }
+    /**
+     * Draws all parts
+     */
+    draw(parameters: DrawParameters): any {
+        const partsOrder: any = [
+            "massSelector",
+            "buildingPlacer",
+            "blueprintPlacer",
+            "colorBlindHelper",
+            "changesDebugger",
+            "minerHighlight",
+            "shapeTooltip",
+            "interactiveTutorial",
+        ];
+        for (let i: any = 0; i < partsOrder.length; ++i) {
+            if (this.parts[partsOrder[i]]) {
+                this.parts[partsOrder[i]].draw(parameters);
+            }
+        }
+    }
+    /**
+     * Draws all part overlays
+     */
+    drawOverlays(parameters: DrawParameters): any {
+        const partsOrder: any = ["waypoints", "watermark", "wireInfo"];
+        for (let i: any = 0; i < partsOrder.length; ++i) {
+            if (this.parts[partsOrder[i]]) {
+                this.parts[partsOrder[i]].drawOverlays(parameters);
+            }
+        }
+    }
+    /**
+     * Cleans up everything
+     */
+    cleanup(): any {
+        for (const key: any in this.parts) {
+            this.parts[key].cleanup();
+        }
+        for (const key: any in this.signals) {
+            this.signals[key].removeAll();
+        }
+    }
+}

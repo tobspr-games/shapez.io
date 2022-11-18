@@ -1,0 +1,92 @@
+import { globalConfig } from "../../core/config";
+import { Loader } from "../../core/loader";
+import { round1DigitLocalized, smoothPulse } from "../../core/utils";
+import { enumItemProcessorRequirements, enumItemProcessorTypes } from "../components/item_processor";
+import { Entity } from "../entity";
+import { GameSystem } from "../game_system";
+import { isTruthyItem } from "../items/boolean_item";
+import { MapChunkView } from "../map_chunk_view";
+export class ItemProcessorOverlaysSystem extends GameSystem {
+    public spriteDisabled = Loader.getSprite("sprites/misc/processor_disabled.png");
+    public spriteDisconnected = Loader.getSprite("sprites/misc/processor_disconnected.png");
+    public readerOverlaySprite = Loader.getSprite("sprites/misc/reader_overlay.png");
+    public drawnUids = new Set();
+
+    constructor(root) {
+        super(root);
+        this.root.signals.gameFrameStarted.add(this.clearDrawnUids, this);
+    }
+    clearDrawnUids(): any {
+        this.drawnUids.clear();
+    }
+        drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView): any {
+        const contents: any = chunk.containedEntitiesByLayer.regular;
+        for (let i: any = 0; i < contents.length; ++i) {
+            const entity: any = contents[i];
+            const processorComp: any = entity.components.ItemProcessor;
+            const filterComp: any = entity.components.Filter;
+            // Draw processor overlays
+            if (processorComp) {
+                const requirement: any = processorComp.processingRequirement;
+                if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
+                    continue;
+                }
+                if (this.drawnUids.has(entity.uid)) {
+                    continue;
+                }
+                this.drawnUids.add(entity.uid);
+                switch (requirement) {
+                    case enumItemProcessorRequirements.painterQuad: {
+                        this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: true });
+                        break;
+                    }
+                }
+                if (processorComp.type === enumItemProcessorTypes.reader) {
+                    this.drawReaderOverlays(parameters, entity);
+                }
+            }
+            // Draw filter overlays
+            else if (filterComp) {
+                if (this.drawnUids.has(entity.uid)) {
+                    continue;
+                }
+                this.drawnUids.add(entity.uid);
+                this.drawConnectedSlotRequirement(parameters, entity, { drawIfFalse: false });
+            }
+        }
+    }
+        drawReaderOverlays(parameters: import("../../core/draw_utils").DrawParameters, entity: Entity): any {
+        const staticComp: any = entity.components.StaticMapEntity;
+        const readerComp: any = entity.components.BeltReader;
+        this.readerOverlaySprite.drawCachedCentered(parameters, (staticComp.origin.x + 0.5) * globalConfig.tileSize, (staticComp.origin.y + 0.5) * globalConfig.tileSize, globalConfig.tileSize);
+        parameters.context.fillStyle = "#333439";
+        parameters.context.textAlign = "center";
+        parameters.context.font = "bold 10px GameFont";
+        parameters.context.fillText(round1DigitLocalized(readerComp.lastThroughput), (staticComp.origin.x + 0.5) * globalConfig.tileSize, (staticComp.origin.y + 0.62) * globalConfig.tileSize);
+        parameters.context.textAlign = "left";
+    }
+        drawConnectedSlotRequirement(parameters: import("../../core/draw_utils").DrawParameters, entity: Entity, { drawIfFalse = true }: {
+        drawIfFalse: boolean=;
+    }): any {
+        const staticComp: any = entity.components.StaticMapEntity;
+        const pinsComp: any = entity.components.WiredPins;
+        let anySlotConnected: any = false;
+        // Check if any slot has a value
+        for (let i: any = 0; i < pinsComp.slots.length; ++i) {
+            const slot: any = pinsComp.slots[i];
+            const network: any = slot.linkedNetwork;
+            if (network && network.hasValue()) {
+                anySlotConnected = true;
+                if (isTruthyItem(network.currentValue) || !drawIfFalse) {
+                    // No need to draw anything
+                    return;
+                }
+            }
+        }
+        const pulse: any = smoothPulse(this.root.time.now());
+        parameters.context.globalAlpha = 0.6 + 0.4 * pulse;
+        const sprite: any = anySlotConnected ? this.spriteDisabled : this.spriteDisconnected;
+        sprite.drawCachedCentered(parameters, (staticComp.origin.x + 0.5) * globalConfig.tileSize, (staticComp.origin.y + 0.5) * globalConfig.tileSize, globalConfig.tileSize * (0.7 + 0.2 * pulse));
+        parameters.context.globalAlpha = 1;
+    }
+}

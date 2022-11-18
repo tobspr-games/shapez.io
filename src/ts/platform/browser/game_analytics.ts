@@ -1,0 +1,334 @@
+import { globalConfig } from "../../core/config";
+import { createLogger } from "../../core/logging";
+import { queryParamOptions } from "../../core/query_parameters";
+import { randomInt } from "../../core/utils";
+import { BeltComponent } from "../../game/components/belt";
+import { StaticMapEntityComponent } from "../../game/components/static_map_entity";
+import { RegularGameMode } from "../../game/modes/regular";
+import { GameRoot } from "../../game/root";
+import { InGameState } from "../../states/ingame";
+import { SteamAchievementProvider } from "../electron/steam_achievement_provider";
+import { GameAnalyticsInterface } from "../game_analytics";
+import { FILE_NOT_FOUND } from "../storage";
+import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
+const logger: any = createLogger("game_analytics");
+const analyticsUrl: any = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
+// Be sure to increment the ID whenever it changes
+const analyticsLocalFile: any = "shapez_token_123.bin";
+const CURRENT_ABT: any = "abt_bsl2";
+const CURRENT_ABT_COUNT: any = 1;
+export class ShapezGameAnalytics extends GameAnalyticsInterface {
+    public abtVariant = "0";
+
+    constructor(app) {
+        super(app);
+    }
+    get environment() {
+        if (G_IS_DEV) {
+            return "dev";
+        }
+        if (G_IS_STANDALONE) {
+            return "steam";
+        }
+        if (WEB_STEAM_SSO_AUTHENTICATED) {
+            return "prod-full";
+        }
+        if (G_IS_RELEASE) {
+            return "prod";
+        }
+        if (window.location.host.indexOf("alpha") >= 0) {
+            return "alpha";
+        }
+        else {
+            return "beta";
+        }
+    }
+    fetchABVariant(): any {
+        return this.app.storage.readFileAsync("shapez_" + CURRENT_ABT + ".bin").then((abt: any): any => {
+            if (typeof queryParamOptions.abtVariant === "string") {
+                this.abtVariant = queryParamOptions.abtVariant;
+                logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
+            }
+            else {
+                this.abtVariant = abt;
+                logger.log("Read abtVariant:", abt);
+            }
+        }, (err: any): any => {
+            if (err === FILE_NOT_FOUND) {
+                if (typeof queryParamOptions.abtVariant === "string") {
+                    this.abtVariant = queryParamOptions.abtVariant;
+                    logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
+                }
+                else {
+                    this.abtVariant = String(randomInt(0, CURRENT_ABT_COUNT - 1));
+                    logger.log("Set", CURRENT_ABT, "to", this.abtVariant);
+                }
+                this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", this.abtVariant);
+            }
+        });
+    }
+    note(action: any): any {
+        if (this.app.restrictionMgr.isLimitedVersion()) {
+            fetch("https://analytics.shapez.io/campaign/" +
+                "action_" +
+                this.environment +
+                "_" +
+                action +
+                "_" +
+                CURRENT_ABT +
+                "_" +
+                this.abtVariant +
+                "?lpurl=nocontent", {
+                method: "GET",
+                mode: "no-cors",
+                cache: "no-cache",
+                referrer: "no-referrer",
+                credentials: "omit",
+            }).catch((err: any): any => { });
+        }
+    }
+    noteMinor(action: any, payload: any = ""): any { }
+    /**
+     * {}
+     */
+    initialize(): Promise<void> {
+        this.syncKey = null;
+        window.setAbt = (abt: any): any => {
+            this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", String(abt));
+            window.location.reload();
+        };
+        // Retrieve sync key from player
+        return this.fetchABVariant().then((): any => {
+            setInterval((): any => this.sendTimePoints(), 60 * 1000);
+            if (this.app.restrictionMgr.isLimitedVersion() && !G_IS_DEV) {
+                fetch("https://analytics.shapez.io/campaign/" +
+                    this.environment +
+                    "_" +
+                    CURRENT_ABT +
+                    "_" +
+                    this.abtVariant +
+                    "?lpurl=nocontent", {
+                    method: "GET",
+                    mode: "no-cors",
+                    cache: "no-cache",
+                    referrer: "no-referrer",
+                    credentials: "omit",
+                }).catch((err: any): any => { });
+            }
+            return this.app.storage.readFileAsync(analyticsLocalFile).then((syncKey: any): any => {
+                this.syncKey = syncKey;
+                logger.log("Player sync key read:", this.syncKey);
+            }, (error: any): any => {
+                // File was not found, retrieve new key
+                if (error === FILE_NOT_FOUND) {
+                    logger.log("Retrieving new player key");
+                    let authTicket: any = Promise.resolve(undefined);
+                    if (G_IS_STANDALONE) {
+                        logger.log("Will retrieve auth ticket");
+                        authTicket = ipcRenderer.invoke("steam:get-ticket");
+                    }
+                    authTicket
+                        .then((ticket: any): any => {
+                        logger.log("Got ticket:", ticket);
+                        // Perform call to get a new key from the API
+                        return this.sendToApi("/v1/register", {
+                            environment: this.environment,
+                            standalone: G_IS_STANDALONE &&
+                                this.app.achievementProvider instanceof SteamAchievementProvider,
+                            commit: G_BUILD_COMMIT_HASH,
+                            ticket,
+                        });
+                    }, (err: any): any => {
+                        logger.warn("Failed to get steam auth ticket for register:", err);
+                    })
+                        .then((res: any): any => {
+                        // Try to read and parse the key from the api
+                        if (res.key && typeof res.key === "string" && res.key.length === 40) {
+                            this.syncKey = res.key;
+                            logger.log("Key retrieved:", this.syncKey);
+                            this.app.storage.writeFileAsync(analyticsLocalFile, res.key);
+                        }
+                        else {
+                            throw new Error("Bad response from analytics server: " + res);
+                        }
+                    })
+                        .catch((err: any): any => {
+                        logger.error("Failed to register on analytics api:", err);
+                    });
+                }
+                else {
+                    logger.error("Failed to read ga key:", error);
+                }
+                return;
+            });
+        });
+    }
+    /**
+     * Makes sure a DLC is activated on steam
+     */
+    activateDlc(dlc: string): any {
+        logger.log("Activating dlc:", dlc);
+        return this.sendToApi("/v1/activate-dlc/" + dlc, {});
+    }
+    /**
+     * Sends a request to the api
+     * {}
+     */
+    sendToApi(endpoint: string, data: object): Promise<any> {
+        return new Promise((resolve: any, reject: any): any => {
+            const timeout: any = setTimeout((): any => reject("Request to " + endpoint + " timed out"), 20000);
+            fetch(analyticsUrl + endpoint, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                referrer: "no-referrer",
+                credentials: "omit",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "x-api-key": globalConfig.info.analyticsApiKey,
+                },
+                body: JSON.stringify(data),
+            })
+                .then((res: any): any => {
+                clearTimeout(timeout);
+                if (!res.ok || res.status !== 200) {
+                    reject("Fetch error: Bad status " + res.status);
+                }
+                else {
+                    return res.json();
+                }
+            })
+                .then(resolve)
+                .catch((reason: any): any => {
+                clearTimeout(timeout);
+                reject(reason);
+            });
+        });
+    }
+    /**
+     * Sends a game event to the analytics
+     */
+    sendGameEvent(category: string, value: string): any {
+        if (G_IS_DEV) {
+            return;
+        }
+        if (!this.syncKey) {
+            logger.warn("Can not send event due to missing sync key");
+            return;
+        }
+        const gameState: any = this.app.stateMgr.currentState;
+        if (!(gameState instanceof InGameState)) {
+            logger.warn("Trying to send analytics event outside of ingame state");
+            return;
+        }
+        const savegame: any = gameState.savegame;
+        if (!savegame) {
+            logger.warn("Ingame state has empty savegame");
+            return;
+        }
+        const savegameId: any = savegame.internalId;
+        if (!gameState.core) {
+            logger.warn("Game state has no core");
+            return;
+        }
+        const root: any = gameState.core.root;
+        if (!root) {
+            logger.warn("Root is not initialized");
+            return;
+        }
+        if (!(root.gameMode instanceof RegularGameMode)) {
+            return;
+        }
+        logger.log("Sending event", category, value);
+        this.sendToApi("/v1/game-event", {
+            playerKey: this.syncKey,
+            gameKey: savegameId,
+            ingameTime: root.time.now(),
+            environment: this.environment,
+            category,
+            value,
+            version: G_BUILD_VERSION,
+            level: root.hubGoals.level,
+            gameDump: this.generateGameDump(root),
+        }).catch((err: any): any => {
+            console.warn("Request failed", err);
+        });
+    }
+    sendTimePoints(): any {
+        const gameState: any = this.app.stateMgr.currentState;
+        if (gameState instanceof InGameState) {
+            logger.log("Syncing analytics");
+            this.sendGameEvent("sync", "");
+        }
+    }
+    /**
+     * Returns true if the shape is interesting
+     */
+    isInterestingShape(root: GameRoot, key: string): any {
+        if (key === root.gameMode.getBlueprintShapeKey()) {
+            return true;
+        }
+        // Check if its a story goal
+        const levels: any = root.gameMode.getLevelDefinitions();
+        for (let i: any = 0; i < levels.length; ++i) {
+            if (key === levels[i].shape) {
+                return true;
+            }
+        }
+        // Check if its required to unlock an upgrade
+        const upgrades: any = root.gameMode.getUpgrades();
+        for (const upgradeKey: any in upgrades) {
+            const upgradeTiers: any = upgrades[upgradeKey];
+            for (let i: any = 0; i < upgradeTiers.length; ++i) {
+                const tier: any = upgradeTiers[i];
+                const required: any = tier.required;
+                for (let k: any = 0; k < required.length; ++k) {
+                    if (required[k].shape === key) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    /**
+     * Generates a game dump
+     */
+    generateGameDump(root: GameRoot): any {
+        const shapeIds: any = Object.keys(root.hubGoals.storedShapes).filter((key: any): any => this.isInterestingShape(root, key));
+        let shapes: any = {};
+        for (let i: any = 0; i < shapeIds.length; ++i) {
+            shapes[shapeIds[i]] = root.hubGoals.storedShapes[shapeIds[i]];
+        }
+        return {
+            shapes,
+            upgrades: root.hubGoals.upgradeLevels,
+            belts: root.entityMgr.getAllWithComponent(BeltComponent).length,
+            buildings: root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+                root.entityMgr.getAllWithComponent(BeltComponent).length,
+        };
+    }
+    
+    handleGameStarted(): any {
+        this.sendGameEvent("game_start", "");
+    }
+    
+    handleGameResumed(): any {
+        this.sendTimePoints();
+    }
+    /**
+     * Handles the given level completed
+     */
+    handleLevelCompleted(level: number): any {
+        logger.log("Complete level", level);
+        this.sendGameEvent("level_complete", "" + level);
+    }
+    /**
+     * Handles the given upgrade completed
+     */
+    handleUpgradeUnlocked(id: string, level: number): any {
+        logger.log("Unlock upgrade", id, level);
+        this.sendGameEvent("upgrade_unlock", id + "@" + level);
+    }
+}

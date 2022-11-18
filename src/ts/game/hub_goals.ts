@@ -1,0 +1,450 @@
+import { globalConfig } from "../core/config";
+import { RandomNumberGenerator } from "../core/rng";
+import { clamp } from "../core/utils";
+import { BasicSerializableObject, types } from "../savegame/serialization";
+import { enumColors } from "./colors";
+import { enumItemProcessorTypes } from "./components/item_processor";
+import { enumAnalyticsDataSource } from "./production_analytics";
+import { GameRoot } from "./root";
+import { enumSubShape, ShapeDefinition } from "./shape_definition";
+import { enumHubGoalRewards } from "./tutorial_goals";
+export const MOD_ITEM_PROCESSOR_SPEEDS: any = {};
+export class HubGoals extends BasicSerializableObject {
+    static getId(): any {
+        return "HubGoals";
+    }
+    static getSchema(): any {
+        return {
+            level: types.uint,
+            storedShapes: types.keyValueMap(types.uint),
+            upgradeLevels: types.keyValueMap(types.uint),
+        };
+    }
+    rialize(data: *, root: GameRoot): any {
+        const errorCode: any = super.deserialize(data);
+        if (errorCode) {
+            return errorCode;
+        }
+        const levels: any = root.gameMode.getLevelDefinitions();
+        // If freeplay is not available, clamp the level
+        if (!root.gameMode.getIsFreeplayAvailable()) {
+            this.level = Math.min(this.level, levels.length);
+        }
+        // Compute gained rewards
+        for (let i: any = 0; i < this.level - 1; ++i) {
+            if (i < levels.length) {
+                const reward: any = levels[i].reward;
+                this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
+            }
+        }
+        // Compute upgrade improvements
+        const upgrades: any = this.root.gameMode.getUpgrades();
+        for (const upgradeId: any in upgrades) {
+            const tiers: any = upgrades[upgradeId];
+            const level: any = this.upgradeLevels[upgradeId] || 0;
+            let totalImprovement: any = 1;
+            for (let i: any = 0; i < level; ++i) {
+                totalImprovement += tiers[i].improvement;
+            }
+            this.upgradeImprovements[upgradeId] = totalImprovement;
+        }
+        // Compute current goal
+        this.computeNextGoal();
+    }
+    public root = root;
+    public level = 1;
+    public gainedRewards: {
+        [idx: string]: number;
+    } = {};
+    public storedShapes: {
+        [idx: string]: number;
+    } = {};
+    public upgradeLevels: {
+        [idx: string]: number;
+    } = {};
+    public upgradeImprovements: {
+        [idx: string]: number;
+    } = {};
+
+        constructor(root) {
+        super();
+        // Reset levels first
+        const upgrades: any = this.root.gameMode.getUpgrades();
+        for (const key: any in upgrades) {
+            this.upgradeLevels[key] = 0;
+            this.upgradeImprovements[key] = 1;
+        }
+        this.computeNextGoal();
+        // Allow quickly switching goals in dev mode
+        if (G_IS_DEV) {
+            window.addEventListener("keydown", (ev: any): any => {
+                if (ev.key === "p") {
+                    // root is not guaranteed to exist within ~0.5s after loading in
+                    if (this.root && this.root.app && this.root.app.gameAnalytics) {
+                        if (!this.isEndOfDemoReached()) {
+                            this.onGoalCompleted();
+                        }
+                    }
+                }
+            });
+        }
+    }
+    /**
+     * Returns whether the end of the demo is reached
+     * {}
+     */
+    isEndOfDemoReached(): boolean {
+        return (!this.root.gameMode.getIsFreeplayAvailable() &&
+            this.level >= this.root.gameMode.getLevelDefinitions().length);
+    }
+    /**
+     * Returns how much of the current shape is stored
+     * {}
+     */
+    getShapesStored(definition: ShapeDefinition): number {
+        return this.storedShapes[definition.getHash()] || 0;
+    }
+        takeShapeByKey(key: string, amount: number): any {
+        assert(this.getShapesStoredByKey(key) >= amount, "Can not afford: " + key + " x " + amount);
+        assert(amount >= 0, "Amount < 0 for " + key);
+        assert(Number.isInteger(amount), "Invalid amount: " + amount);
+        this.storedShapes[key] = (this.storedShapes[key] || 0) - amount;
+        return;
+    }
+    /**
+     * Returns how much of the current shape is stored
+     * {}
+     */
+    getShapesStoredByKey(key: string): number {
+        return this.storedShapes[key] || 0;
+    }
+    /**
+     * Returns how much of the current goal was already delivered
+     */
+    getCurrentGoalDelivered(): any {
+        if (this.currentGoal.throughputOnly) {
+            return (this.root.productionAnalytics.getCurrentShapeRateRaw(enumAnalyticsDataSource.delivered, this.currentGoal.definition) / globalConfig.analyticsSliceDurationSeconds);
+        }
+        return this.getShapesStored(this.currentGoal.definition);
+    }
+    /**
+     * Returns the current level of a given upgrade
+     */
+    getUpgradeLevel(upgradeId: string): any {
+        return this.upgradeLevels[upgradeId] || 0;
+    }
+    /**
+     * Returns whether the given reward is already unlocked
+     */
+    isRewardUnlocked(reward: enumHubGoalRewards): any {
+        if (G_IS_DEV && globalConfig.debug.allBuildingsUnlocked) {
+            return true;
+        }
+        if (reward === enumHubGoalRewards.reward_blueprints &&
+            this.root.app.restrictionMgr.isLimitedVersion()) {
+            return false;
+        }
+        if (this.root.gameMode.getLevelDefinitions().length < 1) {
+            // no story, so always unlocked
+            return true;
+        }
+        return !!this.gainedRewards[reward];
+    }
+    /**
+     * Handles the given definition, by either accounting it towards the
+     * goal or otherwise granting some points
+     */
+    handleDefinitionDelivered(definition: ShapeDefinition): any {
+        const hash: any = definition.getHash();
+        this.storedShapes[hash] = (this.storedShapes[hash] || 0) + 1;
+        this.root.signals.shapeDelivered.dispatch(definition);
+        // Check if we have enough for the next level
+        if (this.getCurrentGoalDelivered() >= this.currentGoal.required ||
+            (G_IS_DEV && globalConfig.debug.rewardsInstant)) {
+            if (!this.isEndOfDemoReached()) {
+                this.onGoalCompleted();
+            }
+        }
+    }
+    /**
+     * Creates the next goal
+     */
+    computeNextGoal(): any {
+        const storyIndex: any = this.level - 1;
+        const levels: any = this.root.gameMode.getLevelDefinitions();
+        if (storyIndex < levels.length) {
+            const { shape, required, reward, throughputOnly }: any = levels[storyIndex];
+            this.currentGoal = {
+                                definition: this.root.shapeDefinitionMgr.getShapeFromShortKey(shape),
+                required,
+                reward,
+                throughputOnly,
+            };
+            return;
+        }
+        //Floor Required amount to remove confusion
+        const required: any = Math.min(200, Math.floor(4 + (this.level - 27) * 0.25));
+        this.currentGoal = {
+            definition: this.computeFreeplayShape(this.level),
+            required,
+            reward: enumHubGoalRewards.no_reward_freeplay,
+            throughputOnly: true,
+        };
+    }
+    /**
+     * Called when the level was completed
+     */
+    onGoalCompleted(): any {
+        const reward: any = this.currentGoal.reward;
+        this.gainedRewards[reward] = (this.gainedRewards[reward] || 0) + 1;
+        this.root.app.gameAnalytics.handleLevelCompleted(this.level);
+        ++this.level;
+        this.computeNextGoal();
+        this.root.signals.storyGoalCompleted.dispatch(this.level - 1, reward);
+    }
+    /**
+     * Returns whether we are playing in free-play
+     */
+    isFreePlay(): any {
+        return this.level >= this.root.gameMode.getLevelDefinitions().length;
+    }
+    /**
+     * Returns whether a given upgrade can be unlocked
+     */
+    canUnlockUpgrade(upgradeId: string): any {
+        const tiers: any = this.root.gameMode.getUpgrades()[upgradeId];
+        const currentLevel: any = this.getUpgradeLevel(upgradeId);
+        if (currentLevel >= tiers.length) {
+            // Max level
+            return false;
+        }
+        if (G_IS_DEV && globalConfig.debug.upgradesNoCost) {
+            return true;
+        }
+        const tierData: any = tiers[currentLevel];
+        for (let i: any = 0; i < tierData.required.length; ++i) {
+            const requirement: any = tierData.required[i];
+            if ((this.storedShapes[requirement.shape] || 0) < requirement.amount) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Returns the number of available upgrades
+     * {}
+     */
+    getAvailableUpgradeCount(): number {
+        let count: any = 0;
+        for (const upgradeId: any in this.root.gameMode.getUpgrades()) {
+            if (this.canUnlockUpgrade(upgradeId)) {
+                ++count;
+            }
+        }
+        return count;
+    }
+    /**
+     * Tries to unlock the given upgrade
+     * {}
+     */
+    tryUnlockUpgrade(upgradeId: string): boolean {
+        if (!this.canUnlockUpgrade(upgradeId)) {
+            return false;
+        }
+        const upgradeTiers: any = this.root.gameMode.getUpgrades()[upgradeId];
+        const currentLevel: any = this.getUpgradeLevel(upgradeId);
+        const tierData: any = upgradeTiers[currentLevel];
+        if (!tierData) {
+            return false;
+        }
+        if (G_IS_DEV && globalConfig.debug.upgradesNoCost) {
+            // Dont take resources
+        }
+        else {
+            for (let i: any = 0; i < tierData.required.length; ++i) {
+                const requirement: any = tierData.required[i];
+                // Notice: Don't have to check for hash here
+                this.storedShapes[requirement.shape] -= requirement.amount;
+            }
+        }
+        this.upgradeLevels[upgradeId] = (this.upgradeLevels[upgradeId] || 0) + 1;
+        this.upgradeImprovements[upgradeId] += tierData.improvement;
+        this.root.signals.upgradePurchased.dispatch(upgradeId);
+        this.root.app.gameAnalytics.handleUpgradeUnlocked(upgradeId, currentLevel);
+        return true;
+    }
+    /**
+     * Picks random colors which are close to each other
+     */
+    generateRandomColorSet(rng: RandomNumberGenerator, allowUncolored: any = false): any {
+        const colorWheel: any = [
+            enumColors.red,
+            enumColors.yellow,
+            enumColors.green,
+            enumColors.cyan,
+            enumColors.blue,
+            enumColors.purple,
+            enumColors.red,
+            enumColors.yellow,
+        ];
+        const universalColors: any = [enumColors.white];
+        if (allowUncolored) {
+            universalColors.push(enumColors.uncolored);
+        }
+        const index: any = rng.nextIntRange(0, colorWheel.length - 2);
+        const pickedColors: any = colorWheel.slice(index, index + 3);
+        pickedColors.push(rng.choice(universalColors));
+        return pickedColors;
+    }
+    /**
+     * Creates a (seeded) random shape
+     * {}
+     */
+    computeFreeplayShape(level: number): ShapeDefinition {
+        const layerCount: any = clamp(this.level / 25, 2, 4);
+                let layers: Array<import("./shape_definition").ShapeLayer> = [];
+        const rng: any = new RandomNumberGenerator(this.root.map.seed + "/" + level);
+        const colors: any = this.generateRandomColorSet(rng, level > 35);
+        let pickedSymmetry: any = null; // pairs of quadrants that must be the same
+        let availableShapes: any = [enumSubShape.rect, enumSubShape.circle, enumSubShape.star];
+        if (rng.next() < 0.5) {
+            pickedSymmetry = [
+                // radial symmetry
+                [0, 2],
+                [1, 3],
+            ];
+            availableShapes.push(enumSubShape.windmill); // windmill looks good only in radial symmetry
+        }
+        else {
+            const symmetries: any = [
+                [
+                    // horizontal axis
+                    [0, 3],
+                    [1, 2],
+                ],
+                [
+                    // vertical axis
+                    [0, 1],
+                    [2, 3],
+                ],
+                [
+                    // diagonal axis
+                    [0, 2],
+                    [1],
+                    [3],
+                ],
+                [
+                    // other diagonal axis
+                    [1, 3],
+                    [0],
+                    [2],
+                ],
+            ];
+            pickedSymmetry = rng.choice(symmetries);
+        }
+        const randomColor: any = (): any => rng.choice(colors);
+        const randomShape: any = (): any => rng.choice(availableShapes);
+        let anyIsMissingTwo: any = false;
+        for (let i: any = 0; i < layerCount; ++i) {
+                        const layer: import("./shape_definition").ShapeLayer = [null, null, null, null];
+            for (let j: any = 0; j < pickedSymmetry.length; ++j) {
+                const group: any = pickedSymmetry[j];
+                const shape: any = randomShape();
+                const color: any = randomColor();
+                for (let k: any = 0; k < group.length; ++k) {
+                    const quad: any = group[k];
+                    layer[quad] = {
+                        subShape: shape,
+                        color,
+                    };
+                }
+            }
+            // Sometimes they actually are missing *two* ones!
+            // Make sure at max only one layer is missing it though, otherwise we could
+            // create an uncreateable shape
+            if (level > 75 && rng.next() > 0.95 && !anyIsMissingTwo) {
+                layer[rng.nextIntRange(0, 4)] = null;
+                anyIsMissingTwo = true;
+            }
+            layers.push(layer);
+        }
+        const definition: any = new ShapeDefinition({ layers });
+        return this.root.shapeDefinitionMgr.registerOrReturnHandle(definition);
+    }
+    ////////////// HELPERS
+    /**
+     * Belt speed
+     * {} items / sec
+     */
+    getBeltBaseSpeed(): number {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
+        return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
+    }
+    /**
+     * Underground belt speed
+     * {} items / sec
+     */
+    getUndergroundBeltBaseSpeed(): number {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
+        return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
+    }
+    /**
+     * Miner speed
+     * {} items / sec
+     */
+    getMinerBaseSpeed(): number {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.minerSpeedItemsPerSecond * globalConfig.puzzleModeSpeed;
+        }
+        return globalConfig.minerSpeedItemsPerSecond * this.upgradeImprovements.miner;
+    }
+    /**
+     * Processor speed
+     * {} items / sec
+     */
+    getProcessorBaseSpeed(processorType: enumItemProcessorTypes): number {
+        if (this.root.gameMode.throughputDoesNotMatter()) {
+            return globalConfig.beltSpeedItemsPerSecond * globalConfig.puzzleModeSpeed * 10;
+        }
+        switch (processorType) {
+            case enumItemProcessorTypes.trash:
+            case enumItemProcessorTypes.hub:
+            case enumItemProcessorTypes.goal:
+                return 1e30;
+            case enumItemProcessorTypes.balancer:
+                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt * 2;
+            case enumItemProcessorTypes.reader:
+                return globalConfig.beltSpeedItemsPerSecond * this.upgradeImprovements.belt;
+            case enumItemProcessorTypes.mixer:
+            case enumItemProcessorTypes.painter:
+            case enumItemProcessorTypes.painterDouble:
+            case enumItemProcessorTypes.painterQuad: {
+                assert(globalConfig.buildingSpeeds[processorType], "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType);
+                return (globalConfig.beltSpeedItemsPerSecond *
+                    this.upgradeImprovements.painting *
+                    globalConfig.buildingSpeeds[processorType]);
+            }
+            case enumItemProcessorTypes.cutter:
+            case enumItemProcessorTypes.cutterQuad:
+            case enumItemProcessorTypes.rotater:
+            case enumItemProcessorTypes.rotaterCCW:
+            case enumItemProcessorTypes.rotater180:
+            case enumItemProcessorTypes.stacker: {
+                assert(globalConfig.buildingSpeeds[processorType], "Processor type has no speed set in globalConfig.buildingSpeeds: " + processorType);
+                return (globalConfig.beltSpeedItemsPerSecond *
+                    this.upgradeImprovements.processors *
+                    globalConfig.buildingSpeeds[processorType]);
+            }
+            default:
+                if (MOD_ITEM_PROCESSOR_SPEEDS[processorType]) {
+                    return MOD_ITEM_PROCESSOR_SPEEDS[processorType](this.root);
+                }
+                assertAlways(false, "invalid processor type: " + processorType);
+        }
+        return 1 / globalConfig.beltSpeedItemsPerSecond;
+    }
+}

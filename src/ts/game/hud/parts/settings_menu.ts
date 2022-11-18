@@ -1,0 +1,94 @@
+import { BaseHUDPart } from "../base_hud_part";
+import { makeDiv, formatBigNumberFull } from "../../../core/utils";
+import { DynamicDomAttach } from "../dynamic_dom_attach";
+import { InputReceiver } from "../../../core/input_receiver";
+import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
+import { T } from "../../../translations";
+import { StaticMapEntityComponent } from "../../components/static_map_entity";
+import { BeltComponent } from "../../components/belt";
+export class HUDSettingsMenu extends BaseHUDPart {
+    createElements(parent: any): any {
+        this.background = makeDiv(parent, "ingame_HUD_SettingsMenu", ["ingameDialog"]);
+        this.menuElement = makeDiv(this.background, null, ["menuElement"]);
+        if (this.root.gameMode.hasHub()) {
+            this.statsElement = makeDiv(this.background, null, ["statsElement"], `
+            <strong>${T.ingame.settingsMenu.beltsPlaced}</strong><span class="beltsPlaced"></span>
+            <strong>${T.ingame.settingsMenu.buildingsPlaced}</strong><span class="buildingsPlaced"></span>
+            <strong>${T.ingame.settingsMenu.playtime}</strong><span class="playtime"></span>
+
+            `);
+        }
+        this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
+        const buttons: any = [
+            {
+                id: "continue",
+                action: (): any => this.close(),
+            },
+            {
+                id: "settings",
+                action: (): any => this.goToSettings(),
+            },
+            {
+                id: "menu",
+                action: (): any => this.returnToMenu(),
+            },
+        ];
+        for (let i: any = 0; i < buttons.length; ++i) {
+            const { action, id }: any = buttons[i];
+            const element: any = document.createElement("button");
+            element.classList.add("styledButton");
+            element.classList.add(id);
+            this.buttonContainer.appendChild(element);
+            this.trackClicks(element, action);
+        }
+    }
+    isBlockingOverlay(): any {
+        return this.visible;
+    }
+    returnToMenu(): any {
+        this.root.app.adProvider.showVideoAd().then((): any => {
+            this.root.gameState.goBackToMenu();
+        });
+    }
+    goToSettings(): any {
+        this.root.gameState.goToSettings();
+    }
+    shouldPauseGame(): any {
+        return this.visible;
+    }
+    shouldPauseRendering(): any {
+        return this.visible;
+    }
+    initialize(): any {
+        this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.show, this);
+        this.domAttach = new DynamicDomAttach(this.root, this.background, {
+            attachClass: "visible",
+        });
+        this.inputReciever = new InputReceiver("settingsmenu");
+        this.keyActionMapper = new KeyActionMapper(this.root, this.inputReciever);
+        this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
+        this.close();
+    }
+    show(): any {
+        this.visible = true;
+        this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
+        const totalMinutesPlayed: any = Math.ceil(this.root.time.now() / 60);
+        if (this.root.gameMode.hasHub()) {
+                        const playtimeElement: HTMLElement = this.statsElement.querySelector(".playtime");
+                        const buildingsPlacedElement: HTMLElement = this.statsElement.querySelector(".buildingsPlaced");
+                        const beltsPlacedElement: HTMLElement = this.statsElement.querySelector(".beltsPlaced");
+            playtimeElement.innerText = T.global.time.xMinutes.replace("<x>", `${totalMinutesPlayed}`);
+            buildingsPlacedElement.innerText = formatBigNumberFull(this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent).length -
+                this.root.entityMgr.getAllWithComponent(BeltComponent).length);
+            beltsPlacedElement.innerText = formatBigNumberFull(this.root.entityMgr.getAllWithComponent(BeltComponent).length);
+        }
+    }
+    close(): any {
+        this.visible = false;
+        this.root.app.inputMgr.makeSureDetached(this.inputReciever);
+        this.update();
+    }
+    update(): any {
+        this.domAttach.update(this.visible);
+    }
+}
