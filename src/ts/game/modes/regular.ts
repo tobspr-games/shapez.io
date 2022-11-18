@@ -57,22 +57,22 @@ export type LevelDefinition = {
 
 
 
-export const rocketShape: any = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
-const preparementShape: any = "CpRpCp--:SwSwSwSw";
+export const rocketShape = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+const preparementShape = "CpRpCp--:SwSwSwSw";
 // Tiers need % of the previous tier as requirement too
-const tierGrowth: any = 2.5;
-const upgradesCache: any = {};
+const tierGrowth = 2.5;
+const upgradesCache = {};
 /**
  * Generates all upgrades
  * {} */
-function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Object<string, UpgradeTiers> {
+function generateUpgrades(limitedVersion = false, difficulty = 1): Object<string, UpgradeTiers> {
     if (upgradesCache[limitedVersion]) {
         return upgradesCache[limitedVersion];
     }
-    const fixedImprovements: any = [0.5, 0.5, 1, 1, 2, 1, 1];
-    const numEndgameUpgrades: any = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
-    function generateInfiniteUnlocks(): any {
-        return new Array(numEndgameUpgrades).fill(null).map((_: any, i: any): any => ({
+    const fixedImprovements = [0.5, 0.5, 1, 1, 2, 1, 1];
+    const numEndgameUpgrades = limitedVersion ? 0 : 1000 - fixedImprovements.length - 1;
+    function generateInfiniteUnlocks() {
+        return new Array(numEndgameUpgrades).fill(null).map((_, i) => ({
             required: [
                 { shape: preparementShape, amount: 30000 + i * 10000 },
                 { shape: finalGameShape, amount: 20000 + i * 5000 },
@@ -82,7 +82,7 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
         }));
     }
     // Fill in endgame upgrades
-    for (let i: any = 0; i < numEndgameUpgrades; ++i) {
+    for (let i = 0; i < numEndgameUpgrades; ++i) {
         if (i < 20) {
             fixedImprovements.push(0.1);
         }
@@ -96,7 +96,7 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
             fixedImprovements.push(0.0125);
         }
     }
-    const upgrades: any = {
+    const upgrades = {
         belt: [
             {
                 required: [{ shape: "CuCuCuCu", amount: 30 }],
@@ -225,18 +225,18 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
         ],
     };
     // Automatically generate tier levels
-    for (const upgradeId: any in upgrades) {
-        const upgradeTiers: any = upgrades[upgradeId];
-        let currentTierRequirements: any = [];
-        for (let i: any = 0; i < upgradeTiers.length; ++i) {
-            const tierHandle: any = upgradeTiers[i];
+    for (const upgradeId in upgrades) {
+        const upgradeTiers = upgrades[upgradeId];
+        let currentTierRequirements = [];
+        for (let i = 0; i < upgradeTiers.length; ++i) {
+            const tierHandle = upgradeTiers[i];
             tierHandle.improvement = fixedImprovements[i];
-            tierHandle.required.forEach((required: any): any => {
+            tierHandle.required.forEach(required => {
                 required.amount = Math.round(required.amount * difficulty);
             });
-            const originalRequired: any = tierHandle.required.slice();
-            for (let k: any = currentTierRequirements.length - 1; k >= 0; --k) {
-                const oldTierRequirement: any = currentTierRequirements[k];
+            const originalRequired = tierHandle.required.slice();
+            for (let k = currentTierRequirements.length - 1; k >= 0; --k) {
+                const oldTierRequirement = currentTierRequirements[k];
                 if (!tierHandle.excludePrevious) {
                     tierHandle.required.unshift({
                         shape: oldTierRequirement.shape,
@@ -244,11 +244,11 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
                     });
                 }
             }
-            currentTierRequirements.push(...originalRequired.map((req: any): any => ({
+            currentTierRequirements.push(...originalRequired.map(req => ({
                 amount: req.amount,
                 shape: req.shape,
             })));
-            currentTierRequirements.forEach((tier: any): any => {
+            currentTierRequirements.forEach(tier => {
                 tier.amount = findNiceIntegerValue(tier.amount * tierGrowth);
             });
         }
@@ -256,13 +256,13 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
     MOD_SIGNALS.modifyUpgrades.dispatch(upgrades);
     // VALIDATE
     if (G_IS_DEV) {
-        for (const upgradeId: any in upgrades) {
-            upgrades[upgradeId].forEach((tier: any): any => {
-                tier.required.forEach(({ shape }: any): any => {
+        for (const upgradeId in upgrades) {
+            upgrades[upgradeId].forEach(tier => {
+                tier.required.forEach(({ shape }) => {
                     try {
                         ShapeDefinition.fromShortKey(shape);
                     }
-                    catch (ex: any) {
+                    catch (ex) {
                         throw new Error("Invalid upgrade goal: '" + ex + "' for shape" + shape);
                     }
                 });
@@ -272,22 +272,22 @@ function generateUpgrades(limitedVersion: any = false, difficulty: any = 1): Obj
     upgradesCache[limitedVersion] = upgrades;
     return upgrades;
 }
-let levelDefinitionsCache: any = null;
+let levelDefinitionsCache = null;
 /**
  * Generates the level definitions
  */
-export function generateLevelDefinitions(app: any): any {
+export function generateLevelDefinitions(app) {
     if (levelDefinitionsCache) {
         return levelDefinitionsCache;
     }
-    const levelDefinitions: any = generateLevelsForVariant(app);
+    const levelDefinitions = generateLevelsForVariant(app);
     MOD_SIGNALS.modifyLevelDefinitions.dispatch(levelDefinitions);
     if (G_IS_DEV) {
-        levelDefinitions.forEach(({ shape }: any): any => {
+        levelDefinitions.forEach(({ shape }) => {
             try {
                 ShapeDefinition.fromShortKey(shape);
             }
-            catch (ex: any) {
+            catch (ex) {
                 throw new Error("Invalid tutorial goal: '" + ex + "' for shape" + shape);
             }
         });
@@ -296,10 +296,10 @@ export function generateLevelDefinitions(app: any): any {
     return levelDefinitions;
 }
 export class RegularGameMode extends GameMode {
-    static getId(): any {
+    static getId() {
         return enumGameModeIds.regular;
     }
-    static getType(): any {
+    static getType() {
         return enumGameModeTypes.default;
     }
     public additionalHudParts = {

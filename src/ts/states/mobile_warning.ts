@@ -5,7 +5,7 @@ export class MobileWarningState extends GameState {
     constructor() {
         super("MobileWarningState");
     }
-    getInnerHTML(): any {
+    getInnerHTML() {
         return `
 
             <img class="logo" src="${cachebust("res/logo.png")}" alt="shapez.io Logo">
@@ -17,13 +17,13 @@ export class MobileWarningState extends GameState {
             <a href="https://get.shapez.io/shapez_mobile" class="standaloneLink" target="_blank">Play on Steam!</a>
         `;
     }
-    getThemeMusic(): any {
+    getThemeMusic() {
         return null;
     }
-    getHasFadeIn(): any {
+    getHasFadeIn() {
         return false;
     }
-    onEnter(): any {
+    onEnter() {
         try {
             if (window.gtag) {
                 window.gtag("event", "click", {
@@ -32,11 +32,11 @@ export class MobileWarningState extends GameState {
                 });
             }
         }
-        catch (ex: any) {
+        catch (ex) {
             console.warn("Failed to track mobile click:", ex);
         }
     }
-    onLeave(): any {
+    onLeave() {
         // this.dialogs.cleanup();
     }
 }

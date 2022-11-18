@@ -10,13 +10,13 @@ import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { WiredPinsComponent, enumPinSlotType } from "../components/wired_pins";
 /** @enum {string} */
-export const enumPainterVariants: any = { mirrored: "mirrored", double: "double", quad: "quad" };
+export const enumPainterVariants = { mirrored: "mirrored", double: "double", quad: "quad" };
 export class MetaPainterBuilding extends MetaBuilding {
 
     constructor() {
         super("painter");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 16,
@@ -36,7 +36,7 @@ export class MetaPainterBuilding extends MetaBuilding {
             },
         ];
     }
-    getDimensions(variant: any): any {
+    getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
             case enumPainterVariants.mirrored:
@@ -49,7 +49,7 @@ export class MetaPainterBuilding extends MetaBuilding {
                 assertAlways(false, "Unknown painter variant: " + variant);
         }
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#cd9b7d";
     }
     /**
@@ -65,21 +65,21 @@ export class MetaPainterBuilding extends MetaBuilding {
         switch (variant) {
             case defaultBuildingVariant:
             case enumPainterVariants.mirrored: {
-                const speed: any = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painter);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
             case enumPainterVariants.double: {
-                const speed: any = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterDouble);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed, true)]];
             }
             case enumPainterVariants.quad: {
-                const speed: any = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
+                const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.painterQuad);
                 return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
             }
         }
     }
-        getAvailableVariants(root: GameRoot): any {
-        let variants: any = [defaultBuildingVariant, enumPainterVariants.mirrored];
+        getAvailableVariants(root: GameRoot) {
+        let variants = [defaultBuildingVariant, enumPainterVariants.mirrored];
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter_double)) {
             variants.push(enumPainterVariants.double);
         }
@@ -89,13 +89,13 @@ export class MetaPainterBuilding extends MetaBuilding {
         }
         return variants;
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_painter);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemProcessorComponent({}));
         entity.addComponent(new ItemEjectorComponent({
             slots: [{ pos: new Vector(1, 0), direction: enumDirection.right }],
@@ -115,7 +115,7 @@ export class MetaPainterBuilding extends MetaBuilding {
             ],
         }));
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: string): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant: string) {
         switch (variant) {
             case defaultBuildingVariant:
             case enumPainterVariants.mirrored: {

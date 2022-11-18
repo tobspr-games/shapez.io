@@ -18,18 +18,18 @@ export class FormElement {
 
     constructor(id, label) {
     }
-    getHtml(): any {
+    getHtml() {
         abstract;
         return "";
     }
-    getFormElement(parent: any): any {
+    getFormElement(parent) {
         return parent.querySelector("[data-formId='" + this.id + "']");
     }
-    bindEvents(parent: any, clickTrackers: any): any {
+    bindEvents(parent, clickTrackers) {
         abstract;
     }
-    focus(): any { }
-    isValid(): any {
+    focus() { }
+    isValid() {
         return true;
     }
     /** {} */
@@ -47,10 +47,10 @@ export class FormElementInput extends FormElement {
     constructor({ id, label = null, placeholder, defaultValue = "", inputType = "text", validator = null }) {
         super(id, label);
     }
-    getHtml(): any {
-        let classes: any = [];
-        let inputType: any = "text";
-        let maxlength: any = 256;
+    getHtml() {
+        let classes = [];
+        let inputType = "text";
+        let maxlength = 256;
         switch (this.inputType) {
             case "text": {
                 classes.push("input-text");
@@ -85,25 +85,25 @@ export class FormElementInput extends FormElement {
             </div>
         `;
     }
-    bindEvents(parent: any, clickTrackers: any): any {
+    bindEvents(parent, clickTrackers) {
         this.element = this.getFormElement(parent);
-        this.element.addEventListener("input", (event: any): any => this.updateErrorState());
+        this.element.addEventListener("input", event => this.updateErrorState());
         this.updateErrorState();
     }
-    updateErrorState(): any {
+    updateErrorState() {
         this.element.classList.toggle("errored", !this.isValid());
     }
-    isValid(): any {
+    isValid() {
         return !this.validator || this.validator(this.element.value);
     }
-    getValue(): any {
+    getValue() {
         return this.element.value;
     }
-    setValue(value: any): any {
+    setValue(value) {
         this.element.value = value;
         this.updateErrorState();
     }
-    focus(): any {
+    focus() {
         this.element.focus();
         this.element.select();
     }
@@ -116,7 +116,7 @@ export class FormElementCheckbox extends FormElement {
     constructor({ id, label, defaultValue = true }) {
         super(id, label);
     }
-    getHtml(): any {
+    getHtml() {
         return `
             <div class="formElement checkBoxFormElem">
             ${this.label ? `<label>${this.label}</label>` : ""}
@@ -126,23 +126,23 @@ export class FormElementCheckbox extends FormElement {
             </div>
         `;
     }
-    bindEvents(parent: any, clickTrackers: any): any {
+    bindEvents(parent, clickTrackers) {
         this.element = this.getFormElement(parent);
-        const detector: any = new ClickDetector(this.element, {
+        const detector = new ClickDetector(this.element, {
             consumeEvents: false,
             preventDefault: false,
         });
         clickTrackers.push(detector);
         detector.click.add(this.toggle, this);
     }
-    getValue(): any {
+    getValue() {
         return this.value;
     }
-    toggle(): any {
+    toggle() {
         this.value = !this.value;
         this.element.classList.toggle("checked", this.value);
     }
-    focus(parent: any): any { }
+    focus(parent) { }
 }
 export class FormElementItemChooser extends FormElement {
     public items = items;
@@ -152,8 +152,8 @@ export class FormElementItemChooser extends FormElement {
         constructor({ id, label, items = [] }) {
         super(id, label);
     }
-    getHtml(): any {
-        let classes: any = [];
+    getHtml() {
+        let classes = [];
         return `
             <div class="formElement">
                 ${this.label ? `<label>${this.label}</label>` : ""}
@@ -161,29 +161,29 @@ export class FormElementItemChooser extends FormElement {
             </div>
             `;
     }
-        bindEvents(parent: HTMLElement, clickTrackers: Array<ClickDetector>): any {
+        bindEvents(parent: HTMLElement, clickTrackers: Array<ClickDetector>) {
         this.element = this.getFormElement(parent);
-        for (let i: any = 0; i < this.items.length; ++i) {
-            const item: any = this.items[i];
-            const canvas: any = document.createElement("canvas");
+        for (let i = 0; i < this.items.length; ++i) {
+            const item = this.items[i];
+            const canvas = document.createElement("canvas");
             canvas.width = 128;
             canvas.height = 128;
-            const context: any = canvas.getContext("2d");
+            const context = canvas.getContext("2d");
             item.drawFullSizeOnCanvas(context, 128);
             this.element.appendChild(canvas);
-            const detector: any = new ClickDetector(canvas, {});
+            const detector = new ClickDetector(canvas, {});
             clickTrackers.push(detector);
-            detector.click.add((): any => {
+            detector.click.add(() => {
                 this.chosenItem = item;
                 this.valueChosen.dispatch(item);
             });
         }
     }
-    isValid(): any {
+    isValid() {
         return true;
     }
-    getValue(): any {
+    getValue() {
         return null;
     }
-    focus(): any { }
+    focus() { }
 }

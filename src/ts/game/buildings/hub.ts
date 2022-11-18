@@ -10,7 +10,7 @@ export class MetaHubBuilding extends MetaBuilding {
     constructor() {
         super("hub");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 26,
@@ -18,29 +18,29 @@ export class MetaHubBuilding extends MetaBuilding {
             },
         ];
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(4, 4);
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#eb5555";
     }
-    getIsRotateable(): any {
+    getIsRotateable() {
         return false;
     }
-    getBlueprintSprite(): any {
+    getBlueprintSprite() {
         return null;
     }
-    getSprite(): any {
+    getSprite() {
         // We render it ourself
         return null;
     }
-    getIsRemovable(): any {
+    getIsRemovable() {
         return false;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new HubComponent());
         entity.addComponent(new ItemProcessorComponent({
             inputsPerCharge: 1,
@@ -56,7 +56,7 @@ export class MetaHubBuilding extends MetaBuilding {
             ],
         }));
                 const slots: Array<import("../components/item_acceptor").ItemAcceptorSlotConfig> = [];
-        for (let i: any = 0; i < 4; ++i) {
+        for (let i = 0; i < 4; ++i) {
             slots.push({ pos: new Vector(i, 0), direction: enumDirection.top, filter: "shape" }, { pos: new Vector(i, 3), direction: enumDirection.bottom, filter: "shape" }, { pos: new Vector(0, i), direction: enumDirection.left, filter: "shape" }, { pos: new Vector(3, i), direction: enumDirection.right, filter: "shape" });
         }
         entity.addComponent(new ItemAcceptorComponent({

@@ -34,7 +34,7 @@ import { AchievementProxy } from "./achievement_proxy";
 import { SoundProxy } from "./sound_proxy";
 import { GameTime } from "./time/game_time";
 import { MOD_SIGNALS } from "../mods/mod_signals";
-const logger: any = createLogger("ingame/core");
+const logger = createLogger("ingame/core");
 // Store the canvas so we can reuse it later
 let lastCanvas: HTMLCanvasElement = null;
 let lastContext: CanvasRenderingContext2D = null;
@@ -55,7 +55,7 @@ export class GameCore {
      * Initializes the root object which stores all game related data. The state
      * is required as a back reference (used sometimes)
      */
-    initializeRoot(parentState: import("../states/ingame").InGameState, savegame: Savegame, gameModeId: any): any {
+    initializeRoot(parentState: import("../states/ingame").InGameState, savegame: Savegame, gameModeId) {
         logger.log("initializing root");
         // Construct the root element, this is the data representation of the game
         this.root = new GameRoot(this.app);
@@ -67,7 +67,7 @@ export class GameCore {
         // Initialize canvas element & context
         this.internalInitCanvas();
         // Members
-        const root: any = this.root;
+        const root = this.root;
         // This isn't nice, but we need it right here
         root.keyMapper = new KeyActionMapper(root, this.root.gameState.inputReciever);
         // Init game mode
@@ -102,7 +102,7 @@ export class GameCore {
         }
         // @todo Find better place
         if (G_IS_DEV && globalConfig.debug.manualTickOnly) {
-            this.root.gameState.inputReciever.keydown.add((key: any): any => {
+            this.root.gameState.inputReciever.keydown.add(key => {
                 if (key.keyCode === 84) {
                     // 'T'
                     // Extract current real time
@@ -123,7 +123,7 @@ export class GameCore {
      * Initializes a new game, this means creating a new map and centering on the
      * playerbase
      */
-    initNewGame(): any {
+    initNewGame() {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
         this.root.map.seed = randomInt(0, 100000);
@@ -131,7 +131,7 @@ export class GameCore {
             return;
         }
         // Place the hub
-        const hub: any = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
+        const hub = gMetaBuildingRegistry.findByClass(MetaHubBuilding).createEntity({
             root: this.root,
             origin: new Vector(-2, -2),
             rotation: 0,
@@ -147,17 +147,17 @@ export class GameCore {
      * Inits an existing game by loading the raw savegame data and deserializing it.
      * Also runs basic validity checks.
      */
-    initExistingGame(): any {
+    initExistingGame() {
         logger.log("Initializing existing game");
-        const serializer: any = new SavegameSerializer();
+        const serializer = new SavegameSerializer();
         try {
-            const status: any = serializer.deserialize(this.root.savegame.getCurrentDump(), this.root);
+            const status = serializer.deserialize(this.root.savegame.getCurrentDump(), this.root);
             if (!status.isGood()) {
                 logger.error("savegame-deserialize-failed:" + status.reason);
                 return false;
             }
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.error("Exception during deserialization:", ex);
             return false;
         }
@@ -167,8 +167,8 @@ export class GameCore {
     /**
      * Initializes the render canvas
      */
-    internalInitCanvas(): any {
-        let canvas: any, context: any;
+    internalInitCanvas() {
+        let canvas, context;
         if (!lastCanvas) {
             logger.log("Creating new canvas");
             canvas = document.createElement("canvas");
@@ -207,7 +207,7 @@ export class GameCore {
     /**
      * Destructs the root, freeing all resources
      */
-    destruct(): any {
+    destruct() {
         if (lastCanvas && lastCanvas.parentElement) {
             lastCanvas.parentElement.removeChild(lastCanvas);
         }
@@ -216,8 +216,8 @@ export class GameCore {
         this.root = null;
         this.app = null;
     }
-    tick(deltaMs: any): any {
-        const root: any = this.root;
+    tick(deltaMs) {
+        const root = this.root;
         // Extract current real time
         root.time.updateRealtimeNow();
         // Camera is always updated, no matter what
@@ -234,7 +234,7 @@ export class GameCore {
         root.automaticSave.update();
         return true;
     }
-    shouldRender(): any {
+    shouldRender() {
         if (this.root.queue.requireRedraw) {
             return true;
         }
@@ -247,8 +247,8 @@ export class GameCore {
         }
         return true;
     }
-    updateLogic(): any {
-        const root: any = this.root;
+    updateLogic() {
+        const root = this.root;
         root.dynamicTickrate.beginTick();
         if (G_IS_DEV && globalConfig.debug.disableLogicTicks) {
             root.dynamicTickrate.endTick();
@@ -269,14 +269,14 @@ export class GameCore {
         root.dynamicTickrate.endTick();
         return true;
     }
-    resize(w: any, h: any): any {
+    resize(w, h) {
         this.root.gameWidth = w;
         this.root.gameHeight = h;
         resizeHighDPICanvas(this.root.canvas, w, h, globalConfig.smoothing.smoothMainCanvas);
         this.root.signals.resized.dispatch(w, h);
         this.root.queue.requireRedraw = true;
     }
-    postLoadHook(): any {
+    postLoadHook() {
         logger.log("Dispatching post load hook");
         this.root.signals.postLoadHook.dispatch();
         if (!this.root.gameIsFresh) {
@@ -285,9 +285,9 @@ export class GameCore {
         }
         this.root.gameInitialized = true;
     }
-    draw(): any {
-        const root: any = this.root;
-        const systems: any = root.systemMgr.systems;
+    draw() {
+        const root = this.root;
+        const systems = root.systemMgr.systems;
         this.root.dynamicTickrate.onFrameRendered();
         if (!this.shouldRender()) {
             // Always update hud tho
@@ -297,17 +297,17 @@ export class GameCore {
         this.root.signals.gameFrameStarted.dispatch();
         root.queue.requireRedraw = false;
         // Gather context and save all state
-        const context: any = root.context;
+        const context = root.context;
         context.save();
         if (G_IS_DEV) {
             context.fillStyle = "#a10000";
             context.fillRect(0, 0, window.innerWidth * 3, window.innerHeight * 3);
         }
         // Compute optimal zoom level and atlas scale
-        const zoomLevel: any = root.camera.zoomLevel;
-        const lowQuality: any = root.app.settings.getAllSettings().lowQualityTextures;
-        const effectiveZoomLevel: any = (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
-        let desiredAtlasScale: any = "0.25";
+        const zoomLevel = root.camera.zoomLevel;
+        const lowQuality = root.app.settings.getAllSettings().lowQualityTextures;
+        const effectiveZoomLevel = (zoomLevel / globalConfig.assetsDpi) * getDeviceDPI() * globalConfig.assetsSharpness;
+        let desiredAtlasScale = "0.25";
         if (effectiveZoomLevel > 0.5 && !lowQuality) {
             desiredAtlasScale = ORIGINAL_SPRITE_SCALE;
         }
@@ -315,7 +315,7 @@ export class GameCore {
             desiredAtlasScale = "0.5";
         }
         // Construct parameters required for drawing
-        const params: any = new DrawParameters({
+        const params = new DrawParameters({
             context: context,
             visibleRect: root.camera.getVisibleRect(),
             desiredAtlasScale,
@@ -335,7 +335,7 @@ export class GameCore {
         root.hud.update();
         // Main rendering order
         // -----
-        const desiredOverlayAlpha: any = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
+        const desiredOverlayAlpha = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.overlayAlpha = lerp(this.overlayAlpha, desiredOverlayAlpha, 0.25);
         // On low performance, skip the fade
         if (this.root.entityMgr.entities.length > 5000 || this.root.dynamicTickrate.averageFps < 50) {
@@ -389,8 +389,8 @@ export class GameCore {
         root.hud.drawOverlays(params);
         assert(context.globalAlpha === 1.0, "context.globalAlpha not 1 on frame end");
         if (G_IS_DEV && globalConfig.debug.simulateSlowRendering) {
-            let sum: any = 0;
-            for (let i: any = 0; i < 1e8; ++i) {
+            let sum = 0;
+            for (let i = 0; i < 1e8; ++i) {
                 sum += i;
             }
             if (Math.random() > 0.95) {
@@ -406,7 +406,7 @@ export class GameCore {
                 round2Digits(zoomLevel) +
                 " / Effective Zoom: " +
                 round2Digits(effectiveZoomLevel), 20, 600);
-            const stats: any = this.root.buffers.getStats();
+            const stats = this.root.buffers.getStats();
             context.fillText("Maintained Buffers: " +
                 stats.rootKeys +
                 " root keys / " +
@@ -414,7 +414,7 @@ export class GameCore {
                 " buffers / VRAM: " +
                 round2Digits(stats.vramBytes / (1024 * 1024)) +
                 " MB", 20, 620);
-            const internalStats: any = getBufferStats();
+            const internalStats = getBufferStats();
             context.fillText("Total Buffers: " +
                 internalStats.bufferCount +
                 " buffers / " +

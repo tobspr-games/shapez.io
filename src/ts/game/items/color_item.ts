@@ -6,16 +6,16 @@ import { BaseItem } from "../base_item";
 import { enumColors } from "../colors";
 import { THEME } from "../theme";
 export class ColorItem extends BaseItem {
-    static getId(): any {
+    static getId() {
         return "color";
     }
-    static getSchema(): any {
+    static getSchema() {
         return types.enum(enumColors);
     }
-    serialize(): any {
+    serialize() {
         return this.color;
     }
-    deserialize(data: any): any {
+    deserialize(data) {
         this.color = data;
     }
     /** {} **/
@@ -28,7 +28,7 @@ export class ColorItem extends BaseItem {
     getAsCopyableKey(): string {
         return this.color;
     }
-        equalsImpl(other: BaseItem): any {
+        equalsImpl(other: BaseItem) {
         return this.color === other as ColorItem).color;
     }
     public color = color;
@@ -36,20 +36,20 @@ export class ColorItem extends BaseItem {
         constructor(color) {
         super();
     }
-    getBackgroundColorAsResource(): any {
+    getBackgroundColorAsResource() {
         return THEME.map.resources[this.color];
     }
     /**
      * Draws the item to a canvas
      */
-    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number): any {
+    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number) {
         if (!this.cachedSprite) {
             this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
         }
         this.cachedSprite.drawCentered(context, size / 2, size / 2, size);
     }
-        drawItemCenteredClipped(x: number, y: number, parameters: DrawParameters, diameter: number = globalConfig.defaultItemDiameter): any {
-        const realDiameter: any = diameter * 0.6;
+        drawItemCenteredClipped(x: number, y: number, parameters: DrawParameters, diameter: number = globalConfig.defaultItemDiameter) {
+        const realDiameter = diameter * 0.6;
         if (!this.cachedSprite) {
             this.cachedSprite = Loader.getSprite("sprites/colors/" + this.color + ".png");
         }
@@ -62,6 +62,6 @@ export class ColorItem extends BaseItem {
 export const COLOR_ITEM_SINGLETONS: {
     [idx: enumColors]: ColorItem;
 } = {};
-for (const color: any in enumColors) {
+for (const color in enumColors) {
     COLOR_ITEM_SINGLETONS[color] = new ColorItem(color);
 }

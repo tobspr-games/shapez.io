@@ -9,7 +9,7 @@ import { Component } from "../component";
  * Top Only:
  * @enum {string}
  */
-export const enumClippedBeltUnderlayType: any = {
+export const enumClippedBeltUnderlayType = {
     full: "full",
     bottomOnly: "bottomOnly",
     topOnly: "topOnly",
@@ -22,7 +22,7 @@ export type BeltUnderlayTile = {
 };
 
 export class BeltUnderlaysComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "BeltUnderlays";
     }
     public underlays = underlays;

@@ -10,11 +10,11 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ConstantSignalComponent, ItemProducerComponent]);
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const signalComp: any = entity.components.ConstantSignal;
-            const ejectorComp: any = entity.components.ItemEjector;
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const signalComp = entity.components.ConstantSignal;
+            const ejectorComp = entity.components.ItemEjector;
             if (!ejectorComp) {
                 continue;
             }
@@ -103,21 +103,21 @@ export class ConstantProducerSystem extends GameSystemWithFilter {
      * @param {MapChunk} chunk
      * @returns
      */
-    drawChunk(parameters: DrawParameters, chunk: MapChunk): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const producerComp: any = contents[i].components.ItemProducer;
-            const signalComp: any = contents[i].components.ConstantSignal;
+    drawChunk(parameters: DrawParameters, chunk: MapChunk) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const producerComp = contents[i].components.ItemProducer;
+            const signalComp = contents[i].components.ConstantSignal;
             if (!producerComp || !signalComp) {
                 continue;
             }
-            const staticComp: any = contents[i].components.StaticMapEntity;
-            const item: any = signalComp.signal;
+            const staticComp = contents[i].components.StaticMapEntity;
+            const item = signalComp.signal;
             if (!item) {
                 continue;
             }
-            const center: any = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
-            const localOffset: any = new Vector(0, 1).rotateFastMultipleOf90(staticComp.rotation);
+            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+            const localOffset = new Vector(0, 1).rotateFastMultipleOf90(staticComp.rotation);
             item.drawItemCenteredClipped(center.x + localOffset.x, center.y + localOffset.y, parameters, globalConfig.tileSize * 0.65);
         }
     }

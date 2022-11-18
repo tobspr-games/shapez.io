@@ -11,7 +11,7 @@ import { ModInterface } from "./mod_interface";
 import { MOD_SIGNALS } from "./mod_signals";
 import semverValidRange from "semver/ranges/valid";
 import semverSatisifies from "semver/functions/satisfies";
-const LOG: any = createLogger("mods");
+const LOG = createLogger("mods");
 export type ModMetadata = {
     name: string;
     version: string;
@@ -39,17 +39,17 @@ export class ModLoader {
     constructor() {
         LOG.log("modloader created");
     }
-    linkApp(app: any): any {
+    linkApp(app) {
         this.app = app;
     }
-    anyModsActive(): any {
+    anyModsActive() {
         return this.mods.length > 0;
     }
     
     getModsListForSavegame(): import("../savegame/savegame_typedefs").SavegameStoredMods {
         return this.mods
-            .filter((mod: any): any => !mod.metadata.doesNotAffectSavegame)
-            .map((mod: any): any => ({
+            .filter(mod => !mod.metadata.doesNotAffectSavegame)
+            .map(mod => ({
             id: mod.metadata.id,
             version: mod.metadata.version,
             website: mod.metadata.website,
@@ -58,13 +58,13 @@ export class ModLoader {
         }));
     }
     
-    computeModDifference(originalMods: import("../savegame/savegame_typedefs").SavegameStoredMods): any {
+    computeModDifference(originalMods: import("../savegame/savegame_typedefs").SavegameStoredMods) {
         
         let missing: import("../savegame/savegame_typedefs").SavegameStoredMods = [];
-        const current: any = this.getModsListForSavegame();
-        originalMods.forEach((mod: any): any => {
-            for (let i: any = 0; i < current.length; ++i) {
-                const currentMod: any = current[i];
+        const current = this.getModsListForSavegame();
+        originalMods.forEach(mod => {
+            for (let i = 0; i < current.length; ++i) {
+                const currentMod = current[i];
                 if (currentMod.id === mod.id && currentMod.version === mod.version) {
                     current.splice(i, 1);
                     return;
@@ -77,14 +77,14 @@ export class ModLoader {
             extra: current,
         };
     }
-    exposeExports(): any {
+    exposeExports() {
         if (G_IS_DEV || G_IS_STANDALONE) {
-            let exports: any = {};
-            const modules: any = require.context("../", true, /\.js$/);
-            Array.from(modules.keys()).forEach((key: any): any => {
+            let exports = {};
+            const modules = require.context("../", true, /\.js$/);
+            Array.from(modules.keys()).forEach(key => {
                 // @ts-ignore
-                const module: any = modules(key);
-                for (const member: any in module) {
+                const module = modules(key);
+                for (const member in module) {
                     if (member === "default" || member === "__$S__") {
                         // Setter
                         continue;
@@ -93,10 +93,10 @@ export class ModLoader {
                         throw new Error("Duplicate export of " + member);
                     }
                     Object.defineProperty(exports, member, {
-                        get(): any {
+                        get() {
                             return module[member];
                         },
-                        set(v: any): any {
+                        set(v) {
                             module.__$S__(member, v);
                         },
                     });
@@ -105,28 +105,28 @@ export class ModLoader {
             window.shapez = exports;
         }
     }
-    async initMods(): any {
+    async initMods() {
         if (!G_IS_STANDALONE && !G_IS_DEV) {
             this.initialized = true;
             return;
         }
         // Create a storage for reading mod settings
-        const storage: any = G_IS_STANDALONE
+        const storage = G_IS_STANDALONE
             ? new StorageImplElectron(this.app)
             : new StorageImplBrowserIndexedDB(this.app);
         await storage.initialize();
         LOG.log("hook:init", this.app, this.app.storage);
         this.exposeExports();
-        let mods: any = [];
+        let mods = [];
         if (G_IS_STANDALONE) {
             mods = await ipcRenderer.invoke("get-mods");
         }
         if (G_IS_DEV && globalConfig.debug.externalModUrl) {
-            const modURLs: any = Array.isArray(globalConfig.debug.externalModUrl)
+            const modURLs = Array.isArray(globalConfig.debug.externalModUrl)
                 ? globalConfig.debug.externalModUrl
                 : [globalConfig.debug.externalModUrl];
-            for (let i: any = 0; i < modURLs.length; i++) {
-                const response: any = await fetch(modURLs[i], {
+            for (let i = 0; i < modURLs.length; i++) {
+                const response = await fetch(modURLs[i], {
                     method: "GET",
                 });
                 if (response.status !== 200) {
@@ -135,11 +135,11 @@ export class ModLoader {
                 mods.push(await response.text());
             }
         }
-        window.$shapez_registerMod = (modClass: any, meta: any): any => {
+        window.$shapez_registerMod = (modClass, meta) => {
             if (this.initialized) {
                 throw new Error("Can't register mod after modloader is initialized");
             }
-            if (this.modLoadQueue.some((entry: any): any => entry.meta.id === meta.id)) {
+            if (this.modLoadQueue.some(entry => entry.meta.id === meta.id)) {
                 console.warn("Not registering mod", meta, "since a mod with the same id is already loaded");
                 return;
             }
@@ -148,7 +148,7 @@ export class ModLoader {
                 meta,
             });
         };
-        mods.forEach((modCode: any): any => {
+        mods.forEach(modCode => {
             modCode += `
                         if (typeof Mod !== 'undefined') {
                             if (typeof METADATA !== 'object') {
@@ -158,20 +158,20 @@ export class ModLoader {
                         }
                     `;
             try {
-                const func: any = new Function(modCode);
+                const func = new Function(modCode);
                 func();
             }
-            catch (ex: any) {
+            catch (ex) {
                 console.error(ex);
                 alert("Failed to parse mod (launch with --dev for more info): \n\n" + ex);
             }
         });
         delete window.$shapez_registerMod;
-        for (let i: any = 0; i < this.modLoadQueue.length; i++) {
-            const { modClass, meta }: any = this.modLoadQueue[i];
-            const modDataFile: any = "modsettings_" + meta.id + "__" + meta.version + ".json";
+        for (let i = 0; i < this.modLoadQueue.length; i++) {
+            const { modClass, meta } = this.modLoadQueue[i];
+            const modDataFile = "modsettings_" + meta.id + "__" + meta.version + ".json";
             if (meta.minimumGameVersion) {
-                const minimumGameVersion: any = meta.minimumGameVersion;
+                const minimumGameVersion = meta.minimumGameVersion;
                 if (!semverValidRange(minimumGameVersion)) {
                     alert("Mod " + meta.id + " has invalid minimumGameVersion: " + minimumGameVersion);
                     continue;
@@ -187,13 +187,13 @@ export class ModLoader {
                     continue;
                 }
             }
-            let settings: any = meta.settings;
+            let settings = meta.settings;
             if (meta.settings) {
                 try {
-                    const storedSettings: any = await storage.readFileAsync(modDataFile);
+                    const storedSettings = await storage.readFileAsync(modDataFile);
                     settings = JSON.parse(storedSettings);
                 }
-                catch (ex: any) {
+                catch (ex) {
                     if (ex === FILE_NOT_FOUND) {
                         // Write default data
                         await storage.writeFileAsync(modDataFile, JSON.stringify(meta.settings));
@@ -204,17 +204,17 @@ export class ModLoader {
                 }
             }
             try {
-                const mod: any = new modClass({
+                const mod = new modClass({
                     app: this.app,
                     modLoader: this,
                     meta,
                     settings,
-                    saveSettings: (): any => storage.writeFileAsync(modDataFile, JSON.stringify(mod.settings)),
+                    saveSettings: () => storage.writeFileAsync(modDataFile, JSON.stringify(mod.settings)),
                 });
                 await mod.init();
                 this.mods.push(mod);
             }
-            catch (ex: any) {
+            catch (ex) {
                 console.error(ex);
                 alert("Failed to initialize mods (launch with --dev for more info): \n\n" + ex);
             }
@@ -223,4 +223,4 @@ export class ModLoader {
         this.initialized = true;
     }
 }
-export const MODS: any = new ModLoader();
+export const MODS = new ModLoader();

@@ -51,23 +51,23 @@ export class ModInterface {
 
         constructor(modLoader) {
     }
-    registerCss(cssString: any): any {
+    registerCss(cssString) {
         // Preprocess css
-        cssString = cssString.replace(/\$scaled\(([^)]*)\)/gim, (substr: any, expression: any): any => {
+        cssString = cssString.replace(/\$scaled\(([^)]*)\)/gim, (substr, expression) => {
             return "calc((" + expression + ") * var(--ui-scale))";
         });
-        const element: any = document.createElement("style");
+        const element = document.createElement("style");
         element.textContent = cssString;
         document.head.appendChild(element);
     }
-    registerSprite(spriteId: any, base64string: any): any {
+    registerSprite(spriteId, base64string) {
         assert(base64string.startsWith("data:image"));
-        const img: any = new Image();
-        const sprite: any = new AtlasSprite(spriteId);
+        const img = new Image();
+        const sprite = new AtlasSprite(spriteId);
         sprite.frozen = true;
-        img.addEventListener("load", (): any => {
-            for (const resolution: any in sprite.linksByResolution) {
-                const link: any = sprite.linksByResolution[resolution];
+        img.addEventListener("load", () => {
+            for (const resolution in sprite.linksByResolution) {
+                const link = sprite.linksByResolution[resolution];
                 link.w = img.width;
                 link.h = img.height;
                 link.packedW = img.width;
@@ -75,7 +75,7 @@ export class ModInterface {
             }
         });
         img.src = base64string;
-        const link: any = new SpriteAtlasLink({
+        const link = new SpriteAtlasLink({
             w: 1,
             h: 1,
             atlas: img,
@@ -91,20 +91,20 @@ export class ModInterface {
         sprite.linksByResolution["0.75"] = link;
         Loader.sprites.set(spriteId, sprite);
     }
-        registerAtlas(imageBase64: string, jsonTextData: string): any {
-        const atlasData: any = JSON.parse(jsonTextData);
-        const img: any = new Image();
+        registerAtlas(imageBase64: string, jsonTextData: string) {
+        const atlasData = JSON.parse(jsonTextData);
+        const img = new Image();
         img.src = imageBase64;
-        const sourceData: any = atlasData.frames;
-        for (const spriteName: any in sourceData) {
-            const { frame, sourceSize, spriteSourceSize }: any = sourceData[spriteName];
-            let sprite: any = (Loader.sprites.get(spriteName) as AtlasSprite);
+        const sourceData = atlasData.frames;
+        for (const spriteName in sourceData) {
+            const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
+            let sprite = Loader.sprites.get(spriteName) as AtlasSprite);
             if (!sprite) {
                 sprite = new AtlasSprite(spriteName);
                 Loader.sprites.set(spriteName, sprite);
             }
             sprite.frozen = true;
-            const link: any = new SpriteAtlasLink({
+            const link = new SpriteAtlasLink({
                 packedX: frame.x,
                 packedY: frame.y,
                 packedW: frame.w,
@@ -130,7 +130,7 @@ export class ModInterface {
         shortCode: string;
         weightComputation: (distanceToOriginInChunks: number) => number;
         draw: (options: import("../game/shape_definition").SubShapeDrawOptions) => void;
-    }): any {
+    }) {
         if (shortCode.length !== 1) {
             throw new Error("Bad short code: " + shortCode);
         }
@@ -140,8 +140,8 @@ export class ModInterface {
         MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[id] = weightComputation;
         MODS_ADDITIONAL_SUB_SHAPE_DRAWERS[id] = draw;
     }
-    registerTranslations(language: any, translations: any): any {
-        const data: any = LANGUAGES[language];
+    registerTranslations(language, translations) {
+        const data = LANGUAGES[language];
         if (!data) {
             throw new Error("Unknown language: " + language);
         }
@@ -150,11 +150,11 @@ export class ModInterface {
             matchDataRecursive(T, translations, true);
         }
     }
-        registerItem(item: typeof BaseItem, resolver: (itemData: any) => BaseItem): any {
+        registerItem(item: typeof BaseItem, resolver: (itemData: any) => BaseItem) {
         gItemRegistry.register(item);
         MODS_ADDITIONAL_ITEMS[item.getId()] = resolver;
     }
-        registerComponent(component: typeof Component): any {
+        registerComponent(component: typeof Component) {
         gComponentRegistry.register(component);
     }
         registerGameSystem({ id, systemClass, before, drawHooks }: {
@@ -162,9 +162,9 @@ export class ModInterface {
         systemClass: new (any) => GameSystem;
         before: string=;
         drawHooks: string[]=;
-    }): any {
-        const key: any = before || "key";
-        const payload: any = { id, systemClass };
+    }) {
+        const key = before || "key";
+        const payload = { id, systemClass };
         if (MODS_ADDITIONAL_SYSTEMS[key]) {
             MODS_ADDITIONAL_SYSTEMS[key].push(payload);
         }
@@ -172,10 +172,10 @@ export class ModInterface {
             MODS_ADDITIONAL_SYSTEMS[key] = [payload];
         }
         if (drawHooks) {
-            drawHooks.forEach((hookId: any): any => this.registerGameSystemDrawHook(hookId, id));
+            drawHooks.forEach(hookId => this.registerGameSystemDrawHook(hookId, id));
         }
     }
-        registerGameSystemDrawHook(hookId: string, systemId: string): any {
+        registerGameSystemDrawHook(hookId: string, systemId: string) {
         if (!MOD_CHUNK_DRAW_HOOKS[hookId]) {
             throw new Error("bad game system draw hook: " + hookId);
         }
@@ -184,19 +184,19 @@ export class ModInterface {
         registerNewBuilding({ metaClass, buildingIconBase64 }: {
         metaClass: typeof ModMetaBuilding;
         buildingIconBase64: string=;
-    }): any {
-        const id: any = new metaClass as new (...args) => ModMetaBuilding)().getId();
+    }) {
+        const id = new metaClass as new (...args) => ModMetaBuilding)().getId();
         if (gMetaBuildingRegistry.hasId(id)) {
             throw new Error("Tried to register building twice: " + id);
         }
         gMetaBuildingRegistry.register(metaClass);
-        const metaInstance: any = gMetaBuildingRegistry.findByClass(metaClass);
+        const metaInstance = gMetaBuildingRegistry.findByClass(metaClass);
         T.buildings[id] = {};
-        metaClass.getAllVariantCombinations().forEach((combination: any): any => {
-            const variant: any = combination.variant || defaultBuildingVariant;
-            const rotationVariant: any = combination.rotationVariant || 0;
-            const buildingIdentifier: any = id + (variant === defaultBuildingVariant ? "" : "-" + variant);
-            const uniqueTypeId: any = buildingIdentifier + (rotationVariant === 0 ? "" : "-" + rotationVariant);
+        metaClass.getAllVariantCombinations().forEach(combination => {
+            const variant = combination.variant || defaultBuildingVariant;
+            const rotationVariant = combination.rotationVariant || 0;
+            const buildingIdentifier = id + (variant === defaultBuildingVariant ? "" : "-" + variant);
+            const uniqueTypeId = buildingIdentifier + (rotationVariant === 0 ? "" : "-" + rotationVariant);
             registerBuildingVariant(uniqueTypeId, metaClass, variant, rotationVariant);
             gBuildingVariants[id].metaInstance = metaInstance;
             this.registerTranslations("en", {
@@ -235,11 +235,11 @@ export class ModInterface {
             ctrl?: boolean;
         }=;
         builtin: boolean=;
-    }): any {
+    }) {
         if (!KEYMAPPINGS.mods) {
             KEYMAPPINGS.mods = {};
         }
-        const binding: any = (KEYMAPPINGS.mods[id] = {
+        const binding = (KEYMAPPINGS.mods[id] = {
             keyCode,
             id,
             repeated,
@@ -254,7 +254,7 @@ export class ModInterface {
             },
         });
         if (handler) {
-            this.modLoader.signals.gameStarted.add((root: any): any => {
+            this.modLoader.signals.gameStarted.add(root => {
                 root.keyMapper.getBindingById(id).addToTop(handler.bind(null, root));
             });
         }
@@ -264,7 +264,7 @@ export class ModInterface {
      * {}
      */
     get dialogs() {
-        const state: any = this.modLoader.app.stateMgr.currentState;
+        const state = this.modLoader.app.stateMgr.currentState;
         // @ts-ignore
         if (state.dialogs) {
             // @ts-ignore
@@ -272,7 +272,7 @@ export class ModInterface {
         }
         throw new Error("Tried to access dialogs but current state doesn't support it");
     }
-    setBuildingToolbarIcon(buildingId: any, iconBase64: any): any {
+    setBuildingToolbarIcon(buildingId, iconBase64) {
         this.registerCss(`
             [data-icon="building_icons/${buildingId}.png"] .icon {
                     background-image: url('${iconBase64}') !important;
@@ -282,11 +282,11 @@ export class ModInterface {
     /**
      *
      * 
-    etBuildingTutorialImage(buldingIdOrClass: string | (new () => MetaBuilding), variant: *, imageBase64: *): any {
+    etBuildingTutorialImage(buldingIdOrClass: string | (new () => MetaBuilding), variant: *, imageBase64: *) {
         if (typeof buildingIdOrClass === "function") {
             buildingIdOrClass = new buildingIdOrClass().id;
         }
-        const buildingIdentifier: any = buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant);
+        const buildingIdentifier = buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant);
         this.registerCss(`
             [data-icon="building_tutorials/${buildingIdentifier}.png"] {
                     background-image: url('${imageBase64}') !important;
@@ -299,7 +299,7 @@ export class ModInterface {
         id: string;
         name: string;
         theme: Object;
-    }): any {
+    }) {
         THEMES[id] = theme;
         this.registerTranslations("en", {
             settings: {
@@ -316,17 +316,17 @@ export class ModInterface {
     /**
      * Registers a new state class, should be a GameState derived class
      */
-    registerGameState(stateClass: typeof import("../core/game_state").GameState): any {
+    registerGameState(stateClass: typeof import("../core/game_state").GameState) {
         this.modLoader.app.stateMgr.register(stateClass);
     }
         addNewBuildingToToolbar({ toolbar, location, metaClass }: {
         toolbar: "regular" | "wires";
         location: "primary" | "secondary";
         metaClass: typeof MetaBuilding;
-    }): any {
-        const hudElementName: any = toolbar === "wires" ? "HUDWiresToolbar" : "HUDBuildingsToolbar";
-        const property: any = location === "secondary" ? "secondaryBuildings" : "primaryBuildings";
-        this.modLoader.signals.hudElementInitialized.add((element: any): any => {
+    }) {
+        const hudElementName = toolbar === "wires" ? "HUDWiresToolbar" : "HUDBuildingsToolbar";
+        const property = location === "secondary" ? "secondaryBuildings" : "primaryBuildings";
+        this.modLoader.signals.hudElementInitialized.add(element => {
 
             if (element.constructor.name === hudElementName) {
                 element[property].push(metaClass);
@@ -340,9 +340,9 @@ export class ModInterface {
      * @template {keyof P} M  the name of the method we are overriding
      * @template {extendsPrams<P[M]>} O the method that will override the old one
      */
-    replaceMethod(classHandle: C, methodName: M, override: bindThis<beforePrams<O, P[M]>, InstanceType<C>>): any {
-        const oldMethod: any = classHandle.prototype[methodName];
-        classHandle.prototype[methodName] = function (): any {
+    replaceMethod(classHandle: C, methodName: M, override: bindThis<beforePrams<O, P[M]>, InstanceType<C>>) {
+        const oldMethod = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
             //@ts-ignore This is true I just cant tell it that arguments will be Arguments<O>
             return override.call(this, oldMethod.bind(this), arguments);
         };
@@ -354,9 +354,9 @@ export class ModInterface {
      * @template {keyof P} M  the name of the method we are overriding
      * @template {extendsPrams<P[M]>} O the method that will run before the old one
      */
-    runBeforeMethod(classHandle: C, methodName: M, executeBefore: bindThis<O, InstanceType<C>>): any {
-        const oldHandle: any = classHandle.prototype[methodName];
-        classHandle.prototype[methodName] = function (): any {
+    runBeforeMethod(classHandle: C, methodName: M, executeBefore: bindThis<O, InstanceType<C>>) {
+        const oldHandle = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
             //@ts-ignore Same as above
             executeBefore.apply(this, arguments);
             return oldHandle.apply(this, arguments);
@@ -369,21 +369,21 @@ export class ModInterface {
      * @template {keyof P} M  the name of the method we are overriding
      * @template {extendsPrams<P[M]>} O the method that will run before the old one
      */
-    runAfterMethod(classHandle: C, methodName: M, executeAfter: bindThis<O, InstanceType<C>>): any {
-        const oldHandle: any = classHandle.prototype[methodName];
-        classHandle.prototype[methodName] = function (): any {
-            const returnValue: any = oldHandle.apply(this, arguments);
+    runAfterMethod(classHandle: C, methodName: M, executeAfter: bindThis<O, InstanceType<C>>) {
+        const oldHandle = classHandle.prototype[methodName];
+        classHandle.prototype[methodName] = function () {
+            const returnValue = oldHandle.apply(this, arguments);
             //@ts-ignore
             executeAfter.apply(this, arguments);
             return returnValue;
         };
     }
-        extendObject(prototype: Object, extender: ({ $super, $old }) => any): any {
-        const $super: any = Object.getPrototypeOf(prototype);
-        const $old: any = {};
-        const extensionMethods: any = extender({ $super, $old });
-        const properties: any = Array.from(Object.getOwnPropertyNames(extensionMethods));
-        properties.forEach((propertyName: any): any => {
+        extendObject(prototype: Object, extender: ({ $super, $old }) => any) {
+        const $super = Object.getPrototypeOf(prototype);
+        const $old = {};
+        const extensionMethods = extender({ $super, $old });
+        const properties = Array.from(Object.getOwnPropertyNames(extensionMethods));
+        properties.forEach(propertyName => {
 
             if (["constructor", "prototype"].includes(propertyName)) {
                 return;
@@ -392,11 +392,11 @@ export class ModInterface {
             prototype[propertyName] = extensionMethods[propertyName];
         });
     }
-        extendClass(classHandle: Class, extender: ({ $super, $old }) => any): any {
+        extendClass(classHandle: Class, extender: ({ $super, $old }) => any) {
         this.extendObject(classHandle.prototype, extender);
     }
-        registerHudElement(id: string, element: new (...args) => BaseHUDPart): any {
-        this.modLoader.signals.hudInitializer.add((root: any): any => {
+        registerHudElement(id: string, element: new (...args) => BaseHUDPart) {
+        this.modLoader.signals.hudInitializer.add(root => {
             root.hud.parts[id] = new element(root);
         });
     }
@@ -404,7 +404,7 @@ export class ModInterface {
         name: string;
         description: string;
         language: string=;
-    }): any {
+    }) {
         if (typeof buildingIdOrClass === "function") {
             buildingIdOrClass = new buildingIdOrClass().id;
         }
@@ -422,11 +422,11 @@ export class ModInterface {
         registerBuildingSprites(buildingIdOrClass: string | (new () => MetaBuilding), variant: string, { regularBase64, blueprintBase64 }: {
         regularBase64: string=;
         blueprintBase64: string=;
-    }): any {
+    }) {
         if (typeof buildingIdOrClass === "function") {
             buildingIdOrClass = new buildingIdOrClass().id;
         }
-        const spriteId: any = buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant) + ".png";
+        const spriteId = buildingIdOrClass + (variant === defaultBuildingVariant ? "" : "-" + variant) + ".png";
         if (regularBase64) {
             this.registerSprite("sprites/buildings/" + spriteId, regularBase64);
         }
@@ -447,7 +447,7 @@ export class ModInterface {
             string
         ][]=;
         isUnlocked: (root: GameRoot) => boolean[]=;
-    }): any {
+    }) {
         if (!payload.rotationVariants) {
             payload.rotationVariants = [0];
         }
@@ -468,13 +468,13 @@ export class ModInterface {
                 description: payload.description,
             });
         }
-        const internalId: any = new metaClass().getId() + "-" + variant;
+        const internalId = new metaClass().getId() + "-" + variant;
         // Extend static methods
-        this.extendObject(metaClass, ({ $old }: any): any => ({
-            getAllVariantCombinations(): any {
+        this.extendObject(metaClass, ({ $old }) => ({
+            getAllVariantCombinations() {
                 return [
                     ...$old.bind(this).getAllVariantCombinations(),
-                    ...payload.rotationVariants.map((rotationVariant: any): any => ({
+                    ...payload.rotationVariants.map(rotationVariant => ({
                         internalId,
                         variant,
                         rotationVariant,
@@ -483,10 +483,10 @@ export class ModInterface {
             },
         }));
         // Dimensions
-        const $variant: any = variant;
+        const $variant = variant;
         if (payload.dimensions) {
-            this.extendClass(metaClass, ({ $old }: any): any => ({
-                getDimensions(variant: any): any {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getDimensions(variant) {
                     if (variant === $variant) {
                         return payload.dimensions;
                     }
@@ -495,8 +495,8 @@ export class ModInterface {
             }));
         }
         if (payload.additionalStatistics) {
-            this.extendClass(metaClass, ({ $old }: any): any => ({
-                getAdditionalStatistics(root: any, variant: any): any {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getAdditionalStatistics(root, variant) {
                     if (variant === $variant) {
                         return payload.additionalStatistics(root);
                     }
@@ -505,8 +505,8 @@ export class ModInterface {
             }));
         }
         if (payload.isUnlocked) {
-            this.extendClass(metaClass, ({ $old }: any): any => ({
-                getAvailableVariants(root: any): any {
+            this.extendClass(metaClass, ({ $old }) => ({
+                getAvailableVariants(root) {
                     if (payload.isUnlocked(root)) {
                         return [...$old.getAvailableVariants.bind(this)(root), $variant];
                     }
@@ -515,6 +515,6 @@ export class ModInterface {
             }));
         }
         // Register our variant finally, with rotation variants
-        payload.rotationVariants.forEach((rotationVariant: any): any => shapez.registerBuildingVariant(rotationVariant ? internalId + "-" + rotationVariant : internalId, metaClass, variant, rotationVariant));
+        payload.rotationVariants.forEach(rotationVariant => shapez.registerBuildingVariant(rotationVariant ? internalId + "-" + rotationVariant : internalId, metaClass, variant, rotationVariant));
     }
 }

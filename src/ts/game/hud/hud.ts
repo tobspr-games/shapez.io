@@ -28,7 +28,7 @@ export class GameHUD {
     /**
      * Initializes the hud parts
      */
-    initialize(): any {
+    initialize() {
         this.signals = {
             buildingSelectedForPlacement: new Signal() as TypedSignal<[
                 MetaBuilding | null
@@ -86,18 +86,18 @@ export class GameHUD {
         if (!G_IS_RELEASE && !G_IS_DEV) {
             this.parts.betaOverlay = new HUDBetaOverlay(this.root);
         }
-        const additionalParts: any = this.root.gameMode.additionalHudParts;
-        for (const [partId, part]: any of Object.entries(additionalParts)) {
+        const additionalParts = this.root.gameMode.additionalHudParts;
+        for (const [partId, part] of Object.entries(additionalParts)) {
             this.parts[partId] = new part(this.root);
         }
         MOD_SIGNALS.hudInitializer.dispatch(this.root);
-        const frag: any = document.createDocumentFragment();
-        for (const key: any in this.parts) {
+        const frag = document.createDocumentFragment();
+        for (const key in this.parts) {
             MOD_SIGNALS.hudElementInitialized.dispatch(this.parts[key]);
             this.parts[key].createElements(frag);
         }
         document.body.appendChild(frag);
-        for (const key: any in this.parts) {
+        for (const key in this.parts) {
             this.parts[key].initialize();
             MOD_SIGNALS.hudElementFinalized.dispatch(this.parts[key]);
         }
@@ -111,16 +111,16 @@ export class GameHUD {
     /**
      * Attempts to close all overlays
      */
-    closeAllOverlays(): any {
-        for (const key: any in this.parts) {
+    closeAllOverlays() {
+        for (const key in this.parts) {
             this.parts[key].close();
         }
     }
     /**
      * Returns true if the game logic should be paused
      */
-    shouldPauseGame(): any {
-        for (const key: any in this.parts) {
+    shouldPauseGame() {
+        for (const key in this.parts) {
             if (this.parts[key].shouldPauseGame()) {
                 return true;
             }
@@ -130,8 +130,8 @@ export class GameHUD {
     /**
      * Returns true if the rendering can be paused
      */
-    shouldPauseRendering(): any {
-        for (const key: any in this.parts) {
+    shouldPauseRendering() {
+        for (const key in this.parts) {
             if (this.parts[key].shouldPauseRendering()) {
                 return true;
             }
@@ -141,8 +141,8 @@ export class GameHUD {
     /**
      * Returns true if the rendering can be paused
      */
-    hasBlockingOverlayOpen(): any {
-        for (const key: any in this.parts) {
+    hasBlockingOverlayOpen() {
+        for (const key in this.parts) {
             if (this.parts[key].isBlockingOverlay()) {
                 return true;
             }
@@ -152,17 +152,17 @@ export class GameHUD {
     /**
      * Toggles the ui
      */
-    toggleUi(): any {
+    toggleUi() {
         document.body.classList.toggle("uiHidden");
     }
     /**
      * Updates all parts
      */
-    update(): any {
+    update() {
         if (!this.root.gameInitialized) {
             return;
         }
-        for (const key: any in this.parts) {
+        for (const key in this.parts) {
             this.parts[key].update();
         }
         /* dev:start */
@@ -174,8 +174,8 @@ export class GameHUD {
     /**
      * Draws all parts
      */
-    draw(parameters: DrawParameters): any {
-        const partsOrder: any = [
+    draw(parameters: DrawParameters) {
+        const partsOrder = [
             "massSelector",
             "buildingPlacer",
             "blueprintPlacer",
@@ -185,7 +185,7 @@ export class GameHUD {
             "shapeTooltip",
             "interactiveTutorial",
         ];
-        for (let i: any = 0; i < partsOrder.length; ++i) {
+        for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {
                 this.parts[partsOrder[i]].draw(parameters);
             }
@@ -194,9 +194,9 @@ export class GameHUD {
     /**
      * Draws all part overlays
      */
-    drawOverlays(parameters: DrawParameters): any {
-        const partsOrder: any = ["waypoints", "watermark", "wireInfo"];
-        for (let i: any = 0; i < partsOrder.length; ++i) {
+    drawOverlays(parameters: DrawParameters) {
+        const partsOrder = ["waypoints", "watermark", "wireInfo"];
+        for (let i = 0; i < partsOrder.length; ++i) {
             if (this.parts[partsOrder[i]]) {
                 this.parts[partsOrder[i]].drawOverlays(parameters);
             }
@@ -205,11 +205,11 @@ export class GameHUD {
     /**
      * Cleans up everything
      */
-    cleanup(): any {
-        for (const key: any in this.parts) {
+    cleanup() {
+        for (const key in this.parts) {
             this.parts[key].cleanup();
         }
-        for (const key: any in this.signals) {
+        for (const key in this.signals) {
             this.signals[key].removeAll();
         }
     }

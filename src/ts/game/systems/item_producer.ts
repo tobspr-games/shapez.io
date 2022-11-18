@@ -6,16 +6,16 @@ export class ItemProducerSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProducerComponent]);
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const ejectorComp: any = entity.components.ItemEjector;
-            const pinsComp: any = entity.components.WiredPins;
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const ejectorComp = entity.components.ItemEjector;
+            const pinsComp = entity.components.WiredPins;
             if (!pinsComp) {
                 continue;
             }
-            const pin: any = pinsComp.slots[0];
-            const network: any = pin.linkedNetwork;
+            const pin = pinsComp.slots[0];
+            const network = pin.linkedNetwork;
             if (!network || !network.hasValue()) {
                 continue;
             }

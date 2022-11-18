@@ -5,16 +5,16 @@ import { ShapeDefinition } from "../shape_definition";
 import { THEME } from "../theme";
 import { globalConfig } from "../../core/config";
 export class ShapeItem extends BaseItem {
-    static getId(): any {
+    static getId() {
         return "shape";
     }
-    static getSchema(): any {
+    static getSchema() {
         return types.string;
     }
-    serialize(): any {
+    serialize() {
         return this.definition.getHash();
     }
-    deserialize(data: any): any {
+    deserialize(data) {
         this.definition = ShapeDefinition.fromShortKey(data);
     }
     /** {} **/
@@ -27,7 +27,7 @@ export class ShapeItem extends BaseItem {
     getAsCopyableKey(): string {
         return this.definition.getHash();
     }
-        equalsImpl(other: BaseItem): any {
+        equalsImpl(other: BaseItem) {
         return this.definition.getHash() === other as ShapeItem).definition.getHash();
     }
     public definition = definition;
@@ -35,16 +35,16 @@ export class ShapeItem extends BaseItem {
         constructor(definition) {
         super();
     }
-    getBackgroundColorAsResource(): any {
+    getBackgroundColorAsResource() {
         return THEME.map.resources.shape;
     }
     /**
      * Draws the item to a canvas
      */
-    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number): any {
+    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number) {
         this.definition.drawFullSizeOnCanvas(context, size);
     }
-        drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter): any {
+        drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter) {
         this.definition.drawCentered(x, y, parameters, diameter);
     }
 }

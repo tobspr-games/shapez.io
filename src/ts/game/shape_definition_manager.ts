@@ -5,9 +5,9 @@ import { ShapeItem } from "./items/shape_item";
 import { GameRoot } from "./root";
 import { enumSubShape, ShapeDefinition } from "./shape_definition";
 import { ACHIEVEMENTS } from "../platform/achievement_provider";
-const logger: any = createLogger("shape_definition_manager");
+const logger = createLogger("shape_definition_manager");
 export class ShapeDefinitionManager extends BasicSerializableObject {
-    static getId(): any {
+    static getId() {
         return "ShapeDefinitionManager";
     }
     public root = root;
@@ -27,7 +27,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     getShapeFromShortKey(hash: string): ShapeDefinition {
-        const cached: any = this.shapeKeyToDefinition[hash];
+        const cached = this.shapeKeyToDefinition[hash];
         if (cached) {
             return cached;
         }
@@ -38,11 +38,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     getShapeItemFromShortKey(hash: string): ShapeItem {
-        const cached: any = this.shapeKeyToItem[hash];
+        const cached = this.shapeKeyToItem[hash];
         if (cached) {
             return cached;
         }
-        const definition: any = this.getShapeFromShortKey(hash);
+        const definition = this.getShapeFromShortKey(hash);
         return (this.shapeKeyToItem[hash] = new ShapeItem(definition));
     }
     /**
@@ -55,8 +55,8 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
     /**
      * Registers a new shape definition
      */
-    registerShapeDefinition(definition: ShapeDefinition): any {
-        const id: any = definition.getHash();
+    registerShapeDefinition(definition: ShapeDefinition) {
+        const id = definition.getHash();
         assert(!this.shapeKeyToDefinition[id], "Shape Definition " + id + " already exists");
         this.shapeKeyToDefinition[id] = definition;
         // logger.log("Registered shape with key", id);
@@ -69,15 +69,15 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         ShapeDefinition,
         ShapeDefinition
     ] {
-        const key: any = "cut/" + definition.getHash();
+        const key = "cut/" + definition.getHash();
         if (this.operationCache[key]) {
             return this.operationCache[key] as [
                 ShapeDefinition,
                 ShapeDefinition
             ]);
         }
-        const rightSide: any = definition.cloneFilteredByQuadrants([2, 3]);
-        const leftSide: any = definition.cloneFilteredByQuadrants([0, 1]);
+        const rightSide = definition.cloneFilteredByQuadrants([2, 3]);
+        const leftSide = definition.cloneFilteredByQuadrants([0, 1]);
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.cutShape, null);
         return this.operationCache[key] = [
             this.registerOrReturnHandle(rightSide),
@@ -97,7 +97,7 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         ShapeDefinition,
         ShapeDefinition
     ] {
-        const key: any = "cut-quad/" + definition.getHash();
+        const key = "cut-quad/" + definition.getHash();
         if (this.operationCache[key]) {
             return this
                 .operationCache[key] as [
@@ -124,11 +124,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     shapeActionRotateCW(definition: ShapeDefinition): ShapeDefinition {
-        const key: any = "rotate-cw/" + definition.getHash();
+        const key = "rotate-cw/" + definition.getHash();
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
-        const rotated: any = definition.cloneRotateCW();
+        const rotated = definition.cloneRotateCW();
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.rotateShape, null);
         return this.operationCache[key] = this.registerOrReturnHandle(rotated) as ShapeDefinition);
     }
@@ -137,11 +137,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     shapeActionRotateCCW(definition: ShapeDefinition): ShapeDefinition {
-        const key: any = "rotate-ccw/" + definition.getHash();
+        const key = "rotate-ccw/" + definition.getHash();
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
-        const rotated: any = definition.cloneRotateCCW();
+        const rotated = definition.cloneRotateCCW();
         return this.operationCache[key] = this.registerOrReturnHandle(rotated) as ShapeDefinition);
     }
     /**
@@ -149,11 +149,11 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     shapeActionRotate180(definition: ShapeDefinition): ShapeDefinition {
-        const key: any = "rotate-fl/" + definition.getHash();
+        const key = "rotate-fl/" + definition.getHash();
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
-        const rotated: any = definition.cloneRotate180();
+        const rotated = definition.cloneRotate180();
         return this.operationCache[key] = this.registerOrReturnHandle(rotated) as ShapeDefinition);
     }
     /**
@@ -161,12 +161,12 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     shapeActionStack(lowerDefinition: ShapeDefinition, upperDefinition: ShapeDefinition): ShapeDefinition {
-        const key: any = "stack/" + lowerDefinition.getHash() + "/" + upperDefinition.getHash();
+        const key = "stack/" + lowerDefinition.getHash() + "/" + upperDefinition.getHash();
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.stackShape, null);
-        const stacked: any = lowerDefinition.cloneAndStackWith(upperDefinition);
+        const stacked = lowerDefinition.cloneAndStackWith(upperDefinition);
         return this.operationCache[key] = this.registerOrReturnHandle(stacked) as ShapeDefinition);
     }
     /**
@@ -174,12 +174,12 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
      * {}
      */
     shapeActionPaintWith(definition: ShapeDefinition, color: enumColors): ShapeDefinition {
-        const key: any = "paint/" + definition.getHash() + "/" + color;
+        const key = "paint/" + definition.getHash() + "/" + color;
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.paintShape, null);
-        const colorized: any = definition.cloneAndPaintWith(color);
+        const colorized = definition.cloneAndPaintWith(color);
         return this.operationCache[key] = this.registerOrReturnHandle(colorized) as ShapeDefinition);
     }
     /**
@@ -192,19 +192,19 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         enumColors,
         enumColors
     ]): ShapeDefinition {
-        const key: any = "paint4/" + definition.getHash() + "/" + colors.join(",");
+        const key = "paint4/" + definition.getHash() + "/" + colors.join(",");
         if (this.operationCache[key]) {
             return this.operationCache[key] as ShapeDefinition);
         }
-        const colorized: any = definition.cloneAndPaintWith4Colors(colors);
+        const colorized = definition.cloneAndPaintWith4Colors(colors);
         return this.operationCache[key] = this.registerOrReturnHandle(colorized) as ShapeDefinition);
     }
     /**
      * Checks if we already have cached this definition, and if so throws it away and returns the already
      * cached variant
      */
-    registerOrReturnHandle(definition: ShapeDefinition): any {
-        const id: any = definition.getHash();
+    registerOrReturnHandle(definition: ShapeDefinition) {
+        const id = definition.getHash();
         if (this.shapeKeyToDefinition[id]) {
             return this.shapeKeyToDefinition[id];
         }
@@ -221,8 +221,8 @@ export class ShapeDefinitionManager extends BasicSerializableObject {
         enumSubShape,
         enumSubShape,
         enumSubShape
-    ], color: any = enumColors.uncolored): ShapeDefinition {
-        const shapeLayer: any = (subShapes.map((subShape: any): any => ({ subShape, color })) as import("./shape_definition").ShapeLayer);
+    ], color = enumColors.uncolored): ShapeDefinition {
+        const shapeLayer = subShapes.map(subShape => ({ subShape, color })) as import("./shape_definition").ShapeLayer);
         return this.registerOrReturnHandle(new ShapeDefinition({ layers: [shapeLayer] }));
     }
 }

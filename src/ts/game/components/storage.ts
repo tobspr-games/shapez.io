@@ -8,10 +8,10 @@ export const MODS_ADDITIONAL_STORAGE_ITEM_RESOLVER: {
     [x: string]: (item: BaseItem) => Boolean;
 } = {};
 export class StorageComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Storage";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             storedCount: types.uint,
             storedItem: types.nullable(typeItemSingleton),
@@ -28,14 +28,14 @@ export class StorageComponent extends Component {
     /**
      * Returns whether this storage can accept the item
      */
-    canAcceptItem(item: BaseItem): any {
+    canAcceptItem(item: BaseItem) {
         if (this.storedCount >= this.maximumStorage) {
             return false;
         }
         if (!this.storedItem || this.storedCount === 0) {
             return true;
         }
-        const itemType: any = item.getItemType();
+        const itemType = item.getItemType();
         if (itemType !== this.storedItem.getItemType()) {
             // Check type matches
             return false;
@@ -60,7 +60,7 @@ export class StorageComponent extends Component {
     getIsFull(): boolean {
         return this.storedCount >= this.maximumStorage;
     }
-        takeItem(item: BaseItem): any {
+        takeItem(item: BaseItem) {
         this.storedItem = item;
         this.storedCount++;
     }

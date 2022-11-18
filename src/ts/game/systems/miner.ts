@@ -18,29 +18,29 @@ export class MinerSystem extends GameSystemWithFilter {
     /**
      * Called whenever an entity got changed
      */
-    onEntityChanged(entity: Entity): any {
-        const minerComp: any = entity.components.Miner;
+    onEntityChanged(entity: Entity) {
+        const minerComp = entity.components.Miner;
         if (minerComp && minerComp.chainable) {
             // Miner component, need to recompute
             this.needsRecompute = true;
         }
     }
-    update(): any {
-        let miningSpeed: any = this.root.hubGoals.getMinerBaseSpeed();
+    update() {
+        let miningSpeed = this.root.hubGoals.getMinerBaseSpeed();
         if (G_IS_DEV && globalConfig.debug.instantMiners) {
             miningSpeed *= 100;
         }
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const minerComp: any = entity.components.Miner;
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const minerComp = entity.components.Miner;
             // Reset everything on recompute
             if (this.needsRecompute) {
                 minerComp.cachedChainedMiner = null;
             }
             // Check if miner is above an actual tile
             if (!minerComp.cachedMinedItem) {
-                const staticComp: any = entity.components.StaticMapEntity;
-                const tileBelow: any = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
+                const staticComp = entity.components.StaticMapEntity;
+                const tileBelow = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
                 if (!tileBelow) {
                     continue;
                 }
@@ -53,11 +53,11 @@ export class MinerSystem extends GameSystemWithFilter {
                     continue;
                 }
             }
-            const mineDuration: any = 1 / miningSpeed;
-            const timeSinceMine: any = this.root.time.now() - minerComp.lastMiningTime;
+            const mineDuration = 1 / miningSpeed;
+            const timeSinceMine = this.root.time.now() - minerComp.lastMiningTime;
             if (timeSinceMine > mineDuration) {
                 // Store how much we overflowed
-                const buffer: any = Math.min(timeSinceMine - mineDuration, this.root.dynamicTickrate.deltaSeconds);
+                const buffer = Math.min(timeSinceMine - mineDuration, this.root.dynamicTickrate.deltaSeconds);
                 if (this.tryPerformMinerEject(entity, minerComp.cachedMinedItem)) {
                     // Analytics hook
                     this.root.signals.itemProduced.dispatch(minerComp.cachedMinedItem);
@@ -74,23 +74,23 @@ export class MinerSystem extends GameSystemWithFilter {
      * {} The chained entity or null if not found
      */
     findChainedMiner(entity: Entity): Entity | false {
-        const ejectComp: any = entity.components.ItemEjector;
-        const staticComp: any = entity.components.StaticMapEntity;
-        const contentsBelow: any = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
+        const ejectComp = entity.components.ItemEjector;
+        const staticComp = entity.components.StaticMapEntity;
+        const contentsBelow = this.root.map.getLowerLayerContentXY(staticComp.origin.x, staticComp.origin.y);
         if (!contentsBelow) {
             // This miner has no contents
             return null;
         }
-        const ejectingSlot: any = ejectComp.slots[0];
-        const ejectingPos: any = staticComp.localTileToWorld(ejectingSlot.pos);
-        const ejectingDirection: any = staticComp.localDirectionToWorld(ejectingSlot.direction);
-        const targetTile: any = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
-        const targetContents: any = this.root.map.getTileContent(targetTile, "regular");
+        const ejectingSlot = ejectComp.slots[0];
+        const ejectingPos = staticComp.localTileToWorld(ejectingSlot.pos);
+        const ejectingDirection = staticComp.localDirectionToWorld(ejectingSlot.direction);
+        const targetTile = ejectingPos.add(enumDirectionToVector[ejectingDirection]);
+        const targetContents = this.root.map.getTileContent(targetTile, "regular");
         // Check if we are connected to another miner and thus do not eject directly
         if (targetContents) {
-            const targetMinerComp: any = targetContents.components.Miner;
+            const targetMinerComp = targetContents.components.Miner;
             if (targetMinerComp && targetMinerComp.chainable) {
-                const targetLowerLayer: any = this.root.map.getLowerLayerContentXY(targetTile.x, targetTile.y);
+                const targetLowerLayer = this.root.map.getLowerLayerContentXY(targetTile.x, targetTile.y);
                 if (targetLowerLayer) {
                     return targetContents;
                 }
@@ -98,19 +98,19 @@ export class MinerSystem extends GameSystemWithFilter {
         }
         return false;
     }
-        tryPerformMinerEject(entity: Entity, item: BaseItem): any {
-        const minerComp: any = entity.components.Miner;
-        const ejectComp: any = entity.components.ItemEjector;
+        tryPerformMinerEject(entity: Entity, item: BaseItem) {
+        const minerComp = entity.components.Miner;
+        const ejectComp = entity.components.ItemEjector;
         // Check if we are a chained miner
         if (minerComp.chainable) {
-            const targetEntity: any = minerComp.cachedChainedMiner;
+            const targetEntity = minerComp.cachedChainedMiner;
             // Check if the cache has to get recomputed
             if (targetEntity === null) {
                 minerComp.cachedChainedMiner = this.findChainedMiner(entity);
             }
             // Check if we now have a target
             if (targetEntity) {
-                const targetMinerComp: any = targetEntity.components.Miner;
+                const targetMinerComp = targetEntity.components.Miner;
                 if (targetMinerComp.tryAcceptChainedItem(item)) {
                     return true;
                 }
@@ -125,24 +125,24 @@ export class MinerSystem extends GameSystemWithFilter {
         }
         return false;
     }
-        drawChunk(parameters: DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const minerComp: any = entity.components.Miner;
+        drawChunk(parameters: DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const minerComp = entity.components.Miner;
             if (!minerComp) {
                 continue;
             }
-            const staticComp: any = entity.components.StaticMapEntity;
+            const staticComp = entity.components.StaticMapEntity;
             if (!minerComp.cachedMinedItem) {
                 continue;
             }
             // Draw the item background - this is to hide the ejected item animation from
             // the item ejector
-            const padding: any = 3;
-            const destX: any = staticComp.origin.x * globalConfig.tileSize + padding;
-            const destY: any = staticComp.origin.y * globalConfig.tileSize + padding;
-            const dimensions: any = globalConfig.tileSize - 2 * padding;
+            const padding = 3;
+            const destX = staticComp.origin.x * globalConfig.tileSize + padding;
+            const destY = staticComp.origin.y * globalConfig.tileSize + padding;
+            const dimensions = globalConfig.tileSize - 2 * padding;
             if (parameters.visibleRect.containsRect4Params(destX, destY, dimensions, dimensions)) {
                 parameters.context.fillStyle = minerComp.cachedMinedItem.getBackgroundColorAsResource();
                 parameters.context.fillRect(destX, destY, dimensions, dimensions);

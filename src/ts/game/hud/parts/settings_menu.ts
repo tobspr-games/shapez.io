@@ -7,7 +7,7 @@ import { T } from "../../../translations";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { BeltComponent } from "../../components/belt";
 export class HUDSettingsMenu extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_SettingsMenu", ["ingameDialog"]);
         this.menuElement = makeDiv(this.background, null, ["menuElement"]);
         if (this.root.gameMode.hasHub()) {
@@ -19,47 +19,47 @@ export class HUDSettingsMenu extends BaseHUDPart {
             `);
         }
         this.buttonContainer = makeDiv(this.menuElement, null, ["buttons"]);
-        const buttons: any = [
+        const buttons = [
             {
                 id: "continue",
-                action: (): any => this.close(),
+                action: () => this.close(),
             },
             {
                 id: "settings",
-                action: (): any => this.goToSettings(),
+                action: () => this.goToSettings(),
             },
             {
                 id: "menu",
-                action: (): any => this.returnToMenu(),
+                action: () => this.returnToMenu(),
             },
         ];
-        for (let i: any = 0; i < buttons.length; ++i) {
-            const { action, id }: any = buttons[i];
-            const element: any = document.createElement("button");
+        for (let i = 0; i < buttons.length; ++i) {
+            const { action, id } = buttons[i];
+            const element = document.createElement("button");
             element.classList.add("styledButton");
             element.classList.add(id);
             this.buttonContainer.appendChild(element);
             this.trackClicks(element, action);
         }
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.visible;
     }
-    returnToMenu(): any {
-        this.root.app.adProvider.showVideoAd().then((): any => {
+    returnToMenu() {
+        this.root.app.adProvider.showVideoAd().then(() => {
             this.root.gameState.goBackToMenu();
         });
     }
-    goToSettings(): any {
+    goToSettings() {
         this.root.gameState.goToSettings();
     }
-    shouldPauseGame(): any {
+    shouldPauseGame() {
         return this.visible;
     }
-    shouldPauseRendering(): any {
+    shouldPauseRendering() {
         return this.visible;
     }
-    initialize(): any {
+    initialize() {
         this.root.keyMapper.getBinding(KEYMAPPINGS.general.back).add(this.show, this);
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
@@ -69,10 +69,10 @@ export class HUDSettingsMenu extends BaseHUDPart {
         this.keyActionMapper.getBinding(KEYMAPPINGS.general.back).add(this.close, this);
         this.close();
     }
-    show(): any {
+    show() {
         this.visible = true;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
-        const totalMinutesPlayed: any = Math.ceil(this.root.time.now() / 60);
+        const totalMinutesPlayed = Math.ceil(this.root.time.now() / 60);
         if (this.root.gameMode.hasHub()) {
                         const playtimeElement: HTMLElement = this.statsElement.querySelector(".playtime");
                         const buildingsPlacedElement: HTMLElement = this.statsElement.querySelector(".buildingsPlaced");
@@ -83,12 +83,12 @@ export class HUDSettingsMenu extends BaseHUDPart {
             beltsPlacedElement.innerText = formatBigNumberFull(this.root.entityMgr.getAllWithComponent(BeltComponent).length);
         }
     }
-    close(): any {
+    close() {
         this.visible = false;
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
-    update(): any {
+    update() {
         this.domAttach.update(this.visible);
     }
 }

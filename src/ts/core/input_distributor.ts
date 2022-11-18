@@ -5,7 +5,7 @@ import type { InputReceiver } from "./input_receiver";
 import { Signal, STOP_PROPAGATION } from "./signal";
 import { createLogger } from "./logging";
 import { arrayDeleteValue, fastArrayDeleteValue } from "./utils";
-const logger: any = createLogger("input_distributor");
+const logger = createLogger("input_distributor");
 export class InputDistributor {
     public app = app;
     public recieverStack: Array<InputReceiver> = [];
@@ -18,16 +18,16 @@ export class InputDistributor {
     /**
      * Attaches a new filter which can filter and reject events
      */
-    installFilter(filter: function(: boolean):boolean): any {
+    installFilter(filter: function(: boolean):boolean) {
         this.filters.push(filter);
     }
     /**
      * Removes an attached filter
      */
-    dismountFilter(filter: function(: boolean):boolean): any {
+    dismountFilter(filter: function(: boolean):boolean) {
         fastArrayDeleteValue(this.filters, filter);
     }
-        pushReciever(reciever: InputReceiver): any {
+        pushReciever(reciever: InputReceiver) {
         if (this.isRecieverAttached(reciever)) {
             assert(false, "Can not add reciever " + reciever.context + " twice");
             logger.error("Can not add reciever", reciever.context, "twice");
@@ -35,48 +35,48 @@ export class InputDistributor {
         }
         this.recieverStack.push(reciever);
         if (this.recieverStack.length > 10) {
-            logger.error("Reciever stack is huge, probably some dead receivers arround:", this.recieverStack.map((x: any): any => x.context));
+            logger.error("Reciever stack is huge, probably some dead receivers arround:", this.recieverStack.map(x => x.context));
         }
     }
-        popReciever(reciever: InputReceiver): any {
+        popReciever(reciever: InputReceiver) {
         if (this.recieverStack.indexOf(reciever) < 0) {
             assert(false, "Can not pop reciever " + reciever.context + "  since its not contained");
             logger.error("Can not pop reciever", reciever.context, "since its not contained");
             return;
         }
         if (this.recieverStack[this.recieverStack.length - 1] !== reciever) {
-            logger.warn("Popping reciever", reciever.context, "which is not on top of the stack. Stack is: ", this.recieverStack.map((x: any): any => x.context));
+            logger.warn("Popping reciever", reciever.context, "which is not on top of the stack. Stack is: ", this.recieverStack.map(x => x.context));
         }
         arrayDeleteValue(this.recieverStack, reciever);
     }
-        isRecieverAttached(reciever: InputReceiver): any {
+        isRecieverAttached(reciever: InputReceiver) {
         return this.recieverStack.indexOf(reciever) >= 0;
     }
-        isRecieverOnTop(reciever: InputReceiver): any {
+        isRecieverOnTop(reciever: InputReceiver) {
         return (this.isRecieverAttached(reciever) &&
             this.recieverStack[this.recieverStack.length - 1] === reciever);
     }
-        makeSureAttachedAndOnTop(reciever: InputReceiver): any {
+        makeSureAttachedAndOnTop(reciever: InputReceiver) {
         this.makeSureDetached(reciever);
         this.pushReciever(reciever);
     }
-        makeSureDetached(reciever: InputReceiver): any {
+        makeSureDetached(reciever: InputReceiver) {
         if (this.isRecieverAttached(reciever)) {
             arrayDeleteValue(this.recieverStack, reciever);
         }
     }
-        destroyReceiver(reciever: InputReceiver): any {
+        destroyReceiver(reciever: InputReceiver) {
         this.makeSureDetached(reciever);
         reciever.cleanup();
     }
     // Internal
-    getTopReciever(): any {
+    getTopReciever() {
         if (this.recieverStack.length > 0) {
             return this.recieverStack[this.recieverStack.length - 1];
         }
         return null;
     }
-    bindToEvents(): any {
+    bindToEvents() {
         window.addEventListener("popstate", this.handleBackButton.bind(this), false);
         document.addEventListener("backbutton", this.handleBackButton.bind(this), false);
         window.addEventListener("keydown", this.handleKeyMouseDown.bind(this));
@@ -86,23 +86,23 @@ export class InputDistributor {
         window.addEventListener("blur", this.handleBlur.bind(this));
         document.addEventListener("paste", this.handlePaste.bind(this));
     }
-    forwardToReceiver(eventId: any, payload: any = null): any {
+    forwardToReceiver(eventId, payload = null) {
         // Check filters
-        for (let i: any = 0; i < this.filters.length; ++i) {
+        for (let i = 0; i < this.filters.length; ++i) {
             if (!this.filters[i](eventId)) {
                 return STOP_PROPAGATION;
             }
         }
-        const reciever: any = this.getTopReciever();
+        const reciever = this.getTopReciever();
         if (!reciever) {
             logger.warn("Dismissing event because not reciever was found:", eventId);
             return;
         }
-        const signal: any = reciever[eventId];
+        const signal = reciever[eventId];
         assert(signal instanceof Signal, "Not a valid event id");
         return signal.dispatch(payload);
     }
-        handleBackButton(event: Event): any {
+        handleBackButton(event: Event) {
         event.preventDefault();
         event.stopPropagation();
         this.forwardToReceiver("backButton");
@@ -110,16 +110,16 @@ export class InputDistributor {
     /**
      * Handles when the page got blurred
      */
-    handleBlur(): any {
+    handleBlur() {
         this.forwardToReceiver("pageBlur", {});
         this.keysDown.clear();
     }
     
-    handlePaste(ev: any): any {
+    handlePaste(ev) {
         this.forwardToReceiver("paste", ev);
     }
-        handleKeyMouseDown(event: KeyboardEvent | MouseEvent): any {
-        const keyCode: any = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
+        handleKeyMouseDown(event: KeyboardEvent | MouseEvent) {
+        const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         if (keyCode === 4 || // MB4
             keyCode === 5 || // MB5
             keyCode === 9 || // TAB
@@ -130,7 +130,7 @@ export class InputDistributor {
         ) {
             event.preventDefault();
         }
-        const isInitial: any = !this.keysDown.has(keyCode);
+        const isInitial = !this.keysDown.has(keyCode);
         this.keysDown.add(keyCode);
         if (this.forwardToReceiver("keydown", {
             keyCode: keyCode,
@@ -149,8 +149,8 @@ export class InputDistributor {
             return this.forwardToReceiver("backButton");
         }
     }
-        handleKeyMouseUp(event: KeyboardEvent | MouseEvent): any {
-        const keyCode: any = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
+        handleKeyMouseUp(event: KeyboardEvent | MouseEvent) {
+        const keyCode = event instanceof MouseEvent ? event.button + 1 : event.keyCode;
         this.keysDown.delete(keyCode);
         this.forwardToReceiver("keyup", {
             keyCode: keyCode,

@@ -1,5 +1,5 @@
 import { globalConfig } from "./config";
-const circularJson: any = require("circular-json");
+const circularJson = require("circular-json");
 /*
 Logging functions
 - To be extended
@@ -12,23 +12,23 @@ class Logger {
 
     constructor(context) {
     }
-    debug(...args: any): any {
+    debug(...args) {
         globalDebug(this.context, ...args);
     }
-    log(...args: any): any {
+    log(...args) {
         globalLog(this.context, ...args);
     }
-    warn(...args: any): any {
+    warn(...args) {
         globalWarn(this.context, ...args);
     }
-    error(...args: any): any {
+    error(...args) {
         globalError(this.context, ...args);
     }
 }
-export function createLogger(context: any): any {
+export function createLogger(context) {
     return new Logger(context);
 }
-function prepareObjectForLogging(obj: any, maxDepth: any = 1): any {
+function prepareObjectForLogging(obj, maxDepth = 1) {
     if (!window.Sentry) {
         // Not required without sentry
         return obj;
@@ -36,9 +36,9 @@ function prepareObjectForLogging(obj: any, maxDepth: any = 1): any {
     if (typeof obj !== "object" && !Array.isArray(obj)) {
         return obj;
     }
-    const result: any = {};
-    for (const key: any in obj) {
-        const val: any = obj[key];
+    const result = {};
+    for (const key in obj) {
+        const val = obj[key];
         if (typeof val === "object") {
             if (maxDepth > 0) {
                 result[key] = prepareObjectForLogging(val, maxDepth - 1);
@@ -56,11 +56,11 @@ function prepareObjectForLogging(obj: any, maxDepth: any = 1): any {
 /**
  * Serializes an error
  */
-export function serializeError(err: Error | ErrorEvent): any {
+export function serializeError(err: Error | ErrorEvent) {
     if (!err) {
         return null;
     }
-    const result: any = {
+    const result = {
 
         type: err.constructor.name,
     };
@@ -91,8 +91,8 @@ export function serializeError(err: Error | ErrorEvent): any {
 /**
  * Serializes an event
  */
-function serializeEvent(event: Event): any {
-    let result: any = {
+function serializeEvent(event: Event) {
+    let result = {
         type: "{type.Event:" + typeof event + "}",
     };
     result.eventType = event.type;
@@ -101,7 +101,7 @@ function serializeEvent(event: Event): any {
 /**
  * Prepares a json payload
  */
-function preparePayload(key: string, value: any): any {
+function preparePayload(key: string, value: any) {
     if (value instanceof Error || value instanceof ErrorEvent) {
         return serializeError(value);
     }
@@ -116,44 +116,44 @@ function preparePayload(key: string, value: any): any {
 /**
  * Stringifies an object containing circular references and errors
  */
-export function stringifyObjectContainingErrors(payload: any): any {
+export function stringifyObjectContainingErrors(payload: any) {
     return circularJson.stringify(payload, preparePayload);
 }
-export function globalDebug(context: any, ...args: any): any {
+export function globalDebug(context, ...args) {
     if (G_IS_DEV) {
         logInternal(context, console.log, prepareArgsForLogging(args));
     }
 }
-export function globalLog(context: any, ...args: any): any {
+export function globalLog(context, ...args) {
     // eslint-disable-next-line no-console
     logInternal(context, console.log, prepareArgsForLogging(args));
 }
-export function globalWarn(context: any, ...args: any): any {
+export function globalWarn(context, ...args) {
     // eslint-disable-next-line no-console
     logInternal(context, console.warn, prepareArgsForLogging(args));
 }
-export function globalError(context: any, ...args: any): any {
+export function globalError(context, ...args) {
     args = prepareArgsForLogging(args);
     // eslint-disable-next-line no-console
     logInternal(context, console.error, args);
     if (window.Sentry) {
-        window.Sentry.withScope((scope: any): any => {
+        window.Sentry.withScope(scope => {
             scope.setExtra("args", args);
             window.Sentry.captureMessage(internalBuildStringFromArgs(args), "error");
         });
     }
 }
-function prepareArgsForLogging(args: any): any {
-    let result: any = [];
-    for (let i: any = 0; i < args.length; ++i) {
+function prepareArgsForLogging(args) {
+    let result = [];
+    for (let i = 0; i < args.length; ++i) {
         result.push(prepareObjectForLogging(args[i]));
     }
     return result;
 }
-function internalBuildStringFromArgs(args: Array<any>): any {
-    let result: any = [];
-    for (let i: any = 0; i < args.length; ++i) {
-        let arg: any = args[i];
+function internalBuildStringFromArgs(args: Array<any>) {
+    let result = [];
+    for (let i = 0; i < args.length; ++i) {
+        let arg = args[i];
         if (typeof arg === "string" ||
             typeof arg === "number" ||
             typeof arg === "boolean" ||
@@ -170,17 +170,17 @@ function internalBuildStringFromArgs(args: Array<any>): any {
     }
     return result.join(" ");
 }
-export function logSection(name: any, color: any): any {
+export function logSection(name, color) {
     while (name.length <= 14) {
         name = " " + name + " ";
     }
     name = name.padEnd(19, " ");
-    const lineCss: any = "letter-spacing: -3px; color: " + color + "; font-size: 6px; background: #eee; color: #eee;";
-    const line: any = "%c----------------------------";
+    const lineCss = "letter-spacing: -3px; color: " + color + "; font-size: 6px; background: #eee; color: #eee;";
+    const line = "%c----------------------------";
     console.log("\n" + line + " %c" + name + " " + line + "\n", lineCss, "color: " + color, lineCss);
 }
-function extractHandleContext(handle: any): any {
-    let context: any = handle || "unknown";
+function extractHandleContext(handle) {
+    let context = handle || "unknown";
 
 
     if (handle && handle.constructor && handle.constructor.name) {
@@ -195,11 +195,11 @@ function extractHandleContext(handle: any): any {
     }
     return context + "";
 }
-function logInternal(handle: any, consoleMethod: any, args: any): any {
-    const context: any = extractHandleContext(handle).padEnd(20, " ");
-    const labelColor: any = handle && handle.LOG_LABEL_COLOR ? handle.LOG_LABEL_COLOR : "#aaa";
+function logInternal(handle, consoleMethod, args) {
+    const context = extractHandleContext(handle).padEnd(20, " ");
+    const labelColor = handle && handle.LOG_LABEL_COLOR ? handle.LOG_LABEL_COLOR : "#aaa";
     if (G_IS_DEV && globalConfig.debug.logTimestamps) {
-        const timestamp: any = "⏱ %c" + (Math.floor(performance.now()) + "").padEnd(6, " ") + "";
+        const timestamp = "⏱ %c" + (Math.floor(performance.now()) + "").padEnd(6, " ") + "";
         consoleMethod.call(console, timestamp + " %c" + context, "color: #7f7;", "color: " + labelColor + ";", ...args);
     }
     else {

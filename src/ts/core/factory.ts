@@ -1,5 +1,5 @@
 import { createLogger } from "./logging";
-const logger: any = createLogger("factory");
+const logger = createLogger("factory");
 // simple factory pattern
 export class Factory {
     public id = id;
@@ -9,12 +9,12 @@ export class Factory {
 
     constructor(id) {
     }
-    getId(): any {
+    getId() {
         return this.id;
     }
-    register(entry: any): any {
+    register(entry) {
         // Extract id
-        const id: any = entry.getId();
+        const id = entry.getId();
         assert(id, "Factory: Invalid id for class: " + entry);
         // Check duplicates
         assert(!this.idToEntry[id], "Duplicate factory entry for " + id);
@@ -35,7 +35,7 @@ export class Factory {
      * {}
      */
     findById(id: string): object {
-        const entry: any = this.idToEntry[id];
+        const entry = this.idToEntry[id];
         if (!entry) {
             logger.error("Object with id", id, "is not registered on factory", this.id, "!");
             assert(false, "Factory: Object with id '" + id + "' is not registered!");

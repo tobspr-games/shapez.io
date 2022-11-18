@@ -10,7 +10,7 @@ export class MetaDisplayBuilding extends MetaBuilding {
     constructor() {
         super("display");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 40,
@@ -18,22 +18,22 @@ export class MetaDisplayBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#aaaaaa";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_display);
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return true;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

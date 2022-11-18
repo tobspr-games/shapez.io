@@ -6,13 +6,13 @@ import { GameRoot } from "../root";
 import { ConstantSignalComponent } from "../components/constant_signal";
 import { generateMatrixRotations } from "../../core/utils";
 import { enumHubGoalRewards } from "../tutorial_goals";
-const overlayMatrix: any = generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]);
+const overlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]);
 export class MetaConstantSignalBuilding extends MetaBuilding {
 
     constructor() {
         super("constant_signal");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 31,
@@ -20,29 +20,29 @@ export class MetaConstantSignalBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#2b84fd";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_constant_signal);
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getRenderPins(): any {
+    getRenderPins() {
         return false;
     }
-    getSpecialOverlayRenderMatrix(rotation: any): any {
+    getSpecialOverlayRenderMatrix(rotation) {
         return overlayMatrix[rotation];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

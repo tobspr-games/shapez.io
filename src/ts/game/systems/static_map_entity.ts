@@ -12,21 +12,21 @@ export class StaticMapEntitySystem extends GameSystem {
     /**
      * Clears the uid list when a new frame started
      */
-    clearUidList(): any {
+    clearUidList() {
         this.drawnUids.clear();
     }
     /**
      * Draws the static entities
      */
-    drawChunk(parameters: DrawParameters, chunk: MapChunkView): any {
+    drawChunk(parameters: DrawParameters, chunk: MapChunkView) {
         if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
             return;
         }
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const staticComp: any = entity.components.StaticMapEntity;
-            const sprite: any = staticComp.getSprite();
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const staticComp = entity.components.StaticMapEntity;
+            const sprite = staticComp.getSprite();
             if (sprite) {
                 // Avoid drawing an entity twice which has been drawn for
                 // another chunk already
@@ -41,22 +41,22 @@ export class StaticMapEntitySystem extends GameSystem {
     /**
      * Draws the static wire entities
      */
-    drawWiresChunk(parameters: DrawParameters, chunk: MapChunkView): any {
+    drawWiresChunk(parameters: DrawParameters, chunk: MapChunkView) {
         if (G_IS_DEV && globalConfig.debug.doNotRenderStatics) {
             return;
         }
-        const drawnUids: any = new Set();
-        const contents: any = chunk.wireContents;
-        for (let y: any = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x: any = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity: any = contents[x][y];
+        const drawnUids = new Set();
+        const contents = chunk.wireContents;
+        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const entity = contents[x][y];
                 if (entity) {
                     if (drawnUids.has(entity.uid)) {
                         continue;
                     }
                     drawnUids.add(entity.uid);
-                    const staticComp: any = entity.components.StaticMapEntity;
-                    const sprite: any = staticComp.getSprite();
+                    const staticComp = entity.components.StaticMapEntity;
+                    const sprite = staticComp.getSprite();
                     if (sprite) {
                         staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 2);
                     }

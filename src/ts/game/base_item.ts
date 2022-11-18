@@ -10,7 +10,7 @@ export class BaseItem extends BasicSerializableObject {
     constructor() {
         super();
     }
-    static getId(): any {
+    static getId() {
         return "base_item";
     }
     /** {} */
@@ -54,13 +54,13 @@ export class BaseItem extends BasicSerializableObject {
      * Draws the item to a canvas
      * @abstract
      */
-    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number): any {
+    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number) {
         abstract;
     }
     /**
      * Draws the item at the given position
      */
-    drawItemCenteredClipped(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter): any {
+    drawItemCenteredClipped(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter) {
         if (parameters.visibleRect.containsCircle(x, y, diameter / 2)) {
             this.drawItemCenteredImpl(x, y, parameters, diameter);
         }
@@ -69,10 +69,10 @@ export class BaseItem extends BasicSerializableObject {
      * INTERNAL
      * @abstract
      */
-    drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter): any {
+    drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number= = globalConfig.defaultItemDiameter) {
         abstract;
     }
-    getBackgroundColorAsResource(): any {
+    getBackgroundColorAsResource() {
         abstract;
         return "";
     }

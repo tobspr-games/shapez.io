@@ -10,13 +10,13 @@ import { T } from "../../translations";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 import { BeltUnderlaysComponent } from "../components/belt_underlays";
 /** @enum {string} */
-export const enumBalancerVariants: any = {
+export const enumBalancerVariants = {
     merger: "merger",
     mergerInverse: "merger-inverse",
     splitter: "splitter",
     splitterInverse: "splitter-inverse",
 };
-const overlayMatrices: any = {
+const overlayMatrices = {
     [defaultBuildingVariant]: null,
     [enumBalancerVariants.merger]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
     [enumBalancerVariants.mergerInverse]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
@@ -28,7 +28,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
     constructor() {
         super("balancer");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 4,
@@ -52,7 +52,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
             },
         ];
     }
-    getDimensions(variant: any): any {
+    getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
                 return new Vector(2, 1);
@@ -69,7 +69,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
      * {}
      */
     getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity): Array<number> | null {
-        const matrix: any = overlayMatrices[variant];
+        const matrix = overlayMatrices[variant];
         if (matrix) {
             return matrix[rotation];
         }
@@ -85,7 +85,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        let speedMultiplier: any = 2;
+        let speedMultiplier = 2;
         switch (variant) {
             case enumBalancerVariants.merger:
             case enumBalancerVariants.mergerInverse:
@@ -93,15 +93,15 @@ export class MetaBalancerBuilding extends MetaBuilding {
             case enumBalancerVariants.splitterInverse:
                 speedMultiplier = 1;
         }
-        const speed: any = (root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer) / 2) * speedMultiplier;
+        const speed = (root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.balancer) / 2) * speedMultiplier;
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#555759";
     }
-        getAvailableVariants(root: GameRoot): any {
-        const deterministic: any = root.gameMode.getIsDeterministic();
-        let available: any = deterministic ? [] : [defaultBuildingVariant];
+        getAvailableVariants(root: GameRoot) {
+        const deterministic = root.gameMode.getIsDeterministic();
+        let available = deterministic ? [] : [defaultBuildingVariant];
         if (!deterministic && root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_merger)) {
             available.push(enumBalancerVariants.merger, enumBalancerVariants.mergerInverse);
         }
@@ -110,13 +110,13 @@ export class MetaBalancerBuilding extends MetaBuilding {
         }
         return available;
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_balancer);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemAcceptorComponent({
             slots: [], // set later
         }));
@@ -130,7 +130,7 @@ export class MetaBalancerBuilding extends MetaBuilding {
         }));
         entity.addComponent(new BeltUnderlaysComponent({ underlays: [] }));
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: string): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant: string) {
         switch (variant) {
             case defaultBuildingVariant: {
                 entity.components.ItemAcceptor.setSlots([

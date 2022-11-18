@@ -3,13 +3,13 @@ import { createLogger } from "../core/logging";
 import { ReadWriteProxy } from "../core/read_write_proxy";
 import { globalConfig } from "../core/config";
 import { Savegame } from "./savegame";
-const logger: any = createLogger("savegame_manager");
-const Rusha: any = require("rusha");
+const logger = createLogger("savegame_manager");
+const Rusha = require("rusha");
 export type SavegamesData = import("./savegame_typedefs").SavegamesData;
 export type SavegameMetadata = import("./savegame_typedefs").SavegameMetadata;
 
 /** @enum {string} */
-export const enumLocalSavegameStatus: any = {
+export const enumLocalSavegameStatus = {
     offline: "offline",
     synced: "synced",
 };
@@ -29,22 +29,22 @@ export class SavegameManager extends ReadWriteProxy {
             savegames: [],
         };
     }
-    getCurrentVersion(): any {
+    getCurrentVersion() {
         return 1002;
     }
-    verify(data: any): any {
+    verify(data) {
         // @TODO
         return ExplainedResult.good();
     }
-        migrate(data: SavegamesData): any {
+        migrate(data: SavegamesData) {
         if (data.version < 1001) {
-            data.savegames.forEach((savegame: any): any => {
+            data.savegames.forEach(savegame => {
                 savegame.level = 0;
             });
             data.version = 1001;
         }
         if (data.version < 1002) {
-            data.savegames.forEach((savegame: any): any => {
+            data.savegames.forEach(savegame => {
                 savegame.name = null;
             });
             data.version = 1002;
@@ -63,7 +63,7 @@ export class SavegameManager extends ReadWriteProxy {
      * {}
      */
     getSavegameById(internalId: string): Savegame {
-        const metadata: any = this.getGameMetaDataByInternalId(internalId);
+        const metadata = this.getGameMetaDataByInternalId(internalId);
         if (!metadata) {
             return null;
         }
@@ -72,19 +72,19 @@ export class SavegameManager extends ReadWriteProxy {
     /**
      * Deletes a savegame
      */
-    deleteSavegame(game: SavegameMetadata): any {
-        const handle: any = new Savegame(this.app, {
+    deleteSavegame(game: SavegameMetadata) {
+        const handle = new Savegame(this.app, {
             internalId: game.internalId,
             metaDataRef: game,
         });
         return handle
             .deleteAsync()
-            .catch((err: any): any => {
+            .catch(err => {
             console.warn("Failed to unlink physical savegame file, still removing:", err);
         })
-            .then((): any => {
-            for (let i: any = 0; i < this.currentData.savegames.length; ++i) {
-                const potentialGame: any = this.currentData.savegames[i];
+            .then(() => {
+            for (let i = 0; i < this.currentData.savegames.length; ++i) {
+                const potentialGame = this.currentData.savegames[i];
                 if (potentialGame.internalId === handle.internalId) {
                     this.currentData.savegames.splice(i, 1);
                     break;
@@ -98,8 +98,8 @@ export class SavegameManager extends ReadWriteProxy {
      * {}
      */
     getGameMetaDataByInternalId(id: string): SavegameMetadata {
-        for (let i: any = 0; i < this.currentData.savegames.length; ++i) {
-            const data: any = this.currentData.savegames[i];
+        for (let i = 0; i < this.currentData.savegames.length; ++i) {
+            const data = this.currentData.savegames[i];
             if (data.internalId === id) {
                 return data;
             }
@@ -112,8 +112,8 @@ export class SavegameManager extends ReadWriteProxy {
      * {}
      */
     createNewSavegame(): Savegame {
-        const id: any = this.generateInternalId();
-        const metaData: any = ({
+        const id = this.generateInternalId();
+        const metaData = {
             lastUpdate: Date.now(),
             version: Savegame.getCurrentVersion(),
             internalId: id,
@@ -129,42 +129,42 @@ export class SavegameManager extends ReadWriteProxy {
     /**
      * Attempts to import a savegame
      */
-    importSavegame(data: object): any {
-        const savegame: any = this.createNewSavegame();
-        const migrationResult: any = savegame.migrate(data);
+    importSavegame(data: object) {
+        const savegame = this.createNewSavegame();
+        const migrationResult = savegame.migrate(data);
         if (migrationResult.isBad()) {
             return Promise.reject("Failed to migrate: " + migrationResult.reason);
         }
         savegame.currentData = data;
-        const verification: any = savegame.verify(data);
+        const verification = savegame.verify(data);
         if (verification.isBad()) {
             return Promise.reject("Verification failed: " + verification.result);
         }
-        return savegame.writeSavegameAndMetadata().then((): any => this.updateAfterSavegamesChanged());
+        return savegame.writeSavegameAndMetadata().then(() => this.updateAfterSavegamesChanged());
     }
     /**
      * Hook after the savegames got changed
      */
-    updateAfterSavegamesChanged(): any {
-        return this.sortSavegames().then((): any => this.writeAsync());
+    updateAfterSavegamesChanged() {
+        return this.sortSavegames().then(() => this.writeAsync());
     }
     /**
      * Sorts all savegames by their creation time descending
      * {}
      */
     sortSavegames(): Promise<any> {
-        this.currentData.savegames.sort((a: any, b: any): any => b.lastUpdate - a.lastUpdate);
-        let promiseChain: any = Promise.resolve();
+        this.currentData.savegames.sort((a, b) => b.lastUpdate - a.lastUpdate);
+        let promiseChain = Promise.resolve();
         while (this.currentData.savegames.length > 30) {
-            const toRemove: any = this.currentData.savegames.pop();
+            const toRemove = this.currentData.savegames.pop();
             // Try to remove the savegame since its no longer available
-            const game: any = new Savegame(this.app, {
+            const game = new Savegame(this.app, {
                 internalId: toRemove.internalId,
                 metaDataRef: toRemove,
             });
             promiseChain = promiseChain
-                .then((): any => game.deleteAsync())
-                .then((): any => { }, (err: any): any => {
+                .then(() => game.deleteAsync())
+                .then(() => { }, err => {
                 logger.error(this, "Failed to remove old savegame:", toRemove, ":", err);
             });
         }
@@ -173,16 +173,16 @@ export class SavegameManager extends ReadWriteProxy {
     /**
      * Helper method to generate a new internal savegame id
      */
-    generateInternalId(): any {
+    generateInternalId() {
         return Rusha.createHash()
             .update(Date.now() + "/" + Math.random())
             .digest("hex");
     }
     // End
-    initialize(): any {
+    initialize() {
         // First read, then directly write to ensure we have the latest data
         // @ts-ignore
-        return this.readAsync().then((): any => {
+        return this.readAsync().then(() => {
             if (G_IS_DEV && globalConfig.debug.disableSavegameWrite) {
                 return Promise.resolve();
             }

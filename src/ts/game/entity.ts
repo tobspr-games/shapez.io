@@ -24,7 +24,7 @@ export class Entity extends BasicSerializableObject {
         constructor(root) {
         super();
     }
-    static getId(): any {
+    static getId() {
         return "Entity";
     }
     /**
@@ -40,10 +40,10 @@ export class Entity extends BasicSerializableObject {
     /**
      * Returns a clone of this entity
      */
-    clone(): any {
-        const staticComp: any = this.components.StaticMapEntity;
-        const buildingData: any = getBuildingDataFromCode(staticComp.code);
-        const clone: any = buildingData.metaInstance.createEntity({
+    clone() {
+        const staticComp = this.components.StaticMapEntity;
+        const buildingData = getBuildingDataFromCode(staticComp.code);
+        const clone = buildingData.metaInstance.createEntity({
             root: this.root,
             origin: staticComp.origin,
             originalRotation: staticComp.originalRotation,
@@ -51,7 +51,7 @@ export class Entity extends BasicSerializableObject {
             rotationVariant: buildingData.rotationVariant,
             variant: buildingData.variant,
         });
-        for (const key: any in this.components) {
+        for (const key in this.components) {
             this.components[key] as Component).copyAdditionalStateTo(clone.components[key]);
         }
         return clone;
@@ -60,14 +60,14 @@ export class Entity extends BasicSerializableObject {
      * Adds a new component, only possible until the entity is registered on the entity manager,
      * after that use @see EntityManager.addDynamicComponent
      */
-    addComponent(componentInstance: Component, force: boolean = false): any {
+    addComponent(componentInstance: Component, force: boolean = false) {
         if (!force && this.registered) {
             this.root.entityMgr.attachDynamicComponent(this, componentInstance);
             return;
         }
         assert(force || !this.registered, "Entity already registered, use EntityManager.addDynamicComponent");
 
-        const id: any = (componentInstance.constructor as typeof Component).getId();
+        const id = componentInstance.constructor as typeof Component).getId();
         assert(!this.components[id], "Component already present");
         this.components[id] = componentInstance;
     }
@@ -75,25 +75,25 @@ export class Entity extends BasicSerializableObject {
      * Removes a given component, only possible until the entity is registered on the entity manager,
      * after that use @see EntityManager.removeDynamicComponent
      */
-    removeComponent(componentClass: typeof Component, force: boolean = false): any {
+    removeComponent(componentClass: typeof Component, force: boolean = false) {
         if (!force && this.registered) {
             this.root.entityMgr.removeDynamicComponent(this, componentClass);
             return;
         }
         assert(force || !this.registered, "Entity already registered, use EntityManager.removeDynamicComponent");
-        const id: any = componentClass.getId();
+        const id = componentClass.getId();
         assert(this.components[id], "Component does not exist on entity");
         delete this.components[id];
     }
     /**
      * Draws the entity, to override use @see Entity.drawImpl
      */
-    drawDebugOverlays(parameters: DrawParameters): any {
-        const context: any = parameters.context;
-        const staticComp: any = this.components.StaticMapEntity;
+    drawDebugOverlays(parameters: DrawParameters) {
+        const context = parameters.context;
+        const staticComp = this.components.StaticMapEntity;
         if (G_IS_DEV && staticComp && globalConfig.debug.showEntityBounds) {
             if (staticComp) {
-                const transformed: any = staticComp.getTileSpaceBounds();
+                const transformed = staticComp.getTileSpaceBounds();
                 context.strokeStyle = "rgba(255, 0, 0, 0.5)";
                 context.lineWidth = 2;
                 // const boundsSize = 20;
@@ -103,15 +103,15 @@ export class Entity extends BasicSerializableObject {
             }
         }
         if (G_IS_DEV && staticComp && globalConfig.debug.showAcceptorEjectors) {
-            const ejectorComp: any = this.components.ItemEjector;
+            const ejectorComp = this.components.ItemEjector;
             if (ejectorComp) {
-                const ejectorSprite: any = Loader.getSprite("sprites/debug/ejector_slot.png");
-                for (let i: any = 0; i < ejectorComp.slots.length; ++i) {
-                    const slot: any = ejectorComp.slots[i];
-                    const slotTile: any = staticComp.localTileToWorld(slot.pos);
-                    const direction: any = staticComp.localDirectionToWorld(slot.direction);
-                    const directionVector: any = enumDirectionToVector[direction];
-                    const angle: any = Math.radians(enumDirectionToAngle[direction]);
+                const ejectorSprite = Loader.getSprite("sprites/debug/ejector_slot.png");
+                for (let i = 0; i < ejectorComp.slots.length; ++i) {
+                    const slot = ejectorComp.slots[i];
+                    const slotTile = staticComp.localTileToWorld(slot.pos);
+                    const direction = staticComp.localDirectionToWorld(slot.direction);
+                    const directionVector = enumDirectionToVector[direction];
+                    const angle = Math.radians(enumDirectionToAngle[direction]);
                     context.globalAlpha = slot.item ? 1 : 0.2;
                     drawRotatedSprite({
                         parameters,
@@ -123,15 +123,15 @@ export class Entity extends BasicSerializableObject {
                     });
                 }
             }
-            const acceptorComp: any = this.components.ItemAcceptor;
+            const acceptorComp = this.components.ItemAcceptor;
             if (acceptorComp) {
-                const acceptorSprite: any = Loader.getSprite("sprites/misc/acceptor_slot.png");
-                for (let i: any = 0; i < acceptorComp.slots.length; ++i) {
-                    const slot: any = acceptorComp.slots[i];
-                    const slotTile: any = staticComp.localTileToWorld(slot.pos);
-                    const direction: any = staticComp.localDirectionToWorld(slot.direction);
-                    const directionVector: any = enumDirectionToVector[direction];
-                    const angle: any = Math.radians(enumDirectionToAngle[direction] + 180);
+                const acceptorSprite = Loader.getSprite("sprites/misc/acceptor_slot.png");
+                for (let i = 0; i < acceptorComp.slots.length; ++i) {
+                    const slot = acceptorComp.slots[i];
+                    const slotTile = staticComp.localTileToWorld(slot.pos);
+                    const direction = staticComp.localDirectionToWorld(slot.direction);
+                    const directionVector = enumDirectionToVector[direction];
+                    const angle = Math.radians(enumDirectionToAngle[direction] + 180);
                     context.globalAlpha = 0.4;
                     drawRotatedSprite({
                         parameters,
@@ -153,7 +153,7 @@ export class Entity extends BasicSerializableObject {
      * override, should draw the entity
      * @abstract
      */
-    drawImpl(parameters: DrawParameters): any {
+    drawImpl(parameters: DrawParameters) {
         abstract;
     }
 }

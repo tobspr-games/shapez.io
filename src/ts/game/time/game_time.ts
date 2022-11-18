@@ -8,7 +8,7 @@ import { PausedGameSpeed } from "./paused_game_speed";
 import { gGameSpeedRegistry } from "../../core/global_registries";
 import { globalConfig } from "../../core/config";
 import { createLogger } from "../../core/logging";
-const logger: any = createLogger("game_time");
+const logger = createLogger("game_time");
 export class GameTime extends BasicSerializableObject {
     public root = root;
     public timeSeconds = 0;
@@ -20,10 +20,10 @@ export class GameTime extends BasicSerializableObject {
         constructor(root) {
         super();
     }
-    static getId(): any {
+    static getId() {
         return "GameTime";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             timeSeconds: types.float,
             speed: types.obj(gGameSpeedRegistry),
@@ -33,13 +33,13 @@ export class GameTime extends BasicSerializableObject {
     /**
      * Fetches the new "real" time, called from the core once per frame, since performance now() is kinda slow
      */
-    updateRealtimeNow(): any {
+    updateRealtimeNow() {
         this.realtimeSeconds = performance.now() / 1000.0 + this.realtimeAdjust;
     }
     /**
      * Returns the ingame time in milliseconds
      */
-    getTimeMs(): any {
+    getTimeMs() {
         return this.timeSeconds * 1000.0;
     }
     /**
@@ -59,17 +59,17 @@ export class GameTime extends BasicSerializableObject {
     /**
      * Internal method to generate new logic time budget
      */
-    internalAddDeltaToBudget(deltaMs: number): any {
+    internalAddDeltaToBudget(deltaMs: number) {
         // Only update if game is supposed to update
         if (this.root.hud.shouldPauseGame()) {
             this.logicTimeBudget = 0;
         }
         else {
-            const multiplier: any = this.getSpeed().getTimeMultiplier();
+            const multiplier = this.getSpeed().getTimeMultiplier();
             this.logicTimeBudget += deltaMs * multiplier;
         }
         // Check for too big pile of updates -> reduce it to 1
-        let maxLogicSteps: any = Math.max(3, (this.speed.getMaxLogicStepsInQueue() * this.root.dynamicTickrate.currentTickRate) / 60);
+        let maxLogicSteps = Math.max(3, (this.speed.getMaxLogicStepsInQueue() * this.root.dynamicTickrate.currentTickRate) / 60);
         if (G_IS_DEV && globalConfig.debug.framePausesBetweenTicks) {
             maxLogicSteps *= 1 + globalConfig.debug.framePausesBetweenTicks;
         }
@@ -80,10 +80,10 @@ export class GameTime extends BasicSerializableObject {
     /**
      * Performs update ticks based on the queued logic budget
      */
-    performTicks(deltaMs: number, updateMethod: function():boolean): any {
+    performTicks(deltaMs: number, updateMethod: function():boolean) {
         this.internalAddDeltaToBudget(deltaMs);
-        const speedAtStart: any = this.root.time.getSpeed();
-        let effectiveDelta: any = this.root.dynamicTickrate.deltaMs;
+        const speedAtStart = this.root.time.getSpeed();
+        let effectiveDelta = this.root.dynamicTickrate.deltaMs;
         if (G_IS_DEV && globalConfig.debug.framePausesBetweenTicks) {
             effectiveDelta += globalConfig.debug.framePausesBetweenTicks * this.root.dynamicTickrate.deltaMs;
         }
@@ -124,13 +124,13 @@ export class GameTime extends BasicSerializableObject {
     systemNow(): number {
         return (this.realtimeSeconds - this.realtimeAdjust) * 1000.0;
     }
-    getIsPaused(): any {
+    getIsPaused() {
         return this.speed.getId() === PausedGameSpeed.getId();
     }
-    getSpeed(): any {
+    getSpeed() {
         return this.speed;
     }
-    setSpeed(speed: any): any {
+    setSpeed(speed) {
         assert(speed instanceof BaseGameSpeed, "Not a valid game speed");
         if (this.speed.getId() === speed.getId()) {
 
@@ -138,8 +138,8 @@ export class GameTime extends BasicSerializableObject {
         }
         this.speed = speed;
     }
-    deserialize(data: any): any {
-        const errorCode: any = super.deserialize(data);
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
         if (errorCode) {
             return errorCode;
         }

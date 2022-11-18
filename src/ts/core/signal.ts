@@ -1,4 +1,4 @@
-export const STOP_PROPAGATION: any = "stop_propagation";
+export const STOP_PROPAGATION = "stop_propagation";
 export class Signal {
     public receivers = [];
     public modifyCount = 0;
@@ -8,7 +8,7 @@ export class Signal {
     /**
      * Adds a new signal listener
      */
-    add(receiver: function, scope: object = null): any {
+    add(receiver: function, scope: object = null) {
         assert(receiver, "receiver is null");
         this.receivers.push({ receiver, scope });
         ++this.modifyCount;
@@ -16,7 +16,7 @@ export class Signal {
     /**
      * Adds a new signal listener
      */
-    addToTop(receiver: function, scope: object = null): any {
+    addToTop(receiver: function, scope: object = null) {
         assert(receiver, "receiver is null");
         this.receivers.unshift({ receiver, scope });
         ++this.modifyCount;
@@ -25,11 +25,11 @@ export class Signal {
      * Dispatches the signal
      * @param  {} payload
      */
-    dispatch(): any {
-        const modifyState: any = this.modifyCount;
-        const n: any = this.receivers.length;
-        for (let i: any = 0; i < n; ++i) {
-            const { receiver, scope }: any = this.receivers[i];
+    dispatch() {
+        const modifyState = this.modifyCount;
+        const n = this.receivers.length;
+        for (let i = 0; i < n; ++i) {
+            const { receiver, scope } = this.receivers[i];
             if (receiver.apply(scope, arguments) === STOP_PROPAGATION) {
                 return STOP_PROPAGATION;
             }
@@ -42,10 +42,10 @@ export class Signal {
     /**
      * Removes a receiver
      */
-    remove(receiver: function): any {
-        let index: any = null;
-        const n: any = this.receivers.length;
-        for (let i: any = 0; i < n; ++i) {
+    remove(receiver: function) {
+        let index = null;
+        const n = this.receivers.length;
+        for (let i = 0; i < n; ++i) {
             if (this.receivers[i].receiver === receiver) {
                 index = i;
                 break;
@@ -58,7 +58,7 @@ export class Signal {
     /**
      * Removes all receivers
      */
-    removeAll(): any {
+    removeAll() {
         this.receivers = [];
         ++this.modifyCount;
     }

@@ -5,13 +5,13 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-const wireTunnelOverlayMatrix: any = generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]);
+const wireTunnelOverlayMatrix = generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]);
 export class MetaWireTunnelBuilding extends MetaBuilding {
 
     constructor() {
         super("wire_tunnel");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 39,
@@ -19,19 +19,19 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#777a86";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers);
     }
-        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity): any {
+        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity) {
         return wireTunnelOverlayMatrix[rotation];
     }
-    getIsRotateable(): any {
+    getIsRotateable() {
         return false;
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
     /** {} **/
@@ -41,7 +41,7 @@ export class MetaWireTunnelBuilding extends MetaBuilding {
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WireTunnelComponent());
     }
 }

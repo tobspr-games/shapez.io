@@ -14,32 +14,32 @@ export class BaseGameSpeed extends BasicSerializableObject {
         abstract;
         return "unknown-speed";
     }
-    getId(): any {
+    getId() {
         // @ts-ignore
 
         return this.constructor.getId();
     }
-    static getSchema(): any {
+    static getSchema() {
         return {};
     }
-    initializeAfterDeserialize(root: any): any {
+    initializeAfterDeserialize(root) {
         this.root = root;
     }
     /**
      * Returns the time multiplier
      */
-    getTimeMultiplier(): any {
+    getTimeMultiplier() {
         return 1;
     }
     /**
      * Returns how many logic steps there may be queued
      */
-    getMaxLogicStepsInQueue(): any {
+    getMaxLogicStepsInQueue() {
         return 3;
     }
     // Internals
     /** {} */
-    newSpeed(instance: any): BaseGameSpeed {
+    newSpeed(instance): BaseGameSpeed {
         return new instance(this.root);
     }
 }

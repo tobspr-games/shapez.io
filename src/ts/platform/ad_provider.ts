@@ -39,5 +39,5 @@ export class AdProviderInterface {
     showVideoAd(): Promise<void> {
         return Promise.resolve();
     }
-    setPlayStatus(playing: any): any { }
+    setPlayStatus(playing) { }
 }

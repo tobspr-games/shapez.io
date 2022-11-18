@@ -12,29 +12,29 @@ export class Rectangle {
     /**
      * Creates a rectangle from top right bottom and left offsets
      */
-    static fromTRBL(top: number, right: number, bottom: number, left: number): any {
+    static fromTRBL(top: number, right: number, bottom: number, left: number) {
         return new Rectangle(left, top, right - left, bottom - top);
     }
     /**
      * Constructs a new square rectangle
      */
-    static fromSquare(x: number, y: number, size: number): any {
+    static fromSquare(x: number, y: number, size: number) {
         return new Rectangle(x, y, size, size);
     }
-        static fromTwoPoints(p1: Vector, p2: Vector): any {
-        const left: any = Math.min(p1.x, p2.x);
-        const top: any = Math.min(p1.y, p2.y);
-        const right: any = Math.max(p1.x, p2.x);
-        const bottom: any = Math.max(p1.y, p2.y);
+        static fromTwoPoints(p1: Vector, p2: Vector) {
+        const left = Math.min(p1.x, p2.x);
+        const top = Math.min(p1.y, p2.y);
+        const right = Math.max(p1.x, p2.x);
+        const bottom = Math.max(p1.y, p2.y);
         return new Rectangle(left, top, right - left, bottom - top);
     }
-        static centered(width: number, height: number): any {
+        static centered(width: number, height: number) {
         return new Rectangle(-Math.ceil(width / 2), -Math.ceil(height / 2), width, height);
     }
     /**
      * Returns if a intersects b
      */
-    static intersects(a: Rectangle, b: Rectangle): any {
+    static intersects(a: Rectangle, b: Rectangle) {
         return a.left <= b.right && b.left <= a.right && a.top <= b.bottom && b.top <= a.bottom;
     }
     /**
@@ -54,7 +54,7 @@ export class Rectangle {
     /**
      * Returns if this rectangle is equal to the other while taking an epsilon into account
      */
-    equalsEpsilon(other: Rectangle, epsilon: number): any {
+    equalsEpsilon(other: Rectangle, epsilon: number) {
         return (epsilonCompare(this.x, other.x, epsilon) &&
             epsilonCompare(this.y, other.y, epsilon) &&
             epsilonCompare(this.w, other.w, epsilon) &&
@@ -106,28 +106,28 @@ export class Rectangle {
     /**
      * Sets the right side of the rect without moving it
      */
-    setRight(right: number): any {
+    setRight(right: number) {
         this.w = right - this.x;
     }
     /**
      * Sets the bottom side of the rect without moving it
      */
-    setBottom(bottom: number): any {
+    setBottom(bottom: number) {
         this.h = bottom - this.y;
     }
     /**
      * Sets the top side of the rect without scaling it
      */
-    setTop(top: number): any {
-        const bottom: any = this.bottom();
+    setTop(top: number) {
+        const bottom = this.bottom();
         this.y = top;
         this.setBottom(bottom);
     }
     /**
      * Sets the left side of the rect without scaling it
      */
-    setLeft(left: number): any {
-        const right: any = this.right();
+    setLeft(left: number) {
+        const right = this.right();
         this.x = left;
         this.setRight(right);
     }
@@ -148,14 +148,14 @@ export class Rectangle {
     /**
      * Moves the rectangle by the given parameters
      */
-    moveBy(x: number, y: number): any {
+    moveBy(x: number, y: number) {
         this.x += x;
         this.y += y;
     }
     /**
      * Moves the rectangle by the given vector
      */
-    moveByVector(vec: Vector): any {
+    moveByVector(vec: Vector) {
         this.x += vec.x;
         this.y += vec.y;
     }
@@ -163,7 +163,7 @@ export class Rectangle {
      * Scales every parameter (w, h, x, y) by the given factor. Useful to transform from world to
      * tile space and vice versa
      */
-    allScaled(factor: number): any {
+    allScaled(factor: number) {
         return new Rectangle(this.x * factor, this.y * factor, this.w * factor, this.h * factor);
     }
     /**
@@ -212,10 +212,10 @@ export class Rectangle {
      * {}
      */
     getIntersection(rect: Rectangle): Rectangle | null {
-        const left: any = Math.max(this.x, rect.x);
-        const top: any = Math.max(this.y, rect.y);
-        const right: any = Math.min(this.x + this.w, rect.x + rect.w);
-        const bottom: any = Math.min(this.y + this.h, rect.y + rect.h);
+        const left = Math.max(this.x, rect.x);
+        const top = Math.max(this.y, rect.y);
+        const right = Math.min(this.x + this.w, rect.x + rect.w);
+        const bottom = Math.min(this.y + this.h, rect.y + rect.h);
         if (right <= left || bottom <= top) {
             return null;
         }
@@ -224,14 +224,14 @@ export class Rectangle {
     /**
      * Returns whether the rectangle fully intersects the given rectangle
      */
-    intersectsFully(rect: Rectangle): any {
-        const intersection: any = this.getIntersection(rect);
+    intersectsFully(rect: Rectangle) {
+        const intersection = this.getIntersection(rect);
         return intersection && Math.abs(intersection.w * intersection.h - rect.w * rect.h) < 0.001;
     }
     /**
      * Returns the union of this rectangle with another
      */
-    getUnion(rect: Rectangle): any {
+    getUnion(rect: Rectangle) {
         if (this.isEmpty()) {
             // If this is rect is empty, return the other one
             return rect.clone();
@@ -241,16 +241,16 @@ export class Rectangle {
             return this.clone();
         }
         // Find contained area
-        const left: any = Math.min(this.x, rect.x);
-        const top: any = Math.min(this.y, rect.y);
-        const right: any = Math.max(this.right(), rect.right());
-        const bottom: any = Math.max(this.bottom(), rect.bottom());
+        const left = Math.min(this.x, rect.x);
+        const top = Math.min(this.y, rect.y);
+        const right = Math.max(this.right(), rect.right());
+        const bottom = Math.max(this.bottom(), rect.bottom());
         return Rectangle.fromTRBL(top, right, bottom, left);
     }
     /**
      * Good for caching stuff
      */
-    toCompareableString(): any {
+    toCompareableString() {
         return (round2Digits(this.x) +
             "/" +
             round2Digits(this.y) +
@@ -262,7 +262,7 @@ export class Rectangle {
     /**
      * Good for printing stuff
      */
-    toString(): any {
+    toString() {
         return ("[x:" +
             round2Digits(this.x) +
             "| y:" +

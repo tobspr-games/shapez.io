@@ -17,10 +17,10 @@ export type ItemEjectorSlot = {
 };
 
 export class ItemEjectorComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "ItemEjector";
     }
-    static getSchema(): any {
+    static getSchema() {
         // The cachedDestSlot, cachedTargetEntity fields are not serialized.
         return {
             slots: types.fixedSizeArray(types.structured({
@@ -35,8 +35,8 @@ export class ItemEjectorComponent extends Component {
         super();
         this.setSlots(slots);
     }
-    clear(): any {
-        for (const slot: any of this.slots) {
+    clear() {
+        for (const slot of this.slots) {
             slot.item = null;
             slot.lastItem = null;
             slot.progress = 0;
@@ -45,10 +45,10 @@ export class ItemEjectorComponent extends Component {
         setSlots(slots: Array<{
         pos: Vector;
         direction: enumDirection;
-    }>): any {
+    }>) {
                 this.slots = [];
-        for (let i: any = 0; i < slots.length; ++i) {
-            const slot: any = slots[i];
+        for (let i = 0; i < slots.length; ++i) {
+            const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
                 direction: slot.direction,
@@ -65,14 +65,14 @@ export class ItemEjectorComponent extends Component {
      * {}
      */
     getSlotTargetLocalTile(slot: ItemEjectorSlot): Vector {
-        const directionVector: any = enumDirectionToVector[slot.direction];
+        const directionVector = enumDirectionToVector[slot.direction];
         return slot.pos.add(directionVector);
     }
     /**
      * Returns whether any slot ejects to the given local tile
      */
-    anySlotEjectsToLocalTile(tile: Vector): any {
-        for (let i: any = 0; i < this.slots.length; ++i) {
+    anySlotEjectsToLocalTile(tile: Vector) {
+        for (let i = 0; i < this.slots.length; ++i) {
             if (this.getSlotTargetLocalTile(this.slots[i]).equals(tile)) {
                 return true;
             }
@@ -92,7 +92,7 @@ export class ItemEjectorComponent extends Component {
      * {}
      */
     getFirstFreeSlot(): ?number {
-        for (let i: any = 0; i < this.slots.length; ++i) {
+        for (let i = 0; i < this.slots.length; ++i) {
             if (this.canEjectOnSlot(i)) {
                 return i;
             }
@@ -117,8 +117,8 @@ export class ItemEjectorComponent extends Component {
      * {}
      */
     takeSlotItem(slotIndex: number): BaseItem | null {
-        const slot: any = this.slots[slotIndex];
-        const item: any = slot.item;
+        const slot = this.slots[slotIndex];
+        const item = slot.item;
         slot.item = null;
         slot.progress = 0.0;
         return item;

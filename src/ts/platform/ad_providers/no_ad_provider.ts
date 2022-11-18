@@ -1,9 +1,9 @@
 import { AdProviderInterface } from "../ad_provider";
 export class NoAdProvider extends AdProviderInterface {
-    getHasAds(): any {
+    getHasAds() {
         return false;
     }
-    getCanShowVideoAd(): any {
+    getCanShowVideoAd() {
         return false;
     }
 }

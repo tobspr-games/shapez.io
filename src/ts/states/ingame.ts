@@ -11,9 +11,9 @@ import { enumGameModeIds } from "../game/game_mode";
 import { MOD_SIGNALS } from "../mods/mod_signals";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
 import { T } from "../translations";
-const logger: any = createLogger("state/ingame");
+const logger = createLogger("state/ingame");
 // Different sub-states
-export const GAME_LOADING_STATES: any = {
+export const GAME_LOADING_STATES = {
     s3_createCore: "s3_createCore",
     s4_A_initEmptyGame: "s4_A_initEmptyGame",
     s4_B_resumeGame: "s4_B_resumeGame",
@@ -25,7 +25,7 @@ export const GAME_LOADING_STATES: any = {
     destroyed: "destroyed",
     initFailed: "initFailed",
 };
-export const gameCreationAction: any = {
+export const gameCreationAction = {
     new: "new-game",
     resume: "resume-game",
 };
@@ -58,7 +58,7 @@ export class InGameState extends GameState {
     /**
      * Switches the game into another sub-state
      */
-    switchStage(stage: string): any {
+    switchStage(stage: string) {
         assert(stage, "Got empty stage");
         if (stage !== this.stage) {
             this.stage = stage;
@@ -72,31 +72,31 @@ export class InGameState extends GameState {
         }
     }
     // GameState implementation
-    getInnerHTML(): any {
+    getInnerHTML() {
         return "";
     }
-    onAppPause(): any {
+    onAppPause() {
         // if (this.stage === stages.s10_gameRunning) {
         //     logger.log("Saving because app got paused");
         //     this.doSave();
         // }
     }
-    getHasFadeIn(): any {
+    getHasFadeIn() {
         return false;
     }
-    getPauseOnFocusLost(): any {
+    getPauseOnFocusLost() {
         return false;
     }
-    getHasUnloadConfirmation(): any {
+    getHasUnloadConfirmation() {
         return true;
     }
-    onLeave(): any {
+    onLeave() {
         if (this.core) {
             this.stageDestroyed();
         }
         this.app.inputMgr.dismountFilter(this.boundInputFilter);
     }
-    onResized(w: any, h: any): any {
+    onResized(w, h) {
         super.onResized(w, h);
         if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
             this.core.resize(w, h);
@@ -106,7 +106,7 @@ export class InGameState extends GameState {
     /**
      * Goes back to the menu state
      */
-    goBackToMenu(): any {
+    goBackToMenu() {
         if ([enumGameModeIds.puzzleEdit, enumGameModeIds.puzzlePlay].includes(this.gameModeId)) {
             this.saveThenGoToState("PuzzleMenuState");
         }
@@ -117,7 +117,7 @@ export class InGameState extends GameState {
     /**
      * Goes back to the settings state
      */
-    goToSettings(): any {
+    goToSettings() {
         this.saveThenGoToState("SettingsState", {
             backToStateId: this.key,
             backToStatePayload: this.creationPayload,
@@ -126,7 +126,7 @@ export class InGameState extends GameState {
     /**
      * Goes back to the settings state
      */
-    goToKeybindings(): any {
+    goToKeybindings() {
         this.saveThenGoToState("KeybindingsState", {
             backToStateId: this.key,
             backToStatePayload: this.creationPayload,
@@ -135,21 +135,21 @@ export class InGameState extends GameState {
     /**
      * Moves to a state outside of the game
      */
-    saveThenGoToState(stateId: string, payload: any=): any {
+    saveThenGoToState(stateId: string, payload: any=) {
         if (this.stage === GAME_LOADING_STATES.leaving || this.stage === GAME_LOADING_STATES.destroyed) {
             logger.warn("Tried to leave game twice or during destroy:", this.stage, "(attempted to move to", stateId, ")");
             return;
         }
         this.stageLeavingGame();
-        this.doSave().then((): any => {
+        this.doSave().then(() => {
             this.stageDestroyed();
             this.moveToState(stateId, payload);
         });
     }
-    onBackButton(): any {
+    onBackButton() {
         // do nothing
     }
-    getIsIngame(): any {
+    getIsIngame() {
         return (this.stage === GAME_LOADING_STATES.s10_gameRunning &&
             this.core &&
             !this.core.root.hud.shouldPauseGame());
@@ -158,7 +158,7 @@ export class InGameState extends GameState {
      * Called when the game somehow failed to initialize. Resets everything to basic state and
      * then goes to the main menu, showing the error
      */
-    onInitializationFailure(err: string): any {
+    onInitializationFailure(err: string) {
         if (this.switchStage(GAME_LOADING_STATES.initFailed)) {
             logger.error("Init failure:", err);
             this.stageDestroyed();
@@ -169,13 +169,13 @@ export class InGameState extends GameState {
     /**
      * Creates the game core instance, and thus the root
      */
-    stage3CreateCore(): any {
+    stage3CreateCore() {
         if (this.switchStage(GAME_LOADING_STATES.s3_createCore)) {
             logger.log("Waiting for resources to load");
-            this.app.backgroundResourceLoader.resourceStateChangedSignal.add(({ progress }: any): any => {
+            this.app.backgroundResourceLoader.resourceStateChangedSignal.add(({ progress }) => {
                 this.loadingOverlay.loadingIndicator.innerText = T.global.loadingResources.replace("<percentage>", (progress * 100.0).toFixed(1));
             });
-            this.app.backgroundResourceLoader.getIngamePromise().then((): any => {
+            this.app.backgroundResourceLoader.getIngamePromise().then(() => {
                 if (this.creationPayload.gameModeId &&
                     this.creationPayload.gameModeId.includes("puzzle")) {
                     this.app.sound.playThemeMusic(MUSIC.puzzle);
@@ -195,10 +195,10 @@ export class InGameState extends GameState {
                     this.app.gameAnalytics.handleGameStarted();
                     this.stage4aInitEmptyGame();
                 }
-            }, (err: any): any => {
+            }, err => {
                 logger.error("Failed to preload resources:", err);
-                const dialogs: any = new HUDModalDialogs(null, this.app);
-                const dialogsElement: any = document.createElement("div");
+                const dialogs = new HUDModalDialogs(null, this.app);
+                const dialogsElement = document.createElement("div");
                 dialogsElement.id = "ingame_HUD_ModalDialogs";
                 dialogsElement.style.zIndex = "999999";
                 document.body.appendChild(dialogsElement);
@@ -210,7 +210,7 @@ export class InGameState extends GameState {
     /**
      * Initializes a new empty game
      */
-    stage4aInitEmptyGame(): any {
+    stage4aInitEmptyGame() {
         if (this.switchStage(GAME_LOADING_STATES.s4_A_initEmptyGame)) {
             this.core.initNewGame();
             this.stage5FirstUpdate();
@@ -219,7 +219,7 @@ export class InGameState extends GameState {
     /**
      * Resumes an existing game
      */
-    stage4bResumeGame(): any {
+    stage4bResumeGame() {
         if (this.switchStage(GAME_LOADING_STATES.s4_B_resumeGame)) {
             if (!this.core.initExistingGame()) {
                 this.onInitializationFailure("Savegame is corrupt and can not be restored.");
@@ -232,7 +232,7 @@ export class InGameState extends GameState {
     /**
      * Performs the first game update on the game which initializes most caches
      */
-    stage5FirstUpdate(): any {
+    stage5FirstUpdate() {
         if (this.switchStage(GAME_LOADING_STATES.s5_firstUpdate)) {
             this.core.root.logicInitialized = true;
             this.core.updateLogic();
@@ -243,7 +243,7 @@ export class InGameState extends GameState {
      * Call the post load hook, this means that we have loaded the game, and all systems
      * can operate and start to work now.
      */
-    stage6PostLoadHook(): any {
+    stage6PostLoadHook() {
         if (this.switchStage(GAME_LOADING_STATES.s6_postLoadHook)) {
             logger.log("Post load hook");
             this.core.postLoadHook();
@@ -255,7 +255,7 @@ export class InGameState extends GameState {
      * the V8 engine can already start to optimize it. Also this makes sure the resources
      * are in the VRAM and we have a smooth experience once we start.
      */
-    stage7Warmup(): any {
+    stage7Warmup() {
         if (this.switchStage(GAME_LOADING_STATES.s7_warmup)) {
             if (this.creationPayload.fastEnter) {
                 this.warmupTimeSeconds = globalConfig.warmupTimeSecondsFast;
@@ -268,7 +268,7 @@ export class InGameState extends GameState {
     /**
      * The final stage where this game is running and updating regulary.
      */
-    stage10GameRunning(): any {
+    stage10GameRunning() {
         if (this.switchStage(GAME_LOADING_STATES.s10_gameRunning)) {
             this.core.root.signals.readyToRender.dispatch();
             logSection("GAME STARTED", "#26a69a");
@@ -280,7 +280,7 @@ export class InGameState extends GameState {
     /**
      * This stage destroys the whole game, used to cleanup
      */
-    stageDestroyed(): any {
+    stageDestroyed() {
         if (this.switchStage(GAME_LOADING_STATES.destroyed)) {
             // Cleanup all api calls
             this.cancelAllAsyncOperations();
@@ -298,7 +298,7 @@ export class InGameState extends GameState {
     /**
      * When leaving the game
      */
-    stageLeavingGame(): any {
+    stageLeavingGame() {
         if (this.switchStage(GAME_LOADING_STATES.leaving)) {
             // ...
         }
@@ -307,10 +307,10 @@ export class InGameState extends GameState {
     /**
      * Filters the input (keybindings)
      */
-    filterInput(): any {
+    filterInput() {
         return this.stage === GAME_LOADING_STATES.s10_gameRunning;
     }
-        onEnter(payload: GameCreationPayload): any {
+        onEnter(payload: GameCreationPayload) {
         this.app.inputMgr.installFilter(this.boundInputFilter);
         this.creationPayload = payload;
         this.savegame = payload.savegame;
@@ -321,8 +321,8 @@ export class InGameState extends GameState {
         document.body.querySelector(".modalDialogParent").remove();
         this.asyncChannel
             .watch(waitNextFrame())
-            .then((): any => this.stage3CreateCore())
-            .catch((ex: any): any => {
+            .then(() => this.stage3CreateCore())
+            .catch(ex => {
             logger.error(ex);
             throw ex;
         });
@@ -330,7 +330,7 @@ export class InGameState extends GameState {
     /**
      * Render callback
      */
-    onRender(dt: number): any {
+    onRender(dt: number) {
         if (window.APP_ERROR_OCCURED) {
             // Application somehow crashed, do not do anything
             return;
@@ -360,13 +360,13 @@ export class InGameState extends GameState {
             }
         }
     }
-    onBackgroundTick(dt: any): any {
+    onBackgroundTick(dt) {
         this.onRender(dt);
     }
     /**
      * Saves the game
      */
-    doSave(): any {
+    doSave() {
         if (!this.savegame || !this.savegame.isSaveable()) {
             return Promise.resolve();
         }
@@ -391,11 +391,11 @@ export class InGameState extends GameState {
         this.savegame.updateData(this.core.root);
         this.currentSavePromise = this.savegame
             .writeSavegameAndMetadata()
-            .catch((err: any): any => {
+            .catch(err => {
             // Catch errors
             logger.warn("Failed to save:", err);
         })
-            .then((): any => {
+            .then(() => {
             // Clear promise
             logger.log("Saved!");
             this.core.root.signals.gameSaved.dispatch();

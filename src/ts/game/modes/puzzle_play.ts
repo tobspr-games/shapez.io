@@ -30,10 +30,10 @@ import { MetaBlockBuilding } from "../buildings/block";
 import { MetaBuilding } from "../meta_building";
 import { gMetaBuildingRegistry } from "../../core/global_registries";
 import { HUDPuzzleNextPuzzle } from "../hud/parts/next_puzzle";
-const logger: any = createLogger("puzzle-play");
-const copy: any = require("clipboard-copy");
+const logger = createLogger("puzzle-play");
+const copy = require("clipboard-copy");
 export class PuzzlePlayGameMode extends PuzzleGameMode {
-    static getId(): any {
+    static getId() {
         return enumGameModeIds.puzzlePlay;
     }
     public hiddenBuildings = excludedBuildings;
@@ -65,14 +65,14 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
         ];
         if (puzzle.game.excludedBuildings) {
                         const puzzleHidden: any = puzzle.game.excludedBuildings
-                .map((id: any): any => {
+                .map(id => {
                 if (!gMetaBuildingRegistry.hasId(id)) {
                     return;
                 }
 
                 return gMetaBuildingRegistry.findById(id).constructor;
             })
-                .filter((x: any): any => !!x);
+                .filter(x => !!x);
             excludedBuildings = excludedBuildings.concat(puzzleHidden);
         }
         this.additionalHudParts.puzzlePlayMetadata = HUDPuzzlePlayMetadata;
@@ -83,15 +83,15 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             this.additionalHudParts.puzzleNext = HUDPuzzleNextPuzzle;
         }
     }
-    loadPuzzle(): any {
-        let errorText: any;
+    loadPuzzle() {
+        let errorText;
         logger.log("Loading puzzle", this.puzzle);
         try {
             this.zoneWidth = this.puzzle.game.bounds.w;
             this.zoneHeight = this.puzzle.game.bounds.h;
             errorText = new PuzzleSerializer().deserializePuzzle(this.root, this.puzzle.game);
         }
-        catch (ex: any) {
+        catch (ex) {
             errorText = ex.message || ex;
         }
         if (errorText) {
@@ -108,42 +108,42 @@ export class PuzzlePlayGameMode extends PuzzleGameMode {
             // signals.ok.add(() => this.root.gameState.moveToState("PuzzleMenuState"));
         }
     }
-        trackCompleted(liked: boolean, time: number): any {
-        const closeLoading: any = this.root.hud.parts.dialogs.showLoadingDialog();
+        trackCompleted(liked: boolean, time: number) {
+        const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
         return this.root.app.clientApi
             .apiCompletePuzzle(this.puzzle.meta.id, {
             time,
             liked,
         })
-            .catch((err: any): any => {
+            .catch(err => {
             logger.warn("Failed to complete puzzle:", err);
         })
-            .then((): any => {
+            .then(() => {
             closeLoading();
         });
     }
-    sharePuzzle(): any {
+    sharePuzzle() {
         copy(this.puzzle.meta.shortKey);
         this.root.hud.parts.dialogs.showInfo(T.dialogs.puzzleShare.title, T.dialogs.puzzleShare.desc.replace("<key>", this.puzzle.meta.shortKey));
     }
-    reportPuzzle(): any {
-        const { optionSelected }: any = this.root.hud.parts.dialogs.showOptionChooser(T.dialogs.puzzleReport.title, {
+    reportPuzzle() {
+        const { optionSelected } = this.root.hud.parts.dialogs.showOptionChooser(T.dialogs.puzzleReport.title, {
             options: [
                 { value: "profane", text: T.dialogs.puzzleReport.options.profane },
                 { value: "unsolvable", text: T.dialogs.puzzleReport.options.unsolvable },
                 { value: "trolling", text: T.dialogs.puzzleReport.options.trolling },
             ],
         });
-        return new Promise((resolve: any): any => {
-            optionSelected.add((option: any): any => {
-                const closeLoading: any = this.root.hud.parts.dialogs.showLoadingDialog();
-                this.root.app.clientApi.apiReportPuzzle(this.puzzle.meta.id, option).then((): any => {
+        return new Promise(resolve => {
+            optionSelected.add(option => {
+                const closeLoading = this.root.hud.parts.dialogs.showLoadingDialog();
+                this.root.app.clientApi.apiReportPuzzle(this.puzzle.meta.id, option).then(() => {
                     closeLoading();
-                    const { ok }: any = this.root.hud.parts.dialogs.showInfo(T.dialogs.puzzleReportComplete.title, T.dialogs.puzzleReportComplete.desc);
+                    const { ok } = this.root.hud.parts.dialogs.showInfo(T.dialogs.puzzleReportComplete.title, T.dialogs.puzzleReportComplete.desc);
                     ok.add(resolve);
-                }, (err: any): any => {
+                }, err => {
                     closeLoading();
-                    const { ok }: any = this.root.hud.parts.dialogs.showInfo(T.dialogs.puzzleReportError.title, T.dialogs.puzzleReportError.desc + " " + err);
+                    const { ok } = this.root.hud.parts.dialogs.showInfo(T.dialogs.puzzleReportError.title, T.dialogs.puzzleReportError.desc + " " + err);
                 });
             });
         });

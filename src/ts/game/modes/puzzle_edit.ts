@@ -23,10 +23,10 @@ import { HUDPuzzleEditorReview } from "../hud/parts/puzzle_editor_review";
 import { HUDPuzzleEditorSettings } from "../hud/parts/puzzle_editor_settings";
 import { HUDConstantSignalEdit } from "../hud/parts/constant_signal_edit";
 export class PuzzleEditGameMode extends PuzzleGameMode {
-    static getId(): any {
+    static getId() {
         return enumGameModeIds.puzzleEdit;
     }
-    static getSchema(): any {
+    static getSchema() {
         return {};
     }
     public hiddenBuildings = [
@@ -54,7 +54,7 @@ export class PuzzleEditGameMode extends PuzzleGameMode {
         this.additionalHudParts.puzzleEditorSettings = HUDPuzzleEditorSettings;
         this.additionalHudParts.constantSignalEdit = HUDConstantSignalEdit;
     }
-    getIsEditor(): any {
+    getIsEditor() {
         return true;
     }
 }

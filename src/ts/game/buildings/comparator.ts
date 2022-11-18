@@ -10,7 +10,7 @@ export class MetaComparatorBuilding extends MetaBuilding {
     constructor() {
         super("comparator");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 46,
@@ -18,27 +18,27 @@ export class MetaComparatorBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#823cab";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing);
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getRenderPins(): any {
+    getRenderPins() {
         // We already have it included
         return false;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

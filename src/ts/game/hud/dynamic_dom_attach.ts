@@ -26,7 +26,7 @@ export class DynamicDomAttach {
     /**
      * Internal method to attach the element
      */
-    internalAttach(): any {
+    internalAttach() {
         if (!this.attached) {
             this.parent.appendChild(this.element);
             assert(this.element.parentElement === this.parent, "Invalid parent #1");
@@ -36,7 +36,7 @@ export class DynamicDomAttach {
     /**
      * Internal method to detach the element
      */
-    internalDetach(): any {
+    internalDetach() {
         if (this.attached) {
             assert(this.element.parentElement === this.parent, "Invalid parent #2");
             this.element.parentElement.removeChild(this.element);
@@ -46,31 +46,31 @@ export class DynamicDomAttach {
     /**
      * Returns whether the element is currently attached
      */
-    isAttached(): any {
+    isAttached() {
         return this.attached;
     }
     /**
      * Actually sets the 'hovered' class
      */
-    setIsHoveredClass(isHovered: boolean): any {
+    setIsHoveredClass(isHovered: boolean) {
         this.element.classList.toggle("hovered", isHovered);
     }
     /**
      * Call this every frame, and the dom attach class will take care of
      * everything else
      */
-    update(isVisible: boolean): any {
+    update(isVisible: boolean) {
         if (isVisible) {
             this.lastVisibleTime = this.root ? this.root.time.realtimeNow() : 0;
             this.internalAttach();
             if (this.trackHover && this.root) {
-                let bounds: any = this.lastComputedBounds;
+                let bounds = this.lastComputedBounds;
                 // Recompute bounds only once in a while
                 if (!bounds || this.root.time.realtimeNow() - this.lastComputedBoundsTime > 1.0) {
                     bounds = this.lastComputedBounds = this.element.getBoundingClientRect();
                     this.lastComputedBoundsTime = this.root.time.realtimeNow();
                 }
-                const mousePos: any = this.root.app.mousePosition;
+                const mousePos = this.root.app.mousePosition;
                 if (mousePos) {
                     this.trackedIsHovered.set(mousePos.x > bounds.left &&
                         mousePos.x < bounds.right &&
@@ -92,7 +92,7 @@ export class DynamicDomAttach {
                 this.classAttachTimeout = null;
             }
             if (isVisible) {
-                this.classAttachTimeout = setTimeout((): any => {
+                this.classAttachTimeout = setTimeout(() => {
                     this.element.classList.add(this.attachClass);
                 }, 15);
             }

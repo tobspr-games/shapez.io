@@ -7,10 +7,10 @@ import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 /** @enum {string} */
-export const enumTransistorVariants: any = {
+export const enumTransistorVariants = {
     mirrored: "mirrored",
 };
-const overlayMatrices: any = {
+const overlayMatrices = {
     [defaultBuildingVariant]: generateMatrixRotations([0, 1, 0, 1, 1, 0, 0, 1, 0]),
     [enumTransistorVariants.mirrored]: generateMatrixRotations([0, 1, 0, 0, 1, 1, 0, 1, 0]),
 };
@@ -19,7 +19,7 @@ export class MetaTransistorBuilding extends MetaBuilding {
     constructor() {
         super("transistor");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 38,
@@ -31,37 +31,37 @@ export class MetaTransistorBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#bc3a61";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates);
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getAvailableVariants(): any {
+    getAvailableVariants() {
         return [defaultBuildingVariant, enumTransistorVariants.mirrored];
     }
-    getSpecialOverlayRenderMatrix(rotation: any, rotationVariant: any, variant: any): any {
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant) {
         return overlayMatrices[variant][rotation];
     }
-    getRenderPins(): any {
+    getRenderPins() {
         // We already have it included
         return false;
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: any): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant) {
         entity.components.WiredPins.slots[1].direction =
             variant === enumTransistorVariants.mirrored ? enumDirection.right : enumDirection.left;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

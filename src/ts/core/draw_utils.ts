@@ -4,9 +4,9 @@ export type DrawParameters = import("./draw_parameters").DrawParameters;
 import { globalConfig } from "./config";
 import { createLogger } from "./logging";
 import { Rectangle } from "./rectangle";
-const logger: any = createLogger("draw_utils");
-export function initDrawUtils(): any {
-    CanvasRenderingContext2D.prototype.beginRoundedRect = function (x: any, y: any, w: any, h: any, r: any): any {
+const logger = createLogger("draw_utils");
+export function initDrawUtils() {
+    CanvasRenderingContext2D.prototype.beginRoundedRect = function (x, y, w, h, r) {
         this.beginPath();
         if (r < 0.05) {
             this.rect(x, y, w, h);
@@ -24,7 +24,7 @@ export function initDrawUtils(): any {
         this.arcTo(x, y + h, x, y, r);
         this.arcTo(x, y, x + w, y, r);
     };
-    CanvasRenderingContext2D.prototype.beginCircle = function (x: any, y: any, r: any): any {
+    CanvasRenderingContext2D.prototype.beginCircle = function (x, y, r) {
         this.beginPath();
         if (r < 0.05) {
             this.rect(x, y, 1, 1);
@@ -42,7 +42,7 @@ export function drawRotatedSprite({ parameters, sprite, x, y, angle, size, offse
     size: number;
     offsetX: number=;
     offsetY: number=;
-}): any {
+}) {
     if (angle === 0) {
         sprite.drawCachedCentered(parameters, x + offsetX, y + offsetY, size);
         return;
@@ -53,7 +53,7 @@ export function drawRotatedSprite({ parameters, sprite, x, y, angle, size, offse
     parameters.context.rotate(-angle);
     parameters.context.translate(-x, -y);
 }
-let warningsShown: any = 0;
+let warningsShown = 0;
 /**
  * Draws a sprite with clipping
  */
@@ -66,9 +66,9 @@ export function drawSpriteClipped({ parameters, sprite, x, y, w, h, originalW, o
     h: number;
     originalW: number;
     originalH: number;
-}): any {
-    const rect: any = new Rectangle(x, y, w, h);
-    const intersection: any = rect.getIntersection(parameters.visibleRect);
+}) {
+    const rect = new Rectangle(x, y, w, h);
+    const intersection = rect.getIntersection(parameters.visibleRect);
     if (!intersection) {
         // Clipped
         if (++warningsShown % 200 === 1) {

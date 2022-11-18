@@ -8,8 +8,8 @@ import { enumHubGoalRewards } from "../tutorial_goals";
 import { T } from "../../translations";
 import { formatItemsPerSecond, generateMatrixRotations } from "../../core/utils";
 /** @enum {string} */
-export const enumMinerVariants: any = { chainable: "chainable" };
-const overlayMatrix: any = {
+export const enumMinerVariants = { chainable: "chainable" };
+const overlayMatrix = {
     [defaultBuildingVariant]: generateMatrixRotations([1, 1, 1, 1, 0, 1, 1, 1, 1]),
     [enumMinerVariants.chainable]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 1, 1, 1]),
 };
@@ -18,7 +18,7 @@ export class MetaMinerBuilding extends MetaBuilding {
     constructor() {
         super("miner");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 7,
@@ -30,7 +30,7 @@ export class MetaMinerBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#b37dcd";
     }
     /**
@@ -43,28 +43,28 @@ export class MetaMinerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed: any = root.hubGoals.getMinerBaseSpeed();
+        const speed = root.hubGoals.getMinerBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
-        getAvailableVariants(root: GameRoot): any {
+        getAvailableVariants(root: GameRoot) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_miner_chainable)) {
             return [enumMinerVariants.chainable];
         }
         return super.getAvailableVariants(root);
     }
-        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity): any {
+        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity) {
         return overlayMatrix[variant][rotation];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new MinerComponent({}));
         entity.addComponent(new ItemEjectorComponent({
             slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
         }));
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: string): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant: string) {
         entity.components.Miner.chainable = variant === enumMinerVariants.chainable;
     }
 }

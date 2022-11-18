@@ -1,12 +1,12 @@
 import { BaseGameSpeed } from "./base_game_speed";
 export class PausedGameSpeed extends BaseGameSpeed {
-    static getId(): any {
+    static getId() {
         return "paused";
     }
-    getTimeMultiplier(): any {
+    getTimeMultiplier() {
         return 0;
     }
-    getMaxLogicStepsInQueue(): any {
+    getMaxLogicStepsInQueue() {
         return 0;
     }
 }

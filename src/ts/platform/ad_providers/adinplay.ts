@@ -6,8 +6,8 @@ import { createLogger } from "../../core/logging";
 import { ClickDetector } from "../../core/click_detector";
 import { clamp } from "../../core/utils";
 import { T } from "../../translations";
-const logger: any = createLogger("adprovider/adinplay");
-const minimumTimeBetweenVideoAdsMs: any = G_IS_DEV ? 1 : 15 * 60 * 1000;
+const logger = createLogger("adprovider/adinplay");
+const minimumTimeBetweenVideoAdsMs = G_IS_DEV ? 1 : 15 * 60 * 1000;
 export class AdinplayAdProvider extends AdProviderInterface {
     public getOnSteamClickDetector: ClickDetector = null;
     public adContainerMainElement: Element = null;
@@ -18,15 +18,15 @@ export class AdinplayAdProvider extends AdProviderInterface {
         constructor(app) {
         super(app);
     }
-    getHasAds(): any {
+    getHasAds() {
         return true;
     }
-    getCanShowVideoAd(): any {
+    getCanShowVideoAd() {
         return (this.getHasAds() &&
             !this.videoAdResolveFunction &&
             performance.now() - this.lastVideoAdShowTime > minimumTimeBetweenVideoAdsMs);
     }
-    initialize(): any {
+    initialize() {
         // No point to initialize everything if ads are not supported
         if (!this.getHasAds()) {
             return Promise.resolve();
@@ -43,7 +43,7 @@ export class AdinplayAdProvider extends AdProviderInterface {
             </div>
         `;
         // Add the setup script
-        const setupScript: any = document.createElement("script");
+        const setupScript = document.createElement("script");
         setupScript.textContent = `
             var aiptag = aiptag || {};
             aiptag.cmd = aiptag.cmd || [];
@@ -54,34 +54,34 @@ export class AdinplayAdProvider extends AdProviderInterface {
         window.aiptag.gdprShowConsentTool = 0;
         window.aiptag.gdprAlternativeConsentTool = 1;
         window.aiptag.gdprConsent = 1;
-        const scale: any = this.app.getEffectiveUiScale();
-        const targetW: any = 960;
-        const targetH: any = 540;
-        const maxScaleX: any = (window.innerWidth - 100 * scale) / targetW;
-        const maxScaleY: any = (window.innerHeight - 150 * scale) / targetH;
-        const scaleFactor: any = clamp(Math.min(maxScaleX, maxScaleY), 0.25, 2);
-        const w: any = Math.round(targetW * scaleFactor);
-        const h: any = Math.round(targetH * scaleFactor);
+        const scale = this.app.getEffectiveUiScale();
+        const targetW = 960;
+        const targetH = 540;
+        const maxScaleX = (window.innerWidth - 100 * scale) / targetW;
+        const maxScaleY = (window.innerHeight - 150 * scale) / targetH;
+        const scaleFactor = clamp(Math.min(maxScaleX, maxScaleY), 0.25, 2);
+        const w = Math.round(targetW * scaleFactor);
+        const h = Math.round(targetH * scaleFactor);
         // Add the player
-        const videoElement: any = this.adContainerMainElement.querySelector(".videoInner");
+        const videoElement = this.adContainerMainElement.querySelector(".videoInner");
                 const adInnerElement: HTMLElement = this.adContainerMainElement.querySelector(".adInner");
         adInnerElement.style.maxWidth = w + "px";
-        const self: any = this;
-        window.aiptag.cmd.player.push(function (): any {
+        const self = this;
+        window.aiptag.cmd.player.push(function () {
             window.adPlayer = new window.aipPlayer({
                 AD_WIDTH: w,
                 AD_HEIGHT: h,
                 AD_FULLSCREEN: false,
                 AD_CENTERPLAYER: false,
                 LOADING_TEXT: T.global.loading,
-                PREROLL_ELEM: function (): any {
+                PREROLL_ELEM: function () {
                     return videoElement;
                 },
-                AIP_COMPLETE: function (): any {
+                AIP_COMPLETE: function () {
                     logger.log("🎬 ADINPLAY AD: completed");
                     self.adContainerMainElement.classList.add("waitingForFinish");
                 },
-                AIP_REMOVE: function (): any {
+                AIP_REMOVE: function () {
                     logger.log("🎬 ADINPLAY AD: remove");
                     if (self.videoAdResolveFunction) {
                         self.videoAdResolveFunction();
@@ -90,13 +90,13 @@ export class AdinplayAdProvider extends AdProviderInterface {
             });
         });
         // Load the ads
-        const aipScript: any = document.createElement("script");
+        const aipScript = document.createElement("script");
         aipScript.src = "https://api.adinplay.com/libs/aiptag/pub/YRG/shapez.io/tag.min.js";
         aipScript.setAttribute("async", "");
         document.head.appendChild(aipScript);
         return Promise.resolve();
     }
-    showVideoAd(): any {
+    showVideoAd() {
         assert(this.getHasAds(), "Called showVideoAd but ads are not supported!");
         assert(!this.videoAdResolveFunction, "Video ad still running, can not show again!");
         this.lastVideoAdShowTime = performance.now();
@@ -105,20 +105,20 @@ export class AdinplayAdProvider extends AdProviderInterface {
         this.adContainerMainElement.classList.remove("waitingForFinish");
         try {
             // @ts-ignore
-            window.aiptag.cmd.player.push(function (): any {
+            window.aiptag.cmd.player.push(function () {
                 console.log("🎬 ADINPLAY AD: Start pre roll");
                 window.adPlayer.startPreRoll();
             });
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.warn("🎬 Failed to play video ad:", ex);
             document.body.removeChild(this.adContainerMainElement);
             this.adContainerMainElement.classList.remove("visible");
             return Promise.resolve();
         }
-        return new Promise((resolve: any): any => {
+        return new Promise(resolve => {
             // So, wait for the remove call but also remove after N seconds
-            this.videoAdResolveFunction = (): any => {
+            this.videoAdResolveFunction = () => {
                 this.videoAdResolveFunction = null;
                 clearTimeout(this.videoAdResolveTimer);
                 this.videoAdResolveTimer = null;
@@ -126,17 +126,17 @@ export class AdinplayAdProvider extends AdProviderInterface {
                 this.lastVideoAdShowTime = performance.now();
                 resolve();
             };
-            this.videoAdResolveTimer = setTimeout((): any => {
+            this.videoAdResolveTimer = setTimeout(() => {
                 logger.warn(this, "Automatically closing ad after not receiving callback");
                 if (this.videoAdResolveFunction) {
                     this.videoAdResolveFunction();
                 }
             }, 120 * 1000);
         })
-            .catch((err: any): any => {
+            .catch(err => {
             logger.error("Error while resolving video ad:", err);
         })
-            .then((): any => {
+            .then(() => {
             document.body.removeChild(this.adContainerMainElement);
             this.adContainerMainElement.classList.remove("visible");
         });

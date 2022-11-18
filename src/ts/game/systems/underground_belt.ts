@@ -8,7 +8,7 @@ import { enumAngleToDirection, enumDirection, enumDirectionToAngle, enumDirectio
 import { enumUndergroundBeltMode, UndergroundBeltComponent } from "../components/underground_belt";
 import { Entity } from "../entity";
 import { GameSystemWithFilter } from "../game_system_with_filter";
-const logger: any = createLogger("tunnels");
+const logger = createLogger("tunnels");
 export class UndergroundBeltSystem extends GameSystemWithFilter {
     public beltSprites = {
         [enumUndergroundBeltMode.sender]: Loader.getSprite("sprites/buildings/underground_belt_entry.png"),
@@ -30,32 +30,32 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     /**
      * Callback when an entity got placed, used to remove belts between underground belts
      */
-    onEntityManuallyPlaced(entity: Entity): any {
+    onEntityManuallyPlaced(entity: Entity) {
         if (!this.root.app.settings.getAllSettings().enableTunnelSmartplace) {
             // Smart-place disabled
             return;
         }
-        const undergroundComp: any = entity.components.UndergroundBelt;
+        const undergroundComp = entity.components.UndergroundBelt;
         if (undergroundComp && undergroundComp.mode === enumUndergroundBeltMode.receiver) {
-            const staticComp: any = entity.components.StaticMapEntity;
-            const tile: any = staticComp.origin;
-            const direction: any = enumAngleToDirection[staticComp.rotation];
-            const inverseDirection: any = enumInvertedDirections[direction];
-            const offset: any = enumDirectionToVector[inverseDirection];
-            let currentPos: any = tile.copy();
-            const tier: any = undergroundComp.tier;
-            const range: any = globalConfig.undergroundBeltMaxTilesByTier[tier];
+            const staticComp = entity.components.StaticMapEntity;
+            const tile = staticComp.origin;
+            const direction = enumAngleToDirection[staticComp.rotation];
+            const inverseDirection = enumInvertedDirections[direction];
+            const offset = enumDirectionToVector[inverseDirection];
+            let currentPos = tile.copy();
+            const tier = undergroundComp.tier;
+            const range = globalConfig.undergroundBeltMaxTilesByTier[tier];
             // FIND ENTRANCE
             // Search for the entrance which is farthest apart (this is why we can't reuse logic here)
-            let matchingEntrance: any = null;
-            for (let i: any = 0; i < range; ++i) {
+            let matchingEntrance = null;
+            for (let i = 0; i < range; ++i) {
                 currentPos.addInplace(offset);
-                const contents: any = this.root.map.getTileContent(currentPos, entity.layer);
+                const contents = this.root.map.getTileContent(currentPos, entity.layer);
                 if (!contents) {
                     continue;
                 }
-                const contentsUndergroundComp: any = contents.components.UndergroundBelt;
-                const contentsStaticComp: any = contents.components.StaticMapEntity;
+                const contentsUndergroundComp = contents.components.UndergroundBelt;
+                const contentsStaticComp = contents.components.StaticMapEntity;
                 if (contentsUndergroundComp &&
                     contentsUndergroundComp.tier === undergroundComp.tier &&
                     contentsUndergroundComp.mode === enumUndergroundBeltMode.sender &&
@@ -74,16 +74,16 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             // Remove any belts between entrance and exit which have the same direction,
             // but only if they *all* have the right direction
             currentPos = tile.copy();
-            let allBeltsMatch: any = true;
-            for (let i: any = 0; i < matchingEntrance.range; ++i) {
+            let allBeltsMatch = true;
+            for (let i = 0; i < matchingEntrance.range; ++i) {
                 currentPos.addInplace(offset);
-                const contents: any = this.root.map.getTileContent(currentPos, entity.layer);
+                const contents = this.root.map.getTileContent(currentPos, entity.layer);
                 if (!contents) {
                     allBeltsMatch = false;
                     break;
                 }
-                const contentsStaticComp: any = contents.components.StaticMapEntity;
-                const contentsBeltComp: any = contents.components.Belt;
+                const contentsStaticComp = contents.components.StaticMapEntity;
+                const contentsBeltComp = contents.components.Belt;
                 if (!contentsBeltComp) {
                     allBeltsMatch = false;
                     break;
@@ -98,9 +98,9 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             currentPos = tile.copy();
             if (allBeltsMatch) {
                 // All belts between this are obsolete, so drop them
-                for (let i: any = 0; i < matchingEntrance.range; ++i) {
+                for (let i = 0; i < matchingEntrance.range; ++i) {
                     currentPos.addInplace(offset);
-                    const contents: any = this.root.map.getTileContent(currentPos, entity.layer);
+                    const contents = this.root.map.getTileContent(currentPos, entity.layer);
                     assert(contents, "Invalid smart underground belt logic");
                     this.root.logic.tryDeleteBuilding(contents);
                 }
@@ -108,16 +108,16 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             // REMOVE OBSOLETE TUNNELS
             // Remove any double tunnels, by checking the tile plus the tile above
             currentPos = tile.copy().add(offset);
-            for (let i: any = 0; i < matchingEntrance.range - 1; ++i) {
-                const posBefore: any = currentPos.copy();
+            for (let i = 0; i < matchingEntrance.range - 1; ++i) {
+                const posBefore = currentPos.copy();
                 currentPos.addInplace(offset);
-                const entityBefore: any = this.root.map.getTileContent(posBefore, entity.layer);
-                const entityAfter: any = this.root.map.getTileContent(currentPos, entity.layer);
+                const entityBefore = this.root.map.getTileContent(posBefore, entity.layer);
+                const entityAfter = this.root.map.getTileContent(currentPos, entity.layer);
                 if (!entityBefore || !entityAfter) {
                     continue;
                 }
-                const undergroundBefore: any = entityBefore.components.UndergroundBelt;
-                const undergroundAfter: any = entityAfter.components.UndergroundBelt;
+                const undergroundBefore = entityBefore.components.UndergroundBelt;
+                const undergroundAfter = entityAfter.components.UndergroundBelt;
                 if (!undergroundBefore || !undergroundAfter) {
                     // Not an underground belt
                     continue;
@@ -136,8 +136,8 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
                     continue;
                 }
                 // Check rotations
-                const staticBefore: any = entityBefore.components.StaticMapEntity;
-                const staticAfter: any = entityAfter.components.StaticMapEntity;
+                const staticBefore = entityBefore.components.StaticMapEntity;
+                const staticAfter = entityAfter.components.StaticMapEntity;
                 if (enumAngleToDirection[staticBefore.rotation] !== direction ||
                     enumAngleToDirection[staticAfter.rotation] !== direction) {
                     // Wrong rotation
@@ -152,13 +152,13 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
     /**
      * Recomputes the cache in the given area, invalidating all entries there
      */
-    recomputeArea(area: Rectangle): any {
-        for (let x: any = area.x; x < area.right(); ++x) {
-            for (let y: any = area.y; y < area.bottom(); ++y) {
-                const entities: any = this.root.map.getLayersContentsMultipleXY(x, y);
-                for (let i: any = 0; i < entities.length; ++i) {
-                    const entity: any = entities[i];
-                    const undergroundComp: any = entity.components.UndergroundBelt;
+    recomputeArea(area: Rectangle) {
+        for (let x = area.x; x < area.right(); ++x) {
+            for (let y = area.y; y < area.bottom(); ++y) {
+                const entities = this.root.map.getLayersContentsMultipleXY(x, y);
+                for (let i = 0; i < entities.length; ++i) {
+                    const entity = entities[i];
+                    const undergroundComp = entity.components.UndergroundBelt;
                     if (!undergroundComp) {
                         continue;
                     }
@@ -167,13 +167,13 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             }
         }
     }
-    update(): any {
+    update() {
         this.staleAreaWatcher.update();
-        const sender: any = enumUndergroundBeltMode.sender;
-        const now: any = this.root.time.now();
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const undergroundComp: any = entity.components.UndergroundBelt;
+        const sender = enumUndergroundBeltMode.sender;
+        const now = this.root.time.now();
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const undergroundComp = entity.components.UndergroundBelt;
             if (undergroundComp.mode === sender) {
                 this.handleSender(entity);
             }
@@ -187,26 +187,26 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
      * {}
      */
     findRecieverForSender(entity: Entity): import("../components/underground_belt").LinkedUndergroundBelt {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const undergroundComp: any = entity.components.UndergroundBelt;
-        const searchDirection: any = staticComp.localDirectionToWorld(enumDirection.top);
-        const searchVector: any = enumDirectionToVector[searchDirection];
-        const targetRotation: any = enumDirectionToAngle[searchDirection];
-        let currentTile: any = staticComp.origin;
+        const staticComp = entity.components.StaticMapEntity;
+        const undergroundComp = entity.components.UndergroundBelt;
+        const searchDirection = staticComp.localDirectionToWorld(enumDirection.top);
+        const searchVector = enumDirectionToVector[searchDirection];
+        const targetRotation = enumDirectionToAngle[searchDirection];
+        let currentTile = staticComp.origin;
         // Search in the direction of the tunnel
-        for (let searchOffset: any = 0; searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier]; ++searchOffset) {
+        for (let searchOffset = 0; searchOffset < globalConfig.undergroundBeltMaxTilesByTier[undergroundComp.tier]; ++searchOffset) {
             currentTile = currentTile.add(searchVector);
-            const potentialReceiver: any = this.root.map.getTileContent(currentTile, "regular");
+            const potentialReceiver = this.root.map.getTileContent(currentTile, "regular");
             if (!potentialReceiver) {
                 // Empty tile
                 continue;
             }
-            const receiverUndergroundComp: any = potentialReceiver.components.UndergroundBelt;
+            const receiverUndergroundComp = potentialReceiver.components.UndergroundBelt;
             if (!receiverUndergroundComp || receiverUndergroundComp.tier !== undergroundComp.tier) {
                 // Not a tunnel, or not on the same tier
                 continue;
             }
-            const receiverStaticComp: any = potentialReceiver.components.StaticMapEntity;
+            const receiverStaticComp = potentialReceiver.components.StaticMapEntity;
             if (receiverStaticComp.rotation !== targetRotation) {
                 // Wrong rotation
                 continue;
@@ -220,10 +220,10 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
         // None found
         return { entity: null, distance: 0 };
     }
-        handleSender(entity: Entity): any {
-        const undergroundComp: any = entity.components.UndergroundBelt;
+        handleSender(entity: Entity) {
+        const undergroundComp = entity.components.UndergroundBelt;
         // Find the current receiver
-        let cacheEntry: any = undergroundComp.cachedLinkedEntity;
+        let cacheEntry = undergroundComp.cachedLinkedEntity;
         if (!cacheEntry) {
             // Need to recompute cache
             cacheEntry = undergroundComp.cachedLinkedEntity = this.findRecieverForSender(entity);
@@ -233,7 +233,7 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             return;
         }
         // Check if we have any items to eject
-        const nextItemAndDuration: any = undergroundComp.pendingItems[0];
+        const nextItemAndDuration = undergroundComp.pendingItems[0];
         if (nextItemAndDuration) {
             assert(undergroundComp.pendingItems.length === 1, "more than 1 pending");
             // Check if the receiver can accept it
@@ -243,14 +243,14 @@ export class UndergroundBeltSystem extends GameSystemWithFilter {
             }
         }
     }
-        handleReceiver(entity: Entity, now: number): any {
-        const undergroundComp: any = entity.components.UndergroundBelt;
+        handleReceiver(entity: Entity, now: number) {
+        const undergroundComp = entity.components.UndergroundBelt;
         // Try to eject items, we only check the first one because it is sorted by remaining time
-        const nextItemAndDuration: any = undergroundComp.pendingItems[0];
+        const nextItemAndDuration = undergroundComp.pendingItems[0];
         if (nextItemAndDuration) {
             if (now > nextItemAndDuration[1]) {
-                const ejectorComp: any = entity.components.ItemEjector;
-                const nextSlotIndex: any = ejectorComp.getFirstFreeSlot();
+                const ejectorComp = entity.components.ItemEjector;
+                const nextSlotIndex = ejectorComp.getFirstFreeSlot();
                 if (nextSlotIndex !== null) {
                     if (ejectorComp.tryEject(nextSlotIndex, nextItemAndDuration[0])) {
                         undergroundComp.pendingItems.shift();

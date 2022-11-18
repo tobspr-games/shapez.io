@@ -20,10 +20,10 @@ export type ShapeLayerItem = {
     color: enumColors;
 };
 
-export const TOP_RIGHT: any = 0;
-export const BOTTOM_RIGHT: any = 1;
-export const BOTTOM_LEFT: any = 2;
-export const TOP_LEFT: any = 3;
+export const TOP_RIGHT = 0;
+export const BOTTOM_RIGHT = 1;
+export const BOTTOM_LEFT = 2;
+export const TOP_LEFT = 3;
 export type ShapeLayer = [
     ShapeLayerItem?,
     ShapeLayerItem?,
@@ -31,37 +31,37 @@ export type ShapeLayer = [
     ShapeLayerItem?
 ];
 
-const arrayQuadrantIndexToOffset: any = [
+const arrayQuadrantIndexToOffset = [
     new Vector(1, -1),
     new Vector(1, 1),
     new Vector(-1, 1),
     new Vector(-1, -1), // tl
 ];
 /** @enum {string} */
-export const enumSubShape: any = {
+export const enumSubShape = {
     rect: "rect",
     circle: "circle",
     star: "star",
     windmill: "windmill",
 };
 /** @enum {string} */
-export const enumSubShapeToShortcode: any = {
+export const enumSubShapeToShortcode = {
     [enumSubShape.rect]: "R",
     [enumSubShape.circle]: "C",
     [enumSubShape.star]: "S",
     [enumSubShape.windmill]: "W",
 };
 /** @enum {enumSubShape} */
-export const enumShortcodeToSubShape: any = {};
-for (const key: any in enumSubShapeToShortcode) {
+export const enumShortcodeToSubShape = {};
+for (const key in enumSubShapeToShortcode) {
     enumShortcodeToSubShape[enumSubShapeToShortcode[key]] = key;
 }
 /**
  * Converts the given parameters to a valid shape definition
  * @returns{}
  *n createSimpleShape(layers: *): Array<ShapeLayer> {
-    layers.forEach((layer: any): any => {
-        layer.forEach((item: any): any => {
+    layers.forEach(layer => {
+        layer.forEach(item => {
             if (item) {
                 item.color = item.color || enumColors.uncolored;
             }
@@ -74,21 +74,21 @@ for (const key: any in enumSubShapeToShortcode) {
  */
 const SHORT_KEY_CACHE: Map<string, boolean> = new Map();
 export class ShapeDefinition extends BasicSerializableObject {
-    static getId(): any {
+    static getId() {
         return "ShapeDefinition";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {};
     }
-    deserialize(data: any): any {
-        const errorCode: any = super.deserialize(data);
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
         if (errorCode) {
             return errorCode;
         }
-        const definition: any = ShapeDefinition.fromShortKey(data);
+        const definition = ShapeDefinition.fromShortKey(data);
         this.layers = definition.layers as Array<ShapeLayer>);
     }
-    serialize(): any {
+    serialize() {
         return this.getHash();
     }
     public layers: Array<ShapeLayer> = layers;
@@ -103,16 +103,16 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     static fromShortKey(key: string): ShapeDefinition {
-        const sourceLayers: any = key.split(":");
-        let layers: any = [];
-        for (let i: any = 0; i < sourceLayers.length; ++i) {
-            const text: any = sourceLayers[i];
+        const sourceLayers = key.split(":");
+        let layers = [];
+        for (let i = 0; i < sourceLayers.length; ++i) {
+            const text = sourceLayers[i];
             assert(text.length === 8, "Invalid shape short key: " + key);
                         const quads: ShapeLayer = [null, null, null, null];
-            for (let quad: any = 0; quad < 4; ++quad) {
-                const shapeText: any = text[quad * 2 + 0];
-                const subShape: any = enumShortcodeToSubShape[shapeText];
-                const color: any = enumShortcodeToColor[text[quad * 2 + 1]];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeText = text[quad * 2 + 0];
+                const subShape = enumShortcodeToSubShape[shapeText];
+                const color = enumShortcodeToColor[text[quad * 2 + 1]];
                 if (subShape) {
                     assert(color, "Invalid shape short key:", key);
                     quads[quad] = {
@@ -126,7 +126,7 @@ export class ShapeDefinition extends BasicSerializableObject {
             }
             layers.push(quads);
         }
-        const definition: any = new ShapeDefinition({ layers });
+        const definition = new ShapeDefinition({ layers });
         // We know the hash so save some work
         definition.cachedHash = key;
         return definition;
@@ -139,7 +139,7 @@ export class ShapeDefinition extends BasicSerializableObject {
         if (SHORT_KEY_CACHE.has(key)) {
             return SHORT_KEY_CACHE.get(key);
         }
-        const result: any = ShapeDefinition.isValidShortKeyInternal(key);
+        const result = ShapeDefinition.isValidShortKeyInternal(key);
         SHORT_KEY_CACHE.set(key, result);
         return result;
     }
@@ -149,20 +149,20 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     static isValidShortKeyInternal(key: string): boolean {
-        const sourceLayers: any = key.split(":");
-        let layers: any = [];
-        for (let i: any = 0; i < sourceLayers.length; ++i) {
-            const text: any = sourceLayers[i];
+        const sourceLayers = key.split(":");
+        let layers = [];
+        for (let i = 0; i < sourceLayers.length; ++i) {
+            const text = sourceLayers[i];
             if (text.length !== 8) {
                 return false;
             }
                         const quads: ShapeLayer = [null, null, null, null];
-            let anyFilled: any = false;
-            for (let quad: any = 0; quad < 4; ++quad) {
-                const shapeText: any = text[quad * 2 + 0];
-                const colorText: any = text[quad * 2 + 1];
-                const subShape: any = enumShortcodeToSubShape[shapeText];
-                const color: any = enumShortcodeToColor[colorText];
+            let anyFilled = false;
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeText = text[quad * 2 + 0];
+                const colorText = text[quad * 2 + 1];
+                const subShape = enumShortcodeToSubShape[shapeText];
+                const color = enumShortcodeToColor[colorText];
                 // Valid shape
                 if (subShape) {
                     if (!color) {
@@ -219,11 +219,11 @@ export class ShapeDefinition extends BasicSerializableObject {
         if (this.cachedHash) {
             return this.cachedHash;
         }
-        let id: any = "";
-        for (let layerIndex: any = 0; layerIndex < this.layers.length; ++layerIndex) {
-            const layer: any = this.layers[layerIndex];
-            for (let quadrant: any = 0; quadrant < layer.length; ++quadrant) {
-                const item: any = layer[quadrant];
+        let id = "";
+        for (let layerIndex = 0; layerIndex < this.layers.length; ++layerIndex) {
+            const layer = this.layers[layerIndex];
+            for (let quadrant = 0; quadrant < layer.length; ++quadrant) {
+                const item = layer[quadrant];
                 if (item) {
                     id += enumSubShapeToShortcode[item.subShape] + enumColorToShortcode[item.color];
                 }
@@ -241,13 +241,13 @@ export class ShapeDefinition extends BasicSerializableObject {
     /**
      * Draws the shape definition
      */
-    drawCentered(x: number, y: number, parameters: DrawParameters, diameter: number= = 20): any {
-        const dpi: any = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
+    drawCentered(x: number, y: number, parameters: DrawParameters, diameter: number= = 20) {
+        const dpi = smoothenDpi(globalConfig.shapesSharpness * parameters.zoomLevel);
         if (!this.bufferGenerator) {
             this.bufferGenerator = this.internalGenerateShapeBuffer.bind(this);
         }
-        const key: any = diameter + "/" + dpi + "/" + this.cachedHash;
-        const canvas: any = parameters.root.buffers.getForKey({
+        const key = diameter + "/" + dpi + "/" + this.cachedHash;
+        const canvas = parameters.root.buffers.getForKey({
             key: "shapedef",
             subKey: key,
             w: diameter,
@@ -260,14 +260,14 @@ export class ShapeDefinition extends BasicSerializableObject {
     /**
      * Draws the item to a canvas
      */
-    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number): any {
+    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number) {
         this.internalGenerateShapeBuffer(null, context, size, size, 1);
     }
     /**
      * Generates this shape as a canvas
      */
-    generateAsCanvas(size: number = 120): any {
-        const [canvas, context]: any = makeOffscreenBuffer(size, size, {
+    generateAsCanvas(size: number = 120) {
+        const [canvas, context] = makeOffscreenBuffer(size, size, {
             smooth: true,
             label: "definition-canvas-cache-" + this.getHash(),
             reusable: false,
@@ -275,27 +275,27 @@ export class ShapeDefinition extends BasicSerializableObject {
         this.internalGenerateShapeBuffer(canvas, context, size, size, 1);
         return canvas;
     }
-        internalGenerateShapeBuffer(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, w: number, h: number, dpi: number): any {
+        internalGenerateShapeBuffer(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, w: number, h: number, dpi: number) {
         context.translate((w * dpi) / 2, (h * dpi) / 2);
         context.scale((dpi * w) / 23, (dpi * h) / 23);
         context.fillStyle = "#e9ecf7";
-        const quadrantSize: any = 10;
-        const quadrantHalfSize: any = quadrantSize / 2;
+        const quadrantSize = 10;
+        const quadrantHalfSize = quadrantSize / 2;
         context.fillStyle = THEME.items.circleBackground;
         context.beginCircle(0, 0, quadrantSize * 1.15);
         context.fill();
-        for (let layerIndex: any = 0; layerIndex < this.layers.length; ++layerIndex) {
-            const quadrants: any = this.layers[layerIndex];
-            const layerScale: any = Math.max(0.1, 0.9 - layerIndex * 0.22);
-            for (let quadrantIndex: any = 0; quadrantIndex < 4; ++quadrantIndex) {
+        for (let layerIndex = 0; layerIndex < this.layers.length; ++layerIndex) {
+            const quadrants = this.layers[layerIndex];
+            const layerScale = Math.max(0.1, 0.9 - layerIndex * 0.22);
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (!quadrants[quadrantIndex]) {
                     continue;
                 }
-                const { subShape, color }: any = quadrants[quadrantIndex];
-                const quadrantPos: any = arrayQuadrantIndexToOffset[quadrantIndex];
-                const centerQuadrantX: any = quadrantPos.x * quadrantHalfSize;
-                const centerQuadrantY: any = quadrantPos.y * quadrantHalfSize;
-                const rotation: any = Math.radians(quadrantIndex * 90);
+                const { subShape, color } = quadrants[quadrantIndex];
+                const quadrantPos = arrayQuadrantIndexToOffset[quadrantIndex];
+                const centerQuadrantX = quadrantPos.x * quadrantHalfSize;
+                const centerQuadrantY = quadrantPos.y * quadrantHalfSize;
+                const rotation = Math.radians(quadrantIndex * 90);
                 context.translate(centerQuadrantX, centerQuadrantY);
                 context.rotate(rotation);
                 context.fillStyle = enumColorsToHexCode[color];
@@ -312,7 +312,7 @@ export class ShapeDefinition extends BasicSerializableObject {
                     switch (subShape) {
                         case enumSubShape.rect: {
                             context.beginPath();
-                            const dims: any = quadrantSize * layerScale;
+                            const dims = quadrantSize * layerScale;
                             context.rect(-quadrantHalfSize, quadrantHalfSize - dims, dims, dims);
                             context.fill();
                             context.stroke();
@@ -320,10 +320,10 @@ export class ShapeDefinition extends BasicSerializableObject {
                         }
                         case enumSubShape.star: {
                             context.beginPath();
-                            const dims: any = quadrantSize * layerScale;
-                            let originX: any = -quadrantHalfSize;
-                            let originY: any = quadrantHalfSize - dims;
-                            const moveInwards: any = dims * 0.4;
+                            const dims = quadrantSize * layerScale;
+                            let originX = -quadrantHalfSize;
+                            let originY = quadrantHalfSize - dims;
+                            const moveInwards = dims * 0.4;
                             context.moveTo(originX, originY + moveInwards);
                             context.lineTo(originX + dims, originY);
                             context.lineTo(originX + dims - moveInwards, originY + dims);
@@ -335,10 +335,10 @@ export class ShapeDefinition extends BasicSerializableObject {
                         }
                         case enumSubShape.windmill: {
                             context.beginPath();
-                            const dims: any = quadrantSize * layerScale;
-                            let originX: any = -quadrantHalfSize;
-                            let originY: any = quadrantHalfSize - dims;
-                            const moveInwards: any = dims * 0.4;
+                            const dims = quadrantSize * layerScale;
+                            let originX = -quadrantHalfSize;
+                            let originY = quadrantHalfSize - dims;
+                            const moveInwards = dims * 0.4;
                             context.moveTo(originX, originY + moveInwards);
                             context.lineTo(originX + dims, originY);
                             context.lineTo(originX + dims, originY + dims);
@@ -372,11 +372,11 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     cloneFilteredByQuadrants(includeQuadrants: Array<number>): ShapeDefinition {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
-            let anyContents: any = false;
-            for (let quadrantIndex: any = 0; quadrantIndex < 4; ++quadrantIndex) {
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            let anyContents = false;
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
                 if (includeQuadrants.indexOf(quadrantIndex) < 0) {
                     quadrants[quadrantIndex] = null;
                 }
@@ -397,9 +397,9 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     cloneRotateCW(): ShapeDefinition {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
             quadrants.unshift(quadrants[3]);
             quadrants.pop();
         }
@@ -410,9 +410,9 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     cloneRotateCCW(): ShapeDefinition {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
             quadrants.push(quadrants[0]);
             quadrants.shift();
         }
@@ -423,9 +423,9 @@ export class ShapeDefinition extends BasicSerializableObject {
      * {}
      */
     cloneRotate180(): ShapeDefinition {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
             quadrants.push(quadrants.shift(), quadrants.shift());
         }
         return new ShapeDefinition({ layers: newLayers });
@@ -433,27 +433,27 @@ export class ShapeDefinition extends BasicSerializableObject {
     /**
      * Stacks the given shape definition on top.
      */
-    cloneAndStackWith(definition: ShapeDefinition): any {
+    cloneAndStackWith(definition: ShapeDefinition) {
         if (this.isEntirelyEmpty() || definition.isEntirelyEmpty()) {
             assert(false, "Can not stack entirely empty definition");
         }
-        const bottomShapeLayers: any = this.layers;
-        const bottomShapeHighestLayerByQuad: any = [-1, -1, -1, -1];
-        for (let layer: any = bottomShapeLayers.length - 1; layer >= 0; --layer) {
-            const shapeLayer: any = bottomShapeLayers[layer];
-            for (let quad: any = 0; quad < 4; ++quad) {
-                const shapeQuad: any = shapeLayer[quad];
+        const bottomShapeLayers = this.layers;
+        const bottomShapeHighestLayerByQuad = [-1, -1, -1, -1];
+        for (let layer = bottomShapeLayers.length - 1; layer >= 0; --layer) {
+            const shapeLayer = bottomShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
                 if (shapeQuad !== null && bottomShapeHighestLayerByQuad[quad] < layer) {
                     bottomShapeHighestLayerByQuad[quad] = layer;
                 }
             }
         }
-        const topShapeLayers: any = definition.layers;
-        const topShapeLowestLayerByQuad: any = [4, 4, 4, 4];
-        for (let layer: any = 0; layer < topShapeLayers.length; ++layer) {
-            const shapeLayer: any = topShapeLayers[layer];
-            for (let quad: any = 0; quad < 4; ++quad) {
-                const shapeQuad: any = shapeLayer[quad];
+        const topShapeLayers = definition.layers;
+        const topShapeLowestLayerByQuad = [4, 4, 4, 4];
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const shapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; ++quad) {
+                const shapeQuad = shapeLayer[quad];
                 if (shapeQuad !== null && topShapeLowestLayerByQuad[quad] > layer) {
                     topShapeLowestLayerByQuad[quad] = layer;
                 }
@@ -466,22 +466,22 @@ export class ShapeDefinition extends BasicSerializableObject {
          * though they go negative, and calculating the number to add to it so the minimum gap is 1 (ends
          * up being 1 - minimum).
          */
-        const gapsBetweenShapes: any = [];
-        for (let quad: any = 0; quad < 4; ++quad) {
+        const gapsBetweenShapes = [];
+        for (let quad = 0; quad < 4; ++quad) {
             gapsBetweenShapes.push(topShapeLowestLayerByQuad[quad] - bottomShapeHighestLayerByQuad[quad]);
         }
-        const smallestGapBetweenShapes: any = Math.min(...gapsBetweenShapes);
+        const smallestGapBetweenShapes = Math.min(...gapsBetweenShapes);
         // Can't merge at a layer lower than 0
-        const layerToMergeAt: any = Math.max(1 - smallestGapBetweenShapes, 0);
-        const mergedLayers: any = this.getClonedLayers();
-        for (let layer: any = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
+        const layerToMergeAt = Math.max(1 - smallestGapBetweenShapes, 0);
+        const mergedLayers = this.getClonedLayers();
+        for (let layer = mergedLayers.length; layer < layerToMergeAt + topShapeLayers.length; ++layer) {
             mergedLayers.push([null, null, null, null]);
         }
-        for (let layer: any = 0; layer < topShapeLayers.length; ++layer) {
-            const layerMergingAt: any = layerToMergeAt + layer;
-            const bottomShapeLayer: any = mergedLayers[layerMergingAt];
-            const topShapeLayer: any = topShapeLayers[layer];
-            for (let quad: any = 0; quad < 4; quad++) {
+        for (let layer = 0; layer < topShapeLayers.length; ++layer) {
+            const layerMergingAt = layerToMergeAt + layer;
+            const bottomShapeLayer = mergedLayers[layerMergingAt];
+            const topShapeLayer = topShapeLayers[layer];
+            for (let quad = 0; quad < 4; quad++) {
                 assert(!(bottomShapeLayer[quad] && topShapeLayer[quad]), "Shape merge: Sub shape got lost");
                 bottomShapeLayer[quad] = bottomShapeLayer[quad] || topShapeLayer[quad];
             }
@@ -493,12 +493,12 @@ export class ShapeDefinition extends BasicSerializableObject {
     /**
      * Clones the shape and colors everything in the given color
      */
-    cloneAndPaintWith(color: enumColors): any {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
-            for (let quadrantIndex: any = 0; quadrantIndex < 4; ++quadrantIndex) {
-                const item: any = quadrants[quadrantIndex];
+    cloneAndPaintWith(color: enumColors) {
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                const item = quadrants[quadrantIndex];
                 if (item) {
                     item.color = color;
                 }
@@ -514,12 +514,12 @@ export class ShapeDefinition extends BasicSerializableObject {
         enumColors,
         enumColors,
         enumColors
-    ]): any {
-        const newLayers: any = this.getClonedLayers();
-        for (let layerIndex: any = 0; layerIndex < newLayers.length; ++layerIndex) {
-            const quadrants: any = newLayers[layerIndex];
-            for (let quadrantIndex: any = 0; quadrantIndex < 4; ++quadrantIndex) {
-                const item: any = quadrants[quadrantIndex];
+    ]) {
+        const newLayers = this.getClonedLayers();
+        for (let layerIndex = 0; layerIndex < newLayers.length; ++layerIndex) {
+            const quadrants = newLayers[layerIndex];
+            for (let quadrantIndex = 0; quadrantIndex < 4; ++quadrantIndex) {
+                const item = quadrants[quadrantIndex];
                 if (item) {
                     item.color = colors[quadrantIndex] || item.color;
                 }

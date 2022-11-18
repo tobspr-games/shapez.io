@@ -27,7 +27,7 @@ import { ItemProducerSystem } from "./systems/item_producer";
 import { ConstantProducerSystem } from "./systems/constant_producer";
 import { GoalAcceptorSystem } from "./systems/goal_acceptor";
 import { ZoneSystem } from "./systems/zone";
-const logger: any = createLogger("game_system_manager");
+const logger = createLogger("game_system_manager");
 export const MODS_ADDITIONAL_SYSTEMS: {
     [idx: string]: Array<{
         id: string;
@@ -72,14 +72,14 @@ export class GameSystemManager {
     /**
      * Initializes all systems
      */
-    internalInitSystems(): any {
-        const addBefore: any = (id: any): any => {
-            const systems: any = MODS_ADDITIONAL_SYSTEMS[id];
+    internalInitSystems() {
+        const addBefore = id => {
+            const systems = MODS_ADDITIONAL_SYSTEMS[id];
             if (systems) {
-                systems.forEach(({ id, systemClass }: any): any => add(id, systemClass));
+                systems.forEach(({ id, systemClass }) => add(id, systemClass));
             }
         };
-        const add: any = (id: any, systemClass: any): any => {
+        const add = (id, systemClass) => {
             addBefore(id);
             this.systems[id] = new systemClass(this.root);
             this.systemUpdateOrder.push(id);
@@ -120,7 +120,7 @@ export class GameSystemManager {
             add("zone", ZoneSystem);
         }
         addBefore("end");
-        for (const key: any in MODS_ADDITIONAL_SYSTEMS) {
+        for (const key in MODS_ADDITIONAL_SYSTEMS) {
             if (!this.systems[key] && key !== "end") {
                 logger.error("Mod system not attached due to invalid 'before': ", key);
             }
@@ -130,15 +130,15 @@ export class GameSystemManager {
     /**
      * Updates all systems
      */
-    update(): any {
-        for (let i: any = 0; i < this.systemUpdateOrder.length; ++i) {
-            const system: any = this.systems[this.systemUpdateOrder[i]];
+    update() {
+        for (let i = 0; i < this.systemUpdateOrder.length; ++i) {
+            const system = this.systems[this.systemUpdateOrder[i]];
             system.update();
         }
     }
-    refreshCaches(): any {
-        for (let i: any = 0; i < this.systemUpdateOrder.length; ++i) {
-            const system: any = this.systems[this.systemUpdateOrder[i]];
+    refreshCaches() {
+        for (let i = 0; i < this.systemUpdateOrder.length; ++i) {
+            const system = this.systems[this.systemUpdateOrder[i]];
             system.refreshCaches();
         }
     }

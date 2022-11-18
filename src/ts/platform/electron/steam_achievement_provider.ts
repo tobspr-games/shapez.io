@@ -4,8 +4,8 @@ import type { GameRoot } from "../../game/root";
 /* typehints:end */
 import { createLogger } from "../../core/logging";
 import { ACHIEVEMENTS, AchievementCollection, AchievementProviderInterface } from "../achievement_provider";
-const logger: any = createLogger("achievements/steam");
-const ACHIEVEMENT_IDS: any = {
+const logger = createLogger("achievements/steam");
+const ACHIEVEMENT_IDS = {
     [ACHIEVEMENTS.belt500Tiles]: "belt_500_tiles",
     [ACHIEVEMENTS.blueprint100k]: "blueprint_100k",
     [ACHIEVEMENTS.blueprint1m]: "blueprint_1m",
@@ -59,7 +59,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
         constructor(app) {
         super(app);
         if (G_IS_DEV) {
-            for (let key: any in ACHIEVEMENT_IDS) {
+            for (let key in ACHIEVEMENT_IDS) {
                 assert(this.collection.map.has(key), "Key not found in collection: " + key);
             }
         }
@@ -80,7 +80,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
             logger.log("Initialized", this.collection.map.size, "relevant achievements");
             return Promise.resolve();
         }
-        catch (err: any) {
+        catch (err) {
             logger.error("Failed to initialize the collection");
             return Promise.reject(err);
         }
@@ -91,7 +91,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
             logger.warn("Steam unavailable. Achievements won't sync.");
             return Promise.resolve();
         }
-        return ipcRenderer.invoke("steam:is-initialized").then((initialized: any): any => {
+        return ipcRenderer.invoke("steam:is-initialized").then(initialized => {
             this.initialized = initialized;
             if (!this.initialized) {
                 logger.warn("Steam failed to intialize. Achievements won't sync.");
@@ -105,7 +105,7 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
      * {}
      */
     activate(key: string): Promise<void> {
-        let promise: any;
+        let promise;
         if (!this.initialized) {
             promise = Promise.resolve();
         }
@@ -113,10 +113,10 @@ export class SteamAchievementProvider extends AchievementProviderInterface {
             promise = ipcRenderer.invoke("steam:activate-achievement", ACHIEVEMENT_IDS[key]);
         }
         return promise
-            .then((): any => {
+            .then(() => {
             logger.log("Achievement activated:", key);
         })
-            .catch((err: any): any => {
+            .catch(err => {
             logger.error("Failed to activate achievement:", key, err);
             throw err;
         });

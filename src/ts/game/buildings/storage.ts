@@ -9,13 +9,13 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-const storageSize: any = 5000;
+const storageSize = 5000;
 export class MetaStorageBuilding extends MetaBuilding {
 
     constructor() {
         super("storage");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 21,
@@ -23,28 +23,28 @@ export class MetaStorageBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#bbdf6d";
     }
     /**
      * {}
      */
-    getAdditionalStatistics(root: any, variant: any): Array<[
+    getAdditionalStatistics(root, variant): Array<[
         string,
         string
     ]> {
         return [[T.ingame.buildingPlacement.infoTexts.storage, formatBigNumber(storageSize)]];
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(2, 2);
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_storage);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         // Required, since the item processor needs this.
         entity.addComponent(new ItemEjectorComponent({
             slots: [

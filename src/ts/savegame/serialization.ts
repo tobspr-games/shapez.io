@@ -1,8 +1,8 @@
 import { createLogger } from "../core/logging";
 import { BaseDataType, TypeArray, TypeBoolean, TypeClass, TypeClassData, TypeClassFromMetaclass, TypeClassId, TypeEntity, TypeEntityWeakref, TypeEnum, TypeFixedClass, TypeInteger, TypeKeyValueMap, TypeMetaClass, TypeNullable, TypeNumber, TypePair, TypePositiveInteger, TypePositiveNumber, TypeString, TypeStructuredObject, TypeVector, TypePositiveIntegerOrString, } from "./serialization_data_types";
-const logger: any = createLogger("serialization");
+const logger = createLogger("serialization");
 // Schema declarations
-export const types: any = {
+export const types = {
     int: new TypeInteger(),
     uint: new TypePositiveInteger(),
     float: new TypeNumber(),
@@ -14,55 +14,55 @@ export const types: any = {
     tileVector: new TypeVector(),
     bool: new TypeBoolean(),
     uintOrString: new TypePositiveIntegerOrString(),
-        nullable(wrapped: BaseDataType): any {
+        nullable(wrapped: BaseDataType) {
         return new TypeNullable(wrapped);
     },
-        classId(registry: FactoryTemplate<*> | SingletonFactoryTemplate<*>): any {
+        classId(registry: FactoryTemplate<*> | SingletonFactoryTemplate<*>) {
         return new TypeClassId(registry);
     },
-        keyValueMap(valueType: BaseDataType, includeEmptyValues: boolean= = true): any {
+        keyValueMap(valueType: BaseDataType, includeEmptyValues: boolean= = true) {
         return new TypeKeyValueMap(valueType, includeEmptyValues);
     },
         enum(values: {
         [idx: string]: any;
-    }): any {
+    }) {
         return new TypeEnum(values);
     },
-        obj(registry: FactoryTemplate<*>, resolver: (GameRoot, any) => object= = null): any {
+        obj(registry: FactoryTemplate<*>, resolver: (GameRoot, any) => object= = null) {
         return new TypeClass(registry, resolver);
     },
-        objData(registry: FactoryTemplate<*>): any {
+        objData(registry: FactoryTemplate<*>) {
         return new TypeClassData(registry);
     },
-        knownType(cls: typeof BasicSerializableObject): any {
+        knownType(cls: typeof BasicSerializableObject) {
         return new TypeFixedClass(cls);
     },
-        array(innerType: BaseDataType): any {
+        array(innerType: BaseDataType) {
         return new TypeArray(innerType);
     },
-        fixedSizeArray(innerType: BaseDataType): any {
+        fixedSizeArray(innerType: BaseDataType) {
         return new TypeArray(innerType, true);
     },
-        classRef(registry: any): any {
+        classRef(registry) {
         return new TypeMetaClass(registry);
     },
         structured(descriptor: {
         [idx: string]: BaseDataType;
-    }): any {
+    }) {
         return new TypeStructuredObject(descriptor);
     },
-        pair(a: BaseDataType, b: BaseDataType): any {
+        pair(a: BaseDataType, b: BaseDataType) {
         return new TypePair(a, b);
     },
-        classWithMetaclass(classHandle: typeof BasicSerializableObject, registry: SingletonFactoryTemplate<*>): any {
+        classWithMetaclass(classHandle: typeof BasicSerializableObject, registry: SingletonFactoryTemplate<*>) {
         return new TypeClassFromMetaclass(classHandle, registry);
     },
 };
 export type Schema = Object<string, BaseDataType> | object;
 
-const globalSchemaCache: any = {};
+const globalSchemaCache = {};
 /* dev:start */
-const classnamesCache: any = {};
+const classnamesCache = {};
 /* dev:end*/
 export class BasicSerializableObject {
     /* dev:start */
@@ -73,7 +73,7 @@ export class BasicSerializableObject {
 
     constructor(...args) { }
     /* dev:end */
-    static getId(): any {
+    static getId() {
         abstract;
     }
     /**
@@ -86,16 +86,16 @@ export class BasicSerializableObject {
     // Implementation
     /** {} */
     static getCachedSchema(): Schema {
-        const id: any = this.getId();
+        const id = this.getId();
         /* dev:start */
         assert(classnamesCache[id] === this || classnamesCache[id] === undefined, "Class name taken twice: " + id + " (from " + this.name + ")");
         classnamesCache[id] = this;
         /* dev:end */
-        const entry: any = globalSchemaCache[id];
+        const entry = globalSchemaCache[id];
         if (entry) {
             return entry;
         }
-        const schema: any = this.getSchema();
+        const schema = this.getSchema();
         globalSchemaCache[id] = schema;
         return schema;
     }
@@ -114,7 +114,7 @@ export class BasicSerializableObject {
         this.constructor as typeof BasicSerializableObject).getCachedSchema(), data, null, root);
     }
     /** {} */
-    static verify(data: any): string | void {
+    static verify(data): string | void {
         return verifySchema(this.getCachedSchema(), data);
     }
 }
@@ -123,7 +123,7 @@ export class BasicSerializableObject {
  * {} Serialized data object
  */
 export function serializeSchema(obj: object, schema: Schema, mergeWith: object= = {}): object {
-    for (const key: any in schema) {
+    for (const key in schema) {
         if (!obj.hasOwnProperty(key)) {
             logger.error("Invalid schema, property", key, "does not exist on", obj, "(schema=", schema, ")");
             assert(obj.hasOwnProperty(key), "serialization: invalid schema, property does not exist on object: " + key);
@@ -135,7 +135,7 @@ export function serializeSchema(obj: object, schema: Schema, mergeWith: object= 
             try {
                 mergeWith[key] = schema[key].serialize(obj[key]);
             }
-            catch (ex: any) {
+            catch (ex) {
                 logger.error("Serialization of", obj, "failed on key '" + key + "' ->", ex, "(schema was", schema, ")");
                 throw ex;
             }
@@ -158,7 +158,7 @@ export function deserializeSchema(obj: object, schema: Schema, data: object, bas
         logger.error("Got 'NULL' data for", obj, "and schema", schema, "!");
         return "Got null data";
     }
-    for (const key: any in schema) {
+    for (const key in schema) {
         if (!data.hasOwnProperty(key)) {
             logger.error("Data", data, "does not contain", key, "(schema:", schema, ")");
 
@@ -169,7 +169,7 @@ export function deserializeSchema(obj: object, schema: Schema, data: object, bas
 
             return "Non-nullable entry is null: " + key + " of class " + obj.constructor.name;
         }
-        const errorStatus: any = schema[key].deserializeWithVerify(data[key], obj, key, obj.root || root);
+        const errorStatus = schema[key].deserializeWithVerify(data[key], obj, key, obj.root || root);
         if (errorStatus) {
             logger.error("Deserialization failed with error '" + errorStatus + "' on object", obj, "and key", key, "(root? =", obj.root ? "y" : "n", ")");
             return errorStatus;
@@ -181,7 +181,7 @@ export function deserializeSchema(obj: object, schema: Schema, data: object, bas
  * {} String error code or nothing on success
  */
 export function verifySchema(schema: Schema, data: object): string | void {
-    for (const key: any in schema) {
+    for (const key in schema) {
         if (!data.hasOwnProperty(key)) {
             logger.error("Data", data, "does not contain", key, "(schema:", schema, ")");
             return "verify: missing key required by schema in stored data: " + key;
@@ -190,7 +190,7 @@ export function verifySchema(schema: Schema, data: object): string | void {
             logger.error("Data", data, "has null value for", key, "(schema:", schema, ")");
             return "verify: non-nullable entry is null: " + key;
         }
-        const errorStatus: any = schema[key].verifySerializedValue(data[key]);
+        const errorStatus = schema[key].verifySerializedValue(data[key]);
         if (errorStatus) {
             logger.error(errorStatus);
             return "verify: " + errorStatus;
@@ -203,7 +203,7 @@ export function verifySchema(schema: Schema, data: object): string | void {
  */
 export function extendSchema(base: Schema, newOne: Schema): Schema {
         const result: Schema = Object.assign({}, base);
-    for (const key: any in newOne) {
+    for (const key in newOne) {
         if (result.hasOwnProperty(key)) {
             logger.error("Extend schema got duplicate key:", key);
             continue;

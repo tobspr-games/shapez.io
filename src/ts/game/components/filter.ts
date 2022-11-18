@@ -8,13 +8,13 @@ export type PendingFilterItem = {
 };
 
 export class FilterComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Filter";
     }
-    duplicateWithoutContents(): any {
+    duplicateWithoutContents() {
         return new FilterComponent();
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             pendingItemsToLeaveThrough: types.array(types.structured({
                 item: typeItemSingleton,
@@ -31,7 +31,7 @@ export class FilterComponent extends Component {
         super();
         this.clear();
     }
-    clear(): any {
+    clear() {
         /**
          * Items in queue to leave through
          */

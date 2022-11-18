@@ -10,13 +10,13 @@ import { BeltUnderlaysComponent } from "../components/belt_underlays";
 import { BeltReaderComponent } from "../components/belt_reader";
 import { enumHubGoalRewards } from "../tutorial_goals";
 import { generateMatrixRotations } from "../../core/utils";
-const overlayMatrix: any = generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]);
+const overlayMatrix = generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]);
 export class MetaReaderBuilding extends MetaBuilding {
 
     constructor() {
         super("reader");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 49,
@@ -24,16 +24,16 @@ export class MetaReaderBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#25fff2";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_belt_reader);
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return true;
     }
     /**
@@ -45,7 +45,7 @@ export class MetaReaderBuilding extends MetaBuilding {
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

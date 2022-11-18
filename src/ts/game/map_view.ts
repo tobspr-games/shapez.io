@@ -28,8 +28,8 @@ export class MapView extends BaseMap {
         this.root.signals.entityDestroyed.add(this.onEntityChanged, this);
         this.root.signals.entityChanged.add(this.onEntityChanged, this);
     }
-    cleanup(): any {
-        for (const key: any in this.cachedBackgroundCanvases) {
+    cleanup() {
+        for (const key in this.cachedBackgroundCanvases) {
             freeCanvas(this.cachedBackgroundCanvases[key]);
             this.cachedBackgroundCanvases[key] = null;
         }
@@ -37,12 +37,12 @@ export class MapView extends BaseMap {
     /**
      * Called when an entity was added, removed or changed
      */
-    onEntityChanged(entity: Entity): any {
-        const staticComp: any = entity.components.StaticMapEntity;
+    onEntityChanged(entity: Entity) {
+        const staticComp = entity.components.StaticMapEntity;
         if (staticComp) {
-            const rect: any = staticComp.getTileSpaceBounds();
-            for (let x: any = rect.x; x <= rect.right(); ++x) {
-                for (let y: any = rect.y; y <= rect.bottom(); ++y) {
+            const rect = staticComp.getTileSpaceBounds();
+            for (let x = rect.x; x <= rect.right(); ++x) {
+                for (let y = rect.y; y <= rect.bottom(); ++y) {
                     this.root.map.getOrCreateChunkAtTile(x, y).markDirty();
                 }
             }
@@ -51,29 +51,29 @@ export class MapView extends BaseMap {
     /**
      * Draws all static entities like buildings etc.
      */
-    drawStaticEntityDebugOverlays(drawParameters: DrawParameters): any {
+    drawStaticEntityDebugOverlays(drawParameters: DrawParameters) {
         if (G_IS_DEV && (globalConfig.debug.showAcceptorEjectors || globalConfig.debug.showEntityBounds)) {
-            const cullRange: any = drawParameters.visibleRect.toTileCullRectangle();
-            const top: any = cullRange.top();
-            const right: any = cullRange.right();
-            const bottom: any = cullRange.bottom();
-            const left: any = cullRange.left();
-            const border: any = 1;
-            const minY: any = top - border;
-            const maxY: any = bottom + border;
-            const minX: any = left - border;
-            const maxX: any = right + border - 1;
+            const cullRange = drawParameters.visibleRect.toTileCullRectangle();
+            const top = cullRange.top();
+            const right = cullRange.right();
+            const bottom = cullRange.bottom();
+            const left = cullRange.left();
+            const border = 1;
+            const minY = top - border;
+            const maxY = bottom + border;
+            const minX = left - border;
+            const maxX = right + border - 1;
             // Render y from top down for proper blending
-            for (let y: any = minY; y <= maxY; ++y) {
-                for (let x: any = minX; x <= maxX; ++x) {
+            for (let y = minY; y <= maxY; ++y) {
+                for (let x = minX; x <= maxX; ++x) {
                     // const content = this.tiles[x][y];
-                    const chunk: any = this.getChunkAtTileOrNull(x, y);
+                    const chunk = this.getChunkAtTileOrNull(x, y);
                     if (!chunk) {
                         continue;
                     }
-                    const content: any = chunk.getTileContentFromWorldCoords(x, y);
+                    const content = chunk.getTileContentFromWorldCoords(x, y);
                     if (content) {
-                        let isBorder: any = x <= left - 1 || x >= right + 1 || y <= top - 1 || y >= bottom + 1;
+                        let isBorder = x <= left - 1 || x >= right + 1 || y <= top - 1 || y >= bottom + 1;
                         if (!isBorder) {
                             content.drawDebugOverlays(drawParameters);
                         }
@@ -85,19 +85,19 @@ export class MapView extends BaseMap {
     /**
      * Initializes all canvases used for background rendering
      */
-    internalInitializeCachedBackgroundCanvases(): any {
-        for (const key: any in this.cachedBackgroundCanvases) {
+    internalInitializeCachedBackgroundCanvases() {
+        for (const key in this.cachedBackgroundCanvases) {
             // Background canvas
-            const dims: any = globalConfig.tileSize;
-            const dpi: any = this.backgroundCacheDPI;
-            const [canvas, context]: any = makeOffscreenBuffer(dims * dpi, dims * dpi, {
+            const dims = globalConfig.tileSize;
+            const dpi = this.backgroundCacheDPI;
+            const [canvas, context] = makeOffscreenBuffer(dims * dpi, dims * dpi, {
                 smooth: false,
                 label: "map-cached-bg",
             });
             context.scale(dpi, dpi);
             context.fillStyle = THEME.map.background;
             context.fillRect(0, 0, dims, dims);
-            const borderWidth: any = THEME.map.gridLineWidth;
+            const borderWidth = THEME.map.gridLineWidth;
             context.fillStyle = THEME.map["grid" + key[0].toUpperCase() + key.substring(1)] || "red";
             context.fillRect(0, 0, dims, borderWidth);
             context.fillRect(0, borderWidth, borderWidth, dims);
@@ -109,32 +109,32 @@ export class MapView extends BaseMap {
     /**
      * Draws the maps foreground
      */
-    drawForeground(parameters: DrawParameters): any {
+    drawForeground(parameters: DrawParameters) {
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundDynamicLayer);
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawForegroundStaticLayer);
     }
     /**
      * Calls a given method on all given chunks
      */
-    drawVisibleChunks(parameters: DrawParameters, method: function): any {
-        const cullRange: any = parameters.visibleRect.allScaled(1 / globalConfig.tileSize);
-        const top: any = cullRange.top();
-        const right: any = cullRange.right();
-        const bottom: any = cullRange.bottom();
-        const left: any = cullRange.left();
-        const border: any = 0;
-        const minY: any = top - border;
-        const maxY: any = bottom + border;
-        const minX: any = left - border;
-        const maxX: any = right + border;
-        const chunkStartX: any = Math.floor(minX / globalConfig.mapChunkSize);
-        const chunkStartY: any = Math.floor(minY / globalConfig.mapChunkSize);
-        const chunkEndX: any = Math.floor(maxX / globalConfig.mapChunkSize);
-        const chunkEndY: any = Math.floor(maxY / globalConfig.mapChunkSize);
+    drawVisibleChunks(parameters: DrawParameters, method: function) {
+        const cullRange = parameters.visibleRect.allScaled(1 / globalConfig.tileSize);
+        const top = cullRange.top();
+        const right = cullRange.right();
+        const bottom = cullRange.bottom();
+        const left = cullRange.left();
+        const border = 0;
+        const minY = top - border;
+        const maxY = bottom + border;
+        const minX = left - border;
+        const maxX = right + border;
+        const chunkStartX = Math.floor(minX / globalConfig.mapChunkSize);
+        const chunkStartY = Math.floor(minY / globalConfig.mapChunkSize);
+        const chunkEndX = Math.floor(maxX / globalConfig.mapChunkSize);
+        const chunkEndY = Math.floor(maxY / globalConfig.mapChunkSize);
         // Render y from top down for proper blending
-        for (let chunkX: any = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
-            for (let chunkY: any = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
-                const chunk: any = this.root.map.getChunk(chunkX, chunkY, true);
+        for (let chunkX = chunkStartX; chunkX <= chunkEndX; ++chunkX) {
+            for (let chunkY = chunkStartY; chunkY <= chunkEndY; ++chunkY) {
+                const chunk = this.root.map.getChunk(chunkX, chunkY, true);
                 method.call(chunk, parameters);
             }
         }
@@ -142,26 +142,26 @@ export class MapView extends BaseMap {
     /**
      * Calls a given method on all given chunks
      */
-    drawVisibleAggregates(parameters: DrawParameters, method: function): any {
-        const cullRange: any = parameters.visibleRect.allScaled(1 / globalConfig.tileSize);
-        const top: any = cullRange.top();
-        const right: any = cullRange.right();
-        const bottom: any = cullRange.bottom();
-        const left: any = cullRange.left();
-        const border: any = 0;
-        const minY: any = top - border;
-        const maxY: any = bottom + border;
-        const minX: any = left - border;
-        const maxX: any = right + border;
-        const aggregateTiles: any = globalConfig.chunkAggregateSize * globalConfig.mapChunkSize;
-        const aggStartX: any = Math.floor(minX / aggregateTiles);
-        const aggStartY: any = Math.floor(minY / aggregateTiles);
-        const aggEndX: any = Math.floor(maxX / aggregateTiles);
-        const aggEndY: any = Math.floor(maxY / aggregateTiles);
+    drawVisibleAggregates(parameters: DrawParameters, method: function) {
+        const cullRange = parameters.visibleRect.allScaled(1 / globalConfig.tileSize);
+        const top = cullRange.top();
+        const right = cullRange.right();
+        const bottom = cullRange.bottom();
+        const left = cullRange.left();
+        const border = 0;
+        const minY = top - border;
+        const maxY = bottom + border;
+        const minX = left - border;
+        const maxX = right + border;
+        const aggregateTiles = globalConfig.chunkAggregateSize * globalConfig.mapChunkSize;
+        const aggStartX = Math.floor(minX / aggregateTiles);
+        const aggStartY = Math.floor(minY / aggregateTiles);
+        const aggEndX = Math.floor(maxX / aggregateTiles);
+        const aggEndY = Math.floor(maxY / aggregateTiles);
         // Render y from top down for proper blending
-        for (let aggX: any = aggStartX; aggX <= aggEndX; ++aggX) {
-            for (let aggY: any = aggStartY; aggY <= aggEndY; ++aggY) {
-                const aggregate: any = this.root.map.getAggregate(aggX, aggY, true);
+        for (let aggX = aggStartX; aggX <= aggEndX; ++aggX) {
+            for (let aggY = aggStartY; aggY <= aggEndY; ++aggY) {
+                const aggregate = this.root.map.getAggregate(aggX, aggY, true);
                 method.call(aggregate, parameters);
             }
         }
@@ -169,24 +169,24 @@ export class MapView extends BaseMap {
     /**
      * Draws the wires foreground
      */
-    drawWiresForegroundLayer(parameters: DrawParameters): any {
+    drawWiresForegroundLayer(parameters: DrawParameters) {
         this.drawVisibleChunks(parameters, MapChunkView.prototype.drawWiresForegroundLayer);
     }
     /**
      * Draws the map overlay
      */
-    drawOverlay(parameters: DrawParameters): any {
+    drawOverlay(parameters: DrawParameters) {
         this.drawVisibleAggregates(parameters, MapChunkAggregate.prototype.drawOverlay);
     }
     /**
      * Draws the map background
      */
-    drawBackground(parameters: DrawParameters): any {
+    drawBackground(parameters: DrawParameters) {
         // Render tile grid
         if (!this.root.app.settings.getAllSettings().disableTileGrid || !this.root.gameMode.hasResources()) {
-            const dpi: any = this.backgroundCacheDPI;
+            const dpi = this.backgroundCacheDPI;
             parameters.context.scale(1 / dpi, 1 / dpi);
-            let key: any = "regular";
+            let key = "regular";
             // Disabled rn because it can be really annoying
             // eslint-disable-next-line no-constant-condition
             if (this.root.hud.parts.buildingPlacer.currentMetaBuilding.get() && false) {

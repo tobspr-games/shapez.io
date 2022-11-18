@@ -11,9 +11,9 @@ import { PlatformWrapperInterface } from "../wrapper";
 import { NoAchievementProvider } from "./no_achievement_provider";
 import { StorageImplBrowser } from "./storage";
 import { StorageImplBrowserIndexedDB } from "./storage_indexed_db";
-const logger: any = createLogger("platform/browser");
+const logger = createLogger("platform/browser");
 export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
-    initialize(): any {
+    initialize() {
         this.recaptchaTokenCallback = null;
         this.embedProvider = {
             id: "shapezio-website",
@@ -22,7 +22,7 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
             externalLinks: true,
         };
         if (!G_IS_STANDALONE && !WEB_STEAM_SSO_AUTHENTICATED && queryParamOptions.embedProvider) {
-            const providerId: any = queryParamOptions.embedProvider;
+            const providerId = queryParamOptions.embedProvider;
             this.embedProvider.iframed = true;
             switch (providerId) {
                 case "armorgames": {
@@ -59,12 +59,12 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
         }
         logger.log("Embed provider:", this.embedProvider.id);
         return this.detectStorageImplementation()
-            .then((): any => this.initializeAdProvider())
-            .then((): any => this.initializeAchievementProvider())
-            .then((): any => super.initialize());
+            .then(() => this.initializeAdProvider())
+            .then(() => this.initializeAchievementProvider())
+            .then(() => super.initialize());
     }
-    detectStorageImplementation(): any {
-        return new Promise((resolve: any): any => {
+    detectStorageImplementation() {
+        return new Promise(resolve => {
             logger.log("Detecting storage");
             if (!window.indexedDB) {
                 logger.log("Indexed DB not supported");
@@ -73,50 +73,50 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
                 return;
             }
             // Try accessing the indexedb
-            let request: any;
+            let request;
             try {
                 request = window.indexedDB.open("indexeddb_feature_detection", 1);
             }
-            catch (ex: any) {
+            catch (ex) {
                 logger.warn("Error while opening indexed db:", ex);
                 this.app.storage = new StorageImplBrowser(this.app);
                 resolve();
                 return;
             }
-            request.onerror = (err: any): any => {
+            request.onerror = err => {
                 logger.log("Indexed DB can *not* be accessed: ", err);
                 logger.log("Using fallback to local storage");
                 this.app.storage = new StorageImplBrowser(this.app);
                 resolve();
             };
-            request.onsuccess = (): any => {
+            request.onsuccess = () => {
                 logger.log("Indexed DB *can* be accessed");
                 this.app.storage = new StorageImplBrowserIndexedDB(this.app);
                 resolve();
             };
         });
     }
-    getId(): any {
+    getId() {
         return "browser@" + this.embedProvider.id;
     }
-    getUiScale(): any {
+    getUiScale() {
         if (IS_MOBILE) {
             return 1;
         }
-        const avgDims: any = Math.min(this.app.screenWidth, this.app.screenHeight);
+        const avgDims = Math.min(this.app.screenWidth, this.app.screenHeight);
         return clamp((avgDims / 1000.0) * 1.9, 0.1, 10);
     }
-    getSupportsRestart(): any {
+    getSupportsRestart() {
         return true;
     }
-    getTouchPanStrength(): any {
+    getTouchPanStrength() {
         return IS_MOBILE ? 1 : 0.5;
     }
-    openExternalLink(url: any, force: any = false): any {
+    openExternalLink(url, force = false) {
         logger.log("Opening external:", url);
         window.open(url);
     }
-    performRestart(): any {
+    performRestart() {
         logger.log("Performing restart");
         window.location.reload(true);
     }
@@ -126,55 +126,55 @@ export class PlatformWrapperImplBrowser extends PlatformWrapperInterface {
      */
     detectAdblock(): Promise<boolean> {
         return Promise.race([
-            new Promise((resolve: any): any => {
+            new Promise(resolve => {
                 // If the request wasn't blocked within a very short period of time, this means
                 // the adblocker is not active and the request was actually made -> ignore it then
-                setTimeout((): any => resolve(false), 30);
+                setTimeout(() => resolve(false), 30);
             }),
-            new Promise((resolve: any): any => {
+            new Promise(resolve => {
                 fetch("https://googleads.g.doubleclick.net/pagead/id", {
                     method: "HEAD",
                     mode: "no-cors",
                 })
-                    .then((res: any): any => {
+                    .then(res => {
                     resolve(false);
                 })
-                    .catch((err: any): any => {
+                    .catch(err => {
                     resolve(true);
                 });
             }),
         ]);
     }
-    initializeAdProvider(): any {
+    initializeAdProvider() {
         if (G_IS_DEV && !globalConfig.debug.testAds) {
             logger.log("Ads disabled in local environment");
             return Promise.resolve();
         }
         // First, detect adblocker
-        return this.detectAdblock().then((hasAdblocker: any): any => {
+        return this.detectAdblock().then(hasAdblocker => {
             if (hasAdblocker) {
                 logger.log("Adblock detected");
                 return;
             }
-            const adProvider: any = this.embedProvider.adProvider;
+            const adProvider = this.embedProvider.adProvider;
             this.app.adProvider = new adProvider(this.app);
-            return this.app.adProvider.initialize().catch((err: any): any => {
+            return this.app.adProvider.initialize().catch(err => {
                 logger.error("Failed to initialize ad provider, disabling ads:", err);
                 this.app.adProvider = new NoAdProvider(this.app);
             });
         });
     }
-    initializeAchievementProvider(): any {
+    initializeAchievementProvider() {
         if (G_IS_DEV && globalConfig.debug.testAchievements) {
             this.app.achievementProvider = new SteamAchievementProvider(this.app);
-            return this.app.achievementProvider.initialize().catch((err: any): any => {
+            return this.app.achievementProvider.initialize().catch(err => {
                 logger.error("Failed to initialize achievement provider, disabling:", err);
                 this.app.achievementProvider = new NoAchievementProvider(this.app);
             });
         }
         return this.app.achievementProvider.initialize();
     }
-    exitApp(): any {
+    exitApp() {
         // Can not exit app
     }
 }

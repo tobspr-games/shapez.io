@@ -18,15 +18,15 @@ export class AnalyticsInterface {
     /**
      * Sets the player name for analytics
      */
-    setUserContext(userName: string): any { }
+    setUserContext(userName: string) { }
     /**
      * Tracks when a new state is entered
      */
-    trackStateEnter(stateId: string): any { }
+    trackStateEnter(stateId: string) { }
     /**
      * Tracks a new user decision
      */
-    trackDecision(name: string): any { }
+    trackDecision(name: string) { }
     // LEGACY 1.5.3
-    trackUiClick(): any { }
+    trackUiClick() { }
 }

@@ -10,11 +10,11 @@ export class LeverSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [LeverComponent]);
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const leverComp: any = entity.components.Lever;
-            const pinsComp: any = entity.components.WiredPins;
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const leverComp = entity.components.Lever;
+            const pinsComp = entity.components.WiredPins;
             // Simply sync the status to the first slot
             pinsComp.slots[0].value = leverComp.toggled ? BOOL_TRUE_SINGLETON : BOOL_FALSE_SINGLETON;
         }
@@ -22,13 +22,13 @@ export class LeverSystem extends GameSystemWithFilter {
     /**
      * Draws a given chunk
      */
-    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const leverComp: any = entity.components.Lever;
+    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const leverComp = entity.components.Lever;
             if (leverComp) {
-                const sprite: any = leverComp.toggled ? this.spriteOn : this.spriteOff;
+                const sprite = leverComp.toggled ? this.spriteOn : this.spriteOff;
                 entity.components.StaticMapEntity.drawSpriteOnBoundsClipped(parameters, sprite);
             }
         }

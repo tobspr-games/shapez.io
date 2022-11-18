@@ -16,18 +16,18 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
         super(root);
         this.root.signals.gameFrameStarted.add(this.clearDrawnUids, this);
     }
-    clearDrawnUids(): any {
+    clearDrawnUids() {
         this.drawnUids.clear();
     }
-        drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const processorComp: any = entity.components.ItemProcessor;
-            const filterComp: any = entity.components.Filter;
+        drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const processorComp = entity.components.ItemProcessor;
+            const filterComp = entity.components.Filter;
             // Draw processor overlays
             if (processorComp) {
-                const requirement: any = processorComp.processingRequirement;
+                const requirement = processorComp.processingRequirement;
                 if (!requirement && processorComp.type !== enumItemProcessorTypes.reader) {
                     continue;
                 }
@@ -55,9 +55,9 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
             }
         }
     }
-        drawReaderOverlays(parameters: import("../../core/draw_utils").DrawParameters, entity: Entity): any {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const readerComp: any = entity.components.BeltReader;
+        drawReaderOverlays(parameters: import("../../core/draw_utils").DrawParameters, entity: Entity) {
+        const staticComp = entity.components.StaticMapEntity;
+        const readerComp = entity.components.BeltReader;
         this.readerOverlaySprite.drawCachedCentered(parameters, (staticComp.origin.x + 0.5) * globalConfig.tileSize, (staticComp.origin.y + 0.5) * globalConfig.tileSize, globalConfig.tileSize);
         parameters.context.fillStyle = "#333439";
         parameters.context.textAlign = "center";
@@ -67,14 +67,14 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
     }
         drawConnectedSlotRequirement(parameters: import("../../core/draw_utils").DrawParameters, entity: Entity, { drawIfFalse = true }: {
         drawIfFalse: boolean=;
-    }): any {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const pinsComp: any = entity.components.WiredPins;
-        let anySlotConnected: any = false;
+    }) {
+        const staticComp = entity.components.StaticMapEntity;
+        const pinsComp = entity.components.WiredPins;
+        let anySlotConnected = false;
         // Check if any slot has a value
-        for (let i: any = 0; i < pinsComp.slots.length; ++i) {
-            const slot: any = pinsComp.slots[i];
-            const network: any = slot.linkedNetwork;
+        for (let i = 0; i < pinsComp.slots.length; ++i) {
+            const slot = pinsComp.slots[i];
+            const network = slot.linkedNetwork;
             if (network && network.hasValue()) {
                 anySlotConnected = true;
                 if (isTruthyItem(network.currentValue) || !drawIfFalse) {
@@ -83,9 +83,9 @@ export class ItemProcessorOverlaysSystem extends GameSystem {
                 }
             }
         }
-        const pulse: any = smoothPulse(this.root.time.now());
+        const pulse = smoothPulse(this.root.time.now());
         parameters.context.globalAlpha = 0.6 + 0.4 * pulse;
-        const sprite: any = anySlotConnected ? this.spriteDisabled : this.spriteDisconnected;
+        const sprite = anySlotConnected ? this.spriteDisabled : this.spriteDisconnected;
         sprite.drawCachedCentered(parameters, (staticComp.origin.x + 0.5) * globalConfig.tileSize, (staticComp.origin.y + 0.5) * globalConfig.tileSize, globalConfig.tileSize * (0.7 + 0.2 * pulse));
         parameters.context.globalAlpha = 1;
     }

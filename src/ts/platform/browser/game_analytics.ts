@@ -11,12 +11,12 @@ import { SteamAchievementProvider } from "../electron/steam_achievement_provider
 import { GameAnalyticsInterface } from "../game_analytics";
 import { FILE_NOT_FOUND } from "../storage";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
-const logger: any = createLogger("game_analytics");
-const analyticsUrl: any = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
+const logger = createLogger("game_analytics");
+const analyticsUrl = G_IS_DEV ? "http://localhost:8001" : "https://analytics.shapez.io";
 // Be sure to increment the ID whenever it changes
-const analyticsLocalFile: any = "shapez_token_123.bin";
-const CURRENT_ABT: any = "abt_bsl2";
-const CURRENT_ABT_COUNT: any = 1;
+const analyticsLocalFile = "shapez_token_123.bin";
+const CURRENT_ABT = "abt_bsl2";
+const CURRENT_ABT_COUNT = 1;
 export class ShapezGameAnalytics extends GameAnalyticsInterface {
     public abtVariant = "0";
 
@@ -43,8 +43,8 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             return "beta";
         }
     }
-    fetchABVariant(): any {
-        return this.app.storage.readFileAsync("shapez_" + CURRENT_ABT + ".bin").then((abt: any): any => {
+    fetchABVariant() {
+        return this.app.storage.readFileAsync("shapez_" + CURRENT_ABT + ".bin").then(abt => {
             if (typeof queryParamOptions.abtVariant === "string") {
                 this.abtVariant = queryParamOptions.abtVariant;
                 logger.log("Set", CURRENT_ABT, "to (OVERRIDE) ", this.abtVariant);
@@ -53,7 +53,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 this.abtVariant = abt;
                 logger.log("Read abtVariant:", abt);
             }
-        }, (err: any): any => {
+        }, err => {
             if (err === FILE_NOT_FOUND) {
                 if (typeof queryParamOptions.abtVariant === "string") {
                     this.abtVariant = queryParamOptions.abtVariant;
@@ -67,7 +67,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             }
         });
     }
-    note(action: any): any {
+    note(action) {
         if (this.app.restrictionMgr.isLimitedVersion()) {
             fetch("https://analytics.shapez.io/campaign/" +
                 "action_" +
@@ -84,22 +84,22 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 cache: "no-cache",
                 referrer: "no-referrer",
                 credentials: "omit",
-            }).catch((err: any): any => { });
+            }).catch(err => { });
         }
     }
-    noteMinor(action: any, payload: any = ""): any { }
+    noteMinor(action, payload = "") { }
     /**
      * {}
      */
     initialize(): Promise<void> {
         this.syncKey = null;
-        window.setAbt = (abt: any): any => {
+        window.setAbt = abt => {
             this.app.storage.writeFileAsync("shapez_" + CURRENT_ABT + ".bin", String(abt));
             window.location.reload();
         };
         // Retrieve sync key from player
-        return this.fetchABVariant().then((): any => {
-            setInterval((): any => this.sendTimePoints(), 60 * 1000);
+        return this.fetchABVariant().then(() => {
+            setInterval(() => this.sendTimePoints(), 60 * 1000);
             if (this.app.restrictionMgr.isLimitedVersion() && !G_IS_DEV) {
                 fetch("https://analytics.shapez.io/campaign/" +
                     this.environment +
@@ -113,22 +113,22 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                     cache: "no-cache",
                     referrer: "no-referrer",
                     credentials: "omit",
-                }).catch((err: any): any => { });
+                }).catch(err => { });
             }
-            return this.app.storage.readFileAsync(analyticsLocalFile).then((syncKey: any): any => {
+            return this.app.storage.readFileAsync(analyticsLocalFile).then(syncKey => {
                 this.syncKey = syncKey;
                 logger.log("Player sync key read:", this.syncKey);
-            }, (error: any): any => {
+            }, error => {
                 // File was not found, retrieve new key
                 if (error === FILE_NOT_FOUND) {
                     logger.log("Retrieving new player key");
-                    let authTicket: any = Promise.resolve(undefined);
+                    let authTicket = Promise.resolve(undefined);
                     if (G_IS_STANDALONE) {
                         logger.log("Will retrieve auth ticket");
                         authTicket = ipcRenderer.invoke("steam:get-ticket");
                     }
                     authTicket
-                        .then((ticket: any): any => {
+                        .then(ticket => {
                         logger.log("Got ticket:", ticket);
                         // Perform call to get a new key from the API
                         return this.sendToApi("/v1/register", {
@@ -138,10 +138,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                             commit: G_BUILD_COMMIT_HASH,
                             ticket,
                         });
-                    }, (err: any): any => {
+                    }, err => {
                         logger.warn("Failed to get steam auth ticket for register:", err);
                     })
-                        .then((res: any): any => {
+                        .then(res => {
                         // Try to read and parse the key from the api
                         if (res.key && typeof res.key === "string" && res.key.length === 40) {
                             this.syncKey = res.key;
@@ -152,7 +152,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                             throw new Error("Bad response from analytics server: " + res);
                         }
                     })
-                        .catch((err: any): any => {
+                        .catch(err => {
                         logger.error("Failed to register on analytics api:", err);
                     });
                 }
@@ -166,7 +166,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * Makes sure a DLC is activated on steam
      */
-    activateDlc(dlc: string): any {
+    activateDlc(dlc: string) {
         logger.log("Activating dlc:", dlc);
         return this.sendToApi("/v1/activate-dlc/" + dlc, {});
     }
@@ -175,8 +175,8 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * {}
      */
     sendToApi(endpoint: string, data: object): Promise<any> {
-        return new Promise((resolve: any, reject: any): any => {
-            const timeout: any = setTimeout((): any => reject("Request to " + endpoint + " timed out"), 20000);
+        return new Promise((resolve, reject) => {
+            const timeout = setTimeout(() => reject("Request to " + endpoint + " timed out"), 20000);
             fetch(analyticsUrl + endpoint, {
                 method: "POST",
                 mode: "cors",
@@ -190,7 +190,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 },
                 body: JSON.stringify(data),
             })
-                .then((res: any): any => {
+                .then(res => {
                 clearTimeout(timeout);
                 if (!res.ok || res.status !== 200) {
                     reject("Fetch error: Bad status " + res.status);
@@ -200,7 +200,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
                 }
             })
                 .then(resolve)
-                .catch((reason: any): any => {
+                .catch(reason => {
                 clearTimeout(timeout);
                 reject(reason);
             });
@@ -209,7 +209,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * Sends a game event to the analytics
      */
-    sendGameEvent(category: string, value: string): any {
+    sendGameEvent(category: string, value: string) {
         if (G_IS_DEV) {
             return;
         }
@@ -217,22 +217,22 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             logger.warn("Can not send event due to missing sync key");
             return;
         }
-        const gameState: any = this.app.stateMgr.currentState;
+        const gameState = this.app.stateMgr.currentState;
         if (!(gameState instanceof InGameState)) {
             logger.warn("Trying to send analytics event outside of ingame state");
             return;
         }
-        const savegame: any = gameState.savegame;
+        const savegame = gameState.savegame;
         if (!savegame) {
             logger.warn("Ingame state has empty savegame");
             return;
         }
-        const savegameId: any = savegame.internalId;
+        const savegameId = savegame.internalId;
         if (!gameState.core) {
             logger.warn("Game state has no core");
             return;
         }
-        const root: any = gameState.core.root;
+        const root = gameState.core.root;
         if (!root) {
             logger.warn("Root is not initialized");
             return;
@@ -251,12 +251,12 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
             version: G_BUILD_VERSION,
             level: root.hubGoals.level,
             gameDump: this.generateGameDump(root),
-        }).catch((err: any): any => {
+        }).catch(err => {
             console.warn("Request failed", err);
         });
     }
-    sendTimePoints(): any {
-        const gameState: any = this.app.stateMgr.currentState;
+    sendTimePoints() {
+        const gameState = this.app.stateMgr.currentState;
         if (gameState instanceof InGameState) {
             logger.log("Syncing analytics");
             this.sendGameEvent("sync", "");
@@ -265,25 +265,25 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * Returns true if the shape is interesting
      */
-    isInterestingShape(root: GameRoot, key: string): any {
+    isInterestingShape(root: GameRoot, key: string) {
         if (key === root.gameMode.getBlueprintShapeKey()) {
             return true;
         }
         // Check if its a story goal
-        const levels: any = root.gameMode.getLevelDefinitions();
-        for (let i: any = 0; i < levels.length; ++i) {
+        const levels = root.gameMode.getLevelDefinitions();
+        for (let i = 0; i < levels.length; ++i) {
             if (key === levels[i].shape) {
                 return true;
             }
         }
         // Check if its required to unlock an upgrade
-        const upgrades: any = root.gameMode.getUpgrades();
-        for (const upgradeKey: any in upgrades) {
-            const upgradeTiers: any = upgrades[upgradeKey];
-            for (let i: any = 0; i < upgradeTiers.length; ++i) {
-                const tier: any = upgradeTiers[i];
-                const required: any = tier.required;
-                for (let k: any = 0; k < required.length; ++k) {
+        const upgrades = root.gameMode.getUpgrades();
+        for (const upgradeKey in upgrades) {
+            const upgradeTiers = upgrades[upgradeKey];
+            for (let i = 0; i < upgradeTiers.length; ++i) {
+                const tier = upgradeTiers[i];
+                const required = tier.required;
+                for (let k = 0; k < required.length; ++k) {
                     if (required[k].shape === key) {
                         return true;
                     }
@@ -295,10 +295,10 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     /**
      * Generates a game dump
      */
-    generateGameDump(root: GameRoot): any {
-        const shapeIds: any = Object.keys(root.hubGoals.storedShapes).filter((key: any): any => this.isInterestingShape(root, key));
-        let shapes: any = {};
-        for (let i: any = 0; i < shapeIds.length; ++i) {
+    generateGameDump(root: GameRoot) {
+        const shapeIds = Object.keys(root.hubGoals.storedShapes).filter(key => this.isInterestingShape(root, key));
+        let shapes = {};
+        for (let i = 0; i < shapeIds.length; ++i) {
             shapes[shapeIds[i]] = root.hubGoals.storedShapes[shapeIds[i]];
         }
         return {
@@ -310,24 +310,24 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
         };
     }
     
-    handleGameStarted(): any {
+    handleGameStarted() {
         this.sendGameEvent("game_start", "");
     }
     
-    handleGameResumed(): any {
+    handleGameResumed() {
         this.sendTimePoints();
     }
     /**
      * Handles the given level completed
      */
-    handleLevelCompleted(level: number): any {
+    handleLevelCompleted(level: number) {
         logger.log("Complete level", level);
         this.sendGameEvent("level_complete", "" + level);
     }
     /**
      * Handles the given upgrade completed
      */
-    handleUpgradeUnlocked(id: string, level: number): any {
+    handleUpgradeUnlocked(id: string, level: number) {
         logger.log("Unlock upgrade", id, level);
         this.sendGameEvent("upgrade_unlock", id + "@" + level);
     }

@@ -9,11 +9,11 @@ import { T } from "../../../translations";
 /**
  * Capitalizes the first letter
  */
-function capitalizeFirstLetter(str: string): any {
+function capitalizeFirstLetter(str: string) {
     return str.substr(0, 1).toUpperCase() + str.substr(1).toLowerCase();
 }
 export class HUDStatistics extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_Statistics", ["ingameDialog"]);
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
@@ -24,27 +24,27 @@ export class HUDStatistics extends BaseHUDPart {
         this.sourceExplanation = makeDiv(this.dialogInner, null, ["sourceExplanation"]);
         this.filtersDataSource = makeDiv(this.filterHeader, null, ["filtersDataSource"]);
         this.filtersDisplayMode = makeDiv(this.filterHeader, null, ["filtersDisplayMode"]);
-        const dataSources: any = [
+        const dataSources = [
             enumAnalyticsDataSource.produced,
             enumAnalyticsDataSource.delivered,
             enumAnalyticsDataSource.stored,
         ];
-        for (let i: any = 0; i < dataSources.length; ++i) {
-            const dataSource: any = dataSources[i];
-            const button: any = makeButton(this.filtersDataSource, ["mode" + capitalizeFirstLetter(dataSource)], T.ingame.statistics.dataSources[dataSource].title);
-            this.trackClicks(button, (): any => this.setDataSource(dataSource));
+        for (let i = 0; i < dataSources.length; ++i) {
+            const dataSource = dataSources[i];
+            const button = makeButton(this.filtersDataSource, ["mode" + capitalizeFirstLetter(dataSource)], T.ingame.statistics.dataSources[dataSource].title);
+            this.trackClicks(button, () => this.setDataSource(dataSource));
         }
-        const buttonIterateUnit: any = makeButton(this.filtersDisplayMode, ["displayIterateUnit"]);
-        const buttonDisplaySorted: any = makeButton(this.filtersDisplayMode, ["displaySorted"]);
-        const buttonDisplayDetailed: any = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
-        const buttonDisplayIcons: any = makeButton(this.filtersDisplayMode, ["displayIcons"]);
-        this.trackClicks(buttonIterateUnit, (): any => this.iterateUnit());
-        this.trackClicks(buttonDisplaySorted, (): any => this.toggleSorted());
-        this.trackClicks(buttonDisplayIcons, (): any => this.setDisplayMode(enumDisplayMode.icons));
-        this.trackClicks(buttonDisplayDetailed, (): any => this.setDisplayMode(enumDisplayMode.detailed));
+        const buttonIterateUnit = makeButton(this.filtersDisplayMode, ["displayIterateUnit"]);
+        const buttonDisplaySorted = makeButton(this.filtersDisplayMode, ["displaySorted"]);
+        const buttonDisplayDetailed = makeButton(this.filtersDisplayMode, ["displayDetailed"]);
+        const buttonDisplayIcons = makeButton(this.filtersDisplayMode, ["displayIcons"]);
+        this.trackClicks(buttonIterateUnit, () => this.iterateUnit());
+        this.trackClicks(buttonDisplaySorted, () => this.toggleSorted());
+        this.trackClicks(buttonDisplayIcons, () => this.setDisplayMode(enumDisplayMode.icons));
+        this.trackClicks(buttonDisplayDetailed, () => this.setDisplayMode(enumDisplayMode.detailed));
         this.contentDiv = makeDiv(this.dialogInner, null, ["content"]);
     }
-        setDataSource(source: enumAnalyticsDataSource): any {
+        setDataSource(source: enumAnalyticsDataSource) {
         this.dataSource = source;
         this.dialogInner.setAttribute("data-datasource", source);
         this.sourceExplanation.innerText = T.ingame.statistics.dataSources[source].description;
@@ -52,33 +52,33 @@ export class HUDStatistics extends BaseHUDPart {
             this.rerenderFull();
         }
     }
-        setDisplayMode(mode: enumDisplayMode): any {
+        setDisplayMode(mode: enumDisplayMode) {
         this.displayMode = mode;
         this.dialogInner.setAttribute("data-displaymode", mode);
         if (this.visible) {
             this.rerenderFull();
         }
     }
-        setSorted(sorted: boolean): any {
+        setSorted(sorted: boolean) {
         this.sorted = sorted;
         this.dialogInner.setAttribute("data-sorted", String(sorted));
         if (this.visible) {
             this.rerenderFull();
         }
     }
-    toggleSorted(): any {
+    toggleSorted() {
         this.setSorted(!this.sorted);
     }
     /**
      * Chooses the next unit
      */
-    iterateUnit(): any {
-        const units: any = Array.from(Object.keys(statisticsUnitsSeconds));
-        const newIndex: any = (units.indexOf(this.currentUnit) + 1) % units.length;
+    iterateUnit() {
+        const units = Array.from(Object.keys(statisticsUnitsSeconds));
+        const newIndex = (units.indexOf(this.currentUnit) + 1) % units.length;
         this.currentUnit = units[newIndex];
         this.rerenderPartial();
     }
-    initialize(): any {
+    initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
         });
@@ -99,30 +99,30 @@ export class HUDStatistics extends BaseHUDPart {
         this.close();
         this.rerenderFull();
     }
-    intersectionCallback(entries: any): any {
-        for (let i: any = 0; i < entries.length; ++i) {
-            const entry: any = entries[i];
-            const handle: any = this.activeHandles[entry.target.getAttribute("data-shape-key")];
+    intersectionCallback(entries) {
+        for (let i = 0; i < entries.length; ++i) {
+            const entry = entries[i];
+            const handle = this.activeHandles[entry.target.getAttribute("data-shape-key")];
             if (handle) {
                 handle.setVisible(entry.intersectionRatio > 0);
             }
         }
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.visible;
     }
-    show(): any {
+    show() {
         this.visible = true;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.rerenderFull();
         this.update();
     }
-    close(): any {
+    close() {
         this.visible = false;
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
-    update(): any {
+    update() {
         this.domAttach.update(this.visible);
         if (this.visible) {
             if (this.root.time.now() - this.lastFullRerender > 1) {
@@ -136,22 +136,22 @@ export class HUDStatistics extends BaseHUDPart {
     /**
      * Performs a partial rerender, only updating graphs and counts
      */
-    rerenderPartial(): any {
-        for (const key: any in this.activeHandles) {
-            const handle: any = this.activeHandles[key];
+    rerenderPartial() {
+        for (const key in this.activeHandles) {
+            const handle = this.activeHandles[key];
             handle.update(this.displayMode, this.dataSource, this.currentUnit);
         }
     }
     /**
      * Performs a full rerender, regenerating everything
      */
-    rerenderFull(): any {
-        for (const key: any in this.activeHandles) {
+    rerenderFull() {
+        for (const key in this.activeHandles) {
             this.activeHandles[key].detach();
         }
         removeAllChildren(this.contentDiv);
         // Now, attach new ones
-        let entries: any = null;
+        let entries = null;
         switch (this.dataSource) {
             case enumAnalyticsDataSource.stored: {
                 entries = Object.entries(this.root.hubGoals.storedShapes);
@@ -163,10 +163,10 @@ export class HUDStatistics extends BaseHUDPart {
                 break;
             }
         }
-        const pinnedShapes: any = this.root.hud.parts.pinnedShapes;
-        entries.sort((a: any, b: any): any => {
-            const aPinned: any = pinnedShapes.isShapePinned(a[0]);
-            const bPinned: any = pinnedShapes.isShapePinned(b[0]);
+        const pinnedShapes = this.root.hud.parts.pinnedShapes;
+        entries.sort((a, b) => {
+            const aPinned = pinnedShapes.isShapePinned(a[0]);
+            const bPinned = pinnedShapes.isShapePinned(b[0]);
             if (aPinned !== bPinned) {
                 return aPinned ? -1 : 1;
             }
@@ -176,19 +176,19 @@ export class HUDStatistics extends BaseHUDPart {
             }
             return b[1] - a[1];
         });
-        let rendered: any = new Set();
-        for (let i: any = 0; i < Math.min(entries.length, 200); ++i) {
-            const entry: any = entries[i];
-            const shapeKey: any = entry[0];
-            let handle: any = this.activeHandles[shapeKey];
+        let rendered = new Set();
+        for (let i = 0; i < Math.min(entries.length, 200); ++i) {
+            const entry = entries[i];
+            const shapeKey = entry[0];
+            let handle = this.activeHandles[shapeKey];
             if (!handle) {
-                const definition: any = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
+                const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(shapeKey);
                 handle = this.activeHandles[shapeKey] = new HUDShapeStatisticsHandle(this.root, definition, this.intersectionObserver);
             }
             rendered.add(shapeKey);
             handle.attach(this.contentDiv);
         }
-        for (const key: any in this.activeHandles) {
+        for (const key in this.activeHandles) {
             if (!rendered.has(key)) {
                 this.activeHandles[key].destroy();
                 delete this.activeHandles[key];

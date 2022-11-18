@@ -3,9 +3,9 @@ import type { GameRoot } from "./root";
 /* typehints:end */
 import { Vector } from "../core/vector";
 import { SOUNDS } from "../platform/sound";
-const avgSoundDurationSeconds: any = 0.1;
-const maxOngoingSounds: any = 2;
-const maxOngoingUiSounds: any = 5;
+const avgSoundDurationSeconds = 0.1;
+const maxOngoingSounds = 2;
+const maxOngoingUiSounds = 5;
 // Proxy to the application sound instance
 export class SoundProxy {
     public root = root;
@@ -17,7 +17,7 @@ export class SoundProxy {
     /**
      * Plays a new ui sound
      */
-    playUi(id: string): any {
+    playUi(id: string) {
         assert(typeof id === "string", "Not a valid sound id: " + id);
         this.internalUpdateOngoingSounds();
         if (this.playingUiSounds.length > maxOngoingUiSounds) {
@@ -30,19 +30,19 @@ export class SoundProxy {
     /**
      * Plays the ui click sound
      */
-    playUiClick(): any {
+    playUiClick() {
         this.playUi(SOUNDS.uiClick);
     }
     /**
      * Plays the ui error sound
      */
-    playUiError(): any {
+    playUiError() {
         this.playUi(SOUNDS.uiError);
     }
     /**
      * Plays a 3D sound whose volume is scaled based on where it was emitted
      */
-    play3D(id: string, pos: Vector): any {
+    play3D(id: string, pos: Vector) {
         assert(typeof id === "string", "Not a valid sound id: " + id);
         assert(pos instanceof Vector, "Invalid sound position");
         this.internalUpdateOngoingSounds();
@@ -57,15 +57,15 @@ export class SoundProxy {
     /**
      * Updates the list of ongoing sounds
      */
-    internalUpdateOngoingSounds(): any {
-        const now: any = this.root.time.realtimeNow();
-        for (let i: any = 0; i < this.playing3DSounds.length; ++i) {
+    internalUpdateOngoingSounds() {
+        const now = this.root.time.realtimeNow();
+        for (let i = 0; i < this.playing3DSounds.length; ++i) {
             if (now - this.playing3DSounds[i] > avgSoundDurationSeconds) {
                 this.playing3DSounds.splice(i, 1);
                 i -= 1;
             }
         }
-        for (let i: any = 0; i < this.playingUiSounds.length; ++i) {
+        for (let i = 0; i < this.playingUiSounds.length; ++i) {
             if (now - this.playingUiSounds[i] > avgSoundDurationSeconds) {
                 this.playingUiSounds.splice(i, 1);
                 i -= 1;

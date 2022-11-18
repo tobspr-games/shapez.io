@@ -2,19 +2,19 @@ import { SavegameInterface_V1000 } from "./1000.js";
 import { createLogger } from "../../core/logging.js";
 import { T } from "../../translations.js";
 import { TypeVector, TypeNumber, TypeString, TypeNullable } from "../serialization_data_types.js";
-const schema: any = require("./1001.json");
-const logger: any = createLogger("savegame_interface/1001");
+const schema = require("./1001.json");
+const logger = createLogger("savegame_interface/1001");
 export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
-    getVersion(): any {
+    getVersion() {
         return 1001;
     }
-    getSchemaUncached(): any {
+    getSchemaUncached() {
         return schema;
     }
     
-    static migrate1000to1001(data: import("../savegame_typedefs.js").SavegameData): any {
+    static migrate1000to1001(data: import("../savegame_typedefs.js").SavegameData) {
         logger.log("Migrating 1000 to 1001");
-        const dump: any = data.dump;
+        const dump = data.dump;
         if (!dump) {
             return true;
         }
@@ -31,9 +31,9 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
                 },
             ],
         };
-        const entities: any = dump.entities;
-        for (let i: any = 0; i < entities.length; ++i) {
-            const entity: any = entities[i];
+        const entities = dump.entities;
+        for (let i = 0; i < entities.length; ++i) {
+            const entity = entities[i];
             export type OldStaticMapEntity = {
                 origin: TypeVector;
                 tileSize: TypeVector;
@@ -52,7 +52,7 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
             /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @ /** @type OldStaticMapEntity **/
             // @ts-ignore
             const staticComp: OldStaticMapEntity = entity.components.StaticMapEntity;
-            const beltComp: any = entity.components.Belt;
+            const beltComp = entity.components.Belt;
             if (staticComp) {
                 if (staticComp.spriteKey) {
                     staticComp.blueprintSpriteKey = staticComp.spriteKey.replace("sprites/buildings", "sprites/blueprints");
@@ -62,7 +62,7 @@ export class SavegameInterface_V1001 extends SavegameInterface_V1000 {
                         staticComp.blueprintSpriteKey = "";
                     }
                     else if (beltComp) {
-                        const direction: any = beltComp.direction;
+                        const direction = beltComp.direction;
                         staticComp.blueprintSpriteKey = "sprites/blueprints/belt_" + direction + ".png";
                     }
                     else {

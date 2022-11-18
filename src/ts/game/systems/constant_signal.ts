@@ -4,19 +4,19 @@ export class ConstantSignalSystem extends GameSystemWithFilter {
 
     constructor(root) {
         super(root, [ConstantSignalComponent]);
-        this.root.signals.entityManuallyPlaced.add((entity: any): any => {
-            const editorHud: any = this.root.hud.parts.constantSignalEdit;
+        this.root.signals.entityManuallyPlaced.add(entity => {
+            const editorHud = this.root.hud.parts.constantSignalEdit;
             if (editorHud) {
                 editorHud.editConstantSignal(entity, { deleteOnCancel: true });
             }
         });
     }
-    update(): any {
+    update() {
         // Set signals
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const signalComp: any = entity.components.ConstantSignal;
-            const pinsComp: any = entity.components.WiredPins;
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const signalComp = entity.components.ConstantSignal;
+            const pinsComp = entity.components.WiredPins;
             if (pinsComp) {
                 pinsComp.slots[0].value = signalComp.signal;
             }

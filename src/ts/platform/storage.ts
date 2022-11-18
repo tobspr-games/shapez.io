@@ -1,7 +1,7 @@
 /* typehints:start */
 import type { Application } from "../application";
 /* typehints:end */
-export const FILE_NOT_FOUND: any = "file_not_found";
+export const FILE_NOT_FOUND = "file_not_found";
 export class StorageInterface {
     public app: Application = app;
 

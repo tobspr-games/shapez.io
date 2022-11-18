@@ -8,8 +8,8 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { THEME } from "../theme";
-export const arrayBeltVariantToRotation: any = [enumDirection.top, enumDirection.left, enumDirection.right];
-export const beltOverlayMatrices: any = {
+export const arrayBeltVariantToRotation = [enumDirection.top, enumDirection.left, enumDirection.right];
+export const beltOverlayMatrices = {
     [enumDirection.top]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
     [enumDirection.left]: generateMatrixRotations([0, 0, 0, 1, 1, 0, 0, 1, 0]),
     [enumDirection.right]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
@@ -19,7 +19,7 @@ export class MetaBeltBuilding extends MetaBuilding {
     constructor() {
         super("belt");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 1,
@@ -38,25 +38,25 @@ export class MetaBeltBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return THEME.map.chunkOverview.beltColor;
     }
-    getPlacementSound(): any {
+    getPlacementSound() {
         return SOUNDS.placeBelt;
     }
-    getHasDirectionLockAvailable(): any {
+    getHasDirectionLockAvailable() {
         return true;
     }
-    getStayInPlacementMode(): any {
+    getStayInPlacementMode() {
         return true;
     }
-    getRotateAutomaticallyWhilePlacing(): any {
+    getRotateAutomaticallyWhilePlacing() {
         return true;
     }
-    getSprite(): any {
+    getSprite() {
         return null;
     }
-    getIsReplaceable(): any {
+    getIsReplaceable() {
         return true;
     }
     /**
@@ -69,10 +69,10 @@ export class MetaBeltBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const beltSpeed: any = root.hubGoals.getBeltBaseSpeed();
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
-    getPreviewSprite(rotationVariant: any): any {
+    getPreviewSprite(rotationVariant) {
         switch (arrayBeltVariantToRotation[rotationVariant]) {
             case enumDirection.top: {
                 return Loader.getSprite("sprites/buildings/belt_top.png");
@@ -88,7 +88,7 @@ export class MetaBeltBuilding extends MetaBuilding {
             }
         }
     }
-    getBlueprintSprite(rotationVariant: any): any {
+    getBlueprintSprite(rotationVariant) {
         switch (arrayBeltVariantToRotation[rotationVariant]) {
             case enumDirection.top: {
                 return Loader.getSprite("sprites/blueprints/belt_top.png");
@@ -104,18 +104,18 @@ export class MetaBeltBuilding extends MetaBuilding {
             }
         }
     }
-        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity): any {
+        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity) {
         return beltOverlayMatrices[entity.components.Belt.direction][rotation];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new BeltComponent({
             direction: enumDirection.top, // updated later
         }));
     }
-        updateVariants(entity: Entity, rotationVariant: number): any {
+        updateVariants(entity: Entity, rotationVariant: number) {
         entity.components.Belt.direction = arrayBeltVariantToRotation[rotationVariant];
     }
     /**
@@ -133,20 +133,20 @@ export class MetaBeltBuilding extends MetaBuilding {
         rotationVariant: number;
         connectedEntities?: Array<Entity>;
     } {
-        const topDirection: any = enumAngleToDirection[rotation];
-        const rightDirection: any = enumAngleToDirection[(rotation + 90) % 360];
-        const bottomDirection: any = enumAngleToDirection[(rotation + 180) % 360];
-        const leftDirection: any = enumAngleToDirection[(rotation + 270) % 360];
-        const { ejectors, acceptors }: any = root.logic.getEjectorsAndAcceptorsAtTile(tile);
-        let hasBottomEjector: any = false;
-        let hasRightEjector: any = false;
-        let hasLeftEjector: any = false;
-        let hasTopAcceptor: any = false;
-        let hasLeftAcceptor: any = false;
-        let hasRightAcceptor: any = false;
+        const topDirection = enumAngleToDirection[rotation];
+        const rightDirection = enumAngleToDirection[(rotation + 90) % 360];
+        const bottomDirection = enumAngleToDirection[(rotation + 180) % 360];
+        const leftDirection = enumAngleToDirection[(rotation + 270) % 360];
+        const { ejectors, acceptors } = root.logic.getEjectorsAndAcceptorsAtTile(tile);
+        let hasBottomEjector = false;
+        let hasRightEjector = false;
+        let hasLeftEjector = false;
+        let hasTopAcceptor = false;
+        let hasLeftAcceptor = false;
+        let hasRightAcceptor = false;
         // Check all ejectors
-        for (let i: any = 0; i < ejectors.length; ++i) {
-            const ejector: any = ejectors[i];
+        for (let i = 0; i < ejectors.length; ++i) {
+            const ejector = ejectors[i];
             if (ejector.toDirection === topDirection) {
                 hasBottomEjector = true;
             }
@@ -158,8 +158,8 @@ export class MetaBeltBuilding extends MetaBuilding {
             }
         }
         // Check all acceptors
-        for (let i: any = 0; i < acceptors.length; ++i) {
-            const acceptor: any = acceptors[i];
+        for (let i = 0; i < acceptors.length; ++i) {
+            const acceptor = acceptors[i];
             if (acceptor.fromDirection === bottomDirection) {
                 hasTopAcceptor = true;
             }

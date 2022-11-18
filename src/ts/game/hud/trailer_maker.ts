@@ -4,7 +4,7 @@ import { Vector, mixVector } from "../../core/vector";
 import { lerp } from "../../core/utils";
 /* dev:start */
 import trailerPoints from "./trailer_points";
-const tickrate: any = 1 / 165;
+const tickrate = 1 / 165;
 export class TrailerMaker {
     public root = root;
     public markers = [];
@@ -13,7 +13,7 @@ export class TrailerMaker {
     public currentPlaybackZoom = 3;
 
         constructor(root) {
-        window.addEventListener("keydown", (ev: any): any => {
+        window.addEventListener("keydown", ev => {
             if (ev.key === "j") {
                 console.log("Record");
                 this.markers.push({
@@ -25,8 +25,8 @@ export class TrailerMaker {
             }
             else if (ev.key === "k") {
                 console.log("Export");
-                const json: any = JSON.stringify(this.markers);
-                const handle: any = window.open("about:blank");
+                const json = JSON.stringify(this.markers);
+                const handle = window.open("about:blank");
                 handle.document.write(json);
             }
             else if (ev.key === "u") {
@@ -35,7 +35,7 @@ export class TrailerMaker {
                     return;
                 }
                 console.log("Playback");
-                this.playbackMarkers = trailerPoints.map((p: any): any => Object.assign({}, p));
+                this.playbackMarkers = trailerPoints.map(p => Object.assign({}, p));
                 this.playbackMarkers.unshift(this.playbackMarkers[0]);
                 this.currentPlaybackOrigin = Vector.fromSerializedObject(this.playbackMarkers[0].pos);
                 this.currentPlaybackZoom = this.playbackMarkers[0].zoom;
@@ -66,20 +66,20 @@ export class TrailerMaker {
             }
         });
     }
-    update(): any {
+    update() {
         if (this.playbackMarkers && this.playbackMarkers.length > 0) {
-            const nextMarker: any = this.playbackMarkers[0];
+            const nextMarker = this.playbackMarkers[0];
             if (!nextMarker.startTime) {
                 console.log("Starting to approach", nextMarker.pos);
                 nextMarker.startTime = performance.now() / 1000.0;
             }
-            const speed: any = globalConfig.tileSize *
+            const speed = globalConfig.tileSize *
                 globalConfig.beltSpeedItemsPerSecond *
                 globalConfig.itemSpacingOnBelts;
             // let time =
             //     this.currentPlaybackOrigin.distance(Vector.fromSerializedObject(nextMarker.pos)) / speed;
-            const time: any = nextMarker.time;
-            const progress: any = (performance.now() / 1000.0 - nextMarker.startTime) / time;
+            const time = nextMarker.time;
+            const progress = (performance.now() / 1000.0 - nextMarker.startTime) / time;
             if (progress > 1.0) {
                 if (nextMarker.wait > 0) {
                     nextMarker.wait -= tickrate;
@@ -92,10 +92,10 @@ export class TrailerMaker {
                 }
                 return;
             }
-            const targetPos: any = Vector.fromSerializedObject(nextMarker.pos);
-            const targetZoom: any = nextMarker.zoom;
-            const pos: any = mixVector(this.currentPlaybackOrigin, targetPos, progress);
-            const zoom: any = lerp(this.currentPlaybackZoom, targetZoom, progress);
+            const targetPos = Vector.fromSerializedObject(nextMarker.pos);
+            const targetZoom = nextMarker.zoom;
+            const pos = mixVector(this.currentPlaybackOrigin, targetPos, progress);
+            const zoom = lerp(this.currentPlaybackZoom, targetZoom, progress);
             this.root.camera.zoomLevel = zoom;
             this.root.camera.center = pos;
         }

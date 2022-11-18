@@ -9,13 +9,13 @@ import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
 /** @enum {string} */
-export const enumCutterVariants: any = { quad: "quad" };
+export const enumCutterVariants = { quad: "quad" };
 export class MetaCutterBuilding extends MetaBuilding {
 
     constructor() {
         super("cutter");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 9,
@@ -27,10 +27,10 @@ export class MetaCutterBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#7dcda2";
     }
-    getDimensions(variant: any): any {
+    getDimensions(variant) {
         switch (variant) {
             case defaultBuildingVariant:
                 return new Vector(2, 1);
@@ -50,24 +50,24 @@ export class MetaCutterBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed: any = root.hubGoals.getProcessorBaseSpeed(variant === enumCutterVariants.quad
+        const speed = root.hubGoals.getProcessorBaseSpeed(variant === enumCutterVariants.quad
             ? enumItemProcessorTypes.cutterQuad
             : enumItemProcessorTypes.cutter);
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
-        getAvailableVariants(root: GameRoot): any {
+        getAvailableVariants(root: GameRoot) {
         if (root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_quad)) {
             return [defaultBuildingVariant, enumCutterVariants.quad];
         }
         return super.getAvailableVariants(root);
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_cutter_and_trash);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemProcessorComponent({
             inputsPerCharge: 1,
             processorType: enumItemProcessorTypes.cutter,
@@ -83,7 +83,7 @@ export class MetaCutterBuilding extends MetaBuilding {
             ],
         }));
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: string): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant: string) {
         switch (variant) {
             case defaultBuildingVariant: {
                 entity.components.ItemEjector.setSlots([

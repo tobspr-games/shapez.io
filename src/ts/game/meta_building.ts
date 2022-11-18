@@ -6,7 +6,7 @@ import { StaticMapEntityComponent } from "./components/static_map_entity";
 import { Entity } from "./entity";
 import { GameRoot } from "./root";
 import { getCodeFromBuildingData } from "./building_codes";
-export const defaultBuildingVariant: any = "default";
+export const defaultBuildingVariant = "default";
 export class MetaBuilding {
     public id = id;
 
@@ -28,7 +28,7 @@ export class MetaBuilding {
     /**
      * Returns the id of this building
      */
-    getId(): any {
+    getId() {
         return this.id;
     }
     /**
@@ -41,19 +41,19 @@ export class MetaBuilding {
     /**
      * Should return the dimensions of the building
      */
-    getDimensions(variant: any = defaultBuildingVariant): any {
+    getDimensions(variant = defaultBuildingVariant) {
         return new Vector(1, 1);
     }
     /**
      * Returns whether the building has the direction lock switch available
      */
-    getHasDirectionLockAvailable(variant: string): any {
+    getHasDirectionLockAvailable(variant: string) {
         return false;
     }
     /**
      * Whether to stay in placement mode after having placed a building
      */
-    getStayInPlacementMode(): any {
+    getStayInPlacementMode() {
         return false;
     }
     /**
@@ -76,26 +76,26 @@ export class MetaBuilding {
     /**
      * Returns whether this building can get replaced
      */
-    getIsReplaceable(variant: string, rotationVariant: number): any {
+    getIsReplaceable(variant: string, rotationVariant: number) {
         return false;
     }
     /**
      * Whether to flip the orientation after a building has been placed - useful
      * for tunnels.
      */
-    getFlipOrientationAfterPlacement(): any {
+    getFlipOrientationAfterPlacement() {
         return false;
     }
     /**
      * Whether to show a preview of the wires layer when placing the building
      */
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return false;
     }
     /**
      * Whether to rotate automatically in the dragging direction while placing
      */
-    getRotateAutomaticallyWhilePlacing(variant: string): any {
+    getRotateAutomaticallyWhilePlacing(variant: string) {
         return false;
     }
     /**
@@ -112,14 +112,14 @@ export class MetaBuilding {
     getPlacementSound(): string {
         return SOUNDS.placeBuilding;
     }
-        getAvailableVariants(root: GameRoot): any {
+        getAvailableVariants(root: GameRoot) {
         return [defaultBuildingVariant];
     }
     /**
      * Returns a preview sprite
      * {}
      */
-    getPreviewSprite(rotationVariant: any = 0, variant: any = defaultBuildingVariant): AtlasSprite {
+    getPreviewSprite(rotationVariant = 0, variant = defaultBuildingVariant): AtlasSprite {
         return Loader.getSprite("sprites/buildings/" +
             this.id +
             (variant === defaultBuildingVariant ? "" : "-" + variant) +
@@ -129,7 +129,7 @@ export class MetaBuilding {
      * Returns a sprite for blueprints
      * {}
      */
-    getBlueprintSprite(rotationVariant: any = 0, variant: any = defaultBuildingVariant): AtlasSprite {
+    getBlueprintSprite(rotationVariant = 0, variant = defaultBuildingVariant): AtlasSprite {
         return Loader.getSprite("sprites/blueprints/" +
             this.id +
             (variant === defaultBuildingVariant ? "" : "-" + variant) +
@@ -145,13 +145,13 @@ export class MetaBuilding {
     /**
      * Returns whether this building is unlocked for the given game
      */
-    getIsUnlocked(root: GameRoot): any {
+    getIsUnlocked(root: GameRoot) {
         return true;
     }
     /**
      * Should return a silhouette color for the map overview or null if not set
      */
-    getSilhouetteColor(variant: string, rotationVariant: number): any {
+    getSilhouetteColor(variant: string, rotationVariant: number) {
         return null;
     }
     /**
@@ -171,8 +171,8 @@ export class MetaBuilding {
         originalRotation: number;
         rotationVariant: number;
         variant: string;
-    }): any {
-        const entity: any = new Entity(root);
+    }) {
+        const entity = new Entity(root);
         entity.layer = this.getLayer();
         entity.addComponent(new StaticMapEntityComponent({
             origin: new Vector(origin.x, origin.y),
@@ -224,13 +224,13 @@ export class MetaBuilding {
     /**
      * Should update the entity to match the given variants
      */
-    updateVariants(entity: Entity, rotationVariant: number, variant: string): any { }
+    updateVariants(entity: Entity, rotationVariant: number, variant: string) { }
     // PRIVATE INTERFACE
     /**
      * Should setup the entity components
      * @abstract
      */
-    setupEntityComponents(entity: Entity, root: GameRoot): any {
+    setupEntityComponents(entity: Entity, root: GameRoot) {
         abstract;
     }
 }

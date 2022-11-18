@@ -10,7 +10,7 @@ export class InputReceiver {
 
     constructor(context = "unknown") {
     }
-    cleanup(): any {
+    cleanup() {
         this.backButton.removeAll();
         this.keydown.removeAll();
         this.keyup.removeAll();

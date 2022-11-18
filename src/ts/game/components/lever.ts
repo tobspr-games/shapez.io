@@ -1,10 +1,10 @@
 import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 export class LeverComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Lever";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             toggled: types.bool,
         };
@@ -12,7 +12,7 @@ export class LeverComponent extends Component {
     /**
      * Copy the current state to another component
      */
-    copyAdditionalStateTo(otherComponent: LeverComponent): any {
+    copyAdditionalStateTo(otherComponent: LeverComponent) {
         otherComponent.toggled = this.toggled;
     }
     public toggled = toggled;

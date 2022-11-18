@@ -4,13 +4,13 @@ import type { PuzzlePlayGameMode } from "../../modes/puzzle_play";
 import { formatBigNumberFull, formatSeconds, makeDiv } from "../../../core/utils";
 import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
-const copy: any = require("clipboard-copy");
+const copy = require("clipboard-copy");
 export class HUDPuzzlePlayMetadata extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.titleElement = makeDiv(parent, "ingame_HUD_PuzzlePlayTitle");
         this.titleElement.innerText = "PUZZLE";
-        const mode: any = (this.root.gameMode as PuzzlePlayGameMode);
-        const puzzle: any = mode.puzzle;
+        const mode = this.root.gameMode as PuzzlePlayGameMode);
+        const puzzle = mode.puzzle;
         this.puzzleNameElement = makeDiv(this.titleElement, null, ["name"]);
         this.puzzleNameElement.innerText = puzzle.meta.title;
         this.element = makeDiv(parent, "ingame_HUD_PuzzlePlayMetadata");
@@ -47,13 +47,13 @@ export class HUDPuzzlePlayMetadata extends BaseHUDPart {
         this.element.querySelector(".author span") as HTMLElement).innerText =
             puzzle.meta.author;
     }
-    initialize(): any { }
-    share(): any {
-        const mode: any = (this.root.gameMode as PuzzlePlayGameMode);
+    initialize() { }
+    share() {
+        const mode = this.root.gameMode as PuzzlePlayGameMode);
         mode.sharePuzzle();
     }
-    report(): any {
-        const mode: any = (this.root.gameMode as PuzzlePlayGameMode);
+    report() {
+        const mode = this.root.gameMode as PuzzlePlayGameMode);
         mode.reportPuzzle();
     }
 }

@@ -6,7 +6,7 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 export class HUDStandaloneAdvantages extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_StandaloneAdvantages", ["ingameDialog"]);
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
@@ -15,7 +15,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         this.contentDiv = makeDiv(this.dialogInner, null, ["content"], `
             <div class="points">
                 ${Object.entries(T.ingame.standaloneAdvantages.points)
-            .map(([key, trans]: any): any => `
+            .map(([key, trans]) => `
                 <div class="point ${key}">
                     <strong>${trans.title}</strong>
                     <p>${trans.desc}</p>
@@ -36,17 +36,17 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             <button class="otherCloseButton" data-btn-variant="prod">${T.ingame.standaloneAdvantages.no_thanks}</button>
             </div>
         `);
-        this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), (): any => {
+        this.trackClicks(this.contentDiv.querySelector("button.steamLinkButton"), () => {
             openStandaloneLink(this.root.app, "shapez_std_advg");
             this.close();
         });
-        this.trackClicks(this.contentDiv.querySelector("button.otherCloseButton"), (): any => {
+        this.trackClicks(this.contentDiv.querySelector("button.otherCloseButton"), () => {
             this.close();
         });
-        this.trackClicks(this.contentDiv.querySelector(".playtimeDisclaimerDownload"), (): any => {
+        this.trackClicks(this.contentDiv.querySelector(".playtimeDisclaimerDownload"), () => {
             this.root.gameState.savegame.updateData(this.root);
-            const data: any = ReadWriteProxy.serializeObject(this.root.gameState.savegame.currentData);
-            const filename: any = "shapez-demo-savegame.bin";
+            const data = ReadWriteProxy.serializeObject(this.root.gameState.savegame.currentData);
+            const filename = "shapez-demo-savegame.bin";
             generateFileDownload(filename, data);
         });
     }
@@ -56,16 +56,16 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         }
         return 15 * 60;
     }
-    shouldPauseGame(): any {
+    shouldPauseGame() {
         return this.visible;
     }
-    shouldPauseRendering(): any {
+    shouldPauseRendering() {
         return this.visible;
     }
-    hasBlockingOverlayOpen(): any {
+    hasBlockingOverlayOpen() {
         return this.visible;
     }
-    initialize(): any {
+    initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
         });
@@ -74,14 +74,14 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
         // On standalone, show popup instant
         // wait for next interval
         this.lastShown = 0;
-        this.root.signals.gameRestored.add((): any => {
+        this.root.signals.gameRestored.add(() => {
             if (this.root.hubGoals.level >= this.root.gameMode.getLevelDefinitions().length - 1 &&
                 this.root.app.restrictionMgr.getIsStandaloneMarketingActive()) {
                 this.show(true);
             }
         });
     }
-    show(final: any = false): any {
+    show(final = false) {
         if (!this.visible) {
             this.root.app.gameAnalytics.noteMinor("game.std_advg.show");
             this.root.app.gameAnalytics.noteMinor("game.std_advg.show-" + (final ? "final" : "nonfinal"));
@@ -100,7 +100,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             this.title.innerText = T.ingame.standaloneAdvantages.titleEnjoyingDemo;
         }
     }
-    close(): any {
+    close() {
         if (this.final) {
             this.root.gameState.goBackToMenu();
         }
@@ -110,7 +110,7 @@ export class HUDStandaloneAdvantages extends BaseHUDPart {
             this.update();
         }
     }
-    update(): any {
+    update() {
         if (!this.visible && this.root.time.now() - this.lastShown > this.showIntervalSeconds) {
             this.show();
         }

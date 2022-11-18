@@ -26,7 +26,7 @@ export class PlatformWrapperInterface {
     /**
      * Returns the strength of touch pans with the mouse
      */
-    getTouchPanStrength(): any {
+    getTouchPanStrength() {
         return 1;
     }
     /** {} */
@@ -55,59 +55,59 @@ export class PlatformWrapperInterface {
     getMaximumZoom(): number {
         return 3.5 * this.getScreenScale();
     }
-    getScreenScale(): any {
+    getScreenScale() {
         return Math.min(window.innerWidth, window.innerHeight) / 1024.0;
     }
     /**
      * Should return if this platform supports ads at all
      */
-    getSupportsAds(): any {
+    getSupportsAds() {
         return false;
     }
     /**
      * Attempt to open an external url
      * @abstract
      */
-    openExternalLink(url: string, force: boolean= = false): any {
+    openExternalLink(url: string, force: boolean= = false) {
         abstract;
     }
     /**
      * Attempt to restart the app
      * @abstract
      */
-    performRestart(): any {
+    performRestart() {
         abstract;
     }
     /**
      * Returns whether this platform supports a toggleable fullscreen
      */
-    getSupportsFullscreen(): any {
+    getSupportsFullscreen() {
         return false;
     }
     /**
      * Should set the apps fullscreen state to the desired state
      * @abstract
      */
-    setFullscreen(flag: boolean): any {
+    setFullscreen(flag: boolean) {
         abstract;
     }
     /**
      * Returns whether this platform supports quitting the app
      */
-    getSupportsAppExit(): any {
+    getSupportsAppExit() {
         return false;
     }
     /**
      * Attempts to quit the app
      * @abstract
      */
-    exitApp(): any {
+    exitApp() {
         abstract;
     }
     /**
      * Whether this platform supports a keyboard
      */
-    getSupportsKeyboard(): any {
+    getSupportsKeyboard() {
         return !IS_MOBILE;
     }
 }

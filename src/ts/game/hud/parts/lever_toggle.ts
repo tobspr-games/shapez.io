@@ -3,14 +3,14 @@ import { Vector } from "../../../core/vector";
 import { enumMouseButton } from "../../camera";
 import { BaseHUDPart } from "../base_hud_part";
 export class HUDLeverToggle extends BaseHUDPart {
-    initialize(): any {
+    initialize() {
         this.root.camera.downPreHandler.add(this.downPreHandler, this);
     }
-        downPreHandler(pos: Vector, button: enumMouseButton): any {
-        const tile: any = this.root.camera.screenToWorld(pos).toTileSpace();
-        const contents: any = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
+        downPreHandler(pos: Vector, button: enumMouseButton) {
+        const tile = this.root.camera.screenToWorld(pos).toTileSpace();
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
         if (contents) {
-            const leverComp: any = contents.components.Lever;
+            const leverComp = contents.components.Lever;
             if (leverComp) {
                 if (button === enumMouseButton.left) {
                     leverComp.toggled = !leverComp.toggled;

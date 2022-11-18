@@ -19,7 +19,7 @@ export class DisplaySystem extends GameSystem {
 
     constructor(root) {
         super(root);
-        for (const colorId: any in enumColors) {
+        for (const colorId in enumColors) {
             if (colorId === enumColors.uncolored) {
                 continue;
             }
@@ -42,7 +42,7 @@ export class DisplaySystem extends GameSystem {
                 return isTrueItem(value) ? COLOR_ITEM_SINGLETONS[enumColors.white] : null;
             }
             case "color": {
-                const item: any = (value as ColorItem);
+                const item =  (value as ColorItem);
                 return item.color === enumColors.uncolored ? null : item;
             }
             case "shape": {
@@ -55,17 +55,17 @@ export class DisplaySystem extends GameSystem {
     /**
      * Draws a given chunk
      */
-    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
+    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
             if (entity && entity.components.Display) {
-                const pinsComp: any = entity.components.WiredPins;
-                const network: any = pinsComp.slots[0].linkedNetwork;
+                const pinsComp = entity.components.WiredPins;
+                const network = pinsComp.slots[0].linkedNetwork;
                 if (!network || !network.hasValue()) {
                     continue;
                 }
-                const value: any = this.getDisplayItem(network.currentValue);
+                const value = this.getDisplayItem(network.currentValue);
                 if (!value) {
                     continue;
                 }
@@ -76,7 +76,7 @@ export class DisplaySystem extends GameSystem {
                         value,
                     ]);
                 }
-                const origin: any = entity.components.StaticMapEntity.origin;
+                const origin = entity.components.StaticMapEntity.origin;
                 if (value.getItemType() === "color") {
                     this.displaySprites[ alue as ColorItem).color].drawCachedCentered(parameters, (origin.x + 0.5) * globalConfig.tileSize, (origin.y + 0.5) * globalConfig.tileSize, globalConfig.tileSize);
                 }

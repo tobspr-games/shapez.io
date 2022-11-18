@@ -8,7 +8,7 @@ import { HUDPuzzleBackToMenu } from "../hud/parts/puzzle_back_to_menu";
 import { HUDPuzzleDLCLogo } from "../hud/parts/puzzle_dlc_logo";
 import { HUDMassSelector } from "../hud/parts/mass_selector";
 export class PuzzleGameMode extends GameMode {
-    static getType(): any {
+    static getType() {
         return enumGameModeTypes.puzzle;
     }
     /** {} */
@@ -28,52 +28,52 @@ export class PuzzleGameMode extends GameMode {
 
         constructor(root) {
         super(root);
-        const data: any = this.getSaveData();
+        const data = this.getSaveData();
     }
-        isBuildingExcluded(building: typeof import("../meta_building").MetaBuilding): any {
+        isBuildingExcluded(building: typeof import("../meta_building").MetaBuilding) {
         return this.hiddenBuildings.indexOf(building) >= 0;
     }
-    getSaveData(): any {
-        const save: any = this.root.savegame.getCurrentDump();
+    getSaveData() {
+        const save = this.root.savegame.getCurrentDump();
         if (!save) {
             return {};
         }
         return save.gameMode.data;
     }
-    getCameraBounds(): any {
+    getCameraBounds() {
         return Rectangle.centered(this.zoneWidth + 20, this.zoneHeight + 20);
     }
-    getBuildableZones(): any {
+    getBuildableZones() {
         return [Rectangle.centered(this.zoneWidth, this.zoneHeight)];
     }
-    hasHub(): any {
+    hasHub() {
         return false;
     }
-    hasResources(): any {
+    hasResources() {
         return false;
     }
-    getMinimumZoom(): any {
+    getMinimumZoom() {
         return 1;
     }
-    getMaximumZoom(): any {
+    getMaximumZoom() {
         return 4;
     }
-    getIsSaveable(): any {
+    getIsSaveable() {
         return false;
     }
-    getHasFreeCopyPaste(): any {
+    getHasFreeCopyPaste() {
         return true;
     }
-    throughputDoesNotMatter(): any {
+    throughputDoesNotMatter() {
         return true;
     }
-    getSupportsWires(): any {
+    getSupportsWires() {
         return false;
     }
-    getFixedTickrate(): any {
+    getFixedTickrate() {
         return 300;
     }
-    getIsDeterministic(): any {
+    getIsDeterministic() {
         return true;
     }
     /** {} */

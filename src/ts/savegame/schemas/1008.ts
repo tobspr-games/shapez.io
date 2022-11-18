@@ -1,18 +1,18 @@
 import { createLogger } from "../../core/logging.js";
 import { SavegameInterface_V1007 } from "./1007.js";
-const schema: any = require("./1008.json");
-const logger: any = createLogger("savegame_interface/1008");
+const schema = require("./1008.json");
+const logger = createLogger("savegame_interface/1008");
 export class SavegameInterface_V1008 extends SavegameInterface_V1007 {
-    getVersion(): any {
+    getVersion() {
         return 1008;
     }
-    getSchemaUncached(): any {
+    getSchemaUncached() {
         return schema;
     }
     
-    static migrate1007to1008(data: import("../savegame_typedefs.js").SavegameData): any {
+    static migrate1007to1008(data: import("../savegame_typedefs.js").SavegameData) {
         logger.log("Migrating 1007 to 1008");
-        const dump: any = data.dump;
+        const dump = data.dump;
         if (!dump) {
             return true;
         }

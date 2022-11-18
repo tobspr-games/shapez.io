@@ -1,5 +1,5 @@
 /** @enum {string} */
-export const enumColors: any = {
+export const enumColors = {
     red: "red",
     green: "green",
     blue: "blue",
@@ -9,9 +9,9 @@ export const enumColors: any = {
     white: "white",
     uncolored: "uncolored",
 };
-const c: any = enumColors;
+const c = enumColors;
 /** @enum {string} */
-export const enumColorToShortcode: any = {
+export const enumColorToShortcode = {
     [c.red]: "r",
     [c.green]: "g",
     [c.blue]: "b",
@@ -22,12 +22,12 @@ export const enumColorToShortcode: any = {
     [c.uncolored]: "u",
 };
 /** @enum {enumColors} */
-export const enumShortcodeToColor: any = {};
-for (const key: any in enumColorToShortcode) {
+export const enumShortcodeToColor = {};
+for (const key in enumColorToShortcode) {
     enumShortcodeToColor[enumColorToShortcode[key]] = key;
 }
 /** @enum {string} */
-export const enumColorsToHexCode: any = {
+export const enumColorsToHexCode = {
     [c.red]: "#ff666a",
     [c.green]: "#78ff66",
     [c.blue]: "#66a7ff",
@@ -42,8 +42,8 @@ export const enumColorsToHexCode: any = {
     [c.uncolored]: "#aaaaaa",
 };
 /** @enum {Object.<string, string>} */
-export const enumColorMixingResults: any = {};
-const bitfieldToColor: any = [
+export const enumColorMixingResults = {};
+const bitfieldToColor = [
     /* 000 */ c.uncolored,
     /* 001 */ c.red,
     /* 010 */ c.green,
@@ -53,9 +53,9 @@ const bitfieldToColor: any = [
     /* 110 */ c.cyan,
     /* 111 */ c.white,
 ];
-for (let i: any = 0; i < 1 << 3; ++i) {
+for (let i = 0; i < 1 << 3; ++i) {
     enumColorMixingResults[bitfieldToColor[i]] = {};
-    for (let j: any = 0; j < 1 << 3; ++j) {
+    for (let j = 0; j < 1 << 3; ++j) {
         enumColorMixingResults[bitfieldToColor[i]][bitfieldToColor[j]] = bitfieldToColor[i | j];
     }
 }

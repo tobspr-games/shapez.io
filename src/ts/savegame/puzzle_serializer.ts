@@ -16,16 +16,16 @@ import { enumColors } from "../game/colors";
 import { COLOR_ITEM_SINGLETONS } from "../game/items/color_item";
 import { ShapeDefinition } from "../game/shape_definition";
 import { MetaBlockBuilding } from "../game/buildings/block";
-const logger: any = createLogger("puzzle-serializer");
+const logger = createLogger("puzzle-serializer");
 export class PuzzleSerializer {
     
     generateDumpFromGameRoot(root: GameRoot): import("./savegame_typedefs").PuzzleGameData {
         console.log("serializing", root);
         
         let buildings: import("./savegame_typedefs").PuzzleGameData["buildings"] = [];
-        for (const entity: any of root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
-            const staticComp: any = entity.components.StaticMapEntity;
-            const signalComp: any = entity.components.ConstantSignal;
+        for (const entity of root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+            const signalComp = entity.components.ConstantSignal;
             if (signalComp) {
                 assert(["shape", "color"].includes(signalComp.signal.getItemType()), "not a shape signal");
                 buildings.push({
@@ -39,7 +39,7 @@ export class PuzzleSerializer {
                 });
                 continue;
             }
-            const goalComp: any = entity.components.GoalAcceptor;
+            const goalComp = entity.components.GoalAcceptor;
             if (goalComp) {
                 assert(goalComp.item, "goals is missing item");
                 assert(goalComp.item.getItemType() === "shape", "goal is not an item");
@@ -65,12 +65,12 @@ export class PuzzleSerializer {
                 });
             }
         }
-        const mode: any = (root.gameMode as PuzzleGameMode);
-        const handles: any = root.hud.parts.buildingsToolbar.buildingHandles;
-        const ids: any = gMetaBuildingRegistry.getAllIds();
+        const mode = root.gameMode as PuzzleGameMode);
+        const handles = root.hud.parts.buildingsToolbar.buildingHandles;
+        const ids = gMetaBuildingRegistry.getAllIds();
                 let excludedBuildings: Array<string> = [];
-        for (let i: any = 0; i < ids.length; ++i) {
-            const handle: any = handles[ids[i]];
+        for (let i = 0; i < ids.length; ++i) {
+            const handle = handles[ids[i]];
             if (handle && handle.puzzleLocked) {
                 // @ts-ignore
                 excludedBuildings.push(handle.metaBuilding.getId());
@@ -97,7 +97,7 @@ export class PuzzleSerializer {
             return null;
         }
         code = trim(code);
-        const codeLower: any = code.toLowerCase();
+        const codeLower = code.toLowerCase();
         if (enumColors[codeLower]) {
             return COLOR_ITEM_SINGLETONS[codeLower];
         }
@@ -107,18 +107,18 @@ export class PuzzleSerializer {
         return null;
     }
     
-    deserializePuzzle(root: GameRoot, puzzle: import("./savegame_typedefs").PuzzleGameData): any {
+    deserializePuzzle(root: GameRoot, puzzle: import("./savegame_typedefs").PuzzleGameData) {
         if (puzzle.version !== 1) {
             return "invalid-version";
         }
-        for (const building: any of puzzle.buildings) {
+        for (const building of puzzle.buildings) {
             switch (building.type) {
                 case "emitter": {
-                    const item: any = this.parseItemCode(root, building.item);
+                    const item = this.parseItemCode(root, building.item);
                     if (!item) {
                         return "bad-item:" + building.item;
                     }
-                    const entity: any = root.logic.tryPlaceBuilding({
+                    const entity = root.logic.tryPlaceBuilding({
                         origin: new Vector(building.pos.x, building.pos.y),
                         building: gMetaBuildingRegistry.findByClass(MetaConstantProducerBuilding),
                         originalRotation: building.pos.r,
@@ -134,11 +134,11 @@ export class PuzzleSerializer {
                     break;
                 }
                 case "goal": {
-                    const item: any = this.parseItemCode(root, building.item);
+                    const item = this.parseItemCode(root, building.item);
                     if (!item) {
                         return "bad-item:" + building.item;
                     }
-                    const entity: any = root.logic.tryPlaceBuilding({
+                    const entity = root.logic.tryPlaceBuilding({
                         origin: new Vector(building.pos.x, building.pos.y),
                         building: gMetaBuildingRegistry.findByClass(MetaGoalAcceptorBuilding),
                         originalRotation: building.pos.r,
@@ -154,7 +154,7 @@ export class PuzzleSerializer {
                     break;
                 }
                 case "block": {
-                    const entity: any = root.logic.tryPlaceBuilding({
+                    const entity = root.logic.tryPlaceBuilding({
                         origin: new Vector(building.pos.x, building.pos.y),
                         building: gMetaBuildingRegistry.findByClass(MetaBlockBuilding),
                         originalRotation: building.pos.r,

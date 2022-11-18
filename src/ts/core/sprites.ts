@@ -1,9 +1,9 @@
 import { DrawParameters } from "./draw_parameters";
 import { Rectangle } from "./rectangle";
 import { round3Digits } from "./utils";
-export const ORIGINAL_SPRITE_SCALE: any = "0.75";
-export const FULL_CLIP_RECT: any = new Rectangle(0, 0, 1, 1);
-const EXTRUDE: any = 0.1;
+export const ORIGINAL_SPRITE_SCALE = "0.75";
+export const FULL_CLIP_RECT = new Rectangle(0, 0, 1, 1);
+const EXTRUDE = 0.1;
 export class BaseSprite {
     /**
      * Returns the raw handle
@@ -17,7 +17,7 @@ export class BaseSprite {
     /**
      * Draws the sprite
      */
-    draw(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number): any {
+    draw(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number) {
         // eslint-disable-line no-unused-vars
         abstract;
     }
@@ -49,18 +49,18 @@ export class AtlasSprite extends BaseSprite {
         constructor(spriteName = "sprite") {
         super();
     }
-    getRawTexture(): any {
+    getRawTexture() {
         return this.linksByResolution[ORIGINAL_SPRITE_SCALE].atlas;
     }
     /**
      * Draws the sprite onto a regular context using no contexts
      * @see {BaseSprite.draw}
      */
-    draw(context: any, x: any, y: any, w: any, h: any): any {
+    draw(context, x, y, w, h) {
         if (G_IS_DEV) {
             assert(context instanceof CanvasRenderingContext2D, "Not a valid context");
         }
-        const link: any = this.linksByResolution[ORIGINAL_SPRITE_SCALE];
+        const link = this.linksByResolution[ORIGINAL_SPRITE_SCALE];
         if (!link) {
             throw new Error("draw: Link for " +
                 this.spriteName +
@@ -70,30 +70,30 @@ export class AtlasSprite extends BaseSprite {
                 Object.keys(this.linksByResolution) +
                 ")");
         }
-        const width: any = w || link.w;
-        const height: any = h || link.h;
-        const scaleW: any = width / link.w;
-        const scaleH: any = height / link.h;
+        const width = w || link.w;
+        const height = h || link.h;
+        const scaleW = width / link.w;
+        const scaleH = height / link.h;
         context.drawImage(link.atlas, link.packedX, link.packedY, link.packedW, link.packedH, x + link.packOffsetX * scaleW, y + link.packOffsetY * scaleH, link.packedW * scaleW, link.packedH * scaleH);
     }
-        drawCachedCentered(parameters: DrawParameters, x: number, y: number, size: number, clipping: boolean= = true): any {
+        drawCachedCentered(parameters: DrawParameters, x: number, y: number, size: number, clipping: boolean= = true) {
         this.drawCached(parameters, x - size / 2, y - size / 2, size, size, clipping);
     }
-        drawCentered(context: CanvasRenderingContext2D, x: number, y: number, size: number): any {
+        drawCentered(context: CanvasRenderingContext2D, x: number, y: number, size: number) {
         this.draw(context, x - size / 2, y - size / 2, size, size);
     }
     /**
      * Draws the sprite
      */
-    drawCached(parameters: DrawParameters, x: number, y: number, w: number = null, h: number = null, clipping: boolean= = true): any {
+    drawCached(parameters: DrawParameters, x: number, y: number, w: number = null, h: number = null, clipping: boolean= = true) {
         if (G_IS_DEV) {
             assert(parameters instanceof DrawParameters, "Not a valid context");
             assert(!!w && w > 0, "Not a valid width:" + w);
             assert(!!h && h > 0, "Not a valid height:" + h);
         }
-        const visibleRect: any = parameters.visibleRect;
-        const scale: any = parameters.desiredAtlasScale;
-        const link: any = this.linksByResolution[scale];
+        const visibleRect = parameters.visibleRect;
+        const scale = parameters.desiredAtlasScale;
+        const link = this.linksByResolution[scale];
         if (!link) {
             throw new Error("drawCached: Link for " +
                 this.spriteName +
@@ -103,19 +103,19 @@ export class AtlasSprite extends BaseSprite {
                 Object.keys(this.linksByResolution) +
                 ")");
         }
-        const scaleW: any = w / link.w;
-        const scaleH: any = h / link.h;
-        let destX: any = x + link.packOffsetX * scaleW;
-        let destY: any = y + link.packOffsetY * scaleH;
-        let destW: any = link.packedW * scaleW;
-        let destH: any = link.packedH * scaleH;
-        let srcX: any = link.packedX;
-        let srcY: any = link.packedY;
-        let srcW: any = link.packedW;
-        let srcH: any = link.packedH;
-        let intersection: any = null;
+        const scaleW = w / link.w;
+        const scaleH = h / link.h;
+        let destX = x + link.packOffsetX * scaleW;
+        let destY = y + link.packOffsetY * scaleH;
+        let destW = link.packedW * scaleW;
+        let destH = link.packedH * scaleH;
+        let srcX = link.packedX;
+        let srcY = link.packedY;
+        let srcW = link.packedW;
+        let srcH = link.packedH;
+        let intersection = null;
         if (clipping) {
-            const rect: any = new Rectangle(destX, destY, destW, destH);
+            const rect = new Rectangle(destX, destY, destW, destH);
             intersection = rect.getIntersection(visibleRect);
             if (!intersection) {
                 return;
@@ -140,15 +140,15 @@ export class AtlasSprite extends BaseSprite {
     /**
      * Draws a subset of the sprite. Does NO culling
      */
-    drawCachedWithClipRect(parameters: DrawParameters, x: number, y: number, w: number = null, h: number = null, clipRect: Rectangle= = FULL_CLIP_RECT): any {
+    drawCachedWithClipRect(parameters: DrawParameters, x: number, y: number, w: number = null, h: number = null, clipRect: Rectangle= = FULL_CLIP_RECT) {
         if (G_IS_DEV) {
             assert(parameters instanceof DrawParameters, "Not a valid context");
             assert(!!w && w > 0, "Not a valid width:" + w);
             assert(!!h && h > 0, "Not a valid height:" + h);
             assert(clipRect, "No clip rect given!");
         }
-        const scale: any = parameters.desiredAtlasScale;
-        const link: any = this.linksByResolution[scale];
+        const scale = parameters.desiredAtlasScale;
+        const link = this.linksByResolution[scale];
         if (!link) {
             throw new Error("drawCachedWithClipRect: Link for " +
                 this.spriteName +
@@ -158,16 +158,16 @@ export class AtlasSprite extends BaseSprite {
                 Object.keys(this.linksByResolution) +
                 ")");
         }
-        const scaleW: any = w / link.w;
-        const scaleH: any = h / link.h;
-        let destX: any = x + link.packOffsetX * scaleW + clipRect.x * w;
-        let destY: any = y + link.packOffsetY * scaleH + clipRect.y * h;
-        let destW: any = link.packedW * scaleW * clipRect.w;
-        let destH: any = link.packedH * scaleH * clipRect.h;
-        let srcX: any = link.packedX + clipRect.x * link.packedW;
-        let srcY: any = link.packedY + clipRect.y * link.packedH;
-        let srcW: any = link.packedW * clipRect.w;
-        let srcH: any = link.packedH * clipRect.h;
+        const scaleW = w / link.w;
+        const scaleH = h / link.h;
+        let destX = x + link.packOffsetX * scaleW + clipRect.x * w;
+        let destY = y + link.packOffsetY * scaleH + clipRect.y * h;
+        let destW = link.packedW * scaleW * clipRect.w;
+        let destH = link.packedH * scaleH * clipRect.h;
+        let srcX = link.packedX + clipRect.x * link.packedW;
+        let srcY = link.packedY + clipRect.y * link.packedH;
+        let srcW = link.packedW * clipRect.w;
+        let srcH = link.packedH * clipRect.h;
         parameters.context.drawImage(link.atlas, 
         // atlas src pos
         srcX, srcY, 
@@ -179,15 +179,15 @@ export class AtlasSprite extends BaseSprite {
     /**
      * Renders into an html element
      */
-    renderToHTMLElement(element: HTMLElement, w: number = 1, h: number = 1): any {
+    renderToHTMLElement(element: HTMLElement, w: number = 1, h: number = 1) {
         element.style.position = "relative";
         element.innerHTML = this.getAsHTML(w, h);
     }
     /**
      * Returns the html to render as icon
      */
-    getAsHTML(w: number, h: number): any {
-        const link: any = this.linksByResolution["0.5"];
+    getAsHTML(w: number, h: number) {
+        const link = this.linksByResolution["0.5"];
         if (!link) {
             throw new Error("getAsHTML: Link for " +
                 this.spriteName +
@@ -197,30 +197,30 @@ export class AtlasSprite extends BaseSprite {
                 ")");
         }
         // Find out how much we have to scale it so that it fits
-        const scaleX: any = w / link.w;
-        const scaleY: any = h / link.h;
+        const scaleX = w / link.w;
+        const scaleY = h / link.h;
         // Find out how big the scaled atlas is
-        const atlasW: any = link.atlas.width * scaleX;
-        const atlasH: any = link.atlas.height * scaleY;
+        const atlasW = link.atlas.width * scaleX;
+        const atlasH = link.atlas.height * scaleY;
         // @ts-ignore
-        const srcSafe: any = link.atlas.src.replaceAll("\\", "/");
+        const srcSafe = link.atlas.src.replaceAll("\\", "/");
         // Find out how big we render the sprite
-        const widthAbsolute: any = scaleX * link.packedW;
-        const heightAbsolute: any = scaleY * link.packedH;
+        const widthAbsolute = scaleX * link.packedW;
+        const heightAbsolute = scaleY * link.packedH;
         // Compute the position in the relative container
-        const leftRelative: any = (link.packOffsetX * scaleX) / w;
-        const topRelative: any = (link.packOffsetY * scaleY) / h;
-        const widthRelative: any = widthAbsolute / w;
-        const heightRelative: any = heightAbsolute / h;
+        const leftRelative = (link.packOffsetX * scaleX) / w;
+        const topRelative = (link.packOffsetY * scaleY) / h;
+        const widthRelative = widthAbsolute / w;
+        const heightRelative = heightAbsolute / h;
         // Scale the atlas relative to the width and height of the element
-        const bgW: any = atlasW / widthAbsolute;
-        const bgH: any = atlasH / heightAbsolute;
+        const bgW = atlasW / widthAbsolute;
+        const bgH = atlasH / heightAbsolute;
         // Figure out what the position of the atlas is
-        const bgX: any = link.packedX * scaleX;
-        const bgY: any = link.packedY * scaleY;
+        const bgX = link.packedX * scaleX;
+        const bgY = link.packedY * scaleY;
         // Fuck you, whoever thought its a good idea to make background-position work like it does now
-        const bgXRelative: any = -bgX / (widthAbsolute - atlasW);
-        const bgYRelative: any = -bgY / (heightAbsolute - atlasH);
+        const bgXRelative = -bgX / (widthAbsolute - atlasW);
+        const bgYRelative = -bgY / (heightAbsolute - atlasH);
         return `
             <span class="spritesheetImage" style="
                 background-image: url('${srcSafe}');
@@ -243,14 +243,14 @@ export class RegularSprite extends BaseSprite {
     constructor(sprite, w, h) {
         super();
     }
-    getRawTexture(): any {
+    getRawTexture() {
         return this.sprite;
     }
     /**
      * Draws the sprite, do *not* use this for sprites which are rendered! Only for drawing
      * images into buffers
      */
-    draw(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number): any {
+    draw(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number) {
         assert(context, "No context given");
         assert(x !== undefined, "No x given");
         assert(y !== undefined, "No y given");
@@ -262,7 +262,7 @@ export class RegularSprite extends BaseSprite {
      * Draws the sprite, do *not* use this for sprites which are rendered! Only for drawing
      * images into buffers
      */
-    drawCentered(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number): any {
+    drawCentered(context: CanvasRenderingContext2D, x: number, y: number, w: number, h: number) {
         assert(context, "No context given");
         assert(x !== undefined, "No x given");
         assert(y !== undefined, "No y given");

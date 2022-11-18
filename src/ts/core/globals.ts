@@ -6,11 +6,11 @@ import type { Application } from "../application";
  * It would be nicer to have no globals, but this is the only one. I promise!
  */
 export let GLOBAL_APP: Application = null;
-export function setGlobalApp(app: Application): any {
+export function setGlobalApp(app: Application) {
     assert(!GLOBAL_APP, "Create application twice!");
     GLOBAL_APP = app;
 }
-export const BUILD_OPTIONS: any = {
+export const BUILD_OPTIONS = {
     HAVE_ASSERT: G_HAVE_ASSERT,
     APP_ENVIRONMENT: G_APP_ENVIRONMENT,
     IS_DEV: G_IS_DEV,

@@ -5,23 +5,23 @@ import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 import { Loader } from "../../../core/loader";
 export class HUDWireInfo extends BaseHUDPart {
-    initialize(): any {
+    initialize() {
         this.spriteEmpty = Loader.getSprite("sprites/wires/network_empty.png");
         this.spriteConflict = Loader.getSprite("sprites/wires/network_conflict.png");
     }
-        drawOverlays(parameters: import("../../../core/draw_utils").DrawParameters): any {
+        drawOverlays(parameters: import("../../../core/draw_utils").DrawParameters) {
         if (this.root.currentLayer !== "wires") {
             // Not in the wires layer
             return;
         }
-        const mousePos: any = this.root.app.mousePosition;
+        const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             // No mouse
             return;
         }
-        const worldPos: any = this.root.camera.screenToWorld(mousePos);
-        const tile: any = worldPos.toTileSpace();
-        const entity: any = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
+        const worldPos = this.root.camera.screenToWorld(mousePos);
+        const tile = worldPos.toTileSpace();
+        const entity = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
         if (!entity) {
             // No entity
             return;
@@ -31,7 +31,7 @@ export class HUDWireInfo extends BaseHUDPart {
             // Detailed intersection check
             return;
         }
-        const networks: any = this.root.logic.getEntityWireNetworks(entity, tile);
+        const networks = this.root.logic.getEntityWireNetworks(entity, tile);
         if (networks === null) {
             // This entity will never be able to be connected
             return;
@@ -40,12 +40,12 @@ export class HUDWireInfo extends BaseHUDPart {
             // No network at all
             return;
         }
-        for (let i: any = 0; i < networks.length; ++i) {
-            const network: any = networks[i];
+        for (let i = 0; i < networks.length; ++i) {
+            const network = networks[i];
             this.drawHighlightedNetwork(parameters, network);
         }
         if (networks.length === 1) {
-            const network: any = networks[0];
+            const network = networks[0];
             if (network.valueConflict) {
                 this.spriteConflict.draw(parameters.context, mousePos.x + 15, mousePos.y - 10, 60, 60);
             }
@@ -57,12 +57,12 @@ export class HUDWireInfo extends BaseHUDPart {
             }
         }
     }
-        drawHighlightedNetwork(parameters: import("../../../core/draw_utils").DrawParameters, network: WireNetwork): any {
+        drawHighlightedNetwork(parameters: import("../../../core/draw_utils").DrawParameters, network: WireNetwork) {
         parameters.context.globalAlpha = 0.5;
-        for (let i: any = 0; i < network.wires.length; ++i) {
-            const wire: any = network.wires[i];
-            const staticComp: any = wire.components.StaticMapEntity;
-            const screenTile: any = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
+        for (let i = 0; i < network.wires.length; ++i) {
+            const wire = network.wires[i];
+            const staticComp = wire.components.StaticMapEntity;
+            const screenTile = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
             MapChunkView.drawSingleWiresOverviewTile({
                 context: parameters.context,
                 x: screenTile.x,
@@ -72,10 +72,10 @@ export class HUDWireInfo extends BaseHUDPart {
                 overrideColor: THEME.map.wires.highlightColor,
             });
         }
-        for (let i: any = 0; i < network.tunnels.length; ++i) {
-            const tunnel: any = network.tunnels[i];
-            const staticComp: any = tunnel.components.StaticMapEntity;
-            const screenTile: any = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
+        for (let i = 0; i < network.tunnels.length; ++i) {
+            const tunnel = network.tunnels[i];
+            const staticComp = tunnel.components.StaticMapEntity;
+            const screenTile = this.root.camera.worldToScreen(staticComp.origin.toWorldSpace());
             MapChunkView.drawSingleWiresOverviewTile({
                 context: parameters.context,
                 x: screenTile.x,

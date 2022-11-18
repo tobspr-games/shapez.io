@@ -13,7 +13,7 @@ export class MetaMixerBuilding extends MetaBuilding {
     constructor() {
         super("mixer");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 15,
@@ -21,13 +21,13 @@ export class MetaMixerBuilding extends MetaBuilding {
             },
         ];
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(2, 1);
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#cdbb7d";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_mixer);
     }
     /**
@@ -40,13 +40,13 @@ export class MetaMixerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed: any = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer);
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.mixer);
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemProcessorComponent({
             inputsPerCharge: 2,
             processorType: enumItemProcessorTypes.mixer,

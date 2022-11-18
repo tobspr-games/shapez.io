@@ -7,10 +7,10 @@ import { types } from "../../savegame/serialization";
 import { getBuildingDataFromCode } from "../building_codes";
 import { Component } from "../component";
 export class StaticMapEntityComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "StaticMapEntity";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             origin: types.tileVector,
             rotation: types.float,
@@ -71,7 +71,7 @@ export class StaticMapEntityComponent extends Component {
     /**
      * Copy the current state to another component
      */
-    copyAdditionalStateTo(otherComponent: Component): any {
+    copyAdditionalStateTo(otherComponent: Component) {
         return new StaticMapEntityComponent({
             origin: this.origin.copy(),
             rotation: this.rotation,
@@ -93,7 +93,7 @@ export class StaticMapEntityComponent extends Component {
      * {}
      */
     getTileSpaceBounds(): Rectangle {
-        const size: any = this.getTileSize();
+        const size = this.getTileSize();
         switch (this.rotation) {
             case 0:
                 return new Rectangle(this.origin.x, this.origin.y, size.x, size.y);
@@ -140,7 +140,7 @@ export class StaticMapEntityComponent extends Component {
      * {}
      */
     localTileToWorld(localTile: Vector): Vector {
-        const result: any = localTile.rotateFastMultipleOf90(this.rotation);
+        const result = localTile.rotateFastMultipleOf90(this.rotation);
         result.x += this.origin.x;
         result.y += this.origin.y;
         return result;
@@ -148,19 +148,19 @@ export class StaticMapEntityComponent extends Component {
     /**
      * Transforms from world space to local space
      */
-    worldToLocalTile(worldTile: Vector): any {
-        const localUnrotated: any = worldTile.sub(this.origin);
+    worldToLocalTile(worldTile: Vector) {
+        const localUnrotated = worldTile.sub(this.origin);
         return this.unapplyRotationToVector(localUnrotated);
     }
     /**
      * Returns whether the entity should be drawn for the given parameters
      */
-    shouldBeDrawn(parameters: DrawParameters): any {
-        let x: any = 0;
-        let y: any = 0;
-        let w: any = 0;
-        let h: any = 0;
-        const size: any = this.getTileSize();
+    shouldBeDrawn(parameters: DrawParameters) {
+        let x = 0;
+        let y = 0;
+        let w = 0;
+        let h = 0;
+        const size = this.getTileSize();
         switch (this.rotation) {
             case 0: {
                 x = this.origin.x;
@@ -198,13 +198,13 @@ export class StaticMapEntityComponent extends Component {
     /**
      * Draws a sprite over the whole space of the entity
      */
-    drawSpriteOnBoundsClipped(parameters: DrawParameters, sprite: AtlasSprite, extrudePixels: number= = 0, overridePosition: Vector= = null): any {
+    drawSpriteOnBoundsClipped(parameters: DrawParameters, sprite: AtlasSprite, extrudePixels: number= = 0, overridePosition: Vector= = null) {
         if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
         }
-        const size: any = this.getTileSize();
-        let worldX: any = this.origin.x * globalConfig.tileSize;
-        let worldY: any = this.origin.y * globalConfig.tileSize;
+        const size = this.getTileSize();
+        let worldX = this.origin.x * globalConfig.tileSize;
+        let worldY = this.origin.y * globalConfig.tileSize;
         if (overridePosition) {
             worldX = overridePosition.x * globalConfig.tileSize;
             worldY = overridePosition.y * globalConfig.tileSize;
@@ -214,8 +214,8 @@ export class StaticMapEntityComponent extends Component {
             sprite.drawCached(parameters, worldX - extrudePixels * size.x, worldY - extrudePixels * size.y, globalConfig.tileSize * size.x + 2 * extrudePixels * size.x, globalConfig.tileSize * size.y + 2 * extrudePixels * size.y);
         }
         else {
-            const rotationCenterX: any = worldX + globalConfig.halfTileSize;
-            const rotationCenterY: any = worldY + globalConfig.halfTileSize;
+            const rotationCenterX = worldX + globalConfig.halfTileSize;
+            const rotationCenterY = worldY + globalConfig.halfTileSize;
             parameters.context.translate(rotationCenterX, rotationCenterY);
             parameters.context.rotate(Math.radians(this.rotation));
             sprite.drawCached(parameters, -globalConfig.halfTileSize - extrudePixels * size.x, -globalConfig.halfTileSize - extrudePixels * size.y, globalConfig.tileSize * size.x + 2 * extrudePixels * size.x, globalConfig.tileSize * size.y + 2 * extrudePixels * size.y, false // no clipping possible here

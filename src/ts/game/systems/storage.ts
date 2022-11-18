@@ -13,18 +13,18 @@ export class StorageSystem extends GameSystemWithFilter {
         super(root, [StorageComponent]);
         this.root.signals.gameFrameStarted.add(this.clearDrawnUids, this);
     }
-    clearDrawnUids(): any {
+    clearDrawnUids() {
         this.drawnUids.clear();
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const storageComp: any = entity.components.Storage;
-            const pinsComp: any = entity.components.WiredPins;
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const storageComp = entity.components.Storage;
+            const pinsComp = entity.components.WiredPins;
             // Eject from storage
             if (storageComp.storedItem && storageComp.storedCount > 0) {
-                const ejectorComp: any = entity.components.ItemEjector;
-                const nextSlot: any = ejectorComp.getFirstFreeSlot();
+                const ejectorComp = entity.components.ItemEjector;
+                const nextSlot = ejectorComp.getFirstFreeSlot();
                 if (nextSlot !== null) {
                     if (ejectorComp.tryEject(nextSlot, storageComp.storedItem)) {
                         storageComp.storedCount--;
@@ -34,7 +34,7 @@ export class StorageSystem extends GameSystemWithFilter {
                     }
                 }
             }
-            let targetAlpha: any = storageComp.storedCount > 0 ? 1 : 0;
+            let targetAlpha = storageComp.storedCount > 0 ? 1 : 0;
             storageComp.overlayOpacity = lerp(storageComp.overlayOpacity, targetAlpha, 0.05);
             // a wired pins component is not guaranteed, but if its there, set the value
             if (pinsComp) {
@@ -45,15 +45,15 @@ export class StorageSystem extends GameSystemWithFilter {
             }
         }
     }
-        drawChunk(parameters: DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntitiesByLayer.regular;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const storageComp: any = entity.components.Storage;
+        drawChunk(parameters: DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntitiesByLayer.regular;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const storageComp = entity.components.Storage;
             if (!storageComp) {
                 continue;
             }
-            const storedItem: any = storageComp.storedItem;
+            const storedItem = storageComp.storedItem;
             if (!storedItem) {
                 continue;
             }
@@ -61,10 +61,10 @@ export class StorageSystem extends GameSystemWithFilter {
                 continue;
             }
             this.drawnUids.add(entity.uid);
-            const staticComp: any = entity.components.StaticMapEntity;
-            const context: any = parameters.context;
+            const staticComp = entity.components.StaticMapEntity;
+            const context = parameters.context;
             context.globalAlpha = storageComp.overlayOpacity;
-            const center: any = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
+            const center = staticComp.getTileSpaceBounds().getCenter().toWorldSpace();
             storedItem.drawItemCenteredClipped(center.x, center.y, parameters, 30);
             this.storageOverlaySprite.drawCached(parameters, center.x - 15, center.y + 15, 30, 15);
             if (parameters.visibleRect.containsCircle(center.x, center.y + 25, 20)) {

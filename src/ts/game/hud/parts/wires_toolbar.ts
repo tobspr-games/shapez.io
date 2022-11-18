@@ -33,7 +33,7 @@ export class HUDWiresToolbar extends HUDBaseToolbar {
                 MetaFilterBuilding,
                 MetaDisplayBuilding,
             ],
-            visibilityCondition: (): any => !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "wires",
+            visibilityCondition: () => !this.root.camera.getIsMapOverlayActive() && this.root.currentLayer === "wires",
             htmlElementId: "ingame_HUD_wires_toolbar",
             layer: "wires",
         });

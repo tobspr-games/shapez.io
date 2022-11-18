@@ -1,8 +1,8 @@
 import { GameRoot } from "./root";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
-const logger: any = createLogger("dynamic_tickrate");
-const fpsAccumulationTime: any = 1000;
+const logger = createLogger("dynamic_tickrate");
+const fpsAccumulationTime = 1000;
 export class DynamicTickrate {
     public root = root;
     public currentTickStart = null;
@@ -13,7 +13,7 @@ export class DynamicTickrate {
     public averageFps = 60;
 
         constructor(root) {
-        const fixedRate: any = this.root.gameMode.getFixedTickrate();
+        const fixedRate = this.root.gameMode.getFixedTickrate();
         if (fixedRate) {
             logger.log("Setting fixed tickrate of", fixedRate);
             this.setTickRate(fixedRate);
@@ -25,12 +25,12 @@ export class DynamicTickrate {
             }
         }
     }
-    onFrameRendered(): any {
+    onFrameRendered() {
         ++this.accumulatedFps;
-        const now: any = performance.now();
-        const timeDuration: any = now - this.accumulatedFpsLastUpdate;
+        const now = performance.now();
+        const timeDuration = now - this.accumulatedFpsLastUpdate;
         if (timeDuration > fpsAccumulationTime) {
-            const avgFps: any = (this.accumulatedFps / fpsAccumulationTime) * 1000;
+            const avgFps = (this.accumulatedFps / fpsAccumulationTime) * 1000;
             this.averageFps = avgFps;
             this.accumulatedFps = 0;
             this.accumulatedFpsLastUpdate = now;
@@ -39,7 +39,7 @@ export class DynamicTickrate {
     /**
      * Sets the tick rate to N updates per second
      */
-    setTickRate(rate: number): any {
+    setTickRate(rate: number) {
         logger.log("Applying tick-rate of", rate);
         this.currentTickRate = rate;
         this.deltaMs = 1000.0 / this.currentTickRate;
@@ -48,27 +48,27 @@ export class DynamicTickrate {
     /**
      * Increases the tick rate marginally
      */
-    increaseTickRate(): any {
+    increaseTickRate() {
         if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
             return;
         }
-        const desiredFps: any = this.root.app.settings.getDesiredFps();
+        const desiredFps = this.root.app.settings.getDesiredFps();
         this.setTickRate(Math.round(Math.min(desiredFps, this.currentTickRate * 1.2)));
     }
     /**
      * Decreases the tick rate marginally
      */
-    decreaseTickRate(): any {
+    decreaseTickRate() {
         if (G_IS_DEV && globalConfig.debug.renderForTrailer) {
             return;
         }
-        const desiredFps: any = this.root.app.settings.getDesiredFps();
+        const desiredFps = this.root.app.settings.getDesiredFps();
         this.setTickRate(Math.round(Math.max(desiredFps / 2, this.currentTickRate * 0.8)));
     }
     /**
      * Call whenever a tick began
      */
-    beginTick(): any {
+    beginTick() {
         assert(this.currentTickStart === null, "BeginTick called twice");
         this.currentTickStart = performance.now();
         if (this.capturedTicks.length > this.currentTickRate * 2) {
@@ -76,8 +76,8 @@ export class DynamicTickrate {
             this.capturedTicks.sort();
             this.capturedTicks.splice(0, 10);
             this.capturedTicks.splice(this.capturedTicks.length - 11, 10);
-            let average: any = 0;
-            for (let i: any = 0; i < this.capturedTicks.length; ++i) {
+            let average = 0;
+            for (let i = 0; i < this.capturedTicks.length; ++i) {
                 average += this.capturedTicks[i];
             }
             average /= this.capturedTicks.length;
@@ -95,9 +95,9 @@ export class DynamicTickrate {
     /**
      * Call whenever a tick ended
      */
-    endTick(): any {
+    endTick() {
         assert(this.currentTickStart !== null, "EndTick called without BeginTick");
-        const duration: any = performance.now() - this.currentTickStart;
+        const duration = performance.now() - this.currentTickStart;
         this.capturedTicks.push(duration);
         this.currentTickStart = null;
     }

@@ -26,7 +26,7 @@ export const savegameInterfaces: {
     1009: SavegameInterface_V1009,
     1010: SavegameInterface_V1010,
 };
-const logger: any = createLogger("savegame_interface_registry");
+const logger = createLogger("savegame_interface_registry");
 /**
  * Returns if the given savegame has any supported interface
  * {}
@@ -36,12 +36,12 @@ export function getSavegameInterface(savegame: any): BaseSavegameInterface | nul
         logger.warn("Savegame does not contain a valid version (undefined)");
         return null;
     }
-    const version: any = savegame.version;
+    const version = savegame.version;
     if (!Number.isInteger(version)) {
         logger.warn("Savegame does not contain a valid version (non-integer):", version);
         return null;
     }
-    const interfaceClass: any = savegameInterfaces[version];
+    const interfaceClass = savegameInterfaces[version];
     if (!interfaceClass) {
         logger.warn("Version", version, "has no implemented interface!");
         return null;

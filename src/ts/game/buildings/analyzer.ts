@@ -6,13 +6,13 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-const overlayMatrix: any = generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 0]);
+const overlayMatrix = generateMatrixRotations([1, 1, 0, 1, 1, 1, 0, 1, 0]);
 export class MetaAnalyzerBuilding extends MetaBuilding {
 
     constructor() {
         super("analyzer");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 43,
@@ -20,30 +20,30 @@ export class MetaAnalyzerBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#3a52bc";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_virtual_processing);
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getRenderPins(): any {
+    getRenderPins() {
         // We already have it included
         return false;
     }
-    getSpecialOverlayRenderMatrix(rotation: any, rotationVariant: any, variant: any): any {
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant) {
         return overlayMatrix[rotation];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

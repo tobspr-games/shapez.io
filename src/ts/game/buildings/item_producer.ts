@@ -9,7 +9,7 @@ export class MetaItemProducerBuilding extends MetaBuilding {
     constructor() {
         super("item_producer");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 61,
@@ -17,16 +17,16 @@ export class MetaItemProducerBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#b37dcd";
     }
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return true;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemEjectorComponent({
             slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
         }));

@@ -14,7 +14,7 @@ export class MetaFilterBuilding extends MetaBuilding {
     constructor() {
         super("filter");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 37,
@@ -22,16 +22,16 @@ export class MetaFilterBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#c45c2e";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_filter);
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(2, 1);
     }
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return true;
     }
     /**
@@ -44,13 +44,13 @@ export class MetaFilterBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const beltSpeed: any = root.hubGoals.getBeltBaseSpeed();
+        const beltSpeed = root.hubGoals.getBeltBaseSpeed();
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(beltSpeed)]];
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

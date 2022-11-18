@@ -8,10 +8,10 @@ export class AboutState extends TextualGameState {
     constructor() {
         super("AboutState");
     }
-    getStateHeaderTitle(): any {
+    getStateHeaderTitle() {
         return T.about.title;
     }
-    getMainContentHTML(): any {
+    getMainContentHTML() {
         return `
             <div class="head">
                 <img src="${cachebust("res/" + getLogoSprite())}" alt="shapez.io Logo">
@@ -23,13 +23,13 @@ export class AboutState extends TextualGameState {
             </div>
         `;
     }
-    onEnter(): any {
-        const links: any = this.htmlElement.querySelectorAll("a[href]");
-        links.forEach((link: any): any => {
-            this.trackClicks(link, (): any => this.app.platformWrapper.openExternalLink(link.getAttribute("href")), { preventClick: true });
+    onEnter() {
+        const links = this.htmlElement.querySelectorAll("a[href]");
+        links.forEach(link => {
+            this.trackClicks(link, () => this.app.platformWrapper.openExternalLink(link.getAttribute("href")), { preventClick: true });
         });
     }
-    getDefaultPreviousState(): any {
+    getDefaultPreviousState() {
         return "SettingsState";
     }
 }

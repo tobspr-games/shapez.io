@@ -23,21 +23,21 @@ export class Blueprint {
     /**
      * Creates a new blueprint from the given entity uids
      */
-    static fromUids(root: GameRoot, uids: Array<number>): any {
-        const newEntities: any = [];
-        let averagePosition: any = new Vector();
+    static fromUids(root: GameRoot, uids: Array<number>) {
+        const newEntities = [];
+        let averagePosition = new Vector();
         // First, create a copy
-        for (let i: any = 0; i < uids.length; ++i) {
-            const entity: any = root.entityMgr.findByUid(uids[i]);
+        for (let i = 0; i < uids.length; ++i) {
+            const entity = root.entityMgr.findByUid(uids[i]);
             assert(entity, "Entity for blueprint not found:" + uids[i]);
-            const clone: any = entity.clone();
+            const clone = entity.clone();
             newEntities.push(clone);
-            const pos: any = entity.components.StaticMapEntity.getTileSpaceBounds().getCenter();
+            const pos = entity.components.StaticMapEntity.getTileSpaceBounds().getCenter();
             averagePosition.addInplace(pos);
         }
         averagePosition.divideScalarInplace(uids.length);
-        const blueprintOrigin: any = averagePosition.subScalars(0.5, 0.5).floor();
-        for (let i: any = 0; i < uids.length; ++i) {
+        const blueprintOrigin = averagePosition.subScalars(0.5, 0.5).floor();
+        for (let i = 0; i < uids.length; ++i) {
             newEntities[i].components.StaticMapEntity.origin.subInplace(blueprintOrigin);
         }
         // Now, make sure the origin is 0,0
@@ -46,7 +46,7 @@ export class Blueprint {
     /**
      * Returns the cost of this blueprint in shapes
      */
-    getCost(): any {
+    getCost() {
         if (G_IS_DEV && globalConfig.debug.blueprintsNoCost) {
             return 0;
         }
@@ -55,13 +55,13 @@ export class Blueprint {
     /**
      * Draws the blueprint at the given origin
      */
-    draw(parameters: DrawParameters, tile: any): any {
+    draw(parameters: DrawParameters, tile) {
         parameters.context.globalAlpha = 0.8;
-        for (let i: any = 0; i < this.entities.length; ++i) {
-            const entity: any = this.entities[i];
-            const staticComp: any = entity.components.StaticMapEntity;
-            const newPos: any = staticComp.origin.add(tile);
-            const rect: any = staticComp.getTileSpaceBounds();
+        for (let i = 0; i < this.entities.length; ++i) {
+            const entity = this.entities[i];
+            const staticComp = entity.components.StaticMapEntity;
+            const newPos = staticComp.origin.add(tile);
+            const rect = staticComp.getTileSpaceBounds();
             rect.moveBy(tile.x, tile.y);
             if (!parameters.root.logic.checkCanPlaceEntity(entity, { offset: tile })) {
                 parameters.context.globalAlpha = 0.3;
@@ -76,10 +76,10 @@ export class Blueprint {
     /**
      * Rotates the blueprint clockwise
      */
-    rotateCw(): any {
-        for (let i: any = 0; i < this.entities.length; ++i) {
-            const entity: any = this.entities[i];
-            const staticComp: any = entity.components.StaticMapEntity;
+    rotateCw() {
+        for (let i = 0; i < this.entities.length; ++i) {
+            const entity = this.entities[i];
+            const staticComp = entity.components.StaticMapEntity;
             // Actually keeping this in as an easter egg to rotate the trash can
             // if (staticComp.getMetaBuilding().getIsRotateable()) {
             staticComp.rotation = (staticComp.rotation + 90) % 360;
@@ -91,26 +91,26 @@ export class Blueprint {
     /**
      * Rotates the blueprint counter clock wise
      */
-    rotateCcw(): any {
+    rotateCcw() {
         // Well ...
-        for (let i: any = 0; i < 3; ++i) {
+        for (let i = 0; i < 3; ++i) {
             this.rotateCw();
         }
     }
     /**
      * Checks if the blueprint can be placed at the given tile
      */
-    canPlace(root: GameRoot, tile: Vector): any {
-        let anyPlaceable: any = false;
-        for (let i: any = 0; i < this.entities.length; ++i) {
-            const entity: any = this.entities[i];
+    canPlace(root: GameRoot, tile: Vector) {
+        let anyPlaceable = false;
+        for (let i = 0; i < this.entities.length; ++i) {
+            const entity = this.entities[i];
             if (root.logic.checkCanPlaceEntity(entity, { offset: tile })) {
                 anyPlaceable = true;
             }
         }
         return anyPlaceable;
     }
-        canAfford(root: GameRoot): any {
+        canAfford(root: GameRoot) {
         if (root.gameMode.getHasFreeCopyPaste()) {
             return true;
         }
@@ -119,16 +119,16 @@ export class Blueprint {
     /**
      * Attempts to place the blueprint at the given tile
      */
-    tryPlace(root: GameRoot, tile: Vector): any {
-        return root.logic.performBulkOperation((): any => {
-            return root.logic.performImmutableOperation((): any => {
-                let count: any = 0;
-                for (let i: any = 0; i < this.entities.length; ++i) {
-                    const entity: any = this.entities[i];
+    tryPlace(root: GameRoot, tile: Vector) {
+        return root.logic.performBulkOperation(() => {
+            return root.logic.performImmutableOperation(() => {
+                let count = 0;
+                for (let i = 0; i < this.entities.length; ++i) {
+                    const entity = this.entities[i];
                     if (!root.logic.checkCanPlaceEntity(entity, { offset: tile })) {
                         continue;
                     }
-                    const clone: any = entity.clone();
+                    const clone = entity.clone();
                     clone.components.StaticMapEntity.origin.addInplace(tile);
                     root.logic.freeEntityAreaBeforeBuild(clone);
                     root.map.placeStaticEntity(clone);

@@ -21,9 +21,9 @@ import { T } from "../translations";
  *
  * ***************************************************
  */
-const kbEnter: any = 13;
-const kbCancel: any = 27;
-const logger: any = createLogger("dialogs");
+const kbEnter = 13;
+const kbCancel = 27;
+const logger = createLogger("dialogs");
 /**
  * Basic text based dialog
  */
@@ -48,11 +48,11 @@ export class Dialog {
      */
 
     constructor({ app, title, contentHTML, buttons, type = "info", closeButton = false }) {
-        for (let i: any = 0; i < buttons.length; ++i) {
+        for (let i = 0; i < buttons.length; ++i) {
             if (G_IS_DEV && globalConfig.debug.disableTimedButtons) {
                 this.buttonIds[i] = this.buttonIds[i].replace(":timeout", "");
             }
-            const buttonId: any = this.buttonIds[i].split(":")[0];
+            const buttonId = this.buttonIds[i].split(":")[0];
             this.buttonSignals[buttonId] = new Signal();
         }
         this.inputReciever.keydown.add(this.handleKeydown, this);
@@ -65,7 +65,7 @@ export class Dialog {
         shift: boolean;
         alt: boolean;
         ctrl: boolean;
-    }): any {
+    }) {
         if (keyCode === kbEnter && this.enterHandler) {
             this.internalButtonHandler(this.enterHandler);
             return STOP_PROPAGATION;
@@ -75,15 +75,15 @@ export class Dialog {
             return STOP_PROPAGATION;
         }
     }
-    internalButtonHandler(id: any, ...payload: any): any {
+    internalButtonHandler(id, ...payload) {
         this.app.inputMgr.popReciever(this.inputReciever);
         if (id !== "close-button") {
             this.buttonSignals[id].dispatch(...payload);
         }
         this.closeRequested.dispatch();
     }
-    createElement(): any {
-        const elem: any = document.createElement("div");
+    createElement() {
+        const elem = document.createElement("div");
         elem.classList.add("ingameDialog");
         this.dialogElem = document.createElement("div");
         this.dialogElem.classList.add("dialogInner");
@@ -91,45 +91,45 @@ export class Dialog {
             this.dialogElem.classList.add(this.type);
         }
         elem.appendChild(this.dialogElem);
-        const title: any = document.createElement("h1");
+        const title = document.createElement("h1");
         title.innerText = this.title;
         title.classList.add("title");
         this.dialogElem.appendChild(title);
         if (this.closeButton) {
             this.dialogElem.classList.add("hasCloseButton");
-            const closeBtn: any = document.createElement("button");
+            const closeBtn = document.createElement("button");
             closeBtn.classList.add("closeButton");
-            this.trackClicks(closeBtn, (): any => this.internalButtonHandler("close-button"), {
+            this.trackClicks(closeBtn, () => this.internalButtonHandler("close-button"), {
                 applyCssClass: "pressedSmallElement",
             });
             title.appendChild(closeBtn);
-            this.inputReciever.backButton.add((): any => this.internalButtonHandler("close-button"));
+            this.inputReciever.backButton.add(() => this.internalButtonHandler("close-button"));
         }
-        const content: any = document.createElement("div");
+        const content = document.createElement("div");
         content.classList.add("content");
         content.innerHTML = this.contentHTML;
         this.dialogElem.appendChild(content);
         if (this.buttonIds.length > 0) {
-            const buttons: any = document.createElement("div");
+            const buttons = document.createElement("div");
             buttons.classList.add("buttons");
             // Create buttons
-            for (let i: any = 0; i < this.buttonIds.length; ++i) {
-                const [buttonId, buttonStyle, rawParams]: any = this.buttonIds[i].split(":");
-                const button: any = document.createElement("button");
+            for (let i = 0; i < this.buttonIds.length; ++i) {
+                const [buttonId, buttonStyle, rawParams] = this.buttonIds[i].split(":");
+                const button = document.createElement("button");
                 button.classList.add("button");
                 button.classList.add("styledButton");
                 button.classList.add(buttonStyle);
                 button.innerText = T.dialogs.buttons[buttonId];
-                const params: any = (rawParams || "").split("/");
-                const useTimeout: any = params.indexOf("timeout") >= 0;
-                const isEnter: any = params.indexOf("enter") >= 0;
-                const isEscape: any = params.indexOf("escape") >= 0;
+                const params = (rawParams || "").split("/");
+                const useTimeout = params.indexOf("timeout") >= 0;
+                const isEnter = params.indexOf("enter") >= 0;
+                const isEscape = params.indexOf("escape") >= 0;
                 if (isEscape && this.closeButton) {
                     logger.warn("Showing dialog with close button, and additional cancel button");
                 }
                 if (useTimeout) {
                     button.classList.add("timedButton");
-                    const timeout: any = setTimeout((): any => {
+                    const timeout = setTimeout(() => {
                         button.classList.remove("timedButton");
                         arrayDeleteValue(this.timeouts, timeout);
                     }, 1000);
@@ -138,7 +138,7 @@ export class Dialog {
                 if (isEnter || isEscape) {
                     // if (this.app.settings.getShowKeyboardShortcuts()) {
                     // Show keybinding
-                    const spacer: any = document.createElement("code");
+                    const spacer = document.createElement("code");
                     spacer.classList.add("keybinding");
                     spacer.innerHTML = getStringForKeyCode(isEnter ? kbEnter : kbCancel);
                     button.appendChild(spacer);
@@ -150,7 +150,7 @@ export class Dialog {
                         this.escapeHandler = buttonId;
                     }
                 }
-                this.trackClicks(button, (): any => this.internalButtonHandler(buttonId));
+                this.trackClicks(button, () => this.internalButtonHandler(buttonId));
                 buttons.appendChild(button);
             }
             this.dialogElem.appendChild(buttons);
@@ -162,10 +162,10 @@ export class Dialog {
         this.app.inputMgr.pushReciever(this.inputReciever);
         return this.element;
     }
-    setIndex(index: any): any {
+    setIndex(index) {
         this.element.style.zIndex = index;
     }
-    destroy(): any {
+    destroy() {
         if (!this.element) {
             assert(false, "Tried to destroy dialog twice");
             return;
@@ -174,21 +174,21 @@ export class Dialog {
         // dispatched to the modal dialogs, it will not call the internalButtonHandler,
         // and thus our receiver stays attached the whole time
         this.app.inputMgr.destroyReceiver(this.inputReciever);
-        for (let i: any = 0; i < this.clickDetectors.length; ++i) {
+        for (let i = 0; i < this.clickDetectors.length; ++i) {
             this.clickDetectors[i].cleanup();
         }
         this.clickDetectors = [];
         this.element.remove();
         this.element = null;
-        for (let i: any = 0; i < this.timeouts.length; ++i) {
+        for (let i = 0; i < this.timeouts.length; ++i) {
             clearTimeout(this.timeouts[i]);
         }
         this.timeouts = [];
     }
-    hide(): any {
+    hide() {
         this.element.classList.remove("visible");
     }
-    show(): any {
+    show() {
         this.element.classList.add("visible");
     }
     /**
@@ -196,7 +196,7 @@ export class Dialog {
      * {}
      */
     trackClicks(elem: Element, handler: function():void, args: import("./click_detector").ClickDetectorConstructorArgs= = {}): ClickDetector {
-        const detector: any = new ClickDetector(elem, args);
+        const detector = new ClickDetector(elem, args);
         detector.click.add(handler, this);
         this.clickDetectors.push(detector);
         return detector;
@@ -220,18 +220,18 @@ export class DialogLoading extends Dialog {
         this.inputReciever.backButton.removeAll();
         this.inputReciever.context = "dialog-loading";
     }
-    createElement(): any {
-        const elem: any = document.createElement("div");
+    createElement() {
+        const elem = document.createElement("div");
         elem.classList.add("ingameDialog");
         elem.classList.add("loadingDialog");
         this.element = elem;
         if (this.text) {
-            const text: any = document.createElement("div");
+            const text = document.createElement("div");
             text.classList.add("text");
             text.innerText = this.text;
             elem.appendChild(text);
         }
-        const loader: any = document.createElement("div");
+        const loader = document.createElement("div");
         loader.classList.add("prefab_LoadingTextWithAnim");
         loader.classList.add("loadingIndicator");
         elem.appendChild(loader);
@@ -244,10 +244,10 @@ export class DialogOptionChooser extends Dialog {
     public initialOption = options.active;
 
     constructor({ app, title, options }) {
-        let html: any = "<div class='optionParent'>";
-        options.options.forEach(({ value, text, desc = null, iconPrefix = null }: any): any => {
-            const descHtml: any = desc ? `<span class="desc">${desc}</span>` : "";
-            let iconHtml: any = iconPrefix ? `<span class="icon icon-${iconPrefix}-${value}"></span>` : "";
+        let html = "<div class='optionParent'>";
+        options.options.forEach(({ value, text, desc = null, iconPrefix = null }) => {
+            const descHtml = desc ? `<span class="desc">${desc}</span>` : "";
+            let iconHtml = iconPrefix ? `<span class="icon icon-${iconPrefix}-${value}"></span>` : "";
             html += `
                 <div class='option ${value === options.active ? "active" : ""} ${iconPrefix ? "hasIcon" : ""}' data-optionvalue='${value}'>
                     ${iconHtml}
@@ -267,17 +267,17 @@ export class DialogOptionChooser extends Dialog {
         });
         this.buttonSignals.optionSelected = new Signal();
     }
-    createElement(): any {
-        const div: any = super.createElement();
+    createElement() {
+        const div = super.createElement();
         this.dialogElem.classList.add("optionChooserDialog");
-        div.querySelectorAll("[data-optionvalue]").forEach((handle: any): any => {
-            const value: any = handle.getAttribute("data-optionvalue");
+        div.querySelectorAll("[data-optionvalue]").forEach(handle => {
+            const value = handle.getAttribute("data-optionvalue");
             if (!handle) {
                 logger.error("Failed to bind option value in dialog:", value);
                 return;
             }
             // Need click detector here to forward elements, otherwise scrolling does not work
-            const detector: any = new ClickDetector(handle, {
+            const detector = new ClickDetector(handle, {
                 consumeEvents: false,
                 preventDefault: false,
                 clickSound: null,
@@ -286,8 +286,8 @@ export class DialogOptionChooser extends Dialog {
             });
             this.clickDetectors.push(detector);
             if (value !== this.initialOption) {
-                detector.click.add((): any => {
-                    const selected: any = div.querySelector(".option.active");
+                detector.click.add(() => {
+                    const selected = div.querySelector(".option.active");
                     if (selected) {
                         selected.classList.remove("active");
                     }
@@ -309,9 +309,9 @@ export class DialogWithForm extends Dialog {
     public enterHandler = confirmButtonId;
 
         constructor({ app, title, desc, formElements, buttons = ["cancel", "ok:good"], confirmButtonId = "ok", closeButton = true, }) {
-        let html: any = "";
+        let html = "";
         html += desc + "<br>";
-        for (let i: any = 0; i < formElements.length; ++i) {
+        for (let i = 0; i < formElements.length; ++i) {
             html += formElements[i].getHtml();
         }
         super({
@@ -323,11 +323,11 @@ export class DialogWithForm extends Dialog {
             closeButton,
         });
     }
-    internalButtonHandler(id: any, ...payload: any): any {
+    internalButtonHandler(id, ...payload) {
         if (id === this.confirmButtonId) {
             if (this.hasAnyInvalid()) {
                 this.dialogElem.classList.remove("errorShake");
-                waitNextFrame().then((): any => {
+                waitNextFrame().then(() => {
                     if (this.dialogElem) {
                         this.dialogElem.classList.add("errorShake");
                     }
@@ -338,23 +338,23 @@ export class DialogWithForm extends Dialog {
         }
         super.internalButtonHandler(id, payload);
     }
-    hasAnyInvalid(): any {
-        for (let i: any = 0; i < this.formElements.length; ++i) {
+    hasAnyInvalid() {
+        for (let i = 0; i < this.formElements.length; ++i) {
             if (!this.formElements[i].isValid()) {
                 return true;
             }
         }
         return false;
     }
-    createElement(): any {
-        const div: any = super.createElement();
-        for (let i: any = 0; i < this.formElements.length; ++i) {
-            const elem: any = this.formElements[i];
+    createElement() {
+        const div = super.createElement();
+        for (let i = 0; i < this.formElements.length; ++i) {
+            const elem = this.formElements[i];
             elem.bindEvents(div, this.clickDetectors);
             // elem.valueChosen.add(this.closeRequested.dispatch, this.closeRequested);
             elem.valueChosen.add(this.valueChosen.dispatch, this.valueChosen);
         }
-        waitNextFrame().then((): any => {
+        waitNextFrame().then(() => {
             this.formElements[this.formElements.length - 1].focus();
         });
         return div;

@@ -32,12 +32,12 @@ export type Waypoint = {
 /**
  * Used when a shape icon is rendered instead
  */
-const MAX_LABEL_LENGTH: any = 71;
+const MAX_LABEL_LENGTH = 71;
 export class HUDWaypoints extends BaseHUDPart {
     /**
      * Creates the overview of waypoints
      */
-    createElements(parent: HTMLElement): any {
+    createElements(parent: HTMLElement) {
         // Create the helper box on the lower right when zooming out
         if (this.root.app.settings.getAllSettings().offerHints) {
             this.hintElement = makeDiv(parent, "ingame_HUD_Waypoints_Hint", [], `
@@ -53,7 +53,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Serializes the waypoints
      */
-    serialize(): any {
+    serialize() {
         return {
             waypoints: this.waypoints,
         };
@@ -63,7 +63,7 @@ export class HUDWaypoints extends BaseHUDPart {
      */
     deserialize(data: {
         waypoints: Array<Waypoint>;
-    }): any {
+    }) {
         if (!data || !data.waypoints || !Array.isArray(data.waypoints)) {
             return "Invalid waypoints data";
         }
@@ -73,7 +73,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Initializes everything
      */
-    initialize(): any {
+    initialize() {
         // Cache the sprite for the waypoints
         this.waypointSprites = {
             regular: Loader.getSprite("sprites/misc/waypoint.png"),
@@ -100,7 +100,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
         this.root.keyMapper
             .getBinding(KEYMAPPINGS.navigation.createMarker)
-            .add((): any => this.requestSaveMarker({}));
+            .add(() => this.requestSaveMarker({}));
         /**
          * Stores at how much opacity the markers should be rendered on the map.
          * This is interpolated over multiple frames so we have some sort of fade effect
@@ -108,7 +108,7 @@ export class HUDWaypoints extends BaseHUDPart {
         this.currentMarkerOpacity = 1;
         this.currentCompassOpacity = 0;
         // Create buffer which is used to indicate the hub direction
-        const [canvas, context]: any = makeOffscreenBuffer(48, 48, {
+        const [canvas, context] = makeOffscreenBuffer(48, 48, {
             smooth: true,
             reusable: false,
             label: "waypoints-compass",
@@ -139,35 +139,35 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Returns how big the text should be rendered
      */
-    getTextScale(): any {
+    getTextScale() {
         return this.getWaypointUiScale() * 12;
     }
     /**
      * Returns the scale for rendering waypoints
      */
-    getWaypointUiScale(): any {
+    getWaypointUiScale() {
         return this.root.app.getEffectiveUiScale();
     }
     /**
      * Re-renders the waypoint list to account for changes
      */
-    rerenderWaypointList(): any {
+    rerenderWaypointList() {
         removeAllChildren(this.waypointsListElement);
         this.cleanupClickDetectors();
-        for (let i: any = 0; i < this.waypoints.length; ++i) {
-            const waypoint: any = this.waypoints[i];
-            const label: any = this.getWaypointLabel(waypoint);
-            const element: any = makeDiv(this.waypointsListElement, null, [
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+            const label = this.getWaypointLabel(waypoint);
+            const element = makeDiv(this.waypointsListElement, null, [
                 "waypoint",
                 "layer--" + waypoint.layer,
             ]);
             if (ShapeDefinition.isValidShortKey(label)) {
-                const canvas: any = this.getWaypointCanvas(waypoint);
+                const canvas = this.getWaypointCanvas(waypoint);
                 /**
                  * Create a clone of the cached canvas, as calling appendElement when a canvas is
                  * already in the document will move the existing canvas to the new position.
                  */
-                const [newCanvas, context]: any = makeOffscreenBuffer(48, 48, {
+                const [newCanvas, context] = makeOffscreenBuffer(48, 48, {
                     smooth: true,
                     label: label + "-waypoint-" + i,
                 });
@@ -179,15 +179,15 @@ export class HUDWaypoints extends BaseHUDPart {
                 element.innerText = label;
             }
             if (this.isWaypointDeletable(waypoint)) {
-                const editButton: any = makeDiv(element, null, ["editButton"]);
-                this.trackClicks(editButton, (): any => this.requestSaveMarker({ waypoint }));
+                const editButton = makeDiv(element, null, ["editButton"]);
+                this.trackClicks(editButton, () => this.requestSaveMarker({ waypoint }));
             }
             if (!waypoint.label) {
                 // This must be the hub label
                 element.classList.add("hub");
                 element.insertBefore(this.compassBuffer.canvas, element.childNodes[0]);
             }
-            this.trackClicks(element, (): any => this.moveToWaypoint(waypoint), {
+            this.trackClicks(element, () => this.moveToWaypoint(waypoint), {
                 targetOnly: true,
             });
         }
@@ -195,7 +195,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Moves the camera to a given waypoint
      */
-    moveToWaypoint(waypoint: Waypoint): any {
+    moveToWaypoint(waypoint: Waypoint) {
         this.root.currentLayer = waypoint.layer;
         this.root.camera.setDesiredCenter(new Vector(waypoint.center.x, waypoint.center.y));
         this.root.camera.setDesiredZoom(waypoint.zoomLevel);
@@ -203,7 +203,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Deletes a waypoint from the list
      */
-    deleteWaypoint(waypoint: Waypoint): any {
+    deleteWaypoint(waypoint: Waypoint) {
         arrayDeleteValue(this.waypoints, waypoint);
         this.rerenderWaypointList();
     }
@@ -212,13 +212,13 @@ export class HUDWaypoints extends BaseHUDPart {
      * {}
      */
     getWaypointCanvas(waypoint: Waypoint): HTMLCanvasElement {
-        const key: any = waypoint.label;
+        const key = waypoint.label;
         if (this.cachedKeyToCanvas[key]) {
             return this.cachedKeyToCanvas[key];
         }
         assert(ShapeDefinition.isValidShortKey(key), "Invalid short key: " + key);
-        const definition: any = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
-        const preRendered: any = definition.generateAsCanvas(48);
+        const definition = this.root.shapeDefinitionMgr.getShapeFromShortKey(key);
+        const preRendered = definition.generateAsCanvas(48);
         return (this.cachedKeyToCanvas[key] = preRendered);
     }
     /**
@@ -228,16 +228,16 @@ export class HUDWaypoints extends BaseHUDPart {
     requestSaveMarker({ worldPos = null, waypoint = null }: {
         worldPos: Vector=;
         waypoint: Waypoint=;
-    }): any {
+    }) {
         // Construct dialog with input field
-        const markerNameInput: any = new FormElementInput({
+        const markerNameInput = new FormElementInput({
             id: "markerName",
             label: null,
             placeholder: "",
             defaultValue: waypoint ? waypoint.label : "",
-            validator: (val: any): any => val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
+            validator: val => val.length > 0 && (val.length < MAX_LABEL_LENGTH || ShapeDefinition.isValidShortKey(val)),
         });
-        const dialog: any = new DialogWithForm({
+        const dialog = new DialogWithForm({
             app: this.root.app,
             title: waypoint ? T.dialogs.createMarker.titleEdit : T.dialogs.createMarker.title,
             desc: fillInLinkIntoTranslation(T.dialogs.createMarker.desc, THIRDPARTY_URLS.shapeViewer),
@@ -247,19 +247,19 @@ export class HUDWaypoints extends BaseHUDPart {
         this.root.hud.parts.dialogs.internalShowDialog(dialog);
         // Edit marker
         if (waypoint) {
-            dialog.buttonSignals.ok.add((): any => {
+            dialog.buttonSignals.ok.add(() => {
                 // Actually rename the waypoint
                 this.renameWaypoint(waypoint, markerNameInput.getValue());
             });
-            dialog.buttonSignals.delete.add((): any => {
+            dialog.buttonSignals.delete.add(() => {
                 // Actually delete the waypoint
                 this.deleteWaypoint(waypoint);
             });
         }
         else {
             // Compute where to create the marker
-            const center: any = worldPos || this.root.camera.center;
-            dialog.buttonSignals.ok.add((): any => {
+            const center = worldPos || this.root.camera.center;
+            dialog.buttonSignals.ok.add(() => {
                 // Show info that you can have only N markers in the demo,
                 // actually show this *after* entering the name so you want the
                 // standalone even more (I'm evil :P)
@@ -275,7 +275,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Adds a new waypoint at the given location with the given label
      */
-    addWaypoint(label: string, position: Vector): any {
+    addWaypoint(label: string, position: Vector) {
         this.waypoints.push({
             label,
             center: { x: position.x, y: position.y },
@@ -293,7 +293,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Renames a waypoint with the given label
      */
-    renameWaypoint(waypoint: Waypoint, label: string): any {
+    renameWaypoint(waypoint: Waypoint, label: string) {
         waypoint.label = label;
         this.sortWaypoints();
         // Show notification about renamed
@@ -304,7 +304,7 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Called every frame to update stuff
      */
-    update(): any {
+    update() {
         if (this.domAttach) {
             this.domAttach.update(this.root.camera.getIsMapOverlayActive());
         }
@@ -312,8 +312,8 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Sort waypoints by name
      */
-    sortWaypoints(): any {
-        this.waypoints.sort((a: any, b: any): any => {
+    sortWaypoints() {
+        this.waypoints.sort((a, b) => {
             if (!a.label) {
                 return -1;
             }
@@ -357,11 +357,11 @@ export class HUDWaypoints extends BaseHUDPart {
             return null;
         }
         // Find parameters
-        const scale: any = this.getWaypointUiScale();
-        const screenPos: any = this.root.camera.worldToScreen(new Vector(waypoint.center.x, waypoint.center.y));
+        const scale = this.getWaypointUiScale();
+        const screenPos = this.root.camera.worldToScreen(new Vector(waypoint.center.x, waypoint.center.y));
         // Distinguish between text and item waypoints -> Figure out parameters
-        const originalLabel: any = this.getWaypointLabel(waypoint);
-        let text: any, item: any, textWidth: any;
+        const originalLabel = this.getWaypointLabel(waypoint);
+        let text, item, textWidth;
         if (ShapeDefinition.isValidShortKey(originalLabel)) {
             // If the label is actually a key, render the shape icon
             item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey(originalLabel);
@@ -385,13 +385,13 @@ export class HUDWaypoints extends BaseHUDPart {
      * {}
      */
     findCurrentIntersectedWaypoint(): Waypoint | null {
-        const mousePos: any = this.root.app.mousePosition;
+        const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             return;
         }
-        for (let i: any = 0; i < this.waypoints.length; ++i) {
-            const waypoint: any = this.waypoints[i];
-            const params: any = this.getWaypointScreenParams(waypoint);
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+            const params = this.getWaypointScreenParams(waypoint);
             if (params && params.screenBounds.containsPoint(mousePos.x, mousePos.y)) {
                 return waypoint;
             }
@@ -400,8 +400,8 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Mouse-Down handler
      */
-    onMouseDown(pos: Vector, button: enumMouseButton): any {
-        const waypoint: any = this.findCurrentIntersectedWaypoint();
+    onMouseDown(pos: Vector, button: enumMouseButton) {
+        const waypoint = this.findCurrentIntersectedWaypoint();
         if (waypoint) {
             if (button === enumMouseButton.left) {
                 this.root.soundProxy.playUiClick();
@@ -422,7 +422,7 @@ export class HUDWaypoints extends BaseHUDPart {
             // Allow right click to create a marker
             if (button === enumMouseButton.right) {
                 if (this.root.camera.getIsMapOverlayActive()) {
-                    const worldPos: any = this.root.camera.screenToWorld(pos);
+                    const worldPos = this.root.camera.screenToWorld(pos);
                     this.requestSaveMarker({ worldPos });
                     return STOP_PROPAGATION;
                 }
@@ -432,21 +432,21 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Rerenders the compass
      */
-    rerenderWaypointsCompass(): any {
-        const dims: any = 48;
-        const indicatorSize: any = 30;
-        const cameraPos: any = this.root.camera.center;
-        const context: any = this.compassBuffer.context;
+    rerenderWaypointsCompass() {
+        const dims = 48;
+        const indicatorSize = 30;
+        const cameraPos = this.root.camera.center;
+        const context = this.compassBuffer.context;
         context.clearRect(0, 0, dims, dims);
-        const distanceToHub: any = cameraPos.length();
-        const compassVisible: any = distanceToHub > (10 * globalConfig.tileSize) / this.root.camera.zoomLevel;
-        const targetCompassAlpha: any = compassVisible ? 1 : 0;
+        const distanceToHub = cameraPos.length();
+        const compassVisible = distanceToHub > (10 * globalConfig.tileSize) / this.root.camera.zoomLevel;
+        const targetCompassAlpha = compassVisible ? 1 : 0;
         // Fade the compas in / out
         this.currentCompassOpacity = lerp(this.currentCompassOpacity, targetCompassAlpha, 0.08);
         // Render the compass
         if (this.currentCompassOpacity > 0.01) {
             context.globalAlpha = this.currentCompassOpacity;
-            const angle: any = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
+            const angle = cameraPos.angle() + Math.radians(45) + Math.PI / 2;
             context.translate(dims / 2, dims / 2);
             context.rotate(angle);
             this.directionIndicatorSprite.drawCentered(context, 0, 0, indicatorSize);
@@ -455,7 +455,7 @@ export class HUDWaypoints extends BaseHUDPart {
             context.globalAlpha = 1;
         }
         // Render the regualr icon
-        const iconOpacity: any = 1 - this.currentCompassOpacity;
+        const iconOpacity = 1 - this.currentCompassOpacity;
         if (iconOpacity > 0.01) {
             context.globalAlpha = iconOpacity;
             this.waypointSprites.regular.drawCentered(context, dims / 2, dims / 2, dims * 0.7);
@@ -465,9 +465,9 @@ export class HUDWaypoints extends BaseHUDPart {
     /**
      * Draws the waypoints on the map
      */
-    drawOverlays(parameters: DrawParameters): any {
-        const mousePos: any = this.root.app.mousePosition;
-        const desiredOpacity: any = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
+    drawOverlays(parameters: DrawParameters) {
+        const mousePos = this.root.app.mousePosition;
+        const desiredOpacity = this.root.camera.getIsMapOverlayActive() ? 1 : 0;
         this.currentMarkerOpacity = lerp(this.currentMarkerOpacity, desiredOpacity, 0.08);
         this.rerenderWaypointsCompass();
         // Don't render with low opacity
@@ -475,15 +475,15 @@ export class HUDWaypoints extends BaseHUDPart {
             return;
         }
         // Determine rendering scale
-        const scale: any = this.getWaypointUiScale();
+        const scale = this.getWaypointUiScale();
         // Set the font size
-        const textSize: any = this.getTextScale();
+        const textSize = this.getTextScale();
         parameters.context.font = "bold " + textSize + "px GameFont";
         parameters.context.textBaseline = "middle";
         // Loop over all waypoints
-        for (let i: any = 0; i < this.waypoints.length; ++i) {
-            const waypoint: any = this.waypoints[i];
-            const waypointData: any = this.getWaypointScreenParams(waypoint);
+        for (let i = 0; i < this.waypoints.length; ++i) {
+            const waypoint = this.waypoints[i];
+            const waypointData = this.getWaypointScreenParams(waypoint);
             if (!waypointData) {
                 // Not relevant
                 continue;
@@ -492,9 +492,9 @@ export class HUDWaypoints extends BaseHUDPart {
                 // Out of screen
                 continue;
             }
-            const bounds: any = waypointData.screenBounds;
-            const contentPaddingX: any = 7 * scale;
-            const isSelected: any = mousePos && bounds.containsPoint(mousePos.x, mousePos.y);
+            const bounds = waypointData.screenBounds;
+            const contentPaddingX = 7 * scale;
+            const isSelected = mousePos && bounds.containsPoint(mousePos.x, mousePos.y);
             // Render the background rectangle
             parameters.context.globalAlpha = this.currentMarkerOpacity * (isSelected ? 1 : 0.7);
             parameters.context.fillStyle = "rgba(255, 255, 255, 0.7)";
@@ -502,8 +502,8 @@ export class HUDWaypoints extends BaseHUDPart {
             parameters.context.fill();
             // Render the text
             if (waypointData.item) {
-                const canvas: any = this.getWaypointCanvas(waypoint);
-                const itemSize: any = 14 * scale;
+                const canvas = this.getWaypointCanvas(waypoint);
+                const itemSize = 14 * scale;
                 parameters.context.drawImage(canvas, bounds.x + contentPaddingX + 6 * scale, bounds.y + bounds.h / 2 - itemSize / 2, itemSize, itemSize);
             }
             else if (waypointData.text) {

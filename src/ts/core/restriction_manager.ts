@@ -11,23 +11,23 @@ export class RestrictionManager extends ReadWriteProxy {
         super(app, "restriction-flags.bin");
     }
     // -- RW Proxy Impl
-        verify(data: any): any {
+        verify(data: any) {
         return ExplainedResult.good();
     }
     
-    getDefaultData(): any {
+    getDefaultData() {
         return {
             version: this.getCurrentVersion(),
         };
     }
     
-    getCurrentVersion(): any {
+    getCurrentVersion() {
         return 1;
     }
-        migrate(data: any): any {
+        migrate(data: any) {
         return ExplainedResult.good();
     }
-    initialize(): any {
+    initialize() {
         return this.readAsync();
     }
     // -- End RW Proxy Impl

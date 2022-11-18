@@ -4,16 +4,16 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { globalConfig } from "../../core/config";
 export class BooleanItem extends BaseItem {
-    static getId(): any {
+    static getId() {
         return "boolean_item";
     }
-    static getSchema(): any {
+    static getSchema() {
         return types.uint;
     }
-    serialize(): any {
+    serialize() {
         return this.value;
     }
-    deserialize(data: any): any {
+    deserialize(data) {
         this.value = data;
     }
     /** {} **/
@@ -31,11 +31,11 @@ export class BooleanItem extends BaseItem {
         constructor(value) {
         super();
     }
-        equalsImpl(other: BaseItem): any {
+        equalsImpl(other: BaseItem) {
         return this.value === other as BooleanItem).value;
     }
-        drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number = globalConfig.defaultItemDiameter): any {
-        let sprite: any;
+        drawItemCenteredImpl(x: number, y: number, parameters: DrawParameters, diameter: number = globalConfig.defaultItemDiameter) {
+        let sprite;
         if (this.value) {
             sprite = Loader.getSprite("sprites/wires/boolean_true.png");
         }
@@ -47,8 +47,8 @@ export class BooleanItem extends BaseItem {
     /**
      * Draws the item to a canvas
      */
-    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number): any {
-        let sprite: any;
+    drawFullSizeOnCanvas(context: CanvasRenderingContext2D, size: number) {
+        let sprite;
         if (this.value) {
             sprite = Loader.getSprite("sprites/wires/boolean_true.png");
         }
@@ -58,8 +58,8 @@ export class BooleanItem extends BaseItem {
         sprite.drawCentered(context, size / 2, size / 2, size);
     }
 }
-export const BOOL_FALSE_SINGLETON: any = new BooleanItem(0);
-export const BOOL_TRUE_SINGLETON: any = new BooleanItem(1);
+export const BOOL_FALSE_SINGLETON = new BooleanItem(0);
+export const BOOL_TRUE_SINGLETON = new BooleanItem(1);
 /**
  * Returns whether the item is Boolean and TRUE
  * {}

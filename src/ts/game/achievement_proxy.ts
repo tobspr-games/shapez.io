@@ -6,9 +6,9 @@ import { globalConfig } from "../core/config";
 import { createLogger } from "../core/logging";
 import { ACHIEVEMENTS } from "../platform/achievement_provider";
 import { getBuildingDataFromCode } from "./building_codes";
-const logger: any = createLogger("achievement_proxy");
-const ROTATER: any = "rotater";
-const DEFAULT: any = "default";
+const logger = createLogger("achievement_proxy");
+const ROTATER = "rotater";
+const DEFAULT = "default";
 export class AchievementProxy {
     public root = root;
     public provider = this.root.app.achievementProvider;
@@ -24,7 +24,7 @@ export class AchievementProxy {
         }
         this.root.signals.postLoadHook.add(this.onLoad, this);
     }
-    onLoad(): any {
+    onLoad() {
         if (!this.root.gameMode.hasAchievements()) {
             logger.log("Disabling achievements because game mode does not have achievements");
             this.disabled = true;
@@ -32,17 +32,17 @@ export class AchievementProxy {
         }
         this.provider
             .onLoad(this.root)
-            .then((): any => {
+            .then(() => {
             this.disabled = false;
             logger.log("Recieving achievement signals");
             this.initialize();
         })
-            .catch((err: any): any => {
+            .catch(err => {
             this.disabled = true;
             logger.error("Ignoring achievement signals", err);
         });
     }
-    initialize(): any {
+    initialize() {
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.darkMode, null);
         if (this.has(ACHIEVEMENTS.mam)) {
             this.root.signals.entityAdded.add(this.onMamFailure, this);
@@ -54,11 +54,11 @@ export class AchievementProxy {
         }
         this.startSlice();
     }
-    startSlice(): any {
+    startSlice() {
         this.sliceTime = this.root.time.now();
         this.root.signals.bulkAchievementCheck.dispatch(ACHIEVEMENTS.storeShape, this.sliceTime, ACHIEVEMENTS.throughputBp25, this.sliceTime, ACHIEVEMENTS.throughputBp50, this.sliceTime, ACHIEVEMENTS.throughputLogo25, this.sliceTime, ACHIEVEMENTS.throughputLogo50, this.sliceTime, ACHIEVEMENTS.throughputRocket10, this.sliceTime, ACHIEVEMENTS.throughputRocket20, this.sliceTime, ACHIEVEMENTS.play1h, this.sliceTime, ACHIEVEMENTS.play10h, this.sliceTime, ACHIEVEMENTS.play20h, this.sliceTime);
     }
-    update(): any {
+    update() {
         if (this.disabled) {
             return;
         }
@@ -75,11 +75,11 @@ export class AchievementProxy {
         }
         return this.provider.collection.map.has(key);
     }
-        onEntityAdded(entity: Entity): any {
+        onEntityAdded(entity: Entity) {
         if (!entity.components.StaticMapEntity) {
             return;
         }
-        const building: any = getBuildingDataFromCode(entity.components.StaticMapEntity.code);
+        const building = getBuildingDataFromCode(entity.components.StaticMapEntity.code);
         if (building.metaInstance.id !== ROTATER) {
             return;
         }
@@ -89,7 +89,7 @@ export class AchievementProxy {
         this.root.savegame.currentData.stats.usedInverseRotater = true;
         this.root.signals.entityAdded.remove(this.onEntityAdded);
     }
-        onStoryGoalCompleted(level: number): any {
+        onStoryGoalCompleted(level: number) {
         if (level > 26) {
             this.root.signals.entityAdded.add(this.onMamFailure, this);
             this.root.signals.entityDestroyed.add(this.onMamFailure, this);
@@ -98,7 +98,7 @@ export class AchievementProxy {
         // reset on every level
         this.root.savegame.currentData.stats.failedMam = false;
     }
-    onMamFailure(): any {
+    onMamFailure() {
         this.root.savegame.currentData.stats.failedMam = true;
     }
 }

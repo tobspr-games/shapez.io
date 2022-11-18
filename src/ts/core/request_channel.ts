@@ -1,8 +1,8 @@
 import { createLogger } from "./logging";
 import { fastArrayDeleteValueIfContained } from "./utils";
-const logger: any = createLogger("request_channel");
+const logger = createLogger("request_channel");
 // Thrown when a request is aborted
-export const PROMISE_ABORTED: any = "promise-aborted";
+export const PROMISE_ABORTED = "promise-aborted";
 export class RequestChannel {
     public pendingPromises: Array<Promise> = [];
 
@@ -14,9 +14,9 @@ export class RequestChannel {
      */
     watch(promise: Promise<any>): Promise<any> {
         // log(this, "Added new promise:", promise, "(pending =", this.pendingPromises.length, ")");
-        let cancelled: any = false;
-        const wrappedPromise: any = new Promise((resolve: any, reject: any): any => {
-            promise.then((result: any): any => {
+        let cancelled = false;
+        const wrappedPromise = new Promise((resolve, reject) => {
+            promise.then(result => {
                 // Remove from pending promises
                 fastArrayDeleteValueIfContained(this.pendingPromises, wrappedPromise);
                 // If not cancelled, resolve promise with same payload
@@ -27,7 +27,7 @@ export class RequestChannel {
                     logger.warn("Not resolving because promise got cancelled");
                     // reject.call(this, PROMISE_ABORTED);
                 }
-            }, (err: any): any => {
+            }, err => {
                 // Remove from pending promises
                 fastArrayDeleteValueIfContained(this.pendingPromises, wrappedPromise);
                 // If not cancelled, reject promise with same payload
@@ -42,17 +42,17 @@ export class RequestChannel {
         });
         // Add cancel handler
         // @ts-ignore
-        wrappedPromise.cancel = function (): any {
+        wrappedPromise.cancel = function () {
             cancelled = true;
         };
         this.pendingPromises.push(wrappedPromise);
         return wrappedPromise;
     }
-    cancelAll(): any {
+    cancelAll() {
         if (this.pendingPromises.length > 0) {
             logger.log("Cancel all pending promises (", this.pendingPromises.length, ")");
         }
-        for (let i: any = 0; i < this.pendingPromises.length; ++i) {
+        for (let i = 0; i < this.pendingPromises.length; ++i) {
             // @ts-ignore
             this.pendingPromises[i].cancel();
         }

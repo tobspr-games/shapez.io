@@ -1,14 +1,14 @@
 import { AnalyticsInterface } from "../analytics";
 import { createLogger } from "../../core/logging";
-const logger: any = createLogger("ga");
+const logger = createLogger("ga");
 export class GoogleAnalyticsImpl extends AnalyticsInterface {
-    initialize(): any {
+    initialize() {
         this.lastUiClickTracked = -1000;
-        setInterval((): any => this.internalTrackAfkEvent(), 120 * 1000);
+        setInterval(() => this.internalTrackAfkEvent(), 120 * 1000);
         // Analytics is already loaded in the html
         return Promise.resolve();
     }
-    setUserContext(userName: any): any {
+    setUserContext(userName) {
         try {
             if (window.gtag) {
                 logger.log("📊 Setting user context:", userName);
@@ -17,12 +17,12 @@ export class GoogleAnalyticsImpl extends AnalyticsInterface {
                 });
             }
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.warn("📊 Failed to set user context:", ex);
         }
     }
-    trackStateEnter(stateId: any): any {
-        const nonInteractionStates: any = [
+    trackStateEnter(stateId) {
+        const nonInteractionStates = [
             "LoginState",
             "MainMenuState",
             "PreloadState",
@@ -39,11 +39,11 @@ export class GoogleAnalyticsImpl extends AnalyticsInterface {
                 });
             }
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.warn("📊 Failed to track state analytcis:", ex);
         }
     }
-    trackDecision(decisionName: any): any {
+    trackDecision(decisionName) {
         try {
             if (window.gtag) {
                 logger.log("📊 Tracking decision:", decisionName);
@@ -54,14 +54,14 @@ export class GoogleAnalyticsImpl extends AnalyticsInterface {
                 });
             }
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.warn("📊 Failed to track state analytcis:", ex);
         }
     }
     /**
      * Tracks an event so GA keeps track of the user
      */
-    internalTrackAfkEvent(): any {
+    internalTrackAfkEvent() {
         if (window.gtag) {
             window.gtag("event", "afk", {
                 event_category: "ping",

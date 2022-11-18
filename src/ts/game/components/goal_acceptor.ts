@@ -3,10 +3,10 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 export class GoalAcceptorComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "GoalAcceptor";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             item: typeItemSingleton,
         };
@@ -17,7 +17,7 @@ export class GoalAcceptorComponent extends Component {
         super();
         this.clear();
     }
-    clear(): any {
+    clear() {
         /**
          * The last item we delivered
          */
@@ -30,18 +30,18 @@ export class GoalAcceptorComponent extends Component {
     /**
      * Clears items but doesn't instantly reset the progress bar
      */
-    clearItems(): any {
+    clearItems() {
         this.lastDelivery = null;
         this.currentDeliveredItems = 0;
     }
-    getRequiredSecondsPerItem(): any {
+    getRequiredSecondsPerItem() {
         return (globalConfig.goalAcceptorsPerProducer /
             (globalConfig.puzzleModeSpeed * globalConfig.beltSpeedItemsPerSecond));
     }
     /**
      * Copy the current state to another component
      */
-    copyAdditionalStateTo(otherComponent: GoalAcceptorComponent): any {
+    copyAdditionalStateTo(otherComponent: GoalAcceptorComponent) {
         otherComponent.item = this.item;
     }
 }

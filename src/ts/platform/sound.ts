@@ -6,8 +6,8 @@ import type { GameRoot } from "../game/root";
 import { newEmptyMap, clamp } from "../core/utils";
 import { createLogger } from "../core/logging";
 import { globalConfig } from "../core/config";
-const logger: any = createLogger("sound");
-export const SOUNDS: any = {
+const logger = createLogger("sound");
+export const SOUNDS = {
     // Menu and such
     uiClick: "ui_click",
     uiError: "ui_error",
@@ -24,7 +24,7 @@ export const SOUNDS: any = {
     unlockUpgrade: "unlock_upgrade",
     tutorialStep: "tutorial_step",
 };
-export const MUSIC: any = {
+export const MUSIC = {
     // The theme always depends on the standalone only, even if running the full
     // version in the browser
     theme: G_IS_STANDALONE ? "theme-full" : "theme-short",
@@ -46,10 +46,10 @@ export class SoundInstanceInterface {
         abstract;
         return Promise.resolve();
     }
-    play(volume: any): any {
+    play(volume) {
         abstract;
     }
-    deinitialize(): any { }
+    deinitialize() { }
 }
 export class MusicInstanceInterface {
     public key = key;
@@ -57,13 +57,13 @@ export class MusicInstanceInterface {
 
     constructor(key, url) {
     }
-    stop(): any {
+    stop() {
         abstract;
     }
-    play(volume: any): any {
+    play(volume) {
         abstract;
     }
-    setVolume(volume: any): any {
+    setVolume(volume) {
         abstract;
     }
     /** {} */
@@ -76,7 +76,7 @@ export class MusicInstanceInterface {
         abstract;
         return false;
     }
-    deinitialize(): any { }
+    deinitialize() { }
 }
 export class SoundInterface {
     public app: Application = app;
@@ -100,14 +100,14 @@ export class SoundInterface {
      * {}
      */
     initialize(): Promise<any> {
-        for (const soundKey: any in SOUNDS) {
-            const soundPath: any = SOUNDS[soundKey];
-            const sound: any = new this.soundClass(soundKey, soundPath);
+        for (const soundKey in SOUNDS) {
+            const soundPath = SOUNDS[soundKey];
+            const sound = new this.soundClass(soundKey, soundPath);
             this.sounds[soundPath] = sound;
         }
-        for (const musicKey: any in MUSIC) {
-            const musicPath: any = MUSIC[musicKey];
-            const music: any = new this.musicClass(musicKey, musicPath);
+        for (const musicKey in MUSIC) {
+            const musicPath = MUSIC[musicKey];
+            const music = new this.musicClass(musicKey, musicPath);
             this.music[musicPath] = music;
         }
         this.musicVolume = this.app.settings.getAllSettings().musicVolume;
@@ -140,11 +140,11 @@ export class SoundInterface {
      * {}
      */
     deinitialize(): Promise<void> {
-        const promises: any = [];
-        for (const key: any in this.sounds) {
+        const promises = [];
+        for (const key in this.sounds) {
             promises.push(this.sounds[key].deinitialize());
         }
-        for (const key: any in this.music) {
+        for (const key in this.music) {
             promises.push(this.music[key].deinitialize());
         }
         // @ts-ignore
@@ -167,7 +167,7 @@ export class SoundInterface {
     /**
      * Sets the music volume
      */
-    setMusicVolume(volume: number): any {
+    setMusicVolume(volume: number) {
         this.musicVolume = clamp(volume, 0, 1);
         if (this.currentMusic) {
             this.currentMusic.setVolume(this.musicVolume);
@@ -176,13 +176,13 @@ export class SoundInterface {
     /**
      * Sets the sound volume
      */
-    setSoundVolume(volume: number): any {
+    setSoundVolume(volume: number) {
         this.soundVolume = clamp(volume, 0, 1);
     }
     /**
      * Focus change handler, called by the pap
      */
-    onPageRenderableStateChanged(pageIsVisible: boolean): any {
+    onPageRenderableStateChanged(pageIsVisible: boolean) {
         this.pageIsVisible = pageIsVisible;
         if (this.currentMusic) {
             if (pageIsVisible) {
@@ -195,14 +195,14 @@ export class SoundInterface {
             }
         }
     }
-        playUiSound(key: string): any {
+        playUiSound(key: string) {
         if (!this.sounds[key]) {
             logger.warn("Sound", key, "not found, probably not loaded yet");
             return;
         }
         this.sounds[key].play(this.soundVolume);
     }
-        play3DSound(key: string, worldPosition: Vector, root: GameRoot): any {
+        play3DSound(key: string, worldPosition: Vector, root: GameRoot) {
         if (!this.sounds[key]) {
             logger.warn("Music", key, "not found, probably not loaded yet");
             return;
@@ -214,15 +214,15 @@ export class SoundInterface {
         if (root.time.getIsPaused()) {
             return;
         }
-        let volume: any = this.soundVolume;
+        let volume = this.soundVolume;
         if (!root.camera.isWorldPointOnScreen(worldPosition)) {
             volume = this.soundVolume / 5; // In the old implementation this value was fixed to 0.2 => 20% of 1.0
         }
         volume *= clamp(root.camera.zoomLevel / 3);
         this.sounds[key].play(clamp(volume));
     }
-        playThemeMusic(key: string): any {
-        const music: any = this.music[key];
+        playThemeMusic(key: string) {
+        const music = this.music[key];
         if (key && !music) {
             logger.warn("Music", key, "not found");
         }

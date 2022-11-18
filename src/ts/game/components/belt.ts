@@ -2,7 +2,7 @@ import { enumDirection, Vector } from "../../core/vector";
 import { types } from "../../savegame/serialization";
 import { BeltPath } from "../belt_path";
 import { Component } from "../component";
-export const curvedBeltLength: any = 0.78;
+export const curvedBeltLength = /* Math.PI / 4 */ 0.78;
 export const FAKE_BELT_ACCEPTOR_SLOT: import("./item_acceptor").ItemAcceptorSlot = {
     pos: new Vector(0, 0),
     direction: enumDirection.bottom,
@@ -30,7 +30,7 @@ export const FAKE_BELT_EJECTOR_SLOT_BY_DIRECTION: {
     },
 };
 export class BeltComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Belt";
     }
     public direction = direction;
@@ -39,7 +39,7 @@ export class BeltComponent extends Component {
         constructor({ direction = enumDirection.top }) {
         super();
     }
-    clear(): any {
+    clear() {
         if (this.assignedPath) {
             this.assignedPath.clearAllItems();
         }
@@ -79,12 +79,12 @@ export class BeltComponent extends Component {
                 return new Vector(0, 0.5 - progress);
             case enumDirection.right: {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 2: " + progress);
-                const arcProgress: any = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                 return new Vector(0.5 - 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             case enumDirection.left: {
                 assert(progress <= curvedBeltLength + 0.02, "Invalid progress 3: " + progress);
-                const arcProgress: any = (progress / curvedBeltLength) * 0.5 * Math.PI;
+                const arcProgress = (progress / curvedBeltLength) * 0.5 * Math.PI;
                 return new Vector(-0.5 + 0.5 * Math.cos(arcProgress), 0.5 - 0.5 * Math.sin(arcProgress));
             }
             default:

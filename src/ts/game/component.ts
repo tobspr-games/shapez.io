@@ -12,17 +12,17 @@ export class Component extends BasicSerializableObject {
     /**
      * Should return the schema used for serialization
      */
-    static getSchema(): any {
+    static getSchema() {
         return {};
     }
     /**
      * Copy the current state to another component
      */
-    copyAdditionalStateTo(otherComponent: Component): any { }
+    copyAdditionalStateTo(otherComponent: Component) { }
     /**
      * Clears all items and state
      */
-    clear(): any { }
+    clear() { }
     /* dev:start */
     /**
      * Fixes typeof DerivedComponent is not assignable to typeof Component, compiled out

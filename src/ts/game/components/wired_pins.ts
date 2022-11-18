@@ -4,7 +4,7 @@ import { Component } from "../component";
 import { types } from "../../savegame/serialization";
 import { typeItemSingleton } from "../item_resolver";
 /** @enum {string} */
-export const enumPinSlotType: any = {
+export const enumPinSlotType = {
     logicalEjector: "logicalEjector",
     logicalAcceptor: "logicalAcceptor",
 };
@@ -23,10 +23,10 @@ export type WirePinSlot = {
 
 
 export class WiredPinsComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "WiredPins";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             slots: types.fixedSizeArray(types.structured({
                 value: types.nullable(typeItemSingleton),
@@ -41,10 +41,10 @@ export class WiredPinsComponent extends Component {
     /**
      * Sets the slots of this building
      */
-    setSlots(slots: Array<WirePinSlotDefinition>): any {
+    setSlots(slots: Array<WirePinSlotDefinition>) {
                 this.slots = [];
-        for (let i: any = 0; i < slots.length; ++i) {
-            const slotData: any = slots[i];
+        for (let i = 0; i < slots.length; ++i) {
+            const slotData = slots[i];
             this.slots.push({
                 pos: slotData.pos,
                 type: slotData.type,

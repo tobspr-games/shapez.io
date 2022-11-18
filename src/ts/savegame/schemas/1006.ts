@@ -17,9 +17,9 @@ import { StaticMapEntityComponent } from "../../game/components/static_map_entit
 import { Entity } from "../../game/entity.js";
 import { defaultBuildingVariant, MetaBuilding } from "../../game/meta_building.js";
 import { SavegameInterface_V1005 } from "./1005.js";
-const schema: any = require("./1006.json");
-const logger: any = createLogger("savegame_interface/1006");
-function findCode(metaBuilding: typeof MetaBuilding, variant: string= = defaultBuildingVariant, rotationVariant: number= = 0): any {
+const schema = require("./1006.json");
+const logger = createLogger("savegame_interface/1006");
+function findCode(metaBuilding: typeof MetaBuilding, variant: string= = defaultBuildingVariant, rotationVariant: number= = 0) {
     return getCodeFromBuildingData(gMetaBuildingRegistry.findByClass(metaBuilding), variant, rotationVariant);
 }
 /**
@@ -30,13 +30,13 @@ function rebalance(value: number): number {
     return Math.round(Math.pow(value, 0.75));
 }
 export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
-    getVersion(): any {
+    getVersion() {
         return 1006;
     }
-    getSchemaUncached(): any {
+    getSchemaUncached() {
         return schema;
     }
-    static computeSpriteMapping(): any {
+    static computeSpriteMapping() {
         return {
             // Belt
             "sprites/blueprints/belt_top.png": findCode(MetaBeltBuilding, defaultBuildingVariant, 0),
@@ -76,15 +76,15 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
         };
     }
     
-    static migrate1005to1006(data: import("../savegame_typedefs.js").SavegameData): any {
+    static migrate1005to1006(data: import("../savegame_typedefs.js").SavegameData) {
         logger.log("Migrating 1005 to 1006");
-        const dump: any = data.dump;
+        const dump = data.dump;
         if (!dump) {
             return true;
         }
         // Reduce stored shapes
-        const stored: any = dump.hubGoals.storedShapes;
-        for (const shapeKey: any in stored) {
+        const stored = dump.hubGoals.storedShapes;
+        for (const shapeKey in stored) {
             stored[shapeKey] = rebalance(stored[shapeKey]);
         }
         // Reset final game shape
@@ -93,8 +93,8 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
         if (dump.hubGoals.currentGoal) {
             dump.hubGoals.currentGoal.required = rebalance(dump.hubGoals.currentGoal.required);
         }
-        let level: any = Math.min(19, dump.hubGoals.level);
-        const levelMapping: any = {
+        let level = Math.min(19, dump.hubGoals.level);
+        const levelMapping = {
             14: 15,
             15: 16,
             16: 17,
@@ -104,10 +104,10 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
         };
         dump.hubGoals.level = levelMapping[level] || level;
         // Update entities
-        const entities: any = dump.entities;
-        for (let i: any = 0; i < entities.length; ++i) {
-            const entity: any = entities[i];
-            const components: any = entity.components;
+        const entities = dump.entities;
+        for (let i = 0; i < entities.length; ++i) {
+            const entity = entities[i];
+            const components = entity.components;
             this.migrateStaticComp1005to1006(entity);
             // HUB
             if (components.Hub) {
@@ -174,9 +174,9 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
             }
         }
     }
-        static migrateStaticComp1005to1006(entity: Entity): any {
-        const spriteMapping: any = this.computeSpriteMapping();
-        const staticComp: any = entity.components.StaticMapEntity;
+        static migrateStaticComp1005to1006(entity: Entity) {
+        const spriteMapping = this.computeSpriteMapping();
+        const staticComp = entity.components.StaticMapEntity;
                 const newStaticComp: StaticMapEntityComponent = {};
         newStaticComp.origin = staticComp.origin;
         newStaticComp.originalRotation = staticComp.originalRotation;
@@ -189,7 +189,7 @@ export class SavegameInterface_V1006 extends SavegameInterface_V1005 {
         }
         // Belt special case
         if (entity.components.Belt) {
-            const actualCode: any = {
+            const actualCode = {
                 top: findCode(MetaBeltBuilding, defaultBuildingVariant, 0),
                 left: findCode(MetaBeltBuilding, defaultBuildingVariant, 1),
                 right: findCode(MetaBeltBuilding, defaultBuildingVariant, 2),

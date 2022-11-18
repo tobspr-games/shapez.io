@@ -1,5 +1,5 @@
 import { createLogger } from "./logging";
-const logger: any = createLogger("singleton_factory");
+const logger = createLogger("singleton_factory");
 // simple factory pattern
 export class SingletonFactory {
     public id = id;
@@ -8,14 +8,14 @@ export class SingletonFactory {
 
     constructor(id) {
     }
-    getId(): any {
+    getId() {
         return this.id;
     }
-    register(classHandle: any): any {
+    register(classHandle) {
         // First, construct instance
-        const instance: any = new classHandle();
+        const instance = new classHandle();
         // Extract id
-        const id: any = instance.getId();
+        const id = instance.getId();
         assert(id, "Factory: Invalid id for class " + classHandle.name + ": " + id);
         // Check duplicates
         assert(!this.idToEntry[id], "Duplicate factory entry for " + id);
@@ -35,7 +35,7 @@ export class SingletonFactory {
      * {}
      */
     findById(id: string): object {
-        const entry: any = this.idToEntry[id];
+        const entry = this.idToEntry[id];
         if (!entry) {
             logger.error("Object with id", id, "is not registered!");
             assert(false, "Factory: Object with id '" + id + "' is not registered!");
@@ -49,7 +49,7 @@ export class SingletonFactory {
      * {}
      */
     findByClass(classHandle: object): object {
-        for (let i: any = 0; i < this.entries.length; ++i) {
+        for (let i = 0; i < this.entries.length; ++i) {
             if (this.entries[i] instanceof classHandle) {
                 return this.entries[i];
             }

@@ -1,11 +1,11 @@
 import { globalConfig } from "./config";
 import { fastArrayDelete } from "./utils";
 import { createLogger } from "./logging";
-const logger: any = createLogger("buffer_utils");
+const logger = createLogger("buffer_utils");
 /**
  * Enables images smoothing on a context
  */
-export function enableImageSmoothing(context: CanvasRenderingContext2D): any {
+export function enableImageSmoothing(context: CanvasRenderingContext2D) {
     context.imageSmoothingEnabled = true;
     context.webkitImageSmoothingEnabled = true;
     // @ts-ignore
@@ -14,7 +14,7 @@ export function enableImageSmoothing(context: CanvasRenderingContext2D): any {
 /**
  * Disables image smoothing on a context
  */
-export function disableImageSmoothing(context: CanvasRenderingContext2D): any {
+export function disableImageSmoothing(context: CanvasRenderingContext2D) {
     context.imageSmoothingEnabled = false;
     context.webkitImageSmoothingEnabled = false;
 }
@@ -31,14 +31,14 @@ const freeCanvasBuckets: Map<number, Array<CanvasCacheEntry>> = new Map();
 /**
  * Track statistics
  */
-const stats: any = {
+const stats = {
     vramUsage: 0,
     backlogVramUsage: 0,
     bufferCount: 0,
     numReused: 0,
     numCreated: 0,
 };
-export function getBufferVramUsageBytes(canvas: HTMLCanvasElement): any {
+export function getBufferVramUsageBytes(canvas: HTMLCanvasElement) {
     assert(canvas, "no canvas given");
     assert(Number.isFinite(canvas.width), "bad canvas width: " + canvas.width);
     assert(Number.isFinite(canvas.height), "bad canvas height" + canvas.height);
@@ -47,9 +47,9 @@ export function getBufferVramUsageBytes(canvas: HTMLCanvasElement): any {
 /**
  * Returns stats on the allocated buffers
  */
-export function getBufferStats(): any {
-    let numBuffersFree: any = 0;
-    freeCanvasBuckets.forEach((bucket: any): any => {
+export function getBufferStats() {
+    let numBuffersFree = 0;
+    freeCanvasBuckets.forEach(bucket => {
         numBuffersFree += bucket.length;
     });
     return {
@@ -61,10 +61,10 @@ export function getBufferStats(): any {
 /**
  * Clears the backlog buffers if they grew too much
  */
-export function clearBufferBacklog(): any {
-    freeCanvasBuckets.forEach((bucket: any): any => {
+export function clearBufferBacklog() {
+    freeCanvasBuckets.forEach(bucket => {
         while (bucket.length > 500) {
-            const entry: any = bucket[bucket.length - 1];
+            const entry = bucket[bucket.length - 1];
             stats.backlogVramUsage -= getBufferVramUsageBytes(entry.canvas);
             delete entry.canvas;
             delete entry.context;
@@ -76,7 +76,7 @@ export function clearBufferBacklog(): any {
  * Creates a new offscreen buffer
  * {}
  */
-export function makeOffscreenBuffer(w: Number, h: Number, { smooth = true, reusable = true, label = "buffer" }: any): [
+export function makeOffscreenBuffer(w: Number, h: Number, { smooth = true, reusable = true, label = "buffer" }): [
     HTMLCanvasElement,
     CanvasRenderingContext2D
 ] {
@@ -89,18 +89,18 @@ export function makeOffscreenBuffer(w: Number, h: Number, { smooth = true, reusa
         w = Math.max(1, w);
         h = Math.max(1, h);
     }
-    const recommendedSize: any = 1024 * 1024;
+    const recommendedSize = 1024 * 1024;
     if (w * h > recommendedSize) {
         logger.warn("Creating huge buffer:", w, "x", h, "with label", label);
     }
     w = Math.floor(w);
     h = Math.floor(h);
-    let canvas: any = null;
-    let context: any = null;
+    let canvas = null;
+    let context = null;
     // Ok, search in cache first
-    const bucket: any = freeCanvasBuckets.get(w * h) || [];
-    for (let i: any = 0; i < bucket.length; ++i) {
-        const { canvas: useableCanvas, context: useableContext }: any = bucket[i];
+    const bucket = freeCanvasBuckets.get(w * h) || [];
+    for (let i = 0; i < bucket.length; ++i) {
+        const { canvas: useableCanvas, context: useableContext } = bucket[i];
         if (useableCanvas.width === w && useableCanvas.height === h) {
             // Ok we found one
             canvas = useableCanvas;
@@ -126,12 +126,12 @@ export function makeOffscreenBuffer(w: Number, h: Number, { smooth = true, reusa
         canvas.height = h;
         // Initial state
         context.save();
-        canvas.addEventListener("webglcontextlost", (): any => {
+        canvas.addEventListener("webglcontextlost", () => {
             console.warn("canvas::webglcontextlost", canvas);
             // @ts-ignore
             canvas._contextLost = true;
         });
-        canvas.addEventListener("contextlost", (): any => {
+        canvas.addEventListener("contextlost", () => {
             console.warn("canvas::contextlost", canvas);
             // @ts-ignore
             canvas._contextLost = true;
@@ -155,20 +155,20 @@ export function makeOffscreenBuffer(w: Number, h: Number, { smooth = true, reusa
 /**
  * Frees a canvas
  */
-export function registerCanvas(canvas: HTMLCanvasElement, context: any): any {
+export function registerCanvas(canvas: HTMLCanvasElement, context) {
     registeredCanvas.push({ canvas, context });
     stats.bufferCount += 1;
-    const bytesUsed: any = getBufferVramUsageBytes(canvas);
+    const bytesUsed = getBufferVramUsageBytes(canvas);
     stats.vramUsage += bytesUsed;
 }
 /**
  * Frees a canvas
  */
-export function freeCanvas(canvas: HTMLCanvasElement): any {
+export function freeCanvas(canvas: HTMLCanvasElement) {
     assert(canvas, "Canvas is empty");
-    let index: any = -1;
-    let data: any = null;
-    for (let i: any = 0; i < registeredCanvas.length; ++i) {
+    let index = -1;
+    let data = null;
+    for (let i = 0; i < registeredCanvas.length; ++i) {
         if (registeredCanvas[i].canvas === canvas) {
             index = i;
             data = registeredCanvas[i];
@@ -180,8 +180,8 @@ export function freeCanvas(canvas: HTMLCanvasElement): any {
         return;
     }
     fastArrayDelete(registeredCanvas, index);
-    const key: any = canvas.width * canvas.height;
-    const bucket: any = freeCanvasBuckets.get(key);
+    const key = canvas.width * canvas.height;
+    const bucket = freeCanvasBuckets.get(key);
     if (bucket) {
         bucket.push(data);
     }
@@ -189,7 +189,7 @@ export function freeCanvas(canvas: HTMLCanvasElement): any {
         freeCanvasBuckets.set(key, [data]);
     }
     stats.bufferCount -= 1;
-    const bytesUsed: any = getBufferVramUsageBytes(canvas);
+    const bytesUsed = getBufferVramUsageBytes(canvas);
     stats.vramUsage -= bytesUsed;
     stats.backlogVramUsage += bytesUsed;
 }

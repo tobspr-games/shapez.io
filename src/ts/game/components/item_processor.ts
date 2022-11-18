@@ -2,7 +2,7 @@ import { types } from "../../savegame/serialization";
 import { BaseItem } from "../base_item";
 import { Component } from "../component";
 /** @enum {string} */
-export const enumItemProcessorTypes: any = {
+export const enumItemProcessorTypes = {
     balancer: "balancer",
     cutter: "cutter",
     cutterQuad: "cutterQuad",
@@ -21,7 +21,7 @@ export const enumItemProcessorTypes: any = {
     goal: "goal",
 };
 /** @enum {string} */
-export const enumItemProcessorRequirements: any = {
+export const enumItemProcessorRequirements = {
     painterQuad: "painterQuad",
 };
 export type EjectorItemToEject = {
@@ -36,10 +36,10 @@ export type EjectorCharge = {
 
 
 export class ItemProcessorComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "ItemProcessor";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             nextOutputSlot: types.uint,
         };
@@ -53,7 +53,7 @@ export class ItemProcessorComponent extends Component {
         super();
         this.clear();
     }
-    clear(): any {
+    clear() {
         // Which slot to emit next, this is only a preference and if it can't emit
         // it will take the other one. Some machines ignore this (e.g. the balancer) to make
         // sure the outputs always match
@@ -78,7 +78,7 @@ export class ItemProcessorComponent extends Component {
     /**
      * Tries to take the item
      */
-    tryTakeItem(item: BaseItem, sourceSlot: number): any {
+    tryTakeItem(item: BaseItem, sourceSlot: number) {
         if (this.type === enumItemProcessorTypes.hub ||
             this.type === enumItemProcessorTypes.trash ||
             this.type === enumItemProcessorTypes.goal) {

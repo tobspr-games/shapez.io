@@ -7,45 +7,45 @@
 // http://pieroxy.net/blog/pages/lz-string/testing.html
 //
 // LZ-based compression algorithm, version 1.4.4
-const fromCharCode: any = String.fromCharCode;
-const hasOwnProperty: any = Object.prototype.hasOwnProperty;
-const keyStrUriSafe: any = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$";
-const baseReverseDic: any = {};
-function getBaseValue(alphabet: any, character: any): any {
+const fromCharCode = String.fromCharCode;
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+const keyStrUriSafe = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$";
+const baseReverseDic = {};
+function getBaseValue(alphabet, character) {
     if (!baseReverseDic[alphabet]) {
         baseReverseDic[alphabet] = {};
-        for (let i: any = 0; i < alphabet.length; i++) {
+        for (let i = 0; i < alphabet.length; i++) {
             baseReverseDic[alphabet][alphabet.charAt(i)] = i;
         }
     }
     return baseReverseDic[alphabet][character];
 }
 //compress into uint8array (UCS-2 big endian format)
-export function compressU8(uncompressed: any): any {
-    let compressed: any = compress(uncompressed);
-    let buf: any = new Uint8Array(compressed.length * 2); // 2 bytes per character
-    for (let i: any = 0, TotalLen: any = compressed.length; i < TotalLen; i++) {
-        let current_value: any = compressed.charCodeAt(i);
+export function compressU8(uncompressed) {
+    let compressed = compress(uncompressed);
+    let buf = new Uint8Array(compressed.length * 2); // 2 bytes per character
+    for (let i = 0, TotalLen = compressed.length; i < TotalLen; i++) {
+        let current_value = compressed.charCodeAt(i);
         buf[i * 2] = current_value >>> 8;
         buf[i * 2 + 1] = current_value % 256;
     }
     return buf;
 }
 // Compreses with header
-export function compressU8WHeader(uncompressed: string, header: number): any {
-    let compressed: any = compress(uncompressed);
-    let buf: any = new Uint8Array(2 + compressed.length * 2); // 2 bytes per character
+export function compressU8WHeader(uncompressed: string, header: number) {
+    let compressed = compress(uncompressed);
+    let buf = new Uint8Array(2 + compressed.length * 2); // 2 bytes per character
     buf[0] = header >>> 8;
     buf[1] = header % 256;
-    for (let i: any = 0, TotalLen: any = compressed.length; i < TotalLen; i++) {
-        let current_value: any = compressed.charCodeAt(i);
+    for (let i = 0, TotalLen = compressed.length; i < TotalLen; i++) {
+        let current_value = compressed.charCodeAt(i);
         buf[2 + i * 2] = current_value >>> 8;
         buf[2 + i * 2 + 1] = current_value % 256;
     }
     return buf;
 }
 //decompress from uint8array (UCS-2 big endian format)
-export function decompressU8WHeader(compressed: Uint8Array): any {
+export function decompressU8WHeader(compressed: Uint8Array) {
     // let buf = new Array(compressed.length / 2); // 2 bytes per character
     // for (let i = 0, TotalLen = buf.length; i < TotalLen; i++) {
     //     buf[i] = compressed[i * 2] * 256 + compressed[i * 2 + 1];
@@ -54,42 +54,42 @@ export function decompressU8WHeader(compressed: Uint8Array): any {
     // buf.forEach(function (c) {
     //     result.push(fromCharCode(c));
     // });
-    let result: any = [];
-    for (let i: any = 2, n: any = compressed.length; i < n; i += 2) {
-        const code: any = compressed[i] * 256 + compressed[i + 1];
+    let result = [];
+    for (let i = 2, n = compressed.length; i < n; i += 2) {
+        const code = compressed[i] * 256 + compressed[i + 1];
         result.push(fromCharCode(code));
     }
     return decompress(result.join(""));
 }
 //compress into a string that is already URI encoded
-export function compressX64(input: any): any {
+export function compressX64(input) {
     if (input == null)
         return "";
-    return _compress(input, 6, function (a: any): any {
+    return _compress(input, 6, function (a) {
         return keyStrUriSafe.charAt(a);
     });
 }
 //decompress from an output of compressToEncodedURIComponent
-export function decompressX64(input: any): any {
+export function decompressX64(input) {
     if (input == null)
         return "";
     if (input == "")
         return null;
     input = input.replace(/ /g, "+");
-    return _decompress(input.length, 32, function (index: any): any {
+    return _decompress(input.length, 32, function (index) {
         return getBaseValue(keyStrUriSafe, input.charAt(index));
     });
 }
-function compress(uncompressed: any): any {
-    return _compress(uncompressed, 16, function (a: any): any {
+function compress(uncompressed) {
+    return _compress(uncompressed, 16, function (a) {
         return fromCharCode(a);
     });
 }
-function _compress(uncompressed: any, bitsPerChar: any, getCharFromInt: any): any {
+function _compress(uncompressed, bitsPerChar, getCharFromInt) {
     if (uncompressed == null)
         return "";
-    let i: any, value: any, context_dictionary: any = {}, context_dictionaryToCreate: any = {}, context_c: any = "", context_wc: any = "", context_w: any = "", context_enlargeIn: any = 2, // Compensate for the first entry which should not count
-    context_dictSize: any = 3, context_numBits: any = 2, context_data: any = [], context_data_val: any = 0, context_data_position: any = 0, ii: any;
+    let i, value, context_dictionary = {}, context_dictionaryToCreate = {}, context_c = "", context_wc = "", context_w = "", context_enlargeIn = 2, // Compensate for the first entry which should not count
+    context_dictSize = 3, context_numBits = 2, context_data = [], context_data_val = 0, context_data_position = 0, ii;
     for (ii = 0; ii < uncompressed.length; ii += 1) {
         context_c = uncompressed.charAt(ii);
         if (!hasOwnProperty.call(context_dictionary, context_c)) {
@@ -300,17 +300,17 @@ function _compress(uncompressed: any, bitsPerChar: any, getCharFromInt: any): an
     }
     return context_data.join("");
 }
-function decompress(compressed: any): any {
+function decompress(compressed) {
     if (compressed == null)
         return "";
     if (compressed == "")
         return null;
-    return _decompress(compressed.length, 32768, function (index: any): any {
+    return _decompress(compressed.length, 32768, function (index) {
         return compressed.charCodeAt(index);
     });
 }
-function _decompress(length: any, resetValue: any, getNextValue: any): any {
-    let dictionary: any = [], next: any, enlargeIn: any = 4, dictSize: any = 4, numBits: any = 3, entry: any = "", result: any = [], i: any, w: any, bits: any, resb: any, maxpower: any, power: any, c: any, data: any = { val: getNextValue(0), position: resetValue, index: 1 };
+function _decompress(length, resetValue, getNextValue) {
+    let dictionary = [], next, enlargeIn = 4, dictSize = 4, numBits = 3, entry = "", result = [], i, w, bits, resb, maxpower, power, c, data = { val: getNextValue(0), position: resetValue, index: 1 };
     for (i = 0; i < 3; i += 1) {
         dictionary[i] = i;
     }

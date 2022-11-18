@@ -8,19 +8,19 @@ import { mixVector, Vector } from "../core/vector";
 import { BasicSerializableObject, types } from "../savegame/serialization";
 import { KEYMAPPINGS } from "./key_action_mapper";
 import { GameRoot } from "./root";
-const logger: any = createLogger("camera");
-export const USER_INTERACT_MOVE: any = "move";
-export const USER_INTERACT_ZOOM: any = "zoom";
-export const USER_INTERACT_TOUCHEND: any = "touchend";
-const velocitySmoothing: any = 0.5;
-const velocityFade: any = 0.98;
-const velocityStrength: any = 0.4;
-const velocityMax: any = 20;
-const ticksBeforeErasingVelocity: any = 10;
+const logger = createLogger("camera");
+export const USER_INTERACT_MOVE = "move";
+export const USER_INTERACT_ZOOM = "zoom";
+export const USER_INTERACT_TOUCHEND = "touchend";
+const velocitySmoothing = 0.5;
+const velocityFade = 0.98;
+const velocityStrength = 0.4;
+const velocityMax = 20;
+const ticksBeforeErasingVelocity = 10;
 /**
  * @enum {string}
  */
-export const enumMouseButton: any = {
+export const enumMouseButton = {
     left: "left",
     middle: "middle",
     right: "right",
@@ -63,7 +63,7 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
         this.bindKeys();
         if (G_IS_DEV) {
-            window.addEventListener("keydown", (ev: any): any => {
+            window.addEventListener("keydown", ev => {
                 if (ev.key === "i") {
                     this.zoomLevel = 3;
                 }
@@ -71,17 +71,17 @@ export class Camera extends BasicSerializableObject {
         }
     }
     // Serialization
-    static getId(): any {
+    static getId() {
         return "Camera";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             zoomLevel: types.float,
             center: types.vector,
         };
     }
-    deserialize(data: any): any {
-        const errorCode: any = super.deserialize(data);
+    deserialize(data) {
+        const errorCode = super.deserialize(data);
         if (errorCode) {
             return errorCode;
         }
@@ -89,55 +89,55 @@ export class Camera extends BasicSerializableObject {
         this.clampZoomLevel();
     }
     // Simple getters & setters
-    addScreenShake(amount: any): any {
-        const currentShakeAmount: any = this.currentShake.length();
-        const scale: any = 1 / (1 + 3 * currentShakeAmount);
+    addScreenShake(amount) {
+        const currentShakeAmount = this.currentShake.length();
+        const scale = 1 / (1 + 3 * currentShakeAmount);
         this.currentShake.x = this.currentShake.x + 2 * (Math.random() - 0.5) * scale * amount;
         this.currentShake.y = this.currentShake.y + 2 * (Math.random() - 0.5) * scale * amount;
     }
     /**
      * Sets a point in world space to focus on
      */
-    setDesiredCenter(center: Vector): any {
+    setDesiredCenter(center: Vector) {
         this.desiredCenter = center.copy();
         this.currentlyMoving = false;
     }
     /**
      * Sets a desired zoom level
      */
-    setDesiredZoom(zoom: number): any {
+    setDesiredZoom(zoom: number) {
         this.desiredZoom = zoom;
     }
     /**
      * Returns if this camera is currently moving by a non-user interaction
      */
-    isCurrentlyMovingToDesiredCenter(): any {
+    isCurrentlyMovingToDesiredCenter() {
         return this.desiredCenter !== null;
     }
     /**
      * Sets the camera pan, every frame the camera will move by this amount
      */
-    setPan(pan: Vector): any {
+    setPan(pan: Vector) {
         this.desiredPan = pan.copy();
     }
     /**
      * Finds a good initial zoom level
      */
-    findInitialZoom(): any {
-        let desiredWorldSpaceWidth: any = 18 * globalConfig.tileSize;
+    findInitialZoom() {
+        let desiredWorldSpaceWidth = 18 * globalConfig.tileSize;
         if (window.innerWidth < 1000) {
             desiredWorldSpaceWidth = 12 * globalConfig.tileSize;
         }
-        const zoomLevelX: any = this.root.gameWidth / desiredWorldSpaceWidth;
-        const zoomLevelY: any = this.root.gameHeight / desiredWorldSpaceWidth;
-        const finalLevel: any = Math.min(zoomLevelX, zoomLevelY);
+        const zoomLevelX = this.root.gameWidth / desiredWorldSpaceWidth;
+        const zoomLevelY = this.root.gameHeight / desiredWorldSpaceWidth;
+        const finalLevel = Math.min(zoomLevelX, zoomLevelY);
         assert(Number.isFinite(finalLevel) && finalLevel > 0, "Invalid zoom level computed for initial zoom: " + finalLevel);
         return finalLevel;
     }
     /**
      * Clears all animations
      */
-    clearAnimations(): any {
+    clearAnimations() {
         this.touchPostMoveVelocity.x = 0;
         this.touchPostMoveVelocity.y = 0;
         this.desiredCenter = null;
@@ -178,7 +178,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Cancels all interactions, that is user interaction and non user interaction
      */
-    cancelAllInteractions(): any {
+    cancelAllInteractions() {
         this.touchPostMoveVelocity = new Vector(0, 0);
         this.desiredCenter = null;
         this.currentlyMoving = false;
@@ -188,37 +188,37 @@ export class Camera extends BasicSerializableObject {
     /**
      * Returns effective viewport width
      */
-    getViewportWidth(): any {
+    getViewportWidth() {
         return this.root.gameWidth / this.zoomLevel;
     }
     /**
      * Returns effective viewport height
      */
-    getViewportHeight(): any {
+    getViewportHeight() {
         return this.root.gameHeight / this.zoomLevel;
     }
     /**
      * Returns effective world space viewport left
      */
-    getViewportLeft(): any {
+    getViewportLeft() {
         return this.center.x - this.getViewportWidth() / 2 + (this.currentShake.x * 10) / this.zoomLevel;
     }
     /**
      * Returns effective world space viewport right
      */
-    getViewportRight(): any {
+    getViewportRight() {
         return this.center.x + this.getViewportWidth() / 2 + (this.currentShake.x * 10) / this.zoomLevel;
     }
     /**
      * Returns effective world space viewport top
      */
-    getViewportTop(): any {
+    getViewportTop() {
         return this.center.y - this.getViewportHeight() / 2 + (this.currentShake.x * 10) / this.zoomLevel;
     }
     /**
      * Returns effective world space viewport bottom
      */
-    getViewportBottom(): any {
+    getViewportBottom() {
         return this.center.y + this.getViewportHeight() / 2 + (this.currentShake.x * 10) / this.zoomLevel;
     }
     /**
@@ -228,13 +228,13 @@ export class Camera extends BasicSerializableObject {
     getVisibleRect(): Rectangle {
         return Rectangle.fromTRBL(Math.floor(this.getViewportTop()), Math.ceil(this.getViewportRight()), Math.ceil(this.getViewportBottom()), Math.floor(this.getViewportLeft()));
     }
-    getIsMapOverlayActive(): any {
+    getIsMapOverlayActive() {
         return this.zoomLevel < globalConfig.mapChunkOverviewMinZoom;
     }
     /**
      * Attaches all event listeners
      */
-    internalInitEvents(): any {
+    internalInitEvents() {
         this.eventListenerTouchStart = this.onTouchStart.bind(this);
         this.eventListenerTouchEnd = this.onTouchEnd.bind(this);
         this.eventListenerTouchMove = this.onTouchMove.bind(this);
@@ -257,7 +257,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Cleans up all event listeners
      */
-    cleanup(): any {
+    cleanup() {
         if (SUPPORT_TOUCH) {
             this.root.canvas.removeEventListener("touchstart", this.eventListenerTouchStart);
             this.root.canvas.removeEventListener("touchend", this.eventListenerTouchEnd);
@@ -273,21 +273,21 @@ export class Camera extends BasicSerializableObject {
     /**
      * Binds the arrow keys
      */
-    bindKeys(): any {
-        const mapper: any = this.root.keyMapper;
-        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).add((): any => (this.keyboardForce.y = -1));
-        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).add((): any => (this.keyboardForce.y = 1));
-        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).add((): any => (this.keyboardForce.x = 1));
-        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).add((): any => (this.keyboardForce.x = -1));
+    bindKeys() {
+        const mapper = this.root.keyMapper;
+        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).add(() => (this.keyboardForce.y = -1));
+        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveDown).add(() => (this.keyboardForce.y = 1));
+        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).add(() => (this.keyboardForce.x = 1));
+        mapper.getBinding(KEYMAPPINGS.navigation.mapMoveLeft).add(() => (this.keyboardForce.x = -1));
         mapper
             .getBinding(KEYMAPPINGS.navigation.mapZoomIn)
-            .add((): any => (this.desiredZoom = this.zoomLevel * 1.2));
+            .add(() => (this.desiredZoom = this.zoomLevel * 1.2));
         mapper
             .getBinding(KEYMAPPINGS.navigation.mapZoomOut)
-            .add((): any => (this.desiredZoom = this.zoomLevel / 1.2));
-        mapper.getBinding(KEYMAPPINGS.navigation.centerMap).add((): any => this.centerOnMap());
+            .add(() => (this.desiredZoom = this.zoomLevel / 1.2));
+        mapper.getBinding(KEYMAPPINGS.navigation.centerMap).add(() => this.centerOnMap());
     }
-    centerOnMap(): any {
+    centerOnMap() {
         this.desiredCenter = new Vector(0, 0);
     }
     /**
@@ -295,7 +295,7 @@ export class Camera extends BasicSerializableObject {
      * {} world space
      */
     screenToWorld(screen: Vector): Vector {
-        const centerSpace: any = screen.subScalars(this.root.gameWidth / 2, this.root.gameHeight / 2);
+        const centerSpace = screen.subScalars(this.root.gameWidth / 2, this.root.gameHeight / 2);
         return centerSpace.divideScalar(this.zoomLevel).add(this.center);
     }
     /**
@@ -303,7 +303,7 @@ export class Camera extends BasicSerializableObject {
      * {} screen space
      */
     worldToScreen(world: Vector): Vector {
-        const screenSpace: any = world.sub(this.center).multiplyScalar(this.zoomLevel);
+        const screenSpace = world.sub(this.center).multiplyScalar(this.zoomLevel);
         return screenSpace.addScalars(this.root.gameWidth / 2, this.root.gameHeight / 2);
     }
     /**
@@ -311,13 +311,13 @@ export class Camera extends BasicSerializableObject {
      * {} true if its on screen
      */
     isWorldPointOnScreen(point: Vector): boolean {
-        const rect: any = this.getVisibleRect();
+        const rect = this.getVisibleRect();
         return rect.containsPoint(point.x, point.y);
     }
-    getMaximumZoom(): any {
+    getMaximumZoom() {
         return this.root.gameMode.getMaximumZoom();
     }
-    getMinimumZoom(): any {
+    getMinimumZoom() {
         return this.root.gameMode.getMinimumZoom();
     }
     /**
@@ -339,7 +339,7 @@ export class Camera extends BasicSerializableObject {
      * Checks if the mouse event is too close after a touch event and thus
      * should get ignored
      */
-    checkPreventDoubleMouse(): any {
+    checkPreventDoubleMouse() {
         if (performance.now() - clickDetectorGlobals.lastTouchTime < 1000.0) {
             return false;
         }
@@ -348,7 +348,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Mousedown handler
      */
-    onMouseDown(event: MouseEvent): any {
+    onMouseDown(event: MouseEvent) {
         if (event.cancelable) {
             event.preventDefault();
             // event.stopPropagation();
@@ -371,7 +371,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Mousemove handler
      */
-    onMouseMove(event: MouseEvent): any {
+    onMouseMove(event: MouseEvent) {
         if (event.cancelable) {
             event.preventDefault();
             // event.stopPropagation();
@@ -390,7 +390,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Mouseup handler
      */
-    onMouseUp(event: MouseEvent=): any {
+    onMouseUp(event: MouseEvent=) {
         if (event) {
             if (event.cancelable) {
                 event.preventDefault();
@@ -406,27 +406,27 @@ export class Camera extends BasicSerializableObject {
     /**
      * Mousewheel event
      */
-    onMouseWheel(event: WheelEvent): any {
+    onMouseWheel(event: WheelEvent) {
         if (event.cancelable) {
             event.preventDefault();
             // event.stopPropagation();
         }
-        const prevZoom: any = this.zoomLevel;
-        const scale: any = 1 + 0.15 * this.root.app.settings.getScrollWheelSensitivity();
+        const prevZoom = this.zoomLevel;
+        const scale = 1 + 0.15 * this.root.app.settings.getScrollWheelSensitivity();
         assert(Number.isFinite(scale), "Got invalid scale in mouse wheel event: " + event.deltaY);
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *before* wheel: " + this.zoomLevel);
         this.zoomLevel *= event.deltaY < 0 ? scale : 1 / scale;
         assert(Number.isFinite(this.zoomLevel), "Got invalid zoom level *after* wheel: " + this.zoomLevel);
         this.clampZoomLevel();
         this.desiredZoom = null;
-        let mousePosition: any = this.root.app.mousePosition;
+        let mousePosition = this.root.app.mousePosition;
         if (!this.root.app.settings.getAllSettings().zoomToCursor) {
             mousePosition = new Vector(this.root.gameWidth / 2, this.root.gameHeight / 2);
         }
         if (mousePosition) {
-            const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-            const worldDelta: any = worldPos.sub(this.center);
-            const actualDelta: any = this.zoomLevel / prevZoom - 1;
+            const worldPos = this.root.camera.screenToWorld(mousePosition);
+            const worldDelta = worldPos.sub(this.center);
+            const actualDelta = this.zoomLevel / prevZoom - 1;
             this.center = this.center.add(worldDelta.multiplyScalar(actualDelta));
             this.desiredCenter = null;
         }
@@ -435,7 +435,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Touch start handler
      */
-    onTouchStart(event: TouchEvent): any {
+    onTouchStart(event: TouchEvent) {
         if (event.cancelable) {
             event.preventDefault();
             // event.stopPropagation();
@@ -443,7 +443,7 @@ export class Camera extends BasicSerializableObject {
         clickDetectorGlobals.lastTouchTime = performance.now();
         this.touchPostMoveVelocity = new Vector(0, 0);
         if (event.touches.length === 1) {
-            const touch: any = event.touches[0];
+            const touch = event.touches[0];
             this.combinedSingleTouchStartHandler(touch.clientX, touch.clientY);
         }
         else if (event.touches.length === 2) {
@@ -451,8 +451,8 @@ export class Camera extends BasicSerializableObject {
             //     // Something prevented pinching
             //     return false;
             // }
-            const touch1: any = event.touches[0];
-            const touch2: any = event.touches[1];
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
             this.currentlyMoving = false;
             this.currentlyPinching = true;
             this.lastPinchPositions = [
@@ -465,35 +465,35 @@ export class Camera extends BasicSerializableObject {
     /**
      * Touch move handler
      */
-    onTouchMove(event: TouchEvent): any {
+    onTouchMove(event: TouchEvent) {
         if (event.cancelable) {
             event.preventDefault();
             // event.stopPropagation();
         }
         clickDetectorGlobals.lastTouchTime = performance.now();
         if (event.touches.length === 1) {
-            const touch: any = event.touches[0];
+            const touch = event.touches[0];
             this.combinedSingleTouchMoveHandler(touch.clientX, touch.clientY);
         }
         else if (event.touches.length === 2) {
             if (this.currentlyPinching) {
-                const touch1: any = event.touches[0];
-                const touch2: any = event.touches[1];
-                const newPinchPositions: any = [
+                const touch1 = event.touches[0];
+                const touch2 = event.touches[1];
+                const newPinchPositions = [
                     new Vector(touch1.clientX, touch1.clientY),
                     new Vector(touch2.clientX, touch2.clientY),
                 ];
                 // Get distance of taps last time and now
-                const lastDistance: any = this.lastPinchPositions[0].distance(this.lastPinchPositions[1]);
-                const thisDistance: any = newPinchPositions[0].distance(newPinchPositions[1]);
+                const lastDistance = this.lastPinchPositions[0].distance(this.lastPinchPositions[1]);
+                const thisDistance = newPinchPositions[0].distance(newPinchPositions[1]);
                 // IMPORTANT to do math max here to avoid NaN and causing an invalid zoom level
-                const difference: any = thisDistance / Math.max(0.001, lastDistance);
+                const difference = thisDistance / Math.max(0.001, lastDistance);
                 // Find old center of zoom
-                let oldCenter: any = this.lastPinchPositions[0].centerPoint(this.lastPinchPositions[1]);
+                let oldCenter = this.lastPinchPositions[0].centerPoint(this.lastPinchPositions[1]);
                 // Find new center of zoom
-                let center: any = newPinchPositions[0].centerPoint(newPinchPositions[1]);
+                let center = newPinchPositions[0].centerPoint(newPinchPositions[1]);
                 // Compute movement
-                let movement: any = oldCenter.sub(center);
+                let movement = oldCenter.sub(center);
                 this.center.x += movement.x / this.zoomLevel;
                 this.center.y += movement.y / this.zoomLevel;
                 // Compute zoom
@@ -508,7 +508,7 @@ export class Camera extends BasicSerializableObject {
                     ")");
                 this.zoomLevel *= difference;
                 // Stick to pivot point
-                const correcture: any = center.multiplyScalar(difference - 1).divideScalar(this.zoomLevel);
+                const correcture = center.multiplyScalar(difference - 1).divideScalar(this.zoomLevel);
                 this.center = this.center.add(correcture);
                 this.lastPinchPositions = newPinchPositions;
                 this.userInteraction.dispatch(USER_INTERACT_MOVE);
@@ -525,7 +525,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Touch end and cancel handler
      */
-    onTouchEnd(event: TouchEvent=): any {
+    onTouchEnd(event: TouchEvent=) {
         if (event) {
             if (event.cancelable) {
                 event.preventDefault();
@@ -536,15 +536,15 @@ export class Camera extends BasicSerializableObject {
         if (event.changedTouches.length === 0) {
             logger.warn("Touch end without changed touches");
         }
-        const touch: any = event.changedTouches[0];
+        const touch = event.changedTouches[0];
         this.combinedSingleTouchStopHandler(touch.clientX, touch.clientY);
         return false;
     }
     /**
      * Internal touch start handler
      */
-    combinedSingleTouchStartHandler(x: number, y: number): any {
-        const pos: any = new Vector(x, y);
+    combinedSingleTouchStartHandler(x: number, y: number) {
+        const pos = new Vector(x, y);
         if (this.downPreHandler.dispatch(pos, enumMouseButton.left) === STOP_PROPAGATION) {
             // Somebody else captured it
             return;
@@ -559,8 +559,8 @@ export class Camera extends BasicSerializableObject {
     /**
      * Internal touch move handler
      */
-    combinedSingleTouchMoveHandler(x: number, y: number): any {
-        const pos: any = new Vector(x, y);
+    combinedSingleTouchMoveHandler(x: number, y: number) {
+        const pos = new Vector(x, y);
         if (this.movePreHandler.dispatch(pos) === STOP_PROPAGATION) {
             // Somebody else captured it
             return;
@@ -568,7 +568,7 @@ export class Camera extends BasicSerializableObject {
         if (!this.currentlyMoving) {
             return false;
         }
-        let delta: any = this.lastMovingPosition.sub(pos).divideScalar(this.zoomLevel);
+        let delta = this.lastMovingPosition.sub(pos).divideScalar(this.zoomLevel);
         if (G_IS_DEV && globalConfig.debug.testCulling) {
             // When testing culling, we see everything from the same distance
             delta = delta.multiplyScalar(this.zoomLevel * -2);
@@ -588,7 +588,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Internal touch stop handler
      */
-    combinedSingleTouchStopHandler(x: any, y: any): any {
+    combinedSingleTouchStopHandler(x, y) {
         if (this.currentlyMoving || this.currentlyPinching) {
             this.currentlyMoving = false;
             this.currentlyPinching = false;
@@ -604,7 +604,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Clamps the camera zoom level within the allowed range
      */
-    clampZoomLevel(): any {
+    clampZoomLevel() {
         if (G_IS_DEV && globalConfig.debug.disableZoomLimits) {
             return;
         }
@@ -618,25 +618,25 @@ export class Camera extends BasicSerializableObject {
     /**
      * Clamps the center within set boundaries
      */
-    clampToBounds(): any {
-        const bounds: any = this.root.gameMode.getCameraBounds();
+    clampToBounds() {
+        const bounds = this.root.gameMode.getCameraBounds();
         if (!bounds) {
             return;
         }
-        const tileScaleBounds: any = this.root.gameMode.getCameraBounds().allScaled(globalConfig.tileSize);
+        const tileScaleBounds = this.root.gameMode.getCameraBounds().allScaled(globalConfig.tileSize);
         this.center.x = clamp(this.center.x, tileScaleBounds.x, tileScaleBounds.x + tileScaleBounds.w);
         this.center.y = clamp(this.center.y, tileScaleBounds.y, tileScaleBounds.y + tileScaleBounds.h);
     }
     /**
      * Updates the camera
      */
-    update(dt: number): any {
+    update(dt: number) {
         dt = Math.min(dt, 33);
         this.cameraUpdateTimeBucket += dt;
         // Simulate movement of N FPS
-        const updatesPerFrame: any = 4;
-        const physicsStepSizeMs: any = 1000.0 / (60.0 * updatesPerFrame);
-        let now: any = this.root.time.systemNow() - 3 * physicsStepSizeMs;
+        const updatesPerFrame = 4;
+        const physicsStepSizeMs = 1000.0 / (60.0 * updatesPerFrame);
+        let now = this.root.time.systemNow() - 3 * physicsStepSizeMs;
         while (this.cameraUpdateTimeBucket > physicsStepSizeMs) {
             now += physicsStepSizeMs;
             this.cameraUpdateTimeBucket -= physicsStepSizeMs;
@@ -652,13 +652,13 @@ export class Camera extends BasicSerializableObject {
     /**
      * Prepares a context to transform it
      */
-    transform(context: CanvasRenderingContext2D): any {
+    transform(context: CanvasRenderingContext2D) {
         if (G_IS_DEV && globalConfig.debug.testCulling) {
             context.transform(1, 0, 0, 1, 100, 100);
             return;
         }
         this.clampZoomLevel();
-        const zoom: any = this.zoomLevel;
+        const zoom = this.zoomLevel;
         context.transform(
         // Scale, skew, rotate
         zoom, 0, 0, zoom, 
@@ -668,14 +668,14 @@ export class Camera extends BasicSerializableObject {
     /**
      * Internal shake handler
      */
-    internalUpdateShake(now: number, dt: number): any {
+    internalUpdateShake(now: number, dt: number) {
         this.currentShake = this.currentShake.multiplyScalar(0.92);
     }
     /**
      * Internal pan handler
      */
-    internalUpdatePanning(now: number, dt: number): any {
-        const baseStrength: any = velocityStrength * this.root.app.platformWrapper.getTouchPanStrength();
+    internalUpdatePanning(now: number, dt: number) {
+        const baseStrength = velocityStrength * this.root.app.platformWrapper.getTouchPanStrength();
         this.touchPostMoveVelocity = this.touchPostMoveVelocity.multiplyScalar(velocityFade);
         // Check if the camera is being dragged but standing still: if not, zero out `touchPostMoveVelocity`.
         if (this.currentlyMoving && this.desiredCenter === null) {
@@ -694,7 +694,7 @@ export class Camera extends BasicSerializableObject {
         }
         // Check influence of past points
         if (!this.currentlyMoving && !this.currentlyPinching) {
-            const len: any = this.touchPostMoveVelocity.length();
+            const len = this.touchPostMoveVelocity.length();
             if (len >= velocityMax) {
                 this.touchPostMoveVelocity.x = (this.touchPostMoveVelocity.x * velocityMax) / len;
                 this.touchPostMoveVelocity.y = (this.touchPostMoveVelocity.y * velocityMax) / len;
@@ -709,7 +709,7 @@ export class Camera extends BasicSerializableObject {
     /**
      * Internal screen panning handler
      */
-    internalUpdateMousePanning(now: number, dt: number): any {
+    internalUpdateMousePanning(now: number, dt: number) {
         if (!this.root.app.focused) {
             return;
         }
@@ -717,7 +717,7 @@ export class Camera extends BasicSerializableObject {
             // Not enabled
             return;
         }
-        const mousePos: any = this.root.app.mousePosition;
+        const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             return;
         }
@@ -735,8 +735,8 @@ export class Camera extends BasicSerializableObject {
             // Out of screen
             return;
         }
-        const panAreaPixels: any = 2;
-        const panVelocity: any = new Vector();
+        const panAreaPixels = 2;
+        const panVelocity = new Vector();
         if (mousePos.x < panAreaPixels) {
             panVelocity.x -= 1;
         }
@@ -755,11 +755,11 @@ export class Camera extends BasicSerializableObject {
     /**
      * Updates the non user interaction zooming
      */
-    internalUpdateZooming(now: number, dt: number): any {
+    internalUpdateZooming(now: number, dt: number) {
         if (!this.currentlyPinching && this.desiredZoom !== null) {
-            const diff: any = this.zoomLevel - this.desiredZoom;
+            const diff = this.zoomLevel - this.desiredZoom;
             if (Math.abs(diff) > 0.0001) {
-                let fade: any = 0.94;
+                let fade = 0.94;
                 if (diff > 0) {
                     // Zoom out faster than in
                     fade = 0.9;
@@ -778,13 +778,13 @@ export class Camera extends BasicSerializableObject {
     /**
      * Updates the non user interaction centering
      */
-    internalUpdateCentering(now: number, dt: number): any {
+    internalUpdateCentering(now: number, dt: number) {
         if (!this.currentlyMoving && this.desiredCenter !== null) {
-            const diff: any = this.center.direction(this.desiredCenter);
-            const length: any = diff.length();
-            const tolerance: any = 1 / this.zoomLevel;
+            const diff = this.center.direction(this.desiredCenter);
+            const length = diff.length();
+            const tolerance = 1 / this.zoomLevel;
             if (length > tolerance) {
-                const movement: any = diff.multiplyScalar(Math.min(1, dt * 0.008));
+                const movement = diff.multiplyScalar(Math.min(1, dt * 0.008));
                 this.center.x += movement.x;
                 this.center.y += movement.y;
             }
@@ -796,13 +796,13 @@ export class Camera extends BasicSerializableObject {
     /**
      * Updates the keyboard forces
      */
-    internalUpdateKeyboardForce(now: number, dt: number): any {
+    internalUpdateKeyboardForce(now: number, dt: number) {
         if (!this.currentlyMoving && this.desiredCenter == null) {
-            const limitingDimension: any = Math.min(this.root.gameWidth, this.root.gameHeight);
-            const moveAmount: any = ((limitingDimension / 2048) * dt) / this.zoomLevel;
-            let forceX: any = 0;
-            let forceY: any = 0;
-            const actionMapper: any = this.root.keyMapper;
+            const limitingDimension = Math.min(this.root.gameWidth, this.root.gameHeight);
+            const moveAmount = ((limitingDimension / 2048) * dt) / this.zoomLevel;
+            let forceX = 0;
+            let forceY = 0;
+            const actionMapper = this.root.keyMapper;
             if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveUp).pressed) {
                 forceY -= 1;
             }
@@ -815,7 +815,7 @@ export class Camera extends BasicSerializableObject {
             if (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveRight).pressed) {
                 forceX += 1;
             }
-            let movementSpeed: any = this.root.app.settings.getMovementSpeed() *
+            let movementSpeed = this.root.app.settings.getMovementSpeed() *
                 (actionMapper.getBinding(KEYMAPPINGS.navigation.mapMoveFaster).pressed ? 4 : 1);
             this.center.x += moveAmount * forceX * movementSpeed;
             this.center.y += moveAmount * forceY * movementSpeed;

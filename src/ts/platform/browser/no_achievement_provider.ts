@@ -1,18 +1,18 @@
 import { AchievementProviderInterface } from "../achievement_provider";
 export class NoAchievementProvider extends AchievementProviderInterface {
-    hasAchievements(): any {
+    hasAchievements() {
         return false;
     }
-    hasLoaded(): any {
+    hasLoaded() {
         return false;
     }
-    initialize(): any {
+    initialize() {
         return Promise.resolve();
     }
-    onLoad(): any {
+    onLoad() {
         return Promise.reject(new Error("No achievements to load"));
     }
-    activate(): any {
+    activate() {
         return Promise.resolve();
     }
 }

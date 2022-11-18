@@ -22,7 +22,7 @@ export class TextualGameState extends GameState {
     /**
      * Should return the states HTML content.
      */
-    getMainContentHTML(): any {
+    getMainContentHTML() {
         return "";
     }
     /**
@@ -38,7 +38,7 @@ export class TextualGameState extends GameState {
      * Back button handler, can be overridden. Per default it goes back to the main menu,
      * or if coming from the game it moves back to the game again.
      */
-    onBackButton(): any {
+    onBackButton() {
         if (this.backToStateId) {
             this.moveToState(this.backToStateId, this.backToStatePayload);
         }
@@ -49,13 +49,13 @@ export class TextualGameState extends GameState {
     /**
      * Returns the default state to go back to
      */
-    getDefaultPreviousState(): any {
+    getDefaultPreviousState() {
         return "MainMenuState";
     }
     /**
      * Goes to a new state, telling him to go back to this state later
      */
-    moveToStateAddGoBack(stateId: string): any {
+    moveToStateAddGoBack(stateId: string) {
         this.moveToState(stateId, {
             backToStateId: this.key,
             backToStatePayload: {
@@ -68,9 +68,9 @@ export class TextualGameState extends GameState {
      * Removes all click detectors, except the one on the back button. Useful when regenerating
      * content.
      */
-    clearClickDetectorsExceptHeader(): any {
-        for (let i: any = 0; i < this.clickDetectors.length; ++i) {
-            const detector: any = this.clickDetectors[i];
+    clearClickDetectorsExceptHeader() {
+        for (let i = 0; i < this.clickDetectors.length; ++i) {
+            const detector = this.clickDetectors[i];
             if (detector.element === this.headerElement) {
                 continue;
             }
@@ -82,8 +82,8 @@ export class TextualGameState extends GameState {
     /**
      * Overrides the GameState implementation to provide our own html
      */
-    internalGetFullHtml(): any {
-        let headerHtml: any = "";
+    internalGetFullHtml() {
+        let headerHtml = "";
         if (this.getStateHeaderTitle()) {
             headerHtml = `
             <div class="headerBar">
@@ -103,14 +103,14 @@ export class TextualGameState extends GameState {
     /**
      * Overrides the GameState leave callback to cleanup stuff
      */
-    internalLeaveCallback(): any {
+    internalLeaveCallback() {
         super.internalLeaveCallback();
         this.dialogs.cleanup();
     }
     /**
      * Overrides the GameState enter callback to setup required stuff
      */
-    internalEnterCallback(payload: any): any {
+    internalEnterCallback(payload: any) {
         super.internalEnterCallback(payload, false);
         if (payload.backToStateId) {
             this.backToStateId = payload.backToStateId;
@@ -126,7 +126,7 @@ export class TextualGameState extends GameState {
             this.trackClicks(this.headerElement, this.onBackButton);
         }
         this.dialogs = new HUDModalDialogs(null, this.app);
-        const dialogsElement: any = document.body.querySelector(".modalDialogParent");
+        const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
         this.onEnter(payload);
     }

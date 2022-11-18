@@ -8,15 +8,15 @@ export class ModsState extends TextualGameState {
     constructor() {
         super("ModsState");
     }
-    getStateHeaderTitle(): any {
+    getStateHeaderTitle() {
         return T.mods.title;
     }
     get modsSupported() {
         return (!WEB_STEAM_SSO_AUTHENTICATED &&
             (G_IS_STANDALONE || (G_IS_DEV && !window.location.href.includes("demo"))));
     }
-    internalGetFullHtml(): any {
-        let headerHtml: any = `
+    internalGetFullHtml() {
+        let headerHtml = `
             <div class="headerBar">
                 <h1><button class="backButton"></button> ${this.getStateHeaderTitle()}</h1>
 
@@ -37,7 +37,7 @@ export class ModsState extends TextualGameState {
             </div>
         `;
     }
-    getMainContentHTML(): any {
+    getMainContentHTML() {
         if (!this.modsSupported) {
             return `
                 <div class="noModSupport">
@@ -62,8 +62,8 @@ export class ModsState extends TextualGameState {
 
             `;
         }
-        let modsHtml: any = ``;
-        MODS.mods.forEach((mod: any): any => {
+        let modsHtml = ``;
+        MODS.mods.forEach(mod => {
             modsHtml += `
                 <div class="mod">
                     <div class="mainInfo">
@@ -91,42 +91,42 @@ export class ModsState extends TextualGameState {
            </div>
         `;
     }
-    onEnter(): any {
-        const steamLink: any = this.htmlElement.querySelector(".steamLink");
+    onEnter() {
+        const steamLink = this.htmlElement.querySelector(".steamLink");
         if (steamLink) {
             this.trackClicks(steamLink, this.onSteamLinkClicked);
         }
-        const openModsFolder: any = this.htmlElement.querySelector(".openModsFolder");
+        const openModsFolder = this.htmlElement.querySelector(".openModsFolder");
         if (openModsFolder) {
             this.trackClicks(openModsFolder, this.openModsFolder);
         }
-        const browseMods: any = this.htmlElement.querySelector(".browseMods");
+        const browseMods = this.htmlElement.querySelector(".browseMods");
         if (browseMods) {
             this.trackClicks(browseMods, this.openBrowseMods);
         }
-        const checkboxes: any = this.htmlElement.querySelectorAll(".checkbox");
-        Array.from(checkboxes).forEach((checkbox: any): any => {
+        const checkboxes = this.htmlElement.querySelectorAll(".checkbox");
+        Array.from(checkboxes).forEach(checkbox => {
             this.trackClicks(checkbox, this.showModTogglingComingSoon);
         });
     }
-    showModTogglingComingSoon(): any {
+    showModTogglingComingSoon() {
         this.dialogs.showWarning(T.mods.togglingComingSoon.title, T.mods.togglingComingSoon.description);
     }
-    openModsFolder(): any {
+    openModsFolder() {
         if (!G_IS_STANDALONE) {
             this.dialogs.showWarning(T.global.error, T.mods.folderOnlyStandalone);
             return;
         }
         ipcRenderer.invoke("open-mods-folder");
     }
-    openBrowseMods(): any {
+    openBrowseMods() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.modBrowser);
     }
-    onSteamLinkClicked(): any {
+    onSteamLinkClicked() {
         openStandaloneLink(this.app, "shapez_modsettings");
         return false;
     }
-    getDefaultPreviousState(): any {
+    getDefaultPreviousState() {
         return "SettingsState";
     }
 }

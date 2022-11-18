@@ -2,15 +2,15 @@
 import CompressionWorker from "../webworkers/compression.worker";
 import { createLogger } from "./logging";
 import { round2Digits } from "./utils";
-const logger: any = createLogger("async_compression");
-export let compressionPrefix: any = String.fromCodePoint(1);
-function checkCryptPrefix(prefix: any): any {
+const logger = createLogger("async_compression");
+export let compressionPrefix = String.fromCodePoint(1);
+function checkCryptPrefix(prefix) {
     try {
         window.localStorage.setItem("prefix_test", prefix);
         window.localStorage.removeItem("prefix_test");
         return true;
     }
-    catch (ex: any) {
+    catch (ex) {
         logger.warn("Prefix '" + prefix + "' not available");
         return false;
     }
@@ -36,27 +36,27 @@ class AsynCompression {
     } = {};
 
     constructor() {
-        this.worker.addEventListener("message", (event: any): any => {
-            const { jobId, result }: any = event.data;
-            const jobData: any = this.currentJobs[jobId];
+        this.worker.addEventListener("message", event => {
+            const { jobId, result } = event.data;
+            const jobData = this.currentJobs[jobId];
             if (!jobData) {
                 logger.error("Failed to resolve job result, job id", jobId, "is not known");
                 return;
             }
-            const duration: any = performance.now() - jobData.startTime;
+            const duration = performance.now() - jobData.startTime;
             logger.log("Got job", jobId, "response within", round2Digits(duration), "ms: ", result.length, "bytes");
-            const resolver: any = jobData.resolver;
+            const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
             resolver(result);
         });
-        this.worker.addEventListener("error", (err: any): any => {
+        this.worker.addEventListener("error", err => {
             logger.error("Got error from webworker:", err, "aborting all jobs");
-            const failureCalls: any = [];
-            for (const jobId: any in this.currentJobs) {
+            const failureCalls = [];
+            for (const jobId in this.currentJobs) {
                 failureCalls.push(this.currentJobs[jobId].errorHandler);
             }
             this.currentJobs = {};
-            for (let i: any = 0; i < failureCalls.length; ++i) {
+            for (let i = 0; i < failureCalls.length; ++i) {
                 failureCalls[i](err);
             }
         });
@@ -64,7 +64,7 @@ class AsynCompression {
     /**
      * Compresses any object
      */
-    compressObjectAsync(obj: any): any {
+    compressObjectAsync(obj: any) {
         logger.log("Compressing object async (optimized)");
         return this.internalQueueJob("compressObject", {
             obj,
@@ -76,9 +76,9 @@ class AsynCompression {
      * {}
      */
     internalQueueJob(job: string, data: any): Promise<any> {
-        const jobId: any = ++this.currentJobId;
-        return new Promise((resolve: any, reject: any): any => {
-            const errorHandler: any = (err: any): any => {
+        const jobId = ++this.currentJobId;
+        return new Promise((resolve, reject) => {
+            const errorHandler = err => {
                 logger.error("Failed to compress job", jobId, ":", err);
                 reject(err);
             };
@@ -92,4 +92,4 @@ class AsynCompression {
         });
     }
 }
-export const asyncCompressor: any = new AsynCompression();
+export const asyncCompressor = new AsynCompression();

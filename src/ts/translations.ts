@@ -2,17 +2,18 @@ import { globalConfig } from "./core/config";
 import { createLogger } from "./core/logging";
 import { LANGUAGES } from "./languages";
 
-const logger: any = createLogger("translations");
+const logger = createLogger("translations");
+
 // @ts-ignore
-const baseTranslations: any = require("./built-temp/base-en.json");
-export let T: any = baseTranslations;
+const baseTranslations = require("./built-temp/base-en.json");
+
+export let T = baseTranslations;
 
 if (G_IS_DEV && globalConfig.debug.testTranslations) {
     // Replaces all translations by fake translations to see whats translated and what not
-    const mapTranslations: any = (obj: any): any => {
+    const mapTranslations = (obj: object) => {
         for (const key in obj) {
-            const value: any = obj[key];
-
+            const value = obj[key];
             if (typeof value === "string") {
                 obj[key] = value.replace(/[a-z]/gi, "x");
             }
@@ -24,8 +25,9 @@ if (G_IS_DEV && globalConfig.debug.testTranslations) {
     mapTranslations(T);
 }
 
+
 // Language key is something like de-DE or en or en-US
-function mapLanguageCodeToId(languageKey: string): string {
+function mapLanguageCodeToId(languageKey: string) {
     const key = languageKey.toLowerCase();
     const shortKey = key.split("-")[0];
 
@@ -60,9 +62,12 @@ function mapLanguageCodeToId(languageKey: string): string {
     }
     return null;
 }
-/** Tries to auto-detect a language */
+
+/**
+ * Tries to auto-detect a language
+ */
 export function autoDetectLanguageId(): string {
-    let languages: string[] = [];
+    let languages:string[] = [];
     if (navigator.languages) {
         languages = navigator.languages.slice();
     }
@@ -85,7 +90,7 @@ export function autoDetectLanguageId(): string {
     return "en";
 }
 
-export function matchDataRecursive(dest: any, src: any, addNewKeys: boolean = false): void {
+export function matchDataRecursive(dest: object, src: object, addNewKeys: boolean = false) {
     if (typeof dest !== "object" || typeof src !== "object") {
         return;
     }
@@ -96,7 +101,7 @@ export function matchDataRecursive(dest: any, src: any, addNewKeys: boolean = fa
     for (const key in dest) {
         if (src[key]) {
             // console.log("copy", key);
-            const data: any = dest[key];
+            const data = dest[key];
             if (typeof data === "object") {
                 matchDataRecursive(dest[key], src[key], addNewKeys);
             }
@@ -119,10 +124,10 @@ export function matchDataRecursive(dest: any, src: any, addNewKeys: boolean = fa
     }
 }
 
-export function updateApplicationLanguage(id: string): void {
+export function updateApplicationLanguage(id: string) {
     logger.log("Setting application language:", id);
 
-    const data: any = LANGUAGES[id];
+    const data = LANGUAGES[id];
 
     if (!data) {
         logger.error("Unknown language:", id);

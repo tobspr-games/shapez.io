@@ -1,13 +1,13 @@
 import { randomChoice } from "../core/utils";
 import { T } from "../translations";
-const hintsShown: any = [];
+const hintsShown = [];
 /**
  * Finds a new hint to show about the game which the user hasn't seen within this session
  */
-export function getRandomHint(): any {
-    let maxTries: any = 100 * T.tips.length;
+export function getRandomHint() {
+    let maxTries = 100 * T.tips.length;
     while (maxTries-- > 0) {
-        const hint: any = randomChoice(T.tips);
+        const hint = randomChoice(T.tips);
         if (!hintsShown.includes(hint)) {
             hintsShown.push(hint);
             return hint;

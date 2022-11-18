@@ -1,55 +1,55 @@
 import { AdProviderInterface } from "../ad_provider";
 import { createLogger } from "../../core/logging";
 import { timeoutPromise } from "../../core/utils";
-const logger: any = createLogger("crazygames");
+const logger = createLogger("crazygames");
 export class CrazygamesAdProvider extends AdProviderInterface {
-    getHasAds(): any {
+    getHasAds() {
         return true;
     }
-    getCanShowVideoAd(): any {
+    getCanShowVideoAd() {
         return this.getHasAds() && this.sdkInstance;
     }
     get sdkInstance() {
         try {
             return window.CrazyGames.CrazySDK.getInstance();
         }
-        catch (ex: any) {
+        catch (ex) {
             return null;
         }
     }
-    initialize(): any {
+    initialize() {
         if (!this.getHasAds()) {
             return Promise.resolve();
         }
         logger.log("🎬 Initializing crazygames SDK");
-        const scriptTag: any = document.createElement("script");
+        const scriptTag = document.createElement("script");
         scriptTag.type = "text/javascript";
-        return timeoutPromise(new Promise((resolve: any, reject: any): any => {
+        return timeoutPromise(new Promise((resolve, reject) => {
             scriptTag.onload = resolve;
             scriptTag.onerror = reject;
             scriptTag.src = "https://sdk.crazygames.com/crazygames-sdk-v1.js";
             document.head.appendChild(scriptTag);
         })
-            .then((): any => {
+            .then(() => {
             logger.log("🎬  Crazygames SDK loaded, now initializing");
             this.sdkInstance.init();
         })
-            .catch((ex: any): any => {
+            .catch(ex => {
             console.warn("Failed to init crazygames SDK:", ex);
         }));
     }
-    showVideoAd(): any {
-        const instance: any = this.sdkInstance;
+    showVideoAd() {
+        const instance = this.sdkInstance;
         if (!instance) {
             return Promise.resolve();
         }
         logger.log("Set sound volume to 0");
         this.app.sound.setMusicVolume(0);
         this.app.sound.setSoundVolume(0);
-        return timeoutPromise(new Promise((resolve: any): any => {
+        return timeoutPromise(new Promise(resolve => {
             console.log("🎬 crazygames: Start ad");
             document.body.classList.add("externalAdOpen");
-            const finish: any = (): any => {
+            const finish = () => {
                 instance.removeEventListener("adError", finish);
                 instance.removeEventListener("adFinished", finish);
                 resolve();
@@ -58,17 +58,17 @@ export class CrazygamesAdProvider extends AdProviderInterface {
             instance.addEventListener("adFinished", finish);
             instance.requestAd();
         }), 60000)
-            .catch((ex: any): any => {
+            .catch(ex => {
             console.warn("Error while resolving video ad:", ex);
         })
-            .then((): any => {
+            .then(() => {
             document.body.classList.remove("externalAdOpen");
             logger.log("Restored sound volume");
             this.app.sound.setMusicVolume(this.app.settings.getSetting("musicVolume"));
             this.app.sound.setSoundVolume(this.app.settings.getSetting("soundVolume"));
         });
     }
-    setPlayStatus(playing: any): any {
+    setPlayStatus(playing) {
         console.log("crazygames::playing:", playing);
         if (playing) {
             this.sdkInstance.gameplayStart();

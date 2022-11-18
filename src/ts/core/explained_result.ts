@@ -4,25 +4,25 @@ export class ExplainedResult {
 
     constructor(result = true, reason = null, additionalProps = {}) {
         // Copy additional props
-        for (const key: any in additionalProps) {
+        for (const key in additionalProps) {
             this[key] = additionalProps[key];
         }
     }
-    isGood(): any {
+    isGood() {
         return !!this.result;
     }
-    isBad(): any {
+    isBad() {
         return !this.result;
     }
-    static good(): any {
+    static good() {
         return new ExplainedResult(true);
     }
-    static bad(reason: any, additionalProps: any): any {
+    static bad(reason, additionalProps) {
         return new ExplainedResult(false, reason, additionalProps);
     }
-    static requireAll(...args: any): any {
-        for (let i: any = 0; i < args.length; ++i) {
-            const subResult: any = args[i].call();
+    static requireAll(...args) {
+        for (let i = 0; i < args.length; ++i) {
+            const subResult = args[i].call();
             if (!subResult.isGood()) {
                 return subResult;
             }

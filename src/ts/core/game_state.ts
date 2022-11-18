@@ -9,7 +9,7 @@ import { InputReceiver } from "./input_receiver";
 import { waitNextFrame } from "./utils";
 import { RequestChannel } from "./request_channel";
 import { MUSIC } from "../platform/sound";
-const logger: any = createLogger("game_state");
+const logger = createLogger("game_state");
 /**
  * Basic state of the game state machine. This is the base of the whole game
  */
@@ -46,7 +46,7 @@ export class GameState {
     /**
      * Transfers to a new state
      */
-    moveToState(stateKey: string, payload: any = {}, skipFadeOut: any = false): any {
+    moveToState(stateKey: string, payload = {}, skipFadeOut = false) {
         if (this.fadingOut) {
             logger.warn("Skipping move to '" + stateKey + "' since already fading out");
             return;
@@ -54,13 +54,13 @@ export class GameState {
         // Clean up event listeners
         this.internalCleanUpClickDetectors();
         // Fading
-        const fadeTime: any = this.internalGetFadeInOutTime();
-        const doFade: any = !skipFadeOut && this.getHasFadeOut() && fadeTime !== 0;
+        const fadeTime = this.internalGetFadeInOutTime();
+        const doFade = !skipFadeOut && this.getHasFadeOut() && fadeTime !== 0;
         logger.log("Moving to", stateKey, "(fading=", doFade, ")");
         if (doFade) {
             this.htmlElement.classList.remove("arrived");
             this.fadingOut = true;
-            setTimeout((): any => {
+            setTimeout(() => {
                 this.stateManager.moveToState(stateKey, payload);
             }, fadeTime);
         }
@@ -72,8 +72,8 @@ export class GameState {
      * Tracks clicks on a given element and calls the given callback *on this state*.
      * If you want to call another function wrap it inside a lambda.
      */
-    trackClicks(element: Element, handler: function():void, args: import("./click_detector").ClickDetectorConstructorArgs= = {}): any {
-        const detector: any = new ClickDetector(element, args);
+    trackClicks(element: Element, handler: function():void, args: import("./click_detector").ClickDetectorConstructorArgs= = {}) {
+        const detector = new ClickDetector(element, args);
         detector.click.add(handler, this);
         if (G_IS_DEV) {
             // Append a source so we can check where the click detector is from
@@ -85,43 +85,43 @@ export class GameState {
     /**
      * Cancels all promises on the api as well as our async channel
      */
-    cancelAllAsyncOperations(): any {
+    cancelAllAsyncOperations() {
         this.asyncChannel.cancelAll();
     }
     //// CALLBACKS ////
     /**
      * Callback when entering the state, to be overriddemn
      */
-    onEnter(payload: any): any { }
+    onEnter(payload: any) { }
     /**
      * Callback when leaving the state
      */
-    onLeave(): any { }
+    onLeave() { }
     /**
      * Callback when the app got paused (on android, this means in background)
      */
-    onAppPause(): any { }
+    onAppPause() { }
     /**
      * Callback when the app got resumed (on android, this means in foreground again)
      */
-    onAppResume(): any { }
+    onAppResume() { }
     /**
      * Render callback
      */
-    onRender(dt: number): any { }
+    onRender(dt: number) { }
     /**
      * Background tick callback, called while the game is inactiev
      */
-    onBackgroundTick(dt: number): any { }
+    onBackgroundTick(dt: number) { }
     /**
      * Called when the screen resized
      */
-    onResized(w: number, h: number): any { }
+    onResized(w: number, h: number) { }
     /**
      * Internal backbutton handler, called when the hardware back button is pressed or
      * the escape key is pressed
      */
-    onBackButton(): any { }
+    onBackButton() { }
     //// INTERFACE ////
     /**
      * Should return how many mulliseconds to fade in / out the state. Not recommended to override!
@@ -169,7 +169,7 @@ export class GameState {
      * Returns if the state has an unload confirmation, this is the
      * "Are you sure you want to leave the page" message.
      */
-    getHasUnloadConfirmation(): any {
+    getHasUnloadConfirmation() {
         return false;
     }
     /**
@@ -198,7 +198,7 @@ export class GameState {
     /**
      * Internal callback from the manager. Do not override!
      */
-    internalRegisterCallback(stateManager: StateManager, app: any): any {
+    internalRegisterCallback(stateManager: StateManager, app) {
         assert(stateManager, "No state manager");
         assert(app, "No app");
         this.stateManager = stateManager;
@@ -207,13 +207,13 @@ export class GameState {
     /**
      * Internal callback when entering the state. Do not override!
      */
-    internalEnterCallback(payload: any, callCallback: boolean = true): any {
+    internalEnterCallback(payload: any, callCallback: boolean = true) {
         logSection(this.key, "#26a69a");
         this.app.inputMgr.pushReciever(this.inputReciever);
         this.htmlElement = this.getDivElement();
         this.htmlElement.classList.add("active");
         // Apply classes in the next frame so the css transition keeps up
-        waitNextFrame().then((): any => {
+        waitNextFrame().then(() => {
             if (this.htmlElement) {
                 this.htmlElement.classList.remove("fadingOut");
                 this.htmlElement.classList.remove("fadingIn");
@@ -227,7 +227,7 @@ export class GameState {
     /**
      * Internal callback when the state is left. Do not override!
      */
-    internalLeaveCallback(): any {
+    internalLeaveCallback() {
         this.onLeave();
         this.htmlElement.classList.remove("active");
         this.app.inputMgr.popReciever(this.inputReciever);
@@ -237,21 +237,21 @@ export class GameState {
     /**
      * Internal app pause callback
      */
-    internalOnAppPauseCallback(): any {
+    internalOnAppPauseCallback() {
         this.onAppPause();
     }
     /**
      * Internal app resume callback
      */
-    internalOnAppResumeCallback(): any {
+    internalOnAppResumeCallback() {
         this.onAppResume();
     }
     /**
      * Cleans up all click detectors
      */
-    internalCleanUpClickDetectors(): any {
+    internalCleanUpClickDetectors() {
         if (this.clickDetectors) {
-            for (let i: any = 0; i < this.clickDetectors.length; ++i) {
+            for (let i = 0; i < this.clickDetectors.length; ++i) {
                 this.clickDetectors[i].cleanup();
             }
             this.clickDetectors = [];

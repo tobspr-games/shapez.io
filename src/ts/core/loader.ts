@@ -5,8 +5,8 @@ import { createLogger } from "./logging";
 export type Application = import("../application").Application;
 export type AtlasDefinition = import("./atlas_definitions").AtlasDefinition;
 
-const logger: any = createLogger("loader");
-const missingSpriteIds: any = {};
+const logger = createLogger("loader");
+const missingSpriteIds = {};
 class LoaderImpl {
     public app = null;
     public sprites: Map<string, BaseSprite> = new Map();
@@ -14,7 +14,7 @@ class LoaderImpl {
 
     constructor() {
     }
-        linkAppAfterBoot(app: Application): any {
+        linkAppAfterBoot(app: Application) {
         this.app = app;
         this.makeSpriteNotFoundCanvas();
     }
@@ -23,7 +23,7 @@ class LoaderImpl {
      * {}
      */
     getSpriteInternal(key: string): BaseSprite {
-        const sprite: any = this.sprites.get(key);
+        const sprite = this.sprites.get(key);
         if (!sprite) {
             if (!missingSpriteIds[key]) {
                 // Only show error once
@@ -39,7 +39,7 @@ class LoaderImpl {
      * {}
      */
     getSprite(key: string): AtlasSprite {
-        const sprite: any = this.getSpriteInternal(key);
+        const sprite = this.getSpriteInternal(key);
         assert(sprite instanceof AtlasSprite || sprite === this.spriteNotFoundSprite, "Not an atlas sprite");
         return sprite as AtlasSprite);
     }
@@ -48,7 +48,7 @@ class LoaderImpl {
      * {}
      */
     getRegularSprite(key: string): RegularSprite {
-        const sprite: any = this.getSpriteInternal(key);
+        const sprite = this.getSpriteInternal(key);
         assert(sprite instanceof RegularSprite || sprite === this.spriteNotFoundSprite, "Not a regular sprite");
         return sprite as RegularSprite);
     }
@@ -58,14 +58,14 @@ class LoaderImpl {
      */
     internalPreloadImage(key: string, progressHandler: (progress: number) => void): Promise<HTMLImageElement | null> {
         return this.app.backgroundResourceLoader
-            .preloadWithProgress("res/" + key, (progress: any): any => {
+            .preloadWithProgress("res/" + key, progress => {
             progressHandler(progress);
         })
-            .then((url: any): any => {
-            return new Promise((resolve: any, reject: any): any => {
-                const image: any = new Image();
-                image.addEventListener("load", (): any => resolve(image));
-                image.addEventListener("error", (err: any): any => reject("Failed to load sprite " + key + ": " + err));
+            .then(url => {
+            return new Promise((resolve, reject) => {
+                const image = new Image();
+                image.addEventListener("load", () => resolve(image));
+                image.addEventListener("error", err => reject("Failed to load sprite " + key + ": " + err));
                 image.src = url;
             });
         });
@@ -75,7 +75,7 @@ class LoaderImpl {
      * {}
      */
     preloadCSSSprite(key: string, progressHandler: (progress: number) => void): Promise<void> {
-        return this.internalPreloadImage(key, progressHandler).then((image: any): any => {
+        return this.internalPreloadImage(key, progressHandler).then(image => {
             if (key.indexOf("game_misc") >= 0) {
                 // Allow access to regular sprites
                 this.sprites.set(key, new RegularSprite(image, image.width, image.height));
@@ -88,17 +88,17 @@ class LoaderImpl {
      * {}
      */
     preloadAtlas(atlas: AtlasDefinition, progressHandler: (progress: number) => void): Promise<void> {
-        return this.internalPreloadImage(atlas.getFullSourcePath(), progressHandler).then((image: any): any => {
+        return this.internalPreloadImage(atlas.getFullSourcePath(), progressHandler).then(image => {
             // @ts-ignore
             image.label = atlas.sourceFileName;
             return this.internalParseAtlas(atlas, image);
         });
     }
-        internalParseAtlas({ meta: { scale }, sourceData }: AtlasDefinition, loadedImage: HTMLImageElement): any {
+        internalParseAtlas({ meta: { scale }, sourceData }: AtlasDefinition, loadedImage: HTMLImageElement) {
         this.rawImages.push(loadedImage);
-        for (const spriteName: any in sourceData) {
-            const { frame, sourceSize, spriteSourceSize }: any = sourceData[spriteName];
-            let sprite: any = (this.sprites.get(spriteName) as AtlasSprite);
+        for (const spriteName in sourceData) {
+            const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
+            let sprite = this.sprites.get(spriteName) as AtlasSprite);
             if (!sprite) {
                 sprite = new AtlasSprite(spriteName);
                 this.sprites.set(spriteName, sprite);
@@ -106,7 +106,7 @@ class LoaderImpl {
             if (sprite.frozen) {
                 continue;
             }
-            const link: any = new SpriteAtlasLink({
+            const link = new SpriteAtlasLink({
                 packedX: frame.x,
                 packedY: frame.y,
                 packedW: frame.w,
@@ -123,9 +123,9 @@ class LoaderImpl {
     /**
      * Makes the canvas which shows the question mark, shown when a sprite was not found
      */
-    makeSpriteNotFoundCanvas(): any {
-        const dims: any = 128;
-        const [canvas, context]: any = makeOffscreenBuffer(dims, dims, {
+    makeSpriteNotFoundCanvas() {
+        const dims = 128;
+        const [canvas, context] = makeOffscreenBuffer(dims, dims, {
             smooth: false,
             label: "not-found-sprite",
         });
@@ -139,8 +139,8 @@ class LoaderImpl {
         // TODO: Not sure why this is set here
         // @ts-ignore
         canvas.src = "not-found";
-        const sprite: any = new AtlasSprite("not-found");
-        ["0.1", "0.25", "0.5", "0.75", "1"].forEach((resolution: any): any => {
+        const sprite = new AtlasSprite("not-found");
+        ["0.1", "0.25", "0.5", "0.75", "1"].forEach(resolution => {
             sprite.linksByResolution[resolution] = new SpriteAtlasLink({
                 packedX: 0,
                 packedY: 0,
@@ -156,4 +156,4 @@ class LoaderImpl {
         this.spriteNotFoundSprite = sprite;
     }
 }
-export const Loader: any = new LoaderImpl();
+export const Loader = new LoaderImpl();

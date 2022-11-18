@@ -1,6 +1,6 @@
 import { Component } from "../component";
 /** @enum {string} */
-export const enumLogicGateType: any = {
+export const enumLogicGateType = {
     and: "and",
     not: "not",
     xor: "xor",
@@ -15,7 +15,7 @@ export const enumLogicGateType: any = {
     painter: "painter",
 };
 export class LogicGateComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "LogicGate";
     }
     public type = type;

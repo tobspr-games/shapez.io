@@ -7,14 +7,14 @@ export class BeltReaderSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [BeltReaderComponent]);
     }
-    update(): any {
-        const now: any = this.root.time.now();
-        const minimumTime: any = now - globalConfig.readerAnalyzeIntervalSeconds;
-        const minimumTimeForThroughput: any = now - 1;
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const readerComp: any = entity.components.BeltReader;
-            const pinsComp: any = entity.components.WiredPins;
+    update() {
+        const now = this.root.time.now();
+        const minimumTime = now - globalConfig.readerAnalyzeIntervalSeconds;
+        const minimumTimeForThroughput = now - 1;
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const readerComp = entity.components.BeltReader;
+            const pinsComp = entity.components.WiredPins;
             // Remove outdated items
             while (readerComp.lastItemTimes[0] < minimumTime) {
                 readerComp.lastItemTimes.shift();
@@ -30,14 +30,14 @@ export class BeltReaderSystem extends GameSystemWithFilter {
             if (now - readerComp.lastThroughputComputation > 0.5) {
                 // Compute throughput
                 readerComp.lastThroughputComputation = now;
-                let throughput: any = 0;
+                let throughput = 0;
                 if (readerComp.lastItemTimes.length < 2) {
                     throughput = 0;
                 }
                 else {
-                    let averageSpacing: any = 0;
-                    let averageSpacingNum: any = 0;
-                    for (let i: any = 0; i < readerComp.lastItemTimes.length - 1; ++i) {
+                    let averageSpacing = 0;
+                    let averageSpacingNum = 0;
+                    for (let i = 0; i < readerComp.lastItemTimes.length - 1; ++i) {
                         averageSpacing += readerComp.lastItemTimes[i + 1] - readerComp.lastItemTimes[i];
                         ++averageSpacingNum;
                     }

@@ -15,7 +15,7 @@ export class ZoneSystem extends GameSystem {
         constructor(root) {
         super(root);
         this.root.signals.prePlacementCheck.add(this.prePlacementCheck, this);
-        this.root.signals.gameFrameStarted.add((): any => {
+        this.root.signals.gameFrameStarted.add(() => {
             this.drawn = false;
         });
     }
@@ -2433,48 +2433,48 @@ export class ZoneSystem extends GameSystem {
      * @param {Vector | undefined} tile
      * @returns
      */
-    prePlacementCheck(entity: Entity, tile: Vector | undefined = null): any {
-        const staticComp: any = entity.components.StaticMapEntity;
+    prePlacementCheck(entity: Entity, tile: Vector | undefined = null) {
+        const staticComp = entity.components.StaticMapEntity;
         if (!staticComp) {
             return;
         }
-        const mode: any = this.root.gameMode;
-        const zones: any = mode.getBuildableZones();
+        const mode = this.root.gameMode;
+        const zones = mode.getBuildableZones();
         if (!zones) {
             return;
         }
-        const transformed: any = staticComp.getTileSpaceBounds();
+        const transformed = staticComp.getTileSpaceBounds();
         if (tile) {
             transformed.x += tile.x;
             transformed.y += tile.y;
         }
-        if (!zones.some((zone: any): any => zone.intersectsFully(transformed))) {
+        if (!zones.some(zone => zone.intersectsFully(transformed))) {
             return STOP_PROPAGATION;
         }
     }
     /**
      * Draws the zone
      */
-    drawChunk(parameters: DrawParameters, chunk: MapChunkView): any {
+    drawChunk(parameters: DrawParameters, chunk: MapChunkView) {
         if (this.drawn) {
             // oof
             return;
         }
         this.drawn = true;
-        const mode: any = this.root.gameMode;
-        const zones: any = mode.getBuildableZones();
+        const mode = this.root.gameMode;
+        const zones = mode.getBuildableZones();
         if (!zones) {
             return;
         }
-        const zone: any = zones[0].allScaled(globalConfig.tileSize);
-        const context: any = parameters.context;
+        const zone = zones[0].allScaled(globalConfig.tileSize);
+        const context = parameters.context;
         context.lineWidth = 2;
         context.strokeStyle = THEME.map.zone.borderSolid;
         context.beginPath();
         context.rect(zone.x - 1, zone.y - 1, zone.w + 2, zone.h + 2);
         context.stroke();
-        const outer: any = zone;
-        const padding: any = 40 * globalConfig.tileSize;
+        const outer = zone;
+        const padding = 40 * globalConfig.tileSize;
         context.fillStyle = THEME.map.zone.outerColor;
         context.fillRect(outer.x + outer.w, outer.y, padding, outer.h);
         context.fillRect(outer.x - padding, outer.y, padding, outer.h);

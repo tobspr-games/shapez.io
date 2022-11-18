@@ -1,11 +1,11 @@
 import { globalConfig } from "./config";
 import { safeModulo } from "./utils";
-const tileSize: any = globalConfig.tileSize;
-const halfTileSize: any = globalConfig.halfTileSize;
+const tileSize = globalConfig.tileSize;
+const halfTileSize = globalConfig.halfTileSize;
 /**
  * @enum {string}
  */
-export const enumDirection: any = {
+export const enumDirection = {
     top: "top",
     right: "right",
     bottom: "bottom",
@@ -14,7 +14,7 @@ export const enumDirection: any = {
 /**
  * @enum {string}
  */
-export const enumInvertedDirections: any = {
+export const enumInvertedDirections = {
     [enumDirection.top]: enumDirection.bottom,
     [enumDirection.right]: enumDirection.left,
     [enumDirection.bottom]: enumDirection.top,
@@ -23,7 +23,7 @@ export const enumInvertedDirections: any = {
 /**
  * @enum {number}
  */
-export const enumDirectionToAngle: any = {
+export const enumDirectionToAngle = {
     [enumDirection.top]: 0,
     [enumDirection.right]: 90,
     [enumDirection.bottom]: 180,
@@ -32,7 +32,7 @@ export const enumDirectionToAngle: any = {
 /**
  * @enum {enumDirection}
  */
-export const enumAngleToDirection: any = {
+export const enumAngleToDirection = {
     0: enumDirection.top,
     90: enumDirection.right,
     180: enumDirection.bottom,
@@ -224,8 +224,8 @@ export class Vector {
      * {}
      */
     distanceSquare(v: Vector): number {
-        const dx: any = this.x - v.x;
-        const dy: any = this.y - v.y;
+        const dx = this.x - v.x;
+        const dy = this.y - v.y;
         return dx * dx + dy * dy;
     }
     /**
@@ -240,8 +240,8 @@ export class Vector {
      * {}
      */
     centerPoint(v: Vector): Vector {
-        const cx: any = this.x + v.x;
-        const cy: any = this.y + v.y;
+        const cx = this.x + v.x;
+        const cy = this.y + v.y;
         return new Vector(cx / 2, cy / 2);
     }
     /**
@@ -305,7 +305,7 @@ export class Vector {
      * {}
      */
     normalize(): Vector {
-        const len: any = Math.max(1e-5, Math.hypot(this.x, this.y));
+        const len = Math.max(1e-5, Math.hypot(this.x, this.y));
         return new Vector(this.x / len, this.y / len);
     }
     /**
@@ -313,7 +313,7 @@ export class Vector {
      * {}
      */
     normalizeIfGreaterOne(): Vector {
-        const len: any = Math.max(1, Math.hypot(this.x, this.y));
+        const len = Math.max(1, Math.hypot(this.x, this.y));
         return new Vector(this.x / len, this.y / len);
     }
     /**
@@ -321,9 +321,9 @@ export class Vector {
      * {}
      */
     normalizedDirection(v: Vector): Vector {
-        const dx: any = v.x - this.x;
-        const dy: any = v.y - this.y;
-        const len: any = Math.max(1e-5, Math.hypot(dx, dy));
+        const dx = v.x - this.x;
+        const dy = v.y - this.y;
+        const len = Math.max(1e-5, Math.hypot(dx, dy));
         return new Vector(dx / len, dy / len);
     }
     /**
@@ -359,8 +359,8 @@ export class Vector {
      * {} new vector
      */
     rotated(angle: number): Vector {
-        const sin: any = Math.sin(angle);
-        const cos: any = Math.cos(angle);
+        const sin = Math.sin(angle);
+        const cos = Math.cos(angle);
         return new Vector(this.x * cos - this.y * sin, this.x * sin + this.y * cos);
     }
     /**
@@ -380,7 +380,7 @@ export class Vector {
             case 90: {
                 // sin = 1;
                 // cos = 0;
-                const x: any = this.x;
+                const x = this.x;
                 this.x = -this.y;
                 this.y = x;
                 return this;
@@ -395,7 +395,7 @@ export class Vector {
             case 270: {
                 // sin = -1
                 // cos = 0
-                const x: any = this.x;
+                const x = this.x;
                 this.x = this.y;
                 this.y = -x;
                 return this;
@@ -504,7 +504,7 @@ export class Vector {
      * Compares both vectors for epsilon equality
      * {}
      */
-    equalsEpsilon(v: Vector, epsilon: any = 1e-5): Boolean {
+    equalsEpsilon(v: Vector, epsilon = 1e-5): Boolean {
         return Math.abs(this.x - v.x) < 1e-5 && Math.abs(this.y - v.y) < epsilon;
     }
     /**
@@ -524,7 +524,7 @@ export class Vector {
     /**
      * Creates a simple representation of the vector
      */
-    serializeSimple(): any {
+    serializeSimple() {
         return { x: this.x, y: this.y };
     }
     /**
@@ -538,8 +538,8 @@ export class Vector {
      * {}
      */
     static deserializeTileFromInt(i: number): Vector {
-        const x: any = i % 256;
-        const y: any = Math.floor(i / 256);
+        const x = i % 256;
+        const y = Math.floor(i / 256);
         return new Vector(x, y);
     }
     /**
@@ -562,14 +562,14 @@ export class Vector {
 /**
  * Interpolates two vectors, for a = 0, returns v1 and for a = 1 return v2, otherwise interpolate
  */
-export function mixVector(v1: Vector, v2: Vector, a: number): any {
+export function mixVector(v1: Vector, v2: Vector, a: number) {
     return new Vector(v1.x * (1 - a) + v2.x * a, v1.y * (1 - a) + v2.y * a);
 }
 /**
  * Mapping from string direction to actual vector
  * @enum {Vector}
  */
-export const enumDirectionToVector: any = {
+export const enumDirectionToVector = {
     top: new Vector(0, -1),
     right: new Vector(1, 0),
     bottom: new Vector(0, 1),

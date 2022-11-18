@@ -1,18 +1,18 @@
-function mathPolyfills(): any {
+function mathPolyfills() {
     // Converts from degrees to radians.
-    Math.radians = function (degrees: any): any {
+    Math.radians = function (degrees) {
         return (degrees * Math.PI) / 180.0;
     };
     // Converts from radians to degrees.
-    Math.degrees = function (radians: any): any {
+    Math.degrees = function (radians) {
         return (radians * 180.0) / Math.PI;
     };
 }
-function stringPolyfills(): any {
+function stringPolyfills() {
     // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
     if (!String.prototype.padStart) {
-        String.prototype.padStart = function padStart(targetLength: any, padString: any): any {
+        String.prototype.padStart = function padStart(targetLength, padString) {
             targetLength = targetLength >> 0; //truncate if number, or convert non-number to 0;
             padString = String(typeof padString !== "undefined" ? padString : " ");
             if (this.length >= targetLength) {
@@ -30,7 +30,7 @@ function stringPolyfills(): any {
     // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
     if (!String.prototype.padEnd) {
-        String.prototype.padEnd = function padEnd(targetLength: any, padString: any): any {
+        String.prototype.padEnd = function padEnd(targetLength, padString) {
             targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
             padString = String(typeof padString !== "undefined" ? padString : " ");
             if (this.length > targetLength) {
@@ -46,33 +46,33 @@ function stringPolyfills(): any {
         };
     }
 }
-function objectPolyfills(): any {
+function objectPolyfills() {
     // https://github.com/tc39/proposal-object-values-entries/blob/master/polyfill.js
     // @ts-ignore
-    const reduce: any = Function.bind.call(Function.call, Array.prototype.reduce);
+    const reduce = Function.bind.call(Function.call, Array.prototype.reduce);
     // @ts-ignore
-    const isEnumerable: any = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
+    const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
     // @ts-ignore
-    const concat: any = Function.bind.call(Function.call, Array.prototype.concat);
-    const keys: any = Reflect.ownKeys;
+    const concat = Function.bind.call(Function.call, Array.prototype.concat);
+    const keys = Reflect.ownKeys;
     // @ts-ignore
     if (!Object.values) {
         // @ts-ignore
-        Object.values = function values(O: any): any {
-            return reduce(keys(O), (v: any, k: any): any => concat(v, typeof k === "string" && isEnumerable(O, k) ? [O[k]] : []), []);
+        Object.values = function values(O) {
+            return reduce(keys(O), (v, k) => concat(v, typeof k === "string" && isEnumerable(O, k) ? [O[k]] : []), []);
         };
     }
     if (!Object.entries) {
         // @ts-ignore
-        Object.entries = function entries(O: any): any {
-            return reduce(keys(O), (e: any, k: any): any => concat(e, typeof k === "string" && isEnumerable(O, k) ? [[k, O[k]]] : []), []);
+        Object.entries = function entries(O) {
+            return reduce(keys(O), (e, k) => concat(e, typeof k === "string" && isEnumerable(O, k) ? [[k, O[k]]] : []), []);
         };
     }
 }
-function domPolyfills(): any {
+function domPolyfills() {
     // from:https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/remove()/remove().md
-    (function (arr: any): any {
-        arr.forEach(function (item: any): any {
+    (function (arr) {
+        arr.forEach(function (item) {
             if (item.hasOwnProperty("remove")) {
                 return;
             }
@@ -80,22 +80,22 @@ function domPolyfills(): any {
                 configurable: true,
                 enumerable: true,
                 writable: true,
-                value: function remove(): any {
+                value: function remove() {
                     this.parentNode.removeChild(this);
                 },
             });
         });
     })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 }
-function initPolyfills(): any {
+function initPolyfills() {
     mathPolyfills();
     stringPolyfills();
     objectPolyfills();
     domPolyfills();
 }
-function initExtensions(): any {
-    String.prototype.replaceAll = function (search: any, replacement: any): any {
-        var target: any = this;
+function initExtensions() {
+    String.prototype.replaceAll = function (search, replacement) {
+        var target = this;
         return target.split(search).join(replacement);
     };
 }

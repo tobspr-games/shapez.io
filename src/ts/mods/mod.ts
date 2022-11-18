@@ -14,7 +14,7 @@ export class Mod {
 
         constructor({ app, modLoader, meta, settings, saveSettings }) {
     }
-    init(): any {
+    init() {
         // to be overridden
     }
     get dialogs() {

@@ -7,11 +7,11 @@ import { SOUNDS } from "../../../platform/sound";
 import { KEYMAPPINGS } from "../../key_action_mapper";
 import { enumHubGoalRewards } from "../../tutorial_goals";
 import { BaseHUDPart } from "../base_hud_part";
-const copy: any = require("clipboard-copy");
-const wiresBackgroundDpi: any = 4;
+const copy = require("clipboard-copy");
+const wiresBackgroundDpi = 4;
 export class HUDWiresOverlay extends BaseHUDPart {
-    createElements(parent: any): any { }
-    initialize(): any {
+    createElements(parent) { }
+    initialize() {
         // Probably not the best location, but the one which makes most sense
         this.root.keyMapper.getBinding(KEYMAPPINGS.ingame.switchLayers).add(this.switchLayers, this);
         this.root.keyMapper.getBinding(KEYMAPPINGS.placement.copyWireValue).add(this.copyWireValue, this);
@@ -21,7 +21,7 @@ export class HUDWiresOverlay extends BaseHUDPart {
     /**
      * Switches between layers
      */
-    switchLayers(): any {
+    switchLayers() {
         if (!this.root.gameMode.getSupportsWires()) {
             return;
         }
@@ -39,10 +39,10 @@ export class HUDWiresOverlay extends BaseHUDPart {
     /**
      * Generates the background pattern for the wires overlay
      */
-    generateTilePattern(): any {
-        const overlayTile: any = Loader.getSprite("sprites/wires/overlay_tile.png");
-        const dims: any = globalConfig.tileSize * wiresBackgroundDpi;
-        const [canvas, context]: any = makeOffscreenBuffer(dims, dims, {
+    generateTilePattern() {
+        const overlayTile = Loader.getSprite("sprites/wires/overlay_tile.png");
+        const dims = globalConfig.tileSize * wiresBackgroundDpi;
+        const [canvas, context] = makeOffscreenBuffer(dims, dims, {
             smooth: false,
             reusable: false,
             label: "wires-tile-pattern",
@@ -51,8 +51,8 @@ export class HUDWiresOverlay extends BaseHUDPart {
         overlayTile.draw(context, 0, 0, dims, dims);
         this.tilePatternCanvas = canvas;
     }
-    update(): any {
-        const desiredAlpha: any = this.root.currentLayer === "wires" ? 1.0 : 0.0;
+    update() {
+        const desiredAlpha = this.root.currentLayer === "wires" ? 1.0 : 0.0;
         // On low performance, skip the fade
         if (this.root.entityMgr.entities.length > 5000 || this.root.dynamicTickrate.averageFps < 50) {
             this.currentAlpha = desiredAlpha;
@@ -64,22 +64,22 @@ export class HUDWiresOverlay extends BaseHUDPart {
     /**
      * Copies the wires value below the cursor
      */
-    copyWireValue(): any {
+    copyWireValue() {
         if (this.root.currentLayer !== "wires") {
             return;
         }
-        const mousePos: any = this.root.app.mousePosition;
+        const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             return;
         }
-        const tile: any = this.root.camera.screenToWorld(mousePos).toTileSpace();
-        const contents: any = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
+        const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
+        const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "wires");
         if (!contents) {
             return;
         }
-        let value: any = null;
+        let value = null;
         if (contents.components.Wire) {
-            const network: any = contents.components.Wire.linkedNetwork;
+            const network = contents.components.Wire.linkedNetwork;
             if (network && network.hasValue()) {
                 value = network.currentValue;
             }
@@ -96,17 +96,17 @@ export class HUDWiresOverlay extends BaseHUDPart {
             this.root.soundProxy.playUiError();
         }
     }
-        draw(parameters: DrawParameters): any {
+        draw(parameters: DrawParameters) {
         if (this.currentAlpha < 0.02) {
             return;
         }
-        const hasTileGrid: any = !this.root.app.settings.getAllSettings().disableTileGrid;
+        const hasTileGrid = !this.root.app.settings.getAllSettings().disableTileGrid;
         if (hasTileGrid && !this.cachedPatternBackground) {
             this.cachedPatternBackground = parameters.context.createPattern(this.tilePatternCanvas, "repeat");
         }
-        const bounds: any = parameters.visibleRect;
+        const bounds = parameters.visibleRect;
         parameters.context.globalAlpha = this.currentAlpha;
-        const scaleFactor: any = 1 / wiresBackgroundDpi;
+        const scaleFactor = 1 / wiresBackgroundDpi;
         parameters.context.globalCompositeOperation = "overlay";
         parameters.context.fillStyle = "rgba(50, 200, 150, 1)";
         parameters.context.fillRect(bounds.x, bounds.y, bounds.w, bounds.h);

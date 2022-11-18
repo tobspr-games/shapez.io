@@ -10,7 +10,7 @@ export class MetaLeverBuilding extends MetaBuilding {
     constructor() {
         super("lever");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 33,
@@ -18,26 +18,26 @@ export class MetaLeverBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         // @todo: Render differently based on if its activated or not
         return "#1a678b";
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers);
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getSprite(): any {
+    getSprite() {
         return null;
     }
-    getShowWiresLayerPreview(): any {
+    getShowWiresLayerPreview() {
         return true;
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [
                 {

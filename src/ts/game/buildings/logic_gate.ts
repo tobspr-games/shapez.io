@@ -7,25 +7,25 @@ import { enumLogicGateType, LogicGateComponent } from "../components/logic_gate"
 import { generateMatrixRotations } from "../../core/utils";
 import { enumHubGoalRewards } from "../tutorial_goals";
 /** @enum {string} */
-export const enumLogicGateVariants: any = {
+export const enumLogicGateVariants = {
     not: "not",
     xor: "xor",
     or: "or",
 };
 /** @enum {string} */
-const enumVariantToGate: any = {
+const enumVariantToGate = {
     [defaultBuildingVariant]: enumLogicGateType.and,
     [enumLogicGateVariants.not]: enumLogicGateType.not,
     [enumLogicGateVariants.xor]: enumLogicGateType.xor,
     [enumLogicGateVariants.or]: enumLogicGateType.or,
 };
-const overlayMatrices: any = {
+const overlayMatrices = {
     [defaultBuildingVariant]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
     [enumLogicGateVariants.xor]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
     [enumLogicGateVariants.or]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 1]),
     [enumLogicGateVariants.not]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
 };
-const colors: any = {
+const colors = {
     [defaultBuildingVariant]: "#f48d41",
     [enumLogicGateVariants.xor]: "#f4a241",
     [enumLogicGateVariants.or]: "#f4d041",
@@ -36,7 +36,7 @@ export class MetaLogicGateBuilding extends MetaBuilding {
     constructor() {
         super("logic_gate");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 32,
@@ -56,23 +56,23 @@ export class MetaLogicGateBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(variant: any): any {
+    getSilhouetteColor(variant) {
         return colors[variant];
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_logic_gates);
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getSpecialOverlayRenderMatrix(rotation: any, rotationVariant: any, variant: any): any {
+    getSpecialOverlayRenderMatrix(rotation, rotationVariant, variant) {
         return overlayMatrices[variant][rotation];
     }
-    getAvailableVariants(): any {
+    getAvailableVariants() {
         return [
             defaultBuildingVariant,
             enumLogicGateVariants.or,
@@ -80,14 +80,14 @@ export class MetaLogicGateBuilding extends MetaBuilding {
             enumLogicGateVariants.xor,
         ];
     }
-    getRenderPins(): any {
+    getRenderPins() {
         // We already have it included
         return false;
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: any): any {
-        const gateType: any = enumVariantToGate[variant];
+        updateVariants(entity: Entity, rotationVariant: number, variant) {
+        const gateType = enumVariantToGate[variant];
         entity.components.LogicGate.type = gateType;
-        const pinComp: any = entity.components.WiredPins;
+        const pinComp = entity.components.WiredPins;
         switch (gateType) {
             case enumLogicGateType.and:
             case enumLogicGateType.xor:
@@ -133,7 +133,7 @@ export class MetaLogicGateBuilding extends MetaBuilding {
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WiredPinsComponent({
             slots: [],
         }));

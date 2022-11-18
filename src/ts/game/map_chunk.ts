@@ -10,7 +10,7 @@ import { COLOR_ITEM_SINGLETONS } from "./items/color_item";
 import { GameRoot } from "./root";
 import { enumSubShape } from "./shape_definition";
 import { Rectangle } from "../core/rectangle";
-const logger: any = createLogger("map_chunk");
+const logger = createLogger("map_chunk");
 export const MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS: {
     [idx: string]: (distanceToOriginInChunks: number) => number;
 } = {};
@@ -42,38 +42,38 @@ export class MapChunk {
     /**
      * Generates a patch filled with the given item
      */
-    internalGeneratePatch(rng: RandomNumberGenerator, patchSize: number, item: BaseItem, overrideX: number= = null, overrideY: number= = null): any {
-        const border: any = Math.ceil(patchSize / 2 + 3);
+    internalGeneratePatch(rng: RandomNumberGenerator, patchSize: number, item: BaseItem, overrideX: number= = null, overrideY: number= = null) {
+        const border = Math.ceil(patchSize / 2 + 3);
         // Find a position within the chunk which is not blocked
-        let patchX: any = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
-        let patchY: any = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
+        let patchX = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
+        let patchY = rng.nextIntRange(border, globalConfig.mapChunkSize - border - 1);
         if (overrideX !== null) {
             patchX = overrideX;
         }
         if (overrideY !== null) {
             patchY = overrideY;
         }
-        const avgPos: any = new Vector(0, 0);
-        let patchesDrawn: any = 0;
+        const avgPos = new Vector(0, 0);
+        let patchesDrawn = 0;
         // Each patch consists of multiple circles
-        const numCircles: any = patchSize;
-        for (let i: any = 0; i <= numCircles; ++i) {
+        const numCircles = patchSize;
+        for (let i = 0; i <= numCircles; ++i) {
             // Determine circle parameters
-            const circleRadius: any = Math.min(1 + i, patchSize);
-            const circleRadiusSquare: any = circleRadius * circleRadius;
-            const circleOffsetRadius: any = (numCircles - i) / 2 + 2;
+            const circleRadius = Math.min(1 + i, patchSize);
+            const circleRadiusSquare = circleRadius * circleRadius;
+            const circleOffsetRadius = (numCircles - i) / 2 + 2;
             // We draw an elipsis actually
-            const circleScaleX: any = rng.nextRange(0.9, 1.1);
-            const circleScaleY: any = rng.nextRange(0.9, 1.1);
-            const circleX: any = patchX + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
-            const circleY: any = patchY + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
-            for (let dx: any = -circleRadius * circleScaleX - 2; dx <= circleRadius * circleScaleX + 2; ++dx) {
-                for (let dy: any = -circleRadius * circleScaleY - 2; dy <= circleRadius * circleScaleY + 2; ++dy) {
-                    const x: any = Math.round(circleX + dx);
-                    const y: any = Math.round(circleY + dy);
+            const circleScaleX = rng.nextRange(0.9, 1.1);
+            const circleScaleY = rng.nextRange(0.9, 1.1);
+            const circleX = patchX + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
+            const circleY = patchY + rng.nextIntRange(-circleOffsetRadius, circleOffsetRadius);
+            for (let dx = -circleRadius * circleScaleX - 2; dx <= circleRadius * circleScaleX + 2; ++dx) {
+                for (let dy = -circleRadius * circleScaleY - 2; dy <= circleRadius * circleScaleY + 2; ++dy) {
+                    const x = Math.round(circleX + dx);
+                    const y = Math.round(circleY + dy);
                     if (x >= 0 && x < globalConfig.mapChunkSize && y >= 0 && y <= globalConfig.mapChunkSize) {
-                        const originalDx: any = dx / circleScaleX;
-                        const originalDy: any = dy / circleScaleY;
+                        const originalDx = dx / circleScaleX;
+                        const originalDy = dy / circleScaleY;
                         if (originalDx * originalDx + originalDy * originalDy <= circleRadiusSquare) {
                             if (!this.lowerLayer[x][y]) {
                                 this.lowerLayer[x][y] = item;
@@ -98,9 +98,9 @@ export class MapChunk {
     /**
      * Generates a color patch
      */
-    internalGenerateColorPatch(rng: RandomNumberGenerator, colorPatchSize: number, distanceToOriginInChunks: number): any {
+    internalGenerateColorPatch(rng: RandomNumberGenerator, colorPatchSize: number, distanceToOriginInChunks: number) {
         // First, determine available colors
-        let availableColors: any = [enumColors.red, enumColors.green];
+        let availableColors = [enumColors.red, enumColors.green];
         if (distanceToOriginInChunks > 2) {
             availableColors.push(enumColors.blue);
         }
@@ -109,14 +109,14 @@ export class MapChunk {
     /**
      * Generates a shape patch
      */
-    internalGenerateShapePatch(rng: RandomNumberGenerator, shapePatchSize: number, distanceToOriginInChunks: number): any {
+    internalGenerateShapePatch(rng: RandomNumberGenerator, shapePatchSize: number, distanceToOriginInChunks: number) {
                 let subShapes: [
             enumSubShape,
             enumSubShape,
             enumSubShape,
             enumSubShape
         ] = null;
-        let weights: any = {};
+        let weights = {};
         // Later there is a mix of everything
         weights = {
             [enumSubShape.rect]: 100,
@@ -124,7 +124,7 @@ export class MapChunk {
             [enumSubShape.star]: Math.round(20 + clamp(distanceToOriginInChunks, 0, 30)),
             [enumSubShape.windmill]: Math.round(6 + clamp(distanceToOriginInChunks / 2, 0, 20)),
         };
-        for (const key: any in MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS) {
+        for (const key in MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS) {
             weights[key] = MODS_ADDITIONAL_SHAPE_MAP_WEIGHTS[key](distanceToOriginInChunks);
         }
         if (distanceToOriginInChunks < 7) {
@@ -134,13 +134,13 @@ export class MapChunk {
         }
         if (distanceToOriginInChunks < 10) {
             // Initial chunk patches always have the same shape
-            const subShape: any = this.internalGenerateRandomSubShape(rng, weights);
+            const subShape = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShape, subShape, subShape, subShape];
         }
         else if (distanceToOriginInChunks < 15) {
             // Later patches can also have mixed ones
-            const subShapeA: any = this.internalGenerateRandomSubShape(rng, weights);
-            const subShapeB: any = this.internalGenerateRandomSubShape(rng, weights);
+            const subShapeA = this.internalGenerateRandomSubShape(rng, weights);
+            const subShapeB = this.internalGenerateRandomSubShape(rng, weights);
             subShapes = [subShapeA, subShapeA, subShapeB, subShapeB];
         }
         else {
@@ -153,8 +153,8 @@ export class MapChunk {
             ];
         }
         // Makes sure windmills never spawn as whole
-        let windmillCount: any = 0;
-        for (let i: any = 0; i < subShapes.length; ++i) {
+        let windmillCount = 0;
+        for (let i = 0; i < subShapes.length; ++i) {
             if (subShapes[i] === enumSubShape.windmill) {
                 ++windmillCount;
             }
@@ -163,7 +163,7 @@ export class MapChunk {
             subShapes[0] = enumSubShape.rect;
             subShapes[1] = enumSubShape.rect;
         }
-        const definition: any = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
+        const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
         this.internalGeneratePatch(rng, shapePatchSize, this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition));
     }
     /**
@@ -174,11 +174,11 @@ export class MapChunk {
         [idx: enumSubShape]: number;
     }): enumSubShape {
         // @ts-ignore
-        const sum: any = Object.values(weights).reduce((a: any, b: any): any => a + b, 0);
-        const chosenNumber: any = rng.nextIntRange(0, sum - 1);
-        let accumulated: any = 0;
-        for (const key: any in weights) {
-            const weight: any = weights[key];
+        const sum = Object.values(weights).reduce((a, b) => a + b, 0);
+        const chosenNumber = rng.nextIntRange(0, sum - 1);
+        let accumulated = 0;
+        for (const key in weights) {
+            const weight = weights[key];
             if (accumulated + weight > chosenNumber) {
                 return key;
             }
@@ -190,30 +190,30 @@ export class MapChunk {
     /**
      * Generates the lower layer "terrain"
      */
-    generateLowerLayer(): any {
-        const rng: any = new RandomNumberGenerator(this.x + "|" + this.y + "|" + this.root.map.seed);
+    generateLowerLayer() {
+        const rng = new RandomNumberGenerator(this.x + "|" + this.y + "|" + this.root.map.seed);
         if (this.generatePredefined(rng)) {
             return;
         }
-        const chunkCenter: any = new Vector(this.x, this.y).addScalar(0.5);
-        const distanceToOriginInChunks: any = Math.round(chunkCenter.length());
+        const chunkCenter = new Vector(this.x, this.y).addScalar(0.5);
+        const distanceToOriginInChunks = Math.round(chunkCenter.length());
         this.generatePatches({ rng, chunkCenter, distanceToOriginInChunks });
     }
         generatePatches({ rng, chunkCenter, distanceToOriginInChunks }: {
         rng: RandomNumberGenerator;
         chunkCenter: Vector;
         distanceToOriginInChunks: number;
-    }): any {
+    }) {
         // Determine how likely it is that there is a color patch
-        const colorPatchChance: any = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
+        const colorPatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
         if (rng.next() < colorPatchChance / 4) {
-            const colorPatchSize: any = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
+            const colorPatchSize = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateColorPatch(rng, colorPatchSize, distanceToOriginInChunks);
         }
         // Determine how likely it is that there is a shape patch
-        const shapePatchChance: any = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
+        const shapePatchChance = 0.9 - clamp(distanceToOriginInChunks / 25, 0, 1) * 0.5;
         if (rng.next() < shapePatchChance / 4) {
-            const shapePatchSize: any = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
+            const shapePatchSize = Math.max(2, Math.round(1 + clamp(distanceToOriginInChunks / 8, 0, 4)));
             this.internalGenerateShapePatch(rng, shapePatchSize, distanceToOriginInChunks);
         }
     }
@@ -228,12 +228,12 @@ export class MapChunk {
             return true;
         }
         if (this.x === -1 && this.y === 0) {
-            const item: any = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("CuCuCuCu");
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("CuCuCuCu");
             this.internalGeneratePatch(rng, 2, item, globalConfig.mapChunkSize - 9, 7);
             return true;
         }
         if (this.x === 0 && this.y === -1) {
-            const item: any = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("RuRuRuRu");
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("RuRuRuRu");
             this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
@@ -242,7 +242,7 @@ export class MapChunk {
             return true;
         }
         if (this.x === 5 && this.y === -2) {
-            const item: any = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("SuSuSuSu");
+            const item = this.root.shapeDefinitionMgr.getShapeItemFromShortKey("SuSuSuSu");
             this.internalGeneratePatch(rng, 2, item, 5, globalConfig.mapChunkSize - 7);
             return true;
         }
@@ -253,8 +253,8 @@ export class MapChunk {
      * {}
      */
     getLowerLayerFromWorldCoords(worldX: number, worldY: number): BaseItem= {
-        const localX: any = worldX - this.tileX;
-        const localY: any = worldY - this.tileY;
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
@@ -266,8 +266,8 @@ export class MapChunk {
      * {}
      */
     getTileContentFromWorldCoords(worldX: number, worldY: number): Entity= {
-        const localX: any = worldX - this.tileX;
-        const localY: any = worldY - this.tileY;
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
@@ -279,8 +279,8 @@ export class MapChunk {
      * {}
      */
     getLayerContentFromWorldCoords(worldX: number, worldY: number, layer: Layer): Entity= {
-        const localX: any = worldX - this.tileX;
-        const localY: any = worldY - this.tileY;
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
@@ -297,15 +297,15 @@ export class MapChunk {
      * {}
      */
     getLayersContentsMultipleFromWorldCoords(worldX: number, worldY: number): Array<Entity> {
-        const localX: any = worldX - this.tileX;
-        const localY: any = worldY - this.tileY;
+        const localX = worldX - this.tileX;
+        const localY = worldY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        const regularContent: any = this.contents[localX][localY];
-        const wireContent: any = this.wireContents[localX][localY];
-        const result: any = [];
+        const regularContent = this.contents[localX][localY];
+        const wireContent = this.wireContents[localX][localY];
+        const result = [];
         if (regularContent) {
             result.push(regularContent);
         }
@@ -328,14 +328,14 @@ export class MapChunk {
     /**
      * Sets the chunks contents
      */
-    setLayerContentFromWorldCords(tileX: number, tileY: number, contents: Entity, layer: Layer): any {
-        const localX: any = tileX - this.tileX;
-        const localY: any = tileY - this.tileY;
+    setLayerContentFromWorldCords(tileX: number, tileY: number, contents: Entity, layer: Layer) {
+        const localX = tileX - this.tileX;
+        const localY = tileY - this.tileY;
         assert(localX >= 0, "Local X is < 0");
         assert(localY >= 0, "Local Y is < 0");
         assert(localX < globalConfig.mapChunkSize, "Local X is >= chunk size");
         assert(localY < globalConfig.mapChunkSize, "Local Y is >= chunk size");
-        let oldContents: any;
+        let oldContents;
         if (layer === "regular") {
             oldContents = this.contents[localX][localY];
         }

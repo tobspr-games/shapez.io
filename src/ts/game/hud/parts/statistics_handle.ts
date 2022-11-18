@@ -6,7 +6,7 @@ import { enumAnalyticsDataSource } from "../../production_analytics";
 import { GameRoot } from "../../root";
 import { ShapeDefinition } from "../../shape_definition";
 /** @enum {string} */
-export const enumDisplayMode: any = {
+export const enumDisplayMode = {
     icons: "icons",
     detailed: "detailed",
 };
@@ -31,7 +31,7 @@ export class HUDShapeStatisticsHandle {
 
         constructor(root, definition, intersectionObserver) {
     }
-    initElement(): any {
+    initElement() {
         this.element = document.createElement("div");
         this.element.setAttribute("data-shape-key", this.definition.getHash());
         this.counter = document.createElement("span");
@@ -41,7 +41,7 @@ export class HUDShapeStatisticsHandle {
     /**
      * Sets whether the shape handle is visible currently
      */
-    setVisible(visibility: boolean): any {
+    setVisible(visibility: boolean) {
         if (visibility === this.visible) {
             return;
         }
@@ -59,7 +59,7 @@ export class HUDShapeStatisticsHandle {
             this.cleanupChildElements();
         }
     }
-        update(displayMode: enumDisplayMode, dataSource: enumAnalyticsDataSource, unit: string, forced: boolean= = false): any {
+        update(displayMode: enumDisplayMode, dataSource: enumAnalyticsDataSource, unit: string, forced: boolean= = false) {
         if (!this.element) {
             return;
         }
@@ -74,18 +74,18 @@ export class HUDShapeStatisticsHandle {
             }
             case enumAnalyticsDataSource.delivered:
             case enumAnalyticsDataSource.produced: {
-                let rate: any = this.root.productionAnalytics.getCurrentShapeRateRaw(dataSource, this.definition) /
+                let rate = this.root.productionAnalytics.getCurrentShapeRateRaw(dataSource, this.definition) /
                     globalConfig.analyticsSliceDurationSeconds;
                 this.counter.innerText = T.ingame.statistics.shapesDisplayUnits[unit].replace("<shapes>", formatBigNumber(rate * statisticsUnitsSeconds[unit]));
                 break;
             }
         }
         if (displayMode === enumDisplayMode.detailed) {
-            const graphDpi: any = globalConfig.statisticsGraphDpi;
-            const w: any = 270;
-            const h: any = 40;
+            const graphDpi = globalConfig.statisticsGraphDpi;
+            const w = 270;
+            const h = 40;
             if (!this.graphCanvas) {
-                const [canvas, context]: any = makeOffscreenBuffer(w * graphDpi, h * graphDpi, {
+                const [canvas, context] = makeOffscreenBuffer(w * graphDpi, h * graphDpi, {
                     smooth: true,
                     reusable: false,
                     label: "statgraph-" + this.definition.getHash(),
@@ -100,11 +100,11 @@ export class HUDShapeStatisticsHandle {
             this.graphContext.fillStyle = "#bee0db";
             this.graphContext.strokeStyle = "#66ccbc";
             this.graphContext.lineWidth = 1.5;
-            const sliceWidth: any = w / (globalConfig.statisticsGraphSlices - 1);
-            let values: any = [];
-            let maxValue: any = 1;
-            for (let i: any = 0; i < globalConfig.statisticsGraphSlices - 2; ++i) {
-                const value: any = this.root.productionAnalytics.getPastShapeRate(dataSource, this.definition, globalConfig.statisticsGraphSlices - i - 2);
+            const sliceWidth = w / (globalConfig.statisticsGraphSlices - 1);
+            let values = [];
+            let maxValue = 1;
+            for (let i = 0; i < globalConfig.statisticsGraphSlices - 2; ++i) {
+                const value = this.root.productionAnalytics.getPastShapeRate(dataSource, this.definition, globalConfig.statisticsGraphSlices - i - 2);
                 if (value > maxValue) {
                     maxValue = value;
                 }
@@ -112,9 +112,9 @@ export class HUDShapeStatisticsHandle {
             }
             this.graphContext.beginPath();
             this.graphContext.moveTo(0.75, h + 5);
-            for (let i: any = 0; i < values.length; ++i) {
-                const yValue: any = clamp((1 - values[i] / maxValue) * h, 0.75, h - 0.75);
-                const x: any = i * sliceWidth;
+            for (let i = 0; i < values.length; ++i) {
+                const yValue = clamp((1 - values[i] / maxValue) * h, 0.75, h - 0.75);
+                const x = i * sliceWidth;
                 if (i === 0) {
                     this.graphContext.lineTo(0.75, yValue);
                 }
@@ -139,7 +139,7 @@ export class HUDShapeStatisticsHandle {
     /**
      * Attaches the handle
      */
-    attach(parent: HTMLElement): any {
+    attach(parent: HTMLElement) {
         if (!this.element) {
             this.initElement();
         }
@@ -151,7 +151,7 @@ export class HUDShapeStatisticsHandle {
     /**
      * Detaches the handle
      */
-    detach(): any {
+    detach() {
         if (this.element && this.element.parentElement) {
             this.element.parentElement.removeChild(this.element);
             this.intersectionObserver.unobserve(this.element);
@@ -160,7 +160,7 @@ export class HUDShapeStatisticsHandle {
     /**
      * Cleans up all child elements
      */
-    cleanupChildElements(): any {
+    cleanupChildElements() {
         if (this.shapeCanvas) {
             this.shapeCanvas.remove();
             delete this.shapeCanvas;
@@ -174,7 +174,7 @@ export class HUDShapeStatisticsHandle {
     /**
      * Destroys the handle
      */
-    destroy(): any {
+    destroy() {
         this.cleanupChildElements();
         if (this.element) {
             this.intersectionObserver.unobserve(this.element);

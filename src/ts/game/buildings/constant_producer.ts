@@ -11,7 +11,7 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
     constructor() {
         super("constant_producer");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 62,
@@ -19,7 +19,7 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#bfd630";
     }
     /**
@@ -142,13 +142,13 @@ export class MetaConstantProducerBuilding extends MetaBuilding {
      * @param {import("../../savegame/savegame_serializer").GameRoot} root
      * @returns
      */
-    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot): any {
+    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot) {
         return root.gameMode.getIsEditor();
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemEjectorComponent({
             slots: [{ pos: new Vector(0, 0), direction: enumDirection.top }],
         }));

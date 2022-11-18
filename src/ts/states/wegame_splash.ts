@@ -4,7 +4,7 @@ export class WegameSplashState extends GameState {
     constructor() {
         super("WegameSplashState");
     }
-    getInnerHTML(): any {
+    getInnerHTML() {
         return `
         <div class="wrapper">
             <strong>健康游戏忠告</strong>
@@ -15,8 +15,8 @@ export class WegameSplashState extends GameState {
         </div>
 `;
     }
-    onEnter(): any {
-        setTimeout((): any => {
+    onEnter() {
+        setTimeout(() => {
             this.app.stateMgr.moveToState("PreloadState");
         }, G_IS_DEV ? 1 : 6000);
     }

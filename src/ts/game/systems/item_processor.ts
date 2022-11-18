@@ -10,7 +10,7 @@ import { ShapeItem } from "../items/shape_item";
 /**
  * We need to allow queuing charges, otherwise the throughput will stall
  */
-const MAX_QUEUED_CHARGES: any = 2;
+const MAX_QUEUED_CHARGES = 2;
 export type ProducedItem = {
     item: BaseItem;
     preferredSlot?: number;
@@ -65,16 +65,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [ItemProcessorComponent]);
         // Bind all handlers
-        for (const key: any in this.handlers) {
+        for (const key in this.handlers) {
             this.handlers[key] = this.handlers[key].bind(this);
         }
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const processorComp: any = entity.components.ItemProcessor;
-            const ejectorComp: any = entity.components.ItemEjector;
-            const currentCharge: any = processorComp.ongoingCharges[0];
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const processorComp = entity.components.ItemProcessor;
+            const ejectorComp = entity.components.ItemEjector;
+            const currentCharge = processorComp.ongoingCharges[0];
             if (currentCharge) {
                 // Process next charge
                 if (currentCharge.remainingTime > 0.0) {
@@ -86,9 +86,9 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                 }
                 // Check if it finished and we don't already have queued ejects
                 if (currentCharge.remainingTime <= 0.0 && !processorComp.queuedEjects.length) {
-                    const itemsToEject: any = currentCharge.items;
+                    const itemsToEject = currentCharge.items;
                     // Go over all items and add them to the queue
-                    for (let j: any = 0; j < itemsToEject.length; ++j) {
+                    for (let j = 0; j < itemsToEject.length; ++j) {
                         processorComp.queuedEjects.push(itemsToEject[j]);
                     }
                     processorComp.ongoingCharges.shift();
@@ -100,10 +100,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     this.startNewCharge(entity);
                 }
             }
-            for (let j: any = 0; j < processorComp.queuedEjects.length; ++j) {
-                const { item, requiredSlot, preferredSlot }: any = processorComp.queuedEjects[j];
+            for (let j = 0; j < processorComp.queuedEjects.length; ++j) {
+                const { item, requiredSlot, preferredSlot } = processorComp.queuedEjects[j];
                 assert(ejectorComp, "To eject items, the building needs to have an ejector");
-                let slot: any = null;
+                let slot = null;
                 if (requiredSlot !== null && requiredSlot !== undefined) {
                     // We have a slot override, check if that is free
                     if (ejectorComp.canEjectOnSlot(requiredSlot)) {
@@ -143,8 +143,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
      * {}
      */
     checkRequirements(entity: Entity, item: BaseItem, slotIndex: number): boolean {
-        const itemProcessorComp: any = entity.components.ItemProcessor;
-        const pinsComp: any = entity.components.WiredPins;
+        const itemProcessorComp = entity.components.ItemProcessor;
+        const pinsComp = entity.components.WiredPins;
         if (MODS_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement]) {
             return MODS_PROCESSING_REQUIREMENTS[itemProcessorComp.processingRequirement].bind(this)({
                 entity,
@@ -159,8 +159,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     return true;
                 }
                 // Check the network value at the given slot
-                const network: any = pinsComp.slots[slotIndex - 1].linkedNetwork;
-                const slotIsEnabled: any = network && network.hasValue() && isTruthyItem(network.currentValue);
+                const network = pinsComp.slots[slotIndex - 1].linkedNetwork;
+                const slotIsEnabled = network && network.hasValue() && isTruthyItem(network.currentValue);
                 if (!slotIsEnabled) {
                     return false;
                 }
@@ -174,8 +174,8 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     /**
      * Checks whether it's possible to process something
      */
-    canProcess(entity: Entity): any {
-        const processorComp: any = entity.components.ItemProcessor;
+    canProcess(entity: Entity) {
+        const processorComp = entity.components.ItemProcessor;
         if (MODS_CAN_PROCESS[processorComp.processingRequirement]) {
             return MODS_CAN_PROCESS[processorComp.processingRequirement].bind(this)({
                 entity,
@@ -190,18 +190,18 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             // QUAD PAINTER
             // For the quad painter, it might be possible to start processing earlier
             case enumItemProcessorRequirements.painterQuad: {
-                const pinsComp: any = entity.components.WiredPins;
+                const pinsComp = entity.components.WiredPins;
                 // First slot is the shape, so if it's not there we can't do anything
-                const shapeItem: any = (processorComp.inputSlots.get(0) as ShapeItem);
+                const shapeItem = processorComp.inputSlots.get(0) as ShapeItem);
                 if (!shapeItem) {
                     return false;
                 }
-                const slotStatus: any = [];
+                const slotStatus = [];
                 // Check which slots are enabled
-                for (let i: any = 0; i < 4; ++i) {
+                for (let i = 0; i < 4; ++i) {
                     // Extract the network value on the Nth pin
-                    const network: any = pinsComp.slots[i].linkedNetwork;
-                    const networkValue: any = network && network.hasValue() ? network.currentValue : null;
+                    const network = pinsComp.slots[i].linkedNetwork;
+                    const networkValue = network && network.hasValue() ? network.currentValue : null;
                     // If there is no "1" on that slot, don't paint there
                     if (!isTruthyItem(networkValue)) {
                         slotStatus.push(false);
@@ -214,12 +214,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
                     return false;
                 }
                 // Check if all colors of the enabled slots are there
-                for (let i: any = 0; i < slotStatus.length; ++i) {
+                for (let i = 0; i < slotStatus.length; ++i) {
                     if (slotStatus[i] && !processorComp.inputSlots.get(1 + i)) {
                         // A slot which is enabled wasn't enabled. Make sure if there is anything on the quadrant,
                         // it is not possible to paint, but if there is nothing we can ignore it
-                        for (let j: any = 0; j < 4; ++j) {
-                            const layer: any = shapeItem.definition.layers[j];
+                        for (let j = 0; j < 4; ++j) {
+                            const layer = shapeItem.definition.layers[j];
                             if (layer && layer[i]) {
                                 return false;
                             }
@@ -235,10 +235,10 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
     /**
      * Starts a new charge for the entity
      */
-    startNewCharge(entity: Entity): any {
-        const processorComp: any = entity.components.ItemProcessor;
+    startNewCharge(entity: Entity) {
+        const processorComp = entity.components.ItemProcessor;
         // First, take items
-        const items: any = processorComp.inputSlots;
+        const items = processorComp.inputSlots;
                 const outItems: Array<ProducedItem> = [];
                 const handler: function(: void):void = this.handlers[processorComp.type];
         assert(handler, "No handler for processor type defined: " + processorComp.type);
@@ -250,16 +250,16 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             inputCount: processorComp.inputCount,
         });
         // Track produced items
-        for (let i: any = 0; i < outItems.length; ++i) {
+        for (let i = 0; i < outItems.length; ++i) {
             if (!outItems[i].doNotTrack) {
                 this.root.signals.itemProduced.dispatch(outItems[i].item);
             }
         }
         // Queue Charge
-        const baseSpeed: any = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
-        const originalTime: any = 1 / baseSpeed;
-        const bonusTimeToApply: any = Math.min(originalTime, processorComp.bonusTime);
-        const timeToProcess: any = originalTime - bonusTimeToApply;
+        const baseSpeed = this.root.hubGoals.getProcessorBaseSpeed(processorComp.type);
+        const originalTime = 1 / baseSpeed;
+        const bonusTimeToApply = Math.min(originalTime, processorComp.bonusTime);
+        const timeToProcess = originalTime - bonusTimeToApply;
         processorComp.bonusTime -= bonusTimeToApply;
         processorComp.ongoingCharges.push({
             items: outItems,
@@ -268,12 +268,12 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         processorComp.inputSlots.clear();
         processorComp.inputCount = 0;
     }
-        process_BALANCER(payload: ProcessorImplementationPayload): any {
+        process_BALANCER(payload: ProcessorImplementationPayload) {
         assert(payload.entity.components.ItemEjector, "To be a balancer, the building needs to have an ejector");
-        const availableSlots: any = payload.entity.components.ItemEjector.slots.length;
-        const processorComp: any = payload.entity.components.ItemProcessor;
-        for (let i: any = 0; i < 2; ++i) {
-            const item: any = payload.items.get(i);
+        const availableSlots = payload.entity.components.ItemEjector.slots.length;
+        const processorComp = payload.entity.components.ItemProcessor;
+        for (let i = 0; i < 2; ++i) {
+            const item = payload.items.get(i);
             if (!item) {
                 continue;
             }
@@ -285,14 +285,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
         }
         return true;
     }
-        process_CUTTER(payload: ProcessorImplementationPayload): any {
-        const inputItem: any = (payload.items.get(0) as ShapeItem);
+        process_CUTTER(payload: ProcessorImplementationPayload) {
+        const inputItem = payload.items.get(0) as ShapeItem);
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
-        const inputDefinition: any = inputItem.definition;
-        const cutDefinitions: any = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
-        const ejectorComp: any = payload.entity.components.ItemEjector;
-        for (let i: any = 0; i < cutDefinitions.length; ++i) {
-            const definition: any = cutDefinitions[i];
+        const inputDefinition = inputItem.definition;
+        const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutHalf(inputDefinition);
+        const ejectorComp = payload.entity.components.ItemEjector;
+        for (let i = 0; i < cutDefinitions.length; ++i) {
+            const definition = cutDefinitions[i];
             if (definition.isEntirelyEmpty()) {
                 ejectorComp.slots[i].lastItem = null;
                 continue;
@@ -303,14 +303,14 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             });
         }
     }
-        process_CUTTER_QUAD(payload: ProcessorImplementationPayload): any {
-        const inputItem: any = (payload.items.get(0) as ShapeItem);
+        process_CUTTER_QUAD(payload: ProcessorImplementationPayload) {
+        const inputItem = payload.items.get(0) as ShapeItem);
         assert(inputItem instanceof ShapeItem, "Input for cut is not a shape");
-        const inputDefinition: any = inputItem.definition;
-        const cutDefinitions: any = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
-        const ejectorComp: any = payload.entity.components.ItemEjector;
-        for (let i: any = 0; i < cutDefinitions.length; ++i) {
-            const definition: any = cutDefinitions[i];
+        const inputDefinition = inputItem.definition;
+        const cutDefinitions = this.root.shapeDefinitionMgr.shapeActionCutQuad(inputDefinition);
+        const ejectorComp = payload.entity.components.ItemEjector;
+        for (let i = 0; i < cutDefinitions.length; ++i) {
+            const definition = cutDefinitions[i];
             if (definition.isEntirelyEmpty()) {
                 ejectorComp.slots[i].lastItem = null;
                 continue;
@@ -321,57 +321,57 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             });
         }
     }
-        process_ROTATER(payload: ProcessorImplementationPayload): any {
-        const inputItem: any = (payload.items.get(0) as ShapeItem);
+        process_ROTATER(payload: ProcessorImplementationPayload) {
+        const inputItem = payload.items.get(0) as ShapeItem);
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
-        const inputDefinition: any = inputItem.definition;
-        const rotatedDefinition: any = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
+        const inputDefinition = inputItem.definition;
+        const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCW(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
         });
     }
-        process_ROTATER_CCW(payload: ProcessorImplementationPayload): any {
-        const inputItem: any = (payload.items.get(0) as ShapeItem);
+        process_ROTATER_CCW(payload: ProcessorImplementationPayload) {
+        const inputItem = payload.items.get(0) as ShapeItem);
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
-        const inputDefinition: any = inputItem.definition;
-        const rotatedDefinition: any = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
+        const inputDefinition = inputItem.definition;
+        const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotateCCW(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
         });
     }
-        process_ROTATER_180(payload: ProcessorImplementationPayload): any {
-        const inputItem: any = (payload.items.get(0) as ShapeItem);
+        process_ROTATER_180(payload: ProcessorImplementationPayload) {
+        const inputItem = payload.items.get(0) as ShapeItem);
         assert(inputItem instanceof ShapeItem, "Input for rotation is not a shape");
-        const inputDefinition: any = inputItem.definition;
-        const rotatedDefinition: any = this.root.shapeDefinitionMgr.shapeActionRotate180(inputDefinition);
+        const inputDefinition = inputItem.definition;
+        const rotatedDefinition = this.root.shapeDefinitionMgr.shapeActionRotate180(inputDefinition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinition),
         });
     }
-        process_STACKER(payload: ProcessorImplementationPayload): any {
-        const lowerItem: any = (payload.items.get(0) as ShapeItem);
-        const upperItem: any = (payload.items.get(1) as ShapeItem);
+        process_STACKER(payload: ProcessorImplementationPayload) {
+        const lowerItem = payload.items.get(0) as ShapeItem);
+        const upperItem = payload.items.get(1) as ShapeItem);
         assert(lowerItem instanceof ShapeItem, "Input for lower stack is not a shape");
         assert(upperItem instanceof ShapeItem, "Input for upper stack is not a shape");
-        const stackedDefinition: any = this.root.shapeDefinitionMgr.shapeActionStack(lowerItem.definition, upperItem.definition);
+        const stackedDefinition = this.root.shapeDefinitionMgr.shapeActionStack(lowerItem.definition, upperItem.definition);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(stackedDefinition),
         });
     }
-        process_TRASH(payload: ProcessorImplementationPayload): any {
+        process_TRASH(payload: ProcessorImplementationPayload) {
         // Do nothing ..
     }
-        process_MIXER(payload: ProcessorImplementationPayload): any {
+        process_MIXER(payload: ProcessorImplementationPayload) {
         // Find both colors and combine them
-        const item1: any = (payload.items.get(0) as ColorItem);
-        const item2: any = (payload.items.get(1) as ColorItem);
+        const item1 = payload.items.get(0) as ColorItem);
+        const item2 = payload.items.get(1) as ColorItem);
         assert(item1 instanceof ColorItem, "Input for color mixer is not a color");
         assert(item2 instanceof ColorItem, "Input for color mixer is not a color");
-        const color1: any = item1.color;
-        const color2: any = item2.color;
+        const color1 = item1.color;
+        const color2 = item2.color;
         // Try finding mixer color, and if we can't mix it we simply return the same color
-        const mixedColor: any = enumColorMixingResults[color1][color2];
-        let resultColor: any = color1;
+        const mixedColor = enumColorMixingResults[color1][color2];
+        let resultColor = color1;
         if (mixedColor) {
             resultColor = mixedColor;
         }
@@ -379,23 +379,23 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             item: COLOR_ITEM_SINGLETONS[resultColor],
         });
     }
-        process_PAINTER(payload: ProcessorImplementationPayload): any {
-        const shapeItem: any = (payload.items.get(0) as ShapeItem);
-        const colorItem: any = (payload.items.get(1) as ColorItem);
-        const colorizedDefinition: any = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem.definition, colorItem.color);
+        process_PAINTER(payload: ProcessorImplementationPayload) {
+        const shapeItem = payload.items.get(0) as ShapeItem);
+        const colorItem = payload.items.get(1) as ColorItem);
+        const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem.definition, colorItem.color);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
         });
     }
-        process_PAINTER_DOUBLE(payload: ProcessorImplementationPayload): any {
-        const shapeItem1: any = (payload.items.get(0) as ShapeItem);
-        const shapeItem2: any = (payload.items.get(1) as ShapeItem);
-        const colorItem: any = (payload.items.get(2) as ColorItem);
+        process_PAINTER_DOUBLE(payload: ProcessorImplementationPayload) {
+        const shapeItem1 = payload.items.get(0) as ShapeItem);
+        const shapeItem2 = payload.items.get(1) as ShapeItem);
+        const colorItem = payload.items.get(2) as ColorItem);
         assert(shapeItem1 instanceof ShapeItem, "Input for painter is not a shape");
         assert(shapeItem2 instanceof ShapeItem, "Input for painter is not a shape");
         assert(colorItem instanceof ColorItem, "Input for painter is not a color");
-        const colorizedDefinition1: any = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem1.definition, colorItem.color);
-        const colorizedDefinition2: any = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem2.definition, colorItem.color);
+        const colorizedDefinition1 = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem1.definition, colorItem.color);
+        const colorizedDefinition2 = this.root.shapeDefinitionMgr.shapeActionPaintWith(shapeItem2.definition, colorItem.color);
         payload.outItems.push({
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition1),
         });
@@ -403,17 +403,17 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition2),
         });
     }
-        process_PAINTER_QUAD(payload: ProcessorImplementationPayload): any {
-        const shapeItem: any = (payload.items.get(0) as ShapeItem);
+        process_PAINTER_QUAD(payload: ProcessorImplementationPayload) {
+        const shapeItem = payload.items.get(0) as ShapeItem);
         assert(shapeItem instanceof ShapeItem, "Input for painter is not a shape");
                 const colors: Array<enumColors> = [null, null, null, null];
-        for (let i: any = 0; i < 4; ++i) {
-            const colorItem: any = (payload.items.get(i + 1) as ColorItem);
+        for (let i = 0; i < 4; ++i) {
+            const colorItem = payload.items.get(i + 1) as ColorItem);
             if (colorItem) {
                 colors[i] = colorItem.color;
             }
         }
-        const colorizedDefinition: any = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(shapeItem.definition, 
+        const colorizedDefinition = this.root.shapeDefinitionMgr.shapeActionPaintWith4Colors(shapeItem.definition, 
         colors as [
             string,
             string,
@@ -424,34 +424,34 @@ export class ItemProcessorSystem extends GameSystemWithFilter {
             item: this.root.shapeDefinitionMgr.getShapeItemFromDefinition(colorizedDefinition),
         });
     }
-        process_READER(payload: ProcessorImplementationPayload): any {
+        process_READER(payload: ProcessorImplementationPayload) {
         // Pass through the item
-        const item: any = payload.items.get(0);
+        const item = payload.items.get(0);
         payload.outItems.push({
             item,
             doNotTrack: true,
         });
         // Track the item
-        const readerComp: any = payload.entity.components.BeltReader;
+        const readerComp = payload.entity.components.BeltReader;
         readerComp.lastItemTimes.push(this.root.time.now());
         readerComp.lastItem = item;
     }
-        process_HUB(payload: ProcessorImplementationPayload): any {
-        const hubComponent: any = payload.entity.components.Hub;
+        process_HUB(payload: ProcessorImplementationPayload) {
+        const hubComponent = payload.entity.components.Hub;
         assert(hubComponent, "Hub item processor has no hub component");
         // Hardcoded
-        for (let i: any = 0; i < payload.inputCount; ++i) {
-            const item: any = (payload.items.get(i) as ShapeItem);
+        for (let i = 0; i < payload.inputCount; ++i) {
+            const item = payload.items.get(i) as ShapeItem);
             if (!item) {
                 continue;
             }
             this.root.hubGoals.handleDefinitionDelivered(item.definition);
         }
     }
-        process_GOAL(payload: ProcessorImplementationPayload): any {
-        const goalComp: any = payload.entity.components.GoalAcceptor;
-        const item: any = payload.items.get(0);
-        const now: any = this.root.time.now();
+        process_GOAL(payload: ProcessorImplementationPayload) {
+        const goalComp = payload.entity.components.GoalAcceptor;
+        const item = payload.items.get(0);
+        const now = this.root.time.now();
         if (goalComp.item && !item.equals(goalComp.item)) {
             goalComp.clearItems();
         }

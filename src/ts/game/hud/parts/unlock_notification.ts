@@ -11,7 +11,7 @@ import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { enumNotificationType } from "./notifications";
 export class HUDUnlockNotification extends BaseHUDPart {
-    initialize(): any {
+    initialize() {
         this.visible = false;
         this.domAttach = new DynamicDomAttach(this.root, this.element, {
             timeToKeepSeconds: 0,
@@ -22,13 +22,13 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.buttonShowTimeout = null;
         this.root.app.gameAnalytics.noteMinor("game.started");
     }
-    shouldPauseGame(): any {
+    shouldPauseGame() {
         return !G_IS_STANDALONE && this.visible;
     }
-    createElements(parent: any): any {
+    createElements(parent) {
         this.inputReciever = new InputReceiver("unlock-notification");
         this.element = makeDiv(parent, "ingame_HUD_UnlockNotification", ["noBlur"]);
-        const dialog: any = makeDiv(this.element, null, ["dialog"]);
+        const dialog = makeDiv(this.element, null, ["dialog"]);
         this.elemTitle = makeDiv(dialog, null, ["title"]);
         this.elemSubTitle = makeDiv(dialog, null, ["subTitle"], T.ingame.levelCompleteNotification.completed);
         this.elemContents = makeDiv(dialog, null, ["contents"]);
@@ -38,9 +38,9 @@ export class HUDUnlockNotification extends BaseHUDPart {
         dialog.appendChild(this.btnClose);
         this.trackClicks(this.btnClose, this.requestClose);
     }
-        showForLevel(level: number, reward: enumHubGoalRewards): any {
+        showForLevel(level: number, reward: enumHubGoalRewards) {
         this.root.soundProxy.playUi(SOUNDS.levelComplete);
-        const levels: any = this.root.gameMode.getLevelDefinitions();
+        const levels = this.root.gameMode.getLevelDefinitions();
         // Don't use getIsFreeplay() because we want the freeplay level up to show
         if (level > levels.length) {
             this.root.hud.signals.notification.dispatch(T.ingame.notifications.freeplayLevelComplete.replace("<level>", String(level)), enumNotificationType.success);
@@ -49,8 +49,8 @@ export class HUDUnlockNotification extends BaseHUDPart {
         this.root.app.gameAnalytics.noteMinor("game.level.complete-" + level);
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.elemTitle.innerText = T.ingame.levelCompleteNotification.levelTitle.replace("<level>", ("" + level).padStart(2, "0"));
-        const rewardName: any = T.storyRewards[reward].title;
-        let html: any = `
+        const rewardName = T.storyRewards[reward].title;
+        let html = `
         <div class="rewardName">
             ${T.ingame.levelCompleteNotification.unlockText.replace("<reward>", rewardName)}
         </div>
@@ -61,10 +61,10 @@ export class HUDUnlockNotification extends BaseHUDPart {
 
         `;
         html += "<div class='images'>";
-        const gained: any = enumHubGoalRewardsToContentUnlocked[reward];
+        const gained = enumHubGoalRewardsToContentUnlocked[reward];
         if (gained) {
-            gained.forEach(([metaBuildingClass, variant]: any): any => {
-                const metaBuilding: any = gMetaBuildingRegistry.findByClass(metaBuildingClass);
+            gained.forEach(([metaBuildingClass, variant]) => {
+                const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
                 html += `<div class="buildingExplanation" data-icon="building_tutorials/${metaBuilding.getId() + (variant === defaultBuildingVariant ? "" : "-" + variant)}.png"></div>`;
             });
         }
@@ -76,24 +76,24 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
         this.element.querySelector("button.close").classList.remove("unlocked");
         if (this.root.app.settings.getAllSettings().offerHints) {
-            this.buttonShowTimeout = setTimeout((): any => this.element.querySelector("button.close").classList.add("unlocked"), G_IS_DEV ? 100 : 1500);
+            this.buttonShowTimeout = setTimeout(() => this.element.querySelector("button.close").classList.add("unlocked"), G_IS_DEV ? 100 : 1500);
         }
         else {
             this.element.querySelector("button.close").classList.add("unlocked");
         }
     }
-    cleanup(): any {
+    cleanup() {
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         if (this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);
             this.buttonShowTimeout = null;
         }
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.visible;
     }
-    requestClose(): any {
-        this.root.app.adProvider.showVideoAd().then((): any => {
+    requestClose() {
+        this.root.app.adProvider.showVideoAd().then(() => {
             this.close();
             this.root.hud.signals.unlockNotificationFinished.dispatch();
             if (this.root.hubGoals.level > this.root.gameMode.getLevelDefinitions().length - 1 &&
@@ -104,16 +104,16 @@ export class HUDUnlockNotification extends BaseHUDPart {
                 return;
             }
             if (this.root.hubGoals.level === 3) {
-                const { showUpgrades }: any = this.root.hud.parts.dialogs.showInfo(T.dialogs.upgradesIntroduction.title, T.dialogs.upgradesIntroduction.desc, ["showUpgrades:good:timeout"]);
-                showUpgrades.add((): any => this.root.hud.parts.shop.show());
+                const { showUpgrades } = this.root.hud.parts.dialogs.showInfo(T.dialogs.upgradesIntroduction.title, T.dialogs.upgradesIntroduction.desc, ["showUpgrades:good:timeout"]);
+                showUpgrades.add(() => this.root.hud.parts.shop.show());
             }
             if (this.root.hubGoals.level === 5) {
-                const { showKeybindings }: any = this.root.hud.parts.dialogs.showInfo(T.dialogs.keybindingsIntroduction.title, T.dialogs.keybindingsIntroduction.desc, ["showKeybindings:misc", "ok:good:timeout"]);
-                showKeybindings.add((): any => this.root.gameState.goToKeybindings());
+                const { showKeybindings } = this.root.hud.parts.dialogs.showInfo(T.dialogs.keybindingsIntroduction.title, T.dialogs.keybindingsIntroduction.desc, ["showKeybindings:misc", "ok:good:timeout"]);
+                showKeybindings.add(() => this.root.gameState.goToKeybindings());
             }
         });
     }
-    close(): any {
+    close() {
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         if (this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);
@@ -121,7 +121,7 @@ export class HUDUnlockNotification extends BaseHUDPart {
         }
         this.visible = false;
     }
-    update(): any {
+    update() {
         this.domAttach.update(this.visible);
         if (!this.visible && this.buttonShowTimeout) {
             clearTimeout(this.buttonShowTimeout);

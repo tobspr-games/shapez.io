@@ -4,16 +4,16 @@ import { Vector } from "../core/vector";
 import { getBuildingDataFromCode } from "../game/building_codes";
 import { Entity } from "../game/entity";
 import { GameRoot } from "../game/root";
-const logger: any = createLogger("serializer_internal");
+const logger = createLogger("serializer_internal");
 // Internal serializer methods
 export class SerializerInternal {
     /**
      * Serializes an array of entities
      */
-    serializeEntityArray(array: Array<Entity>): any {
-        const serialized: any = [];
-        for (let i: any = 0; i < array.length; ++i) {
-            const entity: any = array[i];
+    serializeEntityArray(array: Array<Entity>) {
+        const serialized = [];
+        for (let i = 0; i < array.length; ++i) {
+            const entity = array[i];
             if (!entity.queuedForDestroy && !entity.destroyed) {
                 serialized.push(entity.serialize());
             }
@@ -25,17 +25,17 @@ export class SerializerInternal {
      * {}
      */
     deserializeEntityArray(root: GameRoot, array: Array<Entity>): string | void {
-        for (let i: any = 0; i < array.length; ++i) {
+        for (let i = 0; i < array.length; ++i) {
             this.deserializeEntity(root, array[i]);
         }
     }
-        deserializeEntity(root: GameRoot, payload: Entity): any {
-        const staticData: any = payload.components.StaticMapEntity;
+        deserializeEntity(root: GameRoot, payload: Entity) {
+        const staticData = payload.components.StaticMapEntity;
         assert(staticData, "entity has no static data");
-        const code: any = staticData.code;
-        const data: any = getBuildingDataFromCode(code);
-        const metaBuilding: any = data.metaInstance;
-        const entity: any = metaBuilding.createEntity({
+        const code = staticData.code;
+        const data = getBuildingDataFromCode(code);
+        const metaBuilding = data.metaInstance;
+        const entity = metaBuilding.createEntity({
             root,
             origin: Vector.fromSerializedObject(staticData.origin),
             rotation: staticData.rotation,
@@ -56,7 +56,7 @@ export class SerializerInternal {
     deserializeComponents(root: GameRoot, entity: Entity, data: {
         [idx: string]: any;
     }): string | void {
-        for (const componentId: any in data) {
+        for (const componentId in data) {
             if (!entity.components[componentId]) {
                 if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
                     // @ts-ignore
@@ -66,7 +66,7 @@ export class SerializerInternal {
                 }
                 continue;
             }
-            const errorStatus: any = entity.components[componentId].deserialize(data[componentId], root);
+            const errorStatus = entity.components[componentId].deserialize(data[componentId], root);
             if (errorStatus) {
                 return errorStatus;
             }

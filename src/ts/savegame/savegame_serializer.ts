@@ -9,7 +9,7 @@ export type Entity = import("../game/entity").Entity;
 export type GameRoot = import("../game/root").GameRoot;
 export type SerializedGame = import("./savegame_typedefs").SerializedGame;
 
-const logger: any = createLogger("savegame_serializer");
+const logger = createLogger("savegame_serializer");
 /**
  * Serializes a savegame
  */
@@ -40,7 +40,7 @@ export class SavegameSerializer {
         if (G_IS_DEV) {
             if (sanityChecks) {
                 // Sanity check
-                const sanity: any = this.verifyLogicalErrors(data);
+                const sanity = this.verifyLogicalErrors(data);
                 if (!sanity.result) {
                     logger.error("Created invalid savegame:", sanity.reason, "savegame:", data);
                     return null;
@@ -57,11 +57,11 @@ export class SavegameSerializer {
         if (!savegame.entities) {
             return ExplainedResult.bad("Savegame has no entities");
         }
-        const seenUids: any = new Set();
+        const seenUids = new Set();
         // Check for duplicate UIDS
-        for (let i: any = 0; i < savegame.entities.length; ++i) {
+        for (let i = 0; i < savegame.entities.length; ++i) {
                         const entity: Entity = savegame.entities[i];
-            const uid: any = entity.uid;
+            const uid = entity.uid;
             if (!Number.isInteger(uid)) {
                 return ExplainedResult.bad("Entity has invalid uid: " + uid);
             }
@@ -73,16 +73,16 @@ export class SavegameSerializer {
             if (!entity.components) {
                 return ExplainedResult.bad("Entity is missing key 'components': " + JSON.stringify(entity));
             }
-            const components: any = entity.components;
-            for (const componentId: any in components) {
-                const componentClass: any = gComponentRegistry.findById(componentId);
+            const components = entity.components;
+            for (const componentId in components) {
+                const componentClass = gComponentRegistry.findById(componentId);
                 // Check component id is known
                 if (!componentClass) {
                     return ExplainedResult.bad("Unknown component id: " + componentId);
                 }
                 // Verify component data
-                const componentData: any = components[componentId];
-                const componentVerifyError: any = (componentClass as StaticComponent).verify(componentData);
+                const componentData = components[componentId];
+                const componentVerifyError = componentClass as StaticComponent).verify(componentData);
                 // Check component data is ok
                 if (componentVerifyError) {
                     return ExplainedResult.bad("Component " + componentId + " has invalid data: " + componentVerifyError);
@@ -97,11 +97,11 @@ export class SavegameSerializer {
      */
     deserialize(savegame: SerializedGame, root: GameRoot): ExplainedResult {
         // Sanity
-        const verifyResult: any = this.verifyLogicalErrors(savegame);
+        const verifyResult = this.verifyLogicalErrors(savegame);
         if (!verifyResult.result) {
             return ExplainedResult.bad(verifyResult.reason);
         }
-        let errorReason: any = null;
+        let errorReason = null;
         errorReason = errorReason || root.entityMgr.deserialize(savegame.entityMgr);
         errorReason = errorReason || root.time.deserialize(savegame.time);
         errorReason = errorReason || root.camera.deserialize(savegame.camera);

@@ -16,7 +16,7 @@ import { SavegameInterface_V1008 } from "./schemas/1008";
 import { SavegameInterface_V1009 } from "./schemas/1009";
 import { MODS } from "../mods/modloader";
 import { SavegameInterface_V1010 } from "./schemas/1010";
-const logger: any = createLogger("savegame");
+const logger = createLogger("savegame");
 export type Application = import("../application").Application;
 export type GameRoot = import("../game/root").GameRoot;
 export type SavegameData = import("./savegame_typedefs").SavegameData;
@@ -82,7 +82,7 @@ export class Savegame extends ReadWriteProxy {
      * @param {Application} app
      * @returns
      */
-    static createPuzzleSavegame(app: Application): any {
+    static createPuzzleSavegame(app: Application) {
         return new Savegame(app, {
             internalId: "puzzle",
             metaDataRef: {
@@ -121,7 +121,7 @@ export class Savegame extends ReadWriteProxy {
     /**
      * Migrates the savegames data
      */
-    migrate(data: SavegameData): any {
+    migrate(data: SavegameData) {
         if (data.version < 1000) {
             return ExplainedResult.bad("Can not migrate savegame, too old");
         }
@@ -170,7 +170,7 @@ export class Savegame extends ReadWriteProxy {
     /**
      * Verifies the savegames data
      */
-    verify(data: SavegameData): any {
+    verify(data: SavegameData) {
         if (!data.dump) {
             // Well, guess that works
             return ExplainedResult.good();
@@ -199,13 +199,13 @@ export class Savegame extends ReadWriteProxy {
      * Returns the *real* last update of the savegame, not the one of the metadata
      * which could also be the servers one
      */
-    getRealLastUpdate(): any {
+    getRealLastUpdate() {
         return this.currentData.lastUpdate;
     }
     /**
      * Returns if this game has a serialized game dump
      */
-    hasGameDump(): any {
+    hasGameDump() {
         return !!this.currentData.dump && this.currentData.dump.entities.length > 0;
     }
     /**
@@ -224,14 +224,14 @@ export class Savegame extends ReadWriteProxy {
             logger.warn("Getting reader on null-savegame dump");
         }
 
-        const cls: any = (this.constructor as typeof Savegame).getReaderClass();
+        const cls = this.constructor as typeof Savegame).getReaderClass();
         return new cls(this.currentData);
     }
     /**
      * Returns a reader to access external data
      * {}
      */
-    getDumpReaderForExternalData(data: any): BaseSavegameInterface {
+    getDumpReaderForExternalData(data): BaseSavegameInterface {
         assert(data.version, "External data contains no version");
         return getSavegameInterface(data);
     }
@@ -240,26 +240,26 @@ export class Savegame extends ReadWriteProxy {
      * Updates the last update field so we can send the savegame to the server,
      * WITHOUT Saving!
      */
-    setLastUpdate(time: any): any {
+    setLastUpdate(time) {
         this.currentData.lastUpdate = time;
     }
-        updateData(root: GameRoot): any {
+        updateData(root: GameRoot) {
         // Construct a new serializer
-        const serializer: any = new SavegameSerializer();
+        const serializer = new SavegameSerializer();
         // let timer = performance.now();
-        const dump: any = serializer.generateDumpFromGameRoot(root);
+        const dump = serializer.generateDumpFromGameRoot(root);
         if (!dump) {
             return false;
         }
-        const shadowData: any = Object.assign({}, this.currentData);
+        const shadowData = Object.assign({}, this.currentData);
         shadowData.dump = dump;
         shadowData.lastUpdate = new Date().getTime();
         shadowData.version = this.getCurrentVersion();
         shadowData.mods = MODS.getModsListForSavegame();
-        const reader: any = this.getDumpReaderForExternalData(shadowData);
+        const reader = this.getDumpReaderForExternalData(shadowData);
         // Validate (not in prod though)
         if (!G_IS_RELEASE) {
-            const validationResult: any = reader.validate();
+            const validationResult = reader.validate();
             if (!validationResult) {
                 return false;
             }
@@ -270,13 +270,13 @@ export class Savegame extends ReadWriteProxy {
     /**
      * Writes the savegame as well as its metadata
      */
-    writeSavegameAndMetadata(): any {
-        return this.writeAsync().then((): any => this.saveMetadata());
+    writeSavegameAndMetadata() {
+        return this.writeAsync().then(() => this.saveMetadata());
     }
     /**
      * Updates the savegames metadata
      */
-    saveMetadata(): any {
+    saveMetadata() {
         this.metaDataRef.lastUpdate = new Date().getTime();
         this.metaDataRef.version = this.getCurrentVersion();
         if (!this.hasGameDump()) {

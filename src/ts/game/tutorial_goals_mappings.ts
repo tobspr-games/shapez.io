@@ -24,12 +24,12 @@ import { enumHubGoalRewards } from "./tutorial_goals";
  * Helper method for proper types
  *  {}
  */
-const typed: any = (x: any): TutorialGoalReward => x;
+const typed = (x): TutorialGoalReward => x;
 /**
  * Stores which reward unlocks what
  * @enum {TutorialGoalReward?}
  */
-export const enumHubGoalRewardsToContentUnlocked: any = {
+export const enumHubGoalRewardsToContentUnlocked = {
     [enumHubGoalRewards.reward_cutter_and_trash]: typed([[MetaCutterBuilding, defaultBuildingVariant]]),
     [enumHubGoalRewards.reward_rotater]: typed([[MetaRotaterBuilding, defaultBuildingVariant]]),
     [enumHubGoalRewards.reward_painter]: typed([[MetaPainterBuilding, defaultBuildingVariant]]),
@@ -67,12 +67,12 @@ export const enumHubGoalRewardsToContentUnlocked: any = {
 };
 if (G_IS_DEV) {
     // Sanity check
-    for (const rewardId: any in enumHubGoalRewards) {
-        const mapping: any = enumHubGoalRewardsToContentUnlocked[rewardId];
+    for (const rewardId in enumHubGoalRewards) {
+        const mapping = enumHubGoalRewardsToContentUnlocked[rewardId];
         if (typeof mapping === "undefined") {
             assertAlways(false, "Please define a mapping for the reward " + rewardId + " in tutorial_goals_mappings.js");
         }
-        const translation: any = T.storyRewards[rewardId];
+        const translation = T.storyRewards[rewardId];
         if (!translation || !translation.title || !translation.desc) {
             assertAlways(false, "Translation for reward " + rewardId + "missing");
         }

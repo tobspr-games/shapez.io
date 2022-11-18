@@ -6,7 +6,7 @@ import type { InGameState } from "../states/ingame";
 /* typehints:end */
 import { Signal } from "../core/signal";
 // Single file to avoid circular deps
-export const MOD_SIGNALS: any = {
+export const MOD_SIGNALS = {
     // Called when the application has booted and instances like the app settings etc are available
     appBooted: new Signal(),
     modifyLevelDefinitions: new Signal() as TypedSignal<[

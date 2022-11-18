@@ -5,9 +5,9 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 import { T } from "../../../translations";
-const tutorialVideos: any = [3, 4, 5, 6, 7, 9, 10, 11];
+const tutorialVideos = [3, 4, 5, 6, 7, 9, 10, 11];
 export class HUDPartTutorialHints extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_TutorialHints", [], `
         <div class="header">
             <span>${T.ingame.tutorialHints.title}</span>
@@ -23,10 +23,10 @@ export class HUDPartTutorialHints extends BaseHUDPart {
         `);
         this.videoElement = this.element.querySelector("video");
     }
-    shouldPauseGame(): any {
+    shouldPauseGame() {
         return this.enlarged;
     }
-    initialize(): any {
+    initialize() {
         this.trackClicks(this.element.querySelector(".toggleHint"), this.toggleHintEnlarged);
         this.videoAttach = new DynamicDomAttach(this.root, this.videoElement, {
             timeToKeepSeconds: 0.3,
@@ -39,7 +39,7 @@ export class HUDPartTutorialHints extends BaseHUDPart {
         this.domAttach = new DynamicDomAttach(this.root, this.element);
         this.currentShownLevel = new TrackedState(this.updateVideoUrl, this);
     }
-    updateVideoUrl(level: any): any {
+    updateVideoUrl(level) {
         if (tutorialVideos.indexOf(level) < 0) {
             this.videoElement.querySelector("source").setAttribute("src", "");
             this.videoElement.pause();
@@ -52,13 +52,13 @@ export class HUDPartTutorialHints extends BaseHUDPart {
             this.videoElement.load();
         }
     }
-    close(): any {
+    close() {
         this.enlarged = false;
         this.element.classList.remove("enlarged", "noBlur");
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
-    show(): any {
+    show() {
         this.element.classList.add("enlarged", "noBlur");
         this.enlarged = true;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
@@ -66,13 +66,13 @@ export class HUDPartTutorialHints extends BaseHUDPart {
         this.videoElement.currentTime = 0;
         this.videoElement.play();
     }
-    update(): any {
+    update() {
         this.videoAttach.update(this.enlarged);
         this.currentShownLevel.set(this.root.hubGoals.level);
-        const tutorialVisible: any = tutorialVideos.indexOf(this.root.hubGoals.level) >= 0;
+        const tutorialVisible = tutorialVideos.indexOf(this.root.hubGoals.level) >= 0;
         this.domAttach.update(tutorialVisible);
     }
-    toggleHintEnlarged(): any {
+    toggleHintEnlarged() {
         if (this.enlarged) {
             this.close();
         }

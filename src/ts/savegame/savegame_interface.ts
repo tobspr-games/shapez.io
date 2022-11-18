@@ -1,18 +1,18 @@
 import { createLogger } from "../core/logging";
-const Ajv: any = require("ajv");
-const ajv: any = new Ajv({
+const Ajv = require("ajv");
+const ajv = new Ajv({
     allErrors: false,
     uniqueItems: false,
     unicode: false,
     nullable: false,
 });
-const validators: any = {};
-const logger: any = createLogger("savegame_interface");
+const validators = {};
+const logger = createLogger("savegame_interface");
 export class BaseSavegameInterface {
     /**
      * Returns the interfaces version
      */
-    getVersion(): any {
+    getVersion() {
         throw new Error("Implement get version");
     }
     /**
@@ -22,17 +22,17 @@ export class BaseSavegameInterface {
     getSchemaUncached(): object {
         throw new Error("Implement get schema");
     }
-    getValidator(): any {
-        const version: any = this.getVersion();
+    getValidator() {
+        const version = this.getVersion();
         if (validators[version]) {
             return validators[version];
         }
         logger.log("Compiling schema for savegame version", version);
-        const schema: any = this.getSchemaUncached();
+        const schema = this.getSchemaUncached();
         try {
             validators[version] = ajv.compile(schema);
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.error("SCHEMA FOR", this.getVersion(), "IS INVALID!");
             logger.error(ex);
             throw new Error("Invalid schema for version " + version);
@@ -51,7 +51,7 @@ export class BaseSavegameInterface {
      * {}
      */
     validate(): boolean {
-        const validator: any = this.getValidator();
+        const validator = this.getValidator();
         if (!validator(this.data)) {
             logger.error("Savegame failed validation! ErrorText:", ajv.errorsText(validator.errors), "RawErrors:", validator.errors);
             return false;

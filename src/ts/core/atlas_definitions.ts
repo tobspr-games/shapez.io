@@ -34,7 +34,7 @@ export class AtlasDefinition {
 
         constructor({ frames, meta }) {
     }
-    getFullSourcePath(): any {
+    getFullSourcePath() {
         return this.sourceFileName;
     }
 }
@@ -42,6 +42,6 @@ export const atlasFiles: AtlasDefinition[] = require
     // @ts-ignore
     .context("../../../res_built/atlas/", false, /.*\.json/i)
     .keys()
-    .map((f: any): any => f.replace(/^\.\//gi, ""))
-    .map((f: any): any => require("../../../res_built/atlas/" + f))
-    .map((data: any): any => new AtlasDefinition(data));
+    .map(f => f.replace(/^\.\//gi, ""))
+    .map(f => require("../../../res_built/atlas/" + f))
+    .map(data => new AtlasDefinition(data));

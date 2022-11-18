@@ -1,6 +1,6 @@
 import { Component } from "../component";
 export class DisplayComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Display";
     }
 }

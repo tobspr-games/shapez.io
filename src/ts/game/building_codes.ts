@@ -30,7 +30,7 @@ const variantsCache: Map<string, number | string> = new Map();
 /**
  * Registers a new variant
  */
-export function registerBuildingVariant(code: number | string, meta: typeof MetaBuilding, variant: string = "default" /* @TODO: Circular dependency, actually its defaultBuildingVariant */, rotationVariant: number = 0): any {
+export function registerBuildingVariant(code: number | string, meta: typeof MetaBuilding, variant: string = "default" /* @TODO: Circular dependency, actually its defaultBuildingVariant */, rotationVariant: number = 0) {
     assert(!gBuildingVariants[code], "Duplicate id: " + code);
     gBuildingVariants[code] = {
         metaClass: meta,
@@ -166,7 +166,7 @@ functiorateBuildingHash(build string, variant: strin
  * @param {number} rotationVariant
  * @returns
  */
-function generateBuildingHash(buildingId: string, variant: string, rotationVariant: number): any {
+function generateBuildingHash(buildingId: string, variant: string, rotationVariant: number) {
     return buildingId + "/" + variant + "/" + rotationVariant;
 }
 /**
@@ -180,10 +180,10 @@ export function getBuildingDataFromCode(code: string | number): BuildingVariantI
 /**
  * Builds the cache for the codes
  */
-export function buildBuildingCodeCache(): any {
-    for (const code: any in gBuildingVariants) {
-        const data: any = gBuildingVariants[code];
-        const hash: any = generateBuildingHash(data.metaInstance.getId(), data.variant, data.rotationVariant);
+export function buildBuildingCodeCache() {
+    for (const code in gBuildingVariants) {
+        const data = gBuildingVariants[code];
+        const hash = generateBuildingHash(data.metaInstance.getId(), data.variant, data.rotationVariant);
         variantsCache.set(hash, isNaN(+code) ? code : +code);
     }
 }
@@ -192,8 +192,8 @@ export function buildBuildingCodeCache(): any {
  * {}
  */
 export function getCodeFromBuildingData(metaBuilding: MetaBuilding, variant: string, rotationVariant: number): number | string {
-    const hash: any = generateBuildingHash(metaBuilding.getId(), variant, rotationVariant);
-    const result: any = variantsCache.get(hash);
+    const hash = generateBuildingHash(metaBuilding.getId(), variant, rotationVariant);
+    const result = variantsCache.get(hash);
     if (G_IS_DEV) {
         if (!result) {
             console.warn("Known hashes:", Array.from(variantsCache.keys()));

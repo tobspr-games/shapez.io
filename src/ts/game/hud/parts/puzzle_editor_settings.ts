@@ -10,12 +10,12 @@ import { MetaGoalAcceptorBuilding } from "../../buildings/goal_acceptor";
 import { StaticMapEntityComponent } from "../../components/static_map_entity";
 import { PuzzleGameMode } from "../../modes/puzzle";
 import { BaseHUDPart } from "../base_hud_part";
-const logger: any = createLogger("puzzle-editor");
+const logger = createLogger("puzzle-editor");
 export class HUDPuzzleEditorSettings extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.element = makeDiv(parent, "ingame_HUD_PuzzleEditorSettings");
         if (this.root.gameMode.getBuildableZones()) {
-            const bind: any = (selector: any, handler: any): any => this.trackClicks(this.element.querySelector(selector), handler);
+            const bind = (selector, handler) => this.trackClicks(this.element.querySelector(selector), handler);
             this.zone = makeDiv(this.element, null, ["section", "zone"], `
                 <label>${T.ingame.puzzleEditorSettings.zoneTitle}</label>
 
@@ -44,27 +44,27 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                     </div>
 
                 </div>`);
-            bind(".zoneWidth .minus", (): any => this.modifyZone(-1, 0));
-            bind(".zoneWidth .plus", (): any => this.modifyZone(1, 0));
-            bind(".zoneHeight .minus", (): any => this.modifyZone(0, -1));
-            bind(".zoneHeight .plus", (): any => this.modifyZone(0, 1));
+            bind(".zoneWidth .minus", () => this.modifyZone(-1, 0));
+            bind(".zoneWidth .plus", () => this.modifyZone(1, 0));
+            bind(".zoneHeight .minus", () => this.modifyZone(0, -1));
+            bind(".zoneHeight .plus", () => this.modifyZone(0, 1));
             bind("button.trim", this.trim);
             bind("button.clearItems", this.clearItems);
             bind("button.resetPuzzle", this.resetPuzzle);
         }
     }
-    clearItems(): any {
+    clearItems() {
         this.root.logic.clearAllBeltsAndItems();
     }
-    resetPuzzle(): any {
-        for (const entity: any of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
-            const staticComp: any = entity.components.StaticMapEntity;
-            const goalComp: any = entity.components.GoalAcceptor;
+    resetPuzzle() {
+        for (const entity of this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
+            const goalComp = entity.components.GoalAcceptor;
             if (goalComp) {
                 goalComp.clear();
             }
             if ([MetaGoalAcceptorBuilding, MetaConstantProducerBuilding, MetaBlockBuilding]
-                .map((metaClass: any): any => gMetaBuildingRegistry.findByClass(metaClass).id)
+                .map(metaClass => gMetaBuildingRegistry.findByClass(metaClass).id)
                 .includes(staticComp.getMetaBuilding().id)) {
                 continue;
             }
@@ -73,17 +73,17 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         }
         this.root.entityMgr.processDestroyList();
     }
-    trim(): any {
+    trim() {
         // Now, find the center
-        const buildings: any = this.root.entityMgr.entities.slice();
+        const buildings = this.root.entityMgr.entities.slice();
         if (buildings.length === 0) {
             // nothing to do
             return;
         }
-        let minRect: any = null;
-        for (const building: any of buildings) {
-            const staticComp: any = building.components.StaticMapEntity;
-            const bounds: any = staticComp.getTileSpaceBounds();
+        let minRect = null;
+        for (const building of buildings) {
+            const staticComp = building.components.StaticMapEntity;
+            const bounds = staticComp.getTileSpaceBounds();
             if (!minRect) {
                 minRect = bounds;
             }
@@ -91,8 +91,8 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                 minRect = minRect.getUnion(bounds);
             }
         }
-        const mode: any = (this.root.gameMode as PuzzleGameMode);
-        const moveByInverse: any = minRect.getCenter().round();
+        const mode = this.root.gameMode as PuzzleGameMode);
+        const moveByInverse = minRect.getCenter().round();
         // move buildings
         if (moveByInverse.length() > 0) {
             // increase area size
@@ -100,17 +100,17 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             mode.zoneHeight = globalConfig.puzzleMaxBoundsSize;
             // First, remove any items etc
             this.root.logic.clearAllBeltsAndItems();
-            this.root.logic.performImmutableOperation((): any => {
+            this.root.logic.performImmutableOperation(() => {
                 // 1. remove all buildings
-                for (const building: any of buildings) {
+                for (const building of buildings) {
                     if (!this.root.logic.tryDeleteBuilding(building)) {
                         assertAlways(false, "Failed to remove building in trim");
                     }
                 }
                 // 2. place them again, but centered
-                for (const building: any of buildings) {
-                    const staticComp: any = building.components.StaticMapEntity;
-                    const result: any = this.root.logic.tryPlaceBuilding({
+                for (const building of buildings) {
+                    const staticComp = building.components.StaticMapEntity;
+                    const result = this.root.logic.tryPlaceBuilding({
                         origin: staticComp.origin.sub(moveByInverse),
                         building: staticComp.getMetaBuilding(),
                         originalRotation: staticComp.originalRotation,
@@ -122,7 +122,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
                         this.root.bulkOperationRunning = false;
                         assertAlways(false, "Failed to re-place building in trim");
                     }
-                    for (const key: any in building.components) {
+                    for (const key in building.components) {
                         building
                             .components[key] as import("../../../core/global_registries").Component).copyAdditionalStateTo(result.components[key]);
                     }
@@ -130,8 +130,8 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
             });
         }
         // 3. Actually trim
-        let w: any = mode.zoneWidth;
-        let h: any = mode.zoneHeight;
+        let w = mode.zoneWidth;
+        let h = mode.zoneHeight;
         while (!this.anyBuildingOutsideZone(w - 1, h)) {
             --w;
         }
@@ -142,28 +142,28 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         mode.zoneHeight = h;
         this.updateZoneValues();
     }
-    initialize(): any {
+    initialize() {
         this.visible = true;
         this.updateZoneValues();
     }
-    anyBuildingOutsideZone(width: any, height: any): any {
+    anyBuildingOutsideZone(width, height) {
         if (Math.min(width, height) < globalConfig.puzzleMinBoundsSize) {
             return true;
         }
-        const newZone: any = Rectangle.centered(width, height);
-        const entities: any = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
-        for (const entity: any of entities) {
-            const staticComp: any = entity.components.StaticMapEntity;
-            const bounds: any = staticComp.getTileSpaceBounds();
+        const newZone = Rectangle.centered(width, height);
+        const entities = this.root.entityMgr.getAllWithComponent(StaticMapEntityComponent);
+        for (const entity of entities) {
+            const staticComp = entity.components.StaticMapEntity;
+            const bounds = staticComp.getTileSpaceBounds();
             if (!newZone.intersectsFully(bounds)) {
                 return true;
             }
         }
     }
-    modifyZone(deltaW: any, deltaH: any): any {
-        const mode: any = (this.root.gameMode as PuzzleGameMode);
-        const newWidth: any = mode.zoneWidth + deltaW;
-        const newHeight: any = mode.zoneHeight + deltaH;
+    modifyZone(deltaW, deltaH) {
+        const mode = this.root.gameMode as PuzzleGameMode);
+        const newWidth = mode.zoneWidth + deltaW;
+        const newHeight = mode.zoneHeight + deltaH;
         if (Math.min(newWidth, newHeight) < globalConfig.puzzleMinBoundsSize) {
             return;
         }
@@ -178,8 +178,8 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
         mode.zoneHeight = newHeight;
         this.updateZoneValues();
     }
-    updateZoneValues(): any {
-        const mode: any = (this.root.gameMode as PuzzleGameMode);
+    updateZoneValues() {
+        const mode = this.root.gameMode as PuzzleGameMode);
         this.element.querySelector(".zoneWidth > .value").textContent = String(mode.zoneWidth);
         this.element.querySelector(".zoneHeight > .value").textContent = String(mode.zoneHeight);
     }

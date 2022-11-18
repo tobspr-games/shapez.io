@@ -7,7 +7,7 @@ import { KeyActionMapper, KEYMAPPINGS } from "../../key_action_mapper";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 export class HUDShop extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.background = makeDiv(parent, "ingame_HUD_Shop", ["ingameDialog"]);
         // DIALOG Inner / Wrapper
         this.dialogInner = makeDiv(this.background, null, ["dialogInner"]);
@@ -17,14 +17,14 @@ export class HUDShop extends BaseHUDPart {
         this.contentDiv = makeDiv(this.dialogInner, null, ["content"]);
         this.upgradeToElements = {};
         // Upgrades
-        for (const upgradeId: any in this.root.gameMode.getUpgrades()) {
-            const handle: any = {};
+        for (const upgradeId in this.root.gameMode.getUpgrades()) {
+            const handle = {};
             handle.requireIndexToElement = [];
             // Wrapper
             handle.elem = makeDiv(this.contentDiv, null, ["upgrade"]);
             handle.elem.setAttribute("data-upgrade-id", upgradeId);
             // Title
-            const title: any = makeDiv(handle.elem, null, ["title"], T.shopUpgrades[upgradeId].name);
+            const title = makeDiv(handle.elem, null, ["title"], T.shopUpgrades[upgradeId].name);
             // Title > Tier
             handle.elemTierLabel = makeDiv(title, null, ["tier"]);
             // Icon
@@ -38,24 +38,24 @@ export class HUDShop extends BaseHUDPart {
             handle.buyButton.classList.add("buy", "styledButton");
             handle.buyButton.innerText = T.ingame.shop.buttonUnlock;
             handle.elem.appendChild(handle.buyButton);
-            this.trackClicks(handle.buyButton, (): any => this.tryUnlockNextTier(upgradeId));
+            this.trackClicks(handle.buyButton, () => this.tryUnlockNextTier(upgradeId));
             // Assign handle
             this.upgradeToElements[upgradeId] = handle;
         }
     }
-    rerenderFull(): any {
-        for (const upgradeId: any in this.upgradeToElements) {
-            const handle: any = this.upgradeToElements[upgradeId];
-            const upgradeTiers: any = this.root.gameMode.getUpgrades()[upgradeId];
-            const currentTier: any = this.root.hubGoals.getUpgradeLevel(upgradeId);
-            const currentTierMultiplier: any = this.root.hubGoals.upgradeImprovements[upgradeId];
-            const tierHandle: any = upgradeTiers[currentTier];
+    rerenderFull() {
+        for (const upgradeId in this.upgradeToElements) {
+            const handle = this.upgradeToElements[upgradeId];
+            const upgradeTiers = this.root.gameMode.getUpgrades()[upgradeId];
+            const currentTier = this.root.hubGoals.getUpgradeLevel(upgradeId);
+            const currentTierMultiplier = this.root.hubGoals.upgradeImprovements[upgradeId];
+            const tierHandle = upgradeTiers[currentTier];
             // Set tier
             handle.elemTierLabel.innerText = T.ingame.shop.tier.replace("<x>", getRomanNumber(currentTier + 1));
             handle.elemTierLabel.setAttribute("data-tier", currentTier);
             // Cleanup detectors
-            for (let i: any = 0; i < handle.requireIndexToElement.length; ++i) {
-                const requiredHandle: any = handle.requireIndexToElement[i];
+            for (let i = 0; i < handle.requireIndexToElement.length; ++i) {
+                const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
                 if (requiredHandle.infoDetector) {
@@ -74,42 +74,42 @@ export class HUDShop extends BaseHUDPart {
             handle.elemDescription.innerText = T.shopUpgrades[upgradeId].description
                 .replace("<currentMult>", currentTierMultiplier.toFixed(2))
                 .replace("<newMult>", (currentTierMultiplier + tierHandle.improvement).toFixed(2));
-            tierHandle.required.forEach(({ shape, amount }: any): any => {
-                const container: any = makeDiv(handle.elemRequirements, null, ["requirement"]);
-                const shapeDef: any = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
-                const shapeCanvas: any = shapeDef.generateAsCanvas(120);
+            tierHandle.required.forEach(({ shape, amount }) => {
+                const container = makeDiv(handle.elemRequirements, null, ["requirement"]);
+                const shapeDef = this.root.shapeDefinitionMgr.getShapeFromShortKey(shape);
+                const shapeCanvas = shapeDef.generateAsCanvas(120);
                 shapeCanvas.classList.add();
                 container.appendChild(shapeCanvas);
-                const progressContainer: any = makeDiv(container, null, ["amount"]);
-                const progressBar: any = document.createElement("label");
+                const progressContainer = makeDiv(container, null, ["amount"]);
+                const progressBar = document.createElement("label");
                 progressBar.classList.add("progressBar");
                 progressContainer.appendChild(progressBar);
-                const progressLabel: any = document.createElement("label");
+                const progressLabel = document.createElement("label");
                 progressContainer.appendChild(progressLabel);
-                const pinButton: any = document.createElement("button");
+                const pinButton = document.createElement("button");
                 pinButton.classList.add("pin");
                 container.appendChild(pinButton);
-                let infoDetector: any;
-                const viewInfoButton: any = document.createElement("button");
+                let infoDetector;
+                const viewInfoButton = document.createElement("button");
                 viewInfoButton.classList.add("showInfo");
                 container.appendChild(viewInfoButton);
                 infoDetector = new ClickDetector(viewInfoButton, {
                     consumeEvents: true,
                     preventDefault: true,
                 });
-                infoDetector.click.add((): any => this.root.hud.signals.viewShapeDetailsRequested.dispatch(shapeDef));
-                const currentGoalShape: any = this.root.hubGoals.currentGoal.definition.getHash();
+                infoDetector.click.add(() => this.root.hud.signals.viewShapeDetailsRequested.dispatch(shapeDef));
+                const currentGoalShape = this.root.hubGoals.currentGoal.definition.getHash();
                 if (shape === currentGoalShape) {
                     pinButton.classList.add("isGoal");
                 }
                 else if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
                     pinButton.classList.add("alreadyPinned");
                 }
-                const pinDetector: any = new ClickDetector(pinButton, {
+                const pinDetector = new ClickDetector(pinButton, {
                     consumeEvents: true,
                     preventDefault: true,
                 });
-                pinDetector.click.add((): any => {
+                pinDetector.click.add(() => {
                     if (this.root.hud.parts.pinnedShapes.isShapePinned(shape)) {
                         this.root.hud.signals.shapeUnpinRequested.dispatch(shape);
                         pinButton.classList.add("unpinned");
@@ -133,13 +133,13 @@ export class HUDShop extends BaseHUDPart {
             });
         }
     }
-    renderCountsAndStatus(): any {
-        for (const upgradeId: any in this.upgradeToElements) {
-            const handle: any = this.upgradeToElements[upgradeId];
-            for (let i: any = 0; i < handle.requireIndexToElement.length; ++i) {
-                const { progressLabel, progressBar, definition, required }: any = handle.requireIndexToElement[i];
-                const haveAmount: any = this.root.hubGoals.getShapesStored(definition);
-                const progress: any = Math.min(haveAmount / required, 1.0);
+    renderCountsAndStatus() {
+        for (const upgradeId in this.upgradeToElements) {
+            const handle = this.upgradeToElements[upgradeId];
+            for (let i = 0; i < handle.requireIndexToElement.length; ++i) {
+                const { progressLabel, progressBar, definition, required } = handle.requireIndexToElement[i];
+                const haveAmount = this.root.hubGoals.getShapesStored(definition);
+                const progress = Math.min(haveAmount / required, 1.0);
                 progressLabel.innerText = formatBigNumber(haveAmount) + " / " + formatBigNumber(required);
                 progressBar.style.width = progress * 100.0 + "%";
                 progressBar.classList.toggle("complete", progress >= 1.0);
@@ -147,7 +147,7 @@ export class HUDShop extends BaseHUDPart {
             handle.buyButton.classList.toggle("buyable", this.root.hubGoals.canUnlockUpgrade(upgradeId));
         }
     }
-    initialize(): any {
+    initialize() {
         this.domAttach = new DynamicDomAttach(this.root, this.background, {
             attachClass: "visible",
         });
@@ -160,12 +160,12 @@ export class HUDShop extends BaseHUDPart {
         this.rerenderFull();
         this.root.signals.upgradePurchased.add(this.rerenderFull, this);
     }
-    cleanup(): any {
+    cleanup() {
         // Cleanup detectors
-        for (const upgradeId: any in this.upgradeToElements) {
-            const handle: any = this.upgradeToElements[upgradeId];
-            for (let i: any = 0; i < handle.requireIndexToElement.length; ++i) {
-                const requiredHandle: any = handle.requireIndexToElement[i];
+        for (const upgradeId in this.upgradeToElements) {
+            const handle = this.upgradeToElements[upgradeId];
+            for (let i = 0; i < handle.requireIndexToElement.length; ++i) {
+                const requiredHandle = handle.requireIndexToElement[i];
                 requiredHandle.container.remove();
                 requiredHandle.pinDetector.cleanup();
                 if (requiredHandle.infoDetector) {
@@ -175,28 +175,28 @@ export class HUDShop extends BaseHUDPart {
             handle.requireIndexToElement = [];
         }
     }
-    show(): any {
+    show() {
         this.visible = true;
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.rerenderFull();
     }
-    close(): any {
+    close() {
         this.visible = false;
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
         this.update();
     }
-    update(): any {
+    update() {
         this.domAttach.update(this.visible);
         if (this.visible) {
             this.renderCountsAndStatus();
         }
     }
-    tryUnlockNextTier(upgradeId: any): any {
+    tryUnlockNextTier(upgradeId) {
         if (this.root.hubGoals.tryUnlockUpgrade(upgradeId)) {
             this.root.app.sound.playUiSound(SOUNDS.unlockUpgrade);
         }
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.visible;
     }
 }

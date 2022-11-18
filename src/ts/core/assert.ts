@@ -1,13 +1,13 @@
 import { createLogger } from "./logging";
-const logger: any = createLogger("assert");
-let assertionErrorShown: any = false;
-function initAssert(): any {
+const logger = createLogger("assert");
+let assertionErrorShown = false;
+function initAssert() {
     /**
      * Expects a given condition to be true
      * @param  {} failureMessage
      */
     // @ts-ignore
-    window.assert = function (condition: Boolean, ...failureMessage: ...String): any {
+    window.assert = function (condition: Boolean, ...failureMessage: ...String) {
         if (!condition) {
             logger.error("assertion failed:", ...failureMessage);
             if (!assertionErrorShown) {

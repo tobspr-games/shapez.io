@@ -7,23 +7,23 @@ import { Entity } from "../entity";
 import { defaultBuildingVariant, MetaBuilding } from "../meta_building";
 import { GameRoot } from "../root";
 import { enumHubGoalRewards } from "../tutorial_goals";
-export const arrayWireRotationVariantToType: any = [
+export const arrayWireRotationVariantToType = [
     enumWireType.forward,
     enumWireType.turn,
     enumWireType.split,
     enumWireType.cross,
 ];
-export const wireOverlayMatrices: any = {
+export const wireOverlayMatrices = {
     [enumWireType.forward]: generateMatrixRotations([0, 1, 0, 0, 1, 0, 0, 1, 0]),
     [enumWireType.split]: generateMatrixRotations([0, 0, 0, 1, 1, 1, 0, 1, 0]),
     [enumWireType.turn]: generateMatrixRotations([0, 0, 0, 0, 1, 1, 0, 1, 0]),
     [enumWireType.cross]: generateMatrixRotations([0, 1, 0, 1, 1, 1, 0, 1, 0]),
 };
 /** @enum {string} */
-export const wireVariants: any = {
+export const wireVariants = {
     second: "second",
 };
-const enumWireVariantToVariant: any = {
+const enumWireVariantToVariant = {
     [defaultBuildingVariant]: enumWireVariant.first,
     [wireVariants.second]: enumWireVariant.second,
 };
@@ -32,7 +32,7 @@ export class MetaWireBuilding extends MetaBuilding {
     constructor() {
         super("wire");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 27,
@@ -76,51 +76,51 @@ export class MetaWireBuilding extends MetaBuilding {
             },
         ];
     }
-    getHasDirectionLockAvailable(): any {
+    getHasDirectionLockAvailable() {
         return true;
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#61ef6f";
     }
-    getAvailableVariants(): any {
+    getAvailableVariants() {
         return [defaultBuildingVariant, wireVariants.second];
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(1, 1);
     }
-    getStayInPlacementMode(): any {
+    getStayInPlacementMode() {
         return true;
     }
-    getPlacementSound(): any {
+    getPlacementSound() {
         return SOUNDS.placeBelt;
     }
-    getRotateAutomaticallyWhilePlacing(): any {
+    getRotateAutomaticallyWhilePlacing() {
         return true;
     }
     /** {} **/
     getLayer(): "wires" {
         return "wires";
     }
-    getSprite(): any {
+    getSprite() {
         return null;
     }
-    getIsReplaceable(): any {
+    getIsReplaceable() {
         return true;
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_wires_painter_and_levers);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new WireComponent({}));
     }
-        updateVariants(entity: Entity, rotationVariant: number, variant: string): any {
+        updateVariants(entity: Entity, rotationVariant: number, variant: string) {
         entity.components.Wire.type = arrayWireRotationVariantToType[rotationVariant];
         entity.components.Wire.variant = enumWireVariantToVariant[variant];
     }
-        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity): any {
+        getSpecialOverlayRenderMatrix(rotation: number, rotationVariant: number, variant: string, entity: Entity) {
         return wireOverlayMatrices[entity.components.Wire.type][rotation];
     }
     /**
@@ -128,7 +128,7 @@ export class MetaWireBuilding extends MetaBuilding {
      * {}
      */
     getPreviewSprite(rotationVariant: number, variant: string): import("../../core/draw_utils").AtlasSprite {
-        const wireVariant: any = enumWireVariantToVariant[variant];
+        const wireVariant = enumWireVariantToVariant[variant];
         switch (arrayWireRotationVariantToType[rotationVariant]) {
             case enumWireType.forward: {
                 return Loader.getSprite("sprites/wires/sets/" + wireVariant + "_forward.png");
@@ -147,7 +147,7 @@ export class MetaWireBuilding extends MetaBuilding {
             }
         }
     }
-    getBlueprintSprite(rotationVariant: any, variant: any): any {
+    getBlueprintSprite(rotationVariant, variant) {
         return this.getPreviewSprite(rotationVariant, variant);
     }
     /**
@@ -165,19 +165,19 @@ export class MetaWireBuilding extends MetaBuilding {
         rotationVariant: number;
         connectedEntities?: Array<Entity>;
     } {
-        const wireVariant: any = enumWireVariantToVariant[variant];
-        const connections: any = {
+        const wireVariant = enumWireVariantToVariant[variant];
+        const connections = {
             top: root.logic.computeWireEdgeStatus({ tile, wireVariant, edge: enumDirection.top }),
             right: root.logic.computeWireEdgeStatus({ tile, wireVariant, edge: enumDirection.right }),
             bottom: root.logic.computeWireEdgeStatus({ tile, wireVariant, edge: enumDirection.bottom }),
             left: root.logic.computeWireEdgeStatus({ tile, wireVariant, edge: enumDirection.left }),
         };
-        let flag: any = 0;
+        let flag = 0;
         flag |= connections.top ? 0x1000 : 0;
         flag |= connections.right ? 0x100 : 0;
         flag |= connections.bottom ? 0x10 : 0;
         flag |= connections.left ? 0x1 : 0;
-        let targetType: any = enumWireType.forward;
+        let targetType = enumWireType.forward;
         // First, reset rotation
         rotation = 0;
         switch (flag) {

@@ -1,13 +1,13 @@
 import { BaseGameSpeed } from "./base_game_speed";
 import { globalConfig } from "../../core/config";
 export class FastForwardGameSpeed extends BaseGameSpeed {
-    static getId(): any {
+    static getId() {
         return "fast-forward";
     }
-    getTimeMultiplier(): any {
+    getTimeMultiplier() {
         return globalConfig.fastForwardSpeed;
     }
-    getMaxLogicStepsInQueue(): any {
+    getMaxLogicStepsInQueue() {
         return 3 * globalConfig.fastForwardSpeed;
     }
 }

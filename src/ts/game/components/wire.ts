@@ -1,18 +1,18 @@
 import { Component } from "../component";
 /** @enum {string} */
-export const enumWireType: any = {
+export const enumWireType = {
     forward: "forward",
     turn: "turn",
     split: "split",
     cross: "cross",
 };
 /** @enum {string} */
-export const enumWireVariant: any = {
+export const enumWireVariant = {
     first: "first",
     second: "second",
 };
 export class WireComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Wire";
     }
     public type = type;

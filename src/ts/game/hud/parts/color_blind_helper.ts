@@ -8,16 +8,16 @@ import { THEME } from "../../theme";
 import { globalConfig } from "../../../core/config";
 import { T } from "../../../translations";
 export class HUDColorBlindHelper extends BaseHUDPart {
-    createElements(parent: any): any {
+    createElements(parent) {
         this.belowTileIndicator = makeDiv(parent, "ingame_HUD_ColorBlindBelowTileHelper", []);
     }
-    initialize(): any {
+    initialize() {
         this.trackedColorBelowTile = new TrackedState(this.onColorBelowTileChanged, this);
     }
     /**
      * Called when the color below the current tile changed
      */
-    onColorBelowTileChanged(color: enumColors | null): any {
+    onColorBelowTileChanged(color: enumColors | null) {
         this.belowTileIndicator.classList.toggle("visible", !!color);
         if (color) {
             this.belowTileIndicator.innerText = T.ingame.colors[color];
@@ -28,7 +28,7 @@ export class HUDColorBlindHelper extends BaseHUDPart {
      * {}
      */
     computeColorBelowTile(): enumColors {
-        const mousePosition: any = this.root.app.mousePosition;
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return null;
@@ -37,23 +37,23 @@ export class HUDColorBlindHelper extends BaseHUDPart {
             // Not in regular mode
             return null;
         }
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        const tile: any = worldPos.toTileSpace();
-        const contents: any = this.root.map.getTileContent(tile, this.root.currentLayer);
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
         if (contents && !contents.components.Miner) {
-            const beltComp: any = contents.components.Belt;
+            const beltComp = contents.components.Belt;
             // Check if the belt has a color item
             if (beltComp) {
-                const item: any = beltComp.assignedPath.findItemAtTile(tile);
+                const item = beltComp.assignedPath.findItemAtTile(tile);
                 if (item && item.getItemType() === "color") {
                     return item as ColorItem).color;
                 }
             }
             // Check if we are ejecting an item, if so use that color
-            const ejectorComp: any = contents.components.ItemEjector;
+            const ejectorComp = contents.components.ItemEjector;
             if (ejectorComp) {
-                for (let i: any = 0; i < ejectorComp.slots.length; ++i) {
-                    const slot: any = ejectorComp.slots[i];
+                for (let i = 0; i < ejectorComp.slots.length; ++i) {
+                    const slot = ejectorComp.slots[i];
                     if (slot.item && slot.item.getItemType() === "color") {
                         return slot.item as ColorItem).color;
                     }
@@ -62,30 +62,30 @@ export class HUDColorBlindHelper extends BaseHUDPart {
         }
         else {
             // We hovered a lower layer, show the color there
-            const lowerLayer: any = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+            const lowerLayer = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
             if (lowerLayer && lowerLayer.getItemType() === "color") {
                 return lowerLayer as ColorItem).color;
             }
         }
         return null;
     }
-    update(): any {
+    update() {
         this.trackedColorBelowTile.set(this.computeColorBelowTile());
     }
     /**
      * Draws the currently selected tile
      */
-    draw(parameters: DrawParameters): any {
-        const mousePosition: any = this.root.app.mousePosition;
+    draw(parameters: DrawParameters) {
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return null;
         }
-        const below: any = this.computeColorBelowTile();
+        const below = this.computeColorBelowTile();
         if (below) {
             // We have something below our tile
-            const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-            const tile: any = worldPos.toTileSpace().toWorldSpace();
+            const worldPos = this.root.camera.screenToWorld(mousePosition);
+            const tile = worldPos.toTileSpace().toWorldSpace();
             parameters.context.strokeStyle = THEME.map.colorBlindPickerTile;
             parameters.context.lineWidth = 1;
             parameters.context.beginPath();

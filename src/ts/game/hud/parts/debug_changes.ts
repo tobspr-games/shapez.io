@@ -10,14 +10,14 @@ export type DebugChange = {
 };
 
 export class HUDChangesDebugger extends BaseHUDPart {
-    createElements(parent: any): any { }
-    initialize(): any {
+    createElements(parent) { }
+    initialize() {
                 this.changes = [];
     }
     /**
      * Renders a new change
      */
-    renderChange(label: string, area: Rectangle, fillColor: string, timeToDisplay: number= = 0.3): any {
+    renderChange(label: string, area: Rectangle, fillColor: string, timeToDisplay: number= = 0.3) {
         this.changes.push({
             label,
             area: area.clone(),
@@ -25,11 +25,11 @@ export class HUDChangesDebugger extends BaseHUDPart {
             hideAt: this.root.time.realtimeNow() + timeToDisplay,
         });
     }
-    update(): any {
-        const now: any = this.root.time.realtimeNow();
+    update() {
+        const now = this.root.time.realtimeNow();
         // Detect outdated changes
-        for (let i: any = 0; i < this.changes.length; ++i) {
-            const change: any = this.changes[i];
+        for (let i = 0; i < this.changes.length; ++i) {
+            const change = this.changes[i];
             if (change.hideAt <= now) {
                 this.changes.splice(i, 1);
                 i -= 1;
@@ -37,9 +37,9 @@ export class HUDChangesDebugger extends BaseHUDPart {
             }
         }
     }
-        draw(parameters: DrawParameters): any {
-        for (let i: any = 0; i < this.changes.length; ++i) {
-            const change: any = this.changes[i];
+        draw(parameters: DrawParameters) {
+        for (let i = 0; i < this.changes.length; ++i) {
+            const change = this.changes[i];
             parameters.context.fillStyle = change.fillColor;
             parameters.context.globalAlpha = 0.2;
             parameters.context.fillRect(change.area.x * globalConfig.tileSize, change.area.y * globalConfig.tileSize, change.area.w * globalConfig.tileSize, change.area.h * globalConfig.tileSize);

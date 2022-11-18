@@ -11,7 +11,7 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
     constructor() {
         super("goal_acceptor");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 63,
@@ -19,7 +19,7 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#ce418a";
     }
     /**
@@ -142,13 +142,13 @@ export class MetaGoalAcceptorBuilding extends MetaBuilding {
      * @param {import("../../savegame/savegame_serializer").GameRoot} root
      * @returns
      */
-    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot): any {
+    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot) {
         return root.gameMode.getIsEditor();
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemAcceptorComponent({
             slots: [
                 {

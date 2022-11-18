@@ -6,10 +6,10 @@ import type { Application } from "../application";
 import { Signal, STOP_PROPAGATION } from "../core/signal";
 import { IS_MOBILE } from "../core/config";
 import { T } from "../translations";
-export function keyToKeyCode(str: any): any {
+export function keyToKeyCode(str) {
     return str.toUpperCase().charCodeAt(0);
 }
-export const KEYCODES: any = {
+export const KEYCODES = {
     Tab: 9,
     Enter: 13,
     Shift: 16,
@@ -37,7 +37,7 @@ export const KEYCODES: any = {
     Plus: 187,
     Minus: 189,
 };
-export const KEYMAPPINGS: any = {
+export const KEYMAPPINGS = {
     // Make sure mods come first so they can override everything
     mods: {},
     general: {
@@ -129,14 +129,14 @@ export const KEYMAPPINGS: any = {
     },
 };
 // Assign ids
-for (const categoryId: any in KEYMAPPINGS) {
-    for (const mappingId: any in KEYMAPPINGS[categoryId]) {
+for (const categoryId in KEYMAPPINGS) {
+    for (const mappingId in KEYMAPPINGS[categoryId]) {
         KEYMAPPINGS[categoryId][mappingId].id = mappingId;
     }
 }
-export const KEYCODE_LMB: any = 1;
-export const KEYCODE_MMB: any = 2;
-export const KEYCODE_RMB: any = 3;
+export const KEYCODE_LMB = 1;
+export const KEYCODE_MMB = 2;
+export const KEYCODE_RMB = 3;
 /**
  * Returns a keycode -> string
  * {}
@@ -308,7 +308,7 @@ export class Keybinding {
         // Check if the key is down
         if (this.app.inputMgr.keysDown.has(this.keyCode)) {
             // Check if it is the top reciever
-            const reciever: any = this.keyMapper.inputReceiver;
+            const reciever = this.keyMapper.inputReceiver;
             return this.app.inputMgr.getTopReciever() === reciever;
         }
         return false;
@@ -316,13 +316,13 @@ export class Keybinding {
     /**
      * Adds an event listener
      */
-    add(receiver: function():void, scope: object= = null): any {
+    add(receiver: function():void, scope: object= = null) {
         this.signal.add(receiver, scope);
     }
     /**
      * Adds an event listener
      */
-    addToTop(receiver: function():void, scope: object= = null): any {
+    addToTop(receiver: function():void, scope: object= = null) {
         this.signal.addToTop(receiver, scope);
     }
     /**
@@ -332,7 +332,7 @@ export class Keybinding {
         if (IS_MOBILE) {
             return null;
         }
-        const spacer: any = document.createElement("code");
+        const spacer = document.createElement("code");
         spacer.classList.add("keybinding");
         spacer.innerHTML = getStringForKeyCode(this.keyCode);
         elem.appendChild(spacer);
@@ -341,13 +341,13 @@ export class Keybinding {
     /**
      * Returns the key code as a nice string
      */
-    getKeyCodeString(): any {
+    getKeyCodeString() {
         return getStringForKeyCode(this.keyCode);
     }
     /**
      * Remvoes all signal receivers
      */
-    clearSignalReceivers(): any {
+    clearSignalReceivers() {
         this.signal.removeAll();
     }
 }
@@ -361,10 +361,10 @@ export class KeyActionMapper {
         constructor(root, inputReciever) {
         inputReciever.keydown.add(this.handleKeydown, this);
         inputReciever.keyup.add(this.handleKeyup, this);
-        const overrides: any = root.app.settings.getKeybindingOverrides();
-        for (const category: any in KEYMAPPINGS) {
-            for (const key: any in KEYMAPPINGS[category]) {
-                let payload: any = Object.assign({}, KEYMAPPINGS[category][key]);
+        const overrides = root.app.settings.getKeybindingOverrides();
+        for (const category in KEYMAPPINGS) {
+            for (const key in KEYMAPPINGS[category]) {
+                let payload = Object.assign({}, KEYMAPPINGS[category][key]);
                 if (overrides[key]) {
                     payload.keyCode = overrides[key];
                 }
@@ -385,8 +385,8 @@ export class KeyActionMapper {
      * {}
      */
     getKeybindingsStartingWith(pattern: string): Array<Keybinding> {
-        let result: any = [];
-        for (const key: any in this.keybindings) {
+        let result = [];
+        for (const key in this.keybindings) {
             if (key.startsWith(pattern)) {
                 result.push(this.keybindings[key]);
             }
@@ -396,21 +396,21 @@ export class KeyActionMapper {
     /**
      * Forwards the given events to the other mapper (used in tooltips)
      */
-    forward(receiver: KeyActionMapper, bindings: Array<string>): any {
-        for (let i: any = 0; i < bindings.length; ++i) {
-            const key: any = bindings[i];
-            this.keybindings[key].signal.add((...args: any): any => receiver.keybindings[key].signal.dispatch(...args));
+    forward(receiver: KeyActionMapper, bindings: Array<string>) {
+        for (let i = 0; i < bindings.length; ++i) {
+            const key = bindings[i];
+            this.keybindings[key].signal.add((...args) => receiver.keybindings[key].signal.dispatch(...args));
         }
     }
-    cleanup(): any {
-        for (const key: any in this.keybindings) {
+    cleanup() {
+        for (const key in this.keybindings) {
             this.keybindings[key].signal.removeAll();
         }
     }
-    onPageBlur(): any {
+    onPageBlur() {
         // Reset all down states
         // Find mapping
-        for (const key: any in this.keybindings) {
+        for (const key in this.keybindings) {
                         const binding: Keybinding = this.keybindings[key];
         }
     }
@@ -423,10 +423,10 @@ export class KeyActionMapper {
         alt: boolean;
         ctrl: boolean;
         initial: boolean=;
-    }): any {
-        let stop: any = false;
+    }) {
+        let stop = false;
         // Find mapping
-        for (const key: any in this.keybindings) {
+        for (const key in this.keybindings) {
                         const binding: Keybinding = this.keybindings[key];
             if (binding.keyCode === keyCode && (initial || binding.repeated)) {
                 if (binding.modifiers.shift && !shift) {
@@ -455,7 +455,7 @@ export class KeyActionMapper {
         keyCode: number;
         shift: boolean;
         alt: boolean;
-    }): any {
+    }) {
         // Empty
     }
     /**
@@ -466,7 +466,7 @@ export class KeyActionMapper {
         keyCode: number;
     }): Keybinding {
         // @ts-ignore
-        const id: any = binding.id;
+        const id = binding.id;
         assert(id, "Not a valid keybinding: " + JSON.stringify(binding));
         assert(this.keybindings[id], "Keybinding " + id + " not known!");
         return this.keybindings[id];

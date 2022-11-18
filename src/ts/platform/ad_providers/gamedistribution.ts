@@ -3,8 +3,8 @@ import type { Application } from "../../application";
 /* typehints:end */
 import { AdProviderInterface } from "../ad_provider";
 import { createLogger } from "../../core/logging";
-const minimumTimeBetweenVideoAdsMs: any = G_IS_DEV ? 1 : 5 * 60 * 1000;
-const logger: any = createLogger("gamedistribution");
+const minimumTimeBetweenVideoAdsMs = G_IS_DEV ? 1 : 5 * 60 * 1000;
+const logger = createLogger("gamedistribution");
 export class GamedistributionAdProvider extends AdProviderInterface {
     public videoAdResolveFunction: Function = null;
     public videoAdResolveTimer = null;
@@ -13,15 +13,15 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         constructor(app) {
         super(app);
     }
-    getHasAds(): any {
+    getHasAds() {
         return true;
     }
-    getCanShowVideoAd(): any {
+    getCanShowVideoAd() {
         return (this.getHasAds() &&
             !this.videoAdResolveFunction &&
             performance.now() - this.lastVideoAdShowTime > minimumTimeBetweenVideoAdsMs);
     }
-    initialize(): any {
+    initialize() {
         // No point to initialize everything if ads are not supported
         if (!this.getHasAds()) {
             return Promise.resolve();
@@ -30,10 +30,10 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         try {
             parent.postMessage("shapezio://gd.game_loaded", "*");
         }
-        catch (ex: any) {
+        catch (ex) {
             return Promise.reject("Frame communication not allowed");
         }
-        window.addEventListener("message", (event: any): any => {
+        window.addEventListener("message", event => {
             if (event.data === "shapezio://gd.ad_started") {
                 console.log("🎬 Got ad started callback");
             }
@@ -46,7 +46,7 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         }, false);
         return Promise.resolve();
     }
-    showVideoAd(): any {
+    showVideoAd() {
         assert(this.getHasAds(), "Called showVideoAd but ads are not supported!");
         assert(!this.videoAdResolveFunction, "Video ad still running, can not show again!");
         this.lastVideoAdShowTime = performance.now();
@@ -54,7 +54,7 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         try {
             parent.postMessage("shapezio://gd.show_ad", "*");
         }
-        catch (ex: any) {
+        catch (ex) {
             logger.warn("🎬 Failed to send message for gd ad:", ex);
             return Promise.resolve();
         }
@@ -62,9 +62,9 @@ export class GamedistributionAdProvider extends AdProviderInterface {
         logger.log("Set sound volume to 0");
         this.app.sound.setMusicVolume(0);
         this.app.sound.setSoundVolume(0);
-        return new Promise((resolve: any): any => {
+        return new Promise(resolve => {
             // So, wait for the remove call but also remove after N seconds
-            this.videoAdResolveFunction = (): any => {
+            this.videoAdResolveFunction = () => {
                 this.videoAdResolveFunction = null;
                 clearTimeout(this.videoAdResolveTimer);
                 this.videoAdResolveTimer = null;
@@ -72,17 +72,17 @@ export class GamedistributionAdProvider extends AdProviderInterface {
                 this.lastVideoAdShowTime = performance.now();
                 resolve();
             };
-            this.videoAdResolveTimer = setTimeout((): any => {
+            this.videoAdResolveTimer = setTimeout(() => {
                 logger.warn("Automatically closing ad after not receiving callback");
                 if (this.videoAdResolveFunction) {
                     this.videoAdResolveFunction();
                 }
             }, 35000);
         })
-            .catch((err: any): any => {
+            .catch(err => {
             logger.error(this, "Error while resolving video ad:", err);
         })
-            .then((): any => {
+            .then(() => {
             document.body.classList.remove("externalAdOpen");
             logger.log("Restored sound volume");
             this.app.sound.setMusicVolume(this.app.settings.getSetting("musicVolume"));

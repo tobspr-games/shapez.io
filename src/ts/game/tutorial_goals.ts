@@ -2,7 +2,7 @@
  * Don't forget to also update tutorial_goals_mappings.js as well as the translations!
  * @enum {string}
  */
-export const enumHubGoalRewards: any = {
+export const enumHubGoalRewards = {
     reward_cutter_and_trash: "reward_cutter_and_trash",
     reward_rotater: "reward_rotater",
     reward_painter: "reward_painter",

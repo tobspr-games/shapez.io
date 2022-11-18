@@ -1,5 +1,5 @@
 export const LANGUAGES: {
-    [idx: string]: {
+    [code: string]: {
         name: string;
         data: any;
         code: string;

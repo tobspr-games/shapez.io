@@ -6,9 +6,9 @@ import { Entity } from "../../entity";
 import { THEME } from "../../theme";
 import { BaseHUDPart } from "../base_hud_part";
 export class HUDMinerHighlight extends BaseHUDPart {
-    initialize(): any { }
-        draw(parameters: import("../../../core/draw_utils").DrawParameters): any {
-        const mousePos: any = this.root.app.mousePosition;
+    initialize() { }
+        draw(parameters: import("../../../core/draw_utils").DrawParameters) {
+        const mousePos = this.root.app.mousePosition;
         if (!mousePos) {
             // Mouse pos not ready
             return;
@@ -21,36 +21,36 @@ export class HUDMinerHighlight extends BaseHUDPart {
             // Not within the map overlay
             return;
         }
-        const worldPos: any = this.root.camera.screenToWorld(mousePos);
-        const hoveredTile: any = worldPos.toTileSpace();
-        const contents: any = this.root.map.getTileContent(hoveredTile, "regular");
+        const worldPos = this.root.camera.screenToWorld(mousePos);
+        const hoveredTile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(hoveredTile, "regular");
         if (!contents) {
             // Empty tile
             return;
         }
-        const minerComp: any = contents.components.Miner;
+        const minerComp = contents.components.Miner;
         if (!minerComp || !minerComp.chainable) {
             // Not a chainable miner
             return;
         }
-        const lowerContents: any = this.root.map.getLowerLayerContentXY(hoveredTile.x, hoveredTile.y);
+        const lowerContents = this.root.map.getLowerLayerContentXY(hoveredTile.x, hoveredTile.y);
         if (!lowerContents) {
             // Not connected
             return;
         }
         parameters.context.fillStyle = THEME.map.connectedMiners.overlay;
-        const connectedEntities: any = this.findConnectedMiners(contents);
-        for (let i: any = 0; i < connectedEntities.length; ++i) {
-            const entity: any = connectedEntities[i];
-            const staticComp: any = entity.components.StaticMapEntity;
+        const connectedEntities = this.findConnectedMiners(contents);
+        for (let i = 0; i < connectedEntities.length; ++i) {
+            const entity = connectedEntities[i];
+            const staticComp = entity.components.StaticMapEntity;
             parameters.context.beginRoundedRect(staticComp.origin.x * globalConfig.tileSize + 5, staticComp.origin.y * globalConfig.tileSize + 5, globalConfig.tileSize - 10, globalConfig.tileSize - 10, 3);
             parameters.context.fill();
         }
-        const throughput: any = round2Digits(connectedEntities.length * this.root.hubGoals.getMinerBaseSpeed());
-        const maxThroughput: any = this.root.hubGoals.getBeltBaseSpeed();
-        const tooltipLocation: any = this.root.camera.screenToWorld(mousePos);
-        const scale: any = (1 / this.root.camera.zoomLevel) * this.root.app.getEffectiveUiScale();
-        const isCapped: any = throughput > maxThroughput;
+        const throughput = round2Digits(connectedEntities.length * this.root.hubGoals.getMinerBaseSpeed());
+        const maxThroughput = this.root.hubGoals.getBeltBaseSpeed();
+        const tooltipLocation = this.root.camera.screenToWorld(mousePos);
+        const scale = (1 / this.root.camera.zoomLevel) * this.root.app.getEffectiveUiScale();
+        const isCapped = throughput > maxThroughput;
         // Background
         parameters.context.fillStyle = THEME.map.connectedMiners.background;
         parameters.context.beginRoundedRect(tooltipLocation.x + 5 * scale, tooltipLocation.y - 3 * scale, (isCapped ? 100 : 65) * scale, (isCapped ? 45 : 30) * scale, 2);
@@ -76,25 +76,25 @@ export class HUDMinerHighlight extends BaseHUDPart {
      * {} The connected miners
      */
     findConnectedMiners(entity: Entity, seenUids: Set<number> = new Set()): Array<Entity> {
-        let results: any = [];
-        const origin: any = entity.components.StaticMapEntity.origin;
+        let results = [];
+        const origin = entity.components.StaticMapEntity.origin;
         if (!seenUids.has(entity.uid)) {
             seenUids.add(entity.uid);
             results.push(entity);
         }
         // Check for the miner which we connect to
-        const connectedMiner: any = this.root.systemMgr.systems.miner.findChainedMiner(entity);
+        const connectedMiner = this.root.systemMgr.systems.miner.findChainedMiner(entity);
         if (connectedMiner && !seenUids.has(connectedMiner.uid)) {
             results.push(connectedMiner);
             seenUids.add(connectedMiner.uid);
             results.push(...this.findConnectedMiners(connectedMiner, seenUids));
         }
         // Search within a 1x1 grid - this assumes miners are always 1x1
-        for (let dx: any = -1; dx <= 1; ++dx) {
-            for (let dy: any = -1; dy <= 1; ++dy) {
-                const contents: any = this.root.map.getTileContent(new Vector(origin.x + dx, origin.y + dy), "regular");
+        for (let dx = -1; dx <= 1; ++dx) {
+            for (let dy = -1; dy <= 1; ++dy) {
+                const contents = this.root.map.getTileContent(new Vector(origin.x + dx, origin.y + dy), "regular");
                 if (contents) {
-                    const minerComp: any = contents.components.Miner;
+                    const minerComp = contents.components.Miner;
                     if (minerComp && minerComp.chainable) {
                         // Found a miner connected to this entity
                         if (!seenUids.has(contents.uid)) {

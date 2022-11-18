@@ -7,10 +7,10 @@ import { MapChunkAggregate } from "./map_chunk_aggregate";
 import { MapChunkView } from "./map_chunk_view";
 import { GameRoot } from "./root";
 export class BaseMap extends BasicSerializableObject {
-    static getId(): any {
+    static getId() {
         return "Map";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             seed: types.uint,
         };
@@ -26,14 +26,14 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Returns the given chunk by index
      */
-    getChunk(chunkX: number, chunkY: number, createIfNotExistent: any = false): any {
-        const chunkIdentifier: any = chunkX + "|" + chunkY;
-        let storedChunk: any;
+    getChunk(chunkX: number, chunkY: number, createIfNotExistent = false) {
+        const chunkIdentifier = chunkX + "|" + chunkY;
+        let storedChunk;
         if ((storedChunk = this.chunksById.get(chunkIdentifier))) {
             return storedChunk;
         }
         if (createIfNotExistent) {
-            const instance: any = new MapChunkView(this.root, chunkX, chunkY);
+            const instance = new MapChunkView(this.root, chunkX, chunkY);
             this.chunksById.set(chunkIdentifier, instance);
             return instance;
         }
@@ -42,22 +42,22 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Returns the chunk aggregate containing a given chunk
      */
-    getAggregateForChunk(chunkX: number, chunkY: number, createIfNotExistent: any = false): any {
-        const aggX: any = Math.floor(chunkX / globalConfig.chunkAggregateSize);
-        const aggY: any = Math.floor(chunkY / globalConfig.chunkAggregateSize);
+    getAggregateForChunk(chunkX: number, chunkY: number, createIfNotExistent = false) {
+        const aggX = Math.floor(chunkX / globalConfig.chunkAggregateSize);
+        const aggY = Math.floor(chunkY / globalConfig.chunkAggregateSize);
         return this.getAggregate(aggX, aggY, createIfNotExistent);
     }
     /**
      * Returns the given chunk aggregate by index
      */
-    getAggregate(aggX: number, aggY: number, createIfNotExistent: any = false): any {
-        const aggIdentifier: any = aggX + "|" + aggY;
-        let storedAggregate: any;
+    getAggregate(aggX: number, aggY: number, createIfNotExistent = false) {
+        const aggIdentifier = aggX + "|" + aggY;
+        let storedAggregate;
         if ((storedAggregate = this.aggregatesById.get(aggIdentifier))) {
             return storedAggregate;
         }
         if (createIfNotExistent) {
-            const instance: any = new MapChunkAggregate(this.root, aggX, aggY);
+            const instance = new MapChunkAggregate(this.root, aggX, aggY);
             this.aggregatesById.set(aggIdentifier, instance);
             return instance;
         }
@@ -68,8 +68,8 @@ export class BaseMap extends BasicSerializableObject {
      * {}
      */
     getOrCreateChunkAtTile(tileX: number, tileY: number): MapChunkView {
-        const chunkX: any = Math.floor(tileX / globalConfig.mapChunkSize);
-        const chunkY: any = Math.floor(tileY / globalConfig.mapChunkSize);
+        const chunkX = Math.floor(tileX / globalConfig.mapChunkSize);
+        const chunkY = Math.floor(tileY / globalConfig.mapChunkSize);
         return this.getChunk(chunkX, chunkY, true);
     }
     /**
@@ -77,8 +77,8 @@ export class BaseMap extends BasicSerializableObject {
      * {}
      */
     getChunkAtTileOrNull(tileX: number, tileY: number): ?MapChunkView {
-        const chunkX: any = Math.floor(tileX / globalConfig.mapChunkSize);
-        const chunkY: any = Math.floor(tileY / globalConfig.mapChunkSize);
+        const chunkX = Math.floor(tileX / globalConfig.mapChunkSize);
+        const chunkY = Math.floor(tileY / globalConfig.mapChunkSize);
         return this.getChunk(chunkX, chunkY, false);
     }
     /**
@@ -99,7 +99,7 @@ export class BaseMap extends BasicSerializableObject {
         if (G_IS_DEV) {
             this.internalCheckTile(tile);
         }
-        const chunk: any = this.getChunkAtTileOrNull(tile.x, tile.y);
+        const chunk = this.getChunkAtTileOrNull(tile.x, tile.y);
         return chunk && chunk.getLayerContentFromWorldCoords(tile.x, tile.y, layer);
     }
     /**
@@ -114,7 +114,7 @@ export class BaseMap extends BasicSerializableObject {
      * {} Entity or null
      */
     getLayerContentXY(x: number, y: number, layer: Layer): Entity {
-        const chunk: any = this.getChunkAtTileOrNull(x, y);
+        const chunk = this.getChunkAtTileOrNull(x, y);
         return chunk && chunk.getLayerContentFromWorldCoords(x, y, layer);
     }
     /**
@@ -122,7 +122,7 @@ export class BaseMap extends BasicSerializableObject {
      * {} Entity or null
      */
     getLayersContentsMultipleXY(x: number, y: number): Array<Entity> {
-        const chunk: any = this.getChunkAtTileOrNull(x, y);
+        const chunk = this.getChunkAtTileOrNull(x, y);
         if (!chunk) {
             return [];
         }
@@ -136,7 +136,7 @@ export class BaseMap extends BasicSerializableObject {
         if (G_IS_DEV) {
             this.internalCheckTile(tile);
         }
-        const chunk: any = this.getChunkAtTileOrNull(tile.x, tile.y);
+        const chunk = this.getChunkAtTileOrNull(tile.x, tile.y);
         return chunk && chunk.getLayerContentFromWorldCoords(tile.x, tile.y, layer) != null;
     }
     /**
@@ -144,31 +144,31 @@ export class BaseMap extends BasicSerializableObject {
      * {}
      */
     isTileUsedXY(x: number, y: number, layer: Layer): boolean {
-        const chunk: any = this.getChunkAtTileOrNull(x, y);
+        const chunk = this.getChunkAtTileOrNull(x, y);
         return chunk && chunk.getLayerContentFromWorldCoords(x, y, layer) != null;
     }
     /**
      * Sets the tiles content
      */
-    setTileContent(tile: Vector, entity: Entity): any {
+    setTileContent(tile: Vector, entity: Entity) {
         if (G_IS_DEV) {
             this.internalCheckTile(tile);
         }
         this.getOrCreateChunkAtTile(tile.x, tile.y).setLayerContentFromWorldCords(tile.x, tile.y, entity, entity.layer);
-        const staticComponent: any = entity.components.StaticMapEntity;
+        const staticComponent = entity.components.StaticMapEntity;
         assert(staticComponent, "Can only place static map entities in tiles");
     }
     /**
      * Places an entity with the StaticMapEntity component
      */
-    placeStaticEntity(entity: Entity): any {
+    placeStaticEntity(entity: Entity) {
         assert(entity.components.StaticMapEntity, "Entity is not static");
-        const staticComp: any = entity.components.StaticMapEntity;
-        const rect: any = staticComp.getTileSpaceBounds();
-        for (let dx: any = 0; dx < rect.w; ++dx) {
-            for (let dy: any = 0; dy < rect.h; ++dy) {
-                const x: any = rect.x + dx;
-                const y: any = rect.y + dy;
+        const staticComp = entity.components.StaticMapEntity;
+        const rect = staticComp.getTileSpaceBounds();
+        for (let dx = 0; dx < rect.w; ++dx) {
+            for (let dy = 0; dy < rect.h; ++dy) {
+                const x = rect.x + dx;
+                const y = rect.y + dy;
                 this.getOrCreateChunkAtTile(x, y).setLayerContentFromWorldCords(x, y, entity, entity.layer);
             }
         }
@@ -176,14 +176,14 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Removes an entity with the StaticMapEntity component
      */
-    removeStaticEntity(entity: Entity): any {
+    removeStaticEntity(entity: Entity) {
         assert(entity.components.StaticMapEntity, "Entity is not static");
-        const staticComp: any = entity.components.StaticMapEntity;
-        const rect: any = staticComp.getTileSpaceBounds();
-        for (let dx: any = 0; dx < rect.w; ++dx) {
-            for (let dy: any = 0; dy < rect.h; ++dy) {
-                const x: any = rect.x + dx;
-                const y: any = rect.y + dy;
+        const staticComp = entity.components.StaticMapEntity;
+        const rect = staticComp.getTileSpaceBounds();
+        for (let dx = 0; dx < rect.w; ++dx) {
+            for (let dy = 0; dy < rect.h; ++dy) {
+                const x = rect.x + dx;
+                const y = rect.y + dy;
                 this.getOrCreateChunkAtTile(x, y).setLayerContentFromWorldCords(x, y, null, entity.layer);
             }
         }
@@ -192,7 +192,7 @@ export class BaseMap extends BasicSerializableObject {
     /**
      * Checks a given tile for validty
      */
-    internalCheckTile(tile: Vector): any {
+    internalCheckTile(tile: Vector) {
         assert(tile instanceof Vector, "tile is not a vector: " + tile);
         assert(tile.x % 1 === 0, "Tile X is not a valid integer: " + tile.x);
         assert(tile.y % 1 === 0, "Tile Y is not a valid integer: " + tile.y);

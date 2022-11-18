@@ -4,30 +4,30 @@ export class StorageImplElectron extends StorageInterface {
     constructor(app) {
         super(app);
     }
-    initialize(): any {
+    initialize() {
         return Promise.resolve();
     }
-    writeFileAsync(filename: any, contents: any): any {
+    writeFileAsync(filename, contents) {
         return ipcRenderer.invoke("fs-job", {
             type: "write",
             filename,
             contents,
         });
     }
-    readFileAsync(filename: any): any {
+    readFileAsync(filename) {
         return ipcRenderer
             .invoke("fs-job", {
             type: "read",
             filename,
         })
-            .then((res: any): any => {
+            .then(res => {
             if (res && res.error === FILE_NOT_FOUND) {
                 throw FILE_NOT_FOUND;
             }
             return res;
         });
     }
-    deleteFileAsync(filename: any): any {
+    deleteFileAsync(filename) {
         return ipcRenderer.invoke("fs-job", {
             type: "delete",
             filename,

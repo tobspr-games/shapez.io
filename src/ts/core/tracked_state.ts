@@ -9,10 +9,10 @@ export class TrackedState {
             }
         }
     }
-    set(value: any, changeHandler: any = null, changeScope: any = null): any {
+    set(value, changeHandler = null, changeScope = null) {
         if (value !== this.lastSeenValue) {
             // Copy value since the changeHandler call could actually modify our lastSeenValue
-            const valueCopy: any = value;
+            const valueCopy = value;
             this.lastSeenValue = value;
             if (changeHandler) {
                 if (changeScope) {
@@ -30,10 +30,10 @@ export class TrackedState {
             }
         }
     }
-    setSilent(value: any): any {
+    setSilent(value) {
         this.lastSeenValue = value;
     }
-    get(): any {
+    get() {
         return this.lastSeenValue;
     }
 }

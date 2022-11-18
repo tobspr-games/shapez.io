@@ -8,7 +8,7 @@ import { T } from "../../../translations";
 import { BaseHUDPart } from "../base_hud_part";
 import { DynamicDomAttach } from "../dynamic_dom_attach";
 export class HUDPuzzleCompleteNotification extends BaseHUDPart {
-    initialize(): any {
+    initialize() {
         this.visible = false;
         this.domAttach = new DynamicDomAttach(this.root, this.element, {
             timeToKeepSeconds: 0,
@@ -17,78 +17,78 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
         this.userDidLikePuzzle = false;
         this.timeOfCompletion = 0;
     }
-    createElements(parent: any): any {
+    createElements(parent) {
         this.inputReciever = new InputReceiver("puzzle-complete");
         this.element = makeDiv(parent, "ingame_HUD_PuzzleCompleteNotification", ["noBlur"]);
-        const dialog: any = makeDiv(this.element, null, ["dialog"]);
+        const dialog = makeDiv(this.element, null, ["dialog"]);
         this.elemTitle = makeDiv(dialog, null, ["title"], T.ingame.puzzleCompletion.title);
         this.elemContents = makeDiv(dialog, null, ["contents"]);
         this.elemActions = makeDiv(dialog, null, ["actions"]);
-        const stepLike: any = makeDiv(this.elemContents, null, ["step", "stepLike"]);
+        const stepLike = makeDiv(this.elemContents, null, ["step", "stepLike"]);
         makeDiv(stepLike, null, ["title"], T.ingame.puzzleCompletion.titleLike);
-        const likeButtons: any = makeDiv(stepLike, null, ["buttons"]);
+        const likeButtons = makeDiv(stepLike, null, ["buttons"]);
         this.buttonLikeYes = document.createElement("button");
         this.buttonLikeYes.classList.add("liked-yes");
         likeButtons.appendChild(this.buttonLikeYes);
-        this.trackClicks(this.buttonLikeYes, (): any => {
+        this.trackClicks(this.buttonLikeYes, () => {
             this.userDidLikePuzzle = !this.userDidLikePuzzle;
             this.updateState();
         });
-        const buttonBar: any = document.createElement("div");
+        const buttonBar = document.createElement("div");
         buttonBar.classList.add("buttonBar");
         this.elemContents.appendChild(buttonBar);
         this.continueBtn = document.createElement("button");
         this.continueBtn.classList.add("continue", "styledButton");
         this.continueBtn.innerText = T.ingame.puzzleCompletion.continueBtn;
         buttonBar.appendChild(this.continueBtn);
-        this.trackClicks(this.continueBtn, (): any => {
+        this.trackClicks(this.continueBtn, () => {
             this.close(false);
         });
         this.menuBtn = document.createElement("button");
         this.menuBtn.classList.add("menu", "styledButton");
         this.menuBtn.innerText = T.ingame.puzzleCompletion.menuBtn;
         buttonBar.appendChild(this.menuBtn);
-        this.trackClicks(this.menuBtn, (): any => {
+        this.trackClicks(this.menuBtn, () => {
             this.close(true);
         });
-        const gameMode: any = (this.root.gameMode as PuzzlePlayGameMode);
+        const gameMode = this.root.gameMode as PuzzlePlayGameMode);
         if (gameMode.nextPuzzles.length > 0) {
             this.nextPuzzleBtn = document.createElement("button");
             this.nextPuzzleBtn.classList.add("nextPuzzle", "styledButton");
             this.nextPuzzleBtn.innerText = T.ingame.puzzleCompletion.nextPuzzle;
             buttonBar.appendChild(this.nextPuzzleBtn);
-            this.trackClicks(this.nextPuzzleBtn, (): any => {
+            this.trackClicks(this.nextPuzzleBtn, () => {
                 this.nextPuzzle();
             });
         }
     }
-    updateState(): any {
+    updateState() {
         this.buttonLikeYes.classList.toggle("active", this.userDidLikePuzzle === true);
     }
-    show(): any {
+    show() {
         this.root.soundProxy.playUi(SOUNDS.levelComplete);
         this.root.app.inputMgr.makeSureAttachedAndOnTop(this.inputReciever);
         this.visible = true;
         this.timeOfCompletion = this.root.time.now();
     }
-    cleanup(): any {
+    cleanup() {
         this.root.app.inputMgr.makeSureDetached(this.inputReciever);
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.visible;
     }
-    nextPuzzle(): any {
-        const gameMode: any = (this.root.gameMode as PuzzlePlayGameMode);
-        gameMode.trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion)).then((): any => {
+    nextPuzzle() {
+        const gameMode = this.root.gameMode as PuzzlePlayGameMode);
+        gameMode.trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion)).then(() => {
             this.root.gameState.moveToState("PuzzleMenuState", {
                 continueQueue: gameMode.nextPuzzles,
             });
         });
     }
-    close(toMenu: any): any {
+    close(toMenu) {
         this.root.gameMode as PuzzlePlayGameMode)
             .trackCompleted(this.userDidLikePuzzle, Math.round(this.timeOfCompletion))
-            .then((): any => {
+            .then(() => {
             if (toMenu) {
                 this.root.gameState.moveToState("PuzzleMenuState");
             }
@@ -98,7 +98,7 @@ export class HUDPuzzleCompleteNotification extends BaseHUDPart {
             }
         });
     }
-    update(): any {
+    update() {
         this.domAttach.update(this.visible);
     }
 }

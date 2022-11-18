@@ -20,8 +20,8 @@ import { BeltReaderComponent } from "./components/belt_reader";
 import { FilterComponent } from "./components/filter";
 import { ItemProducerComponent } from "./components/item_producer";
 import { GoalAcceptorComponent } from "./components/goal_acceptor";
-export function initComponentRegistry(): any {
-    const components: any = [
+export function initComponentRegistry() {
+    const components = [
         StaticMapEntityComponent,
         BeltComponent,
         ItemEjectorComponent,
@@ -44,7 +44,7 @@ export function initComponentRegistry(): any {
         ItemProducerComponent,
         GoalAcceptorComponent,
     ];
-    components.forEach((component: any): any => gComponentRegistry.register(component));
+    components.forEach(component => gComponentRegistry.register(component));
     // IMPORTANT ^^^^^ UPDATE ENTITY COMPONENT STORAGE AFTERWARDS
     // Sanity check - If this is thrown, you forgot to add a new component here
     assert(

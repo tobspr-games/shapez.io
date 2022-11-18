@@ -5,8 +5,8 @@ import { Entity } from "./entity";
 import { MapChunk } from "./map_chunk";
 import { GameRoot } from "./root";
 import { THEME } from "./theme";
-export const CHUNK_OVERLAY_RES: any = 3;
-export const MOD_CHUNK_DRAW_HOOKS: any = {
+export const CHUNK_OVERLAY_RES = 3;
+export const MOD_CHUNK_DRAW_HOOKS = {
     backgroundLayerBefore: [],
     backgroundLayerAfter: [],
     foregroundDynamicBefore: [],
@@ -24,7 +24,7 @@ export class MapChunkView extends MapChunk {
     /**
      * Marks this chunk as dirty, rerendering all caches
      */
-    markDirty(): any {
+    markDirty() {
         ++this.renderIteration;
         this.renderKey = this.x + "/" + this.y + "@" + this.renderIteration;
         this.root.map.getAggregateForChunk(this.x, this.y, true).markDirty(this.x, this.y);
@@ -32,9 +32,9 @@ export class MapChunkView extends MapChunk {
     /**
      * Draws the background layer
      */
-    drawBackgroundLayer(parameters: DrawParameters): any {
-        const systems: any = this.root.systemMgr.systems;
-        MOD_CHUNK_DRAW_HOOKS.backgroundLayerBefore.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+    drawBackgroundLayer(parameters: DrawParameters) {
+        const systems = this.root.systemMgr.systems;
+        MOD_CHUNK_DRAW_HOOKS.backgroundLayerBefore.forEach(systemId => systems[systemId].drawChunk(parameters, this));
         if (systems.zone) {
             systems.zone.drawChunk(parameters, this);
         }
@@ -43,25 +43,25 @@ export class MapChunkView extends MapChunk {
         }
         systems.beltUnderlays.drawChunk(parameters, this);
         systems.belt.drawChunk(parameters, this);
-        MOD_CHUNK_DRAW_HOOKS.backgroundLayerAfter.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+        MOD_CHUNK_DRAW_HOOKS.backgroundLayerAfter.forEach(systemId => systems[systemId].drawChunk(parameters, this));
     }
     /**
      * Draws the dynamic foreground layer
      */
-    drawForegroundDynamicLayer(parameters: DrawParameters): any {
-        const systems: any = this.root.systemMgr.systems;
-        MOD_CHUNK_DRAW_HOOKS.foregroundDynamicBefore.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+    drawForegroundDynamicLayer(parameters: DrawParameters) {
+        const systems = this.root.systemMgr.systems;
+        MOD_CHUNK_DRAW_HOOKS.foregroundDynamicBefore.forEach(systemId => systems[systemId].drawChunk(parameters, this));
         systems.itemEjector.drawChunk(parameters, this);
         systems.itemAcceptor.drawChunk(parameters, this);
         systems.miner.drawChunk(parameters, this);
-        MOD_CHUNK_DRAW_HOOKS.foregroundDynamicAfter.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+        MOD_CHUNK_DRAW_HOOKS.foregroundDynamicAfter.forEach(systemId => systems[systemId].drawChunk(parameters, this));
     }
     /**
      * Draws the static foreground layer
      */
-    drawForegroundStaticLayer(parameters: DrawParameters): any {
-        const systems: any = this.root.systemMgr.systems;
-        MOD_CHUNK_DRAW_HOOKS.staticBefore.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+    drawForegroundStaticLayer(parameters: DrawParameters) {
+        const systems = this.root.systemMgr.systems;
+        MOD_CHUNK_DRAW_HOOKS.staticBefore.forEach(systemId => systems[systemId].drawChunk(parameters, this));
         systems.staticMapEntities.drawChunk(parameters, this);
         systems.lever.drawChunk(parameters, this);
         systems.display.drawChunk(parameters, this);
@@ -69,19 +69,19 @@ export class MapChunkView extends MapChunk {
         systems.constantProducer.drawChunk(parameters, this);
         systems.goalAcceptor.drawChunk(parameters, this);
         systems.itemProcessorOverlays.drawChunk(parameters, this);
-        MOD_CHUNK_DRAW_HOOKS.staticAfter.forEach((systemId: any): any => systems[systemId].drawChunk(parameters, this));
+        MOD_CHUNK_DRAW_HOOKS.staticAfter.forEach(systemId => systems[systemId].drawChunk(parameters, this));
     }
-        drawOverlayPatches(parameters: DrawParameters, xoffs: number, yoffs: number, diameter: number): any {
-        for (let i: any = 0; i < this.patches.length; ++i) {
-            const patch: any = this.patches[i];
+        drawOverlayPatches(parameters: DrawParameters, xoffs: number, yoffs: number, diameter: number) {
+        for (let i = 0; i < this.patches.length; ++i) {
+            const patch = this.patches[i];
             if (patch.item.getItemType() === "shape") {
-                const destX: any = xoffs + patch.pos.x * globalConfig.tileSize;
-                const destY: any = yoffs + patch.pos.y * globalConfig.tileSize;
+                const destX = xoffs + patch.pos.x * globalConfig.tileSize;
+                const destY = yoffs + patch.pos.y * globalConfig.tileSize;
                 patch.item.drawItemCenteredClipped(destX, destY, parameters, diameter);
             }
         }
     }
-        generateOverlayBuffer(context: CanvasRenderingContext2D, w: number, h: number, xoffs: number=, yoffs: number=): any {
+        generateOverlayBuffer(context: CanvasRenderingContext2D, w: number, h: number, xoffs: number=, yoffs: number=) {
         context.fillStyle =
             this.containedEntities.length > 0
                 ? THEME.map.chunkOverview.filled
@@ -92,27 +92,27 @@ export class MapChunkView extends MapChunk {
             context.fillRect(xoffs, yoffs, w, 1);
             context.fillRect(xoffs, yoffs + 1, 1, h);
         }
-        for (let x: any = 0; x < globalConfig.mapChunkSize; ++x) {
-            const lowerArray: any = this.lowerLayer[x];
-            const upperArray: any = this.contents[x];
-            for (let y: any = 0; y < globalConfig.mapChunkSize; ++y) {
-                const upperContent: any = upperArray[y];
+        for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+            const lowerArray = this.lowerLayer[x];
+            const upperArray = this.contents[x];
+            for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+                const upperContent = upperArray[y];
                 if (upperContent) {
-                    const staticComp: any = upperContent.components.StaticMapEntity;
-                    const data: any = getBuildingDataFromCode(staticComp.code);
-                    const metaBuilding: any = data.metaInstance;
-                    const overlayMatrix: any = metaBuilding.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, upperContent);
+                    const staticComp = upperContent.components.StaticMapEntity;
+                    const data = getBuildingDataFromCode(staticComp.code);
+                    const metaBuilding = data.metaInstance;
+                    const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, upperContent);
                     if (overlayMatrix) {
                         // Draw lower content first since it "shines" through
-                        const lowerContent: any = lowerArray[y];
+                        const lowerContent = lowerArray[y];
                         if (lowerContent) {
                             context.fillStyle = lowerContent.getBackgroundColorAsResource();
                             context.fillRect(xoffs + x * CHUNK_OVERLAY_RES, yoffs + y * CHUNK_OVERLAY_RES, CHUNK_OVERLAY_RES, CHUNK_OVERLAY_RES);
                         }
                         context.fillStyle = metaBuilding.getSilhouetteColor(data.variant, data.rotationVariant);
-                        for (let dx: any = 0; dx < 3; ++dx) {
-                            for (let dy: any = 0; dy < 3; ++dy) {
-                                const isFilled: any = overlayMatrix[dx + dy * 3];
+                        for (let dx = 0; dx < 3; ++dx) {
+                            for (let dy = 0; dy < 3; ++dy) {
+                                const isFilled = overlayMatrix[dx + dy * 3];
                                 if (isFilled) {
                                     context.fillRect(xoffs + x * CHUNK_OVERLAY_RES + dx, yoffs + y * CHUNK_OVERLAY_RES + dy, 1, 1);
                                 }
@@ -126,7 +126,7 @@ export class MapChunkView extends MapChunk {
                         continue;
                     }
                 }
-                const lowerContent: any = lowerArray[y];
+                const lowerContent = lowerArray[y];
                 if (lowerContent) {
                     context.fillStyle = lowerContent.getBackgroundColorAsResource();
                     context.fillRect(xoffs + x * CHUNK_OVERLAY_RES, yoffs + y * CHUNK_OVERLAY_RES, CHUNK_OVERLAY_RES, CHUNK_OVERLAY_RES);
@@ -137,10 +137,10 @@ export class MapChunkView extends MapChunk {
             // Draw wires overlay
             context.fillStyle = THEME.map.wires.overlayColor;
             context.fillRect(xoffs, yoffs, w, h);
-            for (let x: any = 0; x < globalConfig.mapChunkSize; ++x) {
-                const wiresArray: any = this.wireContents[x];
-                for (let y: any = 0; y < globalConfig.mapChunkSize; ++y) {
-                    const content: any = wiresArray[y];
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const wiresArray = this.wireContents[x];
+                for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+                    const content = wiresArray[y];
                     if (!content) {
                         continue;
                     }
@@ -162,17 +162,17 @@ export class MapChunkView extends MapChunk {
         entity: Entity;
         tileSizePixels: number;
         overrideColor: string=;
-    }): any {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const data: any = getBuildingDataFromCode(staticComp.code);
-        const metaBuilding: any = data.metaInstance;
-        const overlayMatrix: any = metaBuilding.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, entity);
+    }) {
+        const staticComp = entity.components.StaticMapEntity;
+        const data = getBuildingDataFromCode(staticComp.code);
+        const metaBuilding = data.metaInstance;
+        const overlayMatrix = metaBuilding.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, entity);
         context.fillStyle =
             overrideColor || metaBuilding.getSilhouetteColor(data.variant, data.rotationVariant);
         if (overlayMatrix) {
-            for (let dx: any = 0; dx < 3; ++dx) {
-                for (let dy: any = 0; dy < 3; ++dy) {
-                    const isFilled: any = overlayMatrix[dx + dy * 3];
+            for (let dx = 0; dx < 3; ++dx) {
+                for (let dy = 0; dy < 3; ++dy) {
+                    const isFilled = overlayMatrix[dx + dy * 3];
                     if (isFilled) {
                         context.fillRect(x + (dx * tileSizePixels) / CHUNK_OVERLAY_RES, y + (dy * tileSizePixels) / CHUNK_OVERLAY_RES, tileSizePixels / CHUNK_OVERLAY_RES, tileSizePixels / CHUNK_OVERLAY_RES);
                     }
@@ -186,8 +186,8 @@ export class MapChunkView extends MapChunk {
     /**
      * Draws the wires layer
      */
-    drawWiresForegroundLayer(parameters: DrawParameters): any {
-        const systems: any = this.root.systemMgr.systems;
+    drawWiresForegroundLayer(parameters: DrawParameters) {
+        const systems = this.root.systemMgr.systems;
         systems.wire.drawChunk(parameters, this);
         systems.staticMapEntities.drawWiresChunk(parameters, this);
         systems.wiredPins.drawChunk(parameters, this);

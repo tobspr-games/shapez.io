@@ -24,7 +24,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Initializes the logic
      * @see BaseHUDPart.initialize
      */
-    initialize(): any {
+    initialize() {
         /**
          * We use a fake entity to get information about how a building will look
          * once placed
@@ -55,7 +55,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         /**
          * Current building variant
          */
-        this.currentVariant = new TrackedState((): any => this.signals.variantChanged.dispatch());
+        this.currentVariant = new TrackedState(() => this.signals.variantChanged.dispatch());
         /**
          * Whether we are currently drag-deleting
          */
@@ -83,9 +83,9 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Initializes all bindings
      */
-    initializeBindings(): any {
+    initializeBindings() {
         // KEYBINDINGS
-        const keyActionMapper: any = this.root.keyMapper;
+        const keyActionMapper = this.root.keyMapper;
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateWhilePlacing).add(this.tryRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToUp).add(this.trySetRotate, this);
         keyActionMapper.getBinding(KEYMAPPINGS.placement.rotateToDown).add(this.trySetRotate, this);
@@ -101,8 +101,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         // BINDINGS TO GAME EVENTS
         this.root.hud.signals.buildingsSelectedForCopy.add(this.abortPlacement, this);
         this.root.hud.signals.pasteBlueprintRequested.add(this.abortPlacement, this);
-        this.root.signals.storyGoalCompleted.add((): any => this.signals.variantChanged.dispatch());
-        this.root.signals.upgradePurchased.add((): any => this.signals.variantChanged.dispatch());
+        this.root.signals.storyGoalCompleted.add(() => this.signals.variantChanged.dispatch());
+        this.root.signals.upgradePurchased.add(() => this.signals.variantChanged.dispatch());
         this.root.signals.editModeChanged.add(this.onEditModeChanged, this);
         // MOUSE BINDINGS
         this.root.camera.downPreHandler.add(this.onMouseDown, this);
@@ -112,8 +112,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Called when the edit mode got changed
      */
-    onEditModeChanged(layer: Layer): any {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+    onEditModeChanged(layer: Layer) {
+        const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding) {
             if (metaBuilding.getLayer() !== layer) {
                 // This layer doesn't fit the edit mode anymore
@@ -129,7 +129,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (!this.root.app.settings.getAllSettings().rotationByBuilding) {
             return this.currentBaseRotationGeneral;
         }
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         if (metaBuilding && this.preferredBaseRotations.hasOwnProperty(metaBuilding.getId())) {
             return this.preferredBaseRotations[metaBuilding.getId()];
         }
@@ -145,7 +145,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             this.currentBaseRotationGeneral = rotation;
         }
         else {
-            const metaBuilding: any = this.currentMetaBuilding.get();
+            const metaBuilding = this.currentMetaBuilding.get();
             if (metaBuilding) {
                 this.preferredBaseRotations[metaBuilding.getId()] = rotation;
             }
@@ -159,7 +159,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * {}
      */
     get isDirectionLockActive() {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         return (metaBuilding &&
             metaBuilding.getHasDirectionLockAvailable(this.currentVariant.get()) &&
             this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).pressed);
@@ -170,7 +170,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * {}
      */
     get currentDirectionLockCorner() {
-        const mousePosition: any = this.root.app.mousePosition;
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return null;
@@ -180,11 +180,11 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             return null;
         }
         // Figure which points the line visits
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile: any = worldPos.toTileSpace();
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = worldPos.toTileSpace();
         // Figure initial direction
-        const dx: any = Math.abs(this.lastDragTile.x - mouseTile.x);
-        const dy: any = Math.abs(this.lastDragTile.y - mouseTile.y);
+        const dx = Math.abs(this.lastDragTile.x - mouseTile.x);
+        const dy = Math.abs(this.lastDragTile.y - mouseTile.y);
         if (dx === 0 && dy === 0) {
             // Back at the start. Try a new direction.
             this.currentDirectionLockSideIndeterminate = true;
@@ -203,7 +203,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Aborts the placement
      */
-    abortPlacement(): any {
+    abortPlacement() {
         if (this.currentMetaBuilding.get()) {
             this.currentMetaBuilding.set(null);
             return STOP_PROPAGATION;
@@ -212,7 +212,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Aborts any dragging
      */
-    abortDragging(): any {
+    abortDragging() {
         this.currentlyDragging = true;
         this.currentlyDeleting = false;
         this.initialPlacementVector = null;
@@ -221,14 +221,14 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * @see BaseHUDPart.update
      */
-    update(): any {
+    update() {
         // Abort placement if a dialog was shown in the meantime
         if (this.root.hud.hasBlockingOverlayOpen()) {
             this.abortPlacement();
             return;
         }
         // Always update since the camera might have moved
-        const mousePos: any = this.root.app.mousePosition;
+        const mousePos = this.root.app.mousePosition;
         if (mousePos) {
             this.onMouseMove(mousePos);
         }
@@ -242,8 +242,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Tries to rotate the current building
      */
-    tryRotate(): any {
-        const selectedBuilding: any = this.currentMetaBuilding.get();
+    tryRotate() {
+        const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed) {
                 this.currentBaseRotation = (this.currentBaseRotation + 270) % 360;
@@ -251,15 +251,15 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             else {
                 this.currentBaseRotation = (this.currentBaseRotation + 90) % 360;
             }
-            const staticComp: any = this.fakeEntity.components.StaticMapEntity;
+            const staticComp = this.fakeEntity.components.StaticMapEntity;
             staticComp.rotation = this.currentBaseRotation;
         }
     }
     /**
      * Rotates the current building to the specified direction.
      */
-    trySetRotate(): any {
-        const selectedBuilding: any = this.currentMetaBuilding.get();
+    trySetRotate() {
+        const selectedBuilding = this.currentMetaBuilding.get();
         if (selectedBuilding) {
             if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToUp).pressed) {
                 this.currentBaseRotation = 0;
@@ -273,22 +273,22 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             else if (this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateToLeft).pressed) {
                 this.currentBaseRotation = 270;
             }
-            const staticComp: any = this.fakeEntity.components.StaticMapEntity;
+            const staticComp = this.fakeEntity.components.StaticMapEntity;
             staticComp.rotation = this.currentBaseRotation;
         }
     }
     /**
      * Tries to delete the building under the mouse
      */
-    deleteBelowCursor(): any {
-        const mousePosition: any = this.root.app.mousePosition;
+    deleteBelowCursor() {
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return false;
         }
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        const tile: any = worldPos.toTileSpace();
-        const contents: any = this.root.map.getTileContent(tile, this.root.currentLayer);
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
         if (contents) {
             if (this.root.logic.tryDeleteBuilding(contents)) {
                 this.root.soundProxy.playUi(SOUNDS.destroyBuilding);
@@ -300,21 +300,21 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Starts the pipette function
      */
-    startPipette(): any {
+    startPipette() {
         // Disable in overview
         if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }
-        const mousePosition: any = this.root.app.mousePosition;
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return;
         }
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        const tile: any = worldPos.toTileSpace();
-        const contents: any = this.root.map.getTileContent(tile, this.root.currentLayer);
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const tile = worldPos.toTileSpace();
+        const contents = this.root.map.getTileContent(tile, this.root.currentLayer);
         if (!contents) {
-            const tileBelow: any = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
+            const tileBelow = this.root.map.getLowerLayerContentXY(tile.x, tile.y);
             // Check if there's a shape or color item below, if so select the miner
             if (tileBelow &&
                 this.root.app.settings.getAllSettings().pickMinerOnPatch &&
@@ -332,8 +332,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             return;
         }
         // Try to extract the building
-        const buildingCode: any = contents.components.StaticMapEntity.code;
-        const extracted: any = getBuildingDataFromCode(buildingCode);
+        const buildingCode = contents.components.StaticMapEntity.code;
+        const extracted = getBuildingDataFromCode(buildingCode);
         // Disable pipetting the hub
         if (extracted.metaInstance.getId() === gMetaBuildingRegistry.findByClass(MetaHubBuilding).getId()) {
             this.currentMetaBuilding.set(null);
@@ -358,13 +358,13 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Switches the side for the direction lock manually
      */
-    switchDirectionLockSide(): any {
+    switchDirectionLockSide() {
         this.currentDirectionLockSide = 1 - this.currentDirectionLockSide;
     }
     /**
      * Checks if the direction lock key got released and if such, resets the placement
      */
-    checkForDirectionLockSwitch({ keyCode }: any): any {
+    checkForDirectionLockSwitch({ keyCode }: any) {
         if (keyCode ===
             this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.lockBeltDirection).keyCode) {
             this.abortDragging();
@@ -373,20 +373,20 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Tries to place the current building at the given tile
      */
-    tryPlaceCurrentBuildingAt(tile: Vector): any {
+    tryPlaceCurrentBuildingAt(tile: Vector) {
         if (this.root.camera.getIsMapOverlayActive()) {
             // Dont allow placing in overview mode
             return;
         }
-        const metaBuilding: any = this.currentMetaBuilding.get();
-        const { rotation, rotationVariant }: any = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+        const metaBuilding = this.currentMetaBuilding.get();
+        const { rotation, rotationVariant } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
             root: this.root,
             tile,
             rotation: this.currentBaseRotation,
             variant: this.currentVariant.get(),
             layer: metaBuilding.getLayer(),
         });
-        const entity: any = this.root.logic.tryPlaceBuilding({
+        const entity = this.root.logic.tryPlaceBuilding({
             origin: tile,
             rotation,
             rotationVariant,
@@ -418,32 +418,32 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Cycles through the variants
      */
-    cycleVariants(): any {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+    cycleVariants() {
+        const metaBuilding = this.currentMetaBuilding.get();
         if (!metaBuilding) {
             this.currentVariant.set(defaultBuildingVariant);
         }
         else {
-            const availableVariants: any = metaBuilding.getAvailableVariants(this.root);
-            let index: any = availableVariants.indexOf(this.currentVariant.get());
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            let index = availableVariants.indexOf(this.currentVariant.get());
             if (index < 0) {
                 index = 0;
                 console.warn("Invalid variant selected:", this.currentVariant.get());
             }
-            const direction: any = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
+            const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier)
                 .pressed
                 ? -1
                 : 1;
-            const newIndex: any = safeModulo(index + direction, availableVariants.length);
-            const newVariant: any = availableVariants[newIndex];
+            const newIndex = safeModulo(index + direction, availableVariants.length);
+            const newVariant = availableVariants[newIndex];
             this.setVariant(newVariant);
         }
     }
     /**
      * Sets the current variant to the given variant
      */
-    setVariant(variant: string): any {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+    setVariant(variant: string) {
+        const metaBuilding = this.currentMetaBuilding.get();
         this.currentVariant.set(variant);
         this.preferredVariants[metaBuilding.getId()] = variant;
     }
@@ -451,20 +451,20 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
      * Performs the direction locked placement between two points after
      * releasing the mouse
      */
-    executeDirectionLockedPlacement(): any {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+    executeDirectionLockedPlacement() {
+        const metaBuilding = this.currentMetaBuilding.get();
         if (!metaBuilding) {
             // No active building
             return;
         }
         // Get path to place
-        const path: any = this.computeDirectionLockPath();
+        const path = this.computeDirectionLockPath();
         // Store if we placed anything
-        let anythingPlaced: any = false;
+        let anythingPlaced = false;
         // Perform this in bulk to avoid recalculations
-        this.root.logic.performBulkOperation((): any => {
-            for (let i: any = 0; i < path.length; ++i) {
-                const { rotation, tile }: any = path[i];
+        this.root.logic.performBulkOperation(() => {
+            for (let i = 0; i < path.length; ++i) {
+                const { rotation, tile } = path[i];
                 this.currentBaseRotation = rotation;
                 if (this.tryPlaceCurrentBuildingAt(tile)) {
                     anythingPlaced = true;
@@ -483,30 +483,30 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         tile: Vector;
         rotation: number;
     }> {
-        const mousePosition: any = this.root.app.mousePosition;
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return [];
         }
-        let result: any = [];
+        let result = [];
         // Figure which points the line visits
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        let endTile: any = worldPos.toTileSpace();
-        let startTile: any = this.lastDragTile;
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        let endTile = worldPos.toTileSpace();
+        let startTile = this.lastDragTile;
         // if the alt key is pressed, reverse belt planner direction by switching start and end tile
         if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
-            let tmp: any = startTile;
+            let tmp = startTile;
             startTile = endTile;
             endTile = tmp;
         }
         // Place from start to corner
-        const pathToCorner: any = this.currentDirectionLockCorner.sub(startTile);
-        const deltaToCorner: any = pathToCorner.normalize().round();
-        const lengthToCorner: any = Math.round(pathToCorner.length());
-        let currentPos: any = startTile.copy();
-        let rotation: any = (Math.round(Math.degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
+        const pathToCorner = this.currentDirectionLockCorner.sub(startTile);
+        const deltaToCorner = pathToCorner.normalize().round();
+        const lengthToCorner = Math.round(pathToCorner.length());
+        let currentPos = startTile.copy();
+        let rotation = (Math.round(Math.degrees(deltaToCorner.angle()) / 90) * 90 + 360) % 360;
         if (lengthToCorner > 0) {
-            for (let i: any = 0; i < lengthToCorner; ++i) {
+            for (let i = 0; i < lengthToCorner; ++i) {
                 result.push({
                     tile: currentPos.copy(),
                     rotation,
@@ -515,12 +515,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
             }
         }
         // Place from corner to end
-        const pathFromCorner: any = endTile.sub(this.currentDirectionLockCorner);
-        const deltaFromCorner: any = pathFromCorner.normalize().round();
-        const lengthFromCorner: any = Math.round(pathFromCorner.length());
+        const pathFromCorner = endTile.sub(this.currentDirectionLockCorner);
+        const deltaFromCorner = pathFromCorner.normalize().round();
+        const lengthFromCorner = Math.round(pathFromCorner.length());
         if (lengthFromCorner > 0) {
             rotation = (Math.round(Math.degrees(deltaFromCorner.angle()) / 90) * 90 + 360) % 360;
-            for (let i: any = 0; i < lengthFromCorner + 1; ++i) {
+            for (let i = 0; i < lengthFromCorner + 1; ++i) {
                 result.push({
                     tile: currentPos.copy(),
                     rotation,
@@ -540,20 +540,20 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Selects a given building
      */
-    startSelection(metaBuilding: MetaBuilding): any {
+    startSelection(metaBuilding: MetaBuilding) {
         this.currentMetaBuilding.set(metaBuilding);
     }
     /**
      * Called when the selected buildings changed
      */
-    onSelectedMetaBuildingChanged(metaBuilding: MetaBuilding): any {
+    onSelectedMetaBuildingChanged(metaBuilding: MetaBuilding) {
         this.abortDragging();
         this.root.hud.signals.selectedPlacementBuildingChanged.dispatch(metaBuilding);
         if (metaBuilding) {
-            const availableVariants: any = metaBuilding.getAvailableVariants(this.root);
-            const preferredVariant: any = this.preferredVariants[metaBuilding.getId()];
+            const availableVariants = metaBuilding.getAvailableVariants(this.root);
+            const preferredVariant = this.preferredVariants[metaBuilding.getId()];
             // Choose last stored variant if possible, otherwise the default one
-            let variant: any;
+            let variant;
             if (!preferredVariant || !availableVariants.includes(preferredVariant)) {
                 variant = availableVariants[0];
             }
@@ -580,12 +580,12 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * mouse down pre handler
      */
-    onMouseDown(pos: Vector, button: enumMouseButton): any {
+    onMouseDown(pos: Vector, button: enumMouseButton) {
         if (this.root.camera.getIsMapOverlayActive()) {
             // We do not allow dragging if the overlay is active
             return;
         }
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         // Placement
         if (button === enumMouseButton.left && metaBuilding) {
             this.currentlyDragging = true;
@@ -617,7 +617,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * mouse move pre handler
      */
-    onMouseMove(pos: Vector): any {
+    onMouseMove(pos: Vector) {
         if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }
@@ -625,10 +625,10 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
         if (this.isDirectionLockActive) {
             return;
         }
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         if ((metaBuilding || this.currentlyDeleting) && this.lastDragTile) {
-            const oldPos: any = this.lastDragTile;
-            let newPos: any = this.root.camera.screenToWorld(pos).toTileSpace();
+            const oldPos = this.lastDragTile;
+            let newPos = this.root.camera.screenToWorld(pos).toTileSpace();
             // Check if camera is moving, since then we do nothing
             if (this.root.camera.desiredCenter) {
                 this.lastDragTile = newPos;
@@ -640,8 +640,8 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                 if (metaBuilding &&
                     metaBuilding.getRotateAutomaticallyWhilePlacing(this.currentVariant.get()) &&
                     !this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placementDisableAutoOrientation).pressed) {
-                    const delta: any = newPos.sub(oldPos);
-                    const angleDeg: any = Math.degrees(delta.angle());
+                    const delta = newPos.sub(oldPos);
+                    const angleDeg = Math.degrees(delta.angle());
                     this.currentBaseRotation = (Math.round(angleDeg / 90) * 90 + 360) % 360;
                     // Holding alt inverts the placement
                     if (this.root.keyMapper.getBinding(KEYMAPPINGS.placementModifiers.placeInverse).pressed) {
@@ -649,21 +649,21 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     }
                 }
                 // bresenham
-                let x0: any = oldPos.x;
-                let y0: any = oldPos.y;
-                let x1: any = newPos.x;
-                let y1: any = newPos.y;
-                var dx: any = Math.abs(x1 - x0);
-                var dy: any = Math.abs(y1 - y0);
-                var sx: any = x0 < x1 ? 1 : -1;
-                var sy: any = y0 < y1 ? 1 : -1;
-                var err: any = dx - dy;
-                let anythingPlaced: any = false;
-                let anythingDeleted: any = false;
+                let x0 = oldPos.x;
+                let y0 = oldPos.y;
+                let x1 = newPos.x;
+                let y1 = newPos.y;
+                var dx = Math.abs(x1 - x0);
+                var dy = Math.abs(y1 - y0);
+                var sx = x0 < x1 ? 1 : -1;
+                var sy = y0 < y1 ? 1 : -1;
+                var err = dx - dy;
+                let anythingPlaced = false;
+                let anythingDeleted = false;
                 while (this.currentlyDeleting || this.currentMetaBuilding.get()) {
                     if (this.currentlyDeleting) {
                         // Deletion
-                        const contents: any = this.root.map.getLayerContentXY(x0, y0, this.root.currentLayer);
+                        const contents = this.root.map.getLayerContentXY(x0, y0, this.root.currentLayer);
                         if (contents && !contents.queuedForDestroy && !contents.destroyed) {
                             if (this.root.logic.tryDeleteBuilding(contents)) {
                                 anythingDeleted = true;
@@ -678,7 +678,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
                     }
                     if (x0 === x1 && y0 === y1)
                         break;
-                    var e2: any = 2 * err;
+                    var e2 = 2 * err;
                     if (e2 > -dy) {
                         err -= dy;
                         x0 += sx;
@@ -702,7 +702,7 @@ export class HUDBuildingPlacerLogic extends BaseHUDPart {
     /**
      * Mouse up handler
      */
-    onMouseUp(): any {
+    onMouseUp() {
         if (this.root.camera.getIsMapOverlayActive()) {
             return;
         }

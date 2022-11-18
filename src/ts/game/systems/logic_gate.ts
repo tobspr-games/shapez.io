@@ -26,21 +26,21 @@ export class LogicGateSystem extends GameSystemWithFilter {
     constructor(root) {
         super(root, [LogicGateComponent]);
     }
-    update(): any {
-        for (let i: any = 0; i < this.allEntities.length; ++i) {
-            const entity: any = this.allEntities[i];
-            const logicComp: any = entity.components.LogicGate;
-            const slotComp: any = entity.components.WiredPins;
-            const slotValues: any = [];
+    update() {
+        for (let i = 0; i < this.allEntities.length; ++i) {
+            const entity = this.allEntities[i];
+            const logicComp = entity.components.LogicGate;
+            const slotComp = entity.components.WiredPins;
+            const slotValues = [];
             // Store if any conflict was found
-            let anyConflict: any = false;
+            let anyConflict = false;
             // Gather inputs from all connected networks
-            for (let i: any = 0; i < slotComp.slots.length; ++i) {
-                const slot: any = slotComp.slots[i];
+            for (let i = 0; i < slotComp.slots.length; ++i) {
+                const slot = slotComp.slots[i];
                 if (slot.type !== enumPinSlotType.logicalAcceptor) {
                     continue;
                 }
-                const network: any = slot.linkedNetwork;
+                const network = slot.linkedNetwork;
                 if (network) {
                     if (network.valueConflict) {
                         anyConflict = true;
@@ -54,8 +54,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
             }
             // Handle conflicts
             if (anyConflict) {
-                for (let i: any = 0; i < slotComp.slots.length; ++i) {
-                    const slot: any = slotComp.slots[i];
+                for (let i = 0; i < slotComp.slots.length; ++i) {
+                    const slot = slotComp.slots[i];
                     if (slot.type !== enumPinSlotType.logicalEjector) {
                         continue;
                     }
@@ -64,11 +64,11 @@ export class LogicGateSystem extends GameSystemWithFilter {
                 continue;
             }
             // Compute actual result
-            const result: any = this.boundOperations[logicComp.type](slotValues);
+            const result = this.boundOperations[logicComp.type](slotValues);
             if (Array.isArray(result)) {
-                let resultIndex: any = 0;
-                for (let i: any = 0; i < slotComp.slots.length; ++i) {
-                    const slot: any = slotComp.slots[i];
+                let resultIndex = 0;
+                for (let i = 0; i < slotComp.slots.length; ++i) {
+                    const slot = slotComp.slots[i];
                     if (slot.type !== enumPinSlotType.logicalEjector) {
                         continue;
                     }
@@ -121,8 +121,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
      */
     compute_IF(parameters: Array<BaseItem | null>): BaseItem {
         assert(parameters.length === 2, "bad parameter count for IF");
-        const flag: any = parameters[0];
-        const value: any = parameters[1];
+        const flag = parameters[0];
+        const value = parameters[1];
         // pass through item
         if (isTruthyItem(flag)) {
             return value;
@@ -133,13 +133,13 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * {}
      */
     compute_ROTATE(parameters: Array<BaseItem | null>): BaseItem {
-        const item: any = parameters[0];
+        const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
             return null;
         }
-        const definition: any = (item as ShapeItem).definition;
-        const rotatedDefinitionCW: any = this.root.shapeDefinitionMgr.shapeActionRotateCW(definition);
+        const definition = item as ShapeItem).definition;
+        const rotatedDefinitionCW = this.root.shapeDefinitionMgr.shapeActionRotateCW(definition);
         return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(rotatedDefinitionCW);
     }
     /**
@@ -149,21 +149,21 @@ export class LogicGateSystem extends GameSystemWithFilter {
         BaseItem,
         BaseItem
     ] {
-        const item: any = parameters[0];
+        const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
             return [null, null];
         }
-        const definition: any = (item as ShapeItem).definition;
-        const lowerLayer: any = (definition.layers[0] as import("../shape_definition").ShapeLayer);
+        const definition = item as ShapeItem).definition;
+        const lowerLayer = definition.layers[0] as import("../shape_definition").ShapeLayer);
         if (!lowerLayer) {
             return [null, null];
         }
-        const topRightContent: any = lowerLayer[0];
+        const topRightContent = lowerLayer[0];
         if (!topRightContent || topRightContent.subShape === null) {
             return [null, null];
         }
-        const newDefinition: any = new ShapeDefinition({
+        const newDefinition = new ShapeDefinition({
             layers: [
                 [
                     { subShape: topRightContent.subShape, color: enumColors.uncolored },
@@ -185,13 +185,13 @@ export class LogicGateSystem extends GameSystemWithFilter {
         BaseItem,
         BaseItem
     ] {
-        const item: any = parameters[0];
+        const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
             return [null, null];
         }
-        const definition: any = (item as ShapeItem).definition;
-        const result: any = this.root.shapeDefinitionMgr.shapeActionCutHalf(definition);
+        const definition = item as ShapeItem).definition;
+        const result = this.root.shapeDefinitionMgr.shapeActionCutHalf(definition);
         return [
             result[0].isEntirelyEmpty()
                 ? null
@@ -208,18 +208,18 @@ export class LogicGateSystem extends GameSystemWithFilter {
         BaseItem,
         BaseItem
     ] {
-        const item: any = parameters[0];
+        const item = parameters[0];
         if (!item || item.getItemType() !== "shape") {
             // Not a shape
             return [null, null];
         }
-        const definition: any = (item as ShapeItem).definition;
-        const layers: any = (definition.layers as Array<import("../shape_definition").ShapeLayer>);
-        const upperLayerDefinition: any = new ShapeDefinition({
+        const definition = item as ShapeItem).definition;
+        const layers = definition.layers as Array<import("../shape_definition").ShapeLayer>);
+        const upperLayerDefinition = new ShapeDefinition({
             layers: [layers[layers.length - 1]],
         });
-        const lowerLayers: any = layers.slice(0, layers.length - 1);
-        const lowerLayerDefinition: any = lowerLayers.length > 0 ? new ShapeDefinition({ layers: lowerLayers }) : null;
+        const lowerLayers = layers.slice(0, layers.length - 1);
+        const lowerLayerDefinition = lowerLayers.length > 0 ? new ShapeDefinition({ layers: lowerLayers }) : null;
         return [
             lowerLayerDefinition
                 ? this.root.shapeDefinitionMgr.getShapeItemFromDefinition(lowerLayerDefinition)
@@ -231,8 +231,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * {}
      */
     compute_STACKER(parameters: Array<BaseItem | null>): BaseItem {
-        const lowerItem: any = parameters[0];
-        const upperItem: any = parameters[1];
+        const lowerItem = parameters[0];
+        const upperItem = parameters[1];
         if (!lowerItem || !upperItem) {
             // Empty
             return null;
@@ -241,7 +241,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             // Bad type
             return null;
         }
-        const stackedShape: any = this.root.shapeDefinitionMgr.shapeActionStack(
+        const stackedShape = this.root.shapeDefinitionMgr.shapeActionStack(
         lowerItem as ShapeItem).definition, 
         upperItem as ShapeItem).definition);
         return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(stackedShape);
@@ -250,8 +250,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * {}
      */
     compute_PAINTER(parameters: Array<BaseItem | null>): BaseItem {
-        const shape: any = parameters[0];
-        const color: any = parameters[1];
+        const shape = parameters[0];
+        const color = parameters[1];
         if (!shape || !color) {
             // Empty
             return null;
@@ -260,7 +260,7 @@ export class LogicGateSystem extends GameSystemWithFilter {
             // Bad type
             return null;
         }
-        const coloredShape: any = this.root.shapeDefinitionMgr.shapeActionPaintWith(
+        const coloredShape = this.root.shapeDefinitionMgr.shapeActionPaintWith(
         shape as ShapeItem).definition, 
         color as ColorItem).color);
         return this.root.shapeDefinitionMgr.getShapeItemFromDefinition(coloredShape);
@@ -269,8 +269,8 @@ export class LogicGateSystem extends GameSystemWithFilter {
      * {}
      */
     compute_COMPARE(parameters: Array<BaseItem | null>): BaseItem {
-        const itemA: any = parameters[0];
-        const itemB: any = parameters[1];
+        const itemA = parameters[0];
+        const itemB = parameters[1];
         if (!itemA || !itemB) {
             // Empty
             return null;

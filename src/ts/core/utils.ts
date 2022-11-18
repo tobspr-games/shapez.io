@@ -1,7 +1,7 @@
 import { T } from "../translations";
 import { rando } from "@nastyox/rando.js";
 import { WEB_STEAM_SSO_AUTHENTICATED } from "./steam_sso";
-const bigNumberSuffixTranslationKeys: any = ["thousands", "millions", "billions", "trillions"];
+const bigNumberSuffixTranslationKeys = ["thousands", "millions", "billions", "trillions"];
 /**
  * Returns a platform name
  * {}
@@ -20,8 +20,8 @@ export function getPlatformName(): "android" | "browser" | "ios" | "standalone" 
  * {}
  */
 export function make2DUndefinedArray(w: number, h: number): Array<Array<any>> {
-    const result: any = new Array(w);
-    for (let x: any = 0; x < w; ++x) {
+    const result = new Array(w);
+    for (let x = 0; x < w; ++x) {
         result[x] = new Array(h);
     }
     return result;
@@ -29,21 +29,21 @@ export function make2DUndefinedArray(w: number, h: number): Array<Array<any>> {
 /**
  * Creates a new map (an empty object without any props)
  */
-export function newEmptyMap(): any {
+export function newEmptyMap() {
     return Object.create(null);
 }
 /**
  * Returns a random integer in the range [start,end]
  */
-export function randomInt(start: number, end: number): any {
+export function randomInt(start: number, end: number) {
     return rando(start, end);
 }
 /**
  * Access an object in a very annoying way, used for obsfuscation.
  */
-export function accessNestedPropertyReverse(obj: any, keys: Array<string>): any {
-    let result: any = obj;
-    for (let i: any = keys.length - 1; i >= 0; --i) {
+export function accessNestedPropertyReverse(obj: any, keys: Array<string>) {
+    let result = obj;
+    for (let i = keys.length - 1; i >= 0; --i) {
         result = result[keys[i]];
     }
     return result;
@@ -59,14 +59,14 @@ export function randomChoice(arr: T[]): T {
 /**
  * Deletes from an array by swapping with the last element
  */
-export function fastArrayDelete(array: Array<any>, index: number): any {
+export function fastArrayDelete(array: Array<any>, index: number) {
     if (index < 0 || index >= array.length) {
         throw new Error("Out of bounds");
     }
     // When the element is not the last element
     if (index !== array.length - 1) {
         // Get the last element, and swap it with the one we want to delete
-        const last: any = array[array.length - 1];
+        const last = array[array.length - 1];
         array[index] = last;
     }
     // Finally remove the last element
@@ -76,11 +76,11 @@ export function fastArrayDelete(array: Array<any>, index: number): any {
  * Deletes from an array by swapping with the last element. Searches
  * for the value in the array first
  */
-export function fastArrayDeleteValue(array: Array<any>, value: any): any {
+export function fastArrayDeleteValue(array: Array<any>, value: any) {
     if (array == null) {
         throw new Error("Tried to delete from non array!");
     }
-    const index: any = array.indexOf(value);
+    const index = array.indexOf(value);
     if (index < 0) {
         console.error("Value", value, "not contained in array:", array, "!");
         return value;
@@ -90,11 +90,11 @@ export function fastArrayDeleteValue(array: Array<any>, value: any): any {
 /**
  * @see fastArrayDeleteValue
  */
-export function fastArrayDeleteValueIfContained(array: Array<any>, value: any): any {
+export function fastArrayDeleteValueIfContained(array: Array<any>, value: any) {
     if (array == null) {
         throw new Error("Tried to delete from non array!");
     }
-    const index: any = array.indexOf(value);
+    const index = array.indexOf(value);
     if (index < 0) {
         return value;
     }
@@ -103,7 +103,7 @@ export function fastArrayDeleteValueIfContained(array: Array<any>, value: any): 
 /**
  * Deletes from an array at the given index
  */
-export function arrayDelete(array: Array<any>, index: number): any {
+export function arrayDelete(array: Array<any>, index: number) {
     if (index < 0 || index >= array.length) {
         throw new Error("Out of bounds");
     }
@@ -112,11 +112,11 @@ export function arrayDelete(array: Array<any>, index: number): any {
 /**
  * Deletes the given value from an array
  */
-export function arrayDeleteValue(array: Array<any>, value: any): any {
+export function arrayDeleteValue(array: Array<any>, value: any) {
     if (array == null) {
         throw new Error("Tried to delete from non array!");
     }
-    const index: any = array.indexOf(value);
+    const index = array.indexOf(value);
     if (index < 0) {
         console.error("Value", value, "not contained in array:", array, "!");
         return value;
@@ -127,26 +127,26 @@ export function arrayDeleteValue(array: Array<any>, value: any): any {
  * Compare two floats for epsilon equality
  * {}
  */
-export function epsilonCompare(a: number, b: number, epsilon: any = 1e-5): boolean {
+export function epsilonCompare(a: number, b: number, epsilon = 1e-5): boolean {
     return Math.abs(a - b) < epsilon;
 }
 /**
  * Interpolates two numbers
  */
-export function lerp(a: number, b: number, x: number): any {
+export function lerp(a: number, b: number, x: number) {
     return a * (1 - x) + b * x;
 }
 /**
  * Finds a value which is nice to display, e.g. 15669 -> 15000. Also handles fractional stuff
  */
-export function findNiceValue(num: number): any {
+export function findNiceValue(num: number) {
     if (num > 1e8) {
         return num;
     }
     if (num < 0.00001) {
         return 0;
     }
-    let roundAmount: any = 1;
+    let roundAmount = 1;
     if (num > 50000) {
         roundAmount = 10000;
     }
@@ -168,7 +168,7 @@ export function findNiceValue(num: number): any {
     else if (num > 20) {
         roundAmount = 5;
     }
-    const niceValue: any = Math.floor(num / roundAmount) * roundAmount;
+    const niceValue = Math.floor(num / roundAmount) * roundAmount;
     if (num >= 10) {
         return Math.round(niceValue);
     }
@@ -181,7 +181,7 @@ export function findNiceValue(num: number): any {
  * Finds a nice integer value
  * @see findNiceValue
  */
-export function findNiceIntegerValue(num: number): any {
+export function findNiceIntegerValue(num: number) {
     return Math.ceil(findNiceValue(num));
 }
 /**
@@ -189,7 +189,7 @@ export function findNiceIntegerValue(num: number): any {
  * {}
  */
 export function formatBigNumber(num: number, separator: string= = T.global.decimalSeparator): string {
-    const sign: any = num < 0 ? "-" : "";
+    const sign = num < 0 ? "-" : "";
     num = Math.abs(num);
     if (num > 1e54) {
         return sign + T.global.infinite;
@@ -205,17 +205,17 @@ export function formatBigNumber(num: number, separator: string= = T.global.decim
         return sign + "" + num;
     }
     else {
-        let leadingDigits: any = num;
-        let suffix: any = "";
-        for (let suffixIndex: any = 0; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {
+        let leadingDigits = num;
+        let suffix = "";
+        for (let suffixIndex = 0; suffixIndex < bigNumberSuffixTranslationKeys.length; ++suffixIndex) {
             leadingDigits = leadingDigits / 1000;
             suffix = T.global.suffix[bigNumberSuffixTranslationKeys[suffixIndex]];
             if (leadingDigits < 1000) {
                 break;
             }
         }
-        const leadingDigitsRounded: any = round1Digit(leadingDigits);
-        const leadingDigitsNoTrailingDecimal: any = leadingDigitsRounded
+        const leadingDigitsRounded = round1Digit(leadingDigits);
+        const leadingDigitsNoTrailingDecimal = leadingDigitsRounded
             .toString()
             .replace(".0", "")
             .replace(".", separator);
@@ -233,8 +233,8 @@ export function formatBigNumberFull(num: number, divider: string= = T.global.tho
     if (num > 1e54) {
         return T.global.infinite;
     }
-    let rest: any = num;
-    let out: any = "";
+    let rest = num;
+    let out = "";
     while (rest >= 1000) {
         out = (rest % 1000).toString().padStart(3, "0") + divider + out;
         rest = Math.floor(rest / 1000);
@@ -247,9 +247,9 @@ export function formatBigNumberFull(num: number, divider: string= = T.global.tho
  * {}
  */
 export function waitNextFrame(): Promise<void> {
-    return new Promise(function (resolve: any): any {
-        window.requestAnimationFrame(function (): any {
-            window.requestAnimationFrame(function (): any {
+    return new Promise(function (resolve) {
+        window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
                 resolve();
             });
         });
@@ -286,18 +286,18 @@ export function round4Digits(n: number): number {
 /**
  * Clamps a value between [min, max]
  */
-export function clamp(v: number, minimum: number= = 0, maximum: number= = 1): any {
+export function clamp(v: number, minimum: number= = 0, maximum: number= = 1) {
     return Math.max(minimum, Math.min(maximum, v));
 }
 /**
  * Helper method to create a new div element
  */
-export function makeDivElement(id: string= = null, classes: Array<string>= = [], innerHTML: string= = ""): any {
-    const div: any = document.createElement("div");
+export function makeDivElement(id: string= = null, classes: Array<string>= = [], innerHTML: string= = "") {
+    const div = document.createElement("div");
     if (id) {
         div.id = id;
     }
-    for (let i: any = 0; i < classes.length; ++i) {
+    for (let i = 0; i < classes.length; ++i) {
         div.classList.add(classes[i]);
     }
     div.innerHTML = innerHTML;
@@ -306,17 +306,17 @@ export function makeDivElement(id: string= = null, classes: Array<string>= = [],
 /**
  * Helper method to create a new div
  */
-export function makeDiv(parent: Element, id: string= = null, classes: Array<string>= = [], innerHTML: string= = ""): any {
-    const div: any = makeDivElement(id, classes, innerHTML);
+export function makeDiv(parent: Element, id: string= = null, classes: Array<string>= = [], innerHTML: string= = "") {
+    const div = makeDivElement(id, classes, innerHTML);
     parent.appendChild(div);
     return div;
 }
 /**
  * Helper method to create a new button element
  */
-export function makeButtonElement(classes: Array<string>= = [], innerHTML: string= = ""): any {
-    const element: any = document.createElement("button");
-    for (let i: any = 0; i < classes.length; ++i) {
+export function makeButtonElement(classes: Array<string>= = [], innerHTML: string= = "") {
+    const element = document.createElement("button");
+    for (let i = 0; i < classes.length; ++i) {
         element.classList.add(classes[i]);
     }
     element.classList.add("styledButton");
@@ -326,17 +326,17 @@ export function makeButtonElement(classes: Array<string>= = [], innerHTML: strin
 /**
  * Helper method to create a new button
  */
-export function makeButton(parent: Element, classes: Array<string>= = [], innerHTML: string= = ""): any {
-    const element: any = makeButtonElement(classes, innerHTML);
+export function makeButton(parent: Element, classes: Array<string>= = [], innerHTML: string= = "") {
+    const element = makeButtonElement(classes, innerHTML);
     parent.appendChild(element);
     return element;
 }
 /**
  * Removes all children of the given element
  */
-export function removeAllChildren(elem: Element): any {
+export function removeAllChildren(elem: Element) {
     if (elem) {
-        var range: any = document.createRange();
+        var range = document.createRange();
         range.selectNodeContents(elem);
         range.deleteContents();
     }
@@ -344,7 +344,7 @@ export function removeAllChildren(elem: Element): any {
 /**
  * Returns if the game supports this browser
  */
-export function isSupportedBrowser(): any {
+export function isSupportedBrowser() {
     // please note,
     // that IE11 now returns undefined again for window.chrome
     // and new Opera 30 outputs true for window.chrome
@@ -356,12 +356,12 @@ export function isSupportedBrowser(): any {
         return true;
     }
     // @ts-ignore
-    var isChromium: any = window.chrome;
-    var winNav: any = window.navigator;
-    var vendorName: any = winNav.vendor;
+    var isChromium = window.chrome;
+    var winNav = window.navigator;
+    var vendorName = winNav.vendor;
     // @ts-ignore
-    var isIEedge: any = winNav.userAgent.indexOf("Edge") > -1;
-    var isIOSChrome: any = winNav.userAgent.match("CriOS");
+    var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+    var isIOSChrome = winNav.userAgent.match("CriOS");
     if (isIOSChrome) {
         // is Google Chrome on IOS
         return false;
@@ -383,10 +383,10 @@ export function isSupportedBrowser(): any {
  * {}
  */
 export function formatSecondsToTimeAgo(secs: number): string {
-    const seconds: any = Math.floor(secs);
-    const minutes: any = Math.floor(seconds / 60);
-    const hours: any = Math.floor(minutes / 60);
-    const days: any = Math.floor(hours / 24);
+    const seconds = Math.floor(secs);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
     if (seconds < 60) {
         if (seconds === 1) {
             return T.global.time.oneSecondAgo;
@@ -417,34 +417,34 @@ export function formatSecondsToTimeAgo(secs: number): string {
  * {}
  */
 export function formatSeconds(secs: number): string {
-    const trans: any = T.global.time;
+    const trans = T.global.time;
     secs = Math.ceil(secs);
     if (secs < 60) {
         return trans.secondsShort.replace("<seconds>", "" + secs);
     }
     else if (secs < 60 * 60) {
-        const minutes: any = Math.floor(secs / 60);
-        const seconds: any = secs % 60;
+        const minutes = Math.floor(secs / 60);
+        const seconds = secs % 60;
         return trans.minutesAndSecondsShort
             .replace("<seconds>", "" + seconds)
             .replace("<minutes>", "" + minutes);
     }
     else {
-        const hours: any = Math.floor(secs / 3600);
-        const minutes: any = Math.floor(secs / 60) % 60;
+        const hours = Math.floor(secs / 3600);
+        const minutes = Math.floor(secs / 60) % 60;
         return trans.hoursAndMinutesShort.replace("<minutes>", "" + minutes).replace("<hours>", "" + hours);
     }
 }
 /**
  * Formats a number like 2.51 to "2.5"
  */
-export function round1DigitLocalized(speed: number, separator: string= = T.global.decimalSeparator): any {
+export function round1DigitLocalized(speed: number, separator: string= = T.global.decimalSeparator) {
     return round1Digit(speed).toString().replace(".", separator);
 }
 /**
  * Formats a number like 2.51 to "2.51 items / s"
  */
-export function formatItemsPerSecond(speed: number, double: boolean= = false, separator: string= = T.global.decimalSeparator): any {
+export function formatItemsPerSecond(speed: number, double: boolean= = false, separator: string= = T.global.decimalSeparator) {
     return ((speed === 1.0
         ? T.ingame.buildingPlacement.infoTexts.oneItemPerSecond
         : T.ingame.buildingPlacement.infoTexts.itemsPerSecond.replace("<x>", round2Digits(speed).toString().replace(".", separator))) + (double ? "  " + T.ingame.buildingPlacement.infoTexts.itemsPerSecondDouble : ""));
@@ -462,7 +462,7 @@ export function formatItemsPerSecond(speed: number, double: boolean= = false, se
  * 7 mu
  * 8 ru
  */
-export function rotateFlatMatrix3x3(flatMatrix: Array<number>): any {
+export function rotateFlatMatrix3x3(flatMatrix: Array<number>) {
     return [
         flatMatrix[6],
         flatMatrix[3],
@@ -480,7 +480,7 @@ export function rotateFlatMatrix3x3(flatMatrix: Array<number>): any {
  * {}
  */
 export function generateMatrixRotations(originalMatrix: Array<number>): Object<number, Array<number>> {
-    const result: any = {
+    const result = {
         0: originalMatrix,
     };
     originalMatrix = rotateFlatMatrix3x3(originalMatrix);
@@ -496,8 +496,8 @@ export function generateMatrixRotations(originalMatrix: Array<number>): Object<n
  * Rotates a directional object
  * {}
  */
-export function rotateDirectionalObject(obj: DirectionalObject, rotation: any): DirectionalObject {
-    const queue: any = [obj.top, obj.right, obj.bottom, obj.left];
+export function rotateDirectionalObject(obj: DirectionalObject, rotation): DirectionalObject {
+    const queue = [obj.top, obj.right, obj.bottom, obj.left];
     while (rotation !== 0) {
         rotation -= 90;
         queue.push(queue.shift());
@@ -512,7 +512,7 @@ export function rotateDirectionalObject(obj: DirectionalObject, rotation: any): 
 /**
  * Modulo which works for negative numbers
  */
-export function safeModulo(n: number, m: number): any {
+export function safeModulo(n: number, m: number) {
     return ((n % m) + m) % m;
 }
 /**
@@ -525,7 +525,7 @@ export function smoothPulse(time: number): number {
 /**
  * Fills in a <link> tag
  */
-export function fillInLinkIntoTranslation(translation: string, link: string): any {
+export function fillInLinkIntoTranslation(translation: string, link: string) {
     return translation
         .replace("<link>", "<a href='" + link + "' target='_blank'>")
         .replace("</link>", "</a>");
@@ -533,8 +533,8 @@ export function fillInLinkIntoTranslation(translation: string, link: string): an
 /**
  * Generates a file download
  */
-export function generateFileDownload(filename: string, text: string): any {
-    var element: any = document.createElement("a");
+export function generateFileDownload(filename: string, text: string) {
+    var element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
     element.setAttribute("download", filename);
     element.style.display = "none";
@@ -545,17 +545,17 @@ export function generateFileDownload(filename: string, text: string): any {
 /**
  * Starts a file chooser
  */
-export function startFileChoose(acceptedType: string = ".bin"): any {
-    var input: any = document.createElement("input");
+export function startFileChoose(acceptedType: string = ".bin") {
+    var input = document.createElement("input");
     input.type = "file";
     input.accept = acceptedType;
-    return new Promise((resolve: any): any => {
-        input.onchange = (_: any): any => resolve(input.files[0]);
+    return new Promise(resolve => {
+        input.onchange = _ => resolve(input.files[0]);
         input.click();
     });
 }
-const MAX_ROMAN_NUMBER: any = 49;
-const romanLiteralsCache: any = ["0"];
+const MAX_ROMAN_NUMBER = 49;
+const romanLiteralsCache = ["0"];
 /**
  *
  * {}
@@ -568,7 +568,7 @@ export function getRomanNumber(number: number): string {
     if (number > MAX_ROMAN_NUMBER) {
         return String(number);
     }
-    function formatDigit(digit: any, unit: any, quintuple: any, decuple: any): any {
+    function formatDigit(digit, unit, quintuple, decuple) {
         switch (digit) {
             case 0:
                 return "";
@@ -587,26 +587,26 @@ export function getRomanNumber(number: number): string {
                 return quintuple + formatDigit(digit - 5, unit, quintuple, decuple);
         }
     }
-    let thousands: any = Math.floor(number / 1000);
-    let thousandsPart: any = "";
+    let thousands = Math.floor(number / 1000);
+    let thousandsPart = "";
     while (thousands > 0) {
         thousandsPart += "M";
         thousands -= 1;
     }
-    const hundreds: any = Math.floor((number % 1000) / 100);
-    const hundredsPart: any = formatDigit(hundreds, "C", "D", "M");
-    const tens: any = Math.floor((number % 100) / 10);
-    const tensPart: any = formatDigit(tens, "X", "L", "C");
-    const units: any = number % 10;
-    const unitsPart: any = formatDigit(units, "I", "V", "X");
-    const formatted: any = thousandsPart + hundredsPart + tensPart + unitsPart;
+    const hundreds = Math.floor((number % 1000) / 100);
+    const hundredsPart = formatDigit(hundreds, "C", "D", "M");
+    const tens = Math.floor((number % 100) / 10);
+    const tensPart = formatDigit(tens, "X", "L", "C");
+    const units = number % 10;
+    const unitsPart = formatDigit(units, "I", "V", "X");
+    const formatted = thousandsPart + hundredsPart + tensPart + unitsPart;
     romanLiteralsCache[number] = formatted;
     return formatted;
 }
 /**
  * Returns the appropriate logo sprite path
  */
-export function getLogoSprite(): any {
+export function getLogoSprite() {
     if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return "logo.png";
     }
@@ -618,10 +618,10 @@ export function getLogoSprite(): any {
 /**
  * Rejects a promise after X ms
  */
-export function timeoutPromise(promise: Promise, timeout: any = 30000): any {
+export function timeoutPromise(promise: Promise, timeout = 30000) {
     return Promise.race([
-        new Promise((resolve: any, reject: any): any => {
-            setTimeout((): any => reject("timeout of " + timeout + " ms exceeded"), timeout);
+        new Promise((resolve, reject) => {
+            setTimeout(() => reject("timeout of " + timeout + " ms exceeded"), timeout);
         }),
         promise,
     ]);

@@ -1,6 +1,6 @@
-const queryString: any = require("query-string");
-const options: any = queryString.parse(location.search);
-export let queryParamOptions: any = {
+const queryString = require("query-string");
+const options = queryString.parse(location.search);
+export let queryParamOptions = {
     embedProvider: null,
     abtVariant: null,
     campaign: null,

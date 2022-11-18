@@ -3,10 +3,10 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { typeItemSingleton } from "../item_resolver";
 export class ConstantSignalComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "ConstantSignal";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             signal: types.nullable(typeItemSingleton),
         };
@@ -14,7 +14,7 @@ export class ConstantSignalComponent extends Component {
     /**
      * Copy the current state to another component
      */
-    copyAdditionalStateTo(otherComponent: ConstantSignalComponent): any {
+    copyAdditionalStateTo(otherComponent: ConstantSignalComponent) {
         otherComponent.signal = this.signal;
     }
     public signal = signal;

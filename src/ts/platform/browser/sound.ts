@@ -2,21 +2,21 @@ import { MusicInstanceInterface, SoundInstanceInterface, SoundInterface, MUSIC, 
 import { cachebust } from "../../core/cachebust";
 import { createLogger } from "../../core/logging";
 import { globalConfig } from "../../core/config";
-const { Howl, Howler }: any = require("howler");
-const logger: any = createLogger("sound/browser");
+const { Howl, Howler } = require("howler");
+const logger = createLogger("sound/browser");
 // @ts-ignore
-const sprites: any = require("../../built-temp/sfx.json");
+const sprites = require("../../built-temp/sfx.json");
 class SoundSpritesContainer {
     public howl = null;
     public loadingPromise = null;
 
     constructor() {
     }
-    load(): any {
+    load() {
         if (this.loadingPromise) {
             return this.loadingPromise;
         }
-        return (this.loadingPromise = new Promise((resolve: any): any => {
+        return (this.loadingPromise = new Promise(resolve => {
             this.howl = new Howl({
                 src: cachebust("res/sounds/sfx.mp3"),
                 sprite: sprites.sprite,
@@ -25,27 +25,27 @@ class SoundSpritesContainer {
                 volume: 0,
                 preload: true,
                 pool: 20,
-                onload: (): any => {
+                onload: () => {
                     resolve();
                 },
-                onloaderror: (id: any, err: any): any => {
+                onloaderror: (id, err) => {
                     logger.warn("SFX failed to load:", id, err);
                     this.howl = null;
                     resolve();
                 },
-                onplayerror: (id: any, err: any): any => {
+                onplayerror: (id, err) => {
                     logger.warn("SFX failed to play:", id, err);
                 },
             });
         }));
     }
-    play(volume: any, key: any): any {
+    play(volume, key) {
         if (this.howl) {
-            const instance: any = this.howl.play(key);
+            const instance = this.howl.play(key);
             this.howl.volume(volume, instance);
         }
     }
-    deinitialize(): any {
+    deinitialize() {
         if (this.howl) {
             this.howl.unload();
             this.howl = null;
@@ -62,10 +62,10 @@ class WrappedSoundInstance extends SoundInstanceInterface {
     load(): Promise<void> {
         return this.spriteContainer.load();
     }
-    play(volume: any): any {
+    play(volume) {
         this.spriteContainer.play(volume, this.key);
     }
-    deinitialize(): any {
+    deinitialize() {
         return this.spriteContainer.deinitialize();
     }
 }
@@ -77,8 +77,8 @@ class MusicInstance extends MusicInstanceInterface {
     constructor(key, url) {
         super(key, url);
     }
-    load(): any {
-        return new Promise((resolve: any, reject: any): any => {
+    load() {
+        return new Promise((resolve, reject) => {
             this.howl = new Howl({
                 src: cachebust("res/sounds/music/" + this.url + ".mp3"),
                 autoplay: false,
@@ -87,36 +87,36 @@ class MusicInstance extends MusicInstanceInterface {
                 volume: 1,
                 preload: true,
                 pool: 2,
-                onunlock: (): any => {
+                onunlock: () => {
                     if (this.playing) {
                         logger.log("Playing music after manual unlock");
                         this.play();
                     }
                 },
-                onload: (): any => {
+                onload: () => {
                     resolve();
                 },
-                onloaderror: (id: any, err: any): any => {
+                onloaderror: (id, err) => {
                     logger.warn(this, "Music", this.url, "failed to load:", id, err);
                     this.howl = null;
                     resolve();
                 },
-                onplayerror: (id: any, err: any): any => {
+                onplayerror: (id, err) => {
                     logger.warn(this, "Music", this.url, "failed to play:", id, err);
                 },
             });
         });
     }
-    stop(): any {
+    stop() {
         if (this.howl && this.instance) {
             this.playing = false;
             this.howl.pause(this.instance);
         }
     }
-    isPlaying(): any {
+    isPlaying() {
         return this.playing;
     }
-    play(volume: any): any {
+    play(volume) {
         if (this.howl) {
             this.playing = true;
             this.howl.volume(volume);
@@ -128,12 +128,12 @@ class MusicInstance extends MusicInstanceInterface {
             }
         }
     }
-    setVolume(volume: any): any {
+    setVolume(volume) {
         if (this.howl) {
             this.howl.volume(volume);
         }
     }
-    deinitialize(): any {
+    deinitialize() {
         if (this.howl) {
             this.howl.unload();
             this.howl = null;
@@ -151,18 +151,18 @@ export class SoundImplBrowser extends SoundInterface {
         Howler.pos(0, 0, 0);
         super(app, WrappedSoundInstance, MusicInstance);
     }
-    initialize(): any {
+    initialize() {
         // NOTICE: We override the initialize() method here with custom logic because
         // we have a sound sprites instance
         this.sfxHandle = new SoundSpritesContainer();
         // @ts-ignore
-        const keys: any = Object.values(SOUNDS);
-        keys.forEach((key: any): any => {
+        const keys = Object.values(SOUNDS);
+        keys.forEach(key => {
             this.sounds[key] = new WrappedSoundInstance(this.sfxHandle, key);
         });
-        for (const musicKey: any in MUSIC) {
-            const musicPath: any = MUSIC[musicKey];
-            const music: any = new this.musicClass(musicKey, musicPath);
+        for (const musicKey in MUSIC) {
+            const musicPath = MUSIC[musicKey];
+            const music = new this.musicClass(musicKey, musicPath);
             this.music[musicPath] = music;
         }
         this.musicVolume = this.app.settings.getAllSettings().musicVolume;
@@ -172,7 +172,7 @@ export class SoundImplBrowser extends SoundInterface {
         }
         return Promise.resolve();
     }
-    deinitialize(): any {
-        return super.deinitialize().then((): any => Howler.unload());
+    deinitialize() {
+        return super.deinitialize().then(() => Howler.unload());
     }
 }

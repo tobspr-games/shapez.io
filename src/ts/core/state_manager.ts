@@ -5,7 +5,7 @@ import { GameState } from "./game_state";
 import { createLogger } from "./logging";
 import { waitNextFrame, removeAllChildren } from "./utils";
 import { MOD_SIGNALS } from "../mods/mod_signals";
-const logger: any = createLogger("state_manager");
+const logger = createLogger("state_manager");
 /**
  * This is the main state machine which drives the game states.
  */
@@ -21,18 +21,18 @@ export class StateManager {
     /**
      * Registers a new state class, should be a GameState derived class
      */
-    register(stateClass: object): any {
+    register(stateClass: object) {
         // Create a dummy to retrieve the key
-        const dummy: any = new stateClass();
+        const dummy = new stateClass();
         assert(dummy instanceof GameState, "Not a state!");
-        const key: any = dummy.getKey();
+        const key = dummy.getKey();
         assert(!this.stateClasses[key], `State '${key}' is already registered!`);
         this.stateClasses[key] = stateClass;
     }
     /**
      * Constructs a new state or returns the instance from the cache
      */
-    constructState(key: string): any {
+    constructState(key: string) {
         if (this.stateClasses[key]) {
             return new this.stateClasses[key]();
         }
@@ -41,7 +41,7 @@ export class StateManager {
     /**
      * Moves to a given state
      */
-    moveToState(key: string, payload: any = {}): any {
+    moveToState(key: string, payload = {}) {
         if (window.APP_ERROR_OCCURED) {
             console.warn("Skipping state transition because of application crash");
             return;
@@ -53,7 +53,7 @@ export class StateManager {
             }
             this.currentState.internalLeaveCallback();
             // Remove all references
-            for (const stateKey: any in this.currentState) {
+            for (const stateKey in this.currentState) {
                 if (this.currentState.hasOwnProperty(stateKey)) {
                     delete this.currentState[stateKey];
                 }
@@ -71,13 +71,13 @@ export class StateManager {
         if (this.currentState.getRemovePreviousContent()) {
             document.body.innerHTML = this.currentState.internalGetFullHtml();
         }
-        const dialogParent: any = document.createElement("div");
+        const dialogParent = document.createElement("div");
         dialogParent.classList.add("modalDialogParent");
         document.body.appendChild(dialogParent);
         try {
             this.currentState.internalEnterCallback(payload);
         }
-        catch (ex: any) {
+        catch (ex) {
             console.error(ex);
             throw ex;
         }
@@ -88,7 +88,7 @@ export class StateManager {
             key,
         }, key);
         MOD_SIGNALS.stateEntered.dispatch(this.currentState);
-        waitNextFrame().then((): any => {
+        waitNextFrame().then(() => {
             document.body.classList.add("arrived");
         });
         return true;

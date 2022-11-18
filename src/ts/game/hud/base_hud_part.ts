@@ -13,26 +13,26 @@ export class BaseHUDPart {
     /**
      * Should create all require elements
      */
-    createElements(parent: HTMLElement): any { }
+    createElements(parent: HTMLElement) { }
     /**
      * Should initialize the element, called *after* the elements have been created
      * @abstract
      */
-    initialize(): any {
+    initialize() {
         abstract;
     }
     /**
      * Should update any required logic
      */
-    update(): any { }
+    update() { }
     /**
      * Should draw the hud
      */
-    draw(parameters: DrawParameters): any { }
+    draw(parameters: DrawParameters) { }
     /**
      * Should draw any overlays (screen space)
      */
-    drawOverlays(parameters: DrawParameters): any { }
+    drawOverlays(parameters: DrawParameters) { }
     /**
      * Should return true if the widget has a modal dialog opened and thus
      * the game does not need to update / redraw
@@ -51,21 +51,21 @@ export class BaseHUDPart {
     /**
      * Should return true if this overlay is open and currently blocking any user interaction
      */
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return false;
     }
     /**
      * Cleans up the hud element, if overridden make sure to call super.cleanup
      */
-    cleanup(): any {
+    cleanup() {
         this.cleanupClickDetectors();
     }
     /**
      * Cleans up all click detectors
      */
-    cleanupClickDetectors(): any {
+    cleanupClickDetectors() {
         if (this.clickDetectors) {
-            for (let i: any = 0; i < this.clickDetectors.length; ++i) {
+            for (let i = 0; i < this.clickDetectors.length; ++i) {
                 this.clickDetectors[i].cleanup();
             }
             this.clickDetectors = [];
@@ -74,20 +74,20 @@ export class BaseHUDPart {
     /**
      * Should close the element, in case its supported
      */
-    close(): any { }
+    close() { }
     // Helpers
     /**
      * Helper method to construct a new click detector
      */
-    trackClicks(element: Element, handler: function, args: import("../../core/click_detector").ClickDetectorConstructorArgs= = {}): any {
-        const detector: any = new ClickDetector(element, args);
+    trackClicks(element: Element, handler: function, args: import("../../core/click_detector").ClickDetectorConstructorArgs= = {}) {
+        const detector = new ClickDetector(element, args);
         detector.click.add(handler, this);
         this.registerClickDetector(detector);
     }
     /**
      * Registers a new click detector
      */
-    registerClickDetector(detector: ClickDetector): any {
+    registerClickDetector(detector: ClickDetector) {
         this.clickDetectors.push(detector);
         if (G_IS_DEV) {
             // @ts-ignore
@@ -98,8 +98,8 @@ export class BaseHUDPart {
     /**
      * Closes this element when its background is clicked
      */
-    closeOnBackgroundClick(element: HTMLElement, closeMethod: function = null): any {
-        const bgClickDetector: any = new ClickDetector(element, {
+    closeOnBackgroundClick(element: HTMLElement, closeMethod: function = null) {
+        const bgClickDetector = new ClickDetector(element, {
             preventDefault: true,
             targetOnly: true,
             applyCssClass: null,
@@ -115,14 +115,14 @@ export class BaseHUDPart {
      * Forwards the game speed keybindings so you can toggle pause / Fastforward
      * in the building tooltip and such
      */
-    forwardGameSpeedKeybindings(sourceMapper: KeyActionMapper): any {
+    forwardGameSpeedKeybindings(sourceMapper: KeyActionMapper) {
         sourceMapper.forward(this.root.keyMapper, ["gamespeed_pause", "gamespeed_fastforward"]);
     }
     /**
      * Forwards the map movement keybindings so you can move the map with the
      * arrow keys
      */
-    forwardMapMovementKeybindings(sourceMapper: KeyActionMapper): any {
+    forwardMapMovementKeybindings(sourceMapper: KeyActionMapper) {
         sourceMapper.forward(this.root.keyMapper, [
             "mapMoveUp",
             "mapMoveRight",

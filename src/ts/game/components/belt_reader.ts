@@ -3,15 +3,15 @@ import { BaseItem } from "../base_item";
 import { typeItemSingleton } from "../item_resolver";
 import { types } from "../../savegame/serialization";
 /** @enum {string} */
-export const enumBeltReaderType: any = {
+export const enumBeltReaderType = {
     wired: "wired",
     wireless: "wireless",
 };
 export class BeltReaderComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "BeltReader";
     }
-    static getSchema(): any {
+    static getSchema() {
         return {
             lastItem: types.nullable(typeItemSingleton),
         };
@@ -21,7 +21,7 @@ export class BeltReaderComponent extends Component {
         super();
         this.clear();
     }
-    clear(): any {
+    clear() {
         /**
          * Which items went through the reader, we only store the time
          */

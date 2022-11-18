@@ -13,7 +13,7 @@ import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { PlatformWrapperImplElectron } from "../platform/electron/wrapper";
 import { Savegame } from "../savegame/savegame";
 import { T } from "../translations";
-const trim: any = require("trim");
+const trim = require("trim");
 export type SavegameMetadata = import("../savegame/savegame_typedefs").SavegameMetadata;
 export type EnumSetting = import("../profile/setting_types").EnumSetting;
 
@@ -23,30 +23,30 @@ export class MainMenuState extends GameState {
     constructor() {
         super("MainMenuState");
     }
-    getInnerHTML(): any {
-        const showExitAppButton: any = G_IS_STANDALONE;
-        const showPuzzleDLC: any = G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED;
-        const hasMods: any = MODS.anyModsActive();
-        let showExternalLinks: any = true;
+    getInnerHTML() {
+        const showExitAppButton = G_IS_STANDALONE;
+        const showPuzzleDLC = G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED;
+        const hasMods = MODS.anyModsActive();
+        let showExternalLinks = true;
         if (!G_IS_STANDALONE) {
-            const wrapper: any = (this.app.platformWrapper as PlatformWrapperImplBrowser);
+            const wrapper = this.app.platformWrapper as PlatformWrapperImplBrowser);
             if (!wrapper.embedProvider.externalLinks) {
                 showExternalLinks = false;
             }
         }
-        const showDemoAdvertisement: any = showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
-        const ownsPuzzleDLC: any = WEB_STEAM_SSO_AUTHENTICATED ||
+        const showDemoAdvertisement = showExternalLinks && this.app.restrictionMgr.getIsStandaloneMarketingActive();
+        const ownsPuzzleDLC = WEB_STEAM_SSO_AUTHENTICATED ||
             (G_IS_STANDALONE &&
                 this.app.platformWrapper as PlatformWrapperImplElectron).dlcs.puzzle);
-        const showShapez2: any = showExternalLinks && MODS.mods.length === 0;
-        const bannerHtml: any = `
+        const showShapez2 = showExternalLinks && MODS.mods.length === 0;
+        const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
 
 
             <div class="points">
                 ${Array.from(Object.entries(T.ingame.standaloneAdvantages.points))
             .slice(0, 6)
-            .map(([key, trans]: any): any => `
+            .map(([key, trans]) => `
                 <div class="point ${key}">
                     <strong>${trans.title}</strong>
                     <p>${trans.desc}</p>
@@ -155,7 +155,7 @@ export class MainMenuState extends GameState {
                             </div>
                             <div class="modsList">
                             ${MODS.mods
-                .map((mod: any): any => {
+                .map(mod => {
                 return `
                                     <div class="mod">
                                         <div class="name">${mod.metadata.name}</div>
@@ -252,7 +252,7 @@ export class MainMenuState extends GameState {
     /**
      * Asks the user to import a savegame
      */
-    requestImportSavegame(): any {
+    requestImportSavegame() {
         if (this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
             !this.app.restrictionMgr.getHasUnlimitedSavegames()) {
             this.showSavegameSlotLimit();
@@ -260,33 +260,33 @@ export class MainMenuState extends GameState {
         }
         this.app.gameAnalytics.note("startimport");
         // Create a 'fake' file-input to accept savegames
-        startFileChoose(".bin").then((file: any): any => {
+        startFileChoose(".bin").then(file => {
             if (file) {
-                const closeLoader: any = this.dialogs.showLoadingDialog();
-                waitNextFrame().then((): any => {
-                    const reader: any = new FileReader();
-                    reader.addEventListener("load", (event: any): any => {
-                        const contents: any = event.target.result;
-                        let realContent: any;
+                const closeLoader = this.dialogs.showLoadingDialog();
+                waitNextFrame().then(() => {
+                    const reader = new FileReader();
+                    reader.addEventListener("load", event => {
+                        const contents = event.target.result;
+                        let realContent;
                         try {
                             realContent = ReadWriteProxy.deserializeObject(contents);
                         }
-                        catch (err: any) {
+                        catch (err) {
                             closeLoader();
                             this.dialogs.showWarning(T.dialogs.importSavegameError.title, T.dialogs.importSavegameError.text + "<br><br>" + err);
                             return;
                         }
-                        this.app.savegameMgr.importSavegame(realContent).then((): any => {
+                        this.app.savegameMgr.importSavegame(realContent).then(() => {
                             closeLoader();
                             this.dialogs.showWarning(T.dialogs.importSavegameSuccess.title, T.dialogs.importSavegameSuccess.text);
                             this.renderMainMenu();
                             this.renderSavegames();
-                        }, (err: any): any => {
+                        }, err => {
                             closeLoader();
                             this.dialogs.showWarning(T.dialogs.importSavegameError.title, T.dialogs.importSavegameError.text + ":<br><br>" + err);
                         });
                     });
-                    reader.addEventListener("error", (error: any): any => {
+                    reader.addEventListener("error", error => {
                         this.dialogs.showWarning(T.dialogs.importSavegameError.title, T.dialogs.importSavegameError.text + ":<br><br>" + error);
                     });
                     reader.readAsText(file, "utf-8");
@@ -294,15 +294,15 @@ export class MainMenuState extends GameState {
             }
         });
     }
-    onBackButton(): any {
+    onBackButton() {
         this.app.platformWrapper.exitApp();
     }
-    onEnter(payload: any): any {
+    onEnter(payload) {
         // Start loading already
-        const app: any = this.app;
-        setTimeout((): any => app.backgroundResourceLoader.getIngamePromise(), 10);
+        const app = this.app;
+        setTimeout(() => app.backgroundResourceLoader.getIngamePromise(), 10);
         this.dialogs = new HUDModalDialogs(null, this.app);
-        const dialogsElement: any = document.body.querySelector(".modalDialogParent");
+        const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
         if (payload.loadError) {
             this.dialogs.showWarning(T.dialogs.gameLoadFailure.title, T.dialogs.gameLoadFailure.text + "<br><br>" + payload.loadError);
@@ -312,7 +312,7 @@ export class MainMenuState extends GameState {
             return;
         }
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
-            const games: any = this.app.savegameMgr.getSavegamesMetaData();
+            const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {
                 this.resumeGame(games[0]);
             }
@@ -323,12 +323,12 @@ export class MainMenuState extends GameState {
         // Initialize video
         this.videoElement = this.htmlElement.querySelector("video");
         this.videoElement.playbackRate = 0.9;
-        this.videoElement.addEventListener("canplay", (): any => {
+        this.videoElement.addEventListener("canplay", () => {
             if (this.videoElement) {
                 this.videoElement.classList.add("loaded");
             }
         });
-        const clickHandling: any = {
+        const clickHandling = {
             ".settingsButton": this.onSettingsButtonClicked,
             ".languageChoose": this.onLanguageChooseClicked,
             ".redditLink": this.onRedditClicked,
@@ -340,10 +340,10 @@ export class MainMenuState extends GameState {
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
             ".shapez2": this.onShapez2Clicked,
-            ".discordLink": (): any => {
+            ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
-            ".githubLink": (): any => {
+            ".githubLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.github);
             },
             ".puzzleDlcPlayButton": this.onPuzzleModeButtonClicked,
@@ -351,9 +351,9 @@ export class MainMenuState extends GameState {
             ".wegameDisclaimer > .rating": this.onWegameRatingClicked,
             ".editMods": this.onModsClicked,
         };
-        for (const key: any in clickHandling) {
-            const handler: any = clickHandling[key];
-            const element: any = this.htmlElement.querySelector(key);
+        for (const key in clickHandling) {
+            const handler = clickHandling[key];
+            const element = this.htmlElement.querySelector(key);
             if (element) {
                 this.trackClicks(element, handler, { preventClick: true });
             }
@@ -361,13 +361,13 @@ export class MainMenuState extends GameState {
         this.renderMainMenu();
         this.renderSavegames();
         this.fetchPlayerCount();
-        this.refreshInterval = setInterval((): any => this.fetchPlayerCount(), 10000);
+        this.refreshInterval = setInterval(() => this.fetchPlayerCount(), 10000);
         this.app.gameAnalytics.noteMinor("menu.enter");
     }
-    renderMainMenu(): any {
-        const buttonContainer: any = this.htmlElement.querySelector(".mainContainer .buttons");
+    renderMainMenu() {
+        const buttonContainer = this.htmlElement.querySelector(".mainContainer .buttons");
         removeAllChildren(buttonContainer);
-        const outerDiv: any = makeDivElement(null, ["outer"], null);
+        const outerDiv = makeDivElement(null, ["outer"], null);
         // Import button
         this.trackClicks(makeButton(outerDiv, ["importButton", "styledButton"], T.mainMenu.importSavegame), this.requestImportSavegame);
         if (this.savedGames.length > 0) {
@@ -387,7 +387,7 @@ export class MainMenuState extends GameState {
         this.trackClicks(makeButton(outerDiv, ["modsButton", "styledButton"], T.mods.title), this.onModsClicked);
         buttonContainer.appendChild(outerDiv);
     }
-    fetchPlayerCount(): any {
+    fetchPlayerCount() {
                 const element: HTMLDivElement = this.htmlElement.querySelector(".onlinePlayerCount");
         if (!element) {
             return;
@@ -395,70 +395,70 @@ export class MainMenuState extends GameState {
         fetch("https://analytics.shapez.io/v1/player-count", {
             cache: "no-cache",
         })
-            .then((res: any): any => res.json())
-            .then((count: any): any => {
+            .then(res => res.json())
+            .then(count => {
             element.innerText = T.demoBanners.playerCount.replace("<playerCount>", String(count));
-        }, (ex: any): any => {
+        }, ex => {
             console.warn("Failed to get player count:", ex);
         });
     }
-    onPuzzleModeButtonClicked(force: any = false): any {
-        const hasUnlockedBlueprints: any = this.app.savegameMgr.getSavegamesMetaData().some((s: any): any => s.level >= 12);
+    onPuzzleModeButtonClicked(force = false) {
+        const hasUnlockedBlueprints = this.app.savegameMgr.getSavegamesMetaData().some(s => s.level >= 12);
         if (!force && !hasUnlockedBlueprints) {
-            const { ok }: any = this.dialogs.showWarning(T.dialogs.puzzlePlayRegularRecommendation.title, T.dialogs.puzzlePlayRegularRecommendation.desc, ["cancel:good", "ok:bad:timeout"]);
-            ok.add((): any => this.onPuzzleModeButtonClicked(true));
+            const { ok } = this.dialogs.showWarning(T.dialogs.puzzlePlayRegularRecommendation.title, T.dialogs.puzzlePlayRegularRecommendation.desc, ["cancel:good", "ok:bad:timeout"]);
+            ok.add(() => this.onPuzzleModeButtonClicked(true));
             return;
         }
         this.moveToState("LoginState", {
             nextStateId: "PuzzleMenuState",
         });
     }
-    onPuzzleWishlistButtonClicked(): any {
+    onPuzzleWishlistButtonClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.puzzleDlcStorePage);
     }
-    onShapez2Clicked(): any {
+    onShapez2Clicked() {
         this.app.platformWrapper.openExternalLink("https://tobspr.io/shapez-2?utm_medium=shapez");
     }
-    onBackButtonClicked(): any {
+    onBackButtonClicked() {
         this.renderMainMenu();
         this.renderSavegames();
     }
-    onSteamLinkClicked(): any {
+    onSteamLinkClicked() {
         openStandaloneLink(this.app, "shapez_mainmenu");
         return false;
     }
-    onSteamLinkClickedSocial(): any {
+    onSteamLinkClickedSocial() {
         openStandaloneLink(this.app, "shapez_mainmenu_social");
         return false;
     }
-    onExitAppButtonClicked(): any {
+    onExitAppButtonClicked() {
         this.app.platformWrapper.exitApp();
     }
-    onChangelogClicked(): any {
+    onChangelogClicked() {
         this.moveToState("ChangelogState");
     }
-    onRedditClicked(): any {
+    onRedditClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.reddit);
     }
-    onTwitterLinkClicked(): any {
+    onTwitterLinkClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.twitter);
     }
-    onPatreonLinkClicked(): any {
+    onPatreonLinkClicked() {
         this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.patreon);
     }
-    onLanguageChooseClicked(): any {
-        const setting: any = (this.app.settings.getSettingHandleById("language") as EnumSetting);
-        const { optionSelected }: any = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
+    onLanguageChooseClicked() {
+        const setting = this.app.settings.getSettingHandleById("language") as EnumSetting);
+        const { optionSelected } = this.dialogs.showOptionChooser(T.settings.labels.language.title, {
             active: this.app.settings.getLanguage(),
-            options: setting.options.map((option: any): any => ({
+            options: setting.options.map(option => ({
                 value: setting.valueGetter(option),
                 text: setting.textGetter(option),
                 desc: setting.descGetter(option),
                 iconPrefix: setting.iconPrefix,
             })),
         });
-        optionSelected.add((value: any): any => {
-            this.app.settings.updateLanguage(value).then((): any => {
+        optionSelected.add(value => {
+            this.app.settings.updateLanguage(value).then(() => {
                 if (setting.restartRequired) {
                     if (this.app.platformWrapper.getSupportsRestart()) {
                         this.app.platformWrapper.performRestart();
@@ -478,59 +478,59 @@ export class MainMenuState extends GameState {
     get savedGames() {
         return this.app.savegameMgr.getSavegamesMetaData();
     }
-    renderSavegames(): any {
-        const oldContainer: any = this.htmlElement.querySelector(".mainContainer .savegames");
+    renderSavegames() {
+        const oldContainer = this.htmlElement.querySelector(".mainContainer .savegames");
         if (oldContainer) {
             oldContainer.remove();
         }
-        const games: any = this.savedGames;
+        const games = this.savedGames;
         if (games.length > 0) {
-            const parent: any = makeDiv(this.htmlElement.querySelector(".mainContainer .savegamesMount"), null, [
+            const parent = makeDiv(this.htmlElement.querySelector(".mainContainer .savegamesMount"), null, [
                 "savegames",
             ]);
-            for (let i: any = 0; i < games.length; ++i) {
-                const elem: any = makeDiv(parent, null, ["savegame"]);
+            for (let i = 0; i < games.length; ++i) {
+                const elem = makeDiv(parent, null, ["savegame"]);
                 makeDiv(elem, null, ["playtime"], formatSecondsToTimeAgo((new Date().getTime() - games[i].lastUpdate) / 1000.0));
                 makeDiv(elem, null, ["level"], games[i].level
                     ? T.mainMenu.savegameLevel.replace("<x>", "" + games[i].level)
                     : T.mainMenu.savegameLevelUnknown);
-                const name: any = makeDiv(elem, null, ["name"], "<span>" + (games[i].name ? games[i].name : T.mainMenu.savegameUnnamed) + "</span>");
-                const deleteButton: any = document.createElement("button");
+                const name = makeDiv(elem, null, ["name"], "<span>" + (games[i].name ? games[i].name : T.mainMenu.savegameUnnamed) + "</span>");
+                const deleteButton = document.createElement("button");
                 deleteButton.classList.add("styledButton", "deleteGame");
                 deleteButton.setAttribute("aria-label", "Delete");
                 elem.appendChild(deleteButton);
-                const downloadButton: any = document.createElement("button");
+                const downloadButton = document.createElement("button");
                 downloadButton.classList.add("styledButton", "downloadGame");
                 downloadButton.setAttribute("aria-label", "Download");
                 elem.appendChild(downloadButton);
-                const renameButton: any = document.createElement("button");
+                const renameButton = document.createElement("button");
                 renameButton.classList.add("styledButton", "renameGame");
                 renameButton.setAttribute("aria-label", "Rename Savegame");
                 name.appendChild(renameButton);
-                this.trackClicks(renameButton, (): any => this.requestRenameSavegame(games[i]));
-                const resumeButton: any = document.createElement("button");
+                this.trackClicks(renameButton, () => this.requestRenameSavegame(games[i]));
+                const resumeButton = document.createElement("button");
                 resumeButton.classList.add("styledButton", "resumeGame");
                 resumeButton.setAttribute("aria-label", "Resumee");
                 elem.appendChild(resumeButton);
-                this.trackClicks(deleteButton, (): any => this.deleteGame(games[i]));
-                this.trackClicks(downloadButton, (): any => this.downloadGame(games[i]));
-                this.trackClicks(resumeButton, (): any => this.resumeGame(games[i]));
+                this.trackClicks(deleteButton, () => this.deleteGame(games[i]));
+                this.trackClicks(downloadButton, () => this.downloadGame(games[i]));
+                this.trackClicks(resumeButton, () => this.resumeGame(games[i]));
             }
         }
         else {
-            const parent: any = makeDiv(this.htmlElement.querySelector(".mainContainer .savegamesMount"), null, ["savegamesNone"], T.mainMenu.noActiveSavegames);
+            const parent = makeDiv(this.htmlElement.querySelector(".mainContainer .savegamesMount"), null, ["savegamesNone"], T.mainMenu.noActiveSavegames);
         }
     }
-        requestRenameSavegame(game: SavegameMetadata): any {
-        const regex: any = /^[a-zA-Z0-9_\- ]{1,20}$/;
-        const nameInput: any = new FormElementInput({
+        requestRenameSavegame(game: SavegameMetadata) {
+        const regex = /^[a-zA-Z0-9_\- ]{1,20}$/;
+        const nameInput = new FormElementInput({
             id: "nameInput",
             label: null,
             placeholder: "",
             defaultValue: game.name || "",
-            validator: (val: any): any => val.match(regex) && trim(val).length > 0,
+            validator: val => val.match(regex) && trim(val).length > 0,
         });
-        const dialog: any = new DialogWithForm({
+        const dialog = new DialogWithForm({
             app: this.app,
             title: T.dialogs.renameSavegame.title,
             desc: T.dialogs.renameSavegame.desc,
@@ -539,36 +539,36 @@ export class MainMenuState extends GameState {
         });
         this.dialogs.internalShowDialog(dialog);
         // When confirmed, save the name
-        dialog.buttonSignals.ok.add((): any => {
+        dialog.buttonSignals.ok.add(() => {
             game.name = trim(nameInput.getValue());
             this.app.savegameMgr.writeAsync();
             this.renderSavegames();
         });
     }
-        resumeGame(game: SavegameMetadata): any {
-        this.app.adProvider.showVideoAd().then((): any => {
-            const savegame: any = this.app.savegameMgr.getSavegameById(game.internalId);
+        resumeGame(game: SavegameMetadata) {
+        this.app.adProvider.showVideoAd().then(() => {
+            const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
             savegame
                 .readAsync()
-                .then((): any => this.checkForModDifferences(savegame))
-                .then((): any => {
+                .then(() => this.checkForModDifferences(savegame))
+                .then(() => {
                 this.moveToState("InGameState", {
                     savegame,
                 });
             })
-                .catch((err: any): any => {
+                .catch(err => {
                 this.dialogs.showWarning(T.dialogs.gameLoadFailure.title, T.dialogs.gameLoadFailure.text + "<br><br>" + err);
             });
         });
     }
-        checkForModDifferences(savegame: Savegame): any {
-        const difference: any = MODS.computeModDifference(savegame.currentData.mods);
+        checkForModDifferences(savegame: Savegame) {
+        const difference = MODS.computeModDifference(savegame.currentData.mods);
         if (difference.missing.length === 0 && difference.extra.length === 0) {
             return Promise.resolve();
         }
-        let dialogHtml: any = T.dialogs.modsDifference.desc;
+        let dialogHtml = T.dialogs.modsDifference.desc;
         
-        function formatMod(mod: import("../savegame/savegame_typedefs").SavegameStoredMods[0]): any {
+        function formatMod(mod: import("../savegame/savegame_typedefs").SavegameStoredMods[0]) {
             return `
                 <div class="dialogModsMod">
                     <div class="name">${mod.name}</div>
@@ -587,68 +587,68 @@ export class MainMenuState extends GameState {
             dialogHtml += "<h3>" + T.dialogs.modsDifference.newMods + "</h3>";
             dialogHtml += difference.extra.map(formatMod).join("<br>");
         }
-        const signals: any = this.dialogs.showWarning(T.dialogs.modsDifference.title, dialogHtml, [
+        const signals = this.dialogs.showWarning(T.dialogs.modsDifference.title, dialogHtml, [
             "cancel:good",
             "continue:bad",
         ]);
-        return new Promise((resolve: any): any => {
+        return new Promise(resolve => {
             signals.continue.add(resolve);
         });
     }
-        deleteGame(game: SavegameMetadata): any {
-        const signals: any = this.dialogs.showWarning(T.dialogs.confirmSavegameDelete.title, T.dialogs.confirmSavegameDelete.text
+        deleteGame(game: SavegameMetadata) {
+        const signals = this.dialogs.showWarning(T.dialogs.confirmSavegameDelete.title, T.dialogs.confirmSavegameDelete.text
             .replace("<savegameName>", game.name || T.mainMenu.savegameUnnamed)
             .replace("<savegameLevel>", String(game.level)), ["cancel:good", "delete:bad:timeout"]);
-        signals.delete.add((): any => {
-            this.app.savegameMgr.deleteSavegame(game).then((): any => {
+        signals.delete.add(() => {
+            this.app.savegameMgr.deleteSavegame(game).then(() => {
                 this.renderSavegames();
                 if (this.savedGames.length <= 0)
                     this.renderMainMenu();
-            }, (err: any): any => {
+            }, err => {
                 this.dialogs.showWarning(T.dialogs.savegameDeletionError.title, T.dialogs.savegameDeletionError.text + "<br><br>" + err);
             });
         });
     }
-        downloadGame(game: SavegameMetadata): any {
-        const savegame: any = this.app.savegameMgr.getSavegameById(game.internalId);
-        savegame.readAsync().then((): any => {
-            const data: any = ReadWriteProxy.serializeObject(savegame.currentData);
-            const filename: any = (game.name || "unnamed") + ".bin";
+        downloadGame(game: SavegameMetadata) {
+        const savegame = this.app.savegameMgr.getSavegameById(game.internalId);
+        savegame.readAsync().then(() => {
+            const data = ReadWriteProxy.serializeObject(savegame.currentData);
+            const filename = (game.name || "unnamed") + ".bin";
             generateFileDownload(filename, data);
         });
     }
     /**
      * Shows a hint that the slot limit has been reached
      */
-    showSavegameSlotLimit(): any {
-        const { getStandalone }: any = this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc, ["cancel:bad", "getStandalone:good"]);
-        getStandalone.add((): any => {
+    showSavegameSlotLimit() {
+        const { getStandalone } = this.dialogs.showWarning(T.dialogs.oneSavegameLimit.title, T.dialogs.oneSavegameLimit.desc, ["cancel:bad", "getStandalone:good"]);
+        getStandalone.add(() => {
             openStandaloneLink(this.app, "shapez_slotlimit");
         });
         this.app.gameAnalytics.note("slotlimit");
     }
-    onSettingsButtonClicked(): any {
+    onSettingsButtonClicked() {
         this.moveToState("SettingsState");
     }
-    onTranslationHelpLinkClicked(): any {
+    onTranslationHelpLinkClicked() {
         this.app.platformWrapper.openExternalLink("https://github.com/tobspr-games/shapez.io/blob/master/translations");
     }
-    onPlayButtonClicked(): any {
+    onPlayButtonClicked() {
         if (this.app.savegameMgr.getSavegamesMetaData().length > 0 &&
             !this.app.restrictionMgr.getHasUnlimitedSavegames()) {
             this.app.gameAnalytics.noteMinor("menu.slotlimit");
             this.showSavegameSlotLimit();
             return;
         }
-        this.app.adProvider.showVideoAd().then((): any => {
+        this.app.adProvider.showVideoAd().then(() => {
             this.app.gameAnalytics.noteMinor("menu.play");
-            const savegame: any = this.app.savegameMgr.createNewSavegame();
+            const savegame = this.app.savegameMgr.createNewSavegame();
             this.moveToState("InGameState", {
                 savegame,
             });
         });
     }
-    onWegameRatingClicked(): any {
+    onWegameRatingClicked() {
         this.dialogs.showInfo("提示说明：", `
             1）本游戏是一款休闲建造类单机游戏，画面简洁而乐趣充足。适用于年满8周岁及以上的用户，建议未成年人在家长监护下使用游戏产品。<br>
             2）本游戏模拟简单的生产流水线，剧情简单且积极向上，没有基于真实历史和现实事件的改编内容。游戏玩法为摆放简单的部件，完成生产目标。游戏为单机作品，没有基于文字和语音的陌生人社交系统。<br>
@@ -656,22 +656,22 @@ export class MainMenuState extends GameState {
             4）游戏功能说明：一款关于传送带自动化生产特定形状产品的工厂流水线模拟游戏，画面简洁而乐趣充足，可以让玩家在轻松愉快的氛围下获得各种游戏乐趣，体验完成目标的成就感。游戏没有失败功能，自动存档，不存在较强的挫折体验。
         `);
     }
-    onModsClicked(): any {
+    onModsClicked() {
         this.app.gameAnalytics.noteMinor("menu.mods");
         this.moveToState("ModsState", {
             backToStateId: "MainMenuState",
         });
     }
-    onContinueButtonClicked(): any {
-        let latestLastUpdate: any = 0;
-        let latestInternalId: any;
-        this.app.savegameMgr.currentData.savegames.forEach((saveGame: any): any => {
+    onContinueButtonClicked() {
+        let latestLastUpdate = 0;
+        let latestInternalId;
+        this.app.savegameMgr.currentData.savegames.forEach(saveGame => {
             if (saveGame.lastUpdate > latestLastUpdate) {
                 latestLastUpdate = saveGame.lastUpdate;
                 latestInternalId = saveGame.internalId;
             }
         });
-        const savegame: any = this.app.savegameMgr.getSavegameById(latestInternalId);
+        const savegame = this.app.savegameMgr.getSavegameById(latestInternalId);
         if (!savegame) {
             console.warn("No savegame to continue found:", this.app.savegameMgr.currentData.savegames);
             return;
@@ -679,15 +679,15 @@ export class MainMenuState extends GameState {
         this.app.gameAnalytics.noteMinor("menu.continue");
         savegame
             .readAsync()
-            .then((): any => this.app.adProvider.showVideoAd())
-            .then((): any => this.checkForModDifferences(savegame))
-            .then((): any => {
+            .then(() => this.app.adProvider.showVideoAd())
+            .then(() => this.checkForModDifferences(savegame))
+            .then(() => {
             this.moveToState("InGameState", {
                 savegame,
             });
         });
     }
-    onLeave(): any {
+    onLeave() {
         this.dialogs.cleanup();
         clearInterval(this.refreshInterval);
     }

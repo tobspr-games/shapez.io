@@ -29,9 +29,9 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     /**
      * Performs pre-placement checks
      */
-    prePlacementCheck(entity: Entity, offset: Vector): any {
+    prePlacementCheck(entity: Entity, offset: Vector) {
         // Compute area of the building
-        const rect: any = entity.components.StaticMapEntity.getTileSpaceBounds();
+        const rect = entity.components.StaticMapEntity.getTileSpaceBounds();
         if (offset) {
             rect.x += offset.x;
             rect.y += offset.y;
@@ -39,15 +39,15 @@ export class WiredPinsSystem extends GameSystemWithFilter {
         // If this entity is placed on the wires layer, make sure we don't
         // place it above a pin
         if (entity.layer === "wires") {
-            for (let x: any = rect.x; x < rect.x + rect.w; ++x) {
-                for (let y: any = rect.y; y < rect.y + rect.h; ++y) {
+            for (let x = rect.x; x < rect.x + rect.w; ++x) {
+                for (let y = rect.y; y < rect.y + rect.h; ++y) {
                     // Find which entities are in same tiles of both layers
-                    const entities: any = this.root.map.getLayersContentsMultipleXY(x, y);
-                    for (let i: any = 0; i < entities.length; ++i) {
-                        const otherEntity: any = entities[i];
+                    const entities = this.root.map.getLayersContentsMultipleXY(x, y);
+                    for (let i = 0; i < entities.length; ++i) {
+                        const otherEntity = entities[i];
                         // Check if entity has a wired component
-                        const pinComponent: any = otherEntity.components.WiredPins;
-                        const staticComp: any = otherEntity.components.StaticMapEntity;
+                        const pinComponent = otherEntity.components.WiredPins;
+                        const staticComp = otherEntity.components.StaticMapEntity;
                         if (!pinComponent) {
                             continue;
                         }
@@ -59,9 +59,9 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                             continue;
                         }
                         // Go over all pins and check if they are blocking
-                        const pins: any = pinComponent.slots;
-                        for (let pinSlot: any = 0; pinSlot < pins.length; ++pinSlot) {
-                            const pos: any = staticComp.localTileToWorld(pins[pinSlot].pos);
+                        const pins = pinComponent.slots;
+                        for (let pinSlot = 0; pinSlot < pins.length; ++pinSlot) {
+                            const pos = staticComp.localTileToWorld(pins[pinSlot].pos);
                             // Occupied by a pin
                             if (pos.x === x && pos.y === y) {
                                 return STOP_PROPAGATION;
@@ -81,24 +81,24 @@ export class WiredPinsSystem extends GameSystemWithFilter {
      * {} True if the pins collide
      */
     checkEntityPinsCollide(entity: Entity, offset: Vector=): boolean {
-        const pinsComp: any = entity.components.WiredPins;
+        const pinsComp = entity.components.WiredPins;
         if (!pinsComp) {
             return false;
         }
         // Go over all slots
-        for (let slotIndex: any = 0; slotIndex < pinsComp.slots.length; ++slotIndex) {
-            const slot: any = pinsComp.slots[slotIndex];
+        for (let slotIndex = 0; slotIndex < pinsComp.slots.length; ++slotIndex) {
+            const slot = pinsComp.slots[slotIndex];
             // Figure out which tile this slot is on
-            const worldPos: any = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
+            const worldPos = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
             if (offset) {
                 worldPos.x += offset.x;
                 worldPos.y += offset.y;
             }
             // Check if there is any entity on that tile (Wired pins are always on the wires layer)
-            const collidingEntity: any = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
             // If there's an entity, and it can't get removed -> That's a collision
             if (collidingEntity) {
-                const staticComp: any = collidingEntity.components.StaticMapEntity;
+                const staticComp = collidingEntity.components.StaticMapEntity;
                 if (!staticComp
                     .getMetaBuilding()
                     .getIsReplaceable(staticComp.getVariant(), staticComp.getRotationVariant())) {
@@ -111,19 +111,19 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     /**
      * Called to free space for the given entity
      */
-    freeEntityAreaBeforeBuild(entity: Entity): any {
-        const pinsComp: any = entity.components.WiredPins;
+    freeEntityAreaBeforeBuild(entity: Entity) {
+        const pinsComp = entity.components.WiredPins;
         if (!pinsComp) {
             // Entity has no pins
             return;
         }
         // Remove any stuff which collides with the pins
-        for (let i: any = 0; i < pinsComp.slots.length; ++i) {
-            const slot: any = pinsComp.slots[i];
-            const worldPos: any = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
-            const collidingEntity: any = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
+        for (let i = 0; i < pinsComp.slots.length; ++i) {
+            const slot = pinsComp.slots[i];
+            const worldPos = entity.components.StaticMapEntity.localTileToWorld(slot.pos);
+            const collidingEntity = this.root.map.getLayerContentXY(worldPos.x, worldPos.y, "wires");
             if (collidingEntity) {
-                const staticComp: any = collidingEntity.components.StaticMapEntity;
+                const staticComp = collidingEntity.components.StaticMapEntity;
                 assertAlways(staticComp
                     .getMetaBuilding()
                     .getIsReplaceable(staticComp.getVariant(), staticComp.getRotationVariant()), "Tried to replace non-repleaceable entity for pins");
@@ -136,29 +136,29 @@ export class WiredPinsSystem extends GameSystemWithFilter {
     /**
      * Draws a given entity
      */
-    drawChunk(parameters: DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.containedEntities;
-        for (let i: any = 0; i < contents.length; ++i) {
-            const entity: any = contents[i];
-            const pinsComp: any = entity.components.WiredPins;
+    drawChunk(parameters: DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.containedEntities;
+        for (let i = 0; i < contents.length; ++i) {
+            const entity = contents[i];
+            const pinsComp = entity.components.WiredPins;
             if (!pinsComp) {
                 continue;
             }
-            const staticComp: any = entity.components.StaticMapEntity;
-            const slots: any = pinsComp.slots;
-            for (let j: any = 0; j < slots.length; ++j) {
-                const slot: any = slots[j];
-                const tile: any = staticComp.localTileToWorld(slot.pos);
+            const staticComp = entity.components.StaticMapEntity;
+            const slots = pinsComp.slots;
+            for (let j = 0; j < slots.length; ++j) {
+                const slot = slots[j];
+                const tile = staticComp.localTileToWorld(slot.pos);
                 if (!chunk.tileSpaceRectangle.containsPoint(tile.x, tile.y)) {
                     // Doesn't belong to this chunk
                     continue;
                 }
-                const worldPos: any = tile.toWorldSpaceCenterOfTile();
+                const worldPos = tile.toWorldSpaceCenterOfTile();
                 // Culling
                 if (!parameters.visibleRect.containsCircle(worldPos.x, worldPos.y, globalConfig.halfTileSize)) {
                     continue;
                 }
-                const effectiveRotation: any = Math.radians(staticComp.rotation + enumDirectionToAngle[slot.direction]);
+                const effectiveRotation = Math.radians(staticComp.rotation + enumDirectionToAngle[slot.direction]);
                 if (staticComp.getMetaBuilding().getRenderPins()) {
                     drawRotatedSprite({
                         parameters,
@@ -172,15 +172,15 @@ export class WiredPinsSystem extends GameSystemWithFilter {
                     });
                 }
                 // Draw contained item to visualize whats emitted
-                const value: any = slot.value;
+                const value = slot.value;
                 if (value) {
-                    const offset: any = new Vector(0, -9.1).rotated(effectiveRotation);
+                    const offset = new Vector(0, -9.1).rotated(effectiveRotation);
                     value.drawItemCenteredClipped(worldPos.x + offset.x, worldPos.y + offset.y, parameters, enumTypeToSize[value.getItemType()]);
                 }
                 // Debug view
                 if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
-                    const offset: any = new Vector(0, -10).rotated(effectiveRotation);
-                    const network: any = slot.linkedNetwork;
+                    const offset = new Vector(0, -10).rotated(effectiveRotation);
+                    const network = slot.linkedNetwork;
                     parameters.context.fillStyle = "blue";
                     parameters.context.font = "5px Tahoma";
                     parameters.context.textAlign = "center";

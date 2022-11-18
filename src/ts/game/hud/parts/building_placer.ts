@@ -15,7 +15,7 @@ import { makeOffscreenBuffer } from "../../../core/buffer_utils";
 import { layers } from "../../root";
 import { getCodeFromBuildingData } from "../../building_codes";
 export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
-        createElements(parent: HTMLElement): any {
+        createElements(parent: HTMLElement) {
         this.element = makeDiv(parent, "ingame_HUD_PlacementHints", [], ``);
         this.buildingInfoElements = {};
         this.buildingInfoElements.label = makeDiv(this.element, null, ["buildingLabel"], "Extract");
@@ -25,11 +25,11 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.buildingInfoElements.hotkey = makeDiv(this.buildingInfoElements.desc, null, ["hotkey"], "");
         this.buildingInfoElements.tutorialImage = makeDiv(this.element, null, ["buildingImage"]);
         this.variantsElement = makeDiv(parent, "ingame_HUD_PlacerVariants");
-        const compact: any = this.root.app.settings.getAllSettings().compactBuildingInfo;
+        const compact = this.root.app.settings.getAllSettings().compactBuildingInfo;
         this.element.classList.toggle("compact", compact);
         this.variantsElement.classList.toggle("compact", compact);
     }
-    initialize(): any {
+    initialize() {
         super.initialize();
         // Bind to signals
         this.signals.variantChanged.add(this.rerenderVariants, this);
@@ -38,7 +38,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         this.variantsAttach = new DynamicDomAttach(this.root, this.variantsElement, {});
         this.currentInterpolatedCornerTile = new Vector();
         this.lockIndicatorSprites = {};
-        [...layers, "error"].forEach((layer: any): any => {
+        [...layers, "error"].forEach(layer => {
             this.lockIndicatorSprites[layer] = this.makeLockIndicatorSprite(layer);
         });
         //
@@ -50,9 +50,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
      * Makes the lock indicator sprite for the given layer
      */
-    makeLockIndicatorSprite(layer: string): any {
-        const dims: any = 48;
-        const [canvas, context]: any = makeOffscreenBuffer(dims, dims, {
+    makeLockIndicatorSprite(layer: string) {
+        const dims = 48;
+        const [canvas, context] = makeOffscreenBuffer(dims, dims, {
             smooth: true,
             reusable: false,
             label: "lock-direction-indicator",
@@ -60,9 +60,9 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         context.fillStyle = THEME.map.directionLock[layer].color;
         context.strokeStyle = THEME.map.directionLock[layer].color;
         context.lineWidth = 2;
-        const padding: any = 5;
-        const height: any = dims * 0.5;
-        const bottom: any = (dims + height) / 2;
+        const padding = 5;
+        const height = dims * 0.5;
+        const bottom = (dims + height) / 2;
         context.moveTo(padding, bottom);
         context.lineTo(dims / 2, bottom - height);
         context.lineTo(dims - padding, bottom);
@@ -74,21 +74,21 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
      * Rerenders the building info dialog
      */
-    rerenderInfoDialog(): any {
-        const metaBuilding: any = this.currentMetaBuilding.get();
+    rerenderInfoDialog() {
+        const metaBuilding = this.currentMetaBuilding.get();
         if (!metaBuilding) {
             return;
         }
-        const variant: any = this.currentVariant.get();
+        const variant = this.currentVariant.get();
         this.buildingInfoElements.label.innerHTML = T.buildings[metaBuilding.id][variant].name;
         this.buildingInfoElements.descText.innerHTML = T.buildings[metaBuilding.id][variant].description;
-        const layer: any = this.root.currentLayer;
-        let rawBinding: any = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + layer];
+        const layer = this.root.currentLayer;
+        let rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + layer];
         if (!rawBinding) {
             rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
         }
         if (rawBinding) {
-            const binding: any = this.root.keyMapper.getBinding(rawBinding);
+            const binding = this.root.keyMapper.getBinding(rawBinding);
             this.buildingInfoElements.hotkey.innerHTML = T.ingame.buildingPlacement.hotkeyLabel.replace("<key>", "<code class='keybinding'>" + binding.getKeyCodeString() + "</code>");
         }
         else {
@@ -99,25 +99,25 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             (variant === defaultBuildingVariant ? "" : "-" + variant) +
             ".png");
         removeAllChildren(this.buildingInfoElements.additionalInfo);
-        const additionalInfo: any = metaBuilding.getAdditionalStatistics(this.root, this.currentVariant.get());
-        for (let i: any = 0; i < additionalInfo.length; ++i) {
-            const [label, contents]: any = additionalInfo[i];
+        const additionalInfo = metaBuilding.getAdditionalStatistics(this.root, this.currentVariant.get());
+        for (let i = 0; i < additionalInfo.length; ++i) {
+            const [label, contents] = additionalInfo[i];
             this.buildingInfoElements.additionalInfo.innerHTML += `
                 <label>${label}:</label>
                 <span>${contents}</contents>
             `;
         }
     }
-    cleanup(): any {
+    cleanup() {
         super.cleanup();
         this.cleanupVariantClickDetectors();
     }
     /**
      * Cleans up all variant click detectors
      */
-    cleanupVariantClickDetectors(): any {
-        for (let i: any = 0; i < this.variantClickDetectors.length; ++i) {
-            const detector: any = this.variantClickDetectors[i];
+    cleanupVariantClickDetectors() {
+        for (let i = 0; i < this.variantClickDetectors.length; ++i) {
+            const detector = this.variantClickDetectors[i];
             detector.cleanup();
         }
         this.variantClickDetectors = [];
@@ -125,16 +125,16 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
     /**
      * Rerenders the variants displayed
      */
-    rerenderVariants(): any {
+    rerenderVariants() {
         removeAllChildren(this.variantsElement);
         this.rerenderInfoDialog();
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         // First, clear up all click detectors
         this.cleanupVariantClickDetectors();
         if (!metaBuilding) {
             return;
         }
-        const availableVariants: any = metaBuilding.getAvailableVariants(this.root);
+        const availableVariants = metaBuilding.getAvailableVariants(this.root);
         if (availableVariants.length === 1) {
             return;
         }
@@ -143,27 +143,27 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                 .getBinding(KEYMAPPINGS.placement.cycleBuildingVariants)
                 .getKeyCodeString() +
             "</code>"));
-        const container: any = makeDiv(this.variantsElement, null, ["variants"]);
-        for (let i: any = 0; i < availableVariants.length; ++i) {
-            const variant: any = availableVariants[i];
-            const element: any = makeDiv(container, null, ["variant"]);
+        const container = makeDiv(this.variantsElement, null, ["variants"]);
+        for (let i = 0; i < availableVariants.length; ++i) {
+            const variant = availableVariants[i];
+            const element = makeDiv(container, null, ["variant"]);
             element.classList.toggle("active", variant === this.currentVariant.get());
             makeDiv(element, null, ["label"], variant);
-            const iconSize: any = 64;
-            const dimensions: any = metaBuilding.getDimensions(variant);
-            const sprite: any = metaBuilding.getPreviewSprite(0, variant);
-            const spriteWrapper: any = makeDiv(element, null, ["iconWrap"]);
+            const iconSize = 64;
+            const dimensions = metaBuilding.getDimensions(variant);
+            const sprite = metaBuilding.getPreviewSprite(0, variant);
+            const spriteWrapper = makeDiv(element, null, ["iconWrap"]);
             spriteWrapper.setAttribute("data-tile-w", String(dimensions.x));
             spriteWrapper.setAttribute("data-tile-h", String(dimensions.y));
             spriteWrapper.innerHTML = sprite.getAsHTML(iconSize * dimensions.x, iconSize * dimensions.y);
-            const detector: any = new ClickDetector(element, {
+            const detector = new ClickDetector(element, {
                 consumeEvents: true,
                 targetOnly: true,
             });
-            detector.click.add((): any => this.setVariant(variant));
+            detector.click.add(() => this.setVariant(variant));
         }
     }
-        draw(parameters: DrawParameters): any {
+        draw(parameters: DrawParameters) {
         if (this.root.camera.getIsMapOverlayActive()) {
             // Dont allow placing in overview mode
             this.domAttach.update(false);
@@ -172,7 +172,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         }
         this.domAttach.update(!!this.currentMetaBuilding.get());
         this.variantsAttach.update(!!this.currentMetaBuilding.get());
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const metaBuilding = this.currentMetaBuilding.get();
         if (!metaBuilding) {
             return;
         }
@@ -187,29 +187,29 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             this.drawLayerPeek(parameters);
         }
     }
-        drawLayerPeek(parameters: DrawParameters): any {
-        const mousePosition: any = this.root.app.mousePosition;
+        drawLayerPeek(parameters: DrawParameters) {
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return;
         }
-        const worldPosition: any = this.root.camera.screenToWorld(mousePosition);
+        const worldPosition = this.root.camera.screenToWorld(mousePosition);
         // Draw peeker
         if (this.root.hud.parts.layerPreview) {
             this.root.hud.parts.layerPreview.renderPreview(parameters, worldPosition, 1 / this.root.camera.zoomLevel);
         }
     }
-        drawRegularPlacement(parameters: DrawParameters): any {
-        const mousePosition: any = this.root.app.mousePosition;
+        drawRegularPlacement(parameters: DrawParameters) {
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return;
         }
-        const metaBuilding: any = this.currentMetaBuilding.get();
-        const worldPos: any = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile: any = worldPos.toTileSpace();
+        const metaBuilding = this.currentMetaBuilding.get();
+        const worldPos = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = worldPos.toTileSpace();
         // Compute best rotation variant
-        const { rotation, rotationVariant, connectedEntities, }: any = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
+        const { rotation, rotationVariant, connectedEntities, } = metaBuilding.computeOptimalDirectionAndRotationVariantAtTile({
             root: this.root,
             tile: mouseTile,
             rotation: this.currentBaseRotation,
@@ -218,18 +218,18 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         });
         // Check if there are connected entities
         if (connectedEntities) {
-            for (let i: any = 0; i < connectedEntities.length; ++i) {
-                const connectedEntity: any = connectedEntities[i];
-                const connectedWsPoint: any = connectedEntity.components.StaticMapEntity.getTileSpaceBounds()
+            for (let i = 0; i < connectedEntities.length; ++i) {
+                const connectedEntity = connectedEntities[i];
+                const connectedWsPoint = connectedEntity.components.StaticMapEntity.getTileSpaceBounds()
                     .getCenter()
                     .toWorldSpace();
-                const startWsPoint: any = mouseTile.toWorldSpaceCenterOfTile();
-                const startOffset: any = connectedWsPoint
+                const startWsPoint = mouseTile.toWorldSpaceCenterOfTile();
+                const startOffset = connectedWsPoint
                     .sub(startWsPoint)
                     .normalize()
                     .multiplyScalar(globalConfig.tileSize * 0.3);
-                const effectiveStartPoint: any = startWsPoint.add(startOffset);
-                const effectiveEndPoint: any = connectedWsPoint.sub(startOffset);
+                const effectiveStartPoint = startWsPoint.add(startOffset);
+                const effectiveEndPoint = connectedWsPoint.sub(startOffset);
                 parameters.context.globalAlpha = 0.6;
                 // parameters.context.lineCap = "round";
                 parameters.context.strokeStyle = "#7f7";
@@ -244,17 +244,17 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         }
         // Synchronize rotation and origin
         this.fakeEntity.layer = metaBuilding.getLayer();
-        const staticComp: any = this.fakeEntity.components.StaticMapEntity;
+        const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = mouseTile;
         staticComp.rotation = rotation;
         metaBuilding.updateVariants(this.fakeEntity, rotationVariant, this.currentVariant.get());
         staticComp.code = getCodeFromBuildingData(this.currentMetaBuilding.get(), this.currentVariant.get(), rotationVariant);
-        const canBuild: any = this.root.logic.checkCanPlaceEntity(this.fakeEntity, {});
+        const canBuild = this.root.logic.checkCanPlaceEntity(this.fakeEntity, {});
         // Fade in / out
         parameters.context.lineWidth = 1;
         // Determine the bounds and visualize them
-        const entityBounds: any = staticComp.getTileSpaceBounds();
-        const drawBorder: any = -3;
+        const entityBounds = staticComp.getTileSpaceBounds();
+        const drawBorder = -3;
         if (canBuild) {
             parameters.context.strokeStyle = "rgba(56, 235, 111, 0.5)";
             parameters.context.fillStyle = "rgba(56, 235, 111, 0.2)";
@@ -268,7 +268,7 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         // parameters.context.fill();
         parameters.context.globalAlpha = 1;
         // HACK to draw the entity sprite
-        const previewSprite: any = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
+        const previewSprite = metaBuilding.getBlueprintSprite(rotationVariant, this.currentVariant.get());
         staticComp.origin = worldPos.divideScalar(globalConfig.tileSize).subScalars(0.5, 0.5);
         staticComp.drawSpriteOnBoundsClipped(parameters, previewSprite);
         staticComp.origin = mouseTile;
@@ -573,8 +573,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      * @param {Vector[]=} ignorePositions
      * @returns
      */
-    checkForObstales(from: Vector, to: V ignorePositions: Vecto []): any {
-        om.x === to.x || from.y === /**
+    checkForObstales(from: Vector, to: V ignorePositions: Vecto []) {
+        asser=== to.x || from.y === to.y /**
      * Checks if there are any entities in the way, returns true if there are
      * @ /**
      * Checks if there are any entities in the way, returns true if there are
@@ -665,22 +665,22 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
      * @param {Vector[]=} ignorePositions
      * @returns
      */
-    checkForObstales(from: Vector, to: Vector, ignorePositions: Vector[]= = []): any {
+    checkForObstales(from: Vector, to: Vector, ignorePositions: Vector[]= = []) {
         assert(from.x === to.x || from.y === to.y, "Must be a straight line");
-        const prop: any = from.x === to.x ? "y" : "x";
-        const current: any = from.copy();
-        const metaBuilding: any = this.currentMetaBuilding.get();
+        const prop = from.x === to.x ? "y" : "x";
+        const current = from.copy();
+        const metaBuilding = this.currentMetaBuilding.get();
         this.fakeEntity.layer = metaBuilding.getLayer();
-        const staticComp: any = this.fakeEntity.components.StaticMapEntity;
+        const staticComp = this.fakeEntity.components.StaticMapEntity;
         staticComp.origin = current;
         staticComp.rotation = 0;
         metaBuilding.updateVariants(this.fakeEntity, 0, this.currentVariant.get());
         staticComp.code = getCodeFromBuildingData(this.currentMetaBuilding.get(), this.currentVariant.get(), 0);
-        const start: any = Math.min(from[prop], to[prop]);
-        const end: any = Math.max(from[prop], to[prop]);
-        for (let i: any = start; i <= end; i++) {
+        const start = Math.min(from[prop], to[prop]);
+        const end = Math.max(from[prop], to[prop]);
+        for (let i = start; i <= end; i++) {
             current[prop] = i;
-            if (ignorePositions.some((p: any): any => p.distanceSquare(current) < 0.1)) {
+            if (ignorePositions.some(p => p.distanceSquare(current) < 0.1)) {
                 continue;
             }
             if (!this.root.logic.checkCanPlaceEntity(this.fakeEntity, { allowReplaceBuildings: false })) {
@@ -689,13 +689,13 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         }
         return false;
     }
-        drawDirectionLock(parameters: DrawParameters): any {
-        const mousePosition: any = this.root.app.mousePosition;
+        drawDirectionLock(parameters: DrawParameters) {
+        const mousePosition = this.root.app.mousePosition;
         if (!mousePosition) {
             // Not on screen
             return;
         }
-        const applyStyles: any = (look: any): any => {
+        const applyStyles = look => {
             parameters.context.fillStyle = THEME.map.directionLock[look].color;
             parameters.context.strokeStyle = THEME.map.directionLock[look].background;
             parameters.context.lineWidth = 10;
@@ -703,17 +703,17 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         if (!this.lastDragTile) {
             // Not dragging yet
             applyStyles(this.root.currentLayer);
-            const mouseWorld: any = this.root.camera.screenToWorld(mousePosition);
+            const mouseWorld = this.root.camera.screenToWorld(mousePosition);
             parameters.context.beginCircle(mouseWorld.x, mouseWorld.y, 4);
             parameters.context.fill();
             return;
         }
-        const mouseWorld: any = this.root.camera.screenToWorld(mousePosition);
-        const mouseTile: any = mouseWorld.toTileSpace();
-        const startLine: any = this.lastDragTile.toWorldSpaceCenterOfTile();
-        const endLine: any = mouseTile.toWorldSpaceCenterOfTile();
-        const midLine: any = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
-        const anyObstacle: any = this.checkForObstales(this.lastDragTile, this.currentDirectionLockCorner, [
+        const mouseWorld = this.root.camera.screenToWorld(mousePosition);
+        const mouseTile = mouseWorld.toTileSpace();
+        const startLine = this.lastDragTile.toWorldSpaceCenterOfTile();
+        const endLine = mouseTile.toWorldSpaceCenterOfTile();
+        const midLine = this.currentDirectionLockCorner.toWorldSpaceCenterOfTile();
+        const anyObstacle = this.checkForObstales(this.lastDragTile, this.currentDirectionLockCorner, [
             this.lastDragTile,
             mouseTile,
         ]) ||
@@ -736,12 +736,12 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
         parameters.context.beginCircle(endLine.x, endLine.y, 5);
         parameters.context.fill();
         // Draw arrow
-        const arrowSprite: any = this.lockIndicatorSprites[anyObstacle ? "error" : this.root.currentLayer];
-        const path: any = this.computeDirectionLockPath();
-        for (let i: any = 0; i < path.length - 1; i += 1) {
-            const { rotation, tile }: any = path[i];
-            const worldPos: any = tile.toWorldSpaceCenterOfTile();
-            const angle: any = Math.radians(rotation);
+        const arrowSprite = this.lockIndicatorSprites[anyObstacle ? "error" : this.root.currentLayer];
+        const path = this.computeDirectionLockPath();
+        for (let i = 0; i < path.length - 1; i += 1) {
+            const { rotation, tile } = path[i];
+            const worldPos = tile.toWorldSpaceCenterOfTile();
+            const angle = Math.radians(rotation);
             parameters.context.translate(worldPos.x, worldPos.y);
             parameters.context.rotate(angle);
             parameters.context.drawImage(arrowSprite, -6, -globalConfig.halfTileSize -
@@ -752,16 +752,16 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.translate(-worldPos.x, -worldPos.y);
         }
     }
-        drawMatchingAcceptorsAndEjectors(parameters: DrawParameters): any {
-        const acceptorComp: any = this.fakeEntity.components.ItemAcceptor;
-        const ejectorComp: any = this.fakeEntity.components.ItemEjector;
-        const staticComp: any = this.fakeEntity.components.StaticMapEntity;
-        const beltComp: any = this.fakeEntity.components.Belt;
-        const minerComp: any = this.fakeEntity.components.Miner;
-        const goodArrowSprite: any = Loader.getSprite("sprites/misc/slot_good_arrow.png");
-        const badArrowSprite: any = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
+        drawMatchingAcceptorsAndEjectors(parameters: DrawParameters) {
+        const acceptorComp = this.fakeEntity.components.ItemAcceptor;
+        const ejectorComp = this.fakeEntity.components.ItemEjector;
+        const staticComp = this.fakeEntity.components.StaticMapEntity;
+        const beltComp = this.fakeEntity.components.Belt;
+        const minerComp = this.fakeEntity.components.Miner;
+        const goodArrowSprite = Loader.getSprite("sprites/misc/slot_good_arrow.png");
+        const badArrowSprite = Loader.getSprite("sprites/misc/slot_bad_arrow.png");
         // Just ignore the following code please ... thanks!
-        const offsetShift: any = 10;
+        const offsetShift = 10;
                 let acceptorSlots: Array<import("../../components/item_acceptor").ItemAcceptorSlot> = [];
                 let ejectorSlots: Array<import("../../components/item_ejector").ItemEjectorSlot> = [];
         if (ejectorComp) {
@@ -771,31 +771,31 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             acceptorSlots = acceptorComp.slots.slice();
         }
         if (beltComp) {
-            const fakeEjectorSlot: any = beltComp.getFakeEjectorSlot();
-            const fakeAcceptorSlot: any = beltComp.getFakeAcceptorSlot();
+            const fakeEjectorSlot = beltComp.getFakeEjectorSlot();
+            const fakeAcceptorSlot = beltComp.getFakeAcceptorSlot();
             ejectorSlots.push(fakeEjectorSlot);
             acceptorSlots.push(fakeAcceptorSlot);
         }
         // Go over all slots
-        for (let i: any = 0; i < acceptorSlots.length; ++i) {
-            const slot: any = acceptorSlots[i];
-            const acceptorSlotWsTile: any = staticComp.localTileToWorld(slot.pos);
-            const acceptorSlotWsPos: any = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
-            const direction: any = slot.direction;
-            const worldDirection: any = staticComp.localDirectionToWorld(direction);
+        for (let i = 0; i < acceptorSlots.length; ++i) {
+            const slot = acceptorSlots[i];
+            const acceptorSlotWsTile = staticComp.localTileToWorld(slot.pos);
+            const acceptorSlotWsPos = acceptorSlotWsTile.toWorldSpaceCenterOfTile();
+            const direction = slot.direction;
+            const worldDirection = staticComp.localDirectionToWorld(direction);
             // Figure out which tile ejects to this slot
-            const sourceTile: any = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
-            let isBlocked: any = false;
-            let isConnected: any = false;
+            const sourceTile = acceptorSlotWsTile.add(enumDirectionToVector[worldDirection]);
+            let isBlocked = false;
+            let isConnected = false;
             // Find all entities which are on that tile
-            const sourceEntities: any = this.root.map.getLayersContentsMultipleXY(sourceTile.x, sourceTile.y);
+            const sourceEntities = this.root.map.getLayersContentsMultipleXY(sourceTile.x, sourceTile.y);
             // Check for every entity:
-            for (let j: any = 0; j < sourceEntities.length; ++j) {
-                const sourceEntity: any = sourceEntities[j];
-                const sourceEjector: any = sourceEntity.components.ItemEjector;
-                const sourceBeltComp: any = sourceEntity.components.Belt;
-                const sourceStaticComp: any = sourceEntity.components.StaticMapEntity;
-                const ejectorAcceptLocalTile: any = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
+            for (let j = 0; j < sourceEntities.length; ++j) {
+                const sourceEntity = sourceEntities[j];
+                const sourceEjector = sourceEntity.components.ItemEjector;
+                const sourceBeltComp = sourceEntity.components.Belt;
+                const sourceStaticComp = sourceEntity.components.StaticMapEntity;
+                const ejectorAcceptLocalTile = sourceStaticComp.worldToLocalTile(acceptorSlotWsTile);
                 // If this entity is on the same layer as the slot - if so, it can either be
                 // connected, or it can not be connected and thus block the input
                 if (sourceEjector && sourceEjector.anySlotEjectsToLocalTile(ejectorAcceptLocalTile)) {
@@ -813,8 +813,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     isBlocked = true;
                 }
             }
-            const alpha: any = isConnected || isBlocked ? 1.0 : 0.3;
-            const sprite: any = isBlocked ? badArrowSprite : goodArrowSprite;
+            const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+            const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
             parameters.context.globalAlpha = alpha;
             drawRotatedSprite({
                 parameters,
@@ -828,24 +828,24 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
             parameters.context.globalAlpha = 1;
         }
         // Go over all slots
-        for (let ejectorSlotIndex: any = 0; ejectorSlotIndex < ejectorSlots.length; ++ejectorSlotIndex) {
-            const slot: any = ejectorSlots[ejectorSlotIndex];
-            const ejectorSlotLocalTile: any = slot.pos.add(enumDirectionToVector[slot.direction]);
-            const ejectorSlotWsTile: any = staticComp.localTileToWorld(ejectorSlotLocalTile);
-            const ejectorSLotWsPos: any = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
-            const ejectorSlotWsDirection: any = staticComp.localDirectionToWorld(slot.direction);
-            let isBlocked: any = false;
-            let isConnected: any = false;
+        for (let ejectorSlotIndex = 0; ejectorSlotIndex < ejectorSlots.length; ++ejectorSlotIndex) {
+            const slot = ejectorSlots[ejectorSlotIndex];
+            const ejectorSlotLocalTile = slot.pos.add(enumDirectionToVector[slot.direction]);
+            const ejectorSlotWsTile = staticComp.localTileToWorld(ejectorSlotLocalTile);
+            const ejectorSLotWsPos = ejectorSlotWsTile.toWorldSpaceCenterOfTile();
+            const ejectorSlotWsDirection = staticComp.localDirectionToWorld(slot.direction);
+            let isBlocked = false;
+            let isConnected = false;
             // Find all entities which are on that tile
-            const destEntities: any = this.root.map.getLayersContentsMultipleXY(ejectorSlotWsTile.x, ejectorSlotWsTile.y);
+            const destEntities = this.root.map.getLayersContentsMultipleXY(ejectorSlotWsTile.x, ejectorSlotWsTile.y);
             // Check for every entity:
-            for (let i: any = 0; i < destEntities.length; ++i) {
-                const destEntity: any = destEntities[i];
-                const destAcceptor: any = destEntity.components.ItemAcceptor;
-                const destStaticComp: any = destEntity.components.StaticMapEntity;
-                const destMiner: any = destEntity.components.Miner;
-                const destLocalTile: any = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
-                const destLocalDir: any = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
+            for (let i = 0; i < destEntities.length; ++i) {
+                const destEntity = destEntities[i];
+                const destAcceptor = destEntity.components.ItemAcceptor;
+                const destStaticComp = destEntity.components.StaticMapEntity;
+                const destMiner = destEntity.components.Miner;
+                const destLocalTile = destStaticComp.worldToLocalTile(ejectorSlotWsTile);
+                const destLocalDir = destStaticComp.worldDirectionToLocal(ejectorSlotWsDirection);
                 if (destAcceptor && destAcceptor.findMatchingSlot(destLocalTile, destLocalDir)) {
                     // This one is connected, all good
                     isConnected = true;
@@ -863,8 +863,8 @@ export class HUDBuildingPlacer extends HUDBuildingPlacerLogic {
                     isBlocked = true;
                 }
             }
-            const alpha: any = isConnected || isBlocked ? 1.0 : 0.3;
-            const sprite: any = isBlocked ? badArrowSprite : goodArrowSprite;
+            const alpha = isConnected || isBlocked ? 1.0 : 0.3;
+            const sprite = isBlocked ? badArrowSprite : goodArrowSprite;
             parameters.context.globalAlpha = alpha;
             drawRotatedSprite({
                 parameters,

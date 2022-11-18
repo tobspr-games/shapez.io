@@ -1,11 +1,11 @@
 // ALEA RNG
-function Mash(): any {
-    var n: any = 0xefc8249d;
-    return function (data: any): any {
+function Mash() {
+    var n = 0xefc8249d;
+    return function (data) {
         data = data.toString();
-        for (var i: any = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             n += data.charCodeAt(i);
-            var h: any = 0.02519603282416938 * n;
+            var h = 0.02519603282416938 * n;
             n = h >>> 0;
             h -= n;
             h *= n;
@@ -16,13 +16,13 @@ function Mash(): any {
         return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
     };
 }
-function makeNewRng(seed: number | string): any {
+function makeNewRng(seed: number | string) {
     // Johannes Baagøe <baagoe@baagoe.com>, 2010
-    var c: any = 1;
-    var mash: any = Mash();
-    let s0: any = mash(" ");
-    let s1: any = mash(" ");
-    let s2: any = mash(" ");
+    var c = 1;
+    var mash = Mash();
+    let s0 = mash(" ");
+    let s1 = mash(" ");
+    let s2 = mash(" ");
     s0 -= mash(seed);
     if (s0 < 0) {
         s0 += 1;
@@ -36,16 +36,16 @@ function makeNewRng(seed: number | string): any {
         s2 += 1;
     }
     mash = null;
-    var random: any = function (): any {
-        var t: any = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
+    var random = function () {
+        var t = 2091639 * s0 + c * 2.3283064365386963e-10; // 2^-32
         s0 = s1;
         s1 = s2;
         return (s2 = t - (c = t | 0));
     };
-    random.exportState = function (): any {
+    random.exportState = function () {
         return [s0, s1, s2, c];
     };
-    random.importState = function (i: any): any {
+    random.importState = function (i) {
         s0 = +i[0] || 0;
         s1 = +i[1] || 0;
         s2 = +i[2] || 0;
@@ -61,7 +61,7 @@ export class RandomNumberGenerator {
     /**
      * Re-seeds the generator
      */
-    reseed(seed: number | string): any {
+    reseed(seed: number | string) {
         this.internalRng = makeNewRng(seed || Math.random());
     }
     /**
@@ -73,8 +73,8 @@ export class RandomNumberGenerator {
     /**
      * Random choice of an array
      */
-    choice(array: array): any {
-        const index: any = this.nextIntRange(0, array.length);
+    choice(array: array) {
+        const index = this.nextIntRange(0, array.length);
         return array[index];
     }
     /**
@@ -96,7 +96,7 @@ export class RandomNumberGenerator {
     /**
      * Updates the seed
      */
-    setSeed(seed: number): any {
+    setSeed(seed: number) {
         this.internalRng = makeNewRng(seed);
     }
 }

@@ -19,9 +19,9 @@ import { GameSystem } from "../game_system";
 import { GameSystemWithFilter } from "../game_system_with_filter";
 import { isTruthyItem } from "../items/boolean_item";
 import { MapChunkView } from "../map_chunk_view";
-const logger: any = createLogger("wires");
-let networkUidCounter: any = 0;
-const VERBOSE_WIRES: any = G_IS_DEV && false;
+const logger = createLogger("wires");
+let networkUidCounter = 0;
+const VERBOSE_WIRES = G_IS_DEV && false;
 export class WireNetwork {
     public providers: Array<{
         entity: Entity;
@@ -66,11 +66,11 @@ export class WireSystem extends GameSystem {
 
     constructor(root) {
         super(root);
-        const variants: any = ["conflict", ...Object.keys(enumWireVariant)];
-        for (let i: any = 0; i < variants.length; ++i) {
-            const wireVariant: any = variants[i];
-            const sprites: any = {};
-            for (const wireType: any in enumWireType) {
+        const variants = ["conflict", ...Object.keys(enumWireVariant)];
+        for (let i = 0; i < variants.length; ++i) {
+            const wireVariant = variants[i];
+            const sprites = {};
+            for (const wireType in enumWireType) {
                 sprites[wireType] = Loader.getSprite("sprites/wires/sets/" + wireVariant + "_" + wireType + ".png");
             }
             this.wireSprites[wireVariant] = sprites;
@@ -84,7 +84,7 @@ export class WireSystem extends GameSystem {
     /**
      * Invalidates the wires network if the given entity is relevant for it
      */
-    queueRecomputeIfWire(entity: Entity): any {
+    queueRecomputeIfWire(entity: Entity) {
         if (!this.root.gameInitialized) {
             return;
         }
@@ -96,24 +96,24 @@ export class WireSystem extends GameSystem {
     /**
      * Recomputes the whole wires network
      */
-    recomputeWiresNetwork(): any {
+    recomputeWiresNetwork() {
         this.needsRecompute = false;
         logger.log("Recomputing wires network");
         this.networks = [];
-        const wireEntities: any = this.root.entityMgr.getAllWithComponent(WireComponent);
-        const tunnelEntities: any = this.root.entityMgr.getAllWithComponent(WireTunnelComponent);
-        const pinEntities: any = this.root.entityMgr.getAllWithComponent(WiredPinsComponent);
+        const wireEntities = this.root.entityMgr.getAllWithComponent(WireComponent);
+        const tunnelEntities = this.root.entityMgr.getAllWithComponent(WireTunnelComponent);
+        const pinEntities = this.root.entityMgr.getAllWithComponent(WiredPinsComponent);
         // Clear all network references, but not on the first update since that's the deserializing one
         if (!this.isFirstRecompute) {
-            for (let i: any = 0; i < wireEntities.length; ++i) {
+            for (let i = 0; i < wireEntities.length; ++i) {
                 wireEntities[i].components.Wire.linkedNetwork = null;
             }
-            for (let i: any = 0; i < tunnelEntities.length; ++i) {
+            for (let i = 0; i < tunnelEntities.length; ++i) {
                 tunnelEntities[i].components.WireTunnel.linkedNetworks = [];
             }
-            for (let i: any = 0; i < pinEntities.length; ++i) {
-                const slots: any = pinEntities[i].components.WiredPins.slots;
-                for (let k: any = 0; k < slots.length; ++k) {
+            for (let i = 0; i < pinEntities.length; ++i) {
+                const slots = pinEntities[i].components.WiredPins.slots;
+                for (let k = 0; k < slots.length; ++k) {
                     slots[k].linkedNetwork = null;
                 }
             }
@@ -124,11 +124,11 @@ export class WireSystem extends GameSystem {
         }
         VERBOSE_WIRES && logger.log("Recomputing slots");
         // Iterate over all ejector slots
-        for (let i: any = 0; i < pinEntities.length; ++i) {
-            const entity: any = pinEntities[i];
-            const slots: any = entity.components.WiredPins.slots;
-            for (let k: any = 0; k < slots.length; ++k) {
-                const slot: any = slots[k];
+        for (let i = 0; i < pinEntities.length; ++i) {
+            const entity = pinEntities[i];
+            const slots = entity.components.WiredPins.slots;
+            for (let k = 0; k < slots.length; ++k) {
+                const slot = slots[k];
                 // Ejectors are computed directly, acceptors are just set
                 if (slot.type === enumPinSlotType.logicalEjector && !slot.linkedNetwork) {
                     this.findNetworkForEjector(entity, slot);
@@ -139,11 +139,11 @@ export class WireSystem extends GameSystem {
     /**
      * Finds the network for the given slot
      */
-    findNetworkForEjector(initialEntity: Entity, slot: import("../components/wired_pins").WirePinSlot): any {
-        let currentNetwork: any = new WireNetwork();
+    findNetworkForEjector(initialEntity: Entity, slot: import("../components/wired_pins").WirePinSlot) {
+        let currentNetwork = new WireNetwork();
         VERBOSE_WIRES &&
             logger.log("Finding network for entity", initialEntity.uid, initialEntity.components.StaticMapEntity.origin.toString(), "(nw-id:", currentNetwork.uid, ")");
-        const entitiesToVisit: any = [
+        const entitiesToVisit = [
             {
                 entity: initialEntity,
                 slot,
@@ -155,14 +155,14 @@ export class WireSystem extends GameSystem {
          */
         let variantMask: enumWireVariant = null;
         while (entitiesToVisit.length > 0) {
-            const nextData: any = entitiesToVisit.pop();
-            const nextEntity: any = nextData.entity;
-            const wireComp: any = nextEntity.components.Wire;
-            const staticComp: any = nextEntity.components.StaticMapEntity;
+            const nextData = entitiesToVisit.pop();
+            const nextEntity = nextData.entity;
+            const wireComp = nextEntity.components.Wire;
+            const staticComp = nextEntity.components.StaticMapEntity;
             VERBOSE_WIRES && logger.log("Visiting", staticComp.origin.toString(), "(", nextEntity.uid, ")");
             // Where to search for neighbours
-            let newSearchDirections: any = [];
-            let newSearchTile: any = null;
+            let newSearchDirections = [];
+            let newSearchTile = null;
             //// WIRE
             if (wireComp) {
                 // Sanity check
@@ -188,9 +188,9 @@ export class WireSystem extends GameSystem {
                 }
             }
             //// PINS
-            const pinsComp: any = nextEntity.components.WiredPins;
+            const pinsComp = nextEntity.components.WiredPins;
             if (pinsComp) {
-                const slot: any = nextData.slot;
+                const slot = nextData.slot;
                 assert(slot, "No slot set for next entity");
                 if (slot.type === enumPinSlotType.logicalEjector) {
                     VERBOSE_WIRES &&
@@ -231,9 +231,9 @@ export class WireSystem extends GameSystem {
             }
             if (newSearchTile) {
                 // Find new surrounding wire targets
-                const newTargets: any = this.findSurroundingWireTargets(newSearchTile, newSearchDirections, currentNetwork, variantMask);
+                const newTargets = this.findSurroundingWireTargets(newSearchTile, newSearchDirections, currentNetwork, variantMask);
                 VERBOSE_WIRES && logger.log("   Found", newTargets, "new targets to visit!");
-                for (let i: any = 0; i < newTargets.length; ++i) {
+                for (let i = 0; i < newTargets.length; ++i) {
                     entitiesToVisit.push(newTargets[i]);
                 }
             }
@@ -247,13 +247,13 @@ export class WireSystem extends GameSystem {
         }
         else {
             // Unregister network again
-            for (let i: any = 0; i < currentNetwork.wires.length; ++i) {
+            for (let i = 0; i < currentNetwork.wires.length; ++i) {
                 currentNetwork.wires[i].components.Wire.linkedNetwork = null;
             }
-            for (let i: any = 0; i < currentNetwork.tunnels.length; ++i) {
+            for (let i = 0; i < currentNetwork.tunnels.length; ++i) {
                 fastArrayDeleteValueIfContained(currentNetwork.tunnels[i].components.WireTunnel.linkedNetworks, currentNetwork);
             }
-            for (let i: any = 0; i < currentNetwork.allSlots.length; ++i) {
+            for (let i = 0; i < currentNetwork.allSlots.length; ++i) {
                 currentNetwork.allSlots[i].slot.linkedNetwork = null;
             }
         }
@@ -263,32 +263,32 @@ export class WireSystem extends GameSystem {
      * {}
      */
     findSurroundingWireTargets(initialTile: Vector, directions: Array<enumDirection>, network: WireNetwork, variantMask: enumWireVariant= = null): Array<any> {
-        let result: any = [];
+        let result = [];
         VERBOSE_WIRES &&
             logger.log("    Searching for new targets at", initialTile.toString(), "and d=", directions, "with mask=", variantMask);
         // Go over all directions we should search for
-        for (let i: any = 0; i < directions.length; ++i) {
-            const direction: any = directions[i];
-            const offset: any = enumDirectionToVector[direction];
-            const initialSearchTile: any = initialTile.add(offset);
+        for (let i = 0; i < directions.length; ++i) {
+            const direction = directions[i];
+            const offset = enumDirectionToVector[direction];
+            const initialSearchTile = initialTile.add(offset);
             // Store which tunnels we already visited to avoid infinite loops
-            const visitedTunnels: any = new Set();
+            const visitedTunnels = new Set();
             // First, find the initial connected entities
-            const initialContents: any = this.root.map.getLayersContentsMultipleXY(initialSearchTile.x, initialSearchTile.y);
+            const initialContents = this.root.map.getLayersContentsMultipleXY(initialSearchTile.x, initialSearchTile.y);
             // Link the initial tile to the initial entities, since it may change
                         const contents: Array<{
                 entity: Entity;
                 tile: Vector;
             }> = [];
-            for (let j: any = 0; j < initialContents.length; ++j) {
+            for (let j = 0; j < initialContents.length; ++j) {
                 contents.push({
                     entity: initialContents[j],
                     tile: initialSearchTile,
                 });
             }
-            for (let k: any = 0; k < contents.length; ++k) {
-                const { entity, tile }: any = contents[k];
-                const wireComp: any = entity.components.Wire;
+            for (let k = 0; k < contents.length; ++k) {
+                const { entity, tile } = contents[k];
+                const wireComp = entity.components.Wire;
                 // Check for wire
                 if (wireComp &&
                     !wireComp.linkedNetwork &&
@@ -299,20 +299,20 @@ export class WireSystem extends GameSystem {
                     });
                 }
                 // Check for connected slots
-                const pinComp: any = entity.components.WiredPins;
+                const pinComp = entity.components.WiredPins;
                 if (pinComp) {
-                    const staticComp: any = entity.components.StaticMapEntity;
+                    const staticComp = entity.components.StaticMapEntity;
                     // Go over all slots and see if they are connected
-                    const pinSlots: any = pinComp.slots;
-                    for (let j: any = 0; j < pinSlots.length; ++j) {
-                        const slot: any = pinSlots[j];
+                    const pinSlots = pinComp.slots;
+                    for (let j = 0; j < pinSlots.length; ++j) {
+                        const slot = pinSlots[j];
                         // Check if the position matches
-                        const pinPos: any = staticComp.localTileToWorld(slot.pos);
+                        const pinPos = staticComp.localTileToWorld(slot.pos);
                         if (!pinPos.equals(tile)) {
                             continue;
                         }
                         // Check if the direction (inverted) matches
-                        const pinDirection: any = staticComp.localDirectionToWorld(slot.direction);
+                        const pinDirection = staticComp.localDirectionToWorld(slot.direction);
                         if (pinDirection !== enumInvertedDirections[direction]) {
                             continue;
                         }
@@ -327,20 +327,20 @@ export class WireSystem extends GameSystem {
                     continue;
                 }
                 // Check if it's a tunnel, if so, go to the forwarded item
-                const tunnelComp: any = entity.components.WireTunnel;
+                const tunnelComp = entity.components.WireTunnel;
                 if (tunnelComp) {
                     if (visitedTunnels.has(entity.uid)) {
                         continue;
                     }
-                    const staticComp: any = entity.components.StaticMapEntity;
+                    const staticComp = entity.components.StaticMapEntity;
                     // Compute where this tunnel connects to
-                    const forwardedTile: any = staticComp.origin.add(offset);
+                    const forwardedTile = staticComp.origin.add(offset);
                     VERBOSE_WIRES &&
                         logger.log("   Found tunnel", entity.uid, "at", tile, "-> forwarding to", forwardedTile);
                     // Figure out which entities are connected
-                    const connectedContents: any = this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y);
+                    const connectedContents = this.root.map.getLayersContentsMultipleXY(forwardedTile.x, forwardedTile.y);
                     // Attach the entities and the tile we search at, because it may change
-                    for (let h: any = 0; h < connectedContents.length; ++h) {
+                    for (let h = 0; h < connectedContents.length; ++h) {
                         contents.push({
                             entity: connectedContents[h],
                             tile: forwardedTile,
@@ -364,22 +364,22 @@ export class WireSystem extends GameSystem {
     /**
      * Updates the wires network
      */
-    update(): any {
+    update() {
         this.staleArea.update();
         if (this.needsRecompute) {
             this.recomputeWiresNetwork();
         }
         // Re-compute values of all networks
-        for (let i: any = 0; i < this.networks.length; ++i) {
-            const network: any = this.networks[i];
+        for (let i = 0; i < this.networks.length; ++i) {
+            const network = this.networks[i];
             // Reset conflicts
             network.valueConflict = false;
             // Aggregate values of all senders
-            const senders: any = network.providers;
-            let value: any = null;
-            for (let k: any = 0; k < senders.length; ++k) {
-                const senderSlot: any = senders[k];
-                const slotValue: any = senderSlot.slot.value;
+            const senders = network.providers;
+            let value = null;
+            for (let k = 0; k < senders.length; ++k) {
+                const senderSlot = senders[k];
+                const slotValue = senderSlot.slot.value;
                 // The first sender can just put in his value
                 if (!value) {
                     value = slotValue;
@@ -423,7 +423,7 @@ export class WireSystem extends GameSystem {
                 opacity: 0.5,
             };
         }
-        const network: any = wireComp.linkedNetwork;
+        const network = wireComp.linkedNetwork;
         if (network.valueConflict) {
             // There is a conflict
             return {
@@ -439,18 +439,18 @@ export class WireSystem extends GameSystem {
     /**
      * Draws a given chunk
      */
-    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView): any {
-        const contents: any = chunk.wireContents;
-        for (let y: any = 0; y < globalConfig.mapChunkSize; ++y) {
-            for (let x: any = 0; x < globalConfig.mapChunkSize; ++x) {
-                const entity: any = contents[x][y];
+    drawChunk(parameters: import("../../core/draw_utils").DrawParameters, chunk: MapChunkView) {
+        const contents = chunk.wireContents;
+        for (let y = 0; y < globalConfig.mapChunkSize; ++y) {
+            for (let x = 0; x < globalConfig.mapChunkSize; ++x) {
+                const entity = contents[x][y];
                 if (entity && entity.components.Wire) {
-                    const wireComp: any = entity.components.Wire;
-                    const wireType: any = wireComp.type;
-                    const { opacity, spriteSet }: any = this.getSpriteSetAndOpacityForWire(wireComp);
-                    const sprite: any = spriteSet[wireType];
+                    const wireComp = entity.components.Wire;
+                    const wireType = wireComp.type;
+                    const { opacity, spriteSet } = this.getSpriteSetAndOpacityForWire(wireComp);
+                    const sprite = spriteSet[wireType];
                     assert(sprite, "Unknown wire type: " + wireType);
-                    const staticComp: any = entity.components.StaticMapEntity;
+                    const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
                     staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
                     // DEBUG Rendering
@@ -471,8 +471,8 @@ export class WireSystem extends GameSystem {
                 // DEBUG Rendering
                 if (G_IS_DEV && globalConfig.debug.renderWireNetworkInfos) {
                     if (entity) {
-                        const staticComp: any = entity.components.StaticMapEntity;
-                        const wireComp: any = entity.components.Wire;
+                        const staticComp = entity.components.StaticMapEntity;
+                        const wireComp = entity.components.Wire;
                         // Draw network info for wires
                         if (wireComp && wireComp.linkedNetwork) {
                             parameters.context.fillStyle = "red";
@@ -488,44 +488,44 @@ export class WireSystem extends GameSystem {
     /**
      * Returns whether this entity is relevant for the wires network
      */
-    isEntityRelevantForWires(entity: Entity): any {
+    isEntityRelevantForWires(entity: Entity) {
         return entity.components.Wire || entity.components.WiredPins || entity.components.WireTunnel;
     }
-        queuePlacementUpdate(entity: Entity): any {
+        queuePlacementUpdate(entity: Entity) {
         if (!this.root.gameInitialized) {
             return;
         }
         if (!this.isEntityRelevantForWires(entity)) {
             return;
         }
-        const staticComp: any = entity.components.StaticMapEntity;
+        const staticComp = entity.components.StaticMapEntity;
         if (!staticComp) {
             return;
         }
         this.root.signals.achievementCheck.dispatch(ACHIEVEMENTS.place5000Wires, entity);
         // Invalidate affected area
-        const originalRect: any = staticComp.getTileSpaceBounds();
-        const affectedArea: any = originalRect.expandedInAllDirections(1);
+        const originalRect = staticComp.getTileSpaceBounds();
+        const affectedArea = originalRect.expandedInAllDirections(1);
         this.staleArea.invalidate(affectedArea);
     }
     /**
      * Updates the wire placement after an entity has been added / deleted
      */
-    updateSurroundingWirePlacement(affectedArea: Rectangle): any {
-        const metaWire: any = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
-        for (let x: any = affectedArea.x; x < affectedArea.right(); ++x) {
-            for (let y: any = affectedArea.y; y < affectedArea.bottom(); ++y) {
-                const targetEntities: any = this.root.map.getLayersContentsMultipleXY(x, y);
-                for (let i: any = 0; i < targetEntities.length; ++i) {
-                    const targetEntity: any = targetEntities[i];
-                    const targetWireComp: any = targetEntity.components.Wire;
-                    const targetStaticComp: any = targetEntity.components.StaticMapEntity;
+    updateSurroundingWirePlacement(affectedArea: Rectangle) {
+        const metaWire = gMetaBuildingRegistry.findByClass(MetaWireBuilding);
+        for (let x = affectedArea.x; x < affectedArea.right(); ++x) {
+            for (let y = affectedArea.y; y < affectedArea.bottom(); ++y) {
+                const targetEntities = this.root.map.getLayersContentsMultipleXY(x, y);
+                for (let i = 0; i < targetEntities.length; ++i) {
+                    const targetEntity = targetEntities[i];
+                    const targetWireComp = targetEntity.components.Wire;
+                    const targetStaticComp = targetEntity.components.StaticMapEntity;
                     if (!targetWireComp) {
                         // Not a wire
                         continue;
                     }
-                    const variant: any = targetStaticComp.getVariant();
-                    const { rotation, rotationVariant, }: any = metaWire.computeOptimalDirectionAndRotationVariantAtTile({
+                    const variant = targetStaticComp.getVariant();
+                    const { rotation, rotationVariant, } = metaWire.computeOptimalDirectionAndRotationVariantAtTile({
                         root: this.root,
                         tile: new Vector(x, y),
                         rotation: targetStaticComp.originalRotation,
@@ -533,7 +533,7 @@ export class WireSystem extends GameSystem {
                         layer: targetEntity.layer,
                     });
                     // Compute delta to see if anything changed
-                    const newType: any = arrayWireRotationVariantToType[rotationVariant];
+                    const newType = arrayWireRotationVariantToType[rotationVariant];
                     if (targetStaticComp.rotation !== rotation || newType !== targetWireComp.type) {
                         // Change stuff
                         targetStaticComp.rotation = rotation;

@@ -34,15 +34,15 @@ export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * Should create all require elements
      */
-    createElements(parent: HTMLElement): any {
+    createElements(parent: HTMLElement) {
         this.element = makeDiv(parent, this.htmlElementId, ["ingame_buildingsToolbar"], "");
     }
     /**
      * {}
      */
     filterBuildings(buildings: Array<typeof MetaBuilding>): Array<typeof MetaBuilding> {
-        const filtered: any = [];
-        for (let i: any = 0; i < buildings.length; i++) {
+        const filtered = [];
+        for (let i = 0; i < buildings.length; i++) {
             if (this.root.gameMode.isBuildingExcluded(buildings[i])) {
                 continue;
             }
@@ -57,42 +57,42 @@ export class HUDBaseToolbar extends BaseHUDPart {
     get allBuildings() {
         return [...this.primaryBuildings, ...this.secondaryBuildings];
     }
-    initialize(): any {
-        const actionMapper: any = this.root.keyMapper;
-        let rowSecondary: any;
+    initialize() {
+        const actionMapper = this.root.keyMapper;
+        let rowSecondary;
         if (this.secondaryBuildings.length > 0) {
             rowSecondary = makeDiv(this.element, null, ["buildings", "secondary"]);
             this.secondaryDomAttach = new DynamicDomAttach(this.root, rowSecondary, {
                 attachClass: "visible",
             });
         }
-        const rowPrimary: any = makeDiv(this.element, null, ["buildings", "primary"]);
-        const allBuildings: any = this.allBuildings;
-        for (let i: any = 0; i < allBuildings.length; ++i) {
-            const metaBuilding: any = gMetaBuildingRegistry.findByClass(allBuildings[i]);
-            let rawBinding: any = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + this.layer];
+        const rowPrimary = makeDiv(this.element, null, ["buildings", "primary"]);
+        const allBuildings = this.allBuildings;
+        for (let i = 0; i < allBuildings.length; ++i) {
+            const metaBuilding = gMetaBuildingRegistry.findByClass(allBuildings[i]);
+            let rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId() + "_" + this.layer];
             if (!rawBinding) {
                 rawBinding = KEYMAPPINGS.buildings[metaBuilding.getId()];
             }
             if (rawBinding) {
-                const binding: any = actionMapper.getBinding(rawBinding);
-                binding.add((): any => this.selectBuildingForPlacement(metaBuilding));
+                const binding = actionMapper.getBinding(rawBinding);
+                binding.add(() => this.selectBuildingForPlacement(metaBuilding));
             }
             else {
                 globalWarn("Building has no keybinding:", metaBuilding.getId());
             }
-            const itemContainer: any = makeDiv(this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary, null, ["building"]);
+            const itemContainer = makeDiv(this.primaryBuildings.includes(allBuildings[i]) ? rowPrimary : rowSecondary, null, ["building"]);
             itemContainer.setAttribute("data-icon", "building_icons/" + metaBuilding.getId() + ".png");
             itemContainer.setAttribute("data-id", metaBuilding.getId());
-            const icon: any = makeDiv(itemContainer, null, ["icon"]);
-            this.trackClicks(icon, (): any => this.selectBuildingForPlacement(metaBuilding), {
+            const icon = makeDiv(itemContainer, null, ["icon"]);
+            this.trackClicks(icon, () => this.selectBuildingForPlacement(metaBuilding), {
                 clickSound: null,
             });
             //lock icon for puzzle editor
             if (this.root.gameMode.getIsEditor() && !this.inRequiredBuildings(metaBuilding)) {
-                const puzzleLock: any = makeDiv(itemContainer, null, ["puzzle-lock"]);
+                const puzzleLock = makeDiv(itemContainer, null, ["puzzle-lock"]);
                 itemContainer.classList.toggle("editor", true);
-                this.trackClicks(puzzleLock, (): any => this.toggleBuildingLock(metaBuilding), {
+                this.trackClicks(puzzleLock, () => this.toggleBuildingLock(metaBuilding), {
                     clickSound: null,
                 });
             }
@@ -116,14 +116,14 @@ export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * Updates the toolbar
      */
-    update(): any {
-        const visible: any = this.visibilityCondition();
+    update() {
+        const visible = this.visibilityCondition();
         this.domAttach.update(visible);
         if (visible) {
-            let recomputeSecondaryToolbarVisibility: any = false;
-            for (const buildingId: any in this.buildingHandles) {
-                const handle: any = this.buildingHandles[buildingId];
-                const newStatus: any = !handle.puzzleLocked && handle.metaBuilding.getIsUnlocked(this.root);
+            let recomputeSecondaryToolbarVisibility = false;
+            for (const buildingId in this.buildingHandles) {
+                const handle = this.buildingHandles[buildingId];
+                const newStatus = !handle.puzzleLocked && handle.metaBuilding.getIsUnlocked(this.root);
                 if (handle.unlocked !== newStatus) {
                     handle.unlocked = newStatus;
                     handle.element.classList.toggle("unlocked", newStatus);
@@ -131,9 +131,9 @@ export class HUDBaseToolbar extends BaseHUDPart {
                 }
             }
             if (recomputeSecondaryToolbarVisibility && this.secondaryDomAttach) {
-                let anyUnlocked: any = false;
-                for (let i: any = 0; i < this.secondaryBuildings.length; ++i) {
-                    const metaClass: any = gMetaBuildingRegistry.findByClass(this.secondaryBuildings[i]);
+                let anyUnlocked = false;
+                for (let i = 0; i < this.secondaryBuildings.length; ++i) {
+                    const metaClass = gMetaBuildingRegistry.findByClass(this.secondaryBuildings[i]);
                     if (metaClass.getIsUnlocked(this.root)) {
                         anyUnlocked = true;
                         break;
@@ -146,20 +146,20 @@ export class HUDBaseToolbar extends BaseHUDPart {
     /**
      * Cycles through all buildings
      */
-    cycleBuildings(): any {
-        const visible: any = this.visibilityCondition();
+    cycleBuildings() {
+        const visible = this.visibilityCondition();
         if (!visible) {
             return;
         }
-        let newBuildingFound: any = false;
-        let newIndex: any = this.lastSelectedIndex;
-        const direction: any = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
+        let newBuildingFound = false;
+        let newIndex = this.lastSelectedIndex;
+        const direction = this.root.keyMapper.getBinding(KEYMAPPINGS.placement.rotateInverseModifier).pressed
             ? -1
             : 1;
-        for (let i: any = 0; i <= this.primaryBuildings.length; ++i) {
+        for (let i = 0; i <= this.primaryBuildings.length; ++i) {
             newIndex = safeModulo(newIndex + direction, this.primaryBuildings.length);
-            const metaBuilding: any = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
-            const handle: any = this.buildingHandles[metaBuilding.id];
+            const metaBuilding = gMetaBuildingRegistry.findByClass(this.primaryBuildings[newIndex]);
+            const handle = this.buildingHandles[metaBuilding.id];
             if (!handle.selected && handle.unlocked) {
                 newBuildingFound = true;
                 break;
@@ -168,17 +168,17 @@ export class HUDBaseToolbar extends BaseHUDPart {
         if (!newBuildingFound) {
             return;
         }
-        const metaBuildingClass: any = this.primaryBuildings[newIndex];
-        const metaBuilding: any = gMetaBuildingRegistry.findByClass(metaBuildingClass);
+        const metaBuildingClass = this.primaryBuildings[newIndex];
+        const metaBuilding = gMetaBuildingRegistry.findByClass(metaBuildingClass);
         this.selectBuildingForPlacement(metaBuilding);
     }
     /**
      * Called when the selected building got changed
      */
-    onSelectedPlacementBuildingChanged(metaBuilding: MetaBuilding): any {
-        for (const buildingId: any in this.buildingHandles) {
-            const handle: any = this.buildingHandles[buildingId];
-            const newStatus: any = handle.metaBuilding === metaBuilding;
+    onSelectedPlacementBuildingChanged(metaBuilding: MetaBuilding) {
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
+            const newStatus = handle.metaBuilding === metaBuilding;
             if (handle.selected !== newStatus) {
                 handle.selected = newStatus;
                 handle.element.classList.toggle("selected", newStatus);
@@ -189,7 +189,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
         }
         this.element.classList.toggle("buildingSelected", !!metaBuilding);
     }
-        selectBuildingForPlacement(metaBuilding: MetaBuilding): any {
+        selectBuildingForPlacement(metaBuilding: MetaBuilding) {
         if (!this.visibilityCondition()) {
             // Not active
             return;
@@ -198,7 +198,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
             this.root.soundProxy.playUiError();
             return STOP_PROPAGATION;
         }
-        const handle: any = this.buildingHandles[metaBuilding.getId()];
+        const handle = this.buildingHandles[metaBuilding.getId()];
         if (handle.puzzleLocked) {
             handle.puzzleLocked = false;
             handle.element.classList.toggle("unlocked", false);
@@ -206,8 +206,8 @@ export class HUDBaseToolbar extends BaseHUDPart {
             return;
         }
         // Allow clicking an item again to deselect it
-        for (const buildingId: any in this.buildingHandles) {
-            const handle: any = this.buildingHandles[buildingId];
+        for (const buildingId in this.buildingHandles) {
+            const handle = this.buildingHandles[buildingId];
             if (handle.selected && handle.metaBuilding === metaBuilding) {
                 metaBuilding = null;
                 break;
@@ -217,7 +217,7 @@ export class HUDBaseToolbar extends BaseHUDPart {
         this.root.hud.signals.buildingSelectedForPlacement.dispatch(metaBuilding);
         this.onSelectedPlacementBuildingChanged(metaBuilding);
     }
-        toggleBuildingLock(metaBuilding: MetaBuilding): any {
+        toggleBuildingLock(metaBuilding: MetaBuilding) {
         if (!this.visibilityCondition()) {
             // Not active
             return;
@@ -226,26 +226,26 @@ export class HUDBaseToolbar extends BaseHUDPart {
             this.root.soundProxy.playUiError();
             return STOP_PROPAGATION;
         }
-        const handle: any = this.buildingHandles[metaBuilding.getId()];
+        const handle = this.buildingHandles[metaBuilding.getId()];
         handle.puzzleLocked = !handle.puzzleLocked;
         handle.element.classList.toggle("unlocked", !handle.puzzleLocked);
         this.root.soundProxy.playUiClick();
-        const entityManager: any = this.root.entityMgr;
-        for (const entity: any of entityManager.getAllWithComponent(StaticMapEntityComponent)) {
-            const staticComp: any = entity.components.StaticMapEntity;
+        const entityManager = this.root.entityMgr;
+        for (const entity of entityManager.getAllWithComponent(StaticMapEntityComponent)) {
+            const staticComp = entity.components.StaticMapEntity;
             if (staticComp.getMetaBuilding().id === metaBuilding.id) {
                 this.root.map.removeStaticEntity(entity);
                 entityManager.destroyEntity(entity);
             }
         }
         entityManager.processDestroyList();
-        const currentMetaBuilding: any = this.root.hud.parts.buildingPlacer.currentMetaBuilding;
+        const currentMetaBuilding = this.root.hud.parts.buildingPlacer.currentMetaBuilding;
         if (currentMetaBuilding.get() == metaBuilding) {
             currentMetaBuilding.set(null);
         }
     }
-        inRequiredBuildings(metaBuilding: MetaBuilding): any {
-        const requiredBuildings: any = [
+        inRequiredBuildings(metaBuilding: MetaBuilding) {
+        const requiredBuildings = [
             gMetaBuildingRegistry.findByClass(MetaConstantProducerBuilding),
             gMetaBuildingRegistry.findByClass(MetaGoalAcceptorBuilding),
             gMetaBuildingRegistry.findByClass(MetaBlockBuilding),

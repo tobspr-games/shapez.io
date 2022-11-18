@@ -11,7 +11,7 @@ import { CHUNK_OVERLAY_RES } from "./map_chunk_view";
 import { MetaBuilding } from "./meta_building";
 import { GameRoot } from "./root";
 import { WireNetwork } from "./systems/wire";
-const logger: any = createLogger("ingame/logic");
+const logger = createLogger("ingame/logic");
 export type EjectorsAffectingTile = Array<{
     entity: Entity;
     slot: import("./components/item_ejector").ItemEjectorSlot;
@@ -45,18 +45,18 @@ export class GameLogic {
         offset: Vector=;
     }): boolean {
         // Compute area of the building
-        const rect: any = entity.components.StaticMapEntity.getTileSpaceBounds();
+        const rect = entity.components.StaticMapEntity.getTileSpaceBounds();
         if (offset) {
             rect.x += offset.x;
             rect.y += offset.y;
         }
         // Check the whole area of the building
-        for (let x: any = rect.x; x < rect.x + rect.w; ++x) {
-            for (let y: any = rect.y; y < rect.y + rect.h; ++y) {
+        for (let x = rect.x; x < rect.x + rect.w; ++x) {
+            for (let y = rect.y; y < rect.y + rect.h; ++y) {
                 // Check if there is any direct collision
-                const otherEntity: any = this.root.map.getLayerContentXY(x, y, entity.layer);
+                const otherEntity = this.root.map.getLayerContentXY(x, y, entity.layer);
                 if (otherEntity) {
-                    const staticComp: any = otherEntity.components.StaticMapEntity;
+                    const staticComp = otherEntity.components.StaticMapEntity;
                     if (!allowReplaceBuildings ||
                         !staticComp
                             .getMetaBuilding()
@@ -69,8 +69,8 @@ export class GameLogic {
         }
         // Perform additional placement checks
         if (this.root.gameMode.getIsEditor()) {
-            const toolbar: any = this.root.hud.parts.buildingsToolbar;
-            const id: any = entity.components.StaticMapEntity.getMetaBuilding().getId();
+            const toolbar = this.root.hud.parts.buildingsToolbar;
+            const id = entity.components.StaticMapEntity.getMetaBuilding().getId();
             if (toolbar.buildingHandles[id].puzzleLocked) {
                 return false;
             }
@@ -92,7 +92,7 @@ export class GameLogic {
         variant: string;
         building: MetaBuilding;
     }): Entity {
-        const entity: any = building.createEntity({
+        const entity = building.createEntity({
             root: this.root,
             origin,
             rotation,
@@ -112,15 +112,15 @@ export class GameLogic {
      * Removes all entities with a RemovableMapEntityComponent which need to get
      * removed before placing this entity
      */
-    freeEntityAreaBeforeBuild(entity: Entity): any {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const rect: any = staticComp.getTileSpaceBounds();
+    freeEntityAreaBeforeBuild(entity: Entity) {
+        const staticComp = entity.components.StaticMapEntity;
+        const rect = staticComp.getTileSpaceBounds();
         // Remove any removeable colliding entities on the same layer
-        for (let x: any = rect.x; x < rect.x + rect.w; ++x) {
-            for (let y: any = rect.y; y < rect.y + rect.h; ++y) {
-                const contents: any = this.root.map.getLayerContentXY(x, y, entity.layer);
+        for (let x = rect.x; x < rect.x + rect.w; ++x) {
+            for (let y = rect.y; y < rect.y + rect.h; ++y) {
+                const contents = this.root.map.getLayerContentXY(x, y, entity.layer);
                 if (contents) {
-                    const staticComp: any = contents.components.StaticMapEntity;
+                    const staticComp = contents.components.StaticMapEntity;
                     assertAlways(staticComp
                         .getMetaBuilding()
                         .getIsReplaceable(staticComp.getVariant(), staticComp.getRotationVariant()), "Tried to replace non-repleaceable entity");
@@ -136,13 +136,13 @@ export class GameLogic {
     /**
      * Performs a bulk operation, not updating caches in the meantime
      */
-    performBulkOperation(operation: function): any {
+    performBulkOperation(operation: function) {
         logger.warn("Running bulk operation ...");
         assert(!this.root.bulkOperationRunning, "Can not run two bulk operations twice");
         this.root.bulkOperationRunning = true;
-        const now: any = performance.now();
-        const returnValue: any = operation();
-        const duration: any = performance.now() - now;
+        const now = performance.now();
+        const returnValue = operation();
+        const duration = performance.now() - now;
         logger.log("Done in", round2Digits(duration), "ms");
         assert(this.root.bulkOperationRunning, "Bulk operation = false while bulk operation was running");
         this.root.bulkOperationRunning = false;
@@ -152,13 +152,13 @@ export class GameLogic {
     /**
      * Performs a immutable operation, causing no recalculations
      */
-    performImmutableOperation(operation: function): any {
+    performImmutableOperation(operation: function) {
         logger.warn("Running immutable operation ...");
         assert(!this.root.immutableOperationRunning, "Can not run two immutalbe operations twice");
         this.root.immutableOperationRunning = true;
-        const now: any = performance.now();
-        const returnValue: any = operation();
-        const duration: any = performance.now() - now;
+        const now = performance.now();
+        const returnValue = operation();
+        const duration = performance.now() - now;
         logger.log("Done in", round2Digits(duration), "ms");
         assert(this.root.immutableOperationRunning, "Immutable operation = false while immutable operation was running");
         this.root.immutableOperationRunning = false;
@@ -168,14 +168,14 @@ export class GameLogic {
     /**
      * Returns whether the given building can get removed
      */
-    canDeleteBuilding(building: Entity): any {
-        const staticComp: any = building.components.StaticMapEntity;
+    canDeleteBuilding(building: Entity) {
+        const staticComp = building.components.StaticMapEntity;
         return staticComp.getMetaBuilding().getIsRemovable(this.root);
     }
     /**
      * Tries to delete the given building
      */
-    tryDeleteBuilding(building: Entity): any {
+    tryDeleteBuilding(building: Entity) {
         if (!this.canDeleteBuilding(building)) {
             return false;
         }
@@ -192,26 +192,26 @@ export class GameLogic {
         wireVariant: enumWireVariant;
         tile: Vector;
         edge: enumDirection;
-    }): any {
-        const offset: any = enumDirectionToVector[edge];
-        const targetTile: any = tile.add(offset);
+    }) {
+        const offset = enumDirectionToVector[edge];
+        const targetTile = tile.add(offset);
         // Search for relevant pins
-        const pinEntities: any = this.root.map.getLayersContentsMultipleXY(targetTile.x, targetTile.y);
+        const pinEntities = this.root.map.getLayersContentsMultipleXY(targetTile.x, targetTile.y);
         // Go over all entities which could have a pin
-        for (let i: any = 0; i < pinEntities.length; ++i) {
-            const pinEntity: any = pinEntities[i];
-            const pinComp: any = pinEntity.components.WiredPins;
-            const staticComp: any = pinEntity.components.StaticMapEntity;
+        for (let i = 0; i < pinEntities.length; ++i) {
+            const pinEntity = pinEntities[i];
+            const pinComp = pinEntity.components.WiredPins;
+            const staticComp = pinEntity.components.StaticMapEntity;
             // Skip those who don't have pins
             if (!pinComp) {
                 continue;
             }
             // Go over all pins
-            const pins: any = pinComp.slots;
-            for (let k: any = 0; k < pinComp.slots.length; ++k) {
-                const pinSlot: any = pins[k];
-                const pinLocation: any = staticComp.localTileToWorld(pinSlot.pos);
-                const pinDirection: any = staticComp.localDirectionToWorld(pinSlot.direction);
+            const pins = pinComp.slots;
+            for (let k = 0; k < pinComp.slots.length; ++k) {
+                const pinSlot = pins[k];
+                const pinLocation = staticComp.localTileToWorld(pinSlot.pos);
+                const pinDirection = staticComp.localDirectionToWorld(pinSlot.direction);
                 // Check if the pin has the right location
                 if (!pinLocation.equals(targetTile)) {
                     continue;
@@ -225,18 +225,18 @@ export class GameLogic {
             }
         }
         // Now check if there's a connectable entity on the wires layer
-        const targetEntity: any = this.root.map.getTileContent(targetTile, "wires");
+        const targetEntity = this.root.map.getTileContent(targetTile, "wires");
         if (!targetEntity) {
             return false;
         }
-        const targetStaticComp: any = targetEntity.components.StaticMapEntity;
+        const targetStaticComp = targetEntity.components.StaticMapEntity;
         // Check if its a crossing
-        const wireTunnelComp: any = targetEntity.components.WireTunnel;
+        const wireTunnelComp = targetEntity.components.WireTunnel;
         if (wireTunnelComp) {
             return true;
         }
         // Check if its a wire
-        const wiresComp: any = targetEntity.components.Wire;
+        const wiresComp = targetEntity.components.Wire;
         if (!wiresComp) {
             return false;
         }
@@ -248,29 +248,29 @@ export class GameLogic {
      * {} Null if the entity is never able to be connected at the given tile
      */
     getEntityWireNetworks(entity: Entity, tile: Vector): Array<WireNetwork> | null {
-        let canConnectAtAll: any = false;
+        let canConnectAtAll = false;
                 const networks: Set<WireNetwork> = new Set();
-        const staticComp: any = entity.components.StaticMapEntity;
-        const wireComp: any = entity.components.Wire;
+        const staticComp = entity.components.StaticMapEntity;
+        const wireComp = entity.components.Wire;
         if (wireComp) {
             canConnectAtAll = true;
             if (wireComp.linkedNetwork) {
                 networks.add(wireComp.linkedNetwork);
             }
         }
-        const tunnelComp: any = entity.components.WireTunnel;
+        const tunnelComp = entity.components.WireTunnel;
         if (tunnelComp) {
             canConnectAtAll = true;
-            for (let i: any = 0; i < tunnelComp.linkedNetworks.length; ++i) {
+            for (let i = 0; i < tunnelComp.linkedNetworks.length; ++i) {
                 networks.add(tunnelComp.linkedNetworks[i]);
             }
         }
-        const pinsComp: any = entity.components.WiredPins;
+        const pinsComp = entity.components.WiredPins;
         if (pinsComp) {
-            const slots: any = pinsComp.slots;
-            for (let i: any = 0; i < slots.length; ++i) {
-                const slot: any = slots[i];
-                const slotLocalPos: any = staticComp.localTileToWorld(slot.pos);
+            const slots = pinsComp.slots;
+            for (let i = 0; i < slots.length; ++i) {
+                const slot = slots[i];
+                const slotLocalPos = staticComp.localTileToWorld(slot.pos);
                 if (slotLocalPos.equals(tile)) {
                     canConnectAtAll = true;
                     if (slot.linkedNetwork) {
@@ -287,20 +287,20 @@ export class GameLogic {
     /**
      * Returns if the entities tile *and* his overlay matrix is intersected
      */
-    getIsEntityIntersectedWithMatrix(entity: Entity, worldPos: Vector): any {
-        const staticComp: any = entity.components.StaticMapEntity;
-        const tile: any = worldPos.toTileSpace();
+    getIsEntityIntersectedWithMatrix(entity: Entity, worldPos: Vector) {
+        const staticComp = entity.components.StaticMapEntity;
+        const tile = worldPos.toTileSpace();
         if (!staticComp.getTileSpaceBounds().containsPoint(tile.x, tile.y)) {
             // No intersection at all
             return;
         }
-        const data: any = getBuildingDataFromCode(staticComp.code);
-        const overlayMatrix: any = data.metaInstance.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, entity);
+        const data = getBuildingDataFromCode(staticComp.code);
+        const overlayMatrix = data.metaInstance.getSpecialOverlayRenderMatrix(staticComp.rotation, data.rotationVariant, data.variant, entity);
         // Always the same
         if (!overlayMatrix) {
             return true;
         }
-        const localPosition: any = worldPos
+        const localPosition = worldPos
             .divideScalar(globalConfig.tileSize)
             .modScalar(1)
             .multiplyScalar(CHUNK_OVERLAY_RES)
@@ -315,19 +315,19 @@ export class GameLogic {
                 let ejectors: EjectorsAffectingTile = [];
                 let acceptors: AcceptorsAffectingTile = [];
         // Well .. please ignore this code! :D
-        for (let dx: any = -1; dx <= 1; ++dx) {
-            for (let dy: any = -1; dy <= 1; ++dy) {
+        for (let dx = -1; dx <= 1; ++dx) {
+            for (let dy = -1; dy <= 1; ++dy) {
                 if (Math.abs(dx) + Math.abs(dy) !== 1) {
                     continue;
                 }
-                const entity: any = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, "regular");
+                const entity = this.root.map.getLayerContentXY(tile.x + dx, tile.y + dy, "regular");
                 if (entity) {
                                         let ejectorSlots: Array<import("./components/item_ejector").ItemEjectorSlot> = [];
                                         let acceptorSlots: Array<import("./components/item_acceptor").ItemAcceptorSlot> = [];
-                    const staticComp: any = entity.components.StaticMapEntity;
-                    const itemEjector: any = entity.components.ItemEjector;
-                    const itemAcceptor: any = entity.components.ItemAcceptor;
-                    const beltComp: any = entity.components.Belt;
+                    const staticComp = entity.components.StaticMapEntity;
+                    const itemEjector = entity.components.ItemEjector;
+                    const itemAcceptor = entity.components.ItemAcceptor;
+                    const beltComp = entity.components.Belt;
                     if (itemEjector) {
                         ejectorSlots = itemEjector.slots.slice();
                     }
@@ -335,16 +335,16 @@ export class GameLogic {
                         acceptorSlots = itemAcceptor.slots.slice();
                     }
                     if (beltComp) {
-                        const fakeEjectorSlot: any = beltComp.getFakeEjectorSlot();
-                        const fakeAcceptorSlot: any = beltComp.getFakeAcceptorSlot();
+                        const fakeEjectorSlot = beltComp.getFakeEjectorSlot();
+                        const fakeAcceptorSlot = beltComp.getFakeAcceptorSlot();
                         ejectorSlots.push(fakeEjectorSlot);
                         acceptorSlots.push(fakeAcceptorSlot);
                     }
-                    for (let ejectorSlot: any = 0; ejectorSlot < ejectorSlots.length; ++ejectorSlot) {
-                        const slot: any = ejectorSlots[ejectorSlot];
-                        const wsTile: any = staticComp.localTileToWorld(slot.pos);
-                        const wsDirection: any = staticComp.localDirectionToWorld(slot.direction);
-                        const targetTile: any = wsTile.add(enumDirectionToVector[wsDirection]);
+                    for (let ejectorSlot = 0; ejectorSlot < ejectorSlots.length; ++ejectorSlot) {
+                        const slot = ejectorSlots[ejectorSlot];
+                        const wsTile = staticComp.localTileToWorld(slot.pos);
+                        const wsDirection = staticComp.localDirectionToWorld(slot.direction);
+                        const targetTile = wsTile.add(enumDirectionToVector[wsDirection]);
                         if (targetTile.equals(tile)) {
                             ejectors.push({
                                 entity,
@@ -354,12 +354,12 @@ export class GameLogic {
                             });
                         }
                     }
-                    for (let acceptorSlot: any = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
-                        const slot: any = acceptorSlots[acceptorSlot];
-                        const wsTile: any = staticComp.localTileToWorld(slot.pos);
-                        const direction: any = slot.direction;
-                        const wsDirection: any = staticComp.localDirectionToWorld(direction);
-                        const sourceTile: any = wsTile.add(enumDirectionToVector[wsDirection]);
+                    for (let acceptorSlot = 0; acceptorSlot < acceptorSlots.length; ++acceptorSlot) {
+                        const slot = acceptorSlots[acceptorSlot];
+                        const wsTile = staticComp.localTileToWorld(slot.pos);
+                        const direction = slot.direction;
+                        const wsDirection = staticComp.localDirectionToWorld(direction);
+                        const sourceTile = wsTile.add(enumDirectionToVector[wsDirection]);
                         if (sourceTile.equals(tile)) {
                             acceptors.push({
                                 entity,
@@ -377,9 +377,9 @@ export class GameLogic {
     /**
      * Clears all belts and items
      */
-    clearAllBeltsAndItems(): any {
-        for (const entity: any of this.root.entityMgr.entities) {
-            for (const component: any of Object.values(entity.components)) {
+    clearAllBeltsAndItems() {
+        for (const entity of this.root.entityMgr.entities) {
+            for (const component of Object.values(entity.components)) {
                 component as Component).clear();
             }
         }

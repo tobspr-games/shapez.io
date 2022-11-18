@@ -33,8 +33,8 @@ export function smoothenDpi(dpi: number): number {
 /**
  * Prepares a context for hihg dpi rendering
  */
-export function prepareHighDPIContext(context: CanvasRenderingContext2D, smooth: any = true): any {
-    const dpi: any = getDeviceDPI();
+export function prepareHighDPIContext(context: CanvasRenderingContext2D, smooth = true) {
+    const dpi = getDeviceDPI();
     context.scale(dpi, dpi);
     if (smooth) {
         context.imageSmoothingEnabled = true;
@@ -50,12 +50,12 @@ export function prepareHighDPIContext(context: CanvasRenderingContext2D, smooth:
 /**
  * Resizes a high dpi canvas
  */
-export function resizeHighDPICanvas(canvas: HTMLCanvasElement, w: number, h: number, smooth: any = true): any {
-    const dpi: any = getDeviceDPI();
-    const wNumber: any = Math.floor(w);
-    const hNumber: any = Math.floor(h);
-    const targetW: any = Math.floor(wNumber * dpi);
-    const targetH: any = Math.floor(hNumber * dpi);
+export function resizeHighDPICanvas(canvas: HTMLCanvasElement, w: number, h: number, smooth = true) {
+    const dpi = getDeviceDPI();
+    const wNumber = Math.floor(w);
+    const hNumber = Math.floor(h);
+    const targetW = Math.floor(wNumber * dpi);
+    const targetH = Math.floor(hNumber * dpi);
     if (targetW !== canvas.width || targetH !== canvas.height) {
         // console.log("Resize Canvas from", canvas.width, canvas.height, "to", targetW, targetH)
         canvas.width = targetW;
@@ -68,9 +68,9 @@ export function resizeHighDPICanvas(canvas: HTMLCanvasElement, w: number, h: num
 /**
  * Resizes a canvas
  */
-export function resizeCanvas(canvas: HTMLCanvasElement, w: number, h: number, setStyle: any = true): any {
-    const actualW: any = Math.ceil(w);
-    const actualH: any = Math.ceil(h);
+export function resizeCanvas(canvas: HTMLCanvasElement, w: number, h: number, setStyle = true) {
+    const actualW = Math.ceil(w);
+    const actualH = Math.ceil(h);
     if (actualW !== canvas.width || actualH !== canvas.height) {
         canvas.width = actualW;
         canvas.height = actualH;
@@ -84,9 +84,9 @@ export function resizeCanvas(canvas: HTMLCanvasElement, w: number, h: number, se
 /**
  * Resizes a canvas and makes sure its cleared
  */
-export function resizeCanvasAndClear(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, w: number, h: number): any {
-    const actualW: any = Math.ceil(w);
-    const actualH: any = Math.ceil(h);
+export function resizeCanvasAndClear(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, w: number, h: number) {
+    const actualW = Math.ceil(w);
+    const actualH = Math.ceil(h);
     if (actualW !== canvas.width || actualH !== canvas.height) {
         canvas.width = actualW;
         canvas.height = actualH;

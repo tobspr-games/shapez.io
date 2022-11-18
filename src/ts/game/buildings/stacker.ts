@@ -13,7 +13,7 @@ export class MetaStackerBuilding extends MetaBuilding {
     constructor() {
         super("stacker");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 14,
@@ -21,10 +21,10 @@ export class MetaStackerBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#9fcd7d";
     }
-    getDimensions(): any {
+    getDimensions() {
         return new Vector(2, 1);
     }
     /**
@@ -37,16 +37,16 @@ export class MetaStackerBuilding extends MetaBuilding {
         if (root.gameMode.throughputDoesNotMatter()) {
             return [];
         }
-        const speed: any = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.stacker);
+        const speed = root.hubGoals.getProcessorBaseSpeed(enumItemProcessorTypes.stacker);
         return [[T.ingame.buildingPlacement.infoTexts.speed, formatItemsPerSecond(speed)]];
     }
-        getIsUnlocked(root: GameRoot): any {
+        getIsUnlocked(root: GameRoot) {
         return root.hubGoals.isRewardUnlocked(enumHubGoalRewards.reward_stacker);
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any {
+    setupEntityComponents(entity: Entity) {
         entity.addComponent(new ItemProcessorComponent({
             inputsPerCharge: 2,
             processorType: enumItemProcessorTypes.stacker,

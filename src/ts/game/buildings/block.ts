@@ -7,7 +7,7 @@ export class MetaBlockBuilding extends MetaBuilding {
     constructor() {
         super("block");
     }
-    static getAllVariantCombinations(): any {
+    static getAllVariantCombinations() {
         return [
             {
                 internalId: 64,
@@ -15,7 +15,7 @@ export class MetaBlockBuilding extends MetaBuilding {
             },
         ];
     }
-    getSilhouetteColor(): any {
+    getSilhouetteColor() {
         return "#333";
     }
     /**
@@ -138,11 +138,11 @@ export class MetaBlockBuilding extends MetaBuilding {
      * @param {import("../../savegame/savegame_serializer").GameRoot} root
      * @returns
      */
-    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot): any {
+    getIsRemovable(root: import("../../savegame/savegame_serializer").GameRoot) {
         return root.gameMode.getIsEditor();
     }
     /**
      * Creates the entity at the given location
      */
-    setupEntityComponents(entity: Entity): any { }
+    setupEntityComponents(entity: Entity) { }
 }

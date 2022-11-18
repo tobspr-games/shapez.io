@@ -3,7 +3,7 @@ import type { Application } from "../../application";
 /* typehints:end */
 import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { enumHubGoalRewards } from "../tutorial_goals";
-export const finalGameShape: any = "RuCw--Cw:----Ru--";
+export const finalGameShape = "RuCw--Cw:----Ru--";
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /**
@@ -55,8 +55,8 @@ const
  * @param {Application} app
  * @returns
  */
-const WEB_DEMO_LEVELS: any = (app: Application): any => {
-    const levels: any = [
+const WEB_DEMO_LEVELS = (app: Application) => {
+    const levels = [
         // 1
         // Circle
         {
@@ -120,7 +120,7 @@ const WEB_DEMO_LEVELS: any = (app: Application): any => {
 };
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-const STEAM_DEMO_LEVELS: any = (): any => [
+const STEAM_DEMO_LEVELS = () => [
     // 1
     // Circle
     {
@@ -183,7 +183,7 @@ const STEAM_DEMO_LEVELS: any = (): any => [
 ];
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-const STANDALONE_LEVELS: any = (): any => [
+const STANDALONE_LEVELS = () => [
     // 1
     // Circle
     {
@@ -365,7 +365,7 @@ const STANDALONE_LEVELS: any = (): any => [
 /**
  * Generates the level definitions
  */
-export function generateLevelsForVariant(app: any): any {
+export function generateLevelsForVariant(app) {
     if (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) {
         return STANDALONE_LEVELS();
     }

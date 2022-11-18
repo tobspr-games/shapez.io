@@ -7,7 +7,7 @@ export class LoginState extends GameState {
     constructor() {
         super("LoginState");
     }
-    getInnerHTML(): any {
+    getInnerHTML() {
         return `
         <div class="loadingImage"></div>
         <div class="loadingStatus">
@@ -19,13 +19,13 @@ export class LoginState extends GameState {
     }
         onEnter(payload: {
         nextStateId: string;
-    }): any {
+    }) {
         this.payload = payload;
         if (!this.payload.nextStateId) {
             throw new Error("No next state id");
         }
         this.dialogs = new HUDModalDialogs(null, this.app);
-        const dialogsElement: any = document.body.querySelector(".modalDialogParent");
+        const dialogsElement = document.body.querySelector(".modalDialogParent");
         this.dialogs.initializeToElement(dialogsElement);
         this.htmlElement.classList.add("prefab_LoadingState");
                 this.hintsText = this.htmlElement.querySelector(".prefab_GameHint");
@@ -33,12 +33,12 @@ export class LoginState extends GameState {
         this.nextHintDuration = 0;
         this.tryLogin();
     }
-    tryLogin(): any {
-        this.app.clientApi.tryLogin().then((success: any): any => {
+    tryLogin() {
+        this.app.clientApi.tryLogin().then(success => {
             console.log("Logged in:", success);
             if (!success) {
-                const signals: any = this.dialogs.showWarning(T.dialogs.offlineMode.title, T.dialogs.offlineMode.desc, ["retry", "playOffline:bad"]);
-                signals.retry.add((): any => setTimeout((): any => this.tryLogin(), 2000), this);
+                const signals = this.dialogs.showWarning(T.dialogs.offlineMode.title, T.dialogs.offlineMode.desc, ["retry", "playOffline:bad"]);
+                signals.retry.add(() => setTimeout(() => this.tryLogin(), 2000), this);
                 signals.playOffline.add(this.finishLoading, this);
             }
             else {
@@ -46,17 +46,17 @@ export class LoginState extends GameState {
             }
         });
     }
-    finishLoading(): any {
+    finishLoading() {
         this.moveToState(this.payload.nextStateId);
     }
-    getDefaultPreviousState(): any {
+    getDefaultPreviousState() {
         return "MainMenuState";
     }
-    update(): any {
-        const now: any = performance.now();
+    update() {
+        const now = performance.now();
         if (now - this.lastHintShown > this.nextHintDuration) {
             this.lastHintShown = now;
-            const hintText: any = getRandomHint();
+            const hintText = getRandomHint();
             this.hintsText.innerHTML = hintText;
             /**
              * Compute how long the user will need to read the hint.
@@ -66,10 +66,10 @@ export class LoginState extends GameState {
             this.nextHintDuration = Math.max(2500, (hintText.length / 650) * 60 * 1000);
         }
     }
-    onRender(): any {
+    onRender() {
         this.update();
     }
-    onBackgroundTick(): any {
+    onBackgroundTick() {
         this.update();
     }
 }

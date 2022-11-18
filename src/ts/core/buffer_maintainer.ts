@@ -8,8 +8,8 @@ export type CacheEntry = {
     lastUse: number;
 };
 
-const logger: any = createLogger("buffers");
-const bufferGcDurationSeconds: any = 0.5;
+const logger = createLogger("buffers");
+const bufferGcDurationSeconds = 0.5;
 export class BufferMaintainer {
     public root = root;
     public cache: Map<string, Map<string, CacheEntry>> = new Map();
@@ -22,17 +22,17 @@ export class BufferMaintainer {
     /**
      * Returns the buffer stats
      */
-    getStats(): any {
-        let stats: any = {
+    getStats() {
+        let stats = {
             rootKeys: 0,
             subKeys: 0,
             vramBytes: 0,
         };
-        this.cache.forEach((subCache: any, key: any): any => {
+        this.cache.forEach((subCache, key) => {
             ++stats.rootKeys;
-            subCache.forEach((cacheEntry: any, subKey: any): any => {
+            subCache.forEach((cacheEntry, subKey) => {
                 ++stats.subKeys;
-                const canvas: any = cacheEntry.canvas;
+                const canvas = cacheEntry.canvas;
                 stats.vramBytes += canvas.width * canvas.height * 4;
             });
         });
@@ -42,14 +42,14 @@ export class BufferMaintainer {
      * Goes to the next buffer iteration, clearing all buffers which were not used
      * for a few iterations
      */
-    garbargeCollect(): any {
-        let totalKeys: any = 0;
-        let deletedKeys: any = 0;
-        const minIteration: any = this.iterationIndex;
-        this.cache.forEach((subCache: any, key: any): any => {
-            let unusedSubKeys: any = [];
+    garbargeCollect() {
+        let totalKeys = 0;
+        let deletedKeys = 0;
+        const minIteration = this.iterationIndex;
+        this.cache.forEach((subCache, key) => {
+            let unusedSubKeys = [];
             // Filter sub cache
-            subCache.forEach((cacheEntry: any, subKey: any): any => {
+            subCache.forEach((cacheEntry, subKey) => {
                 if (cacheEntry.lastUse < minIteration ||
                     // @ts-ignore
                     cacheEntry.canvas._contextLost) {
@@ -62,7 +62,7 @@ export class BufferMaintainer {
                 }
             });
             // Delete unused sub keys
-            for (let i: any = 0; i < unusedSubKeys.length; ++i) {
+            for (let i = 0; i < unusedSubKeys.length; ++i) {
                 subCache.delete(unusedSubKeys[i]);
             }
         });
@@ -91,8 +91,8 @@ export class BufferMaintainer {
         // }
         ++this.iterationIndex;
     }
-    update(): any {
-        const now: any = this.root.time.realtimeNow();
+    update() {
+        const now = this.root.time.realtimeNow();
         if (now - this.lastIteration > bufferGcDurationSeconds) {
             this.lastIteration = now;
             this.garbargeCollect();
@@ -112,21 +112,21 @@ export class BufferMaintainer {
         additionalParams: object=;
     }): HTMLCanvasElement {
         // First, create parent key
-        let parent: any = this.cache.get(key);
+        let parent = this.cache.get(key);
         if (!parent) {
             parent = new Map();
             this.cache.set(key, parent);
         }
         // Now search for sub key
-        const cacheHit: any = parent.get(subKey);
+        const cacheHit = parent.get(subKey);
         if (cacheHit) {
             cacheHit.lastUse = this.iterationIndex;
             return cacheHit.canvas;
         }
         // Need to generate new buffer
-        const effectiveWidth: any = w * dpi;
-        const effectiveHeight: any = h * dpi;
-        const [canvas, context]: any = makeOffscreenBuffer(effectiveWidth, effectiveHeight, {
+        const effectiveWidth = w * dpi;
+        const effectiveHeight = h * dpi;
+        const [canvas, context] = makeOffscreenBuffer(effectiveWidth, effectiveHeight, {
             reusable: true,
             label: "buffer-" + key + "/" + subKey,
             smooth: true,
@@ -147,12 +147,12 @@ export class BufferMaintainer {
         key: string;
         subKey: string;
     }): ?HTMLCanvasElement {
-        let parent: any = this.cache.get(key);
+        let parent = this.cache.get(key);
         if (!parent) {
             return null;
         }
         // Now search for sub key
-        const cacheHit: any = parent.get(subKey);
+        const cacheHit = parent.get(subKey);
         if (cacheHit) {
             return cacheHit.canvas;
         }

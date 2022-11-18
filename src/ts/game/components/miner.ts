@@ -3,12 +3,12 @@ import { BaseItem } from "../base_item";
 import { Component } from "../component";
 import { Entity } from "../entity";
 import { typeItemSingleton } from "../item_resolver";
-const chainBufferSize: any = 6;
+const chainBufferSize = 6;
 export class MinerComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "Miner";
     }
-    static getSchema(): any {
+    static getSchema() {
         // cachedMinedItem is not serialized.
         return {
             lastMiningTime: types.ufloat,
@@ -24,14 +24,14 @@ export class MinerComponent extends Component {
         super();
         this.clear();
     }
-    clear(): any {
+    clear() {
         /**
          * Stores items from other miners which were chained to this
          * miner.
          */
         this.itemChainBuffer = [];
     }
-        tryAcceptChainedItem(item: BaseItem): any {
+        tryAcceptChainedItem(item: BaseItem) {
         if (this.itemChainBuffer.length > chainBufferSize) {
             // Well, this one is full
             return false;

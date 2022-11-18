@@ -40,13 +40,13 @@ import { MOD_SIGNALS } from "./mods/mod_signals";
 import { ModsState } from "./states/mods";
 
 import type { AchievementProviderInterface } from "./platform/achievement_provider";
-import type { SoundInterface  } from "./platform/sound";
+import type { SoundInterface } from "./platform/sound";
 import type { StorageInterface } from "./platform/storage";
 
-const logger: any = createLogger("application");
+const logger = createLogger("application");
 
 // Set the name of the hidden property and the change event for visibility
-let pageHiddenPropName: any, pageVisibilityEventName: any;
+let pageHiddenPropName: string, pageVisibilityEventName: string;
 if (typeof document.hidden !== "undefined") {
     // Opera 12.10 and Firefox 18 and later support
     pageHiddenPropName = "hidden";
@@ -62,9 +62,7 @@ if (typeof document.hidden !== "undefined") {
 }
 
 export class Application {
-    public unloaded = true;
-
-    // Global stuff
+    public unloaded = false;
     public settings = new ApplicationSettings(this);
     public ticker = new AnimationFrame();
     public stateMgr = new StateManager(this);
@@ -72,44 +70,28 @@ export class Application {
     public inputMgr = new InputDistributor(this);
     public backgroundResourceLoader = new BackgroundResourcesLoader(this);
     public clientApi = new ClientAPI(this);
-
-    // Restrictions (Like demo etc)
     public restrictionMgr = new RestrictionManager(this);
-
-    // Platform dependent stuff
     public storage: StorageInterface = null;
-    public sound: SoundInterface = new SoundImplBrowser(this);
-    public platformWrapper: PlatformWrapperInterface = G_IS_STANDALONE ? new PlatformWrapperImplElectron(this) : new PlatformWrapperImplBrowser(this);
-    public achievementProvider: AchievementProviderInterface = new NoAchievementProvider(this);
-    public adProvider: AdProviderInterface = new NoAdProvider(this);
-    public analytics: AnalyticsInterface = new GoogleAnalyticsImpl(this);
-    public gameAnalytics = new ShapezGameAnalytics(this);
-
-    // Track if the window is focused (only relevant for browser)
+    public sound: SoundInterface = null;
+    public platformWrapper: PlatformWrapperInterface = null;
+    public achievementProvider: AchievementProviderInterface = null;
+    public adProvider: AdProviderInterface = null;
+    public analytics: AnalyticsInterface = null;
+    public gameAnalytics: ShapezGameAnalytics = null;
     public focused = true;
-
-    // Track if the window is visible
     public pageVisible = true;
-
-    // Track if the app is paused (cordova)
     public applicationPaused = false;
-            public trackedIsRenderable = new TrackedState(this.onAppRenderableStateChanged, this);
-            public trackedIsPlaying = new TrackedState(this.onAppPlayingStateChanged, this);
-
-    // Dimensions
+    public trackedIsRenderable: TypedTrackedState<boolean> = new TrackedState(this.onAppRenderableStateChanged, this);
+    public trackedIsPlaying: TypedTrackedState<boolean> = new TrackedState(this.onAppPlayingStateChanged, this);
     public screenWidth = 0;
     public screenHeight = 0;
-    // Store the timestamp where we last checked for a screen resize, since orientationchange is unreliable with cordova
-    public lastResizeCheck: number = null;
-    // Store the mouse position, or null if not available
-            public mousePosition: Vector = null;
-
-
+    public lastResizeCheck = null;
+    public mousePosition: Vector | null = null;
 
     /**
      * Boots the application
      */
-    async boot(): Promise<void> {
+    async boot() {
         console.log("Booting ...");
 
         assert(!GLOBAL_APP, "Tried to construct application twice");
@@ -122,12 +104,11 @@ export class Application {
         try {
             await MODS.initMods();
         }
-        catch (ex: any) {
+        catch (ex) {
             alert("Failed to load mods (launch with --dev for more info): \n\n" + ex);
         }
 
-        this.unloaded = false;
-
+        this.initPlatformDependentInstances();
         this.registerStates();
         this.registerEventListeners();
 
@@ -152,10 +133,30 @@ export class Application {
     }
 
     /**
+     * Initializes all platform instances
+     */
+    initPlatformDependentInstances() {
+        logger.log("Creating platform dependent instances (standalone=", G_IS_STANDALONE, ")");
+
+        if (G_IS_STANDALONE) {
+            this.platformWrapper = new PlatformWrapperImplElectron(this);
+        }
+        else {
+            this.platformWrapper = new PlatformWrapperImplBrowser(this);
+        }
+
+        // Start with empty ad provider
+        this.adProvider = new NoAdProvider(this);
+        this.sound = new SoundImplBrowser(this);
+        this.analytics = new GoogleAnalyticsImpl(this);
+        this.gameAnalytics = new ShapezGameAnalytics(this);
+        this.achievementProvider = new NoAchievementProvider(this);
+    }
+    /**
      * Registers all game states
      */
-    registerStates(): void {
-                const states: Array<typeof GameState> = [
+    registerStates() {
+        const states: Array<typeof GameState> = [
             WegameSplashState,
             PreloadState,
             MobileWarningState,
@@ -169,6 +170,7 @@ export class Application {
             LoginState,
             ModsState,
         ];
+
         for (let i = 0; i < states.length; ++i) {
             this.stateMgr.register(states[i]);
         }
@@ -177,7 +179,7 @@ export class Application {
     /**
      * Registers all event listeners
      */
-    registerEventListeners(): void {
+    registerEventListeners() {
         window.addEventListener("focus", this.onFocus.bind(this));
         window.addEventListener("blur", this.onBlur.bind(this));
 
@@ -191,19 +193,17 @@ export class Application {
 
         // Unload events
         window.addEventListener("beforeunload", this.onBeforeUnload.bind(this), true);
-
         document.addEventListener(pageVisibilityEventName, this.handleVisibilityChange.bind(this), false);
 
         // Track touches so we can update the focus appropriately
         document.addEventListener("touchstart", this.updateFocusAfterUserInteraction.bind(this), true);
         document.addEventListener("touchend", this.updateFocusAfterUserInteraction.bind(this), true);
     }
-
     /**
      * Checks the focus after a touch
      */
-    updateFocusAfterUserInteraction(event: TouchEvent): void {
-        const target = (event.target as HTMLElement);
+    updateFocusAfterUserInteraction(event: TouchEvent) {
+        const target = event.target as HTMLElement;
         if (!target || !target.tagName) {
             // Safety check
             logger.warn("Invalid touchstart/touchend event:", event);
@@ -222,16 +222,16 @@ export class Application {
         // If we click an input field, focus it now
         if (target.tagName.toLowerCase() === "input") {
             // We *really* need the focus
-            waitNextFrame().then((): any => target.focus());
+            waitNextFrame().then(() => target.focus());
         }
     }
 
     /**
      * Handles a page visibility change event
      */
-    handleVisibilityChange(event: Event): void {
+    handleVisibilityChange(event: Event) {
         window.focus();
-        const pageVisible: any = !document[pageHiddenPropName];
+        const pageVisible = !document[pageHiddenPropName];
         if (pageVisible !== this.pageVisible) {
             this.pageVisible = pageVisible;
             logger.log("Visibility changed:", this.pageVisible);
@@ -242,35 +242,35 @@ export class Application {
     /**
      * Handles a mouse move event
      */
-    handleMousemove(event: MouseEvent): void {
+    handleMousemove(event: MouseEvent) {
         this.mousePosition = new Vector(event.clientX, event.clientY);
     }
 
     /**
      * Internal on focus handler
      */
-    onFocus(): void {
+    onFocus() {
         this.focused = true;
     }
 
     /**
      * Internal blur handler
      */
-    onBlur(): void {
+    onBlur() {
         this.focused = false;
     }
 
     /**
      * Returns if the app is currently visible
      */
-    isRenderable(): boolean {
+    isRenderable() {
         return !this.applicationPaused && this.pageVisible;
     }
 
-    onAppRenderableStateChanged(renderable: boolean): void {
+    onAppRenderableStateChanged(renderable: boolean) {
         logger.log("Application renderable:", renderable);
         window.focus();
-        const currentState: any = this.stateMgr.getCurrentState();
+        const currentState = this.stateMgr.getCurrentState();
         if (!renderable) {
             if (currentState) {
                 currentState.onAppPause();
@@ -286,11 +286,11 @@ export class Application {
         this.sound.onPageRenderableStateChanged(renderable);
     }
 
-    onAppPlayingStateChanged(playing: boolean): void {
+    onAppPlayingStateChanged(playing: boolean) {
         try {
             this.adProvider.setPlayStatus(playing);
         }
-        catch (ex: any) {
+        catch (ex) {
             console.warn("Play status changed");
         }
     }
@@ -298,10 +298,9 @@ export class Application {
     /**
      * Internal before-unload handler
      */
-    onBeforeUnload(event: BeforeUnloadEvent): void {
+    onBeforeUnload(event) {
         logSection("BEFORE UNLOAD HANDLER", "#f77");
-        const currentState: GameState = this.stateMgr.getCurrentState();
-
+        const currentState = this.stateMgr.getCurrentState();
         if (!G_IS_DEV && currentState && currentState.getHasUnloadConfirmation()) {
             if (!G_IS_STANDALONE) {
                 // Need to show a "Are you sure you want to exit"
@@ -310,7 +309,6 @@ export class Application {
             }
         }
     }
-
     /**
      * Deinitializes the application
      */
@@ -321,12 +319,12 @@ export class Application {
     /**
      * Background frame update callback
      */
-    onBackgroundFrame(dt: number): void {
+    onBackgroundFrame(dt: number) {
         if (this.isRenderable()) {
             return;
         }
 
-        const currentState: any = this.stateMgr.getCurrentState();
+        const currentState = this.stateMgr.getCurrentState();
         if (currentState) {
             currentState.onBackgroundTick(dt);
         }
@@ -335,12 +333,12 @@ export class Application {
     /**
      * Frame update callback
      */
-    onFrameEmitted(dt: number): void {
+    onFrameEmitted(dt: number) {
         if (!this.isRenderable()) {
             return;
         }
 
-        const time: any = performance.now();
+        const time = performance.now();
 
         // Periodically check for resizes, this is expensive (takes 2-3ms so only do it once in a while!)
         if (!this.lastResizeCheck || time - this.lastResizeCheck > 1000) {
@@ -348,7 +346,7 @@ export class Application {
             this.lastResizeCheck = time;
         }
 
-        const currentState: any = this.stateMgr.getCurrentState();
+        const currentState = this.stateMgr.getCurrentState();
         this.trackedIsPlaying.set(currentState && currentState.getIsIngame());
         if (currentState) {
             currentState.onRender(dt);
@@ -358,19 +356,19 @@ export class Application {
     /**
      * Checks if the app resized. Only does this once in a while
      */
-    checkResize(forceUpdate: boolean = false): void {
+    checkResize(forceUpdate: boolean = false) {
         const w = window.innerWidth;
         const h = window.innerHeight;
         if (this.screenWidth !== w || this.screenHeight !== h || forceUpdate) {
             this.screenWidth = w;
             this.screenHeight = h;
-            const currentState: GameState = this.stateMgr.getCurrentState();
+            const currentState = this.stateMgr.getCurrentState();
             if (currentState) {
                 currentState.onResized(this.screenWidth, this.screenHeight);
             }
 
-            const scale: number = this.getEffectiveUiScale();
-            waitNextFrame().then((): any => document.documentElement.style.setProperty("--ui-scale", `${scale}`));
+            const scale = this.getEffectiveUiScale();
+            waitNextFrame().then(() => document.documentElement.style.setProperty("--ui-scale", `${scale}`));
             window.focus();
         }
     }
@@ -385,7 +383,7 @@ export class Application {
     /**
      * Callback after ui scale has changed
      */
-    updateAfterUiScaleChanged(): void {
+    updateAfterUiScaleChanged() {
         this.checkResize(true);
     }
 }

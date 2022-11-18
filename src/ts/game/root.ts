@@ -29,7 +29,7 @@ import type { KeyActionMapper } from "./key_action_mapper";
 import type { Vector } from "../core/vector";
 import type { GameMode } from "./game_mode";
 /* typehints:end */
-const logger: any = createLogger("game/root");
+const logger = createLogger("game/root");
 export const layers: Array<Layer> = ["regular", "wires"];
 /**
  * The game root is basically the whole game state at a given point,
@@ -164,7 +164,7 @@ export class GameRoot {
     /**
      * Destructs the game root
      */
-    destruct(): any {
+    destruct() {
         logger.log("destructing root");
         this.signals.aboutToDestruct.dispatch();
         this.reset();
@@ -172,10 +172,10 @@ export class GameRoot {
     /**
      * Resets the whole root and removes all properties
      */
-    reset(): any {
+    reset() {
         if (this.signals) {
             // Destruct all signals
-            for (let i: any = 0; i < this.signals.length; ++i) {
+            for (let i = 0; i < this.signals.length; ++i) {
                 this.signals[i].removeAll();
             }
         }
@@ -186,7 +186,7 @@ export class GameRoot {
             this.camera.cleanup();
         }
         // Finally free all properties
-        for (let prop: any in this) {
+        for (let prop in this) {
             if (this.hasOwnProperty(prop)) {
                 delete this[prop];
             }

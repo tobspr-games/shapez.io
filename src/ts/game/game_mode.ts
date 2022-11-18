@@ -8,13 +8,13 @@ import { MetaBuilding } from "./meta_building";
 import { MetaItemProducerBuilding } from "./buildings/item_producer";
 import { BaseHUDPart } from "./hud/base_hud_part";
 /** @enum {string} */
-export const enumGameModeIds: any = {
+export const enumGameModeIds = {
     puzzleEdit: "puzzleEditMode",
     puzzlePlay: "puzzlePlayMode",
     regular: "regularMode",
 };
 /** @enum {string} */
-export const enumGameModeTypes: any = {
+export const enumGameModeTypes = {
     default: "defaultModeType",
     puzzle: "puzzleModeType",
 };
@@ -29,7 +29,7 @@ export class GameMode extends BasicSerializableObject {
         abstract;
         return "unknownType";
     }
-        static create(root: GameRoot, id: string = enumGameModeIds.regular, payload: object | undefined = undefined): any {
+        static create(root: GameRoot, id: string = enumGameModeIds.regular, payload: object | undefined = undefined) {
         return new (gGameModeRegistry.findById(id))(root, payload);
     }
     public root = root;
@@ -46,7 +46,7 @@ export class GameMode extends BasicSerializableObject {
             data: super.serialize(),
         };
     }
-        deserialize({ data }: object): any {
+        deserialize({ data }: object) {
         super.deserialize(data, this.root);
     }
     /** {} */
@@ -104,13 +104,13 @@ export class GameMode extends BasicSerializableObject {
             painting: [],
         };
     }
-    throughputDoesNotMatter(): any {
+    throughputDoesNotMatter() {
         return false;
     }
     /**
      * @abstract
      */
-    adjustZone(w: number = 0, h: number = 0): any {
+    adjustZone(w: number = 0, h: number = 0) {
         abstract;
         return;
     }

@@ -4,16 +4,16 @@ import type { BasicSerializableObject } from "./serialization";
 /* typehints:end */
 import { Vector } from "../core/vector";
 import { round4Digits } from "../core/utils";
-export const globalJsonSchemaDefs: any = {};
-export function schemaToJsonSchema(schema: import("./serialization").Schema): any {
-    const jsonSchema: any = {
+export const globalJsonSchemaDefs = {};
+export function schemaToJsonSchema(schema: import("./serialization").Schema) {
+    const jsonSchema = {
         type: "object",
         additionalProperties: false,
         required: [],
         properties: {},
     };
-    for (const key: any in schema) {
-        const subSchema: any = schema[key].getAsJsonSchema();
+    for (const key in schema) {
+        const subSchema = schema[key].getAsJsonSchema();
         jsonSchema.required.push(key);
         jsonSchema.properties[key] = subSchema;
     }
@@ -22,7 +22,7 @@ export function schemaToJsonSchema(schema: import("./serialization").Schema): an
 /**
  * Helper function to create a json schema object
  */
-function schemaObject(properties: any): any {
+function schemaObject(properties: any) {
     return {
         type: "object",
         required: Object.keys(properties).slice(),
@@ -38,7 +38,7 @@ export class BaseDataType {
      * Serializes a given raw value
      * @abstract
      */
-    serialize(value: any): any {
+    serialize(value: any) {
         abstract;
         return {};
     }
@@ -58,9 +58,9 @@ export class BaseDataType {
     /**
      * Returns the json schema
      */
-    getAsJsonSchema(): any {
-        const key: any = this.getCacheKey();
-        const schema: any = this.getAsJsonSchemaUncached();
+    getAsJsonSchema() {
+        const key = this.getCacheKey();
+        const schema = this.getAsJsonSchemaUncached();
         if (!globalJsonSchemaDefs[key]) {
             // schema.$id = key;
             globalJsonSchemaDefs[key] = schema;
@@ -73,7 +73,7 @@ export class BaseDataType {
      * INTERNAL Should return the json schema representation
      * @abstract
      */
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         abstract;
     }
     /**
@@ -89,7 +89,7 @@ export class BaseDataType {
      * {} String error code or null on success
      */
     deserializeWithVerify(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const errorCode: any = this.verifySerializedValue(value);
+        const errorCode = this.verifySerializedValue(value);
         if (errorCode) {
             return ("serialization verify failed: " +
                 errorCode +
@@ -103,13 +103,13 @@ export class BaseDataType {
      * Should return a cacheable key
      * @abstract
      */
-    getCacheKey(): any {
+    getCacheKey() {
         abstract;
         return "";
     }
 }
 export class TypeInteger extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(Number.isInteger(value), "Type integer got non integer for serialize: " + value);
         return value;
     }
@@ -120,22 +120,22 @@ export class TypeInteger extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "integer",
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isInteger(value)) {
             return "Not a valid number";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "int";
     }
 }
 export class TypePositiveInteger extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(Number.isInteger(value), "Type integer got non integer for serialize: " + value);
         assert(value >= 0, "value < 0: " + value);
         return value;
@@ -147,13 +147,13 @@ export class TypePositiveInteger extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "integer",
             minimum: 0,
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isInteger(value)) {
             return "Not a valid number";
         }
@@ -161,12 +161,12 @@ export class TypePositiveInteger extends BaseDataType {
             return "Negative value for positive integer";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "uint";
     }
 }
 export class TypePositiveIntegerOrString extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         if (Number.isInteger(value)) {
             assert(value >= 0, "type integer got negative value: " + value);
         }
@@ -185,12 +185,12 @@ export class TypePositiveIntegerOrString extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             oneOf: [{ type: "integer", minimum: 0 }, { type: "string" }],
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (Number.isInteger(value)) {
             if (value < 0) {
                 return "Negative value for positive integer";
@@ -203,12 +203,12 @@ export class TypePositiveIntegerOrString extends BaseDataType {
             return "Not a valid number or string: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "uint_str";
     }
 }
 export class TypeBoolean extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(value === true || value === false, "Type bool got non bool for serialize: " + value);
         return value;
     }
@@ -219,22 +219,22 @@ export class TypeBoolean extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "boolean",
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (value !== true && value !== false) {
             return "Not a boolean";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "bool";
     }
 }
 export class TypeString extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "string", "Type string got non string for serialize: " + value);
         return value;
     }
@@ -245,29 +245,29 @@ export class TypeString extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "string",
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (typeof value !== "string") {
             return "Not a valid string";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "string";
     }
 }
 export class TypeVector extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(value instanceof Vector, "Type vector got non vector for serialize: " + value);
         return {
             x: round4Digits(value.x),
             y: round4Digits(value.y),
         };
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return schemaObject({
             x: {
                 type: "number",
@@ -284,23 +284,23 @@ export class TypeVector extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = new Vector(value.x, value.y);
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isFinite(value.x) || !Number.isFinite(value.y)) {
             return "Not a valid vector, missing x/y or bad data type";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "vector";
     }
 }
 export class TypeTileVector extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(value instanceof Vector, "Type vector got non vector for serialize: " + value);
         assert(Number.isInteger(value.x) && value.x > 0, "Invalid tile x:" + value.x);
         assert(Number.isInteger(value.y) && value.y > 0, "Invalid tile x:" + value.y);
         return { x: value.x, y: value.y };
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return schemaObject({
             x: {
                 type: "integer",
@@ -321,7 +321,7 @@ export class TypeTileVector extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = new Vector(value.x, value.y);
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isInteger(value.x) || !Number.isInteger(value.y)) {
             return "Not a valid tile vector, missing x/y or bad data type";
         }
@@ -329,17 +329,17 @@ export class TypeTileVector extends BaseDataType {
             return "Invalid tile vector, x or y < 0";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "tilevector";
     }
 }
 export class TypeNumber extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(Number.isFinite(value), "Type number got non number for serialize: " + value);
         assert(!Number.isNaN(value), "Value is nan: " + value);
         return round4Digits(value);
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "number",
         };
@@ -351,17 +351,17 @@ export class TypeNumber extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isFinite(value)) {
             return "Not a valid number: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "float";
     }
 }
 export class TypePositiveNumber extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         assert(Number.isFinite(value), "Type number got non number for serialize: " + value);
         assert(value >= 0, "Postitive number got negative value: " + value);
         return round4Digits(value);
@@ -373,13 +373,13 @@ export class TypePositiveNumber extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "number",
             minimum: 0,
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isFinite(value)) {
             return "Not a valid number: " + value;
         }
@@ -387,7 +387,7 @@ export class TypePositiveNumber extends BaseDataType {
             return "Positive number got negative value: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "ufloat";
     }
 }
@@ -397,7 +397,7 @@ export class TypeEnum extends BaseDataType {
         constructor(enumeration = {}) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(this.availableValues.indexOf(value) >= 0, "Unknown value: " + value);
         return value;
     }
@@ -408,30 +408,30 @@ export class TypeEnum extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "string",
             enum: this.availableValues,
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (this.availableValues.indexOf(value) < 0) {
             return "Unknown enum value: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "enum." + this.availableValues.join(",");
     }
 }
 export class TypeEntity extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         // assert(value instanceof Entity, "Not a valid entity ref: " + value);
         assert(value.uid, "Entity has no uid yet");
         assert(!value.destroyed, "Entity already destroyed");
         assert(!value.queuedForDestroy, "Entity queued for destroy");
         return value.uid;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "integer",
             minimum: 0,
@@ -442,23 +442,23 @@ export class TypeEntity extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const entity: any = root.entityMgr.findByUid(value);
+        const entity = root.entityMgr.findByUid(value);
         if (!entity) {
             return "Entity not found by uid: " + value;
         }
         targetObject[targetKey] = entity;
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Number.isFinite(value)) {
             return "Not a valid uuid: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "entity";
     }
 }
 export class TypeEntityWeakref extends BaseDataType {
-    serialize(value: any): any {
+    serialize(value) {
         if (value === null) {
             return null;
         }
@@ -478,24 +478,24 @@ export class TypeEntityWeakref extends BaseDataType {
             targetObject[targetKey] = null;
             return;
         }
-        const entity: any = root.entityMgr.findByUid(value, false);
+        const entity = root.entityMgr.findByUid(value, false);
         targetObject[targetKey] = entity;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: ["null", "integer"],
             minimum: 0,
         };
     }
-    allowNull(): any {
+    allowNull() {
         return true;
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (value !== null && !Number.isFinite(value)) {
             return "Not a valid uuid: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "entity-weakref";
     }
 }
@@ -506,7 +506,7 @@ export class TypeClass extends BaseDataType {
         constructor(registry, customResolver = null) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "object", "Not a class instance: " + value);
         return {
 
@@ -514,11 +514,11 @@ export class TypeClass extends BaseDataType {
             data: value.serialize(),
         };
     }
-    getAsJsonSchemaUncached(): any {
-        const options: any = [];
-        const entries: any = this.registry.getEntries();
-        for (let i: any = 0; i < entries.length; ++i) {
-            const entry: any = entries[i];
+    getAsJsonSchemaUncached() {
+        const options = [];
+        const entries = this.registry.getEntries();
+        for (let i = 0; i < entries.length; ++i) {
+            const entry = entries[i];
             options.push(schemaObject({
                 $: {
                     type: "string",
@@ -536,7 +536,7 @@ export class TypeClass extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        let instance: any;
+        let instance;
         if (this.customResolver) {
             instance = this.customResolver(root, value);
             if (!instance) {
@@ -544,19 +544,19 @@ export class TypeClass extends BaseDataType {
             }
         }
         else {
-            const instanceClass: any = this.registry.findById(value.$);
+            const instanceClass = this.registry.findById(value.$);
             if (!instanceClass || !instanceClass.prototype) {
                 return "Invalid class id (runtime-err): " + value.$ + "->" + instanceClass;
             }
             instance = Object.create(instanceClass.prototype);
-            const errorState: any = instance.deserialize(value.data);
+            const errorState = instance.deserialize(value.data);
             if (errorState) {
                 return errorState;
             }
         }
         targetObject[targetKey] = instance;
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!value) {
             return "Got null data";
         }
@@ -564,7 +564,7 @@ export class TypeClass extends BaseDataType {
             return "Invalid class id: " + value.$ + " (factory is " + this.registry.getId() + ")";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "class." + this.registry.getId();
     }
 }
@@ -574,15 +574,15 @@ export class TypeClassData extends BaseDataType {
         constructor(registry) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "object", "Not a class instance: " + value);
         return value.serialize();
     }
-    getAsJsonSchemaUncached(): any {
-        const options: any = [];
-        const entries: any = this.registry.getEntries();
-        for (let i: any = 0; i < entries.length; ++i) {
-            const entry: any = entries[i];
+    getAsJsonSchemaUncached() {
+        const options = [];
+        const entries = this.registry.getEntries();
+        for (let i = 0; i < entries.length; ++i) {
+            const entry = entries[i];
             options.push(schemaToJsonSchema(entry as typeof BasicSerializableObject).getCachedSchema()));
         }
         return { oneOf: options };
@@ -594,12 +594,12 @@ export class TypeClassData extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         assert(false, "can not deserialize class data of type " + this.registry.getId());
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!value) {
             return "Got null data";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "class." + this.registry.getId();
     }
 }
@@ -610,16 +610,16 @@ export class TypeClassFromMetaclass extends BaseDataType {
         constructor(classHandle, registry) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "object", "Not a class instance: " + value);
         return {
             $: value.getMetaclass().getId(),
             data: value.serialize(),
         };
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         // const options = [];
-        const ids: any = this.registry.getAllIds();
+        const ids = this.registry.getAllIds();
         return {
             $: {
                 type: "string",
@@ -633,19 +633,19 @@ export class TypeClassFromMetaclass extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const metaClassInstance: any = this.registry.findById(value.$);
+        const metaClassInstance = this.registry.findById(value.$);
         if (!metaClassInstance || !metaClassInstance.prototype) {
             return "Invalid meta class id (runtime-err): " + value.$ + "->" + metaClassInstance;
         }
-        const instanceClass: any = metaClassInstance.getInstanceClass();
-        const instance: any = Object.create(instanceClass.prototype);
-        const errorState: any = instance.deserialize(value.data);
+        const instanceClass = metaClassInstance.getInstanceClass();
+        const instance = Object.create(instanceClass.prototype);
+        const errorState = instance.deserialize(value.data);
         if (errorState) {
             return errorState;
         }
         targetObject[targetKey] = instance;
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!value) {
             return "Got null data";
         }
@@ -653,7 +653,7 @@ export class TypeClassFromMetaclass extends BaseDataType {
             return "Invalid class id: " + value.$ + " (factory is " + this.registry.getId() + ")";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "classofmetaclass." + this.registry.getId();
     }
 }
@@ -663,7 +663,7 @@ export class TypeMetaClass extends BaseDataType {
         constructor(registry) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         return value.getId();
     }
     /**
@@ -671,19 +671,19 @@ export class TypeMetaClass extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const instanceClass: any = this.registry.findById(value);
+        const instanceClass = this.registry.findById(value);
         if (!instanceClass) {
             return "Invalid class id (runtime-err): " + value;
         }
         targetObject[targetKey] = instanceClass;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "string",
             enum: this.registry.getAllIds(),
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!value) {
             return "Got null data";
         }
@@ -694,7 +694,7 @@ export class TypeMetaClass extends BaseDataType {
             return "Invalid class id: " + value + " (factory is " + this.registry.getId() + ")";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "metaclass." + this.registry.getId();
     }
 }
@@ -705,10 +705,10 @@ export class TypeArray extends BaseDataType {
         constructor(innerType, fixedSize = false) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(Array.isArray(value), "Not an array");
-        const result: any = new Array(value.length);
-        for (let i: any = 0; i < value.length; ++i) {
+        const result = new Array(value.length);
+        for (let i = 0; i < value.length; ++i) {
             result[i] = this.innerType.serialize(value[i]);
         }
         return result;
@@ -718,30 +718,30 @@ export class TypeArray extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        let destination: any = targetObject[targetKey];
+        let destination = targetObject[targetKey];
         if (!destination) {
             targetObject[targetKey] = destination = new Array(value.length);
         }
-        const size: any = this.fixedSize ? Math.min(value.length, destination.length) : value.length;
-        for (let i: any = 0; i < size; ++i) {
-            const errorStatus: any = this.innerType.deserializeWithVerify(value[i], destination, i, root);
+        const size = this.fixedSize ? Math.min(value.length, destination.length) : value.length;
+        for (let i = 0; i < size; ++i) {
+            const errorStatus = this.innerType.deserializeWithVerify(value[i], destination, i, root);
             if (errorStatus) {
                 return errorStatus;
             }
         }
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "array",
             items: this.innerType.getAsJsonSchema(),
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Array.isArray(value)) {
             return "Not an array: " + value;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "array." + this.innerType.getCacheKey();
     }
 }
@@ -751,7 +751,7 @@ export class TypeFixedClass extends BaseDataType {
         constructor(baseclass) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(value instanceof this.baseclass, "Not a valid class instance");
         return value.serialize();
     }
@@ -760,24 +760,24 @@ export class TypeFixedClass extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const instance: any = Object.create(this.baseclass.prototype);
-        const errorState: any = instance.deserialize(value);
+        const instance = Object.create(this.baseclass.prototype);
+        const errorState = instance.deserialize(value);
         if (errorState) {
             return "Failed to deserialize class: " + errorState;
         }
         targetObject[targetKey] = instance;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         this.baseclass.getSchema();
         this.baseclass.getCachedSchema();
         return schemaToJsonSchema(this.baseclass.getCachedSchema());
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!value) {
             return "Got null data";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "fixedclass." + this.baseclass.getId();
     }
 }
@@ -788,11 +788,11 @@ export class TypeKeyValueMap extends BaseDataType {
         constructor(valueType, includeEmptyValues = true) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "object", "not an object");
-        let result: any = {};
-        for (const key: any in value) {
-            const serialized: any = this.valueType.serialize(value[key]);
+        let result = {};
+        for (const key in value) {
+            const serialized = this.valueType.serialize(value[key]);
             if (!this.includeEmptyValues && typeof serialized === "object") {
                 if (serialized.$ &&
                     typeof serialized.data === "object" &&
@@ -812,27 +812,27 @@ export class TypeKeyValueMap extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        let result: any = {};
-        for (const key: any in value) {
-            const errorCode: any = this.valueType.deserializeWithVerify(value[key], result, key, root);
+        let result = {};
+        for (const key in value) {
+            const errorCode = this.valueType.deserializeWithVerify(value[key], result, key, root);
             if (errorCode) {
                 return errorCode;
             }
         }
         targetObject[targetKey] = result;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "object",
             additionalProperties: this.valueType.getAsJsonSchema(),
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (typeof value !== "object") {
             return "KV map is not an object";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "kvmap." + this.valueType.getCacheKey();
     }
 }
@@ -842,7 +842,7 @@ export class TypeClassId extends BaseDataType {
         constructor(registry) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "string", "Not a valid string");
         assert(this.registry.hasId(value), "Id " + value + " not found in registry");
         return value;
@@ -854,13 +854,13 @@ export class TypeClassId extends BaseDataType {
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
         targetObject[targetKey] = value;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "string",
             enum: this.registry.getAllIds(),
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (typeof value !== "string") {
             return "Not a valid registry id key: " + value;
         }
@@ -868,7 +868,7 @@ export class TypeClassId extends BaseDataType {
             return "Id " + value + " not known to registry";
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "classid." + this.registry.getId();
     }
 }
@@ -881,7 +881,7 @@ export class TypePair extends BaseDataType {
         assert(type1 && type1 instanceof BaseDataType, "bad first type given for pair");
         assert(type2 && type2 instanceof BaseDataType, "bad second type given for pair");
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(Array.isArray(value), "pair: not an array");
         assert(value.length === 2, "pair: length != 2");
         return [this.type1.serialize(value[0]), this.type2.serialize(value[1])];
@@ -891,8 +891,8 @@ export class TypePair extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        const result: any = [undefined, undefined];
-        let errorCode: any = this.type1.deserialize(value[0], result, 0, root);
+        const result = [undefined, undefined];
+        let errorCode = this.type1.deserialize(value[0], result, 0, root);
         if (errorCode) {
             return errorCode;
         }
@@ -902,7 +902,7 @@ export class TypePair extends BaseDataType {
         }
         targetObject[targetKey] = result;
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             type: "array",
             minLength: 2,
@@ -910,14 +910,14 @@ export class TypePair extends BaseDataType {
             items: [this.type1.getAsJsonSchema(), this.type2.getAsJsonSchema()],
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (!Array.isArray(value)) {
             return "Pair is not an array";
         }
         if (value.length !== 2) {
             return "Pair length != 2";
         }
-        let errorCode: any = this.type1.verifySerializedValue(value[0]);
+        let errorCode = this.type1.verifySerializedValue(value[0]);
         if (errorCode) {
             return errorCode;
         }
@@ -926,7 +926,7 @@ export class TypePair extends BaseDataType {
             return errorCode;
         }
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "pair.(" + this.type1.getCacheKey() + "," + this.type2.getCacheKey + ")";
     }
 }
@@ -936,7 +936,7 @@ export class TypeNullable extends BaseDataType {
         constructor(wrapped) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         if (value === null || value === undefined) {
             return null;
         }
@@ -953,13 +953,13 @@ export class TypeNullable extends BaseDataType {
         }
         return this.wrapped.deserialize(value, targetObject, targetKey, root);
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (value === null) {
             return;
         }
         return this.wrapped.verifySerializedValue(value);
     }
-    getAsJsonSchemaUncached(): any {
+    getAsJsonSchemaUncached() {
         return {
             oneOf: [
                 {
@@ -969,10 +969,10 @@ export class TypeNullable extends BaseDataType {
             ],
         };
     }
-    allowNull(): any {
+    allowNull() {
         return true;
     }
-    getCacheKey(): any {
+    getCacheKey() {
         return "nullable." + this.wrapped.getCacheKey();
     }
 }
@@ -982,10 +982,10 @@ export class TypeStructuredObject extends BaseDataType {
         constructor(descriptor) {
         super();
     }
-    serialize(value: any): any {
+    serialize(value) {
         assert(typeof value === "object", "not an object");
-        let result: any = {};
-        for (const key: any in this.descriptor) {
+        let result = {};
+        for (const key in this.descriptor) {
             // assert(value.hasOwnProperty(key), "Serialization: Object does not have", key, "property!");
             result[key] = this.descriptor[key].serialize(value[key]);
         }
@@ -996,21 +996,21 @@ export class TypeStructuredObject extends BaseDataType {
      * {} String error code or null on success
      */
     deserialize(value: any, targetObject: object, targetKey: string | number, root: GameRoot): string | void {
-        let target: any = targetObject[targetKey];
+        let target = targetObject[targetKey];
         if (!target) {
             targetObject[targetKey] = target = {};
         }
-        for (const key: any in value) {
-            const valueType: any = this.descriptor[key];
-            const errorCode: any = valueType.deserializeWithVerify(value[key], target, key, root);
+        for (const key in value) {
+            const valueType = this.descriptor[key];
+            const errorCode = valueType.deserializeWithVerify(value[key], target, key, root);
             if (errorCode) {
                 return errorCode;
             }
         }
     }
-    getAsJsonSchemaUncached(): any {
-        let properties: any = {};
-        for (const key: any in this.descriptor) {
+    getAsJsonSchemaUncached() {
+        let properties = {};
+        for (const key in this.descriptor) {
             properties[key] = this.descriptor[key].getAsJsonSchema();
         }
         return {
@@ -1019,23 +1019,23 @@ export class TypeStructuredObject extends BaseDataType {
             properties,
         };
     }
-    verifySerializedValue(value: any): any {
+    verifySerializedValue(value) {
         if (typeof value !== "object") {
             return "structured object is not an object";
         }
-        for (const key: any in this.descriptor) {
+        for (const key in this.descriptor) {
             if (!value.hasOwnProperty(key)) {
                 return "structured object is missing key " + key;
             }
-            const subError: any = this.descriptor[key].verifySerializedValue(value[key]);
+            const subError = this.descriptor[key].verifySerializedValue(value[key]);
             if (subError) {
                 return "structured object::" + subError;
             }
         }
     }
-    getCacheKey(): any {
-        let props: any = [];
-        for (const key: any in this.descriptor) {
+    getCacheKey() {
+        let props = [];
+        for (const key in this.descriptor) {
             props.push(key + "=" + this.descriptor[key].getCacheKey());
         }
         return "structured[" + props.join(",") + "]";

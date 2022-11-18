@@ -18,33 +18,33 @@ export class HUDModalDialogs extends BaseHUDPart {
         super(root);
     }
     // For use inside of the game, implementation of base hud part
-    initialize(): any {
+    initialize() {
         this.dialogParent = document.getElementById("ingame_HUD_ModalDialogs");
         this.domWatcher = new DynamicDomAttach(this.root, this.dialogParent);
     }
-    shouldPauseRendering(): any {
+    shouldPauseRendering() {
         // return this.dialogStack.length > 0;
         // @todo: Check if change this affects anything
         return false;
     }
-    shouldPauseGame(): any {
+    shouldPauseGame() {
         // @todo: Check if this change affects anything
         return false;
     }
-    createElements(parent: any): any {
+    createElements(parent) {
         return makeDiv(parent, "ingame_HUD_ModalDialogs");
     }
     // For use outside of the game
-    initializeToElement(element: any): any {
+    initializeToElement(element) {
         assert(element, "No element for dialogs given");
         this.dialogParent = element;
     }
-    isBlockingOverlay(): any {
+    isBlockingOverlay() {
         return this.dialogStack.length > 0;
     }
     // Methods
-        showInfo(title: string, text: string, buttons: Array<string> = ["ok:good"]): any {
-        const dialog: any = new Dialog({
+        showInfo(title: string, text: string, buttons: Array<string> = ["ok:good"]) {
+        const dialog = new Dialog({
             app: this.app,
             title: title,
             contentHTML: text,
@@ -57,8 +57,8 @@ export class HUDModalDialogs extends BaseHUDPart {
         }
         return dialog.buttonSignals;
     }
-        showWarning(title: string, text: string, buttons: Array<string> = ["ok:good"]): any {
-        const dialog: any = new Dialog({
+        showWarning(title: string, text: string, buttons: Array<string> = ["ok:good"]) {
+        const dialog = new Dialog({
             app: this.app,
             title: title,
             contentHTML: text,
@@ -71,8 +71,8 @@ export class HUDModalDialogs extends BaseHUDPart {
         }
         return dialog.buttonSignals;
     }
-        showFeatureRestrictionInfo(feature: string, textPrefab: string = T.dialogs.featureRestriction.desc): any {
-        const dialog: any = new Dialog({
+        showFeatureRestrictionInfo(feature: string, textPrefab: string = T.dialogs.featureRestriction.desc) {
+        const dialog = new Dialog({
             app: this.app,
             title: T.dialogs.featureRestriction.title,
             contentHTML: textPrefab.replace("<feature>", feature),
@@ -83,13 +83,13 @@ export class HUDModalDialogs extends BaseHUDPart {
         if (this.app) {
             this.app.sound.playUiSound(SOUNDS.dialogOk);
         }
-        dialog.buttonSignals.getStandalone.add((): any => {
+        dialog.buttonSignals.getStandalone.add(() => {
             openStandaloneLink(this.app, "shapez_demo_dialog");
         });
         return dialog.buttonSignals;
     }
-    showOptionChooser(title: any, options: any): any {
-        const dialog: any = new DialogOptionChooser({
+    showOptionChooser(title, options) {
+        const dialog = new DialogOptionChooser({
             app: this.app,
             title,
             options,
@@ -98,13 +98,13 @@ export class HUDModalDialogs extends BaseHUDPart {
         return dialog.buttonSignals;
     }
     // Returns method to be called when laoding finishd
-    showLoadingDialog(text: any = ""): any {
-        const dialog: any = new DialogLoading(this.app, text);
+    showLoadingDialog(text = "") {
+        const dialog = new DialogLoading(this.app, text);
         this.internalShowDialog(dialog);
         return this.closeDialog.bind(this, dialog);
     }
-    internalShowDialog(dialog: any): any {
-        const elem: any = dialog.createElement();
+    internalShowDialog(dialog) {
+        const elem = dialog.createElement();
         dialog.setIndex(1000 + this.dialogStack.length);
         // Hide last dialog in queue
         if (this.dialogStack.length > 0) {
@@ -120,15 +120,15 @@ export class HUDModalDialogs extends BaseHUDPart {
         // IMPORTANT: Attach element directly, otherwise double submit is possible
         this.update();
     }
-    update(): any {
+    update() {
         if (this.domWatcher) {
             this.domWatcher.update(this.dialogStack.length > 0);
         }
     }
-    closeDialog(dialog: any): any {
+    closeDialog(dialog) {
         dialog.destroy();
-        let index: any = -1;
-        for (let i: any = 0; i < this.dialogStack.length; ++i) {
+        let index = -1;
+        for (let i = 0; i < this.dialogStack.length; ++i) {
             if (this.dialogStack[i] === dialog) {
                 index = i;
                 break;
@@ -142,16 +142,16 @@ export class HUDModalDialogs extends BaseHUDPart {
         }
         document.body.classList.toggle("modalDialogActive", this.dialogStack.length > 0);
     }
-    close(): any {
-        for (let i: any = 0; i < this.dialogStack.length; ++i) {
-            const dialog: any = this.dialogStack[i];
+    close() {
+        for (let i = 0; i < this.dialogStack.length; ++i) {
+            const dialog = this.dialogStack[i];
             dialog.destroy();
         }
         this.dialogStack = [];
     }
-    cleanup(): any {
+    cleanup() {
         super.cleanup();
-        for (let i: any = 0; i < this.dialogStack.length; ++i) {
+        for (let i = 0; i < this.dialogStack.length; ++i) {
             this.dialogStack[i].destroy();
         }
         this.dialogStack = [];

@@ -17,24 +17,24 @@ export class GameAnalyticsInterface {
     /**
      * Handles a new game which was started
      */
-    handleGameStarted(): any { }
+    handleGameStarted() { }
     /**
      * Handles a resumed game
      */
-    handleGameResumed(): any { }
+    handleGameResumed() { }
     /**
      * Handles the given level completed
      */
-    handleLevelCompleted(level: number): any { }
+    handleLevelCompleted(level: number) { }
     /**
      * Handles the given upgrade completed
      */
-    handleUpgradeUnlocked(id: string, level: number): any { }
+    handleUpgradeUnlocked(id: string, level: number) { }
     /**
      * Activates a DLC
      * @abstract
      */
-    activateDlc(dlc: string): any {
+    activateDlc(dlc: string) {
         abstract;
         return Promise.resolve();
     }

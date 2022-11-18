@@ -20,7 +20,7 @@ export type ItemAcceptorSlotConfig = {
 
 
 export class ItemAcceptorComponent extends Component {
-    static getId(): any {
+    static getId() {
         return "ItemAcceptor";
     }
 
@@ -29,16 +29,16 @@ export class ItemAcceptorComponent extends Component {
         this.setSlots(slots);
         this.clear();
     }
-    clear(): any {
+    clear() {
         /**
          * Fixes belt animations
          */
         this.itemConsumptionAnimations = [];
     }
-        setSlots(slots: Array<ItemAcceptorSlotConfig>): any {
+        setSlots(slots: Array<ItemAcceptorSlotConfig>) {
                 this.slots = [];
-        for (let i: any = 0; i < slots.length; ++i) {
-            const slot: any = slots[i];
+        for (let i = 0; i < slots.length; ++i) {
+            const slot = slots[i];
             this.slots.push({
                 pos: slot.pos,
                 direction: slot.direction,
@@ -52,14 +52,14 @@ export class ItemAcceptorComponent extends Component {
      *
      * NOTICE: The belt path ignores this for performance reasons and does his own check
      */
-    canAcceptItem(slotIndex: number, item: BaseItem=): any {
-        const slot: any = this.slots[slotIndex];
+    canAcceptItem(slotIndex: number, item: BaseItem=) {
+        const slot = this.slots[slotIndex];
         return !slot.filter || slot.filter === item.getItemType();
     }
     /**
      * Called when an item has been accepted so that
      */
-    onItemAccepted(slotIndex: number, direction: enumDirection, item: BaseItem, remainingProgress: number = 0.0): any {
+    onItemAccepted(slotIndex: number, direction: enumDirection, item: BaseItem, remainingProgress: number = 0.0) {
         this.itemConsumptionAnimations.push({
             item,
             slotIndex,
@@ -75,10 +75,10 @@ export class ItemAcceptorComponent extends Component {
         // We need to invert our direction since the acceptor specifies *from* which direction
         // it accepts items, but the ejector specifies *into* which direction it ejects items.
         // E.g.: Ejector ejects into "right" direction but acceptor accepts from "left" direction.
-        const desiredDirection: any = enumInvertedDirections[fromLocalDirection];
+        const desiredDirection = enumInvertedDirections[fromLocalDirection];
         // Go over all slots and try to find a target slot
-        for (let slotIndex: any = 0; slotIndex < this.slots.length; ++slotIndex) {
-            const slot: any = this.slots[slotIndex];
+        for (let slotIndex = 0; slotIndex < this.slots.length; ++slotIndex) {
+            const slot = this.slots[slotIndex];
             // Make sure the acceptor slot is on the right position
             if (!slot.pos.equals(targetLocalTile)) {
                 continue;

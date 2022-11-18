@@ -10,9 +10,9 @@ import { ExplainedResult } from "./explained_result";
 import { decompressX64, compressX64 } from "./lzstring";
 import { asyncCompressor, compressionPrefix } from "./async_compression";
 import { compressObject, decompressObject } from "../savegame/savegame_compressor";
-const debounce: any = require("debounce-promise");
-const logger: any = createLogger("read_write_proxy");
-const salt: any = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
+const debounce = require("debounce-promise");
+const logger = createLogger("read_write_proxy");
+const salt = accessNestedPropertyReverse(globalConfig, ["file", "info"]);
 // Helper which only writes / reads if verify() works. Also performs migration
 export class ReadWriteProxy {
     public app: Application = app;
@@ -23,47 +23,47 @@ export class ReadWriteProxy {
     constructor(app, filename) {
         // TODO: EXTREMELY HACKY! To verify we need to do this a step later
         if (G_IS_DEV && IS_DEBUG) {
-            setTimeout((): any => {
+            setTimeout(() => {
                 assert(this.verify(this.getDefaultData()).result, "Verify() failed for default data: " + this.verify(this.getDefaultData()).reason);
             });
         }
     }
     // -- Methods to override
     /** {} */
-    verify(data: any): ExplainedResult {
+    verify(data): ExplainedResult {
         abstract;
         return ExplainedResult.bad();
     }
     // Should return the default data
-    getDefaultData(): any {
+    getDefaultData() {
         abstract;
         return {};
     }
     // Should return the current version as an integer
-    getCurrentVersion(): any {
+    getCurrentVersion() {
         abstract;
         return 0;
     }
     // Should migrate the data (Modify in place)
     /** {} */
-    migrate(data: any): ExplainedResult {
+    migrate(data): ExplainedResult {
         abstract;
         return ExplainedResult.bad();
     }
     // -- / Methods
     // Resets whole data, returns promise
-    resetEverythingAsync(): any {
+    resetEverythingAsync() {
         logger.warn("Reset data to default");
         this.currentData = this.getDefaultData();
         return this.writeAsync();
     }
-        static serializeObject(obj: object): any {
-        const jsonString: any = JSON.stringify(compressObject(obj));
-        const checksum: any = computeCrc(jsonString + salt);
+        static serializeObject(obj: object) {
+        const jsonString = JSON.stringify(compressObject(obj));
+        const checksum = computeCrc(jsonString + salt);
         return compressionPrefix + compressX64(checksum + jsonString);
     }
-        static deserializeObject(text: object): any {
-        const decompressed: any = decompressX64(text.substr(compressionPrefix.length));
+        static deserializeObject(text: object) {
+        const decompressed = decompressX64(text.substr(compressionPrefix.length));
         if (!decompressed) {
             // LZ string decompression failure
             throw new Error("bad-content / decompression-failed");
@@ -73,17 +73,17 @@ export class ReadWriteProxy {
             throw new Error("bad-content / payload-too-small");
         }
         // Compare stored checksum with actual checksum
-        const checksum: any = decompressed.substring(0, 40);
-        const jsonString: any = decompressed.substr(40);
-        const desiredChecksum: any = checksum.startsWith(CRC_PREFIX)
+        const checksum = decompressed.substring(0, 40);
+        const jsonString = decompressed.substr(40);
+        const desiredChecksum = checksum.startsWith(CRC_PREFIX)
             ? computeCrc(jsonString + salt)
             : sha1(jsonString + salt);
         if (desiredChecksum !== checksum) {
             // Checksum mismatch
             throw new Error("bad-content / checksum-mismatch");
         }
-        const parsed: any = JSON.parse(jsonString);
-        const decoded: any = decompressObject(parsed);
+        const parsed = JSON.parse(jsonString);
+        const decoded = decompressObject(parsed);
         return decoded;
     }
     /**
@@ -92,7 +92,7 @@ export class ReadWriteProxy {
      * {}
      */
     writeAsync(): Promise<void> {
-        const verifyResult: any = this.internalVerifyEntry(this.currentData);
+        const verifyResult = this.internalVerifyEntry(this.currentData);
         if (!verifyResult.result) {
             logger.error("Tried to write invalid data to", this.filename, "reason:", verifyResult.reason);
             return Promise.reject(verifyResult.reason);
@@ -106,24 +106,24 @@ export class ReadWriteProxy {
     doWriteAsync(): Promise<void> {
         return asyncCompressor
             .compressObjectAsync(this.currentData)
-            .then((compressed: any): any => {
+            .then(compressed => {
             return this.app.storage.writeFileAsync(this.filename, compressed);
         })
-            .then((): any => {
+            .then(() => {
             logger.log("📄 Wrote", this.filename);
         })
-            .catch((err: any): any => {
+            .catch(err => {
             logger.error("Failed to write", this.filename, ":", err);
             throw err;
         });
     }
     // Reads the data asynchronously, fails if verify() fails
-    readAsync(): any {
+    readAsync() {
         // Start read request
         return (this.app.storage
             .readFileAsync(this.filename)
             // Check for errors during read
-            .catch((err: any): any => {
+            .catch(err => {
             if (err === FILE_NOT_FOUND) {
                 logger.log("File not found, using default data");
                 // File not found or unreadable, assume default file
@@ -133,13 +133,13 @@ export class ReadWriteProxy {
         })
             // Decrypt data (if its encrypted)
             // @ts-ignore
-            .then((rawData: any): any => {
+            .then(rawData => {
             if (rawData == null) {
                 // So, the file has not been found, use default data
                 return JSON.stringify(compressObject(this.getDefaultData()));
             }
             if (rawData.startsWith(compressionPrefix)) {
-                const decompressed: any = decompressX64(rawData.substr(compressionPrefix.length));
+                const decompressed = decompressX64(rawData.substr(compressionPrefix.length));
                 if (!decompressed) {
                     // LZ string decompression failure
                     return Promise.reject("bad-content / decompression-failed");
@@ -149,9 +149,9 @@ export class ReadWriteProxy {
                     return Promise.reject("bad-content / payload-too-small");
                 }
                 // Compare stored checksum with actual checksum
-                const checksum: any = decompressed.substring(0, 40);
-                const jsonString: any = decompressed.substr(40);
-                const desiredChecksum: any = checksum.startsWith(CRC_PREFIX)
+                const checksum = decompressed.substring(0, 40);
+                const jsonString = decompressed.substr(40);
+                const desiredChecksum = checksum.startsWith(CRC_PREFIX)
                     ? computeCrc(jsonString + salt)
                     : sha1(jsonString + salt);
                 if (desiredChecksum !== checksum) {
@@ -168,33 +168,33 @@ export class ReadWriteProxy {
             return rawData;
         })
             // Parse JSON, this could throw but that's fine
-            .then((res: any): any => {
+            .then(res => {
             try {
                 return JSON.parse(res);
             }
-            catch (ex: any) {
+            catch (ex) {
                 logger.error("Failed to parse file content of", this.filename, ":", ex, "(content was:", res, ")");
                 throw new Error("invalid-serialized-data");
             }
         })
             // Decompress
-            .then((compressed: any): any => decompressObject(compressed))
+            .then(compressed => decompressObject(compressed))
             // Verify basic structure
-            .then((contents: any): any => {
-            const result: any = this.internalVerifyBasicStructure(contents);
+            .then(contents => {
+            const result = this.internalVerifyBasicStructure(contents);
             if (!result.isGood()) {
                 return Promise.reject("verify-failed: " + result.reason);
             }
             return contents;
         })
             // Check version and migrate if required
-            .then((contents: any): any => {
+            .then(contents => {
             if (contents.version > this.getCurrentVersion()) {
                 return Promise.reject("stored-data-is-newer");
             }
             if (contents.version < this.getCurrentVersion()) {
                 logger.log("Trying to migrate data object from version", contents.version, "to", this.getCurrentVersion());
-                const migrationResult: any = this.migrate(contents); // modify in place
+                const migrationResult = this.migrate(contents); // modify in place
                 if (migrationResult.isBad()) {
                     return Promise.reject("migration-failed: " + migrationResult.reason);
                 }
@@ -202,8 +202,8 @@ export class ReadWriteProxy {
             return contents;
         })
             // Verify
-            .then((contents: any): any => {
-            const verifyResult: any = this.internalVerifyEntry(contents);
+            .then(contents => {
+            const verifyResult = this.internalVerifyEntry(contents);
             if (!verifyResult.result) {
                 logger.error("Read invalid data from", this.filename, "reason:", verifyResult.reason, "contents:", contents);
                 return Promise.reject("invalid-data: " + verifyResult.reason);
@@ -211,13 +211,13 @@ export class ReadWriteProxy {
             return contents;
         })
             // Store
-            .then((contents: any): any => {
+            .then(contents => {
             this.currentData = contents;
             logger.log("📄 Read data with version", this.currentData.version, "from", this.filename);
             return contents;
         })
             // Catchall
-            .catch((err: any): any => {
+            .catch(err => {
             return Promise.reject("Failed to read " + this.filename + ": " + err);
         }));
     }
@@ -230,7 +230,7 @@ export class ReadWriteProxy {
     }
     // Internal
     /** {} */
-    internalVerifyBasicStructure(data: any): ExplainedResult {
+    internalVerifyBasicStructure(data): ExplainedResult {
         if (!data) {
             return ExplainedResult.bad("Data is empty");
         }
@@ -240,11 +240,11 @@ export class ReadWriteProxy {
         return ExplainedResult.good();
     }
     /** {} */
-    internalVerifyEntry(data: any): ExplainedResult {
+    internalVerifyEntry(data): ExplainedResult {
         if (data.version !== this.getCurrentVersion()) {
             return ExplainedResult.bad("Version mismatch, got " + data.version + " and expected " + this.getCurrentVersion());
         }
-        const verifyStructureError: any = this.internalVerifyBasicStructure(data);
+        const verifyStructureError = this.internalVerifyBasicStructure(data);
         if (!verifyStructureError.isGood()) {
             return verifyStructureError;
         }

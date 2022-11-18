@@ -8,7 +8,7 @@ import { enumAnalyticsDataSource } from "../game/production_analytics";
 import { ShapeDefinition } from "../game/shape_definition";
 import { ShapeItem } from "../game/items/shape_item";
 import { globalConfig } from "../core/config";
-export const ACHIEVEMENTS: any = {
+export const ACHIEVEMENTS = {
     belt500Tiles: "belt500Tiles",
     blueprint100k: "blueprint100k",
     blueprint1m: "blueprint1m",
@@ -56,20 +56,20 @@ export const ACHIEVEMENTS: any = {
     upgradesTier8: "upgradesTier8",
 };
 const DARK_MODE: keyof typeof THEMES = "dark";
-const HOUR_1: any = 3600; // Seconds
-const HOUR_10: any = HOUR_1 * 10;
-const HOUR_20: any = HOUR_1 * 20;
-const ITEM_SHAPE: any = ShapeItem.getId();
-const MINUTE_30: any = 1800; // Seconds
-const MINUTE_60: any = MINUTE_30 * 2;
-const MINUTE_120: any = MINUTE_30 * 4;
-const ROTATER_CCW_CODE: any = 12;
-const ROTATER_180_CODE: any = 13;
-const SHAPE_BP: any = "CbCbCbRb:CwCwCwCw";
-const SHAPE_LOGO: any = "RuCw--Cw:----Ru--";
-const SHAPE_MS_LOGO: any = "RgRyRbRr";
-const SHAPE_OLD_LEVEL_17: any = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
-const SHAPE_ROCKET: any = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
+const HOUR_1 = 3600; // Seconds
+const HOUR_10 = HOUR_1 * 10;
+const HOUR_20 = HOUR_1 * 20;
+const ITEM_SHAPE = ShapeItem.getId();
+const MINUTE_30 = 1800; // Seconds
+const MINUTE_60 = MINUTE_30 * 2;
+const MINUTE_120 = MINUTE_30 * 4;
+const ROTATER_CCW_CODE = 12;
+const ROTATER_180_CODE = 13;
+const SHAPE_BP = "CbCbCbRb:CwCwCwCw";
+const SHAPE_LOGO = "RuCw--Cw:----Ru--";
+const SHAPE_MS_LOGO = "RgRyRbRr";
+const SHAPE_OLD_LEVEL_17 = "WrRgWrRg:CwCrCwCr:SgSgSgSg";
+const SHAPE_ROCKET = "CbCuCbCu:Sr------:--CrSrCr:CwCwCwCw";
 const WIRE_LAYER: Layer = "wires";
 export class AchievementProviderInterface {
     /* typehints:start */
@@ -130,11 +130,11 @@ export class Achievement {
 
         constructor(key) {
     }
-    init(): any { }
-    isValid(): any {
+    init() { }
+    isValid() {
         return true;
     }
-    unlock(): any {
+    unlock() {
         if (!this.activatePromise) {
             this.activatePromise = this.activate(this.key);
         }
@@ -238,11 +238,11 @@ export class AchievementCollection {
         this.add(ACHIEVEMENTS.upgradesTier5, this.createUpgradeOptions(5));
         this.add(ACHIEVEMENTS.upgradesTier8, this.createUpgradeOptions(8));
     }
-        initialize(root: GameRoot): any {
+        initialize(root: GameRoot) {
         this.root = root;
         this.root.signals.achievementCheck.add(this.unlock, this);
         this.root.signals.bulkAchievementCheck.add(this.bulkUnlock, this);
-        for (let [key, achievement]: any of this.map.entries()) {
+        for (let [key, achievement] of this.map.entries()) {
             if (achievement.signal) {
                 achievement.receiver = this.unlock.bind(this, key);
                 this.root.signals[achievement.signal].add(achievement.receiver);
@@ -260,11 +260,11 @@ export class AchievementCollection {
         init: function;
         isValid: function;
         signal: string;
-    } = {}): any {
+    } = {}) {
         if (G_IS_DEV) {
             assert(ACHIEVEMENTS[key], "Achievement key not found: ", key);
         }
-        const achievement: any = new Achievement(key);
+        const achievement = new Achievement(key);
         achievement.activate = this.activate;
         if (options.init) {
             achievement.init = options.init.bind(this, achievement);
@@ -277,25 +277,25 @@ export class AchievementCollection {
         }
         this.map.set(key, achievement);
     }
-    bulkUnlock(): any {
-        for (let i: any = 0; i < arguments.length; i += 2) {
+    bulkUnlock() {
+        for (let i = 0; i < arguments.length; i += 2) {
             this.unlock(arguments[i], arguments[i + 1]);
         }
     }
-        unlock(key: string, data: any): any {
+        unlock(key: string, data: any) {
         if (!this.map.has(key)) {
             return;
         }
-        const achievement: any = this.map.get(key);
+        const achievement = this.map.get(key);
         if (!achievement.isValid(data)) {
             return;
         }
         achievement
             .unlock()
-            .then((): any => {
+            .then(() => {
             this.onActivate(null, key);
         })
-            .catch((err: any): any => {
+            .catch(err => {
             this.onActivate(err, key);
         });
     }
@@ -303,14 +303,14 @@ export class AchievementCollection {
      * Cleans up after achievement activation attempt with the provider. Could
      * utilize err to retry some number of times if needed.
      */
-    onActivate(err: ?Error, key: string): any {
+    onActivate(err: ?Error, key: string) {
         this.remove(key);
         if (!this.hasDefaultReceivers()) {
             this.root.signals.achievementCheck.remove(this.unlock);
         }
     }
-        remove(key: string): any {
-        const achievement: any = this.map.get(key);
+        remove(key: string) {
+        const achievement = this.map.get(key);
         if (achievement) {
             if (achievement.receiver) {
                 this.root.signals[achievement.signal].remove(achievement.receiver);
@@ -322,11 +322,11 @@ export class AchievementCollection {
      * Check if the collection-level achievementCheck receivers are still
      * necessary.
      */
-    hasDefaultReceivers(): any {
+    hasDefaultReceivers() {
         if (!this.map.size) {
             return false;
         }
-        for (let achievement: any of this.map.values()) {
+        for (let achievement of this.map.values()) {
             if (!achievement.signal) {
                 return true;
             }
@@ -337,9 +337,9 @@ export class AchievementCollection {
      * Remaining methods exist to extend Achievement instances within the
      * collection.
      */
-    hasAllUpgradesAtLeastAtTier(tier: any): any {
-        const upgrades: any = this.root.gameMode.getUpgrades();
-        for (let upgradeId: any in upgrades) {
+    hasAllUpgradesAtLeastAtTier(tier) {
+        const upgrades = this.root.gameMode.getUpgrades();
+        for (let upgradeId in upgrades) {
             if (this.root.hubGoals.getUpgradeLevel(upgradeId) < tier - 1) {
                 return false;
             }
@@ -352,50 +352,50 @@ export class AchievementCollection {
     isShape(item: ShapeItem, shape: string): boolean {
         return item.getItemType() === ITEM_SHAPE && item.definition.getHash() === shape;
     }
-    createBlueprintOptions(count: any): any {
+    createBlueprintOptions(count) {
         return {
-            init: ({ key }: any): any => this.unlock(key, ShapeDefinition.fromShortKey(SHAPE_BP)),
-            isValid: (definition: any): any => definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= count,
+            init: ({ key }) => this.unlock(key, ShapeDefinition.fromShortKey(SHAPE_BP)),
+            isValid: definition => definition.cachedHash === SHAPE_BP && this.root.hubGoals.storedShapes[SHAPE_BP] >= count,
             signal: "shapeDelivered",
         };
     }
-    createLevelOptions(level: any): any {
+    createLevelOptions(level) {
         return {
-            init: ({ key }: any): any => this.unlock(key, this.root.hubGoals.level),
-            isValid: (currentLevel: any): any => currentLevel > level,
+            init: ({ key }) => this.unlock(key, this.root.hubGoals.level),
+            isValid: currentLevel => currentLevel > level,
             signal: "storyGoalCompleted",
         };
     }
-    createRateOptions(shape: any, rate: any): any {
+    createRateOptions(shape, rate) {
         return {
-            isValid: (): any => {
+            isValid: () => {
                 return (this.root.productionAnalytics.getCurrentShapeRateRaw(enumAnalyticsDataSource.delivered, this.root.shapeDefinitionMgr.getShapeFromShortKey(shape)) /
                     globalConfig.analyticsSliceDurationSeconds >=
                     rate);
             },
         };
     }
-    createShapeOptions(shape: any): any {
+    createShapeOptions(shape) {
         return {
-            isValid: (item: any): any => this.isShape(item, shape),
+            isValid: item => this.isShape(item, shape),
             signal: "itemProduced",
         };
     }
-    createSpeedOptions(level: any, time: any): any {
+    createSpeedOptions(level, time) {
         return {
-            isValid: (currentLevel: any): any => currentLevel >= level && this.root.time.now() < time,
+            isValid: currentLevel => currentLevel >= level && this.root.time.now() < time,
             signal: "storyGoalCompleted",
         };
     }
-    createTimeOptions(duration: any): any {
+    createTimeOptions(duration) {
         return {
-            isValid: (): any => this.root.time.now() >= duration,
+            isValid: () => this.root.time.now() >= duration,
         };
     }
-    createUpgradeOptions(tier: any): any {
+    createUpgradeOptions(tier) {
         return {
-            init: ({ key }: any): any => this.unlock(key, null),
-            isValid: (): any => this.hasAllUpgradesAtLeastAtTier(tier),
+            init: ({ key }) => this.unlock(key, null),
+            isValid: () => this.hasAllUpgradesAtLeastAtTier(tier),
             signal: "upgradePurchased",
         };
     }
@@ -413,17 +413,17 @@ export class AchievementCollection {
     }
     /** {} */
     isIrrelevantShapeValid(definition: ShapeDefinition): boolean {
-        const levels: any = this.root.gameMode.getLevelDefinitions();
-        for (let i: any = 0; i < levels.length; i++) {
+        const levels = this.root.gameMode.getLevelDefinitions();
+        for (let i = 0; i < levels.length; i++) {
             if (definition.cachedHash === levels[i].shape) {
                 return false;
             }
         }
-        const upgrades: any = this.root.gameMode.getUpgrades();
-        for (let upgradeId: any in upgrades) {
-            for (const tier: any in upgrades[upgradeId]) {
-                const requiredShapes: any = upgrades[upgradeId][tier].required;
-                for (let i: any = 0; i < requiredShapes.length; i++) {
+        const upgrades = this.root.gameMode.getUpgrades();
+        for (let upgradeId in upgrades) {
+            for (const tier in upgrades[upgradeId]) {
+                const requiredShapes = upgrades[upgradeId][tier].required;
+                for (let i = 0; i < requiredShapes.length; i++) {
                     if (definition.cachedHash === requiredShapes[i].shape) {
                         return false;
                     }
@@ -450,14 +450,14 @@ export class AchievementCollection {
     isNoBeltUpgradesUntilBpValid(level: number): boolean {
         return level >= 12 && this.root.hubGoals.upgradeLevels.belt === 0;
     }
-    initNoInverseRotater(): any {
+    initNoInverseRotater() {
         if (this.root.savegame.currentData.stats.usedInverseRotater === true) {
             return;
         }
-        const entities: any = this.root.entityMgr.componentToEntity.StaticMapEntity;
-        let usedInverseRotater: any = false;
-        for (var i: any = 0; i < entities.length; i++) {
-            const entity: any = entities[i].components.StaticMapEntity;
+        const entities = this.root.entityMgr.componentToEntity.StaticMapEntity;
+        let usedInverseRotater = false;
+        for (var i = 0; i < entities.length; i++) {
+            const entity = entities[i].components.StaticMapEntity;
             if (entity.code === ROTATER_CCW_CODE || entity.code === ROTATER_180_CODE) {
                 usedInverseRotater = true;
                 break;
@@ -491,30 +491,30 @@ export class AchievementCollection {
     isStack4LayersValid(item: ShapeItem): boolean {
         return item.getItemType() === ITEM_SHAPE && item.definition.layers.length === 4;
     }
-        initStore100Unique({ key }: Achievement): any {
+        initStore100Unique({ key }: Achievement) {
         this.unlock(key, null);
     }
     /** {} */
     isStore100UniqueValid(): boolean {
         return Object.keys(this.root.hubGoals.storedShapes).length >= 100;
     }
-        initStoreShape({ key }: Achievement): any {
+        initStoreShape({ key }: Achievement) {
         this.unlock(key, null);
     }
     /** {} */
     isStoreShapeValid(): boolean {
-        const entities: any = this.root.systemMgr.systems.storage.allEntities;
+        const entities = this.root.systemMgr.systems.storage.allEntities;
         if (entities.length === 0) {
             return false;
         }
-        for (var i: any = 0; i < entities.length; i++) {
+        for (var i = 0; i < entities.length; i++) {
             if (entities[i].components.Storage.storedCount > 0) {
                 return true;
             }
         }
         return false;
     }
-        initTrash1000({ key }: Achievement): any {
+        initTrash1000({ key }: Achievement) {
         if (Number(this.root.savegame.currentData.stats.trashedCount)) {
             this.unlock(key, 0);
             return;

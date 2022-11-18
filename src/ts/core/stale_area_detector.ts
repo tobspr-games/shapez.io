@@ -3,7 +3,7 @@ import { Entity } from "../game/entity";
 import { globalConfig } from "./config";
 import { createLogger } from "./logging";
 import { Rectangle } from "./rectangle";
-const logger: any = createLogger("stale_areas");
+const logger = createLogger("stale_areas");
 export class StaleAreaDetector {
     public root = root;
     public name = name;
@@ -15,7 +15,7 @@ export class StaleAreaDetector {
     /**
      * Invalidates the given area
      */
-    invalidate(area: Rectangle): any {
+    invalidate(area: Rectangle) {
         // logger.log(this.name, "invalidated", area.toString());
         if (this.staleArea) {
             this.staleArea = this.staleArea.getUnion(area);
@@ -28,20 +28,20 @@ export class StaleAreaDetector {
      * Makes this detector recompute the area of an entity whenever
      * it changes in any way
      */
-    recomputeOnComponentsChanged(components: Array<typeof Component>, tilesAround: number): any {
-        const componentIds: any = components.map((component: any): any => component.getId());
+    recomputeOnComponentsChanged(components: Array<typeof Component>, tilesAround: number) {
+        const componentIds = components.map(component => component.getId());
         /**
          * Internal checker method
          */
-        const checker: any = (entity: Entity): any => {
+        const checker = (entity: Entity) => {
             if (!this.root.gameInitialized) {
                 return;
             }
             // Check for all components
-            for (let i: any = 0; i < componentIds.length; ++i) {
+            for (let i = 0; i < componentIds.length; ++i) {
                 if (entity.components[componentIds[i]]) {
                     // Entity is relevant, compute affected area
-                    const area: any = entity.components.StaticMapEntity.getTileSpaceBounds().expandedInAllDirections(tilesAround);
+                    const area = entity.components.StaticMapEntity.getTileSpaceBounds().expandedInAllDirections(tilesAround);
                     this.invalidate(area);
                     return;
                 }
@@ -56,7 +56,7 @@ export class StaleAreaDetector {
     /**
      * Updates the stale area
      */
-    update(): any {
+    update() {
         if (this.staleArea) {
             if (G_IS_DEV && globalConfig.debug.renderChanges) {
                 logger.log(this.name, "is recomputing", this.staleArea.toString());

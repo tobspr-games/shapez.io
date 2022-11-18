@@ -1,14 +1,14 @@
 /* typehints:start */
 import type { Application } from "../application";
 /* typehints:end */
-export const IS_DEBUG: any = G_IS_DEV &&
+export const IS_DEBUG = G_IS_DEV &&
     typeof window !== "undefined" &&
     window.location.port === "3005" &&
     (window.location.host.indexOf("localhost:") >= 0 || window.location.host.indexOf("192.168.0.") >= 0) &&
     window.location.search.indexOf("nodebug") < 0;
-export const SUPPORT_TOUCH: any = false;
-const smoothCanvas: any = true;
-export const THIRDPARTY_URLS: any = {
+export const SUPPORT_TOUCH = false;
+const smoothCanvas = true;
+export const THIRDPARTY_URLS = {
     discord: "https://discord.gg/HN7EVzV",
     github: "https://github.com/tobspr-games/shapez.io",
     reddit: "https://www.reddit.com/r/shapezio",
@@ -25,13 +25,13 @@ export const THIRDPARTY_URLS: any = {
     },
     modBrowser: "https://shapez.mod.io/",
 };
-export function openStandaloneLink(app: Application, campaign: string): any {
-    const discount: any = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
-    const event: any = campaign + discount;
+export function openStandaloneLink(app: Application, campaign: string) {
+    const discount = globalConfig.currentDiscount > 0 ? "_discount" + globalConfig.currentDiscount : "";
+    const event = campaign + discount;
     app.platformWrapper.openExternalLink(THIRDPARTY_URLS.standaloneCampaignLink.replace("$campaign", event));
     app.gameAnalytics.noteMinor("g.stdlink." + event);
 }
-export const globalConfig: any = {
+export const globalConfig = {
     // Size of a single tile in Pixels.
     // NOTICE: Update webpack.production.config too!
     tileSize: 32,
@@ -106,7 +106,7 @@ export const globalConfig: any = {
         analyticsApiKey: "baf6a50f0cc7dfdec5a0e21c88a1c69a4b34bc4a",
     },
 };
-export const IS_MOBILE: any = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+export const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 // Automatic calculations
 globalConfig.minerSpeedItemsPerSecond = globalConfig.beltSpeedItemsPerSecond / 5;
 globalConfig.mapChunkWorldSize = globalConfig.mapChunkSize * globalConfig.tileSize;

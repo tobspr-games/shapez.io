@@ -17,6 +17,6 @@ export let gItemRegistry: FactoryTemplate<BaseItem> = new Factory("item");
 // Helpers
 export function initBuildingsByCategory(buildings: {
     [idx: string]: Array<Class<MetaBuilding>>;
-}): any {
+}) {
     gBuildingsByCategory = buildings;
 }
