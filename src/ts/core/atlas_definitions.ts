@@ -1,4 +1,3 @@
-
 export type Size = {
     w: number;
     h: number;
@@ -24,20 +23,29 @@ export type AtlasMeta = {
     smartupdate: string;
 };
 export type SourceData = {
-    frames: Object<string, SpriteDefinition>;
+    frames: {
+        [idx: string]: SpriteDefinition;
+    };
     meta: AtlasMeta;
 };
 export class AtlasDefinition {
-    public meta = meta;
-    public sourceData = frames;
-    public sourceFileName = meta.image;
+    public meta: AtlasMeta;
+    public sourceData: {
+        [idx: string]: SpriteDefinition;
+    };
+    public sourceFileName: string;
 
-        constructor({ frames, meta }) {
+    constructor({ frames, meta }: SourceData) {
+        this.meta = meta;
+        this.sourceData = frames;
+        this.sourceFileName = meta.image;
     }
+
     getFullSourcePath() {
         return this.sourceFileName;
     }
 }
+
 export const atlasFiles: AtlasDefinition[] = require
     // @ts-ignore
     .context("../../../res_built/atlas/", false, /.*\.json/i)

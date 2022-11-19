@@ -7,24 +7,24 @@ import { WEB_STEAM_SSO_AUTHENTICATED } from "./steam_sso";
 export class RestrictionManager extends ReadWriteProxy {
     public currentData = this.getDefaultData();
 
-        constructor(app) {
+    constructor(app) {
         super(app, "restriction-flags.bin");
     }
     // -- RW Proxy Impl
-        verify(data: any) {
+    verify(data: any) {
         return ExplainedResult.good();
     }
-    
+
     getDefaultData() {
         return {
             version: this.getCurrentVersion(),
         };
     }
-    
+
     getCurrentVersion() {
         return 1;
     }
-        migrate(data: any) {
+    migrate(data: any) {
         return ExplainedResult.good();
     }
     initialize() {

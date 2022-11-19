@@ -1,6 +1,5 @@
 import { Signal } from "./signal";
 export class InputReceiver {
-    public context = context;
     public backButton = new Signal();
     public keydown = new Signal();
     public keyup = new Signal();
@@ -8,13 +7,14 @@ export class InputReceiver {
     public destroyed = new Signal();
     public paste = new Signal();
 
-    constructor(context = "unknown") {
-    }
+    constructor(public context: string = "unknown") {}
+
     cleanup() {
         this.backButton.removeAll();
         this.keydown.removeAll();
         this.keyup.removeAll();
         this.paste.removeAll();
+
         this.destroyed.dispatch();
     }
 }

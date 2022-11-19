@@ -1,13 +1,15 @@
 import { createLogger } from "./logging";
+
 const logger = createLogger("assert");
+
 let assertionErrorShown = false;
+
 function initAssert() {
     /**
      * Expects a given condition to be true
-     * @param  {} failureMessage
      */
     // @ts-ignore
-    window.assert = function (condition: Boolean, ...failureMessage: ...String) {
+    window.assert = function (condition: boolean, ...failureMessage: string[]) {
         if (!condition) {
             logger.error("assertion failed:", ...failureMessage);
             if (!assertionErrorShown) {
@@ -18,4 +20,5 @@ function initAssert() {
         }
     };
 }
+
 initAssert();

@@ -2,25 +2,27 @@ import { makeOffscreenBuffer } from "./buffer_utils";
 import { AtlasSprite, BaseSprite, RegularSprite, SpriteAtlasLink } from "./sprites";
 import { cachebust } from "./cachebust";
 import { createLogger } from "./logging";
-export type Application = import("../application").Application;
-export type AtlasDefinition = import("./atlas_definitions").AtlasDefinition;
+
+import type { Application } from "../application";
+import type { AtlasDefinition } from "./atlas_definitions";
 
 const logger = createLogger("loader");
+
 const missingSpriteIds = {};
+
 class LoaderImpl {
     public app = null;
     public sprites: Map<string, BaseSprite> = new Map();
     public rawImages = [];
+    public spriteNotFoundSprite: AtlasSprite;
 
-    constructor() {
-    }
-        linkAppAfterBoot(app: Application) {
+    linkAppAfterBoot(app: Application) {
         this.app = app;
         this.makeSpriteNotFoundCanvas();
     }
+
     /**
      * Fetches a given sprite from the cache
-     * {}
      */
     getSpriteInternal(key: string): BaseSprite {
         const sprite = this.sprites.get(key);
@@ -34,45 +36,53 @@ class LoaderImpl {
         }
         return sprite;
     }
+
     /**
      * Returns an atlas sprite from the cache
-     * {}
      */
     getSprite(key: string): AtlasSprite {
         const sprite = this.getSpriteInternal(key);
         assert(sprite instanceof AtlasSprite || sprite === this.spriteNotFoundSprite, "Not an atlas sprite");
-        return sprite as AtlasSprite);
+        return sprite as AtlasSprite;
     }
+
     /**
      * Returns a regular sprite from the cache
-     * {}
      */
     getRegularSprite(key: string): RegularSprite {
         const sprite = this.getSpriteInternal(key);
-        assert(sprite instanceof RegularSprite || sprite === this.spriteNotFoundSprite, "Not a regular sprite");
-        return sprite as RegularSprite);
+        assert(
+            sprite instanceof RegularSprite || sprite === this.spriteNotFoundSprite,
+            "Not a regular sprite"
+        );
+        return sprite as RegularSprite;
     }
+
     /**
      *
-     * {}
      */
-    internalPreloadImage(key: string, progressHandler: (progress: number) => void): Promise<HTMLImageElement | null> {
+    internalPreloadImage(
+        key: string,
+        progressHandler: (progress: number) => void
+    ): Promise<HTMLImageElement | null> {
         return this.app.backgroundResourceLoader
             .preloadWithProgress("res/" + key, progress => {
-            progressHandler(progress);
-        })
+                progressHandler(progress);
+            })
             .then(url => {
-            return new Promise((resolve, reject) => {
-                const image = new Image();
-                image.addEventListener("load", () => resolve(image));
-                image.addEventListener("error", err => reject("Failed to load sprite " + key + ": " + err));
-                image.src = url;
+                return new Promise((resolve, reject) => {
+                    const image = new Image();
+                    image.addEventListener("load", () => resolve(image));
+                    image.addEventListener("error", err =>
+                        reject("Failed to load sprite " + key + ": " + err)
+                    );
+                    image.src = url;
+                });
             });
-        });
     }
+
     /**
      * Preloads a sprite
-     * {}
      */
     preloadCSSSprite(key: string, progressHandler: (progress: number) => void): Promise<void> {
         return this.internalPreloadImage(key, progressHandler).then(image => {
@@ -83,9 +93,9 @@ class LoaderImpl {
             this.rawImages.push(image);
         });
     }
+
     /**
      * Preloads an atlas
-     * {}
      */
     preloadAtlas(atlas: AtlasDefinition, progressHandler: (progress: number) => void): Promise<void> {
         return this.internalPreloadImage(atlas.getFullSourcePath(), progressHandler).then(image => {
@@ -94,11 +104,15 @@ class LoaderImpl {
             return this.internalParseAtlas(atlas, image);
         });
     }
-        internalParseAtlas({ meta: { scale }, sourceData }: AtlasDefinition, loadedImage: HTMLImageElement) {
+
+    internalParseAtlas({ meta: { scale }, sourceData }: AtlasDefinition, loadedImage: HTMLImageElement) {
         this.rawImages.push(loadedImage);
+
         for (const spriteName in sourceData) {
             const { frame, sourceSize, spriteSourceSize } = sourceData[spriteName];
-            let sprite = this.sprites.get(spriteName) as AtlasSprite);
+
+            let sprite = this.sprites.get(spriteName) as AtlasSprite;
+
             if (!sprite) {
                 sprite = new AtlasSprite(spriteName);
                 this.sprites.set(spriteName, sprite);
@@ -106,6 +120,7 @@ class LoaderImpl {
             if (sprite.frozen) {
                 continue;
             }
+
             const link = new SpriteAtlasLink({
                 packedX: frame.x,
                 packedY: frame.y,
@@ -117,9 +132,11 @@ class LoaderImpl {
                 w: sourceSize.w,
                 h: sourceSize.h,
             });
+
             sprite.linksByResolution[scale] = link;
         }
     }
+
     /**
      * Makes the canvas which shows the question mark, shown when a sprite was not found
      */
@@ -156,4 +173,5 @@ class LoaderImpl {
         this.spriteNotFoundSprite = sprite;
     }
 }
+
 export const Loader = new LoaderImpl();

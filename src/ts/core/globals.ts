@@ -1,15 +1,16 @@
-/* typehints:start */
 import type { Application } from "../application";
-/* typehints:end */
+
 /**
  * Used for the bug reporter, and the click detector which both have no handles to this.
  * It would be nicer to have no globals, but this is the only one. I promise!
  */
 export let GLOBAL_APP: Application = null;
+
 export function setGlobalApp(app: Application) {
     assert(!GLOBAL_APP, "Create application twice!");
     GLOBAL_APP = app;
 }
+
 export const BUILD_OPTIONS = {
     HAVE_ASSERT: G_HAVE_ASSERT,
     APP_ENVIRONMENT: G_APP_ENVIRONMENT,

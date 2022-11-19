@@ -17,8 +17,7 @@ function stringPolyfills() {
             padString = String(typeof padString !== "undefined" ? padString : " ");
             if (this.length >= targetLength) {
                 return String(this);
-            }
-            else {
+            } else {
                 targetLength = targetLength - this.length;
                 if (targetLength > padString.length) {
                     padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
@@ -35,8 +34,7 @@ function stringPolyfills() {
             padString = String(typeof padString !== "undefined" ? padString : " ");
             if (this.length > targetLength) {
                 return String(this);
-            }
-            else {
+            } else {
                 targetLength = targetLength - this.length;
                 if (targetLength > padString.length) {
                     padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
@@ -59,13 +57,21 @@ function objectPolyfills() {
     if (!Object.values) {
         // @ts-ignore
         Object.values = function values(O) {
-            return reduce(keys(O), (v, k) => concat(v, typeof k === "string" && isEnumerable(O, k) ? [O[k]] : []), []);
+            return reduce(
+                keys(O),
+                (v, k) => concat(v, typeof k === "string" && isEnumerable(O, k) ? [O[k]] : []),
+                []
+            );
         };
     }
     if (!Object.entries) {
         // @ts-ignore
         Object.entries = function entries(O) {
-            return reduce(keys(O), (e, k) => concat(e, typeof k === "string" && isEnumerable(O, k) ? [[k, O[k]]] : []), []);
+            return reduce(
+                keys(O),
+                (e, k) => concat(e, typeof k === "string" && isEnumerable(O, k) ? [[k, O[k]]] : []),
+                []
+            );
         };
     }
 }

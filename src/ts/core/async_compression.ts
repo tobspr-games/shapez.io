@@ -1,20 +1,24 @@
 // @ts-ignore
 import CompressionWorker from "../webworkers/compression.worker";
+
 import { createLogger } from "./logging";
 import { round2Digits } from "./utils";
+
 const logger = createLogger("async_compression");
+
 export let compressionPrefix = String.fromCodePoint(1);
-function checkCryptPrefix(prefix) {
+
+function checkCryptPrefix(prefix: string) {
     try {
         window.localStorage.setItem("prefix_test", prefix);
         window.localStorage.removeItem("prefix_test");
         return true;
-    }
-    catch (ex) {
+    } catch (ex) {
         logger.warn("Prefix '" + prefix + "' not available");
         return false;
     }
 }
+
 if (!checkCryptPrefix(compressionPrefix)) {
     logger.warn("Switching to basic prefix");
     compressionPrefix = " ";
@@ -22,15 +26,18 @@ if (!checkCryptPrefix(compressionPrefix)) {
         logger.warn("Prefix not available, ls seems to be unavailable");
     }
 }
+
 export type JobEntry = {
-    errorHandler: function(: void):void;
-    resolver: function(: void):void;
+    errorHandler: (err: any) => void;
+    resolver: (res: any) => void;
     startTime: number;
 };
 
 class AsynCompression {
     public worker = new CompressionWorker();
+
     public currentJobId = 1000;
+
     public currentJobs: {
         [idx: number]: JobEntry;
     } = {};
@@ -43,12 +50,22 @@ class AsynCompression {
                 logger.error("Failed to resolve job result, job id", jobId, "is not known");
                 return;
             }
+
             const duration = performance.now() - jobData.startTime;
-            logger.log("Got job", jobId, "response within", round2Digits(duration), "ms: ", result.length, "bytes");
+            logger.log(
+                "Got job",
+                jobId,
+                "response within",
+                round2Digits(duration),
+                "ms: ",
+                result.length,
+                "bytes"
+            );
             const resolver = jobData.resolver;
             delete this.currentJobs[jobId];
             resolver(result);
         });
+
         this.worker.addEventListener("error", err => {
             logger.error("Got error from webworker:", err, "aborting all jobs");
             const failureCalls = [];
@@ -61,6 +78,7 @@ class AsynCompression {
             }
         });
     }
+
     /**
      * Compresses any object
      */
@@ -71,9 +89,9 @@ class AsynCompression {
             compressionPrefix,
         });
     }
+
     /**
      * Queues a new job
-     * {}
      */
     internalQueueJob(job: string, data: any): Promise<any> {
         const jobId = ++this.currentJobId;
@@ -87,9 +105,11 @@ class AsynCompression {
                 resolver: resolve,
                 startTime: performance.now(),
             };
+
             logger.log("Posting job", job, "/", jobId);
             this.worker.postMessage({ jobId, job, data });
         });
     }
 }
+
 export const asyncCompressor = new AsynCompression();

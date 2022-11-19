@@ -11,42 +11,58 @@ import { Signal } from "./signal";
  *
  * ***************************************************
  */
-export class FormElement {
-    public id = id;
-    public label = label;
+export abstract class FormElement {
     public valueChosen = new Signal();
 
-    constructor(id, label) {
+    constructor(public id: string, public label: string) {}
+
+    abstract getHtml();
+
+    getFormElement(parent: Element) {
+        return parent.querySelector("[data-formId='" + this.id + "']") as HTMLFormElement;
     }
-    getHtml() {
-        abstract;
-        return "";
-    }
-    getFormElement(parent) {
-        return parent.querySelector("[data-formId='" + this.id + "']");
-    }
-    bindEvents(parent, clickTrackers) {
-        abstract;
-    }
-    focus() { }
+
+    abstract bindEvents(parent: Element, clickTrackers: ClickDetector[]);
+
+    focus() {}
+
     isValid() {
         return true;
     }
-    /** {} */
-    getValue(): any {
-        abstract;
-    }
-}
-export class FormElementInput extends FormElement {
-    public placeholder = placeholder;
-    public defaultValue = defaultValue;
-    public inputType = inputType;
-    public validator = validator;
-    public element = null;
 
-    constructor({ id, label = null, placeholder, defaultValue = "", inputType = "text", validator = null }) {
+    abstract getValue(): any;
+}
+
+export class FormElementInput extends FormElement {
+    public placeholder: string;
+    public defaultValue: string;
+    public inputType: string;
+    public validator: (str: string) => boolean;
+    public element: HTMLFormElement = null;
+
+    constructor({
+        id,
+        label = null,
+        placeholder,
+        defaultValue = "",
+        inputType = "text",
+        validator = null,
+    }: {
+        id: string;
+        label?: string;
+        placeholder: string;
+        defaultValue?: string;
+        inputType?: string;
+        validator: (str: string) => boolean;
+    }) {
         super(id, label);
+
+        this.placeholder = placeholder;
+        this.defaultValue = defaultValue;
+        this.inputType = inputType;
+        this.validator = validator;
     }
+
     getHtml() {
         let classes = [];
         let inputType = "text";
@@ -85,37 +101,46 @@ export class FormElementInput extends FormElement {
             </div>
         `;
     }
+
     bindEvents(parent, clickTrackers) {
         this.element = this.getFormElement(parent);
         this.element.addEventListener("input", event => this.updateErrorState());
         this.updateErrorState();
     }
+
     updateErrorState() {
         this.element.classList.toggle("errored", !this.isValid());
     }
+
     isValid() {
         return !this.validator || this.validator(this.element.value);
     }
+
     getValue() {
         return this.element.value;
     }
+
     setValue(value) {
         this.element.value = value;
         this.updateErrorState();
     }
+
     focus() {
         this.element.focus();
         this.element.select();
     }
 }
 export class FormElementCheckbox extends FormElement {
-    public defaultValue = defaultValue;
-    public value = this.defaultValue;
-    public element = null;
+    public defaultValue: boolean;
+    public value: boolean;
+    public element: Element = null;
 
-    constructor({ id, label, defaultValue = true }) {
+    constructor({ id, label, defaultValue = true }: { id: string; label: string; defaultValue?: boolean }) {
         super(id, label);
+        this.defaultValue = defaultValue;
+        this.value = this.defaultValue;
     }
+
     getHtml() {
         return `
             <div class="formElement checkBoxFormElem">
@@ -126,7 +151,8 @@ export class FormElementCheckbox extends FormElement {
             </div>
         `;
     }
-    bindEvents(parent, clickTrackers) {
+
+    bindEvents(parent: Element, clickTrackers: ClickDetector[]) {
         this.element = this.getFormElement(parent);
         const detector = new ClickDetector(this.element, {
             consumeEvents: false,
@@ -135,23 +161,30 @@ export class FormElementCheckbox extends FormElement {
         clickTrackers.push(detector);
         detector.click.add(this.toggle, this);
     }
+
     getValue() {
         return this.value;
     }
+
     toggle() {
         this.value = !this.value;
         this.element.classList.toggle("checked", this.value);
     }
-    focus(parent) { }
-}
-export class FormElementItemChooser extends FormElement {
-    public items = items;
-    public element = null;
-    public chosenItem: BaseItem = null;
 
-        constructor({ id, label, items = [] }) {
+    // focus(parent) { }
+}
+
+export class FormElementItemChooser extends FormElement {
+    public element: Element = null;
+    public chosenItem: BaseItem = null;
+    public items: any[];
+
+    constructor({ id, label, items = [] }) {
         super(id, label);
+
+        this.items = items;
     }
+
     getHtml() {
         let classes = [];
         return `
@@ -161,10 +194,13 @@ export class FormElementItemChooser extends FormElement {
             </div>
             `;
     }
-        bindEvents(parent: HTMLElement, clickTrackers: Array<ClickDetector>) {
+
+    bindEvents(parent: HTMLElement, clickTrackers: Array<ClickDetector>) {
         this.element = this.getFormElement(parent);
+
         for (let i = 0; i < this.items.length; ++i) {
             const item = this.items[i];
+
             const canvas = document.createElement("canvas");
             canvas.width = 128;
             canvas.height = 128;
@@ -172,6 +208,7 @@ export class FormElementItemChooser extends FormElement {
             item.drawFullSizeOnCanvas(context, 128);
             this.element.appendChild(canvas);
             const detector = new ClickDetector(canvas, {});
+
             clickTrackers.push(detector);
             detector.click.add(() => {
                 this.chosenItem = item;
@@ -179,11 +216,14 @@ export class FormElementItemChooser extends FormElement {
             });
         }
     }
+
     isValid() {
         return true;
     }
+
     getValue() {
         return null;
     }
-    focus() { }
+
+    focus() {}
 }
