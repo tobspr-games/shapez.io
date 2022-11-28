@@ -1155,6 +1155,7 @@ mods:
     title: 遊戲模組（Mods）
     author: 作者
     version: 版本
+    modWebsite: 網站
     openFolder: 打開遊戲模組（Mods）文件夾
     folderOnlyStandalone: 只有完整版才可以打開遊戲模組（Mods）文件夾。
     browseMods: 瀏覽遊戲模組（Mods）
