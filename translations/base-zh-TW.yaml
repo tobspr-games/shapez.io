@@ -82,21 +82,19 @@ mainMenu:
     madeBy: 作者：<author-link>
     subreddit: Reddit
     savegameUnnamed: 未命名
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: 解謎模式
+    back: 返回
+    puzzleDlcText: 你喜歡壓縮及優化流水線工廠嗎? 立即在Steam上取得DLC，以享受更多樂趣!
+    puzzleDlcWishlist: 現在就加入願望清單!
+    puzzleDlcViewNow: 查看 DLC
     mods:
         title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        warningPuzzleDLC: 遊玩 Puzzle DLC 不支援 mods. 請關閉所有 mod 以順利遊玩 DLC.
+    playingFullVersion: 您正在遊玩完整版!
+    logout: 登出
+    noActiveSavegames: 沒有找到有效的存檔，點擊 開始遊戲 開啟一個新的存檔!
+    playFullVersionV2: 以Steam購買完整版? 在您的瀏覽器遊玩完整版!
+    playFullVersionStandalone: 你現在也可以在瀏覽器遊玩完整版!
 dialogs:
     buttons:
         ok: 確認
@@ -110,9 +108,9 @@ dialogs:
         viewUpdate: 查看更新
         showUpgrades: 顯示建築升級
         showKeybindings: 顯示按鍵設定
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: 重試
+        continue: 繼續
+        playOffline: 以離線模式遊玩
     importSavegameError:
         title: 匯入錯誤
         text: 存檔匯入失敗：
@@ -198,11 +196,11 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: 謎題載入失敗
+        desc: "不幸的這個謎題無法載入:"
     submitPuzzle:
         title: Submit Puzzle
-        descName: "Give your puzzle a name:"
+        descName: "幫您的謎題取個名稱:"
         descIcon: "Please enter a unique short key, which will be shown as the icon of
             your puzzle (You can generate them <link>here</link>, or choose one
             of the randomly suggested shapes below):"
@@ -257,10 +255,10 @@ dialogs:
         title: Enter short key
         desc: Enter the short key of the puzzle to load it.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: 刪除此謎題?
+        desc: 您是否確定要刪除 '<title>'? 這個步驟無法反悔喔!
     modsDifference:
-        title: Mod Warning
+        title: Mod 警告
         desc: The currently installed mods differ from the mods the savegame was created
             with. This might cause the savegame to break or not load at all. Are
             you sure you want to continue?
@@ -440,28 +438,28 @@ ingame:
                 desc: 要保養眼球～
             support:
                 title: 支持我
-                desc: 遊戲使我利用閒暇時間做的！
+                desc: 遊戲是我利用閒暇時間做的！
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: 成就
+                desc: 獲得他們!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: 支援MOD!
+                desc: 超過80種可使用MOD!
+        titleV2: "現在就到Steam 解鎖完整版:"
+        titleExpiredV2: Demo 完成!
+        titleEnjoyingDemo: Demo版玩得開心嗎?
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
+        zoneTitle: 區域
+        zoneWidth: 寬度
+        zoneHeight: 高度
         trimZone: Trim
-        clearItems: Clear Items
-        share: Share
+        clearItems: 清除物件
+        share: 分享
         report: Report
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: 清除建築
+        resetPuzzle: 重設謎題
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: 謎題創作工具
         instructions:
             - 1. Place <strong>Constant Producers</strong> to provide shapes and
               colors to the player
@@ -547,7 +545,7 @@ buildings:
     mixer:
         default:
             name: 混色機
-            description: Mixes two colors using additive blending.
+            description: 使用加法混和兩種顏色.
     painter:
         default:
             name: 上色機
@@ -963,7 +961,7 @@ keybindings:
         massSelect: 批量選擇
         buildings: 建築快捷鍵
         placementModifiers: 放置建築修飾鍵
-        mods: Provided by Mods
+        mods: 由Mod提供
     mappings:
         confirm: 確認
         back: 返回
@@ -1114,31 +1112,31 @@ tips:
     - 按 F4 兩次來顯示相機和游標的絕對位置。
     - 在已標記的圖形上按左鍵去除標記。
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: 開始遊戲
+    edit: 編輯
+    title: 解謎模式
+    createPuzzle: 建立迷尼
+    loadPuzzle: 載入
+    reviewPuzzle: 預覽及發佈
+    validatingPuzzle: 驗證謎題
+    submittingPuzzle: 提交謎題
+    noPuzzles: 這個章節暫時沒有謎題.
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
+        levels: 等級
+        new: new
+        top-rated: 最高評價
         mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        easy: 簡單
+        hard: 困難
+        completed: 完成
+        medium: 中等
+        official: 官方
+        trending: 本日熱門
+        trending-weekly: 本週熱門
+        categories: 分類
+        difficulties: 依難度排序
+        account: 我的謎題
+        search: 搜尋
     validation:
         title: Invalid Puzzle
         noProducers: Please place a Constant Producer!
@@ -1152,26 +1150,26 @@ puzzleMenu:
         autoComplete: Your puzzle autocompletes itself! Please make sure your constant
             producers are not directly delivering to your goal acceptors.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        easy: 簡單
+        medium: 中等
+        hard: 困難
+        unknown: 未評級
+    dlcHint: 已經購買DLC? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
+        action: 搜尋
+        placeholder: 輸入謎題或作者名稱
         includeCompleted: Include Completed
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: 任意難度
+            easy: 簡單
+            medium: 中等
+            hard: 困難
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: 任意時間
+            short: 短 (< 2 分鐘)
+            medium: 中
+            long: 長 (> 10 分鐘)
 backendErrors:
     ratelimit: You are performing your actions too frequent. Please wait a bit.
     invalid-api-key: Failed to communicate with the backend, please try to
