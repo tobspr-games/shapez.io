@@ -8,14 +8,10 @@ steamPage:
         除此之外，你也必須不斷累加你的生產量來達到升級的需求，達成目標的方法無他，只有不斷地擴張！
         遊戲初期只需要組合特定圖形，接著玩家會被要求幫圖形上色，有時甚至需要先混色才能達到目標。
         玩家可以在 Steam 購買本游戲的單機版，如果還在猶豫，也可以到 shapez.io 先免費試玩再決定！
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+    what_others_say: 看看玩家們對 shapez.io 的評論
+    nothernlion_comment: 這個遊戲非常棒，過程充滿趣味，時間一瞬間就消失了。
+    notch_comment: 喔，我的天啊. 我真的該睡了, 但我剛在shapez.io搞出一台電腦來。
+    steam_review_comment: 這個遊戲偷走了我的生活，而且我也不想它再回來，非常燒腦的挑戰，讓我這樣的完美主義者停不下來，總是希望可以再高效一些。
 global:
     loading: 載入中
     error: 錯誤
@@ -199,95 +195,75 @@ dialogs:
         title: 謎題載入失敗
         desc: "不幸的這個謎題無法載入:"
     submitPuzzle:
-        title: Submit Puzzle
+        title: 提交謎題
         descName: "幫您的謎題取個名稱:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        descIcon: "請輸入唯一的短代碼，它將顯示在您的謎題的圖標(<link>在此</link>生成，或者從以下隨機推薦的圖形中選擇一個):"
+        placeholderName: 謎題標題
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: 無法調整大小
+        desc: Y您無法讓區塊變得更小，否則有些建築將會超出區域範圍。
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: 謎題出錯
+        desc: "謎題載入失敗:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: 離線模式
+        desc: 伺服器連線失敗, 遊戲將在離線模式進行，請確認您正在使用有效的網路.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: 下載錯誤
+        desc: "無法下載謎題:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: 提交錯誤
+        desc: "無法提交您的謎題:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: 謎題已發佈
+        desc: 恭喜!您所創造的謎題已成功發布，別的玩家已經可以對您的謎題發起挑戰！您可以在"我的謎題"部分找到您發布的謎題。
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: 離線模式
+        desc: 您正在離線中, 您將不能儲存及發佈您的謎題，您確定要繼續嗎?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: 遊戲建議
+        desc: <strong>強烈</strong>建議您至少完成遊戲本體前12關再體驗解謎模式，否則您可能會在遊戲過程中遇到困難，您是否仍要繼續?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: 短代碼複製
+        desc: 此謎題的短代碼(<key>)已經復製到了您的剪貼簿！您可以在謎題選單中輸入短代碼以快速造訪對應謎題。
     puzzleReport:
-        title: Report Puzzle
+        title: 回報謎題
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: 汙穢言論
+            unsolvable: 無法完成
+            trolling: 惡意設計
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: 感謝您的回報!
+        desc: 此謎題已標記.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: 回報失敗
+        desc: "無法處理您的回報:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: 輸入短代碼
+        desc: 輸入謎題的短代碼以載入.
     puzzleDelete:
         title: 刪除此謎題?
         desc: 您是否確定要刪除 '<title>'? 這個步驟無法反悔喔!
     modsDifference:
         title: Mod 警告
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        desc: 當前已安裝的模組(Mods)與該存檔創建時所安裝的模組(Mods)不同！這可能會導致存檔損壞，甚至無法載入。你確定要繼續載入嗎？
+        missingMods: 遺失的Mods
+        newMods: 新安裝的Mods
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: 資源載入失敗
+        demoLinkText: Steam 上的 shapez demo
+        descWeb: "一個或多個資源載入失敗. 請確認您的網路連線正常並重試. 如果仍然失敗,
+            請確認是否已關閉所有瀏覽器插件(如AdBlock).<br><br> 或者您也可以試玩
+            <demoOnSteamLinkText>. <br><br> 錯誤訊息:"
+        descSteamDemo: "一個或多個資源載入失敗，請重新啟動遊戲。 如果仍然存在問題，請重新安裝遊戲或者通過Steam驗證遊戲安裝文件。 <br><br>
+            錯誤訊息："
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: 從完整版登出
+        desc: 由於您的網絡連接不穩定，或者您已在另一台設備上開始遊戲。您已經從瀏覽器登出了完整版遊戲。 <br><br>
+              請確認您沒有在其他瀏覽器或電腦用同一Steam賬號登錄 Shapez。 <br><br> 您可以從主界面再次登錄。
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: 尚未獲得完整版
+        desc: 在瀏覽器內玩完整版遊戲，您需要通過Steam購買遊戲本體和DLC<br><br> 請確認您已經購買，請使用同一Steam賬號登錄並再次嘗試。
 ingame:
     keybindingsOverlay:
         moveMap: 移動
@@ -309,7 +285,7 @@ ingame:
         clearSelection: 清空選取
         pipette: 滴管
         switchLayers: 切換層
-        clearBelts: Clear belts
+        clearBelts: 清除傳送帶
     buildingPlacement:
         cycleBuildingVariants: 按<key>鍵以選擇建築變體。
         hotkeyLabel: 快捷鍵：<key>
@@ -389,9 +365,8 @@ ingame:
                 選擇輸送帶，按住<strong>SHIFT</strong>並拖曳滑鼠可以計畫輸送帶位置！"
             21_1_place_quad_painter: 放置一個<strong>上色機（四向）</strong>並取得一些
                 <strong>圓形</strong>、<strong>白色</strong>和<strong>紅色</strong>！
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
+            21_2_switch_to_wires: 按 <strong>E</strong> 鍵選擇<strong>電線層</strong>！ <br><br>
+                然後用導線連接上色器的<strong>四個輸入口</strong>！
             21_3_place_button: 太棒了！現在放置一個<strong>開關</strong>並將之與電線連接。
             21_4_press_button: "按下開關使之<strong>輸出真值</strong>並啟動上色機。<br><br> PS:
                 你不用連接所有的輸入端，試試只連接兩個。"
@@ -452,43 +427,35 @@ ingame:
         zoneTitle: 區域
         zoneWidth: 寬度
         zoneHeight: 高度
-        trimZone: Trim
+        trimZone: 整理
         clearItems: 清除物件
         share: 分享
-        report: Report
+        report: 回報
         clearBuildings: 清除建築
         resetPuzzle: 重設謎題
     puzzleEditorControls:
         title: 謎題創作工具
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. 放置<strong>常量生成器</strong>，為玩家提供此謎題的初始圖形和顏色。
+            - 2. 建造您希望玩家稍後建造的一個或多個圖形，並將其交付給一個或多個<strong>目標接收器</strong>。
+            - 3. 當一個目標接收器接收到一個圖形一段時間後，會<strong>將其保存為此玩家稍後必須建造的目標</strong>（由<strong>綠色進度條</strong>表示）。
+            - 4. 單擊設施上的<strong>鎖定按鈕</strong>即可將其禁用。
+            - 5. 單擊審核後，您的謎題將得到驗證，您可以發布它。
+            - 6.謎題發布後，<strong>所有設施都將被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目標接收器</strong>。然後，等著其他玩家對您創造的謎題發起挑戰吧!
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        title: 謎題挑戰成功!
+        titleLike: "喜歡此謎題的話，請幫它點個讚:"
+        titleRating: 您覺得此謎題的難度如何?
+        titleRatingDesc: 您的評分將幫助作者在未來創作出更好的謎題！
+        continueBtn: 繼續遊玩
+        menuBtn: 選單
+        nextPuzzle: 下一個謎題
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: 作者
+        shortKey: 短代碼
+        rating: 難度評分
+        averageDuration: 平均挑戰時間
+        completionRate: 挑戰完成率
 shopUpgrades:
     belt:
         name: 輸送帶、平衡機、隧道
@@ -567,8 +534,8 @@ buildings:
     hub:
         deliver: 交付
         toUnlock: 來解鎖
-        levelShortcut: LVL
-        endOfDemo: 試玩結束
+        levelShortcut: 關卡
+        endOfDemo: 試玩版結束
     wire:
         default:
             name: 電線
@@ -787,14 +754,11 @@ storyRewards:
             OR, XOR 與 NOT 邏輯。<br><br> 錦上添花，我再送你<strong>電晶體</strong>！
     reward_virtual_processing:
         title: 虛擬操作
-        desc: I just gave a whole bunch of new buildings which allow you to
-            <strong>simulate the processing of shapes</strong>!<br><br> You can
-            now simulate a cutter, rotator, stacker and more on the wires layer!
-            With this you now have three options to continue the game:<br><br> -
-            Build an <strong>automated machine</strong> to create any possible
-            shape requested by the HUB (I recommend to try it!).<br><br> - Build
-            something cool with wires.<br><br> - Continue to play
-            normally.<br><br> Whatever you choose, remember to have fun!
+        desc: 我剛剛給了一大堆新設施，讓您可以<strong>模擬形狀的處理過程</strong>！ <br>
+            您現在可以在電線層上模擬切割機，旋轉機，堆疊機和其他機器！ <br> 有了這些，您可以選擇下面三個方向來繼續遊戲：<br>
+            -建立一個<strong>自動化機器</strong>以生產出任何中心基地需要圖形（建議試試！）。 <br>
+            -用<strong>電線層</strong>做些酷炫的東西。 <br> 
+            -繼續正常遊戲。 <br> 放飛想像，盡情創造！
     reward_wires_painter_and_levers:
         title: 電路層 & 四角上色機
         desc: <strong>電路層</strong>已解鎖！ 它是一個獨立於實體層之外的存在，將帶給你更多玩法！<br><br>
@@ -1138,32 +1102,27 @@ puzzleMenu:
         account: 我的謎題
         search: 搜尋
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: 無效謎題
+        noProducers: 請放置<strong>常量生成器</strong>!
+        noGoalAcceptors: 請放置<strong>目標接收器</strong>!
+        goalAcceptorNoItem: 一個或多個目標接收器尚未被分配圖形目標。請向它們傳遞圖形以設置目標。
+        goalAcceptorRateNotMet: 一個或多個目標接收器沒有獲得足夠數量的圖形。請確保所有接收器的充能條指示器均為綠色。
+        buildingOutOfBounds: 一個或多個設施位於可建造區域之外。請增加區域面積，或將超出區域的設施移除。
+        autoComplete: 請確保您的常量生成器不會直接向目標接收器傳遞目標圖形。否則您的謎題會自動完成。
     difficulties:
         easy: 簡單
-        medium: 中等
+        medium: 普通
         hard: 困難
         unknown: 未評級
-    dlcHint: 已經購買DLC? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: 已經購買DLC? 請在您的 Steam 收藏庫中右鍵點擊 Shapez。然後選擇屬性 - DLC。
     search:
         action: 搜尋
         placeholder: 輸入謎題或作者名稱
-        includeCompleted: Include Completed
+        includeCompleted: 包含已完成
         difficulties:
             any: 任意難度
             easy: 簡單
-            medium: 中等
+            medium: 普通
             hard: 困難
         durations:
             any: 任意時間
@@ -1171,47 +1130,40 @@ puzzleMenu:
             medium: 中
             long: 長 (> 10 分鐘)
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: 你的操作太頻繁了。請稍等。
+    invalid-api-key: 與後台連線失敗，請嘗試更新或重新啟動遊戲（無效的Api密鑰）。
+    unauthorized: 與後台連線失敗，請嘗試更新或重新啟動遊戲（未經授權）。
+    bad-token: 與後台連線失敗，請嘗試更新或重新啟動遊戲（令牌錯誤）。
+    bad-id: 謎題標識符無效。
+    not-found: 找不到給定的謎題。
+    bad-category: 找不到給定的類別。
+    bad-short-key: 給定的短代碼錯誤。
+    profane-title: 您的謎題標題包含污言穢語。
+    bad-title-too-many-spaces: 您的謎題標題過短。
+    bad-shape-key-in-emitter: 常量生成器包含無效項目。
+    bad-shape-key-in-goal: 目標接收器包含無效項目。
+    no-emitters: 您的謎題沒有任何常量生成器。
+    no-goals: 您的謎題沒有任何目標接收器。
+    short-key-already-taken: 此短代碼已被使用，請使用其他短代碼。
+    can-not-report-your-own-puzzle: 您無法上報您自己的謎題問題。
+    bad-payload: 此請求包含無效數據。
+    bad-building-placement: 您的謎題包含放置錯誤的設施。
+    timeout: 請求超時。
+    too-many-likes-already: 您的謎題已經得到了許多玩家的讚賞。如果您仍然希望刪除它，請聯繫 support@shapez.io！
+    no-permission: 您沒有執行此操作的權限。
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: 遊戲模組（Mods）
+    author: 作者
+    version: 版本
+    openFolder: 打開遊戲模組（Mods）文件夾
+    folderOnlyStandalone: 只有完整版才可以打開遊戲模組（Mods）文件夾。
+    browseMods: 瀏覽遊戲模組（Mods）
+    modsInfo: 要安裝和管理遊戲模組（Mods），請將它們複製到遊戲模組文件夾（使用右上角的"打開遊戲模組（Mods）文件夾"按鈕）。記住在管理完遊戲模組（Mods）後，請務必重啟遊戲，否則遊戲模組（Mods）是不會出現的。
+    noModSupport: 您需要在 Steam 平台獲得完整版才可以安裝遊戲模組（Mods）。
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: 即將開放
+        description:
+            當前只能通過將游戲模組（Mods）文件複製到 mods 文件夾或從 mods 文件夾移除來啟用或禁用遊戲模組（Mods）。
+            但是，可以切換遊戲模組（Mods）已經計劃在之後的更新中實現！
+    modWebsite: 模組網站
+    browserNoSupport: 由於瀏覽器功能限制，目前遊戲模組（Mods）只能在Steam版本中安裝進行。敬請理解！
