@@ -1201,7 +1201,7 @@ mods:
     folderOnlyStandalone: 模組資料夾只可在單機運行下開啟。
     browseMods: 瀏覽模組
     modsInfo: 安裝與管理模組，將它們複製到遊戲目錄中。
-        你也可以使用右上角的按鈕'開啟模資料夾'。
+        你也可以使用右上角的按鈕'開啟模組資料夾'。
     noModSupport: 你需要Steam上的單機版本才能安裝模組。
     togglingComingSoon:
         title: 即將到來
