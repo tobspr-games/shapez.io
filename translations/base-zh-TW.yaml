@@ -1171,7 +1171,7 @@ puzzleMenu:
             medium: 普通
             long: 長 (> 10 分鐘)
 backendErrors:
-    ratelimit: 你的動作太頻繁。請稍等一下。
+    ratelimit: 你的動作太頻繁了。請稍等一下。
     invalid-api-key: 連接通訊後端失敗。請嘗試更新或重啟遊戲(無效的API密鑰)。
     unauthorized: 連接通訊後端失敗。請嘗試更新或重啟遊戲(未授權)。
     bad-token: 連接通訊後端失敗。請嘗試更新或重啟遊戲(Bad Token)。
