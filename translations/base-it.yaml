@@ -447,7 +447,7 @@ ingame:
             21_4_press_button: "Premi l'interruttore per fargli <strong>emettere un segnale
                 di verità </strong> e fargli quindi attivare il
                 vernciatore.<br><br> PS: Non c'è bisogno che tu connetta tutti
-                gli imput! Prova a collegarne solo due."
+                gli input! Prova a collegarne solo due."
             1_2_hold_and_drag: Mantenere e trascinare
     colors:
         red: Rosso
@@ -800,7 +800,7 @@ storyRewards:
     reward_splitter:
         title: Separatore/Agrregatore
         desc: Il <strong>separatore</strong> è stato sbloccato! è una variante del
-            <strong>bilanciatore</strong> - Accetta un imput e lo divide in due!
+            <strong>bilanciatore</strong> - Accetta un input e lo divide in due!
     reward_tunnel:
         title: Tunnel
         desc: Il <strong>tunnel</strong> è stato sbloccato! In questo modo puoi
