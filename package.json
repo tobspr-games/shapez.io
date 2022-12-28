@@ -7,8 +7,8 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cd gulp && yarn gulp main.serveDev",
-        "devStandalone": "cd gulp && yarn gulp main.serveStandalone",
+        "dev": "cd gulp && yarn gulp",
+        "devStandalone": "cd gulp && yarn gulp serve.standalone-steam",
         "tslint": "cd src/js && tsc",
         "lint": "eslint src/js",
         "prettier-all": "prettier --write src/**/*.* && prettier --write gulp/**/*.*",
