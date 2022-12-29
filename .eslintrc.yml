@@ -21,5 +21,6 @@ rules:
     prettier/prettier: error
     no-undef: off
     no-unused-vars: off
+    no-unreachable: off
     no-prototype-builtins: off
     linebreak-style: off
