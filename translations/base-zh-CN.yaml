@@ -755,10 +755,10 @@ storyRewards:
             您可以用它们来进行“与，或，非，异或”操作。<br><br>作为奖励，我还给您解锁了<strong>晶体管</strong>！
     reward_virtual_processing:
         title: 模拟处理器
-        desc: 我刚刚给了一大堆新设施，让您可以<strong>模拟形状的处理过程</strong>！<br>
+        desc: 许多新设施已被解锁，让您可以<strong>模拟形状的处理过程</strong>！<br>
             您现在可以在电线层上模拟切割机，旋转机，堆叠机和其他机器！<br> 有了这些，您可以选择下面三个方向来继续游戏：<br>
-            -建立一个<strong>自动化机器</strong>以生产出任何中心基地需要图形（建议一试！）。<br>
-            -用<strong>电线层</strong>做些酷炫的东西。<br> -继续正常游戏。<br> 放飞想象，尽情创造！
+            - 建立一个<strong>自动化机器</strong>以生产出任何中心基地需要图形（建议一试！）。<br>
+            - 用<strong>电线层</strong>做些酷炫的东西。<br> -继续正常游戏。<br> 放飞想象，尽情创造！
     reward_wires_painter_and_levers:
         title: 电线 & 四口上色器
         desc: 恭喜！您解锁了<strong>电线层</strong>：它是正常层之上的一个层，它将带来了许多新的机制！<br><br>
