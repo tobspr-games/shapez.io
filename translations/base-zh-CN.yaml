@@ -52,7 +52,7 @@ global:
     loggingIn: 登录
     loadingResources: 下载其他资源 (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: 特别优惠！7 月 7 日结束优惠活动
 demoBanners:
     title: 试玩版
     intro: |-
@@ -96,9 +96,9 @@ mainMenu:
         warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者” DLC，请关闭所有游戏模组（Mods）。
     playingFullVersion: 您正在玩完整版游戏！
     logout: 登出
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: 未找到已有的存档 - 点击开始游戏创建一个新存档！
+    playFullVersionV2: 已经在 Steam 上购买了游戏？在浏览器里游玩完整版！
+    playFullVersionStandalone: 现在可在浏览器内游玩完整版！
 dialogs:
     buttons:
         ok: 确认
@@ -184,7 +184,7 @@ dialogs:
         desc: 您没有足够的图形来粘贴这个区域！您确定要剪切吗？
     editSignal:
         title: 设置信号
-        descItems: "选择一个预定义的项目:"
+        descItems: 选择一个预定义的项目：
         descShortKey: ... 或者输入图形的 <strong>短代码</strong> （您可以 <link>点击这里</link> 生成短代码）
     renameSavegame:
         title: 重命名游戏存档
@@ -259,9 +259,9 @@ dialogs:
     resourceLoadFailed:
         title: 资源载入失败
         demoLinkText: Steam上的《异形工厂》（Shapez）Demo
-        descWeb: “一个或多个资源载入失败，请确认您的网络连接正常并再次尝试。如果仍然载入失败，
-            请确认您已经关闭了所有浏览器插件（比如"广告屏蔽"）。<br><br>或者，你也可以试玩
-            <demoOnSteamLinkText>。<br><br> 错误提示：”
+        descWeb: 一个或多个资源载入失败，请确认您的网络连接正常并再次尝试。如果仍然载入失败，
+            请确认您已经关闭了所有浏览器插件（包括广告屏蔽插件）。<br><br>或者，你也可以试玩
+            <demoOnSteamLinkText>。<br><br> 错误提示：
         descSteamDemo:
             “一个或多个资源载入失败，请重新启动游戏。 如果仍然存在问题，请重新安装游戏或者通过Steam验证游戏安装文件。 <br><br>
             错误提示：”
@@ -690,7 +690,7 @@ storyRewards:
         title: 逆时针旋转
         desc:
             恭喜！您解锁了<strong>旋转机</strong>的<strong>逆时针</strong>变体。它可以逆时针旋转<strong>图形</strong>。
-            <br>选择<strong>旋转机</strong>然后按 "T" 键来选取这个变体。
+            <br>选择<strong>旋转机</strong>然后按 “T” 键来选取这个变体。
     reward_miner_chainable:
         title: 链式开采器
         desc:
@@ -752,13 +752,13 @@ storyRewards:
     reward_logic_gates:
         title: 逻辑门
         desc: 您解锁了<strong>逻辑门</strong>！它们是个好东西！<br>
-            您可以用它们来进行'与，或，非，异或'操作。<br><br>作为奖励，我还给您解锁了<strong>晶体管</strong>！
+            您可以用它们来进行“与，或，非，异或”操作。<br><br>作为奖励，我还给您解锁了<strong>晶体管</strong>！
     reward_virtual_processing:
         title: 模拟处理器
-        desc: 我刚刚给了一大堆新设施，让您可以<strong>模拟形状的处理过程</strong>！<br>
+        desc: 许多新设施已被解锁，让您可以<strong>模拟形状的处理过程</strong>！<br>
             您现在可以在电线层上模拟切割机，旋转机，堆叠机和其他机器！<br> 有了这些，您可以选择下面三个方向来继续游戏：<br>
-            -建立一个<strong>自动化机器</strong>以生产出任何中心基地需要图形（建议一试！）。<br>
-            -用<strong>电线层</strong>做些酷炫的东西。<br> -继续正常游戏。<br> 放飞想象，尽情创造！
+            - 建立一个<strong>自动化机器</strong>以生产出任何中心基地需要图形（建议一试！）。<br>
+            - 用<strong>电线层</strong>做些酷炫的东西。<br> -继续正常游戏。<br> 放飞想象，尽情创造！
     reward_wires_painter_and_levers:
         title: 电线 & 四口上色器
         desc: 恭喜！您解锁了<strong>电线层</strong>：它是正常层之上的一个层，它将带来了许多新的机制！<br><br>
@@ -950,7 +950,7 @@ keybindings:
         painter: 上色器
         trash: 垃圾桶
         rotateWhilePlacing: 顺时针旋转
-        rotateInverseModifier: "修饰键: 改为逆时针旋转"
+        rotateInverseModifier: 修饰键：改为逆时针旋转
         cycleBuildingVariants: 切换所选择设施变体
         confirmMassDelete: 确认批量删除
         cycleBuildings: 切换所选择设施
