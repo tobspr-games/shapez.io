@@ -1114,106 +1114,97 @@ tips:
     - 按 F4 兩次來顯示相機和游標的絕對位置。
     - 在已標記的圖形上按左鍵去除標記。
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: 遊玩
+    edit: 編輯
+    title: 解謎模式
+    createPuzzle: 製作謎題
+    loadPuzzle: 載入
+    reviewPuzzle: 檢視 & 發佈
+    validatingPuzzle: 驗證謎題
+    submittingPuzzle: 提交謎題
+    noPuzzles: 此部件目前沒有謎題使用。
     categories:
-        levels: Levels
-        new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        levels: 級別
+        new: 新加入
+        top-rated: 評價最高
+        mine: 我的謎題
+        easy: 簡單
+        hard: 困難
+        completed: 已完成
+        medium: 普通
+        official: 官方
+        trending: 每日趨勢
+        trending-weekly: 每周趨勢
+        categories: 類別
+        difficulties: 難度
+        account: 我的謎題
+        search: 搜尋
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: 無效的謎題
+        noProducers:請放置一個生產器!
+        noGoalAcceptors: 請放置一個目標接收器!
+        goalAcceptorNoItem: 一個或多個目標接收器還未指定物品。
+            運送一個成品至接收器來指定目標。
+        goalAcceptorRateNotMet: 一個或多個目標接受器未獲得足夠的物品。
+            確保所有接收器指示為綠色。
+        buildingOutOfBounds: 一個或多個建築超出可建築範圍。
+            移除它們或是增加範圍。
+        autoComplete: 你的謎題完成了! 請確保你的生產器沒有直接的運送至目標接收器。
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: 簡單
+        medium: 普通
+        hard: 困難
+        unknown: 未分級
+    dlcHint: 已經購買DLC了嗎? 在shapez.io的資料庫正確的點擊它確保啟動，選擇屬性 > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: 搜尋
+        placeholder: 輸入一個謎題或作者的名字
+        includeCompleted: 包含已完成
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: 任何難度
+            easy: 簡單
+            medium: 普通
+            hard: 困難
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: 任何時間
+            short: 短 (< 2 分鐘)
+            medium: 普通
+            long: 長 (> 10 分鐘)
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: 你的動作太頻繁了。請稍等一下。
+    invalid-api-key: 連接通訊後端失敗。請嘗試更新或重啟遊戲(無效的API密鑰)。
+    unauthorized: 連接通訊後端失敗。請嘗試更新或重啟遊戲(未授權)。
+    bad-token: 連接通訊後端失敗。請嘗試更新或重啟遊戲(Bad Token)。
+    bad-id: 無效的謎題識別碼。
+    not-found: 未找到指定的謎題。
+    bad-category: 找不到指定的類別。
+    bad-short-key: 指定的快捷碼無效。
+    profane-title: 你的謎題標題包含粗俗字眼。
+    bad-title-too-many-spaces: 你的謎題標題太短。
+    bad-shape-key-in-emitter: 有一個生產器有無效的物品。
+    bad-shape-key-in-goal: 有一個目標接收器有無效的物品。
+    no-emitters: 你的謎題並未包含任何生產器。
+    no-goals: 你的謎題並未包含任何目標接收器。
+    short-key-already-taken: 此快捷碼已被使用, 請使用另一個.
+    can-not-report-your-own-puzzle: 你無法彙報你自己的謎題。
+    bad-payload: 該請求包含無效數據。
+    bad-building-placement: 你的謎題包含無效的建築放置。
+    timeout: 該請求已逾時。
+    too-many-likes-already: 謎題以得到過多的喜歡。若你仍然想移除它請聯繫 support@shapez.io!
+    no-permission: 你無權執行此操作。
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: 模組
+    author: 作者
+    version: 版本
+    modWebsite: 網址
+    openFolder: 開啟模組資料夾
+    folderOnlyStandalone: 模組資料夾只可在單機運行下開啟。
+    browseMods: 瀏覽模組
+    modsInfo: 安裝與管理模組，將它們複製到遊戲目錄中。
+        你也可以使用右上角的按鈕'開啟模組資料夾'。
+    noModSupport: 你需要Steam上的單機版本才能安裝模組。
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: 即將到來
+        description: 目前只能透過複製來啟用或禁用mods/檔案夾中的mod。
+            不過，開關它們正在未來更新的計畫中!
+    browserNoSupport: 由於瀏覽器的限制，目前只能在Steam版本安裝模組 - Sorry!
