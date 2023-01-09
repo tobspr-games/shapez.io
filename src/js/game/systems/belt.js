@@ -501,26 +501,25 @@ export class BeltSystem extends GameSystem {
             return;
         }
 
+        // SYNC with systems/belt_underlays.js:drawChunk!
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
-
-        // SYNC with systems/item_acceptor.js:drawEntityUnderlays!
-        // 126 / 42 is the exact animation speed of the png animation
+        // It takes 3 animation cycles for belt arrows to move 1 tile
         const animationIndex = Math.floor(
-            ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                globalConfig.itemSpacingOnBelts
+            ((this.root.time.realtimeNow() * speedMultiplier * globalConfig.itemSpacingOnBelts * 3) % 1) *
+                BELT_ANIM_COUNT
         );
-        const contents = chunk.containedEntitiesByLayer.regular;
 
+        const contents = chunk.containedEntitiesByLayer.regular;
         if (this.root.app.settings.getAllSettings().simplifiedBelts) {
             // POTATO Mode: Only show items when belt is hovered
             let hoveredBeltPath = null;
             const mousePos = this.root.app.mousePosition;
             if (mousePos && this.root.currentLayer === "regular") {
                 const tile = this.root.camera.screenToWorld(mousePos).toTileSpace();
-                const contents = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
-                if (contents && contents.components.Belt) {
-                    hoveredBeltPath = contents.components.Belt.assignedPath;
+                const entity = this.root.map.getLayerContentXY(tile.x, tile.y, "regular");
+                if (entity && entity.components.Belt) {
+                    hoveredBeltPath = entity.components.Belt.assignedPath;
                 }
             }
 
