@@ -36,9 +36,12 @@ jobs:
                   yarn
                   cd ..
             - name: Lint
+              id: eslint
               run: |
                   yarn lint
-            - name: TSLint
+            - name: TypeScript
+              id: typescript
+              if: ${{ success() || steps.eslint.outcome == 'failure' }}
               run: |
                   cd gulp
                   yarn gulp translations.fullBuild
