@@ -93,16 +93,16 @@ mainMenu:
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
         Szerezd meg a Puzzle DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: DLC megtekintése
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
+        title: Aktív modok
+        warningPuzzleDLC: Nem lehetséges modokkal játszani a Puzzle DLC-ben. Kérlek 
+        kapcsold ki az összes modot, hogy játssz a DLC-vel.
     playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    logout: Kijelentkezés
+    noActiveSavegames: Nem találtam aktív mentést - Kattints ide, hogy kezdj egy új játékot!
+    playFullVersionV2: Megvetted a Shapez-t a Steamen? Játssz a teljes verzióval a böngésződben!
+    playFullVersionStandalone: Most már tudsz játszani a teljes verzióval a böngésződben!
 dialogs:
     buttons:
         ok: OK
@@ -111,19 +111,19 @@ dialogs:
         later: Később
         restart: Újrakezdés
         reset: Visszaállítás
-        getStandalone: Teljes Verzió
-        deleteGame: Játék Törlése
-        viewUpdate: Frissítés Megtekintése
+        getStandalone: Teljes verzió
+        deleteGame: Játék törlése
+        viewUpdate: Frissítés megtekintése
         showUpgrades: Fejlesztések
         showKeybindings: Irányítás
         retry: Újra
         continue: Folytatás
         playOffline: Offline Játék
     importSavegameError:
-        title: Importálás Hiba
+        title: Importálás hiba
         text: "Nem sikerült importálni a mentésedet:"
     importSavegameSuccess:
-        title: Mentés Importálva
+        title: Mentés importálva
         text: A mentésed sikeresen importálva lett.
     gameLoadFailure:
         title: A játék elromlott
@@ -1140,7 +1140,7 @@ keybindings:
         storage: Raktár
         wire: Vezeték
         constant_signal: Állandó jel
-        logic_gate: Logic Gate
+        logic_gate: Logikai Kapu
         lever: Kapcsoló
         filter: Szűrő
         wire_tunnel: Vezeték Kereszteződés
@@ -1150,7 +1150,7 @@ keybindings:
         transistor: Tranzisztor
         analyzer: Alakzatvizsgáló
         comparator: Összehasonlító
-        item_producer: Item Producer (Sandbox)
+        item_producer: Tárgy Termelő (homokozó)
         pipette: Pipetta
         rotateWhilePlacing: Forgatás
         rotateInverseModifier: "Módosító: Forgass ellenkező irányba"
@@ -1183,7 +1183,7 @@ about:
         A játékot <a href="https://github.com/tobspr" target="_blank">Tobias
         Springer</a> készíti, és nyílt forráskódú.<br><br>
 
-        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez.io GitHub oldalára</a>.<br><br>
+        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez GitHub oldalára</a>.<br><br>
 
         Ez a játék nem jöhetett volna létre a játékaimat körülvevő nagyszerű Discord közösség nélkül - Csatlakozz Te is a <a href="<discordlink>" target="_blank">Discord szerverünkhöz</a>!<br><br>
 
@@ -1242,8 +1242,8 @@ tips:
     - Színezd be az alakzatodat vágás előtt a maximális hatékonyság érdekében.
     - Ha modulárisan építkezel, akkor nem számít a hely.
     - Csinálj egy különálló Tervrajz-gyárat. A modulokhoz később hasznos lesz.
-    - You may need to reuse factories later in the game. Build your factories to
-      be reusable.
+    - Lehet, hogy később a játékban újra fel kell majd használnod a gyáraidat. Építsd a gyáraidat
+      olyanra, hogy újra fel tudd használni őket.
     - Ha közel építesz a Központhoz, útban lesz a következő projektjeidnek.
     - A Fejlesztések lapon a gombostű ikon megnyomásával kitűzheted a képernyőre
       az aktuális alakzatot.
@@ -1252,7 +1252,7 @@ tips:
     - Próbáld ki a Factorio-t is! Az a kedvenc játékom.
     - A Negyedelő az alakzat jobb felső negyedétől kezd vágni, az óramutató
       járásával megegyező irányban!
-    - Use <b>CTRL</b> + Click to select an area.
+    - Használd a <b>CTRL</b> + Kattintást, hogy kiválassz egy területet.
     - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
       Beállítások menüben.
     - A játék nagyon sok beállítást tartalmaz, mindenképpen nézd meg őket!
@@ -1288,14 +1288,14 @@ puzzleMenu:
         easy: Könnyű
         hard: Nehéz
         completed: Teljesítve
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Közepes
+        official: Hivatalos
+        trending: Ma népszerű
+        trending-weekly: Ezen a héten népszerű
+        categories: Kategóriák
+        difficulties: Nehézség szerint
+        account: Az én puzzlejeim
+        search: Keresés
     validation:
         title: Hibás Fejtörő
         noProducers: Helyezz le egy Termelőt!
@@ -1309,26 +1309,26 @@ puzzleMenu:
         autoComplete: A fejtörő automatikusan megoldja magát! Győződj meg róla, hogy a
             Termelők nem közvetlenül az Elfogadóba termelnek.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
+        easy: Könnyű
+        medium: Közepes
+        hard: Nehéz
+        unknown: Nem értékelt
     dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        shapez in your library, selecting Properties > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Keresés
+        placeholder: Írd be egy puzzle vagy egy készítő nevét
+        includeCompleted: Tartalmazza a teljesítetteket
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Bármilyen nehézség
+            easy: Könnyű
+            medium: Közepes
+            hard: Nehéz
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Bármilyen hossz
+            short: Rövid (< 2 perc)
+            medium: Normál
+            long: Hosszú (> 10 perc)
 backendErrors:
     ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
     invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
@@ -1356,13 +1356,13 @@ backendErrors:
         to remove it, please contact support@shapez.io!
     no-permission: You do not have the permission to perform this action.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
+    title: Modok
+    author: Készítő
+    version: Verzió
+    modWebsite: Weboldal
+    openFolder: Modok mappa megnyitása
     folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
+    browseMods: Modok böngészése
     modsInfo: To install and manage mods, copy them to the mods folder within the
         game directory. You can also use the 'Open Mods Folder' button on the
         top right.
