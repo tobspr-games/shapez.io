@@ -118,7 +118,7 @@ dialogs:
         text: 未能读取您的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 您确定要删除这个游戏吗?<br><br> '<savegameName>' 等级 <savegameLevel><br><br> 该操作无法回退！
+        text: 您确定要删除这个存档吗?<br><br> '<savegameName>' 等级 <savegameLevel><br><br> 该操作无法回退！
     savegameDeletionError:
         title: 删除失败
         text: 未能删除您的存档
@@ -438,7 +438,7 @@ ingame:
         trimZone: 整理
         clearItems: 清除项目
         clearBuildings: 清除设施
-        resetPuzzle: 重设谜题
+        resetPuzzle: 重置谜题
         share: 共享
         report: 上报
     puzzleEditorControls:
