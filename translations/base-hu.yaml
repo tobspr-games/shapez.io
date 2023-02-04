@@ -51,22 +51,22 @@ global:
         shift: SHIFT
         space: SZÓKÖZ
     loggingIn: Bejelentkezés
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Szükséges adatok töltése... (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: KÜLÖNLEGES AJÁNLAT! Csak Július 7-ig
 demoBanners:
     title: Demó verzió
     intro: |-
-        Szerezd meg a teljes játékot <strong>most</strong> a feloldáshoz:<ul>
-            <li>Mind a 26 szint + végtelen szabadjáték</li>
-            <li>22 új épület</li>
-            <li>Mod támogatás</li>
-            <li>Eredmények</li>
-            <li>Sötét üzemmód</li>
-            <li>... és még sok más!</li>
+        Szerezd meg a teljes játékot <strong>most</strong>, hogy hozzáférhess:<ul>
+            <li>Mind a 26 szinthez + végtelen szabadjátékhoz</li>
+            <li>22 új épülethez</li>
+            <li>Mod támogatáshoz</li>
+            <li>Eredményekhez</li>
+            <li>Sötét üzemmódhoz</li>
+            <li>... és még sok máshoz!</li>
         </ul>
-    playtimeDisclaimer: A teljes verzió több mint <strong>20 órányi tartalmat</strong> tartalmaz.
-    playerCount: <playerCount> hozzád hasonló játékosok jelenleg shapez-t játszanak
+    playtimeDisclaimer: A teljes verzió több mint <strong>20 órányi extra játékélményt</strong> tartalmaz.
+    playerCount: Jelenleg <playerCount> hozzád hasonló játékos játszik shapez-t 
         a Steamen
     untilEndOfDemo: A demó végéig
     playtimeDisclaimerDownload: Folytathatja a mentést a teljes verzióban!
@@ -79,7 +79,7 @@ mainMenu:
     changelog: Változások
     subreddit: Reddit
     importSavegame: Importálás
-    openSourceHint: Nyílt forráskód
+    openSourceHint: Ez a játék nyílt forráskódú
     discordLink: Hivatalos Discord Szerver
     helpTranslate: Segíts fordítani!
     madeBy: Készítette <author-link>
@@ -91,18 +91,18 @@ mainMenu:
     puzzleMode: Fejtörő Mód
     back: Vissza
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
-        Szerezd meg a Puzzle DLC-t a Steamen most!
+        Szerezd meg a Fejtörő DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Elérhető DLC-k
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Bekapcsolt modok
+        warningPuzzleDLC: Sajnos amíg a Fejtörő DLC-vel játszol nem lehetnek bekapcsolt modok. Kérlek
+            kapcsold ki az össze modot hogy a DLC-vel játszhass.
+    playingFullVersion: Te most a teljes verzióval játszol!
+    logout: Kijelentkezés
+    noActiveSavegames: Nem található aktuális mentett játékállás - Kattints a Startra új játék kezdéséhez!
+    playFullVersionV2: Megvetted shapez-t a Steamen? A böngésződben is játszhatsz a teljes verzióval!
+    playFullVersionStandalone: Te már a böngésződben is játszhatsz a teljes verzióval!
 dialogs:
     buttons:
         ok: OK
@@ -153,7 +153,7 @@ dialogs:
     featureRestriction:
         title: Demó Verzió
         desc: Egy olyan funkciót próbáltál elérni (<feature>), amely nem elérhető a
-            Demóban. Vásárold meg an Önálló verziót a teljes játékélményért!
+            Demóban. Vásárold meg az Önálló verziót a teljes játékélményért!
     oneSavegameLimit:
         title: Egy Játékmentés
         desc: A Demó verzióban egyszerre csak egy játékmentésed lehet. Töröld a meglévő
@@ -228,7 +228,7 @@ dialogs:
         title: Fejtörő Beküldése
         descName: "Adj nevet a fejtörődnek:"
         descIcon: "Írj be egy egyedi gyorskódot, ami a fejtörőd ikonja lesz
-            (<link>itt</link> tudod legenerálni, vagy válassz egyet az alábbi
+            (<link>itt</link> tudod generálni, vagy válassz egyet az alábbi
             random generált alakzatok közül):"
         placeholderName: Fejtörő Neve
     puzzleResizeBadBuildings:
@@ -258,18 +258,18 @@ dialogs:
             így is folytatni?
     puzzlePlayRegularRecommendation:
         title: Javaslat
-        desc: A Puzzle DLC előtt <strong>erősen</strong> ajánlott az alapjátékot
+        desc: A Fejtörő DLC előtt <strong>erősen</strong> ajánlott az alapjátékot
             legalább a 12-dik Szintig kijátszani. Ellenekző esetben olyan
             mechanikákkal találkozhatsz, amelyeket még nem ismersz. Szeretnéd
             így is folytatni?
     puzzleShare:
         title: Gyorskód Másolva a Vágólapra
         desc: A fejtörő gyorskódját (<key>) kimásoltad a vágólapra! A Fejtörők menüben
-            beillesztve betöltheted vele a fejtörőt.
+            beillesztve betöltheted vele ezt a fejtörőt.
     puzzleReport:
         title: Fejtörő Jelentése
         options:
-            profane: Durva
+            profane: Durva, nem ide illő alakzat
             unsolvable: Nem megoldható
             trolling: Trollkodás
     puzzleReportComplete:
@@ -282,39 +282,37 @@ dialogs:
         title: Gyorskód Beillesztése
         desc: Illeszd be a gyorskódot, hogy betöltsd a Fejtörőt.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Fejtörő törlése?
+        desc: Biztosan törölni szeretnéd a '<title>' Fejtörőt? Ezt nem lehet visszavonni!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Figyelmeztetés, modok
+        desc: A jelenleg telepített modok különböznek attól amivel a Mentett játékállás
+            készült. Ez a mentett játék tönkrementeléhez vezethet, vagy nem is lehet betölteni azt.
+            Biztosan folytatni szeretnéd?
+        missingMods: Hiányzó modok
+        newMods: Új telepített modok
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Bizonyos adatokat nem sikerült betölteni
+        demoLinkText: shapez demó a Steamen
+        descWeb: "Egy vagy több szükséges adatot nem sikerült betölteni. Bizonyosodj meg róla, 
+            hogy megfelelő az internetkapcsolatod, majd próbáld újra. Ha ez sem oldja meg
+            próbáld meg kikapcsolni a böngésződ bővítményeit (ide értve
+            a reklám tiltókat).<br><br> Vagy kipróbálhatod itt is
+            <demoOnSteamLinkText>. <br><br> Hiba üzenet:"
+        descSteamDemo: "Egy vagy több szükséges adatot nem sikerült betölteni. Próbáld
+            újra indítani a játékot. Ha ez sem oldja meg, próbáld újratelepíteni vagy ellenőriztetni a fájlokat (verifying the
+            game files) Steamben. <br><br> Hiba üzenet:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Teljes verzióból kijelentkezve
+        desc: Kijelentkeztél a teljes bőngészős verzióból. Ennek oka lehet az instabil internet kapcsolat
+            vagy egy másik eszközön is bejelentkeztél.<br><br> Kérlek bizonyosodj meg róla, hogy nem vagy bejelentkezve a shapez-be 
+            másik böngészőablakban, vagy eszközön ugyanezzel a Steam felhasználóval.
+            <br><br> A Főmenüből újra bejelentkezhetsz.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Teljes verzió nincs megvásárolva
+        desc: Hogy a böngésződben a teljes verzióval játszhass, mind az alap mind a
+            Fejtörő DLC-t ugyanazon Steam felhasználóval biztokolnod kell.<br><br>
+            Figyelj arra, hogy megvan-e mindkettő, vagy hogy helyesen írtad-e be a Steam-es felhasználó nevedet, majd próbáld újra.
 ingame:
     keybindingsOverlay:
         moveMap: Mozgatás
@@ -420,7 +418,7 @@ ingame:
             1_2_conveyor: "Kösd össze a bányát egy <strong>futószalag</strong> segítségével
                 a Központi épülettel!<br><br>Tipp: <strong>Kattints és
                 húzd</strong> a futószalagot az egérrel!"
-            1_3_expand: "A shapez.io <strong>NEM</strong> tétlen játék! Építs több bányát és
+            1_3_expand: "A shapez <strong>NEM</strong> tétlen játék! Építs több bányát és
                 futószalagot, hogy hamarabb elérd a célt.<br><br>Tipp: Tartsd
                 lenyomva a <strong>SHIFT</strong>-et, hogy egyszerre több bányát
                 helyezz le, és nyomj <strong>R</strong>-t a forgatáshoz."
@@ -479,16 +477,16 @@ ingame:
                 desc: Ha már fáj a szemed!
             support:
                 title: Támogass
-                desc: A játékot továbbfejlesztem szabadidőmben
+                desc: A játékot szabadidőmben fejlesztem
             achievements:
-                title: Steam Achievementek
-                desc: Szerezd meg mindet!
+                title: Steam eredmények
+                desc: Szerezd meg hát mindet!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Modok támogatva!
+                desc: Már több mint 80 mod elérhető!
+        titleV2: "Vásárold meg a teljes verziót Steam-en, hogy felold:"
+        titleExpiredV2: Demó végigjátszva!
+        titleEnjoyingDemo: Élvezted a demót?
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Szélesség
@@ -497,8 +495,8 @@ ingame:
         clearItems: Elemek eltávolítása
         share: Megosztás
         report: Jelentés
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Épületek Törlése
+        resetPuzzle: Fejtörő újraindítása
     puzzleEditorControls:
         title: Fejtörő Készítő
         instructions:
@@ -525,7 +523,7 @@ ingame:
             jövőben
         continueBtn: Játék Folytatása
         menuBtn: Menü
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Következő Fejtörő
     puzzleMetadata:
         author: Szerző
         shortKey: Gyorskód
@@ -1088,12 +1086,12 @@ settings:
             description: Kizoomolt állapotban a térképen megjelenő erőforrások (alakzatok és
                 színek) méretét állítja.
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Leírás Alakzatokhoz - mindig mutasd
+            description: Mindig mutassa az alakzat leírását ha az egeret az épület fölé viszed,
+                vagy csak ha nyomva tartod az 'ALT' billentyűt.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Új!
 keybindings:
     title: Gyorsbillentyűk
     hint: "Tipp: Használd ki a CTRL, SHIFT és ALT billentyűket, amelyek különféle
@@ -1107,7 +1105,7 @@ keybindings:
         massSelect: Több Kijelölése
         buildings: Épület Gyorsgombok
         placementModifiers: Lehelyezés Módosítók
-        mods: Provided by Mods
+        mods: Modok biztosították
     mappings:
         confirm: Elfogad
         back: Vissza
@@ -1140,7 +1138,7 @@ keybindings:
         storage: Raktár
         wire: Vezeték
         constant_signal: Állandó jel
-        logic_gate: Logic Gate
+        logic_gate: Logikai kapu
         lever: Kapcsoló
         filter: Szűrő
         wire_tunnel: Vezeték Kereszteződés
@@ -1150,7 +1148,7 @@ keybindings:
         transistor: Tranzisztor
         analyzer: Alakzatvizsgáló
         comparator: Összehasonlító
-        item_producer: Item Producer (Sandbox)
+        item_producer: Létrehozó (Homokozó mód)
         pipette: Pipetta
         rotateWhilePlacing: Forgatás
         rotateInverseModifier: "Módosító: Forgass ellenkező irányba"
@@ -1176,14 +1174,14 @@ keybindings:
         goal_acceptor: Elfogadó
         block: Blokkolás
         massSelectClear: Futószalagok Kiürítése
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Mutassa a kimeneti alakzat leírását
 about:
     title: A Játékról
     body: >-
         A játékot <a href="https://github.com/tobspr" target="_blank">Tobias
         Springer</a> készíti, és nyílt forráskódú.<br><br>
 
-        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez.io GitHub oldalára</a>.<br><br>
+        Ha szeretnél hozzájárulni, nézz fel a <a href="<githublink>" target="_blank">shapez GitHub oldalára</a>.<br><br>
 
         Ez a játék nem jöhetett volna létre a játékaimat körülvevő nagyszerű Discord közösség nélkül - Csatlakozz Te is a <a href="<discordlink>" target="_blank">Discord szerverünkhöz</a>!<br><br>
 
@@ -1205,31 +1203,31 @@ tips:
       alakzatot!
     - Igyekezz moduláris gyárakat építeni - megéri!
     - Igyekezz kompakt gyárakat építeni - megéri!
-    - Ne építs közvetlenül a Központ közelébe, mert óriási káoszt okozhat!
+    - Ne építs közvetlenül a Központ közelébe, mert később óriási káoszt okozhat!
     - A szalagtervező irányát az <b>R</b> billentyűvel állíthatod.
-    - Holding <b>CTRL</b> allows dragging of belts without auto-orientation.
+    - A <b>CTRL</b> lenyomásával anáélkül húzhatsz Futószalagot, hogy azok változtatnának az irányukon.
     - A soros végrehajtás hatékonyabb, mint a párhuzamos.
-    - Serial execution is more efficient than parallel.
+    - A soros végrehajtás hatékonyabb, mint a párhuzamos.
     - A szimmetria kulcsfontosságú!
-    - You can use <b>T</b> to switch between different variants.
+    - A <b>T</b> gombbal válthatsz a különböző változatok között.
     - A szimmetria kulcsfontosságú!
     - Az épületek megfelelő arányban való építésével maximalizálható a
       hatékonyság.
     - A legmagasabb szinten 5 Bánya teljesen megtölt egy Futószalagot.
-    - The painter has a mirrored variant which you can select with <b>T</b>
-    - Having the right building ratios will maximize efficiency.
+    - A Festőnek van egy tükzözött változata melyet a <b>T</b> vel érhetsz el.
+    - A megfelelő aránnyal az Épületek között maximalizálni tudod hatékonyságodat.
     - A Vágók mindig függőleges irányban vágnak, mindegy, milyen irányban állnak.
     - A fehér szín előállításához keverd össze mindhárom színt.
-    - You don't need to divide up items evenly for full efficiency.
-    - Az <b>ALT</b> lenyomva tartásával megfordíthatod a lehelyezendú Futószalag
+    - Nem kell egyenlően elosztanot az alakzatokat a maximális hatékonysághoz.
+    - Az <b>ALT</b> nyomva tartásával megfordíthatod a lehelyezendő Futószalag
       irányát.
     - A hatékonyság kulcsfontosságú!
     - A Központtól távolabb eső bányászható alakzatok jóval összetettebbek.
     - A gépeknek korlátozott sebességük van, csinálj belőlük többet a maximális
       hatékonyságért.
     - Használj Elosztókat a maximális hatékonyságért.
-    - Holding <b>SHIFT</b> lets you place multiple buildings at a time.
-    - You can hold <b>ALT</b> to invert the direction of placed belts.
+    - A <b>SHIFT</b> nyomva tartása mellett több ugyanolyan Épületet helyezhetsz el egyszerre.
+    - Az <b>ALT</b> nyomva tartása mellet megfordíthatod a már lerakott Futószalag irányát.
     - Ne rombold le a régi gyáraidat! Szükséged lesz rájuk a Fejlesztésekhez.
     - Próbáld megdönteni a 20. Szintet, mielőtt segítséget kérnél!
     - Ne bonyolítsd túl a dolgokat; csináld egyszerűen és sokra viheted.
@@ -1242,8 +1240,6 @@ tips:
     - Színezd be az alakzatodat vágás előtt a maximális hatékonyság érdekében.
     - Ha modulárisan építkezel, akkor nem számít a hely.
     - Csinálj egy különálló Tervrajz-gyárat. A modulokhoz később hasznos lesz.
-    - You may need to reuse factories later in the game. Build your factories to
-      be reusable.
     - Ha közel építesz a Központhoz, útban lesz a következő projektjeidnek.
     - A Fejlesztések lapon a gombostű ikon megnyomásával kitűzheted a képernyőre
       az aktuális alakzatot.
@@ -1252,24 +1248,25 @@ tips:
     - Próbáld ki a Factorio-t is! Az a kedvenc játékom.
     - A Negyedelő az alakzat jobb felső negyedétől kezd vágni, az óramutató
       járásával megegyező irányban!
-    - Use <b>CTRL</b> + Click to select an area.
+    - Használd a <b>CTRL</b> + kettintást hogy egy területet kijelölj.
     - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
       Beállítások menüben.
-    - A játék nagyon sok beállítást tartalmaz, mindenképpen nézd meg őket!
+    - A játék nagyon sok Beállítást tartalmaz, mindenképpen nézd meg őket!
     - A képernyőn lévő Irányítű a Központ irányát mutatja!
     - A Futószalagok kiürítéséhez vágd ki a területet és illeszd be újra
       ugyanarra a helyre.
     - Az F4 megnyomásával láthatod az FPS-edet és a Tick/mp értéket.
     - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
-    - You can download your savegames in the main menu!
-    - This game has a lot of useful keybindings! Be sure to check out the
-      settings page.
-    - This game has a lot of settings, be sure to check them out!
-    - Your hub marker has a small compass that shows which direction it is in!
-    - To clear belts, cut the area and then paste it at the same location.
-    - You can click a pinned shape on the left side to unpin it.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - Letöltheted az aktuális játékállásodat a Főmenüből!
+    - A játék nagyon sok hasznos gyorsbillentyűt tartalmaz! Nézd meg őket a
+      Beállítások menüben.
+    - A játék nagyon sok Beállítást tartalmaz, mindenképpen nézd meg őket!
+    - A képernyőn lévő Irányítű a Központ irányát mutatja!
+    - A Futószalagok kiürítéséhez vágd ki a területet és illeszd be újra
+      ugyanarra a helyre.
+    - A kitűzött alakzatot bármikor eltüntetheted a képernyődről ha rákattintasz.
+    - Nyomd meg az F4-et kétszer, hogy arra a csempére ugorj, ahol az egered van.
+    - A kitűzött alakzatot bármikor eltüntetheted a képernyődről ha rákattintasz.
 puzzleMenu:
     play: Játék
     edit: Szerkesztés
@@ -1289,13 +1286,13 @@ puzzleMenu:
         hard: Nehéz
         completed: Teljesítve
         medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        official: Hivatalos
+        trending: Mai top
+        trending-weekly: Heti top
+        categories: Kategóriák
+        difficulties: Nehézség szerint
+        account: Saját Fejtörőim
+        search: Keresés
     validation:
         title: Hibás Fejtörő
         noProducers: Helyezz le egy Termelőt!
@@ -1309,33 +1306,33 @@ puzzleMenu:
         autoComplete: A fejtörő automatikusan megoldja magát! Győződj meg róla, hogy a
             Termelők nem közvetlenül az Elfogadóba termelnek.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Egyszerű
+        medium: Közepes
+        hard: Elgondolkodtató
+        unknown: Nem értékelt
+    dlcHint: Már megvásároltad a Fejtörő DLC-t? Bizonyosodj meg róla, hogy aktiválva van. Ehhez kattints jobb gombbal a
+        shapez ikonára Steamben, Majd válaszd a Properties > DLCs menüt.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Keresés
+        placeholder: Írdd be a Fejtörő vagy szerzője nevét
+        includeCompleted: Beleértve a Teljesítetteket
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Bármilyen nehézségi szint
+            easy: Egyszerű
+            medium: Közepes
+            hard: Elgondolkodtató
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: Bármilyen időtartam
+            short: Rövid (< 2 perc)
+            medium: Közepes
+            long: Hosszú (> 10 perc)
 backendErrors:
     ratelimit: Túl gyorsan csinálsz dolgokat. Kérlek, várj egy kicsit.
-    invalid-api-key: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+    invalid-api-key: Valami nem megfelelő a játékkal. Próbáld meg frissíteni vagy
         újraindítani. (HIBA - Invalid Api Key).
-    unauthorized: Valami nem oké a játékkal. Próbáld meg frissíteni vagy
+    unauthorized: Valami nem megfelelő a játékkal. Próbáld meg frissíteni vagy
         újraindítani. (HIBA - Unauthorized).
-    bad-token: Valami nem oké a játékkal. Próbáld meg frissíteni vagy újraindítani.
+    bad-token: Valami nem megfelelő a játékkal. Próbáld meg frissíteni vagy újraindítani.
         (HIBA - Bad Token).
     bad-id: Helytelen Fejtörő azonosító.
     not-found: A megadott fejtörőt nem találjuk.
@@ -1352,25 +1349,23 @@ backendErrors:
     bad-payload: A kérés helytelen adatot tartalmaz.
     bad-building-placement: A fejtörőd helytelenül lehelyezett épületeket tartalmaz.
     timeout: A kérés időtúllépésbe került.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Ez a Fejtörőt már sokan pozitívan értékelték. Ha ennek ellenére is
+        elszeretnéd távolítattni, kérlek vedd fel a kapcsolatot a support@shapez.io címen!
+    no-permission: Nincs jogod végrehajtani a kívánt lépést.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: Modok
+    author: Szerző
+    version: Verzió
+    modWebsite: Weboldal
+    openFolder: Mod mappa megnyitása
+    folderOnlyStandalone: A Mod mappájának megnyitása csak akkor lehetséges ha az Önálló verziót futtatod.
+    browseMods: Modok böngészése
+    modsInfo: Hogy telepítsd és kezeld a Modokat, másold be őket a játék főmappájába. Ezt akár a 'Mod mappa megnyitása' gombbal is megteheted
+        amit a jobb felső sarokban találsz!
+    noModSupport: A Steam-os Önálló verzióra van szükséged Modok telepítéséhez.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Hamarosan
+        description: Bár a jövőben a Modok be- és kikapcsolását itt is megteheted majd
+            jelenleg csak azok másolásával és törlésével oldhatod ezt meg a játék főmappájában.
+    browserNoSupport: Böngészői korlátozások miatt jelenleg csak akkor van lehetőséged Modokat telepíteni
+        ha a Teljes Steam-es verzióval játszol - Bocsi!
