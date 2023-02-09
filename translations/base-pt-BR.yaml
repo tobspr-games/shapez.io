@@ -53,22 +53,22 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOÇÃO ESPECIAL! A oferta termina em 7 de Julho
 demoBanners:
     title: Versão Demo
     intro: |-
         Obtenha o jogo completo <forte>suave</forte> para desbloquear:<ul>
-            <li>Todos os 26 níveis + infinite Freeplay</li>
+            <li>Todos os 26 níveis + Jogo Livre Infinito</li>
             <li>22 novas construções</li>
-            <li>Suporte Mod</li>
+            <li>Suporte para Mods</li>
             <li>Realizações</li>
-            <li>Dark Mod</li>
+            <li>Modo Escuro</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
-    playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
+    playtimeDisclaimer: A versão completa possui mais de <strong>20 horas de conteúdo</strong>.
+    playerCount: <playerCount> Jogadores como você estão jogando shapez na Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
     playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão
@@ -80,7 +80,7 @@ mainMenu:
     newGame: Novo jogo
     changelog: Changelog
     subreddit: Reddit
-    importSavegame: Importar save
+    importSavegame: Importar jogo salvo
     openSourceHint: Esse jogo tem código aberto!
     discordLink: Discord oficial
     helpTranslate: Ajude a traduzir!
@@ -92,19 +92,19 @@ mainMenu:
     savegameUnnamed: Sem nome
     puzzleMode: Modo Puzzle
     back: Voltar
-    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
+    puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a DLC Puzzle
         já disponível na Steam para se divertir ainda mais!
-    puzzleDlcWishlist: Adicione já a sua lista de desejos!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcWishlist: Adicione já à sua lista de desejos!
+    puzzleDlcViewNow: Ver DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Mods Ativos
+        warningPuzzleDLC: Não é possível jogar a DLC Puzzle com mods. Por favor
+            desabilite todos os mods para jogar a DLC.
+    playingFullVersion: Agora você está jogando a versão completa!
+    logout: Sair
+    noActiveSavegames: Nenhum jogo ativo encontrado - Clique em jogar para iniciar um novo jogo!
+    playFullVersionV2: Comprou shapez na Steam? Jogue a versão completa no seu navegador!
+    playFullVersionStandalone: Agora vocês também pode jogar a versão completa no seu navegador!
 dialogs:
     buttons:
         ok: OK
@@ -147,16 +147,16 @@ dialogs:
         title: Resetar controles
         desc: Essa opção deixa os controles nas definições padrão.
     keybindingsResetOk:
-        title: Controles resetados
-        desc: Os controles foram resetados para as definições padrão.
+        title: Controles redefinidos
+        desc: Os controles foram redefinidos para as definições padrão.
     featureRestriction:
         title: Versão Demo
         desc: Você tentou acessar um recurso (<feature>) que não está disponível na
-            demo. Considere obter a versão completa para a proceder!
+            demo. Considere obter a versão completa para uma melhor experiência!
     oneSavegameLimit:
         title: Limite de jogos salvos
         desc: Você pode ter apenas um jogo salvo por vez na versão demo. Remova o
-            existente ou obtenha a versão completa!
+            jogo existente ou obtenha a versão completa!
     updateSummary:
         title: Nova Atualização!
         desc: "Aqui estão as alterações desde a última vez que você jogou:"
@@ -282,39 +282,39 @@ dialogs:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Deletar Puzzle?
+        desc: Você tem certeza que deseja deletar '<title>'? Isso não pode ser desfeito!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Aviso de Mod
+        desc: Os mods atualmente instalados diferem dos mods utilizados na criação do save.
+            Isso pode fazer o save quebrar ou nem mesmo carregar. Você
+            tem certeza que deseja continuar?
+        missingMods: Mods Faltando
+        newMods: Mods recém-instalados
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Falha ao carregar recursos
+        demoLinkText: shapez demo na Steam
+        descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de que você tem uma
+            conexão estável de internet e tente novamente. Se isso ainda não
+            funcionar, tenha certeza de também desabilitar quaisquer extensões de navegador (incluindo
+            adblockers).<br><br> Como uma alternativa, você também pode jogar
+            <demoOnSteamLinkText>. <br><br> Mensagem de Erro:"
+        descSteamDemo: "Um ou mais recursos não puderam ser carregados. Tente reiniciar o
+            jogo - Se isso não ajudar, tente reinstalar e verificar
+            os arquivos do jogo pela Steam. <br><br> Mensagem de Erro:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Sair da Versão Completa
+        desc: Você foi desconectado da Versão Completa de Navegador porque ou sua
+            conexão com a internet está instável ou você está jogando em outro
+            dispositivo.<br><br> Por favor certifique-se de que você não tem o shapez aberto em outra
+            aba do navegador ou em outro computador com a mesma conta
+            da Steam.<br><br> Você pode fazer login novamente no menu inicial.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Versão Completa não adquirida
+        desc: Para jogar a Versão Completa no seu navegador, você precisa adquirir 
+            o jogo base e a DLC Puzzle na sua conta da Steam.<br><br>
+            Por favor tenha certeza que possuí ambos, entre com a conta correta da Steam 
+            e tente novamente.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -336,7 +336,7 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
-        clearBelts: Clear belts
+        clearBelts: Limpar esteiras
     colors:
         red: Vermelho
         green: Verde
@@ -357,7 +357,7 @@ ingame:
             oneItemPerSecond: 1 item / segundo
             itemsPerSecond: <x> itens / s
             itemsPerSecondDouble: (x2)
-            tiles: <x> tiles
+            tiles: <x> blocos
     levelCompleteNotification:
         levelTitle: Nível <level>
         completed: Concluído
@@ -366,7 +366,7 @@ ingame:
     notifications:
         newUpgrade: Nova melhoria disponível!
         gameSaved: Seu jogo foi salvo.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Nível <level> foi completado!
     shop:
         title: Melhorias
         buttonUnlock: Melhorar
@@ -480,17 +480,17 @@ ingame:
                 title: Modo Escuro
                 desc: Não machuque mais seus olhos!
             support:
-                title: Me ajuda
+                title: Me ajude
                 desc: Eu desenvolvo o jogo no meu tempo livre!
             achievements:
                 title: Conquistas
                 desc: Consiga todas elas!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
+                title: Suporte a Mods!
+                desc: Mais de 80 mods disponíveis!
         titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+        titleExpiredV2: Demo concluída!
+        titleEnjoyingDemo: Gostou da demo?
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura
@@ -499,35 +499,35 @@ ingame:
         clearItems: Limpar Items
         share: Compartilhar
         report: Denunciar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Limpar construções
+        resetPuzzle: Reiniciar Desafio
     puzzleEditorControls:
         title: Criador de Desafios
         instructions:
             - 1. Coloque <strong>Produtores Constantes</strong> para gerar itens
               e cores ao jogador
-            - 2. Monte uma ou mais itens que você quer que o jogador produza e
+            - 2. Monte um ou mais itens que você quer que o jogador produza e
               entregue em um ou mais <strong>Receptores de Objetivo</strong>
-            - 3. Uma vez que um Receptor de Objetivo recebe uma item por uma
-              certa quantidade de tempo, ele <strong>a salva como seu
-              objetivo</strong> , o qual o jogador terá que produzir depois
+            - 3. Uma vez que um Receptor de Objetivo recebe um item por uma
+              certa quantidade de tempo, ele <strong>o salva como seu
+              objetivo</strong>, o qual o jogador terá que produzir depois
               (Indicato pela <strong>insígnia verde</strong>).
-            - 4. Clique no <strong>botao de travar</strong> de uma construção
-              para desabilita-la.
+            - 4. Clique no <strong>botão de travar</strong> de uma construção
+              para desabilitá-la.
             - 5. Uma vez que você clicou em revisar, seu desafio será validado e
-              você poderá publica-lo.
+              você poderá publicá-lo.
             - 6. Quando seu desafio for publicado, <strong>todas as construções
-              serão removidas</strong> exceto os Produtores Constantes e
+              serão removidas</strong>, exceto os Produtores Constantes e
               Receptores de Objetivo - Essa é a parte que o jogador terá que
               descobrir sozinho, por isso se chama desafio :)
     puzzleCompletion:
         title: Desafio Completo!
         titleLike: "Clique no coração se você gostou do desafio:"
-        titleRating: O qual difícil foi esse desafio?
+        titleRating: O quão difícil foi esse desafio?
         titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
         continueBtn: Continuar jogando
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Próximo Desafio
     puzzleMetadata:
         author: Autor
         shortKey: Código
@@ -853,16 +853,16 @@ storyRewards:
             projeto</strong> para pagar! (Aquelas que você acabou de entregar).
     no_reward:
         title: Próximo nível
-        desc: "Este nível não lhe deu nenhuma recompensa, mas em breve?! <br><br>PS:
+        desc: "Este nível não lhe deu nenhuma recompensa, mas o próximo irá dar! <br><br>PS:
             Melhor não destruir sua fábrica existente - Você precisa de
-            <strong>todas</strong> essas formas posteriormente mais tarde para
+            <strong>todas</strong> essas formas posteriormente para
             <strong>desbloquear atualizações</strong>!"
     no_reward_freeplay:
         title: Próximo nível
         desc: Parabéns! Aliás, mais conteúdo vindo na versão completa!
     reward_balancer:
         title: Balanceador
-        desc: O multifuncional <strong>balanceador</strong> foi desbloqueado - Ele pode
+        desc: O <strong>balanceador</strong> multifuncional foi desbloqueado - Ele pode
             ser usado para construir fabricas maiores ao <strong>dividir e
             juntar itens</strong> em múltiplas esteiras!
     reward_merger:
@@ -914,7 +914,7 @@ storyRewards:
         title: Fios e Pintor Quádruplo
         desc: "Você acabou de desbloquear o <strong>nivel de fios</strong>: Ele é uma
             dimensão separada da dimensão normal e introduz varias novas
-            mecanicas! <br><br> Para Começar eu desbloqueae para você o
+            mecânicas! <br><br> Para Começar eu desbloqueae para você o
             <strong>pintor (quádruplo)</strong> - Conecte os espaços que você
             gostaria de usar para pintar com fios no nivel de fios!<br><br> Para
             entrar no nivel de fios, pressione <strong>E</strong>. <br><br> OBS:
@@ -923,7 +923,7 @@ storyRewards:
     reward_filter:
         title: Filtro de Itens
         desc: Você desbloqueou o <strong>Filtro de Itens</strong>! Ele irá rotear os
-            itens para a saída superior ou da direit dependendo se eles batem
+            itens para a saída superior ou da direita dependendo se eles batem
             com o sinal vindo do plano dos fios ou não.<br><br> Você também pode
             inserir um sinal binário (1 / 0) para ativá-lo ou desativá-lo
             completamente
@@ -1012,16 +1012,16 @@ settings:
             title: Frequência
             description: Se você possui um monitor de 144 hz, altere a taxa de atualização
                 aqui para que o jogo seja simulado corretamente com taxas de
-                atualização mais altas. Isso diminuir o FPS consideravelmente se
+                atualização mais altas. Isso pode diminuir o FPS consideravelmente se
                 o computador for muito lento.
         alwaysMultiplace:
             title: Posicionamento Múltiplo
             description: Se ativado, todas as construções permanecerão selecionadas após o
-                posicionamento até que você a cancele. Isso é equivalente a
-                pressionar  SHIFT permanentemente.
+                posicionamento até que você as cancele. Isso é equivalente a
+                pressionar SHIFT permanentemente.
         offerHints:
             title: Dicas e Tutoriais
-            description: Se ativado, oferece dicas e tutoriais enquanto se joga. Além disso,
+            description: Se ativado, oferece dicas e tutoriais enquanto você joga. Além disso,
                 esconde certos elementos da interface até certo ponto, para
                 facilitar o começo do jogo.
         enableTunnelSmartplace:
@@ -1057,8 +1057,8 @@ settings:
         lowQualityMapResources:
             title: Recursos do Mapa em Baixa Qualidade
             description: Simplifica a renderização de recursos no mapa com o zoom aplicado
-                para melhorar a performance. Parece até mais limpo, então tenha
-                certeza de testar!
+                para melhorar a performance. Parece até mais limpo, então não
+                deixa de experimentar!
         disableTileGrid:
             title: Desabilite a Grade
             description: Desabilitar a grade pode ajudar com a performance. Isso também faz
@@ -1074,8 +1074,8 @@ settings:
             description: Usa texturas de baixa qualidade para ajudar com a performance. Vai
                 deixar o jogo bem feio!
         displayChunkBorders:
-            title: Mostrar Bordas das Chunks
-            description: O jogo é dividido em chunks de 16x16 ladrilhos, se está
+            title: Mostrar Bordas dos Chunks
+            description: O jogo é dividido em chunks de 16x16 blocos, se esta
                 configuração estiver habilitada, as bordas de cada chunk ficarão
                 à mostra.
         pickMinerOnPatch:
@@ -1091,7 +1091,7 @@ settings:
         enableMousePan:
             title: Habilitar Movimento com o Mouse
             description: Permite mover o mapa ao mover o cursor para as bordas da tela. A
-                velocidade depende da configuração Velocidade de Movimento.
+                velocidade depende da configuração de Velocidade de Movimento.
         zoomToCursor:
             title: Zoom na direção do cursor
             description: Se ativado, o zoom irá se deslocar na direção do cursor do seu
@@ -1107,12 +1107,12 @@ settings:
                 construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Novo!
 keybindings:
     title: Controles
     hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
         opções de construção."
-    resetKeybindings: Resetar Controles
+    resetKeybindings: Redefinir Controles
     categoryLabels:
         general: Geral
         ingame: Jogo
@@ -1121,7 +1121,7 @@ keybindings:
         massSelect: Seleção em Massa
         buildings: Construções
         placementModifiers: Modificadores
-        mods: Provided by Mods
+        mods: Fornecido por Mods
     mappings:
         confirm: Confirmar
         back: Voltar
@@ -1138,7 +1138,7 @@ keybindings:
         menuOpenStats: Estatísticas
         menuClose: Fechar Menu
         toggleHud: Ocultar Interface
-        toggleFPSInfo: Mostrar FPS e Debug Info
+        toggleFPSInfo: Mostrar FPS e Informações de Debug
         switchLayers: Alternar Camadas
         exportScreenshot: Exportar Base Inteira como Imagem
         belt: Esteira Transportadora
@@ -1190,7 +1190,7 @@ keybindings:
         goal_acceptor: Receptor de Objetivo
         block: Bloco
         massSelectClear: Limpar esteiras
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Mostrar dica de ferramenta de saída de forma
 about:
     title: Sobre o jogo
     body: >-
@@ -1222,9 +1222,9 @@ tips:
     - Se o empilhamento não funcionar, tente inverter as entradas.
     - Você pode mudar a direção do planejador de esteiras apertando <b>R</b>.
     - Segurar <b>CTRL</b> permite arrastar esteiras sem a orientação automática.
-    - As proporções se matém, desde que todas as melhorias estejam no mesmo
+    - As proporções se mantém, desde que todas as melhorias estejam no mesmo
       nível.
-    - Execução em série é mais eficiete que a paralela.
+    - Execução em série é mais eficiente que a paralela.
     - Você desbloqueará variantes de construções mais para frente no jogo!
     - Você pode usar <b>T</b> para mudar para diferentes variantes.
     - Simetria é crucial!
@@ -1243,7 +1243,7 @@ tips:
     - Invista tempo em construir designs que podem ser repetidos - vale a pena!
     - Segurar <b>CTRL</b> permite colocar múltiplas construções.
     - Segure <b>ALT</b> para inverter a direção de esteiras posicionadas.
-    - Efficiência é a chave!
+    - Eficiência é a chave!
     - Fontes de recursos mais distantes do HUB são mais complexas.
     - Máquinas tem uma velocidade máxima, divida os itens para uma eficiência
       máxima.
@@ -1275,14 +1275,14 @@ tips:
     - Tente também Factorio! É meu jogo favorito.
     - O cortador quádruplo corta no sentido anti-horário começando pelo topo
       direito!
-    - Você pode baixar seus saves no menu principal!
+    - Você pode baixar seus jogos salvos no menu principal!
     - Este jogo tem um monte de teclas úteis! Tenha certeza de checar a aba de
       configurações.
     - Este jogo tem muitas configurações, então dê uma olhada!
     - O marcador para o HUB tem uma pequena bússola para indicar sua direção!
     - Para limpar as esteiras, corte a área e cole-a no mesmo lugar.
     - Pressione F4 para mostrar seu FPS e taxa de tiques.
-    - Pressione F4 duas vezes para mostrar o ladrilho do seu mouse e da câmera.
+    - Pressione F4 duas vezes para mostrar o bloco do seu mouse e da câmera.
     - Você pode clicar em uma forma fixada na esquerda para tirá-la de lá.
 puzzleMenu:
     play: Jogar
@@ -1303,13 +1303,13 @@ puzzleMenu:
         hard: Difícil
         completed: Completados
         medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        official: Oficial
+        trending: Tendência de hoje
+        trending-weekly: Tendência semanal
+        categories: Categorias
+        difficulties: Dificuldades
+        account: Meus Puzzles
+        search: Pesquisar
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
@@ -1325,26 +1325,26 @@ puzzleMenu:
             Produtores Constantes não estão entregando diretamente aos seus
             Receptores de Objetivo.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Fácil
+        medium: Médio
+        hard: Difícil
+        unknown: Sem classificação
+    dlcHint: Já comprou a DLC? Certifique-se de que está ativada clicando com o botão direito em shapez.io na sua biblioteca, selecionando Propriedades 
+        shapez.io na sua biblioteca, selecionando Propriedades > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Pesquisar
+        placeholder: Digite o nome de um puzzle ou autor
+        includeCompleted: Incluir Concluído
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Qualquer dificuldade
+            easy: Fácil
+            medium: Médio
+            hard: Difícil
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Qualquer duração
+            short: Curta (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longa (> 10 min)
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
@@ -1368,25 +1368,25 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: O puzzle já tem muitas curtidas. Se você ainda quer
+        removê-lo, por favor entre em contato com support@shapez.io!
+    no-permission: Você não tem permissão para realizar esta ação.
 mods:
     title: Mods
-    author: Author
-    version: Version
+    author: Autor
+    version: Versão
     modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    openFolder: Abrir Pasta de Mods
+    folderOnlyStandalone: Abrir a pasta de mods apenas é possível quando rodando a versão standalone.
+    browseMods: Descobrir Mods
+    modsInfo: Para instalar e gerenciar mods, copie eles para a pasta de mods dentro da 
+        pasta do jogo. Você também pode usar o botão 'Abrir pasta de Mods'
+        em cima à direita.
+    noModSupport: Você precisa da versão standalone na Steam para instalar mods.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Em breve
+        description: Habilitar ou desabilitar mods atualmente é apenas possível copiando
+            a pasta do mod para fora ou dentro da pasta mods/. No entando, ser capaz de
+            alterná-los aqui está planejado para uma atualização futura!
+    browserNoSupport: Devido a restrições do navegador, atualmente é apenas possível 
+        instalar mods na versão da Steam - Desculpa!
