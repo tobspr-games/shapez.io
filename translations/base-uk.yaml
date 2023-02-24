@@ -491,9 +491,9 @@ ingame:
             mods:
                 title: Modding support!
                 desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+        titleV2: "Отримайте зараз повну версію в Steam для розблокування:"
+        titleExpiredV2: Демо пройдено!
+        titleEnjoyingDemo: Сподобалось демо?
     puzzleEditorSettings:
         zoneTitle: Зона
         zoneWidth: Ширина
@@ -527,7 +527,7 @@ ingame:
         title: Головоломку завершено!
         titleLike: "Натисніть на сердечко, якщо вам сподобалась головоломка:"
         titleRating: Наскільки складною ви вважаєте дану головоломку?
-        titleRatingDesc: Ваш відгук допоможе мені зробити кращі систему порад у майбутньому
+        titleRatingDesc: Ваш відгук допоможе мені зробити кращу систему порад у майбутньому
         continueBtn: Продовжити гру
         menuBtn: Меню
         nextPuzzle: Наступна головоломка
@@ -713,7 +713,7 @@ buildings:
                 фігура, колір чи логічний сигнал
     reader:
         default:
-            name: Зчитувач конвеєєра
+            name: Зчитувач конвеєра
             description: Дозволяє вимірювати середню пропускну здатність конвеєрної стрічки.
                 Видає сигнал останнього зчитаного елемента на шар дротів (коли
                 розблоковано).
@@ -1368,25 +1368,25 @@ backendErrors:
     bad-payload: Запит містить недійсні дані.
     bad-building-placement: Ваша головоломка містить неправильно встановлені будівлі.
     timeout: Час очікування запиту минув.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
+    too-many-likes-already: Ця головоломка вже набрала забагато вподобайок. Якщо, ви все ще
+        бажаєте видалити її, будь-ласка напишіть нам support@shapez.io!
     no-permission: Ви не маєте дозволу на виконання цієї дії.
 mods:
     title: Моди
     author: Автор
     version: Версія
     modWebsite: Веб-сайт
-    openFolder: Відкрити папку модів
-    folderOnlyStandalone: Відкрити папку з модами можна лише у десктопній версії.
+    openFolder: Відкрити теку модов
+    folderOnlyStandalone: Відкрити теку з модами можна лише у десктопній версії.
     browseMods: Переглянути моди
-    modsInfo: Щоб установити моди та керувати ними, скопіюйте їх у папку mods у
-        папці гри. Ви також можете використати кнопку 'Відкрити папку модів'
+    modsInfo: Щоб встановити моди та керувати ними, скопіюйте їх у теку mods у
+        теці з грою. Ви також можете скористатися кнопкою 'Відкрити папку модів'
         зверху справа.
     noModSupport: Для встановлення модів потрібна десктопна версія Steam.
     togglingComingSoon:
         title: Незабаром
         description: Увімкнення або вимкнення модів наразі можливе лише шляхом
-            копіювання файлу моду з папки mods/ або до неї. Однак можливість їх
+            копіювання файлу моду з теки mods/ або до неї. Однак можливість їх
             вимкнення та увімкнення тут запланована на майбутні оновлення!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Через обмеження браузеру наразі можливо встановлювати моди
+        лише в Steam версії - Sorry!
