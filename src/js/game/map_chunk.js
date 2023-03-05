@@ -226,17 +226,7 @@ export class MapChunk {
             ];
         }
 
-        // Makes sure windmills never spawn as whole
-        let windmillCount = 0;
-        for (let i = 0; i < subShapes.length; ++i) {
-            if (subShapes[i] === enumSubShape.windmill) {
-                ++windmillCount;
-            }
-        }
-        if (windmillCount > 1) {
-            subShapes[0] = enumSubShape.rect;
-            subShapes[1] = enumSubShape.rect;
-        }
+        this.filterShapePatch({ subShapes, distanceToOriginInChunks });
 
         const definition = this.root.shapeDefinitionMgr.getDefinitionFromSimpleShapes(subShapes);
         this.internalGeneratePatch(
@@ -244,6 +234,27 @@ export class MapChunk {
             shapePatchSize,
             this.root.shapeDefinitionMgr.getShapeItemFromDefinition(definition)
         );
+    }
+
+    /**
+     * Makes sure windmills never spawn as whole
+     *
+     * @param {object} param0
+     * @param {[enumSubShape, enumSubShape, enumSubShape, enumSubShape]} param0.subShapes
+     * @param {number} param0.distanceToOriginInChunks
+     */
+    filterShapePatch({ subShapes, distanceToOriginInChunks }) {
+        let windmillCount = 0;
+        for (let i = 0; i < subShapes.length; ++i) {
+            if (subShapes[i] === enumSubShape.windmill) {
+                ++windmillCount;
+            }
+        }
+
+        if (windmillCount > 1) {
+            subShapes[0] = enumSubShape.rect;
+            subShapes[1] = enumSubShape.rect;
+        }
     }
 
     /**
