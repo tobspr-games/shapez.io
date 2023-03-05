@@ -1,6 +1,16 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog, session } = require("electron");
+const {
+    app,
+    BrowserWindow,
+    Menu,
+    MenuItem,
+    ipcMain,
+    shell,
+    dialog,
+    session,
+    nativeTheme,
+} = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
@@ -96,6 +106,10 @@ function createWindow() {
     }
     win.webContents.session.clearCache();
     win.webContents.session.clearStorageData();
+
+    nativeTheme.on("updated", () => {
+        win.webContents.send("system-theme-updated");
+    });
 
     ////// SECURITY
 
@@ -379,6 +393,10 @@ try {
 
 ipcMain.handle("get-mods", async () => {
     return mods;
+});
+
+ipcMain.handle("get-system-theme", async () => {
+    return nativeTheme.shouldUseDarkColors ? "dark" : "light";
 });
 
 steam.init(isDev);

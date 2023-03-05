@@ -399,6 +399,8 @@ export class ModInterface {
      */
     registerGameTheme({ id, name, theme }) {
         THEMES[id] = theme;
+        theme.id = id;
+
         this.registerTranslations("en", {
             settings: {
                 labels: {

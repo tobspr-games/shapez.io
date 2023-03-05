@@ -8,6 +8,7 @@ import { authorizeViaSSOToken } from "../core/steam_sso";
 import { getLogoSprite, timeoutPromise } from "../core/utils";
 import { getRandomHint } from "../game/hints";
 import { HUDModalDialogs } from "../game/hud/parts/modal_dialogs";
+import { detectSystemTheme } from "../game/theme";
 import { PlatformWrapperImplBrowser } from "../platform/browser/wrapper";
 import { autoDetectLanguageId, T, updateApplicationLanguage } from "../translations";
 
@@ -145,6 +146,7 @@ export class PreloadState extends GameState {
             .then(() => this.fetchDiscounts())
 
             .then(() => this.setStatus("Initializing settings", 20))
+            .then(() => detectSystemTheme())
             .then(() => {
                 return this.app.settings.initialize();
             })

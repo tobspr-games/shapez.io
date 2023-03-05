@@ -6,7 +6,7 @@ import { ReadWriteProxy } from "../core/read_write_proxy";
 import { BoolSetting, EnumSetting, RangeSetting, BaseSetting } from "./setting_types";
 import { createLogger } from "../core/logging";
 import { ExplainedResult } from "../core/explained_result";
-import { THEMES, applyGameTheme } from "../game/theme";
+import { THEMES, applyGameTheme, detectSystemTheme } from "../game/theme";
 import { T } from "../translations";
 import { LANGUAGES } from "../languages";
 
@@ -209,14 +209,7 @@ function initializeSettings() {
             textGetter: theme => T.settings.labels.theme.themes[theme],
             category: enumCategories.userInterface,
             restartRequired: false,
-            changeCb:
-                /**
-                 * @param {Application} app
-                 */
-                (app, id) => {
-                    applyGameTheme(id);
-                    document.documentElement.setAttribute("data-theme", id);
-                },
+            changeCb: (app, id) => applyGameTheme(id),
             enabledCb: /**
              * @param {Application} app
              */ app => app.restrictionMgr.getHasExtendedSettings(),
@@ -299,7 +292,7 @@ class SettingsStorage {
         this.soundVolume = 1.0;
         this.musicVolume = 1.0;
 
-        this.theme = "light";
+        this.theme = G_IS_STANDALONE ? "system" : "light";
         this.refreshRate = "60";
         this.scrollWheelSensitivity = "regular";
         this.movementSpeed = "regular";
@@ -345,6 +338,10 @@ export class ApplicationSettings extends ReadWriteProxy {
     initialize() {
         // Read and directly write latest data back
         return this.readAsync()
+            .then(() => {
+                // Make sure it's ready
+                return detectSystemTheme();
+            })
             .then(() => {
                 // Apply default setting callbacks
                 const settings = this.getAllSettings();
