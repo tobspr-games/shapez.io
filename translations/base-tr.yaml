@@ -1,14 +1,16 @@
 steamPage:
     shortText: shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde
-        üretimi ve birleştirilmesi hakında bir oyundur.
-    discordLinkShort: Official Discord
+        üretimi ve birleştirilmesi hakkında bir oyundur.
+    discordLinkShort: Resmi Discord
     intro: >-
+        Otomasyon oyunlarını sever misiniz? O zaman doğru yerdesiniz!
+
         Shapez.io geometrik şekillerin otomatik üretimi için fabrika
         kurabildiğiniz sakinleştirici bir oyundur.
 
         Seviye arttıkça şekiller daha karmaşık hale gelecek ve sonsuz haritada genişlemen gerekecek!
 
-        Ve bu yeterli değilmiş gibi, şekiller için talebi karşılamak için daha fazla üretim yapmalısın - buna tek yardımcı olacak şey ise genişleme!
+        Ve bu yeterli değilmiş gibi, şekillerin talebini karşılamak için daha fazla üretim yapmalısın - buna tek yardımcı olacak şey ise genişleme!
 
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
@@ -52,12 +54,12 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Giriş yapılıyor
-    loadingResources: Ek kaynaklar indiriliyor... (<percentage> %)
-    discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    loadingResources: Ek kaynaklar indiriliyor... (%<percentage>)
+    discount: -%<percentage>
+    discountSummerSale: "ÖZEL PROMOSYON! Teklif 7 Temmuz'da sona eriyor"
 demoBanners:
     title: Deneme Sürümü
-    intro: |-
+    intro: >-
         Kilidi açmak için tam oyunu <strong>şimdi</strong> edinin:<ul>
             <li>26 seviyenin tamamı + sonsuz Serbest Oynanış</li>
             <li>22 yeni bina</li>
@@ -66,11 +68,11 @@ demoBanners:
             <li>Karanlık Mod</li>
             <li>... ve çok daha fazlası!</li>
         </ul>
-    playtimeDisclaimer: Tam sürüm <strong>20 saatten fazla içerik</strong> içerir.
+    playtimeDisclaimer: Tam sürüm <strong>20 saatten fazla ek içerik</strong> içerir!
     playerCount: <playerCount> sizin gibi oyuncular şu anda Steam'de shapez oynuyor
-    untilEndOfDemo: Demo sonuna kadar
+    untilEndOfDemo: Deneme sürümünün sonuna kadar
     playtimeDisclaimerDownload: Kayıtlı oyununuza tam sürümde devam edebilirsiniz!
-        Kayıtlı oyununuzu indirmek için <strong>burayı</strong> tıklayın.
+        Kayıtlı oyununuzu indirmek için <strong>buraya</strong> tıklayın.
     titleV2: "Tam sürümü şimdi oynayın:"
 mainMenu:
     play: Oyna
@@ -79,8 +81,7 @@ mainMenu:
     openSourceHint: Bu oyun açık kaynak kodlu!
     discordLink: Resmi Discord Sunucusu
     helpTranslate: Çeviriye yardım et!
-    browserWarning: Üzgünüz, bu oyunun tarayıcınızda yavaş çalıştığı biliniyor! Tam
-        sürümü satın alın veya iyi performans için Chrome tarayıcısını kullanın.
+    browserWarning: Üzgünüz, bu oyunun tarayıcınızda yavaş çalıştığı biliniyor! Eksiksiz deneyim için tam sürümü edinin veya Google Chrome'u indirin.
     savegameLevel: Seviye <x>
     savegameLevelUnknown: Bilinmeyen seviye
     continue: Devam et
@@ -88,33 +89,92 @@ mainMenu:
     madeBy: <author-link> tarafından yapıldı
     subreddit: Reddit
     savegameUnnamed: İsimsiz
-    puzzleMode: Yapboz Modu
+    puzzleMode: Bulmaca Modu
     back: Geri
-    puzzleDlcText: Fabrikaları küçültmeyi ve verimli hale getirmekten keyif mi
-        alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif
+    puzzleDlcText: Fabrikaları küçültmekten ve verimli hale getirmekten keyif mi
+        alıyorsun? Şimdi Bulmaca Paketini (DLC) Steam'de alarak keyfine keyif
         katabilirsin!
     puzzleDlcWishlist: İstek listene ekle!
     puzzleDlcViewNow: Paketi (DLC) görüntüle
     mods:
         title: Aktif Modlar
-        warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
+        warningPuzzleDLC: Modlarla Bulmaca DLC'sini oynamak mümkün değil. Lütfen Bulmaca
             DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Artık tam sürümü oynuyorsunuz!
+    logout: Çıkış Yap
+    noActiveSavegames: Etkin kayıtlı oyun bulunamadı - Yeni bir oyuna başlamak için oyna'ya tıklayın!
+    playFullVersionV2: Shapez'i Steam'den mi satın aldınız? Tarayıcınızda tam sürümü oynayın!
+    playFullVersionStandalone: Artık tarayıcınızda da tam sürümü de oynayabilirsiniz!
+puzzleMenu:
+    play: Oyna
+    edit: Düzenle
+    title: Bulmaca Modu
+    createPuzzle: Bulmaca Oluştur
+    loadPuzzle: Yükle
+    reviewPuzzle: Gözat & Yayınla
+    validatingPuzzle: Bulmaca onaylanıyor
+    submittingPuzzle: Bulmaca yayınlanıyor
+    noPuzzles: Bu kısımda bulmaca yok.
+    categories:
+        levels: Seviyeler
+        new: Yenİ
+        top-rated: En İyİ Değerlendirilen
+        mine: Oluşturulan
+        easy: Kolay
+        medium: Orta
+        hard: Zor
+        completed: Tamamlanan
+        official: Öğretİcİ
+        trending: Bugün öne çıkan
+        trending-weekly: Haftalık öne çıkan
+        categories: Kategorİler
+        difficulties: Zorluğa göre
+        account: Bulmacalarım
+        search: Arama
+    search:
+        action: Arama
+        placeholder: Bir bulmaca veya tasarımcı adı giriniz.
+        includeCompleted: Tamamlananları Göster
+        difficulties:
+            any: Hepsi
+            easy: Kolay
+            medium: Orta
+            hard: Zor
+        durations:
+            any: Hepsi
+            short: Kısa (< 2 dk)
+            medium: Normal
+            long: Uzun (> 10 dk)
+    difficulties:
+        easy: Kolay
+        medium: Orta
+        hard: Zor
+        unknown: Değerlendirilmemiş
+    validation:
+        title: Geçersiz Bulmaca
+        noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
+        noGoalAcceptors: Lütfen bir Hedef Merkezi yerleştiriniz!
+        goalAcceptorNoItem: Bir veya birden fazla Hedef Merkezine şekil gönderilmedi.
+            Hedef belirlemek için onlara şekil gönderiniz.
+        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya
+            almıyor. Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan
+            emin olunuz.
+        buildingOutOfBounds: Bir veya birden fazla yapı inşa edilebilir alanın dışında.
+            Alanı azaltınız veya yapıları siliniz.
+        autoComplete: Bulmacanız kendisini çözüyor! Sabit üreticilerin hedef
+            merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
+    dlcHint: Paketi (DLC) çoktan aldın mı? Kütüphanende oyuna sağ tıklayıp Özellikler > DLC'yi seçerek paketi etkileştirmeyi unutma.
 dialogs:
     buttons:
-        ok: OK
-        delete: SİL
+        ok: Tamam
+        delete: Sil
         cancel: İptal
         later: Sonra
         restart: Yeniden başla
         reset: Sıfırla
         getStandalone: Tam sürüme eriş
-        deleteGame: Ne yaptığımi biliyorum
-        viewUpdate: Güncellemeleri Görüntüle
+        deleteGame: Ne yaptığımı biliyorum
+        viewUpdate: Güncellemeyi Görüntüle
         showUpgrades: Geliştirmeleri Göster
         showKeybindings: Tuş Kısayollarını Göster
         retry: Yeniden Dene
@@ -141,7 +201,7 @@ dialogs:
         text: Değişiklikleri uygulamak için oyunu yeniden başlatın.
     editKeybinding:
         title: Tuş Atamasını Değiştir
-        desc: Atamak isteğiniz tuşa veya fare butonun basın, veya iptal etmek için Esc
+        desc: Atamak isteğiniz tuşa veya fare butonuna basın, veya iptal etmek için Esc
             tuşuna basın.
     resetKeybindingsConfirmation:
         title: Tuş Atamasını Sıfırla
@@ -152,7 +212,7 @@ dialogs:
         desc: Tuş atamaları varsayılan duruma sıfırlandı!
     featureRestriction:
         title: Deneme Sürümü
-        desc: Demoda olmayan bir özelliğe (<feature>) erişmeye çalıştınız. Tam deneyim
+        desc: Deneme Sürümünde olmayan bir özelliğe (<feature>) erişmeye çalıştınız. Tam deneyim
             için tam versiyonu satın alın.
     oneSavegameLimit:
         title: Sınırlı Oyun Kaydı
@@ -178,14 +238,14 @@ dialogs:
         desc: "Bu oyunda büyük fabrikalar inşa etmeyi kolaylaştıran çok fazla tuş
             ataması var. Bunlardan bazıları şunlar, ama emin olmak için
             <strong>tuş atamalarını kontrol edin</strong>!<br><br> <code
-            class='keybinding'>CTRL</code> + Sürükle: Silmek için alan seç.<br>
+            class='keybinding'>CTRL</code> + Sürükle: Bir alan seç.<br>
             <code class='keybinding'>SHIFT</code>: Çoklu yapı inşa etmek için
             basılı tutun<br> <code class='keybinding'>ALT</code>: Yerleştirilen
-            taşıma bantlarının yönünü ters çevirir.<br>"
+            taşıma bantlarının yönünü ters çevirin.<br>"
     createMarker:
         title: Yeni Konum İşareti
-        desc: Anlamlı bir isim ver. Ayrıca  <strong>Şekil kodu da</strong>
-            koyabilirsiniz (<link>Buradan</link> kod yapabilirsiniz )
+        desc: Anlamlı bir isim ver. Ayrıca <strong>Şekil kodu da</strong>
+            koyabilirsiniz (<link>Buradan</link> kod oluşturabilirsiniz)
         titleEdit: Konum İşaretini Düzenle
     markerDemoLimit:
         desc: Deneme sürümünde sadece iki adet yer imi oluşturabilirsiniz. Sınırsız yer
@@ -221,101 +281,99 @@ dialogs:
     editConstantProducer:
         title: Eşya Seç
     puzzleLoadFailed:
-        title: Yapbozlar yüklenirken hata oluştu
-        desc: "Malesef yapbozlar yüklenemedi:"
+        title: Bulmacalar yüklenirken hata oluştu
+        desc: "Maalesef bulmacalar yüklenemedi:"
     submitPuzzle:
-        title: Yapboz Yayınla
-        descName: "Yapbozuna bir isim ver:"
-        descIcon: "Lütfen yapbozunun ikonu olacak eşsiz kısa bir anahtar gir. (Anahtarı
-            <link>buradan</link> oluşturabilirsin, yada aşagıdaki şekillerden
+        title: Bulmaca Yayınla
+        descName: "Bulmacana bir isim ver:"
+        descIcon: "Lütfen bulmacanın ikonu olacak eşsiz kısa bir anahtar gir. (Anahtarı
+            <link>buradan</link> oluşturabilirsin, ya da aşağıdaki şekillerden
             rastgele birini seçebilirsin):"
-        placeholderName: Yapboz İsmi
+        placeholderName: Bulmaca İsmi
     puzzleResizeBadBuildings:
         title: Yeniden boyutlandırma mümkün değil
         desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın dışında
             kalabilir.
     puzzleLoadError:
-        title: Kötü Yapboz
-        desc: "Yapboz yüklenirken hata oluştu:"
+        title: Kötü Bulmaca
+        desc: "Bulmaca yüklenirken hata oluştu:"
     offlineMode:
         title: Çevrİmdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
-            Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
+            Lütfen aktif bir internet bağlantısı olduğundan emin olun.
     puzzleDownloadError:
         title: İndirme Hatası
-        desc: "Yapboz indirilemedi:"
+        desc: "Bulmaca indirilemedi:"
     puzzleSubmitError:
         title: Yayınlama Hatası
-        desc: "Yapboz yayınlanamadı:"
+        desc: "Bulmaca yayınlanamadı:"
     puzzleSubmitOk:
-        title: Yapboz Yayınlandı
-        desc: Tebrikler! Yapbozun yayınlandı ve artık başkaları tarafından
-            oynanabilecek. Şimdi yapbozunu "Yapbozlarım" kısmında bulabilirsin.
+        title: Bulmaca Yayınlandı
+        desc: Tebrikler! Bulmacan yayınlandı ve artık başkaları tarafından
+            oynanabilecek. Şimdi bulmacanı "Bulmacalarım" kısmında bulabilirsin.
     puzzleCreateOffline:
         title: Çevrimdışı Modu
-        desc: Çevrimdışı olduğundan yapbozunu kayıt edemeyecek veya yayınlayamayacaksın.
-            Devam etmek istediğinize emin misiniz?
+        desc: Çevrimdışı olduğundan bulmacanı kaydedemeyecek veya yayınlayamayacaksın.
+            Devam etmek istediğine emin misin?
     puzzlePlayRegularRecommendation:
         title: Öneri
-        desc: Ben <strong>muhakkak</strong> yapboz moduna başlamadan önce normal oyunu
-            seviye 12'ye kadar oynamayı tavsiye ediyorum, aksi takdirde henüz
+        desc: Ben <strong>muhakkak</strong> bulmaca moduna başlamadan önce normal oyunu
+            seviye 12'ye kadar oynamanı tavsiye ediyorum, aksi takdirde henüz
             sunulmamış mekaniklerle (yapılar ve oynanış şekilleri)
-            karşılaşabilirsiniz.
+            karşılaşabilirsin. Hala devam etmek istiyor musun?
     puzzleShare:
         title: Kısa Anahtar Kopyalandı
-        desc: Yapbozun kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı! Bu
-            anahtar yapboz menüsünde, yapboza erişmek için kullanılabilir.
+        desc: Bulmacanın kısa anahtarı (<key>) kopyala/yapıştır hafızasına kopyalandı! Bu
+            anahtar bulmaca menüsünde, bulmacaya erişmek için kullanılabilir.
     puzzleReport:
-        title: Yapbozu Şikayet Et
+        title: Bulmacayı Şikayet Et
         options:
             profane: Ayrımcılık (din, dil, ırk)
-            unsolvable: Çözülemez Yapboz
+            unsolvable: Çözülemez Bulmaca
             trolling: Trolleme
     puzzleReportComplete:
         title: Geri bildiriminiz için teşekkürler!
-        desc: Yapboz işaretlendi.
+        desc: Bulmaca işaretlendi.
     puzzleReportError:
         title: Şikayet edilemedi
         desc: "Şikayetiniz iletilemedi:"
     puzzleLoadShortKey:
         title: Kısa anahtar gir
-        desc: Yapbozu yüklemek için kısa anahtarı giriniz
+        desc: Bulmacayı yüklemek için kısa anahtarı girin.
     puzzleDelete:
-        title: Yapboz silinsin mi?
-        desc: "'<title>' yapbozunu silmek istediğinize emin misiniz? Bu işlem geri
+        title: Bulmaca silinsin mi?
+        desc: "'<title>' bulmacanı silmek istediğine emin misin? Bu işlem geri
             alınamaz!"
     modsDifference:
         title: Mod Uyarısı
         desc: Halihazırda kullanılan modlar, kayıtlı oyunun yaratıldığı modlardan
-            farklıdır. Bu işlem kayıtlı oyunun bozulmasına veya hiç
-            yüklenmemesine neden olabilir. Devam etmek istediğinize emin
-            misiniz?
+            farklıdır. Bu işlem, kayıtlı oyunun bozulmasına veya hiç
+            yüklenmemesine neden olabilir. Devam etmek istediğine emin
+            misin?
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Kaynaklar yüklenemedi
+        demoLinkText: Deneme sürümü Steam'de
+        descWeb: "Bir veya daha fazla kaynak yüklenemedi. Sabit bir internet bağlantınız
+            olduğundan emin olun ve tekrar deneyin. Bu yine işe yaramazsa
+            tüm tarayıcı uzantılarını (reklam engelleyiciler dahil) devre dışı
+            bıraktığınızdan emin olun.<br><br> Alternatif olarak <demoOnSteamLinkText> oyununu
+            da oynayabilirsiniz. <br><br> Hata Mesajı:"
+        descSteamDemo: "Bir veya daha fazla kaynak yüklenemedi. Oyunu yeniden başlatmayı
+            deneyin - Bu yardımcı olmazsa, yeniden yüklemeyi ve oyun dosyalarını Steam aracılığıyla
+            doğrulamayı deneyin.<br><br> Hata Mesajı:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Tam Sürümden Çıkış
+        desc: Ağ bağlantınız kararsız olduğu veya başka bir cihazda oynadığınız için
+            Tam Tarayıcı Sürümünden çıkış yaptınız.<br><br> Lütfen başka bir tarayıcı
+            sekmesinde veya aynı Steam hesabına sahip başka bir bilgisayarda shapez'in
+            açık olmadığından emin olun.<br><br> Ana menüden tekrar giriş yapabilirsiniz.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Tam Sürüme Sahip Değilsin
+        desc: Tam Sürümü, Tarayıcınızda oynamak için Steam hesabınızda hem temel oyuna
+            hem de Bulmaca DLC'sine sahip olmanız gerekir.<br><br> Lütfen her ikisine de
+            sahip olduğunuzdan emin olun, doğru Steam hesabıyla oturum açın ve tekrar deneyin.
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -325,7 +383,7 @@ ingame:
         placeMultiple: Çoklu yerleştir
         reverseOrientation: Yönünü ters çevir
         disableAutoOrientation: Otomatik yönü devre dışı bırak
-        toggleHud: Kullanıcı arayüzünü aç/kapa
+        toggleHud: Kullanıcı arayüzünü aç/kapat
         placeBuilding: Yapı yerleştir
         createMarker: Yer imi oluştur
         delete: SİL
@@ -338,6 +396,16 @@ ingame:
         pipette: Pipet
         switchLayers: Katman değiştir
         clearBelts: Bantları temizle
+    colors:
+        red: Kırmızı
+        green: Yeşil
+        blue: Mavi
+        yellow: Sarı
+        purple: Mor
+        cyan: Turkuaz
+        white: Beyaz
+        uncolored: Renksiz
+        black: Siyah
     buildingPlacement:
         cycleBuildingVariants: Yapının farklı türlerine geçmek için <key> tuşuna bas.
         hotkeyLabel: "Kısayol: <key>"
@@ -347,7 +415,7 @@ ingame:
             oneItemPerSecond: 1 eşya / saniye
             itemsPerSecond: <x> eşya / sn
             itemsPerSecondDouble: (x2)
-            tiles: <x> karo
+            tiles: <x> kutucuk
             speed: Hız
     levelCompleteNotification:
         levelTitle: SEVİYE <level>
@@ -367,14 +435,14 @@ ingame:
         title: İstatistikler
         dataSources:
             stored:
-                title: Mevcut
+                title: Depolanan
                 description: Merkez yapınızda bulunan şekillerin miktarını gösterir.
             produced:
                 title: Üretilen
                 description: Fabrikanızın ürettiği bütün şekilleri gösterir, ara ürünler dahil.
             delivered:
                 title: Teslim Edilen
-                description: Merkez binanıza giden bütün şekilleri gösterir.
+                description: Merkez binanıza teslim edilen bütün şekilleri gösterir.
         noShapesProduced: Henüz hiçbir şekil üretilmedi.
         shapesDisplayUnits:
             second: <shapes> / sn
@@ -397,6 +465,10 @@ ingame:
             sil.<br><br>Mevcut konumdan yer imi oluşturmak için <keybinding>'a
             bas, <strong>sağ-tık</strong> ile mevcut konumda yer imi oluştur.
         creationSuccessNotification: Yer imi oluşturuldu.
+    shapeViewer:
+        title: Katmanlar
+        empty: Boş
+        copyKey: Şekil Kodunu Kopyala
     interactiveTutorial:
         title: Eğitim
         hints:
@@ -416,7 +488,7 @@ ingame:
                 aşağıya</strong> keser."
             2_2_place_trash: Kesicinin çıkış hatları doluysa
                 <strong>durabilir</strong>!<br><br> Bunun için kullanılmayan
-                çıktılara <strong>çöp</strong> yerleştirin.
+                çıktılara <strong>çöp</strong> yerleştir.
             2_3_more_cutters: "İyi iş çıkardın! Şimdi işleri hızlandırmak için <strong>iki
                 kesici daha</strong> yerleştir.<br><br> Not: <strong>0-9
                 tuşlarını</strong> kullanarak yapılara daha hızlı
@@ -426,8 +498,8 @@ ingame:
                 <strong>SHIFT tuşuna</strong> basılı tutarak bant planlayıcıyı
                 etkinleştir!"
             21_1_place_quad_painter: <strong>Dörtlü boyayıcıyı</strong> yerleştirin ve
-                <strong>daireyi</strong>, <strong>beyaz</strong> ve
-                <strong>kırmızı</strong> renkleri elde edin!
+                birkaç <strong>daire</strong>, <strong>beyaz</strong> renk ve
+                <strong>kırmızı</strong> renk getirin!
             21_2_switch_to_wires: Kablo katmanına <strong>E tuşuna</strong> basarak geçiş
                 yapın!<br><br> Sonra boyayıcının <strong>dört girişini kablolara
                 bağlayın</strong>!
@@ -438,24 +510,10 @@ ingame:
                 Not: Bütün girişleri bağlamanıza gerek yok! Sadece iki tanesini
                 kabloyla bağlamayı deneyin."
             1_2_hold_and_drag: Tutun ve sürükleyin
-    colors:
-        red: Kırmızı
-        green: Yeşil
-        blue: Mavi
-        yellow: Sarı
-        purple: Mor
-        cyan: Turkuaz
-        white: Beyaz
-        uncolored: Renksiz
-        black: Siyah
-    shapeViewer:
-        title: Katmanlar
-        empty: Boş
-        copyKey: Şekil Kodunu Kopyala
     connectedMiners:
         one_miner: 1 Üretici
         n_miners: <amount> Üretici
-        limited_items: Sınır <max_throughput>
+        limited_items: <max_throughput> ile Sınırlı
     watermark:
         title: Deneme sürümü
         desc: Steam sürümü avantajlarını görmek için buraya tıklayın!
@@ -464,8 +522,9 @@ ingame:
         no_thanks: Hayır, teşekkürler!
         points:
             levels:
-                title: 12 Yeni Seviye
-                desc: Toplamda 26 seviye!
+                title: 19 Yeni Seviye
+                desc: >-
+                    20 saatten fazla ek içerik!
             buildings:
                 title: 22 Yeni Yapı
                 desc: Fabrikanı tamamen otomatikleştir!
@@ -482,14 +541,14 @@ ingame:
                 title: Beni destekleyin
                 desc: Boş zamanımda bu oyunu geliştiriyorum!
             achievements:
-                title: Başarımlar
+                title: 45 Başarım
                 desc: Bütün başarımları açmaya çalış!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Modlama Desteği
+                desc: 80'den fazla mod mevcut!
+        titleV2: "Kilidi açmak için tam sürümü şimdi Steam'de oynayın:"
+        titleExpiredV2: Deneme Sürümü tamamlandı!
+        titleEnjoyingDemo: Deneme Sürümünden keyif alıyor musun?
     puzzleEditorSettings:
         zoneTitle: Alan
         zoneWidth: Genişlik
@@ -498,10 +557,10 @@ ingame:
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Yapıları Temizle
+        resetPuzzle: Bulmacayı Sıfırla
     puzzleEditorControls:
-        title: Yapboz Oluşturucu
+        title: Bulmaca Oluşturucu
         instructions:
             - 1. Oyunculara şekil ve renk sağlamak için <strong>Sabit
               Üreticileri</strong> yerleştir.
@@ -513,25 +572,25 @@ ingame:
               <strong>hedef olarak kabul eder</strong> (<strong>Yeşil
               rozetle</strong> gösterilmiş).
             - 4. Bir yapıyı devre dışı bırakmak için üzerindeki <strong>kilit
-              butonuna</strong> basınız.
-            - 5. Gözat butonuna bastığınız zaman, yapbozunuz onaylanacaktır ve
-              sonra onu yayınlayabileceksiniz.
+              butonuna</strong> bas.
+            - 5. Gözat butonuna bastığın zaman, bulmacan onaylanacaktır ve
+              sonra onu yayınlayabileceksin.
             - 6. Yayınlandığı zaman, Sabit Üreticiler ve Hedef Merkezleri
               dışındaki <strong>bütün yapılar silinecektir</strong> - Bu kısmı
               oyuncuların kendisi çözmesi gerekecek sonuçta :)
     puzzleCompletion:
-        title: Yapboz Tamamlandı!
-        titleLike: "Yapbozu beğendiyseniz kalbe tıklayınız:"
-        titleRating: Yapbozu ne kadar zor buldunuz?
+        title: Bulmaca Tamamlandı!
+        titleLike: "Bulmacayı beğendiyseniz kalbe tıklayınız:"
+        titleRating: Bulmacayı ne kadar zor buldunuz?
         titleRatingDesc: Değerlendirmeniz size daha iyi öneriler sunmamda yardımcı olacaktır
         continueBtn: Oynamaya Devam Et
         menuBtn: Menü
-        nextPuzzle: Sonraki Yapboz
+        nextPuzzle: Sonraki Bulmaca
     puzzleMetadata:
         author: Yapımcı
         shortKey: Kısa Anahtar
         rating: Zorluk
-        averageDuration: Ortamala Süre
+        averageDuration: Ortalama Süre
         completionRate: Tamamlama Süresi
 shopUpgrades:
     belt:
@@ -554,12 +613,11 @@ buildings:
         endOfDemo: Deneme Sürümünün Sonu
     belt:
         default:
-            name: Taşıma Bandı
-            description: Eşyaları taşır, basılı birden fazla yerleştirmek için tutup
-                sürükle.
+            name: &belt Taşıma Bandı
+            description: Eşyaları taşır, birden fazla yerleştirmek için tutup sürükle.
     miner:
         default:
-            name: Üretici
+            name: &miner Üretici
             description: Bir şekli veya rengi üretmek için üzerine yerleştir.
         chainable:
             name: Üretici (Zincirleme)
@@ -567,77 +625,15 @@ buildings:
                 bağlanabilir.
     underground_belt:
         default:
-            name: Tünel
+            name: &underground_belt Tünel
             description: Yapıların ve taşıma bantlarının altından kaynak aktarımı sağlar.
         tier2:
             name: Tünel Aşama II
             description: Yapıların, taşıma bantlarının ve normal tünellerin altından kaynak
                 aktarımı sağlar.
-    cutter:
-        default:
-            name: Kesici
-            description: Şekilleri yukarıdan aşağıya böler ve iki yarım parçayı çıktı olarak
-                verir. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer
-                çıkan parçayı yok etmeyi unutmayın, yoksa kesim durur!</strong>
-        quad:
-            name: Kesici (Dörtlü)
-            description: Şekilleri dört parçaya böler. <strong>Eğer sadece bir çıktıyı
-                kullanıyorsanız diğer çıkan parçaları yok etmeyi unutmayın,
-                yoksa kesim durur!</strong>
-    rotater:
-        default:
-            name: Döndürücü
-            description: Şekilleri saat yönünde 90 derece döndürür.
-        ccw:
-            name: Döndürücü (Saat Yönünün Tersi)
-            description: Şekilleri saat yönünün tersinde 90 derece döndürür.
-        rotate180:
-            name: Döndürücü (180 Derece)
-            description: Şekilleri 180 derece döndürür.
-    stacker:
-        default:
-            name: Birleştirici
-            description: İki eşyayı birleştirir. Eğer eşyalar birleştirilemezse sağdaki eşya
-                soldaki eşyanın üzerine eklenir.
-    mixer:
-        default:
-            name: Renk Karıştırıcısı
-            description: İki rengi eklemeli renk metoduyla birleştirir.
-    painter:
-        default:
-            name: Boyayıcı
-            description: Sol girdideki bütün şekli sağ girdideki renk ile boyar.
-        double:
-            name: Boyayıcı (İkili)
-            description: Sol girdideki şekilleri yukarı girdideki renk ile boyar.
-        quad:
-            name: Boyayıcı (Dörtlü)
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
-        mirrored:
-            name: Boyayıcı
-            description: Sol girdideki bütün şekli aşağı girdideki renk ile boyar.
-    trash:
-        default:
-            name: Çöp
-            description: Her yönden giren girdileri yok eder. Tamamen.
-    wire:
-        default:
-            name: Kablo
-            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı
-                sağlar. Farklı renkteki kablolar bağlanamaz.
-        second:
-            name: Kablo
-            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı
-                sağlar. Farklı renkteki kablolar bağlanamaz.
-    wire_tunnel:
-        default:
-            name: Kablo Tüneli
-            description: İki farklı kabloyu birbirine bağlamadan bir köprü oluşturur.
     balancer:
         default:
-            name: Dengeleyici
+            name: &balancer Dengeleyici
             description: Çok işlevli - bütün girdileri eşit olarak bütün çıkışlara dağıtır.
         merger:
             name: Birleştirici (tekil)
@@ -651,26 +647,86 @@ buildings:
         splitter-inverse:
             name: Ayırıcı (tekil)
             description: Bir taşıma bandını iki çıktı verecek şekilde ayırır.
+    cutter:
+        default:
+            name: &cutter Kesici
+            description: Şekilleri yukarıdan aşağıya böler ve iki yarım parçayı çıktı olarak
+                verir. <strong>Eğer sadece bir çıktıyı kullanıyorsanız diğer
+                çıkan parçayı yok etmeyi unutmayın, yoksa kesim durur!</strong>
+        quad:
+            name: Kesici (Dörtlü)
+            description: Şekilleri dört parçaya böler. <strong>Eğer sadece bir çıktıyı
+                kullanıyorsanız diğer çıkan parçaları yok etmeyi unutmayın,
+                yoksa kesim durur!</strong>
+    rotater:
+        default:
+            name: &rotater Döndürücü (90 Derece)
+            description: Şekilleri saat yönünde 90 derece döndürür.
+        ccw:
+            name: Döndürücü (-90 Derece)
+            description: Şekilleri saat yönünün tersinde 90 derece döndürür.
+        rotate180:
+            name: Döndürücü (180 Derece)
+            description: Şekilleri 180 derece döndürür.
+    stacker:
+        default:
+            name: &stacker Kaynaştırıcı
+            description: İki eşyayı mümkünse aynı katmanda kaynaştırır. Mümkün değilse sağdaki eşya
+                soldaki eşyanın üzerine eklenir.
+    mixer:
+        default:
+            name: &mixer Renk Karıştırıcısı
+            description: İki rengi eklemeli renk metoduyla birleştirir.
+    painter:
+        default:
+            name: &painter Boyayıcı
+            description: &painter_desc Sol girdideki bütün şekli aşağı girdideki renk ile boyar.
+        mirrored:
+            name: *painter
+            description: Sol girdideki bütün şekli aşağı girdideki renk ile boyar.
+        double:
+            name: Boyayıcı (İkili)
+            description: Sol girdideki şekilleri yukarı girdideki renk ile boyar.
+        quad:
+            name: Boyayıcı (Dörtlü)
+            description: Şeklin her çeyreğini ayrı ayrı renklendirmenizi sağlar.
+                Yalnızca kablolar katmanında <strong>doğruluk sinyali (1)</strong> bulunan yuvalar boyanacaktır!
+    trash:
+        default:
+            name: &trash Çöp
+            description: Her yönden giren girdileri yok eder. Sonsuza kadar.
     storage:
         default:
-            name: Depo
+            name: &storage Depo
             description: Belirli bir sınıra kadar fazla eşyaları depolar. Sol çıkışa öncelik
                 verir ve taşma kapısı olarak kullanılabilir.
+    wire:
+        default:
+            name: &wire Kablo
+            description: &wire_desc Eşya, renk ve ikili değerler (1/0) gibi sinyalleri aktarmayı
+                sağlar. Farklı renkteki kablolar birbirine bağlanamaz.
+        second:
+            name: *wire
+            description: *wire_desc
+    wire_tunnel:
+        default:
+            name:  &wire_tunnel Kablo Tüneli
+            description: İki farklı kabloyu birbirine bağlamadan bir köprü oluşturur.
     constant_signal:
         default:
-            name: Sabit Sinyal
-            description: Şekil, renk veya ikili değer (1 / 0) olan sabit bir sinyal
+            name: &constant_signal Sabit Sinyal
+            description: Şekil, renk veya ikili değer (1/0) olabilen sabit bir sinyal
                 gönderir.
     lever:
         default:
-            name: Anahtar
-            description: Kablolarda ikili sinyal (1 / 0) gönderebilmek için açılıp
+            name: &lever Anahtar
+            description: Kablolarda ikili sinyal (1/0) gönderebilmek için açılıp
                 kapanabilir. Örneğin bir eşya filtresini kontrol etmek için
                 kullanılabilir.
     logic_gate:
         default:
             name: VE Kapısı
-            description: Eğer iki girdi de doğruysa, bu kapı"1" sinyali gönderir. (Doğru;
+            description: Eğer iki girdi de doğruysa, bu kapı "1" sinyali gönderir. (Doğru;
                 bir şekil, renk veya "1" girdisi demektir.)
         not:
             name: DEĞİL Kapısı
@@ -678,54 +734,52 @@ buildings:
                 şekil, renk veya "1" girdisi demektir.)
         xor:
             name: XOR Kapısı
-            description: Eğer iki girdiden sadece biri "1" sinyali alıyorsa, bu kapı "1"
+            description: Eğer iki girdiden sadece biri doğruysa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
         or:
-            name: YADA Kapısı
-            description: Eğer iki girdiden herhangi biri "1" sinyali alıyorsa, bu kapı "1"
+            name: YA DA Kapısı
+            description: Eğer iki girdiden herhangi biri doğruysa, bu kapı "1"
                 gönderir. (Doğru; bir şekil, renk veya "1" girdisi demektir.)
     transistor:
         default:
-            name: Transistör
-            description: Eğer yan girdi doğruysa aşağı doğru sinyal akışına izin verir.
+            name: &transistor Transistör
+            description: &transistor_desc Eğer yan girdi doğruysa aşağıya doğru sinyal akışına izin verir.
                 (Şekil, renk veya "1").
         mirrored:
-            name: Transistör
-            description: Eğer yan girdi doğruysa aşağı doğru sinyal akışına izin verir.
-                (Şekil, renk veya "1").
+            name: *transistor
+            description: *transistor_desc
     filter:
         default:
-            name: Filtre
-            description: Bütün eşleşen eşyaları yukarı, geri kalanını aşağı göndermek için
-                bir sinyal bağla. İkili (1/0) sinyaller ile de kontrol
-                edilebilir.
+            name: &filter Filtre
+            description: Bütün eşleşen eşyaları yukarı, geri kalanını sağa göndermek için
+                bir sinyal bağla. İkili (1/0) sinyaller ile de kontrol edilebilir.
     display:
         default:
-            name: Ekran
+            name: &display Ekran
             description: Ekranda göstermek için bir sinyal bağla - Bu sinyal bir şekil, renk
                 veya ikili değer (1/0) olabilir.
     reader:
         default:
-            name: Bant Okuyucu
+            name: &reader Bant Okuyucu
             description: Bant üzerindeki ortalama hızı ölçer. Kablo katmanında son okunan
                 eşyayı gösterir (açıldığında).
     analyzer:
         default:
-            name: Şekil Analizcisi
+            name: &analyzer Şekil Analizcisi
             description: Şeklin en alt katmanında sağ üst köşesinde bulunan şekli analiz
                 eder, şekli ve rengini verir.
     comparator:
         default:
-            name: Karşılaştırıcı
+            name: &comparator Karşılaştırıcı
             description: Eğer iki sinyal aynıysa "1" çıktısı verir. Şekiller, eşyalar ve
                 ikili değerler karşılaştırılabilir.
     virtual_processor:
         default:
-            name: Sanal Kesici
+            name: &virtual_processor Sanal Kesici
             description: Sanal olarak şekli ikiye böler.
         rotater:
             name: Sanal Döndürücü
-            description: Sanal olarak şekli saat yönünde veya saatin tersi yönünde döndürür.
+            description: Sanal olarak şekli saat yönünde döndürür.
         unstacker:
             name: Sanal Katman Ayırıcı
             description: Sanal olarak şeklin en üstteki katmanını ayırarak sağ çıktıya ve
@@ -739,20 +793,20 @@ buildings:
     item_producer:
         default:
             name: Eşya Üretici
-            description: Sadece kum kutusu modunda açık, kablo katmanındaki sinyali normal
+            description: Sadece sandbox modunda kullanılabilir, kablo katmanındaki sinyali normal
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Sabİt Üretİcİ
+            name: &constant_producer Sabİt Üretİcİ
             description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Hedef Merkezİ
+            name: &goal_acceptor Hedef Merkezİ
             description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
-            name: Engel
-            description: Bir karoyu kullanıma kapatmayı sağlar.
+            name: &block Engel
+            description: Bir kutucuğu kullanıma kapatmayı sağlar.
 storyRewards:
     reward_cutter_and_trash:
         title: Şekilleri Kesmek
@@ -781,10 +835,11 @@ storyRewards:
             İki şekil eğer yanyana koyulabilirse şekiller
             <strong>birleştirilir</strong>, yoksa sol girişteki şeklin
             <strong>üzerine kaynaştırılır</strong>!
-    reward_splitter:
-        title: Ayırıcı/Birleştirici
-        desc: <strong>Ayırıcıyı</strong> açtın! <strong>dengeleyicin</strong> başka bir
-            türü - Tek giriş alıp ikiye ayırır
+    reward_balancer:
+        title: Dengeleyici
+        desc: Çok fonksiyonlu <strong>dengeleyici</strong> açıldı. - <strong>Eşyaları
+            bantlara ayırarak ve bantları birleştirerek</strong> daha büyük
+            fabrikalar kurmak için kullanılabilir!
     reward_tunnel:
         title: Tünel
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
@@ -799,13 +854,26 @@ storyRewards:
         title: Zincirleme Üretici
         desc: " <strong>zincirleme üreticiyi</strong>açtın! bununla
             <strong>kaynaklarını</strong> diğer çıkarıcılarla paylaşıp daha
-            verimli bir şekilde çıkartabilirsin!<br><br> not: Eskilerini
+            verimli bir şekilde çıkartabilirsin!<br><br> NOT: Eskilerini
             yenileri ile değiştirdim!"
     reward_underground_belt_tier_2:
         title: Tünel Aşama II
         desc: <strong>Tünelin</strong> başka bir türünü açtın - Bu tünelin menzili
             <strong>daha yüksek</strong> ve tünel türlerini artık içiçe
             kullanabilirsin!
+    reward_merger:
+        title: Tekil Birleştirici
+        desc: <strong>Birleştiriciyi</strong> açtın! <strong>Dengeleyecinin</strong>
+            bir türü - İki giriş alıp tek banta atar.
+    reward_splitter:
+        title: Tekil Ayırıcı
+        desc: <strong>Ayırıcıyı</strong> açtın! <strong>Dengeleyecinin</strong>
+            bir türü - Bir girişi kabul eder ve onları ikiye böler!
+    reward_belt_reader:
+        title: Bant Okuyucu
+        desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
+            hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
+            çok kullanışlı olacak.
     reward_cutter_quad:
         title: Çeyreğini Kesme
         desc: <strong>Kesicinin</strong> yeni bir türünü açtın - Bu tür şekilleri iki
@@ -817,9 +885,9 @@ storyRewards:
             boya yerine sadece bir boya harcar!
     reward_storage:
         title: Depo
-        desc: <strong>Depoyu</strong> açtınız! - Gönderdiğin eşyaları içinde
-            biriktirir!<br><br> Öncelikli olarak sol tarafından eşyaları
-            gönderir eğer sol taraf tıkanırsa sağ taraftan göndermeye başlar.
+        desc: <strong>Depoyu</strong> açtın! - Gönderdiğin eşyaları içinde
+            biriktirir!<br><br> Öncelikli olarak sol çıktıdan eşyaları
+            gönderir eğer sol çıktı tıkanırsa sağ çıktıdan göndermeye başlar.
             Bunu <strong>fazlalık eşyaları</strong> değerlendirmek için
             kullanabilirsin!
     reward_blueprints:
@@ -830,50 +898,28 @@ storyRewards:
             bas.<br><br>Kopyaladığın taslağı <strong>bedel karşılığı</strong>
             yapıştırabilmek için <strong>taslak şekilleri</strong> üretmelisin!
             (Az önce teslim ettiğin şekiller).
-    no_reward:
-        title: Sonraki Seviye
-        desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu
-            anki fabrikalarını yok etmemeni öneririm - Daha sonra
-            <strong>Geliştirmeleri açmak için </strong> <strong>bütün
-            hepsine</strong> ihtiyacın olacak!"
-    no_reward_freeplay:
-        title: Sonraki Seviye
-        desc: Tebrikler!
-    reward_freeplay:
-        title: Özgür Mod
-        desc: Başardın! <strong>Özgür modu</strong> açtın! Bu artık gelen şekillerin
-            <strong>rastgele</strong> oluşacağı anlamına geliyor!<br><br> Bundan
-            sonra ana bölge belirli bir miktar eşya değil <strong>belirli bir
-            miktar eşya geliş hızına</strong> bağlı olarak level atlayacaksın,
-            istenilen şekilleri otomatik olarak yapacak bir fabrika inşa etmeni
-            öneririm!<br><br> Ana bölgenin istediği şekil kablo katmanında sol
-            taraftan sinyal olarak gönderiliyor, yani sadece bu şekli analiz
-            ederek üretecek tamen otomatik bir alet yapman yeterli.
-    reward_demo_end:
-        title: Deneme Sürümünün Sonu
-        desc: Deneme sürümünün sonuna geldin!
-    reward_balancer:
-        title: Dengeleyici
-        desc: Çok fonksiyonlu <strong>dengeleyici</strong> açıldı. - <strong>Eşyaları
-            bantlara ayırarak ve bantları birleştirerek</strong> daha büyük
-            fabrikalar kurmak için kullanılabilir!
-    reward_merger:
-        title: Tekil Birleştirici
-        desc: <strong>Birleştiriciyi</strong> açtın ! <strong>dengeleyecinin</strong>
-            bir türü - İki giriş alıp tek banta atar.
-    reward_belt_reader:
-        title: Bant Okuyucu
-        desc: <strong>Bant okuyucu</strong> açıldı! Bu yapı taşıma bandındaki akış
-            hızını ölçmeyi sağlar.<br><br>Kabloları açana kadar bekle - o zaman
-            çok kullanışlı olacak.
     reward_rotater_180:
         title: Döndürücü (180 derece)
         desc: 180 derece <strong>döndürücüyü</strong> açtınız! - Şekilleri 180 derece
-            döndürür (Süpriz! :D)
+            döndürür (Sürpriz! :D)
+    reward_wires_painter_and_levers:
+        title: Kablolar ve Dörtlü Boyayıcı
+        desc: "Az önce <strong>Kablo Katmanının</strong> kilidini açtın: Normal
+            katmanın üzerinde ayrı bir katman ve yeni mekanikler
+            sunmakta !<br><br> Başlangıç için sana <strong>Dörtlü Boyayıcıyı</strong>
+            açtım - Kablo katmanında bağlamak istediğin yuvaları bağla !<br><br>
+            Kablo katmanına geçmek için <strong>E</strong> tuşuna bas. <br><br>
+            NOT: Kablolar öğreticisini aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
+    reward_filter:
+        title: Eşya Filtresi
+        desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
+            eşleşmelerine bağlı olarak eşyaları yukarıdaki yada sağdaki çıkışa
+            yönlendirir.<br><br> Ayrıca filtreyi tamamen açıp kapatmak için
+            ikili sinyal (1/0) kullanabilirsin.
     reward_display:
         title: Ekran
         desc: "<strong>Ekranı</strong> açtın. - Kablo katmanında bir sinyal bağla ve onu
-            ekranda göster! <br><br> Not: Bant okuyucunun ve deponun son
+            ekranda göster! <br><br> NOT: Bant okuyucunun ve deponun son
             okudukları eşyayı çıkardığını fark ettin mi? Bunu ekranda göstermeyi
             dene!"
     reward_constant_signal:
@@ -886,12 +932,12 @@ storyRewards:
     reward_logic_gates:
         title: Mantık Kapıları
         desc: <strong>Mantık kapıları</strong> açıldı! Çok heyecanlanmana gerek yok, ama
-            bu gerçekten havalı!<br><br> Bu kapılarla artık AND, OR, XOR veya
-            NOT işlemlerini hesaplatabilirsin.<br><br> Bonus olarak sana bir de
+            bu gerçekten havalı!<br><br> Bu kapılarla artık VE, VEYA, XOR veya
+            DEĞİL işlemlerini hesaplatabilirsin.<br><br> Bonus olarak sana bir de
             <strong>transistör</strong> verdim!
     reward_virtual_processing:
         title: Sanal İşleme
-        desc: Az önce bir sürü yen yapıya sahip oldun. Bu yapılar <strong>şekillerin
+        desc: Az önce bir sürü yeni yapıya sahip oldun. Bu yapılar <strong>şekillerin
             işlenmelerini</strong> sanal olarak denemeni sağlayacak!<br><br>
             Artık bir kesiciyi, döndürücüyü, kaynaştırıcıyı ve daha fazlasını
             kablo katmanında deneyebilirsin! Bununla birlikte oyuna devam
@@ -900,27 +946,49 @@ storyRewards:
             inşa et (Denemeni tavsiye ederim!). <br><br> - Kablolarla havalı
             birşeyler inşa et.<br><br> - Oyuna normal bir şekilde devam
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
-    reward_wires_painter_and_levers:
-        title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın : Normal
-            katmanın üzerinde ayrı bir katman ve yeni mekanikler
-            sunmakta!<br><br> Başlangıç için sana <strong>Quad
-            Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin
-            yuvaları bağla !<br><br> Tel katmanına geçmek için
-            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini
-            aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
-    reward_filter:
-        title: Eşya Filtresi
-        desc: <strong>Eşya filtresini</strong> açtın! Kablo katmanından gelen sinyalle
-            eşleşmelerine bağlı olarak eşyaları yukarıdaki yada aşağıdaki çıkışa
-            yönlendirir.<br><br> Ayrıca filtreyi tamamen açıp kapatmak için
-            ikili sinyal (1 / 0) kullanabilirsin.
+    no_reward:
+        title: Sonraki Seviye
+        desc: "Bu seviyenin bir ödülü yok ama bir sonrakinin olacak!<br><br> Not: Şu
+            anki fabrikalarını yok etmemeni öneririm - Daha sonra
+            <strong>geliştirmeleri açmak için </strong> <strong>hepsine</strong> ihtiyacın olacak!"
+    no_reward_freeplay:
+        title: Sonraki Seviye
+        desc: Tebrikler!
+    reward_freeplay:
+        title: Özgür Mod
+        desc: Başardın! <strong>Özgür modu</strong> açtın! Bu artık gelen şekillerin
+            <strong>rastgele</strong> oluşacağı anlamına geliyor!<br><br> Bundan
+            sonra ana bölge belirli bir miktar eşya değil <strong>belirli bir
+            miktar eşya geliş hızına</strong> ihtiyaç duyacağından,
+            istenilen şekilleri otomatik olarak yapacak bir fabrika inşa etmeni
+            öneririm!<br><br> Ana bölge, kablo katmanında istenen şekli verir,
+            yani tek yapmanız gereken onu analiz etmek ve fabrikanızı buna göre otomatik olarak yapılandırmak.
+    reward_demo_end:
+        title: Deneme Sürümünün Sonu
+        desc: Deneme sürümünün sonuna geldin!
+mods:
+    title: Modlar
+    author: Yapan
+    version: Sürüm
+    modWebsite: İnternet sitesi
+    openFolder: Mod Klasörünü Aç
+    folderOnlyStandalone: Mod klasörünü açmak sadece Steam'de tam sürümü çalıştırıyorken mümkün.
+    browseMods: Modlara Gözat
+    modsInfo: Modları yüklemek ve yönetmek için modlar klasörüne kopyalayın ('Modlar Klasörünü Aç' düğmesini kullanın).
+        Daha sonra oyunu yeniden başlattığınızdan emin olun, aksi takdirde modlar görünmez.
+    noModSupport: Mod yükleyebilmek için Steam'den tam sürümü edinin.
+    togglingComingSoon:
+        title: Yakında Gelecek
+        description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
+            mod dosyasını mods/ klasörüne kopyalayarak mümkündür. Ancak, modları buradan
+            değiştirebilmek gelecekteki bir güncelleme için planlanmıştır!
+    browserNoSupport: Tarayıcı kısıtlamaları nedeniyle şu anda yalnızca Steam sürümüne mod yüklemek mümkündür - Üzgünüz!
 settings:
     title: Ayarlar
     categories:
         general: Genel
         userInterface: Kullanıcı Arayüzü
-        advanced: Gelİşmİş
+        advanced: Gelişmiş
         performance: Performans
     versionBadges:
         dev: Geliştirme
@@ -932,8 +1000,7 @@ settings:
         uiScale:
             title: Arayüz Ölçeği
             description: Kullanıcı arayüzünün boyutunu değiştirir. Arayüz cihazınızın
-                çözünürlüğüne göre ölçeklendirilir, ama ölçeğin miktarı burada
-                ayarlanabilir.
+                çözünürlüğüne göre ölçeklendirilir ama ölçeğin miktarı burada ayarlanabilir.
             scales:
                 super_small: Çok Küçük
                 small: Küçük
@@ -973,15 +1040,13 @@ settings:
         refreshRate:
             title: Simülasyon Hızı
             description: Eğer mönitörünüzün yenileme hızı (Hz) yüksekse oyunun akıcı bir
-                şekilde çalışması için yenileme hızını buradan değiştirin. Eğer
-                bilgisayarınız yavaşsa bu ayar oyunun gösterdiği kare hızını
-                (FPS) düşürebilir.
+                şekilde çalışması için yenileme hızını buradan değiştirin. Eğer bilgisayarınız
+                yavaşsa bu ayar oyunun gösterdiği kare hızını (FPS) düşürebilir.
         alwaysMultiplace:
             title: Çoklu Yerleştirme
             description: Aktif edildiğinde bir yapı seçilip yerleştirildiğinde, yapıyı
-                yerleştirmeye siz iptal edene kadar devam edebilirsiniz. Bu
-                özellik SHIFT tuşuna sürekli basılı tutup yapı yerleştirmeyle
-                aynıdır.
+                yerleştirmeye siz iptal edene kadar devam edebilirsiniz. Bu özellik
+                SHIFT tuşuna sürekli basılı tutup yapı yerleştirmeyle aynıdır.
         offerHints:
             title: İpuçları ve Eğitimler
             description: İpuçları ve eğitimleri açar. Ayrıca bazı arayüz elemanlarını oyunun
@@ -1022,8 +1087,7 @@ settings:
         rotationByBuilding:
             title: Yapı Türüne Göre Döndür
             description: Her yapı türü en son kullanıldığı yönü hatırlar. Yerleştirdiğiniz
-                yapıları sıklıkla değiştiriyorsanız bu ayar oynanyışınızı
-                rahatlatabilir.
+                yapıları sıklıkla değiştiriyorsanız bu ayar oynayışınızı rahatlatabilir.
         movementSpeed:
             title: Hareket Hızı
             description: Haritanın klavye veya fare ile gezinme hızını değiştirir.
@@ -1043,8 +1107,7 @@ settings:
         lowQualityMapResources:
             title: Düşük Kalite Harİta Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
-                kalitesini sadeleştirir. Hatta daha net bir görüntü sağlar, bu
-                yüzden bir dene!
+                kalitesini sadeleştirir. Hatta daha net bir görüntü sağlar, bu yüzden bir dene!
         disableTileGrid:
             title: Harita Çizgilerini Gizle
             description: Harita çizgilerini gizlemek oyun performansına yardımcı olabilir.
@@ -1110,67 +1173,76 @@ keybindings:
         mapMoveRight: Sağa Git
         mapMoveDown: Aşagı Git
         mapMoveLeft: Sola Git
+        mapMoveFaster: Hızlı Hareket
         centerMap: Haritayı Ortala
+
         mapZoomIn: Yakınlaş
         mapZoomOut: Uzaklaş
         createMarker: Yer İmi Oluştur
+
         menuOpenShop: Geliştirmeler
         menuOpenStats: İstatistikler
+        menuClose: Menüyü Kapat
+
         toggleHud: Arayüzü Aç/Kapat
         toggleFPSInfo: FPS ve Debug Bilgisini Aç/Kapat
-        belt: Taşıma Bandı
-        underground_belt: Tünel
-        miner: Üretici
-        cutter: Kesici
-        rotater: Döndürücü
-        stacker: Kaynaştırıcı
-        mixer: Renk Karıştırıcısı
-        painter: Boyayıcı
-        trash: Çöp
+        switchLayers: Katman değiştir
+        exportScreenshot: Bütün merkezi resim olarak dışarı aktar
+        
+        # --- Do not translate the values in this section
+        belt: *belt
+        balancer: *balancer
+        underground_belt: *underground_belt
+        miner: *miner
+        cutter: *cutter
+        rotater: *rotater
+        stacker: *stacker
+        mixer: *mixer
+        painter: *painter
+        trash: *trash
+        storage: *storage
+        wire: *wire
+        constant_signal: *constant_signal
+        logic_gate: Mantık Kapısı
+        lever: *lever
+        filter: *filter
+        wire_tunnel: *wire_tunnel
+        display: *display
+        reader: *reader
+        virtual_processor: *virtual_processor
+        transistor: *transistor
+        analyzer: *analyzer
+        comparator: *comparator
+        item_producer: Eşya Üretici (Sandbox)
+        constant_producer: *constant_producer
+        goal_acceptor: *goal_acceptor
+        block: *block
+        # ---
+
+        pipette: Pipet
         rotateWhilePlacing: Döndür
         rotateInverseModifier: "Basılı Tut: Saat yönünün tersinde döndür"
-        cycleBuildingVariants: Yapı türünü değiştir
-        confirmMassDelete: Çoklu Silme
-        cycleBuildings: Yapıyı değiştir
-        massSelectStart: Basılı tutup seçme
-        massSelectSelectMultiple: Birden fazla alanı seçme
-        massSelectCopy: Alanı kopyala
-        placementDisableAutoOrientation: Otomatik Yönü devredışı bırak
-        placeMultiple: Yerleştirme modunda kal
-        placeInverse: Taşıma bandı yönünü ters çevir
-        pasteLastBlueprint: Son taslağı yapıştır
-        massSelectCut: Alanı yapıştır
-        exportScreenshot: Bütün merkezi resim olarak dışarı aktar
-        mapMoveFaster: Hızlı Hareket
-        lockBeltDirection: Taşıma bandı planlayıcısını akfitleştir
-        switchDirectionLockSide: "Planlayıcı: Taraf değiştir"
-        pipette: Pipet
-        menuClose: Menüyü Kapat
-        switchLayers: Katman değiştir
-        wire: Enerji Kablosu
-        balancer: Dengeleyici
-        storage: Depo
-        constant_signal: Sabit Sinyal
-        logic_gate: Mantık Kapısı
-        lever: Anahtar (normal)
-        filter: Filtre
-        wire_tunnel: Kablo Tüneli
-        display: Ekran
-        reader: Bant Okuyucu
-        virtual_processor: Sanal Kesici
-        transistor: Transistor
-        analyzer: Şekil Analizcisi
-        comparator: Karşılaştırıcı
-        item_producer: Eşya Üretici (Kum Kutusu)
-        copyWireValue: "Kablo: Fare altındaki değeri kopyala"
         rotateToUp: Yukarı Döndür
         rotateToDown: Aşağı Döndür
         rotateToRight: Sağa Döndür
         rotateToLeft: Sola Döndür
-        constant_producer: Sabit Üretici
-        goal_acceptor: Hedef Merkezi
-        block: Engel
+        cycleBuildingVariants: Yapı türünü değiştir
+        confirmMassDelete: Çoklu Silme
+        pasteLastBlueprint: Son taslağı yapıştır
+        cycleBuildings: Yapıyı değiştir
+        lockBeltDirection: Taşıma bandı planlayıcısını akfitleştir
+        switchDirectionLockSide: "Planlayıcı: Taraf değiştir"
+        copyWireValue: "Kablo: Fare altındaki değeri kopyala"
+        massSelectStart: Basılı tutup seçme
+        massSelectSelectMultiple: Birden fazla alanı seçme
+        massSelectCopy: Alanı kopyala
+        massSelectCut: Alanı yapıştır
         massSelectClear: Bantları temizle
+
+        placementDisableAutoOrientation: Otomatik Yönü devredışı bırak
+        placeMultiple: Yerleştirme modunda kal
+        placeInverse: Taşıma bandı yönünü ters çevir
+
         showShapeTooltip: Şekil çıkış ipucunu göster
 about:
     title: Oyun Hakkında
@@ -1196,6 +1268,32 @@ demo:
         customizeKeybindings: Tuş Atamalarını Değiştirme
         exportingBase: Bütün merkezi resim olarak dışa aktarma
     settingNotAvailable: Demo sürümünde mevcut değil
+backendErrors:
+    ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
+    invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
+        güncellemeyi/yeniden başlatmayı deneyiniz (Geçersiz API Anahtarı).
+    unauthorized: Arka tarafla iletişim kurulamadı, lütfen oyunu
+        güncellemeyi/yeniden başlatmayı deneyiniz (Yetkisiz erişim).
+    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu güncellemeyi/yeniden
+        başlatmayı deneyiniz (Kötü Anahtar).
+    bad-id: Geçersiz Bulmaca tanımlayıcısı (ID).
+    not-found: İstenilen Bulmaca bulunamadı.
+    bad-category: İstenilen kategori bulunamadı.
+    bad-short-key: Girilen kısa anahtar geçersiz.
+    profane-title: Bulmaca ismi ayrımcı kelimeler (din, dil, ırk) içeriyor.
+    bad-title-too-many-spaces: Bulmaca ismi çok kısa.
+    bad-shape-key-in-emitter: Bir sabit üreticide geçersiz bir eşya mevcut.
+    bad-shape-key-in-goal: Bir hedef merkezinde geçersiz bir eşya mevcut.
+    no-emitters: Bulmacada hiç sabit üretici yok.
+    no-goals: Bulmacada hiç hedef merkezi yok.
+    short-key-already-taken: Bu kısa anahtar kullanılıyor, lütfen başka bir tane kullanınız.
+    can-not-report-your-own-puzzle: Kendi bulmacanızı şikayet edemezsiniz.
+    bad-payload: İstek geçersiz veri içeriyor.
+    bad-building-placement: Bulmacanızda uygun yerleştirilmeyen yapılar mevcut.
+    timeout: İstek zaman aşımına uğradı.
+    too-many-likes-already: Bulmacanın zaten çok beğenisi var. Yine de silmek
+        istiyorsanız support@shapez.io ile iletişime geçiniz!
+    no-permission: Bu işlemi yapmak için izniniz yok.
 tips:
     - Merkez, sadece mevcut şekli değil, her türlü girişi kabul eder!
     - Fabrikalarınızın modüler olduğundan emin olun - karşılığını alırsınız!
@@ -1270,108 +1368,3 @@ tips:
     - Farenizin ve kameranızın sınırlarını göstermek için F4'e iki kez basın.
     - Sol tarafta sabitlenmiş bir şekle tıklayarak sabitlemesini
       kaldırabilirsiniz.
-puzzleMenu:
-    play: Oyna
-    edit: Düzenle
-    title: Yapboz Modu
-    createPuzzle: Yapboz Oluştur
-    loadPuzzle: Yükle
-    reviewPuzzle: Gözat & Yayınla
-    validatingPuzzle: Yapboz onaylanıyor
-    submittingPuzzle: Yapboz yayınlanıyor
-    noPuzzles: Bu kısımda yapboz yok.
-    categories:
-        levels: Seviyeler
-        new: Yenİ
-        top-rated: En İyİ Değerlendirilen
-        mine: Yapbozlarım
-        easy: Kolay
-        hard: Zor
-        completed: Tamamlanan
-        medium: Orta
-        official: Resmİ
-        trending: Bugün öne çıkan
-        trending-weekly: Haftalık öne çıkan
-        categories: Kategorİler
-        difficulties: Zorluğa göre
-        account: Yapbozlarım
-        search: Ara
-    validation:
-        title: Geçersiz Yapboz
-        noProducers: Lütfen bir Sabit Üretici yerleştiriniz!
-        noGoalAcceptors: Lütfen bir Hedef Merkezi yerleştiriniz!
-        goalAcceptorNoItem: Bir veya birden fazla Hedef Merkezine şekil gönderilmedi.
-            Hedef belirlemek için onlara şekil gönderiniz.
-        goalAcceptorRateNotMet: Bir veya birden fazla Hedef Merkezi yeterince eşya
-            almıyor. Hedef Merkezlerindeki bütün göstergelerin yeşil olduğundan
-            emin olunuz.
-        buildingOutOfBounds: Bir veya birden fazla yapı inşa edilebilir alanın dışında.
-            Alanı azaltınız veya yapıları siliniz.
-        autoComplete: Yapbozunuz kendisini çözüyor! Sabit üreticilerin hedef
-            merkezlerine direkt olarak şekil göndermediğinden emin olunuz.
-    difficulties:
-        easy: Kolay
-        medium: Orta
-        hard: Zor
-        unknown: Değerlendirilmemiş
-    dlcHint: Paketi (DLC) çoktan aldın mı? Kütüphanende oyuna sağ tıklayarak,
-        Özellikler > DLC, paketi etkileştirmeyi unutma.
-    search:
-        action: Arama
-        placeholder: Bir yapboz veya tasarımcı adı giriniz.
-        includeCompleted: Tamamlananları Göster
-        difficulties:
-            any: Hepsi
-            easy: Kolay
-            medium: Orta
-            hard: Zor
-        durations:
-            any: Hepsi
-            short: Kısa (< 2 dk)
-            medium: Normal
-            long: Uzun (> 10 dk)
-backendErrors:
-    ratelimit: Çok sık işlem yapıyorsunuz. Biraz bekleyiniz.
-    invalid-api-key: Arka tarafla iletişim kurulamadı, lütfen oyunu
-        güncellemeyi/yeniden başlatmayı deneyiniz (Geçersiz Api Anahtarı).
-    unauthorized: Arka tarafla iletişim kurulamadı, lütfen oyunu
-        güncellemeyi/yeniden başlatmayı deneyiniz (Yetkisiz erişim).
-    bad-token: Arka tarafla iletişim kurulamadı, lütfen oyunu güncellemeyi/yeniden
-        başlatmayı deneyiniz (Kötü Anahtar).
-    bad-id: Geçersiz Yapboz tanımlayıcısı (ID).
-    not-found: İstenilen Yapboz bulunamadı.
-    bad-category: İstenilen kategori bulunamadı.
-    bad-short-key: Girilen kısa anahtar geçersiz.
-    profane-title: Yapboz ismi ayrımcı kelimeler(din,dil,ırk) içeriyor.
-    bad-title-too-many-spaces: Yapboz ismi çok kısa.
-    bad-shape-key-in-emitter: Bir sabit üreticide geçersiz bir eşya mevcut.
-    bad-shape-key-in-goal: Bir hedef merkezinde geçersiz bir eşya mevcut.
-    no-emitters: Yapbozda hiç sabit üretici yok.
-    no-goals: Yapbozda hiç hedef merkezi yok.
-    short-key-already-taken: Bu kısa anahtar kullanılıyor, lütfen başka bir tane kullanınız.
-    can-not-report-your-own-puzzle: Kendi yapbozunuzu şikayet edemezsiniz.
-    bad-payload: İstek geçersiz veri içeriyor.
-    bad-building-placement: Yapbozunuzda uygun yerleştirilmeyen yapılar mevcut.
-    timeout: İstek zaman aşımına uğradı.
-    too-many-likes-already: Yapbozun zaten çok beğenisi var. Yine de silmek
-        istiyorsanız support@shapez.io ile iletişime geçiniz!
-    no-permission: Bu işlemi yapmak için izniniz yok.
-mods:
-    title: Modlar
-    author: Sahibi
-    version: Sürüm
-    modWebsite: İnternet sitesi
-    openFolder: Mod Klasörünü Aç
-    folderOnlyStandalone: Mod klasörünü açmak sadece tam sürümü çalıştırıyorken mümkün.
-    browseMods: Modlara Gözat
-    modsInfo: Modları yüklemek ve yönetmek için, bunları oyun dizini içerisindeki
-        Modlar klasörüne kopyalayın. Ayrıca sağ üstteki 'Modlar Klasörünü Aç'
-        düğmesini de kullanabilirsiniz.
-    noModSupport: Mod yükleyebilmek için tam sürümü çalıştırmalısınız.
-    togglingComingSoon:
-        title: Yakında Gelecek
-        description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
-            dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
-            değiştirmek gelecekteki bir güncelleme için planlanmıştır!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
