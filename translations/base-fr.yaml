@@ -100,11 +100,11 @@ mainMenu:
         title: Mods Actifs
         warningPuzzleDLC: Jouer au DLC Puzzle n'est pas possible avec des mods.
             Désactivez-les pour jouer au DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Vous jouez désormais à la version complète du jeu!
+    logout: Déconnexion
+    noActiveSavegames: Aucune Sauvegarde trouvée - Cliquez sur jouer pour démarrer une nouvelle partie !
+    playFullVersionV2: Des ralentissements sur Steam ? Jouez à la version complète dans votre navigateur Internet !
+    playFullVersionStandalone: Vous pouvez désormais jouer à la version complète du jeu dans votre navigateur internet !
 dialogs:
     buttons:
         ok: OK
@@ -290,32 +290,32 @@ dialogs:
         title: Supprimer le puzzle ?
         desc: Êtes-vous sûr de vouloir supprimer '<title>' ? Cela sera irréversible !
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Attention Mods
+        desc: Les mods installés diffèrent de ceux utilisés dans la sauvegarde with.
+            Ceci peut corrompre la sauvegarde ou l'empêcher de se charger correctement. 
+            Etes-vous certain de vouloir poursuivre ?
+        missingMods: Mods Manquants
+        newMods: Nouveaux mods installés
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Echec du chargement des ressources
+        demoLinkText: Accédez à la démo sur Steam
+        descWeb: "Une ou plusieurs ressources ne peuvent pas être chargées. Vérifiez la stabilité de 
+            votre connexion internet puis réessayez. Si le problème perssiste,
+            assurez vous d'avoir désactivé toute extention de navigateur (bloqueurs de publicités compris).
+            <br><br> Autre alternative, vous pouvez également jouer à la
+            <demoOnSteamLinkText>. <br><br> Message d'erreur:"
+        descSteamDemo: "Une ou plusieurs ressources ne peuvent pas être chargées. Essayez de redémarrer le jeu
+             - Si le problème perssiste, Lancez une verification des fichiers du jeu ou réinstallez le complètement via Steam.
+             <br><br> Message d'erreur:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Déconnexion de la version complète du jeu
+        desc: Vous avez été déconnecté de la version Navigateur Complète car votre
+            connexion internet est instable ou vous jouez sur un autre appareil.
+            <br><br> Assurez vous de ne pas avoir un autre shapez d'ouvert dans un autre
+            navigateur ou un second ordinateur avec le même compte Steam.
+            <br><br> Vous pouvez vous connectez de nouveau dans le menu principal.
     steamSsoNoOwnership:
-        title: Full Edition not owned
+        title: Vous ne possédé par la version complète du jeu
         desc: In order to play the Full Edition in your Browser, you need to own both
             the base game and the Puzzle DLC on your Steam account.<br><br>
             Please make sure you own both, signed in with the correct Steam
@@ -494,10 +494,10 @@ ingame:
                 desc: Débloquez-les tous !
             mods:
                 title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                desc: Plus de 80 mods disponibles!
+        titleV2: "Récupérez la version complète sur Steam pour débloquer :"
+        titleExpiredV2: Démo terminée!
+        titleEnjoyingDemo: Avez-vous aimé jouer à la Demo?
     puzzleEditorSettings:
         zoneTitle: Zone
         zoneWidth: Largeur
@@ -1424,5 +1424,5 @@ mods:
             copiant le fichier du mod depuis ou vers le dossier des mods.
             Cependant, activer ou désactiver un mod est prévu pour une mise à
             jour future !
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: A cause des restrictions liées aux navigateurs internet, il n'est possible 
+        d'utiliser des mods que sur la version Steam - Désolé!
