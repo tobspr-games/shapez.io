@@ -100,11 +100,11 @@ mainMenu:
         title: Mods Actifs
         warningPuzzleDLC: Jouer au DLC Puzzle n'est pas possible avec des mods.
             Désactivez-les pour jouer au DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Vous jouez maintenant à la version complète !
+    logout: Déconnexion
+    noActiveSavegames: Aucune sauvegarde active trouvée - Cliquez sur Jouer pour commencer une nouvelle partie !
+    playFullVersionV2: Vous avez acheté la version complète sur Steam ? Jouez à la version complète sur votre navigateur !
+    playFullVersionStandalone: Vous pouvez maintenant aussi jouer à la version complète sur votre navigateur !
 dialogs:
     buttons:
         ok: OK
