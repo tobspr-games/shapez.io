@@ -771,7 +771,7 @@ buildings:
     goal_acceptor:
         default:
             name: Aceptador de objetivos
-            description: Tranporta figuras al aceptador de objetivos para ponerlas como
+            description: Transporta figuras al aceptador de objetivos para ponerlas como
                 objetivo.
     block:
         default:
@@ -1351,7 +1351,7 @@ puzzleMenu:
         easy: Fácil
         medium: Medio
         hard: Dificil
-        unknown: Unrated
+        unknown: Desconocido
     dlcHint: ¿Ya compraste el DLC? Asegurate de tenerlo activado haciendo click
         derecho a shapez.io en tu biblioteca, selecionando propiedades > DLCs.
     search:
