@@ -541,7 +541,7 @@ buildings:
             name: 垃圾桶
             description: 可以从所有四个方向上输入物品并永久清除它们。
     hub:
-        deliver: 交付
+        deliver: 需求
         toUnlock: 解锁
         levelShortcut: 关卡
         endOfDemo: 试玩版结束
