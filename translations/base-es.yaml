@@ -16,7 +16,7 @@ steamPage:
         Comprando el juego en Steam tienes acceso a la versión completa, ¡pero también puedes jugar una demo en shapez.io primero y decidir después!
     what_others_say: Lo que otras personas dicen sobre shapez.io
     nothernlion_comment: Este juego es estupendo - Estoy teniendo un tiempo
-        maravolloso jugano, y el tiempo ha pasado volando.
+        maravolloso jugando, y el tiempo ha pasado volando.
     notch_comment: Miércoles. Verdaderamente debería dormir, pero creo que acabo de
         descubrir como hacer un ordenador en shapez.io
     steam_review_comment: Este juego ha robado mi vida y no la quiero de vuelta. Muy
@@ -56,7 +56,7 @@ global:
     loggingIn: Iniciando sesión
     loadingResources: Descargando recursos adicionales (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOCIÓN ESPECIAL! La oferta termina el 7 de julio
 demoBanners:
     title: Versión de prueba
     intro: >-
@@ -84,7 +84,7 @@ mainMenu:
     newGame: Nuevo juego
     changelog: Historial de cambios
     subreddit: Reddit
-    importSavegame: Importar
+    importSavegame: Importar juego guardado
     openSourceHint: ¡Este juego es de código abierto!
     discordLink: Servidor de Discord oficial
     helpTranslate: ¡Ayuda a traducirlo!
@@ -157,7 +157,7 @@ dialogs:
             favor, confirma.
     keybindingsResetOk:
         title: Atajos de teclado reiniciados
-        desc: ¡Los atajos de teclado han sito reiniciados a los valores por defecto!
+        desc: ¡Los atajos de teclado han sido reiniciados a los valores por defecto!
     featureRestriction:
         title: Versión de prueba
         desc: Has intentado acceder a una característica (<feature>) que no está
@@ -1406,11 +1406,11 @@ mods:
         versión de escritorio.
     browseMods: Examinar Mods
     modsInfo: Para instalar y manejar mods, copialos en la carpeta de mods dentro
-        del directorio del juego. Tambien puedes usar el boton 'Abrir Carpeta de
+        del directorio del juego. También puedes usar el boton 'Abrir Carpeta de
         Mods' en la esquina superior derecha.
     noModSupport: Necesitas la versión de escritorio de Steam para instalar mods.
     togglingComingSoon:
-        title: Proximamente
+        title: Próximamente
         description: Solo es posible activar o desactivar mods copiando o removiendo el
             archivo del mod desde o en la carpeta mods/. Sin embargo, la
             posibilidad de activarlos o desactivarlos aquí está planeada para
