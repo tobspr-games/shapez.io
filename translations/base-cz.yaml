@@ -52,7 +52,7 @@ global:
     loggingIn: Přihlašuji
     loadingResources: Stahování dalších zdrojů (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: SPECIALNÍ NABÍDKA! Končí 7. července
 demoBanners:
     title: Demo verze
     intro: |-
@@ -97,11 +97,11 @@ mainMenu:
         title: Aktivní módy
         warningPuzzleDLC: Nelze hrát Puzzle DLC společně s módy. Prosím deaktivujte
             všechny módy, abyste mohli hrát DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Hrajete plnou verzi!
+    logout: Odhlásit se
+    noActiveSavegames: Žádné uložené hry nenalezenz - Klikněte na hrát, abyste začali novou hru!
+    playFullVersionV2: Koupili jste hru na Steamu? Hrajte plnou verzi v prohlížeči!
+    playFullVersionStandalone: Nyní můžete také hrát plnou verzi v prohlížeči!
 dialogs:
     buttons:
         ok: OK
@@ -286,16 +286,16 @@ dialogs:
         missingMods: Chybějící módy
         newMods: Nově nainstalované módy
     resourceLoadFailed:
-        title: Resources failed to load
+        title: Chyba načítání zdrojů
         demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        descWeb: "Jeden nebo více zdrojů nemohli být načteny. Ujistěte se že máte 
+            stabilní připojení a zkuste to znovu. Pokud problém setrvává, ujistěte se,
+            že máte vypnuté všechny rozšíření prohlížeče (včetně
+            adblocků).<br><br> Alternativně můžete hrát na
+            <demoOnSteamLinkText>. <br><br> Zpráva chyby:"
+        descSteamDemo: "Jeden nebo více zdrojů nemohli být načteny. Zkuste 
+            restartovat hru - Pokud to nepomůže, zkuste reinstalaci a verifikaci
+           herních souborů přes Steam. <br><br> Zpráva chyby:"
     steamSsoError:
         title: Full Version Logout
         desc: You have been logged out from the Full Browser Version since either your
@@ -330,7 +330,7 @@ ingame:
         clearSelection: Zrušit výběr
         pipette: Kapátko
         switchLayers: Změnit vrstvy
-        clearBelts: Clear belts
+        clearBelts: Zmasakrovat pásy
     buildingPlacement:
         cycleBuildingVariants: Zmáčkněte <key> pro přepínání mezi variantami.
         hotkeyLabel: "Klávesová zkratka: <key>"
@@ -475,14 +475,14 @@ ingame:
                 title: Podpořte mě
                 desc: Vyvíjím to ve svém volném čase!
             achievements:
-                title: Achievements
+                title: Dosažení
                 desc: Získejte je všechny!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Podpora módů!
+                desc: Více než 80 módů dostupných!
+        titleV2: "Získejte plnou verzi pro odemčení:"
+        titleExpiredV2: Demo dokončeno!
+        titleEnjoyingDemo: Užíváte si demo?
     puzzleEditorSettings:
         zoneTitle: Zóna
         zoneWidth: Šířka
@@ -492,9 +492,9 @@ ingame:
         share: Sdílet
         report: Nahlásit
         clearBuildings: Vymazat budovy
-        resetPuzzle: Resetovat puzzle
+        resetPuzzle: Resetovat hádanku
     puzzleEditorControls:
-        title: Puzzle editor
+        title: Úpravník hádanek
         instructions:
             - 1. Umístěte <strong>výrobníky</strong>, které poskytnou hráči
               tvary a barvy.
@@ -505,19 +505,19 @@ ingame:
               vyprodukovat (Označeno <strong>zeleným odznakem</strong>).
             - 4. Kliknutím na <strong>tlačítko zámku</strong> na určité budově
               dojde k její deaktivaci.
-            - 5. Jakmile kliknete na ověření, vaše puzzle bude ověřeno a můžete
-              ho publikovat.
+            - 5. Jakmile kliknete na ověření, vaše hádanka bude ověřena a můžete
+              ji publikovat.
             - 6. Během publikace budou kromě výrobníků a příjemců cílů
               <strong>všechny budovy odstraněny</strong> - To je ta část, na
               kterou má koneckonců každý hráč přijít sám. :)
     puzzleCompletion:
-        title: Puzzle dokončeno!
+        title: Hádanka dokončena!
         titleLike: "Klikněte na srdíčko, pokud se vám puzzle líbilo:"
-        titleRating: Jak obtížný ti tento puzzle přišel?
+        titleRating: Jak obtížná ti tato hádanka přišla?
         titleRatingDesc: Vaše hodnocení nám pomůže podat vám v budoucnu lepší návrhy
         continueBtn: Hrát dál
         menuBtn: Menu
-        nextPuzzle: Další puzzle
+        nextPuzzle: Další hádanka
     puzzleMetadata:
         author: Autor
         shortKey: Krátký klíč
@@ -656,17 +656,17 @@ buildings:
                 kterého lze například ovládat filtr tvarů a barev.
     logic_gate:
         default:
-            name: AND Gate
+            name: A brána
             description: Vysílá signál "1" pokud oba vstupy vysílají signál.
         not:
-            name: NOT Gate
+            name: NENE brána
             description: Vysílá signál "1" pokud oba vstupy nevysílají signál.
         xor:
-            name: XOR Gate
+            name: XNEBO brána
             description: Vysílá signál "1" pokud jeden vstup vysílá signál, ale druhý vstup
                 nevysílá signál.
         or:
-            name: OR Gate
+            name: NEBO brána
             description: Vysílá signál "1" pokud jeden vstup vysílá signál.
     transistor:
         default:
@@ -861,7 +861,7 @@ storyRewards:
         title: Logické brány
         desc: Právě jste odemkli <strong>logické brány</strong>! Nemusíte být zrovna
             nadšení, ale ve skutečnosti je to celkem cool!<br><br> S těmito
-            bránami můžete propočítat AND, OR, XOR a NOT operace.<br><br> Jako
+            bránami můžete propočítat A, NEBO, XNEBO a NENE operace.<br><br> Jako
             bonus navíc vám také zpřístupním <strong>tranzistor</strong>!
     reward_virtual_processing:
         title: Virtuální zpracování
@@ -1242,18 +1242,18 @@ tips:
 puzzleMenu:
     play: Hrát
     edit: Upravit
-    title: Puzzle mód
-    createPuzzle: Vytvořit puzzle
+    title: Hádankový mód
+    createPuzzle: Vytvořit hádanku
     loadPuzzle: Načíst
     reviewPuzzle: Ověření a publikace
-    validatingPuzzle: Ověřování puzzlu
-    submittingPuzzle: Odesílání puzzlu
-    noPuzzles: V této sekci momentálně nejsou žádné puzzly.
+    validatingPuzzle: Ověřování hádanky
+    submittingPuzzle: Odesílání hádanky
+    noPuzzles: V této sekci momentálně nejsou žádné hádanky.
     categories:
         levels: Úrovně
         new: Nové
         top-rated: Nejlépe hodnocené
-        mine: Moje puzzly
+        mine: Moje hádanky
         easy: Lehké
         hard: Těžké
         completed: Dokončeno
@@ -1263,10 +1263,10 @@ puzzleMenu:
         trending-weekly: Populární týdně
         categories: Kategorie
         difficulties: Dle obtížnosti
-        account: Moje puzzly
+        account: Moje hádanky
         search: Vyhledávání
     validation:
-        title: Neplatný puzzle
+        title: Neplatná hádanka
         noProducers: Prosím umístěte výrobník!
         noGoalAcceptors: Prosím umístěte příjemce cílů!
         goalAcceptorNoItem: Jeden nebo více příjemců cílů ještě nemají nastavený tvar.
@@ -1276,7 +1276,7 @@ puzzleMenu:
             příjemce.
         buildingOutOfBounds: Jedna nebo více budov je mimo zastavitelnou oblast. Buď
             zvětšete plochu, nebo je odstraňte.
-        autoComplete: Váš puzzle automaticky dokončuje sám sebe! Ujistěte se, že
+        autoComplete: Vaše hádanka automaticky dokončuje sám sebe! Ujistěte se, že
             vyrobníky nedodávají své tvary přímo do přijemců cílů.
     difficulties:
         easy: Lehká
@@ -1312,18 +1312,18 @@ backendErrors:
     not-found: Daný puzzle nebyl nalezen.
     bad-category: Daná kategorie nebyla nalezena.
     bad-short-key: Krátký klíč je neplatný.
-    profane-title: Název vašeho puzzlu obsahuje rouhavá slova.
-    bad-title-too-many-spaces: Název vašeho puzzlu je příliš krátký.
+    profane-title: Název vaší hádanky obsahuje rouhavá slova.
+    bad-title-too-many-spaces: Název vaší hádanky je příliš krátký.
     bad-shape-key-in-emitter: Výrobník má nastaven neplatný tvar.
     bad-shape-key-in-goal: Příjemce cílů má nastaven neplatný tvar.
-    no-emitters: Váš puzzle neobsahuje žádné výrobníky.
-    no-goals: Váš puzzle neobsahuje žádné příjemce cílů.
+    no-emitters: Vaše hádanka neobsahuje žádné výrobníky.
+    no-goals: Vaše hádanka neobsahuje žádné příjemce cílů.
     short-key-already-taken: Tento krátký klíč je již používán, zadejte prosím jiný.
     can-not-report-your-own-puzzle: Nemůžete nahlásit vlastní puzzle.
     bad-payload: Žádost obsahuje neplatná data.
-    bad-building-placement: Váš puzzle obsahuje neplatně umístěné budovy.
+    bad-building-placement: Vaše hádanka obsahuje neplatně umístěné budovy.
     timeout: Žádost vypršela.
-    too-many-likes-already: Tento puzzle již získal příliš mnoho lajků. Pokud jej
+    too-many-likes-already: Tato hádanka již získala příliš mnoho lajků. Pokud ji
         přesto chcete odstranit, kontaktujte nás prosím na support@shapez.io!
     no-permission: K provedení této akce nemáte oprávnění.
 mods:
@@ -1343,5 +1343,5 @@ mods:
         description: Aktivace či deaktivace módů je v současné době možná pouze
             kopírováním souboru módu z nebo do mods/ složky. Nicméně, možnost
             správy módů přímo ze hry je plánována pro budoucí aktualizaci!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Kvůli omezením prohlížeče je aktuálně možné
+       instalovat módy jen do Steam verze - Je mi to líto :c
