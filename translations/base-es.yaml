@@ -56,7 +56,7 @@ global:
     loggingIn: Iniciando sesión
     loadingResources: Descargando recursos adicionales (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: OFERTA ESPECIAL! La oferta termina el 7 de julio
 demoBanners:
     title: Versión de prueba
     intro: >-
@@ -142,8 +142,8 @@ dialogs:
             '<savegameName>' que está en el nivel <savegameLevel><br><br> ¡Esto
             no se puede deshacer!
     savegameDeletionError:
-        title: Fallo al borrar
-        text: "Fallo al borrar la partida guardada:"
+        title: Error al borrar
+        text: "Hubo un problema al borrar la partida guardada:"
     restartRequired:
         title: Reinicio requerido
         text: Tienes que reinciar la partida para aplicar los cambios.
