@@ -51,9 +51,9 @@ global:
         shift: SHIFT
         space: SZÓKÖZ
     loggingIn: Bejelentkezés
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: További erőforrások letöltése... (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: KÜLÖNLEGES AJÁNLAT! Az ajánlat lejár július 7-én.
 demoBanners:
     title: Demó verzió
     intro: |-
@@ -93,13 +93,13 @@ mainMenu:
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
         Szerezd meg a Puzzle DLC-t a Steamen most!
     puzzleDlcWishlist: Kívánságlistára vele!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: DLC megnézése
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
+        title: Aktív modok
+        warningPuzzleDLC: A Puzzle DLC használata nem lehetséges modokkal.
+        Kérlek tiltsd le az összes modot a Puzzle DLC-vel való játékhoz!
+    playingFullVersion: A teljes verzióval játszol!
+    logout: Kijelentkezés
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
     playFullVersionStandalone: You can now also play the full version in your Browser!
