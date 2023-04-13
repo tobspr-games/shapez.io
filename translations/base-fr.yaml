@@ -800,9 +800,9 @@ storyRewards:
     reward_stacker:
         title: Assembleur
         desc: Vous pouvez maintenant assembler deux formes avec le
-            <strong>combineur</strong> ! Les deux entrées sont assemblées,si
+            <strong>combineur</strong> ! Les deux entrées sont assemblées ; si
             elles peuvent être mises l’une à côté de l’autre, elles sont
-            <strong>fusionnées</strong>, sinon, la forme de droite est
+            <strong>fusionnées</strong>. Sinon, la forme de droite est
             <strong>placée au-dessus</strong> de la forme de gauche.
     reward_balancer:
         title: Répartiteur
@@ -838,7 +838,7 @@ storyRewards:
             fusionne en un seul convoyeur !
     reward_splitter:
         title: Répartiteur compact
-        desc: Vous avez débloqué le <strong>répartiteur compact</strong> une variante du
+        desc: Vous avez débloqué le <strong>répartiteur compact</strong>, une variante du
             <strong>répartiteur</strong> - Il accepte une entrée et la divise en
             deux !
     reward_belt_reader:
@@ -853,7 +853,7 @@ storyRewards:
             plutôt que seulement deux !
     reward_painter_double:
         title: Station de peinture double
-        desc: Vous avez débloqué une variante de la  <strong>station de
+        desc: Vous avez débloqué une variante de la <strong>station de
             peinture</strong> — Elle fonctionne comme la station de peinture de
             base, mais elle permet de traiter <strong>deux formes à la
             fois</strong> en ne consommant qu’une couleur au lieu de deux !
@@ -862,7 +862,7 @@ storyRewards:
         desc: Vous avez débloqué le bâtiment de <strong>stockage</strong>. Il permet de
             stocker des objets jusqu’à une certaine limite !<br><br> Il priorise
             la sortie gauche, vous pouvez donc aussi l’utiliser comme
-            <strong>drain de débordement</strong> !
+            <strong>barrière de débordement</strong> !
     reward_blueprints:
         title: Plans
         desc: Vous pouvez maintenant <strong>copier et coller</strong> des parties de
@@ -918,8 +918,8 @@ storyRewards:
         desc: Je viens de vous donner tout un tas de nouveaux bâtiments qui vous
             permettent de <strong>simuler le traitement des
             formes</strong>!<br><br> Vous pouvez maintenant simuler un
-            découpeur, un pivoteur, un assembleur et plus encore sur la couche
-            des fils ! Avec cela vous avez maintenant trois options pour
+            découpeur, un pivoteur, un assembleur et plus encore sur le calque de
+            câblage ! Avec cela vous avez maintenant trois options pour
             continuer le jeu:<br><br> - Construire une <strong>machine
             automatique</strong> pour créer toute forme possible demandée par le
             HUB (Je recommande d'essayer de le faire !).<br><br> - Construire
@@ -1143,7 +1143,7 @@ keybindings:
         massSelect: Sélection de zone
         buildings: Raccourcis bâtiment
         placementModifiers: Modificateurs de placement
-        mods: Provided by Mods
+        mods: Fourni par des mods
     mappings:
         confirm: Confirmer
         back: Retour
@@ -1413,16 +1413,16 @@ mods:
     folderOnlyStandalone: Ouvrir le dossier des mods est uniquement possible avec la
         version complète
     browseMods: Chercher les Mods
-    modsInfo: Pour installer et gérer les mods, copier-les dans le dossier Mods dans
+    modsInfo: Pour installer et gérer les mods, copiez-les dans le dossier Mods dans
         le répertoire du jeu. Vous pouvez aussi utiliser le bouton 'Ouvrir le
-        dossier des Mods' en haut à droite
+        dossier des Mods' en haut à droite.
     noModSupport: Vous avez besoin de la version complète sur Steam pour installer
         des mods.
     togglingComingSoon:
         title: Bientôt disponible
-        description: Activer ou désactiver un mod est pour le moment possible qu'en
+        description: Activer ou désactiver un mod n'est pour le moment possible qu'en
             copiant le fichier du mod depuis ou vers le dossier des mods.
             Cependant, activer ou désactiver un mod est prévu pour une mise à
             jour future !
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: En raison des restrictions des navigateurs, l'installation
+            de mods n'est possible que sur la version Steam.
