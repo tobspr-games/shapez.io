@@ -65,7 +65,7 @@ demoBanners:
             <li>……以及更多！</li>
         </ul>
     playtimeDisclaimer: 完整版包括多达 <strong>20 小时的新内容</strong>
-    playerCount: <playerCount> 个像你一样的玩家目前正在 Steam 上玩 shapez
+    playerCount: <playerCount> 个和你一样的玩家正在 Steam 上玩 shapez。
     untilEndOfDemo: 直到演示结束
     playtimeDisclaimerDownload: 您可以在完整版中继续您的存档游戏！ 点击<strong>此处</strong>下载您的存档游戏。
     titleV2: 现在就玩完整版的。
@@ -96,9 +96,9 @@ mainMenu:
         warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者” DLC，请关闭所有游戏模组（Mods）。
     playingFullVersion: 您正在玩完整版游戏！
     logout: 登出
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: 没有找到存档 - 点击开始游戏以创建新存档！
+    playFullVersionV2: 已经在Steam上购买了ShapeZ？ 在你的浏览器中玩完整版吧！
+    playFullVersionStandalone: 你现在可以在你的浏览器中玩完整版了！
 dialogs:
     buttons:
         ok: 确认
@@ -126,7 +126,7 @@ dialogs:
         text: 未能读取您的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 您确定要删除这个游戏吗？<br><br> “<savegameName>” 等级 <savegameLevel><br><br> 该操作无法回退！
+        text: 您确定要删除这个游戏吗？<br><br> “<savegameName>” 等级 <savegameLevel><br><br> 该操作无法撤销！
     savegameDeletionError:
         title: 删除失败
         text: 未能删除您的存档
@@ -272,7 +272,7 @@ dialogs:
             请确认您没有在其他浏览器或电脑用同一Steam账号登录《异形工厂》（Shapez）。<br><br> 您可以从主界面再次登录。
     steamSsoNoOwnership:
         title: 尚未获得完整版
-        desc: 在浏览器内玩完整版游戏，您需要通过Steam购买游戏本体和DLC<br><br> 请确认您已经购买，请使用同一Steam账号登录并再次尝试。
+        desc: 在浏览器内玩完整版游戏，您需要通过Steam购买游戏本体和DLC<br><br> 请确认您已经购买后再次尝试使用同一Steam账号登录。
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -1018,7 +1018,7 @@ demo:
         exportingBase: 导出工厂截图
     settingNotAvailable: 在试玩版中不可用。
 tips:
-    - 基地接受所有创造后输入的图形！并不限于现有的图形！
+    - 基地可以接受所有类型的图形，不仅限于当前所需要的。
     - 让你的工厂尽量模块化，不然后期你会面对大麻烦！
     - 不要让设施太过靠近基地，不然可能会乱成一锅粥！
     - 如果堆叠不起作用，尝试切换输入的图形来重新组合。
@@ -1030,7 +1030,7 @@ tips:
     - 您可以使用 <b>T</b> 键切换不同的设施变种。
     - 对称是关键！
     - 您可以使用隧道构建不同层次的通道。
-    - 试着建造紧凑型工厂，它会给您带来好处的！
+    - 试着建造紧凑型工厂，未来的你会感谢这个决定！
     - 您可以按 <b>T</b> 来切换上色器的镜像变体。
     - 正确的设施比例将使效率最大化。
     - 在传送带和开采器等级一致时，5 个开采器就可以占满一条传送带的运量。
@@ -1065,7 +1065,7 @@ tips:
     - 地图无限，放飞想象，尽情创造。
     - 向您推荐 Factorio！这是我最喜欢的游戏。向神作致敬！
     - 四向切割机从右上开始进行顺时针切割！
-    - 在主界面您可以下载您的游戏存档文件！
+    - 您可以在主界面下载您的存档文件！
     - 这个游戏有很多有用的快捷键！一定要到快捷键页面看看。
     - 这个游戏有很多设置可以提高游戏效率，请一定要了解一下！
     - 中心基地有个指向它所在方向的小指南指针！
@@ -1165,4 +1165,4 @@ mods:
             当前只能通过将游戏模组（Mods）文件复制到 mods 文件夹或从 mods 文件夹移除来启用或禁用游戏模组（Mods）。
             但是，可以切换游戏模组（Mods）已经计划在之后的更新中实现！
     modWebsite: 模组网站
-    browserNoSupport: 由于浏览器功能限制，目前游戏模组（Mods）只能在Steam版本中安装进行。敬请理解！
+    browserNoSupport: 由于浏览器功能限制，目前游戏模组（Mods）只能在Steam版本中安装进行。敬请谅解！
