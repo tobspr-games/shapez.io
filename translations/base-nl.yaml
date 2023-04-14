@@ -13,7 +13,9 @@ steamPage:
 
         Ondanks het feit dat je in het begin alleen vormen maakt, komt er een punt waarop je ze gaat kleuren. Deze kleuren kun je vinden en mengen!
 
-        Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen om over te schakelen zonder voortgang te verliezen.
+        Door het spel op Steam te kopen kun je de volledige versie spelen. Je kunt echter ook een demo versie spelen op shapez.io en later beslissen om over
+        
+        te schakelen zonder voortgang te verliezen.
     what_others_say: Wat anderen vinden van shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
@@ -76,7 +78,7 @@ demoBanners:
     titleV2: "Speel de volledige versie nu voor:"
 mainMenu:
     play: Spelen
-    changelog: Wijzigingenlijst
+    changelog: Veranderingslogboek
     importSavegame: Importeren
     openSourceHint: Dit spel is open source!
     discordLink: Officiële Discord-server (Engelstalig)
@@ -102,7 +104,7 @@ mainMenu:
         warningPuzzleDLC: Het spelen van de Puzzle DLC is niet mogelijk met mods.
             Schakel alsjeblieft alle mods uit om de DLC te spelen.
     playingFullVersion: You are now playing the full version!
-    logout: Logout
+    logout: Loguit
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
     playFullVersionStandalone: You can now also play the full version in your Browser!
