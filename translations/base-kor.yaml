@@ -48,7 +48,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: 로그인 중
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: 추가 리소스 다운로드중 (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
@@ -93,7 +93,7 @@ mainMenu:
         title: Active Mods
         warningPuzzleDLC: 퍼즐 DLC는 모드와 호환되지 않습니다. DLC 플레이 전 모든 모드를 비활성화 해주세요.
     playingFullVersion: You are now playing the full version!
-    logout: Logout
+    logout: 로그아웃
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
     playFullVersionStandalone: You can now also play the full version in your Browser!
@@ -484,10 +484,10 @@ ingame:
         title: 퍼즐 완료됨!
         titleLike: "퍼즐이 좋았다면 하트를 눌러주세요:"
         titleRating: 퍼즐의 난이도는 어땠나요?
-        titleRatingDesc: 당신의 평가는 제가 미래에 더 나은 평가를 만들수 있도록 도울 수 있습니다.
+        titleRatingDesc: 당신의 평가는 제가 미래에 더 나은 평가를 만들 수 있도록 도울 수 있습니다.
         continueBtn: 계속 플레이하기
         menuBtn: 메뉴
-        nextPuzzle: Next Puzzle
+        nextPuzzle: 다음 퍼즐
     puzzleMetadata:
         author: 제작자
         shortKey: 짧은 키
