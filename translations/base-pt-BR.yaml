@@ -53,22 +53,22 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta termina em 7 de Julho
 demoBanners:
     title: Versão Demo
     intro: |-
         Obtenha o jogo completo <forte>suave</forte> para desbloquear:<ul>
-            <li>Todos os 26 níveis + infinite Freeplay</li>
+            <li>Todos os 26 níveis + Freeplay infinito</li>
             <li>22 novas construções</li>
-            <li>Suporte Mod</li>
+            <li>Suporte de Modificações</li>
             <li>Realizações</li>
-            <li>Dark Mod</li>
+            <li>Modo Escuro</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
-    playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
+    playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
+    playerCount: <playerCount> Jogadores como você estão jogando shapez on Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
     playtimeDisclaimerDownload: Você pode continuar seu jogo salvo na versão
@@ -78,9 +78,9 @@ mainMenu:
     play: Jogar
     continue: Continuar
     newGame: Novo jogo
-    changelog: Changelog
+    changelog: Registro de Mudanças
     subreddit: Reddit
-    importSavegame: Importar save
+    importSavegame: Importar jogo
     openSourceHint: Esse jogo tem código aberto!
     discordLink: Discord oficial
     helpTranslate: Ajude a traduzir!
@@ -95,24 +95,24 @@ mainMenu:
     puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
         já disponível na Steam para se divertir ainda mais!
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Visualização Dlc
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Modos Ativos
+        warningPuzzleDLC: Não é possível jogar Puzzle DLC com mods. Por favor
+            desabilite todos os mods para jogar o DLC.
+    playingFullVersion: Agora você está jogando a versão completa!
+    logout: Desconectar
+    noActiveSavegames: Nenhum jogo salvo encontrado - Clique em Jogar para iniciar um novo jogo!
+    playFullVersionV2: Comprou shapez no Steam? Jogue a versão completa no seu Browser!
+    playFullVersionStandalone: Você também pode jogar a versão completa no seu Browser!
 dialogs:
     buttons:
         ok: OK
-        delete: Deletar
+        delete: Excluir
         cancel: Cancelar
         later: Voltar
         restart: Reiniciar
-        reset: Resetar
+        reset: Reiniciar
         getStandalone: Obter versão completa
         deleteGame: Sei o que estou fazendo
         viewUpdate: Atualizações
@@ -285,36 +285,36 @@ dialogs:
         title: Delete Puzzle?
         desc: Are you sure you want to delete '<title>'? This can not be undone!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Aviso de Mod
+        desc: Os mods atualmente instalados diferem dos mods que o savegame criou.
+            Isso pode fazer com que o savegame se perca ou não seja mais carregado. Are
+            Tem certeza que deseja continuar?
+        missingMods: Mods não encontrados
+        newMods: Mods recentemente instalados
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Falha ao carregar os recursos
+        demoLinkText: Demonstração do shapez no Steam
+        descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de que você tem
+            uma conexão instável de internet e tente novamente. Se isso não resolver,
+            certifique-se que desabilitou todas as extensões do browser (incluindo
+            adblockers).<br><br> Como alternativa, você pode jogar a
+            <demoOnSteamLinkText>. <br><br> Mensagem de Erro:"
+        descSteamDemo: "Um ou mais recursos não puderam ser carregados. Tente reiniciar o
+            jogo - Se isso não resolver, tente reinstalar e verificar os
+            arquivos do jogo via Steam. <br><br> Mensagem de Erro:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Sair da versão completa
+        desc: Você deslogou da Versão Completa de Browser desde que sua
+            conexão de internet é instável ou você está jogando em outro
+            dispositivo.<br><br> Certifique-se de não ter outra instancia do shapez aberto
+            em outra aba do browser ou outro computador com a mesma conta da Steam.<br><br>
+            Você pode se logar novamente no menu principal.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Edição completa não adquirida
+        desc: Para jogar a Edição Completa no seu Browser, você precisa possuir
+            o jogo base e o Puzzle DLC na sua conta da Steam.<br><br>
+            Favor certificar-se de ter ambos, assinados na conta correta da Steam
+            e então tente novamente.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -327,7 +327,7 @@ ingame:
         toggleHud: Ocultar interface
         placeBuilding: Construir objeto
         createMarker: Criar marcador
-        delete: Destruir
+        delete: Excluir
         pasteLastBlueprint: Colar último projeto
         lockBeltDirection: Ativar Planejamento de Esteiras
         plannerSwitchSide: Girar Planejamento
@@ -366,7 +366,7 @@ ingame:
     notifications:
         newUpgrade: Nova melhoria disponível!
         gameSaved: Seu jogo foi salvo.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Nível <level> foi completado!
     shop:
         title: Melhorias
         buttonUnlock: Melhorar
@@ -486,11 +486,11 @@ ingame:
                 title: Conquistas
                 desc: Consiga todas elas!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Suporte para Modding!
+                desc: Mais de 80 mods disponíveis!
+        titleV2: "Obtenha a versão completa agona no Steam para desbloquear:"
+        titleExpiredV2: Demo completado!
+        titleEnjoyingDemo: Gostou da demo?
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura
@@ -499,8 +499,8 @@ ingame:
         clearItems: Limpar Items
         share: Compartilhar
         report: Denunciar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Limpar Construções
+        resetPuzzle: Reiniciar Puzzle
     puzzleEditorControls:
         title: Criador de Desafios
         instructions:
@@ -527,7 +527,7 @@ ingame:
         titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
         continueBtn: Continuar jogando
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Próximo Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Código
@@ -615,15 +615,15 @@ buildings:
     painter:
         default:
             name: Pintor
-            description: Colore a forma inteira na entrada esquerda com a cor da entrada
+            description: Pinta a forma inteira na entrada esquerda com a cor da entrada
                 direita.
         mirrored:
             name: Pintor
-            description: Colore a forma inteira na entrada esquerda com a cor da entrada
+            description: Pinta a forma inteira na entrada esquerda com a cor da entrada
                 direita.
         double:
             name: Pintor (Duplo)
-            description: Colore as formas na entrada esquerda com a cor da entrada superior.
+            description: Pinta as formas na entrada esquerda com a cor da entrada superior.
         quad:
             name: Pintor (Quádruplo)
             description: Permite que você pinte cada quadrante da forma individualmente.
@@ -1018,7 +1018,7 @@ settings:
             title: Posicionamento Múltiplo
             description: Se ativado, todas as construções permanecerão selecionadas após o
                 posicionamento até que você a cancele. Isso é equivalente a
-                pressionar  SHIFT permanentemente.
+                pressionar SHIFT permanentemente.
         offerHints:
             title: Dicas e Tutoriais
             description: Se ativado, oferece dicas e tutoriais enquanto se joga. Além disso,
@@ -1107,7 +1107,7 @@ settings:
                 construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Novo!
 keybindings:
     title: Controles
     hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
@@ -1121,7 +1121,7 @@ keybindings:
         massSelect: Seleção em Massa
         buildings: Construções
         placementModifiers: Modificadores
-        mods: Provided by Mods
+        mods: Disponibilizado por Mods
     mappings:
         confirm: Confirmar
         back: Voltar
@@ -1303,13 +1303,13 @@ puzzleMenu:
         hard: Difícil
         completed: Completados
         medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        official: Oficial
+        trending: Em alta hoje
+        trending-weekly: Em alta na semana
+        categories: Categorias
+        difficulties: Por Dificuldade
+        account: Meus Puzzles
+        search: Procura
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
@@ -1325,26 +1325,26 @@ puzzleMenu:
             Produtores Constantes não estão entregando diretamente aos seus
             Receptores de Objetivo.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Fácil
+        medium: Médio
+        hard: Difícil
+        unknown: Sem classificação
+    dlcHint: Já comprou o DLC? Certifique-se de ativá-lo clicando com o botão direito 
+        shapez.io em usa biblioteca, selecionando Propriedades > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Pesquisa
+        placeholder: Informe um puzzle ou nome de autor
+        includeCompleted: Inclusão Concluída
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Qualquer Dificuldade
+            easy: Fácil
+            medium: Médio
+            hard: Difícil
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Qualquer Duração
+            short: Curta (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longa (> 10 min)
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
@@ -1368,25 +1368,24 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Este puzzle já tem muitos likes. Se você quer continuar
+        a removê-lo, por favor entre em contato com support@shapez.io!
+    no-permission: Você não tem permissão para concluir esta ação.
 mods:
     title: Mods
-    author: Author
-    version: Version
+    author: Autor
+    version: Versão
     modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    openFolder: Abrir Pasta de Mods
+    folderOnlyStandalone: Só é possível abrir a pasta de mods quando executando a versão independente.
+    browseMods: Explorar Mods
+    modsInfo: Para gerenciar e instalar mods, copie para a pasta de mods junto ao
+        diretório do jogo. Você também pode usar o botão 'Abrir Pasta de Mods' no
+        topo direito.
+    noModSupport: Você precisa ter a versão independente no Steam para instalar mods.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Em Breve
+        description: Habilitar ou desabilitar mods é atualmente possível apenas copiando
+            o arquivo do mod de ou para a pasta de mods. No entanto, a capacidade de ativá-los/desativá-los
+            aqui está planejada para uma atualização futura!
+    browserNoSupport: Devido às restrições do navegador, atualmente só é possível instalar mods na versão Steam - Desculpe!
