@@ -56,7 +56,7 @@ global:
     loggingIn: Logowanie
     loadingResources: Pobieranie dodatkowych zasobów (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: SPECJALNA PROMOCJA! Oferta kończy się 7 Lipca
 demoBanners:
     title: Wersja demonstracyjna
     intro: |-
@@ -101,10 +101,10 @@ mainMenu:
         warningPuzzleDLC: Granie w DLC Układanek nie jest możliwe z modami. Proszę
             wyłącz wszystkie mody, aby otworzyć DLC.
     playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    logout: Wyloguj
+    noActiveSavegames: Nie znaleziono aktywnych zapisów gry - Kliknij rozpocznij aby zacząć nową grę!
+    playFullVersionV2: Zakupiłeś shapez na platformie Steam? Zagraj w pełną wersję w przeglądarce!
+    playFullVersionStandalone: Możesz teraz odtwarzać pełną wersję w przeglądarce!
 dialogs:
     buttons:
         ok: Ok
@@ -118,9 +118,9 @@ dialogs:
         viewUpdate: Zobacz aktualizację
         showUpgrades: Pokaż ulepszenia
         showKeybindings: Pokaż Klawiszologię
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Powtórz
+        continue: Kontynuuj
+        playOffline: Graj Offline
     importSavegameError:
         title: Błąd importowania
         text: "Nie udało się zaimportować twojego zapisu gry:"
@@ -293,32 +293,31 @@ dialogs:
         desc: Aktualnie zainstalowane mody różnią się od tych, które zostały utworzone w
             zapisie gry. Może to spowodować, że zapis gry się zepsuje lub w
             ogóle się nie załaduje. Czy na pewno chcesz kontynuować?
-        missingMods: Missing Mods
+        missingMods: Brakujące Mody 
         newMods: Ostatnio zainstalowane Mody
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Niepowodzenie załadowania zasobów
+        demoLinkText: Demo shapez na steam
+        descWeb: "Nie można załadować jednego lub więcej zasobów. Upewnij się, że masz stabilne połączenie internetowe i spróbuj ponownie. 
+            Jeżeli nadal występują problemy upewnij się, że masz wyłączone wszystkie rozszerzenia przeglądarki ( włącznie z Adblockerem)
+            <br><br> Alternatywnie - możesz zagrać w
+            <demoOnSteamLinkText>. <br><br> Komunikat błędu:"
+        descSteamDemo: "Nie można załadować jednego lub więcej zasobów. Spróbuj zrestartowac
+            grę - Jeśli to nie pomoże, spróbuj zainstalować grę ponownie i zweryfikować
+            pliki gry poprzez Steam. <br><br> Komunikat błędu:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Pełna Wersja Wylogowana
+        desc: Zostałeś wylogowany z Pełnej Wersji w Przeglądarce ponieważ twoje
+            połączenie internetowe jest niestabilne lub grasz na innym
+            urządzeniy.<br><br> Upewnij się, że nie masz otwartej gry Shapez w
+            innej przeglądarce lub na innym komputerze z tym samym kontem
+            Steam.<br><br> Możesz zalogować się ponownie w Menu Głównym.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Nie posiadasz pełnej wersji
+        desc: Aby zagrać w pełną wersję gry w przeglądarce, musisz posiadać
+            podstawową wersję gry oraz Puzzle DLC na twoim koncie Steam.<br><br>
+            Upewnij się,że posiadasz obydwa zainstalowanie i jesteś zalogowany na właściwym
+            koncie Steam i spróbuj ponownie.
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -487,11 +486,11 @@ ingame:
                 title: Osiągnięcia
                 desc: Zbierz je wszystkie!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Wsparcie modów!
+                desc: Dostępnych ponad 80 modów!
+        titleV2: "Uzyskaj pełną wersję na Steam, aby odblokować:"
+        titleExpiredV2: Demo ukończone!
+        titleEnjoyingDemo: Podobało Ci się demo?
     puzzleEditorSettings:
         zoneTitle: Obszar
         zoneWidth: Wysokość
@@ -1384,5 +1383,4 @@ mods:
         description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez
             kopiowanie pliku modów do folderu "mods/". Jednak w przyszłej
             aktualizacji będziesz/asz mógł zmieniać ich status tutaj!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Ze względu na ograniczenia przeglądarki mody można instalować tylko za pośrednictwem klienta Steam - Przepraszamy!
