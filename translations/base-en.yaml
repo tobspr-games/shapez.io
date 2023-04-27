@@ -835,10 +835,10 @@ buildings:
     cutter:
         default:
             name: &cutter Cutter
-            description: Cuts shapes from top to bottom and outputs both halves. <strong>If you use only one part, be sure to destroy the other part or it will clog and stall!</strong>
+            description: Cuts shapes from top to bottom and outputs both halves. If you use only one part, be sure to destroy the other part or it will clog and stall!
         quad:
             name: Cutter (Quad)
-            description: Cuts shapes into four parts. <strong>If you use only one part, be sure to destroy the other parts or it will clog and stall!</strong>
+            description: Cuts shapes into four parts. If you use only one part, be sure to destroy the other parts or it will clog and stall!
 
     rotater:
         default:
