@@ -53,21 +53,21 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: Promoção especial! Oferta acaba dia 7 de julho SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
     title: Versão Demo
     intro: |-
         Obtenha o jogo completo <forte>suave</forte> para desbloquear:<ul>
             <li>Todos os 26 níveis + infinite Freeplay</li>
             <li>22 novas construções</li>
-            <li>Suporte Mod</li>
+            <li>Suporte para Mods</li>
             <li>Realizações</li>
-            <li>Dark Mod</li>
+            <li>Modo escuro</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
+    playtimeDisclaimer: A versão completa tem mais de <strong>20 horas de conteudo</strong>.
     playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
@@ -95,9 +95,9 @@ mainMenu:
     puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
         já disponível na Steam para se divertir ainda mais!
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: View DLC
     mods:
-        title: Active Mods
+        title: Mods ativos
         warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
             disable all mods to play the DLC.
     playingFullVersion: You are now playing the full version!
@@ -282,15 +282,14 @@ dialogs:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Deletar o puzzle?
+        desc: Tem certeza que quer deletar '<title>'? Isso não pode ser disfeito!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Aviso de Mod
+        desc: Os mods instalados diferem dos mods que o savegame foi criado. Isto pode fazer que seu savegame seja corrompido ou não carregar mais.
+        Tem certeza que quer continuar?
+        missingMods: Faltando Mods
+        newMods: Novos Mods instalados
     resourceLoadFailed:
         title: Resources failed to load
         demoLinkText: shapez demo on Steam
@@ -1342,9 +1341,9 @@ puzzleMenu:
             hard: Hard
         durations:
             any: Any Duration
-            short: Short (< 2 min)
+            short: Curto (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longo (> 10 min)
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
@@ -1373,10 +1372,10 @@ backendErrors:
     no-permission: You do not have the permission to perform this action.
 mods:
     title: Mods
-    author: Author
-    version: Version
+    author: Autor
+    version: Versão
     modWebsite: Website
-    openFolder: Open Mods Folder
+    openFolder: Abrir pasta de Mods
     folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
     browseMods: Browse Mods
     modsInfo: To install and manage mods, copy them to the mods folder within the
