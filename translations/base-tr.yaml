@@ -54,7 +54,7 @@ global:
     loggingIn: Giriş yapılıyor
     loadingResources: Ek kaynaklar indiriliyor... (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: ÖZEL PROMOSYON! Teklif 7 Temmuz'da sona eriyor
 demoBanners:
     title: Deneme Sürümü
     intro: |-
@@ -99,14 +99,14 @@ mainMenu:
         title: Aktif Modlar
         warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
             DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Artık tam sürümü oynuyorsunuz!
+    logout: Çıkış Yap
+    noActiveSavegames: Aktif kayıtlı oyun bulunamadı - Yeni bir oyuna başlamak için Oynat'a tıklayın!
+    playFullVersionV2: Shapez'i Steam'de mi satın aldınız? Tarayıcınızda tam sürümü oynayın!
+    playFullVersionStandalone: Artık tarayıcınızda tam sürümü de oynayabilirsiniz!
 dialogs:
     buttons:
-        ok: OK
+        ok: TAMAM
         delete: SİL
         cancel: İptal
         later: Sonra
@@ -293,29 +293,28 @@ dialogs:
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Kaynaklar yüklenemedi
+        demoLinkText: Steam'de shapez demosu
+        descWeb: "Bir veya daha fazla kaynak yüklenemedi. Sabit bir internet bağlantınız 
+        olduğundan emin olun ve tekrar deneyin. Bu hala işe yaramazsa, tüm tarayıcı 
+        uzantılarını da (reklam engelleyiciler dahil) devre dışı bıraktığınızdan emin 
+        olun.<br><br> Alternatif olarak <demoOnSteamLinkText> oynayabilirsiniz 
+        <br><br> Hata mesajı:"
+        descSteamDemo: "Bir veya daha fazla kaynak yüklenemedi. Oyunu yeniden başlatmayı
+        deneyin - Bu yardımcı olmazsa, yeniden yüklemeyi ve oyun dosyalarını Steam 
+        aracılığıyla doğrulamayı deneyin. <br><br> Hata Mesajı:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Tam Sürüm Oturumunu Kapat
+        desc: Ağ bağlantınız kararsız olduğu veya başka bir cihazda oynadığınız için 
+        Tam Tarayıcı Sürümünden çıkış yaptınız.<br><br> Lütfen başka bir tarayıcı 
+        sekmesinde veya aynı Steam hesabına sahip başka bir bilgisayarda 
+        shapez'in açık olmadığından emin olun.<br><br> Ana menüden tekrar giriş yapabilirsiniz.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Tam Sürüme sahip değilsiniz
+        desc: Tarayıcınızda Tam Sürümü oynamak için Steam hesabınızda hem temel oyuna 
+        hem de Yapboz DLC'sine sahip olmanız gerekir.<br><br> Lütfen her ikisine de 
+        sahip olduğunuzdan, doğru Steam hesabıyla oturum açtığınızdan 
+        emin olun ve ardından tekrar deneyin.
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -1373,5 +1372,5 @@ mods:
         description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
             dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
             değiştirmek gelecekteki bir güncelleme için planlanmıştır!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Tarayıcı kısıtlamaları nedeniyle şu anda yalnızca 
+    Steam sürümüne mod yüklemek mümkündür - Üzgünüz!
