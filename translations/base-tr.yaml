@@ -1,9 +1,9 @@
 steamPage:
-    shortText: shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde
+    shortText: shapez giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde
         üretimi ve birleştirilmesi hakında bir oyundur.
-    discordLinkShort: Official Discord
+    discordLinkShort: Resmi Discord
     intro: >-
-        Shapez.io geometrik şekillerin otomatik üretimi için fabrika
+        shapez geometrik şekillerin otomatik üretimi için fabrika
         kurabildiğiniz sakinleştirici bir oyundur.
 
         Seviye arttıkça şekiller daha karmaşık hale gelecek ve sonsuz haritada genişlemen gerekecek!
@@ -12,10 +12,10 @@ steamPage:
 
         En başta sadece şekilleri işlerken, sonradan onları boyaman gerekecek - bunun için boyaları çıkarmalı ve karıştırmalısın!
 
-        Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez.io deneme sürümünü oynayıp sonradan karar verebilirsin!
-    what_others_say: İnsanlar shapez.io hakkında ne düşünüyor?
+        Oyunu Steam'de satın almak tam sürüme erişimi sağlayacak, ama herzaman shapez deneme sürümünü oynayıp sonradan karar verebilirsin!
+    what_others_say: İnsanlar shapez hakkında ne düşünüyor?
     nothernlion_comment: Bu oyun süper - Oynarken harika vakit geçiriyorum ve zaman akıp gidiyor.
-    notch_comment: Hay aksi. Gerçekten uyumalıyım, ama şimdi shapez.io'da nasıl bir
+    notch_comment: Hay aksi. Gerçekten uyumalıyım, ama şimdi shapez'de nasıl bir
         bilgisayar yapabileceğimi çözdüm.
     steam_review_comment: Bu oyun hayatımı çaldı ve geri istemiyorum. Üretim
         hatlarımı daha verimli yapmamı engelleyemeyecek kadar güzel bir fabrika
@@ -54,7 +54,7 @@ global:
     loggingIn: Giriş yapılıyor
     loadingResources: Ek kaynaklar indiriliyor... (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: ÖZEL PROMOSYON! Teklif 7 Temmuz'da sona eriyor
 demoBanners:
     title: Deneme Sürümü
     intro: |-
@@ -98,12 +98,12 @@ mainMenu:
     mods:
         title: Aktif Modlar
         warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
-            DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+            DLC'sini oynayabilmek için bütün modları devre dışı bırakın.
+    playingFullVersion: Şuan tam versiyonu oynuyorsun!
+    logout: Çıkış yap
+    noActiveSavegames: Aktif kayıt bulunamadı - Yeni bir oyun başlatmak için oyna'ya basın!
+    playFullVersionV2: Steam'de shapez'e sahip misin? Tam sürümü tarayıcınızda oynayın!
+    playFullVersionStandalone: Artık tarayıcınızda tam sürümü oynayabilirsiniz!
 dialogs:
     buttons:
         ok: OK
@@ -113,7 +113,7 @@ dialogs:
         restart: Yeniden başla
         reset: Sıfırla
         getStandalone: Tam sürüme eriş
-        deleteGame: Ne yaptığımi biliyorum
+        deleteGame: Ne yaptığımı biliyorum
         viewUpdate: Güncellemeleri Görüntüle
         showUpgrades: Geliştirmeleri Göster
         showKeybindings: Tuş Kısayollarını Göster
@@ -121,23 +121,23 @@ dialogs:
         continue: Devam Et
         playOffline: Çevrimdışı Oyna
     importSavegameError:
-        title: Kayıt yükleme hatası
+        title: Kayıt Yükleme Hatası
         text: "Oyun kaydı yükleme başarısız:"
     importSavegameSuccess:
         title: Oyun Kaydı Yüklendi
         text: Oyun kaydı başarıyla yüklendi.
     gameLoadFailure:
-        title: Oyun bozuk
+        title: Oyun Bozuk
         text: "Oyun yükleme başarısız:"
     confirmSavegameDelete:
-        title: Silme İşlemini onayla
+        title: Silme İşlemini Onayla
         text: Bu kaydı silmek istediğinize emin misiniz?<br><br> '<savegameName>'
             seviyesi <savegameLevel><br><br> Bu işlem geri alınamaz!
     savegameDeletionError:
-        title: Silme başarısız
+        title: Silme Başarısız
         text: "Oyun kaydı silinemedi:"
     restartRequired:
-        title: Yeniden başlatma gerekiyor
+        title: Yeniden Başlatma Gerekiyor
         text: Değişiklikleri uygulamak için oyunu yeniden başlatın.
     editKeybinding:
         title: Tuş Atamasını Değiştir
@@ -148,7 +148,7 @@ dialogs:
         desc: Bu işlem bütün tuş atamalarını varsayılan durumuna sıfırlayacak. Lütfen
             onaylayın.
     keybindingsResetOk:
-        title: Tuş Atamaları sıfırlandı
+        title: Tuş Atamaları Sıfırlandı
         desc: Tuş atamaları varsayılan duruma sıfırlandı!
     featureRestriction:
         title: Deneme Sürümü
@@ -167,14 +167,14 @@ dialogs:
             fabrikalarınızı silmeyin!</strong> Güncellemeler sekmesini
             ekranınızın sağ üst köşesinde bulabilirsiniz.
     massDeleteConfirm:
-        title: Silmeyi onayla
+        title: Silmeyi Onayla
         desc: Çok fazla yapı siliyorsunuz (tam olarak <count> adet)! Bunu yapmak
             istediğinize emin misiniz?
     blueprintsNotUnlocked:
-        title: Henüz açılmadı
+        title: Henüz Açılmadı
         desc: Taslakları açmak için 12. seviyeyi tamamlamalısınız!
     keybindingsIntroduction:
-        title: Kullanışlı tuş atamaları
+        title: Kullanışlı Tuş Atamaları
         desc: "Bu oyunda büyük fabrikalar inşa etmeyi kolaylaştıran çok fazla tuş
             ataması var. Bunlardan bazıları şunlar, ama emin olmak için
             <strong>tuş atamalarını kontrol edin</strong>!<br><br> <code
@@ -195,12 +195,12 @@ dialogs:
         desc: Çok fazla yapı kesiyorsunuz (tam olarak <count> adet)! Bunu yapmak
             istediğinize emin misiniz?
     exportScreenshotWarning:
-        title: Ekran görüntüsünü dışa aktar
+        title: Ekran Görüntüsünü Dışa Aktar
         desc: Fabrikanızın ekran görüntüsünü dışarı aktarmak istiyorsunuz. Lütfen dikkat
             edin, büyük bir fabrika için bu işlem oldukça yavaş olabilir ve
             hatta oyununuz kapanabilir.
     massCutInsufficientConfirm:
-        title: Kesmeyi onayla
+        title: Kesmeyi Onayla
         desc: Seçili yapıları yapıştırmak için yeterli kaynağınız yok! Kesmek
             istediğinize emin misiniz?
     editSignal:
@@ -231,14 +231,14 @@ dialogs:
             rastgele birini seçebilirsin):"
         placeholderName: Yapboz İsmi
     puzzleResizeBadBuildings:
-        title: Yeniden boyutlandırma mümkün değil
+        title: Yeniden Boyutlandırma Mümkün Değil
         desc: Alanı daha fazla küçültemezsin, çünkü bazı yapılar alanın dışında
             kalabilir.
     puzzleLoadError:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Çevrİmdışı Modu
+        title: Çevrimdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
             Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
@@ -291,31 +291,30 @@ dialogs:
             yüklenmemesine neden olabilir. Devam etmek istediğinize emin
             misiniz?
         missingMods: Eksik Modlar
-        newMods: Yeni yüklenen Modlar
+        newMods: Yeni yüklenen modlar
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Kaynaklar yüklenemedi!
+        demoLinkText: Steam'de shapez demosu
+        descWeb: "Bir veya daha fazla kaynak yüklenemedi. Sabit bir internet bağlantınız olduğundan emin olun
+            ve tekrar deneyin. Bu hala işe yaramazsa, tüm tarayıcı uzantılarını
+            da (reklam engelleyiciler dahil) devre dışı bıraktığınızdan
+            emin olun.<br><br> Alternatif olarak bunu oynayabilirsin
+            <demoOnSteamLinkText>. <br><br> Hata Mesajı:"
+        descSteamDemo: "Bir veya daha fazla kaynak yüklenemedi. Oyunu tekrar başlatmayı
+            deneyin - Bu yardımcı olmazsa, oyunu yeniden yüklemeyi ve Steam üzerinden
+            oyun dosyalarını doğrulayın. <br><br> Hata Mesajı:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Tam Sürüm Oturumu Kapatıldı
+        desc: Ağ bağlantınız kararsız olduğu veya başka bir cihazda oynadığınız için
+            tam sürümden çıkış yaptınız.<br><br> Lütfen başka bir tarayıcı sekmesinde veya
+            aynı Steam hesabında shapez açık olmadığından emin 
+            olun.<br><br> Ana menüden tekrar giriş yapabilirsiniz.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Tam sürüme sahip değilsin
+        desc: Tam sürümü tarayıncında oynamak için hem tam versiyona, hemde Puzzle DLC'ye
+            Steam üzerinden sahip olmalısın.<br><br>
+            Lütfen her ikisine de sahip olduğunuzdan ve doğru Steam hesabı ile oturum açtığınızdan
+            emin olun ve tekrar deneyin.
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -485,21 +484,21 @@ ingame:
                 title: Başarımlar
                 desc: Bütün başarımları açmaya çalış!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Modlama desteği!
+                desc: 80'den fazla mod mevcut!
+        titleV2: "Şimdi Steam'de tam sürümü edinin ve bunları kazanın:"
+        titleExpiredV2: Deneme sürümü bitti!
+        titleEnjoyingDemo: Deneme sürümünden hoşlandın mı?
     puzzleEditorSettings:
         zoneTitle: Alan
         zoneWidth: Genişlik
         zoneHeight: Yükseklik
         trimZone: Alanı Sınırlandır
-        clearItems: Eşyaları temizle
+        clearItems: Eşyaları Temizle
         share: Paylaş
-        report: Şikayet et
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        report: Şikayet Et
+        clearBuildings: Herşeyi Temizle
+        resetPuzzle: Yapbozu Sıfırla
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
@@ -612,9 +611,9 @@ buildings:
             description: Sol girdideki şekilleri yukarı girdideki renk ile boyar.
         quad:
             name: Boyayıcı (Dörtlü)
-            description: Allows you to color each quadrant of the shape individually. Only
-                slots with a <strong>truthy signal</strong> on the wires layer
-                will be painted!
+            description: Şeklin her çeyreğini ayrı ayrı renklendirmenizi sağlar. Yalnızca
+                teller katmanı üzerindeki <strong>doğru sinyal</strong>
+                boyanacak!
         mirrored:
             name: Boyayıcı
             description: Sol girdideki bütün şekli aşağı girdideki renk ile boyar.
@@ -625,11 +624,11 @@ buildings:
     wire:
         default:
             name: Kablo
-            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı
+            description: Eşya, renk ve ikili değerler (1 / 0) gibi sinyalleri aktarmayı
                 sağlar. Farklı renkteki kablolar bağlanamaz.
         second:
             name: Kablo
-            description: Eşya, renk ve ikili değerler(1 / 0) gibi sinyalleri aktarmayı
+            description: Eşya, renk ve ikili değerler (1 / 0) gibi sinyalleri aktarmayı
                 sağlar. Farklı renkteki kablolar bağlanamaz.
     wire_tunnel:
         default:
@@ -743,11 +742,11 @@ buildings:
                 katmanda çıktı olarak verir.
     constant_producer:
         default:
-            name: Sabİt Üretİcİ
+            name: Sabit Üretici
             description: Sabit olarak belirli bir şekli veya rengi üretir.
     goal_acceptor:
         default:
-            name: Hedef Merkezİ
+            name: Hedef Merkezi
             description: Şekilleri hedef olarak tanımlamak için hedef merkezine teslim et.
     block:
         default:
@@ -790,7 +789,7 @@ storyRewards:
         desc: <strong>Tünel</strong> açıldı - Artık eşyaları taşıma bantları ve yapılar
             altından geçirebilirsiniz!
     reward_rotater_ccw:
-        title: Saat yönünün tersinde Döndürme
+        title: Saat Yönünün Tersine Döndürme
         desc: <strong>Döndürücünün</strong> farklı bir türünü açtın - Şekiller artık
             saat yönünün tersinde döndürülebilir! İnşa etmek için döndürücüyü
             seç ve <strong>türler arası geçiş yapmak için 'T' tuşuna
@@ -859,7 +858,7 @@ storyRewards:
             fabrikalar kurmak için kullanılabilir!
     reward_merger:
         title: Tekil Birleştirici
-        desc: <strong>Birleştiriciyi</strong> açtın ! <strong>dengeleyecinin</strong>
+        desc: <strong>Birleştiriciyi</strong> açtın! <strong>dengeleyecinin</strong>
             bir türü - İki giriş alıp tek banta atar.
     reward_belt_reader:
         title: Bant Okuyucu
@@ -902,12 +901,12 @@ storyRewards:
             et.<br><br> Ne seçersen seç eğlenmeyi unutma!
     reward_wires_painter_and_levers:
         title: Kablolar ve Dörtlü Boyayıcı
-        desc: "Az önce the <strong>Tel Katmanının</strong> kilidini açtın : Normal
+        desc: "Az önce <strong>Tel Katmanının</strong> kilidini açtın : Normal
             katmanın üzerinde ayrı bir katman ve yeni mekanikler
             sunmakta!<br><br> Başlangıç için sana <strong>Quad
             Painter'ı</strong> açtım - Tel tabakasındaki bağlamak istediğin
             yuvaları bağla !<br><br> Tel katmanına geçmek için
-            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar öğreticisini
+            <strong>E</strong> tuşuna bas. <br><br> NOT:Kablolar reticisini
             aktive etmek için <strong>ipuçlarını etkinleştir</strong> !"
     reward_filter:
         title: Eşya Filtresi
@@ -920,13 +919,13 @@ settings:
     categories:
         general: Genel
         userInterface: Kullanıcı Arayüzü
-        advanced: Gelİşmİş
+        advanced: Gelişmiş
         performance: Performans
     versionBadges:
         dev: Geliştirme
         staging: Yükseltme
         prod: Üretim
-    buildDate: <at-date> derlendi
+    buildDate: <at-date> tarihinde derlendi
     rangeSliderPercentage: "% <amount>"
     labels:
         uiScale:
@@ -1041,7 +1040,7 @@ settings:
             title: Müzik Ayarı
             description: Müzik seviyesini ayarlar
         lowQualityMapResources:
-            title: Düşük Kalite Harİta Kaynakları
+            title: Düşük Kalite Harita Kaynakları
             description: Oyun performansını artırmak için haritada görünen kaynakların çizim
                 kalitesini sadeleştirir. Hatta daha net bir görüntü sağlar, bu
                 yüzden bir dene!
@@ -1075,7 +1074,7 @@ settings:
             title: Fare Kaydırarak Hareket Etme
             description: Fareyi ekranın köşelerine getirerek hareket ettirmeyi sağlar.
         zoomToCursor:
-            title: Farenİn Konumuna Yakınlaştırma
+            title: Farenin Konumuna Yakınlaştırma
             description: Eğer etkinleştirilirse zaman ekran yakınlaştırılması fare imlecinin
                 bulunduğu yere doğru olur. Etkinleştirilmezse yakınlaştırma
                 ekranın ortasına doğru olur.
@@ -1098,10 +1097,10 @@ keybindings:
         general: Genel
         ingame: Oyun
         navigation: Hareket
-        placement: Yerleştİrme
-        massSelect: Çoklu Seçİm
+        placement: Yerleştirme
+        massSelect: Çoklu Seçim
         buildings: Yapı Kısayolları
-        placementModifiers: Yerleştİrme Özellİklerİ
+        placementModifiers: Yerleştirme Özellikleri
         mods: Modlar tarafından sağlandı
     mappings:
         confirm: Kabul
@@ -1117,7 +1116,7 @@ keybindings:
         menuOpenShop: Geliştirmeler
         menuOpenStats: İstatistikler
         toggleHud: Arayüzü Aç/Kapat
-        toggleFPSInfo: FPS ve Debug Bilgisini Aç/Kapat
+        toggleFPSInfo: FPS ve Hata Ayıklama Bilgisini Aç/Kapat
         belt: Taşıma Bandı
         underground_belt: Tünel
         miner: Üretici
@@ -1179,7 +1178,7 @@ about:
         target="_blank">Tobias Springer</a> (bu benim) tarafından
         geliştirilmektedir. <br><br>
 
-        Eğer katkıda bulunmak istiyorsanız, <a href="<githublink>" target="_blank">shapez.io Github sayfasına</a> göz atın.<br><br>
+        Eğer katkıda bulunmak istiyorsanız, <a href="<githublink>" target="_blank">shapez Github sayfasına</a> göz atın.<br><br>
 
         Bu oyunu yapmak, oyunlarımın etrafındaki büyük Discord topluluğu olmasaydı mümkün olmayacaktı - Gerçekten <a href="<discordlink>" target="_blank">Discord sunucusuna</a> katılmalısın!<br><br>
 
@@ -1282,17 +1281,17 @@ puzzleMenu:
     noPuzzles: Bu kısımda yapboz yok.
     categories:
         levels: Seviyeler
-        new: Yenİ
-        top-rated: En İyİ Değerlendirilen
+        new: Yeni
+        top-rated: En İyi Değerlendirilen
         mine: Yapbozlarım
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
         medium: Orta
-        official: Resmİ
+        official: Resmi
         trending: Bugün öne çıkan
         trending-weekly: Haftalık öne çıkan
-        categories: Kategorİler
+        categories: Kategoriler
         difficulties: Zorluğa göre
         account: Yapbozlarım
         search: Ara
@@ -1373,5 +1372,5 @@ mods:
         description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
             dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
             değiştirmek gelecekteki bir güncelleme için planlanmıştır!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Tarayıcı kısıtlamaları nedeniyle modlar şu anda yalnızca sadece Steam
+      versiyonunda çalışıyor - Üzgünüz!
