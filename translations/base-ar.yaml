@@ -1,48 +1,42 @@
 steamPage:
-    shortText: لعبة شيبز (أشكال) هي لعبة تدور حول بناء مصانع وتوصيلها حتى تقوم بشكل
-        .آلي بصناعة أشكال مختلفة تزداد تعقيدا في خريطة لانهائية.
-    discordLinkShort: Official Discord
+    shortText: شيبز (أشكال) هي لعبة تتمحور حول بناء المصانع وتوصيلها بطريقة تعمل تلقائياً لإنتاج أشكال مختلفة تتزايد في التعقيد على خريطة لا نهائية.
+    discordLinkShort: الديسكورد الرسمي
     intro: >-
-        لعبة شيبز (أشكال) هي لعبة مريحة تقوم فيها ببناء مصانع ووتشغيلها آليا
-        لصناعة أشكال هندسية.
-
-        مع التقدم في المستوى، تزداد الأشكال تعقيداً، فيتوجب عليك التوسع في الخريطة اللانهائية، وذلك ليس كافياً للتقدم في مستوى اللعبة حيث عليك صناعة المزيد بأضعاف مضاعفة لتلبية الطلب، الشيء الوحيد الذي يمكنه مساعدتك هو التوسع.
-
-        بينما في البداية تقوم بصناعة أشكال مختلفة، تتطلب منك المراحل المتقدمة تلوين هذه الأشكال، حيث يتوجب عليك استخراج وخلط الألوان.
-
-        عند شراءك اللعبة على ستيم (Steam) تحصل على الإصدار الكامل للعبة، ولكن يمكن أيضاً لعبة نسخة تجريبية على موقع shapez.io  ثم يمكنك القرار لاحقا
-    what_others_say: What people say about shapez.io
-    nothernlion_comment: This game is great - I'm having a wonderful time playing,
-        and time has flown by.
-    notch_comment: Oh crap. I really should sleep, but I think I just figured out
-        how to make a computer in shapez.io
-    steam_review_comment: This game has stolen my life and I don't want it back.
-        Very chill factory game that won't let me stop making my lines more
-        efficient.
+        شيبز (أشكال) هي لعبة مريحة حيث تقوم ببناء المصانع لتشغيلها تلقائياً وتصنيع الأشكال الهندسية.
+        
+        مع تقدمك في المستويات، تتزايد الأشكال في التعقيد، مما يتطلب منك التوسع في الخريطة اللانهائية. ولكن التوسع ليس كافياً للتقدم في اللعبة، فعليك أيضاً تصنيع الكميات المتزايدة لتلبية الطلب. الشيء الوحيد الذي يمكن أن يساعدك هو التوسع.
+        
+        في البداية قد تقوم بتصنيع الأشكال المختلفة، ولكن المستويات المتقدمة تتطلب منك تلوين هذه الأشكال، لذا يتعين عليك استخراج الألوان وخلطها.
+        
+        عند شرائك اللعبة على ستيم (Steam) تحصل على الإصدار الكامل للعبة، ولكنك يمكنك أيضاً لعبة نسخة تجريبية على الموقع shapez.io ثم يمكنك اتخاذ القرار لاحقا.
+    what_others_say: ما يقوله الآخرون عن shapez.io
+    nothernlion_comment: هذه اللعبة رائعة - أنا أقضي وقتاً ممتعاً والوقت يطير.
+    notch_comment: يا الهي. يجب أن أنام، لكني أعتقد أنني فقط اكتشفت كيفية صنع حاسوب في shapez.io
+    steam_review_comment: هذه اللعبة قد سرقت حياتي ولا أريدها مرة أخرى. لعبة المصنع الهادئة لن تدعني أ
 global:
-    loading: Loading
-    error: Error
+    loading: جار التحميل
+    error: خطأ
     thousandsDivider: ","
     decimalSeparator: .
     suffix:
-        thousands: k
-        millions: M
-        billions: B
-        trillions: T
-    infinite: inf
+        thousands: ألف
+        millions: مليون
+        billions: مليار
+        trillions: تريليون
+    infinite: لا نهائي
     time:
         oneSecondAgo: قبل ثانية واحدة
-        xSecondsAgo: قبل <x> ثانية
+        xSecondsAgo: قبل <x> ثوان
         oneMinuteAgo: قبل دقيقة واحدة
-        xMinutesAgo: <x> minutes ago
-        oneHourAgo: one hour ago
-        xHoursAgo: <x> hours ago
-        oneDayAgo: one day ago
-        xDaysAgo: <x> days ago
-        secondsShort: <seconds>s
-        minutesAndSecondsShort: <minutes>m <seconds>s
-        hoursAndMinutesShort: <hours>h <minutes>m
-        xMinutes: <x> minutes
+        xMinutesAgo: قبل <x> دقائق
+        oneHourAgo: قبل ساعة واحدة
+        xHoursAgo: قبل <x> ساعات
+        oneDayAgo: قبل يوم واحد
+        xDaysAgo: قبل <x> أيام
+        secondsShort: <seconds>ث
+        minutesAndSecondsShort: <minutes>د <seconds>ث
+        hoursAndMinutesShort: <hours>س <minutes>د
+        xMinutes: <x> دقائق
     keys:
         tab: TAB
         control: CTRL
@@ -50,448 +44,376 @@ global:
         escape: ESC
         shift: SHIFT
         space: SPACE
-    loggingIn: Logging in
-    loadingResources: Downloading additional resources (<percentage> %)
+    loggingIn: جارٍ تسجيل الدخول
+    loadingResources: جارٍ تنزيل الموارد الإضافية (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
-demoBanners:
-    title: Demo Version
-    intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
-        </ul>
-    playtimeDisclaimer: The full version contains more than <strong>24 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
-    untilEndOfDemo: Until end of demo
-    playtimeDisclaimerDownload: You can continue your savegame in the full version!
-        Click <strong>here</strong> to download your savegame.
-    titleV2: "Play the full version now for:"
+    discountSummerSale: عرض ترويجي خاص! العرض ينتهي في 7 يوليو
+    demoBanners:
+        title: نسخة تجريبية
+        intro: |-
+            احصل على اللعبة الكاملة <strong>الآن</strong> لفتح:<ul>
+                <li>جميع الـ 26 مستوى + لعبة حرة لا نهائية</li>
+                <li>22 مبنى جديد</li>
+                <li>دعم الواجهة</li>
+                <li>الإنجازات</li>
+                <li>الوضع الداكن</li>
+                <li>... وأكثر بكثير!</li>
+            </ul>
+        playtimeDisclaimer: النسخة الكاملة تحتوي على أكثر من <strong>24 ساعة من المحتوى</strong>.
+        playerCount: <playerCount> لاعبين مثلك يلعبون الآن shapez على Steam
+        untilEndOfDemo: حتى نهاية النسخة التجريبية
+        playtimeDisclaimerDownload: يمكنك متابعة لعبتك المحفوظة في النسخة الكاملة!
+            انقر <strong>هنا</strong> لتنزيل لعبتك المحفوظة.
+        titleV2: "العب النسخة الكاملة الآن من أجل:"
 mainMenu:
-    play: Play
-    continue: Continue
-    newGame: New Game
-    changelog: Changelog
-    subreddit: Reddit
-    importSavegame: Import
-    openSourceHint: This game is open source!
-    discordLink: Official Discord Server
-    helpTranslate: Help translate!
-    madeBy: Made by <author-link>
-    browserWarning: Sorry, but the game is known to run slow on your browser! Get
-        the standalone version or download chrome for the full experience.
-    savegameLevel: Level <x>
-    savegameLevelUnknown: Unknown Level
-    savegameUnnamed: Unnamed
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    play: العب
+    continue: استمر
+    newGame: لعبة جديدة
+    changelog: سجل التغييرات
+    subreddit: ريديت
+    importSavegame: استيراد
+    openSourceHint: هذه اللعبة مفتوحة المصدر!
+    discordLink: الخادم الرسمي على Discord
+    helpTranslate: مساعدة في الترجمة!
+    madeBy: صنع من قبل <author-link>
+    browserWarning: عذراً، ولكن من المعروف أن اللعبة تعمل ببطء على متصفحك! قم بتنزيل الإصدار المستقل أو Chrome للحصول على تجربة كاملة.
+    savegameLevel: المستوى <x>
+    savegameLevelUnknown: المستوى غير معروف
+    savegameUnnamed: غير مسمى
+    puzzleMode: وضع اللغز
+    back: العودة
+    puzzleDlcText: هل تستمتع بضغط وتحسين المصانع؟ احصل على Puzzle DLC الآن على Steam للمزيد من المرح!
+    puzzleDlcWishlist: قائمة الأمنيات الآن!
+    puzzleDlcViewNow: عرض الـ DLC
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: الإضافات النشطة
+        warningPuzzleDLC: لا يمكن لعب Puzzle DLC مع الإضافات. الرجاء تعطيل جميع الإضافات للعب الـ DLC.
+    playingFullVersion: أنت الآن تلعب النسخة الكاملة!
+    logout: تسجيل الخروج
+    noActiveSavegames: لم يتم العثور على ألعاب حفظ نشطة - انقر على play لبدء لعبة جديدة!
+    playFullVersionV2: اشتريت shapez على Steam؟ العب النسخة الكاملة في المتصفح الخاص بك!
+    playFullVersionStandalone: يمكنك الآن أيضا اللعب بالنسخة الكاملة في المتصفح الخاص بك!
 dialogs:
     buttons:
-        ok: OK
-        delete: Delete
-        cancel: Cancel
-        later: Later
-        restart: Restart
-        reset: Reset
-        getStandalone: Get Standalone
-        deleteGame: I know what I am doing
-        viewUpdate: View Update
-        showUpgrades: Show Upgrades
-        showKeybindings: Show Keybindings
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        ok: حسنا
+        delete: حذف
+        cancel: إلغاء
+        later: لاحقا
+        restart: إعادة تشغيل
+        reset: إعادة ضبط
+        getStandalone: الحصول على النسخة المستقلة
+        deleteGame: أعرف ما أنا فاعل
+        viewUpdate: عرض التحديث
+        showUpgrades: عرض الترقيات
+        showKeybindings: عرض اختصارات الأزرار
+        retry: إعادة المحاولة
+        continue: استمر
+        playOffline: اللعب بدون اتصال
     importSavegameError:
-        title: Import Error
-        text: "Failed to import your savegame:"
+        title: خطأ في الاستيراد
+        text: "فشل في استيراد ملف الحفظ الخاص بك:"
     importSavegameSuccess:
-        title: Savegame Imported
-        text: Your savegame has been successfully imported.
+        title: تم استيراد ملف الحفظ
+        text: تم استيراد ملف الحفظ الخاص بك بنجاح.
     gameLoadFailure:
-        title: Game is broken
-        text: "Failed to load your savegame:"
+        title: اللعبة معطلة
+        text: "فشل في تحميل ملف الحفظ الخاص بك:"
     confirmSavegameDelete:
-        title: Confirm deletion
-        text: Are you sure you want to delete the following game?<br><br>
-            '<savegameName>' at level <savegameLevel><br><br> This can not be
-            undone!
+        title: تأكيد الحذف
+        text: هل أنت متأكد أنك تريد حذف اللعبة التالية؟<br><br>
+            '<savegameName>' على المستوى <savegameLevel><br><br> هذا لا يمكن
+            التراجع عنه!
     savegameDeletionError:
-        title: Failed to delete
-        text: "Failed to delete the savegame:"
+        title: فشل الحذف
+        text: "فشل في حذف ملف الحفظ:"
     restartRequired:
-        title: Restart required
-        text: You need to restart the game to apply the settings.
+        title: إعادة التشغيل مطلوبة
+        text: تحتاج إلى إعادة تشغيل اللعبة لتطبيق الإعدادات.
     editKeybinding:
-        title: Change Keybinding
-        desc: Press the key or mouse button you want to assign, or escape to cancel.
+        title: تغيير اختصار الأزرار
+        desc: اضغط على الزر أو الزر الماوس الذي تريد تعيينه، أو escape للإلغاء.
     resetKeybindingsConfirmation:
-        title: Reset keybindings
-        desc: This will reset all keybindings to their default values. Please confirm.
+        title: إعادة ضبط اختصارات الأزرار
+        desc: سيتم إعادة ضبط كل اختصارات الأزرار إلى قيمها الافتراضية. الرجاء التأكيد.
     keybindingsResetOk:
-        title: Keybindings reset
-        desc: The keybindings have been reset to their respective defaults!
-    featureRestriction:
-        title: Demo Version
-        desc: You tried to access a feature (<feature>) which is not available in the
-            demo. Consider getting the standalone version for the full
-            experience!
-    oneSavegameLimit:
-        title: Limited savegames
-        desc: You can only have one savegame at a time in the demo version. Please
-            remove the existing one or get the standalone version!
-    updateSummary:
-        title: New update!
-        desc: "Here are the changes since you last played:"
-    upgradesIntroduction:
-        title: Unlock Upgrades
-        desc: All shapes you produce can be used to unlock upgrades - <strong>Don't
-            destroy your old factories!</strong> The upgrades tab can be found
-            on the top right corner of the screen.
-    massDeleteConfirm:
-        title: Confirm delete
-        desc: You are deleting a lot of buildings (<count> to be exact)! Are you sure
-            you want to do this?
-    massCutConfirm:
-        title: Confirm cut
-        desc: You are cutting a lot of buildings (<count> to be exact)! Are you sure you
-            want to do this?
-    massCutInsufficientConfirm:
-        title: Confirm cut
-        desc: You can not afford to paste this area! Are you sure you want to cut it?
-    blueprintsNotUnlocked:
-        title: Not unlocked yet
-        desc: Complete level 12 to unlock Blueprints!
+        title: تم إعادة ضبط اختصارات الأزرار
+        desc: تم إعادة ضبط اختصارات الأزرار إلى قيمها الافتراضية!
+featureRestriction:
+    title: النسخة التجريبية
+    desc: حاولت الوصول إلى ميزة (<feature>) غير متاحة في النسخة التجريبية. فكر في الحصول على النسخة المستقلة للحصول على التجربة الكاملة!
+oneSavegameLimit:
+    title: حفظ الألعاب محدود
+    desc: يمكنك فقط أن تملك ملف حفظ واحد في الوقت الواحد في النسخة التجريبية. يرجى إزالة الواحد الحالي أو الحصول على النسخة المستقلة!
+updateSummary:
+    title: تحديث جديد!
+    desc: "هذه هي التغييرات منذ آخر مرة لعبت فيها:"
+upgradesIntroduction:
+    title: فتح التحديثات
+    desc: جميع الأشكال التي تنتج يمكن استخدامها لفتح التحديثات - <strong>لا تدمر مصانعك القديمة!</strong> يمكن العثور على علامة التبويب التحديثات في الزاوية العليا اليمنى للشاشة.
+massDeleteConfirm:
+    title: تأكيد الحذف
+    desc: أنت تحذف الكثير من المباني (<count> بالضبط)! هل أنت متأكد أنك تريد القيام بذلك؟
+massCutConfirm:
+    title: تأكيد القص
+    desc: أنت تقص الكثير من المباني (<count> بالضبط)! هل أنت متأكد أنك تريد القيام بذلك؟
+massCutInsufficientConfirm:
+    title: تأكيد القص
+    desc: لا يمكنك تحمل لصق هذه المنطقة! هل أنت متأكد أنك تريد قصها؟
+blueprintsNotUnlocked:
+    title: لم يتم فتحها بعد
+    desc: أكمل المستوى 12 لفتح النماذج!
     keybindingsIntroduction:
-        title: Useful keybindings
-        desc: "This game has a lot of keybindings which make it easier to build big
-            factories. Here are a few, but be sure to <strong>check out the
-            keybindings</strong>!<br><br> <code class='keybinding'>CTRL</code> +
-            Drag: Select an area.<br> <code class='keybinding'>SHIFT</code>:
-            Hold to place multiple of one building.<br> <code
-            class='keybinding'>ALT</code>: Invert orientation of placed
-            belts.<br>"
+        title: اختصارات الأزرار المفيدة
+        desc: "لهذه اللعبة الكثير من اختصارات الأزرار التي تجعل بناء المصانع الكبيرة أسهل. هنا بعضها، لكن تأكد من <strong>الاطلاع على اختصارات الأزرار</strong>!<br><br> <code class='keybinding'>CTRL</code> + سحب: تحديد منطقة.<br> <code class='keybinding'>SHIFT</code>: اضغط لوضع عدة مباني من نوع واحد.<br> <code class='keybinding'>ALT</code>: عكس اتجاه الأحزمة الموضوعة.<br>"
     createMarker:
-        title: New Marker
-        titleEdit: Edit Marker
-        desc: Give it a meaningful name, you can also include a <strong>short
-            key</strong> of a shape (Which you can generate <link>here</link>)
+        title: علامة جديدة
+        titleEdit: تعديل العلامة
+        desc: اعطها اسمًا ذا معنى، يمكنك أيضًا تضمين <strong>مفتاح قصير</strong> لشكل (الذي يمكنك توليده <link>هنا</link>)
     markerDemoLimit:
-        desc: You can only create two custom markers in the demo. Get the standalone for
-            unlimited markers!
+        desc: يمكنك فقط إنشاء علامتين مخصصتين في النسخة التجريبية. احصل على النسخة المستقلة لعلامات غير محدودة!
     exportScreenshotWarning:
-        title: Export screenshot
-        desc: You requested to export your base as a screenshot. Please note that this
-            can be quite slow for a big base and even crash your game!
+        title: تصدير لقطة الشاشة
+        desc: طلبت تصدير قاعدتك كصورة للشاشة. يرجى ملاحظة أن هذا قد يكون بطيءًا جدًا لقاعدة كبيرة وحتى يمكن أن يتسبب في تعطل اللعبة!
     editSignal:
-        title: Set Signal
-        descItems: "Choose a pre-defined item:"
-        descShortKey: ... or enter the <strong>short key</strong> of a shape (Which you
-            can generate <link>here</link>)
+        title: ضبط الإشارة
+        descItems: "اختر عنصرًا محددًا مسبقًا:"
+        descShortKey: ... أو أدخل <strong>مفتاح قصير</strong> لشكل (الذي يمكنك توليده <link>هنا</link>)
     renameSavegame:
-        title: Rename Savegame
-        desc: You can rename your savegame here.
+        title: إعادة تسمية ملف الحفظ
+        desc: يمكنك إعادة تسمية ملف الحفظ الخاص بك هنا.
     tutorialVideoAvailable:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level! Would you like to
-            watch it?
+        title: الدرس المتاح
+        desc: هناك فيديو تعليمي متاح لهذا المستوى! هل ترغب في مشاهدته؟
     tutorialVideoAvailableForeignLanguage:
-        title: Tutorial Available
-        desc: There is a tutorial video available for this level, but it is only
-            available in English. Would you like to watch it?
+        title: الدرس المتاح
+        desc: هناك فيديو تعليمي متاح لهذا المستوى، ولكنه متاح فقط باللغة الإنجليزية. هل ترغب في مشاهدته؟
     editConstantProducer:
-        title: Set Item
+        title: تعيين العنصر
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: فشل في تحميل الألغاز
+        desc: "للأسف، تعذر تحميل الألغاز:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: تقديم اللغز
+        descName: "أعط لغزك اسمًا:"
+        descIcon: "الرجاء إدخال مفتاح قصير فريد، الذي سيظهر كرمز للغزك (يمكنك توليده <link>هنا</link>، أو اختر واحدًا من الأشكال المقترحة عشوائيًا أدناه):"
+        placeholderName: عنوان اللغز
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: غير ممكن التغيير
+        desc: لا يمكنك جعل المنطقة أصغر، لأن بعض المباني ستكون خارج المنطقة.
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: لغز سيء
+        desc: "فشل تحميل اللغز:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: الوضع الغير متصل
+        desc: لم نتمكن من الوصول إلى الخوادم، لذا يجب أن تعمل اللعبة في وضع غير متصل. يرجى التأكد من وجود اتصال نشط بالإنترنت.
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: خطأ في التحميل
+        desc: "فشل في تحميل اللغز:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: خطأ في الإرسال
+        desc: "فشل في تقديم لغزك:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: تم نشر اللغز
+        desc: تهانينا! تم نشر لغزك ويمكن الآن أن يلعبه الآخرين. يمكنك الآن العثور عليه في قسم "ألغازي".
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: الوضع الغير متصل
+        desc: بما أنك غير متصل، لن تتمكن من حفظ و/أو نشر لغزك. هل ما زلت ترغب في الاستمرار؟
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: توصية
+        desc: أنا <strong>أوصي بشدة</strong> بلعب اللعبة العادية إلى المستوى 12 قبل محاولة اللغز DLC، وإلا قد تواجه آليات لم يتم تقديمها بعد. هل ما زلت ترغب في الاستمرار؟
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: تم نسخ المفتاح القصير
+        desc: تم نسخ المفتاح القصير للغز (<key>) إلى الحافظة الخاصة بك! يمكن إدخاله في قائمة الألغاز للوصول إلى اللغز.
     puzzleReport:
-        title: Report Puzzle
+        title: الإبلاغ عن اللغز
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: مسيء
+            unsolvable: غير قابل للحل
+            trolling: استفزاز
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: شكراً على ملاحظاتك!
+        desc: تم وضع علامة على اللغز.
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
-    puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
-    puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
-    modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
-    resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
-    steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
-    steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: فشل في التبليغ
+        desc: "لم يتمكن التقرير الخاص بك من المعالجة:"
+puzzleLoadShortKey:
+    title: أدخل الرمز القصير
+    desc: أدخل الرمز القصير للألغاز لتحميلها.
+puzzleDelete:
+    title: حذف اللغز؟
+    desc: هل أنت متأكد أنك تريد حذف '<title>'؟ لا يمكن التراجع عن هذا!
+modsDifference:
+    title: تحذير الواجهات
+    desc: الواجهات المثبتة حاليا تختلف عن الواجهات التي تم إنشاء اللعبة الحفوظة بها. قد يتسبب هذا في تعطل اللعبة المحفوظة أو عدم تحميلها على الإطلاق. هل أنت متأكد أنك تريد المتابعة؟
+    missingMods: واجهات ناقصة
+    newMods: واجهات مثبتة جديدة
+resourceLoadFailed:
+    title: فشل في تحميل الموارد
+    demoLinkText: نسخة تجريبية من shapez على Steam
+    descWeb: "لا يمكن تحميل مورد واحد أو أكثر. تأكد من أن لديك اتصال إنترنت مستقر وحاول مرة أخرى. إذا لم يعمل هذا، تأكد من تعطيل أي امتدادات للمتصفح (بما في ذلك مانع الإعلانات).<br><br> كبديل، يمكنك أيضا لعب <demoOnSteamLinkText>.<br><br> رسالة الخطأ:"
+    descSteamDemo: "لا يمكن تحميل مورد واحد أو أكثر. حاول إعادة تشغيل اللعبة - إذا لم يساعد ذلك، حاول إعادة التثبيت والتحقق من ملفات اللعبة عبر Steam. <br><br> رسالة الخطأ:"
+steamSsoError:
+    title: تسجيل خروج الإصدار الكامل
+    desc: لقد تم تسجيل خروجك من الإصدار الكامل للمتصفح نظرًا لاستقرار اتصالك الشبكي أو لأنك تلعب على جهاز آخر.<br><br> يرجى التأكد من أنك لا تفتح shapez في أي علامة تبويب متصفح أخرى أو جهاز كمبيوتر آخر مع نفس حساب Steam.<br><br> يمكنك تسجيل الدخول مرة أخرى في القائمة الرئيسية.
+steamSsoNoOwnership:
+    title: لم يتم امتلاك الإصدار الكامل
+    desc: للعب الإصدار الكامل في المتصفح الخاص بك، يجب أن تمتلك كلا من اللعبة الأساسية و Puzzle DLC على حسابك في Steam.<br><br> يرجى التأكد من امتلاكك لكلاهما، تسجيل الدخول بالحساب الصحيح في Steam ثم حاول مرة أخرى.
 ingame:
     keybindingsOverlay:
-        moveMap: Move
-        selectBuildings: Select area
-        stopPlacement: Stop placement
-        rotateBuilding: Rotate building
-        placeMultiple: Place multiple
-        reverseOrientation: Reverse orientation
-        disableAutoOrientation: Disable auto-orientation
-        toggleHud: Toggle HUD
-        placeBuilding: Place building
-        createMarker: Create marker
-        delete: Delete
-        pasteLastBlueprint: Paste last blueprint
-        lockBeltDirection: Enable belt planner
-        plannerSwitchSide: Flip planner side
-        cutSelection: Cut
-        copySelection: Copy
-        clearSelection: Clear selection
-        pipette: Pipette
-        switchLayers: Switch layers
-        clearBelts: Clear belts
+        moveMap: حرك
+        selectBuildings: حدد المنطقة
+        stopPlacement: إيقاف التوضع
+        rotateBuilding: دور البناء
+        placeMultiple: ضع أكثر من واحد
+        reverseOrientation: عكس الاتجاه
+        disableAutoOrientation: تعطيل التوجيه الآلي
+        toggleHud: تبديل HUD
+        placeBuilding: ضع البناء
+        createMarker: أنشئ علامة
+        delete: حذف
+        pasteLastBlueprint: ألصق آخر نسخة
+        lockBeltDirection: تمكين خطط الحزام
+        plannerSwitchSide: اقلب جانب الخطط
+        cutSelection: قطع
+        copySelection: نسخ
+        clearSelection: امسح الاختيار
+        pipette: قطارة
+        switchLayers: تبديل الطبقات
+        clearBelts: امسح الأحزمة
     colors:
-        red: Red
-        green: Green
-        blue: Blue
-        yellow: Yellow
-        purple: Purple
-        cyan: Cyan
-        white: White
-        black: Black
-        uncolored: Gray
+        red: أحمر
+        green: أخضر
+        blue: أزرق
+        yellow: أصفر
+        purple: بنفسجي
+        cyan: سماوي
+        white: أبيض
+        black: أسود
+        uncolored: رمادي
     buildingPlacement:
-        cycleBuildingVariants: Press <key> to cycle variants.
-        hotkeyLabel: "Hotkey: <key>"
+        cycleBuildingVariants: اضغط <key> للتنقل بين الأنواع.
+        hotkeyLabel: "الاختصار: <key>"
         infoTexts:
-            speed: Speed
-            range: Range
-            storage: Storage
-            oneItemPerSecond: 1 item / second
-            itemsPerSecond: <x> items / s
+            speed: السرعة
+            range: المدى
+            storage: التخزين
+            oneItemPerSecond: 1 عنصر / ثانية
+            itemsPerSecond: <x> عناصر / ث
             itemsPerSecondDouble: (x2)
-            tiles: <x> tiles
+            tiles: <x> بلاطات
     levelCompleteNotification:
-        levelTitle: Level <level>
-        completed: Completed
-        unlockText: Unlocked <reward>!
-        buttonNextLevel: Next Level
+        levelTitle: المستوى <level>
+        completed: اكتمل
+        unlockText: تم فتح <reward>!
+        buttonNextLevel: المستوى التالي
     notifications:
-        newUpgrade: A new upgrade is available!
-        gameSaved: Your game has been saved.
-        freeplayLevelComplete: Level <level> has been completed!
+        newUpgrade: ترقية جديدة متاحة!
+        gameSaved: تم حفظ لعبتك.
+        freeplayLevelComplete: اكتمل المستوى <level>!
     shop:
-        title: Upgrades
-        buttonUnlock: Upgrade
-        tier: Tier <x>
-        maximumLevel: MAXIMUM LEVEL (Speed x<currentMult>)
+        title: الترقيات
+        buttonUnlock: ترقية
+        tier: الدرجة <x>
+        maximumLevel: الحد الأقصى (السرعة x<currentMult>)
     statistics:
-        title: Statistics
+        title: الإحصائيات
         dataSources:
             stored:
-                title: Stored
-                description: Displaying amount of stored shapes in your central building.
+                title: مخزن
+                description: يظهر كمية الأشكال المخزنة في مبناك المركزي.
             produced:
-                title: Produced
-                description: Displaying all shapes your whole factory produces, including
-                    intermediate products.
+                title: مُنتج
+                description: يظهر جميع الأشكال التي ينتجها مصنعك بأكمله، بما في ذلك المنتجات المتوسطة.
             delivered:
-                title: Delivered
-                description: Displaying shapes which are delivered to your central building.
-        noShapesProduced: No shapes have been produced so far.
+                title: تم التوصيل
+                description: يظهر الأشكال التي تم توصيلها إلى المبنى المركزي الخاص بك.
+        noShapesProduced: لم يتم إنتاج أي أشكال حتى الآن.
         shapesDisplayUnits:
-            second: <shapes> / s
-            minute: <shapes> / m
-            hour: <shapes> / h
+            second: <shapes> / ث
+            minute: <shapes> / د
+            hour: <shapes> / س
     settingsMenu:
-        playtime: Playtime
-        buildingsPlaced: Buildings
-        beltsPlaced: Belts
+        playtime: وقت اللعب
+        buildingsPlaced: المباني
+        beltsPlaced: الأحزمة
     tutorialHints:
-        title: Need help?
-        showHint: Show hint
-        hideHint: Close
+        title: هل تحتاج إلى مساعدة؟
+        showHint: أظهر الدليل
+        hideHint: أغلق
     blueprintPlacer:
-        cost: Cost
+        cost: التكلفة
     waypoints:
-        waypoints: Markers
-        hub: HUB
-        description: Left-click a marker to jump to it, right-click to delete
-            it.<br><br>Press <keybinding> to create a marker from the current
-            view, or <strong>right-click</strong> to create a marker at the
-            selected location.
-        creationSuccessNotification: Marker has been created.
+        waypoints: العلامات
+        hub: المحور
+        description: انقر بالزر الأيسر على العلامة للقفز إليها، انقر بالزر الأيمن لحذفها.<br><br>اضغط على <keybinding> لإنشاء علامة من العرض الحالي، أو <strong>انقر بالزر الأيمن</strong> لإنشاء علامة في الموقع المحدد.
+        creationSuccessNotification: تم إنشاء العلامة.
     shapeViewer:
-        title: Layers
-        empty: Empty
-        copyKey: Copy Key
+        title: الطبقات
+        empty: فارغ
+        copyKey: نسخ الرمز
     interactiveTutorial:
-        title: Tutorial
+        title: الدليل التعليمي
         hints:
-            1_1_extractor: Place an <strong>extractor</strong> on top of a <strong>circle
-                shape</strong> to extract it!
-            1_2_conveyor: "Connect the extractor with a <strong>conveyor belt</strong> to
-                your hub!<br><br>Tip: <strong>Click and drag</strong> the belt
-                with your mouse!"
-            1_3_expand: "This is <strong>NOT</strong> an idle game! Build more extractors
-                and belts to finish the goal quicker.<br><br>Tip: Hold
-                <strong>SHIFT</strong> to place multiple extractors, and use
-                <strong>R</strong> to rotate them."
-            2_1_place_cutter: "Now place a <strong>Cutter</strong> to cut the circles in two
-                halves!<br><br> PS: The cutter always cuts from <strong>top to
-                bottom</strong> regardless of its orientation."
-            2_2_place_trash: The cutter can <strong>clog and stall</strong>!<br><br> Use a
-                <strong>trash</strong> to get rid of the currently (!) not
-                needed waste.
-            2_3_more_cutters: "Good job! Now place <strong>2 more cutters</strong> to speed
-                up this slow process!<br><br> PS: Use the <strong>0-9
-                hotkeys</strong> to access buildings faster!"
-            3_1_rectangles: "Now let's extract some rectangles! <strong>Build 4
-                extractors</strong> and connect them to the hub.<br><br> PS:
-                Hold <strong>SHIFT</strong> while dragging a belt to activate
-                the belt planner!"
-            21_1_place_quad_painter: Place the <strong>quad painter</strong> and get some
-                <strong>circles</strong>, <strong>white</strong> and
-                <strong>red</strong> color!
-            21_2_switch_to_wires: Switch to the wires layer by pressing
-                <strong>E</strong>!<br><br> Then <strong>connect all four
-                inputs</strong> of the painter with cables!
-            21_3_place_button: Awesome! Now place a <strong>Switch</strong> and connect it
-                with wires!
-            21_4_press_button: "Press the switch to make it <strong>emit a truthy
-                signal</strong> and thus activate the painter.<br><br> PS: You
-                don't have to connect all inputs! Try wiring only two."
-            1_2_hold_and_drag: Hold and drag
+            1_1_extractor: قم بوضع <strong>مستخرج</strong> فوق <strong>شكل دائري</strong> لاستخراجه!
+            1_2_conveyor: "قم بربط المستخرج بـ <strong>حزام نقل</strong> إلى مركزك!<br><br>نصيحة: <strong> انقر واسحب</strong> الحزام بالماوس!"
+            1_3_expand: "هذه <strong>ليست</strong> لعبة الخمول! قم ببناء المزيد من المستخرجات والأحزمة لإنهاء الهدف بشكل أسرع.<br><br>نصيحة: اضغط على <strong>SHIFT</strong> لوضع عدة مستخرجات، واستخدم <strong>R</strong> لتدويرها."
+            2_1_place_cutter: "الآن قم بوضع <strong>قاطع</strong> لقص الدوائر إلى نصفين!<br><br> ملاحظة: القاطع يقوم دائما بالقص من <strong>الأعلى إلى الأسفل</strong> بغض النظر عن توجيهه."
+            2_2_place_trash: يمكن أن <strong>ينسد ويتوقف</strong> القاطع!<br><br> استخدم <strong>سلة المهملات</strong> للتخلص من النفايات الغير مطلوبة حاليا.
+            2_3_more_cutters: "عمل جيد! الآن قم بوضع <strong>قاطعين إضافيين</strong> لتسريع هذه العملية البطيئة!<br><br> ملاحظة: استخدم <strong>الاختصارات من 0 إلى 9</strong> للوصول إلى المباني بشكل أسرع!"
+            3_1_rectangles: "الآن دعنا نستخرج بعض المستطيلات! <strong>قم ببناء 4 مستخرجات</strong> وربطهم بالمركز.<br><br> ملاحظة: اضغط على <strong>SHIFT</strong> أثناء سحب الحزام لتنشيط مخطط الحزام!"
+            21_1_place_quad_painter: قم بوضع <strong>الرسام الرباعي</strong> واحصل على بعض <strong>الدوائر</strong>، <strong>اللون الأبيض</strong> و<strong>الأحمر</strong>!
+            21_2_switch_to_wires: انتقل إلى طبقة الأسلاك بالضغط على <strong>E</strong>!<br><br> ثم <strong>قم بربط جميع الإدخالات الأربعة</strong> للرسام بالكابلات!
+            21_3_place_button: رائع! الآن قم بوضع <strong>مفتاح</strong> وربطه بالأسلاك!
+            21_4_press_button: "اضغط على المفتاح لجعله <strong>يصدر إشارة صحيحة</strong> وبالتالي تنشيط الرسام.<br><br> ملاحظة: لا يتعين عليك ربط جميع الإدخالات! حاول توصيل اثنين فقط."
+            1_2_hold_and_drag: اضغط واسحب
     connectedMiners:
-        one_miner: 1 Miner
-        n_miners: <amount> Miners
-        limited_items: Limited to <max_throughput>
+        one_miner: 1 معدن
+        n_miners: <amount> من المعدنين
+        limited_items: محدود إلى <max_throughput>
     watermark:
-        title: Demo version
-        desc: Click here to see the Steam version advantages!
-        get_on_steam: Get on steam
+        title: نسخة تجريبية
+        desc: انقر هنا لمعرفة مزايا النسخة على Steam!
+        get_on_steam: احصل عليه على ستيم
     standaloneAdvantages:
-        no_thanks: No, thanks!
+        no_thanks: لا، شكرا!
         points:
             levels:
-                title: 12 New Levels
-                desc: For a total of 26 levels!
+                title: 12 مستوى جديد
+                desc: لمجموع 26 مستوى!
             buildings:
-                title: 22 New Buildings
-                desc: Fully automate your factory!
+                title: 22 مبنى جديد
+                desc: اآلتومتك بالكامل لمصنعك!
             markers:
-                title: ∞ Markers
-                desc: Never get lost in your factory!
+                title: ∞ علامات
+                desc: لا تضيع أبدا في مصنعك!
             wires:
-                title: Wires
-                desc: An entirely new dimension!
+                title: أسلاك
+                desc: بُعد جديد بالكامل!
             darkmode:
-                title: Dark Mode
-                desc: Stop hurting your eyes!
+                title: الوضع الداكن
+                desc: توقف عن إيذاء عينيك!
             support:
-                title: Support me
-                desc: I develop it in my spare time!
+                title: دعمي
+                desc: أنا أطوره في وقت فراغي!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: إنجازات
+                desc: اصطادهم جميعا!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: دعم التعديلات!
+                desc: أكثر من 80 تعديل متاح!
+        titleV2: "احصل على النسخة الكاملة الآن على Steam للحصول على:"
+        titleExpiredV2: انتهت النسخة التجريبية!
+        titleEnjoyingDemo: هل تستمتع بالنسخة التجريبية؟
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
-        share: Share
-        report: Report
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        zoneTitle: المنطقة
+        zoneWidth: العرض
+        zoneHeight: الارتفاع
+        trimZone: قص المنطقة
+        clearItems: مسح العناصر
+        share: مشاركة
+        report: تقرير
+        clearBuildings: مسح المباني
+        resetPuzzle: إعادة تعيين اللغز
     puzzleEditorControls:
         title: Puzzle Creator
         instructions:
