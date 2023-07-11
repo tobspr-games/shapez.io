@@ -1,13 +1,12 @@
 steamPage:
-    shortText: Στο shapez.io χτήζεις εργοστάσια για να αυτοματοποιήσεις την
+    shortText: Στο shapez.io φτιάχνεις μηχανήματα για να αυτοματοποιήσεις την
         δημιουργία και τον συνδιασμό σχημάτων αυξανόμενης πολυπλοκότητας σε έναν
-        ατέλειωτο χάρτη.
+        άπειρου μεγέθους χάρτη.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io is a relaxed game in which you have to build factories for the
-        automated production of geometric shapes.
+        Το Shapez.io είναι ενα χαλαρωτικό παιχνιδι στο οποίο φτιαχνεις μηχανήματα με σκοπό την αυτοματη παραγωγη σχημάτων.
 
-        As the level increases, the shapes become more and more complex, and you have to spread out on the infinite map.
+        Με το κάθε επίπεδο τα σχήματα γίνονται όλο και πιο πολύπλοκα και πρέπει να επεκταθείς στον άπειρο χάρτη.
 
         And as if that wasn't enough, you also have to produce exponentially more to satisfy the demands - the only thing that helps is scaling!
 
@@ -25,48 +24,48 @@ steamPage:
 global:
     loading: Φόρτωση
     error: Σφάλμα
-    thousandsDivider: ","
-    decimalSeparator: .
+    thousandsDivider: "."
+    decimalSeparator: ,
     suffix:
-        thousands: χλ.
-        millions: εκ.
+        thousands: χ.
+        millions: ε.
         billions: δισ.
         trillions: τρισ.
     infinite: άπειρο
     time:
-        oneSecondAgo: πριν ένα δευτερόλεπτο
-        xSecondsAgo: πριν <x> δευτερόλεπτα
-        oneMinuteAgo: πριν ένα λεπτό
-        xMinutesAgo: πριν <x> λεπτά
-        oneHourAgo: πριν μία ώρα
-        xHoursAgo: πριν <x> ώρες
-        oneDayAgo: πριν μία ημέρα
-        xDaysAgo: πριν <x> ημέρες
+        oneSecondAgo: πριν από ένα δευτερόλεπτο
+        xSecondsAgo: πριν από <x> δευτερόλεπτα
+        oneMinuteAgo: πριν από ένα λεπτό
+        xMinutesAgo: πριν από<x> λεπτά
+        oneHourAgo: πριν από μία ώρα
+        xHoursAgo: πριν από <x> ώρες
+        oneDayAgo: πριν από μία ημέρα
+        xDaysAgo: πριν από <x> ημέρες
         secondsShort: <seconds>δ
         minutesAndSecondsShort: <minutes>λ <seconds>δ
         hoursAndMinutesShort: <hours>ω <minutes>λ
         xMinutes: <x> λεπτά
     keys:
-        tab: TAB
-        control: CTRL
-        alt: ALT
-        escape: ESC
-        shift: SHIFT
-        space: SPACE
-    loggingIn: Logging in
-    loadingResources: Downloading additional resources (<percentage> %)
+        tab: tab
+        control: ctrl
+        alt: alt
+        escape: esc
+        shift: shift
+        space: κενό
+    loggingIn: Γίνεται σύνδεση
+    loadingResources: Λήψη περιεχομένου (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: Ειδική Προσφορα μέχρι τις 7 Ιουλίου!
 demoBanners:
-    title: Demo Version
+    title: Έκδοση demo
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Αγοραστε την ολοκληρωμενη εκδοση <strong>τώρα</strong> για να ξεκλειδώσετε:<ul>
+            <li>Ολα τα 26 επίπεδα και Απειρο παιχνίδι</li>
+            <li>τα 22 νέα μηχανήματα</li>
+            <li>Υποστηρηξη για Mods</li>
+            <li>Επιτευματα</li>
+            <li>Σκούρο θέμα</li>
+            <li>και πολλά ακόμη!</li>
         </ul>
     playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
     playerCount: <playerCount> players like you are currently playing shapez on Steam
@@ -159,9 +158,9 @@ dialogs:
             demo. Consider getting the standalone version for the full
             experience!
     oneSavegameLimit:
-        title: Περιορισμένα αποθηκευμένα παιχνίδια
-        desc: Στην demo έκδοση μπορείς να έχεις μόνο ένα αποθηκευμένο παιχνίδι. Παρακαλώ
-            διάγραψε το υπάρχον αποθηκευμένο παιχνίδι ή απόκτησε την αθτόνομη
+        title: Περιορισμος αποθηκευμένων παιχνίδιω
+        desc: Στην demo έκδοση μπορείς να έχεις μόνο ένα αποθηκευμένο παιχνίδι.
+            Διάγραψε το τρέχον αποθηκευμένο παιχνίδι ή απόκτησε την ολοκληρωμένη
             έκδοση!
     updateSummary:
         title: Νέα αναβάθμιση!
