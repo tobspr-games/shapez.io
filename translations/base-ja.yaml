@@ -81,21 +81,21 @@ mainMenu:
     savegameLevel: レベル <x>
     savegameLevelUnknown: 不明なレベル
     savegameUnnamed: 無名のデータ
-    puzzleMode: Puzzle Mode
-    back: Back
-    puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
-        DLC now on Steam for even more fun!
-    puzzleDlcWishlist: Wishlist now!
-    puzzleDlcViewNow: View Dlc
+    puzzleMode: パズルモード
+    back: 戻る
+    puzzleDlcText: 工場を小さくしたり、最適化するのが好きですか? Steam DLCのパズルで
+        さらに楽しめます!
+    puzzleDlcWishlist: 今すぐウィッシュリストに追加!
+    puzzleDlcViewNow: DLCを見る
     mods:
         title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        warningPuzzleDLC: パズルDLCではmodを有効にしてプレイできません。
+            Modをすべて無効にしてからDLCをプレイしてください。
+    playingFullVersion: 完全版がプレイできるようになりました!
+    logout: ログアウト
+    noActiveSavegames: 有効なセーブデータが見つかりませんでした - クリックしてニューゲームを始めましょう!
+    playFullVersionV2: SteamでShapezを買いましたか? ブラウザーで完全版がプレイできます!
+    playFullVersionStandalone: ブラウザーでも完全版にてプレイできます!
 dialogs:
     buttons:
         ok: OK
@@ -109,9 +109,9 @@ dialogs:
         viewUpdate: アップデートを見る
         showUpgrades: アップグレード表示
         showKeybindings: キー設定表示
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: リトライ
+        continue: コンティニュー
+        playOffline: オフラインでプレイする
     importSavegameError:
         title: インポートエラー
         text: "セーブデータのインポートに失敗しました:"
@@ -196,98 +196,98 @@ dialogs:
     editConstantProducer:
         title: Set Item
     puzzleLoadFailed:
-        title: Puzzles failed to load
-        desc: "Unfortunately the puzzles could not be loaded:"
+        title: パズルがロードできませんでした
+        desc: "残念ながら、パズルをロードできませんでした:"
     submitPuzzle:
-        title: Submit Puzzle
-        descName: "Give your puzzle a name:"
-        descIcon: "Please enter a unique short key, which will be shown as the icon of
-            your puzzle (You can generate them <link>here</link>, or choose one
-            of the randomly suggested shapes below):"
-        placeholderName: Puzzle Title
+        title: パズルを公開する
+        descName: "パズルに名前を付けてください:"
+        descIcon: "パズルのアイコンとして表示される固有のショートキーを入力してください。
+            (パズルのアイコンは、<link>こちら</link>, から生成することもできます。または、
+            以下のランダムな図形から選ぶこともできます):"
+        placeholderName: パズルのタイトル
     puzzleResizeBadBuildings:
-        title: Resize not possible
-        desc: You can't make the zone any smaller, because then some buildings would be
-            outside the zone.
+        title: サイズ変更不可
+        desc: 建築物の一部がゾーンの外に出してしまうため、
+            ゾーンをこれ以上小さくすることはできません。
     puzzleLoadError:
-        title: Bad Puzzle
-        desc: "The puzzle failed to load:"
+        title: 不良パズル
+        desc: "パズルデータの読み込みに失敗:"
     offlineMode:
-        title: Offline Mode
-        desc: We couldn't reach the servers, so the game has to run in offline mode.
-            Please make sure you have an active internet connection.
+        title: オフラインモード
+        desc: サーバーにアクセスできなかったため、ゲームをオフラインモードで実行しました。
+            インターネット接続が有効であることをご確認ください。
     puzzleDownloadError:
-        title: Download Error
-        desc: "Failed to download the puzzle:"
+        title: ダウンロードエラー
+        desc: "パズルのダウンロードに失敗しました:"
     puzzleSubmitError:
-        title: Submission Error
-        desc: "Failed to submit your puzzle:"
+        title: 送信エラー
+        desc: "パズルの投稿に失敗しました:"
     puzzleSubmitOk:
-        title: Puzzle Published
-        desc: Congratulations! Your puzzle has been published and can now be played by
-            others. You can now find it in the "My puzzles" section.
+        title: パズル公開
+        desc: おめでとうございます！あなたのパズルが公開され、他の人も遊べるようになりました。
+            公開したパズルは"マイパズル"のセクションで確認できます。
     puzzleCreateOffline:
-        title: Offline Mode
-        desc: Since you are offline, you will not be able to save and/or publish your
-            puzzle. Would you still like to continue?
+        title: オフラインモード
+        desc: サーバーに接続出来ないため、パズルの保存や投稿ができません。
+            それでも続行しますか?
     puzzlePlayRegularRecommendation:
-        title: Recommendation
-        desc: I <strong>strongly</strong> recommend playing the normal game to level 12
-            before attempting the puzzle DLC, otherwise you may encounter
-            mechanics not yet introduced. Do you still want to continue?
+        title: おすすめ
+        desc: DLCをプレイする前にまずは通常ゲームをレベル12までプレイするのを<strong>強く</strong> おすすめします。
+            というのも、DLCではゲーム後半に出てくる高度な機械を使うことを前提としているためです。
+            それでも続行しますか?
     puzzleShare:
-        title: Short Key Copied
-        desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
-            can be entered in the puzzle menu to access the puzzle.
+        title: ショートキーのコピー
+        desc: パズルのショートキー（<key>）がクリップボードにコピーされました!
+            パズルメニューで入力するとアクセスできます。
     puzzleReport:
-        title: Report Puzzle
+        title: パズルを報告する
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: 不快な内容
+            unsolvable: クリア不可能
+            trolling: 荒らし
     puzzleReportComplete:
-        title: Thank you for your feedback!
-        desc: The puzzle has been flagged.
+        title: ご意見ありがとうございます！
+        desc: パズルが通報されました。
     puzzleReportError:
-        title: Failed to report
-        desc: "Your report could not get processed:"
+        title: 報告に失敗しました
+        desc: "レポートが正しく処理されませんでした。:"
     puzzleLoadShortKey:
-        title: Enter short key
-        desc: Enter the short key of the puzzle to load it.
+        title: ショートキーを入力
+        desc: パズルのショートキーを入力してロードする。
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: パズルを消しますか?
+        desc: 本当に '<title>' を削除しますか？実行すると元に戻せません!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Mod警告
+        desc: 現在インストールされているModは、セーブゲームが作成された時のModとは異なります。
+            そのため、セーブゲームが壊れたり、ロードできなくなる可能性があります。
+            それでも続行しますか?
+        missingMods: Modが見つかりません
+        newMods: 新しくModsがインストールされました
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: データをロードできませんでした
+        demoLinkText: Steam版shapezデモ
+        descWeb: "ゲームデータをロードできませんでした。
+            インターネット接続を確認し、再度お試しください。
+            もし繰り返す場合は、ブラウザーの拡張機能 (アドブロッカー含む)を無効にしてみてください。
+            <br><br> どうしても駄目な場合は、<demoOnSteamLinkText>でプレイしてください
+            <br><br> エラーメッセージ:"
+        descSteamDemo: "ゲームデータをロードできませんでした。
+            ゲームを再起動してみてください。もしも解決しない場合は、ゲームを再インストールしてSteamの
+            ゲームファイルの整合性確認をしてみてください。<br><br> エラーメッセージ:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: 完全版ログアウト
+        desc: ゲームからログアウトしました。ネットワーク接続が不安定であるか、
+            他のデバイスで同時にプレイしているため、意図的にログアウトさせています。
+            <br><br> ブラウザー版であれば他のタブや、
+            他のPCやSteam版で同時にshapezを起動していないか確認してください。
+            <br><br> 同時プレイではなくなれば、再度ログインできるようになります。
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: 完全版に解除していません
+        desc: ブラウザーで完全版をプレイするには、
+            SteamでゲームとパズルDLC両方を購入している必要があります。<br><br>
+            両方購入してから、Steamにログインした状態で
+            ブラウザーで再度アクセスしてみてください。
 ingame:
     keybindingsOverlay:
         moveMap: マップ移動
@@ -445,52 +445,52 @@ ingame:
                 title: アチーブメント
                 desc: 取り尽くせ！
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Mod機能対応!
+                desc: 80以上のModが利用できます!
+        titleV2: "今すぐSteamで完全版を入手して、アンロックしよう:"
+        titleExpiredV2: デモ版コンプリート!
+        titleEnjoyingDemo: デモ版をお楽しみいただけましたか?
     puzzleEditorSettings:
-        zoneTitle: Zone
-        zoneWidth: Width
-        zoneHeight: Height
-        trimZone: Trim
-        clearItems: Clear Items
+        zoneTitle: ゾーン
+        zoneWidth: 幅
+        zoneHeight: 高さ
+        trimZone: トリム
+        clearItems: アイテムを消す
         share: Share
-        report: Report
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        report: 報告する
+        clearBuildings: 建築物をクリアする
+        resetPuzzle: パズルをやり直す
     puzzleEditorControls:
-        title: Puzzle Creator
+        title: パズルクリエーター
         instructions:
-            - 1. Place <strong>Constant Producers</strong> to provide shapes and
-              colors to the player
-            - 2. Build one or more shapes you want the player to build later and
-              deliver it to one or more <strong>Goal Acceptors</strong>
-            - 3. Once a Goal Acceptor receives a shape for a certain amount of
-              time, it <strong>saves it as a goal</strong> that the player must
-              produce later (Indicated by the <strong>green badge</strong>).
-            - 4. Click the <strong>lock button</strong> on a building to disable
-              it.
-            - 5. Once you click review, your puzzle will be validated and you
-              can publish it.
-            - 6. Upon release, <strong>all buildings will be removed</strong>
-              except for the Producers and Goal Acceptors - That's the part that
-              the player is supposed to figure out for themselves, after all :)
+            - 1. 図形と色を生成する<strong>コンスタント・プロデューサー</strong>を
+              画面内に配置します
+            - 2. <strong>ゴール・アクセプター</strong>で受け取る、
+              最終的な図形をデザインします。
+            - 3. <strong>ゴール・アクセプター</strong>で一定数の正しい図形を受け取れるようになったら
+              <strong>ゴールとしてセーブ</strong>します。
+              (この時、<strong>緑色のバッジ</strong>が点灯します).
+            - 4. 建築物にカーソルをあわせて<strong>ロックボタン</strong>をクリックし、
+              無効にします。
+            - 5. レビューをクリックすると、パズルが認証され、公開できます。
+
+            - 6. パズルは公開されると、先程作成した建築物はコンスタント・プロデューサーと
+              ゴール・アクセプターを除いて<strong>すべて消去されます。</strong>
+              つまり、パズルに挑戦する人が消去された部分を考えてプレイする、ということです。
     puzzleCompletion:
-        title: Puzzle Completed!
-        titleLike: "Click the heart if you liked the puzzle:"
-        titleRating: How difficult did you find the puzzle?
-        titleRatingDesc: Your rating will help me to make you better suggestions in the future
-        continueBtn: Keep Playing
-        menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        title: パズル完成!
+        titleLike: "楽しいと思ったらハートをクリックしてください:"
+        titleRating: 難しさはどうでしたか?
+        titleRatingDesc: この評価で今後のパズル作成の参考になります。
+        continueBtn: 続ける
+        menuBtn: メニュー
+        nextPuzzle: 次のパズル
     puzzleMetadata:
-        author: Author
-        shortKey: Short Key
-        rating: Difficulty score
-        averageDuration: Avg. Duration
-        completionRate: Completion rate
+        author: 作者
+        shortKey: ショートキー
+        rating: 難易度
+        averageDuration: 平均プレイ時間
+        completionRate: 達成率
 shopUpgrades:
     belt:
         name: ベルト、分配機とトンネル
@@ -673,16 +673,16 @@ buildings:
             description: サンドボックスモードでのみ使用可能で、ワイヤレイヤーで与えられた信号の形状を通常レイヤーに出力します。
     constant_producer:
         default:
-            name: Constant Producer
-            description: Constantly outputs a specified shape or color.
+            name: コンスタント・プロデューサー
+            description: 常に一定の間隔で図形や色を出力します。
     goal_acceptor:
         default:
-            name: Goal Acceptor
-            description: Deliver shapes to the goal acceptor to set them as a goal.
+            name: ゴールアクセプター
+            description: 指定した図形だけを受け取り、一定数受け取ったらパズルクリアです。
     block:
         default:
-            name: Block
-            description: Allows you to block a tile.
+            name: ブロック
+            description: タイルをブロックできるようにする。
 storyRewards:
     reward_cutter_and_trash:
         title: 形の切断
@@ -812,8 +812,8 @@ settings:
         performance: パフォーマンス
     versionBadges:
         dev: 開発
-        staging: Staging
-        prod: Production
+        staging: ステージング
+        prod: プロダクション
     buildDate: <at-date>にビルド
     rangeSliderPercentage: <amount> %
     labels:
@@ -941,9 +941,9 @@ settings:
             title: 資源アイコンのサイズ
             description: ズームアウトしたときの図形のサイズを調節します。
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: 図形チップ - 常に表示する
+            description: 'ALT'キーを押す代わりに、建築物にマウスカーソルを合わせた時に常にツールチップを
+                表示できます。
     tickrateHz: <amount> Hz
     newBadge: New!
 keybindings:
@@ -1023,11 +1023,11 @@ keybindings:
         rotateToDown: "回転: 下向きにする"
         rotateToRight: "回転: 右向きにする"
         rotateToLeft: "回転: 左向きにする"
-        constant_producer: Constant Producer
-        goal_acceptor: Goal Acceptor
-        block: Block
-        massSelectClear: Clear belts
-        showShapeTooltip: Show shape output tooltip
+        constant_producer: コンスタント・プロデューサー
+        goal_acceptor: ゴールアクセプター
+        block: ブロック
+        massSelectClear: ベルトを消去
+        showShapeTooltip: 出力図形のツールチップを表示する
 about:
     title: このゲームについて
     body: >-
@@ -1104,111 +1104,111 @@ tips:
     - F4を押すことで、FPSとTickレートを表示できます。
     - F4を2回押すと、マウスとカメラの座標を表示できます。
     - 左のピン留めされた図形をクリックすると、ピン留めを解除できます。
-    - To clear belts, cut the area and then paste it at the same location.
-    - Press F4 to show your FPS and Tick Rate.
-    - Press F4 twice to show the tile of your mouse and camera.
-    - You can click a pinned shape on the left side to unpin it.
+    - その部分を切り取り、同じ場所に貼り付けるとベルトだけを消去できます。
+    - F4キーを1回押すと、FPSとチックレートを表示します。
+    - F4キーを2回押すと、マウスとカメラの座標軸を表示します。
+    - 左側にピン留めされている図形をクリックすると、ピン留めを解除できます。
 puzzleMenu:
-    play: Play
-    edit: Edit
-    title: Puzzle Mode
-    createPuzzle: Create Puzzle
-    loadPuzzle: Load
-    reviewPuzzle: Review & Publish
-    validatingPuzzle: Validating Puzzle
-    submittingPuzzle: Submitting Puzzle
-    noPuzzles: There are currently no puzzles in this section.
+    play: プレイ
+    edit: 編集
+    title: パズルモード
+    createPuzzle: パズルを作る
+    loadPuzzle: ロード
+    reviewPuzzle: レビューして投稿する
+    validatingPuzzle: パズルを検証しています
+    submittingPuzzle: パズルを投稿しています
+    noPuzzles: 現在、このセクションにパズルデータがありません。
     categories:
-        levels: Levels
+        levels: レベル
         new: New
-        top-rated: Top Rated
-        mine: My Puzzles
-        easy: Easy
-        hard: Hard
-        completed: Completed
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        top-rated: 最高評価
+        mine: マイパズル
+        easy: イージー
+        hard: ハード
+        completed: クリア済
+        medium: ノーマル
+        official: 公式
+        trending: 今日のトレンド
+        trending-weekly: 今週のトレンド
+        categories: カテゴリー
+        difficulties: 難易度
+        account: マイパズル
+        search: 検索
     validation:
-        title: Invalid Puzzle
-        noProducers: Please place a Constant Producer!
-        noGoalAcceptors: Please place a Goal Acceptor!
-        goalAcceptorNoItem: One or more Goal Acceptors have not yet assigned an item.
-            Deliver a shape to them to set a goal.
-        goalAcceptorRateNotMet: One or more Goal Acceptors are not getting enough items.
-            Make sure that the indicators are green for all acceptors.
-        buildingOutOfBounds: One or more buildings are outside of the buildable area.
-            Either increase the area or remove them.
-        autoComplete: Your puzzle autocompletes itself! Please make sure your constant
-            producers are not directly delivering to your goal acceptors.
+        title: 無効なパズル
+        noProducers: コンスタント・プロデューサーを配置してください!
+        noGoalAcceptors: ゴールアクセプターを配置してください!
+        goalAcceptorNoItem: ゴールアクセプターでまだ図形が割り当てられていないものがあります
+            パズルが完成できるよう指定してください。
+        goalAcceptorRateNotMet: ゴールアクセプターでまだアイテムが不足しているものがあります。
+            すべてのゴールアクセプターが緑色に点灯しているか確認してください。
+        buildingOutOfBounds: 建築物でエリア外に設置されているものがあります。
+            エリアを拡大させるか、建築物を取り除いてください。
+        autoComplete: パズルが自動的に完成してしまうことを検知しました!
+            コンスタント・プロデューサーの隣にゴールアクセプターを配置してないか確認してください。
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: イージー
+        medium: ノーマル
+        hard: ハード
+        unknown: 評価なし
+    dlcHint: すでにDLCを購入されましたか? DLCをアクティベートにするには、
+        ライブラリで「shapez.io」を右クリックでプロパティを選び、DLCでチェックを入れてください。
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: 検索
+        placeholder: パズル名か作者名入力してください
+        includeCompleted: クリア済も表示する
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: すべての難易度
+            easy: イージー
+            medium: ノーマル
+            hard: ハード
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: プレイ時間
+            short: 短い (2分以内)
+            medium: ふつう
+            long: 長い (10分以上)
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: あまりにも早く操作しているため対応できません。少し待ってください。
+    invalid-api-key: バックエンドでの通信に失敗しました。
+        ゲームを最新にアップデートまたは再起動してください（無効なApiキー）
+    unauthorized: バックエンドでの通信に失敗しました。
+        ゲームを最新にアップデートまたは再起動してください（ライセンス承認失敗）
+    bad-token: バックエンドでの通信に失敗しました。
+        ゲームを最新にアップデートまたは再起動してください（不正な通信を検知）
+    bad-id: パズルの識別子が無効です
+    not-found: 指定されたパズルは見つかりませんでした。
+    bad-category: 指定されたカテゴリーが見つかりませんでした。
+    bad-short-key: 指定されたショートキーは無効です。
+    profane-title: パズルのタイトルから不快な単語が検知されました
+    bad-title-too-many-spaces: パズルのタイトル名が短すぎます。
+    bad-shape-key-in-emitter: コンスタント・プロデューサーに無効なアイテムがあります。
+    bad-shape-key-in-goal: ゴールアクセプターに無効なアイテムがあります。
+    no-emitters: パズル内にコンスタント・プロデューサーがありません。
+    no-goals: パズル内にゴールアクセプターがありません。
+    short-key-already-taken: このショートキーはすでに使用されています。別のものをお使いください。
+    can-not-report-your-own-puzzle: 自分のパズルは通報できません。
+    bad-payload: リクエストに無効なデータが含まれています。
+    bad-building-placement: パズルには無効な建築物が配置されています。
+    timeout: リクエストがタイムアウトになりました。
+    too-many-likes-already: このパズルは非常に高評価が集まっています。
+        それでも削除したい場合はsupport@shapez.ioまでご連絡ください。
+    no-permission: この操作を行う権限がありません。
 mods:
     title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    author: 作者
+    version: バージョン
+    modWebsite: Webページ
+    openFolder: Modフォルダを開く
+    folderOnlyStandalone: スタンドアローン版を実行しているときのみMODフォルダを開けます。
+    browseMods: Modを見る
+    modsInfo: Modをインストールするには、ゲームディレクトリ内のModフォルダにデータをコピーしてください。
+        右上の「Modsフォルダを開く」ボタンですぐにフォルダを開けます。
+
+    noModSupport: Modで遊ぶには、Steam版が必要です。
     togglingComingSoon:
         title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        description: Modを有効または無効にするには、現時点ではModフォルダで
+            Modファイルをコピーまたは削除する必要があります。
+            将来のアップデートでゲーム内で選択できる機能を検討しています。
+    browserNoSupport: ブラウザーの制限から現時点では、Modを利用することはできません。
+        Steam版限定での機能となります。
