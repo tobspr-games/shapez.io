@@ -48,7 +48,7 @@ export class MainMenuState extends GameState {
             !G_GOG_VERSION;
         const showWegameFooter = G_WEGAME_VERSION;
         const hasMods = MODS.anyModsActive();
-        const hasSteamBridge = !G_GOG_VERSION && !G_IS_STEAM_DEMO;
+        const hasSteamBridge = !G_GOG_VERSION && !G_IS_STEAM_DEMO && !G_WEGAME_VERSION;
 
         let showExternalLinks = true;
 

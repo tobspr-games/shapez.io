@@ -141,9 +141,6 @@ export class PreloadState extends GameState {
             .then(() => this.app.analytics.initialize())
             .then(() => this.app.gameAnalytics.initialize())
 
-            .then(() => this.setStatus("Connecting to api", 15))
-            .then(() => this.fetchDiscounts())
-
             .then(() => this.setStatus("Initializing settings", 20))
             .then(() => {
                 return this.app.settings.initialize();

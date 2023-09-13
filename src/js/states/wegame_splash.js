@@ -19,6 +19,7 @@ export class WegameSplashState extends GameState {
     onEnter() {
         setTimeout(
             () => {
+                document.querySelector("body > .wrapper").remove();
                 this.app.stateMgr.moveToState("PreloadState");
             },
             G_IS_DEV ? 1 : 6000

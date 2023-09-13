@@ -281,13 +281,10 @@ function gulptasksStandalone($, gulp) {
         );
 
         gulp.task(taskPrefix + ".package.win64", cb => packageStandalone("win32", "x64", cb));
-        gulp.task(taskPrefix + ".package.linux64", cb => packageStandalone("linux", "x64", cb));
+        // gulp.task(taskPrefix + ".package.linux64", cb => packageStandalone("linux", "x64", cb));
         gulp.task(
             taskPrefix + ".build-from-windows",
-            gulp.series(
-                taskPrefix + ".prepare",
-                gulp.parallel(taskPrefix + ".package.win64", taskPrefix + ".package.linux64")
-            )
+            gulp.series(taskPrefix + ".prepare", gulp.parallel(taskPrefix + ".package.win64"))
         );
         gulp.task(
             taskPrefix + ".build-from-darwin",

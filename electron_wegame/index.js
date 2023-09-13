@@ -1,28 +1,37 @@
 /* eslint-disable quotes,no-undef */
 
-const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell } = require("electron");
-
-app.commandLine.appendSwitch("in-process-gpu");
-
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog, session } = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
 const wegame = require("./wegame");
 const asyncLock = require("async-lock");
+const windowStateKeeper = require("electron-window-state");
 
-const isDev = process.argv.indexOf("--dev") >= 0;
-const isLocal = process.argv.indexOf("--local") >= 0;
+// Disable hardware key handling, i.e. being able to pause/resume the game music
+// with hardware keys
+app.commandLine.appendSwitch("disable-features", "HardwareMediaKeyHandling");
+
+const isDev = app.commandLine.hasSwitch("dev");
+const isLocal = app.commandLine.hasSwitch("local");
+const safeMode = app.commandLine.hasSwitch("safe-mode");
+const externalMod = app.commandLine.getSwitchValue("load-mod");
 
 const roamingFolder =
     process.env.APPDATA ||
     (process.platform == "darwin"
         ? process.env.HOME + "/Library/Preferences"
         : process.env.HOME + "/.local/share");
-let storePath = path.join(roamingFolder, "shapez-wegame", "saves");
+let storePath = path.join(roamingFolder, "shapez-china", "saves");
+let modsPath = path.join(roamingFolder, "shapez-china", "mods");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
     fs.mkdirSync(storePath, { recursive: true });
+}
+
+if (!fs.existsSync(modsPath)) {
+    fs.mkdirSync(modsPath, { recursive: true });
 }
 
 /** @type {BrowserWindow} */
@@ -35,29 +44,43 @@ function createWindow() {
         faviconExtension = ".ico";
     }
 
+    const mainWindowState = windowStateKeeper({
+        defaultWidth: 1000,
+        defaultHeight: 800,
+    });
+
     win = new BrowserWindow({
-        width: 1280,
-        height: 800,
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
         show: false,
         backgroundColor: "#222428",
-        useContentSize: true,
+        useContentSize: false,
         minWidth: 800,
         minHeight: 600,
         title: "图形工厂",
         transparent: false,
         icon: path.join(__dirname, "favicon" + faviconExtension),
         // fullscreen: true,
-        autoHideMenuBar: true,
+        autoHideMenuBar: !isDev,
         webPreferences: {
             nodeIntegration: false,
+            nodeIntegrationInWorker: false,
+            nodeIntegrationInSubFrames: false,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            disableBlinkFeatures: "Auxclick",
+
             webSecurity: true,
             sandbox: true,
-
-            contextIsolation: true,
             preload: path.join(__dirname, "preload.js"),
+            experimentalFeatures: false,
         },
         allowRunningInsecureContent: false,
     });
+
+    mainWindowState.manage(win);
 
     if (isLocal) {
         win.loadURL("http://localhost:3005");
@@ -70,12 +93,70 @@ function createWindow() {
             })
         );
     }
-    win.webContents.session.clearCache(() => null);
+    win.webContents.session.clearCache();
     win.webContents.session.clearStorageData();
+
+    ////// SECURITY
+
+    // Disable permission requests
+    win.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+    session.fromPartition("default").setPermissionRequestHandler((webContents, permission, callback) => {
+        callback(false);
+    });
+
+    app.on("web-contents-created", (event, contents) => {
+        // Disable vewbiew
+        contents.on("will-attach-webview", (event, webPreferences, params) => {
+            event.preventDefault();
+        });
+        // Disable navigation
+        contents.on("will-navigate", (event, navigationUrl) => {
+            event.preventDefault();
+        });
+    });
+
+    win.webContents.on("will-redirect", (contentsEvent, navigationUrl) => {
+        // Log and prevent the app from redirecting to a new page
+        console.error(
+            `The application tried to redirect to the following address: '${navigationUrl}'. This attempt was blocked.`
+        );
+        contentsEvent.preventDefault();
+    });
+
+    // Filter loading any module via remote;
+    // you shouldn't be using remote at all, though
+    // https://electronjs.org/docs/tutorial/security#16-filter-the-remote-module
+    app.on("remote-require", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    // built-ins are modules such as "app"
+    app.on("remote-get-builtin", (event, webContents, moduleName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-global", (event, webContents, globalName) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-window", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    app.on("remote-get-current-web-contents", (event, webContents) => {
+        event.preventDefault();
+    });
+
+    //// END SECURITY
 
     win.webContents.on("new-window", (event, pth) => {
         event.preventDefault();
-        shell.openExternal(pth);
+
+        if (pth.startsWith("https://") || pth.startsWith("steam://")) {
+            shell.openExternal(pth);
+        }
     });
 
     win.on("closed", () => {
@@ -86,6 +167,8 @@ function createWindow() {
     if (isDev) {
         menu = new Menu();
 
+        win.webContents.toggleDevTools();
+
         const mainItem = new MenuItem({
             label: "Toggle Dev Tools",
             click: () => win.webContents.toggleDevTools(),
@@ -94,7 +177,7 @@ function createWindow() {
         menu.append(mainItem);
 
         const reloadItem = new MenuItem({
-            label: "Restart",
+            label: "Reload",
             click: () => win.reload(),
             accelerator: "F5",
         });
@@ -107,7 +190,15 @@ function createWindow() {
         });
         menu.append(fullscreenItem);
 
-        Menu.setApplicationMenu(menu);
+        const mainMenu = new Menu();
+        mainMenu.append(
+            new MenuItem({
+                label: "shapez.io",
+                submenu: menu,
+            })
+        );
+
+        Menu.setApplicationMenu(mainMenu);
     } else {
         Menu.setApplicationMenu(null);
     }
@@ -121,7 +212,7 @@ function createWindow() {
 if (!app.requestSingleInstanceLock()) {
     app.exit(0);
 } else {
-    app.on("second-instance", (event, commandLine, workingDirectory) => {
+    app.on("second-instance", () => {
         // Someone tried to run a second instance, we should focus
         if (win) {
             if (win.isMinimized()) {
@@ -143,7 +234,7 @@ ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);
 });
 
-ipcMain.on("exit-app", (event, flag) => {
+ipcMain.on("exit-app", () => {
     win.close();
     app.quit();
 });
@@ -224,7 +315,7 @@ async function writeFileSafe(filename, contents) {
 }
 
 ipcMain.handle("fs-job", async (event, job) => {
-    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/i, "");
+    const filenameSafe = job.filename.replace(/[^a-z\.\-_0-9]/gi, "_");
     const fname = path.join(storePath, filenameSafe);
     switch (job.type) {
         case "read": {
@@ -247,6 +338,46 @@ ipcMain.handle("fs-job", async (event, job) => {
         default:
             throw new Error("Unknown fs job: " + job.type);
     }
+});
+
+ipcMain.handle("open-mods-folder", async () => {
+    shell.openPath(modsPath);
+});
+
+console.log("Loading mods ...");
+
+function loadMods() {
+    if (safeMode) {
+        console.log("Safe Mode enabled for mods, skipping mod search");
+    }
+    console.log("Loading mods from", modsPath);
+    let modFiles = safeMode
+        ? []
+        : fs
+              .readdirSync(modsPath)
+              .filter(filename => filename.endsWith(".js"))
+              .map(filename => path.join(modsPath, filename));
+
+    if (externalMod) {
+        console.log("Adding external mod source:", externalMod);
+        const externalModPaths = externalMod.split(",");
+        modFiles = modFiles.concat(externalModPaths);
+    }
+
+    return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
+}
+
+let mods = [];
+try {
+    mods = loadMods();
+    console.log("Loaded", mods.length, "mods");
+} catch (ex) {
+    console.error("Failed to load mods");
+    dialog.showErrorBox("Failed to load mods:", ex);
+}
+
+ipcMain.handle("get-mods", async () => {
+    return mods;
 });
 
 wegame.init(isDev);
