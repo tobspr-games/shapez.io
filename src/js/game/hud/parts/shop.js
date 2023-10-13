@@ -123,7 +123,7 @@ export class HUDShop extends BaseHUDPart {
                 container.appendChild(pinButton);
 
                 let infoDetector;
-                if (!G_WEGAME_VERSION) {
+                if (!G_ISBN_VERSION) {
                     const viewInfoButton = document.createElement("button");
                     viewInfoButton.classList.add("showInfo");
                     container.appendChild(viewInfoButton);

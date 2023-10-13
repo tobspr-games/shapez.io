@@ -12,7 +12,7 @@ export const LANGUAGES = {
     "zh-CN": {
         // simplified chinese
         name: "简体中文",
-        data: G_WEGAME_VERSION
+        data: G_ISBN_VERSION
             ? require("./built-temp/base-zh-CN-ISBN.json")
             : require("./built-temp/base-zh-CN.json"),
         code: "zh",

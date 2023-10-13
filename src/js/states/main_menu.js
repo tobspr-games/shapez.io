@@ -39,21 +39,21 @@ export class MainMenuState extends GameState {
     }
 
     getInnerHTML() {
-        const showLanguageIcon = !G_CHINA_VERSION && !G_WEGAME_VERSION;
+        const showLanguageIcon = !G_CHINA_VERSION && !G_ISBN_VERSION;
         const showExitAppButton = G_IS_STANDALONE;
         const showPuzzleDLC =
-            !G_WEGAME_VERSION &&
+            !G_ISBN_VERSION &&
             (G_IS_STANDALONE || WEB_STEAM_SSO_AUTHENTICATED) &&
             !G_IS_STEAM_DEMO &&
             !G_GOG_VERSION;
-        const showWegameFooter = G_WEGAME_VERSION;
+        const showWegameFooter = G_ISBN_VERSION;
         const hasMods = MODS.anyModsActive();
-        const hasSteamBridge = !G_GOG_VERSION && !G_IS_STEAM_DEMO && !G_WEGAME_VERSION;
+        const hasSteamBridge = !G_GOG_VERSION && !G_IS_STEAM_DEMO && !G_ISBN_VERSION;
 
         let showExternalLinks = true;
 
         if (G_IS_STANDALONE) {
-            if (G_WEGAME_VERSION || G_CHINA_VERSION) {
+            if (G_ISBN_VERSION || G_CHINA_VERSION) {
                 showExternalLinks = false;
             }
         } else {
@@ -711,7 +711,7 @@ export class MainMenuState extends GameState {
                 downloadButton.setAttribute("aria-label", "Download");
                 elem.appendChild(downloadButton);
 
-                if (!G_WEGAME_VERSION) {
+                if (!G_ISBN_VERSION) {
                     const renameButton = document.createElement("button");
                     renameButton.classList.add("styledButton", "renameGame");
                     renameButton.setAttribute("aria-label", "Rename Savegame");

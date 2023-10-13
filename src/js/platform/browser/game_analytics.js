@@ -114,7 +114,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
     initialize() {
         this.syncKey = null;
 
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             return;
         }
 
@@ -221,7 +221,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @returns {Promise<any>}
      */
     sendToApi(endpoint, data) {
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             return Promise.resolve();
         }
 
@@ -263,7 +263,7 @@ export class ShapezGameAnalytics extends GameAnalyticsInterface {
      * @param {string} value
      */
     sendGameEvent(category, value) {
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             return;
         }
 

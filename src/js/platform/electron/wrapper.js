@@ -4,6 +4,7 @@ import { createLogger } from "../../core/logging";
 import { StorageImplElectron } from "./storage";
 import { SteamAchievementProvider } from "./steam_achievement_provider";
 import { PlatformWrapperInterface } from "../wrapper";
+import { WegameAchievementProvider } from "./wegame_achievement_provider";
 
 const logger = createLogger("electron-wrapper");
 
@@ -24,7 +25,10 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
         this.app.ticker.frameEmitted.add(this.steamOverlayFixRedrawCanvas, this);
 
         this.app.storage = new StorageImplElectron(this);
-        this.app.achievementProvider = new SteamAchievementProvider(this.app);
+
+        this.app.achievementProvider = G_WEGAME_VERSION
+            ? new WegameAchievementProvider(this.app)
+            : new SteamAchievementProvider(this.app);
 
         return this.initializeAchievementProvider()
             .then(() => this.initializeDlcStatus())
@@ -70,7 +74,7 @@ export class PlatformWrapperImplElectron extends PlatformWrapperImplBrowser {
     }
 
     initializeDlcStatus() {
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             return Promise.resolve();
         }
 

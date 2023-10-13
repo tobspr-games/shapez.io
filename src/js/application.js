@@ -153,7 +153,7 @@ export class Application {
 
         Loader.linkAppAfterBoot(this);
 
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             this.stateMgr.moveToState("WegameSplashState");
         }
 

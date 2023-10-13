@@ -233,7 +233,7 @@ export class HUDPinnedShapes extends BaseHUDPart {
 
         // Show small info icon
         let infoDetector;
-        if (!G_WEGAME_VERSION) {
+        if (!G_ISBN_VERSION) {
             const infoButton = document.createElement("button");
             infoButton.classList.add("infoButton");
             element.appendChild(infoButton);

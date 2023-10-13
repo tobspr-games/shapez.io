@@ -17,6 +17,7 @@ module.exports = ({
 
     chineseVersion = false,
     wegameVersion = false,
+    steamIsbnVersion = false,
     steamDemo = false,
     gogVersion = false,
 }) => {
@@ -28,6 +29,8 @@ module.exports = ({
 
         G_CHINA_VERSION: JSON.stringify(chineseVersion),
         G_WEGAME_VERSION: JSON.stringify(wegameVersion),
+        G_ISBN_VERSION: JSON.stringify(wegameVersion || steamIsbnVersion),
+        G_STEAM_ISBN_VERSION: JSON.stringify(steamIsbnVersion),
         G_GOG_VERSION: JSON.stringify(gogVersion),
         G_IS_RELEASE: environment === "prod" ? "true" : "false",
         G_IS_STANDALONE: standalone ? "true" : "false",

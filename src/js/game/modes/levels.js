@@ -5,7 +5,7 @@ import { WEB_STEAM_SSO_AUTHENTICATED } from "../../core/steam_sso";
 import { enumHubGoalRewards } from "../tutorial_goals";
 
 export const finalGameShape = "RuCw--Cw:----Ru--";
-const chinaShapes = G_WEGAME_VERSION || G_CHINA_VERSION;
+const chinaShapes = G_ISBN_VERSION || G_CHINA_VERSION;
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////

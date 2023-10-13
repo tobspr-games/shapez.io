@@ -9,6 +9,7 @@
  *      chineseVersion?: boolean,
  *      wegameVersion?: boolean,
  *      steamDemo?: boolean,
+ *      steamIsbnVersion?: boolean,
  *      gogVersion?: boolean
  * }}>}
  */
@@ -61,6 +62,13 @@ const BUILD_VARIANTS = {
         electronBaseDir: "electron_wegame",
         buildArgs: {
             wegameVersion: true,
+        },
+    },
+    "standalone-steam-isbn": {
+        standalone: true,
+        electronBaseDir: "electron_steam_isbn",
+        buildArgs: {
+            steamIsbnVersion: true,
         },
     },
     "standalone-gog": {

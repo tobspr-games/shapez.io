@@ -7,7 +7,7 @@ function init(isDev) {
     try {
         console.log("Step 2: Calling need restart app");
         const need_restart = railsdk.RailNeedRestartAppForCheckingEnvironment(
-            2001639,
+            2002030,
             [`--rail_render_pid=${process.pid}`] //,"--rail_debug_mode",
         );
         console.log("Step 3: Needs restart =", need_restart);
@@ -57,6 +57,22 @@ function listen() {
         }
 
         return data;
+    });
+
+    ipcMain.handle("wegame:activate-achievement", async (event, data) => {
+        console.log("Unlock wegame achievement", data);
+
+        var manager = railsdk.RailAchievementHelper.CreatePlayerAchievement("0");
+        var result = manager.MakeAchievement(data);
+        if (result != railsdk.RailResult.kSuccess) {
+            console.error("Unlock wegame achievement", data, "failed with code", result);
+            return false;
+        }
+        manager.AsyncStoreAchievement().then(
+            () => console.log("Achievements stored successfully."),
+            err => console.error("Failed to unlock achievement async:", err)
+        );
+        return true;
     });
 }
 

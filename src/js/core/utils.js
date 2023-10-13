@@ -247,7 +247,7 @@ export function formatBigNumber(num, separator = T.global.decimalSeparator) {
     if (num < 1000) {
         return sign + "" + num;
     } else {
-        if (G_WEGAME_VERSION) {
+        if (G_ISBN_VERSION) {
             if (num < 1000000) {
                 if (num < 10000) {
                     return sign + String(num).replace(".0", "").replace(".", separator);
@@ -704,7 +704,7 @@ const romanLiteralsCache = ["0"];
  * @returns {string}
  */
 export function getRomanNumber(number) {
-    if (G_WEGAME_VERSION) {
+    if (G_ISBN_VERSION) {
         return String(number);
     }
 
@@ -763,7 +763,7 @@ export function getRomanNumber(number) {
  * Returns the appropriate logo sprite path
  */
 export function getLogoSprite() {
-    if (G_WEGAME_VERSION) {
+    if (G_ISBN_VERSION) {
         return "logo_wegame.png";
     }
 
