@@ -262,6 +262,7 @@ export class MainMenuState extends GameState {
                             抵制不良游戏,拒绝盗版游戏。注意自我保护,谨防受骗上当。<br>
                             适度游戏益脑,沉迷游戏伤身。合理安排时间,享受健康生活。
                         </div>
+                        <div class="rating"></div>
 
                     </div>
                     `
@@ -536,10 +537,12 @@ export class MainMenuState extends GameState {
             .setAttribute("data-savegames", String(this.savedGames.length));
 
         // Mods
-        this.trackClicks(
-            makeButton(outerDiv, ["modsButton", "styledButton"], T.mods.title),
-            this.onModsClicked
-        );
+        if (!G_STEAM_ISBN_VERSION) {
+            this.trackClicks(
+                makeButton(outerDiv, ["modsButton", "styledButton"], T.mods.title),
+                this.onModsClicked
+            );
+        }
 
         buttonContainer.appendChild(outerDiv);
     }

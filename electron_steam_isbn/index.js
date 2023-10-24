@@ -24,15 +24,10 @@ const roamingFolder =
         : process.env.HOME + "/.local/share");
 
 let storePath = path.join(roamingFolder, "shapez-china", "saves");
-let modsPath = path.join(roamingFolder, "shapez-china", "mods");
 
 if (!fs.existsSync(storePath)) {
     // No try-catch by design
     fs.mkdirSync(storePath, { recursive: true });
-}
-
-if (!fs.existsSync(modsPath)) {
-    fs.mkdirSync(modsPath, { recursive: true });
 }
 
 /** @type {BrowserWindow} */
@@ -341,49 +336,9 @@ ipcMain.handle("fs-job", async (event, job) => {
     }
 });
 
-ipcMain.handle("open-mods-folder", async () => {
-    shell.openPath(modsPath);
-});
-
-console.log("Loading mods ...");
-
-function loadMods() {
-    if (safeMode) {
-        console.log("Safe Mode enabled for mods, skipping mod search");
-    }
-    console.log("Loading mods from", modsPath);
-    let modFiles = safeMode
-        ? []
-        : fs
-              .readdirSync(modsPath)
-              .filter(filename => filename.endsWith(".js"))
-              .map(filename => path.join(modsPath, filename));
-
-    if (externalMod) {
-        console.log("Adding external mod source:", externalMod);
-        const externalModPaths = externalMod.split(",");
-        modFiles = modFiles.concat(externalModPaths);
-    }
-
-    return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
-}
-
-let mods = [];
-try {
-    mods = loadMods();
-    console.log("Loaded", mods.length, "mods");
-} catch (ex) {
-    console.error("Failed to load mods");
-    dialog.showErrorBox("Failed to load mods:", ex);
-}
-
 ipcMain.handle("get-mods", async () => {
-    return mods;
+    return [];
 });
 
 steam.init(isDev);
-
-// Only allow achievements and puzzle DLC if no mods are loaded
-if (mods.length === 0) {
-    steam.listen();
-}
+steam.listen();

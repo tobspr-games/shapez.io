@@ -66,6 +66,7 @@ const BUILD_VARIANTS = {
     },
     "standalone-steam-isbn": {
         standalone: true,
+        steamAppId: 1318690,
         electronBaseDir: "electron_steam_isbn",
         buildArgs: {
             steamIsbnVersion: true,

@@ -30,9 +30,15 @@ export class SettingsState extends TextualGameState {
                     : ""
             }
 
+            ${
+                // Disable mods for steam china
+                G_STEAM_ISBN_VERSION
+                    ? ""
+                    : `
             <button class="styledButton categoryButton manageMods">${T.mods.title}
                 <span class="newBadge">${T.settings.newBadge}</span>
-            </button>
+            </button>`
+            }
 
 
             <div class="other ${G_CHINA_VERSION || G_ISBN_VERSION ? "noabout" : ""}">

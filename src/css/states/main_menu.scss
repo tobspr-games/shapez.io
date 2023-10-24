@@ -1191,11 +1191,9 @@
                 background: green;
                 cursor: pointer !important;
                 pointer-events: all;
-                @include S(border-radius, 4px);
-                overflow: hidden;
 
                 & {
-                    background: #fff uiResource("wegame_isbn_rating.jpg") center center / contain no-repeat;
+                    background: uiResource("wegame_isbn_rating.png") center center / contain no-repeat;
                 }
             }
         }
