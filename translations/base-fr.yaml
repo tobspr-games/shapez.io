@@ -1327,18 +1327,18 @@ puzzleMenu:
     noPuzzles: Il n'y a actuellement aucun puzzle dans cette section.
     categories:
         levels: Niveaux
-        new: Nouveau
+        new: Nouveaux
         top-rated: Les mieux notés
         mine: Mes puzzles
-        easy: Facile
-        hard: Difficile
-        completed: Complété
-        medium: Moyen
-        official: Officiel
-        trending: Tendance aujourd'hui
-        trending-weekly: Tendance cette semaine
+        easy: Faciles
+        hard: Difficiles
+        completed: Complétés
+        medium: Moyens
+        official: Officiels
+        trending: Tendance d'aujourd'hui
+        trending-weekly: Tendance de cette semaine
         categories: Catégories
-        difficulties: Par Difficulté
+        difficulties: Par Difficultés
         account: Mes Puzzles
         search: Rechercher
     validation:
