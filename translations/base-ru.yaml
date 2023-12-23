@@ -104,7 +104,7 @@ mainMenu:
     noActiveSavegames: Сохранения не найдены - нажмите "Играть", чтобы начать новую игру!
     playFullVersionV2: Приобрели shapez в Steam? Вы можете играть в полную версию
         прямо в Вашем браузере!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: Вы также можете поиграть в полную версию в вашем браузере!
 dialogs:
     buttons:
         ok: OK
