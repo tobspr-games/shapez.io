@@ -53,9 +53,9 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: Вхід у систему
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Завантаження додаткових ресурсів (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: СПЕЦІАЛЬНА АКЦІЯ! Пропозиція закінчиться 7 липня
 demoBanners:
     title: Демо-версія
     intro: |-
@@ -100,11 +100,11 @@ mainMenu:
         title: Активні моди
         warningPuzzleDLC: Гра з модами у Puzzle DLC не є можливою. Будь-ласка відключіть
             усі моди щоб грати у цей режим.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Ви граєте у повну версію гри!
+    logout: Вихід
+    noActiveSavegames: Не знайдено активних збережень - Натисніть грати, щоб почати нову гру!
+    playFullVersionV2: Купили shapez в Steam? Грайте повну версію в браузері!
+    playFullVersionStandalone: Ви також можете грати повну версію у свожєму браузері!
 dialogs:
     buttons:
         ok: Гаразд
@@ -118,7 +118,7 @@ dialogs:
         viewUpdate: Переглянути оновлення
         showUpgrades: Показати поліпшення
         showKeybindings: Показати прив’язки клавіш
-        retry: Retry
+        retry: Повторити
         continue: Продовжити
         playOffline: Грати офлайн
     importSavegameError:
@@ -252,7 +252,7 @@ dialogs:
         desc: "Не вдалося опублікувати головоломку:"
     puzzleSubmitOk:
         title: Головоломку опубліковано
-        desc: Вітаєио! Ваша головоломка опублікована, та видима для інших гравців. Ви
+        desc: Вітаємо! Ваша головоломка опублікована, та видима для інших гравців. Ви
             можете знайти її у розділі "Мої головоломки".
     puzzleCreateOffline:
         title: Офлайн режим
@@ -271,9 +271,9 @@ dialogs:
     puzzleReport:
         title: Поскаржитись на головоломку
         options:
-            profane: Profane
-            unsolvable: Not solvable
-            trolling: Trolling
+            profane: Ненормативна лексика
+            unsolvable: Не можливо вирішити
+            trolling: Глузування
     puzzleReportComplete:
         title: Дякуємо за ваш відгук!
         desc: Скаргу було надіслано.
@@ -295,29 +295,29 @@ dialogs:
         missingMods: Відсутні моди
         newMods: Нещодавно встановлені моди
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Невдалося завантажити файли
+        demoLinkText: shapez demo в Steam
+        descWeb: "Один чи декілька файлів не вдалося завантажити. Впевніться, що ви маєте 
+            стабільний зв'язок з мережею та спробуйте знову. Якщо помилка не зникне,
+            спробуйте вимкнути будь-які розширення в браузері (включно з
+            блокувачами реклами).<br><br> Як альтернатива, ви також можете зіграти
+            <demoOnSteamLinkText>. <br><br> Помилка:"
+        descSteamDemo: "Один чи декілька файлів не вдалося завантажити. Спробуйте перезавантажити гру
+        - Якщо це не допоможе, спробуйте перезавантажити і перевірити файли за допомогою Steam. 
+        <br><br> Помилка:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Вихід з повної версії
+        desc: Вас викинули з повної версії у браузері оскільки ваше
+            з'єднання з мережею нестабільне або ви граєте на іншому
+            пристрої.<br><br> Будь ласка, впевніться, що ви не відкриваєте shapez в будь-якій
+            іншій вкладці чи іншому пристрої з тим самим Steam
+            акаунтом.<br><br> Ви можете ввійти знову в головному меню.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Немає повної версії
+        desc: Щоб грати в повну версію гри у браузері, вам потрібно мати, як
+            базову версію гри так і Puzzle DLC на вашому Steam акаунті.<br><br>
+            Впевніться що ви маєте обидві версії гри підв'язані до вашого Steam
+            акаунту та спробуйте знову.
 ingame:
     keybindingsOverlay:
         moveMap: Рухатися
@@ -489,11 +489,11 @@ ingame:
                 title: Досягнення
                 desc: Отримайте їх всі!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Підтримка модів!
+                desc: Більше 80 модів в наявності!
+        titleV2: "Отримайте повну версію в Steam, щоб розблокувати:"
+        titleExpiredV2: Демо-версія пройдена!
+        titleEnjoyingDemo: Насолоджуєтеся Демо-версією?
     puzzleEditorSettings:
         zoneTitle: Зона
         zoneWidth: Ширина
@@ -926,7 +926,7 @@ storyRewards:
             це проаналізувати її та автоматично налаштувати свою фабрику.
     reward_demo_end:
         title: Кінець демо-версії
-        desc: Ви досягнули кінець демо-версії!
+        desc: Ви досягнули кінця демо-версії!
 settings:
     title: Налаштування
     categories:
@@ -943,7 +943,7 @@ settings:
     labels:
         uiScale:
             title: Масштаб інтерфейсу
-            description: Змінює розмір користувацього інтерфейсу. Інтерфейс усе ще буде
+            description: Змінює розмір користувацького інтерфейсу. Інтерфейс усе ще буде
                 масштабуватися залежно від роздільної здатності вашого пристрою,
                 але цей параметр контролює ступінь масштабування.
             scales:
@@ -1026,7 +1026,7 @@ settings:
                 розміщення, доки ви не скасуєте це. Це еквівалентно постійному
                 утримуванню SHIFT.
         offerHints:
-            title: Підказки & посібники
+            title: Підказки та посібники
             description: Якщо увімкнено, то пропонує підказки та посібники під час гри.
                 Також приховує певні елементи інтерфейсу до заданого рівня, щоб
                 полегшити потрапляння в гру.
@@ -1091,7 +1091,7 @@ settings:
                 країв екрану. Швидкість залежить від обраної в налаштуваннях
                 Швидкості Руху.
         zoomToCursor:
-            title: Приближати в напрямку курсора
+            title: Зближувати в напрямку курсора
             description: Якщо активовано, масштабування буде відбуватись в напрямку курсору
                 миші, в іншому випадку до ентру екрану.
         mapResourcesScale:
@@ -1104,7 +1104,7 @@ settings:
     tickrateHz: <amount> Гц
     newBadge: Нове!
 keybindings:
-    title: Гарячі клавіши
+    title: Гарячі клавіші
     hint: '"Підказка: Упевніться, що ви використовуєте CTRL, SHIFT і ALT! Вони
         дозволяють застосовувати різні варіанти розміщення."'
     resetKeybindings: Скинути гарячі клавіші
@@ -1368,8 +1368,8 @@ backendErrors:
     bad-payload: Запит містить недійсні дані.
     bad-building-placement: Ваша головоломка містить неправильно встановлені будівлі.
     timeout: Час очікування запиту минув.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
+    too-many-likes-already: Головоломка вже має завелику кількість вподобань. Якщо ви досі маєте бажання
+        видалити її, то зверніться сюди - support@shapez.io!
     no-permission: Ви не маєте дозволу на виконання цієї дії.
 mods:
     title: Моди
@@ -1388,5 +1388,5 @@ mods:
         description: Увімкнення або вимкнення модів наразі можливе лише шляхом
             копіювання файлу моду з папки mods/ або до неї. Однак можливість їх
             вимкнення та увімкнення тут запланована на майбутні оновлення!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: У зв'язку з обмеженнями браузера, зараз можливо тільки
+        Інсталювати моди в Steam версії - Вибачте!
