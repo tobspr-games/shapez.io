@@ -4,12 +4,12 @@ steamPage:
         mere komplicerede.
     discordLinkShort: Official Discord
     intro: >-
-        Shapez.io er et afslappet spil hvor du skal bygge fabrikker for at
+        Shapez.io er et afslappet spil, hvor du skal bygge fabrikker for at
         automatisere productionen af geometriske figurer.
 
-        Jo længere du når, jo mere kompliceret bliver figurerne, og du bliver nødt til at sprede dig ud på den grænseløse spilleflade.
+        Jo længere du når, jo mere komplicerede bliver figurerne, og du bliver nødt til at sprede dig ud på den grænseløse spilleflade.
 
-        Og, hvis det ikke var nok, så skal du også producere eksponentielt flere figurer for at møde behovene spillet giver dig - det eneste der virker er skalering! Mens du i starten kun laver former, skal du senere farvelægge dem - for at gøre dette skal du udvinde og blande farver!
+        Og, hvis det ikke var nok, så skal du også producere eksponentielt flere figurer for at møde behovene, spillet giver dig - det eneste, der virker, er skalering! Mens du i starten kun laver former, skal du senere farvelægge dem - for at gøre dette skal du udvinde og blande farver!
 
         Køb spillet på Steam, det giver dig adgang til det fulde spil, men du kan også spille en demoversion på shapez.io og vælge senere!
     what_others_say: Hvad andre siger om shapez.io
@@ -51,15 +51,15 @@ global:
         escape: ESC
         shift: SKIFT/SHIFT
         space: MELLEMRUM
-    loggingIn: Logging in
+    loggingIn: Logger ind
     loadingResources: Downloader yderligere ressourcer (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: SÆRLIGT TILBUD! Tilbuddet slutter den 7. juli
 demoBanners:
     title: Demoversion
     intro: |-
         Få det fulde spil <strong>nu</strong> for at låse op:<ul>
-            <li>Alle 26 niveauer + uendeligt freeplay</li>
+            <li>Alle 26 niveauer + uendeligt frispil</li>
             <li>22 nye bygninger</li>
             <li>Mod-understøttelse</li>
             <li>Mod-understøttelse</li>
@@ -69,8 +69,8 @@ demoBanners:
     playtimeDisclaimer: Den fulde version indeholder mere end <strong>20 timers indhold</strong>.
     playerCount: <playerCount> spillere som dig spiller lige nu shapez på Steam
     untilEndOfDemo: Indtil afslutningen af demoen
-    playtimeDisclaimerDownload: Du kan fortsætte dit savegame i den fulde version!
-        Klik <strong>her</strong> for at downloade dit savegame.
+    playtimeDisclaimerDownload: Du kan fortsætte dit gemte spil i den fulde version!
+        Klik <strong>her</strong> for at downloade dit gemte spil.
     titleV2: "Spil den fulde version nu for:"
 mainMenu:
     play: Spil
@@ -80,7 +80,7 @@ mainMenu:
     subreddit: Reddit
     importSavegame: Importér
     openSourceHint: Dette spil er open source!
-    discordLink: Officiel Discordserver
+    discordLink: Officiel Discord-server
     helpTranslate: Hjælp med at oversætte!
     madeBy: Lavet af <author-link>
     browserWarning: Undskyld, men spillet er kendt for at køre langsomt på denne
@@ -98,11 +98,11 @@ mainMenu:
         title: Active Mods
         warningPuzzleDLC: Det er ikke muligt at spille Puzzle DLC med mods. Slå alle
             mods fra for at spille DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Du spiller nu den fulde version!
+    logout: Log ud
+    noActiveSavegames: Ingen aktive gemte spil fundet - Tryk spil for at starte et nyt spil!
+    playFullVersionV2: Har du købt shapez på Steam? Spil den fulde version i din browser!
+    playFullVersionStandalone: Du kan nu også spillet det fulde spil i din browser!
 dialogs:
     buttons:
         ok: OK
@@ -112,7 +112,7 @@ dialogs:
         restart: Genstart
         reset: Nulstil
         getStandalone: Køb spillet
-        deleteGame: Jeg ved hvad jeg laver
+        deleteGame: Jeg ved, hvad jeg laver
         viewUpdate: Se opdatering
         showUpgrades: Vis opgraderinger
         showKeybindings: Vis tastefunktioner
@@ -131,7 +131,7 @@ dialogs:
     confirmSavegameDelete:
         title: Bekræft sletning
         text: Er du sikker på du vil slette dette spil?<br><br> '<savegameName>' på
-            niveau <savegameLevel><br><br> Dette kan ikke fortrydes!
+            niveau <savegameLevel>?<br><br> Dette kan ikke fortrydes!
     savegameDeletionError:
         title: Sletning fejlede
         text: "Det lykkedes ikke at slette dit gemte spil:"
@@ -139,8 +139,8 @@ dialogs:
         title: Genstart er nødvendig
         text: Du er nødt til at genstarte spillet for at anvende indstillingerne.
     editKeybinding:
-        title: Ændr Keybinding
-        desc: Tryk på knappen du vil bruge, eller escape for at fortryde.
+        title: Ændr Tastefunktion
+        desc: Tryk på knappen, du vil bruge eller escape for at fortryde.
     resetKeybindingsConfirmation:
         title: Nulstil tastefunktioner
         desc: Dette vil nulstille alle tastefunktioner til deres standarder. Bekræft
@@ -150,36 +150,36 @@ dialogs:
         desc: Tastefunktioner er nulstillet til deres standarder!
     featureRestriction:
         title: Demoversion
-        desc: Du prøvede at bruge en funktion (<feature>) der ikke er tilgængelig i
+        desc: Du prøvede at bruge en funktion (<feature>), der ikke er tilgængelig i
             demoen. Overvej at købe spillet for den fulde oplevelse!
     oneSavegameLimit:
         title: Begrænset mængde gemte spil
-        desc: Du kan kun have et gemt spil ad gangen in demoversionen. Vær sød at slette
-            det nuværende gemte spil eller at købe spillet!
+        desc: Du kan kun have et gemt spil ad gangen i demoversionen. Vær sød at slette
+            det nuværende gemte spil eller købe spillet!
     updateSummary:
         title: Ny opdatering!
         desc: "Dette har ændret sig siden sidst du spillede:"
     upgradesIntroduction:
         title: Få Forbedringer
-        desc: Alle figurer du producerer kan blive brugt til at få forbedringer -
+        desc: Alle figurer, du producerer, kan blive brugt til at få forbedringer -
             <strong>Ødelæg ikke dine gamle fabrikker!</strong>
             Forbedringsvinduet kan findes i det øverste højre hjørne af skærmen.
     massDeleteConfirm:
         title: Bekræft sletning
         desc: Du er ved at slette mange bygninger (<count> helt præcist)! Er du sikker
-            på at det er det du vil gøre?
+            på, at det er det, du vil gøre?
     massCutConfirm:
         title: Bekræft klip
         desc: Du er ved at klippe mange bygninger (<count> helt præcist)! Er du sikker
-            på at det er det du vil gøre?
+            på, at det er det, du vil gøre?
     blueprintsNotUnlocked:
         title: Ikke tilgængeligt endnu
         desc: Gennemfør Niveau 12 for at bruge skabeloner!
     keybindingsIntroduction:
         title: Brugbare keybindings
-        desc: "Dette spil har mange keybindings, som gør det lettere at bygge store
+        desc: "Dette spil har mange tastefunktioner, som gør det lettere at bygge store
             fabrikker. Her er et par, men husk at <strong>tjekke
-            keybindings</strong>!<br><br> <code class='keybinding'>CTRL</code> +
+            tastefunktioner</strong>!<br><br> <code class='keybinding'>CTRL</code> +
             Træk: Vælg et område.<br> <code class='keybinding'>SHIFT</code>:
             Hold for at placere flere af en bygning.<br> <code
             class='keybinding'>ALT</code>: Vend retningen af placerede
@@ -187,22 +187,22 @@ dialogs:
     createMarker:
         title: Ny Markør
         titleEdit: Rediger Markør
-        desc: Giv det et meningsfyldt navn. Du kan også inkludere en <strong> kort
+        desc: Giv den et meningsfyldt navn. Du kan også inkludere en <strong> kort
             nøgle</strong> af en figur (som du kan lave <link>her</link>)
     markerDemoLimit:
         desc: Du kan kun lave to markører i demoen. Køb spillet for uendeligt mange
             markører!
     exportScreenshotWarning:
         title: Eksporter skærmbillede
-        desc: Du bad om at eksportere din fabrik som et skærmbillede. Bemærk at dette
-            kan være rimelig langsomt for en stor base og kan endda lukke dit
+        desc: Du bad om at eksportere din fabrik som et skærmbillede. Bemærk, at dette
+            kan være rimelig langsomt for en stor base og endda lukke dit
             spil!
     massCutInsufficientConfirm:
         title: Bekræft klip
-        desc: Du har ikke råd til at sætte dette område ind igen! Er du sikker på at du
+        desc: Du har ikke råd til at sætte dette område ind igen! Er du sikker på, at du
             vil klippe det?
     editSignal:
-        title: Set Signal
+        title: Sæt Signal
         descItems: "Vælg en standard figur:"
         descShortKey: ... eller indtast <strong>kort nøgle</strong> af en figur (som du
             kan lave <link>her</link>)
@@ -217,79 +217,84 @@ dialogs:
         desc: There is a tutorial video available for this level, but it is only
             available in English. Would you like to watch it?
     editConstantProducer:
-        title: Set Figur
+        title: Sæt Figur
     puzzleLoadFailed:
-        title: Puslerne kunne ikke indlæses
-        desc: "Desværre kunne puslerne ikke indlæses:"
+        title: Hjernevriderne kunne ikke indlæses
+        desc: "Desværre kunne hjernevriderne ikke indlæses:"
     submitPuzzle:
-        title: Indsend pusle
-        descName: Giv dit pusle et navn
-        descIcon: "Venligst angiv en kort nøgle, som bliver vist som ikon af dit pusle
+        title: Indsend hjernevrider
+        descName: Giv din hjernevrider et navn
+        descIcon: "Venligst angiv en kort nøgle, som bliver vist som ikon af din hjernevrider
             (Du kan lave nøgler <link>her</link>, eller vælge en af de
             tilfældige forneden):"
-        placeholderName: Pusle Overskift
+        placeholderName: Hjernevrider-Overskift
     puzzleResizeBadBuildings:
         title: Kan ikke ændre størrelse
-        desc: Du kan ikke lave området mindre fordi så vil nogle bygninger falde udenfor
-            området.
+        desc: Du kan ikke lave området mindre, da dette vil forårsage, at nogle bygninger
+            falder undenfor området.
     puzzleLoadError:
-        title: Dårlig Pusle
-        desc: "Puslet kunne ikke indlæses:"
+        title: Dårlig Hjernevrider
+        desc: "Hjernevrideren kunne ikke indlæses:"
     offlineMode:
         title: Offline tilstand
-        desc: Vi kan ikke forbinde til serverne og spillet kører i offline tilstand.
-            Venligst kontroler at du har en fungerende internet forbindelse.
+        desc: Vi kan ikke forbinde til serverne, og spillet kører i offline tilstand.
+            Kontroler venligst, at du har en fungerende internetforbindelse.
     puzzleDownloadError:
         title: Download Fejl
-        desc: "Kunne ikke hente puslet:"
+        desc: "Kunne ikke hente hjernevrideren:"
     puzzleSubmitError:
-        title: Indsendelse fejl
-        desc: "Kunne ikke indsende dit pusle:"
+        title: Indsendelsesfejl
+        desc: "Kunne ikke indsende din hjernevrider:"
     puzzleSubmitOk:
-        title: Pusle offentliggjort
-        desc: Tilykke! Dit Pusle er nu offentliggjort and kan spilles af andre. Du kan
-            nu finde det under 'Mine Pusler'.
+        title: Hjernevrider offentliggjort
+        desc: Tilykke! Din Hjernevrider er nu offentliggjort og kan spilles af andre. Du kan
+            nu finde det under 'Mine Hjernevridere'.
     puzzleCreateOffline:
         title: Offline tilstand
-        desc: Da du er offline kan du ikke gemme eller offentliggøre dit pusle. Vil du
+        desc: Da du er offline, kan du ikke gemme eller offentliggøre din hjernevrider. Vil du
             fortsætte alligevel?
     puzzlePlayRegularRecommendation:
         title: Anbefaling
         desc: Det <strong>anbefales stærkt</strong> at spille mindst til niveau 12 før
-            du forsøger Pusle DLC'en da du vil møde spil mekanik som du ikke er
-            introduceret til endnu. Vil du alligevel fortsætte?
+            du forsøger Hjernevrider DLC'en, da du vil møde spilmekanikker, som du ikke er
+            blevet introduceret til endnu. Vil du fortsætte alligevel?
     puzzleShare:
         title: Kort Nøgle Kopieret
-        desc: Den korte nøgle af Pusle (<key>)er kopieret til din udklipsholder! Den kan
-            sættes ind i Pusle menuen som adgangspunkt
+        desc: Den korte nøgle af Hjernevrider (<key>)er kopieret til din udklipsholder! Den kan
+            sættes ind i Hjernevrider-menuen som adgangspunkt
     puzzleReport:
-        title: Anmeld Pusle
+        title: Anmeld Hjernevrider
         options:
             profane: Ukvemsord
             unsolvable: Kan ikke løses
             trolling: Trolling
     puzzleReportComplete:
         title: Tak for din tilbagemeldning!
-        desc: Puslet er øremærket.
+        desc: Hjernevrideren er øremærket.
     puzzleReportError:
         title: Tilbagemeldning fejlede
         desc: "Din tilbagemeldning kunne ikke behandles:"
     puzzleLoadShortKey:
         title: Indtast kort nøgle
-        desc: Indtast den korte nøgle af puslet for at indlæse det.
+        desc: Indtast den korte nøgle af hjernevrideren for at indlæse det.
     puzzleDelete:
-        title: Slet Pusle?
-        desc: Er du helt sikker på du vil slette '<title>'? Dette kan ikke fortrydes!
+        title: Slet Hjernevrider?
+        desc: Er du helt sikker på, at du vil slette '<title>'? Dette kan ikke fortrydes!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Mod-Advarsel
+        desc: De mods, der er installeret, er anderledes end dem, dette gemte spil blev
+            skabt med. Dette kan gøre, så det gemte spil enten går i stykker eller ikke
+            indlæser overhovedet. Er du sikker på, at du vil fortsætte?
+        missingMods: Manglende Mods
+        newMods: Nyligt Installerede Mods
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
+        title: Ressourcer kunne ikke indlæses
+        demoLinkText: shapez demo på Steam
+        descWeb: "En eller flere ressourcer kunne ikke indlæses. Gør dig sikker på,
+            at du har en stabil internetforbindelse, og prøv igen. Hvis dette stadig
+            ikke virker, så slå alle browserudvidelser (inklusive adblockers) fra.<br>
+            <br> Som et alternativ kan du også spille <demoOnSteamLinkText>. <br><br>
+             Fejlbesked:"
         descWeb: "One ore more resources could not be loaded. Make sure you have a
             stable internet connection and try again. If this still doesn't
             work, make sure to also disable any browser extensions (including
