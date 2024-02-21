@@ -48,7 +48,7 @@ global:
         shift: SHIFT
         space: SPACE
     loggingIn: 로그인 중
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: 추가 리소스 다운로드 중 (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
@@ -92,11 +92,11 @@ mainMenu:
     mods:
         title: Active Mods
         warningPuzzleDLC: 퍼즐 DLC는 모드와 호환되지 않습니다. DLC 플레이 전 모든 모드를 비활성화 해주세요.
-    playingFullVersion: You are now playing the full version!
+    playingFullVersion: 현재 정식 버전을 플레이하고 있습니다!
     logout: Logout
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: 이제 정식 버전을 브라우저에서 플레이할 수 있습니다!
 dialogs:
     buttons:
         ok: 확인
@@ -258,22 +258,19 @@ dialogs:
         desc: 불러올 퍼즐의 짧은 키를 입력해 주세요.
     puzzleDelete:
         title: 퍼즐을 지우시겠습니까?
-        desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 돌릴수 없습니다!
+        desc: 정말로 퍼즐:'<title>'을 지우시겠습니까? 이것은 되돌릴 수 없습니다!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: 모드 경고
+        desc: 현재 설치된 모드는 이 세이브 파일이 생성될때 설치된 모드랑 다릅니다. 세이브 파일이 손상되거나 로드가 
+            안될 수 있습니다. 계속하시겠습니까?
+        missingMods: 누락된 모드
+        newMods: 새로 설치된 모드
     resourceLoadFailed:
-        title: Resources failed to load
+        title: 리소스 로딩 실패
         demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
+        descWeb: "한개 이상의 리소스가 로드되지 못했습니다. 안정적인 인터넷 연결이 있는지 확인하고 다시 시도해 주십시오.
+            다시 시도해도 문제가 있다면 광고제거 프로그램을 포함한 모든 브라우저 확장 프로그램을 비활성화하고 다시 
+            시도해 주십시오.<br><br> 대안으로 <demoOnSteamLinkText>을(를) 플레이할 수 있습니다. <br><br> 오류 메시지:"
         descSteamDemo: "One ore more resources could not be loaded. Try restarting the
             game - If that does not help, try reinstalling and verifying the
             game files via Steam. <br><br> Error Message:"
@@ -1197,24 +1194,24 @@ puzzleMenu:
         easy: 쉬움
         medium: 중간
         hard: 어려움
-        unknown: Unrated
+        unknown: 평가 안됨
     dlcHint:
         DLC를 이미 구입하셨나요? 라이브러리에서 shapez.io를 오른쪽 클릭한 다음 속성… > DLC 메뉴를 선택해서
         활성화되었는지 확인해주세요.
     search:
-        action: Search
+        action: 검색
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: 아무 난이도
+            easy: 쉬움
+            medium: 중간
+            hard: 어려움
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
-            medium: Normal
-            long: Long (> 10 min)
+            any: 아무 길이
+            short: 짧음 (< 2분)
+            medium: 중간
+            long: 긺 (> 10 min)
 backendErrors:
     ratelimit: 너무 빠른 시간 내 작업을 반복하고 있습니다. 조금만 기다려 주세요.
     invalid-api-key: 백엔드 서버와 통신할 수 없습니다. 게임을 업데이트하거나 재시작해 주세요 (잘못된 API 키).
@@ -1253,5 +1250,4 @@ mods:
             지금은 mods/ 폴더에 모드 파일을 넣고 빼는 방식으로만 모드를 활성화/비활성화할 수 있습니다. 모드를 이곳에서 켜고
             끌수 있는 기능은 추후 업데이트될 예정입니다. 모드폴더에 넣고/빼는것으로 할수있습니다. 모드를 토글하는 기능은 곧 업데이트
             됩니다!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: 브라우저의 제한으로 인하여 현재 모드는 Steam에서만 설치할 수 있습니다. 죄송합니다!
