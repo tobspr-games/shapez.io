@@ -266,7 +266,7 @@ dialogs:
         missingMods: 누락된 모드
         newMods: 새로 설치된 모드
     resourceLoadFailed:
-        title: 리소스 로딩 실패
+        title: 리소스 로드 실패
         demoLinkText: shapez demo on Steam
         descWeb: "한개 이상의 리소스가 로드되지 못했습니다. 안정적인 인터넷 연결이 있는지 확인하고 다시 시도해 주십시오.
             다시 시도해도 문제가 있다면 광고제거 프로그램을 포함한 모든 브라우저 확장 프로그램을 비활성화하고 다시 
