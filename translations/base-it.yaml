@@ -788,7 +788,7 @@ storyRewards:
     reward_splitter:
         title: Separatore/Aggregatore
         desc: Il <strong>separatore</strong> è stato sbloccato! è una variante del
-            <strong>bilanciatore</strong> - Accetta un imput e lo divide in due!
+            <strong>bilanciatore</strong> - Accetta un input e lo divide in due!
     reward_tunnel:
         title: Tunnel
         desc: Il <strong>tunnel</strong> è stato sbloccato! In questo modo puoi
