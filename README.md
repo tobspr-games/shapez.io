@@ -14,6 +14,8 @@ We are currently working on a successor to shapez, with 3D Graphics, Exploration
     <img src="https://i.imgur.com/ihW2bUE.png" alt="shapez Logo">
 </a>
 
+**Note:** This repository is not actively maintained. Please consider contributing to the [Community Edition](https://github.com/tobspr-games/shapez-community-edition) for ongoing development.
+
 <hr>
 This is the source code for shapez, an open source base building game inspired by Factorio.
 Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
