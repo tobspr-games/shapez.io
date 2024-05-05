@@ -11,12 +11,11 @@ const logger = createLogger("serializer_internal");
 export class SerializerInternal {
     /**
      * Serializes an array of entities
-     * @param {Array<Entity>} array
+     * @param {Map<number, Entity>} map
      */
-    serializeEntityArray(array) {
+    serializeEntityMap(map) {
         const serialized = [];
-        for (let i = 0; i < array.length; ++i) {
-            const entity = array[i];
+        for (const entity of map.values()) {
             if (!entity.queuedForDestroy && !entity.destroyed) {
                 serialized.push(entity.serialize());
             }

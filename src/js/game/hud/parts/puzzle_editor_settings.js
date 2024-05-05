@@ -93,7 +93,7 @@ export class HUDPuzzleEditorSettings extends BaseHUDPart {
 
     trim() {
         // Now, find the center
-        const buildings = this.root.entityMgr.entities.slice();
+        const buildings = Array.from(this.root.entityMgr.entities.values());
 
         if (buildings.length === 0) {
             // nothing to do
