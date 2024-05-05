@@ -27,7 +27,8 @@ const RESOURCES = {
     "my-theme.json": {
         map: {
             background: "#abc",
-            grid: "#ccc",
+            gridRegular: "#ccc",
+            gridPlacing: "#ddd",
             gridLineWidth: 1,
 
             selectionOverlay: "rgba(74, 163, 223, 0.7)",
