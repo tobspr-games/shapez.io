@@ -406,7 +406,7 @@ ingame:
             21_4_press_button:
                 "스위치를 눌러서 색칠기에 <strong>참 신호를 보내</strong> 활성화해보세요.<br><br> 추신:
                 모든 입력을 연결할 필요는 없습니다! 두개만 연결해 보세요."
-            1_2_hold_and_drag: 잡고 드래그Przytrzymaj i przeciągnij
+            1_2_hold_and_drag: 잡고 드래그
     colors:
         red: 빨간색
         green: 초록색
