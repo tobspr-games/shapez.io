@@ -56,7 +56,7 @@ global:
     loggingIn: Iniciando sesión
     loadingResources: Descargando recursos adicionales (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOCIÓN ESPECIAL! La oferta termina el 7 de Julio
 demoBanners:
     title: Versión de prueba
     intro: >-
@@ -300,18 +300,18 @@ dialogs:
         desc: Los mods instalados actualmente difieren a los mods de la partida guardada
             en el momento de la creación. Esto puede causar que la partida
             guardada se corrompa o no funcione. ¿Estás seguro de querer
-            consitnuar?
+            continuar?
         missingMods: Mods Faltantes
         newMods: Mods Nuevos Instalados
     resourceLoadFailed:
-        title: Recursos fallaron en cargar
+        title: Fallo al cargar los recursos
         demoLinkText: Demo de shapez en Steam
-        descWeb: "Uno o más recrusos no pudieron cargar. Asegurate de tener una conexión
-            estable de internet y vuelve a intentar. Si todavía no funciona,
-            asegurate de tambien desactivar extensiones del navegador
-            (incluyendo adblockers).<br><br> Como alternativa, puedes tambien
+        descWeb: "Uno o más recursos no se pudieron cargar. Asegurate de tener una conexión
+            estable de internet y vuelvelo a intentar. Si todavía no funciona,
+            asegurate de también desactivar las extensiones del navegador
+            (incluyendo adblockers).<br><br> Como alternativa, puedes también
             jugar el <demoOnSteamLinkText>. <br><br> Mensaje de Error:"
-        descSteamDemo: "Uno o más recursos no puedieron cargar. Intenta reiniciar el
+        descSteamDemo: "Uno o más recursos no se puedieron cargar. Intenta reiniciar el
             juego - Si eso no ayuda, intenta reinstalar y verificar los archivos
             del juego en Steam. <br><br> Mensaje de Error:"
     steamSsoError:
@@ -324,10 +324,10 @@ dialogs:
             desde el menú principal.
     steamSsoNoOwnership:
         title: No eres dueño de la Edición completa
-        desc: En orden de poder jugar la versión completa en tu nevagador, debes comprar
+        desc: Para poder jugar a la versión completa en tu nevagador, debes comprar
             el juego base y el DLC Puzzle desde tu cuenta de Steam.<br><br> Por
-            favor asegurate de tener ambos, iniciendo sesión con la cuenta
-            correcta de Steam y vuelve a intentar.
+            favor asegurate de tener ambos, iniciando sesión con la cuenta
+            correcta de Steam y vuelvelo a intentar.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -1402,18 +1402,18 @@ mods:
     version: Versión
     modWebsite: Pagina Web
     openFolder: Abrir Carpeta de Mods
-    folderOnlyStandalone: Solo es posible abrir la carpeta de mods corriendo la
+    folderOnlyStandalone: Solo es posible abrir la carpeta de mods ejecutando la
         versión de escritorio.
     browseMods: Examinar Mods
-    modsInfo: Para instalar y manejar mods, copialos en la carpeta de mods dentro
-        del directorio del juego. Tambien puedes usar el boton 'Abrir Carpeta de
+    modsInfo: Para instalar y manejar mods, cópialos en la carpeta de mods dentro
+        del directorio del juego. Tambien puedes usar el botón 'Abrir Carpeta de
         Mods' en la esquina superior derecha.
     noModSupport: Necesitas la versión de escritorio de Steam para instalar mods.
     togglingComingSoon:
-        title: Proximamente
-        description: Solo es posible activar o desactivar mods copiando o removiendo el
-            archivo del mod desde o en la carpeta mods/. Sin embargo, la
+        title: Próximamente
+        description: Solo es posible activar o desactivar mods moviendo o eliminando el
+            archivo del mod desde la carpeta mods/. Sin embargo, la
             posibilidad de activarlos o desactivarlos aquí está planeada para
-            una actualización futura!
+            una futura actualización!
     browserNoSupport: Debido a restricciones del navegador, solo es posible instalar
         mods en la versión de Steam - Disculpas!
