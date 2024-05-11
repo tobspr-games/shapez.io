@@ -1109,7 +1109,7 @@ keybindings:
         placement: Размещение
         massSelect: Множественный Выбор
         buildings: Постройки
-        placementModifiers: Модификаторы пазмещения
+        placementModifiers: Модификаторы размещения
         mods: Настройки модов
     mappings:
         confirm: Подтвердить
