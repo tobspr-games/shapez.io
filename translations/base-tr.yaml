@@ -1,7 +1,7 @@
 steamPage:
     shortText: shapez.io giderek karmaşıklaşan şekillerin sonsuz bir harita üzerinde
         üretimi ve birleştirilmesi hakında bir oyundur.
-    discordLinkShort: Official Discord
+    discordLinkShort: Resmi Discord
     intro: >-
         Shapez.io geometrik şekillerin otomatik üretimi için fabrika
         kurabildiğiniz sakinleştirici bir oyundur.
@@ -54,7 +54,7 @@ global:
     loggingIn: Giriş yapılıyor
     loadingResources: Ek kaynaklar indiriliyor... (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: ÖZEL PROMOSYON! Teklif 7 Temmuz'da sonra eriyor
 demoBanners:
     title: Deneme Sürümü
     intro: |-
@@ -99,11 +99,11 @@ mainMenu:
         title: Aktif Modlar
         warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
             DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Şu an tam sürümü oynuyorsun!
+    logout: Çıkış yap
+    noActiveSavegames: Aktif kayıtlı oyun bulunamadı - Yeni bir oyun başlatmak için tıkla!
+    playFullVersionV2: Steam'de shapez'i satın mı aldın? Tarayıcında tam sürümü oyna!
+    playFullVersionStandalone: Artık tarayıcında da tam sürümü oynayabilirsin!
 dialogs:
     buttons:
         ok: OK
@@ -238,7 +238,7 @@ dialogs:
         title: Kötü Yapboz
         desc: "Yapboz yüklenirken hata oluştu:"
     offlineMode:
-        title: Çevrİmdışı Modu
+        title: Çevrimdışı Modu
         desc: Sunuculara ulaşamadık, bu yüzden oyun çevrimdışı modda çalışmak zorunda.
             Lütfen aktif bir internet bağlantısı olduğundan emin olunuz.
     puzzleDownloadError:
@@ -293,29 +293,28 @@ dialogs:
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Kaynaklar yüklenemedi
+        demoLinkText: Steam'de shapez demosu
+        descWeb: "Bir veya birden fazla kaynak yüklenemedi. Sabit bir internet
+            bağlantısına sahip olduğunuzdan emin olup tekrar deneyin. Eğer bu sorun
+            hala giderilmediyse, tarayıcı eklentilerinizi devre dışı bıraktığınızdan
+            emin olun (reklam engelleyiciler dahil). Alternatif olarak <demoOnSteamLinkText>
+            linkinden oyunu oynayabilirsiniz. <br><br> Hata Mesajı:"
+        descSteamDemo: "Bir veya birden fazla kaynak yüklenemedi. Oyunu tekrar başlatmayı
+            deneyin - Eğer bu yardımcı olmazsa yeniden yüklemeyi ve oyun dosyalarını Steam
+            üzerinden doğrulayın. <br><br> Hata Mesajı:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Tam Sürüm Çıkışı
+        desc: Başka bir cihazda oynadığınız veya ağ bağlantınız dengesiz olduğu için Tarayıcı Tam
+            Versiyonu'ndan çıkışınız yapıldı. <br><br> Başka bir sekmede veya aynı Steam hesabıyla
+            başka bir bilgisayarda shapez açık olmadığından lütfen emin olun.<br><br> Ana menüden
+            tekrar giriş yapabilirsiniz.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Tam sürüme sahiplik yok
+        desc: Tarayıcınızda Tam Sürüm oynamak için, Steam hesabınızda hem oyunu
+            hem de Yapboz indirilebilir içeriğine (DLC) sahip olmanız gerekiyor.
+            Lütfen ikisine de sahip olduğunuzdan, doğru Steam hesabı ile giriş
+            yaptığınızdan emin olun ve tekrar deneyin.
 ingame:
     keybindingsOverlay:
         moveMap: Hareket Et
@@ -485,11 +484,11 @@ ingame:
                 title: Başarımlar
                 desc: Bütün başarımları açmaya çalış!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Mod desteği!
+                desc: 80'den fazla mod mevcut!
+        titleV2: "Steam üzerinden tam erişime sahip olun:"
+        titleExpiredV2: Deneme sürümü tamamlandı!
+        titleEnjoyingDemo: Deneme sürümünden keyif aldınız mı?
     puzzleEditorSettings:
         zoneTitle: Alan
         zoneWidth: Genişlik
@@ -498,8 +497,8 @@ ingame:
         clearItems: Eşyaları temizle
         share: Paylaş
         report: Şikayet et
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Yapıları temizle
+        resetPuzzle: Yapbozu sıfırla
     puzzleEditorControls:
         title: Yapboz Oluşturucu
         instructions:
@@ -953,7 +952,7 @@ settings:
         language:
             title: Dil
             description: Dili değiştirir. Tüm çeviriler kullanıcı katkılarıyla
-                oluşturulmuştur ve tam olmayabilir!
+                oluşturulmuştur ve eksiksiz olmayabilir!
         fullscreen:
             title: Tam Ekran
             description: En iyi oyun tecrübesi için oyunun tam ekranda oynanması tavsiye
@@ -1098,10 +1097,10 @@ keybindings:
         general: Genel
         ingame: Oyun
         navigation: Hareket
-        placement: Yerleştİrme
-        massSelect: Çoklu Seçİm
+        placement: Yerleştirme
+        massSelect: Çoklu Seçim
         buildings: Yapı Kısayolları
-        placementModifiers: Yerleştİrme Özellİklerİ
+        placementModifiers: Yerleştirme Özellikleri
         mods: Modlar tarafından sağlandı
     mappings:
         confirm: Kabul
@@ -1282,17 +1281,17 @@ puzzleMenu:
     noPuzzles: Bu kısımda yapboz yok.
     categories:
         levels: Seviyeler
-        new: Yenİ
-        top-rated: En İyİ Değerlendirilen
+        new: Yeni
+        top-rated: En İyi Değerlendirilen
         mine: Yapbozlarım
         easy: Kolay
         hard: Zor
         completed: Tamamlanan
         medium: Orta
-        official: Resmİ
+        official: Resmi
         trending: Bugün öne çıkan
         trending-weekly: Haftalık öne çıkan
-        categories: Kategorİler
+        categories: Kategoriler
         difficulties: Zorluğa göre
         account: Yapbozlarım
         search: Ara
@@ -1373,5 +1372,5 @@ mods:
         description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
             dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
             değiştirmek gelecekteki bir güncelleme için planlanmıştır!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Tarayıcı kısıtlamalarından ötürü şuan modları yüklemek ancak
+        Steam sürümünde mümkün - Üzgünüz!
