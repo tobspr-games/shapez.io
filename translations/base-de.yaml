@@ -107,7 +107,7 @@ mainMenu:
     logout: Ausloggen
     noActiveSavegames: Keine Speicherstände gefunden - Klicke Spielen um ein neues
         Spiel zu starten!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: Du kannst die Vollversion jetzt auch im Browser spielen!
 puzzleMenu:
     play: Spielen
     edit: Bearbeiten
@@ -198,7 +198,7 @@ dialogs:
         title: Löschen bestätigen
         text: Bist du sicher, dass du folgenden Speicherstand löschen willst?<br><br>
             '<savegameName>' auf Level <savegameLevel><br><br>Das kann nicht
-            rückgängig gemacht werden!
+            mehr rückgängig gemacht werden!
     savegameDeletionError:
         title: Löschen fehlgeschlagen
         text: "Das Löschen des Speicherstands ist fehlgeschlagen:"
