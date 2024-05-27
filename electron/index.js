@@ -347,17 +347,24 @@ ipcMain.handle("open-mods-folder", async () => {
 
 console.log("Loading mods ...");
 
-function loadMods() {
+/**
+ * Scans the mods directory (unless in safe mode) and --load-mod argument.
+ * @returns {string[]} Array of absolute paths of mod files
+ */
+function scanMods() {
     if (safeMode) {
         console.log("Safe Mode enabled for mods, skipping mod search");
+    } else {
+        console.log("Scanning mods from", modsPath);
     }
-    console.log("Loading mods from", modsPath);
-    let modFiles = safeMode
-        ? []
-        : fs
-              .readdirSync(modsPath)
-              .filter(filename => filename.endsWith(".js"))
-              .map(filename => path.join(modsPath, filename));
+
+    let modFiles = [];
+    if (!safeMode) {
+        modFiles = fs
+            .readdirSync(modsPath)
+            .filter(filename => filename.endsWith(".js"))
+            .map(filename => path.join(modsPath, filename));
+    }
 
     if (externalMod) {
         console.log("Adding external mod source:", externalMod);
@@ -365,25 +372,37 @@ function loadMods() {
         modFiles = modFiles.concat(externalModPaths);
     }
 
-    return modFiles.map(filename => fs.readFileSync(filename, "utf8"));
+    return modFiles;
 }
 
-let mods = [];
-try {
-    mods = loadMods();
-    console.log("Loaded", mods.length, "mods");
-} catch (ex) {
-    console.error("Failed to load mods");
-    dialog.showErrorBox("Failed to load mods:", ex);
+/**
+ * Loads the specified mod files from the file system and returns their source
+ * code.
+ * @param {string[]} files Absolute file paths of mods to load.
+ */
+function loadMods(files = []) {
+    return files.map(filename => fs.readFileSync(filename, "utf8"));
 }
+
+const modFiles = scanMods();
 
 ipcMain.handle("get-mods", async () => {
+    let mods = [];
+
+    try {
+        mods = loadMods(modFiles);
+        console.log("Loaded", mods.length, "mods");
+    } catch (ex) {
+        console.error("Failed to load mods");
+        dialog.showErrorBox("Failed to load mods:", ex);
+    }
+
     return mods;
 });
 
 steam.init(isDev);
 
 // Only allow achievements and puzzle DLC if no mods are loaded
-if (mods.length === 0) {
+if (modFiles.length === 0) {
     steam.listen();
 }
