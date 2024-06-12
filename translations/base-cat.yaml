@@ -2,7 +2,7 @@ steamPage:
     shortText: shapez.io és un joc que té com a objectiu construir i automatitzar
         fàbriques per tal de produir figures cada cop més complexes en un mapa
         infinit.
-    discordLinkShort: Official Discord
+    discordLinkShort: Discord oficial
     intro: >-
         Shapez.io es un joc relaxant en el qual has de construir fàbriques per a
         la producció automàtica de formes geomètriques.
@@ -14,7 +14,7 @@ steamPage:
         Mentre que al principi només processes formes, més envant les hauràs de colorejar, pel que necessitaràs extreure y mesclar colors!
 
         Si compres el joc a Steam tendràs accés al joc complet, però també pots jugar a la demo a shapez.io primer i decidir-te més tard!
-    what_others_say: What people say about shapez.io
+    what_others_say: Lo que diu la gent de shapez.io
     nothernlion_comment: This game is great - I'm having a wonderful time playing,
         and time has flown by.
     notch_comment: Oh crap. I really should sleep, but I think I just figured out
@@ -53,34 +53,34 @@ global:
         escape: ESC
         shift: SHIFT
         space: ESPAI
-    loggingIn: Logging in
-    loadingResources: Downloading additional resources (<percentage> %)
+    loggingIn: Iniciant sesió
+    loadingResources: Descarregant recursos adicionals (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOCIÓ ESPECIAL! La oferta acaba dia 7 de juliol
 demoBanners:
     title: Demo - Versió de prova
     intro: |-
-        Get the full game <strong>now</strong> to unlock:<ul>
-            <li>All 26 levels + infinite Freeplay</li>
-            <li>22 new buildings</li>
-            <li>Mod support</li>
-            <li>Achievements</li>
-            <li>Dark Mode</li>
-            <li>... and a lot more!</li>
+        Aconsegueix el joc complet <strong>now</strong> per desbloquetjar:<ul>
+            <li>Tots els 26 nivells + infinit joc lliure</li>
+            <li>22 construccions noves</li>
+            <li>Suport per mods</li>
+            <li>Assoliments</li>
+            <li>Mode oscur</li>
+            <li>... i molt més!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
-    playerCount: <playerCount> players like you are currently playing shapez on Steam
+    playtimeDisclaimer: La versió completa conté més de <strong>20 hores de contingut</strong>.
+    playerCount: <playerCount> jugadors com tu estan jugant ara a shapez en Steam
     untilEndOfDemo: Until end of demo
-    playtimeDisclaimerDownload: You can continue your savegame in the full version!
-        Click <strong>here</strong> to download your savegame.
-    titleV2: "Play the full version now for:"
+    playtimeDisclaimerDownload: Pots continuar el teu joc guardat a la versió completa!
+        Clica <strong>aqui</strong> per descarregar el teu joc guardat.
+    titleV2: "Juga la versió completa ara:"
 mainMenu:
     play: Jugar
     continue: Continuar
     newGame: Nou joc
     changelog: Historial de canvis
     subreddit: Reddit
-    importSavegame: Importar
+    importSavegame: Importar joc guardat
     openSourceHint: Aquest joc es de codi obert!
     discordLink: Servidor Discord oficial
     helpTranslate: Ajuda a traduir-lo!
@@ -90,19 +90,19 @@ mainMenu:
         experiència.
     savegameLevel: Nivell <x>
     savegameLevelUnknown: Nivell desconegut
-    savegameUnnamed: Unnamed
-    puzzleMode: Puzzle Mode
-    back: Back
+    savegameUnnamed: Sense nom
+    puzzleMode: Mode de trencaclosques
+    back: Enrere
     puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
         DLC now on Steam for even more fun!
     puzzleDlcWishlist: Wishlist now!
     puzzleDlcViewNow: View Dlc
     mods:
-        title: Active Mods
+        title: Activar Mods
         warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
             disable all mods to play the DLC.
     playingFullVersion: You are now playing the full version!
-    logout: Logout
+    logout: Tancar sessió
     noActiveSavegames: No active savegames found - Click play to start a new game!
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
     playFullVersionStandalone: You can now also play the full version in your Browser!
@@ -119,9 +119,9 @@ dialogs:
         viewUpdate: Veure actualitzacions
         showUpgrades: Mostrar millores
         showKeybindings: Mostrar dreceres de teclat
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Reintentar
+        continue: Continuar
+        playOffline: Jugar Offline
     importSavegameError:
         title: Error en importar
         text: "Ha ocurrit un error intentant importar la teva partida:"
@@ -270,7 +270,7 @@ dialogs:
         desc: The short key of the puzzle (<key>) has been copied to your clipboard! It
             can be entered in the puzzle menu to access the puzzle.
     puzzleReport:
-        title: Report Puzzle
+        title: Reportar trencaclosques
         options:
             profane: Profane
             unsolvable: Not solvable
@@ -482,24 +482,24 @@ ingame:
                 desc: Deixa de fer-te mal als ulls!
             support:
                 title: Dona'm suport
-                desc: EL desenvolupo en el meu temps lliure!
+                desc: El desenvolupo en el meu temps lliure!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Assoliments
+                desc: Troba'ls tots!
             mods:
                 title: Modding support!
-                desc: Over 80 mods available!
+                desc: Més de 80 mods disponibles!
         titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
+        titleExpiredV2: Demo completeada!
         titleEnjoyingDemo: Enjoy the demo?
     puzzleEditorSettings:
-        zoneTitle: Zone
+        zoneTitle: Zona
         zoneWidth: Width
         zoneHeight: Height
         trimZone: Trim
         clearItems: Clear Items
-        share: Share
-        report: Report
+        share: Compartir
+        report: Reportar
         clearBuildings: Clear Buildings
         resetPuzzle: Reset Puzzle
     puzzleEditorControls:
@@ -528,7 +528,7 @@ ingame:
         menuBtn: Menu
         nextPuzzle: Next Puzzle
     puzzleMetadata:
-        author: Author
+        author: Autor
         shortKey: Short Key
         rating: Difficulty score
         averageDuration: Avg. Duration
