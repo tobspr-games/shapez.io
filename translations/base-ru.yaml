@@ -104,7 +104,7 @@ mainMenu:
     noActiveSavegames: Сохранения не найдены - нажмите "Играть", чтобы начать новую игру!
     playFullVersionV2: Приобрели shapez в Steam? Вы можете играть в полную версию
         прямо в Вашем браузере!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: Теперь Вы также можете играть в полную версию в Вашем браузере!
 dialogs:
     buttons:
         ok: OK
@@ -187,8 +187,8 @@ dialogs:
     keybindingsIntroduction:
         title: Полезные горячие клавиши
         desc: "В этой игре много горячих клавиш, которые облегчат строительство больших
-            фабрик. Вот несколько, но обязательно <strong>проверьте настройки
-            управления</strong>!<br><br> <code class='keybinding'>CTRL</code> +
+            фабрик. Вот некоторые из них, но обязательно <strong>ознакомьтесь с горячими
+            клавишами</strong>!<br><br> <code class='keybinding'>CTRL</code> +
             выделение: Выбор области для копирования / удаления.<br> <code
             class='keybinding'>SHIFT</code>: Удерживайте, чтобы разместить
             несколько зданий.<br> <code class='keybinding'>ALT</code>:
@@ -273,7 +273,7 @@ dialogs:
         title: Жалоба на головоломку
         options:
             profane: Оскорбительная
-            unsolvable: Не решается
+            unsolvable: Нерешаема
             trolling: Троллинг
     puzzleReportComplete:
         title: Спасибо за ваш отзыв!
@@ -349,7 +349,7 @@ ingame:
         purple: Фиолетовый
         cyan: Бирюзовый
         white: Белый
-        uncolored: Неокрашенный
+        uncolored: Серый
         black: Черный
     buildingPlacement:
         cycleBuildingVariants: Нажмите <key> для переключения вариантов.
@@ -439,7 +439,7 @@ ingame:
                 Подсказка: Используйте <strong>клавиши 0-9</strong> для быстрого
                 доступа к постройкам!"
             3_1_rectangles: "Теперь давайте извлечём немного прямоугольников!
-                <strong>Постройте 4 экстрактора</strong>и соедините их с
+                <strong>Постройте 4 экстрактора </strong>и соедините их с
                 хабом.<br><br> Подсказка: Удерживайте <strong>SHIFT</strong>
                 после выбора конвейера для активации планировщика конвейеров!"
             21_1_place_quad_painter: Разместите <strong>покрасчик для 4 предметов</strong> и
