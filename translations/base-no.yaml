@@ -56,7 +56,7 @@ global:
     loggingIn: Logger inn
     loadingResources: Laster ned tilleggsressurser (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: TIDSBEGRENSET TILBUD! Tilbudet utløper 7 Juli
 demoBanners:
     title: Demo Versjon
     intro: |-
@@ -96,16 +96,16 @@ mainMenu:
     puzzleDlcText: Liker du å bygge kompate og optimaliserte fabrikker? Skaff deg
         Puzzle tilleggspakken nå på Steam for mere moro!
     puzzleDlcWishlist: Legg i ønskeliste nå!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Vis DLCer
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Aktiverte Mods
+        warningPuzzleDLC: Puzzle DLC'en er ikke tilgjengelig med mods.
+            Vennligst deaktiver alle mods for å spille Puzzle DLC.
+    playingFullVersion: Du spiller nå fullversjonen!
+    logout: Logg ut
+    noActiveSavegames: Ingen aktive lagringsfiler funnet - Trykk for å starte et nytt spill!
+    playFullVersionV2: Kjøpt shapez på Steam? Spill fullversjonen i nettleseren!
+    playFullVersionStandalone: Du kan nå spille fullversjonen i nettleseren din!
 dialogs:
     buttons:
         ok: OK
@@ -284,39 +284,39 @@ dialogs:
         title: Skriv inn kort kode
         desc: Skriv inn korte koden til puslespillet for å laste den inn.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Slett puslespillet?
+        desc: Er du sikker på at du vil slette '<title>'? Dette kan ikke reversjeres!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Modifikasjon Advarsel
+        desc: Dine nåværende mods samsvarer ikke med hva lagringsfilen ble opprettet med.
+            Dette kan føre til problemer, eller ikke funke i det hele tatt.
+            Er du sikker på at du vil fortsette?
+        missingMods: Manglende Modifikasjoner
+        newMods: Nylige Installerte Modifikasjoner
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Resurssen kunne ikke lastes inn
+        demoLinkText: shapez demo på Steam
+        descWeb: "En eller flere resursser kunne ikke lastes inn. Sørg for at du har en
+            stabil internett tilkobling, og prøv igjen. Dersom det ikke funker,
+            sørg for å deaktivere tillegssprogrammer i nettleseren din (inkluderer
+            adblockere).<br><br> Som et alternativ, kan du også spille
+            <demoOnSteamLinkText>. <br><br> Feilmelding:"
+        descSteamDemo: "En eller flere resursser kunne ikke lastes inn. Prøv å start spillet på nytt.
+            Hvis det ikke funker, prøv å reinstallert spillet og verifiser
+            spillfilene via Steam. <br><br> Feilmelding:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Full Versjon Logg Ut
+        desc: Du har logget ut fra Full Versjonen i nettleseren din, enten på grunn av
+            at din nettverkstilkbling er ustabil, eller at du spiller på en annen
+            enhet.<br><br> Vennligst sørg for at du ikke har shapez åpnet i en annen
+            nettleser eller en annen PC med samme Steam
+            konto.<br><br> Du ka logge inn igjen i hovedmenyen.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Du eier ikke fullversjonen
+        desc: For å kunne spille fullversjonen i nettleseren din, må du eie både spillet
+            og Puzzle DLC på din Steam konto.<br><br>
+            Vennligst sørg for at du eier begge, og er logget inn med korrekt Steam
+            konto og prøv igjen.
 ingame:
     keybindingsOverlay:
         moveMap: Beveg
@@ -484,11 +484,11 @@ ingame:
                 title: Prestasjoner
                 desc: Skaff dem alle!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Modofiseringsstøtte!
+                desc: Over 80 modifikasjoner tilgjengelig!
+        titleV2: "Skaff fullversjonen på Steam for å låse opp:"
+        titleExpiredV2: Demo fullført!
+        titleEnjoyingDemo: Fornøyd med demoen?
     puzzleEditorSettings:
         zoneTitle: Sone
         zoneWidth: Bredde
@@ -497,8 +497,8 @@ ingame:
         clearItems: Fjern gjenstander
         share: Del
         report: Rapporter
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Fjern Bygninger
+        resetPuzzle: Nullstill Puslespill
     puzzleEditorControls:
         title: Puslespill lager
         instructions:
@@ -564,7 +564,7 @@ buildings:
                 kjede.
     underground_belt:
         default:
-            name: Tunnel
+            name: Tunell
             description: Lar deg bruke tuneller for å transportere objekter under bygninger
                 og belter.
         tier2:
@@ -789,8 +789,8 @@ storyRewards:
         desc: Du har åpnet opp <strong>fordler</strong> varianten av
             <strong>balansereren</strong> - Den godtar en inn og deler dem i to!
     reward_tunnel:
-        title: Tunnel
-        desc: <strong>Tunnelen</strong> har blitt tilgjengelig - Du kan nå transportere
+        title: Tunell
+        desc: <strong>Tunellen</strong> har blitt tilgjengelig - Du kan nå transportere
             objekter under samlebånd og bygninger med den!
     reward_rotater_ccw:
         title: Rotering mot klokken
@@ -1084,12 +1084,12 @@ settings:
             description: Kontrollerer størrelsen på former på kartoversikten (når zoomet
                 ut).
         shapeTooltipAlwaysOn:
-            title: Shape Tooltip - Show Always
-            description: Whether to always show the shape tooltip when hovering buildings,
-                instead of having to hold 'ALT'.
+            title: Fasong Tips - Vis Alltid
+            description: Avgjør om du alltid skal vise Tips når du holder musen over en fasong eller bygning,
+                uten å måtte holde inne 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Ny!
 keybindings:
     title: Hurtigtaster
     hint: "Tips: Husk å bruke CTRL, SHIFT and ALT! De gir deg flere
@@ -1172,7 +1172,7 @@ keybindings:
         goal_acceptor: Mål Mottaker
         block: Blokker
         massSelectClear: Tøm Belter
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Vis Fasong Tips
 about:
     title: Om dette spillet
     body: >-
@@ -1282,13 +1282,13 @@ puzzleMenu:
         hard: Vanskelig
         completed: Fullført
         medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        official: Offisielle
+        trending: Trender i dag
+        trending-weekly: Trender siste uke
+        categories: Kategorier
+        difficulties: Vanskelighetsgrad
+        account: Mine Puslespill
+        search: Søk
     validation:
         title: Ugyldig Puslespill
         noProducers: Venligst plasser en Konstant Produserer!
@@ -1302,26 +1302,26 @@ puzzleMenu:
         autoComplete: Ditt puslespill fullførte seg selv automatisk! Sørg for at dine
             Konstant Pr Produserere ikke leverer direkte til dine Mål Mottakere.
     difficulties:
-        easy: Easy
+        easy: Lett
         medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        hard: Vanskelig
+        unknown: Urangert
+    dlcHint: Kjøpt tillegspakken allerede? Sørg for at den er aktivert ved å høyreklikke
+        shapez i ditt bibliotek, ved å velge Egenskaper > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Søk
+        placeholder: Skriv inn puslespill eller navn til skaperen
+        includeCompleted: Inkluder Fullførte
         difficulties:
-            any: Any Difficulty
-            easy: Easy
+            any: Alle Vanskelighetsgrader
+            easy: Lett
             medium: Medium
-            hard: Hard
+            hard: Vanskelig
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Alle Varigheter
+            short: Kort (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Lang (> 10 min)
 backendErrors:
     ratelimit: Du gjør en handling for ofte. Vennligst vent litt.
     invalid-api-key: Kunne ikke kommunisere med kjernen, vennligst prøv å
@@ -1345,25 +1345,25 @@ backendErrors:
     bad-payload: Forespørselen inneholder ugyldig data.
     bad-building-placement: Ditt puslespill inneholder ugyldig plasserte bygninger.
     timeout: Forespørselen timet ut.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: Puslespillet har fått for mange likes allerede. Hvis du fortsatt
+        ønsker å fjerne det, vennligst kontakt support@shapez.io!
+    no-permission: Du har ikke rettigheter til å utføre denne handlingen.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: Modifikasjoner
+    author: Skaper
+    version: Versjon
+    modWebsite: Nettside
+    openFolder: Åpne Modifikasjonsmappe
+    folderOnlyStandalone: Åpning av modifikasjonsmappe er kun tilgjengelig i frittstående versjon.
+    browseMods: Bla igjennom modifikasjoner
+    modsInfo: For å installere og administrere modifikasjoner, kopier de til modifikasjonsmappen
+        innennfor spillmappen. Du kan også bruke 'Åpne Modifikasjonsmape' knappen
+        øverst til høyre.
+    noModSupport: Du trenger frittstående versjonen på Steam for å installere Modifikasjoner.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Kommer Snart
+        description: Aktivering eller deaktivering av modifikasjoner er for tiden kun mulig ved å kopiere
+            mod filen vekk fra mods/ mappen. I fremtiden kan du
+            skru de av og på her!
+    browserNoSupport: På grunn av en begrensning i nettleseren er det kun mulig å
+        installere modifikasjoner på Steam versjonen - beklager!
