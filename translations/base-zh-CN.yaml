@@ -1,5 +1,5 @@
 steamPage:
-    shortText: “唯一能限制您的，只有您的想象力！”《异形工厂》（shapez）
+    shortText: “只有想不到，没有做不到！”《异形工厂》（shapez）
         是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
@@ -8,7 +8,7 @@ steamPage:
         《异形工厂》（shapez）是一款能让您尽情发挥创造力，充分享受思维乐趣的 IO 游戏。
         游戏很轻松，只需建造工厂，布好设施，无需操作即能自动创造出各种各样的几何图形。
         挑战很烧脑，随着等级提升，需要创造的图形将会越来越复杂，同时您还需要在无限扩展的地图中持续扩建优化您的工厂。
-        以为这就是全部了吗？不！图形的生产需求将会指数性增长，持续的扩大规模和熵增带来的无序，将会是令人头痛的问题！
+        您以为这就是全部了吗？不！图形的生产需求将会指数性增长，持续的扩大规模和熵增带来的无序，将会是令人头痛的问题！
         这还不是全部！一开始我们创造了图形，然后我们需要学会提取和混合来让它们五颜六色。
         然后，还有吗？当然，唯有思维，方能无限。
 
@@ -26,7 +26,7 @@ global:
     suffix:
         thousands: 千
         millions: 百万
-        billions: 亿万
+        billions: 十亿
         trillions: 兆
     infinite: 无限
     time:
@@ -50,7 +50,7 @@ global:
         shift: SHIFT 键
         space: 空格键
     loggingIn: 登录
-    loadingResources: 下载其他资源 (<percentage> %)
+    loadingResources: 正在下载资源 (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
 demoBanners:
@@ -59,7 +59,7 @@ demoBanners:
         <strong>现在</strong>购买完整版以解锁<ul>
             <li>所有 26 个关卡 + 无限可能的自由模式</li>
             <li>22 个全新设施</li>
-            <li>游戏模组（Mods）支持</li>
+            <li>支持游戏模组（Mods）</li>
             <li>成就</li>
             <li>暗色模式</li>
             <li>……以及更多！</li>
@@ -76,7 +76,7 @@ mainMenu:
     openSourceHint: 本游戏已开源！
     discordLink: 官方 Discord 服务器
     helpTranslate: 帮助我们翻译！
-    browserWarning: 很抱歉，本游戏在当前浏览器上可能运行缓慢！使用 Chrome 或者购买完整版以得到更好的体验。
+    browserWarning: 很抱歉，本游戏在当前浏览器上可能运行缓慢！使用 Chrome 或者购买完整版可以得到更好的体验。
     savegameLevel: 第 <x> 关
     savegameLevelUnknown: 未知关卡
     continue: 继续游戏
@@ -96,9 +96,9 @@ mainMenu:
         warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者” DLC，请关闭所有游戏模组（Mods）。
     playingFullVersion: 您正在玩完整版游戏！
     logout: 登出
-    noActiveSavegames: No active savegames found - Click play to start a new game!
+    noActiveSavegames: 没有可用存档 - 单击“开始游戏”来创建空白存档！
     playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playFullVersionStandalone: 您现在可以在浏览器上游玩完整版游戏！
 dialogs:
     buttons:
         ok: 确认
@@ -126,7 +126,7 @@ dialogs:
         text: 未能读取您的存档：
     confirmSavegameDelete:
         title: 确认删除
-        text: 您确定要删除这个游戏吗？<br><br> “<savegameName>” 等级 <savegameLevel><br><br> 该操作无法回退！
+        text: 您确定要删除这个游戏吗？<br><br> “<savegameName>” 等级 <savegameLevel><br><br> 该操作不可逆！
     savegameDeletionError:
         title: 删除失败
         text: 未能删除您的存档
@@ -144,7 +144,7 @@ dialogs:
         desc: 成功重置所有按键设定！
     featureRestriction:
         title: 试玩版
-        desc: 您尝试使用了 “<feature>” 一项功能。该功能在试玩版中不可用。请考虑购买完整版以获得更好的体验。
+        desc: 您尝试使用了 “<feature>”  功能。该功能在试玩版中不可用。请考虑购买完整版以获得更好的体验。
     oneSavegameLimit:
         title: 存档数量限制
         desc: 试玩版中只能保存一份存档。请删除旧存档或者购买完整版！
@@ -156,14 +156,14 @@ dialogs:
         desc: <strong>您生产过的所有图形都能被用来解锁升级。</strong> 所以不要销毁您之前建造的工厂！注意：升级菜单在屏幕右上角。
     massDeleteConfirm:
         title: 确认删除
-        desc: 您将要删除很多设施，准确来说有 <count> 个！您确定要这么做吗？
+        desc: 您将要删除 <count> 个设施！您确定要这么做吗？
     blueprintsNotUnlocked:
         title: 尚未解锁
         desc: 您还没有解锁蓝图功能！通过第 12 关的挑战后可解锁蓝图。
     keybindingsIntroduction:
         title: 实用快捷键
         desc:
-            这个游戏有很多有用的快捷键设定。以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设定！<br><br>
+            这个游戏有很多有用的快捷键设定。以下是其中的一些介绍，记得在<strong>按键设置</strong>中查看其他按键设置！<br><br>
             <code class='keybinding'>CTRL 键</code> + 拖动：选择区域以复制或删除。<br> <code
             class='keybinding'>SHIFT 键</code>： 按住以放置多个同一种设施。<br> <code
             class='keybinding'>ALT 键</code>：反向放置传送带。<br>
@@ -175,7 +175,7 @@ dialogs:
         desc: 在试玩版中您只能创建两个地图标记。请获取完整版以创建更多标记。
     massCutConfirm:
         title: 确认剪切
-        desc: 您将要剪切很多设施，准确来说有 <count> 种！您确定要这么做吗？
+        desc: 您将要剪切 <count> 个设施！您确定要这么做吗？
     exportScreenshotWarning:
         title: 工厂截图
         desc: 您将要导出您整个工厂基地的截图。如果您已经建设了一个规模很大的基地，生成截图的过程将会很慢，且有可能导致游戏崩溃！
@@ -194,7 +194,7 @@ dialogs:
         desc: 这个关卡有视频攻略！您想查看这个视频攻略吗？
     tutorialVideoAvailableForeignLanguage:
         title: 教程
-        desc: 这个关卡有英语版本的视频攻略！您想查看这个视频攻略吗？
+        desc: 这个关卡有英语视频攻略！您想查看这个视频攻略吗？
     editConstantProducer:
         title: 设置项目
     puzzleLoadFailed:
@@ -203,11 +203,11 @@ dialogs:
     submitPuzzle:
         title: 提交谜题
         descName: 给您的谜题设定名称：
-        descIcon: 请输入唯一的短代码，它将显示为标志您的谜题的图标（<link>在此</link>生成，或者从以下随机推荐的图形中选择一个）：
+        descIcon: 请输入唯一的短代码，它将作为您谜题的图标（<link>在此</link>生成，或者从以下随机推荐的图形中选择一个）：
         placeholderName: 谜题标题
     puzzleResizeBadBuildings:
         title: 无法调整大小
-        desc: 您无法使这块区域变得更小，否则有些设施将会超出区域范围。
+        desc: 您无法缩小这块区域，否则有些设施将会超出区域范围。
     puzzleLoadError:
         title: 谜题出错
         desc: 谜题载入失败：
@@ -222,21 +222,21 @@ dialogs:
         desc: 无法提交您的谜题：
     puzzleSubmitOk:
         title: 谜题已发布
-        desc: 恭喜！您所创造的谜题已成功发布，别的玩家已经可以对您的谜题发起挑战！您可以在“我的谜题”部分找到您发布的谜题。
+        desc: 恭喜！您所创造的谜题已成功发布，别的玩家可以对您的谜题发起挑战！您可以在“我的谜题”部分找到您发布的谜题。
     puzzleCreateOffline:
         title: 离线模式
         desc: 由于您现在没有连接互联网，所以您将无法保存或发布您的谜题。是否仍要继续？
     puzzlePlayRegularRecommendation:
         title: 游戏建议
-        desc: <strong>强烈</strong>建议您在至少完成本体第12关后再尝试体验“谜题挑战者”
+        desc: <strong>强烈</strong>建议您在至少完成主线第12关后再尝试体验“谜题挑战者”
             DLC，否则您可能在游戏过程中遇到困难，您是否仍要继续？
     puzzleShare:
         title: 短代码已复制
-        desc: 此谜题的短代码(<key>)已经复制到了您的剪贴板！您可以在谜题菜单中输入短代码以快速访问对应谜题。
+        desc: 此谜题的短代码(<key>)已经复制到了您的剪贴板！您可以在谜题菜单中输入短代码快速访问对应谜题。
     puzzleReport:
-        title: 上报谜题
+        title: 举报谜题
         options:
-            profane: 污言秽语
+            profane: 不雅用语
             unsolvable: 无法完成
             trolling: 恶意设计
     puzzleReportComplete:
@@ -253,26 +253,26 @@ dialogs:
         desc: 您是否确认删除“<title>”？删除后不可恢复！
     modsDifference:
         title: 模组警告
-        desc: 当前已安装的游戏模组（Mods）与该存档创建时所安装的游戏模组（Mods）不同！这可能会导致存档损坏，甚至无法加载。你确定要继续加载吗？
+        desc: 当前已安装的游戏模组（Mods）与该存档创建时所安装的游戏模组（Mods）不同！这可能会导致存档损坏，甚至无法加载。您确定要继续加载吗？
         missingMods: 缺失的游戏模组（Mods）
         newMods: 新安装的游戏模组（Mods）
     resourceLoadFailed:
         title: 资源载入失败
         demoLinkText: Steam上的《异形工厂》（Shapez）Demo
-        descWeb: “一个或多个资源载入失败，请确认您的网络连接正常并再次尝试。如果仍然载入失败，
-            请确认您已经关闭了所有浏览器插件（比如"广告屏蔽"）。<br><br>或者，你也可以试玩
+        descWeb: “部分资源载入失败，请确保您的网络连接正常并再次尝试。如果仍然载入失败，
+            请确认您已经关闭了所有浏览器插件（比如"广告屏蔽"）。<br><br>或者，您也可以试玩
             <demoOnSteamLinkText>。<br><br> 错误提示：”
         descSteamDemo:
-            “一个或多个资源载入失败，请重新启动游戏。 如果仍然存在问题，请重新安装游戏或者通过Steam验证游戏安装文件。 <br><br>
+            “部分资源载入失败，请重新启动游戏。 如果仍然存在问题，请重新安装游戏或者通过Steam验证游戏安装文件。 <br><br>
             错误提示：”
     steamSsoError:
-        title: 从完整版登出
+        title: 已从完整版登出
         desc:
             由于您的网络连接不稳定，或者您已在另一台设备上开始游戏。您已经从浏览器登出了完整版游戏。 <br><br>
             请确认您没有在其他浏览器或电脑用同一Steam账号登录《异形工厂》（Shapez）。<br><br> 您可以从主界面再次登录。
     steamSsoNoOwnership:
         title: 尚未获得完整版
-        desc: 在浏览器内玩完整版游戏，您需要通过Steam购买游戏本体和DLC<br><br> 请确认您已经购买，请使用同一Steam账号登录并再次尝试。
+        desc: 您需要在Steam购买游戏本体和DLC后才能在浏览器内玩完整版游戏。<br><br> 请确认您已经购买，请使用同一Steam账号登录并再次尝试。
 ingame:
     keybindingsOverlay:
         moveMap: 移动地图
@@ -334,11 +334,11 @@ ingame:
                 description: 交付到中心基地的图形。
         noShapesProduced: 您还没有生产任何图形。
         shapesDisplayUnits:
-            second: <shapes> / 秒
-            minute: <shapes> / 分
-            hour: <shapes> / 小时
+            second: <shapes>/秒
+            minute: <shapes>/分
+            hour: <shapes>/小时
     settingsMenu:
-        playtime: 游戏时间
+        playtime: 游戏总时长
         buildingsPlaced: 设施数量
         beltsPlaced: 传送带数量
     tutorialHints:
@@ -356,28 +356,28 @@ ingame:
     interactiveTutorial:
         title: 新手教程
         hints:
-            1_1_extractor: 在<strong>圆形</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
+            1_1_extractor: 在<strong>圆形地块</strong>上放置一个<strong>开采器</strong>来获取圆形！<br><br>提示：<strong>按下鼠标左键</strong>选中<strong>开采器</strong>
             1_2_conveyor: 用<strong>传送带</strong>将您的开采器连接到中心基地上！<br><br>提示：选中<strong>传送带</strong>后<strong>按下鼠标左键可拖动</strong>布置传送带！
             1_3_expand:
-                您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来更有效率地完成关卡目标。<br><br>
-                提示：按住 <strong>SHIFT</strong> 键可放置多个<strong>开采器</strong>，注意用
+                您可以放置更多的<strong>开采器</strong>和<strong>传送带</strong>来提高效率。<br><br>
+                提示：按住 <strong>SHIFT</strong> 键可放置多个<strong>开采器</strong>，用
                 <strong>R</strong> 键可旋转<strong>开采器</strong>的出口方向，确保开采的图形可以顺利传送。
-            2_1_place_cutter: 现在放置一个<strong>切割器</strong>，这个设施可把<strong>圆形</strong>切成两半！<br><br>注意：无论如何放置，切割机总是<strong>从上到下</strong>切割。
+            2_1_place_cutter: 现在放置一个<strong>切割器</strong>，这个设施可把<strong>圆形</strong>切成两半！<br><br>注意：无论如何放置，切割机总是<strong>竖直</strong>切割。
             2_2_place_trash:
-                使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>注意使用<strong>垃圾桶</strong>清除当前
+                使用切割机后产生的废弃图形会导致<strong>堵塞</strong>。<br><br>请使用<strong>垃圾桶</strong>清除当前
                 (!) 不需要的废物。
             2_3_more_cutters: 干的好！现在放置 <strong>2
                 个以上的切割机</strong>来加快当前缓慢的过程！<br><br>提示：用<strong>快捷键 0 - 9
-                </strong>可以快速选择各项设施！
-            3_1_rectangles: 现在让我们开采一些矩形！找到<strong>矩形地带</strong>并<strong>放置 4
+                </strong>快速选择各项设施！
+            3_1_rectangles: 现在让我们开采一些矩形！找到<strong>矩形地块</strong>，<strong>放置 4
                 个开采器</strong>并将它们用<strong>传送带</strong>连接到中心基地。<br><br>
                 提示：选中<strong>传送带</strong>后按住 <strong>SHIFT
                 键</strong>可快速准确地规划<strong>传送带路线！</strong>
             21_1_place_quad_painter: 放置<strong>四口上色器</strong>并且获取一些<strong>圆形</strong>，<strong>白色</strong>和<strong>红色</strong>！
-            21_2_switch_to_wires: 按 <strong>E</strong> 键选择<strong>电线层</strong>！<br><br>
+            21_2_switch_to_wires: 按 <strong>E</strong> 键切换到<strong>电线层</strong>！<br><br>
                 然后用导线连接上色器的<strong>四个输入口</strong>！
             21_3_place_button: 很好！现在放置一个<strong>开关</strong>并连接导线！
-            21_4_press_button: 按下<strong>开关</strong>来<strong>产生正信号</strong>以激活<strong>上色器</strong>。<br><br>注：您不用连上所有的输入口！试着只接两个。
+            21_4_press_button: 按下<strong>开关</strong>来<strong>产生信号</strong>以激活<strong>上色器</strong>。<br><br>注：您不用连上所有的输入口！试着只接两个。
             1_2_hold_and_drag: 按住并拖动
     colors:
         red: 红色
@@ -399,7 +399,7 @@ ingame:
         limited_items: 限制在 <max_throughput>
     watermark:
         title: 试玩版
-        desc: 点击这里了解完整版内容
+        desc: 单击此处了解完整版内容
         get_on_steam: 在 Steam 商城购买
     standaloneAdvantages:
         no_thanks: 不需要，谢谢
@@ -409,7 +409,7 @@ ingame:
                 desc: 总共 26 个不同关卡！
             buildings:
                 title: 22 个全新设施！
-                desc: 呈现完全体的全自动工厂！
+                desc: 完全版的全自动工厂！
             mods:
                 title: 支持游戏模组（Mods）！
                 desc: 超过 80 个游戏模组可供下载！
@@ -418,7 +418,7 @@ ingame:
                 desc: 地图再大，不会迷路！
             wires:
                 title: 电线更新包
-                desc: 发挥创造力的全新维度！
+                desc: 发挥创造力的全新视野层！
             darkmode:
                 title: 暗色模式
                 desc: 优雅且护眼的配色！
@@ -430,7 +430,7 @@ ingame:
                 desc: 挑战全成就解锁！
         titleV2: “现在就购买完整版游戏以解锁”
         titleExpiredV2: “恭喜，Demo通关！”
-        titleEnjoyingDemo: 游戏愉快！
+        titleEnjoyingDemo: 祝您游戏愉快！
     puzzleEditorSettings:
         zoneTitle: 区域
         zoneWidth: 宽度
@@ -449,7 +449,7 @@ ingame:
             - 3.
               当一个目标接收器接收到一个图形一段时间后，会<strong>将其保存为此玩家稍后必须建造的目标</strong>（由<strong>绿色充能条</strong>表示）。
             - 4. 单击设施上的<strong>锁定按钮</strong>即可将其禁用。
-            - 5. 单击审阅后，您的谜题将通过验证，您可以正式发布它。
+            - 5. 单击审阅后，您的谜题将被验证，通过后，您可以正式发布它。
             - 6.
               谜题发布后，<strong>所有设施都将被拆除</strong>，除了<strong>常量生成器</strong>和<strong>目标接收器</strong>。然后，等着其他玩家对您创造的谜题发起挑战吧！
     puzzleCompletion:
@@ -468,7 +468,7 @@ ingame:
         completionRate: 挑战完成率
 shopUpgrades:
     belt:
-        name: 传送、分发、隧道
+        name: 物流
         description: 效率 <currentMult> 倍 → <newMult> 倍
     miner:
         name: 开采
@@ -487,10 +487,10 @@ buildings:
     miner:
         default:
             name: 开采器
-            description: 放置在<strong>图形</strong>或者<strong>颜色</strong>上进行开采。
+            description: 放置在<strong>图形地块</strong>或者<strong>颜色地块</strong>上进行开采。
         chainable:
             name: 开采器（链式）
-            description: 放置在<strong>图形</strong>或者<strong>颜色</strong>上进行开采。它们可以被链接在一起。
+            description: 放置在<strong>图形地块</strong>或者<strong>颜色地块</strong>上进行开采。它们可以被链接在一起。
     underground_belt:
         default:
             name: 隧道
@@ -501,13 +501,13 @@ buildings:
     cutter:
         default:
             name: 切割机
-            description: 始终将<strong>图形</strong>从上到下切开并分别输出。<strong>如果您只需要其中一半的图形，使用<strong>垃圾桶</strong>清除另一半图形，否则切割机会停止工作！</strong>
+            description: 始终将<strong>图形</strong>竖直切开并分别输出。<strong>如果您只需要其中一半的图形，使用<strong>垃圾桶</strong>清除另一半图形，否则切割机会停止工作！</strong>
         quad:
             name: 切割机（四向）
             description: 将输入的图形切成四块。<strong>如果您只需要其中一块图形，使用<strong>垃圾桶</strong>清除其他图形，否则切割机会停止工作！</strong>
     rotater:
         default:
-            name: 旋转机
+            name: 旋转机（顺时针）
             description: 将<strong>图形</strong>顺时针旋转 90 度。
         ccw:
             name: 旋转机（逆时针）
@@ -517,12 +517,12 @@ buildings:
             description: 将<strong>图形</strong>旋转 180 度。
     stacker:
         default:
-            name: 堆叠机
+            name: 组合机
             description: 将输入的<strong>图形</strong>在同一层内组合在一起。如果不能被直接组合，则右边输入<strong>图形</strong>会堆叠在左边输入<strong>图形</strong>上面。
     mixer:
         default:
             name: 混色器
-            description: 用叠加混色法将两个<strong>颜色</strong>混合。
+            description: 用光线叠加混色法将两个<strong>颜色</strong>混合。
     painter:
         default:
             name: 上色器
@@ -539,7 +539,7 @@ buildings:
     trash:
         default:
             name: 垃圾桶
-            description: 可以从所有四个方向上输入物品并永久清除它们。
+            description: 可以从四个方向上输入物品并永久清除它们。
     hub:
         deliver: 交付
         toUnlock: 解锁
@@ -559,24 +559,24 @@ buildings:
             name: 平衡器
             description: 多功能的设施：可将所有输入均匀地分配到所有输出上。
         merger:
-            name: 合并器（小型）
+            name: 合并器
             description: 可将两条传送带合并为一条。
         merger-inverse:
-            name: 合并器（小型）
+            name: 合并器（镜像）
             description: 可将两条传送带合并为一条。
         splitter:
-            name: 分离器（小型）
+            name: 分离器
             description: 可将一条传送带分成为两条。
         splitter-inverse:
-            name: 分离器（小型）
+            name: 分离器（镜像）
             description: 可将一条传送带分成为两条。
     storage:
         default:
             name: 存储器
-            description: 储存多余的物品，直到储满。优先处理左边的输出，并可以用作溢出门。
+            description: 储存多余的物品，直到储满。优先从左边的输出口输出，并可以用作溢出门。
     wire_tunnel:
         default:
-            name: 交叉电线
+            name: 电线桥
             description: 使两根<strong>电线</strong>交叉而不会连接起来。
     constant_signal:
         default:
@@ -586,7 +586,7 @@ buildings:
     lever:
         default:
             name: 开关
-            description: 可以在电线层上发出<strong>开关值（1 / 0）</strong>信号，以达到控制部件的作用，比如可以用来控制物品过滤器。
+            description: 可以在电线层上发出<strong>开关值（1 / 0）</strong>信号来控制部件，比如可以用来控制物品过滤器。
     logic_gate:
         default:
             name: 与门
@@ -603,10 +603,10 @@ buildings:
     transistor:
         default:
             name: 晶体管
-            description: 如果侧边输入正信号，输入可以通过并转发。（正信号：图形，颜色，开（1）信号）
+            description: 如果侧边输入正信号，输入可以通过并被转发。（正信号：图形，颜色，开（1）信号）
         mirrored:
             name: 晶体管
-            description: 如果侧边输入正信号，输入可以通过并转发。（正信号：图形，颜色，开（1）信号）
+            description: 如果侧边输入正信号，输入可以通过并被转发。（正信号：图形，颜色，开（1）信号）
     filter:
         default:
             name: 过滤器
@@ -618,7 +618,7 @@ buildings:
     reader:
         default:
             name: 传送带读取器
-            description: 可以读取<strong>传送带</strong>平均<strong>吞吐量</strong>。输出最后在<strong>电线层</strong>上读取的物品（一旦解锁。）
+            description: 可以读取<strong>传送带</strong>平均<strong>吞吐量</strong>。输出最后在<strong>电线层</strong>上读取的物品。（解锁后）
     analyzer:
         default:
             name: 图形分析器
@@ -662,7 +662,7 @@ buildings:
 storyRewards:
     reward_cutter_and_trash:
         title: 切割图形
-        desc: 恭喜！您解锁了<strong>切割机</strong>，不管如何放置，它只会从上到下切开<strong>图形</strong>！
+        desc: 恭喜！您解锁了<strong>切割机</strong>，不管如何放置，它只会竖直切开<strong>图形</strong>！
             <br>注意一定要用处理掉切割后废弃的<strong>图形</strong>，不然它会<strong>阻塞</strong>传送带，
             <br>使用<strong>垃圾桶</strong>，它会清除所有放进去的图形！
     reward_rotater:
@@ -675,7 +675,7 @@ storyRewards:
             <br>注意：如果您不幸患有色盲，可以在设置中启用<strong>色盲模式</strong>
     reward_mixer:
         title: 混合颜色
-        desc: 恭喜！您解锁了<strong>混色器</strong>。它使用<strong>叠加混色法</strong>将两种颜色混合起来。
+        desc: 恭喜！您解锁了<strong>混色器</strong>。它使用<strong>光线叠加混色法</strong>将两种颜色混合起来。
     reward_stacker:
         title: 堆叠
         desc: 恭喜！您解锁了<strong>堆叠机</strong>。它会将将输入的<strong>图形</strong>在同一层内组合在一起。
@@ -831,7 +831,7 @@ settings:
             description: 开启这个选项之后放下设施将不会取消设施选择。等同于一直按下 SHIFT 键。
         offerHints:
             title: 提示与教程
-            description: 是否显示提示、教程以及一些其他的帮助理解游戏的 UI 元素。建议新手玩家开启。
+            description: 决定是否显示提示、教程以及一些其他的帮助理解游戏的 UI 元素。建议新手玩家开启。
         movementSpeed:
             title: 移动速度
             description: 改变摄像头的移动速度。
@@ -860,7 +860,7 @@ settings:
                 disabled: 关闭
         compactBuildingInfo:
             title: 精简设施信息
-            description: 缩小设施信息展示框。如果打开，放置设施时将不再显示说明和图片，只显示建造速度或其他数据。
+            description: 精简设施信息展示框。如果打开，放置设施时将不再显示说明和图片，只显示建造速度或其他数据。
         disableCutDeleteWarnings:
             title: 关闭剪切/删除警告
             description: 如果打开，将不再在剪切或者删除 100+ 实体时显示警告信息。
@@ -945,7 +945,7 @@ keybindings:
         miner: 开采器
         cutter: 切割机
         rotater: 旋转机
-        stacker: 堆叠机
+        stacker: 组合机
         mixer: 混色器
         painter: 上色器
         trash: 垃圾桶
@@ -1018,10 +1018,10 @@ demo:
         exportingBase: 导出工厂截图
     settingNotAvailable: 在试玩版中不可用。
 tips:
-    - 基地接受所有创造后输入的图形！并不限于现有的图形！
+    - 基地接受所有输入的图形！并不限于现有的图形！
     - 让你的工厂尽量模块化，不然后期你会面对大麻烦！
     - 不要让设施太过靠近基地，不然可能会乱成一锅粥！
-    - 如果堆叠不起作用，尝试切换输入的图形来重新组合。
+    - 如果堆叠错误，尝试切换输入的图形来重新组合。
     - 您可以通过 <b>R</b> 键切换传送带规化方向。
     - 按住 <b>CTRL</b> 键拖动传送带将始终保持它现有的传送方向。
     - 只要所有设施等级一致，效率也将一致。
@@ -1129,7 +1129,7 @@ puzzleMenu:
             medium: 正常
             long: 较长（> 10 分钟）
 backendErrors:
-    ratelimit: 你的操作太频繁了。请稍等。
+    ratelimit: 您的操作太频繁了。请稍等。
     invalid-api-key: 与后台通信失败，请尝试更新或重新启动游戏（无效的Api密钥）。
     unauthorized: 与后台通信失败，请尝试更新或重新启动游戏（未经授权）。
     bad-token: 与后台通信失败，请尝试更新或重新启动游戏（令牌错误）。
