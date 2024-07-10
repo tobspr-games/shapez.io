@@ -42,7 +42,7 @@ export class DynamicTickrate {
         const now = performance.now();
         const timeDuration = now - this.accumulatedFpsLastUpdate;
         if (timeDuration > fpsAccumulationTime) {
-            const avgFps = (this.accumulatedFps / fpsAccumulationTime) * 1000;
+            const avgFps = (this.accumulatedFps / timeDuration) * 1000;
             this.averageFps = avgFps;
             this.accumulatedFps = 0;
             this.accumulatedFpsLastUpdate = now;
