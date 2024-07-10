@@ -32,7 +32,10 @@ function mapLanguageCodeToId(languageKey) {
     // Try to match by key or short key
     for (const id in LANGUAGES) {
         const data = LANGUAGES[id];
-        const code = data.code.toLowerCase();
+        const shortCode = data.code.toLowerCase();
+        const region = data.region.toLowerCase();
+        const code = shortCode + (region ? "-" + region : "");
+        
         if (code === key) {
             console.log("-> Match", languageKey, "->", id);
             return id;
@@ -46,8 +49,7 @@ function mapLanguageCodeToId(languageKey) {
     // If none found, try to find a better alternative by using the base language at least
     for (const id in LANGUAGES) {
         const data = LANGUAGES[id];
-        const code = data.code.toLowerCase();
-        const shortCode = code.split("-")[0];
+        const shortCode = data.code.toLowerCase();
 
         if (shortCode === key) {
             console.log("-> Desperate Match", languageKey, "->", id);
