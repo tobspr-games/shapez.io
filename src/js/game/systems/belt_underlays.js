@@ -220,8 +220,14 @@ export class BeltUnderlaysSystem extends GameSystem {
      * @param {MapChunkView} chunk
      */
     drawChunk(parameters, chunk) {
+        // SYNC with systems/belt.js:drawChunk!
         // Limit speed to avoid belts going backwards
         const speedMultiplier = Math.min(this.root.hubGoals.getBeltBaseSpeed(), 10);
+        // It takes 3 animation cycles for belt arrows to move 1 tile
+        const animationIndex = Math.floor(
+            ((this.root.time.realtimeNow() * speedMultiplier * globalConfig.itemSpacingOnBelts * 3) % 1) *
+                BELT_ANIM_COUNT
+        );
 
         const contents = chunk.containedEntitiesByLayer.regular;
         for (let i = 0; i < contents.length; ++i) {
@@ -273,11 +279,6 @@ export class BeltUnderlaysSystem extends GameSystem {
                 const y = destY + globalConfig.halfTileSize;
                 const angleRadians = Math.radians(angle);
 
-                // SYNC with systems/belt.js:drawSingleEntity!
-                const animationIndex = Math.floor(
-                    ((this.root.time.realtimeNow() * speedMultiplier * BELT_ANIM_COUNT * 126) / 42) *
-                        globalConfig.itemSpacingOnBelts
-                );
                 parameters.context.translate(x, y);
                 parameters.context.rotate(angleRadians);
                 this.underlayBeltSprites[
