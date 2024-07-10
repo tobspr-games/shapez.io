@@ -1,4 +1,6 @@
 {
+    "id": "dark",
+
     "map": {
         "background": "#3e3f47",
         "gridRegular": "rgba(255, 255, 255, 0.02)",
