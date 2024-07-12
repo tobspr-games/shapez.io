@@ -436,7 +436,7 @@ ingame:
             21_4_press_button: "Premi l'interruttore per fargli <strong>emettere un segnale
                 di verità </strong> e fargli quindi attivare il
                 vernciatore.<br><br> PS: Non c'è bisogno che tu connetta tutti
-                gli imput! Prova a collegarne solo due."
+                gli input! Prova a collegarne solo due."
             1_2_hold_and_drag: Mantenere e trascinare
     colors:
         red: Rosso
@@ -989,7 +989,7 @@ settings:
                 modo tale che il gioco possa correttamente simulare alla
                 frequenza di aggiornamento più alta. Questo potrebbe abbassare i
                 frame al secondo se il tuo computer è troppo lento.
-        alwaysace:
+        alwaysMultiplace:
             title: Posizionamento multiplo
             description: Se abilitato, tutti gli edifici rimarranno selezionati dopo il
                 posizionamento finchè non lo annullerai. È equivalente a tenere
