@@ -296,7 +296,7 @@ dialogs:
     modsDifference:
         title: Attenzione
         desc: Le mod attualmente installate differiscono rispetto alle mod con cui è stato creato il salvataggio.
-        Questo potrebbe causare la corruzione o il mancato caricamento dei dati di salvataggio. Sei sicuro di voler continuare?
+            Questo potrebbe causare la corruzione o il mancato caricamento dei dati di salvataggio. Sei sicuro di voler continuare?
         missingMods: Mods mancanti
         newMods: Mods installate di recente
     resourceLoadFailed:
