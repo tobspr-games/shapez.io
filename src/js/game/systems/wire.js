@@ -617,7 +617,7 @@ export class WireSystem extends GameSystem {
                     assert(sprite, "Unknown wire type: " + wireType);
                     const staticComp = entity.components.StaticMapEntity;
                     parameters.context.globalAlpha = opacity;
-                    staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0);
+                    staticComp.drawSpriteOnBoundsClipped(parameters, sprite, 0, null, false);
 
                     // DEBUG Rendering
                     if (G_IS_DEV && globalConfig.debug.renderWireRotations) {
