@@ -716,7 +716,7 @@ storyRewards:
         title: 連鎖抽出機
         desc:
             "<strong>連鎖抽出機</strong>が利用可能になりました！ 他の抽出機に<strong>出力を渡す</strong>ことができるので、
-            資源の抽出がより効率的になります！<br><br> 補足: ツールバーの 旧い抽出機が置き換えられました！"
+            資源の抽出がより効率的になります！<br><br> 補足: ツールバーの 古い抽出機が置き換えられました！"
     reward_underground_belt_tier_2:
         title: トンネル　レベルII
         desc: <strong>トンネル</strong>のバリエーションが利用可能になりました。 -
