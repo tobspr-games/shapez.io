@@ -1,11 +1,11 @@
 steamPage:
-    shortText: “唯一能限制您的，只有您的想象力！”《异形工厂》（shapez）
+    shortText: “唯一能限制您的，只有您的想象力！”《异形工厂》（Shapez）
         是一款在无限拓展的地图上，通过建造各类工厂设施，来自动化生产与组合出愈加复杂图形的游戏。
     discordLinkShort: 官方 Discord 服务器
     intro: |-
         “奇形怪状，放飞想象！”
         “自动生产，尽情创造！”
-        《异形工厂》（shapez）是一款能让您尽情发挥创造力，充分享受思维乐趣的 IO 游戏。
+        《异形工厂》（Shapez）是一款能让您尽情发挥创造力，充分享受思维乐趣的 IO 游戏。
         游戏很轻松，只需建造工厂，布好设施，无需操作即能自动创造出各种各样的几何图形。
         挑战很烧脑，随着等级提升，需要创造的图形将会越来越复杂，同时您还需要在无限扩展的地图中持续扩建优化您的工厂。
         以为这就是全部了吗？不！图形的生产需求将会指数性增长，持续的扩大规模和熵增带来的无序，将会是令人头痛的问题！
@@ -13,8 +13,8 @@ steamPage:
         然后，还有吗？当然，唯有思维，方能无限。
 
         欢迎免费体验试玩版：“让您的想象力插上翅膀！”
-        和最聪明的玩家一起挑战，请访问 Steam 游戏商城购买《异形工厂》（shapez）的完整版，
-    what_others_say: 来看看玩家们对《异形工厂》（shapez）的评价
+        和最聪明的玩家一起挑战，请访问 Steam 游戏商城购买《异形工厂》（Shapez）的完整版，
+    what_others_say: 来看看玩家们对《异形工厂》（Shapez）的评价
     nothernlion_comment: 非常棒的游戏，我的游戏过程充满乐趣，不觉时间飞逝。
     notch_comment: 哦，天哪！我真得该去睡了！但我想我刚刚搞定如何在游戏里面制造一台电脑出来。
     steam_review_comment: 这是一个不知不觉偷走你时间，但你并不会想要追回的游戏。非常烧脑的挑战，让我这样的完美主义者停不下来，总是希望可以再高效一些。
@@ -65,7 +65,7 @@ demoBanners:
             <li>……以及更多！</li>
         </ul>
     playtimeDisclaimer: 完整版包括多达 <strong>20 小时的新内容</strong>
-    playerCount: <playerCount> 个像你一样的玩家目前正在 Steam 上玩 shapez
+    playerCount: <playerCount> 个像你一样的玩家目前正在 Steam 上玩 Shapez
     untilEndOfDemo: 直到演示结束
     playtimeDisclaimerDownload: 您可以在完整版中继续您的存档游戏！ 点击<strong>此处</strong>下载您的存档游戏。
     titleV2: 现在就玩完整版的。
@@ -96,9 +96,9 @@ mainMenu:
         warningPuzzleDLC: 无法在任何游戏模组（Mods）下进行“谜题挑战者” DLC，请关闭所有游戏模组（Mods）。
     playingFullVersion: 您正在玩完整版游戏！
     logout: 登出
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: 没有找到可用的存档 - 点击开始新的游戏!
+    playFullVersionV2: 在Steam上购买了《异形工厂》（Shapez）吗? 在您的浏览器上游玩完整版吧!
+    playFullVersionStandalone: 您现在也可以在您的浏览器上游玩完整版了!
 dialogs:
     buttons:
         ok: 确认
