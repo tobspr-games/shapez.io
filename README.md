@@ -1,9 +1,10 @@
-## NEW: Shapez 2!
+## Shapez 2 now in Early Access!
 
-We are currently working on a successor to shapez, with 3D Graphics, Exploration, Layers, Mass transport, New Shape Mechanics, Research and a lot more! Be sure to check it out:
+We are currently working on shapez 2, the successor to shapez!
+It is currently released in Early Access on Steam - be sure to check it out:
 
-<a href="https://tobspr.io/shapez-2" title="shapez 2">
-    <img src="https://i.imgur.com/6T7UP3p.png" alt="shapez 2 Announcement">
+<a href="https://store.steampowered.com/app/2162800/shapez_2/?utm_medium=github&amp;utm_source=s1_github" title="shapez 2 on Steam">
+    <img src="https://i.imgur.com/xsjVe2f.png" alt="shapez 2 Announcement">
 </a>
 
 <br>
