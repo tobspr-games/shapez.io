@@ -1132,7 +1132,7 @@ storyRewards:
     reward_virtual_processing:
         title: Virtual Processing
         desc: >-
-            I just gave a whole bunch of new buildings which allow you to <strong>simulate the processing of shapes</strong>!<br><br>
+            I just gave you a whole bunch of new buildings which allow you to <strong>simulate the processing of shapes</strong>!<br><br>
             You can now simulate a cutter, rotator, stacker and more on the wires layer!
             With this you now have three options to continue the game:<br><br>
             - Build an <strong>automated machine</strong> to create any possible shape requested by the HUB (I recommend to try it!).<br><br>
