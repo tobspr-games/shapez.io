@@ -56,7 +56,7 @@ global:
     loggingIn: Logowanie
     loadingResources: Pobieranie dodatkowych zasobów (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: SPECIALNA PROMOCJA! Oferta kończy się 7 lipca
 demoBanners:
     title: Wersja demonstracyjna
     intro: |-
@@ -100,11 +100,11 @@ mainMenu:
         title: Aktywne Mody
         warningPuzzleDLC: Granie w DLC Układanek nie jest możliwe z modami. Proszę
             wyłącz wszystkie mody, aby otworzyć DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Grasz teraz w pełną wersję!
+    logout: Wyloguj
+    noActiveSavegames: Nie znaleziono aktywnych zapisów - Kliknij Rozpocznij aby zacząć nową grę!
+    playFullVersionV2: shapez kupione na Steam? Graj w pełną wersję w twojej przeglądarce!
+    playFullVersionStandalone: Teraz możesz grać w pełną wersję również w twojej przeglądarce!
 dialogs:
     buttons:
         ok: Ok
@@ -293,7 +293,7 @@ dialogs:
         desc: Aktualnie zainstalowane mody różnią się od tych, które zostały utworzone w
             zapisie gry. Może to spowodować, że zapis gry się zepsuje lub w
             ogóle się nie załaduje. Czy na pewno chcesz kontynuować?
-        missingMods: Missing Mods
+        missingMods: Brakujące Mody
         newMods: Ostatnio zainstalowane Mody
     resourceLoadFailed:
         title: Resources failed to load
@@ -1112,7 +1112,7 @@ keybindings:
         massSelect: Zbiorowe Zaznaczenie
         buildings: Skróty Budynków
         placementModifiers: Modyfikatory Stawiania
-        mods: Provided by Mods
+        mods: Dostarczone przez Mody
     mappings:
         confirm: Potwierdź
         back: Wstecz
@@ -1384,5 +1384,4 @@ mods:
         description: Włączanie lub wyłączanie modów jest obecnie możliwe tylko przez
             kopiowanie pliku modów do folderu "mods/". Jednak w przyszłej
             aktualizacji będziesz/asz mógł zmieniać ich status tutaj!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Z powodu ograniczeń przeglądarek na ten moment jest możliwe instalowanie modów tylko w Steamowej wersji gry - Przepraszamy!
