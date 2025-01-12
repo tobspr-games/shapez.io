@@ -1199,21 +1199,16 @@ backendErrors:
         to remove it, please contact support@shapez.io!
     no-permission: You do not have the permission to perform this action.
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: 遊戲模組（Mods）
+    author: 作者
+    version: 版本
+    modWebsite: 模組網站
+    openFolder: 打開模組資料夾
+    folderOnlyStandalone: 只有完整版才能打開模組資料夾。
+    browseMods: 瀏覽模組
+    modsInfo: 要安裝或管理模組，請將它們複製到遊戲目錄中的 mods 資料夾內（shapez.io\mods）。您也可以點擊右上角的「打開模組資料夾」按鈕，直接開啟 mods 資料夾。
+    noModSupport: 您需要在 Steam 平台擁有完整版才能安裝模組。
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: 即將推出
+        description: 目前只能透過手動的方式啟用或停用模組：將模組檔案放入 mods 資料夾內即可啟用；若要停用，則將 mods 資料夾內的模組檔案移出或刪除即可。不過，在未來的更新中，將會在此處添加切換模組的功能！
+    browserNoSupport: 由於瀏覽器限制，目前只能在 Steam 版本安裝模組，抱歉！
