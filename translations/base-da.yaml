@@ -51,7 +51,7 @@ global:
         escape: ESC
         shift: SKIFT/SHIFT
         space: MELLEMRUM
-    loggingIn: Logging in
+    loggingIn: Logger ind
     loadingResources: Downloader yderligere ressourcer (<percentage> %)
     discount: -<percentage>%
     discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
@@ -67,7 +67,7 @@ demoBanners:
             <li>... og meget mere!</li>
         </ul>
     playtimeDisclaimer: Den fulde version indeholder mere end <strong>20 timers indhold</strong>.
-    playerCount: <playerCount> spillere som dig spiller lige nu shapez på Steam
+    playerCount: <playerCount> spillere som dig spiller shapez på Steam lige nu
     untilEndOfDemo: Indtil afslutningen af demoen
     playtimeDisclaimerDownload: Du kan fortsætte dit savegame i den fulde version!
         Klik <strong>her</strong> for at downloade dit savegame.
@@ -80,29 +80,31 @@ mainMenu:
     subreddit: Reddit
     importSavegame: Importér
     openSourceHint: Dette spil er open source!
-    discordLink: Officiel Discordserver
+    discordLink: Officiel Discord server
     helpTranslate: Hjælp med at oversætte!
     madeBy: Lavet af <author-link>
-    browserWarning: Undskyld, men spillet er kendt for at køre langsomt på denne
+    browserWarning: Undskyld, men spillet er kendt for at køre langsomt i denne
         browser! Køb spillet eller download Chrome for den fulde oplevelse.
     savegameLevel: Niveau <x>
     savegameLevelUnknown: Ukendt Niveau
-    savegameUnnamed: Uden Navn
+    savegameUnnamed: Unavngivet
     puzzleMode: Puzzle-tilstand
     back: Tilbage
-    puzzleDlcText: Synes du det er det sjovt at gøre maskinerne mindre og mere
-        optimale? Få fat i DLC på Steam nu for mere sjov!
+    puzzleDlcText: |
+        Synes du det er det sjovt at gøre maskinerne mindre og mere
+        optimale? Få fat i puzzle DLC'en på Steam nu for mere sjov!
     puzzleDlcWishlist: Wishlist den nu!
-    puzzleDlcViewNow: Se DLC
+    puzzleDlcViewNow: "Se DLC'en"
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Det er ikke muligt at spille Puzzle DLC med mods. Slå alle
+        title: Aktive Mods
+        warningPuzzleDLC: |
+            Det er ikke muligt at spille Puzzle DLC'en med mods. Slå alle
             mods fra for at spille DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    playingFullVersion: Du spiller nu den fulde version!
+    logout: Logud
+    noActiveSavegames: Ingen gamte spil kunne findes - Tryk spil for at starte et nyt spil!
+    playFullVersionV2: Har du købt shapez på Steam? Spil den fulde version i din browser!
+    playFullVersionStandalone: Nu kan du også spille den fulde version i din browser!
 dialogs:
     buttons:
         ok: OK
@@ -139,7 +141,7 @@ dialogs:
         title: Genstart er nødvendig
         text: Du er nødt til at genstarte spillet for at anvende indstillingerne.
     editKeybinding:
-        title: Ændr Keybinding
+        title: Ændre Keybinding
         desc: Tryk på knappen du vil bruge, eller escape for at fortryde.
     resetKeybindingsConfirmation:
         title: Nulstil tastefunktioner
@@ -149,13 +151,13 @@ dialogs:
         title: Tastefunktioner nulstillet
         desc: Tastefunktioner er nulstillet til deres standarder!
     featureRestriction:
-        title: Demoversion
+        title: Demo version
         desc: Du prøvede at bruge en funktion (<feature>) der ikke er tilgængelig i
             demoen. Overvej at købe spillet for den fulde oplevelse!
     oneSavegameLimit:
         title: Begrænset mængde gemte spil
-        desc: Du kan kun have et gemt spil ad gangen in demoversionen. Vær sød at slette
-            det nuværende gemte spil eller at købe spillet!
+        desc: Du kan kun have et gemt spil ad gangen in demoversionen. Enten slet
+            det nuværende gemte spil eller køb spillet!
     updateSummary:
         title: Ny opdatering!
         desc: "Dette har ændret sig siden sidst du spillede:"
@@ -177,13 +179,14 @@ dialogs:
         desc: Gennemfør Niveau 12 for at bruge skabeloner!
     keybindingsIntroduction:
         title: Brugbare keybindings
-        desc: "Dette spil har mange keybindings, som gør det lettere at bygge store
+        desc: |
+            Dette spil har mange keybindings, som gør det lettere at bygge store
             fabrikker. Her er et par, men husk at <strong>tjekke
             keybindings</strong>!<br><br> <code class='keybinding'>CTRL</code> +
             Træk: Vælg et område.<br> <code class='keybinding'>SHIFT</code>:
             Hold for at placere flere af en bygning.<br> <code
             class='keybinding'>ALT</code>: Vend retningen af placerede
-            transportbånd.<br>"
+            transportbånd.<br>
     createMarker:
         title: Ny Markør
         titleEdit: Rediger Markør
@@ -285,32 +288,35 @@ dialogs:
         desc: The currently installed mods differ from the mods the savegame was created
             with. This might cause the savegame to break or not load at all. Are
             you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        missingMods: Mangler Mods
+        newMods: Nuligt indstalleret Mods
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Ressourcer fejlede i at indlæse
+        demoLinkText: shapez demo på Steam
+        descWeb: |
+            En eller flere ressourcer kunne ikke blive indlæst. Vær sikker på
+            at du har en stabil internetforbindelse og prøv igen. Hvis det
+            stadig ikke virker, vær sikker på at du har slået alle browser udvidelser
+            (også adblockers) <br><br> Alternativt kan du også spille <demoOnSteamLinkText>. 
+            <br><br> Fejl besked:
+        descSteamDemo: |
+            En eller flere resourcer kunne ikke blive indlæst. Prøv at genstarte spillet - 
+            Hvis det ikke virker, prøv at genindstallere og verificere spil fillerne via Steam. 
+            <br><br> Fejl besked:
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Fuld Version Logud
+        desc: |
+            Du er blevet logged ud af den fulde browser version fordi enten din netværks forbindelse
+            er ustabil eller du spiller på en anden enhed.
+            <br><br> Vær sød ikke at have shapez åbent i nogen andre 
+            browser tab eller en anden computer med den samme steam konto.
+            <br><br> Du kan logind  igen fra hoved menuen.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Du ejer ikke den fulde version
+        desc: |
+            For at spille den fulde version i din browser, skal du eje både
+            spillet og Puzzle DLC'en på Steam.
+            <br><br> Bekræft at du ejer begge, logind med den rigtige Steam konto og prøv igen.
 ingame:
     keybindingsOverlay:
         moveMap: Bevæg dig
@@ -339,7 +345,7 @@ ingame:
         blue: Blå
         yellow: Gul
         purple: Lilla
-        cyan: Cyan
+        cyan: Turkis
         white: Hvid
         uncolored: Farveløs
         black: Sort
@@ -476,11 +482,11 @@ ingame:
                 title: Støt mig
                 desc: Jeg arbejder på det i min fritid!
             achievements:
-                title: Achievements
-                desc: Hunt them all!
+                title: Opnåelser
+                desc: Opnå dem alle!
             mods:
                 title: Modding support!
-                desc: Over 80 mods available!
+                desc: Over 80 mods tilgængelig!
         titleV2: "Get the full version now on Steam to unlock:"
         titleExpiredV2: Demo completed!
         titleEnjoyingDemo: Enjoy the demo?
