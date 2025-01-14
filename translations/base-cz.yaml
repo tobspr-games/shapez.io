@@ -286,29 +286,29 @@ dialogs:
         missingMods: Chybějící módy
         newMods: Nově nainstalované módy
     resourceLoadFailed:
-        title: Resources failed to load
+        title: Zdroje nešly načíst
         demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        descWeb: "Jedna nebo více zdrojů nešly načíst. Ujistěte se že máte stabilní 
+            internetové připojení a zkuste to znovu. Pokud problém přetrvává, vypněte 
+            jakékoliv prohlížečové rozšíření (včetně adblockerů) 
+            Jako druhou možnost, můžete hrát <demoOnSteamLinkText>. <br><br> Error Message:"
+        descSteamDemo: "Jedna nebo více zdrojů nešly načíst. Zkuste restartovat
+            hru - Pokud to nepomůže, zkuste znovu hru nainstalovat a ověřit
+            složky hry přes Steam. <br><br> Error Message:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Odhlášení z plné verze
+        desc: Byli jste odhlášeni z plné verze v prohlížeči. 
+            Buď máte nestabilní internetové připojení, nebo je hra zaplá na jiném 
+            zařízení.<br><br> Ujistěte se že nemáte hru Shapez otevřenou na jiném prohlížečovém 
+            okně nebo jiném počítači se stejným Steam 
+            účtem.<br><br> Můžete se znovu přihlásit na hlavní stránce.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Plná verze nevlastněna
+        desc: Abyste mohli hrát plnou verzi ve vašem prohlížeči, 
+            musíte vlastnit základní hru i Puzzle DLC na vašem Steam účtu.<br><br>
+            Ujistěte se, že vlastníte obě, jste přihlášeni ve správném Steam 
+            účtu a zkuste znovu.
+            
 ingame:
     keybindingsOverlay:
         moveMap: Posun mapy
@@ -330,7 +330,7 @@ ingame:
         clearSelection: Zrušit výběr
         pipette: Kapátko
         switchLayers: Změnit vrstvy
-        clearBelts: Clear belts
+        clearBelts: Vymazat pásy
     buildingPlacement:
         cycleBuildingVariants: Zmáčkněte <key> pro přepínání mezi variantami.
         hotkeyLabel: "Klávesová zkratka: <key>"
