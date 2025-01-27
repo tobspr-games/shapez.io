@@ -99,11 +99,11 @@ mainMenu:
         title: Aktif Modlar
         warningPuzzleDLC: Modlarla Yapboz DLC'sini oynamak mümkün değil. Lütfen Yapboz
             DLC'sini oynayabilmek için bütün modları devre dışı bırakınız.
-    playingFullVersion: You are now playing the full version!
+    playingFullVersion: Şu anda tam sürümü oynuyorsun!
     logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: Kayıtlı bir oyun bulunamadı - Yeni oyuna başlamak için tıkla!
+    playFullVersionV2: shapez'i Steam'den mi aldın? Tarayıcında tam sürümü oyna!
+    playFullVersionStandalone: Şimdi oyunun tam sürümünü tarayıcında da oynayabilirsin!
 dialogs:
     buttons:
         ok: OK
@@ -293,16 +293,16 @@ dialogs:
         missingMods: Eksik Modlar
         newMods: Yeni yüklenen Modlar
     resourceLoadFailed:
-        title: Resources failed to load
+        title: Kaynaklar yüklenirken bir hata oluştu.
         demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        descWeb: "Bir ya da daha fazla kaynak yüklenemedi. İnternet bağlantının uygun olduğundan
+            emin ol ve tekrar dene. Eğer hala çalışmıyorsa, tarayıcı eklentilerini devre
+            dışarı bırakıp tekrar dene.(reklam engelleyicileri de).<br><br>
+            Alternatif olarak, burada da oynayabilirsin
+            <demoOnSteamLinkText>. <br><br> Hata mesajı:"
+        descSteamDemo: "Bir ya da daha fazla kaynak yüklenemedi. Oyunu yeniden başlatmayı dene
+        - eğer bu yardımcı olmuyorsa oyunu tekrar yüklemeyi ve oyun dosyalarını Steam aracılığıyla 
+        doğrulamayı dene. <br><br> Hata Mesajı:"
     steamSsoError:
         title: Full Version Logout
         desc: You have been logged out from the Full Browser Version since either your
@@ -1373,5 +1373,4 @@ mods:
         description: Modları etkinleştirmek veya devre dışı bırakmak şu anda yalnızca
             dosyaları Mod klasörüne kopyalayarak mümkündür. Ancak modları burada
             değiştirmek gelecekteki bir güncelleme için planlanmıştır!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+    browserNoSupport: Tarayıcı kısıtlamaları yüzünden modlar şu an için yalnızca Steam sürümünde mevcut - Üzgünüm!
