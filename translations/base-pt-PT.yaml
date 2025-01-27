@@ -1,38 +1,48 @@
 steamPage:
-    shortText: shapez.io é um jogo cujo objetivo é construir fábricas para
-        automatizar a criação e fusão de formas geométricas cada vez mais
-        complexas num mapa infinito.
+    shortText: Shapez é um jogo cujo objetivo é construir fábricas para automatizar a criação e o processamento de formas geométricas cada vez mais complexas num mapa infinito.
+    
     discordLinkShort: Discord Oficial
+    
     intro: >-
-        Shapez.io é um jogo relaxante onde tens de construir fábricas para
-        autumatizar a produção de formas geométricas.
+        Gostas de jogos de automação e fábricas? Então estás no lugar certo!
+        
+        Shapez é um jogo relaxante onde tens de construir fábricas para automatizar a produção de formas geométricas. Com o aumento dos níveis, as formas começam a ser cada vez mais e mais complexas, e tu terás de te expandir num mapa infinito.
 
-        Com o aumento do nível, as formas começam a ser cada vez mais e mais complexas, e tu terás de te expandir num mapa infinito.
-
-        E como se isso não fosse suficiente, tu também terás de produzir de forma exponencial para satisfazeres as tuas necessidades - a única coisa que ajuda é aumentar!
-
-        Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
+        E como se isso não fosse suficiente, tu também terás de produzir de forma exponencial para satisfazer a procura - a única coisa que ajuda é aumentar! Embora no inicio apenas tenhas de processar formas,  mais tarde, vais ter de as colorir - para isto terás de extrair e misturar cores!
 
         Comprar o jogo na Steam dar-te-á acesso à versão completa, mas também podes jogar a versão demo em shapez.io primeiro e decidir mais tarde!
-    what_others_say: O que dizem sobre o shapez.io
-    nothernlion_comment: Este é um jogo fantástico - Estou a ter um bom bocado
-        enquanto o jogo, e o tempo parece que voa.
-    notch_comment: Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir
-        como criar computorizar no shapez.io
-    steam_review_comment: Este jogo roubou a minha vida e não a quero de volta. Jogo
-        de fábrica relaxante que não me deixa parar de fazer as minhas linhas
-        cada vez mais eficientes.
+    
+    what_others_say: O que as pessoas dizem sobre o Shapez
+    
+    nothernlion_comment: 
+        Este é um jogo fantástico - Estou-me a divertir imenso enquanto jogo, e o tempo parece que voa.
+    notch_comment: 
+        Ora bolas. Eu devia ir dormir, mas acho que acabei de descobrir como criar um computador no Shapez
+    steam_review_comment: 
+        Este jogo roubou a minha vida e não a quero de volta. Jogo de fábrica relaxante que não me deixa parar de fazer as minhas linhas cada vez mais eficientes.
+
 global:
     loading: A Carregar
     error: Erro
-    thousandsDivider: ","
-    decimalSeparator: .
+    loggingIn: A entrar
+
+    loadingResources: A descarregar recursos adicionais (<percentage> %)
+    
+    thousandsDivider: "."
+    
+    decimalSeparator: ","
+
+    discount: -<percentage>%
+    discountSummerSale: "PROMOÇÃO ESPECIAL! A oferta acaba dia 7 de Julho"
+    
     suffix:
         thousands: k
         millions: M
         billions: B
         trillions: T
+    
     infinite: inf
+    
     time:
         oneSecondAgo: há um segundo
         xSecondsAgo: há <x> segundos
@@ -42,70 +52,83 @@ global:
         xHoursAgo: há <x> horas
         oneDayAgo: há um dia
         xDaysAgo: há <x> dias
+        
         secondsShort: <seconds>s
         minutesAndSecondsShort: <minutes>m <seconds>s
         hoursAndMinutesShort: <hours>h <minutes>m
+        
         xMinutes: <x> minutos
+        
     keys:
         tab: TAB
         control: CTRL
         alt: ALT
         escape: ESC
         shift: SHIFT
-        space: SPACE
-    loggingIn: A conectar
-    loadingResources: A Baixar recursos adicionais (<percentage> %)
-    discount: -<percentage>%
-    discountSummerSale: PROMOÇÃO ESPECIAL! A oferta acaba dia 7 de Julho
+        space: ESPAÇO
+        
 demoBanners:
-    title: Versão Demo
-    intro: |-
+    title: Demo
+    titleV2: >-
+        Joga a nova versão agora por:
+
+    intro: >-
         Obtém o jogo completo <strong>agora</strong> para desbloqueares:<ul>
             <li>Todos os 26 níveis + Freeplay infinito</li>
             <li>22 novos edifícios</li>
-            <li>Suporte a modos</li>
+            <li>Suporte a mods</li>
             <li>Conquistas</li>
             <li>Modo escuro</li>
             <li>... e muito mais!</li>
         </ul>
-    playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
-    playerCount: <playerCount> jogadores como tu estão a jogar shapez na Steam
+    playtimeDisclaimer: 
+        A versão completa contém mais de <strong>20 horas de conteúdo</strong>!
+    
+    playtimeDisclaimerDownload: 
+        Podes continuar o teu savegame na versão completa! Clica <strong>aqui</strong> para descarregares o teu savegame.
+    
+    playerCount: 
+        <playerCount> jogadores como tu estão a jogar Shapez na Steam agora mesmo
     untilEndOfDemo: Até o final da demo
-    playtimeDisclaimerDownload: Podes continuar o teu savegame na versão completa!
-        Cliqua <strong>aqui</strong> para baixares o teu savegame.
-    titleV2: "Reproduzir a versão completa agora para:"
+    
 mainMenu:
     play: Jogar
+    continue: Continuar
+    newGame: Novo Jogo
     changelog: Changelog
+    subreddit: Reddit
     importSavegame: Importar
     openSourceHint: Este jogo é código aberto!
     discordLink: Discord oficial
     helpTranslate: Ajuda a traduzir!
-    browserWarning: Desculpa, mas este jogo parece correr mais lentamente no teu
-        navegador! Compra o jogo completo ou baixa o chrome para melhorares a
-        tua experiência.
-    savegameLevel: Nível <x>
-    savegameLevelUnknown: Nível desconhecido
-    continue: Continuar
-    newGame: Novo Jogo
     madeBy: Criado por <author-link>
-    subreddit: Reddit
-    savegameUnnamed: Sem Nome
-    puzzleMode: Modo Puzzle
-    back: Voltar
-    puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
-        Puzzle na Steam para ainda mais diversão!
-    puzzleDlcWishlist: Lista de desejos agora!
-    puzzleDlcViewNow: Ver Dlc
-    mods:
-        title: Modos Ativados
-        warningPuzzleDLC: Jogar o DLC Modo Puzzle não é possível com modos. Por favor
-            desativa todos os modos antes de jogares o DLC
-    playingFullVersion: Estás agora a jogar a versão completa!
-    logout: Desconectar
-    noActiveSavegames: Não foram encontrados savegames - Clica para começar um jogo novo!
+    noActiveSavegames: Não foram encontrados savegames - Clica Jogar para começar um jogo novo!
+
     playFullVersionV2: Compraste o Shapez na Steam? Joga a versão completa no teu Browser!
     playFullVersionStandalone: Também podes jogar a versão completa no teu Browser!
+    playingFullVersion: Estás agora a jogar a versão completa!
+    logout: Desconectar
+    
+    browserWarning: >- 
+        Desculpa, mas este jogo parece correr mais lentamente no teu navegador! Compra o jogo completo ou descarrega o  Google Chrome para a experiência completa.
+    
+    savegameLevel: Nível <x>
+    savegameLevelUnknown: Nível desconhecido
+    savegameUnnamed: Sem Nome
+    puzzleMode: Modo de Puzzle
+    back: Voltar
+    
+    puzzleDlcText: >-
+        Gostas de compactar e otimizar fábricas?
+        Adquire agora o DLC Puzzle na Steam para ainda mais diversão!
+    puzzleDlcWishlist: Adiciona à Lista de Desejos agora!
+    puzzleDlcViewNow: Ver Dlc
+    
+    mods:
+        title: Mods Ativos
+        warningPuzzleDLC: >- 
+            Jogar o DLC Puzzle não é possível com mods. Por favor desativa todos os mods antes de jogares o DLC.
+    
 dialogs:
     buttons:
         ok: OK
