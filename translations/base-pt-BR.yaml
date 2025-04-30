@@ -53,21 +53,21 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta válida até 7 de julho.
 demoBanners:
     title: Versão Demo
     intro: |-
         Obtenha o jogo completo <forte>suave</forte> para desbloquear:<ul>
-            <li>Todos os 26 níveis + infinite Freeplay</li>
+            <li>Todos os 26 níveis + Jogo Livre Infinito</li>
             <li>22 novas construções</li>
             <li>Suporte Mod</li>
             <li>Realizações</li>
             <li>Dark Mod</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
+    playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
     playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
@@ -95,9 +95,9 @@ mainMenu:
     puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
         já disponível na Steam para se divertir ainda mais!
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Ver Dlc
     mods:
-        title: Active Mods
+        title: Mods Ativos
         warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
             disable all mods to play the DLC.
     playingFullVersion: You are now playing the full version!
