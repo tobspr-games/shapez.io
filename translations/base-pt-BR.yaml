@@ -98,13 +98,13 @@ mainMenu:
     puzzleDlcViewNow: Ver Dlc
     mods:
         title: Mods Ativos
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        warningPuzzleDLC: Não é possível jogar o DLC Puzzle com mods. Por favor
+            desative todos os mods para jogar o DLC.
+    playingFullVersion: Agora você está jogando a versão completa!
+    logout: Deslogar
+    noActiveSavegames: Nenhum jogo salvo ativo encontrado - Clique em jogar para iniciar um novo jogo!
+    playFullVersionV2: Comprou shapez no Steam? Jogue a versão completa no seu navegador!
+    playFullVersionStandalone: Agora você também pode jogar a versão completa no seu navegador!
 dialogs:
     buttons:
         ok: OK
@@ -282,13 +282,13 @@ dialogs:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Deletar Puzzle?
+        desc: Tem certeza de que deseja excluir '<title>'? Isso não pode ser desfeito!
     modsDifference:
         title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
+        desc: Os mods instalados atualmente são diferentes dos mods com os quais o jogo
+            salvo foi criado. Isso pode fazer com que o jogo salvo trave ou não carregue. Tem
+            certeza de que deseja continuar?
         missingMods: Missing Mods
         newMods: Newly installed Mods
     resourceLoadFailed:
