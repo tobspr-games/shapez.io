@@ -1377,7 +1377,7 @@ mods:
     version: Versão
     modWebsite: Site
     openFolder: Abrir Pasta de Mods
-    folderOnlyStandalone: Abrir a pasta de mods só é possível na versão standalone.
+    folderOnlyStandalone: Abrir a pasta de mods só é possível em "standalone".
     browseMods: Procurar Mods
     modsInfo: Para instalar e gerenciar mods, copie-os para a pasta "mods" dentro do
         diretório do jogo. Você também pode usar o botão "Abrir Pasta de Mods" no
