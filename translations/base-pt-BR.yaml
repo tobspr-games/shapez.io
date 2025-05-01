@@ -292,10 +292,10 @@ dialogs:
         missingMods: Mods Ausentes
         newMods: Mods Recém-instalados
     resourceLoadFailed:
-        title: Resources failed to load
+        title: Falha ao carregar os recursos
         demoLinkText: shapez demo na Steam
-        descWeb: "Um ou mais resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
+        descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de ter uma
+            conexão de internet estável e tente novamente. If this still doesn't
             work, make sure to also disable any browser extensions (including
             adblockers).<br><br> As an alternative, you can also play the
             <demoOnSteamLinkText>. <br><br> Error Message:"
