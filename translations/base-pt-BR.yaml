@@ -1336,7 +1336,7 @@ puzzleMenu:
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
-            any: Qualquer Duração
+            any: Qualquer Dificuldade
             easy: Fácil
             medium: Médio
             hard: Difício
