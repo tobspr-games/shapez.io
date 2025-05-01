@@ -55,7 +55,7 @@ global:
     loggingIn: Entrando
     loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta válida até 7 de julho.
+    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta válida até 7 de julho
 demoBanners:
     title: Versão Demo
     intro: |-
@@ -285,16 +285,16 @@ dialogs:
         title: Deletar Puzzle?
         desc: Tem certeza de que deseja excluir '<title>'? Isso não pode ser desfeito!
     modsDifference:
-        title: Mod Warning
+        title: Aviso - Mods
         desc: Os mods instalados atualmente são diferentes dos mods com os quais o jogo
             salvo foi criado. Isso pode fazer com que o jogo salvo trave ou não carregue. Tem
             certeza de que deseja continuar?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        missingMods: Mods Ausentes
+        newMods: Mods Recém-instalados
     resourceLoadFailed:
         title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
+        demoLinkText: shapez demo na Steam
+        descWeb: "Um ou mais resources could not be loaded. Make sure you have a
             stable internet connection and try again. If this still doesn't
             work, make sure to also disable any browser extensions (including
             adblockers).<br><br> As an alternative, you can also play the
@@ -1302,14 +1302,14 @@ puzzleMenu:
         easy: Fácil
         hard: Difícil
         completed: Completados
-        medium: Medium
+        medium: Médio
         official: Official
         trending: Trending today
         trending-weekly: Trending weekly
-        categories: Categories
+        categories: Categorias
         difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        account: Meus Puzzles
+        search: Procurar
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
@@ -1325,26 +1325,26 @@ puzzleMenu:
             Produtores Constantes não estão entregando diretamente aos seus
             Receptores de Objetivo.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
+        easy: Fácil
+        medium: Médio
+        hard: Difício
+        unknown: Sem Classificação
+    dlcHint: Já comprou o DLC? Make sure it is activated by right clicking
         shapez.io in your library, selecting Properties > DLCs.
     search:
-        action: Search
+        action: Pesquisar
         placeholder: Enter a puzzle or author name
         includeCompleted: Include Completed
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Qualquer Duração
+            easy: Fácil
+            medium: Médio
+            hard: Difício
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Qualquer Duração
+            short: Curto (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longo (> 10 min)
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
