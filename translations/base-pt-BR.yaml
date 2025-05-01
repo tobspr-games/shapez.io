@@ -366,7 +366,7 @@ ingame:
     notifications:
         newUpgrade: Nova melhoria disponível!
         gameSaved: Seu jogo foi salvo.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Level <level> foi concluído!
     shop:
         title: Melhorias
         buttonUnlock: Melhorar
@@ -486,11 +486,11 @@ ingame:
                 title: Conquistas
                 desc: Consiga todas elas!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Suporte para mods!
+                desc: Mais de 80 mods disponíveis!
+        titleV2: "Obtenha a versão completa agora na Steam para desbloquear:"
+        titleExpiredV2: Demo completa!
+        titleEnjoyingDemo: Gostou da demo?
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura
@@ -499,8 +499,8 @@ ingame:
         clearItems: Limpar Items
         share: Compartilhar
         report: Denunciar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Limpar Construções
+        resetPuzzle: Resetar Puzzle
     puzzleEditorControls:
         title: Criador de Desafios
         instructions:
@@ -523,11 +523,11 @@ ingame:
     puzzleCompletion:
         title: Desafio Completo!
         titleLike: "Clique no coração se você gostou do desafio:"
-        titleRating: O qual difícil foi esse desafio?
+        titleRating: O quão difícil foi esse desafio?
         titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
         continueBtn: Continuar jogando
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Próximo Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Código
@@ -1107,7 +1107,7 @@ settings:
                 construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Novo!
 keybindings:
     title: Controles
     hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
@@ -1121,7 +1121,7 @@ keybindings:
         massSelect: Seleção em Massa
         buildings: Construções
         placementModifiers: Modificadores
-        mods: Provided by Mods
+        mods: Fornecido por Mods
     mappings:
         confirm: Confirmar
         back: Voltar
@@ -1370,7 +1370,7 @@ backendErrors:
     timeout: Acabou o tempo do pedido.
     too-many-likes-already: The puzzle alreay got too many likes. If you still want
         to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    no-permission: Você não tem permissão para executar esta ação.
 mods:
     title: Mods
     author: Autor
