@@ -336,7 +336,7 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
-        clearBelts: Clear belts
+        clearBelts: Limpar itens
     colors:
         red: Vermelho
         green: Verde
@@ -357,7 +357,7 @@ ingame:
             oneItemPerSecond: 1 item / segundo
             itemsPerSecond: <x> itens / s
             itemsPerSecondDouble: (x2)
-            tiles: <x> tiles
+            tiles: <x> ladrilhos
     levelCompleteNotification:
         levelTitle: Nível <level>
         completed: Concluído
@@ -465,8 +465,8 @@ ingame:
         no_thanks: Não, obrigado!
         points:
             levels:
-                title: 12 Novos Níveis
-                desc: Para um total de 26 novos níveis!
+                title: 19 Novos Níveis
+                desc: Mais de 20 horas de conteúdo adicional!
             buildings:
                 title: 22 Novas Construções
                 desc: Automatize sua fábrica inteira!
@@ -483,7 +483,7 @@ ingame:
                 title: Me ajuda
                 desc: Eu desenvolvo o jogo no meu tempo livre!
             achievements:
-                title: Conquistas
+                title: 45 Conquistas
                 desc: Consiga todas elas!
             mods:
                 title: Suporte para mods!
@@ -496,7 +496,7 @@ ingame:
         zoneWidth: Largura
         zoneHeight: Altura
         trimZone: Cortar
-        clearItems: Limpar Items
+        clearItems: Limpar Itens
         share: Compartilhar
         report: Denunciar
         clearBuildings: Limpar Construções
@@ -936,7 +936,7 @@ settings:
         general: Geral
         userInterface: Interface de Usuário
         advanced: Avançado
-        performance: Performance
+        performance: Desempenho
     versionBadges:
         dev: Desenvolvedor
         staging: Teste
