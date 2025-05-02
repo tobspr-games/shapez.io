@@ -1303,11 +1303,11 @@ puzzleMenu:
         hard: Difícil
         completed: Completados
         medium: Médio
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
+        official: Oficial
+        trending: Tendências de Hoje
+        trending-weekly: Tendências da Semana
         categories: Categorias
-        difficulties: By Difficulty
+        difficulties: Por Dificuldade
         account: Meus Puzzles
         search: Procurar
     validation:
