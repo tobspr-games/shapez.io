@@ -293,28 +293,28 @@ dialogs:
         newMods: Mods Recém-instalados
     resourceLoadFailed:
         title: Falha ao carregar os recursos
-        demoLinkText: shapez demo na Steam
+        demoLinkText: Shapez demo na Steam
         descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de ter uma
-            conexão de internet estável e tente novamente. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+            conexão de internet estável e tente novamente. Se isso continuar não
+            funcionando, certifique-se de desabilitar também todas as extensões do navegador
+            (incluindo adblock).<br><br> Como alternativa, você também pode jogar o
+            <demoOnSteamLinkText>. <br><br> Mensagem de erro:"
+        descSteamDemo: "Um ou mais recursos não puderam ser carregados. Tente reiniciar o
+            jogo - Se isso não ajudar, tente reinstalar e verificar os
+            arquivos do jogo via Steam. <br><br> Mensagem de erro:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Desconectado da Versão Completa
+        desc: Você foi desconectado da versão completa do navegador porque sua
+            conexão de internet está instável ou você está jogando em outro
+            dispositivo.<br><br> Certifique-se de que o Shapez não esteja aberto em
+            nenhuma outra aba do navegador ou em outro computador com a mesma
+            conta Steam.<br><br> Você pode fazer login novamente no menu principal.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Edição Completa não possuída
+        desc: Para jogar a Edição Completa no seu navegador, você precisa ter
+            o jogo base e o DLC Puzzle na sua conta Steam.<br><br>
+            Certifique-se de que você possui ambos, esteja conectado com a conta
+            Steam correta e tente novamente.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
