@@ -1190,7 +1190,7 @@ keybindings:
         goal_acceptor: Receptor de Objetivo
         block: Bloco
         massSelectClear: Limpar esteiras
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Mostrar informação de saída de forma
 about:
     title: Sobre o jogo
     body: >-
@@ -1329,12 +1329,12 @@ puzzleMenu:
         medium: Médio
         hard: Difício
         unknown: Sem Classificação
-    dlcHint: Já comprou o DLC? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+    dlcHint: Já comprou o DLC? Certifique-se de que ele esteja ativado clicando com o botão direito
+        do mouse em shapez.io na sua biblioteca e Propriedades > DLCs.
     search:
         action: Pesquisar
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        placeholder: Digite um puzzle ou nome do autor
+        includeCompleted: Incluir completados
         difficulties:
             any: Qualquer Dificuldade
             easy: Fácil
@@ -1354,8 +1354,8 @@ backendErrors:
     bad-token: Falha ao comunicar com o backend, por favor tente atualizar/reiniciar
         o jogo (Bad Token).
     bad-id: Indentificador de desafio inválido.
-    not-found: O desafio não pôde ser achado.
-    bad-category: A categoria não pôde ser achada.
+    not-found: O desafio não pôde ser encontrado.
+    bad-category: A categoria não pôde ser encontrado.
     bad-short-key: O código é inválido.
     profane-title: O nome do seu desafio contém palavras proibidas.
     bad-title-too-many-spaces: O nome do seu desafio é muito curto.
@@ -1368,8 +1368,8 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
+    too-many-likes-already: O puzzle já recebeu muitas curtidas. Se você
+        ainda quiser removê-lo, entre em contato em support@shapez.io!
     no-permission: Você não tem permissão para executar esta ação.
 mods:
     title: Mods
@@ -1377,12 +1377,12 @@ mods:
     version: Versão
     modWebsite: Site
     openFolder: Abrir Pasta de Mods
-    folderOnlyStandalone: Abrir a pasta de mods só é possível em "standalone".
+    folderOnlyStandalone: Abrir a pasta de mods só é possível na versão completa.
     browseMods: Procurar Mods
     modsInfo: Para instalar e gerenciar mods, copie-os para a pasta "mods" dentro do
         diretório do jogo. Você também pode usar o botão "Abrir Pasta de Mods" no
         canto superior direito.
-    noModSupport: Você precisa da versão standalone na Steam para instalar mods.
+    noModSupport: Você precisa da versão completa na Steam para instalar mods.
     togglingComingSoon:
         title: Em Breve
         description: Ativar ou desativar mods atualmente só é possível copiando
