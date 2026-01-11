@@ -56,7 +56,7 @@ global:
     loggingIn: Logowanie
     loadingResources: Pobieranie dodatkowych zasobów (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: SPECIALNA PROMOCJA! Oferta kończy się 7 Lipca
 demoBanners:
     title: Wersja demonstracyjna
     intro: |-
@@ -102,9 +102,9 @@ mainMenu:
             wyłącz wszystkie mody, aby otworzyć DLC.
     playingFullVersion: You are now playing the full version!
     logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+    noActiveSavegames: nie znaleziono aktywnych zapisów - stwórz nowy aby grać!
+    playFullVersionV2: kupiłeś grę na steam? zagraj pełną wersję w przeglądarce!
+    playFullVersionStandalone: możesz teraz zagrać pełną wersje w swojej przeglądarce!
 dialogs:
     buttons:
         ok: Ok
@@ -118,9 +118,9 @@ dialogs:
         viewUpdate: Zobacz aktualizację
         showUpgrades: Pokaż ulepszenia
         showKeybindings: Pokaż Klawiszologię
-        retry: Retry
-        continue: Continue
-        playOffline: Play Offline
+        retry: Spróbuj ponownie
+        continue: Kontynuuj
+        playOffline: Graj Offline
     importSavegameError:
         title: Błąd importowania
         text: "Nie udało się zaimportować twojego zapisu gry:"
@@ -296,29 +296,29 @@ dialogs:
         missingMods: Missing Mods
         newMods: Ostatnio zainstalowane Mody
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
+        title: zasoby nie załadowały się poparwnie
+        demoLinkText: shapez demo na Steam
+        descWeb: "Jeden zasób nie załadował się. Upewnij się że masz
+            stabilne połączenie internetowe i spróbuj ponownie. Jeżeli to nie zadziałało,
+            spróbuj wyłączyć wtyczki przeglądarki (włącznie zadblockerami).
+            <br><br> Jako alternatywa, możesz też zagrać w
             <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        descSteamDemo: "jeden zasób nie załadował się. Spróbuj zrestartować
+            grę - Jeżeli to nie działa, spróbuj reinstalować i werifikować
+            pliki gry przez Steam. <br><br> Error Message:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Wylogowanie pełnej wersji
+        desc: Zostałeś wylogowany z pełnej wersji przeglądarkowej, albo twoje
+            połaczenie internetowe jest niestabline albo grasz na innym
+            urządzeniu.<br><br> Proszę upewnij się czy shapez nie jest otwarty na
+            innej kartcie internetowej albo na komputerze z tym samym kontem
+           Steam.<br><br> Możesz zalogować się ponownie w ekranie głównym.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Pełna wersja nie kupiona
+        desc: Aby zagrać pełną wersję gry przeglądarkowej, potrzebujesz obu
+            gry oraz DLC na swoim koncie Steam.<br><br>
+            Upewnij się że masz oba, jesteś zalogowany na poprawne konto
+            Steam i spróbuj ponownie.
 ingame:
     keybindingsOverlay:
         moveMap: Ruch
@@ -487,11 +487,11 @@ ingame:
                 title: Osiągnięcia
                 desc: Zbierz je wszystkie!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Modifikacje wspierane!
+                desc: Ponad 80 modifikacji dostępnych!
+        titleV2: "Zakup pełną wersje na Steam aby dostać:"
+        titleExpiredV2: Demo zakończone!
+        titleEnjoyingDemo: spodobało ci się demo?
     puzzleEditorSettings:
         zoneTitle: Obszar
         zoneWidth: Wysokość
