@@ -589,13 +589,13 @@ buildings:
     rotater:
         default:
             name: Obracacz
-            description: Obraca kształt zgodnie z ruchem wskazówek zegara o 90 stopni.
+            description: Obraca kształty zgodnie z ruchem wskazówek zegara o 90 stopni.
         ccw:
             name: Obracacz (Przeciwny kierunek)
-            description: Obraca kształt przeciwnie do ruchu wskazówek zegara o 90 stopni.
+            description: Obraca kształty przeciwnie do ruchu wskazówek zegara o 90 stopni.
         rotate180:
             name: Rotate (180)
-            description: Rotates shapes by 180 degrees.
+            description: Obraca kształty o 180 stopni.
     stacker:
         default:
             name: Sklejacz
@@ -880,7 +880,7 @@ storyRewards:
             użyteczny!
     reward_rotater_180:
         title: Obracacz (180°)
-        desc: Właśnie odblokowałeś kolejny wariant <strong>obrazacza</strong>! - Pozwala
+        desc: Właśnie odblokowałeś kolejny wariant <strong>obracacza</strong>! - Pozwala
             ci na obrócenie kształtu o 180 stopni!
     reward_display:
         title: Wyświetlacz
@@ -1175,7 +1175,7 @@ keybindings:
         comparator: Porównywacz
         item_producer: Producent Przedmiotów (Tryb Piaskownicy)
         copyWireValue: "Przewody: Skopiuj wartość pod kursorem"
-        rotateToUp: Obróć w góre
+        rotateToUp: Obróć w górę
         rotateToDown: Obróć w dół
         rotateToRight: Obróć w prawo
         rotateToLeft: Obróć w lewo
