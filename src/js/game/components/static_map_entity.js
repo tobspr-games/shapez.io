@@ -255,8 +255,15 @@ export class StaticMapEntityComponent extends Component {
      * @param {AtlasSprite} sprite
      * @param {number=} extrudePixels How many pixels to extrude the sprite
      * @param {Vector=} overridePosition Whether to drwa the entity at a different location
+     * @param {boolean=} extrude Whether to extrude
      */
-    drawSpriteOnBoundsClipped(parameters, sprite, extrudePixels = 0, overridePosition = null) {
+    drawSpriteOnBoundsClipped(
+        parameters,
+        sprite,
+        extrudePixels = 0,
+        overridePosition = null,
+        extrude = true
+    ) {
         if (!this.shouldBeDrawn(parameters) && !overridePosition) {
             return;
         }
@@ -276,7 +283,9 @@ export class StaticMapEntityComponent extends Component {
                 worldX - extrudePixels * size.x,
                 worldY - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
-                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y
+                globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
+                true,
+                extrude
             );
         } else {
             const rotationCenterX = worldX + globalConfig.halfTileSize;
@@ -290,7 +299,8 @@ export class StaticMapEntityComponent extends Component {
                 -globalConfig.halfTileSize - extrudePixels * size.y,
                 globalConfig.tileSize * size.x + 2 * extrudePixels * size.x,
                 globalConfig.tileSize * size.y + 2 * extrudePixels * size.y,
-                false // no clipping possible here
+                false, // no clipping possible here
+                extrude
             );
             parameters.context.rotate(-Math.radians(this.rotation));
             parameters.context.translate(-rotationCenterX, -rotationCenterY);
