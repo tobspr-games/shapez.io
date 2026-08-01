@@ -445,6 +445,15 @@ export class MainMenuState extends GameState {
             return;
         }
 
+        if (this.app.rlHeadless) {
+            const savegame = this.app.savegameMgr.createNewSavegame();
+            this.moveToState("InGameState", {
+                savegame,
+                fastEnter: true,
+            });
+            return;
+        }
+
         if (G_IS_DEV && globalConfig.debug.fastGameEnter) {
             const games = this.app.savegameMgr.getSavegamesMetaData();
             if (games.length > 0 && globalConfig.debug.resumeGameOnFastEnter) {

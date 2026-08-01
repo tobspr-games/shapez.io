@@ -9,18 +9,32 @@ const steam = require("./steam");
 const asyncLock = require("async-lock");
 const windowStateKeeper = require("electron-window-state");
 
-// Disable hardware key handling, i.e. being able to pause/resume the game music
-// with hardware keys
-app.commandLine.appendSwitch("disable-features", "HardwareMediaKeyHandling");
-
 const isDev = app.commandLine.hasSwitch("dev");
 const isLocal = app.commandLine.hasSwitch("local");
 const safeMode = app.commandLine.hasSwitch("safe-mode");
 const externalMod = app.commandLine.getSwitchValue("load-mod");
 const rlApiEnabled = app.commandLine.hasSwitch("rl-api") || process.env.SHAPEZ_RL_API === "1";
+const rlHeadlessEnabled =
+    app.commandLine.hasSwitch("rl-headless") || process.env.SHAPEZ_RL_HEADLESS === "1";
 const rlApiPort = Number(
     app.commandLine.getSwitchValue("rl-api-port") || process.env.SHAPEZ_RL_API_PORT || 17872
 );
+const localUrl =
+    app.commandLine.getSwitchValue("local-url") || process.env.SHAPEZ_LOCAL_URL || "http://localhost:3005";
+const rlUserDataDir =
+    app.commandLine.getSwitchValue("rl-user-data-dir") || process.env.SHAPEZ_RL_USER_DATA_DIR;
+
+// Disable hardware key handling, i.e. being able to pause/resume the game music
+// with hardware keys
+app.commandLine.appendSwitch("disable-features", "HardwareMediaKeyHandling");
+
+if (rlHeadlessEnabled) {
+    if (rlUserDataDir) {
+        app.setPath("userData", rlUserDataDir);
+    }
+    app.commandLine.appendSwitch("disable-gpu");
+    app.commandLine.appendSwitch("mute-audio");
+}
 
 const roamingFolder =
     process.env.APPDATA ||
@@ -55,7 +69,34 @@ function writeJsonResponse(res, statusCode, payload) {
     res.end(JSON.stringify(payload));
 }
 
-function requestRlGameStateFromRenderer() {
+function readRequestBody(req) {
+    return new Promise((resolve, reject) => {
+        let body = "";
+        req.setEncoding("utf8");
+        req.on("data", chunk => {
+            body += chunk;
+            if (body.length > 1024) {
+                reject(new Error("request-too-large"));
+            }
+        });
+        req.on("end", () => resolve(body));
+        req.on("error", reject);
+    });
+}
+
+async function readJsonRequestBody(req) {
+    const body = await readRequestBody(req);
+    if (!body.trim()) {
+        return {};
+    }
+    try {
+        return JSON.parse(body);
+    } catch (ex) {
+        throw new Error("bad-json");
+    }
+}
+
+function requestRlRenderer(channel, payload = {}) {
     return new Promise((resolve, reject) => {
         if (!win || win.isDestroyed()) {
             reject(new Error("window-not-ready"));
@@ -69,8 +110,36 @@ function requestRlGameStateFromRenderer() {
         }, 5000);
 
         rlPendingRequests.set(requestId, { resolve, reject, timeout });
-        win.webContents.send("rl:get-game-state", requestId);
+        win.webContents.send(channel, {
+            ...payload,
+            requestId,
+        });
     });
+}
+
+function requestRlGameStateFromRenderer() {
+    return requestRlRenderer("rl:get-game-state");
+}
+
+function requestRlTickFromRenderer(ticks) {
+    return requestRlRenderer("rl:tick", { ticks });
+}
+
+function sendRlRendererResult(res, result) {
+    if (!result.ok) {
+        writeJsonResponse(res, result.status || 503, { error: result.error || "not-ready" });
+        return;
+    }
+    writeJsonResponse(res, 200, result.body);
+}
+
+function withHeadlessQuery(targetUrl) {
+    if (!rlHeadlessEnabled) {
+        return targetUrl;
+    }
+    const parsedUrl = new URL(targetUrl);
+    parsedUrl.searchParams.set("rl-headless", "1");
+    return parsedUrl.toString();
 }
 
 function startRlApiServer() {
@@ -81,25 +150,41 @@ function startRlApiServer() {
     rlServer = http.createServer(async (req, res) => {
         const requestUrl = new URL(req.url, "http://127.0.0.1");
 
-        if (req.method !== "GET" || requestUrl.pathname !== "/rl/gamestate") {
-            writeJsonResponse(res, 404, { error: "not-found" });
-            return;
-        }
-
         try {
-            const result = await requestRlGameStateFromRenderer();
-            if (!result.ok) {
-                writeJsonResponse(res, result.status || 503, { error: result.error || "not-ready" });
+            if (requestUrl.pathname === "/rl/gamestate") {
+                if (req.method !== "GET") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+                sendRlRendererResult(res, await requestRlGameStateFromRenderer());
                 return;
             }
-            writeJsonResponse(res, 200, result.body);
+
+            if (requestUrl.pathname === "/rl/tick") {
+                if (req.method !== "POST") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                const body = await readJsonRequestBody(req);
+                const ticks = body.ticks === undefined ? 1 : body.ticks;
+                if (!Number.isInteger(ticks) || ticks < 0 || ticks > 100000) {
+                    writeJsonResponse(res, 400, { error: "ticks-must-be-integer-0-to-100000" });
+                    return;
+                }
+
+                sendRlRendererResult(res, await requestRlTickFromRenderer(ticks));
+                return;
+            }
+
+            writeJsonResponse(res, 404, { error: "not-found" });
         } catch (ex) {
             writeJsonResponse(res, 503, { error: ex.message || "rl-api-failed" });
         }
     });
 
     rlServer.listen(rlApiPort, "127.0.0.1", () => {
-        console.log("RL API listening at http://127.0.0.1:" + rlApiPort + "/rl/gamestate");
+        console.log("RL API listening at http://127.0.0.1:" + rlApiPort);
     });
 }
 
@@ -139,6 +224,7 @@ function createWindow() {
 
             webSecurity: true,
             sandbox: true,
+            backgroundThrottling: !rlHeadlessEnabled,
             preload: path.join(__dirname, "preload.js"),
             experimentalFeatures: false,
         },
@@ -148,13 +234,14 @@ function createWindow() {
     mainWindowState.manage(win);
 
     if (isLocal) {
-        win.loadURL("http://localhost:3005");
+        win.loadURL(withHeadlessQuery(localUrl));
     } else {
         win.loadURL(
             url.format({
                 pathname: path.join(__dirname, "index.html"),
                 protocol: "file:",
                 slashes: true,
+                query: rlHeadlessEnabled ? { "rl-headless": "1" } : undefined,
             })
         );
     }
@@ -234,7 +321,9 @@ function createWindow() {
     if (isDev) {
         menu = new Menu();
 
-        win.webContents.toggleDevTools();
+        if (!rlHeadlessEnabled) {
+            win.webContents.toggleDevTools();
+        }
 
         const mainItem = new MenuItem({
             label: "Toggle Dev Tools",
@@ -271,14 +360,16 @@ function createWindow() {
     }
 
     win.once("ready-to-show", () => {
-        win.show();
-        win.focus();
+        if (!rlHeadlessEnabled) {
+            win.show();
+            win.focus();
+        }
     });
 }
 
-if (!app.requestSingleInstanceLock()) {
+if (!rlHeadlessEnabled && !app.requestSingleInstanceLock()) {
     app.exit(0);
-} else {
+} else if (!rlHeadlessEnabled) {
     app.on("second-instance", () => {
         // Someone tried to run a second instance, we should focus
         if (win) {
@@ -301,7 +392,7 @@ app.on("window-all-closed", () => {
     app.quit();
 });
 
-ipcMain.on("rl:game-state-response", (event, payload) => {
+function handleRlRendererResponse(event, payload) {
     if (!win || event.sender !== win.webContents || !payload || !payload.requestId) {
         return;
     }
@@ -314,7 +405,10 @@ ipcMain.on("rl:game-state-response", (event, payload) => {
     clearTimeout(pending.timeout);
     rlPendingRequests.delete(payload.requestId);
     pending.resolve(payload);
-});
+}
+
+ipcMain.on("rl:game-state-response", handleRlRendererResponse);
+ipcMain.on("rl:tick-response", handleRlRendererResponse);
 
 ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);

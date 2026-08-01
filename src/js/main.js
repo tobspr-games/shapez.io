@@ -61,8 +61,8 @@ let app = null;
 function bootApp() {
     logger.log("Page Loaded");
     app = new Application();
-    app.boot();
     initializeRLEndpoint(app);
+    app.boot();
 }
 
 if (G_IS_STANDALONE) {

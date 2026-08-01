@@ -190,6 +190,9 @@
                 const fs = require("fs");
                 const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
                 delete pkg.optionalDependencies;
+                if (pkg.dependencies) {
+                  delete pkg.dependencies.electron;
+                }
                 fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
               '
               cp ${electronPublicYarnLock} yarn.lock
@@ -262,9 +265,12 @@
           rl = pkgs.writeShellScriptBin "shapez-rl" ''
             set -euo pipefail
 
+            web_port="''${SHAPEZ_WEB_PORT:-3005}"
+            web_url="http://127.0.0.1:$web_port"
             rl_port="''${SHAPEZ_RL_API_PORT:-17872}"
+            rl_user_data_dir="''${SHAPEZ_RL_USER_DATA_DIR:-''${TMPDIR:-/tmp}/shapez-rl-electron-$rl_port}"
 
-            ${pkgs.python3}/bin/python3 -m http.server 3005 --bind 127.0.0.1 --directory ${self.packages.${system}.default}/share/shapez.io &
+            ${pkgs.python3}/bin/python3 -m http.server "$web_port" --bind 127.0.0.1 --directory ${self.packages.${system}.default}/share/shapez.io &
             web_pid="$!"
 
             cleanup() {
@@ -273,25 +279,36 @@
             trap cleanup EXIT INT TERM
 
             for _ in $(${pkgs.coreutils}/bin/seq 1 50); do
-              if ${pkgs.curl}/bin/curl -fsS http://127.0.0.1:3005/ >/dev/null 2>&1; then
+              if ! kill -0 "$web_pid" >/dev/null 2>&1; then
+                wait "$web_pid"
+                exit 1
+              fi
+              if ${pkgs.curl}/bin/curl -fsS "$web_url/" >/dev/null 2>&1; then
                 break
               fi
               ${pkgs.coreutils}/bin/sleep 0.1
             done
 
-            echo "shapez web server: http://127.0.0.1:3005"
+            echo "shapez web server: $web_url"
             echo "shapez RL API: http://127.0.0.1:$rl_port/rl/gamestate"
+            echo "shapez RL tick API: http://127.0.0.1:$rl_port/rl/tick"
 
             export SHAPEZ_RL_API=1
+            export SHAPEZ_RL_HEADLESS=1
             export SHAPEZ_RL_API_PORT="$rl_port"
+            export SHAPEZ_LOCAL_URL="$web_url"
+            export SHAPEZ_RL_USER_DATA_DIR="$rl_user_data_dir"
+            mkdir -p "$rl_user_data_dir"
+            unset ELECTRON_RUN_AS_NODE
 
             set +e
             ${pkgs.electron_16}/bin/electron \
-              --disable-direct-composition \
-              --in-process-gpu \
               ${self.packages.${system}.electronApp}/app \
               --dev \
               --local \
+              --local-url "$web_url" \
+              --rl-user-data-dir "$rl_user_data_dir" \
+              --rl-headless \
               "$@"
             status="$?"
             set -e

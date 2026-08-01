@@ -335,6 +335,12 @@ export class InGameState extends GameState {
      */
     stage7Warmup() {
         if (this.switchStage(GAME_LOADING_STATES.s7_warmup)) {
+            if (this.app.rlHeadless) {
+                this.warmupTimeSeconds = 0;
+                this.stage10GameRunning();
+                return;
+            }
+
             if (this.creationPayload.fastEnter) {
                 this.warmupTimeSeconds = globalConfig.warmupTimeSecondsFast;
             } else {
@@ -433,8 +439,12 @@ export class InGameState extends GameState {
             return;
         }
 
+        const isHeadless = this.app.rlHeadless === true;
+
         if (this.stage === GAME_LOADING_STATES.s7_warmup) {
-            this.core.draw();
+            if (!isHeadless) {
+                this.core.draw();
+            }
             this.warmupTimeSeconds -= dt / 1000.0;
             if (this.warmupTimeSeconds < 0) {
                 logger.log("Warmup completed");
@@ -442,14 +452,14 @@ export class InGameState extends GameState {
             }
         }
 
-        if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
+        if (this.stage === GAME_LOADING_STATES.s10_gameRunning && !isHeadless) {
             this.core.tick(dt);
         }
 
         // If the stage is still active (This might not be the case if tick() moved us to game over)
         if (this.stage === GAME_LOADING_STATES.s10_gameRunning) {
             // Only draw if page visible
-            if (this.app.pageVisible) {
+            if (this.app.pageVisible && !isHeadless) {
                 this.core.draw();
             }
 
