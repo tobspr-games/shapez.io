@@ -1,4 +1,5 @@
 import { createLogger } from "../core/logging";
+import { StaticMapEntityComponent } from "../game/components/static_map_entity";
 import { GAME_LOADING_STATES, InGameState } from "../states/ingame";
 
 const logger = createLogger("rl/endpoint");
@@ -19,10 +20,52 @@ function getRunningGameState(app) {
 }
 
 /**
+ * @param {import("../application").Application} app
+ * @returns {{ state: InGameState, error: null } | { state: null, error: { status: number, error: string } }}
+ */
+function getHeadlessRunningGameState(app) {
+    if (!app.rlHeadless) {
+        return {
+            state: null,
+            error: {
+                status: 409,
+                error: "not-headless",
+            },
+        };
+    }
+
+    const state = getRunningGameState(app);
+    if (!state) {
+        return {
+            state: null,
+            error: {
+                status: 409,
+                error: "game-not-running",
+            },
+        };
+    }
+
+    return {
+        state,
+        error: null,
+    };
+}
+
+function sendRlError(ipc, responseChannel, requestId, error) {
+    ipc.send(responseChannel, {
+        requestId,
+        ok: false,
+        status: error.status,
+        error: error.error,
+    });
+}
+
+/**
  * @param {InGameState} state
  * @param {number=} ticksRun
+ * @param {object=} extra
  */
-function serializeGameState(state, ticksRun = 0) {
+function serializeGameState(state, ticksRun = 0, extra = {}) {
     const root = state.core.root;
     const updateResult = state.savegame.updateData(root);
     if (updateResult === false) {
@@ -39,6 +82,7 @@ function serializeGameState(state, ticksRun = 0) {
             state: state.stage,
             gameTime: root.time.now(),
             ticksRun,
+            ...extra,
             savegame: state.savegame.currentData,
         },
     };
@@ -99,27 +143,13 @@ export function initializeRLEndpoint(app) {
     ipc.on("rl:tick", (_event, payload) => {
         const requestId = payload && payload.requestId;
         try {
-            if (!app.rlHeadless) {
-                ipc.send("rl:tick-response", {
-                    requestId,
-                    ok: false,
-                    status: 409,
-                    error: "not-headless",
-                });
+            const runningGame = getHeadlessRunningGameState(app);
+            if (runningGame.error) {
+                sendRlError(ipc, "rl:tick-response", requestId, runningGame.error);
                 return;
             }
 
-            const state = getRunningGameState(app);
-            if (!state) {
-                ipc.send("rl:tick-response", {
-                    requestId,
-                    ok: false,
-                    status: 409,
-                    error: "game-not-running",
-                });
-                return;
-            }
-
+            const state = runningGame.state;
             const ticks = payload && payload.ticks;
             const root = state.core.root;
             let ticksRun = 0;
@@ -153,6 +183,62 @@ export function initializeRLEndpoint(app) {
         } catch (ex) {
             logger.warn("Failed to tick RL game state:", ex);
             ipc.send("rl:tick-response", {
+                requestId,
+                ok: false,
+                status: 500,
+                error: "exception",
+            });
+        }
+    });
+
+    ipc.on("rl:destroy-removable-buildings", (_event, payload) => {
+        const requestId = payload && payload.requestId;
+        try {
+            const runningGame = getHeadlessRunningGameState(app);
+            if (runningGame.error) {
+                sendRlError(
+                    ipc,
+                    "rl:destroy-removable-buildings-response",
+                    requestId,
+                    runningGame.error
+                );
+                return;
+            }
+
+            const state = runningGame.state;
+            const root = state.core.root;
+            const staticEntities = Array.from(
+                root.entityMgr.getAllWithComponent(StaticMapEntityComponent)
+            ).filter(entity => !entity.destroyed && !entity.queuedForDestroy);
+            const removableEntities = staticEntities.filter(entity => root.logic.canDeleteBuilding(entity));
+            let destroyed = 0;
+            let skipped = 0;
+
+            root.logic.performBulkOperation(() => {
+                for (const entity of removableEntities) {
+                    if (root.logic.tryDeleteBuilding(entity)) {
+                        ++destroyed;
+                    } else {
+                        ++skipped;
+                    }
+                }
+            });
+
+            root.productionAnalytics.update();
+            root.achievementProxy.update();
+            root.automaticSave.update();
+
+            ipc.send("rl:destroy-removable-buildings-response", {
+                requestId,
+                ...serializeGameState(state, 0, {
+                    destroyed,
+                    skipped,
+                    remainingNonRemovable: staticEntities.length - removableEntities.length,
+                }),
+            });
+        } catch (ex) {
+            logger.warn("Failed to destroy RL removable buildings:", ex);
+            ipc.send("rl:destroy-removable-buildings-response", {
                 requestId,
                 ok: false,
                 status: 500,

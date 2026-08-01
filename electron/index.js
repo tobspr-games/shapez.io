@@ -125,6 +125,10 @@ function requestRlTickFromRenderer(ticks) {
     return requestRlRenderer("rl:tick", { ticks });
 }
 
+function requestRlDestroyRemovableBuildingsFromRenderer() {
+    return requestRlRenderer("rl:destroy-removable-buildings");
+}
+
 function sendRlRendererResult(res, result) {
     if (!result.ok) {
         writeJsonResponse(res, result.status || 503, { error: result.error || "not-ready" });
@@ -174,6 +178,16 @@ function startRlApiServer() {
                 }
 
                 sendRlRendererResult(res, await requestRlTickFromRenderer(ticks));
+                return;
+            }
+
+            if (requestUrl.pathname === "/rl/destroy-removable-buildings") {
+                if (req.method !== "POST") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                sendRlRendererResult(res, await requestRlDestroyRemovableBuildingsFromRenderer());
                 return;
             }
 
@@ -409,6 +423,7 @@ function handleRlRendererResponse(event, payload) {
 
 ipcMain.on("rl:game-state-response", handleRlRendererResponse);
 ipcMain.on("rl:tick-response", handleRlRendererResponse);
+ipcMain.on("rl:destroy-removable-buildings-response", handleRlRendererResponse);
 
 ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);
