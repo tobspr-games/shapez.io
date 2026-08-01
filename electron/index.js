@@ -4,6 +4,7 @@ const { app, BrowserWindow, Menu, MenuItem, ipcMain, shell, dialog, session } = 
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
+const http = require("http");
 const steam = require("./steam");
 const asyncLock = require("async-lock");
 const windowStateKeeper = require("electron-window-state");
@@ -16,6 +17,10 @@ const isDev = app.commandLine.hasSwitch("dev");
 const isLocal = app.commandLine.hasSwitch("local");
 const safeMode = app.commandLine.hasSwitch("safe-mode");
 const externalMod = app.commandLine.getSwitchValue("load-mod");
+const rlApiEnabled = app.commandLine.hasSwitch("rl-api") || process.env.SHAPEZ_RL_API === "1";
+const rlApiPort = Number(
+    app.commandLine.getSwitchValue("rl-api-port") || process.env.SHAPEZ_RL_API_PORT || 17872
+);
 
 const roamingFolder =
     process.env.APPDATA ||
@@ -38,6 +43,65 @@ if (!fs.existsSync(modsPath)) {
 /** @type {BrowserWindow} */
 let win = null;
 let menu = null;
+let rlServer = null;
+let rlRequestCounter = 1;
+const rlPendingRequests = new Map();
+
+function writeJsonResponse(res, statusCode, payload) {
+    res.writeHead(statusCode, {
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store",
+    });
+    res.end(JSON.stringify(payload));
+}
+
+function requestRlGameStateFromRenderer() {
+    return new Promise((resolve, reject) => {
+        if (!win || win.isDestroyed()) {
+            reject(new Error("window-not-ready"));
+            return;
+        }
+
+        const requestId = String(rlRequestCounter++);
+        const timeout = setTimeout(() => {
+            rlPendingRequests.delete(requestId);
+            reject(new Error("renderer-timeout"));
+        }, 5000);
+
+        rlPendingRequests.set(requestId, { resolve, reject, timeout });
+        win.webContents.send("rl:get-game-state", requestId);
+    });
+}
+
+function startRlApiServer() {
+    if (!rlApiEnabled || rlServer) {
+        return;
+    }
+
+    rlServer = http.createServer(async (req, res) => {
+        const requestUrl = new URL(req.url, "http://127.0.0.1");
+
+        if (req.method !== "GET" || requestUrl.pathname !== "/rl/gamestate") {
+            writeJsonResponse(res, 404, { error: "not-found" });
+            return;
+        }
+
+        try {
+            const result = await requestRlGameStateFromRenderer();
+            if (!result.ok) {
+                writeJsonResponse(res, result.status || 503, { error: result.error || "not-ready" });
+                return;
+            }
+            writeJsonResponse(res, 200, result.body);
+        } catch (ex) {
+            writeJsonResponse(res, 503, { error: ex.message || "rl-api-failed" });
+        }
+    });
+
+    rlServer.listen(rlApiPort, "127.0.0.1", () => {
+        console.log("RL API listening at http://127.0.0.1:" + rlApiPort + "/rl/gamestate");
+    });
+}
 
 function createWindow() {
     let faviconExtension = ".png";
@@ -165,6 +229,8 @@ function createWindow() {
         win = null;
     });
 
+    startRlApiServer();
+
     if (isDev) {
         menu = new Menu();
 
@@ -228,7 +294,26 @@ app.on("ready", createWindow);
 
 app.on("window-all-closed", () => {
     console.log("All windows closed");
+    if (rlServer) {
+        rlServer.close();
+        rlServer = null;
+    }
     app.quit();
+});
+
+ipcMain.on("rl:game-state-response", (event, payload) => {
+    if (!win || event.sender !== win.webContents || !payload || !payload.requestId) {
+        return;
+    }
+
+    const pending = rlPendingRequests.get(payload.requestId);
+    if (!pending) {
+        return;
+    }
+
+    clearTimeout(pending.timeout);
+    rlPendingRequests.delete(payload.requestId);
+    pending.resolve(payload);
 });
 
 ipcMain.on("set-fullscreen", (event, flag) => {

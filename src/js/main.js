@@ -12,6 +12,7 @@ import { initItemRegistry } from "./game/item_registry";
 import { initMetaBuildingRegistry } from "./game/meta_building_registry";
 import { initGameModeRegistry } from "./game/game_mode_registry";
 import { initGameSpeedRegistry } from "./game/game_speed_registry";
+import { initializeRLEndpoint } from "./rl/rl_endpoint";
 
 const logger = createLogger("main");
 
@@ -61,6 +62,7 @@ function bootApp() {
     logger.log("Page Loaded");
     app = new Application();
     app.boot();
+    initializeRLEndpoint(app);
 }
 
 if (G_IS_STANDALONE) {
