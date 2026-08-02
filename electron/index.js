@@ -121,6 +121,10 @@ function requestRlGameStateFromRenderer() {
     return requestRlRenderer("rl:get-game-state");
 }
 
+function requestRlMapFromRenderer(bounds) {
+    return requestRlRenderer("rl:get-map", { bounds });
+}
+
 function requestRlTickFromRenderer(ticks) {
     return requestRlRenderer("rl:tick", { ticks });
 }
@@ -129,12 +133,28 @@ function requestRlDestroyRemovableBuildingsFromRenderer() {
     return requestRlRenderer("rl:destroy-removable-buildings");
 }
 
+function requestRlPlaceBuildingFromRenderer(building) {
+    return requestRlRenderer("rl:place-building", { building });
+}
+
 function sendRlRendererResult(res, result) {
     if (!result.ok) {
         writeJsonResponse(res, result.status || 503, { error: result.error || "not-ready" });
         return;
     }
     writeJsonResponse(res, 200, result.body);
+}
+
+function parseIntegerQueryParam(searchParams, name, defaultValue) {
+    const value = searchParams.get(name);
+    if (value === null) {
+        return defaultValue;
+    }
+    if (!/^-?\d+$/.test(value)) {
+        return null;
+    }
+    const parsed = Number(value);
+    return Number.isSafeInteger(parsed) ? parsed : null;
 }
 
 function withHeadlessQuery(targetUrl) {
@@ -164,6 +184,36 @@ function startRlApiServer() {
                 return;
             }
 
+            if (requestUrl.pathname === "/rl/map") {
+                if (req.method !== "GET") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                const bounds = {
+                    x: parseIntegerQueryParam(requestUrl.searchParams, "x", -16),
+                    y: parseIntegerQueryParam(requestUrl.searchParams, "y", -16),
+                    w: parseIntegerQueryParam(requestUrl.searchParams, "w", 32),
+                    h: parseIntegerQueryParam(requestUrl.searchParams, "h", 32),
+                };
+                if (
+                    bounds.x === null ||
+                    bounds.y === null ||
+                    bounds.w === null ||
+                    bounds.h === null ||
+                    bounds.w <= 0 ||
+                    bounds.h <= 0
+                ) {
+                    writeJsonResponse(res, 400, {
+                        error: "map-bounds-must-be-safe-integers-with-positive-size",
+                    });
+                    return;
+                }
+
+                sendRlRendererResult(res, await requestRlMapFromRenderer(bounds));
+                return;
+            }
+
             if (requestUrl.pathname === "/rl/tick") {
                 if (req.method !== "POST") {
                     writeJsonResponse(res, 405, { error: "method-not-allowed" });
@@ -178,6 +228,17 @@ function startRlApiServer() {
                 }
 
                 sendRlRendererResult(res, await requestRlTickFromRenderer(ticks));
+                return;
+            }
+
+            if (requestUrl.pathname === "/rl/building") {
+                if (req.method !== "POST") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                const body = await readJsonRequestBody(req);
+                sendRlRendererResult(res, await requestRlPlaceBuildingFromRenderer(body));
                 return;
             }
 
@@ -422,8 +483,10 @@ function handleRlRendererResponse(event, payload) {
 }
 
 ipcMain.on("rl:game-state-response", handleRlRendererResponse);
+ipcMain.on("rl:map-response", handleRlRendererResponse);
 ipcMain.on("rl:tick-response", handleRlRendererResponse);
 ipcMain.on("rl:destroy-removable-buildings-response", handleRlRendererResponse);
+ipcMain.on("rl:place-building-response", handleRlRendererResponse);
 
 ipcMain.on("set-fullscreen", (event, flag) => {
     win.setFullScreen(flag);

@@ -1,8 +1,12 @@
 import { createLogger } from "../core/logging";
+import { gMetaBuildingRegistry } from "../core/global_registries";
+import { Vector } from "../core/vector";
 import { StaticMapEntityComponent } from "../game/components/static_map_entity";
+import { defaultBuildingVariant } from "../game/meta_building";
 import { GAME_LOADING_STATES, InGameState } from "../states/ingame";
 
 const logger = createLogger("rl/endpoint");
+const validBuildingRotations = [0, 90, 180, 270];
 
 /**
  * @param {import("../application").Application} app
@@ -58,6 +62,117 @@ function sendRlError(ipc, responseChannel, requestId, error) {
         status: error.status,
         error: error.error,
     });
+}
+
+function getVariantCombinations(building) {
+    return building.constructor.getAllVariantCombinations().map(combination => ({
+        variant: combination.variant || defaultBuildingVariant,
+        rotationVariant: combination.rotationVariant || 0,
+    }));
+}
+
+function isValidVariantCombination(building, variant, rotationVariant) {
+    return getVariantCombinations(building).some(
+        combination =>
+            combination.variant === variant && combination.rotationVariant === rotationVariant
+    );
+}
+
+function isValidMapBounds(bounds) {
+    return (
+        bounds &&
+        Number.isSafeInteger(bounds.x) &&
+        Number.isSafeInteger(bounds.y) &&
+        Number.isSafeInteger(bounds.w) &&
+        Number.isSafeInteger(bounds.h) &&
+        bounds.w > 0 &&
+        bounds.h > 0
+    );
+}
+
+function serializeMapEntity(entity) {
+    const staticComp = entity.components.StaticMapEntity;
+    const tileSize = staticComp.getTileSize();
+    const bounds = staticComp.getTileSpaceBounds();
+
+    return {
+        uid: entity.uid,
+        layer: entity.layer,
+        id: staticComp.getMetaBuilding().getId(),
+        code: staticComp.code,
+        x: staticComp.origin.x,
+        y: staticComp.origin.y,
+        rotation: staticComp.rotation,
+        originalRotation: staticComp.originalRotation,
+        variant: staticComp.getVariant(),
+        rotationVariant: staticComp.getRotationVariant(),
+        tileSize: {
+            x: tileSize.x,
+            y: tileSize.y,
+        },
+        bounds: {
+            x: bounds.x,
+            y: bounds.y,
+            w: bounds.w,
+            h: bounds.h,
+        },
+    };
+}
+
+/**
+ * @param {InGameState} state
+ * @param {{ x: number, y: number, w: number, h: number }} bounds
+ */
+function serializeMapWindow(state, bounds) {
+    const root = state.core.root;
+    const resources = [];
+    const buildings = [];
+    const seenEntityUids = new Set();
+    const endX = bounds.x + bounds.w;
+    const endY = bounds.y + bounds.h;
+
+    for (let x = bounds.x; x < endX; ++x) {
+        for (let y = bounds.y; y < endY; ++y) {
+            const resource = root.map.getLowerLayerContentXY(x, y);
+            if (resource) {
+                resources.push({
+                    x,
+                    y,
+                    type: resource.getItemType(),
+                    key: resource.getAsCopyableKey(),
+                });
+            }
+
+            const entities = root.map.getLayersContentsMultipleXY(x, y);
+            for (let i = 0; i < entities.length; ++i) {
+                const entity = entities[i];
+                if (
+                    !entity ||
+                    !entity.components.StaticMapEntity ||
+                    entity.destroyed ||
+                    entity.queuedForDestroy ||
+                    seenEntityUids.has(entity.uid)
+                ) {
+                    continue;
+                }
+
+                seenEntityUids.add(entity.uid);
+                buildings.push(serializeMapEntity(entity));
+            }
+        }
+    }
+
+    return {
+        ok: true,
+        body: {
+            state: state.stage,
+            gameTime: root.time.now(),
+            mapSeed: root.map.seed,
+            bounds,
+            resources,
+            buildings,
+        },
+    };
 }
 
 /**
@@ -140,6 +255,39 @@ export function initializeRLEndpoint(app) {
         }
     });
 
+    ipc.on("rl:get-map", (_event, payload) => {
+        const requestId = payload && payload.requestId;
+        try {
+            const runningGame = getHeadlessRunningGameState(app);
+            if (runningGame.error) {
+                sendRlError(ipc, "rl:map-response", requestId, runningGame.error);
+                return;
+            }
+
+            const bounds = payload && payload.bounds;
+            if (!isValidMapBounds(bounds)) {
+                sendRlError(ipc, "rl:map-response", requestId, {
+                    status: 400,
+                    error: "invalid-map-bounds",
+                });
+                return;
+            }
+
+            ipc.send("rl:map-response", {
+                requestId,
+                ...serializeMapWindow(runningGame.state, bounds),
+            });
+        } catch (ex) {
+            logger.warn("Failed to serialize RL map:", ex);
+            ipc.send("rl:map-response", {
+                requestId,
+                ok: false,
+                status: 500,
+                error: "exception",
+            });
+        }
+    });
+
     ipc.on("rl:tick", (_event, payload) => {
         const requestId = payload && payload.requestId;
         try {
@@ -183,6 +331,150 @@ export function initializeRLEndpoint(app) {
         } catch (ex) {
             logger.warn("Failed to tick RL game state:", ex);
             ipc.send("rl:tick-response", {
+                requestId,
+                ok: false,
+                status: 500,
+                error: "exception",
+            });
+        }
+    });
+
+    ipc.on("rl:place-building", (_event, payload) => {
+        const requestId = payload && payload.requestId;
+        try {
+            const runningGame = getHeadlessRunningGameState(app);
+            if (runningGame.error) {
+                sendRlError(ipc, "rl:place-building-response", requestId, runningGame.error);
+                return;
+            }
+
+            const state = runningGame.state;
+            const root = state.core.root;
+            const buildingPayload = payload && payload.building;
+            const id = buildingPayload && buildingPayload.id;
+            if (typeof id !== "string" || !gMetaBuildingRegistry.hasId(id)) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 400,
+                    error: "invalid-building-id",
+                });
+                return;
+            }
+
+            const building = gMetaBuildingRegistry.findById(id);
+            if (root.gameMode.isBuildingExcluded(building.constructor)) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 403,
+                    error: "building-excluded",
+                });
+                return;
+            }
+            if (!building.getIsUnlocked(root)) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 403,
+                    error: "building-locked",
+                });
+                return;
+            }
+
+            const x = buildingPayload && buildingPayload.x;
+            const y = buildingPayload && buildingPayload.y;
+            if (!Number.isInteger(x) || !Number.isInteger(y)) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 400,
+                    error: "invalid-tile",
+                });
+                return;
+            }
+
+            const rotation = buildingPayload.rotation === undefined ? 0 : buildingPayload.rotation;
+            if (!validBuildingRotations.includes(rotation)) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 400,
+                    error: "invalid-rotation",
+                });
+                return;
+            }
+
+            const variant = buildingPayload.variant || defaultBuildingVariant;
+            if (
+                typeof variant !== "string" ||
+                !building.getAvailableVariants(root).includes(variant)
+            ) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 400,
+                    error: "invalid-variant",
+                });
+                return;
+            }
+
+            const origin = new Vector(x, y);
+            const requestedRotationVariant = buildingPayload.rotationVariant;
+            let placementRotation = rotation;
+            let rotationVariant = requestedRotationVariant;
+            if (requestedRotationVariant === undefined || requestedRotationVariant === null) {
+                const computed = building.computeOptimalDirectionAndRotationVariantAtTile({
+                    root,
+                    tile: origin,
+                    rotation,
+                    variant,
+                    layer: building.getLayer(),
+                });
+                placementRotation = computed.rotation;
+                rotationVariant = computed.rotationVariant;
+            }
+
+            if (
+                !Number.isInteger(rotationVariant) ||
+                !validBuildingRotations.includes(placementRotation) ||
+                !isValidVariantCombination(building, variant, rotationVariant)
+            ) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 400,
+                    error: "invalid-rotation-variant",
+                });
+                return;
+            }
+
+            const entity = root.logic.tryPlaceBuilding({
+                origin,
+                rotation: placementRotation,
+                rotationVariant,
+                originalRotation: rotation,
+                building,
+                variant,
+            });
+            if (!entity) {
+                sendRlError(ipc, "rl:place-building-response", requestId, {
+                    status: 409,
+                    error: "placement-blocked",
+                });
+                return;
+            }
+
+            root.signals.entityManuallyPlaced.dispatch(entity);
+            root.productionAnalytics.update();
+            root.achievementProxy.update();
+            root.automaticSave.update();
+
+            ipc.send("rl:place-building-response", {
+                requestId,
+                ...serializeGameState(state, 0, {
+                    placed: true,
+                    entityUid: entity.uid,
+                    building: {
+                        id,
+                        x,
+                        y,
+                        rotation: placementRotation,
+                        originalRotation: rotation,
+                        variant,
+                        rotationVariant,
+                    },
+                }),
+            });
+        } catch (ex) {
+            logger.warn("Failed to place RL building:", ex);
+            ipc.send("rl:place-building-response", {
                 requestId,
                 ok: false,
                 status: 500,
