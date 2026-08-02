@@ -1,5 +1,6 @@
 import { createLogger } from "../core/logging";
 import { gMetaBuildingRegistry } from "../core/global_registries";
+import { globalConfig } from "../core/config";
 import { Vector } from "../core/vector";
 import { StaticMapEntityComponent } from "../game/components/static_map_entity";
 import { defaultBuildingVariant } from "../game/meta_building";
@@ -209,6 +210,10 @@ function serializeGameState(state, ticksRun = 0, extra = {}) {
  */
 export function initializeRLEndpoint(app) {
     app.rlHeadless = new URLSearchParams(window.location.search).get("rl-headless") === "1";
+    if (app.rlHeadless) {
+        globalConfig.debug.disableUnlockDialog = true;
+        globalConfig.debug.allBuildingsUnlocked = true;
+    }
 
     // @ts-ignore exposed by electron/preload.js
     const ipc = window.ipcRenderer;
