@@ -47,6 +47,17 @@ GET /rl/gamestate
 GET /rl/map?x=-16&y=-16&w=32&h=32
 ```
 
+### Reset Game
+
+```http
+POST /rl/reset
+Content-Type: application/json
+
+{ "seed": 12345 }
+```
+
+Starts a fresh game and returns the new gamestate. `seed` is optional;
+
 ### Tick Simulation
 
 ```http

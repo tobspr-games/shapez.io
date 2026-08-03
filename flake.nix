@@ -292,6 +292,7 @@
             echo "shapez web server: $web_url"
             echo "shapez RL API: http://127.0.0.1:$rl_port/rl/gamestate"
             echo "shapez RL map API: http://127.0.0.1:$rl_port/rl/map"
+            echo "shapez RL reset API: http://127.0.0.1:$rl_port/rl/reset"
             echo "shapez RL tick API: http://127.0.0.1:$rl_port/rl/tick"
             echo "shapez RL build API: http://127.0.0.1:$rl_port/rl/building"
             echo "shapez RL destroy API: http://127.0.0.1:$rl_port/rl/destroy-removable-buildings"

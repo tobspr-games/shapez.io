@@ -53,15 +53,17 @@ export class StateManager {
     /**
      * Moves to a given state
      * @param {string} key State Key
+     * @param {object=} payload
+     * @param {boolean=} allowSameState
      */
-    moveToState(key, payload = {}) {
+    moveToState(key, payload = {}, allowSameState = false) {
         if (window.APP_ERROR_OCCURED) {
             console.warn("Skipping state transition because of application crash");
             return;
         }
 
         if (this.currentState) {
-            if (key === this.currentState.getKey()) {
+            if (key === this.currentState.getKey() && !allowSameState) {
                 logger.error(`State '${key}' is already active!`);
                 return false;
             }

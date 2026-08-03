@@ -204,6 +204,28 @@ function serializeGameState(state, ticksRun = 0, extra = {}) {
     };
 }
 
+function waitForRunningGameState(app, timeoutMs = 5000) {
+    const start = performance.now();
+    return new Promise((resolve, reject) => {
+        const poll = () => {
+            const state = getRunningGameState(app);
+            if (state) {
+                resolve(state);
+                return;
+            }
+
+            if (performance.now() - start > timeoutMs) {
+                reject(new Error("reset-timeout"));
+                return;
+            }
+
+            setTimeout(poll, 25);
+        };
+
+        poll();
+    });
+}
+
 /**
  * Installs the renderer-side responder for the Electron RL API.
  * @param {import("../application").Application} app
@@ -289,6 +311,70 @@ export function initializeRLEndpoint(app) {
                 ok: false,
                 status: 500,
                 error: "exception",
+            });
+        }
+    });
+
+    ipc.on("rl:reset", async (_event, payload) => {
+        const requestId = payload && payload.requestId;
+        try {
+            if (!app.rlHeadless) {
+                sendRlError(ipc, "rl:reset-response", requestId, {
+                    status: 409,
+                    error: "not-headless",
+                });
+                return;
+            }
+            if (!app.savegameMgr || !app.stateMgr) {
+                sendRlError(ipc, "rl:reset-response", requestId, {
+                    status: 409,
+                    error: "app-not-ready",
+                });
+                return;
+            }
+
+            const seed = payload && payload.seed;
+            if (seed !== null && seed !== undefined && (!Number.isSafeInteger(seed) || seed < 0)) {
+                sendRlError(ipc, "rl:reset-response", requestId, {
+                    status: 400,
+                    error: "invalid-seed",
+                });
+                return;
+            }
+
+            const savegame = app.savegameMgr.createNewSavegame();
+            const moved = app.stateMgr.moveToState(
+                "InGameState",
+                {
+                    savegame,
+                    fastEnter: true,
+                    seed,
+                },
+                true
+            );
+            if (moved === false) {
+                sendRlError(ipc, "rl:reset-response", requestId, {
+                    status: 409,
+                    error: "reset-failed",
+                });
+                return;
+            }
+
+            const state = await waitForRunningGameState(app);
+            ipc.send("rl:reset-response", {
+                requestId,
+                ...serializeGameState(state, 0, {
+                    reset: true,
+                    seed: state.core.root.map.seed,
+                }),
+            });
+        } catch (ex) {
+            logger.warn("Failed to reset RL game:", ex);
+            ipc.send("rl:reset-response", {
+                requestId,
+                ok: false,
+                status: ex && ex.message === "reset-timeout" ? 504 : 500,
+                error: ex && ex.message === "reset-timeout" ? "reset-timeout" : "exception",
             });
         }
     });

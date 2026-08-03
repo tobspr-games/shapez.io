@@ -125,6 +125,10 @@ function requestRlMapFromRenderer(bounds) {
     return requestRlRenderer("rl:get-map", { bounds });
 }
 
+function requestRlResetFromRenderer(seed) {
+    return requestRlRenderer("rl:reset", { seed });
+}
+
 function requestRlTickFromRenderer(ticks) {
     return requestRlRenderer("rl:tick", { ticks });
 }
@@ -155,6 +159,13 @@ function parseIntegerQueryParam(searchParams, name, defaultValue) {
     }
     const parsed = Number(value);
     return Number.isSafeInteger(parsed) ? parsed : null;
+}
+
+function parseOptionalSeed(seed) {
+    if (seed === undefined || seed === null) {
+        return null;
+    }
+    return Number.isSafeInteger(seed) && seed >= 0 ? seed : null;
 }
 
 function withHeadlessQuery(targetUrl) {
@@ -211,6 +222,25 @@ function startRlApiServer() {
                 }
 
                 sendRlRendererResult(res, await requestRlMapFromRenderer(bounds));
+                return;
+            }
+
+            if (requestUrl.pathname === "/rl/reset") {
+                if (req.method !== "POST") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                const body = await readJsonRequestBody(req);
+                const seed = parseOptionalSeed(body.seed);
+                if (body.seed !== undefined && body.seed !== null && seed === null) {
+                    writeJsonResponse(res, 400, {
+                        error: "seed-must-be-non-negative-safe-integer",
+                    });
+                    return;
+                }
+
+                sendRlRendererResult(res, await requestRlResetFromRenderer(seed));
                 return;
             }
 
@@ -484,6 +514,7 @@ function handleRlRendererResponse(event, payload) {
 
 ipcMain.on("rl:game-state-response", handleRlRendererResponse);
 ipcMain.on("rl:map-response", handleRlRendererResponse);
+ipcMain.on("rl:reset-response", handleRlRendererResponse);
 ipcMain.on("rl:tick-response", handleRlRendererResponse);
 ipcMain.on("rl:destroy-removable-buildings-response", handleRlRendererResponse);
 ipcMain.on("rl:place-building-response", handleRlRendererResponse);

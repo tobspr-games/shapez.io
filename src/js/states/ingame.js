@@ -50,6 +50,9 @@ export class GameCreationPayload {
 
         /** @type {object|undefined} */
         this.gameModeParameters;
+
+        /** @type {number|undefined} */
+        this.seed;
     }
 }
 
@@ -286,7 +289,7 @@ export class InGameState extends GameState {
      */
     stage4aInitEmptyGame() {
         if (this.switchStage(GAME_LOADING_STATES.s4_A_initEmptyGame)) {
-            this.core.initNewGame();
+            this.core.initNewGame(this.creationPayload.seed);
             this.stage5FirstUpdate();
         }
     }

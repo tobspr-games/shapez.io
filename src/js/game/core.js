@@ -169,10 +169,10 @@ export class GameCore {
      * Initializes a new game, this means creating a new map and centering on the
      * playerbase
      * */
-    initNewGame() {
+    initNewGame(seed = null) {
         logger.log("Initializing new game");
         this.root.gameIsFresh = true;
-        this.root.map.seed = randomInt(0, 100000);
+        this.root.map.seed = Number.isSafeInteger(seed) && seed >= 0 ? seed : randomInt(0, 100000);
 
         if (!this.root.gameMode.hasHub()) {
             return;
