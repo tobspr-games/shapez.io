@@ -149,6 +149,14 @@ function sendRlRendererResult(res, result) {
     writeJsonResponse(res, 200, result.body);
 }
 
+async function getSaveDirectoryListing() {
+    const entries = await fs.promises.readdir(storePath, { withFileTypes: true });
+    return entries
+        .filter(entry => entry.isFile())
+        .map(entry => entry.name)
+        .sort();
+}
+
 function parseIntegerQueryParam(searchParams, name, defaultValue) {
     const value = searchParams.get(name);
     if (value === null) {
@@ -193,6 +201,19 @@ function startRlApiServer() {
         const requestUrl = new URL(req.url, "http://127.0.0.1");
 
         try {
+            if (requestUrl.pathname === "/rl/save-dir") {
+                if (req.method !== "GET") {
+                    writeJsonResponse(res, 405, { error: "method-not-allowed" });
+                    return;
+                }
+
+                writeJsonResponse(res, 200, {
+                    saveDir: storePath,
+                    files: await getSaveDirectoryListing(),
+                });
+                return;
+            }
+
             if (requestUrl.pathname === "/rl/gamestate") {
                 if (req.method !== "GET") {
                     writeJsonResponse(res, 405, { error: "method-not-allowed" });

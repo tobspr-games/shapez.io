@@ -41,6 +41,14 @@ nix run path:$PWD#rl
 GET /rl/gamestate
 ```
 
+### Get Save Directory
+
+```http
+GET /rl/save-dir
+```
+
+Returns the absolute save directory and current save filenames.
+
 ### Get Map Window
 
 ```http

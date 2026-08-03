@@ -290,6 +290,7 @@
             done
 
             echo "shapez web server: $web_url"
+            echo "shapez RL save dir API: http://127.0.0.1:$rl_port/rl/save-dir"
             echo "shapez RL API: http://127.0.0.1:$rl_port/rl/gamestate"
             echo "shapez RL map API: http://127.0.0.1:$rl_port/rl/map"
             echo "shapez RL reset API: http://127.0.0.1:$rl_port/rl/reset"
