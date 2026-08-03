@@ -341,6 +341,18 @@ export function initializeRLEndpoint(app) {
                 });
                 return;
             }
+            const goalLevel = payload && payload.goalLevel;
+            if (
+                goalLevel !== null &&
+                goalLevel !== undefined &&
+                (!Number.isSafeInteger(goalLevel) || goalLevel < 1)
+            ) {
+                sendRlError(ipc, "rl:reset-response", requestId, {
+                    status: 400,
+                    error: "invalid-goal-level",
+                });
+                return;
+            }
 
             const savegame = app.savegameMgr.createNewSavegame();
             const moved = app.stateMgr.moveToState(
@@ -361,11 +373,17 @@ export function initializeRLEndpoint(app) {
             }
 
             const state = await waitForRunningGameState(app);
+            if (goalLevel !== null && goalLevel !== undefined) {
+                state.core.root.hubGoals.level = goalLevel;
+                state.core.root.hubGoals.computeNextGoal();
+            }
+
             ipc.send("rl:reset-response", {
                 requestId,
                 ...serializeGameState(state, 0, {
                     reset: true,
                     seed: state.core.root.map.seed,
+                    goalLevel: state.core.root.hubGoals.level,
                 }),
             });
         } catch (ex) {

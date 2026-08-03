@@ -125,8 +125,8 @@ function requestRlMapFromRenderer(bounds) {
     return requestRlRenderer("rl:get-map", { bounds });
 }
 
-function requestRlResetFromRenderer(seed) {
-    return requestRlRenderer("rl:reset", { seed });
+function requestRlResetFromRenderer(seed, goalLevel) {
+    return requestRlRenderer("rl:reset", { seed, goalLevel });
 }
 
 function requestRlTickFromRenderer(ticks) {
@@ -166,6 +166,13 @@ function parseOptionalSeed(seed) {
         return null;
     }
     return Number.isSafeInteger(seed) && seed >= 0 ? seed : null;
+}
+
+function parseOptionalGoalLevel(goalLevel) {
+    if (goalLevel === undefined || goalLevel === null) {
+        return null;
+    }
+    return Number.isSafeInteger(goalLevel) && goalLevel >= 1 ? goalLevel : null;
 }
 
 function withHeadlessQuery(targetUrl) {
@@ -233,14 +240,25 @@ function startRlApiServer() {
 
                 const body = await readJsonRequestBody(req);
                 const seed = parseOptionalSeed(body.seed);
+                const goalLevel = parseOptionalGoalLevel(body.goalLevel);
                 if (body.seed !== undefined && body.seed !== null && seed === null) {
                     writeJsonResponse(res, 400, {
                         error: "seed-must-be-non-negative-safe-integer",
                     });
                     return;
                 }
+                if (
+                    body.goalLevel !== undefined &&
+                    body.goalLevel !== null &&
+                    goalLevel === null
+                ) {
+                    writeJsonResponse(res, 400, {
+                        error: "goal-level-must-be-positive-safe-integer",
+                    });
+                    return;
+                }
 
-                sendRlRendererResult(res, await requestRlResetFromRenderer(seed));
+                sendRlRendererResult(res, await requestRlResetFromRenderer(seed, goalLevel));
                 return;
             }
 

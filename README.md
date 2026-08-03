@@ -53,10 +53,10 @@ GET /rl/map?x=-16&y=-16&w=32&h=32
 POST /rl/reset
 Content-Type: application/json
 
-{ "seed": 12345 }
+{ "seed": 12345, "goalLevel": 5 }
 ```
 
-Starts a fresh game and returns the new gamestate. `seed` is optional;
+Starts a fresh game and returns the new gamestate. `seed` and `goalLevel` are optional.
 
 ### Tick Simulation
 
