@@ -50,12 +50,12 @@ import { MODS_ADDITIONAL_ITEMS } from "../game/item_resolver";
 /**
  * @template {(...args: any[]) => any} F
  * @template P
- * @typedef {(...args: [...Parameters<F>, P]) => ReturnType<F>} afterPrams
+ * @typedef {(...args: any[]) => ReturnType<F>} afterPrams
  */
 
 /**
  * @template {(...args: any[]) => any} F
- * @typedef {(...args: [...Parameters<F>, ...any]) => ReturnType<F>} extendsPrams
+ * @typedef {(...args: any[]) => ReturnType<F>} extendsPrams
  */
 
 export class ModInterface {

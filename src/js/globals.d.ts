@@ -83,6 +83,9 @@ declare interface Window {
     // Debugging
     activeClickDetectors: Array<any>;
 
+    // Analytics
+    setAbt: (abt: any) => void;
+
     // Experimental/Newer apis
     FontFace: any;
     TouchEvent: undefined | TouchEvent;
