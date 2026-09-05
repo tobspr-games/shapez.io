@@ -10,6 +10,7 @@ import {
     formatSecondsToTimeAgo,
     generateFileDownload,
     getLogoSprite,
+    getPuzzlezBannerSprite,
     getShapez2BannerSprite,
     makeButton,
     makeDiv,
@@ -184,6 +185,12 @@ export class MainMenuState extends GameState {
                         <img src="${cachebust(
                             "res/ui/" + getShapez2BannerSprite(this.app.settings.getLanguage())
                         )}" alt="shapez 2">
+                    </div>
+                    <div class="mainNews puzzlez">
+                        <div class="text">${T.mainMenu.puzzlezBanner}</div>
+                        <img src="${cachebust(
+                            "res/ui/" + getPuzzlezBannerSprite(this.app.settings.getLanguage())
+                        )}" alt="puzzlez">
                     </div>`
                             : ""
                     }
@@ -474,6 +481,7 @@ export class MainMenuState extends GameState {
             ".steamLink": this.onSteamLinkClicked,
             ".steamLinkSocial": this.onSteamLinkClickedSocial,
             ".shapez2": this.onShapez2Clicked,
+            ".puzzlez": this.onPuzzlezClicked,
             ".discordLink": () => {
                 this.app.platformWrapper.openExternalLink(THIRDPARTY_URLS.discord);
             },
@@ -590,6 +598,12 @@ export class MainMenuState extends GameState {
 
     onShapez2Clicked() {
         this.app.platformWrapper.openExternalLink("https://tobspr.io/shapez-2?utm_medium=shapez");
+    }
+
+    onPuzzlezClicked() {
+        this.app.platformWrapper.openExternalLink(
+            "https://store.steampowered.com/app/4783760/puzzlez__a_shapez_game/?utm_source=shapez&utm_medium=mainmenu&utm_campaign=announcement&utm_content=banner"
+        );
     }
 
     onBackButtonClicked() {

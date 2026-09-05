@@ -84,7 +84,8 @@ mainMenu:
     savegameUnnamed: 未命名
     puzzleMode: Puzzle Mode
     back: Back
-    shapez2Banner: 異形工廠2 - 現已發售
+    shapez2Banner: <b>異形工廠2</b>現已發售
+    puzzlezBanner: <b>謎題工廠</b>加入Steam願望清單
 
     puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
         DLC now on Steam for even more fun!

@@ -89,7 +89,8 @@ mainMenu:
     savegameUnnamed: Tidak Dinamai
     puzzleMode: Puzzle Mode
     back: Back
-    shapez2Banner: shapez 2 - TERSEDIA SEKARANG
+    shapez2Banner: <b>shapez 2</b>TERSEDIA SEKARANG!
+    puzzlezBanner: <b>puzzlez</b>Masukkan ke wishlist sekarang!
 
     puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
         DLC now on Steam for even more fun!

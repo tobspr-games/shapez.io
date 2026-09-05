@@ -90,7 +90,8 @@ mainMenu:
     savegameUnnamed: İsimsiz
     puzzleMode: Yapboz Modu
     back: Geri
-    shapez2Banner: shapez 2 - ŞİMDİ ÇIKTI
+    shapez2Banner: <b>shapez 2</b>ŞİMDİ ÇIKTI!
+    puzzlezBanner: <b>puzzlez</b>Şimdi istek listene ekle!
 
     puzzleDlcText: Fabrikaları küçültmeyi ve verimli hale getirmekten keyif mi
         alıyorsun? Şimdi Yapboz Paketini (DLC) Steam'de alarak keyfine keyif

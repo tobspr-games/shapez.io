@@ -90,7 +90,8 @@ mainMenu:
     savegameUnnamed: Névtelen
     puzzleMode: Fejtörő Mód
     back: Vissza
-    shapez2Banner: shapez 2 - MOST ELÉRHETŐ
+    shapez2Banner: <b>shapez 2</b>MOST ELÉRHETŐ!
+    puzzlezBanner: <b>puzzlez</b>Tedd a kívánságlistádra!
 
     puzzleDlcText: Szereted optimalizálni a gyáraid méretét és hatákonyságát?
         Szerezd meg a Puzzle DLC-t a Steamen most!

@@ -93,7 +93,8 @@ mainMenu:
     savegameUnnamed: Unnamed
     puzzleMode: Λειτουργία παζλ
     back: Πίσω
-    shapez2Banner: shapez 2 - ΔΙΑΘΕΣΙΜΟ ΤΩΡΑ
+    shapez2Banner: <b>shapez 2</b>ΔΙΑΘΕΣΙΜΟ ΤΩΡΑ!
+    puzzlezBanner: <b>puzzlez</b>Πρόσθεσέ το στη λίστα επιθυμιών!
 
     puzzleDlcText: Σε αρέσει να συμπάγης και να βελτιστοποίεις εργοστάσια; Πάρε την
         λειτουργεία παζλ στο Steam για ακόμη περισσότερη πλάκα!

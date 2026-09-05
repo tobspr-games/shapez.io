@@ -94,7 +94,8 @@ mainMenu:
     savegameUnnamed: Senza nome
     puzzleMode: Modalità puzzle
     back: Back
-    shapez2Banner: shapez 2 - DISPONIBILE ORA
+    shapez2Banner: <b>shapez 2</b>DISPONIBILE ORA!
+    puzzlezBanner: <b>puzzlez</b>Aggiungilo alla lista dei desideri!
 
     puzzleDlcText: Ti piace miniaturizzare e ottimizzare le tue fabbriche? Ottini il
         Puzzle DLC ora su steam per un divertimento ancora maggiore!

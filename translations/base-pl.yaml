@@ -92,7 +92,8 @@ mainMenu:
     savegameUnnamed: Zapis bez nazwy
     puzzleMode: Tryb Układanek
     back: Wróć
-    shapez2Banner: shapez 2 - JUŻ DOSTĘPNE
+    shapez2Banner: <b>shapez 2</b>JUŻ DOSTĘPNE!
+    puzzlezBanner: <b>puzzlez</b>Dodaj do listy życzeń!
 
     puzzleDlcText: Czy lubisz kompaktować i optymalizować fabryki? Zainstaluj DLC
         układanek na Steamie, aby mieć jeszcze więcej zabawy!

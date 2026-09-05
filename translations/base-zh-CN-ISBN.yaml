@@ -79,7 +79,8 @@ mainMenu:
     savegameUnnamed: 存档未命名
     puzzleMode: 谜题模式
     back: 返回
-    shapez2Banner: 异形工厂2 - 现已发售
+    shapez2Banner: <b>异形工厂2</b>现已发售
+    puzzlezBanner: <b>谜题工厂</b>加入Steam愿望单
 
     puzzleDlcText: 新增谜题模式将带给您更多的游戏乐趣！
     puzzleDlcWishlist: 添加心愿单！

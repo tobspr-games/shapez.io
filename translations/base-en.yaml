@@ -150,7 +150,8 @@ mainMenu:
     puzzleMode: Puzzle Mode
     back: Back
 
-    shapez2Banner: shapez 2 - OUT NOW
+    shapez2Banner: <b>shapez 2</b>OUT NOW!
+    puzzlezBanner: <b>puzzlez</b>Wishlist now!
 
     puzzleDlcText: >-
         Do you enjoy compacting and optimizing factories?

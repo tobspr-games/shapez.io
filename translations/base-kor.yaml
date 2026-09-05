@@ -86,7 +86,8 @@ mainMenu:
     savegameUnnamed: 이름 없음
     puzzleMode: 퍼즐 모드
     back: Back
-    shapez2Banner: shapez 2 - 출시!
+    shapez2Banner: <b>shapez 2</b>출시!
+    puzzlezBanner: <b>puzzlez</b>지금 찜하기!
 
     puzzleDlcText: 공장의 크기를 줄이고 최적화하는 데 관심이 많으신가요? 지금 퍼즐 DLC를 구입하세요!
     puzzleDlcWishlist: 지금 찜 목록에 추가하세요!

@@ -180,6 +180,7 @@
                 ),
                 uiResource("shapez2_banner_bg.noinline.png") center / cover no-repeat;
             width: 100%;
+            @include S(min-width, 245px);
             display: flex;
             align-items: center;
             @include S(height, 60px);
@@ -211,8 +212,8 @@
             }
 
             &:hover > img {
-                animation: none !important;
-                transform: translateY(-52%) scale(1.05);
+                @include S(width, 142px);
+                @include S(height, 116px);
             }
 
             &::before {
@@ -242,7 +243,9 @@
                 @include S(right, 6px);
                 pointer-events: none;
                 transform: translateY(-50%);
-                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                transition:
+                    width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
                 filter:
                     drop-shadow(0 0 D(3px) rgba(255, 255, 255, 0.7))
                     drop-shadow(0 D(2px) D(3px) rgba(#000, 0.6));
@@ -260,17 +263,67 @@
 
             .text {
                 @include PlainText;
-                @include S(font-size, 13px);
-                line-height: 1.15;
-                font-weight: bold;
+                @include S(font-size, 11px);
+                line-height: 1.25;
+                font-weight: normal;
                 text-transform: uppercase;
                 color: #fff;
-                letter-spacing: 0.04em;
+                letter-spacing: 0.03em;
                 text-shadow: 0 D(1px) D(3px) rgba(#000, 0.6);
-                position: relative;
+                position: absolute;
+                @include S(left, 14px);
+                @include S(right, 140px);
+                top: 50%;
+                transform: translateY(-50%);
                 z-index: 2;
-                max-width: 55%;
                 word-wrap: break-word;
+
+                b {
+                    display: block;
+                    @include S(font-size, 15px);
+                    @include S(margin-bottom, 1px);
+                    font-weight: bold;
+                    text-transform: none;
+                    letter-spacing: 0.01em;
+                    white-space: nowrap;
+                }
+            }
+
+            &.puzzlez {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(10, 35, 70, 0.85) 0%,
+                        rgba(10, 35, 70, 0.55) 45%,
+                        rgba(10, 35, 70, 0.15) 100%
+                    ),
+                    uiResource("puzzlez_banner_bg.noinline.png") center / cover no-repeat;
+
+                > img {
+                    @include S(width, 105px);
+                    @include S(height, 82px);
+                    @include S(right, 18px);
+                }
+
+                &:hover > img {
+                    @include S(width, 110px);
+                    @include S(height, 86px);
+                }
+
+                @include InlineAnimation(2.8s ease-in-out infinite) {
+                    0%, 100% {
+                        box-shadow:
+                            0 D(9px) D(15px) rgba(#000, 0.3),
+                            inset 0 D(1px) 0 rgba(#fff, 0.15),
+                            0 0 D(0) rgba(120, 210, 255, 0);
+                    }
+                    50% {
+                        box-shadow:
+                            0 D(9px) D(15px) rgba(#000, 0.3),
+                            inset 0 D(1px) 0 rgba(#fff, 0.15),
+                            0 0 D(22px) rgba(120, 210, 255, 0.55);
+                    }
+                }
             }
         }
 

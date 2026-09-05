@@ -94,7 +94,8 @@ mainMenu:
     savegameUnnamed: Fară nume
     puzzleMode: Puzzle Mode
     back: Back
-    shapez2Banner: shapez 2 - DISPONIBIL ACUM
+    shapez2Banner: <b>shapez 2</b>DISPONIBIL ACUM!
+    puzzlezBanner: <b>puzzlez</b>Adaugă la lista de dorințe!
 
     puzzleDlcText: Îți place să compresezi și să optimizezi fabricile ? Ia acum
         Puzzle DLC pe Steam pentru mai multă distracție !

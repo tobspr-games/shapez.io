@@ -93,7 +93,8 @@ mainMenu:
     savegameUnnamed: Ingen Navn
     puzzleMode: Puzzle Modus
     back: Tilbake
-    shapez2Banner: shapez 2 - UTE NÅ
+    shapez2Banner: <b>shapez 2</b>UTE NÅ!
+    puzzlezBanner: <b>puzzlez</b>Legg til i ønskelisten nå!
 
     puzzleDlcText: Liker du å bygge kompate og optimaliserte fabrikker? Skaff deg
         Puzzle tilleggspakken nå på Steam for mere moro!

@@ -91,7 +91,8 @@ mainMenu:
     savegameUnnamed: Без названия
     puzzleMode: Головоломка
     back: Назад
-    shapez2Banner: shapez 2 - УЖЕ ДОСТУПНА
+    shapez2Banner: <b>shapez 2</b>УЖЕ ДОСТУПНА!
+    puzzlezBanner: <b>puzzlez</b>Добавьте в список желаемого!
 
     puzzleDlcText: Нравится оптимизировать фабрики и делать их меньше? Купите Puzzle
         DLC в Steam сейчас и получите еще больше удовольствия!

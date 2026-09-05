@@ -93,7 +93,8 @@ mainMenu:
     savegameUnnamed: Sem Nome
     puzzleMode: Modo Puzzle
     back: Voltar
-    shapez2Banner: shapez 2 - JÁ DISPONÍVEL
+    shapez2Banner: <b>shapez 2</b>JÁ DISPONÍVEL!
+    puzzlezBanner: <b>puzzlez</b>Adiciona à lista de desejos!
 
     puzzleDlcText: Gostas de compactar e otimizar fábricas? Adquire agora o DLC
         Puzzle na Steam para ainda mais diversão!

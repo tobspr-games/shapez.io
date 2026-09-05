@@ -93,7 +93,8 @@ mainMenu:
     savegameUnnamed: Namnlöst
     puzzleMode: Pusselläge
     back: Tillbaka
-    shapez2Banner: shapez 2 - UTE NU
+    shapez2Banner: <b>shapez 2</b>UTE NU!
+    puzzlezBanner: <b>puzzlez</b>Lägg till i önskelistan nu!
 
     puzzleDlcText: Tycker du om att komprimera och optimera fabriker? Skaffa
         pussel-DLCn nu på Steam för ännu mer kul!

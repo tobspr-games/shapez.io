@@ -93,7 +93,8 @@ mainMenu:
     savegameUnnamed: Nimetön
     puzzleMode: Pulmatila
     back: Takaisin
-    shapez2Banner: shapez 2 - SAATAVILLA NYT
+    shapez2Banner: <b>shapez 2</b>SAATAVILLA NYT!
+    puzzlezBanner: <b>puzzlez</b>Lisää toivelistalle nyt!
 
     puzzleDlcText: Nautitko tehtaiden pienentämisestä ja optimoinnista? Hanki pulma
         DLC nyt Steamista lisähuviksi!

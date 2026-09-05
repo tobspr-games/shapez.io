@@ -91,7 +91,8 @@ mainMenu:
     savegameUnnamed: Neimenovano
     puzzleMode: Slagalice
     back: Nazad
-    shapez2Banner: shapez 2 - DOSTUPNO ODMAH
+    shapez2Banner: <b>shapez 2</b>DOSTUPNO ODMAH!
+    puzzlezBanner: <b>puzzlez</b>Dodaj na listu želja!
 
     puzzleDlcText: Uživate u optimizovanju i minimizovanju fabrika? Nabavite
         ekspanziju sa Slagalicama na Steam-u, za još više zabave!

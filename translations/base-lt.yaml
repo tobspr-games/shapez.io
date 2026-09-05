@@ -92,7 +92,8 @@ mainMenu:
     savegameUnnamed: Unnamed
     puzzleMode: Puzzle Mode
     back: Back
-    shapez2Banner: shapez 2 - JAU PRIEINAMA
+    shapez2Banner: <b>shapez 2</b>JAU PRIEINAMA!
+    puzzlezBanner: <b>puzzlez</b>Įtraukite į norų sąrašą!
 
     puzzleDlcText: Do you enjoy compacting and optimizing factories? Get the Puzzle
         DLC now on Steam for even more fun!

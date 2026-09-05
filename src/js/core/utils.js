@@ -784,8 +784,26 @@ export function getShapez2BannerSprite(language) {
     if (G_WEGAME_VERSION || G_CHINA_VERSION || language === "zh-CN") {
         return "shapez2_zh-CN.noinline.png";
     }
+    if (language === "zh-TW") {
+        return "shapez2_zh-TW.noinline.png";
+    }
 
     return "shapez2.noinline.png";
+}
+
+/**
+ * Returns the appropriate puzzlez banner sprite path
+ * @param {string} language
+ */
+export function getPuzzlezBannerSprite(language) {
+    if (G_WEGAME_VERSION || G_CHINA_VERSION || language === "zh-CN") {
+        return "puzzlez_zh-CN.noinline.png";
+    }
+    if (language === "zh-TW") {
+        return "puzzlez_zh-TW.noinline.png";
+    }
+
+    return "puzzlez.noinline.png";
 }
 
 /**

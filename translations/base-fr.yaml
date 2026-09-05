@@ -92,7 +92,8 @@ mainMenu:
     savegameUnnamed: Sans titre
     puzzleMode: Mode Puzzle
     back: Retour
-    shapez2Banner: shapez 2 - DISPONIBLE MAINTENANT
+    shapez2Banner: <b>shapez 2</b>DISPONIBLE MAINTENANT!
+    puzzlezBanner: <b>puzzlez</b>Ajoutez-le à votre liste de souhaits !
 
     puzzleDlcText: Vous aimez compacter et optimiser vos usines ? Achetez le DLC sur
         Steam dès maintenant pour encore plus d'amusement!
