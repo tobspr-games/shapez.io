@@ -268,6 +268,10 @@ for (const variant in BUILD_VARIANTS) {
             "bundle." + variant + ".from-darwin",
             gulp.series(buildName, "standalone." + variant + ".build-from-darwin")
         );
+        gulp.task(
+            "bundle." + variant + ".all",
+            gulp.series(buildName, "standalone." + variant + ".build-all")
+        );
     }
 
     // serve
@@ -300,6 +304,7 @@ gulp.task(
         "bundle.standalone-steam-china.from-windows"
     )
 );
+gulp.task("bundle.steam.all", gulp.series("utils.cleanBuildOutputFolder", "bundle.standalone-steam.all"));
 gulp.task(
     "bundle.steam-demo.from-darwin",
     gulp.series("utils.cleanBuildOutputFolder", "bundle.standalone-steam-demo.from-darwin")

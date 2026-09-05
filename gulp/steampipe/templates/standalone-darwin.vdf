@@ -1,7 +1,7 @@
 "DepotBuildConfig"
 {
 	"DepotID" "1318693"
-	"contentroot" "$BUNDLE_DIR$\standalone-steam\shapez-darwin-x64"
+	"contentroot" "$BUNDLE_DIR$/standalone-steam/shapez-darwin-x64"
 	"FileMapping"
 	{
 		"LocalPath" "*"

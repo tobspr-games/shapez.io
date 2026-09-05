@@ -9,6 +9,17 @@ const buildutils = require("./buildutils");
 const execSync = require("child_process").execSync;
 const electronNotarize = require("electron-notarize");
 const { BUILD_VARIANTS } = require("./build_variants");
+const { applyWin32Resources } = require("./win32-resources");
+
+// electron-packager edits win32 exe resources through rcedit, requiring wine on non-windows hosts otherwise.
+const useRcedit = process.platform === "win32";
+if (!useRcedit) {
+    const rceditPath = require.resolve("rcedit", {
+        paths: [path.dirname(require.resolve("electron-packager"))],
+    });
+    require(rceditPath);
+    require.cache[rceditPath].exports = async () => {};
+}
 
 let signAsync;
 try {
@@ -120,16 +131,19 @@ function gulptasksStandalone($, gulp) {
                 asar = { unpackDir: privateArtifactsPath };
             }
 
+            const icon = path.join(electronBaseDir, "favicon");
+
             packager({
                 dir: tempDestBuildDir,
+                electronVersion: pj.dependencies.electron,
                 appCopyright: "tobspr Games",
                 appVersion: getVersion(),
                 buildVersion: "1.0.0",
+                icon,
                 arch,
                 platform,
                 asar: asar,
                 executableName: "shapezio",
-                icon: path.join(electronBaseDir, "favicon"),
                 name: "shapez",
                 out: tempDestDir,
                 overwrite: true,
@@ -158,6 +172,16 @@ function gulptasksStandalone($, gulp) {
                         if (!fs.existsSync(appPath)) {
                             console.error("Bad app path:", appPath);
                             return;
+                        }
+
+                        if (platform === "win32" && !useRcedit) {
+                            console.log("Applying win32 icon and version info via resedit");
+                            applyWin32Resources(path.join(appPath, "shapezio.exe"), {
+                                icon: icon + ".ico",
+                                version: getVersion(),
+                                productName: "shapez",
+                                company: "tobspr Games",
+                            });
                         }
 
                         if (variantData.steamAppId) {
@@ -215,6 +239,13 @@ function gulptasksStandalone($, gulp) {
                 () => {
                     const appFile = path.join(tempDestDir, "shapez-darwin-x64");
                     const appFileInner = path.join(appFile, "shapez.app");
+
+                    if (!process.env.SHAPEZ_CLI_APPLE_CERT_NAME) {
+                        console.warn("SHAPEZ_CLI_APPLE_CERT_NAME not set, skipping signing and notarization");
+                        cb();
+                        return;
+                    }
+
                     console.warn("++ Signing ++");
 
                     if (variantData.steamAppId) {
@@ -263,7 +294,7 @@ function gulptasksStandalone($, gulp) {
                         electronNotarize
                             .notarize({
                                 appPath: path.join(appFile, "shapez.app"),
-                                tool: "legacy",
+                                tool: "notarytool",
                                 appBundleId: "tobspr.shapezio.standalone",
 
                                 appleId: process.env.SHAPEZ_CLI_APPLE_ID,
@@ -292,6 +323,16 @@ function gulptasksStandalone($, gulp) {
         gulp.task(
             taskPrefix + ".build-from-darwin",
             gulp.series(taskPrefix + ".prepare", gulp.parallel(taskPrefix + ".package.darwin64"))
+        );
+        // All three platforms on one machine (win32 needs wine for rcedit on non-windows hosts)
+        gulp.task(
+            taskPrefix + ".build-all",
+            gulp.series(
+                taskPrefix + ".prepare",
+                taskPrefix + ".package.darwin64",
+                taskPrefix + ".package.win64",
+                taskPrefix + ".package.linux64"
+            )
         );
     }
 
