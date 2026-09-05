@@ -81,6 +81,7 @@ export class MainMenuState extends GameState {
                 /** @type { PlatformWrapperImplElectron}*/ (this.app.platformWrapper).dlcs.puzzle);
 
         const showShapez2 = showExternalLinks && MODS.mods.length === 0;
+        const showPuzzlez = showShapez2 && !showDemoAdvertisement;
 
         const bannerHtml = `
             <h3>${T.demoBanners.titleV2}</h3>
@@ -185,8 +186,13 @@ export class MainMenuState extends GameState {
                         <img src="${cachebust(
                             "res/ui/" + getShapez2BannerSprite(this.app.settings.getLanguage())
                         )}" alt="shapez 2">
-                    </div>
-                    <div class="mainNews puzzlez">
+                    </div>`
+                            : ""
+                    }
+
+                    ${
+                        showPuzzlez
+                            ? `<div class="mainNews puzzlez">
                         <div class="text">${T.mainMenu.puzzlezBanner}</div>
                         <img src="${cachebust(
                             "res/ui/" + getPuzzlezBannerSprite(this.app.settings.getLanguage())
