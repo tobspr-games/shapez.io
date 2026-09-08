@@ -758,7 +758,7 @@ storyRewards:
     reward_painter_double:
         title: 2단 색칠기
         desc:
-            새로운 종류의 <strong>절단기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여
+            새로운 종류의 <strong>색칠기</strong>가 잠금 해제되었습니다! 일반적인 색칠기와 거의 동일하지만, 하나의 색소를 사용하여
             <strong>동시에 두 개의 도형을 색칠</strong>할 수 있습니다!
     reward_storage:
         title: 저장고
