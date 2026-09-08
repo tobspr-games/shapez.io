@@ -53,21 +53,21 @@ global:
         shift: Shift
         space: Espaço
     loggingIn: Entrando
-    loadingResources: Downloading additional resources (<percentage> %)
+    loadingResources: Baixando recursos adicionais (<percentage> %)
     discount: -<percentage>%
-    discountSummerSale: SPECIAL PROMOTION! Offer ends 7 July
+    discountSummerSale: PROMOÇÃO ESPECIAL! Oferta válida até 7 de julho
 demoBanners:
     title: Versão Demo
     intro: |-
         Obtenha o jogo completo <forte>suave</forte> para desbloquear:<ul>
-            <li>Todos os 26 níveis + infinite Freeplay</li>
+            <li>Todos os 26 níveis + Jogo Livre Infinito</li>
             <li>22 novas construções</li>
             <li>Suporte Mod</li>
             <li>Realizações</li>
             <li>Dark Mod</li>
             <li>...e muito mais!</li>
         </ul>
-    playtimeDisclaimer: The full version contains more than <strong>20 hours of content</strong>.
+    playtimeDisclaimer: A versão completa contém mais de <strong>20 horas de conteúdo</strong>.
     playerCount: <playerCount> Jogadores como você está jogando shapez on Steam
         agora mesmo.
     untilEndOfDemo: Até o final da demo
@@ -98,16 +98,16 @@ mainMenu:
     puzzleDlcText: Você gosta de compactar e otimizar fábricas? Adquira a Puzzle DLC
         já disponível na Steam para se divertir ainda mais!
     puzzleDlcWishlist: Adicione já a sua lista de desejos!
-    puzzleDlcViewNow: View Dlc
+    puzzleDlcViewNow: Ver Dlc
     mods:
-        title: Active Mods
-        warningPuzzleDLC: Playing the Puzzle DLC is not possible with mods. Please
-            disable all mods to play the DLC.
-    playingFullVersion: You are now playing the full version!
-    logout: Logout
-    noActiveSavegames: No active savegames found - Click play to start a new game!
-    playFullVersionV2: Bough shapez on Steam? Play the full version in your Browser!
-    playFullVersionStandalone: You can now also play the full version in your Browser!
+        title: Mods Ativos
+        warningPuzzleDLC: Não é possível jogar o DLC Puzzle com mods. Por favor
+            desative todos os mods para jogar o DLC.
+    playingFullVersion: Agora você está jogando a versão completa!
+    logout: Deslogar
+    noActiveSavegames: Nenhum jogo salvo ativo encontrado - Clique em jogar para iniciar um novo jogo!
+    playFullVersionV2: Comprou shapez no Steam? Jogue a versão completa no seu navegador!
+    playFullVersionStandalone: Agora você também pode jogar a versão completa no seu navegador!
 dialogs:
     buttons:
         ok: OK
@@ -285,39 +285,39 @@ dialogs:
         title: Insira código
         desc: Insira o código do desafio para carrega-lo.
     puzzleDelete:
-        title: Delete Puzzle?
-        desc: Are you sure you want to delete '<title>'? This can not be undone!
+        title: Deletar Puzzle?
+        desc: Tem certeza de que deseja excluir '<title>'? Isso não pode ser desfeito!
     modsDifference:
-        title: Mod Warning
-        desc: The currently installed mods differ from the mods the savegame was created
-            with. This might cause the savegame to break or not load at all. Are
-            you sure you want to continue?
-        missingMods: Missing Mods
-        newMods: Newly installed Mods
+        title: Aviso - Mods
+        desc: Os mods instalados atualmente são diferentes dos mods com os quais o jogo
+            salvo foi criado. Isso pode fazer com que o jogo salvo trave ou não carregue. Tem
+            certeza de que deseja continuar?
+        missingMods: Mods Ausentes
+        newMods: Mods Recém-instalados
     resourceLoadFailed:
-        title: Resources failed to load
-        demoLinkText: shapez demo on Steam
-        descWeb: "One ore more resources could not be loaded. Make sure you have a
-            stable internet connection and try again. If this still doesn't
-            work, make sure to also disable any browser extensions (including
-            adblockers).<br><br> As an alternative, you can also play the
-            <demoOnSteamLinkText>. <br><br> Error Message:"
-        descSteamDemo: "One ore more resources could not be loaded. Try restarting the
-            game - If that does not help, try reinstalling and verifying the
-            game files via Steam. <br><br> Error Message:"
+        title: Falha ao carregar os recursos
+        demoLinkText: Shapez demo na Steam
+        descWeb: "Um ou mais recursos não puderam ser carregados. Certifique-se de ter uma
+            conexão de internet estável e tente novamente. Se isso continuar não
+            funcionando, certifique-se de desabilitar também todas as extensões do navegador
+            (incluindo adblock).<br><br> Como alternativa, você também pode jogar o
+            <demoOnSteamLinkText>. <br><br> Mensagem de erro:"
+        descSteamDemo: "Um ou mais recursos não puderam ser carregados. Tente reiniciar o
+            jogo - Se isso não ajudar, tente reinstalar e verificar os
+            arquivos do jogo via Steam. <br><br> Mensagem de erro:"
     steamSsoError:
-        title: Full Version Logout
-        desc: You have been logged out from the Full Browser Version since either your
-            network connection is unstable or you are playing on another
-            device.<br><br> Please make sure you don't have shapez open in any
-            other browser tab or another computer with the same Steam
-            account.<br><br> You can login again in the main menu.
+        title: Desconectado da Versão Completa
+        desc: Você foi desconectado da versão completa do navegador porque sua
+            conexão de internet está instável ou você está jogando em outro
+            dispositivo.<br><br> Certifique-se de que o Shapez não esteja aberto em
+            nenhuma outra aba do navegador ou em outro computador com a mesma
+            conta Steam.<br><br> Você pode fazer login novamente no menu principal.
     steamSsoNoOwnership:
-        title: Full Edition not owned
-        desc: In order to play the Full Edition in your Browser, you need to own both
-            the base game and the Puzzle DLC on your Steam account.<br><br>
-            Please make sure you own both, signed in with the correct Steam
-            account and then try again.
+        title: Edição Completa não possuída
+        desc: Para jogar a Edição Completa no seu navegador, você precisa ter
+            o jogo base e o DLC Puzzle na sua conta Steam.<br><br>
+            Certifique-se de que você possui ambos, esteja conectado com a conta
+            Steam correta e tente novamente.
 ingame:
     keybindingsOverlay:
         moveMap: Mover
@@ -339,7 +339,7 @@ ingame:
         clearSelection: Limpar Seleção
         pipette: Conta-Gotas
         switchLayers: Trocar Camadas
-        clearBelts: Clear belts
+        clearBelts: Limpar itens
     colors:
         red: Vermelho
         green: Verde
@@ -360,7 +360,7 @@ ingame:
             oneItemPerSecond: 1 item / segundo
             itemsPerSecond: <x> itens / s
             itemsPerSecondDouble: (x2)
-            tiles: <x> tiles
+            tiles: <x> ladrilhos
     levelCompleteNotification:
         levelTitle: Nível <level>
         completed: Concluído
@@ -369,7 +369,7 @@ ingame:
     notifications:
         newUpgrade: Nova melhoria disponível!
         gameSaved: Seu jogo foi salvo.
-        freeplayLevelComplete: Level <level> has been completed!
+        freeplayLevelComplete: Level <level> foi concluído!
     shop:
         title: Melhorias
         buttonUnlock: Melhorar
@@ -468,8 +468,8 @@ ingame:
         no_thanks: Não, obrigado!
         points:
             levels:
-                title: 12 Novos Níveis
-                desc: Para um total de 26 novos níveis!
+                title: 19 Novos Níveis
+                desc: Mais de 20 horas de conteúdo adicional!
             buildings:
                 title: 22 Novas Construções
                 desc: Automatize sua fábrica inteira!
@@ -486,24 +486,24 @@ ingame:
                 title: Me ajuda
                 desc: Eu desenvolvo o jogo no meu tempo livre!
             achievements:
-                title: Conquistas
+                title: 45 Conquistas
                 desc: Consiga todas elas!
             mods:
-                title: Modding support!
-                desc: Over 80 mods available!
-        titleV2: "Get the full version now on Steam to unlock:"
-        titleExpiredV2: Demo completed!
-        titleEnjoyingDemo: Enjoy the demo?
+                title: Suporte para mods!
+                desc: Mais de 80 mods disponíveis!
+        titleV2: "Obtenha a versão completa agora na Steam para desbloquear:"
+        titleExpiredV2: Demo completa!
+        titleEnjoyingDemo: Gostou da demo?
     puzzleEditorSettings:
         zoneTitle: Zona
         zoneWidth: Largura
         zoneHeight: Altura
         trimZone: Cortar
-        clearItems: Limpar Items
+        clearItems: Limpar Itens
         share: Compartilhar
         report: Denunciar
-        clearBuildings: Clear Buildings
-        resetPuzzle: Reset Puzzle
+        clearBuildings: Limpar Construções
+        resetPuzzle: Resetar Puzzle
     puzzleEditorControls:
         title: Criador de Desafios
         instructions:
@@ -526,11 +526,11 @@ ingame:
     puzzleCompletion:
         title: Desafio Completo!
         titleLike: "Clique no coração se você gostou do desafio:"
-        titleRating: O qual difícil foi esse desafio?
+        titleRating: O quão difícil foi esse desafio?
         titleRatingDesc: Sua avaliação me ajuda a te fazer sugestões melhores no futuro!
         continueBtn: Continuar jogando
         menuBtn: Menu
-        nextPuzzle: Next Puzzle
+        nextPuzzle: Próximo Puzzle
     puzzleMetadata:
         author: Autor
         shortKey: Código
@@ -939,7 +939,7 @@ settings:
         general: Geral
         userInterface: Interface de Usuário
         advanced: Avançado
-        performance: Performance
+        performance: Desempenho
     versionBadges:
         dev: Desenvolvedor
         staging: Teste
@@ -1110,7 +1110,7 @@ settings:
                 construções em vez de ter que segurar 'ALT'.
     rangeSliderPercentage: <amount> %
     tickrateHz: <amount> Hz
-    newBadge: New!
+    newBadge: Novo!
 keybindings:
     title: Controles
     hint: "Dica: Certifique-se de usar CTRL, SHIFT e ALT! Eles permitem diferentes
@@ -1124,7 +1124,7 @@ keybindings:
         massSelect: Seleção em Massa
         buildings: Construções
         placementModifiers: Modificadores
-        mods: Provided by Mods
+        mods: Fornecido por Mods
     mappings:
         confirm: Confirmar
         back: Voltar
@@ -1193,7 +1193,7 @@ keybindings:
         goal_acceptor: Receptor de Objetivo
         block: Bloco
         massSelectClear: Limpar esteiras
-        showShapeTooltip: Show shape output tooltip
+        showShapeTooltip: Mostrar informação de saída de forma
 about:
     title: Sobre o jogo
     body: >-
@@ -1305,14 +1305,14 @@ puzzleMenu:
         easy: Fácil
         hard: Difícil
         completed: Completados
-        medium: Medium
-        official: Official
-        trending: Trending today
-        trending-weekly: Trending weekly
-        categories: Categories
-        difficulties: By Difficulty
-        account: My Puzzles
-        search: Search
+        medium: Médio
+        official: Oficial
+        trending: Tendências de Hoje
+        trending-weekly: Tendências da Semana
+        categories: Categorias
+        difficulties: Por Dificuldade
+        account: Meus Puzzles
+        search: Procurar
     validation:
         title: Desafio inválido
         noProducers: Por favor coloque um Produtor Constante!
@@ -1328,26 +1328,26 @@ puzzleMenu:
             Produtores Constantes não estão entregando diretamente aos seus
             Receptores de Objetivo.
     difficulties:
-        easy: Easy
-        medium: Medium
-        hard: Hard
-        unknown: Unrated
-    dlcHint: Purchased the DLC already? Make sure it is activated by right clicking
-        shapez.io in your library, selecting Properties > DLCs.
+        easy: Fácil
+        medium: Médio
+        hard: Difício
+        unknown: Sem Classificação
+    dlcHint: Já comprou o DLC? Certifique-se de que ele esteja ativado clicando com o botão direito
+        do mouse em shapez.io na sua biblioteca e Propriedades > DLCs.
     search:
-        action: Search
-        placeholder: Enter a puzzle or author name
-        includeCompleted: Include Completed
+        action: Pesquisar
+        placeholder: Digite um puzzle ou nome do autor
+        includeCompleted: Incluir completados
         difficulties:
-            any: Any Difficulty
-            easy: Easy
-            medium: Medium
-            hard: Hard
+            any: Qualquer Dificuldade
+            easy: Fácil
+            medium: Médio
+            hard: Difício
         durations:
-            any: Any Duration
-            short: Short (< 2 min)
+            any: Qualquer Duração
+            short: Curto (< 2 min)
             medium: Normal
-            long: Long (> 10 min)
+            long: Longo (> 10 min)
 backendErrors:
     ratelimit: Você está fazendo coisas muito rapidamente. Por favor espere um pouco.
     invalid-api-key: Falha ao comunicar com o backend, por favor tente
@@ -1357,8 +1357,8 @@ backendErrors:
     bad-token: Falha ao comunicar com o backend, por favor tente atualizar/reiniciar
         o jogo (Bad Token).
     bad-id: Indentificador de desafio inválido.
-    not-found: O desafio não pôde ser achado.
-    bad-category: A categoria não pôde ser achada.
+    not-found: O desafio não pôde ser encontrado.
+    bad-category: A categoria não pôde ser encontrado.
     bad-short-key: O código é inválido.
     profane-title: O nome do seu desafio contém palavras proibidas.
     bad-title-too-many-spaces: O nome do seu desafio é muito curto.
@@ -1371,25 +1371,26 @@ backendErrors:
     bad-payload: O pedido contém dados inválidos.
     bad-building-placement: Seu desafio contém construções colocadas de forma inválida.
     timeout: Acabou o tempo do pedido.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    too-many-likes-already: O puzzle já recebeu muitas curtidas. Se você
+        ainda quiser removê-lo, entre em contato em support@shapez.io!
+    no-permission: Você não tem permissão para executar esta ação.
 mods:
     title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    author: Autor
+    version: Versão
+    modWebsite: Site
+    openFolder: Abrir Pasta de Mods
+    folderOnlyStandalone: Abrir a pasta de mods só é possível na versão completa.
+    browseMods: Procurar Mods
+    modsInfo: Para instalar e gerenciar mods, copie-os para a pasta "mods" dentro do
+        diretório do jogo. Você também pode usar o botão "Abrir Pasta de Mods" no
+        canto superior direito.
+    noModSupport: Você precisa da versão completa na Steam para instalar mods.
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: Em Breve
+        description: Ativar ou desativar mods atualmente só é possível copiando
+            o arquivo do mod para dentro ou fora da pasta "mods". No entanto,
+            a opção de ativar/desativar por aqui está planejada para uma futura atualização!
+    browserNoSupport: Devido a restrições do navegador, atualmente só é possível
+        instalar mods na versão da Steam — Desculpe!
+
