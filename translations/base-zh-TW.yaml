@@ -1176,47 +1176,38 @@ puzzleMenu:
             medium: Normal
             long: Long (> 10 min)
 backendErrors:
-    ratelimit: You are performing your actions too frequent. Please wait a bit.
-    invalid-api-key: Failed to communicate with the backend, please try to
-        update/restart the game (Invalid Api Key).
-    unauthorized: Failed to communicate with the backend, please try to
-        update/restart the game (Unauthorized).
-    bad-token: Failed to communicate with the backend, please try to update/restart
-        the game (Bad Token).
-    bad-id: Invalid puzzle identifier.
-    not-found: The given puzzle could not be found.
-    bad-category: The given category could not be found.
-    bad-short-key: The given short key is invalid.
-    profane-title: Your puzzle title contains profane words.
-    bad-title-too-many-spaces: Your puzzle title is too short.
-    bad-shape-key-in-emitter: A constant producer has an invalid item.
-    bad-shape-key-in-goal: A goal acceptor has an invalid item.
-    no-emitters: Your puzzle does not contain any constant producers.
-    no-goals: Your puzzle does not contain any goal acceptors.
-    short-key-already-taken: This short key is already taken, please use another one.
-    can-not-report-your-own-puzzle: You can not report your own puzzle.
-    bad-payload: The request contains invalid data.
-    bad-building-placement: Your puzzle contains invalid placed buildings.
-    timeout: The request timed out.
-    too-many-likes-already: The puzzle alreay got too many likes. If you still want
-        to remove it, please contact support@shapez.io!
-    no-permission: You do not have the permission to perform this action.
+    ratelimit: 您執行操作的頻率過高，請稍等片刻。
+    invalid-api-key: 無法與後端通訊，請嘗試更新或重新啟動遊戲（無效的 API 密鑰）。
+    unauthorized: 無法與後端通訊，請嘗試更新或重新啟動遊戲（未授權）。
+    bad-token: 無法與後端通訊，請嘗試更新或重新啟動遊戲（無效的 Token）。
+    bad-id: 無效的謎題識別碼。
+    not-found: 找不到指定的謎題。
+    bad-category: 找不到指定的分類。
+    bad-short-key: 提供的短代碼無效。
+    profane-title: 您的謎題標題包含不當用詞。
+    bad-title-too-many-spaces: 您的謎題標題過短。
+    bad-shape-key-in-emitter: 常數生成器包含無效的項目。
+    bad-shape-key-in-goal: 目標接收器包含無效的項目。
+    no-emitters: 您的謎題沒有任何常數生成器。
+    no-goals: 您的謎題沒有任何目標接收器。
+    short-key-already-taken: 此短代碼已被使用，請使用其他短代碼。
+    can-not-report-your-own-puzzle: 您無法檢舉自己的謎題。
+    bad-payload: 請求包含無效的資料。
+    bad-building-placement: 您的謎題包含無效放置的建築物。
+    timeout: 請求超時。
+    too-many-likes-already: 此謎題已經獲得許多的讚賞了。如果你仍然希望移除它，請聯繫 support@shapez.io！
+    no-permission: 您沒有執行此操作的權限。
 mods:
-    title: Mods
-    author: Author
-    version: Version
-    modWebsite: Website
-    openFolder: Open Mods Folder
-    folderOnlyStandalone: Opening the mod folder is only possible when running the standalone.
-    browseMods: Browse Mods
-    modsInfo: To install and manage mods, copy them to the mods folder within the
-        game directory. You can also use the 'Open Mods Folder' button on the
-        top right.
-    noModSupport: You need the standalone version on Steam to install mods.
+    title: 遊戲模組（Mods）
+    author: 作者
+    version: 版本
+    modWebsite: 模組網站
+    openFolder: 打開模組資料夾
+    folderOnlyStandalone: 只有完整版才能打開模組資料夾。
+    browseMods: 瀏覽模組
+    modsInfo: 要安裝或管理模組，請將它們複製到遊戲目錄中的 mods 資料夾內（shapez.io\mods）。您也可以點擊右上角的「打開模組資料夾」按鈕，直接開啟 mods 資料夾。
+    noModSupport: 您需要在 Steam 平台擁有完整版才能安裝模組。
     togglingComingSoon:
-        title: Coming Soon
-        description: Enabling or disabling mods is currently only possible by copying
-            the mod file from or to the mods/ folder. However, being able to
-            toggle them here is planned for a future update!
-    browserNoSupport: Due to browser restrictions it is currently only possible to
-        install mods in the Steam version - Sorry!
+        title: 即將推出
+        description: 目前只能透過手動的方式啟用或停用模組：將模組檔案放入 mods 資料夾內即可啟用；若要停用，則將 mods 資料夾內的模組檔案移出或刪除即可。不過，在未來的更新中，將會在此處添加切換模組的功能！
+    browserNoSupport: 由於瀏覽器限制，目前只能在 Steam 版本安裝模組，抱歉！
