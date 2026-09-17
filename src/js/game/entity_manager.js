@@ -20,8 +20,8 @@ export class EntityManager extends BasicSerializableObject {
         /** @type {GameRoot} */
         this.root = root;
 
-        /** @type {Array<Entity>} */
-        this.entities = [];
+        /** @type {Map<number, Entity>} */
+        this.entities = new Map();
 
         // We store a separate list with entities to destroy, since we don't destroy
         // them instantly
@@ -48,7 +48,7 @@ export class EntityManager extends BasicSerializableObject {
     }
 
     getStatsText() {
-        return this.entities.length + " entities [" + this.destroyList.length + " to kill]";
+        return this.entities.size + " entities [" + this.destroyList.length + " to kill]";
     }
 
     // Main update
@@ -63,7 +63,7 @@ export class EntityManager extends BasicSerializableObject {
      */
     registerEntity(entity, uid = null) {
         if (G_IS_DEV && !globalConfig.debug.disableSlowAsserts) {
-            assert(this.entities.indexOf(entity) < 0, `RegisterEntity() called twice for entity ${entity}`);
+            assert(this.entities.get(entity.uid) !== entity, `RegisterEntity() called twice for entity ${entity}`);
         }
         assert(!entity.destroyed, `Attempting to register destroyed entity ${entity}`);
 
@@ -72,7 +72,11 @@ export class EntityManager extends BasicSerializableObject {
             assert(uid >= 0 && uid < Number.MAX_SAFE_INTEGER, "Invalid uid passed: " + uid);
         }
 
-        this.entities.push(entity);
+        // Give each entity a unique id
+        entity.uid = uid ? uid : this.generateUid();
+        entity.registered = true;
+
+        this.entities.set(entity.uid, entity);
 
         // Register into the componentToEntity map
         for (const componentId in entity.components) {
@@ -84,10 +88,6 @@ export class EntityManager extends BasicSerializableObject {
                 }
             }
         }
-
-        // Give each entity a unique id
-        entity.uid = uid ? uid : this.generateUid();
-        entity.registered = true;
 
         this.root.signals.entityAdded.dispatch(entity);
     }
@@ -136,23 +136,17 @@ export class EntityManager extends BasicSerializableObject {
      * @returns {Entity}
      */
     findByUid(uid, errorWhenNotFound = true) {
-        const arr = this.entities;
-        for (let i = 0, len = arr.length; i < len; ++i) {
-            const entity = arr[i];
-            if (entity.uid === uid) {
-                if (entity.queuedForDestroy || entity.destroyed) {
-                    if (errorWhenNotFound) {
-                        logger.warn("Entity with UID", uid, "not found (destroyed)");
-                    }
-                    return null;
-                }
-                return entity;
+        const entity = this.entities.get(uid);
+
+        if (entity === undefined || entity.queuedForDestroy || entity.destroyed) {
+            if (errorWhenNotFound) {
+                logger.warn("Entity with UID", uid, "not found (destroyed)");
             }
+
+            return null
         }
-        if (errorWhenNotFound) {
-            logger.warn("Entity with UID", uid, "not found");
-        }
-        return null;
+
+        return entity
     }
 
     /**
@@ -163,14 +157,12 @@ export class EntityManager extends BasicSerializableObject {
      */
     getFrozenUidSearchMap() {
         const result = new Map();
-        const array = this.entities;
-        for (let i = 0, len = array.length; i < len; ++i) {
-            const entity = array[i];
+        for (const [uid, entity] of this.entities.entries()){
             if (!entity.queuedForDestroy && !entity.destroyed) {
-                result.set(entity.uid, entity);
+                result.set(uid, entity);
             }
         }
-        return result;
+        return result
     }
 
     /**
@@ -200,8 +192,8 @@ export class EntityManager extends BasicSerializableObject {
         for (let i = 0; i < this.destroyList.length; ++i) {
             const entity = this.destroyList[i];
 
-            // Remove from entities list
-            arrayDeleteValue(this.entities, entity);
+            // Remove from entities map
+            this.entities.delete(entity.uid)
 
             // Remove from componentToEntity list
             this.unregisterEntityComponents(entity);
