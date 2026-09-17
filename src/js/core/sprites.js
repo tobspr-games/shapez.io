@@ -155,8 +155,9 @@ export class AtlasSprite extends BaseSprite {
      * @param {number} w
      * @param {number} h
      * @param {boolean=} clipping Whether to perform culling
+     * @param {boolean=} extrude Whether to extrude
      */
-    drawCached(parameters, x, y, w = null, h = null, clipping = true) {
+    drawCached(parameters, x, y, w = null, h = null, clipping = true, extrude = true) {
         if (G_IS_DEV) {
             assert(parameters instanceof DrawParameters, "Not a valid context");
             assert(!!w && w > 0, "Not a valid width:" + w);
@@ -215,6 +216,7 @@ export class AtlasSprite extends BaseSprite {
             destH = intersection.h;
         }
 
+        const extrudeValue = extrude ? EXTRUDE : 0;
         parameters.context.drawImage(
             link.atlas,
 
@@ -227,10 +229,10 @@ export class AtlasSprite extends BaseSprite {
             srcH,
 
             // dest pos and size
-            destX - EXTRUDE,
-            destY - EXTRUDE,
-            destW + 2 * EXTRUDE,
-            destH + 2 * EXTRUDE
+            destX - extrudeValue,
+            destY - extrudeValue,
+            destW + 2 * extrudeValue,
+            destH + 2 * extrudeValue
         );
     }
 
@@ -242,8 +244,9 @@ export class AtlasSprite extends BaseSprite {
      * @param {number} w
      * @param {number} h
      * @param {Rectangle=} clipRect The rectangle in local space (0 ... 1) to draw of the image
+     * @param {boolean=} extrude Whether to extrude
      */
-    drawCachedWithClipRect(parameters, x, y, w = null, h = null, clipRect = FULL_CLIP_RECT) {
+    drawCachedWithClipRect(parameters, x, y, w = null, h = null, clipRect = FULL_CLIP_RECT, extrude = true) {
         if (G_IS_DEV) {
             assert(parameters instanceof DrawParameters, "Not a valid context");
             assert(!!w && w > 0, "Not a valid width:" + w);
@@ -279,6 +282,7 @@ export class AtlasSprite extends BaseSprite {
         let srcW = link.packedW * clipRect.w;
         let srcH = link.packedH * clipRect.h;
 
+        const extrudeValue = extrude ? EXTRUDE : 0;
         parameters.context.drawImage(
             link.atlas,
 
@@ -291,10 +295,10 @@ export class AtlasSprite extends BaseSprite {
             srcH,
 
             // dest pos and size
-            destX - EXTRUDE,
-            destY - EXTRUDE,
-            destW + 2 * EXTRUDE,
-            destH + 2 * EXTRUDE
+            destX - extrudeValue,
+            destY - extrudeValue,
+            destW + 2 * extrudeValue,
+            destH + 2 * extrudeValue
         );
     }
 
